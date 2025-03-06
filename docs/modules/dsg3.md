@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 ---
 
 import dsg3_frontpanel from '/img/modules/dsg3/dsg3-diagrams/dsg3_frontpanel.png';

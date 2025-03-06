@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 ---
 
 import scrolls_frontpanel from '/img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png';

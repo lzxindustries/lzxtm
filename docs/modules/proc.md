@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 ---
 
 import proc_frontpanel from '/img/modules/proc/proc-diagrams/proc_frontpanel.png';

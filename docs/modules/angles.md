@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 ---
 
 import angles_frontpanel from '/img/modules/angles/angles-diagrams/angles_frontpanel.png';

@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 ---
 
 import stacker_frontpanel from '/img/modules/stacker/stacker-diagrams/stacker_frontpanel.png';
