@@ -1,0 +1,54 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+ @font-face {
+  font-family: "Relief Single Line Outline Regular";
+  src: url("/static/font/ReliefSingleLineOutline-Regular.woff2") format("woff2 supports variations"),
+    url("/static/font/ReliefSingleLineOutline-Regular.woff2") format("woff2-variations");
+  font-weight: 200 2400;
+  font-stretch: 75% 150%;
+}
+
+html {
+  font-family: "Relief Single Line Outline Regular";
+}
+
+h1,
+h2 
+{
+  font-family: "Relief Single Line Outline Regular";
+  text-transform: uppercase;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Relief Single Line Outline Regular";
+}
+
+.medium-zoom-overlay,
+.medium-zoom-image--opened {
+  z-index: 999;
+}
+
+/* You can override the default Infima variables here. */
+:root {
+  /* --ifm-color-primary: #de1f26;
+  --ifm-color-primary-dark: #c81c22;
+  --ifm-color-primary-darker: #bd1a20;
+  --ifm-color-primary-darkest: #9b161b;
+  --ifm-color-primary-light: #e3343a;
+  --ifm-color-primary-lighter: #e43f45;
+  --ifm-color-primary-lightest: #e96065; */
+  --ifm-color-primary: #d6770a;
+  --ifm-color-primary-dark: #c16b09;
+  --ifm-color-primary-darker: #b66508;
+  --ifm-color-primary-darkest: #965307;
+  --ifm-color-primary-light: #eb830b;
+  --ifm-color-primary-lighter: #f4890e;
+  --ifm-color-primary-lightest: #f5982e;
+}
