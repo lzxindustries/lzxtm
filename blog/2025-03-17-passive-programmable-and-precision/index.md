@@ -36,7 +36,7 @@ All P Series modules are available in 3 variants:
 - Full DIY kit, all parts included
 - Partial DIY kit, SMT assemblies and frontpanels only
 
-There has also been a price drop on the PGO partial DIY kit.
+We have stock of all variants available now, except PRM -- we'll have those added to stock soon.  But you're welcome to place a backorder for that one. There has also been a price drop on the PGO partial DIY kit. 
 
 Other modules in development for 2025 include:
 
@@ -45,10 +45,10 @@ Other modules in development for 2025 include:
 - A sync distribution amplifier with front and rear connectors, for sync connections with external devices and expander cases.
 - An extended version of our first rotator module (Navigator) merged with features from our polar-to-cartesian module (Colorspace Mapper/Mapper).
 
-In parting, check out some new documentation work by our collaborators.  There are beautifully illustrated and animated docs now available for DSG3, Angles, Keychain and Proc.  There are also initial drafts up for the P Series modules. 
-https://docs.lzxindustries.net
+In parting, check out some new documentation work by our collaborators.  There are beautifully illustrated and animated docs now available for DSG3, Angles, Keychain and Proc.  There are also initial drafts up for the P Series modules. Check it out at https://docs.lzxindustries.net
 
 We'll continue regularly adding to the docs throughout 2025.  Please let us know what you think of them.
 
 Until next time,
+
 Lars
