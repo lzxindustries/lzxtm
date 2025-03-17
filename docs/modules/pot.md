@@ -32,19 +32,19 @@ This page is under construction and in a draft state. Stay tuned to our newslett
 | Power Connectors  | None                                                                            |
 | Video Sync        | None                                                                            |
 
-
-## System Integration Advice
+<!-- 
+## System Integration Advice -->
 
 <!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
 - **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
 - **Building block** for patching complex video synthesis functions. As low level analog computing blocks, several PGOs can be patched together to design a wide range of processing functions, including replicating functions from other modules. However, this level of flexibility comes at the expense of greater system size and more complex patches. Using both lower level and higher level modules is a great strategy for getting the most out of a system.
 - **Consider multiple PGOs**. Analog computers provide several instances of summing and difference amplifiers. For example, a bidirectional converter or scaler requires two modules. A triple color space function requires three modules. More complex vector functions will require eight or more. -->
-
+<!-- 
 ## Controls, Connectors & Indicators
 
 <img src={pot_controls_connectors_indicators} alt="pot_controls_connectors_indicators" />
 
-## Operation
+## Operation -->
 
 <!-- PGO sits at a lower level of abstraction than more complex modules like video shape generators and video keyers. The synthesist is granted full access to the signal path, and the freedom to program a function in discrete steps.
 
