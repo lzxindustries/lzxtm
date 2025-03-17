@@ -31,8 +31,8 @@ This page is under construction and in a draft state. Stay tuned to our newslett
 | Power Consumption | None                                                                            |
 | Power Connectors  | None                                                                            |
 | Video Sync        | None                                                                            |
-
-## System Integration Advice
+<!-- 
+## System Integration Advice -->
 
 <!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
 - **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
@@ -208,8 +208,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 * Carefully test fit the module in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Mount the module to the EuroRack rails using all mounting holes.
 * Power on the EuroRack enclosure and start patching.
-
-## Full Specifications
+<!-- 
+## Full Specifications -->
 <!-- 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
@@ -240,8 +240,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | None                                                                            | -->
-
-## Calibration
+<!-- 
+## Calibration -->
 
 <!-- Calibration is not required for this module. -->
 
@@ -279,8 +279,8 @@ Serial numbers 950065-0001 thru 950065-0100.
 
 [Download PGO-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pgo/PGO-REVB_Interactive_Bill_of_Materials.zip)
  -->
-
-## DIY 
+<!-- 
+## DIY  -->
 <!-- 
 PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
 
@@ -306,8 +306,8 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 1. Mount and solder front facing jacks next.
 2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
-
-## Functional Testing
+<!-- 
+## Functional Testing -->
 <!-- 
 The following tests are designed to verify the module is functioning as expected after assembly. If you are concerned your module is not operating properly, these tests may be used for self verification before a repair is initiated.  It is also best practice to perform a functional test when selling or purchasing a module on the secondhand market.
 

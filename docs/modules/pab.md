@@ -38,8 +38,8 @@ This page is under construction and in a draft state. Stay tuned to our newslett
 PAB ships with a black front panel installed. Red, green and blue panels are also included. All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow.
 
 <img src={pab_all_front_panels} alt="pab_all_front_panels" />
-
-## System Integration Advice
+<!-- 
+## System Integration Advice -->
 
 <!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
 - **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
@@ -82,8 +82,8 @@ In PGO's implementation, the positive input and negative input of the difference
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or back to one of the inputs on PGO.
 
 <img src={ProgrammingOffset} alt="Programming Offset"/> -->
-
-## Example Patches
+<!-- 
+## Example Patches -->
 
 <!-- ### 4 Quadrant Multiplier
 
@@ -217,8 +217,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
-
-## Full Specifications
+<!-- 
+## Full Specifications -->
 <!-- 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
@@ -249,8 +249,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | None                                                                            | -->
-
-## Calibration
+<!-- 
+## Calibration -->
 
 <!-- Calibration is not required for this module. -->
 
@@ -276,8 +276,8 @@ Initial production version. February 2025.
 
 [Download PAB-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pab/PAB-REVB_Interactive_Bill_of_Materials.zip)
 
-
-## DIY 
+<!-- 
+## DIY  -->
 <!-- 
 PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
 
@@ -303,8 +303,8 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 1. Mount and solder front facing jacks next.
 2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
-
-## Functional Testing
+<!-- 
+## Functional Testing -->
 <!-- 
 The following tests are designed to verify the module is functioning as expected after assembly. If you are concerned your module is not operating properly, these tests may be used for self verification before a repair is initiated.  It is also best practice to perform a functional test when selling or purchasing a module on the secondhand market.
 
