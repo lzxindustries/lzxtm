@@ -69,12 +69,12 @@ In PGO's implementation, the positive input and negative input of the difference
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or back to one of the inputs on PGO.
 
 <img src={ProgrammingOffset} alt="Programming Offset"/> -->
+<!-- 
+## Example Patches -->
 
-## Example Patches
+<!-- <img src={pot_crossfade} alt="pot_crossfade" />
 
-<img src={pot_crossfade} alt="pot_crossfade" />
-
-<img src={pot_fade_to_black} alt="pot_fade_to_black" />
+<img src={pot_fade_to_black} alt="pot_fade_to_black" /> -->
 
 <!-- ### 4 Quadrant Multiplier
 
