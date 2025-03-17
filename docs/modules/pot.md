@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 draft: false
+title: "P: Passive Potentiometer"
 ---
 
 import pot_front_panel from '/img/modules/pot/pot-diagrams/pot_front-panel.png';
@@ -9,7 +10,8 @@ import pot_crossfade from '/img/modules/pot/pot-diagrams/pot_crossfade.gif';
 import pot_fade_to_black from '/img/modules/pot/pot-diagrams/pot_fade-to-black.gif';
 import pot_mounting_power_sync from '/img/modules/pot/pot-diagrams/pot_mounting-power-sync.png';
 
-# P - Passive Potentiometer
+# P
+<span class="head2_nolink">Passive Potentiometer</span>
 
 :::warning
 

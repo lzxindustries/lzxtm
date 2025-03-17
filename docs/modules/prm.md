@@ -1,5 +1,6 @@
 ---
-draft: true
+sidebar_position: 1
+draft: false
 title: "PRM: Programmable Rectifier & Multiplier"
 ---
 

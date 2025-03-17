@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 draft: false
+title: "MLT: Passive Multiples"
 ---
 
 import mlt_frontpanel from '/img/modules/mlt/mlt-diagrams/mlt_front-panel.png';
@@ -9,7 +10,8 @@ import mlt_mounting_power_sync from '/img/modules/mlt/mlt-diagrams/mlt_mounting-
 import mlt_mults from '/img/modules/mlt/mlt-diagrams/mlt_mults.png';
 import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagrams/mlt_understanding-cascading-input-jacks​.png';
 
-# MLT - Passive Multiples
+# MLT
+<span class="head2_nolink">Passive Multiples</span>
 
 :::warning
 

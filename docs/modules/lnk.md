@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 draft: false
+title: "LNK: Passive Links"
 ---
 
 import lnk_front_panel from '/img/modules/lnk/lnk-diagrams/lnk_front-panel.png';
@@ -9,7 +10,8 @@ import lnk_mounting_power_sync from '/img/modules/lnk/lnk-diagrams/lnk_mounting-
 import lnk_mults from '/img/modules/lnk/lnk-diagrams/lnk_mults.png';
 import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagrams/lnk_understanding-cascading-input-jacks​.png';
 
-# LNK - Passive Links
+# LNK
+<span class="head2_nolink">Passive Links</span>
 
 :::warning
 

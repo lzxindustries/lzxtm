@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 draft: false
+title: "PAB: Programmable Active Buffers"
 ---
 
 import pab_front_panel from '/img/modules/pab/pab-diagrams/pab_front-panel.png';
@@ -9,7 +10,8 @@ import pab_mounting_power_sync from '/img/modules/pab/pab-diagrams/pab_mounting-
 import pab_controls_connectors_indicators from '/img/modules/pab/pab-diagrams/pab_controls-connectors-indicators.png';
 import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagrams/pab_understanding-cascading-input-jacks​.png';
 
-# PAB - Programmable Active Buffers
+# PAB
+<span class="head2_nolink">Programmable Active Buffers</span>
 
 :::warning
 
