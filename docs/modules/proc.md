@@ -31,6 +31,7 @@ import proc_rgb_color_picker_static from '/img/modules/proc/proc-diagrams/proc_r
 import proc_static_voltage_generator from '/img/modules/proc/proc-diagrams/proc_static-voltage-generator.gif';
 import proc_subtractor from '/img/modules/proc/proc-diagrams/proc_subtractor.png';
 import proc_line_art_labeled from '/img/modules/proc/proc-diagrams/placeholders/proc_line_art_labeled_placeholder_250x700.png';
+
 <!-- 
 :::warning
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
