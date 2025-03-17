@@ -1,10 +1,14 @@
 ---
 draft: true
+title: "SMX3: Matrix Mixer"
 ---
 
-# TBC2 - Dual Video Input
+# TBC2
+<span class="head2_nolink">Dual Video Input</span>
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

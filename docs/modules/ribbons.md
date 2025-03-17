@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "RIBBONS"
 ---
 
-# Ribbons
+# RIBBONS
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

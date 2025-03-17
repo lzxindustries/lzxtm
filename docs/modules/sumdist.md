@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "SUMDIST"
 ---
 
-# SumDist
+# SUMDIST
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

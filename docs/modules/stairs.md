@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "STAIRS"
 ---
 
-# Stairs
+# STAIRS
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

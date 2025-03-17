@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "MATTE"
 ---
 
-# Matte
+# MATTE
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "FACTORS"
 ---
 
-# Factors
+# FACTORS
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

@@ -1,5 +1,6 @@
 ---
 draft: true
+title: "ANGLES: Fixed Ratio Mixer & Dual Ramp Generator"
 ---
 
 import angles_frontpanel from '/img/modules/angles/angles-diagrams/angles_frontpanel.png';
@@ -15,32 +16,41 @@ import angles_quadrilateral from '/img/modules/angles/angles-diagrams/angles_qua
 import angles_ramp_generator_outputs from '/img/modules/angles/angles-diagrams/angles_ramp-generator-outputs.png';
 import angles_rgb_gradient from '/img/modules/angles/angles-diagrams/angles_rgb-gradient.png';
 import angles_triangle from '/img/modules/angles/angles-diagrams/angles_triangle.png';
+import angles_line_art_labeled from '/img/modules/angles/angles-diagrams/placeholders/angles_line_art_labeled_placeholder_330x684.png';
 
-# ANGLES - Fixed Ratio Mixer & Dual Ramp Generator
+
+# ANGLES
+<span class="head2_nolink">Fixed Ratio Mixer & Dual Ramp Generator</span>
+
+<!-- AFR note: I separated the page title CSS styling from metadata -->
+
+<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
+
+<!-- AFR note: these two diagrams freak me out because they show connecting multiple outputs to a single input. I thought that dirty mixing was bad practice. I'm commenting the diagrams out for now. -->
+
+{/*
+<img src={angles_quadrilateral} alt="Diagram" />
+*/}
+
+{/*
+<img src={angles_triangle} alt="Diagram" />
+*/}
 
 :::warning
-
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
 :::
 
-<img src={angles_frontpanel} alt="Frontpanel" />
-<img src={angles_15_135_255_300} alt="Diagram" />
-<img src={angles_45_degree_tilt} alt="Diagram" />
-<img src={angles_controls_and_connectors} alt="Diagram" />
-<img src={angles_dwo3_cv} alt="Diagram" />
-<img src={angles_fixed_ratio_mixer} alt="Diagram" />
-<img src={angles_fixed_ratio_outputs} alt="Diagram" />
-<img src={angles_mounting_power_sync} alt="Diagram" />
-<img src={angles_normalled_connections} alt="Diagram" />
-<img src={angles_quadrilateral} alt="Diagram" />
-<img src={angles_ramp_generator_outputs} alt="Diagram" />
-<img src={angles_rgb_gradient} alt="Diagram" />
-<img src={angles_triangle} alt="Diagram" />
+<img src={angles_frontpanel} alt="ANGLES front panel" />
 
 ## Overview
 
-Angles is a dual SD/HD ramp waveform generator and 24 output fixed ratio mixer.
+ANGLES is a dual horizontal and vertical ramp generator and 24-output fixed ratio mixer. That may not sound very exciting at first, but ANGLES is the key to a full range of dynamic compositions in video synthesis.
+
+Horizontal and vertical waveforms are essential ingredients in most generative patches. But with standard H and V ramps and oscillators, patches can feel constrained within a box. Shapes and patterns are oriented parallel or perpendicular to the video frame. Compositions are visually static even when they're animated, because all geometry is based on right angle relationships. That's fine if you want the feeling of the patch to be solid and constant. However, for lively, dynamic compositions, we need geometries oriented along diagonals.
+
+Synthesizing complex geometries, such as vanishing points or polygons, requires diagonally oriented ramps. ANGLES accomplishes this by mixing H and V ramps in fixed proportions. It lets your patch break out of the box with 24 individual ramps rotated in 15-degree increments. Instead of being limited to 0 and 90 degrees, you can now pick any two angles. 24 options for each of the two paired ramps gives over 500 creative alternatives to the ordinary HV ramp combo.
+
+---
 
 ## Key Specifications
 
@@ -52,47 +62,102 @@ Angles is a dual SD/HD ramp waveform generator and 24 output fixed ratio mixer.
 | Video Sync        | Rear RCA input and output                                                       |
 | Included          | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
 
+---
+
 ## System Integration Advice
 
-In order to synthesize visual elements with complex geometries, such as vanishing point illusions or polygons, one needs parallel access to separate angles at fixed ratios on independent outputs. For this purpose, a single crossfader or mixer does not go very far, and Angles becomes very powerful. Angles is a great support module to add after your system includes one or more of the following modules: Dual Shape Generator, Dual Wideband Oscillator, Stairs, Keychain. It really shines in 4+ module systems where its outputs can be distributed throughout the patch to multiple destinations.
+Angles is a great support module to add to a system including one or more of the following: DSG3, DWO3, Stairs, and Keychain. It really shines in systems where its outputs can be distributed throughout the patch to multiple destinations.
+
+---
 
 ## Controls, Connectors & Indicators
 
+<img src={angles_controls_and_connectors} alt="ANGLES controls and connections" />
+
+&nbsp;<br />
+Angles is populated with 32 jacks. The top row of jacks are ramp outputs: horizontal, vertical, inverted horizontal, and inverted vertical. 
+
+<img src={angles_ramp_generator_outputs} alt="ANGLES H and V ramp outputs" />
+
+&nbsp;<br />
+These ramps are internally normalled into the **A**, **B**, **C**, and **D** input jacks on the second row. If nothing is patched into an input jack, a ramp provides the source to the mixing stages below.
+
+<img src={angles_normalled_connections} alt="ANGLES internal normalling" />
+
+---
+
 ## Operation
 
-Horizontal and vertical waveform generators are an essential ingredient in most generative patches. Due to this, many patches may feel constrained within a box, with the dimensions of shapes and patterns either oriented at 0 or 90 degrees. Angles offers ratio mixes from 0 to 345 degrees in 15 degree increments across 24 ouputs – that’s over 500 different alternatives to HV. Instead of patching HV, you can now pick any 2 angles.
+Each of the 24 outputs is a unique mix of two of the A, B, C, and D inputs. Pairs of sources are mixed at ratios of 1:0, 5:1, 2:1, 1:1, 1:2, and 1:5. This results in mixtures of:
+
+- 100% & 0% 
+- 83.3% & 16.7% 
+- 66.7% & 33.3%
+- 50% & 50%
+- 33.3% & 66.7%
+- 16.7% & 83.3%
+
+<img src={angles_fixed_ratio_outputs} alt="ANGLES fixed ratio outputs" />
+&nbsp;<br />
+
+When two ramps are mixed, the result is an angled ramp. Different starting orientations and mixing amounts give different angles. ANGLES splits the circle in 24 equal sections, outputting 24 differently angled ramps, in rotational increments of 15 degrees.
+
+<img src={angles_15_135_255_300} alt="ANGLES rotated ramps" />
+&nbsp;<br />
+
+But ANGLES is not limited to its internal ramps. Any video or control signal can be mixed with any other signal. This opens up interesting possibilities, such as symmetrical mixes of two sources. For example, one mix of 66.&% A and 33.3% B, and a complementary mix of 33.3% A and 66.7% B.
+
+---
 
 ## Example Patches
 
-## Waveshape Expander
+### Waveshape Expander
 
-Patch your Dual Oscillator outputs or Dual Shape Generator outputs into Angles’ inputs to expand the number of available waveforms.
+Patch  DWO3 or DSG3 outputs into ANGLES inputs to expand the available waveforms.
 
-## Spatial Reference
+---
 
-Patch any 2 outputs from Angles into your Dual Shape Generator to completely change the orientation of its generated patterns.
+### Spatial Reference
 
-## Oscillator Protractor
+Patch any two outputs from ANGLES into DSG3 to completely change the orientation of its generated patterns.
 
-Patch outputs from Angles into your Dual Oscillator CV inputs to modulate its’ waveforms at different angles.
+<img src={angles_45_degree_tilt} alt="ANGLES patch: DSG3 orientation"/>
 
-## Complex Color Field
+---
 
-Patch any 3 outputs from Angles into RGB to create a complex color gradient for use as a background or modulation source.
+### Oscillator Protractor
 
-## Quadrature Expander
+Patch outputs from ANGLES into DWO3 inputs to frequency modulate its waveforms at different angles.
 
-Patch the +/-Sin/Cos outputs from a quadrature oscillator into Angles’ four inputs to create a full spread of 24 different output phases.
+<img src={angles_dwo3_cv} alt="ANGLES patch: oscillator frequency modulation" />
 
-## Hierarchichal Spatial Reference
+---
 
-Patch any 4 outputs from one Angles to the 4 input on a second Angles module to get a completely different set of 24 perspectives.
+### Complex Color Field
+
+Use any three outputs from ANGLES as RGB channels to create a complex color gradient. This can be a direct visual element or a source of modulation.
+
+<img src={angles_rgb_gradient} alt="ANGLES patch: complex color gradient" />
+
+---
+
+### Quadrature Expander
+
+Patch a quadrature oscillator into ANGLES' four inputs to create a full spread of 24 different output phases.
+
+---
+
+### Hierarchical Spatial Reference
+
+Patch any four outputs to the inputs of a second ANGLES module for a completely different set of 24 angles or mixer ratios.
+
+---
 
 ## Installation
 
 <!-- Discuss differences between 10 and 16 pin connectors -->
-<!-- Discuss sync connection -->
-<!-- Something about making sure all screws have been removed from the intended mounting location. -->
+
+<img src={angles_mounting_power_sync} alt="ANGLES installation" />
 
 ### Requirements
 
@@ -105,15 +170,79 @@ Patch any 4 outputs from one Angles to the 4 input on a second Angles module to 
 ### Procedure
 
 * Power off and disconnect the EuroRack enclosure's power supply and any attached DC adapters.
-* Connect only one of, the EuroRack Power Cable or the DC Barrel Power Cable to the module. 
+* Connect either the EuroRack Power Cable **or** the DC Barrel Power Cable to the module. Do not connect both Eurorack and DC Barrel power.
+* Ensure that no mounting screws are in any holes in the area where you wish to mount the module.
 * Carefully test fit the module with its attached power cable in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Connect the disconnected end of the power cable to the power supply.
-* Connect the sync cable to your sync source or the last module in your sync chain
+* Connect the sync cable to a sync source or the last module in the sync chain.
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
 
+---
+
 ## Full Specifications
+
+<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'angles_line_art_labeled_placeholder_330x684.png' -->
+
+<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
+
+<!-- AFR note: there were clerical errors on the product page where I got the front panel function info. J29 was listed as 165 degrees, the same as J30. J29 should be 75 degrees, right? Also, J23 was out of order.-->
+
+<table>
+
+<tr><th>Front panel</th><th>Connectors</th><th>Connectors</th></tr>
+<tr><td>
+
+<img src={angles_line_art_labeled} alt="Angles: labeled front panel controls" />
+
+</td><td>
+
+| Jack | Function                                     |
+|------|----------------------------------------------|
+| J1   | H Ramp out                                   |
+| J2   | V Ramp out                                   |
+| J3   | Inverted H ramp out                          |
+| J4   | Inverted V ramp out                          |
+| J5   | A in                                         |
+| J6   | B in                                         |
+| J7   | C in                                         |
+| J8   | D in                                         |
+| J9   | 0 degrees out<br />(100% A)                  |
+| J10  | 90 degrees out<br />(100% B)                 |
+| J11  | 180 degrees out<br />(100% C)                |
+| J12  | 270 degrees out<br />(100% D)                |
+| J13  | 15 degrees out<br />(83% A + 17% B)          |
+| J14  | 105 degrees out<br />(83% B + 17% C)         |
+| J15  | 195 degrees out<br />(83% C + 17% D)         |
+| J16  | 285 degrees out<br />(83% D + 17% A)         |
+
+</td><td>
+
+| Jack | Function                                     |
+|------|----------------------------------------------|
+| J17  | 30 degrees out<br />(67% A + 33% B)          |
+| J18  | 120 degrees out<br />(67% B + 33% C)         |
+| J19  | 210 degrees out<br />(67% C + 33% D)         |
+| J20  | 300 degrees out<br />(67% D + 33% A)         |
+| J21  | 45 degrees out<br />(50% A + 50% B)          |
+| J22  | 135 degrees out<br />(50% B + 50% C)         |
+| J23  | 225 degrees out<br />(50% C + 50% D)         |
+| J24  | 315 degrees out<br />(50% D + 50% A)         |
+| J25  | 60 degrees out<br />(33% A + 33% B)          |
+| J26  | 150 degrees out<br />(33% B + 33% C)         |
+| J27  | 240 degrees out<br />(33% C + 33% D)         |
+| J28  | 330 degrees out<br />(33% D + 33% A)         |
+| J29  | 75 degrees out<br />(17% A + 83% B)          |
+| J30  | 165 degrees out<br />(17% B + 83% C)         |
+| J31  | 255 degrees out<br />(17% C + 83% D)         |
+| J32  | 345 degrees out<br />(17% D + 83% A)         |
+
+</td></tr></table>
+
+---
+
+### Technical Data
 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
@@ -145,15 +274,21 @@ Patch any 4 outputs from one Angles to the 4 input on a second Angles module to 
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | Required                                                                        |
 
+---
+
 ## Calibration
 
 Calibration is not required for this module.
+
+---
 
 ## Maintenance
 
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
 <!-- ## Troubleshooting -->
+
+---
 
 ## Hardware Revisions
 

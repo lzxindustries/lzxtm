@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "CONTOUR"
 ---
 
-# Contour
+# CONTOUR
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 
