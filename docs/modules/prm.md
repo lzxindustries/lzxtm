@@ -1,9 +1,10 @@
 ---
-sidebar_position: 1
 draft: true
+title: "PRM: Programmable Rectifier & Multiplier"
 ---
 
-# PRM - Programmable Rectifier & Multiplier
+# PRM
+<span class="head2_nolink">Programmable Rectifier & Multiplier</span>
 
 ## Overview
 

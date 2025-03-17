@@ -1,10 +1,14 @@
 ---
 draft: true
+title: "DWO3: Dual Wideband Oscillator"
 ---
 
-# DWO3 - Dual Wideband Oscillator
+# DWO3
+<span class="head2_nolink">Dual Wideband Oscillator</span>
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

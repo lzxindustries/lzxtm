@@ -1,6 +1,14 @@
 ---
 draft: true
+title: "PROC: Triple Voltage Processor"
 ---
+
+# PROC
+<span class="head2_nolink">Triple Voltage Processor</span>
+
+<!-- AFR note: I separated the page title CSS styling from metadata -->
+
+<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
 
 import proc_frontpanel from '/img/modules/proc/proc-diagrams/proc_frontpanel.png';
 import proc_adder from '/img/modules/proc/proc-diagrams/proc_adder.png';
@@ -22,39 +30,34 @@ import proc_rgb_color_picker from '/img/modules/proc/proc-diagrams/proc_rgb-colo
 import proc_rgb_color_picker_static from '/img/modules/proc/proc-diagrams/proc_rgb-color-picker.png';
 import proc_static_voltage_generator from '/img/modules/proc/proc-diagrams/proc_static-voltage-generator.gif';
 import proc_subtractor from '/img/modules/proc/proc-diagrams/proc_subtractor.png';
-
-# PROC - Triple Voltage Processor
+import proc_line_art_labeled from '/img/modules/proc/proc-diagrams/placeholders/proc_line_art_labeled_placeholder_250x700.png';
 
 :::warning
-
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
 :::
 
-<img src={proc_frontpanel} alt="Frontpanel" />
-<img src={proc_adder} alt="Diagram" />
-<img src={proc_block_diagram} alt="Diagram" />
-<img src={proc_brightness} alt="Diagram" />
-<img src={proc_buffered_multiple} alt="Diagram" />
-<img src={proc_contrast} alt="Diagram" />
-<img src={proc_controls_and_connectors} alt="Diagram" />
-<img src={proc_dsg3_priority_layering} alt="Diagram" />
-<img src={proc_formula} alt="Diagram" />
-<img src={proc_gain_bias} alt="Diagram" />
-<img src={proc_inverter} alt="Diagram" />
-<img src={proc_modulation_mixer} alt="Diagram" />
-<img src={proc_mounting_power_sync} alt="Diagram" />
-<img src={proc_normalled_connections} alt="Diagram" />
-<img src={proc_ramp_shifter} alt="Diagram" />
-<img src={proc_ramp_shifter_static} alt="Diagram" />
-<img src={proc_rgb_color_picker} alt="Diagram" />
-<img src={proc_rgb_color_picker_static} alt="Diagram" />
-<img src={proc_static_voltage_generator} alt="Diagram" />
-<img src={proc_subtractor} alt="Diagram" />
+<img src={proc_frontpanel} alt="Proc front panel" />
 
 ## Overview
 
-Proc is a triple voltage processor and summing amplifier. For each channel, it provides continuous control over inversion, attenuation, and DC offset.
+Proc is a triple voltage processor and summing amplifier, providing continuous control over attenuation, inversion, and bias of each of the three channels. It's an essential tool in any modular video system, enabling a long list of creative effects. These include, but are not limited to:
+
+- Duplicate (buffered multiple)
+- Generate static voltages
+- Pick colors in RGB or YIQ component spaces
+- Attenuate or amplify values
+  - amplitude, gain, contrast, white point
+- Raise or lower values
+  - bias, offset, brightness, black level, pedestal
+- Add
+- Subtract
+- Mix
+- Invert
+- Convert between unipolar and bipolar
+- Convert RGB to luminance
+- Colorize luminance or RGB
+
+---
 
 ## Key Specifications
 
@@ -66,42 +69,220 @@ Proc is a triple voltage processor and summing amplifier. For each channel, it p
 | Video Sync        | None                                        |
 | Included          | DC barrel power cable, EuroRack power cable |
 
+---
+
 ## System Integration Advice
 
-TODO
+Proc is a fundamental component of any LZX-compatible modular system. It's impossible to overstate the importance of Proc as a general purpose processing tool. Almost every patch uses Proc in some way. It's the "Swiss Army knife" of modular video, performing a wide array of creative and utilitarian functions.
+
+The nature of Proc is so foundational, and its functions so essential, that any system except the very smallest will ultimately need more than one Proc. In modular audio, it's often said that "you can never have enough VCAs". In modular video, you can never have enough Procs. A reasonable rule of thumb is that a system will need one Proc per approximately 100 HP of space.
+
+:::tip
+Proc pairs particularly well with modules capable of handling bipolar signals, such as Swatch. The I and Q color components range between -0.5 and +0.5 volts. Proc can bias the color components up or down, to or from the unipolar range of 0 to +1 volts. This allows I and Q to be processed by modules that can only handle unipolar signals.
+:::
+
+---
 
 ## Controls, Connectors & Indicators
 
+Proc consists of three identical channels. The inputs to each channel are arranged in rows **1**, **2**, and **3**. Rows are color-coded red, green, and blue, respectively, but this is only for convenience. Any video or control signal can be patched into any input.
+
+Each channel has two input jacks, in columns **A** and **B**.
+
+Each channel has two potentiometer knobs, **Gain** and **Bias**.
+
+<img src={proc_controls_and_connectors} alt="Proc controls and connectors" />
+&nbsp;<br />
+
+The inputs are internally self-normalled to cascade from top to bottom. A signal patched into a top row input flows to the other inputs in that column.
+
+<img src={proc_normalled_connections} alt="Proc internal normalling" />
+
+---
+
 ## Operation
 
-TODO
+Each channel sums the **A** and **B** inputs, plus an internally generated static voltage **C**. Input A is added without alteration, so it's also known as the **Thru** input. Input B is multiplied by its corresponding Gain knob before being added. It's also known as the **In** input.
+
+<img src={proc_block_diagram} alt="Proc block diagram" />
+Function block per channel
+
+The output can be expressed the sum of jack A, plus the product of jack B and potentiometer B, plus potentiometer C.
+
+$$
+jA + (jB \cdot pB) + pC
+$$
+
+<img src={proc_formula} alt="Proc formula" />
+
+#### Gain
+
+Each **Gain** potentiometer, labeled **B**, can attenuate or invert the value of the signal at the channel's B input. At the 12 o'clock position, the signal is multiplied by zero, so none of the B input signal is added to the output. Turning the knob clockwise to the right of 12 o'clock increases the amplitude up to the full value of the input signal. Turning the knob counterclockwise to the left of 12 o'clock inverts the signal, sending it into the negative voltage range.
+
+#### Bias
+
+Each **Bias** potentiometer, labeled **C**, adds a static voltage to the output. At the 12 o'clock position, the voltage is zero, so no offset is added to the output. Clockwise rotation to the right of 12 o'clock adds a voltage, biasing the output up. Counterclockwise rotation to the left of 12 o'clock subtracts a voltage, biasing the output down.
+
+<img src={proc_gain_bias} alt="Proc gain and bias" />
+
+#### Voltage range
+
+Proc can handle input signals that add up to a value range from -2 to +2 volts without distortion. Note that the internally generated bias voltage C is also an input signal, even though there's no C input jack.
+
+Proc can also output signals in that same range, -2 to +2 volts. This allows for bidirectional conversion between unipolar signals that are only positive, and bipolar signals that can be positive or negative. 
+
+:::note
+As the animation above illustrates, negative voltages are outside the visible range of LZX video. Some modules can handle bipolar signals with negative voltages, but an encoder such as ESG3 can only accept values in the range from 0 to +1 volts. Any value below zero will simply be ignored by the encoder.
+:::
+
+<!-- AFR note: it would be great to have an example patch graphic illustrating the Self-patching described below. It can be labeled "Mixer: four inputs, one output" -->
+
+#### Self-patching
+
+By sending the output of one channel to the input of another, we can create more complex effects by combining more than two signals. For example, if we patch output 1 to input A2, and output 2 to to input A3, we can combine up to four signals with the remaining inputs of A1, B1, B2, and B3.
+
+---
 
 ## Example Patches
 
+### Buffered multiple
+<img src={proc_buffered_multiple} alt="Proc buffered multiple" />
+
+---
+
+### Static voltage
+<img src={proc_static_voltage_generator} alt="Proc static voltage generator" />
+
+---
+
+### RGB color picker
+<img src={proc_rgb_color_picker} alt="Proc RGB color picker" />
+
+{/*
+RGB color picker
+<img src={proc_rgb_color_picker_static} alt="Proc RGB color picker" />
+*/}
+
+---
+
+### Bias / brightness
+<img src={proc_brightness} alt="Proc bias" />
+
+---
+
+<!-- AFR note: the Add graphic looks like an OR operation because the two sources are binary. Recommend each source to be dimmed to 50% showing how they add up to 100% in the overlapping area -->
+
+### Add
+<img src={proc_adder} alt="Proc addition" />
+
+---
+
+### Amplify / increase contrast
+<img src={proc_contrast} alt="Proc contrast" />
+
+---
+
+### Subtract
+<img src={proc_subtractor} alt="Proc subtraction" />
+
+---
+
+### Ramp shift
+<img src={proc_ramp_shifter} alt="Proc ramp shift" />
+
+{/*
+Ramp shift
+<img src={proc_ramp_shifter_static} alt="Proc ramp shift" />
+*/}
+
+---
+
+### Invert
+<img src={proc_inverter} alt="Proc invert" />
+
+---
+
+### Mixer: three variations
+<img src={proc_modulation_mixer} alt="Proc modulation mixer" />
+
+---
+
+### Priority layering
+<img src={proc_dsg3_priority_layering} alt="Proc + DSG3 priority layering" />
+
+
+<!-- AFR note: advise adding example patch illustrations showing A) colorization of a monochrome signal and B) colorization of an RGB signal. They don't need to be animated, but this is a key feature we don't want to ignore. -->
+
+---
+
 ## Installation
 
-<!-- Something about making sure all screws have been removed from the intended mounting location. -->
+<img src={proc_mounting_power_sync} alt="Proc installation" />
 
 ### Requirements
 
-* EuroRack enclosure.
-* 12V DC or EuroRack power supply.
-* 2.1mm DC barrel power cable **or** a EuroRack power cable (both options included).
-* Four M2.5 x 6mm mounting screws, or screws provided or specified by the enclosure manufacturer.
-* #1 Phillips head screwdriver, or hand tool provided or specified by the enclosure manufacturer.
+* EuroRack enclosure
+* 12V DC or EuroRack power supply
+* 2.1mm DC barrel power cable **or** a EuroRack power cable (both options included)
+* Four M2.5 x 6mm mounting screws, or screws provided or specified by the enclosure manufacturer
+* #1 Phillips head screwdriver, or hand tool provided or specified by the enclosure manufacturer
 
 ### Procedure
 
 * Power off and disconnect the EuroRack enclosure's power supply and any attached DC adapters.
-* Connect only one of, the EuroRack Power Cable or the DC Barrel Power Cable to the module. 
+* Connect either the EuroRack Power Cable **or** the DC Barrel Power Cable to the module. Do not connect both Eurorack and DC Barrel power.
+* Ensure that no mounting screws are in any holes in the area where you wish to mount the module.
 * Carefully test fit the module with its attached power cable in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Connect the disconnected end of the power cable to the power supply.
-* Connect the sync cable to your sync source or the last module in your sync chain
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
 
+---
+
 ## Full Specifications
+
+<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'proc_line_art_labeled_placeholder_250x700.png' -->
+
+<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
+
+<table>
+
+<tr><th>&nbsp;</th><th>Connectors</th><th>Controls</th></tr>
+<tr><td>
+
+<img src={proc_line_art_labeled} alt="Proc: labeled front panel controls" />
+
+</td><td>
+
+| Jack | Function      |
+|------|---------------|
+| J1   | A1 in (thru)  |
+| J2   | B1 in         |
+| J3   | Channel 1 out |
+| J4   | A2 in (thru)  |
+| J5   | B2 in         |
+| J6   | Channel 2 out |
+| J7   | A3 in (thru)  |
+| J8   | B3 in         |
+| J9   | Channel 3 out |
+
+</td><td>
+
+| Potentiometer | Function         |
+|---------------|------------------|
+| P1            | Channel 1 B gain |
+| P2            | Channel 1 C bias |
+| P3            | Channel 2 B gain |
+| P4            | Channel 2 C bias |
+| P5            | Channel 3 B gain |
+| P6            | Channel 3 C bias |
+
+</td></tr></table>
+
+---
+
+### Technical Data
 
 | Parameter                    | Value                                       |
 | ---------------------------- | ------------------------------------------- |
@@ -133,15 +314,21 @@ TODO
 | RoHS Compliance              | Manufactured with lead-free processes.      |
 | Video Sync                   | None                                        |
 
+---
+
 ## Calibration
 
 Calibration is not required for this module.
 
 ## Maintenance
 
+---
+
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
 <!-- ## Troubleshooting -->
+
+---
 
 ## Hardware Revisions
 

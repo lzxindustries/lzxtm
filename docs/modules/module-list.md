@@ -1,8 +1,9 @@
 ---
+sidebar_position: 1
 draft: true
 ---
 
-# Module List
+# List of All Modules
 
 Company	Module	Status	HP	Depth	+12V mA	-12V mA	Sync Gen?	Sync Required?
 LZX	Keychain	Active	8HP	32mm	110mA			

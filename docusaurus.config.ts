@@ -100,9 +100,9 @@ const config: Config = {
   themes: ['@docusaurus/theme-mermaid'],
   themeConfig: {
     colorMode: {
-      defaultMode: 'light',
-      disableSwitch: true,
-      respectPrefersColorScheme: false,
+      defaultMode: 'dark',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
     },
     mermaid: {
       // theme: { light: 'neutral', dark: 'forest' },
@@ -127,15 +127,16 @@ const config: Config = {
     navbar: {
       title: 'Technical Manual',
       logo: {
-        alt: 'LZX Industries',
-        src: 'img/logo.svg',
+       alt: 'LZX Industries',
+       src: 'img/logo.svg',
+       srcDark: 'img/logo-dark.svg'
       },
       items: [
         // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'guidesSidebar',
-        //   position: 'left',
-        //   label: 'Guides',
+        // type: 'docSidebar',
+        // sidebarId: 'guidesSidebar',
+        // position: 'left',
+        // label: 'Guides',
         // },
         // {
         //   type: 'docSidebar',

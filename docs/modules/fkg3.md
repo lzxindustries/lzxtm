@@ -1,10 +1,14 @@
 ---
 draft: true
+title: "FKG3: Fader & Key Generator"
 ---
 
-# FKG3 Fader & Key Generator
+# FKG3
+<span class="head2_nolink">Fader & Key Generator</span>
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

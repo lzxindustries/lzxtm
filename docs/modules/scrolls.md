@@ -1,5 +1,6 @@
 ---
 draft: true
+title: "SCROLLS: Dual Motion Controlled Ramp Generator"
 ---
 
 import scrolls_frontpanel from '/img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png';
@@ -22,7 +23,8 @@ import scrolls_random_cw from '/img/modules/scrolls/scrolls-diagrams/scrolls_ran
 import scrolls_stairs_oscillator from '/img/modules/scrolls/scrolls-diagrams/scrolls_stairs-oscillator.gif';
 import scrolls_synchronous_lfos from '/img/modules/scrolls/scrolls-diagrams/scrolls_synchronous-lfos.gif';
 
-# SCROLLS - Dual Motion Controlled Ramp Generator
+# SCROLLS
+<span class="head2_nolink">Dual Motion Controlled Ramp Generator</span>
 
 :::warning
 

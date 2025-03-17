@@ -1,5 +1,6 @@
 ---
 draft: true
+title: "STACKER: Triple Quadrilateral Key Generator"
 ---
 
 import stacker_frontpanel from '/img/modules/stacker/stacker-diagrams/stacker_frontpanel.png';
@@ -15,7 +16,8 @@ import stacker_priority_layering from '/img/modules/stacker/stacker-diagrams/sta
 import stacker_size_ratio_under_the_hood from '/img/modules/stacker/stacker-diagrams/stacker_size-ratio-under-the-hood.gif';
 import stacker_size_ratio from '/img/modules/stacker/stacker-diagrams/stacker_size-ratio.gif';
 
-# STACKER - Triple Quadrilateral Key Generator
+# STACKER
+<span class="head2_nolink">Triple Quadrilateral Key Generator</span>
 
 :::warning
 

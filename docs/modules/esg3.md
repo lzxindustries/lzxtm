@@ -1,9 +1,10 @@
 ---
-sidebar_position: 1
 draft: true
+title: "ESG3: Encoder & Sync Generator"
 ---
 
-# ESG3 - Encoder & Sync Generator
+# ESG3
+<span class="head2_nolink">Encoder & Sync Generator</span>
 
 ## Overview
 

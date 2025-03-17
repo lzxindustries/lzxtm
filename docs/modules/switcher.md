@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "SWITCHER"
 ---
 
-# Switcher
+# SWITCHER
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

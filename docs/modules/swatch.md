@@ -1,10 +1,13 @@
 ---
 draft: true
+title: "SWATCH"
 ---
 
-# Swatch
+# SWATCH
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 

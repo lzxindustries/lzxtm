@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+title: "PGO: Programmable Gain & Offset"
 ---
 
 import PCBFront from '/img/modules/pgo/archived/pgo-pcb-render-front-RevB.png';
@@ -32,7 +32,8 @@ import PatchUnipolarModulator from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-m
 import PatchDifferentialToSingleEnded from '/img/modules/pgo/pgo-diagrams/pgo_differential-to-single-ended.png';
 import PatchSingleEndedToDifferential from '/img/modules/pgo/pgo-diagrams/pgo_single-ended-to-differential.png';
 
-# PGO - Programmable Gain & Offset
+# PGO
+<span class="head2_nolink">Programmable Gain & Offset</span>
 
 <img src={Frontpanel} alt="Frontpanel" /> 
 

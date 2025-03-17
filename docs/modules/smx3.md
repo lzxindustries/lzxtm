@@ -1,10 +1,14 @@
 ---
 draft: true
+title: "SMX3: Matrix Mixer"
 ---
 
-# SMX3 - Matrix Mixer
+# SMX3
+<span class="head2_nolink">Matrix Mixer</span>
 
+{/*
 <img src={Frontpanel} alt="Frontpanel" />
+*/}
 
 ## Overview
 
