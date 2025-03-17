@@ -3,11 +3,18 @@ draft: true
 title: "PRM: Programmable Rectifier & Multiplier"
 ---
 
+import prm_front_panel from '/img/modules/prm/prm-diagrams/prm_front-panel.png';
+import prm_all_front_panels from '/img/modules/prm/prm-diagrams/prm_all-front-panels.png';
+import prm_controls_connectors_indicators from '/img/modules/prm/prm-diagrams/prm_controls-connectors-indicators.png';
+import prm_frequency_double from '/img/modules/prm/prm-diagrams/prm_frequency-double.png';
+import prm_mounting_power_sync from '/img/modules/prm/prm-diagrams/prm_mounting-power-sync.png';
+
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
 
 ## Overview
 
+<img src={prm_front_panel} alt="prm_front_panel" />
 
 ## Key Specifications
 
@@ -23,7 +30,7 @@ title: "PRM: Programmable Rectifier & Multiplier"
 
 PRM ships with a black front panel installed. Red, green and blue panels are also included. All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow.
 
-<!-- <img src={AllFrontpanels} alt="All Frontpanels" /> -->
+<img src={prm_all_front_panels} alt="prm_all_front_panels" />
 
 ## System Integration Advice
 
@@ -33,6 +40,8 @@ PRM ships with a black front panel installed. Red, green and blue panels are als
 - **Consider multiple PGOs**. Analog computers provide several instances of summing and difference amplifiers. For example, a bidirectional converter or scaler requires two modules. A triple color space function requires three modules. More complex vector functions will require eight or more. -->
 
 ## Controls, Connectors & Indicators
+
+<img src={prm_controls_connectors_indicators} alt="prm_controls_connectors_indicators" />
 
 <!-- The PGO design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
 
@@ -65,6 +74,8 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 <img src={ProgrammingOffset} alt="Programming Offset"/> -->
 
 ## Example Patches
+
+<!-- <img src={prm_frequency_double} alt="prm_frequency_double" /> -->
 
 ### 4 Quadrant Multiplier
 
@@ -175,6 +186,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 <img src={PatchSingleEndedToDifferential} alt="Single Ended To Differential"/> -->
 
 ## Installation
+
+<img src={prm_mounting_power_sync} alt="prm_mounting_power_sync" />
 
 <!-- Discuss differences between 10 and 16 pin connectors -->
 <!-- Something about making sure all screws have been removed from the intended mounting location. -->
