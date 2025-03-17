@@ -35,10 +35,10 @@ import angles_line_art_labeled from '/img/modules/angles/angles-diagrams/placeho
 {/*
 <img src={angles_triangle} alt="Diagram" />
 */}
-
+<!-- 
 :::warning
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-:::
+::: -->
 
 <img src={angles_frontpanel} alt="ANGLES front panel" />
 
@@ -240,7 +240,7 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 
 </td></tr></table>
 
----
+<!-- ---
 
 ### Technical Data
 
@@ -272,7 +272,7 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 | EuroRack Power Cable Length  | 25 cm                                                                           |
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | Required                                                                        |
+| Video Sync                   | Required                                                                        | -->
 
 ---
 

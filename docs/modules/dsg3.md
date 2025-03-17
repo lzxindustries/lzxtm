@@ -27,9 +27,9 @@ import dsg3_self_patching from '/img/modules/dsg3/dsg3-diagrams/dsg3_self-patchi
 import dsg3_signal_path from '/img/modules/dsg3/dsg3-diagrams/dsg3_signal-path.png';
 import dsg3_line_art_labeled from '/img/modules/dsg3/dsg3-diagrams/placeholders/dsg3_line_art_labeled_placeholder_330x684.png';
 
-:::warning
+<!-- :::warning
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-:::
+::: -->
 
 <img src={dsg3_frontpanel} alt="DSG3 front panel" />
 
@@ -357,7 +357,7 @@ $$
 </td></tr></table>
 
 ---
-
+<!-- 
 ### Technical Data
 
 | Parameter                    | Value                                                       |
@@ -390,7 +390,7 @@ $$
 | RoHS Compliance              | Manufactured with lead-free processes.                      |
 | Video Sync                   | Rear RCA                                                    |
 
----
+--- -->
 
 ## Calibration
 

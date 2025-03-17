@@ -23,11 +23,11 @@ import keychain_line_art_labeled from '/img/modules/keychain/keychain-diagrams/p
 
 <!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
 
-:::warning
+<!-- :::warning
 
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
 
-:::
+::: -->
 
 <img src={keychain_frontpanel} alt="Keychain front panel" />
 
@@ -217,7 +217,7 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 </td></tr></table>
 
 ---
-
+<!-- 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950056                                                                          |
@@ -248,7 +248,7 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | None                                                                            |
 
----
+--- -->
 
 ## Calibration
 
