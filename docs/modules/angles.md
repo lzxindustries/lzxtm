@@ -125,13 +125,13 @@ Patch any two outputs from ANGLES into DSG3 to completely change the orientation
 
 ---
 
-### Oscillator Protractor
+<!-- ### Oscillator Protractor
 
 Patch outputs from ANGLES into DWO3 inputs to frequency modulate its waveforms at different angles.
 
 <img src={angles_dwo3_cv} alt="ANGLES patch: oscillator frequency modulation" />
 
----
+--- -->
 
 ### Complex Color Field
 

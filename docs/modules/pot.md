@@ -31,19 +31,19 @@ This page is under construction and in a draft state. Stay tuned to our newslett
 | Power Connectors  | None                                                                            |
 | Video Sync        | None                                                                            |
 
-
-## System Integration Advice
+<!-- 
+## System Integration Advice -->
 
 <!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
 - **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
 - **Building block** for patching complex video synthesis functions. As low level analog computing blocks, several PGOs can be patched together to design a wide range of processing functions, including replicating functions from other modules. However, this level of flexibility comes at the expense of greater system size and more complex patches. Using both lower level and higher level modules is a great strategy for getting the most out of a system.
 - **Consider multiple PGOs**. Analog computers provide several instances of summing and difference amplifiers. For example, a bidirectional converter or scaler requires two modules. A triple color space function requires three modules. More complex vector functions will require eight or more. -->
-
+<!-- 
 ## Controls, Connectors & Indicators
 
 <img src={pot_controls_connectors_indicators} alt="pot_controls_connectors_indicators" />
 
-## Operation
+## Operation -->
 
 <!-- PGO sits at a lower level of abstraction than more complex modules like video shape generators and video keyers. The synthesist is granted full access to the signal path, and the freedom to program a function in discrete steps.
 
@@ -68,12 +68,12 @@ In PGO's implementation, the positive input and negative input of the difference
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or back to one of the inputs on PGO.
 
 <img src={ProgrammingOffset} alt="Programming Offset"/> -->
+<!-- 
+## Example Patches -->
 
-## Example Patches
+<!-- <img src={pot_crossfade} alt="pot_crossfade" />
 
-<img src={pot_crossfade} alt="pot_crossfade" />
-
-<img src={pot_fade_to_black} alt="pot_fade_to_black" />
+<img src={pot_fade_to_black} alt="pot_fade_to_black" /> -->
 
 <!-- ### 4 Quadrant Multiplier
 
@@ -202,8 +202,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 * Carefully test fit the module in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Mount the module to the EuroRack rails using all mounting holes.
 * Power on the EuroRack enclosure and start patching.
-
-## Full Specifications
+<!-- 
+## Full Specifications -->
 <!-- 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
@@ -234,8 +234,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | None                                                                            | -->
-
-## Calibration
+<!-- 
+## Calibration -->
 
 <!-- Calibration is not required for this module. -->
 
@@ -273,8 +273,8 @@ Serial numbers 950065-0001 thru 950065-0100.
 
 [Download PGO-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pgo/PGO-REVB_Interactive_Bill_of_Materials.zip)
  -->
-
-## DIY 
+<!-- 
+## DIY  -->
 <!-- 
 PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
 
@@ -300,8 +300,8 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 1. Mount and solder front facing jacks next.
 2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
-
-## Functional Testing
+<!-- 
+## Functional Testing -->
 <!-- 
 The following tests are designed to verify the module is functioning as expected after assembly. If you are concerned your module is not operating properly, these tests may be used for self verification before a repair is initiated.  It is also best practice to perform a functional test when selling or purchasing a module on the secondhand market.
 
