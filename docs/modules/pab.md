@@ -1,5 +1,4 @@
 ---
-sidebar_position: 1
 draft: false
 title: "PAB: Programmable Active Buffers"
 ---

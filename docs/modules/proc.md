@@ -32,10 +32,13 @@ import proc_static_voltage_generator from '/img/modules/proc/proc-diagrams/proc_
 import proc_subtractor from '/img/modules/proc/proc-diagrams/proc_subtractor.png';
 import proc_line_art_labeled from '/img/modules/proc/proc-diagrams/placeholders/proc_line_art_labeled_placeholder_250x700.png';
 
-<!-- 
+<!-- AFR note: HTML style comments in combination with Markdown/Docusaurus are causing some compilation errors. Not sure what the evil character combo is. I changed the commented out warning below to JS style comments. Otherwise the page wouldn't load. -->
+
+{/*
 :::warning
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
+:::
+*/}
 
 <img src={proc_frontpanel} alt="Proc front panel" />
 
