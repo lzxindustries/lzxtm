@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "SCROLLS: Dual Motion Controlled Ramp Generator"
 ---
 
@@ -26,10 +26,10 @@ import scrolls_line_art_labeled from '/img/modules/scrolls/scrolls-diagrams/plac
 
 # SCROLLS
 <span class="head2_nolink">Dual Motion Controlled Ramp Generator</span>
-
+<!-- 
 :::warning
 This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-:::
+::: -->
 
 <img src={scrolls_frontpanel} alt="Scrolls front panel" />
 
