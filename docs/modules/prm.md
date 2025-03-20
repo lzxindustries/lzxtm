@@ -6,8 +6,14 @@ title: "PRM: Programmable Rectifier & Multiplier"
 import prm_front_panel from '/img/modules/prm/prm-diagrams/prm_front-panel.png';
 import prm_all_front_panels from '/img/modules/prm/prm-diagrams/prm_all-front-panels.png';
 import prm_controls_connectors_indicators from '/img/modules/prm/prm-diagrams/prm_controls-connectors-indicators.png';
-import prm_frequency_double from '/img/modules/prm/prm-diagrams/prm_frequency-double.png';
 import prm_mounting_power_sync from '/img/modules/prm/prm-diagrams/prm_mounting-power-sync.png';
+import prm_exponential_amplifier from '/img/modules/prm/prm-diagrams/prm_exponential-amplifier.png';
+import prm_four_quadrant_multiplier from '/img/modules/prm/prm-diagrams/prm_four-quadrant-multiplier.png';
+import prm_two_quadrant_multiplier from '/img/modules/prm/prm-diagrams/prm_two-quadrant-multiplier.png';
+import prm_one_quadrant_multiplier from '/img/modules/prm/prm-diagrams/prm_one-quadrant-multiplier.png';
+import prm_half_wave_rectifier from '/img/modules/prm/prm-diagrams/prm_half-wave-rectifier.png';
+import prm_full_wave_rectifier from '/img/modules/prm/prm-diagrams/prm_full-wave-rectifier.png';
+import prm_half_wave_inverter from '/img/modules/prm/prm-diagrams/prm_half-wave-inverter.png';
 
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
@@ -21,7 +27,7 @@ import prm_mounting_power_sync from '/img/modules/prm/prm-diagrams/prm_mounting-
 | Parameter         | Value                                                                           |
 | ----------------- | ------------------------------------------------------------------------------- |
 | Mounting Width    | 4 HP                                                                            |
-| Power Consumption | 12V @ TBD                                                                     |
+| Power Consumption | 12V @ 75mA                                                                      |
 | Power Connectors  | 10 pin EuroRack ribbon, 2.1mm DC barrel                                         |
 | Video Sync        | None                                                                            |
 | Included          | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
@@ -31,6 +37,7 @@ import prm_mounting_power_sync from '/img/modules/prm/prm-diagrams/prm_mounting-
 PRM ships with a black front panel installed. Red, green and blue panels are also included. All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow.
 
 <img src={prm_all_front_panels} alt="prm_all_front_panels" />
+
 <!-- 
 ## System Integration Advice -->
 
@@ -41,11 +48,10 @@ PRM ships with a black front panel installed. Red, green and blue panels are als
 
 ## Controls, Connectors & Indicators
 
+The PRM design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
+
 <img src={prm_controls_connectors_indicators} alt="prm_controls_connectors_indicators" />
 
-<!-- The PGO design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
-
-<img src={ControlsConnectorsIndicators} alt="Controls Connectors And Indicators" /> -->
 <!-- 
 ## Operation -->
 
@@ -72,118 +78,36 @@ In PGO's implementation, the positive input and negative input of the difference
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or back to one of the inputs on PGO.
 
 <img src={ProgrammingOffset} alt="Programming Offset"/> -->
-<!-- 
-## Example Patches -->
 
-<!-- <img src={prm_frequency_double} alt="prm_frequency_double" /> -->
-<!-- 
-### 4 Quadrant Multiplier
-
-### 2 Quadrant Multiplier
-
-### 1 Quadrant Multiplier
-
-### Absolute Value / Full Wave Rectifier
+## Example Patches
 
 ### Half Wave Rectifier
 
-### Sine Wave Shaper
+<img src={prm_half_wave_rectifier} alt="prm_half_wave_rectifier" />
 
-### Square / Exponential Wave Shaper
+### Half Wave Inverter
 
-### Sine Frequency Doubler
+<img src={prm_half_wave_inverter} alt="prm_half_wave_inverter" />
 
-### Saw to Triangle / Triangle Frequency Doubler -->
+### Full Wave Rectifier
 
-<!-- 
-### Buffer
+<img src={prm_full_wave_rectifier} alt="prm_full_wave_rectifier" />
 
-Buffer the input signal with a unity gain of 1.0. Due to the module's propagation delay, it can be used to add slight delays in the video processing path, resulting in the picture shifting slightly to the right.
+### Four Quadrant Multiplier
 
-<img src={PatchBuffer} alt="Buffer"/>
+<img src={prm_four_quadrant_multiplier} alt="prm_four_quadrant_multiplier" />
 
-### Amplifier
+### Two Quadrant Multiplier
 
-Amplify the input signal with a gain of 2.
+<img src={prm_two_quadrant_multiplier} alt="prm_two_quadrant_multiplier" />
 
-<img src={PatchAmplifier} alt="Amplifier"/>
+### One Quadrant Multiplier
 
-### Attenuator
+<img src={prm_one_quadrant_multiplier} alt="prm_one_quadrant_multiplier" />
 
-Attenuate the input signal with a gain of 0.5.
+### Exponential Amplifier
 
-<img src={PatchAttenuator} alt="Attenuator"/>
-
-### Inverter
-
-Invert the arithmetic sign of the input signal. Positive voltages are converted to negative voltages, or vice versa.
-
-<img src={PatchInverter} alt="Inverter"/>
-### Negative
-
-Convert a unipolar signal to negative by subtracting it from 1V. Useful for inverting keys, logic and RGB channels. An input signal ranging from zero to one results in an inverted output ranging from one to zero.
-
-<img src={PatchNegative} alt="Negative"/>
-
-### Subtractor
-
-Subtract one input from another.
-
-<img src={PatchSubtractor} alt="Subtractor"/>
-
-### Adder
-
-Calculate the sum of two input signals.
-
-<img src={PatchAdder} alt="Adder" style={{}} />
-
-### Average
-
-Calculate the average of two input signals.
-
-<img src={PatchAverage} alt="Average" style={{}} />
-
-### Unipolar Modulator
-
-Subtract a modulator from a primary signal, where both are unipolar 0-1V. The primary signal *source a* passes unmodified when the modulating signal *source b* is at its midpoint of 0.5V. As a ramp shifter, *source a* is the input ramp, and *source b* is the positioning control voltage. As a brightness processor, *source a* is a unipolar color channel such as luma, red, green, or blue, and *source b* is the brightness adjustment.
-
-<img src={PatchUnipolarModulator} alt="Unipolar Modulator"/>
-
-### Weighted Mixer
-
-Calculate a 3:1 weighted sum of two inputs, with 3 parts of *source a* for every 1 part of *source b*.
-
-<img src={PatchWeightedMixer} alt="Weighted Mixer"/>
-
-### Compressed Mixer
-
-Calculate the sum of four input signals and attenuate the mix to a value of one half. This is a common scenario to prevent clipping when mixing more than two input signals.
-
-<img src={PatchCompressedMixer} alt="Compressed Mixer"/>
-
-### Bipolar to Unipolar
-
-Convert a +/-1V bipolar signal to the 0-1V unipolar range.
-
-<img src={PatchBipolarToUnipolar} alt="Bipolar To Unipolar"/>
-
-### Unipolar to Bipolar
-
-Convert a 0-1V unipolar signal to the +/-1V bipolar range.
-
-<img src={PatchUnipolarToBipolar} alt="Unipolar To Bipolar"/>
-
-### Differential to Single Ended
-
-Convert a differential input signal to a single-ended output signal. In a differential signal, information is encoded as the difference between a matched pair of separate signals. For example, balanced audio rejects noise on cable runs by sending both a positive and a phase-inverted negative signal on two conductors. Video chroma can be encoded as the difference between two color primaries, such as Pb and Pr, or I and Q. 
-
-<img src={PatchDifferentialToSingleEnded} alt="Differential To Single Ended"/>
-
-### Single Ended to Differential
-
-Convert a single-ended input signal to a differential output signal. One possible application of differential outputs on PGO would be positive and negative versions of the same signal, such as luminance keys. Both signals will have the same amount of propagation delay, allowing precise horizontal alignment of positive and negative masks.
-
-<img src={PatchSingleEndedToDifferential} alt="Single Ended To Differential"/> -->
+<img src={prm_exponential_amplifier} alt="prm_exponential_amplifier" />
 
 ## Installation
 
@@ -241,6 +165,7 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
 | Video Sync                   | None                                                                            | -->
+
 <!-- 
 ## Calibration -->
 
@@ -276,16 +201,13 @@ Initial production version. February 2025.
 
 [Download PRM-REVD Interactive Bill of Materials (ZIP)](/zip/modules/prm/PRM-REVD_Interactive_Bill_of_Materials.zip)
 
-<!-- 
-## DIY  -->
-<!-- 
-PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+## DIY 
 
-<img src={PCBFrontSMTOnly} alt="PCB Front SMT Only" style={{height: 400}} /> <img src={PCBRearSMTOnly} alt="PCB Rear SMT Only" style={{height: 400}} /> <img src={PCBFront} alt="PCB Front" style={{height: 400}} /> <img src={PCBRear} alt="PCB Rear" style={{height: 400}} />
+PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
 
 In the Hardware Revisions section at the end of this document, you will find downloads for the complete schematic and an interactive HTML BOM.
 
-### Bill of Materials
+<!-- ### Bill of Materials
 
 In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
 
@@ -294,7 +216,7 @@ In addition to the PCBs and components included with your DIY kit from LZX, you 
 | Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 11       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11 |
 |                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                          |
 | Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                          |
-| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                           |
+| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                           | -->
 
 ### Assembly Instructions
 
@@ -302,7 +224,8 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 
 1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 1. Mount and solder front facing jacks next.
-2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
+2. Attach the frontpanel and secure it with mounting nuts for the jacks.
+   
 <!-- 
 ## Functional Testing -->
 <!-- 
@@ -336,37 +259,3 @@ The following tests are designed to verify the module is functioning as expected
 - Verify that Difference Amplifier Out- is within +/-2% of +2V.
 
 This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters. -->
-
-<!-- 
-## Performance Testing
-
-The following tests are designed for verification of hardware revisions and general troubleshooting of performance issues. While intended for use by the LZX Industries design team, we publish the tests here to satisfy the curiosities of advanced users and service technicians.
-
-### Requirements
-
-- Oscilloscope.
-- Waveform generator.
-- 2x BNC to 3.5mm patch cables.
-- Multimeter with probes.
-- Power supply capable of providing 12V DC @ 100mA.
-
-### Setup
-
-- Configure your power supply to provide 12 volts to a 2.1mm DC barrel connector.
-- Set power supply over current protection to 100mA.
-- Connect power to the device.
-
-#### Test +3.3V rail accuracy
-
-- Use your multimeter to measure the voltage present at pin 3 of the U3 DC-DC converter module.
-- Verify that the measurement is within the range of 3.0V to 3.6V. -->
-
-<!-- ## Theory Of Operation
-
-### Block Diagram
-
-### Power Supply
-
-### Voltage Reference
-
-### Difference Amplifier -->
