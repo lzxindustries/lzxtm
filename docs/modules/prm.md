@@ -133,13 +133,13 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
-<!-- 
-## Full Specifications -->
-<!-- 
+
+### Full Specifications 
+
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
-| Manufacturer Part Number     | 950065                                                                          |
-| Pronunciation                | [piː ɡəʊ](/mp3/modules/pgo/pgo-pronunciation.mp3)                               |
+| Manufacturer Part Number     | 950066                                                                          |
+| Pronunciation                | piː-rɒm                                                                         |
 | Mounting Width               | 4 HP                                                                            |
 | Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 2                                                                               |
@@ -150,7 +150,7 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
-| Propagation Delay            | TODO                                                                            |
+| Propagation Delay            | 32ns                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | 20.32 mm                                                                        |
 | Module Height                | 128.5 mm                                                                        |
@@ -164,7 +164,7 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 | EuroRack Power Cable Length  | 25 cm                                                                           |
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | None                                                                            | -->
+| Video Sync                   | None                                                                            | 
 
 <!-- 
 ## Calibration -->
@@ -203,20 +203,20 @@ Initial production version. February 2025.
 
 ## DIY 
 
-PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+PRM is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
 
-In the Hardware Revisions section at the end of this document, you will find downloads for the complete schematic and an interactive HTML BOM.
+In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
 
-<!-- ### Bill of Materials
+### Bill of Materials
 
 In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
 
 | Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                        |
 | ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | -------------------------------------------- |
-| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 11       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11 |
-|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                          |
-| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                          |
-| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                           | -->
+| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 9        | J4, J5, J6, J7, J8, J9, J10, J11, J12        |
+|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J2                                           |
+| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J3                                           |
+| Recom Technologies                  | R-78K5.0-0.5             | DC/DC Converter Submodule 5.0V           | 1        | U5                                           | 
 
 ### Assembly Instructions
 
