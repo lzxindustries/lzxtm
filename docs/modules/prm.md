@@ -83,29 +83,43 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 
 ### Half Wave Rectifier
 
+<!-- Describe function -->
+
 <img src={prm_half_wave_rectifier} alt="prm_half_wave_rectifier" />
 
 ### Half Wave Inverter
+
+<!-- Describe function -->
 
 <img src={prm_half_wave_inverter} alt="prm_half_wave_inverter" />
 
 ### Full Wave Rectifier
 
+<!-- Describe function -->
+
 <img src={prm_full_wave_rectifier} alt="prm_full_wave_rectifier" />
 
 ### Four Quadrant Multiplier
+
+<!-- Describe function -->
 
 <img src={prm_four_quadrant_multiplier} alt="prm_four_quadrant_multiplier" />
 
 ### Two Quadrant Multiplier
 
+<!-- Describe function -->
+
 <img src={prm_two_quadrant_multiplier} alt="prm_two_quadrant_multiplier" />
 
 ### One Quadrant Multiplier
 
+<!-- Describe function -->
+
 <img src={prm_one_quadrant_multiplier} alt="prm_one_quadrant_multiplier" />
 
 ### Exponential Amplifier
+
+<!-- Describe function -->
 
 <img src={prm_exponential_amplifier} alt="prm_exponential_amplifier" />
 
