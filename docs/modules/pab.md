@@ -12,12 +12,6 @@ import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagra
 # PAB
 <span class="head2_nolink">Programmable Active Buffers</span>
 
-:::warning
-
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
-:::
-
 ## Overview
 
 <img src={pab_front_panel} alt="pab_front_panel" />
@@ -27,7 +21,7 @@ This page is under construction and in a draft state. Stay tuned to our newslett
 | Parameter         | Value                                                                           |
 | ----------------- | ------------------------------------------------------------------------------- |
 | Mounting Width    | 4 HP                                                                            |
-| Power Consumption | 12V @ TBD                                                                     |
+| Power Consumption | 12V @ 50mA                                                                      |
 | Power Connectors  | 10 pin EuroRack ribbon, 2.1mm DC barrel                                         |
 | Video Sync        | None                                                                            |
 | Included          | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
@@ -47,7 +41,7 @@ PAB ships with a black front panel installed. Red, green and blue panels are als
 
 ## Controls, Connectors & Indicators
 
-<!-- The PGO design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
+<!-- The PAB design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
 
 <img src={ControlsConnectorsIndicators} alt="Controls Connectors And Indicators" /> -->
 
@@ -58,139 +52,6 @@ PAB ships with a black front panel installed. Red, green and blue panels are als
 ### Understanding Cascading Input Jacks​
 
 <img src={pab_understanding_cascading_input_jacks} alt="pab_understanding_cascading_input_jacks" />
-
-<!-- PGO sits at a lower level of abstraction than more complex modules like video shape generators and video keyers. The synthesist is granted full access to the signal path, and the freedom to program a function in discrete steps.
-
-PGO is a *patch-programmable* operator. Its overall function is determined by patch connections rather than switch positions or variable voltages. Connections to specific input and output jacks define operations at different mixing ratios and amounts of gain.
-
-
-PGO uses switched, or normalled, connections between some of its input jacks. With no cable inserted, a signal flows from one input jack to another input jack. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
-
-<img src={NormalledConnections} alt="Normalled Connections"/>
-
-### Difference Amplifier​
-
-A difference amplifier subtracts one voltage from another. It is similar to a differential amplifier, but is specifically optimized to subtract one voltage from another with accuracy.  PGO's amplifier is fully differential, meaning that it has both positive and negative outputs.  
-
-In PGO's implementation, the positive input and negative input of the difference amplifier are each preceded by a four input summing amplifier stage. This configuration allows the user to both add multiple input signals and subtract multiple input signals. Due to the cascaded input switches, the gain of each side of the difference amplifier may be programmed by which jacks are patched and which jacks are left open.
-
-<img src={ProgrammingGain} alt="Programming Gain"/>
-
-### Voltage Reference​
-
-PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or back to one of the inputs on PGO.
-
-<img src={ProgrammingOffset} alt="Programming Offset"/> -->
-<!-- 
-## Example Patches -->
-
-<!-- ### 4 Quadrant Multiplier
-
-### 2 Quadrant Multiplier
-
-### 1 Quadrant Multiplier
-
-### Absolute Value / Full Wave Rectifier
-
-### Half Wave Rectifier
-
-### Sine Wave Shaper
-
-### Square / Exponential Wave Shaper
-
-### Sine Frequency Doubler
-
-### Saw to Triangle / Triangle Frequency Doubler -->
-
-<!-- 
-### Buffer
-
-Buffer the input signal with a unity gain of 1.0. Due to the module's propagation delay, it can be used to add slight delays in the video processing path, resulting in the picture shifting slightly to the right.
-
-<img src={PatchBuffer} alt="Buffer"/>
-
-### Amplifier
-
-Amplify the input signal with a gain of 2.
-
-<img src={PatchAmplifier} alt="Amplifier"/>
-
-### Attenuator
-
-Attenuate the input signal with a gain of 0.5.
-
-<img src={PatchAttenuator} alt="Attenuator"/>
-
-### Inverter
-
-Invert the arithmetic sign of the input signal. Positive voltages are converted to negative voltages, or vice versa.
-
-<img src={PatchInverter} alt="Inverter"/>
-### Negative
-
-Convert a unipolar signal to negative by subtracting it from 1V. Useful for inverting keys, logic and RGB channels. An input signal ranging from zero to one results in an inverted output ranging from one to zero.
-
-<img src={PatchNegative} alt="Negative"/>
-
-### Subtractor
-
-Subtract one input from another.
-
-<img src={PatchSubtractor} alt="Subtractor"/>
-
-### Adder
-
-Calculate the sum of two input signals.
-
-<img src={PatchAdder} alt="Adder" style={{}} />
-
-### Average
-
-Calculate the average of two input signals.
-
-<img src={PatchAverage} alt="Average" style={{}} />
-
-### Unipolar Modulator
-
-Subtract a modulator from a primary signal, where both are unipolar 0-1V. The primary signal *source a* passes unmodified when the modulating signal *source b* is at its midpoint of 0.5V. As a ramp shifter, *source a* is the input ramp, and *source b* is the positioning control voltage. As a brightness processor, *source a* is a unipolar color channel such as luma, red, green, or blue, and *source b* is the brightness adjustment.
-
-<img src={PatchUnipolarModulator} alt="Unipolar Modulator"/>
-
-### Weighted Mixer
-
-Calculate a 3:1 weighted sum of two inputs, with 3 parts of *source a* for every 1 part of *source b*.
-
-<img src={PatchWeightedMixer} alt="Weighted Mixer"/>
-
-### Compressed Mixer
-
-Calculate the sum of four input signals and attenuate the mix to a value of one half. This is a common scenario to prevent clipping when mixing more than two input signals.
-
-<img src={PatchCompressedMixer} alt="Compressed Mixer"/>
-
-### Bipolar to Unipolar
-
-Convert a +/-1V bipolar signal to the 0-1V unipolar range.
-
-<img src={PatchBipolarToUnipolar} alt="Bipolar To Unipolar"/>
-
-### Unipolar to Bipolar
-
-Convert a 0-1V unipolar signal to the +/-1V bipolar range.
-
-<img src={PatchUnipolarToBipolar} alt="Unipolar To Bipolar"/>
-
-### Differential to Single Ended
-
-Convert a differential input signal to a single-ended output signal. In a differential signal, information is encoded as the difference between a matched pair of separate signals. For example, balanced audio rejects noise on cable runs by sending both a positive and a phase-inverted negative signal on two conductors. Video chroma can be encoded as the difference between two color primaries, such as Pb and Pr, or I and Q. 
-
-<img src={PatchDifferentialToSingleEnded} alt="Differential To Single Ended"/>
-
-### Single Ended to Differential
-
-Convert a single-ended input signal to a differential output signal. One possible application of differential outputs on PGO would be positive and negative versions of the same signal, such as luminance keys. Both signals will have the same amount of propagation delay, allowing precise horizontal alignment of positive and negative masks.
-
-<img src={PatchSingleEndedToDifferential} alt="Single Ended To Differential"/> -->
 
 ## Installation
 
@@ -216,13 +77,13 @@ Convert a single-ended input signal to a differential output signal. One possibl
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
-<!-- 
-## Full Specifications -->
-<!-- 
+
+## Full Specifications 
+
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950065                                                                          |
-| Pronunciation                | [piː ɡəʊ](/mp3/modules/pgo/pgo-pronunciation.mp3)                               |
+| Pronunciation                | pab                                                                             |
 | Mounting Width               | 4 HP                                                                            |
 | Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 2                                                                               |
@@ -233,7 +94,7 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
-| Propagation Delay            | TODO                                                                            |
+| Propagation Delay            | 16ns                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | 20.32 mm                                                                        |
 | Module Height                | 128.5 mm                                                                        |
@@ -247,8 +108,8 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | EuroRack Power Cable Length  | 25 cm                                                                           |
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | None                                                                            | -->
-<!-- 
+| Video Sync                   | None                                                                            |
+
 ## Calibration -->
 
 <!-- Calibration is not required for this module. -->
@@ -275,6 +136,31 @@ Initial production version. February 2025.
 
 [Download PAB-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pab/PAB-REVB_Interactive_Bill_of_Materials.zip)
 
+## DIY 
+
+PAB is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+
+In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+
+### Bill of Materials
+
+In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+
+| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                                   |
+| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | ------------------------------------------------------- |
+| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 13       | J1, J2, J3, J4, J5, J6, J8, J9, J14, J15, J16, J17, J18 |
+|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                                     |
+| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                                     |
+| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                                      | 
+
+### Assembly Instructions
+
+This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
+
+1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
+1. Mount and solder front facing jacks next.
+2. Attach the frontpanel and secure it with mounting nuts for the jacks.
+   
 <!-- 
 ## DIY  -->
 <!-- 

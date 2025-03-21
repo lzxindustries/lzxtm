@@ -12,12 +12,6 @@ import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagra
 # LNK
 <span class="head2_nolink">Passive Links</span>
 
-:::warning
-
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
-:::
-
 ## Overview
 
 <img src={lnk_front_panel} alt="lnk_front_panel" /> 
@@ -263,6 +257,26 @@ Initial production version. February 2025.
 
 [Download LNK-REVA Interactive Bill of Materials (ZIP)](/zip/modules/lnk/LNK-REVA_Interactive_Bill_of_Materials.zip)
 
+## DIY 
+
+LNK is available as a DIY kit that includes the main PCB and the front panel.  The user must source the through-hole components such as jacks and potentiometers.
+
+In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+
+### Bill of Materials
+
+In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+
+| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                                                 |
+| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | --------------------------------------------------------------------- |
+| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 16       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11, J12, J13, J14, J15, J16 |
+
+### Assembly Instructions
+
+This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
+
+1. Mount and solder front facing jacks.
+2. Attach the frontpanel and secure it with mounting nuts for the jacks.
 
 <!-- ### PGO-REVA
 

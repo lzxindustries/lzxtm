@@ -157,7 +157,7 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 | Mounting Width               | 4 HP                                                                            |
 | Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 2                                                                               |
-| Power Consumption            | 12V @ 50 mA                                                                     |
+| Power Consumption            | 12V @ 75 mA                                                                     |
 | Power Connectors             | 10 pin EuroRack ribbon, 2.1mm DC barrel                                         |
 | Input Impedance              | 1M ohms                                                                         |
 | Output Impedance             | 75 ohms                                                                         |

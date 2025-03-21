@@ -12,12 +12,6 @@ import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagra
 # MLT
 <span class="head2_nolink">Passive Multiples</span>
 
-:::warning
-
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
-:::
-
 ## Overview
 
 <img src={mlt_frontpanel} alt="mlt_frontpanel" />
@@ -262,6 +256,27 @@ Initial production version. February 2025.
 [Download MLT-REVA Schematic Diagram (PDF)](/pdf/modules/mlt/MLT-REVA_Schematic_Diagram.pdf)
 
 [Download MLT-REVA Interactive Bill of Materials (ZIP)](/zip/modules/mlt/MLT-REVA_Interactive_Bill_of_Materials.zip)
+
+## DIY 
+
+MLT is available as a DIY kit that includes the main PCB and the front panel.  The user must source the through-hole components such as jacks and potentiometers.
+
+In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+
+### Bill of Materials
+
+In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+
+| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                                                                                                                                 |
+| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 32       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11, J12, J13, J14, J15, J16, J17, J18, J19, J20, J21, J22, J23, J24, J25, J26, J27, J28, J29, J30, J31, J32 |
+
+### Assembly Instructions
+
+This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
+
+1. Mount and solder front facing jacks.
+2. Attach the frontpanel and secure it with mounting nuts for the jacks.
 
 
 <!-- 

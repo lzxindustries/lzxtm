@@ -12,12 +12,6 @@ import pot_mounting_power_sync from '/img/modules/pot/pot-diagrams/pot_mounting-
 # P
 <span class="head2_nolink">Passive Potentiometer</span>
 
-:::warning
-
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
-:::
-
 ## Overview
 
 <img src={pot_front_panel} alt="pot_front_panel" />
@@ -258,112 +252,25 @@ Initial production version. February 2025.
 
 [Download POT-REVA Interactive Bill of Materials (ZIP)](/zip/modules/pot/POT-REVA_Interactive_Bill_of_Materials.zip)
 
+## DIY 
 
-<!-- ### PGO-REVA
+P is available as a DIY kit that includes the main PCB and the front panel.  The user must source the through-hole components such as jacks and potentiometers.
 
-Initial prototype. September 2024.
-
-### PGO-REVB
-
-Initial production version. October 2024.
-
-Serial numbers 950065-0001 thru 950065-0100.
-
-[Download PGO-REVB Schematic Diagram (PDF)](/pdf/modules/pgo/PGO-REVB_Schematic_Diagram.pdf)
-
-[Download PGO-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pgo/PGO-REVB_Interactive_Bill_of_Materials.zip)
- -->
-<!-- 
-## DIY  -->
-<!-- 
-PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
-
-<img src={PCBFrontSMTOnly} alt="PCB Front SMT Only" style={{height: 400}} /> <img src={PCBRearSMTOnly} alt="PCB Rear SMT Only" style={{height: 400}} /> <img src={PCBFront} alt="PCB Front" style={{height: 400}} /> <img src={PCBRear} alt="PCB Rear" style={{height: 400}} />
-
-In the Hardware Revisions section at the end of this document, you will find downloads for the complete schematic and an interactive HTML BOM.
+In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
 
 ### Bill of Materials
 
 In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
 
-| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                        |
-| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | -------------------------------------------- |
-| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 11       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11 |
-|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                          |
-| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                          |
-| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                           |
+| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity  | Reference Designators     |
+| ----------------------------------- | ------------------------ | ---------------------------------------- | --------- | ------------------------- |
+| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 3         | J1, J2, J3                |
+| Alps Alpine                         | RS45111A6A08             | 45mm Slide Potentiometer                 | 1         | P1                        |
 
 ### Assembly Instructions
 
 This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
 
-1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
-1. Mount and solder front facing jacks next.
-2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
-<!-- 
-## Functional Testing -->
-<!-- 
-The following tests are designed to verify the module is functioning as expected after assembly. If you are concerned your module is not operating properly, these tests may be used for self verification before a repair is initiated.  It is also best practice to perform a functional test when selling or purchasing a module on the secondhand market.
+1. Mount and solder front facing jacks and slide potentiometer.
+2. Attach the frontpanel and secure it with mounting nuts for the jacks.
 
-### Requirements
-
-- A voltmeter, multimeter or oscilloscope
-- 12V power supply or EuroRack power supply
-- Patch cables
-
-### Setup
-
-- Connect the module to power and turn on your case
-- Prepare to probe the disconnected end of a patch cable -- in these tests, the positive probe should make contact with the tip of the plug, and the negative probe or grounding clip should make contact with the sleeve of the plug
-
-### T1. Test voltage reference
-
-- Verify that the Voltage Reference Out is within +/-2% of 1.00V.
-
-### T2. Test difference amplifier positive inputs
-
-- Connect a cable from the voltage reference output to Difference Amplifier In1+
-- Verify that Difference Amplifier Out+ is within +/-2% of +2V.
-- Verify that Difference Amplifier Out- is within +/-2% of -2V.
-
-### T3. Test difference amplifier negative inputs
-
-- Connect a cable from the voltage reference output to Difference Amplifier In1-
-- Verify that Difference Amplifier Out+ is within +/-2% of -2V.
-- Verify that Difference Amplifier Out- is within +/-2% of +2V.
-
-This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters. -->
-
-<!-- 
-## Performance Testing
-
-The following tests are designed for verification of hardware revisions and general troubleshooting of performance issues. While intended for use by the LZX Industries design team, we publish the tests here to satisfy the curiosities of advanced users and service technicians.
-
-### Requirements
-
-- Oscilloscope.
-- Waveform generator.
-- 2x BNC to 3.5mm patch cables.
-- Multimeter with probes.
-- Power supply capable of providing 12V DC @ 100mA.
-
-### Setup
-
-- Configure your power supply to provide 12 volts to a 2.1mm DC barrel connector.
-- Set power supply over current protection to 100mA.
-- Connect power to the device.
-
-#### Test +3.3V rail accuracy
-
-- Use your multimeter to measure the voltage present at pin 3 of the U3 DC-DC converter module.
-- Verify that the measurement is within the range of 3.0V to 3.6V. -->
-
-<!-- ## Theory Of Operation
-
-### Block Diagram
-
-### Power Supply
-
-### Voltage Reference
-
-### Difference Amplifier -->
