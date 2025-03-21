@@ -19,6 +19,9 @@ import prm_parabolic_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_p
 import prm_linear_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_linear-frequency-doubler.png';
 import prm_2d_rotator from '/img/modules/prm/prm-diagrams/prm_2d-rotator.png';
 import prm_divider from '/img/modules/prm/prm-diagrams/prm_divider.png';
+import prm_minimum_value from '/img/modules/prm/prm-diagrams/prm_minimum-value.png';
+import prm_maximum_value from '/img/modules/prm/prm-diagrams/prm_maximum-value.png';
+import prm_analog_logic_xor from '/img/modules/prm/prm-diagrams/prm_analog-logic-xor.png';
 
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
@@ -157,6 +160,24 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 <!-- Describe function -->
 
 <img src={prm_divider} alt="prm_divider" />
+
+### Minimum Value / Analog Logic AND
+
+<!-- Describe function -->
+
+<img src={prm_minimum_value} alt="prm_minimum_value" />
+
+### Maximum Value / Analog Logic OR
+
+<!-- Describe function -->
+
+<img src={prm_maximum_value} alt="prm_maximum_value" />
+
+### Analog Logic XOR
+
+<!-- Describe function -->
+
+<img src={prm_analog_logic_xor} alt="prm_analog_logic_xor" />
 
 ## Installation
 
