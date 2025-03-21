@@ -18,6 +18,7 @@ import prm_sine_shaper from '/img/modules/prm/prm-diagrams/prm_sine-shaper.png';
 import prm_parabolic_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_parabolic-frequency-doubler.png';
 import prm_linear_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_linear-frequency-doubler.png';
 import prm_2d_rotator from '/img/modules/prm/prm-diagrams/prm_2d-rotator.png';
+import prm_divider from '/img/modules/prm/prm-diagrams/prm_divider.png';
 
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
@@ -150,6 +151,12 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 <!-- Describe function -->
 
 <img src={prm_2d_rotator} alt="prm_2d_rotator" />
+
+### Divider
+
+<!-- Describe function -->
+
+<img src={prm_divider} alt="prm_divider" />
 
 ## Installation
 
