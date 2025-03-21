@@ -22,6 +22,7 @@ import prm_divider from '/img/modules/prm/prm-diagrams/prm_divider.png';
 import prm_minimum_value from '/img/modules/prm/prm-diagrams/prm_minimum-value.png';
 import prm_maximum_value from '/img/modules/prm/prm-diagrams/prm_maximum-value.png';
 import prm_analog_logic_xor from '/img/modules/prm/prm-diagrams/prm_analog-logic-xor.png';
+import prm_voltage_limiter from '/img/modules/prm/prm-diagrams/prm_voltage-limiter.png';
 
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
@@ -178,6 +179,12 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 <!-- Describe function -->
 
 <img src={prm_analog_logic_xor} alt="prm_analog_logic_xor" />
+
+### Voltage Limiter
+
+<!-- Describe function -->
+
+<img src={prm_voltage_limiter} alt="prm_voltage_limiter" />
 
 ## Installation
 
