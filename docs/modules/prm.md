@@ -14,6 +14,9 @@ import prm_one_quadrant_multiplier from '/img/modules/prm/prm-diagrams/prm_one-q
 import prm_half_wave_rectifier from '/img/modules/prm/prm-diagrams/prm_half-wave-rectifier.png';
 import prm_full_wave_rectifier from '/img/modules/prm/prm-diagrams/prm_full-wave-rectifier.png';
 import prm_half_wave_inverter from '/img/modules/prm/prm-diagrams/prm_half-wave-inverter.png';
+import prm_sine_shaper from '/img/modules/prm/prm-diagrams/prm_sine-shaper.png';
+import prm_parabolic_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_parabolic-frequency-doubler.png';
+import prm_linear_frequency_doubler from '/img/modules/prm/prm-diagrams/prm_linear-frequency-doubler.png';
 
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
@@ -122,6 +125,24 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 <!-- Describe function -->
 
 <img src={prm_exponential_amplifier} alt="prm_exponential_amplifier" />
+
+### Sine Shaper
+
+<!-- Describe function -->
+
+<img src={prm_sine_shaper} alt="prm_sine_shaper" />
+
+### Parabolic Frequency Doubler
+
+<!-- Describe function -->
+
+<img src={prm_parabolic_frequency_doubler} alt="prm_parabolic_frequency_doubler" />
+
+### Linear Frequency Doubler / Ramp to Triangle Converter
+
+<!-- Describe function -->
+
+<img src={prm_linear_frequency_doubler} alt="prm_linear_frequency_doubler" />
 
 ## Installation
 
