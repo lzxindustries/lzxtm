@@ -12,13 +12,19 @@ import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagra
 # PAB
 <span class="head2_nolink">Programmable Active Buffers</span>
 
+<img src={pab_front_panel} alt="pab_front_panel" />
+
 ## Overview
 
-<img src={pab_front_panel} alt="pab_front_panel" />
+PAB is a utility for distributing and delaying signals. Duplicate a clean copy of a signal, or delay it in increments of 16 nanoseconds.
+
+With delay times in the range of tens of nanoseconds, the result is an image shifted slightly to the right. Different modules delay signals by different amounts. In complex patches, this can be a problem. When signals are combined, they may be out of horizontal registration. PAB addresses this by inserting strategic delays to make everything line up.
+
+---
 
 ## Key Specifications
 
-| Parameter         | Value                                                                           |
+|                   |                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------- |
 | Mounting Width    | 4 HP                                                                            |
 | Power Consumption | 12V @ 50mA                                                                      |
@@ -31,47 +37,57 @@ import pab_understanding_cascading_input_jacks from '/img/modules/pab/pab-diagra
 PAB ships with a black front panel installed. Red, green and blue panels are also included. All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow.
 
 <img src={pab_all_front_panels} alt="pab_all_front_panels" />
-<!-- 
-## System Integration Advice -->
 
-<!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
-- **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
-- **Building block** for patching complex video synthesis functions. As low level analog computing blocks, several PGOs can be patched together to design a wide range of processing functions, including replicating functions from other modules. However, this level of flexibility comes at the expense of greater system size and more complex patches. Using both lower level and higher level modules is a great strategy for getting the most out of a system.
-- **Consider multiple PGOs**. Analog computers provide several instances of summing and difference amplifiers. For example, a bidirectional converter or scaler requires two modules. A triple color space function requires three modules. More complex vector functions will require eight or more. -->
+---
+
+
+## System Integration Advice
+
+PAB is most helpful in larger systems with many modules, or if you're concerned about horizontal shift. Even relatively simple patches may have registration issues with color components or compositing layers. This is most evident in high definition formats. For example, in standard definition, FKG3 performs an ideal self-key, where the foreground is the key source. But in high definition, the FKG3 self-key is out of registration by a couple of pixels. PAB is the fix for that: send the source RGB channels through PAB before FKG3, and the source luminance directly to FKG3's external key input.
+
+---
 
 ## Controls, Connectors & Indicators
 
-<!-- The PAB design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
+<img src={pab_controls_connectors_indicators} alt="pab_controls_connectors_indicators"/>
 
-<img src={ControlsConnectorsIndicators} alt="Controls Connectors And Indicators" /> -->
+<!-- ## Operation 
 
-<img src={pab_controls_connectors_indicators} alt="pab_controls_connectors_indicators" />
+AFR note:
+I don't understand the topology. Do the outlined arrows indicate delay, and solid arrows indicate a buffer?
 
-## Operation
+---
+-->
 
 ### Understanding Cascading Input Jacks​
 
+PAB uses switched, or normalled, connections between its input jacks. With no cable inserted, a signal flows down from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
+
 <img src={pab_understanding_cascading_input_jacks} alt="pab_understanding_cascading_input_jacks" />
 
-## Installation
+<!--
+AFR note:
+The fact that these are not just normals, but buffers and delays, needs to be reiterated here
+-->
 
-<!-- Discuss differences between 10 and 16 pin connectors -->
-<!-- Something about making sure all screws have been removed from the intended mounting location. -->
+## Installation
 
 <img src={pab_mounting_power_sync} alt="pab_mounting_power_sync" />
 
 ### Requirements
 
-* EuroRack enclosure.
-* 12V DC or EuroRack power supply.
-* 2.1mm DC barrel power cable **or** a EuroRack power cable (both options included).
-* Two M2.5 x 6mm mounting screws, or screws provided or specified by the enclosure manufacturer.
-* #1 Phillips head screwdriver, or hand tool provided or specified by the enclosure manufacturer.
+* EuroRack enclosure
+* 12V DC or EuroRack power supply
+* 2.1 mm DC barrel power cable **or** EuroRack power cable (both options included)
+* Eurorack power for PAB requires a 16-pin to 10-pin ribbon cable
+* Two M2.5 x 6mm mounting screws, or screws provided or specified by the enclosure manufacturer
+* #1 Phillips head screwdriver, or hand tool provided or specified by the enclosure manufacturer
 
 ### Procedure
 
 * Power off and disconnect the EuroRack enclosure's power supply and any attached DC adapters.
-* Connect only one of, the EuroRack Power Cable or the DC Barrel Power Cable to the module. 
+* Connect either the EuroRack Power Cable **or** the DC Barrel Power Cable to the module. Do not connect both Eurorack and DC Barrel power.
+* Ensure that no mounting screws are in any holes in the area where you wish to mount the module.
 * Carefully test fit the module with its attached power cable in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Connect the disconnected end of the power cable to the power supply.
 * Mount the module to the EuroRack rails using all mounting holes.
@@ -80,43 +96,50 @@ PAB ships with a black front panel installed. Red, green and blue panels are als
 
 ## Full Specifications 
 
-| Parameter                    | Value                                                                           |
+|                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
-| Manufacturer Part Number     | 950065                                                                          |
 | Pronunciation                | pab                                                                             |
 | Mounting Width               | 4 HP                                                                            |
-| Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 2                                                                               |
 | Power Consumption            | 12V @ 50 mA                                                                     |
-| Power Connectors             | 10 pin EuroRack ribbon, 2.1mm DC barrel                                         |
+| Power Connectors             | 10-pin EuroRack ribbon, 2.1mm DC barrel                                         |
 | Input Impedance              | 1M ohms                                                                         |
 | Output Impedance             | 75 ohms                                                                         |
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
 | Propagation Delay            | 16ns                                                                            |
-| Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | 20.32 mm                                                                        |
 | Module Height                | 128.5 mm                                                                        |
-| Module Depth                 | TODO mm                                                                         |
 | Product Box Width            | 4 in / 101.6 mm                                                                 |
 | Product Box Height           | 2 in / 50.8 mm                                                                  |
 | Product Box Depth            | 6 in / 152.4 mm                                                                 |
-| Product Weight               | TODO                                                                            |
 | Included                     | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
 | EuroRack Power Cable Type    | 10-pin to 16-pin                                                                |
 | EuroRack Power Cable Length  | 25 cm                                                                           |
 | DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
+| RoHS Compliance              | Manufactured with lead-free processes                                           |
 | Video Sync                   | None                                                                            |
 
-## Calibration -->
+<!--| Manufacturer Part Number     |                                                                                 | -->
+<!--| Mounting Depth               | TODO mm                                                                         | -->
+<!--| Bandwidth @ -3dB             | TODO                                                                            | -->
+<!--| Module Depth                 | TODO mm                                                                         | -->
+<!--| Product Weight               | TODO                                                                            | -->
 
-<!-- Calibration is not required for this module. -->
+---
+
+<!--
+## Calibration
+
+Calibration is not required for this module.
+-->
 
 ## Maintenance
 
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+
+---
 
 <!-- ## Troubleshooting -->
 
@@ -124,13 +147,13 @@ Keep your module free of dust and debris by performing periodic cleaning. Spots 
 
 The hardware revision code is printed on the circuit board visible from the rear of the module.
 
-### PAB-REVA
+### PAB-RevA
 
-Initial prototype. January 2025.
+Initial prototype, January 2025
 
-### PAB-REVB
+### PAB-RevB
 
-Initial production version. February 2025.
+Initial production version, February 2025
 
 [Download PAB-REVB Schematic Diagram (PDF)](/pdf/modules/pab/PAB-REVB_Schematic_Diagram.pdf)
 
@@ -146,12 +169,12 @@ In the Hardware Revisions section, you will find downloads for the complete sche
 
 In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
 
-| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                                   |
-| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | ------------------------------------------------------- |
+| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators |
+| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | --------------------- |
 | Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 13       | J1, J2, J3, J4, J5, J6, J8, J9, J14, J15, J16, J17, J18 |
-|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                                     |
-| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                                     |
-| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                                      | 
+|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                   |
+| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                   |
+| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                    | 
 
 ### Assembly Instructions
 
@@ -159,38 +182,10 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 
 1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 1. Mount and solder front facing jacks next.
-2. Attach the frontpanel and secure it with mounting nuts for the jacks.
-   
-<!-- 
-## DIY  -->
-<!-- 
-PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+2. Attach the front panel and secure it with mounting nuts for the jacks.
 
-<img src={PCBFrontSMTOnly} alt="PCB Front SMT Only" style={{height: 400}} /> <img src={PCBRearSMTOnly} alt="PCB Rear SMT Only" style={{height: 400}} /> <img src={PCBFront} alt="PCB Front" style={{height: 400}} /> <img src={PCBRear} alt="PCB Rear" style={{height: 400}} />
+<!-- ## Functional Testing
 
-In the Hardware Revisions section at the end of this document, you will find downloads for the complete schematic and an interactive HTML BOM.
-
-### Bill of Materials
-
-In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
-
-| Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                        |
-| ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | -------------------------------------------- |
-| Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched                 | 11       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11 |
-|                                     |                          | Pin Header Pitch 0.1in 2X5 Male Shrouded | 1        | J12                                          |
-| Wurth Elektronik                    | 694106402002             | DC Jack Vertical 2.1mm Barrel            | 1        | J13                                          |
-| Recom Technologies                  | R-78K3.3-0.5             | DC/DC Converter Submodule 3.3V           | 1        | U6                                           |
-
-### Assembly Instructions
-
-This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
-
-1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
-1. Mount and solder front facing jacks next.
-2. Attach the frontpanel and secure it with mounting nuts for the jacks. -->
-<!-- 
-## Functional Testing -->
-<!-- 
 The following tests are designed to verify the module is functioning as expected after assembly. If you are concerned your module is not operating properly, these tests may be used for self verification before a repair is initiated.  It is also best practice to perform a functional test when selling or purchasing a module on the secondhand market.
 
 ### Requirements
@@ -220,9 +215,10 @@ The following tests are designed to verify the module is functioning as expected
 - Verify that Difference Amplifier Out+ is within +/-2% of -2V.
 - Verify that Difference Amplifier Out- is within +/-2% of +2V.
 
-This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters. -->
+This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters.
+-->
 
-<!-- 
+<!--
 ## Performance Testing
 
 The following tests are designed for verification of hardware revisions and general troubleshooting of performance issues. While intended for use by the LZX Industries design team, we publish the tests here to satisfy the curiosities of advanced users and service technicians.
@@ -244,9 +240,11 @@ The following tests are designed for verification of hardware revisions and gene
 #### Test +3.3V rail accuracy
 
 - Use your multimeter to measure the voltage present at pin 3 of the U3 DC-DC converter module.
-- Verify that the measurement is within the range of 3.0V to 3.6V. -->
+- Verify that the measurement is within the range of 3.0V to 3.6V.
+-->
 
-<!-- ## Theory Of Operation
+<!--
+## Theory Of Operation
 
 ### Block Diagram
 
@@ -254,4 +252,5 @@ The following tests are designed for verification of hardware revisions and gene
 
 ### Voltage Reference
 
-### Difference Amplifier -->
+### Difference Amplifier
+-->

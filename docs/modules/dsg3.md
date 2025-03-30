@@ -3,12 +3,12 @@ draft: false
 title: "DSG3: Dual Shape Generator"
 ---
 
+<!-- :::warning
+This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
+::: -->
+
 # DSG3
 <span class="head2_nolink">Dual Shape Generator</span>
-
-<!-- AFR note: I separated the page title CSS styling from metadata -->
-
-<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
 
 import dsg3_frontpanel from '/img/modules/dsg3/dsg3-diagrams/dsg3_frontpanel.png';
 import dsg3_absolute from '/img/modules/dsg3/dsg3-diagrams/dsg3_absolute.png';
@@ -26,10 +26,6 @@ import dsg3_normalled_connections from '/img/modules/dsg3/dsg3-diagrams/dsg3_nor
 import dsg3_self_patching from '/img/modules/dsg3/dsg3-diagrams/dsg3_self-patching.png';
 import dsg3_signal_path from '/img/modules/dsg3/dsg3-diagrams/dsg3_signal-path.png';
 import dsg3_line_art_labeled from '/img/modules/dsg3/dsg3-diagrams/placeholders/dsg3_line_art_labeled_placeholder_330x684.png';
-
-<!-- :::warning
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
 
 <img src={dsg3_frontpanel} alt="DSG3 front panel" />
 
@@ -64,13 +60,13 @@ As a standalone pattern generator, DSG3 can output two independent quadrilateral
 
 ## Key Specifications
 
-| Parameter         | Value                                                       |
+|                   |                                                             |
 | ----------------- | ----------------------------------------------------------- |
 | Mounting Width    | 12 HP                                                       |
 | Power Consumption | 12V @ 350 mA                                                |
 | Power Connectors  | 16 pin EuroRack ribbon, 2.1mm DC barrel                     |
-| Video Sync        | Rear RCA                                                    |
 | Included          | DC barrel power cable, EuroRack power cable, RCA sync cable |
+| Video Sync        | Rear RCA in & out                                           |
 
 ---
 
@@ -356,14 +352,11 @@ $$
 
 </td></tr></table>
 
----
-<!-- 
 ### Technical Data
 
-| Parameter                    | Value                                                       |
+|                              |                                                             |
 | ---------------------------- | ----------------------------------------------------------- |
 | Manufacturer Part Number     | 950055                                                      |
-| Pronunciation                |                                                             |
 | Mounting Width               | 12 HP                                                       |
 | Mounting Depth               | 42 mm                                                       |
 | Mounting Hole Count          | 4                                                           |
@@ -374,6 +367,15 @@ $$
 | Input Protection Range       | +/-20V                                                      |
 | Input Clipping Range         | +/-2.5V                                                     |
 | Output Range                 | +/-2.5V                                                     |
+| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable |
+| EuroRack Power Cable Type    | 16-pin                                                      |
+| EuroRack Power Cable Length  | 25 cm                                                       |
+| DC Barrel Power Cable Length | 25 cm                                                       |
+| RoHS Compliance              | Manufactured with lead-free processes.                      |
+| Video Sync                   | Rear RCA in & out                                           |
+
+<!-- 
+| Pronunciation                |                                                             |
 | Propagation Delay            | TODO                                                        |
 | Bandwidth @ -3dB             | TODO                                                        |
 | Module Width                 | TODO mm                                                     |
@@ -383,20 +385,17 @@ $$
 | Product Box Height           | TODO in / TODO mm                                           |
 | Product Box Depth            | TODO in / TODO mm                                           |
 | Product Weight               | TODO                                                        |
-| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable |
-| EuroRack Power Cable Type    | 16-pin                                                      |
-| EuroRack Power Cable Length  | 25 cm                                                       |
-| DC Barrel Power Cable Length | 25 cm                                                       |
-| RoHS Compliance              | Manufactured with lead-free processes.                      |
-| Video Sync                   | Rear RCA                                                    |
+-->
 
---- -->
+--- 
 
+<!--
 ## Calibration
 
 Calibration is not required for this module.
 
 ---
+-->
 
 ## Maintenance
 
