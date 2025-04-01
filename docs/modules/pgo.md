@@ -13,7 +13,7 @@ import AllFrontpanels from '/img/modules/pgo/pgo-diagrams/pgo_all-front-panels.p
 import ProgrammingGain from '/img/modules/pgo/pgo-diagrams/pgo_programming-gain.png';
 import ProgrammingOffset from '/img/modules/pgo/pgo-diagrams/pgo_programming-offset.png';
 
-import NormalledConnections from '/img/modules/pgo/archived/pgo-normalled-connections.png';
+import NormalledConnections from '/img/modules/pgo/pgo-diagrams/pgo_understanding-cascading-input-jacks​.png';
 import ControlsConnectorsIndicators from '/img/modules/pgo/pgo-diagrams/pgo_controls-connectors-indicators.png';
 
 import PatchUnipolarToBipolar from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-to-bipolar.png';
