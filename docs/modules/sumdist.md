@@ -1,6 +1,6 @@
 ---
 draft: true
-title: "SUMDIST"
+title: "SUM/DIST"
 ---
 
 # SUMDIST

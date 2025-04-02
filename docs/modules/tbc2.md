@@ -1,6 +1,6 @@
 ---
 draft: true
-title: "SMX3: Matrix Mixer"
+title: "TBC2: Dual Video Input"
 ---
 
 # TBC2
@@ -190,43 +190,55 @@ If the module is receiving power, but the screen is blank, complete the followin
 
 ## Full Specifications
 
-| Parameter                    | Value                                                                           |
-| ---------------------------- | ------------------------------------------------------------------------------- |
-| Manufacturer Part Number     | 950046 (MK1) 950058 (MK2)                                                       |
-| Pronunciation                | TODO                                                                            |
-| Mounting Width               | 16 HP                                                                           |
-| Mounting Depth               | 55 mm                                                                           |
-| Mounting Hole Count          | 4                                                                               |
-| Power Consumption            | 12V @ 600 mA                                                                    |
-| Power Connectors             | 16 pin EuroRack ribbon, 2.1mm DC barrel                                         |
-| Input Impedance              | 1M ohms                                                                         |
-| Output Impedance             | 75 ohms                                                                         |
-| Input Protection Range       | +/-20V                                                                          |
-| Input Clipping Range         | +/-2.5V                                                                         |
-| Output Range                 | +/-2.5V                                                                         |
-| Propagation Delay            | TODO                                                                            |
-| Bandwidth @ -3dB             | TODO                                                                            |
-| Module Width                 | TODO mm                                                                         |
-| Module Height                | TODO mm                                                                         |
-| Module Depth                 | TODO mm                                                                         |
-| Product Box Width            | TODO in / TODO mm                                                               |
-| Product Box Height           | TODO in / TODO mm                                                               |
-| Product Box Depth            | TODO in / TODO mm                                                               |
-| Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable                                     |
-| EuroRack Power Cable Type    | 16-pin                                                                          |
-| EuroRack Power Cable Length  | 25 cm                                                                           |
-| DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | Front and rear RCA                                                              |
+| Parameter                                  | Value                                                                           |
+| ------------------------------------------ | ------------------------------------------------------------------------------- |
+| Manufacturer Part Number: Mk I (Orion)     | 950046                                                                          |
+| Manufacturer Part Number: Mk II (Gen 3)    | 950058                                                                          |
+| Mounting Width                             | 16 HP                                                                           |
+| Mounting Depth                             | 55 mm                                                                           |
+| Mounting Hole Count                        | 4                                                                               |
+| Power Consumption                          | 12V @ 600 mA                                                                    |
+| Power Connectors                           | 16 pin EuroRack ribbon, 2.1mm DC barrel                                         |
+| Input Impedance                            | 1M ohms                                                                         |
+| Output Impedance                           | 75 ohms                                                                         |
+| Input Protection Range                     | +/-20V                                                                          |
+| Input Clipping Range                       | +/-2.5V                                                                         |
+| Output Range                               | +/-2.5V                                                                         |
+| Included                                   | DC barrel power cable, EuroRack power cable                                     |
+| EuroRack Power Cable Type                  | 16-pin                                                                          |
+| EuroRack Power Cable Length                | 25 cm                                                                           |
+| DC Barrel Power Cable Length               | 25 cm                                                                           |
+| RoHS Compliance                            | Manufactured with lead-free processes                                           |
+| Video Sync                                 | Front & rear RCA in & out                                                       |
 
+<!--
+| Pronunciation                              | TODO                                                                            |
+| Propagation Delay                          | TODO                                                                            |
+| Bandwidth @ -3dB                           | TODO                                                                            |
+| Module Width                               | TODO mm                                                                         |
+| Module Height                              | TODO mm                                                                         |
+| Module Depth                               | TODO mm                                                                         |
+| Product Box Width                          | TODO in / TODO mm                                                               |
+| Product Box Height                         | TODO in / TODO mm                                                               |
+| Product Box Depth                          | TODO in / TODO mm                                                               |
+| Product Weight                             | TODO                                                                            |
+
+---
+-->
+
+<!--
 ## Calibration
 
 Calibration is not required for this module.
+-->
+
+---
 
 ## Maintenance
 
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+
+---
 
 ## Firmware Downloads
 

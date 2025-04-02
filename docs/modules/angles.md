@@ -54,13 +54,13 @@ Synthesizing complex geometries, such as vanishing points or polygons, requires 
 
 ## Key Specifications
 
-| Parameter         | Value                                                                           |
+|                   |                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------- |
 | Mounting Width    | 12 HP                                                                           |
 | Power Consumption | 12V @ 175 mA                                                                    |
 | Power Connectors  | 10 pin EuroRack ribbon, 2.1mm DC barrel                                         |
-| Video Sync        | Rear RCA input and output                                                       |
 | Included          | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
+| Video Sync        | Rear RCA in & out                                                               |
 
 ---
 
@@ -240,14 +240,13 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 
 </td></tr></table>
 
-<!-- ---
+---
 
 ### Technical Data
 
-| Parameter                    | Value                                                                           |
+|                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950036                                                                          |
-| Pronunciation                |                                                                                 |
 | Mounting Width               | 12 HP                                                                           |
 | Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 4                                                                               |
@@ -258,6 +257,15 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
+| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
+| EuroRack Power Cable Type    | 16-pin                                                                          |
+| EuroRack Power Cable Length  | 25 cm                                                                           |
+| DC Barrel Power Cable Length | 25 cm                                                                           |
+| RoHS Compliance              | Manufactured with lead-free processes.                                          |
+| Video Sync                   | Rear RCA in & out                                                               | 
+
+<!-- 
+| Pronunciation                |                                                                                 |
 | Propagation Delay            | TODO                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | TODO mm                                                                         |
@@ -267,20 +275,17 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 | Product Box Height           | TODO in / TODO mm                                                               |
 | Product Box Depth            | TODO in / TODO mm                                                               |
 | Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
-| EuroRack Power Cable Type    | 16-pin                                                                          |
-| EuroRack Power Cable Length  | 25 cm                                                                           |
-| DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | Required                                                                        | -->
+-->
 
 ---
 
+<!--
 ## Calibration
 
 Calibration is not required for this module.
 
 ---
+-->
 
 ## Maintenance
 

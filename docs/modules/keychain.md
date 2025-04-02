@@ -47,7 +47,7 @@ Keychain is not a compositor. By itself, it can't combine a foreground and backg
 
 ## Key Specifications
 
-| Parameter         | Value                                                                           |
+|                   |                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------- |
 | Mounting Width    | 8 HP                                                                            |
 | Power Consumption | 12V @ 110 mA                                                                    |
@@ -217,11 +217,10 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 </td></tr></table>
 
 ---
-<!-- 
-| Parameter                    | Value                                                                           |
+
+|                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950056                                                                          |
-| Pronunciation                |                                                                                 |
 | Mounting Width               | 8 HP                                                                            |
 | Mounting Depth               | 32 mm                                                                           |
 | Mounting Hole Count          | 4                                                                               |
@@ -232,6 +231,15 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
+| Included                     | DC barrel power cable, EuroRack power cable                                     |
+| EuroRack Power Cable Type    | 16-pin                                                                          |
+| EuroRack Power Cable Length  | 25 cm                                                                           |
+| DC Barrel Power Cable Length | 25 cm                                                                           |
+| RoHS Compliance              | Manufactured with lead-free processes.                                          |
+| Video Sync                   | None                                                                            |
+
+<!-- 
+| Pronunciation                |                                                                                 |
 | Propagation Delay            | TODO                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | TODO mm                                                                         |
@@ -241,20 +249,18 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 | Product Box Height           | TODO in / TODO mm                                                               |
 | Product Box Depth            | TODO in / TODO mm                                                               |
 | Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable                                     |
-| EuroRack Power Cable Type    | 16-pin                                                                          |
-| EuroRack Power Cable Length  | 25 cm                                                                           |
-| DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | None                                                                            |
 
---- -->
-
-## Calibration
-
-Calibration is not required for this module.
+-->
 
 ---
+
+<!--
+## Calibration
+
+Explanation of trim pots and calibration procedure
+
+---
+-->
 
 ## Maintenance
 

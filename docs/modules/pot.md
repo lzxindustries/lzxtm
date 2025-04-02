@@ -196,13 +196,16 @@ Convert a single-ended input signal to a differential output signal. One possibl
 * Carefully test fit the module in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Mount the module to the EuroRack rails using all mounting holes.
 * Power on the EuroRack enclosure and start patching.
+
+---
+
 <!-- 
-## Full Specifications -->
-<!-- 
-| Parameter                    | Value                                                                           |
+## Full Specifications
+
+|                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
-| Manufacturer Part Number     | 950065                                                                          |
-| Pronunciation                | [piː ɡəʊ](/mp3/modules/pgo/pgo-pronunciation.mp3)                               |
+| Manufacturer Part Number     |                                                                                 |
+| Pronunciation                |                                                                                 |
 | Mounting Width               | 4 HP                                                                            |
 | Mounting Depth               | TODO mm                                                                         |
 | Mounting Hole Count          | 2                                                                               |
@@ -227,11 +230,16 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | EuroRack Power Cable Length  | 25 cm                                                                           |
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | None                                                                            | -->
-<!-- 
-## Calibration -->
+| Video Sync                   | None                                                                            | 
 
-<!-- Calibration is not required for this module. -->
+---
+-->
+
+<!-- 
+## Calibration
+
+Calibration is not required for this module.
+-->
 
 ## Maintenance
 
