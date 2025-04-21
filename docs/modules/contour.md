@@ -1,6 +1,6 @@
 ---
-draft: true
-title: "CONTOUR"
+draft: false
+title: "CONTOUR: Triple Detail Extractor"
 ---
 
 :::warning
@@ -8,12 +8,13 @@ This page is a draft under construction. Stay tuned to our newsletter for the of
 :::
 
 <!--
-import contour_frontpanel from '/img/modules/contour/contour-diagrams/contour_frontpanel.png';
+import contour_front_panel from '/img/modules/contour/contour-diagrams/contour_front_panel.png';
 -->
 
 import contour_line_art_labeled from '/img/modules/contour/contour-diagrams/contour_line_art_labeled_336x1024.png';
 
-# CONTOUR
+# Contour
+<span class="head2_nolink">Triple Detail Extractor</span>
 
 <!--
 <img src={contour_frontpanel} alt="Contour front panel" />
@@ -21,11 +22,13 @@ import contour_line_art_labeled from '/img/modules/contour/contour-diagrams/cont
 
 ## Overview
 
-Contour is a triple voltage controlled high pass filter for extracting edge transitions from video images and patterns.
+Contour is a triple voltage controlled high-pass filter for extracting edge transitions from video images and patterns.
 
 :::note
-Due to the inherent geometry of the video raster, high frequency analog filters are only effective on transitions in the horizontal dimension. Affecting transitions in the vertical dimension, between adjacent scanlines, would require a digital frame buffer.
+Due to the inherent geometry of the video raster, high frequency analog filters are only effective on transitions in the horizontal dimension. Affecting transitions in the vertical dimension, between adjacent scanlines, requires a digital frame buffer.
 :::
+
+---
 
 ## Key Specifications
 
@@ -47,7 +50,7 @@ TODO
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 ---
 

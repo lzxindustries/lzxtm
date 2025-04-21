@@ -6,10 +6,6 @@ title: "PROC: Triple Voltage Processor"
 # PROC
 <span class="head2_nolink">Triple Voltage Processor</span>
 
-<!-- AFR note: I separated the page title CSS styling from metadata -->
-
-<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
-
 import proc_frontpanel from '/img/modules/proc/proc-diagrams/proc_frontpanel.png';
 import proc_adder from '/img/modules/proc/proc-diagrams/proc_adder.png';
 import proc_block_diagram from '/img/modules/proc/proc-diagrams/proc_block-diagram.png';
@@ -30,9 +26,9 @@ import proc_rgb_color_picker from '/img/modules/proc/proc-diagrams/proc_rgb-colo
 import proc_rgb_color_picker_static from '/img/modules/proc/proc-diagrams/proc_rgb-color-picker.png';
 import proc_static_voltage_generator from '/img/modules/proc/proc-diagrams/proc_static-voltage-generator.gif';
 import proc_subtractor from '/img/modules/proc/proc-diagrams/proc_subtractor.png';
-import proc_line_art_labeled from '/img/modules/proc/proc-diagrams/placeholders/proc_line_art_labeled_placeholder_250x700.png';
+import proc_line_art_labeled from '/img/modules/proc/proc-diagrams/proc_line_art_labeled_336x1024.png';
 
-<!-- AFR note: HTML style comments in combination with Markdown/Docusaurus are causing some compilation errors. Not sure what the evil character combo is. I changed the commented out warning below to JS style comments. Otherwise the page wouldn't load. -->
+<!-- AFR note: HTML style comments in combination with Markdown/Docusaurus are causing some compilation errors. Not sure what the evil character combo is. I changed the commented out warning below to JS style comments. Otherwise the site wouldn't load. -->
 
 {/*
 :::warning
@@ -61,6 +57,10 @@ Proc is a triple voltage processor and summing amplifier, providing continuous c
 - Convert RGB to luminance
 - Colorize luminance or RGB
 
+### Legacy
+
+Proc is the third generation of this module concept. It was preceded by the Visionary series Triple Voltage Processor and the Expedition series Passage modules.
+
 ---
 
 ## Key Specifications
@@ -87,7 +87,7 @@ Proc pairs particularly well with modules capable of handling bipolar signals, s
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 Proc consists of three identical channels. The inputs to each channel are arranged in rows **1**, **2**, and **3**. Rows are color-coded red, green, and blue, respectively, but this is only for convenience. Any video or control signal can be patched into any input.
 
@@ -119,17 +119,17 @@ $$
 
 <img src={proc_formula} alt="Proc formula" />
 
-#### Gain
+### Gain
 
 Each **Gain** potentiometer, labeled **B**, can attenuate or invert the value of the signal at the channel's B input. At the 12 o'clock position, the signal is multiplied by zero, so none of the B input signal is added to the output. Turning the knob clockwise to the right of 12 o'clock increases the amplitude up to the full value of the input signal. Turning the knob counterclockwise to the left of 12 o'clock inverts the signal, sending it into the negative voltage range.
 
-#### Bias
+### Bias
 
 Each **Bias** potentiometer, labeled **C**, adds a static voltage to the output. At the 12 o'clock position, the voltage is zero, so no offset is added to the output. Clockwise rotation to the right of 12 o'clock adds a voltage, biasing the output up. Counterclockwise rotation to the left of 12 o'clock subtracts a voltage, biasing the output down.
 
 <img src={proc_gain_bias} alt="Proc gain and bias" />
 
-#### Voltage range
+### Voltage range
 
 Proc can handle input signals that add up to a value range from -2 to +2 volts without distortion. Note that the internally generated bias voltage C is also an input signal, even though there's no C input jack.
 
@@ -141,7 +141,7 @@ As the animation above illustrates, negative voltages are outside the visible ra
 
 <!-- AFR note: it would be great to have an example patch graphic illustrating the Self-patching described below. It can be labeled "Mixer: four inputs, one output" -->
 
-#### Self-patching
+### Self-patching
 
 By sending the output of one channel to the input of another, we can create more complex effects by combining more than two signals. For example, if we patch output 1 to input A2, and output 2 to to input A3, we can combine up to four signals with the remaining inputs of A1, B1, B2, and B3.
 
@@ -284,14 +284,11 @@ Ramp shift
 
 </td></tr></table>
 
----
-
-<!-- ### Technical Data
+### Technical Data
 
 | Parameter                    | Value                                       |
 | ---------------------------- | ------------------------------------------- |
 | Manufacturer Part Number     | 950048                                      |
-| Pronunciation                |                                             |
 | Mounting Width               | 8 HP                                        |
 | Mounting Depth               | 32 mm                                       |
 | Mounting Hole Count          | 4                                           |
@@ -302,6 +299,17 @@ Ramp shift
 | Input Protection Range       | +/-20V                                      |
 | Input Clipping Range         | +/-2.5V                                     |
 | Output Range                 | +/-2.5V                                     |
+| Included                     | DC barrel power cable, EuroRack power cable |
+| EuroRack Power Cable Type    | 16-pin                                      |
+| EuroRack Power Cable Length  | 25 cm                                       |
+| DC Barrel Power Cable Length | 25 cm                                       |
+| RoHS Compliance              | Manufactured with lead-free processes       |
+| Video Sync                   | None                                        |
+
+--- 
+
+<!--
+| Pronunciation                |                                             |
 | Propagation Delay            | TODO                                        |
 | Bandwidth @ -3dB             | TODO                                        |
 | Module Width                 | TODO mm                                     |
@@ -311,26 +319,26 @@ Ramp shift
 | Product Box Height           | TODO in / TODO mm                           |
 | Product Box Depth            | TODO in / TODO mm                           |
 | Product Weight               | TODO                                        |
-| Included                     | DC barrel power cable, EuroRack power cable |
-| EuroRack Power Cable Type    | 16-pin                                      |
-| EuroRack Power Cable Length  | 25 cm                                       |
-| DC Barrel Power Cable Length | 25 cm                                       |
-| RoHS Compliance              | Manufactured with lead-free processes.      |
-| Video Sync                   | None                                        |
 
---- -->
+-->
 
+<!--
 ## Calibration
 
 Calibration is not required for this module.
 
+---
+-->
+
 ## Maintenance
 
+Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the front panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+
+<!--
+## Troubleshooting
+
 ---
-
-Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
-
-<!-- ## Troubleshooting -->
+-->
 
 ---
 

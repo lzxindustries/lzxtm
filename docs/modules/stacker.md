@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "STACKER: Triple Quadrilateral Key Generator"
+title: "STACKER: Triple Window Key Generator"
 ---
 
 import stacker_frontpanel from '/img/modules/stacker/stacker-diagrams/stacker_frontpanel.png';
@@ -15,14 +15,10 @@ import stacker_priority_layering_no_mult from '/img/modules/stacker/stacker-diag
 import stacker_priority_layering from '/img/modules/stacker/stacker-diagrams/stacker_priority-layering.png';
 import stacker_size_ratio_under_the_hood from '/img/modules/stacker/stacker-diagrams/stacker_size-ratio-under-the-hood.gif';
 import stacker_size_ratio from '/img/modules/stacker/stacker-diagrams/stacker_size-ratio.gif';
-import stacker_line_art_labeled from '/img/modules/stacker/stacker-diagrams/placeholders/stacker_line_art_labeled_placeholder_240x700.png';
+import stacker_line_art_labeled from '/img/modules/stacker/stacker-diagrams/stacker_line_art_labeled_336x1024.png';
 
 # STACKER
-<span class="head2_nolink">Triple Quadrilateral Key Generator</span>
-<!-- 
-:::warning
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
+<span class="head2_nolink">Triple Window Key Generator</span>
 
 <img src={stacker_frontpanel} alt="Stacker front panel" />
 
@@ -58,9 +54,9 @@ Stacker's outputs can be used directly, as a set of interlocking flat shapes. Bu
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
-Stacker has three channels, **1**, **2**, and **3**. Each channel has two inputs, **H** and **V**, indicated by horizontal and vertical icons. Just like DSG3, the inputs are labeled with the assumption of horizontal and vertical waveforms, but this is merely a suggestion. You can plug whatever you want into the inputs, including various gradients, video images, and low frequency control signals.
+Stacker has independent three channels, **1**, **2**, and **3**. Each channel has two inputs, **H** and **V**, indicated by horizontal and vertical icons. Just like DSG3, the inputs are labeled with the assumption of horizontal and vertical waveforms, but this is merely a suggestion. You can plug whatever you want into the inputs, including various gradients, video images, and low frequency control signals.
 
 Each channel has two potentiometer knobs, **Ratio** and **Size**. These knobs provide quick and easy adjustment of the four thresholds of each channel's window key generator. Ratio adjusts the shape of the window, Size adjusts the scale.
 
@@ -76,13 +72,17 @@ Each set of inputs is internally normalled in series from top to bottom. A signa
 
 ## Operation
 
+### Window Key
+
 At its heart, Stacker is a complex multiple window key generator. A window key is a level up from an ordinary key. Whereas an ordinary key generator has a single threshold, a window key generator has two thresholds. Values below the low threshold and above the high threshold are clipped to zero, or black. Values between the two thresholds are rendered as white, or a value of +1 volt. That center range of values is the "window" that gives this type of key generator its name.
 
-In the language of Stacker, the window key generator is known as a rectangular shape generator. That's because Stacker is designed with quadrilateral 2D pattern generation in mind. But there is no limitation here; any video signals can be processed to give interesting binary shapes according to Stacker's internal math.
+In the language of Stacker, the window key generator is known as a quadrilateral shape generator. That's because Stacker is designed with rectangular 2D pattern generation in mind. But there is no limitation here; any video signals can be processed to give interesting binary shapes according to Stacker's internal math.
 
 <img src={stacker_block_diagram} alt="Stacker function block" />
 
 &nbsp;<br />
+
+### Ratio and Size
 
 Per channel, the H and V inputs are processed according to the states of the Ratio and Size potentiometers, resulting in an intersection of two window keys.
 
@@ -101,6 +101,8 @@ There's no law that says you need to supply signals to both H and V inputs. Mayb
 :::
 
 &nbsp;<br />
+
+### Minimum / Logical AND
 
 To create the full window, the results of the H and V window keys are composited with a mathematical Minimum operation. The lower of the two key values takes priority. Geometrically, this is the intersection, or overlapping area. And since the key signals are binary, this is also a Boolean logic AND operation. To output a value of one, both H **and** V keyers must have a value of one.
 
@@ -123,6 +125,8 @@ $$
 <img src={stacker_size_ratio_under_the_hood} alt="Stacker ratio and size operations" />
 
 &nbsp;<br />
+
+### Layer Subtraction
 
 The channel outputs are also internally connected in series, from top to bottom. Each output subtracts the ones above it, resulting in complementary keys that "knock out" the other channels. The resulting shapes never overlap or blend in any way. Stacker is a multi-stage one-bit compositor, not a mixer.
 
@@ -207,10 +211,6 @@ If you're not able to isolate the value range you want, then bias the signal up 
 
 ## Full Specifications
 
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'proc_line_art_labeled_placeholder_250x700.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
-
 <table>
 
 <tr><th>&nbsp;</th><th>Connectors</th><th>Controls</th></tr>
@@ -245,14 +245,11 @@ If you're not able to isolate the value range you want, then bias the signal up 
 
 </td></tr></table>
 
-<!--
-
 ### Technical Data
 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950051                                                                          |
-| Pronunciation                |                                                                                 |
 | Mounting Width               | 8 HP                                                                            |
 | Mounting Depth               | 32 mm                                                                           |
 | Mounting Hole Count          | 4                                                                               |
@@ -263,6 +260,15 @@ If you're not able to isolate the value range you want, then bias the signal up 
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
+| Included                     | DC barrel power cable, EuroRack power cable                                     |
+| EuroRack Power Cable Type    | 16-pin                                                                          |
+| EuroRack Power Cable Length  | 25 cm                                                                           |
+| DC Barrel Power Cable Length | 25 cm                                                                           |
+| RoHS Compliance              | Manufactured with lead-free processes                                           |
+| Video Sync                   | None                                                                            |
+
+<!--
+| Pronunciation                |                                                                                 |
 | Propagation Delay            | TODO                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | TODO mm                                                                         |
@@ -272,26 +278,21 @@ If you're not able to isolate the value range you want, then bias the signal up 
 | Product Box Height           | TODO in / TODO mm                                                               |
 | Product Box Depth            | TODO in / TODO mm                                                               |
 | Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable                                     |
-| EuroRack Power Cable Type    | 16-pin                                                                          |
-| EuroRack Power Cable Length  | 25 cm                                                                           |
-| DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | None                                                                            |
-
 -->
 
 ---
 
+<!--
 ## Calibration
 
 Calibration is not required for this module.
 
 ---
+-->
 
 ## Maintenance
 
-Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the front panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
 ---
 

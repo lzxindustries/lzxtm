@@ -1,6 +1,6 @@
 ---
-draft: true
-title: "FKG3: Fader & Key Generator"
+draft: false
+title: "FKG3: Fader & Key Generating Compositor"
 ---
 
 :::warning
@@ -12,6 +12,14 @@ import fkg3_frontpanel from '/img/modules/fkg3/fkg3-diagrams/fkg3_frontpanel.png
 -->
 
 import fkg3_panel_labeled from '/img/modules/fkg3/fkg3-diagrams/fkg3_panel_labeled_496x1024.png';
+
+<!--
+AFR note: I changed the subheading of the module name to clarify that FKG3 is a self-contained keying compositor. This taxonomy differentiates it from Keychain and Stacker, which are also "key generators" but are not compositors.
+-->
+
+# FKG3
+<span class="head2_nolink">Fader & Key Generating Compositor</span>
+
 
 ## Overview
 
@@ -131,6 +139,8 @@ TODO
 | P4     | Softness CV Depth                    |
 
 </td></tr></table>
+
+### Technical Data
 
 |                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |

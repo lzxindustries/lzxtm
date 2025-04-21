@@ -32,11 +32,19 @@ With delay times in the range of tens of nanoseconds, the result is an image shi
 | Video Sync        | None                                                                            |
 | Included          | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
 
-## Front Panel Options
+### Front Panel Options
 
-PAB ships with a black front panel installed. Red, green and blue panels are also included. All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow.
+PGO ships with a black front panel installed. Red, green and blue panels are also included.
 
 <img src={pab_all_front_panels} alt="pab_all_front_panels" />
+
+&nbsp;<br />
+
+All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow. This gives great flexibility in designing modular systems.
+
+<!--
+AFR note: recommend adding an illustration of the reverse sides of the four panels.
+-->
 
 ---
 
@@ -47,7 +55,7 @@ PAB is most helpful in larger systems with many modules, or if you're concerned 
 
 ---
 
-## Controls, Connectors & Indicators
+## Connectors
 
 <img src={pab_controls_connectors_indicators} alt="pab_controls_connectors_indicators"/>
 
@@ -94,7 +102,11 @@ The fact that these are not just normals, but buffers and delays, needs to be re
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
 
-## Full Specifications 
+## Full Specifications
+
+<!--
+### Technical Data
+-->
 
 |                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
@@ -137,7 +149,7 @@ Calibration is not required for this module.
 
 ## Maintenance
 
-Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
 ---
 
@@ -155,19 +167,25 @@ Initial prototype, January 2025
 
 Initial production version, February 2025
 
-[Download PAB-REVB Schematic Diagram (PDF)](/pdf/modules/pab/PAB-REVB_Schematic_Diagram.pdf)
+PAB-REVB Schematic Diagram
+&nbsp;<br />
+[Download PDF](/pdf/modules/pab/PAB-REVB_Schematic_Diagram.pdf)
 
-[Download PAB-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pab/PAB-REVB_Interactive_Bill_of_Materials.zip)
+PAB-REVB Interactive Bill of Materials
+&nbsp;<br />
+[Download ZIP](/zip/modules/pab/PAB-REVB_Interactive_Bill_of_Materials.zip)
+
+---
 
 ## DIY 
 
-PAB is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+PAB is available as an assembled module, a full DIY kit, or a partial DIY kit.
 
-In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+Downloads for the complete schematic and an interactive HTML Bill of Materials are found in the [Hardware Revisions](/docs/modules/pab#hardware-revisions) section above.
 
-### Bill of Materials
+### Partial DIY Components
 
-In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+The partial DIY kit from LZX includes the printed circuit board and front panel. The following components must be purchased separately from electronics parts vendors.
 
 | Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators |
 | ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | --------------------- |
@@ -199,23 +217,7 @@ The following tests are designed to verify the module is functioning as expected
 - Connect the module to power and turn on your case
 - Prepare to probe the disconnected end of a patch cable -- in these tests, the positive probe should make contact with the tip of the plug, and the negative probe or grounding clip should make contact with the sleeve of the plug
 
-### T1. Test voltage reference
-
-- Verify that the Voltage Reference Out is within +/-2% of 1.00V.
-
-### T2. Test difference amplifier positive inputs
-
-- Connect a cable from the voltage reference output to Difference Amplifier In1+
-- Verify that Difference Amplifier Out+ is within +/-2% of +2V.
-- Verify that Difference Amplifier Out- is within +/-2% of -2V.
-
-### T3. Test difference amplifier negative inputs
-
-- Connect a cable from the voltage reference output to Difference Amplifier In1-
-- Verify that Difference Amplifier Out+ is within +/-2% of -2V.
-- Verify that Difference Amplifier Out- is within +/-2% of +2V.
-
-This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters.
+### This concludes functional testing. If all steps starting with *Verify...* passed their conditions, the module is operating within expected parameters.
 -->
 
 <!--
@@ -241,16 +243,4 @@ The following tests are designed for verification of hardware revisions and gene
 
 - Use your multimeter to measure the voltage present at pin 3 of the U3 DC-DC converter module.
 - Verify that the measurement is within the range of 3.0V to 3.6V.
--->
-
-<!--
-## Theory Of Operation
-
-### Block Diagram
-
-### Power Supply
-
-### Voltage Reference
-
-### Difference Amplifier
 -->

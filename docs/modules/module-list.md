@@ -1,8 +1,15 @@
 ---
 sidebar_position: 1
-draft: true
+draft: false
 title: "SPECS: ALL MODULES"
 ---
+
+<!--
+AFR note:
+How should we handle firmware and any other downloads for legacy products, e.g. Memory Palace? This page is already full, there's no room for another column. Since there are multiple versions of firmware, and any upgrade procedure requires instructions, it seems like we need separate pages for legacy modules requiring long-term support. But they should not show up in the sidebar, and only be accessible from this page...?
+-->
+
+
 # Specifications: all modules
 &nbsp;<br />
 
@@ -10,7 +17,7 @@ title: "SPECS: ALL MODULES"
 | ----- | ---------------------------------------- | ------ | ---------- | -------| ----- | -------- | --------|----------------- | ------------------------------------ |
 | LZX   | LNK: Passive Links                       | Active | P-series   | 4 HP   | ?     | n/a      | n/a     | n/a              | none                                 |
 | LZX   | MLT: Passive Multiples                   | Active | P-series   | 4 HP   | ?     | n/a      | n/a     | n/a              | none                                 |
-| LZX   | PAB: Programmable Active Buffers         | Active | P-series   | 4 HP   | ?     | 50 mA    | 0       | Barrel or 10-pin | none                               |
+| LZX   | PAB: Programmable Active Buffers         | Active | P-series   | 4 HP   | ?     | 50 mA    | 0       | Barrel or 10-pin | none                                 |
 | LZX   | PGO: Programmable Gain & Offset          | Active | P-series   | 4 HP   | ?     | 50 mA    | 0       | Barrel or 10-pin | none                                 |
 | LZX   | P: Passive Potentiometer                 | Active | P-series   | 4 HP   | ?     | n/a      | n/a     | n/a              | none                                 |
 | LZX   | PRM: Programmable Rectifier & Multiplier | Active | P-series   | 4 HP   | ?     | 75 mA    | 0       | Barrel or 10-pin | none                                 |
@@ -101,7 +108,7 @@ title: "SPECS: ALL MODULES"
 | LZX   | Video Divisions                          | Legacy | Visionary  | 6 HP   | 44 mm | ?        | ?       | Euro 16-pin      | none                                 |
 | LZX   | Video Flip Flops                         | Legacy | Visionary  | 6 HP   | 44 mm | ?        | ?       | Euro 16-pin      | none                                 |
 | LZX   | Video Logic                              | Legacy | Visionary  | 6 HP   | 44 mm | 60 mA    | 60 mA   | Euro 16-pin      | none                                 |
-| LZX   | Video RAmps                              | Legacy | Visionary  | 4 HP   | 45 mm | 60 mA    | 60 mA   | Euro 16-pin      | 16-pin Eurorack bus                  |
+| LZX   | Video Ramps                              | Legacy | Visionary  | 4 HP   | 45 mm | 60 mA    | 60 mA   | Euro 16-pin      | 16-pin Eurorack bus                  |
 | LZX   | Video Sync Generator                     | Legacy | Visionary  | 6 HP   | 44 mm | 60 mA    | 60 mA   | Euro 16-pin      | 16-pin Eurorack bus, generate        |
 | LZX   | Video Waveform Generator                 | Legacy | Visionary  | 6 HP   | ?     | 60 mA    | 40 mA   | Euro 16-pin      | 16-pin Eurorack bus                  |
 | LZX   | Voltage Bridge                           | Legacy | Visionary  | 6 HP   | 32 mm | 20 mA    | 20 mA   | Euro 16-pin      | none                                 |
