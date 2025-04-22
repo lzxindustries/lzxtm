@@ -27,7 +27,7 @@ import mlt_understanding_cascading_input_jacks from '/img/modules/mlt/mlt-diagra
 
 ---
 
-## Controls, Connectors & Indicators
+## Connectors
 
 <img src={mlt_controls_connectors_indicators} alt="mlt_controls_connectors_indicators"/>
 
@@ -71,6 +71,10 @@ MLT uses switched, or normalled, connections between some of its input jacks. 
 
 ## Full Specifications
 
+<!--
+### Technical Data
+-->
+
 |                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Mounting Width               | 4 HP                                                                            |
@@ -113,21 +117,25 @@ The hardware revision code is printed on the circuit board visible from the rear
 
 Initial production version, February 2025
 
-[Download MLT-REVA Schematic Diagram (PDF)](/pdf/modules/mlt/MLT-REVA_Schematic_Diagram.pdf)
+MLT-REVA Schematic Diagram
+&nbsp;<br />
+[Download PDF](/pdf/modules/mlt/MLT-REVA_Schematic_Diagram.pdf)
 
-[Download MLT-REVA Interactive Bill of Materials (ZIP)](/zip/modules/mlt/MLT-REVA_Interactive_Bill_of_Materials.zip)
+MLT-REVA Interactive Bill of Materials
+&nbsp;<br />
+[Download ZIP](/zip/modules/mlt/MLT-REVA_Interactive_Bill_of_Materials.zip)
 
 ---
 
 ## DIY 
 
-MLT is available as a DIY kit that includes the main PCB and the front panel.  The user must source the through-hole components such as jacks and potentiometers.
+MLT is available as an assembled module, a full DIY kit, or a partial DIY kit.
 
-In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+Downloads for the complete schematic and an interactive HTML Bill of Materials are found in the [Hardware Revisions](/docs/modules/mlt#hardware-revisions) section above.
 
-### Bill of Materials
+### Partial DIY Components
 
-In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+The partial DIY kit from LZX includes the printed circuit board and front panel. The following components must be purchased separately from electronics parts vendors.
 
 | Manufacturer                        | Manufacturer Part Number | Description                | Quantity | Reference Designators    |
 | ----------------------------------- | ------------------------ | -------------------------- | -------- | -------------------------|
@@ -137,5 +145,5 @@ In addition to the PCBs and components included with your DIY kit from LZX, you 
 
 This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
 
-1. Mount and solder front facing jacks.
+1. Mount and solder front-facing jacks.
 2. Attach the front panel and secure it with mounting nuts for the jacks.

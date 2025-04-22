@@ -22,14 +22,10 @@ import scrolls_random_ccw from '/img/modules/scrolls/scrolls-diagrams/scrolls_ra
 import scrolls_random_cw from '/img/modules/scrolls/scrolls-diagrams/scrolls_random-cw.gif';
 import scrolls_stairs_oscillator from '/img/modules/scrolls/scrolls-diagrams/scrolls_stairs-oscillator.gif';
 import scrolls_synchronous_lfos from '/img/modules/scrolls/scrolls-diagrams/scrolls_synchronous-lfos.gif';
-import scrolls_line_art_labeled from '/img/modules/scrolls/scrolls-diagrams/placeholders/scrolls_line_art_labeled_placeholder_345x700.png';
+import scrolls_line_art_labeled from '/img/modules/scrolls/scrolls-diagrams/scrolls_line_art_labeled_496x1024.png';
 
 # SCROLLS
 <span class="head2_nolink">Dual Motion Controlled Ramp Generator</span>
-<!-- 
-:::warning
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
 
 <img src={scrolls_frontpanel} alt="Scrolls front panel" />
 
@@ -41,9 +37,15 @@ Basic generative synthesis patches begin with horizontal and vertical ramps. The
 
 Scrolls also outputs four dedicated low frequency control voltages. These CVs are synchronized to the movement of the video waveforms. Use them to animate the patch in other ways, dancing in time with Scrolls.
 
-<!-- AFR note: throughout, I've changed the name of the low frequency outputs from 'LFO' to 'CV'. I did this because I assume that the Random modes aren't periodic, so not really 'oscillators' in the sense that users are likely to understand the term. Technically, everything is an oscillator, but in this context, users expect 'oscillation' to be synonymous with regular periodicity.-->
+<!--
+AFR note: throughout, I've changed the name of the low frequency outputs from 'LFO' to 'CV'. I did this because I assume that the Random modes aren't periodic, so not really 'oscillators' in the sense that users are likely to understand the term. Technically, everything is an oscillator, but in this context, users expect 'oscillation' to be synonymous with regular periodicity.
+-->
 
 Random and Journey modes conjure autonomous entities moving in screen space. Let your figure or pattern wander through the video world, or teleport in strobing patterns of random phases. In any mode, you always set the tempo. Even chaos can to step to the beat.
+
+### Legacy
+
+Scrolls echoes some of the features of the Orion series module **Diver**. Both Diver and Scrolls provide precision digital motion control of analog video waveforms. But their design intentions are different. Where Diver's focus was generating a variety of 2D patterns, Scrolls is all about procedural animation. It's as if the Visionary Series **Scroll & Position Controller** grew a brain. Scrolls doesn't have a memory, but it has many fascinating behaviors.
 
 ## Key Specifications
 
@@ -65,11 +67,11 @@ At the most fundamental level, Scrolls allows smooth horizontal motion. In analo
 
 Lacking horizontal motion, our creative options are super limited. Scrolls solves this problem with high precision digital waveforms. It's an essential tool for taking generative video beyond the basics. The various modes give you many tools for creating engaging real-time animation, and the synchronized CV outputs expand those possibilities in countless ways.
 
-Scrolls is the cornerstone of a generative video system. It provides the base fabric on which rich tapestries can be woven. Other important modules in such a system might include DSG3, DWO3, Stairs, Keychain, Contour, and Stacker.
+Scrolls is a primary element of a generative video system. It provides the base fabric on which rich tapestries can be woven. Other important modules in such a system might include DSG3, DWO3, Angles, Stairs, Keychain, Contour, and Stacker.
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 <img src={scrolls_controls_and_connectors} alt="Scrolls controls and connectors" />
 
@@ -111,19 +113,19 @@ Choose from three ranges of motion speeds. The toggle switch selects one of thre
 
 Choose from three waveform modes. The toggle switch selects one of three modes, from left to right: **Wrap**, **Blank**, and **Mirror**. 
 
-#### Wrap
+### Wrap
 
 The ramp phase scrolls continuously, repeating across the screen.
 
 <img src={scrolls_motion_disabled_wrap} alt="Scrolls: Wrap waveform" />
 
-#### Blank
+### Blank
 
 The ramp phase can be shifted entirely offscreen.
 
 <img src={scrolls_motion_disabled_blank} alt="Scrolls: Blank waveform" />
 
-#### Mirror
+### Mirror
 
 The ramp phase inverts on every other cycle. The result is a scrolling virtual canvas, double the width and double the height of the video image.
 
@@ -139,33 +141,33 @@ In HD timing formats, a 20ns black line is visible when the ramp reflects from p
 
 ### Motion Control Modes
 
-#### HH: Double Horizontal
+### HH: Double Horizontal
 
 Both Ramp 1 and Ramp 2 are horizontal, with separate Phase controls.
 
-#### VV: Double Vertical
+### VV: Double Vertical
 
 Both Ramp 1 and Ramp 2 are vertical, with separate Phase controls.
 
-#### HV: Horizontal & Vertical
+### HV: Horizontal & Vertical
 
 Ramp 1 is horizontal, Ramp 2 is vertical.
 
 <img src={scrolls_hv_scroll} alt="Scrolls: HV mode" />
 
-#### PP: Ping Pong
+### PP: Ping Pong
 
 Ramp 1 is horizontal, Ramp 2 is vertical. Motion uses triangle waveforms, for the bouncing DVD player logo effect.
 
 <img src={scrolls_ping_pong} alt="Scrolls: Ping-pong mode" />
 
-#### O: Orbital
+### O: Orbital
 
 Ramp 1 is horizontal, Ramp 2 is vertical. Motion uses a quadrature sine wave generator to animate the ramps in an elliptical orbit matching the aspect ratio of the video frame. Phase 1 controls speed, Phase 2 controls depth.
 
 <img src={scrolls_orbit} alt="Scrolls: Orbital mode" />
 
-#### J: Journey
+### J: Journey
 
 Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to HV mode, but speed and direction are based on polar instead of cartesian coordinates. Phase 1 controls angle, Phase 2 controls velocity.
 
@@ -175,13 +177,13 @@ Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to HV mode, but spee
 
 <img src={scrolls_journey_phase_2} alt="Scrolls: Journey mode Phase 2" />
 
-#### C: Corner
+### C: Corner
 
 Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to Orbital mode, but utilizes trapezoidal rather than sinusoidal waveforms. Phase 1 controls speed, Phase 2 controls depth.
 
 <img src={scrolls_corner} alt="Scrolls: Corner mode" />
 
-#### R?: Random
+### R?: Random
 
 Ramp 1 is horizontal, Ramp 2 is vertical. Phase 1 controls speed, Phase 2 controls depth. 
 
@@ -214,8 +216,6 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 
 <img src={scrolls_mounting_power_sync} alt="Scrolls installation" />
 
-<!-- Something about making sure all screws have been removed from the intended mounting location. -->
-
 ### Requirements
 
 * EuroRack enclosure
@@ -239,10 +239,6 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 ---
 
 ## Full Specifications
-
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'dsg3_line_art_labeled_placeholder_330x684.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
 
 <table>
 
@@ -284,14 +280,11 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 
 </td></tr></table>
 
-<!--
-
 ### Technical Data
 
 | Parameter                    | Value                                                                           |
 | ---------------------------- | ------------------------------------------------------------------------------- |
 | Manufacturer Part Number     | 950001                                                                          |
-| Pronunciation                |                                                                                 |
 | Mounting Width               | 12 HP                                                                           |
 | Mounting Depth               | 42 mm                                                                           |
 | Mounting Hole Count          | 4                                                                               |
@@ -302,6 +295,17 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 | Input Protection Range       | +/-20V                                                                          |
 | Input Clipping Range         | +/-2.5V                                                                         |
 | Output Range                 | +/-2.5V                                                                         |
+| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
+| EuroRack Power Cable Type    | 16-pin                                                                          |
+| EuroRack Power Cable Length  | 25 cm                                                                           |
+| DC Barrel Power Cable Length | 25 cm                                                                           |
+| RoHS Compliance              | Manufactured with lead-free processes.                                          |
+| Video Sync                   | Rear RCA in and out                                                             |
+
+---
+
+<!--
+| Pronunciation                |                                                                                 |
 | Propagation Delay            | TODO                                                                            |
 | Bandwidth @ -3dB             | TODO                                                                            |
 | Module Width                 | TODO mm                                                                         |
@@ -311,28 +315,23 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 | Product Box Height           | TODO in / TODO mm                                                               |
 | Product Box Depth            | TODO in / TODO mm                                                               |
 | Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable, RCA sync cable                     |
-| EuroRack Power Cable Type    | 16-pin                                                                          |
-| EuroRack Power Cable Length  | 25 cm                                                                           |
-| DC Barrel Power Cable Length | 25 cm                                                                           |
-| RoHS Compliance              | Manufactured with lead-free processes.                                          |
-| Video Sync                   | Rear RCA                                                                        |
-
 -->
 
----
-
+<!--
 ## Calibration
 
 Calibration is not required for this module.
 
 ---
+-->
 
 ## Maintenance
 
-Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the front panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
-<!-- ## Troubleshooting -->
+<!--
+## Troubleshooting
+-->
 
 ---
 
@@ -340,6 +339,12 @@ Keep your module free of dust and debris by performing periodic cleaning. Spots 
 
 The hardware revision code is printed on the circuit board visible from the rear of the module.
 
+
+<!--
+AFR note: I'm not seeing any Scrolls firmware in the repo
+-->
+
+<!--
 ---
 
 ## Firmware
@@ -348,3 +353,4 @@ Scrolls Firmware 1.0.1 (ZIP)
 
 Should I Update My Firmware?
 If your serial number is below #50, you should update your firmware to version 1.0.1, available for download on this page. This will fix compatibility issues with progressive sync timings. Firmware update instructions are included in the download.
+-->

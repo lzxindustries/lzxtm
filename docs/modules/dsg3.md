@@ -3,13 +3,6 @@ draft: false
 title: "DSG3: Dual Shape Generator"
 ---
 
-<!-- :::warning
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
-
-# DSG3
-<span class="head2_nolink">Dual Shape Generator</span>
-
 import dsg3_frontpanel from '/img/modules/dsg3/dsg3-diagrams/dsg3_frontpanel.png';
 import dsg3_absolute from '/img/modules/dsg3/dsg3-diagrams/dsg3_absolute.png';
 import dsg3_average from '/img/modules/dsg3/dsg3-diagrams/dsg3_average.png';
@@ -25,7 +18,10 @@ import dsg3_mounting_power_sync from '/img/modules/dsg3/dsg3-diagrams/dsg3_mount
 import dsg3_normalled_connections from '/img/modules/dsg3/dsg3-diagrams/dsg3_normalled-connections.png';
 import dsg3_self_patching from '/img/modules/dsg3/dsg3-diagrams/dsg3_self-patching.png';
 import dsg3_signal_path from '/img/modules/dsg3/dsg3-diagrams/dsg3_signal-path.png';
-import dsg3_line_art_labeled from '/img/modules/dsg3/dsg3-diagrams/placeholders/dsg3_line_art_labeled_placeholder_330x684.png';
+import dsg3_line_art_labeled from '/img/modules/dsg3/dsg3-diagrams/dsg3_line_art_labeled_496x1024.png';
+
+# DSG3
+<span class="head2_nolink">Dual Shape Generator</span>
 
 <img src={dsg3_frontpanel} alt="DSG3 front panel" />
 
@@ -56,6 +52,10 @@ As a standalone pattern generator, DSG3 can output two independent quadrilateral
 - Absolute
   - difference between two signals (analog logic **XOR**)
 
+### Legacy
+
+DSG3 remixes and augments past designs such as Arch. On deeper investigation, DSG3 is revealed as an innovative design. The internal ramps make it a new animal, a shape generator. Multiple cascading processing functions save space and clean up a patch. The high performance toggle switches are a big improvement for user experience, making it quick and easy to try out various combinations of functions.
+
 ---
 
 ## Key Specifications
@@ -78,7 +78,7 @@ Likewise, DSG3 is a highly space-efficient general purpose video processor, idea
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 DSG3 consists of two identical submodules, **Shape 1** and **Shape 2**. Each Shape has two inputs, **H** and **V**, and four outputs: **Average**, **Minimum**, **Maximum**, and **Absolute**. Toggle switches enable the various functions: **Invert**, **Fold**, and **Curve**.
 
@@ -107,7 +107,7 @@ Each input provides a signal to an identical chain of function blocks. The input
 **Normalled H and V ramps**
 
 :::tip
-The outputs of DSG3 are always unipolar, ranging from 0 +1 volts. However, it can accept both unipolar and bipolar input signals. This allows for an even wider range of creative effects!
+DSG3 can accept both positive and negative voltages. This allows for an even wider range of creative effects! The SUM, MIN, and MAX outputs can send positive and negative voltages, but the ABS output is always positive. Some modules, such as encoders, will ignore anything outside the positive unipolar range of zero to +1 volts.
 :::
 
 ---
@@ -126,7 +126,7 @@ To output a single function block chain, without any blending, disable one of th
 
 #### Average
 
-The weighted sum of two input values, scaled so that the output ranges from 0 to +1 volts.
+The weighted sum of two input values.
 
 H and V inputs are each divided by two, and the results are summed.
 
@@ -304,10 +304,6 @@ $$
 ---
 
 ## Full Specifications
-
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'dsg3_line_art_labeled_placeholder_330x684.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
 
 <table>
 

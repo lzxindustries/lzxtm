@@ -1,6 +1,6 @@
 ---
-draft: true
-title: "MATTE"
+draft: false
+title: "MATTE: Static Voltage Generator & Control Panel"
 ---
 
 :::warning
@@ -14,6 +14,7 @@ import matte_frontpanel from '/img/modules/matte/matte-diagrams/matte_frontpanel
 import matte_line_art_labeled from '/img/modules/matte/matte-diagrams/matte_line_art_labeled_336x1024.png';
 
 # MATTE
+<span class="head2_nolink">Static Voltage Generator & Control Panel</span>
 
 <!--
 <img src={matte_frontpanel} alt="Contour front panel" />
@@ -21,7 +22,7 @@ import matte_line_art_labeled from '/img/modules/matte/matte-diagrams/matte_line
 
 ## Overview
 
-Matte is a static voltage generator optimized for selection of RGB colors. Far from trivial, Matte greatly expands the potential of the video synth as a visual instrument for real-time performance. As a control panel for parameter adjustments, it's an ergonomic, conceptual, and performance breakthrough. Instead of diving through the spaghetti of patch cables, consolidate farflung patch parameters to a single module. Free your mind and body from simply trying to access individual controls, and focus on the aesthetics of your patch. This 
+Matte is a static voltage generator optimized for selection of RGB colors. Far from trivial, Matte greatly expands the potential of the video synth as a visual instrument for real-time performance. As a control panel for parameter adjustments, it's an ergonomic, conceptual, and performance breakthrough. Instead of diving through the spaghetti of patch cables, consolidate farflung patch parameters to a single module. Free your mind and body from simply trying to access individual controls, and focus on the aesthetics of your patch.
 
 Matte's bonus feature is the calculation of average values between pairs of values that you choose. This is helpful when you need two or three values to track with each other, such as thresholds in a multi-level keying patch.
 
@@ -53,7 +54,7 @@ Matte's output voltages are unipolar, ranging from zero to +1 volts. If the dest
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 Outputs are color-coded to represent RGB values, but can drive any parameter in the system.
 
@@ -62,7 +63,7 @@ Matte features two columns of three knobs, labeled **A** and **B**. These knobs 
 The center column of three outputs, labeled **A+B**, provides average values of the adjacent A and B outputs.
 
 :::note
-As with all Gen3 modules, potentiometers are buffered from the actual voltages they control. A small amount of slew is inserted, ensuring smooth transitions. This minimizes unintentional glitches, and extends the useful lifespan of the pots.
+As with all Gen3 modules, potentiometers are buffered from the actual voltages they control. A small amount of slew is inserted, ensuring smooth transitions. This minimizes unintentional glitches, and extends the useful lifespan of the pots. The slew time is balanced to compensate for scratchy pots, but still allow for staccato manual performances.
 :::
 
 ---

@@ -14,7 +14,7 @@ import keychain_mounting_power_sync from '/img/modules/keychain/keychain-diagram
 import keychain_normalled_connections from '/img/modules/keychain/keychain-diagrams/keychain_normalled-connections.png';
 import keychain_threshold_concept from '/img/modules/keychain/keychain-diagrams/keychain_threshold-concept.png';
 import dsg3_dsg3_keychain from '/img/modules/dsg3/dsg3-diagrams/dsg3_dsg3-keychain.gif';
-import keychain_line_art_labeled from '/img/modules/keychain/keychain-diagrams/placeholders/keychain_line_art_labeled_placeholder_250x700.png';
+import keychain_line_art_labeled from '/img/modules/keychain/keychain-diagrams/keychain_line_art_labeled_336x1024.png';
 
 # KEYCHAIN
 <span class="head2_nolink">Triple Hard Key Generator</span>
@@ -65,7 +65,7 @@ The full power of Keychain is unleashed in systems that include other core modul
 
 ---
 
-## Controls, Connectors & Indicators
+## Controls & Connectors
 
 <img src={keychain_controls_and_connectors} alt="Keychain controls and connectors" />
 
@@ -216,7 +216,7 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 
 </td></tr></table>
 
----
+### Technical Data
 
 |                              |                                                                                 |
 | ---------------------------- | ------------------------------------------------------------------------------- |

@@ -1,41 +1,42 @@
 ---
+draft: false
 title: "PGO: Programmable Gain & Offset"
 ---
 
-import PCBFront from '/img/modules/pgo/archived/pgo-pcb-render-front-RevB.png';
-import PCBRear from '/img/modules/pgo/archived/pgo-pcb-render-rear-RevB.png';
-import PCBFrontSMTOnly from '/img/modules/pgo/archived/pgo-pcb-render-smt-only-front-RevB.png';
-import PCBRearSMTOnly from '/img/modules/pgo/archived/pgo-pcb-render-smt-only-rear-RevB.png';
-import SwitchedJack from '/img/modules/pgo/archived/pgo-switched-jack.png';
+import pgo_pcb_front from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-front-RevB.png';
+import pgo_pcb_rear from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-rear-RevB.png';
+import pgo_pcb_front_smt_only from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-smt-only-front-RevB.png';
+import pgo_pcb_rear_smt_only from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-smt-only-rear-RevB.png';
+import pgo_switched_jack from '/img/modules/pgo/pgo-diagrams/pgo-switched-jack.png';
 
-import Frontpanel from '/img/modules/pgo/pgo-diagrams/pgo_front-panel.png';
-import AllFrontpanels from '/img/modules/pgo/pgo-diagrams/pgo_all-front-panels.png';
-import ProgrammingGain from '/img/modules/pgo/pgo-diagrams/pgo_programming-gain.png';
-import ProgrammingOffset from '/img/modules/pgo/pgo-diagrams/pgo_programming-offset.png';
+import pgo_front_panel from '/img/modules/pgo/pgo-diagrams/pgo_front-panel.png';
+import pgo_all_front_panels from '/img/modules/pgo/pgo-diagrams/pgo_all-front-panels.png';
+import pgo_programming_gain from '/img/modules/pgo/pgo-diagrams/pgo_programming-gain.png';
+import pgo_programming_offset from '/img/modules/pgo/pgo-diagrams/pgo_programming-offset.png';
 
-import NormalledConnections from '/img/modules/pgo/pgo-diagrams/pgo_understanding-cascading-input-jacks​.png';
-import ControlsConnectorsIndicators from '/img/modules/pgo/pgo-diagrams/pgo_controls-connectors-indicators.png';
+import pgo_normalled_connections from '/img/modules/pgo/pgo-diagrams/pgo_understanding-cascading-input-jacks​.png';
+import pgo_controls_connectors_indicators from '/img/modules/pgo/pgo-diagrams/pgo_controls-connectors-indicators.png';
 
-import PatchUnipolarToBipolar from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-to-bipolar.png';
-import PatchBipolarToUnipolar from '/img/modules/pgo/pgo-diagrams/pgo_bipolar-to-unipolar.png';
-import PatchAmplifier from '/img/modules/pgo/pgo-diagrams/pgo_amplifier.png';
-import PatchBuffer from '/img/modules/pgo/pgo-diagrams/pgo_buffer.png';
-import PatchAttenuator from '/img/modules/pgo/pgo-diagrams/pgo_attenuator.png';
-import PatchInverter from '/img/modules/pgo/pgo-diagrams/pgo_inverter.png';
-import PatchNegative from '/img/modules/pgo/pgo-diagrams/pgo_negative.png';
-import PatchAdder from '/img/modules/pgo/pgo-diagrams/pgo_adder.png';
-import PatchAverage from '/img/modules/pgo/pgo-diagrams/pgo_average.png';
-import PatchWeightedMixer from '/img/modules/pgo/pgo-diagrams/pgo_weighted-mixer.png';
-import PatchCompressedMixer from '/img/modules/pgo/pgo-diagrams/pgo_compressed-mixer.png';
-import PatchSubtractor from '/img/modules/pgo/pgo-diagrams/pgo_subtractor.png';
-import PatchUnipolarModulator from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-modulator.png';
-import PatchDifferentialToSingleEnded from '/img/modules/pgo/pgo-diagrams/pgo_differential-to-single-ended.png';
-import PatchSingleEndedToDifferential from '/img/modules/pgo/pgo-diagrams/pgo_single-ended-to-differential.png';
+import pgo_patch_unipolar_to_bipolar from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-to-bipolar.png';
+import pgo_patch_bipolar_to_unipolar from '/img/modules/pgo/pgo-diagrams/pgo_bipolar-to-unipolar.png';
+import pgo_patch_amplifier from '/img/modules/pgo/pgo-diagrams/pgo_amplifier.png';
+import pgo_patch_buffer from '/img/modules/pgo/pgo-diagrams/pgo_buffer.png';
+import pgo_patch_attenuator from '/img/modules/pgo/pgo-diagrams/pgo_attenuator.png';
+import pgo_patch_inverter from '/img/modules/pgo/pgo-diagrams/pgo_inverter.png';
+import pgo_patch_negative from '/img/modules/pgo/pgo-diagrams/pgo_negative.png';
+import pgo_patch_add from '/img/modules/pgo/pgo-diagrams/pgo_adder.png';
+import pgo_patch_average from '/img/modules/pgo/pgo-diagrams/pgo_average.png';
+import pgo_weighted_mixer from '/img/modules/pgo/pgo-diagrams/pgo_weighted-mixer.png';
+import pgo_compressed_mixer from '/img/modules/pgo/pgo-diagrams/pgo_compressed-mixer.png';
+import pgo_subtract from '/img/modules/pgo/pgo-diagrams/pgo_subtractor.png';
+import pgo_unipolar_modulator from '/img/modules/pgo/pgo-diagrams/pgo_unipolar-modulator.png';
+import pgo_differential_to_single_ended from '/img/modules/pgo/pgo-diagrams/pgo_differential-to-single-ended.png';
+import pgo_single_ended_to_differential from '/img/modules/pgo/pgo-diagrams/pgo_single-ended-to-differential.png';
 
 # PGO
 <span class="head2_nolink">Programmable Gain & Offset</span>
 
-<img src={Frontpanel} alt="Frontpanel" /> 
+<img src={pgo_front_panel} alt="pgo_front_panel" /> 
 
 ## Overview
 
@@ -63,11 +64,19 @@ PGO performs many basic processing steps such as:
 | Included          | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
 | Video Sync        | None                                                                            |
 
-## Front Panel Options
+### Front Panel Options
 
-PGO ships with a black front panel installed. Red, green and blue panels are also included. 
+PGO ships with a black front panel installed. Red, green and blue panels are also included.
 
-<img src={AllFrontpanels} alt="All Frontpanels" />
+<img src={pgo_all_front_panels} alt="All PGO front panels" />
+
+&nbsp;<br />
+
+All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow. This gives great flexibility in designing modular systems.
+
+<!--
+AFR note: recommend adding an illustration of the reverse sides of the four panels.
+-->
 
 ---
 
@@ -80,11 +89,11 @@ PGO ships with a black front panel installed. Red, green and blue panels are als
 
 ---
 
-## Controls, Connectors & Indicators
+## Connectors
 
 The PGO design was informed by years of studying interfaces common to the building blocks of analog computers and video processing equipment. 
 
-<img src={ControlsConnectorsIndicators} alt="Controls Connectors And Indicators" />
+<img src={pgo_controls_connectors_indicators} alt="Controls Connectors And Indicators" />
 
 ---
 
@@ -98,7 +107,7 @@ PGO is a *patch-programmable* operator. Its overall function is determined by p
 
 PGO uses switched, or normalled, connections between some of its input jacks. With no cable inserted, a signal flows from one input jack to another. This connection is overridden when a cable is inserted. Normalled inputs are indicated on the front panel with arrows.
 
-<img src={NormalledConnections} alt="Normalled Connections"/>
+<img src={pgo_normalled_connections} alt="Normalled Connections"/>
 
 ### Difference Amplifier​
 
@@ -106,13 +115,13 @@ A difference amplifier subtracts one voltage from another. It is similar to a di
 
 In PGO's implementation, the positive input and negative input of the difference amplifier are each preceded by a four-input summing amplifier stage. This configuration allows the user to simultaneously add and subtract multiple signals. Due to the cascading input switches, the gain of each side of the difference amplifier may be programmed by which jacks are patched and which jacks are left open.
 
-<img src={ProgrammingGain} alt="Programming Gain"/>
+<img src={pgo_programming_gain} alt="Programming Gain"/>
 
 ### Voltage Reference​
 
 PGO provides a static voltage reference of 1V at its output jack. This level corresponds to a luminance value of white, or to the 100% brightness level of an RGB channel. This reference voltage may be patched anywhere in your system, or to the inputs on PGO.
 
-<img src={ProgrammingOffset} alt="Programming Offset"/>
+<img src={pgo_programming_offset} alt="Programming Offset"/>
 
 ---
 
@@ -122,7 +131,7 @@ PGO provides a static voltage reference of 1V at its output jack. This level cor
 
 Buffer the input signal with a unity gain of 1.0. Due to the module's propagation delay, it can be used to add slight delays in the video processing path, resulting in the picture shifting slightly to the right.
 
-<img src={PatchBuffer} alt="Buffer"/>
+<img src={pgo_patch_buffer} alt="Buffer"/>
 
 ---
 
@@ -130,7 +139,7 @@ Buffer the input signal with a unity gain of 1.0. Due to the module's propagatio
 
 Amplify the input signal with a gain of 2.
 
-<img src={PatchAmplifier} alt="Amplifier"/>
+<img src={pgo_patch_amplifier} alt="Amplifier"/>
 
 ---
 
@@ -138,7 +147,7 @@ Amplify the input signal with a gain of 2.
 
 Attenuate the input signal with a gain of 0.5.
 
-<img src={PatchAttenuator} alt="Attenuator"/>
+<img src={pgo_patch_attenuator} alt="Attenuator"/>
 
 ---
 
@@ -146,7 +155,7 @@ Attenuate the input signal with a gain of 0.5.
 
 Invert the arithmetic sign of the input signal. Positive voltages are converted to negative voltages, or vice versa.
 
-<img src={PatchInverter} alt="Inverter"/>
+<img src={pgo_patch_inverter} alt="Inverter"/>
 
 ---
 
@@ -154,7 +163,7 @@ Invert the arithmetic sign of the input signal. Positive voltages are converted 
 
 Convert a unipolar signal to negative by subtracting it from 1V. Useful for inverting keys, logic and RGB channels. An input signal ranging from zero to one results in an inverted output ranging from one to zero.
 
-<img src={PatchNegative} alt="Negative"/>
+<img src={pgo_patch_negative} alt="Negative"/>
 
 ---
 
@@ -162,7 +171,7 @@ Convert a unipolar signal to negative by subtracting it from 1V. Useful for inve
 
 Subtract one input from another.
 
-<img src={PatchSubtractor} alt="Subtractor"/>
+<img src={pgo_subtract} alt="Subtractor"/>
 
 ---
 
@@ -170,7 +179,7 @@ Subtract one input from another.
 
 Calculate the sum of two input signals.
 
-<img src={PatchAdder} alt="Adder" style={{}} />
+<img src={pgo_patch_add} alt="Adder" style={{}} />
 
 ---
 
@@ -178,7 +187,7 @@ Calculate the sum of two input signals.
 
 Calculate the average of two input signals.
 
-<img src={PatchAverage} alt="Average" style={{}} />
+<img src={pgo_patch_average} alt="Average" style={{}} />
 
 ---
 
@@ -186,7 +195,7 @@ Calculate the average of two input signals.
 
 Subtract a modulator from a primary signal, where both are unipolar, from zero to +1V. The primary signal *source a* passes unmodified when the modulating signal *source b* is at its midpoint of 0.5V. As a ramp shifter, *source a* is the input ramp, and *source b* is the positioning control voltage. As a brightness processor, *source a* is a unipolar color channel such as luma, red, green, or blue, and *source b* is the brightness adjustment.
 
-<img src={PatchUnipolarModulator} alt="Unipolar Modulator"/>
+<img src={pgo_unipolar_modulator} alt="Unipolar Modulator"/>
 
 ---
 
@@ -194,7 +203,7 @@ Subtract a modulator from a primary signal, where both are unipolar, from zero t
 
 Calculate a 3:1 weighted sum of two inputs, with 3 parts of *source a* for every 1 part of *source b*.
 
-<img src={PatchWeightedMixer} alt="Weighted Mixer"/>
+<img src={pgo_weighted_mixer} alt="Weighted Mixer"/>
 
 ---
 
@@ -202,7 +211,7 @@ Calculate a 3:1 weighted sum of two inputs, with 3 parts of *source a* for every
 
 Calculate the sum of four input signals and attenuate the mix to a value of one half. This is a common scenario to prevent clipping when mixing more than two input signals.
 
-<img src={PatchCompressedMixer} alt="Compressed Mixer"/>
+<img src={pgo_compressed_mixer} alt="Compressed Mixer"/>
 
 ---
 
@@ -210,7 +219,7 @@ Calculate the sum of four input signals and attenuate the mix to a value of one 
 
 Convert a +/-1V bipolar signal to the 0-1V unipolar range.
 
-<img src={PatchBipolarToUnipolar} alt="Bipolar To Unipolar"/>
+<img src={pgo_patch_bipolar_to_unipolar} alt="Bipolar To Unipolar"/>
 
 ---
 
@@ -218,7 +227,7 @@ Convert a +/-1V bipolar signal to the 0-1V unipolar range.
 
 Convert a 0-1V unipolar signal to the +/-1V bipolar range.
 
-<img src={PatchUnipolarToBipolar} alt="Unipolar To Bipolar"/>
+<img src={pgo_patch_unipolar_to_bipolar} alt="Unipolar To Bipolar"/>
 
 ---
 
@@ -235,7 +244,7 @@ Likewise with Single-ended to differential, it should have two separate output f
 
 Convert a differential input signal to a single-ended output signal. In a differential signal, information is encoded as the difference between a matched pair of separate signals. For example, balanced audio rejects noise on cable runs by sending both a positive and a phase-inverted negative signal on two conductors. Video chroma can be encoded as the difference between two color primaries, such as Pb and Pr, or I and Q. 
 
-<img src={PatchDifferentialToSingleEnded} alt="Differential To Single Ended"/>
+<img src={pgo_differential_to_single_ended} alt="Differential To Single Ended"/>
 
 ---
 
@@ -243,7 +252,7 @@ Convert a differential input signal to a single-ended output signal. In a differ
 
 Convert a single-ended input signal to a differential output signal. One possible application of differential outputs on PGO would be positive and negative versions of the same signal, such as luminance keys. Both signals will have the same amount of propagation delay, allowing precise horizontal alignment of positive and negative masks.
 
-<img src={PatchSingleEndedToDifferential} alt="Single Ended To Differential"/>
+<img src={pgo_single_ended_to_differential} alt="Single Ended To Differential"/>
 
 -->
 
@@ -317,7 +326,7 @@ Calibration is not required for this module.
 
 ## Maintenance
 
-Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
+Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the pgo_front_panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
 
 ---
 
@@ -337,23 +346,30 @@ Initial production version, October 2024
 
 Serial numbers 950065-0001 thru 950065-0100
 
-[Download PGO-REVB Schematic Diagram (PDF)](/pdf/modules/pgo/PGO-REVB_Schematic_Diagram.pdf)
+PGO-RevB Schematic Diagram
+&nbsp;<br />
+[Download PDF](/pdf/modules/pgo/PGO-REVB_Schematic_Diagram.pdf)
 
-[Download PGO-REVB Interactive Bill of Materials (ZIP)](/zip/modules/pgo/PGO-REVB_Interactive_Bill_of_Materials.zip)
+PGO-RevB Interactive Bill of Materials
+&nbsp;<br />
+[Download  (ZIP)](/zip/modules/pgo/PGO-REVB_Interactive_Bill_of_Materials.zip)
+
+<img src={pgo_pcb_front_smt_only} alt="PCB Front SMT Only" style={{height: 400}} />
+<img src={pgo_pcb_rear_smt_only} alt="PCB Rear SMT Only" style={{height: 400}} />
+<img src={pgo_pcb_front} alt="PCB Front" style={{height: 400}} />
+<img src={pgo_pcb_rear} alt="PCB Rear" style={{height: 400}} />
 
 ---
 
 ## DIY
 
-PGO is available as a DIY kit that includes a PCB assembly with pre-assembled SMT components and 4 frontpanel options.  The user must source the through-hole components such as headers and jacks, as well as a suitable power cable for the module.
+PGO is available as an assembled module, a full DIY kit, or a partial DIY kit.
 
-<img src={PCBFrontSMTOnly} alt="PCB Front SMT Only" style={{height: 400}} /> <img src={PCBRearSMTOnly} alt="PCB Rear SMT Only" style={{height: 400}} /> <img src={PCBFront} alt="PCB Front" style={{height: 400}} /> <img src={PCBRear} alt="PCB Rear" style={{height: 400}} />
+Downloads for the complete schematic and an interactive HTML Bill of Materials are found in the [Hardware Revisions](/docs/modules/pgo#hardware-revisions) section above.
 
-In the Hardware Revisions section at the end of this document, you will find downloads for the complete schematic and an interactive HTML BOM.
+### Partial DIY Components
 
-### Bill of Materials
-
-In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+The partial DIY kit from LZX includes the printed circuit board and front panel. The following components must be purchased separately from electronics parts vendors.
 
 | Manufacturer                        | Manufacturer Part Number | Description                              | Quantity | Reference Designators                        |
 | ----------------------------------- | ------------------------ | ---------------------------------------- | -------- | -------------------------------------------- |
@@ -366,9 +382,9 @@ In addition to the PCBs and components included with your DIY kit from LZX, you 
 
 This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
 
-1. Mount and solder rear facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
-1. Mount and solder front facing jacks next.
-2. Attach the frontpanel and secure it with mounting nuts for the jacks.
+1. Mount and solder rear-facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
+1. Mount and solder front-facing jacks.
+2. Attach the front panel and secure it with mounting nuts for the jacks.
 
 ---
 
@@ -384,26 +400,28 @@ The following tests are designed to verify the module is functioning as expected
 
 ### Setup
 
-- Connect the module to power and turn on your case
+- Connect the module to power and turn on the power supply
 - Prepare to probe the disconnected end of a patch cable -- in these tests, the positive probe should make contact with the tip of the plug, and the negative probe or grounding clip should make contact with the sleeve of the plug.
 
-### T1. Test voltage reference
+### Tests
+
+#### T1. Test voltage reference
 
 - Verify that the Voltage Reference Out is within +/-2% of 1.00V.
 
-### T2. Test difference amplifier positive inputs
+#### T2. Test difference amplifier positive inputs
 
 - Connect a cable from the voltage reference output to Difference Amplifier In1+
 - Verify that Difference Amplifier Out+ is within +/-2% of +2V
 - Verify that Difference Amplifier Out- is within +/-2% of -2V
 
-### T3. Test difference amplifier negative inputs
+#### T3. Test difference amplifier negative inputs
 
 - Connect a cable from the voltage reference output to Difference Amplifier In 1-
 - Verify that Difference Amplifier Out+ is within +/-2% of -2V
 - Verify that Difference Amplifier Out- is within +/-2% of +2V
 
-This concludes functional testing. If all steps starting with *Verify...* passed their conditions, your PGO is operating within expected parameters.
+This concludes functional testing. If all steps starting with *Verify...* passed their conditions, then PGO is operating within expected parameters.
 
 <!-- 
 ## Performance Testing

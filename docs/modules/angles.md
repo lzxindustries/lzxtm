@@ -16,15 +16,11 @@ import angles_quadrilateral from '/img/modules/angles/angles-diagrams/angles_qua
 import angles_ramp_generator_outputs from '/img/modules/angles/angles-diagrams/angles_ramp-generator-outputs.png';
 import angles_rgb_gradient from '/img/modules/angles/angles-diagrams/angles_rgb-gradient.png';
 import angles_triangle from '/img/modules/angles/angles-diagrams/angles_triangle.png';
-import angles_line_art_labeled from '/img/modules/angles/angles-diagrams/placeholders/angles_line_art_labeled_placeholder_330x684.png';
+import angles_line_art_labeled from '/img/modules/angles/angles-diagrams/angles_line_art_labeled_496x1024.png';
 
 
 # ANGLES
 <span class="head2_nolink">Fixed Ratio Mixer & Dual Ramp Generator</span>
-
-<!-- AFR note: I separated the page title CSS styling from metadata -->
-
-<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
 
 <!-- AFR note: these two diagrams freak me out because they show connecting multiple outputs to a single input. I thought that dirty mixing was bad practice. I'm commenting the diagrams out for now. -->
 
@@ -35,10 +31,6 @@ import angles_line_art_labeled from '/img/modules/angles/angles-diagrams/placeho
 {/*
 <img src={angles_triangle} alt="Diagram" />
 */}
-<!-- 
-:::warning
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-::: -->
 
 <img src={angles_frontpanel} alt="ANGLES front panel" />
 
@@ -70,7 +62,7 @@ Angles is a great support module to add to a system including one or more of the
 
 ---
 
-## Controls, Connectors & Indicators
+## Connectors & Indicators
 
 <img src={angles_controls_and_connectors} alt="ANGLES controls and connections" />
 
@@ -183,10 +175,6 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 
 ## Full Specifications
 
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'angles_line_art_labeled_placeholder_330x684.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
-
 <!-- AFR note: there were clerical errors on the product page where I got the front panel function info. J29 was listed as 165 degrees, the same as J30. J29 should be 75 degrees, right? Also, J23 was out of order.-->
 
 <table>
@@ -239,8 +227,6 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 | J32  | 345 degrees out<br />(17% D + 83% A)         |
 
 </td></tr></table>
-
----
 
 ### Technical Data
 

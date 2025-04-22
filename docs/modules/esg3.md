@@ -1,5 +1,5 @@
 ---
-draft: true
+draft: false
 title: "ESG3: Encoder & Sync Generator"
 ---
 
@@ -77,7 +77,7 @@ In the table below, the numeral **0** represents the **OFF** state, with the swi
 | 1080p25        | 1011xxxx |
 | 1080p29        | 1101xxxx |
 | 1080p30        | 0111xxxx |
-| RsGB           | xxxxxxx1 |
+| RGsB           | xxxxxxx1 |
 | YPbPr          | xxxxxxx0 |
 
 <!--

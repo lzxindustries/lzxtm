@@ -33,7 +33,7 @@ import lnk_understanding_cascading_input_jacks from '/img/modules/lnk/lnk-diagra
 ---
 -->
 
-## Controls, Connectors & Indicators
+## Connectors
 
 <img src={lnk_controls_connectors_indicators} alt="lnk_controls_connectors_indicators" /> 
 
@@ -130,29 +130,33 @@ The hardware revision code is printed on the circuit board visible from the rear
 
 Initial production version, February 2025
 
-[Download LNK-RevA Schematic Diagram (PDF)](/pdf/modules/lnk/LNK-REVA_Schematic_Diagram.pdf)
+LNK-RevA Schematic Diagram
+&nbsp;<br />
+[Download PDF](/pdf/modules/lnk/LNK-REVA_Schematic_Diagram.pdf)
 
-[Download LNK-RevA Interactive Bill of Materials (ZIP)](/zip/modules/lnk/LNK-REVA_Interactive_Bill_of_Materials.zip)
+LNK-RevA Interactive Bill of Materials
+&nbsp;<br />
+[Download ZIP](/zip/modules/lnk/LNK-REVA_Interactive_Bill_of_Materials.zip)
 
 ---
 
 ## DIY 
 
-LNK is available as a DIY kit that includes the main PCB and the front panel.  The user must source the through-hole components such as jacks and potentiometers.
+LNK is available as an assembled module, a full DIY kit, or a partial DIY kit.
 
-In the Hardware Revisions section, you will find downloads for the complete schematic and an interactive HTML BOM.
+Downloads for the complete schematic and an interactive HTML Bill of Materials are found in the [Hardware Revisions](/docs/modules/lnk#hardware-revisions) section above.
 
-### Bill of Materials
+### Partial DIY Components
 
-In addition to the PCBs and components included with your DIY kit from LZX, you will need to source the following components from electronics parts vendors.
+The partial DIY kit from LZX includes the printed circuit board and front panel. The following components must be purchased separately from electronics parts vendors.
 
-| Manufacturer                        | Manufacturer Part Number | Description              | Quantity | Reference Designators                                                 |
-| ----------------------------------- | ------------------------ | ------------------------ | -------- | --------------------------------------------------------------------- |
+| Manufacturer                        | Manufacturer Part Number | Description              | Quantity | Reference Designators                             |
+| ----------------------------------- | ------------------------ | ------------------------ | -------- | ------------------------------------------------- |
 | Wenzhou QingPu Electronics Co., Ltd | WQP-WQP518MA             | 3.5mm Jack Mono Switched | 16       | J1, J2, J3, J4, J5, J6, J7, J8, J9, J10, J11, J12, J13, J14, J15, J16 |
 
 ### Assembly Instructions
 
 This assembly job is recommended for intermediate level DIYers who are comfortable soldering thru hole joints in close proximity to surface mounted parts.
 
-1. Mount and solder front facing jacks.
+1. Mount and solder front-facing jacks.
 2. Attach the front panel and secure it with mounting nuts for the jacks.
