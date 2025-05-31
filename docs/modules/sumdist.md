@@ -18,7 +18,7 @@ import sum_dist_line_art_labeled from '/img/modules/sum-dist/sum-dist-diagrams/s
 
 ## Overview
 
-Sum/Dist is a function bank for adding and distributing signals. It includes four three-input summing amplifiers and four three-output distribution amplifiers.
+Sum/Dist is a function bank for adding and distributing signals. Each of its four summing amplifiers adds the three inputs to a single output. Each of its four distribution amplifiers duplicates a single input to three buffered outputs.
 
 ---
 
@@ -33,29 +33,36 @@ Sum/Dist is a function bank for adding and distributing signals. It includes fou
 | Video Sync        | None                                                                            |
 
 
-<!--
 ## System Integration Advice
 
-TODO
+Sum/Dist is a helpful utility module, particularly in larger systems with complex patches involving many modules. Sum/Dist performs the more basic functions, freeing up higher-level modules for what they do best. For example, while we can easily add three signals using SMX3, it would be better to reserve SMX3 for more creative applications of matrix mixing and routing.
+
+As system size grows, the value of utility modules such as Sum/Dist also grows. Large systems can benefit from two or more Sum/Dist modules.
 
 ---
--->
 
-<!--
 ## Connectors
 
-TODO
+The top four rows of jacks are summing amplifiers. Each row is an independent **Sum** function block, with three inputs and one output.
+
+The bottom four rows of jacks are distribution amplifiers. Each row is an independent **Distribution** function block, with one input and three identical buffered outputs.
 
 ---
--->
 
-<!--
 ## Operation
 
-TODO
+As mentioned above, Sum/Dist liberates high-level modules from performing the basic operation of addition. In addition to adding up to three separate signals, each Sum function block of Sum/Dist can act as a 2x or 3x multiplier. Send the same signal into two or three Sum inputs on the same row. Passive mults such as TipTop Audio Stackcables are probably OK. If the cable lengths are short, they won't pick up much noise. But if necessary, use a Distribution function block to create buffered copies of the signal before sending them to a Sum function block.
+
+Adding a negative number is the same as subtracting that number, so the Sum function blocks can also be used to perform subtraction. Any negative voltage patched into a Sum input will be subtracted from the other inputs. While we could use Proc to produce that negative signal, once again, it would probably be better to reserve Proc for more creative applications such as colorization. This is where the value of lower-level modules such as Sum/Dist and the P-series becomes apparent. We can use PGO to subtract one signal from another, but if we want to add two signals and subtract a third one, we can use PGO and Sum/Dist together.
+
+Function block outputs can be sent to other function block inputs to calculate simple algebra. Addition, subtraction, and multiplication can be combined in many ways.
+
+The buffered mults of the Distribution function banks are valuable in fighting noise. By maintaining a constant current level, an active mult keeps the signal high relative to the noise floor. Since voltage is conserved, a passive mult divides the current by the number of signal splits. A three-way passive mult divides the current to one third of its original value, significantly lowering the signal strength relative to the noise floor.
+
+Since the function blocks are buffered, Sum/Dist can also serve as a delay line, shifting the video image slightly to the right.
 
 ---
--->
+
 
 <!--
 ## Example Patches

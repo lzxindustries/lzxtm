@@ -191,6 +191,12 @@ RGB color picker
 
 ---
 
+<!--
+
+AFR note: commented out this patch example due to errors in the animation.
+Vertical ramp is supposed to be patched into Proc B2.
+Proc output 2 is supposed to be patched into DSG3 V input.
+
 ### Ramp shift
 <img src={proc_ramp_shifter} alt="Proc ramp shift" />
 
@@ -200,6 +206,7 @@ Ramp shift
 */}
 
 ---
+-->
 
 ### Invert
 <img src={proc_inverter} alt="Proc invert" />

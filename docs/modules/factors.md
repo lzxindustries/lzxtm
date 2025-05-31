@@ -28,15 +28,15 @@ import factors_line_art_labeled from '/img/modules/factors/factors-diagrams/fact
 
 ## Overview
 
-Factors is a triple four-quadrant multiplier and modulator. It's specifically designed for the LZX patchable video standard of 0 to +1v. Use it to adjust image contrast or predictably control the transforms of vector graphics.
+Factors is a triple four-quadrant multiplier and modulator. It's specifically designed for the LZX patchable video standard of 0 to +1v. Use it to modulate amplitudes, adjust image contrast, or predictably control the transforms of vector graphics.
 
-For video images and patterns, Factors is a symmetrical contrast adjuster. The contrast adjustment is centered on the mid-gray value of 0.5 volts: a "fade to gray". The ability to simultaneously set the black point and white point with a single voltage controllable parameter opens up interesting visual possibilities.
+For video images and patterns, Factors is an amplitude modulator and symmetrical contrast adjuster. The scaling operation is centered on the mid-gray value of 0.5 volts: a "fade to gray". The ability to simultaneously set the black point and white point with a single voltage controllable parameter opens up interesting visual possibilities.
 
-For XY vector graphics, Factors allows transforms (position, rotation, scale) to be centered on the raster or oscillographic figure. An ordinary one-quadrant multiplier or voltage controlled amplifier would perform transforms around a corner of the figure. An ordinary four-quadrant multiplier would perform transforms around the center of the figure, but would require bipolar voltages throughout the patch.
+For XY vector graphics, Factors allows transforms (position, rotation, scale) to be centered on the raster or oscillographic figure. An ordinary one- or two-quadrant multiplier or voltage controlled amplifier would perform transforms around a corner of the figure. An ordinary four-quadrant multiplier would perform transforms around the center of the figure, but would require bipolar voltages throughout the patch. Factors is the solution for centered transforms of unipolar signals such as video ramps.
 
 ### Legacy
 
-Factors both simplifies and extends the functionality of the Fader submodule of Bridge. The "fade to gray" paradigm echoes the behavior of the historic Sandin Image Processor, while avoiding the challenges imposed by the bipolar video signals of the IP.
+Factors both simplifies and extends the functionality of the Cadet X Multiplier, and of the Expedition series module Bridge. The "fade to gray" paradigm echoes the behavior of the historic Sandin Image Processor, while avoiding the challenges imposed by the bipolar video signals of the IP.
 
 ---
 
@@ -97,6 +97,8 @@ AFR note: I'm fuzzy on the math happening inside Factors. I want to put a formul
 Factors solves this problem by performing multiplication operations centered on a value of 0.5 rather than zero. Incoming signals are internally biased down by 0.5 volts, making them bipolar. Then Factors performs a conventional 4QM operation. Finally, Factors biases the resulting product back up by 0.5 volts. The end result is that the pivot point of XY vector transforms is in the center of the figure instead of at a corner. Additionally, the resulting scaling operation doesn't pass through zero, and doesn't flip the image horizontally and vertically. The image never turns inside out, it scales from zero to its maximum size.
 
 Factors is not just for XY vector graphics, it also applies to conventional video images. It gives the artist another tool for manipulating images. An ordinary one-quadrant multiplier or voltage controlled amplifier adjusts the gain of a signal centered on a value of zero volts: a fade to black. Factors modulates the gain of a signal centered on the midpoint of 0.5 volts: a fade to gray.
+
+For low frequency applications, Factors performs proper amplitude modulation on unipolar signals. Complex modulation effects can be achieved by multiplying two unipolar signals, resulting in a unipolar output. No need to complicate the patch with conversions between unipolar and bipolar signals.
 
 ---
 
