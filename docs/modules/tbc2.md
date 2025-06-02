@@ -128,7 +128,7 @@ The bottom pair of three video output jacks are color-coded to Red, Green and Bl
 The top video output jacks are dedicated to luminance signals, also known as **Y**. The RGB components of the Decoder or Media submodules are summed. However, the RGB components do not contribute to luminance in equal amounts. RGB components are weighted according to the formula set by the CCIR-601 video standard. This unequal weighting accounts for the human perception of brightness as a function of hue. Green looks brighter than red, red looks brighter than blue. The result of the RGB summing formula is that a black and white luminance image appears to have the same approximate value tones as a full color image.
 
 $$
-Y = 0.299R + 0.715G + 0.114B
+Y = 0.299R + 0.587G + 0.114B
 $$
 
 <!--
@@ -303,16 +303,16 @@ Media Player output video standard follows the Genlock Module.
 
 ---
 
-### MicroSD Card Compatibility
+### microSD Card Compatibility
 
-TBC2 is compatible with some, but not all, MicroSD cards. We have tested the following specific brands and models, and verified them to be hassle-free.
+TBC2 is compatible with some, but not all, microSD cards. We have tested the following specific brands and models, and verified them to be hassle-free.
 
-| Brand/Series     |	Size       |
-|------------------|---------------|
-| SanDisk	       | 8GB, 16GB     |
-| SanDisk EDGE	   | 8GB           |
+| Brand/Series     | Size           | SKU            |
+|------------------|----------------|----------------|
+| SanDisk          | 8 GB           | SDSDQAB-008G   |
+| SanDisk	       | 16 GB          | SDSDQAB-016G   |
 
-To avoid counterfeit MicroSD cards, always purchase from a trusted vendor with name-brand packaging.
+To avoid counterfeit MicroSD cards, always purchase from a trusted vendor. We recommend [Mouser](https://www.mouser.com) and [DigiKey](https://www.digikey.com).
 
 ---
 

@@ -199,7 +199,7 @@ The table below shows how YUV is calculated, and the names of its channels as im
 
 |                              | Luminance (Y) | Color difference ch 1 | Color difference ch 2 |
 |------------------------------|---------------|-----------------------|-----------------------|
-| **Formula**                  | 0.299R + 0.715G + 0.114B<br />(see [TBC2](/docs/modules/tbc2#1v-video-outputs) documentation)         | R - Y    | B - Y    |
+| **Formula**                  | 0.299R + 0.587G + 0.114B<br />(see [TBC2](/docs/modules/tbc2#1v-video-outputs) documentation)         | R - Y    | B - Y    |
 | **Generic name**             | Y             | U                     | V                     |
 | **Analog composite & Y/C**   | Y             | I                     | Q                     |
 | **Analog component**         | Y             | Pb                    | Pr                    |
@@ -248,12 +248,12 @@ Understanding how I and Q operate is essential to advanced Swatch patches. To ro
 $$
 I_{out} = (I_{in} \cdot sin) + (Q_{in} \cdot cos)
 \newline
-Q_{out} = (Q_{in} \cdot sin) + (I_{in} \cdot cos)
+Q_{out} = (Q_{in} \cdot sin) - (I_{in} \cdot cos)
 $$
 
 Sine and cosine can come from a quadrature sine oscillator, or any device that can calculate sine and cosine voltages from a single value. LZX doesn't currently make a quadrature oscillator, but Syntonie offers the **VU006**, which outputs sines in the unipolar LZX video range of 0 to +1 volts.
 
-To rotate hue in a continuous cycle, multiply VU006 outputs with I and Q using 2x Factors or 4x PRM. Then add the products using a summing amplifier such as Sum/Dist, Proc, or 2x PGO.
+To rotate hue in a continuous cycle, multiply VU006 outputs with I and Q using 2x Factors or 4x PRM. Then add and subtract those products using modules such as Sum/Dist, Proc, or 2x PGO.
 
 :::tip
 Some multifunction Eurorack control modules provide the ability to output sine and cosine values calculated from any signal, such as a static or low frequency voltage. One example is **Ornament & Crime** with the **Hemispheres** firmware. The applet **VectMorph** accepts an arbitrary voltage and outputs two voltages that are 90 degrees out of phase.

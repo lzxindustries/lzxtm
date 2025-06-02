@@ -1,6 +1,6 @@
 ---
 draft: false
-title: "SMX3: 3x3 Matrix Mixer"
+title: "SMX3: Summing Matrix Mixer"
 ---
 
 :::warning
@@ -10,7 +10,7 @@ This page is a draft under construction. Stay tuned to our newsletter for the of
 import smx3_line_art_labeled from '/img/modules/smx3/smx3-diagrams/smx3_line_art_labeled_496x1024.png';
 
 # SMX3
-<span class="head2_nolink">3x3 Matrix Mixer</span>
+<span class="head2_nolink">Summing Matrix Mixer</span>
 
 {/*
 <img src={Frontpanel} alt="Frontpanel" />
@@ -18,7 +18,7 @@ import smx3_line_art_labeled from '/img/modules/smx3/smx3-diagrams/smx3_line_art
 
 ## Overview
 
-SMX3 Matrix Mixer is a flexible mixing and routing module with nine inputs and three outputs. Each input can amplify, attenuate, or invert a signal in a range from -2x to +2x.
+SMX3 is a flexible mixing and routing module with nine inputs and three outputs. Each input can amplify, attenuate, or invert a signal in a range from -2x to +2x.
 
 The inputs form a matrix of three rows and three columns. They're internally normalled, allowing signals to cascade down from one patch point to another. This is the key to many creative operations such as outputting multiple distinct mixes of input signals. For example, send three color components to the top row of inputs, and mix them in any way imaginable for a startling array of colorization options.
 
@@ -32,6 +32,10 @@ Core functions of SMX3 include:
 * Amplify
 * Invert
 * Colorize
+
+### Legacy
+
+SMX3 is the second generation module of its type, preceded by the Visionary series **Video Blending Matrix**. SMX3 is simpler and much more compact. It has fewer channels and no switches. Features such as static voltages and **Absolute** difference modes are implemented in other Gen3 modules such as Proc and DSG3. This allows SMX3 to focus on its core function as a mixer. Unlike Video Blending Matrix, SMX3 also includes 2x amplifiers on each channel.
 
 ---
 
@@ -49,9 +53,11 @@ Core functions of SMX3 include:
 
 ## System Integration Advice
 
-SMX3 is a core element of any complete modular video synthesizer. It's essential for controlling color, either in RGB or YIQ component space.
+Like Proc, SMX3 is a core element of any modular video synthesizer. The list of applications for SMX3 is very long. It's particularly valuable for controlling color, either in RGB or YIQ component space.
 
-SMX3 doesn't internally generate any voltages, so it can't bias a signal. It pairs well with modules that provide static voltages, such as Proc, PGO, and Matte. These pairings enable greater creative flexibility. For example, SMX3 + Proc makes it possible to freely mix unipolar and bipolar signals such as YIQ color components from Swatch.
+SMX3 doesn't generate any voltages, so it can't bias a signal. It pairs well with modules that provide static voltages, such as Proc, PGO, and Matte. These pairings enable greater creative flexibility. For example, SMX3 + Proc makes it possible to freely mix unipolar and bipolar signals such as YIQ color components from Swatch.
+
+Two or more SMX3 modules greatly expand the potential for complex routing and mixing. For example, with two SMX3 modules, two RGB video sources could be colorized.
 
 :::note
 SMX3 can accept or output both positive and negative voltages. However, many modules such as encoders can't accept any voltage outside the range of zero to +1 volts. 
@@ -59,20 +65,36 @@ SMX3 can accept or output both positive and negative voltages. However, many mod
 
 ---
 
-
-<!--
 ## Controls & Connectors
 
----
--->
+The nine inputs of SMX3 are arranged in three rows, numbered **1**, **2**, and **3**. The rows are color-coded as red, green, and blue, but any signal may be patched into the inputs. The sum of each row appears at the corresponding output on the right of the module. The internal normalling of the inputs allows signals to flow downward to the inputs below.
 
-<!--
+The three columns of inputs are labeled **A**, **B**, and **C**. Three inputs in each column allow the mixing of three signal triplets, such as RGB components.
+
+Each of the nine inputs passes through a polarizer circuit controlled by the corresponding potentiometer, labeled **A1** through **C3**. Unlike the attenuverters seen on many other LZX modules, the SMX3 pots are capable of +/- 2x amplification. At the center position, the multiplication factor of the incoming signal is zero, and the source is not added to the mix. Fully clockwise rotation amplifies the source by a factor of two. Fully counter-clockwise rotation  multiplies the source by a factor of negative two. Some SMX3 front panels are labeled **+1** and **-1** to indicate approximate knob positions of positive and negative unity gain.
+
+---
+
 ## Operation
 
-TODO
+The simple interface of SMX3 makes it highly intuitive for a wide variety of mixing, routing, and signal processing operations. Each input can be amplified, attenuated, or inverted. Inputs in the same row can be added or subtracted from the mix. The number of possible applications is too many to list here. But, for example, we can subtract one video signal from another, then bias the mix with a low frequency control signal.
+
+Thanks to the internal normalling, the three input/output rows can operate independently or in concert. In the above example of subtracting one video signal from another and biasing the mix, the video signals can be RGB triplets or independent single-channel signals. The low frequency control signal can affect any or all three outputs, simply by patching it into the appropriate row input. Patching into the top (red) row affects all outputs, the middle (green) row affects the second and third outputs, and the bottom (blue) row only affects the third (bottom) output.
+
+### Multiple-stage mixing
+
+To mix more than three single-channel signals, patch one of the outputs of SMX3 to one of the inputs on a different row. In this way, a single SMX3 module can mix up to seven single-channel signals.
+
+Mixing more than three signal triplets is accomplished with multiple SMX3 modules. Sending the output of one SMX3 to the input of a second SMX allows the mixing of up to five signal triplets.
+
+Whenever patching SMX3 to itself, or to another SMX3, it makes sense to set the summed outputs to unity gain at the next input stage. In other words, if an SMX3 output is going to an SMX3 input, the best practice is to set the second-stage input potentiometer(s) to pass the incoming summed signal transparently, without amplification or attenuation. That way, there are no unpleasant surprises from multiple amplification stages. Final signal outputs equal the values set at their initial inputs.
+
+:::note
+Due to the DC amplification circuitry of SMX3, setting all potentiometers to the center position doesn't necessarily result in an output of zero volts. This may be a concern if you're not using all of the inputs. A small floating DC voltage may contribute the output, and changing the knob position of an unused input may shift that DC offset. If this is an issue, insert a dummy plug or zero voltage source to the unused input(s). The dummy plug must connect the tip to the sleeve.
+:::
 
 ---
--->
+
 
 <!--
 ## Example Patches

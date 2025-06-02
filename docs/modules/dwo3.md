@@ -22,26 +22,20 @@ import dwo3_line_art_labeled from '/img/modules/dwo3/dwo3-diagrams/dwo3_line_art
 
 ## Overview
 
-- Two discrete analog triangle core VCOs
-- Four classic waveforms for video synthesis
-  - sine
-  - square
-  - sawtooth
-  - triangle
-- Frequencies from several seconds to 2 MHz
-- Eight frequency range / video sync modes
-  - Locked Horizontal
-  - Locked Upper Vertical 
-  - Locked Lower Vertical 
-  - Seconds
-  - Frames
-  - Free Lower Vertical
-  - Free Upper Vertical
-  - Free Horizontal
-- Exponential CV input covers a 100:1 tuning ratio for each frequency range
-- External clock inputs
-  - Phase reset in locked ranges
-  - Gated reset in unlocked ranges
+Capable of an exceptionally wide range of frequencies and precision modulation, DWO3 is the most advanced analog video oscillator available. It's capable of generating high frequency waveforms for SD and HD video pattern generation, or low frequencies for animation control. High frequency oscillation modes can run freely, or lock to incoming video sync.
+
+DWO3 features two independent oscillators, each with four different simultaneous waveform outputs. Each oscillator can be frequency modulated with a linear input, an exponential input with an attenuverter, or both. A gate supplied to the Reset input blanks off the oscillator output and resets the phase, starting a new cycle.
+
+Features:
+
+- Two discrete voltage-controlled oscillators
+- Four waveforms: sine, square, sawtooth, and triangle
+- Eight frequency ranges, from several seconds to 2 MHz
+- Extended low frequency range of ~5 minutes per cycle with CV input
+- Linear and Exponential frequency modulation CV inputs
+- Exponential modulation CV Depth control with 100:1 tuning ratio
+- Frequency fine tuning with CV Depth, even with no signal patched in
+- Reset inputs for oscillator output gate and cycle phase reset
 
 ---
 
@@ -59,29 +53,92 @@ import dwo3_line_art_labeled from '/img/modules/dwo3/dwo3-diagrams/dwo3_line_art
 
 ## System Integration Advice
 
-Oscillators are essential components of any video synthesizer. The exceptionally wide frequency range of DWO3 allows it to function as a frame-locked or chaotic pattern generator and a low frequency animation controller.
+Oscillators are essential components of any video synthesizer. The wide frequency range of DWO3 allows each oscillator to generate a video pattern or a low frequency animation control voltage. It's the most versatile option available.
 
-<!--
+The compact form factor and versatility of DWO3 facilitates the configuration of modular synths with many oscillators that can serve multiple functions. For example, two DWO3 modules take up 24 HP, and can be dynamically patched to serve as any combination of four horizontal, vertical, or low frequency oscillators. One DWO3 can serve as a horizontal and vertical pattern generator, and the other can provide animation modulation.
+
+---
 
 ## Controls, Connectors & Indicators
 
-TODO
+DWO3 is divided into two identical submodules, labeled **OSC1** and **OSC2**. Inputs and outputs of OSC1 are on the left, inputs and outputs of OSC are on the right.
+
+At the top of each submodule, the base frequency of the oscillator is adjusted via the potentiometer labeled **FREQ**.
+
+The frequency range for each oscillator is set with an eight-position rotary switch in the center of the module, labeled **RANGE**. Oscillator 1 range is on top, Oscillator 2 range is below.
+
+Four simultaneous waveform outputs are available at the bottom of each submodule. All outputs of a single oscillator are at the same phase-aligned frequency. The waveforms are **Sine**, **Square**, rising **Sawtooth**, and **Triangle**.
+
+### Inputs
+
+Directly above the oscillator outputs are two input jacks, labeled **RST** and **CV LIN**. As with all control voltage inputs on Gen3 modules, these can accept video rate signals. The Reset input accepts a gate that can blank the oscillator output, or reset the phase of the oscillator. The Linear CV input accepts a continuous signal that directly frequency modulates the oscillator, without any depth control.
+
+Above the RST and CV LIN inputs is the exponentially controlled frequency modulation input jack, labeled **FREQ CV**. A signal supplied to this input is multiplied by the potentiometer directly above it, the **Frequency CV Depth**. This pot is an attenuverter, providing exponential control over the modulation amount. Turning the knob away from center increases the modulation amount exponentially, with a range of 100:1. With an incoming positive voltage, clockwise rotation increases the oscillator frequency. Counter-clockwise rotation inverts the modulation, decreasing the oscillator frequency.
+
+In the absence of an incoming modulation signal, the Freq CV pot works as a fine tuner for the oscillator frequency. A static voltage of 0.1 v is normalled into the Frequency CV input.
+
+### LEDs
+
+Phase of the oscillator is indicated by the LED lights at the top of the module. Each oscillator starts at a value of zero and rises over time. Low values are indicated by a green light, and high values are indicated by a red light. At high frequencies, the LED displays different colors depending on the average value of the output at the current time. In most cases, that results in a yellow or amber light. However, even at high frequencies, some settings can result in an output of zero across the entire frame, resulting in a green light. Likewise, when the output is blanked off by a Reset gate, the LED displays green.
 
 ---
 
 ## Operation
 
-TODO
+### Frequency range
+
+The most basic control on DWO3 is the frequency range. The options, from left to right, are:
+
+- Locked Horizontal
+  - Horizontal video frequencies, locked to sync
+- Locked Upper Vertical
+  - Vertical video frequencies, locked to sync, higher range
+- Locked Lower Vertical
+  - Vertical video frequencies, locked to sync, lower range
+- Seconds
+  - Lowest frequencies, down to approximately one cycle per five seconds
+  - Extended CV low frequency down to approximately one cycle per five minutes
+- Frames
+  - Range from approximately 2 Hz up to vertical video frequencies
+- Free Lower Vertical
+  - Vertical video frequencies, free-running, lower range
+Free Upper Vertical
+  - Vertical video frequencies, free-running, upper range
+- Free Horizontal
+  - Horizontal video frequencies, free-running
+
+:::note
+Vertical frequency ranges produce horizontal bands, from side to side. Horizontal frequency ranges produce vertical bands, from top to bottom. The horizontal frequency range is the highest.
+:::
+
+:::tip
+To extend the low frequency range, supply a positive static voltage to the Freq CV input. Set the Freq CV knob counterclockwise to invert the incoming signal. (You can also use a negative static voltage, and set the Freq CV knob clockwise.) With this technique, you can get a frequency as slow as once cycle every five minutes.
+:::
+
+The frequency ranges overlap with one another. For example, a high knob setting in the Frames range will produce a result similar to a lower knob setting in the Free Lower Vertical range. This is by design, to enable creative freedom in frequency modulation. If the ranges did not overlap, transitions between particular frequencies might not be possible.
+
+Especially in high definition formats, it's normal to see some amount of noise in the highest frequency ranges, above the horizontal frequency of video. The cleanest output is achieved with barrel power instead of Eurorack ribbon power. Most Eurorack power supplies weren't designed for such high frequencies, and our perception is much more sensitive to visual noise than to auditory noise.
+
+### Reset
+
+A positive gate supplied to the **RST** jack blanks the output of the oscillator. When the gate returns to zero, the phase is reset. The oscillation resumes, starting from a phase of zero, which is also a value of zero.
+
+:::note
+Some combinations of base/carrier frequency and Reset gate frequency will result in a constant output of zero volts.
+:::
+
+Just as with frequency modulation, if the frequencies of the base/carrier wave and the Reset gate are similar, the visual result will be "beating", or patterns of interference. This is one way to add variable width to visual elements.
 
 ---
 
+<!--
 ## Example Patches
-
 TODO
 
+---
 -->
 
----
+
 
 ## Installation
 
@@ -104,7 +161,7 @@ TODO
 * Ensure that no mounting screws are in any holes in the area where you wish to mount the module.
 * Carefully test fit the module with its attached power cable in the open space in the EuroRack enclosure. If it is obstructed by the enclosure or any internal assemblies, abort this procedure.
 * Connect the disconnected end of the power cable to the power supply.
-* Connect the sync cable to a sync source or the last module in the sync chain.
+* Connect the sync cable to a sync source, such as a sync DA or the last module in the sync chain.
 * Mount the module to the EuroRack rails using all mounting holes.
 * Store the unused cable along with the product box in a safe location. 
 * Power on the EuroRack enclosure and start patching.
@@ -195,7 +252,8 @@ TODO
 <!--
 ## Calibration
 
-Calibration is not required for this module.
+AFR note:
+Need to add calibration procedure, trim pots on rear
 
 ---
 -->
