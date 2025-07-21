@@ -1,45 +1,72 @@
 ---
-sidebar_position: 4
+draft: false
+title: "Your First Patch"
+sidebar_position: 5
 ---
 
-# Your First Patch
+import your_first_patch_kit from '/img/guides/your_first_patch_kit.jpg';
+import your_first_patch_video_connection from '/img/guides/your_first_patch_video_connection.jpg';
+import your_first_patch_video_source from '/img/guides/your_first_patch_video_source.jpg';
+import your_first_patch_color_pattern from '/img/guides/your_first_patch_color_pattern.jpg';
+import your_first_patch_complexity_1 from '/img/guides/your_first_patch_complexity_1.jpg';
+import your_first_patch_complexity_2 from '/img/guides/your_first_patch_complexity_2.jpg';
 
 :::warning
 This documentation site is a work in progress, and all content is subject to change before the official launch.
 :::
 
-This patch assumes you have followed the module installation instructions above, and your LZX Modular system is powered on.
+# Your First Patch
 
-Here's what you will need:
+This patch assumes successful completion of the module installation procedure on the previous page, and that the LZX modular system is powered up.
 
-ESG3 Encoder & Sync Generator module
-DSG3 Dual Shape Generator module
-An RCA-to-RCA cable for composite video output
-A video display with composite video input
-Three 3.5mm patch cables
-/media/GettingStartedKit.jpg
+---
 
-### Initial Settings
+## Requirements
 
-All toggle switches on ESG3 and DSG3 should be reset to their center (middle) position. All knobs on ESG3 should be set to their detented (middle) position.
+Here's what you'll need:
 
-Turn all of ESG3's front DIP switches to their OFF position. If you want NTSC output, leave them all OFF. If you want PAL output, turn switch #1 to the ON position.
+- **ESG3** Encoder & Sync Generator
+- **DSG3** Dual Shape Generator
+- RCA cable for composite video output
+- Video display monitor with composite video input
+- At least five 3.5 mm patch cables
 
-### Connecting A Video Display
+<img src={your_first_patch_kit} alt="Requirements" />
 
-Connect your video display's CVBS input to your ESG3 Video Encoder & Sync Generator module's CVBS output.
+---
 
-/media/GettingStartedVideoSource.jpg/media/GettingStartedVideoConnector.jpg
+## Initial Settings
 
-### Generating A Color Pattern
+On ESG3 and DSG3, set all toggle switches to their center (middle) position.
 
-Patch any three of DSG3's eight outputs to your ESG3's Red, Green & Blue input jacks. Play with the knobs and switches on ESG3 and DSG3, exploring the capabilities of your patternmaking patch. Patch different outputs from DSG3 to observe different combinations.
+On ESG3, set all knobs to their middle position.
 
-/media/GettingStartedPatch01.jpg
+On ESG3, flip all DIP switches down to their **OFF** position. If you want NTSC output, leave them all off. If you want PAL output, flip switch #1 up to the **ON** position.
 
-### Adding Complexity
+---
 
-Next, let's make the geometry of your pattern capable of more complex results through series processing. Patch two outputs from DSG3's first shape generator, to the inputs of it's second shape generator. Now take your RGB pattern from the second shape generator's outputs.
+## Connecting A Video Display
 
-/media/GettingStartedPatch02.jpg/media/GettingStartedPatch03.jpg
+Connect the ESG **CVBS** output to the video display's CVBS input. (CVBS is a technical abbreviation for composite video.)
 
+<img src={your_first_patch_video_source} alt="Video Source" />
+
+<img src={your_first_patch_video_connection} alt="Video Connection" />
+
+---
+
+## Generating A Color Pattern
+
+Patch any three of DSG3's eight outputs to the **Red**, **Green** and **Blue** inputs of ESG3. Play with the knobs and switches on ESG3 and DSG3, exploring the capabilities of your patternmaking patch. Patch different outputs from DSG3 to observe different combinations.
+
+<img src={your_first_patch_color_pattern} alt="Color Pattern" />
+
+---
+
+## Adding Complexity
+
+Make the pattern more complex through series processing. Patch two outputs from DSG3 **Shape 1** to the inputs of **Shape 2**. Patch Shape 2 outputs to the RGB inputs of ESG3.
+
+<img src={your_first_patch_complexity_1} alt="Complexity" />
+
+<img src={your_first_patch_complexity_2} alt="Complexity" />

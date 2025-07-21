@@ -24,8 +24,6 @@ import contour_line_art_labeled from '/img/modules/contour/contour-diagrams/cont
 
 Contour is a triple voltage-controlled high-pass filter for extracting edge transitions from video images and patterns. Its analog circuitry imparts unique qualities to the picture. From glitchy streaks to spectral afterimages, Contour produces effects that exemplify the art form of video synthesis. These are exactly the sorts of effects that set analog video synthesis apart from the technically perfect but sometimes stilted visual language of digital video. In contrast to the antiseptic, sterile quality that often renders digital video less than compelling, the otherworldly strangeness of Contour can only come from the messy and unpredictable processes of analog video synthesis.
 
-
-
 ---
 
 ## Key Specifications
@@ -74,9 +72,9 @@ The frequency range of Contour is fixed, but the frequency ranges of various vid
 
 ### Bias and polarity
 
-Because Contour operates on frequencies, it really only looks at the *differences* in the signal gain over time. The overall bias, DC offset, or pedestal of the signal is not that important. If you bias a signal before it goes into Contour, you may see little or no effect. That's just the way the high frequency circuit works. Only if some part of the signal goes above or below the range of approximately +/- 2.5 volts will you see any effect of biasing. What will happen is that some value range will be clipped, and some image details lost.
+Because Contour operates on frequencies, it really only looks at the *differences* in the signal gain over time. The overall bias, DC offset, or pedestal of the signal is not that important. If you bias a signal before it goes into Contour, you may see little or no effect. That's just the way the high pass filter circuit works. You'll only see any effect of biasing if some part of the signal goes above or below the range of approximately +/- 2.5 volts. In that case, some value range will be clipped, and some image details lost.
 
-Contour can pass bipolar signals, which would seem to indicate that it would work fine with the I and Q components of Swatch. But in practice, that doesn't work because I and Q are lower frequency signals than Y, R, G, or B. Almost all of the detail in a YIQ triplet is in the Y component. There isn't enough high frequency detail in I and Q to begin with. The Cutoff threshold of Contour will remove so much of I and Q that there is almost nothing left. However, running Y through Contour, and leaving I and Q alone, or processing them separately, might be an interesting visual effect.
+Contour can accept bipolar signals, but its output is always unipolar. The fact that it can accept a bipolar signal without clipping might seem to indicate that it would work fine with the I and Q components of Swatch. But in practice, that doesn't work because I and Q are lower frequency signals than Y, R, G, or B. Almost all of the detail in a YIQ triplet is in the Y component. There isn't enough high frequency detail in I and Q to begin with. The Cutoff threshold of Contour will remove so much of I and Q that there is almost nothing left. However, running Y through Contour, and leaving I and Q alone, or processing them separately, might be an interesting visual effect.
 
 ### Amplitude
 

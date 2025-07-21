@@ -101,9 +101,14 @@ At the top left are RCA jacks for video **Sync Input** and **Sync Output**. As e
 
 In the center of the front panel are two mini jacks for **MIDI In** and **MIDI Out**. TBC2 is not capable of generating MIDI on its own, so the MIDI Out jack is actually a MIDI Through that buffers and echoes any MIDI messages received by the MIDI In jack.
 
-TBC2 accepts MIDI Continuous Controller messages to remotely control the Encoder crossfader and SD color correction parameters listed in the [MIDI Implementation](/docs/modules/tbc2#midi-implementation) section below.
 
-The TBC2 MIDI jacks use the **Type A** TRS standard: a tip-ring-sleeve (stereo) mini jack. The tip is the "sink" or signal conductor, the ring is the "source" conductor (+5v static), and the sleeve is the shield or ground. MIDI protocol over mini jacks is not well standardized. If you wish to interface MIDI with other Eurorack modules, consult their hardware documentation. You may need an adapter cable. For example, Expert Sleepers hardware does not use the shield conductor at all, because over short patch cable runs there is no practical need for shielding from radio frequency interference.
+The TBC2 MIDI jacks use the **Type B** TRS standard: a three-conductor tip-ring-sleeve (stereo) mini jack. The tip is the "source" conductor (+5v static), the ring is the "sink" or signal conductor, and the sleeve is the shield or ground.
+
+:::warning
+The official MIDI standard is **Type A**, but this was adopted long after hardware manufacturers started using mini jacks. If you wish to interface TBC2 MIDI with other Eurorack modules, consult their hardware documentation. You may need an adapter. For example, Expert Sleepers modules use a tip-ring (mono) jack, called **Type C**. The shield conductor is omitted because over short patch cable runs there is no practical need for shielding from radio frequency interference.
+:::
+
+TBC2 accepts MIDI Continuous Controller messages to remotely control the Encoder crossfader and SD color correction parameters listed in the [MIDI Implementation](/docs/modules/tbc2#midi-implementation) section below.
 
 ---
 
@@ -115,7 +120,7 @@ Directly below the MIDI jacks is a Micro-USB port. The current firmware does not
 
 ### Trigger In
 
-At the bottom center of the front panel is a Trigger In mini-jack. This is not yet implemented.
+At the bottom center of the front panel is a **Trigger In** mini-jack. This is not yet implemented.
 
 ---
 

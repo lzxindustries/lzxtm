@@ -1,21 +1,34 @@
 ---
-sidebar_position: 2
+draft: false
+title: "About LZX"
+sidebar_position: 1
 ---
 
-# About LZX
+import about_lxz_workshop from '/img/guides/about_lxz_workshop.jpg';
+
 
 :::warning
 This documentation site is a work in progress, and all content is subject to change before the official launch.
 :::
 
-The LZX mission is to preserve and expand upon tools available to the video art movement from the 1960s thru the 1980s. LZX exists as a counterpoint to the worlds of mainstream broadcast equipment and GPU based video processing software.
+# About LZX
 
-- LZX started as a DIY project in 2008, and then evolved through several series of modular instrument designs. Previous generations of LZX modules were referred to as the Visionary series (2011),Expedition series (2015), and Orion series (2018). The current modular series (2022) is referred to as just LZX Modular, or Gen3.
-- LZX products are manufactured in Portland, Oregon at the LZX workshop.
-- Modules are compatible with EuroRack cases and patch cables used by modular audio synthesizers.
-- Modules can be powered by 12V DC "wall wart" adapters or by EuroRack power supplies.
-- External video inputs and outputs are the same as the Component & Composite connections found on most televisions and some cameras.
-- Patchable signal levels are in the 0 to 1V range; This is lower than most audio modules (0V-10V), but inputs are tolerant of any voltage produced by a EuroRack system.
-- Voltage control inputs are capable of very high frequencies, allowing signals such as camera images to modulate oscillators or VCAs.
+## Mission
 
-/media/GettingStartedWorkshop.jpg
+LZX takes creative, experimental video tools to their next levels. We explore an alternate universe in parallel to the mainstream of broadcast equipment, desktop video, and GPU processing. LZX designs are informed and inspired by historical video synthesizers, conventional video production, and less familiar technologies such as analog computing. Our goals are to preserve and expand upon innovative, expressive video tools that have empowered artists ever since the 1960's. Deep commitments to experimental video and the people who create it have motivated our ongoing development of this unique art form. In contrast to working on a computer, working with a video synth is a tactile, embodied, performance-oriented medium, and it's fun!
+
+---
+
+## History
+
+LZX started as a DIY project in 2008. Over the years, we've developed several generations of modular instrument designs. These series are branded as:
+
+- Visionary (2011-2015)
+- Expedition (2015-2018) 
+- Orion (2018-2022)
+- Gen3 (2022-present)
+- P-Series (2024-present)
+
+LZX products are manufactured in Portland, Oregon at the LZX workshop.
+
+<img src={about_lxz_workshop} alt="LZX workshop" />
