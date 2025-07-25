@@ -9,7 +9,6 @@ AFR note:
 How should we handle firmware and any other downloads for legacy products, e.g. Memory Palace? This page is already full, there's no room for another column. Since there are multiple versions of firmware, and any upgrade procedure requires instructions, it seems like we need separate pages for legacy modules requiring long-term support. But they should not show up in the sidebar, and only be accessible from this page...?
 -->
 
-
 # Specifications: all modules
 &nbsp;<br />
 
@@ -99,7 +98,6 @@ How should we handle firmware and any other downloads for legacy products, e.g. 
 | LZX   | Differentiator                           | Legacy | Visionary  | 4 HP   | 51 mm | 15 mA    | 15 mA   | Euro 16-pin      | none                                 |
 | LZX   | Function Generator                       | Legacy | Visionary  | 4 HP   | 51 mm | 25 mA    | 25 mA   | Euro 16-pin      | none                                 |
 | LZX   | Octal Video Quantizer & Sequencer        | Legacy | Visionary  | 18 HP  | 44 mm | ?        | ?       | Euro 16-pin      | none                                 |
-| LZX   | Scroll & Position Controller             | Legacy | Visionary  | 8 HP   | 44 mm | ?        | ?       | Euro 16-pin      | none                                 |
 | LZX   | Triple Video Fader & Key Generator       | Legacy | Visionary  | 16 HP  | ?     | 125 mA   | 90 mA   | Euro 16-pin      | none                                 |
 | LZX   | Triple Video Interface                   | Legacy | Visionary  | 6 HP   | 44 mm | 135 mA   | ?       | Euro 16-pin      | 16-pin Eurorack bus                  |
 | LZX   | Triple Video Multimode Filter            | Legacy | Visionary  | 18 HP  | 32 mm | 140 mA   | 140 mA  | Euro 16-pin      | none                                 |

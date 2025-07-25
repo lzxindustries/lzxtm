@@ -132,12 +132,12 @@ const config: Config = {
        srcDark: 'img/logo-dark.svg'
       },
       items: [
-        // {
-        // type: 'docSidebar',
-        // sidebarId: 'guidesSidebar',
-        // position: 'left',
-        // label: 'Guides',
-        // },
+		{
+			type: 'docSidebar',
+			sidebarId: 'guidesSidebar',
+			position: 'left',
+			label: 'Guides',
+		},
         // {
         //   type: 'docSidebar',
         //   sidebarId: 'instrumentsSidebar',

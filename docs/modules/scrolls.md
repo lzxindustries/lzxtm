@@ -45,7 +45,7 @@ Random and Journey modes conjure autonomous entities moving in screen space. Let
 
 ### Legacy
 
-Scrolls echoes some of the features of the Orion series module **Diver**. Both Diver and Scrolls provide precision digital motion control of analog video waveforms. But their design intentions are different. Where Diver's focus was generating a variety of 2D patterns, Scrolls is all about procedural animation. It's as if the Visionary Series **Scroll & Position Controller** grew a brain. Scrolls doesn't have a memory, but it has many fascinating behaviors.
+Scrolls is the third iteration of precision motion control from LZX. The first high-level animation module was the prototype **Scroll & Position Controller**. That was never released, but some of its features manifested in the Orion series module **Diver**. The design intentions of Diver and Scrolls are somewhat different. Diver's focus was generating a variety of 2D patterns, whereas Scrolls is all about procedural animation. Scrolls doesn't have a memory, but it has many fascinating innate behaviors.
 
 ## Key Specifications
 
