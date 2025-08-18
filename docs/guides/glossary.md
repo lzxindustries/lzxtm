@@ -64,7 +64,7 @@ In the context of the LZX [TBC2](/docs/modules/tbc2) module, *encoder* has a dif
 
 ### Exponential amplifier
 
-A circuit that performs an exponential function. Scales a linear input to an exponential output, staying within the zero to one range. The effect is increased contrast and overall darker tones. The inverse operation is performed by a [logarithmic amplifier](/docs/guides/glossary/logarithmic-amplifier).
+A circuit that performs an exponential function. Scales a linear input to an exponential output, staying within the zero to one range. The effect is increased contrast and overall darker tones. The inverse operation is performed by a [logarithmic amplifier](/docs/guides/glossary#logarithmic-amplifier).
 
 ### Fader
 
@@ -120,7 +120,7 @@ combines multiple faders with a multi level key generator function to produce a 
 
 ### Logarithmic amplifier
 
-A circuit that performs a logarithmic function. Scales a linear input to a logarithmic output, staying within the zero to one range. The effect is reduced contrast and overall brighter tones. The inverse operation is performed by an [exponential amplifier](/docs/guides/glossary/exponential-amplifier).
+A circuit that performs a logarithmic function. Scales a linear input to a logarithmic output, staying within the zero to one range. The effect is reduced contrast and overall brighter tones. The inverse operation is performed by an [exponential amplifier](/docs/guides/glossary#exponential-amplifier).
 
 ### Luma
 
