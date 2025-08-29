@@ -5,7 +5,7 @@ authors: [lars]
 tags: [chromagnon]
 ---
 
-We had a wonderful time at Video Sync 2025 here in Portland, OR earlier this month. Our endless thanks to all of the organizers and volunteers involved in the event! I would love to journal about some of my personal highlights and the people I met, but will save it for a less crowded post. 
+We had a wonderful time at Video Sync 2025 here in Portland, OR earlier this month. Our endless thanks to all of the organizers and volunteers involved in the event! 
 
 ![](./video_sync_01.jpg)
 <!-- 
@@ -13,7 +13,7 @@ We had a wonderful time at Video Sync 2025 here in Portland, OR earlier this mon
 
 ![](./video_sync_03.jpg) -->
 
-What's up next for LZX? This year has required some massive juggling of our priorities in response to the fluctuating new tariffs, which have effectively demolished our plans going into this year. We were hoping to be shipping Chromagnon by the end of the Summer, but have spent most of the past few months scrambling to keep the lights and figure out how we are going to continue making our products. We have been doing a lot of assessment and planning in August, and despite it all, we remain optimistic about the road ahead. I will break down the specifics in future updates, but here is the top level plan.
+What's up next for LZX? This year has required some massive juggling of our priorities in response to the fluctuating new tariffs, which have effectively demolished our plans going into this year. We were hoping to be shipping Chromagnon by the end of the Summer, but have spent most of the past few months scrambling to figure out how we are going to continue making our products. We have been doing a lot of assessment and planning in August, and despite it all, we remain optimistic about the road ahead. Here is the top level plan as it currently stands.
 
 <!-- truncate -->
 
@@ -26,12 +26,12 @@ What's up next for LZX? This year has required some massive juggling of our prio
 *In early November,* we will be validating and writing firmware for the revised Chromagnon hardware.  We plan to share a lot of media as we go through this phase.
 
 *By the end of December,* we expect to have the redesigned build of Chromagnon ready to go into assembly and fulfillment in 2026.
+<!-- 
+*What are the big risks of getting off course?*  With so many unexpected factors with global trade hitting us this year, it is hard to know. In the past, we've had a lot of unplanned delays related to forecasting firmware development time -- but in the cases ahead of us, I do not think we will.  All of the firmware validation of the platform to be used in Videomancer and the Chromagnon revisions has been accomplished over the Summer, and we're very happy with how it's performing. In other words, the hard parts are already done, which makes it easier to predict the timing of what is next. -->
 
-*What are the big risks of getting off course?*  If the Videomancer launch does very poorly, we may have to reassess our ability to hit this end of year milestone with Chromagnon.  The business is lacking a core cashflow related product right now, and we are depending on Videomancer to be that.  In the past, we've had a lot of unplanned delays related to forecasting firmware development time -- but in the cases ahead of us, I do not think we will.  All of the firmware validation of the platform to be used in Videomancer and the Chromagnon revisions has been accomplished over the Summer, and we're very happy with how it's performing. In other words, the hard parts are already done, which makes it easier to predict the timing of what is next.
+*How fast will Chromagnon fulfillment happen?*  By the time we hit the hardware/firmware milestones mentioned above, we will be able to assess our position on this better.  But there are two ways we expect it could go.  If we are doing strongly after the sales season, we will build Chromagnon in large batches, outsourcing extra help, and hoping to ship all orders in 1-3 waves of shipments.  If that is not possible, we will be integrating Chromagnon into our existing production workflows and start making monthly shipments of a variable number of units dependent on our logistical constraints at the time. With the global economy in flux right now, we don't have a way to forecast this accurately.  This may be a year without many video synthesizers under the tree, just due to the general instability of the global market right now.
 
-*How fast will Chromagnon fulfillment happen?*  By the time we hit the hardware/firmware milestones mentioned above, we will be able to assess our position on this better.  But there are two ways we expect it could go.  If we are doing strongly after the Videomancer launch and sales season, we will build Chromagnon in large batches, outsourcing extra help, and hoping to ship all orders in 1-3 waves of shipments.  If that is not possible, we will be merging Chromagnon into the Videomancer production pipeline and start making monthly shipments of a variable number of units dependent on our logistical constraints at the time. With the global economy in flux right now, we don't have a way to forecast this accurately.  This may be a year without many video synthesizers under the tree, just due to the general instability of the global market right now.
-
-Here are a few images to share from Videomancer development.  This must be considered a behind-the-scenes slideshow, so please don't take anything you see here as a final answer (especially the UI mockup.)
+Here are a few images to share from Videomancer development.  This must be considered a behind-the-scenes slideshow, so please don't take anything you see here as a final answer.
 
 ![](./videomancer_inside.png)
 <!-- 
@@ -40,7 +40,7 @@ Here are a few images to share from Videomancer development.  This must be consi
 ![](./videomancer_top.png) -->
 
 ![](./videomancer_ctrl_rev_b_pcb.png)
-
-![](./videomancer_ctrl_rev_b.png)
+<!-- 
+![](./videomancer_ctrl_rev_b.png) -->
 
 Thanks for reading, and I am excited to check in with you all again in September.
