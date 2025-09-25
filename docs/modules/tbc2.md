@@ -594,7 +594,7 @@ AFR note: please check the accuracy of the Troubleshooting, Firmware Update, and
 If the module powers up but the screen is blank, follow this procedure:
 
 1. Format a Micro SD card, sized 16 GB or smaller.
-2. Download the latest firmware package from the links in the [Firmware Downloads](/docs/modules/tbc2#firmware-downloads) section below and unzip the files.
+2. Download the latest firmware package from the links in the [Downloads](/docs/modules/tbc2#downloads) section below and unzip the files.
 3. Find `BOOT.bin` and copy it to the MicroSD card.
 4. Ensure that you have physical access to the back of the module. If necessary, power down TBC2 and remove it from the enclosure, keeping the module power cord connected.
 5. Power down TBC2 and insert the MicroSD card.
