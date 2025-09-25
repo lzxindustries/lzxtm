@@ -31,7 +31,7 @@ Many modules can only handle unipolar signals. However, some modules such as [Sw
 
 ### Blending
 
-A type of [layering](/docs/guides/glossary#layering) in which exactly two images are combined using a math operation such as sum or difference. Blending operations can be simple or complex. Image editing applications feature complex blend modes such as *screen* or *overlay*. LZX modules such as DSG3 and Arch use [analog logic](/docs/guides/glossary#analog_logic) to blend two signals in interesting ways. See [compositing](/docs/guides/glossary#compositing).
+A type of [layering](/docs/guides/glossary#layering) in which exactly two images are combined using a math operation such as sum or difference. Blending operations can be simple or complex. Image editing applications feature complex blend modes such as *screen* or *overlay*. LZX modules such as DSG3 and Arch use [analog logic](/docs/guides/glossary#analog-logic) to blend two signals in interesting ways. See [compositing](/docs/guides/glossary#compositing).
 
 ### Chroma
 
@@ -43,7 +43,7 @@ A video [keying](/docs/guides/glossary#key) process in which the key stencil is 
 
 ### Clipping amplifier
 
-A circuit that increases the contrast of a signal until information is gradually discarded. One application is a [soft key](/docs/guides/glossary#soft-key), a high contrast mask with variable edge width. Another application is sine waveshaping, where a linear distribution of signal values is converted to a sine wave distribution. Also known as a wide range contrast processor.
+A circuit that increases the contrast of a signal until information is gradually discarded. One application is a [soft key](/docs/guides/glossary#soft-keyer), a high contrast mask with variable edge width. Another application is sine waveshaping, where a linear distribution of signal values is converted to a sine wave distribution. Also known as a wide range contrast processor.
 
 ### Comparator
 

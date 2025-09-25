@@ -31,6 +31,30 @@ import prm_voltage_limiter from '/img/modules/prm/prm-diagrams/prm_voltage-limit
 
 <img src={prm_front_panel} alt="prm_front_panel" />
 
+PRM is a multipurpose analog operator for modifying and combining signals. It's designed to cover as much functional territory as possible in a compact and intuitive 4HP package.
+
+PRM performs many basic processing steps, including:
+
+- Full- and half-wave rectifying
+- Half-wave inversion
+- Two- and four-quadrant multiplication
+- Antisine/exponential waveshaping
+
+In combination with [PGO](/docs/modules/pgo) Programmable Gain and Offset, and/or [PAB](/docs/modules/pab) Programmable Active Buffers, PRM modules can also perform complex functions such as:
+
+- One-quadrant multiplication
+- Linear and parabolic frequency doubling
+- Sine/logarithmic waveshaping
+- Division
+- Blending and logical operations such as:
+  - Minimum / AND
+  - Maximum / OR
+  - Difference / XOR
+- Rotations
+- Voltage limiting
+
+---
+
 ## Key Specifications
 
 | Parameter         | Value                                                                           |
@@ -47,13 +71,7 @@ PRM ships with a black front panel installed. Red, green and blue panels are als
 
 <img src={prm_all_front_panels} alt="prm_all_front_panels" />
 
-All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow. This gives great flexibility in designing modular systems.
-
 ---
-
-<!--
-AFR note: recommend adding an illustration of the reverse sides of the four panels.
--->
 
 <!-- 
 ## System Integration Advice -->
@@ -78,7 +96,7 @@ The PRM design was informed by years of studying interfaces common to the buildi
 
 -->
 
-## Example Patches
+## Example PRM Patches
 
 ### Half-wave Rectify
 
@@ -120,6 +138,16 @@ The PRM design was informed by years of studying interfaces common to the buildi
 
 ---
 
+### Exponential / Antisine
+
+<!-- Describe function -->
+
+<img src={prm_exponential_amplifier} alt="prm_exponential_amplifier" />
+
+---
+
+## Example P-series Patches
+
 ### One-quadrant Multiply
 
 <!-- Describe function -->
@@ -136,13 +164,6 @@ The PRM design was informed by years of studying interfaces common to the buildi
 
 ---
 
-### Exponential / Antisine
-
-<!-- Describe function -->
-
-<img src={prm_exponential_amplifier} alt="prm_exponential_amplifier" />
-
----
 
 ### Double Frequency / Parabolic
 
@@ -156,23 +177,15 @@ AFR note: Source should be labeled "source a".
 
 ---
 
-### Double Frequency / Ramp to Triangle 
+### Double Frequency / Ramp to Triangle
 
-<!-- Describe function -->
+Similar to full-wave rectify, but scales the output to match the bipolar range of the input.
 
 <img src={prm_linear_frequency_doubler} alt="prm_linear_frequency_doubler" />
 
 <!--
 AFR note: illustration does not show ramp to triangle conversion, it shows triangle frequency doubling only. Suggest adding an additional illustration with a ramp as the source. Also, source should be labeled "source a".
 -->
-
----
-
-### 2D Rotation
-
-<!-- Describe function -->
-
-<img src={prm_2d_rotator} alt="prm_2d_rotator" />
 
 ---
 
@@ -186,7 +199,23 @@ AFR note: illustration does not show ramp to triangle conversion, it shows trian
 
 ### Minimum / Logical AND
 
-<!-- Describe function -->
+The lower of two input values. Corresponds to a logical **AND** operation.
+
+An output value can only be high if H **and** V inputs are high.
+
+$$
+\min\{A, B\}
+$$
+
+$$
+\text{If } A < B, \text{ then } A, \text{ else } B
+$$
+
+$$
+(\;A + B - \lvert A - B \rvert\;)\;/\;2
+$$
+
+Blend mode: **Minimum**
 
 <img src={prm_minimum_value} alt="prm_minimum_value" />
 
@@ -194,7 +223,23 @@ AFR note: illustration does not show ramp to triangle conversion, it shows trian
 
 ### Maximum / Logical OR
 
-<!-- Describe function -->
+The higher of two input values. Corresponds to a logical **OR** operation.
+
+An output value will be high if either H **or** V inputs is high.
+
+$$
+\max\{A, B\}
+$$
+
+$$
+\text{If } A > B, \text{ then } A, \text{ else } B
+$$
+
+$$
+(\;A + B + \lvert A - B \rvert\;)\;/\;2
+$$
+
+Blend mode: **Maximum**
 
 <img src={prm_maximum_value} alt="prm_maximum_value" />
 
@@ -202,9 +247,29 @@ AFR note: illustration does not show ramp to triangle conversion, it shows trian
 
 ### Difference / Logical XOR
 
-<!-- Describe function -->
+The absolute value of the difference between two input values. Corresponds to a logical **XOR** operation.
+
+An output value will be high if the difference between H and V inputs is large. An output value will be low if the difference is small.
+
+$$
+\lvert A - B \rvert
+$$
+
+$$
+\text{If } A > B, \text{ then } A - B, \text{ else } B - A
+$$
+
+Blend mode: **Difference**
 
 <img src={prm_analog_logic_xor} alt="prm_analog_logic_xor" />
+
+---
+
+### 2D Rotation
+
+Rotate a figure that is defined by horizontal and vertical input signals. Typically, this means horizontal and vertical ramps. Sending the outputs of this patch to a vector display or XYZ oscilloscope allows rotation of the video raster.
+
+<img src={prm_2d_rotator} alt="prm_2d_rotator" />
 
 ---
 

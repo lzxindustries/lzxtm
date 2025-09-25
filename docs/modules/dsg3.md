@@ -154,6 +154,10 @@ $$
 \text{If } H < V, \text{ then } H, \text{ else } V
 $$
 
+$$
+(\;H + V - \lvert H - V \rvert\;)\;/\;2
+$$
+
 Blend mode: **Minimum**
 
 <img src={dsg3_minimum} alt="DSG3 Minimum output" />
@@ -174,6 +178,10 @@ $$
 \text{If } H > V, \text{ then } H, \text{ else } V
 $$
 
+$$
+(\;H + V + \lvert H - V \rvert\;)\;/\;2
+$$
+
 Blend mode: **Maximum**
 
 <img src={dsg3_maximum} alt="DSG3 Maximum output" />
@@ -182,7 +190,7 @@ Blend mode: **Maximum**
 
 #### Absolute
 
-The absolute value of the difference between two input values. Corresponds to a logical XOR operation.
+The absolute value of the difference between two input values. Corresponds to a logical **XOR** operation.
 
 An output value will be high if the difference between H and V inputs is large. An output value will be low if the difference is small.
 
