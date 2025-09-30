@@ -3,11 +3,6 @@ draft: false
 title: "What Is a Video Synthesizer?"
 sidebar_position: 2
 ---
-
-:::warning
-This documentation site is a work in progress, and all details are subject to change before the official launch.
-:::
-
 # What Is a Video Synthesizer?
 
 A *video synthesizer* is an electronic instrument that generates and/or processes video images in real time. A *modular* video synthesizer is a collection of small devices called *modules* mounted into an enclosure.

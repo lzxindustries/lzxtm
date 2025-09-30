@@ -3,6 +3,39 @@ draft: false
 title: "DSG3: Dual Shape Generator"
 ---
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import dsg3_frontpanel from '/img/modules/dsg3/dsg3-diagrams/dsg3_frontpanel.png';
 import dsg3_absolute from '/img/modules/dsg3/dsg3-diagrams/dsg3_absolute.png';
 import dsg3_average from '/img/modules/dsg3/dsg3-diagrams/dsg3_average.png';
@@ -267,6 +300,22 @@ $$
 $$
 
 <img src={dsg3_curve} alt="DSG3 Logarithmic and Exponential" />
+
+---
+
+## Video Tutorials
+
+<ResponsiveYouTube videoId="hFIWKNjcbPg" />
+
+[3 Patches for DSG3](https://youtu.be/hFIWKNjcbPg)
+<br />presented by Johnny Woods
+
+---
+
+<ResponsiveYouTube videoId="bDng30frWiY" />
+
+[LZX DSG3: Video Synth Tools & Techniques](https://youtu.be/bDng30frWiY)
+<br />presented by Aaron F. Ross
 
 ---
 

@@ -7,6 +7,39 @@ title: "STAIRS: Complex Wavefolder & Frequency Multiplier"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import stairs_line_art_labeled from '/img/modules/stairs/stairs-diagrams/stairs_line_art_labeled_336x1024.png';
 
 # STAIRS
@@ -80,8 +113,6 @@ $$
 
 ---
 
-
-
 ## Operation
 
 ### RGB Signal Inputs
@@ -123,6 +154,15 @@ Stairs uses high gain amplifier circuits to bump the output levels up to full ra
 ### Low Frequency Applications
 
 As always, a high-speed video module can also be an effective processor of low frequency signals. Stairs can convert a simple low frequency waveform to a highly complex or chaotic control signal. The same principles described above for video images can be applied to control signals. Layering two or more LFO's via the RGB signal and/or CV inputs results in a complicated looping sequence. Feeding a Stairs output back to a Stairs input can yield chaotic control signals.
+
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="XM4kiY9Yd4g" />
+
+[3 Patches for Stairs](https://youtu.be/XM4kiY9Yd4g)
+<br />presented by Johnny Woods
 
 ---
 

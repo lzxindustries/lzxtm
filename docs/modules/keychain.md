@@ -2,6 +2,38 @@
 draft: false
 title: "KEYCHAIN: Triple Hard Key Generator"
 ---
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import keychain_frontpanel from '/img/modules/keychain/keychain-diagrams/keychain_frontpanel.png';
 import keychain_block_diagram from '/img/modules/keychain/keychain-diagrams/keychain_block-diagram.png';
@@ -106,6 +138,15 @@ The output of the mixer goes into a lightning-fast comparator that slices the si
 Keychain does not have a video sync input. Low frequency transitions can happen in the middle of a frame, causing visible frame tearing. To cause transitions to happen in the vertical interval between frames or fields, you'll need an audio *sample and hold* module and a trigger signal that goes high at the start of each frame.
 
 :::
+
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="q0O5YDxWHac" />
+
+[3 Patches for Keychain](https://youtu.be/q0O5YDxWHac)
+<br />presented by Johnny Woods
 
 ---
 

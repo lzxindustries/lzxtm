@@ -7,6 +7,39 @@ title: "TBC2: Dual Video Input"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import tbc2_line_art_labeled from '/img/modules/tbc2/tbc2-diagrams/tbc2_line_art_labeled_654x1024.png';
 
 # TBC2
@@ -439,6 +472,22 @@ Continuous Controller numbers are fixed to the following mapping:
 | 18   | Decoder B          | SD Processor Saturation     |
 | 19   | Decoder B          | SD Processor Brightness     |
 | 20   | Decoder B          | SD Processor Contrast       |
+
+---
+
+## Video Tutorials
+
+<ResponsiveYouTube videoId="S_R12TJsYic" />
+
+[3 Patches for TBC2](https://youtu.be/S_R12TJsYic)
+<br />presented by Johnny Woods
+
+---
+
+<ResponsiveYouTube videoId="ENGGhRdtPlk" />
+
+[How To Replace Your TBC2 Frontpanel](https://youtu.be/ENGGhRdtPlk)
+<br />demonstrating updating the front panel from Orion to Gen3
 
 ---
 

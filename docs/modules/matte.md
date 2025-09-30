@@ -7,9 +7,38 @@ title: "MATTE: Static Voltage Generator & Control Panel"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
-<!--
-import matte_frontpanel from '/img/modules/matte/matte-diagrams/matte_frontpanel.png';
--->
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import matte_line_art_labeled from '/img/modules/matte/matte-diagrams/matte_line_art_labeled_336x1024.png';
 
@@ -73,7 +102,18 @@ As with all Gen3 modules, potentiometers are buffered from the actual voltages t
 
 TODO
 
+-->
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="w30X8qzvH-k" />
+
+[3 Patches for LZX Matte](https://youtu.be/w30X8qzvH-k)
+<br />presented by Johnny Woods
+
 ---
+
+<!--
 
 ## Example Patches
 

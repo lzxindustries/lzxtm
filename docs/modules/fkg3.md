@@ -7,19 +7,43 @@ title: "FKG3: Fader & Key Generating Compositor"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
-<!--
-import fkg3_frontpanel from '/img/modules/fkg3/fkg3-diagrams/fkg3_frontpanel.png';
--->
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import fkg3_panel_labeled from '/img/modules/fkg3/fkg3-diagrams/fkg3_panel_labeled_496x1024.png';
 
-<!--
-AFR note: I changed the subheading of the module name to clarify that FKG3 is a self-contained keying compositor. This taxonomy differentiates it from Keychain and Stacker, which are also "key generators" but are not compositors.
--->
-
 # FKG3
 <span class="head2_nolink">Fader & Key Generating Compositor</span>
-
 
 ## Overview
 
@@ -179,6 +203,14 @@ That much is pretty standard procedure. Things get more interesting when we cons
 
 But remember that there's only one key to rule them all. No matter how we generate the key — internally, externally, luma or chroma — it's always a single monochrome stencil. All three of the independent channels are composited with the same key. Nevertheless, this is a useful technique for video and low frequency applications. For example, we can apply a VCA or crossfade effect to two sets of three different control signals such as LFOs or random value generators.
 
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="h32UDIphXuI" />
+
+[3 Patches for FKG3](https://youtu.be/h32UDIphXuI)
+<br />presented by Johnny Woods
 
 <!--
 ---

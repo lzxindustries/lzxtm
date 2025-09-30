@@ -7,9 +7,38 @@ title: "DWO3: Dual Wideband Oscillator"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
-<!--
-import dwo3_frontpanel from '/img/modules/dwo3/dwo3-diagrams/dwo3_frontpanel.png';
--->
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import dwo3_line_art_labeled from '/img/modules/dwo3/dwo3-diagrams/dwo3_line_art_labeled_496x1024.png';
 
@@ -128,6 +157,15 @@ Some combinations of base/carrier frequency and Reset gate frequency will result
 :::
 
 Just as with frequency modulation, if the frequencies of the base/carrier wave and the Reset gate are similar, the visual result will be "beating", or patterns of interference. This is one way to add variable width to visual elements.
+
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="NnavdrDIJQo" />
+
+[3 Patches for DWO3](https://youtu.be/NnavdrDIJQo)
+<br />presented by Johnny Woods
 
 ---
 

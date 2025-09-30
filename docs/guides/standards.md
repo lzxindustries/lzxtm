@@ -4,17 +4,13 @@ title: "Standards"
 sidebar_position: 3
 ---
 
-:::warning
-This documentation site is a work in progress, and all details are subject to change before the official launch.
-:::
-
 # Standards
 
 LZX modules are compatible with standard Eurorack cases and patch cables for audio synthesizers. They can be powered by 12 volt DC "wall wart" adapters or by EuroRack power supplies.
 
 Established video format standards are fully supported. Connections to an LZX system are made via conventional means such as RCA jacks. All LZX systems are compatible with standard definition video in both NTSC and PAL formats. Gen3 systems additionally support a wide range of high definition formats. Earlier generation modules that don't require sync are compatible with HD signals.
 
-LZX developed a new system for encoding video that's optimized for modular synthesis. It's actually a spec for widebandwidth analog computing, optimized for video. A primary design goal is affordability, making tools accessible to working artists, not just big studios. 
+LZX developed a new system for encoding video that's optimized for modular synthesis. It's actually a spec for wide bandwidth analog computing, optimized for video. A primary design goal is affordability, making tools accessible to working artists, not just big studios. 
 
 Another top priority is maximum patchability: all LZX systems share a universal electrical and mechanical standard. Video sources, pattern generators, control voltages, and binary logic signals all use the same voltages, impedence, and physical connectors. Cross-patching different signal types is strongly encouraged. The LZX standard and all LZX products are designed to give artists total freedom and flexibility to combine signals in any way imaginable.
 
