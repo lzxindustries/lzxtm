@@ -7,6 +7,39 @@ title: "SUM/DIST: Summing & Distribution Amplifiers"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import sum_dist_line_art_labeled from '/img/modules/sum-dist/sum-dist-diagrams/sum-dist_line_art_labeled_496x1024.png';
 
 # SUM/DIST
@@ -63,7 +96,14 @@ Since the function blocks are buffered, Sum/Dist can also serve as a delay line,
 
 ---
 
+## Video Tutorial
 
+<ResponsiveYouTube videoId="S744YMZBouI" />
+
+[3 Patches for LZX Sum/Dist](https://youtu.be/S744YMZBouI)
+<br />presented by Johnny Woods
+
+---
 <!--
 ## Example Patches
 TODO

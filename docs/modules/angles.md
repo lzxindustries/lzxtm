@@ -2,6 +2,38 @@
 draft: false
 title: "ANGLES: Fixed Ratio Mixer & Dual Ramp Generator"
 ---
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import angles_frontpanel from '/img/modules/angles/angles-diagrams/angles_frontpanel.png';
 import angles_15_135_255_300 from '/img/modules/angles/angles-diagrams/angles_15-135-255-300.png';
@@ -98,6 +130,15 @@ When two ramps are mixed, the result is an angled ramp. Different starting orien
 &nbsp;<br />
 
 But ANGLES is not limited to its internal ramps. Any video or control signal can be mixed with any other signal. This opens up interesting possibilities, such as symmetrical mixes of two sources. For example, one mix of 66.&% A and 33.3% B, and a complementary mix of 33.3% A and 66.7% B.
+
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="_b633U95ogo" />
+
+[3 Patches for Angles](https://youtu.be/_b633U95ogo)
+<br />presented by Johnny Woods
 
 ---
 

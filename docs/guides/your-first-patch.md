@@ -11,13 +11,9 @@ import your_first_patch_color_pattern from '/img/guides/your_first_patch_color_p
 import your_first_patch_complexity_1 from '/img/guides/your_first_patch_complexity_1.jpg';
 import your_first_patch_complexity_2 from '/img/guides/your_first_patch_complexity_2.jpg';
 
-:::warning
-This documentation site is a work in progress, and all content is subject to change before the official launch.
-:::
-
 # Your First Patch
 
-This patch assumes successful completion of the module installation procedure on the previous page, and that the LZX modular system is powered up.
+This patch assumes successful completion of the installation procedure on the [Module Installation](/docs/guides/installing-modules) page, and that the LZX modular system is powered up.
 
 ---
 

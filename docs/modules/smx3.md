@@ -7,6 +7,39 @@ title: "SMX3: Summing Matrix Mixer"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import smx3_line_art_labeled from '/img/modules/smx3/smx3-diagrams/smx3_line_art_labeled_496x1024.png';
 
 # SMX3
@@ -95,6 +128,14 @@ Due to the DC amplification circuitry of SMX3, setting all potentiometers to the
 
 ---
 
+## Video Tutorial
+
+<ResponsiveYouTube videoId="DU8fHK7yIzg" />
+
+[3 Patches for SMX3](https://youtu.be/DU8fHK7yIzg)
+<br />presented by Johnny Woods
+
+---
 
 <!--
 ## Example Patches

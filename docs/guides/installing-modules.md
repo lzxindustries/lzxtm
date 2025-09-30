@@ -7,10 +7,6 @@ sidebar_position: 4
 import installing_modules_sync from '/img/guides/installing_modules_sync.jpg';
 import installing_modules_screw_mounting from '/img/guides/installing_modules_screw_mounting.jpg';
 
-:::warning
-This documentation site is a work in progress, and all content is subject to change before the official launch.
-:::
-
 # Module Installation
 
 To install a new module in your system, follow these steps in order.

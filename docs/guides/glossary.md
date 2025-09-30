@@ -1,12 +1,8 @@
 ---
 draft: false
 title: "Glossary"
-sidebar_position: 7
+sidebar_position: 8
 ---
-
-:::warning
-This documentation site is a work in progress, and all content is subject to change before the official launch.
-:::
 
 # Glossary
 &nbsp;

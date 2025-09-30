@@ -6,6 +6,39 @@ title: "PROC: Triple Voltage Processor"
 # PROC
 <span class="head2_nolink">Triple Voltage Processor</span>
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import proc_frontpanel from '/img/modules/proc/proc-diagrams/proc_frontpanel.png';
 import proc_adder from '/img/modules/proc/proc-diagrams/proc_adder.png';
 import proc_block_diagram from '/img/modules/proc/proc-diagrams/proc_block-diagram.png';
@@ -144,6 +177,22 @@ As the animation above illustrates, negative voltages are outside the visible ra
 ### Self-patching
 
 By sending the output of one channel to the input of another, we can create more complex effects by combining more than two signals. For example, if we patch output 1 to input A2, and output 2 to to input A3, we can combine up to four signals with the remaining inputs of A1, B1, B2, and B3.
+
+---
+
+## Video Tutorials
+
+<ResponsiveYouTube videoId="FeRNg87wrlY" />
+
+[3 Patches for Proc](https://youtu.be/FeRNg87wrlY)
+<br />presented by Johnny Woods
+
+---
+
+<ResponsiveYouTube videoId="E4a8TNy1OtI" />
+
+[LZX Proc: Video Synth Tools & Techniques](https://youtu.be/E4a8TNy1OtI)
+<br />presented by Aaron F. Ross
 
 ---
 

@@ -6,16 +6,11 @@ sidebar_position: 1
 
 import about_lxz_workshop from '/img/guides/about_lxz_workshop.jpg';
 
-
-:::warning
-This documentation site is a work in progress, and all content is subject to change before the official launch.
-:::
-
 # About LZX
 
 ## Mission
 
-LZX takes creative, experimental video tools to their next levels. We explore an alternate universe in parallel to the mainstream of broadcast equipment, desktop video, and GPU processing. LZX designs are informed and inspired by historical video synthesizers, conventional video production, and less familiar technologies such as analog computing. Our goals are to preserve and expand upon innovative, expressive video tools that have empowered artists ever since the 1960's. Deep commitments to experimental video and the people who create it have motivated our ongoing development of this unique art form. In contrast to working on a computer, working with a video synth is a tactile, embodied, performance-oriented medium, and it's fun!
+LZX takes creative, experimental video tools to their next levels. We explore an alternate universe, parallel to the mainstream of broadcast equipment, desktop video, and GPU processing. LZX designs are informed and inspired by historical video synthesizers, conventional video production, and less familiar technologies such as analog computing. Our goals are to preserve and expand upon innovative, expressive video tools that have empowered artists ever since the 1960's. Deep commitments to experimental video and the people who create it have motivated our ongoing development of this unique art form. In contrast to working on a computer, working with a video synth is a tactile, embodied, performance-oriented medium, and it's fun!
 
 ---
 

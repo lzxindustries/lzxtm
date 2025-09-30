@@ -7,9 +7,38 @@ title: "CONTOUR: Triple Detail Extractor"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
-<!--
-import contour_front_panel from '/img/modules/contour/contour-diagrams/contour_front_panel.png';
--->
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
 
 import contour_line_art_labeled from '/img/modules/contour/contour-diagrams/contour_line_art_labeled_336x1024.png';
 
@@ -85,6 +114,15 @@ The net result of this for image manipulation is that the output of Contour may 
 Cranking up the source amplitude provides a wider dynamic range for Contour to work with, resulting in better contrast at the output. The attenuation of some frequencies near the Cutoff is compensated by the greater input amplitude. The input range of Gen3 modules is approximately +/- 2.5 volts before distortion occurs. That's the optimal input range of Contour. For an RGB triplet, we can achieve a +/- 2v range with SMX3, a 1v static voltage source such as Proc, Matte or PGO, and three passive mults. Send each source RGB component to two inputs on a single row of SMX3. Send a 1v signal into the top input of the third column of SMX. Turn the RGB input pots up to 2x, and the static voltage input pots down to -2x.
 
 Alternately, we can amplify the output of Contour. This is a simpler patch, but may sacrifice some detail.
+
+---
+
+## Video Tutorial
+
+<ResponsiveYouTube videoId="o_QThtOTtlk" />
+
+[3 Patches for Contour](https://youtu.be/o_QThtOTtlk)
+<br />presented by Johnny Woods
 
 ---
 

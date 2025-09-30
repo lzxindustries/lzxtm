@@ -3,6 +3,39 @@ draft: false
 title: "SWATCH: Dual Color Space Converter"
 ---
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import swatch_front_panel from '/img/modules/swatch/swatch-diagrams/swatch_front_panel.png';
 import swatch_connectors from '/img/modules/swatch/swatch-diagrams/swatch_controls-and-connectors.png';
 import swatch_normalled_connections from '/img/modules/swatch/swatch-diagrams/swatch_normalled-connections.png';
@@ -51,10 +84,6 @@ Proc 2 -> Q+
 
 Ideally, this would be an animation showing the results of adjusting the Proc Gain and Bias pots.
 -->
-
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
 
 # Swatch
 <span class="head2_nolink">Dual Color Space Converter</span>
@@ -266,6 +295,23 @@ One of the most spectacular uses of Swatch is matrix colorization, where we can 
 YIQ matrix colorization is especially interesting because we can use luminance as a color channel or vice versa. This gives a radically different palette of creative possibilities compared to RGB matrix mixing.
 
 Due to the fact that Y is unipolar, and I and Q are bipolar, the outputs of SMX3 will need to be tweaked by Proc before going back into Swatch.
+
+---
+
+## Video Tutorials
+
+<ResponsiveYouTube videoId="CZx8ssyfYds" />
+
+[3 Patches for Swatch](https://youtu.be/CZx8ssyfYds)
+<br />presented by Johnny Woods
+
+---
+
+<ResponsiveYouTube videoId="mrTO6TB_cBg" />
+
+[LZX Swatch: Video Synth Tools & Techniques](https://youtu.be/mrTO6TB_cBg)
+<br />presented by Aaron F. Ross
+
 
 ---
 

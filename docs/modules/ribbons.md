@@ -7,6 +7,39 @@ title: "RIBBONS: Three-Bit Digitizer and Colorizer"
 This page is a draft under construction. Stay tuned to our newsletter for the official content release.
 :::
 
+import { useEffect, useRef, useState } from 'react';
+
+export function ResponsiveYouTube({ videoId }) {
+  const iframeRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (iframeRef.current) {
+      const updateHeight = () => {
+        const width = iframeRef.current.offsetWidth;
+        setHeight(width * 9 / 16); // fallback aspect ratio
+      };
+      updateHeight();
+      window.addEventListener('resize', updateHeight);
+      return () => window.removeEventListener('resize', updateHeight);
+    }
+  }, []);
+
+  return (
+    <iframe
+      ref={iframeRef}
+      width="100%"
+      height={height}
+      src={`https://www.youtube.com/embed/${videoId}`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      title="YouTube video"
+      style={{ display: 'block' }}
+    />
+  );
+}
+
 import ribbons_line_art_labeled from '/img/modules/ribbons/ribbons-diagrams/ribbons_line_art_labeled_336x1024.png';
 
 # RIBBONS
@@ -120,6 +153,21 @@ The simplest patch using this concept is a four-level posterizer. Just send the 
 
 ---
 
+## Video Tutorials
+
+<ResponsiveYouTube videoId="htC_0-INC7k" />
+
+[LZX Ribbons 3-Bit Digitizer | Lars Explains](https://youtu.be/htC_0-INC7k)
+<br />presented by Lars Larsen
+
+---
+
+<ResponsiveYouTube videoId="maxfR128_Ec" />
+
+[Dobbels Demos Ribbons](https://youtu.be/maxfR128_Ec)
+<br />presented by Andrew Dobbels
+
+---
 
 <!--
 ## Example Patches

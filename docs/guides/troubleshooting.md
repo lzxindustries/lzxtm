@@ -4,10 +4,6 @@ title: "Troubleshooting"
 sidebar_position: 6
 ---
 
-:::warning
-This documentation site is a work in progress, and all content is subject to change before the official launch.
-:::
-
 #  Troubleshooting
 
 ## Halp!
@@ -61,3 +57,17 @@ Connection adapters such as RCA to BNC may introduce problems such as signal dro
 :::note
 Signal current is divided by the number of destinations. If a signal is split three ways, the current to each input is only 1/3 of normal. For configurations requiring the same video signal to be sent to multiple destinations, a video distribution amplifier will prevent any drop in current level, helping avoid signal degradation and dropouts.
 :::
+
+---
+
+## Manufacturer Warranty
+
+LZX Industries, LLC (&ldquo;LZX&rdquo;) warrants to the original purchaser that this product will be free from defects in material and workmanship for one (1) year from the date of purchase.
+
+If a defect occurs during this period, LZX will, at its option, repair, replace, or refund the product.
+
+This warranty does not cover damage from misuse, accident, modification, improper installation, or normal wear. Proof of purchase may be required.
+
+To request service, contact: support@lzxindustries.net
+
+This warranty is limited to the remedies above. LZX is not responsible for incidental or consequential damages. Rights may vary by state or country.
