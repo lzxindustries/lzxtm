@@ -3,22 +3,14 @@ draft: false
 title: "ESG3: Encoder & Sync Generator"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
-<!--
 import esg3_frontpanel from '/img/modules/esg3/esg3-diagrams/esg3_frontpanel.png';
--->
 
 import esg3_line_art_labeled from '/img/modules/esg3/esg3-diagrams/esg3_line_art_labeled_496x1024.png';
 
 # ESG3
 <span class="head2_nolink">Encoder & Sync Generator</span>
 
-{/*
 <img src={esg3_frontpanel} alt="ESG3 front panel" />
-*/}
 
 ## Overview
 

@@ -3,18 +3,14 @@ draft: false
 title: "SWITCHER: Dual 4x3 Multiplexer"
 ---
 
-import switcher_line_art_labeled from '/img/modules/switcher/switcher-diagrams/switcher_line_art_labeled_736x1024.png';
+import switcher_frontpanel from '/img/modules/switcher/switcher-diagrams/switcher_frontpanel.png';
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
+import switcher_line_art_labeled from '/img/modules/switcher/switcher-diagrams/switcher_line_art_labeled_736x1024.png';
 
 # SWITCHER
 <span class="head2_nolink">Dual 4x3 Multiplexer</span>
 
-{/*
-<img src={switcher_front_panel} alt="Switcher front panel" />
-*/}
+<img src={switcher_frontpanel} alt="Switcher front panel" />
 
 ## Overview
 

@@ -3,10 +3,6 @@ draft: false
 title: "TBC2: Dual Video Input"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import tbc2_frontpanel from '/img/modules/tbc2/tbc2-diagrams/tbc2_frontpanel.png';
+
 import tbc2_line_art_labeled from '/img/modules/tbc2/tbc2-diagrams/tbc2_line_art_labeled_654x1024.png';
 
 # TBC2
 <span class="head2_nolink">Dual Video Input</span>
 
-{/*
-<img src={tbc2_front_panel} alt="TBC2 front panel" />
-*/}
+<img src={tbc2_frontpanel} alt="TBC2 front panel" />
 
 ## Overview
 

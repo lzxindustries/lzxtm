@@ -3,10 +3,6 @@ draft: false
 title: "DWO3: Dual Wideband Oscillator"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import dwo3_frontpanel from '/img/modules/dwo3/dwo3-diagrams/dwo3_frontpanel.png';
+
 import dwo3_line_art_labeled from '/img/modules/dwo3/dwo3-diagrams/dwo3_line_art_labeled_496x1024.png';
 
 # DWO3
 <span class="head2_nolink">Dual Wideband Oscillator</span>
 
-{/*
 <img src={dwo3_frontpanel} alt="DWO3 front panel" />
-*/}
 
 ## Overview
 

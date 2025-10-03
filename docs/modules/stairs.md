@@ -3,10 +3,6 @@ draft: false
 title: "STAIRS: Complex Wavefolder & Frequency Multiplier"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import stairs_frontpanel from '/img/modules/stairs/stairs-diagrams/stairs_frontpanel.png';
+
 import stairs_line_art_labeled from '/img/modules/stairs/stairs-diagrams/stairs_line_art_labeled_336x1024.png';
 
 # STAIRS
 <span class="head2_nolink">Complex Wavefolder & Frequency Multiplier</span>
 
-{/*
-<img src={Frontpanel} alt="Frontpanel" />
-*/}
+<img src={stairs_frontpanel} alt="Stairs front panel" />
 
 ## Overview
 

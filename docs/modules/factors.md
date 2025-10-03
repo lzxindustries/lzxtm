@@ -3,10 +3,6 @@ draft: false
 title: "FACTORS: Triple Four-Quadrant Multiplier"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import factors_front_panel from '/img/modules/factors/factors-diagrams/factors_front_panel.png';
 import factors_four_q_multiplier from '/img/modules/factors/factors-diagrams/factors_4q-multiplier.png';
 import factors_controls_and_connectors from '/img/modules/factors/factors-diagrams/factors_controls-and-connectors.png';
@@ -115,11 +111,14 @@ For low frequency applications, Factors performs proper amplitude modulation on 
 
 ---
 
+<!--
 ### Modulating a Modulator
 
 <img src={factors_modulate_modulators} alt="Factors modulation control" />
 
 ---
+
+-->
 
 ### Sine Shaping
 
