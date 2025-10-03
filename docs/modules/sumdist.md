@@ -3,10 +3,6 @@ draft: false
 title: "SUM/DIST: Summing & Distribution Amplifiers"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
-import sum_dist_line_art_labeled from '/img/modules/sum-dist/sum-dist-diagrams/sum-dist_line_art_labeled_496x1024.png';
+import sumdist_frontpanel from '/img/modules/sum-dist/sum-dist-diagrams/sum-dist_frontpanel.png';
+
+import sumdist_line_art_labeled from '/img/modules/sum-dist/sum-dist-diagrams/sum-dist_line_art_labeled_496x1024.png';
 
 # SUM/DIST
 <span class="head2_nolink">Summing & Distribution Amplifiers</span>
 
-{/*
-<img src={Frontpanel} alt="Frontpanel" />
-*/}
+<img src={sumdist_frontpanel} alt="Sum/Dist front panel" />
 
 ## Overview
 
@@ -141,7 +137,7 @@ TODO
 <tr><th>Front panel</th><th>Connectors</th><th>Connectors</th></tr>
 <tr><td>
 
-<img src={sum_dist_line_art_labeled} alt="Sum/Dist: labeled front panel controls" />
+<img src={sumdist_line_art_labeled} alt="Sum/Dist: labeled front panel controls" />
 
 </td><td>
 

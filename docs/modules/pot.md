@@ -11,7 +11,6 @@ import pot_mounting_power_sync from '/img/modules/pot/pot-diagrams/pot_mounting-
 
 # P
 <span class="head2_nolink">Passive Potentiometer</span>
-&nbsp;<br />
 
 <!--
 ## Overview

@@ -3,10 +3,6 @@ draft: false
 title: "MATTE: Static Voltage Generator & Control Panel"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,16 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import matte_frontpanel from '/img/modules/matte/matte-diagrams/matte_frontpanel.png';
+
 import matte_line_art_labeled from '/img/modules/matte/matte-diagrams/matte_line_art_labeled_336x1024.png';
 
 # MATTE
 <span class="head2_nolink">Static Voltage Generator & Control Panel</span>
 
-<!--
-<img src={matte_frontpanel} alt="Contour front panel" />
--->
+
+<img src={matte_frontpanel} alt="Matte front panel" />
+
 
 ## Overview
 

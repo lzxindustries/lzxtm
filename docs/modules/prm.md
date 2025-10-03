@@ -27,9 +27,9 @@ import prm_voltage_limiter from '/img/modules/prm/prm-diagrams/prm_voltage-limit
 # PRM
 <span class="head2_nolink">Programmable Rectifier & Multiplier</span>
 
-## Overview
-
 <img src={prm_front_panel} alt="prm_front_panel" />
+
+## Overview
 
 PRM is a multipurpose analog operator for modifying and combining signals. It's designed to cover as much functional territory as possible in a compact and intuitive 4HP package.
 
@@ -201,7 +201,7 @@ AFR note: illustration does not show ramp to triangle conversion, it shows trian
 
 The lower of two input values. Corresponds to a logical **AND** operation.
 
-An output value can only be high if H **and** V inputs are high.
+An output value can only be high if A **and** B inputs are high.
 
 $$
 \min\{A, B\}
@@ -225,7 +225,7 @@ Blend mode: **Minimum**
 
 The higher of two input values. Corresponds to a logical **OR** operation.
 
-An output value will be high if either H **or** V inputs is high.
+An output value will be high if either A **or** B inputs is high.
 
 $$
 \max\{A, B\}
@@ -249,7 +249,7 @@ Blend mode: **Maximum**
 
 The absolute value of the difference between two input values. Corresponds to a logical **XOR** operation.
 
-An output value will be high if the difference between H and V inputs is large. An output value will be low if the difference is small.
+An output value will be high if the difference between A and B inputs is large. An output value will be low if the difference is small.
 
 $$
 \lvert A - B \rvert

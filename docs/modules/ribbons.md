@@ -3,10 +3,6 @@ draft: false
 title: "RIBBONS: Three-Bit Digitizer and Colorizer"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import ribbons_frontpanel from '/img/modules/ribbons/ribbons-diagrams/ribbons_frontpanel.png';
+
 import ribbons_line_art_labeled from '/img/modules/ribbons/ribbons-diagrams/ribbons_line_art_labeled_336x1024.png';
 
 # RIBBONS
 <span class="head2_nolink">Three-Bit Digitizer and Colorizer</span>
 
-{/*
-<img src={Frontpanel} alt="Frontpanel" />
-*/}
+<img src={ribbons_frontpanel} alt="Ribbons front panel" />
 
 ## Overview
 

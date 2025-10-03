@@ -3,10 +3,6 @@ draft: false
 title: "SMX3: Summing Matrix Mixer"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,14 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import smx3_frontpanel from '/img/modules/smx3/smx3-diagrams/smx3_frontpanel.png';
+
 import smx3_line_art_labeled from '/img/modules/smx3/smx3-diagrams/smx3_line_art_labeled_496x1024.png';
 
 # SMX3
 <span class="head2_nolink">Summing Matrix Mixer</span>
 
-{/*
-<img src={Frontpanel} alt="Frontpanel" />
-*/}
+<img src={smx3_frontpanel} alt="SMX3 front panel" />
 
 ## Overview
 

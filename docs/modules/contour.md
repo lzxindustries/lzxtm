@@ -3,10 +3,6 @@ draft: false
 title: "CONTOUR: Triple Detail Extractor"
 ---
 
-:::warning
-This page is a draft under construction. Stay tuned to our newsletter for the official content release.
-:::
-
 import { useEffect, useRef, useState } from 'react';
 
 export function ResponsiveYouTube({ videoId }) {
@@ -40,14 +36,13 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
+import contour_frontpanel from '/img/modules/contour/contour-diagrams/contour_frontpanel.png';
 import contour_line_art_labeled from '/img/modules/contour/contour-diagrams/contour_line_art_labeled_336x1024.png';
 
 # Contour
 <span class="head2_nolink">Triple Detail Extractor</span>
 
-<!--
 <img src={contour_frontpanel} alt="Contour front panel" />
--->
 
 ## Overview
 
