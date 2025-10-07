@@ -73,13 +73,17 @@ PRM ships with a black front panel installed. Red, green and blue panels are als
 
 ---
 
-<!-- 
-## System Integration Advice -->
+## System Integration Advice
 
-<!-- - **Utility module** for mixing and level shifting, covering odd cases where the patch needs just one simple operation.
-- **Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
-- **Building block** for patching complex video synthesis functions. As low level analog computing blocks, several PGOs can be patched together to design a wide range of processing functions, including replicating functions from other modules. However, this level of flexibility comes at the expense of greater system size and more complex patches. Using both lower level and higher level modules is a great strategy for getting the most out of a system.
-- **Consider multiple PGOs**. Analog computers provide several instances of summing and difference amplifiers. For example, a bidirectional converter or scaler requires two modules. A triple color space function requires three modules. More complex vector functions will require eight or more. -->
+**Utility module** for wavefolding, multiplication, and summing, covering odd cases where the patch needs just one simple operation.
+
+**Expander module** to add extra inputs or output processing. Extend the functionality any module. Add one next to your favorite oscillators or RGB functions to expand modulation or signal input options.
+
+**Building block** for patching complex video synthesis functions. As low-level analog computing blocks, several P-series modules can be patched together to design a wide range of processing functions, including replicating functions from other modules. However, this level of flexibility comes at the expense of greater system size and more complex patches. Using both lower level and higher level modules is a great strategy for getting the most out of a system.
+
+**Consider multiple PRMs**. Analog computers provide several instances of multiplier and summing operators.
+
+---
 
 ## Connectors
 
@@ -89,12 +93,11 @@ The PRM design was informed by years of studying interfaces common to the buildi
 
 ---
 
-<!-- 
-## Operation 
+## Operation
+
+P-series modules are precision instruments. DIY PRM modules must be calibrated before use. Assembled PRM modules are calibrated at LZX HQ, but may need adjustment from time to time. See the [Calibration](/docs/modules/prm#calibration) section below.
 
 ---
-
--->
 
 ## Example PRM Patches
 
@@ -348,14 +351,55 @@ Rotate a figure that is defined by horizontal and vertical input signals. Typica
 
 ---
 
-<!-- 
-## Calibration 
+## Calibration
 
-Calibration is not required for this module.
+### Calibration requirements
+
+- Power source
+- Bipolar +/- 1v triangle oscillator @ ~1 kHz
+- Bipolar +/- 1v square oscillator @ ~10 kHz
+- Oscilloscope
+- Adapter cable: male mini plug to male BNC plug
+- Micro-trim adjustment tool or jeweler's screwdriver
+- Magnifying lens (if needed)
+
+### Calibration procedure
+
+1. Power down the system and unmount the module if needed.
+2. Connect power to module.
+3. Power up the system.
+4. Set oscilloscope horizontal and vertical ranges to visualize the waveform between +/- 1v.
+5. Set oscilloscope sweep activation threshold to approximately 0.5v. It may be necessary to adjust the threshold throughout the calibration process.
+
+#### Patching the bipolar test oscillators
+
+If using a modular system to supply the test oscillators, follow these steps:
+
+1. Set DWO3 Oscillator 1 **Frequency Range** to **Free Lower Vertical**.
+2. Set DWO3 Oscillator 1 **Frequency** knob to three o'clock, and **Freq CV Depth** knob centered. This gives a frequency of approximately 1 kHz.
+3. Patch DWO3 Oscillator 1 **Triangle** output to SMX3 input **A2**.
+4. Patch 1v static voltage to SMX3 input **C1**.
+5. Patch SMX3 output **2** to oscilloscope.
+6. Adjust SMX3 **A2** and **C2** knobs to tune the oscillator gain and bias to precisely +/- 1v.
+7. Set DWO3 Oscillator 2 **Frequency Range** to **Free Upper Vertical**.
+8. Set DWO3 Oscillator 2 **Frequency** knob to nine o'clock, and **Freq CV Depth** knob centered. This gives a frequency of approximately 10 kHz.
+9.  Patch DWO3 Oscillator 2 **Square** output to SMX3 input **A3**.
+10. Patch SMX3 output **3** to oscilloscope.
+11. Adjust SMX3 **A3** and **C3** knobs to tune the oscillator gain and bias to precisely +/- 1v.
+
+#### Rectifier submodule calibration
+
+1. Patch the +/- 1v triangle wave to the Rectifier input
+2. Patch the bottom **Rectifier** output to the oscilloscope
+3. On the rear of the module, adjust the top trim pot until the folded waveform is uniform, with all peaks at 1v.
+
+#### Multiplier submodule calibration
+
+1. Patch the +/- 1v triangle wave to the first, top **Multipler** input.
+2. Patch the +/- 1v square wave to the second, middle **Multiplier** input.
+3. On the rear of the module, adjust the middle **Amplitude** pot and the bottom **Bias** pot until the multiplied waveform is uniform, ranging from -1v to +1v.
 
 ---
-
--->
 
 ## Maintenance
 
