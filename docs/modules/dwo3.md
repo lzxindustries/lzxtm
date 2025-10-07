@@ -127,7 +127,7 @@ The most basic control on DWO3 is the frequency range. The options, from left to
   - Range from approximately 2 Hz up to vertical video frequencies
 - Free Lower Vertical
   - Vertical video frequencies, free-running, lower range
-Free Upper Vertical
+- Free Upper Vertical
   - Vertical video frequencies, free-running, upper range
 - Free Horizontal
   - Horizontal video frequencies, free-running
@@ -283,14 +283,53 @@ TODO
 
 ---
 
-<!--
 ## Calibration
 
-AFR note:
-Need to add calibration procedure, trim pots on rear
+DWO3 may require calibration from time to time to ensure symmetrical waveforms.
+
+At the bottom rear of the module is a row of ten trim potentiometers, in two pairs of five. The five trim pots for each oscillator are physically located on the same side as the corresponding oscillator controls. As seen from the rear, the right side of the module is Oscillator 1, and the left side is Oscillator 2.
+
+Trim pots are labeled with a suffix **1** or **2** to indicate which oscillator they adjust. From center to edge, the trim pots are:
+
+- R35: **Sawtooth Bias**
+- R33: **Sawtooth Amplitude**
+- R39: **Sine Shaper Pre-bias**
+- R37: **Sine Shaper Pre-amplitude**
+- R50: **Sine shaper Post-bias**
+
+### Calibration requirements
+
+- Power source
+- Sync source
+- Oscilloscope
+- Adapter cable: male mini plug to male BNC plug
+- Trim adjustment tool or jeweler's screwdriver
+- Magnifying lens (if needed)
+
+### Calibration procedure
+
+1. Power down the system and unmount the module if needed.
+2. Connect power and sync to module.
+3. Power up the system.
+
+For each oscillator, repeat the following steps:
+
+4. Connect **Sawtooth** output to oscilloscope.
+5. Set oscillator frequency range to **Locked Horizontal** (highest rate).
+6. Set oscillator frequency knob to approximately ten o'clock.
+7. Set vertical range of oscilloscope to fully visualize a signal between zero and one volts.
+8. Set scanning activation threshold of oscilloscope ("trigger") to approximately 0.25 volts, or whatever value between zero and one volt that yields a stable display. It may be necessary to adjust the threshold throughout the calibration process.
+9. Set horizontal range of oscilloscope to view approximately three cycles. In Locked Horizontal mode, the oscillator output goes negative at the start of each line. Set the oscilloscope to view about three lines of video. You should see the oscillator output go below zero three times. Between each of those negative values, you should see approximately five sawtooth ramps ranging from approximately zero to one volt. 
+10. If necessary for visualization of the sawtooth wave, use **Freq CV Depth** knob to fine-tune oscillator frequency.
+11. Adjust **R35 Sawtooth Bias** and **R33 Sawtooth Amplitude** to achieve a symmetrical sawtooth wave ranging from zero to one volts. These adjustments affect one another, so you'll need to go back and forth between them several times to calibrate the Sawtooth wave.
+12. To verify the shape of the waveform, check it in various oscillator frequency ranges and oscilloscope horizontal ranges.
+13. Connect **Sine** output to oscilloscope.
+14. Set oscillator frequency range to **Locked Horizontal** (highest rate).
+15. If necessary for visualization of the sine wave, adjust **Freq CV Depth** knob to fine-tune oscillator frequency, and/or adjust oscilloscope activation threshold.
+16. Adjust **R39 Sine Shaper Pre-bias**, **R37 Sine Shaper Pre-amplitude**, and **R50 Sine shaper Post-bias** to achieve a symmetrical sine wave ranging from zero to one volts. These adjustments affect one another, so you'll need to go back and forth between them several times to calibrate the Sine wave.
+17. To verify the shape of the waveform, check it in various oscillator frequency ranges and oscilloscope horizontal ranges.
 
 ---
--->
 
 ## Maintenance
 
