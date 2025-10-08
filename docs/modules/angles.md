@@ -188,15 +188,13 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 
 ## Installation
 
-<!-- Discuss differences between 10 and 16 pin connectors -->
-
 <img src={angles_mounting_power_sync} alt="ANGLES installation" />
 
 ### Requirements
 
 * EuroRack enclosure.
 * 12V DC or EuroRack power supply.
-* 2.1mm DC barrel power cable **or** a EuroRack power cable (both options included).
+* 2.1mm DC barrel power cable **or** a EuroRack power cable.
 * Four M2.5 x 6mm mounting screws, or screws provided or specified by the enclosure manufacturer.
 * #1 Phillips head screwdriver, or hand tool provided or specified by the enclosure manufacturer.
 
@@ -215,8 +213,6 @@ Patch any four outputs to the inputs of a second ANGLES module for a completely 
 ---
 
 ## Full Specifications
-
-<!-- AFR note: there were clerical errors on the product page where I got the front panel function info. J29 was listed as 165 degrees, the same as J30. J29 should be 75 degrees, right? Also, J23 was out of order.-->
 
 <table>
 

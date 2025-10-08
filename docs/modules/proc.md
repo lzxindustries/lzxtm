@@ -243,7 +243,7 @@ RGB color picker
 <!--
 
 AFR note: commented out this patch example due to errors in the animation.
-Vertical ramp is supposed to be patched into Proc B2.
+Vertical ramp is supposed to be patched into Proc A2.
 Proc output 2 is supposed to be patched into DSG3 V input.
 
 ### Ramp shift
@@ -301,10 +301,6 @@ Ramp shift
 ---
 
 ## Full Specifications
-
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'proc_line_art_labeled_placeholder_250x700.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
 
 <table>
 
@@ -378,13 +374,7 @@ Ramp shift
 
 -->
 
-<!--
-## Calibration
-
-Calibration is not required for this module.
-
 ---
--->
 
 ## Maintenance
 
@@ -392,8 +382,6 @@ Keep the module free of dust and debris by performing periodic cleaning. Spots m
 
 <!--
 ## Troubleshooting
-
----
 -->
 
 ---

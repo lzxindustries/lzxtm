@@ -317,13 +317,7 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 | Product Weight               | TODO                                                                            |
 -->
 
-<!--
-## Calibration
-
-Calibration is not required for this module.
-
 ---
--->
 
 ## Maintenance
 
@@ -341,7 +335,7 @@ The hardware revision code is printed on the circuit board visible from the rear
 
 
 <!--
-AFR note: I'm not seeing any Scrolls firmware in the repo
+AFR note: I'm not seeing any Scrolls firmware ZIP in the repo
 -->
 
 <!--
@@ -352,5 +346,5 @@ AFR note: I'm not seeing any Scrolls firmware in the repo
 Scrolls Firmware 1.0.1 (ZIP)
 
 Should I Update My Firmware?
-If your serial number is below #50, you should update your firmware to version 1.0.1, available for download on this page. This will fix compatibility issues with progressive sync timings. Firmware update instructions are included in the download.
+If your serial number is below #50, you should update your firmware to the latest version, available for download on this page. This will fix compatibility issues with progressive sync timings. Firmware update instructions are included in the download.
 -->

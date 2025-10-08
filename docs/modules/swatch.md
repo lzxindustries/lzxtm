@@ -56,7 +56,7 @@ AFR note: I hope to add some more example Swatch patches from my 6th-level Illus
 -->
 
 <!--
-AFR note: the Over vs. Clamp diagram is incorrect. RGB outputs are unipolar, not bipolar. The Over graph should be from zero to approximately 1.2 volts, unclamped. The Clamp graph should be from zero to 1 volt, clamped. The slope of both graphs should be the same until the clamp point of 1 volt. And for clarity, it should be a ramp rather than two cycles of a triangle wave.
+AFR note: the Over vs. Clamp diagram looks incorrect. Need to verify. Aren't RGB Over outputs unipolar, not bipolar? And for clarity, source should be a ramp rather than two cycles of a triangle wave.
 -->
 {/*
 import swatch_over_vs_clamp from '/img/modules/swatch/swatch-diagrams/swatch_over-vs-clamp.png';
@@ -386,10 +386,6 @@ Proc's bipolar voltage sources make it possible to address any color in YIQ spac
 
 ## Full Specifications
 
-<!--
-AFR note: The main product page has clerical errors in the legend. J5 & J6 are swapped with J7 & J8.
--->
-
 <table>
 
 <tr><th>Front panel</th><th>Connectors</th></tr>
@@ -458,16 +454,9 @@ AFR note: The main product page has clerical errors in the legend. J5 & J6 are s
 | Product Box Height           | TODO in / TODO mm                                                               |
 | Product Box Depth            | TODO in / TODO mm                                                               |
 | Product Weight               | TODO                                                                            |
-
 -->
-
-<!--
-## Calibration
-
-Calibration is not required for this module.
 
 ---
--->
 
 ## Maintenance
 

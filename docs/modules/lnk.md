@@ -59,9 +59,6 @@ LNK uses switched, or normalled, connections between its input jacks. With no 
 
 <img src={lnk_mounting_power_sync} alt="lnk_mounting_power_sync" /> 
 
-<!-- Discuss differences between 10 and 16 pin connectors -->
-<!-- Something about making sure all screws have been removed from the intended mounting location. -->
-
 ### Requirements
 
 * EuroRack enclosure.
@@ -77,7 +74,6 @@ LNK uses switched, or normalled, connections between its input jacks. With no 
 * Power on the EuroRack enclosure and start patching.
 
 ---
-
 
 ## Full Specifications
 
@@ -105,18 +101,10 @@ LNK uses switched, or normalled, connections between its input jacks. With no 
 
 ---
 
-<!-- 
-## Calibration
-
-Calibration is not required for this module.
----
--->
 
 ## Maintenance
 
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
-
-<!-- ## Troubleshooting -->
 
 ---
 

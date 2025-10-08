@@ -332,14 +332,6 @@ TODO
 
 ---
 
-<!--
-## Calibration
-
-Explanation of trim pots and calibration procedure
-
----
--->
-
 ## Maintenance
 
 Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the front panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.

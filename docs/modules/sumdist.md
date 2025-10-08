@@ -220,13 +220,7 @@ TODO
 | Product Weight               | TODO                                                                            |
 -->
 
-<!--
-## Calibration
-
-Calibration is not required for this module.
-
 ---
--->
 
 ## Maintenance
 

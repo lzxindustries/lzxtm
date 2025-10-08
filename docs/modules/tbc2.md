@@ -167,8 +167,6 @@ $$
 
 <!--
 AFR note: please verify that luma is calculated according to CCIR 601 and not Rec. 709.
-
-Also, are internal ramps combined with RGB->luma weighted summing? Or are they equally weighted? I assume that the Y outputs are always perceptually weighted.
 -->
 
 ---
@@ -606,14 +604,6 @@ Continuous Controller numbers are fixed to the following mapping:
 | Product Box Height                         | TODO in / TODO mm                                                               |
 | Product Box Depth                          | TODO in / TODO mm                                                               |
 | Product Weight                             | TODO                                                                            |
-
----
--->
-
-<!--
-## Calibration
-
-Calibration is not required for this module.
 -->
 
 ---

@@ -222,14 +222,7 @@ Combining the A and B outputs of Switcher gives up to 16 possible permutations o
 | Product Weight               | TODO                                                                            |
 -->
 
-
-<!--
-## Calibration
-
-Calibration is not required for this module.
-
 ---
--->
 
 ## Maintenance
 

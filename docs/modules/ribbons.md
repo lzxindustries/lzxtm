@@ -271,13 +271,6 @@ AFR note: this illustration, screen captured from the primary domain, has an err
 
 ---
 
-<!--
-## Calibration
-
-Calibration is not required for this module.
----
--->
-
 ## Maintenance
 
 Keep the module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the front panel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.

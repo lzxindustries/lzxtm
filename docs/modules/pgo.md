@@ -70,8 +70,6 @@ PGO ships with a black front panel installed. Red, green and blue panels are als
 
 <img src={pgo_all_front_panels} alt="All PGO front panels" />
 
-&nbsp;<br />
-
 All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow. This gives great flexibility in designing modular systems.
 
 <!--
@@ -318,11 +316,6 @@ Convert a single-ended input signal to a differential output signal. One possibl
 | Module Depth                 | TODO mm                                                                         |
 | Product Weight               | TODO                                                                            |
  -->
-
-<!-- ## Calibration
-
-Calibration is not required for this module. 
--->
 
 ## Maintenance
 

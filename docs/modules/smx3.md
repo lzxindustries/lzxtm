@@ -241,13 +241,7 @@ Due to the DC amplification circuitry of SMX3, setting all potentiometers to the
 | Product Weight               | TODO                                                                            |
 -->
 
-<!--
-## Calibration
-
-Calibration is not required for this module.
-
 ---
--->
 
 ## Maintenance
 

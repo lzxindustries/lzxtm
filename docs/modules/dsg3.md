@@ -119,7 +119,7 @@ DSG3 consists of two identical submodules, **Shape 1** and **Shape 2**. Each Sha
 
 &nbsp;<br />
 
-<!-- AFR note: Recommend adding the H and V ramps to 'dsg3_block_diagram' and removing 'dsg3_normalled_connections' entirely -->
+<!-- AFR note: Recommend adding the H and V ramps to 'dsg3_block_diagram' -->
 
 <img src={dsg3_block_diagram} alt="DSG3 function block diagram" />
 **Function block diagram**
@@ -132,9 +132,7 @@ DSG3 consists of two identical submodules, **Shape 1** and **Shape 2**. Each Sha
 
 Each input provides a signal to an identical chain of function blocks. The inputs are referred to as **H** and **V**, because horizontal and vertical ramps are internally normalled to the inputs. If nothing is patched to an input jack, then an internal H or V ramp provides the signal to the function block chain.
 
-<!-- AFR note: Comprehension would be greatly increased by the inclusion of illustrations with photographic sources. The ramps are very abstract. Users are not generally aware of the power of DSG3 for image processing, due to how the module has been framed as a "shape generator". It's a general purpose function generator optimized for shape generation. -->
-
-<!-- AFR note: Recommend removing this illustration, 'dsg3_normalled_connections'. It looks like some external source is patched in via cables. And the ramps are grayed out, which is doubly confusing. -->
+<!-- AFR note: Recommend revising this illustration, 'dsg3_normalled_connections'. It looks like some external source is patched in via cables. And the ramps are grayed out, which is doubly confusing. -->
 
 <img src={dsg3_normalled_connections} alt="DSG3 internal normalling" />
 **Normalled H and V ramps**

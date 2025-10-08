@@ -34,20 +34,13 @@ With delay times in the range of tens of nanoseconds, the result is an image shi
 
 ### Front Panel Options
 
-PGO ships with a black front panel installed. Red, green and blue panels are also included.
+PAB ships with a black front panel installed. Red, green and blue panels are also included.
 
 <img src={pab_all_front_panels} alt="pab_all_front_panels" />
 
-&nbsp;<br />
-
-All front panels are printed on both sides, allowing a choice of top-to-bottom or bottom-to-top signal flow. This gives great flexibility in designing modular systems.
-
-<!--
-AFR note: recommend adding an illustration of the reverse sides of the four panels.
--->
-
 ---
 
+<!--
 
 ## System Integration Advice
 
@@ -55,17 +48,11 @@ PAB is most helpful in larger systems with many modules, or if you're concerned 
 
 ---
 
+-->
+
 ## Connectors
 
 <img src={pab_controls_connectors_indicators} alt="pab_controls_connectors_indicators"/>
-
-<!-- ## Operation 
-
-AFR note:
-I don't understand the topology. Do the outlined arrows indicate delay, and solid arrows indicate a buffer?
-
----
--->
 
 ### Understanding Cascading Input Jacks​
 
@@ -73,10 +60,7 @@ PAB uses switched, or normalled, connections between its input jacks. With no 
 
 <img src={pab_understanding_cascading_input_jacks} alt="pab_understanding_cascading_input_jacks" />
 
-<!--
-AFR note:
-The fact that these are not just normals, but buffers and delays, needs to be reiterated here
--->
+---
 
 ## Installation
 
@@ -140,12 +124,6 @@ The fact that these are not just normals, but buffers and delays, needs to be re
 <!--| Product Weight               | TODO                                                                            | -->
 
 ---
-
-<!--
-## Calibration
-
-Calibration is not required for this module.
--->
 
 ## Maintenance
 

@@ -51,16 +51,6 @@ import keychain_line_art_labeled from '/img/modules/keychain/keychain-diagrams/k
 # KEYCHAIN
 <span class="head2_nolink">Triple Hard Key Generator</span>
 
-<!-- AFR note: I separated the page title CSS styling from metadata -->
-
-<!-- AFR note: all illustrations are too heavy. 8K resolution is excessive; page load/render is unnecessarily slow. Recommend a maximum of 4K resolution on the longest side. Even 2K would be acceptable. -->
-
-<!-- :::warning
-
-This page is under construction and in a draft state. Stay tuned to our newsletter for the official content release.
-
-::: -->
-
 <img src={keychain_frontpanel} alt="Keychain front panel" />
 
 ## Overview
@@ -180,7 +170,7 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 
 ### Shape variations
 
-<!-- AFR note: I believe the illustration 'keychain_cv_mult' has an error. The signal going into the CV input should be a horizontal ramp. In the current illustration, it's black. -->
+<!-- AFR note: The illustration 'keychain_cv_mult' has an error. The signal going into the CV input should be a horizontal ramp. In the current illustration, it's black. -->
 
 <img src={keychain_cv_mult} alt="Keychain CV mult" />
 
@@ -218,10 +208,6 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 ---
 
 ## Full Specifications
-
-<!-- AFR note: the following illustration is a screen capture from the product page. It should probably be recreated at full resolution, therefore I've given it the filename 'proc_line_art_labeled_placeholder_250x700.png' -->
-
-<!-- AFR note: Markdown doesn't support inline tables, so I was forced to use HTML -->
 
 <table>
 
@@ -294,14 +280,6 @@ Since Keychain's inputs are internally normalled, it can generate three keys of 
 -->
 
 ---
-
-<!--
-## Calibration
-
-Explanation of trim pots and calibration procedure
-
----
--->
 
 ## Maintenance
 

@@ -175,7 +175,7 @@ P-series modules are precision instruments. DIY PRM modules must be calibrated b
 <img src={prm_parabolic_frequency_doubler} alt="prm_parabolic_frequency_doubler" />
 
 <!--
-AFR note: Source should be labeled "source a".
+AFR note: Source should be labeled "source", not "source b".
 -->
 
 ---
@@ -463,8 +463,6 @@ This assembly job is recommended for intermediate level DIYers who are comfortab
 1. Mount and solder rear-facing through hole parts first, in this order: pin header, DC/DC converter, DC barrel jack.
 2. Mount and solder front-facing jacks.
 3. Attach the front panel and secure it with mounting nuts for the jacks.
-   
-<!-- 
-## Functional Testing
--->
+4. Calibrate the module according to the [Calibration](/docs/modules/prm#calibration) procedure above.
+
 

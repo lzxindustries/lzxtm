@@ -93,13 +93,8 @@ MLT uses switched, or normalled, connections between some of its input jacks. 
 | Mounting Depth               | TODO mm                                                                         |
 | Module Depth                 | TODO mm                                                                         |
 | Product Weight               | TODO                                                                            |
-| Included                     | DC barrel power cable, EuroRack power cable, red panel, green panel, blue panel |
+
 -->
-
-<!-- 
-## Calibration -->
-
-<!-- Calibration is not required for this module. -->
 
 ## Maintenance
 

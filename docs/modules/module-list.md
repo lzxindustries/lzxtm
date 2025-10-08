@@ -6,7 +6,7 @@ title: "SPECS: ALL MODULES"
 
 <!--
 AFR note:
-How should we handle firmware and any other downloads for legacy products, e.g. Memory Palace? This page is already full, there's no room for another column. Since there are multiple versions of firmware, and any upgrade procedure requires instructions, it seems like we need separate pages for legacy modules requiring long-term support. But they should not show up in the sidebar, and only be accessible from this page...?
+How should we handle firmware and any other downloads for legacy products, e.g. Memory Palace? This page is already full, there's no room for another column. Since there are multiple versions of firmware, and any upgrade procedure requires instructions, it seems like we need separate pages for legacy modules requiring long-term support.
 -->
 
 # Specifications: all modules

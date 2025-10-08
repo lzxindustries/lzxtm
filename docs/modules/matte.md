@@ -221,12 +221,6 @@ TODO
 
 ---
 
-<!-- 
-## Calibration
-
-Calibration is not required for this module.
--->
-
 ## Maintenance
 
 Keep your module free of dust and debris by performing periodic cleaning. Spots may be cleaned from the frontpanel with a microfiber cloth and isopropyl alcohol or other electronics cleaner.
