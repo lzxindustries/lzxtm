@@ -334,6 +334,10 @@ Over the years, LZX product designers and artists have produced many tutorials a
 <br />demonstrating the Expedition series Navigator module
 <br />presented by Johnny Woods
 
+[Vidiot Plus Navigator](https://youtu.be/HgzniBE66sI)
+<br />demonstrating the Vidiot instrument and the Expedition series Navigator module
+<br />presented by Shawna Lee
+
 ### Passage
 
 [LZX Passage - 3 Patches](https://youtu.be/yyN72o6vC-s)

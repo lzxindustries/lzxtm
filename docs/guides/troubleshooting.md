@@ -8,7 +8,7 @@ sidebar_position: 6
 
 ## Halp!
 
-**"I suspect something isn't working. How should I troubleshoot the system?"**
+***I suspect something isn't working. How should I troubleshoot the system?***
 
 ---
 
@@ -68,6 +68,6 @@ If a defect occurs during this period, LZX will, at its option, repair, replace,
 
 This warranty does not cover damage from misuse, accident, modification, improper installation, or normal wear. Proof of purchase may be required.
 
-To request service, contact: support@lzxindustries.net
+To request service, contact support@lzxindustries.net
 
 This warranty is limited to the remedies above. LZX is not responsible for incidental or consequential damages. Rights may vary by state or country.

@@ -49,7 +49,9 @@ In addition to conforming to Doepfer's standard, LZX Modular is designed accordi
 
 ## Video Formats
 
-The current generation of LZX Modular supports the following standard definition and high definition video standards.
+### Currently supported formats
+
+The current generation of LZX Modular supports the following standard definition and high definition video formats.
 
 | Current input standards   |
 |---------------------------|
@@ -72,7 +74,9 @@ The current generation of LZX Modular supports the following standard definition
 | 800x600p60                |
 | 1024x768p60               |
 
-Products released before 2020 supported standard definition video standards.
+### Legacy video formats
+
+Products released before 2020 supported standard definition video formats.
 
 | Legacy input standards    |
 |---------------------------|

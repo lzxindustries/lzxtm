@@ -108,12 +108,6 @@ A device that performs a [key](/docs/guides/glossary#key) compositing operation.
 
 Any combination of two or more images or video streams. See [blending](/docs/guides/glossary#blending) and [compositing](/docs/guides/glossary#compositing).
 
-<!--
-### Linear colorizer
-
-combines multiple faders with a multi level key generator function to produce a transition across more than two inputs
--->
-
 ### Logarithmic amplifier
 
 A circuit that performs a logarithmic function. Scales a linear input to a logarithmic output, staying within the zero to one range. The effect is reduced contrast and overall brighter tones. The inverse operation is performed by an [exponential amplifier](/docs/guides/glossary#exponential-amplifier).

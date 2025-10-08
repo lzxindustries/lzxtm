@@ -27,3 +27,9 @@ LZX started as a DIY project in 2008. Over the years, we've developed several ge
 LZX products are manufactured in Portland, Oregon at the LZX workshop.
 
 <img src={about_lxz_workshop} alt="LZX workshop" />
+
+---
+
+## Documentation credits
+
+This official LZX documentation was authored by Lars Larsen and Aaron F. Ross, with illustrations and animations by Ramin Rahni.
