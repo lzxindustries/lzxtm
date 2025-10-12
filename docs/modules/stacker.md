@@ -96,12 +96,6 @@ The Size knob adjusts the thresholds for the two inputs equally. Both windows in
 
 &nbsp;<br />
 
-:::note
-There's no law that says you need to supply signals to both H and V inputs. Maybe you want a single horizontal or vertical band. Or you want to subtract a single key output from another. In those cases, you only need one input.
-:::
-
-&nbsp;<br />
-
 ### Minimum / Logical AND
 
 To create the full window, the results of the H and V window keys are composited with a mathematical Minimum operation. The lower of the two key values takes priority. Geometrically, this is the intersection, or overlapping area. And since the key signals are binary, this is also a Boolean logic AND operation. To output a value of one, both H **and** V keyers must have a value of one.
@@ -123,6 +117,12 @@ $$
 $$
 
 <img src={stacker_size_ratio_under_the_hood} alt="Stacker ratio and size operations" />
+
+&nbsp;<br />
+
+:::note
+Because the output of each channel is the minimum value of its H and V inputs, if nothing is patched into one of those inputs, the output will be black.
+:::
 
 &nbsp;<br />
 
