@@ -95,8 +95,6 @@ Any unipolar signal can be processed by Switcher. It can handle many tasks besid
 
 The two independent busses of Switcher enable a wide variety of different automated routing options. For example, one bus can handle video, while the other handles low frequency modulation.
 
-Combining the A and B outputs of Switcher gives up to 16 possible permutations of the RGB triplets. Masking one or both of the outputs with the Disable control inputs expands the possibilities even further. If the Disable sources are associated with particular combinations of Select sources, we can achieve up to 64 different combinations!
-
 ---
 
 <!--
@@ -206,8 +204,6 @@ Combining the A and B outputs of Switcher gives up to 16 possible permutations o
 | DC Barrel Power Cable Length | 25 cm                                                                           |
 | RoHS Compliance              | Manufactured with lead-free processes                                           |
 | Video Sync                   | Rear RCA in and out                                                             |
-
----
 
 <!--
 | Pronunciation                |                                                                                 |
