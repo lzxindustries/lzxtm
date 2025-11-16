@@ -138,12 +138,12 @@ const config: Config = {
 			position: 'left',
 			label: 'Guides',
 		},
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'instrumentsSidebar',
-        //   position: 'left',
-        //   label: 'Instruments',
-        // },
+        {
+          type: 'docSidebar',
+          sidebarId: 'instrumentsSidebar',
+          position: 'left',
+          label: 'Instruments',
+        },
         {
           type: 'docSidebar',
           sidebarId: 'modulesSidebar',
