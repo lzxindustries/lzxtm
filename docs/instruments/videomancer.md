@@ -15,9 +15,8 @@ This documentation site is a work in progress, and all content is subject to cha
 ## Connectors & Controls
 
 <img src={videomancer_connectors_and_controls} alt="Videomancer connectors and controls" />
-**Connectors and controls**
 
-## How To Update Firmware
+## Updating Firmware
 
 ### Requirements
 

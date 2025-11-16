@@ -51,7 +51,20 @@ const config: Config = {
       },
     }],
   plugins: [
-    'docusaurus-plugin-image-zoom'
+    'docusaurus-plugin-image-zoom',
+    ['@docusaurus/plugin-client-redirects',
+      {
+        fromExtensions: ['html', 'htm'], // /myPage.html -> /myPage
+        toExtensions: ['zip'], // /myAsset -> /myAsset.zip (if latter exists)
+        redirects: [
+          // /docs/oldDoc -> /docs/newDoc
+          {
+            to: '/docs/instruments/videomancer',
+            from: '/instruments/videomancer',
+          },
+        ]
+      }
+    ],
   ],
   presets: [
     [
