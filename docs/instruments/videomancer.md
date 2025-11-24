@@ -29,7 +29,7 @@ This documentation site is a work in progress, and all content is subject to cha
 
 - Download the desired firmware *.uf2 file from [the Videomancer firmware repository on Github](https://github.com/lzxindustries/videomancer-firmware/releases).
 - Connect Videomancer's power supply and turn the power switch to the off position
-- Connect USB-C to USB-A cable from Videomancer's USB port to your computer
+- Connect USB-C to USB-A cable from Videomancer's USB Device port to your computer
 - Press and hold down Videomancer's BOOT button
 - Turn Videomancer's power switch to the on position
 - Release the BOOT button
@@ -37,3 +37,89 @@ This documentation site is a work in progress, and all content is subject to cha
 - Copy the firmware *.uf2 file to the newly detected storage device
 - Wait for the transfer to complete
 - Videomancer will reboot into the new firmware version
+
+## Input & Output Configurations
+
+### Changing Video Modes
+
+- Press the SYSTEM button.
+- Turn the rotary encoder to select the desired setting:
+    - VIDEO ROUTE selects input from either the HDMI input mode or the Analog input mode.
+    - ANALOG VIDEO IN selects the input connector used for the Analog input mode.
+    - ANALOG VIDEO OUT selects the output format on the Analog output connectors.
+- Press down the rotary encoder to start editing the selected setting.
+- Turn the rotary encoder to select the desired option.
+- Press down the rotary encoder again to confirm your selection.
+
+### Input Configurations
+
+#### HDMI Input
+
+- Connect an HDMI source to the HDMI input.
+- Set VIDEO ROUTE to HDMI.
+
+#### Composite Video Input
+
+- Connect a composite video signal to the Analog Y/CVBS input.
+- Set VIDEO ROUTE to Analog.
+- Set ANALOG VIDEO IN to CVBS.
+
+#### S-Video Input
+
+- Using a Mini DIN-4 to dual RCA adapter, connect the Y component to the Analog Pb/B input and the C component to the Analog Pr/R input.
+- Connect your S-Video source to the adapter using an S-Video cable.
+- Set VIDEO ROUTE to Analog.
+- Set ANALOG VIDEO IN to S-Video.
+
+#### YPbPr Component Input
+
+- Connect a YPbPr Component source to the Analog YPbPr inputs.
+- Set VIDEO ROUTE to Analog.
+- Set ANALOG VIDEO IN to YPbPr.
+
+#### RGB SOG Component Input
+
+- Connect an RGB SOG Component source to the Analog RGB inputs.
+- Set VIDEO ROUTE to Analog.
+- Set ANALOG VIDEO IN to RGB SOG.
+
+#### 1V RGB + Sync Input
+
+- Connect 1V RGB signals to the 1V RGB inputs. 
+- Connect a sync signal to the Analog Y input.  You can use a sync output from the front or rear of any video module in your modular system, or use any video output synchronous with your modular system.
+- Set VIDEO ROUTE to Analog.
+- Set ANALOG VIDEO IN to RGB 1V.
+
+### Output Configurations
+
+#### HDMI Output
+
+- Connect the HDMI output to your monitor or capture device.
+
+#### Composite Video Output
+
+- Connect the Y/CVBS output to your monitor or capture device.
+- Set ANALOG VIDEO OUT to CVBS/S-Video.
+
+#### S-Video Output
+
+- Using a Mini DIN-4 to dual RCA adapter, connect the Y component to the Analog Pb/B output and the C component to the Analog Pr/R output.
+- Connect your adapter to your dmonitor or capture device using an S-Video cable.
+- Set ANALOG VIDEO OUT to CVBS/S-Video.
+
+#### YPbPr Component Output
+
+- Connect the YPbPr outputs to your monitor or capture device.
+- Set ANALOG VIDEO OUT to YUV.
+
+#### RGB SOG Component Output
+
+- Connect the RGB outputs to your monitor or capture device.
+- Set ANALOG VIDEO OUT to RGB.
+
+#### 1V RGB Output
+
+- Connect the 1V RGB outputs to your modular system.
+- Set ANALOG VIDEO OUT to RGB.
+- Note that Videomancer must be synchronous to your modular system.  You can achieve this by either being in 1V RGB input mode as described above, or by sending Videomancer's sync out to the sync input of your modular system.
+
