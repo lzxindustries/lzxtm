@@ -31,7 +31,7 @@ jobs:
       - name: Build and deploy
         env:
           GIT_USER: git
-          GIT_PASS: ${{ secrets.GITHUB_TOKEN }}
+          GIT_PASS: ${{ secrets.GH_PAT }}
           USE_SSH: false
         run: |
           git config --global user.name "github-actions[bot]"
