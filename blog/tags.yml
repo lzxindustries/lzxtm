@@ -2,3 +2,8 @@ chromagnon:
   label: Chromagnon
   permalink: /chromagnon
   description: Posts about the Chromagnon video synthesizer
+
+software:
+  label: Software
+  permalink: /software
+  description: Software downloads and releases

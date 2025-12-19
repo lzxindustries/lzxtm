@@ -39,7 +39,7 @@ Here are a few images to share from Videomancer development.  This must be consi
 
 ![](./videomancer_top.png) -->
 
-![](./videomancer_ctrl_rev_b_pcb.png)
+![](./videomancer_ctrl_rev_b_pcb.PNG)
 <!-- 
 ![](./videomancer_ctrl_rev_b.png) -->
 

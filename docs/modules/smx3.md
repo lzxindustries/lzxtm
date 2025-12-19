@@ -36,7 +36,7 @@ export function ResponsiveYouTube({ videoId }) {
   );
 }
 
-import smx3_frontpanel from '/img/modules/smx3/smx3-diagrams/smx3_frontpanel.png';
+import smx3_frontpanel from '/img/modules/smx3/smx3-diagrams/SMX3_frontpanel.png';
 
 import smx3_line_art_labeled from '/img/modules/smx3/smx3-diagrams/smx3_line_art_labeled_496x1024.png';
 
