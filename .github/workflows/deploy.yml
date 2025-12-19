@@ -30,7 +30,8 @@ jobs:
       
       - name: Build and deploy
         env:
-          GIT_USER: creatorlars
+          GIT_USER: git
+          GIT_PASS: ${{ secrets.GITHUB_TOKEN }}
           USE_SSH: false
         run: |
           git config --global user.name "github-actions[bot]"
