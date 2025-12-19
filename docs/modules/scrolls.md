@@ -348,3 +348,57 @@ Scrolls Firmware 1.0.1 (ZIP)
 Should I Update My Firmware?
 If your serial number is below #50, you should update your firmware to the latest version, available for download on this page. This will fix compatibility issues with progressive sync timings. Firmware update instructions are included in the download.
 -->
+
+---
+
+## Firmware Update
+
+### Requirements
+
+* Your module.
+* A PC running Windows, Mac or Linux.
+* A USB Mini-B cable.
+
+### Connecting the Module
+
+* Remove the module from your rack and disconnect any EuroRack or DC power cables.
+* Connect the USB Mini-B cable to the USB connector on the rear of the module.
+* Connect the other end of the USB cable to a*powered* USB port on your PC.
+
+### Downloading the Firmware
+
+* Download the firmware package.
+
+Scrolls Firmware 1.0.1
+&nbsp;<br />
+[Download ZIP](https://docs.lzxindustries.net/firmware/scrolls_1.0.1/scrolls_1.0.1.zip)
+
+* Extract the downloaded archive and verify that you have a file with the .BIN file extension.
+
+### Updating the Firmware
+
+#### Installing LibUSB Drivers (Windows Only)
+
+For future updates, this step will be unnecessary when using the same PC. 
+
+* Download a recent release of the Zadig application from https://zadig.akeo.ie and open the executable file.
+* Select Options > List All Devices.
+* Select STM32 BOOTLOADER from the dropdown device list.
+* Select WinUSB and then reinstall or replace the driver.
+
+#### Installing the Firmware Binary
+
+* Visit the WebDFU tool at https://devanlai.github.io/webdfu/dfu-util.
+* Click the Connect button and select STM32 BOOTLOADER from the list.
+* Select the option for Internal Flash and click Select Interface.
+* Under Firmware Download, click Choose File and select the .BIN file downloaded during the previous step.
+* Click Download and wait for the process to complete.
+* Disconnect your module from the USB cable and reinstall it in your EuroRack system.
+
+---
+
+## Downloads
+
+Scrolls Firmware 1.0.1
+&nbsp;<br />
+[Download ZIP](https://docs.lzxindustries.net/firmware/scrolls_1.0.1/scrolls_1.0.1.zip)
