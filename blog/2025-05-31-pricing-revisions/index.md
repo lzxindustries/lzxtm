@@ -7,6 +7,8 @@ tags: [chromagnon]
 
 A quick update as we wrap up May. Pricing revisions for all modules and modular systems go into effect tomorrow, June 1st.
 
+<!-- truncate -->
+
 Sheet metal parts for Chromagnon and its companion project are looking great! We're revising and preparing initial production orders.
 ![](./sheet_metal_prototypes.jpg)
 

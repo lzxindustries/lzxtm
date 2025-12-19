@@ -9,6 +9,8 @@ Hi video friends,
 
 I'm writing to provide you with the news about current and ongoing projects at LZX.
 
+<!-- truncate -->
+
 The current Chromagnon Core PCB RevI revision remains a work in progress. Following the release of this version, I expect to move into fulfillment plans and scheduling. I'm currently weighing a few options which will have a big impact on how that all goes, and playing catch up on projects delayed in January and February.  The pace at which progress can be made with Chromagnon is set by the health of our sales and the synth industry in general, and this year has started roughly in that regard.  Despite that, I remain confident that LZX and Chromagnon will pull through strongly. 
 
 After a year's hiatus, we released our first new module in November last year: PGO.  We now have five more in this series available, in what we are calling the P series: modules which fit one of the three themes: Passive, Precision or Programmable.  P Series functions are not complex, exciting video effects on an individual basis: they are the building blocks of them. Those of you who wish to dig into the nuts and bolts of analog graphics will find that all the right operators are here to patch most of the functions in our other modules.  As we consider revising earlier modules and developing  new modules, this series provides a chance to encapsulate our best practices in video synth module design thus far, and provide a solid foundation on which to do so.  

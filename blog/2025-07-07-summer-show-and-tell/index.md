@@ -7,6 +7,8 @@ tags: [chromagnon]
 
 Hello eyeball friends -- I'm taking a break from an intense development sprint to say thank you for your support and patience over the past month, as we shift activities and processes in response to the tariffs on most of the parts we use in production.  We have the in house SMT machine running the past couple weeks and are making headway on your recent backorders.
 
+<!-- truncate -->
+
 I've alluded to a plan unfolding regarding Chromagnon and a new companion product that will launch alongside it this year, after some revisions which synergize the embedded digital systems used on both.  Our previous plan was *ship unit one and then work out the production details* and now it has become *ship the first 100 units alongside the first 100 units of the new product.*  If things go according to plan, this twin effort will bring the business back into good shape, after suffering some tumultuous years with Chromagnon's tardiness and the lack of our more popular standalone products in the catalog, like Vidiot and Memory Palace.  The shared embedded infrastructure is what I've been working on all Summer so far, on top of coordinating more production in house. 
 
 I've prepared a slideshow below.

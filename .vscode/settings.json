@@ -34,5 +34,6 @@
 	"javascript.suggest.classMemberSnippets.enabled": false,
 	"typescript.suggest.classMemberSnippets.enabled": false,
 	"typescript.suggest.enabled": false,
-	"typescript.suggest.objectLiteralMethodSnippets.enabled": false
+	"typescript.suggest.objectLiteralMethodSnippets.enabled": false,
+	"terminal.integrated.defaultProfile.windows": "PowerShell"
 }
