@@ -123,3 +123,34 @@ This documentation site is a work in progress, and all content is subject to cha
 - Set ANALOG VIDEO OUT to RGB.
 - Note that Videomancer must be synchronous to your modular system.  You can achieve this by either being in 1V RGB input mode as described above, or by sending Videomancer's sync out to the sync input of your modular system.
 
+## Developer Resources
+
+Videomancer is an open-source FPGA-based video synthesis platform. LZX Industries provides comprehensive development tools and community resources for creating custom video processing programs.
+
+### Videomancer SDK
+
+The official SDK provides everything you need to develop VHDL-based video processing programs for Videomancer hardware. It includes build tools, documentation, example programs, and utilities for creating signed `.vmprog` packages.
+
+**Repository:** [github.com/lzxindustries/videomancer-sdk](https://github.com/lzxindustries/videomancer-sdk)
+
+Key features:
+- Complete FPGA development toolchain
+- Program development and TOML configuration guides
+- Example programs (passthrough, YUV amplifier)
+- Visual TOML editor and validation tools
+- Package signing with Ed25519 cryptography
+
+### Videomancer Community Programs
+
+A community repository for sharing FPGA video processing programs. This collection extends Videomancer's capabilities with effects, processors, and creative tools contributed by the community.
+
+**Repository:** [github.com/lzxindustries/videomancer-community-programs](https://github.com/lzxindustries/videomancer-community-programs)
+
+Key features:
+- Community-contributed VHDL programs
+- Automated build scripts for compiling programs
+- Contributing guidelines for submitting your own programs
+- GPL-3.0 licensed open-source contributions
+
+Both repositories are licensed under GPL-3.0 and welcome community contributions.
+
