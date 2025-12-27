@@ -9,6 +9,8 @@ Hi everyone! As promised, I've made my Chromagnon Simulator application availabl
 
 <!--truncate-->
 
+![Chromagnon Simulator Screenshot](./chromagnon-simulator-screenshot.png)
+
 ## Download Links
 
 - **Windows**: [chromagnon-simulator-windows-portable.zip](/zip/apps/chromagnon-simulator-windows-portable.zip)
