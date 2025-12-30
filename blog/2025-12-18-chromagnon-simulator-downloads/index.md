@@ -57,11 +57,17 @@ sudo xattr -rd com.apple.quarantine /Applications/simulator-chromagnon.app
 
 ```bash
 cd /Applications/simulator-chromagnon.app/Contents/Frameworks
+
 rm libsfml-*.dylib
+
 ln -s /opt/homebrew/opt/sfml@2/lib/libsfml-graphics.2.6.dylib libsfml-graphics.2.6.dylib
+
 ln -s /opt/homebrew/opt/sfml@2/lib/libsfml-window.2.6.dylib libsfml-window.2.6.dylib
+
 ln -s /opt/homebrew/opt/sfml@2/lib/libsfml-system.2.6.dylib libsfml-system.2.6.dylib
+
 ln -s /opt/homebrew/opt/sfml@2/lib/libsfml-audio.2.6.dylib libsfml-audio.2.6.dylib
+
 ln -s /opt/homebrew/opt/sfml@2/lib/libsfml-network.2.6.dylib libsfml-network.2.6.dylib
 ```
 
