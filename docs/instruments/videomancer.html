@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-instruments/videomancer" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Videomancer | LZX Technical Manual</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.lzxindustries.net/img/social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://docs.lzxindustries.net/img/social-card.jpg"><meta data-rh="true" property="og:url" content="https://docs.lzxindustries.net/docs/instruments/videomancer"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Videomancer | LZX Technical Manual"><meta data-rh="true" name="description" content="This documentation site is a work in progress, and all content is subject to change before the official launch."><meta data-rh="true" property="og:description" content="This documentation site is a work in progress, and all content is subject to change before the official launch."><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://docs.lzxindustries.net/docs/instruments/videomancer"><link data-rh="true" rel="alternate" href="https://docs.lzxindustries.net/docs/instruments/videomancer" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.lzxindustries.net/docs/instruments/videomancer" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Videomancer","item":"https://docs.lzxindustries.net/docs/instruments/videomancer"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="LZX Technical Manual RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="LZX Technical Manual Atom Feed">
+<link rel="alternate" type="application/json" href="/blog/feed.json" title="LZX Technical Manual JSON Feed">
+
+
+
+
+
+
+
+<link rel="preload" href="static/font/ReliefSingleLineOutline-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.ec3ebb7d.css">
+<script src="/assets/js/runtime~main.7b2f960a.js" defer="defer"></script>
+<script src="/assets/js/main.f2585f5c.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="LZX Industries" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo-dark.svg" alt="LZX Industries" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Technical Manual</b></a><a class="navbar__item navbar__link" href="/docs/guides/about-lzx">Guides</a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/instruments/videomancer">Instruments</a><a class="navbar__item navbar__link" href="/docs/modules/module-list">Modules</a><a class="navbar__item navbar__link" href="/blog">Blog</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/instruments/videomancer"><span title="Videomancer" class="linkLabel_WmDU">Videomancer</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Videomancer</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Videomancer</h1></header>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>This documentation site is a work in progress, and all content is subject to change before the official launch.</p></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="overview">Overview<a href="#overview" class="hash-link" aria-label="Direct link to Overview" title="Direct link to Overview" translate="no">​</a></h2>
+<p>Videomancer is a standalone instrument and development platform for video synthesis. Its open source hybrid digital/analog architecture leverages the best of both domains. With a full complement of inputs and outputs for every signal type, it integrates seamlessly with any studio or performance rig. Videomancer supports a wide range of standard and high definition video formats.</p>
+<p><strong>Inputs and outputs:</strong></p>
+<ul>
+<li class="">HDMI digital video/audio in and out</li>
+<li class="">RCA Multi-format Analog video in and out, configurable as:<!-- -->
+<ul>
+<li class="">CVBS composite</li>
+<li class="">S-Video (Y/C) component</li>
+<li class="">YPbPr component</li>
+<li class="">RGB component with sync on green (RGsB / SoG)</li>
+</ul>
+</li>
+<li class="">RCA analog Video Sync out</li>
+<li class="">TS mini-jack 1v modular RGB video in and out</li>
+<li class="">2x TRS stereo mini-jack inputs, configurable as control voltages or line level audio signals</li>
+<li class="">TRS mini-jack Type A MIDI in and MIDI through</li>
+<li class="">USB-C USB Device and USB Host ports</li>
+<li class="">microSD card slot</li>
+</ul>
+<p>Due to its extraordinary versatility, Videomancer can perform many functions, including but not limited to:</p>
+<ul>
+<li class="">Process HDMI or analog video</li>
+<li class="">Convert conventional analog video to HDMI</li>
+<li class="">Convert HDMI to conventional analog video</li>
+<li class="">Decode conventional analog video to 1v modular RGB</li>
+<li class="">Decode HDMI to 1v modular RGB</li>
+<li class="">Encode 1v modular RGB to conventional analog video</li>
+<li class="">Encode 1v modular RGB to HDMI</li>
+<li class="">Modulate video with audio</li>
+<li class="">Modulate video with low frequency control voltages</li>
+<li class="">Modulate video with MIDI</li>
+<li class="">Synchronize modulation with MIDI</li>
+<li class="">Define modulation frequencies with BPM or tap tempo</li>
+</ul>
+<p>Each of Videomancer&#x27;s 12 parameters can be driven by any modulation input, or by a unique low frequency oscillator per each parameter. Incoming control voltages are automatically sampled and held for each frame or field of video, preventing frame tearing. This behavior can be disabled by simply switching the input mode to Audio instead of CV.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="architecture">Architecture<a href="#architecture" class="hash-link" aria-label="Direct link to Architecture" title="Direct link to Architecture" translate="no">​</a></h3>
+<p>Under the hood, Videomancer is an <em>embedded system</em>, a special-purpose computer driven by a Field-Programmable Gate Array (FPGA). This is a type of processor that can be configured “in the field” to implement different circuits via firmware. That means Videomancer can perform many different functions with a level of efficiency that would otherwise require custom-designed hardware for each function. Instead of a different physical circuit, the FPGA simply loads a different firmware program. This approach diverges radically from conventional digital graphics that rely on parallel processing on a GPU to emulate particular circuits. All of this results in Videomancer being extraordinarily versatile and powerful, while remaining affordable, portable, and power-efficient.</p>
+<p>Another benefit of Videomancer&#x27;s FPGA architecture is ultra low latency, in the range of 0.0001 to 0.0007 millisecond. All conventional digital video devices insert at least one frame of delay, which is 33 milliseconds at 30 frames per second. Videomancer&#x27;s delay is absolutely imperceptible, giving immediate feedback in applications such as audio reactivity.</p>
+<p>LZX is committed to making video synthesis affordable to working artists, not just big studios. To keep costs down, Videomancer&#x27;s design has very little volatile memory. It can only hold a few lines of video in memory at a time. That&#x27;s enough for certain effects that are impossible in the analog domain, such as vertical blurring. But it&#x27;s not enough to store an entire frame, so Videomancer isn&#x27;t a frame store. It can&#x27;t convert resolutions or frame rates, or sync one video signal to another. For those capabilites, we offer the <a class="" href="/docs/modules/tbc2">TBC2 Dual Video Input</a> module.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="legacy">Legacy<a href="#legacy" class="hash-link" aria-label="Direct link to Legacy" title="Direct link to Legacy" translate="no">​</a></h3>
+<p>Videomancer is the second standalone instrument released by LZX, the first being the popular <strong>Vidiot</strong>. Videomancer shares almost zero DNA with Vidiot beyond support for the LZX 1V modular standard. Vidiot was envisioned as an entry-level semi-modular instrument with fixed functionality. In contrast, Videomancer is a development platform whose capabilities will continue to expand over time. 15 years of continuous design and manufacturing expertise have culminated in an instrument highly optimized for creativity, portability, expandability, and efficiency. The firmware of Videomancer is part of a shared code base that also finds expression within instruments currently under development, such as Chromagnon, and instruments planned for the future, such as Memory Palace Mk II. The open source Software Developer&#x27;s Kit opens the door for third party community developers to contribute programs to Videomancer, enriching the creative possibilities for all artists who use the device.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="connectors--controls">Connectors &amp; Controls<a href="#connectors--controls" class="hash-link" aria-label="Direct link to Connectors &amp; Controls" title="Direct link to Connectors &amp; Controls" translate="no">​</a></h2>
+<img src="/assets/images/videomancer-connectors-and-controls-f5225690bfa49e2555e857dc020f23cc.png" alt="Videomancer connectors and controls">
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="signal-paths">Signal Paths<a href="#signal-paths" class="hash-link" aria-label="Direct link to Signal Paths" title="Direct link to Signal Paths" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="video-routing-and-color-formats">Video Routing and Color Formats<a href="#video-routing-and-color-formats" class="hash-link" aria-label="Direct link to Video Routing and Color Formats" title="Direct link to Video Routing and Color Formats" translate="no">​</a></h3>
+<p>To choose from the available video inputs and outputs, follow this procedure:</p>
+<ul>
+<li class="">Press the <strong>SYSTEM</strong> button</li>
+<li class="">Turn the rotary encoder to select the desired setting:<!-- -->
+<ul>
+<li class=""><strong>VIDEO ROUTE</strong> selects input from either <strong>HDMI</strong> or <strong>Multi-format Analog</strong> RCA jacks</li>
+<li class=""><strong>ANALOG VIDEO IN</strong> selects the active <strong>Multi-format Analog</strong> RCA input jacks and the color format</li>
+<li class=""><strong>ANALOG VIDEO OUT</strong> selects the active <strong>Multi-format Analog</strong> RCA output jacks and the color format</li>
+</ul>
+</li>
+<li class="">Press the rotary encoder once to edit the selected setting</li>
+<li class="">Turn the rotary encoder to select an option</li>
+<li class="">Press the rotary encoder again to confirm the option</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="input-configurations">Input Configurations<a href="#input-configurations" class="hash-link" aria-label="Direct link to Input Configurations" title="Direct link to Input Configurations" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="hdmi-in">HDMI in<a href="#hdmi-in" class="hash-link" aria-label="Direct link to HDMI in" title="Direct link to HDMI in" translate="no">​</a></h4>
+<ul>
+<li class="">Connect a source to the <strong>HDMI</strong> input</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>HDMI</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="composite-cvbs-video-in">Composite (CVBS) video in<a href="#composite-cvbs-video-in" class="hash-link" aria-label="Direct link to Composite (CVBS) video in" title="Direct link to Composite (CVBS) video in" translate="no">​</a></h4>
+<ul>
+<li class="">Connect a composite video signal to the <strong>Analog Y/CVBS</strong> input</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>Analog</strong></li>
+<li class="">Set <strong>ANALOG VIDEO IN</strong> to <strong>CVBS</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="s-video-in">S-Video in<a href="#s-video-in" class="hash-link" aria-label="Direct link to S-Video in" title="Direct link to S-Video in" translate="no">​</a></h4>
+<ul>
+<li class="">Using a Mini DIN-4 to dual RCA adapter, connect the <strong>Y</strong> (luminance) component to the <strong>Analog Pb/B</strong> input and the <strong>C</strong> (chroma) component to the <strong>Analog Pr/R</strong> input</li>
+<li class="">Connect an S-Video source to the adapter with an S-Video cable</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>Analog</strong></li>
+<li class="">Set <strong>ANALOG VIDEO IN</strong> to <strong>S-Video</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="ypbpr-component-in">YPbPr component in<a href="#ypbpr-component-in" class="hash-link" aria-label="Direct link to YPbPr component in" title="Direct link to YPbPr component in" translate="no">​</a></h4>
+<ul>
+<li class="">Connect a YPbPr Component source to the <strong>Multi-format Analog</strong> inputs</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>Analog</strong></li>
+<li class="">Set <strong>ANALOG VIDEO IN</strong> to <strong>YPbPr</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="rgb-sync-on-green-sog-component-in">RGB Sync on Green (SoG) component in<a href="#rgb-sync-on-green-sog-component-in" class="hash-link" aria-label="Direct link to RGB Sync on Green (SoG) component in" title="Direct link to RGB Sync on Green (SoG) component in" translate="no">​</a></h4>
+<ul>
+<li class="">Connect an RGB SoG component source to the <strong>Multi-format Analog</strong> inputs</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>Analog</strong></li>
+<li class="">Set <strong>ANALOG VIDEO IN</strong> to <strong>RGB SoG</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="1v-rgb--sync-in">1V RGB + Sync in<a href="#1v-rgb--sync-in" class="hash-link" aria-label="Direct link to 1V RGB + Sync in" title="Direct link to 1V RGB + Sync in" translate="no">​</a></h4>
+<ul>
+<li class="">Connect 1V RGB signals to the <strong>1V RGB</strong> inputs</li>
+<li class="">Connect a sync signal to the <strong>Analog Y</strong> input<!-- -->
+<ul>
+<li class="">Take a sync output from the front or rear of any module</li>
+<li class="">Or take any video output that includes embedded sync, and is in sync with the modular system. For example, the following RCA jacks of ESG3 all include sync:<!-- -->
+<ul>
+<li class=""><strong>CVBS</strong></li>
+<li class="">The <strong>Y</strong> output in <strong>YPbPr</strong> mode</li>
+<li class="">The <strong>Green</strong> output in <strong>RGB / SoG</strong> mode</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="">Set <strong>VIDEO ROUTE</strong> to <strong>Analog</strong></li>
+<li class="">Set <strong>ANALOG VIDEO IN</strong> to <strong>RGB 1V</strong></li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Videomancer needs to receive a sync reference. That can come from sync embedded in the HDMI or conventional analog video source. 1V modular RGB does not carry sync, so sync must be supplied separately. Sync can come directly from the modular system, or from some other video device that is in sync with the modular system.</p></div></div>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="output-configurations">Output Configurations<a href="#output-configurations" class="hash-link" aria-label="Direct link to Output Configurations" title="Direct link to Output Configurations" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="hdmi-out">HDMI out<a href="#hdmi-out" class="hash-link" aria-label="Direct link to HDMI out" title="Direct link to HDMI out" translate="no">​</a></h4>
+<ul>
+<li class="">Connect the <strong>HDMI</strong> output to a monitor or capture device</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="composite-video-out">Composite video out<a href="#composite-video-out" class="hash-link" aria-label="Direct link to Composite video out" title="Direct link to Composite video out" translate="no">​</a></h4>
+<ul>
+<li class="">Connect the <strong>Y/G/CVBS</strong> output to a monitor or capture device</li>
+<li class="">Set <strong>ANALOG VIDEO OUT</strong> to <strong>CVBS/S-Video</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="s-video-out">S-Video out<a href="#s-video-out" class="hash-link" aria-label="Direct link to S-Video out" title="Direct link to S-Video out" translate="no">​</a></h4>
+<ul>
+<li class="">Using a Mini DIN-4 to dual RCA adapter, connect the <strong>Y</strong> component to the <strong>Analog Pb/B</strong> output and the <strong>C</strong> component to the <strong>Analog Pr/R</strong> output</li>
+<li class="">Connect the adapter to a monitor or capture device using an S-Video cable</li>
+<li class="">Set <strong>ANALOG VIDEO OUT</strong> to <strong>CVBS/S-Video</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="ypbpr-component-out">YPbPr component out<a href="#ypbpr-component-out" class="hash-link" aria-label="Direct link to YPbPr component out" title="Direct link to YPbPr component out" translate="no">​</a></h4>
+<ul>
+<li class="">Connect the <strong>YPbPr</strong> outputs to a monitor or capture device</li>
+<li class="">Set <strong>ANALOG VIDEO OUT</strong> to <strong>YUV</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="rgb-sync-on-green-sog-component-out">RGB Sync on Green (SoG) component out<a href="#rgb-sync-on-green-sog-component-out" class="hash-link" aria-label="Direct link to RGB Sync on Green (SoG) component out" title="Direct link to RGB Sync on Green (SoG) component out" translate="no">​</a></h4>
+<ul>
+<li class="">Connect the <strong>RGB</strong> outputs to a monitor or capture device</li>
+<li class="">Set <strong>ANALOG VIDEO OUT</strong> to <strong>RGB</strong></li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="1v-rgb--sync-out">1V RGB + Sync out<a href="#1v-rgb--sync-out" class="hash-link" aria-label="Direct link to 1V RGB + Sync out" title="Direct link to 1V RGB + Sync out" translate="no">​</a></h4>
+<ul>
+<li class="">Connect the <strong>1V RGB</strong> outputs to the modular system</li>
+<li class="">Connect the <strong>SYNC</strong> output to the sync input of the modular system</li>
+<li class="">Set <strong>ANALOG VIDEO OUT</strong> to <strong>RGB</strong></li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>note</div><div class="admonitionContent_BuS1"><p>Videomancer automatically syncs to any conventional video signal patched to the HDMI or RCA inputs. However, it is not a frame store like TBC2. To use Videomancer as a decoder to convert to 1v modular video, patch the Videomancer Sync output to the sync input of the modular system.</p></div></div>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>warning</div><div class="admonitionContent_BuS1"><p>Videomancer is an ultra low latency digital signal processing device, but it can never be as fast as a dedicated analog circuit. Any video going through Videomancer is delayed slightly. If Videomancer is patched into the <em>middle</em> of a modular system, between the modular decoder and the modular encoder, Videomancer&#x27;s output will be shifted to the right relative to the rest of the modular system. The amount of horizontal shift depends on video resolution, frame rate, and the particular program loaded into Videomancer.</p><p>Therefore, inserting Videomancer between a modular decoder and encoder is not a recommended configuration. Using Videomancer as an “effects send” may be possible in exotic scenarios where the modular decoder, encoder, and/or sync generator are not sharing the same sync reference, but that would be a non-standard, advanced, experimental configuration.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="operation">Operation<a href="#operation" class="hash-link" aria-label="Direct link to Operation" title="Direct link to Operation" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="supported-formats-and-standards">Supported Formats and Standards<a href="#supported-formats-and-standards" class="hash-link" aria-label="Direct link to Supported Formats and Standards" title="Direct link to Supported Formats and Standards" translate="no">​</a></h3>
+<p>Videomancer can convert between various color spaces and color encoding formats. Choose the input and output options via the <strong>SYSTEM</strong> menu, as described in the <a class="" href="/docs/instruments/videomancer#video-routing-and-color-formats">Video Routing and Color Formats</a> section.</p>
+<table><thead><tr><th>Color formats</th></tr></thead><tbody><tr><td>HDMI YCbCr (YUV)</td></tr><tr><td>YPbBr component (YUV)</td></tr><tr><td>RGsB component (Sync On Green)</td></tr><tr><td>Composite (CVBS)</td></tr><tr><td>S-Video (Y/C)</td></tr></tbody></table>
+<hr>
+<p>Videomancer genlocks to incoming video, assuming the timing, resolution, and frame rate of the source. It can&#x27;t convert raster formats, so there&#x27;s no function to choose resolutions or frame rates.</p>
+<table><thead><tr><th>Resolution and frame rate standards</th></tr></thead><tbody><tr><td>240p29</td></tr><tr><td>NTSC 486i59</td></tr><tr><td>PAL 576i50</td></tr><tr><td>480p29</td></tr><tr><td>576p25</td></tr><tr><td>720p50</td></tr><tr><td>720p59</td></tr><tr><td>720p60</td></tr><tr><td>1080i50</td></tr><tr><td>1080i59</td></tr><tr><td>1080i60</td></tr><tr><td>1080p23</td></tr><tr><td>1080p24</td></tr><tr><td>1080p25</td></tr><tr><td>1080p29</td></tr><tr><td>1080p30</td></tr></tbody></table>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="firmware-update">Firmware Update<a href="#firmware-update" class="hash-link" aria-label="Direct link to Firmware Update" title="Direct link to Firmware Update" translate="no">​</a></h2>
+<p>Keeping Videomancer updated with the latest firmware ensures access to the latest programs, features, and bug fixes. The process is very simple and only takes a few minutes.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requirements">Requirements<a href="#requirements" class="hash-link" aria-label="Direct link to Requirements" title="Direct link to Requirements" translate="no">​</a></h3>
+<ul>
+<li class="">Videomancer and power supply</li>
+<li class="">Windows, Mac or Linux computer</li>
+<li class="">USB-A to USB-C cable</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="procedure">Procedure<a href="#procedure" class="hash-link" aria-label="Direct link to Procedure" title="Direct link to Procedure" translate="no">​</a></h3>
+<ul>
+<li class="">Download the desired firmware <code>.UF2</code> file from the Videomancer <a href="https://github.com/lzxindustries/videomancer-firmware/releases" target="_blank" rel="noopener noreferrer" class="">firmware repository</a>  on GitHub</li>
+<li class="">Connect Videomancer to power supply and switch power to the <strong>OFF</strong> position</li>
+<li class="">Connect the computer&#x27;s USB-A port to Videomancer&#x27;s USB-C <strong>Device</strong> port (not the Host port)</li>
+<li class="">Hold down Videomancer <strong>BOOT</strong> button</li>
+<li class="">Switch Videomancer power to the <strong>ON</strong> position</li>
+<li class="">Release the <strong>BOOT</strong> button</li>
+<li class="">A new USB storage device is listed in the computer&#x27;s filesystem. It shows up as a Raspberry Pi, because that&#x27;s the control system for Videomancer&#x27;s USB ports.</li>
+<li class="">Copy the firmware <code>.UF2</code> file to the newly detected storage device. Wait a few minutes for the transfer to complete.</li>
+<li class="">Videomancer automatically reboots into the new firmware and displays the currently installed version</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="developer-resources">Developer Resources<a href="#developer-resources" class="hash-link" aria-label="Direct link to Developer Resources" title="Direct link to Developer Resources" translate="no">​</a></h2>
+<p>Videomancer is an open-source FPGA-based video synthesis platform. LZX Industries provides comprehensive development tools and community resources for creating custom video processing programs.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="videomancer-sdk">Videomancer SDK<a href="#videomancer-sdk" class="hash-link" aria-label="Direct link to Videomancer SDK" title="Direct link to Videomancer SDK" translate="no">​</a></h3>
+<p>The official Software Developer&#x27;s Kit provides everything needed to develop programs for Videomancer with the VHDL hardware description language. The SDK includes build tools, documentation, example programs, and utilities for creating signed <code>.VMPROG</code> packages.</p>
+<p><strong>Repository:</strong> <a href="https://github.com/lzxindustries/videomancer-sdk" target="_blank" rel="noopener noreferrer" class="">github.com/lzxindustries/videomancer-sdk</a></p>
+<p>Key features:</p>
+<ul>
+<li class="">Complete FPGA development toolchain</li>
+<li class="">Program development and TOML configuration guides</li>
+<li class="">Example programs (passthrough, YUV amplifier)</li>
+<li class="">Visual TOML editor and validation tools</li>
+<li class="">Package signing with Ed25519 cryptography</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="videomancer-community-programs">Videomancer Community Programs<a href="#videomancer-community-programs" class="hash-link" aria-label="Direct link to Videomancer Community Programs" title="Direct link to Videomancer Community Programs" translate="no">​</a></h3>
+<p>A community repository for sharing FPGA video processing programs. This collection extends Videomancer&#x27;s capabilities with effects, processors, and creative tools contributed by the community.</p>
+<p><strong>Repository:</strong> <a href="https://github.com/lzxindustries/videomancer-community-programs" target="_blank" rel="noopener noreferrer" class="">github.com/lzxindustries/videomancer-community-programs</a></p>
+<p>Key features:</p>
+<ul>
+<li class="">Community-contributed VHDL programs</li>
+<li class="">Automated build scripts for compiling programs</li>
+<li class="">Contributing guidelines for submitting your own programs</li>
+<li class="">GPL-3.0 licensed open-source contributions</li>
+</ul>
+<p>Both repositories are licensed under GPL-3.0 and welcome community contributions.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#overview" class="table-of-contents__link toc-highlight">Overview</a><ul><li><a href="#architecture" class="table-of-contents__link toc-highlight">Architecture</a></li><li><a href="#legacy" class="table-of-contents__link toc-highlight">Legacy</a></li></ul></li><li><a href="#connectors--controls" class="table-of-contents__link toc-highlight">Connectors &amp; Controls</a></li><li><a href="#signal-paths" class="table-of-contents__link toc-highlight">Signal Paths</a><ul><li><a href="#video-routing-and-color-formats" class="table-of-contents__link toc-highlight">Video Routing and Color Formats</a></li><li><a href="#input-configurations" class="table-of-contents__link toc-highlight">Input Configurations</a></li><li><a href="#output-configurations" class="table-of-contents__link toc-highlight">Output Configurations</a></li></ul></li><li><a href="#operation" class="table-of-contents__link toc-highlight">Operation</a><ul><li><a href="#supported-formats-and-standards" class="table-of-contents__link toc-highlight">Supported Formats and Standards</a></li></ul></li><li><a href="#firmware-update" class="table-of-contents__link toc-highlight">Firmware Update</a><ul><li><a href="#requirements" class="table-of-contents__link toc-highlight">Requirements</a></li><li><a href="#procedure" class="table-of-contents__link toc-highlight">Procedure</a></li></ul></li><li><a href="#developer-resources" class="table-of-contents__link toc-highlight">Developer Resources</a><ul><li><a href="#videomancer-sdk" class="table-of-contents__link toc-highlight">Videomancer SDK</a></li><li><a href="#videomancer-community-programs" class="table-of-contents__link toc-highlight">Videomancer Community Programs</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">© 2026 LZX</div></div></div></footer></div>
+</body>
+</html>
