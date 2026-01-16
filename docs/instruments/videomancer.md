@@ -6,11 +6,19 @@ slug: /instruments/videomancer
 
 import videomancer_connectors_and_controls from '/img/instruments/videomancer/videomancer-connectors-and-controls.png';
 
+import videomancer_frontpanel from '/img/instruments/videomancer/videomancer_frontpanel.png';
+
+import videomancer_rearpanel from '/img/instruments/videomancer/videomancer_rearpanel.png';
+
 # Videomancer
 
 :::warning
 This documentation site is a work in progress, and all content is subject to change before the official launch.
 :::
+
+<img src={videomancer_frontpanel} alt="Videomancer front panel"/>
+
+<img src={videomancer_rearpanel} alt="Videomancer rear connections"/>
 
 ## Overview
 
