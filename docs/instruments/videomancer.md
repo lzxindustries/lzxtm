@@ -121,9 +121,9 @@ Videomancer is the second standalone instrument released by LZX, the first being
 * **Rotary Encoder**
     - Incremental digital data entry
     - Turn to choose an option, push to execute
-    - Define global **SYSTEM** settings
-    - Choose **MOTION** mode per Parameter
-    - Load and save **STATE** user presets
+    - Define global System settings
+    - Choose Motion mode per Parameter
+    - Load and save State user presets
 * **Navigation** buttons
     - Press to access a function on the LCD display
     - White buttons: **SYSTEM**, **MOTION**, and **STATE** functions
@@ -156,7 +156,7 @@ Videomancer is the second standalone instrument released by LZX, the first being
     - User feedback for System settings and functions, States, Motion modes, and Parameter values
 * Front panel LED lights
     - Parameter knob, switch, and fader LEDs indicate the currently focused Parameter: 1 through 12
-    - **Motion** knob LEDs indicate the active Motion control: Time, Space, Slope
+    - **Motion** knob LEDs indicate the active Motion control: **Time**, **Space**, **Slope**
     - **Start** and **Stop** LEDs indicate transport playback status
     - **Tap** LED flashes during transport playback to indicate tempo
 
@@ -198,7 +198,7 @@ Videomancer genlocks to incoming video, assuming the timing, resolution, and fra
 
 ---
 
-Videomancer can convert between various color spaces and color encoding formats. Choose the input and output options via the **SYSTEM** menu, as described in [Video Routing](/docs/instruments/videomancer#video-routing) below.
+Videomancer can convert between various color spaces and color encoding formats. Choose the input and output options via the System menu, as described in [Video Routing](/docs/instruments/videomancer#video-routing) below.
 
 | Color formats                         |
 |---------------------------------------|
@@ -219,9 +219,9 @@ To choose from the available video inputs and outputs, follow this procedure:
     - **VIDEO ROUTE** selects input from either **HDMI** or **Multi-format Analog** RCA jacks
     - **ANALOG VIDEO IN** selects the active **Multi-format Analog** RCA input jacks and the color format
     - **ANALOG VIDEO OUT** selects the active **Multi-format Analog** RCA output jacks and the color format
-- Press the rotary encoder once to edit the selected setting
-- Turn the rotary encoder to select an option
-- Press the rotary encoder again to confirm the option
+- Press the Rotary Encoder once to edit the selected setting
+- Turn the Rotary Encoder to select an option
+- Press the Rotary Encoder again to confirm the option
 
 ---
 
@@ -313,7 +313,7 @@ Videomancer automatically syncs to any conventional video signal patched to the 
 :::
 
 :::warning
-Videomancer is an ultra low latency digital signal processing device, but it can never be as fast as a dedicated analog circuit. Any video going through Videomancer is delayed slightly. If Videomancer is patched into the *middle* of a modular system, between the modular decoder and the modular encoder, Videomancer's output will be shifted to the right relative to the rest of the modular system. The amount of horizontal shift depends on video resolution, frame rate, and the particular program loaded into Videomancer.
+Videomancer is an ultra-low latency digital signal processing device, but it can never be as fast as a dedicated analog circuit. Any video going through Videomancer is delayed slightly. If Videomancer is patched into the *middle* of a modular system, between the modular decoder and the modular encoder, Videomancer's output will be shifted to the right relative to the rest of the modular system. The amount of horizontal shift depends on video resolution, frame rate, and the particular program loaded into Videomancer.
 
 Therefore, inserting Videomancer between a modular decoder and encoder is not a recommended configuration. Using Videomancer as an &ldquo;effects send&rdquo; may be possible in exotic scenarios where the modular decoder, encoder, and/or sync generator are not sharing the same sync reference, but that would be a non-standard, advanced, experimental configuration.
 :::
@@ -322,9 +322,9 @@ Therefore, inserting Videomancer between a modular decoder and encoder is not a 
 
 ## Operation
 
-### System Menu
+### System
 
-Pressing the **SYSTEM** button activates the SYSTEM menu. By default, the current system status, input, and format are displayed. Turn the Rotary Encoder to cycle through the SYSTEM submenus:
+Pressing the **SYSTEM** button activates the System menu. By default, the current System status, input, and format are displayed. Turn the Rotary Encoder to cycle through the System submenus:
 
 * **PROGRAM**
 * **VIDEO ROUTE**
@@ -332,12 +332,32 @@ Pressing the **SYSTEM** button activates the SYSTEM menu. By default, the curren
 * **ANALOG OUT**
 * **MIDI CHANNEL**
 
-To make changes to SYSTEM settings:
+To make changes to System settings:
 
-* Turn the Rotary Encoder to choose a SYSTEM submenu
+* Turn the Rotary Encoder to choose a System submenu
 * Press the Rotary Encoder to move the cursor to the bottom row
 * Turn the Rotary Encoder to change the setting
 * Press the Rotary Encoder to confirm the setting
+
+---
+
+### States
+
+A State is a user-defined preset including all information on the current conditions of Videomancer. All System, Motion, and Parameter values are stored within the State. States are stored in non-volatile internal flash memory. Internal storage provides 128 State registers, numbered 0 to 127. Future firmware plans include storing States on microSD card.
+
+To save a State:
+
+* Press the **STATE** button
+* Turn the Rotary Encoder to select a State register number
+* Long-press and hold the Rotary Encoder for at least two seconds
+* Press the Rotary Encoder again to confirm the Save operation
+
+To load a State:
+
+* Press the **STATE** button
+* Turn the Rotary Encoder to select a State register number
+* Press the Rotary Encoder
+* Press the Rotary Encoder again to confirm the Load operation
 
 ---
 
@@ -347,9 +367,9 @@ Videomancer includes numerous Programs, which are firmware applications that can
 
 * Press the **SYSTEM** button
 * Turn the Rotary Encoder to select the **PROGRAM** submenu
-* Press the Rotary Encoder to move the cursor to the bottom row, where the name of the current program is displayed
+* Press the Rotary Encoder to move the cursor to the bottom row, where the name of the current Program is displayed
 * Turn the Rotary Encoder to select a Program
-* Press the Rotary Encoder to load the program
+* Press the Rotary Encoder to load the Program
 
 :::warning
 When Videomancer loads a Program, all outputs will be disabled for a few seconds. During Program load, no video or sync signal is present at the outputs. Any downstream video device does not receive a signal, so it may display black, a blue screen, or an error message such as "no signal detected". If this is an issue, such as during a live performance, send Videomancer through a device such as a mixer that always outputs a valid video signal.
@@ -387,27 +407,29 @@ Programs include:
 
 Any Parameter 1 through 12 can be adjusted manually at any time via the Parameter Knobs, Switches, or Fader. If Videomancer is in Parameter display mode, then the Parameter number, name, and values of the *focused* Parameter are shown onscreen.
 
-If Videomancer is in **SYSTEM**, **MOTION**, or **STATE** mode, then the LCD display shows the menus for that mode. In this case, the properties of the focused Parameter are not displayed. However, all Parameter controls are still active, and the **MOTION** controls for the focused Parameter are also active.
+If Videomancer is in **SYSTEM**, **MOTION**, or **STATE** mode, then the LCD display shows the menus for that mode. In this case, the properties of the focused Parameter are not displayed. However, all Parameter controls are still active, and the Motion controls for the focused Parameter are also active.
 
 To enter Parameter display mode, press any of the Parameter buttons labeled **1** through **&ast;** (Parameters 1 through 12). The selected Parameter is given focus and its properties are displayed.
 
-If Parameter display mode is active, simply moving a Parameter control brings that Parameter into focus and displays the Parameter's **Manual** value onscreen. Moving a **Time**, **Space**, or **Slope** control knob displays the associated **MOTION** property and its value.
+If Parameter display mode is active, simply moving a Parameter control brings that Parameter into focus and displays the Parameter's **Manual** value onscreen. Moving a **Time**, **Space**, or **Slope** control knob displays the associated Motion property and its value.
+
+All Parameter controls employ a soft takeover method for updating the value. The physical control must be moved beyond the current parameter value in order to take effect. When the Parameter value doesn't match the physical control position, an **exclamation point** is displayed on the left side of the value.
 
 ---
 
-### Motion Modes
+### Motion
 
-Each Parameter can be separately modulated by its own individual **MOTION** source. Modulation is summed with the **Manual** value set by the Parameter Knob, Switch, or Fader control. The Manual control acts as a bias or offset to the modulation.
+Each Parameter can be separately modulated by its own individual **MOTION** source. Modulation is summed with the **Manual** value set by the Parameter knob, switch, or fader control. The Manual control acts as a bias or offset to the modulation.
 
-To choose a MOTION mode:
+To choose a Motion mode:
 
 * Press the button or adjust the control of the desired Parameter to give it focus
-* Press the Rotary Encoder or turn it by one increment to display the current **MOTION** mode
-* Turn the Rotary Encoder to cycle through the available **MOTION** modes
+* Press the Rotary Encoder or turn it by one increment to display the current Motion mode
+* Turn the Rotary Encoder to cycle through the available Motion modes
 
-Selection of a **MOTION** mode takes place immediately.
+Selection of a Motion mode takes place immediately.
 
-When the MOTION mode menu is displayed, pressing the Rotary Encoder will switch the mode to Off, disabling all modulation.
+When the Motion mode menu is displayed, pressing the Rotary Encoder sets the Motion mode to **Off**, disabling all modulation.
 
 :::tip
 To quickly disable modulation for the focused Parameter, press the Rotary Encoder twice.
@@ -417,24 +439,34 @@ To quickly disable modulation for the focused Parameter, press the Rotary Encode
 * **Off**
     - Modulation disabled
 * **Free LFO**
-    - Internal free-running low frequency oscillator that is not synchronized to anything
+    - Internal free-running low frequency oscillator
+    - Not synchronized to anything
 * **Sync LFO**
-    - Internal low frequency oscillator that is synchronized to the internal clock, or to incoming MIDI
+    - Internal low frequency oscillator
+    - Synchronized to the internal clock or external MIDI
 * **CV**
-    - External low frequency control voltage supplied to one or two channels of the **AUDIO/CV** inputs
+    - External low frequency control voltage
+    - From one or two channels of the **AUDIO/CV** inputs
+    - Voltage range before clipping: +6.6V to -6.6V
+    - Sampled at video frame or field rate, preventing frame tearing
 * **Audio**
-    - External line level audio or mid-range control voltage supplied to one or two channels of the **AUDIO/CV** inputs
+    - External line level audio or mid-range control voltage
+    - From one or two channels of the **AUDIO/CV** inputs
+    - Sampled at video line rate
 * **Random**
     - Internal low frequency random noise source
 
-Incoming control voltages are automatically sampled and held for each frame or field of video, preventing frame tearing. This behavior can be disabled by simply switching the input mode to Audio instead of CV.
+---
 
 #### MOTION Control Knobs
 
-**MOTION** properties are adjusted with the **Time**, **Space**, and **Slope** knobs. **Space** always controls the **Gain** or amplitude of modulation. The **Time** and **Slope** knobs perform different functions depending on the active **MOTION** mode.
+Motion properties are adjusted with the **Time**, **Space**, and **Slope** knobs.
 
-**Free LFO** and **Sync LFO** modes:
-* **Time** = **Frequency**
+**Space** always controls the **Gain** or amplitude of modulation. The range of the Gain property depends on the current Motion mode. For example, **LFO** modes have a maximum Gain of 100%. **CV** and **Audio** modes have a maximum Gain of 400% to accommodate sources with different voltage ranges.
+
+**Time** and **Slope** knobs perform different functions depending on the active **MOTION** mode.
+
+**Free LFO** and **Sync LFO**:
 * **Slope** = waveform **Shape**
     - **Ramp** (rising)
     - **Sawtooth** (falling)
@@ -445,13 +477,96 @@ Incoming control voltages are automatically sampled and held for each frame or f
     - **Exponential** (slow out)
     - **Parabola**
 
-**CV** and **Audio** modes:
-* **Time** = **Slew** rate
-* **Slope** = **Input** channel selector
+**Free LFO**:
+* **Time** = **Frequency**
+    - Oscillation period, in seconds
 
-**Random** mode:
-* **Time** = **Rise** rate
-* **Slope** = **Fall** rate
+**Sync LFO**:
+* **Time** = **Division**
+    - Frequency expressed as the ratio of number of beats divided by number of oscillator cycles 
+    - Beats ÷ oscillations
+    - E.g. 1/4 = four oscillations per beat, 4/1 = oscillation per four beats
+
+**CV** and **Audio**:
+* **Time** = **Slew** rate
+    - Similar to a lowpass filter, removes high frequency components of the control signal
+* **Slope** = **Input** channel selector
+    - If a channel pair is selected, then the modulation is the sum of the two channel values
+
+**Random**:
+* **Time** = **Rise**
+* **Slope** = **Fall**
+    - **Rise** and **Fall** properties constrain the random values, not the frequency of the noise
+    - Setting **Rise** and **Fall** to zero freezes the noise at a constant value
+    - Setting **Rise** and **Fall** to 100% gives the full range within the **LFN Gain** property set by the **Space** knob
+
+Within a Motion property page, the current mode is indicated by the following abbreviations:
+
+* **Free LFO** = **LFO**, Low Frequency Oscillator
+* **Sync LFO** = **LFSO**, Low Frequency Synchronized Oscillator
+* **CV** = **LFCV**, Low Frequency Control Voltage
+* **Audio** = **HFCV**, High Frequency Control Voltage
+* **Random** = **LFN**, Low Frequency Noise
+
+---
+
+### Tempo
+
+**Sync LFO** Motion mode locks the period of the internal oscillator to a clock frequency. The clock source can be Videomancer's internal timecode, or an external MIDI source.
+
+Press the **MOTION** button to display the current values of Timecode (**TC**) and Beats Per Minute (**BPM**).
+
+Sync LFO mode is deterministic based on the value of Videomancer's timecode, whether that is internally generated, or externally provided via MIDI. All Sync LFO oscillators begin with a phase of zero at timecode value `00:00:00:00`. If the Time properties of Sync LFOs are constant, then the exact same phase relationships are preserved on each playback.
+
+#### Internal Synchronization
+
+Press the **START** button to globally activate playback of internal timecode.
+
+Press the **STOP** button to globally deactivate playback of internal timecode and reset the time index to `00:00:00:00`.
+
+:::note
+Videomancer does not have a manual pause button. Stopping playback sends the timecode value to zero, resetting the phase of all oscillators. Use [MIDI Timecode](/docs/instruments/videomancer#midi-synchronization) if you wish to pause and resume playback.
+:::
+
+#### Internal BPM Tempo
+
+To change the **BPM** value numerically:
+    - Press the **MOTION** button
+    - Turn the Rotary Encoder
+
+To change the **BPM** value rhythmically while playback is stopped:
+    - Press the **MOTION** button
+    - Press the **TAP** button once to begin sampling the tempo
+    - Press the **TAP** button again to finish sampling the tempo
+
+To change the **BPM** value rhythmically during playback:
+    - Press the **TAP** button once to begin sampling the tempo
+    - Press the **TAP** button again to finish sampling the tempo
+        - New tempo takes effect
+
+---
+
+### MIDI Synchronization
+
+A MIDI signal supplied to Videomancer automatically overrides the internal timecode.
+
+By default, Videomancer receives MIDI on all channels (Omni). To change the MIDI channel:
+
+* Press the **SYSTEM** button
+* Turn the Rotary Encoder to the **MIDI CHANNEL** menu
+* Press the Rotary Encoder to move the cursor to the bottom row
+* Turn the Rotary Encoder to select a MIDI channel
+* Press the Rotary Encoder to confirm MIDI channel selection
+
+**BPM** setting is determined by incoming MIDI Clock or MIDI Timecode (MTC). Videomancer adopts the current incoming MIDI BPM tempo, even when the MIDI source is stopped. Any manual changes to BPM are overridden by incoming MIDI on the next beat.
+
+Transport functions are also overridden by incoming MIDI Clock or MIDI Timecode. When the MIDI source starts or stops, Videomancer transport also starts or stops. However, if the MIDI source is stopped, Videomancer transport controls still function. We can press the **START** or **STOP** buttons to control playback while the MIDI source is not playing. However, we can't change the BPM as long as the MIDI source is transmitting MIDI Clock or MIDI Timecode.
+
+MIDI Clock Start and Stop signals perform the same functions as the **START** and **STOP** buttons. MIDI Clock Stop resets the Videomancer timecode to `00:00:00:00`, regardless of the timecode value of the MIDI source. MIDI Clock Continue and Song Pointer signals are ignored. Therefore, MIDI Clock is a relative time index, not an absolute one.
+
+MIDI Timecode is an absolute time reference. Videomancer timecode follows the current MIDI Timecode value, but only during playback. Stopping or pausing the MIDI source causes Videomancer timecode to stop, but does not reset to zero. Starting the MIDI source causes Videomancer timecode to update to the incoming MIDI Timecode value, so we can pause and resume playback without resetting oscillator phase. Any other transport controls on the MIDI source, such as rewind, fast forward, or skipping to a different timecode value, have no effect on Videomancer's timecode. Videomancer only responds when MIDI Timecode plays or stops.
+
+If the MIDI source transmits both MIDI Clock and MIDI Timecode, Videomancer gives priority to MIDI Clock. Videomancer timecode is reset to zero when the MIDI source stops.
 
 ---
 
