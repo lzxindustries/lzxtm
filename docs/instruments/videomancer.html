@@ -15,7 +15,7 @@
 
 <link rel="preload" href="static/font/ReliefSingleLineOutline-Regular.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css" integrity="sha384-odtC+0UGzzFL/6PNoE8rX/SPcQDXBJ+uRepguP4QkPCm2LBxH3FA3y+fKSiJ+AmM" crossorigin="anonymous"><link rel="stylesheet" href="/assets/css/styles.ec3ebb7d.css">
-<script src="/assets/js/runtime~main.2114b1eb.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.7e4ac5b2.js" defer="defer"></script>
 <script src="/assets/js/main.5f98a1cb.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -462,7 +462,7 @@
 </li>
 <li class=""><strong>Audio</strong>
 <ul>
-<li class="">External line level audio or mid-range control voltage</li>
+<li class="">External line level audio or mid-frequency control voltage</li>
 <li class="">From one or two channels of the <strong>AUDIO/CV</strong> inputs</li>
 <li class="">Sampled at video line rate</li>
 </ul>
@@ -505,9 +505,9 @@
 <ul>
 <li class=""><strong>Time</strong> = <strong>Division</strong>
 <ul>
-<li class="">Frequency expressed as the ratio of number of beats divided by number of oscillator cycles</li>
+<li class="">Oscillation period expressed as the ratio of beats divided by oscillator cycles</li>
 <li class="">Beats ÷ oscillations</li>
-<li class="">E.g. 1/4 = four oscillations per beat, 4/1 = oscillation per four beats</li>
+<li class="">E.g. 1/4 = one beat per four oscillations, 4/1 = four beats per oscillation</li>
 </ul>
 </li>
 </ul>
@@ -529,7 +529,7 @@
 <li class=""><strong>Time</strong> = <strong>Rise</strong></li>
 <li class=""><strong>Slope</strong> = <strong>Fall</strong>
 <ul>
-<li class=""><strong>Rise</strong> and <strong>Fall</strong> properties constrain the random values, not the frequency of the noise</li>
+<li class=""><strong>Rise</strong> and <strong>Fall</strong> constrain the random values, not the frequency of the noise</li>
 <li class="">Setting <strong>Rise</strong> and <strong>Fall</strong> to zero freezes the noise at a constant value</li>
 <li class="">Setting <strong>Rise</strong> and <strong>Fall</strong> to 100% gives the full range within the <strong>LFN Gain</strong> property set by the <strong>Space</strong> knob</li>
 </ul>
@@ -567,12 +567,9 @@
 <p>To change the <strong>BPM</strong> value rhythmically during playback:</p>
 <ul>
 <li class="">Press the <strong>TAP</strong> button once to begin sampling the tempo</li>
-<li class="">Press the <strong>TAP</strong> button again to finish sampling the tempo<!-- -->
-<ul>
-<li class="">New tempo takes effect</li>
+<li class="">Press the <strong>TAP</strong> button again to finish sampling the tempo</li>
 </ul>
-</li>
-</ul>
+<p>The new tempo takes effect immediately.</p>
 <hr>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="midi-synchronization">MIDI Synchronization<a href="#midi-synchronization" class="hash-link" aria-label="Direct link to MIDI Synchronization" title="Direct link to MIDI Synchronization" translate="no">​</a></h3>
 <p>A MIDI signal supplied to Videomancer automatically overrides the internal timecode.</p>
