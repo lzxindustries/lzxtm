@@ -450,7 +450,7 @@ To quickly disable modulation for the focused Parameter, press the Rotary Encode
     - Voltage range before clipping: +6.6V to -6.6V
     - Sampled at video frame or field rate, preventing frame tearing
 * **Audio**
-    - External line level audio or mid-range control voltage
+    - External line level audio or mid-frequency control voltage
     - From one or two channels of the **AUDIO/CV** inputs
     - Sampled at video line rate
 * **Random**
@@ -483,9 +483,9 @@ Motion properties are adjusted with the **Time**, **Space**, and **Slope** knobs
 
 **Sync LFO**:
 * **Time** = **Division**
-    - Frequency expressed as the ratio of number of beats divided by number of oscillator cycles 
+    - Oscillation period expressed as the ratio of beats divided by oscillator cycles
     - Beats ÷ oscillations
-    - E.g. 1/4 = four oscillations per beat, 4/1 = oscillation per four beats
+    - E.g. 1/4 = one beat per four oscillations, 4/1 = four beats per oscillation
 
 **CV** and **Audio**:
 * **Time** = **Slew** rate
@@ -496,7 +496,7 @@ Motion properties are adjusted with the **Time**, **Space**, and **Slope** knobs
 **Random**:
 * **Time** = **Rise**
 * **Slope** = **Fall**
-    - **Rise** and **Fall** properties constrain the random values, not the frequency of the noise
+    - **Rise** and **Fall** constrain the random values, not the frequency of the noise
     - Setting **Rise** and **Fall** to zero freezes the noise at a constant value
     - Setting **Rise** and **Fall** to 100% gives the full range within the **LFN Gain** property set by the **Space** knob
 
@@ -542,7 +542,8 @@ To change the **BPM** value rhythmically while playback is stopped:
 To change the **BPM** value rhythmically during playback:
     - Press the **TAP** button once to begin sampling the tempo
     - Press the **TAP** button again to finish sampling the tempo
-        - New tempo takes effect
+
+The new tempo takes effect immediately.
 
 ---
 
