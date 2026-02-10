@@ -3,6 +3,11 @@ chromagnon:
   permalink: /chromagnon
   description: Posts about the Chromagnon video synthesizer
 
+community:
+  label: Community
+  permalink: /community
+  description: Artist features and community highlights
+
 software:
   label: Software
   permalink: /software
