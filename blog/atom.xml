@@ -2,12 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.lzxindustries.net/blog</id>
     <title>LZX Technical Manual Blog</title>
-    <updated>2026-02-10T00:00:00.000Z</updated>
+    <updated>2026-02-18T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.lzxindustries.net/blog"/>
     <subtitle>LZX Technical Manual Blog</subtitle>
     <icon>https://docs.lzxindustries.net/img/favicon.ico</icon>
     <rights>© 2026 LZX</rights>
+    <entry>
+        <title type="html"><![CDATA[Artist Feature: Lauren Klotzman]]></title>
+        <id>https://docs.lzxindustries.net/blog/artist-feature-lauren-klotzman</id>
+        <link href="https://docs.lzxindustries.net/blog/artist-feature-lauren-klotzman"/>
+        <updated>2026-02-18T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lauren Klotzman is a multi-medium conceptualist who conducts an anti-disciplinary philosophy in their creative process. "Klotzman is an instrumentalist, operating an analog modular video synthesizer to create 'video paintings' via electricity." Klotzman views time and energy as one, composing life and therefore the art that flows through it.]]></summary>
+        <content type="html"><![CDATA[<p>Lauren Klotzman is a multi-medium conceptualist who conducts an anti-disciplinary philosophy in their creative process. "Klotzman is an instrumentalist, operating an analog modular video synthesizer to create 'video paintings' via electricity." Klotzman views time and energy as one, composing life and therefore the art that flows through it.</p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed-9f96c474e6327812d32f05308086d07f.jpg" width="2256" height="1290" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(1)-68d13fd2229c647a800e0cdfcb1107e6.jpg" width="3000" height="1942" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="background">Background<a href="https://docs.lzxindustries.net/blog/artist-feature-lauren-klotzman#background" class="hash-link" aria-label="Direct link to Background" title="Direct link to Background" translate="no">​</a></h2>
+<p>Based in Texas, Klotzman grew up wanting to pursue animation. However, rather than the fluidity and non-linear nature of cartooning, they found themself more interested in complex shapes and angular designs. "My drawings were pretty firmly rooted in geometric abstraction," they'd admit. After being told by a professor that the art they wished to create was outside the scope of traditional animation courses, Lauren acknowledged that animation wasn't the avenue that accurately matched their creative vision.</p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(2)-82a3ba9154a30008a5a2b3eb6faec9d5.jpg" width="2250" height="1240" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(3)-922b730212377a084a49f5c4aafabb9e.jpg" width="2221" height="1290" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="process">Process<a href="https://docs.lzxindustries.net/blog/artist-feature-lauren-klotzman#process" class="hash-link" aria-label="Direct link to Process" title="Direct link to Process" translate="no">​</a></h2>
+<p>Rather than describing it as a "creative process," Klotzman views the creation of their process as an intuitive conception of many energy forms given visual form. "That can be as literal as the electricity which courses through the system or as woo-woo as energies which are more easily described as being within the realm of the spiritual." Lauren doesn't go into creating a patch with a suspected outcome; they let art flow naturally. "Sometimes, I am not even looking at a video monitor while I am patching: it's more of a contemplative practice or a meditation than anything else," they admit. Simply put, they let the cables land where they want to and the patch becomes organically unique.</p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(4)-938c5752a21366f9024a429d02291cd2.jpg" width="2285" height="1290" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(5)-ff4a18b2e10f75445e7e726984c9a33d.jpg" width="2229" height="1290" class="img_ev3q"></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="current-work">Current Work<a href="https://docs.lzxindustries.net/blog/artist-feature-lauren-klotzman#current-work" class="hash-link" aria-label="Direct link to Current Work" title="Direct link to Current Work" translate="no">​</a></h2>
+<p>Klotzman is currently working on setting up a new studio space, which has halted the synthesis part of their creative toolshed for the time being. "I've taken time to work in older ways that have less to do with synthesis, but I am very excited to eventually finalize a new setup which will be conducive to creating works which are even longer and more complicated than what I have previously created," they're excited to mention. Lauren is looking forward to creating with both their older and newer tools, upcoming shows, and potential collaborations.</p>
+<p><img decoding="async" loading="lazy" alt="Lauren Klotzman" src="https://docs.lzxindustries.net/assets/images/unnamed%20(6)-cf4f35bb1095366b3c802e52f4aa59d8.jpg" width="2648" height="3514" class="img_ev3q"></p>]]></content>
+        <author>
+            <name>Kat Larsen</name>
+            <uri>https://github.com/KatMarz13</uri>
+        </author>
+        <category label="Community" term="Community"/>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Artist Feature: Vincent Bergeron]]></title>
         <id>https://docs.lzxindustries.net/blog/artist-feature-vincent-bergeron</id>
@@ -318,47 +344,6 @@ Lars</p>]]></content>
 <p>In parting, check out some new documentation work by our collaborators.  There are beautifully illustrated and animated docs now available for DSG3, Angles, Keychain and Proc.  There are also initial drafts up for the P Series modules. Check it out at <a href="https://docs.lzxindustries.net/" target="_blank" rel="noopener noreferrer" class="">https://docs.lzxindustries.net</a></p>
 <p>We'll continue regularly adding to the docs throughout 2025.  Please let us know what you think of them.</p>
 <p>Until next time,</p>
-<p>Lars</p>]]></content>
-        <author>
-            <name>Lars Larsen</name>
-            <uri>https://github.com/creatorlars</uri>
-        </author>
-        <category label="Chromagnon" term="Chromagnon"/>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Winter Trials]]></title>
-        <id>https://docs.lzxindustries.net/blog/winter-trials</id>
-        <link href="https://docs.lzxindustries.net/blog/winter-trials"/>
-        <updated>2025-02-19T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Greetings from Portland, video friends. January (and now most of February) have delivered some frustrating setbacks for both work and personal life.  We had our furnace in the home/workshop go out for 10 days in January, followed by me getting sick for a couple of weeks.  This kept me off the Chromagnon workbench, but I used the time to make more progress with the firmware.]]></summary>
-        <content type="html"><![CDATA[<p>Greetings from Portland, video friends. January (and now most of February) have delivered some frustrating setbacks for both work and personal life.  We had our furnace in the home/workshop go out for 10 days in January, followed by me getting sick for a couple of weeks.  This kept me off the Chromagnon workbench, but I used the time to make more progress with the firmware.</p>
-<p>Currently in the workshop we're scrambling to build the last few module restocks required to put a few Double Vision systems on the shelf.  If you want one, they will be available soon!</p>
-<p>The Chromagnon Core RevH board has been reviewed, and I'm now making a few changes for RevI.  Since I'm aiming for this to be the production version, I'm being careful to review every line item on the BOM against current supply chain availability, and find alternates for a few components that are more costly than they need to be.</p>
-<p>During my firmware sprint in January, I wrote a desktop app which communicates over USB with our hardware, allowing remote settings editing and monitoring.  This is a big feature boost for Chromagnon, as it means I can enable user control over many advanced settings that aren't accessible via the frontpanel or Chromagnon's rear 16-position DIP switch.  I have been integrating the communications library into other projects as well, and the plan is to release the desktop application as a general purpose utility for interacting with all of the LZX embedded hardware in greater detail.</p>
-<p>Jonah and I have also been wrapping up the details on a few new modules that have been in development, and trying to "close all our open tabs" in this regard. Here's a list of modular projects we've finalizing.</p>
-<p>Analog Computing Operators</p>
-<ul>
-<li class="">PGO, Programmable Gain &amp; Offset (4HP) - available now!</li>
-<li class="">PRM, Precision Rectifier &amp; Multiplier (4HP)</li>
-<li class="">PAB, Programmable Active Buffers (4HP)</li>
-</ul>
-<p>Passive Utilities</p>
-<ul>
-<li class="">MLT, Passive Multiples (8HP)</li>
-<li class="">LNK, Passive Links (4HP)</li>
-<li class="">P, Passive Potentiomter (2HP)</li>
-</ul>
-<p>Other Projects</p>
-<ul>
-<li class="">New video encoder designs, including digital outputs</li>
-<li class="">A slim new audio envelope/low frequency event generator module</li>
-<li class="">Expedition Mk2 releases such as a new War of the Ants and Sensory Translator</li>
-<li class="">EuroRack +/-12V power supply expanders for the Vessel 168/Vessel 84 cases.</li>
-<li class="">The Vessel 208 case, which will feature a high quality latching lid for travel</li>
-</ul>
-<p>Also in the past few weeks I have been working with graphic designer Ramin Rahni, who has been developing illustrations for the Gen3 modules for our documentation website we launched with PGO back in October. I'd also like to shout out Gary MacLeod, a community member who has helped immensely with solving issues with our website -- which now loads much faster, and has better product galleries.  We have Aaron Ross, a beloved community member and instructional designer, lined up to help with content editing and development too.  I'm very grateful for the opportunity to work with these pros in a bartered exchange for modules -- as our budgets are quite slim going into Chromagnon season.</p>
-<p>In parting, I received a note recently that expressed frustration over having not received an apology for the run-on-sentence that has been the Chromagon project timeline.  To be clear and quite frank: I am deeply sorry for the wait, and I take full and unequivocal responsibility for it. I feel the sorriness of it deep in my bones each night as I'm trying fall asleep.  I feel it deep in my gut every time I pause to think about the number of artists who made a purchase with their budget for creative equipment they do not yet have in their hands.  This project has been the exact opposite of the scenario I wanted with LZX, and the biggest project planning/timing blunder I've ever made in my life.  I also feel quite guilty I can't just lock myself in a room 24/7 until it's done -- the business has to be run, kids have to eat, rent has to be paid, so products still have to be developed alongside.  I'm continuously rotating through projects, and moving Chromagnon forward with as many resources as I can give it.  I'm really looking forward to delivering on the promise of this device, and ending this chapter in our shared story.  Despite it all, thank you for believing in the dream of Chromagnon. You have all been very understanding and I owe you my gratitude. I can't speak for all of you, but I know for some it will have been more than worth the wait.</p>
-<p>Love and light, I look forward to writing again soon,</p>
 <p>Lars</p>]]></content>
         <author>
             <name>Lars Larsen</name>
