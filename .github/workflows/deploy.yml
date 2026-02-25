@@ -21,11 +21,8 @@ jobs:
       - name: Install dependencies with Yarn
         run: yarn install --frozen-lockfile
 
-      - name: Build Docusaurus site
-        run: yarn build
-
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build  # adjust if your Docusaurus build output is different
+        env:
+          GIT_USER: git
+          GIT_PASS: ${{ secrets.DEPLOY_TOKEN }}
+        run: yarn deploy
