@@ -381,6 +381,7 @@ Some Programs may default to a black output. Typically, the **&ast; Slider** for
 
 Programs include:
 
+<!-- Program guide links temporarily commented out while guides are in draft
 * **[Bitcullis](/docs/instruments/videomancer/bitcullis)**
     - Bit-crushing / culling / decimation in horizontal and vertical dimensions
     - **Posterize**, **Bit Swap**, **Dither**
@@ -398,6 +399,7 @@ Programs include:
     - Map luminance to hue and saturation
 * **YUV Amplifier**
     - **Gain** (amplitude) and **Offset** (bias) of individual YUV color components
+-->
 * **YUV Phaser**
     - **Phase** and **Displace** (horizontal shift) of individual YUV color components
 

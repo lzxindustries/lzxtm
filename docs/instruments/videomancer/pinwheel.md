@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 sidebar_position: 4
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"

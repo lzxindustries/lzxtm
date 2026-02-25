@@ -1,5 +1,5 @@
 ---
-draft: false
+draft: true
 sidebar_position: 2
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
