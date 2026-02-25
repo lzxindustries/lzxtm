@@ -1,13 +1,14 @@
 ---
-draft: true
+draft: false
 sidebar_position: 2
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
 ---
 
 import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';
+import bitcullis_before_after from '/img/instruments/videomancer/bitcullis/bitcullis_before_after.png';
 import bitcullis_control_panel from '/img/instruments/videomancer/bitcullis/bitcullis_control_panel.png';
-import bitcullis_posterization_levels from '/img/instruments/videomancer/bitcullis/bitcullis_posterization_levels.png';
+import bitcullis_exercise1_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise1_result.png';
 import bitcullis_exercise2_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise2_result.png';
 import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise3_result.png';
 
@@ -15,9 +16,33 @@ import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/b
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bitcullis_hero} alt="Bitcullis processed video output showing pixelation, posterization, and dithering effects on a natural source"/>
+<img src={bitcullis_hero} alt="Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures"/>
 
-*Bitcullis reduces, quantizes, and rearranges the digital structure of any video source in real time — turning high-resolution imagery into mosaic, posterized, and dithered graphics.*
+<img src={bitcullis_before_after} alt="Left: unprocessed source. Right: Bitcullis applied"/>
+
+*Left: unprocessed source. Right: Bitcullis applied.*
+
+**Source images used in this guide:**
+- **1**. kodim23.png — Two macaws — saturated primaries
+- **2**. kodim04.png — Portrait of girl in red — wide tonal range
+- **3**. mandrill_512.png — Mandrill — fine detail
+
+<details>
+<summary>Hero image settings</summary>
+
+| Control | Value |
+|---------|-------|
+| Hori Decimate | ~35% |
+| Vert Decimate | ~30% |
+| Luma to Hori | ~70% |
+| Luma Poster | ~50% |
+| Chroma Poster | ~30% |
+| Luma to Chroma | ~50% |
+| Dithering | On (ordered 2×2) |
+| Bit Order | Off |
+| Threshold | 0% (fully open) |
+
+</details>
 
 ---
 
@@ -86,11 +111,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-Two key interactions to notice:
-
-1. **Luminance-driven modulation**: The Y channel (after inversion) drives *two* modulation controls. Luma→Hori varies the horizontal decimation frequency pixel-by-pixel based on brightness — bright areas can have larger or smaller blocks than dark areas, creating luminance-adaptive mosaic patterns. Luma→Chroma varies the chroma saturation based on brightness, linking color intensity to tonal value.
-
-2. **Processing order**: Decimation happens *before* posterization, so the posterizer quantizes the already-pixelated signal. Dithering sits between decimation and posterization, adding noise to the blocky signal before it gets quantized. This order matters — dithering before quantization is what makes the technique work.
+Two key interactions: (1) **Luminance-driven modulation**: The Y channel drives *two* modulation controls. Luma→Hori varies the horizontal decimation frequency pixel-by-pixel based on brightness. Luma→Chroma varies the chroma saturation based on brightness. (2) **Processing order**: Decimation happens *before* posterization, so the posterizer quantizes the already-pixelated signal. Dithering sits between decimation and posterization, adding noise to the blocky signal before it gets quantized.
 
 ---
 
@@ -98,7 +119,7 @@ Two key interactions to notice:
 
 <img src={bitcullis_control_panel} alt="Videomancer front panel with Bitcullis loaded, controls annotated"/>
 
-*Videomancer's front panel with Bitcullis active. Knobs 1–6, Switches 7–11, and Fader 12 are labeled with their Bitcullis functions.*
+*Videomancer's front panel with Bitcullis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -106,10 +127,10 @@ Two key interactions to notice:
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 200.0% |
-| Default | 100.0% (center) |
+| Default | 100.1% |
 | Suffix | % |
 
-Controls the **horizontal decimation frequency** — how often the signal is re-sampled along each scan line. At 0%, the signal is re-sampled so rarely that each row becomes virtually a single color (maximum pixelation). At 200%, the signal is sampled at or near full resolution (minimal pixelation). The default center position produces a moderate mosaic effect. This control sets the *base* frequency — the Luma to Hori control (Knob 3) can further modulate it on a per-pixel basis.
+Controls the horizontal decimation frequency. At 0%, maximum pixelation — the image is reduced to wide bands of uniform color. At 200%, the decimation rate is so high that each pixel retains its original value (near full resolution). The Luma to Hori control (Knob 3) can further modulate this frequency on a per-pixel basis, making the block size dependent on the image content.
 
 ---
 
@@ -117,10 +138,10 @@ Controls the **horizontal decimation frequency** — how often the signal is re-
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 50.0% (center) |
+| Default | 50.0% |
 | Suffix | % |
 
-Controls the **vertical decimation frequency** — how often the signal is re-sampled across scan lines. At 0%, each column of the image is stretched into wide horizontal bands. At 100%, each line is sampled independently (minimal vertical pixelation). Combined with Hori Decimate, this creates the block size and shape of the mosaic pattern: equal settings produce square blocks; unequal settings produce rectangles.
+Controls the vertical decimation frequency. Lower values create taller horizontal bands; higher values create thinner bands. Combined with Hori Decimate, this defines the block geometry: equal values create roughly square blocks, unequal values create rectangles — wide horizontal bars or tall vertical columns.
 
 ---
 
@@ -128,12 +149,10 @@ Controls the **vertical decimation frequency** — how often the signal is re-sa
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 50.0% (center) |
+| Default | 50.0% |
 | Suffix | % |
 
-Controls how strongly the **input luminance modulates the horizontal decimation frequency**. At center (50%), there is a moderate modulation — bright areas get a different block size than dark areas. At 0%, there is less modulation (more uniform blocks). At 100%, the modulation is strongest, creating dramatic luminance-adaptive mosaic patterns where bright and dark regions of the image have visibly different pixel sizes.
-
-This is one of Bitcullis's most distinctive controls. Because the decimation frequency varies with brightness, the mosaic pattern follows the tonal structure of the source image — edges between bright and dark regions create boundaries between different block sizes.
+Controls how strongly the input luminance modulates the horizontal decimation frequency. At 0%, decimation is uniform across the image. As you increase this control, bright areas of the source get different block sizes than dark areas. This is one of Bitcullis's most distinctive controls — the mosaic pattern follows the tonal structure of the source image, creating *adaptive* pixelation that reveals the underlying content.
 
 ---
 
@@ -141,14 +160,10 @@ This is one of Bitcullis's most distinctive controls. Because the decimation fre
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 0.0% (fully CCW) |
+| Default | 0.0% |
 | Suffix | % |
 
-Controls the **luminance posterization depth** — how many brightness levels survive quantization. At 0%, the full 10-bit resolution is preserved (1024 levels). As you increase the value, the number of distinct brightness levels decreases: the smooth tonal ramp collapses into a staircase of flat regions separated by hard edges. At 100%, only a handful of levels remain — the image becomes a stark, high-contrast graphic.
-
-<img src={bitcullis_posterization_levels} alt="Posterization levels illustration showing how bit-depth reduction collapses smooth gradients into discrete steps"/>
-
-*Posterization quantizes the luminance ramp into discrete steps. More posterization (right) means fewer brightness levels and harder tonal boundaries.*
+Luminance posterization depth. At 0%, the Y channel retains its full 10-bit resolution (1024 levels). As you increase the control, the number of brightness levels decreases. Smooth gradients collapse into staircase-like transitions between flat tonal bands. The posterization boundaries become the dominant visual structure.
 
 ---
 
@@ -156,10 +171,10 @@ Controls the **luminance posterization depth** — how many brightness levels su
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 50.0% (center) |
+| Default | 50.0% |
 | Suffix | % |
 
-Controls the **chrominance posterization depth** — the same bit-depth reduction applied to the U and V color channels independently of the Y channel. At 0%, full color resolution is preserved. At 100%, the color channels are reduced to a handful of levels, producing abrupt color transitions and banding. Setting Chroma Poster high while keeping Luma Poster low creates an image with smooth brightness but posterized color — a painterly, silk-screen-like effect.
+Chrominance posterization depth — independent of the Y channel quantizer. Setting this high while keeping Luma Poster low creates a painterly, silk-screen-like effect where brightness remains smooth but colors snap to a reduced palette. The reverse combination (high Luma Poster, low Chroma Poster) produces banded tonal steps with smooth color transitions.
 
 ---
 
@@ -167,10 +182,10 @@ Controls the **chrominance posterization depth** — the same bit-depth reductio
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 50.0% (center) |
+| Default | 50.0% |
 | Suffix | % |
 
-Controls how strongly the **input luminance modulates chroma saturation**. This is a proc amp stage that uses the Y channel value as a gain multiplier for the U and V channels. At center (50%), there is a moderate correlation. Below center, less modulation. Above center, bright areas become more saturated and dark areas become less saturated (or vice versa, depending on Luma Invert). The result is a tonal-dependent color intensity that links brightness to vividness.
+Luminance modulates chroma saturation. Bright areas of the input can be made more or less saturated than dark areas. This creates a content-dependent colorization effect — the color structure of the output follows the original brightness structure, even after heavy decimation and posterization.
 
 ---
 
@@ -178,23 +193,13 @@ Controls how strongly the **input luminance modulates chroma saturation**. This 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Luma Invert** | Normal luminance | Luminance inverted (negative) |
-| **8 — Bit Order** | Normal bit ordering | Bits reversed (MSB↔LSB) |
-| **9 — Dithering** | Dithering disabled | Dithering enabled |
-| **10 — Dither Algo** | 2×2 ordered (Bayer) | 4×4 random (LFSR) |
-| **11 — Bypass** | Processing active | Bypass (signal passes unmodified) |
+| **7 — Luma Invert** | Off | On |
+| **8 — Bit Order** | Normal | Swapped |
+| **9 — Dithering** | Disabled | Enabled |
+| **10 — Dither Algo** | 2x2 | 4x4 |
+| **11 — Bypass** | Off | On |
 
-**Luma Invert** applies a bitwise complement to the luminance channel as the *first* processing step — before decimation and all subsequent stages. Because the luma-to-hori and luma-to-chroma modulation paths also use the inverted signal, flipping this switch reverses which brightness regions get larger blocks and more saturation.
-
-**Bit Order** reverses the significance of all 10 bits in each YUV channel after posterization. The value `0b1000000000` (512, neutral gray) becomes `0b0000000001` (1, near-black). `0b1111111111` (1023, peak white) stays `0b1111111111` (1023). The mapping is highly nonlinear and produces glitch-like visual patterns that are deterministic but unpredictable to the eye.
-
-**Dithering** enables noise injection before the posterization stage. The noise pattern is chosen by the Dither Algo toggle. Dithering is most visible when posterization is active — without posterization, the dither noise is too small to see at full bit depth.
-
-**Dither Algo** selects between two dithering methods:
-- **2×2**: A fixed ordered dither pattern (Bayer matrix). Produces a regular, visible stipple grid — the classic "newspaper dot" look.
-- **4×4**: A pseudo-random dither pattern generated by a 16-bit linear feedback shift register. Produces an irregular, film-grain-like noise.
-
-**Bypass** routes the input signal directly to the output, skipping all processing. Useful for instant before/after comparison.
+Switches 7–11 control five independent binary processing options. Unlike Lumarian's edge mode switches, these do not form a combined selector — each switch enables or disables a specific stage in the processing chain.
 
 ---
 
@@ -204,107 +209,91 @@ Controls how strongly the **input luminance modulates chroma saturation**. This 
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 100.0% (fully up) |
+| Default | 100.0% |
 | Suffix | % |
 
-The Threshold fader sets a luminance key at the end of the processing chain. Any pixel whose processed Y value falls below the threshold is replaced with black (Y = 0) and neutral chroma (U = V = 512). At 100% (default), the threshold is at maximum — everything passes through. As you lower the fader, progressively darker portions of the processed image snap to black.
-
-Because the threshold operates on the *processed* signal (after decimation, posterization, and bit reversal), it interacts with every upstream stage. Posterization creates hard tonal boundaries, and the threshold key can slice cleanly between those boundaries, creating graphic cutout effects. Bit-order reversal scrambles the brightness mapping, so the threshold cuts through the glitch pattern in unexpected ways.
+Luminance key at the end of the processing chain. At 100%, everything passes through. As you lower the fader, progressively darker portions of the post-processed image are replaced with black. This interacts powerfully with posterization: because posterized signals have hard boundaries between tonal bands, the threshold cuts cleanly between levels. With bit-order reversal active, the threshold cuts through the chaotic value mapping in unexpected ways.
 
 ---
 
 ## Guided Exercises
 
+These exercises progress from simple decimation to full signal deconstruction. Each builds on the previous, gradually engaging more of the processing chain.
+
 ### Exercise 1: Mosaic Pixelation
 
-**Source**: A live camera feed or recorded footage with recognizable subjects — faces, landscapes, or objects with clear silhouettes.
+<img src={bitcullis_exercise1_result} alt="Mosaic Pixelation — simulated result across source images"/>
 
-**Objective**: Learn how the horizontal and vertical decimation controls create mosaic patterns and how luminance modulation adds adaptive structure.
+*Mosaic Pixelation — simulated result across source images.*
 
-1. **Initialize**: Load Bitcullis with all defaults. The image should pass through with moderate pixelation already visible (Hori Decimate at center).
+**Source**: A live camera feed or recorded footage with recognizable subjects.
 
-2. **Horizontal pixelation**: Turn **Hori Decimate** fully CCW. The image collapses into wide horizontal color bands — each scan line is reduced to a few held values. Now slowly turn clockwise. Watch the blocks shrink as the sampling frequency increases. Past center, the blocks become very small and the image approaches the original.
+**Objective**: Learn how decimation and luminance modulation interact to create adaptive mosaic textures.
 
-3. **Vertical pixelation**: Return Hori Decimate to center. Turn **Vert Decimate** fully CCW. Horizontal bands appear — each cluster of scan lines displays the same value. Combine both axes: set Hori Decimate to about 30% and Vert Decimate to about 30%. Uniform square blocks appear, creating a classic mosaic.
-
-4. **Luminance-adaptive mosaic**: With both decimation controls at moderate settings (~40%), slowly sweep **Luma to Hori** from 0% to 100%. Watch how bright and dark regions of the image develop different block sizes. At high modulation, the mosaic pattern follows the tonal contours of the source — bright areas might resolve into small, detailed blocks while dark areas dissolve into large, flat regions.
-
-5. **Invert the modulation**: With Luma to Hori at a high value, flip **Luma Invert** on. The relationship reverses — dark areas now get the small blocks and bright areas get large ones. This creates a completely different mosaic character from the same source.
+1. **Horizontal bands**: Turn Hori Decimate slowly counter-clockwise. Watch as the image breaks into wide vertical bands of uniform color.
+2. **Vertical bands**: Now sweep Vert Decimate. The image breaks into horizontal bands.
+3. **Square blocks**: Set both controls to about 30%. The image becomes a uniform mosaic of roughly square blocks.
+4. **Adaptive mosaic**: Slowly increase Luma to Hori from 0 to 100%. Watch the block grid respond to the image content — bright and dark regions get different block sizes. This is Bitcullis's signature effect.
+5. **Inversion**: Toggle Luma Invert (Switch 7). The modulation reverses — block sizes swap between bright and dark regions.
 
 :::tip
-Hori and Vert Decimate set the base block size. Luma to Hori modulates horizontal blocks by brightness. Luma Invert reverses the modulation mapping.
+Decimation is sample-and-hold downsampling, horizontal and vertical axes are independent, luminance modulation creates content-adaptive mosaics.
 :::
 
 ---
 
 ### Exercise 2: Posterized Graphics
 
-<img src={bitcullis_exercise2_result} alt="Posterized video — a natural scene reduced to flat color regions with hard tonal boundaries"/>
+<img src={bitcullis_exercise2_result} alt="Posterized Graphics — simulated result across source images"/>
 
-*Luma Poster at 60%, Chroma Poster at 70%, Dithering enabled with ordered Bayer pattern — natural footage transformed into a screen-print graphic.*
+*Posterized Graphics — simulated result across source images.*
 
-**Source**: Footage with gradual tonal transitions — skin tones, skies, shadows, or color gradients.
+**Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
-**Objective**: Explore posterization and dithering to create graphic, print-inspired textures.
+**Objective**: Explore posterization and dithering interactions.
 
-1. **Prepare**: Set both decimation controls to produce moderate pixelation (Hori ~60%, Vert ~50%). Set Luma to Hori and Luma to Chroma to center.
-
-2. **Luma posterization**: Slowly turn **Luma Poster** from 0% toward 100%. Watch smooth gradients collapse into flat regions. At low values, the effect is subtle — just a few tonal steps disappear. At high values, the image becomes stark, with only a handful of brightness levels remaining.
-
-3. **Chroma posterization**: Now sweep **Chroma Poster** from 0% to 100%. The color transitions break into bands while the brightness structure (set by Luma Poster) stays unchanged. Try high Chroma Poster with low Luma Poster — smooth brightness, banded color. Then reverse: high Luma Poster, low Chroma Poster — flat brightness blocks with smooth color gradients through them.
-
-4. **Add dithering**: Flip **Dithering** (Switch 9) to Enabled. With Luma Poster at about 60%, the dither pattern becomes visible as a stipple texture within the posterized regions. The flat color blocks now contain a fine pattern that suggests intermediate tones. Toggle between **Dither Algo** 2×2 (ordered) and 4×4 (random) to compare the stipple character: ordered is regular and grid-like; random is noisy and organic.
-
-5. **Bit reversal**: Turn Luma Poster back to about 40% and flip **Bit Order** to Swapped. The tonal mapping becomes chaotic — brightness values are scrambled by the bit permutation. Dark areas may become bright and vice versa, but the mapping is not a simple inversion. The result is a glitch-art texture that is completely deterministic (the same input always produces the same output) but appears random.
-
-6. **Key the result**: Lower the **Threshold** fader to slice through the posterized/glitched image. Because posterization creates hard tonal steps, the threshold can isolate specific quantization levels, producing clean graphic cutouts.
+1. **Prepare**: Set moderate decimation (Hori and Vert ~50%) to create a visible mosaic.
+2. **Luma posterization**: Slowly increase Luma Poster. Watch smooth gradients collapse into staircase bands.
+3. **Chroma posterization**: Now increase Chroma Poster while leaving Luma Poster at a moderate value. Colors snap to a reduced palette while brightness remains smooth.
+4. **Dithering**: Enable Dithering (Switch 9). The harsh posterization boundaries soften as noise pushes values across level boundaries. Compare ordered (Switch 10 Off) vs. random (Switch 10 On).
+5. **Bit reversal**: Enable Bit Order (Switch 8). The orderly posterized levels explode into chaotic digital textures.
+6. **Threshold**: Apply the Threshold fader to carve into the posterized result. Note how the threshold cuts cleanly along posterization boundaries.
 
 :::tip
-Luma and Chroma Poster are independent quantizers. Dithering adds noise before quantization to simulate intermediate levels. Bit Order Reversal scrambles the bit representation. Threshold key slices through the result.
+Posterization is quantization of pixel values, dithering masks quantization artifacts by adding structured noise, bit reversal is a nonlinear permutation distinct from inversion.
 :::
 
 ---
 
 ### Exercise 3: Digital Texture Synthesis
 
-<img src={bitcullis_exercise3_result} alt="Extreme bit-manipulation — glitch patterns, dithered blocks, and threshold-keyed digital textures"/>
+<img src={bitcullis_exercise3_result} alt="Digital Texture Synthesis — simulated result across source images"/>
 
-*Bit Order Swapped, Luma Poster at 80%, Dithering enabled (random), Threshold at 40% — the source image is deconstructed into abstract digital texture.*
+*Digital Texture Synthesis — simulated result across source images.*
 
-**Source**: Any footage, but especially effective with high-contrast material, text, or geometric patterns.
+**Source**: Any footage, especially high-contrast material.
 
-**Objective**: Combine all of Bitcullis's processing stages to create abstract digital textures that transcend the source material.
+**Objective**: Combine all stages for abstract digital textures.
 
-1. **Start with strong modulation**: Set **Hori Decimate** to about 30%, **Vert Decimate** to about 25%. Set **Luma to Hori** to about 80% and **Luma to Chroma** to about 75%. The image is now a luminance-adaptive mosaic with brightness-driven color modulation.
-
-2. **Add posterization**: Set **Luma Poster** to about 70% and **Chroma Poster** to about 60%. The mosaic blocks are now quantized into flat tonal and color steps.
-
-3. **Enable dithering**: Turn on **Dithering** and select **4×4** (random). The dither adds a grainy texture to the quantized blocks.
-
-4. **Reverse the bits**: Flip **Bit Order** to Swapped. The image transforms dramatically — the bit permutation remaps every brightness and color value. The mosaic structure remains but the tonal content is completely scrambled.
-
-5. **Sculpt with the threshold**: Lower the **Threshold** fader from 100% to about 40%. Dark regions of the bit-reversed image snap to black, carving away portions of the texture and revealing the abstract structure.
-
-6. **Explore inversions**: Toggle **Luma Invert** to change which brightness regions drive the modulation. Because inversion happens before decimation, the entire mosaic and modulation character shifts.
-
-7. **Animate**: Move controls slowly while watching the output. Bitcullis responds to every change in real time — sweeping Luma to Hori while the source moves creates an evolving, living digital texture.
+1. **Strong modulation**: Set Hori Decimate ~30%, Vert Decimate ~25%, Luma to Hori ~80%.
+2. **Heavy processing**: Increase both Luma and Chroma Poster to high values.
+3. **Random dithering**: Enable Dithering with random mode (Switch 10 On).
+4. **Bit reversal**: Enable Bit Order (Switch 8) for chaotic value remapping.
+5. **Threshold sculpt**: Lower the Threshold to ~40% to carve the texture.
+6. **Inversion layers**: Toggle Luma Invert to see how it reverses the entire modulation chain.
+7. **Animate**: Slowly sweep controls to watch the digital texture evolve in real time.
 
 :::tip
-Bitcullis is a layered signal deconstruction tool. Each stage reduces or rearranges information in a different way, and the stages compound: decimation → dithering → posterization → bit-reversal → threshold. The order matters, and the interactions create results that are far more complex than any single stage could produce alone.
+Bitcullis is a layered signal deconstruction tool, each stage reduces or rearranges information, the stages compound (decimation → dithering → posterization → bit-reversal → threshold).
 :::
 
 ---
 
 ## Tips
 
-- **Order matters**: The signal flows through Inversion → Modulation → Decimation → Dithering → Posterization → Bit Reversal → Threshold. Each stage transforms the signal before the next. Dithering only matters if posterization is active. Bit reversal scrambles the posterized result. Threshold cuts through whatever the upstream stages produced.
-
-- **Dithering needs posterization**: Dithering adds ±8 counts at 10-bit resolution (a tiny perturbation). Without posterization to quantize those perturbations into visible tonal steps, the dither pattern is imperceptible. Enable both together.
-
-- **Luma modulation is the signature effect**: Most pixelation tools create uniform block sizes. Bitcullis's luminance-to-horizontal modulation creates *adaptive* mosaics where block size follows the tonal structure of the image. This is what makes it different from a simple resize.
-
-- **Bit reversal is not inversion**: Luma Invert flips all bits (0↔1), which is a linear brightness reversal. Bit Order Reversal *permutes* the bit positions (MSB↔LSB), which is a wild nonlinear transformation. Both are available; they do very different things.
-
-- **Feedback loops**: If Videomancer's output is routed back to its input, Bitcullis's decimation and posterization create self-referencing block structures that evolve over time. Each feedback pass re-decimates and re-quantizes the already-processed signal, creating cascading pixel patterns.
-
-- **Bypass for A/B comparison**: Switch 11 (Bypass) instantly shows the unprocessed signal. Use it to evaluate how much the processing has departed from the source. Toggle rapidly for a "before/after" effect.
+- **Order matters**: Inversion → Modulation → Decimation → Dithering → Posterization → Bit Reversal → Threshold. Each stage transforms the signal before the next one sees it.
+- **Dithering needs posterization**: Dithering adds ±8 counts at 10-bit resolution, which is imperceptible without posterization to amplify the effect.
+- **Luma modulation is the signature effect**: Luminance-to-horizontal modulation creates *adaptive* mosaics where the block pattern follows the image content. This is what makes Bitcullis unique.
+- **Bit reversal is not inversion**: Luma Invert flips all bits (linear complement). Bit Order Reversal *permutes* bit positions (nonlinear mapping). They produce completely different results.
+- **Feedback loops**: Routing the output back to the input creates recursive decimation and posterization — self-referencing block structures that evolve over time.
+- **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal for before/after comparison.
