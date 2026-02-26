@@ -15,6 +15,10 @@ import aurora_exercise3_result from '/img/instruments/videomancer/aurora/aurora_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={aurora_hero} alt="Aurora painting luminous Lissajous trails in rainbow mode — overlapping orbits create prismatic interference patterns on a persistent framebuffer"/>
 
 <img src={aurora_animation} alt="Aurora output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source"/>

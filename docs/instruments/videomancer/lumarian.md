@@ -16,6 +16,10 @@ import lumarian_exercise3_result from '/img/instruments/videomancer/lumarian/lum
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={lumarian_hero} alt="Lumarian processing a natural scene with subtle edge enhancement and shadow recovery via gamma correction"/>
 
 <img src={lumarian_before_after} alt="Left: unprocessed source. Right: Lumarian applied"/>

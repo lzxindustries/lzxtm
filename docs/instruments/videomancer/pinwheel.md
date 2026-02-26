@@ -16,6 +16,10 @@ import pinwheel_exercise3_result from '/img/instruments/videomancer/pinwheel/pin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={pinwheel_hero} alt="Pinwheel mapping brightness gradients into a full rainbow spectrum using luminance-to-hue modulation"/>
 
 <img src={pinwheel_before_after} alt="Left: unprocessed source. Right: Pinwheel applied"/>

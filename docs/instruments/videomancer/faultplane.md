@@ -16,6 +16,10 @@ import faultplane_exercise3_result from '/img/instruments/videomancer/faultplane
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={faultplane_hero} alt="Faultplane fracturing a natural scene into displaced, mirrored zones with selective blanking"/>
 
 <img src={faultplane_before_after} alt="Left: unprocessed source. Right: Faultplane applied"/>

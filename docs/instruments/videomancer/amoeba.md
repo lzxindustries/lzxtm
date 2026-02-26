@@ -15,6 +15,10 @@ import amoeba_exercise3_result from '/img/instruments/videomancer/amoeba/amoeba_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={amoeba_hero} alt="Amoeba rendering four Lissajous-orbit metaballs in rainbow mode — the blobs merge and split organically as their orbits intersect, with bright skin outlines tracing the isosurface boundary"/>
 
 <img src={amoeba_animation} alt="Amoeba output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source"/>

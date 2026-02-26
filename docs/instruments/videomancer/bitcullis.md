@@ -16,6 +16,10 @@ import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/b
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning[Work In Progress]
+This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
+:::
+
 <img src={bitcullis_hero} alt="Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures"/>
 
 <img src={bitcullis_before_after} alt="Left: unprocessed source. Right: Bitcullis applied"/>
