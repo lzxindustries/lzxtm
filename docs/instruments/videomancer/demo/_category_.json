@@ -1,0 +1,8 @@
+﻿{
+  "label": "Demo",
+  "position": 8,
+  "link": {
+    "type": "generated-index",
+    "description": "Classic graphics demo effects like plasma and starfield."
+  }
+}

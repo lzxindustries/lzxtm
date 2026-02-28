@@ -1,0 +1,8 @@
+﻿{
+  "label": "Mirror",
+  "position": 17,
+  "link": {
+    "type": "generated-index",
+    "description": "Reflection, folding and depth mapping."
+  }
+}

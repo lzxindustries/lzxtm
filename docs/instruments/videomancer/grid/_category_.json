@@ -1,0 +1,8 @@
+﻿{
+  "label": "Grid",
+  "position": 14,
+  "link": {
+    "type": "generated-index",
+    "description": "Geometric grids, overlays and polygon renderers."
+  }
+}

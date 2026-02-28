@@ -1,0 +1,8 @@
+﻿{
+  "label": "Fractal",
+  "position": 12,
+  "link": {
+    "type": "generated-index",
+    "description": "Mathematical fractals, space-filling curves and procedural tiles."
+  }
+}

@@ -1,0 +1,8 @@
+﻿{
+  "label": "Edges",
+  "position": 9,
+  "link": {
+    "type": "generated-index",
+    "description": "Outline extraction and topographic rendering."
+  }
+}

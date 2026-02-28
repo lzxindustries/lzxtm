@@ -1,0 +1,8 @@
+﻿{
+  "label": "Fairlight",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "description": "Device-specific CVI emulations."
+  }
+}

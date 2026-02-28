@@ -1,0 +1,8 @@
+﻿{
+  "label": "Tube",
+  "position": 28,
+  "link": {
+    "type": "generated-index",
+    "description": "Cathode ray tube emulation and phosphor persistence."
+  }
+}
