@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "FACTORS: Triple Four-Quadrant Multiplier"
+image: /img/modules/factors/factors-diagrams/factors_front_panel.png
 ---
 
 import factors_front_panel from '/img/modules/factors/factors-diagrams/factors_front_panel.png';

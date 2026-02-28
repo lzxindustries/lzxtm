@@ -3,6 +3,7 @@ slug: year-end-update
 title: Year End Update
 authors: [lars]
 tags: [chromagnon, videomancer]
+image: ./videomancer-pcbs.jpg
 ---
 
 Back in August, we laid out our plans for finishing 2025 and getting into 2026. Here's how it all turned out.

@@ -3,6 +3,7 @@ slug: year-fifteen
 title: Year Fifteen
 authors: [lars]
 tags: [chromagnon]
+image: ./chromagnon-revh.jpg
 ---
 
 Happy New Year from us here at LZX! We are grateful for an opportunity to be part of your creative lives and wish you triumphant returns on all of your endeavors in 2025. It is our fifteenth year of offering tools to you, and our eighteenth year of developing analog video synthesizers. I feel very excited about our point of view on our existing and future projects at LZX, and 2025 should be fun year.

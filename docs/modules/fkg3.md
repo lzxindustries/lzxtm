@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "FKG3: Fader & Key Generating Compositor"
+image: /img/modules/fkg3/fkg3-diagrams/fkg3_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

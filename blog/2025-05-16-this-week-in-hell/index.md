@@ -3,6 +3,7 @@ slug: this-week-in-hell
 title: This Week In Hell
 authors: [lars]
 tags: [chromagnon]
+image: ./chromagnon-sheet-metal-boat-preview.png
 ---
 
 Hello fellow gray hairs. I've aged 55-175 years since my last update.  There is a lot to discuss, and not all of it is bad.

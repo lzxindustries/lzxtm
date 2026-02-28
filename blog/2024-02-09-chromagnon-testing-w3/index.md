@@ -3,6 +3,7 @@ slug: chromagnon-testing-w3
 title: Chromagnon Testing W3
 authors: [lars]
 tags: [chromagnon]
+image: ./rework.png
 ---
 
 Hello, Chromagnonites.

@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "MLT: Passive Multiples"
+image: /img/modules/mlt/mlt-diagrams/mlt_front-panel.png
 ---
 
 import mlt_frontpanel from '/img/modules/mlt/mlt-diagrams/mlt_front-panel.png';

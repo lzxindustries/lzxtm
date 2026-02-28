@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "PGO: Programmable Gain & Offset"
+image: /img/modules/pgo/pgo-diagrams/pgo_front-panel.png
 ---
 
 import pgo_pcb_front from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-front-RevB.png';

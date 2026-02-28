@@ -3,6 +3,7 @@ slug: chromagnon-simulator-downloads
 title: Chromagnon Simulator Downloads
 authors: [lars]
 tags: [chromagnon, software]
+image: ./chromagnon-simulator-screenshot.png
 ---
 
 Hi everyone! As promised, I've made my Chromagnon Simulator application available for download. This was a tool created for design reference during development of the hardware, so it is not very polished or useful beyond getting a preview of the instrument's functionality -- which I hope you will enjoy! The MacOS build has some issues, but can be made to work with the installation instructions below.

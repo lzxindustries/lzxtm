@@ -2,6 +2,7 @@
 draft: false
 title: "Your First Patch"
 sidebar_position: 5
+image: /img/guides/your_first_patch_kit.jpg
 ---
 
 import your_first_patch_kit from '/img/guides/your_first_patch_kit.jpg';

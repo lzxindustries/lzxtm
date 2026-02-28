@@ -3,6 +3,7 @@ slug: chromagnon-core-recap
 title: Chromagnon Core Recap
 authors: [lars]
 tags: [chromagnon]
+image: ./fqm-submodule-revb.png
 ---
 
 Hello video fiends -- we hope everyone had a spooky Halloween! 

@@ -3,6 +3,7 @@ slug: code-cave
 title: Code Cave
 authors: [lars]
 tags: [chromagnon]
+image: ./chromagnon.png
 ---
 
 Over the past several weeks I have been writing Chromagnon’s firmware, and I’m happy to say that I now have a complete version ready for testing.  I wanted to reach this milestone before I wrote a new blog, as it represents my exit from the Code Cave and back into the workshop.  So let my eyeballs readjust – this blog will mostly be about the software.

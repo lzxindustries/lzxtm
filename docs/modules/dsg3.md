@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "DSG3: Dual Shape Generator"
+image: /img/modules/dsg3/dsg3-diagrams/dsg3_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

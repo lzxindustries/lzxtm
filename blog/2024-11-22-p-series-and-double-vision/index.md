@@ -3,6 +3,7 @@ slug: p-series-and-double-vision
 title: P Series & Double Vision
 authors: [lars]
 tags: [chromagnon]
+image: ./pgo-modules-workbench.jpg
 ---
 
 Hi Vidiots & Vidiettes! We're happy to say we got the shipping notification for the Chromagnon Core PCB prototypes mentioned in the last blog today.  The next update will focus on that -- in this one I wanted to provide a few updates about projects we are working on to keep the company running as we get through the final milestones with Chromagnon. 

@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "STACKER: Triple Window Key Generator"
+image: /img/modules/stacker/stacker-diagrams/stacker_frontpanel.png
 ---
 
 import stacker_frontpanel from '/img/modules/stacker/stacker-diagrams/stacker_frontpanel.png';

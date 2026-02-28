@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "SWITCHER: Dual 4x3 Multiplexer"
+image: /img/modules/switcher/switcher-diagrams/switcher_frontpanel.png
 ---
 
 import switcher_frontpanel from '/img/modules/switcher/switcher-diagrams/switcher_frontpanel.png';

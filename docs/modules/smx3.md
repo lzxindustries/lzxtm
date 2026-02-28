@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "SMX3: Summing Matrix Mixer"
+image: /img/modules/smx3/smx3-diagrams/SMX3_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

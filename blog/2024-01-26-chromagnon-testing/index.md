@@ -3,6 +3,7 @@ slug: chromagnon-testing
 title: Chromagnon Testing
 authors: [lars]
 tags: [chromagnon]
+image: ./assembly.png
 ---
 
 Hello Chromagnonfolk,

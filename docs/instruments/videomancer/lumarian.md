@@ -3,6 +3,7 @@ draft: false
 sidebar_position: 3
 slug: /instruments/videomancer/lumarian
 title: "Lumarian"
+image: /img/instruments/videomancer/lumarian/lumarian_hero.png
 ---
 
 import lumarian_hero from '/img/instruments/videomancer/lumarian/lumarian_hero.png';
@@ -16,36 +17,10 @@ import lumarian_exercise3_result from '/img/instruments/videomancer/lumarian/lum
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning[Work In Progress]
-This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
-:::
-
-<img src={lumarian_hero} alt="Lumarian processing a natural scene with subtle edge enhancement and shadow recovery via gamma correction"/>
-
-<img src={lumarian_before_after} alt="Left: unprocessed source. Right: Lumarian applied"/>
-
+<img src={lumarian_hero} alt="Lumarian hero image"/>
+*Lumarian processing a natural scene with subtle edge enhancement and shadow recovery via gamma correction.*
+<img src={lumarian_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Lumarian applied.*
-
-**Source images used in this guide:**
-- **1**. kodim04.png — Portrait of girl in red — wide dynamic range
-- **2**. kodim23.png — Two macaws — saturated primary colors
-- **3**. peppers_512.png — Peppers — tonal gradients
-
-<details>
-<summary>Hero image settings</summary>
-
-| Control | Value |
-|---------|-------|
-| Contrast | ~130% |
-| Brightness | center |
-| Gamma | ~−0.5 (slightly counter-clockwise to open shadows) |
-| Saturation | ~140% (vivid but not clipping) |
-| Edge Gain | ~80% (visible sharpening, not dominant) |
-| Edge Cutoff | ~25% |
-| Luma Blank | ~15% (clean deepest shadows to black) |
-| All toggles | Off |
-
-</details>
 
 ---
 
@@ -76,6 +51,7 @@ Lumarian's edge enhancement chain descends from a broadcast technique called **a
 ### What Is a Luminance Key?
 
 The Luma Blank fader implements one of the oldest techniques in video: the **luminance key**. It sets a brightness threshold — every pixel darker than the threshold is replaced with pure black, and every pixel brighter than the threshold passes through untouched. Television engineers used luminance keys to isolate bright objects (white text on a dark background, for example) and composite them over other sources.
+
 
 ---
 
@@ -112,8 +88,7 @@ Notice that the Y channel has more processing stages than U and V. If all three 
 
 ## Parameter Reference
 
-<img src={lumarian_control_panel} alt="Videomancer front panel with Lumarian loaded, controls annotated"/>
-
+<img src={lumarian_control_panel} alt="Videomancer front panel with Lumarian loaded"/>
 *Videomancer's front panel with Lumarian active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
@@ -192,7 +167,7 @@ Edge Cutoff sets the **bandwidth** of the high-pass filter that extracts edges f
 | **10 — Edge Rectify** | Off | On |
 | **11 — Edge Select** | Single | Both |
 
-Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge processing modes. The raw edge signal is *bipolar* — a bright-to-dark transition produces a positive pulse on one side and a negative pulse on the other. Edge Invert clips one polarity. Edge Rectify flips the polarity of the remaining signal. Edge Select applies full-wave rectification, folding both polarities to the same sign, which produces symmetrical contour outlines. Together, these three switches give you 2³ = 8 distinct edge shapes from the same filter output.
+Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge processing modes. The raw edge signal is *bipolar* — a bright-to-dark transition produces a positive pulse on one side and a negative pulse on the other. Edge Invert clips one polarity. Edge Rectify applies full-wave rectification (absolute value), folding both polarities to the same sign, which produces symmetrical contour outlines. Edge Select applies half-wave rectification, clipping one polarity to zero. Together, these three switches give you 2³ = 8 distinct edge shapes from the same filter output.
 
 ---
 
@@ -215,10 +190,8 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 ### Exercise 1: Correcting Camera Footage
 
-<img src={lumarian_exercise1_result} alt="Correcting Camera Footage — simulated result across source images"/>
-
+<img src={lumarian_exercise1_result} alt="Correcting Camera Footage result"/>
 *Correcting Camera Footage — simulated result across source images.*
-
 **Source**: A live camera feed or recorded footage with natural scenes.
 
 **Objective**: Learn what each of the four tonal controls does to a video signal and how they interact.
@@ -230,18 +203,14 @@ These exercises progress from corrective to creative, gradually exploring more o
 5. **Color**: Turn **Saturation** all the way counter-clockwise to see the image in monochrome. Now bring it back past center. Notice that at 100% the color looks natural; above 100% colors become increasingly vivid and eventually start to clip.
 6. **Sharpening**: Set **Edge Cutoff** to about 20%, then slowly bring **Edge Gain** up to 30–50%. Transitions in the image become crisper — this is the digital equivalent of broadcast aperture correction.
 
-:::tip
-Contrast is gain (multiplication), Brightness is offset (addition), Gamma is a nonlinear curve (redistribution), Saturation is chroma gain (multiplication around midpoint).
-:::
+**Key concepts**: Contrast is gain (multiplication), Brightness is offset (addition), Gamma is a nonlinear curve (redistribution), Saturation is chroma gain (multiplication around midpoint)
 
 ---
 
 ### Exercise 2: Graphic Textures from Edges
 
-<img src={lumarian_exercise2_result} alt="Graphic Textures from Edges — simulated result across source images"/>
-
+<img src={lumarian_exercise2_result} alt="Graphic Textures from Edges result"/>
 *Graphic Textures from Edges — simulated result across source images.*
-
 **Source**: Footage with strong visual structure — architecture, typography, plants, fabric, or synthesized patterns.
 
 **Objective**: Explore what happens when the edge enhancer is pushed beyond its "correct" operating range.
@@ -255,18 +224,14 @@ Contrast is gain (multiplication), Brightness is offset (addition), Gamma is a n
 7. **Gamma interaction**: With edge enhancement active, turn Gamma clockwise to about 1.0. Midtones darken, and the edge filter responds differently to the redistributed tonal values.
 8. **Color reintroduction**: Bring Saturation back up. Enable Chroma Invert (Switch 8) for a complementary color effect over the edge texture.
 
-:::tip
-Edge Cutoff selects the filter bandwidth (which edges), Edge Gain controls mix intensity (how much edge), the three edge toggles form a 3-bit mode selector (2³ = 8 modes), Gamma before edge extraction gives frequency-selective emphasis on outlines.
-:::
+**Key concepts**: Edge Cutoff selects the filter bandwidth (which edges), Edge Gain controls mix intensity (how much edge), the three edge toggles form a 3-bit mode selector (2³ = 8 modes), Gamma before edge extraction gives frequency-selective emphasis on outlines
 
 ---
 
 ### Exercise 3: Sculpting a Luminance Key
 
-<img src={lumarian_exercise3_result} alt="Sculpting a Luminance Key — simulated result across source images"/>
-
+<img src={lumarian_exercise3_result} alt="Sculpting a Luminance Key result"/>
 *Sculpting a Luminance Key — simulated result across source images.*
-
 **Source**: High-contrast footage — candle flames, theatrical lighting, silhouettes, or text on a plain background.
 
 **Objective**: Use the full processing chain (tonal shaping → edge enhancement → inversion → threshold keying) together.
@@ -280,16 +245,37 @@ Edge Cutoff selects the filter bandwidth (which edges), Edge Gain controls mix i
 7. **Add edge outlines**: With the key active, set Edge Gain to about 200% and Edge Cutoff to 30%. Edges appear *within* the keyed subject, adding contour detail to the silhouette.
 8. **Colorize**: Bring Saturation back up and enable Chroma Invert (Switch 8). The keyed subject now has complementary colors overlaid with edge outlines.
 
-:::tip
-Luma Blank is a threshold comparator at the end of the chain, every upstream control changes what the threshold "sees", shaping the signal before keying is the fundamental technique for building clean controllable keys.
-:::
+**Key concepts**: Luma Blank is a threshold comparator at the end of the chain, every upstream control changes what the threshold "sees", shaping the signal before keying is the fundamental technique for building clean controllable keys
 
 ---
+
 
 ## Tips
 
 - **Order matters**: The signal flows through Contrast/Brightness → Gamma → Edge → Invert → Key. Each stage transforms the signal before the next one sees it.
 - **Gamma before edges**: Because Gamma reshapes the luminance curve *before* the edge filter runs, you can use it to emphasize different parts of the image selectively. Counter-clockwise (logarithmic) lifts shadows into the filter's sensitive range, emphasizing shadow-region edges. Clockwise (exponential) does the opposite, emphasizing highlight edges.
+- **Eight edge modes from three switches**: The three edge toggles (Switches 9, 10, 11) form a binary selector with 2³ = 8 combinations. Rather than memorizing which combination does what, sweep through all eight with Edge Gain at ~300% and a clear input — each combination produces a visibly distinct contour shape.
 - **Feedback loops**: If Videomancer's output is routed back to its input, Lumarian becomes a feedback processor. Edge enhancement and gamma correction in a feedback loop tend to produce self-reinforcing, evolving textures.
 - **Work in monochrome first**: When building a complex effect, start with Saturation at 0%. Remove the color variable until your tonal chain is set, then reintroduce it.
 - **Stacking programs**: Lumarian works well as either the first or last program in a multi-program chain. As the first program, it shapes the signal for downstream effects. As the last, it corrects or stylizes the final output.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Aperture correction** | A broadcast sharpening technique that extracts high-frequency detail from the luminance channel and mixes it back in at adjustable gain; the ancestor of Lumarian's edge enhancer. |
+| **Bipolar signal** | A signal that swings both positive and negative around a zero reference; the raw edge filter output is bipolar, with opposite polarities on each side of a brightness transition. |
+| **Chrominance** | The color information in a video signal, encoded as U and V components that represent blue-difference and red-difference offsets from neutral gray. |
+| **CRT (Cathode Ray Tube)** | A vacuum tube display technology whose nonlinear voltage-to-brightness response is the historical origin of gamma correction. |
+| **DC offset** | A constant value added to a signal, shifting it uniformly brighter or darker without changing contrast; the Brightness control applies a DC offset to the Y channel. |
+| **Full-wave rectification** | Converting a bipolar signal to a unipolar one by taking the absolute value, folding negative excursions to positive; produces symmetrical contour outlines from the edge filter. |
+| **Gamma correction** | A nonlinear transfer curve that remaps input brightness to output brightness using an exponential or logarithmic function, redistributing tonal values without changing the endpoints. |
+| **Half-wave rectification** | Clipping one polarity of a bipolar signal to zero while passing the other, producing single-sided edge outlines. |
+| **High-pass filter** | A filter that attenuates low-frequency content and passes high-frequency detail; extracts spatial edges from the luminance channel. |
+| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV encoding. |
+| **Luminance key** | A compositing technique that uses a brightness threshold to separate foreground from background; pixels below the threshold are replaced with black. |
+| **Proc amp (Processing Amplifier)** | Broadcast equipment that standardizes video signals by adjusting contrast (gain) and brightness (offset); Lumarian's tonal controls implement a digital proc amp. |
+| **Transfer curve** | A graph mapping input values to output values; gamma correction bends the linear transfer curve into an exponential or logarithmic shape. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

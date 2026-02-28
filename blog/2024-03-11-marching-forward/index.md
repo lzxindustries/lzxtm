@@ -3,6 +3,7 @@ slug: marching-forward
 title: Marching Forward
 authors: [lars]
 tags: [chromagnon]
+image: ./case.png
 ---
 
 Hello everyone,

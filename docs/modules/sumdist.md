@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "SUM/DIST: Summing & Distribution Amplifiers"
+image: /img/modules/sum-dist/sum-dist-diagrams/sum-dist_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

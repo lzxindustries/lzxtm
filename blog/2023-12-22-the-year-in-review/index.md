@@ -3,6 +3,7 @@ slug: the-molten-core
 title: The Molten Core
 authors: [lars]
 tags: [chromagnon]
+image: ./core.png
 ---
 
 It's the last Saturday of 2023, and it's been a busy week.  With some LZX teammates out of town and under the weather, I've done my best to mind the shop and ship your orders.  

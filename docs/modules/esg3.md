@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "ESG3: Encoder & Sync Generator"
+image: /img/modules/esg3/esg3-diagrams/esg3_frontpanel.png
 ---
 
 import esg3_frontpanel from '/img/modules/esg3/esg3-diagrams/esg3_frontpanel.png';

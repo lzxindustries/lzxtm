@@ -3,6 +3,7 @@ slug: chromagnon-box
 title: Chromagnon Box
 authors: [lars]
 tags: [chromagnon]
+image: ./chromag1.png
 ---
 
 Hello on Tuesday.  I hope everyone in the States had a nice Memorial Day weekend.  Lots to cover in this update, so I will be terse.

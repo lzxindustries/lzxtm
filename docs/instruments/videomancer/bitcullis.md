@@ -3,6 +3,7 @@ draft: false
 sidebar_position: 2
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
+image: /img/instruments/videomancer/bitcullis/bitcullis_hero.png
 ---
 
 import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';
@@ -16,37 +17,10 @@ import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/b
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning[Work In Progress]
-This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
-:::
-
-<img src={bitcullis_hero} alt="Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures"/>
-
-<img src={bitcullis_before_after} alt="Left: unprocessed source. Right: Bitcullis applied"/>
-
+<img src={bitcullis_hero} alt="Bitcullis hero image"/>
+*Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures.*
+<img src={bitcullis_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Bitcullis applied.*
-
-**Source images used in this guide:**
-- **1**. kodim23.png — Two macaws — saturated primaries
-- **2**. kodim04.png — Portrait of girl in red — wide tonal range
-- **3**. mandrill_512.png — Mandrill — fine detail
-
-<details>
-<summary>Hero image settings</summary>
-
-| Control | Value |
-|---------|-------|
-| Hori Decimate | ~35% |
-| Vert Decimate | ~30% |
-| Luma to Hori | ~70% |
-| Luma Poster | ~50% |
-| Chroma Poster | ~30% |
-| Luma to Chroma | ~50% |
-| Dithering | On (ordered 2×2) |
-| Bit Order | Off |
-| Threshold | 0% (fully open) |
-
-</details>
 
 ---
 
@@ -74,11 +48,12 @@ When you reduce the number of brightness or color levels that a pixel can take, 
 
 ### What Is Dithering?
 
-Dithering is a technique for making a low-bit-depth image appear to have more tonal levels than it actually contains. It works by adding a small, structured noise pattern to the signal *before* quantization. The noise pushes pixel values across quantization boundaries in a pattern that, from a distance, creates the illusion of intermediate tones. Bitcullis offers two dithering algorithms: **ordered dithering** (a fixed 2×2 or 4×4 Bayer matrix) and **random dithering** (an LFSR pseudo-random pattern). Ordered dithering produces a regular stipple texture; random dithering produces a film-grain-like noise.
+Dithering is a technique for making a low-bit-depth image appear to have more tonal levels than it actually contains. It works by adding a small, structured noise pattern to the signal *before* quantization. The noise pushes pixel values across quantization boundaries in a pattern that, from a distance, creates the illusion of intermediate tones. Bitcullis offers two dithering algorithms: **ordered dithering** (a fixed 4×4 Bayer matrix) and **random dithering** (an LFSR pseudo-random pattern). Ordered dithering produces a regular stipple texture; random dithering produces a film-grain-like noise.
 
 ### What Is Bit-Order Reversal?
 
 Every pixel value is stored as a 10-bit binary number. The **bit-order reversal** toggle flips the significance of those bits — the most significant bit becomes the least significant and vice versa. This is not a simple inversion (which flips 1s to 0s); it is a *permutation* of the binary representation. The result is a nonlinear, often chaotic remapping of brightness and color values that produces glitch-like visual artifacts.
+
 
 ---
 
@@ -121,8 +96,7 @@ Two key interactions: (1) **Luminance-driven modulation**: The Y channel drives 
 
 ## Parameter Reference
 
-<img src={bitcullis_control_panel} alt="Videomancer front panel with Bitcullis loaded, controls annotated"/>
-
+<img src={bitcullis_control_panel} alt="Videomancer front panel with Bitcullis loaded"/>
 *Videomancer's front panel with Bitcullis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
@@ -226,10 +200,8 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 ### Exercise 1: Mosaic Pixelation
 
-<img src={bitcullis_exercise1_result} alt="Mosaic Pixelation — simulated result across source images"/>
-
+<img src={bitcullis_exercise1_result} alt="Mosaic Pixelation result"/>
 *Mosaic Pixelation — simulated result across source images.*
-
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
 **Objective**: Learn how decimation and luminance modulation interact to create adaptive mosaic textures.
@@ -240,18 +212,14 @@ These exercises progress from simple decimation to full signal deconstruction. E
 4. **Adaptive mosaic**: Slowly increase Luma to Hori from 0 to 100%. Watch the block grid respond to the image content — bright and dark regions get different block sizes. This is Bitcullis's signature effect.
 5. **Inversion**: Toggle Luma Invert (Switch 7). The modulation reverses — block sizes swap between bright and dark regions.
 
-:::tip
-Decimation is sample-and-hold downsampling, horizontal and vertical axes are independent, luminance modulation creates content-adaptive mosaics.
-:::
+**Key concepts**: Decimation is sample-and-hold downsampling, horizontal and vertical axes are independent, luminance modulation creates content-adaptive mosaics
 
 ---
 
 ### Exercise 2: Posterized Graphics
 
-<img src={bitcullis_exercise2_result} alt="Posterized Graphics — simulated result across source images"/>
-
+<img src={bitcullis_exercise2_result} alt="Posterized Graphics result"/>
 *Posterized Graphics — simulated result across source images.*
-
 **Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
 **Objective**: Explore posterization and dithering interactions.
@@ -263,18 +231,14 @@ Decimation is sample-and-hold downsampling, horizontal and vertical axes are ind
 5. **Bit reversal**: Enable Bit Order (Switch 8). The orderly posterized levels explode into chaotic digital textures.
 6. **Threshold**: Apply the Threshold fader to carve into the posterized result. Note how the threshold cuts cleanly along posterization boundaries.
 
-:::tip
-Posterization is quantization of pixel values, dithering masks quantization artifacts by adding structured noise, bit reversal is a nonlinear permutation distinct from inversion.
-:::
+**Key concepts**: Posterization is quantization of pixel values, dithering masks quantization artifacts by adding structured noise, bit reversal is a nonlinear permutation distinct from inversion
 
 ---
 
 ### Exercise 3: Digital Texture Synthesis
 
-<img src={bitcullis_exercise3_result} alt="Digital Texture Synthesis — simulated result across source images"/>
-
+<img src={bitcullis_exercise3_result} alt="Digital Texture Synthesis result"/>
 *Digital Texture Synthesis — simulated result across source images.*
-
 **Source**: Any footage, especially high-contrast material.
 
 **Objective**: Combine all stages for abstract digital textures.
@@ -287,11 +251,10 @@ Posterization is quantization of pixel values, dithering masks quantization arti
 6. **Inversion layers**: Toggle Luma Invert to see how it reverses the entire modulation chain.
 7. **Animate**: Slowly sweep controls to watch the digital texture evolve in real time.
 
-:::tip
-Bitcullis is a layered signal deconstruction tool, each stage reduces or rearranges information, the stages compound (decimation → dithering → posterization → bit-reversal → threshold).
-:::
+**Key concepts**: Bitcullis is a layered signal deconstruction tool, each stage reduces or rearranges information, the stages compound (decimation → dithering → posterization → bit-reversal → threshold)
 
 ---
+
 
 ## Tips
 
@@ -301,3 +264,22 @@ Bitcullis is a layered signal deconstruction tool, each stage reduces or rearran
 - **Bit reversal is not inversion**: Luma Invert flips all bits (linear complement). Bit Order Reversal *permutes* bit positions (nonlinear mapping). They produce completely different results.
 - **Feedback loops**: Routing the output back to the input creates recursive decimation and posterization — self-referencing block structures that evolve over time.
 - **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal for before/after comparison.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Bit Depth** | The number of discrete levels available to represent a signal; higher bit depth means finer gradations. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
+| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
+| **Decimation** | Reducing spatial resolution by discarding samples at regular intervals, creating a blocky mosaic effect. |
+| **Dithering** | Adding a small noise pattern before quantization to break up banding artifacts and simulate additional tonal levels. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |

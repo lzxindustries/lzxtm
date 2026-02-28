@@ -2,6 +2,7 @@
 draft: false
 title: "About LZX"
 sidebar_position: 1
+image: /img/guides/about_lxz_workshop.jpg
 ---
 
 import about_lxz_workshop from '/img/guides/about_lxz_workshop.jpg';

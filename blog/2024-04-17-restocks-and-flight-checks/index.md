@@ -3,6 +3,7 @@ slug: restocks-and-flight-checks
 title: Restocks & Flight Checks
 authors: [lars]
 tags: [chromagnon]
+image: ./bins1.png
 ---
 
 Hello, video pals!

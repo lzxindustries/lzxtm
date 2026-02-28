@@ -3,6 +3,7 @@ slug: artist-feature-lauren-klotzman
 title: "Artist Feature: Lauren Klotzman"
 authors: [kat]
 tags: [community]
+image: ./klotzman_01.jpg
 ---
 
 Lauren Klotzman is a multi-medium conceptualist who conducts an anti-disciplinary philosophy in their creative process. "Klotzman is an instrumentalist, operating an analog modular video synthesizer to create 'video paintings' via electricity." Klotzman views time and energy as one, composing life and therefore the art that flows through it.

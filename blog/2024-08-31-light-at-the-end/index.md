@@ -3,6 +3,7 @@ slug: light-at-the-end
 title: Light At The End
 authors: [lars]
 tags: [chromagnon]
+image: ./testing.png
 ---
 
 I hope everyone has enjoyed their Summers and is looking forward to the Fall.  For me, this time of year has always meant getting ready to learn, whether that was in my prior career in e-learning development, with my kids starting the next grade, or in my own educational goals. This year it will mean entering a period of content creation for LZX-- documentation, videos, tutorials, and any other resources that serve your own learning and creative pursuits in making video art.  

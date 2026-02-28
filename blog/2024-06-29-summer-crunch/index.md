@@ -3,6 +3,7 @@ slug: summer-crunch
 title: Summer Crunch
 authors: [lars]
 tags: [chromagnon]
+image: ./thermal-camera.png
 ---
 
 Dear video friends, 

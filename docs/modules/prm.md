@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "PRM: Programmable Rectifier & Multiplier"
+image: /img/modules/prm/prm-diagrams/prm_front-panel.png
 ---
 
 import prm_front_panel from '/img/modules/prm/prm-diagrams/prm_front-panel.png';

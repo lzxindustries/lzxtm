@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "PROC: Triple Voltage Processor"
+image: /img/modules/proc/proc-diagrams/proc_frontpanel.png
 ---
 
 # PROC

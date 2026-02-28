@@ -2,6 +2,7 @@
 draft: false
 sidebar_position: 1
 slug: /instruments/videomancer
+image: /img/instruments/videomancer/videomancer_frontpanel.png
 ---
 
 import videomancer_connectors_and_controls from '/img/instruments/videomancer/videomancer-connectors-and-controls.png';

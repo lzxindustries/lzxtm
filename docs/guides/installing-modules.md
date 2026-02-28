@@ -2,6 +2,7 @@
 draft: false
 title: "Module Installation"
 sidebar_position: 4
+image: /img/guides/installing_modules_sync.jpg
 ---
 
 import installing_modules_sync from '/img/guides/installing_modules_sync.jpg';

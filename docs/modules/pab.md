@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "PAB: Programmable Active Buffers"
+image: /img/modules/pab/pab-diagrams/pab_front-panel.png
 ---
 
 import pab_front_panel from '/img/modules/pab/pab-diagrams/pab_front-panel.png';

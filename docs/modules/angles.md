@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "ANGLES: Fixed Ratio Mixer & Dual Ramp Generator"
+image: /img/modules/angles/angles-diagrams/angles_frontpanel.png
 ---
 import { useEffect, useRef, useState } from 'react';
 

@@ -3,6 +3,7 @@ slug: video-sync-recap-forecast-2025
 title: Video Sync Recap & Forecast for 2025
 authors: [lars]
 tags: [chromagnon]
+image: ./video_sync_01.jpg
 ---
 
 We had a wonderful time at Video Sync 2025 here in Portland, OR earlier this month. Our endless thanks to all of the organizers and volunteers involved in the event! 

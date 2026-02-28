@@ -3,6 +3,7 @@ slug: artist-feature-vincent-bergeron
 title: "Artist Feature: Vincent Bergeron"
 authors: [kat]
 tags: [community]
+image: ./corpus_chezsoi.jpg
 ---
 
 Our first artist feature! Vincent Bergeron ([@Vincentbrgr](https://vincentbergeron.fr)) is a multimedia visual conceptualist whose work bridges drawing, photography, and digital processing to explore identity, perception, and time.

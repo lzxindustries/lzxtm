@@ -3,6 +3,7 @@ slug: the-core-has-landed
 title: The Core Has Landed
 authors: [lars]
 tags: [chromagnon]
+image: ./pcb.png
 ---
 
 Howdy Chromagnon-folk. It's Friday and the week has been productive at LZX HQ. We're expecting snow over this upcoming holiday weekend here in southeast Portland.

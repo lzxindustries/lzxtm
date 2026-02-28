@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "LNK: Passive Links"
+image: /img/modules/lnk/lnk-diagrams/lnk_front-panel.png
 ---
 
 import lnk_front_panel from '/img/modules/lnk/lnk-diagrams/lnk_front-panel.png';

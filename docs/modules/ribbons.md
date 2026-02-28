@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "RIBBONS: Three-Bit Digitizer and Colorizer"
+image: /img/modules/ribbons/ribbons-diagrams/ribbons_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

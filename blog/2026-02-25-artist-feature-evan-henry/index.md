@@ -3,6 +3,7 @@ slug: artist-feature-evan-henry
 title: "Artist Feature: Evan Henry"
 authors: [kat]
 tags: [community]
+image: ./evan_henry_01.jpg
 ---
 
 Evan Henry ([@Cinema.AV](https://www.instagram.com/cinema.av)) is both an audio and visual artist who often works with live bands and audio synth creators to make collaborative live shows and performances. He started his journey at Dallas Ambient Music Nights, occasionally performing "some video tape I found at a thrift store, like a National Geographic or Mind's Eye sorta thing." When Brian Tomerlin — his now longtime friend — brought his 5–6ft high CRT setup to a show and performed using various video devices, "I just sat there, most of the night, like I'd often do as a child, just glued to those televisions." Afterward he was hooked, finding any way he could learn, and eventually acquiring his own setup to bring to shows.

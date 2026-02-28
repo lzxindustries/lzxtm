@@ -3,6 +3,7 @@ slug: module-docs-and-chromagnon-assemblies
 title: Module Docs & Chromagnon Assemblies
 authors: [lars]
 tags: [chromagnon]
+image: ./chromagnon-subassemblies.jpg
 ---
 
 It has been a highly productive past month here at LZX HQ, despite many ups and downs.  We've made a big progress push on Chromagnon with new PCB designs for subassemblies and their test boards, we've got PRM kits in stock, and we've published another round of content for our docs website. 

@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "SWATCH: Dual Color Space Converter"
+image: /img/modules/swatch/swatch-diagrams/swatch_front_panel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

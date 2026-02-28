@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "STAIRS: Complex Wavefolder & Frequency Multiplier"
+image: /img/modules/stairs/stairs-diagrams/stairs_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

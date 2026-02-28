@@ -3,6 +3,7 @@ slug: modular-submodules
 title: Modular Submodules
 authors: [lars]
 tags: [chromagnon]
+image: ./vidiot.png
 ---
 
 September flew right past us here at LZX, with steady (if tedious) progress toward Chromagnon production on my end, and multiple longer term production projects wrapping up in the workshop.

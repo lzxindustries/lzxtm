@@ -3,6 +3,7 @@ slug: pricing-revisions
 title: Pricing Revisions
 authors: [lars]
 tags: [chromagnon]
+image: ./sheet_metal_prototypes.jpg
 ---
 
 A quick update as we wrap up May. Pricing revisions for all modules and modular systems go into effect tomorrow, June 1st.

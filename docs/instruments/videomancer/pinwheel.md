@@ -3,6 +3,7 @@ draft: false
 sidebar_position: 4
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
+image: /img/instruments/videomancer/pinwheel/pinwheel_hero.png
 ---
 
 import pinwheel_hero from '/img/instruments/videomancer/pinwheel/pinwheel_hero.png';
@@ -16,37 +17,10 @@ import pinwheel_exercise3_result from '/img/instruments/videomancer/pinwheel/pin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning[Work In Progress]
-This program guide is under active development. Content may be incomplete, inaccurate, or subject to change.
-:::
-
-<img src={pinwheel_hero} alt="Pinwheel mapping brightness gradients into a full rainbow spectrum using luminance-to-hue modulation"/>
-
-<img src={pinwheel_before_after} alt="Left: unprocessed source. Right: Pinwheel applied"/>
-
+<img src={pinwheel_hero} alt="Pinwheel hero image"/>
+*Pinwheel mapping brightness gradients into a full rainbow spectrum using luminance-to-hue modulation.*
+<img src={pinwheel_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Pinwheel applied.*
-
-**Source images used in this guide:**
-- **1**. kodim04.png — Portrait of girl in red — wide brightness range
-- **2**. peppers_512.png — Peppers — saturated primary colors
-- **3**. kodim23.png — Parrots — bold colors and high contrast
-
-<details>
-<summary>Hero image settings</summary>
-
-| Control | Value |
-|---------|-------|
-| Colorize | On |
-| Luma to Hue | ~75% |
-| Hue | ~80% |
-| Saturation | ~65% |
-| Brightness | center |
-| Luma Gain | ~55% |
-| Posterize | 100% (no crushing) |
-| Crush Mode | Clean (AND) |
-| All inversions | Off |
-
-</details>
 
 ---
 
@@ -82,6 +56,7 @@ The Colorize toggle replaces the input's chrominance with neutral (U = V = midpo
 
 Bit-crushing applies a binary mask to the output values using AND or XOR operations. The **Posterize** control (Knob 5) masks the Y channel, and the **Chroma Crush** fader (Fader 12) masks the U and V channels. **Crush Mode** (Switch 10): AND cleanly zeros bits (smooth staircase quantization), XOR flips bits (chaotic, glitch-like value scrambling). AND crushing is predictable; XOR crushing is deterministic but visually wild.
 
+
 ---
 
 ## Signal Flow
@@ -112,8 +87,7 @@ Two key interactions: (1) **Luminance drives chrominance**: The hue rotation ang
 
 ## Parameter Reference
 
-<img src={pinwheel_control_panel} alt="Videomancer front panel with Pinwheel loaded, controls annotated"/>
-
+<img src={pinwheel_control_panel} alt="Videomancer front panel with Pinwheel loaded"/>
 *Videomancer's front panel with Pinwheel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
@@ -217,10 +191,8 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 ### Exercise 1: Luminance Rainbow
 
-<img src={pinwheel_exercise1_result} alt="Luminance Rainbow — simulated result across source images"/>
-
+<img src={pinwheel_exercise1_result} alt="Luminance Rainbow result"/>
 *Luminance Rainbow — simulated result across source images.*
-
 **Source**: Footage with a wide range of brightness — landscapes, portraits, or gradient test patterns.
 
 **Objective**: Learn luminance-to-color mapping and understand how brightness becomes color.
@@ -231,18 +203,14 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 4. **Saturation**: Adjust Saturation (Knob 2) to control color intensity. At 0%, the image returns to monochrome regardless of hue rotation.
 5. **Brightness interaction**: Change Brightness (Knob 3). Notice that the rainbow palette shifts — brightness acts as a chromatic offset when Luma to Hue is active.
 
-:::tip
-Colorize removes original color allowing pure luminance-to-hue mapping, Luma to Hue controls modulation depth, Hue rotates the palette, Brightness acts as a chromatic offset.
-:::
+**Key concepts**: Colorize removes original color allowing pure luminance-to-hue mapping, Luma to Hue controls modulation depth, Hue rotates the palette, Brightness acts as a chromatic offset
 
 ---
 
 ### Exercise 2: Color Corrector to Glitch Machine
 
-<img src={pinwheel_exercise2_result} alt="Color Corrector to Glitch Machine — simulated result across source images"/>
-
+<img src={pinwheel_exercise2_result} alt="Color Corrector to Glitch Machine result"/>
 *Color Corrector to Glitch Machine — simulated result across source images.*
-
 **Source**: Colorful footage — flowers, fruit, painted surfaces, or video art.
 
 **Objective**: Experience the full range from subtle color correction to extreme glitch texture.
@@ -254,18 +222,14 @@ Colorize removes original color allowing pure luminance-to-hue mapping, Luma to 
 5. **Color crushing**: Lower the Chroma Crush fader (Fader 12). In XOR mode, colors explode into psychedelic fragments.
 6. **Compare**: Toggle Crush Mode back and forth. AND is structured and predictable. XOR is chaotic and surprising. Same controls, fundamentally different character.
 
-:::tip
-AND crushing is structured staircase quantization, XOR crushing is chaotic bit scrambling, Posterize crushes Y (brightness) and Chroma Crush crushes UV (color) independently.
-:::
+**Key concepts**: AND crushing is structured staircase quantization, XOR crushing is chaotic bit scrambling, Posterize crushes Y (brightness) and Chroma Crush crushes UV (color) independently
 
 ---
 
 ### Exercise 3: Psychedelic Colorizer
 
-<img src={pinwheel_exercise3_result} alt="Psychedelic Colorizer — simulated result across source images"/>
-
+<img src={pinwheel_exercise3_result} alt="Psychedelic Colorizer result"/>
 *Psychedelic Colorizer — simulated result across source images.*
-
 **Source**: Any footage — the more varied, the more interesting.
 
 **Objective**: Combine all capabilities into a maximally expressive color processor.
@@ -277,11 +241,10 @@ AND crushing is structured staircase quantization, XOR crushing is chaotic bit s
 5. **Crush both channels**: Set Crush Mode to Glitch (XOR). Increase Posterize to ~40%, lower Chroma Crush to ~50%.
 6. **Animate**: Slowly sweep the Hue knob. The entire psychedelic palette rotates through the spectrum — a hallucinatory, ever-shifting chromatic landscape.
 
-:::tip
-Colorize + Luma to Hue creates pure brightness-to-color mapping, inversion and crushing compound the effect, sweeping Hue animates the entire palette.
-:::
+**Key concepts**: Colorize + Luma to Hue creates pure brightness-to-color mapping, inversion and crushing compound the effect, sweeping Hue animates the entire palette
 
 ---
+
 
 ## Tips
 
@@ -292,3 +255,23 @@ Colorize + Luma to Hue creates pure brightness-to-color mapping, inversion and c
 - **Chroma Invert complements the palette**: Instantly flip every color to its complement without changing luminance or modulation depth. Useful for quickly exploring palette variations.
 - **Feedback loops with hue rotation**: Each feedback pass rotates hue further, creating cycling chromatic cascades that evolve over time.
 - **Bypass for A/B comparison**: Switch 11 shows the unprocessed signal instantly.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **AND masking** | A bitwise operation that zeros selected bits by combining pixel values with a mask of ones and zeros; produces smooth staircase quantization when used for bit-crushing. |
+| **Bit-crushing** | Reducing the effective resolution of a digital value by masking or scrambling its least significant bits, producing quantization artifacts or glitch textures. |
+| **Chrominance** | The color information in a video signal, encoded as U and V components representing blue-difference and red-difference offsets from neutral gray. |
+| **Color vector** | The two-dimensional representation of a pixel's color as a point in the UV plane, whose angle encodes hue and whose magnitude encodes saturation. |
+| **Complement** | The color diametrically opposite on the UV color wheel (180° rotation); Chroma Invert maps every color to its complement. |
+| **Hue rotation** | Spinning the UV color vector around the origin by a fixed angle using a 2D rotation matrix, shifting all colors through the spectrum. |
+| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV encoding. |
+| **LUT (Lookup Table)** | A pre-computed array that maps input values to output values for fast evaluation; Pinwheel uses a 10-bit sine/cosine LUT for hue rotation. |
+| **Modulation** | Varying one signal parameter (here, hue angle) in proportion to another signal (luminance), creating a brightness-dependent color mapping. |
+| **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel's Luma Gain and Brightness controls form a Y-channel proc amp whose output also drives hue rotation. |
+| **UV plane** | The two-dimensional chrominance space defined by the U and V axes, where angle represents hue and distance from center represents saturation. |
+| **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used in Glitch crush mode to flip bits chaotically rather than zero them. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

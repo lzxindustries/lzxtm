@@ -3,6 +3,7 @@ slug: chromagnonomics
 title: Chromagnonomics
 authors: [lars]
 tags: [chromagnon]
+image: ./crt.png
 ---
 
 It is a Monday: the 18th of December, 2023.  At LZX we are wrapping up an exhausting year, and probably our most challenging yet.  It has been difficult to speak publicly on our ongoing plans and projects with a mammoth in the room: Chromagnon is multiple years overdue, and I have failed to accurately estimate the shipping date a few times now.  

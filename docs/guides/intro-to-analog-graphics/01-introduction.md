@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 draft: true
+image: /img/modules/intro-to-analog-graphics/intro-to-analog-graphics-01.png
 ---
 
 import intro_to_analog_graphics_01 from '/img/modules/intro-to-analog-graphics/intro-to-analog-graphics-01.png';

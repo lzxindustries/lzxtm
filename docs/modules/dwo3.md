@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "DWO3: Dual Wideband Oscillator"
+image: /img/modules/dwo3/dwo3-diagrams/dwo3_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

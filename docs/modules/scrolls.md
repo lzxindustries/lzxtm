@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "SCROLLS: Dual Motion Controlled Ramp Generator"
+image: /img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png
 ---
 
 import scrolls_frontpanel from '/img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png';

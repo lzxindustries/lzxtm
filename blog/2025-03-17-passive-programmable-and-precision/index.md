@@ -3,6 +3,7 @@ slug: passive-programmable-and-precision
 title: The Three Ps
 authors: [lars]
 tags: [chromagnon]
+image: ./p-series-rack.jpg
 ---
 
 Hi video friends,

@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "TBC2: Dual Video Input"
+image: /img/modules/tbc2/tbc2-diagrams/tbc2_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

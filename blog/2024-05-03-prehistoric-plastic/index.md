@@ -3,6 +3,7 @@ slug: prehistoric-plastic
 title: Prehistoric Plastic
 authors: [lars]
 tags: [chromagnon]
+image: ./workshop.png
 ---
 
 Wow! April flew past, here at LZX HQ. Our improvements to operations and inventory have allowed us to process a large number of tasks in the ongoing effort to keep modules and stock while taking steady steps towards Chromagnon's launch. 

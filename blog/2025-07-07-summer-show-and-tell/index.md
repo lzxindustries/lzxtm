@@ -3,6 +3,7 @@ slug: summer-show-and-tell
 title: Summer Show & Tell
 authors: [lars]
 tags: [chromagnon]
+image: ./chromagnon_core.png
 ---
 
 Hello eyeball friends -- I'm taking a break from an intense development sprint to say thank you for your support and patience over the past month, as we shift activities and processes in response to the tariffs on most of the parts we use in production.  We have the in house SMT machine running the past couple weeks and are making headway on your recent backorders.

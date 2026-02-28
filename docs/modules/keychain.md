@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "KEYCHAIN: Triple Hard Key Generator"
+image: /img/modules/keychain/keychain-diagrams/keychain_frontpanel.png
 ---
 import { useEffect, useRef, useState } from 'react';
 

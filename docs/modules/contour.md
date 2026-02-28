@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "CONTOUR: Triple Detail Extractor"
+image: /img/modules/contour/contour-diagrams/contour_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';

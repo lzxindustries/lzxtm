@@ -1,6 +1,7 @@
 ---
 draft: false
 title: "MATTE: Static Voltage Generator & Control Panel"
+image: /img/modules/matte/matte-diagrams/matte_frontpanel.png
 ---
 
 import { useEffect, useRef, useState } from 'react';
