@@ -3,7 +3,7 @@ draft: true
 sidebar_position: 172
 slug: /instruments/videomancer/moiré
 title: "Moiré"
-image: /img/instruments/videomancer/moiré/moiré_hero.png
+image: /img/instruments/videomancer/moir%C3%A9/moir%C3%A9_hero.png
 ---
 
 import moir__before_after from '/img/instruments/videomancer/moiré/moiré_before_after.png';

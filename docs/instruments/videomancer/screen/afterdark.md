@@ -9,9 +9,9 @@ image: /img/instruments/videomancer/afterdark/afterdark_hero.png
 import afterdark_hero from '/img/instruments/videomancer/afterdark/afterdark_hero.png';
 import afterdark_animation from '/img/instruments/videomancer/afterdark/afterdark_animation.gif';
 import afterdark_control_panel from '/img/instruments/videomancer/afterdark/afterdark_control_panel.png';
-import afterdark_exercise1_result from '/img/instruments/videomancer/afterdark/afterdark_exercise1_result.png';
-import afterdark_exercise2_result from '/img/instruments/videomancer/afterdark/afterdark_exercise2_result.png';
-import afterdark_exercise3_result from '/img/instruments/videomancer/afterdark/afterdark_exercise3_result.png';
+import afterdark_exercise1_result from '/img/instruments/videomancer/afterdark/afterdark_exercise1_result.gif';
+import afterdark_exercise2_result from '/img/instruments/videomancer/afterdark/afterdark_exercise2_result.gif';
+import afterdark_exercise3_result from '/img/instruments/videomancer/afterdark/afterdark_exercise3_result.gif';
 
 # Afterdark
 
@@ -20,17 +20,17 @@ import afterdark_exercise3_result from '/img/instruments/videomancer/afterdark/a
 <img src={afterdark_hero} alt="Afterdark hero image"/>
 *Afterdark generating bouncing rectangular sprites with color cycling trails across a black field.*
 <img src={afterdark_animation} alt="Afterdark animated output"/>
-*Afterdark output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+*Afterdark output evolving over multiple frames â€” synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
 ## Overview
 
-Before screensavers were quaint nostalgia, they were engineering necessities. CRT monitors would burn permanent ghost images into their phosphor coatings if a static picture sat too long. The solution was motion — geometric shapes drifting endlessly across the screen, touching every phosphor in turn. Afterdark is a love letter to that era, recreating the bouncing-shape screensaver aesthetic inside the Videomancer's FPGA pipeline.
+Before screensavers were quaint nostalgia, they were engineering necessities. CRT monitors would burn permanent ghost images into their phosphor coatings if a static picture sat too long. The solution was motion â€” geometric shapes drifting endlessly across the screen, touching every phosphor in turn. Afterdark is a love letter to that era, recreating the bouncing-shape screensaver aesthetic inside the Videomancer's FPGA pipeline.
 
 The program synthesizes rectangular sprites that move across the frame, bouncing off edges with configurable reflection. Shape position is updated per vertical sync interval using velocity accumulators, and color cycling driven by a frame counter creates the rainbow trail effects that defined the genre. The name references the iconic After Dark screensaver software of the late 1980s and early 1990s.
 
-At subtle settings, Afterdark produces clean geometric shapes drifting smoothly across the display. At extreme settings — high trail persistence, rapid color cycling, gravity enabled — it generates dense, layered compositions of overlapping colored rectangles that accumulate into abstract expressionist canvases.
+At subtle settings, Afterdark produces clean geometric shapes drifting smoothly across the display. At extreme settings â€” high trail persistence, rapid color cycling, gravity enabled â€” it generates dense, layered compositions of overlapping colored rectangles that accumulate into abstract expressionist canvases.
 
 ---
 
@@ -42,11 +42,11 @@ The screensaver emerged in the early 1980s as a practical tool: CRT monitors suf
 
 ### Sprite Motion and Edge Reflection
 
-Afterdark's sprite movement uses the simplest possible physics model: constant velocity with perfect elastic reflection at screen boundaries. Each frame, the sprite position increments by a velocity vector. When the sprite reaches a screen edge, the corresponding velocity component reverses sign. This produces the characteristic diagonal bouncing path that eventually visits every region of the screen — a property related to the ergodicity of billiard dynamics in rectangular domains.
+Afterdark's sprite movement uses the simplest possible physics model: constant velocity with perfect elastic reflection at screen boundaries. Each frame, the sprite position increments by a velocity vector. When the sprite reaches a screen edge, the corresponding velocity component reverses sign. This produces the characteristic diagonal bouncing path that eventually visits every region of the screen â€” a property related to the ergodicity of billiard dynamics in rectangular domains.
 
 ### Color Cycling
 
-Color cycling — smoothly rotating through the color spectrum over time — was a signature visual technique of early computer graphics. It exploits the periodic nature of hue in the HSV color model: incrementing the hue angle at a constant rate produces a seamless rainbow progression. In Afterdark, the frame counter drives this rotation, so each new sprite position gets a slightly different color, creating rainbow trails when persistence is active.
+Color cycling â€” smoothly rotating through the color spectrum over time â€” was a signature visual technique of early computer graphics. It exploits the periodic nature of hue in the HSV color model: incrementing the hue angle at a constant rate produces a seamless rainbow progression. In Afterdark, the frame counter drives this rotation, so each new sprite position gets a slightly different color, creating rainbow trails when persistence is active.
 
 
 ---
@@ -55,44 +55,44 @@ Color cycling — smoothly rotating through the color spectrum over time — was
 
 ```
 Synthesis Generator
-│
-├── Position Engine ────────────────────────────────────────────
-│   ├─ 1. Velocity Accumulator   (per-vsync position update)
-│   ├─ 2. Edge Detection         (boundary collision test)
-│   └─ 3. Reflection             (velocity sign reversal on bounce)
-│
-├── Shape Rasterizer ───────────────────────────────────────────
-│   ├─ 4. Rectangle Hit Test     (|dx| < half_size AND |dy| < half_size)
-│   ├─ 5. Shape Select           (rectangle variant from Shape knob)
-│   └─ 6. Color Assignment       (frame counter → hue, plus brightness)
-│
-├── Trail Compositor ───────────────────────────────────────────
-│   ├─ 7. Trail Persistence      (fade factor on previous frame)
-│   └─ 8. Additive Blend         (new sprite over faded trail)
-│
-├── Output Stage ───────────────────────────────────────────────
-│   ├─ 9. Brightness Scale       (master brightness control)
-│   └─ 10. Interpolator Mix      (3× interpolator_u wet/dry)
-│
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select generated or bypass signal
+â”‚
+â”œâ”€â”€ Position Engine â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+â”‚   â”œâ”€ 1. Velocity Accumulator   (per-vsync position update)
+â”‚   â”œâ”€ 2. Edge Detection         (boundary collision test)
+â”‚   â””â”€ 3. Reflection             (velocity sign reversal on bounce)
+â”‚
+â”œâ”€â”€ Shape Rasterizer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+â”‚   â”œâ”€ 4. Rectangle Hit Test     (|dx| < half_size AND |dy| < half_size)
+â”‚   â”œâ”€ 5. Shape Select           (rectangle variant from Shape knob)
+â”‚   â””â”€ 6. Color Assignment       (frame counter â†’ hue, plus brightness)
+â”‚
+â”œâ”€â”€ Trail Compositor â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+â”‚   â”œâ”€ 7. Trail Persistence      (fade factor on previous frame)
+â”‚   â””â”€ 8. Additive Blend         (new sprite over faded trail)
+â”‚
+â”œâ”€â”€ Output Stage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+â”‚   â”œâ”€ 9. Brightness Scale       (master brightness control)
+â”‚   â””â”€ 10. Interpolator Mix      (3Ã— interpolator_u wet/dry)
+â”‚
+â””â”€â”€ Bypass â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    â””â”€ Select generated or bypass signal
 ```
 
-The position engine operates at frame rate (once per vsync), while the rasterizer runs at pixel rate. The velocity accumulator step size maps directly to the Speed control — higher values produce faster sprite movement. The rectangle hit test compares absolute horizontal and vertical distances from the sprite center against the Size parameter, producing a simple inside/outside determination per pixel. Color cycling applies the frame counter as a hue offset, so trails left behind by previous positions naturally form a rainbow gradient.
+The position engine operates at frame rate (once per vsync), while the rasterizer runs at pixel rate. The velocity accumulator step size maps directly to the Speed control â€” higher values produce faster sprite movement. The rectangle hit test compares absolute horizontal and vertical distances from the sprite center against the Size parameter, producing a simple inside/outside determination per pixel. Color cycling applies the frame counter as a hue offset, so trails left behind by previous positions naturally form a rainbow gradient.
 
 ---
 
 ## Parameter Reference
 
 <img src={afterdark_control_panel} alt="Videomancer front panel with Afterdark loaded"/>
-*Videomancer's front panel with Afterdark active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+*Videomancer's front panel with Afterdark active. Knobs 1â€“6 (top two rows of left cluster), Toggle switches 7â€“11 (bottom row of left cluster), Fader 12 (right side).*
 
-### Rotary Potentiometers (Knobs 1–6)
+### Rotary Potentiometers (Knobs 1â€“6)
 
-#### Knob 1 — Speed
+#### Knob 1 â€” Speed
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 38% |
 | Suffix | % |
 
@@ -100,21 +100,21 @@ Controls sprite movement speed by scaling the velocity accumulator step. At mini
 
 ---
 
-#### Knob 2 — Size
+#### Knob 2 â€” Size
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 38% |
 | Suffix | % |
 
-Sets the half-width of the rectangular sprite. Small values produce compact square dots; large values create broad rectangular blocks that dominate the frame. The size also affects how quickly the sprite covers the screen — larger sprites overlap more of the field with each bounce, filling the canvas faster.
+Sets the half-width of the rectangular sprite. Small values produce compact square dots; large values create broad rectangular blocks that dominate the frame. The size also affects how quickly the sprite covers the screen â€” larger sprites overlap more of the field with each bounce, filling the canvas faster.
 
 ---
 
-#### Knob 3 — Color
+#### Knob 3 â€” Color
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 50% |
 | Suffix | % |
 
@@ -122,31 +122,31 @@ Controls the color hue of the sprite. When Color Cycle is enabled, this acts as 
 
 ---
 
-#### Knob 4 — Shape
+#### Knob 4 â€” Shape
 | Property | Value |
 |----------|-------|
-| Range | 0 – 7 |
+| Range | 0 â€“ 7 |
 | Default | 2 |
 
-Selects from eight shape variants that modify the basic rectangle. Different step positions produce variations in the rectangular fill pattern — from solid blocks to outlined rectangles to patterned fills. This control uses stepped quantization, snapping to discrete shape indices.
+Selects from eight shape variants that modify the basic rectangle. Different step positions produce variations in the rectangular fill pattern â€” from solid blocks to outlined rectangles to patterned fills. This control uses stepped quantization, snapping to discrete shape indices.
 
 ---
 
-#### Knob 5 — Trail
+#### Knob 5 â€” Trail
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 25% |
 | Suffix | % |
 
-Controls the persistence of sprite trails. At zero, no trail is left — only the current sprite position is visible. As the control increases, previous positions fade more slowly, building up layered compositions of overlapping colored shapes. At maximum, trails persist almost indefinitely, eventually filling the entire frame with accumulated color.
+Controls the persistence of sprite trails. At zero, no trail is left â€” only the current sprite position is visible. As the control increases, previous positions fade more slowly, building up layered compositions of overlapping colored shapes. At maximum, trails persist almost indefinitely, eventually filling the entire frame with accumulated color.
 
 ---
 
-#### Knob 6 — Gravity
+#### Knob 6 â€” Gravity
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 0% |
 | Suffix | % |
 
@@ -154,15 +154,15 @@ Sets the gravitational acceleration applied to the vertical velocity component w
 
 ---
 
-### Toggle Switches (Switches 7–11)
+### Toggle Switches (Switches 7â€“11)
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Bounce** | Off | On |
-| **8 — Color Cycle** | Off | On |
-| **9 — Rotate** | Off | On |
-| **10 — Gravity** | Off | On |
-| **11 — Bypass** | Off | On |
+| **7 â€” Bounce** | Off | On |
+| **8 â€” Color Cycle** | Off | On |
+| **9 â€” Rotate** | Off | On |
+| **10 â€” Gravity** | Off | On |
+| **11 â€” Bypass** | Off | On |
 
 The five toggles control independent behavioral modes. Bounce enables edge reflection (without it the sprite wraps around). Color Cycle enables frame-counter hue rotation. Rotate applies angular rotation to the sprite shape. Gravity enables vertical acceleration. Bypass routes the signal past all generation.
 
@@ -170,10 +170,10 @@ The five toggles control independent behavioral modes. Bounce enables edge refle
 
 ### Linear Potentiometer (Fader 12)
 
-#### Fader 12 — Brightness
+#### Fader 12 â€” Brightness
 | Property | Value |
 |----------|-------|
-| Range | 0% – 100% |
+| Range | 0% â€“ 100% |
 | Default | 75% |
 | Suffix | % |
 
@@ -188,7 +188,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 ### Exercise 1: Classic Bouncing Square
 
 <img src={afterdark_exercise1_result} alt="Classic Bouncing Square result"/>
-*Classic Bouncing Square — simulated result across source images.*
+*Classic Bouncing Square â€” simulated result across source images.*
 **Objective**: Recreate the iconic bouncing-square screensaver with rainbow trails.
 
 1. Set Speed to about 40% for a leisurely drift.
@@ -205,7 +205,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 ### Exercise 2: Gravitational Bounce
 
 <img src={afterdark_exercise2_result} alt="Gravitational Bounce result"/>
-*Gravitational Bounce — simulated result across source images.*
+*Gravitational Bounce â€” simulated result across source images.*
 **Objective**: Add gravity for parabolic sprite trajectories.
 
 1. Start from Exercise 1 settings.
@@ -222,7 +222,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 ### Exercise 3: Abstract Composition
 
 <img src={afterdark_exercise3_result} alt="Abstract Composition result"/>
-*Abstract Composition — simulated result across source images.*
+*Abstract Composition â€” simulated result across source images.*
 **Objective**: Use all features simultaneously to generate dense abstract textures.
 
 1. Set Speed to about 70% for rapid movement.
@@ -231,7 +231,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 4. Set Trail to about 90% for maximum persistence.
 5. Set Gravity to about 60%.
 6. Set Shape to position 4 for a patterned fill variant.
-7. Let the composition build for 30–60 seconds.
+7. Let the composition build for 30â€“60 seconds.
 
 **Key concepts**: All features combine to create complex layered compositions, rotation adds angular variety, high trail persistence accumulates shapes into dense fields
 
