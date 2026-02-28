@@ -152,7 +152,7 @@ Controls the IIR smoothing constant for the luminance averaging filters. Higher 
 | Range | 1 – 5 |
 | Default | 1 |
 
-Selects the horizontal tile count from the preset table {1, 2, 3, 5}. The control operates in four discrete steps — the upper two bits of the 10-bit register select the preset index. At 1 tile the diamond spans the full screen width. At 5 tiles the screen is divided into five equal columns, each containing its own diamond. The non-power-of-two values (3, 5) produce even divisions of the 1280-pixel active width.
+Selects the horizontal tile count from the preset table `{1, 2, 3, 5}`. The control operates in four discrete steps — the upper two bits of the 10-bit register select the preset index. At 1 tile the diamond spans the full screen width. At 5 tiles the screen is divided into five equal columns, each containing its own diamond. The non-power-of-two values (3, 5) produce even divisions of the 1280-pixel active width.
 
 ---
 
@@ -162,7 +162,7 @@ Selects the horizontal tile count from the preset table {1, 2, 3, 5}. The contro
 | Range | 1 – 8 |
 | Default | 1 |
 
-Selects the vertical tile count from the preset table {1, 2, 4, 8}. Combined with H Tiles, this creates a grid of diamonds. At 1×1 there is a single centered diamond. At 5×8 there are 40 diamonds on screen simultaneously. Large tile counts produce smaller diamonds because each tile occupies a smaller portion of the screen. Vertical tiling interacts with the IIR averaging — the upper/lower half split at scanline 360 is independent of the tile boundaries, so all tiles respond to the same two luminance averages.
+Selects the vertical tile count from the preset table `{1, 2, 4, 8}`. Combined with H Tiles, this creates a grid of diamonds. At 1×1 there is a single centered diamond. At 5×8 there are 40 diamonds on screen simultaneously. Large tile counts produce smaller diamonds because each tile occupies a smaller portion of the screen. Vertical tiling interacts with the IIR averaging — the upper/lower half split at scanline 360 is independent of the tile boundaries, so all tiles respond to the same two luminance averages.
 
 ---
 

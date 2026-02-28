@@ -1,21 +1,21 @@
----
+﻿---
 draft: true
 sidebar_position: 172
-slug: /instruments/videomancer/moiré
+slug: /instruments/videomancer/moire
 title: "Moiré"
-image: /img/instruments/videomancer/moir%C3%A9/moir%C3%A9_hero.png
+image: /img/instruments/videomancer/moire/moire_hero.png
 description: "Program guide for Moiré, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
-import moir__before_after from '/img/instruments/videomancer/moiré/moiré_before_after.png';
-import moir__control_panel from '/img/instruments/videomancer/moiré/moiré_control_panel.png';
-import moir__exercise1_result from '/img/instruments/videomancer/moiré/moiré_exercise1_result.png';
-import moir__exercise2_result from '/img/instruments/videomancer/moiré/moiré_exercise2_result.png';
-import moir__exercise3_result from '/img/instruments/videomancer/moiré/moiré_exercise3_result.png';
-import moir__hero from '/img/instruments/videomancer/moiré/moiré_hero.png';
-import moir__source1_kodim01 from '/img/instruments/videomancer/moiré/moiré_source1_kodim01.png';
-import moir__source2_kodim02 from '/img/instruments/videomancer/moiré/moiré_source2_kodim02.png';
-import moir__source3_kodim01_bw from '/img/instruments/videomancer/moiré/moiré_source3_kodim01_bw.png';
+import moir__before_after from '/img/instruments/videomancer/moire/moire_before_after.png';
+import moir__control_panel from '/img/instruments/videomancer/moire/moire_control_panel.png';
+import moir__exercise1_result from '/img/instruments/videomancer/moire/moire_exercise1_result.png';
+import moir__exercise2_result from '/img/instruments/videomancer/moire/moire_exercise2_result.png';
+import moir__exercise3_result from '/img/instruments/videomancer/moire/moire_exercise3_result.png';
+import moir__hero from '/img/instruments/videomancer/moire/moire_hero.png';
+import moir__source1_kodim01 from '/img/instruments/videomancer/moire/moire_source1_kodim01.png';
+import moir__source2_kodim02 from '/img/instruments/videomancer/moire/moire_source2_kodim02.png';
+import moir__source3_kodim01_bw from '/img/instruments/videomancer/moire/moire_source3_kodim01_bw.png';
 
 # Moiré
 

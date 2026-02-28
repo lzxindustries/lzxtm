@@ -382,7 +382,7 @@ When Videomancer loads a Program, all outputs will be disabled for a few seconds
 Some Programs may default to a black output. Typically, the **&ast; Slider** for Parameter 12 performs the function of fading to black, or luminance keying to black. After loading a Program, it may be necessary to move the Slider to its furthest extents in order to see an image.
 :::
 
-Programs include:
+Featured programs include:
 
 * **[Bitcullis](/docs/instruments/videomancer/bitcullis)**
     - Bit-crushing / culling / decimation in horizontal and vertical dimensions
@@ -399,10 +399,14 @@ Programs include:
 * **[Pinwheel](/docs/instruments/videomancer/pinwheel)**
     - Hue and saturation processing
     - Map luminance to hue and saturation
+* **[Scramble](/docs/instruments/videomancer/scramble)**
+    - Scanline-level signal scrambling and reordering
 * **YUV Amplifier**
     - **Gain** (amplitude) and **Offset** (bias) of individual YUV color components
 * **YUV Phaser**
     - **Phase** and **Displace** (horizontal shift) of individual YUV color components
+
+See the sidebar for the complete list of all available program guides.
 
 ---
 

@@ -3,6 +3,7 @@ draft: true
 sidebar_position: 3
 slug: /instruments/videomancer/historic-device-references
 title: "Videomancer: Historic Device References"
+image: /img/instruments/videomancer/videomancer_frontpanel.png
 description: "72 Videomancer programs emulate or are inspired by specific historic hardware, from the Fairlight CVI and Quantel Paintbox to Atari, Commodore, and classic broadcast effects systems."
 ---
 

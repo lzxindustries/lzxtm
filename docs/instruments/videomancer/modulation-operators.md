@@ -3,6 +3,7 @@ draft: true
 sidebar_position: 2
 slug: /instruments/videomancer/modulation-operators
 title: "Videomancer: Modulation Operators"
+image: /img/instruments/videomancer/videomancer_frontpanel.png
 description: "Complete reference guide for Videomancer's 32 modulation operator types across 12 channels, including oscillators, envelope followers, random generators, sequencers, spatial modulators, and physics simulations."
 ---
 
