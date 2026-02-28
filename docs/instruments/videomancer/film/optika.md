@@ -4,7 +4,7 @@ sidebar_position: 183
 slug: /instruments/videomancer/optika
 title: "Optika"
 image: /img/instruments/videomancer/optika/optika_hero.png
-description: "Program guide for Optika, a Videomancer film program for the LZX video synthesizer."
+description: "Before digital compositing, optical printers were the primary tool for combining multiple film elements into a single image."
 ---
 
 import optika_before_after from '/img/instruments/videomancer/optika/optika_before_after.png';
@@ -287,13 +287,13 @@ These exercises progress from basic temporal accumulation through printer light 
 | **Accumulation Buffer** | A BRAM-based per-pixel storage array that retains and blends luminance values across multiple video frames. |
 | **Additive Exposure** | A blending mode where new input is summed with the existing buffer content, building up density with each frame. |
 | **Bloom** | A glow effect around bright areas simulating optical halation, implemented as a gated moving-average filter. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline and frame accumulation storage. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Emulsion** | The light-sensitive chemical layer on photographic film that records exposure through density changes. |
 | **Fade Rate** | The decay factor applied to the accumulation buffer per frame, controlling temporal persistence. |
 | **Halation** | Light scattering within photographic film causing a soft glow around bright areas; simulated by the bloom stage. |
-| **Interpolator** | A linear blending circuit that crossfades between two input values based on a mix parameter. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Optical Printer** | A mechanical device for re-photographing film elements to create composites, dissolves, and effects. |
 | **Printer Light** | The illumination source in an optical printer; adjusting its color temperature and intensity is the original form of film color grading. |
 | **Step-Print** | A printing technique where frames are skipped during exposure to create speed changes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

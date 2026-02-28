@@ -4,7 +4,7 @@ sidebar_position: 208
 slug: /instruments/videomancer/punchcard
 title: "Punchcard"
 image: /img/instruments/videomancer/punchcard/punchcard_hero.png
-description: "Program guide for Punchcard, a Videomancer text program for the LZX video synthesizer."
+description: "The IBM punched card — 80 columns, 12 rows, one character per column — was the dominant data storage medium from the 1920s through the 1970s."
 ---
 
 import punchcard_before_after from '/img/instruments/videomancer/punchcard/punchcard_before_after.png';
@@ -292,10 +292,10 @@ These exercises explore the punch card grid from basic binary quantization throu
 | **Cell** | A rectangular grid element defined by the cell width and height parameters; each cell is independently classified as punched or unpunched. |
 | **Edge Inset** | The number of pixels of card stock border around each punched hole, creating the visible border between adjacent holes. |
 | **Hollerith** | Herman Hollerith, inventor of the punch card tabulating system used in the 1890 US Census; the format was later standardized by IBM. |
-| **Interpolator** | A pipelined hardware unit computing a + (b − a) × t for crossfading between two signals. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Intra-Cell Position** | The pixel's coordinates within its containing cell, computed via bit masking from the global pixel counters. |
 | **Luma Threshold** | The Y value above which a cell is classified as "punched"; sampled at the left edge of each cell column. |
 | **Power-of-Two** | Cell sizes restricted to 2^n (8, 16, 32, 64, 128) for efficient bit-mask computation in FPGA logic. |
 | **Punch** | A transparent opening in the card stock that reveals the source video underneath; determined by the luma threshold comparison. |
 | **Shift Amount** | The bit-shift exponent (3–7) used to derive cell size; pot value is mapped through five thresholds to select the exponent. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 186
 slug: /instruments/videomancer/ouroboros
 title: "Ouroboros"
 image: /img/instruments/videomancer/ouroboros/ouroboros_hero.png
-description: "Program guide for Ouroboros, a Videomancer render program for the LZX video synthesizer."
+description: "The ouroboros — the serpent that devours its own tail — is one of humanity's oldest symbols, appearing across Egyptian, Greek, Norse, and alchemical tra..."
 ---
 
 import ouroboros_animation from '/img/instruments/videomancer/ouroboros/ouroboros_animation.gif';
@@ -294,10 +294,10 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 | Term | Definition |
 |------|------------|
 | **ABI** | Application Binary Interface; the fixed register layout through which the Videomancer firmware communicates parameter values to FPGA programs. Limited to 8 registers (indices 0–7). |
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms. The accumulator wraps at its bit width, producing inherently cyclic output. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fractal** | A mathematical pattern exhibiting self-similarity at progressively smaller scales. In Ouroboros, the intended fractal tail repetition is inoperative due to the ABI boundary bug. |
 | **Hue wheel** | A circular color map divided into discrete segments. Ouroboros uses a 6-segment wheel (red, yellow, green, cyan, blue, magenta) with abrupt zone transitions. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for sparkle noise injection across the frame. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Ouroboros** | An ancient symbol depicting a serpent or dragon consuming its own tail, representing cyclical renewal, eternity, and self-reference. |
 | **Phase accumulator** | A register that increments by a fixed step each clock cycle and wraps at overflow, producing a sawtooth waveform whose frequency is proportional to the step size. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native signal format in Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

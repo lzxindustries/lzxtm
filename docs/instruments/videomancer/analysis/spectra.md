@@ -4,7 +4,7 @@ sidebar_position: 239
 slug: /instruments/videomancer/spectra
 title: "Spectra"
 image: /img/instruments/videomancer/spectra/spectra_hero.png
-description: "Program guide for Spectra, a Videomancer analysis program for the LZX video synthesizer."
+description: "Scientific instruments often visualize invisible phenomena by mapping measured values to color — thermal cameras paint heat as a spectrum from cool blue..."
 ---
 
 import spectra_before_after from '/img/instruments/videomancer/spectra/spectra_before_after.png';
@@ -280,14 +280,14 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 | Term | Definition |
 |------|------------|
 | **Band** | A discrete brightness zone produced by quantizing the luminance signal; each band maps to one palette color. |
-| **BT.601** | ITU-R Recommendation 601; the color matrix standard used for YUV conversions in standard-definition video. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Contour** | A line marking the boundary between two adjacent bands, rendered as black pixels at band transitions. |
 | **False Color** | A visualization technique that maps non-visual data values to arbitrary colors for analysis and display. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT** | Lookup Table; a fixed array of pre-computed values (here, palette YUV triplets) addressed by an index. |
 | **Palette** | An ordered set of colors used to visualize quantized data; Spectra offers Rainbow, Heat, Cool, and Earth. |
-| **Pipeline** | Sequential processing stages where each stage operates on every pixel every clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quantization** | Reducing a continuous range to discrete levels; here, mapping 1024 brightness values to 2–16 bands. |
 | **Spread** | Contrast enhancement applied before quantization, pushing values away from the midpoint to populate more bands. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 145
 slug: /instruments/videomancer/ledger
 title: "Ledger"
 image: /img/instruments/videomancer/ledger/ledger_hero.png
-description: "Program guide for Ledger, a Videomancer text program for the LZX video synthesizer."
+description: "Before spreadsheets, before screens, accountants lived on paper."
 ---
 
 import ledger_before_after from '/img/instruments/videomancer/ledger/ledger_before_after.png';
@@ -298,13 +298,13 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 | Term | Definition |
 |------|------------|
 | **Bit Masking** | Using bitwise AND to extract a subset of bits from a counter, implementing efficient modular arithmetic (position within row/column). |
-| **BRAM** | Block RAM; dedicated FPGA memory tiles. Ledger uses zero BRAMs because the pattern is generated from counters, not stored in memory. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Compositing** | Blending two image layers (paper pattern and video) together at a specified opacity. |
 | **Continuous-Form Paper** | Fan-fold paper with tractor-feed perforations used by line printers. Green-bar paper is the most recognized variant. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Power-of-Two** | Values like 8, 16, 32, 64 that can be computed by bit shifting, avoiding expensive division or modulo operations. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

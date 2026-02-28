@@ -4,7 +4,7 @@ sidebar_position: 177
 slug: /instruments/videomancer/necker
 title: "Necker"
 image: /img/instruments/videomancer/necker/necker_hero.png
-description: "Program guide for Necker, a Videomancer illusion program for the LZX video synthesizer."
+description: "The Necker cube is one of the most iconic figures in visual perception — a wireframe drawing of a cube that appears to spontaneously flip between two va..."
 ---
 
 import necker_before_after from '/img/instruments/videomancer/necker/necker_before_after.png';
@@ -285,10 +285,10 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 | **Axonometric Projection** | A method of representing 3D objects in 2D where parallel lines remain parallel, as opposed to perspective projection where they converge. |
 | **Bistable Perception** | A visual phenomenon where a single image supports two mutually exclusive interpretations that alternate spontaneously. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
-| **Interpolator** | A linear crossfade module blending two 10-bit values based on a mix parameter. |
-| **Luminance** | The brightness component (Y) of a YUV signal. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Necker Cube** | A wireframe cube drawing first described by Louis Albert Necker in 1832, exhibiting spontaneous depth reversal. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Wireframe** | A 3D object representation showing only edge lines, with no filled surfaces. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

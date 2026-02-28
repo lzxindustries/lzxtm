@@ -4,7 +4,7 @@ sidebar_position: 262
 slug: /instruments/videomancer/ticker
 title: "Ticker"
 image: /img/instruments/videomancer/ticker/ticker_hero.png
-description: "Program guide for Ticker, a Videomancer text program for the LZX video synthesizer."
+description: "Before digital screens, breaking news arrived on paper — a narrow ribbon of stock quotes and wire reports printed character by character on ticker tape ..."
 ---
 
 import ticker_before_after from '/img/instruments/videomancer/ticker/ticker_before_after.png';
@@ -285,14 +285,14 @@ These exercises progress from a simple static band to a fully animated scrolling
 | Term | Definition |
 |------|------------|
 | **Band** | The horizontal strip on screen defined by band_top and band_bottom scanline positions, within which quantized content is rendered. |
-| **BT.601** | ITU-R Recommendation BT.601, defining standard-definition color encoding with separate luminance (Y) and chrominance (U, V) components. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented at a fixed rate. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Dimming** | Right-shifting (dividing by powers of 2) the luma value of pixels outside the band to darken them. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Ticker processing pipeline. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds into the next on each clock cycle. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Posterization** | Reducing the number of distinct brightness levels, collapsing smooth gradients into flat steps. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by truncating lower-order bits. |
 | **Sample-and-Hold** | A decimation technique where a single sample value is held constant across multiple pixel positions, creating uniform blocks. |
 | **Scroll Offset** | A per-frame horizontal pixel counter that shifts the composite position of the band content to create scrolling animation. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

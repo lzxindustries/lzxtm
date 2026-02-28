@@ -4,7 +4,7 @@ sidebar_position: 197
 slug: /instruments/videomancer/phantasma
 title: "Phantasma"
 image: /img/instruments/videomancer/phantasma/phantasma_hero.png
-description: "Program guide for Phantasma, a Videomancer mirror program for the LZX video synthesizer."
+description: "Phantasma is a pattern generator disguised as a video processor."
 ---
 
 import phantasma_before_after from '/img/instruments/videomancer/phantasma/phantasma_before_after.png';
@@ -217,7 +217,7 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 <img src={phantasma_exercise1_result} alt="Basic Stripes result"/>
 *Basic Stripes — simulated result across source images.*
-**Source**: Any colour video footage — a face, landscape, or colourful test pattern.
+**Source**: Any color video footage — a face, landscape, or colorful test pattern.
 
 **Objective**: Understand the DDS stripe generator and waveshaping controls.
 
@@ -254,13 +254,13 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 <img src={phantasma_exercise3_result} alt="Pattern Overlay result"/>
 *Pattern Overlay — simulated result across source images.*
-**Source**: Colourful video footage — performance footage, animation, or nature scenes with saturated colours.
+**Source**: Colorful video footage — performance footage, animation, or nature scenes with saturated colors.
 
 **Objective**: Blend the generated pattern with the source video at various depths, exploring the desaturation behaviour.
 
 1. **Set a pattern**: Width ~40%, Warp ~40%, Flip on, Mirror on.
 2. **Reduce depth**: Lower Luma Depth to ~50%. The stripes become a translucent overlay on the source video.
-3. **Watch colour**: As Luma Depth increases, the source desaturates because the UV mix crossfades toward center (512). At full depth, the output is monochrome.
+3. **Watch color**: As Luma Depth increases, the source desaturates because the UV mix crossfades toward center (512). At full depth, the output is monochrome.
 4. **Invert**: Toggle Luma Invert. The stripe polarity flips, changing which areas are dark vs bright.
 5. **Content modulation**: Set Luma to Width ~70% at ~40% depth. The stripes wrap around the video content while remaining semi-transparent.
 6. **Edge highlight**: Use low Width, low Warp, high Luma to Width. The pattern emphasises tonal edges in the video.
@@ -286,14 +286,14 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating precise waveforms by accumulating a phase value each clock tick and using it to produce an amplitude. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Frequency Doubler** | A waveshaping module that folds a ramp (sawtooth) waveform into a triangle by reflecting values above the midpoint, effectively doubling the apparent frequency. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator. Not used in Phantasma, but referenced for comparison with other programs. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Luma Depth** | The crossfade parameter controlling how much of the generated pattern replaces the input video. |
 | **Phase Accumulator** | A counter that adds a frequency word each tick, producing a repeating ramp whose rate is proportional to the word value. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage: `(input − 512) × contrast / 512 + brightness`. Used here for luma-to-parameter modulation. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Ramp** | A sawtooth waveform that rises linearly from 0 to maximum, then jumps back to 0. |
 | **Triangle** | A waveform that rises linearly from 0 to maximum, then falls linearly back to 0, producing symmetric peaks. |
 | **Unpacked Toggle ABI** | A non-standard register layout where each toggle switch uses its own full register, rather than sharing bit positions within a single packed register. |
 | **Warp** | Vertical displacement applied to the horizontal stripe pattern, causing straight lines to undulate. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

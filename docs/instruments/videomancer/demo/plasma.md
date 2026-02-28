@@ -4,7 +4,7 @@ sidebar_position: 203
 slug: /instruments/videomancer/plasma
 title: "Plasma"
 image: /img/instruments/videomancer/plasma/plasma_hero.png
-description: "Program guide for Plasma, a Videomancer demo program for the LZX video synthesizer."
+description: "Somewhere in the early 1990s, a coder with a 386 and a VGA framebuffer discovered that if you sum a handful of sine waves across the screen, each with a..."
 ---
 
 import plasma_animation from '/img/instruments/videomancer/plasma/plasma_animation.gif';
@@ -23,7 +23,7 @@ import plasma_hero from '/img/instruments/videomancer/plasma/plasma_hero.png';
 
 
 <img src={plasma_hero} alt="Plasma hero image"/>
-*A flowing psychedelic colour field — four sine terms collide to produce rippling plasma bands streaming through a Fire palette, the radial oscillator pulling concentrically toward a drifting center point.*
+*A flowing psychedelic color field — four sine terms collide to produce rippling plasma bands streaming through a Fire palette, the radial oscillator pulling concentrically toward a drifting center point.*
 <img src={plasma_animation} alt="Plasma animated output"/>
 *Plasma output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
@@ -31,11 +31,11 @@ import plasma_hero from '/img/instruments/videomancer/plasma/plasma_hero.png';
 
 ## Overview
 
-Somewhere in the early 1990s, a coder with a 386 and a VGA framebuffer discovered that if you sum a handful of sine waves across the screen, each with a different spatial orientation, and map the result through a colour table, the screen fills with the iconic flowing, swirling colour fields that would become the most recognized effect in the demoscene. Plasma recreates that effect in dedicated FPGA hardware, evaluating four sine terms per pixel at 74.25 MHz with zero BRAM and approximately 600 logic cells.
+Somewhere in the early 1990s, a coder with a 386 and a VGA framebuffer discovered that if you sum a handful of sine waves across the screen, each with a different spatial orientation, and map the result through a color table, the screen fills with the iconic flowing, swirling color fields that would become the most recognized effect in the demoscene. Plasma recreates that effect in dedicated FPGA hardware, evaluating four sine terms per pixel at 74.25 MHz with zero BRAM and approximately 600 logic cells.
 
-Four oscillators contribute to each pixel's value: a horizontal sine, a vertical sine, a diagonal sine (the sum of x and y coordinates), and a radial term computed from the Chebyshev distance to a slowly drifting center point. The four sine outputs are summed into a 12-bit signed accumulator, then mapped to one of 32 palette entries within the selected colour table. Eight palettes — Classic rainbow, Fire, Ocean, Acid, Neon, Mono, Sunset, and Ice — are stored as 32-entry RGB 3-3-3 colour ramps converted to YUV at synthesis time. Phase accumulators increment on each frame tick, producing the characteristic streaming animation, while a separate palette cycling offset shifts the colour index continuously to create the illusion of flowing colour independent of the spatial pattern.
+Four oscillators contribute to each pixel's value: a horizontal sine, a vertical sine, a diagonal sine (the sum of x and y coordinates), and a radial term computed from the Chebyshev distance to a slowly drifting center point. The four sine outputs are summed into a 12-bit signed accumulator, then mapped to one of 32 palette entries within the selected color table. Eight palettes — Classic rainbow, Fire, Ocean, Acid, Neon, Mono, Sunset, and Ice — are stored as 32-entry RGB 3-3-3 color ramps converted to YUV at synthesis time. Phase accumulators increment on each frame tick, producing the characteristic streaming animation, while a separate palette cycling offset shifts the color index continuously to create the illusion of flowing color independent of the spatial pattern.
 
-At conservative settings, Plasma produces gently undulating colour fields suitable for background layering. At high frequency and speed with the radial component engaged, the screen fills with complex interference fringes that morph rapidly through the colour space. The name *Plasma* is the universal demoscene label for this class of sine-sum colour field generators.
+At conservative settings, Plasma produces gently undulating color fields suitable for background layering. At high frequency and speed with the radial component engaged, the screen fills with complex interference fringes that morph rapidly through the color space. The name *Plasma* is the universal demoscene label for this class of sine-sum color field generators.
 
 ---
 
@@ -43,7 +43,7 @@ At conservative settings, Plasma produces gently undulating colour fields suitab
 
 ### The Demoscene Plasma Effect
 
-The plasma effect emerged from the European home computer demoscene in the late 1980s and early 1990s. On machines like the Amiga, Atari ST, and early PCs running DOS, coders discovered that a few trigonometric evaluations per pixel — trivially cheap on modern hardware but requiring careful optimization on 16-bit processors — could produce organic, liquid colour fields that appeared far more complex than their mathematical description. Groups like Future Crew, Triton, and Sanity featured plasma routines in their demos, and the effect became a standard "hello world" for graphics programming. Plasma's appeal lies in the gap between its simplicity (addition of sine waves) and its visual complexity (an apparently infinite variety of flowing chromatic patterns).
+The plasma effect emerged from the European home computer demoscene in the late 1980s and early 1990s. On machines like the Amiga, Atari ST, and early PCs running DOS, coders discovered that a few trigonometric evaluations per pixel — trivially cheap on modern hardware but requiring careful optimization on 16-bit processors — could produce organic, liquid color fields that appeared far more complex than their mathematical description. Groups like Future Crew, Triton, and Sanity featured plasma routines in their demos, and the effect became a standard "hello world" for graphics programming. Plasma's appeal lies in the gap between its simplicity (addition of sine waves) and its visual complexity (an apparently infinite variety of flowing chromatic patterns).
 
 ### Sine-Sum Interference
 
@@ -55,11 +55,11 @@ A full sine table for 10-bit phase resolution would require 1024 entries. Plasma
 
 ### DDS Phase Accumulators
 
-Animation is driven by four 16-bit phase accumulators, each incremented by a rate derived from the Speed parameter plus a fixed per-term offset (+0, +3, +7, +11). The accumulated phase is truncated to 10 bits before being added to the per-pixel spatial argument. Because each accumulator has a slightly different rate, the four sine terms drift in and out of alignment over time, producing the characteristic evolving interference patterns. A fifth accumulator drives the palette cycling offset, allowing the colour mapping to flow independently of the spatial pattern.
+Animation is driven by four 16-bit phase accumulators, each incremented by a rate derived from the Speed parameter plus a fixed per-term offset (+0, +3, +7, +11). The accumulated phase is truncated to 10 bits before being added to the per-pixel spatial argument. Because each accumulator has a slightly different rate, the four sine terms drift in and out of alignment over time, producing the characteristic evolving interference patterns. A fifth accumulator drives the palette cycling offset, allowing the color mapping to flow independently of the spatial pattern.
 
-### Palette Cycling and Colour Mapping
+### Palette Cycling and Color Mapping
 
-The plasma sum (a signed 12-bit value) is mapped to a 5-bit index (0–31) by shifting and clamping. This index then passes through the palette cycling offset — a continuously incrementing 5-bit value — producing a rotating window into the 32-entry palette. Because the palette entries wrap cyclically, the colours appear to flow through the spatial pattern like a river of light. The eight palettes provide dramatically different characters: Classic produces a full rainbow cycle, Fire ramps from black through red-orange to white, Ocean oscillates between deep blue and cyan, and Mono reduces the effect to a pure grayscale interference pattern.
+The plasma sum (a signed 12-bit value) is mapped to a 5-bit index (0–31) by shifting and clamping. This index then passes through the palette cycling offset — a continuously incrementing 5-bit value — producing a rotating window into the 32-entry palette. Because the palette entries wrap cyclically, the colors appear to flow through the spatial pattern like a river of light. The eight palettes provide dramatically different characters: Classic produces a full rainbow cycle, Fire ramps from black through red-orange to white, Ocean oscillates between deep blue and cyan, and Mono reduces the effect to a pure grayscale interference pattern.
 
 
 ---
@@ -204,7 +204,7 @@ Introduces asymmetry between the horizontal and vertical sine frequencies. At th
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the rate of palette cycling — the continuous rotation of the colour lookup index that makes the plasma colours appear to flow through the spatial pattern. A separate 16-bit accumulator advances by this parameter's upper 8 bits on each frame, and the accumulated offset is added to the spatial palette index before lookup. At 0%, colours are fixed and only the spatial pattern moves. At 100%, colours stream rapidly through the palette, creating a second layer of animation independent of the pattern shape. The palette offset wraps modulo 32, so all palette entries are visited cyclically. Moderate values around 35% produce a gentle colour drift that complements the spatial motion.
+Controls the rate of palette cycling — the continuous rotation of the color lookup index that makes the plasma colors appear to flow through the spatial pattern. A separate 16-bit accumulator advances by this parameter's upper 8 bits on each frame, and the accumulated offset is added to the spatial palette index before lookup. At 0%, colors are fixed and only the spatial pattern moves. At 100%, colors stream rapidly through the palette, creating a second layer of animation independent of the pattern shape. The palette offset wraps modulo 32, so all palette entries are visited cyclically. Moderate values around 35% produce a gentle color drift that complements the spatial motion.
 
 ---
 
@@ -215,7 +215,7 @@ Controls the rate of palette cycling — the continuous rotation of the colour l
 | Default | 75.1% |
 | Suffix | % |
 
-Scales the final output luminance by multiplying the composed Y channel by this register value. At 0%, the output is black regardless of the palette colours. At 100%, the palette colours appear at full intensity. The multiplication is a 10×10-bit product with the upper 10 bits taken as the result, providing smooth analogue-style dimming. This control affects only luminance — chroma (U, V) passes through unscaled, so reducing brightness desaturates the visual appearance slightly as the colour signal remains relative to a dimming luma carrier. Default is 75%, leaving headroom for video modulation.
+Scales the final output luminance by multiplying the composed Y channel by this register value. At 0%, the output is black regardless of the palette colors. At 100%, the palette colors appear at full intensity. The multiplication is a 10×10-bit product with the upper 10 bits taken as the result, providing smooth analogue-style dimming. This control affects only luminance — chroma (U, V) passes through unscaled, so reducing brightness desaturates the visual appearance slightly as the color signal remains relative to a dimming luma carrier. Default is 75%, leaving headroom for video modulation.
 
 ---
 
@@ -255,13 +255,13 @@ Lo-Res (toggle 10) operates independently, quantizing pixel coordinates to 4×4 
 | Default | 100.0% |
 | Suffix | % |
 
-Crossfades between the delayed input video and the brightness-scaled plasma output. At 0% (fader down), the output is pure dry input — no plasma is visible. At 100% (fader up), the output is the fully composed plasma pattern. Intermediate positions blend the two, allowing the plasma to appear as a semi-transparent colour overlay. In Video Mod mode at 50% mix, the input video shows through with a ghosted plasma texture — useful for subtle chromatic effects.
+Crossfades between the delayed input video and the brightness-scaled plasma output. At 0% (fader down), the output is pure dry input — no plasma is visible. At 100% (fader up), the output is the fully composed plasma pattern. Intermediate positions blend the two, allowing the plasma to appear as a semi-transparent color overlay. In Video Mod mode at 50% mix, the input video shows through with a ghosted plasma texture — useful for subtle chromatic effects.
 
 ---
 
 ## Guided Exercises
 
-These exercises build from a static colour field through animated streaming to complex video modulation. Because Plasma is a generative synthesis program, each exercise produces output from scratch — allow a few seconds for the animation to settle before evaluating the visual result.
+These exercises build from a static color field through animated streaming to complex video modulation. Because Plasma is a generative synthesis program, each exercise produces output from scratch — allow a few seconds for the animation to settle before evaluating the visual result.
 
 ### Exercise 1: Static Interference Pattern
 
@@ -271,13 +271,13 @@ These exercises build from a static colour field through animated streaming to c
 
 1. **Freeze motion**: Set Speed to 0% and Pal Speed to 0%. The pattern should be completely static.
 2. **Default palette**: Set Palette toggle to the leftmost position (Classic). Leave Video Mod Off and Waveshape at Sine.
-3. **Observe base pattern**: With Frequency at ~40% and Distortion at ~50% (centre), note the smooth flowing colour gradients across the frame.
+3. **Observe base pattern**: With Frequency at ~40% and Distortion at ~50% (centre), note the smooth flowing color gradients across the frame.
 4. **Add radial**: Increase Radial to ~60%. Concentric rings appear, centred on the drifting center point (which is frozen since Speed is 0).
 5. **Introduce distortion**: Move Distortion toward ~80%. The pattern stretches horizontally as the X frequency offset increases.
 6. **Sweep frequency**: Slowly turn Frequency from minimum to maximum. Watch how the interference pattern shifts and reconfigures through different symmetry states.
-7. **Full brightness**: Ensure Brightness is at ~75% for vivid colours.
+7. **Full brightness**: Ensure Brightness is at ~75% for vivid colors.
 
-**Key concepts**: Four sine terms produce the 2D interference pattern, Frequency shifts the H/V phase offsets, Distortion breaks X/Y symmetry, Radial adds concentric rings from drifting center, palette maps the sum to colour
+**Key concepts**: Four sine terms produce the 2D interference pattern, Frequency shifts the H/V phase offsets, Distortion breaks X/Y symmetry, Radial adds concentric rings from drifting center, palette maps the sum to color
 
 ---
 
@@ -289,13 +289,13 @@ These exercises build from a static colour field through animated streaming to c
 
 1. **Select Fire palette**: Toggle Palette to position 2 (with Video Mod Off and Waveshape Sine, this selects "Fire").
 2. **Enable animation**: Set Speed to ~40%. The interference pattern begins flowing.
-3. **Add palette cycling**: Set Pal Speed to ~35%. Colours stream through the spatial pattern independently of its motion.
-4. **Engage radial**: Set Radial to ~50%. The pattern acquires concentric depth, with fire colours pooling at the center.
-5. **Increase speed**: Push Speed to ~70%. The pattern swirls rapidly, blending multiple colour bands into a continuous flow.
+3. **Add palette cycling**: Set Pal Speed to ~35%. Colors stream through the spatial pattern independently of its motion.
+4. **Engage radial**: Set Radial to ~50%. The pattern acquires concentric depth, with fire colors pooling at the center.
+5. **Increase speed**: Push Speed to ~70%. The pattern swirls rapidly, blending multiple color bands into a continuous flow.
 6. **Try square mode**: Flip Waveshape to Square. Hard-edged contours carve the flowing field into two-tone regions. Note: switching Waveshape also changes the palette to a Neon-family variant.
 7. **Reduce brightness**: Pull Brightness down to ~50%. The fire dims to glowing embers.
 
-**Key concepts**: Speed controls phase accumulator rate, Pal Speed adds independent colour flow, Fire palette ramps black-red-yellow-white, Waveshape quantizes smooth gradients to hard edges, Waveshape toggle also changes the active palette
+**Key concepts**: Speed controls phase accumulator rate, Pal Speed adds independent color flow, Fire palette ramps black-red-yellow-white, Waveshape quantizes smooth gradients to hard edges, Waveshape toggle also changes the active palette
 
 ---
 
@@ -310,7 +310,7 @@ These exercises build from a static colour field through animated streaming to c
 3. **Moderate speed**: Set Speed to ~30%. A gentle animation flows through the chunky blocks.
 4. **Set mix**: Push Mix fader to ~80%. The modulated video dominates with the plasma texture stamped on it.
 5. **Adjust brightness**: Set Brightness to ~90%. Maximum brightness ensures the modulation is clearly visible.
-6. **Slow palette cycling**: Set Pal Speed to ~20%. Colours drift slowly through the chunky grid.
+6. **Slow palette cycling**: Set Pal Speed to ~20%. Colors drift slowly through the chunky grid.
 7. **Sweep Radial**: Move Radial from 0% to 100%. Watch how the concentric component interacts with the pixelated grid — at high radial, rings are visible as stair-stepped concentric arcs.
 
 **Key concepts**: Video Mod multiplies plasma luma by input video Y, Lo-Res quantizes to 4×4 blocks, combined modes interact with palette selection, Mix fader controls modulation intensity, radial component visible as stair-stepped rings in low-res mode
@@ -321,13 +321,13 @@ These exercises build from a static colour field through animated streaming to c
 ## Tips
 
 - **Start with Speed 0%**: Freezing the pattern helps understand the spatial interference structure before adding temporal animation.
-- **Use Pal Speed for colour flow**: Palette cycling adds a second layer of animation independent of the spatial pattern motion — it makes the plasma look more liquid.
+- **Use Pal Speed for color flow**: Palette cycling adds a second layer of animation independent of the spatial pattern motion — it makes the plasma look more liquid.
 - **Radial for depth**: The radial component adds a 3D quality. Keep it around 40–60% for subtle curvature without overwhelming the planar terms.
 - **Distortion for directionality**: Push Distortion away from centre to create banded patterns oriented along one axis — useful for horizontal or vertical streaming effects.
 - **Lo-Res for retro aesthetic**: Low-resolution mode with Fire or Neon palette faithfully recreates the chunky 320×200 plasma from DOS demos.
 - **Square mode for contours**: Square waveshape turns the plasma into a topographic map with hard boundaries — effective for creating high-contrast key signals.
 - **Mix for overlay**: At 50% Mix with a video source, the plasma acts as a soft chromatic overlay. Combine with Video Mod for multiplicative texturing.
-- **Watch palette interactions**: Toggling Video Mod or Waveshape also changes the palette. Explore all 8 combinations to find the colour scheme that fits your composition.
+- **Watch palette interactions**: Toggling Video Mod or Waveshape also changes the palette. Explore all 8 combinations to find the color scheme that fits your composition.
 
 ---
 
@@ -339,7 +339,7 @@ These exercises build from a static colour field through animated streaming to c
 | **DDS (Direct Digital Synthesis)** | A technique for generating periodic waveforms using a phase accumulator and a lookup table. Each clock cycle, the accumulator advances by a fixed increment (the tuning word), and the accumulated phase indexes the waveform table. |
 | **Demoscene** | A computer art subculture focused on producing real-time audio-visual demonstrations that push hardware capabilities, originating on 1980s home computers. |
 | **Interference pattern** | The spatial pattern produced when two or more periodic signals are summed, exhibiting constructive reinforcement at some locations and destructive cancellation at others. |
-| **Palette cycling** | A technique from indexed-colour display systems where the colour lookup table entries are rotated over time, creating the illusion of motion or colour flow without changing pixel values. |
+| **Palette cycling** | A technique from indexed-color display systems where the color lookup table entries are rotated over time, creating the illusion of motion or color flow without changing pixel values. |
 | **Quarter-wave LUT** | A lookup table storing only the first quadrant ($0$ to $\pi/2$) of a sine wave. The full waveform is reconstructed via index mirroring and output negation based on the quadrant of the input phase. |
 | **TDM (Time-Division Multiplexing)** | A technique where a single hardware resource is shared among multiple operations by processing them sequentially across different clock cycles. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

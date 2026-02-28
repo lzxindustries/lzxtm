@@ -4,7 +4,7 @@ sidebar_position: 143
 slug: /instruments/videomancer/lattice
 title: "Lattice"
 image: /img/instruments/videomancer/lattice/lattice_hero.png
-description: "Program guide for Lattice, a Videomancer grid program for the LZX video synthesizer."
+description: "Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators."
 ---
 
 import lattice_animation from '/img/instruments/videomancer/lattice/lattice_animation.gif';
@@ -289,7 +289,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed step rate, producing precise frequency control via integer arithmetic. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Duty cycle** | The ratio of foreground (active) to background (inactive) time within one waveform period, controlled by the line width threshold comparator. |
 | **Frequency doubler** | A circuit that folds a sawtooth ramp into a triangle wave by reflecting the upper half around the midpoint, effectively doubling the spatial frequency. |
 | **Moiré** | An interference pattern produced when two periodic structures of slightly different frequency overlap, creating large-scale beat fringes at the difference frequency. |
@@ -297,4 +297,4 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 | **Sawtooth** | A waveform that ramps linearly from zero to maximum and then wraps sharply back to zero, produced by the raw phase accumulator output. |
 | **Triangle wave** | A waveform that ramps linearly from zero to maximum and then ramps linearly back to zero, produced by folding a sawtooth through the frequency doubler. |
 | **XOR** | Exclusive OR; a boolean operation that is true when exactly one of two inputs is true, producing an alternating checkerboard pattern when applied to two periodic binary masks. |
-| **YUV** | A color model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

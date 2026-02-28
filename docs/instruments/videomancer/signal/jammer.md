@@ -4,7 +4,7 @@ sidebar_position: 133
 slug: /instruments/videomancer/jammer
 title: "Jammer"
 image: /img/instruments/videomancer/jammer/jammer_hero.png
-description: "Program guide for Jammer, a Videomancer signal program for the LZX video synthesizer."
+description: "Every television signal travels through the air as radio waves, and the air is full of other radio waves."
 ---
 
 import jammer_before_after from '/img/instruments/videomancer/jammer/jammer_before_after.png';
@@ -292,14 +292,14 @@ These exercises progress from a single interference artifact to the full signal-
 |------|------------|
 | **AGC** | Automatic Gain Control; a receiver circuit that adjusts amplification to maintain constant signal level. Strong interference can overload AGC, causing brightness modulation. |
 | **Beat Frequency** | The difference frequency produced when two signals close in frequency are mixed together. Appears as a visible pattern on screen. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 1024×10-bit line buffers that produce ghost delay. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator and lookup, used here for herringbone pattern generation. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Ghost** | A displaced, attenuated copy of the television image caused by multipath signal reception (reflections off buildings, terrain, or aircraft). |
 | **Herringbone** | A diagonal striped interference pattern caused by near-frequency beat interaction between desired and interfering RF carriers. |
 | **Impulse Noise** | Short, intense bursts of radio interference from electrical switching, motors, or ignition systems, appearing as random bright specks. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to produce impulse noise and sync jitter patterns. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Moiré** | Circular concentric interference rings produced by radial distance modulation, alternative to diagonal herringbone geometry. |
 | **Multipath** | Signal reception via multiple propagation paths (direct + reflected), causing ghost images due to differential propagation delay. |
-| **Pipeline** | A series of sequential processing stages; Jammer uses 8 clock cycles (4 processing + 4 interpolator). |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sync Separator** | A receiver circuit that extracts horizontal and vertical sync pulses from the composite signal. Interference can corrupt separation and cause horizontal jitter. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 99
 slug: /instruments/videomancer/flaregun
 title: "Flaregun"
 image: /img/instruments/videomancer/flaregun/flaregun_hero.png
-description: "Program guide for Flaregun, a Videomancer newtek program for the LZX video synthesizer."
+description: "Bright light entering a camera lens scatters off internal glass surfaces, creating glowing halos, horizontal streaks, and star-shaped diffraction patterns."
 ---
 
 import flaregun_hero from '/img/instruments/videomancer/flaregun/flaregun_hero.png';
@@ -292,16 +292,16 @@ These exercises progress from a simple centered bloom to complex multi-component
 |------|------------|
 | **Additive Composite** | A blending method where the flare and input pixel values are summed, naturally producing blown-out highlights. Brighter areas saturate toward white. |
 | **Anamorphic** | Relating to cylindrical lens optics that compress the image horizontally, producing characteristic horizontal streaks through bright light sources. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the 64-entry Gaussian falloff lookup table. |
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used for the YUV pipeline, defining the matrix coefficients for luminance and chrominance separation. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Diffraction Spike** | A streak of light extending radially from a bright point, caused by diffraction around straight-edged aperture blades in a camera lens. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Gaussian Falloff** | An intensity profile that follows the bell curve $e^{-(r/\sigma)^2}$, producing a smooth, optically natural radial brightness gradient. |
 | **Lens Flare** | Optical artifacts caused by non-image-forming light scattering within a compound lens system, manifesting as blooms, streaks, and ghost reflections. |
 | **Octagon Approximation** | A computationally efficient distance estimate: $d \approx \max(|dx|,|dy|) + \frac{3}{8}\min(|dx|,|dy|)$, avoiding square root operations. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Saturating Arithmetic** | Addition that clamps at the maximum representable value (1023 for 10-bit) instead of wrapping around, preventing overflow glitches. |
 | **Starburst** | A radial pattern of light rays emanating from a bright point source, simulating aperture-blade diffraction. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

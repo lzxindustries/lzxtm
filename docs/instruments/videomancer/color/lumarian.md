@@ -4,7 +4,7 @@ sidebar_position: 3
 slug: /instruments/videomancer/lumarian
 title: "Lumarian"
 image: /img/instruments/videomancer/lumarian/lumarian_hero.png
-description: "Program guide for Lumarian, a Videomancer color processing program providing real-time control over luminance, chrominance, and edge detection."
+description: "Every video image is made of three things: how bright each pixel is (luminance), what color it is (chrominance), and where the edges between regions fall."
 ---
 
 import lumarian_hero from '/img/instruments/videomancer/lumarian/lumarian_hero.png';
@@ -275,7 +275,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 | **Gamma correction** | A nonlinear transfer curve that remaps input brightness to output brightness using an exponential or logarithmic function, redistributing tonal values without changing the endpoints. |
 | **Half-wave rectification** | Clipping one polarity of a bipolar signal to zero while passing the other, producing single-sided edge outlines. |
 | **High-pass filter** | A filter that attenuates low-frequency content and passes high-frequency detail; extracts spatial edges from the luminance channel. |
-| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV encoding. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Luminance key** | A compositing technique that uses a brightness threshold to separate foreground from background; pixels below the threshold are replaced with black. |
 | **Proc amp (Processing Amplifier)** | Broadcast equipment that standardizes video signals by adjusting contrast (gain) and brightness (offset); Lumarian's tonal controls implement a digital proc amp. |
 | **Transfer curve** | A graph mapping input values to output values; gamma correction bends the linear transfer curve into an exponential or logarithmic shape. |

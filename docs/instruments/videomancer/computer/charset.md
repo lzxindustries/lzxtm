@@ -4,7 +4,7 @@ sidebar_position: 40
 slug: /instruments/videomancer/charset
 title: "Charset"
 image: /img/instruments/videomancer/charset/charset_hero.png
-description: "Program guide for Charset, a Videomancer computer program for the LZX video synthesizer."
+description: "Every screen you have ever read — every terminal, every text editor, every status display — renders characters on a fixed grid."
 ---
 
 import charset_hero from '/img/instruments/videomancer/charset/charset_hero.png';
@@ -285,18 +285,18 @@ These exercises explore Charset's character density rendering from basic grid vi
 | Term | Definition |
 |------|------------|
 | **ASCII Art** | A graphic design technique using printable characters from the ASCII character set, arranged on a monospaced text grid to approximate images through varying character density. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Charset uses zero BRAMs — all patterns are generated combinatorially. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cell** | A fixed-size rectangular region of pixels (8×8 by default) within the character grid. Each cell receives a single density classification and renders the corresponding fill pattern. |
 | **Character Generator** | A hardware subsystem that converts character codes to pixel bitmaps, historically implemented as a ROM chip (e.g., Motorola MC6847, Signetics 2513). |
 | **Chroma** | The color difference components (U and V) of a YUV video signal, representing hue and saturation. |
 | **Density** | The proportion of lit pixels within a cell pattern. Higher density means more filled area and a brighter apparent cell when viewed from a distance. |
 | **Density Ramp** | A sequence of fill patterns with increasing visual weight, used to represent continuous brightness values as binary on/off spatial patterns. |
 | **Dot Matrix** | A display or printing technology that forms characters and images from a rectangular grid of individual dots, with visible spacing between elements. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the video processing pipeline in real time. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Halftone** | A reprographic technique simulating continuous tones through varying dot sizes or spacing; the printing-press equivalent of density-based character rendering. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages, each producing one output per clock cycle with fixed total latency. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sample and Hold** | A technique that captures an input value at a specific moment and maintains that value at the output until the next sampling event. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

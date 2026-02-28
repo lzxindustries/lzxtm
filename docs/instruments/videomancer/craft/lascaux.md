@@ -4,7 +4,7 @@ sidebar_position: 142
 slug: /instruments/videomancer/lascaux
 title: "Lascaux"
 image: /img/instruments/videomancer/lascaux/lascaux_hero.png
-description: "Program guide for Lascaux, a Videomancer craft program for the LZX video synthesizer."
+description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough ston..."
 ---
 
 import lascaux_before_after from '/img/instruments/videomancer/lascaux/lascaux_before_after.png';
@@ -296,15 +296,15 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric, used here for the one-scanline vertical edge detection buffer. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Contour extraction** | Detection of edges in an image by computing gradient magnitudes between adjacent pixels, used to simulate charcoal outlines. |
-| **DDS** | Direct Digital Synthesis; a technique using phase accumulators to generate periodic waveforms, used here to animate the torch position along a Lissajous path. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Goethite** | An iron oxyhydroxide mineral (FeOOH) that produces yellow-ochre pigment, one of the primary colorants used at Lascaux. |
 | **Haematite** | An iron oxide mineral (Fe₂O₃) that produces red-ochre pigment, widely used in Paleolithic cave art. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for both stone surface grain and torch flicker. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Lissajous figure** | A parametric curve traced when two perpendicular sinusoidal oscillations are combined, used to describe the torch drift path. |
 | **Manhattan distance** | The sum of absolute differences along each axis, used as a computationally cheap alternative to Euclidean distance for palette matching and torch falloff. |
 | **Palette quantization** | Reducing a continuous-color image to a limited set of discrete colors by mapping each pixel to the nearest palette entry. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage for video signals. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

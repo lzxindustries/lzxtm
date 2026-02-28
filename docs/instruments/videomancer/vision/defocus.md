@@ -4,7 +4,7 @@ sidebar_position: 66
 slug: /instruments/videomancer/defocus
 title: "Defocus"
 image: /img/instruments/videomancer/defocus/defocus_hero.png
-description: "Program guide for Defocus, a Videomancer vision program for the LZX video synthesizer."
+description: "Every camera lens has a focal plane — a thin slice of space where objects are rendered sharp."
 ---
 
 import defocus_hero from '/img/instruments/videomancer/defocus/defocus_hero.png';
@@ -284,17 +284,17 @@ These three exercises progress from basic soft focus through vertical blur and g
 |------|------------|
 | **Bokeh** | The aesthetic quality of the blur produced by a lens in out-of-focus areas, often characterized by the shape of highlights. |
 | **Box Filter** | A spatial averaging kernel where every pixel within the window contributes equally; also called a moving-average filter. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA used for line buffer storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cascade** | Applying the same filter operation multiple times in series to increase its effective width or order. |
 | **Circle of Confusion** | The disc-shaped blur pattern produced by a single point of light when a lens is defocused. |
 | **Glow** | An additive brightness effect applied to pixels above a luminance threshold, simulating optical bloom. |
-| **Interpolator** | A crossfade circuit that blends two signals by a fractional amount, used here for wet/dry mixing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LFO** | Low-Frequency Oscillator; a periodic signal used for animation or modulation, here a triangle wave driving blur amount. |
 | **Line Buffer** | A scanline-length memory that stores pixel data from a previous line for vertical processing. |
 | **Rack Focus** | A cinematographic technique of smoothly shifting the focal plane during a shot to redirect viewer attention. |
 | **Running Sum** | An accumulator that adds entering pixels and subtracts exiting pixels to maintain a sliding-window total. |
 | **Shift Register** | A chain of flip-flops that delays a signal by a fixed number of clock cycles; here used as a 64-deep pixel delay. |
 | **Triangle Filter** | A spatial kernel with linearly decaying weights; equivalent to two successive box filter passes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

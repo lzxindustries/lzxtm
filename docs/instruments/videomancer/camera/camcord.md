@@ -4,7 +4,7 @@ sidebar_position: 32
 slug: /instruments/videomancer/camcord
 title: "Camcord"
 image: /img/instruments/videomancer/camcord/camcord_hero.png
-description: "Program guide for Camcord, a Videomancer camera program for the LZX video synthesizer."
+description: "Between roughly 1987 and 1994, consumer camcorders from Sony, Panasonic, and JVC shipped with built-in digital effects processors — tiny DSP chips that ..."
 ---
 
 import camcord_hero from '/img/instruments/videomancer/camcord/camcord_hero.png';
@@ -279,7 +279,7 @@ These exercises progress through the five effects in chain order, starting with 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for frame and field storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **CCD** | Charge-Coupled Device; an image sensor technology used in early consumer camcorders to convert light into electronic signals. |
 | **DSP** | Digital Signal Processor; a specialized chip or processing block optimized for real-time mathematical operations on signal data. |
 | **Field** | One half of an interlaced video frame, containing either the odd or even scan lines; NTSC fields occur at 59.94 Hz. |
@@ -290,6 +290,6 @@ These exercises progress through the five effects in chain order, starting with 
 | **NTSC** | National Television System Committee; the analog broadcast standard used in North America, operating at 525 lines and 59.94 Hz. |
 | **Sample-and-hold** | A technique that captures a pixel value and holds it constant across a block of pixels, producing mosaic-style pixelation. |
 | **SRAM** | Static Random-Access Memory; fast volatile memory used in camcorder DSPs for field storage during real-time effects processing. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

@@ -4,7 +4,7 @@ sidebar_position: 257
 slug: /instruments/videomancer/telex
 title: "Telex"
 image: /img/instruments/videomancer/telex/telex_hero.png
-description: "Program guide for Telex, a Videomancer text program for the LZX video synthesizer."
+description: "Before screens, before pixels, there was the teleprinter — a machine that converted electrical signals into typed characters on a continuous roll of paper."
 ---
 
 import telex_before_after from '/img/instruments/videomancer/telex/telex_before_after.png';
@@ -90,11 +90,11 @@ Input Video (YUV 4:4:4)
 │   ├─ Extract column bit (bit 4 = column 0 leftmost)
 │   └─ pixel_on = column_bit AND in_glyph AND revealed
 │
-├── Stage 4: Colour Composite ─────────────────────────────────
-│   ├─ pixel_on=1 → ink colour (Ink Dens + Ink Hue)
-│   └─ pixel_on=0 → paper colour (from Paper mode + Paper Hue)
+├── Stage 4: Color Composite ─────────────────────────────────
+│   ├─ pixel_on=1 → ink color (Ink Dens + Ink Hue)
+│   └─ pixel_on=0 → paper color (from Paper mode + Paper Hue)
 │
-├── Paper/Ink Colour Derivation ────────────────────────────────
+├── Paper/Ink Color Derivation ────────────────────────────────
 │   ├─ Paper Y/U/V from paper_mode toggle (White/Yellow/Green/Blue)
 │   ├─ Paper U tinted by Paper Hue parameter
 │   ├─ Ink Y from Ink Dens parameter
@@ -113,7 +113,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-The reveal cursor and the glyph rendering operate independently. The glyph index is computed for every cell on every frame (based on current source luminance), but the colour composite stage only draws ink for cells where the reveal cursor has passed. This means the character content updates live even as the reveal animation progresses — if the source video changes, already-revealed characters update to reflect the new content. The contrast parameter affects glyph selection by scaling the source luma before quantization: higher contrast spreads values across more of the sixteen glyph levels, while lower contrast compresses them toward the middle densities.
+The reveal cursor and the glyph rendering operate independently. The glyph index is computed for every cell on every frame (based on current source luminance), but the color composite stage only draws ink for cells where the reveal cursor has passed. This means the character content updates live even as the reveal animation progresses — if the source video changes, already-revealed characters update to reflect the new content. The contrast parameter affects glyph selection by scaling the source luma before quantization: higher contrast spreads values across more of the sixteen glyph levels, while lower contrast compresses them toward the middle densities.
 
 ---
 
@@ -163,7 +163,7 @@ Sets the ink darkness — the luminance of glyph pixels. At 100%, ink is full wh
 | Default | 0° |
 | Suffix | ° |
 
-Applies a chroma tint to the paper background. The 10-bit register is mapped to U/V offsets from the paper's base color. This allows fine-tuning of paper hue beyond the four discrete modes — adding warmth to white paper, shifting the green screen toward cyan, or tinting the blue terminal toward purple. The tinting is additive to the paper mode's base colour.
+Applies a chroma tint to the paper background. The 10-bit register is mapped to U/V offsets from the paper's base color. This allows fine-tuning of paper hue beyond the four discrete modes — adding warmth to white paper, shifting the green screen toward cyan, or tinting the blue terminal toward purple. The tinting is additive to the paper mode's base color.
 
 ---
 
@@ -298,11 +298,11 @@ These exercises progress from basic teleprinter output to animated reveals and v
 |------|------------|
 | **Baud rate** | The number of signal changes per second in a communication channel; in Telex, controls the DDS-driven reveal speed. |
 | **Baudot** | A 5-bit character encoding system invented in 1870, used by teleprinter networks worldwide until digital communications replaced them. |
-| **DDS** | Direct Digital Synthesis; a phase accumulator technique used here to generate a programmable-rate cursor advance. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Glyph** | A single character pattern (5×7 pixels within a cell) from the built-in pattern ROM. |
-| **Ink** | The foreground colour applied to glyph pixels (where the bit pattern is set). |
+| **Ink** | The foreground color applied to glyph pixels (where the bit pattern is set). |
 | **ITA2** | International Telegraph Alphabet No. 2; the international standard Baudot code used on Telex networks. |
-| **Paper** | The background colour applied behind and between glyphs. |
+| **Paper** | The background color applied behind and between glyphs. |
 | **Reveal cursor** | A DDS-driven position tracker that determines which character cells have been "printed" and are therefore visible. |
 | **Teletype** | A teleprinter or teletypewriter; an electromechanical device that transmitted and received typed text over telegraph lines. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

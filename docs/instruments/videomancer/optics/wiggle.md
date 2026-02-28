@@ -4,7 +4,7 @@ sidebar_position: 284
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
 image: /img/instruments/videomancer/wiggle/wiggle_hero.png
-description: "Program guide for Wiggle, a Videomancer optics program for the LZX video synthesizer."
+description: "Wiggle displaces pixels horizontally by an amount proportional to their brightness."
 ---
 
 import wiggle_before_after from '/img/instruments/videomancer/wiggle/wiggle_before_after.png';
@@ -131,7 +131,7 @@ Osc Rate sets the speed at which the displacement direction oscillates when Stro
 | Default | 50.0% |
 | Suffix | % |
 
-Depth Curve blends the displacement response between linear (fully CCW) and exponential (fully CW). Linear response gives uniform depth sensitivity across all brightness levels: a mid-grey pixel displaces half as far as peak white. Exponential response compresses displacement for mid-tones and expands it for highlights, concentrating the depth pop on the brightest elements while leaving shadows and mid-greys relatively flat. Intermediate settings provide a gentle roll-off that often looks most natural.
+Depth Curve blends the displacement response between linear (fully CCW) and exponential (fully CW). Linear response gives uniform depth sensitivity across all brightness levels: a mid-gray pixel displaces half as far as peak white. Exponential response compresses displacement for mid-tones and expands it for highlights, concentrating the depth pop on the brightest elements while leaving shadows and mid-grays relatively flat. Intermediate settings provide a gentle roll-off that often looks most natural.
 
 ---
 

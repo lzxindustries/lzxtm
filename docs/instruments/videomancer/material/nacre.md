@@ -4,7 +4,7 @@ sidebar_position: 176
 slug: /instruments/videomancer/nacre
 title: "Nacre"
 image: /img/instruments/videomancer/nacre/nacre_hero.png
-description: "Program guide for Nacre, a Videomancer material program for the LZX video synthesizer."
+description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets its color not from pigment but from thin-film interference — light waves reflecting off ..."
 ---
 
 import nacre_before_after from '/img/instruments/videomancer/nacre/nacre_before_after.png';
@@ -290,16 +290,16 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
-| **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating periodic waveforms by adding a tuning word each cycle. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hue** | The angular position of the chrominance vector in the UV plane, determining the perceived color (red, green, blue, etc.). |
 | **iCE40** | Lattice iCE40 HX4K FPGA used in Videomancer hardware. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter. |
-| **Luminance** | The brightness component (Y) of a YUV signal. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT** | Lookup Table; pre-computed values stored in FPGA fabric, accessed by index for single-cycle retrieval. |
 | **Nacre** | Mother-of-pearl; the iridescent inner lining of mollusc shells composed of layered aragonite crystals. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Thin-Film Interference** | Optical phenomenon where light reflecting from two surfaces of a thin transparent layer produces position-dependent color. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

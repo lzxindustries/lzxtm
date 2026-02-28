@@ -4,7 +4,7 @@ sidebar_position: 173
 slug: /instruments/videomancer/mosaic
 title: "Mosaic"
 image: /img/instruments/videomancer/mosaic/mosaic_hero.png
-description: "Program guide for Mosaic, a Videomancer pixel program for the LZX video synthesizer."
+description: "Every digital image is already a mosaic — a grid of discrete samples."
 ---
 
 import mosaic_before_after from '/img/instruments/videomancer/mosaic/mosaic_before_after.png';
@@ -284,11 +284,11 @@ These exercises progress from basic pixelation through content-adaptive modulati
 | **Chebyshev Distance** | An approximation of distance using $\max(|x|, |y|)$; not used in Mosaic but referenced in related programs. |
 | **Chroma Kill** | Forcing the color components (U, V) to the neutral midpoint (512), producing monochrome output. |
 | **Edge Enhancement** | Amplifying the luminance difference between adjacent blocks to create visible boundary highlights. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hold Period** | The number of pixel clocks or scanlines that a sampled value is maintained before a new sample is taken. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Luma Modulation** | Varying a processing parameter (here, block size) based on the input luminance, creating content-adaptive effects. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific instant and maintains that value as its output until the next sampling event. |
 | **Saturation Clamping** | Limiting a computed value to a maximum (here, 1023) to prevent overflow or wraparound artifacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 255
 slug: /instruments/videomancer/telegram
 title: "Telegram"
 image: /img/instruments/videomancer/telegram/telegram_hero.png
-description: "Program guide for Telegram, a Videomancer text program for the LZX video synthesizer."
+description: "Before digital communication, before fax machines, before even the telephone reached most of the world, there was the telegraph."
 ---
 
 import telegram_before_after from '/img/instruments/videomancer/telegram/telegram_before_after.png';
@@ -299,15 +299,15 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Telegram uses zero BRAMs — all processing is register-based. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating continuous scroll from a fixed-rate increment counter. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Dit / Dah** | Morse code terminology for short and long pulses (dots and dashes). Telegram uses the brightness threshold to decide between narrow bars (dits) and wide bars (dahs). |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the Morse overlay pipeline in real time. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used in Noise mode to produce random dot/dash decisions. |
-| **Luma** | The brightness component (Y) of a YUV video signal, used as the source for dash/dot encoding. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Morse Code** | A binary signalling system using short and long pulses, invented by Samuel Morse in the 1840s, serving as the conceptual basis for Telegram's visual encoding. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; the gain-and-offset stage (contrast and brightness) applied after compositing. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Symbol Period** | The number of pixels occupied by one dot-or-dash element, determined by the Speed control's power-of-two shift. |
 | **Tape Band** | A horizontal strip of the frame where Morse patterns are rendered, separated by dimmed-source gap regions. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

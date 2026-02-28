@@ -4,7 +4,7 @@ sidebar_position: 147
 slug: /instruments/videomancer/lichen
 title: "Lichen"
 image: /img/instruments/videomancer/lichen/lichen_hero.png
-description: "Program guide for Lichen, a Videomancer organic program for the LZX video synthesizer."
+description: "Lichen is a synthesis program that grows circular patches from random positions on a blank canvas, frame by frame."
 ---
 
 import lichen_animation from '/img/instruments/videomancer/lichen/lichen_animation.gif';
@@ -33,7 +33,7 @@ import lichen_hero from '/img/instruments/videomancer/lichen/lichen_hero.png';
 
 Lichen is a synthesis program that grows circular patches from random positions on a blank canvas, frame by frame. Each patch expands outward at a controllable rate, and a 16-bit LFSR noise source breaks the smooth Manhattan-distance contour of each patch into ragged, organic edges — emulating the irregular boundary of a real lichen colony encrusting a rock face. The name refers directly to the organism: a symbiotic composite of fungi and algae that colonises surfaces in slow, crusty, spreading formations.
 
-Four patches can be active simultaneously, each with its own centre position seeded from the LFSR at reset. When patches overlap, their tinting darkens cumulatively — a single overlap dims the output slightly, while four overlapping patches produce deep, dark regions. The patch colour shifts between a cool green and a warm amber depending on a toggle, evoking different species of biological lichen. Boundary pixels receive a subtle luma highlight, giving the effect of ridged, textured edges.
+Four patches can be active simultaneously, each with its own centre position seeded from the LFSR at reset. When patches overlap, their tinting darkens cumulatively — a single overlap dims the output slightly, while four overlapping patches produce deep, dark regions. The patch color shifts between a cool green and a warm amber depending on a toggle, evoking different species of biological lichen. Boundary pixels receive a subtle luma highlight, giving the effect of ridged, textured edges.
 
 At low growth rates and small spreads, Lichen produces compact, slowly evolving spots of color on a dark field. At high growth rates and maximum spread, the patches quickly flood the frame, merging into large overlapping tinted zones. The Edge Irregularity control determines how much the LFSR noise disrupts the diamond-shaped boundary — at zero, patches are clean diamonds; at maximum, they become rough, ragged shapes that change every pixel.
 
@@ -55,11 +55,11 @@ Lichen is a frame-stateful program: each patch's radius is stored as a 12-bit re
 
 ### Overlapping Tint Accumulation
 
-When a pixel falls inside multiple patches simultaneously, Lichen counts the number of overlaps (1 through 4) and applies increasing darkening to the luma channel. A single overlap shifts the chroma gently toward the target lichen colour and dims the luma slightly. Four overlapping patches apply the full tint strength and strong darkening. This additive overlap model creates natural-looking density variations as patches meet and merge, similar to how real lichen colonies darken and thicken where they grow into one another.
+When a pixel falls inside multiple patches simultaneously, Lichen counts the number of overlaps (1 through 4) and applies increasing darkening to the luma channel. A single overlap shifts the chroma gently toward the target lichen color and dims the luma slightly. Four overlapping patches apply the full tint strength and strong darkening. This additive overlap model creates natural-looking density variations as patches meet and merge, similar to how real lichen colonies darken and thicken where they grow into one another.
 
-### Colour Tinting in YUV
+### Color Tinting in YUV
 
-The tinting stage shifts the U and V chroma channels toward a target colour — green (U≈420, V≈480) or amber (U≈440, V≈580) — while dimming the Y channel. The shift is proportional to the Tint Strength parameter, which selects one of four shift amounts (6.25%, 12.5%, 25%, or 50% of the way toward the target). Working in YUV allows the program to separate the colour shift (UV) from the darkening (Y), tinting without destroying the underlying luminance structure of the synthesized patches.
+The tinting stage shifts the U and V chroma channels toward a target color — green (U≈420, V≈480) or amber (U≈440, V≈580) — while dimming the Y channel. The shift is proportional to the Tint Strength parameter, which selects one of four shift amounts (6.25%, 12.5%, 25%, or 50% of the way toward the target). Working in YUV allows the program to separate the color shift (UV) from the darkening (Y), tinting without destroying the underlying luminance structure of the synthesized patches.
 
 
 ---
@@ -87,9 +87,9 @@ Video Timing Generator
 │   Count inside patches → s_overlap_cnt (0..4)
 │   Detect boundary → s_on_boundary
 │
-├── Stage 4: Colour Tinting + Composite ──────────────────────
+├── Stage 4: Color Tinting + Composite ──────────────────────
 │   Y: darken by overlap_cnt × tint_strength
-│   U,V: shift toward target colour (green/amber)
+│   U,V: shift toward target color (green/amber)
 │   Boundary highlight: +32 luma at edges
 │   Outside patches: black (synthesis source = 0)
 │
@@ -150,7 +150,7 @@ Controls the amount of LFSR noise applied to the patch boundaries. The pot value
 | Default | 50% |
 | Suffix | % |
 
-Despite its TOML label "Bnd Width," this register actually controls the colour tinting strength applied to pixels inside patches. The VHDL signal `s_tint_strength` selects one of four levels of chroma shift toward the target lichen colour (6.25%, 12.5%, 25%, or 50%). Higher values push inside-patch pixels more aggressively toward pure green or amber, while lower values produce a subtle, barely perceptible colour wash. This control also scales the luma darkening applied by the overlap count — higher tint strength means stronger dimming in overlap regions.
+Despite its TOML label "Bnd Width," this register actually controls the color tinting strength applied to pixels inside patches. The VHDL signal `s_tint_strength` selects one of four levels of chroma shift toward the target lichen color (6.25%, 12.5%, 25%, or 50%). Higher values push inside-patch pixels more aggressively toward pure green or amber, while lower values produce a subtle, barely perceptible color wash. This control also scales the luma darkening applied by the overlap count — higher tint strength means stronger dimming in overlap regions.
 
 ---
 
@@ -205,7 +205,7 @@ Master wet/dry crossfade. At 0%, the output is entirely the delayed dry input (t
 
 ## Guided Exercises
 
-These exercises explore Lichen as a slowly evolving synthesis source, progressing from basic patch growth through edge texturing to full multi-patch layered compositions with colour tinting.
+These exercises explore Lichen as a slowly evolving synthesis source, progressing from basic patch growth through edge texturing to full multi-patch layered compositions with color tinting.
 
 ### Exercise 1: First Colonies
 
@@ -246,18 +246,18 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 <img src={lichen_exercise3_result} alt="Overlapping Colonies result"/>
 *Overlapping Colonies — simulated result across source images.*
-**Objective**: Explore tinting, overlap darkening, and colour modes with maximum patch count.
+**Objective**: Explore tinting, overlap darkening, and color modes with maximum patch count.
 
 1. Enable all 4 patches (Switch 7 on).
 2. Set Spread (Knob 2) to ~80% so patches grow large enough to overlap.
 3. Set Growth Rate (Knob 1) to ~40% — moderate speed.
-4. Increase Tint Strength (Knob 4 — labelled "Bnd Width") to ~80%. Observe the colour shift in inside-patch pixels.
-5. Toggle Surface (Switch 8) between green and amber colours. Note how the tint target changes.
+4. Increase Tint Strength (Knob 4 — labelled "Bnd Width") to ~80%. Observe the color shift in inside-patch pixels.
+5. Toggle Surface (Switch 8) between green and amber colors. Note how the tint target changes.
 6. Watch the overlap regions darken as patches meet. With 4 overlapping patches, the luma drops significantly.
 7. Use Mix (Knob 12) at ~60% to blend the lichen texture over an incoming video source.
 8. Use Reset (Switch 9) to restart — observe how different starting positions create different overlap patterns.
 
-**Key concepts**: Overlap count drives cumulative darkening, tint strength controls both chroma shift and luma dimming, colour mode selects green vs amber target
+**Key concepts**: Overlap count drives cumulative darkening, tint strength controls both chroma shift and luma dimming, color mode selects green vs amber target
 
 ---
 
@@ -268,7 +268,7 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 - **Start slow**: Growth Rate at 10–20% lets you watch the boundary evolve pixel by pixel — essential for understanding how edge noise interacts with the expanding radius.
 - **Boundary width shapes the texture**: A narrow boundary width produces crisp, well-defined patch edges. A wide boundary produces diffuse, moss-like transitions. The visual difference is dramatic.
 - **Overlap creates depth**: With 4 patches and high spread, the darkened overlap regions create a sense of layered density. Adjust Tint Strength to control how extreme the darkening is.
-- **Green vs amber**: The two colour modes are not simply palette swaps — they target different U/V coordinates, producing distinct colour relationships against various backgrounds.
+- **Green vs amber**: The two color modes are not simply palette swaps — they target different U/V coordinates, producing distinct color relationships against various backgrounds.
 - **Mix for compositing**: Because Lichen is a synthesis source, the Mix fader controls how much of the generated texture appears in the final output. At partial mix values, lichen patches float over whatever video is passing through the input.
 - **Frame rate matters**: Growth rate is per-frame, so the visual speed of patch expansion is directly proportional to the video standard's frame rate.
 
@@ -278,13 +278,13 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA. Lichen uses zero BRAM. |
-| **Chroma** | The colour component of a video signal, encoded as U (Cb) and V (Cr) in YUV colour space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms from a phase accumulator. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **Chroma** | The color component of a video signal, encoded as U (Cb) and V (Cr) in YUV color space. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of horizontal and vertical distances between two points, $|x_1-x_2|+|y_1-y_2|$, producing diamond-shaped contours. |
-| **Pipeline** | A series of sequential processing stages, each operating in one clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Synthesis** | Generation of video imagery from internal state and parameters, without requiring an input video source. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

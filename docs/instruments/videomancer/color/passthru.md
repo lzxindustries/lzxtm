@@ -4,7 +4,7 @@ sidebar_position: 190
 slug: /instruments/videomancer/passthru
 title: "Passthru"
 image: /img/instruments/videomancer/passthru/passthru_hero.png
-description: "Program guide for Passthru, a Videomancer color program for the LZX video synthesizer."
+description: "Every video processing chain begins with a signal that enters and exits unchanged — a pass-through."
 ---
 
 import passthru_before_after from '/img/instruments/videomancer/passthru/passthru_before_after.png';
@@ -280,11 +280,11 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 | **Chroma** | The color-difference components (U and V) of a YUV video signal, encoding hue and saturation information. |
 | **Clipping** | When a signal value exceeds the representable range (0–1023), it is clamped to the boundary value, losing detail. |
 | **Contrast** | A gain factor applied around the midpoint (512), expanding or compressing the luminance range. |
-| **Interpolator** | A hardware module that performs linear crossfading between two input values, used here for wet/dry mix. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Inversion** | Computing the complement of a signal value: `1023 − value`. Flips bright to dark (Y) or shifts colors to their complements (U, V). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Mono** | Monochrome mode, achieved by clamping both chroma channels to the midpoint (512). |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness, contrast, and saturation adjustment to a video signal. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Saturation** | The intensity of color in a video signal, controlled by applying gain to the U and V chroma channels around their midpoint. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

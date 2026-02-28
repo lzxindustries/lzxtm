@@ -4,7 +4,7 @@ sidebar_position: 153
 slug: /instruments/videomancer/loadstar
 title: "Loadstar"
 image: /img/instruments/videomancer/loadstar/loadstar_hero.png
-description: "Program guide for Loadstar, a Videomancer computer program for the LZX video synthesizer."
+description: "There was a ritual shared by an entire generation of home computer users."
 ---
 
 import loadstar_before_after from '/img/instruments/videomancer/loadstar/loadstar_before_after.png';
@@ -54,7 +54,7 @@ Early home computers could not afford enough memory for a full bitmap display. I
 
 ### Attribute Clash
 
-The ZX Spectrum's most notorious display limitation was attribute clash (sometimes called "colour clash" or "attribute bleed"). The Spectrum stored one foreground and one background color per 8×8 character cell — just two colors shared by all 64 pixels in the cell. When a sprite or graphic moved across a cell boundary, it was forced to adopt the color attribute of the cell it entered, causing bright objects to suddenly change color as they crossed the invisible grid. Game developers spent enormous effort working around this limitation — designing monochrome games, keeping sprites on cell boundaries, or embracing the clash as a stylistic feature. Loadstar's Attr Clash toggle applies a similar quantization: the held luma value is reduced to three bits (eight levels), and chroma is forced to neutral. The result is an eight-color palette constrained per cell.
+The ZX Spectrum's most notorious display limitation was attribute clash (sometimes called "color clash" or "attribute bleed"). The Spectrum stored one foreground and one background color per 8×8 character cell — just two colors shared by all 64 pixels in the cell. When a sprite or graphic moved across a cell boundary, it was forced to adopt the color attribute of the cell it entered, causing bright objects to suddenly change color as they crossed the invisible grid. Game developers spent enormous effort working around this limitation — designing monochrome games, keeping sprites on cell boundaries, or embracing the clash as a stylistic feature. Loadstar's Attr Clash toggle applies a similar quantization: the held luma value is reduced to three bits (eight levels), and chroma is forced to neutral. The result is an eight-color palette constrained per cell.
 
 ### Interlace and CRT Simulation
 
@@ -283,14 +283,14 @@ These exercises explore the program's active controls, progressing from simple b
 | Term | Definition |
 |------|------------|
 | **Attribute Clash** | A display limitation of the ZX Spectrum where each 8×8 character cell could contain only two colors (foreground and background), causing color bleeding at cell boundaries when objects moved across them. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Loadstar uses no BRAM — all processing is combinational and register-based. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cell** | A rectangular block of pixels that shares a single brightness and color value, emulating the character cells of 8-bit text mode displays. |
 | **Chroma** | The color information in a video signal, encoded as U and V components. Loadstar forces chroma to neutral (512, 512) in attribute clash mode. |
 | **CRT** | Cathode Ray Tube; the display technology used by 8-bit home computers. Loadstar's interlace mode simulates the visible scan line structure of CRT displays. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Interlace** | A scanning technique where alternate lines are drawn on successive fields. Loadstar approximates this by dimming odd-numbered lines. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator. Referenced in the VHDL header but not used in the current implementation. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | A series of sequential processing stages clocked on each cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sample-and-Hold** | A technique where a signal value is captured (sampled) at a specific moment and held constant until the next sample point. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

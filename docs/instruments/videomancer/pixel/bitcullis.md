@@ -4,7 +4,7 @@ sidebar_position: 2
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
 image: /img/instruments/videomancer/bitcullis/bitcullis_hero.png
-description: "Program guide for Bitcullis, a Videomancer bit-manipulation program that exposes the digital structure of video signals as visual patterns."
+description: "Digital video is made of discrete numbers — brightness and color values laid out on a grid of pixels."
 ---
 
 import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';
@@ -273,14 +273,14 @@ These exercises progress from simple decimation to full signal deconstruction. E
 | Term | Definition |
 |------|------------|
 | **Bit Depth** | The number of discrete levels available to represent a signal; higher bit depth means finer gradations. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Decimation** | Reducing spatial resolution by discarding samples at regular intervals, creating a blocky mosaic effect. |
 | **Dithering** | Adding a small noise pattern before quantization to break up banding artifacts and simulate additional tonal levels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

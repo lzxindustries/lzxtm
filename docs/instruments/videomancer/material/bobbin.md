@@ -4,7 +4,7 @@ sidebar_position: 24
 slug: /instruments/videomancer/bobbin
 title: "Bobbin"
 image: /img/instruments/videomancer/bobbin/bobbin_hero.png
-description: "Program guide for Bobbin, a Videomancer material program for the LZX video synthesizer."
+description: "Bobbin draws a mesh of woven threads across the video image, simulating the look of pillow-lace fabric stretched over a monitor."
 ---
 
 import bobbin_hero from '/img/instruments/videomancer/bobbin/bobbin_hero.png';
@@ -267,17 +267,17 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 | Term | Definition |
 |------|------------|
-| **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
-| **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle, used here to animate mesh drift. |
-| **Hue LUT** | A look-up table that maps a control value to U and V chroma offsets corresponding to a specific colour around the colour wheel. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for thread darkening and dry/wet blending. |
-| **Luma** | The brightness component (Y) of a YUV video signal, darkened proportionally at thread pixel locations. |
+| **Chroma** | The color-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **Hue LUT** | A look-up table that maps a control value to U and V chroma offsets corresponding to a specific color around the color wheel. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical distances between two points, used here to measure pixel proximity to a curve without computing a square root. |
 | **Moiré** | An interference pattern produced when two periodic structures (such as the thread mesh and the display pixel grid) overlap at similar spatial frequencies. |
 | **Phase accumulator** | A register that increments by a fixed step each vertical sync interval, whose value offsets both curve families to produce smooth mesh animation. |
 | **Rhombic lattice** | A repeating grid of diamond-shaped cells formed by the intersection of two sinusoidal curve families oscillating at the same frequency. |
 | **Sine LUT** | A look-up table containing 32 pre-computed signed sine values, used to generate smooth wave curves without real-time trigonometric calculation. |
 | **Torchon** | A traditional style of bobbin lace characterized by its regular diamond-mesh ground pattern, the real-world counterpart to Bobbin's Diamond mode. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

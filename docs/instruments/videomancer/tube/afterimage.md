@@ -4,7 +4,7 @@ sidebar_position: 3
 slug: /instruments/videomancer/afterimage
 title: "Afterimage"
 image: /img/instruments/videomancer/afterimage/afterimage_hero.png
-description: "Program guide for Afterimage, a Videomancer tube program for the LZX video synthesizer."
+description: "Afterimage recreates the physiological phenomenon where prolonged viewing of a stimulus produces a persistent color-negative ghost when the stimulus is ..."
 ---
 
 import afterimage_hero from '/img/instruments/videomancer/afterimage/afterimage_hero.png';
@@ -27,11 +27,11 @@ import afterimage_exercise3_result from '/img/instruments/videomancer/afterimage
 
 ## Overview
 
-Afterimage recreates the physiological phenomenon where prolonged viewing of a stimulus produces a persistent colour-negative ghost when the stimulus is removed or the gaze shifts. The program uses per-pixel IIR (infinite impulse response) low-pass filtering to build a temporal average of the input video, then computes a colour-negative of that average and blends it back into the current frame. Moving subjects leave behind trails of their complementary colours — a red object deposits a cyan ghost, a bright region leaves a dark shadow.
+Afterimage recreates the physiological phenomenon where prolonged viewing of a stimulus produces a persistent color-negative ghost when the stimulus is removed or the gaze shifts. The program uses per-pixel IIR (infinite impulse response) low-pass filtering to build a temporal average of the input video, then computes a color-negative of that average and blends it back into the current frame. Moving subjects leave behind trails of their complementary colors — a red object deposits a cyan ghost, a bright region leaves a dark shadow.
 
-The name *Afterimage* references the neurological phenomenon described by Hermann von Helmholtz in *Handbuch der physiologischen Optik* (1856). Negative afterimages occur because cone cells in the retina become fatigued by sustained stimulation and temporarily reduce their sensitivity — when the stimulus changes, the fatigued cones respond less than their neighbours, producing the perception of the complementary colour. This program externalises that retinal process as a real-time video effect.
+The name *Afterimage* references the neurological phenomenon described by Hermann von Helmholtz in *Handbuch der physiologischen Optik* (1856). Negative afterimages occur because cone cells in the retina become fatigued by sustained stimulation and temporarily reduce their sensitivity — when the stimulus changes, the fatigued cones respond less than their neighbours, producing the perception of the complementary color. This program externalises that retinal process as a real-time video effect.
 
-At conservative settings — slow persistence with low negative strength — the program produces subtle ghostly trails that add a dreamlike quality to motion. At extreme settings — fast persistence, full negative strength, and chroma-only channel mode — the output becomes a violent palette inversion that constantly fights the input signal, creating psychedelic colour fields that pulse and breathe with any movement.
+At conservative settings — slow persistence with low negative strength — the program produces subtle ghostly trails that add a dreamlike quality to motion. At extreme settings — fast persistence, full negative strength, and chroma-only channel mode — the output becomes a violent palette inversion that constantly fights the input signal, creating psychedelic color fields that pulse and breathe with any movement.
 
 ---
 
@@ -39,7 +39,7 @@ At conservative settings — slow persistence with low negative strength — the
 
 ### What Is a Negative Afterimage?
 
-A **negative afterimage** is a visual phenomenon where staring at a coloured stimulus for an extended period, then looking away, produces a ghost image in the complementary colour. Stare at a red square for 30 seconds, then look at a white wall — you see a cyan square. This occurs because the cone cells sensitive to red become fatigued and temporarily reduce their response, making the remaining (green and blue) cones relatively more active.
+A **negative afterimage** is a visual phenomenon where staring at a colored stimulus for an extended period, then looking away, produces a ghost image in the complementary color. Stare at a red square for 30 seconds, then look at a white wall — you see a cyan square. This occurs because the cone cells sensitive to red become fatigued and temporarily reduce their response, making the remaining (green and blue) cones relatively more active.
 
 The effect was first systematically studied by Jan Evangelista Purkyně in the 1820s and later formalised by Helmholtz. Artists including Jasper Johns and Bridget Riley have incorporated afterimage effects into their work, creating paintings designed to produce vivid complementary ghosts when viewed.
 
@@ -49,9 +49,9 @@ An **IIR (Infinite Impulse Response) filter** is a feedback system where the out
 
 The specific IIR used in Afterimage is a first-order exponential moving average: `average += (input - average) >> shift`. The shift amount controls the time constant — larger shifts produce slower response (longer persistence). This architecture requires no frame buffer: each pixel's accumulator is stored in a single register that is updated every time that pixel position is clocked through the pipeline. Because the FPGA processes pixels in raster order, the accumulator operates per-column (not per-pixel), producing a columnar temporal smear rather than true per-pixel persistence.
 
-### What Are Complementary Colours in YUV?
+### What Are Complementary Colors in YUV?
 
-In YUV colour space, the complement of a colour is formed by inverting the chrominance channels (U and V) around the midpoint (512 in 10-bit). A colour at (Y, U, V) has its complement at (1023-Y, 1023-U, 1023-V) for full negative, or various partial inversions for the other modes. The luminance complement inverts bright to dark, while the chrominance complement swaps warm for cool and vice versa.
+In YUV color space, the complement of a color is formed by inverting the chrominance channels (U and V) around the midpoint (512 in 10-bit). A color at (Y, U, V) has its complement at (1023-Y, 1023-U, 1023-V) for full negative, or various partial inversions for the other modes. The luminance complement inverts bright to dark, while the chrominance complement swaps warm for cool and vice versa.
 
 
 ---
@@ -124,7 +124,7 @@ Controls the time constant of the IIR temporal filter. At minimum, the accumulat
 | Default | 50% |
 | Suffix | % |
 
-Controls the intensity of the negative colour computation blended into the output. At 0%, no negative component is added and the output matches the input (the IIR runs but its result is not visible). At maximum, the full computed negative replaces the input. Intermediate values blend between the input pixel and the negative pixel, allowing the afterimage ghost to appear at any opacity from a faint whisper to a full colour inversion.
+Controls the intensity of the negative color computation blended into the output. At 0%, no negative component is added and the output matches the input (the IIR runs but its result is not visible). At maximum, the full computed negative replaces the input. Intermediate values blend between the input pixel and the negative pixel, allowing the afterimage ghost to appear at any opacity from a faint whisper to a full color inversion.
 
 ---
 
@@ -157,7 +157,7 @@ Controls the crossfade between the original input and the negative-processed sig
 | Default | 50% |
 | Suffix | % |
 
-Scales the chrominance channels of the processed output. The saturation control operates after mode processing, scaling the distance of U and V values from the chroma midpoint (512). At 0%, the output is fully monochrome — luminance-only afterimage effects. At moderate values, natural colour persistence appears. Boosted above 50%, the afterimage colours become hyper-vivid, exaggerating the complementary colour effect beyond what physiological afterimages would produce.
+Scales the chrominance channels of the processed output. The saturation control operates after mode processing, scaling the distance of U and V values from the chroma midpoint (512). At 0%, the output is fully monochrome — luminance-only afterimage effects. At moderate values, natural color persistence appears. Boosted above 50%, the afterimage colors become hyper-vivid, exaggerating the complementary color effect beyond what physiological afterimages would produce.
 
 ---
 
@@ -209,16 +209,16 @@ These exercises progress from basic negative persistence observation through cha
 *Basic Negative Persistence — simulated result across source images.*
 **Source**: Camera feed with a moving subject against a static background — a hand waving slowly works well.
 
-**Objective**: Observe how the IIR temporal filter creates colour-negative ghosts of moving subjects and how Persist and Neg Str control the trail intensity and duration.
+**Objective**: Observe how the IIR temporal filter creates color-negative ghosts of moving subjects and how Persist and Neg Str control the trail intensity and duration.
 
 1. **Default mode**: Set Mode to Negative, Channel to All, Speed to Fast, Animate off. Mix at 100%.
 2. **Moderate persistence**: Set Persist to ~60%, Neg Str to ~50%, Decay to ~30%, Blend to ~70%.
-3. **Observe motion**: Move your hand across the camera. After your hand passes, a cyan/blue ghost remains where the warm skin tones were — the complementary colour of the skin.
+3. **Observe motion**: Move your hand across the camera. After your hand passes, a cyan/blue ghost remains where the warm skin tones were — the complementary color of the skin.
 4. **Increase persist**: Raise Persist to ~90%. The ghost lingers much longer. Move your hand and wait — the afterimage persists for several seconds before fading.
 5. **Reduce decay**: Drop Decay to ~10%. Now the ghost barely fades at all — the IIR accumulator retains information almost indefinitely.
 6. **Maximum negative**: Push Neg Str to 100%, Blend to 100%. The afterimage dominates the output — moving objects leave violently inverted trails.
 
-**Key concepts**: IIR temporal averaging, complementary colour persistence, persist time constant, decay rate, negative blending
+**Key concepts**: IIR temporal averaging, complementary color persistence, persist time constant, decay rate, negative blending
 
 ---
 
@@ -226,18 +226,18 @@ These exercises progress from basic negative persistence observation through cha
 
 <img src={afterimage_exercise2_result} alt="Chroma-Only Afterimage result"/>
 *Chroma-Only Afterimage — simulated result across source images.*
-**Source**: Footage with saturated primary colours — a colourful painting, fruit, or clothing.
+**Source**: Footage with saturated primary colors — a colorful painting, fruit, or clothing.
 
-**Objective**: Use the channel selector to isolate afterimage processing to chrominance only, preserving luminance detail while producing colour-shift ghosts.
+**Objective**: Use the channel selector to isolate afterimage processing to chrominance only, preserving luminance detail while producing color-shift ghosts.
 
 1. **Set Chroma mode**: Toggle Channel to Chroma (position 3). Mode stays at Negative.
 2. **Moderate settings**: Persist ~50%, Neg Str ~70%, Decay ~20%, Blend ~80%, Mix 100%.
 3. **Observe static**: With static input, the chroma channels slowly accumulate and invert — reds shift toward cyan, blues toward yellow, while the brightness detail of the image remains sharp.
-4. **Add movement**: Move the camera or subject. Only the colour information ghosts — edges and brightness remain crisp while complementary colour trails follow motion.
+4. **Add movement**: Move the camera or subject. Only the color information ghosts — edges and brightness remain crisp while complementary color trails follow motion.
 5. **Compare with All**: Switch Channel back to All. Now luminance also ghosts — the image becomes darker or brighter inversions. Switch back to Chroma to see the difference.
-6. **Boost saturation**: Push Saturate to ~90%. The chroma-only ghosts become hyper-vivid complementary colour fields.
+6. **Boost saturation**: Push Saturate to ~90%. The chroma-only ghosts become hyper-vivid complementary color fields.
 
-**Key concepts**: Channel-isolated processing, chroma vs luminance persistence, complementary colour generation in UV space
+**Key concepts**: Channel-isolated processing, chroma vs luminance persistence, complementary color generation in UV space
 
 ---
 
@@ -254,7 +254,7 @@ These exercises progress from basic negative persistence observation through cha
 3. **Observe**: The output shows a softened, time-averaged version of the input blended over the live signal — moving objects leave faded echoes that drift and pulse as the animate modulation varies the time constant.
 4. **Reduce brightness**: Pull Bright to ~35%. The ghost layer darkens, creating a shadowy overlay.
 5. **Increase blend**: Push Blend to ~90%. The temporal average dominates — the image smears and blurs temporally, with the breathing animation creating a gently pulsing quality.
-6. **Switch to Complement**: Toggle Mode to Complement. Now the echoes are colour-shifted rather than ghost-faded — a more psychedelic rendering of the same temporal data.
+6. **Switch to Complement**: Toggle Mode to Complement. Now the echoes are color-shifted rather than ghost-faded — a more psychedelic rendering of the same temporal data.
 
 **Key concepts**: Ghost mode (non-inverted temporal average), slow IIR response, animate modulation, complement vs ghost mode comparison
 
@@ -264,11 +264,11 @@ These exercises progress from basic negative persistence observation through cha
 ## Tips
 
 - **Processing is columnar**: The IIR accumulator operates per-column, not per-pixel. Horizontal motion produces slightly different trails than vertical motion. This is a feature, not a bug — it creates an organic quality reminiscent of CRT phosphor persistence.
-- **Negative mode is the signature effect**: Like the physiological afterimage, the Negative mode produces complementary-colour ghosts. Use it with moderate settings for the most naturalistic result.
-- **Ghost mode for time-averaging**: Ghost mode passes the raw temporal average without inversion — useful for creating soft temporal blurs and motion smears without colour inversion.
+- **Negative mode is the signature effect**: Like the physiological afterimage, the Negative mode produces complementary-color ghosts. Use it with moderate settings for the most naturalistic result.
+- **Ghost mode for time-averaging**: Ghost mode passes the raw temporal average without inversion — useful for creating soft temporal blurs and motion smears without color inversion.
 - **Speed and Persist interact**: Fast+high persist ≈ Slow+medium persist in trail duration, but with different character. Fast mode produces stuttery, frame-stepping trails while Slow mode produces smooth, flowing ghosts.
-- **Feedback routing amplifies afterimage**: Routing the output back through the input creates recursive afterimage processing that rapidly builds intense colour inversion fields. Start with low Neg Str and Blend when using feedback.
-- **Chroma-only is subtle but powerful**: Channel set to Chroma produces colour shifts without luminance inversion — useful for augmenting live performance footage without destroying the visual clarity.
+- **Feedback routing amplifies afterimage**: Routing the output back through the input creates recursive afterimage processing that rapidly builds intense color inversion fields. Start with low Neg Str and Blend when using feedback.
+- **Chroma-only is subtle but powerful**: Channel set to Chroma produces color shifts without luminance inversion — useful for augmenting live performance footage without destroying the visual clarity.
 - **Decay controls the floor**: Even with maximum persistence, high decay ensures ghosts eventually fade. For permanent screen-burn style effects, minimize decay.
 - **Blend vs Mix**: Blend controls the processing intensity (before output). Mix (fader) controls the wet/dry balance (after processing). Use Blend for creative control and Mix for A/B comparison.
 
@@ -279,16 +279,16 @@ These exercises progress from basic negative persistence observation through cha
 | Term | Definition |
 |------|------------|
 | **Accumulator** | A register that stores a running total updated each frame; in Afterimage the IIR accumulators hold the per-column temporal average. |
-| **Chrominance (Chroma)** | The colour-difference components of a video signal (U and V channels), encoding hue and saturation independently of brightness. |
-| **Complementary Colour** | The colour produced by inverting a given colour around the neutral midpoint; red's complement is cyan, yellow's complement is blue. |
+| **Chrominance (Chroma)** | The color-difference components of a video signal (U and V channels), encoding hue and saturation independently of brightness. |
+| **Complementary Color** | The color produced by inverting a given color around the neutral midpoint; red's complement is cyan, yellow's complement is blue. |
 | **Exponential Moving Average (EMA)** | A weighted running average where each new sample adjusts the average by a fraction controlled by a bit-shift amount. Recent samples have more influence than older ones. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware at pixel-clock speed. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR (Infinite Impulse Response)** | A filter type whose output depends on both the current input and its own previous output, producing persistent memory of past values. |
-| **Luminance (Luma)** | The brightness component (Y channel) of a YUV video signal, representing perceived light intensity independent of colour. |
-| **Midpoint** | The centre value of the 10-bit range (512); in YUV processing, U and V at 512 represent zero colour difference (neutral grey). |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle; data flows through all stages sequentially with fixed latency. |
+| **Luminance (Luma)** | The brightness component (Y channel) of a YUV video signal, representing perceived light intensity independent of color. |
+| **Midpoint** | The centre value of the 10-bit range (512); in YUV processing, U and V at 512 represent zero color difference (neutral gray). |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Vsync (Vertical Sync)** | The blanking interval at the end of each video frame, used here as the timing reference for the decay mechanism that pulls accumulators toward neutral. |
 | **Wet/Dry** | A mixing convention where "wet" is the fully processed signal and "dry" is the unprocessed original; the fader crossfades between them. |
-| **YUV** | A colour encoding that separates brightness (Y) from colour information (U and V), used as the native colour space in Videomancer's 30-bit processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

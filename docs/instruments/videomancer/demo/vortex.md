@@ -4,7 +4,7 @@ sidebar_position: 282
 slug: /instruments/videomancer/vortex
 title: "Vortex"
 image: /img/instruments/videomancer/vortex/vortex_hero.png
-description: "Program guide for Vortex, a Videomancer demo program for the LZX video synthesizer."
+description: "The tunnel effect is one of the defining visual tricks of the demoscene — a community of programmers who have been pushing the limits of real-time graph..."
 ---
 
 import vortex_animation from '/img/instruments/videomancer/vortex/vortex_animation.gif';

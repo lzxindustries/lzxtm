@@ -4,7 +4,7 @@ sidebar_position: 249
 slug: /instruments/videomancer/stratum
 title: "Stratum"
 image: /img/instruments/videomancer/stratum/stratum_hero.png
-description: "Program guide for Stratum, a Videomancer signal program for the LZX video synthesizer."
+description: "Every pixel of video is a column of thirty binary digits — ten bits each for Y, U, and V, stacked from least significant to most significant."
 ---
 
 import stratum_before_after from '/img/instruments/videomancer/stratum/stratum_before_after.png';
@@ -34,11 +34,11 @@ import stratum_source3_stream_bridge_512 from '/img/instruments/videomancer/stra
 
 ## Overview
 
-Every pixel of video is a column of thirty binary digits — ten bits each for Y, U, and V, stacked from least significant to most significant. Stratum treats this column not as three separate numbers but as a single thirty-layer geological formation. It can rotate these layers, mirror them, swap them between channels, XOR them against each other, and crush the lowest layers to zero. The result is a family of digital artefacts that range from subtle colour shifts to total signal deconstruction.
+Every pixel of video is a column of thirty binary digits — ten bits each for Y, U, and V, stacked from least significant to most significant. Stratum treats this column not as three separate numbers but as a single thirty-layer geological formation. It can rotate these layers, mirror them, swap them between channels, XOR them against each other, and crush the lowest layers to zero. The result is a family of digital artefacts that range from subtle color shifts to total signal deconstruction.
 
-The name *Stratum* refers to a horizontal layer of material — in geology, a bed of rock; here, a bit plane of video data. The program's barrel rotator shifts bit planes between significance levels and between colour channels. A plane that carried the most significant bit of luminance can end up as the least significant bit of chrominance, or vice versa. Cross-channel XOR operations fold the channel contents into each other, and a frame counter can be XOR'd into the planes for temporal animation.
+The name *Stratum* refers to a horizontal layer of material — in geology, a bed of rock; here, a bit plane of video data. The program's barrel rotator shifts bit planes between significance levels and between color channels. A plane that carried the most significant bit of luminance can end up as the least significant bit of chrominance, or vice versa. Cross-channel XOR operations fold the channel contents into each other, and a frame counter can be XOR'd into the planes for temporal animation.
 
-At zero rotation and no XOR, the output is identical to the input. Small rotations introduce subtle colour bleeding as lower-significance bits from one channel appear in another. Large rotations and active XOR produce hard-edged digital glitch textures — the kind of artefacts that would occur if a video memory chip had its address lines scrambled.
+At zero rotation and no XOR, the output is identical to the input. Small rotations introduce subtle color bleeding as lower-significance bits from one channel appear in another. Large rotations and active XOR produce hard-edged digital glitch textures — the kind of artefacts that would occur if a video memory chip had its address lines scrambled.
 
 ---
 
@@ -46,7 +46,7 @@ At zero rotation and no XOR, the output is identical to the input. Small rotatio
 
 ### Bit-Plane Decomposition
 
-Every 10-bit pixel value can be thought of as ten independent binary images stacked on top of each other. The most significant bit (MSB) carries half the signal's dynamic range — it divides the image into two halves, above and below mid-grey. The next bit divides each half again, and so on down to the least significant bit (LSB), which carries only ±1 count of variation. Decomposing a video frame into these ten planes reveals a hierarchy: the MSB plane looks like a high-contrast silhouette, while the LSB plane looks like noise. Stratum extends this concept to all thirty planes across Y, U, and V, treating the entire pixel as one composite bit vector.
+Every 10-bit pixel value can be thought of as ten independent binary images stacked on top of each other. The most significant bit (MSB) carries half the signal's dynamic range — it divides the image into two halves, above and below mid-gray. The next bit divides each half again, and so on down to the least significant bit (LSB), which carries only ±1 count of variation. Decomposing a video frame into these ten planes reveals a hierarchy: the MSB plane looks like a high-contrast silhouette, while the LSB plane looks like noise. Stratum extends this concept to all thirty planes across Y, U, and V, treating the entire pixel as one composite bit vector.
 
 ### Barrel Rotation
 
@@ -54,7 +54,7 @@ A barrel rotator is a combinational circuit that shifts all bits in a register b
 
 ### XOR in Signal Processing
 
-The exclusive-OR (XOR) operation outputs 1 when its two inputs differ and 0 when they match. In image processing, XORing two signals creates a *difference mask* that highlights changes between them. Stratum applies XOR in two modes: *self* XOR (each bit is XOR'd with its adjacent neighbour, creating an edge-detection-like effect within each channel) and *cross-channel* XOR (Y bits are XOR'd with U bits, U with V, V with Y — folding the three channels into each other). Self XOR tends to produce fine textural detail; cross-channel XOR creates colour artefacts.
+The exclusive-OR (XOR) operation outputs 1 when its two inputs differ and 0 when they match. In image processing, XORing two signals creates a *difference mask* that highlights changes between them. Stratum applies XOR in two modes: *self* XOR (each bit is XOR'd with its adjacent neighbour, creating an edge-detection-like effect within each channel) and *cross-channel* XOR (Y bits are XOR'd with U bits, U with V, V with Y — folding the three channels into each other). Self XOR tends to produce fine textural detail; cross-channel XOR creates color artefacts.
 
 ### Temporal Animation via Frame Counter
 
@@ -102,7 +102,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-The key to understanding Stratum is that *all operations happen on the concatenated 30-bit vector*, not on individual channels. When you rotate by 5 positions, for example, the 5 MSBs of the Y channel move to the 5 LSBs of the V channel, the entire U channel shifts into the Y position, and so on. This inter-channel leakage is what creates Stratum's distinctive colour artefacts — it is not a colour-space transformation but a raw bit-level permutation. The XOR stage then folds these rearranged planes against each other, and bit crush removes the lowest layers after rearrangement.
+The key to understanding Stratum is that *all operations happen on the concatenated 30-bit vector*, not on individual channels. When you rotate by 5 positions, for example, the 5 MSBs of the Y channel move to the 5 LSBs of the V channel, the entire U channel shifts into the Y position, and so on. This inter-channel leakage is what creates Stratum's distinctive color artefacts — it is not a color-space transformation but a raw bit-level permutation. The XOR stage then folds these rearranged planes against each other, and bit crush removes the lowest layers after rearrangement.
 
 ---
 
@@ -119,7 +119,7 @@ The key to understanding Stratum is that *all operations happen on the concatena
 | Range | 0 – 29 |
 | Default | 0 |
 
-Controls the total barrel rotation amount across the 30-bit plane vector. The 10-bit register is decomposed into a coarse component (0, 10, or 20 positions) and a fine component (0–9 positions), giving a total shift of 0–29 positions. At 0 rotation, the output matches the input. At 10, the entire U channel occupies the Y position, Y moves to V, and V moves to U — a pure channel rotation. Intermediate values create inter-channel bit leakage with unpredictable colour and brightness artefacts.
+Controls the total barrel rotation amount across the 30-bit plane vector. The 10-bit register is decomposed into a coarse component (0, 10, or 20 positions) and a fine component (0–9 positions), giving a total shift of 0–29 positions. At 0 rotation, the output matches the input. At 10, the entire U channel occupies the Y position, Y moves to V, and V moves to U — a pure channel rotation. Intermediate values create inter-channel bit leakage with unpredictable color and brightness artefacts.
 
 ---
 
@@ -130,7 +130,7 @@ Controls the total barrel rotation amount across the 30-bit plane vector. The 10
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the XOR mask intensity. Below a minimum threshold (~6% of range), XOR processing is bypassed entirely. Above threshold, the selected XOR mode is applied to the rotated plane vector. In Self mode, adjacent bits within each channel are XOR'd — this highlights edges and transitions. In Cross-Channel mode, Y, U, and V bit planes are folded into each other — this creates saturated colour artefacts and channel-crossing interference patterns.
+Controls the XOR mask intensity. Below a minimum threshold (~6% of range), XOR processing is bypassed entirely. Above threshold, the selected XOR mode is applied to the rotated plane vector. In Self mode, adjacent bits within each channel are XOR'd — this highlights edges and transitions. In Cross-Channel mode, Y, U, and V bit planes are folded into each other — this creates saturated color artefacts and channel-crossing interference patterns.
 
 ---
 
@@ -211,14 +211,14 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 <img src={stratum_exercise1_result} alt="Channel Rotation result"/>
 *Channel Rotation — simulated result across source images.*
-**Source**: A colourful live camera feed or recorded footage with distinct red, green, and blue elements.
+**Source**: A colorful live camera feed or recorded footage with distinct red, green, and blue elements.
 
-**Objective**: Understand how barrel rotation moves bit planes between colour channels.
+**Objective**: Understand how barrel rotation moves bit planes between color channels.
 
 1. **Identity**: Confirm the output matches the input with all controls at zero.
 2. **Rotate by 10**: Turn Bit Rotate to approximately one-third of its range. The entire U channel now occupies the Y position — the image takes on a bluish monochrome cast with the original Y appearing in UV positions.
 3. **Rotate by 20**: Turn Bit Rotate to approximately two-thirds. Now V occupies Y — the image gains a reddish-magenta cast.
-4. **Fine rotation**: Set Bit Rotate to a value between 0 and 10 (roughly 10–30% of range). Individual bits leak between channels, creating partial colour shifts and banding artefacts.
+4. **Fine rotation**: Set Bit Rotate to a value between 0 and 10 (roughly 10–30% of range). Individual bits leak between channels, creating partial color shifts and banding artefacts.
 5. **Mirror mode**: Toggle Rotate Dir (Switch 7). The bit-order reversal creates a dramatically different effect — brightness values undergo a nonlinear permutation similar to bit-reversal in the Bitcullis program.
 
 **Key concepts**: Rotation by multiples of 10 produces clean channel swaps, non-multiple rotations create inter-channel bit leakage, mirror reverses the entire significance hierarchy
@@ -234,12 +234,12 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 **Objective**: Explore the two XOR modes and how they interact with barrel rotation.
 
 1. **Self XOR without rotation**: Set XOR Mask above 10%, Bit Rotate at 0. The self-XOR highlights transitions between adjacent bits — the output shows fine edge detail, like a spatial derivative applied per-bit.
-2. **Cross-channel XOR**: Toggle XOR Mode (Switch 8). The channels fold into each other — strong colour artefacts appear as Y information leaks into UV.
+2. **Cross-channel XOR**: Toggle XOR Mode (Switch 8). The channels fold into each other — strong color artefacts appear as Y information leaks into UV.
 3. **XOR + rotation**: Set Bit Rotate to ~15 (roughly 50%). The barrel rotation rearranges the planes *before* XOR, so the XOR now operates on a scrambled bit-field. The combined effect is more chaotic than either alone.
 4. **Channel swap**: Increase Swap Depth to 5. The top 5 bits of Y and U are exchanged before XOR, creating a luminance/chrominance hybrid.
 5. **Bit crush**: Increase Crush Floor to 3. The three LSBs of each channel are zeroed — the XOR texture is posterised into coarser steps.
 
-**Key concepts**: Self XOR acts as a bitwise edge detector, cross-channel XOR creates colour interference, the order is rotation → XOR → crush, so each stage transforms the result of the previous
+**Key concepts**: Self XOR acts as a bitwise edge detector, cross-channel XOR creates color interference, the order is rotation → XOR → crush, so each stage transforms the result of the previous
 
 ---
 
@@ -267,10 +267,10 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 - **Multiples of 10 for clean swaps**: Rotating by exactly 0, 10, or 20 positions produces clean channel rotations with no inter-channel bit leakage. Use these as starting points, then add fine rotation for controlled artefacts.
 - **Self XOR for edges**: Self-XOR mode acts as a bitwise edge detector — it highlights transitions between adjacent bit planes. Useful for extracting textural detail from the bit-manipulated signal.
-- **Crush after rotation**: Because bit crush operates after rotation, it posterises the *rearranged* planes. Crushing after a 15-position rotation quantises a hybrid of Y and UV data, creating colour-banded posterisation that no standard posteriser can produce.
+- **Crush after rotation**: Because bit crush operates after rotation, it posterises the *rearranged* planes. Crushing after a 15-position rotation quantises a hybrid of Y and UV data, creating color-banded posterisation that no standard posteriser can produce.
 - **Temporal animation is cyclic**: The 1024-frame cycle means the animation repeats every ~17 seconds at 60 fps. Use Time XOR to control the density of the temporal pattern.
-- **Mirror for nonlinear distortion**: Mirror mode reverses the significance hierarchy — the MSB becomes the LSB. This is a nonlinear permutation that produces chaotic brightness and colour mappings, similar to bit-order reversal in Bitcullis.
-- **Swap for partial blending**: The Swap Depth control provides a gradual way to blend Y and U content. Low swap depths create subtle colour tinting; high swap depths produce full channel exchange.
+- **Mirror for nonlinear distortion**: Mirror mode reverses the significance hierarchy — the MSB becomes the LSB. This is a nonlinear permutation that produces chaotic brightness and color mappings, similar to bit-order reversal in Bitcullis.
+- **Swap for partial blending**: The Swap Depth control provides a gradual way to blend Y and U content. Low swap depths create subtle color tinting; high swap depths produce full channel exchange.
 - **Mix for layering**: Use the Mix fader at 30–50% to layer the bit-manipulation artefacts as a translucent texture over the original image.
 - **Bypass for A/B**: Switch 11 instantly compares the processed and unprocessed signal.
 
@@ -283,11 +283,11 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 | **Barrel Rotator** | A combinational circuit that shifts all bits in a register by an arbitrary number of positions in a single clock cycle using a multiplexer network. |
 | **Bit Crush** | Zeroing the least significant bit planes of a signal, reducing its effective bit depth and creating visible quantisation steps. |
 | **Bit Plane** | A single binary layer within a multi-bit pixel value; the MSB plane carries half the dynamic range, the LSB plane carries ±1 count. |
-| **DDS** | Direct Digital Synthesis; a technique for generating time-varying signals using a phase accumulator and lookup table. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Frame Counter** | A register that increments on each vertical sync pulse, providing a temporal index for animation effects. |
 | **LSB** | Least Significant Bit; the binary digit with the smallest weight in a multi-bit number. |
 | **MSB** | Most Significant Bit; the binary digit with the largest weight in a multi-bit number. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **XOR** | Exclusive OR; a logic operation that outputs 1 when its inputs differ and 0 when they match. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

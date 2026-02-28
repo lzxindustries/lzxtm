@@ -4,7 +4,7 @@ sidebar_position: 283
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
 image: /img/instruments/videomancer/washbrush/washbrush_hero.png
-description: "Program guide for Washbrush, a Videomancer quantel program for the LZX video synthesizer."
+description: "The Quantel Paintbox, introduced in 1981, was the first commercially successful digital paint system for broadcast television."
 ---
 
 import washbrush_before_after from '/img/instruments/videomancer/washbrush/washbrush_before_after.png';

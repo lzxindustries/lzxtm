@@ -4,7 +4,7 @@ sidebar_position: 225
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero.png
-description: "Program guide for Scatter, a Videomancer pixel program for the LZX video synthesizer."
+description: "Every pixel in a digital video frame is a number."
 ---
 
 import scatter_before_after from '/img/instruments/videomancer/scatter/scatter_before_after.png';
@@ -286,13 +286,13 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Scatter uses no BRAMs. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Edge Fade** | Spatial attenuation of an effect based on distance from the frame boundary, producing a vignette pattern. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hash** | A deterministic function that maps input coordinates to a pseudo-random output value for structured patterns. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **XOR** | Exclusive-or; a bitwise operation that outputs 1 when inputs differ and 0 when inputs agree. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 222
 slug: /instruments/videomancer/rupture
 title: "Rupture"
 image: /img/instruments/videomancer/rupture/rupture_hero.png
-description: "Program guide for Rupture, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Color folding is the video equivalent of bending sheet metal past its elastic limit — push a signal value beyond its maximum and, instead of clipping fl..."
 ---
 
 import rupture_before_after from '/img/instruments/videomancer/rupture/rupture_before_after.png';
@@ -34,7 +34,7 @@ import rupture_source3_kodim01_bw from '/img/instruments/videomancer/rupture/rup
 
 ## Overview
 
-Color folding is the video equivalent of bending sheet metal past its elastic limit — push a signal value beyond its maximum and, instead of clipping flat, it reflects back downward, creating a mirror-image contour inside the original gradient. Rupture applies this principle to every pixel of every channel, folding brightness and chrominance values through configurable offset thresholds. The result is a prismatic decomposition of the source image into bands of inverted and re-inverted color — reminiscent of oil-on-water iridescence, solarization, or the split-primary color effects of the Fairlight CVI's "Break Colourize" function.
+Color folding is the video equivalent of bending sheet metal past its elastic limit — push a signal value beyond its maximum and, instead of clipping flat, it reflects back downward, creating a mirror-image contour inside the original gradient. Rupture applies this principle to every pixel of every channel, folding brightness and chrominance values through configurable offset thresholds. The result is a prismatic decomposition of the source image into bands of inverted and re-inverted color — reminiscent of oil-on-water iridescence, solarization, or the split-primary color effects of the Fairlight CVI's "Break Colorize" function.
 
 The program chains up to four fold stages in cascade. Each stage adds the same per-channel offset and folds any overflow back into range. Because the fold operation is nonlinear, cascading it produces increasingly complex contour structures — a single fold creates one mirror boundary; two folds create nested inversions; four folds produce fractal-like banding where every tonal gradient in the source is sliced into multiple reflected strips. The Hue knob distributes the fold offset across Y, U, and V channels in a four-quadrant rotation pattern, allowing the artist to target specific color axes.
 
@@ -54,7 +54,7 @@ Rupture offers two fold behaviors. **Triangle fold** (mirror) reflects overflow 
 
 ### Fairlight CVI Heritage
 
-The Fairlight Computer Video Instrument (1984) pioneered real-time video effects including a "Break Colourize" function that decomposed video into color bands by folding and offsetting individual channels. Rupture extends this concept with configurable cascade depth and hue-angle distribution — features that were not possible with the CVI's fixed architecture. The Fairlight category in Videomancer's program library collects effects inspired by this lineage of per-channel nonlinear color processing.
+The Fairlight Computer Video Instrument (1984) pioneered real-time video effects including a "Break Colorize" function that decomposed video into color bands by folding and offsetting individual channels. Rupture extends this concept with configurable cascade depth and hue-angle distribution — features that were not possible with the CVI's fixed architecture. The Fairlight category in Videomancer's program library collects effects inspired by this lineage of per-channel nonlinear color processing.
 
 ### Cascade Depth and Harmonic Analogy
 
@@ -297,11 +297,11 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 | **Auto Sweep** | A DDS-driven slow rotation of the effective hue parameter, causing the fold color distribution to evolve continuously over time. |
 | **Cascade** | Multiple fold stages applied in series, where each stage's output feeds the next stage's input, compounding the nonlinear contour effect. |
 | **CVI** | Computer Video Instrument; the Fairlight CVI (1984) pioneered real-time video effects including channel-based color folding. |
-| **DDS** | Direct Digital Synthesis; a technique for generating continuously-variable waveforms from a fixed-rate accumulator and lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fold** | A nonlinear operation that reflects signal values exceeding a threshold back into range, creating contour boundaries in smooth gradients. |
 | **Hue Distribution** | A 4-quadrant scheme that assigns different fold offsets to Y, U, and V channels based on the Hue parameter angle. |
-| **Interpolator** | A linear crossfade between dry (unprocessed) and wet (processed) signals, controlled by the Mix fader. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Iridescence** | The appearance of shifting spectral colors, as seen in oil films, soap bubbles, or beetle shells — an apt visual metaphor for cascaded fold color patterns. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Triangle Fold** | Fold mode where overflow is reflected by bitwise inversion, creating smooth V-shaped contour reversals. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

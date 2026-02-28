@@ -4,7 +4,7 @@ sidebar_position: 16
 slug: /instruments/videomancer/benham
 title: "Benham"
 image: /img/instruments/videomancer/benham/benham_hero.png
-description: "Program guide for Benham, a Videomancer illusion program for the LZX video synthesizer."
+description: "In 1895, the English toymaker Charles Benham marketed a painted spinning top that seemed to do the impossible — produce vivid color sensations from noth..."
 ---
 
 import benham_hero from '/img/instruments/videomancer/benham/benham_hero.png';
@@ -285,17 +285,17 @@ These exercises progress from static pattern observation to animated field-alter
 |------|------------|
 | **Alpha-max-beta-min** | A fast approximation of Euclidean distance using weighted sums of absolute coordinate differences, avoiding square-root computation. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **DDS** | Direct Digital Synthesis; a technique that generates a waveform by incrementing a phase accumulator at a fixed rate, here used for continuous rotation. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Duty cycle** | The fraction of one period during which a signal is in the active (white) state; controls the width of white arcs relative to black gaps. |
 | **Fechner colors** | Subjective color sensations perceived when viewing flickering black-and-white patterns, caused by differing temporal responses of the retinal cone types. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Interlaced fields** | A video scanning method where each frame is split into two fields (odd and even lines) displayed sequentially, producing temporal flicker at the field rate. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT** | Look-Up Table; a small ROM that maps an input index to a pre-computed output value, here used for the sector count table. |
 | **Octant** | One of eight 45-degree sectors dividing a full circle, used to simplify angle computation with shift-and-compare logic. |
 | **Phase accumulator** | A register that increments by a fixed step each cycle, wrapping at overflow to produce a sawtooth ramp representing angular position. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 
 ---

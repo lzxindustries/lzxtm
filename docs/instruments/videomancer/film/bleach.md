@@ -4,7 +4,7 @@ sidebar_position: 20
 slug: /instruments/videomancer/bleach
 title: "Bleach"
 image: /img/instruments/videomancer/bleach/bleach_hero.png
-description: "Program guide for Bleach, a Videomancer film program for the LZX video synthesizer."
+description: "Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in color negati..."
 ---
 
 import bleach_hero from '/img/instruments/videomancer/bleach/bleach_hero.png';
@@ -27,11 +27,11 @@ import bleach_exercise3_result from '/img/instruments/videomancer/bleach/bleach_
 
 ## Overview
 
-Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in colour negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the colour dyes. The result is a distinctive high-contrast, desaturated image with dense, luminous highlights and crushed shadows. This look was famously used in *Saving Private Ryan* (1998), *Se7en* (1995), *Minority Report* (2002), and many war and noir films.
+Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in color negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the color dyes. The result is a distinctive high-contrast, desaturated image with dense, luminous highlights and crushed shadows. This look was famously used in *Saving Private Ryan* (1998), *Se7en* (1995), *Minority Report* (2002), and many war and noir films.
 
 The entire processing pipeline uses only shift-based arithmetic — no multiplications — ensuring reliable timing closure on the iCE40 HX4K at 74.25 MHz. This gives the pipeline an angular, stepped character that actually enhances the photochemical feel, since film grain and developing chemistry are inherently nonlinear processes.
 
-The name directly references the bleach chemistry step. In standard C-41 film processing, the bleach bath removes the metallic silver after colour dyes have formed, leaving only the transparent dye layers. Omitting or shortening this step retains the opaque silver, which adds density, reduces saturation, and increases perceived contrast. Bleach puts this chemical decision into the hands of the video artist as a bank of real-time controls.
+The name directly references the bleach chemistry step. In standard C-41 film processing, the bleach bath removes the metallic silver after color dyes have formed, leaving only the transparent dye layers. Omitting or shortening this step retains the opaque silver, which adds density, reduces saturation, and increases perceived contrast. Bleach puts this chemical decision into the hands of the video artist as a bank of real-time controls.
 
 ---
 
@@ -39,7 +39,7 @@ The name directly references the bleach chemistry step. In standard C-41 film pr
 
 ### The Bleach Bypass Process
 
-In conventional photochemical colour film processing, exposed silver halide crystals are developed into metallic silver, colour couplers form transparent dyes around the silver, then the bleach bath dissolves the silver away, leaving only the colour dye image. When the bleach step is skipped or shortened, the metallic silver remains in the emulsion — superimposed on the colour dyes. This silver acts as a neutral-density filter that (1) reduces colour saturation because the opaque silver overlaps the transparent dyes, (2) increases contrast because silver density adds to the existing dye density, and (3) changes highlight character because silver grains have a different reflective quality than dye layers.
+In conventional photochemical color film processing, exposed silver halide crystals are developed into metallic silver, color couplers form transparent dyes around the silver, then the bleach bath dissolves the silver away, leaving only the color dye image. When the bleach step is skipped or shortened, the metallic silver remains in the emulsion — superimposed on the color dyes. This silver acts as a neutral-density filter that (1) reduces color saturation because the opaque silver overlaps the transparent dyes, (2) increases contrast because silver density adds to the existing dye density, and (3) changes highlight character because silver grains have a different reflective quality than dye layers.
 
 ### ENR vs Skip Bleach
 
@@ -55,7 +55,7 @@ Real film grain arises from the random spatial distribution of silver halide cry
 
 ### Tone Shift
 
-Retained silver has a slight colour cast depending on the emulsion chemistry and development temperature. Bleach models this as a fixed additive offset — Cold adds blue (U+12, V−8) and Warm adds amber (U−8, V+12) — creating the characteristic cool steel or warm sepia tone associated with different bleach bypass implementations.
+Retained silver has a slight color cast depending on the emulsion chemistry and development temperature. Bleach models this as a fixed additive offset — Cold adds blue (U+12, V−8) and Warm adds amber (U−8, V+12) — creating the characteristic cool steel or warm sepia tone associated with different bleach bypass implementations.
 
 
 ---
@@ -103,7 +103,7 @@ data_in ──► [sync delay] ──► dry ──► Interpolator ◄── we
                                       data_out
 ```
 
-The pipeline is strictly serial — each stage modifies the signal and passes it to the next. The desaturation stage reduces chroma saturation before any luma processing, mirroring the chemistry where silver overlaps the dyes. The silver blend stage then boosts luma proportionally to its current value (modelling the density of retained silver, which is proportional to exposure). The contrast stage expands the tonal range around the midpoint. Finally, Stage 5 applies four independent corrections: highlight protection blends bright pixels back toward the original to prevent clipping, black point lift prevents shadows from crushing to zero, grain adds LFSR noise, and tone shift adds a colour cast.
+The pipeline is strictly serial — each stage modifies the signal and passes it to the next. The desaturation stage reduces chroma saturation before any luma processing, mirroring the chemistry where silver overlaps the dyes. The silver blend stage then boosts luma proportionally to its current value (modelling the density of retained silver, which is proportional to exposure). The contrast stage expands the tonal range around the midpoint. Finally, Stage 5 applies four independent corrections: highlight protection blends bright pixels back toward the original to prevent clipping, black point lift prevents shadows from crushing to zero, grain adds LFSR noise, and tone shift adds a color cast.
 
 The signal path for the original Y value is carried through as `s_y_orig` for the highlight protection blend in Stage 5, creating a parallel data path that preserves the pre-silver, pre-contrast brightness for selective blending in the highlights.
 
@@ -123,7 +123,7 @@ The signal path for the original Y value is carried through as `s_y_orig` for th
 | Default | 75% |
 | Suffix | % |
 
-Controls the amount of bleach bypass (silver retention) applied, affecting primarily the desaturation depth. The pot value is decoded into four threshold zones: at low values (0–255), chroma passes through unaffected; at 256–511, light desaturation removes 12.5% of chroma offset; at 512–767, moderate desaturation removes 25%; at high values (768–1023), strong desaturation removes 50%, leaving only half the original colour saturation. This models the duration of the bleach bath — less bleaching means more retained silver and thus more desaturation.
+Controls the amount of bleach bypass (silver retention) applied, affecting primarily the desaturation depth. The pot value is decoded into four threshold zones: at low values (0–255), chroma passes through unaffected; at 256–511, light desaturation removes 12.5% of chroma offset; at 512–767, moderate desaturation removes 25%; at high values (768–1023), strong desaturation removes 50%, leaving only half the original color saturation. This models the duration of the bleach bath — less bleaching means more retained silver and thus more desaturation.
 
 ---
 
@@ -192,7 +192,7 @@ Lifts the black point, setting a minimum floor for luma. The pot value shifted r
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control the chemical variant, grain character, colour tone, inversion, and bypass. Each affects an independent aspect of the bleach bypass simulation. Toggle 7 selects the processing variant (ENR vs Skip), Toggle 8 and Grain pot together control grain texture, Toggle 9 adds a colour cast, Toggle 10 inverts luma, and Toggle 11 bypasses all processing.
+The five toggles control the chemical variant, grain character, color tone, inversion, and bypass. Each affects an independent aspect of the bleach bypass simulation. Toggle 7 selects the processing variant (ENR vs Skip), Toggle 8 and Grain pot together control grain texture, Toggle 9 adds a color cast, Toggle 10 inverts luma, and Toggle 11 bypasses all processing.
 
 ---
 
@@ -217,18 +217,18 @@ These exercises progress from basic desaturation through full silver retention t
 
 <img src={bleach_exercise1_result} alt="Basic Desaturation result"/>
 *Basic Desaturation — simulated result across source images.*
-**Source**: Colourful footage — flowers, clothing, or colourful scenery.
+**Source**: Colorful footage — flowers, clothing, or colorful scenery.
 
 **Objective**: Understand how the Bypass Amt control desaturates chroma in stepped thresholds.
 
-1. **Full colour**: Start with Bypass Amt at 0%. The image passes through with no desaturation.
+1. **Full color**: Start with Bypass Amt at 0%. The image passes through with no desaturation.
 2. **Light desat**: Increase Bypass Amt past 25%. A subtle reduction in saturation appears.
-3. **Moderate**: Push past 50%. Colours lose about a quarter of their intensity.
-4. **Strong**: Push past 75%. Colours are now only half their original saturation — clearly washed out.
+3. **Moderate**: Push past 50%. Colors lose about a quarter of their intensity.
+4. **Strong**: Push past 75%. Colors are now only half their original saturation — clearly washed out.
 5. **Compare**: Toggle Bypass on and off to compare the desaturated result with the original.
 6. **Threshold steps**: Move Bypass Amt slowly and notice the step-like transitions at 25%, 50%, 75%.
 
-**Key concepts**: Desaturation pulls chroma toward neutral 512 using shifted offsets, four discrete thresholds model different bleach bath durations, the effect is most visible on saturated colours
+**Key concepts**: Desaturation pulls chroma toward neutral 512 using shifted offsets, four discrete thresholds model different bleach bath durations, the effect is most visible on saturated colors
 
 ---
 
@@ -267,14 +267,14 @@ These exercises progress from basic desaturation through full silver retention t
 6. **Hi Prot + Black Pt**: Set Hi Prot to about 50%, Black Pt to about 10%.
 7. **Mix for subtlety**: Reduce Mix to about 70% to blend the processed look with the original.
 
-**Key concepts**: All stages compound: desaturation + silver + contrast + grain + tone create a unified photochemical aesthetic, Mix blending allows subtle application, tone shift establishes colour temperature
+**Key concepts**: All stages compound: desaturation + silver + contrast + grain + tone create a unified photochemical aesthetic, Mix blending allows subtle application, tone shift establishes color temperature
 
 ---
 
 
 ## Tips
 
-- **Start with desaturation**: The bleach bypass look is primarily about *reduced colour*, not about contrast. Set Bypass Amt first, then add Silver and Contrast to taste.
+- **Start with desaturation**: The bleach bypass look is primarily about *reduced color*, not about contrast. Set Bypass Amt first, then add Silver and Contrast to taste.
 - **ENR for subtlety, Skip for impact**: ENR mode produces a more controlled lift suitable for narrative filmmaking; Skip mode is more aggressive, better for music videos and stylised work.
 - **Highlight protection saves detail**: If Silver and Contrast push highlights too hard, Hi Prot at 40–60% brings them back without reducing the impact in midtones and shadows.
 - **Black Pt as "film fog"**: A small Black Pt lift (5–15%) adds the look of under-developed print stock — shadows never reach true black.
@@ -288,17 +288,17 @@ These exercises progress from basic desaturation through full silver retention t
 
 | Term | Definition |
 |------|------------|
-| **Bleach bypass** | A photochemical film processing technique in which the bleach bath is partially or fully omitted, leaving metallic silver in the emulsion alongside colour dyes to increase contrast and reduce saturation. |
-| **C-41** | The standard chemical process for developing colour negative film, consisting of developer, bleach, and fixer baths. |
-| **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
+| **Bleach bypass** | A photochemical film processing technique in which the bleach bath is partially or fully omitted, leaving metallic silver in the emulsion alongside color dyes to increase contrast and reduce saturation. |
+| **C-41** | The standard chemical process for developing color negative film, consisting of developer, bleach, and fixer baths. |
+| **Chroma** | The color-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
 | **Clamping** | Limiting a signal value to a fixed range (typically 0–1023 in 10-bit video) to prevent overflow or underflow artifacts. |
 | **ENR** | Ernesto Novelli Rizzoli process; a controlled secondary silver development technique invented at Technicolor Rome that adds metallic silver proportionally to exposure. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence used for film grain noise. |
-| **Luma** | The brightness component (Y) of a YUV video signal, independent of colour information. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value rather than wrapping around on overflow. |
 | **Silver halide** | Light-sensitive crystalline compound (such as silver bromide) embedded in photographic film emulsion that forms the latent image upon exposure. |
 | **Skip bleach** | A variant of bleach bypass that omits the bleach bath entirely rather than shortening it, producing a more aggressive high-contrast effect than ENR. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

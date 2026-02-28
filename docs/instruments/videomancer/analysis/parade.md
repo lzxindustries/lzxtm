@@ -4,7 +4,7 @@ sidebar_position: 188
 slug: /instruments/videomancer/parade
 title: "Parade"
 image: /img/instruments/videomancer/parade/parade_hero.png
-description: "Program guide for Parade, a Videomancer analysis program for the LZX video synthesizer."
+description: "Before digital scopes and vectorscopes, broadcast engineers relied on cathode-ray tube waveform monitors to see inside the video signal."
 ---
 
 import parade_before_after from '/img/instruments/videomancer/parade/parade_before_after.png';
@@ -294,16 +294,16 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the three channel line buffers. |
-| **DDS** | Direct Digital Synthesis; a digital technique for generating periodic waveforms using a phase accumulator. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Gain** | Vertical magnification of the waveform display, analogous to V/div on an oscilloscope. |
 | **Graticule** | Calibrated reference grid lines overlaid on the waveform display at known signal levels. |
 | **Line Buffer** | A BRAM-based memory that stores one complete scanline of pixel values for subsequent readout and display. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Parade** | A waveform display layout where Y, U, and V channels are shown in three side-by-side columns. |
 | **Persistence** | The duration a CRT phosphor dot remains visible after excitation; simulated by widening the vertical dot match threshold. |
 | **Phosphor** | The luminescent coating inside a CRT that glows when struck by an electron beam; different phosphor types emit different colors. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

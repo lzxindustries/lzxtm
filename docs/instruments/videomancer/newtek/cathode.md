@@ -4,7 +4,7 @@ sidebar_position: 37
 slug: /instruments/videomancer/cathode
 title: "Cathode"
 image: /img/instruments/videomancer/cathode/cathode_hero.png
-description: "Program guide for Cathode, a Videomancer newtek program for the LZX video synthesizer."
+description: "Lightning is nature's most dramatic display of electrical energy — a branching, jagged path of ionized air that exists for less than a millisecond but b..."
 ---
 
 import cathode_hero from '/img/instruments/videomancer/cathode/cathode_hero.png';
@@ -292,11 +292,11 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 | **Galois LFSR** | A variant of the Linear Feedback Shift Register that applies XOR taps during the shift operation, producing a deterministic pseudo-random bit sequence. |
 | **Gaussian glow** | A brightness falloff profile shaped by the Gaussian (bell curve) function, creating a smooth halo that tapers from a bright core to a dim fringe. |
 | **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a function of its previous state, generating a pseudo-random sequence that cycles through all non-zero states. |
-| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV colour space. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT (Lookup Table)** | A pre-computed array of values indexed by an input, used here for the 64-entry Gaussian glow intensity profile. |
 | **Midpoint displacement** | A fractal subdivision technique that recursively displaces the midpoint of a line segment by a random amount, producing jagged natural-looking paths. |
-| **Pipeline** | A series of sequential processing stages in hardware, each completing one clock cycle of work and passing results to the next stage. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **XOR (Exclusive-OR)** | A logic operation that returns true when exactly one of two inputs is true, used here for LFSR feedback taps and fork probability tests. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

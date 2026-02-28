@@ -4,7 +4,7 @@ sidebar_position: 244
 slug: /instruments/videomancer/stencil
 title: "Stencil"
 image: /img/instruments/videomancer/stencil/stencil_hero.png
-description: "Program guide for Stencil, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Stencil converts the input video into a binary mask based on luminance threshold, then uses that mask to selectively reveal either a solid fill color or..."
 ---
 
 import stencil_before_after from '/img/instruments/videomancer/stencil/stencil_before_after.png';
@@ -26,7 +26,7 @@ import stencil_source3_kodim01_bw from '/img/instruments/videomancer/stencil/ste
 
 
 <img src={stencil_hero} alt="Stencil hero image"/>
-*Hard-edged luminance masks carve vivid fill colours from the video stream, turning every frame into a cut-paper silhouette.*
+*Hard-edged luminance masks carve vivid fill colors from the video stream, turning every frame into a cut-paper silhouette.*
 <img src={stencil_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Stencil applied.*
 
@@ -34,11 +34,11 @@ import stencil_source3_kodim01_bw from '/img/instruments/videomancer/stencil/ste
 
 ## Overview
 
-Stencil converts the input video into a binary mask based on luminance threshold, then uses that mask to selectively reveal either a solid fill colour or the original image — creating bold, graphic compositions reminiscent of screen-printed posters and paper stencil art. The two primary modes — Cut and Stamp — invert the relationship between mask and image: Cut reveals the fill colour where the mask is active (bright areas become solid colour), while Stamp reveals the original image through the mask (bright areas retain detail, dark areas become fill).
+Stencil converts the input video into a binary mask based on luminance threshold, then uses that mask to selectively reveal either a solid fill color or the original image — creating bold, graphic compositions reminiscent of screen-printed posters and paper stencil art. The two primary modes — Cut and Stamp — invert the relationship between mask and image: Cut reveals the fill color where the mask is active (bright areas become solid color), while Stamp reveals the original image through the mask (bright areas retain detail, dark areas become fill).
 
-The pipeline operates entirely on the Y (luminance) channel for mask generation, but applies independently coloured fill and edge overlays in the UV domain using hue-to-UV conversion. An optional edge detector traces the boundary between masked and unmasked regions, outlining the stencil shape in a second independently coloured hue. Soft edge mode feathers the transition from hard binary to a smooth gradient proportional to the distance from the threshold, creating a more organic, airbrushed look.
+The pipeline operates entirely on the Y (luminance) channel for mask generation, but applies independently colored fill and edge overlays in the UV domain using hue-to-UV conversion. An optional edge detector traces the boundary between masked and unmasked regions, outlining the stencil shape in a second independently colored hue. Soft edge mode feathers the transition from hard binary to a smooth gradient proportional to the distance from the threshold, creating a more organic, airbrushed look.
 
-The name references the physical stencil — a sheet with cut-out shapes through which ink or paint is applied. In traditional printmaking, the stencil defines hard boundaries between inked and un-inked areas. Stencil applies the same principle to video: the luminance threshold is the knife, the fill colour is the ink, and the live video is the paper beneath.
+The name references the physical stencil — a sheet with cut-out shapes through which ink or paint is applied. In traditional printmaking, the stencil defines hard boundaries between inked and un-inked areas. Stencil applies the same principle to video: the luminance threshold is the knife, the fill color is the ink, and the live video is the paper beneath.
 
 ---
 
@@ -46,11 +46,11 @@ The name references the physical stencil — a sheet with cut-out shapes through
 
 ### Luminance Keying
 
-Luminance keying (also called luma keying) is the foundation of Stencil's mask generation. Unlike chroma keying, which isolates colours, luma keying separates pixels based on brightness alone. The technique dates back to early television, where high-contrast title cards were shot against black backgrounds and keyed into the programme signal. Stencil generalises this by allowing the threshold to be set anywhere from 0 to 1023, turning any luminance boundary into a key edge.
+Luminance keying (also called luma keying) is the foundation of Stencil's mask generation. Unlike chroma keying, which isolates colors, luma keying separates pixels based on brightness alone. The technique dates back to early television, where high-contrast title cards were shot against black backgrounds and keyed into the programme signal. Stencil generalises this by allowing the threshold to be set anywhere from 0 to 1023, turning any luminance boundary into a key edge.
 
 ### Screen Printing and Pochoir
 
-The visual effect of Stencil directly parallels screen printing (serigraphy), where ink is forced through a mesh stencil onto the substrate. The pochoir technique, used extensively in Art Deco illustration, employed hand-cut metal stencils to apply flat areas of colour. Stencil's Cut mode mirrors pochoir: bright areas become flat ink, dark areas reveal the underlying surface. The Edge overlay adds a contour line similar to the registration marks used in multi-colour print passes.
+The visual effect of Stencil directly parallels screen printing (serigraphy), where ink is forced through a mesh stencil onto the substrate. The pochoir technique, used extensively in Art Deco illustration, employed hand-cut metal stencils to apply flat areas of color. Stencil's Cut mode mirrors pochoir: bright areas become flat ink, dark areas reveal the underlying surface. The Edge overlay adds a contour line similar to the registration marks used in multi-color print passes.
 
 ### Edge Detection
 
@@ -58,7 +58,7 @@ Stencil's edge detector operates on the horizontal difference between adjacent m
 
 ### Proc Amp Model
 
-The final contrast and offset stage uses the standard proc_amp formula: `(Y − 512) × contrast / 512 + offset`. This centres the gain around the midpoint, allowing the contrast pot to expand or compress the tonal range symmetrically. The offset pot then shifts the entire result up or down, functioning as a brightness control. This two-stage adjustment after masking allows fine-tuning of the stencil output density without affecting the threshold or fill colours.
+The final contrast and offset stage uses the standard proc_amp formula: `(Y − 512) × contrast / 512 + offset`. This centres the gain around the midpoint, allowing the contrast pot to expand or compress the tonal range symmetrically. The offset pot then shifts the entire result up or down, functioning as a brightness control. This two-stage adjustment after masking allows fine-tuning of the stencil output density without affecting the threshold or fill colors.
 
 ### Feathered Edges in Video Art
 
@@ -124,7 +124,7 @@ data_in ──► [sync delay] ──► dry ──► Interpolator ◄── we
 
 The pipeline splits into two conceptual branches after Stage 1: the binary mask drives pattern placement (Stages 3–4), while the original Y value is consumed by the proc_amp stage (Stage 5) for final tonal adjustment. The edge detector in Stage 2 examines the mask itself — not the original luminance — so edge thickness is relative to the mask transition, not to the source brightness gradient. This means a slowly varying luminance ramp produces a thin edge, while a sharp brightness step produces a thick edge, which mirrors the physical stencil where a clean cut yields a sharp boundary.
 
-The Fill Color and Edge Color pots generate UV pairs from hue angles (0–360°), creating fully saturated colour fills that replace the input chroma in masked or edge regions. The luminance of fill regions comes from the contrast/offset-adjusted Y, allowing the fill colour to retain tonal variation across the stencil.
+The Fill Color and Edge Color pots generate UV pairs from hue angles (0–360°), creating fully saturated color fills that replace the input chroma in masked or edge regions. The luminance of fill regions comes from the contrast/offset-adjusted Y, allowing the fill color to retain tonal variation across the stencil.
 
 ---
 
@@ -162,7 +162,7 @@ Controls the width of the edge detection zone around the mask boundary. At the m
 | Range | 0 – 3 |
 | Default | 0 |
 
-Selects the hue angle for the fill colour applied to masked regions. The pot sweeps through 360° of hue, converting the angle to U and V chrominance values at full saturation. At 0° the fill is red, 120° is green, and 240° is blue, with all intermediate hues available. The fill colour appears wherever the mask dictates — in Cut mode, this is where the source luminance exceeds the threshold; in Stamp mode, it fills the areas where luminance is below threshold.
+Selects the hue angle for the fill color applied to masked regions. The pot sweeps through 360° of hue, converting the angle to U and V chrominance values at full saturation. At 0° the fill is red, 120° is green, and 240° is blue, with all intermediate hues available. The fill color appears wherever the mask dictates — in Cut mode, this is where the source luminance exceeds the threshold; in Stamp mode, it fills the areas where luminance is below threshold.
 
 ---
 
@@ -173,7 +173,7 @@ Selects the hue angle for the fill colour applied to masked regions. The pot swe
 | Default | 0° |
 | Suffix | ° |
 
-Selects the hue angle for the edge outline colour, independently from the fill hue. This allows the edge contour to contrast with both the fill and the original image, creating a three-colour composition: original, fill, and edge. The initial value of 180° places the edge colour opposite the default fill hue on the colour wheel, providing natural contrast. The edge colour only appears when the Edge toggle is enabled.
+Selects the hue angle for the edge outline color, independently from the fill hue. This allows the edge contour to contrast with both the fill and the original image, creating a three-color composition: original, fill, and edge. The initial value of 180° places the edge color opposite the default fill hue on the color wheel, providing natural contrast. The edge color only appears when the Edge toggle is enabled.
 
 ---
 
@@ -222,13 +222,13 @@ The five toggles define the stencil's fundamental character. Mode (Cut/Stamp) de
 | Default | 100.0% |
 | Suffix | % |
 
-Crossfades between the dry (original) and wet (processed) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the fully processed stencil effect. Intermediate values blend the stencil result with the original, useful for reducing the intensity of the effect or for creating semi-transparent overlay compositions where the stencil colour is visible but the original image shows through.
+Crossfades between the dry (original) and wet (processed) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the fully processed stencil effect. Intermediate values blend the stencil result with the original, useful for reducing the intensity of the effect or for creating semi-transparent overlay compositions where the stencil color is visible but the original image shows through.
 
 ---
 
 ## Guided Exercises
 
-These exercises progress from basic threshold masking through coloured stencil compositions to edge-traced graphic overlays.
+These exercises progress from basic threshold masking through colored stencil compositions to edge-traced graphic overlays.
 
 ### Exercise 1: Basic Threshold Mask
 
@@ -239,22 +239,22 @@ These exercises progress from basic threshold masking through coloured stencil c
 **Objective**: Understand how the Threshold control divides the image into masked and unmasked regions in Cut mode.
 
 1. **Set to Cut mode**: Ensure Mode is set to Cut.
-2. **Sweep threshold**: Slowly increase Threshold from 0% to 100%. Watch the mask boundary move across the luminance range, progressively revealing more fill colour.
-3. **Observe binary mask**: At around 50%, roughly half the image is fill colour and half is original video — a clear stencil effect.
+2. **Sweep threshold**: Slowly increase Threshold from 0% to 100%. Watch the mask boundary move across the luminance range, progressively revealing more fill color.
+3. **Observe binary mask**: At around 50%, roughly half the image is fill color and half is original video — a clear stencil effect.
 4. **Invert for reverse**: Toggle Invert On. The stencil relationship flips — formerly bright areas are now dark.
 5. **Compare**: Use Bypass to compare against the raw input.
 
-**Key concepts**: Luminance threshold creates a binary mask that divides the image at a single brightness level, Cut mode replaces bright areas with fill colour, the threshold is independent of contrast/offset
+**Key concepts**: Luminance threshold creates a binary mask that divides the image at a single brightness level, Cut mode replaces bright areas with fill color, the threshold is independent of contrast/offset
 
 ---
 
-### Exercise 2: Coloured Stencil with Edge
+### Exercise 2: Colored Stencil with Edge
 
-<img src={stencil_exercise2_result} alt="Coloured Stencil with Edge result"/>
-*Coloured Stencil with Edge — simulated result across source images.*
-**Source**: Colourful scenery or abstract video — anything with a broad luminance range.
+<img src={stencil_exercise2_result} alt="Colored Stencil with Edge result"/>
+*Colored Stencil with Edge — simulated result across source images.*
+**Source**: Colorful scenery or abstract video — anything with a broad luminance range.
 
-**Objective**: Create a three-colour composition using fill, edge, and original image.
+**Objective**: Create a three-color composition using fill, edge, and original image.
 
 1. **Set threshold**: Threshold at about 45% to capture a broad stencil.
 2. **Choose fill hue**: Set Fill Color to about 60° (yellow-green).
@@ -264,7 +264,7 @@ These exercises progress from basic threshold masking through coloured stencil c
 6. **Stamp mode**: Toggle Mode to Stamp. The relationship reverses — the original video now appears through the bright areas.
 7. **Adjust contrast**: Increase Contrast to about 70% for a punchier look.
 
-**Key concepts**: Fill and edge hues are independent, edge width controls contour thickness, Cut and Stamp invert the mask-to-image relationship, three-colour composition from two hue controls plus the source
+**Key concepts**: Fill and edge hues are independent, edge width controls contour thickness, Cut and Stamp invert the mask-to-image relationship, three-color composition from two hue controls plus the source
 
 ---
 
@@ -292,13 +292,13 @@ These exercises progress from basic threshold masking through coloured stencil c
 ## Tips
 
 - **Start with contrast**: Feed Stencil a high-contrast source for the cleanest mask edges. Low-contrast material produces indistinct, noisy masks.
-- **Cut for graphics, Stamp for compositing**: Cut mode creates bold flat-colour graphics; Stamp mode retains video detail for overlay-style compositions.
+- **Cut for graphics, Stamp for compositing**: Cut mode creates bold flat-color graphics; Stamp mode retains video detail for overlay-style compositions.
 - **Edge adds dimension**: Even a thin edge outline (10–15%) adds visual definition to the stencil boundary, separating fill from image.
-- **Complementary hues**: Set Fill and Edge colours 180° apart on the colour wheel for maximum visual contrast in the contour.
+- **Complementary hues**: Set Fill and Edge colors 180° apart on the color wheel for maximum visual contrast in the contour.
 - **Soft mode for organic looks**: Feathered transitions suit organic footage (faces, nature) better than hard binary masks.
-- **Use Offset to lighten fills**: Increasing Offset brightens the fill region, creating pastel tones instead of deep saturated colours.
+- **Use Offset to lighten fills**: Increasing Offset brightens the fill region, creating pastel tones instead of deep saturated colors.
 - **Invert for reverse-out**: Invert + high threshold creates bright shapes on a dark field — useful for title card compositions.
-- **Mix for subtlety**: Blend at 60–80% for a look where the stencil colour tints the image rather than replacing it.
+- **Mix for subtlety**: Blend at 60–80% for a look where the stencil color tints the image rather than replacing it.
 
 ---
 
@@ -308,13 +308,13 @@ These exercises progress from basic threshold masking through coloured stencil c
 |------|------------|
 | **Alpha channel** | A per-pixel transparency value used in digital compositing to blend layers; related to Stencil's soft mask gradient. |
 | **Binary mask** | A per-pixel map containing only two values (0 or 1), used to select between two signal sources at each pixel. |
-| **BT.601** | The ITU-R standard defining the YUV colour encoding used in standard-definition video and as the native colour space in Videomancer. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Feathering** | Gradually blending the edge of a mask from fully opaque to fully transparent, creating a smooth transition rather than a hard step. |
-| **Hue** | The attribute of colour that determines its position on the colour wheel, measured in degrees from 0° (red) through 120° (green) to 240° (blue). |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used for dry/wet blending. |
-| **Luma keying** | A compositing technique that generates a matte (mask) from the brightness of the source signal rather than its colour. |
-| **Pochoir** | An Art Deco illustration technique using hand-cut metal stencils to apply flat areas of colour through the openings. |
-| **Proc amp** | Processing amplifier; a standard video circuit for adjusting contrast (gain) and brightness (offset) of the luminance channel. |
-| **Screen printing** | A printing technique where ink is forced through a mesh stencil onto the substrate, producing flat areas of solid colour. |
+| **Hue** | The attribute of color that determines its position on the color wheel, measured in degrees from 0° (red) through 120° (green) to 240° (blue). |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma keying** | A compositing technique that generates a matte (mask) from the brightness of the source signal rather than its color. |
+| **Pochoir** | An Art Deco illustration technique using hand-cut metal stencils to apply flat areas of color through the openings. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Screen printing** | A printing technique where ink is forced through a mesh stencil onto the substrate, producing flat areas of solid color. |
 | **Serigraphy** | The fine-art term for screen printing, especially when used for artistic rather than commercial reproduction. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

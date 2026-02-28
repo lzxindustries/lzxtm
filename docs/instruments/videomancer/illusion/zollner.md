@@ -4,7 +4,7 @@ sidebar_position: 288
 slug: /instruments/videomancer/zollner
 title: "Zollner"
 image: /img/instruments/videomancer/zollner/zollner_hero.png
-description: "Program guide for Zollner, a Videomancer illusion program for the LZX video synthesizer."
+description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noti..."
 ---
 
 import zollner_before_after from '/img/instruments/videomancer/zollner/zollner_before_after.png';

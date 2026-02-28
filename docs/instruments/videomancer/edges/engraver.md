@@ -4,7 +4,7 @@ sidebar_position: 89
 slug: /instruments/videomancer/engraver
 title: "Engraver"
 image: /img/instruments/videomancer/engraver/engraver_hero.png
-description: "Program guide for Engraver, a Videomancer edges program for the LZX video synthesizer."
+description: "In traditional engraving, a craftsman cuts lines into a metal plate."
 ---
 
 import engraver_hero from '/img/instruments/videomancer/engraver/engraver_hero.png';
@@ -292,17 +292,17 @@ These three exercises progress from basic posterization to full engraved line ar
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU standard defining the color matrix used to convert between RGB and YUV in standard-definition video. Videomancer uses BT.601 coefficients throughout. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Cel** | A transparent sheet (cellulose acetate) used in traditional animation, painted with flat colors and overlaid on backgrounds. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Contour** | A line drawn at the boundary of a region; in NPR rendering, contour lines mark silhouettes and creases. |
 | **Edge Detection** | A signal processing technique that identifies abrupt transitions in value between adjacent samples. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Intaglio** | A family of printmaking techniques where the image is incised into a surface (engraving, etching, mezzotint). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

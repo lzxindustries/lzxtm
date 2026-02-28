@@ -4,7 +4,7 @@ sidebar_position: 207
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero.png
-description: "Program guide for Procamp, a Videomancer color program for the LZX video synthesizer."
+description: "Every broadcast facility has a processing amplifier — a 'proc amp' — sitting between source and destination, adjusting signal levels so that everything ..."
 ---
 
 import procamp_before_after from '/img/instruments/videomancer/procamp/procamp_before_after.png';
@@ -273,6 +273,6 @@ These exercises progress from basic level correction to creative color manipulat
 | **DC Offset** | A constant value added to every sample in a channel, shifting the entire signal up or down. |
 | **Fade-to-Color** | Interpolation between the processed signal and a fixed target color (black, white, or neutral chroma); distinct from a wet/dry mix. |
 | **Gain** | Multiplicative scaling of a signal centered around a reference point (512 in 10-bit YUV); equivalent to "contrast" in broadcast terminology. |
-| **Interpolator** | A pipelined hardware unit that computes a + (b − a) × t for crossfading between two values. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies contrast and brightness correction to a video signal channel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U = blue-yellow, V = red-cyan), used throughout the Videomancer video pipeline. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

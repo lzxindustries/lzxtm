@@ -4,7 +4,7 @@ sidebar_position: 44
 slug: /instruments/videomancer/chinook
 title: "Chinook"
 image: /img/instruments/videomancer/chinook/chinook_hero.png
-description: "Program guide for Chinook, a Videomancer warp program for the LZX video synthesizer."
+description: "There is a luminous trembling in the late paintings of J.M.W."
 ---
 
 import chinook_hero from '/img/instruments/videomancer/chinook/chinook_hero.png';
@@ -292,15 +292,15 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 | Term | Definition |
 |------|------------|
 | **Aerial perspective** | The visual phenomenon where distant objects appear lighter, less saturated, and lower in contrast due to atmospheric light scattering. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that increments by a fixed frequency word each clock cycle. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hash function** | A deterministic function that maps input data to a fixed-size pseudo-random output, used here to generate a turbulence displacement field from block coordinates. |
 | **Jenkins hash** | A family of non-cryptographic hash functions using XOR and bit-shift cascades, employed by Chinook for fast pseudo-random displacement generation. |
 | **Manhattan distance** | A distance metric computed as |dx| + |dy|, used in the radial envelope mode to create diamond-shaped falloff from the frame center. |
 | **Navier–Stokes equations** | The fundamental partial differential equations governing fluid dynamics, whose full solution is computationally prohibitive for real-time processing. |
 | **Refractive index** | A measure of how much a medium bends light passing through it; variations in air temperature create the refractive-index gradients that produce thermal shimmer. |
 | **Thermal envelope** | A spatial mask that modulates displacement strength across the frame, confining turbulence to a specific region such as a ground-level gradient or radial plume. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

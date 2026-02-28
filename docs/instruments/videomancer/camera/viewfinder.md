@@ -4,7 +4,7 @@ sidebar_position: 276
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
 image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png
-description: "Program guide for Viewfinder, a Videomancer camera program for the LZX video synthesizer."
+description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed ..."
 ---
 
 import viewfinder_before_after from '/img/instruments/videomancer/viewfinder/viewfinder_before_after.png';
@@ -262,14 +262,14 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 | Term | Definition |
 |------|------------|
 | **Action-Safe Area** | The inner 90% of a television frame within which all significant action should be visible on overscanning CRT displays. |
-| **BRAM** | Block RAM; dedicated FPGA memory resources. Viewfinder uses zero BRAMs. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **CRT** | Cathode Ray Tube; the display technology used in camcorder viewfinders before LCD panels. |
 | **EVF** | Electronic Viewfinder; a miniature display in a camera eyepiece showing the live camera output. |
 | **Focus Peaking** | A camera monitoring technique that highlights in-focus edges with a colored overlay. |
 | **IRE** | Institute of Radio Engineers unit; a scale for measuring video signal amplitude where 100 IRE is peak white. |
 | **LUT** | Look-Up Table; the basic FPGA logic element. Viewfinder uses approximately 350. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sobel** | A gradient-based edge detection operator; Viewfinder uses a simplified 3-pixel horizontal variant. |
 | **Title-Safe Area** | The inner 80% of a television frame within which all on-screen text must remain visible. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **Zebra Stripes** | Diagonal hatching patterns overlaid on overexposed regions of a camera viewfinder display. |

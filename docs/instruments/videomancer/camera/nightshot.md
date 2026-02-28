@@ -4,7 +4,7 @@ sidebar_position: 179
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
 image: /img/instruments/videomancer/nightshot/nightshot_hero.png
-description: "Program guide for Nightshot, a Videomancer camera program for the LZX video synthesizer."
+description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — a mode that disabled the infrared cut filter and boosted CCD gain, producing the distinc..."
 ---
 
 import nightshot_before_after from '/img/instruments/videomancer/nightshot/nightshot_before_after.png';
@@ -288,16 +288,16 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 |------|------------|
 | **AGC** | Automatic Gain Control; a feedback circuit in cameras that adjusts amplification to maintain target brightness, often causing visible gain hunting in low light. |
 | **Bloom** | Horizontal brightness smear caused by CCD charge well overflow bleeding along the readout register. |
-| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **CCD** | Charge-Coupled Device; the image sensor technology used in late-1990s camcorders. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on its own previous output. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **IR** | Infrared; electromagnetic radiation with wavelength longer than visible red light (~700 nm+). |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function (XOR) of selected bit positions, producing a pseudo-random sequence. |
-| **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **NightShot** | Sony Handycam feature (1998+) that disabled the IR cut filter and boosted CCD gain for night recording. |
 | **P43** | Green phosphor compound used in image intensifier tubes and night vision devices. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Triangle Wave** | A periodic waveform that linearly ramps up and down between bounds, used here for the AGC pump oscillator. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

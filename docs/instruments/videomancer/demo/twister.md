@@ -4,7 +4,7 @@ sidebar_position: 269
 slug: /instruments/videomancer/twister
 title: "Twister"
 image: /img/instruments/videomancer/twister/twister_hero.png
-description: "Program guide for Twister, a Videomancer demo program for the LZX video synthesizer."
+description: "Twister is a pure synthesis program — it generates imagery from scratch, producing the iconic rotating bar effect that was a staple of Amiga and Atari S..."
 ---
 
 import twister_animation from '/img/instruments/videomancer/twister/twister_animation.gif';
@@ -284,13 +284,13 @@ These exercises explore the twister from simple rotation through helical twist t
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R BT.601, the standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by accumulating a phase increment per sample and using it to index a lookup table. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Demoscene** | A computer art subculture focused on creating real-time audiovisual demonstrations within hardware constraints; originated in the 1980s on Amiga and Atari ST platforms. |
 | **Face ID** | An integer (0–3) identifying which of the four faces of the virtual square bar is visible at a given pixel; determines color from the palette. |
 | **Helical Twist** | A deformation that rotates a shape progressively along its vertical axis, creating a coiling or corkscrew appearance. |
-| **Interpolator** | A linear crossfade unit that blends between two values based on a mix parameter, used for wet/dry blending. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Lambert Shading** | A lighting model where surface brightness is proportional to the cosine of the angle between the surface normal and the light direction; produces convincing matte surface illumination. |
 | **LUT** | Lookup Table; a precomputed array of values used to replace runtime computation, here a quarter-wave sine table with 256 entries. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quarter-Wave** | A sine table optimization that stores only 0°–90° and reconstructs the remaining three quadrants using symmetry (mirror and negate). |

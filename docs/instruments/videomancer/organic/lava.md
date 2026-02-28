@@ -4,7 +4,7 @@ sidebar_position: 144
 slug: /instruments/videomancer/lava
 title: "Lava"
 image: /img/instruments/videomancer/lava/lava_hero.png
-description: "Program guide for Lava, a Videomancer organic program for the LZX video synthesizer."
+description: "Lava simulates the hypnotic motion of a lava lamp — viscous blobs of heated wax rising and falling through a translucent medium, merging when they touch..."
 ---
 
 import lava_animation from '/img/instruments/videomancer/lava/lava_animation.gif';
@@ -101,12 +101,12 @@ Lava provides eight palette presets stored as constant arrays, each defining thr
 │     └─ near_edge = (accum ≥ edge_lo AND accum ≤ edge_hi)        │
 │           ◄── Threshold (reg 3), Edge Glow (reg 5)              │
 │                                                                  │
-│  Colour Mapping (same clock)                                     │
+│  Color Mapping (same clock)                                     │
 │     ├─ Inside + Video Fill: pass through input video             │
-│     ├─ Inside + near_edge: palette edge colour                   │
+│     ├─ Inside + near_edge: palette edge color                   │
 │     ├─ Inside + palette 7: psychedelic hue cycling               │
-│     ├─ Inside (else): palette blob colour                        │
-│     ├─ Outside + tinted_bg: palette background colour            │
+│     ├─ Inside (else): palette blob color                        │
+│     ├─ Outside + tinted_bg: palette background color            │
 │     └─ Outside (else): black + neutral chroma                    │
 │           ◄── Palette (reg 4), Background (reg 6 bit 0),        │
 │               Video Fill (reg 6 bit 2)                           │
@@ -314,7 +314,7 @@ These exercises progress from basic blob observation through palette exploration
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that increments by a fixed step, used here to drive blob oscillation. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Isosurface** | The contour line (or surface in 3D) where a scalar field equals a constant threshold value; in Lava, the boundary between blob interior and background. |
 | **Leading-zero count** | A technique for approximating floating-point operations in integer hardware by counting the number of zero bits before the first set bit, used here for reciprocal distance estimation. |
 | **Metaball** | A rendering primitive defined by a scalar field that falls off with distance from its center; multiple metaballs produce smooth organic merging at their isosurface boundaries. |
@@ -323,4 +323,4 @@ These exercises progress from basic blob observation through palette exploration
 | **Scalar field** | A function that assigns a single numerical value to every point in space; in Lava, the sum of 1/distance² contributions from all active blobs. |
 | **Sine LUT** | A lookup table storing quarter-wave sine values; the full sine function is reconstructed via quadrant logic, providing smooth oscillation for blob motion. |
 | **Thermal convection** | The physical process where heated fluid rises and cooled fluid sinks, creating circulation patterns; the motion model that Lava's blob animation simulates. |
-| **YUV** | A color model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 157
 slug: /instruments/videomancer/luminaire
 title: "Luminaire"
 image: /img/instruments/videomancer/luminaire/luminaire_hero.png
-description: "Program guide for Luminaire, a Videomancer newtek program for the LZX video synthesizer."
+description: "Every stage production needs a spotlight."
 ---
 
 import luminaire_before_after from '/img/instruments/videomancer/luminaire/luminaire_before_after.png';
@@ -296,10 +296,10 @@ These exercises progress from basic spotlight placement to animated lighting eff
 | **Additive Compositing** | Blending two signals by addition, where the result is always brighter than either input alone. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Falloff** | The rate at which glow brightness decreases with distance from the light center. Luminaire uses linear falloff. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
-| **Interpolator** | A linear crossfade module that blends between two signals based on a mix parameter. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | Distance measured as the sum of absolute differences along each axis: $d = |x_1 - x_2| + |y_1 - y_2|$. Equidistant contours form diamonds. |
-| **Pipeline** | A series of sequential processing stages where each stage operates on data from the previous stage every clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

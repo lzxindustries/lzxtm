@@ -4,7 +4,7 @@ sidebar_position: 243
 slug: /instruments/videomancer/starfield
 title: "Starfield"
 image: /img/instruments/videomancer/starfield/starfield_hero.png
-description: "Program guide for Starfield, a Videomancer demo program for the LZX video synthesizer."
+description: "The starfield effect is one of the most immediately recognizable images in computing history."
 ---
 
 import starfield_animation from '/img/instruments/videomancer/starfield/starfield_animation.gif';
@@ -73,7 +73,7 @@ registers_in
 ├─ reg(1) → Density          (active star count: 4..32 in steps of 4)
 ├─ reg(2) → Center X         (vanishing point H offset)
 ├─ reg(3) → Center Y         (vanishing point V offset)
-├─ reg(4) → Star Hue         (colour tint selection)
+├─ reg(4) → Star Hue         (color tint selection)
 ├─ reg(5) → Bg Dim           (background video dimming)
 ├─ reg(6)(0) → Trails        (3-pixel streak)
 ├─ reg(6)(1) → Star Size     (1x1 / 2x2)
@@ -112,7 +112,7 @@ Video Input (YUV 4:4:4)
 │   ├─ bg_y = input_y × (1023 − bg_dim) >> 10
 │   └─ bg_u/v = input (or neutral if bg_dim > 900)
 │
-├─ Colour Mapping + Compositing
+├─ Color Mapping + Compositing
 │   ├─ Star hue: 6 tint regions based on star_hue register
 │   ├─ Additive: bg + star (clamped at 1023)
 │   └─ Replace:  star only (background hidden)
@@ -190,7 +190,7 @@ Shifts the vanishing point vertically. The register value (0–1023) maps direct
 | Default | 180deg |
 | Suffix | deg |
 
-Selects the colour tint applied to all stars. The register value is divided into six regions of approximately 170 counts each, mapping to Red, Yellow-Green, White (neutral), Cyan, Blue, and Magenta tint zones. The tint is applied by offsetting U and V channels relative to neutral (512), with the offset magnitude proportional to star brightness. At White, stars are pure luminance with no colour cast. At other settings, the stars take on a consistent hue that intensifies as they brighten (approach the viewer). The tint does not vary per star — all stars share the same hue.
+Selects the color tint applied to all stars. The register value is divided into six regions of approximately 170 counts each, mapping to Red, Yellow-Green, White (neutral), Cyan, Blue, and Magenta tint zones. The tint is applied by offsetting U and V channels relative to neutral (512), with the offset magnitude proportional to star brightness. At White, stars are pure luminance with no color cast. At other settings, the stars take on a consistent hue that intensifies as they brighten (approach the viewer). The tint does not vary per star — all stars share the same hue.
 
 ---
 
@@ -201,7 +201,7 @@ Selects the colour tint applied to all stars. The register value is divided into
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the dimming of the background video. The input video luminance is multiplied by (1023 − bg_dim) / 1024. At 0%, the background is at full brightness (no dimming). At 100%, the background is pure black. Above approximately 88% (register > 900), the chroma channels are also forced to neutral gray, preventing colour bleed from the dimmed video. The default of ~75% produces a dark (but not black) background through which the input video is faintly visible, giving contextual depth to the star field.
+Controls the dimming of the background video. The input video luminance is multiplied by (1023 − bg_dim) / 1024. At 0%, the background is at full brightness (no dimming). At 100%, the background is pure black. Above approximately 88% (register > 900), the chroma channels are also forced to neutral gray, preventing color bleed from the dimmed video. The default of ~75% produces a dark (but not black) background through which the input video is faintly visible, giving contextual depth to the star field.
 
 ---
 
@@ -255,16 +255,16 @@ These exercises build from a static understanding of the perspective field throu
 
 ---
 
-### Exercise 2: Coloured Reverse Warp with Trails
+### Exercise 2: Colored Reverse Warp with Trails
 
-<img src={starfield_exercise2_result} alt="Coloured Reverse Warp with Trails result"/>
-*Coloured Reverse Warp with Trails — simulated result across source images.*
-**Objective**: Explore reverse direction, colour tinting, and trail effects for a hyperspace-like visual.
+<img src={starfield_exercise2_result} alt="Colored Reverse Warp with Trails result"/>
+*Colored Reverse Warp with Trails — simulated result across source images.*
+**Objective**: Explore reverse direction, color tinting, and trail effects for a hyperspace-like visual.
 
 1. **Reverse direction**: Toggle Direction to Inward. Stars now spawn at the edges and converge toward the center.
 2. **Enable trails**: Toggle Trails On. Each star gains a short horizontal streak.
 3. **Increase size**: Toggle Star Size to 2×2. Stars become more visible.
-4. **Colour tint**: Set Star Hue to ~15% (red zone). Stars glow red.
+4. **Color tint**: Set Star Hue to ~15% (red zone). Stars glow red.
 5. **Fast speed**: Set Warp Speed to ~60%. The inward convergence is rapid.
 6. **Dim background**: Set Bg Dim to ~90% for a near-black background with faint video ghosting.
 7. **Try other hues**: Sweep Star Hue through all six tint regions. Note how the hue changes the mood — cyan feels cold, red feels energetic.
@@ -315,9 +315,9 @@ These exercises build from a static understanding of the perspective field throu
 | **Barrel shifter** | A digital circuit that shifts a binary value by a variable number of positions in a single clock cycle, used here to approximate perspective division. |
 | **Compositing** | The process of combining multiple visual elements into a single output frame. |
 | **DVE** | Digital Video Effects; historically, a dedicated hardware unit for video transforms. Starfield is not a DVE effect per se but uses similar compositing techniques. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the starfield rendering pipeline. |
-| **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator that produces a maximal-length sequence by XORing selected bits and feeding the result back to the input. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Perspective projection** | The geometric transformation that maps 3D world coordinates to 2D screen coordinates by dividing X and Y by Z depth, causing distant objects to appear smaller and closer to the vanishing point. |
 | **Rasterization** | The process of converting geometric primitives (here, star positions) into discrete pixel values for display. |
 | **Vanishing point** | The screen-space position toward which all depth lines converge in a perspective projection — the point from which stars appear to emanate. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

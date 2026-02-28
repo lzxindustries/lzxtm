@@ -4,7 +4,7 @@ sidebar_position: 90
 slug: /instruments/videomancer/enhance
 title: "Enhance"
 image: /img/instruments/videomancer/enhance/enhance_hero.png
-description: "Program guide for Enhance, a Videomancer analysis program for the LZX video synthesizer."
+description: "Every crime drama fan knows the scene: a detective peers at a grainy security camera still and commands the lab technician to 'enhance.' The image zooms..."
 ---
 
 import enhance_hero from '/img/instruments/videomancer/enhance/enhance_hero.png';
@@ -300,17 +300,17 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory inside the FPGA used for the video line buffer that stores luma for zoom readback. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information (U and V components) in a YUV video signal, encoding hue and saturation. |
 | **Contrast Stretch** | Expanding a narrow range of pixel values to the full output range by multiplying deviation from a center point, increasing tonal separation. |
 | **False Color** | Mapping monochrome intensity values to a multi-hue palette for visual analysis, borrowed from thermal imaging. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in dedicated hardware. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Histogram** | A distribution showing how many pixels occupy each brightness level; contrast stretching reshapes this distribution. |
 | **Line Buffer** | A BRAM-based memory that stores one horizontal line of pixel data for delayed readback at modified addresses. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Pixel Replication** | Duplicating each source pixel multiple times to create blocky magnification without interpolation or blurring. |
 | **ROI** | Region of Interest; a user-defined rectangular sub-area of the frame where enhanced processing is applied. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

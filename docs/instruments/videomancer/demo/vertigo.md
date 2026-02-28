@@ -4,7 +4,7 @@ sidebar_position: 275
 slug: /instruments/videomancer/vertigo
 title: "Vertigo"
 image: /img/instruments/videomancer/vertigo/vertigo_hero.png
-description: "Program guide for Vertigo, a Videomancer demo program for the LZX video synthesizer."
+description: "Vertigo is a real-time affine rotozoomer — a classic demoscene effect that maps a procedurally generated repeating texture onto an infinite plane, then ..."
 ---
 
 import vertigo_animation from '/img/instruments/videomancer/vertigo/vertigo_animation.gif';
@@ -64,7 +64,7 @@ A Direct Digital Synthesizer (DDS) generates a periodic waveform by continuously
 
 ### Mode 13h and Blocky Aesthetics
 
-Mode 13h (320×200, 256 colours) was the standard VGA graphics mode used by DOS games and demos from 1987 through the mid-1990s. Its chunky, low-resolution pixels became an iconic aesthetic — each pixel was visible as a distinct square block on CRT monitors. Vertigo's Blocky mode emulates this by masking the lower bits of the texture coordinates, effectively quantising the texture lookup to a 4× coarser resolution. The result is a deliberately pixelated rendering that evokes the aesthetic of Second Reality, Unreal, and other landmark DOS demos.
+Mode 13h (320×200, 256 colors) was the standard VGA graphics mode used by DOS games and demos from 1987 through the mid-1990s. Its chunky, low-resolution pixels became an iconic aesthetic — each pixel was visible as a distinct square block on CRT monitors. Vertigo's Blocky mode emulates this by masking the lower bits of the texture coordinates, effectively quantising the texture lookup to a 4× coarser resolution. The result is a deliberately pixelated rendering that evokes the aesthetic of Second Reality, Unreal, and other landmark DOS demos.
 
 
 ---
@@ -104,7 +104,7 @@ Synthesis (no input video required)
 │   │
 │   ├─ 12. Scale texel (8-bit) → luma (10-bit)
 │   ├─ 13. If Video Tint: modulate luma by input Y
-│   └─ 14. Map Tint Hue → U/V colour offset
+│   └─ 14. Map Tint Hue → U/V color offset
 │
 ├── Mix ─────────────────────────────────────────────────────
 │   └─ Interpolator: dry (input video) ↔ wet (synthesis)
@@ -177,7 +177,7 @@ Sets the static zoom level around which the sinusoidal zoom oscillation centres.
 | Default | 0deg |
 | Suffix | deg |
 
-Selects the colour tint applied to the synthesised texture. The hue maps around a colour wheel: 0° produces warm reds/oranges via high V and low U offsets, progressing through yellows, greens, cyans, blues, and magentas as the angle advances through 360°. The tinting is applied as fixed U/V offsets that colour the monochromatic texture luminance. At any position, the texture gains a distinctive colour cast derived from the 8-entry hue lookup table.
+Selects the color tint applied to the synthesised texture. The hue maps around a color wheel: 0° produces warm reds/oranges via high V and low U offsets, progressing through yellows, greens, cyans, blues, and magentas as the angle advances through 360°. The tinting is applied as fixed U/V offsets that color the monochromatic texture luminance. At any position, the texture gains a distinctive color cast derived from the 8-entry hue lookup table.
 
 ---
 
@@ -202,7 +202,7 @@ Controls the speed of a persistent vertical and horizontal texture offset drift.
 | **10 — Video Tint** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The toggles configure the visual character and motion parameters of the rotozoomer. Texture selects which of the six procedural patterns is rendered. Direction controls rotation sense. Blocky and Video Tint modify the rendering quality and colour source. Bypass provides instant comparison with the unprocessed input video.
+The toggles configure the visual character and motion parameters of the rotozoomer. Texture selects which of the six procedural patterns is rendered. Direction controls rotation sense. Blocky and Video Tint modify the rendering quality and color source. Bypass provides instant comparison with the unprocessed input video.
 
 ---
 
@@ -233,10 +233,10 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 2. **Start rotation**: Increase Rot Speed to ~40%. The texture begins spinning smoothly.
 3. **Add zoom breathing**: Set Zoom Speed to ~25%, Zoom Depth to ~40%. The pattern pulsates rhythmically in and out.
 4. **Set base scale**: Adjust Base Scale to ~50% for a balanced zoom level showing moderate pattern detail.
-5. **Tint the pattern**: Rotate Tint Hue to explore different colour casts — cyan, magenta, gold — each dramatically changes the mood.
+5. **Tint the pattern**: Rotate Tint Hue to explore different color casts — cyan, magenta, gold — each dramatically changes the mood.
 6. **Compare textures**: Cycle Texture through all six patterns, observing how each responds differently to rotation and zoom.
 
-**Key concepts**: XOR produces the most visually complex self-similar pattern under rotation, zoom breathing creates the classic demoscene pulsation, tint hue colours the monochromatic texture
+**Key concepts**: XOR produces the most visually complex self-similar pattern under rotation, zoom breathing creates the classic demoscene pulsation, tint hue colors the monochromatic texture
 
 ---
 
@@ -267,7 +267,7 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 2. **Enable Video Tint**: Toggle Video Tint to On. The pattern is now modulated by the input video's luminance.
 3. **Slow rotation**: Rot Speed ~15% for a gentle, ambient spin.
 4. **No zoom**: Zoom Speed 0%, Base Scale ~60%. Static zoom for clarity.
-5. **Blue tint**: Set Tint Hue to ~240° for a cool blue colour cast.
+5. **Blue tint**: Set Tint Hue to ~240° for a cool blue color cast.
 6. **Partial mix**: Set Mix to ~60%. The woven pattern overlays the source at partial opacity, creating a textured composite.
 7. **Try other textures**: Switch to Dot and Stripe to see how different patterns interact with the video luminance.
 
@@ -296,11 +296,11 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 | **Accumulator Walk** | A technique where each pixel's texture coordinate is computed by adding a constant delta to the previous pixel's coordinate, eliminating per-pixel multiplications. |
 | **Affine Transform** | A linear geometric transformation (rotation, scaling, translation) applied to map texture coordinates onto screen coordinates. |
 | **Bayer Matrix** | An ordered threshold array used for dithering; referenced in the context of retro rendering techniques. |
-| **DDS** | Direct Digital Synthesizer; a phase accumulator that continuously increments to generate periodic waveforms (here: rotation angle and zoom oscillation). |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Demoscene** | An international computer art subculture focused on producing real-time audio-visual demos, originating in the 1980s cracking scene. |
-| **Mode 13h** | VGA graphics mode (320×200, 256 colours) used by DOS games and demos; its chunky pixel aesthetic is emulated by Vertigo's Blocky mode. |
+| **Mode 13h** | VGA graphics mode (320×200, 256 colors) used by DOS games and demos; its chunky pixel aesthetic is emulated by Vertigo's Blocky mode. |
 | **Phase Accumulator** | A register that continuously adds an increment value, wrapping at overflow, used to generate periodic signals with DDS. |
 | **Rotozoomer** | A real-time effect combining rotation and zoom of a 2D texture, a staple of 1990s demoscene productions. |
 | **Sierpinski Triangle** | A fractal pattern produced by the AND operation on coordinates; one of Vertigo's six procedural textures. |
 | **XOR Texture** | A procedural pattern generated by bitwise XOR of horizontal and vertical coordinates, producing a self-similar fractal interference pattern. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

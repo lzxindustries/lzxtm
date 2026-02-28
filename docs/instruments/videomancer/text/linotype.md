@@ -4,7 +4,7 @@ sidebar_position: 149
 slug: /instruments/videomancer/linotype
 title: "Linotype"
 image: /img/instruments/videomancer/linotype/linotype_hero.png
-description: "Program guide for Linotype, a Videomancer text program for the LZX video synthesizer."
+description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized printing by casting entire lines of metal type in a single operation — 'line o' type.' An..."
 ---
 
 import linotype_before_after from '/img/instruments/videomancer/linotype/linotype_before_after.png';
@@ -304,15 +304,15 @@ These exercises progress from a basic slow scroll through speed and direction va
 | Term | Definition |
 |------|------------|
 | **Bank swap** | Alternating between two memory banks so one can be written while the other is read, preventing read-write conflicts in the line buffer. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used here as a dual-bank video line buffer for capturing and replaying horizontal strips. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cursor** | The active composition edge that marks where new video content is being captured into the line buffer. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic signals, used here for frame counting. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware that implements the video processing pipeline. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Galley** | In typesetting, a tray that holds composed lines of type; analogously, the region above the cursor where captured content is displayed. |
 | **Ink darkness** | Luminance attenuation applied to captured content, simulating the darkening of cast metal type as it ages. |
 | **Leading** | The vertical space between lines of composed text (or captured video strips), named for the lead spacer strips used in metal typesetting. |
 | **Linotype** | A hot-metal typesetting machine (1886) that cast entire lines of text as single metal slugs; the namesake and conceptual model for this program. |
-| **Pipeline** | A sequence of processing stages where each stage's output feeds the next on each clock cycle. |
-| **Proc amp** | Processing amplifier; a gain-and-offset video circuit used here within the interpolator stage for wet/dry mixing. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Scan line** | A single horizontal row of pixels in a video frame; the fundamental unit of capture in this program. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

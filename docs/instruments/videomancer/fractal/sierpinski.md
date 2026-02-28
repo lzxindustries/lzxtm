@@ -4,7 +4,7 @@ sidebar_position: 234
 slug: /instruments/videomancer/sierpinski
 title: "Sierpinski"
 image: /img/instruments/videomancer/sierpinski/sierpinski_hero.png
-description: "Program guide for Sierpinski, a Videomancer fractal program for the LZX video synthesizer."
+description: "The Sierpinski triangle is one of the simplest fractals to describe but one of the richest to explore."
 ---
 
 import sierpinski_animation from '/img/instruments/videomancer/sierpinski/sierpinski_animation.gif';
@@ -288,12 +288,12 @@ These exercises progress from basic fractal generation through multi-layer inter
 |------|------------|
 | **AND** | Bitwise logical conjunction; output is 1 only when both inputs are 1. Used as one of two layer combination modes. |
 | **Bit Slice** | Selecting a single binary digit from a multi-bit value. Different bit positions correspond to different spatial scales. |
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator with a fixed increment to generate repeating waveforms at precise frequencies. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fractal** | A geometric structure that exhibits self-similarity at different scales; smaller portions resemble the whole. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values based on a mixing coefficient. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Moiré** | An interference pattern created when two similar periodic structures overlap at slightly different scales or orientations. |
 | **Phase Accumulator** | A counter that wraps around at its maximum value, producing a sawtooth progression proportional to its increment rate. |
 | **Self-Similar** | A property where a structure contains smaller copies of itself at every scale of magnification. |
 | **Sierpinski Triangle** | The specific fractal pattern produced by XOR of spatial coordinates, named after mathematician Wacław Sierpiński. |
 | **XOR** | Bitwise exclusive-or; output is 1 when inputs differ. The core operation generating Sierpinski fractal patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

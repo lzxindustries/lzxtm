@@ -4,7 +4,7 @@ sidebar_position: 118
 slug: /instruments/videomancer/harlequin
 title: "Harlequin"
 image: /img/instruments/videomancer/harlequin/harlequin_hero.png
-description: "Program guide for Harlequin, a Videomancer computer program for the LZX video synthesizer."
+description: "The Atari Video Music (model C240) was released in 1977 — a consumer device that plugged into a television and translated stereo audio into geometric co..."
 ---
 
 import harlequin_hero from '/img/instruments/videomancer/harlequin/harlequin_hero.png';
@@ -271,16 +271,16 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric. Harlequin uses 0 BRAMs — all state fits in LUT-based registers. |
-| **DDS** | Direct Digital Synthesis; a technique for generating a periodic waveform by incrementing a phase accumulator and using it to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both the current input and the filter's own previous output, creating exponential smoothing. |
-| **LFSR** | Linear-Feedback Shift Register; a pseudo-random number generator using a shift register with XOR-combined feedback taps. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT** | Lookup Table; (1) in DSP context, a precomputed table of function values indexed by input; (2) in FPGA context, the basic logic element. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical displacements between two points; produces diamond-shaped equidistant contours. |
-| **Pipeline** | A series of sequential processing stages where each stage completes in one clock cycle, passing results to the next stage. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quarter-wave sine** | A lookup table storing only 0°–90° of a sine wave; the remaining quadrants are reconstructed by mirroring and negation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

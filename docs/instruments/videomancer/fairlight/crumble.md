@@ -4,7 +4,7 @@ sidebar_position: 60
 slug: /instruments/videomancer/crumble
 title: "Crumble"
 image: /img/instruments/videomancer/crumble/crumble_hero.png
-description: "Program guide for Crumble, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Most video dissolve effects require a frame buffer — dedicated memory to store a previous frame so that current pixels can blend with past ones."
 ---
 
 import crumble_hero from '/img/instruments/videomancer/crumble/crumble_hero.png';
@@ -283,21 +283,21 @@ These exercises progress from understanding the basic dissolve mask to combining
 | Term | Definition |
 |------|------------|
 | **Block Quantization** | Grouping adjacent pixels into square blocks that share a single hash value, scaling the dissolve pattern from per-pixel to per-tile. |
-| **BT.601** | The ITU-R standard for standard-definition video color encoding, defining the YUV matrix coefficients used in the Videomancer pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chroma** | The color information in a video signal, encoded as U and V offset components in YUV space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating a periodic waveform by incrementing a phase accumulator on each clock cycle. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Deterministic Hash** | A function that always produces the same output for the same input, enabling stable spatial patterns without frame-buffer storage. |
 | **Dissolve** | A transition effect where pixels from two sources are mixed together; in Crumble, the two "sources" are the processed and unprocessed versions of the same signal. |
 | **Fairlight CVI** | The Fairlight Computer Video Instrument (1984), a pioneering digital video effects processor known for stochastic dissolves and posterization. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Galois LFSR** | A linear feedback shift register with feedback taps distributed along the register, providing efficient pseudo-random scrambling. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is an XOR of selected positions, producing a pseudo-random sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Pointillism** | A painting technique using individual dots of color that blend optically at a distance, referenced by the Pointillist processing mode. |
 | **Posterization** | Reducing continuous tonal values to a small number of discrete levels, creating flat bands of uniform brightness or color. |
 | **Solarization** | A photographic effect where tones are partially reversed, originally caused by extreme overexposure; simulated by folding the brightness curve at the midpoint. |
 | **Stochastic** | Involving randomness or probability; in Crumble, the pseudo-random spatial mask is stochastic in appearance but deterministic in computation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

@@ -4,7 +4,7 @@ sidebar_position: 57
 slug: /instruments/videomancer/corollas
 title: "Corollas"
 image: /img/instruments/videomancer/corollas/corollas_hero.png
-description: "Program guide for Corollas, a Videomancer color program for the LZX video synthesizer."
+description: "Corollas is a frequency-doubling harmonic processor that transforms the luminance channel of an incoming video signal into a series of concentric, petal..."
 ---
 
 import corollas_hero from '/img/instruments/videomancer/corollas/corollas_hero.png';
@@ -304,9 +304,9 @@ These three exercises progress from observing the raw harmonic structure through
 | **Frequency doubler** | A module that folds a signal at its midpoint, converting a ramp to a triangle wave and doubling the spatial frequency. Cascading four doublers produces 2×, 4×, 8×, and 16× harmonics. |
 | **Harmonic** | An integer multiple of a fundamental frequency. In Corollas, the fundamental is the input luma after proc amp conditioning, and the harmonics are successive frequency-doubled versions at 2×, 4×, 8×, and 16×. |
 | **Phase offset** | A shift in the alignment of a periodic waveform, controlled here by the Hue brightness offset parameters. Wrapping addition rotates the waveform's phase without changing its frequency. |
-| **Proc amp** | Processing amplifier; applies contrast (gain around midpoint) and brightness (DC offset) to condition the input signal before harmonic generation. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Threshold key** | A gating function that forces pixels to black when their luminance falls below a configurable level, creating hard-edged cutouts from the smooth harmonic pattern. |
 | **Wrapping offset** | An unsigned addition that overflows at the 10-bit boundary (1024), creating a circular shift rather than a clamped shift. Sweeping a wrapping offset through its full range returns the pattern to its starting position. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. Corollas maps independent harmonics to each channel. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

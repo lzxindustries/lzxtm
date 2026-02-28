@@ -4,7 +4,7 @@ sidebar_position: 191
 slug: /instruments/videomancer/patina
 title: "Patina"
 image: /img/instruments/videomancer/patina/patina_hero.png
-description: "Program guide for Patina, a Videomancer material program for the LZX video synthesizer."
+description: "Copper starts bright and warm."
 ---
 
 import patina_before_after from '/img/instruments/videomancer/patina/patina_before_after.png';
@@ -293,14 +293,14 @@ These exercises progress from basic copper toning through animated oxidation seq
 | Term | Definition |
 |------|------------|
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, encoding hue and saturation information. |
-| **Interpolator** | A hardware module that performs linear crossfading between two input values, used here for wet/dry mix. |
-| **LFSR** | Linear-Feedback Shift Register; a simple digital circuit that generates a long pseudo-random bit sequence. Used as a spatial noise source. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Oxidation** | A chemical reaction where metal combines with oxygen, forming an oxide layer. In Patina, this refers to pixels that have been darkened and tinted. |
 | **Patina** | The colored surface layer that forms on metals through long-term oxidation, especially the green-blue verdigris on copper. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage used in video processing. Patina's base tone adjustment is a simplified form. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Spatial Hash** | An XOR combination of pixel coordinates and LFSR output that produces a pseudo-random value unique to each screen position. |
 | **Verdigris** | The green-blue patina (copper carbonate/chloride) that forms on copper surfaces exposed to air and moisture over time. |
 | **XOR** | Exclusive OR; a bitwise operation where the output is 1 when the inputs differ. Used to combine position and noise values. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

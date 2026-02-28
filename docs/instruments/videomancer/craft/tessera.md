@@ -4,7 +4,7 @@ sidebar_position: 261
 slug: /instruments/videomancer/tessera
 title: "Tessera"
 image: /img/instruments/videomancer/tessera/tessera_hero.png
-description: "Program guide for Tessera, a Videomancer craft program for the LZX video synthesizer."
+description: "Byzantine mosaics are among the most enduring art forms in human history."
 ---
 
 import tessera_before_after from '/img/instruments/videomancer/tessera/tessera_before_after.png';
@@ -283,14 +283,14 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here for the video line buffer that retains held cell colors across scanlines. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Byzantine** | Relating to the Eastern Roman Empire (330–1453 CE) and its distinctive artistic traditions, especially gold-ground mosaic. |
 | **Gold Ground** | The background of gold-leaf glass tesserae that defines Byzantine mosaic composition. |
 | **Grout** | The morite or cement filling gaps between tesserae, rendered as dark gray lines between cells. |
-| **Interpolator** | A linear interpolation module used for wet/dry crossfade mixing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Manhattan Distance** | The sum of absolute differences across dimensions: $|ΔY| + |ΔU| + |ΔV|$. Used for palette color matching. |
 | **Palette** | A fixed set of colors (12 entries) to which continuous input values are quantized. |
-| **Pipeline** | Sequential processing stages executing on consecutive clock cycles. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Raking Light** | Oblique side-lighting used in conservation to reveal surface texture of mosaics and reliefs. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific moment and holds it constant until the next sample. |
 | **Scintillation** | The shimmering effect produced by mosaic tesserae set at irregular angles, catching light differently. |
@@ -298,4 +298,4 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 | **Tessera** | A single cube of glass, stone, or ceramic used to construct a mosaic (plural: tesserae). |
 | **Weathering** | Simulated aging that reduces brightness and saturation to approximate centuries of patina. |
 | **XOR Hash** | A bitwise exclusive-OR function producing a deterministic per-cell variation key from cell coordinates. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 150
 slug: /instruments/videomancer/lissajous
 title: "Lissajous"
 image: /img/instruments/videomancer/lissajous/lissajous_hero.png
-description: "Program guide for Lissajous, a Videomancer curve program for the LZX video synthesizer."
+description: "In 1855, the French physicist Jules Antoine Lissajous aimed a beam of light at a mirror attached to one vibrating tuning fork, then bounced it off a sec..."
 ---
 
 import lissajous_animation from '/img/instruments/videomancer/lissajous/lissajous_animation.gif';
@@ -303,13 +303,13 @@ These exercises progress from simple frequency-ratio exploration through phase m
 | Term | Definition |
 |------|------------|
 | **Bezier** | A parametric curve type distinct from Lissajous; both are evaluated from parameter equations but Bezier curves use polynomial blending rather than trigonometric oscillation. |
-| **BRAM** | Block RAM; dedicated FPGA memory. This program uses zero BRAMs, computing everything combinationally. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic waveforms, used here to drive the X and Y oscillators at pixel rate. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the real-time dot computation and distance thresholding. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Lissajous figure** | A parametric curve produced by two perpendicular sinusoidal (or triangle-wave) oscillations: $x = A\sin(at + \delta)$, $y = B\sin(bt)$. |
 | **Manhattan distance** | The L1 or taxicab distance metric: $d = |x_1 - x_2| + |y_1 - y_2|$, producing diamond-shaped equidistant contours rather than circular ones. |
 | **P1 phosphor** | The green phosphor used in classic oscilloscope CRTs, with medium persistence and a characteristic green-yellow glow. |
 | **Phase accumulator** | A register that increments by a fixed value each clock cycle, wrapping at its maximum. Its upper bits represent the instantaneous phase of a periodic waveform. |
-| **Pipeline** | A sequence of processing stages where each stage's output feeds the next on each clock cycle, enabling high throughput at the cost of latency. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Triangle wave** | A periodic waveform with linear rise and fall, used as a zero-BRAM approximation of a sine wave in this program's oscillator. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native pixel format throughout the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

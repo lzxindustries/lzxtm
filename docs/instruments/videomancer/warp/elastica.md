@@ -4,7 +4,7 @@ sidebar_position: 84
 slug: /instruments/videomancer/elastica
 title: "Elastica"
 image: /img/instruments/videomancer/elastica/elastica_hero.png
-description: "Program guide for Elastica, a Videomancer warp program for the LZX video synthesizer."
+description: "In the 1970s, a single machine dominated the world of broadcast motion graphics."
 ---
 
 import elastica_hero from '/img/instruments/videomancer/elastica/elastica_hero.png';
@@ -280,9 +280,9 @@ These exercises progress from basic horizontal displacement through vertical war
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used to store one full scanline for displaced readback. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cross-Modulation** | Using the output of one oscillator to control a parameter of another; here the V-wave triangle modulates the H-warp amplitude. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table or arithmetic. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Displacement** | Shifting pixel read positions horizontally by an offset derived from the warp waveform, causing spatial distortion. |
 | **Lissajous** | Complex 2D patterns formed by combining two perpendicular oscillations at different frequencies, analogous to the cross-modulated H/V warp. |
 | **Phase Accumulator** | A register that increments by a tuning word each clock event; its upper bits encode the instantaneous phase of the output waveform. |
@@ -291,6 +291,6 @@ These exercises progress from basic horizontal displacement through vertical war
 | **Rubber-Sheet Transform** | A continuous spatial distortion where output pixel positions are displaced versions of input positions, as if the image were printed on elastic material. |
 | **Scanimate** | An analog video computer built by Computer Image Corporation in the 1970s, capable of real-time per-scanline video distortion. |
 | **Tuning Word** | The increment value added to a DDS phase accumulator on each clock event; determines the output frequency. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

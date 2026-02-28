@@ -4,7 +4,7 @@ sidebar_position: 194
 slug: /instruments/videomancer/penrose
 title: "Penrose"
 image: /img/instruments/videomancer/penrose/penrose_hero.png
-description: "Program guide for Penrose, a Videomancer illusion program for the LZX video synthesizer."
+description: "The Penrose triangle is perhaps the most famous impossible object — a three-bar figure that appears to represent a solid three-dimensional triangle, yet..."
 ---
 
 import penrose_before_after from '/img/instruments/videomancer/penrose/penrose_before_after.png';
@@ -301,10 +301,10 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 | **Blivet** | An impossible object consisting of three cylindrical prongs that appear to merge into two rectangular bars; also known as the Devil's Fork or impossible trident. |
 | **Depth Cue** | A visual signal (shading, occlusion, size) that suggests relative distance. In Penrose, junction shading simulates bar overlap. |
 | **Distance Field** | A function that returns the perpendicular distance from each pixel to a geometric primitive. Used for wireframe rendering without explicit line drawing. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Impossible Object** | A two-dimensional drawing that appears to depict a three-dimensional structure but contains contradictory depth cues, making it physically unrealizable. |
 | **Necker Cube** | An ambiguous wireframe cube drawing that can be perceived from two different orientations, named after crystallographer Louis Albert Necker. |
 | **Penrose Triangle** | An impossible object consisting of three bars joined at right angles in a closed triangular loop; also known as the tribar. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **SDF** | Signed Distance Field; a rendering technique where each pixel stores its signed perpendicular distance to the nearest surface boundary. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

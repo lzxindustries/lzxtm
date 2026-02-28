@@ -4,7 +4,7 @@ sidebar_position: 233
 slug: /instruments/videomancer/sideband
 title: "Sideband"
 image: /img/instruments/videomancer/sideband/sideband_hero.png
-description: "Program guide for Sideband, a Videomancer signal program for the LZX video synthesizer."
+description: "Before cable and digital broadcasting, television reception was an analog adventure."
 ---
 
 import sideband_before_after from '/img/instruments/videomancer/sideband/sideband_before_after.png';
@@ -293,15 +293,15 @@ These exercises progress from individual artifact exploration through combined d
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the ghost delay line (1024×10-bit per channel). |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here for herringbone interference generation. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Ghost** | A displaced, attenuated copy of the video image caused by multipath signal propagation, where the RF signal arrives via both direct and reflected paths. |
 | **Herringbone** | A fine diagonal or horizontal stripe pattern caused by adjacent-channel interference beating against the desired signal's carrier frequency. |
 | **Hum Bar** | A slowly rolling horizontal band of brightness variation caused by AC mains frequency leaking into the video signal path. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator that produces noise sequences for the snow effect. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Multipath** | The simultaneous reception of a signal via multiple propagation paths (direct, reflected, diffracted), causing ghost images. |
 | **Noise Floor** | The level of background noise in a receiver; signals below the noise floor are unrecoverable. |
 | **Sample-and-Hold** | A circuit technique that captures a value and holds it for multiple clock cycles, used in coarse noise mode. |
 | **Sideband** | The frequency components above and below a modulated carrier that contain the signal information; the source of adjacent-channel interference. |
 | **Snow** | Random white-and-black noise visible on an analog TV screen when signal strength is insufficient, caused by thermal noise in the receiver. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

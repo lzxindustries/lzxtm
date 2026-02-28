@@ -4,7 +4,7 @@ sidebar_position: 180
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
 image: /img/instruments/videomancer/nimbus/nimbus_hero.png
-description: "Program guide for Nimbus, a Videomancer weather program for the LZX video synthesizer."
+description: "In the early 1820s, the English painter John Constable devoted two summers to painting nothing but clouds over Hampstead Heath — small oil sketches that..."
 ---
 
 import nimbus_before_after from '/img/instruments/videomancer/nimbus/nimbus_before_after.png';
@@ -291,11 +291,11 @@ These exercises progress from simple stratification to full atmospheric composit
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA. Nimbus uses zero BRAM tiles. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chrominance** | The color information (U and V channels) in a YUV video signal. |
-| **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating smooth, frequency-controlled periodic signals. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **IIR** | Infinite Impulse Response; a recursive digital filter. Nimbus uses a first-order IIR to smooth LFSR noise. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator. |
-| **Luminance** | The brightness component (Y) of a YUV video signal. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Stratum** | A single horizontal band in the stratification. Each stratum has its own tonal range and chrominance tint. |
-| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

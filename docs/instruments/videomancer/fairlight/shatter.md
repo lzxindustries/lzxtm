@@ -4,7 +4,7 @@ sidebar_position: 232
 slug: /instruments/videomancer/shatter
 title: "Shatter"
 image: /img/instruments/videomancer/shatter/shatter_hero.png
-description: "Program guide for Shatter, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Analog video synthesizers from the 1980s had a distinctive trick: split the screen into two complementary regions using a spatial pattern, apply a diffe..."
 ---
 
 import shatter_before_after from '/img/instruments/videomancer/shatter/shatter_before_after.png';
@@ -290,11 +290,11 @@ These exercises progress from static pattern exploration through processing mode
 |------|------------|
 | **Cell Coordinates** | The position of a pixel within the spatial grid, computed by bit-shifting the pixel counter right by the density shift amount. |
 | **Composite Mask** | A single-bit signal that determines whether each pixel belongs to Region A (processed) or Region B (passthrough/inverted). |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic signals using a phase accumulator, used here for the toggle oscillator and auto-phase sweep. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fairlight CVI** | Computer Video Instrument by Fairlight (1984); an early digital video effects processor that inspired Shatter's binary pattern strobe architecture. |
-| **Interpolator** | A hardware crossfade module (interpolator_u) that blends between the dry input and wet processed output based on the Mix parameter. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Look-Up Table; the fundamental logic element in an FPGA, used here for pattern generation and processing logic. |
 | **Posterization** | Reducing continuous tonal values to a small number of discrete levels, creating flat graphic areas. |
 | **Solarization** | A tonal curve that folds brightness at the midpoint, named after the Sabattier effect in analog photography. |
 | **Toggle State** | The current binary state of the DDS oscillator, XOR'd with the spatial pattern to create the composite mask. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

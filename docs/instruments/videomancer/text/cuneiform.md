@@ -4,7 +4,7 @@ sidebar_position: 61
 slug: /instruments/videomancer/cuneiform
 title: "Cuneiform"
 image: /img/instruments/videomancer/cuneiform/cuneiform_hero.png
-description: "Program guide for Cuneiform, a Videomancer text program for the LZX video synthesizer."
+description: "Five thousand years ago, Mesopotamian scribes pressed a reed stylus into wet clay to record the world's first written language."
 ---
 
 import cuneiform_hero from '/img/instruments/videomancer/cuneiform/cuneiform_hero.png';
@@ -289,13 +289,13 @@ These exercises progress from basic grid rendering to full tablet composition. E
 | **Cuneiform** | From Latin *cuneus* (wedge); the oldest known writing system, produced by pressing a reed stylus into wet clay. |
 | **Gradient** | The rate of change of luminance between adjacent cells; used to determine wedge orientation. |
 | **Impression** | The wedge or bar mark rendered within each cell, simulating a stylus pressed into clay. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to produce surface grain noise. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Register** | In cuneiform scholarship, a horizontal band or section of a clay tablet containing a row of text; replicated here as separator lines. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific moment and holds it constant until the next sample trigger. |
 | **Stylus** | The reed writing implement used to make cuneiform impressions; the tip was typically triangular in cross-section. |
 | **Tablet** | The clay slab on which cuneiform was inscribed; simulated here by the warm-toned background surface. |
 | **Tessellation** | Dividing a plane into non-overlapping regular shapes (here, rectangles) that cover the entire surface. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

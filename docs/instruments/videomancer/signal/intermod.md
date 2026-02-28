@@ -4,7 +4,7 @@ sidebar_position: 128
 slug: /instruments/videomancer/intermod
 title: "Intermod"
 image: /img/instruments/videomancer/intermod/intermod_hero.png
-description: "Program guide for Intermod, a Videomancer signal program for the LZX video synthesizer."
+description: "Analog amplifiers do not clip gracefully."
 ---
 
 import intermod_before_after from '/img/instruments/videomancer/intermod/intermod_before_after.png';

@@ -1,10 +1,10 @@
-﻿---
+---
 draft: true
 sidebar_position: 172
 slug: /instruments/videomancer/moire
 title: "Moiré"
 image: /img/instruments/videomancer/moire/moire_hero.png
-description: "Program guide for Moiré, a Videomancer illusion program for the LZX video synthesizer."
+description: "When two periodic patterns are overlaid at slightly different pitches or angles, the result is a third pattern that doesn't exist in either original — a..."
 ---
 
 import moir__before_after from '/img/instruments/videomancer/moire/moire_before_after.png';
@@ -303,7 +303,7 @@ These exercises move from basic grid visualization through interference tuning t
 |------|------------|
 | **Beat Frequency** | The difference frequency produced when two periodic signals of slightly different frequencies interact; in moiré patterns, this determines the spacing of the visible fringes. |
 | **Chebyshev Distance** | An approximation of Euclidean distance using $\max(|x|, |y|)$; used here with a correction term for circle pattern generation. |
-| **DDS** | Direct Digital Synthesis; a technique for generating arbitrary waveforms using a phase accumulator and lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fringe** | A visible band or contour in a moiré pattern, caused by constructive or destructive interference between two periodic structures. |
 | **Interference** | The phenomenon where overlapping periodic patterns create new visible structures (fringes) at the beat frequency. |
 | **LUT** | Lookup Table; a pre-computed array of values indexed by an input parameter, used here for trigonometric functions and pitch decoding. |
@@ -311,4 +311,4 @@ These exercises move from basic grid visualization through interference tuning t
 | **Phase Accumulator** | A counter that wraps around at a fixed modulus, used in DDS to generate a linearly advancing phase that can be converted to a spatial offset. |
 | **Square Wave** | A periodic signal alternating between two levels (here, 0 and 1023) at a duty cycle of 50%, used to generate grid stripe patterns. |
 | **XOR** | Exclusive OR; a bitwise operation that outputs 1 where the two inputs differ, creating high-contrast digital interference patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

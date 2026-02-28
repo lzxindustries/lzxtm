@@ -4,7 +4,7 @@ sidebar_position: 158
 slug: /instruments/videomancer/macrame
 title: "Macrame"
 image: /img/instruments/videomancer/macrame/macrame_hero.png
-description: "Program guide for Macrame, a Videomancer material program for the LZX video synthesizer."
+description: "Fiber arts begin with repetition — a single knot tied again and again until a flat cord becomes a surface."
 ---
 
 import macrame_before_after from '/img/instruments/videomancer/macrame/macrame_before_after.png';
@@ -299,14 +299,14 @@ These exercises build from basic lattice construction to full textile overlay co
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Macrame uses no BRAM — all pattern generation is combinational. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | Color information in a video signal, encoded as U and V offsets from neutral gray in YUV color space. |
 | **Diagonal Sum / Difference** | h+v and |h−v| coordinate transforms that create ±45° line families across the pixel grid. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
-| **LFSR** | Linear Feedback Shift Register; a simple pseudo-random number generator used here for cord texture noise. |
-| **Luma** | Brightness component (Y) of a YUV video signal. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of absolute coordinate differences (|dx|+|dy|), producing diamond-shaped distance contours instead of circles. |
-| **Pipeline** | A chain of processing stages that each operate on one pixel per clock cycle, with eight stages total. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Power-of-Two** | Values like 8, 16, 32, 64, 128, 256 that allow modular arithmetic via bitwise AND instead of division. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

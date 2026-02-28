@@ -4,7 +4,7 @@ sidebar_position: 267
 slug: /instruments/videomancer/truchet
 title: "Truchet"
 image: /img/instruments/videomancer/truchet/truchet_hero.png
-description: "Program guide for Truchet, a Videomancer fractal program for the LZX video synthesizer."
+description: "In 1704, the Dominican priest Sébastien Truchet noticed something remarkable about square tiles decorated with a simple diagonal line: when placed on a ..."
 ---
 
 import truchet_animation from '/img/instruments/videomancer/truchet/truchet_animation.gif';
@@ -282,12 +282,12 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms, used here to cycle the animation seed. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Emergent Connectivity** | Global structures (loops, paths, mazes) that arise from local random tile orientations connecting across boundaries. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the tile pattern pipeline in real time. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to assign tile orientations. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **LUT** | Look-Up Table; the basic logic element of the FPGA fabric, used for combinational logic. |
 | **Octagonal Approximation** | A computationally cheap distance estimate: max(|dx|, |dy|) + 3/8 × min(|dx|, |dy|), producing an octagon instead of a circle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for contrast and brightness adjustment. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Truchet Tiling** | A tiling pattern where identical square tiles with asymmetric decoration are placed in random orientations to create emergent global patterns. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

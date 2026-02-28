@@ -4,7 +4,7 @@ sidebar_position: 253
 slug: /instruments/videomancer/tableau
 title: "Tableau"
 image: /img/instruments/videomancer/tableau/tableau_hero.png
-description: "Program guide for Tableau, a Videomancer film program for the LZX video synthesizer."
+description: "In the golden age of Hollywood visual effects, matte painters would paint scenery — castles, skylines, alien landscapes — onto sheets of glass positione..."
 ---
 
 import tableau_before_after from '/img/instruments/videomancer/tableau/tableau_before_after.png';
@@ -295,16 +295,16 @@ These exercises progress from a basic split-screen composite to a full cinematic
 | Term | Definition |
 |------|------------|
 | **Alpha** | A per-pixel blend weight (0 = fully transparent, 1023 = fully opaque) controlling how two regions are composited. |
-| **BT.601** | The ITU television standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Contrast Compression** | Reducing the dynamic range of a signal by pulling values toward mid-gray (512), making the image look flatter and more muted. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that increments each clock cycle. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Desaturation** | Reducing color saturation by blending chrominance channels toward their neutral value (512), shifting the image toward monochrome. |
 | **Feather** | A gradual blend zone at the boundary between two composited regions, softening the transition to hide the matte line. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Glass Painting** | A traditional visual effects technique where scenery is painted onto glass placed between the camera and the live-action set. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit that generates pseudo-random bit sequences, used here for film grain simulation. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Matte** | A mask that defines which regions of a frame are replaced during compositing; the term also refers to the replacement region itself. |
 | **Matte Crawl** | A flickering brightness artifact along the matte boundary, caused by mechanical instability in optical compositing systems. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Tint** | A uniform color cast applied to a region by adding fixed UV offsets, simulating colored paint or lacquer. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 250
 slug: /instruments/videomancer/strobe
 title: "Strobe"
 image: /img/instruments/videomancer/strobe/strobe_hero.png
-description: "Program guide for Strobe, a Videomancer film program for the LZX video synthesizer."
+description: "Stroboscopic photography freezes motion at impossible intervals — a dancer captured ten times in a single exposure, each ghost slightly advanced from th..."
 ---
 
 import strobe_before_after from '/img/instruments/videomancer/strobe/strobe_before_after.png';
@@ -289,12 +289,12 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a numerically-controlled oscillator using a phase accumulator to generate periodic waveforms at arbitrary frequencies. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Duty Cycle** | The ratio of flash-on time to total cycle time; controlled by the Exposures parameter. |
 | **IIR** | Infinite Impulse Response; a filter type where the output depends on both current input and previous output, creating exponential decay. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Persistence** | The IIR-based temporal memory that holds decaying afterimages of previous flash frames, creating multi-exposure layering. |
 | **Phase Accumulator** | A counter that wraps at a fixed bit width, with the increment determining the output frequency of the DDS oscillator. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage applying brightness and contrast adjustment to a signal. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Stroboscope** | A device that produces brief periodic flashes of light, used to freeze apparent motion at the flash rate. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

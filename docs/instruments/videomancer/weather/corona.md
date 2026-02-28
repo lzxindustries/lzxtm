@@ -4,7 +4,7 @@ sidebar_position: 58
 slug: /instruments/videomancer/corona
 title: "Corona"
 image: /img/instruments/videomancer/corona/corona_hero.png
-description: "Program guide for Corona, a Videomancer weather program for the LZX video synthesizer."
+description: "Corona synthesizes the radial streamer field of a total solar eclipse — the ethereal halo of plasma that becomes visible only when the Moon's disk occul..."
 ---
 
 import corona_hero from '/img/instruments/videomancer/corona/corona_hero.png';
@@ -310,7 +310,7 @@ These exercises progress from basic corona construction through eclipse composit
 |------|------------|
 | **Butler palette** | A distance-dependent color gradient inspired by the eclipse paintings of Howard Russell Butler (1856–1934), transitioning from pearl-white at the inner corona through amber to blue-green at the outer limb. |
 | **Coronagraph** | An instrument that creates an artificial eclipse by blocking the solar disk with an internal occulting element, allowing observation of the corona without waiting for a natural total solar eclipse. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator and using it to index a lookup table. Corona uses three DDS accumulators to drift the lobe function phases. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Dipole** | A two-pole magnetic field configuration; during solar minimum, the Sun's corona is dominated by a dipole field with two broad equatorial streamers. |
 | **K-corona** | The component of the solar corona produced by Thomson scattering of photospheric light off free electrons, responsible for the bright structured streamers visible during totality. |
 | **Lissajous figure** | The trajectory produced by two sinusoidal oscillations at different frequencies; used here to drive the corona's center drift in an evolving quasi-periodic orbit. |
@@ -318,6 +318,6 @@ These exercises progress from basic corona construction through eclipse composit
 | **Octant** | One of eight 45° sectors used to classify pixel positions for the integer atan2 approximation; the 3-bit octant combined with an 8-bit fraction yields an 11-bit angle. |
 | **Prominence** | A loop of ionized gas arcing above the solar chromosphere, visible as a bright feature at the limb during totality; simulated by a narrow bright ring at the disk boundary. |
 | **Radial falloff** | The inverse-distance attenuation that dims the corona with increasing distance from the center, approximating the 1/r intensity profile of the real K-corona. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

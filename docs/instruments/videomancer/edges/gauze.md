@@ -4,7 +4,7 @@ sidebar_position: 109
 slug: /instruments/videomancer/gauze
 title: "Gauze"
 image: /img/instruments/videomancer/gauze/gauze_hero.png
-description: "Program guide for Gauze, a Videomancer edges program for the LZX video synthesizer."
+description: "Video images contain spatial detail at every scale — broad gradients, mid-frequency textures, and fine pixel-level edges."
 ---
 
 import gauze_hero from '/img/instruments/videomancer/gauze/gauze_hero.png';
@@ -290,6 +290,6 @@ These exercises build from simple single-channel blur to complex multi-topology 
 | **Low-Pass Filter (LPF)** | A filter that passes low-frequency (smooth) content and attenuates high-frequency (edge/texture) content. |
 | **Sigma-Delta Dithering** | A technique that averages between adjacent quantization levels over time by accumulating a fractional error, producing smoother parameter control without visible stepping. |
 | **Spatial Filtering** | Processing that operates on the spatial dimensions (horizontal and vertical) of an image rather than on time or color space. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), allowing independent processing of brightness and color. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

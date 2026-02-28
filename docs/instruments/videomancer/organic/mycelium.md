@@ -4,7 +4,7 @@ sidebar_position: 174
 slug: /instruments/videomancer/mycelium
 title: "Mycelium"
 image: /img/instruments/videomancer/mycelium/mycelium_hero.png
-description: "Program guide for Mycelium, a Videomancer organic program for the LZX video synthesizer."
+description: "In 1984, John Pearson numerically investigated a class of reaction-diffusion systems first described by Gray and Scott in the context of isothermal chem..."
 ---
 
 import mycelium_animation from '/img/instruments/videomancer/mycelium/mycelium_animation.gif';
@@ -294,7 +294,7 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 | Term | Definition |
 |------|------------|
 | **Activator** | The chemical species U in the Gray-Scott model, which is consumed by the autocatalytic reaction and replenished by the feed term. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Mycelium uses 4 BRAM tiles for activator and inhibitor line buffers (2 banks each for ping-pong access). |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Diffusion** | The spatial spreading of chemical species through the Laplacian operator; drives pattern formation by creating local concentration gradients. |
 | **Feed rate** | The parameter $f$ controlling how fast activator species is injected into the reactor. Higher values replenish activator faster. |
 | **Gray-Scott** | A two-species reaction-diffusion model producing self-organizing patterns through the autocatalytic reaction U + 2V → 3V. |
@@ -304,4 +304,4 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 | **Ping-pong** | A double-buffering technique where two BRAM banks alternate between read and write roles on successive scan lines. |
 | **Reaction-diffusion** | A class of partial differential equations where local nonlinear reactions interact with spatial diffusion to produce emergent patterns. |
 | **Shift-and-add** | A multiplication approximation using bit shifts and additions instead of hardware multipliers; captures the top 2 bits of precision. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

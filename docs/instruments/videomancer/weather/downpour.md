@@ -4,7 +4,7 @@ sidebar_position: 78
 slug: /instruments/videomancer/downpour
 title: "Downpour"
 image: /img/instruments/videomancer/downpour/downpour_hero.png
-description: "Program guide for Downpour, a Videomancer weather program for the LZX video synthesizer."
+description: "Rain is one of those visual phenomena that sits right at the boundary between order and chaos."
 ---
 
 import downpour_hero from '/img/instruments/videomancer/downpour/downpour_hero.png';
@@ -301,15 +301,15 @@ These exercises progress from a simple rain overlay to complex weather scene con
 |------|------------|
 | **Additive Compositing** | A blending operation that adds pixel values together, clamping at maximum (1023). Rain brightness is composited additively onto the source luma. |
 | **Edge Detection** | Measuring the difference between adjacent pixel values to identify sharp transitions. Downpour uses horizontal luma edge detection to trigger splash highlights. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Frame Counter** | A register that increments once per vertical sync, used to animate the vertical position of rain drops across successive frames. |
-| **LFSR** | Linear Feedback Shift Register; a simple pseudo-random number generator that cycles through a sequence of states determined by its tap configuration and seed value. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Saturating Arithmetic** | Addition or subtraction that clamps the result to the valid range (0–1023) instead of wrapping around on overflow or underflow. |
 | **Splash** | A short horizontal burst of bright pixels triggered at luma edges coinciding with rain drops, simulating the visual effect of a raindrop striking a surface. |
 | **Streak** | A vertical run of bright pixels representing a single rain drop's motion-blurred trail across the camera sensor. |
 | **XOR Hash** | A bitwise exclusive-OR operation used to combine the horizontal pixel counter with LFSR noise, producing a deterministic but pseudo-random per-pixel value. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

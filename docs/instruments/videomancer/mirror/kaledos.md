@@ -4,7 +4,7 @@ sidebar_position: 136
 slug: /instruments/videomancer/kaledos
 title: "Kaledos"
 image: /img/instruments/videomancer/kaledos/kaledos_hero.png
-description: "Program guide for Kaledos, a Videomancer mirror program for the LZX video synthesizer."
+description: "In 1816, the Scottish physicist Sir David Brewster patented the kaleidoscope — a tube of mirrors that transforms a handful of colored fragments into an ..."
 ---
 
 import kaledos_before_after from '/img/instruments/videomancer/kaledos/kaledos_before_after.png';
@@ -294,14 +294,14 @@ These exercises progress from simple mirroring through decorative features to co
 | Term | Definition |
 |------|------------|
 | **Bilateral Symmetry** | Mirror symmetry across an axis; each side is a reversed copy of the other. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the Y/U/V line buffer RAMs. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator, here used to drive continuous rotation. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Fold Count** | The number of symmetry axes in the kaleidoscope pattern; higher counts produce denser, more abstract reflections. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hue Rotation** | Shifting color angle by permuting the U and V chroma channels; 90° rotation cycles through complementary colors. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical differences: |Δx| + |Δy|. Cheaper to compute than Euclidean distance; used for the vignette falloff. |
 | **Octagonal Distance** | An approximation to Euclidean distance using max(|Δx|, |Δy|) + min(|Δx|, |Δy|)/2; used for the circular mask. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Strip** | A rectangular subdivision of the screen; the fundamental repeating unit of the kaleidoscope tiling pattern. |
 | **Vignette** | Gradual brightness reduction from center to edges, simulating the peripheral light falloff of an optical system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

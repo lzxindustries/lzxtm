@@ -4,7 +4,7 @@ sidebar_position: 63
 slug: /instruments/videomancer/dashcam
 title: "Dashcam"
 image: /img/instruments/videomancer/dashcam/dashcam_hero.png
-description: "Program guide for Dashcam, a Videomancer camera program for the LZX video synthesizer."
+description: "Dashcam emulates the look of footage recorded by a low-cost dashboard-mounted camera."
 ---
 
 import dashcam_hero from '/img/instruments/videomancer/dashcam/dashcam_hero.png';
@@ -51,11 +51,11 @@ Inexpensive CMOS and CCD sensors generate visible noise, especially in low-light
 
 ### Recording Indicator and Timestamp Overlays
 
-Nearly all dashboard cameras burn a recording indicator and timestamp directly into the video stream — the data is part of the image, not metadata. The indicator is typically a small coloured dot or icon that blinks at a fixed rate to confirm the camera is recording. Dashcam draws a small red dot at a configurable position in the frame, flashing at approximately 1 Hz using bit 4 of the frame counter. The Timestamp toggle enables the overlay, and the Indicator X and Indicator Y controls position it within the frame.
+Nearly all dashboard cameras burn a recording indicator and timestamp directly into the video stream — the data is part of the image, not metadata. The indicator is typically a small colored dot or icon that blinks at a fixed rate to confirm the camera is recording. Dashcam draws a small red dot at a configurable position in the frame, flashing at approximately 1 Hz using bit 4 of the frame counter. The Timestamp toggle enables the overlay, and the Indicator X and Indicator Y controls position it within the frame.
 
 ### Night Vision Mode
 
-Many dashboard cameras include an infrared LED array and a monochrome sensor mode for night recording. The resulting footage has a characteristic desaturated, green-tinted appearance — green because early night-vision systems used P43 green phosphor screens, and the convention persists in digital emulations. Dashcam's Night Mode forces the U channel to neutral (512) and shifts the V channel toward green (612), while leaving luma untouched. The result is an immediate monochrome-green transformation regardless of the input colour content.
+Many dashboard cameras include an infrared LED array and a monochrome sensor mode for night recording. The resulting footage has a characteristic desaturated, green-tinted appearance — green because early night-vision systems used P43 green phosphor screens, and the convention persists in digital emulations. Dashcam's Night Mode forces the U channel to neutral (512) and shifts the V channel toward green (612), while leaving luma untouched. The result is an immediate monochrome-green transformation regardless of the input color content.
 
 
 ---
@@ -278,13 +278,13 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 |------|------------|
 | **AGC** | Automatic Gain Control; circuitry that boosts signal amplitude in low-light conditions, increasing both signal and noise. |
 | **Barrel Distortion** | Optical aberration where straight lines near the image edges bow outward, caused by wide-angle lens geometry. |
-| **BT.601** | ITU-R standard defining the YUV colour encoding used in standard-definition video and by the Videomancer pipeline. |
-| **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **EIS** | Electronic Image Stabilisation; digital processing that compensates for camera shake by shifting the frame. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit producing a deterministic pseudo-random bit sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A chain of sequential processing stages where each stage transforms the signal on every clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Vignette** | Peripheral darkening in an image caused by light falloff at the edges of the lens image circle. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

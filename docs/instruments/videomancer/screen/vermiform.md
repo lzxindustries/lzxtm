@@ -4,7 +4,7 @@ sidebar_position: 273
 slug: /instruments/videomancer/vermiform
 title: "Vermiform"
 image: /img/instruments/videomancer/vermiform/vermiform_hero.png
-description: "Program guide for Vermiform, a Videomancer screen program for the LZX video synthesizer."
+description: "Vermiform recreates the hypnotic crawling-worm screensavers that defined the late 1980s and early 1990s desktop computing era."
 ---
 
 import vermiform_animation from '/img/instruments/videomancer/vermiform/vermiform_animation.gif';
@@ -23,7 +23,7 @@ import vermiform_hero from '/img/instruments/videomancer/vermiform/vermiform_her
 
 
 <img src={vermiform_hero} alt="Vermiform hero image"/>
-*Vermiform transforming a live video feed into a gradually revealed image as four coloured worm agents crawl across a persistent 1-bit canvas, painting sinusoidal trails that expose the source through an After Dark–inspired screensaver mechanic.*
+*Vermiform transforming a live video feed into a gradually revealed image as four colored worm agents crawl across a persistent 1-bit canvas, painting sinusoidal trails that expose the source through an After Dark–inspired screensaver mechanic.*
 <img src={vermiform_animation} alt="Vermiform animated output"/>
 *Vermiform output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
@@ -43,7 +43,7 @@ At subtle settings with high canvas dim and a single worm, Vermiform produces a 
 
 ### Screensaver Culture and Generative Art
 
-The screensaver emerged in the 1980s as a practical solution to phosphor burn-in on CRT monitors, but quickly evolved into a platform for generative art. Berkeley Systems' After Dark (1989) transformed the genre with modules like "Flying Toasters" and "Worms" — programs that ran autonomously, producing endlessly varying visual output from simple algorithmic rules. The "Worms" module specifically used bounded random walks to paint coloured trails on a black canvas, creating organic patterns that audiences found inexplicably compelling. Vermiform brings this generative tradition into the video synthesis domain, replacing the black background with live video and the coloured trails with a reveal mask.
+The screensaver emerged in the 1980s as a practical solution to phosphor burn-in on CRT monitors, but quickly evolved into a platform for generative art. Berkeley Systems' After Dark (1989) transformed the genre with modules like "Flying Toasters" and "Worms" — programs that ran autonomously, producing endlessly varying visual output from simple algorithmic rules. The "Worms" module specifically used bounded random walks to paint colored trails on a black canvas, creating organic patterns that audiences found inexplicably compelling. Vermiform brings this generative tradition into the video synthesis domain, replacing the black background with live video and the colored trails with a reveal mask.
 
 ### Random Walks and Bounded Movement
 
@@ -86,7 +86,7 @@ Input Video (YUV 4:4:4)
 │
 ├── Region Mux ──────────────────────────────────────────────
 │   │
-│   ├─ 7a. Worm head hit: output fixed worm colour (3×3 dot)
+│   ├─ 7a. Worm head hit: output fixed worm color (3×3 dot)
 │   ├─ 7b. Painted cell: pass through input video at full brightness
 │   └─ 7c. Unpainted cell: dim video by Cvs Dim amount
 │
@@ -101,7 +101,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-The worm update runs exclusively during the vertical blanking interval, ensuring that all worm movement and canvas painting complete before the active video region begins. This means worms advance once per frame regardless of the pixel clock. The canvas read and rendering pipeline then operate at full pixel rate during active video, looking up each pixel's cell in the canvas BRAM and selecting the appropriate output: worm head colour, revealed video, or dimmed video. The coverage reset is also sequential — rather than clearing the entire BRAM in one cycle, it walks through addresses one per clock during vblank to avoid corrupting in-flight reads.
+The worm update runs exclusively during the vertical blanking interval, ensuring that all worm movement and canvas painting complete before the active video region begins. This means worms advance once per frame regardless of the pixel clock. The canvas read and rendering pipeline then operate at full pixel rate during active video, looking up each pixel's cell in the canvas BRAM and selecting the appropriate output: worm head color, revealed video, or dimmed video. The coverage reset is also sequential — rather than clearing the entire BRAM in one cycle, it walks through addresses one per clock during vblank to avoid corrupting in-flight reads.
 
 The cell size toggle directly affects the visual granularity of the reveal. Fine mode (8×8 pixels per cell) produces a sharper, more detailed reveal mask at the cost of requiring more worm travel to achieve full coverage. Coarse mode (16×16 pixels per cell) creates a blockier, more pixelated reveal that fills faster. The canvas BRAM dimensions remain constant; fine mode simply maps to a larger effective grid by shifting fewer address bits.
 
@@ -163,7 +163,7 @@ Loads a different initial state into the 16-bit LFSR, producing an entirely diff
 | Default | 92.9% |
 | Suffix | % |
 
-Controls the brightness of unpainted canvas areas. At zero, unpainted regions pass the input video at full brightness — there is no dimming distinction between painted and unpainted cells, effectively making the canvas invisible. As Cvs Dim increases, unpainted areas become progressively darker. At maximum, unpainted regions are completely black, creating the classic screensaver look where only worm trails reveal the underlying video. At high dim values, the chroma channels of unpainted regions are also forced to neutral gray, preventing colour bleeding from fully dimmed areas.
+Controls the brightness of unpainted canvas areas. At zero, unpainted regions pass the input video at full brightness — there is no dimming distinction between painted and unpainted cells, effectively making the canvas invisible. As Cvs Dim increases, unpainted areas become progressively darker. At maximum, unpainted regions are completely black, creating the classic screensaver look where only worm trails reveal the underlying video. At high dim values, the chroma channels of unpainted regions are also forced to neutral gray, preventing color bleeding from fully dimmed areas.
 
 ---
 
@@ -218,7 +218,7 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 1. **Single slow worm**: Set Worms to 1, Speed to ~25%. A single worm begins its slow crawl across the frame.
 2. **Full dimming**: Push Cvs Dim to ~95%. Unpainted areas go nearly black — the video is only visible where the worm has passed.
 3. **Gentle curves**: Set Turn Rate to ~40%. The worm traces smooth, sweeping arcs with gentle curvature.
-4. **Show the worm**: Toggle Worm Vis to Show. A bright coloured dot marks the worm's current position.
+4. **Show the worm**: Toggle Worm Vis to Show. A bright colored dot marks the worm's current position.
 5. **High reset threshold**: Set Reset % to ~95%. The canvas persists until almost every cell is visited, allowing the full image to emerge slowly.
 
 **Key concepts**: Single-worm reveals create a spotlight-like exploration of the source, canvas dim controls the contrast between revealed and hidden areas, high reset threshold allows full coverage before cycling
@@ -279,12 +279,12 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 | Term | Definition |
 |------|------------|
 | **After Dark** | A popular Macintosh/Windows screensaver program (1989) by Berkeley Systems, featuring modules like "Worms" and "Flying Toasters" that became cultural icons of early personal computing. |
-| **BRAM** | Block RAM; dedicated FPGA memory used here as the 1-bit canvas storing trail coverage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Canvas** | The persistent 1-bit-per-cell array recording which cells have been visited by worm agents. |
 | **Coverage Counter** | A 14-bit accumulator tracking the number of painted canvas cells, used to trigger canvas reset. |
 | **Heading** | An 8-bit angle (0–255 mapping to 0°–360°) defining each worm's current direction of travel. |
-| **LFSR** | Linear-Feedback Shift Register; generates the pseudo-random steering perturbations that create varied worm paths. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Quarter-Wave LUT** | A lookup table storing only 0°–90° of a sine wave, deriving the remaining quadrants through symmetry to save BRAM. |
 | **Random Walk** | A mathematical path consisting of successive random steps; Vermiform uses a persistent variant with correlated heading changes. |
 | **VBlank** | Vertical blanking interval; the non-visible portion of each video frame during which worm positions are updated. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 123
 slug: /instruments/videomancer/howler
 title: "Howler"
 image: /img/instruments/videomancer/howler/howler_hero.png
-description: "Program guide for Howler, a Videomancer tube program for the LZX video synthesizer."
+description: "Howler implements a video feedback loop entirely within the FPGA — no external routing required."
 ---
 
 import howler_hero from '/img/instruments/videomancer/howler/howler_hero.png';
@@ -276,18 +276,18 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Howler uses three BRAMs (one per Y/U/V) as the persistent feedback canvas. |
-| **BT.601** | ITU-R Recommendation BT.601; the standard color matrix for YUV-to-RGB conversion in standard-definition video. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Decay** | The feedback persistence coefficient. Multiplies the BRAM readback by a factor between 0 (no persistence) and ~1.0 (indefinite persistence). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the feedback pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Givens rotation** | A 2D rotation applied to two components (here U and V) by a small-angle approximation: U' = U − Vk/512, V' = V + Uk/512. |
 | **Howl-round** | A visual feedback technique where a camera films its own output, first used by the BBC Radiophonic Workshop. |
 | **IIR** | Infinite Impulse Response; a feedback system where each output depends on both current input and previous outputs. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) used for the wet/dry output mix. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to seed the feedback loop in Self-Excite mode. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. Howler has a 7-clock pipeline plus 4-clock interpolators. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Soft clip** | Saturating arithmetic that clamps values to the valid range (0–1023) rather than wrapping on overflow. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

@@ -4,7 +4,7 @@ sidebar_position: 226
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
 image: /img/instruments/videomancer/schufftan/schufftan_hero.png
-description: "Program guide for Schufftan, a Videomancer film program for the LZX video synthesizer."
+description: "The Schüfftan process was a visual effects technique invented in 1920s German cinema."
 ---
 
 import schufftan_before_after from '/img/instruments/videomancer/schufftan/schufftan_before_after.png';
@@ -36,7 +36,7 @@ import schufftan_source3_kodim13_bw from '/img/instruments/videomancer/schufftan
 
 The Schüfftan process was a visual effects technique invented in 1920s German cinema. A partially-scraped mirror was placed between the camera and a miniature set: actors were filmed through the cleared areas of the mirror while the miniature's reflection filled the surrounding frame. The technique created the illusion that actors were standing inside enormous architectural sets that existed only as tabletop models. Fritz Lang's *Metropolis* (1927) is the most famous example.
 
-Schufftan translates this optical concept into the digital video domain. It divides the incoming frame into two regions based on a luminance key — pixels above a threshold and pixels below it. One region (configurable via the Mirror Side toggle) is treated as the "mirror" zone: it receives contrast reduction, horizontal blur, a cool blue-silver colour shift, and optional per-scanline wobble that simulates the imperfect flatness of a physical mirror surface. The other region passes through cleanly, representing the direct camera view through the mirror's cleared areas.
+Schufftan translates this optical concept into the digital video domain. It divides the incoming frame into two regions based on a luminance key — pixels above a threshold and pixels below it. One region (configurable via the Mirror Side toggle) is treated as the "mirror" zone: it receives contrast reduction, horizontal blur, a cool blue-silver color shift, and optional per-scanline wobble that simulates the imperfect flatness of a physical mirror surface. The other region passes through cleanly, representing the direct camera view through the mirror's cleared areas.
 
 The key softness ramp controls the transition width between mirror and direct regions. A hard key produces a sharp boundary — the digital equivalent of a precisely scraped mirror. A soft key creates a gradual blend, mimicking the optical diffusion at the boundary between clear glass and reflective coating. The wobble parameter adds a sinusoidal per-scanline displacement that gives the mirror region a watery, unstable quality, as if the reflection is about to dissolve.
 
@@ -64,7 +64,7 @@ Reflections are always lower-contrast than direct views. Light bouncing off a mi
 
 ### Mirror Tint
 
-Metallic mirrors impart a colour cast to reflected light. Silver mirrors produce a cool blue-grey tint; copper mirrors produce a warm amber. Schufftan simulates this with a UV colour shift applied to the mirror region: U is shifted toward blue, V is shifted toward cool. The Mirror Tint parameter controls the intensity of this shift, from a barely-perceptible coolness to an aggressive blue-silver cast that clearly marks the mirror zone.
+Metallic mirrors impart a color cast to reflected light. Silver mirrors produce a cool blue-gray tint; copper mirrors produce a warm amber. Schufftan simulates this with a UV color shift applied to the mirror region: U is shifted toward blue, V is shifted toward cool. The Mirror Tint parameter controls the intensity of this shift, from a barely-perceptible coolness to an aggressive blue-silver cast that clearly marks the mirror zone.
 
 
 ---
@@ -175,7 +175,7 @@ Controls the contrast reduction applied to the mirror region. The processing pus
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the intensity of the blue-silver colour tint applied to the mirror region. U is shifted toward blue, V is shifted toward cool (desaturated). At 0%, no colour shift. Increasing the control produces a progressively stronger cool metallic cast — the colour signature of a silver mirror surface. The tint helps visually separate the mirror zone from the direct zone even when contrast and detail differences are subtle.
+Controls the intensity of the blue-silver color tint applied to the mirror region. U is shifted toward blue, V is shifted toward cool (desaturated). At 0%, no color shift. Increasing the control produces a progressively stronger cool metallic cast — the color signature of a silver mirror surface. The tint helps visually separate the mirror zone from the direct zone even when contrast and detail differences are subtle.
 
 ---
 
@@ -283,7 +283,7 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 - **Softness for naturalism**: Hard keys look digital; soft keys look optical. For a convincing Schüfftan look, use Softness of at least 20–30%.
 - **Wobble amplitude goes a long way**: Even small Wobble values (10–20%) create a noticeable ripple. Reserve high values for deliberate funhouse-mirror effects.
 - **Combine Contrast and Detail for mirror realism**: Real reflections are both lower-contrast and softer than direct views. Use both controls together for the most convincing mirror zone.
-- **Mirror Tint as colour grade**: At low Key Level with soft key, the mirror tint becomes a gentle cool colour wash over most of the frame — usable as a cinematic colour grade tool.
+- **Mirror Tint as color grade**: At low Key Level with soft key, the mirror tint becomes a gentle cool color wash over most of the frame — usable as a cinematic color grade tool.
 - **Edge mode for contour effects**: Edge keying applies the mirror treatment to spatial transitions rather than brightness levels, creating haloed contours with the mirror's soft, tinted character.
 - **Feedback loops**: Routing Schufftan's output back to its input creates recursive keying — the mirror region's contrast reduction and tint accumulate, progressively separating the two zones into distinct visual layers.
 
@@ -294,15 +294,15 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 | Term | Definition |
 |------|------------|
 | **Alpha** | A per-pixel transparency value (0–1023) controlling the blend between two image layers; here, between mirror and direct regions. |
-| **BT.601** | ITU-R Recommendation BT.601; the colour space standard defining YUV encoding used throughout the Videomancer pipeline. |
-| **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Composite** | The process of combining two or more image layers into a single output using alpha blending or keying. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms (here, a sine wave for wobble) using a phase accumulator and lookup table. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both current input and previous output, creating exponential smoothing. |
-| **Keying** | Separating an image into foreground and background regions based on a signal characteristic (luminance, colour, or edge). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage applying brightness and contrast adjustment. |
+| **Keying** | Separating an image into foreground and background regions based on a signal characteristic (luminance, color, or edge). |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Schüfftan Process** | A 1920s visual effects technique using a partially-scraped mirror to composite live actors with miniature sets. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 193
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
 image: /img/instruments/videomancer/pegboard/pegboard_hero.png
-description: "Program guide for Pegboard, a Videomancer pixel program for the LZX video synthesizer."
+description: "Before LCD panels and OLED screens, there was Lite-Brite — a toy that turned translucent colored pegs into glowing pictures when backlit."
 ---
 
 import pegboard_before_after from '/img/instruments/videomancer/pegboard/pegboard_before_after.png';
@@ -300,12 +300,12 @@ These exercises progress from basic peg rendering through color manipulation to 
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Euclidean Distance** | Distance measured as the square root of dx² + dy²; Pegboard uses distance-squared to avoid the square root. |
 | **Falloff** | The radial decrease in brightness from the peg center to its edge, simulating translucent glow. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Lite-Brite** | A 1967 Hasbro toy that creates glowing images by placing translucent colored pegs into a backlit perforated board. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for palette color matching. |
 | **Mosaic** | A visual pattern composed of small uniform-color blocks arranged in a grid. |
 | **Palette Quantization** | Reducing a continuous color space to a fixed set of representative colors by nearest-neighbor matching. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sample and Hold** | Capturing a signal value at one instant (the cell center) and maintaining it for a duration (the entire cell). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

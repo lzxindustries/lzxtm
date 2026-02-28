@@ -4,7 +4,7 @@ sidebar_position: 214
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero.png
-description: "Program guide for Redacted, a Videomancer text program for the LZX video synthesizer."
+description: "Broadcast television and government documents share a common visual vocabulary: the black bar."
 ---
 
 import redacted_before_after from '/img/instruments/videomancer/redacted/redacted_before_after.png';
@@ -284,12 +284,12 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 | Term | Definition |
 |------|------------|
 | **Bar** | A solid rectangular region drawn over detected content, typically near-black (Y=64), simulating broadcast censorship or document redaction. |
-| **BRAM** | Block RAM; dedicated FPGA memory, not used by this program (zero BRAM, register-based design). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a digital filter whose output depends on both current input and previous output, used here for line brightness accumulation. |
-| **Interpolator** | A hardware multiply-accumulate unit for linear crossfading between two signals. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Margin** | Extra pixels of bar coverage extending past the end of a detected bright run, preventing partial exposure. |
 | **Run-Length** | The number of consecutive pixels meeting a condition; used here to require sustained brightness before triggering redaction. |
 | **Threshold** | A brightness cutoff value; pixels above (or below, when inverted) this level are flagged for redaction. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 258
 slug: /instruments/videomancer/tempest
 title: "Tempest"
 image: /img/instruments/videomancer/tempest/tempest_hero.png
-description: "Program guide for Tempest, a Videomancer demo program for the LZX video synthesizer."
+description: "A storm is not random — it is a system of interacting oscillations, each warping the others."
 ---
 
 import tempest_animation from '/img/instruments/videomancer/tempest/tempest_animation.gif';
@@ -35,7 +35,7 @@ A storm is not random — it is a system of interacting oscillations, each warpi
 
 The name comes from the atmospheric phenomenon and its connotation of barely-controlled energy. At low noise modulation, Tempest produces orderly interference patterns — standing waves and Moiré-like lattice structures. As noise-to-phase modulation increases, the oscillators' frequencies jitter unpredictably, and the pattern disintegrates into turbulence. A second noise injection path adds grain texture directly to the output luminance, independent of the spatial pattern.
 
-The program processes input video through a proc_amp stage where the combined oscillator pattern becomes the brightness offset, and the Luma Gain control sets the contrast (how strongly the input modulates the output). This means Tempest can function as a pure spatial synthesizer (low gain, high cutoffs) or as a turbulence overlay on live video (high gain). Fade Amount crossfades between the processed output and a solid target colour, while desaturation and luma inversion provide final tonal shaping.
+The program processes input video through a proc_amp stage where the combined oscillator pattern becomes the brightness offset, and the Luma Gain control sets the contrast (how strongly the input modulates the output). This means Tempest can function as a pure spatial synthesizer (low gain, high cutoffs) or as a turbulence overlay on live video (high gain). Fade Amount crossfades between the processed output and a solid target color, while desaturation and luma inversion provide final tonal shaping.
 
 ---
 
@@ -116,7 +116,7 @@ The frequency doubler module folds a sawtooth ramp into a triangle wave by mirro
 │    └────────┬─────────────┘                                 
 │             │                                                
 │    ┌────────▼─────────────┐                                 
-│    │  Fade-to-Colour      │◄── Fade Amount, Fade Color      
+│    │  Fade-to-Color      │◄── Fade Amount, Fade Color      
 │    │  (interpolator_u ×3) │                                 
 │    └────────┬─────────────┘                                 
 │             │                                                
@@ -229,7 +229,7 @@ The five toggles control binary processing options at different points in the si
 | Default | 50.0% |
 | Suffix | % |
 
-Fade Amount controls the crossfade between the processed output and the solid target colour (black or white, set by Fade Color). At maximum (1023), the full processed signal passes through — oscillator pattern, noise, gain, inversion, and all. At zero, the output is solid black or white. At intermediate values, the processed pattern is partially transparent over the target, creating washed-out or silhouette effects. The interpolation is linear via the interpolator_u entity.
+Fade Amount controls the crossfade between the processed output and the solid target color (black or white, set by Fade Color). At maximum (1023), the full processed signal passes through — oscillator pattern, noise, gain, inversion, and all. At zero, the output is solid black or white. At intermediate values, the processed pattern is partially transparent over the target, creating washed-out or silhouette effects. The interpolation is linear via the interpolator_u entity.
 
 ---
 
@@ -275,14 +275,14 @@ These exercises build from static spatial patterns through animated turbulence t
 
 <img src={tempest_exercise3_result} alt="Fade and Inversion Sculpting result"/>
 *Fade and Inversion Sculpting — simulated result across source images.*
-**Objective**: Use the fade-to-colour crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
+**Objective**: Use the fade-to-color crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
 
 1. **Establish turbulence**: Set H Cutoff ~40%, V Cutoff ~30%, Noise to Phase ~60%, F Cutoff ~15%.
 2. **Fade to black**: Lower Fade Amount to ~50%. The pattern becomes semi-transparent over black, creating a dark atmospheric effect.
 3. **Switch to white**: Toggle Fade Color to White. The same fade now washes the pattern toward bright white — the visual character reverses entirely.
 4. **Invert**: Toggle Luma Invert. The bright peaks become dark valleys against the fade target, creating a negative-image effect.
-5. **Desaturate off**: If using with input video, disable Desaturate to allow colour through. With pure synthesis, the chroma channels remain neutral.
-6. **Full fade sweep**: Slowly sweep Fade Amount from 0% to 100% to see the full range of the crossfade. At the extremes, the pattern vanishes into solid colour; in the middle, it creates translucent overlay textures.
+5. **Desaturate off**: If using with input video, disable Desaturate to allow color through. With pure synthesis, the chroma channels remain neutral.
+6. **Full fade sweep**: Slowly sweep Fade Amount from 0% to 100% to see the full range of the crossfade. At the extremes, the pattern vanishes into solid color; in the middle, it creates translucent overlay textures.
 
 **Key concepts**: Fade Amount crossfades linearly between processed and solid target. Fade Color selects the target (black or white). Luma Invert reverses the pattern after processing. These controls sculpt the final tonal range of the turbulence output.
 
@@ -305,15 +305,15 @@ These exercises build from static spatial patterns through animated turbulence t
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a method of generating waveforms by incrementing a phase accumulator at a rate determined by a frequency word. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **FM** | Frequency Modulation; modulating the frequency of one signal with another to create complex sidebands and timbral variation. |
 | **Frequency Doubler** | A waveshaping module that folds a sawtooth ramp into a triangle wave by mirroring the upper half, doubling the apparent frequency. |
 | **Frequency Word** | The value added to a DDS phase accumulator on each clock cycle; determines the output frequency. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback of selected bit positions. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Moiré** | An interference pattern produced when two periodic patterns overlap at slightly different frequencies or angles. |
 | **Phase Accumulator** | A register that wraps around at a fixed modulus, producing a periodic ramp waveform; the core of any DDS oscillator. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a video signal. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Triangle Wave** | A periodic waveform that rises and falls linearly, creating smooth spatial gradients without the abrupt discontinuity of a sawtooth. |
 | **Turbulence** | In this context, spatial frequency distortion caused by noise-modulating the oscillator DDS — analogous to atmospheric turbulence distorting light. |
 | **XOR** | Exclusive OR; a bitwise operation where corresponding bits differ produces 1, creating structured spatial interference patterns when applied to ramp waves. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 252
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
 image: /img/instruments/videomancer/swizzle/swizzle_hero.png
-description: "Program guide for Swizzle, a Videomancer pixel program for the LZX video synthesizer."
+description: "Every pixel in the Videomancer video pipeline is a triplet of numbers — luminance (Y), and two chrominance components (U and V)."
 ---
 
 import swizzle_before_after from '/img/instruments/videomancer/swizzle/swizzle_before_after.png';
@@ -286,12 +286,12 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU television standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Channel Rotation** | A cyclic permutation of three components (Y→U→V→Y), moving each channel's data to the next position in the cycle. |
 | **Chrominance** | The color information in a video signal, encoded as U and V components centered at 512 in 10-bit representation. |
 | **DC Offset** | A constant value added to a signal, shifting its entire range up or down without changing its shape. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly blends two input values based on a mix parameter (lerp). |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Swizzle** | In GPU programming, a reordering of vector components; in this program, a reordering of YUV channels. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

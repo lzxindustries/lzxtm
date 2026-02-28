@@ -4,7 +4,7 @@ sidebar_position: 254
 slug: /instruments/videomancer/tarmac
 title: "Tarmac"
 image: /img/instruments/videomancer/tarmac/tarmac_hero.png
-description: "Program guide for Tarmac, a Videomancer game program for the LZX video synthesizer."
+description: "The Super Nintendo's Mode 7 background layer was a hardware trick that changed everything."
 ---
 
 import tarmac_before_after from '/img/instruments/videomancer/tarmac/tarmac_before_after.png';
@@ -288,13 +288,13 @@ These exercises build from basic perspective rendering to complex animated groun
 | Term | Definition |
 |------|------------|
 | **Affine Transform** | A geometric transformation preserving parallel lines, defined by a 2×2 matrix plus translation; encompasses rotation, scaling, shearing, and translation. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 64×64×30-bit tile buffer. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating continuous rotation and oscillation from a fixed-rate increment counter. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Foreshortening** | Perspective compression where objects farther from the viewer appear shorter, narrower, and closer together. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the Mode 7 video processing pipeline in real time. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Mode 7** | A background rendering mode in the Super Nintendo PPU that applies per-scanline affine transformations to a tiled texture for pseudo-3D ground plane effects. |
 | **Per-Scanline Perspective** | Varying the affine matrix scaling coefficient for each horizontal line to simulate depth — the central technique behind Mode 7's 3D illusion. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quarter-Wave Sine LUT** | A lookup table storing one quarter of a sine wave; full 360° sine and cosine coverage is achieved through quadrant mirroring and sign flipping. |
 | **Tile Buffer** | A small (64×64 pixels, 30-bit packed YUV) memory region storing a downsampled snapshot of the input video, used as the texture source for Mode 7 rendering. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

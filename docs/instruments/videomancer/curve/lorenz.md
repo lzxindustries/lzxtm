@@ -4,7 +4,7 @@ sidebar_position: 154
 slug: /instruments/videomancer/lorenz
 title: "Lorenz"
 image: /img/instruments/videomancer/lorenz/lorenz_hero.png
-description: "Program guide for Lorenz, a Videomancer curve program for the LZX video synthesizer."
+description: "In 1963, meteorologist Edward Lorenz was running a simplified weather simulation on a Royal McBee LGP-30 computer."
 ---
 
 import lorenz_animation from '/img/instruments/videomancer/lorenz/lorenz_animation.gif';
@@ -307,14 +307,14 @@ These exercises explore the Lorenz system from first principles — starting wit
 |------|------------|
 | **Attractor** | A set of states toward which a dynamical system evolves over time; the Lorenz attractor is "strange" because it has fractal structure and supports chaotic trajectories. |
 | **Bifurcation** | A qualitative change in a system's behavior as a parameter crosses a critical threshold; the Lorenz system bifurcates from stable to chaotic near ρ≈24.74. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Lorenz uses 2 BRAM tiles for the 64×64×4-bit canvas (16384 bits). |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Canvas** | The 64×64 pixel buffer stored in BRAM that accumulates trajectory points and is read out during active video. |
 | **Chaos** | Deterministic but unpredictable behavior arising from nonlinear dynamics and sensitive dependence on initial conditions. |
 | **Euler method** | The simplest numerical integration technique: $x_{n+1} = x_n + \Delta t \cdot f(x_n)$. Fast but accumulates error, especially at large time steps. |
 | **Fixed-point** | A representation of fractional numbers using integer arithmetic with a fixed binary point; the Lorenz integrator uses 6.10 format (6 integer bits, 10 fractional bits). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Lorenz equations** | Three coupled ODEs ($\dot{x}=\sigma(y-x)$, $\dot{y}=x(\rho-z)-y$, $\dot{z}=xy-\beta z$) that model simplified atmospheric convection and exhibit deterministic chaos. |
 | **Phase portrait** | A visualization of a dynamical system's trajectory through its state space. |
 | **Phosphor decay** | The gradual fading of a display phosphor after excitation, simulated by decrementing canvas pixel values each frame. |
 | **Strange attractor** | An attractor with fractal dimension, supporting chaotic trajectories that never repeat. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

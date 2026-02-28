@@ -4,7 +4,7 @@ sidebar_position: 266
 slug: /instruments/videomancer/tracer
 title: "Tracer"
 image: /img/instruments/videomancer/tracer/tracer_hero.png
-description: "Program guide for Tracer, a Videomancer edges program for the LZX video synthesizer."
+description: "Every child of the 1970s and 1980s remembers the feeling: two white knobs, a silver screen, and a stylus hidden behind a pane of glass, scraping aluminu..."
 ---
 
 import tracer_before_after from '/img/instruments/videomancer/tracer/tracer_before_after.png';
@@ -290,15 +290,15 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here to store the persistent 128×96 1-bit canvas. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Canvas** | The 128×96 1-bit bitmap that accumulates detected edge contours over time. |
 | **Contour** | A line or curve tracing a boundary of equal luminance in the image, detected by the gradient operator. |
 | **Decay** | Probabilistic erasure of the canvas contents over time, simulating the shake-to-erase behavior of the physical toy. |
 | **Edge Detection** | The process of identifying pixels where luminance changes sharply, implemented here as a Manhattan gradient with threshold comparison. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the real-time video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Gradient** | The rate of luminance change between adjacent pixels; computed separately for horizontal and vertical axes. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for the aluminum grain texture. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Line Buffer** | A one-line RAM delay used to access the previous scanline's Y values for vertical gradient computation. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical differences, |∆H| + |∆V|, used as the gradient magnitude. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

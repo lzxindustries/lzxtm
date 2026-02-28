@@ -4,7 +4,7 @@ sidebar_position: 169
 slug: /instruments/videomancer/mirage
 title: "Mirage"
 image: /img/instruments/videomancer/mirage/mirage_hero.png
-description: "Program guide for Mirage, a Videomancer quantel program for the LZX video synthesizer."
+description: "The Quantel Mirage DVM8000, introduced in 1982, was the first real-time digital video effects system capable of mapping live television onto arbitrary 3..."
 ---
 
 import mirage_before_after from '/img/instruments/videomancer/mirage/mirage_before_after.png';
@@ -293,17 +293,17 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline buffer storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Coordinate Remapping** | Computing a displaced source address for each output pixel, creating the illusion of geometric transformation. |
-| **DDS** | Direct Digital Synthesis; a phase accumulator technique used here to drive continuous animation of the surface transformation. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Edge Masking** | Replacing pixels that fall outside valid source bounds with a background fill color. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT** | Look-Up Table; a pre-computed array of values (here, sine and cosine) indexed by angle for fast trigonometric evaluation. |
 | **Perspective Shading** | Darkening surface regions that face away from the viewer, based on the cosine of the surface normal angle. |
 | **Phase Accumulator** | A counter that adds a fixed increment each cycle, producing a linearly increasing phase angle that wraps modulo 2π. |
 | **Quantel** | A British company that pioneered real-time digital video effects hardware in the 1980s. |
 | **Scanline Buffer** | BRAM storage holding one or more complete video lines, enabling random-access reads for coordinate remapping. |
 | **Surface Equation** | The mathematical function that maps output pixel coordinates to displaced source coordinates for a given 3D surface type. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

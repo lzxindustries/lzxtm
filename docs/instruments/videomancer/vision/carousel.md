@@ -4,7 +4,7 @@ sidebar_position: 34
 slug: /instruments/videomancer/carousel
 title: "Carousel"
 image: /img/instruments/videomancer/carousel/carousel_hero.png
-description: "Program guide for Carousel, a Videomancer vision program for the LZX video synthesizer."
+description: "In the early 1980s, the Ampex ADO 100 introduced real-time digital video manipulation to broadcast television."
 ---
 
 import carousel_hero from '/img/instruments/videomancer/carousel/carousel_hero.png';
@@ -293,12 +293,12 @@ These exercises progress from static angle positioning through continuous rotati
 | **Compositing** | The process of combining multiple image layers into a single output, here merging the rotated face with a colored background. |
 | **Cosine** | A trigonometric function that, for a rotation angle θ, gives the ratio of the visible face width to its full width; stored here as a 256-entry lookup table. |
 | **DDA** | Digital Differential Analyzer; an algorithm that steps through source pixels at a non-integer rate to produce spatial compression or expansion. |
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator incremented each frame to generate a continuously advancing rotation angle. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **DVE** | Digital Video Effects; the broadcast industry term for real-time spatial manipulation of video images such as squeeze, rotate, tumble, and page-turn. |
 | **Foreshortening** | The apparent narrowing of a surface as it rotates away from the viewer, proportional to the cosine of the rotation angle. |
 | **LUT** | Lookup Table; a pre-computed array of values indexed by an input parameter, used here for cosine and background hue-to-chroma conversions. |
 | **Phase accumulator** | A counter that wraps around at a fixed modulus, producing a continuously cycling value used to drive the rotation angle in auto mode. |
 | **Scanline** | A single horizontal row of pixels in a video frame; Carousel computes face geometry independently for each scanline. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

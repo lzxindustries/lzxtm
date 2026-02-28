@@ -4,7 +4,7 @@ sidebar_position: 192
 slug: /instruments/videomancer/peephole
 title: "Peephole"
 image: /img/instruments/videomancer/peephole/peephole_hero.png
-description: "Program guide for Peephole, a Videomancer edges program for the LZX video synthesizer."
+description: "Every video synthesizer needs a way to isolate part of the frame — to say 'this region is visible, everything else is black.' Peephole is a position-bas..."
 ---
 
 import peephole_before_after from '/img/instruments/videomancer/peephole/peephole_before_after.png';
@@ -309,11 +309,11 @@ These exercises progress from simple rectangular masking to content-responsive k
 | **Clamp** | Constraining a value to remain within a fixed range, preventing overflow or underflow. |
 | **Diamond Key** | A key shape formed by summing horizontal and vertical edge distances, producing a rhombus boundary following Manhattan distance. |
 | **Edge Threshold** | A position value defining one side of the key window boundary; pixels beyond the threshold contribute zero key. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Key** | A control signal (0–1023) that determines the opacity of each pixel; 0 = fully transparent (black), 1023 = fully opaque. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of horizontal and vertical distances, producing diamond-shaped iso-distance contours. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Position Ramp** | A linearly increasing signal that sweeps from 0 to 1023 across the horizontal or vertical extent of the frame. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

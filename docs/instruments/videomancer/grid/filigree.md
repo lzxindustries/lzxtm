@@ -4,7 +4,7 @@ sidebar_position: 96
 slug: /instruments/videomancer/filigree
 title: "Filigree"
 image: /img/instruments/videomancer/filigree/filigree_hero.png
-description: "Program guide for Filigree, a Videomancer grid program for the LZX video synthesizer."
+description: "Filigree draws ornamental line patterns on top of live video — a grid of delicate scrollwork generated entirely from the pixel coordinates themselves."
 ---
 
 import filigree_hero from '/img/instruments/videomancer/filigree/filigree_hero.png';
@@ -21,17 +21,17 @@ import filigree_exercise3_result from '/img/instruments/videomancer/filigree/fil
 <img src={filigree_hero} alt="Filigree hero image"/>
 *Filigree projecting 8-fold scrollwork over a live video source with position-tinted metallic lines and continuous diagonal scroll animation.*
 <img src={filigree_animation} alt="Filigree animated output"/>
-*Filigree output evolving over multiple frames â€” synthesis programs generate imagery without requiring a video input source.*
+*Filigree output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
 ## Overview
 
-Filigree draws ornamental line patterns on top of live video â€” a grid of delicate scrollwork generated entirely from the pixel coordinates themselves. The program folds horizontal and vertical screen positions through absolute-value mirrors, producing patterns with 4-fold, 8-fold, or diagonal reflective symmetry. It then applies bitwise AND masking and optional XOR composition to create intricate lattice structures ranging from simple diagonal stripes to dense diamond wirework.
+Filigree draws ornamental line patterns on top of live video — a grid of delicate scrollwork generated entirely from the pixel coordinates themselves. The program folds horizontal and vertical screen positions through absolute-value mirrors, producing patterns with 4-fold, 8-fold, or diagonal reflective symmetry. It then applies bitwise AND masking and optional XOR composition to create intricate lattice structures ranging from simple diagonal stripes to dense diamond wirework.
 
-The name references the ancient metalworking technique of *filigree* â€” twisting fine threads of gold or silver wire into elaborate decorative patterns. Like its physical counterpart, the program builds visual complexity from simple structural rules: fold, mask, and overlay. At low complexity settings, the output is clean geometric striping. At high complexity, the overlapping symmetry folds and density masks produce dense scrollwork textures reminiscent of Islamic geometric tilings or Art Nouveau ironwork.
+The name references the ancient metalworking technique of *filigree* — twisting fine threads of gold or silver wire into elaborate decorative patterns. Like its physical counterpart, the program builds visual complexity from simple structural rules: fold, mask, and overlay. At low complexity settings, the output is clean geometric striping. At high complexity, the overlapping symmetry folds and density masks produce dense scrollwork textures reminiscent of Islamic geometric tilings or Art Nouveau ironwork.
 
-All line drawing is additive â€” the pattern brightens the source video without ever darkening it. The lines can be rendered as pure white or position-tinted (with chroma derived from folded screen coordinates), and a DDS accumulator provides smooth continuous scroll animation. The result is a luminous grid overlay that breathes and moves across the source material.
+All line drawing is additive — the pattern brightens the source video without ever darkening it. The lines can be rendered as pure white or position-tinted (with chroma derived from folded screen coordinates), and a DDS accumulator provides smooth continuous scroll animation. The result is a luminous grid overlay that breathes and moves across the source material.
 
 ---
 
@@ -39,19 +39,19 @@ All line drawing is additive â€” the pattern brightens the source video wit
 
 ### Filigree in Metalwork and Ornament
 
-Filigree is one of the oldest decorative arts, dating to Mesopotamian goldwork around 3000 BCE. The technique involves soldering fine wire â€” typically gold or silver â€” onto a metal surface to form intricate scrollwork, arabesques, and lattice structures. The characteristic visual quality of filigree is *delicacy within structure*: individual wire threads are gossamer-thin, but they are assembled into precise geometric frameworks with perfect bilateral or rotational symmetry. This tension between fine detail and rigid order is exactly what the Videomancer program replicates â€” the density and thickness controls trade off between wire fineness and grid coarseness.
+Filigree is one of the oldest decorative arts, dating to Mesopotamian goldwork around 3000 BCE. The technique involves soldering fine wire — typically gold or silver — onto a metal surface to form intricate scrollwork, arabesques, and lattice structures. The characteristic visual quality of filigree is *delicacy within structure*: individual wire threads are gossamer-thin, but they are assembled into precise geometric frameworks with perfect bilateral or rotational symmetry. This tension between fine detail and rigid order is exactly what the Videomancer program replicates — the density and thickness controls trade off between wire fineness and grid coarseness.
 
 ### Coordinate Folding and Reflective Symmetry
 
-Reflective symmetry in two dimensions can be generated from a single fundamental domain by folding coordinates back on themselves. The simplest fold is `abs(x âˆ’ center)` â€” an absolute-value reflection that maps both halves of the screen onto the same coordinate range. Applied independently to horizontal and vertical axes, this produces **4-fold** (dihedral Dâ‚‚) symmetry: every pixel in one quadrant has three mirrors in the other three quadrants.
+Reflective symmetry in two dimensions can be generated from a single fundamental domain by folding coordinates back on themselves. The simplest fold is `abs(x − center)` — an absolute-value reflection that maps both halves of the screen onto the same coordinate range. Applied independently to horizontal and vertical axes, this produces **4-fold** (dihedral D₂) symmetry: every pixel in one quadrant has three mirrors in the other three quadrants.
 
-Filigree extends this further. When the Symmetry control exceeds a midpoint threshold, the folded coordinates are folded again at the quarter-screen boundary, producing **8-fold** (Dâ‚„) symmetry â€” each octant mirrors all others. Between these thresholds, a diagonal mirror swaps the horizontal and vertical axes when one exceeds the other, creating **diagonal reflection** symmetry. These successive folds dramatically increase apparent pattern complexity from a single set of masking operations.
+Filigree extends this further. When the Symmetry control exceeds a midpoint threshold, the folded coordinates are folded again at the quarter-screen boundary, producing **8-fold** (D₄) symmetry — each octant mirrors all others. Between these thresholds, a diagonal mirror swaps the horizontal and vertical axes when one exceeds the other, creating **diagonal reflection** symmetry. These successive folds dramatically increase apparent pattern complexity from a single set of masking operations.
 
 ### Bitwise Masking as Pattern Generation
 
-Digital line patterns can be efficiently generated by applying AND masks to coordinate sums. When you compute `(h + v) AND mask`, the result isolates the lowest N bits of the coordinate sum, producing a repeating diagonal stripe pattern. The mask width determines the repeat period â€” fewer mask bits mean a finer grid. The Filigree program uses eight discrete mask levels controlled by the Complexity knob, ranging from 2-bit (repeat every 4 pixels) to 9-bit (repeat every 512 pixels).
+Digital line patterns can be efficiently generated by applying AND masks to coordinate sums. When you compute `(h + v) AND mask`, the result isolates the lowest N bits of the coordinate sum, producing a repeating diagonal stripe pattern. The mask width determines the repeat period — fewer mask bits mean a finer grid. The Filigree program uses eight discrete mask levels controlled by the Complexity knob, ranging from 2-bit (repeat every 4 pixels) to 9-bit (repeat every 512 pixels).
 
-Taking the *difference* of folded coordinates `|h âˆ’ v|` and applying the same mask produces cross or perpendicular patterns. XOR-ing the diagonal (sum-based) and cross (difference-based) patterns creates diamond motifs where the two grids interfere constructively and destructively. This is the essence of the Diamond Mode toggle â€” switching between simple diagonal lines and compound diamond lattice with a single bitwise operation.
+Taking the *difference* of folded coordinates `|h − v|` and applying the same mask produces cross or perpendicular patterns. XOR-ing the diagonal (sum-based) and cross (difference-based) patterns creates diamond motifs where the two grids interfere constructively and destructively. This is the essence of the Diamond Mode toggle — switching between simple diagonal lines and compound diamond lattice with a single bitwise operation.
 
 ### DDS Scroll Animation
 
@@ -59,7 +59,7 @@ A Direct Digital Synthesis (DDS) accumulator provides smooth, jitter-free animat
 
 ### Additive Overlay Compositing
 
-Unlike subtractive blending modes that darken the source, Filigree uses additive compositing for its line layer. The line brightness value is *added* to the source luminance (clamped at maximum white). This means lines are always visible â€” they glow over dark backgrounds and saturate to white over bright ones. The visual effect is analogous to projected light or neon signage overlaid on a scene. Non-line pixels pass the source video through unchanged, so the pattern appears as a transparent overlay rather than a solid mask.
+Unlike subtractive blending modes that darken the source, Filigree uses additive compositing for its line layer. The line brightness value is *added* to the source luminance (clamped at maximum white). This means lines are always visible — they glow over dark backgrounds and saturate to white over bright ones. The visual effect is analogous to projected light or neon signage overlaid on a scene. Non-line pixels pass the source video through unchanged, so the pattern appears as a transparent overlay rather than a solid mask.
 
 
 ---
@@ -68,98 +68,98 @@ Unlike subtractive blending modes that darken the source, Filigree uses additive
 
 ```
 Input Video (YUV 4:4:4)
-â”‚
-â”œâ”€â”€ Coordinate Generator â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”œâ”€ H/V pixel counters
-â”‚   â”œâ”€ DDS scroll accumulator (+scroll_speed per frame)
-â”‚   â””â”€ scroll_offset = accumulator(15:4)
-â”‚
-â”œâ”€â”€ Stage 1: Coordinate Fold (1 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”œâ”€ Add scroll_offset to H and V counters
-â”‚   â”œâ”€ fold_h = |h âˆ’ H_CENTER|       (4-fold base symmetry)
-â”‚   â”œâ”€ fold_v = |v âˆ’ V_CENTER|
-â”‚   â”œâ”€ If Symmetry > 768: re-fold at half-center (8-fold)
-â”‚   â””â”€ If Symmetry > 512: swap h,v when h > v (diagonal mirror)
-â”‚
-â”œâ”€â”€ Stage 2: Pattern Computation (1 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”œâ”€ sum  = fold_h + fold_v
-â”‚   â”œâ”€ diff = |fold_h âˆ’ fold_v|
-â”‚   â”œâ”€ mask = density-dependent AND mask (8 levels from Complex)
-â”‚   â”œâ”€ diag  = sum AND mask
-â”‚   â”œâ”€ cross = diff AND mask
-â”‚   â””â”€ Pattern toggle: diag XOR cross (diamond) or diag only
-â”‚
-â”œâ”€â”€ Stage 3: Line Test + Color (1 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”œâ”€ is_line = (pattern â‰¤ thickness threshold)
-â”‚   â”œâ”€ Invert toggle: flip is_line
-â”‚   â”œâ”€ line Y = Metal Br (brightness register)
-â”‚   â”œâ”€ Tinted â†’ U,V from folded position     (metallic color)
-â”‚   â””â”€ White  â†’ U,V = 512                    (neutral chroma)
-â”‚
-â”œâ”€â”€ Stage 4: Composite (1 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”œâ”€ Line pixel:  Y = clamp(source_Y + line_Y), U/V = line color
-â”‚   â””â”€ Non-line:    pass source Y, U, V
-â”‚
-â”œâ”€â”€ Mix (3Ã— interpolator_u, 4 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â””â”€ Wet/dry crossfade per Y, U, V channel
-â”‚
-â”œâ”€â”€ Sync Delay â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â””â”€ 8-clock shift register for hsync, vsync, field, Y, U, V
-â”‚
-â””â”€â”€ Bypass â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    â””â”€ Select original or processed signal
+│
+├── Coordinate Generator ───────────────────────────────────────
+│   ├─ H/V pixel counters
+│   ├─ DDS scroll accumulator (+scroll_speed per frame)
+│   └─ scroll_offset = accumulator(15:4)
+│
+├── Stage 1: Coordinate Fold (1 clk) ──────────────────────────
+│   ├─ Add scroll_offset to H and V counters
+│   ├─ fold_h = |h − H_CENTER|       (4-fold base symmetry)
+│   ├─ fold_v = |v − V_CENTER|
+│   ├─ If Symmetry > 768: re-fold at half-center (8-fold)
+│   └─ If Symmetry > 512: swap h,v when h > v (diagonal mirror)
+│
+├── Stage 2: Pattern Computation (1 clk) ───────────────────────
+│   ├─ sum  = fold_h + fold_v
+│   ├─ diff = |fold_h − fold_v|
+│   ├─ mask = density-dependent AND mask (8 levels from Complex)
+│   ├─ diag  = sum AND mask
+│   ├─ cross = diff AND mask
+│   └─ Pattern toggle: diag XOR cross (diamond) or diag only
+│
+├── Stage 3: Line Test + Color (1 clk) ─────────────────────────
+│   ├─ is_line = (pattern ≤ thickness threshold)
+│   ├─ Invert toggle: flip is_line
+│   ├─ line Y = Metal Br (brightness register)
+│   ├─ Tinted → U,V from folded position     (metallic color)
+│   └─ White  → U,V = 512                    (neutral chroma)
+│
+├── Stage 4: Composite (1 clk) ─────────────────────────────────
+│   ├─ Line pixel:  Y = clamp(source_Y + line_Y), U/V = line color
+│   └─ Non-line:    pass source Y, U, V
+│
+├── Mix (3× interpolator_u, 4 clk) ────────────────────────────
+│   └─ Wet/dry crossfade per Y, U, V channel
+│
+├── Sync Delay ─────────────────────────────────────────────────
+│   └─ 8-clock shift register for hsync, vsync, field, Y, U, V
+│
+└── Bypass ─────────────────────────────────────────────────────
+    └─ Select original or processed signal
 ```
 
-The critical interaction in Filigree's pipeline is between the coordinate fold stage and the pattern computation stage. The fold determines *where* symmetry axes lie; the density mask and diamond XOR determine *what* pattern appears within those symmetry zones. Because the fold happens before the pattern math, increasing symmetry order doesn't just add more copies of the pattern â€” it changes the relationship between the coordinate sum and difference, producing qualitatively different motifs at each symmetry level.
+The critical interaction in Filigree's pipeline is between the coordinate fold stage and the pattern computation stage. The fold determines *where* symmetry axes lie; the density mask and diamond XOR determine *what* pattern appears within those symmetry zones. Because the fold happens before the pattern math, increasing symmetry order doesn't just add more copies of the pattern — it changes the relationship between the coordinate sum and difference, producing qualitatively different motifs at each symmetry level.
 
-A second important interaction is between the DDS scroll and the coordinate fold. The scroll offset is added *before* folding, which means the pattern doesn't simply translate across the screen â€” it slides through the fold boundaries, creating complex interference effects where the scrolling pattern meets its own reflections. This produces the visual impression of metallic threads weaving through themselves.
+A second important interaction is between the DDS scroll and the coordinate fold. The scroll offset is added *before* folding, which means the pattern doesn't simply translate across the screen — it slides through the fold boundaries, creating complex interference effects where the scrolling pattern meets its own reflections. This produces the visual impression of metallic threads weaving through themselves.
 
 ---
 
 ## Parameter Reference
 
 <img src={filigree_control_panel} alt="Videomancer front panel with Filigree loaded"/>
-*Videomancer's front panel with Filigree active. Knobs 1â€“6 (top two rows of left cluster), Toggle switches 7â€“11 (bottom row of left cluster), Fader 12 (right side).*
+*Videomancer's front panel with Filigree active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
-### Rotary Potentiometers (Knobs 1â€“6)
+### Rotary Potentiometers (Knobs 1–6)
 
-#### Knob 1 â€” Complex
+#### Knob 1 — Complex
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the density of the scrollwork pattern â€” how fine or coarse the repeating grid structure is. At low values, the AND mask is wide (9 bits), producing broad stripes with large repeat periods that span hundreds of pixels. As you increase the control, the mask narrows progressively through eight discrete levels down to 2 bits, creating increasingly fine lattice structures. At maximum, the pattern repeats every 4 pixels, producing a dense mesh of hair-thin lines. The eight discrete mask levels create noticeable steps; the transition points are evenly spaced across the control range.
+Controls the density of the scrollwork pattern — how fine or coarse the repeating grid structure is. At low values, the AND mask is wide (9 bits), producing broad stripes with large repeat periods that span hundreds of pixels. As you increase the control, the mask narrows progressively through eight discrete levels down to 2 bits, creating increasingly fine lattice structures. At maximum, the pattern repeats every 4 pixels, producing a dense mesh of hair-thin lines. The eight discrete mask levels create noticeable steps; the transition points are evenly spaced across the control range.
 
 ---
 
-#### Knob 2 â€” Fineness
+#### Knob 2 — Fineness
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the thickness of the pattern lines â€” how wide each wire in the scrollwork appears. The register value is divided by four to produce a threshold applied against the pattern value; pixels whose pattern value falls at or below this threshold are drawn as lines. At zero, only pixels with a pattern value of exactly zero light up, producing the finest possible single-pixel lines. At maximum, the threshold reaches approximately 255 (on the 12-bit pattern scale), filling a substantial portion of each pattern cell. Combined with high Complexity, this can fill the screen almost entirely with the pattern overlay.
+Controls the thickness of the pattern lines — how wide each wire in the scrollwork appears. The register value is divided by four to produce a threshold applied against the pattern value; pixels whose pattern value falls at or below this threshold are drawn as lines. At zero, only pixels with a pattern value of exactly zero light up, producing the finest possible single-pixel lines. At maximum, the threshold reaches approximately 255 (on the 12-bit pattern scale), filling a substantial portion of each pattern cell. Combined with high Complexity, this can fill the screen almost entirely with the pattern overlay.
 
 ---
 
-#### Knob 3 â€” Symmetry
+#### Knob 3 — Symmetry
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the order of reflective symmetry applied to screen coordinates. Below the first threshold (~50%), only the base 4-fold mirror symmetry is active â€” the screen is divided into four quadrants. Between ~50% and ~75%, a diagonal mirror is added: horizontal and vertical axes are swapped when one exceeds the other, creating a 45-degree reflection line. Above ~75%, full 8-fold symmetry engages, folding each quadrant again at its midpoint. Each symmetry mode produces distinctly different pattern geometries from the same density and thickness settings.
+Controls the order of reflective symmetry applied to screen coordinates. Below the first threshold (~50%), only the base 4-fold mirror symmetry is active — the screen is divided into four quadrants. Between ~50% and ~75%, a diagonal mirror is added: horizontal and vertical axes are swapped when one exceeds the other, creating a 45-degree reflection line. Above ~75%, full 8-fold symmetry engages, folding each quadrant again at its midpoint. Each symmetry mode produces distinctly different pattern geometries from the same density and thickness settings.
 
 ---
 
-#### Knob 4 â€” Spin Spd
+#### Knob 4 — Spin Spd
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
@@ -167,21 +167,21 @@ Controls the speed of the diagonal scroll animation driven by the DDS accumulato
 
 ---
 
-#### Knob 5 â€” Metal Br
+#### Knob 5 — Metal Br
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness of the filigree lines in the additive overlay. This register value is used directly as the luminance of every line pixel before additive blending with the source. At zero, the lines contribute no brightness â€” the overlay is invisible. At maximum (1023), lines are drawn at full white intensity, creating strong bright stripes over any source material. Because the blend is additive and clamped, bright source areas may clip to white while dark areas show the line brightness faithfully.
+Controls the brightness of the filigree lines in the additive overlay. This register value is used directly as the luminance of every line pixel before additive blending with the source. At zero, the lines contribute no brightness — the overlay is invisible. At maximum (1023), lines are drawn at full white intensity, creating strong bright stripes over any source material. Because the blend is additive and clamped, bright source areas may clip to white while dark areas show the line brightness faithfully.
 
 ---
 
-#### Knob 6 â€” Opacity
+#### Knob 6 — Opacity
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
@@ -189,26 +189,26 @@ Mapped to Pot 6 in the TOML configuration but not connected to the processing pi
 
 ---
 
-### Toggle Switches (Switches 7â€“11)
+### Toggle Switches (Switches 7–11)
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 â€” Pattern** | Scroll | Celtic |
-| **8 â€” Metal** | Gold | Silver |
-| **9 â€” Fill** | Open | Filled |
-| **10 â€” Animate** | Off | On |
-| **11 â€” Bypass** | Off | On |
+| **7 — Pattern** | Scroll | Celtic |
+| **8 — Metal** | Gold | Silver |
+| **9 — Fill** | Open | Filled |
+| **10 — Animate** | Off | On |
+| **11 — Bypass** | Off | On |
 
-Toggles 7â€“11 control five independent binary options that shape the pattern character, coloring, animation, and output routing. The Pattern toggle (7) selects between two fundamentally different motifs â€” diagonal stripes vs. diamond lattice. The Metal toggle (8) switches between achromatic white lines and position-dependent tinted lines. The Fill toggle (9) enables the DDS scroll animation. The Animate toggle (10) inverts which pixels are drawn as lines vs. background. The Bypass toggle (11) routes the unprocessed source directly to the output.
+Toggles 7–11 control five independent binary options that shape the pattern character, coloring, animation, and output routing. The Pattern toggle (7) selects between two fundamentally different motifs — diagonal stripes vs. diamond lattice. The Metal toggle (8) switches between achromatic white lines and position-dependent tinted lines. The Fill toggle (9) enables the DDS scroll animation. The Animate toggle (10) inverts which pixels are drawn as lines vs. background. The Bypass toggle (11) routes the unprocessed source directly to the output.
 
 ---
 
 ### Linear Potentiometer (Fader 12)
 
-#### Fader 12 â€” Mix
+#### Fader 12 — Mix
 | Property | Value |
 |----------|-------|
-| Range | 0.0% â€“ 100.0% |
+| Range | 0.0% – 100.0% |
 | Default | 100.0% |
 | Suffix | % |
 
@@ -223,15 +223,15 @@ These exercises progress from basic grid exploration to complex animated metalli
 ### Exercise 1: Grid Structure and Density
 
 <img src={filigree_exercise1_result} alt="Grid Structure and Density result"/>
-*Grid Structure and Density â€” simulated result across source images.*
+*Grid Structure and Density — simulated result across source images.*
 **Objective**: Learn how Complexity and Fineness interact to define the grid character, and how Symmetry transforms the pattern geometry.
 
 1. **Simple diagonals**: Set Complexity to ~25% and Fineness to ~10%. A coarse diagonal stripe pattern appears over the source. The lines are thin and widely spaced.
 2. **Thicken the lines**: Increase Fineness to ~60%. The stripes widen, filling more of each pattern cell.
-3. **Increase density**: Sweep Complexity from 25% to 75%. Watch the stripes become progressively finer as the density mask narrows. Count the discrete steps â€” there are eight mask levels.
+3. **Increase density**: Sweep Complexity from 25% to 75%. Watch the stripes become progressively finer as the density mask narrows. Count the discrete steps — there are eight mask levels.
 4. **Add symmetry**: Set Symmetry above ~75% for 8-fold mode. The simple diagonal stripes become a complex star-like lattice as each quadrant folds again at its center.
 5. **Diamond mode**: Toggle Pattern to the diamond position. The single-direction stripes become intersecting diamond shapes.
-6. **Invert**: Toggle Animate to see the negative pattern â€” solid field with thin gaps instead of thin lines on a clear background.
+6. **Invert**: Toggle Animate to see the negative pattern — solid field with thin gaps instead of thin lines on a clear background.
 
 **Key concepts**: Density mask controls grid spacing in discrete steps, thickness threshold controls line width continuously, coordinate folding multiplies apparent complexity, diamond XOR creates intersecting motifs
 
@@ -240,7 +240,7 @@ These exercises progress from basic grid exploration to complex animated metalli
 ### Exercise 2: Metallic Scrollwork
 
 <img src={filigree_exercise2_result} alt="Metallic Scrollwork result"/>
-*Metallic Scrollwork â€” simulated result across source images.*
+*Metallic Scrollwork — simulated result across source images.*
 **Objective**: Explore the position-tinted metallic line rendering and how symmetry and density interact to produce ornamental textures.
 
 1. **Enable tint**: Toggle Metal to a tinted position (Bronze or Iron). The filigree lines now carry subtle color that shifts across the screen.
@@ -257,7 +257,7 @@ These exercises progress from basic grid exploration to complex animated metalli
 ### Exercise 3: Animated Filigree Overlay
 
 <img src={filigree_exercise3_result} alt="Animated Filigree Overlay result"/>
-*Animated Filigree Overlay â€” simulated result across source images.*
+*Animated Filigree Overlay — simulated result across source images.*
 **Objective**: Combine DDS scroll animation with the full pattern-generation chain to create a living ornamental overlay.
 
 1. **Set base pattern**: Complexity ~60%, Fineness ~20%, Symmetry ~65% (diagonal mirror mode). A moderately complex pattern covers the screen.
@@ -279,11 +279,11 @@ These exercises progress from basic grid exploration to complex animated metalli
 - **Density has discrete steps**: The Complexity control sets one of eight AND-mask widths. Sweeping the knob smoothly produces eight distinct pattern densities, not a continuous gradient. Learn where the transition points are (~12.5% intervals) to dial in specific grid spacings.
 - **Symmetry is transformative**: The three symmetry modes (4-fold, diagonal, 8-fold) produce radically different pattern geometries from the same density and thickness settings. Try all three before adjusting other controls.
 - **Diamond mode doubles complexity**: XOR-combining diagonal and cross patterns creates intersecting lattice structures that appear far more complex than either pattern alone. This is the single biggest visual impact toggle in the program.
-- **Animation weaves through folds**: The DDS scroll doesn't just slide the pattern â€” it pushes coordinates through fold boundaries, creating weaving interference effects. This is most dramatic at 8-fold symmetry where eight fold boundaries interact.
+- **Animation weaves through folds**: The DDS scroll doesn't just slide the pattern — it pushes coordinates through fold boundaries, creating weaving interference effects. This is most dramatic at 8-fold symmetry where eight fold boundaries interact.
 - **Tint needs headroom**: Position-tinted lines carry chroma information that is only visible when the luminance doesn't clip to white. Keep Metal Br below ~60% over mid-tone sources to see metallic color gradients.
 - **Invert swaps visual weight**: At thin Fineness settings, invert produces a nearly solid overlay with hairline gaps. At thick settings, invert produces hairline overlay on a clear background. Use invert to flip the figure/ground relationship.
-- **Feedback loops**: Route the output back to the input for recursive pattern folding â€” the additive blend creates self-reinforcing lattice structures that evolve with each feedback pass.
-- **Mix for subtle overlays**: The wet/dry crossfade allows blending the filigree overlay at any intensity. A 20â€“30% mix creates a subtle texture that enhances source footage without overwhelming it.
+- **Feedback loops**: Route the output back to the input for recursive pattern folding — the additive blend creates self-reinforcing lattice structures that evolve with each feedback pass.
+- **Mix for subtle overlays**: The wet/dry crossfade allows blending the filigree overlay at any intensity. A 20–30% mix creates a subtle texture that enhances source footage without overwhelming it.
 
 ---
 
@@ -294,14 +294,14 @@ These exercises progress from basic grid exploration to complex animated metalli
 | **Additive Blend** | Compositing operation where the overlay brightness is added to the source brightness, clamped at maximum white; lines always brighten, never darken. |
 | **AND Mask** | A bitwise operation that isolates specific bit positions from a coordinate value, creating repeating modular patterns. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Coordinate Folding** | Applying absolute-value reflections to screen coordinates to create mirror symmetry; `abs(x âˆ’ center)` maps both halves onto the same range. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating precise, jitter-free periodic waveforms or animation offsets. |
-| **Dihedral Symmetry** | The symmetry group of a regular polygon, combining rotational and reflective symmetries; Dâ‚„ (8-fold) is the highest mode available in this program. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly blends between two input values based on a fractional mix parameter. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Coordinate Folding** | Applying absolute-value reflections to screen coordinates to create mirror symmetry; `abs(x − center)` maps both halves onto the same range. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **Dihedral Symmetry** | The symmetry group of a regular polygon, combining rotational and reflective symmetries; D₄ (8-fold) is the highest mode available in this program. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **XOR** | Exclusive OR; a bitwise operation that outputs 1 where inputs differ and 0 where they match, used here to combine diagonal and cross patterns into diamond motifs. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

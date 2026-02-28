@@ -4,7 +4,7 @@ sidebar_position: 187
 slug: /instruments/videomancer/paintbox
 title: "Paintbox"
 image: /img/instruments/videomancer/paintbox/paintbox_hero.png
-description: "Program guide for Paintbox, a Videomancer quantel program for the LZX video synthesizer."
+description: "Paintbox reduces the continuous 10-bit YUV color space to a finite number of discrete levels, creating the characteristic flat, posterized look of scree..."
 ---
 
 import paintbox_before_after from '/img/instruments/videomancer/paintbox/paintbox_before_after.png';
@@ -295,10 +295,10 @@ These exercises progress from basic posterization through palette mapping to com
 | **Bayer matrix** | A repeating threshold matrix used in ordered dithering to distribute quantization error in a structured, deterministic pattern. Named after Bryce Bayer of Kodak. |
 | **Dithering** | The deliberate addition of noise to a signal before quantization to reduce visible contouring artifacts by dispersing error across neighboring pixels. |
 | **Euclidean distance** | The straight-line distance between two points in a multi-dimensional space, used here to find the nearest palette color in YUV space. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals, used for dry/wet blending. |
-| **LFSR** | Linear Feedback Shift Register; used here as a pseudo-random noise source for random dithering. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Nearest-match** | A color reduction technique that maps each pixel to the closest available color in a predefined palette by minimizing distance in color space. |
 | **Posterization** | The reduction of continuous tonal gradations to a limited number of discrete levels, producing flat color zones with hard boundary edges. |
-| **proc_amp** | Processing amplifier; a standard video signal conditioning stage providing brightness, contrast, and saturation adjustments. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Quantization** | The process of mapping a continuous or high-resolution signal to a smaller set of discrete values. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native signal format in Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

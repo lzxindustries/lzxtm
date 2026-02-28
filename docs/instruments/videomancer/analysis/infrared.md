@@ -4,7 +4,7 @@ sidebar_position: 127
 slug: /instruments/videomancer/infrared
 title: "Infrared"
 image: /img/instruments/videomancer/infrared/infrared_hero.png
-description: "Program guide for Infrared, a Videomancer analysis program for the LZX video synthesizer."
+description: "Thermal imaging cameras do not capture color."
 ---
 
 import infrared_before_after from '/img/instruments/videomancer/infrared/infrared_before_after.png';
@@ -112,7 +112,7 @@ The critical path runs through two luminance transformations before the palette 
 | Default | 50% |
 | Suffix | % |
 
-Controls the saturation intensity of the thermal palette colors. Above 50%, the chroma components of each zone are boosted — blues become more vivid, oranges richer. Below 50%, chroma is pulled toward neutral grey, creating a more subdued pastel thermal map. At zero the output is effectively a luminance-only remapping with desaturated hints of the palette. This knob does not change which palette is active (that is determined by toggle 7); it adjusts how strongly the color is applied within whichever palette is selected.
+Controls the saturation intensity of the thermal palette colors. Above 50%, the chroma components of each zone are boosted — blues become more vivid, oranges richer. Below 50%, chroma is pulled toward neutral gray, creating a more subdued pastel thermal map. At zero the output is effectively a luminance-only remapping with desaturated hints of the palette. This knob does not change which palette is active (that is determined by toggle 7); it adjusts how strongly the color is applied within whichever palette is selected.
 
 ---
 

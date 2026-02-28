@@ -4,7 +4,7 @@ sidebar_position: 28
 slug: /instruments/videomancer/braille
 title: "Braille"
 image: /img/instruments/videomancer/braille/braille_hero.png
-description: "Program guide for Braille, a Videomancer text program for the LZX video synthesizer."
+description: "The Braille cell — six or eight raised dots arranged in a 2×3 or 2×4 matrix — is one of the most elegant encodings ever devised."
 ---
 
 import braille_hero from '/img/instruments/videomancer/braille/braille_hero.png';
@@ -289,11 +289,11 @@ These exercises build from basic threshold halftoning through emboss rendering t
 | **Emboss** | A shading technique that applies directional brightness offsets to simulate raised or depressed surfaces, creating a pseudo-three-dimensional appearance. |
 | **Fill factor** | The ratio of dot area to total cell area; higher fill factors produce denser patterns where dots approach the boundaries of their cells. |
 | **Halftone** | A reprographic technique that simulates continuous tonal gradation using discrete dots of varying size or spacing. |
-| **Interpolator** | A hardware block that linearly blends between two input values based on a mix coefficient, used here for dry/wet crossfading of Y, U, and V channels. |
-| **Luma** | The luminance (Y) component of a YUV video signal, representing perceived brightness. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Pointillism** | A painting technique using small, distinct dots of color that blend optically at viewing distance; Braille's tinted mode produces a digital analogue of this technique. |
 | **Spatial frequency** | The rate of brightness or pattern variation per unit distance in an image; at sufficiently high spatial frequency, discrete dots merge into perceived continuous tone. |
 | **Threshold** | A fixed decision boundary against which each cell's luminance is compared to determine whether a dot is rendered (above) or omitted (below). |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems to exploit the eye's greater sensitivity to brightness than to color. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

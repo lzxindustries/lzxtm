@@ -4,7 +4,7 @@ sidebar_position: 100
 slug: /instruments/videomancer/flock
 title: "Flock"
 image: /img/instruments/videomancer/flock/flock_hero.png
-description: "Program guide for Flock, a Videomancer organic program for the LZX video synthesizer."
+description: "Birds don't follow a conductor."
 ---
 
 import flock_hero from '/img/instruments/videomancer/flock/flock_hero.png';
@@ -21,17 +21,17 @@ import flock_exercise3_result from '/img/instruments/videomancer/flock/flock_exe
 <img src={flock_hero} alt="Flock hero image"/>
 *Flock scattering eight luminous Lissajous-orbit particles across a video landscape, coupling their paths into coordinated swarm motion.*
 <img src={flock_animation} alt="Flock animated output"/>
-*Flock output evolving over multiple frames â€” synthesis programs generate imagery without requiring a video input source.*
+*Flock output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
 ## Overview
 
-Birds don't follow a conductor. Each bird in a flock adjusts its trajectory relative to its nearest neighbors â€” accelerating, banking, drifting â€” and from these purely local interactions an astonishing collective order emerges. Flock takes this principle and encodes it into eight particle agents orbiting on Lissajous curves.
+Birds don't follow a conductor. Each bird in a flock adjusts its trajectory relative to its nearest neighbors — accelerating, banking, drifting — and from these purely local interactions an astonishing collective order emerges. Flock takes this principle and encodes it into eight particle agents orbiting on Lissajous curves.
 
-Each particle carries an independent pair of phase accumulators â€” one for its horizontal position, one for its vertical â€” running at coprime frequencies chosen so that no two agents trace the same path. The Speed control scales all eight oscillators simultaneously, and the Coupling control lets each particle borrow a fraction of its predecessor's phase, pulling trajectories toward coordination or letting them disperse. The result is a luminous swarm that can range from eight isolated fireflies tracing their own figure-eight orbits to a tight murmuration where every particle shadows the one ahead of it.
+Each particle carries an independent pair of phase accumulators — one for its horizontal position, one for its vertical — running at coprime frequencies chosen so that no two agents trace the same path. The Speed control scales all eight oscillators simultaneously, and the Coupling control lets each particle borrow a fraction of its predecessor's phase, pulling trajectories toward coordination or letting them disperse. The result is a luminous swarm that can range from eight isolated fireflies tracing their own figure-eight orbits to a tight murmuration where every particle shadows the one ahead of it.
 
-At the rendering stage, every pixel in the frame computes its Manhattan distance to all active particles. The nearest particle within a size threshold gets drawn â€” as a filled dot or a hollow ring â€” with brightness that falls off with distance, producing a soft glow around each agent. These rendered particles are composited onto the input video via additive overlay or full replacement, with optional per-particle color and a global invert for negative-image effects.
+At the rendering stage, every pixel in the frame computes its Manhattan distance to all active particles. The nearest particle within a size threshold gets drawn — as a filled dot or a hollow ring — with brightness that falls off with distance, producing a soft glow around each agent. These rendered particles are composited onto the input video via additive overlay or full replacement, with optional per-particle color and a global invert for negative-image effects.
 
 ---
 
@@ -39,11 +39,11 @@ At the rendering stage, every pixel in the frame computes its Manhattan distance
 
 ### Flocking Algorithms and Boids
 
-In 1986, Craig Reynolds introduced *Boids*, a computational model showing that three simple rules â€” separation, alignment, and cohesion â€” are sufficient to generate realistic flock, herd, and school behavior from individual agents. Every modern particle-swarm simulation descends from this insight. Flock distills the idea to its minimum: eight agents with a single coupling term that blends neighbor phase into each particle's oscillator. There is no explicit separation or alignment rule â€” the coupling strength alone controls whether the group scatters or coheres.
+In 1986, Craig Reynolds introduced *Boids*, a computational model showing that three simple rules — separation, alignment, and cohesion — are sufficient to generate realistic flock, herd, and school behavior from individual agents. Every modern particle-swarm simulation descends from this insight. Flock distills the idea to its minimum: eight agents with a single coupling term that blends neighbor phase into each particle's oscillator. There is no explicit separation or alignment rule — the coupling strength alone controls whether the group scatters or coheres.
 
 ### Lissajous Figures
 
-When two sinusoidal signals of different frequency drive the X and Y axes of a display, the resulting trace is a Lissajous figure â€” the family of curves first studied by Jules-Antoine Lissajous in 1857 using tuning forks and mirrors. Each particle in Flock follows such a curve. Because the X and Y frequencies are coprime (sharing no common factor), the orbit fills a rectangular region over time rather than closing into a simple loop. At low speed the curves are smooth and predictable; at high speed they appear chaotic and fill the screen.
+When two sinusoidal signals of different frequency drive the X and Y axes of a display, the resulting trace is a Lissajous figure — the family of curves first studied by Jules-Antoine Lissajous in 1857 using tuning forks and mirrors. Each particle in Flock follows such a curve. Because the X and Y frequencies are coprime (sharing no common factor), the orbit fills a rectangular region over time rather than closing into a simple loop. At low speed the curves are smooth and predictable; at high speed they appear chaotic and fill the screen.
 
 ### Phase Coupling and Synchronization
 
@@ -51,7 +51,7 @@ The coupling mechanism in Flock is a form of *phase perturbation*: each particle
 
 ### Particle Rendering and Distance Fields
 
-Rather than plotting individual dots, Flock evaluates every pixel as a point in a *distance field* relative to all active particles. Manhattan distance (|Î”x| + |Î”y|) is used instead of Euclidean distance because it requires only addition and absolute value â€” no multiplication or square root â€” making it efficient in FPGA register logic. The resulting diamond-shaped falloff gives the particles a distinctive angular glow that distinguishes them from the soft circles of Euclidean rendering.
+Rather than plotting individual dots, Flock evaluates every pixel as a point in a *distance field* relative to all active particles. Manhattan distance (|Δx| + |Δy|) is used instead of Euclidean distance because it requires only addition and absolute value — no multiplication or square root — making it efficient in FPGA register logic. The resulting diamond-shaped falloff gives the particles a distinctive angular glow that distinguishes them from the soft circles of Euclidean rendering.
 
 ### Emergent Behavior in Simple Systems
 
@@ -64,69 +64,69 @@ Flock's visual richness comes not from complex rules but from the interaction of
 
 ```
 Input Video (YUV 4:4:4)
-â”‚
-â”œâ”€â”€ Particle Engine (runs once per frame at vsync) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”‚
-â”‚   â”œâ”€ 1. DDS Phase Accumulate   (8Ã— X + 8Ã— Y accumulators)
-â”‚   â”œâ”€ 2. Coupling Perturbation  (phase shift from neighbor iâˆ’1)
-â”‚   â””â”€ 3. Triangle Wave â†’ Screen (phase â†’ position via tri_wave)
-â”‚
-â”œâ”€â”€ Rendering Pipeline (per pixel, 5 stages) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”‚
-â”‚   â”œâ”€ Stage 1  Manhattan distance for particles 0â€“3
-â”‚   â”œâ”€ Stage 2  Manhattan distance for particles 4â€“7
-â”‚   â”œâ”€ Stage 3  Find nearest active particle, apply size threshold
-â”‚   â”œâ”€ Stage 4  Glow falloff + ring mode + color assign + invert
-â”‚   â””â”€ Stage 5  Compose (overlay additive / replace)
-â”‚
-â”œâ”€â”€ Wet/Dry Mix (3Ã— interpolator_u, 4 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â”‚
-â”‚   â””â”€ Interpolate Y, U, V between delayed input and composed output
-â”‚
-â”œâ”€â”€ Sync Delay Pipeline (9 clk) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-â”‚   â””â”€ Pass-through (hsync, vsync, field, Y, U, V)
-â”‚
-â””â”€â”€ Bypass â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    â””â”€ Select original or processed signal
+│
+├── Particle Engine (runs once per frame at vsync) ──────────────
+│   │
+│   ├─ 1. DDS Phase Accumulate   (8× X + 8× Y accumulators)
+│   ├─ 2. Coupling Perturbation  (phase shift from neighbor i−1)
+│   └─ 3. Triangle Wave → Screen (phase → position via tri_wave)
+│
+├── Rendering Pipeline (per pixel, 5 stages) ────────────────────
+│   │
+│   ├─ Stage 1  Manhattan distance for particles 0–3
+│   ├─ Stage 2  Manhattan distance for particles 4–7
+│   ├─ Stage 3  Find nearest active particle, apply size threshold
+│   ├─ Stage 4  Glow falloff + ring mode + color assign + invert
+│   └─ Stage 5  Compose (overlay additive / replace)
+│
+├── Wet/Dry Mix (3× interpolator_u, 4 clk) ─────────────────────
+│   │
+│   └─ Interpolate Y, U, V between delayed input and composed output
+│
+├── Sync Delay Pipeline (9 clk) ────────────────────────────────
+│   └─ Pass-through (hsync, vsync, field, Y, U, V)
+│
+└── Bypass ──────────────────────────────────────────────────────
+    └─ Select original or processed signal
 ```
 
-The particle engine updates all eight agents once per frame on the rising edge of vsync, so particle positions are constant within a single video field. The rendering pipeline then evaluates every active pixel against the frozen positions. The two-stage distance computation (0â€“3, then 4â€“7) is a throughput optimization â€” it splits the eight comparisons across two clock cycles while keeping the pipeline running at full pixel rate. Coupling only flows forward (particle *i* is influenced by particle *i*âˆ’1), creating a leader-follower chain where particle 0 is always the independent leader.
+The particle engine updates all eight agents once per frame on the rising edge of vsync, so particle positions are constant within a single video field. The rendering pipeline then evaluates every active pixel against the frozen positions. The two-stage distance computation (0–3, then 4–7) is a throughput optimization — it splits the eight comparisons across two clock cycles while keeping the pipeline running at full pixel rate. Coupling only flows forward (particle *i* is influenced by particle *i*−1), creating a leader-follower chain where particle 0 is always the independent leader.
 
 ---
 
 ## Parameter Reference
 
 <img src={flock_control_panel} alt="Videomancer front panel with Flock loaded"/>
-*Videomancer's front panel with Flock active. Knobs 1â€“6 (top two rows of left cluster), Toggle switches 7â€“11 (bottom row of left cluster), Fader 12 (right side).*
+*Videomancer's front panel with Flock active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
-### Rotary Potentiometers (Knobs 1â€“6)
+### Rotary Potentiometers (Knobs 1–6)
 
-#### Knob 1 â€” Speed
+#### Knob 1 — Speed
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 25% |
 | Suffix | % |
 
-Controls how fast all eight particle orbits evolve. At zero, the particles freeze in place â€” their phase accumulators stop advancing. As you increase Speed, the Lissajous trajectories animate more rapidly. Because each particle has unique coprime X and Y frequencies, they all accelerate together but their relative paths diverge. Very high speed causes the orbits to fill the screen quickly, creating a flickering, firefly-like appearance as particles sweep past each pixel in rapid succession.
+Controls how fast all eight particle orbits evolve. At zero, the particles freeze in place — their phase accumulators stop advancing. As you increase Speed, the Lissajous trajectories animate more rapidly. Because each particle has unique coprime X and Y frequencies, they all accelerate together but their relative paths diverge. Very high speed causes the orbits to fill the screen quickly, creating a flickering, firefly-like appearance as particles sweep past each pixel in rapid succession.
 
 ---
 
-#### Knob 2 â€” Scatter
+#### Knob 2 — Scatter
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial extent of the particle orbits. At zero, all particles collapse to the screen center (640, 360). As Scatter increases, the triangle-wave position mapping scales outward, spreading orbits across more of the frame. At maximum, particle paths can extend to the edges and beyond the visible area. Scatter interacts directly with Size â€” wider scatter means particles spend less time near any given pixel, so you may need to increase Size to maintain visible contact with the swarm.
+Controls the spatial extent of the particle orbits. At zero, all particles collapse to the screen center (640, 360). As Scatter increases, the triangle-wave position mapping scales outward, spreading orbits across more of the frame. At maximum, particle paths can extend to the edges and beyond the visible area. Scatter interacts directly with Size — wider scatter means particles spend less time near any given pixel, so you may need to increase Size to maintain visible contact with the swarm.
 
 ---
 
-#### Knob 3 â€” Size
+#### Knob 3 — Size
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 25% |
 | Suffix | % |
 
@@ -134,20 +134,20 @@ Sets the distance threshold for particle rendering. A pixel within this threshol
 
 ---
 
-#### Knob 4 â€” Particles
+#### Knob 4 — Particles
 | Property | Value |
 |----------|-------|
-| Range | 1 â€“ 8 |
+| Range | 1 – 8 |
 | Default | 8 |
 
-Selects how many of the eight particles are active, from 1 to 8. At minimum, only particle 0 orbits alone â€” a single Lissajous tracer. Each step adds another agent with its own unique frequency pair.  Fewer particles give cleaner, more geometric patterns; more particles create denser, more complex swarm structures. Because particle 0 is the coupling leader, adding particles 1â€“7 progressively extends the leader-follower chain.
+Selects how many of the eight particles are active, from 1 to 8. At minimum, only particle 0 orbits alone — a single Lissajous tracer. Each step adds another agent with its own unique frequency pair.  Fewer particles give cleaner, more geometric patterns; more particles create denser, more complex swarm structures. Because particle 0 is the coupling leader, adding particles 1–7 progressively extends the leader-follower chain.
 
 ---
 
-#### Knob 5 â€” Coupling
+#### Knob 5 — Coupling
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
@@ -155,10 +155,10 @@ Controls the strength of inter-particle phase perturbation. At zero, all eight p
 
 ---
 
-#### Knob 6 â€” Bright
+#### Knob 6 — Bright
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 75% |
 | Suffix | % |
 
@@ -166,26 +166,26 @@ Sets the peak brightness of the rendered particles. Glow intensity at each pixel
 
 ---
 
-### Toggle Switches (Switches 7â€“11)
+### Toggle Switches (Switches 7–11)
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 â€” Shape** | Dot | Ring |
-| **8 â€” Color** | White | Hue |
-| **9 â€” Render** | Overlay | Replace |
-| **10 â€” Invert** | Off | On |
-| **11 â€” Bypass** | Off | On |
+| **7 — Shape** | Dot | Ring |
+| **8 — Color** | White | Hue |
+| **9 — Render** | Overlay | Replace |
+| **10 — Invert** | Off | On |
+| **11 — Bypass** | Off | On |
 
-The five toggles configure the rendering character of the particle overlay. Shape and Color control what the particles look like. Render controls how they combine with the input video. Invert flips the brightness polarity of the particle layer before compositing. Bypass routes the input directly to the output, disabling all processing. These toggles are independent â€” any combination is valid.
+The five toggles configure the rendering character of the particle overlay. Shape and Color control what the particles look like. Render controls how they combine with the input video. Invert flips the brightness polarity of the particle layer before compositing. Bypass routes the input directly to the output, disabling all processing. These toggles are independent — any combination is valid.
 
 ---
 
 ### Linear Potentiometer (Fader 12)
 
-#### Fader 12 â€” Mix
+#### Fader 12 — Mix
 | Property | Value |
 |----------|-------|
-| Range | 0.0% â€“ 100.0% |
+| Range | 0.0% – 100.0% |
 | Default | 100.0% |
 | Suffix | % |
 
@@ -200,7 +200,7 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 ### Exercise 1: Single Lissajous Tracer
 
 <img src={flock_exercise1_result} alt="Single Lissajous Tracer result"/>
-*Single Lissajous Tracer â€” simulated result across source images.*
+*Single Lissajous Tracer — simulated result across source images.*
 **Objective**: Understand the basic Lissajous orbit, speed, and scatter relationship with a single particle.
 
 1. **One particle**: Set Particles to minimum (1). A single bright dot appears.
@@ -217,32 +217,32 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 ### Exercise 2: Coupled Flock
 
 <img src={flock_exercise2_result} alt="Coupled Flock result"/>
-*Coupled Flock â€” simulated result across source images.*
+*Coupled Flock — simulated result across source images.*
 **Objective**: Explore how coupling strength transforms independent particles into a coordinated swarm.
 
 1. **Add particles**: Set Particles to 8. Eight independent dots orbit across the video.
 2. **Introduce coupling**: Slowly increase Coupling from 0%. Watch the particles begin to influence each other's trajectories. Around 30%, they start forming loose groupings.
-3. **Strong coupling**: Increase to ~70%. The swarm tightens â€” particles cluster and move as a group, occasionally a straggler breaks free and snaps back.
+3. **Strong coupling**: Increase to ~70%. The swarm tightens — particles cluster and move as a group, occasionally a straggler breaks free and snaps back.
 4. **Maximum coupling**: At 100%, all particles converge to nearly the same position, orbiting as a single bright cluster.
 5. **Color identification**: Toggle Color to Hue. Each particle gets a unique color, making it easy to see which agents are following which paths even when clustered.
-6. **Reduce coupling**: Back off Coupling to ~40%. The colored particles spread out but remain loosely coordinated â€” the characteristic "flocking" behavior.
+6. **Reduce coupling**: Back off Coupling to ~40%. The colored particles spread out but remain loosely coordinated — the characteristic "flocking" behavior.
 
-**Key concepts**: Coupling introduces phase perturbation from neighbor iâˆ’1, creating a leader-follower chain. Increasing coupling beyond a threshold causes spontaneous synchronization. Per-particle hue makes individual agents visually trackable within the swarm.
+**Key concepts**: Coupling introduces phase perturbation from neighbor i−1, creating a leader-follower chain. Increasing coupling beyond a threshold causes spontaneous synchronization. Per-particle hue makes individual agents visually trackable within the swarm.
 
 ---
 
 ### Exercise 3: Luminous Swarm Overlay
 
 <img src={flock_exercise3_result} alt="Luminous Swarm Overlay result"/>
-*Luminous Swarm Overlay â€” simulated result across source images.*
+*Luminous Swarm Overlay — simulated result across source images.*
 **Objective**: Combine all controls for a rich particle-over-video composite with depth and color.
 
 1. **Set the swarm**: 6 particles, Speed ~35%, Scatter ~60%, Coupling ~50%.
 2. **Large halos**: Increase Size to ~60%. Particles become broad glowing clouds that overlap and blend.
-3. **Ring wireframes**: Toggle Shape to Ring. The halos become skeletal rings â€” the intersecting arcs trace visible orbital geometry.
-4. **Colored rings**: Toggle Color to Hue. Each ring has a distinct color â€” overlapping regions create additive color mixing.
-5. **Invert**: Toggle Invert. The luminous rings become dark voids cut into the video â€” the swarm carves negative space from the source.
-6. **Replace mode**: Toggle Render to Replace. The input video disappears; only the ring swarm remains â€” a stand-alone generative pattern.
+3. **Ring wireframes**: Toggle Shape to Ring. The halos become skeletal rings — the intersecting arcs trace visible orbital geometry.
+4. **Colored rings**: Toggle Color to Hue. Each ring has a distinct color — overlapping regions create additive color mixing.
+5. **Invert**: Toggle Invert. The luminous rings become dark voids cut into the video — the swarm carves negative space from the source.
+6. **Replace mode**: Toggle Render to Replace. The input video disappears; only the ring swarm remains — a stand-alone generative pattern.
 7. **Blend back**: Use the Mix fader to bring the source video back to ~40%. The rings float over a ghostly, dimmed version of the source.
 
 **Key concepts**: Large Size creates overlapping halos for additive color mixing, Ring mode reveals orbital geometry, Invert flips particle brightness to carve voids, Replace isolates the particle layer, Mix blends the particle and source layers
@@ -253,13 +253,13 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 ## Tips
 
 - **Start with one particle**: Understanding a single Lissajous orbit makes the full swarm intuitive. Add particles incrementally to see how each agent's unique frequencies create distinct paths.
-- **Coupling is the signature control**: Small amounts of coupling produce the most visually interesting intermediate states â€” particles loosely coordinating without fully synchronizing.
+- **Coupling is the signature control**: Small amounts of coupling produce the most visually interesting intermediate states — particles loosely coordinating without fully synchronizing.
 - **Size and Scatter interact**: Wide scatter with small size creates sparse firefly pinpoints. Wide scatter with large size creates overlapping luminous clouds. Match them to your desired density.
 - **Ring mode reveals geometry**: Dots show glow; rings show structure. Switch to Ring mode to see the orbital paths traced out as skeletal arcs.
 - **Hue mode for tracking**: Per-particle color makes it possible to follow individual agents through the swarm. Essential when experimenting with coupling strength.
-- **Invert for voids**: Invert flips the particle layer before compositing. In Overlay mode, particles become dimming regions instead of brightening ones â€” a useful effect for cutting dark windows into bright source material.
+- **Invert for voids**: Invert flips the particle layer before compositing. In Overlay mode, particles become dimming regions instead of brightening ones — a useful effect for cutting dark windows into bright source material.
 - **Replace mode as a generator**: With Render set to Replace, Flock becomes a stand-alone pattern generator. Use Mix to blend the generated swarm over the source at any ratio.
-- **Feedback loops**: Routing the output back into the input creates particle trails â€” previous-frame positions persist as part of the source, and new particles add on top.
+- **Feedback loops**: Routing the output back into the input creates particle trails — previous-frame positions persist as part of the source, and new particles add on top.
 
 ---
 
@@ -267,16 +267,16 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R BT.601 color space standard used for SD video, defining the conversion matrix between RGB and YUV used throughout the Videomancer pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Coprime** | Two integers sharing no common factor other than 1; coprime frequency pairs ensure Lissajous orbits do not close into simple loops. |
 | **Coupling** | Phase perturbation where one oscillator's phase is shifted toward a neighbor's, creating coordinated motion between agents. |
-| **DDS** | Direct Digital Synthesis; a method of generating waveforms by accumulating a phase value and mapping it through a wave function (here, triangle wave). |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Flocking** | Collective motion of autonomous agents governed by local interaction rules; coined by Craig Reynolds in the Boids model. |
 | **Glow Falloff** | Linear decrease in brightness with distance from a particle center, producing a soft gradient halo. |
 | **Lissajous Figure** | The curve traced by a point whose X and Y coordinates are independent sinusoidal (or triangular) functions of time at different frequencies. |
-| **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|Î”x|+|Î”y|), producing diamond-shaped equidistant contours. |
+| **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|Δx|+|Δy|), producing diamond-shaped equidistant contours. |
 | **Phase Accumulator** | A register that increments by a frequency word each clock cycle, whose overflow produces periodic waveforms. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used here to convert phase to position. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

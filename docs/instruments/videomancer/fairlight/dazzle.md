@@ -4,7 +4,7 @@ sidebar_position: 64
 slug: /instruments/videomancer/dazzle
 title: "Dazzle"
 image: /img/instruments/videomancer/dazzle/dazzle_hero.png
-description: "Program guide for Dazzle, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Every broadcast television viewer has seen the sparkle effect — a starburst of light that blooms from specular highlights, stage lights, or reflections ..."
 ---
 
 import dazzle_hero from '/img/instruments/videomancer/dazzle/dazzle_hero.png';
@@ -276,15 +276,15 @@ These exercises progress from basic highlight detection to full sparkle animatio
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Cross Kernel** | A four-pointed sparkle shape extending along the horizontal and vertical axes from a center pixel. |
 | **Decay** | The rate at which accumulated sparkle brightness fades over successive frames when persistence is active. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hue Rotation** | Shifting the color angle of a pixel around the color wheel; here implemented via XOR with spatial coordinates. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to drive the pulse modulation timing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Specular Highlight** | A bright reflection from a shiny surface — the primary target for sparkle detection. |
 | **Star Kernel** | An eight-pointed sparkle shape adding diagonal arms to the cross kernel pattern. |
 | **Threshold** | A luminance cutoff value; pixels above the threshold are flagged as bright and receive sparkle overlay. |
 | **XOR** | Exclusive OR; a bitwise logic operation that flips bits where the two operands differ, producing structured interference patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

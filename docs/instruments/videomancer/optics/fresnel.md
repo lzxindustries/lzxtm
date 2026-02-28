@@ -4,7 +4,7 @@ sidebar_position: 106
 slug: /instruments/videomancer/fresnel
 title: "Fresnel"
 image: /img/instruments/videomancer/fresnel/fresnel_hero.png
-description: "Program guide for Fresnel, a Videomancer optics program for the LZX video synthesizer."
+description: "A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a sq..."
 ---
 
 import fresnel_hero from '/img/instruments/videomancer/fresnel/fresnel_hero.png';
@@ -289,17 +289,17 @@ These exercises build from a basic zone plate through dual-source moiré to vide
 | Term | Definition |
 |------|------------|
 | **Bit Selection** | Extracting a single bit from a binary value to determine a binary outcome; in Fresnel, the bit position within r² determines ring polarity. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Fresnel uses 0 BRAMs — the pattern is computed combinatorially. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Desaturation** | Reducing the color intensity of a pixel by blending its chroma values toward the neutral midpoint (512 in 10-bit YUV). |
 | **Fresnel Zone Plate** | An optical element with concentric rings whose spacing follows a square-root law, focusing light by diffraction. |
-| **Interpolator** | A pipelined linear-interpolation module that crossfades between two values based on a fractional parameter. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Moiré** | A large-scale interference pattern produced when two periodic patterns are overlaid with a slight offset. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **r²** | The squared radial distance from the zone plate center; computed as dx² + dy² without taking the square root. |
 | **XOR** | Exclusive OR; a binary operation that returns 1 when its two inputs differ. Used here to combine two zone plate patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **Zone Plate** | Synonym for Fresnel zone plate; a pattern of concentric rings used in optics, photography, and video test signals. |
 
 ---

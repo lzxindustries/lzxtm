@@ -4,7 +4,7 @@ sidebar_position: 278
 slug: /instruments/videomancer/vinegar
 title: "Vinegar"
 image: /img/instruments/videomancer/vinegar/vinegar_hero.png
-description: "Program guide for Vinegar, a Videomancer film program for the LZX video synthesizer."
+description: "Film does not last forever."
 ---
 
 import vinegar_before_after from '/img/instruments/videomancer/vinegar/vinegar_before_after.png';
@@ -86,7 +86,7 @@ Input Video (YUV 4:4:4)
 └── Output Video (YUV 4:4:4)
 ```
 
-The pipeline is structured to match the physical order of film degradation: mechanical transport artifacts (gate weave) come first because they displace the image before any colour or noise processing occurs. Dye fading then alters the colour balance, followed by additive damage (blobs, grain, splice, flicker) that accumulates on the faded image. The desaturation toggle provides an additional channel gain reduction that stacks with the dye fade curve, allowing aggressive monochrome washout independent of the colour-shift controls. The final mix stage crossfades between the fully degraded wet signal and the delayed original dry signal — at 0% the output is clean, at 100% it is fully deteriorated.
+The pipeline is structured to match the physical order of film degradation: mechanical transport artifacts (gate weave) come first because they displace the image before any color or noise processing occurs. Dye fading then alters the color balance, followed by additive damage (blobs, grain, splice, flicker) that accumulates on the faded image. The desaturation toggle provides an additional channel gain reduction that stacks with the dye fade curve, allowing aggressive monochrome washout independent of the color-shift controls. The final mix stage crossfades between the fully degraded wet signal and the delayed original dry signal — at 0% the output is clean, at 100% it is fully deteriorated.
 
 ---
 
@@ -115,7 +115,7 @@ Controls the amplitude of gate weave — smooth horizontal displacement applied 
 | Default | 0% |
 | Suffix | % |
 
-Controls the severity of dye fading — progressive colour shift caused by asymmetric dye decomposition. The Fade Curve toggle (Toggle 7) selects which dyes degrade first: Warm mode fades cyan (U contracts strongly toward neutral while V contracts weakly), producing a red/pink shift. Cold mode fades yellow (V contracts strongly while U contracts weakly), producing a blue shift. At zero the original colour balance is preserved; at maximum the dye that degrades faster is nearly eliminated, leaving a heavily colour-shifted image. The Y channel also loses brightness at higher Decay values, with Cold mode losing more luma than Warm.
+Controls the severity of dye fading — progressive color shift caused by asymmetric dye decomposition. The Fade Curve toggle (Toggle 7) selects which dyes degrade first: Warm mode fades cyan (U contracts strongly toward neutral while V contracts weakly), producing a red/pink shift. Cold mode fades yellow (V contracts strongly while U contracts weakly), producing a blue shift. At zero the original color balance is preserved; at maximum the dye that degrades faster is nearly eliminated, leaving a heavily color-shifted image. The Y channel also loses brightness at higher Decay values, with Cold mode losing more luma than Warm.
 
 ---
 
@@ -198,19 +198,19 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 <img src={vinegar_exercise1_result} alt="Gentle Aging result"/>
 *Gentle Aging — simulated result across source images.*
-**Source**: Well-exposed footage with natural colour — portraits, landscapes, or documentary material.
+**Source**: Well-exposed footage with natural color — portraits, landscapes, or documentary material.
 
 **Objective**: Add a subtle aged-film patina with gentle gate weave, mild dye fading, and light grain.
 
 1. Set Instability to about 15% for barely perceptible horizontal wobble.
-2. Set Decay to about 25% with Fade Curve on Warm. Observe the slight pink/warm colour shift.
+2. Set Decay to about 25% with Fade Curve on Warm. Observe the slight pink/warm color shift.
 3. Set Grain to about 20% for light film texture.
 4. Keep all other effects at zero or off.
 5. Set Mix to 100%.
-6. Toggle Fade Curve between Warm and Cold to compare the two colour-shift directions.
-7. Slowly increase Decay to see how the colour shift progresses.
+6. Toggle Fade Curve between Warm and Cold to compare the two color-shift directions.
+7. Slowly increase Decay to see how the color shift progresses.
 
-**Key concepts**: Gate weave is smooth and low-frequency due to IIR filtering, Warm and Cold fading produce opposite colour shifts, grain adds texture without altering colour
+**Key concepts**: Gate weave is smooth and low-frequency due to IIR filtering, Warm and Cold fading produce opposite color shifts, grain adds texture without altering color
 
 ---
 
@@ -240,19 +240,19 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 *Terminal Decay — simulated result across source images.*
 **Source**: Any footage — heavy processing creates abstract results regardless of source.
 
-**Objective**: Simulate film in the final stages of vinegar syndrome — extreme colour shift, heavy grain, frequent damage, and instability.
+**Objective**: Simulate film in the final stages of vinegar syndrome — extreme color shift, heavy grain, frequent damage, and instability.
 
 1. Set Instability to about 70% for heavy gate weave.
-2. Set Decay to about 80% with Warm fade. Observe extreme pink/magenta colour shift.
+2. Set Decay to about 80% with Warm fade. Observe extreme pink/magenta color shift.
 3. Set Damage to about 60% and Blob Size to about 60% for extensive dark stains.
 4. Set Grain to about 65% for coarse, visible grain texture.
 5. Set Splice Rate to about 30% for frequent flash frames.
 6. Enable Flicker and Sprocket for full mechanical degradation.
-7. Enable Desaturate for additional colour loss.
+7. Enable Desaturate for additional color loss.
 8. Pull Mix back to about 75% to retain some recognizable image content.
 9. Switch to Cold fade to see the alternative (blue-shifted) decay path.
 
-**Key concepts**: All decay processes compound, Desaturate stacks with dye fade for extreme colour loss, high Instability makes the image float and drift horizontally, the autocatalytic metaphor — each degradation makes the others more visible
+**Key concepts**: All decay processes compound, Desaturate stacks with dye fade for extreme color loss, high Instability makes the image float and drift horizontally, the autocatalytic metaphor — each degradation makes the others more visible
 
 ---
 
@@ -275,15 +275,15 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 | Term | Definition |
 |------|------------|
 | **Autocatalytic** | A chemical reaction that accelerates its own rate; in vinegar syndrome the acetic acid released by degradation accelerates further decomposition. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Vinegar uses 3 BRAMs for Y/U/V line buffers enabling gate weave. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cellulose Acetate** | The plastic base material of motion picture film manufactured from the 1950s onward; susceptible to vinegar syndrome. |
-| **Cyan Dye** | The dye layer in colour film that controls the red channel; the least stable dye in Eastmancolor stocks. |
-| **Eastmancolor** | Kodak's monopack colour film process used for most theatrical motion pictures from 1952 onward. |
+| **Cyan Dye** | The dye layer in color film that controls the red channel; the least stable dye in Eastmancolor stocks. |
+| **Eastmancolor** | Kodak's monopack color film process used for most theatrical motion pictures from 1952 onward. |
 | **Gate Weave** | Horizontal displacement of the film image caused by mechanical play in the projector gate mechanism. |
 | **IIR Filter** | Infinite Impulse Response filter; a digital filter whose output depends on both current input and previous output, used here to smooth LFSR noise into organic wobble. |
-| **LFSR** | Linear Feedback Shift Register; generates maximal-length pseudo-random sequences. Vinegar uses three independent LFSRs. |
-| **Pipeline** | Sequential processing stages; Vinegar has an 11-clock pipeline plus 5-clock interpolator mix. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Splice** | A physical join between two pieces of film, visible as a bright flash or frame disruption during projection. |
 | **Sprocket** | Tooth on a projector mechanism that engages with holes along the film edge to advance it; worn sprockets cause position errors. |
 | **Vinegar Syndrome** | The chemical decomposition of cellulose acetate film base through acid hydrolysis, causing warping, shrinkage, and dye fading. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

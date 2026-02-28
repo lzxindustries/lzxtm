@@ -4,7 +4,7 @@ sidebar_position: 206
 slug: /instruments/videomancer/prism
 title: "Prism"
 image: /img/instruments/videomancer/prism/prism_hero.png
-description: "Program guide for Prism, a Videomancer pixel program for the LZX video synthesizer."
+description: "Prism takes the three channels of a YUV video signal and shifts each one independently along the horizontal axis."
 ---
 
 import prism_before_after from '/img/instruments/videomancer/prism/prism_before_after.png';
@@ -26,7 +26,7 @@ import prism_source3_kodim01_bw from '/img/instruments/videomancer/prism/prism_s
 
 
 <img src={prism_hero} alt="Prism hero image"/>
-*Prism applying per-channel horizontal displacement and channel swapping to decompose video into separated colour planes.*
+*Prism applying per-channel horizontal displacement and channel swapping to decompose video into separated color planes.*
 <img src={prism_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Prism applied.*
 
@@ -34,9 +34,9 @@ import prism_source3_kodim01_bw from '/img/instruments/videomancer/prism/prism_s
 
 ## Overview
 
-Prism takes the three channels of a YUV video signal and shifts each one independently along the horizontal axis. The result is chromatic aberration — the colour planes separate, creating prismatic rainbow fringes around edges and a distinctive split-colour aesthetic. Because each channel has its own delay line backed by BRAM, the displacement is true pixel-level re-sampling, not a colour-space trick.
+Prism takes the three channels of a YUV video signal and shifts each one independently along the horizontal axis. The result is chromatic aberration — the color planes separate, creating prismatic rainbow fringes around edges and a distinctive split-color aesthetic. Because each channel has its own delay line backed by BRAM, the displacement is true pixel-level re-sampling, not a color-space trick.
 
-The program offers three individual delay controls (Y, U, V) plus a Spread parameter that pushes U and V symmetrically apart while leaving Y centred. A luma modulation path allows the input brightness to dynamically vary the displacement amount, causing the separation to follow the content of the image — bright areas warp more than dark areas. Channel swap toggles reroute the Y/U/V paths after delay for creative colour remapping, and a Mirror toggle reverses the delay direction for bilateral symmetry.
+The program offers three individual delay controls (Y, U, V) plus a Spread parameter that pushes U and V symmetrically apart while leaving Y centred. A luma modulation path allows the input brightness to dynamically vary the displacement amount, causing the separation to follow the content of the image — bright areas warp more than dark areas. Channel swap toggles reroute the Y/U/V paths after delay for creative color remapping, and a Mirror toggle reverses the delay direction for bilateral symmetry.
 
 One parameter — Mod Bias — is declared in the register map but has no effect on the output in the current implementation. The supplement notes this explicitly.
 
@@ -46,7 +46,7 @@ One parameter — Mod Bias — is declared in the register map but has no effect
 
 ### Chromatic Aberration
 
-Optical systems focus different wavelengths of light at slightly different points, causing colour channels to misalign at the edges of an image. This is **chromatic aberration** — an optical defect in photography that has become a deliberate creative effect in video art at digital processing. Prism reproduces this digitally by independently delaying each colour channel along the horizontal axis.
+Optical systems focus different wavelengths of light at slightly different points, causing color channels to misalign at the edges of an image. This is **chromatic aberration** — an optical defect in photography that has become a deliberate creative effect in video art at digital processing. Prism reproduces this digitally by independently delaying each color channel along the horizontal axis.
 
 ### BRAM Delay Lines
 
@@ -58,7 +58,7 @@ The Luma Mod knob scales the input brightness value and adds it to all three del
 
 ### Channel Swapping
 
-After the delay lines, three combinational swap paths reroute the channels. U-V Swap exchanges the two chrominance channels (blue-difference and red-difference), rotating hues by approximately 90°. Y-U Swap places the delayed U signal into the luminance path and the delayed Y into the U path, creating dramatic false-colour effects where chrominance becomes brightness and vice versa. Combined swaps produce six distinct channel permutations from three toggle states.
+After the delay lines, three combinational swap paths reroute the channels. U-V Swap exchanges the two chrominance channels (blue-difference and red-difference), rotating hues by approximately 90°. Y-U Swap places the delayed U signal into the luminance path and the delayed Y into the U path, creating dramatic false-color effects where chrominance becomes brightness and vice versa. Combined swaps produce six distinct channel permutations from three toggle states.
 
 ### Mirror Mode
 
@@ -119,7 +119,7 @@ The delay computation stage packs significant logic into a single clock: luma mo
 | Default | 0.0% |
 | Suffix | % |
 
-Y Delay sets the horizontal pixel offset for the luminance channel. At 0, the Y channel is not displaced. Increasing the value shifts Y horizontally, causing the brightness component to separate from the colour channels. Combined with luma modulation, the actual delay per pixel equals `Y_Delay + luma_mod_offset`, creating a brightness-dependent displacement. The delay range extends to the full BRAM depth when summed with spread and modulation.
+Y Delay sets the horizontal pixel offset for the luminance channel. At 0, the Y channel is not displaced. Increasing the value shifts Y horizontally, causing the brightness component to separate from the color channels. Combined with luma modulation, the actual delay per pixel equals `Y_Delay + luma_mod_offset`, creating a brightness-dependent displacement. The delay range extends to the full BRAM depth when summed with spread and modulation.
 
 ---
 
@@ -215,7 +215,7 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 *Classic Chromatic Aberration — simulated result across source images.*
 **Source**: A high-contrast image with sharp edges — text overlays, geometric shapes, or architectural footage.
 
-**Objective**: Create prismatic colour fringes that mimic optical chromatic aberration.
+**Objective**: Create prismatic color fringes that mimic optical chromatic aberration.
 
 1. Set Y Delay to 0% so the luminance channel stays centred.
 2. Increase U Delay to ~20% to shift the blue-difference channel rightward.
@@ -246,22 +246,22 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 ---
 
-### Exercise 3: False-Colour Channel Remix
+### Exercise 3: False-Color Channel Remix
 
-<img src={prism_exercise3_result} alt="False-Colour Channel Remix result"/>
-*False-Colour Channel Remix — simulated result across source images.*
-**Source**: Any video — the channel swaps create dramatic recolouring of any content.
+<img src={prism_exercise3_result} alt="False-Color Channel Remix result"/>
+*False-Color Channel Remix — simulated result across source images.*
+**Source**: Any video — the channel swaps create dramatic recoloring of any content.
 
 **Objective**: Explore the six channel permutations created by the two swap toggles.
 
 1. Set moderate delays: Y Delay ~10%, U Delay ~30%, V Delay ~50%.
 2. Enable U-V Swap (Switch 7). Observe the hue rotation — reds become blues.
-3. Disable U-V Swap. Enable Y-U Swap (Switch 8). Observe false-colour: chrominance becomes brightness.
+3. Disable U-V Swap. Enable Y-U Swap (Switch 8). Observe false-color: chrominance becomes brightness.
 4. Enable both swaps simultaneously. A third, more extreme remapping appears.
-5. With both swaps active, increase Luma Mod to ~50% for modulation-driven false-colour warping.
-6. Try Luma Invert with both swaps — the inverted luma feeding into a chrominance output creates negative-image colour effects.
+5. With both swaps active, increase Luma Mod to ~50% for modulation-driven false-color warping.
+6. Try Luma Invert with both swaps — the inverted luma feeding into a chrominance output creates negative-image color effects.
 
-**Key concepts**: Channel swaps happen after delay, two toggle combinatorics yield six permutations, luma becoming chroma (and vice versa) creates false colour
+**Key concepts**: Channel swaps happen after delay, two toggle combinatorics yield six permutations, luma becoming chroma (and vice versa) creates false color
 
 ---
 
@@ -271,10 +271,10 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 - **Spread is the quick-start knob**: For instant chromatic aberration, leave the individual delay knobs at zero and just turn Spread. It pushes U and V apart symmetrically while keeping Y centred.
 - **Luma Mod creates organic warping**: Without modulation, displacement is uniform across the image. With modulation, the displacement follows the scene content, creating effects that feel more like refraction than mechanical offset.
 - **Mirror for bilateral fringes**: Real optical chromatic aberration produces fringes on both sides of edges. Enable Mirror to approximate this symmetric look.
-- **Channel swaps are post-delay**: Swapping happens after displacement, so you can set up a specific delay pattern and then remap it to different colour channels without changing the delay values.
+- **Channel swaps are post-delay**: Swapping happens after displacement, so you can set up a specific delay pattern and then remap it to different color channels without changing the delay values.
 - **Luma Invert affects two paths**: It inverts both the Y channel data going into the delay line and the modulation source. The dual effect is intentional — it reverses the entire displacement polarity.
 - **Mod Bias has no effect**: The knob is reserved for future development. Don't spend time adjusting it.
-- **Feedback amplifies fringing**: Routing the output back to the input stacks displacement on top of displacement, creating ever-widening colour separation that can fill the entire frame.
+- **Feedback amplifies fringing**: Routing the output back to the input stacks displacement on top of displacement, creating ever-widening color separation that can fill the entire frame.
 
 ---
 
@@ -282,14 +282,14 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the variable delay lines. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Channel Swap** | Rerouting the Y, U, and V signal paths to different output channels after processing. |
-| **Chromatic Aberration** | Colour fringing caused by different colour channels being displaced relative to each other. |
+| **Chromatic Aberration** | Color fringing caused by different color channels being displaced relative to each other. |
 | **Delay Line** | A FIFO buffer that stores incoming pixel values and reads them back after a configurable number of clock cycles, implementing horizontal displacement. |
-| **Interpolator** | A linear crossfade module that blends two signals based on a mix parameter, used for wet/dry control. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Luma Modulation** | Multiplying input brightness by a control parameter to dynamically vary a processing parameter (here, delay amount). |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Spread** | A symmetric offset added equally to U and V delay values to create uniform chromatic separation. |
 | **Variable Delay** | A delay line whose read-back position can be changed per pixel, enabling dynamic horizontal displacement. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

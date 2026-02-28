@@ -4,7 +4,7 @@ sidebar_position: 213
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero.png
-description: "Program guide for Receipt, a Videomancer print program for the LZX video synthesizer."
+description: "Before digital snapshots were instant, video printers were the only way to get a physical copy of a single video frame."
 ---
 
 import receipt_before_after from '/img/instruments/videomancer/receipt/receipt_before_after.png';
@@ -280,14 +280,14 @@ These exercises progress from basic resolution reduction to full thermal printer
 | Term | Definition |
 |------|------------|
 | **Bayer Matrix** | A fixed threshold pattern used for ordered dithering; distributes quantization error in a regular grid to simulate additional tonal levels. |
-| **BRAM** | Block RAM; dedicated memory in the FPGA, not used by this program (zero BRAM design). |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Decimation** | Discarding spatial samples to reduce resolution; Receipt uses sample-and-hold, latching one pixel per block. |
 | **Dithering** | Adding a structured noise pattern before quantization to break up banding and simulate intermediate tones. |
 | **Dot Matrix** | Impact printing technology using pins striking an inked ribbon; characterized by visible dots and coarse mechanical banding. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
-| **Interpolator** | A hardware multiply-accumulate unit used for linear crossfading between two signals (wet/dry mix). |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Posterization** | Reducing the number of discrete tonal levels, collapsing smooth gradients into flat bands. |
 | **Sample-and-Hold** | Latching a value and holding it constant for a defined interval; used here to create uniform pixel blocks. |
 | **Thermal Printing** | A printing technology that uses heat to darken chemically treated paper; produces smooth transfers with characteristic paper tint and head banding. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

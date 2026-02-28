@@ -4,7 +4,7 @@ sidebar_position: 164
 slug: /instruments/videomancer/mercury
 title: "Mercury"
 image: /img/instruments/videomancer/mercury/mercury_hero.png
-description: "Program guide for Mercury, a Videomancer organic program for the LZX video synthesizer."
+description: "Mercury simulates the behaviour of liquid metal — droplets of chrome that orbit, merge, and split in a continuous dance driven by digital oscillators."
 ---
 
 import mercury_animation from '/img/instruments/videomancer/mercury/mercury_animation.gif';
@@ -35,7 +35,7 @@ Mercury simulates the behaviour of liquid metal — droplets of chrome that orbi
 
 Two or four blobs can be active simultaneously. Because each blob's DDS uses coprime frequency multipliers, the blobs orbit at different rates, periodically approaching one another and "merging" when their radii overlap in the distance field. The minimum-distance selector automatically creates the illusion of pooling: where two blobs are close, the near-equal distances produce a saddle point in the field, and the edge-detection threshold draws a bright bridge between them. When the blobs separate, the bridge snaps apart and the droplets resume their independent orbits.
 
-The name references the element mercury (quicksilver) — the only metal that is liquid at room temperature. Its high surface tension causes it to bead into nearly perfect spheres, and its mirror-bright surface reflects its surroundings with a convex distortion. Mercury's rainbow mode swaps the neutral chrome for per-blob colour assignment, turning the metallic simulation into a coloured Voronoi diagram where each blob's territory is painted a different hue.
+The name references the element mercury (quicksilver) — the only metal that is liquid at room temperature. Its high surface tension causes it to bead into nearly perfect spheres, and its mirror-bright surface reflects its surroundings with a convex distortion. Mercury's rainbow mode swaps the neutral chrome for per-blob color assignment, turning the metallic simulation into a colored Voronoi diagram where each blob's territory is painted a different hue.
 
 ---
 
@@ -55,7 +55,7 @@ Each blob's position is driven by a pair of DDS phase accumulators — one for X
 
 ### Voronoi Diagrams and Nearest-Neighbour Partitioning
 
-When Mercury renders in rainbow mode, the screen is effectively partitioned into Voronoi cells — regions where each pixel is coloured according to the nearest blob. A Voronoi diagram is a fundamental structure in computational geometry, appearing in crystal growth, cell biology, and territorial mapping. Mercury's 2-level parallel minimum-distance selector performs the nearest-neighbour lookup in hardware: distances to all four blobs are computed simultaneously, then reduced via two levels of pairwise comparison to find the closest blob and its index. The blob index drives the colour assignment, painting each cell a different hue derived from the reflectivity parameter.
+When Mercury renders in rainbow mode, the screen is effectively partitioned into Voronoi cells — regions where each pixel is colored according to the nearest blob. A Voronoi diagram is a fundamental structure in computational geometry, appearing in crystal growth, cell biology, and territorial mapping. Mercury's 2-level parallel minimum-distance selector performs the nearest-neighbour lookup in hardware: distances to all four blobs are computed simultaneously, then reduced via two levels of pairwise comparison to find the closest blob and its index. The blob index drives the color assignment, painting each cell a different hue derived from the reflectivity parameter.
 
 ### LFSR Jitter and Organic Motion
 
@@ -184,7 +184,7 @@ Sets the width of the surface-tension edge highlight ring. The register value is
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness of the chrome rendering — both the specular edge highlight and the blob interior. At the edge, luma is set directly to the Reflect value. In the interior, luma is calculated as `reflectivity - (min_distance >> 3)`, producing a gradual falloff from the edge inward. At zero, blobs are invisible (black chrome). At maximum (1023), the specular ring is pure white and the blob interior is bright silver with gentle distance shading. In rainbow mode, Reflect also scales the chroma offset — higher values produce more saturated per-blob colours, while lower values produce muted, pastel tints.
+Controls the brightness of the chrome rendering — both the specular edge highlight and the blob interior. At the edge, luma is set directly to the Reflect value. In the interior, luma is calculated as `reflectivity - (min_distance >> 3)`, producing a gradual falloff from the edge inward. At zero, blobs are invisible (black chrome). At maximum (1023), the specular ring is pure white and the blob interior is bright silver with gentle distance shading. In rainbow mode, Reflect also scales the chroma offset — higher values produce more saturated per-blob colors, while lower values produce muted, pastel tints.
 
 ---
 
@@ -220,7 +220,7 @@ Labelled "Ripple" on the panel, this register is mapped to `s_mix_pot` in the VH
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggles 7 and 8 each present four labels on the panel but are wired to single bits in the VHDL, meaning only two states are actually available per toggle. Toggle 9 selects between chrome and rainbow colouring. Toggle 10 controls animation freeze but is inverted relative to its label — "On" in the TOML means the freeze bit is set, which stops animation. Toggle 11 is the standard bypass.
+Toggles 7 and 8 each present four labels on the panel but are wired to single bits in the VHDL, meaning only two states are actually available per toggle. Toggle 9 selects between chrome and rainbow coloring. Toggle 10 controls animation freeze but is inverted relative to its label — "On" in the TOML means the freeze bit is set, which stops animation. Toggle 11 is the standard bypass.
 
 ---
 
@@ -279,14 +279,14 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 <img src={mercury_exercise3_result} alt="Rainbow Voronoi with Jitter result"/>
 *Rainbow Voronoi with Jitter — simulated result across source images.*
-**Objective**: Activate rainbow mode and jitter to create an animated, colour-partitioned Voronoi field with organic wobble.
+**Objective**: Activate rainbow mode and jitter to create an animated, color-partitioned Voronoi field with organic wobble.
 
-1. **Enable rainbow**: Toggle Merge On. Each blob's territory is now painted a different colour.
-2. **Four blobs**: Set Shape to Geomtrc (4 blobs) for a full four-colour partition.
+1. **Enable rainbow**: Toggle Merge On. Each blob's territory is now painted a different color.
+2. **Four blobs**: Set Shape to Geomtrc (4 blobs) for a full four-color partition.
 3. **Animation running**: Set Animate to Off (animation runs). Set Blob Sz to ~40% for moderate orbit speed.
 4. **Add jitter**: Increase Pool Spd to ~50%. The blob orbits gain organic wobble.
 5. **Large radius**: Set Blob Cnt to ~80%. The blobs fill the screen, creating a continuous Voronoi tessellation with no gaps.
-6. **Observe colour boundaries**: The per-blob colour assignment makes the Voronoi cell boundaries visible. Where two cells meet, the colour changes abruptly across the equal-distance line.
+6. **Observe color boundaries**: The per-blob color assignment makes the Voronoi cell boundaries visible. Where two cells meet, the color changes abruptly across the equal-distance line.
 
 **Key concepts**: Rainbow mode assigns hue by blob index, Voronoi partition emerges from nearest-neighbour distance selection, jitter breaks DDS periodicity for organic motion, large radius eliminates black gaps
 
@@ -302,7 +302,7 @@ These exercises progress from basic blob visualization through merge behaviour e
 - **Shape and Metal are binary**: Despite having four labels each, these toggles are single-bit — only two states exist. Shape: 2 blobs / 4 blobs. Metal: additive / replace.
 - **Large radius + high tension = full merge**: Pushing Blob Cnt and Tension to high values causes the blobs to fill the screen as a continuous chrome field — useful as a metallic overlay texture.
 - **Jitter for organic motion**: Pool Spd adds LFSR noise to blob positions. Even small amounts (~20%) break the mathematical precision of the DDS orbits, making the motion feel alive.
-- **Rainbow + 4 blobs = Voronoi art**: Enable Merge (rainbow) and Geomtrc (4 blobs). Set Blob Cnt high enough that the blobs tile the screen. The result is an animated four-colour Voronoi partition — a real-time computational geometry visualization.
+- **Rainbow + 4 blobs = Voronoi art**: Enable Merge (rainbow) and Geomtrc (4 blobs). Set Blob Cnt high enough that the blobs tile the screen. The result is an animated four-color Voronoi partition — a real-time computational geometry visualization.
 
 ---
 
@@ -310,15 +310,15 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA. Mercury uses zero BRAMs — all computation is combinatorial and register-based. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Coprime** | Two integers whose greatest common divisor is 1. Mercury uses coprime frequency multipliers for each blob's DDS to ensure their orbits never synchronize exactly. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that wraps at overflow, producing a sawtooth phase ramp whose top bits represent position. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Distance field** | A scalar field that assigns to each pixel the distance to the nearest feature point. Mercury uses Manhattan distance to the nearest blob centre. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that implements Mercury's pixel pipeline in parallel hardware. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state. Produces a pseudo-random sequence that repeats after $2^n - 1$ cycles. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Lissajous figure** | The path traced by a point whose X and Y coordinates are independent sinusoidal (or periodic) functions of time. Mercury's blob orbits are Lissajous-like curves driven by DDS accumulators. |
 | **Manhattan distance** | The L1 or taxicab distance metric: $d = |x_1 - x_2| + |y_1 - y_2|$. Produces diamond-shaped equidistant contours instead of circles. |
 | **Specular highlight** | A bright reflection on a curved surface where the viewing angle equals the reflection angle. Mercury simulates this as a bright edge ring at the blob boundary. |
 | **Surface tension** | The cohesive force at a liquid's surface that minimizes its area. In Mercury, this parameter controls the width of the edge highlight ring that simulates specular reflection. |
 | **Voronoi diagram** | A partition of a plane into regions based on proximity to a set of seed points, where each region contains all points closer to its seed than to any other. Mercury's rainbow mode visualizes this partition. |
-| **YUV** | A colour space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

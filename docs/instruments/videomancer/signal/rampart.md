@@ -4,7 +4,7 @@ sidebar_position: 211
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero.png
-description: "Program guide for Rampart, a Videomancer signal program for the LZX video synthesizer."
+description: "Every castle begins with a wall."
 ---
 
 import rampart_before_after from '/img/instruments/videomancer/rampart/rampart_before_after.png';
@@ -271,13 +271,13 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 |------|------------|
 | **ABI** | Application Binary Interface; the fixed register layout through which the Videomancer firmware communicates parameter values to FPGA programs. Limited to 8 registers (indices 0–7). |
 | **Bond** | The pattern in which bricks are laid in a wall. Running bond offsets alternating rows; stack bond aligns all rows vertically. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Rampart uses zero BRAMs — all computation is combinational. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Crenel** | The gap (open section) in a crenellated battlement wall. The raised solid sections between crenels are called merlons. |
 | **Crenellation** | The alternating tooth-shaped parapet profile along the top of a fortress wall, consisting of merlons and crenels. |
-| **Interpolator** | A hardware component that linearly blends between two values based on a mix parameter. Rampart uses three interpolators for wet/dry crossfade on Y, U, and V channels. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Merlon** | The raised solid portion between two crenels in a battlement wall. |
 | **Modular Arithmetic** | Division remainder operation (mod) that creates infinite repetition: `h mod w` produces a periodic pattern with period `w`. |
 | **Mortar** | The material (or in Rampart's case, the pixel region) between adjacent bricks, rendered as lines of configurable width and brightness. |
 | **Running Bond** | A brick bonding pattern where each course is offset by half a brick width, staggering vertical joints. |
 | **Stack Bond** | A brick bonding pattern where all courses align vertically, creating continuous vertical mortar lines. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

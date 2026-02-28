@@ -4,7 +4,7 @@ sidebar_position: 14
 slug: /instruments/videomancer/barcode
 title: "Barcode"
 image: /img/instruments/videomancer/barcode/barcode_hero.png
-description: "Program guide for Barcode, a Videomancer text program for the LZX video synthesizer."
+description: "Barcodes are a visual language designed for machines — parallel lines of varying width that encode numeric data."
 ---
 
 import barcode_hero from '/img/instruments/videomancer/barcode/barcode_hero.png';
@@ -281,14 +281,14 @@ These exercises progress from basic vertical barcode rendering through spatial m
 |------|------------|
 | **Bypass mux** | A multiplexer that routes the original signal past all processing stages for instant A/B comparison. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Guard bar** | A fixed-width reference bar at the edge of a barcode that marks where the data region begins or ends. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
-| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Quantization** | Reducing a continuous range of values to a finite set of discrete levels, here applied to luminance before bar rendering. |
 | **Quiet zone** | A mandatory blank margin adjacent to a barcode that prevents nearby visual elements from being misread as data. |
 | **UPC** | Universal Product Code; the most common one-dimensional barcode symbology, printed on retail packaging worldwide. |
 | **Wet/dry mix** | A crossfade between the processed (wet) and original (dry) signals, controlling effect intensity. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

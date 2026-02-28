@@ -4,7 +4,7 @@ sidebar_position: 43
 slug: /instruments/videomancer/chenille
 title: "Chenille"
 image: /img/instruments/videomancer/chenille/chenille_hero.png
-description: "Program guide for Chenille, a Videomancer material program for the LZX video synthesizer."
+description: "Chenille is named for the French word meaning 'caterpillar' — the same word that gives its name to the soft, tufted fabric whose surface is made of tiny..."
 ---
 
 import chenille_hero from '/img/instruments/videomancer/chenille/chenille_hero.png';
@@ -274,9 +274,9 @@ These three exercises move from basic grid exploration through directional shadi
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Dot product** | A mathematical operation that multiplies corresponding components of two vectors and sums the results, used here to compute directional shading across each tuft. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Halftone** | A printing technique that simulates continuous tone using a grid of variably-sized dots, visually related to Chenille's dot-grid texture. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values, enabling fast function evaluation in hardware. |
 | **Manhattan distance** | A distance metric computed as |dx| + |dy|, producing diamond-shaped contours rather than circles; used to determine tuft boundaries. |
@@ -284,6 +284,6 @@ These three exercises move from basic grid exploration through directional shadi
 | **Pile** | In textiles, the raised surface of cut or looped fibers standing upright from a backing fabric; the physical phenomenon Chenille's shading model simulates. |
 | **Spatial quantization** | The process of dividing a continuous coordinate space into discrete cells, each treated as an independent unit for processing. |
 | **Voronoi tessellation** | A partition of a plane into regions based on proximity to a set of seed points, related to Chenille's cell-based grid decomposition. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

@@ -4,7 +4,7 @@ sidebar_position: 277
 slug: /instruments/videomancer/vigil
 title: "Vigil"
 image: /img/instruments/videomancer/vigil/vigil_hero.png
-description: "Program guide for Vigil, a Videomancer camera program for the LZX video synthesizer."
+description: "Security cameras do not produce beautiful images."
 ---
 
 import vigil_before_after from '/img/instruments/videomancer/vigil/vigil_before_after.png';
@@ -278,11 +278,11 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 | **DVR** | Digital Video Recorder; the recording device in modern CCTV installations that stores compressed camera feeds. |
 | **Ground Loop** | An electrical interference condition caused by multiple grounding points creating a current loop, producing horizontal noise bars in video signals. |
 | **Interlace** | A scanning method where odd and even lines are drawn in alternating fields, used by analog video standards (NTSC, PAL). |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, generating pseudo-random sequences. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Multiplexer** | A device that switches between multiple camera inputs on a single monitor or recording channel. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Scanline** | A single horizontal line of video; analog video is transmitted and displayed one scanline at a time. |
 | **Sync** | Synchronization signals (horizontal and vertical) that tell the display where each line and frame begins. |
 | **Tearing** | Horizontal displacement of scanlines caused by sync timing errors, creating a jagged vertical edge in the image. |
 | **Vignette** | Gradual darkening at the edges and corners of an image, caused by lens light falloff or sensor geometry. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

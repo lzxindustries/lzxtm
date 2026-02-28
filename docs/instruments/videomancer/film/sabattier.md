@@ -4,7 +4,7 @@ sidebar_position: 223
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
 image: /img/instruments/videomancer/sabattier/sabattier_hero.png
-description: "Program guide for Sabattier, a Videomancer film program for the LZX video synthesizer."
+description: "In the traditional photographic darkroom, the Sabattier effect occurs when a partially developed print is briefly re-exposed to light."
 ---
 
 import sabattier_before_after from '/img/instruments/videomancer/sabattier/sabattier_before_after.png';
@@ -284,15 +284,15 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory in the FPGA. Sabattier uses zero BRAM — the solarization curve is computed piecewise, not stored in a lookup table. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Equidensity** | A photographic technique that produces narrow tonal bands by exaggerating brightness differences; in Sabattier, it doubles the solarization dip. |
 | **IIR** | Infinite Impulse Response; a feedback filter where each output depends on previous outputs. Used for Mackie line width spread. |
 | **Mackie Line** | A luminous border at tonal boundaries in solarized prints, caused by bromide ion migration during development. Simulated here via horizontal gradient detection. |
 | **Midtone Reversal** | The defining characteristic of solarization: brightness values near the midpoint are pulled downward while extremes remain stable. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. Sabattier uses 4 processing clocks + 4 interpolator clocks = 8 total. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Polarity** | The sign of the input signal. Negative polarity inverts Y before the solarization curve is applied. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage. Used internally for metallic tinting. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Sabattier Effect** | Partial tonal reversal caused by re-exposing a developing photographic print to light, described by Armand Sabattier in 1862. |
 | **Solarization** | Broadly, any tonal reversal in photography. In Videomancer, specifically the Sabattier pseudo-solarization curve. |
 | **W-Curve** | A double-fold solarization curve with two midtone dips at the quarter and three-quarter points, producing more complex banding than the single-fold S-curve. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

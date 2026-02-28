@@ -4,7 +4,7 @@ sidebar_position: 167
 slug: /instruments/videomancer/mimeo
 title: "Mimeo"
 image: /img/instruments/videomancer/mimeo/mimeo_hero.png
-description: "Program guide for Mimeo, a Videomancer print program for the LZX video synthesizer."
+description: "Before photocopiers, before laser printers, there was the mimeograph."
 ---
 
 import mimeo_before_after from '/img/instruments/videomancer/mimeo/mimeo_before_after.png';
@@ -291,10 +291,10 @@ These exercises progress from basic posterized prints through fully degraded mul
 | **Hectograph** | A duplicating process using a gelatin pad to transfer dye to paper, typically producing blue prints. |
 | **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the input, creating persistent temporal or spatial effects. |
 | **Letterform Fill-In** | The flooding of narrow white spaces between dark ink areas, caused by capillary action and ink pressure in stencil printing. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit that generates pseudo-random binary sequences, used here for ink noise and paper grain. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Mimeograph** | A stencil duplicator that forces ink through a perforated wax stencil onto paper, widely used from the 1880s through the 1970s. |
 | **Paper Grain** | The visible fiber texture of paper caused by variations in pulp density, especially noticeable on cheap duplicator stock. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform brightness. |
 | **Spirit Duplicator** | A duplicating machine (e.g., Ditto machine) that transfers aniline dye from a wax master to paper using a volatile solvent. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 238
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
 image: /img/instruments/videomancer/snapshot/snapshot_hero.png
-description: "Program guide for Snapshot, a Videomancer camera program for the LZX video synthesizer."
+description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened ..."
 ---
 
 import snapshot_before_after from '/img/instruments/videomancer/snapshot/snapshot_before_after.png';
@@ -280,15 +280,15 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation 601; the color matrix standard used to convert between RGB and YUV color spaces in standard-definition video. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **C-41** | The standard chemical process for developing color negative film; produces the familiar orange-masked negatives used in consumer photography. |
 | **Chrominance** | The color difference information in a video signal, represented as U (blue-difference) and V (red-difference) components. |
 | **Cross Processing** | Deliberately developing photographic film in chemistry intended for a different film type, producing shifted colors and increased contrast. |
 | **E-6** | The standard chemical process for developing color reversal (slide) film; produces positive transparencies. |
 | **Film Grain** | The visible clumping of light-sensitive particles in photographic emulsion, producing a textured noise pattern. |
 | **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the calculation, producing exponential-decay smoothing. |
-| **LFSR** | Linear Feedback Shift Register; a digital circuit that produces a deterministic pseudo-random binary sequence. |
-| **Luminance** | The brightness component (Y) of a YUV video signal. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Vignette** | Darkening of image corners and edges caused by optical limitations of the lens, or applied intentionally for artistic effect. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

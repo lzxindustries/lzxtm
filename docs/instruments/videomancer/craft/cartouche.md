@@ -4,7 +4,7 @@ sidebar_position: 35
 slug: /instruments/videomancer/cartouche
 title: "Cartouche"
 image: /img/instruments/videomancer/cartouche/cartouche_hero.png
-description: "Program guide for Cartouche, a Videomancer craft program for the LZX video synthesizer."
+description: "Ancient Egyptian artists did not paint pictures the way we understand them."
 ---
 
 import cartouche_hero from '/img/instruments/videomancer/cartouche/cartouche_hero.png';
@@ -278,14 +278,14 @@ These exercises explore the register system, mineral palette, and ground line se
 | Term | Definition |
 |------|------------|
 | **Boustrophedon** | A bidirectional pattern, from the Greek for "as the ox turns," in which adjacent rows run in alternating directions like an ox plowing a field. |
-| **Chrominance** | The colour-difference components of a video signal (U and V channels), encoding hue and saturation independently of brightness. |
+| **Chrominance** | The color-difference components of a video signal (U and V channels), encoding hue and saturation independently of brightness. |
 | **DDS (Direct Digital Synthesis)** | A technique using a phase accumulator and fixed increment value to generate a periodic waveform or scrolling offset digitally. |
 | **Ground line** | In Egyptian art, a painted horizontal line separating registers on which figures stand; in Cartouche, the dark brown separator drawn between horizontal bands. |
-| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV colour space. |
-| **Palette quantization** | The process of reducing a continuous-tone image to a small set of predetermined colours by mapping each pixel to the nearest palette entry. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Palette quantization** | The process of reducing a continuous-tone image to a small set of predetermined colors by mapping each pixel to the nearest palette entry. |
 | **Register (compositional)** | A horizontal band in ancient Egyptian wall painting, functioning as an independent pictorial zone separated by ground lines. |
-| **Squared luminance distance** | A colour-matching metric that compares pixel brightness to palette entries by squaring the difference, avoiding the computational cost of a square-root operation. |
+| **Squared luminance distance** | A color-matching metric that compares pixel brightness to palette entries by squaring the difference, avoiding the computational cost of a square-root operation. |
 | **VHDL** | VHSIC Hardware Description Language, used to define digital logic circuits for FPGA implementation. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

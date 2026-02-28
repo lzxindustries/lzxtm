@@ -4,7 +4,7 @@ sidebar_position: 220
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
 image: /img/instruments/videomancer/rotoscope/rotoscope_hero.png
-description: "Program guide for Rotoscope, a Videomancer quantel program for the LZX video synthesizer."
+description: "In the 1980s and 1990s, Quantel's Harry, Harriet, and Henry systems defined a generation of broadcast visual effects."
 ---
 
 import rotoscope_before_after from '/img/instruments/videomancer/rotoscope/rotoscope_before_after.png';
@@ -287,7 +287,7 @@ These exercises progress from simple motion trails to complex multi-treatment co
 | Term | Definition |
 |------|------------|
 | **Alpha Compositing** | A technique for combining images using per-pixel opacity (alpha) values, where each pixel's contribution is weighted by its transparency. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline delay storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Delay Buffer** | A FIFO memory that stores video data for later retrieval, enabling temporal displacement between layers. |
 | **Edge Trace** | A treatment mode that converts video to contour lines by computing the horizontal gradient magnitude between adjacent pixels. |
 | **Layer** | One of up to four time-delayed copies of the input video, each with independent alpha and processing treatment. |
@@ -298,4 +298,4 @@ These exercises progress from simple motion trails to complex multi-treatment co
 | **Silhouette** | A treatment mode that converts video to binary threshold shapes — pixels above threshold become solid color, below become transparent. |
 | **Tint** | A chrominance shift applied to trail layers, blending the original U/V toward a selected palette hue. |
 | **Trail** | A series of temporally delayed copies of the input video composited to create a motion echo effect. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

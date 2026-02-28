@@ -4,7 +4,7 @@ sidebar_position: 205
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
 image: /img/instruments/videomancer/polaroid/polaroid_hero.png
-description: "Program guide for Polaroid, a Videomancer camera program for the LZX video synthesizer."
+description: "Polaroid places a white border frame around the active video area, mimicking the distinctive look of instant-film prints."
 ---
 
 import polaroid_before_after from '/img/instruments/videomancer/polaroid/polaroid_before_after.png';
@@ -26,7 +26,7 @@ import polaroid_source3_kodim15_bw from '/img/instruments/videomancer/polaroid/p
 
 
 <img src={polaroid_hero} alt="Polaroid hero image"/>
-*Polaroid applying instant-film border framing and warm colour shift to transform video into nostalgic snapshots.*
+*Polaroid applying instant-film border framing and warm color shift to transform video into nostalgic snapshots.*
 <img src={polaroid_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Polaroid applied.*
 
@@ -34,11 +34,11 @@ import polaroid_source3_kodim15_bw from '/img/instruments/videomancer/polaroid/p
 
 ## Overview
 
-Polaroid places a white border frame around the active video area, mimicking the distinctive look of instant-film prints. Inside the frame, a brightness scaling control adjusts overall exposure while a warmth offset shifts the chrominance toward yellow-orange, replicating the warm colour cast typical of vintage instant-film stock.
+Polaroid places a white border frame around the active video area, mimicking the distinctive look of instant-film prints. Inside the frame, a brightness scaling control adjusts overall exposure while a warmth offset shifts the chrominance toward yellow-orange, replicating the warm color cast typical of vintage instant-film stock.
 
 The current implementation focuses on the core visual identity of the Polaroid aesthetic — the white border and warm tint. Several parameters declared in the register map (Fade, Saturation, Overexpose, Color Shift, Grain, Wide Border) are reserved for future expansion and have no effect on the output in this version. The supplement notes each unused parameter explicitly so that patch artists can focus on the controls that actually shape the image.
 
-At moderate settings, its effects are subtle — a cream-toned frame with gentle warmth. Push the Exposure knob past midpoint and the image blooms into overdriven whites; pull Warmth to maximum and the entire colour palette takes on a sepia-amber tone. The Border knob can produce anything from a thin hairline outline to a massive frame that nearly hides the picture.
+At moderate settings, its effects are subtle — a cream-toned frame with gentle warmth. Push the Exposure knob past midpoint and the image blooms into overdriven whites; pull Warmth to maximum and the entire color palette takes on a sepia-amber tone. The Border knob can produce anything from a thin hairline outline to a massive frame that nearly hides the picture.
 
 ---
 
@@ -46,7 +46,7 @@ At moderate settings, its effects are subtle — a cream-toned frame with gentle
 
 ### Instant Film and the Polaroid Aesthetic
 
-Edwin Land's instant-film process, introduced in 1948, became synonymous with a visual style: a white rectangular border (wider at the bottom on SX-70 prints) surrounding a slightly desaturated, warm-toned image. The chemical development process produced colours that drifted toward yellow-green in the shadows and amber in the highlights. This colour signature is so recognisable that "Polaroid look" has become shorthand for warm, slightly faded imagery.
+Edwin Land's instant-film process, introduced in 1948, became synonymous with a visual style: a white rectangular border (wider at the bottom on SX-70 prints) surrounding a slightly desaturated, warm-toned image. The chemical development process produced colors that drifted toward yellow-green in the shadows and amber in the highlights. This color signature is so recognizable that "Polaroid look" has become shorthand for warm, slightly faded imagery.
 
 ### Border Framing in Video
 
@@ -54,7 +54,7 @@ Adding a geometric border to a raster signal requires comparing each pixel's pos
 
 ### Warm Tint via Chrominance Offset
 
-In the YUV colour model, shifting the U channel downward and the V channel upward moves the overall hue from neutral toward yellow-orange. This is a constant offset rather than a multiplicative gain, so it affects all pixels equally regardless of their original hue. The technique is computationally inexpensive — a single subtraction on U and addition on V — and produces a convincing approximation of the warm colour drift found in instant-film chemistry.
+In the YUV color model, shifting the U channel downward and the V channel upward moves the overall hue from neutral toward yellow-orange. This is a constant offset rather than a multiplicative gain, so it affects all pixels equally regardless of their original hue. The technique is computationally inexpensive — a single subtraction on U and addition on V — and produces a convincing approximation of the warm color drift found in instant-film chemistry.
 
 ### Exposure Scaling
 
@@ -212,7 +212,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 2. Increase Warmth to ~70% for a noticeable amber cast.
 3. Reduce Exposure to ~45% to slightly darken the image, simulating the softer exposure of instant film.
 4. Observe how the white border contrasts with the warm-tinted image area.
-5. Adjust Mix to ~80% to let a hint of the original colour through.
+5. Adjust Mix to ~80% to let a hint of the original color through.
 
 **Key concepts**: Border detection replaces edge pixels with white, warmth shifts UV uniformly, exposure scales luminance linearly
 
@@ -227,12 +227,12 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 **Objective**: Use a thick border and extreme warmth to create a graphic poster effect.
 
 1. Push Border to ~90% for a massive frame that nearly envelops the image.
-2. Set Warmth to maximum (100%) for deep amber colour.
+2. Set Warmth to maximum (100%) for deep amber color.
 3. Set Exposure to ~30% to darken the image into a moody vignette-like feel.
 4. Compare with Bypass to see the original — toggle Switch 11.
 5. Pull Mix down to ~50% to blend the framed look with the raw signal.
 
-**Key concepts**: Large border values consume most of the 1280×720 frame, warmth at maximum shifts colour dramatically, mix blending softens aggressive effects
+**Key concepts**: Large border values consume most of the 1280×720 frame, warmth at maximum shifts color dramatically, mix blending softens aggressive effects
 
 ---
 
@@ -240,7 +240,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 <img src={polaroid_exercise3_result} alt="Neutral Frame with Full Brightness result"/>
 *Neutral Frame with Full Brightness — simulated result across source images.*
-**Source**: Any video source — the focus is on the border framing without colour alteration.
+**Source**: Any video source — the focus is on the border framing without color alteration.
 
 **Objective**: Isolate the border effect from the tinting to understand each component independently.
 
@@ -248,7 +248,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 2. Set Warmth to 0% for neutral chroma.
 3. Set Border to ~40% for a moderate frame width.
 4. Observe the clean white frame with untinted image content.
-5. Slowly increase Warmth from 0% to 100% and watch the colour shift independently of framing.
+5. Slowly increase Warmth from 0% to 100% and watch the color shift independently of framing.
 6. Reverse: set Warmth to 50%, then sweep Exposure from 0% to 100% to see brightness scaling alone.
 
 **Key concepts**: Exposure and warmth are independent processing stages, border detection is purely positional, white frame value is fixed at Y=960
@@ -272,11 +272,11 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 | Term | Definition |
 |------|------------|
 | **Border Detection** | Comparing pixel coordinates against threshold values to determine whether a pixel falls inside a frame margin. |
-| **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
+| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Chrominance Offset** | Adding or subtracting a constant from the U and V channels to shift the overall hue. |
-| **Interpolator** | A linear crossfade module that blends two signals based on a mix parameter, used for wet/dry control. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of absolute differences along each axis; used (but not applied) for the vignette calculation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Saturating Arithmetic** | Arithmetic that clamps results to a valid range instead of wrapping around on overflow or underflow. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

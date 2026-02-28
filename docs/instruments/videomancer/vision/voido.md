@@ -4,7 +4,7 @@ sidebar_position: 280
 slug: /instruments/videomancer/voido
 title: "Voido"
 image: /img/instruments/videomancer/voido/voido_hero.png
-description: "Program guide for Voido, a Videomancer vision program for the LZX video synthesizer."
+description: "Early television chromakey — known at the BBC as Color Separation Overlay (CSO) — was a crude but effective technique."
 ---
 
 import voido_before_after from '/img/instruments/videomancer/voido/voido_before_after.png';
@@ -34,7 +34,7 @@ import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_so
 
 ## Overview
 
-Early television chromakey — known at the BBC as Colour Separation Overlay (CSO) — was a crude but effective technique. A camera pointed at a performer standing in front of a uniformly colored backdrop; an analog circuit compared each pixel's hue to a reference, and wherever the hue matched, the pixel was replaced with a second video source. The system was imprecise. Edges tore and flickered, the key color bled into foreground skin tones, and the threshold between "in" and "out" wobbled with lighting changes. Voido recreates this experience faithfully.
+Early television chromakey — known at the BBC as Color Separation Overlay (CSO) — was a crude but effective technique. A camera pointed at a performer standing in front of a uniformly colored backdrop; an analog circuit compared each pixel's hue to a reference, and wherever the hue matched, the pixel was replaced with a second video source. The system was imprecise. Edges tore and flickered, the key color bled into foreground skin tones, and the threshold between "in" and "out" wobbled with lighting changes. Voido recreates this experience faithfully.
 
 The name *Voido* is a play on *video* and *void* — the empty space left behind when the key removes the background. The program operates entirely in the hue domain: it extracts an approximate hue angle from the U/V chroma channels using an octant-plus-ratio atan2 approximation, computes the circular distance to a user-selected key hue, and generates a soft or hard key signal. Foreground pixels are despilled to remove contamination from the key color, while keyed regions are filled with one of four selectable patterns — a flat matte, horizontal bars, a color ramp, or a grid. An artifact generator adds LFSR-driven noise and slew-rate limiting to the key signal, replicating the edge tearing and hysteresis of vintage CSO hardware.
 
@@ -44,9 +44,9 @@ At clean settings Voido is a functional chromakey — usable for real compositin
 
 ## Background
 
-### BBC Colour Separation Overlay
+### BBC Color Separation Overlay
 
-Colour Separation Overlay (CSO) was the BBC's name for their chromakey system, first used in production in the late 1960s. Unlike American systems that typically keyed on blue, the BBC's CSO could key on any saturated color, though yellow and green were most common for Doctor Who-era effects. The circuit compared the amplitude and phase of the chrominance signal to a reference, producing a switching signal that selected between two video inputs on a pixel-by-pixel basis. Early CSO was notoriously temperamental — uneven lighting, wrinkled backdrops, and reflective costumes all caused the key to break down, producing the characteristic "halo" and "tearing" artifacts visible in 1970s BBC productions.
+Color Separation Overlay (CSO) was the BBC's name for their chromakey system, first used in production in the late 1960s. Unlike American systems that typically keyed on blue, the BBC's CSO could key on any saturated color, though yellow and green were most common for Doctor Who-era effects. The circuit compared the amplitude and phase of the chrominance signal to a reference, producing a switching signal that selected between two video inputs on a pixel-by-pixel basis. Early CSO was notoriously temperamental — uneven lighting, wrinkled backdrops, and reflective costumes all caused the key to break down, producing the characteristic "halo" and "tearing" artifacts visible in 1970s BBC productions.
 
 ### Hue-Domain Keying
 
@@ -235,7 +235,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 *Vintage BBC CSO Artifacts — simulated result across source images.*
 **Source**: Same green-screen footage as Exercise 1, or any keyed material.
 
-**Objective**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Colour Separation Overlay.
+**Objective**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Color Separation Overlay.
 
 1. **Start clean**: Begin with the clean key from Exercise 1.
 2. **Add artifacts**: Slowly increase Artifact from 0% to about 50%. Watch the key edges begin to tear and flicker with noise.
@@ -289,12 +289,12 @@ These exercises progress from basic chromakeying through creative artifact gener
 | **Artifact** | Deliberate imperfections added to the key signal to replicate the edge behavior of vintage chromakey hardware. |
 | **Chroma Magnitude** | The length of the UV vector; larger values indicate more saturated color. Used by the saturation gate to exclude desaturated pixels. |
 | **Chromakey** | The technique of replacing pixels matching a specific key color with an alternate video source or fill pattern. |
-| **CSO** | Colour Separation Overlay; the BBC's term for their chromakey system, used from the late 1960s through the 1980s. |
+| **CSO** | Color Separation Overlay; the BBC's term for their chromakey system, used from the late 1960s through the 1980s. |
 | **Despill** | Removing contamination of the key color from foreground pixels by subtracting the key-hue UV component. |
 | **Fill** | The video content displayed in keyed-out regions; Voido provides four built-in patterns. |
 | **Hard Key** | A binary key mode where pixels are either fully keyed or fully unkeyed, with no intermediate values. |
 | **Hue Angle** | The angular direction of the UV chroma vector, representing the pure color (red, green, blue, etc.) independent of saturation. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator used to produce noise for the artifact stage. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Octant** | One of eight 45° sectors used in the atan2 approximation to extract hue angle from U/V coordinates. |
 | **Slew Rate** | The maximum speed at which the key signal can change between adjacent pixels; limiting slew rate produces gradual transitions and tearing. |
 | **Soft Key** | A key mode with linear ramp transitions at edges, producing smooth, anti-aliased boundaries between foreground and fill. |

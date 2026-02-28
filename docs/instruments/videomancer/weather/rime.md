@@ -4,7 +4,7 @@ sidebar_position: 218
 slug: /instruments/videomancer/rime
 title: "Rime"
 image: /img/instruments/videomancer/rime/rime_hero.png
-description: "Program guide for Rime, a Videomancer weather program for the LZX video synthesizer."
+description: "In 1885, a Vermont farmer named Wilson Bentley attached a bellows camera to a compound microscope and captured the first photomicrograph of a snowflake."
 ---
 
 import rime_before_after from '/img/instruments/videomancer/rime/rime_before_after.png';
@@ -281,14 +281,14 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 | Term | Definition |
 |------|------------|
 | **Alpha Compositing** | Blending two image layers using a transparency value (alpha) to control the contribution of each layer. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the crystal field storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Dendrite** | A branching, tree-like crystal growth pattern produced by diffusion-limited aggregation. |
 | **DLA** | Diffusion-Limited Aggregation; a growth model where particles aggregate on contact with an existing cluster, producing branching dendritic structures. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing pseudo-random sequences. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Nucleation** | The initial formation of a crystal seed point from which further growth propagates. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sector Mapping** | Folding screen coordinates into a canonical wedge region to enforce rotational symmetry in the rendered pattern. |
 | **Six-Fold Symmetry** | The rotational symmetry of ice crystals, where the pattern repeats every 60 degrees around the central axis. |
 | **Vblank** | Vertical blanking interval; the period between video frames when no active pixels are displayed, used here for the growth engine scan. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

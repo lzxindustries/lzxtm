@@ -4,7 +4,7 @@ sidebar_position: 91
 slug: /instruments/videomancer/facet
 title: "Facet"
 image: /img/instruments/videomancer/facet/facet_hero.png
-description: "Program guide for Facet, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Most video effects blur, bend, or color-grade a continuous image."
 ---
 
 import facet_hero from '/img/instruments/videomancer/facet/facet_hero.png';
@@ -278,17 +278,17 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R BT.601; the color encoding standard used by Videomancer's YUV pipeline for standard-definition video. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Cell** | A rectangular region of the frame defined by the cell grid; each cell displays either a flat-shaded sample or the live input depending on mode. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A linear blending unit (lerp) used for the wet/dry mix stage; three instances blend Y, U, and V independently. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Mosaic** | A spatial effect that replaces groups of pixels with uniform blocks, reducing spatial resolution. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Sample-and-Hold** | A technique that captures a signal value at a specific moment and holds it constant until the next capture event. |
 | **Tessellation** | The division of a surface into tiles (cells) that cover it without gaps or overlaps. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **Zero-Order Hold** | A signal reconstruction method that holds each sample constant until the next sample arrives, producing a staircase waveform. |
 
 ---

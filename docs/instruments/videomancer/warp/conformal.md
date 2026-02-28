@@ -4,7 +4,7 @@ sidebar_position: 54
 slug: /instruments/videomancer/conformal
 title: "Conformal"
 image: /img/instruments/videomancer/conformal/conformal_hero.png
-description: "Program guide for Conformal, a Videomancer warp program for the LZX video synthesizer."
+description: "Mathematics is full of functions that preserve angles — and in the complex plane, those functions transform images in ways that are surprising, beautifu..."
 ---
 
 import conformal_hero from '/img/instruments/videomancer/conformal/conformal_hero.png';

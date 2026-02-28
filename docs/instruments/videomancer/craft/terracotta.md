@@ -4,7 +4,7 @@ sidebar_position: 260
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
 image: /img/instruments/videomancer/terracotta/terracotta_hero.png
-description: "Program guide for Terracotta, a Videomancer craft program for the LZX video synthesizer."
+description: "The Terracotta Army of Emperor Qin Shi Huang contains over eight thousand life-sized warriors, no two of them identical."
 ---
 
 import terracotta_before_after from '/img/instruments/videomancer/terracotta/terracotta_before_after.png';
@@ -283,16 +283,16 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA. Terracotta uses zero BRAM — all operations are combinational. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Combinational** | Logic that produces output purely from current inputs, without memory elements or clock-dependent state. |
 | **Earth Tone** | A warm, desaturated YUV color (Y=560, U=460, V=580) resembling fired clay. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Grid Line** | A rendered dark bar at tile boundaries with fixed color (Y=180, U=500, V=520). |
-| **Interpolator** | A linear interpolation module used for wet/dry crossfade mixing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Look-Up Table; the basic logic element of an FPGA, used here for division, modulo, and XOR. |
 | **Modular Arithmetic** | Division and modulo operations that remap pixel coordinates into repeating tile coordinates. |
-| **Pipeline** | Sequential processing stages executing on consecutive clock cycles. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Running Bond** | A brick laying pattern where alternating courses are offset by half a brick width. |
 | **Stagger** | Horizontal offset of odd rows by half a tile width, producing a brick layout. |
 | **XOR Hash** | A bitwise exclusive-OR function used to generate deterministic per-tile variation signatures. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout Videomancer. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

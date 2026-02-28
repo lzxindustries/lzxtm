@@ -4,7 +4,7 @@ sidebar_position: 210
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero.png
-description: "Program guide for Radiant, a Videomancer fairlight program for the LZX video synthesizer."
+description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites wi..."
 ---
 
 import radiant_before_after from '/img/instruments/videomancer/radiant/radiant_before_after.png';
@@ -34,7 +34,7 @@ import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/rad
 
 ## Overview
 
-Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal. The effect is inspired by the Fairlight CVI's colour wash modes — procedural gradient generation that interacts with live imagery to produce color fields, spotlight effects, and pulsing radial animations.
+Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal. The effect is inspired by the Fairlight CVI's color wash modes — procedural gradient generation that interacts with live imagery to produce color fields, spotlight effects, and pulsing radial animations.
 
 The program computes an octagonal distance approximation from each pixel to the center point, then maps that distance through a scrolling color palette to determine ring hue and brightness. The distance-to-color mapping wraps cyclically, producing repeating bands of color that appear to expand or contract when the frame scroll DDS advances. Three `interpolator_u` instances handle the wet/dry crossfade. The entire pipeline uses zero BRAM — all color generation is procedural, computed per-pixel from distance, hue wheel position, and saturation scaling.
 

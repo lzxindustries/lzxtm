@@ -4,7 +4,7 @@ sidebar_position: 72
 slug: /instruments/videomancer/diorama
 title: "Diorama"
 image: /img/instruments/videomancer/diorama/diorama_hero.png
-description: "Program guide for Diorama, a Videomancer craft program for the LZX video synthesizer."
+description: "A Victorian diorama is a miniature theater — layers of painted scenery stacked at different distances from the viewer, lit from behind so that near laye..."
 ---
 
 import diorama_hero from '/img/instruments/videomancer/diorama/diorama_hero.png';
@@ -288,18 +288,18 @@ These exercises progress from basic depth classification through atmospheric fog
 |------|------------|
 | **Atmospheric Perspective** | The visual phenomenon where distant objects appear lighter, bluer, and less saturated due to light scattering through intervening air. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space; distinct from luminance. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Depth Factor** | A per-pixel value (0–1023) computed from luminance, representing relative distance from the viewer; 0 = near, 1023 = far. |
 | **Desaturation** | Reducing the intensity of color components toward the neutral midpoint, making the image appear more gray. |
 | **Fog Blending** | Linear interpolation between the pixel color and a fog color, controlled by a depth-dependent blend factor. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two input values based on a third control value. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Phase Accumulator** | A register that increments by a fixed step each clock cycle, wrapping around to create a periodic ramp; the core of DDS. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **Zone Classification** | The process of assigning each pixel to a depth zone (near, mid, or far) based on its luminance value relative to threshold parameters. |
 
 ---

@@ -4,7 +4,7 @@ sidebar_position: 47
 slug: /instruments/videomancer/chrome
 title: "Chrome"
 image: /img/instruments/videomancer/chrome/chrome_hero.png
-description: "Program guide for Chrome, a Videomancer color program for the LZX video synthesizer."
+description: "There is a particular quality to chrome — the way it swallows the world around it and hands it back distorted, compressed, impossibly bright."
 ---
 
 import chrome_hero from '/img/instruments/videomancer/chrome/chrome_hero.png';
@@ -29,7 +29,7 @@ import chrome_exercise3_result from '/img/instruments/videomancer/chrome/chrome_
 
 There is a particular quality to chrome — the way it swallows the world around it and hands it back distorted, compressed, impossibly bright. Every highlight is a small sun; every shadow is an abyss. The midtones barely exist. Chrome is a program that chases that quality: it takes ordinary video and remaps its luminance through a sigmoid S-curve that stretches highlights and shadows apart while crushing everything in between. The result is a signal that behaves like a polished reflective surface — hard, glossy, and unforgiving.
 
-The processing chain reinforces the metallurgical metaphor at every stage. After the S-curve compresses the tonal range, a desaturation stage drains colour toward monochrome — because real chrome reflects the world in silver, not in Technicolor. A spatial blur softens fine detail into the kind of broad, flowing gradients you see on the curved surface of a bumper or a trumpet bell. An additive bloom stage lifts the brightest regions into a white glow that spills across adjacent pixels, simulating the overexposure halation that cameras produce when pointed at specular highlights. Finally, a tint stage re-introduces colour — not the source colour, but a uniform metallic hue selected by the operator or by one of four preset metals: chrome silver, gold, copper, or steel blue.
+The processing chain reinforces the metallurgical metaphor at every stage. After the S-curve compresses the tonal range, a desaturation stage drains color toward monochrome — because real chrome reflects the world in silver, not in Technicolor. A spatial blur softens fine detail into the kind of broad, flowing gradients you see on the curved surface of a bumper or a trumpet bell. An additive bloom stage lifts the brightest regions into a white glow that spills across adjacent pixels, simulating the overexposure halation that cameras produce when pointed at specular highlights. Finally, a tint stage re-introduces color — not the source color, but a uniform metallic hue selected by the operator or by one of four preset metals: chrome silver, gold, copper, or steel blue.
 
 At conservative settings — gentle curve, moderate desaturation, a whisper of bloom — Chrome is a subtle grading tool that gives footage a polished, editorial sheen. At extremes — hard sigmoid, full desaturation, heavy bloom, deep gold tint — it transforms any input into the liquid-metal title cards and chrome logos that defined the visual language of 1980s broadcast graphics. The name is literal: this program makes video look like chrome.
 
@@ -51,11 +51,11 @@ In film compositing and visual effects, "bloom" refers to the optical phenomenon
 
 ### Chroma Tinting for Metal Simulation
 
-Real metals have characteristic colours. Silver and chrome are achromatic — they reflect the spectral content of the illuminant without tinting it. Gold shifts reflected light toward warm yellow (lower U, higher V in the YUV domain). Copper is warmer still, pushing toward red-orange. Steel introduces a cool blue bias. Chrome's tint stage adds signed offsets to the U and V chroma channels after the luminance processing is complete. The Tint U and Tint V knobs allow free-form colour placement anywhere on the UV plane, while the Metal and Preset toggles override the manual tint with four calibrated presets matching the spectral characteristics of these four metals. The combination of desaturation (removing original colour) and re-tinting (adding metallic colour) is the same workflow used in colour grading suites to create "bleach bypass" and "teal-and-orange" looks.
+Real metals have characteristic colors. Silver and chrome are achromatic — they reflect the spectral content of the illuminant without tinting it. Gold shifts reflected light toward warm yellow (lower U, higher V in the YUV domain). Copper is warmer still, pushing toward red-orange. Steel introduces a cool blue bias. Chrome's tint stage adds signed offsets to the U and V chroma channels after the luminance processing is complete. The Tint U and Tint V knobs allow free-form color placement anywhere on the UV plane, while the Metal and Preset toggles override the manual tint with four calibrated presets matching the spectral characteristics of these four metals. The combination of desaturation (removing original color) and re-tinting (adding metallic color) is the same workflow used in color grading suites to create "bleach bypass" and "teal-and-orange" looks.
 
 ### Real-Time Reflective Surface Processing
 
-Simulating reflective surfaces in real-time video is a problem that sits at the intersection of image processing and material science. Chrome's approach is deliberately approximate — it does not ray-trace reflections or model surface geometry. Instead, it exploits the fact that the human visual system interprets certain tonal and spatial cues as "metallic": extreme contrast, compressed midtones, spatial coherence (blur), specular bloom, and achromatic or single-hue colouring. By chaining these cues together in a single pipeline, Chrome creates a convincing metallic impression from any video source. The technique is related to the "matcap" (material capture) approach used in real-time 3D rendering, where a pre-photographed sphere of a material is used to shade arbitrary geometry — here, the "material" is applied not to geometry but to the luminance structure of the video signal itself.
+Simulating reflective surfaces in real-time video is a problem that sits at the intersection of image processing and material science. Chrome's approach is deliberately approximate — it does not ray-trace reflections or model surface geometry. Instead, it exploits the fact that the human visual system interprets certain tonal and spatial cues as "metallic": extreme contrast, compressed midtones, spatial coherence (blur), specular bloom, and achromatic or single-hue coloring. By chaining these cues together in a single pipeline, Chrome creates a convincing metallic impression from any video source. The technique is related to the "matcap" (material capture) approach used in real-time 3D rendering, where a pre-photographed sphere of a material is used to shade arbitrary geometry — here, the "material" is applied not to geometry but to the luminance structure of the video signal itself.
 
 
 ---
@@ -102,7 +102,7 @@ Input Video (YUV 4:4:4, 30-bit)
      └─ Bypass mux: processed or delayed original
 ```
 
-The processing chain is strictly serial: every pixel passes through every stage in order, with the optional stages (Invert, Smooth) gated by their respective toggle switches. The S-curve LUT is the tonal engine — it defines the "chrome" character by compressing midtones and expanding the extremes. Everything downstream refines the illusion: desaturation removes the source's original colour identity, blur dissolves fine detail into flowing metallic gradients, bloom adds specular glow, and tint re-introduces colour in the narrow, uniform-hue palette that the eye reads as "metal." The Metal and Preset toggles interact as a 2-bit selector across four calibrated metal types, but they can be overridden at any time by manual Tint U/V adjustment.
+The processing chain is strictly serial: every pixel passes through every stage in order, with the optional stages (Invert, Smooth) gated by their respective toggle switches. The S-curve LUT is the tonal engine — it defines the "chrome" character by compressing midtones and expanding the extremes. Everything downstream refines the illusion: desaturation removes the source's original color identity, blur dissolves fine detail into flowing metallic gradients, bloom adds specular glow, and tint re-introduces color in the narrow, uniform-hue palette that the eye reads as "metal." The Metal and Preset toggles interact as a 2-bit selector across four calibrated metal types, but they can be overridden at any time by manual Tint U/V adjustment.
 
 ---
 
@@ -131,7 +131,7 @@ The Curve knob controls the steepness of the sigmoid S-curve stored in BRAM. At 
 | Default | 50% |
 | Suffix | % |
 
-The Desat knob controls the desaturation amount — a linear interpolation between the original U and V chroma values and the neutral midpoint (512). At 0%, the source colour is fully preserved; the chrome effect is applied to luminance only, producing a high-contrast but still colourful image. At 100%, all chroma is removed and the image is pure monochrome before the tint stage. For convincing metallic looks, desaturation should be set high (75%+), because real polished metal surfaces reflect light without adding colour of their own. Partial desaturation (30–50%) creates an interesting hybrid where vestiges of the original colour bleed through the metallic sheen.
+The Desat knob controls the desaturation amount — a linear interpolation between the original U and V chroma values and the neutral midpoint (512). At 0%, the source color is fully preserved; the chrome effect is applied to luminance only, producing a high-contrast but still colorful image. At 100%, all chroma is removed and the image is pure monochrome before the tint stage. For convincing metallic looks, desaturation should be set high (75%+), because real polished metal surfaces reflect light without adding color of their own. Partial desaturation (30–50%) creates an interesting hybrid where vestiges of the original color bleed through the metallic sheen.
 
 ---
 
@@ -164,7 +164,7 @@ The Bloom knob scales the intensity of the additive highlight glow. The bloom pa
 | Default | 50% |
 | Suffix | % |
 
-The Tint U knob adds a signed offset to the U chroma channel after all luminance processing is complete. At the centre position (512), no tint is applied. Below 512, U shifts negative (toward blue-cyan); above 512, U shifts positive (toward red-yellow). This control is overridden when the Metal or Preset toggles select a calibrated preset, but returns to manual operation when the toggles are in a state that does not define a preset value for U. Combined with Tint V, this provides full free-form placement of the metallic hue anywhere on the UV colour plane.
+The Tint U knob adds a signed offset to the U chroma channel after all luminance processing is complete. At the centre position (512), no tint is applied. Below 512, U shifts negative (toward blue-cyan); above 512, U shifts positive (toward red-yellow). This control is overridden when the Metal or Preset toggles select a calibrated preset, but returns to manual operation when the toggles are in a state that does not define a preset value for U. Combined with Tint V, this provides full free-form placement of the metallic hue anywhere on the UV color plane.
 
 ---
 
@@ -175,7 +175,7 @@ The Tint U knob adds a signed offset to the U chroma channel after all luminance
 | Default | 0° |
 | Suffix | ° |
 
-The Tint V knob adds a signed offset to the V chroma channel. At centre (512), no tint. Below 512, V shifts negative (toward green); above 512, V shifts positive (toward magenta-red). For gold, you want low U and high V (warm yellow). For copper, push V even higher and U slightly lower (warm red-orange). For steel blue, raise U and lower V (cool blue). The Metal and Preset toggles provide calibrated starting points for each of these metals, but the Tint U/V knobs allow infinite fine-tuning — or completely novel metallic colours that don't correspond to any real-world alloy.
+The Tint V knob adds a signed offset to the V chroma channel. At centre (512), no tint. Below 512, V shifts negative (toward green); above 512, V shifts positive (toward magenta-red). For gold, you want low U and high V (warm yellow). For copper, push V even higher and U slightly lower (warm red-orange). For steel blue, raise U and lower V (cool blue). The Metal and Preset toggles provide calibrated starting points for each of these metals, but the Tint U/V knobs allow infinite fine-tuning — or completely novel metallic colors that don't correspond to any real-world alloy.
 
 ---
 
@@ -189,7 +189,7 @@ The Tint V knob adds a signed offset to the V chroma channel. At centre (512), n
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggles 7 and 8 (Metal, Preset) form a 2-bit selector across four metallic tint presets. Metal selects between cool and warm base tones; Preset selects between two variants within each temperature. The four combinations are: Metal=Chrome + Preset=Copper → Chrome silver (U=512, V=512, neutral); Metal=Chrome + Preset=Steel → Steel blue (U≈540, V≈480, cool); Metal=Gold + Preset=Copper → Copper (U≈440, V≈580, warm orange); Metal=Gold + Preset=Steel → Gold (U≈460, V≈560, warm yellow). The presets override the manual Tint U/V knob positions, providing instant recall of calibrated metal colours. The manual knobs can still be used as a starting point if you disengage the presets by experiment.
+Toggles 7 and 8 (Metal, Preset) form a 2-bit selector across four metallic tint presets. Metal selects between cool and warm base tones; Preset selects between two variants within each temperature. The four combinations are: Metal=Chrome + Preset=Copper → Chrome silver (U=512, V=512, neutral); Metal=Chrome + Preset=Steel → Steel blue (U≈540, V≈480, cool); Metal=Gold + Preset=Copper → Copper (U≈440, V≈580, warm orange); Metal=Gold + Preset=Steel → Gold (U≈460, V≈560, warm yellow). The presets override the manual Tint U/V knob positions, providing instant recall of calibrated metal colors. The manual knobs can still be used as a starting point if you disengage the presets by experiment.
 
 Toggle 9 (Smooth) adds a secondary low-pass filter after the main processing chain, further softening the output. This is useful when the S-curve has introduced harsh tonal transitions that the primary Blur stage didn't fully dissolve. Toggle 10 (Invert) flips the luminance before the S-curve, producing a negative-chrome look where shadows become highlights and vice versa — the metallic aesthetic is preserved but the tonal polarity is reversed, creating dark chrome or shadow-metal effects. Toggle 11 (Bypass) routes the delayed original signal directly to the output, bypassing all processing and the wet/dry mix.
 
@@ -245,7 +245,7 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 4. **Bloom interaction**: Now increase Curve slightly. Notice how a steeper curve pushes more pixels above the bloom threshold, increasing the glow even without touching the Bloom knob.
 5. **Smooth finish**: Toggle Smooth on. The hard sigmoid transitions soften into flowing curves — the difference between hammered gold and liquid gold.
 
-**Key concepts**: Desaturation removes source colour so the tint defines the metal. Bloom creates specular glow. The S-curve and bloom interact — steeper curves increase visible bloom. Smooth softens hard tonal edges.
+**Key concepts**: Desaturation removes source color so the tint defines the metal. Bloom creates specular glow. The S-curve and bloom interact — steeper curves increase visible bloom. Smooth softens hard tonal edges.
 
 ---
 
@@ -255,15 +255,15 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 *Dark Chrome and Mixed Metals — simulated result across source images.*
 **Source**: High-contrast footage with strong silhouettes — architecture against sky, backlit figures, or stark graphic patterns.
 
-**Objective**: Use the Invert toggle and manual tinting to create negative-chrome and custom metallic colour effects.
+**Objective**: Use the Invert toggle and manual tinting to create negative-chrome and custom metallic color effects.
 
 1. **Standard chrome**: Set Curve ~70%, Desat ~90%, Blur ~20%, Bloom ~30%. Metal=Chrome, Preset=Copper (neutral silver). Confirm a solid chrome look.
 2. **Invert for dark chrome**: Toggle Invert on. The tonal polarity reverses — dark areas become bright chrome, bright areas become shadow. The metallic character is preserved but the mood changes completely.
 3. **Steel blue**: With Invert still on, switch Metal to Chrome, Preset to Steel. The dark-chrome look acquires a cool blue tint — like brushed stainless steel in shadow.
-4. **Custom alloy**: Disable both Metal/Preset presets by setting Metal=Chrome, Preset=Copper (neutral), then manually adjust Tint U and Tint V to create a custom metallic colour — try pushing Tint V high and Tint U low for a magenta-bronze.
+4. **Custom alloy**: Disable both Metal/Preset presets by setting Metal=Chrome, Preset=Copper (neutral), then manually adjust Tint U and Tint V to create a custom metallic color — try pushing Tint V high and Tint U low for a magenta-bronze.
 5. **Blend**: Lower Mix to ~40% to let the original source texture show through the metallic overlay.
 
-**Key concepts**: Invert reverses tonal polarity before the S-curve, creating dark-chrome/black-mirror effects. Manual Tint U/V allows custom metallic colours beyond the four presets. Low Mix values create metallic overlays rather than full replacements.
+**Key concepts**: Invert reverses tonal polarity before the S-curve, creating dark-chrome/black-mirror effects. Manual Tint U/V allows custom metallic colors beyond the four presets. Low Mix values create metallic overlays rather than full replacements.
 
 ---
 
@@ -271,11 +271,11 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 ## Tips
 
 - **Start with the curve**: The S-curve is the foundation of every chrome look. Dial it in first, then add desaturation, blur, bloom, and tint as refinements. A good curve makes the rest of the chain sing.
-- **Desaturation before tinting**: For convincing metallics, desaturate heavily (80%+) before applying tint. Residual source colour fights with the metallic hue and breaks the illusion.
+- **Desaturation before tinting**: For convincing metallics, desaturate heavily (80%+) before applying tint. Residual source color fights with the metallic hue and breaks the illusion.
 - **Bloom follows Curve**: The bloom intensity is coupled to the S-curve steepness because a steeper curve pushes more pixels above the bloom threshold. Use them as a pair — if you want more bloom, sometimes increasing Curve is more natural than increasing Bloom directly.
 - **Smooth for liquid, off for brushed**: The Smooth toggle is the difference between liquid mercury and brushed aluminium. Engage it for flowing, organic chrome; leave it off for harder, more industrial textures.
 - **Invert for dark chrome**: The Invert toggle before the S-curve creates an entirely different mood — dark regions become mirror-bright, producing black-mirror and shadow-chrome effects that pair well with Steel or custom cool tints.
-- **Custom metals via Tint U/V**: The four Metal/Preset combinations cover the most common metals, but the Tint U and Tint V knobs unlock any colour on the UV plane. Try turquoise chrome (high U, low V) or rose gold (moderate U decrease, high V) for metallic colours that don't exist in nature.
+- **Custom metals via Tint U/V**: The four Metal/Preset combinations cover the most common metals, but the Tint U and Tint V knobs unlock any color on the UV plane. Try turquoise chrome (high U, low V) or rose gold (moderate U decrease, high V) for metallic colors that don't exist in nature.
 - **Mix as a grading tool**: Rather than committing to full chrome at 100% Mix, blend at 20–40% to add a metallic sheen to the original footage. This is the editorial-chrome look — polished and glossy without losing the source entirely.
 - **Feedback loops**: Route Chrome's output back to its input through an external feedback path. The S-curve re-applies to the already-curved signal, compounding the contrast until the image is pure black-and-white metallic relief — endlessly polished.
 
@@ -287,16 +287,16 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 |------|------------|
 | **Bloom** | An optical phenomenon where bright regions of an image bleed light into adjacent pixels, simulating camera halation from specular highlights. |
 | **Box filter** | A spatial averaging filter that replaces each pixel with the mean of its neighbors within a rectangular kernel, used for Chrome's blur stage. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Desaturation** | Reduction of color intensity by interpolating chroma values toward the neutral midpoint, removing the source's original color identity. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Halation** | The spreading of light beyond its proper boundary in a camera or film, producing a soft glow around bright highlights. |
-| **Interpolator** | A hardware module that performs linear blending between two signals, used for wet/dry mix crossfading. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Look-Up Table; a pre-computed array stored in BRAM that maps each 10-bit input luminance value to its sigmoid-remapped output. |
 | **Matcap** | Material capture; a real-time rendering technique that applies a pre-photographed material appearance to arbitrary geometry, conceptually related to Chrome's approach of applying metallic tonal characteristics to video. |
 | **Sigmoid** | An S-shaped mathematical curve that maps input values through steep transitions at the extremes and a compressed plateau in the middle, the core transfer function of the chrome effect. |
 | **Specular highlight** | A bright, mirror-like reflection from a smooth surface, the dominant visual cue that Chrome's pipeline reproduces. |
 | **UV plane** | The two-dimensional chroma space defined by the U and V components of the YUV color model, where hue and saturation are represented as angular position and radial distance. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

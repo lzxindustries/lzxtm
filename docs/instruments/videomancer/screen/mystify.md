@@ -4,7 +4,7 @@ sidebar_position: 175
 slug: /instruments/videomancer/mystify
 title: "Mystify"
 image: /img/instruments/videomancer/mystify/mystify_hero.png
-description: "Program guide for Mystify, a Videomancer screen program for the LZX video synthesizer."
+description: "In 1992, Microsoft shipped Windows 3.1 with a set of screensavers that became cultural artifacts of the early personal computing era."
 ---
 
 import mystify_animation from '/img/instruments/videomancer/mystify/mystify_animation.gif';
@@ -307,7 +307,7 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 | **Cross product** | The 2D cross product $(B-A) \times (P-A)$ measures the signed area of the parallelogram formed by two vectors; its magnitude is proportional to the perpendicular distance from point P to line AB. |
 | **Hard key** | A compositing mode where the source pixel completely replaces the destination when the source has non-zero brightness. No blending or transparency. |
 | **Hue wheel** | A circular color space divided into segments; Mystify uses a 6-segment wheel (red, yellow, green, cyan, blue, magenta) with abrupt transitions. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator using XOR-based feedback. Mystify uses a 16-bit LFSR with seed 0xD1CE for vertex initialization. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Screensaver** | A program originally designed to prevent CRT phosphor burn-in by displaying moving images when the computer was idle; became one of the earliest forms of mainstream generative art. |
 | **Trail buffer** | A register-based ring buffer storing previous vertex positions. Unlike framebuffer-based trails, this approach re-rasterizes all trail copies every frame. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

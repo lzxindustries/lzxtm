@@ -4,7 +4,7 @@ sidebar_position: 182
 slug: /instruments/videomancer/oilslick
 title: "Oilslick"
 image: /img/instruments/videomancer/oilslick/oilslick_hero.png
-description: "Program guide for Oilslick, a Videomancer optics program for the LZX video synthesizer."
+description: "Oil on water shimmers because the film is thin enough that light reflecting off its top and bottom surfaces interferes constructively at different wavel..."
 ---
 
 import oilslick_before_after from '/img/instruments/videomancer/oilslick/oilslick_before_after.png';
@@ -279,14 +279,14 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the color space standard used by Videomancer's YUV pipeline, defining the matrix for converting between RGB and YUV. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chrominance** | The color-difference components (U and V) of a YUV signal, encoding hue and saturation relative to the neutral axis. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator and mapping the result to an output function. |
-| **Interpolator** | A linear blending circuit that crossfades between two input values based on a mix parameter; used here for wet/dry mixing. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Iridescence** | The phenomenon where apparent color changes with viewing angle or surface geometry, caused by thin-film interference or diffraction. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values, used in FPGA for function evaluation. |
 | **Phase Accumulator** | A register that increments by a configurable step on each cycle, wrapping at its maximum value to create a repeating ramp. |
 | **Thin-Film Interference** | Constructive and destructive interference of light waves reflecting off the top and bottom surfaces of a thin transparent layer. |
 | **Triangle Wave** | A periodic waveform with linear ascending and descending ramps, produced by folding a sawtooth ramp at its midpoint. |
 | **XOR** | Exclusive OR; a bitwise operation that outputs 1 when inputs differ, used here to create fractal-like spatial modulation patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 195
 slug: /instruments/videomancer/perlin
 title: "Perlin"
 image: /img/instruments/videomancer/perlin/perlin_hero.png
-description: "Program guide for Perlin, a Videomancer render program for the LZX video synthesizer."
+description: "In 1983, Ken Perlin invented a noise function to add naturalistic texture to computer-generated imagery for the film Tron."
 ---
 
 import perlin_animation from '/img/instruments/videomancer/perlin/perlin_animation.gif';
@@ -294,16 +294,16 @@ These exercises explore the noise generator's controls from basic static texture
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the standard for analog-to-digital conversion of SD video, defining the YUV color matrix used throughout Videomancer. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a fixed rate each clock cycle. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Domain Warp** | Feeding the output of a noise function back into its coordinate inputs, creating self-referential distortion that produces turbulent, swirling patterns. |
 | **fBm** | Fractional Brownian motion; summing multiple octaves of noise at increasing frequency and decreasing amplitude to create fractal textures with detail at multiple scales. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Gradient Noise** | A noise algorithm that assigns random gradient vectors to grid vertices and computes dot products with displacement vectors, producing smoother results than value noise. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Octave** | In noise synthesis, one layer of noise at a specific frequency. Multiple octaves are summed to create fractal detail. |
 | **Palette** | A lookup table mapping noise index values to YUV color triplets. |
 | **Perlin Noise** | The gradient noise algorithm invented by Ken Perlin in 1983 for procedural texturing in computer graphics. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Smoothstep** | An S-shaped interpolation function that has zero first derivative at both endpoints, eliminating visible grid artifacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

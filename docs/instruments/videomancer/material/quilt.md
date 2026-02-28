@@ -4,7 +4,7 @@ sidebar_position: 209
 slug: /instruments/videomancer/quilt
 title: "Quilt"
 image: /img/instruments/videomancer/quilt/quilt_hero.png
-description: "Program guide for Quilt, a Videomancer material program for the LZX video synthesizer."
+description: "Every image carries a grid — the rows and columns of pixels that compose it."
 ---
 
 import quilt_before_after from '/img/instruments/videomancer/quilt/quilt_before_after.png';

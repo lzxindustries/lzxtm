@@ -4,7 +4,7 @@ sidebar_position: 92
 slug: /instruments/videomancer/fathom
 title: "Fathom"
 image: /img/instruments/videomancer/fathom/fathom_hero.png
-description: "Program guide for Fathom, a Videomancer edges program for the LZX video synthesizer."
+description: "Every topographic map you have ever seen uses the same trick: draw lines where the ground crosses a constant altitude, then fill the zones between those..."
 ---
 
 import fathom_hero from '/img/instruments/videomancer/fathom/fathom_hero.png';
@@ -27,9 +27,9 @@ import fathom_exercise3_result from '/img/instruments/videomancer/fathom/fathom_
 
 ## Overview
 
-Every topographic map you have ever seen uses the same trick: draw lines where the ground crosses a constant altitude, then fill the zones between those lines with colours that suggest the terrain — green lowlands, brown mountains, white glacial peaks. Fathom applies that cartographic technique to live video. It treats the luminance of each pixel as an elevation value, draws contour isolines wherever brightness crosses a threshold between adjacent pixels, and fills the zones between contours with colours from a selectable palette.
+Every topographic map you have ever seen uses the same trick: draw lines where the ground crosses a constant altitude, then fill the zones between those lines with colors that suggest the terrain — green lowlands, brown mountains, white glacial peaks. Fathom applies that cartographic technique to live video. It treats the luminance of each pixel as an elevation value, draws contour isolines wherever brightness crosses a threshold between adjacent pixels, and fills the zones between contours with colors from a selectable palette.
 
-The name evokes depth measurement — to *fathom* is to sound the depth of water, and the program's bathymetric palette directly references nautical charts that colour the seabed from shallow white through progressively deeper blues. At moderate settings, Fathom produces imagery that looks strikingly like a relief map rendered in real time from a camera feed. At extreme settings — wide contour intervals, bold line weights, high saturation — it becomes a vivid colour-field abstraction where the original video is barely recognizable beneath the cartographic overlay.
+The name evokes depth measurement — to *fathom* is to sound the depth of water, and the program's bathymetric palette directly references nautical charts that color the seabed from shallow white through progressively deeper blues. At moderate settings, Fathom produces imagery that looks strikingly like a relief map rendered in real time from a camera feed. At extreme settings — wide contour intervals, bold line weights, high saturation — it becomes a vivid color-field abstraction where the original video is barely recognizable beneath the cartographic overlay.
 
 A single BRAM line buffer stores the previous scanline's luminance, enabling vertical contour detection. The pipeline tests up to fifteen threshold levels against both horizontal and vertical pixel neighbours in parallel, classifies every fifth contour level as "major" for optional bold styling, and composites the result through a zone saturation and opacity stage before a final wet/dry mix.
 
@@ -43,19 +43,19 @@ A contour line — or *isoline* — connects all points that share the same valu
 
 ### Hypsometric Tinting
 
-Hypsometric tinting is the cartographic practice of colour-coding elevation zones on a map. The word comes from the Greek *hypsos* (height) and *metron* (measure). A standard hypsometric colour scheme progresses from dark green at sea level, through yellows and ochres for foothills and plateaus, to brown and grey for high mountains, and finally white for snowcapped peaks. Fathom's terrain palette follows this tradition, mapping the eight luminance zones from low-brightness greens through mid-brightness browns to high-brightness whites.
+Hypsometric tinting is the cartographic practice of color-coding elevation zones on a map. The word comes from the Greek *hypsos* (height) and *metron* (measure). A standard hypsometric color scheme progresses from dark green at sea level, through yellows and ochres for foothills and plateaus, to brown and gray for high mountains, and finally white for snowcapped peaks. Fathom's terrain palette follows this tradition, mapping the eight luminance zones from low-brightness greens through mid-brightness browns to high-brightness whites.
 
 ### Bathymetric Charts
 
-Bathymetry is the underwater equivalent of topography — the measurement of ocean depth. Bathymetric charts use a blue colour ramp that intensifies with depth: shallow waters appear light cyan or white, while the deepest trenches are rendered in dark navy or indigo. Fathom's bathymetric palette inverts the brightness-to-depth relationship, assigning deep saturated blues to low-luminance zones and near-white to the brightest zones, producing imagery reminiscent of seafloor surveys.
+Bathymetry is the underwater equivalent of topography — the measurement of ocean depth. Bathymetric charts use a blue color ramp that intensifies with depth: shallow waters appear light cyan or white, while the deepest trenches are rendered in dark navy or indigo. Fathom's bathymetric palette inverts the brightness-to-depth relationship, assigning deep saturated blues to low-luminance zones and near-white to the brightest zones, producing imagery reminiscent of seafloor surveys.
 
 ### Major and Minor Contour Lines
 
 On printed topographic maps, every fifth contour line is drawn heavier and labelled with the elevation value — these are called *index contours* or major contours. The lighter intermediate lines are *supplementary* or minor contours. This visual hierarchy helps the eye parse the terrain at a glance. Fathom replicates this convention: contour levels 5, 10, and 15 are flagged as major, and the Major/Minor toggle enables distinct styling so that the map-like periodicity is visually apparent.
 
-### Terrain Colour Palettes in Digital Cartography
+### Terrain Color Palettes in Digital Cartography
 
-Modern GIS software renders elevation data using colour ramps defined in lookup tables. The choice of palette is not arbitrary — it follows perceptual research into which colour progressions most naturally suggest rising terrain, receding depth, or temperature change. Fathom's two built-in palettes are deliberately designed for immediate readability: the terrain palette uses warm earth tones that viewers instinctively associate with landscape, while the bathymetric palette uses cool blues that suggest water and depth.
+Modern GIS software renders elevation data using color ramps defined in lookup tables. The choice of palette is not arbitrary — it follows perceptual research into which color progressions most naturally suggest rising terrain, receding depth, or temperature change. Fathom's two built-in palettes are deliberately designed for immediate readability: the terrain palette uses warm earth tones that viewers instinctively associate with landscape, while the bathymetric palette uses cool blues that suggest water and depth.
 
 
 ---
@@ -75,11 +75,11 @@ Input Video (YUV 4:4:4)
 │   │      └─ V crossing          (current vs above pixel from BRAM)
 │   ├─ 4. Zone Index              (top 3 bits of offset luma → 0…7)
 │   ├─ 5. Major/Minor Class.     (levels 5, 10, 15 → major)
-│   ├─ 6. Colour Composite       (contour line colour or zone fill)
-│   │      ├─ On contour → contour colour (8-hue selector)
+│   ├─ 6. Color Composite       (contour line color or zone fill)
+│   │      ├─ On contour → contour color (8-hue selector)
 │   │      └─ Off contour → palette zone or video passthrough
 │   ├─ 7. Saturation Scale        (chroma around 512 × zone_sat)
-│   ├─ 8. Opacity Blend           (zone colour vs original, zone only)
+│   ├─ 8. Opacity Blend           (zone color vs original, zone only)
 │   └─ 9. Wet/Dry Mix             (3× interpolator_u, 4 clocks)
 │
 ├── U/V Channels ───────────────────────────────────────────────
@@ -95,7 +95,7 @@ Input Video (YUV 4:4:4)
     └─ Select original (delayed) or processed signal
 ```
 
-The critical interaction is between contour detection and zone colouring. Contour detection operates on the *offset* luma — after the elevation offset has been applied — so the Elev Offset knob shifts the entire contour map up or down through the brightness range, like adjusting sea level on a relief map. Zone colouring uses the same offset luma, so the palette assignment stays consistent with the contour boundaries. The opacity blend is applied *only* to non-contour zone fills when in HypsoFill mode, meaning contour lines always render at full opacity regardless of the Zone Opac setting; this ensures that the map grid remains legible even when the fill is dialled back to a subtle tint.
+The critical interaction is between contour detection and zone coloring. Contour detection operates on the *offset* luma — after the elevation offset has been applied — so the Elev Offset knob shifts the entire contour map up or down through the brightness range, like adjusting sea level on a relief map. Zone coloring uses the same offset luma, so the palette assignment stays consistent with the contour boundaries. The opacity blend is applied *only* to non-contour zone fills when in HypsoFill mode, meaning contour lines always render at full opacity regardless of the Zone Opac setting; this ensures that the map grid remains legible even when the fill is dialled back to a subtle tint.
 
 ---
 
@@ -134,7 +134,7 @@ Sets the thickness of contour lines from 1 to 4 pixels. At the minimum weight, c
 | Default | 45° |
 | Suffix | ° |
 
-Selects the colour of contour lines from an eight-hue palette: brown, black, white, blue, red, green, yellow, and purple. The top three bits of the register value select the hue, producing clean eight-step switching. Brown is the cartographic default for land contours, blue is traditional for bathymetric lines, and white or black provide maximum contrast against any palette. The colour applies equally to major and minor contours when Major/Minor is set to Equal; when set to Styled, major contours render at full intensity while minor contours use the same hue.
+Selects the color of contour lines from an eight-hue palette: brown, black, white, blue, red, green, yellow, and purple. The top three bits of the register value select the hue, producing clean eight-step switching. Brown is the cartographic default for land contours, blue is traditional for bathymetric lines, and white or black provide maximum contrast against any palette. The color applies equally to major and minor contours when Major/Minor is set to Equal; when set to Styled, major contours render at full intensity while minor contours use the same hue.
 
 ---
 
@@ -145,7 +145,7 @@ Selects the colour of contour lines from an eight-hue palette: brown, black, whi
 | Default | 75% |
 | Suffix | % |
 
-Controls how strongly the hypsometric zone colour replaces the original video in non-contour areas when Fill Mode is set to HypsoFill. At zero, the zones are invisible and only contour lines are drawn over the original video. At full, the zones completely replace the original luminance with the palette colour. Intermediate values produce a translucent overlay where the palette tint is visible but the underlying video texture shows through. This control has no effect when Fill Mode is set to VideoFill, since the original video is passed through between contours without palette colouring.
+Controls how strongly the hypsometric zone color replaces the original video in non-contour areas when Fill Mode is set to HypsoFill. At zero, the zones are invisible and only contour lines are drawn over the original video. At full, the zones completely replace the original luminance with the palette color. Intermediate values produce a translucent overlay where the palette tint is visible but the underlying video texture shows through. This control has no effect when Fill Mode is set to VideoFill, since the original video is passed through between contours without palette coloring.
 
 ---
 
@@ -167,7 +167,7 @@ Adds a constant offset to the input luminance before contour detection and zone 
 | Default | 75% |
 | Suffix | % |
 
-Scales the chroma saturation of the composite output. The saturation is applied symmetrically around the 512 neutral axis — at full, zone and contour colours are vivid; at zero, the output is monochrome regardless of palette selection. Intermediate values produce pastel or muted versions of the terrain or bathymetric palette. This interacts with the Palette B toggle: setting Palette B to Mono and Zone Sat to zero both desaturate, but through different mechanisms — Mono forces chroma to neutral before the saturation stage, while Zone Sat scales it afterwards.
+Scales the chroma saturation of the composite output. The saturation is applied symmetrically around the 512 neutral axis — at full, zone and contour colors are vivid; at zero, the output is monochrome regardless of palette selection. Intermediate values produce pastel or muted versions of the terrain or bathymetric palette. This interacts with the Palette B toggle: setting Palette B to Mono and Zone Sat to zero both desaturate, but through different mechanisms — Mono forces chroma to neutral before the saturation stage, while Zone Sat scales it afterwards.
 
 ---
 
@@ -181,7 +181,7 @@ Scales the chroma saturation of the composite output. The saturation is applied 
 | **10 — Fill Mode** | HypsoFill | VideoFill |
 | **11 — Bypass** | Off | On |
 
-Toggles 7 through 10 configure the programme's visual character in four independent binary dimensions: palette origin (land or sea), chromaticity (colour or monochrome), contour hierarchy (uniform or weighted), and fill source (synthetic palette or original video). Toggle 11 is the standard bypass. The five switches can be combined freely, producing 16 distinct rendering modes before any continuous parameter is adjusted.
+Toggles 7 through 10 configure the programme's visual character in four independent binary dimensions: palette origin (land or sea), chromaticity (color or monochrome), contour hierarchy (uniform or weighted), and fill source (synthetic palette or original video). Toggle 11 is the standard bypass. The five switches can be combined freely, producing 16 distinct rendering modes before any continuous parameter is adjusted.
 
 ---
 
@@ -214,7 +214,7 @@ These exercises progress from basic contour rendering through palette exploratio
 2. **Widen intervals**: Sweep Contour Int upward through the eight steps. Watch contour lines thin out and the elevation zones grow wider with each step.
 3. **Shift the datum**: Slowly increase Elev Offset from zero. The contour grid slides upward through the brightness range — dark areas lose their contours first, while bright areas gain new ones.
 4. **Bold lines**: Increase Line Weight to 3–4 px. The contour grid becomes a dominant structural overlay.
-5. **Choose a colour**: Rotate Contour Clr through the eight hues. Note how brown and blue feel cartographic while white and red feel analytical.
+5. **Choose a color**: Rotate Contour Clr through the eight hues. Note how brown and blue feel cartographic while white and red feel analytical.
 
 **Key concepts**: Contour detection compares adjacent pixels on horizontal and vertical axes, interval selects the spacing between contour levels, elevation offset shifts the entire contour map
 
@@ -228,12 +228,12 @@ These exercises progress from basic contour rendering through palette exploratio
 
 **Objective**: Explore both palettes and the interaction between saturation, opacity, and fill mode.
 
-1. **Terrain survey**: Start with Palette A = Terrain, Palette B = Tinted, Fill Mode = HypsoFill. The image appears as a colour relief map with green lowlands and white peaks.
+1. **Terrain survey**: Start with Palette A = Terrain, Palette B = Tinted, Fill Mode = HypsoFill. The image appears as a color relief map with green lowlands and white peaks.
 2. **Dive deep**: Switch Palette A to Bathy. The same footage now reads as an ocean depth chart — deep blues in the shadows, white in the highlights.
-3. **Desaturate**: Switch Palette B to Mono. The palette becomes greyscale — relief shading without colour.
+3. **Desaturate**: Switch Palette B to Mono. The palette becomes greyscale — relief shading without color.
 4. **Reduce opacity**: Lower Zone Opac to ~30%. The palette becomes a translucent tint over the original video.
 5. **Video fill**: Switch Fill Mode to VideoFill. Only contour lines remain; the zones show the original video.
-6. **Saturation sweep**: Return to HypsoFill and sweep Zone Sat from 0% to 100%. Watch the palette colours go from greyscale to fully saturated.
+6. **Saturation sweep**: Return to HypsoFill and sweep Zone Sat from 0% to 100%. Watch the palette colors go from greyscale to fully saturated.
 
 **Key concepts**: Two complementary palettes for land and sea, monochrome mode isolates luminance structure, zone opacity controls palette transparency, video fill preserves source imagery between contours
 
@@ -251,7 +251,7 @@ These exercises progress from basic contour rendering through palette exploratio
 2. **Major contours**: Set Major/Minor to Styled. Every fifth contour level receives the major classification.
 3. **Tune elevation**: Adjust Elev Offset so contour lines are well-distributed across the subject.
 4. **Opacity layer**: Set Zone Opac to ~60% for a translucent palette overlay.
-5. **Saturation colour**: Set Zone Sat to ~80% for vivid terrain colours.
+5. **Saturation color**: Set Zone Sat to ~80% for vivid terrain colors.
 6. **Mix blend**: Pull Mix to ~70% to let some original video texture through the composited result.
 7. **Compare**: Toggle Bypass on and off to compare the raw feed with the fully mapped output.
 
@@ -262,11 +262,11 @@ These exercises progress from basic contour rendering through palette exploratio
 
 ## Tips
 
-- **Brown contours on terrain palette**: The default contour colour (brown) with the terrain palette produces the most naturalistic topographic map effect. This is the cartographic standard.
-- **Blue contours on bathymetric palette**: Switch to blue contour colour when using the bathymetric palette for an authentic nautical chart appearance.
+- **Brown contours on terrain palette**: The default contour color (brown) with the terrain palette produces the most naturalistic topographic map effect. This is the cartographic standard.
+- **Blue contours on bathymetric palette**: Switch to blue contour color when using the bathymetric palette for an authentic nautical chart appearance.
 - **Elevation offset as animation**: Slowly sweeping the Elev Offset control creates a rising-water or shifting-terrain animation as contour lines migrate across the image.
-- **Video fill for analysis**: Use VideoFill mode with high-contrast contour colours (white or black) to overlay a luminance contour grid on the original video — useful for technical monitoring or as a visual effect that preserves the source.
-- **Opacity for layering**: Zone Opac at 20–40% produces a subtle tinted overlay that adds colour depth without obscuring the original video texture.
+- **Video fill for analysis**: Use VideoFill mode with high-contrast contour colors (white or black) to overlay a luminance contour grid on the original video — useful for technical monitoring or as a visual effect that preserves the source.
+- **Opacity for layering**: Zone Opac at 20–40% produces a subtle tinted overlay that adds color depth without obscuring the original video texture.
 - **Feedback loops**: Routing the output back to the input creates recursive contour mapping — contour lines themselves become elevation features, generating secondary contours at their edges.
 - **Narrow intervals reveal texture**: Contour Int at 16 with thin lines reveals micro-gradients in the source — skin texture, fabric weave, and atmospheric haze all produce distinct contour patterns.
 - **Wide intervals for bold graphics**: Contour Int at 192 or 256 with 4 px line weight produces a bold graphic poster effect with only a few strong contour bands.
@@ -277,17 +277,17 @@ These exercises progress from basic contour rendering through palette exploratio
 
 | Term | Definition |
 |------|------------|
-| **Bathymetric** | Relating to the measurement and mapping of underwater depth; bathymetric charts use blue colour ramps to represent ocean floor elevation. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here as a single-line buffer for vertical contour detection. |
+| **Bathymetric** | Relating to the measurement and mapping of underwater depth; bathymetric charts use blue color ramps to represent ocean floor elevation. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Contour Line** | A curve connecting all points of equal value (here, equal luminance), also called an isoline. |
-| **Hypsometric Tinting** | The cartographic technique of colouring elevation zones on a map using a graduated colour palette. |
+| **Hypsometric Tinting** | The cartographic technique of coloring elevation zones on a map using a graduated color palette. |
 | **Index Contour** | A major contour line (every 5th level) drawn heavier for visual hierarchy, matching the convention on printed topographic maps. |
-| **Interpolator** | A hardware module that performs linear interpolation between two values by a fractional amount, used for the wet/dry mix. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Isoline** | A line of constant value on a map or image; synonym for contour line. |
 | **Line Buffer** | A BRAM-based single-scanline delay that stores the previous line's luminance for vertical neighbour comparison. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle; Fathom uses 8 pipeline stages. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for signal scaling, used internally by the saturation control. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
-| **Zone** | One of eight elevation bands defined by the top 3 bits of the offset luminance, each assigned a colour from the selected palette. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Zone** | One of eight elevation bands defined by the top 3 bits of the offset luminance, each assigned a color from the selected palette. |
 
 ---

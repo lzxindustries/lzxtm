@@ -4,7 +4,7 @@ sidebar_position: 161
 slug: /instruments/videomancer/marcher
 title: "Marcher"
 image: /img/instruments/videomancer/marcher/marcher_hero.png
-description: "Program guide for Marcher, a Videomancer render program for the LZX video synthesizer."
+description: "Signed distance fields (SDFs) define geometry not by drawing edges or filling polygons, but by computing a single number at every point in space: the sh..."
 ---
 
 import marcher_animation from '/img/instruments/videomancer/marcher/marcher_animation.gif';
@@ -101,7 +101,7 @@ Timing Detection ─────────────────────
 │   ├─ Edge glow: bright near |dist| < 8, falloff to 32
 │   ├─ Interior: 512 − depth + diffuse/2
 │   ├─ Exterior: contour lines (modular distance bands)
-│   ├─ 8 palette colour mappings (Neon..Mono)
+│   ├─ 8 palette color mappings (Neon..Mono)
 │   ├─ Contour-only render mode (suppress interior fill)
 │   └─ Video mask mode (boundary reveals input video)
 │
@@ -294,14 +294,14 @@ These exercises progress from observing the raw distance field to exploring smoo
 |------|------------|
 | **Central differences** | A finite-difference method for estimating gradients by comparing a function's value at adjacent sample points. |
 | **Chebyshev distance** | The maximum of the absolute axis differences; produces square-shaped SDF contours for box primitives. |
-| **DDS** | Direct Digital Synthesis; generates periodic waveforms from a phase accumulator and lookup/approximation function. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the real-time SDF evaluation and rendering pipeline. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) blending two signals based on the Mix parameter. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Lambertian** | A shading model where surface brightness equals the dot product of the surface normal and light direction, clamped to non-negative values. |
 | **Manhattan distance** | The sum of absolute differences along each axis; used in Marcher's circle SDF length approximation. |
 | **Metaball** | A graphics technique where implicit surfaces merge smoothly, producing organic blob-like shapes. Marcher's smooth union achieves the same visual effect. |
-| **Pipeline** | Sequential processing stages, each completing one clock cycle of work. Marcher uses an 8-clock pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **SDF** | Signed Distance Field; a scalar field where each point holds the signed distance to the nearest surface (negative inside, positive outside). |
 | **Smooth-min** | An operator that blends two distance values smoothly instead of taking a hard minimum, parameterised by blend radius $k$. |
 | **Triangle wave** | A piecewise-linear approximation of a sine wave used for DDS position computation — cheaper than a LUT on iCE40. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used at 10-bit precision throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

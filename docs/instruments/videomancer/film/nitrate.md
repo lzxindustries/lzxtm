@@ -4,7 +4,7 @@ sidebar_position: 181
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
 image: /img/instruments/videomancer/nitrate/nitrate_hero.png
-description: "Program guide for Nitrate, a Videomancer film program for the LZX video synthesizer."
+description: "Before Technicolor, cinema was colored by hand."
 ---
 
 import nitrate_before_after from '/img/instruments/videomancer/nitrate/nitrate_before_after.png';
@@ -293,10 +293,10 @@ These exercises progress from basic single-color tinting through duotone process
 |------|------------|
 | **Carbon Arc** | A type of electric lamp used in early film projection, producing light by passing current through carbon electrodes. Known for frame-to-frame brightness variation. |
 | **Duotone** | A colorization technique combining two colors, typically one for highlights and one for shadows. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator. Nitrate uses one to produce per-frame flicker noise. |
-| **Luminance** | The brightness component (Y) of a YUV video signal. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Nitrate** | Cellulose nitrate; the flammable film stock used in cinema from the 1890s through the 1950s. |
 | **Pathé Stencil** | A hand-cut stencil process developed by Pathé Frères for applying multiple colors to different zones within a single film frame. |
 | **Tinting** | Coloring the bright areas of a film print by dyeing the film base. Color is proportional to luminance. |
 | **Toning** | Coloring the dark areas of a film print by replacing silver with a metallic salt. Color is proportional to inverse luminance. |
-| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

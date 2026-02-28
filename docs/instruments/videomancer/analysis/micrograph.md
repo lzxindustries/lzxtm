@@ -4,7 +4,7 @@ sidebar_position: 166
 slug: /instruments/videomancer/micrograph
 title: "Micrograph"
 image: /img/instruments/videomancer/micrograph/micrograph_hero.png
-description: "Program guide for Micrograph, a Videomancer analysis program for the LZX video synthesizer."
+description: "Every laboratory microscope presents the world through a particular frame — a circular viewport, a calibrated grid, a stained slice of tissue lit from b..."
 ---
 
 import micrograph_before_after from '/img/instruments/videomancer/micrograph/micrograph_before_after.png';
@@ -293,7 +293,7 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 | Term | Definition |
 |------|------------|
 | **Bright Field** | Standard microscopy illumination where the specimen is lit from below, appearing dark against a bright background. |
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used throughout the Videomancer video pipeline for YUV conversion. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Contrast Enhancement** | Amplification of tonal differences by multiplying deviations from mid-gray, making faint structures more visible. |
 | **Dark Field** | Microscopy illumination technique where only scattered light reaches the objective, causing structures to glow against a black background. |
 | **Gram Stain** | A differential staining technique that classifies bacteria by cell wall composition, producing violet or red-pink coloration. |
@@ -301,7 +301,7 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 | **Histology** | The study of the microscopic structure of tissues, typically involving thin-sectioned and chemically stained specimens. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical distances; used here as a computationally efficient approximation of radial distance for vignette calculation. |
 | **PAS** | Periodic Acid–Schiff stain; produces magenta coloration in carbohydrate-rich tissue structures. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Reticle** | A pattern of lines inscribed in a microscope eyepiece used for measurement and spatial reference. |
 | **Vignette** | Darkening of the image periphery, here simulating the circular aperture of a microscope optical system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

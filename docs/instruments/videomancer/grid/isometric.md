@@ -4,7 +4,7 @@ sidebar_position: 130
 slug: /instruments/videomancer/isometric
 title: "Isometric"
 image: /img/instruments/videomancer/isometric/isometric_hero.png
-description: "Program guide for Isometric, a Videomancer grid program for the LZX video synthesizer."
+description: "Engineering drawings have used isometric grids since the early nineteenth century — a projection system where three axes are equally spaced at 120 degre..."
 ---
 
 import isometric_animation from '/img/instruments/videomancer/isometric/isometric_animation.gif';
@@ -278,13 +278,13 @@ These exercises explore the grid engine's range from architectural overlays to a
 | **Additive Compositing** | A blending mode where the overlay value is added to the source, clamping at maximum; always brightens. |
 | **Axonometric** | A family of parallel projections that preserve parallelism, of which isometric is a special case with equal foreshortening on all axes. |
 | **Bitmask** | A binary AND operation used to test whether a counter falls on a power-of-two grid boundary; replaces the modulo operator. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Isometric uses zero BRAM — all computation is combinational and registered logic. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Dashing** | Breaking a continuous line into alternating drawn and undrawn segments using a higher bit of the position counter. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique used here for the scroll offset accumulation. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Grid Mask** | The (spacing − 1) bitmask applied to position counters to detect grid line intersections. |
-| **Interpolator** | A linear interpolation module that blends two values using a mix parameter; used for wet/dry crossfade. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Isometric** | A projection where the three coordinate axes are equally spaced at 120°, preserving parallel lines and equal foreshortening. |
 | **Moiré** | An interference pattern created when two regular patterns of similar frequency overlap; can occur with fast scroll and fine grid spacing. |
 | **Raster** | The horizontal scan-line pattern used to render video; the grid is computed per-pixel as the raster sweeps the frame. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

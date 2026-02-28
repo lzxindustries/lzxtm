@@ -4,7 +4,7 @@ sidebar_position: 53
 slug: /instruments/videomancer/concave
 title: "Concave"
 image: /img/instruments/videomancer/concave/concave_hero.png
-description: "Program guide for Concave, a Videomancer mirror program for the LZX video synthesizer."
+description: "A concave mirror curves inward, gathering light toward a focal point."
 ---
 
 import concave_hero from '/img/instruments/videomancer/concave/concave_hero.png';
@@ -276,11 +276,11 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 | **Concave Mirror** | A mirror with an inward-curving reflective surface that converges light toward a focal point, producing brighter center and darker edges. |
 | **Convex Mirror** | A mirror with an outward-curving reflective surface that diverges light, producing darker center and brighter edges. |
 | **Distance-Squared Falloff** | A parabolic brightness profile where modulation increases with the square of the distance from center, matching natural optical behavior. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A circuit that blends between two input values based on a mix coefficient, used here for wet/dry crossfading. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Squeeze Factor** | The multiplicative scaling value applied to each pixel's luminance, derived from the squared vertical distance to the center scanline. |
 | **Vignette** | Darkening of image edges relative to the center, here applied along the vertical axis to simulate curved-mirror optics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

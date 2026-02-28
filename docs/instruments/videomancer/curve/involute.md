@@ -4,7 +4,7 @@ sidebar_position: 129
 slug: /instruments/videomancer/involute
 title: "Involute"
 image: /img/instruments/videomancer/involute/involute_hero.png
-description: "Program guide for Involute, a Videomancer curve program for the LZX video synthesizer."
+description: "A Spirograph on the kitchen table, a coin rolling around the rim of a plate, a point on a gear tooth tracing its path through space — all of these draw ..."
 ---
 
 import involute_animation from '/img/instruments/videomancer/involute/involute_animation.gif';
@@ -296,18 +296,18 @@ These exercises explore the mathematical and visual range of the roulette engine
 | Term | Definition |
 |------|------------|
 | **Astroid** | A four-cusped hypocycloid traced when the radius ratio is 4:1; shaped like a four-pointed star. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the sine lookup table and the 64×64 canvas. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Canvas** | The 64×64 pixel framebuffer with 4-bit intensity per pixel, used to store the curve trace and its phosphor history. |
 | **Cardioid** | A single-cusped epicycloid traced when the radius ratio is 1:1; heart-shaped. |
-| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic waveforms in digital hardware. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Decay** | The per-frame subtraction applied to all canvas pixels, simulating phosphor fade-out. |
 | **Deltoid** | A three-cusped hypocycloid traced when the radius ratio is 3:1. |
 | **Epicycloid** | The curve traced by a point on a circle rolling around the outside of a fixed circle. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Hypocycloid** | The curve traced by a point on a circle rolling around the inside of a fixed circle. |
-| **Interpolator** | A linear interpolation module that blends two values using a mix parameter; used for wet/dry crossfade. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Nephroid** | A two-cusped epicycloid traced when the radius ratio is 2:1; kidney-shaped. |
 | **Phosphor** | A material that emits light after excitation; here used metaphorically for the canvas persistence mechanism. |
 | **Quarter-wave LUT** | A sine lookup table storing only one quarter-cycle, reconstructing the full waveform via quadrant mirroring. |
 | **Roulette** | The family of curves traced by a point on a circle rolling along another circle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

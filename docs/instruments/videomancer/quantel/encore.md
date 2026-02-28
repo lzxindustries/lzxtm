@@ -4,7 +4,7 @@ sidebar_position: 88
 slug: /instruments/videomancer/encore
 title: "Encore"
 image: /img/instruments/videomancer/encore/encore_hero.png
-description: "Program guide for Encore, a Videomancer quantel program for the LZX video synthesizer."
+description: "Broadcast television invented picture-in-picture to show two things at once — a sports score ticker floating over live action, a news anchor inset again..."
 ---
 
 import encore_hero from '/img/instruments/videomancer/encore/encore_hero.png';
@@ -275,15 +275,15 @@ These exercises progress from basic window positioning to layered compositing wi
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation for standard-definition television color encoding, defining the YUV color matrix used throughout the Videomancer pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Bypass** | A signal routing mode that sends the input directly to the output, skipping all processing stages. |
 | **Compositing** | Combining multiple visual elements into a single output frame, typically by layering one image over another. |
 | **Drop Shadow** | A darkened duplicate of a foreground element offset in position to create the illusion of depth or floating. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values, used for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **PIP** | Picture-in-Picture; a compositing technique that displays one video source inside a window overlaid on another. |
 | **Quantel** | A pioneering British digital video effects company whose hardware defined broadcast compositing from the 1970s onward. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

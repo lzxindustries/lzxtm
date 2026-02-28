@@ -4,7 +4,7 @@ sidebar_position: 4
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
 image: /img/instruments/videomancer/pinwheel/pinwheel_hero.png
-description: "Program guide for Pinwheel, a Videomancer program that uses luminance to drive hue rotation across the YUV color space."
+description: "Color in digital video is encoded as numbers."
 ---
 
 import pinwheel_hero from '/img/instruments/videomancer/pinwheel/pinwheel_hero.png';
@@ -269,7 +269,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 | **Color vector** | The two-dimensional representation of a pixel's color as a point in the UV plane, whose angle encodes hue and whose magnitude encodes saturation. |
 | **Complement** | The color diametrically opposite on the UV color wheel (180° rotation); Chroma Invert maps every color to its complement. |
 | **Hue rotation** | Spinning the UV color vector around the origin by a fixed angle using a 2D rotation matrix, shifting all colors through the spectrum. |
-| **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV encoding. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **LUT (Lookup Table)** | A pre-computed array that maps input values to output values for fast evaluation; Pinwheel uses a 10-bit sine/cosine LUT for hue rotation. |
 | **Modulation** | Varying one signal parameter (here, hue angle) in proportion to another signal (luminance), creating a brightness-dependent color mapping. |
 | **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel's Luma Gain and Brightness controls form a Y-channel proc amp whose output also drives hue rotation. |

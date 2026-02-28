@@ -4,7 +4,7 @@ sidebar_position: 125
 slug: /instruments/videomancer/imprint
 title: "Imprint"
 image: /img/instruments/videomancer/imprint/imprint_hero.png
-description: "Program guide for Imprint, a Videomancer print program for the LZX video synthesizer."
+description: "Every printed photograph in a newspaper, magazine, or book is an illusion."
 ---
 
 import imprint_hero from '/img/instruments/videomancer/imprint/imprint_hero.png';
@@ -91,12 +91,12 @@ Input Video (YUV 4:4:4)
 ├── Stage 4: Subtractive Ink Composite ─────────────────────────
 │   │
 │   ├─ CMY Mode:
-│   │   ├─ Start from paper colour (Y, Cb, Cr)
+│   │   ├─ Start from paper color (Y, Cb, Cr)
 │   │   ├─ Cyan dot:    Y -= 200, Cr -= 180
 │   │   ├─ Magenta dot: Y -= 200, Cb -= 100, Cr += 140
 │   │   ├─ Yellow dot:  Y -= 80, Cb -= 180
 │   │   └─ Clamp [0, 1023]
-│   ├─ Mono Mode: ink colour where dot_c active, paper colour otherwise
+│   ├─ Mono Mode: ink color where dot_c active, paper color otherwise
 │   └─ Invert: complement all channels (1023 - value)
 │
 ├── Sync Signals ───────────────────────────────────────────────
@@ -295,16 +295,16 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 | **CMYK** | Cyan, Magenta, Yellow, and Key (black); the four inks used in process color printing. Imprint implements CMY without explicit black (K). |
 | **Distance Function** | A mathematical formula that computes the distance from a point to a reference location; used here to determine whether a pixel falls inside or outside a halftone dot. |
 | **Dot Pitch** | The spacing between adjacent dot centres in the halftone grid, measured in pixels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Halftone** | A reprographic technique that simulates continuous tones using dots of varying size, spacing, or density. |
-| **Interpolator** | A linear crossfade module that blends between the dry (unprocessed) and wet (processed) signal paths based on the Mix fader position. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Look-Up Table; used here for both the sin/cos rotation coefficients and the paper/ink color palettes. |
 | **Manhattan Distance** | The sum of absolute differences along each axis: |dx| + |dy|. Produces diamond-shaped equidistant contours. |
 | **Moiré** | An interference pattern that appears when two regular grids are overlaid at slightly different angles or frequencies. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Rosette Pattern** | The characteristic flower-like pattern visible under magnification in color halftone prints, created by the interaction of differently-angled dot screens. |
 | **Screen Angle** | The rotation angle of a halftone dot grid relative to the horizontal axis, measured in degrees. |
 | **Subtractive Color** | A color model where pigments or inks absorb (subtract) portions of the light spectrum; mixing C, M, and Y inks produces darker colors. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

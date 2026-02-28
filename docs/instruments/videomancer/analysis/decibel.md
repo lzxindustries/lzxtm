@@ -4,7 +4,7 @@ sidebar_position: 65
 slug: /instruments/videomancer/decibel
 title: "Decibel"
 image: /img/instruments/videomancer/decibel/decibel_hero.png
-description: "Program guide for Decibel, a Videomancer analysis program for the LZX video synthesizer."
+description: "Every sound engineer knows the VU meter — a swinging needle that follows the loudness of audio in near-real-time, giving an immediate, visceral sense of..."
 ---
 
 import decibel_hero from '/img/instruments/videomancer/decibel/decibel_hero.png';
@@ -277,9 +277,9 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 | **Bypass** | A signal routing option that sends the original input directly to the output, skipping all processing stages. |
 | **Decay** | The rate at which a filter's output falls when the input drops below the current level; slow decay holds readings, fast decay tracks closely. |
 | **Envelope Follower** | A filter that tracks the amplitude contour of a signal, smoothing out rapid fluctuations to produce a slowly varying level estimate. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a filter type whose output depends on both the current input and previous outputs, creating memory-like behavior. |
-| **Interpolator** | A hardware module that blends two values (wet and dry) according to a mix parameter, used for crossfading processed and original signals. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Luma / Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Peak Hold** | A metering feature that latches the highest observed level and holds it visible for a configurable duration. |
 | **PPM** | Peak Programme Meter; a broadcast metering standard with fast attack and slow decay designed to catch transient peaks. |
@@ -287,7 +287,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 | **Segment** | One discrete step of the bar-graph meter display; the number of segments determines the visual resolution of the level reading. |
 | **VU** | Volume Unit; a broadcast metering standard with 300 ms integration time, measuring average signal level rather than peaks. |
 | **Wet/Dry Mix** | The ratio between processed (wet) and original (dry) signals at the output; 0% = all original, 100% = all processed. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 
 ---

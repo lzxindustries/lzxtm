@@ -4,7 +4,7 @@ sidebar_position: 5
 slug: /instruments/videomancer/faultplane
 title: "Faultplane"
 image: /img/instruments/videomancer/faultplane/faultplane_hero.png
-description: "Program guide for Faultplane, a Videomancer spatial displacement program that splits video into alternating regions with pixel shifts and mirror flips."
+description: "Faultplane is a spatial displacement and zone-blanking program that splits the video frame into alternating regions using two timing accumulators and ap..."
 ---
 
 import faultplane_hero from '/img/instruments/videomancer/faultplane/faultplane_hero.png';
@@ -272,11 +272,11 @@ These exercises progress from simple displacement bands to complex fracture grid
 | Term | Definition |
 |------|------------|
 | **Bitwise NOT** | A logic operation that flips every bit of a value (0→1, 1→0); applied to all 30 bits of YUV data simultaneously when inversion is enabled. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used here as dual-port line buffers for scanline storage and displaced readback. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Clock divider** | A circuit that reduces a clock frequency by toggling its output every N input cycles; the MSB of each timing accumulator acts as a divide-by-two clock divider. |
 | **DC offset** | A constant value added to a signal, shifting it up or down without changing its shape; the Delay controls set the DC offset of the displacement address. |
 | **Dual-port RAM** | Memory with independent read and write ports, allowing simultaneous writing of new data and reading of previously stored data on alternating scanlines. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip (Lattice iCE40 HX4K) that executes the video processing pipeline in real time. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Line rate** | The frequency at which horizontal scanlines are produced; Accumulator A increments once per line, creating horizontal band patterns. |
 | **MSB (Most Significant Bit)** | The highest-order bit of a binary value; the MSBs of the two timing accumulators are XOR'd to produce the zone selection signal. |
 | **Pixel rate** | The frequency at which individual pixels are clocked; Accumulator B increments every pixel clock cycle, creating vertical column patterns. |
@@ -284,4 +284,4 @@ These exercises progress from simple displacement bands to complex fracture grid
 | **Scanline** | One horizontal row of pixels in a video frame; Faultplane's delay line operates on a per-scanline basis. |
 | **Timing accumulator** | A register that increments by a programmable amount on each clock or line event, producing an oscillating signal whose frequency determines the zone pattern. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used here to combine the two accumulator MSBs into the alternating zone selection signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); Faultplane processes all three channels as a 30-bit composite. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

@@ -4,7 +4,7 @@ sidebar_position: 146
 slug: /instruments/videomancer/lenticular
 title: "Lenticular"
 image: /img/instruments/videomancer/lenticular/lenticular_hero.png
-description: "Program guide for Lenticular, a Videomancer illusion program for the LZX video synthesizer."
+description: "Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them."
 ---
 
 import lenticular_before_after from '/img/instruments/videomancer/lenticular/lenticular_before_after.png';
@@ -297,16 +297,16 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated FPGA memory tiles used for line buffers and large delay structures. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Interleave** | Spatially alternating between two views stripe-by-stripe within a single frame. |
 | **Lenticular** | A printing technology using cylindrical lens arrays to create images with depth or animation effects. |
 | **Line Buffer** | A memory that stores one complete scan line for comparison or mixing with adjacent lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Parallax** | The apparent displacement of an object when viewed from different positions; the basis of stereoscopic depth perception. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing selectable time delay. |
 | **Stereopsis** | The brain's ability to perceive depth by comparing the slightly different images received by each eye. |
 | **Wiggle** | Temporal alternation between views on successive frames, mimicking the effect of tilting a lenticular card. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

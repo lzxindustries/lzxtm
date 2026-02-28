@@ -4,7 +4,7 @@ sidebar_position: 30
 slug: /instruments/videomancer/burin
 title: "Burin"
 image: /img/instruments/videomancer/burin/burin_hero.png
-description: "Program guide for Burin, a Videomancer print program for the LZX video synthesizer."
+description: "Every photograph contains continuous tonal gradations — smooth transitions from light to shadow."
 ---
 
 import burin_hero from '/img/instruments/videomancer/burin/burin_hero.png';
@@ -167,7 +167,7 @@ Sets the angular offset between successive line sets, quantized to four steps: 3
 | Default | 45° |
 | Suffix | ° |
 
-Adds a warm or cool tint to the paper (non-hatched) areas. At zero, the paper is neutral white. Rotating the control shifts the paper hue through a full 360° colour cycle — cream, aged yellow, pink, cool blue, and back. Subtle settings simulate the off-white tone of antique laid paper; extreme settings produce coloured grounds reminiscent of chiaroscuro woodcuts printed on tinted stock.
+Adds a warm or cool tint to the paper (non-hatched) areas. At zero, the paper is neutral white. Rotating the control shifts the paper hue through a full 360° color cycle — cream, aged yellow, pink, cool blue, and back. Subtle settings simulate the off-white tone of antique laid paper; extreme settings produce colored grounds reminiscent of chiaroscuro woodcuts printed on tinted stock.
 
 ---
 
@@ -178,7 +178,7 @@ Adds a warm or cool tint to the paper (non-hatched) areas. At zero, the paper is
 | Default | 0° |
 | Suffix | ° |
 
-Tints the ink (hatched line) colour. At default, ink is near-black. Rotating shifts through warm sepia and bistre tones (historically accurate for iron gall ink), through blues (reminiscent of cyanotype), reds, and greens. Combined with the paper tint, this creates a full two-colour printing effect — ink on coloured paper — using hue alone.
+Tints the ink (hatched line) color. At default, ink is near-black. Rotating shifts through warm sepia and bistre tones (historically accurate for iron gall ink), through blues (reminiscent of cyanotype), reds, and greens. Combined with the paper tint, this creates a full two-color printing effect — ink on colored paper — using hue alone.
 
 ---
 
@@ -192,7 +192,7 @@ Tints the ink (hatched line) colour. At default, ink is near-black. Rotating shi
 | **10 — Invert** | Normal | Invert |
 | **11 — Bypass** | Off | On |
 
-Switches 7–11 control five independent binary processing options. Line Style and Plate Wear affect the character of individual strokes; Color and Invert affect the final rendering; Bypass routes signal around all processing. These switches can be combined freely — feathered lines with plate wear and duotone, for example, produce a weathered two-colour print effect.
+Switches 7–11 control five independent binary processing options. Line Style and Plate Wear affect the character of individual strokes; Color and Invert affect the final rendering; Bypass routes signal around all processing. These switches can be combined freely — feathered lines with plate wear and duotone, for example, produce a weathered two-color print effect.
 
 ---
 
@@ -211,7 +211,7 @@ Controls the dry/wet mix between the processed engraving output and the original
 
 ## Guided Exercises
 
-These exercises build from basic line hatching through the full crosshatching vocabulary to coloured plate printing. Each introduces additional controls and reveals how Burin's parameters interact to create the engraving effect.
+These exercises build from basic line hatching through the full crosshatching vocabulary to colored plate printing. Each introduces additional controls and reveals how Burin's parameters interact to create the engraving effect.
 
 ### Exercise 1: First Lines and Crosshatch
 
@@ -242,11 +242,11 @@ These exercises build from basic line hatching through the full crosshatching vo
 1. **Baseline**: Set Spacing to step 4 (~8px), Line Width to ~35%, Primary Angle to 135°, Cross Angle to 45°.
 2. **Feathered lines**: Toggle Line Style to Feathered. The strokes soften, becoming lighter and less harsh. Compare against Sharp.
 3. **Plate wear**: Toggle Plate Wear to Worn. Individual strokes break into fragments — the engraving looks like a late impression. The effect is most visible in high-density areas (zones 3 and 4).
-4. **Paper tint**: Slowly rotate Paper Tint. The background colour shifts from white through cream, yellow, pink. Settle on a warm cream (~30°) to simulate antique paper.
+4. **Paper tint**: Slowly rotate Paper Tint. The background color shifts from white through cream, yellow, pink. Settle on a warm cream (~30°) to simulate antique paper.
 5. **Ink tint**: Rotate Ink Tint to ~180° (the default is near-black at 0°). The ink shifts to warm sepia. Try a deep brown (~40°) for a historically accurate appearance.
 6. **Combine**: Feathered + Worn + warm tints produces a weathered, centuries-old print aesthetic.
 
-**Key concepts**: Feathered mode lightens ink to simulate shallow cuts; plate wear breaks lines stochastically via LFSR noise; paper and ink tints create two-colour printing effects
+**Key concepts**: Feathered mode lightens ink to simulate shallow cuts; plate wear breaks lines stochastically via LFSR noise; paper and ink tints create two-color printing effects
 
 ---
 
@@ -254,15 +254,15 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 <img src={burin_exercise3_result} alt="Duotone and Inversion result"/>
 *Duotone and Inversion — simulated result across source images.*
-**Source**: High-contrast material — a face lit from one side, or any source with both saturated colour and strong shadows.
+**Source**: High-contrast material — a face lit from one side, or any source with both saturated color and strong shadows.
 
-**Objective**: Use duotone and invert to push the engraving beyond monochrome reproduction into colour and negative territory.
+**Objective**: Use duotone and invert to push the engraving beyond monochrome reproduction into color and negative territory.
 
 1. **Prepare**: Set Spacing to step 3 (~6px), Line Width to ~30%, Primary Angle to 45°, Cross Angle to 60°, clean plate, sharp lines.
-2. **Enable duotone**: Toggle Color to Duotone. The hatched lines now carry the source video's chrominance — colour bleeds through the engraving texture. Reds, blues, and greens appear within the hatched strokes.
+2. **Enable duotone**: Toggle Color to Duotone. The hatched lines now carry the source video's chrominance — color bleeds through the engraving texture. Reds, blues, and greens appear within the hatched strokes.
 3. **Mix overlay**: Lower the Mix fader to ~60%. The engraving texture overlays the source at partial opacity — a sketch-over-video effect.
-4. **Invert**: Toggle Invert to On. The engraving flips — bright lines on a dark ground. With duotone active, the source colour now appears in the light strokes against a dark field, resembling a white-line wood engraving or a mezzotint.
-5. **Paper and ink tint in invert mode**: Adjust Paper Tint and Ink Tint. Because luminance is inverted, the visual role of paper and ink reverse — paper tint now colours the dark background, and ink tint colours the bright lines.
+4. **Invert**: Toggle Invert to On. The engraving flips — bright lines on a dark ground. With duotone active, the source color now appears in the light strokes against a dark field, resembling a white-line wood engraving or a mezzotint.
+5. **Paper and ink tint in invert mode**: Adjust Paper Tint and Ink Tint. Because luminance is inverted, the visual role of paper and ink reverse — paper tint now colors the dark background, and ink tint colors the bright lines.
 
 **Key concepts**: Duotone blends source chrominance into hatched areas; invert flips the tonal relationship; mix allows partial overlay of engraving on source
 
@@ -274,7 +274,7 @@ These exercises build from basic line hatching through the full crosshatching vo
 - **Spacing and width are the master controls**: Together they determine the overall density of the engraving. Set these first, then adjust angles and tints to taste.
 - **45° primary with 45° cross is the classic look**: This combination produces the most recognizable copperplate crosshatch pattern — the one you see in Dürer prints and on currency.
 - **Plate wear adds realism at any spacing**: Even subtle wear — a few broken strokes per line — makes the output look like a physical print rather than a computer rendering.
-- **Duotone preserves source identity**: When you want the subject to remain recognizable through the hatching, duotone lets the source colour information survive the engraving process.
+- **Duotone preserves source identity**: When you want the subject to remain recognizable through the hatching, duotone lets the source color information survive the engraving process.
 - **Invert for mezzotint aesthetics**: Inverting produces bright lines on dark ground — the opposite of normal engraving, closer to mezzotint or white-line woodcut. Especially dramatic with tight spacing and warm ink tint.
 - **Mix for sketch overlay**: Pulling the fader back to 50–70% overlays the hatching texture onto the source video, creating a drawing-over-footage effect.
 - **Feedback routing**: Sending Burin's output back to its input creates recursive crosshatching — each pass adds another layer of line structure, filling the image with increasingly complex woven textures.
@@ -292,10 +292,10 @@ These exercises build from basic line hatching through the full crosshatching vo
 | **Crosshatching** | A shading technique using two or more sets of intersecting parallel lines to represent tonal gradations. |
 | **Duotone** | A rendering mode that combines two color sources — here, the engraving ink color and the source video's chrominance. |
 | **Intaglio** | A family of printmaking techniques where the image is incised into a surface; ink is held in the grooves and transferred under pressure. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator used here to create stochastic plate wear effects. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Lozenge** | A small diamond-shaped area of unprinted paper visible in the densest crosshatch zones where four line sets overlap. |
-| **Luminance** | The brightness component (Y channel) of a YUV video signal, measured on a 0–1023 scale in 10-bit video. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Mezzotint** | An intaglio printmaking technique that produces tonal images by working from dark to light, creating white lines on a dark ground. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), used as the native format in video processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

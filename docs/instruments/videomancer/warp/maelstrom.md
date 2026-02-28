@@ -4,7 +4,7 @@ sidebar_position: 160
 slug: /instruments/videomancer/maelstrom
 title: "Maelstrom"
 image: /img/instruments/videomancer/maelstrom/maelstrom_hero.png
-description: "Program guide for Maelstrom, a Videomancer warp program for the LZX video synthesizer."
+description: "Every pixel in a video frame has a position."
 ---
 
 import maelstrom_before_after from '/img/instruments/videomancer/maelstrom/maelstrom_before_after.png';
@@ -288,13 +288,13 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 | Term | Definition |
 |------|------------|
 | **Alpha-max-plus-beta-min** | A fast approximation for Euclidean distance using only comparisons, additions, and bit shifts. Error is typically under 4%. |
-| **BRAM** | Block RAM; dedicated memory tiles on the FPGA used here for 2048×10 scanline buffers. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Displacement** | Shifting a pixel's read address relative to its write address, causing spatial warping of the image. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline in real time. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends dry and wet signals based on the Mix parameter. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Lissajous** | A family of curves traced by combining sinusoidal motions at different frequencies on perpendicular axes. Used here for center drift. |
-| **Pipeline** | A series of sequential processing stages, each completing one clock cycle of work before passing results to the next stage. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quarter-wave LUT** | A lookup table storing one quarter of a sine wave (0° to 90°); the full waveform is reconstructed by quadrant folding and sign inversion. |
 | **Scanline buffer** | A memory that stores one horizontal line of video, enabling displaced horizontal reads for spatial warping. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline at 10-bit precision. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

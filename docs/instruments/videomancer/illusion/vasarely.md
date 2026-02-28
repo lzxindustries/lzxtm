@@ -4,7 +4,7 @@ sidebar_position: 272
 slug: /instruments/videomancer/vasarely
 title: "Vasarely"
 image: /img/instruments/videomancer/vasarely/vasarely_hero.png
-description: "Program guide for Vasarely, a Videomancer illusion program for the LZX video synthesizer."
+description: "Victor Vasarely (1906–1997) was the father of Op Art — a movement that used precise geometric patterns and optical illusions to create the sensation of ..."
 ---
 
 import vasarely_before_after from '/img/instruments/videomancer/vasarely/vasarely_before_after.png';
@@ -60,9 +60,9 @@ Each grid pattern is computed from the deformed cell coordinates. A checkerboard
 
 Hard-edged grid transitions — pixel is either on or off — create jagged, aliased boundaries that shimmer distractingly under motion. Vasarely's Smooth control applies a soft transition zone at the grid cell boundaries, replacing the hard threshold with a gradual ramp. This anti-aliasing is computed by measuring how close the fractional cell coordinate is to the threshold and applying a smoothstep function that transitions from 0 to 1 over a narrow band. The result is visually smoother grid lines that remain stable under animation and video motion.
 
-### Colour and Contrast in Op Art
+### Color and Contrast in Op Art
 
-Vasarely's original works used carefully chosen colour pairs — often complementary colours like orange and blue, or black and white — to maximise the optical illusion. Higher contrast between the grid foreground and background strengthens the depth illusion because the visual system relies on contrast boundaries to estimate surface curvature. The Contrast control in this program adjusts the intensity difference between the grid's black and white states, while the Color mode toggle switches between pure monochrome (replacing the input) and a mode that preserves the input's chrominance within the grid cells, allowing the video content to show through the geometric framework.
+Vasarely's original works used carefully chosen color pairs — often complementary colors like orange and blue, or black and white — to maximise the optical illusion. Higher contrast between the grid foreground and background strengthens the depth illusion because the visual system relies on contrast boundaries to estimate surface curvature. The Contrast control in this program adjusts the intensity difference between the grid's black and white states, while the Color mode toggle switches between pure monochrome (replacing the input) and a mode that preserves the input's chrominance within the grid cells, allowing the video content to show through the geometric framework.
 
 
 ---
@@ -169,7 +169,7 @@ Controls the vertical position of the bulge centre point. At 50%, the centre is 
 | Default | 50% |
 | Suffix | % |
 
-Controls the black/white intensity range of the grid pattern. At low contrast, the grid cells transition between dark grey and light grey — a subtle overlay that hints at geometry without dominating. As Contrast increases, the dark cells approach black and the light cells approach white, creating maximum visual impact. High contrast strengthens the Op Art illusion because the visual system responds more strongly to sharp luminance boundaries.
+Controls the black/white intensity range of the grid pattern. At low contrast, the grid cells transition between dark gray and light gray — a subtle overlay that hints at geometry without dominating. As Contrast increases, the dark cells approach black and the light cells approach white, creating maximum visual impact. High contrast strengthens the Op Art illusion because the visual system responds more strongly to sharp luminance boundaries.
 
 ---
 
@@ -194,7 +194,7 @@ Controls the width of the anti-aliasing transition zone at grid cell boundaries.
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The toggle switches select the shape function and grid pattern from multiple options, control whether the grid preserves input colour, and enable animation. Shape and Grid are conceptually multi-option selectors (4 modes each), implemented through toggle combinations. Color and Animate are simple on/off switches. Bypass provides instant comparison.
+The toggle switches select the shape function and grid pattern from multiple options, control whether the grid preserves input color, and enable animation. Shape and Grid are conceptually multi-option selectors (4 modes each), implemented through toggle combinations. Color and Animate are simple on/off switches. Bypass provides instant comparison.
 
 ---
 
@@ -238,7 +238,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 <img src={vasarely_exercise2_result} alt="Ripple Field result"/>
 *Ripple Field — simulated result across source images.*
-**Source**: A colourful, high-detail scene — camera feed, nature footage, or a busy graphic.
+**Source**: A colorful, high-detail scene — camera feed, nature footage, or a busy graphic.
 
 **Objective**: Create concentric rings of grid distortion using the Ripple shape mode, combined with Color mode to let the video content show through.
 
@@ -249,7 +249,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 5. **Animate**: Turn Animate On. Watch the concentric rings pulse outward as the center orbits.
 6. **Adjust smoothing**: Smooth to ~50% for elegant dot edges.
 
-**Key concepts**: Ripple mode creates concentric wave-like distortion, dot grid creates a halftone effect, colour mode preserves video content, animation adds hypnotic motion
+**Key concepts**: Ripple mode creates concentric wave-like distortion, dot grid creates a halftone effect, color mode preserves video content, animation adds hypnotic motion
 
 ---
 
@@ -280,9 +280,9 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 - **Fine grids for subtlety**: Small grid cells create a dense texture where the deformation reads as gentle curvature. Coarse grids make the deformation obvious and graphic.
 - **Off-centre for composition**: Placing the bulge centre at a rule-of-thirds intersection creates more dynamically balanced compositions than dead-centre placement.
 - **Ripple for psychedelia**: The Ripple shape mode creates concentric ring distortions that, combined with animation, produce a hypnotic pulsing effect ideal for live visuals.
-- **Color mode with saturated sources**: When your input has strong colours, Color mode preserves them within the grid geometry, creating Op Art that is also colourful — something Vasarely rarely achieved in his monochrome works.
+- **Color mode with saturated sources**: When your input has strong colors, Color mode preserves them within the grid geometry, creating Op Art that is also colorful — something Vasarely rarely achieved in his monochrome works.
 - **Contrast as mood control**: Low contrast produces meditative, soft-geometry overlays. High contrast produces aggressive, attention-demanding patterns — adjust to match the energy of your performance.
-- **Layer with other programs**: Vasarely's purely geometric grid pairs well with upstream video effects — feeding distorted, colour-shifted, or feedback-processed video through the grid creates complex layered compositions.
+- **Layer with other programs**: Vasarely's purely geometric grid pairs well with upstream video effects — feeding distorted, color-shifted, or feedback-processed video through the grid creates complex layered compositions.
 - **Animate for live visuals**: The orbiting centre creates continuous visual interest without any manual control input — ideal for installations or VJ sets where hands-off operation is needed.
 
 ---
@@ -301,4 +301,4 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 | **Smoothstep** | A sigmoid-like interpolation function used for anti-aliasing: smoothstep(t) = 3t² − 2t³. |
 | **Victor Vasarely** | Hungarian-French artist (1906–1997), founder of the Op Art movement and pioneer of geometric abstraction. |
 | **XOR** | Exclusive OR; a boolean operation that returns true when its inputs differ, used to generate the checkerboard pattern from cell coordinates. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

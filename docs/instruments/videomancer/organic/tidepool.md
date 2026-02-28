@@ -4,7 +4,7 @@ sidebar_position: 263
 slug: /instruments/videomancer/tidepool
 title: "Tidepool"
 image: /img/instruments/videomancer/tidepool/tidepool_hero.png
-description: "Program guide for Tidepool, a Videomancer organic program for the LZX video synthesizer."
+description: "Drop a stone into still water and concentric circles expand outward."
 ---
 
 import tidepool_animation from '/img/instruments/videomancer/tidepool/tidepool_animation.gif';
@@ -281,16 +281,16 @@ These exercises progress from simple single-source rings to complex four-source 
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation BT.601 defining standard-definition YUV color encoding with separate luminance and chrominance channels. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Constructive Interference** | The reinforcement that occurs when two or more wave crests coincide, producing a combined amplitude greater than either wave alone. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented by a fixed frequency constant each clock cycle. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Destructive Interference** | The cancellation that occurs when a wave crest coincides with a wave trough, reducing the combined amplitude. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Tidepool processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Interference Pattern** | The spatial distribution of constructive and destructive wave interactions, producing alternating bright and dark fringes. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|dx| + |dy|); produces diamond-shaped contours instead of circular. |
 | **Moiré Pattern** | A secondary large-scale pattern that emerges when two sets of fine periodic structures overlap with slightly different frequencies. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Superposition** | The principle that the combined amplitude of overlapping waves equals the sum of their individual amplitudes at each point. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used as an approximation to a sine wave for distance-to-amplitude mapping. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

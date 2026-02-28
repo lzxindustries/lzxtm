@@ -4,7 +4,7 @@ sidebar_position: 55
 slug: /instruments/videomancer/contour
 title: "Contour"
 image: /img/instruments/videomancer/contour/contour_hero.png
-description: "Program guide for Contour, a Videomancer edges program for the LZX video synthesizer."
+description: "A topographic map turns continuous terrain into a set of discrete elevation lines."
 ---
 
 import contour_hero from '/img/instruments/videomancer/contour/contour_hero.png';
@@ -80,7 +80,7 @@ Input Video (YUV 4:4:4)
 │   ├─ Index test: (level AND index_mask) == 0 → index contour
 │   ├─ Contour luma: index → full brightness, regular → half
 │   ├─ Contour chroma: mono (U=V=512) or colored (U + offset)
-│   └─ Fill selection: source video or flat-brightness grey
+│   └─ Fill selection: source video or flat-brightness gray
 │
 ├── Stage 4: Composite Output ──────────────────────────────────
 │   │
@@ -148,7 +148,7 @@ Controls the frequency of index (major) contour lines. The control sets a bitmas
 | Default | 50% |
 | Suffix | % |
 
-Sets the fill brightness used when the Style toggle selects flat fill mode. In flat fill mode, the area between contour lines is rendered as a uniform grey whose brightness is set by this control. At low values the fill is dark, making bright contour lines stand out against a near-black background. At high values the fill approaches white and the contour lines appear as dark interruptions in a bright field. When the Style toggle selects source fill, this control has no visible effect — the original video fills the spaces between contour lines.
+Sets the fill brightness used when the Style toggle selects flat fill mode. In flat fill mode, the area between contour lines is rendered as a uniform gray whose brightness is set by this control. At low values the fill is dark, making bright contour lines stand out against a near-black background. At high values the fill approaches white and the contour lines appear as dark interruptions in a bright field. When the Style toggle selects source fill, this control has no visible effect — the original video fills the spaces between contour lines.
 
 ---
 
@@ -184,7 +184,7 @@ Reserved for future use. Adjusting this control has no effect on the current pro
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control independent aspects of the contour rendering. Style selects whether the fill between contour lines shows the original source video or a flat-brightness grey. Color enables or disables the index contour hierarchy. Fill enables or disables chroma tinting of contour lines. Animate is reserved. Bypass routes the original signal around the entire processing chain for A/B comparison.
+The five toggles control independent aspects of the contour rendering. Style selects whether the fill between contour lines shows the original source video or a flat-brightness gray. Color enables or disables the index contour hierarchy. Fill enables or disables chroma tinting of contour lines. Animate is reserved. Bypass routes the original signal around the entire processing chain for A/B comparison.
 
 ---
 
@@ -283,17 +283,17 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; a dedicated memory resource on the FPGA used here for the video line buffer that stores quantized luma from the previous scan line. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Contour Line** | A curve connecting points of equal value; in this program, points of equal quantized luminance. |
 | **Index Contour** | A bold contour line marking a major interval, drawn at full brightness versus the half brightness of regular contour lines. |
-| **Interpolator** | A hardware module that computes a weighted average between two values; used here for the wet/dry mix stage. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Iso-Luminance** | A surface or line of constant brightness, analogous to an iso-altitude line on a topographic map. |
 | **Line Buffer** | A BRAM-based delay that stores one full scan line of data, enabling vertical neighbor comparison between consecutive lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage operates on one clock cycle; this program uses an 8-clock pipeline. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by discarding low-order bits. |
 | **Topographic Map** | A map that uses contour lines to represent the shape and elevation of terrain; the visual metaphor for this program. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 
 ---

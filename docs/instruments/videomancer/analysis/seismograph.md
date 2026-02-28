@@ -4,7 +4,7 @@ sidebar_position: 229
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero.png
-description: "Program guide for Seismograph, a Videomancer analysis program for the LZX video synthesizer."
+description: "Before digital oscilloscopes and computer displays, scientific instruments recorded data by dragging an inked pen across a moving strip of paper."
 ---
 
 import seismograph_before_after from '/img/instruments/videomancer/seismograph/seismograph_before_after.png';
@@ -295,7 +295,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | Term | Definition |
 |------|------------|
 | **Band** | One horizontal subdivision of the screen, containing a single trace channel; height = screen height / trace count. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the line buffer that stores pen positions for persistence. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Chart Recorder** | An analog instrument that records measured values as continuous pen traces on advancing paper. |
 | **Deflection** | The vertical displacement of the pen from the band center, proportional to the sampled luminance value. |
 | **Fill-Under** | Coloring the area between a trace curve and its baseline (band center), creating an area chart visualization. |
@@ -308,4 +308,4 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | **Persistence** | The visual trail left by a trace as it moves, created by blending current and previous pen positions — analogous to phosphor afterglow. |
 | **Scroll** | The continuous horizontal advancement of the chart, simulating paper advancing past a stationary pen. |
 | **Trace** | A continuous line drawn by the pen, representing the sampled luminance value over the horizontal extent of each band. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

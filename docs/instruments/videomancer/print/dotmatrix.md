@@ -4,7 +4,7 @@ sidebar_position: 77
 slug: /instruments/videomancer/dotmatrix
 title: "Dotmatrix"
 image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero.png
-description: "Program guide for Dotmatrix, a Videomancer print program for the LZX video synthesizer."
+description: "Before inkjet printers and laser engines, the dominant output device for personal computers was the impact dot-matrix printer."
 ---
 
 import dotmatrix_hero from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero.png';
@@ -68,8 +68,8 @@ Input Video (YUV 4:4:4)
 ├── Stage 1: Input Register + Parameter Latch
 │   ├─ Latch parameters from SPI registers
 │   ├─ Derive grid mask, shift, half_cell from head_type
-│   ├─ Compute paper colour (Y/U/V) from paper_hue
-│   ├─ Compute ink colour (Y/U/V) from ink_dens + ribbon fade
+│   ├─ Compute paper color (Y/U/V) from paper_hue
+│   ├─ Compute ink color (Y/U/V) from ink_dens + ribbon fade
 │   ├─ Position counters (h_count, v_count)
 │   ├─ LFSR advance (16-bit Galois, taps 16,14,13,11)
 │   └─ DDS sweep position advance (per frame)
@@ -89,9 +89,9 @@ Input Video (YUV 4:4:4)
 │   ├─ s_is_draft_skip = draft AND h_count(0)
 │   └─ s_is_swept = sweep reveal check (row + column, bidi alternation)
 │
-├── Stage 4: Colour Composite
-│   ├─ if (is_dot AND NOT draft_skip AND is_swept): output ink colour
-│   └─ else: output paper colour
+├── Stage 4: Color Composite
+│   ├─ if (is_dot AND NOT draft_skip AND is_swept): output ink color
+│   └─ else: output paper color
 │
 ├── Interpolator Stage (4 clocks × 3 channels)
 │   ├─ mix_y: lerp(dry_y, comp_y, mix_amount)
@@ -289,13 +289,13 @@ These exercises progress from basic halftone rendering to animated print simulat
 | Term | Definition |
 |------|------------|
 | **Bidirectional Printing** | A printing mode where the head prints in both directions (left-to-right and right-to-left) to increase throughput, potentially introducing slight row misalignment. |
-| **DDS** | Direct Digital Synthesis; a frequency accumulator technique used here to generate the sweep position at a programmable rate. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Draft Mode** | A reduced-quality print mode that skips alternate columns to double effective printing speed at the cost of horizontal resolution. |
 | **Halftone** | A reprographic technique that simulates continuous tone through dots of varying size arranged on a regular grid. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that produces deterministic noise sequences used for dot jitter. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|dx| + |dy|), producing diamond-shaped distance contours rather than circles. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Ribbon Fade** | The gradual depletion of ink from a printer ribbon with use, producing progressively lighter dot impacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

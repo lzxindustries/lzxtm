@@ -4,7 +4,7 @@ sidebar_position: 287
 slug: /instruments/videomancer/xero
 title: "Xero"
 image: /img/instruments/videomancer/xero/xero_hero.png
-description: "Program guide for Xero, a Videomancer print program for the LZX video synthesizer."
+description: "Before digital networking, the photocopier was the medium of underground publishing."
 ---
 
 import xero_before_after from '/img/instruments/videomancer/xero/xero_before_after.png';
@@ -293,7 +293,7 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 | **Fuser** | The heated roller in a photocopier that melts toner particles onto paper; defects cause vertical streak artifacts. |
 | **Generation Loss** | Progressive degradation of image quality when a copy is made from a copy, modeled as an S-curve contrast function. |
 | **Laplacian** | A spatial second-derivative operator that detects edges; here implemented as a 3-pixel horizontal kernel. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for toner grain noise and fuser streak position. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Photoconductor** | The light-sensitive drum in a xerographic copier that holds the electrostatic image pattern. |
 | **S-Curve** | A sigmoidal contrast function that compresses shadows and highlights while steepening midtone contrast. |
 | **Toner** | Dry powder (polymer particles with carbon black) fused to paper by heat in xerographic copying. |

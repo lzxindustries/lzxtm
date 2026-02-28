@@ -4,7 +4,7 @@ sidebar_position: 240
 slug: /instruments/videomancer/spiro
 title: "Spiro"
 image: /img/instruments/videomancer/spiro/spiro_hero.png
-description: "Program guide for Spiro, a Videomancer curve program for the LZX video synthesizer."
+description: "The Spirograph — that beloved plastic drawing toy invented by Denys Fisher in 1965 — works by rolling a toothed wheel inside (or around) a larger toothe..."
 ---
 
 import spiro_animation from '/img/instruments/videomancer/spiro/spiro_animation.gif';
@@ -278,7 +278,7 @@ These exercises progress from simple static figures through evolving morphing cu
 - **Speed affects density**: Low Draw Speed values stamp fewer points per frame, making the curve appear as a dotted line. High values provide smooth, dense curves but trace the full figure faster.
 - **Epitrochoid for lobes**: Epitrochoid mode tends to produce outward-looping, flower-like curves compared to the inward-cusping stars of hypotrochoid mode. The visual difference is most dramatic with gear ratios where the numerator and denominator are close in value.
 - **Video Mod for organic flavour**: Even subtle video modulation — especially from slowly moving footage — adds a gentle wobble that makes the mathematical curves feel alive and hand-drawn.
-- **Rainbow hue cycling**: The hue palette cycles automatically. Adjust Hue Offset to start the cycle at a preferred colour range (warm reds, cool blues, etc.).
+- **Rainbow hue cycling**: The hue palette cycles automatically. Adjust Hue Offset to start the cycle at a preferred color range (warm reds, cool blues, etc.).
 - **Mix for overlay**: At 50–70% Mix, the curve floats translucently over the input video, creating a distinctive layered aesthetic suitable for live performance.
 
 ---
@@ -287,10 +287,10 @@ These exercises progress from simple static figures through evolving morphing cu
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the persistent 128×96 one-bit canvas. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Canvas** | The 128×96 one-bit bitmap stored in BRAM where trail points are accumulated. |
 | **Cusp** | A pointed feature on a hypotrochoid curve where the pen direction reverses sharply. |
-| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Epitrochoid** | The curve traced by a point on a circle rolling outside a fixed circle. |
 | **Gear Ratio** | The ratio r/R of the rolling wheel radius to the fixed ring radius, determining the number of lobes or cusps in the figure. |
 | **Hypotrochoid** | The curve traced by a point on a circle rolling inside a fixed circle. |

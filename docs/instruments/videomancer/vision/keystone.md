@@ -4,7 +4,7 @@ sidebar_position: 137
 slug: /instruments/videomancer/keystone
 title: "Keystone"
 image: /img/instruments/videomancer/keystone/keystone_hero.png
-description: "Program guide for Keystone, a Videomancer vision program for the LZX video synthesizer."
+description: "Most video is captured as a rectangle, and most displays reproduce it as a rectangle."
 ---
 
 import keystone_before_after from '/img/instruments/videomancer/keystone/keystone_before_after.png';
@@ -273,16 +273,16 @@ These exercises progress from simple skew to animated compound transforms, build
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **DDA** | Digital Differential Analyzer; an incremental algorithm for stepping through coordinates at a variable sampling rate. |
 | **Foreshortening** | The apparent compression of an object's dimension when viewed at an angle; perspective convergence. |
 | **Line Buffer** | A single-scanline memory that stores one row of pixel data for non-sequential readout. |
 | **LUT** | Look-Up Table; a pre-computed array of values indexed by an input to avoid runtime calculation (used here for sine wave). |
 | **Parallelogram** | A quadrilateral with two pairs of parallel sides; the result of a purely-shear (skew) transform applied to a rectangle. |
 | **Ping-Pong** | A dual-buffer scheme where one buffer is written while the other is read, alternating each scanline. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Shear** | A geometric transformation that displaces each point by an amount proportional to its distance from a reference axis. |
 | **Trapezoid** | A quadrilateral with one pair of parallel sides; the result of a perspective distortion applied to a rectangle. |
 | **Vanishing Point** | The point in a perspective projection where parallel lines appear to converge; configured by the VP Y control. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

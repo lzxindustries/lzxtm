@@ -4,7 +4,7 @@ sidebar_position: 170
 slug: /instruments/videomancer/mitosis
 title: "Mitosis"
 image: /img/instruments/videomancer/mitosis/mitosis_hero.png
-description: "Program guide for Mitosis, a Videomancer organic program for the LZX video synthesizer."
+description: "Mitosis is a 2D cellular automaton engine that evolves a pixel grid through discrete generations according to configurable birth and survival rules."
 ---
 
 import mitosis_animation from '/img/instruments/videomancer/mitosis/mitosis_animation.gif';
@@ -293,17 +293,17 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the ping-pong cell state buffers. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Cardinal Neighbors** | The four cells directly up, down, left, and right of a given cell. |
 | **Cellular Automaton (CA)** | A grid of cells evolving in discrete steps according to local rules examining neighbor states. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Decay** | The gradual transition from alive through intermediate dying states to dead, creating visual trails. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Frame Skip** | Holding the automaton state unchanged for multiple video frames to slow visible evolution rate. |
 | **Generation** | One complete update cycle of the cellular automaton, where every cell evaluates its neighborhood and transitions. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Moore Neighborhood** | The eight cells surrounding a given cell in a 2D grid (four cardinal + four diagonal). |
 | **Ping-Pong Buffer** | Two memory banks alternating between read and write roles each frame to avoid conflicts. |
-| **Pipeline** | A chain of processing stages executing one operation per clock cycle with fixed total latency. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V); used throughout the Videomancer pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

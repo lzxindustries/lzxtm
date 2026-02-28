@@ -4,7 +4,7 @@ sidebar_position: 5
 slug: /instruments/videomancer/amoeba
 title: "Amoeba"
 image: /img/instruments/videomancer/amoeba/amoeba_hero.png
-description: "Program guide for Amoeba, a Videomancer organic program for the LZX video synthesizer."
+description: "Amoeba is a metaball isosurface engine."
 ---
 
 import amoeba_hero from '/img/instruments/videomancer/amoeba/amoeba_hero.png';
@@ -19,19 +19,19 @@ import amoeba_exercise3_result from '/img/instruments/videomancer/amoeba/amoeba_
 <span class="head2_nolink">Videomancer Program Guide</span>
 
 <img src={amoeba_hero} alt="Amoeba hero image"/>
-*Amoeba rendering two Lissajous-orbit metaballs in rainbow mode â€” the blobs merge and split organically as their orbits intersect, with bright skin outlines tracing the isosurface boundary.*
+*Amoeba rendering two Lissajous-orbit metaballs in rainbow mode — the blobs merge and split organically as their orbits intersect, with bright skin outlines tracing the isosurface boundary.*
 <img src={amoeba_animation} alt="Amoeba animated output"/>
-*Amoeba output evolving over multiple frames â€” synthesis programs generate imagery without requiring a video input source.*
+*Amoeba output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
 ## Overview
 
-Amoeba is a metaball isosurface engine. Up to two animated blobs orbit the screen center on independent Lissajous curves, and for every pixel the program computes the cumulative field potential â€” the sum of inverse-square distance contributions from each active blob center. The resulting scalar field is classified into three zones: inside (field above threshold), skin (field within a configurable band below threshold), and outside (field below the skin boundary). Each zone is colored differently, producing the characteristic metaball visual: discrete circles that smoothly merge into organic shapes as they approach one another.
+Amoeba is a metaball isosurface engine. Up to two animated blobs orbit the screen center on independent Lissajous curves, and for every pixel the program computes the cumulative field potential — the sum of inverse-square distance contributions from each active blob center. The resulting scalar field is classified into three zones: inside (field above threshold), skin (field within a configurable band below threshold), and outside (field below the skin boundary). Each zone is colored differently, producing the characteristic metaball visual: discrete circles that smoothly merge into organic shapes as they approach one another.
 
-The name *Amoeba* describes the visual result exactly. A single-celled amoeba has no fixed shape â€” its membrane deforms and extends pseudopods as internal forces push it outward. Metaballs behave the same way: when two blob fields overlap, the isosurface between them bulges outward and merges, creating a bridge that looks like a cell dividing in reverse. Reduce the threshold and the blobs separate into independent circles; increase it and they fuse into a single amorphous mass.
+The name *Amoeba* describes the visual result exactly. A single-celled amoeba has no fixed shape — its membrane deforms and extends pseudopods as internal forces push it outward. Metaballs behave the same way: when two blob fields overlap, the isosurface between them bulges outward and merges, creating a bridge that looks like a cell dividing in reverse. Reduce the threshold and the blobs separate into independent circles; increase it and they fuse into a single amorphous mass.
 
-At conservative settings â€” a single blob, slow speed, wide skin â€” the screen shows a cleanly defined circle gliding across the frame. At extreme settings â€” two blobs, high speed, narrow skin, rainbow colour, outline enabled â€” the metaball boundaries trace rapidly evolving organic contours in vivid colour against a black background, creating complex abstract patterns reminiscent of lava-lamp fluid dynamics or microscope footage of living cells.
+At conservative settings — a single blob, slow speed, wide skin — the screen shows a cleanly defined circle gliding across the frame. At extreme settings — two blobs, high speed, narrow skin, rainbow color, outline enabled — the metaball boundaries trace rapidly evolving organic contours in vivid color against a black background, creating complex abstract patterns reminiscent of lava-lamp fluid dynamics or microscope footage of living cells.
 
 ---
 
@@ -39,7 +39,7 @@ At conservative settings â€” a single blob, slow speed, wide skin â€” 
 
 ### What Are Metaballs?
 
-**Metaballs** are a technique from computer graphics for modeling soft, organic shapes. Each metaball is defined by a center point and a field function â€” typically an inverse-square or inverse-power-of-distance function that produces a large value near the center and falls off rapidly with distance. At any point in space, the total field is the sum of contributions from all nearby metaballs. An isosurface is drawn at a chosen threshold value: points where the total field exceeds the threshold are "inside" the surface, and points where it falls below are "outside."
+**Metaballs** are a technique from computer graphics for modeling soft, organic shapes. Each metaball is defined by a center point and a field function — typically an inverse-square or inverse-power-of-distance function that produces a large value near the center and falls off rapidly with distance. At any point in space, the total field is the sum of contributions from all nearby metaballs. An isosurface is drawn at a chosen threshold value: points where the total field exceeds the threshold are "inside" the surface, and points where it falls below are "outside."
 
 The defining characteristic of metaballs is their merging behaviour. When two metaballs are far apart, each produces an independent circular (or spherical, in 3D) isosurface. As they approach each other, the overlapping fields add together, causing the isosurface to bulge outward between them. At a critical proximity, the two surfaces bridge and merge into a single continuous shape. This produces the smooth, fluid merging and splitting that makes metaballs look organic rather than geometric.
 
@@ -47,7 +47,7 @@ In this program, the field function is implemented as a 32-entry lookup table ma
 
 ### What Are Lissajous Curves?
 
-A **Lissajous curve** is the path traced by a point whose X and Y coordinates oscillate sinusoidally at different frequencies. If the X frequency is $f_x$ and the Y frequency is $f_y$, the resulting path depends on the frequency ratio $f_x : f_y$. A 1:1 ratio produces an ellipse (or circle, or line, depending on phase). A 1:2 ratio produces a figure-eight. Other ratios produce more complex curves â€” the higher the ratio integers, the more intricate the path.
+A **Lissajous curve** is the path traced by a point whose X and Y coordinates oscillate sinusoidally at different frequencies. If the X frequency is $f_x$ and the Y frequency is $f_y$, the resulting path depends on the frequency ratio $f_x : f_y$. A 1:1 ratio produces an ellipse (or circle, or line, depending on phase). A 1:2 ratio produces a figure-eight. Other ratios produce more complex curves — the higher the ratio integers, the more intricate the path.
 
 In this program, each of the two blobs has a fixed frequency ratio that determines its orbital path:
 
@@ -60,17 +60,17 @@ The speed parameter controls the phase increment per frame, applied to both blob
 
 ### What Is Isosurface Classification?
 
-In a scalar field, an **isosurface** is the set of all points where the field has a particular value. For 2D metaballs, this is more precisely an isoline â€” a contour line at the threshold level. Points are classified into three zones:
+In a scalar field, an **isosurface** is the set of all points where the field has a particular value. For 2D metaballs, this is more precisely an isoline — a contour line at the threshold level. Points are classified into three zones:
 
-- **Inside**: field value â‰¥ threshold. These points are within the metaball body.
-- **Skin**: field value between (threshold âˆ’ skin_width) and threshold. These points form a band around the isosurface boundary.
-- **Outside**: field value < (threshold âˆ’ skin_width). These points are in empty space.
+- **Inside**: field value ≥ threshold. These points are within the metaball body.
+- **Skin**: field value between (threshold − skin_width) and threshold. These points form a band around the isosurface boundary.
+- **Outside**: field value < (threshold − skin_width). These points are in empty space.
 
-The skin zone is what gives metaballs their visible boundary. Without it, there is only a binary inside/outside distinction. By controlling the skin width, the user adjusts how wide the transition band is around the metaball surface â€” a wide skin produces soft, glowing edges; a narrow skin produces sharp contour lines.
+The skin zone is what gives metaballs their visible boundary. Without it, there is only a binary inside/outside distinction. By controlling the skin width, the user adjusts how wide the transition band is around the metaball surface — a wide skin produces soft, glowing edges; a narrow skin produces sharp contour lines.
 
 ### What Is the Inverse-Square Field Function?
 
-The **inverse-square law** describes quantities that decrease with the square of the distance from a source â€” gravity, electric field strength, and light intensity all follow this relationship. For metaballs, the field function $f(r) = k / r^2$ produces a strong contribution near the blob center that falls off rapidly with distance. This gives each blob a well-defined "zone of influence" that extends only a few multiples of its effective radius.
+The **inverse-square law** describes quantities that decrease with the square of the distance from a source — gravity, electric field strength, and light intensity all follow this relationship. For metaballs, the field function $f(r) = k / r^2$ produces a strong contribution near the blob center that falls off rapidly with distance. This gives each blob a well-defined "zone of influence" that extends only a few multiples of its effective radius.
 
 The program implements this function as a precomputed lookup table indexed by the scaled squared distance. The squared distance is computed directly from the pixel-to-center offsets (avoiding the need for a square root), shifted right by a configurable amount based on the Blob Size parameter. Larger blob sizes shift less (producing a wider field), smaller sizes shift more (concentrating the field close to the center).
 
@@ -80,178 +80,178 @@ The program implements this function as a precomputed lookup table indexed by th
 ## Signal Flow
 
 ```
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  Vblank Computation (blob center update)                         â”‚
-â”‚                                                                  â”‚
-â”‚  1. Phase Accumulator Update                                     â”‚
-â”‚     â”œâ”€ For each blob: phase_x += speed Ã— freq_x                 â”‚
-â”‚     â”œâ”€ For each blob: phase_y += speed Ã— freq_y                 â”‚
-â”‚     â””â”€ 16-bit wrapping â†’ smooth continuous orbits                â”‚
-â”‚           â—„â”€â”€ Speed (pot 3)                                      â”‚
-â”‚                                                                  â”‚
-â”‚  2. Blob Center Computation (5 phases per blob, sequential)      â”‚
-â”‚     â”œâ”€ Phase 0: Sine X lookup â†’ register                        â”‚
-â”‚     â”œâ”€ Phase 1: Multiply X â†’ register; Sine Y lookup â†’ register â”‚
-â”‚     â”œâ”€ Phase 2: cx = mult_x >> 4 + 640; Multiply Y â†’ register   â”‚
-â”‚     â”œâ”€ Phase 3: cy = mult_y >> 4 + 360                            â”‚
-â”‚     â””â”€ Phase 4: Advance to next blob or finish                  â”‚
-â”‚           â—„â”€â”€ Blob Size (pot 1), Count (pot 6)                   â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+┌──────────────────────────────────────────────────────────────────┐
+│  Vblank Computation (blob center update)                         │
+│                                                                  │
+│  1. Phase Accumulator Update                                     │
+│     ├─ For each blob: phase_x += speed × freq_x                 │
+│     ├─ For each blob: phase_y += speed × freq_y                 │
+│     └─ 16-bit wrapping → smooth continuous orbits                │
+│           ◄── Speed (pot 3)                                      │
+│                                                                  │
+│  2. Blob Center Computation (5 phases per blob, sequential)      │
+│     ├─ Phase 0: Sine X lookup → register                        │
+│     ├─ Phase 1: Multiply X → register; Sine Y lookup → register │
+│     ├─ Phase 2: cx = mult_x >> 4 + 640; Multiply Y → register   │
+│     ├─ Phase 3: cy = mult_y >> 4 + 360                            │
+│     └─ Phase 4: Advance to next blob or finish                  │
+│           ◄── Blob Size (pot 1), Count (pot 6)                   │
+└──────────────────────────────────────────────────────────────────┘
 
-â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-â”‚  Active Video Pipeline (15 clocks total)                         â”‚
-â”‚                                                                  â”‚
-â”‚  Input Video (YUV 4:4:4 30-bit)                                  â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage A (1 clk): Subtract + absolute value                   â”‚
-â”‚  â”‚   â””â”€ dx[i] = |h_count - cx[i]|, dy[i] = |v_count - cy[i]|   â”‚
-â”‚  â”‚       (both blobs in parallel, truncated to 6 bits via >>5)   â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage B (1 clk): Square multiply (6Ã—6)                       â”‚
-â”‚  â”‚   â””â”€ dx_sq[i] = dx[i]Â², dy_sq[i] = dy[i]Â²                   â”‚
-â”‚  â”‚       (both blobs in parallel)                                â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage C1 (1 clk): Sum                                        â”‚
-â”‚  â”‚   â””â”€ dist[i] = dx_sq[i] + dy_sq[i]                           â”‚
-â”‚  â”‚       (both blobs in parallel)                                â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage C2 (1 clk): Dynamic shift + clamp                      â”‚
-â”‚  â”‚   â”œâ”€ index[i] = dist[i] >> blob_size[9:7]                    â”‚
-â”‚  â”‚   â””â”€ clamp index to [0, 31]                                  â”‚
-â”‚  â”‚         â—„â”€â”€ Blob Size (pot 1)                                 â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage D (1 clk): 1/dÂ² LUT lookup                             â”‚
-â”‚  â”‚   â””â”€ contrib[i] = C_INV_SQ[index[i]]  (32:1 mux)            â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage E1 (1 clk): Accumulate + normalize                     â”‚
-â”‚  â”‚   â”œâ”€ field = Î£ contrib[i] for active blobs                   â”‚
-â”‚  â”‚   â””â”€ field_norm = clamp(field, 0, 1023)                      â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage E1b (1 clk): Classification                            â”‚
-â”‚  â”‚   â””â”€ Classify: inside/skin/outside vs threshold               â”‚
-â”‚  â”‚         â—„â”€â”€ Threshold (pot 2), Skin Width (pot 4)             â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€ Stage E2 (1 clk): Color mapping                              â”‚
-â”‚  â”‚   â””â”€ Map zone + parameters â†’ Y/U/V                           â”‚
-â”‚  â”‚         â—„â”€â”€ Hue Shift (pot 5), Fill Mode (toggle 7),          â”‚
-â”‚  â”‚             Color (toggle 8), Source (toggle 9),              â”‚
-â”‚  â”‚             Outline (toggle 10)                               â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â”œâ”€â”€ Interpolator (4 clocks per Y/U/V)                           â”‚
-â”‚  â”‚   â””â”€ Mix = lerp(input_delayed, generated, mix_amount)         â”‚
-â”‚  â”‚         â—„â”€â”€ Mix (fader 12)                                    â”‚
-â”‚  â”‚                                                               â”‚
-â”‚  â””â”€â”€ Pipeline overhead (3 clocks)                                â”‚
-â”‚                                                                  â”‚
-â”‚  Bypass: select delayed input or mix result                      â”‚
-â”‚           â—„â”€â”€ Bypass (toggle 11)                                 â”‚
-â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+┌──────────────────────────────────────────────────────────────────┐
+│  Active Video Pipeline (15 clocks total)                         │
+│                                                                  │
+│  Input Video (YUV 4:4:4 30-bit)                                  │
+│  │                                                               │
+│  ├─ Stage A (1 clk): Subtract + absolute value                   │
+│  │   └─ dx[i] = |h_count - cx[i]|, dy[i] = |v_count - cy[i]|   │
+│  │       (both blobs in parallel, truncated to 6 bits via >>5)   │
+│  │                                                               │
+│  ├─ Stage B (1 clk): Square multiply (6×6)                       │
+│  │   └─ dx_sq[i] = dx[i]², dy_sq[i] = dy[i]²                   │
+│  │       (both blobs in parallel)                                │
+│  │                                                               │
+│  ├─ Stage C1 (1 clk): Sum                                        │
+│  │   └─ dist[i] = dx_sq[i] + dy_sq[i]                           │
+│  │       (both blobs in parallel)                                │
+│  │                                                               │
+│  ├─ Stage C2 (1 clk): Dynamic shift + clamp                      │
+│  │   ├─ index[i] = dist[i] >> blob_size[9:7]                    │
+│  │   └─ clamp index to [0, 31]                                  │
+│  │         ◄── Blob Size (pot 1)                                 │
+│  │                                                               │
+│  ├─ Stage D (1 clk): 1/d² LUT lookup                             │
+│  │   └─ contrib[i] = C_INV_SQ[index[i]]  (32:1 mux)            │
+│  │                                                               │
+│  ├─ Stage E1 (1 clk): Accumulate + normalize                     │
+│  │   ├─ field = Σ contrib[i] for active blobs                   │
+│  │   └─ field_norm = clamp(field, 0, 1023)                      │
+│  │                                                               │
+│  ├─ Stage E1b (1 clk): Classification                            │
+│  │   └─ Classify: inside/skin/outside vs threshold               │
+│  │         ◄── Threshold (pot 2), Skin Width (pot 4)             │
+│  │                                                               │
+│  ├─ Stage E2 (1 clk): Color mapping                              │
+│  │   └─ Map zone + parameters → Y/U/V                           │
+│  │         ◄── Hue Shift (pot 5), Fill Mode (toggle 7),          │
+│  │             Color (toggle 8), Source (toggle 9),              │
+│  │             Outline (toggle 10)                               │
+│  │                                                               │
+│  ├── Interpolator (4 clocks per Y/U/V)                           │
+│  │   └─ Mix = lerp(input_delayed, generated, mix_amount)         │
+│  │         ◄── Mix (fader 12)                                    │
+│  │                                                               │
+│  └── Pipeline overhead (3 clocks)                                │
+│                                                                  │
+│  Bypass: select delayed input or mix result                      │
+│           ◄── Bypass (toggle 11)                                 │
+└──────────────────────────────────────────────────────────────────┘
 ```
 
-The processing divides cleanly into two phases. During vertical blanking, a sequential state machine cycles through both blobs (5 clock phases each) to compute their center positions using the quarter-wave sine LUT â€” this requires 10 clocks total, well within the blanking interval. During active video, the per-pixel field evaluation pipeline runs at full pixel rate, computing both blob contributions in parallel across eight pipeline stages (A, B, C1, C2, D, E1, E1b, E2).
+The processing divides cleanly into two phases. During vertical blanking, a sequential state machine cycles through both blobs (5 clock phases each) to compute their center positions using the quarter-wave sine LUT — this requires 10 clocks total, well within the blanking interval. During active video, the per-pixel field evaluation pipeline runs at full pixel rate, computing both blob contributions in parallel across eight pipeline stages (A, B, C1, C2, D, E1, E1b, E2).
 
-The field evaluation achieves full parallelism by maintaining two independent signal paths through Stages Aâ€“D. Each path computes the absolute offset, squares it, shifts it based on Blob Size, and performs the LUT lookup independently. Only in Stage E1 do the two contributions converge into a single accumulated field value for classification.
+The field evaluation achieves full parallelism by maintaining two independent signal paths through Stages A–D. Each path computes the absolute offset, squares it, shifts it based on Blob Size, and performs the LUT lookup independently. Only in Stage E1 do the two contributions converge into a single accumulated field value for classification.
 
-The 1/dÂ² LUT provides a critical optimization: instead of performing a division per blob per pixel (which would be prohibitively expensive in the iCE40), the squared distance is used directly as an index into a precomputed 32-entry table. The Blob Size parameter's upper 3 bits control how many bits of right-shift are applied before the LUT lookup, effectively scaling the field radius without changing the LUT contents.
+The 1/d² LUT provides a critical optimization: instead of performing a division per blob per pixel (which would be prohibitively expensive in the iCE40), the squared distance is used directly as an index into a precomputed 32-entry table. The Blob Size parameter's upper 3 bits control how many bits of right-shift are applied before the LUT lookup, effectively scaling the field radius without changing the LUT contents.
 
 ---
 
 ## Parameter Reference
 
 <img src={amoeba_control_panel} alt="Videomancer front panel with Amoeba loaded"/>
-*Videomancer's front panel with Amoeba active. Knobs 1â€“6 (top two rows of left cluster), Toggle switches 7â€“11 (bottom row of left cluster), Fader 12 (right side).*
+*Videomancer's front panel with Amoeba active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
-### Rotary Potentiometers (Knobs 1â€“6)
+### Rotary Potentiometers (Knobs 1–6)
 
-#### Knob 1 â€” Blob Size
+#### Knob 1 — Blob Size
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial extent of each blob's field and the amplitude of its orbital path simultaneously. At low values, the field evaluation right-shift is large, concentrating each blob's field contribution into a small area around its center â€” the blobs appear as small circles and must approach very closely before their fields overlap enough to merge. At high values, the field extends much farther from each center, producing larger circles that merge at greater separation distances. The orbit amplitude also scales with this parameter â€” larger blobs swing across a wider area of the frame, smaller blobs orbit near the center. The upper 3 bits of the register select the distance shift (0â€“7), providing 8 discrete size steps within the continuous pot range.
+Controls the spatial extent of each blob's field and the amplitude of its orbital path simultaneously. At low values, the field evaluation right-shift is large, concentrating each blob's field contribution into a small area around its center — the blobs appear as small circles and must approach very closely before their fields overlap enough to merge. At high values, the field extends much farther from each center, producing larger circles that merge at greater separation distances. The orbit amplitude also scales with this parameter — larger blobs swing across a wider area of the frame, smaller blobs orbit near the center. The upper 3 bits of the register select the distance shift (0–7), providing 8 discrete size steps within the continuous pot range.
 
 ---
 
-#### Knob 2 â€” Threshold
+#### Knob 2 — Threshold
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 39% |
 | Suffix | % |
 
-Sets the isosurface threshold that defines the inside/skin/outside classification boundary. At low threshold values, only pixels very close to a blob center reach the threshold â€” the visible shapes are small, tightly defined circles. At high threshold values, the field needs less contribution to qualify as "inside," so the shapes appear larger and merge at greater distances. The threshold interacts directly with Blob Size: a large blob size with a low threshold produces defined circles, while a large blob size with a high threshold produces a single amorphous merged mass. The threshold value is compared against the 12-bit accumulated field total from all active blobs.
+Sets the isosurface threshold that defines the inside/skin/outside classification boundary. At low threshold values, only pixels very close to a blob center reach the threshold — the visible shapes are small, tightly defined circles. At high threshold values, the field needs less contribution to qualify as "inside," so the shapes appear larger and merge at greater distances. The threshold interacts directly with Blob Size: a large blob size with a low threshold produces defined circles, while a large blob size with a high threshold produces a single amorphous merged mass. The threshold value is compared against the 12-bit accumulated field total from all active blobs.
 
 ---
 
-#### Knob 3 â€” Speed
+#### Knob 3 — Speed
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 25% |
 | Suffix | % |
 
-Controls the rate at which both blob phase accumulators advance per frame. At 0%, the blobs are frozen in position â€” their phase accumulators do not increment, and the metaball pattern is static. As speed increases, the Lissajous orbits evolve more rapidly. At maximum, the blobs trace their orbital paths quickly, creating rapid merge/split activity. Because each blob has a different Lissajous frequency ratio, the same speed value produces different apparent velocities â€” blob 0 (1:2 ratio) traces a figure-eight in the time blob 1 (3:1 ratio) traces a three-lobed horizontal path.
+Controls the rate at which both blob phase accumulators advance per frame. At 0%, the blobs are frozen in position — their phase accumulators do not increment, and the metaball pattern is static. As speed increases, the Lissajous orbits evolve more rapidly. At maximum, the blobs trace their orbital paths quickly, creating rapid merge/split activity. Because each blob has a different Lissajous frequency ratio, the same speed value produces different apparent velocities — blob 0 (1:2 ratio) traces a figure-eight in the time blob 1 (3:1 ratio) traces a three-lobed horizontal path.
 
 ---
 
-#### Knob 4 â€” Skin Width
+#### Knob 4 — Skin Width
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 29% |
 | Suffix | % |
 
-Controls the width of the skin classification band below the isosurface threshold. At 0%, the skin band has zero width â€” there is only inside and outside, with no visible edge transition. As skin width increases, a wider band of pixels is classified as "skin" rather than "outside," producing a broader visible edge around each metaball. With outline enabled, the skin zone renders as a bright contour line; without outline, it renders at the raw field-normalized brightness, creating a soft glow around the shape boundary. The skin width value is right-shifted by 2 bits before being subtracted from the threshold.
+Controls the width of the skin classification band below the isosurface threshold. At 0%, the skin band has zero width — there is only inside and outside, with no visible edge transition. As skin width increases, a wider band of pixels is classified as "skin" rather than "outside," producing a broader visible edge around each metaball. With outline enabled, the skin zone renders as a bright contour line; without outline, it renders at the raw field-normalized brightness, creating a soft glow around the shape boundary. The skin width value is right-shifted by 2 bits before being subtracted from the threshold.
 
 ---
 
-#### Knob 5 â€” Hue Shift
+#### Knob 5 — Hue Shift
 | Property | Value |
 |----------|-------|
-| Range | 0d â€“ 360d |
+| Range | 0d – 360d |
 | Default | 0d |
 | Suffix | d |
 
-Rotates the chroma components of the generated output. At 0Â°, the hue-shifted U and V values are at their neutral position. Rotating through 360Â° cycles through the colour spectrum. This parameter only has visible effect when Color is set to Rainbow â€” in Mono mode, all generated chroma is at midpoint regardless of hue shift. In Rainbow mode, the hue shift offsets the base U/V mapping derived from the field value, and when Outline is enabled, the skin zone uses the hue shift directly as its U value with the inverse as V, producing a coloured contour line.
+Rotates the chroma components of the generated output. At 0°, the hue-shifted U and V values are at their neutral position. Rotating through 360° cycles through the color spectrum. This parameter only has visible effect when Color is set to Rainbow — in Mono mode, all generated chroma is at midpoint regardless of hue shift. In Rainbow mode, the hue shift offsets the base U/V mapping derived from the field value, and when Outline is enabled, the skin zone uses the hue shift directly as its U value with the inverse as V, producing a colored contour line.
 
 ---
 
-#### Knob 6 â€” Count
+#### Knob 6 — Count
 | Property | Value |
 |----------|-------|
-| Range | 1 â€“ 4 |
+| Range | 1 – 4 |
 | Default | 3 |
 
-Selects how many blobs are active in the field computation: 1 or 2. The control operates in boolean mode â€” below the midpoint selects one blob, above selects two. With one blob, the output is a single circle (or circle with skin) orbiting the center on a figure-eight path. With two, merge/split events occur when the two orbital paths bring the blobs close together, creating the characteristic metaball merging behaviour.
+Selects how many blobs are active in the field computation: 1 or 2. The control operates in boolean mode — below the midpoint selects one blob, above selects two. With one blob, the output is a single circle (or circle with skin) orbiting the center on a figure-eight path. With two, merge/split events occur when the two orbital paths bring the blobs close together, creating the characteristic metaball merging behaviour.
 
 ---
 
-### Toggle Switches (Switches 7â€“11)
+### Toggle Switches (Switches 7–11)
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 â€” Fill Mode** | Solid | Hollow |
-| **8 â€” Color** | Mono | Rainbow |
-| **9 â€” Source** | Synth | Video |
-| **10 â€” Outline** | Off | On |
-| **11 â€” Bypass** | Off | On |
+| **7 — Fill Mode** | Solid | Hollow |
+| **8 — Color** | Mono | Rainbow |
+| **9 — Source** | Synth | Video |
+| **10 — Outline** | Off | On |
+| **11 — Bypass** | Off | On |
 
-The five toggle switches control **independent binary options** with no combined selector logic. Fill Mode, Color, Source, and Outline interact to create a wide range of visual styles â€” solid monochrome fills, hollow outlines, rainbow-tinted interiors, video-keyed shapes, and coloured contour lines. Bypass routes the delayed input directly to output.
+The five toggle switches control **independent binary options** with no combined selector logic. Fill Mode, Color, Source, and Outline interact to create a wide range of visual styles — solid monochrome fills, hollow outlines, rainbow-tinted interiors, video-keyed shapes, and colored contour lines. Bypass routes the delayed input directly to output.
 
 ---
 
 ### Linear Potentiometer (Fader 12)
 
-#### Fader 12 â€” Mix
+#### Fader 12 — Mix
 | Property | Value |
 |----------|-------|
-| Range | 0% â€“ 100% |
+| Range | 0% – 100% |
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input video (delayed to match the 15-clock processing pipeline) and the metaball-generated output. At 0%, the output is pure unprocessed input â€” no metaballs are visible. At 100%, the output is the fully generated metaball scene. Intermediate positions blend the two, allowing the metaball shapes to be superimposed over the source footage at any opacity. In Video source mode, this creates a partial keying effect where the metaball boundaries are visible but semi-transparent.
+Wet/dry crossfade between the original input video (delayed to match the 15-clock processing pipeline) and the metaball-generated output. At 0%, the output is pure unprocessed input — no metaballs are visible. At 100%, the output is the fully generated metaball scene. Intermediate positions blend the two, allowing the metaball shapes to be superimposed over the source footage at any opacity. In Video source mode, this creates a partial keying effect where the metaball boundaries are visible but semi-transparent.
 
 ---
 
@@ -262,15 +262,15 @@ These exercises progress from a single stationary blob through multi-blob mergin
 ### Exercise 1: Single Blob Anatomy
 
 <img src={amoeba_exercise1_result} alt="Single Blob Anatomy result"/>
-*Single Blob Anatomy â€” simulated result across source images.*
+*Single Blob Anatomy — simulated result across source images.*
 **Objective**: Understand the three-zone classification system (inside/skin/outside) and how threshold and skin width define the metaball boundary.
 
 1. **Single blob**: Set Count (Knob 6) to 1. Set Speed (Knob 3) to ~10% (slow drift). Set Mix at 100%, Bypass off.
 2. **Large blob**: Set Blob Size (Knob 1) to ~60%. A single circle drifts slowly on a figure-eight path.
-3. **Observe threshold effect**: Start with Threshold (Knob 2) at ~20%. The visible circle is small. Slowly increase threshold â€” the circle grows as more pixels exceed the threshold level. At maximum, nearly the entire screen is "inside."
-4. **Observe skin width**: Set Threshold to ~40%. Set Skin Width (Knob 4) to ~10%. A thin band of intermediate brightness surrounds the solid interior. Increase Skin Width to ~80% â€” the band widens into a broad gradient halo.
+3. **Observe threshold effect**: Start with Threshold (Knob 2) at ~20%. The visible circle is small. Slowly increase threshold — the circle grows as more pixels exceed the threshold level. At maximum, nearly the entire screen is "inside."
+4. **Observe skin width**: Set Threshold to ~40%. Set Skin Width (Knob 4) to ~10%. A thin band of intermediate brightness surrounds the solid interior. Increase Skin Width to ~80% — the band widens into a broad gradient halo.
 5. **Enable outline**: Toggle Outline (Toggle 10) on. The skin band becomes a bright white contour line. A narrow skin width produces a sharp outline; a wide skin width produces a thick glowing border.
-6. **Hollow mode**: Toggle Fill Mode (Toggle 7) to Hollow. The interior becomes black. Only the skin zone (the outline contour) is visible â€” a clean bright ring tracing the isosurface.
+6. **Hollow mode**: Toggle Fill Mode (Toggle 7) to Hollow. The interior becomes black. Only the skin zone (the outline contour) is visible — a clean bright ring tracing the isosurface.
 7. **Freeze and examine**: Set Speed to 0%. The blob stops. Examine the zones at leisure.
 
 **Key concepts**: Isosurface threshold defines shape size, skin width defines edge band, outline converts gradient to bright contour, hollow removes interior fill, zones are inside/skin/outside
@@ -280,15 +280,15 @@ These exercises progress from a single stationary blob through multi-blob mergin
 ### Exercise 2: Splitting and Merging
 
 <img src={amoeba_exercise2_result} alt="Splitting and Merging result"/>
-*Splitting and Merging â€” simulated result across source images.*
+*Splitting and Merging — simulated result across source images.*
 **Objective**: Observe metaball merging and splitting behaviour with two blobs, and understand how the isosurface boundary deforms as the blobs approach and separate.
 
 1. **Two blobs**: Set Count (Knob 6) to 2. Set Speed to ~35%, Blob Size to ~55%, Threshold to ~35%. Enable Outline (Toggle 10) so the isosurface boundary is clearly visible.
 2. **Watch for merge events**: The two blobs orbit on different Lissajous paths (blob 0 traces a figure-eight, blob 1 a three-lobed curve). When their paths bring them close together, the outlines bulge outward toward each other and eventually bridge into a single continuous contour.
 3. **Observe the split**: As the blobs separate, the bridge between them narrows into a thin neck. The neck pinches and snaps apart, restoring two independent circles. This merge-split cycle repeats every time the orbits cross.
-4. **Increase threshold**: Raise Threshold to ~55%. The blobs merge at greater distances â€” the combined field exceeds the threshold even when the centers are far apart. The shapes stay merged for longer portions of the orbit.
+4. **Increase threshold**: Raise Threshold to ~55%. The blobs merge at greater distances — the combined field exceeds the threshold even when the centers are far apart. The shapes stay merged for longer portions of the orbit.
 5. **Decrease threshold**: Lower Threshold to ~20%. The blobs must be nearly overlapping before their fields combine enough to merge. They appear as independent circles most of the time.
-6. **Rainbow colour**: Switch Color (Toggle 8) to Rainbow and set Hue Shift (Knob 5) to ~60Â°. The field gradient becomes visible as a warm colour ramp inside each blob â€” during merges, the colour gradients blend where the fields overlap, revealing how the two contributions combine.
+6. **Rainbow color**: Switch Color (Toggle 8) to Rainbow and set Hue Shift (Knob 5) to ~60°. The field gradient becomes visible as a warm color ramp inside each blob — during merges, the color gradients blend where the fields overlap, revealing how the two contributions combine.
 
 **Key concepts**: Metaball merging from overlapping inverse-square fields, isosurface boundary deformation during approach, threshold controls merge distance, outline makes boundary shape changes clearly visible
 
@@ -297,18 +297,18 @@ These exercises progress from a single stationary blob through multi-blob mergin
 ### Exercise 3: Hollow Rainbow Contours
 
 <img src={amoeba_exercise3_result} alt="Hollow Rainbow Contours result"/>
-*Hollow Rainbow Contours â€” simulated result across source images.*
-**Objective**: Create pure vector-style contour line graphics using hollow fill mode with rainbow colour, producing bright organic outlines on a black background.
+*Hollow Rainbow Contours — simulated result across source images.*
+**Objective**: Create pure vector-style contour line graphics using hollow fill mode with rainbow color, producing bright organic outlines on a black background.
 
-1. **Hollow outline setup**: Set Fill Mode (Toggle 7) to Hollow and enable Outline (Toggle 10). The blob interiors are black â€” only the skin-zone contour lines are visible.
+1. **Hollow outline setup**: Set Fill Mode (Toggle 7) to Hollow and enable Outline (Toggle 10). The blob interiors are black — only the skin-zone contour lines are visible.
 2. **Configure shapes**: Count to 2, Blob Size to ~55%, Threshold to ~35%, Speed to ~20%, Skin Width to ~30%.
-3. **Rainbow contours**: Switch Color (Toggle 8) to Rainbow. Set Hue Shift (Knob 5) to ~270Â°. The contour lines are now rendered in cool purple-blue tones that shift with the field gradient.
-4. **Observe contour merging**: Watch as the two hollow outlines drift on their Lissajous paths. When they approach, their contours bulge and connect â€” but the interior remains black, so only the merged boundary line is visible. This produces clean topological transitions.
-5. **Rotate hue**: Slowly rotate Hue Shift through 360Â°. The contour colour cycles through the full spectrum while the geometry stays constant â€” the line art changes palette without changing shape.
+3. **Rainbow contours**: Switch Color (Toggle 8) to Rainbow. Set Hue Shift (Knob 5) to ~270°. The contour lines are now rendered in cool purple-blue tones that shift with the field gradient.
+4. **Observe contour merging**: Watch as the two hollow outlines drift on their Lissajous paths. When they approach, their contours bulge and connect — but the interior remains black, so only the merged boundary line is visible. This produces clean topological transitions.
+5. **Rotate hue**: Slowly rotate Hue Shift through 360°. The contour color cycles through the full spectrum while the geometry stays constant — the line art changes palette without changing shape.
 6. **Widen skin**: Increase Skin Width to ~60%. The contour lines thicken into broad glowing bands, creating a neon-tube aesthetic. Decrease to ~10% for razor-thin lines.
-7. **Compare with solid**: Switch Fill Mode back to Solid to see the filled version of the same shapes. The hollow contour mode strips away the interior, leaving only the boundary â€” useful for overlaying on other video content via mix.
+7. **Compare with solid**: Switch Fill Mode back to Solid to see the filled version of the same shapes. The hollow contour mode strips away the interior, leaving only the boundary — useful for overlaying on other video content via mix.
 
-**Key concepts**: Hollow mode for pure contour graphics, rainbow colour maps field gradient to hue, skin width controls line thickness, outline converts gradient band to bright contour, hue shift rotates colour palette
+**Key concepts**: Hollow mode for pure contour graphics, rainbow color maps field gradient to hue, skin width controls line thickness, outline converts gradient band to bright contour, hue shift rotates color palette
 
 ---
 
@@ -317,10 +317,10 @@ These exercises progress from a single stationary blob through multi-blob mergin
 
 - **Blob Size and Threshold are the primary shape controls**: Blob Size determines the field radius, Threshold determines where the boundary is drawn. A large blob size with a low threshold produces well-separated circles. A large blob size with a high threshold produces merged amorphous shapes.
 - **Speed = 0 freezes the animation**: Set Speed to 0% to stop all blob motion and use the static metaball pattern as a fixed overlay.
-- **Outline + Hollow = vector graphics**: This combination strips the metaballs down to pure contour lines on black â€” clean line art that traces the isosurface boundary.
+- **Outline + Hollow = vector graphics**: This combination strips the metaballs down to pure contour lines on black — clean line art that traces the isosurface boundary.
 - **Video source turns metaballs into dynamic masks**: In Video mode, the blob shapes become windows into the input signal. Two blobs reveal different parts of the frame simultaneously.
 - **Skin Width controls edge character**: Narrow skin = sharp boundaries. Wide skin = soft glowing edges. At zero skin width, there is no visible transition zone.
-- **Rainbow mode reveals field topology**: In Rainbow mode, the chroma is driven by the field value, so you can see the field strength gradient even within the "inside" zone â€” useful for understanding how the fields of different blobs combine.
+- **Rainbow mode reveals field topology**: In Rainbow mode, the chroma is driven by the field value, so you can see the field strength gradient even within the "inside" zone — useful for understanding how the fields of different blobs combine.
 - **Count toggles between solo and duo**: With one blob, the output is a clean orbiting circle. With two, merge/split events add organic complexity as the Lissajous paths cross.
 - **Feedback loops create fractal-like patterns**: Routing the output back to the input seed causes the metaball shapes to feed into themselves, creating recursive patterns especially visible in Video source mode.
 
@@ -330,17 +330,17 @@ These exercises progress from a single stationary blob through multi-blob mergin
 
 | Term | Definition |
 |------|------------|
-| **Chroma** | The colour components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware at pixel-clock speed. |
+| **Chroma** | The color components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Inverse-Square Law** | A mathematical relationship where a quantity decreases proportionally to the square of the distance from a source; used here for the metaball field function. |
 | **Isosurface** | The set of all points in a scalar field where the field equals a chosen threshold value; in 2D this is an isoline (contour) dividing inside from outside. |
 | **Lissajous Curve** | A parametric path traced when X and Y coordinates oscillate sinusoidally at different frequencies; the frequency ratio determines the curve's shape (figure-eight, three-lobed, etc.). |
 | **LUT (Lookup Table)** | A precomputed array that maps an input index to an output value, replacing expensive runtime computation with a single memory read. |
 | **Metaball** | A computer-graphics technique for rendering soft organic shapes by summing inverse-distance field contributions from point sources and drawing an isosurface at a chosen threshold. |
 | **Phase Accumulator** | A register that increments by a fixed step each frame, wrapping at overflow to produce a continuously advancing angle for sine-wave orbit generation. |
-| **Pipeline** | A chain of processing stages each completing one operation per clock cycle; data passes through all stages with fixed total latency. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Scalar Field** | A function that assigns a single numeric value to every point in a 2D space; in Amoeba, the field value at each pixel is the sum of all active blob contributions. |
 | **Skin Zone** | The classification band between the isosurface threshold and the outer boundary, rendered as a visible edge or contour around each metaball. |
-| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); Videomancer processes all video in YUV 4:4:4 at 30-bit depth. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

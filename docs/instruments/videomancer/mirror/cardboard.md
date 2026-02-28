@@ -4,7 +4,7 @@ sidebar_position: 33
 slug: /instruments/videomancer/cardboard
 title: "Cardboard"
 image: /img/instruments/videomancer/cardboard/cardboard_hero.png
-description: "Program guide for Cardboard, a Videomancer mirror program for the LZX video synthesizer."
+description: "Before cinema, before animation, there was the paper theater — a miniature stage built from flat cardboard cutouts arranged in parallel planes."
 ---
 
 import cardboard_hero from '/img/instruments/videomancer/cardboard/cardboard_hero.png';
@@ -281,13 +281,13 @@ These exercises progress from basic layer separation to full paper theater paral
 |------|------------|
 | **Chrominance** | The color information (U and V channels) in a video signal, independent of brightness. |
 | **Depth segmentation** | The process of classifying pixels into discrete layers based on a visual property (here, luminance) as a proxy for distance from the viewer. |
-| **Interpolator** | A hardware module that computes weighted blends between two values, used here for wet/dry crossfading of Y, U, and V channels. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **Line buffer** | A memory element storing one complete scan line of video data, enabling vertical comparisons between adjacent lines for edge detection. |
-| **Luminance** | The brightness component (Y channel) of a YUV video signal, measured on a 0–1023 scale in 10-bit video. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Parallax** | The apparent displacement of objects at different distances when the viewpoint shifts, simulated here by applying different horizontal offsets to each depth layer. |
 | **Proscenium** | The architectural frame surrounding the front of a stage, through which the audience views the performance; used here by analogy for the video frame edge. |
 | **Scan line** | A single horizontal row of pixels in a video frame, traced left to right during display. |
 | **Shift register** | A chain of storage elements that passes data forward one position per clock cycle, used here to provide variable horizontal pixel delay for parallax offsets. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

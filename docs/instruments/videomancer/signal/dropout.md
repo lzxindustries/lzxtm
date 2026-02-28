@@ -4,7 +4,7 @@ sidebar_position: 80
 slug: /instruments/videomancer/dropout
 title: "Dropout"
 image: /img/instruments/videomancer/dropout/dropout_hero.png
-description: "Program guide for Dropout, a Videomancer signal program for the LZX video synthesizer."
+description: "Every VHS cassette is a battlefield between the recording and time itself."
 ---
 
 import dropout_hero from '/img/instruments/videomancer/dropout/dropout_hero.png';
@@ -282,7 +282,7 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 | Term | Definition |
 |------|------------|
 | **Azimuth** | The angle between the recording head gap and the tape track. Misalignment causes phase errors in the recovered chroma signal. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here for line buffers that enable per-line horizontal displacement. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Capstan** | The motorized spindle that pulls tape past the head drum at a controlled speed. Wobble or slip produces time-base jitter. |
 | **Chroma-Under** | VHS color recording technique that downconverts chrominance to a low carrier frequency (~629 kHz), severely limiting color bandwidth. |
 | **Dropout** | A momentary loss of signal caused by a physical defect (scratch, oxide flake, debris) on the tape's magnetic coating. |
@@ -291,9 +291,9 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 | **Head Switch** | The point at the bottom of each field where the active head finishes its diagonal pass and the next head takes over, producing a noise burst. |
 | **Helical Scan** | Recording technique where the tape wraps around a tilted spinning drum, tracing diagonal stripes across the tape. |
 | **IIR** | Infinite Impulse Response; a recursive filter structure where the output feeds back into the computation. Used here for chroma low-pass and jitter smoothing. |
-| **LFSR** | Linear Feedback Shift Register; a shift register with XOR feedback that generates a deterministic pseudo-random bit sequence. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **TBC** | Time-Base Corrector; a device that locks each scan line to a stable reference clock, removing horizontal jitter from tape playback. |
 | **Tracking** | The alignment between the playback head's scanning path and the recorded diagonal stripes on the tape. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

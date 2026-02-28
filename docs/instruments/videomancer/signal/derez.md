@@ -4,7 +4,7 @@ sidebar_position: 70
 slug: /instruments/videomancer/derez
 title: "Derez"
 image: /img/instruments/videomancer/derez/derez_hero.png
-description: "Program guide for Derez, a Videomancer signal program for the LZX video synthesizer."
+description: "Real memory corruption is never random."
 ---
 
 import derez_hero from '/img/instruments/videomancer/derez/derez_hero.png';
@@ -286,14 +286,14 @@ These exercises progress from single-stage corruption to full multi-stage failur
 | **Address Corruption** | Modifying the read address of a memory buffer so that pixels are read from incorrect locations, producing spatial mirroring, folding, tiling, or decimation. |
 | **AND-NOT Mask** | A bitwise operation that clears specified bits to zero; used for stuck-low address and data bus simulation. |
 | **Bit Plane** | A single binary layer of a multi-bit pixel value; in a 10-bit signal, there are 10 bit planes from MSB (weight 512) to LSB (weight 1). |
-| **BRAM** | Block RAM; dedicated memory on the FPGA used for line buffer storage. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
 | **Data Bus** | The parallel conductors carrying pixel values; a stuck data bus pin permanently forces one bit to a fixed state. |
 | **Kill Screen** | A game-breaking display corruption caused by counter overflow or address bus failure, most famously in Pac-Man level 256. |
-| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator using XOR feedback taps, producing a deterministic sequence from a given seed. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **OR Mask** | A bitwise operation that forces specified bits to one; used for stuck-high address and data bus simulation. |
 | **Shift Register** | A chain of flip-flops that delays a signal by a fixed number of clock cycles; Derez uses 10 independent 64-deep shift registers for bit-plane delay. |
 | **Stuck-At Fault** | A hardware failure mode where a signal line is permanently fixed to logic 0 or logic 1, regardless of the intended value. |
 | **XOR** | Exclusive OR; a bitwise operation that flips bits where the mask is 1, used for address mirroring and folding. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

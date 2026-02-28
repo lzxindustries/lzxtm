@@ -4,7 +4,7 @@ sidebar_position: 152
 slug: /instruments/videomancer/litmus
 title: "Litmus"
 image: /img/instruments/videomancer/litmus/litmus_hero.png
-description: "Program guide for Litmus, a Videomancer analysis program for the LZX video synthesizer."
+description: "In every chemistry laboratory there is a drawer full of narrow paper strips impregnated with chemical indicators — compounds that change color in the pr..."
 ---
 
 import litmus_before_after from '/img/instruments/videomancer/litmus/litmus_before_after.png';
@@ -278,15 +278,15 @@ These exercises introduce the four reagent palettes and progressively engage the
 | Term | Definition |
 |------|------------|
 | **Biuret Reagent** | A chemical test for proteins; the reagent turns from pale blue to deep purple in proportion to protein concentration. |
-| **BT.601** | The ITU-R standard defining the YUV color space used by standard-definition video and throughout the Videomancer pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **False Color** | A visualization technique that maps a scalar measurement to an arbitrary color palette designed to reveal structure. |
 | **Iodine Test** | A chemical test for starch; iodine solution turns brown-black in the presence of starch molecules. |
-| **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for texture noise. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Litmus** | A pH indicator derived from lichens that turns red in acid and blue in base — the most familiar chemical indicator. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Redox** | Reduction-oxidation potential; a measure of a substance's tendency to gain or lose electrons, visualized by indicator color changes. |
 | **Universal Indicator** | A blend of pH indicators chosen to produce a distinct color at each pH unit, creating a continuous rainbow spectrum. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **Zone Quantization** | Dividing a continuous signal range into a fixed number of discrete bands, each mapped to a single output value. |

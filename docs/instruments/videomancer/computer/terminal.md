@@ -4,7 +4,7 @@ sidebar_position: 259
 slug: /instruments/videomancer/terminal
 title: "Terminal"
 image: /img/instruments/videomancer/terminal/terminal_hero.png
-description: "Program guide for Terminal, a Videomancer computer program for the LZX video synthesizer."
+description: "Every home computer of the early 1980s presented its output on a CRT monitor with a single-color phosphor — green, amber, or crisp white."
 ---
 
 import terminal_before_after from '/img/instruments/videomancer/terminal/terminal_before_after.png';
@@ -34,11 +34,11 @@ import terminal_source3_kodim15_bw from '/img/instruments/videomancer/terminal/t
 
 ## Overview
 
-Every home computer of the early 1980s presented its output on a CRT monitor with a single-colour phosphor — green, amber, or crisp white. The image was built from horizontal scan lines, and every other line was slightly darker, giving the display its characteristic striped texture. Terminal recreates this aesthetic as a real-time video processor, converting any input signal into a monochrome CRT terminal display with phosphor colour tinting, scanline overlay, contrast adjustment, and a bold highlight mode.
+Every home computer of the early 1980s presented its output on a CRT monitor with a single-color phosphor — green, amber, or crisp white. The image was built from horizontal scan lines, and every other line was slightly darker, giving the display its characteristic striped texture. Terminal recreates this aesthetic as a real-time video processor, converting any input signal into a monochrome CRT terminal display with phosphor color tinting, scanline overlay, contrast adjustment, and a bold highlight mode.
 
-The current implementation is deliberately minimal — approximately 150 LUTs of FPGA logic. It focuses on the core visual elements that define the CRT terminal look: luminance contrast scaling, bold highlight clipping, alternating-line scanline darkening, and fixed phosphor colour tinting in green or amber. Several TOML-declared parameters (Brightness, Curvature, Scanline amount, Phosphor amount, Glow, and Bloom) are placeholders for future development and do not currently affect the output. The program is honest about this: what you see is contrast, bold, scanlines, colour, and mix.
+The current implementation is deliberately minimal — approximately 150 LUTs of FPGA logic. It focuses on the core visual elements that define the CRT terminal look: luminance contrast scaling, bold highlight clipping, alternating-line scanline darkening, and fixed phosphor color tinting in green or amber. Several TOML-declared parameters (Brightness, Curvature, Scanline amount, Phosphor amount, Glow, and Bloom) are placeholders for future development and do not currently affect the output. The program is honest about this: what you see is contrast, bold, scanlines, color, and mix.
 
-Terminal excels at creating vintage computer aesthetics from any video source. Feed it camera footage and it becomes a surveillance monitor. Feed it text graphics and it becomes a working terminal. Feed it abstract video synthesis and it becomes a retro oscilloscope display. The wet/dry mix fader allows blending the phosphor-tinted result with the original signal for partial colourisation effects.
+Terminal excels at creating vintage computer aesthetics from any video source. Feed it camera footage and it becomes a surveillance monitor. Feed it text graphics and it becomes a working terminal. Feed it abstract video synthesis and it becomes a retro oscilloscope display. The wet/dry mix fader allows blending the phosphor-tinted result with the original signal for partial colorization effects.
 
 ---
 
@@ -46,7 +46,7 @@ Terminal excels at creating vintage computer aesthetics from any video source. F
 
 ### CRT Phosphor Displays
 
-Cathode ray tube monitors create images by sweeping an electron beam across a phosphor-coated screen. Monochrome CRTs use a single phosphor compound: P1 (green), P3 (amber/orange), or P4 (white). The phosphor's emission spectrum determines the display colour. Green phosphor monitors (like the IBM 5151 or Apple II Monitor) became iconic of the early computer era. Amber monitors (like the Hercules-compatible displays) were considered easier on the eyes for extended text work. Terminal recreates these colour signatures by replacing the input chrominance with fixed UV values corresponding to green or amber phosphor emission.
+Cathode ray tube monitors create images by sweeping an electron beam across a phosphor-coated screen. Monochrome CRTs use a single phosphor compound: P1 (green), P3 (amber/orange), or P4 (white). The phosphor's emission spectrum determines the display color. Green phosphor monitors (like the IBM 5151 or Apple II Monitor) became iconic of the early computer era. Amber monitors (like the Hercules-compatible displays) were considered easier on the eyes for extended text work. Terminal recreates these color signatures by replacing the input chrominance with fixed UV values corresponding to green or amber phosphor emission.
 
 ### Scanline Structure
 
@@ -169,7 +169,7 @@ Scanline depth — variable scanline intensity. **Not yet implemented in the cur
 | Default | 38% |
 | Suffix | % |
 
-Phosphor — phosphor colour intensity or hue angle. **Not yet implemented in the current VHDL.** The register is declared but unused. The phosphor tint is currently controlled only by the Color toggle (Green or Amber), with fixed UV values. In the planned implementation, this would allow continuous hue rotation through the phosphor colour space, providing access to white, blue, and intermediate tints.
+Phosphor — phosphor color intensity or hue angle. **Not yet implemented in the current VHDL.** The register is declared but unused. The phosphor tint is currently controlled only by the Color toggle (Green or Amber), with fixed UV values. In the planned implementation, this would allow continuous hue rotation through the phosphor color space, providing access to white, blue, and intermediate tints.
 
 ---
 
@@ -207,7 +207,7 @@ Five binary switches controlling processing stages. Of these, Color, Bold, Scanl
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix ratio via three parallel interpolator_u instances (one each for Y, U, V). At 0%, the output is the delayed dry input signal (unprocessed). At 100%, the output is the fully processed terminal signal (contrast, bold, scanlines, phosphor tint). Intermediate values blend between the two, allowing partial phosphor colourisation — useful for creating tinted overlays where the original colour partially shows through the monochrome phosphor.
+Controls the wet/dry mix ratio via three parallel interpolator_u instances (one each for Y, U, V). At 0%, the output is the delayed dry input signal (unprocessed). At 100%, the output is the fully processed terminal signal (contrast, bold, scanlines, phosphor tint). Intermediate values blend between the two, allowing partial phosphor colorization — useful for creating tinted overlays where the original color partially shows through the monochrome phosphor.
 
 ---
 
@@ -219,14 +219,14 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 <img src={terminal_exercise1_result} alt="Classic Green Screen result"/>
 *Classic Green Screen — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with recognisable subjects and moderate contrast.
+**Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
 **Objective**: Create a convincing vintage green phosphor CRT display using contrast, scanlines, and phosphor tinting.
 
-1. **Set the colour**: Ensure Color (Switch 7) is set to Green.
+1. **Set the color**: Ensure Color (Switch 7) is set to Green.
 2. **Enable scanlines**: Turn on Scanlines (Switch 9). Every other horizontal line should darken visibly.
 3. **Adjust contrast**: Set Contrast to ~50% for a balanced green screen look. Higher values create a brighter, more washed-out display; lower values create a dim, atmospheric monitor.
-4. **Full mix**: Set Mix to 100% so the phosphor tint fully replaces the original colours.
+4. **Full mix**: Set Mix to 100% so the phosphor tint fully replaces the original colors.
 5. **Compare**: Toggle Bypass to see the original signal for A/B comparison.
 6. **Bold option**: Enable Bold (Switch 8) to create a high-contrast binary look where bright subjects snap to full brightness.
 
@@ -257,18 +257,18 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 <img src={terminal_exercise3_result} alt="Phosphor Tint Overlay result"/>
 *Phosphor Tint Overlay — simulated result across source images.*
-**Source**: Colourful footage — landscapes, graphics, or abstract video synthesis.
+**Source**: Colorful footage — landscapes, graphics, or abstract video synthesis.
 
-**Objective**: Use the Mix fader to blend the phosphor-tinted monochrome with the original colour signal, creating a vintage colour grading effect.
+**Objective**: Use the Mix fader to blend the phosphor-tinted monochrome with the original color signal, creating a vintage color grading effect.
 
 1. **Full process first**: Set Color to Green, Scanlines On, Contrast ~50%, Mix 100%. Observe the fully monochrome green result.
-2. **Blend in colour**: Slowly lower Mix from 100% toward 50%. The original colours begin to show through the green phosphor tint.
-3. **Subtle tint**: At Mix ~30%, the image retains most of its original colour but with a green cast and visible scanlines blended in.
-4. **Try amber**: Switch Color to Amber and repeat the blend. The warm amber wash creates a sepia-like vintage colour grade.
-5. **No scanlines**: Disable Scanlines to create a pure phosphor colour tint without the CRT stripe texture.
-6. **Bold accents**: With Mix at ~50%, enable Bold. Bright areas snap to full monochrome phosphor while dim areas retain partial original colour.
+2. **Blend in color**: Slowly lower Mix from 100% toward 50%. The original colors begin to show through the green phosphor tint.
+3. **Subtle tint**: At Mix ~30%, the image retains most of its original color but with a green cast and visible scanlines blended in.
+4. **Try amber**: Switch Color to Amber and repeat the blend. The warm amber wash creates a sepia-like vintage color grade.
+5. **No scanlines**: Disable Scanlines to create a pure phosphor color tint without the CRT stripe texture.
+6. **Bold accents**: With Mix at ~50%, enable Bold. Bright areas snap to full monochrome phosphor while dim areas retain partial original color.
 
-**Key concepts**: The interpolator_u mix stage blends processed and dry signals. Partial mix creates a colour overlay/tint effect. Scanlines and bold interact with the mix — they only affect the wet signal.
+**Key concepts**: The interpolator_u mix stage blends processed and dry signals. Partial mix creates a color overlay/tint effect. Scanlines and bold interact with the mix — they only affect the wet signal.
 
 ---
 
@@ -277,10 +277,10 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 - **Contrast is the primary brightness control**: Since Brightness (pot 1) is not yet implemented, use Contrast to control overall luminance. Higher contrast = brighter image.
 - **Bold creates binary separation**: With bold enabled, the image has only two effective brightness levels — below the threshold (dim) and above (maximum). This is most effective with text or high-contrast graphics.
-- **Mix for colour grading**: At partial Mix values (30–70%), Terminal functions as a colour grading tool, adding a phosphor tint wash over the original colours without going fully monochrome.
+- **Mix for color grading**: At partial Mix values (30–70%), Terminal functions as a color grading tool, adding a phosphor tint wash over the original colors without going fully monochrome.
 - **Scanlines scale with resolution**: At 1080p, scanlines are subtle single-pixel lines. At 480i, they are proportionally much more prominent. The visual impact depends on the output resolution.
 - **Non-functional knobs are safe**: Turning the Brightness, Curvature, Scanline, Phosphor, or Glow knobs will not cause glitches or unexpected behaviour — the values are simply read and ignored.
-- **Green vs. Amber is the only colour choice**: Until the Phosphor continuous control is implemented, the colour palette is limited to these two presets. For white phosphor emulation, set Color to Green and increase Contrast past unity.
+- **Green vs. Amber is the only color choice**: Until the Phosphor continuous control is implemented, the color palette is limited to these two presets. For white phosphor emulation, set Color to Green and increase Contrast past unity.
 - **Feedback for retro CRT loops**: Route Terminal's output back to its input for recursive phosphor tinting and scanline accumulation. Each pass deepens the green/amber wash and doubles the scanline density.
 
 ---
@@ -291,10 +291,10 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 |------|------------|
 | **Bold** | In terminal emulation, a text attribute that increases beam current (brightness) for emphasis; here approximated by a hard luminance threshold clip. |
 | **CRT** | Cathode Ray Tube; a display technology that creates images by sweeping an electron beam across a phosphor-coated glass screen. |
-| **Interpolator** | A hardware module that linearly blends between two values based on a mix parameter; used here for wet/dry signal blending. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Look-Up Table; the basic logic element in an FPGA, used here as a measure of implementation complexity (~150 LUTs total). |
 | **Mix** | The wet/dry blend ratio controlling how much of the processed (wet) signal versus the original (dry) signal appears in the output. |
-| **Phosphor** | A fluorescent coating on the inside of a CRT screen that emits light when struck by the electron beam; the compound determines the display colour. |
+| **Phosphor** | A fluorescent coating on the inside of a CRT screen that emits light when struck by the electron beam; the compound determines the display color. |
 | **Scanline** | A single horizontal line traced by the electron beam; the visible gap between lines on a CRT creates the characteristic stripe texture. |
 | **VT100** | A 1978 DEC video terminal that became the de facto standard for text-mode terminal emulation; target aesthetic for this program. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

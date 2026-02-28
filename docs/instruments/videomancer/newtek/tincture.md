@@ -4,7 +4,7 @@ sidebar_position: 264
 slug: /instruments/videomancer/tincture
 title: "Tincture"
 image: /img/instruments/videomancer/tincture/tincture_hero.png
-description: "Program guide for Tincture, a Videomancer newtek program for the LZX video synthesizer."
+description: "Before digital color grading became commonplace, television engineers used false-color generators to visualize exposure levels."
 ---
 
 import tincture_before_after from '/img/instruments/videomancer/tincture/tincture_before_after.png';
@@ -280,7 +280,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay â
 |------|------------|
 | **Band** | A contiguous range of luminance values that maps to a single palette color entry. |
 | **Bias** | A signed constant added to the luma signal to shift the mapping range up or down before palette lookup. |
-| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used in Videomancer's YUV video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **ChromaFX** | NewTek Video Toaster's false-color palette mapping effect, known for smooth inter-band gradients. |
 | **CVI** | Fairlight Computer Video Instrument; an Australian video synthesizer featuring hard-banded false-color modes. |
 | **Edge Detection** | Computing the spatial gradient (difference between adjacent pixel values) to find boundaries. |
@@ -289,7 +289,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay â
 | **Interpolation** | Blending between two values based on a fractional position; used for smooth band transitions. |
 | **Palette** | An ordered set of YUV color entries indexed by quantized luminance band. |
 | **Posterize** | Reducing the number of distinct levels in a signal by truncating lower bits. |
-| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for contrast and brightness adjustment. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Smoothing** | Interpolation between adjacent palette entries to soften band boundaries. |
 | **Tint Mode** | A blending mode where only the palette's luminance component is used, preserving the source's original chrominance. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

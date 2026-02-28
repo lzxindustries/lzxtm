@@ -4,7 +4,7 @@ sidebar_position: 178
 slug: /instruments/videomancer/neon
 title: "Neon"
 image: /img/instruments/videomancer/neon/neon_hero.png
-description: "Program guide for Neon, a Videomancer edges program for the LZX video synthesizer."
+description: "Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts."
 ---
 
 import neon_before_after from '/img/instruments/videomancer/neon/neon_before_after.png';
@@ -280,13 +280,13 @@ These exercises build from basic edge glow through color and background styling 
 | Term | Definition |
 |------|------------|
 | **Additive Composite** | Pixel combination by summing luminance values, with clamping at maximum (1023) to prevent overflow. |
-| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation around the (512, 512) neutral midpoint. |
 | **First-Order Difference** | Edge detection by computing |pixel[x] − pixel[x−1]|, the simplest discrete derivative. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both the current input and its own previous output, creating exponentially decaying response. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
-| **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Piecewise Hue Mapping** | Dividing the 360° color circle into discrete sectors, each with fixed U/V offset directions, rather than computing continuous trigonometric functions. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

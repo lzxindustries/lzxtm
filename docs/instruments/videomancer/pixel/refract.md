@@ -4,7 +4,7 @@ sidebar_position: 215
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero.png
-description: "Program guide for Refract, a Videomancer pixel program for the LZX video synthesizer."
+description: "Light bends when it passes through glass, water, or any boundary between materials of different density."
 ---
 
 import refract_before_after from '/img/instruments/videomancer/refract/refract_before_after.png';
@@ -276,13 +276,13 @@ These exercises progress from basic displacement through chromatic aberration to
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated on-chip memory in the FPGA used as line buffers for displaced pixel readback. |
-| **BT.601** | ITU-R BT.601 color standard defining the YUV encoding used in the Videomancer pipeline. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Chromatic Aberration** | Wavelength-dependent refraction causing different colors to focus at different points, creating color fringing at edges. |
-| **DDS** | Direct Digital Synthesis; a numerically-controlled oscillator that generates a continuous sweep of the angle parameter for animation. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Displacement Mapping** | A spatial transformation where pixel positions are shifted by an amount determined by a control signal, here the input luminance. |
 | **Fresnel** | In optics, the increase in reflectance and refraction at glancing incidence angles; here approximated as radial distance-based displacement scaling. |
-| **Interpolator** | A sub-pixel smoothing module (`interpolator_u`) that blends between adjacent displaced samples for artifact-free warping. |
+| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
 | **LUT** | Lookup Table; the 32-entry sin/cos table that converts the angle register into horizontal and vertical displacement components. |
-| **Pipeline** | Sequential processing stages, each operating on the previous stage's output every clock cycle; Refract uses 10 pipeline stages. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

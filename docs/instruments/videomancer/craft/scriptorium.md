@@ -4,7 +4,7 @@ sidebar_position: 228
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
 image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png
-description: "Program guide for Scriptorium, a Videomancer craft program for the LZX video synthesizer."
+description: "Before the printing press and before movable type, every book in Europe was made by hand."
 ---
 
 import scriptorium_before_after from '/img/instruments/videomancer/scriptorium/scriptorium_before_after.png';
@@ -291,7 +291,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 | **Gilding** | The application of gold leaf or gold paint to a surface, used in manuscripts to highlight important text and borders. |
 | **Insular Art** | The distinctive artistic tradition of early medieval Ireland and Britain, characterized by intricate interlace knotwork, spirals, and carpet pages. |
 | **Knotwork** | Interlaced ribbon patterns that weave over and under in continuous loops, a hallmark of Insular and Celtic art. |
-| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator used here for vellum grain texture. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for nearest-pigment color matching. |
 | **Miniature** | In manuscript terminology, a small painting within the text, derived from the Latin *miniare* (to color with red lead), not from "small." |
 | **Mise en Page** | French term for page layout — the arrangement of text, decoration, and illustration within the margins of a manuscript folio. |
@@ -301,4 +301,4 @@ These exercises progress from basic page layout to full illuminated manuscript c
 | **Ultramarine** | A deep blue pigment historically made from ground lapis lazuli; the most expensive pigment in the medieval palette. |
 | **Vellum** | Fine-quality parchment made from calfskin, valued for its smooth writing surface and durability. |
 | **Vermillion** | A brilliant red pigment made from ground cinnabar (mercury sulfide), widely used in medieval illumination. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

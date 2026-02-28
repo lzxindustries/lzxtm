@@ -4,7 +4,7 @@ sidebar_position: 31
 slug: /instruments/videomancer/calico
 title: "Calico"
 image: /img/instruments/videomancer/calico/calico_hero.png
-description: "Program guide for Calico, a Videomancer computer program for the LZX video synthesizer."
+description: "The Commodore Amiga's HAM (Hold-And-Modify) display mode was one of the most ingenious compromises in the history of computer graphics."
 ---
 
 import calico_hero from '/img/instruments/videomancer/calico/calico_hero.png';
@@ -297,13 +297,13 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 | **CRT** | Cathode Ray Tube; a display technology using electron beams scanned across a phosphor screen, standard for televisions and monitors before LCD adoption. |
 | **Genlock** | A technique for synchronizing video signals so that computer-generated graphics can be overlaid on external video, using a key color for transparency. |
 | **HAM** | Hold-And-Modify; an Amiga display mode that encodes each pixel as either a palette SET or a single-channel MODIFY of the previous pixel's color. |
-| **Luminance** | The brightness component (Y channel) of a YUV video signal, independent of color information. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Manhattan distance** | A distance metric summing the absolute differences of each component (here, R, G, B channels) rather than using Euclidean distance. |
 | **NTSC** | National Television System Committee; the analog broadcast standard used in North America and Japan, operating at 525 lines and 59.94 Hz. |
 | **OCS** | Original Chip Set; the first Amiga custom chipset (1985) supporting HAM6 mode with 4-bit-per-channel color. |
 | **Quantization** | The process of reducing a continuous or high-precision value to a discrete set of levels, introducing rounding error. |
 | **RGB** | Red, Green, Blue; a color model representing colors as combinations of three additive primary components. |
 | **Sample-and-hold** | A technique that captures a signal value at a specific instant and holds it constant for a defined period, used here for resolution downsampling. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), used as the native video processing format. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

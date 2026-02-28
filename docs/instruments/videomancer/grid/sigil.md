@@ -4,7 +4,7 @@ sidebar_position: 235
 slug: /instruments/videomancer/sigil
 title: "Sigil"
 image: /img/instruments/videomancer/sigil/sigil_hero.png
-description: "Program guide for Sigil, a Videomancer grid program for the LZX video synthesizer."
+description: "Sigil is a placeholder program currently in development."
 ---
 
 import sigil_animation from '/img/instruments/videomancer/sigil/sigil_animation.gif';
@@ -164,4 +164,4 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 | **Flip-Flop** | A basic FPGA storage element that captures and holds a single bit of data on each clock edge. |
 | **Passthrough** | A program that copies input to output without modification, adding only pipeline delay. |
 | **Placeholder** | A program slot reserved in the registry with minimal or no processing, to be replaced by a full implementation in a future firmware release. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

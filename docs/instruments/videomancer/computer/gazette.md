@@ -4,7 +4,7 @@ sidebar_position: 110
 slug: /instruments/videomancer/gazette
 title: "Gazette"
 image: /img/instruments/videomancer/gazette/gazette_hero.png
-description: "Program guide for Gazette, a Videomancer computer program for the LZX video synthesizer."
+description: "Every home computer of the early 1980s faced the same engineering constraint: memory was expensive, and storing a unique color for every pixel on screen..."
 ---
 
 import gazette_hero from '/img/instruments/videomancer/gazette/gazette_hero.png';
@@ -297,22 +297,22 @@ These exercises progress from exploring basic palette restriction to combining c
 |------|------------|
 | **Attribute Cell** | A rectangular region of the screen that shares a single foreground (ink) and background (paper) color pair, as used by 1980s home computers. |
 | **Attribute Clash** | The visible discontinuity at the boundary between adjacent attribute cells that use different color pairs, producing hard color seams in the image. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the 256-entry column luma sample buffer. |
-| **BT.601** | ITU-R standard defining the YUV color matrix used for standard-definition video encoding and decoding. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **C64** | Commodore 64; a home computer (1982) whose VIC-II video chip produced a distinctive 16-color palette. |
 | **CGA** | Color Graphics Adapter; IBM's first color display standard (1981) with a fixed 16-color palette. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Composite Video** | An analog video format that encodes luminance and chrominance on a single wire, causing chroma bandwidth limitations and color bleeding. |
 | **FLASH** | An attribute flag on the ZX Spectrum that caused the ink and paper colors of a cell to swap at approximately 1 Hz. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **IIR** | Infinite Impulse Response; a filter structure where the output feeds back into the computation, creating exponential decay. |
 | **Ink** | The foreground color assigned to bright pixels within an attribute cell. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **MSX** | A standardized home computer architecture (1983) using the TMS9918A video processor with a 15+1 color palette. |
 | **Paper** | The background color assigned to dark pixels within an attribute cell. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **ROM** | Read-Only Memory; here, a lookup table of pre-computed palette values synthesized into FPGA logic at build time. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 | **ZX Spectrum** | A home computer by Sinclair Research (1982) famous for its attribute cell color system and resulting attribute clash. |
 
 ---

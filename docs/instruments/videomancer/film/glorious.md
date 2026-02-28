@@ -4,7 +4,7 @@ sidebar_position: 113
 slug: /instruments/videomancer/glorious
 title: "Glorious"
 image: /img/instruments/videomancer/glorious/glorious_hero.png
-description: "Program guide for Glorious, a Videomancer film program for the LZX video synthesizer."
+description: "Glorious recreates the look of Technicolor Process 4 — the three-strip dye transfer printing system that defined the color aesthetic of Hollywood cinema..."
 ---
 
 import glorious_hero from '/img/instruments/videomancer/glorious/glorious_hero.png';
@@ -266,20 +266,20 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the standard defining the YUV-to-RGB matrix coefficients used in standard-definition video, also used here for HD. |
+| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
 | **Dye Transfer** | The imbibition printing process in which dye from a relief matrix is transferred onto a receiving film strip. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
 | **Fringe** | Horizontal color offset caused by misalignment of separate dye layers during printing; produces colored halos at high-contrast edges. |
 | **H&D Curve** | Hurter–Driffield curve; the S-shaped relationship between photographic exposure and resulting optical density, with toe, straight, and shoulder regions. |
 | **Imbibition** | A printing technique where dye soaks from a gelatin relief matrix into a receiving layer; the method used in Technicolor Process 4. |
 | **Matrix Bleed** | Inter-channel dye contamination where one color layer's dye migrates into adjacent layers, producing color crosstalk. |
 | **Mono Separation** | Isolating a single color record (here, the green channel) to produce a monochrome image representing one strip of the three-strip process. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
 | **Printer Light** | In photochemical film timing, the intensity of light used to expose each color record during printing; higher intensity increases that channel's density. |
 | **Saturation** | The intensity of color in an image; higher saturation produces more vivid colors, lower saturation tends toward gray. |
 | **Shoulder** | The high-exposure region of the H&D curve where density increase diminishes — represents highlight compression. |
 | **Technicolor Process 4** | The three-strip camera and dye-transfer printing system used from 1932–1955, defining the "Technicolor look." |
 | **Toe** | The low-exposure region of the H&D curve where density increase is minimal — represents shadow compression. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

@@ -20,7 +20,7 @@ description: "72 Videomancer programs emulate or are inspired by specific histor
 | Apple macOS screensaver (Flurry by Calum Robinson) | 2002 | Flurry |
 | Atari 400/800 ANTIC/GTIA (custom display chips) | 1979 | Antic |
 | Atari Video Music C240 (audio-visual product) | 1977 | Harlequin |
-| BBC Colour Separation Overlay (broadcast chromakey) | 1970s | Voido |
+| BBC Color Separation Overlay (broadcast chromakey) | 1970s | Voido |
 | BBC Radiophonic Workshop (experimental production) | 1958 | Howler |
 | CED Videodisc (RCA capacitance disc format) | 1981 | Discrot |
 | CGA (IBM Color Graphics Adapter) | 1981 | Gazette, Stipple |

@@ -4,7 +4,7 @@ sidebar_position: 155
 slug: /instruments/videomancer/ludosphere
 title: "Ludosphere"
 image: /img/instruments/videomancer/ludosphere/ludosphere_hero.png
-description: "Program guide for Ludosphere, a Videomancer edges program for the LZX video synthesizer."
+description: "Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time."
 ---
 
 import ludosphere_before_after from '/img/instruments/videomancer/ludosphere/ludosphere_before_after.png';
@@ -282,10 +282,10 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 | **ABI** | Application Binary Interface; the 8-register communication protocol between the firmware and FPGA program. Ludosphere reads beyond this range. |
 | **Accumulator** | A register that sums a frequency word on each clock event, producing a linearly sweeping ramp. |
 | **Chroma** | The color information in a video signal, encoded as U and V channels in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating precise waveforms using a phase accumulator and frequency word. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
 | **Frequency Doubler** | A waveshaper that folds a sawtooth ramp at its midpoint to produce a symmetric triangle wave. |
-| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
 | **Phase Accumulator** | An integer register that adds a fixed increment on each event, sweeping through its range to produce a ramp waveform. |
-| **Proc Amp** | Processing Amplifier; a brightness/contrast stage. In Ludosphere, repurposed as a modulator blending oscillator and source. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
 | **Triangle Wave** | A symmetric waveform that ramps linearly up then linearly down, with no discontinuity at the peaks. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
