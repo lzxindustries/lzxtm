@@ -4,6 +4,7 @@ sidebar_position: 285
 slug: /instruments/videomancer/wipeout
 title: "Wipeout"
 image: /img/instruments/videomancer/wipeout/wipeout_hero.png
+description: "Program guide for Wipeout, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import wipeout_before_after from '/img/instruments/videomancer/wipeout/wipeout_before_after.png';

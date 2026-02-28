@@ -4,6 +4,7 @@ sidebar_position: 212
 slug: /instruments/videomancer/reagent
 title: "Reagent"
 image: /img/instruments/videomancer/reagent/reagent_hero.png
+description: "Program guide for Reagent, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import reagent_before_after from '/img/instruments/videomancer/reagent/reagent_before_after.png';

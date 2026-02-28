@@ -4,6 +4,7 @@ sidebar_position: 34
 slug: /instruments/videomancer/carousel
 title: "Carousel"
 image: /img/instruments/videomancer/carousel/carousel_hero.png
+description: "Program guide for Carousel, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import carousel_hero from '/img/instruments/videomancer/carousel/carousel_hero.png';

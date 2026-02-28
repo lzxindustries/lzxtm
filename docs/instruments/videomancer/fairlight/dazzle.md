@@ -4,6 +4,7 @@ sidebar_position: 64
 slug: /instruments/videomancer/dazzle
 title: "Dazzle"
 image: /img/instruments/videomancer/dazzle/dazzle_hero.png
+description: "Program guide for Dazzle, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import dazzle_hero from '/img/instruments/videomancer/dazzle/dazzle_hero.png';

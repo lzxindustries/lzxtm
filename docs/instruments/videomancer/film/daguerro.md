@@ -4,6 +4,7 @@ sidebar_position: 62
 slug: /instruments/videomancer/daguerro
 title: "Daguerro"
 image: /img/instruments/videomancer/daguerro/daguerro_hero.png
+description: "Program guide for Daguerro, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import daguerro_hero from '/img/instruments/videomancer/daguerro/daguerro_hero.png';

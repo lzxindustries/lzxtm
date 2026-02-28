@@ -4,6 +4,7 @@ sidebar_position: 108
 slug: /instruments/videomancer/gauntlet
 title: "Gauntlet"
 image: /img/instruments/videomancer/gauntlet/gauntlet_hero.png
+description: "Program guide for Gauntlet, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import gauntlet_hero from '/img/instruments/videomancer/gauntlet/gauntlet_hero.png';

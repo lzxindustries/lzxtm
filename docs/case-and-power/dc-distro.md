@@ -1,5 +1,7 @@
 ---
 draft: true
+title: "DC Distro"
+description: "Documentation for DC Distro, a DC power distribution module for LZX modular video systems."
 ---
 
 # DC Distro

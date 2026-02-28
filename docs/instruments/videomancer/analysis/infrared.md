@@ -4,6 +4,7 @@ sidebar_position: 127
 slug: /instruments/videomancer/infrared
 title: "Infrared"
 image: /img/instruments/videomancer/infrared/infrared_hero.png
+description: "Program guide for Infrared, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import infrared_before_after from '/img/instruments/videomancer/infrared/infrared_before_after.png';

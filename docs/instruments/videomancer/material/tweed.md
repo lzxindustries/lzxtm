@@ -4,6 +4,7 @@ sidebar_position: 268
 slug: /instruments/videomancer/tweed
 title: "Tweed"
 image: /img/instruments/videomancer/tweed/tweed_hero.png
+description: "Program guide for Tweed, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import tweed_before_after from '/img/instruments/videomancer/tweed/tweed_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 174
 slug: /instruments/videomancer/mycelium
 title: "Mycelium"
 image: /img/instruments/videomancer/mycelium/mycelium_hero.png
+description: "Program guide for Mycelium, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import mycelium_animation from '/img/instruments/videomancer/mycelium/mycelium_animation.gif';

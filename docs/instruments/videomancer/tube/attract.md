@@ -4,6 +4,7 @@ sidebar_position: 11
 slug: /instruments/videomancer/attract
 title: "Attract"
 image: /img/instruments/videomancer/attract/attract_hero.png
+description: "Program guide for Attract, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import attract_hero from '/img/instruments/videomancer/attract/attract_hero.png';

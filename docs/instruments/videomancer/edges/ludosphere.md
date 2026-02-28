@@ -4,6 +4,7 @@ sidebar_position: 155
 slug: /instruments/videomancer/ludosphere
 title: "Ludosphere"
 image: /img/instruments/videomancer/ludosphere/ludosphere_hero.png
+description: "Program guide for Ludosphere, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import ludosphere_before_after from '/img/instruments/videomancer/ludosphere/ludosphere_before_after.png';

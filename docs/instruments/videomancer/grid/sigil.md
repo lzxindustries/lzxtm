@@ -4,6 +4,7 @@ sidebar_position: 235
 slug: /instruments/videomancer/sigil
 title: "Sigil"
 image: /img/instruments/videomancer/sigil/sigil_hero.png
+description: "Program guide for Sigil, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import sigil_animation from '/img/instruments/videomancer/sigil/sigil_animation.gif';

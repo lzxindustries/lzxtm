@@ -4,6 +4,7 @@ sidebar_position: 14
 slug: /instruments/videomancer/barcode
 title: "Barcode"
 image: /img/instruments/videomancer/barcode/barcode_hero.png
+description: "Program guide for Barcode, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import barcode_hero from '/img/instruments/videomancer/barcode/barcode_hero.png';

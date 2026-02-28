@@ -4,6 +4,7 @@ sidebar_position: 3
 slug: /instruments/videomancer/lumarian
 title: "Lumarian"
 image: /img/instruments/videomancer/lumarian/lumarian_hero.png
+description: "Program guide for Lumarian, a Videomancer color processing program providing real-time control over luminance, chrominance, and edge detection."
 ---
 
 import lumarian_hero from '/img/instruments/videomancer/lumarian/lumarian_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 31
 slug: /instruments/videomancer/calico
 title: "Calico"
 image: /img/instruments/videomancer/calico/calico_hero.png
+description: "Program guide for Calico, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import calico_hero from '/img/instruments/videomancer/calico/calico_hero.png';

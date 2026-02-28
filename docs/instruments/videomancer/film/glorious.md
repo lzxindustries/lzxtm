@@ -4,6 +4,7 @@ sidebar_position: 113
 slug: /instruments/videomancer/glorious
 title: "Glorious"
 image: /img/instruments/videomancer/glorious/glorious_hero.png
+description: "Program guide for Glorious, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import glorious_hero from '/img/instruments/videomancer/glorious/glorious_hero.png';

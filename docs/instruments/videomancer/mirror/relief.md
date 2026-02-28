@@ -4,6 +4,7 @@ sidebar_position: 216
 slug: /instruments/videomancer/relief
 title: "Relief"
 image: /img/instruments/videomancer/relief/relief_hero.png
+description: "Program guide for Relief, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import relief_before_after from '/img/instruments/videomancer/relief/relief_before_after.png';

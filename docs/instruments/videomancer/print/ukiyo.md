@@ -4,6 +4,7 @@ sidebar_position: 270
 slug: /instruments/videomancer/ukiyo
 title: "Ukiyo"
 image: /img/instruments/videomancer/ukiyo/ukiyo_hero.png
+description: "Program guide for Ukiyo, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import ukiyo_before_after from '/img/instruments/videomancer/ukiyo/ukiyo_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 101
 slug: /instruments/videomancer/floorplan
 title: "Floorplan"
 image: /img/instruments/videomancer/floorplan/floorplan_hero.png
+description: "Program guide for Floorplan, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import floorplan_hero from '/img/instruments/videomancer/floorplan/floorplan_hero.png';

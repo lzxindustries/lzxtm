@@ -4,6 +4,7 @@ sidebar_position: 264
 slug: /instruments/videomancer/tincture
 title: "Tincture"
 image: /img/instruments/videomancer/tincture/tincture_hero.png
+description: "Program guide for Tincture, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import tincture_before_after from '/img/instruments/videomancer/tincture/tincture_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 96
 slug: /instruments/videomancer/filigree
 title: "Filigree"
 image: /img/instruments/videomancer/filigree/filigree_hero.png
+description: "Program guide for Filigree, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import filigree_hero from '/img/instruments/videomancer/filigree/filigree_hero.png';

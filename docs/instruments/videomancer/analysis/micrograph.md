@@ -4,6 +4,7 @@ sidebar_position: 166
 slug: /instruments/videomancer/micrograph
 title: "Micrograph"
 image: /img/instruments/videomancer/micrograph/micrograph_hero.png
+description: "Program guide for Micrograph, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import micrograph_before_after from '/img/instruments/videomancer/micrograph/micrograph_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 32
 slug: /instruments/videomancer/camcord
 title: "Camcord"
 image: /img/instruments/videomancer/camcord/camcord_hero.png
+description: "Program guide for Camcord, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import camcord_hero from '/img/instruments/videomancer/camcord/camcord_hero.png';

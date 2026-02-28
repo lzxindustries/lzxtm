@@ -4,6 +4,7 @@ sidebar_position: 233
 slug: /instruments/videomancer/sideband
 title: "Sideband"
 image: /img/instruments/videomancer/sideband/sideband_hero.png
+description: "Program guide for Sideband, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import sideband_before_after from '/img/instruments/videomancer/sideband/sideband_before_after.png';

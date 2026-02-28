@@ -4,6 +4,7 @@ sidebar_position: 70
 slug: /instruments/videomancer/derez
 title: "Derez"
 image: /img/instruments/videomancer/derez/derez_hero.png
+description: "Program guide for Derez, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import derez_hero from '/img/instruments/videomancer/derez/derez_hero.png';

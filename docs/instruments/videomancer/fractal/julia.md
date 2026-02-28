@@ -4,6 +4,7 @@ sidebar_position: 135
 slug: /instruments/videomancer/julia
 title: "Julia"
 image: /img/instruments/videomancer/julia/julia_hero.png
+description: "Program guide for Julia, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import julia_animation from '/img/instruments/videomancer/julia/julia_animation.gif';

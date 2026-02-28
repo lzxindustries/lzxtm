@@ -4,6 +4,7 @@ sidebar_position: 53
 slug: /instruments/videomancer/concave
 title: "Concave"
 image: /img/instruments/videomancer/concave/concave_hero.png
+description: "Program guide for Concave, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import concave_hero from '/img/instruments/videomancer/concave/concave_hero.png';

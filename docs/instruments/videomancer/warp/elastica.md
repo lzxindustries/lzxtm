@@ -4,6 +4,7 @@ sidebar_position: 84
 slug: /instruments/videomancer/elastica
 title: "Elastica"
 image: /img/instruments/videomancer/elastica/elastica_hero.png
+description: "Program guide for Elastica, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import elastica_hero from '/img/instruments/videomancer/elastica/elastica_hero.png';

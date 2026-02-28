@@ -4,6 +4,7 @@ sidebar_position: 275
 slug: /instruments/videomancer/vertigo
 title: "Vertigo"
 image: /img/instruments/videomancer/vertigo/vertigo_hero.png
+description: "Program guide for Vertigo, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import vertigo_animation from '/img/instruments/videomancer/vertigo/vertigo_animation.gif';

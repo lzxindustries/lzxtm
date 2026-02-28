@@ -4,6 +4,7 @@ sidebar_position: 192
 slug: /instruments/videomancer/peephole
 title: "Peephole"
 image: /img/instruments/videomancer/peephole/peephole_hero.png
+description: "Program guide for Peephole, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import peephole_before_after from '/img/instruments/videomancer/peephole/peephole_before_after.png';

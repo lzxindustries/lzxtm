@@ -4,6 +4,7 @@ sidebar_position: 276
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
 image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png
+description: "Program guide for Viewfinder, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import viewfinder_before_after from '/img/instruments/videomancer/viewfinder/viewfinder_before_after.png';

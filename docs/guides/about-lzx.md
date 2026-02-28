@@ -3,6 +3,7 @@ draft: false
 title: "About LZX"
 sidebar_position: 1
 image: /img/guides/about_lxz_workshop.jpg
+description: "Learn about LZX Industries, creators of modular video synthesizer instruments and tools for real-time visual art."
 ---
 
 import about_lxz_workshop from '/img/guides/about_lxz_workshop.jpg';

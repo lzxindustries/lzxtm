@@ -2,6 +2,7 @@
 draft: false
 title: "PGO: Programmable Gain & Offset"
 image: /img/modules/pgo/pgo-diagrams/pgo_front-panel.png
+description: "Documentation for PGO, a programmable gain and offset utility for adding and subtracting video signals in a compact 4HP module."
 ---
 
 import pgo_pcb_front from '/img/modules/pgo/pgo-diagrams/pgo-pcb-render-front-RevB.png';

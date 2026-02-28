@@ -4,6 +4,7 @@ sidebar_position: 29
 slug: /instruments/videomancer/brushwork
 title: "Brushwork"
 image: /img/instruments/videomancer/brushwork/brushwork_hero.png
+description: "Program guide for Brushwork, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import brushwork_hero from '/img/instruments/videomancer/brushwork/brushwork_hero.png';

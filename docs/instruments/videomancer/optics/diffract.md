@@ -4,6 +4,7 @@ sidebar_position: 71
 slug: /instruments/videomancer/diffract
 title: "Diffract"
 image: /img/instruments/videomancer/diffract/diffract_hero.png
+description: "Program guide for Diffract, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import diffract_hero from '/img/instruments/videomancer/diffract/diffract_hero.png';

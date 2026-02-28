@@ -4,6 +4,7 @@ sidebar_position: 237
 slug: /instruments/videomancer/sirocco
 title: "Sirocco"
 image: /img/instruments/videomancer/sirocco/sirocco_hero.png
+description: "Program guide for Sirocco, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import sirocco_before_after from '/img/instruments/videomancer/sirocco/sirocco_before_after.png';

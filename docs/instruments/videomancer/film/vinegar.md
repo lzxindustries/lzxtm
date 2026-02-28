@@ -4,6 +4,7 @@ sidebar_position: 278
 slug: /instruments/videomancer/vinegar
 title: "Vinegar"
 image: /img/instruments/videomancer/vinegar/vinegar_hero.png
+description: "Program guide for Vinegar, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import vinegar_before_after from '/img/instruments/videomancer/vinegar/vinegar_before_after.png';

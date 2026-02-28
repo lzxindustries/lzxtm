@@ -4,6 +4,7 @@ sidebar_position: 126
 slug: /instruments/videomancer/inertia
 title: "Inertia"
 image: /img/instruments/videomancer/inertia/inertia_hero.png
+description: "Program guide for Inertia, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import inertia_hero from '/img/instruments/videomancer/inertia/inertia_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 8
 slug: /instruments/videomancer/anodize
 title: "Anodize"
 image: /img/instruments/videomancer/anodize/anodize_hero.png
+description: "Program guide for Anodize, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import anodize_hero from '/img/instruments/videomancer/anodize/anodize_hero.png';

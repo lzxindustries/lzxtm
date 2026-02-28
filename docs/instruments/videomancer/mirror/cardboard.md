@@ -4,6 +4,7 @@ sidebar_position: 33
 slug: /instruments/videomancer/cardboard
 title: "Cardboard"
 image: /img/instruments/videomancer/cardboard/cardboard_hero.png
+description: "Program guide for Cardboard, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import cardboard_hero from '/img/instruments/videomancer/cardboard/cardboard_hero.png';

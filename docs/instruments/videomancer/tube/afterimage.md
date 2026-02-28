@@ -4,6 +4,7 @@ sidebar_position: 3
 slug: /instruments/videomancer/afterimage
 title: "Afterimage"
 image: /img/instruments/videomancer/afterimage/afterimage_hero.png
+description: "Program guide for Afterimage, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import afterimage_hero from '/img/instruments/videomancer/afterimage/afterimage_hero.png';

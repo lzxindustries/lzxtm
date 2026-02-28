@@ -4,6 +4,7 @@ sidebar_position: 287
 slug: /instruments/videomancer/xero
 title: "Xero"
 image: /img/instruments/videomancer/xero/xero_hero.png
+description: "Program guide for Xero, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import xero_before_after from '/img/instruments/videomancer/xero/xero_before_after.png';

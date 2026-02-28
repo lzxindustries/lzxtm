@@ -4,6 +4,7 @@ sidebar_position: 42
 slug: /instruments/videomancer/checkers
 title: "Checkers"
 image: /img/instruments/videomancer/checkers/checkers_hero.png
+description: "Program guide for Checkers, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import checkers_hero from '/img/instruments/videomancer/checkers/checkers_hero.png';

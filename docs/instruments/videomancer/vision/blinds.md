@@ -4,6 +4,7 @@ sidebar_position: 21
 slug: /instruments/videomancer/blinds
 title: "Blinds"
 image: /img/instruments/videomancer/blinds/blinds_hero.png
+description: "Program guide for Blinds, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import blinds_hero from '/img/instruments/videomancer/blinds/blinds_hero.png';

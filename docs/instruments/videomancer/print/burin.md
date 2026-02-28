@@ -4,6 +4,7 @@ sidebar_position: 30
 slug: /instruments/videomancer/burin
 title: "Burin"
 image: /img/instruments/videomancer/burin/burin_hero.png
+description: "Program guide for Burin, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import burin_hero from '/img/instruments/videomancer/burin/burin_hero.png';

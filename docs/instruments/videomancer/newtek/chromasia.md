@@ -4,6 +4,7 @@ sidebar_position: 46
 slug: /instruments/videomancer/chromasia
 title: "Chromasia"
 image: /img/instruments/videomancer/chromasia/chromasia_hero.png
+description: "Program guide for Chromasia, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import chromasia_hero from '/img/instruments/videomancer/chromasia/chromasia_hero.png';

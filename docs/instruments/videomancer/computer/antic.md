@@ -4,6 +4,7 @@ sidebar_position: 9
 slug: /instruments/videomancer/antic
 title: "Antic"
 image: /img/instruments/videomancer/antic/antic_hero.png
+description: "Program guide for Antic, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import antic_hero from '/img/instruments/videomancer/antic/antic_hero.png';

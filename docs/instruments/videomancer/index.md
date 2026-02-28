@@ -2,7 +2,9 @@
 draft: false
 sidebar_position: 1
 slug: /instruments/videomancer
+title: "Videomancer"
 image: /img/instruments/videomancer/videomancer_frontpanel.png
+description: "Documentation and program guides for Videomancer, a standalone video synthesis instrument with an open source hybrid digital/analog architecture."
 ---
 
 import videomancer_connectors_and_controls from '/img/instruments/videomancer/videomancer-connectors-and-controls.png';

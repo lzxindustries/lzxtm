@@ -4,6 +4,7 @@ sidebar_position: 229
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero.png
+description: "Program guide for Seismograph, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import seismograph_before_after from '/img/instruments/videomancer/seismograph/seismograph_before_after.png';

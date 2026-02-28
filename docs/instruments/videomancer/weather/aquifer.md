@@ -4,6 +4,7 @@ sidebar_position: 10
 slug: /instruments/videomancer/aquifer
 title: "Aquifer"
 image: /img/instruments/videomancer/aquifer/aquifer_hero.png
+description: "Program guide for Aquifer, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import aquifer_hero from '/img/instruments/videomancer/aquifer/aquifer_hero.png';

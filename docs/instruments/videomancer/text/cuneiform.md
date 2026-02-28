@@ -4,6 +4,7 @@ sidebar_position: 61
 slug: /instruments/videomancer/cuneiform
 title: "Cuneiform"
 image: /img/instruments/videomancer/cuneiform/cuneiform_hero.png
+description: "Program guide for Cuneiform, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import cuneiform_hero from '/img/instruments/videomancer/cuneiform/cuneiform_hero.png';

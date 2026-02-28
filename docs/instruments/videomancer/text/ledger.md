@@ -4,6 +4,7 @@ sidebar_position: 145
 slug: /instruments/videomancer/ledger
 title: "Ledger"
 image: /img/instruments/videomancer/ledger/ledger_hero.png
+description: "Program guide for Ledger, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import ledger_before_after from '/img/instruments/videomancer/ledger/ledger_before_after.png';

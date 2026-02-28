@@ -4,6 +4,7 @@ sidebar_position: 254
 slug: /instruments/videomancer/tarmac
 title: "Tarmac"
 image: /img/instruments/videomancer/tarmac/tarmac_hero.png
+description: "Program guide for Tarmac, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import tarmac_before_after from '/img/instruments/videomancer/tarmac/tarmac_before_after.png';

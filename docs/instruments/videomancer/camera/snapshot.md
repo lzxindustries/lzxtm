@@ -4,6 +4,7 @@ sidebar_position: 238
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
 image: /img/instruments/videomancer/snapshot/snapshot_hero.png
+description: "Program guide for Snapshot, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import snapshot_before_after from '/img/instruments/videomancer/snapshot/snapshot_before_after.png';

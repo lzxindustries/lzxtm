@@ -4,6 +4,7 @@ sidebar_position: 110
 slug: /instruments/videomancer/gazette
 title: "Gazette"
 image: /img/instruments/videomancer/gazette/gazette_hero.png
+description: "Program guide for Gazette, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import gazette_hero from '/img/instruments/videomancer/gazette/gazette_hero.png';

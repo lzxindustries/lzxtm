@@ -4,6 +4,7 @@ sidebar_position: 7
 slug: /instruments/videomancer/anaglyph
 title: "Anaglyph"
 image: /img/instruments/videomancer/anaglyph/anaglyph_hero.png
+description: "Program guide for Anaglyph, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import anaglyph_hero from '/img/instruments/videomancer/anaglyph/anaglyph_hero.png';

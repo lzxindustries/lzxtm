@@ -4,6 +4,7 @@ sidebar_position: 261
 slug: /instruments/videomancer/tessera
 title: "Tessera"
 image: /img/instruments/videomancer/tessera/tessera_hero.png
+description: "Program guide for Tessera, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import tessera_before_after from '/img/instruments/videomancer/tessera/tessera_before_after.png';

@@ -2,6 +2,7 @@
 draft: false
 title: "STACKER: Triple Window Key Generator"
 image: /img/modules/stacker/stacker-diagrams/stacker_frontpanel.png
+description: "Documentation for STACKER, a triple window key generator and priority layer compositor for interlocking binary shapes."
 ---
 
 import stacker_frontpanel from '/img/modules/stacker/stacker-diagrams/stacker_frontpanel.png';

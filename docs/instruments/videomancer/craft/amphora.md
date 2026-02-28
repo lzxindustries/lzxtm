@@ -4,6 +4,7 @@ sidebar_position: 6
 slug: /instruments/videomancer/amphora
 title: "Amphora"
 image: /img/instruments/videomancer/amphora/amphora_hero.png
+description: "Program guide for Amphora, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import amphora_hero from '/img/instruments/videomancer/amphora/amphora_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 143
 slug: /instruments/videomancer/lattice
 title: "Lattice"
 image: /img/instruments/videomancer/lattice/lattice_hero.png
+description: "Program guide for Lattice, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import lattice_animation from '/img/instruments/videomancer/lattice/lattice_animation.gif';

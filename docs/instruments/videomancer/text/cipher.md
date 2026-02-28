@@ -4,6 +4,7 @@ sidebar_position: 49
 slug: /instruments/videomancer/cipher
 title: "Cipher"
 image: /img/instruments/videomancer/cipher/cipher_hero.png
+description: "Program guide for Cipher, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import cipher_hero from '/img/instruments/videomancer/cipher/cipher_hero.png';

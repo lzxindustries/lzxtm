@@ -4,6 +4,7 @@ sidebar_position: 18
 slug: /instruments/videomancer/bijou
 title: "Bijou"
 image: /img/instruments/videomancer/bijou/bijou_hero.png
+description: "Program guide for Bijou, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import bijou_hero from '/img/instruments/videomancer/bijou/bijou_hero.png';

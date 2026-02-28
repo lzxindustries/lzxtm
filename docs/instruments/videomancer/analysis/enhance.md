@@ -4,6 +4,7 @@ sidebar_position: 90
 slug: /instruments/videomancer/enhance
 title: "Enhance"
 image: /img/instruments/videomancer/enhance/enhance_hero.png
+description: "Program guide for Enhance, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import enhance_hero from '/img/instruments/videomancer/enhance/enhance_hero.png';

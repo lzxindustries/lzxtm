@@ -4,6 +4,7 @@ sidebar_position: 37
 slug: /instruments/videomancer/cathode
 title: "Cathode"
 image: /img/instruments/videomancer/cathode/cathode_hero.png
+description: "Program guide for Cathode, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import cathode_hero from '/img/instruments/videomancer/cathode/cathode_hero.png';

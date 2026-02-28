@@ -4,6 +4,7 @@ sidebar_position: 131
 slug: /instruments/videomancer/isotherm
 title: "Isotherm"
 image: /img/instruments/videomancer/isotherm/isotherm_hero.png
+description: "Program guide for Isotherm, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import isotherm_before_after from '/img/instruments/videomancer/isotherm/isotherm_before_after.png';

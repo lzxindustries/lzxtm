@@ -4,6 +4,7 @@ sidebar_position: 203
 slug: /instruments/videomancer/plasma
 title: "Plasma"
 image: /img/instruments/videomancer/plasma/plasma_hero.png
+description: "Program guide for Plasma, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import plasma_animation from '/img/instruments/videomancer/plasma/plasma_animation.gif';

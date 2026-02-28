@@ -4,6 +4,7 @@ sidebar_position: 286
 slug: /instruments/videomancer/worley
 title: "Worley"
 image: /img/instruments/videomancer/worley/worley_hero.png
+description: "Program guide for Worley, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import worley_animation from '/img/instruments/videomancer/worley/worley_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 77
 slug: /instruments/videomancer/dotmatrix
 title: "Dotmatrix"
 image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero.png
+description: "Program guide for Dotmatrix, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import dotmatrix_hero from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 115
 slug: /instruments/videomancer/gravure
 title: "Gravure"
 image: /img/instruments/videomancer/gravure/gravure_hero.png
+description: "Program guide for Gravure, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import gravure_hero from '/img/instruments/videomancer/gravure/gravure_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 116
 slug: /instruments/videomancer/grisaille
 title: "Grisaille"
 image: /img/instruments/videomancer/grisaille/grisaille_hero.png
+description: "Program guide for Grisaille, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import grisaille_hero from '/img/instruments/videomancer/grisaille/grisaille_hero.png';

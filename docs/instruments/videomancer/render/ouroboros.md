@@ -4,6 +4,7 @@ sidebar_position: 186
 slug: /instruments/videomancer/ouroboros
 title: "Ouroboros"
 image: /img/instruments/videomancer/ouroboros/ouroboros_hero.png
+description: "Program guide for Ouroboros, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import ouroboros_animation from '/img/instruments/videomancer/ouroboros/ouroboros_animation.gif';

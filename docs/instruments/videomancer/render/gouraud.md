@@ -4,6 +4,7 @@ sidebar_position: 114
 slug: /instruments/videomancer/gouraud
 title: "Gouraud"
 image: /img/instruments/videomancer/gouraud/gouraud_hero.png
+description: "Program guide for Gouraud, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import gouraud_hero from '/img/instruments/videomancer/gouraud/gouraud_hero.png';

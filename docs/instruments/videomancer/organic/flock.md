@@ -4,6 +4,7 @@ sidebar_position: 100
 slug: /instruments/videomancer/flock
 title: "Flock"
 image: /img/instruments/videomancer/flock/flock_hero.png
+description: "Program guide for Flock, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import flock_hero from '/img/instruments/videomancer/flock/flock_hero.png';

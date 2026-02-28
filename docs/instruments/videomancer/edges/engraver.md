@@ -4,6 +4,7 @@ sidebar_position: 89
 slug: /instruments/videomancer/engraver
 title: "Engraver"
 image: /img/instruments/videomancer/engraver/engraver_hero.png
+description: "Program guide for Engraver, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import engraver_hero from '/img/instruments/videomancer/engraver/engraver_hero.png';

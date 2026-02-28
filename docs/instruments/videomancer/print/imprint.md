@@ -4,6 +4,7 @@ sidebar_position: 125
 slug: /instruments/videomancer/imprint
 title: "Imprint"
 image: /img/instruments/videomancer/imprint/imprint_hero.png
+description: "Program guide for Imprint, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import imprint_hero from '/img/instruments/videomancer/imprint/imprint_hero.png';

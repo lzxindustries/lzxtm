@@ -4,6 +4,7 @@ sidebar_position: 160
 slug: /instruments/videomancer/maelstrom
 title: "Maelstrom"
 image: /img/instruments/videomancer/maelstrom/maelstrom_hero.png
+description: "Program guide for Maelstrom, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import maelstrom_before_after from '/img/instruments/videomancer/maelstrom/maelstrom_before_after.png';

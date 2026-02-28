@@ -4,6 +4,7 @@ sidebar_position: 253
 slug: /instruments/videomancer/tableau
 title: "Tableau"
 image: /img/instruments/videomancer/tableau/tableau_hero.png
+description: "Program guide for Tableau, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import tableau_before_after from '/img/instruments/videomancer/tableau/tableau_before_after.png';

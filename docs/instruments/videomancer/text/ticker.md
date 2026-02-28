@@ -4,6 +4,7 @@ sidebar_position: 262
 slug: /instruments/videomancer/ticker
 title: "Ticker"
 image: /img/instruments/videomancer/ticker/ticker_hero.png
+description: "Program guide for Ticker, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import ticker_before_after from '/img/instruments/videomancer/ticker/ticker_before_after.png';

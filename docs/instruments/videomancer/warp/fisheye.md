@@ -4,6 +4,7 @@ sidebar_position: 98
 slug: /instruments/videomancer/fisheye
 title: "Fisheye"
 image: /img/instruments/videomancer/fisheye/fisheye_hero.png
+description: "Program guide for Fisheye, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import fisheye_hero from '/img/instruments/videomancer/fisheye/fisheye_hero.png';

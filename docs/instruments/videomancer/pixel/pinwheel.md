@@ -4,6 +4,7 @@ sidebar_position: 4
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
 image: /img/instruments/videomancer/pinwheel/pinwheel_hero.png
+description: "Program guide for Pinwheel, a Videomancer program that uses luminance to drive hue rotation across the YUV color space."
 ---
 
 import pinwheel_hero from '/img/instruments/videomancer/pinwheel/pinwheel_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 283
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
 image: /img/instruments/videomancer/washbrush/washbrush_hero.png
+description: "Program guide for Washbrush, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import washbrush_before_after from '/img/instruments/videomancer/washbrush/washbrush_before_after.png';

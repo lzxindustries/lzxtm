@@ -4,6 +4,7 @@ sidebar_position: 219
 slug: /instruments/videomancer/riso
 title: "Riso"
 image: /img/instruments/videomancer/riso/riso_hero.png
+description: "Program guide for Riso, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import riso_before_after from '/img/instruments/videomancer/riso/riso_before_after.png';

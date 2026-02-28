@@ -4,6 +4,7 @@ sidebar_position: 277
 slug: /instruments/videomancer/vigil
 title: "Vigil"
 image: /img/instruments/videomancer/vigil/vigil_hero.png
+description: "Program guide for Vigil, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import vigil_before_after from '/img/instruments/videomancer/vigil/vigil_before_after.png';

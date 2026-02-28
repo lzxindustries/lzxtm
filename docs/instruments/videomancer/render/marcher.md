@@ -4,6 +4,7 @@ sidebar_position: 161
 slug: /instruments/videomancer/marcher
 title: "Marcher"
 image: /img/instruments/videomancer/marcher/marcher_hero.png
+description: "Program guide for Marcher, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import marcher_animation from '/img/instruments/videomancer/marcher/marcher_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 273
 slug: /instruments/videomancer/vermiform
 title: "Vermiform"
 image: /img/instruments/videomancer/vermiform/vermiform_hero.png
+description: "Program guide for Vermiform, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import vermiform_animation from '/img/instruments/videomancer/vermiform/vermiform_animation.gif';

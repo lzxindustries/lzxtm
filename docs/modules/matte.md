@@ -2,6 +2,7 @@
 draft: false
 title: "MATTE: Static Voltage Generator & Control Panel"
 image: /img/modules/matte/matte-diagrams/matte_frontpanel.png
+description: "Documentation for MATTE, a static voltage generator and control panel optimized for RGB color selection in video synthesis."
 ---
 
 import { useEffect, useRef, useState } from 'react';

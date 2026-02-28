@@ -4,6 +4,7 @@ sidebar_position: 48
 slug: /instruments/videomancer/chrysalis
 title: "Chrysalis"
 image: /img/instruments/videomancer/chrysalis/chrysalis_hero.png
+description: "Program guide for Chrysalis, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import chrysalis_hero from '/img/instruments/videomancer/chrysalis/chrysalis_hero.png';

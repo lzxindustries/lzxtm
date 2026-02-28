@@ -4,6 +4,7 @@ sidebar_position: 249
 slug: /instruments/videomancer/stratum
 title: "Stratum"
 image: /img/instruments/videomancer/stratum/stratum_hero.png
+description: "Program guide for Stratum, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import stratum_before_after from '/img/instruments/videomancer/stratum/stratum_before_after.png';

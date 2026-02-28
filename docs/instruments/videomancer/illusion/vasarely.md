@@ -4,6 +4,7 @@ sidebar_position: 272
 slug: /instruments/videomancer/vasarely
 title: "Vasarely"
 image: /img/instruments/videomancer/vasarely/vasarely_hero.png
+description: "Program guide for Vasarely, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import vasarely_before_after from '/img/instruments/videomancer/vasarely/vasarely_before_after.png';

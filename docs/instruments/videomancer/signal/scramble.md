@@ -4,6 +4,7 @@ sidebar_position: 6
 slug: /instruments/videomancer/scramble
 title: "Scramble"
 image: /img/instruments/videomancer/scramble/scramble_hero.png
+description: "Program guide for Scramble, a Videomancer effect that digitally recreates analog pay-TV scrambling and decoder failure artifacts."
 ---
 
 import scramble_hero from '/img/instruments/videomancer/scramble/scramble_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 66
 slug: /instruments/videomancer/defocus
 title: "Defocus"
 image: /img/instruments/videomancer/defocus/defocus_hero.png
+description: "Program guide for Defocus, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import defocus_hero from '/img/instruments/videomancer/defocus/defocus_hero.png';

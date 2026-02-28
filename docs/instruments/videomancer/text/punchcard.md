@@ -4,6 +4,7 @@ sidebar_position: 208
 slug: /instruments/videomancer/punchcard
 title: "Punchcard"
 image: /img/instruments/videomancer/punchcard/punchcard_hero.png
+description: "Program guide for Punchcard, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import punchcard_before_after from '/img/instruments/videomancer/punchcard/punchcard_before_after.png';

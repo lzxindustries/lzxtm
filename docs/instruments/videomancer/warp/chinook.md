@@ -4,6 +4,7 @@ sidebar_position: 44
 slug: /instruments/videomancer/chinook
 title: "Chinook"
 image: /img/instruments/videomancer/chinook/chinook_hero.png
+description: "Program guide for Chinook, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import chinook_hero from '/img/instruments/videomancer/chinook/chinook_hero.png';

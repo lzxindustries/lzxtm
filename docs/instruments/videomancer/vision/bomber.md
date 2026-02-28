@@ -4,6 +4,7 @@ sidebar_position: 26
 slug: /instruments/videomancer/bomber
 title: "Bomber"
 image: /img/instruments/videomancer/bomber/bomber_hero.png
+description: "Program guide for Bomber, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import bomber_hero from '/img/instruments/videomancer/bomber/bomber_hero.png';

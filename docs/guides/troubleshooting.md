@@ -2,6 +2,7 @@
 draft: false
 title: "Troubleshooting"
 sidebar_position: 6
+description: "Troubleshooting guide for diagnosing and resolving common issues with LZX modular video synthesizer systems."
 ---
 
 #  Troubleshooting

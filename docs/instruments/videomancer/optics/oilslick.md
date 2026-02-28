@@ -4,6 +4,7 @@ sidebar_position: 182
 slug: /instruments/videomancer/oilslick
 title: "Oilslick"
 image: /img/instruments/videomancer/oilslick/oilslick_hero.png
+description: "Program guide for Oilslick, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import oilslick_before_after from '/img/instruments/videomancer/oilslick/oilslick_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 99
 slug: /instruments/videomancer/flaregun
 title: "Flaregun"
 image: /img/instruments/videomancer/flaregun/flaregun_hero.png
+description: "Program guide for Flaregun, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import flaregun_hero from '/img/instruments/videomancer/flaregun/flaregun_hero.png';

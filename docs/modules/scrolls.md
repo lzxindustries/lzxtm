@@ -2,6 +2,7 @@
 draft: false
 title: "SCROLLS: Dual Motion Controlled Ramp Generator"
 image: /img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png
+description: "Documentation for SCROLLS, a dual motion controlled ramp generator for SD and HD modular video synthesis."
 ---
 
 import scrolls_frontpanel from '/img/modules/scrolls/scrolls-diagrams/scrolls_frontpanel.png';

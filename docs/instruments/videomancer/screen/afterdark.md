@@ -4,6 +4,7 @@ sidebar_position: 2
 slug: /instruments/videomancer/afterdark
 title: "Afterdark"
 image: /img/instruments/videomancer/afterdark/afterdark_hero.png
+description: "Program guide for Afterdark, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import afterdark_hero from '/img/instruments/videomancer/afterdark/afterdark_hero.png';

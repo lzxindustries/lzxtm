@@ -2,6 +2,7 @@
 draft: false
 title: "SMX3: Summing Matrix Mixer"
 image: /img/modules/smx3/smx3-diagrams/SMX3_frontpanel.png
+description: "Documentation for SMX3, a nine-input three-output summing matrix mixer with per-input gain control from -2x to +2x."
 ---
 
 import { useEffect, useRef, useState } from 'react';

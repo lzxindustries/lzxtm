@@ -4,6 +4,7 @@ sidebar_position: 210
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero.png
+description: "Program guide for Radiant, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import radiant_before_after from '/img/instruments/videomancer/radiant/radiant_before_after.png';

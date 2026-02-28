@@ -2,6 +2,7 @@
 draft: false
 title: "Video Tutorials"
 sidebar_position: 7
+description: "Curated collection of video tutorials and instructional content for LZX video synthesizer modules and techniques."
 ---
 
 # Video Tutorials

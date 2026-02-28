@@ -4,6 +4,7 @@ sidebar_position: 199
 slug: /instruments/videomancer/phosphor
 title: "Phosphor"
 image: /img/instruments/videomancer/phosphor/phosphor_hero.png
+description: "Program guide for Phosphor, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import phosphor_before_after from '/img/instruments/videomancer/phosphor/phosphor_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 139
 slug: /instruments/videomancer/kintsugi
 title: "Kintsugi"
 image: /img/instruments/videomancer/kintsugi/kintsugi_hero.png
+description: "Program guide for Kintsugi, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import kintsugi_before_after from '/img/instruments/videomancer/kintsugi/kintsugi_before_after.png';

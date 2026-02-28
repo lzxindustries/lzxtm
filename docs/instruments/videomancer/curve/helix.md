@@ -4,6 +4,7 @@ sidebar_position: 119
 slug: /instruments/videomancer/helix
 title: "Helix"
 image: /img/instruments/videomancer/helix/helix_hero.png
+description: "Program guide for Helix, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import helix_hero from '/img/instruments/videomancer/helix/helix_hero.png';

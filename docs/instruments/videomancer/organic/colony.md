@@ -4,6 +4,7 @@ sidebar_position: 52
 slug: /instruments/videomancer/colony
 title: "Colony"
 image: /img/instruments/videomancer/colony/colony_hero.png
+description: "Program guide for Colony, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import colony_hero from '/img/instruments/videomancer/colony/colony_hero.png';

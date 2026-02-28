@@ -1,6 +1,8 @@
 ---
 draft: true
 sidebar_position: 2
+title: "Double Vision"
+description: "Documentation for Double Vision, a dual-channel video processing instrument by LZX Industries."
 ---
 
 # Double Vision

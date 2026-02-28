@@ -4,6 +4,7 @@ sidebar_position: 244
 slug: /instruments/videomancer/stencil
 title: "Stencil"
 image: /img/instruments/videomancer/stencil/stencil_hero.png
+description: "Program guide for Stencil, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import stencil_before_after from '/img/instruments/videomancer/stencil/stencil_before_after.png';

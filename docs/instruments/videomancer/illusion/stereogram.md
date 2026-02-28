@@ -4,6 +4,7 @@ sidebar_position: 245
 slug: /instruments/videomancer/stereogram
 title: "Stereogram"
 image: /img/instruments/videomancer/stereogram/stereogram_hero.png
+description: "Program guide for Stereogram, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import stereogram_before_after from '/img/instruments/videomancer/stereogram/stereogram_before_after.png';

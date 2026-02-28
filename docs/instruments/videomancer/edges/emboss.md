@@ -4,6 +4,7 @@ sidebar_position: 86
 slug: /instruments/videomancer/emboss
 title: "Emboss"
 image: /img/instruments/videomancer/emboss/emboss_hero.png
+description: "Program guide for Emboss, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import emboss_hero from '/img/instruments/videomancer/emboss/emboss_hero.png';

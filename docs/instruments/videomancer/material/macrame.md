@@ -4,6 +4,7 @@ sidebar_position: 158
 slug: /instruments/videomancer/macrame
 title: "Macrame"
 image: /img/instruments/videomancer/macrame/macrame_hero.png
+description: "Program guide for Macrame, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import macrame_before_after from '/img/instruments/videomancer/macrame/macrame_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 184
 slug: /instruments/videomancer/organica
 title: "Organica"
 image: /img/instruments/videomancer/organica/organica_hero.png
+description: "Program guide for Organica, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import organica_before_after from '/img/instruments/videomancer/organica/organica_before_after.png';

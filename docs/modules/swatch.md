@@ -2,6 +2,7 @@
 draft: false
 title: "SWATCH: Dual Color Space Converter"
 image: /img/modules/swatch/swatch-diagrams/swatch_front_panel.png
+description: "Documentation for SWATCH, a dual bidirectional color space converter for manipulating video color beyond the RGB color space."
 ---
 
 import { useEffect, useRef, useState } from 'react';

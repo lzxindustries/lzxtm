@@ -4,6 +4,7 @@ sidebar_position: 189
 slug: /instruments/videomancer/parallax
 title: "Parallax"
 image: /img/instruments/videomancer/parallax/parallax_hero.png
+description: "Program guide for Parallax, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import parallax_animation from '/img/instruments/videomancer/parallax/parallax_animation.gif';

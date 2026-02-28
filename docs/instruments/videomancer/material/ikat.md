@@ -4,6 +4,7 @@ sidebar_position: 124
 slug: /instruments/videomancer/ikat
 title: "Ikat"
 image: /img/instruments/videomancer/ikat/ikat_hero.png
+description: "Program guide for Ikat, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import ikat_hero from '/img/instruments/videomancer/ikat/ikat_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 28
 slug: /instruments/videomancer/braille
 title: "Braille"
 image: /img/instruments/videomancer/braille/braille_hero.png
+description: "Program guide for Braille, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import braille_hero from '/img/instruments/videomancer/braille/braille_hero.png';

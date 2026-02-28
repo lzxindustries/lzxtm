@@ -4,6 +4,7 @@ sidebar_position: 88
 slug: /instruments/videomancer/encore
 title: "Encore"
 image: /img/instruments/videomancer/encore/encore_hero.png
+description: "Program guide for Encore, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import encore_hero from '/img/instruments/videomancer/encore/encore_hero.png';

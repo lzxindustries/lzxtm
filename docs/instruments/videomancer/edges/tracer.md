@@ -4,6 +4,7 @@ sidebar_position: 266
 slug: /instruments/videomancer/tracer
 title: "Tracer"
 image: /img/instruments/videomancer/tracer/tracer_hero.png
+description: "Program guide for Tracer, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import tracer_before_after from '/img/instruments/videomancer/tracer/tracer_before_after.png';

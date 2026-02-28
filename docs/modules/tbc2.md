@@ -2,6 +2,7 @@
 draft: false
 title: "TBC2: Dual Video Input"
 image: /img/modules/tbc2/tbc2-diagrams/tbc2_frontpanel.png
+description: "Documentation for TBC2, a dual video input module for bringing multiple video sources into a modular video synthesizer."
 ---
 
 import { useEffect, useRef, useState } from 'react';

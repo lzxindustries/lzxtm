@@ -4,6 +4,7 @@ sidebar_position: 85
 slug: /instruments/videomancer/embers
 title: "Embers"
 image: /img/instruments/videomancer/embers/embers_hero.png
+description: "Program guide for Embers, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import embers_hero from '/img/instruments/videomancer/embers/embers_hero.png';

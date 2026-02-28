@@ -2,6 +2,7 @@
 draft: false
 title: "PAB: Programmable Active Buffers"
 image: /img/modules/pab/pab-diagrams/pab_front-panel.png
+description: "Documentation for PAB, a programmable active buffer for distributing and delaying signals in 16-nanosecond increments."
 ---
 
 import pab_front_panel from '/img/modules/pab/pab-diagrams/pab_front-panel.png';

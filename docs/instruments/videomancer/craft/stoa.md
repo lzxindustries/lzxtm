@@ -4,6 +4,7 @@ sidebar_position: 247
 slug: /instruments/videomancer/stoa
 title: "Stoa"
 image: /img/instruments/videomancer/stoa/stoa_hero.png
+description: "Program guide for Stoa, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import stoa_before_after from '/img/instruments/videomancer/stoa/stoa_before_after.png';

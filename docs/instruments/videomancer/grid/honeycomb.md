@@ -4,6 +4,7 @@ sidebar_position: 122
 slug: /instruments/videomancer/honeycomb
 title: "Honeycomb"
 image: /img/instruments/videomancer/honeycomb/honeycomb_hero.png
+description: "Program guide for Honeycomb, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import honeycomb_hero from '/img/instruments/videomancer/honeycomb/honeycomb_hero.png';

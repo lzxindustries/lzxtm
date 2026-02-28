@@ -4,6 +4,7 @@ sidebar_position: 149
 slug: /instruments/videomancer/linotype
 title: "Linotype"
 image: /img/instruments/videomancer/linotype/linotype_hero.png
+description: "Program guide for Linotype, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import linotype_before_after from '/img/instruments/videomancer/linotype/linotype_before_after.png';

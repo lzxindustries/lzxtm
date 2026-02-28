@@ -4,6 +4,7 @@ sidebar_position: 195
 slug: /instruments/videomancer/perlin
 title: "Perlin"
 image: /img/instruments/videomancer/perlin/perlin_hero.png
+description: "Program guide for Perlin, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import perlin_animation from '/img/instruments/videomancer/perlin/perlin_animation.gif';

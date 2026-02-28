@@ -4,6 +4,7 @@ sidebar_position: 138
 slug: /instruments/videomancer/killscreen
 title: "Killscreen"
 image: /img/instruments/videomancer/killscreen/killscreen_hero.png
+description: "Program guide for Killscreen, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import killscreen_before_after from '/img/instruments/videomancer/killscreen/killscreen_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 193
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
 image: /img/instruments/videomancer/pegboard/pegboard_hero.png
+description: "Program guide for Pegboard, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import pegboard_before_after from '/img/instruments/videomancer/pegboard/pegboard_before_after.png';

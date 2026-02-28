@@ -4,6 +4,7 @@ sidebar_position: 252
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
 image: /img/instruments/videomancer/swizzle/swizzle_hero.png
+description: "Program guide for Swizzle, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import swizzle_before_after from '/img/instruments/videomancer/swizzle/swizzle_before_after.png';

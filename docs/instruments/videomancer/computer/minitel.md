@@ -4,6 +4,7 @@ sidebar_position: 168
 slug: /instruments/videomancer/minitel
 title: "Minitel"
 image: /img/instruments/videomancer/minitel/minitel_hero.png
+description: "Program guide for Minitel, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import minitel_before_after from '/img/instruments/videomancer/minitel/minitel_before_after.png';

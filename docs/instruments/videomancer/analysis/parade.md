@@ -4,6 +4,7 @@ sidebar_position: 188
 slug: /instruments/videomancer/parade
 title: "Parade"
 image: /img/instruments/videomancer/parade/parade_hero.png
+description: "Program guide for Parade, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import parade_before_after from '/img/instruments/videomancer/parade/parade_before_after.png';

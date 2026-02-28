@@ -4,6 +4,7 @@ sidebar_position: 136
 slug: /instruments/videomancer/kaledos
 title: "Kaledos"
 image: /img/instruments/videomancer/kaledos/kaledos_hero.png
+description: "Program guide for Kaledos, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import kaledos_before_after from '/img/instruments/videomancer/kaledos/kaledos_before_after.png';

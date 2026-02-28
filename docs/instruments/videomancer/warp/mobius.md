@@ -4,6 +4,7 @@ sidebar_position: 171
 slug: /instruments/videomancer/mobius
 title: "Mobius"
 image: /img/instruments/videomancer/mobius/mobius_hero.png
+description: "Program guide for Mobius, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import mobius_before_after from '/img/instruments/videomancer/mobius/mobius_before_after.png';

@@ -3,6 +3,7 @@ draft: false
 title: "Module Installation"
 sidebar_position: 4
 image: /img/guides/installing_modules_sync.jpg
+description: "Step-by-step guide to safely installing EuroRack video synthesizer modules into your case and power system."
 ---
 
 import installing_modules_sync from '/img/guides/installing_modules_sync.jpg';

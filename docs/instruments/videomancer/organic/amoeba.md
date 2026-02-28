@@ -4,6 +4,7 @@ sidebar_position: 5
 slug: /instruments/videomancer/amoeba
 title: "Amoeba"
 image: /img/instruments/videomancer/amoeba/amoeba_hero.png
+description: "Program guide for Amoeba, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import amoeba_hero from '/img/instruments/videomancer/amoeba/amoeba_hero.png';

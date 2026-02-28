@@ -4,6 +4,7 @@ sidebar_position: 107
 slug: /instruments/videomancer/fringe
 title: "Fringe"
 image: /img/instruments/videomancer/fringe/fringe_hero.png
+description: "Program guide for Fringe, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import fringe_hero from '/img/instruments/videomancer/fringe/fringe_hero.png';

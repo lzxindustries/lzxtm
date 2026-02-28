@@ -4,6 +4,7 @@ sidebar_position: 103
 slug: /instruments/videomancer/flurry
 title: "Flurry"
 image: /img/instruments/videomancer/flurry/flurry_hero.png
+description: "Program guide for Flurry, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import flurry_hero from '/img/instruments/videomancer/flurry/flurry_hero.png';

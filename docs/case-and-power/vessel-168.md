@@ -1,5 +1,7 @@
 ---
 draft: true
+title: "Vessel 168"
+description: "Documentation for Vessel 168, a 168HP portable EuroRack case for LZX modular video systems."
 ---
 
 # Vessel 168

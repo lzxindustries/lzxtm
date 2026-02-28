@@ -4,6 +4,7 @@ sidebar_position: 250
 slug: /instruments/videomancer/strobe
 title: "Strobe"
 image: /img/instruments/videomancer/strobe/strobe_hero.png
+description: "Program guide for Strobe, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import strobe_before_after from '/img/instruments/videomancer/strobe/strobe_before_after.png';

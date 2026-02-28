@@ -4,6 +4,7 @@ sidebar_position: 65
 slug: /instruments/videomancer/decibel
 title: "Decibel"
 image: /img/instruments/videomancer/decibel/decibel_hero.png
+description: "Program guide for Decibel, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import decibel_hero from '/img/instruments/videomancer/decibel/decibel_hero.png';

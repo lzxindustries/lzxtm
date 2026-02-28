@@ -4,6 +4,7 @@ sidebar_position: 151
 slug: /instruments/videomancer/lith
 title: "Lith"
 image: /img/instruments/videomancer/lith/lith_hero.png
+description: "Program guide for Lith, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import lith_before_after from '/img/instruments/videomancer/lith/lith_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 176
 slug: /instruments/videomancer/nacre
 title: "Nacre"
 image: /img/instruments/videomancer/nacre/nacre_hero.png
+description: "Program guide for Nacre, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import nacre_before_after from '/img/instruments/videomancer/nacre/nacre_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 207
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero.png
+description: "Program guide for Procamp, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import procamp_before_after from '/img/instruments/videomancer/procamp/procamp_before_after.png';

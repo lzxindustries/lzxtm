@@ -2,6 +2,7 @@
 draft: false
 title: "MLT: Passive Multiples"
 image: /img/modules/mlt/mlt-diagrams/mlt_front-panel.png
+description: "Documentation for MLT, a passive multiples utility module for splitting signals in a modular video system."
 ---
 
 import mlt_frontpanel from '/img/modules/mlt/mlt-diagrams/mlt_front-panel.png';

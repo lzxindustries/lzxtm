@@ -4,6 +4,7 @@ sidebar_position: 183
 slug: /instruments/videomancer/optika
 title: "Optika"
 image: /img/instruments/videomancer/optika/optika_hero.png
+description: "Program guide for Optika, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import optika_before_after from '/img/instruments/videomancer/optika/optika_before_after.png';

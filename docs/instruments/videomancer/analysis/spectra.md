@@ -4,6 +4,7 @@ sidebar_position: 239
 slug: /instruments/videomancer/spectra
 title: "Spectra"
 image: /img/instruments/videomancer/spectra/spectra_hero.png
+description: "Program guide for Spectra, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import spectra_before_after from '/img/instruments/videomancer/spectra/spectra_before_after.png';

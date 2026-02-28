@@ -4,6 +4,7 @@ sidebar_position: 241
 slug: /instruments/videomancer/spore
 title: "Spore"
 image: /img/instruments/videomancer/spore/spore_hero.png
+description: "Program guide for Spore, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import spore_animation from '/img/instruments/videomancer/spore/spore_animation.gif';

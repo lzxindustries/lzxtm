@@ -4,6 +4,7 @@ sidebar_position: 74
 slug: /instruments/videomancer/discrot
 title: "Discrot"
 image: /img/instruments/videomancer/discrot/discrot_hero.png
+description: "Program guide for Discrot, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import discrot_hero from '/img/instruments/videomancer/discrot/discrot_hero.png';

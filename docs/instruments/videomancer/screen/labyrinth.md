@@ -4,6 +4,7 @@ sidebar_position: 140
 slug: /instruments/videomancer/labyrinth
 title: "Labyrinth"
 image: /img/instruments/videomancer/labyrinth/labyrinth_hero.png
+description: "Program guide for Labyrinth, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import labyrinth_animation from '/img/instruments/videomancer/labyrinth/labyrinth_animation.gif';

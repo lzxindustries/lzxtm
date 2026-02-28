@@ -4,6 +4,7 @@ sidebar_position: 130
 slug: /instruments/videomancer/isometric
 title: "Isometric"
 image: /img/instruments/videomancer/isometric/isometric_hero.png
+description: "Program guide for Isometric, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import isometric_animation from '/img/instruments/videomancer/isometric/isometric_animation.gif';

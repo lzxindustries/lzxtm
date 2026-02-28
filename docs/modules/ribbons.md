@@ -2,6 +2,7 @@
 draft: false
 title: "RIBBONS: Three-Bit Digitizer and Colorizer"
 image: /img/modules/ribbons/ribbons-diagrams/ribbons_frontpanel.png
+description: "Documentation for RIBBONS, a three-bit digitizer and colorizer that slices video signals into eight quantized bands."
 ---
 
 import { useEffect, useRef, useState } from 'react';

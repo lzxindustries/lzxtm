@@ -4,6 +4,7 @@ sidebar_position: 95
 slug: /instruments/videomancer/ferro
 title: "Ferro"
 image: /img/instruments/videomancer/ferro/ferro_hero.png
+description: "Program guide for Ferro, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import ferro_hero from '/img/instruments/videomancer/ferro/ferro_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 80
 slug: /instruments/videomancer/dropout
 title: "Dropout"
 image: /img/instruments/videomancer/dropout/dropout_hero.png
+description: "Program guide for Dropout, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import dropout_hero from '/img/instruments/videomancer/dropout/dropout_hero.png';

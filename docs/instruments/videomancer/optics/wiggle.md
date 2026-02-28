@@ -4,6 +4,7 @@ sidebar_position: 284
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
 image: /img/instruments/videomancer/wiggle/wiggle_hero.png
+description: "Program guide for Wiggle, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import wiggle_before_after from '/img/instruments/videomancer/wiggle/wiggle_before_after.png';

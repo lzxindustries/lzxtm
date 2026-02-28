@@ -4,6 +4,7 @@ sidebar_position: 217
 slug: /instruments/videomancer/ricochet
 title: "Ricochet"
 image: /img/instruments/videomancer/ricochet/ricochet_hero.png
+description: "Program guide for Ricochet, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import ricochet_animation from '/img/instruments/videomancer/ricochet/ricochet_animation.gif';

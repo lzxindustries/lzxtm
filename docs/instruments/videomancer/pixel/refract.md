@@ -4,6 +4,7 @@ sidebar_position: 215
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero.png
+description: "Program guide for Refract, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import refract_before_after from '/img/instruments/videomancer/refract/refract_before_after.png';

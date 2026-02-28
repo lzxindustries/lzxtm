@@ -4,6 +4,7 @@ sidebar_position: 172
 slug: /instruments/videomancer/moiré
 title: "Moiré"
 image: /img/instruments/videomancer/moir%C3%A9/moir%C3%A9_hero.png
+description: "Program guide for Moiré, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import moir__before_after from '/img/instruments/videomancer/moiré/moiré_before_after.png';

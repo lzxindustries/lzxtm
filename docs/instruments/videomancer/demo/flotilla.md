@@ -4,6 +4,7 @@ sidebar_position: 102
 slug: /instruments/videomancer/flotilla
 title: "Flotilla"
 image: /img/instruments/videomancer/flotilla/flotilla_hero.png
+description: "Program guide for Flotilla, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import flotilla_hero from '/img/instruments/videomancer/flotilla/flotilla_hero.png';

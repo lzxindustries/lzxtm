@@ -4,6 +4,7 @@ sidebar_position: 180
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
 image: /img/instruments/videomancer/nimbus/nimbus_hero.png
+description: "Program guide for Nimbus, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import nimbus_before_after from '/img/instruments/videomancer/nimbus/nimbus_before_after.png';

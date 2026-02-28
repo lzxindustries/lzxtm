@@ -4,6 +4,7 @@ sidebar_position: 225
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero.png
+description: "Program guide for Scatter, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import scatter_before_after from '/img/instruments/videomancer/scatter/scatter_before_after.png';

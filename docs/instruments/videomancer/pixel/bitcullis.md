@@ -4,6 +4,7 @@ sidebar_position: 2
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
 image: /img/instruments/videomancer/bitcullis/bitcullis_hero.png
+description: "Program guide for Bitcullis, a Videomancer bit-manipulation program that exposes the digital structure of video signals as visual patterns."
 ---
 
 import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';

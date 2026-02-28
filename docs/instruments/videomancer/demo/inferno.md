@@ -4,6 +4,7 @@ sidebar_position: 127
 slug: /instruments/videomancer/inferno
 title: "Inferno"
 image: /img/instruments/videomancer/inferno/inferno_hero.png
+description: "Program guide for Inferno, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import inferno_hero from '/img/instruments/videomancer/inferno/inferno_hero.png';

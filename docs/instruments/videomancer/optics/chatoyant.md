@@ -4,6 +4,7 @@ sidebar_position: 41
 slug: /instruments/videomancer/chatoyant
 title: "Chatoyant"
 image: /img/instruments/videomancer/chatoyant/chatoyant_hero.png
+description: "Program guide for Chatoyant, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import chatoyant_hero from '/img/instruments/videomancer/chatoyant/chatoyant_hero.png';

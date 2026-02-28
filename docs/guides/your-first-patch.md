@@ -3,6 +3,7 @@ draft: false
 title: "Your First Patch"
 sidebar_position: 5
 image: /img/guides/your_first_patch_kit.jpg
+description: "Beginner tutorial for creating your first patch on an LZX modular video synthesizer system."
 ---
 
 import your_first_patch_kit from '/img/guides/your_first_patch_kit.jpg';

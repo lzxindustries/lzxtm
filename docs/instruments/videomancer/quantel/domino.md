@@ -4,6 +4,7 @@ sidebar_position: 76
 slug: /instruments/videomancer/domino
 title: "Domino"
 image: /img/instruments/videomancer/domino/domino_hero.png
+description: "Program guide for Domino, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import domino_hero from '/img/instruments/videomancer/domino/domino_hero.png';

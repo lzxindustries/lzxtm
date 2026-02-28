@@ -4,6 +4,7 @@ sidebar_position: 196
 slug: /instruments/videomancer/petrichor
 title: "Petrichor"
 image: /img/instruments/videomancer/petrichor/petrichor_hero.png
+description: "Program guide for Petrichor, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import petrichor_before_after from '/img/instruments/videomancer/petrichor/petrichor_before_after.png';

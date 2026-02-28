@@ -4,6 +4,7 @@ sidebar_position: 148
 slug: /instruments/videomancer/lightning
 title: "Lightning"
 image: /img/instruments/videomancer/lightning/lightning_hero.png
+description: "Program guide for Lightning, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import lightning_before_after from '/img/instruments/videomancer/lightning/lightning_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 185
 slug: /instruments/videomancer/origami
 title: "Origami"
 image: /img/instruments/videomancer/origami/origami_hero.png
+description: "Program guide for Origami, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import origami_animation from '/img/instruments/videomancer/origami/origami_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 248
 slug: /instruments/videomancer/stochasm
 title: "Stochasm"
 image: /img/instruments/videomancer/stochasm/stochasm_hero.png
+description: "Program guide for Stochasm, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import stochasm_before_after from '/img/instruments/videomancer/stochasm/stochasm_before_after.png';

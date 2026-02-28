@@ -4,6 +4,7 @@ sidebar_position: 280
 slug: /instruments/videomancer/voido
 title: "Voido"
 image: /img/instruments/videomancer/voido/voido_hero.png
+description: "Program guide for Voido, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import voido_before_after from '/img/instruments/videomancer/voido/voido_before_after.png';

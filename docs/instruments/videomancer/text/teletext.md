@@ -4,6 +4,7 @@ sidebar_position: 256
 slug: /instruments/videomancer/teletext
 title: "Teletext"
 image: /img/instruments/videomancer/teletext/teletext_hero.png
+description: "Program guide for Teletext, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import teletext_before_after from '/img/instruments/videomancer/teletext/teletext_before_after.png';

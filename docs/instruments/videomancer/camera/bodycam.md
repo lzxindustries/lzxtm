@@ -4,6 +4,7 @@ sidebar_position: 25
 slug: /instruments/videomancer/bodycam
 title: "Bodycam"
 image: /img/instruments/videomancer/bodycam/bodycam_hero.png
+description: "Program guide for Bodycam, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import bodycam_hero from '/img/instruments/videomancer/bodycam/bodycam_hero.png';

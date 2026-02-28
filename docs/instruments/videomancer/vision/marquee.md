@@ -4,6 +4,7 @@ sidebar_position: 162
 slug: /instruments/videomancer/marquee
 title: "Marquee"
 image: /img/instruments/videomancer/marquee/marquee_hero.png
+description: "Program guide for Marquee, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import marquee_before_after from '/img/instruments/videomancer/marquee/marquee_before_after.png';

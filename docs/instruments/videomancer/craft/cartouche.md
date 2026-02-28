@@ -4,6 +4,7 @@ sidebar_position: 35
 slug: /instruments/videomancer/cartouche
 title: "Cartouche"
 image: /img/instruments/videomancer/cartouche/cartouche_hero.png
+description: "Program guide for Cartouche, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import cartouche_hero from '/img/instruments/videomancer/cartouche/cartouche_hero.png';

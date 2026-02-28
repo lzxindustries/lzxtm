@@ -4,6 +4,7 @@ sidebar_position: 129
 slug: /instruments/videomancer/involute
 title: "Involute"
 image: /img/instruments/videomancer/involute/involute_hero.png
+description: "Program guide for Involute, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import involute_animation from '/img/instruments/videomancer/involute/involute_animation.gif';

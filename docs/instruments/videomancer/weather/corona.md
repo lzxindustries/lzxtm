@@ -4,6 +4,7 @@ sidebar_position: 58
 slug: /instruments/videomancer/corona
 title: "Corona"
 image: /img/instruments/videomancer/corona/corona_hero.png
+description: "Program guide for Corona, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import corona_hero from '/img/instruments/videomancer/corona/corona_hero.png';

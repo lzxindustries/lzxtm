@@ -4,6 +4,7 @@ sidebar_position: 213
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero.png
+description: "Program guide for Receipt, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import receipt_before_after from '/img/instruments/videomancer/receipt/receipt_before_after.png';

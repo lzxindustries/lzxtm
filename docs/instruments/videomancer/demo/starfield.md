@@ -4,6 +4,7 @@ sidebar_position: 243
 slug: /instruments/videomancer/starfield
 title: "Starfield"
 image: /img/instruments/videomancer/starfield/starfield_hero.png
+description: "Program guide for Starfield, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import starfield_animation from '/img/instruments/videomancer/starfield/starfield_animation.gif';

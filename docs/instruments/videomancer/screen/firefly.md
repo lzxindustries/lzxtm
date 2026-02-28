@@ -4,6 +4,7 @@ sidebar_position: 97
 slug: /instruments/videomancer/firefly
 title: "Firefly"
 image: /img/instruments/videomancer/firefly/firefly_hero.png
+description: "Program guide for Firefly, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import firefly_hero from '/img/instruments/videomancer/firefly/firefly_hero.png';

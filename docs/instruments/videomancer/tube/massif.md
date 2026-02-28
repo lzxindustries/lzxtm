@@ -4,6 +4,7 @@ sidebar_position: 163
 slug: /instruments/videomancer/massif
 title: "Massif"
 image: /img/instruments/videomancer/massif/massif_hero.png
+description: "Program guide for Massif, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import massif_before_after from '/img/instruments/videomancer/massif/massif_before_after.png';

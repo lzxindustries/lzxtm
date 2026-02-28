@@ -4,6 +4,7 @@ sidebar_position: 22
 slug: /instruments/videomancer/blizzard
 title: "Blizzard"
 image: /img/instruments/videomancer/blizzard/blizzard_hero.png
+description: "Program guide for Blizzard, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import blizzard_hero from '/img/instruments/videomancer/blizzard/blizzard_hero.png';

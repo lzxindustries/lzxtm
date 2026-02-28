@@ -4,6 +4,7 @@ sidebar_position: 68
 slug: /instruments/videomancer/delirium
 title: "Delirium"
 image: /img/instruments/videomancer/delirium/delirium_hero.png
+description: "Program guide for Delirium, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import delirium_hero from '/img/instruments/videomancer/delirium/delirium_hero.png';

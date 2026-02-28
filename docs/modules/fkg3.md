@@ -2,6 +2,7 @@
 draft: false
 title: "FKG3: Fader & Key Generating Compositor"
 image: /img/modules/fkg3/fkg3-diagrams/fkg3_frontpanel.png
+description: "Documentation for FKG3, a fader and key generating compositor for layering two RGB sources with internal or external keying."
 ---
 
 import { useEffect, useRef, useState } from 'react';

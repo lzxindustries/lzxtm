@@ -4,6 +4,7 @@ sidebar_position: 73
 slug: /instruments/videomancer/diptych
 title: "Diptych"
 image: /img/instruments/videomancer/diptych/diptych_hero.png
+description: "Program guide for Diptych, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import diptych_hero from '/img/instruments/videomancer/diptych/diptych_hero.png';

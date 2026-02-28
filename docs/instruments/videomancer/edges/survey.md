@@ -4,6 +4,7 @@ sidebar_position: 251
 slug: /instruments/videomancer/survey
 title: "Survey"
 image: /img/instruments/videomancer/survey/survey_hero.png
+description: "Program guide for Survey, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import survey_before_after from '/img/instruments/videomancer/survey/survey_before_after.png';

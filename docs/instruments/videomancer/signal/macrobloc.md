@@ -4,6 +4,7 @@ sidebar_position: 159
 slug: /instruments/videomancer/macrobloc
 title: "Macrobloc"
 image: /img/instruments/videomancer/macrobloc/macrobloc_hero.png
+description: "Program guide for Macrobloc, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import macrobloc_before_after from '/img/instruments/videomancer/macrobloc/macrobloc_before_after.png';

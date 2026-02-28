@@ -4,6 +4,7 @@ sidebar_position: 87
 slug: /instruments/videomancer/enamel
 title: "Enamel"
 image: /img/instruments/videomancer/enamel/enamel_hero.png
+description: "Program guide for Enamel, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import enamel_hero from '/img/instruments/videomancer/enamel/enamel_hero.png';

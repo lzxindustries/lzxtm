@@ -4,6 +4,7 @@ sidebar_position: 78
 slug: /instruments/videomancer/downpour
 title: "Downpour"
 image: /img/instruments/videomancer/downpour/downpour_hero.png
+description: "Program guide for Downpour, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import downpour_hero from '/img/instruments/videomancer/downpour/downpour_hero.png';

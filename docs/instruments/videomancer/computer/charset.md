@@ -4,6 +4,7 @@ sidebar_position: 40
 slug: /instruments/videomancer/charset
 title: "Charset"
 image: /img/instruments/videomancer/charset/charset_hero.png
+description: "Program guide for Charset, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import charset_hero from '/img/instruments/videomancer/charset/charset_hero.png';

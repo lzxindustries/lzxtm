@@ -4,6 +4,7 @@ sidebar_position: 36
 slug: /instruments/videomancer/cascade
 title: "Cascade"
 image: /img/instruments/videomancer/cascade/cascade_hero.png
+description: "Program guide for Cascade, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import cascade_hero from '/img/instruments/videomancer/cascade/cascade_hero.png';

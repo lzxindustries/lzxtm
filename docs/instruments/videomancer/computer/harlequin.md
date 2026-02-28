@@ -4,6 +4,7 @@ sidebar_position: 118
 slug: /instruments/videomancer/harlequin
 title: "Harlequin"
 image: /img/instruments/videomancer/harlequin/harlequin_hero.png
+description: "Program guide for Harlequin, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import harlequin_hero from '/img/instruments/videomancer/harlequin/harlequin_hero.png';

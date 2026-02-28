@@ -4,6 +4,7 @@ sidebar_position: 4
 slug: /instruments/videomancer/alcove
 title: "Alcove"
 image: /img/instruments/videomancer/alcove/alcove_hero.png
+description: "Program guide for Alcove, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import alcove_hero from '/img/instruments/videomancer/alcove/alcove_hero.png';

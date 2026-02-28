@@ -4,6 +4,7 @@ sidebar_position: 201
 slug: /instruments/videomancer/picturebox
 title: "Picturebox"
 image: /img/instruments/videomancer/picturebox/picturebox_hero.png
+description: "Program guide for Picturebox, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import picturebox_before_after from '/img/instruments/videomancer/picturebox/picturebox_before_after.png';

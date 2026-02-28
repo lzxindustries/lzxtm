@@ -4,6 +4,7 @@ sidebar_position: 223
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
 image: /img/instruments/videomancer/sabattier/sabattier_hero.png
+description: "Program guide for Sabattier, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import sabattier_before_after from '/img/instruments/videomancer/sabattier/sabattier_before_after.png';

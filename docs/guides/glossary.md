@@ -2,6 +2,7 @@
 draft: false
 title: "Glossary"
 sidebar_position: 8
+description: "Glossary of key terms used in video synthesis, video art, and modular video synthesizer systems."
 ---
 
 # Glossary

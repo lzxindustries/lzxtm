@@ -4,6 +4,7 @@ sidebar_position: 23
 slug: /instruments/videomancer/blueprint
 title: "Blueprint"
 image: /img/instruments/videomancer/blueprint/blueprint_hero.png
+description: "Program guide for Blueprint, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import blueprint_hero from '/img/instruments/videomancer/blueprint/blueprint_hero.png';

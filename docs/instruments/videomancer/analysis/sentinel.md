@@ -4,6 +4,7 @@ sidebar_position: 230
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
 image: /img/instruments/videomancer/sentinel/sentinel_hero.png
+description: "Program guide for Sentinel, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import sentinel_before_after from '/img/instruments/videomancer/sentinel/sentinel_before_after.png';

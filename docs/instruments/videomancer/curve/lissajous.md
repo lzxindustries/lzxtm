@@ -4,6 +4,7 @@ sidebar_position: 150
 slug: /instruments/videomancer/lissajous
 title: "Lissajous"
 image: /img/instruments/videomancer/lissajous/lissajous_hero.png
+description: "Program guide for Lissajous, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import lissajous_animation from '/img/instruments/videomancer/lissajous/lissajous_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 146
 slug: /instruments/videomancer/lenticular
 title: "Lenticular"
 image: /img/instruments/videomancer/lenticular/lenticular_hero.png
+description: "Program guide for Lenticular, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import lenticular_before_after from '/img/instruments/videomancer/lenticular/lenticular_before_after.png';

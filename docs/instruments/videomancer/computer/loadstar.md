@@ -4,6 +4,7 @@ sidebar_position: 153
 slug: /instruments/videomancer/loadstar
 title: "Loadstar"
 image: /img/instruments/videomancer/loadstar/loadstar_hero.png
+description: "Program guide for Loadstar, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import loadstar_before_after from '/img/instruments/videomancer/loadstar/loadstar_before_after.png';

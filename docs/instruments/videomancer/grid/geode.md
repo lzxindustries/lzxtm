@@ -4,6 +4,7 @@ sidebar_position: 112
 slug: /instruments/videomancer/geode
 title: "Geode"
 image: /img/instruments/videomancer/geode/geode_hero.png
+description: "Program guide for Geode, a Videomancer grid program for the LZX video synthesizer."
 ---
 
 import geode_hero from '/img/instruments/videomancer/geode/geode_hero.png';

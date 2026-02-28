@@ -4,6 +4,7 @@ sidebar_position: 39
 slug: /instruments/videomancer/centrifuge
 title: "Centrifuge"
 image: /img/instruments/videomancer/centrifuge/centrifuge_hero.png
+description: "Program guide for Centrifuge, a Videomancer warp program for the LZX video synthesizer."
 ---
 
 import centrifuge_hero from '/img/instruments/videomancer/centrifuge/centrifuge_hero.png';

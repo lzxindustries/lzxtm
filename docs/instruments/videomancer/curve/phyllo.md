@@ -4,6 +4,7 @@ sidebar_position: 200
 slug: /instruments/videomancer/phyllo
 title: "Phyllo"
 image: /img/instruments/videomancer/phyllo/phyllo_hero.png
+description: "Program guide for Phyllo, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import phyllo_animation from '/img/instruments/videomancer/phyllo/phyllo_animation.gif';

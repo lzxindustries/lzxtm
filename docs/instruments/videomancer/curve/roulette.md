@@ -4,6 +4,7 @@ sidebar_position: 221
 slug: /instruments/videomancer/roulette
 title: "Roulette"
 image: /img/instruments/videomancer/roulette/roulette_hero.png
+description: "Program guide for Roulette, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import roulette_animation from '/img/instruments/videomancer/roulette/roulette_animation.gif';

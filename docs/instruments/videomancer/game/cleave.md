@@ -4,6 +4,7 @@ sidebar_position: 50
 slug: /instruments/videomancer/cleave
 title: "Cleave"
 image: /img/instruments/videomancer/cleave/cleave_hero.png
+description: "Program guide for Cleave, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import cleave_hero from '/img/instruments/videomancer/cleave/cleave_hero.png';

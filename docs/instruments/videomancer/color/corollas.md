@@ -4,6 +4,7 @@ sidebar_position: 57
 slug: /instruments/videomancer/corollas
 title: "Corollas"
 image: /img/instruments/videomancer/corollas/corollas_hero.png
+description: "Program guide for Corollas, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import corollas_hero from '/img/instruments/videomancer/corollas/corollas_hero.png';

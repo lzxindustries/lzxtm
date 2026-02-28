@@ -4,6 +4,7 @@ sidebar_position: 106
 slug: /instruments/videomancer/fresnel
 title: "Fresnel"
 image: /img/instruments/videomancer/fresnel/fresnel_hero.png
+description: "Program guide for Fresnel, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import fresnel_hero from '/img/instruments/videomancer/fresnel/fresnel_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 211
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero.png
+description: "Program guide for Rampart, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import rampart_before_after from '/img/instruments/videomancer/rampart/rampart_before_after.png';

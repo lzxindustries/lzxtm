@@ -4,6 +4,7 @@ sidebar_position: 59
 slug: /instruments/videomancer/crosshatch
 title: "Crosshatch"
 image: /img/instruments/videomancer/crosshatch/crosshatch_hero.png
+description: "Program guide for Crosshatch, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import crosshatch_hero from '/img/instruments/videomancer/crosshatch/crosshatch_hero.png';

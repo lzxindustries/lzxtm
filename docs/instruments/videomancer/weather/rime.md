@@ -4,6 +4,7 @@ sidebar_position: 218
 slug: /instruments/videomancer/rime
 title: "Rime"
 image: /img/instruments/videomancer/rime/rime_hero.png
+description: "Program guide for Rime, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import rime_before_after from '/img/instruments/videomancer/rime/rime_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 288
 slug: /instruments/videomancer/zollner
 title: "Zollner"
 image: /img/instruments/videomancer/zollner/zollner_hero.png
+description: "Program guide for Zollner, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import zollner_before_after from '/img/instruments/videomancer/zollner/zollner_before_after.png';

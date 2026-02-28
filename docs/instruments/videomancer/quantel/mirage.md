@@ -4,6 +4,7 @@ sidebar_position: 169
 slug: /instruments/videomancer/mirage
 title: "Mirage"
 image: /img/instruments/videomancer/mirage/mirage_hero.png
+description: "Program guide for Mirage, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import mirage_before_after from '/img/instruments/videomancer/mirage/mirage_before_after.png';

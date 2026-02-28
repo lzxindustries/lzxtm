@@ -4,6 +4,7 @@ sidebar_position: 246
 slug: /instruments/videomancer/stipple
 title: "Stipple"
 image: /img/instruments/videomancer/stipple/stipple_hero.png
+description: "Program guide for Stipple, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import stipple_before_after from '/img/instruments/videomancer/stipple/stipple_before_after.png';

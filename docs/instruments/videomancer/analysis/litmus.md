@@ -4,6 +4,7 @@ sidebar_position: 152
 slug: /instruments/videomancer/litmus
 title: "Litmus"
 image: /img/instruments/videomancer/litmus/litmus_hero.png
+description: "Program guide for Litmus, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import litmus_before_after from '/img/instruments/videomancer/litmus/litmus_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 47
 slug: /instruments/videomancer/chrome
 title: "Chrome"
 image: /img/instruments/videomancer/chrome/chrome_hero.png
+description: "Program guide for Chrome, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import chrome_hero from '/img/instruments/videomancer/chrome/chrome_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 94
 slug: /instruments/videomancer/fauxtress
 title: "Fauxtress"
 image: /img/instruments/videomancer/fauxtress/fauxtress_hero.png
+description: "Program guide for Fauxtress, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import fauxtress_hero from '/img/instruments/videomancer/fauxtress/fauxtress_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 13
 slug: /instruments/videomancer/backrooms
 title: "Backrooms"
 image: /img/instruments/videomancer/backrooms/backrooms_hero.png
+description: "Program guide for Backrooms, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import backrooms_hero from '/img/instruments/videomancer/backrooms/backrooms_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 79
 slug: /instruments/videomancer/dragon
 title: "Dragon"
 image: /img/instruments/videomancer/dragon/dragon_hero.png
+description: "Program guide for Dragon, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import dragon_hero from '/img/instruments/videomancer/dragon/dragon_hero.png';

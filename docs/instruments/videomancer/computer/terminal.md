@@ -4,6 +4,7 @@ sidebar_position: 259
 slug: /instruments/videomancer/terminal
 title: "Terminal"
 image: /img/instruments/videomancer/terminal/terminal_hero.png
+description: "Program guide for Terminal, a Videomancer computer program for the LZX video synthesizer."
 ---
 
 import terminal_before_after from '/img/instruments/videomancer/terminal/terminal_before_after.png';

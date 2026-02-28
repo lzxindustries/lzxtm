@@ -4,6 +4,7 @@ sidebar_position: 228
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
 image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png
+description: "Program guide for Scriptorium, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import scriptorium_before_after from '/img/instruments/videomancer/scriptorium/scriptorium_before_after.png';

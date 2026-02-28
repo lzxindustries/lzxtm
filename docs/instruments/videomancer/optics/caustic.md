@@ -4,6 +4,7 @@ sidebar_position: 38
 slug: /instruments/videomancer/caustic
 title: "Caustic"
 image: /img/instruments/videomancer/caustic/caustic_hero.png
+description: "Program guide for Caustic, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import caustic_hero from '/img/instruments/videomancer/caustic/caustic_hero.png';

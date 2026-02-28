@@ -4,6 +4,7 @@ sidebar_position: 105
 slug: /instruments/videomancer/folio
 title: "Folio"
 image: /img/instruments/videomancer/folio/folio_hero.png
+description: "Program guide for Folio, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import folio_hero from '/img/instruments/videomancer/folio/folio_hero.png';

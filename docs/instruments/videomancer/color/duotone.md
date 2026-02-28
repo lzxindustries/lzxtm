@@ -4,6 +4,7 @@ sidebar_position: 81
 slug: /instruments/videomancer/duotone
 title: "Duotone"
 image: /img/instruments/videomancer/duotone/duotone_hero.png
+description: "Program guide for Duotone, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import duotone_hero from '/img/instruments/videomancer/duotone/duotone_hero.png';

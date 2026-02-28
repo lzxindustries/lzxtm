@@ -4,6 +4,7 @@ sidebar_position: 204
 slug: /instruments/videomancer/plumber
 title: "Plumber"
 image: /img/instruments/videomancer/plumber/plumber_hero.png
+description: "Program guide for Plumber, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import plumber_animation from '/img/instruments/videomancer/plumber/plumber_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 263
 slug: /instruments/videomancer/tidepool
 title: "Tidepool"
 image: /img/instruments/videomancer/tidepool/tidepool_hero.png
+description: "Program guide for Tidepool, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import tidepool_animation from '/img/instruments/videomancer/tidepool/tidepool_animation.gif';

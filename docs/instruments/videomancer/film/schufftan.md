@@ -4,6 +4,7 @@ sidebar_position: 226
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
 image: /img/instruments/videomancer/schufftan/schufftan_hero.png
+description: "Program guide for Schufftan, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import schufftan_before_after from '/img/instruments/videomancer/schufftan/schufftan_before_after.png';

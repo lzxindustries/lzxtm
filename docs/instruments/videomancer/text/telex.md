@@ -4,6 +4,7 @@ sidebar_position: 257
 slug: /instruments/videomancer/telex
 title: "Telex"
 image: /img/instruments/videomancer/telex/telex_hero.png
+description: "Program guide for Telex, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import telex_before_after from '/img/instruments/videomancer/telex/telex_before_after.png';

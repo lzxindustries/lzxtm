@@ -4,6 +4,7 @@ sidebar_position: 24
 slug: /instruments/videomancer/bobbin
 title: "Bobbin"
 image: /img/instruments/videomancer/bobbin/bobbin_hero.png
+description: "Program guide for Bobbin, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import bobbin_hero from '/img/instruments/videomancer/bobbin/bobbin_hero.png';

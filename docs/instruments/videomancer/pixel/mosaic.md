@@ -4,6 +4,7 @@ sidebar_position: 173
 slug: /instruments/videomancer/mosaic
 title: "Mosaic"
 image: /img/instruments/videomancer/mosaic/mosaic_hero.png
+description: "Program guide for Mosaic, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import mosaic_before_after from '/img/instruments/videomancer/mosaic/mosaic_before_after.png';

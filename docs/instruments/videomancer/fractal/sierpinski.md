@@ -4,6 +4,7 @@ sidebar_position: 234
 slug: /instruments/videomancer/sierpinski
 title: "Sierpinski"
 image: /img/instruments/videomancer/sierpinski/sierpinski_hero.png
+description: "Program guide for Sierpinski, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import sierpinski_animation from '/img/instruments/videomancer/sierpinski/sierpinski_animation.gif';

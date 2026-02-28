@@ -4,6 +4,7 @@ sidebar_position: 224
 slug: /instruments/videomancer/scanjet
 title: "Scanjet"
 image: /img/instruments/videomancer/scanjet/scanjet_hero.png
+description: "Program guide for Scanjet, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import scanjet_before_after from '/img/instruments/videomancer/scanjet/scanjet_before_after.png';

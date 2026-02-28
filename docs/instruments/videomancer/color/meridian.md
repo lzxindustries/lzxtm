@@ -4,6 +4,7 @@ sidebar_position: 165
 slug: /instruments/videomancer/meridian
 title: "Meridian"
 image: /img/instruments/videomancer/meridian/meridian_hero.png
+description: "Program guide for Meridian, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import meridian_before_after from '/img/instruments/videomancer/meridian/meridian_before_after.png';

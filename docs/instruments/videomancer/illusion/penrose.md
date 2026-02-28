@@ -4,6 +4,7 @@ sidebar_position: 194
 slug: /instruments/videomancer/penrose
 title: "Penrose"
 image: /img/instruments/videomancer/penrose/penrose_hero.png
+description: "Program guide for Penrose, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import penrose_before_after from '/img/instruments/videomancer/penrose/penrose_before_after.png';

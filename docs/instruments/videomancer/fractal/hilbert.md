@@ -4,6 +4,7 @@ sidebar_position: 120
 slug: /instruments/videomancer/hilbert
 title: "Hilbert"
 image: /img/instruments/videomancer/hilbert/hilbert_hero.png
+description: "Program guide for Hilbert, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import hilbert_hero from '/img/instruments/videomancer/hilbert/hilbert_hero.png';

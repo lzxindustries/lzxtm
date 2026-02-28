@@ -4,6 +4,7 @@ sidebar_position: 43
 slug: /instruments/videomancer/chenille
 title: "Chenille"
 image: /img/instruments/videomancer/chenille/chenille_hero.png
+description: "Program guide for Chenille, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import chenille_hero from '/img/instruments/videomancer/chenille/chenille_hero.png';

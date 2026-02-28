@@ -4,6 +4,7 @@ sidebar_position: 258
 slug: /instruments/videomancer/tempest
 title: "Tempest"
 image: /img/instruments/videomancer/tempest/tempest_hero.png
+description: "Program guide for Tempest, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import tempest_animation from '/img/instruments/videomancer/tempest/tempest_animation.gif';

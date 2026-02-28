@@ -4,6 +4,7 @@ sidebar_position: 104
 slug: /instruments/videomancer/fogbank
 title: "Fogbank"
 image: /img/instruments/videomancer/fogbank/fogbank_hero.png
+description: "Program guide for Fogbank, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import fogbank_hero from '/img/instruments/videomancer/fogbank/fogbank_hero.png';

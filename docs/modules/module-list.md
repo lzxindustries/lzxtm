@@ -2,6 +2,7 @@
 sidebar_position: 1
 draft: false
 title: "SPECS: ALL MODULES"
+description: "Complete specifications table for all LZX video synthesizer modules including dimensions, power, and sync requirements."
 ---
 
 <!--

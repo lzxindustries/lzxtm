@@ -4,6 +4,7 @@ sidebar_position: 15
 slug: /instruments/videomancer/batik
 title: "Batik"
 image: /img/instruments/videomancer/batik/batik_hero.png
+description: "Program guide for Batik, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import batik_hero from '/img/instruments/videomancer/batik/batik_hero.png';

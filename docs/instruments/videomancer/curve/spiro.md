@@ -4,6 +4,7 @@ sidebar_position: 240
 slug: /instruments/videomancer/spiro
 title: "Spiro"
 image: /img/instruments/videomancer/spiro/spiro_hero.png
+description: "Program guide for Spiro, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import spiro_animation from '/img/instruments/videomancer/spiro/spiro_animation.gif';

@@ -2,6 +2,7 @@
 draft: false
 title: "P: Passive Potentiometer"
 image: /img/modules/pot/pot-diagrams/pot_front-panel.png
+description: "Documentation for P, a passive potentiometer module for manual voltage attenuation in a modular video system."
 ---
 
 import pot_front_panel from '/img/modules/pot/pot-diagrams/pot_front-panel.png';

@@ -4,6 +4,7 @@ sidebar_position: 267
 slug: /instruments/videomancer/truchet
 title: "Truchet"
 image: /img/instruments/videomancer/truchet/truchet_hero.png
+description: "Program guide for Truchet, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import truchet_animation from '/img/instruments/videomancer/truchet/truchet_animation.gif';

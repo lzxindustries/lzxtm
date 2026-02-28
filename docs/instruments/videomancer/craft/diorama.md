@@ -4,6 +4,7 @@ sidebar_position: 72
 slug: /instruments/videomancer/diorama
 title: "Diorama"
 image: /img/instruments/videomancer/diorama/diorama_hero.png
+description: "Program guide for Diorama, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import diorama_hero from '/img/instruments/videomancer/diorama/diorama_hero.png';

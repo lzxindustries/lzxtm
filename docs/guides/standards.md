@@ -2,6 +2,7 @@
 draft: false
 title: "Standards"
 sidebar_position: 3
+description: "Technical standards for LZX EuroRack modules including power requirements, signal levels, and compatibility."
 ---
 
 # Standards

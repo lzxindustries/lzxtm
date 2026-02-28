@@ -4,6 +4,7 @@ sidebar_position: 157
 slug: /instruments/videomancer/luminaire
 title: "Luminaire"
 image: /img/instruments/videomancer/luminaire/luminaire_hero.png
+description: "Program guide for Luminaire, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import luminaire_before_after from '/img/instruments/videomancer/luminaire/luminaire_before_after.png';

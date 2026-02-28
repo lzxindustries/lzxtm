@@ -4,6 +4,7 @@ sidebar_position: 175
 slug: /instruments/videomancer/mystify
 title: "Mystify"
 image: /img/instruments/videomancer/mystify/mystify_hero.png
+description: "Program guide for Mystify, a Videomancer screen program for the LZX video synthesizer."
 ---
 
 import mystify_animation from '/img/instruments/videomancer/mystify/mystify_animation.gif';

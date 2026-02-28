@@ -4,6 +4,7 @@ sidebar_position: 232
 slug: /instruments/videomancer/shatter
 title: "Shatter"
 image: /img/instruments/videomancer/shatter/shatter_hero.png
+description: "Program guide for Shatter, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import shatter_before_after from '/img/instruments/videomancer/shatter/shatter_before_after.png';

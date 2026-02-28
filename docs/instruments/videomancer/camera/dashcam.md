@@ -4,6 +4,7 @@ sidebar_position: 63
 slug: /instruments/videomancer/dashcam
 title: "Dashcam"
 image: /img/instruments/videomancer/dashcam/dashcam_hero.png
+description: "Program guide for Dashcam, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import dashcam_hero from '/img/instruments/videomancer/dashcam/dashcam_hero.png';

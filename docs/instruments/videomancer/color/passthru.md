@@ -4,6 +4,7 @@ sidebar_position: 190
 slug: /instruments/videomancer/passthru
 title: "Passthru"
 image: /img/instruments/videomancer/passthru/passthru_hero.png
+description: "Program guide for Passthru, a Videomancer color program for the LZX video synthesizer."
 ---
 
 import passthru_before_after from '/img/instruments/videomancer/passthru/passthru_before_after.png';

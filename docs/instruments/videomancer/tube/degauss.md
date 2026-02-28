@@ -4,6 +4,7 @@ sidebar_position: 67
 slug: /instruments/videomancer/degauss
 title: "Degauss"
 image: /img/instruments/videomancer/degauss/degauss_hero.png
+description: "Program guide for Degauss, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import degauss_hero from '/img/instruments/videomancer/degauss/degauss_hero.png';

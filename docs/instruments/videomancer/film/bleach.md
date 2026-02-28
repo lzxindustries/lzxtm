@@ -4,6 +4,7 @@ sidebar_position: 20
 slug: /instruments/videomancer/bleach
 title: "Bleach"
 image: /img/instruments/videomancer/bleach/bleach_hero.png
+description: "Program guide for Bleach, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import bleach_hero from '/img/instruments/videomancer/bleach/bleach_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 260
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
 image: /img/instruments/videomancer/terracotta/terracotta_hero.png
+description: "Program guide for Terracotta, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import terracotta_before_after from '/img/instruments/videomancer/terracotta/terracotta_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 265
 slug: /instruments/videomancer/totem
 title: "Totem"
 image: /img/instruments/videomancer/totem/totem_hero.png
+description: "Program guide for Totem, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import totem_animation from '/img/instruments/videomancer/totem/totem_animation.gif';

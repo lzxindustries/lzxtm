@@ -4,6 +4,7 @@ sidebar_position: 279
 slug: /instruments/videomancer/vitrage
 title: "Vitrage"
 image: /img/instruments/videomancer/vitrage/vitrage_hero.png
+description: "Program guide for Vitrage, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import vitrage_before_after from '/img/instruments/videomancer/vitrage/vitrage_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 170
 slug: /instruments/videomancer/mitosis
 title: "Mitosis"
 image: /img/instruments/videomancer/mitosis/mitosis_hero.png
+description: "Program guide for Mitosis, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import mitosis_animation from '/img/instruments/videomancer/mitosis/mitosis_animation.gif';

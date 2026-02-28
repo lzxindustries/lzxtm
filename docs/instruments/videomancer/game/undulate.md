@@ -4,6 +4,7 @@ sidebar_position: 271
 slug: /instruments/videomancer/undulate
 title: "Undulate"
 image: /img/instruments/videomancer/undulate/undulate_hero.png
+description: "Program guide for Undulate, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import undulate_before_after from '/img/instruments/videomancer/undulate/undulate_before_after.png';

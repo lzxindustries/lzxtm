@@ -1,6 +1,8 @@
 ---
 draft: true
 sidebar_position: 2
+title: "Chromagnon"
+description: "Documentation for Chromagnon, a fully analog video synthesizer and processor instrument by LZX Industries."
 ---
 
 # Chromagnon

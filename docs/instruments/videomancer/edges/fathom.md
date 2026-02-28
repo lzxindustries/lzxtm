@@ -4,6 +4,7 @@ sidebar_position: 92
 slug: /instruments/videomancer/fathom
 title: "Fathom"
 image: /img/instruments/videomancer/fathom/fathom_hero.png
+description: "Program guide for Fathom, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import fathom_hero from '/img/instruments/videomancer/fathom/fathom_hero.png';

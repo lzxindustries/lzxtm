@@ -4,6 +4,7 @@ sidebar_position: 164
 slug: /instruments/videomancer/mercury
 title: "Mercury"
 image: /img/instruments/videomancer/mercury/mercury_hero.png
+description: "Program guide for Mercury, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import mercury_animation from '/img/instruments/videomancer/mercury/mercury_animation.gif';

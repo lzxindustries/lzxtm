@@ -4,6 +4,7 @@ sidebar_position: 134
 slug: /instruments/videomancer/joust
 title: "Joust"
 image: /img/instruments/videomancer/joust/joust_hero.png
+description: "Program guide for Joust, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import joust_before_after from '/img/instruments/videomancer/joust/joust_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 123
 slug: /instruments/videomancer/howler
 title: "Howler"
 image: /img/instruments/videomancer/howler/howler_hero.png
+description: "Program guide for Howler, a Videomancer tube program for the LZX video synthesizer."
 ---
 
 import howler_hero from '/img/instruments/videomancer/howler/howler_hero.png';

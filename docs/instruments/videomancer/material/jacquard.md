@@ -4,6 +4,7 @@ sidebar_position: 132
 slug: /instruments/videomancer/jacquard
 title: "Jacquard"
 image: /img/instruments/videomancer/jacquard/jacquard_hero.png
+description: "Program guide for Jacquard, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import jacquard_before_after from '/img/instruments/videomancer/jacquard/jacquard_before_after.png';

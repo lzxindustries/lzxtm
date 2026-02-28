@@ -4,6 +4,7 @@ sidebar_position: 191
 slug: /instruments/videomancer/patina
 title: "Patina"
 image: /img/instruments/videomancer/patina/patina_hero.png
+description: "Program guide for Patina, a Videomancer material program for the LZX video synthesizer."
 ---
 
 import patina_before_after from '/img/instruments/videomancer/patina/patina_before_after.png';

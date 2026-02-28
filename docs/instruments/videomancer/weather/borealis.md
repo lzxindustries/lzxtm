@@ -4,6 +4,7 @@ sidebar_position: 27
 slug: /instruments/videomancer/borealis
 title: "Borealis"
 image: /img/instruments/videomancer/borealis/borealis_hero.png
+description: "Program guide for Borealis, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import borealis_hero from '/img/instruments/videomancer/borealis/borealis_hero.png';

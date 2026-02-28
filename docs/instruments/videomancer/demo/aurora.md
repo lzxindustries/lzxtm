@@ -4,6 +4,7 @@ sidebar_position: 12
 slug: /instruments/videomancer/aurora
 title: "Aurora"
 image: /img/instruments/videomancer/aurora/aurora_hero.png
+description: "Program guide for Aurora, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import aurora_hero from '/img/instruments/videomancer/aurora/aurora_hero.png';

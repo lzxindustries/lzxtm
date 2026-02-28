@@ -4,6 +4,7 @@ sidebar_position: 75
 slug: /instruments/videomancer/dolly
 title: "Dolly"
 image: /img/instruments/videomancer/dolly/dolly_hero.png
+description: "Program guide for Dolly, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import dolly_hero from '/img/instruments/videomancer/dolly/dolly_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 178
 slug: /instruments/videomancer/neon
 title: "Neon"
 image: /img/instruments/videomancer/neon/neon_hero.png
+description: "Program guide for Neon, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import neon_before_after from '/img/instruments/videomancer/neon/neon_before_after.png';

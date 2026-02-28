@@ -4,6 +4,7 @@ sidebar_position: 177
 slug: /instruments/videomancer/necker
 title: "Necker"
 image: /img/instruments/videomancer/necker/necker_hero.png
+description: "Program guide for Necker, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import necker_before_after from '/img/instruments/videomancer/necker/necker_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 83
 slug: /instruments/videomancer/ebru
 title: "Ebru"
 image: /img/instruments/videomancer/ebru/ebru_hero.png
+description: "Program guide for Ebru, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import ebru_hero from '/img/instruments/videomancer/ebru/ebru_hero.png';

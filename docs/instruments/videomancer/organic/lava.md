@@ -4,6 +4,7 @@ sidebar_position: 144
 slug: /instruments/videomancer/lava
 title: "Lava"
 image: /img/instruments/videomancer/lava/lava_hero.png
+description: "Program guide for Lava, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import lava_animation from '/img/instruments/videomancer/lava/lava_animation.gif';

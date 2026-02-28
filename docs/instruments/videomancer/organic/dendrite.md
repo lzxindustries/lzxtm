@@ -4,6 +4,7 @@ sidebar_position: 69
 slug: /instruments/videomancer/dendrite
 title: "Dendrite"
 image: /img/instruments/videomancer/dendrite/dendrite_hero.png
+description: "Program guide for Dendrite, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import dendrite_hero from '/img/instruments/videomancer/dendrite/dendrite_hero.png';

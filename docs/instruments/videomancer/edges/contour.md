@@ -4,6 +4,7 @@ sidebar_position: 55
 slug: /instruments/videomancer/contour
 title: "Contour"
 image: /img/instruments/videomancer/contour/contour_hero.png
+description: "Program guide for Contour, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import contour_hero from '/img/instruments/videomancer/contour/contour_hero.png';

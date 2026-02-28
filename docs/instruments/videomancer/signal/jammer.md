@@ -4,6 +4,7 @@ sidebar_position: 133
 slug: /instruments/videomancer/jammer
 title: "Jammer"
 image: /img/instruments/videomancer/jammer/jammer_hero.png
+description: "Program guide for Jammer, a Videomancer signal program for the LZX video synthesizer."
 ---
 
 import jammer_before_after from '/img/instruments/videomancer/jammer/jammer_before_after.png';

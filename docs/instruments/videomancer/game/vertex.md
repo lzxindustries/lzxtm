@@ -4,6 +4,7 @@ sidebar_position: 274
 slug: /instruments/videomancer/vertex
 title: "Vertex"
 image: /img/instruments/videomancer/vertex/vertex_hero.png
+description: "Program guide for Vertex, a Videomancer game program for the LZX video synthesizer."
 ---
 
 import vertex_before_after from '/img/instruments/videomancer/vertex/vertex_before_after.png';

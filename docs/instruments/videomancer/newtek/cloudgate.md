@@ -4,6 +4,7 @@ sidebar_position: 51
 slug: /instruments/videomancer/cloudgate
 title: "Cloudgate"
 image: /img/instruments/videomancer/cloudgate/cloudgate_hero.png
+description: "Program guide for Cloudgate, a Videomancer newtek program for the LZX video synthesizer."
 ---
 
 import cloudgate_hero from '/img/instruments/videomancer/cloudgate/cloudgate_hero.png';

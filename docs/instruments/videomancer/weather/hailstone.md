@@ -4,6 +4,7 @@ sidebar_position: 117
 slug: /instruments/videomancer/hailstone
 title: "Hailstone"
 image: /img/instruments/videomancer/hailstone/hailstone_hero.png
+description: "Program guide for Hailstone, a Videomancer weather program for the LZX video synthesizer."
 ---
 
 import hailstone_hero from '/img/instruments/videomancer/hailstone/hailstone_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 91
 slug: /instruments/videomancer/facet
 title: "Facet"
 image: /img/instruments/videomancer/facet/facet_hero.png
+description: "Program guide for Facet, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import facet_hero from '/img/instruments/videomancer/facet/facet_hero.png';

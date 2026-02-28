@@ -4,6 +4,7 @@ sidebar_position: 109
 slug: /instruments/videomancer/gauze
 title: "Gauze"
 image: /img/instruments/videomancer/gauze/gauze_hero.png
+description: "Program guide for Gauze, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import gauze_hero from '/img/instruments/videomancer/gauze/gauze_hero.png';

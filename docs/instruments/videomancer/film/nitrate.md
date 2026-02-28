@@ -4,6 +4,7 @@ sidebar_position: 181
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
 image: /img/instruments/videomancer/nitrate/nitrate_hero.png
+description: "Program guide for Nitrate, a Videomancer film program for the LZX video synthesizer."
 ---
 
 import nitrate_before_after from '/img/instruments/videomancer/nitrate/nitrate_before_after.png';

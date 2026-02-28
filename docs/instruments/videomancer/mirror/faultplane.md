@@ -4,6 +4,7 @@ sidebar_position: 5
 slug: /instruments/videomancer/faultplane
 title: "Faultplane"
 image: /img/instruments/videomancer/faultplane/faultplane_hero.png
+description: "Program guide for Faultplane, a Videomancer spatial displacement program that splits video into alternating regions with pixel shifts and mirror flips."
 ---
 
 import faultplane_hero from '/img/instruments/videomancer/faultplane/faultplane_hero.png';

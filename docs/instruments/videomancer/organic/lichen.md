@@ -4,6 +4,7 @@ sidebar_position: 147
 slug: /instruments/videomancer/lichen
 title: "Lichen"
 image: /img/instruments/videomancer/lichen/lichen_hero.png
+description: "Program guide for Lichen, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import lichen_animation from '/img/instruments/videomancer/lichen/lichen_animation.gif';

@@ -4,6 +4,7 @@ sidebar_position: 231
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
 image: /img/instruments/videomancer/sfumato/sfumato_hero.png
+description: "Program guide for Sfumato, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import sfumato_before_after from '/img/instruments/videomancer/sfumato/sfumato_before_after.png';

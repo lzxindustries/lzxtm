@@ -4,6 +4,7 @@ sidebar_position: 179
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
 image: /img/instruments/videomancer/nightshot/nightshot_hero.png
+description: "Program guide for Nightshot, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import nightshot_before_after from '/img/instruments/videomancer/nightshot/nightshot_before_after.png';

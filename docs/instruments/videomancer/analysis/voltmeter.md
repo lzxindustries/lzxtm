@@ -4,6 +4,7 @@ sidebar_position: 281
 slug: /instruments/videomancer/voltmeter
 title: "Voltmeter"
 image: /img/instruments/videomancer/voltmeter/voltmeter_hero.png
+description: "Program guide for Voltmeter, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import voltmeter_before_after from '/img/instruments/videomancer/voltmeter/voltmeter_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 282
 slug: /instruments/videomancer/vortex
 title: "Vortex"
 image: /img/instruments/videomancer/vortex/vortex_hero.png
+description: "Program guide for Vortex, a Videomancer demo program for the LZX video synthesizer."
 ---
 
 import vortex_animation from '/img/instruments/videomancer/vortex/vortex_animation.gif';

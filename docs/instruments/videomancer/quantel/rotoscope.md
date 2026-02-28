@@ -4,6 +4,7 @@ sidebar_position: 220
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
 image: /img/instruments/videomancer/rotoscope/rotoscope_hero.png
+description: "Program guide for Rotoscope, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import rotoscope_before_after from '/img/instruments/videomancer/rotoscope/rotoscope_before_after.png';

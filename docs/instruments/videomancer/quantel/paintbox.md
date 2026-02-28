@@ -4,6 +4,7 @@ sidebar_position: 187
 slug: /instruments/videomancer/paintbox
 title: "Paintbox"
 image: /img/instruments/videomancer/paintbox/paintbox_hero.png
+description: "Program guide for Paintbox, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import paintbox_before_after from '/img/instruments/videomancer/paintbox/paintbox_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 167
 slug: /instruments/videomancer/mimeo
 title: "Mimeo"
 image: /img/instruments/videomancer/mimeo/mimeo_hero.png
+description: "Program guide for Mimeo, a Videomancer print program for the LZX video synthesizer."
 ---
 
 import mimeo_before_after from '/img/instruments/videomancer/mimeo/mimeo_before_after.png';

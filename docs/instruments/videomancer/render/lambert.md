@@ -4,6 +4,7 @@ sidebar_position: 141
 slug: /instruments/videomancer/lambert
 title: "Lambert"
 image: /img/instruments/videomancer/lambert/lambert_hero.png
+description: "Program guide for Lambert, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import lambert_animation from '/img/instruments/videomancer/lambert/lambert_animation.gif';

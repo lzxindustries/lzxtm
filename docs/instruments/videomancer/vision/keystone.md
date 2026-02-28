@@ -4,6 +4,7 @@ sidebar_position: 137
 slug: /instruments/videomancer/keystone
 title: "Keystone"
 image: /img/instruments/videomancer/keystone/keystone_hero.png
+description: "Program guide for Keystone, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import keystone_before_after from '/img/instruments/videomancer/keystone/keystone_before_after.png';

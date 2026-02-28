@@ -4,6 +4,7 @@ sidebar_position: 142
 slug: /instruments/videomancer/lascaux
 title: "Lascaux"
 image: /img/instruments/videomancer/lascaux/lascaux_hero.png
+description: "Program guide for Lascaux, a Videomancer craft program for the LZX video synthesizer."
 ---
 
 import lascaux_before_after from '/img/instruments/videomancer/lascaux/lascaux_before_after.png';

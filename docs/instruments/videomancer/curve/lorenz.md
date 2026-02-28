@@ -4,6 +4,7 @@ sidebar_position: 154
 slug: /instruments/videomancer/lorenz
 title: "Lorenz"
 image: /img/instruments/videomancer/lorenz/lorenz_hero.png
+description: "Program guide for Lorenz, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import lorenz_animation from '/img/instruments/videomancer/lorenz/lorenz_animation.gif';

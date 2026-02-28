@@ -4,6 +4,7 @@ sidebar_position: 16
 slug: /instruments/videomancer/benham
 title: "Benham"
 image: /img/instruments/videomancer/benham/benham_hero.png
+description: "Program guide for Benham, a Videomancer illusion program for the LZX video synthesizer."
 ---
 
 import benham_hero from '/img/instruments/videomancer/benham/benham_hero.png';

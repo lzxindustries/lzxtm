@@ -4,6 +4,7 @@ sidebar_position: 236
 slug: /instruments/videomancer/silhouette
 title: "Silhouette"
 image: /img/instruments/videomancer/silhouette/silhouette_hero.png
+description: "Program guide for Silhouette, a Videomancer edges program for the LZX video synthesizer."
 ---
 
 import silhouette_before_after from '/img/instruments/videomancer/silhouette/silhouette_before_after.png';

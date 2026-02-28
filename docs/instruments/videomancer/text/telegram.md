@@ -4,6 +4,7 @@ sidebar_position: 255
 slug: /instruments/videomancer/telegram
 title: "Telegram"
 image: /img/instruments/videomancer/telegram/telegram_hero.png
+description: "Program guide for Telegram, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import telegram_before_after from '/img/instruments/videomancer/telegram/telegram_before_after.png';

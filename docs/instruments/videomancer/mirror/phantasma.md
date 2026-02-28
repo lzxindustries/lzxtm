@@ -4,6 +4,7 @@ sidebar_position: 197
 slug: /instruments/videomancer/phantasma
 title: "Phantasma"
 image: /img/instruments/videomancer/phantasma/phantasma_hero.png
+description: "Program guide for Phantasma, a Videomancer mirror program for the LZX video synthesizer."
 ---
 
 import phantasma_before_after from '/img/instruments/videomancer/phantasma/phantasma_before_after.png';

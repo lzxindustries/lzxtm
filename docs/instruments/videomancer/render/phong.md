@@ -4,6 +4,7 @@ sidebar_position: 198
 slug: /instruments/videomancer/phong
 title: "Phong"
 image: /img/instruments/videomancer/phong/phong_hero.png
+description: "Program guide for Phong, a Videomancer render program for the LZX video synthesizer."
 ---
 
 import phong_animation from '/img/instruments/videomancer/phong/phong_animation.gif';

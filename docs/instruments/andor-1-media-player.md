@@ -1,6 +1,8 @@
 ---
 draft: true
 sidebar_position: 2
+title: "Andor 1 Media Player"
+description: "Documentation for Andor 1, a media player designed for use with LZX modular video synthesizer systems."
 ---
 
 # Andor 1 Media Player

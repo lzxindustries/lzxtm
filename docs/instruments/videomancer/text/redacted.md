@@ -4,6 +4,7 @@ sidebar_position: 214
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero.png
+description: "Program guide for Redacted, a Videomancer text program for the LZX video synthesizer."
 ---
 
 import redacted_before_after from '/img/instruments/videomancer/redacted/redacted_before_after.png';

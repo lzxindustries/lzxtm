@@ -4,6 +4,7 @@ sidebar_position: 242
 slug: /instruments/videomancer/squeeze
 title: "Squeeze"
 image: /img/instruments/videomancer/squeeze/squeeze_hero.png
+description: "Program guide for Squeeze, a Videomancer vision program for the LZX video synthesizer."
 ---
 
 import squeeze_before_after from '/img/instruments/videomancer/squeeze/squeeze_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 205
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
 image: /img/instruments/videomancer/polaroid/polaroid_hero.png
+description: "Program guide for Polaroid, a Videomancer camera program for the LZX video synthesizer."
 ---
 
 import polaroid_before_after from '/img/instruments/videomancer/polaroid/polaroid_before_after.png';

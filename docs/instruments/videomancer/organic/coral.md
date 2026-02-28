@@ -4,6 +4,7 @@ sidebar_position: 56
 slug: /instruments/videomancer/coral
 title: "Coral"
 image: /img/instruments/videomancer/coral/coral_hero.png
+description: "Program guide for Coral, a Videomancer organic program for the LZX video synthesizer."
 ---
 
 import coral_hero from '/img/instruments/videomancer/coral/coral_hero.png';

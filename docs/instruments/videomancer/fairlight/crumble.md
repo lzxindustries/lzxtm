@@ -4,6 +4,7 @@ sidebar_position: 60
 slug: /instruments/videomancer/crumble
 title: "Crumble"
 image: /img/instruments/videomancer/crumble/crumble_hero.png
+description: "Program guide for Crumble, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import crumble_hero from '/img/instruments/videomancer/crumble/crumble_hero.png';

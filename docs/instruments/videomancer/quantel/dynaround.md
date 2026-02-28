@@ -4,6 +4,7 @@ sidebar_position: 82
 slug: /instruments/videomancer/dynaround
 title: "Dynaround"
 image: /img/instruments/videomancer/dynaround/dynaround_hero.png
+description: "Program guide for Dynaround, a Videomancer quantel program for the LZX video synthesizer."
 ---
 
 import dynaround_hero from '/img/instruments/videomancer/dynaround/dynaround_hero.png';

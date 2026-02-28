@@ -4,6 +4,7 @@ sidebar_position: 17
 slug: /instruments/videomancer/bezier
 title: "Bezier"
 image: /img/instruments/videomancer/bezier/bezier_hero.png
+description: "Program guide for Bezier, a Videomancer curve program for the LZX video synthesizer."
 ---
 
 import bezier_hero from '/img/instruments/videomancer/bezier/bezier_hero.png';

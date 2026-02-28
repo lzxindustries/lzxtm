@@ -4,6 +4,7 @@ sidebar_position: 206
 slug: /instruments/videomancer/prism
 title: "Prism"
 image: /img/instruments/videomancer/prism/prism_hero.png
+description: "Program guide for Prism, a Videomancer pixel program for the LZX video synthesizer."
 ---
 
 import prism_before_after from '/img/instruments/videomancer/prism/prism_before_after.png';

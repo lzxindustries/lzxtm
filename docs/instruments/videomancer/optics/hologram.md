@@ -4,6 +4,7 @@ sidebar_position: 121
 slug: /instruments/videomancer/hologram
 title: "Hologram"
 image: /img/instruments/videomancer/hologram/hologram_hero.png
+description: "Program guide for Hologram, a Videomancer optics program for the LZX video synthesizer."
 ---
 
 import hologram_hero from '/img/instruments/videomancer/hologram/hologram_hero.png';

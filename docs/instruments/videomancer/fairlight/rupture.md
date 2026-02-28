@@ -4,6 +4,7 @@ sidebar_position: 222
 slug: /instruments/videomancer/rupture
 title: "Rupture"
 image: /img/instruments/videomancer/rupture/rupture_hero.png
+description: "Program guide for Rupture, a Videomancer fairlight program for the LZX video synthesizer."
 ---
 
 import rupture_before_after from '/img/instruments/videomancer/rupture/rupture_before_after.png';

@@ -4,6 +4,7 @@ sidebar_position: 111
 slug: /instruments/videomancer/geiger
 title: "Geiger"
 image: /img/instruments/videomancer/geiger/geiger_hero.png
+description: "Program guide for Geiger, a Videomancer analysis program for the LZX video synthesizer."
 ---
 
 import geiger_hero from '/img/instruments/videomancer/geiger/geiger_hero.png';

@@ -4,6 +4,7 @@ sidebar_position: 45
 slug: /instruments/videomancer/chladni
 title: "Chladni"
 image: /img/instruments/videomancer/chladni/chladni_hero.png
+description: "Program guide for Chladni, a Videomancer fractal program for the LZX video synthesizer."
 ---
 
 import chladni_hero from '/img/instruments/videomancer/chladni/chladni_hero.png';
