@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 266
+sidebar_position: 267
 slug: /instruments/videomancer/tracer
 title: "Tracer"
 image: /img/instruments/videomancer/tracer/tracer_hero.png

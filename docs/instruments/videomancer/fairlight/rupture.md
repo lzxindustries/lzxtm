@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 222
+sidebar_position: 223
 slug: /instruments/videomancer/rupture
 title: "Rupture"
 image: /img/instruments/videomancer/rupture/rupture_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 272
+sidebar_position: 273
 slug: /instruments/videomancer/vasarely
 title: "Vasarely"
 image: /img/instruments/videomancer/vasarely/vasarely_hero.png

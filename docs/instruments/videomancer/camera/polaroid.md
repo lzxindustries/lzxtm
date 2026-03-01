@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 205
+sidebar_position: 206
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
 image: /img/instruments/videomancer/polaroid/polaroid_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 228
+sidebar_position: 229
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
 image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png

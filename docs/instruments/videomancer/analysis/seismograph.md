@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 229
+sidebar_position: 230
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero.png

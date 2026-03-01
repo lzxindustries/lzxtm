@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 217
+sidebar_position: 218
 slug: /instruments/videomancer/ricochet
 title: "Ricochet"
 image: /img/instruments/videomancer/ricochet/ricochet_hero.png

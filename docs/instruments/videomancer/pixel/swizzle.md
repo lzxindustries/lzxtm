@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 252
+sidebar_position: 253
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
 image: /img/instruments/videomancer/swizzle/swizzle_hero.png

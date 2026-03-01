@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 206
+sidebar_position: 207
 slug: /instruments/videomancer/prism
 title: "Prism"
 image: /img/instruments/videomancer/prism/prism_hero.png

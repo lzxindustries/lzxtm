@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 214
+sidebar_position: 215
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero.png

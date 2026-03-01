@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 215
+sidebar_position: 216
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero.png

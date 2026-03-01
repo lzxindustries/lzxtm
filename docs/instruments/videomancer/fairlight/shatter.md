@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 232
+sidebar_position: 233
 slug: /instruments/videomancer/shatter
 title: "Shatter"
 image: /img/instruments/videomancer/shatter/shatter_hero.png

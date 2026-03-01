@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 264
+sidebar_position: 265
 slug: /instruments/videomancer/tincture
 title: "Tincture"
 image: /img/instruments/videomancer/tincture/tincture_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 256
+sidebar_position: 257
 slug: /instruments/videomancer/teletext
 title: "Teletext"
 image: /img/instruments/videomancer/teletext/teletext_hero.png

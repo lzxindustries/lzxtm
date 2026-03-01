@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 231
+sidebar_position: 232
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
 image: /img/instruments/videomancer/sfumato/sfumato_hero.png

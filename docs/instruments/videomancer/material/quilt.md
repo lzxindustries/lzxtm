@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 209
+sidebar_position: 210
 slug: /instruments/videomancer/quilt
 title: "Quilt"
 image: /img/instruments/videomancer/quilt/quilt_hero.png

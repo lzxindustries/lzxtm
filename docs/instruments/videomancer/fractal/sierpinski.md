@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 234
+sidebar_position: 235
 slug: /instruments/videomancer/sierpinski
 title: "Sierpinski"
 image: /img/instruments/videomancer/sierpinski/sierpinski_hero.png

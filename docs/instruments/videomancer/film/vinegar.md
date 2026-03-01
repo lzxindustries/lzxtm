@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 278
+sidebar_position: 279
 slug: /instruments/videomancer/vinegar
 title: "Vinegar"
 image: /img/instruments/videomancer/vinegar/vinegar_hero.png

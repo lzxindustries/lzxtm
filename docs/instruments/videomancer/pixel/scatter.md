@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 225
+sidebar_position: 226
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 284
+sidebar_position: 285
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
 image: /img/instruments/videomancer/wiggle/wiggle_hero.png

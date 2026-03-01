@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 223
+sidebar_position: 224
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
 image: /img/instruments/videomancer/sabattier/sabattier_hero.png

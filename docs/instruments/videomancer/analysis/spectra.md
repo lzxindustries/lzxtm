@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 239
+sidebar_position: 240
 slug: /instruments/videomancer/spectra
 title: "Spectra"
 image: /img/instruments/videomancer/spectra/spectra_hero.png

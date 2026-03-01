@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 265
+sidebar_position: 266
 slug: /instruments/videomancer/totem
 title: "Totem"
 image: /img/instruments/videomancer/totem/totem_hero.png

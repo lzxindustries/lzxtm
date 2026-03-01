@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 259
+sidebar_position: 260
 slug: /instruments/videomancer/terminal
 title: "Terminal"
 image: /img/instruments/videomancer/terminal/terminal_hero.png

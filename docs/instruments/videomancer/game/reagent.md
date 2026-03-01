@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 212
+sidebar_position: 213
 slug: /instruments/videomancer/reagent
 title: "Reagent"
 image: /img/instruments/videomancer/reagent/reagent_hero.png

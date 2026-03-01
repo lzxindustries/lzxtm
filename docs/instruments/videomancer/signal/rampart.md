@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 211
+sidebar_position: 212
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero.png

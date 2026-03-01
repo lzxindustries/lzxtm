@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 247
+sidebar_position: 248
 slug: /instruments/videomancer/stoa
 title: "Stoa"
 image: /img/instruments/videomancer/stoa/stoa_hero.png

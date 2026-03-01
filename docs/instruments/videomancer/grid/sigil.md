@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 235
+sidebar_position: 236
 slug: /instruments/videomancer/sigil
 title: "Sigil"
 image: /img/instruments/videomancer/sigil/sigil_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 276
+sidebar_position: 277
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
 image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png

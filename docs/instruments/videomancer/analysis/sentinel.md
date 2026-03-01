@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 230
+sidebar_position: 231
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
 image: /img/instruments/videomancer/sentinel/sentinel_hero.png

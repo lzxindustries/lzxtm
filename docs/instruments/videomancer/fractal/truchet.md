@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 267
+sidebar_position: 268
 slug: /instruments/videomancer/truchet
 title: "Truchet"
 image: /img/instruments/videomancer/truchet/truchet_hero.png

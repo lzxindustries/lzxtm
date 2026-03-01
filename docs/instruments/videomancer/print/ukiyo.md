@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 270
+sidebar_position: 271
 slug: /instruments/videomancer/ukiyo
 title: "Ukiyo"
 image: /img/instruments/videomancer/ukiyo/ukiyo_hero.png

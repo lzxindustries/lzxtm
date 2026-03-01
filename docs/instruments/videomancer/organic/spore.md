@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 241
+sidebar_position: 242
 slug: /instruments/videomancer/spore
 title: "Spore"
 image: /img/instruments/videomancer/spore/spore_hero.png

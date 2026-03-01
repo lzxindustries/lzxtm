@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 258
+sidebar_position: 259
 slug: /instruments/videomancer/tempest
 title: "Tempest"
 image: /img/instruments/videomancer/tempest/tempest_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 233
+sidebar_position: 234
 slug: /instruments/videomancer/sideband
 title: "Sideband"
 image: /img/instruments/videomancer/sideband/sideband_hero.png

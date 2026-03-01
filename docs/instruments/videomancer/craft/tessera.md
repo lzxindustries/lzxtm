@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 261
+sidebar_position: 262
 slug: /instruments/videomancer/tessera
 title: "Tessera"
 image: /img/instruments/videomancer/tessera/tessera_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 226
+sidebar_position: 227
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
 image: /img/instruments/videomancer/schufftan/schufftan_hero.png

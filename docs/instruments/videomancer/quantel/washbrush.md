@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 283
+sidebar_position: 284
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
 image: /img/instruments/videomancer/washbrush/washbrush_hero.png

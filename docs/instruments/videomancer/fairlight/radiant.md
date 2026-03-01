@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 210
+sidebar_position: 211
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero.png

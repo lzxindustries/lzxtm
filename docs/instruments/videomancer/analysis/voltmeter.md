@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 281
+sidebar_position: 282
 slug: /instruments/videomancer/voltmeter
 title: "Voltmeter"
 image: /img/instruments/videomancer/voltmeter/voltmeter_hero.png

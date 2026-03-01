@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 224
+sidebar_position: 225
 slug: /instruments/videomancer/scanjet
 title: "Scanjet"
 image: /img/instruments/videomancer/scanjet/scanjet_hero.png

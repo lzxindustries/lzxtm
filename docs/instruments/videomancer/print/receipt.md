@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 213
+sidebar_position: 214
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero.png

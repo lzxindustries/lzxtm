@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 271
+sidebar_position: 272
 slug: /instruments/videomancer/undulate
 title: "Undulate"
 image: /img/instruments/videomancer/undulate/undulate_hero.png

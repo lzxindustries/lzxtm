@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 220
+sidebar_position: 221
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
 image: /img/instruments/videomancer/rotoscope/rotoscope_hero.png

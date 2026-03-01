@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 277
+sidebar_position: 278
 slug: /instruments/videomancer/vigil
 title: "Vigil"
 image: /img/instruments/videomancer/vigil/vigil_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 262
+sidebar_position: 263
 slug: /instruments/videomancer/ticker
 title: "Ticker"
 image: /img/instruments/videomancer/ticker/ticker_hero.png

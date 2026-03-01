@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 242
+sidebar_position: 243
 slug: /instruments/videomancer/squeeze
 title: "Squeeze"
 image: /img/instruments/videomancer/squeeze/squeeze_hero.png

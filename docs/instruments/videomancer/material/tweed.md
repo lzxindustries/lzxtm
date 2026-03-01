@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 268
+sidebar_position: 269
 slug: /instruments/videomancer/tweed
 title: "Tweed"
 image: /img/instruments/videomancer/tweed/tweed_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 207
+sidebar_position: 208
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero.png

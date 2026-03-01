@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 218
+sidebar_position: 219
 slug: /instruments/videomancer/rime
 title: "Rime"
 image: /img/instruments/videomancer/rime/rime_hero.png
