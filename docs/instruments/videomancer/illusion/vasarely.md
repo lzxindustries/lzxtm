@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 299
+sidebar_position: 300
 slug: /instruments/videomancer/vasarely
 title: "Vasarely"
 image: /img/instruments/videomancer/vasarely/vasarely_hero.png
 description: "Victor Vasarely (1906–1997) was the father of Op Art — a movement that used precise geometric patterns and optical illusions to create the sensation of depth, motion, and vibration on a flat surface."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import vasarely_hero from '/img/instruments/videomancer/vasarely/vasarely_hero.png';
-import vasarely_before_after from '/img/instruments/videomancer/vasarely/vasarely_before_after.png';
 import vasarely_control_panel from '/img/instruments/videomancer/vasarely/vasarely_control_panel.png';
 import vasarely_exercise1_result from '/img/instruments/videomancer/vasarely/vasarely_exercise1_result.png';
 import vasarely_exercise2_result from '/img/instruments/videomancer/vasarely/vasarely_exercise2_result.png';
 import vasarely_exercise3_result from '/img/instruments/videomancer/vasarely/vasarely_exercise3_result.png';
+import vasarely_source1_kodim01 from '/img/instruments/videomancer/vasarely/vasarely_source1_kodim01.png';
+import vasarely_source2_kodim02 from '/img/instruments/videomancer/vasarely/vasarely_source2_kodim02.png';
+import vasarely_source3_kodim01_bw from '/img/instruments/videomancer/vasarely/vasarely_source3_kodim01_bw.png';
 
 # Vasarely
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={vasarely_hero} alt="Vasarely hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_hero },
+    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_hero },
+    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_hero },
+  ]}
+/>
 *Vasarely applying spherical grid bulge deformation to live video, producing an Op Art composition where a checkerboard pattern warps around an invisible sphere as if painted on its surface.*
-<img src={vasarely_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Vasarely applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 ### Exercise 1: The Classic Orb
 
-<img src={vasarely_exercise1_result} alt="The Classic Orb result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise1_result },
+    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise1_result },
+    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise1_result },
+  ]}
+/>
 *The Classic Orb — simulated result across source images.*
 **Source**: Any video source — the grid pattern is largely independent of content. A plain or slowly-moving source works well for appreciating the pure geometry.
 
@@ -229,7 +242,13 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 ### Exercise 2: Ripple Field
 
-<img src={vasarely_exercise2_result} alt="Ripple Field result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise2_result },
+    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise2_result },
+    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise2_result },
+  ]}
+/>
 *Ripple Field — simulated result across source images.*
 **Source**: A colourful, high-detail scene — camera feed, nature footage, or a busy graphic.
 
@@ -248,7 +267,13 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 ### Exercise 3: Asymmetric Saddle Composition
 
-<img src={vasarely_exercise3_result} alt="Asymmetric Saddle Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise3_result },
+    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise3_result },
+    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise3_result },
+  ]}
+/>
 *Asymmetric Saddle Composition — simulated result across source images.*
 **Source**: A high-contrast scene with strong vertical and horizontal elements — architecture, text, or geometric patterns.
 

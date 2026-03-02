@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 270
+sidebar_position: 271
 slug: /instruments/videomancer/stereogram
 title: "Stereogram"
 image: /img/instruments/videomancer/stereogram/stereogram_hero.png
 description: "Stereogram generates a Single Image Random Dot Stereogram (SIRDS) from the input video's luminance channel."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stereogram_hero from '/img/instruments/videomancer/stereogram/stereogram_hero.png';
-import stereogram_before_after from '/img/instruments/videomancer/stereogram/stereogram_before_after.png';
 import stereogram_control_panel from '/img/instruments/videomancer/stereogram/stereogram_control_panel.png';
 import stereogram_exercise1_result from '/img/instruments/videomancer/stereogram/stereogram_exercise1_result.png';
 import stereogram_exercise2_result from '/img/instruments/videomancer/stereogram/stereogram_exercise2_result.png';
 import stereogram_exercise3_result from '/img/instruments/videomancer/stereogram/stereogram_exercise3_result.png';
+import stereogram_source1_kodim01 from '/img/instruments/videomancer/stereogram/stereogram_source1_kodim01.png';
+import stereogram_source2_kodim02 from '/img/instruments/videomancer/stereogram/stereogram_source2_kodim02.png';
+import stereogram_source3_kodim01_bw from '/img/instruments/videomancer/stereogram/stereogram_source3_kodim01_bw.png';
 
 # Stereogram
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stereogram_hero} alt="Stereogram hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_hero },
+    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_hero },
+    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_hero },
+  ]}
+/>
 *Hidden depths emerge from random-dot fields as the classic autostereogram algorithm transforms video luminance into cross-eyed 3D illusions.*
-<img src={stereogram_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stereogram applied.*
 
 ---
 
@@ -229,7 +236,13 @@ These exercises progress from basic stereogram generation through depth control 
 
 ### Exercise 1: First Stereogram
 
-<img src={stereogram_exercise1_result} alt="First Stereogram result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise1_result },
+    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise1_result },
+    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise1_result },
+  ]}
+/>
 *First Stereogram — simulated result across source images.*
 **Source**: Simple high-contrast geometric shapes — a white circle on a black background, or bold text.
 
@@ -248,7 +261,13 @@ These exercises progress from basic stereogram generation through depth control 
 
 ### Exercise 2: Depth Control with Video
 
-<img src={stereogram_exercise2_result} alt="Depth Control with Video result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise2_result },
+    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise2_result },
+    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise2_result },
+  ]}
+/>
 *Depth Control with Video — simulated result across source images.*
 **Source**: A slowly-moving face or hand — something with natural depth variation and luminance contrast.
 
@@ -267,7 +286,13 @@ These exercises progress from basic stereogram generation through depth control 
 
 ### Exercise 3: Colour Stereogram with Full Processing
 
-<img src={stereogram_exercise3_result} alt="Colour Stereogram with Full Processing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise3_result },
+    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise3_result },
+    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise3_result },
+  ]}
+/>
 *Colour Stereogram with Full Processing — simulated result across source images.*
 **Source**: Any colourful, dynamic footage — music visuals, abstract patterns, or natural scenes.
 

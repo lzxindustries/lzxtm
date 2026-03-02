@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 198
+sidebar_position: 199
 slug: /instruments/videomancer/optika
 title: "Optika"
 image: /img/instruments/videomancer/optika/optika_hero.png
 description: "Before digital compositing, optical printers were the primary tool for combining multiple film elements into a single image."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import optika_hero from '/img/instruments/videomancer/optika/optika_hero.png';
-import optika_before_after from '/img/instruments/videomancer/optika/optika_before_after.png';
 import optika_control_panel from '/img/instruments/videomancer/optika/optika_control_panel.png';
 import optika_exercise1_result from '/img/instruments/videomancer/optika/optika_exercise1_result.png';
 import optika_exercise2_result from '/img/instruments/videomancer/optika/optika_exercise2_result.png';
 import optika_exercise3_result from '/img/instruments/videomancer/optika/optika_exercise3_result.png';
+import optika_source1_kodim03 from '/img/instruments/videomancer/optika/optika_source1_kodim03.png';
+import optika_source2_kodim13 from '/img/instruments/videomancer/optika/optika_source2_kodim13.png';
+import optika_source3_kodim13_bw from '/img/instruments/videomancer/optika/optika_source3_kodim13_bw.png';
 
 # Optika
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={optika_hero} alt="Optika hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: optika_source1_kodim03, after: optika_hero },
+    { label: "Kodim13", before: optika_source2_kodim13, after: optika_hero },
+    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_hero },
+  ]}
+/>
 *Optika building up multi-exposure accumulation trails with printer light color balance and film halation bloom over a live video source.*
-<img src={optika_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Optika applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from basic temporal accumulation through printer light 
 
 ### Exercise 1: Ghostly Trails
 
-<img src={optika_exercise1_result} alt="Ghostly Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise1_result },
+    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise1_result },
+    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise1_result },
+  ]}
+/>
 *Ghostly Trails — simulated result across source images.*
 **Source**: A live camera with slow hand movements, or recorded footage of a person walking across the frame.
 
@@ -224,7 +237,13 @@ These exercises progress from basic temporal accumulation through printer light 
 
 ### Exercise 2: Step-Print Speed Ramp
 
-<img src={optika_exercise2_result} alt="Step-Print Speed Ramp result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise2_result },
+    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise2_result },
+    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise2_result },
+  ]}
+/>
 *Step-Print Speed Ramp — simulated result across source images.*
 **Source**: A moving subject — spinning record, pendulum, or a hand waving rhythmically.
 
@@ -243,7 +262,13 @@ These exercises progress from basic temporal accumulation through printer light 
 
 ### Exercise 3: Film Look Composite
 
-<img src={optika_exercise3_result} alt="Film Look Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise3_result },
+    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise3_result },
+    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise3_result },
+  ]}
+/>
 *Film Look Composite — simulated result across source images.*
 **Source**: High-contrast footage with bright highlights — candle flames, spotlights, or bright windows in dark rooms.
 

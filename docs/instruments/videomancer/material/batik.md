@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/batik/batik_hero.png
 description: "Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import batik_hero from '/img/instruments/videomancer/batik/batik_hero.png';
-import batik_before_after from '/img/instruments/videomancer/batik/batik_before_after.png';
 import batik_control_panel from '/img/instruments/videomancer/batik/batik_control_panel.png';
 import batik_exercise1_result from '/img/instruments/videomancer/batik/batik_exercise1_result.png';
 import batik_exercise2_result from '/img/instruments/videomancer/batik/batik_exercise2_result.png';
 import batik_exercise3_result from '/img/instruments/videomancer/batik/batik_exercise3_result.png';
+import batik_source1_kodim15 from '/img/instruments/videomancer/batik/batik_source1_kodim15.png';
+import batik_source2_kodim03 from '/img/instruments/videomancer/batik/batik_source2_kodim03.png';
+import batik_source3_kodim13_bw from '/img/instruments/videomancer/batik/batik_source3_kodim13_bw.png';
 
 # Batik
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={batik_hero} alt="Batik hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: batik_source1_kodim15, after: batik_hero },
+    { label: "Kodim03", before: batik_source2_kodim03, after: batik_hero },
+    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_hero },
+  ]}
+/>
 *Wax-resist crackle veins fracture a portrait into dye-limited Voronoi cells, echoing the layered resist-and-dye process of Javanese batik cloth.*
-<img src={batik_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Batik applied.*
 
 ---
 
@@ -222,7 +229,13 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 ### Exercise 1: Simple Crackle Overlay
 
-<img src={batik_exercise1_result} alt="Simple Crackle Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise1_result },
+    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise1_result },
+    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise1_result },
+  ]}
+/>
 *Simple Crackle Overlay — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
@@ -241,7 +254,13 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 ### Exercise 2: Dye Palette Exploration
 
-<img src={batik_exercise2_result} alt="Dye Palette Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise2_result },
+    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise2_result },
+    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise2_result },
+  ]}
+/>
 *Dye Palette Exploration — simulated result across source images.*
 **Source**: Footage with varied colours — flowers, fabrics, or colourful scenery.
 
@@ -259,7 +278,13 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 ### Exercise 3: Animated Textile
 
-<img src={batik_exercise3_result} alt="Animated Textile result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise3_result },
+    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise3_result },
+    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise3_result },
+  ]}
+/>
 *Animated Textile — simulated result across source images.*
 **Source**: Slow-moving footage or a static scene.
 

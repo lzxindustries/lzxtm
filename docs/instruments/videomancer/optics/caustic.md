@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/caustic/caustic_hero.png
 description: "Light passing through a disturbed water surface doesn't spread evenly — it focuses into bright caustic lines where refracted rays converge, leaving darker regions where they diverge."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import caustic_hero from '/img/instruments/videomancer/caustic/caustic_hero.png';
-import caustic_before_after from '/img/instruments/videomancer/caustic/caustic_before_after.png';
 import caustic_control_panel from '/img/instruments/videomancer/caustic/caustic_control_panel.png';
 import caustic_exercise1_result from '/img/instruments/videomancer/caustic/caustic_exercise1_result.png';
 import caustic_exercise2_result from '/img/instruments/videomancer/caustic/caustic_exercise2_result.png';
 import caustic_exercise3_result from '/img/instruments/videomancer/caustic/caustic_exercise3_result.png';
+import caustic_source1_kodim15 from '/img/instruments/videomancer/caustic/caustic_source1_kodim15.png';
+import caustic_source2_kodim01 from '/img/instruments/videomancer/caustic/caustic_source2_kodim01.png';
+import caustic_source3_kodim01_bw from '/img/instruments/videomancer/caustic/caustic_source3_kodim01_bw.png';
 
 # Caustic
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={caustic_hero} alt="Caustic hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: caustic_source1_kodim15, after: caustic_hero },
+    { label: "Kodim01", before: caustic_source2_kodim01, after: caustic_hero },
+    { label: "Kodim01 B&W", before: caustic_source3_kodim01_bw, after: caustic_hero },
+  ]}
+/>
 *Caustic refracting input video through simulated water surface ripples, creating luminous interference patterns.*
-<img src={caustic_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Caustic applied.*
 
 ---
 
@@ -188,7 +195,13 @@ These exercises progress from subtle luminous textures to intense caustic transf
 
 ### Exercise 1: Gentle Pool Shimmer
 
-<img src={caustic_exercise1_result} alt="Gentle Pool Shimmer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: caustic_source1_kodim15, after: caustic_exercise1_result },
+    { label: "Kodim01", before: caustic_source2_kodim01, after: caustic_exercise1_result },
+    { label: "Kodim01 B&W", before: caustic_source3_kodim01_bw, after: caustic_exercise1_result },
+  ]}
+/>
 *Gentle Pool Shimmer — simulated result across source images.*
 **Source**: Footage of a face or still life with smooth tonal gradients.
 
@@ -207,7 +220,13 @@ These exercises progress from subtle luminous textures to intense caustic transf
 
 ### Exercise 2: Dense Caustic Grid
 
-<img src={caustic_exercise2_result} alt="Dense Caustic Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: caustic_source1_kodim15, after: caustic_exercise2_result },
+    { label: "Kodim01", before: caustic_source2_kodim01, after: caustic_exercise2_result },
+    { label: "Kodim01 B&W", before: caustic_source3_kodim01_bw, after: caustic_exercise2_result },
+  ]}
+/>
 *Dense Caustic Grid — simulated result across source images.*
 **Source**: High-contrast footage or geometric patterns.
 
@@ -226,7 +245,13 @@ These exercises progress from subtle luminous textures to intense caustic transf
 
 ### Exercise 3: Static Texture Overlay
 
-<img src={caustic_exercise3_result} alt="Static Texture Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: caustic_source1_kodim15, after: caustic_exercise3_result },
+    { label: "Kodim01", before: caustic_source2_kodim01, after: caustic_exercise3_result },
+    { label: "Kodim01 B&W", before: caustic_source3_kodim01_bw, after: caustic_exercise3_result },
+  ]}
+/>
 *Static Texture Overlay — simulated result across source images.*
 **Source**: Any video source — the caustic becomes a fixed texture layer.
 

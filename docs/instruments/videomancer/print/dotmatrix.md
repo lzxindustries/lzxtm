@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero.png
 description: "Before inkjet printers and laser engines, the dominant output device for personal computers was the impact dot-matrix printer."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dotmatrix_hero from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero.png';
-import dotmatrix_before_after from '/img/instruments/videomancer/dotmatrix/dotmatrix_before_after.png';
 import dotmatrix_control_panel from '/img/instruments/videomancer/dotmatrix/dotmatrix_control_panel.png';
 import dotmatrix_exercise1_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise1_result.png';
 import dotmatrix_exercise2_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise2_result.png';
 import dotmatrix_exercise3_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise3_result.png';
+import dotmatrix_source1_kodim02 from '/img/instruments/videomancer/dotmatrix/dotmatrix_source1_kodim02.png';
+import dotmatrix_source2_kodim07 from '/img/instruments/videomancer/dotmatrix/dotmatrix_source2_kodim07.png';
+import dotmatrix_source3_kodim01_bw from '/img/instruments/videomancer/dotmatrix/dotmatrix_source3_kodim01_bw.png';
 
 # Dotmatrix
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dotmatrix_hero} alt="Dotmatrix hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_hero },
+    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_hero },
+    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_hero },
+  ]}
+/>
 *Dotmatrix rendering photographic video as discrete ink impacts on tinted paper through grid-based halftone printing simulation.*
-<img src={dotmatrix_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dotmatrix applied.*
 
 ---
 
@@ -218,7 +225,13 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 ### Exercise 1: Classic Halftone
 
-<img src={dotmatrix_exercise1_result} alt="Classic Halftone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise1_result },
+    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise1_result },
+    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise1_result },
+  ]}
+/>
 *Classic Halftone — simulated result across source images.*
 **Source**: A portrait or still image with a wide range of tones from deep shadows to bright highlights.
 
@@ -236,7 +249,13 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 ### Exercise 2: Bidirectional Sweep Animation
 
-<img src={dotmatrix_exercise2_result} alt="Bidirectional Sweep Animation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise2_result },
+    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise2_result },
+    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise2_result },
+  ]}
+/>
 *Bidirectional Sweep Animation — simulated result across source images.*
 **Source**: A slowly moving video feed or a static image with strong horizontal structure.
 
@@ -254,7 +273,13 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 ### Exercise 3: Textured Print Artifacts
 
-<img src={dotmatrix_exercise3_result} alt="Textured Print Artifacts result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise3_result },
+    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise3_result },
+    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise3_result },
+  ]}
+/>
 *Textured Print Artifacts — simulated result across source images.*
 **Source**: High-contrast footage with sharp edges — text overlays, graphic patterns, or architectural subjects.
 

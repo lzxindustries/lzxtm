@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/emboss/emboss_hero.png
 description: "Every surface tells a story through the way it catches light."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import emboss_hero from '/img/instruments/videomancer/emboss/emboss_hero.png';
-import emboss_before_after from '/img/instruments/videomancer/emboss/emboss_before_after.png';
 import emboss_control_panel from '/img/instruments/videomancer/emboss/emboss_control_panel.png';
 import emboss_exercise1_result from '/img/instruments/videomancer/emboss/emboss_exercise1_result.png';
 import emboss_exercise2_result from '/img/instruments/videomancer/emboss/emboss_exercise2_result.png';
 import emboss_exercise3_result from '/img/instruments/videomancer/emboss/emboss_exercise3_result.png';
+import emboss_source1_kodim02 from '/img/instruments/videomancer/emboss/emboss_source1_kodim02.png';
+import emboss_source2_kodim07 from '/img/instruments/videomancer/emboss/emboss_source2_kodim07.png';
+import emboss_source3_kodim01_bw from '/img/instruments/videomancer/emboss/emboss_source3_kodim01_bw.png';
 
 # Emboss
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={emboss_hero} alt="Emboss hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_hero },
+    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_hero },
+    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_hero },
+  ]}
+/>
 *Emboss rendering directional bas-relief lighting across luminance gradients, carving depth from flat video.*
-<img src={emboss_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Emboss applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 ### Exercise 1: Sculptural Relief
 
-<img src={emboss_exercise1_result} alt="Sculptural Relief result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise1_result },
+    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise1_result },
+    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise1_result },
+  ]}
+/>
 *Sculptural Relief — simulated result across source images.*
 **Source**: A portrait or face with strong contours and varied skin tones.
 
@@ -226,7 +239,13 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 ### Exercise 2: Metallic Color Emboss
 
-<img src={emboss_exercise2_result} alt="Metallic Color Emboss result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise2_result },
+    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise2_result },
+    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise2_result },
+  ]}
+/>
 *Metallic Color Emboss — simulated result across source images.*
 **Source**: A brightly colored scene — flowers, painted surfaces, or color bars.
 
@@ -244,7 +263,13 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 ### Exercise 3: Edge Map Key Source
 
-<img src={emboss_exercise3_result} alt="Edge Map Key Source result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise3_result },
+    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise3_result },
+    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise3_result },
+  ]}
+/>
 *Edge Map Key Source — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, text overlays, or architectural elements with strong edges.
 

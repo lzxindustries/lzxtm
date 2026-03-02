@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 274
+sidebar_position: 275
 slug: /instruments/videomancer/stratum
 title: "Stratum"
 image: /img/instruments/videomancer/stratum/stratum_hero.png
 description: "Every pixel of video is a column of thirty binary digits — ten bits each for Y, U, and V, stacked from least significant to most significant."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stratum_hero from '/img/instruments/videomancer/stratum/stratum_hero.png';
-import stratum_before_after from '/img/instruments/videomancer/stratum/stratum_before_after.png';
 import stratum_control_panel from '/img/instruments/videomancer/stratum/stratum_control_panel.png';
 import stratum_exercise1_result from '/img/instruments/videomancer/stratum/stratum_exercise1_result.png';
 import stratum_exercise2_result from '/img/instruments/videomancer/stratum/stratum_exercise2_result.png';
 import stratum_exercise3_result from '/img/instruments/videomancer/stratum/stratum_exercise3_result.png';
+import stratum_source1_kodim15 from '/img/instruments/videomancer/stratum/stratum_source1_kodim15.png';
+import stratum_source2_kodim01 from '/img/instruments/videomancer/stratum/stratum_source2_kodim01.png';
+import stratum_source3_stream_bridge_512 from '/img/instruments/videomancer/stratum/stratum_source3_stream_bridge_512.png';
 
 # Stratum
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stratum_hero} alt="Stratum hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_hero },
+    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_hero },
+    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_hero },
+  ]}
+/>
 *Stratum applying bit-plane barrel rotation and cross-channel XOR to decompose and recombine video into glitched digital strata.*
-<img src={stratum_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stratum applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 ### Exercise 1: Channel Rotation
 
-<img src={stratum_exercise1_result} alt="Channel Rotation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise1_result },
+    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise1_result },
+    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise1_result },
+  ]}
+/>
 *Channel Rotation — simulated result across source images.*
 **Source**: A colourful live camera feed or recorded footage with distinct red, green, and blue elements.
 
@@ -220,7 +233,13 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 ### Exercise 2: XOR Texture Generation
 
-<img src={stratum_exercise2_result} alt="XOR Texture Generation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise2_result },
+    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise2_result },
+    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise2_result },
+  ]}
+/>
 *XOR Texture Generation — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text on screen, silhouettes, or geometric patterns.
 
@@ -238,7 +257,13 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 ### Exercise 3: Temporal Bit-Plane Animation
 
-<img src={stratum_exercise3_result} alt="Temporal Bit-Plane Animation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise3_result },
+    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise3_result },
+    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise3_result },
+  ]}
+/>
 *Temporal Bit-Plane Animation — simulated result across source images.*
 **Source**: Any footage — the temporal animation creates its own visual rhythm regardless of source content.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 244
+sidebar_position: 245
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
 image: /img/instruments/videomancer/schufftan/schufftan_hero.png
 description: "The Schüfftan process was a visual effects technique invented in 1920s German cinema."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import schufftan_hero from '/img/instruments/videomancer/schufftan/schufftan_hero.png';
-import schufftan_before_after from '/img/instruments/videomancer/schufftan/schufftan_before_after.png';
 import schufftan_control_panel from '/img/instruments/videomancer/schufftan/schufftan_control_panel.png';
 import schufftan_exercise1_result from '/img/instruments/videomancer/schufftan/schufftan_exercise1_result.png';
 import schufftan_exercise2_result from '/img/instruments/videomancer/schufftan/schufftan_exercise2_result.png';
 import schufftan_exercise3_result from '/img/instruments/videomancer/schufftan/schufftan_exercise3_result.png';
+import schufftan_source1_kodim03 from '/img/instruments/videomancer/schufftan/schufftan_source1_kodim03.png';
+import schufftan_source2_kodim13 from '/img/instruments/videomancer/schufftan/schufftan_source2_kodim13.png';
+import schufftan_source3_kodim13_bw from '/img/instruments/videomancer/schufftan/schufftan_source3_kodim13_bw.png';
 
 # Schufftan
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={schufftan_hero} alt="Schufftan hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_hero },
+    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_hero },
+    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_hero },
+  ]}
+/>
 *Schufftan applying luminance-keyed mirror compositing with per-scanline wobble and cool tint to simulate the classic miniature-projection technique.*
-<img src={schufftan_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Schufftan applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 ### Exercise 1: Basic Mirror Split
 
-<img src={schufftan_exercise1_result} alt="Basic Mirror Split result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise1_result },
+    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise1_result },
+    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise1_result },
+  ]}
+/>
 *Basic Mirror Split — simulated result across source images.*
 **Source**: Footage with a clear tonal separation — a brightly-lit subject against a dark background, or a window with daylight and an interior shadow.
 
@@ -234,7 +247,13 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 ### Exercise 2: Wobble and Distortion
 
-<img src={schufftan_exercise2_result} alt="Wobble and Distortion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise2_result },
+    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise2_result },
+    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise2_result },
+  ]}
+/>
 *Wobble and Distortion — simulated result across source images.*
 **Source**: A scene with strong geometric lines — architecture, grids, or tile patterns.
 
@@ -252,7 +271,13 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 ### Exercise 3: Edge-Keyed Mirror Composite
 
-<img src={schufftan_exercise3_result} alt="Edge-Keyed Mirror Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise3_result },
+    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise3_result },
+    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise3_result },
+  ]}
+/>
 *Edge-Keyed Mirror Composite — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text, graphic patterns, or architectural details with sharp lines.
 

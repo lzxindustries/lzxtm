@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 214
+sidebar_position: 215
 slug: /instruments/videomancer/phosphor
 title: "Phosphor"
 image: /img/instruments/videomancer/phosphor/phosphor_hero.png
 description: "Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the characteristic colour of a phosphor screen."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import phosphor_hero from '/img/instruments/videomancer/phosphor/phosphor_hero.png';
-import phosphor_before_after from '/img/instruments/videomancer/phosphor/phosphor_before_after.png';
 import phosphor_control_panel from '/img/instruments/videomancer/phosphor/phosphor_control_panel.png';
 import phosphor_exercise1_result from '/img/instruments/videomancer/phosphor/phosphor_exercise1_result.png';
 import phosphor_exercise2_result from '/img/instruments/videomancer/phosphor/phosphor_exercise2_result.png';
 import phosphor_exercise3_result from '/img/instruments/videomancer/phosphor/phosphor_exercise3_result.png';
+import phosphor_source1_kodim15 from '/img/instruments/videomancer/phosphor/phosphor_source1_kodim15.png';
+import phosphor_source2_kodim01 from '/img/instruments/videomancer/phosphor/phosphor_source2_kodim01.png';
+import phosphor_source3_kodim01_bw from '/img/instruments/videomancer/phosphor/phosphor_source3_kodim01_bw.png';
 
 # Phosphor
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={phosphor_hero} alt="Phosphor hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_hero },
+    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_hero },
+    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_hero },
+  ]}
+/>
 *Phosphor simulating a P1 green CRT monitor with visible scanlines, horizontal bloom, and edge vignette applied to a live video input.*
-<img src={phosphor_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Phosphor applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 ### Exercise 1: Contrast and Brightness Calibration
 
-<img src={phosphor_exercise1_result} alt="Contrast and Brightness Calibration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise1_result },
+    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise1_result },
+    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise1_result },
+  ]}
+/>
 *Contrast and Brightness Calibration — simulated result across source images.*
 **Source**: A greyscale gradient or colour bar test pattern.
 
@@ -234,7 +247,13 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 ### Exercise 2: Scanline and Phosphor CRT Look
 
-<img src={phosphor_exercise2_result} alt="Scanline and Phosphor CRT Look result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise2_result },
+    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise2_result },
+    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise2_result },
+  ]}
+/>
 *Scanline and Phosphor CRT Look — simulated result across source images.*
 **Source**: Live camera footage or full-colour video content.
 
@@ -253,7 +272,13 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 ### Exercise 3: Full Retro CRT Simulation
 
-<img src={phosphor_exercise3_result} alt="Full Retro CRT Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise3_result },
+    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise3_result },
+    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise3_result },
+  ]}
+/>
 *Full Retro CRT Simulation — simulated result across source images.*
 **Source**: High-contrast video — text on a dark background, arcade game footage, or bold graphic content.
 

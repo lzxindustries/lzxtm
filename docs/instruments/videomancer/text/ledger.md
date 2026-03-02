@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/ledger/ledger_hero.png
 description: "Before spreadsheets, before screens, accountants lived on paper."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ledger_hero from '/img/instruments/videomancer/ledger/ledger_hero.png';
-import ledger_before_after from '/img/instruments/videomancer/ledger/ledger_before_after.png';
 import ledger_control_panel from '/img/instruments/videomancer/ledger/ledger_control_panel.png';
 import ledger_exercise1_result from '/img/instruments/videomancer/ledger/ledger_exercise1_result.png';
 import ledger_exercise2_result from '/img/instruments/videomancer/ledger/ledger_exercise2_result.png';
 import ledger_exercise3_result from '/img/instruments/videomancer/ledger/ledger_exercise3_result.png';
+import ledger_source1_kodim15 from '/img/instruments/videomancer/ledger/ledger_source1_kodim15.png';
+import ledger_source2_kodim15_bw from '/img/instruments/videomancer/ledger/ledger_source2_kodim15_bw.png';
+import ledger_source3_male_1024 from '/img/instruments/videomancer/ledger/ledger_source3_male_1024.png';
 
 # Ledger
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ledger_hero} alt="Ledger hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_hero },
+    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_hero },
+    { label: "Male", before: ledger_source3_male_1024, after: ledger_hero },
+  ]}
+/>
 *Ledger overlaying green-bar ruled paper and column grids onto a live video feed, evoking the texture of continuous-form accounting printouts.*
-<img src={ledger_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ledger applied.*
 
 ---
 
@@ -207,7 +214,13 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 ### Exercise 1: Classic Green-Bar Paper
 
-<img src={ledger_exercise1_result} alt="Classic Green-Bar Paper result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise1_result },
+    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise1_result },
+    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise1_result },
+  ]}
+/>
 *Classic Green-Bar Paper — simulated result across source images.*
 **Source**: A live camera feed or talking-head video with moderate detail.
 
@@ -230,7 +243,13 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 ### Exercise 2: Engineering Grid Paper
 
-<img src={ledger_exercise2_result} alt="Engineering Grid Paper result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise2_result },
+    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise2_result },
+    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise2_result },
+  ]}
+/>
 *Engineering Grid Paper — simulated result across source images.*
 **Source**: Geometric patterns, architecture footage, or oscilloscope traces.
 
@@ -252,7 +271,13 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 ### Exercise 3: Inverted Legal Pad
 
-<img src={ledger_exercise3_result} alt="Inverted Legal Pad result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise3_result },
+    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise3_result },
+    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise3_result },
+  ]}
+/>
 *Inverted Legal Pad — simulated result across source images.*
 **Source**: Text, documents, or footage with high contrast.
 

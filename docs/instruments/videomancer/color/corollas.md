@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/corollas/corollas_hero.png
 description: "Corollas is a frequency-doubling harmonic processor that transforms the luminance channel of an incoming video signal into a series of concentric, petal-like interference patterns distributed across the Y, U, and V output channels."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import corollas_hero from '/img/instruments/videomancer/corollas/corollas_hero.png';
-import corollas_before_after from '/img/instruments/videomancer/corollas/corollas_before_after.png';
 import corollas_control_panel from '/img/instruments/videomancer/corollas/corollas_control_panel.png';
 import corollas_exercise1_result from '/img/instruments/videomancer/corollas/corollas_exercise1_result.png';
 import corollas_exercise2_result from '/img/instruments/videomancer/corollas/corollas_exercise2_result.png';
 import corollas_exercise3_result from '/img/instruments/videomancer/corollas/corollas_exercise3_result.png';
+import corollas_source1_kodim03 from '/img/instruments/videomancer/corollas/corollas_source1_kodim03.png';
+import corollas_source2_kodim15 from '/img/instruments/videomancer/corollas/corollas_source2_kodim15.png';
+import corollas_source3_peppers_512 from '/img/instruments/videomancer/corollas/corollas_source3_peppers_512.png';
 
 # Corollas
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={corollas_hero} alt="Corollas hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_hero },
+    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_hero },
+    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_hero },
+  ]}
+/>
 *Cascading harmonic petals blooming across luma and chroma channels, four frequency-doubled stages folding a live video signal into layered interference geometry.*
-<img src={corollas_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Corollas applied.*
 
 ---
 
@@ -225,7 +232,13 @@ These three exercises progress from observing the raw harmonic structure through
 
 ### Exercise 1: Harmonic Anatomy
 
-<img src={corollas_exercise1_result} alt="Harmonic Anatomy result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise1_result },
+    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise1_result },
+    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise1_result },
+  ]}
+/>
 *Harmonic Anatomy — simulated result across source images.*
 **Source**: A smooth horizontal or diagonal gradient — a ramp test pattern or a gently lit face works well. The smoother the input, the cleaner the individual harmonics will be.
 
@@ -244,7 +257,13 @@ These three exercises progress from observing the raw harmonic structure through
 
 ### Exercise 2: Chromatic Interference
 
-<img src={corollas_exercise2_result} alt="Chromatic Interference result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise2_result },
+    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise2_result },
+    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise2_result },
+  ]}
+/>
 *Chromatic Interference — simulated result across source images.*
 **Source**: A portrait or scene with a range of skin tones and midtones — the frequency doublers will fragment these tones into colored petal structures.
 
@@ -263,7 +282,13 @@ These three exercises progress from observing the raw harmonic structure through
 
 ### Exercise 3: Threshold-Keyed Petals
 
-<img src={corollas_exercise3_result} alt="Threshold-Keyed Petals result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise3_result },
+    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise3_result },
+    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise3_result },
+  ]}
+/>
 *Threshold-Keyed Petals — simulated result across source images.*
 **Source**: A high-contrast image or text card — strong edges will produce well-defined fold boundaries that survive the threshold key.
 

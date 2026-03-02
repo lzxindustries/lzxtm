@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/lenticular/lenticular_hero.png
 description: "Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import lenticular_hero from '/img/instruments/videomancer/lenticular/lenticular_hero.png';
-import lenticular_before_after from '/img/instruments/videomancer/lenticular/lenticular_before_after.png';
 import lenticular_control_panel from '/img/instruments/videomancer/lenticular/lenticular_control_panel.png';
 import lenticular_exercise1_result from '/img/instruments/videomancer/lenticular/lenticular_exercise1_result.png';
 import lenticular_exercise2_result from '/img/instruments/videomancer/lenticular/lenticular_exercise2_result.png';
 import lenticular_exercise3_result from '/img/instruments/videomancer/lenticular/lenticular_exercise3_result.png';
+import lenticular_source1_kodim01 from '/img/instruments/videomancer/lenticular/lenticular_source1_kodim01.png';
+import lenticular_source2_kodim02 from '/img/instruments/videomancer/lenticular/lenticular_source2_kodim02.png';
+import lenticular_source3_kodim01_bw from '/img/instruments/videomancer/lenticular/lenticular_source3_kodim01_bw.png';
 
 # Lenticular
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={lenticular_hero} alt="Lenticular hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_hero },
+    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_hero },
+    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_hero },
+  ]}
+/>
 *Lenticular dividing a portrait into alternating shifted stripes, creating a shimmering parallax depth effect reminiscent of holographic trading cards.*
-<img src={lenticular_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Lenticular applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 ### Exercise 1: Holographic Shimmer
 
-<img src={lenticular_exercise1_result} alt="Holographic Shimmer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise1_result },
+    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise1_result },
+    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise1_result },
+  ]}
+/>
 *Holographic Shimmer — simulated result across source images.*
 **Source**: A portrait or close-up with a clear foreground subject and blurred background.
 
@@ -234,7 +247,13 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 ### Exercise 2: Venetian Blind Split
 
-<img src={lenticular_exercise2_result} alt="Venetian Blind Split result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise2_result },
+    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise2_result },
+    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise2_result },
+  ]}
+/>
 *Venetian Blind Split — simulated result across source images.*
 **Source**: Any high-contrast footage with horizontal and vertical detail.
 
@@ -254,7 +273,13 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 ### Exercise 3: Wiggle and Vertical Blur
 
-<img src={lenticular_exercise3_result} alt="Wiggle and Vertical Blur result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise3_result },
+    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise3_result },
+    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise3_result },
+  ]}
+/>
 *Wiggle and Vertical Blur — simulated result across source images.*
 **Source**: Animated content or a slowly moving camera feed.
 

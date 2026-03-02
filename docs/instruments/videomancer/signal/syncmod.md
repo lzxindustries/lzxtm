@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 278
+sidebar_position: 279
 slug: /instruments/videomancer/syncmod
 title: "Sync Mod"
 image: /img/instruments/videomancer/syncmod/syncmod_hero.png
 description: "Sync Mod rewrites the television raster in real time."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import syncmod_hero from '/img/instruments/videomancer/syncmod/syncmod_hero.png';
-import syncmod_before_after from '/img/instruments/videomancer/syncmod/syncmod_before_after.png';
 import syncmod_control_panel from '/img/instruments/videomancer/syncmod/syncmod_control_panel.png';
 import syncmod_exercise1_result from '/img/instruments/videomancer/syncmod/syncmod_exercise1_result.png';
 import syncmod_exercise2_result from '/img/instruments/videomancer/syncmod/syncmod_exercise2_result.png';
 import syncmod_exercise3_result from '/img/instruments/videomancer/syncmod/syncmod_exercise3_result.png';
+import syncmod_source1_kodim15 from '/img/instruments/videomancer/syncmod/syncmod_source1_kodim15.png';
+import syncmod_source2_kodim01 from '/img/instruments/videomancer/syncmod/syncmod_source2_kodim01.png';
+import syncmod_source3_stream_bridge_512 from '/img/instruments/videomancer/syncmod/syncmod_source3_stream_bridge_512.png';
 
 # Sync Mod
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={syncmod_hero} alt="Sync Mod hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_hero },
+    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_hero },
+    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_hero },
+  ]}
+/>
 *Horizontal scanlines warp sinusoidally across the frame, tearing apart a stable image into undulating bands of displaced colour.*
-<img src={syncmod_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sync Mod applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 ### Exercise 1: Gentle Horizontal Waves
 
-<img src={syncmod_exercise1_result} alt="Gentle Horizontal Waves result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise1_result },
+    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise1_result },
+    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise1_result },
+  ]}
+/>
 *Gentle Horizontal Waves — simulated result across source images.*
 **Source**: A high-contrast graphic with strong horizontal and vertical edges (e.g., a title card or grid pattern).
 
@@ -221,7 +234,13 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 ### Exercise 2: Ramp Shear with Vertical Blend
 
-<img src={syncmod_exercise2_result} alt="Ramp Shear with Vertical Blend result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise2_result },
+    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise2_result },
+    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise2_result },
+  ]}
+/>
 *Ramp Shear with Vertical Blend — simulated result across source images.*
 **Source**: A face or recognisable form — the shearing effect is most dramatic when the viewer can detect the spatial disruption.
 
@@ -240,7 +259,13 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 ### Exercise 3: Vasulka Tear Storm
 
-<img src={syncmod_exercise3_result} alt="Vasulka Tear Storm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise3_result },
+    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise3_result },
+    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise3_result },
+  ]}
+/>
 *Vasulka Tear Storm — simulated result across source images.*
 **Source**: Any video signal — the tear effect is visually compelling regardless of content.
 

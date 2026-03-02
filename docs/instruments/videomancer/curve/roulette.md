@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 238
+sidebar_position: 239
 slug: /instruments/videomancer/roulette
 title: "Roulette"
 image: /img/instruments/videomancer/roulette/roulette_hero.png

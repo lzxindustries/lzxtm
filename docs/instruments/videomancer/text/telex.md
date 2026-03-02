@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 283
+sidebar_position: 284
 slug: /instruments/videomancer/telex
 title: "Telex"
 image: /img/instruments/videomancer/telex/telex_hero.png
 description: "Before screens, before pixels, there was the teleprinter — a machine that converted electrical signals into typed characters on a continuous roll of paper."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import telex_hero from '/img/instruments/videomancer/telex/telex_hero.png';
-import telex_before_after from '/img/instruments/videomancer/telex/telex_before_after.png';
 import telex_control_panel from '/img/instruments/videomancer/telex/telex_control_panel.png';
 import telex_exercise1_result from '/img/instruments/videomancer/telex/telex_exercise1_result.png';
 import telex_exercise2_result from '/img/instruments/videomancer/telex/telex_exercise2_result.png';
 import telex_exercise3_result from '/img/instruments/videomancer/telex/telex_exercise3_result.png';
+import telex_source1_kodim15 from '/img/instruments/videomancer/telex/telex_source1_kodim15.png';
+import telex_source2_kodim15_bw from '/img/instruments/videomancer/telex/telex_source2_kodim15_bw.png';
+import telex_source3_male_1024 from '/img/instruments/videomancer/telex/telex_source3_male_1024.png';
 
 # Telex
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={telex_hero} alt="Telex hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telex_source1_kodim15, after: telex_hero },
+    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_hero },
+    { label: "Male", before: telex_source3_male_1024, after: telex_hero },
+  ]}
+/>
 *Telex rendering live video as a Baudot teleprinter page — density-sorted 5×7 glyphs typed across the screen by a DDS-driven reveal cursor on colored paper.*
-<img src={telex_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Telex applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 ### Exercise 1: White Paper Teleprinter
 
-<img src={telex_exercise1_result} alt="White Paper Teleprinter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise1_result },
+    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise1_result },
+    { label: "Male", before: telex_source3_male_1024, after: telex_exercise1_result },
+  ]}
+/>
 *White Paper Teleprinter — simulated result across source images.*
 **Source**: A high-contrast portrait or document scan with clear tonal separation.
 
@@ -234,7 +247,13 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 ### Exercise 2: Green Screen Terminal
 
-<img src={telex_exercise2_result} alt="Green Screen Terminal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise2_result },
+    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise2_result },
+    { label: "Male", before: telex_source3_male_1024, after: telex_exercise2_result },
+  ]}
+/>
 *Green Screen Terminal — simulated result across source images.*
 **Source**: Abstract or geometric footage with strong graphic shapes.
 
@@ -253,7 +272,13 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 ### Exercise 3: Animated Typewriter Page Fill
 
-<img src={telex_exercise3_result} alt="Animated Typewriter Page Fill result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise3_result },
+    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise3_result },
+    { label: "Male", before: telex_source3_male_1024, after: telex_exercise3_result },
+  ]}
+/>
 *Animated Typewriter Page Fill — simulated result across source images.*
 **Source**: Slowly moving footage with evolving content — clouds, water, or time-lapse.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/braille/braille_hero.png
 description: "The Braille cell — six or eight raised dots arranged in a 2×3 or 2×4 matrix — is one of the most elegant encodings ever devised."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import braille_hero from '/img/instruments/videomancer/braille/braille_hero.png';
-import braille_before_after from '/img/instruments/videomancer/braille/braille_before_after.png';
 import braille_control_panel from '/img/instruments/videomancer/braille/braille_control_panel.png';
 import braille_exercise1_result from '/img/instruments/videomancer/braille/braille_exercise1_result.png';
 import braille_exercise2_result from '/img/instruments/videomancer/braille/braille_exercise2_result.png';
 import braille_exercise3_result from '/img/instruments/videomancer/braille/braille_exercise3_result.png';
+import braille_source1_kodim15 from '/img/instruments/videomancer/braille/braille_source1_kodim15.png';
+import braille_source2_kodim15_bw from '/img/instruments/videomancer/braille/braille_source2_kodim15_bw.png';
+import braille_source3_male_1024 from '/img/instruments/videomancer/braille/braille_source3_male_1024.png';
 
 # Braille
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={braille_hero} alt="Braille hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: braille_source1_kodim15, after: braille_hero },
+    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_hero },
+    { label: "Male", before: braille_source3_male_1024, after: braille_hero },
+  ]}
+/>
 *Braille converting a photographic image into an array of tactile-style embossed dots on a paper-textured surface.*
-<img src={braille_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Braille applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 ### Exercise 1: Basic Threshold Halftone
 
-<img src={braille_exercise1_result} alt="Basic Threshold Halftone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise1_result },
+    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise1_result },
+    { label: "Male", before: braille_source3_male_1024, after: braille_exercise1_result },
+  ]}
+/>
 *Basic Threshold Halftone — simulated result across source images.*
 **Source**: A portrait or landscape with a wide tonal range — faces, sky, foliage.
 
@@ -229,7 +242,13 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 ### Exercise 2: Emboss and Style Exploration
 
-<img src={braille_exercise2_result} alt="Emboss and Style Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise2_result },
+    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise2_result },
+    { label: "Male", before: braille_source3_male_1024, after: braille_exercise2_result },
+  ]}
+/>
 *Emboss and Style Exploration — simulated result across source images.*
 **Source**: A high-contrast black-and-white image or graphic with strong shapes.
 
@@ -248,7 +267,13 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 ### Exercise 3: Tinted Pointillist Color
 
-<img src={braille_exercise3_result} alt="Tinted Pointillist Color result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise3_result },
+    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise3_result },
+    { label: "Male", before: braille_source3_male_1024, after: braille_exercise3_result },
+  ]}
+/>
 *Tinted Pointillist Color — simulated result across source images.*
 **Source**: Saturated, multicolored footage — flowers, costumes, painted surfaces, or the macaw image.
 

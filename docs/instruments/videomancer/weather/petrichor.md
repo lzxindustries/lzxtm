@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 211
+sidebar_position: 212
 slug: /instruments/videomancer/petrichor
 title: "Petrichor"
 image: /img/instruments/videomancer/petrichor/petrichor_hero.png
 description: "Video monitors show flat images."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import petrichor_hero from '/img/instruments/videomancer/petrichor/petrichor_hero.png';
-import petrichor_before_after from '/img/instruments/videomancer/petrichor/petrichor_before_after.png';
 import petrichor_control_panel from '/img/instruments/videomancer/petrichor/petrichor_control_panel.png';
 import petrichor_exercise1_result from '/img/instruments/videomancer/petrichor/petrichor_exercise1_result.png';
 import petrichor_exercise2_result from '/img/instruments/videomancer/petrichor/petrichor_exercise2_result.png';
 import petrichor_exercise3_result from '/img/instruments/videomancer/petrichor/petrichor_exercise3_result.png';
+import petrichor_source1_kodim01 from '/img/instruments/videomancer/petrichor/petrichor_source1_kodim01.png';
+import petrichor_source2_kodim02 from '/img/instruments/videomancer/petrichor/petrichor_source2_kodim02.png';
+import petrichor_source3_stream_bridge_512 from '/img/instruments/videomancer/petrichor/petrichor_source3_stream_bridge_512.png';
 
 # Petrichor
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={petrichor_hero} alt="Petrichor hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_hero },
+    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_hero },
+    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_hero },
+  ]}
+/>
 *Petrichor splitting the frame at the horizon to produce rain-slicked pavement reflections, atmospheric haze, and animated rain streaks over a cityscape.*
-<img src={petrichor_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Petrichor applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 ### Exercise 1: Pavement Mirrors
 
-<img src={petrichor_exercise1_result} alt="Pavement Mirrors result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise1_result },
+    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise1_result },
+    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise1_result },
+  ]}
+/>
 *Pavement Mirrors — simulated result across source images.*
 **Source**: A camera feed or recorded footage with clear architectural or landscape content — buildings, trees, or geometric shapes in the upper portion of the frame.
 
@@ -217,7 +230,13 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 ### Exercise 2: Fog Machine
 
-<img src={petrichor_exercise2_result} alt="Fog Machine result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise2_result },
+    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise2_result },
+    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise2_result },
+  ]}
+/>
 *Fog Machine — simulated result across source images.*
 **Source**: Any video with visible depth — a corridor, a landscape, or a scene with near and far elements.
 
@@ -235,7 +254,13 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 ### Exercise 3: Full Downpour
 
-<img src={petrichor_exercise3_result} alt="Full Downpour result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise3_result },
+    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise3_result },
+    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise3_result },
+  ]}
+/>
 *Full Downpour — simulated result across source images.*
 **Source**: High-contrast footage — a night city scene with bright lights works especially well.
 

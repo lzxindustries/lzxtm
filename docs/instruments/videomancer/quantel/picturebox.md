@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 216
+sidebar_position: 217
 slug: /instruments/videomancer/picturebox
 title: "Picturebox"
 image: /img/instruments/videomancer/picturebox/picturebox_hero.png
 description: "In the control rooms of 1990s television studios, a wall of small monitors showed multiple camera feeds simultaneously — each screen a window into a different moment or angle."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import picturebox_hero from '/img/instruments/videomancer/picturebox/picturebox_hero.png';
-import picturebox_before_after from '/img/instruments/videomancer/picturebox/picturebox_before_after.png';
 import picturebox_control_panel from '/img/instruments/videomancer/picturebox/picturebox_control_panel.png';
 import picturebox_exercise1_result from '/img/instruments/videomancer/picturebox/picturebox_exercise1_result.png';
 import picturebox_exercise2_result from '/img/instruments/videomancer/picturebox/picturebox_exercise2_result.png';
 import picturebox_exercise3_result from '/img/instruments/videomancer/picturebox/picturebox_exercise3_result.png';
+import picturebox_source1_kodim15 from '/img/instruments/videomancer/picturebox/picturebox_source1_kodim15.png';
+import picturebox_source2_kodim01 from '/img/instruments/videomancer/picturebox/picturebox_source2_kodim01.png';
+import picturebox_source3_kodim01_bw from '/img/instruments/videomancer/picturebox/picturebox_source3_kodim01_bw.png';
 
 # Picturebox
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={picturebox_hero} alt="Picturebox hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_hero },
+    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_hero },
+    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_hero },
+  ]}
+/>
 *Picturebox dividing a single video input into a configurable grid of temporally-delayed panels with coloured borders and optional label strips.*
-<img src={picturebox_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Picturebox applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 ### Exercise 1: Broadcast Monitor Wall
 
-<img src={picturebox_exercise1_result} alt="Broadcast Monitor Wall result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise1_result },
+    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise1_result },
+    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise1_result },
+  ]}
+/>
 *Broadcast Monitor Wall — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and movement.
 
@@ -230,7 +243,13 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 ### Exercise 2: Temporal Filmstrip
 
-<img src={picturebox_exercise2_result} alt="Temporal Filmstrip result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise2_result },
+    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise2_result },
+    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise2_result },
+  ]}
+/>
 *Temporal Filmstrip — simulated result across source images.*
 **Source**: Footage with smooth, steady horizontal motion — a subject walking across frame.
 
@@ -249,7 +268,13 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 ### Exercise 3: Freeze Cascade
 
-<img src={picturebox_exercise3_result} alt="Freeze Cascade result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise3_result },
+    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise3_result },
+    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise3_result },
+  ]}
+/>
 *Freeze Cascade — simulated result across source images.*
 **Source**: Any moving footage — the effect is most visible with continuous motion.
 

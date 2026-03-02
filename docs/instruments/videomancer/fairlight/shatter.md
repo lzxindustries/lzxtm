@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 250
+sidebar_position: 251
 slug: /instruments/videomancer/shatter
 title: "Shatter"
 image: /img/instruments/videomancer/shatter/shatter_hero.png
 description: "Analog video synthesizers from the 1980s had a distinctive trick: split the screen into two complementary regions using a spatial pattern, apply a different processing effect to each region, then alternate them at a controllable rate."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import shatter_hero from '/img/instruments/videomancer/shatter/shatter_hero.png';
-import shatter_before_after from '/img/instruments/videomancer/shatter/shatter_before_after.png';
 import shatter_control_panel from '/img/instruments/videomancer/shatter/shatter_control_panel.png';
 import shatter_exercise1_result from '/img/instruments/videomancer/shatter/shatter_exercise1_result.png';
 import shatter_exercise2_result from '/img/instruments/videomancer/shatter/shatter_exercise2_result.png';
 import shatter_exercise3_result from '/img/instruments/videomancer/shatter/shatter_exercise3_result.png';
+import shatter_source1_kodim15 from '/img/instruments/videomancer/shatter/shatter_source1_kodim15.png';
+import shatter_source2_kodim01 from '/img/instruments/videomancer/shatter/shatter_source2_kodim01.png';
+import shatter_source3_kodim01_bw from '/img/instruments/videomancer/shatter/shatter_source3_kodim01_bw.png';
 
 # Shatter
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={shatter_hero} alt="Shatter hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_hero },
+    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_hero },
+    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_hero },
+  ]}
+/>
 *Shatter splitting a video signal into strobing binary pattern regions with solarized processing and checkerboard compositing.*
-<img src={shatter_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Shatter applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises progress from static pattern exploration through processing mode
 
 ### Exercise 1: Pattern Gallery
 
-<img src={shatter_exercise1_result} alt="Pattern Gallery result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_exercise1_result },
+    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_exercise1_result },
+    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_exercise1_result },
+  ]}
+/>
 *Pattern Gallery — simulated result across source images.*
 **Source**: A camera feed with clear subject separation — a face against a contrasting background, or geometric objects on a flat surface.
 
@@ -225,7 +238,13 @@ These exercises progress from static pattern exploration through processing mode
 
 ### Exercise 2: Processing Mode Comparison
 
-<img src={shatter_exercise2_result} alt="Processing Mode Comparison result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_exercise2_result },
+    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_exercise2_result },
+    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_exercise2_result },
+  ]}
+/>
 *Processing Mode Comparison — simulated result across source images.*
 **Source**: Footage with a wide tonal range — scenes with both bright and dark areas, gradients, and saturated color.
 
@@ -245,7 +264,13 @@ These exercises progress from static pattern exploration through processing mode
 
 ### Exercise 3: Stroboscopic Performance
 
-<img src={shatter_exercise3_result} alt="Stroboscopic Performance result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_exercise3_result },
+    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_exercise3_result },
+    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_exercise3_result },
+  ]}
+/>
 *Stroboscopic Performance — simulated result across source images.*
 **Source**: Music video, rhythmic footage, or any source with visual motion to complement the temporal strobing.
 

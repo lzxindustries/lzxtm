@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/joust/joust_hero.png
 description: "Classic arcade and console hardware did not have enough video memory to draw an entire screen at once."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import joust_hero from '/img/instruments/videomancer/joust/joust_hero.png';
-import joust_before_after from '/img/instruments/videomancer/joust/joust_before_after.png';
 import joust_control_panel from '/img/instruments/videomancer/joust/joust_control_panel.png';
 import joust_exercise1_result from '/img/instruments/videomancer/joust/joust_exercise1_result.png';
 import joust_exercise2_result from '/img/instruments/videomancer/joust/joust_exercise2_result.png';
 import joust_exercise3_result from '/img/instruments/videomancer/joust/joust_exercise3_result.png';
+import joust_source1_kodim15 from '/img/instruments/videomancer/joust/joust_source1_kodim15.png';
+import joust_source2_kodim03 from '/img/instruments/videomancer/joust/joust_source2_kodim03.png';
+import joust_source3_kodim15_bw from '/img/instruments/videomancer/joust/joust_source3_kodim15_bw.png';
 
 # Joust
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={joust_hero} alt="Joust hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: joust_source1_kodim15, after: joust_hero },
+    { label: "Kodim03", before: joust_source2_kodim03, after: joust_hero },
+    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_hero },
+  ]}
+/>
 *Joust dividing a video source into horizontal strips with luminance-keyed transparency, palette quantization, and NES-style sprite-overflow flicker.*
-<img src={joust_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Joust applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 ### Exercise 1: Strip Division and Scrolling
 
-<img src={joust_exercise1_result} alt="Strip Division and Scrolling result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise1_result },
+    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise1_result },
+    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise1_result },
+  ]}
+/>
 *Strip Division and Scrolling — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong horizontal structure — landscapes, cityscapes, or text.
 
@@ -227,7 +240,13 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 ### Exercise 2: Palette Quantization and Keying
 
-<img src={joust_exercise2_result} alt="Palette Quantization and Keying result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise2_result },
+    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise2_result },
+    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise2_result },
+  ]}
+/>
 *Palette Quantization and Keying — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions and varied colors — skin tones, painted surfaces, or gradient test patterns.
 
@@ -246,7 +265,13 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 ### Exercise 3: Sprite Overflow Flicker
 
-<img src={joust_exercise3_result} alt="Sprite Overflow Flicker result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise3_result },
+    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise3_result },
+    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise3_result },
+  ]}
+/>
 *Sprite Overflow Flicker — simulated result across source images.*
 **Source**: Any footage — the flicker effect is independent of content.
 

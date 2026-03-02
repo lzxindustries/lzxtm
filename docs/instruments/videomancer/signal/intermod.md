@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/intermod/intermod_hero.png
 description: "Analog amplifiers do not clip gracefully."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import intermod_hero from '/img/instruments/videomancer/intermod/intermod_hero.png';
-import intermod_before_after from '/img/instruments/videomancer/intermod/intermod_before_after.png';
 import intermod_control_panel from '/img/instruments/videomancer/intermod/intermod_control_panel.png';
 import intermod_exercise1_result from '/img/instruments/videomancer/intermod/intermod_exercise1_result.png';
 import intermod_exercise2_result from '/img/instruments/videomancer/intermod/intermod_exercise2_result.png';
 import intermod_exercise3_result from '/img/instruments/videomancer/intermod/intermod_exercise3_result.png';
+import intermod_source1_kodim15 from '/img/instruments/videomancer/intermod/intermod_source1_kodim15.png';
+import intermod_source2_kodim01 from '/img/instruments/videomancer/intermod/intermod_source2_kodim01.png';
+import intermod_source3_stream_bridge_512 from '/img/instruments/videomancer/intermod/intermod_source3_stream_bridge_512.png';
 
 # Intermod
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={intermod_hero} alt="Intermod hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_hero },
+    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_hero },
+    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_hero },
+  ]}
+/>
 *Intermod applying polynomial non-linear distortion with cross-channel coupling to produce overdriven harmonic textures and saturated color artifacts.*
-<img src={intermod_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Intermod applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 ### Exercise 1: Warm Tube Overdrive
 
-<img src={intermod_exercise1_result} alt="Warm Tube Overdrive result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise1_result },
+    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise1_result },
+    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise1_result },
+  ]}
+/>
 *Warm Tube Overdrive — simulated result across source images.*
 **Source**: A portrait or talking-head shot with smooth skin tones and moderate contrast.
 
@@ -224,7 +237,13 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 ### Exercise 2: Metallic Color Shred
 
-<img src={intermod_exercise2_result} alt="Metallic Color Shred result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise2_result },
+    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise2_result },
+    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise2_result },
+  ]}
+/>
 *Metallic Color Shred — simulated result across source images.*
 **Source**: A high-contrast scene with saturated colors — neon signs, painted surfaces, or colorful textiles.
 
@@ -245,7 +264,13 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 ### Exercise 3: Self-Oscillating Chaos
 
-<img src={intermod_exercise3_result} alt="Self-Oscillating Chaos result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise3_result },
+    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise3_result },
+    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise3_result },
+  ]}
+/>
 *Self-Oscillating Chaos — simulated result across source images.*
 **Source**: Any source — at high feedback the input material is largely destroyed by self-oscillation. A static graphic or test pattern helps visualize the feedback propagation direction.
 

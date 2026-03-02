@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/macrame/macrame_hero.png
 description: "Fiber arts begin with repetition — a single knot tied again and again until a flat cord becomes a surface."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import macrame_hero from '/img/instruments/videomancer/macrame/macrame_hero.png';
-import macrame_before_after from '/img/instruments/videomancer/macrame/macrame_before_after.png';
 import macrame_control_panel from '/img/instruments/videomancer/macrame/macrame_control_panel.png';
 import macrame_exercise1_result from '/img/instruments/videomancer/macrame/macrame_exercise1_result.png';
 import macrame_exercise2_result from '/img/instruments/videomancer/macrame/macrame_exercise2_result.png';
 import macrame_exercise3_result from '/img/instruments/videomancer/macrame/macrame_exercise3_result.png';
+import macrame_source1_kodim15 from '/img/instruments/videomancer/macrame/macrame_source1_kodim15.png';
+import macrame_source2_kodim03 from '/img/instruments/videomancer/macrame/macrame_source2_kodim03.png';
+import macrame_source3_kodim13_bw from '/img/instruments/videomancer/macrame/macrame_source3_kodim13_bw.png';
 
 # Macrame
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={macrame_hero} alt="Macrame hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_hero },
+    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_hero },
+    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_hero },
+  ]}
+/>
 *Macrame overlaying a knotted diamond cord lattice with textured intersections across a video source.*
-<img src={macrame_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Macrame applied.*
 
 ---
 
@@ -219,7 +226,13 @@ These exercises build from basic lattice construction to full textile overlay co
 
 ### Exercise 1: Diamond Lattice Construction
 
-<img src={macrame_exercise1_result} alt="Diamond Lattice Construction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise1_result },
+    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise1_result },
+    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise1_result },
+  ]}
+/>
 *Diamond Lattice Construction — simulated result across source images.*
 **Source**: A medium-contrast camera feed or recorded footage with recognizable subjects and some dark regions.
 
@@ -238,7 +251,13 @@ These exercises build from basic lattice construction to full textile overlay co
 
 ### Exercise 2: Colored Textile Overlay
 
-<img src={macrame_exercise2_result} alt="Colored Textile Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise2_result },
+    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise2_result },
+    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise2_result },
+  ]}
+/>
 *Colored Textile Overlay — simulated result across source images.*
 **Source**: High-contrast footage with dark backgrounds — stage performance, night scenes, or silhouettes.
 
@@ -257,7 +276,13 @@ These exercises build from basic lattice construction to full textile overlay co
 
 ### Exercise 3: Animated Lattice Drift
 
-<img src={macrame_exercise3_result} alt="Animated Lattice Drift result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise3_result },
+    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise3_result },
+    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise3_result },
+  ]}
+/>
 *Animated Lattice Drift — simulated result across source images.*
 **Source**: Slow-moving or static footage — landscapes, architecture, or a fixed camera feed.
 

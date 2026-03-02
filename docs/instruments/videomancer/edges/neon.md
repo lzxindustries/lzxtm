@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 193
+sidebar_position: 194
 slug: /instruments/videomancer/neon
 title: "Neon"
 image: /img/instruments/videomancer/neon/neon_hero.png
 description: "Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import neon_hero from '/img/instruments/videomancer/neon/neon_hero.png';
-import neon_before_after from '/img/instruments/videomancer/neon/neon_before_after.png';
 import neon_control_panel from '/img/instruments/videomancer/neon/neon_control_panel.png';
 import neon_exercise1_result from '/img/instruments/videomancer/neon/neon_exercise1_result.png';
 import neon_exercise2_result from '/img/instruments/videomancer/neon/neon_exercise2_result.png';
 import neon_exercise3_result from '/img/instruments/videomancer/neon/neon_exercise3_result.png';
+import neon_source1_kodim02 from '/img/instruments/videomancer/neon/neon_source1_kodim02.png';
+import neon_source2_kodim07 from '/img/instruments/videomancer/neon/neon_source2_kodim07.png';
+import neon_source3_kodim01_bw from '/img/instruments/videomancer/neon/neon_source3_kodim01_bw.png';
 
 # Neon
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={neon_hero} alt="Neon hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: neon_source1_kodim02, after: neon_hero },
+    { label: "Kodim07", before: neon_source2_kodim07, after: neon_hero },
+    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_hero },
+  ]}
+/>
 *Neon rendering luminous colored edge halos over a darkened background, transforming video contours into glowing tube outlines.*
-<img src={neon_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Neon applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises build from basic edge glow through color and background styling 
 
 ### Exercise 1: Basic Neon Tubes
 
-<img src={neon_exercise1_result} alt="Basic Neon Tubes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise1_result },
+    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise1_result },
+    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise1_result },
+  ]}
+/>
 *Basic Neon Tubes — simulated result across source images.*
 **Source**: A high-contrast graphic or text overlay — sharp black-on-white lettering, geometric shapes, or a title card with clean vertical edges.
 
@@ -218,7 +231,13 @@ These exercises build from basic edge glow through color and background styling 
 
 ### Exercise 2: Neon Sign on a Dark Scene
 
-<img src={neon_exercise2_result} alt="Neon Sign on a Dark Scene result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise2_result },
+    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise2_result },
+    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise2_result },
+  ]}
+/>
 *Neon Sign on a Dark Scene — simulated result across source images.*
 **Source**: A moderately detailed camera feed — a face, a room interior, or an outdoor scene with varied luminance.
 
@@ -237,7 +256,13 @@ These exercises build from basic edge glow through color and background styling 
 
 ### Exercise 3: Source-Colored Glow with Invert
 
-<img src={neon_exercise3_result} alt="Source-Colored Glow with Invert result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise3_result },
+    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise3_result },
+    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise3_result },
+  ]}
+/>
 *Source-Colored Glow with Invert — simulated result across source images.*
 **Source**: A colorful, high-contrast feed — flowers, graffiti, a colorful textile, or a saturated video clip.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dazzle/dazzle_hero.png
 description: "Every broadcast television viewer has seen the sparkle effect — a starburst of light that blooms from specular highlights, stage lights, or reflections off metallic surfaces."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dazzle_hero from '/img/instruments/videomancer/dazzle/dazzle_hero.png';
-import dazzle_before_after from '/img/instruments/videomancer/dazzle/dazzle_before_after.png';
 import dazzle_control_panel from '/img/instruments/videomancer/dazzle/dazzle_control_panel.png';
 import dazzle_exercise1_result from '/img/instruments/videomancer/dazzle/dazzle_exercise1_result.png';
 import dazzle_exercise2_result from '/img/instruments/videomancer/dazzle/dazzle_exercise2_result.png';
 import dazzle_exercise3_result from '/img/instruments/videomancer/dazzle/dazzle_exercise3_result.png';
+import dazzle_source1_kodim15 from '/img/instruments/videomancer/dazzle/dazzle_source1_kodim15.png';
+import dazzle_source2_kodim01 from '/img/instruments/videomancer/dazzle/dazzle_source2_kodim01.png';
+import dazzle_source3_kodim01_bw from '/img/instruments/videomancer/dazzle/dazzle_source3_kodim01_bw.png';
 
 # Dazzle
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dazzle_hero} alt="Dazzle hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_hero },
+    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_hero },
+    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_hero },
+  ]}
+/>
 *Dazzle scattering radial glint bursts across bright highlights with rainbow chroma rotation and pulsing persistence.*
-<img src={dazzle_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dazzle applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 ### Exercise 1: Threshold Highlight Detection
 
-<img src={dazzle_exercise1_result} alt="Threshold Highlight Detection result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise1_result },
+    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise1_result },
+    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise1_result },
+  ]}
+/>
 *Threshold Highlight Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with visible specular highlights — metallic objects, glass reflections, or stage lighting.
 
@@ -217,7 +230,13 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 ### Exercise 2: Rainbow Starbursts
 
-<img src={dazzle_exercise2_result} alt="Rainbow Starbursts result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise2_result },
+    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise2_result },
+    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise2_result },
+  ]}
+/>
 *Rainbow Starbursts — simulated result across source images.*
 **Source**: High-contrast footage with scattered bright points — city lights at night, candle flames, or sequined fabric.
 
@@ -236,7 +255,13 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 ### Exercise 3: Pulsing Persistent Trails
 
-<img src={dazzle_exercise3_result} alt="Pulsing Persistent Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise3_result },
+    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise3_result },
+    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise3_result },
+  ]}
+/>
 *Pulsing Persistent Trails — simulated result across source images.*
 **Source**: Slowly moving footage with bright highlights — a hand-held flashlight, a rotating disco ball, or a sparkler.
 

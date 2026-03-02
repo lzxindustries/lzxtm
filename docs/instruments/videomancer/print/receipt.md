@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 230
+sidebar_position: 231
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero.png
 description: "Before digital snapshots were instant, video printers were the only way to get a physical copy of a single video frame."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import receipt_hero from '/img/instruments/videomancer/receipt/receipt_hero.png';
-import receipt_before_after from '/img/instruments/videomancer/receipt/receipt_before_after.png';
 import receipt_control_panel from '/img/instruments/videomancer/receipt/receipt_control_panel.png';
 import receipt_exercise1_result from '/img/instruments/videomancer/receipt/receipt_exercise1_result.png';
 import receipt_exercise2_result from '/img/instruments/videomancer/receipt/receipt_exercise2_result.png';
 import receipt_exercise3_result from '/img/instruments/videomancer/receipt/receipt_exercise3_result.png';
+import receipt_source1_kodim02 from '/img/instruments/videomancer/receipt/receipt_source1_kodim02.png';
+import receipt_source2_kodim07 from '/img/instruments/videomancer/receipt/receipt_source2_kodim07.png';
+import receipt_source3_kodim01_bw from '/img/instruments/videomancer/receipt/receipt_source3_kodim01_bw.png';
 
 # Receipt
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={receipt_hero} alt="Receipt hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_hero },
+    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_hero },
+    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_hero },
+  ]}
+/>
 *Receipt reducing a live video stream to dithered thermal printer output with visible block structure, head banding, and warm paper tint.*
-<img src={receipt_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Receipt applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 ### Exercise 1: Thermal Receipt
 
-<img src={receipt_exercise1_result} alt="Thermal Receipt result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise1_result },
+    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise1_result },
+    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise1_result },
+  ]}
+/>
 *Thermal Receipt — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with varied tonal range — faces, text, everyday objects.
 
@@ -218,7 +231,13 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 ### Exercise 2: Dot Matrix Banner
 
-<img src={receipt_exercise2_result} alt="Dot Matrix Banner result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise2_result },
+    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise2_result },
+    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise2_result },
+  ]}
+/>
 *Dot Matrix Banner — simulated result across source images.*
 **Source**: High-contrast graphics, text overlays, or pattern generator output.
 
@@ -238,7 +257,13 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 ### Exercise 3: Animated Print Reveal
 
-<img src={receipt_exercise3_result} alt="Animated Print Reveal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise3_result },
+    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise3_result },
+    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise3_result },
+  ]}
+/>
 *Animated Print Reveal — simulated result across source images.*
 **Source**: A static or slowly changing source — a held frame, still image, or slow dissolve.
 

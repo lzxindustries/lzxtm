@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/lightning/lightning_hero.png
 description: "Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto the input video."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import lightning_hero from '/img/instruments/videomancer/lightning/lightning_hero.png';
-import lightning_before_after from '/img/instruments/videomancer/lightning/lightning_before_after.png';
 import lightning_control_panel from '/img/instruments/videomancer/lightning/lightning_control_panel.png';
 import lightning_exercise1_result from '/img/instruments/videomancer/lightning/lightning_exercise1_result.png';
 import lightning_exercise2_result from '/img/instruments/videomancer/lightning/lightning_exercise2_result.png';
 import lightning_exercise3_result from '/img/instruments/videomancer/lightning/lightning_exercise3_result.png';
+import lightning_source1_kodim01 from '/img/instruments/videomancer/lightning/lightning_source1_kodim01.png';
+import lightning_source2_kodim02 from '/img/instruments/videomancer/lightning/lightning_source2_kodim02.png';
+import lightning_source3_stream_bridge_512 from '/img/instruments/videomancer/lightning/lightning_source3_stream_bridge_512.png';
 
 # Lightning
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={lightning_hero} alt="Lightning hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_hero },
+    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_hero },
+    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_hero },
+  ]}
+/>
 *Lightning bolt effect overlaid on video, jagged LFSR-driven discharge paths cutting down the screen with distance-based brightness falloff and periodic flash modulation.*
-<img src={lightning_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Lightning applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 ### Exercise 1: Simple Bolt
 
-<img src={lightning_exercise1_result} alt="Simple Bolt result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise1_result },
+    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise1_result },
+    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise1_result },
+  ]}
+/>
 *Simple Bolt — simulated result across source images.*
 **Source**: A dark background — either black or low-contrast footage.
 
@@ -232,7 +245,13 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 ### Exercise 2: Flash and Fork
 
-<img src={lightning_exercise2_result} alt="Flash and Fork result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise2_result },
+    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise2_result },
+    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise2_result },
+  ]}
+/>
 *Flash and Fork — simulated result across source images.*
 **Source**: Mid-brightness footage — cityscapes, landscapes, or abstract video.
 
@@ -251,7 +270,13 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 ### Exercise 3: Electric Storm
 
-<img src={lightning_exercise3_result} alt="Electric Storm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise3_result },
+    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise3_result },
+    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise3_result },
+  ]}
+/>
 *Electric Storm — simulated result across source images.*
 **Source**: Any footage — the effect will be dramatic regardless of source content.
 

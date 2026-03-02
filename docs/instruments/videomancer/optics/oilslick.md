@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 197
+sidebar_position: 198
 slug: /instruments/videomancer/oilslick
 title: "Oilslick"
 image: /img/instruments/videomancer/oilslick/oilslick_hero.png
 description: "Oil on water shimmers because the film is thin enough that light reflecting off its top and bottom surfaces interferes constructively at different wavelengths depending on the film thickness."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import oilslick_hero from '/img/instruments/videomancer/oilslick/oilslick_hero.png';
-import oilslick_before_after from '/img/instruments/videomancer/oilslick/oilslick_before_after.png';
 import oilslick_control_panel from '/img/instruments/videomancer/oilslick/oilslick_control_panel.png';
 import oilslick_exercise1_result from '/img/instruments/videomancer/oilslick/oilslick_exercise1_result.png';
 import oilslick_exercise2_result from '/img/instruments/videomancer/oilslick/oilslick_exercise2_result.png';
 import oilslick_exercise3_result from '/img/instruments/videomancer/oilslick/oilslick_exercise3_result.png';
+import oilslick_source1_kodim15 from '/img/instruments/videomancer/oilslick/oilslick_source1_kodim15.png';
+import oilslick_source2_kodim01 from '/img/instruments/videomancer/oilslick/oilslick_source2_kodim01.png';
+import oilslick_source3_kodim01_bw from '/img/instruments/videomancer/oilslick/oilslick_source3_kodim01_bw.png';
 
 # Oilslick
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={oilslick_hero} alt="Oilslick hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_hero },
+    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_hero },
+    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_hero },
+  ]}
+/>
 *Oilslick generating vivid position-dependent rainbow iridescence patterns over a live video source through DDS-based thin-film interference simulation.*
-<img src={oilslick_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Oilslick applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 ### Exercise 1: Static Rainbow Wash
 
-<img src={oilslick_exercise1_result} alt="Static Rainbow Wash result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise1_result },
+    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise1_result },
+    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise1_result },
+  ]}
+/>
 *Static Rainbow Wash — simulated result across source images.*
 **Source**: A grayscale gradient ramp or neutral gray card — any low-chroma source that lets the interference colors stand out clearly.
 
@@ -221,7 +234,13 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 ### Exercise 2: Animated Oil Shimmer
 
-<img src={oilslick_exercise2_result} alt="Animated Oil Shimmer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise2_result },
+    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise2_result },
+    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise2_result },
+  ]}
+/>
 *Animated Oil Shimmer — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with varied brightness — faces, landscapes, or abstract shapes work well.
 
@@ -238,7 +257,13 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 ### Exercise 3: Crystalline XOR Textures
 
-<img src={oilslick_exercise3_result} alt="Crystalline XOR Textures result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise3_result },
+    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise3_result },
+    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise3_result },
+  ]}
+/>
 *Crystalline XOR Textures — simulated result across source images.*
 **Source**: High-contrast footage — sharp edges, text, or geometric patterns that interact visually with the XOR lattice.
 

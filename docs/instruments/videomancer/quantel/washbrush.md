@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 310
+sidebar_position: 311
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
 image: /img/instruments/videomancer/washbrush/washbrush_hero.png
 description: "The Quantel Paintbox, introduced in 1981, was the first commercially successful digital paint system for broadcast television."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import washbrush_hero from '/img/instruments/videomancer/washbrush/washbrush_hero.png';
-import washbrush_before_after from '/img/instruments/videomancer/washbrush/washbrush_before_after.png';
 import washbrush_control_panel from '/img/instruments/videomancer/washbrush/washbrush_control_panel.png';
 import washbrush_exercise1_result from '/img/instruments/videomancer/washbrush/washbrush_exercise1_result.png';
 import washbrush_exercise2_result from '/img/instruments/videomancer/washbrush/washbrush_exercise2_result.png';
 import washbrush_exercise3_result from '/img/instruments/videomancer/washbrush/washbrush_exercise3_result.png';
+import washbrush_source1_kodim15 from '/img/instruments/videomancer/washbrush/washbrush_source1_kodim15.png';
+import washbrush_source2_kodim01 from '/img/instruments/videomancer/washbrush/washbrush_source2_kodim01.png';
+import washbrush_source3_kodim01_bw from '/img/instruments/videomancer/washbrush/washbrush_source3_kodim01_bw.png';
 
 # Washbrush
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={washbrush_hero} alt="Washbrush hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_hero },
+    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_hero },
+    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_hero },
+  ]}
+/>
 *Washbrush painting translucent airbrush strokes along a Lissajous orbit onto a persistent BRAM canvas, with warm hues accumulating over time.*
-<img src={washbrush_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Washbrush applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 ### Exercise 1: Simple Airbrush Circle
 
-<img src={washbrush_exercise1_result} alt="Simple Airbrush Circle result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise1_result },
+    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise1_result },
+    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise1_result },
+  ]}
+/>
 *Simple Airbrush Circle — simulated result across source images.*
 **Objective**: Create a basic circular Lissajous path with the airbrush media, observing how the persistent canvas accumulates paint over time.
 
@@ -230,7 +243,13 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 ### Exercise 2: Chalk Calligraphy
 
-<img src={washbrush_exercise2_result} alt="Chalk Calligraphy result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise2_result },
+    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise2_result },
+    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise2_result },
+  ]}
+/>
 *Chalk Calligraphy — simulated result across source images.*
 **Objective**: Use complex Lissajous ratios with the chalk texture to create intricate, textured calligraphic patterns.
 
@@ -248,7 +267,13 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 ### Exercise 3: Video-Sampled Wash Sweep
 
-<img src={washbrush_exercise3_result} alt="Video-Sampled Wash Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise3_result },
+    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise3_result },
+    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise3_result },
+  ]}
+/>
 *Video-Sampled Wash Sweep — simulated result across source images.*
 **Objective**: Use Sweep path mode with Video color sampling and the Wash media to create a painterly impression of the input video across the entire canvas.
 

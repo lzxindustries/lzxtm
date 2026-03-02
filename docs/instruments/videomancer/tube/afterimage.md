@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/afterimage/afterimage_hero.png
 description: "Afterimage recreates the physiological phenomenon where prolonged viewing of a stimulus produces a persistent colour-negative ghost when the stimulus is removed or the gaze shifts."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import afterimage_hero from '/img/instruments/videomancer/afterimage/afterimage_hero.png';
-import afterimage_before_after from '/img/instruments/videomancer/afterimage/afterimage_before_after.png';
 import afterimage_control_panel from '/img/instruments/videomancer/afterimage/afterimage_control_panel.png';
 import afterimage_exercise1_result from '/img/instruments/videomancer/afterimage/afterimage_exercise1_result.png';
 import afterimage_exercise2_result from '/img/instruments/videomancer/afterimage/afterimage_exercise2_result.png';
 import afterimage_exercise3_result from '/img/instruments/videomancer/afterimage/afterimage_exercise3_result.png';
+import afterimage_source1_kodim15 from '/img/instruments/videomancer/afterimage/afterimage_source1_kodim15.png';
+import afterimage_source2_kodim01 from '/img/instruments/videomancer/afterimage/afterimage_source2_kodim01.png';
+import afterimage_source3_kodim01_bw from '/img/instruments/videomancer/afterimage/afterimage_source3_kodim01_bw.png';
 
 # Afterimage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={afterimage_hero} alt="Afterimage hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_hero },
+    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_hero },
+    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_hero },
+  ]}
+/>
 *Afterimage rendering a color-negative persistence trail over a moving hand — the IIR temporal filter retains a ghostly complementary-color echo of prior motion against the current frame.*
-<img src={afterimage_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Afterimage applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from basic negative persistence observation through cha
 
 ### Exercise 1: Basic Negative Persistence
 
-<img src={afterimage_exercise1_result} alt="Basic Negative Persistence result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise1_result },
+    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise1_result },
+    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise1_result },
+  ]}
+/>
 *Basic Negative Persistence — simulated result across source images.*
 **Source**: Camera feed with a moving subject against a static background — a hand waving slowly works well.
 
@@ -224,7 +237,13 @@ These exercises progress from basic negative persistence observation through cha
 
 ### Exercise 2: Chroma-Only Afterimage
 
-<img src={afterimage_exercise2_result} alt="Chroma-Only Afterimage result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise2_result },
+    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise2_result },
+    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise2_result },
+  ]}
+/>
 *Chroma-Only Afterimage — simulated result across source images.*
 **Source**: Footage with saturated primary colours — a colourful painting, fruit, or clothing.
 
@@ -243,7 +262,13 @@ These exercises progress from basic negative persistence observation through cha
 
 ### Exercise 3: Slow Ghost Mode with Breathing Animation
 
-<img src={afterimage_exercise3_result} alt="Slow Ghost Mode with Breathing Animation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise3_result },
+    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise3_result },
+    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise3_result },
+  ]}
+/>
 *Slow Ghost Mode with Breathing Animation — simulated result across source images.*
 **Source**: Any video source — slow-moving content like landscapes or abstract video works best.
 

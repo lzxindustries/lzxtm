@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 220
+sidebar_position: 221
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
 image: /img/instruments/videomancer/polaroid/polaroid_hero.png
 description: "Polaroid places a white border frame around the active video area, mimicking the distinctive look of instant-film prints."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import polaroid_hero from '/img/instruments/videomancer/polaroid/polaroid_hero.png';
-import polaroid_before_after from '/img/instruments/videomancer/polaroid/polaroid_before_after.png';
 import polaroid_control_panel from '/img/instruments/videomancer/polaroid/polaroid_control_panel.png';
 import polaroid_exercise1_result from '/img/instruments/videomancer/polaroid/polaroid_exercise1_result.png';
 import polaroid_exercise2_result from '/img/instruments/videomancer/polaroid/polaroid_exercise2_result.png';
 import polaroid_exercise3_result from '/img/instruments/videomancer/polaroid/polaroid_exercise3_result.png';
+import polaroid_source1_kodim05 from '/img/instruments/videomancer/polaroid/polaroid_source1_kodim05.png';
+import polaroid_source2_kodim15 from '/img/instruments/videomancer/polaroid/polaroid_source2_kodim15.png';
+import polaroid_source3_kodim15_bw from '/img/instruments/videomancer/polaroid/polaroid_source3_kodim15_bw.png';
 
 # Polaroid
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={polaroid_hero} alt="Polaroid hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_hero },
+    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_hero },
+    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_hero },
+  ]}
+/>
 *Polaroid applying instant-film border framing and warm colour shift to transform video into nostalgic snapshots.*
-<img src={polaroid_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Polaroid applied.*
 
 ---
 
@@ -195,7 +202,13 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 ### Exercise 1: Classic Instant Print
 
-<img src={polaroid_exercise1_result} alt="Classic Instant Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise1_result },
+    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise1_result },
+    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise1_result },
+  ]}
+/>
 *Classic Instant Print — simulated result across source images.*
 **Source**: A portrait or still-life shot with warm skin tones and moderate contrast.
 
@@ -213,7 +226,13 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 ### Exercise 2: Bold Frame Graphic
 
-<img src={polaroid_exercise2_result} alt="Bold Frame Graphic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise2_result },
+    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise2_result },
+    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise2_result },
+  ]}
+/>
 *Bold Frame Graphic — simulated result across source images.*
 **Source**: High-contrast material — geometric patterns, text overlays, or architectural footage.
 
@@ -231,7 +250,13 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 ### Exercise 3: Neutral Frame with Full Brightness
 
-<img src={polaroid_exercise3_result} alt="Neutral Frame with Full Brightness result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise3_result },
+    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise3_result },
+    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise3_result },
+  ]}
+/>
 *Neutral Frame with Full Brightness — simulated result across source images.*
 **Source**: Any video source — the focus is on the border framing without colour alteration.
 

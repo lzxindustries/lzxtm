@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/micrograph/micrograph_hero.png
 description: "Every laboratory microscope presents the world through a particular frame — a circular viewport, a calibrated grid, a stained slice of tissue lit from below."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import micrograph_hero from '/img/instruments/videomancer/micrograph/micrograph_hero.png';
-import micrograph_before_after from '/img/instruments/videomancer/micrograph/micrograph_before_after.png';
 import micrograph_control_panel from '/img/instruments/videomancer/micrograph/micrograph_control_panel.png';
 import micrograph_exercise1_result from '/img/instruments/videomancer/micrograph/micrograph_exercise1_result.png';
 import micrograph_exercise2_result from '/img/instruments/videomancer/micrograph/micrograph_exercise2_result.png';
 import micrograph_exercise3_result from '/img/instruments/videomancer/micrograph/micrograph_exercise3_result.png';
+import micrograph_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/micrograph/micrograph_source1_grayscale_ramp_h_1920x1080.png';
+import micrograph_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/micrograph/micrograph_source2_grayscale_ramp_v_1920x1080.png';
+import micrograph_source3_step_wedge_21level_512 from '/img/instruments/videomancer/micrograph/micrograph_source3_step_wedge_21level_512.png';
 
 # Micrograph
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={micrograph_hero} alt="Micrograph hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_hero },
+    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_hero },
+    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_hero },
+  ]}
+/>
 *Micrograph applying histological staining and reticle overlay to transform video into a calibrated microscope specimen view.*
-<img src={micrograph_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Micrograph applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 ### Exercise 1: Measurement Grid Overlay
 
-<img src={micrograph_exercise1_result} alt="Measurement Grid Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise1_result },
+    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise1_result },
+    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise1_result },
+  ]}
+/>
 *Measurement Grid Overlay — simulated result across source images.*
 **Source**: A camera feed of detailed subject matter — macro photography of textures, circuits, or natural patterns.
 
@@ -230,7 +243,13 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 ### Exercise 2: Histological Staining
 
-<img src={micrograph_exercise2_result} alt="Histological Staining result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise2_result },
+    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise2_result },
+    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise2_result },
+  ]}
+/>
 *Histological Staining — simulated result across source images.*
 **Source**: Footage of organic textures — leaves, skin, food surfaces, or any material with fine tonal detail.
 
@@ -249,7 +268,13 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 ### Exercise 3: Full Microscope Simulation
 
-<img src={micrograph_exercise3_result} alt="Full Microscope Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise3_result },
+    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise3_result },
+    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise3_result },
+  ]}
+/>
 *Full Microscope Simulation — simulated result across source images.*
 **Source**: Any footage — abstract patterns, camera input, or feedback loops.
 

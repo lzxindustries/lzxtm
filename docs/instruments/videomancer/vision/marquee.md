@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/marquee/marquee_hero.png
 description: "Before desktop publishing and digital titling systems, television stations used dedicated character generators — standalone hardware boxes that composited text and graphics over live programme video."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import marquee_hero from '/img/instruments/videomancer/marquee/marquee_hero.png';
-import marquee_before_after from '/img/instruments/videomancer/marquee/marquee_before_after.png';
 import marquee_control_panel from '/img/instruments/videomancer/marquee/marquee_control_panel.png';
 import marquee_exercise1_result from '/img/instruments/videomancer/marquee/marquee_exercise1_result.png';
 import marquee_exercise2_result from '/img/instruments/videomancer/marquee/marquee_exercise2_result.png';
 import marquee_exercise3_result from '/img/instruments/videomancer/marquee/marquee_exercise3_result.png';
+import marquee_source1_kodim15 from '/img/instruments/videomancer/marquee/marquee_source1_kodim15.png';
+import marquee_source2_kodim15_bw from '/img/instruments/videomancer/marquee/marquee_source2_kodim15_bw.png';
+import marquee_source3_male_1024 from '/img/instruments/videomancer/marquee/marquee_source3_male_1024.png';
 
 # Marquee
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={marquee_hero} alt="Marquee hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_hero },
+    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_hero },
+    { label: "Male", before: marquee_source3_male_1024, after: marquee_hero },
+  ]}
+/>
 *Marquee compositing bold colored titles with outlines and drop shadows over programme video, recreating the broadcast character generator aesthetic of 1970s television.*
-<img src={marquee_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Marquee applied.*
 
 ---
 
@@ -207,7 +214,13 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 ### Exercise 1: Clean Title Key
 
-<img src={marquee_exercise1_result} alt="Clean Title Key result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise1_result },
+    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise1_result },
+    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise1_result },
+  ]}
+/>
 *Clean Title Key — simulated result across source images.*
 **Source**: High-contrast text or graphics on a dark background — a title card, text overlay, or white lettering on black.
 
@@ -225,7 +238,13 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 ### Exercise 2: Broadcast Lower-Third
 
-<img src={marquee_exercise2_result} alt="Broadcast Lower-Third result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise2_result },
+    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise2_result },
+    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise2_result },
+  ]}
+/>
 *Broadcast Lower-Third — simulated result across source images.*
 **Source**: A title card or graphic overlaid on live camera footage — any high-contrast text over a scene.
 
@@ -243,7 +262,13 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 ### Exercise 3: Wireframe Edge Graphics
 
-<img src={marquee_exercise3_result} alt="Wireframe Edge Graphics result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise3_result },
+    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise3_result },
+    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise3_result },
+  ]}
+/>
 *Wireframe Edge Graphics — simulated result across source images.*
 **Source**: Camera footage of physical objects or people — anything with strong brightness contrast and recognizable contours.
 

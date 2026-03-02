@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 224
+sidebar_position: 225
 slug: /instruments/videomancer/punchcard
 title: "Punchcard"
 image: /img/instruments/videomancer/punchcard/punchcard_hero.png
 description: "The IBM punched card — 80 columns, 12 rows, one character per column — was the dominant data storage medium from the 1920s through the 1970s."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import punchcard_hero from '/img/instruments/videomancer/punchcard/punchcard_hero.png';
-import punchcard_before_after from '/img/instruments/videomancer/punchcard/punchcard_before_after.png';
 import punchcard_control_panel from '/img/instruments/videomancer/punchcard/punchcard_control_panel.png';
 import punchcard_exercise1_result from '/img/instruments/videomancer/punchcard/punchcard_exercise1_result.png';
 import punchcard_exercise2_result from '/img/instruments/videomancer/punchcard/punchcard_exercise2_result.png';
 import punchcard_exercise3_result from '/img/instruments/videomancer/punchcard/punchcard_exercise3_result.png';
+import punchcard_source1_kodim15 from '/img/instruments/videomancer/punchcard/punchcard_source1_kodim15.png';
+import punchcard_source2_kodim15_bw from '/img/instruments/videomancer/punchcard/punchcard_source2_kodim15_bw.png';
+import punchcard_source3_male_1024 from '/img/instruments/videomancer/punchcard/punchcard_source3_male_1024.png';
 
 # Punchcard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={punchcard_hero} alt="Punchcard hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_hero },
+    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_hero },
+    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_hero },
+  ]}
+/>
 *Punchcard rendering a luma-thresholded punch hole grid over source video with adjustable cell geometry and card stock overlay.*
-<img src={punchcard_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Punchcard applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 1: Basic Punch Card Grid
 
-<img src={punchcard_exercise1_result} alt="Basic Punch Card Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise1_result },
+    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise1_result },
+    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise1_result },
+  ]}
+/>
 *Basic Punch Card Grid — simulated result across source images.*
 **Source**: A well-lit face or scene with clear bright and dark regions — high contrast footage works best.
 
@@ -228,7 +241,13 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 2: Binary Mosaic
 
-<img src={punchcard_exercise2_result} alt="Binary Mosaic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise2_result },
+    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise2_result },
+    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise2_result },
+  ]}
+/>
 *Binary Mosaic — simulated result across source images.*
 **Source**: Abstract video synthesis output or colorful patterns — something with varied colors and brightness.
 
@@ -247,7 +266,13 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 3: Animated Data Stream
 
-<img src={punchcard_exercise3_result} alt="Animated Data Stream result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise3_result },
+    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise3_result },
+    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise3_result },
+  ]}
+/>
 *Animated Data Stream — simulated result across source images.*
 **Source**: Slowly moving or evolving footage — a camera pan, time-lapse, or modulated synthesis.
 

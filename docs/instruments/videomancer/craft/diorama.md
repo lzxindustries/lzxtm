@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/diorama/diorama_hero.png
 description: "A Victorian diorama is a miniature theater — layers of painted scenery stacked at different distances from the viewer, lit from behind so that near layers appear sharp and vivid while far layers recede into haze."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import diorama_hero from '/img/instruments/videomancer/diorama/diorama_hero.png';
-import diorama_before_after from '/img/instruments/videomancer/diorama/diorama_before_after.png';
 import diorama_control_panel from '/img/instruments/videomancer/diorama/diorama_control_panel.png';
 import diorama_exercise1_result from '/img/instruments/videomancer/diorama/diorama_exercise1_result.png';
 import diorama_exercise2_result from '/img/instruments/videomancer/diorama/diorama_exercise2_result.png';
 import diorama_exercise3_result from '/img/instruments/videomancer/diorama/diorama_exercise3_result.png';
+import diorama_source1_kodim03 from '/img/instruments/videomancer/diorama/diorama_source1_kodim03.png';
+import diorama_source2_kodim13 from '/img/instruments/videomancer/diorama/diorama_source2_kodim13.png';
+import diorama_source3_kodim13_bw from '/img/instruments/videomancer/diorama/diorama_source3_kodim13_bw.png';
 
 # Diorama
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={diorama_hero} alt="Diorama hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_hero },
+    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_hero },
+    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_hero },
+  ]}
+/>
 *Diorama layering luminance-stratified depth zones with atmospheric fog and chroma desaturation to create a theatrical parallax illusion.*
-<img src={diorama_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Diorama applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from basic depth classification through atmospheric fog
 
 ### Exercise 1: Depth Zone Mapping
 
-<img src={diorama_exercise1_result} alt="Depth Zone Mapping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise1_result },
+    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise1_result },
+    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise1_result },
+  ]}
+/>
 *Depth Zone Mapping — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear tonal separation — bright foreground subjects against a dark background, or a landscape with distinct highlights and shadows.
 
@@ -232,7 +245,13 @@ These exercises progress from basic depth classification through atmospheric fog
 
 ### Exercise 2: Atmospheric Fog Grading
 
-<img src={diorama_exercise2_result} alt="Atmospheric Fog Grading result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise2_result },
+    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise2_result },
+    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise2_result },
+  ]}
+/>
 *Atmospheric Fog Grading — simulated result across source images.*
 **Source**: Landscape footage, cityscape, or any scene with natural depth variation — a park with trees at different distances works well.
 
@@ -250,7 +269,13 @@ These exercises progress from basic depth classification through atmospheric fog
 
 ### Exercise 3: Animated Paper Theater
 
-<img src={diorama_exercise3_result} alt="Animated Paper Theater result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise3_result },
+    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise3_result },
+    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise3_result },
+  ]}
+/>
 *Animated Paper Theater — simulated result across source images.*
 **Source**: High-contrast footage with moving subjects — dancers, performers, or any scene with figure-ground separation.
 

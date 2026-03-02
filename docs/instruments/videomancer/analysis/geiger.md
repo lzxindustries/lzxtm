@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/geiger/geiger_hero.png
 description: "A Geiger counter measures invisible radiation by converting particle impacts into audible clicks and visual needle deflections."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import geiger_hero from '/img/instruments/videomancer/geiger/geiger_hero.png';
-import geiger_before_after from '/img/instruments/videomancer/geiger/geiger_before_after.png';
 import geiger_control_panel from '/img/instruments/videomancer/geiger/geiger_control_panel.png';
 import geiger_exercise1_result from '/img/instruments/videomancer/geiger/geiger_exercise1_result.png';
 import geiger_exercise2_result from '/img/instruments/videomancer/geiger/geiger_exercise2_result.png';
 import geiger_exercise3_result from '/img/instruments/videomancer/geiger/geiger_exercise3_result.png';
+import geiger_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/geiger/geiger_source1_grayscale_ramp_h_1920x1080.png';
+import geiger_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/geiger/geiger_source2_grayscale_ramp_v_1920x1080.png';
+import geiger_source3_step_wedge_21level_512 from '/img/instruments/videomancer/geiger/geiger_source3_step_wedge_21level_512.png';
 
 # Geiger
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={geiger_hero} alt="Geiger hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_hero },
+    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_hero },
+    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_hero },
+  ]}
+/>
 *Geiger detecting luminance events across a video signal, scattering stochastic particle flashes over the source with a running activity meter.*
-<img src={geiger_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Geiger applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from basic radiation detection to composite visualizati
 
 ### Exercise 1: Radiation Mapping
 
-<img src={geiger_exercise1_result} alt="Radiation Mapping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise1_result },
+    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise1_result },
+    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise1_result },
+  ]}
+/>
 *Radiation Mapping — simulated result across source images.*
 **Source**: A live camera feed with a mix of bright highlights and dark shadows — a window scene, a desk lamp, or high-contrast subject lighting.
 
@@ -229,7 +242,13 @@ These exercises progress from basic radiation detection to composite visualizati
 
 ### Exercise 2: Phosphor Color and Flash Modes
 
-<img src={geiger_exercise2_result} alt="Phosphor Color and Flash Modes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise2_result },
+    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise2_result },
+    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise2_result },
+  ]}
+/>
 *Phosphor Color and Flash Modes — simulated result across source images.*
 **Source**: Black-and-white or desaturated footage with strong tonal variation — surveillance camera footage, infrared, or a grayscale test pattern.
 
@@ -248,7 +267,13 @@ These exercises progress from basic radiation detection to composite visualizati
 
 ### Exercise 3: Analytical Overlay with Meter
 
-<img src={geiger_exercise3_result} alt="Analytical Overlay with Meter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise3_result },
+    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise3_result },
+    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise3_result },
+  ]}
+/>
 *Analytical Overlay with Meter — simulated result across source images.*
 **Source**: Moving video with varying brightness — a performer under stage lights, a cityscape with headlights, or fireworks footage.
 

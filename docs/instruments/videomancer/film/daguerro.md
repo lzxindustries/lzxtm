@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/daguerro/daguerro_hero.png
 description: "Before film, before paper prints, the first photographs were made on polished silver plates."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import daguerro_hero from '/img/instruments/videomancer/daguerro/daguerro_hero.png';
-import daguerro_before_after from '/img/instruments/videomancer/daguerro/daguerro_before_after.png';
 import daguerro_control_panel from '/img/instruments/videomancer/daguerro/daguerro_control_panel.png';
 import daguerro_exercise1_result from '/img/instruments/videomancer/daguerro/daguerro_exercise1_result.png';
 import daguerro_exercise2_result from '/img/instruments/videomancer/daguerro/daguerro_exercise2_result.png';
 import daguerro_exercise3_result from '/img/instruments/videomancer/daguerro/daguerro_exercise3_result.png';
+import daguerro_source1_kodim15 from '/img/instruments/videomancer/daguerro/daguerro_source1_kodim15.png';
+import daguerro_source2_kodim15_bw from '/img/instruments/videomancer/daguerro/daguerro_source2_kodim15_bw.png';
+import daguerro_source3_male_1024 from '/img/instruments/videomancer/daguerro/daguerro_source3_male_1024.png';
 
 # Daguerro
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={daguerro_hero} alt="Daguerro hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_hero },
+    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_hero },
+    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_hero },
+  ]}
+/>
 *Daguerro transforming video into a silver-mirror daguerreotype with compressed tonal range, cold plate tinting, and iridescent tarnish patina.*
-<img src={daguerro_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Daguerro applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 ### Exercise 1: Classic Mercury Daguerreotype
 
-<img src={daguerro_exercise1_result} alt="Classic Mercury Daguerreotype result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise1_result },
+    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise1_result },
+    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise1_result },
+  ]}
+/>
 *Classic Mercury Daguerreotype — simulated result across source images.*
 **Source**: Portrait footage or a detailed still image with a wide tonal range — faces, fabric folds, or architectural detail work well.
 
@@ -219,7 +232,13 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 ### Exercise 2: Aged and Tarnished Plate
 
-<img src={daguerro_exercise2_result} alt="Aged and Tarnished Plate result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise2_result },
+    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise2_result },
+    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise2_result },
+  ]}
+/>
 *Aged and Tarnished Plate — simulated result across source images.*
 **Source**: Landscape or still-life footage with mid-tone detail — foliage, textiles, or tabletop subjects that show tarnish patterns clearly.
 
@@ -238,7 +257,13 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 ### Exercise 3: Becquerel Negative
 
-<img src={daguerro_exercise3_result} alt="Becquerel Negative result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise3_result },
+    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise3_result },
+    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise3_result },
+  ]}
+/>
 *Becquerel Negative — simulated result across source images.*
 **Source**: High-contrast footage — architecture, silhouettes, or video with strong backlighting.
 

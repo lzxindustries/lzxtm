@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dropout/dropout_hero.png
 description: "Every VHS cassette is a battlefield between the recording and time itself."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dropout_hero from '/img/instruments/videomancer/dropout/dropout_hero.png';
-import dropout_before_after from '/img/instruments/videomancer/dropout/dropout_before_after.png';
 import dropout_control_panel from '/img/instruments/videomancer/dropout/dropout_control_panel.png';
 import dropout_exercise1_result from '/img/instruments/videomancer/dropout/dropout_exercise1_result.png';
 import dropout_exercise2_result from '/img/instruments/videomancer/dropout/dropout_exercise2_result.png';
 import dropout_exercise3_result from '/img/instruments/videomancer/dropout/dropout_exercise3_result.png';
+import dropout_source1_kodim15 from '/img/instruments/videomancer/dropout/dropout_source1_kodim15.png';
+import dropout_source2_kodim01 from '/img/instruments/videomancer/dropout/dropout_source2_kodim01.png';
+import dropout_source3_stream_bridge_512 from '/img/instruments/videomancer/dropout/dropout_source3_stream_bridge_512.png';
 
 # Dropout
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dropout_hero} alt="Dropout hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_hero },
+    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_hero },
+    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_hero },
+  ]}
+/>
 *Dropout simulating VHS tape degradation with tracking error bands, dropout streaks, time-base jitter, and chroma-under color bleed.*
-<img src={dropout_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dropout applied.*
 
 ---
 
@@ -207,7 +214,13 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 ### Exercise 1: Capstan Wobble and Time-Base Jitter
 
-<img src={dropout_exercise1_result} alt="Capstan Wobble and Time-Base Jitter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise1_result },
+    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise1_result },
+    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise1_result },
+  ]}
+/>
 *Capstan Wobble and Time-Base Jitter — simulated result across source images.*
 **Source**: Footage with strong vertical lines — architecture, text overlays, or a vertical stripe test pattern.
 
@@ -226,7 +239,13 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 ### Exercise 2: Dropout Streaks and Tracking Bands
 
-<img src={dropout_exercise2_result} alt="Dropout Streaks and Tracking Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise2_result },
+    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise2_result },
+    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise2_result },
+  ]}
+/>
 *Dropout Streaks and Tracking Bands — simulated result across source images.*
 **Source**: A slowly moving camera shot or static scene with moderate detail.
 
@@ -245,7 +264,13 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 ### Exercise 3: Full Tape Degradation
 
-<img src={dropout_exercise3_result} alt="Full Tape Degradation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise3_result },
+    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise3_result },
+    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise3_result },
+  ]}
+/>
 *Full Tape Degradation — simulated result across source images.*
 **Source**: Any video footage — the more recognizable the subject, the more dramatic the degradation.
 

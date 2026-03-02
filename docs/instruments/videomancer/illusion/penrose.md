@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 209
+sidebar_position: 210
 slug: /instruments/videomancer/penrose
 title: "Penrose"
 image: /img/instruments/videomancer/penrose/penrose_hero.png
 description: "The Penrose triangle is perhaps the most famous impossible object — a three-bar figure that appears to represent a solid three-dimensional triangle, yet cannot exist in Euclidean space."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import penrose_hero from '/img/instruments/videomancer/penrose/penrose_hero.png';
-import penrose_before_after from '/img/instruments/videomancer/penrose/penrose_before_after.png';
 import penrose_control_panel from '/img/instruments/videomancer/penrose/penrose_control_panel.png';
 import penrose_exercise1_result from '/img/instruments/videomancer/penrose/penrose_exercise1_result.png';
 import penrose_exercise2_result from '/img/instruments/videomancer/penrose/penrose_exercise2_result.png';
 import penrose_exercise3_result from '/img/instruments/videomancer/penrose/penrose_exercise3_result.png';
+import penrose_source1_kodim01 from '/img/instruments/videomancer/penrose/penrose_source1_kodim01.png';
+import penrose_source2_kodim02 from '/img/instruments/videomancer/penrose/penrose_source2_kodim02.png';
+import penrose_source3_kodim01_bw from '/img/instruments/videomancer/penrose/penrose_source3_kodim01_bw.png';
 
 # Penrose
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={penrose_hero} alt="Penrose hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_hero },
+    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_hero },
+    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_hero },
+  ]}
+/>
 *Penrose overlaying impossible triangle wireframes on live video, depth-cue shading creating spatial contradiction at every junction.*
-<img src={penrose_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Penrose applied.*
 
 ---
 
@@ -218,7 +225,13 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 ### Exercise 1: Classic Penrose Triangle
 
-<img src={penrose_exercise1_result} alt="Classic Penrose Triangle result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise1_result },
+    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise1_result },
+    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise1_result },
+  ]}
+/>
 *Classic Penrose Triangle — simulated result across source images.*
 **Source**: A static or slowly moving camera feed with a medium-brightness, low-contrast background (e.g., a plain wall or sky gradient).
 
@@ -236,7 +249,13 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 ### Exercise 2: Tiled Impossible Staircase
 
-<img src={penrose_exercise2_result} alt="Tiled Impossible Staircase result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise2_result },
+    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise2_result },
+    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise2_result },
+  ]}
+/>
 *Tiled Impossible Staircase — simulated result across source images.*
 **Source**: A brightly lit scene with varied content — a cityscape, bookshelf, or garden.
 
@@ -255,7 +274,13 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 ### Exercise 3: Glowing Trident Composition
 
-<img src={penrose_exercise3_result} alt="Glowing Trident Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise3_result },
+    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise3_result },
+    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise3_result },
+  ]}
+/>
 *Glowing Trident Composition — simulated result across source images.*
 **Source**: Dark or low-key footage — night scenes, dimly lit interiors, or abstract dark textures.
 

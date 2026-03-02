@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/facet/facet_hero.png
 description: "Most video effects blur, bend, or color-grade a continuous image."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import facet_hero from '/img/instruments/videomancer/facet/facet_hero.png';
-import facet_before_after from '/img/instruments/videomancer/facet/facet_before_after.png';
 import facet_control_panel from '/img/instruments/videomancer/facet/facet_control_panel.png';
 import facet_exercise1_result from '/img/instruments/videomancer/facet/facet_exercise1_result.png';
 import facet_exercise2_result from '/img/instruments/videomancer/facet/facet_exercise2_result.png';
 import facet_exercise3_result from '/img/instruments/videomancer/facet/facet_exercise3_result.png';
+import facet_source1_kodim15 from '/img/instruments/videomancer/facet/facet_source1_kodim15.png';
+import facet_source2_kodim15_bw from '/img/instruments/videomancer/facet/facet_source2_kodim15_bw.png';
+import facet_source3_male_1024 from '/img/instruments/videomancer/facet/facet_source3_male_1024.png';
 
 # Facet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={facet_hero} alt="Facet hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: facet_source1_kodim15, after: facet_hero },
+    { label: "Kodim15 B&W", before: facet_source2_kodim15_bw, after: facet_hero },
+    { label: "Male", before: facet_source3_male_1024, after: facet_hero },
+  ]}
+/>
 *Facet dividing a video frame into flat-shaded crystal cells with black edge outlines, creating a stained-glass mosaic effect.*
-<img src={facet_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Facet applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 
 ### Exercise 1: Crystal Mosaic
 
-<img src={facet_exercise1_result} alt="Crystal Mosaic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: facet_source1_kodim15, after: facet_exercise1_result },
+    { label: "Kodim15 B&W", before: facet_source2_kodim15_bw, after: facet_exercise1_result },
+    { label: "Male", before: facet_source3_male_1024, after: facet_exercise1_result },
+  ]}
+/>
 *Crystal Mosaic — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects — faces, text, or geometric objects work well.
 
@@ -224,7 +237,13 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 
 ### Exercise 2: Stained Glass
 
-<img src={facet_exercise2_result} alt="Stained Glass result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: facet_source1_kodim15, after: facet_exercise2_result },
+    { label: "Kodim15 B&W", before: facet_source2_kodim15_bw, after: facet_exercise2_result },
+    { label: "Male", before: facet_source3_male_1024, after: facet_exercise2_result },
+  ]}
+/>
 *Stained Glass — simulated result across source images.*
 **Source**: Brightly colored footage — flowers, neon signs, colorful fabrics, or abstract video feedback.
 
@@ -243,7 +262,13 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 
 ### Exercise 3: Monochrome Grid Overlay
 
-<img src={facet_exercise3_result} alt="Monochrome Grid Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: facet_source1_kodim15, after: facet_exercise3_result },
+    { label: "Kodim15 B&W", before: facet_source2_kodim15_bw, after: facet_exercise3_result },
+    { label: "Male", before: facet_source3_male_1024, after: facet_exercise3_result },
+  ]}
+/>
 *Monochrome Grid Overlay — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, architectural details, or stark black-and-white material.
 

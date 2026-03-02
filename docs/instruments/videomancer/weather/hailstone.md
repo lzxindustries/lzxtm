@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/hailstone/hailstone_hero.png
 description: "Hailstone is a particle physics simulation that overlays bright, bouncing shapes onto the input video signal."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import hailstone_hero from '/img/instruments/videomancer/hailstone/hailstone_hero.png';
-import hailstone_before_after from '/img/instruments/videomancer/hailstone/hailstone_before_after.png';
 import hailstone_control_panel from '/img/instruments/videomancer/hailstone/hailstone_control_panel.png';
 import hailstone_exercise1_result from '/img/instruments/videomancer/hailstone/hailstone_exercise1_result.png';
 import hailstone_exercise2_result from '/img/instruments/videomancer/hailstone/hailstone_exercise2_result.png';
 import hailstone_exercise3_result from '/img/instruments/videomancer/hailstone/hailstone_exercise3_result.png';
+import hailstone_source1_kodim01 from '/img/instruments/videomancer/hailstone/hailstone_source1_kodim01.png';
+import hailstone_source2_kodim02 from '/img/instruments/videomancer/hailstone/hailstone_source2_kodim02.png';
+import hailstone_source3_stream_bridge_512 from '/img/instruments/videomancer/hailstone/hailstone_source3_stream_bridge_512.png';
 
 # Hailstone
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={hailstone_hero} alt="Hailstone hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_hero },
+    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_hero },
+    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_hero },
+  ]}
+/>
 *Hailstone overlaying bright bouncing diamond-shaped particles with splash bars onto a live video source.*
-<img src={hailstone_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Hailstone applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises progress from simple falling particles through splash effects to
 
 ### Exercise 1: Falling Diamonds
 
-<img src={hailstone_exercise1_result} alt="Falling Diamonds result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise1_result },
+    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise1_result },
+    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise1_result },
+  ]}
+/>
 *Falling Diamonds — simulated result across source images.*
 **Source**: Any video source with moderate brightness — a camera feed of a scene with visible midtones works well.
 
@@ -216,7 +229,13 @@ These exercises progress from simple falling particles through splash effects to
 
 ### Exercise 2: Splash and Trail
 
-<img src={hailstone_exercise2_result} alt="Splash and Trail result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise2_result },
+    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise2_result },
+    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise2_result },
+  ]}
+/>
 *Splash and Trail — simulated result across source images.*
 **Source**: A dark or low-contrast source that lets bright overlays stand out clearly.
 
@@ -235,7 +254,13 @@ These exercises progress from simple falling particles through splash effects to
 
 ### Exercise 3: Blue Ice Storm
 
-<img src={hailstone_exercise3_result} alt="Blue Ice Storm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise3_result },
+    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise3_result },
+    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise3_result },
+  ]}
+/>
 *Blue Ice Storm — simulated result across source images.*
 **Source**: Any source — the blue tint and large particles will dominate the image.
 

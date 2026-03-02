@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/amphora/amphora_hero.png
 description: "Amphora recreates the visual language of Classical Greek painted pottery, transforming input video into images resembling Attic black-figure and red-figure ceramic vase painting."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import amphora_hero from '/img/instruments/videomancer/amphora/amphora_hero.png';
-import amphora_before_after from '/img/instruments/videomancer/amphora/amphora_before_after.png';
 import amphora_control_panel from '/img/instruments/videomancer/amphora/amphora_control_panel.png';
 import amphora_exercise1_result from '/img/instruments/videomancer/amphora/amphora_exercise1_result.png';
 import amphora_exercise2_result from '/img/instruments/videomancer/amphora/amphora_exercise2_result.png';
 import amphora_exercise3_result from '/img/instruments/videomancer/amphora/amphora_exercise3_result.png';
+import amphora_source1_kodim03 from '/img/instruments/videomancer/amphora/amphora_source1_kodim03.png';
+import amphora_source2_kodim13 from '/img/instruments/videomancer/amphora/amphora_source2_kodim13.png';
+import amphora_source3_kodim13_bw from '/img/instruments/videomancer/amphora/amphora_source3_kodim13_bw.png';
 
 # Amphora
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={amphora_hero} alt="Amphora hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_hero },
+    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_hero },
+    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_hero },
+  ]}
+/>
 *Amphora rendering a red-figure pottery treatment over a portrait — luminance thresholding splits the image into terra-cotta figures on a black-glazed ground, with horizontal and vertical edge-detected detail lines overlaid in dark brown.*
-<img src={amphora_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Amphora applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 ### Exercise 1: Classic Black-Figure Rendering
 
-<img src={amphora_exercise1_result} alt="Classic Black-Figure Rendering result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise1_result },
+    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise1_result },
+    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise1_result },
+  ]}
+/>
 *Classic Black-Figure Rendering — simulated result across source images.*
 **Source**: Portrait or figure photography with clear subject/background separation.
 
@@ -219,7 +232,13 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 ### Exercise 2: Red-Figure with Detail Lines
 
-<img src={amphora_exercise2_result} alt="Red-Figure with Detail Lines result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise2_result },
+    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise2_result },
+    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise2_result },
+  ]}
+/>
 *Red-Figure with Detail Lines — simulated result across source images.*
 **Source**: Subject with fine detail — textured fabric, hair, or architectural surfaces.
 
@@ -239,7 +258,13 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 ### Exercise 3: Complete Amphora with Meander Border
 
-<img src={amphora_exercise3_result} alt="Complete Amphora with Meander Border result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise3_result },
+    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise3_result },
+    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise3_result },
+  ]}
+/>
 *Complete Amphora with Meander Border — simulated result across source images.*
 **Source**: Any video source — the full composition with border works with any content.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/ikat/ikat_hero.png
 description: "Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and processing each column as if it were a bundle of warp threads dipped into a dye bath."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ikat_hero from '/img/instruments/videomancer/ikat/ikat_hero.png';
-import ikat_before_after from '/img/instruments/videomancer/ikat/ikat_before_after.png';
 import ikat_control_panel from '/img/instruments/videomancer/ikat/ikat_control_panel.png';
 import ikat_exercise1_result from '/img/instruments/videomancer/ikat/ikat_exercise1_result.png';
 import ikat_exercise2_result from '/img/instruments/videomancer/ikat/ikat_exercise2_result.png';
 import ikat_exercise3_result from '/img/instruments/videomancer/ikat/ikat_exercise3_result.png';
+import ikat_source1_kodim15 from '/img/instruments/videomancer/ikat/ikat_source1_kodim15.png';
+import ikat_source2_kodim03 from '/img/instruments/videomancer/ikat/ikat_source2_kodim03.png';
+import ikat_source3_kodim13_bw from '/img/instruments/videomancer/ikat/ikat_source3_kodim13_bw.png';
 
 # Ikat
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ikat_hero} alt="Ikat hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_hero },
+    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_hero },
+    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_hero },
+  ]}
+/>
 *Ikat applying column-quantized dye simulation and LFSR-driven bleed to create warp-resist textile textures from live video.*
-<img src={ikat_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ikat applied.*
 
 ---
 
@@ -195,7 +202,13 @@ These exercises progress from simple column striping to full textile simulation,
 
 ### Exercise 1: Basic Warp Stripes
 
-<img src={ikat_exercise1_result} alt="Basic Warp Stripes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise1_result },
+    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise1_result },
+    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise1_result },
+  ]}
+/>
 *Basic Warp Stripes — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clearly defined subjects and moderate contrast.
 
@@ -213,7 +226,13 @@ These exercises progress from simple column striping to full textile simulation,
 
 ### Exercise 2: Dye Bleed and Jitter
 
-<img src={ikat_exercise2_result} alt="Dye Bleed and Jitter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise2_result },
+    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise2_result },
+    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise2_result },
+  ]}
+/>
 *Dye Bleed and Jitter — simulated result across source images.*
 **Source**: Footage with broad tonal gradients — skies, skin tones, or slowly-moving abstract video.
 
@@ -231,7 +250,13 @@ These exercises progress from simple column striping to full textile simulation,
 
 ### Exercise 3: Double Ikat Textile
 
-<img src={ikat_exercise3_result} alt="Double Ikat Textile result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise3_result },
+    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise3_result },
+    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise3_result },
+  ]}
+/>
 *Double Ikat Textile — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric content — architecture, text, or patterned surfaces.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 287
+sidebar_position: 288
 slug: /instruments/videomancer/tessera
 title: "Tessera"
 image: /img/instruments/videomancer/tessera/tessera_hero.png
 description: "Byzantine mosaics are among the most enduring art forms in human history."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tessera_hero from '/img/instruments/videomancer/tessera/tessera_hero.png';
-import tessera_before_after from '/img/instruments/videomancer/tessera/tessera_before_after.png';
 import tessera_control_panel from '/img/instruments/videomancer/tessera/tessera_control_panel.png';
 import tessera_exercise1_result from '/img/instruments/videomancer/tessera/tessera_exercise1_result.png';
 import tessera_exercise2_result from '/img/instruments/videomancer/tessera/tessera_exercise2_result.png';
 import tessera_exercise3_result from '/img/instruments/videomancer/tessera/tessera_exercise3_result.png';
+import tessera_source1_kodim03 from '/img/instruments/videomancer/tessera/tessera_source1_kodim03.png';
+import tessera_source2_kodim13 from '/img/instruments/videomancer/tessera/tessera_source2_kodim13.png';
+import tessera_source3_kodim13_bw from '/img/instruments/videomancer/tessera/tessera_source3_kodim13_bw.png';
 
 # Tessera
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={tessera_hero} alt="Tessera hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_hero },
+    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_hero },
+    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_hero },
+  ]}
+/>
 *Tessera quantizing a video frame into Byzantine smalti mosaic with gold-leaf highlights, visible grout lines, and per-tessera scintillation jitter.*
-<img src={tessera_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tessera applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 ### Exercise 1: Smalti Quantization
 
-<img src={tessera_exercise1_result} alt="Smalti Quantization result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise1_result },
+    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise1_result },
+    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise1_result },
+  ]}
+/>
 *Smalti Quantization — simulated result across source images.*
 **Source**: A camera feed or footage with a range of colors and good tonal variety — faces, flowers, or painted surfaces work well.
 
@@ -222,7 +235,13 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 ### Exercise 2: Gold Ground Composition
 
-<img src={tessera_exercise2_result} alt="Gold Ground Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise2_result },
+    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise2_result },
+    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise2_result },
+  ]}
+/>
 *Gold Ground Composition — simulated result across source images.*
 **Source**: Footage with strong luminance contrast — a figure against a bright sky, a candle flame, or a spotlight on a dark background.
 
@@ -240,7 +259,13 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 ### Exercise 3: Ancient Mosaic Restoration
 
-<img src={tessera_exercise3_result} alt="Ancient Mosaic Restoration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise3_result },
+    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise3_result },
+    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise3_result },
+  ]}
+/>
 *Ancient Mosaic Restoration — simulated result across source images.*
 **Source**: Any footage — architectural details, portraits, or abstract textures.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/centrifuge/centrifuge_hero.png
 description: "Every image has a hidden angular geometry."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import centrifuge_hero from '/img/instruments/videomancer/centrifuge/centrifuge_hero.png';
-import centrifuge_before_after from '/img/instruments/videomancer/centrifuge/centrifuge_before_after.png';
 import centrifuge_control_panel from '/img/instruments/videomancer/centrifuge/centrifuge_control_panel.png';
 import centrifuge_exercise1_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise1_result.png';
 import centrifuge_exercise2_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise2_result.png';
 import centrifuge_exercise3_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise3_result.png';
+import centrifuge_source1_kodim02 from '/img/instruments/videomancer/centrifuge/centrifuge_source1_kodim02.png';
+import centrifuge_source2_kodim07 from '/img/instruments/videomancer/centrifuge/centrifuge_source2_kodim07.png';
+import centrifuge_source3_kodim01_bw from '/img/instruments/videomancer/centrifuge/centrifuge_source3_kodim01_bw.png';
 
 # Centrifuge
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={centrifuge_hero} alt="Centrifuge hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_hero },
+    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_hero },
+    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_hero },
+  ]}
+/>
 *Centrifuge splitting a sunlit porch into eight spinning colour wedges, each sector carrying a different luma and chroma offset as the angular wheel rotates through the frame.*
-<img src={centrifuge_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Centrifuge applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 ### Exercise 1: Static Colour Rosette
 
-<img src={centrifuge_exercise1_result} alt="Static Colour Rosette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise1_result },
+    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise1_result },
+    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise1_result },
+  ]}
+/>
 *Static Colour Rosette — simulated result across source images.*
 **Source**: A high-contrast photograph with clear geometry — architectural lines or a centred portrait work well.
 
@@ -229,7 +242,13 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 ### Exercise 2: Spinning Colour Wheel
 
-<img src={centrifuge_exercise2_result} alt="Spinning Colour Wheel result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise2_result },
+    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise2_result },
+    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise2_result },
+  ]}
+/>
 *Spinning Colour Wheel — simulated result across source images.*
 **Source**: A slowly moving video source — panning landscape footage or a gently moving subject against a neutral background.
 
@@ -248,7 +267,13 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 ### Exercise 3: Off-Centre Composition
 
-<img src={centrifuge_exercise3_result} alt="Off-Centre Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise3_result },
+    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise3_result },
+    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise3_result },
+  ]}
+/>
 *Off-Centre Composition — simulated result across source images.*
 **Source**: A portrait or any image with an identifiable focal point that is not centred in the frame.
 

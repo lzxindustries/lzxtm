@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/macrobloc/macrobloc_hero.png
 description: "Digital video compression divides every frame into small rectangular blocks and encodes each one independently."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import macrobloc_hero from '/img/instruments/videomancer/macrobloc/macrobloc_hero.png';
-import macrobloc_before_after from '/img/instruments/videomancer/macrobloc/macrobloc_before_after.png';
 import macrobloc_control_panel from '/img/instruments/videomancer/macrobloc/macrobloc_control_panel.png';
 import macrobloc_exercise1_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise1_result.png';
 import macrobloc_exercise2_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise2_result.png';
 import macrobloc_exercise3_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise3_result.png';
+import macrobloc_source1_kodim15 from '/img/instruments/videomancer/macrobloc/macrobloc_source1_kodim15.png';
+import macrobloc_source2_kodim01 from '/img/instruments/videomancer/macrobloc/macrobloc_source2_kodim01.png';
+import macrobloc_source3_stream_bridge_512 from '/img/instruments/videomancer/macrobloc/macrobloc_source3_stream_bridge_512.png';
 
 # Macrobloc
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={macrobloc_hero} alt="Macrobloc hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrobloc_source1_kodim15, after: macrobloc_hero },
+    { label: "Kodim01", before: macrobloc_source2_kodim01, after: macrobloc_hero },
+    { label: "Stream Bridge", before: macrobloc_source3_stream_bridge_512, after: macrobloc_hero },
+  ]}
+/>
 *Macrobloc corrupting a video source with block displacement, DC fill, freeze artifacts, and chroma separation errors.*
-<img src={macrobloc_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Macrobloc applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from basic block corruption to complex multi-mode degra
 
 ### Exercise 1: Basic Block Corruption
 
-<img src={macrobloc_exercise1_result} alt="Basic Block Corruption result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrobloc_source1_kodim15, after: macrobloc_exercise1_result },
+    { label: "Kodim01", before: macrobloc_source2_kodim01, after: macrobloc_exercise1_result },
+    { label: "Stream Bridge", before: macrobloc_source3_stream_bridge_512, after: macrobloc_exercise1_result },
+  ]}
+/>
 *Basic Block Corruption — simulated result across source images.*
 **Source**: A camera feed or recorded footage with moderate motion and recognizable content.
 
@@ -232,7 +245,13 @@ These exercises progress from basic block corruption to complex multi-mode degra
 
 ### Exercise 2: Motion Vector Failure
 
-<img src={macrobloc_exercise2_result} alt="Motion Vector Failure result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrobloc_source1_kodim15, after: macrobloc_exercise2_result },
+    { label: "Kodim01", before: macrobloc_source2_kodim01, after: macrobloc_exercise2_result },
+    { label: "Stream Bridge", before: macrobloc_source3_stream_bridge_512, after: macrobloc_exercise2_result },
+  ]}
+/>
 *Motion Vector Failure — simulated result across source images.*
 **Source**: Footage with lateral motion — panning shots, moving subjects, or scrolling graphics.
 
@@ -251,7 +270,13 @@ These exercises progress from basic block corruption to complex multi-mode degra
 
 ### Exercise 3: Frozen Reference Frame
 
-<img src={macrobloc_exercise3_result} alt="Frozen Reference Frame result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: macrobloc_source1_kodim15, after: macrobloc_exercise3_result },
+    { label: "Kodim01", before: macrobloc_source2_kodim01, after: macrobloc_exercise3_result },
+    { label: "Stream Bridge", before: macrobloc_source3_stream_bridge_512, after: macrobloc_exercise3_result },
+  ]}
+/>
 *Frozen Reference Frame — simulated result across source images.*
 **Source**: Active footage with continuous motion — handheld camera, dance performance, or sports.
 

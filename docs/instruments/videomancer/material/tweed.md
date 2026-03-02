@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 295
+sidebar_position: 296
 slug: /instruments/videomancer/tweed
 title: "Tweed"
 image: /img/instruments/videomancer/tweed/tweed_hero.png
 description: "Tweed is a textile simulator — it renders the geometric patterns of woven fabric directly onto the video signal."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tweed_hero from '/img/instruments/videomancer/tweed/tweed_hero.png';
-import tweed_before_after from '/img/instruments/videomancer/tweed/tweed_before_after.png';
 import tweed_control_panel from '/img/instruments/videomancer/tweed/tweed_control_panel.png';
 import tweed_exercise1_result from '/img/instruments/videomancer/tweed/tweed_exercise1_result.png';
 import tweed_exercise2_result from '/img/instruments/videomancer/tweed/tweed_exercise2_result.png';
 import tweed_exercise3_result from '/img/instruments/videomancer/tweed/tweed_exercise3_result.png';
+import tweed_source1_kodim15 from '/img/instruments/videomancer/tweed/tweed_source1_kodim15.png';
+import tweed_source2_kodim03 from '/img/instruments/videomancer/tweed/tweed_source2_kodim03.png';
+import tweed_source3_kodim13_bw from '/img/instruments/videomancer/tweed/tweed_source3_kodim13_bw.png';
 
 # Tweed
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={tweed_hero} alt="Tweed hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_hero },
+    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_hero },
+    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_hero },
+  ]}
+/>
 *Tweed applying herringbone weave pattern with color fleck scattering to simulate traditional woven fabric texture.*
-<img src={tweed_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tweed applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from basic herringbone geometry through color palette e
 
 ### Exercise 1: Herringbone Geometry
 
-<img src={tweed_exercise1_result} alt="Herringbone Geometry result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise1_result },
+    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise1_result },
+    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise1_result },
+  ]}
+/>
 *Herringbone Geometry — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with moderate brightness variation and recognizable subjects.
 
@@ -227,7 +240,13 @@ These exercises progress from basic herringbone geometry through color palette e
 
 ### Exercise 2: Color Palettes and Tinting
 
-<img src={tweed_exercise2_result} alt="Color Palettes and Tinting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise2_result },
+    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise2_result },
+    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise2_result },
+  ]}
+/>
 *Color Palettes and Tinting — simulated result across source images.*
 **Source**: Footage with varied color content — nature scenes, graphics, or multi-colored subjects.
 
@@ -246,7 +265,13 @@ These exercises progress from basic herringbone geometry through color palette e
 
 ### Exercise 3: Full Tweed Simulation
 
-<img src={tweed_exercise3_result} alt="Full Tweed Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise3_result },
+    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise3_result },
+    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise3_result },
+  ]}
+/>
 *Full Tweed Simulation — simulated result across source images.*
 **Source**: Footage with recognizable content — the fleck effect is most visible against identifiable subjects where scattered color spots contrast with the underlying image.
 

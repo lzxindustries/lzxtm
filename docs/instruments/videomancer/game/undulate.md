@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 298
+sidebar_position: 299
 slug: /instruments/videomancer/undulate
 title: "Undulate"
 image: /img/instruments/videomancer/undulate/undulate_hero.png
 description: "The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could reprogram video registers at the start of every scanline without CPU intervention."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import undulate_hero from '/img/instruments/videomancer/undulate/undulate_hero.png';
-import undulate_before_after from '/img/instruments/videomancer/undulate/undulate_before_after.png';
 import undulate_control_panel from '/img/instruments/videomancer/undulate/undulate_control_panel.png';
 import undulate_exercise1_result from '/img/instruments/videomancer/undulate/undulate_exercise1_result.png';
 import undulate_exercise2_result from '/img/instruments/videomancer/undulate/undulate_exercise2_result.png';
 import undulate_exercise3_result from '/img/instruments/videomancer/undulate/undulate_exercise3_result.png';
+import undulate_source1_kodim15 from '/img/instruments/videomancer/undulate/undulate_source1_kodim15.png';
+import undulate_source2_kodim03 from '/img/instruments/videomancer/undulate/undulate_source2_kodim03.png';
+import undulate_source3_kodim15_bw from '/img/instruments/videomancer/undulate/undulate_source3_kodim15_bw.png';
 
 # Undulate
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={undulate_hero} alt="Undulate hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: undulate_source1_kodim15, after: undulate_hero },
+    { label: "Kodim03", before: undulate_source2_kodim03, after: undulate_hero },
+    { label: "Kodim15 B&W", before: undulate_source3_kodim15_bw, after: undulate_hero },
+  ]}
+/>
 *Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, colour-shifting dreamscape.*
-<img src={undulate_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Undulate applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 ### Exercise 1: Brightness Bands
 
-<img src={undulate_exercise1_result} alt="Brightness Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: undulate_source1_kodim15, after: undulate_exercise1_result },
+    { label: "Kodim03", before: undulate_source2_kodim03, after: undulate_exercise1_result },
+    { label: "Kodim15 B&W", before: undulate_source3_kodim15_bw, after: undulate_exercise1_result },
+  ]}
+/>
 *Brightness Bands — simulated result across source images.*
 **Source**: A still image or camera feed with moderate contrast — a face, a landscape, or any subject with detail across the brightness range.
 
@@ -230,7 +243,13 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 ### Exercise 2: Rainbow Striping
 
-<img src={undulate_exercise2_result} alt="Rainbow Striping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: undulate_source1_kodim15, after: undulate_exercise2_result },
+    { label: "Kodim03", before: undulate_source2_kodim03, after: undulate_exercise2_result },
+    { label: "Kodim15 B&W", before: undulate_source3_kodim15_bw, after: undulate_exercise2_result },
+  ]}
+/>
 *Rainbow Striping — simulated result across source images.*
 **Source**: A monochrome or desaturated scene — black-and-white photography, a grey wall, or a dim room.
 
@@ -248,7 +267,13 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 ### Exercise 3: Full Undulation
 
-<img src={undulate_exercise3_result} alt="Full Undulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: undulate_source1_kodim15, after: undulate_exercise3_result },
+    { label: "Kodim03", before: undulate_source2_kodim03, after: undulate_exercise3_result },
+    { label: "Kodim15 B&W", before: undulate_source3_kodim15_bw, after: undulate_exercise3_result },
+  ]}
+/>
 *Full Undulation — simulated result across source images.*
 **Source**: A high-detail scene with strong vertical lines — architecture, text, barcodes, or patterns with geometric regularity.
 

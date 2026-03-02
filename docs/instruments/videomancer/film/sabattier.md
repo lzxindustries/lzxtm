@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 240
+sidebar_position: 241
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
 image: /img/instruments/videomancer/sabattier/sabattier_hero.png
 description: "In the traditional photographic darkroom, the Sabattier effect occurs when a partially developed print is briefly re-exposed to light."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sabattier_hero from '/img/instruments/videomancer/sabattier/sabattier_hero.png';
-import sabattier_before_after from '/img/instruments/videomancer/sabattier/sabattier_before_after.png';
 import sabattier_control_panel from '/img/instruments/videomancer/sabattier/sabattier_control_panel.png';
 import sabattier_exercise1_result from '/img/instruments/videomancer/sabattier/sabattier_exercise1_result.png';
 import sabattier_exercise2_result from '/img/instruments/videomancer/sabattier/sabattier_exercise2_result.png';
 import sabattier_exercise3_result from '/img/instruments/videomancer/sabattier/sabattier_exercise3_result.png';
+import sabattier_source1_kodim03 from '/img/instruments/videomancer/sabattier/sabattier_source1_kodim03.png';
+import sabattier_source2_kodim13 from '/img/instruments/videomancer/sabattier/sabattier_source2_kodim13.png';
+import sabattier_source3_kodim13_bw from '/img/instruments/videomancer/sabattier/sabattier_source3_kodim13_bw.png';
 
 # Sabattier
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sabattier_hero} alt="Sabattier hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_hero },
+    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_hero },
+    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_hero },
+  ]}
+/>
 *Sabattier applying pseudo-solarization with Mackie line edge glow and metallic tinting to create surreal darkroom-inspired tonal reversals.*
-<img src={sabattier_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sabattier applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 ### Exercise 1: Basic Solarization
 
-<img src={sabattier_exercise1_result} alt="Basic Solarization result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise1_result },
+    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise1_result },
+    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise1_result },
+  ]}
+/>
 *Basic Solarization — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a wide tonal range — faces, landscapes, or test charts with smooth gradients.
 
@@ -224,7 +237,13 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 ### Exercise 2: Metallic Portraiture
 
-<img src={sabattier_exercise2_result} alt="Metallic Portraiture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise2_result },
+    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise2_result },
+    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise2_result },
+  ]}
+/>
 *Metallic Portraiture — simulated result across source images.*
 **Source**: Close-up portrait footage or footage with strong facial features and varied skin tones.
 
@@ -242,7 +261,13 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 ### Exercise 3: Equidensity Contour Map
 
-<img src={sabattier_exercise3_result} alt="Equidensity Contour Map result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise3_result },
+    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise3_result },
+    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise3_result },
+  ]}
+/>
 *Equidensity Contour Map — simulated result across source images.*
 **Source**: Footage with broad smooth gradients — skies, studio lighting sweeps, or gradient test patterns.
 

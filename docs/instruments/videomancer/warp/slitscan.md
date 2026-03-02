@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 259
+sidebar_position: 260
 slug: /instruments/videomancer/slitscan
 title: "Slit Scan"
 image: /img/instruments/videomancer/slitscan/slitscan_hero.png
 description: "Slit Scan captures a narrow vertical strip of the input image each frame and writes it into a scrolling BRAM framebuffer."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import slitscan_hero from '/img/instruments/videomancer/slitscan/slitscan_hero.png';
-import slitscan_before_after from '/img/instruments/videomancer/slitscan/slitscan_before_after.png';
 import slitscan_control_panel from '/img/instruments/videomancer/slitscan/slitscan_control_panel.png';
 import slitscan_exercise1_result from '/img/instruments/videomancer/slitscan/slitscan_exercise1_result.png';
 import slitscan_exercise2_result from '/img/instruments/videomancer/slitscan/slitscan_exercise2_result.png';
 import slitscan_exercise3_result from '/img/instruments/videomancer/slitscan/slitscan_exercise3_result.png';
+import slitscan_source1_kodim02 from '/img/instruments/videomancer/slitscan/slitscan_source1_kodim02.png';
+import slitscan_source2_kodim07 from '/img/instruments/videomancer/slitscan/slitscan_source2_kodim07.png';
+import slitscan_source3_kodim01_bw from '/img/instruments/videomancer/slitscan/slitscan_source3_kodim01_bw.png';
 
 # Slit Scan
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={slitscan_hero} alt="Slit Scan hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_hero },
+    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_hero },
+    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_hero },
+  ]}
+/>
 *Time made visible — each column captures a different moment, scrolling a slit of live video into an ever-shifting streak panorama.*
-<img src={slitscan_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Slit Scan applied.*
 
 ---
 
@@ -187,7 +194,13 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 ### Exercise 1: Basic Time Streak
 
-<img src={slitscan_exercise1_result} alt="Basic Time Streak result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise1_result },
+    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise1_result },
+    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise1_result },
+  ]}
+/>
 *Basic Time Streak — simulated result across source images.*
 **Source**: A live camera feed with a slowly moving subject — a walking person, swaying plant, or rotating object works well.
 
@@ -205,7 +218,13 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 ### Exercise 2: Hue-Tinted Temporal Ribbons
 
-<img src={slitscan_exercise2_result} alt="Hue-Tinted Temporal Ribbons result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise2_result },
+    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise2_result },
+    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise2_result },
+  ]}
+/>
 *Hue-Tinted Temporal Ribbons — simulated result across source images.*
 **Source**: A source with varied brightness — a lit candle, neon sign, or high-contrast scene with both bright and dark areas.
 
@@ -224,7 +243,13 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 ### Exercise 3: Frozen Panoramic Snapshot
 
-<img src={slitscan_exercise3_result} alt="Frozen Panoramic Snapshot result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise3_result },
+    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise3_result },
+    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise3_result },
+  ]}
+/>
 *Frozen Panoramic Snapshot — simulated result across source images.*
 **Source**: A slowly rotating scene or panning camera — a turntable with an object or a long slow pan across a landscape.
 

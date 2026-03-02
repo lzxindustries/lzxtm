@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 206
+sidebar_position: 207
 slug: /instruments/videomancer/patina
 title: "Patina"
 image: /img/instruments/videomancer/patina/patina_hero.png
 description: "Copper starts bright and warm."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import patina_hero from '/img/instruments/videomancer/patina/patina_hero.png';
-import patina_before_after from '/img/instruments/videomancer/patina/patina_before_after.png';
 import patina_control_panel from '/img/instruments/videomancer/patina/patina_control_panel.png';
 import patina_exercise1_result from '/img/instruments/videomancer/patina/patina_exercise1_result.png';
 import patina_exercise2_result from '/img/instruments/videomancer/patina/patina_exercise2_result.png';
 import patina_exercise3_result from '/img/instruments/videomancer/patina/patina_exercise3_result.png';
+import patina_source1_kodim15 from '/img/instruments/videomancer/patina/patina_source1_kodim15.png';
+import patina_source2_kodim03 from '/img/instruments/videomancer/patina/patina_source2_kodim03.png';
+import patina_source3_kodim13_bw from '/img/instruments/videomancer/patina/patina_source3_kodim13_bw.png';
 
 # Patina
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={patina_hero} alt="Patina hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: patina_source1_kodim15, after: patina_hero },
+    { label: "Kodim03", before: patina_source2_kodim03, after: patina_hero },
+    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_hero },
+  ]}
+/>
 *Patina applying LFSR-seeded oxidation, copper tinting, and verdigris overlay to simulate the progressive aging of metal surfaces.*
-<img src={patina_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Patina applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 ### Exercise 1: Warm Copper Grade
 
-<img src={patina_exercise1_result} alt="Warm Copper Grade result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise1_result },
+    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise1_result },
+    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise1_result },
+  ]}
+/>
 *Warm Copper Grade — simulated result across source images.*
 **Source**: Portrait or still-life footage with skin tones and neutral backgrounds.
 
@@ -231,7 +244,13 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 ### Exercise 2: Verdigris Texture
 
-<img src={patina_exercise2_result} alt="Verdigris Texture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise2_result },
+    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise2_result },
+    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise2_result },
+  ]}
+/>
 *Verdigris Texture — simulated result across source images.*
 **Source**: Architectural footage — building facades, metalwork, or stone surfaces.
 
@@ -250,7 +269,13 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 ### Exercise 3: Animated Oxidation
 
-<img src={patina_exercise3_result} alt="Animated Oxidation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise3_result },
+    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise3_result },
+    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise3_result },
+  ]}
+/>
 *Animated Oxidation — simulated result across source images.*
 **Source**: Any video with slow or moderate motion — landscapes, time-lapse, or abstract patterns.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 286
+sidebar_position: 287
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
 image: /img/instruments/videomancer/terracotta/terracotta_hero.png
 description: "The Terracotta Army of Emperor Qin Shi Huang contains over eight thousand life-sized warriors, no two of them identical."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import terracotta_hero from '/img/instruments/videomancer/terracotta/terracotta_hero.png';
-import terracotta_before_after from '/img/instruments/videomancer/terracotta/terracotta_before_after.png';
 import terracotta_control_panel from '/img/instruments/videomancer/terracotta/terracotta_control_panel.png';
 import terracotta_exercise1_result from '/img/instruments/videomancer/terracotta/terracotta_exercise1_result.png';
 import terracotta_exercise2_result from '/img/instruments/videomancer/terracotta/terracotta_exercise2_result.png';
 import terracotta_exercise3_result from '/img/instruments/videomancer/terracotta/terracotta_exercise3_result.png';
+import terracotta_source1_kodim03 from '/img/instruments/videomancer/terracotta/terracotta_source1_kodim03.png';
+import terracotta_source2_kodim13 from '/img/instruments/videomancer/terracotta/terracotta_source2_kodim13.png';
+import terracotta_source3_kodim13_bw from '/img/instruments/videomancer/terracotta/terracotta_source3_kodim13_bw.png';
 
 # Terracotta
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={terracotta_hero} alt="Terracotta hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_hero },
+    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_hero },
+    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_hero },
+  ]}
+/>
 *Terracotta replicating a video frame into a grid of individually varied tiles, each bearing a unique luminance and hue signature derived from XOR hashing.*
-<img src={terracotta_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Terracotta applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 ### Exercise 1: Basic Grid Tiling
 
-<img src={terracotta_exercise1_result} alt="Basic Grid Tiling result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise1_result },
+    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise1_result },
+    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise1_result },
+  ]}
+/>
 *Basic Grid Tiling — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and good contrast.
 
@@ -222,7 +235,13 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 ### Exercise 2: Terracotta Variation
 
-<img src={terracotta_exercise2_result} alt="Terracotta Variation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise2_result },
+    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise2_result },
+    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise2_result },
+  ]}
+/>
 *Terracotta Variation — simulated result across source images.*
 **Source**: Footage with varied tonal content — faces, landscapes, or architectural subjects.
 
@@ -240,7 +259,13 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 ### Exercise 3: Architectural Relief
 
-<img src={terracotta_exercise3_result} alt="Architectural Relief result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise3_result },
+    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise3_result },
+    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise3_result },
+  ]}
+/>
 *Architectural Relief — simulated result across source images.*
 **Source**: A static camera shot or slow-moving footage — architectural details, textures, or still life.
 

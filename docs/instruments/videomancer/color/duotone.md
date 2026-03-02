@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/duotone/duotone_hero.png
 description: "Most color video processors adjust the colors that already exist in the source signal."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import duotone_hero from '/img/instruments/videomancer/duotone/duotone_hero.png';
-import duotone_before_after from '/img/instruments/videomancer/duotone/duotone_before_after.png';
 import duotone_control_panel from '/img/instruments/videomancer/duotone/duotone_control_panel.png';
 import duotone_exercise1_result from '/img/instruments/videomancer/duotone/duotone_exercise1_result.png';
 import duotone_exercise2_result from '/img/instruments/videomancer/duotone/duotone_exercise2_result.png';
 import duotone_exercise3_result from '/img/instruments/videomancer/duotone/duotone_exercise3_result.png';
+import duotone_source1_kodim03 from '/img/instruments/videomancer/duotone/duotone_source1_kodim03.png';
+import duotone_source2_kodim15 from '/img/instruments/videomancer/duotone/duotone_source2_kodim15.png';
+import duotone_source3_peppers_512 from '/img/instruments/videomancer/duotone/duotone_source3_peppers_512.png';
 
 # Duotone
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={duotone_hero} alt="Duotone hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_hero },
+    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_hero },
+    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_hero },
+  ]}
+/>
 *Duotone applying luma-driven dual-hue colorization to remap source brightness into cool shadow and warm highlight tones with adjustable threshold and blend.*
-<img src={duotone_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Duotone applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 ### Exercise 1: Classic Split Tone
 
-<img src={duotone_exercise1_result} alt="Classic Split Tone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise1_result },
+    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise1_result },
+    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise1_result },
+  ]}
+/>
 *Classic Split Tone — simulated result across source images.*
 **Source**: A portrait or landscape with a wide tonal range — skin tones, sky, and shadow detail.
 
@@ -220,7 +233,13 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 ### Exercise 2: Hard-Edge Two-Color Poster
 
-<img src={duotone_exercise2_result} alt="Hard-Edge Two-Color Poster result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise2_result },
+    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise2_result },
+    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise2_result },
+  ]}
+/>
 *Hard-Edge Two-Color Poster — simulated result across source images.*
 **Source**: High-contrast footage — strong backlit silhouettes or graphic shapes against a bright background.
 
@@ -239,7 +258,13 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 ### Exercise 3: Inverted Duotone with Partial Mix
 
-<img src={duotone_exercise3_result} alt="Inverted Duotone with Partial Mix result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise3_result },
+    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise3_result },
+    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise3_result },
+  ]}
+/>
 *Inverted Duotone with Partial Mix — simulated result across source images.*
 **Source**: Any footage with moderate contrast and visible color detail.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/attract/attract_hero.png
 description: "Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — the \"attract mode\" phenomenon from decades-old arcade cabinets where demo loops would permanently etch game logos and score readouts into the phosphor screen."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import attract_hero from '/img/instruments/videomancer/attract/attract_hero.png';
-import attract_before_after from '/img/instruments/videomancer/attract/attract_before_after.png';
 import attract_control_panel from '/img/instruments/videomancer/attract/attract_control_panel.png';
 import attract_exercise1_result from '/img/instruments/videomancer/attract/attract_exercise1_result.png';
 import attract_exercise2_result from '/img/instruments/videomancer/attract/attract_exercise2_result.png';
 import attract_exercise3_result from '/img/instruments/videomancer/attract/attract_exercise3_result.png';
+import attract_source1_kodim15 from '/img/instruments/videomancer/attract/attract_source1_kodim15.png';
+import attract_source2_kodim01 from '/img/instruments/videomancer/attract/attract_source2_kodim01.png';
+import attract_source3_kodim01_bw from '/img/instruments/videomancer/attract/attract_source3_kodim01_bw.png';
 
 # Attract
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={attract_hero} alt="Attract hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: attract_source1_kodim15, after: attract_hero },
+    { label: "Kodim01", before: attract_source2_kodim01, after: attract_hero },
+    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_hero },
+  ]}
+/>
 *Attract rendering a static image as a degraded CRT display — phosphor burn-in ghosting doubles the subject, radial vignette darkens the edges, convergence error shifts the chroma channels horizontally, and alternating scanline dimming adds horizontal structure.*
-<img src={attract_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Attract applied.*
 
 ---
 
@@ -201,7 +208,13 @@ These exercises progress from individual CRT aging effects through combined degr
 
 ### Exercise 1: Vignette and Scanlines
 
-<img src={attract_exercise1_result} alt="Vignette and Scanlines result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise1_result },
+    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise1_result },
+    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise1_result },
+  ]}
+/>
 *Vignette and Scanlines — simulated result across source images.*
 **Source**: Any well-exposed image — uniform brightness distribution is ideal for vignette observation.
 
@@ -220,7 +233,13 @@ These exercises progress from individual CRT aging effects through combined degr
 
 ### Exercise 2: Convergence Error and Purity Drift
 
-<img src={attract_exercise2_result} alt="Convergence Error and Purity Drift result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise2_result },
+    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise2_result },
+    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise2_result },
+  ]}
+/>
 *Convergence Error and Purity Drift — simulated result across source images.*
 **Source**: Image with high-contrast vertical edges and varied colours — architecture, text overlays, or graphic patterns.
 
@@ -240,7 +259,13 @@ These exercises progress from individual CRT aging effects through combined degr
 
 ### Exercise 3: Full Attract Mode Simulation
 
-<img src={attract_exercise3_result} alt="Full Attract Mode Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise3_result },
+    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise3_result },
+    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise3_result },
+  ]}
+/>
 *Full Attract Mode Simulation — simulated result across source images.*
 **Source**: Static image with high-contrast elements — game screenshot, text overlay, or graphic with bright logos on dark background.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 247
+sidebar_position: 248
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero.png
 description: "Before digital oscilloscopes and computer displays, scientific instruments recorded data by dragging an inked pen across a moving strip of paper."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import seismograph_hero from '/img/instruments/videomancer/seismograph/seismograph_hero.png';
-import seismograph_before_after from '/img/instruments/videomancer/seismograph/seismograph_before_after.png';
 import seismograph_control_panel from '/img/instruments/videomancer/seismograph/seismograph_control_panel.png';
 import seismograph_exercise1_result from '/img/instruments/videomancer/seismograph/seismograph_exercise1_result.png';
 import seismograph_exercise2_result from '/img/instruments/videomancer/seismograph/seismograph_exercise2_result.png';
 import seismograph_exercise3_result from '/img/instruments/videomancer/seismograph/seismograph_exercise3_result.png';
+import seismograph_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source1_grayscale_ramp_h_1920x1080.png';
+import seismograph_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source2_grayscale_ramp_v_1920x1080.png';
+import seismograph_source3_step_wedge_21level_512 from '/img/instruments/videomancer/seismograph/seismograph_source3_step_wedge_21level_512.png';
 
 # Seismograph
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={seismograph_hero} alt="Seismograph hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_hero },
+    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_hero },
+    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_hero },
+  ]}
+/>
 *Seismograph rendering live video luminance as multi-channel pen traces on a scrolling chart recorder with persistence and fill-under.*
-<img src={seismograph_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Seismograph applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 ### Exercise 1: Two-Channel Waveform
 
-<img src={seismograph_exercise1_result} alt="Two-Channel Waveform result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise1_result },
+    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise1_result },
+    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise1_result },
+  ]}
+/>
 *Two-Channel Waveform — simulated result across source images.*
 **Source**: A high-contrast video feed with distinct bright and dark regions — black-and-white patterns, silhouettes, or text on a bright background.
 
@@ -230,7 +243,13 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 ### Exercise 2: Multi-Channel Area Chart
 
-<img src={seismograph_exercise2_result} alt="Multi-Channel Area Chart result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise2_result },
+    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise2_result },
+    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise2_result },
+  ]}
+/>
 *Multi-Channel Area Chart — simulated result across source images.*
 **Source**: Slowly moving footage with gradual luminance variations — landscapes, cloud formations, or abstract gradients.
 
@@ -250,7 +269,13 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 ### Exercise 3: Oscilloscope Display
 
-<img src={seismograph_exercise3_result} alt="Oscilloscope Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise3_result },
+    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise3_result },
+    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise3_result },
+  ]}
+/>
 *Oscilloscope Display — simulated result across source images.*
 **Source**: Any active video input — waveform generators, live camera, or recorded footage with motion.
 

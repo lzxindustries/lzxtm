@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chrysalis/chrysalis_hero.png
 description: "A chrysalis is the transitional shell between caterpillar and butterfly — ordinary tissue reorganised into something with entirely new symmetry."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chrysalis_hero from '/img/instruments/videomancer/chrysalis/chrysalis_hero.png';
-import chrysalis_before_after from '/img/instruments/videomancer/chrysalis/chrysalis_before_after.png';
 import chrysalis_control_panel from '/img/instruments/videomancer/chrysalis/chrysalis_control_panel.png';
 import chrysalis_exercise1_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise1_result.png';
 import chrysalis_exercise2_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise2_result.png';
 import chrysalis_exercise3_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise3_result.png';
+import chrysalis_source1_kodim01 from '/img/instruments/videomancer/chrysalis/chrysalis_source1_kodim01.png';
+import chrysalis_source2_kodim02 from '/img/instruments/videomancer/chrysalis/chrysalis_source2_kodim02.png';
+import chrysalis_source3_kodim01_bw from '/img/instruments/videomancer/chrysalis/chrysalis_source3_kodim01_bw.png';
 
 # Chrysalis
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chrysalis_hero} alt="Chrysalis hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_hero },
+    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_hero },
+    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_hero },
+  ]}
+/>
 *Chrysalis splitting a portrait into radial kaleidoscope segments, each mirrored fold reflecting the source into symmetrical geometry that spirals diagonally across the frame.*
-<img src={chrysalis_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chrysalis applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 ### Exercise 1: Bilateral Mirror
 
-<img src={chrysalis_exercise1_result} alt="Bilateral Mirror result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise1_result },
+    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise1_result },
+    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise1_result },
+  ]}
+/>
 *Bilateral Mirror — simulated result across source images.*
 **Source**: A portrait or face — the bilateral symmetry of human features makes the mirror effect immediately legible.
 
@@ -226,7 +239,13 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 ### Exercise 2: Diagonal Slant and Spiral
 
-<img src={chrysalis_exercise2_result} alt="Diagonal Slant and Spiral result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise2_result },
+    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise2_result },
+    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise2_result },
+  ]}
+/>
 *Diagonal Slant and Spiral — simulated result across source images.*
 **Source**: Footage with strong horizontal or vertical lines — architecture, fences, window blinds.
 
@@ -245,7 +264,13 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 ### Exercise 3: Animated Mandala
 
-<img src={chrysalis_exercise3_result} alt="Animated Mandala result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise3_result },
+    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise3_result },
+    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise3_result },
+  ]}
+/>
 *Animated Mandala — simulated result across source images.*
 **Source**: Colourful, textured footage — nature scenes, fabrics, or abstract video feedback.
 

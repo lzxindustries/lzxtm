@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/antic/antic_hero.png
 description: "Antic recreates the distinctive display modes of the Atari 8-bit computer's GTIA (George's Television Interface Adapter) graphics chip."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import antic_hero from '/img/instruments/videomancer/antic/antic_hero.png';
-import antic_before_after from '/img/instruments/videomancer/antic/antic_before_after.png';
 import antic_control_panel from '/img/instruments/videomancer/antic/antic_control_panel.png';
 import antic_exercise1_result from '/img/instruments/videomancer/antic/antic_exercise1_result.png';
 import antic_exercise2_result from '/img/instruments/videomancer/antic/antic_exercise2_result.png';
 import antic_exercise3_result from '/img/instruments/videomancer/antic/antic_exercise3_result.png';
+import antic_source1_kodim15 from '/img/instruments/videomancer/antic/antic_source1_kodim15.png';
+import antic_source2_kodim03 from '/img/instruments/videomancer/antic/antic_source2_kodim03.png';
+import antic_source3_kodim15_bw from '/img/instruments/videomancer/antic/antic_source3_kodim15_bw.png';
 
 # Antic
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={antic_hero} alt="Antic hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: antic_source1_kodim15, after: antic_hero },
+    { label: "Kodim03", before: antic_source2_kodim03, after: antic_hero },
+    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_hero },
+  ]}
+/>
 *Antic rendering a DLI rainbow gradient in Mode 9 over a portrait source — the per-scanline hue cycling produces the signature Atari raster-bar effect with 16-level luminance quantization.*
-<img src={antic_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Antic applied.*
 
 ---
 
@@ -220,7 +227,13 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 ### Exercise 1: Mode 9 Monochrome Tinting
 
-<img src={antic_exercise1_result} alt="Mode 9 Monochrome Tinting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise1_result },
+    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise1_result },
+    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise1_result },
+  ]}
+/>
 *Mode 9 Monochrome Tinting — simulated result across source images.*
 **Source**: Camera feed or recorded footage with varied brightness — portraits work well to show luminance quantization.
 
@@ -240,7 +253,13 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 ### Exercise 2: DLI Rainbow Gradient
 
-<img src={antic_exercise2_result} alt="DLI Rainbow Gradient result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise2_result },
+    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise2_result },
+    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise2_result },
+  ]}
+/>
 *DLI Rainbow Gradient — simulated result across source images.*
 **Source**: Any video source — the DLI rainbow is most visible on dark or moderately exposed content.
 
@@ -260,7 +279,13 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 ### Exercise 3: Mode 10 Illustrated Palette with Artifact Fringe
 
-<img src={antic_exercise3_result} alt="Mode 10 Illustrated Palette with Artifact Fringe result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise3_result },
+    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise3_result },
+    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise3_result },
+  ]}
+/>
 *Mode 10 Illustrated Palette with Artifact Fringe — simulated result across source images.*
 **Source**: Camera feed or recorded footage with saturated colours — subjects wearing colourful clothing or outdoor scenes with sky and vegetation.
 

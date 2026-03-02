@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 307
+sidebar_position: 308
 slug: /instruments/videomancer/voido
 title: "Voido"
 image: /img/instruments/videomancer/voido/voido_hero.png
 description: "Early television chromakey — known at the BBC as Colour Separation Overlay (CSO) — was a crude but effective technique."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import voido_hero from '/img/instruments/videomancer/voido/voido_hero.png';
-import voido_before_after from '/img/instruments/videomancer/voido/voido_before_after.png';
 import voido_control_panel from '/img/instruments/videomancer/voido/voido_control_panel.png';
 import voido_exercise1_result from '/img/instruments/videomancer/voido/voido_exercise1_result.png';
 import voido_exercise2_result from '/img/instruments/videomancer/voido/voido_exercise2_result.png';
 import voido_exercise3_result from '/img/instruments/videomancer/voido/voido_exercise3_result.png';
+import voido_source1_kodim15 from '/img/instruments/videomancer/voido/voido_source1_kodim15.png';
+import voido_source2_kodim15_bw from '/img/instruments/videomancer/voido/voido_source2_kodim15_bw.png';
+import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_source3_male_1024.png';
 
 # Voido
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={voido_hero} alt="Voido hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: voido_source1_kodim15, after: voido_hero },
+    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_hero },
+    { label: "Male", before: voido_source3_male_1024, after: voido_hero },
+  ]}
+/>
 *Voido performing BBC-style chromakey separation with deliberate edge artifacts, spill suppression, and patterned fill behind keyed regions.*
-<img src={voido_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Voido applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 ### Exercise 1: Clean Green Screen Key
 
-<img src={voido_exercise1_result} alt="Clean Green Screen Key result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise1_result },
+    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise1_result },
+    { label: "Male", before: voido_source3_male_1024, after: voido_exercise1_result },
+  ]}
+/>
 *Clean Green Screen Key — simulated result across source images.*
 **Source**: Video of a subject in front of a green backdrop, or any footage with a large area of saturated green.
 
@@ -224,7 +237,13 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 ### Exercise 2: Vintage BBC CSO Artifacts
 
-<img src={voido_exercise2_result} alt="Vintage BBC CSO Artifacts result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise2_result },
+    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise2_result },
+    { label: "Male", before: voido_source3_male_1024, after: voido_exercise2_result },
+  ]}
+/>
 *Vintage BBC CSO Artifacts — simulated result across source images.*
 **Source**: Same green-screen footage as Exercise 1, or any keyed material.
 
@@ -243,7 +262,13 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 ### Exercise 3: Creative Color Extraction
 
-<img src={voido_exercise3_result} alt="Creative Color Extraction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise3_result },
+    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise3_result },
+    { label: "Male", before: voido_source3_male_1024, after: voido_exercise3_result },
+  ]}
+/>
 *Creative Color Extraction — simulated result across source images.*
 **Source**: Any colorful footage — street scenes, nature, abstract patterns — without a dedicated green screen.
 

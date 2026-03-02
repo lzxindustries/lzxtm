@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/brushwork/brushwork_hero.png
 description: "In 1990, NewTek shipped the NewTek — an Amiga-based video effects system that introduced a generation of video producers to real-time digital transitions."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import brushwork_hero from '/img/instruments/videomancer/brushwork/brushwork_hero.png';
-import brushwork_before_after from '/img/instruments/videomancer/brushwork/brushwork_before_after.png';
 import brushwork_control_panel from '/img/instruments/videomancer/brushwork/brushwork_control_panel.png';
 import brushwork_exercise1_result from '/img/instruments/videomancer/brushwork/brushwork_exercise1_result.png';
 import brushwork_exercise2_result from '/img/instruments/videomancer/brushwork/brushwork_exercise2_result.png';
 import brushwork_exercise3_result from '/img/instruments/videomancer/brushwork/brushwork_exercise3_result.png';
+import brushwork_source1_kodim15 from '/img/instruments/videomancer/brushwork/brushwork_source1_kodim15.png';
+import brushwork_source2_kodim03 from '/img/instruments/videomancer/brushwork/brushwork_source2_kodim03.png';
+import brushwork_source3_kodim13_bw from '/img/instruments/videomancer/brushwork/brushwork_source3_kodim13_bw.png';
 
 # Brushwork
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={brushwork_hero} alt="Brushwork hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_hero },
+    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_hero },
+    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_hero },
+  ]}
+/>
 *Brushwork applying a bristle-textured paint sweep revealing a source image through a warm-toned fill color.*
-<img src={brushwork_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Brushwork applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 ### Exercise 1: Classic Bristle Brush Stroke
 
-<img src={brushwork_exercise1_result} alt="Classic Bristle Brush Stroke result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise1_result },
+    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise1_result },
+    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise1_result },
+  ]}
+/>
 *Classic Bristle Brush Stroke — simulated result across source images.*
 **Source**: Feed a high-contrast image (Kodak #4 — the portrait provides clear definition of the brush boundary against facial features).
 
@@ -230,7 +243,13 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 ### Exercise 2: Palette Knife Video Reveal
 
-<img src={brushwork_exercise2_result} alt="Palette Knife Video Reveal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise2_result },
+    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise2_result },
+    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise2_result },
+  ]}
+/>
 *Palette Knife Video Reveal — simulated result across source images.*
 **Source**: Feed a colorful, detailed image (Mandrill — the dense facial texture and vivid colors make the video reveal boundary clearly visible).
 
@@ -255,7 +274,13 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 ### Exercise 3: Vertical Sponge Wash with Soft Edges
 
-<img src={brushwork_exercise3_result} alt="Vertical Sponge Wash with Soft Edges result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise3_result },
+    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise3_result },
+    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise3_result },
+  ]}
+/>
 *Vertical Sponge Wash with Soft Edges — simulated result across source images.*
 **Source**: Feed a scene with varied horizontal content (Kodak #23 — the outdoor scene provides horizontal variation that interacts interestingly with vertical sweep).
 

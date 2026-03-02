@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 215
+sidebar_position: 216
 slug: /instruments/videomancer/phyllo
 title: "Phyllo"
 image: /img/instruments/videomancer/phyllo/phyllo_hero.png

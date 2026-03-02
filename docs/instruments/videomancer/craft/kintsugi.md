@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/kintsugi/kintsugi_hero.png
 description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hiding them."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import kintsugi_hero from '/img/instruments/videomancer/kintsugi/kintsugi_hero.png';
-import kintsugi_before_after from '/img/instruments/videomancer/kintsugi/kintsugi_before_after.png';
 import kintsugi_control_panel from '/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png';
 import kintsugi_exercise1_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise1_result.png';
 import kintsugi_exercise2_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise2_result.png';
 import kintsugi_exercise3_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise3_result.png';
+import kintsugi_source1_kodim03 from '/img/instruments/videomancer/kintsugi/kintsugi_source1_kodim03.png';
+import kintsugi_source2_kodim13 from '/img/instruments/videomancer/kintsugi/kintsugi_source2_kodim13.png';
+import kintsugi_source3_kodim13_bw from '/img/instruments/videomancer/kintsugi/kintsugi_source3_kodim13_bw.png';
 
 # Kintsugi
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={kintsugi_hero} alt="Kintsugi hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_hero },
+    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_hero },
+    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_hero },
+  ]}
+/>
 *Kintsugi tracing luminance edges in gold lacquer lines across a video source, transforming discontinuities into radiant metallic seams.*
-<img src={kintsugi_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Kintsugi applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 ### Exercise 1: Thin Gold Traces
 
-<img src={kintsugi_exercise1_result} alt="Thin Gold Traces result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise1_result },
+    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise1_result },
+    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise1_result },
+  ]}
+/>
 *Thin Gold Traces — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subjects and moderate contrast — faces, architecture, or natural scenes with defined contours.
 
@@ -230,7 +243,13 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 ### Exercise 2: Wide Metallic Bands
 
-<img src={kintsugi_exercise2_result} alt="Wide Metallic Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise2_result },
+    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise2_result },
+    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise2_result },
+  ]}
+/>
 *Wide Metallic Bands — simulated result across source images.*
 **Source**: Footage with strong tonal regions — high-contrast scenes, silhouettes, or graphic patterns.
 
@@ -248,7 +267,13 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 ### Exercise 3: Golden Web Overlay
 
-<img src={kintsugi_exercise3_result} alt="Golden Web Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise3_result },
+    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise3_result },
+    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise3_result },
+  ]}
+/>
 *Golden Web Overlay — simulated result across source images.*
 **Source**: Any footage, especially material with varied textures and tonal ranges.
 

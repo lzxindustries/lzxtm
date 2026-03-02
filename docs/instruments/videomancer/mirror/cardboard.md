@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cardboard/cardboard_hero.png
 description: "Before cinema, before animation, there was the paper theater — a miniature stage built from flat cardboard cutouts arranged in parallel planes."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cardboard_hero from '/img/instruments/videomancer/cardboard/cardboard_hero.png';
-import cardboard_before_after from '/img/instruments/videomancer/cardboard/cardboard_before_after.png';
 import cardboard_control_panel from '/img/instruments/videomancer/cardboard/cardboard_control_panel.png';
 import cardboard_exercise1_result from '/img/instruments/videomancer/cardboard/cardboard_exercise1_result.png';
 import cardboard_exercise2_result from '/img/instruments/videomancer/cardboard/cardboard_exercise2_result.png';
 import cardboard_exercise3_result from '/img/instruments/videomancer/cardboard/cardboard_exercise3_result.png';
+import cardboard_source1_kodim01 from '/img/instruments/videomancer/cardboard/cardboard_source1_kodim01.png';
+import cardboard_source2_kodim02 from '/img/instruments/videomancer/cardboard/cardboard_source2_kodim02.png';
+import cardboard_source3_kodim01_bw from '/img/instruments/videomancer/cardboard/cardboard_source3_kodim01_bw.png';
 
 # Cardboard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cardboard_hero} alt="Cardboard hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_hero },
+    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_hero },
+    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_hero },
+  ]}
+/>
 *Cardboard splitting a portrait into four luma-driven depth planes with staggered horizontal parallax, revealing paper theater cutout layers in a single video frame.*
-<img src={cardboard_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cardboard applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from basic layer separation to full paper theater paral
 
 ### Exercise 1: Layer Separation
 
-<img src={cardboard_exercise1_result} alt="Layer Separation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise1_result },
+    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise1_result },
+    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise1_result },
+  ]}
+/>
 *Layer Separation — simulated result across source images.*
 **Source**: A portrait or landscape with a clear foreground subject and a darker background — strong tonal separation between near and far elements.
 
@@ -224,7 +237,13 @@ These exercises progress from basic layer separation to full paper theater paral
 
 ### Exercise 2: Parallax Depth
 
-<img src={cardboard_exercise2_result} alt="Parallax Depth result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise2_result },
+    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise2_result },
+    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise2_result },
+  ]}
+/>
 *Parallax Depth — simulated result across source images.*
 **Source**: High-contrast material with distinct bright and dark regions — a lit face against a dark background, or neon signage against a night sky.
 
@@ -243,7 +262,13 @@ These exercises progress from basic layer separation to full paper theater paral
 
 ### Exercise 3: Cardboard Diorama
 
-<img src={cardboard_exercise3_result} alt="Cardboard Diorama result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise3_result },
+    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise3_result },
+    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise3_result },
+  ]}
+/>
 *Cardboard Diorama — simulated result across source images.*
 **Source**: Any footage with a range of tonal values — landscapes, cityscapes, or abstract video synthesis patches.
 

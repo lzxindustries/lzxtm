@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chinook/chinook_hero.png
 description: "There is a luminous trembling in the late paintings of J.M.W."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chinook_hero from '/img/instruments/videomancer/chinook/chinook_hero.png';
-import chinook_before_after from '/img/instruments/videomancer/chinook/chinook_before_after.png';
 import chinook_control_panel from '/img/instruments/videomancer/chinook/chinook_control_panel.png';
 import chinook_exercise1_result from '/img/instruments/videomancer/chinook/chinook_exercise1_result.png';
 import chinook_exercise2_result from '/img/instruments/videomancer/chinook/chinook_exercise2_result.png';
 import chinook_exercise3_result from '/img/instruments/videomancer/chinook/chinook_exercise3_result.png';
+import chinook_source1_kodim02 from '/img/instruments/videomancer/chinook/chinook_source1_kodim02.png';
+import chinook_source2_kodim07 from '/img/instruments/videomancer/chinook/chinook_source2_kodim07.png';
+import chinook_source3_kodim01_bw from '/img/instruments/videomancer/chinook/chinook_source3_kodim01_bw.png';
 
 # Chinook
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chinook_hero} alt="Chinook hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_hero },
+    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_hero },
+    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_hero },
+  ]}
+/>
 *Chinook applying hash-driven thermal displacement with bottom-up gradient envelope and atmospheric haze to create Turner-esque heat shimmer.*
-<img src={chinook_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chinook applied.*
 
 ---
 
@@ -219,7 +226,13 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 ### Exercise 1: Ground-Level Heat Haze
 
-<img src={chinook_exercise1_result} alt="Ground-Level Heat Haze result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise1_result },
+    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise1_result },
+    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise1_result },
+  ]}
+/>
 *Ground-Level Heat Haze — simulated result across source images.*
 **Source**: Footage with a visible horizon or ground plane — outdoor landscapes, cityscapes, or a static camera pointed down a road.
 
@@ -237,7 +250,13 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 ### Exercise 2: Thermal Band with Radial Focus
 
-<img src={chinook_exercise2_result} alt="Thermal Band with Radial Focus result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise2_result },
+    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise2_result },
+    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise2_result },
+  ]}
+/>
 *Thermal Band with Radial Focus — simulated result across source images.*
 **Source**: Footage with a central subject and visible background — a portrait, a performer on stage, or an object against a landscape.
 
@@ -255,7 +274,13 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 ### Exercise 3: Full Atmospheric Dissolution
 
-<img src={chinook_exercise3_result} alt="Full Atmospheric Dissolution result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise3_result },
+    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise3_result },
+    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise3_result },
+  ]}
+/>
 *Full Atmospheric Dissolution — simulated result across source images.*
 **Source**: Any footage — especially high-contrast or richly colored material where the loss of structure is most dramatic.
 

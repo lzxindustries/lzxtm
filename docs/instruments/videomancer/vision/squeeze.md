@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 267
+sidebar_position: 268
 slug: /instruments/videomancer/squeeze
 title: "Squeeze"
 image: /img/instruments/videomancer/squeeze/squeeze_hero.png
 description: "In the era of analogue broadcast television, a dedicated hardware box called a DVE — Digital Video Effects unit — sat between the camera switcher and the transmitter."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import squeeze_hero from '/img/instruments/videomancer/squeeze/squeeze_hero.png';
-import squeeze_before_after from '/img/instruments/videomancer/squeeze/squeeze_before_after.png';
 import squeeze_control_panel from '/img/instruments/videomancer/squeeze/squeeze_control_panel.png';
 import squeeze_exercise1_result from '/img/instruments/videomancer/squeeze/squeeze_exercise1_result.png';
 import squeeze_exercise2_result from '/img/instruments/videomancer/squeeze/squeeze_exercise2_result.png';
 import squeeze_exercise3_result from '/img/instruments/videomancer/squeeze/squeeze_exercise3_result.png';
+import squeeze_source1_kodim15 from '/img/instruments/videomancer/squeeze/squeeze_source1_kodim15.png';
+import squeeze_source2_kodim15_bw from '/img/instruments/videomancer/squeeze/squeeze_source2_kodim15_bw.png';
+import squeeze_source3_male_1024 from '/img/instruments/videomancer/squeeze/squeeze_source3_male_1024.png';
 
 # Squeeze
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={squeeze_hero} alt="Squeeze hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_hero },
+    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_hero },
+    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_hero },
+  ]}
+/>
 *Squeeze compressing a live video source into a floating inset rectangle with a bright border and dark background, demonstrating classic DVE picture-in-picture composition.*
-<img src={squeeze_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Squeeze applied.*
 
 ---
 
@@ -226,7 +233,13 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 ### Exercise 1: Centered Picture-in-Picture
 
-<img src={squeeze_exercise1_result} alt="Centered Picture-in-Picture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise1_result },
+    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise1_result },
+    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise1_result },
+  ]}
+/>
 *Centered Picture-in-Picture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied brightness.
 
@@ -245,7 +258,13 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 ### Exercise 2: Drop Shadow and Background Modes
 
-<img src={squeeze_exercise2_result} alt="Drop Shadow and Background Modes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise2_result },
+    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise2_result },
+    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise2_result },
+  ]}
+/>
 *Drop Shadow and Background Modes — simulated result across source images.*
 **Source**: Footage with clear foreground subjects and varied background colours.
 
@@ -264,7 +283,13 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 ### Exercise 3: Animated PIP Composition
 
-<img src={squeeze_exercise3_result} alt="Animated PIP Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise3_result },
+    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise3_result },
+    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise3_result },
+  ]}
+/>
 *Animated PIP Composition — simulated result across source images.*
 **Source**: Dynamic footage — sports, music, or fast-moving content.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/colorizer/colorizer_hero.png
 description: "Colorizer is a hard-band luminance colorizer inspired by the Paik-Abe Video Synthesizer of 1969."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import colorizer_hero from '/img/instruments/videomancer/colorizer/colorizer_hero.png';
-import colorizer_before_after from '/img/instruments/videomancer/colorizer/colorizer_before_after.png';
 import colorizer_control_panel from '/img/instruments/videomancer/colorizer/colorizer_control_panel.png';
 import colorizer_exercise1_result from '/img/instruments/videomancer/colorizer/colorizer_exercise1_result.png';
 import colorizer_exercise2_result from '/img/instruments/videomancer/colorizer/colorizer_exercise2_result.png';
 import colorizer_exercise3_result from '/img/instruments/videomancer/colorizer/colorizer_exercise3_result.png';
+import colorizer_source1_kodim03 from '/img/instruments/videomancer/colorizer/colorizer_source1_kodim03.png';
+import colorizer_source2_kodim15 from '/img/instruments/videomancer/colorizer/colorizer_source2_kodim15.png';
+import colorizer_source3_peppers_512 from '/img/instruments/videomancer/colorizer/colorizer_source3_peppers_512.png';
 
 # Colorizer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={colorizer_hero} alt="Colorizer hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_hero },
+    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_hero },
+    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_hero },
+  ]}
+/>
 *Input luminance is sliced into coloured bands by stacked comparators, painting the image in flat saturated hues.*
-<img src={colorizer_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Colorizer applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 ### Exercise 1: Classic Two-Tone Posterisation
 
-<img src={colorizer_exercise1_result} alt="Classic Two-Tone Posterisation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise1_result },
+    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise1_result },
+    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise1_result },
+  ]}
+/>
 *Classic Two-Tone Posterisation — simulated result across source images.*
 **Source**: A talking-head interview or portrait with a smooth background gradient.
 
@@ -218,7 +231,13 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 ### Exercise 2: Crawling Rainbow
 
-<img src={colorizer_exercise2_result} alt="Crawling Rainbow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise2_result },
+    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise2_result },
+    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise2_result },
+  ]}
+/>
 *Crawling Rainbow — simulated result across source images.*
 **Source**: A slowly moving subject with a wide tonal range (landscape, dancer).
 
@@ -237,7 +256,13 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 ### Exercise 3: Neon Contour with Edge Glow
 
-<img src={colorizer_exercise3_result} alt="Neon Contour with Edge Glow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise3_result },
+    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise3_result },
+    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise3_result },
+  ]}
+/>
 *Neon Contour with Edge Glow — simulated result across source images.*
 **Source**: An architectural scene with strong geometric lines and moderate contrast.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/enhance/enhance_hero.png
 description: "Every crime drama fan knows the scene: a detective peers at a grainy security camera still and commands the lab technician to \"enhance.\" The image zooms impossibly close, pixelated detail sharpens into clarity, and the killer's face appears in a reflection on a doorknob."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import enhance_hero from '/img/instruments/videomancer/enhance/enhance_hero.png';
-import enhance_before_after from '/img/instruments/videomancer/enhance/enhance_before_after.png';
 import enhance_control_panel from '/img/instruments/videomancer/enhance/enhance_control_panel.png';
 import enhance_exercise1_result from '/img/instruments/videomancer/enhance/enhance_exercise1_result.png';
 import enhance_exercise2_result from '/img/instruments/videomancer/enhance/enhance_exercise2_result.png';
 import enhance_exercise3_result from '/img/instruments/videomancer/enhance/enhance_exercise3_result.png';
+import enhance_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/enhance/enhance_source1_grayscale_ramp_h_1920x1080.png';
+import enhance_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/enhance/enhance_source2_grayscale_ramp_v_1920x1080.png';
+import enhance_source3_step_wedge_21level_512 from '/img/instruments/videomancer/enhance/enhance_source3_step_wedge_21level_512.png';
 
 # Enhance
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={enhance_hero} alt="Enhance hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_hero },
+    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_hero },
+    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_hero },
+  ]}
+/>
 *Enhance applying 4× pixel replication zoom and false-color thermal palette to a surveillance-style Region of Interest.*
-<img src={enhance_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Enhance applied.*
 
 ---
 
@@ -227,7 +234,13 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 ### Exercise 1: ROI Navigation and Pixel Zoom
 
-<img src={enhance_exercise1_result} alt="ROI Navigation and Pixel Zoom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise1_result },
+    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise1_result },
+    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise1_result },
+  ]}
+/>
 *ROI Navigation and Pixel Zoom — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with readable text and fine details — signs, printed pages, circuit boards, or textured fabrics.
 
@@ -246,7 +259,13 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 ### Exercise 2: Contrast Stretch and Detail Enhancement
 
-<img src={enhance_exercise2_result} alt="Contrast Stretch and Detail Enhancement result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise2_result },
+    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise2_result },
+    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise2_result },
+  ]}
+/>
 *Contrast Stretch and Detail Enhancement — simulated result across source images.*
 **Source**: Under-exposed or low-contrast footage — dimly lit interiors, foggy scenes, or washed-out exteriors with subtle tonal variation.
 
@@ -264,7 +283,13 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 ### Exercise 3: Full Forensic Display
 
-<img src={enhance_exercise3_result} alt="Full Forensic Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise3_result },
+    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise3_result },
+    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise3_result },
+  ]}
+/>
 *Full Forensic Display — simulated result across source images.*
 **Source**: Any video content — the more mundane the better, as the forensic aesthetic transforms ordinary footage into dramatic surveillance-style analysis imagery.
 

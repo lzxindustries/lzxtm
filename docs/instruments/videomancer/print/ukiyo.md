@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 297
+sidebar_position: 298
 slug: /instruments/videomancer/ukiyo
 title: "Ukiyo"
 image: /img/instruments/videomancer/ukiyo/ukiyo_hero.png
 description: "Ukiyo-e — \"pictures of the floating world\" — was the dominant art form of Japan's Edo period (1603–1868)."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ukiyo_hero from '/img/instruments/videomancer/ukiyo/ukiyo_hero.png';
-import ukiyo_before_after from '/img/instruments/videomancer/ukiyo/ukiyo_before_after.png';
 import ukiyo_control_panel from '/img/instruments/videomancer/ukiyo/ukiyo_control_panel.png';
 import ukiyo_exercise1_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise1_result.png';
 import ukiyo_exercise2_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise2_result.png';
 import ukiyo_exercise3_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise3_result.png';
+import ukiyo_source1_kodim02 from '/img/instruments/videomancer/ukiyo/ukiyo_source1_kodim02.png';
+import ukiyo_source2_kodim07 from '/img/instruments/videomancer/ukiyo/ukiyo_source2_kodim07.png';
+import ukiyo_source3_kodim01_bw from '/img/instruments/videomancer/ukiyo/ukiyo_source3_kodim01_bw.png';
 
 # Ukiyo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ukiyo_hero} alt="Ukiyo hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_hero },
+    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_hero },
+    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_hero },
+  ]}
+/>
 *Ukiyo transforming a live video feed into a woodblock-printed landscape with Edo-period palette mapping, Sobel edge outlines, bokashi gradients, and washi paper grain texture.*
-<img src={ukiyo_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ukiyo applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 ### Exercise 1: First Impression
 
-<img src={ukiyo_exercise1_result} alt="First Impression result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise1_result },
+    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise1_result },
+    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise1_result },
+  ]}
+/>
 *First Impression — simulated result across source images.*
 **Source**: A landscape photograph or camera feed with clear foreground and background separation — trees against sky, buildings against horizon, or similar.
 
@@ -228,7 +241,13 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 ### Exercise 2: Weathered Print
 
-<img src={ukiyo_exercise2_result} alt="Weathered Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise2_result },
+    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise2_result },
+    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise2_result },
+  ]}
+/>
 *Weathered Print — simulated result across source images.*
 **Source**: A portrait or figure study with skin tones and clothing detail.
 
@@ -246,7 +265,13 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 ### Exercise 3: Prussian Wave
 
-<img src={ukiyo_exercise3_result} alt="Prussian Wave result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise3_result },
+    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise3_result },
+    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise3_result },
+  ]}
+/>
 *Prussian Wave — simulated result across source images.*
 **Source**: A high-contrast scene with strong lines — ocean waves, mountain ridges, architectural details, or flowing fabric.
 

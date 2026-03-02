@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 313
+sidebar_position: 314
 slug: /instruments/videomancer/wobbulator
 title: "Wobbulator"
 image: /img/instruments/videomancer/wobbulator/wobbulator_hero.png
 description: "Wobbulator simulates the electromagnetic raster distortion made famous by Nam June Paik's 1965 \"Magnet TV,\" where a large magnet placed against a CRT bent the electron beam and warped the displayed image in organic, fluid curves."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import wobbulator_hero from '/img/instruments/videomancer/wobbulator/wobbulator_hero.png';
-import wobbulator_before_after from '/img/instruments/videomancer/wobbulator/wobbulator_before_after.png';
 import wobbulator_control_panel from '/img/instruments/videomancer/wobbulator/wobbulator_control_panel.png';
 import wobbulator_exercise1_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise1_result.png';
 import wobbulator_exercise2_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise2_result.png';
 import wobbulator_exercise3_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise3_result.png';
+import wobbulator_source1_kodim02 from '/img/instruments/videomancer/wobbulator/wobbulator_source1_kodim02.png';
+import wobbulator_source2_kodim07 from '/img/instruments/videomancer/wobbulator/wobbulator_source2_kodim07.png';
+import wobbulator_source3_kodim01_bw from '/img/instruments/videomancer/wobbulator/wobbulator_source3_kodim01_bw.png';
 
 # Wobbulator
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={wobbulator_hero} alt="Wobbulator hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_hero },
+    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_hero },
+    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_hero },
+  ]}
+/>
 *A radial magnetic warp pulls the centre of a test image inward, compressing scanlines near the focus point while stretching the surrounding field in concentric rings.*
-<img src={wobbulator_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Wobbulator applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 ### Exercise 1: Magnet On Glass
 
-<img src={wobbulator_exercise1_result} alt="Magnet On Glass result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise1_result },
+    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise1_result },
+    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise1_result },
+  ]}
+/>
 *Magnet On Glass — simulated result across source images.*
 **Source**: A high-contrast graphic — text, a test pattern, or a grid — works best to reveal warping geometry.
 
@@ -229,7 +242,13 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 ### Exercise 2: Dual Field Interference
 
-<img src={wobbulator_exercise2_result} alt="Dual Field Interference result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise2_result },
+    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise2_result },
+    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise2_result },
+  ]}
+/>
 *Dual Field Interference — simulated result across source images.*
 **Source**: A camera or any spatially detailed source with large regions of mid-brightness.
 
@@ -250,7 +269,13 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 ### Exercise 3: Animated Chromatic Wobble
 
-<img src={wobbulator_exercise3_result} alt="Animated Chromatic Wobble result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise3_result },
+    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise3_result },
+    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise3_result },
+  ]}
+/>
 *Animated Chromatic Wobble — simulated result across source images.*
 **Source**: A medium-contrast camera feed or colour bars.
 

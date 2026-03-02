@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 276
+sidebar_position: 277
 slug: /instruments/videomancer/survey
 title: "Survey"
 image: /img/instruments/videomancer/survey/survey_hero.png
 description: "Topographic maps translate three-dimensional terrain into two-dimensional line drawings."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import survey_hero from '/img/instruments/videomancer/survey/survey_hero.png';
-import survey_before_after from '/img/instruments/videomancer/survey/survey_before_after.png';
 import survey_control_panel from '/img/instruments/videomancer/survey/survey_control_panel.png';
 import survey_exercise1_result from '/img/instruments/videomancer/survey/survey_exercise1_result.png';
 import survey_exercise2_result from '/img/instruments/videomancer/survey/survey_exercise2_result.png';
 import survey_exercise3_result from '/img/instruments/videomancer/survey/survey_exercise3_result.png';
+import survey_source1_kodim02 from '/img/instruments/videomancer/survey/survey_source1_kodim02.png';
+import survey_source2_kodim07 from '/img/instruments/videomancer/survey/survey_source2_kodim07.png';
+import survey_source3_kodim01_bw from '/img/instruments/videomancer/survey/survey_source3_kodim01_bw.png';
 
 # Survey
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={survey_hero} alt="Survey hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: survey_source1_kodim02, after: survey_hero },
+    { label: "Kodim07", before: survey_source2_kodim07, after: survey_hero },
+    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_hero },
+  ]}
+/>
 *Survey rendering topographic contour lines from a natural scene, with relief shading and altitude-banded color tinting.*
-<img src={survey_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Survey applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises progress from basic contour extraction through relief shading to
 
 ### Exercise 1: Basic Contour Lines
 
-<img src={survey_exercise1_result} alt="Basic Contour Lines result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise1_result },
+    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise1_result },
+    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise1_result },
+  ]}
+/>
 *Basic Contour Lines — simulated result across source images.*
 **Source**: A scene with smooth tonal gradients — a landscape, a face lit from one side, or a gradient test pattern.
 
@@ -222,7 +235,13 @@ These exercises progress from basic contour extraction through relief shading to
 
 ### Exercise 2: Relief Shading
 
-<img src={survey_exercise2_result} alt="Relief Shading result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise2_result },
+    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise2_result },
+    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise2_result },
+  ]}
+/>
 *Relief Shading — simulated result across source images.*
 **Source**: A scene with strong vertical brightness variations — a sunset sky, a face with directional lighting, or a landscape with horizon gradient.
 
@@ -241,7 +260,13 @@ These exercises progress from basic contour extraction through relief shading to
 
 ### Exercise 3: Full Cartographic Rendering
 
-<img src={survey_exercise3_result} alt="Full Cartographic Rendering result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise3_result },
+    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise3_result },
+    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise3_result },
+  ]}
+/>
 *Full Cartographic Rendering — simulated result across source images.*
 **Source**: Any footage with a range of brightness levels — a landscape, a still life, or abstract video synthesis.
 

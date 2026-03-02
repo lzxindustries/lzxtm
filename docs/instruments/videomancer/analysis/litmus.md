@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/litmus/litmus_hero.png
 description: "In every chemistry laboratory there is a drawer full of narrow paper strips impregnated with chemical indicators — compounds that change color in the presence of specific substances."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import litmus_hero from '/img/instruments/videomancer/litmus/litmus_hero.png';
-import litmus_before_after from '/img/instruments/videomancer/litmus/litmus_before_after.png';
 import litmus_control_panel from '/img/instruments/videomancer/litmus/litmus_control_panel.png';
 import litmus_exercise1_result from '/img/instruments/videomancer/litmus/litmus_exercise1_result.png';
 import litmus_exercise2_result from '/img/instruments/videomancer/litmus/litmus_exercise2_result.png';
 import litmus_exercise3_result from '/img/instruments/videomancer/litmus/litmus_exercise3_result.png';
+import litmus_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source1_grayscale_ramp_h_1920x1080.png';
+import litmus_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source2_grayscale_ramp_v_1920x1080.png';
+import litmus_source3_step_wedge_21level_512 from '/img/instruments/videomancer/litmus/litmus_source3_step_wedge_21level_512.png';
 
 # Litmus
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={litmus_hero} alt="Litmus hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_hero },
+    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_hero },
+    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_hero },
+  ]}
+/>
 *Litmus applying pH reagent false-color mapping with paper texture to transform video into chemical indicator strip imagery.*
-<img src={litmus_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Litmus applied.*
 
 ---
 
@@ -201,7 +208,13 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 ### Exercise 1: pH Strip Colorization
 
-<img src={litmus_exercise1_result} alt="pH Strip Colorization result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise1_result },
+    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise1_result },
+    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise1_result },
+  ]}
+/>
 *pH Strip Colorization — simulated result across source images.*
 **Source**: A high-contrast scene with a full tonal range — architectural interiors, landscapes with sky and ground.
 
@@ -219,7 +232,13 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 ### Exercise 2: Paper Texture and Zone Bleed
 
-<img src={litmus_exercise2_result} alt="Paper Texture and Zone Bleed result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise2_result },
+    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise2_result },
+    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise2_result },
+  ]}
+/>
 *Paper Texture and Zone Bleed — simulated result across source images.*
 **Source**: Footage with smooth gradients — soft lighting, fog, or water surfaces.
 
@@ -237,7 +256,13 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 ### Exercise 3: Chroma Source and Reagent Comparison
 
-<img src={litmus_exercise3_result} alt="Chroma Source and Reagent Comparison result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise3_result },
+    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise3_result },
+    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise3_result },
+  ]}
+/>
 *Chroma Source and Reagent Comparison — simulated result across source images.*
 **Source**: Colorful footage — flowers, neon signs, painted surfaces, or color test patterns.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 303
+sidebar_position: 304
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
 image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png
 description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed against the operator's eye."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import viewfinder_hero from '/img/instruments/videomancer/viewfinder/viewfinder_hero.png';
-import viewfinder_before_after from '/img/instruments/videomancer/viewfinder/viewfinder_before_after.png';
 import viewfinder_control_panel from '/img/instruments/videomancer/viewfinder/viewfinder_control_panel.png';
 import viewfinder_exercise1_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise1_result.png';
 import viewfinder_exercise2_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise2_result.png';
 import viewfinder_exercise3_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise3_result.png';
+import viewfinder_source1_kodim05 from '/img/instruments/videomancer/viewfinder/viewfinder_source1_kodim05.png';
+import viewfinder_source2_kodim15 from '/img/instruments/videomancer/viewfinder/viewfinder_source2_kodim15.png';
+import viewfinder_source3_kodim15_bw from '/img/instruments/videomancer/viewfinder/viewfinder_source3_kodim15_bw.png';
 
 # Viewfinder
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={viewfinder_hero} alt="Viewfinder hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_hero },
+    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_hero },
+    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_hero },
+  ]}
+/>
 *Viewfinder overlaying zebra exposure stripes, red focus peaking, safe-area guides, and a blinking REC indicator onto a live camera feed — the complete 1990s camcorder EVF experience.*
-<img src={viewfinder_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Viewfinder applied.*
 
 ---
 
@@ -182,7 +189,13 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 ### Exercise 1: Exposure Monitoring with Zebras
 
-<img src={viewfinder_exercise1_result} alt="Exposure Monitoring with Zebras result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise1_result },
+    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise1_result },
+    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise1_result },
+  ]}
+/>
 *Exposure Monitoring with Zebras — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a mix of highlights and shadows — outdoor scenes with sky and foreground work well.
 
@@ -200,7 +213,13 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 ### Exercise 2: Focus Peaking and Desaturation
 
-<img src={viewfinder_exercise2_result} alt="Focus Peaking and Desaturation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise2_result },
+    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise2_result },
+    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise2_result },
+  ]}
+/>
 *Focus Peaking and Desaturation — simulated result across source images.*
 **Source**: Close-up footage with a shallow depth of field — partially focused subjects with soft backgrounds.
 
@@ -219,7 +238,13 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 ### Exercise 3: Full EVF Simulation
 
-<img src={viewfinder_exercise3_result} alt="Full EVF Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise3_result },
+    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise3_result },
+    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise3_result },
+  ]}
+/>
 *Full EVF Simulation — simulated result across source images.*
 **Source**: Any footage — documentary, narrative, or abstract. The complete EVF look transforms everything.
 

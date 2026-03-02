@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/keystone/keystone_hero.png
 description: "Most video is captured as a rectangle, and most displays reproduce it as a rectangle."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import keystone_hero from '/img/instruments/videomancer/keystone/keystone_hero.png';
-import keystone_before_after from '/img/instruments/videomancer/keystone/keystone_before_after.png';
 import keystone_control_panel from '/img/instruments/videomancer/keystone/keystone_control_panel.png';
 import keystone_exercise1_result from '/img/instruments/videomancer/keystone/keystone_exercise1_result.png';
 import keystone_exercise2_result from '/img/instruments/videomancer/keystone/keystone_exercise2_result.png';
 import keystone_exercise3_result from '/img/instruments/videomancer/keystone/keystone_exercise3_result.png';
+import keystone_source1_kodim15 from '/img/instruments/videomancer/keystone/keystone_source1_kodim15.png';
+import keystone_source2_kodim15_bw from '/img/instruments/videomancer/keystone/keystone_source2_kodim15_bw.png';
+import keystone_source3_male_1024 from '/img/instruments/videomancer/keystone/keystone_source3_male_1024.png';
 
 # Keystone
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={keystone_hero} alt="Keystone hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_hero },
+    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_hero },
+    { label: "Male", before: keystone_source3_male_1024, after: keystone_hero },
+  ]}
+/>
 *Keystone applying horizontal perspective foreshortening and skew to transform rectangular video into converging trapezoids.*
-<img src={keystone_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Keystone applied.*
 
 ---
 
@@ -195,7 +202,13 @@ These exercises progress from simple skew to animated compound transforms, build
 
 ### Exercise 1: Parallelogram Tilt
 
-<img src={keystone_exercise1_result} alt="Parallelogram Tilt result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise1_result },
+    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise1_result },
+    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise1_result },
+  ]}
+/>
 *Parallelogram Tilt — simulated result across source images.*
 **Source**: A camera feed aimed at a rectangular subject — bookshelf, window, or grid pattern.
 
@@ -213,7 +226,13 @@ These exercises progress from simple skew to animated compound transforms, build
 
 ### Exercise 2: Vanishing Point Perspective
 
-<img src={keystone_exercise2_result} alt="Vanishing Point Perspective result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise2_result },
+    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise2_result },
+    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise2_result },
+  ]}
+/>
 *Vanishing Point Perspective — simulated result across source images.*
 **Source**: Footage with strong horizontal lines — architecture, hallways, roads.
 
@@ -231,7 +250,13 @@ These exercises progress from simple skew to animated compound transforms, build
 
 ### Exercise 3: Animated Rocking
 
-<img src={keystone_exercise3_result} alt="Animated Rocking result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise3_result },
+    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise3_result },
+    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise3_result },
+  ]}
+/>
 *Animated Rocking — simulated result across source images.*
 **Source**: Any video feed — the animation works with any content.
 

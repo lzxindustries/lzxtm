@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 282
+sidebar_position: 283
 slug: /instruments/videomancer/teletext
 title: "Teletext"
 image: /img/instruments/videomancer/teletext/teletext_hero.png
 description: "Every pixel in a video frame carries brightness information."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import teletext_hero from '/img/instruments/videomancer/teletext/teletext_hero.png';
-import teletext_before_after from '/img/instruments/videomancer/teletext/teletext_before_after.png';
 import teletext_control_panel from '/img/instruments/videomancer/teletext/teletext_control_panel.png';
 import teletext_exercise1_result from '/img/instruments/videomancer/teletext/teletext_exercise1_result.png';
 import teletext_exercise2_result from '/img/instruments/videomancer/teletext/teletext_exercise2_result.png';
 import teletext_exercise3_result from '/img/instruments/videomancer/teletext/teletext_exercise3_result.png';
+import teletext_source1_kodim15 from '/img/instruments/videomancer/teletext/teletext_source1_kodim15.png';
+import teletext_source2_kodim15_bw from '/img/instruments/videomancer/teletext/teletext_source2_kodim15_bw.png';
+import teletext_source3_male_1024 from '/img/instruments/videomancer/teletext/teletext_source3_male_1024.png';
 
 # Teletext
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={teletext_hero} alt="Teletext hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_hero },
+    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_hero },
+    { label: "Male", before: teletext_source3_male_1024, after: teletext_hero },
+  ]}
+/>
 *Teletext rendering live video as density-sorted ASCII art through four selectable character sets — sixel mosaics, PETSCII semigraphics, CP437 shading, and Braille dot patterns.*
-<img src={teletext_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Teletext applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises progress from basic character rendering to advanced color and co
 
 ### Exercise 1: Classic Terminal Text
 
-<img src={teletext_exercise1_result} alt="Classic Terminal Text result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise1_result },
+    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise1_result },
+    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise1_result },
+  ]}
+/>
 *Classic Terminal Text — simulated result across source images.*
 **Source**: A well-lit portrait or still life with clear tonal separation.
 
@@ -221,7 +234,13 @@ These exercises progress from basic character rendering to advanced color and co
 
 ### Exercise 2: ANSI Art Color Mode
 
-<img src={teletext_exercise2_result} alt="ANSI Art Color Mode result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise2_result },
+    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise2_result },
+    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise2_result },
+  ]}
+/>
 *ANSI Art Color Mode — simulated result across source images.*
 **Source**: Brightly colored footage — flowers, graffiti, or animated graphics with saturated hues.
 
@@ -239,7 +258,13 @@ These exercises progress from basic character rendering to advanced color and co
 
 ### Exercise 3: Braille Pointillism
 
-<img src={teletext_exercise3_result} alt="Braille Pointillism result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise3_result },
+    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise3_result },
+    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise3_result },
+  ]}
+/>
 *Braille Pointillism — simulated result across source images.*
 **Source**: A high-contrast black-and-white image or footage with strong graphic shapes.
 

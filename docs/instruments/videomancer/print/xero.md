@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 315
+sidebar_position: 316
 slug: /instruments/videomancer/xero
 title: "Xero"
 image: /img/instruments/videomancer/xero/xero_hero.png
 description: "Before digital networking, the photocopier was the medium of underground publishing."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import xero_hero from '/img/instruments/videomancer/xero/xero_hero.png';
-import xero_before_after from '/img/instruments/videomancer/xero/xero_before_after.png';
 import xero_control_panel from '/img/instruments/videomancer/xero/xero_control_panel.png';
 import xero_exercise1_result from '/img/instruments/videomancer/xero/xero_exercise1_result.png';
 import xero_exercise2_result from '/img/instruments/videomancer/xero/xero_exercise2_result.png';
 import xero_exercise3_result from '/img/instruments/videomancer/xero/xero_exercise3_result.png';
+import xero_source1_kodim02 from '/img/instruments/videomancer/xero/xero_source1_kodim02.png';
+import xero_source2_kodim07 from '/img/instruments/videomancer/xero/xero_source2_kodim07.png';
+import xero_source3_kodim01_bw from '/img/instruments/videomancer/xero/xero_source3_kodim01_bw.png';
 
 # Xero
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={xero_hero} alt="Xero hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: xero_source1_kodim02, after: xero_hero },
+    { label: "Kodim07", before: xero_source2_kodim07, after: xero_hero },
+    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_hero },
+  ]}
+/>
 *Xero applying multi-generational copy degradation with blue toner and warm recycled paper, transforming video into a faded office photocopy.*
-<img src={xero_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Xero applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 ### Exercise 1: First-Generation Copy
 
-<img src={xero_exercise1_result} alt="First-Generation Copy result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise1_result },
+    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise1_result },
+    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise1_result },
+  ]}
+/>
 *First-Generation Copy — simulated result across source images.*
 **Source**: A photograph or video feed with smooth gradients and fine detail — a portrait or landscape works well.
 
@@ -227,7 +240,13 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 ### Exercise 2: Fifth-Generation Degradation
 
-<img src={xero_exercise2_result} alt="Fifth-Generation Degradation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise2_result },
+    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise2_result },
+    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise2_result },
+  ]}
+/>
 *Fifth-Generation Degradation — simulated result across source images.*
 **Source**: Same source as Exercise 1, to compare degradation against the cleaner version.
 
@@ -246,7 +265,13 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 ### Exercise 3: Copy Art Extreme
 
-<img src={xero_exercise3_result} alt="Copy Art Extreme result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise3_result },
+    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise3_result },
+    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise3_result },
+  ]}
+/>
 *Copy Art Extreme — simulated result across source images.*
 **Source**: High-contrast footage — faces, hands on a copier glass, text pages, or object silhouettes.
 

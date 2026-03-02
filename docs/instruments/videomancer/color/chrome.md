@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chrome/chrome_hero.png
 description: "There is a particular quality to chrome — the way it swallows the world around it and hands it back distorted, compressed, impossibly bright."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chrome_hero from '/img/instruments/videomancer/chrome/chrome_hero.png';
-import chrome_before_after from '/img/instruments/videomancer/chrome/chrome_before_after.png';
 import chrome_control_panel from '/img/instruments/videomancer/chrome/chrome_control_panel.png';
 import chrome_exercise1_result from '/img/instruments/videomancer/chrome/chrome_exercise1_result.png';
 import chrome_exercise2_result from '/img/instruments/videomancer/chrome/chrome_exercise2_result.png';
 import chrome_exercise3_result from '/img/instruments/videomancer/chrome/chrome_exercise3_result.png';
+import chrome_source1_kodim03 from '/img/instruments/videomancer/chrome/chrome_source1_kodim03.png';
+import chrome_source2_kodim15 from '/img/instruments/videomancer/chrome/chrome_source2_kodim15.png';
+import chrome_source3_peppers_512 from '/img/instruments/videomancer/chrome/chrome_source3_peppers_512.png';
 
 # Chrome
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chrome_hero} alt="Chrome hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_hero },
+    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_hero },
+    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_hero },
+  ]}
+/>
 *Chrome transforming a still life into a liquid-metal relief, sigmoid luminance remapping compressing midtones into mirror-bright highlights and deep shadow pools while a faint gold tint warms the reflected surface.*
-<img src={chrome_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chrome applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 ### Exercise 1: Sculpting the S-Curve
 
-<img src={chrome_exercise1_result} alt="Sculpting the S-Curve result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise1_result },
+    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise1_result },
+    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise1_result },
+  ]}
+/>
 *Sculpting the S-Curve — simulated result across source images.*
 **Source**: Footage or stills with a wide tonal range — landscapes, portraits, or gradient test patterns.
 
@@ -233,7 +246,13 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 ### Exercise 2: Gold Plate and Bloom
 
-<img src={chrome_exercise2_result} alt="Gold Plate and Bloom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise2_result },
+    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise2_result },
+    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise2_result },
+  ]}
+/>
 *Gold Plate and Bloom — simulated result across source images.*
 **Source**: Close-up footage of objects with specular highlights — glass, water, metallic surfaces, or well-lit portraits.
 
@@ -251,7 +270,13 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 ### Exercise 3: Dark Chrome and Mixed Metals
 
-<img src={chrome_exercise3_result} alt="Dark Chrome and Mixed Metals result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise3_result },
+    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise3_result },
+    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise3_result },
+  ]}
+/>
 *Dark Chrome and Mixed Metals — simulated result across source images.*
 **Source**: High-contrast footage with strong silhouettes — architecture against sky, backlit figures, or stark graphic patterns.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 227
+sidebar_position: 228
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero.png
 description: "Every castle begins with a wall."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import rampart_hero from '/img/instruments/videomancer/rampart/rampart_hero.png';
-import rampart_before_after from '/img/instruments/videomancer/rampart/rampart_before_after.png';
 import rampart_control_panel from '/img/instruments/videomancer/rampart/rampart_control_panel.png';
 import rampart_exercise1_result from '/img/instruments/videomancer/rampart/rampart_exercise1_result.png';
 import rampart_exercise2_result from '/img/instruments/videomancer/rampart/rampart_exercise2_result.png';
 import rampart_exercise3_result from '/img/instruments/videomancer/rampart/rampart_exercise3_result.png';
+import rampart_source1_kodim15 from '/img/instruments/videomancer/rampart/rampart_source1_kodim15.png';
+import rampart_source2_kodim01 from '/img/instruments/videomancer/rampart/rampart_source2_kodim01.png';
+import rampart_source3_stream_bridge_512 from '/img/instruments/videomancer/rampart/rampart_source3_stream_bridge_512.png';
 
 # Rampart
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={rampart_hero} alt="Rampart hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_hero },
+    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_hero },
+    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_hero },
+  ]}
+/>
 *Rampart generating a fortress-wall brick lattice with running bond, mortar shadowing, and video-filled crenellations over a live input.*
-<img src={rampart_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Rampart applied.*
 
 ---
 
@@ -193,7 +200,13 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 ### Exercise 1: Basic Brick Grid
 
-<img src={rampart_exercise1_result} alt="Basic Brick Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise1_result },
+    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise1_result },
+    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise1_result },
+  ]}
+/>
 *Basic Brick Grid — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
@@ -211,7 +224,13 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 ### Exercise 2: Video Fill and Shadow
 
-<img src={rampart_exercise2_result} alt="Video Fill and Shadow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise2_result },
+    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise2_result },
+    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise2_result },
+  ]}
+/>
 *Video Fill and Shadow — simulated result across source images.*
 **Source**: Colorful footage with strong shapes — flowers, faces, or abstract graphics work well.
 
@@ -229,7 +248,13 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 ### Exercise 3: Full Fortress Wall
 
-<img src={rampart_exercise3_result} alt="Full Fortress Wall result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise3_result },
+    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise3_result },
+    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise3_result },
+  ]}
+/>
 *Full Fortress Wall — simulated result across source images.*
 **Source**: Landscape or architectural footage — an outdoor scene with sky at the top works especially well for the battlement silhouette.
 

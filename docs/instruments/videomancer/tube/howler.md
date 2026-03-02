@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/howler/howler_hero.png
 description: "Howler implements a video feedback loop entirely within the FPGA — no external routing required."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import howler_hero from '/img/instruments/videomancer/howler/howler_hero.png';
-import howler_before_after from '/img/instruments/videomancer/howler/howler_before_after.png';
 import howler_control_panel from '/img/instruments/videomancer/howler/howler_control_panel.png';
 import howler_exercise1_result from '/img/instruments/videomancer/howler/howler_exercise1_result.png';
 import howler_exercise2_result from '/img/instruments/videomancer/howler/howler_exercise2_result.png';
 import howler_exercise3_result from '/img/instruments/videomancer/howler/howler_exercise3_result.png';
+import howler_source1_kodim15 from '/img/instruments/videomancer/howler/howler_source1_kodim15.png';
+import howler_source2_kodim01 from '/img/instruments/videomancer/howler/howler_source2_kodim01.png';
+import howler_source3_kodim01_bw from '/img/instruments/videomancer/howler/howler_source3_kodim01_bw.png';
 
 # Howler
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={howler_hero} alt="Howler hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: howler_source1_kodim15, after: howler_hero },
+    { label: "Kodim01", before: howler_source2_kodim01, after: howler_hero },
+    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_hero },
+  ]}
+/>
 *Howler generating recursive tunnel patterns by feeding zoomed, decayed, and hue-rotated video back through its scanline buffer.*
-<img src={howler_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Howler applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 ### Exercise 1: Basic Feedback Echo
 
-<img src={howler_exercise1_result} alt="Basic Feedback Echo result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise1_result },
+    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise1_result },
+    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise1_result },
+  ]}
+/>
 *Basic Feedback Echo — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with slow, deliberate motion — a hand moving across frame, or a slowly rotating object.
 
@@ -223,7 +236,13 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 ### Exercise 2: Tunnel and Bloom
 
-<img src={howler_exercise2_result} alt="Tunnel and Bloom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise2_result },
+    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise2_result },
+    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise2_result },
+  ]}
+/>
 *Tunnel and Bloom — simulated result across source images.*
 **Source**: High-contrast footage — bright shapes on a dark background, or a graphic pattern from another Videomancer program (e.g., Honeycomb or Checkers).
 
@@ -241,7 +260,13 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 ### Exercise 3: Self-Exciting Psychedelia
 
-<img src={howler_exercise3_result} alt="Self-Exciting Psychedelia result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise3_result },
+    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise3_result },
+    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise3_result },
+  ]}
+/>
 *Self-Exciting Psychedelia — simulated result across source images.*
 **Source**: No external source needed — Self-Excite provides the input.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/degauss/degauss_hero.png
 description: "Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor dots."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import degauss_hero from '/img/instruments/videomancer/degauss/degauss_hero.png';
-import degauss_before_after from '/img/instruments/videomancer/degauss/degauss_before_after.png';
 import degauss_control_panel from '/img/instruments/videomancer/degauss/degauss_control_panel.png';
 import degauss_exercise1_result from '/img/instruments/videomancer/degauss/degauss_exercise1_result.png';
 import degauss_exercise2_result from '/img/instruments/videomancer/degauss/degauss_exercise2_result.png';
 import degauss_exercise3_result from '/img/instruments/videomancer/degauss/degauss_exercise3_result.png';
+import degauss_source1_kodim15 from '/img/instruments/videomancer/degauss/degauss_source1_kodim15.png';
+import degauss_source2_kodim01 from '/img/instruments/videomancer/degauss/degauss_source2_kodim01.png';
+import degauss_source3_kodim01_bw from '/img/instruments/videomancer/degauss/degauss_source3_kodim01_bw.png';
 
 # Degauss
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={degauss_hero} alt="Degauss hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_hero },
+    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_hero },
+    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_hero },
+  ]}
+/>
 *Degauss applying vertical-position-dependent chroma offsets to create rainbow color fringing reminiscent of a CRT degaussing coil sweep.*
-<img src={degauss_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Degauss applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 ### Exercise 1: Static Rainbow Fringing
 
-<img src={degauss_exercise1_result} alt="Static Rainbow Fringing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise1_result },
+    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise1_result },
+    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise1_result },
+  ]}
+/>
 *Static Rainbow Fringing — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with high-contrast edges — text on a dark background, architectural lines, or faces against a plain backdrop.
 
@@ -230,7 +243,13 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 ### Exercise 2: Animated Degauss Sweep
 
-<img src={degauss_exercise2_result} alt="Animated Degauss Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise2_result },
+    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise2_result },
+    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise2_result },
+  ]}
+/>
 *Animated Degauss Sweep — simulated result across source images.*
 **Source**: Slow-moving or static footage — a still life, a landscape, or a color bar test pattern.
 
@@ -249,7 +268,13 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 ### Exercise 3: Chromatic Dissolution
 
-<img src={degauss_exercise3_result} alt="Chromatic Dissolution result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise3_result },
+    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise3_result },
+    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise3_result },
+  ]}
+/>
 *Chromatic Dissolution — simulated result across source images.*
 **Source**: Any footage with recognizable content — faces, objects, or scenes with a range of saturated and neutral areas.
 

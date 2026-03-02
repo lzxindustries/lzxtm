@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 290
+sidebar_position: 291
 slug: /instruments/videomancer/tidepool
 title: "Tidepool"
 image: /img/instruments/videomancer/tidepool/tidepool_hero.png

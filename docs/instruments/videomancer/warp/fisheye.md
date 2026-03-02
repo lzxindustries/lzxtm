@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/fisheye/fisheye_hero.png
 description: "Every lens bends light."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fisheye_hero from '/img/instruments/videomancer/fisheye/fisheye_hero.png';
-import fisheye_before_after from '/img/instruments/videomancer/fisheye/fisheye_before_after.png';
 import fisheye_control_panel from '/img/instruments/videomancer/fisheye/fisheye_control_panel.png';
 import fisheye_exercise1_result from '/img/instruments/videomancer/fisheye/fisheye_exercise1_result.png';
 import fisheye_exercise2_result from '/img/instruments/videomancer/fisheye/fisheye_exercise2_result.png';
 import fisheye_exercise3_result from '/img/instruments/videomancer/fisheye/fisheye_exercise3_result.png';
+import fisheye_source1_kodim02 from '/img/instruments/videomancer/fisheye/fisheye_source1_kodim02.png';
+import fisheye_source2_kodim07 from '/img/instruments/videomancer/fisheye/fisheye_source2_kodim07.png';
+import fisheye_source3_kodim01_bw from '/img/instruments/videomancer/fisheye/fisheye_source3_kodim01_bw.png';
 
 # Fisheye
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={fisheye_hero} alt="Fisheye hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_hero },
+    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_hero },
+    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_hero },
+  ]}
+/>
 *Fisheye applying radial brightness falloff and chromatic aberration to simulate barrel lens distortion across a multi-source video composite.*
-<img src={fisheye_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Fisheye applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 ### Exercise 1: Classic Vignette
 
-<img src={fisheye_exercise1_result} alt="Classic Vignette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise1_result },
+    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise1_result },
+    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise1_result },
+  ]}
+/>
 *Classic Vignette — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a centered subject and visible detail in the corners.
 
@@ -231,7 +244,13 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 ### Exercise 2: Barrel vs. Pincushion
 
-<img src={fisheye_exercise2_result} alt="Barrel vs. Pincushion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise2_result },
+    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise2_result },
+    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise2_result },
+  ]}
+/>
 *Barrel vs. Pincushion — simulated result across source images.*
 **Source**: Footage with visible detail across the full frame — a wide shot or geometric test pattern.
 
@@ -250,7 +269,13 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 ### Exercise 3: Chromatic Fringing
 
-<img src={fisheye_exercise3_result} alt="Chromatic Fringing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise3_result },
+    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise3_result },
+    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise3_result },
+  ]}
+/>
 *Chromatic Fringing — simulated result across source images.*
 **Source**: High-contrast footage — sharp edges, bright highlights against dark backgrounds.
 

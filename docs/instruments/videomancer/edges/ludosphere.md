@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/ludosphere/ludosphere_hero.png
 description: "Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ludosphere_hero from '/img/instruments/videomancer/ludosphere/ludosphere_hero.png';
-import ludosphere_before_after from '/img/instruments/videomancer/ludosphere/ludosphere_before_after.png';
 import ludosphere_control_panel from '/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png';
 import ludosphere_exercise1_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise1_result.png';
 import ludosphere_exercise2_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise2_result.png';
 import ludosphere_exercise3_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise3_result.png';
+import ludosphere_source1_kodim02 from '/img/instruments/videomancer/ludosphere/ludosphere_source1_kodim02.png';
+import ludosphere_source2_kodim07 from '/img/instruments/videomancer/ludosphere/ludosphere_source2_kodim07.png';
+import ludosphere_source3_kodim01_bw from '/img/instruments/videomancer/ludosphere/ludosphere_source3_kodim01_bw.png';
 
 # Ludosphere
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ludosphere_hero} alt="Ludosphere hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_hero },
+    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_hero },
+    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_hero },
+  ]}
+/>
 *Ludosphere applying three-axis oscillator modulation to produce spherical color patterns across the video frame.*
-<img src={ludosphere_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ludosphere applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 ### Exercise 1: Spatial Interference Grid
 
-<img src={ludosphere_exercise1_result} alt="Spatial Interference Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise1_result },
+    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise1_result },
+    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise1_result },
+  ]}
+/>
 *Spatial Interference Grid — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
@@ -221,7 +234,13 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 ### Exercise 2: Temporal Pulsation
 
-<img src={ludosphere_exercise2_result} alt="Temporal Pulsation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise2_result },
+    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise2_result },
+    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise2_result },
+  ]}
+/>
 *Temporal Pulsation — simulated result across source images.*
 **Source**: A static image or slow-moving footage so the temporal effect is clearly visible.
 
@@ -239,7 +258,13 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 ### Exercise 3: Pure Oscillator Patterns
 
-<img src={ludosphere_exercise3_result} alt="Pure Oscillator Patterns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise3_result },
+    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise3_result },
+    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise3_result },
+  ]}
+/>
 *Pure Oscillator Patterns — simulated result across source images.*
 **Source**: Any footage — the source video will be overwhelmed by the oscillator output.
 

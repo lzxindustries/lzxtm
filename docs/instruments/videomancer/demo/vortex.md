@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 309
+sidebar_position: 310
 slug: /instruments/videomancer/vortex
 title: "Vortex"
 image: /img/instruments/videomancer/vortex/vortex_hero.png

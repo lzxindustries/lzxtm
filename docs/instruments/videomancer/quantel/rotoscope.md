@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 237
+sidebar_position: 238
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
 image: /img/instruments/videomancer/rotoscope/rotoscope_hero.png
 description: "In the 1980s and 1990s, Quantel's Harry, Harriet, and Henry systems defined a generation of broadcast visual effects."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import rotoscope_hero from '/img/instruments/videomancer/rotoscope/rotoscope_hero.png';
-import rotoscope_before_after from '/img/instruments/videomancer/rotoscope/rotoscope_before_after.png';
 import rotoscope_control_panel from '/img/instruments/videomancer/rotoscope/rotoscope_control_panel.png';
 import rotoscope_exercise1_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise1_result.png';
 import rotoscope_exercise2_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise2_result.png';
 import rotoscope_exercise3_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise3_result.png';
+import rotoscope_source1_kodim15 from '/img/instruments/videomancer/rotoscope/rotoscope_source1_kodim15.png';
+import rotoscope_source2_kodim01 from '/img/instruments/videomancer/rotoscope/rotoscope_source2_kodim01.png';
+import rotoscope_source3_kodim01_bw from '/img/instruments/videomancer/rotoscope/rotoscope_source3_kodim01_bw.png';
 
 # Rotoscope
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={rotoscope_hero} alt="Rotoscope hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_hero },
+    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_hero },
+    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_hero },
+  ]}
+/>
 *Rotoscope compositing four temporally displaced trail layers with tinted treatment and screen blending to produce the characteristic Quantel-era trailing echo effect.*
-<img src={rotoscope_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Rotoscope applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 ### Exercise 1: Simple Motion Echo
 
-<img src={rotoscope_exercise1_result} alt="Simple Motion Echo result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise1_result },
+    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise1_result },
+    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise1_result },
+  ]}
+/>
 *Simple Motion Echo — simulated result across source images.*
 **Source**: A slowly moving subject — a hand waving, a pendulum, or a dancer — against a contrasting background.
 
@@ -227,7 +240,13 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 ### Exercise 2: Tinted Trail Composition
 
-<img src={rotoscope_exercise2_result} alt="Tinted Trail Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise2_result },
+    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise2_result },
+    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise2_result },
+  ]}
+/>
 *Tinted Trail Composition — simulated result across source images.*
 **Source**: A live camera feed with moderate to high motion — a performer, moving traffic, or abstract gestures.
 
@@ -245,7 +264,13 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 ### Exercise 3: Edge Trace Contours
 
-<img src={rotoscope_exercise3_result} alt="Edge Trace Contours result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise3_result },
+    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise3_result },
+    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise3_result },
+  ]}
+/>
 *Edge Trace Contours — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — silhouetted figures, architectural features, or text overlays.
 

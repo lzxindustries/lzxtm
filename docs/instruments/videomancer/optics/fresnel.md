@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/fresnel/fresnel_hero.png
 description: "A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a square-root law."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fresnel_hero from '/img/instruments/videomancer/fresnel/fresnel_hero.png';
-import fresnel_before_after from '/img/instruments/videomancer/fresnel/fresnel_before_after.png';
 import fresnel_control_panel from '/img/instruments/videomancer/fresnel/fresnel_control_panel.png';
 import fresnel_exercise1_result from '/img/instruments/videomancer/fresnel/fresnel_exercise1_result.png';
 import fresnel_exercise2_result from '/img/instruments/videomancer/fresnel/fresnel_exercise2_result.png';
 import fresnel_exercise3_result from '/img/instruments/videomancer/fresnel/fresnel_exercise3_result.png';
+import fresnel_source1_kodim15 from '/img/instruments/videomancer/fresnel/fresnel_source1_kodim15.png';
+import fresnel_source2_kodim01 from '/img/instruments/videomancer/fresnel/fresnel_source2_kodim01.png';
+import fresnel_source3_kodim01_bw from '/img/instruments/videomancer/fresnel/fresnel_source3_kodim01_bw.png';
 
 # Fresnel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={fresnel_hero} alt="Fresnel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_hero },
+    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_hero },
+    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_hero },
+  ]}
+/>
 *Fresnel zone plate interference rings radiating from a displaced center, with dual-source moire and video-tinted coloring.*
-<img src={fresnel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Fresnel applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 ### Exercise 1: Basic Zone Plate
 
-<img src={fresnel_exercise1_result} alt="Basic Zone Plate result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise1_result },
+    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise1_result },
+    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise1_result },
+  ]}
+/>
 *Basic Zone Plate — simulated result across source images.*
 **Source**: A static test pattern or color bars — any clean signal that lets you see the ring structure clearly.
 
@@ -234,7 +247,13 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 ### Exercise 2: Dual-Source Moire
 
-<img src={fresnel_exercise2_result} alt="Dual-Source Moire result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise2_result },
+    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise2_result },
+    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise2_result },
+  ]}
+/>
 *Dual-Source Moire — simulated result across source images.*
 **Source**: A solid color field or gentle gradient — minimal source detail lets the moire structure stand out.
 
@@ -253,7 +272,13 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 ### Exercise 3: Color Zone Mask
 
-<img src={fresnel_exercise3_result} alt="Color Zone Mask result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise3_result },
+    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise3_result },
+    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise3_result },
+  ]}
+/>
 *Color Zone Mask — simulated result across source images.*
 **Source**: Live camera feed or richly colored footage — scenes with varied hues make the color masking most visible.
 

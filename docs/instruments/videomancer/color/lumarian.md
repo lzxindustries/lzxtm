@@ -7,21 +7,32 @@ image: /img/instruments/videomancer/lumarian/lumarian_hero.png
 description: "Every video image is made of three things: how bright each pixel is (luminance), what color it is (chrominance), and where the edges between regions fall."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import lumarian_hero from '/img/instruments/videomancer/lumarian/lumarian_hero.png';
-import lumarian_before_after from '/img/instruments/videomancer/lumarian/lumarian_before_after.png';
 import lumarian_control_panel from '/img/instruments/videomancer/lumarian/lumarian_control_panel.png';
 import lumarian_exercise1_result from '/img/instruments/videomancer/lumarian/lumarian_exercise1_result.png';
 import lumarian_exercise2_result from '/img/instruments/videomancer/lumarian/lumarian_exercise2_result.png';
 import lumarian_exercise3_result from '/img/instruments/videomancer/lumarian/lumarian_exercise3_result.png';
+import lumarian_source1_kodim03 from '/img/instruments/videomancer/lumarian/lumarian_source1_kodim03.png';
+import lumarian_source1_kodim04 from '/img/instruments/videomancer/lumarian/lumarian_source1_kodim04.png';
+import lumarian_source2_kodim15 from '/img/instruments/videomancer/lumarian/lumarian_source2_kodim15.png';
+import lumarian_source2_kodim23 from '/img/instruments/videomancer/lumarian/lumarian_source2_kodim23.png';
+import lumarian_source3_peppers_512 from '/img/instruments/videomancer/lumarian/lumarian_source3_peppers_512.png';
 
 # Lumarian
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={lumarian_hero} alt="Lumarian hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_hero },
+    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_hero },
+    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_hero },
+    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_hero },
+    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_hero },
+  ]}
+/>
 *Lumarian processing a natural scene with subtle edge enhancement and shadow recovery via gamma correction.*
-<img src={lumarian_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Lumarian applied.*
 
 ---
 
@@ -191,7 +202,15 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 ### Exercise 1: Correcting Camera Footage
 
-<img src={lumarian_exercise1_result} alt="Correcting Camera Footage result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise1_result },
+    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise1_result },
+    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise1_result },
+    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise1_result },
+    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise1_result },
+  ]}
+/>
 *Correcting Camera Footage — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with natural scenes.
 
@@ -210,7 +229,15 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 ### Exercise 2: Graphic Textures from Edges
 
-<img src={lumarian_exercise2_result} alt="Graphic Textures from Edges result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise2_result },
+    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise2_result },
+    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise2_result },
+    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise2_result },
+    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise2_result },
+  ]}
+/>
 *Graphic Textures from Edges — simulated result across source images.*
 **Source**: Footage with strong visual structure — architecture, typography, plants, fabric, or synthesized patterns.
 
@@ -231,7 +258,15 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 ### Exercise 3: Sculpting a Luminance Key
 
-<img src={lumarian_exercise3_result} alt="Sculpting a Luminance Key result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise3_result },
+    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise3_result },
+    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise3_result },
+    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise3_result },
+    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise3_result },
+  ]}
+/>
 *Sculpting a Luminance Key — simulated result across source images.*
 **Source**: High-contrast footage — candle flames, theatrical lighting, silhouettes, or text on a plain background.
 

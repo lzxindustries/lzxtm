@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/lascaux/lascaux_hero.png
 description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough stone walls using nothing but mineral pigments and firelight."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import lascaux_hero from '/img/instruments/videomancer/lascaux/lascaux_hero.png';
-import lascaux_before_after from '/img/instruments/videomancer/lascaux/lascaux_before_after.png';
 import lascaux_control_panel from '/img/instruments/videomancer/lascaux/lascaux_control_panel.png';
 import lascaux_exercise1_result from '/img/instruments/videomancer/lascaux/lascaux_exercise1_result.png';
 import lascaux_exercise2_result from '/img/instruments/videomancer/lascaux/lascaux_exercise2_result.png';
 import lascaux_exercise3_result from '/img/instruments/videomancer/lascaux/lascaux_exercise3_result.png';
+import lascaux_source1_kodim03 from '/img/instruments/videomancer/lascaux/lascaux_source1_kodim03.png';
+import lascaux_source2_kodim13 from '/img/instruments/videomancer/lascaux/lascaux_source2_kodim13.png';
+import lascaux_source3_kodim13_bw from '/img/instruments/videomancer/lascaux/lascaux_source3_kodim13_bw.png';
 
 # Lascaux
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={lascaux_hero} alt="Lascaux hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_hero },
+    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_hero },
+    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_hero },
+  ]}
+/>
 *Lascaux transforming a video portrait into earth-tone cave pigments illuminated by a flickering torch drifting across rough stone.*
-<img src={lascaux_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Lascaux applied.*
 
 ---
 
@@ -217,7 +224,13 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 ### Exercise 1: Earth-Tone Palette
 
-<img src={lascaux_exercise1_result} alt="Earth-Tone Palette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise1_result },
+    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise1_result },
+    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise1_result },
+  ]}
+/>
 *Earth-Tone Palette — simulated result across source images.*
 **Source**: A portrait or landscape with a range of skin tones, foliage, and sky — material with varied hue and luminance.
 
@@ -235,7 +248,13 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 ### Exercise 2: Stone Surface and Torch
 
-<img src={lascaux_exercise2_result} alt="Stone Surface and Torch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise2_result },
+    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise2_result },
+    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise2_result },
+  ]}
+/>
 *Stone Surface and Torch — simulated result across source images.*
 **Source**: Same portrait or landscape from Exercise 1.
 
@@ -254,7 +273,13 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 ### Exercise 3: Charcoal Study
 
-<img src={lascaux_exercise3_result} alt="Charcoal Study result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise3_result },
+    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise3_result },
+    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise3_result },
+  ]}
+/>
 *Charcoal Study — simulated result across source images.*
 **Source**: High-contrast footage — strong directional lighting, clear silhouettes, or figure-ground separation.
 

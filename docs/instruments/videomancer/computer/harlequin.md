@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/harlequin/harlequin_hero.png
 description: "The Atari Video Music (model C240) was released in 1977 — a consumer device that plugged into a television and translated stereo audio into geometric color patterns."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import harlequin_hero from '/img/instruments/videomancer/harlequin/harlequin_hero.png';
-import harlequin_before_after from '/img/instruments/videomancer/harlequin/harlequin_before_after.png';
 import harlequin_control_panel from '/img/instruments/videomancer/harlequin/harlequin_control_panel.png';
 import harlequin_exercise1_result from '/img/instruments/videomancer/harlequin/harlequin_exercise1_result.png';
 import harlequin_exercise2_result from '/img/instruments/videomancer/harlequin/harlequin_exercise2_result.png';
 import harlequin_exercise3_result from '/img/instruments/videomancer/harlequin/harlequin_exercise3_result.png';
+import harlequin_source1_kodim15 from '/img/instruments/videomancer/harlequin/harlequin_source1_kodim15.png';
+import harlequin_source2_kodim03 from '/img/instruments/videomancer/harlequin/harlequin_source2_kodim03.png';
+import harlequin_source3_kodim15_bw from '/img/instruments/videomancer/harlequin/harlequin_source3_kodim15_bw.png';
 
 # Harlequin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={harlequin_hero} alt="Harlequin hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_hero },
+    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_hero },
+    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_hero },
+  ]}
+/>
 *Harlequin rendering tiled Manhattan distance diamonds over a video source, colored by DDS hue cycling and modulated by IIR-averaged luminance.*
-<img src={harlequin_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Harlequin applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 ### Exercise 1: Single Breathing Diamond
 
-<img src={harlequin_exercise1_result} alt="Single Breathing Diamond result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise1_result },
+    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise1_result },
+    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise1_result },
+  ]}
+/>
 *Single Breathing Diamond — simulated result across source images.*
 **Source**: A camera feed or recorded footage with distinct bright and dark regions — faces against dark backgrounds or sky/ground compositions work well.
 
@@ -217,7 +230,13 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 ### Exercise 2: Hole and Ring Modes
 
-<img src={harlequin_exercise2_result} alt="Hole and Ring Modes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise2_result },
+    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise2_result },
+    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise2_result },
+  ]}
+/>
 *Hole and Ring Modes — simulated result across source images.*
 **Source**: Footage with a strong brightness gradient between the upper and lower halves of the frame — a horizon line, or a subject lit from above.
 
@@ -236,7 +255,13 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 ### Exercise 3: Full Atari Video Music Recreation
 
-<img src={harlequin_exercise3_result} alt="Full Atari Video Music Recreation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise3_result },
+    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise3_result },
+    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise3_result },
+  ]}
+/>
 *Full Atari Video Music Recreation — simulated result across source images.*
 **Source**: Any active video footage — music videos, live camera feeds, or high-contrast abstract footage.
 

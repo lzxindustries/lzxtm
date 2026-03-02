@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/grisaille/grisaille_hero.png
 description: "Oil painters of the Renaissance did not paint colour directly onto canvas."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import grisaille_hero from '/img/instruments/videomancer/grisaille/grisaille_hero.png';
-import grisaille_before_after from '/img/instruments/videomancer/grisaille/grisaille_before_after.png';
 import grisaille_control_panel from '/img/instruments/videomancer/grisaille/grisaille_control_panel.png';
 import grisaille_exercise1_result from '/img/instruments/videomancer/grisaille/grisaille_exercise1_result.png';
 import grisaille_exercise2_result from '/img/instruments/videomancer/grisaille/grisaille_exercise2_result.png';
 import grisaille_exercise3_result from '/img/instruments/videomancer/grisaille/grisaille_exercise3_result.png';
+import grisaille_source1_kodim03 from '/img/instruments/videomancer/grisaille/grisaille_source1_kodim03.png';
+import grisaille_source2_kodim13 from '/img/instruments/videomancer/grisaille/grisaille_source2_kodim13.png';
+import grisaille_source3_kodim13_bw from '/img/instruments/videomancer/grisaille/grisaille_source3_kodim13_bw.png';
 
 # Grisaille
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={grisaille_hero} alt="Grisaille hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_hero },
+    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_hero },
+    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_hero },
+  ]}
+/>
 *Grisaille applying luminance-dependent oil glaze simulation with craquelure cracks and patina yellowing to a richly textured source.*
-<img src={grisaille_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Grisaille applied.*
 
 ---
 
@@ -195,7 +202,13 @@ These exercises progress from the foundational grisaille underpainting through g
 
 ### Exercise 1: The Grisaille Underpainting
 
-<img src={grisaille_exercise1_result} alt="The Grisaille Underpainting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise1_result },
+    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise1_result },
+    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise1_result },
+  ]}
+/>
 *The Grisaille Underpainting — simulated result across source images.*
 **Source**: A portrait or still life with strong directional lighting — faces, fruit, or architectural details with clear shadow and highlight separation.
 
@@ -213,7 +226,13 @@ These exercises progress from the foundational grisaille underpainting through g
 
 ### Exercise 2: Glazing the Underpainting
 
-<img src={grisaille_exercise2_result} alt="Glazing the Underpainting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise2_result },
+    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise2_result },
+    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise2_result },
+  ]}
+/>
 *Glazing the Underpainting — simulated result across source images.*
 **Source**: The same source as Exercise 1, or any footage with a range of skin tones, warm fabrics, and cool shadows.
 
@@ -232,7 +251,13 @@ These exercises progress from the foundational grisaille underpainting through g
 
 ### Exercise 3: The Aging Master
 
-<img src={grisaille_exercise3_result} alt="The Aging Master result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise3_result },
+    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise3_result },
+    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise3_result },
+  ]}
+/>
 *The Aging Master — simulated result across source images.*
 **Source**: Any richly detailed source — landscapes, interiors, or textured surfaces work well.
 

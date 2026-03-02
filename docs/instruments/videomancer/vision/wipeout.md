@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 312
+sidebar_position: 313
 slug: /instruments/videomancer/wipeout
 title: "Wipeout"
 image: /img/instruments/videomancer/wipeout/wipeout_hero.png
 description: "Every broadcast television viewer has seen a wipe — a geometric edge that sweeps across the screen, replacing one image with another."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import wipeout_hero from '/img/instruments/videomancer/wipeout/wipeout_hero.png';
-import wipeout_before_after from '/img/instruments/videomancer/wipeout/wipeout_before_after.png';
 import wipeout_control_panel from '/img/instruments/videomancer/wipeout/wipeout_control_panel.png';
 import wipeout_exercise1_result from '/img/instruments/videomancer/wipeout/wipeout_exercise1_result.png';
 import wipeout_exercise2_result from '/img/instruments/videomancer/wipeout/wipeout_exercise2_result.png';
 import wipeout_exercise3_result from '/img/instruments/videomancer/wipeout/wipeout_exercise3_result.png';
+import wipeout_source1_kodim15 from '/img/instruments/videomancer/wipeout/wipeout_source1_kodim15.png';
+import wipeout_source2_kodim15_bw from '/img/instruments/videomancer/wipeout/wipeout_source2_kodim15_bw.png';
+import wipeout_source3_male_1024 from '/img/instruments/videomancer/wipeout/wipeout_source3_male_1024.png';
 
 # Wipeout
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={wipeout_hero} alt="Wipeout hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_hero },
+    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_hero },
+    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_hero },
+  ]}
+/>
 *Wipeout performing a clock wipe transition with soft edge and colored border, revealing a luminance matte beneath live video.*
-<img src={wipeout_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Wipeout applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 ### Exercise 1: Classic Barn Door Transition
 
-<img src={wipeout_exercise1_result} alt="Classic Barn Door Transition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise1_result },
+    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise1_result },
+    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise1_result },
+  ]}
+/>
 *Classic Barn Door Transition — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject and background.
 
@@ -230,7 +243,13 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 ### Exercise 2: Venetian Blinds and Checkerboard
 
-<img src={wipeout_exercise2_result} alt="Venetian Blinds and Checkerboard result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise2_result },
+    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise2_result },
+    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise2_result },
+  ]}
+/>
 *Venetian Blinds and Checkerboard — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric elements — architecture, signage, or test patterns.
 
@@ -248,7 +267,13 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 ### Exercise 3: Luma-Reactive Iris
 
-<img src={wipeout_exercise3_result} alt="Luma-Reactive Iris result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise3_result },
+    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise3_result },
+    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise3_result },
+  ]}
+/>
 *Luma-Reactive Iris — simulated result across source images.*
 **Source**: Footage with strong tonal variation — a face against a dark background, or high-contrast still life.
 

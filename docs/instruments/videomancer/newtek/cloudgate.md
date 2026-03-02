@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cloudgate/cloudgate_hero.png
 description: "In the early 1990s, the NewTek Video Toaster turned commodity hardware into a broadcast studio."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cloudgate_hero from '/img/instruments/videomancer/cloudgate/cloudgate_hero.png';
-import cloudgate_before_after from '/img/instruments/videomancer/cloudgate/cloudgate_before_after.png';
 import cloudgate_control_panel from '/img/instruments/videomancer/cloudgate/cloudgate_control_panel.png';
 import cloudgate_exercise1_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise1_result.png';
 import cloudgate_exercise2_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise2_result.png';
 import cloudgate_exercise3_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise3_result.png';
+import cloudgate_source1_kodim15 from '/img/instruments/videomancer/cloudgate/cloudgate_source1_kodim15.png';
+import cloudgate_source2_kodim03 from '/img/instruments/videomancer/cloudgate/cloudgate_source2_kodim03.png';
+import cloudgate_source3_kodim13_bw from '/img/instruments/videomancer/cloudgate/cloudgate_source3_kodim13_bw.png';
 
 # Cloudgate
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cloudgate_hero} alt="Cloudgate hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_hero },
+    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_hero },
+    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_hero },
+  ]}
+/>
 *Cloudgate dissolving a video source through multi-octave procedural cloud noise with radial tunnel masking and warm tint.*
-<img src={cloudgate_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cloudgate applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 ### Exercise 1: Warm Fog Layer
 
-<img src={cloudgate_exercise1_result} alt="Warm Fog Layer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise1_result },
+    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise1_result },
+    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise1_result },
+  ]}
+/>
 *Warm Fog Layer — simulated result across source images.*
 **Source**: A landscape or outdoor scene with visible depth — trees, buildings, and sky.
 
@@ -224,7 +237,13 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 ### Exercise 2: Golden Cloud Tunnel Dissolve
 
-<img src={cloudgate_exercise2_result} alt="Golden Cloud Tunnel Dissolve result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise2_result },
+    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise2_result },
+    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise2_result },
+  ]}
+/>
 *Golden Cloud Tunnel Dissolve — simulated result across source images.*
 **Source**: Two video sources if available, or a single source with strong visual content — a performer, dancer, or graphic animation.
 
@@ -245,7 +264,13 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 ### Exercise 3: Dark Smoke Rising
 
-<img src={cloudgate_exercise3_result} alt="Dark Smoke Rising result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise3_result },
+    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise3_result },
+    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise3_result },
+  ]}
+/>
 *Dark Smoke Rising — simulated result across source images.*
 **Source**: A dark, moody scene — nighttime footage, candlelit subjects, or dark abstract patterns.
 

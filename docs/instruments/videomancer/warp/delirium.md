@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/delirium/delirium_hero.png
 description: "Every line of a video image is a row of numbers — brightness and color values marching left to right across the screen."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import delirium_hero from '/img/instruments/videomancer/delirium/delirium_hero.png';
-import delirium_before_after from '/img/instruments/videomancer/delirium/delirium_before_after.png';
 import delirium_control_panel from '/img/instruments/videomancer/delirium/delirium_control_panel.png';
 import delirium_exercise1_result from '/img/instruments/videomancer/delirium/delirium_exercise1_result.png';
 import delirium_exercise2_result from '/img/instruments/videomancer/delirium/delirium_exercise2_result.png';
 import delirium_exercise3_result from '/img/instruments/videomancer/delirium/delirium_exercise3_result.png';
+import delirium_source1_kodim02 from '/img/instruments/videomancer/delirium/delirium_source1_kodim02.png';
+import delirium_source2_kodim07 from '/img/instruments/videomancer/delirium/delirium_source2_kodim07.png';
+import delirium_source3_kodim01_bw from '/img/instruments/videomancer/delirium/delirium_source3_kodim01_bw.png';
 
 # Delirium
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={delirium_hero} alt="Delirium hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_hero },
+    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_hero },
+    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_hero },
+  ]}
+/>
 *Delirium applying cascaded sinusoidal distortion to produce psychedelic scanline warping reminiscent of classic 16-bit battle screen effects.*
-<img src={delirium_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Delirium applied.*
 
 ---
 
@@ -242,7 +249,13 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 ### Exercise 1: Single-Layer Waves
 
-<img src={delirium_exercise1_result} alt="Single-Layer Waves result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise1_result },
+    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise1_result },
+    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise1_result },
+  ]}
+/>
 *Single-Layer Waves — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong vertical lines, architectural elements, or text — content where horizontal displacement is immediately visible.
 
@@ -260,7 +273,13 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 ### Exercise 2: Cascaded Distortion
 
-<img src={delirium_exercise2_result} alt="Cascaded Distortion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise2_result },
+    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise2_result },
+    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise2_result },
+  ]}
+/>
 *Cascaded Distortion — simulated result across source images.*
 **Source**: Abstract or colorful footage — kaleidoscopic patterns, color bars, or footage with saturated colors and varied spatial content.
 
@@ -279,7 +298,13 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 ### Exercise 3: Psychedelic Meltdown
 
-<img src={delirium_exercise3_result} alt="Psychedelic Meltdown result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise3_result },
+    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise3_result },
+    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise3_result },
+  ]}
+/>
 *Psychedelic Meltdown — simulated result across source images.*
 **Source**: Any visually rich footage — faces, landscapes, or music videos work well. Content with recognizable subjects makes the distortion more dramatic.
 

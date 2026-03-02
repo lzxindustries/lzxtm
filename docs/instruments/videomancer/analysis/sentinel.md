@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 248
+sidebar_position: 249
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
 image: /img/instruments/videomancer/sentinel/sentinel_hero.png
 description: "Surveillance cameras generate vast quantities of footage in which nothing happens."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sentinel_hero from '/img/instruments/videomancer/sentinel/sentinel_hero.png';
-import sentinel_before_after from '/img/instruments/videomancer/sentinel/sentinel_before_after.png';
 import sentinel_control_panel from '/img/instruments/videomancer/sentinel/sentinel_control_panel.png';
 import sentinel_exercise1_result from '/img/instruments/videomancer/sentinel/sentinel_exercise1_result.png';
 import sentinel_exercise2_result from '/img/instruments/videomancer/sentinel/sentinel_exercise2_result.png';
 import sentinel_exercise3_result from '/img/instruments/videomancer/sentinel/sentinel_exercise3_result.png';
+import sentinel_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source1_grayscale_ramp_h_1920x1080.png';
+import sentinel_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source2_grayscale_ramp_v_1920x1080.png';
+import sentinel_source3_step_wedge_21level_512 from '/img/instruments/videomancer/sentinel/sentinel_source3_step_wedge_21level_512.png';
 
 # Sentinel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sentinel_hero} alt="Sentinel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_hero },
+    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_hero },
+    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_hero },
+  ]}
+/>
 *Sentinel detecting lateral pixel motion with IIR background subtraction, highlighting moving regions in false colour while dimming the static scene.*
-<img src={sentinel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sentinel applied.*
 
 ---
 
@@ -201,7 +208,13 @@ These exercises progress from basic motion detection through false-colour tuning
 
 ### Exercise 1: Basic Motion Detection
 
-<img src={sentinel_exercise1_result} alt="Basic Motion Detection result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise1_result },
+    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise1_result },
+    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise1_result },
+  ]}
+/>
 *Basic Motion Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a slow-moving subject against a mostly static background.
 
@@ -219,7 +232,13 @@ These exercises progress from basic motion detection through false-colour tuning
 
 ### Exercise 2: False-Colour Tuning
 
-<img src={sentinel_exercise2_result} alt="False-Colour Tuning result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise2_result },
+    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise2_result },
+    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise2_result },
+  ]}
+/>
 *False-Colour Tuning — simulated result across source images.*
 **Source**: Footage with multiple moving elements at different speeds — a busy street, dancers, or waving hands.
 
@@ -237,7 +256,13 @@ These exercises progress from basic motion detection through false-colour tuning
 
 ### Exercise 3: Persistence Trails
 
-<img src={sentinel_exercise3_result} alt="Persistence Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise3_result },
+    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise3_result },
+    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise3_result },
+  ]}
+/>
 *Persistence Trails — simulated result across source images.*
 **Source**: A single moving object against a clean background — a swinging pendulum, a hand, or a slow pan across a contrasting edge.
 

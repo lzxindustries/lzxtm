@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 291
+sidebar_position: 292
 slug: /instruments/videomancer/tincture
 title: "Tincture"
 image: /img/instruments/videomancer/tincture/tincture_hero.png
 description: "Before digital color grading became commonplace, television engineers used false-color generators to visualize exposure levels."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tincture_hero from '/img/instruments/videomancer/tincture/tincture_hero.png';
-import tincture_before_after from '/img/instruments/videomancer/tincture/tincture_before_after.png';
 import tincture_control_panel from '/img/instruments/videomancer/tincture/tincture_control_panel.png';
 import tincture_exercise1_result from '/img/instruments/videomancer/tincture/tincture_exercise1_result.png';
 import tincture_exercise2_result from '/img/instruments/videomancer/tincture/tincture_exercise2_result.png';
 import tincture_exercise3_result from '/img/instruments/videomancer/tincture/tincture_exercise3_result.png';
+import tincture_source1_kodim15 from '/img/instruments/videomancer/tincture/tincture_source1_kodim15.png';
+import tincture_source2_kodim03 from '/img/instruments/videomancer/tincture/tincture_source2_kodim03.png';
+import tincture_source3_kodim13_bw from '/img/instruments/videomancer/tincture/tincture_source3_kodim13_bw.png';
 
 # Tincture
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={tincture_hero} alt="Tincture hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_hero },
+    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_hero },
+    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_hero },
+  ]}
+/>
 *Tincture mapping a live camera feed through the Thermal false-color palette with edge detection overlay, revealing luminance contours as glowing topographic lines.*
-<img src={tincture_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tincture applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 
 ### Exercise 1: Thermal Camera Emulation
 
-<img src={tincture_exercise1_result} alt="Thermal Camera Emulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise1_result },
+    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise1_result },
+    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise1_result },
+  ]}
+/>
 *Thermal Camera Emulation — simulated result across source images.*
 **Source**: A live camera feed with a person standing in front of a moderately lit background — skin tones and varying brightness areas provide clear palette mapping targets.
 
@@ -218,7 +231,13 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 
 ### Exercise 2: Topographic Contour Map
 
-<img src={tincture_exercise2_result} alt="Topographic Contour Map result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise2_result },
+    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise2_result },
+    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise2_result },
+  ]}
+/>
 *Topographic Contour Map — simulated result across source images.*
 **Source**: Footage with soft gradients — clouds, landscapes, or slowly moving abstract patterns work well to reveal the contour lines.
 
@@ -236,7 +255,13 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 
 ### Exercise 3: Psychedelic Poster Art
 
-<img src={tincture_exercise3_result} alt="Psychedelic Poster Art result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise3_result },
+    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise3_result },
+    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise3_result },
+  ]}
+/>
 *Psychedelic Poster Art — simulated result across source images.*
 **Source**: High-contrast footage with bold shapes — silhouettes, architectural subjects, or graphics with strong tonal separation.
 

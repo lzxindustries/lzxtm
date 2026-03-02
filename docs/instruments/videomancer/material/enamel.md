@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/enamel/enamel_hero.png
 description: "Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto a surface to form cells, each filled with vitreous glass paste and fired to a glossy finish."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import enamel_hero from '/img/instruments/videomancer/enamel/enamel_hero.png';
-import enamel_before_after from '/img/instruments/videomancer/enamel/enamel_before_after.png';
 import enamel_control_panel from '/img/instruments/videomancer/enamel/enamel_control_panel.png';
 import enamel_exercise1_result from '/img/instruments/videomancer/enamel/enamel_exercise1_result.png';
 import enamel_exercise2_result from '/img/instruments/videomancer/enamel/enamel_exercise2_result.png';
 import enamel_exercise3_result from '/img/instruments/videomancer/enamel/enamel_exercise3_result.png';
+import enamel_source1_kodim15 from '/img/instruments/videomancer/enamel/enamel_source1_kodim15.png';
+import enamel_source2_kodim03 from '/img/instruments/videomancer/enamel/enamel_source2_kodim03.png';
+import enamel_source3_kodim13_bw from '/img/instruments/videomancer/enamel/enamel_source3_kodim13_bw.png';
 
 # Enamel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={enamel_hero} alt="Enamel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_hero },
+    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_hero },
+    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_hero },
+  ]}
+/>
 *Enamel partitioning a portrait into cloisonné cells — gold wire outlines tracing every contour, vivid quantized fill glowing between the boundaries.*
-<img src={enamel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Enamel applied.*
 
 ---
 
@@ -226,7 +233,13 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 ### Exercise 1: Wire Network Discovery
 
-<img src={enamel_exercise1_result} alt="Wire Network Discovery result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise1_result },
+    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise1_result },
+    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise1_result },
+  ]}
+/>
 *Wire Network Discovery — simulated result across source images.*
 **Source**: A portrait or face close-up with clear contours — eyes, nose, mouth, hairline — and a range of soft and hard edges.
 
@@ -244,7 +257,13 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 ### Exercise 2: Palette and Saturation
 
-<img src={enamel_exercise2_result} alt="Palette and Saturation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise2_result },
+    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise2_result },
+    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise2_result },
+  ]}
+/>
 *Palette and Saturation — simulated result across source images.*
 **Source**: A colorful still life — fruit, flowers, or painted objects — with a wide range of hues and smooth tonal gradients.
 
@@ -263,7 +282,13 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 ### Exercise 3: Gloss and Animation
 
-<img src={enamel_exercise3_result} alt="Gloss and Animation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise3_result },
+    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise3_result },
+    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise3_result },
+  ]}
+/>
 *Gloss and Animation — simulated result across source images.*
 **Source**: High-contrast footage with large uniform areas — architecture, signage, or geometric patterns — where surface effects will be clearly visible.
 

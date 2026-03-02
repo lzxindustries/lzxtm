@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 243
+sidebar_position: 244
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero.png
 description: "Every pixel in a digital video frame is a number."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import scatter_hero from '/img/instruments/videomancer/scatter/scatter_hero.png';
-import scatter_before_after from '/img/instruments/videomancer/scatter/scatter_before_after.png';
 import scatter_control_panel from '/img/instruments/videomancer/scatter/scatter_control_panel.png';
 import scatter_exercise1_result from '/img/instruments/videomancer/scatter/scatter_exercise1_result.png';
 import scatter_exercise2_result from '/img/instruments/videomancer/scatter/scatter_exercise2_result.png';
 import scatter_exercise3_result from '/img/instruments/videomancer/scatter/scatter_exercise3_result.png';
+import scatter_source1_kodim02 from '/img/instruments/videomancer/scatter/scatter_source1_kodim02.png';
+import scatter_source2_kodim07 from '/img/instruments/videomancer/scatter/scatter_source2_kodim07.png';
+import scatter_source3_kodim01_bw from '/img/instruments/videomancer/scatter/scatter_source3_kodim01_bw.png';
 
 # Scatter
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={scatter_hero} alt="Scatter hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_hero },
+    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_hero },
+    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_hero },
+  ]}
+/>
 *Scatter applying XOR-based pixel corruption with structured hash patterns and edge-faded intensity to fracture a video signal into digital noise textures.*
-<img src={scatter_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Scatter applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 ### Exercise 1: Digital Grain Texture
 
-<img src={scatter_exercise1_result} alt="Digital Grain Texture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise1_result },
+    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise1_result },
+    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise1_result },
+  ]}
+/>
 *Digital Grain Texture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — skin tones, skies, or soft lighting.
 
@@ -226,7 +239,13 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 ### Exercise 2: Chroma Destruction
 
-<img src={scatter_exercise2_result} alt="Chroma Destruction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise2_result },
+    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise2_result },
+    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise2_result },
+  ]}
+/>
 *Chroma Destruction — simulated result across source images.*
 **Source**: Footage with strong, saturated colors — flowers, neon signs, colored fabrics.
 
@@ -244,7 +263,13 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 ### Exercise 3: Full Signal Disintegration
 
-<img src={scatter_exercise3_result} alt="Full Signal Disintegration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise3_result },
+    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise3_result },
+    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise3_result },
+  ]}
+/>
 *Full Signal Disintegration — simulated result across source images.*
 **Source**: Any footage — high-contrast material works well.
 

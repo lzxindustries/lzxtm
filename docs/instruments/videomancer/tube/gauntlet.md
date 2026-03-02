@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/gauntlet/gauntlet_hero.png
 description: "Every pixel of a video signal carries brightness and color — smooth gradients, soft shadows, gentle transitions."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import gauntlet_hero from '/img/instruments/videomancer/gauntlet/gauntlet_hero.png';
-import gauntlet_before_after from '/img/instruments/videomancer/gauntlet/gauntlet_before_after.png';
 import gauntlet_control_panel from '/img/instruments/videomancer/gauntlet/gauntlet_control_panel.png';
 import gauntlet_exercise1_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise1_result.png';
 import gauntlet_exercise2_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise2_result.png';
 import gauntlet_exercise3_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise3_result.png';
+import gauntlet_source1_kodim15 from '/img/instruments/videomancer/gauntlet/gauntlet_source1_kodim15.png';
+import gauntlet_source2_kodim01 from '/img/instruments/videomancer/gauntlet/gauntlet_source2_kodim01.png';
+import gauntlet_source3_kodim01_bw from '/img/instruments/videomancer/gauntlet/gauntlet_source3_kodim01_bw.png';
 
 # Gauntlet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={gauntlet_hero} alt="Gauntlet hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_hero },
+    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_hero },
+    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_hero },
+  ]}
+/>
 *Gauntlet rendering phosphor beam traces from edge-detected video, casting green CRT glow across a high-contrast source image.*
-<img src={gauntlet_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Gauntlet applied.*
 
 ---
 
@@ -207,7 +214,13 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 ### Exercise 1: Basic Edge Detection
 
-<img src={gauntlet_exercise1_result} alt="Basic Edge Detection result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise1_result },
+    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise1_result },
+    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise1_result },
+  ]}
+/>
 *Basic Edge Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with high-contrast edges — architectural details, text on screen, or a geometric test pattern.
 
@@ -225,7 +238,13 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 ### Exercise 2: Phosphor Persistence and Color
 
-<img src={gauntlet_exercise2_result} alt="Phosphor Persistence and Color result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise2_result },
+    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise2_result },
+    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise2_result },
+  ]}
+/>
 *Phosphor Persistence and Color — simulated result across source images.*
 **Source**: Footage with moderate motion — a slowly panning camera, waving hand, or scrolling graphics.
 
@@ -244,7 +263,13 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 ### Exercise 3: Full Vector Display
 
-<img src={gauntlet_exercise3_result} alt="Full Vector Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise3_result },
+    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise3_result },
+    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise3_result },
+  ]}
+/>
 *Full Vector Display — simulated result across source images.*
 **Source**: Any high-contrast footage — music videos, motion graphics, or documentary footage with strong visual compositions.
 

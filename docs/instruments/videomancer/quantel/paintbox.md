@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 202
+sidebar_position: 203
 slug: /instruments/videomancer/paintbox
 title: "Paintbox"
 image: /img/instruments/videomancer/paintbox/paintbox_hero.png
 description: "Paintbox reduces the continuous 10-bit YUV color space to a finite number of discrete levels, creating the characteristic flat, posterized look of screen-printed posters, early video games, and pop-art silk screening."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import paintbox_hero from '/img/instruments/videomancer/paintbox/paintbox_hero.png';
-import paintbox_before_after from '/img/instruments/videomancer/paintbox/paintbox_before_after.png';
 import paintbox_control_panel from '/img/instruments/videomancer/paintbox/paintbox_control_panel.png';
 import paintbox_exercise1_result from '/img/instruments/videomancer/paintbox/paintbox_exercise1_result.png';
 import paintbox_exercise2_result from '/img/instruments/videomancer/paintbox/paintbox_exercise2_result.png';
 import paintbox_exercise3_result from '/img/instruments/videomancer/paintbox/paintbox_exercise3_result.png';
+import paintbox_source1_kodim15 from '/img/instruments/videomancer/paintbox/paintbox_source1_kodim15.png';
+import paintbox_source2_kodim01 from '/img/instruments/videomancer/paintbox/paintbox_source2_kodim01.png';
+import paintbox_source3_kodim01_bw from '/img/instruments/videomancer/paintbox/paintbox_source3_kodim01_bw.png';
 
 # Paintbox
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={paintbox_hero} alt="Paintbox hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_hero },
+    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_hero },
+    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_hero },
+  ]}
+/>
 *A sunset photograph reduced to eight flat color bands — each pixel snapped to its nearest palette entry with ordered dither softening the transitions between quantized zones.*
-<img src={paintbox_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Paintbox applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from basic posterization through palette mapping to com
 
 ### Exercise 1: Pop-Art Posterization
 
-<img src={paintbox_exercise1_result} alt="Pop-Art Posterization result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise1_result },
+    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise1_result },
+    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise1_result },
+  ]}
+/>
 *Pop-Art Posterization — simulated result across source images.*
 **Source**: High-contrast portrait or face close-up with varied skin tones and a simple background.
 
@@ -231,7 +244,13 @@ These exercises progress from basic posterization through palette mapping to com
 
 ### Exercise 2: Sepia Palette with Ordered Dither
 
-<img src={paintbox_exercise2_result} alt="Sepia Palette with Ordered Dither result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise2_result },
+    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise2_result },
+    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise2_result },
+  ]}
+/>
 *Sepia Palette with Ordered Dither — simulated result across source images.*
 **Source**: Landscape or architectural scene with smooth gradients — sky, water, distant hills.
 
@@ -250,7 +269,13 @@ These exercises progress from basic posterization through palette mapping to com
 
 ### Exercise 3: Night Vision with Random Noise
 
-<img src={paintbox_exercise3_result} alt="Night Vision with Random Noise result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise3_result },
+    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise3_result },
+    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise3_result },
+  ]}
+/>
 *Night Vision with Random Noise — simulated result across source images.*
 **Source**: Any footage — indoor scene, outdoor, or abstract video.
 

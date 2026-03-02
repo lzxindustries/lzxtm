@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 207
+sidebar_position: 208
 slug: /instruments/videomancer/peephole
 title: "Peephole"
 image: /img/instruments/videomancer/peephole/peephole_hero.png
 description: "Every video synthesizer needs a way to isolate part of the frame — to say \"this region is visible, everything else is black.\" Peephole is a position-based video keyer that generates a soft mask from horizontal and vertical position ramps."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import peephole_hero from '/img/instruments/videomancer/peephole/peephole_hero.png';
-import peephole_before_after from '/img/instruments/videomancer/peephole/peephole_before_after.png';
 import peephole_control_panel from '/img/instruments/videomancer/peephole/peephole_control_panel.png';
 import peephole_exercise1_result from '/img/instruments/videomancer/peephole/peephole_exercise1_result.png';
 import peephole_exercise2_result from '/img/instruments/videomancer/peephole/peephole_exercise2_result.png';
 import peephole_exercise3_result from '/img/instruments/videomancer/peephole/peephole_exercise3_result.png';
+import peephole_source1_kodim02 from '/img/instruments/videomancer/peephole/peephole_source1_kodim02.png';
+import peephole_source2_kodim07 from '/img/instruments/videomancer/peephole/peephole_source2_kodim07.png';
+import peephole_source3_kodim01_bw from '/img/instruments/videomancer/peephole/peephole_source3_kodim01_bw.png';
 
 # Peephole
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={peephole_hero} alt="Peephole hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: peephole_source1_kodim02, after: peephole_hero },
+    { label: "Kodim07", before: peephole_source2_kodim07, after: peephole_hero },
+    { label: "Kodim01 B&W", before: peephole_source3_kodim01_bw, after: peephole_hero },
+  ]}
+/>
 *Peephole carving a diamond key window through a live camera feed, luma modulation pulling the boundary inward around dark regions.*
-<img src={peephole_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Peephole applied.*
 
 ---
 
@@ -222,7 +229,13 @@ These exercises progress from simple rectangular masking to content-responsive k
 
 ### Exercise 1: Rectangular Window Framing
 
-<img src={peephole_exercise1_result} alt="Rectangular Window Framing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: peephole_source1_kodim02, after: peephole_exercise1_result },
+    { label: "Kodim07", before: peephole_source2_kodim07, after: peephole_exercise1_result },
+    { label: "Kodim01 B&W", before: peephole_source3_kodim01_bw, after: peephole_exercise1_result },
+  ]}
+/>
 *Rectangular Window Framing — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
@@ -241,7 +254,13 @@ These exercises progress from simple rectangular masking to content-responsive k
 
 ### Exercise 2: Diamond Keys and Luma Modulation
 
-<img src={peephole_exercise2_result} alt="Diamond Keys and Luma Modulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: peephole_source1_kodim02, after: peephole_exercise2_result },
+    { label: "Kodim07", before: peephole_source2_kodim07, after: peephole_exercise2_result },
+    { label: "Kodim01 B&W", before: peephole_source3_kodim01_bw, after: peephole_exercise2_result },
+  ]}
+/>
 *Diamond Keys and Luma Modulation — simulated result across source images.*
 **Source**: Footage with strong brightness contrast — spotlit subjects against dark backgrounds.
 
@@ -260,7 +279,13 @@ These exercises progress from simple rectangular masking to content-responsive k
 
 ### Exercise 3: Border Extraction and Key Sculpting
 
-<img src={peephole_exercise3_result} alt="Border Extraction and Key Sculpting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: peephole_source1_kodim02, after: peephole_exercise3_result },
+    { label: "Kodim07", before: peephole_source2_kodim07, after: peephole_exercise3_result },
+    { label: "Kodim01 B&W", before: peephole_source3_kodim01_bw, after: peephole_exercise3_result },
+  ]}
+/>
 *Border Extraction and Key Sculpting — simulated result across source images.*
 **Source**: Any footage — high-contrast material works well for visible borders.
 

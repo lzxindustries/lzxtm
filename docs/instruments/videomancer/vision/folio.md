@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/folio/folio_hero.png
 description: "Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import folio_hero from '/img/instruments/videomancer/folio/folio_hero.png';
-import folio_before_after from '/img/instruments/videomancer/folio/folio_before_after.png';
 import folio_control_panel from '/img/instruments/videomancer/folio/folio_control_panel.png';
 import folio_exercise1_result from '/img/instruments/videomancer/folio/folio_exercise1_result.png';
 import folio_exercise2_result from '/img/instruments/videomancer/folio/folio_exercise2_result.png';
 import folio_exercise3_result from '/img/instruments/videomancer/folio/folio_exercise3_result.png';
+import folio_source1_kodim15 from '/img/instruments/videomancer/folio/folio_source1_kodim15.png';
+import folio_source2_kodim15_bw from '/img/instruments/videomancer/folio/folio_source2_kodim15_bw.png';
+import folio_source3_male_1024 from '/img/instruments/videomancer/folio/folio_source3_male_1024.png';
 
 # Folio
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={folio_hero} alt="Folio hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: folio_source1_kodim15, after: folio_hero },
+    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_hero },
+    { label: "Male", before: folio_source3_male_1024, after: folio_hero },
+  ]}
+/>
 *A photographic image caught mid-page-turn, its right half compressed into a narrow vertical strip against a saturated teal background — the fold edge darkened, the revealed colour field filling the vacated screen space.*
-<img src={folio_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Folio applied.*
 
 ---
 
@@ -234,7 +241,13 @@ These exercises progress from a static half-turn through animated oscillation to
 
 ### Exercise 1: Static Half Turn
 
-<img src={folio_exercise1_result} alt="Static Half Turn result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise1_result },
+    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise1_result },
+    { label: "Male", before: folio_source3_male_1024, after: folio_exercise1_result },
+  ]}
+/>
 *Static Half Turn — simulated result across source images.*
 **Source**: A high-contrast image with readable text or geometric patterns — something where horizontal compression is immediately obvious.
 
@@ -254,7 +267,13 @@ These exercises progress from a static half-turn through animated oscillation to
 
 ### Exercise 2: Animated Page Flip
 
-<img src={folio_exercise2_result} alt="Animated Page Flip result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise2_result },
+    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise2_result },
+    { label: "Male", before: folio_source3_male_1024, after: folio_exercise2_result },
+  ]}
+/>
 *Animated Page Flip — simulated result across source images.*
 **Source**: A video source with moderate motion — camera footage or a slowly changing pattern. The motion helps distinguish the compressed page content from the static background.
 
@@ -274,7 +293,13 @@ These exercises progress from a static half-turn through animated oscillation to
 
 ### Exercise 3: Coloured Mask Generation
 
-<img src={folio_exercise3_result} alt="Coloured Mask Generation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise3_result },
+    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise3_result },
+    { label: "Male", before: folio_source3_male_1024, after: folio_exercise3_result },
+  ]}
+/>
 *Coloured Mask Generation — simulated result across source images.*
 **Source**: Any video source — the source content is secondary to the background colour field in this exercise.
 

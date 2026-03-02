@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/elastica/elastica_hero.png
 description: "In the 1970s, a single machine dominated the world of broadcast motion graphics."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import elastica_hero from '/img/instruments/videomancer/elastica/elastica_hero.png';
-import elastica_before_after from '/img/instruments/videomancer/elastica/elastica_before_after.png';
 import elastica_control_panel from '/img/instruments/videomancer/elastica/elastica_control_panel.png';
 import elastica_exercise1_result from '/img/instruments/videomancer/elastica/elastica_exercise1_result.png';
 import elastica_exercise2_result from '/img/instruments/videomancer/elastica/elastica_exercise2_result.png';
 import elastica_exercise3_result from '/img/instruments/videomancer/elastica/elastica_exercise3_result.png';
+import elastica_source1_kodim02 from '/img/instruments/videomancer/elastica/elastica_source1_kodim02.png';
+import elastica_source2_kodim07 from '/img/instruments/videomancer/elastica/elastica_source2_kodim07.png';
+import elastica_source3_kodim01_bw from '/img/instruments/videomancer/elastica/elastica_source3_kodim01_bw.png';
 
 # Elastica
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={elastica_hero} alt="Elastica hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_hero },
+    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_hero },
+    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_hero },
+  ]}
+/>
 *Elastica applying sine-wave horizontal displacement to create Scanimate-style rubber-sheet distortion with animated phase scrolling.*
-<img src={elastica_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Elastica applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises progress from basic horizontal displacement through vertical war
 
 ### Exercise 1: Classic Scanimate Ripple
 
-<img src={elastica_exercise1_result} alt="Classic Scanimate Ripple result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise1_result },
+    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise1_result },
+    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise1_result },
+  ]}
+/>
 *Classic Scanimate Ripple — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong vertical lines — architecture, text, or geometric patterns.
 
@@ -225,7 +238,13 @@ These exercises progress from basic horizontal displacement through vertical war
 
 ### Exercise 2: Vertical Squeeze and Cross-Modulation
 
-<img src={elastica_exercise2_result} alt="Vertical Squeeze and Cross-Modulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise2_result },
+    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise2_result },
+    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise2_result },
+  ]}
+/>
 *Vertical Squeeze and Cross-Modulation — simulated result across source images.*
 **Source**: Footage with horizontal features — landscape horizons, striped patterns, or text crawls.
 
@@ -244,7 +263,13 @@ These exercises progress from basic horizontal displacement through vertical war
 
 ### Exercise 3: Waveshape Comparison and Extreme Warp
 
-<img src={elastica_exercise3_result} alt="Waveshape Comparison and Extreme Warp result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise3_result },
+    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise3_result },
+    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise3_result },
+  ]}
+/>
 *Waveshape Comparison and Extreme Warp — simulated result across source images.*
 **Source**: Any footage with recognizable content — faces, text, or graphic patterns.
 

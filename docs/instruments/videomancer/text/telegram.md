@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 281
+sidebar_position: 282
 slug: /instruments/videomancer/telegram
 title: "Telegram"
 image: /img/instruments/videomancer/telegram/telegram_hero.png
 description: "Before digital communication, before fax machines, before even the telephone reached most of the world, there was the telegraph."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import telegram_hero from '/img/instruments/videomancer/telegram/telegram_hero.png';
-import telegram_before_after from '/img/instruments/videomancer/telegram/telegram_before_after.png';
 import telegram_control_panel from '/img/instruments/videomancer/telegram/telegram_control_panel.png';
 import telegram_exercise1_result from '/img/instruments/videomancer/telegram/telegram_exercise1_result.png';
 import telegram_exercise2_result from '/img/instruments/videomancer/telegram/telegram_exercise2_result.png';
 import telegram_exercise3_result from '/img/instruments/videomancer/telegram/telegram_exercise3_result.png';
+import telegram_source1_kodim15 from '/img/instruments/videomancer/telegram/telegram_source1_kodim15.png';
+import telegram_source2_kodim15_bw from '/img/instruments/videomancer/telegram/telegram_source2_kodim15_bw.png';
+import telegram_source3_male_1024 from '/img/instruments/videomancer/telegram/telegram_source3_male_1024.png';
 
 # Telegram
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={telegram_hero} alt="Telegram hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_hero },
+    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_hero },
+    { label: "Male", before: telegram_source3_male_1024, after: telegram_hero },
+  ]}
+/>
 *Telegram rendering Morse code dot-dash patterns from source luminance as scrolling horizontal bars across configurable tape bands.*
-<img src={telegram_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Telegram applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 ### Exercise 1: Basic Telegraph Tape
 
-<img src={telegram_exercise1_result} alt="Basic Telegraph Tape result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise1_result },
+    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise1_result },
+    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise1_result },
+  ]}
+/>
 *Basic Telegraph Tape — simulated result across source images.*
 **Source**: A camera feed or image with clear areas of light and dark — a human face, text document, or high-contrast scene.
 
@@ -235,7 +248,13 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 ### Exercise 2: Luma-Driven Encoding
 
-<img src={telegram_exercise2_result} alt="Luma-Driven Encoding result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise2_result },
+    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise2_result },
+    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise2_result },
+  ]}
+/>
 *Luma-Driven Encoding — simulated result across source images.*
 **Source**: A scene with gradual brightness transitions — a gradient test pattern or a face lit from one side.
 
@@ -253,7 +272,13 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 ### Exercise 3: Full Transmission
 
-<img src={telegram_exercise3_result} alt="Full Transmission result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise3_result },
+    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise3_result },
+    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise3_result },
+  ]}
+/>
 *Full Transmission — simulated result across source images.*
 **Source**: Any dynamic footage with varying brightness — music performance, nature, or abstract video feedback.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/ebru/ebru_hero.png
 description: "In the art of Turkish marbling, pigment drops fall onto the surface of a water bath treated with gum solution."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ebru_hero from '/img/instruments/videomancer/ebru/ebru_hero.png';
-import ebru_before_after from '/img/instruments/videomancer/ebru/ebru_before_after.png';
 import ebru_control_panel from '/img/instruments/videomancer/ebru/ebru_control_panel.png';
 import ebru_exercise1_result from '/img/instruments/videomancer/ebru/ebru_exercise1_result.png';
 import ebru_exercise2_result from '/img/instruments/videomancer/ebru/ebru_exercise2_result.png';
 import ebru_exercise3_result from '/img/instruments/videomancer/ebru/ebru_exercise3_result.png';
+import ebru_source1_kodim13 from '/img/instruments/videomancer/ebru/ebru_source1_kodim13.png';
+import ebru_source2_kodim13_bw from '/img/instruments/videomancer/ebru/ebru_source2_kodim13_bw.png';
+import ebru_source3_kodim03 from '/img/instruments/videomancer/ebru/ebru_source3_kodim03.png';
 
 # Ebru
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ebru_hero} alt="Ebru hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_hero },
+    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_hero },
+    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_hero },
+  ]}
+/>
 *Ebru applying concentric ring distortion and sinusoidal comb rake displacement to create Turkish water marbling textures from live video.*
-<img src={ebru_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ebru applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 ### Exercise 1: Concentric Rings
 
-<img src={ebru_exercise1_result} alt="Concentric Rings result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise1_result },
+    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise1_result },
+    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise1_result },
+  ]}
+/>
 *Concentric Rings — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with mid-range brightness and visible detail — faces, landscapes, or architectural subjects work well.
 
@@ -234,7 +247,13 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 ### Exercise 2: Comb Rake Shaping
 
-<img src={ebru_exercise2_result} alt="Comb Rake Shaping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise2_result },
+    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise2_result },
+    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise2_result },
+  ]}
+/>
 *Comb Rake Shaping — simulated result across source images.*
 **Source**: A high-contrast source — black and white patterns, bold graphics, or a colour-bar test signal.
 
@@ -252,7 +271,13 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 ### Exercise 3: Multi-Drop Chromatic Marbling
 
-<img src={ebru_exercise3_result} alt="Multi-Drop Chromatic Marbling result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise3_result },
+    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise3_result },
+    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise3_result },
+  ]}
+/>
 *Multi-Drop Chromatic Marbling — simulated result across source images.*
 **Source**: Footage with rich colour content — botanical close-ups, textiles, or painted surfaces.
 

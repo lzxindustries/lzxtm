@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/mirage/mirage_hero.png
 description: "The Quantel Mirage DVM8000, introduced in 1982, was the first real-time digital video effects system capable of mapping live television onto arbitrary 3D surfaces."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import mirage_hero from '/img/instruments/videomancer/mirage/mirage_hero.png';
-import mirage_before_after from '/img/instruments/videomancer/mirage/mirage_before_after.png';
 import mirage_control_panel from '/img/instruments/videomancer/mirage/mirage_control_panel.png';
 import mirage_exercise1_result from '/img/instruments/videomancer/mirage/mirage_exercise1_result.png';
 import mirage_exercise2_result from '/img/instruments/videomancer/mirage/mirage_exercise2_result.png';
 import mirage_exercise3_result from '/img/instruments/videomancer/mirage/mirage_exercise3_result.png';
+import mirage_source1_kodim15 from '/img/instruments/videomancer/mirage/mirage_source1_kodim15.png';
+import mirage_source2_kodim15_bw from '/img/instruments/videomancer/mirage/mirage_source2_kodim15_bw.png';
+import mirage_source3_male_1024 from '/img/instruments/videomancer/mirage/mirage_source3_male_1024.png';
 
 # Mirage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={mirage_hero} alt="Mirage hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: mirage_source1_kodim15, after: mirage_hero },
+    { label: "Kodim15 B&W", before: mirage_source2_kodim15_bw, after: mirage_hero },
+    { label: "Male", before: mirage_source3_male_1024, after: mirage_hero },
+  ]}
+/>
 *Mirage wrapping a live video stream onto a rotating cylindrical surface with perspective shading and configurable background fill.*
-<img src={mirage_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Mirage applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 ### Exercise 1: Spinning Cylinder
 
-<img src={mirage_exercise1_result} alt="Spinning Cylinder result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: mirage_source1_kodim15, after: mirage_exercise1_result },
+    { label: "Kodim15 B&W", before: mirage_source2_kodim15_bw, after: mirage_exercise1_result },
+    { label: "Male", before: mirage_source3_male_1024, after: mirage_exercise1_result },
+  ]}
+/>
 *Spinning Cylinder — simulated result across source images.*
 **Source**: A video with recognizable text or graphics — a title card, a news crawl, or a logo.
 
@@ -232,7 +245,13 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 ### Exercise 2: Flag Wave
 
-<img src={mirage_exercise2_result} alt="Flag Wave result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: mirage_source1_kodim15, after: mirage_exercise2_result },
+    { label: "Kodim15 B&W", before: mirage_source2_kodim15_bw, after: mirage_exercise2_result },
+    { label: "Male", before: mirage_source3_male_1024, after: mirage_exercise2_result },
+  ]}
+/>
 *Flag Wave — simulated result across source images.*
 **Source**: A full-frame image or graphic — a flag, a poster, or a painting.
 
@@ -251,7 +270,13 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 ### Exercise 3: Shatter and Explode
 
-<img src={mirage_exercise3_result} alt="Shatter and Explode result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: mirage_source1_kodim15, after: mirage_exercise3_result },
+    { label: "Kodim15 B&W", before: mirage_source2_kodim15_bw, after: mirage_exercise3_result },
+    { label: "Male", before: mirage_source3_male_1024, after: mirage_exercise3_result },
+  ]}
+/>
 *Shatter and Explode — simulated result across source images.*
 **Source**: Any video with strong visual structure — faces, architecture, or color bars.
 

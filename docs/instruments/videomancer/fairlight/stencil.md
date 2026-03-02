@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 269
+sidebar_position: 270
 slug: /instruments/videomancer/stencil
 title: "Stencil"
 image: /img/instruments/videomancer/stencil/stencil_hero.png
 description: "Stencil converts the input video into a binary mask based on luminance threshold, then uses that mask to selectively reveal either a solid fill colour or the original image — creating bold, graphic compositions reminiscent of screen-printed posters and paper stencil art."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stencil_hero from '/img/instruments/videomancer/stencil/stencil_hero.png';
-import stencil_before_after from '/img/instruments/videomancer/stencil/stencil_before_after.png';
 import stencil_control_panel from '/img/instruments/videomancer/stencil/stencil_control_panel.png';
 import stencil_exercise1_result from '/img/instruments/videomancer/stencil/stencil_exercise1_result.png';
 import stencil_exercise2_result from '/img/instruments/videomancer/stencil/stencil_exercise2_result.png';
 import stencil_exercise3_result from '/img/instruments/videomancer/stencil/stencil_exercise3_result.png';
+import stencil_source1_kodim15 from '/img/instruments/videomancer/stencil/stencil_source1_kodim15.png';
+import stencil_source2_kodim01 from '/img/instruments/videomancer/stencil/stencil_source2_kodim01.png';
+import stencil_source3_kodim01_bw from '/img/instruments/videomancer/stencil/stencil_source3_kodim01_bw.png';
 
 # Stencil
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stencil_hero} alt="Stencil hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_hero },
+    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_hero },
+    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_hero },
+  ]}
+/>
 *Hard-edged luminance masks carve vivid fill colours from the video stream, turning every frame into a cut-paper silhouette.*
-<img src={stencil_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stencil applied.*
 
 ---
 
@@ -225,7 +232,13 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 ### Exercise 1: Basic Threshold Mask
 
-<img src={stencil_exercise1_result} alt="Basic Threshold Mask result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise1_result },
+    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise1_result },
+    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise1_result },
+  ]}
+/>
 *Basic Threshold Mask — simulated result across source images.*
 **Source**: High-contrast footage — a face lit from one side, or text on a white background.
 
@@ -243,7 +256,13 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 ### Exercise 2: Coloured Stencil with Edge
 
-<img src={stencil_exercise2_result} alt="Coloured Stencil with Edge result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise2_result },
+    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise2_result },
+    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise2_result },
+  ]}
+/>
 *Coloured Stencil with Edge — simulated result across source images.*
 **Source**: Colourful scenery or abstract video — anything with a broad luminance range.
 
@@ -263,7 +282,13 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 ### Exercise 3: Soft Stencil with Offset
 
-<img src={stencil_exercise3_result} alt="Soft Stencil with Offset result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise3_result },
+    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise3_result },
+    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise3_result },
+  ]}
+/>
 *Soft Stencil with Offset — simulated result across source images.*
 **Source**: A slowly-moving abstract video or camera feedback loop.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/mobius/mobius_hero.png
 description: "Mobius maps video onto the surface of a Möbius strip — a one-sided topological surface created by taking a rectangular band, giving it a half-twist, and joining the ends."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import mobius_hero from '/img/instruments/videomancer/mobius/mobius_hero.png';
-import mobius_before_after from '/img/instruments/videomancer/mobius/mobius_before_after.png';
 import mobius_control_panel from '/img/instruments/videomancer/mobius/mobius_control_panel.png';
 import mobius_exercise1_result from '/img/instruments/videomancer/mobius/mobius_exercise1_result.png';
 import mobius_exercise2_result from '/img/instruments/videomancer/mobius/mobius_exercise2_result.png';
 import mobius_exercise3_result from '/img/instruments/videomancer/mobius/mobius_exercise3_result.png';
+import mobius_source1_kodim02 from '/img/instruments/videomancer/mobius/mobius_source1_kodim02.png';
+import mobius_source2_kodim07 from '/img/instruments/videomancer/mobius/mobius_source2_kodim07.png';
+import mobius_source3_kodim01_bw from '/img/instruments/videomancer/mobius/mobius_source3_kodim01_bw.png';
 
 # Mobius
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={mobius_hero} alt="Mobius hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mobius_source1_kodim02, after: mobius_hero },
+    { label: "Kodim07", before: mobius_source2_kodim07, after: mobius_hero },
+    { label: "Kodim01 B&W", before: mobius_source3_kodim01_bw, after: mobius_hero },
+  ]}
+/>
 *Mobius applying a progressive half-twist warp to a landscape source — the image folds over itself with luma inversion and chroma rotation revealing a seamless topological surface.*
-<img src={mobius_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Mobius applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progressively build the Möbius effect from simple displacement 
 
 ### Exercise 1: The Basic Twist
 
-<img src={mobius_exercise1_result} alt="The Basic Twist result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mobius_source1_kodim02, after: mobius_exercise1_result },
+    { label: "Kodim07", before: mobius_source2_kodim07, after: mobius_exercise1_result },
+    { label: "Kodim01 B&W", before: mobius_source3_kodim01_bw, after: mobius_exercise1_result },
+  ]}
+/>
 *The Basic Twist — simulated result across source images.*
 **Source**: A static image or camera feed with strong horizontal and vertical features — architecture, grid patterns, or text.
 
@@ -231,7 +244,13 @@ These exercises progressively build the Möbius effect from simple displacement 
 
 ### Exercise 2: Adding Inversion and Color
 
-<img src={mobius_exercise2_result} alt="Adding Inversion and Color result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mobius_source1_kodim02, after: mobius_exercise2_result },
+    { label: "Kodim07", before: mobius_source2_kodim07, after: mobius_exercise2_result },
+    { label: "Kodim01 B&W", before: mobius_source3_kodim01_bw, after: mobius_exercise2_result },
+  ]}
+/>
 *Adding Inversion and Color — simulated result across source images.*
 **Source**: Footage with distinct bright and dark regions and saturated colors — sunset skies, neon signage, or color bars.
 
@@ -250,7 +269,13 @@ These exercises progressively build the Möbius effect from simple displacement 
 
 ### Exercise 3: Animated Rotation
 
-<img src={mobius_exercise3_result} alt="Animated Rotation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mobius_source1_kodim02, after: mobius_exercise3_result },
+    { label: "Kodim07", before: mobius_source2_kodim07, after: mobius_exercise3_result },
+    { label: "Kodim01 B&W", before: mobius_source3_kodim01_bw, after: mobius_exercise3_result },
+  ]}
+/>
 *Animated Rotation — simulated result across source images.*
 **Source**: Moving footage — dancers, traffic, flowing water — material where the twist animation interacts with the source motion.
 

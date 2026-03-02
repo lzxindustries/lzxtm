@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 275
+sidebar_position: 276
 slug: /instruments/videomancer/strobe
 title: "Strobe"
 image: /img/instruments/videomancer/strobe/strobe_hero.png
 description: "Stroboscopic photography freezes motion at impossible intervals — a dancer captured ten times in a single exposure, each ghost slightly advanced from the last."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import strobe_hero from '/img/instruments/videomancer/strobe/strobe_hero.png';
-import strobe_before_after from '/img/instruments/videomancer/strobe/strobe_before_after.png';
 import strobe_control_panel from '/img/instruments/videomancer/strobe/strobe_control_panel.png';
 import strobe_exercise1_result from '/img/instruments/videomancer/strobe/strobe_exercise1_result.png';
 import strobe_exercise2_result from '/img/instruments/videomancer/strobe/strobe_exercise2_result.png';
 import strobe_exercise3_result from '/img/instruments/videomancer/strobe/strobe_exercise3_result.png';
+import strobe_source1_kodim03 from '/img/instruments/videomancer/strobe/strobe_source1_kodim03.png';
+import strobe_source2_kodim13 from '/img/instruments/videomancer/strobe/strobe_source2_kodim13.png';
+import strobe_source3_kodim13_bw from '/img/instruments/videomancer/strobe/strobe_source3_kodim13_bw.png';
 
 # Strobe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={strobe_hero} alt="Strobe hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_hero },
+    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_hero },
+    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_hero },
+  ]}
+/>
 *Strobe freezing a moving subject into layered multi-exposure echoes with DDS-driven periodic flash and IIR persistence trails.*
-<img src={strobe_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Strobe applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 ### Exercise 1: Basic Strobe Freeze
 
-<img src={strobe_exercise1_result} alt="Basic Strobe Freeze result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise1_result },
+    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise1_result },
+    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise1_result },
+  ]}
+/>
 *Basic Strobe Freeze — simulated result across source images.*
 **Source**: A slowly moving subject — a hand waving, a pendulum, or scrolling text.
 
@@ -227,7 +240,13 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 ### Exercise 2: Persistence Trails
 
-<img src={strobe_exercise2_result} alt="Persistence Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise2_result },
+    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise2_result },
+    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise2_result },
+  ]}
+/>
 *Persistence Trails — simulated result across source images.*
 **Source**: A subject with clear motion trails — a dancer, a bouncing ball, or a slow camera pan across a high-contrast scene.
 
@@ -246,7 +265,13 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 ### Exercise 3: Stroboscopic Abstraction
 
-<img src={strobe_exercise3_result} alt="Stroboscopic Abstraction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise3_result },
+    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise3_result },
+    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise3_result },
+  ]}
+/>
 *Stroboscopic Abstraction — simulated result across source images.*
 **Source**: Any high-contrast, moving footage — concert visuals, feedback loops, or oscilloscope patterns.
 

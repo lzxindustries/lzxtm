@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/isotherm/isotherm_hero.png
 description: "Every surface radiates energy."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import isotherm_hero from '/img/instruments/videomancer/isotherm/isotherm_hero.png';
-import isotherm_before_after from '/img/instruments/videomancer/isotherm/isotherm_before_after.png';
 import isotherm_control_panel from '/img/instruments/videomancer/isotherm/isotherm_control_panel.png';
 import isotherm_exercise1_result from '/img/instruments/videomancer/isotherm/isotherm_exercise1_result.png';
 import isotherm_exercise2_result from '/img/instruments/videomancer/isotherm/isotherm_exercise2_result.png';
 import isotherm_exercise3_result from '/img/instruments/videomancer/isotherm/isotherm_exercise3_result.png';
+import isotherm_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source1_grayscale_ramp_h_1920x1080.png';
+import isotherm_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source2_grayscale_ramp_v_1920x1080.png';
+import isotherm_source3_step_wedge_21level_512 from '/img/instruments/videomancer/isotherm/isotherm_source3_step_wedge_21level_512.png';
 
 # Isotherm
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={isotherm_hero} alt="Isotherm hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_hero },
+    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_hero },
+    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_hero },
+  ]}
+/>
 *Isotherm mapping video luminance into false-color thermal palettes with contour lines and HUD overlay.*
-<img src={isotherm_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Isotherm applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 ### Exercise 1: Thermal Camera Simulation
 
-<img src={isotherm_exercise1_result} alt="Thermal Camera Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise1_result },
+    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise1_result },
+    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise1_result },
+  ]}
+/>
 *Thermal Camera Simulation — simulated result across source images.*
 **Source**: A live camera feed of a person or scene with varied brightness — skin, clothing, background surfaces.
 
@@ -218,7 +231,13 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 ### Exercise 2: Contour Mapping
 
-<img src={isotherm_exercise2_result} alt="Contour Mapping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise2_result },
+    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise2_result },
+    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise2_result },
+  ]}
+/>
 *Contour Mapping — simulated result across source images.*
 **Source**: Footage with smooth gradients — skies, light falloff on walls, or a gradient test pattern.
 
@@ -236,7 +255,13 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 ### Exercise 3: False-Colour Overlay
 
-<img src={isotherm_exercise3_result} alt="False-Colour Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise3_result },
+    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise3_result },
+    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise3_result },
+  ]}
+/>
 *False-Colour Overlay — simulated result across source images.*
 **Source**: Any recognisable footage — faces, landscapes, architecture.
 

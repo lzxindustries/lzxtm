@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 261
+sidebar_position: 262
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
 image: /img/instruments/videomancer/snapshot/snapshot_hero.png
 description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened by vignetting, visible film grain, a warm or cool color cast from the film stock, and the harsh flat light of a built-in flash."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import snapshot_hero from '/img/instruments/videomancer/snapshot/snapshot_hero.png';
-import snapshot_before_after from '/img/instruments/videomancer/snapshot/snapshot_before_after.png';
 import snapshot_control_panel from '/img/instruments/videomancer/snapshot/snapshot_control_panel.png';
 import snapshot_exercise1_result from '/img/instruments/videomancer/snapshot/snapshot_exercise1_result.png';
 import snapshot_exercise2_result from '/img/instruments/videomancer/snapshot/snapshot_exercise2_result.png';
 import snapshot_exercise3_result from '/img/instruments/videomancer/snapshot/snapshot_exercise3_result.png';
+import snapshot_source1_kodim05 from '/img/instruments/videomancer/snapshot/snapshot_source1_kodim05.png';
+import snapshot_source2_kodim15 from '/img/instruments/videomancer/snapshot/snapshot_source2_kodim15.png';
+import snapshot_source3_kodim15_bw from '/img/instruments/videomancer/snapshot/snapshot_source3_kodim15_bw.png';
 
 # Snapshot
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={snapshot_hero} alt="Snapshot hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_hero },
+    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_hero },
+    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_hero },
+  ]}
+/>
 *Snapshot applying disposable-camera color saturation, vignette darkening, and film grain to transform clean digital video into nostalgic lo-fi photography.*
-<img src={snapshot_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Snapshot applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 ### Exercise 1: Warm Film Portrait
 
-<img src={snapshot_exercise1_result} alt="Warm Film Portrait result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise1_result },
+    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise1_result },
+    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise1_result },
+  ]}
+/>
 *Warm Film Portrait — simulated result across source images.*
 **Source**: A portrait or figure against a simple background, ideally with skin tones and some depth.
 
@@ -216,7 +229,13 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 ### Exercise 2: Flash Party Photo
 
-<img src={snapshot_exercise2_result} alt="Flash Party Photo result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise2_result },
+    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise2_result },
+    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise2_result },
+  ]}
+/>
 *Flash Party Photo — simulated result across source images.*
 **Source**: A scene with objects at varying distances from the camera — foreground, midground, and background.
 
@@ -236,7 +255,13 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 ### Exercise 3: Cross-Processed Experimental
 
-<img src={snapshot_exercise3_result} alt="Cross-Processed Experimental result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise3_result },
+    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise3_result },
+    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise3_result },
+  ]}
+/>
 *Cross-Processed Experimental — simulated result across source images.*
 **Source**: High-contrast footage with strong color content — street scenes, neon signs, or nature with saturated greens and reds.
 

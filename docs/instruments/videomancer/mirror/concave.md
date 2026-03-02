@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/concave/concave_hero.png
 description: "A concave mirror curves inward, gathering light toward a focal point."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import concave_hero from '/img/instruments/videomancer/concave/concave_hero.png';
-import concave_before_after from '/img/instruments/videomancer/concave/concave_before_after.png';
 import concave_control_panel from '/img/instruments/videomancer/concave/concave_control_panel.png';
 import concave_exercise1_result from '/img/instruments/videomancer/concave/concave_exercise1_result.png';
 import concave_exercise2_result from '/img/instruments/videomancer/concave/concave_exercise2_result.png';
 import concave_exercise3_result from '/img/instruments/videomancer/concave/concave_exercise3_result.png';
+import concave_source1_kodim01 from '/img/instruments/videomancer/concave/concave_source1_kodim01.png';
+import concave_source2_kodim02 from '/img/instruments/videomancer/concave/concave_source2_kodim02.png';
+import concave_source3_kodim01_bw from '/img/instruments/videomancer/concave/concave_source3_kodim01_bw.png';
 
 # Concave
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={concave_hero} alt="Concave hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: concave_source1_kodim01, after: concave_hero },
+    { label: "Kodim02", before: concave_source2_kodim02, after: concave_hero },
+    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_hero },
+  ]}
+/>
 *Concave applying distance-based brightness modulation to simulate the warped reflections of a curved mirror surface.*
-<img src={concave_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Concave applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 ### Exercise 1: Vertical Vignette
 
-<img src={concave_exercise1_result} alt="Vertical Vignette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise1_result },
+    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise1_result },
+    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise1_result },
+  ]}
+/>
 *Vertical Vignette — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a centered subject — a face, a still life, or a graphic pattern.
 
@@ -220,7 +233,13 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 ### Exercise 2: Convex Inversion
 
-<img src={concave_exercise2_result} alt="Convex Inversion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise2_result },
+    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise2_result },
+    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise2_result },
+  ]}
+/>
 *Convex Inversion — simulated result across source images.*
 **Source**: High-contrast footage — strong geometric shapes, text overlays, or architectural subjects.
 
@@ -238,7 +257,13 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 ### Exercise 3: Carved Light Band
 
-<img src={concave_exercise3_result} alt="Carved Light Band result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise3_result },
+    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise3_result },
+    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise3_result },
+  ]}
+/>
 *Carved Light Band — simulated result across source images.*
 **Source**: Any active video — motion footage works particularly well as the moving content passes through the brightness band.
 

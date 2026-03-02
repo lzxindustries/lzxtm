@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 205
+sidebar_position: 206
 slug: /instruments/videomancer/passthru
 title: "Passthru"
 image: /img/instruments/videomancer/passthru/passthru_hero.png
 description: "Every video processing chain begins with a signal that enters and exits unchanged — a pass-through."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import passthru_hero from '/img/instruments/videomancer/passthru/passthru_hero.png';
-import passthru_before_after from '/img/instruments/videomancer/passthru/passthru_before_after.png';
 import passthru_control_panel from '/img/instruments/videomancer/passthru/passthru_control_panel.png';
 import passthru_exercise1_result from '/img/instruments/videomancer/passthru/passthru_exercise1_result.png';
 import passthru_exercise2_result from '/img/instruments/videomancer/passthru/passthru_exercise2_result.png';
 import passthru_exercise3_result from '/img/instruments/videomancer/passthru/passthru_exercise3_result.png';
+import passthru_source1_kodim03 from '/img/instruments/videomancer/passthru/passthru_source1_kodim03.png';
+import passthru_source2_kodim15 from '/img/instruments/videomancer/passthru/passthru_source2_kodim15.png';
+import passthru_source3_peppers_512 from '/img/instruments/videomancer/passthru/passthru_source3_peppers_512.png';
 
 # Passthru
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={passthru_hero} alt="Passthru hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_hero },
+    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_hero },
+    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_hero },
+  ]}
+/>
 *Passthru applying brightness, contrast, and saturation adjustments with per-channel inversion to reveal the fundamental building blocks of video color correction.*
-<img src={passthru_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Passthru applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 1: Brightness and Contrast
 
-<img src={passthru_exercise1_result} alt="Brightness and Contrast result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise1_result },
+    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise1_result },
+    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise1_result },
+  ]}
+/>
 *Brightness and Contrast — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
@@ -215,7 +228,13 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 2: Color Manipulation
 
-<img src={passthru_exercise2_result} alt="Color Manipulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise2_result },
+    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise2_result },
+    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise2_result },
+  ]}
+/>
 *Color Manipulation — simulated result across source images.*
 **Source**: Footage with strong, varied colors — flowers, painted surfaces, or color bars.
 
@@ -234,7 +253,13 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 3: Signal Chain Exploration
 
-<img src={passthru_exercise3_result} alt="Signal Chain Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise3_result },
+    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise3_result },
+    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise3_result },
+  ]}
+/>
 *Signal Chain Exploration — simulated result across source images.*
 **Source**: Any live or recorded video with moderate contrast and color.
 

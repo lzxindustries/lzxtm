@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 289
+sidebar_position: 290
 slug: /instruments/videomancer/ticker
 title: "Ticker"
 image: /img/instruments/videomancer/ticker/ticker_hero.png
 description: "Before digital screens, breaking news arrived on paper — a narrow ribbon of stock quotes and wire reports printed character by character on ticker tape machines."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ticker_hero from '/img/instruments/videomancer/ticker/ticker_hero.png';
-import ticker_before_after from '/img/instruments/videomancer/ticker/ticker_before_after.png';
 import ticker_control_panel from '/img/instruments/videomancer/ticker/ticker_control_panel.png';
 import ticker_exercise1_result from '/img/instruments/videomancer/ticker/ticker_exercise1_result.png';
 import ticker_exercise2_result from '/img/instruments/videomancer/ticker/ticker_exercise2_result.png';
 import ticker_exercise3_result from '/img/instruments/videomancer/ticker/ticker_exercise3_result.png';
+import ticker_source1_kodim15 from '/img/instruments/videomancer/ticker/ticker_source1_kodim15.png';
+import ticker_source2_kodim15_bw from '/img/instruments/videomancer/ticker/ticker_source2_kodim15_bw.png';
+import ticker_source3_male_1024 from '/img/instruments/videomancer/ticker/ticker_source3_male_1024.png';
 
 # Ticker
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ticker_hero} alt="Ticker hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_hero },
+    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_hero },
+    { label: "Male", before: ticker_source3_male_1024, after: ticker_hero },
+  ]}
+/>
 *Ticker rendering a luminance-quantized scrolling tape band across a live video feed, with bright border lines framing the horizontal strip.*
-<img src={ticker_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ticker applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 ### Exercise 1: Static Ticker Band
 
-<img src={ticker_exercise1_result} alt="Static Ticker Band result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise1_result },
+    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise1_result },
+    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise1_result },
+  ]}
+/>
 *Static Ticker Band — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable faces and varying brightness.
 
@@ -222,7 +235,13 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 ### Exercise 2: Scrolling News Crawl
 
-<img src={ticker_exercise2_result} alt="Scrolling News Crawl result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise2_result },
+    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise2_result },
+    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise2_result },
+  ]}
+/>
 *Scrolling News Crawl — simulated result across source images.*
 **Source**: A studio camera shot or talking-head video with consistent framing.
 
@@ -241,7 +260,13 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 ### Exercise 3: Vintage Telegraph Tape
 
-<img src={ticker_exercise3_result} alt="Vintage Telegraph Tape result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise3_result },
+    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise3_result },
+    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise3_result },
+  ]}
+/>
 *Vintage Telegraph Tape — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or a graphic test pattern with strong edges.
 

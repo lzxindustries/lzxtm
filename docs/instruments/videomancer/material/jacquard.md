@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/jacquard/jacquard_hero.png
 description: "The Jacquard loom, invented in 1804 by Joseph Marie Jacquard, was the first machine to use punched cards for controlling the pattern of a weave."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import jacquard_hero from '/img/instruments/videomancer/jacquard/jacquard_hero.png';
-import jacquard_before_after from '/img/instruments/videomancer/jacquard/jacquard_before_after.png';
 import jacquard_control_panel from '/img/instruments/videomancer/jacquard/jacquard_control_panel.png';
 import jacquard_exercise1_result from '/img/instruments/videomancer/jacquard/jacquard_exercise1_result.png';
 import jacquard_exercise2_result from '/img/instruments/videomancer/jacquard/jacquard_exercise2_result.png';
 import jacquard_exercise3_result from '/img/instruments/videomancer/jacquard/jacquard_exercise3_result.png';
+import jacquard_source1_kodim15 from '/img/instruments/videomancer/jacquard/jacquard_source1_kodim15.png';
+import jacquard_source2_kodim03 from '/img/instruments/videomancer/jacquard/jacquard_source2_kodim03.png';
+import jacquard_source3_kodim13_bw from '/img/instruments/videomancer/jacquard/jacquard_source3_kodim13_bw.png';
 
 # Jacquard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={jacquard_hero} alt="Jacquard hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_hero },
+    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_hero },
+    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_hero },
+  ]}
+/>
 *Jacquard weaving video pixels into interlaced textile patterns with warp and weft hue tinting.*
-<img src={jacquard_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Jacquard applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 ### Exercise 1: Basic Weave Patterns
 
-<img src={jacquard_exercise1_result} alt="Basic Weave Patterns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise1_result },
+    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise1_result },
+    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise1_result },
+  ]}
+/>
 *Basic Weave Patterns — simulated result across source images.*
 **Source**: A static image or live camera feed with varied colour and contrast — a face, landscape, or still life.
 
@@ -224,7 +237,13 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 ### Exercise 2: Tartan Colourisation
 
-<img src={jacquard_exercise2_result} alt="Tartan Colourisation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise2_result },
+    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise2_result },
+    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise2_result },
+  ]}
+/>
 *Tartan Colourisation — simulated result across source images.*
 **Source**: A well-lit face or portrait — skin tones provide a good neutral base for colour tinting.
 
@@ -243,7 +262,13 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 ### Exercise 3: Canvas Texture Overlay
 
-<img src={jacquard_exercise3_result} alt="Canvas Texture Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise3_result },
+    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise3_result },
+    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise3_result },
+  ]}
+/>
 *Canvas Texture Overlay — simulated result across source images.*
 **Source**: Any footage where you want to add a subtle fabric texture — landscapes, abstract video, or recorded material.
 

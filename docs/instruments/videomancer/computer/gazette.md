@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/gazette/gazette_hero.png
 description: "Every home computer of the early 1980s faced the same engineering constraint: memory was expensive, and storing a unique color for every pixel on screen was a luxury none of them could afford."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import gazette_hero from '/img/instruments/videomancer/gazette/gazette_hero.png';
-import gazette_before_after from '/img/instruments/videomancer/gazette/gazette_before_after.png';
 import gazette_control_panel from '/img/instruments/videomancer/gazette/gazette_control_panel.png';
 import gazette_exercise1_result from '/img/instruments/videomancer/gazette/gazette_exercise1_result.png';
 import gazette_exercise2_result from '/img/instruments/videomancer/gazette/gazette_exercise2_result.png';
 import gazette_exercise3_result from '/img/instruments/videomancer/gazette/gazette_exercise3_result.png';
+import gazette_source1_kodim15 from '/img/instruments/videomancer/gazette/gazette_source1_kodim15.png';
+import gazette_source2_kodim03 from '/img/instruments/videomancer/gazette/gazette_source2_kodim03.png';
+import gazette_source3_kodim15_bw from '/img/instruments/videomancer/gazette/gazette_source3_kodim15_bw.png';
 
 # Gazette
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={gazette_hero} alt="Gazette hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_hero },
+    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_hero },
+    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_hero },
+  ]}
+/>
 *Gazette imposing ZX Spectrum-style attribute cell restrictions on live video, producing characteristic two-color-per-cell patterns with chroma bleed artifacts.*
-<img src={gazette_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Gazette applied.*
 
 ---
 
@@ -217,7 +224,13 @@ These exercises progress from exploring basic palette restriction to combining c
 
 ### Exercise 1: ZX Spectrum Text Screen
 
-<img src={gazette_exercise1_result} alt="ZX Spectrum Text Screen result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise1_result },
+    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise1_result },
+    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise1_result },
+  ]}
+/>
 *ZX Spectrum Text Screen — simulated result across source images.*
 **Source**: A camera pointed at printed text, a title card, or any high-contrast monochrome source.
 
@@ -238,7 +251,13 @@ These exercises progress from exploring basic palette restriction to combining c
 
 ### Exercise 2: Commodore Color Clash
 
-<img src={gazette_exercise2_result} alt="Commodore Color Clash result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise2_result },
+    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise2_result },
+    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise2_result },
+  ]}
+/>
 *Commodore Color Clash — simulated result across source images.*
 **Source**: Footage with varied colors and moderate contrast — flowers, market scenes, or colorful patterns.
 
@@ -259,7 +278,13 @@ These exercises progress from exploring basic palette restriction to combining c
 
 ### Exercise 3: Composite Artifact Machine
 
-<img src={gazette_exercise3_result} alt="Composite Artifact Machine result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise3_result },
+    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise3_result },
+    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise3_result },
+  ]}
+/>
 *Composite Artifact Machine — simulated result across source images.*
 **Source**: Any dynamic footage with motion — panning cameras, moving subjects, or scrolling graphics.
 

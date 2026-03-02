@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/blinds/blinds_hero.png
 description: "Every broadcast engineer knows the venetian blind wipe — a grid of horizontal or vertical slats that open or close to reveal or conceal a video source."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import blinds_hero from '/img/instruments/videomancer/blinds/blinds_hero.png';
-import blinds_before_after from '/img/instruments/videomancer/blinds/blinds_before_after.png';
 import blinds_control_panel from '/img/instruments/videomancer/blinds/blinds_control_panel.png';
 import blinds_exercise1_result from '/img/instruments/videomancer/blinds/blinds_exercise1_result.png';
 import blinds_exercise2_result from '/img/instruments/videomancer/blinds/blinds_exercise2_result.png';
 import blinds_exercise3_result from '/img/instruments/videomancer/blinds/blinds_exercise3_result.png';
+import blinds_source1_kodim15 from '/img/instruments/videomancer/blinds/blinds_source1_kodim15.png';
+import blinds_source2_kodim15_bw from '/img/instruments/videomancer/blinds/blinds_source2_kodim15_bw.png';
+import blinds_source3_male_1024 from '/img/instruments/videomancer/blinds/blinds_source3_male_1024.png';
 
 # Blinds
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={blinds_hero} alt="Blinds hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_hero },
+    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_hero },
+    { label: "Male", before: blinds_source3_male_1024, after: blinds_hero },
+  ]}
+/>
 *Blinds splitting a broadcast frame into cascading horizontal slats with soft edges, revealing a dimmed background through partially open gaps.*
-<img src={blinds_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Blinds applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 ### Exercise 1: Manual Venetian Blind Wipe
 
-<img src={blinds_exercise1_result} alt="Manual Venetian Blind Wipe result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise1_result },
+    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise1_result },
+    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise1_result },
+  ]}
+/>
 *Manual Venetian Blind Wipe — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and clear mid-frame structure.
 
@@ -227,7 +240,13 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 ### Exercise 2: Cascading Wipe with Soft Edges
 
-<img src={blinds_exercise2_result} alt="Cascading Wipe with Soft Edges result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise2_result },
+    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise2_result },
+    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise2_result },
+  ]}
+/>
 *Cascading Wipe with Soft Edges — simulated result across source images.*
 **Source**: Footage with a mix of detail and open areas — landscape or studio content.
 
@@ -246,7 +265,13 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 ### Exercise 3: Dimmed Video Background Composition
 
-<img src={blinds_exercise3_result} alt="Dimmed Video Background Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise3_result },
+    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise3_result },
+    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise3_result },
+  ]}
+/>
 *Dimmed Video Background Composition — simulated result across source images.*
 **Source**: High-contrast footage — strong subjects against distinct backgrounds.
 

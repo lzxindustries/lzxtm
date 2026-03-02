@@ -1,27 +1,40 @@
 ---
 draft: false
-sidebar_position: 217
+sidebar_position: 218
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
 image: /img/instruments/videomancer/pinwheel/pinwheel_hero.png
 description: "Color in digital video is encoded as numbers."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import pinwheel_hero from '/img/instruments/videomancer/pinwheel/pinwheel_hero.png';
-import pinwheel_before_after from '/img/instruments/videomancer/pinwheel/pinwheel_before_after.png';
 import pinwheel_control_panel from '/img/instruments/videomancer/pinwheel/pinwheel_control_panel.png';
 import pinwheel_exercise1_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise1_result.png';
 import pinwheel_exercise2_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise2_result.png';
 import pinwheel_exercise3_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise3_result.png';
+import pinwheel_source1_kodim02 from '/img/instruments/videomancer/pinwheel/pinwheel_source1_kodim02.png';
+import pinwheel_source1_kodim04 from '/img/instruments/videomancer/pinwheel/pinwheel_source1_kodim04.png';
+import pinwheel_source2_kodim07 from '/img/instruments/videomancer/pinwheel/pinwheel_source2_kodim07.png';
+import pinwheel_source2_peppers_512 from '/img/instruments/videomancer/pinwheel/pinwheel_source2_peppers_512.png';
+import pinwheel_source3_kodim01_bw from '/img/instruments/videomancer/pinwheel/pinwheel_source3_kodim01_bw.png';
+import pinwheel_source3_kodim23 from '/img/instruments/videomancer/pinwheel/pinwheel_source3_kodim23.png';
 
 # Pinwheel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={pinwheel_hero} alt="Pinwheel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_hero },
+    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_hero },
+    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_hero },
+    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_hero },
+    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_hero },
+    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_hero },
+  ]}
+/>
 *Pinwheel mapping brightness gradients into a full rainbow spectrum using luminance-to-hue modulation.*
-<img src={pinwheel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Pinwheel applied.*
 
 ---
 
@@ -192,7 +205,16 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 ### Exercise 1: Luminance Rainbow
 
-<img src={pinwheel_exercise1_result} alt="Luminance Rainbow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise1_result },
+    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise1_result },
+    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise1_result },
+    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise1_result },
+    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise1_result },
+    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise1_result },
+  ]}
+/>
 *Luminance Rainbow — simulated result across source images.*
 **Source**: Footage with a wide range of brightness — landscapes, portraits, or gradient test patterns.
 
@@ -210,7 +232,16 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 ### Exercise 2: Color Corrector to Glitch Machine
 
-<img src={pinwheel_exercise2_result} alt="Color Corrector to Glitch Machine result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise2_result },
+    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise2_result },
+    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise2_result },
+    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise2_result },
+    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise2_result },
+    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise2_result },
+  ]}
+/>
 *Color Corrector to Glitch Machine — simulated result across source images.*
 **Source**: Colorful footage — flowers, fruit, painted surfaces, or video art.
 
@@ -229,7 +260,16 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 ### Exercise 3: Psychedelic Colorizer
 
-<img src={pinwheel_exercise3_result} alt="Psychedelic Colorizer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise3_result },
+    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise3_result },
+    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise3_result },
+    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise3_result },
+    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise3_result },
+    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise3_result },
+  ]}
+/>
 *Psychedelic Colorizer — simulated result across source images.*
 **Source**: Any footage — the more varied, the more interesting.
 

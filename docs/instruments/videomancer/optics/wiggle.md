@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 311
+sidebar_position: 312
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
 image: /img/instruments/videomancer/wiggle/wiggle_hero.png
 description: "Wiggle displaces pixels horizontally by an amount proportional to their brightness."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import wiggle_hero from '/img/instruments/videomancer/wiggle/wiggle_hero.png';
-import wiggle_before_after from '/img/instruments/videomancer/wiggle/wiggle_before_after.png';
 import wiggle_control_panel from '/img/instruments/videomancer/wiggle/wiggle_control_panel.png';
 import wiggle_exercise1_result from '/img/instruments/videomancer/wiggle/wiggle_exercise1_result.png';
 import wiggle_exercise2_result from '/img/instruments/videomancer/wiggle/wiggle_exercise2_result.png';
 import wiggle_exercise3_result from '/img/instruments/videomancer/wiggle/wiggle_exercise3_result.png';
+import wiggle_source1_kodim15 from '/img/instruments/videomancer/wiggle/wiggle_source1_kodim15.png';
+import wiggle_source2_kodim01 from '/img/instruments/videomancer/wiggle/wiggle_source2_kodim01.png';
+import wiggle_source3_kodim01_bw from '/img/instruments/videomancer/wiggle/wiggle_source3_kodim01_bw.png';
 
 # Wiggle
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={wiggle_hero} alt="Wiggle hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_hero },
+    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_hero },
+    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_hero },
+  ]}
+/>
 *Autostereoscopic depth wobble: luminance-proportional displacement on alternating fields conjures illusory depth from flat video.*
-<img src={wiggle_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Wiggle applied.*
 
 ---
 
@@ -194,7 +201,13 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 ### Exercise 1: Gentle Portrait Depth
 
-<img src={wiggle_exercise1_result} alt="Gentle Portrait Depth result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise1_result },
+    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise1_result },
+    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise1_result },
+  ]}
+/>
 *Gentle Portrait Depth — simulated result across source images.*
 **Source**: Feed a talking-head camera shot or portrait with a well-lit face against a darker background.
 
@@ -213,7 +226,13 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 ### Exercise 2: Abstract Warp Field
 
-<img src={wiggle_exercise2_result} alt="Abstract Warp Field result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise2_result },
+    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise2_result },
+    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise2_result },
+  ]}
+/>
 *Abstract Warp Field — simulated result across source images.*
 **Source**: Use a high-contrast graphic pattern—black-and-white stripes, a checkerboard, or bold typography.
 
@@ -233,7 +252,13 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 ### Exercise 3: Frozen Parallax Layer
 
-<img src={wiggle_exercise3_result} alt="Frozen Parallax Layer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise3_result },
+    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise3_result },
+    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise3_result },
+  ]}
+/>
 *Frozen Parallax Layer — simulated result across source images.*
 **Source**: A landscape or cityscape with distinct foreground and background planes.
 

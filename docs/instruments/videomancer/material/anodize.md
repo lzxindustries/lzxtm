@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/anodize/anodize_hero.png
 description: "Anodize simulates the appearance of anodized aluminum — the electrochemical surface treatment that gives metal products their vivid, uniform colours while maintaining a distinctive metallic reflective quality."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import anodize_hero from '/img/instruments/videomancer/anodize/anodize_hero.png';
-import anodize_before_after from '/img/instruments/videomancer/anodize/anodize_before_after.png';
 import anodize_control_panel from '/img/instruments/videomancer/anodize/anodize_control_panel.png';
 import anodize_exercise1_result from '/img/instruments/videomancer/anodize/anodize_exercise1_result.png';
 import anodize_exercise2_result from '/img/instruments/videomancer/anodize/anodize_exercise2_result.png';
 import anodize_exercise3_result from '/img/instruments/videomancer/anodize/anodize_exercise3_result.png';
+import anodize_source1_kodim15 from '/img/instruments/videomancer/anodize/anodize_source1_kodim15.png';
+import anodize_source2_kodim03 from '/img/instruments/videomancer/anodize/anodize_source2_kodim03.png';
+import anodize_source3_kodim13_bw from '/img/instruments/videomancer/anodize/anodize_source3_kodim13_bw.png';
 
 # Anodize
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={anodize_hero} alt="Anodize hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_hero },
+    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_hero },
+    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_hero },
+  ]}
+/>
 *Anodize rendering a landscape in vivid red-orange anodized aluminum — the image is uniformly tinted with preserved specular highlights returning to white, metallic sheen coupling luma detail to chroma, and subtle grain texture on the surface.*
-<img src={anodize_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Anodize applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 ### Exercise 1: Basic Anodized Surface
 
-<img src={anodize_exercise1_result} alt="Basic Anodized Surface result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise1_result },
+    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise1_result },
+    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise1_result },
+  ]}
+/>
 *Basic Anodized Surface — simulated result across source images.*
 **Source**: Image with even brightness distribution and clear subject — portrait or product photography.
 
@@ -218,7 +231,13 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 ### Exercise 2: Highlight Preservation and Finish
 
-<img src={anodize_exercise2_result} alt="Highlight Preservation and Finish result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise2_result },
+    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise2_result },
+    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise2_result },
+  ]}
+/>
 *Highlight Preservation and Finish — simulated result across source images.*
 **Source**: Image with bright specular reflections — chrome objects, wet surfaces, or strong directional lighting.
 
@@ -238,7 +257,13 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 ### Exercise 3: Metallic Sheen and Grain
 
-<img src={anodize_exercise3_result} alt="Metallic Sheen and Grain result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise3_result },
+    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise3_result },
+    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise3_result },
+  ]}
+/>
 *Metallic Sheen and Grain — simulated result across source images.*
 **Source**: Image with gradual brightness variations — curved surfaces, light gradients, or natural textures.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 308
+sidebar_position: 309
 slug: /instruments/videomancer/voltmeter
 title: "Voltmeter"
 image: /img/instruments/videomancer/voltmeter/voltmeter_hero.png
 description: "Before digital meters conquered the audio world, every studio console featured a row of illuminated VU meters — those satisfying semicircular gauges with swinging needles that danced to the music."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import voltmeter_hero from '/img/instruments/videomancer/voltmeter/voltmeter_hero.png';
-import voltmeter_before_after from '/img/instruments/videomancer/voltmeter/voltmeter_before_after.png';
 import voltmeter_control_panel from '/img/instruments/videomancer/voltmeter/voltmeter_control_panel.png';
 import voltmeter_exercise1_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise1_result.png';
 import voltmeter_exercise2_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise2_result.png';
 import voltmeter_exercise3_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise3_result.png';
+import voltmeter_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source1_grayscale_ramp_h_1920x1080.png';
+import voltmeter_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source2_grayscale_ramp_v_1920x1080.png';
+import voltmeter_source3_step_wedge_21level_512 from '/img/instruments/videomancer/voltmeter/voltmeter_source3_step_wedge_21level_512.png';
 
 # Voltmeter
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={voltmeter_hero} alt="Voltmeter hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_hero },
+    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_hero },
+    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_hero },
+  ]}
+/>
 *Voltmeter projecting an analog VU gauge over a live video feed, the needle tracking average frame luminance in real time.*
-<img src={voltmeter_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Voltmeter applied.*
 
 ---
 
@@ -201,7 +208,13 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 ### Exercise 1: Studio Brightness Monitor
 
-<img src={voltmeter_exercise1_result} alt="Studio Brightness Monitor result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise1_result },
+    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise1_result },
+    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise1_result },
+  ]}
+/>
 *Studio Brightness Monitor — simulated result across source images.*
 **Source**: Feed a camera signal or dynamic video clip with varying scene brightness — ideally content with distinct bright and dark scenes.
 
@@ -220,7 +233,13 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 ### Exercise 2: Peak Detection Display
 
-<img src={voltmeter_exercise2_result} alt="Peak Detection Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise2_result },
+    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise2_result },
+    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise2_result },
+  ]}
+/>
 *Peak Detection Display — simulated result across source images.*
 **Source**: Feed a music video or content with dramatic flash cuts and sudden brightness changes — ideal for triggering peak holds.
 
@@ -240,7 +259,13 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 ### Exercise 3: Full-Screen Overlay Art
 
-<img src={voltmeter_exercise3_result} alt="Full-Screen Overlay Art result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise3_result },
+    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise3_result },
+    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise3_result },
+  ]}
+/>
 *Full-Screen Overlay Art — simulated result across source images.*
 **Source**: Feed abstract or geometric video content — color bars, gradients, or generative patterns work well.
 

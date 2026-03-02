@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chatoyant/chatoyant_hero.png
 description: "Certain gemstones — tiger's eye, chrysoberyl, moonstone — contain parallel fibrous inclusions that act as a natural diffraction grating."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chatoyant_hero from '/img/instruments/videomancer/chatoyant/chatoyant_hero.png';
-import chatoyant_before_after from '/img/instruments/videomancer/chatoyant/chatoyant_before_after.png';
 import chatoyant_control_panel from '/img/instruments/videomancer/chatoyant/chatoyant_control_panel.png';
 import chatoyant_exercise1_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise1_result.png';
 import chatoyant_exercise2_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise2_result.png';
 import chatoyant_exercise3_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise3_result.png';
+import chatoyant_source1_kodim15 from '/img/instruments/videomancer/chatoyant/chatoyant_source1_kodim15.png';
+import chatoyant_source2_kodim01 from '/img/instruments/videomancer/chatoyant/chatoyant_source2_kodim01.png';
+import chatoyant_source3_kodim01_bw from '/img/instruments/videomancer/chatoyant/chatoyant_source3_kodim01_bw.png';
 
 # Chatoyant
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chatoyant_hero} alt="Chatoyant hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_hero },
+    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_hero },
+    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_hero },
+  ]}
+/>
 *Chatoyant drawing a warm specular streak across a landscape, the highlight band tracing the axis of light like a cat's-eye cabochon tilted under a single point source.*
-<img src={chatoyant_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chatoyant applied.*
 
 ---
 
@@ -227,7 +234,13 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 ### Exercise 1: Single Specular Band
 
-<img src={chatoyant_exercise1_result} alt="Single Specular Band result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise1_result },
+    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise1_result },
+    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise1_result },
+  ]}
+/>
 *Single Specular Band — simulated result across source images.*
 **Source**: A portrait or still life with clear tonal gradients — smooth skin, fabric folds, or polished surfaces.
 
@@ -245,7 +258,13 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 ### Exercise 2: Gem Modes and Colour Tinting
 
-<img src={chatoyant_exercise2_result} alt="Gem Modes and Colour Tinting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise2_result },
+    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise2_result },
+    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise2_result },
+  ]}
+/>
 *Gem Modes and Colour Tinting — simulated result across source images.*
 **Source**: Colourful footage with strong edges — a garden scene, textured fabrics, or stained glass.
 
@@ -265,7 +284,13 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 ### Exercise 3: Animated Asterism
 
-<img src={chatoyant_exercise3_result} alt="Animated Asterism result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise3_result },
+    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise3_result },
+    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise3_result },
+  ]}
+/>
 *Animated Asterism — simulated result across source images.*
 **Source**: A high-contrast scene with mixed bright and dark areas — city lights at night, a sunlit landscape, or stage lighting.
 

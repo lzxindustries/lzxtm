@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/gauze/gauze_hero.png
 description: "Video images contain spatial detail at every scale — broad gradients, mid-frequency textures, and fine pixel-level edges."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import gauze_hero from '/img/instruments/videomancer/gauze/gauze_hero.png';
-import gauze_before_after from '/img/instruments/videomancer/gauze/gauze_before_after.png';
 import gauze_control_panel from '/img/instruments/videomancer/gauze/gauze_control_panel.png';
 import gauze_exercise1_result from '/img/instruments/videomancer/gauze/gauze_exercise1_result.png';
 import gauze_exercise2_result from '/img/instruments/videomancer/gauze/gauze_exercise2_result.png';
 import gauze_exercise3_result from '/img/instruments/videomancer/gauze/gauze_exercise3_result.png';
+import gauze_source1_kodim02 from '/img/instruments/videomancer/gauze/gauze_source1_kodim02.png';
+import gauze_source2_kodim07 from '/img/instruments/videomancer/gauze/gauze_source2_kodim07.png';
+import gauze_source3_kodim01_bw from '/img/instruments/videomancer/gauze/gauze_source3_kodim01_bw.png';
 
 # Gauze
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={gauze_hero} alt="Gauze hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_hero },
+    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_hero },
+    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_hero },
+  ]}
+/>
 *Gauze applying per-channel cascaded IIR filtering with fade — softening chrominance while sharpening luminance to reveal hidden edge structure.*
-<img src={gauze_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Gauze applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 ### Exercise 1: Soft Focus Portrait
 
-<img src={gauze_exercise1_result} alt="Soft Focus Portrait result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise1_result },
+    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise1_result },
+    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise1_result },
+  ]}
+/>
 *Soft Focus Portrait — simulated result across source images.*
 **Source**: A talking-head or portrait shot with skin tones and fine texture detail (hair, fabric).
 
@@ -227,7 +240,13 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 ### Exercise 2: Luminance Edge Extraction
 
-<img src={gauze_exercise2_result} alt="Luminance Edge Extraction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise2_result },
+    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise2_result },
+    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise2_result },
+  ]}
+/>
 *Luminance Edge Extraction — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric shapes — architecture, signage, or test patterns.
 
@@ -246,7 +265,13 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 ### Exercise 3: Bandpass Color Isolation
 
-<img src={gauze_exercise3_result} alt="Bandpass Color Isolation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise3_result },
+    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise3_result },
+    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise3_result },
+  ]}
+/>
 *Bandpass Color Isolation — simulated result across source images.*
 **Source**: Colorful footage with both broad gradients and fine texture — nature scenes, paintings, or color bars.
 

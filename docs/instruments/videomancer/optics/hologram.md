@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/hologram/hologram_hero.png
 description: "Hologram overlays rainbow-colored bands onto a video signal, simulating the iridescent shimmer of holographic foil."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import hologram_hero from '/img/instruments/videomancer/hologram/hologram_hero.png';
-import hologram_before_after from '/img/instruments/videomancer/hologram/hologram_before_after.png';
 import hologram_control_panel from '/img/instruments/videomancer/hologram/hologram_control_panel.png';
 import hologram_exercise1_result from '/img/instruments/videomancer/hologram/hologram_exercise1_result.png';
 import hologram_exercise2_result from '/img/instruments/videomancer/hologram/hologram_exercise2_result.png';
 import hologram_exercise3_result from '/img/instruments/videomancer/hologram/hologram_exercise3_result.png';
+import hologram_source1_kodim15 from '/img/instruments/videomancer/hologram/hologram_source1_kodim15.png';
+import hologram_source2_kodim01 from '/img/instruments/videomancer/hologram/hologram_source2_kodim01.png';
+import hologram_source3_kodim01_bw from '/img/instruments/videomancer/hologram/hologram_source3_kodim01_bw.png';
 
 # Hologram
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={hologram_hero} alt="Hologram hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_hero },
+    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_hero },
+    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_hero },
+  ]}
+/>
 *Hologram applying rainbow holographic bands to a video source, with hue-shifting stripes tracing a diamond path through UV color space.*
-<img src={hologram_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Hologram applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 ### Exercise 1: Rainbow Bands
 
-<img src={hologram_exercise1_result} alt="Rainbow Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise1_result },
+    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise1_result },
+    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise1_result },
+  ]}
+/>
 *Rainbow Bands — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable subjects and moderate color content.
 
@@ -219,7 +232,13 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 ### Exercise 2: Animation and Orientation
 
-<img src={hologram_exercise2_result} alt="Animation and Orientation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise2_result },
+    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise2_result },
+    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise2_result },
+  ]}
+/>
 *Animation and Orientation — simulated result across source images.*
 **Source**: Static or slow-moving footage so the scrolling rainbow effect is clearly visible.
 
@@ -237,7 +256,13 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 ### Exercise 3: Holographic Composition
 
-<img src={hologram_exercise3_result} alt="Holographic Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise3_result },
+    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise3_result },
+    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise3_result },
+  ]}
+/>
 *Holographic Composition — simulated result across source images.*
 **Source**: A video source with strong visual structure — high contrast, recognizable geometry.
 

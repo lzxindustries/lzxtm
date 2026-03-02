@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cartouche/cartouche_hero.png
 description: "Ancient Egyptian artists did not paint pictures the way we understand them."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cartouche_hero from '/img/instruments/videomancer/cartouche/cartouche_hero.png';
-import cartouche_before_after from '/img/instruments/videomancer/cartouche/cartouche_before_after.png';
 import cartouche_control_panel from '/img/instruments/videomancer/cartouche/cartouche_control_panel.png';
 import cartouche_exercise1_result from '/img/instruments/videomancer/cartouche/cartouche_exercise1_result.png';
 import cartouche_exercise2_result from '/img/instruments/videomancer/cartouche/cartouche_exercise2_result.png';
 import cartouche_exercise3_result from '/img/instruments/videomancer/cartouche/cartouche_exercise3_result.png';
+import cartouche_source1_kodim03 from '/img/instruments/videomancer/cartouche/cartouche_source1_kodim03.png';
+import cartouche_source2_kodim13 from '/img/instruments/videomancer/cartouche/cartouche_source2_kodim13.png';
+import cartouche_source3_kodim13_bw from '/img/instruments/videomancer/cartouche/cartouche_source3_kodim13_bw.png';
 
 # Cartouche
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cartouche_hero} alt="Cartouche hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_hero },
+    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_hero },
+    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_hero },
+  ]}
+/>
 *Cartouche dividing a landscape into four horizontal registers with Egyptian mineral pigment palette quantization and painted ground line separators.*
-<img src={cartouche_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cartouche applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises explore the register system, mineral palette, and ground line se
 
 ### Exercise 1: Register Division and Ground Lines
 
-<img src={cartouche_exercise1_result} alt="Register Division and Ground Lines result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise1_result },
+    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise1_result },
+    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise1_result },
+  ]}
+/>
 *Register Division and Ground Lines — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with horizontally distributed content — landscapes, cityscapes, or scenes with distinct upper and lower regions.
 
@@ -223,7 +236,13 @@ These exercises explore the register system, mineral palette, and ground line se
 
 ### Exercise 2: Mineral Pigment Palette
 
-<img src={cartouche_exercise2_result} alt="Mineral Pigment Palette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise2_result },
+    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise2_result },
+    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise2_result },
+  ]}
+/>
 *Mineral Pigment Palette — simulated result across source images.*
 **Source**: Footage with a wide range of colors — the macaw image or colorful market scenes.
 
@@ -242,7 +261,13 @@ These exercises explore the register system, mineral palette, and ground line se
 
 ### Exercise 3: Complete Tomb Wall Composition
 
-<img src={cartouche_exercise3_result} alt="Complete Tomb Wall Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise3_result },
+    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise3_result },
+    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise3_result },
+  ]}
+/>
 *Complete Tomb Wall Composition — simulated result across source images.*
 **Source**: Any footage, especially scenes with figures, animals, or objects that evoke narrative content.
 

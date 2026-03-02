@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 222
+sidebar_position: 223
 slug: /instruments/videomancer/prism
 title: "Prism"
 image: /img/instruments/videomancer/prism/prism_hero.png
 description: "Prism takes the three channels of a YUV video signal and shifts each one independently along the horizontal axis."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import prism_hero from '/img/instruments/videomancer/prism/prism_hero.png';
-import prism_before_after from '/img/instruments/videomancer/prism/prism_before_after.png';
 import prism_control_panel from '/img/instruments/videomancer/prism/prism_control_panel.png';
 import prism_exercise1_result from '/img/instruments/videomancer/prism/prism_exercise1_result.png';
 import prism_exercise2_result from '/img/instruments/videomancer/prism/prism_exercise2_result.png';
 import prism_exercise3_result from '/img/instruments/videomancer/prism/prism_exercise3_result.png';
+import prism_source1_kodim02 from '/img/instruments/videomancer/prism/prism_source1_kodim02.png';
+import prism_source2_kodim07 from '/img/instruments/videomancer/prism/prism_source2_kodim07.png';
+import prism_source3_kodim01_bw from '/img/instruments/videomancer/prism/prism_source3_kodim01_bw.png';
 
 # Prism
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={prism_hero} alt="Prism hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: prism_source1_kodim02, after: prism_hero },
+    { label: "Kodim07", before: prism_source2_kodim07, after: prism_hero },
+    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_hero },
+  ]}
+/>
 *Prism applying per-channel horizontal displacement and channel swapping to decompose video into separated colour planes.*
-<img src={prism_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Prism applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 ### Exercise 1: Classic Chromatic Aberration
 
-<img src={prism_exercise1_result} alt="Classic Chromatic Aberration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise1_result },
+    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise1_result },
+    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise1_result },
+  ]}
+/>
 *Classic Chromatic Aberration — simulated result across source images.*
 **Source**: A high-contrast image with sharp edges — text overlays, geometric shapes, or architectural footage.
 
@@ -223,7 +236,13 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 ### Exercise 2: Luma-Modulated Warping
 
-<img src={prism_exercise2_result} alt="Luma-Modulated Warping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise2_result },
+    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise2_result },
+    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise2_result },
+  ]}
+/>
 *Luma-Modulated Warping — simulated result across source images.*
 **Source**: Footage with a wide tonal range — faces, landscapes, or imagery with strong light/dark contrast.
 
@@ -241,7 +260,13 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 ### Exercise 3: False-Colour Channel Remix
 
-<img src={prism_exercise3_result} alt="False-Colour Channel Remix result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise3_result },
+    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise3_result },
+    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise3_result },
+  ]}
+/>
 *False-Colour Channel Remix — simulated result across source images.*
 **Source**: Any video — the channel swaps create dramatic recolouring of any content.
 

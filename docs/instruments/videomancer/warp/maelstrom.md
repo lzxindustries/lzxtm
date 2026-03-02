@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/maelstrom/maelstrom_hero.png
 description: "Every pixel in a video frame has a position."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import maelstrom_hero from '/img/instruments/videomancer/maelstrom/maelstrom_hero.png';
-import maelstrom_before_after from '/img/instruments/videomancer/maelstrom/maelstrom_before_after.png';
 import maelstrom_control_panel from '/img/instruments/videomancer/maelstrom/maelstrom_control_panel.png';
 import maelstrom_exercise1_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise1_result.png';
 import maelstrom_exercise2_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise2_result.png';
 import maelstrom_exercise3_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise3_result.png';
+import maelstrom_source1_kodim02 from '/img/instruments/videomancer/maelstrom/maelstrom_source1_kodim02.png';
+import maelstrom_source2_kodim07 from '/img/instruments/videomancer/maelstrom/maelstrom_source2_kodim07.png';
+import maelstrom_source3_kodim01_bw from '/img/instruments/videomancer/maelstrom/maelstrom_source3_kodim01_bw.png';
 
 # Maelstrom
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={maelstrom_hero} alt="Maelstrom hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: maelstrom_source1_kodim02, after: maelstrom_hero },
+    { label: "Kodim07", before: maelstrom_source2_kodim07, after: maelstrom_hero },
+    { label: "Kodim01 B&W", before: maelstrom_source3_kodim01_bw, after: maelstrom_hero },
+  ]}
+/>
 *Maelstrom warping a camera feed into concentric rings of radially displaced, color-inverted imagery radiating from a controllable singularity.*
-<img src={maelstrom_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Maelstrom applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 
 ### Exercise 1: Concentric Ripples
 
-<img src={maelstrom_exercise1_result} alt="Concentric Ripples result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: maelstrom_source1_kodim02, after: maelstrom_exercise1_result },
+    { label: "Kodim07", before: maelstrom_source2_kodim07, after: maelstrom_exercise1_result },
+    { label: "Kodim01 B&W", before: maelstrom_source3_kodim01_bw, after: maelstrom_exercise1_result },
+  ]}
+/>
 *Concentric Ripples — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong horizontal detail — architecture, text, or geometric patterns work well.
 
@@ -228,7 +241,13 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 
 ### Exercise 2: Inversion Bands
 
-<img src={maelstrom_exercise2_result} alt="Inversion Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: maelstrom_source1_kodim02, after: maelstrom_exercise2_result },
+    { label: "Kodim07", before: maelstrom_source2_kodim07, after: maelstrom_exercise2_result },
+    { label: "Kodim01 B&W", before: maelstrom_source3_kodim01_bw, after: maelstrom_exercise2_result },
+  ]}
+/>
 *Inversion Bands — simulated result across source images.*
 **Source**: Color bars or footage with a wide range of brightness values and saturated colors — the inversion effect is most visible on varied content.
 
@@ -246,7 +265,13 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 
 ### Exercise 3: Animated Vortex
 
-<img src={maelstrom_exercise3_result} alt="Animated Vortex result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: maelstrom_source1_kodim02, after: maelstrom_exercise3_result },
+    { label: "Kodim07", before: maelstrom_source2_kodim07, after: maelstrom_exercise3_result },
+    { label: "Kodim01 B&W", before: maelstrom_source3_kodim01_bw, after: maelstrom_exercise3_result },
+  ]}
+/>
 *Animated Vortex — simulated result across source images.*
 **Source**: Any active video — faces, nature, or abstract patterns all work well at maximum effect intensity.
 

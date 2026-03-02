@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/contour/contour_hero.png
 description: "A topographic map turns continuous terrain into a set of discrete elevation lines."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import contour_hero from '/img/instruments/videomancer/contour/contour_hero.png';
-import contour_before_after from '/img/instruments/videomancer/contour/contour_before_after.png';
 import contour_control_panel from '/img/instruments/videomancer/contour/contour_control_panel.png';
 import contour_exercise1_result from '/img/instruments/videomancer/contour/contour_exercise1_result.png';
 import contour_exercise2_result from '/img/instruments/videomancer/contour/contour_exercise2_result.png';
 import contour_exercise3_result from '/img/instruments/videomancer/contour/contour_exercise3_result.png';
+import contour_source1_kodim02 from '/img/instruments/videomancer/contour/contour_source1_kodim02.png';
+import contour_source2_kodim07 from '/img/instruments/videomancer/contour/contour_source2_kodim07.png';
+import contour_source3_kodim01_bw from '/img/instruments/videomancer/contour/contour_source3_kodim01_bw.png';
 
 # Contour
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={contour_hero} alt="Contour hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: contour_source1_kodim02, after: contour_hero },
+    { label: "Kodim07", before: contour_source2_kodim07, after: contour_hero },
+    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_hero },
+  ]}
+/>
 *Contour rendering iso-luminance contour lines across a landscape, transforming video into a topographic elevation map.*
-<img src={contour_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Contour applied.*
 
 ---
 
@@ -207,7 +214,13 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 ### Exercise 1: Basic Topographic Map
 
-<img src={contour_exercise1_result} alt="Basic Topographic Map result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise1_result },
+    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise1_result },
+    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise1_result },
+  ]}
+/>
 *Basic Topographic Map — simulated result across source images.*
 **Source**: A close-up of a face or portrait with smooth tonal gradients — skin tones produce well-spaced, readable contour lines.
 
@@ -227,7 +240,13 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 ### Exercise 2: Color Terrain Overlay
 
-<img src={contour_exercise2_result} alt="Color Terrain Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise2_result },
+    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise2_result },
+    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise2_result },
+  ]}
+/>
 *Color Terrain Overlay — simulated result across source images.*
 **Source**: A landscape or nature scene with broad tonal variation — hills, sky gradients, foliage.
 
@@ -247,7 +266,13 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 ### Exercise 3: Dense Contour Texture
 
-<img src={contour_exercise3_result} alt="Dense Contour Texture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise3_result },
+    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise3_result },
+    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise3_result },
+  ]}
+/>
 *Dense Contour Texture — simulated result across source images.*
 **Source**: Abstract video patterns, feedback loops, or color bars — high-contrast material with many brightness transitions.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 223
+sidebar_position: 224
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero.png
 description: "Every broadcast facility has a processing amplifier — a \"proc amp\" — sitting between source and destination, adjusting signal levels so that everything arriving downstream is correctly calibrated."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import procamp_hero from '/img/instruments/videomancer/procamp/procamp_hero.png';
-import procamp_before_after from '/img/instruments/videomancer/procamp/procamp_before_after.png';
 import procamp_control_panel from '/img/instruments/videomancer/procamp/procamp_control_panel.png';
 import procamp_exercise1_result from '/img/instruments/videomancer/procamp/procamp_exercise1_result.png';
 import procamp_exercise2_result from '/img/instruments/videomancer/procamp/procamp_exercise2_result.png';
 import procamp_exercise3_result from '/img/instruments/videomancer/procamp/procamp_exercise3_result.png';
+import procamp_source1_kodim03 from '/img/instruments/videomancer/procamp/procamp_source1_kodim03.png';
+import procamp_source2_kodim15 from '/img/instruments/videomancer/procamp/procamp_source2_kodim15.png';
+import procamp_source3_peppers_512 from '/img/instruments/videomancer/procamp/procamp_source3_peppers_512.png';
 
 # Procamp
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={procamp_hero} alt="Procamp hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_hero },
+    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_hero },
+    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_hero },
+  ]}
+/>
 *Procamp applying independent per-channel gain, offset, and inversion across Y/U/V with fade-to-color interpolation.*
-<img src={procamp_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Procamp applied.*
 
 ---
 
@@ -193,7 +200,13 @@ These exercises progress from basic level correction to creative color manipulat
 
 ### Exercise 1: Luminance Calibration
 
-<img src={procamp_exercise1_result} alt="Luminance Calibration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise1_result },
+    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise1_result },
+    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise1_result },
+  ]}
+/>
 *Luminance Calibration — simulated result across source images.*
 **Source**: A grayscale ramp or test pattern with known black and white reference levels.
 
@@ -211,7 +224,13 @@ These exercises progress from basic level correction to creative color manipulat
 
 ### Exercise 2: Creative Color Tinting
 
-<img src={procamp_exercise2_result} alt="Creative Color Tinting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise2_result },
+    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise2_result },
+    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise2_result },
+  ]}
+/>
 *Creative Color Tinting — simulated result across source images.*
 **Source**: A well-exposed video source with a range of natural colors — outdoor scenes or skin tones work well.
 
@@ -229,7 +248,13 @@ These exercises progress from basic level correction to creative color manipulat
 
 ### Exercise 3: Fade-to-Color Drama
 
-<img src={procamp_exercise3_result} alt="Fade-to-Color Drama result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise3_result },
+    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise3_result },
+    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise3_result },
+  ]}
+/>
 *Fade-to-Color Drama — simulated result across source images.*
 **Source**: Any dynamic footage — live camera, animations, or abstract video synthesis.
 

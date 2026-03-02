@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 231
+sidebar_position: 232
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero.png
 description: "Broadcast television and government documents share a common visual vocabulary: the black bar."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import redacted_hero from '/img/instruments/videomancer/redacted/redacted_hero.png';
-import redacted_before_after from '/img/instruments/videomancer/redacted/redacted_before_after.png';
 import redacted_control_panel from '/img/instruments/videomancer/redacted/redacted_control_panel.png';
 import redacted_exercise1_result from '/img/instruments/videomancer/redacted/redacted_exercise1_result.png';
 import redacted_exercise2_result from '/img/instruments/videomancer/redacted/redacted_exercise2_result.png';
 import redacted_exercise3_result from '/img/instruments/videomancer/redacted/redacted_exercise3_result.png';
+import redacted_source1_kodim15 from '/img/instruments/videomancer/redacted/redacted_source1_kodim15.png';
+import redacted_source2_kodim15_bw from '/img/instruments/videomancer/redacted/redacted_source2_kodim15_bw.png';
+import redacted_source3_male_1024 from '/img/instruments/videomancer/redacted/redacted_source3_male_1024.png';
 
 # Redacted
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={redacted_hero} alt="Redacted hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_hero },
+    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_hero },
+    { label: "Male", before: redacted_source3_male_1024, after: redacted_hero },
+  ]}
+/>
 *Redacted applying luma-threshold censorship bars to bright regions of a video stream, with configurable bar orientation and white border trim.*
-<img src={redacted_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Redacted applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 ### Exercise 1: Classic Censorship Bars
 
-<img src={redacted_exercise1_result} alt="Classic Censorship Bars result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise1_result },
+    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise1_result },
+    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise1_result },
+  ]}
+/>
 *Classic Censorship Bars — simulated result across source images.*
 **Source**: A live camera feed of a person's face or a document with text, ensuring strong brightness contrast.
 
@@ -222,7 +235,13 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 ### Exercise 2: Vertical Redaction Columns
 
-<img src={redacted_exercise2_result} alt="Vertical Redaction Columns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise2_result },
+    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise2_result },
+    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise2_result },
+  ]}
+/>
 *Vertical Redaction Columns — simulated result across source images.*
 **Source**: Footage with vertical bright regions — windows, doorways, monitors, or vertical stripes.
 
@@ -241,7 +260,13 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 ### Exercise 3: Abstract Threshold Patterns
 
-<img src={redacted_exercise3_result} alt="Abstract Threshold Patterns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise3_result },
+    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise3_result },
+    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise3_result },
+  ]}
+/>
 *Abstract Threshold Patterns — simulated result across source images.*
 **Source**: High-contrast footage, pattern generators, or feedback loops.
 

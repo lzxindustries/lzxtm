@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 271
+sidebar_position: 272
 slug: /instruments/videomancer/stipple
 title: "Stipple"
 image: /img/instruments/videomancer/stipple/stipple_hero.png
 description: "Every classic computer had a fixed palette — a small set of colors chosen by the hardware designers, often constrained by cost, memory, and the television standards of the era."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stipple_hero from '/img/instruments/videomancer/stipple/stipple_hero.png';
-import stipple_before_after from '/img/instruments/videomancer/stipple/stipple_before_after.png';
 import stipple_control_panel from '/img/instruments/videomancer/stipple/stipple_control_panel.png';
 import stipple_exercise1_result from '/img/instruments/videomancer/stipple/stipple_exercise1_result.png';
 import stipple_exercise2_result from '/img/instruments/videomancer/stipple/stipple_exercise2_result.png';
 import stipple_exercise3_result from '/img/instruments/videomancer/stipple/stipple_exercise3_result.png';
+import stipple_source1_kodim03 from '/img/instruments/videomancer/stipple/stipple_source1_kodim03.png';
+import stipple_source2_kodim15 from '/img/instruments/videomancer/stipple/stipple_source2_kodim15.png';
+import stipple_source3_peppers_512 from '/img/instruments/videomancer/stipple/stipple_source3_peppers_512.png';
 
 # Stipple
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stipple_hero} alt="Stipple hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_hero },
+    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_hero },
+    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_hero },
+  ]}
+/>
 *Stipple mapping live video through eight classic computing palettes with ordered Bayer dithering to recreate the look of Game Boy, CGA, Macintosh, NES, EGA, C64, Amiga, and Amstrad CPC screens.*
-<img src={stipple_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stipple applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from basic palette selection through dither exploration
 
 ### Exercise 1: Platform Showcase
 
-<img src={stipple_exercise1_result} alt="Platform Showcase result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise1_result },
+    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise1_result },
+    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise1_result },
+  ]}
+/>
 *Platform Showcase — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a range of colors and brightness — faces, landscapes, or colorful objects work well.
 
@@ -217,7 +230,13 @@ These exercises progress from basic palette selection through dither exploration
 
 ### Exercise 2: Dither Textures
 
-<img src={stipple_exercise2_result} alt="Dither Textures result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise2_result },
+    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise2_result },
+    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise2_result },
+  ]}
+/>
 *Dither Textures — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
@@ -236,7 +255,13 @@ These exercises progress from basic palette selection through dither exploration
 
 ### Exercise 3: CRT Emulation
 
-<img src={stipple_exercise3_result} alt="CRT Emulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise3_result },
+    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise3_result },
+    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise3_result },
+  ]}
+/>
 *CRT Emulation — simulated result across source images.*
 **Source**: Any footage, especially retro game footage or graphics.
 

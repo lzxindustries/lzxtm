@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/domino/domino_hero.png
 description: "In the world of broadcast television, the most dramatic transitions are the ones that reveal the next image piece by piece — not in a smooth fade but in a cascade of discrete cells, each flicking from one state to another like the tiles on a departures board."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import domino_hero from '/img/instruments/videomancer/domino/domino_hero.png';
-import domino_before_after from '/img/instruments/videomancer/domino/domino_before_after.png';
 import domino_control_panel from '/img/instruments/videomancer/domino/domino_control_panel.png';
 import domino_exercise1_result from '/img/instruments/videomancer/domino/domino_exercise1_result.png';
 import domino_exercise2_result from '/img/instruments/videomancer/domino/domino_exercise2_result.png';
 import domino_exercise3_result from '/img/instruments/videomancer/domino/domino_exercise3_result.png';
+import domino_source1_kodim15 from '/img/instruments/videomancer/domino/domino_source1_kodim15.png';
+import domino_source2_kodim01 from '/img/instruments/videomancer/domino/domino_source2_kodim01.png';
+import domino_source3_kodim01_bw from '/img/instruments/videomancer/domino/domino_source3_kodim01_bw.png';
 
 # Domino
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={domino_hero} alt="Domino hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: domino_source1_kodim15, after: domino_hero },
+    { label: "Kodim01", before: domino_source2_kodim01, after: domino_hero },
+    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_hero },
+  ]}
+/>
 *Domino sweeping a cascade dissolve across a cell grid, progressively flipping tiles in a diagonal wave to reveal inverted and color-filled regions.*
-<img src={domino_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Domino applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 ### Exercise 1: Vertical Curtain Wipe
 
-<img src={domino_exercise1_result} alt="Vertical Curtain Wipe result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise1_result },
+    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise1_result },
+    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise1_result },
+  ]}
+/>
 *Vertical Curtain Wipe — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject matter and moderate contrast.
 
@@ -222,7 +235,13 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 ### Exercise 2: Diagonal Waterfall
 
-<img src={domino_exercise2_result} alt="Diagonal Waterfall result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise2_result },
+    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise2_result },
+    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise2_result },
+  ]}
+/>
 *Diagonal Waterfall — simulated result across source images.*
 **Source**: Footage with strong geometric elements — architecture, grids, or patterned surfaces.
 
@@ -241,7 +260,13 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 ### Exercise 3: Animated Mosaic Composite
 
-<img src={domino_exercise3_result} alt="Animated Mosaic Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise3_result },
+    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise3_result },
+    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise3_result },
+  ]}
+/>
 *Animated Mosaic Composite — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, stage lighting, or graphic overlays.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/gravure/gravure_hero.png
 description: "Before photographic reproduction, the finest printed images were made by photogravure — an intaglio process where an image is etched into a copper plate, ink is pressed into the recesses, and the plate is run through a press to transfer the image onto dampened paper."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import gravure_hero from '/img/instruments/videomancer/gravure/gravure_hero.png';
-import gravure_before_after from '/img/instruments/videomancer/gravure/gravure_before_after.png';
 import gravure_control_panel from '/img/instruments/videomancer/gravure/gravure_control_panel.png';
 import gravure_exercise1_result from '/img/instruments/videomancer/gravure/gravure_exercise1_result.png';
 import gravure_exercise2_result from '/img/instruments/videomancer/gravure/gravure_exercise2_result.png';
 import gravure_exercise3_result from '/img/instruments/videomancer/gravure/gravure_exercise3_result.png';
+import gravure_source1_kodim02 from '/img/instruments/videomancer/gravure/gravure_source1_kodim02.png';
+import gravure_source2_kodim07 from '/img/instruments/videomancer/gravure/gravure_source2_kodim07.png';
+import gravure_source3_kodim01_bw from '/img/instruments/videomancer/gravure/gravure_source3_kodim01_bw.png';
 
 # Gravure
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={gravure_hero} alt="Gravure hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gravure_source1_kodim02, after: gravure_hero },
+    { label: "Kodim07", before: gravure_source2_kodim07, after: gravure_hero },
+    { label: "Kodim01 B&W", before: gravure_source3_kodim01_bw, after: gravure_hero },
+  ]}
+/>
 *Gravure transforming a photographic source into a warm-toned intaglio print with aquatint grain visible in the midtones and a crisp plate mark border.*
-<img src={gravure_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Gravure applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises build from basic tone curve exploration to full print simulation
 
 ### Exercise 1: Shadow Tone Curve
 
-<img src={gravure_exercise1_result} alt="Shadow Tone Curve result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gravure_source1_kodim02, after: gravure_exercise1_result },
+    { label: "Kodim07", before: gravure_source2_kodim07, after: gravure_exercise1_result },
+    { label: "Kodim01 B&W", before: gravure_source3_kodim01_bw, after: gravure_exercise1_result },
+  ]}
+/>
 *Shadow Tone Curve — simulated result across source images.*
 **Source**: A portrait or still life with a full tonal range — deep shadows, smooth midtones, and clean highlights.
 
@@ -217,7 +230,13 @@ These exercises build from basic tone curve exploration to full print simulation
 
 ### Exercise 2: Aquatint Grain and Ink Pooling
 
-<img src={gravure_exercise2_result} alt="Aquatint Grain and Ink Pooling result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gravure_source1_kodim02, after: gravure_exercise2_result },
+    { label: "Kodim07", before: gravure_source2_kodim07, after: gravure_exercise2_result },
+    { label: "Kodim01 B&W", before: gravure_source3_kodim01_bw, after: gravure_exercise2_result },
+  ]}
+/>
 *Aquatint Grain and Ink Pooling — simulated result across source images.*
 **Source**: A landscape or architectural image with broad midtone areas (sky, walls, foliage) and some deep shadows.
 
@@ -236,7 +255,13 @@ These exercises build from basic tone curve exploration to full print simulation
 
 ### Exercise 3: Full Photogravure Emulation
 
-<img src={gravure_exercise3_result} alt="Full Photogravure Emulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: gravure_source1_kodim02, after: gravure_exercise3_result },
+    { label: "Kodim07", before: gravure_source2_kodim07, after: gravure_exercise3_result },
+    { label: "Kodim01 B&W", before: gravure_source3_kodim01_bw, after: gravure_exercise3_result },
+  ]}
+/>
 *Full Photogravure Emulation — simulated result across source images.*
 **Source**: A high-contrast portrait (studio lighting, dark background) — the kind of subject that showcases intaglio printing at its finest.
 

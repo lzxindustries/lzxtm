@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chenille/chenille_hero.png
 description: "Chenille is named for the French word meaning \"caterpillar\" — the same word that gives its name to the soft, tufted fabric whose surface is made of tiny cut threads standing upright in a dense grid."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chenille_hero from '/img/instruments/videomancer/chenille/chenille_hero.png';
-import chenille_before_after from '/img/instruments/videomancer/chenille/chenille_before_after.png';
 import chenille_control_panel from '/img/instruments/videomancer/chenille/chenille_control_panel.png';
 import chenille_exercise1_result from '/img/instruments/videomancer/chenille/chenille_exercise1_result.png';
 import chenille_exercise2_result from '/img/instruments/videomancer/chenille/chenille_exercise2_result.png';
 import chenille_exercise3_result from '/img/instruments/videomancer/chenille/chenille_exercise3_result.png';
+import chenille_source1_kodim15 from '/img/instruments/videomancer/chenille/chenille_source1_kodim15.png';
+import chenille_source2_kodim03 from '/img/instruments/videomancer/chenille/chenille_source2_kodim03.png';
+import chenille_source3_kodim13_bw from '/img/instruments/videomancer/chenille/chenille_source3_kodim13_bw.png';
 
 # Chenille
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chenille_hero} alt="Chenille hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_hero },
+    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_hero },
+    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_hero },
+  ]}
+/>
 *Chenille transforming a still life into a field of luminous tufted dots, each pile cluster carrying the color memory of the pixel it replaced.*
-<img src={chenille_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chenille applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These three exercises move from basic grid exploration through directional shadi
 
 ### Exercise 1: Dot Grid Fundamentals
 
-<img src={chenille_exercise1_result} alt="Dot Grid Fundamentals result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise1_result },
+    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise1_result },
+    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise1_result },
+  ]}
+/>
 *Dot Grid Fundamentals — simulated result across source images.*
 **Source**: A live camera feed or any footage with recognizable mid-tone content — avoid very dark or very bright material.
 
@@ -220,7 +233,13 @@ These three exercises move from basic grid exploration through directional shadi
 
 ### Exercise 2: Directional Shading and Pile Height
 
-<img src={chenille_exercise2_result} alt="Directional Shading and Pile Height result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise2_result },
+    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise2_result },
+    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise2_result },
+  ]}
+/>
 *Directional Shading and Pile Height — simulated result across source images.*
 **Source**: Portrait or still life with smooth tonal gradients and soft lighting.
 
@@ -239,7 +258,13 @@ These three exercises move from basic grid exploration through directional shadi
 
 ### Exercise 3: Animated Textile Synthesis
 
-<img src={chenille_exercise3_result} alt="Animated Textile Synthesis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise3_result },
+    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise3_result },
+    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise3_result },
+  ]}
+/>
 *Animated Textile Synthesis — simulated result across source images.*
 **Source**: Saturated, high-contrast footage — color bars, graphics, or the macaw image.
 

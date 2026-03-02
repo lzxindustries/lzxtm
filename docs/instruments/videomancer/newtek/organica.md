@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 199
+sidebar_position: 200
 slug: /instruments/videomancer/organica
 title: "Organica"
 image: /img/instruments/videomancer/organica/organica_hero.png
 description: "Organica generates procedural color palettes by sweeping a six-segment hue wheel across the video frame."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import organica_hero from '/img/instruments/videomancer/organica/organica_hero.png';
-import organica_before_after from '/img/instruments/videomancer/organica/organica_before_after.png';
 import organica_control_panel from '/img/instruments/videomancer/organica/organica_control_panel.png';
 import organica_exercise1_result from '/img/instruments/videomancer/organica/organica_exercise1_result.png';
 import organica_exercise2_result from '/img/instruments/videomancer/organica/organica_exercise2_result.png';
 import organica_exercise3_result from '/img/instruments/videomancer/organica/organica_exercise3_result.png';
+import organica_source1_kodim15 from '/img/instruments/videomancer/organica/organica_source1_kodim15.png';
+import organica_source2_kodim03 from '/img/instruments/videomancer/organica/organica_source2_kodim03.png';
+import organica_source3_kodim13_bw from '/img/instruments/videomancer/organica/organica_source3_kodim13_bw.png';
 
 # Organica
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={organica_hero} alt="Organica hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: organica_source1_kodim15, after: organica_hero },
+    { label: "Kodim03", before: organica_source2_kodim03, after: organica_hero },
+    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_hero },
+  ]}
+/>
 *Organica painting a flowing procedural color palette across the video frame, with hue gradients driven by horizontal position and input luminance.*
-<img src={organica_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Organica applied.*
 
 ---
 
@@ -196,7 +203,13 @@ These exercises progress from a static single-color field to animated, video-res
 
 ### Exercise 1: Static Color Wash
 
-<img src={organica_exercise1_result} alt="Static Color Wash result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise1_result },
+    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise1_result },
+    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise1_result },
+  ]}
+/>
 *Static Color Wash — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied brightness.
 
@@ -215,7 +228,13 @@ These exercises progress from a static single-color field to animated, video-res
 
 ### Exercise 2: Rainbow Gradient
 
-<img src={organica_exercise2_result} alt="Rainbow Gradient result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise2_result },
+    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise2_result },
+    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise2_result },
+  ]}
+/>
 *Rainbow Gradient — simulated result across source images.*
 **Source**: Simple footage with a clear horizon or strong horizontal structure — landscapes, skylines.
 
@@ -234,7 +253,13 @@ These exercises progress from a static single-color field to animated, video-res
 
 ### Exercise 3: Animated Video-Responsive Palette
 
-<img src={organica_exercise3_result} alt="Animated Video-Responsive Palette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise3_result },
+    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise3_result },
+    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise3_result },
+  ]}
+/>
 *Animated Video-Responsive Palette — simulated result across source images.*
 **Source**: High-contrast footage with movement — dancers, traffic, flowing water, or abstract video feedback.
 

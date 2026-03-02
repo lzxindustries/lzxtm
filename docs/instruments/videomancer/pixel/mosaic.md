@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 188
+sidebar_position: 189
 slug: /instruments/videomancer/mosaic
 title: "Mosaic"
 image: /img/instruments/videomancer/mosaic/mosaic_hero.png
 description: "Every digital image is already a mosaic — a grid of discrete samples."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import mosaic_hero from '/img/instruments/videomancer/mosaic/mosaic_hero.png';
-import mosaic_before_after from '/img/instruments/videomancer/mosaic/mosaic_before_after.png';
 import mosaic_control_panel from '/img/instruments/videomancer/mosaic/mosaic_control_panel.png';
 import mosaic_exercise1_result from '/img/instruments/videomancer/mosaic/mosaic_exercise1_result.png';
 import mosaic_exercise2_result from '/img/instruments/videomancer/mosaic/mosaic_exercise2_result.png';
 import mosaic_exercise3_result from '/img/instruments/videomancer/mosaic/mosaic_exercise3_result.png';
+import mosaic_source1_kodim02 from '/img/instruments/videomancer/mosaic/mosaic_source1_kodim02.png';
+import mosaic_source2_kodim07 from '/img/instruments/videomancer/mosaic/mosaic_source2_kodim07.png';
+import mosaic_source3_kodim01_bw from '/img/instruments/videomancer/mosaic/mosaic_source3_kodim01_bw.png';
 
 # Mosaic
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={mosaic_hero} alt="Mosaic hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_hero },
+    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_hero },
+    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_hero },
+  ]}
+/>
 *Mosaic applying luma-modulated sample-and-hold pixelation with edge enhancement to create content-adaptive block structures.*
-<img src={mosaic_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Mosaic applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 ### Exercise 1: Basic Pixelation
 
-<img src={mosaic_exercise1_result} alt="Basic Pixelation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise1_result },
+    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise1_result },
+    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise1_result },
+  ]}
+/>
 *Basic Pixelation — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied color.
 
@@ -221,7 +234,13 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 ### Exercise 2: Content-Adaptive Modulation
 
-<img src={mosaic_exercise2_result} alt="Content-Adaptive Modulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise2_result },
+    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise2_result },
+    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise2_result },
+  ]}
+/>
 *Content-Adaptive Modulation — simulated result across source images.*
 **Source**: Footage with strong luminance contrast — a face against a dark background, or a brightly lit subject with shadows.
 
@@ -239,7 +258,13 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 ### Exercise 3: Stained Glass Effect
 
-<img src={mosaic_exercise3_result} alt="Stained Glass Effect result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise3_result },
+    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise3_result },
+    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise3_result },
+  ]}
+/>
 *Stained Glass Effect — simulated result across source images.*
 **Source**: Footage with varied color and moderate contrast — nature scenes, architectural subjects, or abstract patterns.
 

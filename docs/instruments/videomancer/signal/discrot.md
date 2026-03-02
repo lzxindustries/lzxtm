@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/discrot/discrot_hero.png
 description: "Every technology carries the seeds of its own decay."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import discrot_hero from '/img/instruments/videomancer/discrot/discrot_hero.png';
-import discrot_before_after from '/img/instruments/videomancer/discrot/discrot_before_after.png';
 import discrot_control_panel from '/img/instruments/videomancer/discrot/discrot_control_panel.png';
 import discrot_exercise1_result from '/img/instruments/videomancer/discrot/discrot_exercise1_result.png';
 import discrot_exercise2_result from '/img/instruments/videomancer/discrot/discrot_exercise2_result.png';
 import discrot_exercise3_result from '/img/instruments/videomancer/discrot/discrot_exercise3_result.png';
+import discrot_source1_kodim15 from '/img/instruments/videomancer/discrot/discrot_source1_kodim15.png';
+import discrot_source2_kodim01 from '/img/instruments/videomancer/discrot/discrot_source2_kodim01.png';
+import discrot_source3_stream_bridge_512 from '/img/instruments/videomancer/discrot/discrot_source3_stream_bridge_512.png';
 
 # Discrot
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={discrot_hero} alt="Discrot hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_hero },
+    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_hero },
+    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_hero },
+  ]}
+/>
 *Discrot applying concentric ring dropouts and speckle noise to simulate LaserDisc oxidation damage on a live video signal.*
-<img src={discrot_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Discrot applied.*
 
 ---
 
@@ -223,7 +230,13 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 ### Exercise 1: Gentle Disc Wear
 
-<img src={discrot_exercise1_result} alt="Gentle Disc Wear result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise1_result },
+    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise1_result },
+    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise1_result },
+  ]}
+/>
 *Gentle Disc Wear — simulated result across source images.*
 **Source**: Footage with smooth tonal gradients — sky, water, or skin tones work well.
 
@@ -241,7 +254,13 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 ### Exercise 2: Specular Speckle and Snow
 
-<img src={discrot_exercise2_result} alt="Specular Speckle and Snow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise2_result },
+    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise2_result },
+    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise2_result },
+  ]}
+/>
 *Specular Speckle and Snow — simulated result across source images.*
 **Source**: High-contrast footage — black and white graphics, text, or high-contrast live video.
 
@@ -260,7 +279,13 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 ### Exercise 3: Catastrophic Media Failure
 
-<img src={discrot_exercise3_result} alt="Catastrophic Media Failure result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise3_result },
+    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise3_result },
+    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise3_result },
+  ]}
+/>
 *Catastrophic Media Failure — simulated result across source images.*
 **Source**: Any footage — the source will be largely destroyed.
 

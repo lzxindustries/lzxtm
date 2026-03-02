@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/corona/corona_hero.png
 description: "Corona synthesizes the radial streamer field of a total solar eclipse — the ethereal halo of plasma that becomes visible only when the Moon's disk occults the Sun's photosphere."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import corona_hero from '/img/instruments/videomancer/corona/corona_hero.png';
-import corona_before_after from '/img/instruments/videomancer/corona/corona_before_after.png';
 import corona_control_panel from '/img/instruments/videomancer/corona/corona_control_panel.png';
 import corona_exercise1_result from '/img/instruments/videomancer/corona/corona_exercise1_result.png';
 import corona_exercise2_result from '/img/instruments/videomancer/corona/corona_exercise2_result.png';
 import corona_exercise3_result from '/img/instruments/videomancer/corona/corona_exercise3_result.png';
+import corona_source1_kodim01 from '/img/instruments/videomancer/corona/corona_source1_kodim01.png';
+import corona_source2_kodim02 from '/img/instruments/videomancer/corona/corona_source2_kodim02.png';
+import corona_source3_stream_bridge_512 from '/img/instruments/videomancer/corona/corona_source3_stream_bridge_512.png';
 
 # Corona
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={corona_hero} alt="Corona hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: corona_source1_kodim01, after: corona_hero },
+    { label: "Kodim02", before: corona_source2_kodim02, after: corona_hero },
+    { label: "Stream Bridge", before: corona_source3_stream_bridge_512, after: corona_hero },
+  ]}
+/>
 *A radiant solar corona erupts from behind a dark lunar disk, pearl-white streamers fanning outward through amber into blue-green at the limb, the asymmetric lobe structure drifting slowly as three phase accumulators evolve the coronal field.*
-<img src={corona_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Corona applied.*
 
 ---
 
@@ -241,7 +248,13 @@ These exercises progress from basic corona construction through eclipse composit
 
 ### Exercise 1: Symmetric Dipole Corona
 
-<img src={corona_exercise1_result} alt="Symmetric Dipole Corona result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: corona_source1_kodim01, after: corona_exercise1_result },
+    { label: "Kodim02", before: corona_source2_kodim02, after: corona_exercise1_result },
+    { label: "Stream Bridge", before: corona_source3_stream_bridge_512, after: corona_exercise1_result },
+  ]}
+/>
 *Symmetric Dipole Corona — simulated result across source images.*
 **Objective**: Create a simple two-lobed coronal structure resembling a solar-minimum dipole, with a central dark disk and prominence ring.
 
@@ -258,7 +271,13 @@ These exercises progress from basic corona construction through eclipse composit
 
 ### Exercise 2: Complex Multi-Streamer with Butler Palette
 
-<img src={corona_exercise2_result} alt="Complex Multi-Streamer with Butler Palette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: corona_source1_kodim01, after: corona_exercise2_result },
+    { label: "Kodim02", before: corona_source2_kodim02, after: corona_exercise2_result },
+    { label: "Stream Bridge", before: corona_source3_stream_bridge_512, after: corona_exercise2_result },
+  ]}
+/>
 *Complex Multi-Streamer with Butler Palette — simulated result across source images.*
 **Objective**: Build a complex, asymmetric corona with many radial streamers and the historically accurate Butler color gradient.
 
@@ -275,7 +294,13 @@ These exercises progress from basic corona construction through eclipse composit
 
 ### Exercise 3: Drifting Starburst without Disk
 
-<img src={corona_exercise3_result} alt="Drifting Starburst without Disk result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: corona_source1_kodim01, after: corona_exercise3_result },
+    { label: "Kodim02", before: corona_source2_kodim02, after: corona_exercise3_result },
+    { label: "Stream Bridge", before: corona_source3_stream_bridge_512, after: corona_exercise3_result },
+  ]}
+/>
 *Drifting Starburst without Disk — simulated result across source images.*
 **Objective**: Use center drift and NoDisk mode to create an animated starburst that wanders across the screen.
 

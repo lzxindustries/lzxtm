@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 285
+sidebar_position: 286
 slug: /instruments/videomancer/terminal
 title: "Terminal"
 image: /img/instruments/videomancer/terminal/terminal_hero.png
 description: "Every home computer of the early 1980s presented its output on a CRT monitor with a single-colour phosphor — green, amber, or crisp white."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import terminal_hero from '/img/instruments/videomancer/terminal/terminal_hero.png';
-import terminal_before_after from '/img/instruments/videomancer/terminal/terminal_before_after.png';
 import terminal_control_panel from '/img/instruments/videomancer/terminal/terminal_control_panel.png';
 import terminal_exercise1_result from '/img/instruments/videomancer/terminal/terminal_exercise1_result.png';
 import terminal_exercise2_result from '/img/instruments/videomancer/terminal/terminal_exercise2_result.png';
 import terminal_exercise3_result from '/img/instruments/videomancer/terminal/terminal_exercise3_result.png';
+import terminal_source1_kodim15 from '/img/instruments/videomancer/terminal/terminal_source1_kodim15.png';
+import terminal_source2_kodim03 from '/img/instruments/videomancer/terminal/terminal_source2_kodim03.png';
+import terminal_source3_kodim15_bw from '/img/instruments/videomancer/terminal/terminal_source3_kodim15_bw.png';
 
 # Terminal
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={terminal_hero} alt="Terminal hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_hero },
+    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_hero },
+    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_hero },
+  ]}
+/>
 *Terminal applying green phosphor tinting and CRT scanline darkening to transform input video into a vintage computer monitor display.*
-<img src={terminal_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Terminal applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 ### Exercise 1: Classic Green Screen
 
-<img src={terminal_exercise1_result} alt="Classic Green Screen result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise1_result },
+    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise1_result },
+    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise1_result },
+  ]}
+/>
 *Classic Green Screen — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognisable subjects and moderate contrast.
 
@@ -229,7 +242,13 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 ### Exercise 2: Amber Bold Terminal
 
-<img src={terminal_exercise2_result} alt="Amber Bold Terminal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise2_result },
+    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise2_result },
+    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise2_result },
+  ]}
+/>
 *Amber Bold Terminal — simulated result across source images.*
 **Source**: Text graphics, title cards, or high-contrast black-and-white footage.
 
@@ -248,7 +267,13 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 ### Exercise 3: Phosphor Tint Overlay
 
-<img src={terminal_exercise3_result} alt="Phosphor Tint Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise3_result },
+    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise3_result },
+    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise3_result },
+  ]}
+/>
 *Phosphor Tint Overlay — simulated result across source images.*
 **Source**: Colourful footage — landscapes, graphics, or abstract video synthesis.
 

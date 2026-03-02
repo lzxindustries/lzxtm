@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 208
+sidebar_position: 209
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
 image: /img/instruments/videomancer/pegboard/pegboard_hero.png
 description: "Before LCD panels and OLED screens, there was Lite-Brite — a toy that turned translucent colored pegs into glowing pictures when backlit."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import pegboard_hero from '/img/instruments/videomancer/pegboard/pegboard_hero.png';
-import pegboard_before_after from '/img/instruments/videomancer/pegboard/pegboard_before_after.png';
 import pegboard_control_panel from '/img/instruments/videomancer/pegboard/pegboard_control_panel.png';
 import pegboard_exercise1_result from '/img/instruments/videomancer/pegboard/pegboard_exercise1_result.png';
 import pegboard_exercise2_result from '/img/instruments/videomancer/pegboard/pegboard_exercise2_result.png';
 import pegboard_exercise3_result from '/img/instruments/videomancer/pegboard/pegboard_exercise3_result.png';
+import pegboard_source1_kodim02 from '/img/instruments/videomancer/pegboard/pegboard_source1_kodim02.png';
+import pegboard_source2_kodim07 from '/img/instruments/videomancer/pegboard/pegboard_source2_kodim07.png';
+import pegboard_source3_kodim01_bw from '/img/instruments/videomancer/pegboard/pegboard_source3_kodim01_bw.png';
 
 # Pegboard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={pegboard_hero} alt="Pegboard hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_hero },
+    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_hero },
+    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_hero },
+  ]}
+/>
 *Pegboard rendering a live camera feed as glowing Lite-Brite pegs snapped to an eight-color palette on a dark field.*
-<img src={pegboard_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Pegboard applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 ### Exercise 1: Classic Lite-Brite
 
-<img src={pegboard_exercise1_result} alt="Classic Lite-Brite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise1_result },
+    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise1_result },
+    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise1_result },
+  ]}
+/>
 *Classic Lite-Brite — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong, varied colors — fruit bowls, flower arrangements, or color bar patterns work well.
 
@@ -234,7 +247,13 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 ### Exercise 2: Full Color Mosaic with Saturation
 
-<img src={pegboard_exercise2_result} alt="Full Color Mosaic with Saturation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise2_result },
+    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise2_result },
+    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise2_result },
+  ]}
+/>
 *Full Color Mosaic with Saturation — simulated result across source images.*
 **Source**: Footage with subtle color variation — landscapes, skin tones, or gradients.
 
@@ -253,7 +272,13 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 ### Exercise 3: Blooming Inverted Pegs
 
-<img src={pegboard_exercise3_result} alt="Blooming Inverted Pegs result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise3_result },
+    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise3_result },
+    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise3_result },
+  ]}
+/>
 *Blooming Inverted Pegs — simulated result across source images.*
 **Source**: High-contrast material — spotlit subjects, neon signs, or black-and-white graphics.
 

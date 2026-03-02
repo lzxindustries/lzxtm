@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 257
+sidebar_position: 258
 slug: /instruments/videomancer/sirocco
 title: "Sirocco"
 image: /img/instruments/videomancer/sirocco/sirocco_hero.png
 description: "A sirocco is a hot, sand-laden wind that blows across the Mediterranean from the Sahara."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sirocco_hero from '/img/instruments/videomancer/sirocco/sirocco_hero.png';
-import sirocco_before_after from '/img/instruments/videomancer/sirocco/sirocco_before_after.png';
 import sirocco_control_panel from '/img/instruments/videomancer/sirocco/sirocco_control_panel.png';
 import sirocco_exercise1_result from '/img/instruments/videomancer/sirocco/sirocco_exercise1_result.png';
 import sirocco_exercise2_result from '/img/instruments/videomancer/sirocco/sirocco_exercise2_result.png';
 import sirocco_exercise3_result from '/img/instruments/videomancer/sirocco/sirocco_exercise3_result.png';
+import sirocco_source1_kodim01 from '/img/instruments/videomancer/sirocco/sirocco_source1_kodim01.png';
+import sirocco_source2_kodim02 from '/img/instruments/videomancer/sirocco/sirocco_source2_kodim02.png';
+import sirocco_source3_stream_bridge_512 from '/img/instruments/videomancer/sirocco/sirocco_source3_stream_bridge_512.png';
 
 # Sirocco
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sirocco_hero} alt="Sirocco hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_hero },
+    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_hero },
+    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_hero },
+  ]}
+/>
 *Sirocco applying brightness ripple and sparse sand particles over a landscape scene, with warm colour temperature shift and high-contrast enhancement.*
-<img src={sirocco_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sirocco applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 ### Exercise 1: Heat Shimmer Ripple
 
-<img src={sirocco_exercise1_result} alt="Heat Shimmer Ripple result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise1_result },
+    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise1_result },
+    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise1_result },
+  ]}
+/>
 *Heat Shimmer Ripple — simulated result across source images.*
 **Source**: Footage of a static scene (landscape, architectural shot) where the ripple bands will be clearly visible against straight horizontal lines.
 
@@ -234,7 +247,13 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 ### Exercise 2: Sand Particle Storm
 
-<img src={sirocco_exercise2_result} alt="Sand Particle Storm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise2_result },
+    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise2_result },
+    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise2_result },
+  ]}
+/>
 *Sand Particle Storm — simulated result across source images.*
 **Source**: Dark or mid-toned footage where bright particles will stand out clearly.
 
@@ -253,7 +272,13 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 ### Exercise 3: Full Desert Sandstorm
 
-<img src={sirocco_exercise3_result} alt="Full Desert Sandstorm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise3_result },
+    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise3_result },
+    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise3_result },
+  ]}
+/>
 *Full Desert Sandstorm — simulated result across source images.*
 **Source**: Any footage — the effect works on all content, but outdoor landscapes and portraits are particularly evocative.
 

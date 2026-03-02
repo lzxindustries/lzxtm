@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 212
+sidebar_position: 213
 slug: /instruments/videomancer/phantasma
 title: "Phantasma"
 image: /img/instruments/videomancer/phantasma/phantasma_hero.png
 description: "Phantasma is a pattern generator disguised as a video processor."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import phantasma_hero from '/img/instruments/videomancer/phantasma/phantasma_hero.png';
-import phantasma_before_after from '/img/instruments/videomancer/phantasma/phantasma_before_after.png';
 import phantasma_control_panel from '/img/instruments/videomancer/phantasma/phantasma_control_panel.png';
 import phantasma_exercise1_result from '/img/instruments/videomancer/phantasma/phantasma_exercise1_result.png';
 import phantasma_exercise2_result from '/img/instruments/videomancer/phantasma/phantasma_exercise2_result.png';
 import phantasma_exercise3_result from '/img/instruments/videomancer/phantasma/phantasma_exercise3_result.png';
+import phantasma_source1_kodim01 from '/img/instruments/videomancer/phantasma/phantasma_source1_kodim01.png';
+import phantasma_source2_kodim02 from '/img/instruments/videomancer/phantasma/phantasma_source2_kodim02.png';
+import phantasma_source3_kodim01_bw from '/img/instruments/videomancer/phantasma/phantasma_source3_kodim01_bw.png';
 
 # Phantasma
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={phantasma_hero} alt="Phantasma hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_hero },
+    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_hero },
+    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_hero },
+  ]}
+/>
 *Phantasma generating luma-reactive warped horizontal stripe patterns that blend with the source video via DDS phase accumulation and proc_amp modulation.*
-<img src={phantasma_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Phantasma applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 ### Exercise 1: Basic Stripes
 
-<img src={phantasma_exercise1_result} alt="Basic Stripes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise1_result },
+    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise1_result },
+    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise1_result },
+  ]}
+/>
 *Basic Stripes — simulated result across source images.*
 **Source**: Any colour video footage — a face, landscape, or colourful test pattern.
 
@@ -228,7 +241,13 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 ### Exercise 2: Luma-Reactive Patterns
 
-<img src={phantasma_exercise2_result} alt="Luma-Reactive Patterns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise2_result },
+    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise2_result },
+    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise2_result },
+  ]}
+/>
 *Luma-Reactive Patterns — simulated result across source images.*
 **Source**: High-contrast footage with clear tonal regions — a face with highlights and shadows, or a black-and-white graphic.
 
@@ -246,7 +265,13 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 ### Exercise 3: Pattern Overlay
 
-<img src={phantasma_exercise3_result} alt="Pattern Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise3_result },
+    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise3_result },
+    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise3_result },
+  ]}
+/>
 *Pattern Overlay — simulated result across source images.*
 **Source**: Colourful video footage — performance footage, animation, or nature scenes with saturated colours.
 

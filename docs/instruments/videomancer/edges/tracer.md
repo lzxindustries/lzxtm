@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 293
+sidebar_position: 294
 slug: /instruments/videomancer/tracer
 title: "Tracer"
 image: /img/instruments/videomancer/tracer/tracer_hero.png
 description: "Every child of the 1970s and 1980s remembers the feeling: two white knobs, a silver screen, and a stylus hidden behind a pane of glass, scraping aluminum powder off to reveal dark lines."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tracer_hero from '/img/instruments/videomancer/tracer/tracer_hero.png';
-import tracer_before_after from '/img/instruments/videomancer/tracer/tracer_before_after.png';
 import tracer_control_panel from '/img/instruments/videomancer/tracer/tracer_control_panel.png';
 import tracer_exercise1_result from '/img/instruments/videomancer/tracer/tracer_exercise1_result.png';
 import tracer_exercise2_result from '/img/instruments/videomancer/tracer/tracer_exercise2_result.png';
 import tracer_exercise3_result from '/img/instruments/videomancer/tracer/tracer_exercise3_result.png';
+import tracer_source1_kodim02 from '/img/instruments/videomancer/tracer/tracer_source1_kodim02.png';
+import tracer_source2_kodim07 from '/img/instruments/videomancer/tracer/tracer_source2_kodim07.png';
+import tracer_source3_kodim01_bw from '/img/instruments/videomancer/tracer/tracer_source3_kodim01_bw.png';
 
 # Tracer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={tracer_hero} alt="Tracer hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_hero },
+    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_hero },
+    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_hero },
+  ]}
+/>
 *Tracer accumulating edge contours onto a persistent canvas, rendering the aluminum-powder texture of a miniature drawing toy.*
-<img src={tracer_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tracer applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 ### Exercise 1: Live Contour Drawing
 
-<img src={tracer_exercise1_result} alt="Live Contour Drawing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise1_result },
+    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise1_result },
+    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise1_result },
+  ]}
+/>
 *Live Contour Drawing — simulated result across source images.*
 **Source**: A live camera feed pointed at objects with clear edges — books, hands, geometric shapes.
 
@@ -229,7 +242,13 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 ### Exercise 2: Classic Etch A Sketch Aesthetic
 
-<img src={tracer_exercise2_result} alt="Classic Etch A Sketch Aesthetic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise2_result },
+    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise2_result },
+    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise2_result },
+  ]}
+/>
 *Classic Etch A Sketch Aesthetic — simulated result across source images.*
 **Source**: Footage with strong geometric edges — architecture, signage, or a test pattern.
 
@@ -248,7 +267,13 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 ### Exercise 3: Inverted Trace with Motion Trails
 
-<img src={tracer_exercise3_result} alt="Inverted Trace with Motion Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise3_result },
+    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise3_result },
+    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise3_result },
+  ]}
+/>
 *Inverted Trace with Motion Trails — simulated result across source images.*
 **Source**: Footage with significant motion — dancers, traffic, or hands gesturing.
 

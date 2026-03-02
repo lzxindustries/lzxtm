@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 263
+sidebar_position: 264
 slug: /instruments/videomancer/spectrogram
 title: "Spectrogram"
 image: /img/instruments/videomancer/spectrogram/spectrogram_hero.png
 description: "Spectrogram converts a video signal into a scrolling waterfall display, treating each incoming scanline as a row of \"spectral\" data that is colour-mapped, written into a framebuffer, and scrolled vertically over time."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import spectrogram_hero from '/img/instruments/videomancer/spectrogram/spectrogram_hero.png';
-import spectrogram_before_after from '/img/instruments/videomancer/spectrogram/spectrogram_before_after.png';
 import spectrogram_control_panel from '/img/instruments/videomancer/spectrogram/spectrogram_control_panel.png';
 import spectrogram_exercise1_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise1_result.png';
 import spectrogram_exercise2_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise2_result.png';
 import spectrogram_exercise3_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise3_result.png';
+import spectrogram_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/spectrogram/spectrogram_source1_grayscale_ramp_h_1920x1080.png';
+import spectrogram_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/spectrogram/spectrogram_source2_grayscale_ramp_v_1920x1080.png';
+import spectrogram_source3_step_wedge_21level_512 from '/img/instruments/videomancer/spectrogram/spectrogram_source3_step_wedge_21level_512.png';
 
 # Spectrogram
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={spectrogram_hero} alt="Spectrogram hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_hero },
+    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_hero },
+    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_hero },
+  ]}
+/>
 *A waterfall display scrolls upward, painting false-colour spectral bands over the incoming video field — bright luma spikes burn yellow-white while dark regions cool to deep indigo.*
-<img src={spectrogram_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Spectrogram applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 ### Exercise 1: Classic Thermal Waterfall
 
-<img src={spectrogram_exercise1_result} alt="Classic Thermal Waterfall result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise1_result },
+    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise1_result },
+    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise1_result },
+  ]}
+/>
 *Classic Thermal Waterfall — simulated result across source images.*
 **Source**: A camera source with a mix of slowly changing and rapidly flickering elements — a person moving against a static background works well.
 
@@ -234,7 +247,13 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 ### Exercise 2: Spectral Logarithmic Analysis
 
-<img src={spectrogram_exercise2_result} alt="Spectral Logarithmic Analysis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise2_result },
+    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise2_result },
+    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise2_result },
+  ]}
+/>
 *Spectral Logarithmic Analysis — simulated result across source images.*
 **Source**: A high-dynamic-range source — window with daylight behind a dimly lit interior, or a candle in a dark room.
 
@@ -254,7 +273,13 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 ### Exercise 3: Heads-Up Overlay
 
-<img src={spectrogram_exercise3_result} alt="Heads-Up Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise3_result },
+    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise3_result },
+    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise3_result },
+  ]}
+/>
 *Heads-Up Overlay — simulated result across source images.*
 **Source**: A live camera feed with moderate motion.
 

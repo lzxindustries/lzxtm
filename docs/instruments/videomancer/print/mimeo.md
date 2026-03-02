@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/mimeo/mimeo_hero.png
 description: "Before photocopiers, before laser printers, there was the mimeograph."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import mimeo_hero from '/img/instruments/videomancer/mimeo/mimeo_hero.png';
-import mimeo_before_after from '/img/instruments/videomancer/mimeo/mimeo_before_after.png';
 import mimeo_control_panel from '/img/instruments/videomancer/mimeo/mimeo_control_panel.png';
 import mimeo_exercise1_result from '/img/instruments/videomancer/mimeo/mimeo_exercise1_result.png';
 import mimeo_exercise2_result from '/img/instruments/videomancer/mimeo/mimeo_exercise2_result.png';
 import mimeo_exercise3_result from '/img/instruments/videomancer/mimeo/mimeo_exercise3_result.png';
+import mimeo_source1_kodim02 from '/img/instruments/videomancer/mimeo/mimeo_source1_kodim02.png';
+import mimeo_source2_kodim07 from '/img/instruments/videomancer/mimeo/mimeo_source2_kodim07.png';
+import mimeo_source3_kodim01_bw from '/img/instruments/videomancer/mimeo/mimeo_source3_kodim01_bw.png';
 
 # Mimeo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={mimeo_hero} alt="Mimeo hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_hero },
+    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_hero },
+    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_hero },
+  ]}
+/>
 *Mimeo rendering a spirit duplicator print with purple ink on cream paper stock, showing letterform fill-in and progressive copy fade.*
-<img src={mimeo_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Mimeo applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 ### Exercise 1: Spirit Duplicator Print
 
-<img src={mimeo_exercise1_result} alt="Spirit Duplicator Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise1_result },
+    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise1_result },
+    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise1_result },
+  ]}
+/>
 *Spirit Duplicator Print — simulated result across source images.*
 **Source**: A camera feed of text, signage, or high-contrast graphic material.
 
@@ -223,7 +236,13 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 ### Exercise 2: Stencil Mimeograph
 
-<img src={mimeo_exercise2_result} alt="Stencil Mimeograph result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise2_result },
+    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise2_result },
+    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise2_result },
+  ]}
+/>
 *Stencil Mimeograph — simulated result across source images.*
 **Source**: High-contrast footage — text overlays, sharp graphic patterns, or architectural details.
 
@@ -242,7 +261,13 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 ### Exercise 3: Degraded Multi-Generation Copy
 
-<img src={mimeo_exercise3_result} alt="Degraded Multi-Generation Copy result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise3_result },
+    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise3_result },
+    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise3_result },
+  ]}
+/>
 *Degraded Multi-Generation Copy — simulated result across source images.*
 **Source**: Any footage — the more detailed the source, the more dramatic the degradation.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/camcord/camcord_hero.png
 description: "Between roughly 1987 and 1994, consumer camcorders from Sony, Panasonic, and JVC shipped with built-in digital effects processors — tiny DSP chips that could freeze a frame, pixelate it into mosaic blocks, compress the image into a slim strip, or key areas of brightness to a colored matte."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import camcord_hero from '/img/instruments/videomancer/camcord/camcord_hero.png';
-import camcord_before_after from '/img/instruments/videomancer/camcord/camcord_before_after.png';
 import camcord_control_panel from '/img/instruments/videomancer/camcord/camcord_control_panel.png';
 import camcord_exercise1_result from '/img/instruments/videomancer/camcord/camcord_exercise1_result.png';
 import camcord_exercise2_result from '/img/instruments/videomancer/camcord/camcord_exercise2_result.png';
 import camcord_exercise3_result from '/img/instruments/videomancer/camcord/camcord_exercise3_result.png';
+import camcord_source1_kodim05 from '/img/instruments/videomancer/camcord/camcord_source1_kodim05.png';
+import camcord_source2_kodim15 from '/img/instruments/videomancer/camcord/camcord_source2_kodim15.png';
+import camcord_source3_kodim15_bw from '/img/instruments/videomancer/camcord/camcord_source3_kodim15_bw.png';
 
 # Camcord
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={camcord_hero} alt="Camcord hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_hero },
+    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_hero },
+    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_hero },
+  ]}
+/>
 *Camcord applying mosaic pixelation and persistence trail to transform a live image into a blocky, ghosting camcorder effect.*
-<img src={camcord_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Camcord applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress through the five effects in chain order, starting with 
 
 ### Exercise 1: Mosaic Freeze Frame
 
-<img src={camcord_exercise1_result} alt="Mosaic Freeze Frame result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise1_result },
+    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise1_result },
+    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise1_result },
+  ]}
+/>
 *Mosaic Freeze Frame — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subjects and moderate motion.
 
@@ -226,7 +239,13 @@ These exercises progress through the five effects in chain order, starting with 
 
 ### Exercise 2: Persistence Trail with Compression
 
-<img src={camcord_exercise2_result} alt="Persistence Trail with Compression result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise2_result },
+    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise2_result },
+    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise2_result },
+  ]}
+/>
 *Persistence Trail with Compression — simulated result across source images.*
 **Source**: Footage with bright moving objects against a dark background — a flashlight beam, moving headlights, or a performer under a spotlight.
 
@@ -245,7 +264,13 @@ These exercises progress through the five effects in chain order, starting with 
 
 ### Exercise 3: Full Camcorder Effects Chain
 
-<img src={camcord_exercise3_result} alt="Full Camcorder Effects Chain result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise3_result },
+    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise3_result },
+    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise3_result },
+  ]}
+/>
 *Full Camcorder Effects Chain — simulated result across source images.*
 **Source**: Any live camera feed or recorded footage — the more varied the content, the more dramatic the compound effects.
 

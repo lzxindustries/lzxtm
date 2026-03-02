@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 203
+sidebar_position: 204
 slug: /instruments/videomancer/parade
 title: "Parade"
 image: /img/instruments/videomancer/parade/parade_hero.png
 description: "Before digital scopes and vectorscopes, broadcast engineers relied on cathode-ray tube waveform monitors to see inside the video signal."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import parade_hero from '/img/instruments/videomancer/parade/parade_hero.png';
-import parade_before_after from '/img/instruments/videomancer/parade/parade_before_after.png';
 import parade_control_panel from '/img/instruments/videomancer/parade/parade_control_panel.png';
 import parade_exercise1_result from '/img/instruments/videomancer/parade/parade_exercise1_result.png';
 import parade_exercise2_result from '/img/instruments/videomancer/parade/parade_exercise2_result.png';
 import parade_exercise3_result from '/img/instruments/videomancer/parade/parade_exercise3_result.png';
+import parade_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/parade/parade_source1_grayscale_ramp_h_1920x1080.png';
+import parade_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/parade/parade_source2_grayscale_ramp_v_1920x1080.png';
+import parade_source3_step_wedge_21level_512 from '/img/instruments/videomancer/parade/parade_source3_step_wedge_21level_512.png';
 
 # Parade
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={parade_hero} alt="Parade hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_hero },
+    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_hero },
+    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_hero },
+  ]}
+/>
 *Parade rendering a three-column waveform monitor over live video, with green phosphor traces mapping the Y, U, and V channel levels across every scanline.*
-<img src={parade_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Parade applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 ### Exercise 1: Reading a Parade Display
 
-<img src={parade_exercise1_result} alt="Reading a Parade Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise1_result },
+    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise1_result },
+    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise1_result },
+  ]}
+/>
 *Reading a Parade Display — simulated result across source images.*
 **Source**: A color bar test pattern or footage with known brightness levels (skin tones, pure white, pure black regions).
 
@@ -234,7 +247,13 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 ### Exercise 2: Phosphor Aesthetics
 
-<img src={parade_exercise2_result} alt="Phosphor Aesthetics result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise2_result },
+    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise2_result },
+    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise2_result },
+  ]}
+/>
 *Phosphor Aesthetics — simulated result across source images.*
 **Source**: Any dynamic footage — camera feed, music video, or abstract patterns.
 
@@ -253,7 +272,13 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 ### Exercise 3: Gain Zoom and Detail Analysis
 
-<img src={parade_exercise3_result} alt="Gain Zoom and Detail Analysis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise3_result },
+    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise3_result },
+    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise3_result },
+  ]}
+/>
 *Gain Zoom and Detail Analysis — simulated result across source images.*
 **Source**: Footage with subtle tonal detail — skin tones, fabric textures, or gradient test patterns.
 

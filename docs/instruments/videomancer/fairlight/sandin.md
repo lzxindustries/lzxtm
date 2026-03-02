@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 241
+sidebar_position: 242
 slug: /instruments/videomancer/sandin
 title: "Sandin"
 image: /img/instruments/videomancer/sandin/sandin_hero.png
 description: "Sandin is a digital homage to the Sandin Image Processor (IP), the pioneering analogue video instrument built by Dan Sandin at the University of Illinois at Chicago in 1973."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sandin_hero from '/img/instruments/videomancer/sandin/sandin_hero.png';
-import sandin_before_after from '/img/instruments/videomancer/sandin/sandin_before_after.png';
 import sandin_control_panel from '/img/instruments/videomancer/sandin/sandin_control_panel.png';
 import sandin_exercise1_result from '/img/instruments/videomancer/sandin/sandin_exercise1_result.png';
 import sandin_exercise2_result from '/img/instruments/videomancer/sandin/sandin_exercise2_result.png';
 import sandin_exercise3_result from '/img/instruments/videomancer/sandin/sandin_exercise3_result.png';
+import sandin_source1_kodim15 from '/img/instruments/videomancer/sandin/sandin_source1_kodim15.png';
+import sandin_source2_kodim01 from '/img/instruments/videomancer/sandin/sandin_source2_kodim01.png';
+import sandin_source3_kodim01_bw from '/img/instruments/videomancer/sandin/sandin_source3_kodim01_bw.png';
 
 # Sandin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sandin_hero} alt="Sandin hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_hero },
+    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_hero },
+    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_hero },
+  ]}
+/>
 *Video-derived edge signals cascade through multiply and add stages, producing a self-referential feedback glow where bright edges reinforce and dark regions fold inward.*
-<img src={sandin_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sandin applied.*
 
 ---
 
@@ -218,7 +225,13 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 ### Exercise 1: Clean Edge Enhancement
 
-<img src={sandin_exercise1_result} alt="Clean Edge Enhancement result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise1_result },
+    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise1_result },
+    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise1_result },
+  ]}
+/>
 *Clean Edge Enhancement — simulated result across source images.*
 **Source**: A camera source with well-defined subjects — faces, text, or architecture.
 
@@ -239,7 +252,13 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 ### Exercise 2: Feedback Oscillation
 
-<img src={sandin_exercise2_result} alt="Feedback Oscillation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise2_result },
+    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise2_result },
+    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise2_result },
+  ]}
+/>
 *Feedback Oscillation — simulated result across source images.*
 **Source**: A high-contrast graphic or colour bars.
 
@@ -260,7 +279,13 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 ### Exercise 3: Shadow Glow with Divide
 
-<img src={sandin_exercise3_result} alt="Shadow Glow with Divide result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise3_result },
+    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise3_result },
+    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise3_result },
+  ]}
+/>
 *Shadow Glow with Divide — simulated result across source images.*
 **Source**: A dimly lit scene with strong shadows and some bright highlights.
 

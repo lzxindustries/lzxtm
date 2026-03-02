@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cathode/cathode_hero.png
 description: "Lightning is nature's most dramatic display of electrical energy — a branching, jagged path of ionized air that exists for less than a millisecond but burns into visual memory."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cathode_hero from '/img/instruments/videomancer/cathode/cathode_hero.png';
-import cathode_before_after from '/img/instruments/videomancer/cathode/cathode_before_after.png';
 import cathode_control_panel from '/img/instruments/videomancer/cathode/cathode_control_panel.png';
 import cathode_exercise1_result from '/img/instruments/videomancer/cathode/cathode_exercise1_result.png';
 import cathode_exercise2_result from '/img/instruments/videomancer/cathode/cathode_exercise2_result.png';
 import cathode_exercise3_result from '/img/instruments/videomancer/cathode/cathode_exercise3_result.png';
+import cathode_source1_kodim15 from '/img/instruments/videomancer/cathode/cathode_source1_kodim15.png';
+import cathode_source2_kodim03 from '/img/instruments/videomancer/cathode/cathode_source2_kodim03.png';
+import cathode_source3_kodim13_bw from '/img/instruments/videomancer/cathode/cathode_source3_kodim13_bw.png';
 
 # Cathode
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cathode_hero} alt="Cathode hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_hero },
+    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_hero },
+    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_hero },
+  ]}
+/>
 *Cathode striking a procedural lightning bolt across a nighttime cityscape, the electric-blue glow bleeding into the surrounding video.*
-<img src={cathode_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cathode applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 ### Exercise 1: Static Bolt Anatomy
 
-<img src={cathode_exercise1_result} alt="Static Bolt Anatomy result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise1_result },
+    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise1_result },
+    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise1_result },
+  ]}
+/>
 *Static Bolt Anatomy — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a dark upper region (night sky, dark background).
 
@@ -232,7 +245,13 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 ### Exercise 2: Flash-Hold-Fade Animation
 
-<img src={cathode_exercise2_result} alt="Flash-Hold-Fade Animation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise2_result },
+    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise2_result },
+    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise2_result },
+  ]}
+/>
 *Flash-Hold-Fade Animation — simulated result across source images.*
 **Source**: Dark or moderately lit footage where the flash will be clearly visible.
 
@@ -251,7 +270,13 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 ### Exercise 3: Palette Exploration
 
-<img src={cathode_exercise3_result} alt="Palette Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise3_result },
+    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise3_result },
+    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise3_result },
+  ]}
+/>
 *Palette Exploration — simulated result across source images.*
 **Source**: Footage with visible color — skin tones, foliage, or color bars.
 

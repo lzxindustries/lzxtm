@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/conformal/conformal_hero.png
 description: "Mathematics is full of functions that preserve angles — and in the complex plane, those functions transform images in ways that are surprising, beautiful, and deeply connected to physics and engineering."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import conformal_hero from '/img/instruments/videomancer/conformal/conformal_hero.png';
-import conformal_before_after from '/img/instruments/videomancer/conformal/conformal_before_after.png';
 import conformal_control_panel from '/img/instruments/videomancer/conformal/conformal_control_panel.png';
 import conformal_exercise1_result from '/img/instruments/videomancer/conformal/conformal_exercise1_result.png';
 import conformal_exercise2_result from '/img/instruments/videomancer/conformal/conformal_exercise2_result.png';
 import conformal_exercise3_result from '/img/instruments/videomancer/conformal/conformal_exercise3_result.png';
+import conformal_source1_kodim02 from '/img/instruments/videomancer/conformal/conformal_source1_kodim02.png';
+import conformal_source2_kodim07 from '/img/instruments/videomancer/conformal/conformal_source2_kodim07.png';
+import conformal_source3_kodim01_bw from '/img/instruments/videomancer/conformal/conformal_source3_kodim01_bw.png';
 
 # Conformal
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={conformal_hero} alt="Conformal hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_hero },
+    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_hero },
+    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_hero },
+  ]}
+/>
 *Conformal applying complex-plane inversion mapping to warp portrait geometry into spherical distortion patterns with grid overlay.*
-<img src={conformal_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Conformal applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 1: Inversion Through Center
 
-<img src={conformal_exercise1_result} alt="Inversion Through Center result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise1_result },
+    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise1_result },
+    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise1_result },
+  ]}
+/>
 *Inversion Through Center — simulated result across source images.*
 **Source**: Feed a high-contrast graphic or text source — white text on a black background works well because straight edges make the inversion visible.
 
@@ -227,7 +240,13 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 2: Joukowski Airfoil Stretch
 
-<img src={conformal_exercise2_result} alt="Joukowski Airfoil Stretch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise2_result },
+    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise2_result },
+    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise2_result },
+  ]}
+/>
 *Joukowski Airfoil Stretch — simulated result across source images.*
 **Source**: Feed a live camera or a colorful, organic video source with curves and gradients.
 
@@ -246,7 +265,13 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 3: Power Map Kaleidoscope with Tiling
 
-<img src={conformal_exercise3_result} alt="Power Map Kaleidoscope with Tiling result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise3_result },
+    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise3_result },
+    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise3_result },
+  ]}
+/>
 *Power Map Kaleidoscope with Tiling — simulated result across source images.*
 **Source**: Feed a symmetrical pattern or mandala-like video source — or any video with strong central features.
 

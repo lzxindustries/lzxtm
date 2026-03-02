@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/chromasia/chromasia_hero.png
 description: "Every video effects box from the 1980s and 1990s shipped with a bank of colour transformations — negative, solarise, posterise, sepia — accessible by punching a number on a keypad or scrolling through a menu."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import chromasia_hero from '/img/instruments/videomancer/chromasia/chromasia_hero.png';
-import chromasia_before_after from '/img/instruments/videomancer/chromasia/chromasia_before_after.png';
 import chromasia_control_panel from '/img/instruments/videomancer/chromasia/chromasia_control_panel.png';
 import chromasia_exercise1_result from '/img/instruments/videomancer/chromasia/chromasia_exercise1_result.png';
 import chromasia_exercise2_result from '/img/instruments/videomancer/chromasia/chromasia_exercise2_result.png';
 import chromasia_exercise3_result from '/img/instruments/videomancer/chromasia/chromasia_exercise3_result.png';
+import chromasia_source1_kodim15 from '/img/instruments/videomancer/chromasia/chromasia_source1_kodim15.png';
+import chromasia_source2_kodim03 from '/img/instruments/videomancer/chromasia/chromasia_source2_kodim03.png';
+import chromasia_source3_kodim13_bw from '/img/instruments/videomancer/chromasia/chromasia_source3_kodim13_bw.png';
 
 # Chromasia
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={chromasia_hero} alt="Chromasia hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_hero },
+    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_hero },
+    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_hero },
+  ]}
+/>
 *Chromasia in Colorize mode painting a single cyan hue across a still life, with the wet/dry mix fader blending the tinted image against the original.*
-<img src={chromasia_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Chromasia applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 ### Exercise 1: Solarize Sweep
 
-<img src={chromasia_exercise1_result} alt="Solarize Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise1_result },
+    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise1_result },
+    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise1_result },
+  ]}
+/>
 *Solarize Sweep — simulated result across source images.*
 **Source**: Footage or stills with broad tonal range — landscapes, portraits, or gradient test patterns.
 
@@ -229,7 +242,13 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 ### Exercise 2: Colorize a Monochrome Scene
 
-<img src={chromasia_exercise2_result} alt="Colorize a Monochrome Scene result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise2_result },
+    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise2_result },
+    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise2_result },
+  ]}
+/>
 *Colorize a Monochrome Scene — simulated result across source images.*
 **Source**: Black-and-white footage or a desaturated feed — old film clips, surveillance cameras, or any source with strong tonal contrast.
 
@@ -247,7 +266,13 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 ### Exercise 3: Sketch to Threshold Composite
 
-<img src={chromasia_exercise3_result} alt="Sketch to Threshold Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise3_result },
+    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise3_result },
+    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise3_result },
+  ]}
+/>
 *Sketch to Threshold Composite — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — architecture, typography, silhouettes, or hand-drawn graphics on camera.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/diffract/diffract_hero.png
 description: "When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly different angle."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import diffract_hero from '/img/instruments/videomancer/diffract/diffract_hero.png';
-import diffract_before_after from '/img/instruments/videomancer/diffract/diffract_before_after.png';
 import diffract_control_panel from '/img/instruments/videomancer/diffract/diffract_control_panel.png';
 import diffract_exercise1_result from '/img/instruments/videomancer/diffract/diffract_exercise1_result.png';
 import diffract_exercise2_result from '/img/instruments/videomancer/diffract/diffract_exercise2_result.png';
 import diffract_exercise3_result from '/img/instruments/videomancer/diffract/diffract_exercise3_result.png';
+import diffract_source1_kodim15 from '/img/instruments/videomancer/diffract/diffract_source1_kodim15.png';
+import diffract_source2_kodim01 from '/img/instruments/videomancer/diffract/diffract_source2_kodim01.png';
+import diffract_source3_kodim01_bw from '/img/instruments/videomancer/diffract/diffract_source3_kodim01_bw.png';
 
 # Diffract
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={diffract_hero} alt="Diffract hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_hero },
+    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_hero },
+    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_hero },
+  ]}
+/>
 *Diffract splitting edge transitions into prismatic color fringes through horizontal shift register tap differencing.*
-<img src={diffract_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Diffract applied.*
 
 ---
 
@@ -219,7 +226,13 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 ### Exercise 1: Horizontal Edge Fringes
 
-<img src={diffract_exercise1_result} alt="Horizontal Edge Fringes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise1_result },
+    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise1_result },
+    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise1_result },
+  ]}
+/>
 *Horizontal Edge Fringes — simulated result across source images.*
 **Source**: High-contrast footage with strong vertical edges — architectural lines, window frames, or graphic text overlays.
 
@@ -237,7 +250,13 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 ### Exercise 2: Vertical Fringe Mode
 
-<img src={diffract_exercise2_result} alt="Vertical Fringe Mode result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise2_result },
+    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise2_result },
+    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise2_result },
+  ]}
+/>
 *Vertical Fringe Mode — simulated result across source images.*
 **Source**: Footage with strong horizontal edges — landscape horizons, stacked bookshelves, or horizontally striped patterns.
 
@@ -255,7 +274,13 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 ### Exercise 3: Prismatic Texture Synthesis
 
-<img src={diffract_exercise3_result} alt="Prismatic Texture Synthesis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise3_result },
+    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise3_result },
+    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise3_result },
+  ]}
+/>
 *Prismatic Texture Synthesis — simulated result across source images.*
 **Source**: Any footage with rich tonal variation — nature scenes, skin tones, fabric textures.
 

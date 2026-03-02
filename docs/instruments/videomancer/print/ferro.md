@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/ferro/ferro_hero.png
 description: "The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto paper, exposed through a negative, and developed in running water."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import ferro_hero from '/img/instruments/videomancer/ferro/ferro_hero.png';
-import ferro_before_after from '/img/instruments/videomancer/ferro/ferro_before_after.png';
 import ferro_control_panel from '/img/instruments/videomancer/ferro/ferro_control_panel.png';
 import ferro_exercise1_result from '/img/instruments/videomancer/ferro/ferro_exercise1_result.png';
 import ferro_exercise2_result from '/img/instruments/videomancer/ferro/ferro_exercise2_result.png';
 import ferro_exercise3_result from '/img/instruments/videomancer/ferro/ferro_exercise3_result.png';
+import ferro_source1_kodim02 from '/img/instruments/videomancer/ferro/ferro_source1_kodim02.png';
+import ferro_source2_kodim07 from '/img/instruments/videomancer/ferro/ferro_source2_kodim07.png';
+import ferro_source3_kodim01_bw from '/img/instruments/videomancer/ferro/ferro_source3_kodim01_bw.png';
 
 # Ferro
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={ferro_hero} alt="Ferro hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_hero },
+    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_hero },
+    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_hero },
+  ]}
+/>
 *Ferro rendering a live camera feed as a Prussian blue cyanotype contact print with paper fiber texture and edge diffusion softness.*
-<img src={ferro_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Ferro applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 ### Exercise 1: Classic Prussian Blue Cyanotype
 
-<img src={ferro_exercise1_result} alt="Classic Prussian Blue Cyanotype result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise1_result },
+    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise1_result },
+    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise1_result },
+  ]}
+/>
 *Classic Prussian Blue Cyanotype — simulated result across source images.*
 **Source**: A well-lit portrait or still life with recognizable subjects and a wide tonal range — skin tones, fabric, and shadow areas work well.
 
@@ -234,7 +247,13 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 ### Exercise 2: Tea-Toned Sepia Print
 
-<img src={ferro_exercise2_result} alt="Tea-Toned Sepia Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise2_result },
+    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise2_result },
+    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise2_result },
+  ]}
+/>
 *Tea-Toned Sepia Print — simulated result across source images.*
 **Source**: Landscape footage with trees, water, or architecture — subjects that suit warm-toned vintage aesthetics.
 
@@ -253,7 +272,13 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 ### Exercise 3: Extreme Texture and Diffusion
 
-<img src={ferro_exercise3_result} alt="Extreme Texture and Diffusion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise3_result },
+    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise3_result },
+    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise3_result },
+  ]}
+/>
 *Extreme Texture and Diffusion — simulated result across source images.*
 **Source**: High-contrast graphic material — text overlays, geometric patterns, or footage with strong edges.
 

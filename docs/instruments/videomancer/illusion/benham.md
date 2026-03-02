@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/benham/benham_hero.png
 description: "In 1895, the English toymaker Charles Benham marketed a painted spinning top that seemed to do the impossible — produce vivid color sensations from nothing but black and white."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import benham_hero from '/img/instruments/videomancer/benham/benham_hero.png';
-import benham_before_after from '/img/instruments/videomancer/benham/benham_before_after.png';
 import benham_control_panel from '/img/instruments/videomancer/benham/benham_control_panel.png';
 import benham_exercise1_result from '/img/instruments/videomancer/benham/benham_exercise1_result.png';
 import benham_exercise2_result from '/img/instruments/videomancer/benham/benham_exercise2_result.png';
 import benham_exercise3_result from '/img/instruments/videomancer/benham/benham_exercise3_result.png';
+import benham_source1_kodim01 from '/img/instruments/videomancer/benham/benham_source1_kodim01.png';
+import benham_source2_kodim02 from '/img/instruments/videomancer/benham/benham_source2_kodim02.png';
+import benham_source3_kodim01_bw from '/img/instruments/videomancer/benham/benham_source3_kodim01_bw.png';
 
 # Benham
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={benham_hero} alt="Benham hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: benham_source1_kodim01, after: benham_hero },
+    { label: "Kodim02", before: benham_source2_kodim02, after: benham_hero },
+    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_hero },
+  ]}
+/>
 *Benham disc generating field-alternating monochrome arc sectors that induce subjective color perception through temporal flicker.*
-<img src={benham_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Benham applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from static pattern observation to animated field-alter
 
 ### Exercise 1: Static Disc Observation
 
-<img src={benham_exercise1_result} alt="Static Disc Observation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise1_result },
+    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise1_result },
+    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise1_result },
+  ]}
+/>
 *Static Disc Observation — simulated result across source images.*
 **Source**: Any stable video source (color bars, camera feed, or test pattern).
 
@@ -229,7 +242,13 @@ These exercises progress from static pattern observation to animated field-alter
 
 ### Exercise 2: Fechner Color Illusion
 
-<img src={benham_exercise2_result} alt="Fechner Color Illusion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise2_result },
+    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise2_result },
+    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise2_result },
+  ]}
+/>
 *Fechner Color Illusion — simulated result across source images.*
 **Source**: Black video input (or any — the pattern is self-generated).
 
@@ -248,7 +267,13 @@ These exercises progress from static pattern observation to animated field-alter
 
 ### Exercise 3: Video-Modulated Pattern
 
-<img src={benham_exercise3_result} alt="Video-Modulated Pattern result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise3_result },
+    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise3_result },
+    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise3_result },
+  ]}
+/>
 *Video-Modulated Pattern — simulated result across source images.*
 **Source**: A camera feed or recorded footage with varied luminance — faces, landscapes, or architectural subjects work well.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/jammer/jammer_hero.png
 description: "Every television signal travels through the air as radio waves, and the air is full of other radio waves."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import jammer_hero from '/img/instruments/videomancer/jammer/jammer_hero.png';
-import jammer_before_after from '/img/instruments/videomancer/jammer/jammer_before_after.png';
 import jammer_control_panel from '/img/instruments/videomancer/jammer/jammer_control_panel.png';
 import jammer_exercise1_result from '/img/instruments/videomancer/jammer/jammer_exercise1_result.png';
 import jammer_exercise2_result from '/img/instruments/videomancer/jammer/jammer_exercise2_result.png';
 import jammer_exercise3_result from '/img/instruments/videomancer/jammer/jammer_exercise3_result.png';
+import jammer_source1_kodim15 from '/img/instruments/videomancer/jammer/jammer_source1_kodim15.png';
+import jammer_source2_kodim01 from '/img/instruments/videomancer/jammer/jammer_source2_kodim01.png';
+import jammer_source3_stream_bridge_512 from '/img/instruments/videomancer/jammer/jammer_source3_stream_bridge_512.png';
 
 # Jammer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={jammer_hero} alt="Jammer hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_hero },
+    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_hero },
+    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_hero },
+  ]}
+/>
 *Jammer applying herringbone beat patterns, rolling bars, and multipath ghosting to simulate broadcast RF interference.*
-<img src={jammer_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Jammer applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from a single interference artifact to the full signal-
 
 ### Exercise 1: Herringbone and Rolling Bars
 
-<img src={jammer_exercise1_result} alt="Herringbone and Rolling Bars result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise1_result },
+    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise1_result },
+    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise1_result },
+  ]}
+/>
 *Herringbone and Rolling Bars — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with well-defined horizontal and vertical structures — architecture, grids, or text.
 
@@ -230,7 +243,13 @@ These exercises progress from a single interference artifact to the full signal-
 
 ### Exercise 2: Multipath Ghosting
 
-<img src={jammer_exercise2_result} alt="Multipath Ghosting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise2_result },
+    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise2_result },
+    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise2_result },
+  ]}
+/>
 *Multipath Ghosting — simulated result across source images.*
 **Source**: Footage with bright subjects against dark backgrounds — text on black, or a person against a dark wall.
 
@@ -248,7 +267,13 @@ These exercises progress from a single interference artifact to the full signal-
 
 ### Exercise 3: Total Signal Jamming
 
-<img src={jammer_exercise3_result} alt="Total Signal Jamming result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise3_result },
+    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise3_result },
+    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise3_result },
+  ]}
+/>
 *Total Signal Jamming — simulated result across source images.*
 **Source**: Any footage — the source will be almost completely obscured by interference.
 

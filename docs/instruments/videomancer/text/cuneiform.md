@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cuneiform/cuneiform_hero.png
 description: "Five thousand years ago, Mesopotamian scribes pressed a reed stylus into wet clay to record the world's first written language."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cuneiform_hero from '/img/instruments/videomancer/cuneiform/cuneiform_hero.png';
-import cuneiform_before_after from '/img/instruments/videomancer/cuneiform/cuneiform_before_after.png';
 import cuneiform_control_panel from '/img/instruments/videomancer/cuneiform/cuneiform_control_panel.png';
 import cuneiform_exercise1_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise1_result.png';
 import cuneiform_exercise2_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise2_result.png';
 import cuneiform_exercise3_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise3_result.png';
+import cuneiform_source1_kodim15 from '/img/instruments/videomancer/cuneiform/cuneiform_source1_kodim15.png';
+import cuneiform_source2_kodim15_bw from '/img/instruments/videomancer/cuneiform/cuneiform_source2_kodim15_bw.png';
+import cuneiform_source3_male_1024 from '/img/instruments/videomancer/cuneiform/cuneiform_source3_male_1024.png';
 
 # Cuneiform
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cuneiform_hero} alt="Cuneiform hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_hero },
+    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_hero },
+    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_hero },
+  ]}
+/>
 *Cuneiform converting luminance gradients into oriented wedge impressions on a simulated clay tablet surface.*
-<img src={cuneiform_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cuneiform applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 ### Exercise 1: Reed Impressions
 
-<img src={cuneiform_exercise1_result} alt="Reed Impressions result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise1_result },
+    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise1_result },
+    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise1_result },
+  ]}
+/>
 *Reed Impressions — simulated result across source images.*
 **Source**: A portrait or figure with strong tonal contrast — face, hands, or a figure against a background.
 
@@ -232,7 +245,13 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 ### Exercise 2: Gradient Tracing
 
-<img src={cuneiform_exercise2_result} alt="Gradient Tracing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise2_result },
+    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise2_result },
+    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise2_result },
+  ]}
+/>
 *Gradient Tracing — simulated result across source images.*
 **Source**: Footage with strong directional edges — architecture, geometric patterns, or diagonal lines.
 
@@ -250,7 +269,13 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 ### Exercise 3: Ancient Artifact
 
-<img src={cuneiform_exercise3_result} alt="Ancient Artifact result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise3_result },
+    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise3_result },
+    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise3_result },
+  ]}
+/>
 *Ancient Artifact — simulated result across source images.*
 **Source**: A slowly moving camera feed or nature footage with organic textures — water, foliage, or clouds.
 

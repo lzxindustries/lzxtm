@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 317
+sidebar_position: 318
 slug: /instruments/videomancer/zollner
 title: "Zollner"
 image: /img/instruments/videomancer/zollner/zollner_hero.png
 description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noticed that parallel lines on a piece of fabric appeared to converge when crossed by short diagonal hash marks."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import zollner_hero from '/img/instruments/videomancer/zollner/zollner_hero.png';
-import zollner_before_after from '/img/instruments/videomancer/zollner/zollner_before_after.png';
 import zollner_control_panel from '/img/instruments/videomancer/zollner/zollner_control_panel.png';
 import zollner_exercise1_result from '/img/instruments/videomancer/zollner/zollner_exercise1_result.png';
 import zollner_exercise2_result from '/img/instruments/videomancer/zollner/zollner_exercise2_result.png';
 import zollner_exercise3_result from '/img/instruments/videomancer/zollner/zollner_exercise3_result.png';
+import zollner_source1_kodim01 from '/img/instruments/videomancer/zollner/zollner_source1_kodim01.png';
+import zollner_source2_kodim02 from '/img/instruments/videomancer/zollner/zollner_source2_kodim02.png';
+import zollner_source3_kodim01_bw from '/img/instruments/videomancer/zollner/zollner_source3_kodim01_bw.png';
 
 # Zollner
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={zollner_hero} alt="Zollner hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_hero },
+    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_hero },
+    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_hero },
+  ]}
+/>
 *Zöllner pattern overlay in Café Wall mode with animated hatching, creating compelling motion illusions on live video.*
-<img src={zollner_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Zollner applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 ### Exercise 1: Classic Zöllner
 
-<img src={zollner_exercise1_result} alt="Classic Zöllner result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise1_result },
+    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise1_result },
+    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise1_result },
+  ]}
+/>
 *Classic Zöllner — simulated result across source images.*
 **Source**: A video feed with strong horizontal or vertical elements — architecture, bookshelves, or ruled paper.
 
@@ -228,7 +241,13 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 ### Exercise 2: Animated Hering Curves
 
-<img src={zollner_exercise2_result} alt="Animated Hering Curves result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise2_result },
+    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise2_result },
+    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise2_result },
+  ]}
+/>
 *Animated Hering Curves — simulated result across source images.*
 **Source**: Video with straight lines — roads, building edges, or a calibration grid.
 
@@ -247,7 +266,13 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 ### Exercise 3: Café Wall with Thick Lines
 
-<img src={zollner_exercise3_result} alt="Café Wall with Thick Lines result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise3_result },
+    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise3_result },
+    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise3_result },
+  ]}
+/>
 *Café Wall with Thick Lines — simulated result across source images.*
 **Source**: Any video — the Café Wall pattern is effective regardless of source content.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/carousel/carousel_hero.png
 description: "In the early 1980s, the Ampex ADO 100 introduced real-time digital video manipulation to broadcast television."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import carousel_hero from '/img/instruments/videomancer/carousel/carousel_hero.png';
-import carousel_before_after from '/img/instruments/videomancer/carousel/carousel_before_after.png';
 import carousel_control_panel from '/img/instruments/videomancer/carousel/carousel_control_panel.png';
 import carousel_exercise1_result from '/img/instruments/videomancer/carousel/carousel_exercise1_result.png';
 import carousel_exercise2_result from '/img/instruments/videomancer/carousel/carousel_exercise2_result.png';
 import carousel_exercise3_result from '/img/instruments/videomancer/carousel/carousel_exercise3_result.png';
+import carousel_source1_kodim15 from '/img/instruments/videomancer/carousel/carousel_source1_kodim15.png';
+import carousel_source2_kodim15_bw from '/img/instruments/videomancer/carousel/carousel_source2_kodim15_bw.png';
+import carousel_source3_male_1024 from '/img/instruments/videomancer/carousel/carousel_source3_male_1024.png';
 
 # Carousel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={carousel_hero} alt="Carousel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_hero },
+    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_hero },
+    { label: "Male", before: carousel_source3_male_1024, after: carousel_hero },
+  ]}
+/>
 *Carousel mapping live video onto a rotating cube face with per-scanline perspective foreshortening and directional shading.*
-<img src={carousel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Carousel applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from static angle positioning through continuous rotati
 
 ### Exercise 1: Static Oblique Projection
 
-<img src={carousel_exercise1_result} alt="Static Oblique Projection result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise1_result },
+    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise1_result },
+    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise1_result },
+  ]}
+/>
 *Static Oblique Projection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
@@ -234,7 +247,13 @@ These exercises progress from static angle positioning through continuous rotati
 
 ### Exercise 2: Continuous Cube Spin
 
-<img src={carousel_exercise2_result} alt="Continuous Cube Spin result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise2_result },
+    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise2_result },
+    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise2_result },
+  ]}
+/>
 *Continuous Cube Spin — simulated result across source images.*
 **Source**: Bold, high-contrast footage — animated graphics, text overlays, or a face.
 
@@ -253,7 +272,13 @@ These exercises progress from static angle positioning through continuous rotati
 
 ### Exercise 3: Broadcast Cube Ident
 
-<img src={carousel_exercise3_result} alt="Broadcast Cube Ident result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise3_result },
+    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise3_result },
+    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise3_result },
+  ]}
+/>
 *Broadcast Cube Ident — simulated result across source images.*
 **Source**: A logo, station ident graphic, or bold text on a contrasting background.
 

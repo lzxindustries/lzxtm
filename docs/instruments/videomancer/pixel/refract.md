@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 232
+sidebar_position: 233
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero.png
 description: "Light bends when it passes through glass, water, or any boundary between materials of different density."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import refract_hero from '/img/instruments/videomancer/refract/refract_hero.png';
-import refract_before_after from '/img/instruments/videomancer/refract/refract_before_after.png';
 import refract_control_panel from '/img/instruments/videomancer/refract/refract_control_panel.png';
 import refract_exercise1_result from '/img/instruments/videomancer/refract/refract_exercise1_result.png';
 import refract_exercise2_result from '/img/instruments/videomancer/refract/refract_exercise2_result.png';
 import refract_exercise3_result from '/img/instruments/videomancer/refract/refract_exercise3_result.png';
+import refract_source1_kodim02 from '/img/instruments/videomancer/refract/refract_source1_kodim02.png';
+import refract_source2_kodim07 from '/img/instruments/videomancer/refract/refract_source2_kodim07.png';
+import refract_source3_kodim01_bw from '/img/instruments/videomancer/refract/refract_source3_kodim01_bw.png';
 
 # Refract
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={refract_hero} alt="Refract hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: refract_source1_kodim02, after: refract_hero },
+    { label: "Kodim07", before: refract_source2_kodim07, after: refract_hero },
+    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_hero },
+  ]}
+/>
 *Refract applying luma-driven displacement mapping with chromatic aberration and fresnel edge bending to split and distort a live video signal.*
-<img src={refract_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Refract applied.*
 
 ---
 
@@ -199,7 +206,13 @@ These exercises progress from basic displacement through chromatic aberration to
 
 ### Exercise 1: Basic Lens Warp
 
-<img src={refract_exercise1_result} alt="Basic Lens Warp result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise1_result },
+    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise1_result },
+    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise1_result },
+  ]}
+/>
 *Basic Lens Warp — simulated result across source images.*
 **Source**: A high-contrast image with sharp edges — text, geometric patterns, or architectural subjects.
 
@@ -217,7 +230,13 @@ These exercises progress from basic displacement through chromatic aberration to
 
 ### Exercise 2: Chromatic Prism
 
-<img src={refract_exercise2_result} alt="Chromatic Prism result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise2_result },
+    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise2_result },
+    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise2_result },
+  ]}
+/>
 *Chromatic Prism — simulated result across source images.*
 **Source**: Footage with smooth tonal gradients — sunsets, skin tones, or color bars.
 
@@ -235,7 +254,13 @@ These exercises progress from basic displacement through chromatic aberration to
 
 ### Exercise 3: Animated Optical Flow
 
-<img src={refract_exercise3_result} alt="Animated Optical Flow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise3_result },
+    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise3_result },
+    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise3_result },
+  ]}
+/>
 *Animated Optical Flow — simulated result across source images.*
 **Source**: Any video with moderate tonal variation.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/bleach/bleach_hero.png
 description: "Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in colour negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the colour dyes."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bleach_hero from '/img/instruments/videomancer/bleach/bleach_hero.png';
-import bleach_before_after from '/img/instruments/videomancer/bleach/bleach_before_after.png';
 import bleach_control_panel from '/img/instruments/videomancer/bleach/bleach_control_panel.png';
 import bleach_exercise1_result from '/img/instruments/videomancer/bleach/bleach_exercise1_result.png';
 import bleach_exercise2_result from '/img/instruments/videomancer/bleach/bleach_exercise2_result.png';
 import bleach_exercise3_result from '/img/instruments/videomancer/bleach/bleach_exercise3_result.png';
+import bleach_source1_kodim03 from '/img/instruments/videomancer/bleach/bleach_source1_kodim03.png';
+import bleach_source2_kodim13 from '/img/instruments/videomancer/bleach/bleach_source2_kodim13.png';
+import bleach_source3_kodim13_bw from '/img/instruments/videomancer/bleach/bleach_source3_kodim13_bw.png';
 
 # Bleach
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bleach_hero} alt="Bleach hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_hero },
+    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_hero },
+    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_hero },
+  ]}
+/>
 *Desaturated, silver-dense highlights surge through high-contrast shadows, recreating the bleach bypass look of war films and noir thrillers.*
-<img src={bleach_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bleach applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic desaturation through full silver retention t
 
 ### Exercise 1: Basic Desaturation
 
-<img src={bleach_exercise1_result} alt="Basic Desaturation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise1_result },
+    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise1_result },
+    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise1_result },
+  ]}
+/>
 *Basic Desaturation — simulated result across source images.*
 **Source**: Colourful footage — flowers, clothing, or colourful scenery.
 
@@ -234,7 +247,13 @@ These exercises progress from basic desaturation through full silver retention t
 
 ### Exercise 2: Silver Density and Contrast
 
-<img src={bleach_exercise2_result} alt="Silver Density and Contrast result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise2_result },
+    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise2_result },
+    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise2_result },
+  ]}
+/>
 *Silver Density and Contrast — simulated result across source images.*
 **Source**: A high-dynamic-range scene — a window looking outdoors, or a face lit from one side.
 
@@ -253,7 +272,13 @@ These exercises progress from basic desaturation through full silver retention t
 
 ### Exercise 3: Full Film Look
 
-<img src={bleach_exercise3_result} alt="Full Film Look result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise3_result },
+    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise3_result },
+    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise3_result },
+  ]}
+/>
 *Full Film Look — simulated result across source images.*
 **Source**: Any footage — this exercise creates the complete bleach bypass film look.
 

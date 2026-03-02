@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 305
+sidebar_position: 306
 slug: /instruments/videomancer/vinegar
 title: "Vinegar"
 image: /img/instruments/videomancer/vinegar/vinegar_hero.png
 description: "Film does not last forever."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import vinegar_hero from '/img/instruments/videomancer/vinegar/vinegar_hero.png';
-import vinegar_before_after from '/img/instruments/videomancer/vinegar/vinegar_before_after.png';
 import vinegar_control_panel from '/img/instruments/videomancer/vinegar/vinegar_control_panel.png';
 import vinegar_exercise1_result from '/img/instruments/videomancer/vinegar/vinegar_exercise1_result.png';
 import vinegar_exercise2_result from '/img/instruments/videomancer/vinegar/vinegar_exercise2_result.png';
 import vinegar_exercise3_result from '/img/instruments/videomancer/vinegar/vinegar_exercise3_result.png';
+import vinegar_source1_kodim03 from '/img/instruments/videomancer/vinegar/vinegar_source1_kodim03.png';
+import vinegar_source2_kodim13 from '/img/instruments/videomancer/vinegar/vinegar_source2_kodim13.png';
+import vinegar_source3_kodim13_bw from '/img/instruments/videomancer/vinegar/vinegar_source3_kodim13_bw.png';
 
 # Vinegar
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={vinegar_hero} alt="Vinegar hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_hero },
+    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_hero },
+    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_hero },
+  ]}
+/>
 *Vinegar simulating years of photochemical film decay — gate weave, dye fading, organic burn blobs, grain, and splice flashes transform a clean digital image into deteriorated celluloid.*
-<img src={vinegar_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Vinegar applied.*
 
 ---
 
@@ -189,7 +196,13 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ### Exercise 1: Gentle Aging
 
-<img src={vinegar_exercise1_result} alt="Gentle Aging result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise1_result },
+    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise1_result },
+    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise1_result },
+  ]}
+/>
 *Gentle Aging — simulated result across source images.*
 **Source**: Well-exposed footage with natural colour — portraits, landscapes, or documentary material.
 
@@ -209,7 +222,13 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ### Exercise 2: Damaged Print
 
-<img src={vinegar_exercise2_result} alt="Damaged Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise2_result },
+    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise2_result },
+    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise2_result },
+  ]}
+/>
 *Damaged Print — simulated result across source images.*
 **Source**: Any footage — the damage effects are content-independent.
 
@@ -229,7 +248,13 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ### Exercise 3: Terminal Decay
 
-<img src={vinegar_exercise3_result} alt="Terminal Decay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise3_result },
+    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise3_result },
+    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise3_result },
+  ]}
+/>
 *Terminal Decay — simulated result across source images.*
 **Source**: Any footage — heavy processing creates abstract results regardless of source.
 

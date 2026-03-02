@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dynaround/dynaround_hero.png
 description: "Every digital video system must decide how many bits to use for each pixel."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dynaround_hero from '/img/instruments/videomancer/dynaround/dynaround_hero.png';
-import dynaround_before_after from '/img/instruments/videomancer/dynaround/dynaround_before_after.png';
 import dynaround_control_panel from '/img/instruments/videomancer/dynaround/dynaround_control_panel.png';
 import dynaround_exercise1_result from '/img/instruments/videomancer/dynaround/dynaround_exercise1_result.png';
 import dynaround_exercise2_result from '/img/instruments/videomancer/dynaround/dynaround_exercise2_result.png';
 import dynaround_exercise3_result from '/img/instruments/videomancer/dynaround/dynaround_exercise3_result.png';
+import dynaround_source1_kodim15 from '/img/instruments/videomancer/dynaround/dynaround_source1_kodim15.png';
+import dynaround_source2_kodim01 from '/img/instruments/videomancer/dynaround/dynaround_source2_kodim01.png';
+import dynaround_source3_kodim01_bw from '/img/instruments/videomancer/dynaround/dynaround_source3_kodim01_bw.png';
 
 # Dynaround
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dynaround_hero} alt="Dynaround hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_hero },
+    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_hero },
+    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_hero },
+  ]}
+/>
 *Dynaround applying probabilistic dynamic rounding and blue-noise dithering to reduce bit depth while preserving tonal smoothness across luminance and chrominance channels.*
-<img src={dynaround_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dynaround applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 ### Exercise 1: Dynamic Round — The Quantel Technique
 
-<img src={dynaround_exercise1_result} alt="Dynamic Round — The Quantel Technique result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise1_result },
+    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise1_result },
+    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise1_result },
+  ]}
+/>
 *Dynamic Round — The Quantel Technique — simulated result across source images.*
 **Source**: A color gradient test pattern or footage with smooth sky/skin tones that reveal quantization artifacts.
 
@@ -228,7 +241,13 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 ### Exercise 2: Ordered vs. Blue Noise Dither
 
-<img src={dynaround_exercise2_result} alt="Ordered vs. Blue Noise Dither result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise2_result },
+    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise2_result },
+    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise2_result },
+  ]}
+/>
 *Ordered vs. Blue Noise Dither — simulated result across source images.*
 **Source**: A photographic image with gradual tonal transitions — portraits, landscapes, or test gradients.
 
@@ -246,7 +265,13 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 ### Exercise 3: Error Diffusion and Temporal Dither
 
-<img src={dynaround_exercise3_result} alt="Error Diffusion and Temporal Dither result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise3_result },
+    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise3_result },
+    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise3_result },
+  ]}
+/>
 *Error Diffusion and Temporal Dither — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or text patterns that expose error propagation and temporal flicker.
 

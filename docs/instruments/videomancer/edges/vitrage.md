@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 306
+sidebar_position: 307
 slug: /instruments/videomancer/vitrage
 title: "Vitrage"
 image: /img/instruments/videomancer/vitrage/vitrage_hero.png
 description: "Stained glass is an exercise in constraint — lead strips force the artist to work in discrete regions of flat color, while the glass itself filters and saturates light passing through it."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import vitrage_hero from '/img/instruments/videomancer/vitrage/vitrage_hero.png';
-import vitrage_before_after from '/img/instruments/videomancer/vitrage/vitrage_before_after.png';
 import vitrage_control_panel from '/img/instruments/videomancer/vitrage/vitrage_control_panel.png';
 import vitrage_exercise1_result from '/img/instruments/videomancer/vitrage/vitrage_exercise1_result.png';
 import vitrage_exercise2_result from '/img/instruments/videomancer/vitrage/vitrage_exercise2_result.png';
 import vitrage_exercise3_result from '/img/instruments/videomancer/vitrage/vitrage_exercise3_result.png';
+import vitrage_source1_kodim02 from '/img/instruments/videomancer/vitrage/vitrage_source1_kodim02.png';
+import vitrage_source2_kodim07 from '/img/instruments/videomancer/vitrage/vitrage_source2_kodim07.png';
+import vitrage_source3_kodim01_bw from '/img/instruments/videomancer/vitrage/vitrage_source3_kodim01_bw.png';
 
 # Vitrage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={vitrage_hero} alt="Vitrage hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_hero },
+    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_hero },
+    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_hero },
+  ]}
+/>
 *Vitrage transforming video into luminous stained glass panels with dark lead came borders, color-flattened panes, and simulated sunlight transmission.*
-<img src={vitrage_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Vitrage applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises progress from simple edge highlighting through full stained glas
 
 ### Exercise 1: Lead Came Skeleton
 
-<img src={vitrage_exercise1_result} alt="Lead Came Skeleton result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise1_result },
+    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise1_result },
+    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise1_result },
+  ]}
+/>
 *Lead Came Skeleton — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong geometric content — architecture, window frames, or objects with clear edges.
 
@@ -220,7 +233,13 @@ These exercises progress from simple edge highlighting through full stained glas
 
 ### Exercise 2: Colored Glass Panels
 
-<img src={vitrage_exercise2_result} alt="Colored Glass Panels result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise2_result },
+    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise2_result },
+    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise2_result },
+  ]}
+/>
 *Colored Glass Panels — simulated result across source images.*
 **Source**: Footage with varied, saturated colors — flowers, street art, colorful textiles, or a test pattern with gradients.
 
@@ -238,7 +257,13 @@ These exercises progress from simple edge highlighting through full stained glas
 
 ### Exercise 3: Animated Cathedral Window
 
-<img src={vitrage_exercise3_result} alt="Animated Cathedral Window result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise3_result },
+    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise3_result },
+    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise3_result },
+  ]}
+/>
 *Animated Cathedral Window — simulated result across source images.*
 **Source**: Slowly moving footage — clouds, water reflections, or a slow camera pan across a landscape.
 

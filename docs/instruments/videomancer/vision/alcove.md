@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/alcove/alcove_hero.png
 description: "Alcove is a broadcast-style DVE (Digital Video Effects) priority compositor that places a positioned, scaled foreground window showing clean unprocessed video over a processed background."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import alcove_hero from '/img/instruments/videomancer/alcove/alcove_hero.png';
-import alcove_before_after from '/img/instruments/videomancer/alcove/alcove_before_after.png';
 import alcove_control_panel from '/img/instruments/videomancer/alcove/alcove_control_panel.png';
 import alcove_exercise1_result from '/img/instruments/videomancer/alcove/alcove_exercise1_result.png';
 import alcove_exercise2_result from '/img/instruments/videomancer/alcove/alcove_exercise2_result.png';
 import alcove_exercise3_result from '/img/instruments/videomancer/alcove/alcove_exercise3_result.png';
+import alcove_source1_kodim15 from '/img/instruments/videomancer/alcove/alcove_source1_kodim15.png';
+import alcove_source2_kodim15_bw from '/img/instruments/videomancer/alcove/alcove_source2_kodim15_bw.png';
+import alcove_source3_male_1024 from '/img/instruments/videomancer/alcove/alcove_source3_male_1024.png';
 
 # Alcove
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={alcove_hero} alt="Alcove hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_hero },
+    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_hero },
+    { label: "Male", before: alcove_source3_male_1024, after: alcove_hero },
+  ]}
+/>
 *Alcove compositing a clean foreground window over a mosaicked background — the DVE priority compositor places an unprocessed video inset with coloured border over a sample-and-hold posterized background scene.*
-<img src={alcove_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Alcove applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 ### Exercise 1: Classic Picture-in-Picture
 
-<img src={alcove_exercise1_result} alt="Classic Picture-in-Picture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise1_result },
+    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise1_result },
+    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise1_result },
+  ]}
+/>
 *Classic Picture-in-Picture — simulated result across source images.*
 **Source**: Any video source — a camera feed or pre-recorded footage with visible subject matter.
 
@@ -235,7 +248,13 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 ### Exercise 2: Mosaic Background with Coloured Border
 
-<img src={alcove_exercise2_result} alt="Mosaic Background with Coloured Border result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise2_result },
+    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise2_result },
+    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise2_result },
+  ]}
+/>
 *Mosaic Background with Coloured Border — simulated result across source images.*
 **Source**: Footage with saturated colours and visible detail.
 
@@ -255,7 +274,13 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 ### Exercise 3: Dim Background Interview Layout
 
-<img src={alcove_exercise3_result} alt="Dim Background Interview Layout result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise3_result },
+    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise3_result },
+    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise3_result },
+  ]}
+/>
 *Dim Background Interview Layout — simulated result across source images.*
 **Source**: Camera feed of a person speaking — ideal for demonstrating broadcast interview framing.
 

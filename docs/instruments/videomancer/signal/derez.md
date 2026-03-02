@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/derez/derez_hero.png
 description: "Real memory corruption is never random."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import derez_hero from '/img/instruments/videomancer/derez/derez_hero.png';
-import derez_before_after from '/img/instruments/videomancer/derez/derez_before_after.png';
 import derez_control_panel from '/img/instruments/videomancer/derez/derez_control_panel.png';
 import derez_exercise1_result from '/img/instruments/videomancer/derez/derez_exercise1_result.png';
 import derez_exercise2_result from '/img/instruments/videomancer/derez/derez_exercise2_result.png';
 import derez_exercise3_result from '/img/instruments/videomancer/derez/derez_exercise3_result.png';
+import derez_source1_kodim15 from '/img/instruments/videomancer/derez/derez_source1_kodim15.png';
+import derez_source2_kodim01 from '/img/instruments/videomancer/derez/derez_source2_kodim01.png';
+import derez_source3_stream_bridge_512 from '/img/instruments/videomancer/derez/derez_source3_stream_bridge_512.png';
 
 # Derez
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={derez_hero} alt="Derez hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: derez_source1_kodim15, after: derez_hero },
+    { label: "Kodim01", before: derez_source2_kodim01, after: derez_hero },
+    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_hero },
+  ]}
+/>
 *Derez corrupting spatial addressing and data bus integrity to produce geometric mirroring, bit-plane separation, and dead-line dropout artifacts.*
-<img src={derez_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Derez applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 ### Exercise 1: Address Line Failure
 
-<img src={derez_exercise1_result} alt="Address Line Failure result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise1_result },
+    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise1_result },
+    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise1_result },
+  ]}
+/>
 *Address Line Failure — simulated result across source images.*
 **Source**: A test pattern or graphic with strong geometric structure — grid patterns, text, or architectural footage.
 
@@ -228,7 +241,13 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 ### Exercise 2: Data Bus Failure and Bit-Plane Separation
 
-<img src={derez_exercise2_result} alt="Data Bus Failure and Bit-Plane Separation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise2_result },
+    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise2_result },
+    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise2_result },
+  ]}
+/>
 *Data Bus Failure and Bit-Plane Separation — simulated result across source images.*
 **Source**: A camera feed or footage with smooth gradients and recognizable subjects.
 
@@ -246,7 +265,13 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 ### Exercise 3: Full Memory Failure
 
-<img src={derez_exercise3_result} alt="Full Memory Failure result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise3_result },
+    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise3_result },
+    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise3_result },
+  ]}
+/>
 *Full Memory Failure — simulated result across source images.*
 **Source**: Any active video — the more visually complex, the more interesting the corruption patterns.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/charset/charset_hero.png
 description: "Every screen you have ever read — every terminal, every text editor, every status display — renders characters on a fixed grid."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import charset_hero from '/img/instruments/videomancer/charset/charset_hero.png';
-import charset_before_after from '/img/instruments/videomancer/charset/charset_before_after.png';
 import charset_control_panel from '/img/instruments/videomancer/charset/charset_control_panel.png';
 import charset_exercise1_result from '/img/instruments/videomancer/charset/charset_exercise1_result.png';
 import charset_exercise2_result from '/img/instruments/videomancer/charset/charset_exercise2_result.png';
 import charset_exercise3_result from '/img/instruments/videomancer/charset/charset_exercise3_result.png';
+import charset_source1_kodim15 from '/img/instruments/videomancer/charset/charset_source1_kodim15.png';
+import charset_source2_kodim03 from '/img/instruments/videomancer/charset/charset_source2_kodim03.png';
+import charset_source3_kodim15_bw from '/img/instruments/videomancer/charset/charset_source3_kodim15_bw.png';
 
 # Charset
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={charset_hero} alt="Charset hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: charset_source1_kodim15, after: charset_hero },
+    { label: "Kodim03", before: charset_source2_kodim03, after: charset_hero },
+    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_hero },
+  ]}
+/>
 *Charset rendering video luminance as density-mapped glyph patterns on an 8×8 cell grid, transforming continuous imagery into typographic texture.*
-<img src={charset_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Charset applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 ### Exercise 1: Terminal Display
 
-<img src={charset_exercise1_result} alt="Terminal Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise1_result },
+    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise1_result },
+    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise1_result },
+  ]}
+/>
 *Terminal Display — simulated result across source images.*
 **Source**: A talking-head interview or portrait footage with clear tonal separation between subject and background.
 
@@ -232,7 +245,13 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 ### Exercise 2: Inverted Dot Matrix
 
-<img src={charset_exercise2_result} alt="Inverted Dot Matrix result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise2_result },
+    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise2_result },
+    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise2_result },
+  ]}
+/>
 *Inverted Dot Matrix — simulated result across source images.*
 **Source**: High-contrast footage with strong shapes — stage lighting, silhouettes, or graphic title cards.
 
@@ -250,7 +269,13 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 ### Exercise 3: Color Character Mosaic
 
-<img src={charset_exercise3_result} alt="Color Character Mosaic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise3_result },
+    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise3_result },
+    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise3_result },
+  ]}
+/>
 *Color Character Mosaic — simulated result across source images.*
 **Source**: Colorful footage — flowers, graffiti, abstract art, or a color bar test pattern.
 

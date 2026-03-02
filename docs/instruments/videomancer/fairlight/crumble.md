@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/crumble/crumble_hero.png
 description: "Most video dissolve effects require a frame buffer — dedicated memory to store a previous frame so that current pixels can blend with past ones."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import crumble_hero from '/img/instruments/videomancer/crumble/crumble_hero.png';
-import crumble_before_after from '/img/instruments/videomancer/crumble/crumble_before_after.png';
 import crumble_control_panel from '/img/instruments/videomancer/crumble/crumble_control_panel.png';
 import crumble_exercise1_result from '/img/instruments/videomancer/crumble/crumble_exercise1_result.png';
 import crumble_exercise2_result from '/img/instruments/videomancer/crumble/crumble_exercise2_result.png';
 import crumble_exercise3_result from '/img/instruments/videomancer/crumble/crumble_exercise3_result.png';
+import crumble_source1_kodim15 from '/img/instruments/videomancer/crumble/crumble_source1_kodim15.png';
+import crumble_source2_kodim01 from '/img/instruments/videomancer/crumble/crumble_source2_kodim01.png';
+import crumble_source3_kodim01_bw from '/img/instruments/videomancer/crumble/crumble_source3_kodim01_bw.png';
 
 # Crumble
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={crumble_hero} alt="Crumble hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: crumble_source1_kodim15, after: crumble_hero },
+    { label: "Kodim01", before: crumble_source2_kodim01, after: crumble_hero },
+    { label: "Kodim01 B&W", before: crumble_source3_kodim01_bw, after: crumble_hero },
+  ]}
+/>
 *Crumble applying stochastic spatial dissolve with solarization and monochrome tint to create stable, framebuffer-free decay textures.*
-<img src={crumble_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Crumble applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from understanding the basic dissolve mask to combining
 
 ### Exercise 1: Basic Spatial Dissolve
 
-<img src={crumble_exercise1_result} alt="Basic Spatial Dissolve result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: crumble_source1_kodim15, after: crumble_exercise1_result },
+    { label: "Kodim01", before: crumble_source2_kodim01, after: crumble_exercise1_result },
+    { label: "Kodim01 B&W", before: crumble_source3_kodim01_bw, after: crumble_exercise1_result },
+  ]}
+/>
 *Basic Spatial Dissolve — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a mix of bright and dark regions.
 
@@ -230,7 +243,13 @@ These exercises progress from understanding the basic dissolve mask to combining
 
 ### Exercise 2: Processing Mode Comparison
 
-<img src={crumble_exercise2_result} alt="Processing Mode Comparison result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: crumble_source1_kodim15, after: crumble_exercise2_result },
+    { label: "Kodim01", before: crumble_source2_kodim01, after: crumble_exercise2_result },
+    { label: "Kodim01 B&W", before: crumble_source3_kodim01_bw, after: crumble_exercise2_result },
+  ]}
+/>
 *Processing Mode Comparison — simulated result across source images.*
 **Source**: Footage with moderate color saturation — skin tones, foliage, or painted surfaces.
 
@@ -248,7 +267,13 @@ These exercises progress from understanding the basic dissolve mask to combining
 
 ### Exercise 3: Animated Dissolve with Auto-Sweep
 
-<img src={crumble_exercise3_result} alt="Animated Dissolve with Auto-Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: crumble_source1_kodim15, after: crumble_exercise3_result },
+    { label: "Kodim01", before: crumble_source2_kodim01, after: crumble_exercise3_result },
+    { label: "Kodim01 B&W", before: crumble_source3_kodim01_bw, after: crumble_exercise3_result },
+  ]}
+/>
 *Animated Dissolve with Auto-Sweep — simulated result across source images.*
 **Source**: Any video footage — motion enhances the breathing animation.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/fathom/fathom_hero.png
 description: "Every topographic map you have ever seen uses the same trick: draw lines where the ground crosses a constant altitude, then fill the zones between those lines with colours that suggest the terrain — green lowlands, brown mountains, white glacial peaks."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fathom_hero from '/img/instruments/videomancer/fathom/fathom_hero.png';
-import fathom_before_after from '/img/instruments/videomancer/fathom/fathom_before_after.png';
 import fathom_control_panel from '/img/instruments/videomancer/fathom/fathom_control_panel.png';
 import fathom_exercise1_result from '/img/instruments/videomancer/fathom/fathom_exercise1_result.png';
 import fathom_exercise2_result from '/img/instruments/videomancer/fathom/fathom_exercise2_result.png';
 import fathom_exercise3_result from '/img/instruments/videomancer/fathom/fathom_exercise3_result.png';
+import fathom_source1_kodim02 from '/img/instruments/videomancer/fathom/fathom_source1_kodim02.png';
+import fathom_source2_kodim07 from '/img/instruments/videomancer/fathom/fathom_source2_kodim07.png';
+import fathom_source3_kodim01_bw from '/img/instruments/videomancer/fathom/fathom_source3_kodim01_bw.png';
 
 # Fathom
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={fathom_hero} alt="Fathom hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_hero },
+    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_hero },
+    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_hero },
+  ]}
+/>
 *Fathom rendering luminance contour lines with hypsometric terrain tinting across a landscape feed, mapping brightness to elevation like a topographic survey.*
-<img src={fathom_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Fathom applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from basic contour rendering through palette exploratio
 
 ### Exercise 1: First Survey — Basic Contour Mapping
 
-<img src={fathom_exercise1_result} alt="First Survey — Basic Contour Mapping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise1_result },
+    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise1_result },
+    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise1_result },
+  ]}
+/>
 *First Survey — Basic Contour Mapping — simulated result across source images.*
 **Source**: A slowly panning landscape or face with smooth tonal gradients.
 
@@ -222,7 +235,13 @@ These exercises progress from basic contour rendering through palette exploratio
 
 ### Exercise 2: Seafloor to Summit — Palette Exploration
 
-<img src={fathom_exercise2_result} alt="Seafloor to Summit — Palette Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise2_result },
+    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise2_result },
+    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise2_result },
+  ]}
+/>
 *Seafloor to Summit — Palette Exploration — simulated result across source images.*
 **Source**: Footage with wide tonal range — skylines, underwater scenes, or gradient test patterns.
 
@@ -241,7 +260,13 @@ These exercises progress from basic contour rendering through palette exploratio
 
 ### Exercise 3: Cartographic Composite — Full Map Rendering
 
-<img src={fathom_exercise3_result} alt="Cartographic Composite — Full Map Rendering result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise3_result },
+    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise3_result },
+    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise3_result },
+  ]}
+/>
 *Cartographic Composite — Full Map Rendering — simulated result across source images.*
 **Source**: A live camera feed of a face, hand, or textured object with clear tonal variation.
 

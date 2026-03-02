@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 235
+sidebar_position: 236
 slug: /instruments/videomancer/rime
 title: "Rime"
 image: /img/instruments/videomancer/rime/rime_hero.png
 description: "In 1885, a Vermont farmer named Wilson Bentley attached a bellows camera to a compound microscope and captured the first photomicrograph of a snowflake."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import rime_hero from '/img/instruments/videomancer/rime/rime_hero.png';
-import rime_before_after from '/img/instruments/videomancer/rime/rime_before_after.png';
 import rime_control_panel from '/img/instruments/videomancer/rime/rime_control_panel.png';
 import rime_exercise1_result from '/img/instruments/videomancer/rime/rime_exercise1_result.png';
 import rime_exercise2_result from '/img/instruments/videomancer/rime/rime_exercise2_result.png';
 import rime_exercise3_result from '/img/instruments/videomancer/rime/rime_exercise3_result.png';
+import rime_source1_kodim01 from '/img/instruments/videomancer/rime/rime_source1_kodim01.png';
+import rime_source2_kodim02 from '/img/instruments/videomancer/rime/rime_source2_kodim02.png';
+import rime_source3_stream_bridge_512 from '/img/instruments/videomancer/rime/rime_source3_stream_bridge_512.png';
 
 # Rime
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={rime_hero} alt="Rime hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: rime_source1_kodim01, after: rime_hero },
+    { label: "Kodim02", before: rime_source2_kodim02, after: rime_hero },
+    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_hero },
+  ]}
+/>
 *Rime compositing six-fold symmetric ice crystal dendrites over input video, with DLA-grown branching patterns and glacial blue tint.*
-<img src={rime_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Rime applied.*
 
 ---
 
@@ -196,7 +203,13 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 ### Exercise 1: Gentle Frost Overlay
 
-<img src={rime_exercise1_result} alt="Gentle Frost Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise1_result },
+    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise1_result },
+    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise1_result },
+  ]}
+/>
 *Gentle Frost Overlay — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with warm colors and mid-range tonal variation.
 
@@ -216,7 +229,13 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 ### Exercise 2: Dynamic Equilibrium
 
-<img src={rime_exercise2_result} alt="Dynamic Equilibrium result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise2_result },
+    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise2_result },
+    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise2_result },
+  ]}
+/>
 *Dynamic Equilibrium — simulated result across source images.*
 **Source**: High-contrast footage — strong text, graphics, or architectural video.
 
@@ -236,7 +255,13 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 ### Exercise 3: Subtractive Shadow Crystal
 
-<img src={rime_exercise3_result} alt="Subtractive Shadow Crystal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise3_result },
+    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise3_result },
+    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise3_result },
+  ]}
+/>
 *Subtractive Shadow Crystal — simulated result across source images.*
 **Source**: Bright, well-lit footage — outdoor scenes, stage lighting, or white backgrounds.
 

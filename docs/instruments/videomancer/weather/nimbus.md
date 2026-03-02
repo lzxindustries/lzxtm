@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 195
+sidebar_position: 196
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
 image: /img/instruments/videomancer/nimbus/nimbus_hero.png
 description: "In the early 1820s, the English painter John Constable devoted two summers to painting nothing but clouds over Hampstead Heath — small oil sketches that recorded the layered, stratified structure of cumulus and cumulonimbus formations."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import nimbus_hero from '/img/instruments/videomancer/nimbus/nimbus_hero.png';
-import nimbus_before_after from '/img/instruments/videomancer/nimbus/nimbus_before_after.png';
 import nimbus_control_panel from '/img/instruments/videomancer/nimbus/nimbus_control_panel.png';
 import nimbus_exercise1_result from '/img/instruments/videomancer/nimbus/nimbus_exercise1_result.png';
 import nimbus_exercise2_result from '/img/instruments/videomancer/nimbus/nimbus_exercise2_result.png';
 import nimbus_exercise3_result from '/img/instruments/videomancer/nimbus/nimbus_exercise3_result.png';
+import nimbus_source1_kodim01 from '/img/instruments/videomancer/nimbus/nimbus_source1_kodim01.png';
+import nimbus_source2_kodim02 from '/img/instruments/videomancer/nimbus/nimbus_source2_kodim02.png';
+import nimbus_source3_stream_bridge_512 from '/img/instruments/videomancer/nimbus/nimbus_source3_stream_bridge_512.png';
 
 # Nimbus
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={nimbus_hero} alt="Nimbus hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_hero },
+    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_hero },
+    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_hero },
+  ]}
+/>
 *Nimbus dividing a video frame into cloud-like horizontal strata with warm tonal compression and altitude-dependent desaturation.*
-<img src={nimbus_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Nimbus applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from simple stratification to full atmospheric composit
 
 ### Exercise 1: Basic Cloud Strata
 
-<img src={nimbus_exercise1_result} alt="Basic Cloud Strata result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise1_result },
+    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise1_result },
+    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise1_result },
+  ]}
+/>
 *Basic Cloud Strata — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied tonal range.
 
@@ -229,7 +242,13 @@ These exercises progress from simple stratification to full atmospheric composit
 
 ### Exercise 2: Drifting Atmosphere
 
-<img src={nimbus_exercise2_result} alt="Drifting Atmosphere result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise2_result },
+    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise2_result },
+    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise2_result },
+  ]}
+/>
 *Drifting Atmosphere — simulated result across source images.*
 **Source**: Static or slow-moving footage — landscapes, skylines, or abstract color fields.
 
@@ -248,7 +267,13 @@ These exercises progress from simple stratification to full atmospheric composit
 
 ### Exercise 3: Sharp Fronts and Full Atmosphere
 
-<img src={nimbus_exercise3_result} alt="Sharp Fronts and Full Atmosphere result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise3_result },
+    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise3_result },
+    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise3_result },
+  ]}
+/>
 *Sharp Fronts and Full Atmosphere — simulated result across source images.*
 **Source**: High-contrast footage — performers against a dark background, architectural details, or video feedback.
 

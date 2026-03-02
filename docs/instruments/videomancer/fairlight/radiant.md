@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 226
+sidebar_position: 227
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero.png
 description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import radiant_hero from '/img/instruments/videomancer/radiant/radiant_hero.png';
-import radiant_before_after from '/img/instruments/videomancer/radiant/radiant_before_after.png';
 import radiant_control_panel from '/img/instruments/videomancer/radiant/radiant_control_panel.png';
 import radiant_exercise1_result from '/img/instruments/videomancer/radiant/radiant_exercise1_result.png';
 import radiant_exercise2_result from '/img/instruments/videomancer/radiant/radiant_exercise2_result.png';
 import radiant_exercise3_result from '/img/instruments/videomancer/radiant/radiant_exercise3_result.png';
+import radiant_source1_kodim15 from '/img/instruments/videomancer/radiant/radiant_source1_kodim15.png';
+import radiant_source2_kodim01 from '/img/instruments/videomancer/radiant/radiant_source2_kodim01.png';
+import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/radiant_source3_kodim01_bw.png';
 
 # Radiant
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={radiant_hero} alt="Radiant hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_hero },
+    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_hero },
+    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_hero },
+  ]}
+/>
 *Radiant projecting concentric expanding color rings from a movable center point, composited over live video via additive blending.*
-<img src={radiant_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Radiant applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 ### Exercise 1: Centered Rainbow Spotlight
 
-<img src={radiant_exercise1_result} alt="Centered Rainbow Spotlight result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise1_result },
+    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise1_result },
+    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise1_result },
+  ]}
+/>
 *Centered Rainbow Spotlight — simulated result across source images.*
 **Source**: A moderately bright video source with recognizable content — a face, an object, or a graphic with visible structure.
 
@@ -241,7 +254,13 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 ### Exercise 2: Orbiting Color Tunnel
 
-<img src={radiant_exercise2_result} alt="Orbiting Color Tunnel result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise2_result },
+    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise2_result },
+    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise2_result },
+  ]}
+/>
 *Orbiting Color Tunnel — simulated result across source images.*
 **Source**: A dark or low-contrast video source — a dimly lit scene or abstract dark texture that will serve as a backdrop for the vivid ring overlay.
 
@@ -266,7 +285,13 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 ### Exercise 3: Vignette Gating
 
-<img src={radiant_exercise3_result} alt="Vignette Gating result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise3_result },
+    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise3_result },
+    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise3_result },
+  ]}
+/>
 *Vignette Gating — simulated result across source images.*
 **Source**: A well-lit, colorful video source with good dynamic range — the multiply mode will selectively darken regions, so the source needs visible brightness variation.
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 204
+sidebar_position: 205
 slug: /instruments/videomancer/parallax
 title: "Parallax"
 image: /img/instruments/videomancer/parallax/parallax_hero.png

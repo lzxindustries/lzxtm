@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/decibel/decibel_hero.png
 description: "Every sound engineer knows the VU meter — a swinging needle that follows the loudness of audio in near-real-time, giving an immediate, visceral sense of energy."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import decibel_hero from '/img/instruments/videomancer/decibel/decibel_hero.png';
-import decibel_before_after from '/img/instruments/videomancer/decibel/decibel_before_after.png';
 import decibel_control_panel from '/img/instruments/videomancer/decibel/decibel_control_panel.png';
 import decibel_exercise1_result from '/img/instruments/videomancer/decibel/decibel_exercise1_result.png';
 import decibel_exercise2_result from '/img/instruments/videomancer/decibel/decibel_exercise2_result.png';
 import decibel_exercise3_result from '/img/instruments/videomancer/decibel/decibel_exercise3_result.png';
+import decibel_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/decibel/decibel_source1_grayscale_ramp_h_1920x1080.png';
+import decibel_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/decibel/decibel_source2_grayscale_ramp_v_1920x1080.png';
+import decibel_source3_step_wedge_21level_512 from '/img/instruments/videomancer/decibel/decibel_source3_step_wedge_21level_512.png';
 
 # Decibel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={decibel_hero} alt="Decibel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_hero },
+    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_hero },
+    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_hero },
+  ]}
+/>
 *Decibel rendering a 16-segment rainbow bar meter across a live video feed, with peak hold markers tracing transient brightness spikes in red.*
-<img src={decibel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Decibel applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 ### Exercise 1: Classic Bar Meter
 
-<img src={decibel_exercise1_result} alt="Classic Bar Meter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise1_result },
+    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise1_result },
+    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise1_result },
+  ]}
+/>
 *Classic Bar Meter — simulated result across source images.*
 **Source**: A live camera feed or test pattern with varying brightness regions — color bars or a gradient ramp are ideal.
 
@@ -218,7 +231,13 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 ### Exercise 2: Peak Hold and Rainbow Color
 
-<img src={decibel_exercise2_result} alt="Peak Hold and Rainbow Color result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise2_result },
+    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise2_result },
+    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise2_result },
+  ]}
+/>
 *Peak Hold and Rainbow Color — simulated result across source images.*
 **Source**: Dynamic footage with bright transients — strobes, flashing lights, or a performer moving between bright and dark areas.
 
@@ -237,7 +256,13 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 ### Exercise 3: Composited Meter Overlay
 
-<img src={decibel_exercise3_result} alt="Composited Meter Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise3_result },
+    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise3_result },
+    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise3_result },
+  ]}
+/>
 *Composited Meter Overlay — simulated result across source images.*
 **Source**: Visually interesting footage — a live performance, nature scene, or abstract video source.
 

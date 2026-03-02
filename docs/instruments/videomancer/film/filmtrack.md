@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/filmtrack/filmtrack_hero.png
 description: "Film Track converts input video luminance into scrolling horizontal stripe patterns inspired by the optical sound tracks found on 35 mm motion picture film."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import filmtrack_hero from '/img/instruments/videomancer/filmtrack/filmtrack_hero.png';
-import filmtrack_before_after from '/img/instruments/videomancer/filmtrack/filmtrack_before_after.png';
 import filmtrack_control_panel from '/img/instruments/videomancer/filmtrack/filmtrack_control_panel.png';
 import filmtrack_exercise1_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise1_result.png';
 import filmtrack_exercise2_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise2_result.png';
 import filmtrack_exercise3_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise3_result.png';
+import filmtrack_source1_kodim03 from '/img/instruments/videomancer/filmtrack/filmtrack_source1_kodim03.png';
+import filmtrack_source2_kodim13 from '/img/instruments/videomancer/filmtrack/filmtrack_source2_kodim13.png';
+import filmtrack_source3_kodim13_bw from '/img/instruments/videomancer/filmtrack/filmtrack_source3_kodim13_bw.png';
 
 # Film Track
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={filmtrack_hero} alt="Film Track hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_hero },
+    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_hero },
+    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_hero },
+  ]}
+/>
 *Moving video becomes a scrolling strip of optical sound tracks — variable-area and variable-density stripes flowing downward like a film projector frozen mid-frame.*
-<img src={filmtrack_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Film Track applied.*
 
 ---
 
@@ -206,7 +213,13 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 ### Exercise 1: Classic Mono Variable-Area
 
-<img src={filmtrack_exercise1_result} alt="Classic Mono Variable-Area result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise1_result },
+    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise1_result },
+    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise1_result },
+  ]}
+/>
 *Classic Mono Variable-Area — simulated result across source images.*
 **Source**: A talking head with moderate contrast, or any source with clear brightness changes.
 
@@ -225,7 +238,13 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 ### Exercise 2: Tinted Film Strip
 
-<img src={filmtrack_exercise2_result} alt="Tinted Film Strip result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise2_result },
+    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise2_result },
+    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise2_result },
+  ]}
+/>
 *Tinted Film Strip — simulated result across source images.*
 **Source**: Music video or animated source with rhythmic brightness variation.
 
@@ -243,7 +262,13 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 ### Exercise 3: Dynamic Scan Sweep
 
-<img src={filmtrack_exercise3_result} alt="Dynamic Scan Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise3_result },
+    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise3_result },
+    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise3_result },
+  ]}
+/>
 *Dynamic Scan Sweep — simulated result across source images.*
 **Source**: Any source with horizontal variation (panorama, landscape, scrolling text).
 

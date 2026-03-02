@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/anaglyph/anaglyph_hero.png
 description: "Anaglyph creates stereoscopic 3D anaglyphic images from 2D video by using source luminance as a depth map."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import anaglyph_hero from '/img/instruments/videomancer/anaglyph/anaglyph_hero.png';
-import anaglyph_before_after from '/img/instruments/videomancer/anaglyph/anaglyph_before_after.png';
 import anaglyph_control_panel from '/img/instruments/videomancer/anaglyph/anaglyph_control_panel.png';
 import anaglyph_exercise1_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise1_result.png';
 import anaglyph_exercise2_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise2_result.png';
 import anaglyph_exercise3_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise3_result.png';
+import anaglyph_source1_kodim15 from '/img/instruments/videomancer/anaglyph/anaglyph_source1_kodim15.png';
+import anaglyph_source2_kodim01 from '/img/instruments/videomancer/anaglyph/anaglyph_source2_kodim01.png';
+import anaglyph_source3_kodim01_bw from '/img/instruments/videomancer/anaglyph/anaglyph_source3_kodim01_bw.png';
 
 # Anaglyph
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={anaglyph_hero} alt="Anaglyph hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_hero },
+    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_hero },
+    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_hero },
+  ]}
+/>
 *Anaglyph rendering a landscape as a red/cyan stereoscopic image — bright regions push forward and dark regions recede, creating a convincing 3D depth illusion viewable with classic red/cyan glasses.*
-<img src={anaglyph_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Anaglyph applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 ### Exercise 1: Basic Depth Mapping
 
-<img src={anaglyph_exercise1_result} alt="Basic Depth Mapping result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise1_result },
+    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise1_result },
+    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise1_result },
+  ]}
+/>
 *Basic Depth Mapping — simulated result across source images.*
 **Source**: Landscape or scene with clear brightness gradients (bright foreground, dark background or vice versa).
 
@@ -216,7 +229,13 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 ### Exercise 2: Depth Direction and Separation
 
-<img src={anaglyph_exercise2_result} alt="Depth Direction and Separation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise2_result },
+    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise2_result },
+    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise2_result },
+  ]}
+/>
 *Depth Direction and Separation — simulated result across source images.*
 **Source**: High-contrast image with both bright and dark areas.
 
@@ -235,7 +254,13 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 ### Exercise 3: Green/Magenta Mode and Brightness Compensation
 
-<img src={anaglyph_exercise3_result} alt="Green/Magenta Mode and Brightness Compensation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise3_result },
+    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise3_result },
+    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise3_result },
+  ]}
+/>
 *Green/Magenta Mode and Brightness Compensation — simulated result across source images.*
 **Source**: Colourful subject with varied hues — flowers, artwork, or coloured fabrics.
 

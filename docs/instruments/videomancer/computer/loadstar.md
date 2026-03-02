@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/loadstar/loadstar_hero.png
 description: "There was a ritual shared by an entire generation of home computer users."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import loadstar_hero from '/img/instruments/videomancer/loadstar/loadstar_hero.png';
-import loadstar_before_after from '/img/instruments/videomancer/loadstar/loadstar_before_after.png';
 import loadstar_control_panel from '/img/instruments/videomancer/loadstar/loadstar_control_panel.png';
 import loadstar_exercise1_result from '/img/instruments/videomancer/loadstar/loadstar_exercise1_result.png';
 import loadstar_exercise2_result from '/img/instruments/videomancer/loadstar/loadstar_exercise2_result.png';
 import loadstar_exercise3_result from '/img/instruments/videomancer/loadstar/loadstar_exercise3_result.png';
+import loadstar_source1_kodim15 from '/img/instruments/videomancer/loadstar/loadstar_source1_kodim15.png';
+import loadstar_source2_kodim03 from '/img/instruments/videomancer/loadstar/loadstar_source2_kodim03.png';
+import loadstar_source3_kodim15_bw from '/img/instruments/videomancer/loadstar/loadstar_source3_kodim15_bw.png';
 
 # Loadstar
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={loadstar_hero} alt="Loadstar hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_hero },
+    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_hero },
+    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_hero },
+  ]}
+/>
 *Loadstar applying animated border color cycling and attribute clash quantization to recreate the look of an 8-bit home computer loading screen.*
-<img src={loadstar_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Loadstar applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises explore the program's active controls, progressing from simple b
 
 ### Exercise 1: Tape Loading Border
 
-<img src={loadstar_exercise1_result} alt="Tape Loading Border result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise1_result },
+    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise1_result },
+    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise1_result },
+  ]}
+/>
 *Tape Loading Border — simulated result across source images.*
 **Source**: Any video source — the border effect is independent of the content area.
 
@@ -222,7 +235,13 @@ These exercises explore the program's active controls, progressing from simple b
 
 ### Exercise 2: Character Cell Mosaic
 
-<img src={loadstar_exercise2_result} alt="Character Cell Mosaic result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise2_result },
+    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise2_result },
+    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise2_result },
+  ]}
+/>
 *Character Cell Mosaic — simulated result across source images.*
 **Source**: Live camera or footage with recognizable subjects — faces, text, or geometric patterns.
 
@@ -241,7 +260,13 @@ These exercises explore the program's active controls, progressing from simple b
 
 ### Exercise 3: Full 8-Bit Emulation
 
-<img src={loadstar_exercise3_result} alt="Full 8-Bit Emulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise3_result },
+    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise3_result },
+    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise3_result },
+  ]}
+/>
 *Full 8-Bit Emulation — simulated result across source images.*
 **Source**: High-contrast footage — retro games, pixel art, or text-heavy material for maximum authenticity.
 

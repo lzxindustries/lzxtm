@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/borealis/borealis_hero.png
 description: "In 1860, the explorer Isaac Israel Hayes sailed north of Greenland into the Kane Basin and sketched the arctic aurora from the deck of his schooner."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import borealis_hero from '/img/instruments/videomancer/borealis/borealis_hero.png';
-import borealis_before_after from '/img/instruments/videomancer/borealis/borealis_before_after.png';
 import borealis_control_panel from '/img/instruments/videomancer/borealis/borealis_control_panel.png';
 import borealis_exercise1_result from '/img/instruments/videomancer/borealis/borealis_exercise1_result.png';
 import borealis_exercise2_result from '/img/instruments/videomancer/borealis/borealis_exercise2_result.png';
 import borealis_exercise3_result from '/img/instruments/videomancer/borealis/borealis_exercise3_result.png';
+import borealis_source1_kodim01 from '/img/instruments/videomancer/borealis/borealis_source1_kodim01.png';
+import borealis_source2_kodim02 from '/img/instruments/videomancer/borealis/borealis_source2_kodim02.png';
+import borealis_source3_stream_bridge_512 from '/img/instruments/videomancer/borealis/borealis_source3_stream_bridge_512.png';
 
 # Borealis
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={borealis_hero} alt="Borealis hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_hero },
+    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_hero },
+    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_hero },
+  ]}
+/>
 *Borealis generating procedural aurora curtains with dual oxygen emission colors composited additively over a mountain landscape.*
-<img src={borealis_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Borealis applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 ### Exercise 1: Single Curtain Aurora
 
-<img src={borealis_exercise1_result} alt="Single Curtain Aurora result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise1_result },
+    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise1_result },
+    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise1_result },
+  ]}
+/>
 *Single Curtain Aurora — simulated result across source images.*
 **Source**: Feed a landscape with a visible sky region (Kodak #13 — the mountain/water scene has a natural horizon that contextualizes the aurora above).
 
@@ -238,7 +251,13 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 ### Exercise 2: Multi-Band Northern Lights
 
-<img src={borealis_exercise2_result} alt="Multi-Band Northern Lights result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise2_result },
+    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise2_result },
+    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise2_result },
+  ]}
+/>
 *Multi-Band Northern Lights — simulated result across source images.*
 **Source**: Feed a scene with a prominent vertical element (Kodak #21 — the lighthouse provides a vertical anchor against which the horizontal curtain drift is clearly visible).
 
@@ -263,7 +282,13 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 ### Exercise 3: Full-Sky Substorm
 
-<img src={borealis_exercise3_result} alt="Full-Sky Substorm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise3_result },
+    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise3_result },
+    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise3_result },
+  ]}
+/>
 *Full-Sky Substorm — simulated result across source images.*
 **Source**: Feed a vibrant, colorful image (Kodak #16 — the warm tropical tones create a dramatic contrast with the cool green/magenta aurora filling the sky).
 

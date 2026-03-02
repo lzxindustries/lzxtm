@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/fogbank/fogbank_hero.png
 description: "Fog is the atmosphere made visible."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fogbank_hero from '/img/instruments/videomancer/fogbank/fogbank_hero.png';
-import fogbank_before_after from '/img/instruments/videomancer/fogbank/fogbank_before_after.png';
 import fogbank_control_panel from '/img/instruments/videomancer/fogbank/fogbank_control_panel.png';
 import fogbank_exercise1_result from '/img/instruments/videomancer/fogbank/fogbank_exercise1_result.png';
 import fogbank_exercise2_result from '/img/instruments/videomancer/fogbank/fogbank_exercise2_result.png';
 import fogbank_exercise3_result from '/img/instruments/videomancer/fogbank/fogbank_exercise3_result.png';
+import fogbank_source1_kodim01 from '/img/instruments/videomancer/fogbank/fogbank_source1_kodim01.png';
+import fogbank_source2_kodim02 from '/img/instruments/videomancer/fogbank/fogbank_source2_kodim02.png';
+import fogbank_source3_stream_bridge_512 from '/img/instruments/videomancer/fogbank/fogbank_source3_stream_bridge_512.png';
 
 # Fogbank
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={fogbank_hero} alt="Fogbank hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_hero },
+    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_hero },
+    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_hero },
+  ]}
+/>
 *Dense rolling fog banks drift across a sunlit landscape, swallowing colour and detail into soft luminous white — only the faintest outlines survive beneath the blanket.*
-<img src={fogbank_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Fogbank applied.*
 
 ---
 
@@ -221,7 +228,13 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 ### Exercise 1: Static Fog Blanket
 
-<img src={fogbank_exercise1_result} alt="Static Fog Blanket result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise1_result },
+    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise1_result },
+    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise1_result },
+  ]}
+/>
 *Static Fog Blanket — simulated result across source images.*
 **Source**: A landscape photograph or footage with good tonal range — mountains, city skyline, or outdoor scene with clear detail.
 
@@ -240,7 +253,13 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 ### Exercise 2: Rolling Fog Drift
 
-<img src={fogbank_exercise2_result} alt="Rolling Fog Drift result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise2_result },
+    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise2_result },
+    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise2_result },
+  ]}
+/>
 *Rolling Fog Drift — simulated result across source images.*
 **Source**: A static or slow-moving video scene — architectural footage, landscape, or a still frame.
 
@@ -260,7 +279,13 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 ### Exercise 3: Turbulent Fogbank
 
-<img src={fogbank_exercise3_result} alt="Turbulent Fogbank result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise3_result },
+    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise3_result },
+    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise3_result },
+  ]}
+/>
 *Turbulent Fogbank — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — faces, text, or geometric patterns.
 

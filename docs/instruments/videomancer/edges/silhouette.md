@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 254
+sidebar_position: 255
 slug: /instruments/videomancer/silhouette
 title: "Silhouette"
 image: /img/instruments/videomancer/silhouette/silhouette_hero.png
 description: "Every image is a landscape of brightness and colour values."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import silhouette_hero from '/img/instruments/videomancer/silhouette/silhouette_hero.png';
-import silhouette_before_after from '/img/instruments/videomancer/silhouette/silhouette_before_after.png';
 import silhouette_control_panel from '/img/instruments/videomancer/silhouette/silhouette_control_panel.png';
 import silhouette_exercise1_result from '/img/instruments/videomancer/silhouette/silhouette_exercise1_result.png';
 import silhouette_exercise2_result from '/img/instruments/videomancer/silhouette/silhouette_exercise2_result.png';
 import silhouette_exercise3_result from '/img/instruments/videomancer/silhouette/silhouette_exercise3_result.png';
+import silhouette_source1_kodim02 from '/img/instruments/videomancer/silhouette/silhouette_source1_kodim02.png';
+import silhouette_source2_kodim07 from '/img/instruments/videomancer/silhouette/silhouette_source2_kodim07.png';
+import silhouette_source3_kodim01_bw from '/img/instruments/videomancer/silhouette/silhouette_source3_kodim01_bw.png';
 
 # Silhouette
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={silhouette_hero} alt="Silhouette hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_hero },
+    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_hero },
+    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_hero },
+  ]}
+/>
 *Silhouette extracting a luminance key from a high-contrast portrait, replacing keyed regions with a warm amber matte colour.*
-<img src={silhouette_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Silhouette applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 ### Exercise 1: Basic Luma Silhouette
 
-<img src={silhouette_exercise1_result} alt="Basic Luma Silhouette result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise1_result },
+    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise1_result },
+    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise1_result },
+  ]}
+/>
 *Basic Luma Silhouette — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or a test pattern with strong brightness differences (e.g., white text on black background).
 
@@ -234,7 +247,13 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 ### Exercise 2: Chroma Key Compositing
 
-<img src={silhouette_exercise2_result} alt="Chroma Key Compositing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise2_result },
+    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise2_result },
+    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise2_result },
+  ]}
+/>
 *Chroma Key Compositing — simulated result across source images.*
 **Source**: Footage with a strong, saturated colour (e.g., a red object on a neutral background, or footage shot against a coloured backdrop).
 
@@ -253,7 +272,13 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 ### Exercise 3: Soft Compositing with Luma Invert
 
-<img src={silhouette_exercise3_result} alt="Soft Compositing with Luma Invert result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise3_result },
+    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise3_result },
+    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise3_result },
+  ]}
+/>
 *Soft Compositing with Luma Invert — simulated result across source images.*
 **Source**: A video scene with a range of brightness values (landscape, portrait, or abstract footage).
 

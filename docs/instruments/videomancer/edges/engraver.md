@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/engraver/engraver_hero.png
 description: "In traditional engraving, a craftsman cuts lines into a metal plate."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import engraver_hero from '/img/instruments/videomancer/engraver/engraver_hero.png';
-import engraver_before_after from '/img/instruments/videomancer/engraver/engraver_before_after.png';
 import engraver_control_panel from '/img/instruments/videomancer/engraver/engraver_control_panel.png';
 import engraver_exercise1_result from '/img/instruments/videomancer/engraver/engraver_exercise1_result.png';
 import engraver_exercise2_result from '/img/instruments/videomancer/engraver/engraver_exercise2_result.png';
 import engraver_exercise3_result from '/img/instruments/videomancer/engraver/engraver_exercise3_result.png';
+import engraver_source1_kodim02 from '/img/instruments/videomancer/engraver/engraver_source1_kodim02.png';
+import engraver_source2_kodim07 from '/img/instruments/videomancer/engraver/engraver_source2_kodim07.png';
+import engraver_source3_kodim01_bw from '/img/instruments/videomancer/engraver/engraver_source3_kodim01_bw.png';
 
 # Engraver
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={engraver_hero} alt="Engraver hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_hero },
+    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_hero },
+    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_hero },
+  ]}
+/>
 *Engraver reducing a video signal to flat posterized regions bounded by crisp edge lines, evoking intaglio printmaking and cartoon cel-shading.*
-<img src={engraver_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Engraver applied.*
 
 ---
 
@@ -219,7 +226,13 @@ These three exercises progress from basic posterization to full engraved line ar
 
 ### Exercise 1: Cartoon Cel-Shading
 
-<img src={engraver_exercise1_result} alt="Cartoon Cel-Shading result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise1_result },
+    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise1_result },
+    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise1_result },
+  ]}
+/>
 *Cartoon Cel-Shading — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a human face or recognizable subject against a medium-contrast background.
 
@@ -238,7 +251,13 @@ These three exercises progress from basic posterization to full engraved line ar
 
 ### Exercise 2: Copper Plate Engraving
 
-<img src={engraver_exercise2_result} alt="Copper Plate Engraving result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise2_result },
+    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise2_result },
+    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise2_result },
+  ]}
+/>
 *Copper Plate Engraving — simulated result across source images.*
 **Source**: A still photograph or slow-moving footage with fine detail — architecture, foliage, or textured fabrics.
 
@@ -257,7 +276,13 @@ These three exercises progress from basic posterization to full engraved line ar
 
 ### Exercise 3: Pure Line Drawing
 
-<img src={engraver_exercise3_result} alt="Pure Line Drawing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise3_result },
+    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise3_result },
+    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise3_result },
+  ]}
+/>
 *Pure Line Drawing — simulated result across source images.*
 **Source**: High-contrast footage — text on a screen, geometric objects, or a high-contrast face lit from the side.
 

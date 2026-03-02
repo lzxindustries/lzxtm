@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/burin/burin_hero.png
 description: "Every photograph contains continuous tonal gradations — smooth transitions from light to shadow."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import burin_hero from '/img/instruments/videomancer/burin/burin_hero.png';
-import burin_before_after from '/img/instruments/videomancer/burin/burin_before_after.png';
 import burin_control_panel from '/img/instruments/videomancer/burin/burin_control_panel.png';
 import burin_exercise1_result from '/img/instruments/videomancer/burin/burin_exercise1_result.png';
 import burin_exercise2_result from '/img/instruments/videomancer/burin/burin_exercise2_result.png';
 import burin_exercise3_result from '/img/instruments/videomancer/burin/burin_exercise3_result.png';
+import burin_source1_kodim02 from '/img/instruments/videomancer/burin/burin_source1_kodim02.png';
+import burin_source2_kodim07 from '/img/instruments/videomancer/burin/burin_source2_kodim07.png';
+import burin_source3_kodim01_bw from '/img/instruments/videomancer/burin/burin_source3_kodim01_bw.png';
 
 # Burin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={burin_hero} alt="Burin hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: burin_source1_kodim02, after: burin_hero },
+    { label: "Kodim07", before: burin_source2_kodim07, after: burin_hero },
+    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_hero },
+  ]}
+/>
 *Burin rendering a video source as copper intaglio crosshatching, with luminance-dependent line density recreating the look of a Dürer engraving.*
-<img src={burin_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Burin applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 ### Exercise 1: First Lines and Crosshatch
 
-<img src={burin_exercise1_result} alt="First Lines and Crosshatch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise1_result },
+    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise1_result },
+    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise1_result },
+  ]}
+/>
 *First Lines and Crosshatch — simulated result across source images.*
 **Source**: A portrait or figure with clear tonal transitions — skin highlights through deep shadows.
 
@@ -233,7 +246,13 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 ### Exercise 2: Plate Character and Wear
 
-<img src={burin_exercise2_result} alt="Plate Character and Wear result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise2_result },
+    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise2_result },
+    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise2_result },
+  ]}
+/>
 *Plate Character and Wear — simulated result across source images.*
 **Source**: A scene with a full tonal range — outdoor landscape or still life with highlights and deep shadows.
 
@@ -252,7 +271,13 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 ### Exercise 3: Duotone and Inversion
 
-<img src={burin_exercise3_result} alt="Duotone and Inversion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise3_result },
+    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise3_result },
+    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise3_result },
+  ]}
+/>
 *Duotone and Inversion — simulated result across source images.*
 **Source**: High-contrast material — a face lit from one side, or any source with both saturated colour and strong shadows.
 

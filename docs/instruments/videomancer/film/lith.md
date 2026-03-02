@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/lith/lith_hero.png
 description: "In the photographic darkroom, lith printing is a process that defies conventional wisdom."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import lith_hero from '/img/instruments/videomancer/lith/lith_hero.png';
-import lith_before_after from '/img/instruments/videomancer/lith/lith_before_after.png';
 import lith_control_panel from '/img/instruments/videomancer/lith/lith_control_panel.png';
 import lith_exercise1_result from '/img/instruments/videomancer/lith/lith_exercise1_result.png';
 import lith_exercise2_result from '/img/instruments/videomancer/lith/lith_exercise2_result.png';
 import lith_exercise3_result from '/img/instruments/videomancer/lith/lith_exercise3_result.png';
+import lith_source1_kodim03 from '/img/instruments/videomancer/lith/lith_source1_kodim03.png';
+import lith_source2_kodim13 from '/img/instruments/videomancer/lith/lith_source2_kodim13.png';
+import lith_source3_kodim13_bw from '/img/instruments/videomancer/lith/lith_source3_kodim13_bw.png';
 
 # Lith
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={lith_hero} alt="Lith hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lith_source1_kodim03, after: lith_hero },
+    { label: "Kodim13", before: lith_source2_kodim13, after: lith_hero },
+    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_hero },
+  ]}
+/>
 *Lith applying infectious development processing to transform video into ultra-high-contrast prints with warm brown shadow tones and papery highlights.*
-<img src={lith_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Lith applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 ### Exercise 1: Basic Lith Threshold
 
-<img src={lith_exercise1_result} alt="Basic Lith Threshold result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise1_result },
+    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise1_result },
+    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise1_result },
+  ]}
+/>
 *Basic Lith Threshold — simulated result across source images.*
 **Source**: A portrait or figure with a full tonal range — both deep shadows and bright highlights.
 
@@ -215,7 +228,13 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 ### Exercise 2: Infectious Development and Toning
 
-<img src={lith_exercise2_result} alt="Infectious Development and Toning result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise2_result },
+    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise2_result },
+    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise2_result },
+  ]}
+/>
 *Infectious Development and Toning — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — overcast skies, fog, or soft lighting.
 
@@ -234,7 +253,13 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 ### Exercise 3: Full Lith Darkroom
 
-<img src={lith_exercise3_result} alt="Full Lith Darkroom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise3_result },
+    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise3_result },
+    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise3_result },
+  ]}
+/>
 *Full Lith Darkroom — simulated result across source images.*
 **Source**: High-contrast material — backlit silhouettes, stage lighting, or architectural shadows.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/diptych/diptych_hero.png
 description: "A diptych is a two-panel artwork — two images joined along a central hinge."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import diptych_hero from '/img/instruments/videomancer/diptych/diptych_hero.png';
-import diptych_before_after from '/img/instruments/videomancer/diptych/diptych_before_after.png';
 import diptych_control_panel from '/img/instruments/videomancer/diptych/diptych_control_panel.png';
 import diptych_exercise1_result from '/img/instruments/videomancer/diptych/diptych_exercise1_result.png';
 import diptych_exercise2_result from '/img/instruments/videomancer/diptych/diptych_exercise2_result.png';
 import diptych_exercise3_result from '/img/instruments/videomancer/diptych/diptych_exercise3_result.png';
+import diptych_source1_kodim01 from '/img/instruments/videomancer/diptych/diptych_source1_kodim01.png';
+import diptych_source2_kodim02 from '/img/instruments/videomancer/diptych/diptych_source2_kodim02.png';
+import diptych_source3_kodim01_bw from '/img/instruments/videomancer/diptych/diptych_source3_kodim01_bw.png';
 
 # Diptych
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={diptych_hero} alt="Diptych hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_hero },
+    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_hero },
+    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_hero },
+  ]}
+/>
 *Diptych splitting a live camera feed at mid-frame with complementary color inversion on the mirrored half and a narrow black gap at the fold line.*
-<img src={diptych_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Diptych applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 ### Exercise 1: Bilateral Color Fold
 
-<img src={diptych_exercise1_result} alt="Bilateral Color Fold result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise1_result },
+    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise1_result },
+    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise1_result },
+  ]}
+/>
 *Bilateral Color Fold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong, varied colors — flowers, painted surfaces, or colorful clothing work well.
 
@@ -227,7 +240,13 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 ### Exercise 2: Full Negative Mirror
 
-<img src={diptych_exercise2_result} alt="Full Negative Mirror result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise2_result },
+    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise2_result },
+    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise2_result },
+  ]}
+/>
 *Full Negative Mirror — simulated result across source images.*
 **Source**: High-contrast footage with clear tonal structure — backlit subjects, architecture, or black-and-white patterns.
 
@@ -245,7 +264,13 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 ### Exercise 3: Framed Diptych Composition
 
-<img src={diptych_exercise3_result} alt="Framed Diptych Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise3_result },
+    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise3_result },
+    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise3_result },
+  ]}
+/>
 *Framed Diptych Composition — simulated result across source images.*
 **Source**: A slowly panning camera or a static scene with a clear subject in the center.
 

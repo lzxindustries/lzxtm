@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/blizzard/blizzard_hero.png
 description: "Snow in real life has depth."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import blizzard_hero from '/img/instruments/videomancer/blizzard/blizzard_hero.png';
-import blizzard_before_after from '/img/instruments/videomancer/blizzard/blizzard_before_after.png';
 import blizzard_control_panel from '/img/instruments/videomancer/blizzard/blizzard_control_panel.png';
 import blizzard_exercise1_result from '/img/instruments/videomancer/blizzard/blizzard_exercise1_result.png';
 import blizzard_exercise2_result from '/img/instruments/videomancer/blizzard/blizzard_exercise2_result.png';
 import blizzard_exercise3_result from '/img/instruments/videomancer/blizzard/blizzard_exercise3_result.png';
+import blizzard_source1_kodim01 from '/img/instruments/videomancer/blizzard/blizzard_source1_kodim01.png';
+import blizzard_source2_kodim02 from '/img/instruments/videomancer/blizzard/blizzard_source2_kodim02.png';
+import blizzard_source3_stream_bridge_512 from '/img/instruments/videomancer/blizzard/blizzard_source3_stream_bridge_512.png';
 
 # Blizzard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={blizzard_hero} alt="Blizzard hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_hero },
+    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_hero },
+    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_hero },
+  ]}
+/>
 *Blizzard compositing multi-layer parallax snowfall with frost accumulation over a winter landscape source.*
-<img src={blizzard_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Blizzard applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 ### Exercise 1: Gentle Flurries
 
-<img src={blizzard_exercise1_result} alt="Gentle Flurries result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise1_result },
+    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise1_result },
+    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise1_result },
+  ]}
+/>
 *Gentle Flurries — simulated result across source images.*
 **Source**: Feed a landscape or outdoor scene (Kodak #24 — the mountain chalet provides natural winter context).
 
@@ -234,7 +247,13 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 ### Exercise 2: Heavy Snowfall with Wind
 
-<img src={blizzard_exercise2_result} alt="Heavy Snowfall with Wind result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise2_result },
+    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise2_result },
+    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise2_result },
+  ]}
+/>
 *Heavy Snowfall with Wind — simulated result across source images.*
 **Source**: Feed a scene with mixed bright and dark regions (Kodak #13 — the mountain/water scene shows flakes clearly against both the bright sky and dark water).
 
@@ -259,7 +278,13 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 ### Exercise 3: Frost and Snow Combined
 
-<img src={blizzard_exercise3_result} alt="Frost and Snow Combined result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise3_result },
+    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise3_result },
+    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise3_result },
+  ]}
+/>
 *Frost and Snow Combined — simulated result across source images.*
 **Source**: Feed a rural or architectural scene (Kodak #22 — the barn scene with its horizontal roof lines makes the frost line descent visually clear).
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/flaregun/flaregun_hero.png
 description: "Bright light entering a camera lens scatters off internal glass surfaces, creating glowing halos, horizontal streaks, and star-shaped diffraction patterns."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import flaregun_hero from '/img/instruments/videomancer/flaregun/flaregun_hero.png';
-import flaregun_before_after from '/img/instruments/videomancer/flaregun/flaregun_before_after.png';
 import flaregun_control_panel from '/img/instruments/videomancer/flaregun/flaregun_control_panel.png';
 import flaregun_exercise1_result from '/img/instruments/videomancer/flaregun/flaregun_exercise1_result.png';
 import flaregun_exercise2_result from '/img/instruments/videomancer/flaregun/flaregun_exercise2_result.png';
 import flaregun_exercise3_result from '/img/instruments/videomancer/flaregun/flaregun_exercise3_result.png';
+import flaregun_source1_kodim15 from '/img/instruments/videomancer/flaregun/flaregun_source1_kodim15.png';
+import flaregun_source2_kodim03 from '/img/instruments/videomancer/flaregun/flaregun_source2_kodim03.png';
+import flaregun_source3_kodim13_bw from '/img/instruments/videomancer/flaregun/flaregun_source3_kodim13_bw.png';
 
 # Flaregun
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={flaregun_hero} alt="Flaregun hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_hero },
+    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_hero },
+    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_hero },
+  ]}
+/>
 *Flaregun compositing radial Gaussian bloom, anamorphic streak, and starburst rays over video in the style of the NewTek Video Toaster's Flare Center effect.*
-<img src={flaregun_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Flaregun applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 ### Exercise 1: Classic Toaster Bloom
 
-<img src={flaregun_exercise1_result} alt="Classic Toaster Bloom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise1_result },
+    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise1_result },
+    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise1_result },
+  ]}
+/>
 *Classic Toaster Bloom — simulated result across source images.*
 **Source**: A mid-brightness camera feed or recorded footage with visible content and moderate contrast.
 
@@ -233,7 +246,13 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 ### Exercise 2: Starburst Highlight
 
-<img src={flaregun_exercise2_result} alt="Starburst Highlight result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise2_result },
+    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise2_result },
+    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise2_result },
+  ]}
+/>
 *Starburst Highlight — simulated result across source images.*
 **Source**: Dark footage with isolated bright elements — stage lighting, candles, or specular reflections.
 
@@ -253,7 +272,13 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 ### Exercise 3: Cinematic Anamorphic Sweep
 
-<img src={flaregun_exercise3_result} alt="Cinematic Anamorphic Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise3_result },
+    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise3_result },
+    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise3_result },
+  ]}
+/>
 *Cinematic Anamorphic Sweep — simulated result across source images.*
 **Source**: Any footage — the flare will dominate the composition at these settings.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/infrared/infrared_hero.png
 description: "Thermal imaging cameras do not capture color."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import infrared_hero from '/img/instruments/videomancer/infrared/infrared_hero.png';
-import infrared_before_after from '/img/instruments/videomancer/infrared/infrared_before_after.png';
 import infrared_control_panel from '/img/instruments/videomancer/infrared/infrared_control_panel.png';
 import infrared_exercise1_result from '/img/instruments/videomancer/infrared/infrared_exercise1_result.png';
 import infrared_exercise2_result from '/img/instruments/videomancer/infrared/infrared_exercise2_result.png';
 import infrared_exercise3_result from '/img/instruments/videomancer/infrared/infrared_exercise3_result.png';
+import infrared_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source1_grayscale_ramp_h_1920x1080.png';
+import infrared_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source2_grayscale_ramp_v_1920x1080.png';
+import infrared_source3_step_wedge_21level_512 from '/img/instruments/videomancer/infrared/infrared_source3_step_wedge_21level_512.png';
 
 # Infrared
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={infrared_hero} alt="Infrared hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: infrared_source1_grayscale_ramp_h_1920x1080, after: infrared_hero },
+    { label: "Grayscale Ramp V", before: infrared_source2_grayscale_ramp_v_1920x1080, after: infrared_hero },
+    { label: "Step Wedge 21level", before: infrared_source3_step_wedge_21level_512, after: infrared_hero },
+  ]}
+/>
 *Infrared applying false-color thermal palette mapping to transform source luminance into ironbow and arctic color schemes with isotherm contour overlays.*
-<img src={infrared_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Infrared applied.*
 
 ---
 
@@ -197,7 +204,13 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 
 ### Exercise 1: Classic Thermal Camera
 
-<img src={infrared_exercise1_result} alt="Classic Thermal Camera result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: infrared_source1_grayscale_ramp_h_1920x1080, after: infrared_exercise1_result },
+    { label: "Grayscale Ramp V", before: infrared_source2_grayscale_ramp_v_1920x1080, after: infrared_exercise1_result },
+    { label: "Step Wedge 21level", before: infrared_source3_step_wedge_21level_512, after: infrared_exercise1_result },
+  ]}
+/>
 *Classic Thermal Camera — simulated result across source images.*
 **Source**: A portrait or figure against a mid-tone background. Face and hands provide natural "hot spots" against a cooler backdrop.
 
@@ -217,7 +230,13 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 
 ### Exercise 2: Inverted Arctic Scan
 
-<img src={infrared_exercise2_result} alt="Inverted Arctic Scan result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: infrared_source1_grayscale_ramp_h_1920x1080, after: infrared_exercise2_result },
+    { label: "Grayscale Ramp V", before: infrared_source2_grayscale_ramp_v_1920x1080, after: infrared_exercise2_result },
+    { label: "Step Wedge 21level", before: infrared_source3_step_wedge_21level_512, after: infrared_exercise2_result },
+  ]}
+/>
 *Inverted Arctic Scan — simulated result across source images.*
 **Source**: High-contrast geometric shapes — a checkerboard, barcode, or architectural scene with strong shadows and bright highlights.
 
@@ -237,7 +256,13 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 
 ### Exercise 3: Pastel Thermal Overlay
 
-<img src={infrared_exercise3_result} alt="Pastel Thermal Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: infrared_source1_grayscale_ramp_h_1920x1080, after: infrared_exercise3_result },
+    { label: "Grayscale Ramp V", before: infrared_source2_grayscale_ramp_v_1920x1080, after: infrared_exercise3_result },
+    { label: "Step Wedge 21level", before: infrared_source3_step_wedge_21level_512, after: infrared_exercise3_result },
+  ]}
+/>
 *Pastel Thermal Overlay — simulated result across source images.*
 **Source**: A slowly moving organic texture — clouds, water, or foliage with gentle brightness gradients.
 

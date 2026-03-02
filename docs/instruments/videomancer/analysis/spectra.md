@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 262
+sidebar_position: 263
 slug: /instruments/videomancer/spectra
 title: "Spectra"
 image: /img/instruments/videomancer/spectra/spectra_hero.png
 description: "Scientific instruments often visualize invisible phenomena by mapping measured values to color — thermal cameras paint heat as a spectrum from cool blue to hot white, weather radar maps rainfall intensity to a green-yellow-red gradient, and medical imaging uses false color to highlight tissue density."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import spectra_hero from '/img/instruments/videomancer/spectra/spectra_hero.png';
-import spectra_before_after from '/img/instruments/videomancer/spectra/spectra_before_after.png';
 import spectra_control_panel from '/img/instruments/videomancer/spectra/spectra_control_panel.png';
 import spectra_exercise1_result from '/img/instruments/videomancer/spectra/spectra_exercise1_result.png';
 import spectra_exercise2_result from '/img/instruments/videomancer/spectra/spectra_exercise2_result.png';
 import spectra_exercise3_result from '/img/instruments/videomancer/spectra/spectra_exercise3_result.png';
+import spectra_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/spectra/spectra_source1_grayscale_ramp_h_1920x1080.png';
+import spectra_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/spectra/spectra_source2_grayscale_ramp_v_1920x1080.png';
+import spectra_source3_step_wedge_21level_512 from '/img/instruments/videomancer/spectra/spectra_source3_step_wedge_21level_512.png';
 
 # Spectra
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={spectra_hero} alt="Spectra hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_hero },
+    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_hero },
+    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_hero },
+  ]}
+/>
 *Spectra decomposing video luminance into discrete spectral bands and false-coloring each zone with configurable rainbow, heat, cool, or earth palettes.*
-<img src={spectra_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Spectra applied.*
 
 ---
 
@@ -198,7 +205,13 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 ### Exercise 1: Thermal Camera
 
-<img src={spectra_exercise1_result} alt="Thermal Camera result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise1_result },
+    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise1_result },
+    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise1_result },
+  ]}
+/>
 *Thermal Camera — simulated result across source images.*
 **Source**: A scene with a wide range of brightness — a person against a bright window, or outdoor footage with sky, foliage, and shadows.
 
@@ -217,7 +230,13 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 ### Exercise 2: Topographic Map
 
-<img src={spectra_exercise2_result} alt="Topographic Map result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise2_result },
+    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise2_result },
+    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise2_result },
+  ]}
+/>
 *Topographic Map — simulated result across source images.*
 **Source**: A slowly moving camera across a textured surface — landscape, architecture, or a face.
 
@@ -237,7 +256,13 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 ### Exercise 3: Chroma Analysis with Overlay
 
-<img src={spectra_exercise3_result} alt="Chroma Analysis with Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise3_result },
+    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise3_result },
+    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise3_result },
+  ]}
+/>
 *Chroma Analysis with Overlay — simulated result across source images.*
 **Source**: Footage with strong, varied colors — a color chart, fruit market, or painted mural.
 

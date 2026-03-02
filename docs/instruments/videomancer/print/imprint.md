@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/imprint/imprint_hero.png
 description: "Every printed photograph in a newspaper, magazine, or book is an illusion."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import imprint_hero from '/img/instruments/videomancer/imprint/imprint_hero.png';
-import imprint_before_after from '/img/instruments/videomancer/imprint/imprint_before_after.png';
 import imprint_control_panel from '/img/instruments/videomancer/imprint/imprint_control_panel.png';
 import imprint_exercise1_result from '/img/instruments/videomancer/imprint/imprint_exercise1_result.png';
 import imprint_exercise2_result from '/img/instruments/videomancer/imprint/imprint_exercise2_result.png';
 import imprint_exercise3_result from '/img/instruments/videomancer/imprint/imprint_exercise3_result.png';
+import imprint_source1_kodim02 from '/img/instruments/videomancer/imprint/imprint_source1_kodim02.png';
+import imprint_source2_kodim07 from '/img/instruments/videomancer/imprint/imprint_source2_kodim07.png';
+import imprint_source3_kodim01_bw from '/img/instruments/videomancer/imprint/imprint_source3_kodim01_bw.png';
 
 # Imprint
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={imprint_hero} alt="Imprint hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_hero },
+    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_hero },
+    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_hero },
+  ]}
+/>
 *Imprint rendering CMYK halftone dot screens with rotated color separations and subtractive ink composite over a warm paper background.*
-<img src={imprint_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Imprint applied.*
 
 ---
 
@@ -218,7 +225,13 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 ### Exercise 1: Newspaper Halftone
 
-<img src={imprint_exercise1_result} alt="Newspaper Halftone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise1_result },
+    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise1_result },
+    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise1_result },
+  ]}
+/>
 *Newspaper Halftone — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable faces and moderate contrast.
 
@@ -237,7 +250,13 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 ### Exercise 2: Color Separation Rosettes
 
-<img src={imprint_exercise2_result} alt="Color Separation Rosettes result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise2_result },
+    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise2_result },
+    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise2_result },
+  ]}
+/>
 *Color Separation Rosettes — simulated result across source images.*
 **Source**: Colorful footage — flowers, fruit, painted surfaces, or color bars.
 
@@ -256,7 +275,13 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 ### Exercise 3: Engraved Line Print
 
-<img src={imprint_exercise3_result} alt="Engraved Line Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise3_result },
+    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise3_result },
+    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise3_result },
+  ]}
+/>
 *Engraved Line Print — simulated result across source images.*
 **Source**: High-contrast footage — architectural details, text overlays, or strong geometric content.
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 256
+sidebar_position: 257
 slug: /instruments/videomancer/sinescroll
 title: "Sinescroll"
 image: /img/instruments/videomancer/sinescroll/sinescroll_hero.png

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 273
+sidebar_position: 274
 slug: /instruments/videomancer/stochasm
 title: "Stochasm"
 image: /img/instruments/videomancer/stochasm/stochasm_hero.png
 description: "In most signal processing contexts, noise is the enemy — an unwanted corruption that obscures the signal you are trying to preserve."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stochasm_hero from '/img/instruments/videomancer/stochasm/stochasm_hero.png';
-import stochasm_before_after from '/img/instruments/videomancer/stochasm/stochasm_before_after.png';
 import stochasm_control_panel from '/img/instruments/videomancer/stochasm/stochasm_control_panel.png';
 import stochasm_exercise1_result from '/img/instruments/videomancer/stochasm/stochasm_exercise1_result.png';
 import stochasm_exercise2_result from '/img/instruments/videomancer/stochasm/stochasm_exercise2_result.png';
 import stochasm_exercise3_result from '/img/instruments/videomancer/stochasm/stochasm_exercise3_result.png';
+import stochasm_source1_kodim15 from '/img/instruments/videomancer/stochasm/stochasm_source1_kodim15.png';
+import stochasm_source2_kodim01 from '/img/instruments/videomancer/stochasm/stochasm_source2_kodim01.png';
+import stochasm_source3_stream_bridge_512 from '/img/instruments/videomancer/stochasm/stochasm_source3_stream_bridge_512.png';
 
 # Stochasm
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stochasm_hero} alt="Stochasm hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_hero },
+    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_hero },
+    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_hero },
+  ]}
+/>
 *Stochasm applying multi-stage stochastic resonance to extract sub-threshold signal features through controlled noise injection.*
-<img src={stochasm_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stochasm applied.*
 
 ---
 
@@ -210,7 +217,13 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 ### Exercise 1: Single-Stage Threshold
 
-<img src={stochasm_exercise1_result} alt="Single-Stage Threshold result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise1_result },
+    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise1_result },
+    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise1_result },
+  ]}
+/>
 *Single-Stage Threshold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — sky, skin tones, or gradient test patterns.
 
@@ -227,7 +240,13 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 ### Exercise 2: Multi-Stage Quantisation
 
-<img src={stochasm_exercise2_result} alt="Multi-Stage Quantisation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise2_result },
+    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise2_result },
+    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise2_result },
+  ]}
+/>
 *Multi-Stage Quantisation — simulated result across source images.*
 **Source**: Footage with a wide dynamic range — outdoor scenes with highlights and shadows, or a greyscale ramp test pattern.
 
@@ -245,7 +264,13 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 ### Exercise 3: Stochastic Texture Synthesis
 
-<img src={stochasm_exercise3_result} alt="Stochastic Texture Synthesis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise3_result },
+    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise3_result },
+    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise3_result },
+  ]}
+/>
 *Stochastic Texture Synthesis — simulated result across source images.*
 **Source**: Any footage, especially material with subtle tonal variations — underwater footage, cloud formations, or fabric textures.
 

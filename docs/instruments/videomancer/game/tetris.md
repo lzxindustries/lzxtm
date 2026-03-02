@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 288
+sidebar_position: 289
 slug: /instruments/videomancer/tetris
 title: "Tetris"
 image: /img/instruments/videomancer/tetris/tetris_hero.png

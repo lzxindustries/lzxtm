@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/bobbin/bobbin_hero.png
 description: "Bobbin draws a mesh of woven threads across the video image, simulating the look of pillow-lace fabric stretched over a monitor."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bobbin_hero from '/img/instruments/videomancer/bobbin/bobbin_hero.png';
-import bobbin_before_after from '/img/instruments/videomancer/bobbin/bobbin_before_after.png';
 import bobbin_control_panel from '/img/instruments/videomancer/bobbin/bobbin_control_panel.png';
 import bobbin_exercise1_result from '/img/instruments/videomancer/bobbin/bobbin_exercise1_result.png';
 import bobbin_exercise2_result from '/img/instruments/videomancer/bobbin/bobbin_exercise2_result.png';
 import bobbin_exercise3_result from '/img/instruments/videomancer/bobbin/bobbin_exercise3_result.png';
+import bobbin_source1_kodim15 from '/img/instruments/videomancer/bobbin/bobbin_source1_kodim15.png';
+import bobbin_source2_kodim03 from '/img/instruments/videomancer/bobbin/bobbin_source2_kodim03.png';
+import bobbin_source3_kodim13_bw from '/img/instruments/videomancer/bobbin/bobbin_source3_kodim13_bw.png';
 
 # Bobbin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bobbin_hero} alt="Bobbin hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bobbin_source1_kodim15, after: bobbin_hero },
+    { label: "Kodim03", before: bobbin_source2_kodim03, after: bobbin_hero },
+    { label: "Kodim13 B&W", before: bobbin_source3_kodim13_bw, after: bobbin_hero },
+  ]}
+/>
 *Bobbin rendering a diamond-mesh lace overlay with luminance-darkened thread curves composited over a live video source.*
-<img src={bobbin_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bobbin applied.*
 
 ---
 
@@ -197,7 +204,13 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 ### Exercise 1: Static Diamond Mesh
 
-<img src={bobbin_exercise1_result} alt="Static Diamond Mesh result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bobbin_source1_kodim15, after: bobbin_exercise1_result },
+    { label: "Kodim03", before: bobbin_source2_kodim03, after: bobbin_exercise1_result },
+    { label: "Kodim13 B&W", before: bobbin_source3_kodim13_bw, after: bobbin_exercise1_result },
+  ]}
+/>
 *Static Diamond Mesh — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
@@ -215,7 +228,13 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 ### Exercise 2: Hex Mesh with Solid Fill
 
-<img src={bobbin_exercise2_result} alt="Hex Mesh with Solid Fill result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bobbin_source1_kodim15, after: bobbin_exercise2_result },
+    { label: "Kodim03", before: bobbin_source2_kodim03, after: bobbin_exercise2_result },
+    { label: "Kodim13 B&W", before: bobbin_source3_kodim13_bw, after: bobbin_exercise2_result },
+  ]}
+/>
 *Hex Mesh with Solid Fill — simulated result across source images.*
 **Source**: Footage with strong horizontal and vertical elements — architecture, window frames, bookshelves.
 
@@ -233,7 +252,13 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 ### Exercise 3: Animated Colored Lace
 
-<img src={bobbin_exercise3_result} alt="Animated Colored Lace result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bobbin_source1_kodim15, after: bobbin_exercise3_result },
+    { label: "Kodim03", before: bobbin_source2_kodim03, after: bobbin_exercise3_result },
+    { label: "Kodim13 B&W", before: bobbin_source3_kodim13_bw, after: bobbin_exercise3_result },
+  ]}
+/>
 *Animated Colored Lace — simulated result across source images.*
 **Source**: Slow-moving or static footage — landscapes, still lifes, or a fixed camera shot.
 

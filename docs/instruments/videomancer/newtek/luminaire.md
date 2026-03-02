@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/luminaire/luminaire_hero.png
 description: "Every stage production needs a spotlight."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import luminaire_hero from '/img/instruments/videomancer/luminaire/luminaire_hero.png';
-import luminaire_before_after from '/img/instruments/videomancer/luminaire/luminaire_before_after.png';
 import luminaire_control_panel from '/img/instruments/videomancer/luminaire/luminaire_control_panel.png';
 import luminaire_exercise1_result from '/img/instruments/videomancer/luminaire/luminaire_exercise1_result.png';
 import luminaire_exercise2_result from '/img/instruments/videomancer/luminaire/luminaire_exercise2_result.png';
 import luminaire_exercise3_result from '/img/instruments/videomancer/luminaire/luminaire_exercise3_result.png';
+import luminaire_source1_kodim15 from '/img/instruments/videomancer/luminaire/luminaire_source1_kodim15.png';
+import luminaire_source2_kodim03 from '/img/instruments/videomancer/luminaire/luminaire_source2_kodim03.png';
+import luminaire_source3_kodim13_bw from '/img/instruments/videomancer/luminaire/luminaire_source3_kodim13_bw.png';
 
 # Luminaire
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={luminaire_hero} alt="Luminaire hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_hero },
+    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_hero },
+    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_hero },
+  ]}
+/>
 *Luminaire casting a warm radial glow across the video frame, simulating a stage spotlight with adjustable position and intensity.*
-<img src={luminaire_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Luminaire applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 ### Exercise 1: Spotlight Placement
 
-<img src={luminaire_exercise1_result} alt="Spotlight Placement result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise1_result },
+    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise1_result },
+    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise1_result },
+  ]}
+/>
 *Spotlight Placement — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a clearly identifiable subject — a person, an object, or a defined scene.
 
@@ -233,7 +246,13 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 ### Exercise 2: Warm and Cool Stage Lighting
 
-<img src={luminaire_exercise2_result} alt="Warm and Cool Stage Lighting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise2_result },
+    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise2_result },
+    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise2_result },
+  ]}
+/>
 *Warm and Cool Stage Lighting — simulated result across source images.*
 **Source**: A scene with neutral or mixed colors — skin tones, fabric, or architecture work well to show the color tint.
 
@@ -251,7 +270,13 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 ### Exercise 3: Flickering Light Source
 
-<img src={luminaire_exercise3_result} alt="Flickering Light Source result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise3_result },
+    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise3_result },
+    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise3_result },
+  ]}
+/>
 *Flickering Light Source — simulated result across source images.*
 **Source**: Dark or moody footage — a dimly lit scene accentuates the flicker effect.
 

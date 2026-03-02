@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/defocus/defocus_hero.png
 description: "Every camera lens has a focal plane — a thin slice of space where objects are rendered sharp."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import defocus_hero from '/img/instruments/videomancer/defocus/defocus_hero.png';
-import defocus_before_after from '/img/instruments/videomancer/defocus/defocus_before_after.png';
 import defocus_control_panel from '/img/instruments/videomancer/defocus/defocus_control_panel.png';
 import defocus_exercise1_result from '/img/instruments/videomancer/defocus/defocus_exercise1_result.png';
 import defocus_exercise2_result from '/img/instruments/videomancer/defocus/defocus_exercise2_result.png';
 import defocus_exercise3_result from '/img/instruments/videomancer/defocus/defocus_exercise3_result.png';
+import defocus_source1_kodim15 from '/img/instruments/videomancer/defocus/defocus_source1_kodim15.png';
+import defocus_source2_kodim15_bw from '/img/instruments/videomancer/defocus/defocus_source2_kodim15_bw.png';
+import defocus_source3_male_1024 from '/img/instruments/videomancer/defocus/defocus_source3_male_1024.png';
 
 # Defocus
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={defocus_hero} alt="Defocus hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: defocus_source1_kodim15, after: defocus_hero },
+    { label: "Kodim15 B&W", before: defocus_source2_kodim15_bw, after: defocus_hero },
+    { label: "Male", before: defocus_source3_male_1024, after: defocus_hero },
+  ]}
+/>
 *Defocus dissolving a busy scene into soft luminous pools of color with glow highlights bleeding across the frame.*
-<img src={defocus_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Defocus applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These three exercises progress from basic soft focus through vertical blur and g
 
 ### Exercise 1: Soft Focus Diffusion
 
-<img src={defocus_exercise1_result} alt="Soft Focus Diffusion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: defocus_source1_kodim15, after: defocus_exercise1_result },
+    { label: "Kodim15 B&W", before: defocus_source2_kodim15_bw, after: defocus_exercise1_result },
+    { label: "Male", before: defocus_source3_male_1024, after: defocus_exercise1_result },
+  ]}
+/>
 *Soft Focus Diffusion — simulated result across source images.*
 **Source**: A live camera feed with a well-lit subject — portraits or detailed textures work best.
 
@@ -227,7 +240,13 @@ These three exercises progress from basic soft focus through vertical blur and g
 
 ### Exercise 2: Directional Blur with Glow
 
-<img src={defocus_exercise2_result} alt="Directional Blur with Glow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: defocus_source1_kodim15, after: defocus_exercise2_result },
+    { label: "Kodim15 B&W", before: defocus_source2_kodim15_bw, after: defocus_exercise2_result },
+    { label: "Male", before: defocus_source3_male_1024, after: defocus_exercise2_result },
+  ]}
+/>
 *Directional Blur with Glow — simulated result across source images.*
 **Source**: Footage with bright highlights against a darker background — candles, stage lighting, or reflections on water.
 
@@ -247,7 +266,13 @@ These three exercises progress from basic soft focus through vertical blur and g
 
 ### Exercise 3: Animated Focus Rack
 
-<img src={defocus_exercise3_result} alt="Animated Focus Rack result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: defocus_source1_kodim15, after: defocus_exercise3_result },
+    { label: "Kodim15 B&W", before: defocus_source2_kodim15_bw, after: defocus_exercise3_result },
+    { label: "Male", before: defocus_source3_male_1024, after: defocus_exercise3_result },
+  ]}
+/>
 *Animated Focus Rack — simulated result across source images.*
 **Source**: A scene with multiple subjects at different visual distances — a foreground object and a background environment.
 

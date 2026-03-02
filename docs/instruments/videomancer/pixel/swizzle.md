@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 277
+sidebar_position: 278
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
 image: /img/instruments/videomancer/swizzle/swizzle_hero.png
 description: "Every pixel in the Videomancer video pipeline is a triplet of numbers — luminance (Y), and two chrominance components (U and V)."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import swizzle_hero from '/img/instruments/videomancer/swizzle/swizzle_hero.png';
-import swizzle_before_after from '/img/instruments/videomancer/swizzle/swizzle_before_after.png';
 import swizzle_control_panel from '/img/instruments/videomancer/swizzle/swizzle_control_panel.png';
 import swizzle_exercise1_result from '/img/instruments/videomancer/swizzle/swizzle_exercise1_result.png';
 import swizzle_exercise2_result from '/img/instruments/videomancer/swizzle/swizzle_exercise2_result.png';
 import swizzle_exercise3_result from '/img/instruments/videomancer/swizzle/swizzle_exercise3_result.png';
+import swizzle_source1_kodim02 from '/img/instruments/videomancer/swizzle/swizzle_source1_kodim02.png';
+import swizzle_source2_kodim07 from '/img/instruments/videomancer/swizzle/swizzle_source2_kodim07.png';
+import swizzle_source3_kodim01_bw from '/img/instruments/videomancer/swizzle/swizzle_source3_kodim01_bw.png';
 
 # Swizzle
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={swizzle_hero} alt="Swizzle hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_hero },
+    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_hero },
+    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_hero },
+  ]}
+/>
 *Swizzle reordering and offsetting YUV channels to shift hues and reveal the hidden color structure of video signals.*
-<img src={swizzle_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Swizzle applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 ### Exercise 1: Chroma Offset Color Wash
 
-<img src={swizzle_exercise1_result} alt="Chroma Offset Color Wash result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise1_result },
+    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise1_result },
+    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise1_result },
+  ]}
+/>
 *Chroma Offset Color Wash — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with natural colors (skin tones, foliage, sky).
 
@@ -227,7 +240,13 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 ### Exercise 2: Channel Swap and Inversion
 
-<img src={swizzle_exercise2_result} alt="Channel Swap and Inversion result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise2_result },
+    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise2_result },
+    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise2_result },
+  ]}
+/>
 *Channel Swap and Inversion — simulated result across source images.*
 **Source**: Footage with strong color contrast — flowers, neon signs, or color bars.
 
@@ -245,7 +264,13 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 ### Exercise 3: Subtle Color Grading with Mix
 
-<img src={swizzle_exercise3_result} alt="Subtle Color Grading with Mix result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise3_result },
+    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise3_result },
+    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise3_result },
+  ]}
+/>
 *Subtle Color Grading with Mix — simulated result across source images.*
 **Source**: Cinematic footage or any material where subtle color grading is appropriate.
 

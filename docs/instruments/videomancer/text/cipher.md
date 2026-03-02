@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cipher/cipher_hero.png
 description: "Every pixel in a digital video frame is a number."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cipher_hero from '/img/instruments/videomancer/cipher/cipher_hero.png';
-import cipher_before_after from '/img/instruments/videomancer/cipher/cipher_before_after.png';
 import cipher_control_panel from '/img/instruments/videomancer/cipher/cipher_control_panel.png';
 import cipher_exercise1_result from '/img/instruments/videomancer/cipher/cipher_exercise1_result.png';
 import cipher_exercise2_result from '/img/instruments/videomancer/cipher/cipher_exercise2_result.png';
 import cipher_exercise3_result from '/img/instruments/videomancer/cipher/cipher_exercise3_result.png';
+import cipher_source1_kodim15 from '/img/instruments/videomancer/cipher/cipher_source1_kodim15.png';
+import cipher_source2_kodim15_bw from '/img/instruments/videomancer/cipher/cipher_source2_kodim15_bw.png';
+import cipher_source3_male_1024 from '/img/instruments/videomancer/cipher/cipher_source3_male_1024.png';
 
 # Cipher
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cipher_hero} alt="Cipher hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cipher_source1_kodim15, after: cipher_hero },
+    { label: "Kodim15 B&W", before: cipher_source2_kodim15_bw, after: cipher_hero },
+    { label: "Male", before: cipher_source3_male_1024, after: cipher_hero },
+  ]}
+/>
 *Cipher applying LFSR-driven XOR scrambling with position-dependent channel permutation across a multi-source composite.*
-<img src={cipher_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cipher applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from basic XOR noise through channel permutation to com
 
 ### Exercise 1: XOR Keystream Noise
 
-<img src={cipher_exercise1_result} alt="XOR Keystream Noise result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cipher_source1_kodim15, after: cipher_exercise1_result },
+    { label: "Kodim15 B&W", before: cipher_source2_kodim15_bw, after: cipher_exercise1_result },
+    { label: "Male", before: cipher_source3_male_1024, after: cipher_exercise1_result },
+  ]}
+/>
 *XOR Keystream Noise — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject matter and moderate contrast.
 
@@ -230,7 +243,13 @@ These exercises progress from basic XOR noise through channel permutation to com
 
 ### Exercise 2: Channel Permutation Mosaics
 
-<img src={cipher_exercise2_result} alt="Channel Permutation Mosaics result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cipher_source1_kodim15, after: cipher_exercise2_result },
+    { label: "Kodim15 B&W", before: cipher_source2_kodim15_bw, after: cipher_exercise2_result },
+    { label: "Male", before: cipher_source3_male_1024, after: cipher_exercise2_result },
+  ]}
+/>
 *Channel Permutation Mosaics — simulated result across source images.*
 **Source**: Footage with strong color contrast — the macaw image or similar with distinct saturated regions.
 
@@ -248,7 +267,13 @@ These exercises progress from basic XOR noise through channel permutation to com
 
 ### Exercise 3: Compound Rotation and Feedback
 
-<img src={cipher_exercise3_result} alt="Compound Rotation and Feedback result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cipher_source1_kodim15, after: cipher_exercise3_result },
+    { label: "Kodim15 B&W", before: cipher_source2_kodim15_bw, after: cipher_exercise3_result },
+    { label: "Male", before: cipher_source3_male_1024, after: cipher_exercise3_result },
+  ]}
+/>
 *Compound Rotation and Feedback — simulated result across source images.*
 **Source**: High-contrast footage or graphic patterns — test bars, geometric shapes, or text.
 

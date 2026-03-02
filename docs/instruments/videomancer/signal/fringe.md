@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/fringe/fringe_hero.png
 description: "Before the era of component video and digital interfaces, nearly all consumer video passed through a single wire — the composite cable."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fringe_hero from '/img/instruments/videomancer/fringe/fringe_hero.png';
-import fringe_before_after from '/img/instruments/videomancer/fringe/fringe_before_after.png';
 import fringe_control_panel from '/img/instruments/videomancer/fringe/fringe_control_panel.png';
 import fringe_exercise1_result from '/img/instruments/videomancer/fringe/fringe_exercise1_result.png';
 import fringe_exercise2_result from '/img/instruments/videomancer/fringe/fringe_exercise2_result.png';
 import fringe_exercise3_result from '/img/instruments/videomancer/fringe/fringe_exercise3_result.png';
+import fringe_source1_kodim15 from '/img/instruments/videomancer/fringe/fringe_source1_kodim15.png';
+import fringe_source2_kodim01 from '/img/instruments/videomancer/fringe/fringe_source2_kodim01.png';
+import fringe_source3_stream_bridge_512 from '/img/instruments/videomancer/fringe/fringe_source3_stream_bridge_512.png';
 
 # Fringe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={fringe_hero} alt="Fringe hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_hero },
+    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_hero },
+    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_hero },
+  ]}
+/>
 *Fringe rendering vivid rainbow moire and chroma smear across a colour-bar test pattern, the simulated NTSC composite artifacts blooming false colour from every vertical transition.*
-<img src={fringe_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Fringe applied.*
 
 ---
 
@@ -231,7 +238,13 @@ These three exercises progressively explore the composite artifact space — fro
 
 ### Exercise 1: Composite Fringing on Colour Bars
 
-<img src={fringe_exercise1_result} alt="Composite Fringing on Colour Bars result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise1_result },
+    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise1_result },
+    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise1_result },
+  ]}
+/>
 *Composite Fringing on Colour Bars — simulated result across source images.*
 **Source**: Colour bar test pattern or any source with sharp vertical colour transitions — SMPTE bars, vertical stripes, or high-contrast graphics.
 
@@ -251,7 +264,13 @@ These three exercises progressively explore the composite artifact space — fro
 
 ### Exercise 2: Dot Crawl and Comb Filter Exploration
 
-<img src={fringe_exercise2_result} alt="Dot Crawl and Comb Filter Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise2_result },
+    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise2_result },
+    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise2_result },
+  ]}
+/>
 *Dot Crawl and Comb Filter Exploration — simulated result across source images.*
 **Source**: Graphic with large areas of flat colour separated by clean horizontal or diagonal edges — cartoon or anime footage works well, as does a simple two-colour split-screen.
 
@@ -270,7 +289,13 @@ These three exercises progressively explore the composite artifact space — fro
 
 ### Exercise 3: CGA Artifact Colour Laboratory
 
-<img src={fringe_exercise3_result} alt="CGA Artifact Colour Laboratory result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise3_result },
+    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise3_result },
+    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise3_result },
+  ]}
+/>
 *CGA Artifact Colour Laboratory — simulated result across source images.*
 **Source**: High-contrast monochrome source — black and white text, geometric line patterns, dithered pixel art, or checkerboard test pattern.
 

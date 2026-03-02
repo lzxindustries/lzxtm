@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/inertia/inertia_hero.png
 description: "Most Videomancer programs give you direct control — turn a knob, the image changes proportionally."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import inertia_hero from '/img/instruments/videomancer/inertia/inertia_hero.png';
-import inertia_before_after from '/img/instruments/videomancer/inertia/inertia_before_after.png';
 import inertia_control_panel from '/img/instruments/videomancer/inertia/inertia_control_panel.png';
 import inertia_exercise1_result from '/img/instruments/videomancer/inertia/inertia_exercise1_result.png';
 import inertia_exercise2_result from '/img/instruments/videomancer/inertia/inertia_exercise2_result.png';
 import inertia_exercise3_result from '/img/instruments/videomancer/inertia/inertia_exercise3_result.png';
+import inertia_source1_kodim15 from '/img/instruments/videomancer/inertia/inertia_source1_kodim15.png';
+import inertia_source2_kodim01 from '/img/instruments/videomancer/inertia/inertia_source2_kodim01.png';
+import inertia_source3_kodim01_bw from '/img/instruments/videomancer/inertia/inertia_source3_kodim01_bw.png';
 
 # Inertia
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={inertia_hero} alt="Inertia hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_hero },
+    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_hero },
+    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_hero },
+  ]}
+/>
 *Inertia applying momentum-driven pixelation drift to a colorful video source, with blocks sliding and zooming under accumulated velocity.*
-<img src={inertia_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Inertia applied.*
 
 ---
 
@@ -194,7 +201,13 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 ### Exercise 1: Horizontal Drift
 
-<img src={inertia_exercise1_result} alt="Horizontal Drift result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise1_result },
+    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise1_result },
+    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise1_result },
+  ]}
+/>
 *Horizontal Drift — simulated result across source images.*
 **Source**: A camera feed with strong vertical features — columns, doorways, or vertical stripes.
 
@@ -212,7 +225,13 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 ### Exercise 2: Bounce and Zoom
 
-<img src={inertia_exercise2_result} alt="Bounce and Zoom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise2_result },
+    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise2_result },
+    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise2_result },
+  ]}
+/>
 *Bounce and Zoom — simulated result across source images.*
 **Source**: A static test pattern or graphic with both fine and coarse detail.
 
@@ -230,7 +249,13 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 ### Exercise 3: Full Momentum Chaos
 
-<img src={inertia_exercise3_result} alt="Full Momentum Chaos result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise3_result },
+    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise3_result },
+    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise3_result },
+  ]}
+/>
 *Full Momentum Chaos — simulated result across source images.*
 **Source**: Any dynamic video footage, especially with movement and color variation.
 

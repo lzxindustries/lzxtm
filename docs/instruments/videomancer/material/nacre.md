@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 191
+sidebar_position: 192
 slug: /instruments/videomancer/nacre
 title: "Nacre"
 image: /img/instruments/videomancer/nacre/nacre_hero.png
 description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets its color not from pigment but from thin-film interference — light waves reflecting off microscopic layers of aragonite, interfering constructively and destructively so that the apparent hue shifts with viewing angle and position."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import nacre_hero from '/img/instruments/videomancer/nacre/nacre_hero.png';
-import nacre_before_after from '/img/instruments/videomancer/nacre/nacre_before_after.png';
 import nacre_control_panel from '/img/instruments/videomancer/nacre/nacre_control_panel.png';
 import nacre_exercise1_result from '/img/instruments/videomancer/nacre/nacre_exercise1_result.png';
 import nacre_exercise2_result from '/img/instruments/videomancer/nacre/nacre_exercise2_result.png';
 import nacre_exercise3_result from '/img/instruments/videomancer/nacre/nacre_exercise3_result.png';
+import nacre_source1_kodim15 from '/img/instruments/videomancer/nacre/nacre_source1_kodim15.png';
+import nacre_source2_kodim03 from '/img/instruments/videomancer/nacre/nacre_source2_kodim03.png';
+import nacre_source3_kodim13_bw from '/img/instruments/videomancer/nacre/nacre_source3_kodim13_bw.png';
 
 # Nacre
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={nacre_hero} alt="Nacre hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_hero },
+    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_hero },
+    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_hero },
+  ]}
+/>
 *Nacre applying position-dependent hue rotation and pearlescent shimmer to create thin-film iridescence across the video signal.*
-<img src={nacre_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Nacre applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 ### Exercise 1: Diagonal Rainbow Bands
 
-<img src={nacre_exercise1_result} alt="Diagonal Rainbow Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise1_result },
+    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise1_result },
+    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise1_result },
+  ]}
+/>
 *Diagonal Rainbow Bands — simulated result across source images.*
 **Source**: A monochrome or desaturated camera feed — gray surfaces, concrete, skin, or fabric with subtle tonal variation.
 
@@ -230,7 +243,13 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 ### Exercise 2: Animated Pearlescent Shimmer
 
-<img src={nacre_exercise2_result} alt="Animated Pearlescent Shimmer result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise2_result },
+    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise2_result },
+    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise2_result },
+  ]}
+/>
 *Animated Pearlescent Shimmer — simulated result across source images.*
 **Source**: Smooth-toned footage with broad tonal gradations — clouds, water surfaces, flowing fabric.
 
@@ -249,7 +268,13 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 ### Exercise 3: Radial Diamond Iridescence
 
-<img src={nacre_exercise3_result} alt="Radial Diamond Iridescence result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise3_result },
+    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise3_result },
+    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise3_result },
+  ]}
+/>
 *Radial Diamond Iridescence — simulated result across source images.*
 **Source**: A centered, high-contrast subject — a face, a flower, a circular object against a dark background.
 

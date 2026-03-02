@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/bijou/bijou_hero.png
 description: "Bijou recreates two foundational visual techniques of silent cinema: the iris mask and the title card frame."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bijou_hero from '/img/instruments/videomancer/bijou/bijou_hero.png';
-import bijou_before_after from '/img/instruments/videomancer/bijou/bijou_before_after.png';
 import bijou_control_panel from '/img/instruments/videomancer/bijou/bijou_control_panel.png';
 import bijou_exercise1_result from '/img/instruments/videomancer/bijou/bijou_exercise1_result.png';
 import bijou_exercise2_result from '/img/instruments/videomancer/bijou/bijou_exercise2_result.png';
 import bijou_exercise3_result from '/img/instruments/videomancer/bijou/bijou_exercise3_result.png';
+import bijou_source1_kodim03 from '/img/instruments/videomancer/bijou/bijou_source1_kodim03.png';
+import bijou_source2_kodim13 from '/img/instruments/videomancer/bijou/bijou_source2_kodim13.png';
+import bijou_source3_kodim13_bw from '/img/instruments/videomancer/bijou/bijou_source3_kodim13_bw.png';
 
 # Bijou
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bijou_hero} alt="Bijou hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_hero },
+    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_hero },
+    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_hero },
+  ]}
+/>
 *A feathered circular iris carves a silent-cinema spotlight from a portrait, its sepia-tinted surround fading to black at the edges of the frame.*
-<img src={bijou_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bijou applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 ### Exercise 1: Classic Iris Spotlight
 
-<img src={bijou_exercise1_result} alt="Classic Iris Spotlight result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise1_result },
+    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise1_result },
+    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise1_result },
+  ]}
+/>
 *Classic Iris Spotlight — simulated result across source images.*
 **Source**: A portrait or scene with a clear subject.
 
@@ -233,7 +246,13 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 ### Exercise 2: Shape Exploration
 
-<img src={bijou_exercise2_result} alt="Shape Exploration result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise2_result },
+    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise2_result },
+    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise2_result },
+  ]}
+/>
 *Shape Exploration — simulated result across source images.*
 **Source**: A colourful scene with strong composition.
 
@@ -252,7 +271,13 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 ### Exercise 3: Title Card Frame
 
-<img src={bijou_exercise3_result} alt="Title Card Frame result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise3_result },
+    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise3_result },
+    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise3_result },
+  ]}
+/>
 *Title Card Frame — simulated result across source images.*
 **Source**: Any video — the border frame works as an overlay on any content.
 

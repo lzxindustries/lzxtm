@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 194
+sidebar_position: 195
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
 image: /img/instruments/videomancer/nightshot/nightshot_hero.png
 description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — a mode that disabled the infrared cut filter and boosted CCD gain, producing the distinctive green-tinted night vision imagery that became a cultural icon of late-90s camcorder footage."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import nightshot_hero from '/img/instruments/videomancer/nightshot/nightshot_hero.png';
-import nightshot_before_after from '/img/instruments/videomancer/nightshot/nightshot_before_after.png';
 import nightshot_control_panel from '/img/instruments/videomancer/nightshot/nightshot_control_panel.png';
 import nightshot_exercise1_result from '/img/instruments/videomancer/nightshot/nightshot_exercise1_result.png';
 import nightshot_exercise2_result from '/img/instruments/videomancer/nightshot/nightshot_exercise2_result.png';
 import nightshot_exercise3_result from '/img/instruments/videomancer/nightshot/nightshot_exercise3_result.png';
+import nightshot_source1_kodim05 from '/img/instruments/videomancer/nightshot/nightshot_source1_kodim05.png';
+import nightshot_source2_kodim15 from '/img/instruments/videomancer/nightshot/nightshot_source2_kodim15.png';
+import nightshot_source3_kodim15_bw from '/img/instruments/videomancer/nightshot/nightshot_source3_kodim15_bw.png';
 
 # Nightshot
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={nightshot_hero} alt="Nightshot hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_hero },
+    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_hero },
+    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_hero },
+  ]}
+/>
 *Nightshot rendering infrared-style green phosphor night vision with gain boost, noise grain, horizontal bloom, and auto-gain pumping across the video signal.*
-<img src={nightshot_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Nightshot applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 ### Exercise 1: Basic Green Night Vision
 
-<img src={nightshot_exercise1_result} alt="Basic Green Night Vision result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise1_result },
+    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise1_result },
+    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise1_result },
+  ]}
+/>
 *Basic Green Night Vision — simulated result across source images.*
 **Source**: A moderately lit camera feed — indoor scene, face, or room with visible shadow areas.
 
@@ -224,7 +237,13 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 ### Exercise 2: Noisy Surveillance with Bloom
 
-<img src={nightshot_exercise2_result} alt="Noisy Surveillance with Bloom result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise2_result },
+    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise2_result },
+    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise2_result },
+  ]}
+/>
 *Noisy Surveillance with Bloom — simulated result across source images.*
 **Source**: A dark scene — dimly lit hallway, nighttime exterior, or underexposed footage.
 
@@ -243,7 +262,13 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 ### Exercise 3: Full NightShot with AGC Hunting
 
-<img src={nightshot_exercise3_result} alt="Full NightShot with AGC Hunting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise3_result },
+    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise3_result },
+    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise3_result },
+  ]}
+/>
 *Full NightShot with AGC Hunting — simulated result across source images.*
 **Source**: A moving subject in mixed lighting — hand-held camera footage, a person walking through light and shadow.
 

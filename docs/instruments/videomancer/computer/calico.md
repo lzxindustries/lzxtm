@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/calico/calico_hero.png
 description: "The Commodore Amiga's HAM (Hold-And-Modify) display mode was one of the most ingenious compromises in the history of computer graphics."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import calico_hero from '/img/instruments/videomancer/calico/calico_hero.png';
-import calico_before_after from '/img/instruments/videomancer/calico/calico_before_after.png';
 import calico_control_panel from '/img/instruments/videomancer/calico/calico_control_panel.png';
 import calico_exercise1_result from '/img/instruments/videomancer/calico/calico_exercise1_result.png';
 import calico_exercise2_result from '/img/instruments/videomancer/calico/calico_exercise2_result.png';
 import calico_exercise3_result from '/img/instruments/videomancer/calico/calico_exercise3_result.png';
+import calico_source1_kodim15 from '/img/instruments/videomancer/calico/calico_source1_kodim15.png';
+import calico_source2_kodim03 from '/img/instruments/videomancer/calico/calico_source2_kodim03.png';
+import calico_source3_kodim15_bw from '/img/instruments/videomancer/calico/calico_source3_kodim15_bw.png';
 
 # Calico
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={calico_hero} alt="Calico hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: calico_source1_kodim15, after: calico_hero },
+    { label: "Kodim03", before: calico_source2_kodim03, after: calico_hero },
+    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_hero },
+  ]}
+/>
 *Calico rendering a portrait through Amiga HAM6 encoding with the Workbench palette, producing characteristic horizontal color fringing at every sharp edge.*
-<img src={calico_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Calico applied.*
 
 ---
 
@@ -221,7 +228,13 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 ### Exercise 1: Palette Character
 
-<img src={calico_exercise1_result} alt="Palette Character result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise1_result },
+    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise1_result },
+    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise1_result },
+  ]}
+/>
 *Palette Character — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied colors — faces, clothing, backgrounds.
 
@@ -239,7 +252,13 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 ### Exercise 2: Fringing and Direction
 
-<img src={calico_exercise2_result} alt="Fringing and Direction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise2_result },
+    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise2_result },
+    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise2_result },
+  ]}
+/>
 *Fringing and Direction — simulated result across source images.*
 **Source**: High-contrast footage with strong vertical edges — text overlays, architectural details, or graphic patterns.
 
@@ -257,7 +276,13 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 ### Exercise 3: Genlock Compositing
 
-<img src={calico_exercise3_result} alt="Genlock Compositing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise3_result },
+    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise3_result },
+    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise3_result },
+  ]}
+/>
 *Genlock Compositing — simulated result across source images.*
 **Source**: Footage with a solid-colored background region — a person against a dark backdrop, or any scene with a prominent area of near-black or near-solid color.
 

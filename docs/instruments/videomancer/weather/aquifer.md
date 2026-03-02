@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/aquifer/aquifer_hero.png
 description: "Aquifer simulates the visual distortion of viewing video through a layer of disturbed water."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import aquifer_hero from '/img/instruments/videomancer/aquifer/aquifer_hero.png';
-import aquifer_before_after from '/img/instruments/videomancer/aquifer/aquifer_before_after.png';
 import aquifer_control_panel from '/img/instruments/videomancer/aquifer/aquifer_control_panel.png';
 import aquifer_exercise1_result from '/img/instruments/videomancer/aquifer/aquifer_exercise1_result.png';
 import aquifer_exercise2_result from '/img/instruments/videomancer/aquifer/aquifer_exercise2_result.png';
 import aquifer_exercise3_result from '/img/instruments/videomancer/aquifer/aquifer_exercise3_result.png';
+import aquifer_source1_kodim13 from '/img/instruments/videomancer/aquifer/aquifer_source1_kodim13.png';
+import aquifer_source2_stream_bridge_512 from '/img/instruments/videomancer/aquifer/aquifer_source2_stream_bridge_512.png';
+import aquifer_source3_kodim13_bw from '/img/instruments/videomancer/aquifer/aquifer_source3_kodim13_bw.png';
 
 # Aquifer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={aquifer_hero} alt="Aquifer hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: aquifer_source1_kodim13, after: aquifer_hero },
+    { label: "Stream Bridge", before: aquifer_source2_stream_bridge_512, after: aquifer_hero },
+    { label: "Kodim13 B&W", before: aquifer_source3_kodim13_bw, after: aquifer_hero },
+  ]}
+/>
 *Aquifer refracting a landscape source through concentric water ripples — caustic brightness patterns dance along the wave gradients as dual raindrop sources create interference patterns.*
-<img src={aquifer_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Aquifer applied.*
 
 ---
 
@@ -246,7 +253,13 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 ### Exercise 1: Single Raindrop Pool
 
-<img src={aquifer_exercise1_result} alt="Single Raindrop Pool result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: aquifer_source1_kodim13, after: aquifer_exercise1_result },
+    { label: "Stream Bridge", before: aquifer_source2_stream_bridge_512, after: aquifer_exercise1_result },
+    { label: "Kodim13 B&W", before: aquifer_source3_kodim13_bw, after: aquifer_exercise1_result },
+  ]}
+/>
 *Single Raindrop Pool — simulated result across source images.*
 **Source**: Camera feed or recorded footage with recognizable subjects — portraits or architectural scenes show displacement clearly.
 
@@ -266,7 +279,13 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 ### Exercise 2: Caustic Light Patterns
 
-<img src={aquifer_exercise2_result} alt="Caustic Light Patterns result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: aquifer_source1_kodim13, after: aquifer_exercise2_result },
+    { label: "Stream Bridge", before: aquifer_source2_stream_bridge_512, after: aquifer_exercise2_result },
+    { label: "Kodim13 B&W", before: aquifer_source3_kodim13_bw, after: aquifer_exercise2_result },
+  ]}
+/>
 *Caustic Light Patterns — simulated result across source images.*
 **Source**: Moderately bright footage with areas of uniform colour — sky, walls, or fabric show caustic lines most clearly.
 
@@ -285,7 +304,13 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 ### Exercise 3: Rainstorm Interference
 
-<img src={aquifer_exercise3_result} alt="Rainstorm Interference result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim13", before: aquifer_source1_kodim13, after: aquifer_exercise3_result },
+    { label: "Stream Bridge", before: aquifer_source2_stream_bridge_512, after: aquifer_exercise3_result },
+    { label: "Kodim13 B&W", before: aquifer_source3_kodim13_bw, after: aquifer_exercise3_result },
+  ]}
+/>
 *Rainstorm Interference — simulated result across source images.*
 **Source**: Any video source — the extreme distortion creates abstract results regardless of content.
 

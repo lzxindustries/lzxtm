@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/linotype/linotype_hero.png
 description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized printing by casting entire lines of metal type in a single operation — \"line o' type.\" An operator would key in text, and the machine would assemble brass matrices, cast a lead slug of the complete line, then advance to the next."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import linotype_hero from '/img/instruments/videomancer/linotype/linotype_hero.png';
-import linotype_before_after from '/img/instruments/videomancer/linotype/linotype_before_after.png';
 import linotype_control_panel from '/img/instruments/videomancer/linotype/linotype_control_panel.png';
 import linotype_exercise1_result from '/img/instruments/videomancer/linotype/linotype_exercise1_result.png';
 import linotype_exercise2_result from '/img/instruments/videomancer/linotype/linotype_exercise2_result.png';
 import linotype_exercise3_result from '/img/instruments/videomancer/linotype/linotype_exercise3_result.png';
+import linotype_source1_kodim15 from '/img/instruments/videomancer/linotype/linotype_source1_kodim15.png';
+import linotype_source2_kodim15_bw from '/img/instruments/videomancer/linotype/linotype_source2_kodim15_bw.png';
+import linotype_source3_male_1024 from '/img/instruments/videomancer/linotype/linotype_source3_male_1024.png';
 
 # Linotype
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={linotype_hero} alt="Linotype hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_hero },
+    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_hero },
+    { label: "Male", before: linotype_source3_male_1024, after: linotype_hero },
+  ]}
+/>
 *Linotype progressively composing a cityscape line by line, the bright cursor bar advancing downward as inked content darkens above.*
-<img src={linotype_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Linotype applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 ### Exercise 1: Slow Reveal
 
-<img src={linotype_exercise1_result} alt="Slow Reveal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise1_result },
+    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise1_result },
+    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise1_result },
+  ]}
+/>
 *Slow Reveal — simulated result across source images.*
 **Source**: A static scene with rich detail — a bookshelf, a garden, or a cityscape.
 
@@ -239,7 +252,13 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 ### Exercise 2: Ink Fade and Leading
 
-<img src={linotype_exercise2_result} alt="Ink Fade and Leading result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise2_result },
+    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise2_result },
+    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise2_result },
+  ]}
+/>
 *Ink Fade and Leading — simulated result across source images.*
 **Source**: A moving subject — a person walking, traffic, or flowing water.
 
@@ -259,7 +278,13 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 ### Exercise 3: Rapid Composition Loop
 
-<img src={linotype_exercise3_result} alt="Rapid Composition Loop result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise3_result },
+    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise3_result },
+    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise3_result },
+  ]}
+/>
 *Rapid Composition Loop — simulated result across source images.*
 **Source**: Fast-moving footage — dance performance, sports, or rapid camera movement.
 

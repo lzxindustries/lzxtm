@@ -7,21 +7,34 @@ image: /img/instruments/videomancer/bitcullis/bitcullis_hero.png
 description: "Digital video is made of discrete numbers — brightness and color values laid out on a grid of pixels."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';
-import bitcullis_before_after from '/img/instruments/videomancer/bitcullis/bitcullis_before_after.png';
 import bitcullis_control_panel from '/img/instruments/videomancer/bitcullis/bitcullis_control_panel.png';
 import bitcullis_exercise1_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise1_result.png';
 import bitcullis_exercise2_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise2_result.png';
 import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise3_result.png';
+import bitcullis_source1_kodim02 from '/img/instruments/videomancer/bitcullis/bitcullis_source1_kodim02.png';
+import bitcullis_source1_kodim23 from '/img/instruments/videomancer/bitcullis/bitcullis_source1_kodim23.png';
+import bitcullis_source2_kodim04 from '/img/instruments/videomancer/bitcullis/bitcullis_source2_kodim04.png';
+import bitcullis_source2_kodim07 from '/img/instruments/videomancer/bitcullis/bitcullis_source2_kodim07.png';
+import bitcullis_source3_kodim01_bw from '/img/instruments/videomancer/bitcullis/bitcullis_source3_kodim01_bw.png';
+import bitcullis_source3_mandrill_512 from '/img/instruments/videomancer/bitcullis/bitcullis_source3_mandrill_512.png';
 
 # Bitcullis
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bitcullis_hero} alt="Bitcullis hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_hero },
+    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_hero },
+    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_hero },
+    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_hero },
+    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_hero },
+    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_hero },
+  ]}
+/>
 *Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures.*
-<img src={bitcullis_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bitcullis applied.*
 
 ---
 
@@ -201,7 +214,16 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 ### Exercise 1: Mosaic Pixelation
 
-<img src={bitcullis_exercise1_result} alt="Mosaic Pixelation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise1_result },
+    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise1_result },
+    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise1_result },
+    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise1_result },
+    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise1_result },
+    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise1_result },
+  ]}
+/>
 *Mosaic Pixelation — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
@@ -219,7 +241,16 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 ### Exercise 2: Posterized Graphics
 
-<img src={bitcullis_exercise2_result} alt="Posterized Graphics result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise2_result },
+    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise2_result },
+    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise2_result },
+    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise2_result },
+    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise2_result },
+    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise2_result },
+  ]}
+/>
 *Posterized Graphics — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
@@ -238,7 +269,16 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 ### Exercise 3: Digital Texture Synthesis
 
-<img src={bitcullis_exercise3_result} alt="Digital Texture Synthesis result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise3_result },
+    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise3_result },
+    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise3_result },
+    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise3_result },
+    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise3_result },
+    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise3_result },
+  ]}
+/>
 *Digital Texture Synthesis — simulated result across source images.*
 **Source**: Any footage, especially high-contrast material.
 

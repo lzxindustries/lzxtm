@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/massif/massif_hero.png
 description: "In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflected each scan line vertically by an amount proportional to its brightness."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import massif_hero from '/img/instruments/videomancer/massif/massif_hero.png';
-import massif_before_after from '/img/instruments/videomancer/massif/massif_before_after.png';
 import massif_control_panel from '/img/instruments/videomancer/massif/massif_control_panel.png';
 import massif_exercise1_result from '/img/instruments/videomancer/massif/massif_exercise1_result.png';
 import massif_exercise2_result from '/img/instruments/videomancer/massif/massif_exercise2_result.png';
 import massif_exercise3_result from '/img/instruments/videomancer/massif/massif_exercise3_result.png';
+import massif_source1_kodim15 from '/img/instruments/videomancer/massif/massif_source1_kodim15.png';
+import massif_source2_kodim01 from '/img/instruments/videomancer/massif/massif_source2_kodim01.png';
+import massif_source3_kodim01_bw from '/img/instruments/videomancer/massif/massif_source3_kodim01_bw.png';
 
 # Massif
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={massif_hero} alt="Massif hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: massif_source1_kodim15, after: massif_hero },
+    { label: "Kodim01", before: massif_source2_kodim01, after: massif_hero },
+    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_hero },
+  ]}
+/>
 *Massif displacing video scanlines by luminance to sculpt a phosphor-glow terrain landscape from a camera image, evoking the Rutt/Etra Video Synthesizer.*
-<img src={massif_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Massif applied.*
 
 ---
 
@@ -208,7 +215,13 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 ### Exercise 1: Basic Terrain Displacement
 
-<img src={massif_exercise1_result} alt="Basic Terrain Displacement result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise1_result },
+    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise1_result },
+    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise1_result },
+  ]}
+/>
 *Basic Terrain Displacement — simulated result across source images.*
 **Source**: A portrait or face — any image with clear luminance structure and recognizable features.
 
@@ -226,7 +239,13 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 ### Exercise 2: Phosphor Persistence Display
 
-<img src={massif_exercise2_result} alt="Phosphor Persistence Display result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise2_result },
+    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise2_result },
+    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise2_result },
+  ]}
+/>
 *Phosphor Persistence Display — simulated result across source images.*
 **Source**: Slow-moving or static footage — a slowly rotating object, a dimly lit scene, or a slow pan across a landscape.
 
@@ -245,7 +264,13 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 ### Exercise 3: Perspective Landscape
 
-<img src={massif_exercise3_result} alt="Perspective Landscape result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise3_result },
+    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise3_result },
+    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise3_result },
+  ]}
+/>
 *Perspective Landscape — simulated result across source images.*
 **Source**: Wide-angle footage — a cityscape, landscape, or any image with content distributed across the full frame height.
 

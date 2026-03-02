@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 279
+sidebar_position: 280
 slug: /instruments/videomancer/tableau
 title: "Tableau"
 image: /img/instruments/videomancer/tableau/tableau_hero.png
 description: "In the golden age of Hollywood visual effects, matte painters would paint scenery — castles, skylines, alien landscapes — onto sheets of glass positioned between the camera and the set."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tableau_hero from '/img/instruments/videomancer/tableau/tableau_hero.png';
-import tableau_before_after from '/img/instruments/videomancer/tableau/tableau_before_after.png';
 import tableau_control_panel from '/img/instruments/videomancer/tableau/tableau_control_panel.png';
 import tableau_exercise1_result from '/img/instruments/videomancer/tableau/tableau_exercise1_result.png';
 import tableau_exercise2_result from '/img/instruments/videomancer/tableau/tableau_exercise2_result.png';
 import tableau_exercise3_result from '/img/instruments/videomancer/tableau/tableau_exercise3_result.png';
+import tableau_source1_kodim03 from '/img/instruments/videomancer/tableau/tableau_source1_kodim03.png';
+import tableau_source2_kodim13 from '/img/instruments/videomancer/tableau/tableau_source2_kodim13.png';
+import tableau_source3_kodim13_bw from '/img/instruments/videomancer/tableau/tableau_source3_kodim13_bw.png';
 
 # Tableau
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={tableau_hero} alt="Tableau hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_hero },
+    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_hero },
+    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_hero },
+  ]}
+/>
 *Tableau dividing the frame with a feathered matte boundary, desaturating and tinting one region to simulate classic glass painting composites.*
-<img src={tableau_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tableau applied.*
 
 ---
 
@@ -215,7 +222,13 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 ### Exercise 1: Simple Split Screen
 
-<img src={tableau_exercise1_result} alt="Simple Split Screen result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise1_result },
+    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise1_result },
+    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise1_result },
+  ]}
+/>
 *Simple Split Screen — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear horizontal features (horizon line, architectural divisions).
 
@@ -234,7 +247,13 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 ### Exercise 2: Painted Region Processing
 
-<img src={tableau_exercise2_result} alt="Painted Region Processing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise2_result },
+    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise2_result },
+    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise2_result },
+  ]}
+/>
 *Painted Region Processing — simulated result across source images.*
 **Source**: Footage with a visible sky or background area suitable for matte painting simulation.
 
@@ -252,7 +271,13 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 ### Exercise 3: Full Cinematic Composite
 
-<img src={tableau_exercise3_result} alt="Full Cinematic Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise3_result },
+    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise3_result },
+    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise3_result },
+  ]}
+/>
 *Full Cinematic Composite — simulated result across source images.*
 **Source**: Any footage — especially material with an interesting horizon, skyline, or background/foreground division.
 

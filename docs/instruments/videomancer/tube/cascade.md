@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/cascade/cascade_hero.png
 description: "A CRT phosphor does not turn off instantly."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cascade_hero from '/img/instruments/videomancer/cascade/cascade_hero.png';
-import cascade_before_after from '/img/instruments/videomancer/cascade/cascade_before_after.png';
 import cascade_control_panel from '/img/instruments/videomancer/cascade/cascade_control_panel.png';
 import cascade_exercise1_result from '/img/instruments/videomancer/cascade/cascade_exercise1_result.png';
 import cascade_exercise2_result from '/img/instruments/videomancer/cascade/cascade_exercise2_result.png';
 import cascade_exercise3_result from '/img/instruments/videomancer/cascade/cascade_exercise3_result.png';
+import cascade_source1_kodim15 from '/img/instruments/videomancer/cascade/cascade_source1_kodim15.png';
+import cascade_source2_kodim01 from '/img/instruments/videomancer/cascade/cascade_source2_kodim01.png';
+import cascade_source3_kodim01_bw from '/img/instruments/videomancer/cascade/cascade_source3_kodim01_bw.png';
 
 # Cascade
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={cascade_hero} alt="Cascade hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_hero },
+    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_hero },
+    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_hero },
+  ]}
+/>
 *Cascade painting tinted scanline echoes across a portrait, each delay tap accumulating warm phosphor trails that bleed through the frame.*
-<img src={cascade_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cascade applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 ### Exercise 1: Basic Echo Trail
 
-<img src={cascade_exercise1_result} alt="Basic Echo Trail result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise1_result },
+    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise1_result },
+    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise1_result },
+  ]}
+/>
 *Basic Echo Trail — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with moving subjects and clear edges.
 
@@ -231,7 +244,13 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 ### Exercise 2: Phosphor Tint Trails
 
-<img src={cascade_exercise2_result} alt="Phosphor Tint Trails result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise2_result },
+    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise2_result },
+    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise2_result },
+  ]}
+/>
 *Phosphor Tint Trails — simulated result across source images.*
 **Source**: Footage with strong subject outlines — a person walking, a hand waving, or scrolling text.
 
@@ -250,7 +269,13 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 ### Exercise 3: Feedback Stutter and Freeze
 
-<img src={cascade_exercise3_result} alt="Feedback Stutter and Freeze result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise3_result },
+    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise3_result },
+    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise3_result },
+  ]}
+/>
 *Feedback Stutter and Freeze — simulated result across source images.*
 **Source**: High-contrast footage — strong outlines against a plain background work best.
 

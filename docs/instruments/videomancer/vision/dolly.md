@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dolly/dolly_hero.png
 description: "Every broadcast control room has a button that shrinks the on-screen talent into a box and slides that box to any corner of the frame — usually to make room for a map, a graphic, or a second camera feed."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dolly_hero from '/img/instruments/videomancer/dolly/dolly_hero.png';
-import dolly_before_after from '/img/instruments/videomancer/dolly/dolly_before_after.png';
 import dolly_control_panel from '/img/instruments/videomancer/dolly/dolly_control_panel.png';
 import dolly_exercise1_result from '/img/instruments/videomancer/dolly/dolly_exercise1_result.png';
 import dolly_exercise2_result from '/img/instruments/videomancer/dolly/dolly_exercise2_result.png';
 import dolly_exercise3_result from '/img/instruments/videomancer/dolly/dolly_exercise3_result.png';
+import dolly_source1_kodim15 from '/img/instruments/videomancer/dolly/dolly_source1_kodim15.png';
+import dolly_source2_kodim15_bw from '/img/instruments/videomancer/dolly/dolly_source2_kodim15_bw.png';
+import dolly_source3_male_1024 from '/img/instruments/videomancer/dolly/dolly_source3_male_1024.png';
 
 # Dolly
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dolly_hero} alt="Dolly hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_hero },
+    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_hero },
+    { label: "Male", before: dolly_source3_male_1024, after: dolly_hero },
+  ]}
+/>
 *Dolly repositioning and scaling a live camera feed within a colored background frame, demonstrating picture-in-picture composition.*
-<img src={dolly_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dolly applied.*
 
 ---
 
@@ -216,7 +223,13 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 ### Exercise 1: Classic Picture-in-Picture
 
-<img src={dolly_exercise1_result} alt="Classic Picture-in-Picture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise1_result },
+    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise1_result },
+    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise1_result },
+  ]}
+/>
 *Classic Picture-in-Picture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
@@ -234,7 +247,13 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 ### Exercise 2: Anamorphic Squeeze and Stretch
 
-<img src={dolly_exercise2_result} alt="Anamorphic Squeeze and Stretch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise2_result },
+    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise2_result },
+    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise2_result },
+  ]}
+/>
 *Anamorphic Squeeze and Stretch — simulated result across source images.*
 **Source**: Footage with strong geometric features — architecture, grids, or text.
 
@@ -253,7 +272,13 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 ### Exercise 3: Animated DVE Dissolve
 
-<img src={dolly_exercise3_result} alt="Animated DVE Dissolve result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise3_result },
+    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise3_result },
+    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise3_result },
+  ]}
+/>
 *Animated DVE Dissolve — simulated result across source images.*
 **Source**: Any footage, especially high-contrast material with bold colors.
 

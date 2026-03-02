@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 296
+sidebar_position: 297
 slug: /instruments/videomancer/twister
 title: "Twister"
 image: /img/instruments/videomancer/twister/twister_hero.png

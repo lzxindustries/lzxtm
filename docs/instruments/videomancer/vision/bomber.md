@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/bomber/bomber_hero.png
 description: "Every arcade game has its moment of spectacle — the bomb detonation, the boss defeat, the screen-clearing super move."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bomber_hero from '/img/instruments/videomancer/bomber/bomber_hero.png';
-import bomber_before_after from '/img/instruments/videomancer/bomber/bomber_before_after.png';
 import bomber_control_panel from '/img/instruments/videomancer/bomber/bomber_control_panel.png';
 import bomber_exercise1_result from '/img/instruments/videomancer/bomber/bomber_exercise1_result.png';
 import bomber_exercise2_result from '/img/instruments/videomancer/bomber/bomber_exercise2_result.png';
 import bomber_exercise3_result from '/img/instruments/videomancer/bomber/bomber_exercise3_result.png';
+import bomber_source1_kodim15 from '/img/instruments/videomancer/bomber/bomber_source1_kodim15.png';
+import bomber_source2_kodim15_bw from '/img/instruments/videomancer/bomber/bomber_source2_kodim15_bw.png';
+import bomber_source3_male_1024 from '/img/instruments/videomancer/bomber/bomber_source3_male_1024.png';
 
 # Bomber
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bomber_hero} alt="Bomber hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_hero },
+    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_hero },
+    { label: "Male", before: bomber_source3_male_1024, after: bomber_hero },
+  ]}
+/>
 *Bomber launching an expanding concentric shockwave with white flash effect, the ring sweeping outward from center and leaving a dimmed aftermath in its wake.*
-<img src={bomber_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bomber applied.*
 
 ---
 
@@ -233,7 +240,13 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 ### Exercise 1: The Expanding Ring
 
-<img src={bomber_exercise1_result} alt="The Expanding Ring result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise1_result },
+    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise1_result },
+    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise1_result },
+  ]}
+/>
 *The Expanding Ring — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and saturated color.
 
@@ -251,7 +264,13 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 ### Exercise 2: Aftermath and Latch
 
-<img src={bomber_exercise2_result} alt="Aftermath and Latch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise2_result },
+    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise2_result },
+    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise2_result },
+  ]}
+/>
 *Aftermath and Latch — simulated result across source images.*
 **Source**: High-contrast footage with a mix of bright and dark regions — shows dimming effect clearly.
 
@@ -269,7 +288,13 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 ### Exercise 3: Bombardment
 
-<img src={bomber_exercise3_result} alt="Bombardment result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise3_result },
+    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise3_result },
+    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise3_result },
+  ]}
+/>
 *Bombardment — simulated result across source images.*
 **Source**: Any footage — the source will be largely consumed by overlapping shockwaves.
 

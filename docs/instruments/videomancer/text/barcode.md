@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/barcode/barcode_hero.png
 description: "Barcodes are a visual language designed for machines — parallel lines of varying width that encode numeric data."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import barcode_hero from '/img/instruments/videomancer/barcode/barcode_hero.png';
-import barcode_before_after from '/img/instruments/videomancer/barcode/barcode_before_after.png';
 import barcode_control_panel from '/img/instruments/videomancer/barcode/barcode_control_panel.png';
 import barcode_exercise1_result from '/img/instruments/videomancer/barcode/barcode_exercise1_result.png';
 import barcode_exercise2_result from '/img/instruments/videomancer/barcode/barcode_exercise2_result.png';
 import barcode_exercise3_result from '/img/instruments/videomancer/barcode/barcode_exercise3_result.png';
+import barcode_source1_kodim15 from '/img/instruments/videomancer/barcode/barcode_source1_kodim15.png';
+import barcode_source2_kodim15_bw from '/img/instruments/videomancer/barcode/barcode_source2_kodim15_bw.png';
+import barcode_source3_male_1024 from '/img/instruments/videomancer/barcode/barcode_source3_male_1024.png';
 
 # Barcode
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={barcode_hero} alt="Barcode hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_hero },
+    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_hero },
+    { label: "Male", before: barcode_source3_male_1024, after: barcode_hero },
+  ]}
+/>
 *Barcode rendering a portrait as variable-width vertical stripes with luminance-driven bar density and guard bar framing.*
-<img src={barcode_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Barcode applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 ### Exercise 1: Classic Barcode
 
-<img src={barcode_exercise1_result} alt="Classic Barcode result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise1_result },
+    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise1_result },
+    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise1_result },
+  ]}
+/>
 *Classic Barcode — simulated result across source images.*
 **Source**: A portrait or image with a broad range of tones — skin, hair, background.
 
@@ -227,7 +240,13 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 ### Exercise 2: Color Grid Pattern
 
-<img src={barcode_exercise2_result} alt="Color Grid Pattern result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise2_result },
+    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise2_result },
+    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise2_result },
+  ]}
+/>
 *Color Grid Pattern — simulated result across source images.*
 **Source**: An image with strong color variation — macaws, fruit, or geometric patterns.
 
@@ -245,7 +264,13 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 ### Exercise 3: Barcode Overlay
 
-<img src={barcode_exercise3_result} alt="Barcode Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise3_result },
+    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise3_result },
+    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise3_result },
+  ]}
+/>
 *Barcode Overlay — simulated result across source images.*
 **Source**: Any footage with movement — performers, nature, or abstract video feedback.
 

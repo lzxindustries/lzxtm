@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/downpour/downpour_hero.png
 description: "Rain is one of those visual phenomena that sits right at the boundary between order and chaos."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import downpour_hero from '/img/instruments/videomancer/downpour/downpour_hero.png';
-import downpour_before_after from '/img/instruments/videomancer/downpour/downpour_before_after.png';
 import downpour_control_panel from '/img/instruments/videomancer/downpour/downpour_control_panel.png';
 import downpour_exercise1_result from '/img/instruments/videomancer/downpour/downpour_exercise1_result.png';
 import downpour_exercise2_result from '/img/instruments/videomancer/downpour/downpour_exercise2_result.png';
 import downpour_exercise3_result from '/img/instruments/videomancer/downpour/downpour_exercise3_result.png';
+import downpour_source1_kodim01 from '/img/instruments/videomancer/downpour/downpour_source1_kodim01.png';
+import downpour_source2_kodim02 from '/img/instruments/videomancer/downpour/downpour_source2_kodim02.png';
+import downpour_source3_stream_bridge_512 from '/img/instruments/videomancer/downpour/downpour_source3_stream_bridge_512.png';
 
 # Downpour
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={downpour_hero} alt="Downpour hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_hero },
+    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_hero },
+    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_hero },
+  ]}
+/>
 *Downpour compositing LFSR-seeded diagonal rain streaks with splash highlights and fog overlay onto live video.*
-<img src={downpour_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Downpour applied.*
 
 ---
 
@@ -223,7 +230,13 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 ### Exercise 1: Gentle Drizzle
 
-<img src={downpour_exercise1_result} alt="Gentle Drizzle result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise1_result },
+    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise1_result },
+    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise1_result },
+  ]}
+/>
 *Gentle Drizzle — simulated result across source images.*
 **Source**: A recorded outdoor scene — a park, street, or garden — with moderate contrast and varied textures.
 
@@ -242,7 +255,13 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 ### Exercise 2: Thunderstorm
 
-<img src={downpour_exercise2_result} alt="Thunderstorm result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise2_result },
+    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise2_result },
+    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise2_result },
+  ]}
+/>
 *Thunderstorm — simulated result across source images.*
 **Source**: Dark, moody footage with strong contrast — night scenes, dramatic lighting, or high-contrast architecture.
 
@@ -263,7 +282,13 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 ### Exercise 3: Abstract Rain Texture
 
-<img src={downpour_exercise3_result} alt="Abstract Rain Texture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise3_result },
+    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise3_result },
+    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise3_result },
+  ]}
+/>
 *Abstract Rain Texture — simulated result across source images.*
 **Source**: Any high-contrast video — graphics, text overlays, or footage with strong edges.
 

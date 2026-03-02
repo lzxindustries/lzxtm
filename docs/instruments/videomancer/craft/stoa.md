@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 272
+sidebar_position: 273
 slug: /instruments/videomancer/stoa
 title: "Stoa"
 image: /img/instruments/videomancer/stoa/stoa_hero.png
 description: "The stoa was the defining architectural form of ancient Greece — a long covered walkway fronted by a row of columns."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import stoa_hero from '/img/instruments/videomancer/stoa/stoa_hero.png';
-import stoa_before_after from '/img/instruments/videomancer/stoa/stoa_before_after.png';
 import stoa_control_panel from '/img/instruments/videomancer/stoa/stoa_control_panel.png';
 import stoa_exercise1_result from '/img/instruments/videomancer/stoa/stoa_exercise1_result.png';
 import stoa_exercise2_result from '/img/instruments/videomancer/stoa/stoa_exercise2_result.png';
 import stoa_exercise3_result from '/img/instruments/videomancer/stoa/stoa_exercise3_result.png';
+import stoa_source1_kodim03 from '/img/instruments/videomancer/stoa/stoa_source1_kodim03.png';
+import stoa_source2_kodim13 from '/img/instruments/videomancer/stoa/stoa_source2_kodim13.png';
+import stoa_source3_kodim13_bw from '/img/instruments/videomancer/stoa/stoa_source3_kodim13_bw.png';
 
 # Stoa
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={stoa_hero} alt="Stoa hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_hero },
+    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_hero },
+    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_hero },
+  ]}
+/>
 *Stoa transforming live video into a Doric colonnade with cosine-shaded fluting, arris ridges, and entablature patterning.*
-<img src={stoa_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Stoa applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These exercises progress from basic column shading through architectural composi
 
 ### Exercise 1: Columnar Light Study
 
-<img src={stoa_exercise1_result} alt="Columnar Light Study result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise1_result },
+    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise1_result },
+    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise1_result },
+  ]}
+/>
 *Columnar Light Study — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
@@ -220,7 +233,13 @@ These exercises progress from basic column shading through architectural composi
 
 ### Exercise 2: Architectural Composition
 
-<img src={stoa_exercise2_result} alt="Architectural Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise2_result },
+    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise2_result },
+    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise2_result },
+  ]}
+/>
 *Architectural Composition — simulated result across source images.*
 **Source**: Wide-angle footage of interiors or urban scenes with strong vertical lines.
 
@@ -239,7 +258,13 @@ These exercises progress from basic column shading through architectural composi
 
 ### Exercise 3: Animated Light Sweep
 
-<img src={stoa_exercise3_result} alt="Animated Light Sweep result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise3_result },
+    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise3_result },
+    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise3_result },
+  ]}
+/>
 *Animated Light Sweep — simulated result across source images.*
 **Source**: Any footage — abstract or representational. Static footage works well to isolate the light animation.
 

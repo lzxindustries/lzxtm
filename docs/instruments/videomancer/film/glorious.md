@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/glorious/glorious_hero.png
 description: "Glorious recreates the look of Technicolor Process 4 — the three-strip dye transfer printing system that defined the color aesthetic of Hollywood cinema from the 1930s through the 1960s."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import glorious_hero from '/img/instruments/videomancer/glorious/glorious_hero.png';
-import glorious_before_after from '/img/instruments/videomancer/glorious/glorious_before_after.png';
 import glorious_control_panel from '/img/instruments/videomancer/glorious/glorious_control_panel.png';
 import glorious_exercise1_result from '/img/instruments/videomancer/glorious/glorious_exercise1_result.png';
 import glorious_exercise2_result from '/img/instruments/videomancer/glorious/glorious_exercise2_result.png';
 import glorious_exercise3_result from '/img/instruments/videomancer/glorious/glorious_exercise3_result.png';
+import glorious_source1_kodim03 from '/img/instruments/videomancer/glorious/glorious_source1_kodim03.png';
+import glorious_source2_kodim13 from '/img/instruments/videomancer/glorious/glorious_source2_kodim13.png';
+import glorious_source3_kodim13_bw from '/img/instruments/videomancer/glorious/glorious_source3_kodim13_bw.png';
 
 # Glorious
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={glorious_hero} alt="Glorious hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_hero },
+    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_hero },
+    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_hero },
+  ]}
+/>
 *Glorious applying three-strip Technicolor dye transfer simulation with per-channel exposure, H&D S-curve response, and fringe misregistration to a studio portrait.*
-<img src={glorious_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Glorious applied.*
 
 ---
 
@@ -193,7 +200,13 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 ### Exercise 1: Strip Exposure Color Grading
 
-<img src={glorious_exercise1_result} alt="Strip Exposure Color Grading result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise1_result },
+    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise1_result },
+    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise1_result },
+  ]}
+/>
 *Strip Exposure Color Grading — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable skin tones and a mix of warm and cool colors.
 
@@ -211,7 +224,13 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 ### Exercise 2: H&D Curve and Fringe
 
-<img src={glorious_exercise2_result} alt="H&D Curve and Fringe result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise2_result },
+    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise2_result },
+    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise2_result },
+  ]}
+/>
 *H&D Curve and Fringe — simulated result across source images.*
 **Source**: Footage with strong contrast — backlit subjects, bright windows, or text on dark backgrounds.
 
@@ -230,7 +249,13 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 ### Exercise 3: Vintage Aged Print
 
-<img src={glorious_exercise3_result} alt="Vintage Aged Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise3_result },
+    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise3_result },
+    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise3_result },
+  ]}
+/>
 *Vintage Aged Print — simulated result across source images.*
 **Source**: Any footage — the aging effect transforms the entire tonal palette.
 

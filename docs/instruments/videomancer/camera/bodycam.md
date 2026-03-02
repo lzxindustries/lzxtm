@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/bodycam/bodycam_hero.png
 description: "Bodycam simulates the look of footage from a low-quality body-worn camera."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import bodycam_hero from '/img/instruments/videomancer/bodycam/bodycam_hero.png';
-import bodycam_before_after from '/img/instruments/videomancer/bodycam/bodycam_before_after.png';
 import bodycam_control_panel from '/img/instruments/videomancer/bodycam/bodycam_control_panel.png';
 import bodycam_exercise1_result from '/img/instruments/videomancer/bodycam/bodycam_exercise1_result.png';
 import bodycam_exercise2_result from '/img/instruments/videomancer/bodycam/bodycam_exercise2_result.png';
 import bodycam_exercise3_result from '/img/instruments/videomancer/bodycam/bodycam_exercise3_result.png';
+import bodycam_source1_kodim05 from '/img/instruments/videomancer/bodycam/bodycam_source1_kodim05.png';
+import bodycam_source2_kodim15 from '/img/instruments/videomancer/bodycam/bodycam_source2_kodim15.png';
+import bodycam_source3_kodim15_bw from '/img/instruments/videomancer/bodycam/bodycam_source3_kodim15_bw.png';
 
 # Bodycam
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={bodycam_hero} alt="Bodycam hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_hero },
+    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_hero },
+    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_hero },
+  ]}
+/>
 *Jittery horizontal lines, dropped frames, edge vignetting, and a scrolling timestamp bar transform clean footage into convincing body-camera surveillance.*
-<img src={bodycam_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Bodycam applied.*
 
 ---
 
@@ -209,7 +216,13 @@ These exercises progress from individual artefacts through combined degradations
 
 ### Exercise 1: Line Jitter and Noise
 
-<img src={bodycam_exercise1_result} alt="Line Jitter and Noise result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise1_result },
+    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise1_result },
+    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise1_result },
+  ]}
+/>
 *Line Jitter and Noise — simulated result across source images.*
 **Source**: Any moving footage — faces, walking, street scenes.
 
@@ -228,7 +241,13 @@ These exercises progress from individual artefacts through combined degradations
 
 ### Exercise 2: Frame Drops and Timestamp
 
-<img src={bodycam_exercise2_result} alt="Frame Drops and Timestamp result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise2_result },
+    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise2_result },
+    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise2_result },
+  ]}
+/>
 *Frame Drops and Timestamp — simulated result across source images.*
 **Source**: Any footage with continuous motion.
 
@@ -247,7 +266,13 @@ These exercises progress from individual artefacts through combined degradations
 
 ### Exercise 3: Full Body Camera
 
-<img src={bodycam_exercise3_result} alt="Full Body Camera result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise3_result },
+    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise3_result },
+    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise3_result },
+  ]}
+/>
 *Full Body Camera — simulated result across source images.*
 **Source**: Any handheld or moving footage.
 

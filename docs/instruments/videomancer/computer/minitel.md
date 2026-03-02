@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/minitel/minitel_hero.png
 description: "The Minitel was France's pre-internet information terminal — a small beige box with a keyboard and a 40-column text display that connected millions of French households to online services from 1982 until its retirement in 2012."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import minitel_hero from '/img/instruments/videomancer/minitel/minitel_hero.png';
-import minitel_before_after from '/img/instruments/videomancer/minitel/minitel_before_after.png';
 import minitel_control_panel from '/img/instruments/videomancer/minitel/minitel_control_panel.png';
 import minitel_exercise1_result from '/img/instruments/videomancer/minitel/minitel_exercise1_result.png';
 import minitel_exercise2_result from '/img/instruments/videomancer/minitel/minitel_exercise2_result.png';
 import minitel_exercise3_result from '/img/instruments/videomancer/minitel/minitel_exercise3_result.png';
+import minitel_source1_kodim15 from '/img/instruments/videomancer/minitel/minitel_source1_kodim15.png';
+import minitel_source2_kodim03 from '/img/instruments/videomancer/minitel/minitel_source2_kodim03.png';
+import minitel_source3_kodim15_bw from '/img/instruments/videomancer/minitel/minitel_source3_kodim15_bw.png';
 
 # Minitel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={minitel_hero} alt="Minitel hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_hero },
+    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_hero },
+    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_hero },
+  ]}
+/>
 *Minitel reducing a video stream to eight-color mosaic blocks with sample-and-hold quantization and scanline darkening.*
-<img src={minitel_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Minitel applied.*
 
 ---
 
@@ -200,7 +207,13 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 ### Exercise 1: Basic Mosaic Grid
 
-<img src={minitel_exercise1_result} alt="Basic Mosaic Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise1_result },
+    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise1_result },
+    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise1_result },
+  ]}
+/>
 *Basic Mosaic Grid — simulated result across source images.*
 **Source**: A colorful, detailed scene — a garden, a bookshelf, or a busy street.
 
@@ -217,7 +230,13 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 ### Exercise 2: Inverted Scanline Terminal
 
-<img src={minitel_exercise2_result} alt="Inverted Scanline Terminal result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise2_result },
+    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise2_result },
+    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise2_result },
+  ]}
+/>
 *Inverted Scanline Terminal — simulated result across source images.*
 **Source**: High-contrast text, graphics, or a face against a dark background.
 
@@ -235,7 +254,13 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 ### Exercise 3: Teletext Color Blocks
 
-<img src={minitel_exercise3_result} alt="Teletext Color Blocks result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise3_result },
+    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise3_result },
+    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise3_result },
+  ]}
+/>
 *Teletext Color Blocks — simulated result across source images.*
 **Source**: A slowly moving abstract video or colorful geometries.
 

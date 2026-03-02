@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 249
+sidebar_position: 250
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
 image: /img/instruments/videomancer/sfumato/sfumato_hero.png
 description: "Leonardo da Vinci described sfumato as painting \"in the manner of smoke, beyond the plane of focus\" — the technique of eliminating hard outlines between tones and colours so that forms appear to emerge from the air itself."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sfumato_hero from '/img/instruments/videomancer/sfumato/sfumato_hero.png';
-import sfumato_before_after from '/img/instruments/videomancer/sfumato/sfumato_before_after.png';
 import sfumato_control_panel from '/img/instruments/videomancer/sfumato/sfumato_control_panel.png';
 import sfumato_exercise1_result from '/img/instruments/videomancer/sfumato/sfumato_exercise1_result.png';
 import sfumato_exercise2_result from '/img/instruments/videomancer/sfumato/sfumato_exercise2_result.png';
 import sfumato_exercise3_result from '/img/instruments/videomancer/sfumato/sfumato_exercise3_result.png';
+import sfumato_source1_kodim03 from '/img/instruments/videomancer/sfumato/sfumato_source1_kodim03.png';
+import sfumato_source2_kodim13 from '/img/instruments/videomancer/sfumato/sfumato_source2_kodim13.png';
+import sfumato_source3_kodim13_bw from '/img/instruments/videomancer/sfumato/sfumato_source3_kodim13_bw.png';
 
 # Sfumato
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sfumato_hero} alt="Sfumato hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_hero },
+    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_hero },
+    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_hero },
+  ]}
+/>
 *Sfumato dissolving tonal boundaries with edge-adaptive IIR blur, depth-dependent shadow diffusion, and atmospheric haze reminiscent of Leonardo's prospettiva aerea.*
-<img src={sfumato_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sfumato applied.*
 
 ---
 
@@ -203,7 +210,13 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 ### Exercise 1: Edge-Adaptive Softening
 
-<img src={sfumato_exercise1_result} alt="Edge-Adaptive Softening result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise1_result },
+    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise1_result },
+    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise1_result },
+  ]}
+/>
 *Edge-Adaptive Softening — simulated result across source images.*
 **Source**: Portrait footage or any source with a mix of sharp edges and smooth gradients — faces, still-life objects, or architectural details.
 
@@ -221,7 +234,13 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 ### Exercise 2: Atmospheric Perspective
 
-<img src={sfumato_exercise2_result} alt="Atmospheric Perspective result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise2_result },
+    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise2_result },
+    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise2_result },
+  ]}
+/>
 *Atmospheric Perspective — simulated result across source images.*
 **Source**: Landscape footage or any image with a bright foreground and dark background — a window looking out, a lit figure against shadows, or a sunset sky.
 
@@ -239,7 +258,13 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 ### Exercise 3: Venetian Varnish
 
-<img src={sfumato_exercise3_result} alt="Venetian Varnish result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise3_result },
+    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise3_result },
+    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise3_result },
+  ]}
+/>
 *Venetian Varnish — simulated result across source images.*
 **Source**: Portrait or still-life footage in warm lighting — ideal for simulating an Old Master painting.
 

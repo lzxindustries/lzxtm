@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 192
+sidebar_position: 193
 slug: /instruments/videomancer/necker
 title: "Necker"
 image: /img/instruments/videomancer/necker/necker_hero.png
 description: "The Necker cube is one of the most iconic figures in visual perception — a wireframe drawing of a cube that appears to spontaneously flip between two valid three-dimensional interpretations."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import necker_hero from '/img/instruments/videomancer/necker/necker_hero.png';
-import necker_before_after from '/img/instruments/videomancer/necker/necker_before_after.png';
 import necker_control_panel from '/img/instruments/videomancer/necker/necker_control_panel.png';
 import necker_exercise1_result from '/img/instruments/videomancer/necker/necker_exercise1_result.png';
 import necker_exercise2_result from '/img/instruments/videomancer/necker/necker_exercise2_result.png';
 import necker_exercise3_result from '/img/instruments/videomancer/necker/necker_exercise3_result.png';
+import necker_source1_kodim01 from '/img/instruments/videomancer/necker/necker_source1_kodim01.png';
+import necker_source2_kodim02 from '/img/instruments/videomancer/necker/necker_source2_kodim02.png';
+import necker_source3_kodim01_bw from '/img/instruments/videomancer/necker/necker_source3_kodim01_bw.png';
 
 # Necker
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={necker_hero} alt="Necker hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: necker_source1_kodim01, after: necker_hero },
+    { label: "Kodim02", before: necker_source2_kodim02, after: necker_hero },
+    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_hero },
+  ]}
+/>
 *Necker rendering a perspective-ambiguous wireframe cube with depth-offset back face and overlay compositing onto the video source.*
-<img src={necker_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Necker applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 ### Exercise 1: Basic Wireframe
 
-<img src={necker_exercise1_result} alt="Basic Wireframe result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise1_result },
+    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise1_result },
+    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise1_result },
+  ]}
+/>
 *Basic Wireframe — simulated result across source images.*
 **Source**: Any stable video source or black/blank input.
 
@@ -223,7 +236,13 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 ### Exercise 2: Video Overlay Composition
 
-<img src={necker_exercise2_result} alt="Video Overlay Composition result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise2_result },
+    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise2_result },
+    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise2_result },
+  ]}
+/>
 *Video Overlay Composition — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable subjects.
 
@@ -241,7 +260,13 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 ### Exercise 3: Extreme Geometry
 
-<img src={necker_exercise3_result} alt="Extreme Geometry result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise3_result },
+    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise3_result },
+    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise3_result },
+  ]}
+/>
 *Extreme Geometry — simulated result across source images.*
 **Source**: High-contrast footage or a pattern generator with geometric shapes.
 

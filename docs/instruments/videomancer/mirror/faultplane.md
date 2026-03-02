@@ -7,21 +7,32 @@ image: /img/instruments/videomancer/faultplane/faultplane_hero.png
 description: "Faultplane is a spatial displacement and zone-blanking program that splits the video frame into alternating regions using two timing accumulators and applies independent horizontal pixel shifts, mirror flips, and color inversions to each region."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import faultplane_hero from '/img/instruments/videomancer/faultplane/faultplane_hero.png';
-import faultplane_before_after from '/img/instruments/videomancer/faultplane/faultplane_before_after.png';
 import faultplane_control_panel from '/img/instruments/videomancer/faultplane/faultplane_control_panel.png';
 import faultplane_exercise1_result from '/img/instruments/videomancer/faultplane/faultplane_exercise1_result.png';
 import faultplane_exercise2_result from '/img/instruments/videomancer/faultplane/faultplane_exercise2_result.png';
 import faultplane_exercise3_result from '/img/instruments/videomancer/faultplane/faultplane_exercise3_result.png';
+import faultplane_source1_kodim01 from '/img/instruments/videomancer/faultplane/faultplane_source1_kodim01.png';
+import faultplane_source2_kodim02 from '/img/instruments/videomancer/faultplane/faultplane_source2_kodim02.png';
+import faultplane_source2_kodim13 from '/img/instruments/videomancer/faultplane/faultplane_source2_kodim13.png';
+import faultplane_source3_kodim01_bw from '/img/instruments/videomancer/faultplane/faultplane_source3_kodim01_bw.png';
+import faultplane_source3_moon_256 from '/img/instruments/videomancer/faultplane/faultplane_source3_moon_256.png';
 
 # Faultplane
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={faultplane_hero} alt="Faultplane hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_hero },
+    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_hero },
+    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_hero },
+    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_hero },
+    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_hero },
+  ]}
+/>
 *Faultplane fracturing a natural scene into displaced, mirrored zones with selective blanking.*
-<img src={faultplane_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Faultplane applied.*
 
 ---
 
@@ -196,7 +207,15 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 ### Exercise 1: Horizontal Displacement Bands
 
-<img src={faultplane_exercise1_result} alt="Horizontal Displacement Bands result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise1_result },
+    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise1_result },
+    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise1_result },
+    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise1_result },
+    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise1_result },
+  ]}
+/>
 *Horizontal Displacement Bands — simulated result across source images.*
 **Source**: Camera feed with recognizable horizontal features — architecture, text, or landscapes.
 
@@ -216,7 +235,15 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 ### Exercise 2: Mirror and Invert Zones
 
-<img src={faultplane_exercise2_result} alt="Mirror and Invert Zones result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise2_result },
+    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise2_result },
+    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise2_result },
+    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise2_result },
+    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise2_result },
+  ]}
+/>
 *Mirror and Invert Zones — simulated result across source images.*
 **Source**: Camera feed with strong directional features — faces, text, or architecture.
 
@@ -235,7 +262,15 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 ### Exercise 3: Checkerboard Grid with Blanking
 
-<img src={faultplane_exercise3_result} alt="Checkerboard Grid with Blanking result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise3_result },
+    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise3_result },
+    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise3_result },
+    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise3_result },
+    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise3_result },
+  ]}
+/>
 *Checkerboard Grid with Blanking — simulated result across source images.*
 **Source**: Any footage, especially geometric or high-contrast material.
 

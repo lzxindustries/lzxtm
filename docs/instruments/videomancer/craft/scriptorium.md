@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 246
+sidebar_position: 247
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
 image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png
 description: "Before the printing press and before movable type, every book in Europe was made by hand."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import scriptorium_hero from '/img/instruments/videomancer/scriptorium/scriptorium_hero.png';
-import scriptorium_before_after from '/img/instruments/videomancer/scriptorium/scriptorium_before_after.png';
 import scriptorium_control_panel from '/img/instruments/videomancer/scriptorium/scriptorium_control_panel.png';
 import scriptorium_exercise1_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise1_result.png';
 import scriptorium_exercise2_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise2_result.png';
 import scriptorium_exercise3_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise3_result.png';
+import scriptorium_source1_kodim03 from '/img/instruments/videomancer/scriptorium/scriptorium_source1_kodim03.png';
+import scriptorium_source2_kodim13 from '/img/instruments/videomancer/scriptorium/scriptorium_source2_kodim13.png';
+import scriptorium_source3_kodim13_bw from '/img/instruments/videomancer/scriptorium/scriptorium_source3_kodim13_bw.png';
 
 # Scriptorium
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={scriptorium_hero} alt="Scriptorium hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_hero },
+    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_hero },
+    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_hero },
+  ]}
+/>
 *Scriptorium compositing live video into the pictorial field of a procedurally generated illuminated manuscript with knotwork borders and mineral pigment quantization.*
-<img src={scriptorium_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Scriptorium applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 ### Exercise 1: Knotwork Page
 
-<img src={scriptorium_exercise1_result} alt="Knotwork Page result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise1_result },
+    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise1_result },
+    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise1_result },
+  ]}
+/>
 *Knotwork Page — simulated result across source images.*
 **Source**: A slowly moving camera feed with moderate contrast — portraits or architectural subjects work well.
 
@@ -222,7 +235,13 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 ### Exercise 2: Gilded Miniature
 
-<img src={scriptorium_exercise2_result} alt="Gilded Miniature result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise2_result },
+    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise2_result },
+    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise2_result },
+  ]}
+/>
 *Gilded Miniature — simulated result across source images.*
 **Source**: High-contrast footage with bright highlights — candle flames, sunlit surfaces, or specular reflections.
 
@@ -241,7 +260,13 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 ### Exercise 3: Four Ornament Comparison
 
-<img src={scriptorium_exercise3_result} alt="Four Ornament Comparison result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise3_result },
+    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise3_result },
+    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise3_result },
+  ]}
+/>
 *Four Ornament Comparison — simulated result across source images.*
 **Source**: Any slowly changing video — abstract patterns, landscapes, or color bars.
 

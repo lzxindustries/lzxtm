@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 196
+sidebar_position: 197
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
 image: /img/instruments/videomancer/nitrate/nitrate_hero.png
 description: "Before Technicolor, cinema was colored by hand."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import nitrate_hero from '/img/instruments/videomancer/nitrate/nitrate_hero.png';
-import nitrate_before_after from '/img/instruments/videomancer/nitrate/nitrate_before_after.png';
 import nitrate_control_panel from '/img/instruments/videomancer/nitrate/nitrate_control_panel.png';
 import nitrate_exercise1_result from '/img/instruments/videomancer/nitrate/nitrate_exercise1_result.png';
 import nitrate_exercise2_result from '/img/instruments/videomancer/nitrate/nitrate_exercise2_result.png';
 import nitrate_exercise3_result from '/img/instruments/videomancer/nitrate/nitrate_exercise3_result.png';
+import nitrate_source1_kodim03 from '/img/instruments/videomancer/nitrate/nitrate_source1_kodim03.png';
+import nitrate_source2_kodim13 from '/img/instruments/videomancer/nitrate/nitrate_source2_kodim13.png';
+import nitrate_source3_kodim13_bw from '/img/instruments/videomancer/nitrate/nitrate_source3_kodim13_bw.png';
 
 # Nitrate
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={nitrate_hero} alt="Nitrate hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_hero },
+    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_hero },
+    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_hero },
+  ]}
+/>
 *Nitrate applying sepia-toned tinting and blue-toned toning to create a hand-painted silent cinema colorization effect.*
-<img src={nitrate_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Nitrate applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from basic single-color tinting through duotone process
 
 ### Exercise 1: Sepia Tinting
 
-<img src={nitrate_exercise1_result} alt="Sepia Tinting result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise1_result },
+    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise1_result },
+    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise1_result },
+  ]}
+/>
 *Sepia Tinting — simulated result across source images.*
 **Source**: A black-and-white or desaturated video source — monochrome camera feed, or any footage with the Desat In toggle set to Mono.
 
@@ -232,7 +245,13 @@ These exercises progress from basic single-color tinting through duotone process
 
 ### Exercise 2: Duotone Tint and Tone
 
-<img src={nitrate_exercise2_result} alt="Duotone Tint and Tone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise2_result },
+    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise2_result },
+    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise2_result },
+  ]}
+/>
 *Duotone Tint and Tone — simulated result across source images.*
 **Source**: Video with a full tonal range — portraits, architectural interiors, or dramatic lighting.
 
@@ -250,7 +269,13 @@ These exercises progress from basic single-color tinting through duotone process
 
 ### Exercise 3: Stencil Coloring with Flicker
 
-<img src={nitrate_exercise3_result} alt="Stencil Coloring with Flicker result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise3_result },
+    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise3_result },
+    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise3_result },
+  ]}
+/>
 *Stencil Coloring with Flicker — simulated result across source images.*
 **Source**: High-contrast footage with distinct shadow and highlight regions — stage lighting, candle-lit scenes, or strong backlight.
 

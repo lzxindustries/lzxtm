@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 225
+sidebar_position: 226
 slug: /instruments/videomancer/quilt
 title: "Quilt"
 image: /img/instruments/videomancer/quilt/quilt_hero.png
 description: "Every image carries a grid — the rows and columns of pixels that compose it."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import quilt_hero from '/img/instruments/videomancer/quilt/quilt_hero.png';
-import quilt_before_after from '/img/instruments/videomancer/quilt/quilt_before_after.png';
 import quilt_control_panel from '/img/instruments/videomancer/quilt/quilt_control_panel.png';
 import quilt_exercise1_result from '/img/instruments/videomancer/quilt/quilt_exercise1_result.png';
 import quilt_exercise2_result from '/img/instruments/videomancer/quilt/quilt_exercise2_result.png';
 import quilt_exercise3_result from '/img/instruments/videomancer/quilt/quilt_exercise3_result.png';
+import quilt_source1_kodim15 from '/img/instruments/videomancer/quilt/quilt_source1_kodim15.png';
+import quilt_source2_kodim03 from '/img/instruments/videomancer/quilt/quilt_source2_kodim03.png';
+import quilt_source3_kodim13_bw from '/img/instruments/videomancer/quilt/quilt_source3_kodim13_bw.png';
 
 # Quilt
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={quilt_hero} alt="Quilt hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_hero },
+    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_hero },
+    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_hero },
+  ]}
+/>
 *Quilt dividing a video field into patchwork blocks with per-block pattern overlays, LFSR color jitter, and configurable stitch borders.*
-<img src={quilt_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Quilt applied.*
 
 ---
 
@@ -224,7 +231,13 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 ### Exercise 1: Bold Patchwork Grid
 
-<img src={quilt_exercise1_result} alt="Bold Patchwork Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise1_result },
+    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise1_result },
+    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise1_result },
+  ]}
+/>
 *Bold Patchwork Grid — simulated result across source images.*
 **Source**: A scene with large areas of varied brightness and moderate color — a landscape or portrait with distinct light and dark regions works well.
 
@@ -249,7 +262,13 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 ### Exercise 2: Fine Mosaic with Color Scatter
 
-<img src={quilt_exercise2_result} alt="Fine Mosaic with Color Scatter result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise2_result },
+    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise2_result },
+    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise2_result },
+  ]}
+/>
 *Fine Mosaic with Color Scatter — simulated result across source images.*
 **Source**: A colorful, high-contrast image — abstract graphics, multicolored patterns, or a brightly lit scene with saturated objects.
 
@@ -274,7 +293,13 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 ### Exercise 3: Animated Shimmer Quilt
 
-<img src={quilt_exercise3_result} alt="Animated Shimmer Quilt result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise3_result },
+    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise3_result },
+    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise3_result },
+  ]}
+/>
 *Animated Shimmer Quilt — simulated result across source images.*
 **Source**: A slowly moving video source — a gently shifting abstract pattern, a slow camera pan, or a face with subtle expression changes.
 

@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/dashcam/dashcam_hero.png
 description: "Dashcam emulates the look of footage recorded by a low-cost dashboard-mounted camera."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import dashcam_hero from '/img/instruments/videomancer/dashcam/dashcam_hero.png';
-import dashcam_before_after from '/img/instruments/videomancer/dashcam/dashcam_before_after.png';
 import dashcam_control_panel from '/img/instruments/videomancer/dashcam/dashcam_control_panel.png';
 import dashcam_exercise1_result from '/img/instruments/videomancer/dashcam/dashcam_exercise1_result.png';
 import dashcam_exercise2_result from '/img/instruments/videomancer/dashcam/dashcam_exercise2_result.png';
 import dashcam_exercise3_result from '/img/instruments/videomancer/dashcam/dashcam_exercise3_result.png';
+import dashcam_source1_kodim05 from '/img/instruments/videomancer/dashcam/dashcam_source1_kodim05.png';
+import dashcam_source2_kodim15 from '/img/instruments/videomancer/dashcam/dashcam_source2_kodim15.png';
+import dashcam_source3_kodim15_bw from '/img/instruments/videomancer/dashcam/dashcam_source3_kodim15_bw.png';
 
 # Dashcam
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={dashcam_hero} alt="Dashcam hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_hero },
+    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_hero },
+    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_hero },
+  ]}
+/>
 *Barrel distortion, edge vignette, LFSR noise, and a blinking recording indicator transform clean video into convincing dashboard camera footage.*
-<img src={dashcam_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Dashcam applied.*
 
 ---
 
@@ -202,7 +209,13 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 ### Exercise 1: Wide-Angle Lens Look
 
-<img src={dashcam_exercise1_result} alt="Wide-Angle Lens Look result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise1_result },
+    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise1_result },
+    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise1_result },
+  ]}
+/>
 *Wide-Angle Lens Look — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with visible straight lines — architecture, grids, or tiled surfaces.
 
@@ -220,7 +233,13 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 ### Exercise 2: Night Surveillance
 
-<img src={dashcam_exercise2_result} alt="Night Surveillance result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise2_result },
+    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise2_result },
+    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise2_result },
+  ]}
+/>
 *Night Surveillance — simulated result across source images.*
 **Source**: Dark or dimly-lit footage, or any footage where the contrast between bright and dark areas is prominent.
 
@@ -239,7 +258,13 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 ### Exercise 3: Full Dashcam Reconstruction
 
-<img src={dashcam_exercise3_result} alt="Full Dashcam Reconstruction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise3_result },
+    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise3_result },
+    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise3_result },
+  ]}
+/>
 *Full Dashcam Reconstruction — simulated result across source images.*
 **Source**: Any moving footage — particularly driving footage or POV video.
 

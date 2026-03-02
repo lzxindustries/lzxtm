@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 304
+sidebar_position: 305
 slug: /instruments/videomancer/vigil
 title: "Vigil"
 image: /img/instruments/videomancer/vigil/vigil_hero.png
 description: "Security cameras do not produce beautiful images."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import vigil_hero from '/img/instruments/videomancer/vigil/vigil_hero.png';
-import vigil_before_after from '/img/instruments/videomancer/vigil/vigil_before_after.png';
 import vigil_control_panel from '/img/instruments/videomancer/vigil/vigil_control_panel.png';
 import vigil_exercise1_result from '/img/instruments/videomancer/vigil/vigil_exercise1_result.png';
 import vigil_exercise2_result from '/img/instruments/videomancer/vigil/vigil_exercise2_result.png';
 import vigil_exercise3_result from '/img/instruments/videomancer/vigil/vigil_exercise3_result.png';
+import vigil_source1_kodim05 from '/img/instruments/videomancer/vigil/vigil_source1_kodim05.png';
+import vigil_source2_kodim15 from '/img/instruments/videomancer/vigil/vigil_source2_kodim15.png';
+import vigil_source3_kodim15_bw from '/img/instruments/videomancer/vigil/vigil_source3_kodim15_bw.png';
 
 # Vigil
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={vigil_hero} alt="Vigil hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_hero },
+    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_hero },
+    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_hero },
+  ]}
+/>
 *Vigil degrading a live camera feed into a grainy, desaturated CCTV surveillance image with scanline noise bands, horizontal tearing, line dropouts, and a timestamp bar overlay.*
-<img src={vigil_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Vigil applied.*
 
 ---
 
@@ -189,7 +196,13 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ### Exercise 1: Basic Surveillance Look
 
-<img src={vigil_exercise1_result} alt="Basic Surveillance Look result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise1_result },
+    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise1_result },
+    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise1_result },
+  ]}
+/>
 *Basic Surveillance Look — simulated result across source images.*
 **Source**: Indoor footage with mixed lighting — office scenes, hallways, or room interiors work well.
 
@@ -208,7 +221,13 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ### Exercise 2: Signal Degradation
 
-<img src={vigil_exercise2_result} alt="Signal Degradation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise2_result },
+    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise2_result },
+    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise2_result },
+  ]}
+/>
 *Signal Degradation — simulated result across source images.*
 **Source**: Outdoor footage with movement — traffic, pedestrians, or nature scenes with motion.
 
@@ -228,7 +247,13 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ### Exercise 3: Total Signal Destruction
 
-<img src={vigil_exercise3_result} alt="Total Signal Destruction result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise3_result },
+    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise3_result },
+    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise3_result },
+  ]}
+/>
 *Total Signal Destruction — simulated result across source images.*
 **Source**: Any footage — the heavy processing will obscure most content.
 

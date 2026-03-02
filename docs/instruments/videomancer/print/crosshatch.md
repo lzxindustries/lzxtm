@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/crosshatch/crosshatch_hero.png
 description: "Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only marks and blank surface."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import crosshatch_hero from '/img/instruments/videomancer/crosshatch/crosshatch_hero.png';
-import crosshatch_before_after from '/img/instruments/videomancer/crosshatch/crosshatch_before_after.png';
 import crosshatch_control_panel from '/img/instruments/videomancer/crosshatch/crosshatch_control_panel.png';
 import crosshatch_exercise1_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise1_result.png';
 import crosshatch_exercise2_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise2_result.png';
 import crosshatch_exercise3_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise3_result.png';
+import crosshatch_source1_kodim02 from '/img/instruments/videomancer/crosshatch/crosshatch_source1_kodim02.png';
+import crosshatch_source2_kodim07 from '/img/instruments/videomancer/crosshatch/crosshatch_source2_kodim07.png';
+import crosshatch_source3_kodim01_bw from '/img/instruments/videomancer/crosshatch/crosshatch_source3_kodim01_bw.png';
 
 # Crosshatch
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={crosshatch_hero} alt="Crosshatch hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_hero },
+    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_hero },
+    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_hero },
+  ]}
+/>
 *Crosshatch rendering diagonal ink strokes at variable density across a luminance-graded portrait, emulating copperplate engraving.*
-<img src={crosshatch_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Crosshatch applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 ### Exercise 1: Pen Sketch
 
-<img src={crosshatch_exercise1_result} alt="Pen Sketch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise1_result },
+    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise1_result },
+    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise1_result },
+  ]}
+/>
 *Pen Sketch — simulated result across source images.*
 **Source**: A head-and-shoulders portrait or bust shot with directional lighting creating clear highlight and shadow regions.
 
@@ -223,7 +236,13 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 ### Exercise 2: Copperplate Engraving
 
-<img src={crosshatch_exercise2_result} alt="Copperplate Engraving result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise2_result },
+    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise2_result },
+    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise2_result },
+  ]}
+/>
 *Copperplate Engraving — simulated result across source images.*
 **Source**: Architectural footage or a still life with clear geometric forms and strong contrast.
 
@@ -243,7 +262,13 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 ### Exercise 3: Color-Keyed Etch
 
-<img src={crosshatch_exercise3_result} alt="Color-Keyed Etch result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise3_result },
+    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise3_result },
+    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise3_result },
+  ]}
+/>
 *Color-Keyed Etch — simulated result across source images.*
 **Source**: Colorful footage — flowers, painted walls, neon signage, or a color bar test pattern.
 

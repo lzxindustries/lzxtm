@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 236
+sidebar_position: 237
 slug: /instruments/videomancer/riso
 title: "Riso"
 image: /img/instruments/videomancer/riso/riso_hero.png
 description: "Risograph printing is a stencil-based duplicating process beloved by artists and zine-makers for its vivid spot inks, imperfect registration, and textured grain."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import riso_hero from '/img/instruments/videomancer/riso/riso_hero.png';
-import riso_before_after from '/img/instruments/videomancer/riso/riso_before_after.png';
 import riso_control_panel from '/img/instruments/videomancer/riso/riso_control_panel.png';
 import riso_exercise1_result from '/img/instruments/videomancer/riso/riso_exercise1_result.png';
 import riso_exercise2_result from '/img/instruments/videomancer/riso/riso_exercise2_result.png';
 import riso_exercise3_result from '/img/instruments/videomancer/riso/riso_exercise3_result.png';
+import riso_source1_kodim02 from '/img/instruments/videomancer/riso/riso_source1_kodim02.png';
+import riso_source2_kodim07 from '/img/instruments/videomancer/riso/riso_source2_kodim07.png';
+import riso_source3_kodim01_bw from '/img/instruments/videomancer/riso/riso_source3_kodim01_bw.png';
 
 # Riso
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={riso_hero} alt="Riso hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: riso_source1_kodim02, after: riso_hero },
+    { label: "Kodim07", before: riso_source2_kodim07, after: riso_hero },
+    { label: "Kodim01 B&W", before: riso_source3_kodim01_bw, after: riso_hero },
+  ]}
+/>
 *Riso applying dual-ink subtractive spot color separation with stencil grain texture and horizontal misregistration offset.*
-<img src={riso_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Riso applied.*
 
 ---
 
@@ -205,7 +212,13 @@ These exercises progress from simple duotone separation to full multi-layer misr
 
 ### Exercise 1: Classic Duotone
 
-<img src={riso_exercise1_result} alt="Classic Duotone result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: riso_source1_kodim02, after: riso_exercise1_result },
+    { label: "Kodim07", before: riso_source2_kodim07, after: riso_exercise1_result },
+    { label: "Kodim01 B&W", before: riso_source3_kodim01_bw, after: riso_exercise1_result },
+  ]}
+/>
 *Classic Duotone — simulated result across source images.*
 **Source**: A portrait or still life with clear tonal range — visible shadows, midtones, and highlights.
 
@@ -222,7 +235,13 @@ These exercises progress from simple duotone separation to full multi-layer misr
 
 ### Exercise 2: Misregistered Print
 
-<img src={riso_exercise2_result} alt="Misregistered Print result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: riso_source1_kodim02, after: riso_exercise2_result },
+    { label: "Kodim07", before: riso_source2_kodim07, after: riso_exercise2_result },
+    { label: "Kodim01 B&W", before: riso_source3_kodim01_bw, after: riso_exercise2_result },
+  ]}
+/>
 *Misregistered Print — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text overlays, architectural details, or graphic patterns.
 
@@ -240,7 +259,13 @@ These exercises progress from simple duotone separation to full multi-layer misr
 
 ### Exercise 3: Overinked Poster
 
-<img src={riso_exercise3_result} alt="Overinked Poster result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: riso_source1_kodim02, after: riso_exercise3_result },
+    { label: "Kodim07", before: riso_source2_kodim07, after: riso_exercise3_result },
+    { label: "Kodim01 B&W", before: riso_source3_kodim01_bw, after: riso_exercise3_result },
+  ]}
+/>
 *Overinked Poster — simulated result across source images.*
 **Source**: Any footage — works especially well with bold graphic content or live camera feeds.
 

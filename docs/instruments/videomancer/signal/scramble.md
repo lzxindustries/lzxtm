@@ -1,27 +1,40 @@
 ---
 draft: false
-sidebar_position: 245
+sidebar_position: 246
 slug: /instruments/videomancer/scramble
 title: "Scramble"
 image: /img/instruments/videomancer/scramble/scramble_hero.png
 description: "Analog pay-TV systems of the late 1980s and early 1990s scrambled their signals to prevent unauthorized viewing."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import scramble_hero from '/img/instruments/videomancer/scramble/scramble_hero.png';
-import scramble_before_after from '/img/instruments/videomancer/scramble/scramble_before_after.png';
 import scramble_control_panel from '/img/instruments/videomancer/scramble/scramble_control_panel.png';
 import scramble_exercise1_result from '/img/instruments/videomancer/scramble/scramble_exercise1_result.png';
 import scramble_exercise2_result from '/img/instruments/videomancer/scramble/scramble_exercise2_result.png';
 import scramble_exercise3_result from '/img/instruments/videomancer/scramble/scramble_exercise3_result.png';
+import scramble_source1_kodim04 from '/img/instruments/videomancer/scramble/scramble_source1_kodim04.png';
+import scramble_source1_kodim15 from '/img/instruments/videomancer/scramble/scramble_source1_kodim15.png';
+import scramble_source2_kodim01 from '/img/instruments/videomancer/scramble/scramble_source2_kodim01.png';
+import scramble_source2_kodim23 from '/img/instruments/videomancer/scramble/scramble_source2_kodim23.png';
+import scramble_source3_kodim01 from '/img/instruments/videomancer/scramble/scramble_source3_kodim01.png';
+import scramble_source3_stream_bridge_512 from '/img/instruments/videomancer/scramble/scramble_source3_stream_bridge_512.png';
 
 # Scramble
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={scramble_hero} alt="Scramble hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_hero },
+    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_hero },
+    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_hero },
+    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_hero },
+    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_hero },
+    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_hero },
+  ]}
+/>
 *Scramble applying per-line cut-and-rotate shuffling with jitter and inversion zones to a portrait, recreating the look of a failing analog TV descrambler.*
-<img src={scramble_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Scramble applied.*
 
 ---
 
@@ -197,7 +210,16 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 ### Exercise 1: Basic Cut-and-Rotate
 
-<img src={scramble_exercise1_result} alt="Basic Cut-and-Rotate result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise1_result },
+    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise1_result },
+    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise1_result },
+    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise1_result },
+    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise1_result },
+    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise1_result },
+  ]}
+/>
 *Basic Cut-and-Rotate — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects — faces, text, or geometric patterns work well because the scrambling effect is most obvious when you can tell the image *should* be coherent.
 
@@ -216,7 +238,16 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 ### Exercise 2: Jitter and Inversion Artifacts
 
-<img src={scramble_exercise2_result} alt="Jitter and Inversion Artifacts result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise2_result },
+    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise2_result },
+    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise2_result },
+    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise2_result },
+    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise2_result },
+    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise2_result },
+  ]}
+/>
 *Jitter and Inversion Artifacts — simulated result across source images.*
 **Source**: Any footage, preferably with a mix of bright and dark regions to make inversion zones clearly visible.
 
@@ -235,7 +266,16 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 ### Exercise 3: Full Descrambler Failure
 
-<img src={scramble_exercise3_result} alt="Full Descrambler Failure result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise3_result },
+    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise3_result },
+    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise3_result },
+    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise3_result },
+    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise3_result },
+    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise3_result },
+  ]}
+/>
 *Full Descrambler Failure — simulated result across source images.*
 **Source**: Any dynamic video source — movement helps reveal the drift and luma modulation effects.
 

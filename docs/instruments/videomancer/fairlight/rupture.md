@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 239
+sidebar_position: 240
 slug: /instruments/videomancer/rupture
 title: "Rupture"
 image: /img/instruments/videomancer/rupture/rupture_hero.png
 description: "Color folding is the video equivalent of bending sheet metal past its elastic limit — push a signal value beyond its maximum and, instead of clipping flat, it reflects back downward, creating a mirror-image contour inside the original gradient."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import rupture_hero from '/img/instruments/videomancer/rupture/rupture_hero.png';
-import rupture_before_after from '/img/instruments/videomancer/rupture/rupture_before_after.png';
 import rupture_control_panel from '/img/instruments/videomancer/rupture/rupture_control_panel.png';
 import rupture_exercise1_result from '/img/instruments/videomancer/rupture/rupture_exercise1_result.png';
 import rupture_exercise2_result from '/img/instruments/videomancer/rupture/rupture_exercise2_result.png';
 import rupture_exercise3_result from '/img/instruments/videomancer/rupture/rupture_exercise3_result.png';
+import rupture_source1_kodim15 from '/img/instruments/videomancer/rupture/rupture_source1_kodim15.png';
+import rupture_source2_kodim01 from '/img/instruments/videomancer/rupture/rupture_source2_kodim01.png';
+import rupture_source3_kodim01_bw from '/img/instruments/videomancer/rupture/rupture_source3_kodim01_bw.png';
 
 # Rupture
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={rupture_hero} alt="Rupture hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_hero },
+    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_hero },
+    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_hero },
+  ]}
+/>
 *Rupture applying cascaded triangle-fold color inversion with hue-distributed offsets to create iridescent contour structures.*
-<img src={rupture_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Rupture applied.*
 
 ---
 
@@ -211,7 +218,13 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 ### Exercise 1: Single-Stage Luminance Fold
 
-<img src={rupture_exercise1_result} alt="Single-Stage Luminance Fold result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise1_result },
+    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise1_result },
+    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise1_result },
+  ]}
+/>
 *Single-Stage Luminance Fold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — skies, skin tones, or gradient test patterns.
 
@@ -230,7 +243,13 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 ### Exercise 2: Cascaded Color Iridescence
 
-<img src={rupture_exercise2_result} alt="Cascaded Color Iridescence result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise2_result },
+    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise2_result },
+    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise2_result },
+  ]}
+/>
 *Cascaded Color Iridescence — simulated result across source images.*
 **Source**: High-contrast footage with varied colors — flowers, painted surfaces, or colorful graphics.
 
@@ -250,7 +269,13 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 ### Exercise 3: Animated Auto-Sweep Evolution
 
-<img src={rupture_exercise3_result} alt="Animated Auto-Sweep Evolution result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise3_result },
+    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise3_result },
+    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise3_result },
+  ]}
+/>
 *Animated Auto-Sweep Evolution — simulated result across source images.*
 **Source**: Slow-moving or static footage with broad tonal areas — landscapes, architectural footage, or abstract color fields.
 

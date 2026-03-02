@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 251
+sidebar_position: 252
 slug: /instruments/videomancer/sideband
 title: "Sideband"
 image: /img/instruments/videomancer/sideband/sideband_hero.png
 description: "Before cable and digital broadcasting, television reception was an analog adventure."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import sideband_hero from '/img/instruments/videomancer/sideband/sideband_hero.png';
-import sideband_before_after from '/img/instruments/videomancer/sideband/sideband_before_after.png';
 import sideband_control_panel from '/img/instruments/videomancer/sideband/sideband_control_panel.png';
 import sideband_exercise1_result from '/img/instruments/videomancer/sideband/sideband_exercise1_result.png';
 import sideband_exercise2_result from '/img/instruments/videomancer/sideband/sideband_exercise2_result.png';
 import sideband_exercise3_result from '/img/instruments/videomancer/sideband/sideband_exercise3_result.png';
+import sideband_source1_kodim15 from '/img/instruments/videomancer/sideband/sideband_source1_kodim15.png';
+import sideband_source2_kodim01 from '/img/instruments/videomancer/sideband/sideband_source2_kodim01.png';
+import sideband_source3_stream_bridge_512 from '/img/instruments/videomancer/sideband/sideband_source3_stream_bridge_512.png';
 
 # Sideband
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={sideband_hero} alt="Sideband hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_hero },
+    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_hero },
+    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_hero },
+  ]}
+/>
 *Sideband degrading a clean video signal with multipath ghost echoes, herringbone interference, rolling hum bars, and snow noise.*
-<img src={sideband_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Sideband applied.*
 
 ---
 
@@ -212,7 +219,13 @@ These exercises progress from individual artifact exploration through combined d
 
 ### Exercise 1: Ghost Delay and Polarity
 
-<img src={sideband_exercise1_result} alt="Ghost Delay and Polarity result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise1_result },
+    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise1_result },
+    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise1_result },
+  ]}
+/>
 *Ghost Delay and Polarity — simulated result across source images.*
 **Source**: A high-contrast test pattern or graphics-heavy footage with sharp vertical edges — text, geometric shapes, or architectural details.
 
@@ -231,7 +244,13 @@ These exercises progress from individual artifact exploration through combined d
 
 ### Exercise 2: Interference and Hum Bars
 
-<img src={sideband_exercise2_result} alt="Interference and Hum Bars result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise2_result },
+    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise2_result },
+    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise2_result },
+  ]}
+/>
 *Interference and Hum Bars — simulated result across source images.*
 **Source**: A flat or slowly varying image — a solid color field, a gentle gradient, or a static scene with minimal detail to make the interference pattern clearly visible.
 
@@ -250,7 +269,13 @@ These exercises progress from individual artifact exploration through combined d
 
 ### Exercise 3: Weak Signal Simulation
 
-<img src={sideband_exercise3_result} alt="Weak Signal Simulation result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise3_result },
+    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise3_result },
+    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise3_result },
+  ]}
+/>
 *Weak Signal Simulation — simulated result across source images.*
 **Source**: Any video — this exercise works best with recognizable content so you can judge the degradation level.
 

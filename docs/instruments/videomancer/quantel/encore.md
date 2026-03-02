@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/encore/encore_hero.png
 description: "Broadcast television invented picture-in-picture to show two things at once — a sports score ticker floating over live action, a news anchor inset against a remote feed."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import encore_hero from '/img/instruments/videomancer/encore/encore_hero.png';
-import encore_before_after from '/img/instruments/videomancer/encore/encore_before_after.png';
 import encore_control_panel from '/img/instruments/videomancer/encore/encore_control_panel.png';
 import encore_exercise1_result from '/img/instruments/videomancer/encore/encore_exercise1_result.png';
 import encore_exercise2_result from '/img/instruments/videomancer/encore/encore_exercise2_result.png';
 import encore_exercise3_result from '/img/instruments/videomancer/encore/encore_exercise3_result.png';
+import encore_source1_kodim15 from '/img/instruments/videomancer/encore/encore_source1_kodim15.png';
+import encore_source2_kodim01 from '/img/instruments/videomancer/encore/encore_source2_kodim01.png';
+import encore_source3_kodim01_bw from '/img/instruments/videomancer/encore/encore_source3_kodim01_bw.png';
 
 # Encore
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={encore_hero} alt="Encore hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: encore_source1_kodim15, after: encore_hero },
+    { label: "Kodim01", before: encore_source2_kodim01, after: encore_hero },
+    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_hero },
+  ]}
+/>
 *Encore compositing a bordered picture-in-picture window with drop shadow over a darkened background.*
-<img src={encore_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Encore applied.*
 
 ---
 
@@ -204,7 +211,13 @@ These exercises progress from basic window positioning to layered compositing wi
 
 ### Exercise 1: Centered Inset
 
-<img src={encore_exercise1_result} alt="Centered Inset result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise1_result },
+    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise1_result },
+    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise1_result },
+  ]}
+/>
 *Centered Inset — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a clearly recognizable subject.
 
@@ -222,7 +235,13 @@ These exercises progress from basic window positioning to layered compositing wi
 
 ### Exercise 2: Framed Window with Shadow
 
-<img src={encore_exercise2_result} alt="Framed Window with Shadow result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise2_result },
+    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise2_result },
+    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise2_result },
+  ]}
+/>
 *Framed Window with Shadow — simulated result across source images.*
 **Source**: Any video footage with moderate brightness and color variation.
 
@@ -241,7 +260,13 @@ These exercises progress from basic window positioning to layered compositing wi
 
 ### Exercise 3: Inverted Inset Composite
 
-<img src={encore_exercise3_result} alt="Inverted Inset Composite result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise3_result },
+    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise3_result },
+    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise3_result },
+  ]}
+/>
 *Inverted Inset Composite — simulated result across source images.*
 **Source**: High-contrast footage — strong lighting, distinct bright and dark regions.
 

@@ -1,27 +1,34 @@
 ---
 draft: true
-sidebar_position: 233
+sidebar_position: 234
 slug: /instruments/videomancer/relief
 title: "Relief"
 image: /img/instruments/videomancer/relief/relief_hero.png
 description: "A bas-relief is a sculptural technique where figures are carved into a flat surface, projecting slightly outward to catch light at their edges."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import relief_hero from '/img/instruments/videomancer/relief/relief_hero.png';
-import relief_before_after from '/img/instruments/videomancer/relief/relief_before_after.png';
 import relief_control_panel from '/img/instruments/videomancer/relief/relief_control_panel.png';
 import relief_exercise1_result from '/img/instruments/videomancer/relief/relief_exercise1_result.png';
 import relief_exercise2_result from '/img/instruments/videomancer/relief/relief_exercise2_result.png';
 import relief_exercise3_result from '/img/instruments/videomancer/relief/relief_exercise3_result.png';
+import relief_source1_kodim15 from '/img/instruments/videomancer/relief/relief_source1_kodim15.png';
+import relief_source2_kodim15_bw from '/img/instruments/videomancer/relief/relief_source2_kodim15_bw.png';
+import relief_source3_male_1024 from '/img/instruments/videomancer/relief/relief_source3_male_1024.png';
 
 # Relief
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={relief_hero} alt="Relief hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: relief_source1_kodim15, after: relief_hero },
+    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_hero },
+    { label: "Male", before: relief_source3_male_1024, after: relief_hero },
+  ]}
+/>
 *Relief applying directional emboss with specular highlights and Lambertian surface lighting to sculpt a flat video signal into a three-dimensional bas-relief.*
-<img src={relief_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Relief applied.*
 
 ---
 
@@ -198,7 +205,13 @@ These exercises progress from basic directional emboss through surface lighting 
 
 ### Exercise 1: Stone Carving
 
-<img src={relief_exercise1_result} alt="Stone Carving result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise1_result },
+    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise1_result },
+    { label: "Male", before: relief_source3_male_1024, after: relief_exercise1_result },
+  ]}
+/>
 *Stone Carving — simulated result across source images.*
 **Source**: A portrait or face close-up with strong tonal variation.
 
@@ -217,7 +230,13 @@ These exercises progress from basic directional emboss through surface lighting 
 
 ### Exercise 2: Metallic Surface
 
-<img src={relief_exercise2_result} alt="Metallic Surface result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise2_result },
+    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise2_result },
+    { label: "Male", before: relief_source3_male_1024, after: relief_exercise2_result },
+  ]}
+/>
 *Metallic Surface — simulated result across source images.*
 **Source**: Colorful footage — flowers, painted surfaces, or abstract color fields.
 
@@ -236,7 +255,13 @@ These exercises progress from basic directional emboss through surface lighting 
 
 ### Exercise 3: Emboss Edge Map
 
-<img src={relief_exercise3_result} alt="Emboss Edge Map result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise3_result },
+    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise3_result },
+    { label: "Male", before: relief_source3_male_1024, after: relief_exercise3_result },
+  ]}
+/>
 *Emboss Edge Map — simulated result across source images.*
 **Source**: High-contrast graphics, text, or geometric patterns.
 

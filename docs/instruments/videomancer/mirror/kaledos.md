@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/kaledos/kaledos_hero.png
 description: "In 1816, the Scottish physicist Sir David Brewster patented the kaleidoscope — a tube of mirrors that transforms a handful of colored fragments into an infinite tiling of perfect symmetry."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import kaledos_hero from '/img/instruments/videomancer/kaledos/kaledos_hero.png';
-import kaledos_before_after from '/img/instruments/videomancer/kaledos/kaledos_before_after.png';
 import kaledos_control_panel from '/img/instruments/videomancer/kaledos/kaledos_control_panel.png';
 import kaledos_exercise1_result from '/img/instruments/videomancer/kaledos/kaledos_exercise1_result.png';
 import kaledos_exercise2_result from '/img/instruments/videomancer/kaledos/kaledos_exercise2_result.png';
 import kaledos_exercise3_result from '/img/instruments/videomancer/kaledos/kaledos_exercise3_result.png';
+import kaledos_source1_kodim01 from '/img/instruments/videomancer/kaledos/kaledos_source1_kodim01.png';
+import kaledos_source2_kodim02 from '/img/instruments/videomancer/kaledos/kaledos_source2_kodim02.png';
+import kaledos_source3_kodim01_bw from '/img/instruments/videomancer/kaledos/kaledos_source3_kodim01_bw.png';
 
 # Kaledos
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={kaledos_hero} alt="Kaledos hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_hero },
+    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_hero },
+    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_hero },
+  ]}
+/>
 *Kaledos splitting a cathedral window into twelve-fold crystalline symmetry, each sector tinted by per-sector hue rotation through the full color wheel.*
-<img src={kaledos_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Kaledos applied.*
 
 ---
 
@@ -214,7 +221,13 @@ These exercises progress from simple mirroring through decorative features to co
 
 ### Exercise 1: Basic Mirror Symmetry
 
-<img src={kaledos_exercise1_result} alt="Basic Mirror Symmetry result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise1_result },
+    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise1_result },
+    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise1_result },
+  ]}
+/>
 *Basic Mirror Symmetry — simulated result across source images.*
 **Source**: A live camera pointed at a face, hand, or detailed object. High-contrast subjects work best.
 
@@ -233,7 +246,13 @@ These exercises progress from simple mirroring through decorative features to co
 
 ### Exercise 2: Colored Glass Kaleidoscope
 
-<img src={kaledos_exercise2_result} alt="Colored Glass Kaleidoscope result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise2_result },
+    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise2_result },
+    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise2_result },
+  ]}
+/>
 *Colored Glass Kaleidoscope — simulated result across source images.*
 **Source**: Footage with moderate color saturation — flowers, stained glass, or colored fabric. Color variety in the source makes the hue rotation more dramatic.
 
@@ -252,7 +271,13 @@ These exercises progress from simple mirroring through decorative features to co
 
 ### Exercise 3: Spinning Kaleidoscope
 
-<img src={kaledos_exercise3_result} alt="Spinning Kaleidoscope result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise3_result },
+    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise3_result },
+    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise3_result },
+  ]}
+/>
 *Spinning Kaleidoscope — simulated result across source images.*
 **Source**: Any dynamic video — camera footage, animation, or generative video from another Videomancer program chained upstream.
 

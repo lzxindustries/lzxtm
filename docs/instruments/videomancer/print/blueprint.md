@@ -7,21 +7,28 @@ image: /img/instruments/videomancer/blueprint/blueprint_hero.png
 description: "Blueprint transforms a video signal into a cyanotype-style technical drawing."
 ---
 
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import blueprint_hero from '/img/instruments/videomancer/blueprint/blueprint_hero.png';
-import blueprint_before_after from '/img/instruments/videomancer/blueprint/blueprint_before_after.png';
 import blueprint_control_panel from '/img/instruments/videomancer/blueprint/blueprint_control_panel.png';
 import blueprint_exercise1_result from '/img/instruments/videomancer/blueprint/blueprint_exercise1_result.png';
 import blueprint_exercise2_result from '/img/instruments/videomancer/blueprint/blueprint_exercise2_result.png';
 import blueprint_exercise3_result from '/img/instruments/videomancer/blueprint/blueprint_exercise3_result.png';
+import blueprint_source1_kodim02 from '/img/instruments/videomancer/blueprint/blueprint_source1_kodim02.png';
+import blueprint_source2_kodim07 from '/img/instruments/videomancer/blueprint/blueprint_source2_kodim07.png';
+import blueprint_source3_kodim01_bw from '/img/instruments/videomancer/blueprint/blueprint_source3_kodim01_bw.png';
 
 # Blueprint
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<img src={blueprint_hero} alt="Blueprint hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_hero },
+    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_hero },
+    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_hero },
+  ]}
+/>
 *White contour lines trace every edge in the source against a deep Prussian blue ground, turning living video into an engineering drawing.*
-<img src={blueprint_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Blueprint applied.*
 
 ---
 
@@ -213,7 +220,13 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 ### Exercise 1: Simple Edge Drawing
 
-<img src={blueprint_exercise1_result} alt="Simple Edge Drawing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise1_result },
+    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise1_result },
+    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise1_result },
+  ]}
+/>
 *Simple Edge Drawing — simulated result across source images.*
 **Source**: Architectural footage or any scene with clear geometric shapes.
 
@@ -232,7 +245,13 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 ### Exercise 2: Engineering Grid Overlay
 
-<img src={blueprint_exercise2_result} alt="Engineering Grid Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise2_result },
+    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise2_result },
+    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise2_result },
+  ]}
+/>
 *Engineering Grid Overlay — simulated result across source images.*
 **Source**: Any footage — the grid is independent of video content.
 
@@ -251,7 +270,13 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 ### Exercise 3: Full Technical Drawing
 
-<img src={blueprint_exercise3_result} alt="Full Technical Drawing result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise3_result },
+    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise3_result },
+    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise3_result },
+  ]}
+/>
 *Full Technical Drawing — simulated result across source images.*
 **Source**: Mechanical parts, circuit boards, or architectural subjects.
 
