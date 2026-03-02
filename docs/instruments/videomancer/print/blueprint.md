@@ -58,7 +58,7 @@ Engineering drawings use reference grids at regular intervals. Blueprint impleme
 
 ### Shift-Based Contrast Scaling
 
-Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (>>2), ×0.5 (>>1), ×1.0 (none), ×2.0 (<<1, clamped), and ×4.0 (<<2, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
+Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (`>>2`), ×0.5 (`>>1`), ×1.0 (none), ×2.0 (`<<1`, clamped), and ×4.0 (`<<2`, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
 
 
 ---
