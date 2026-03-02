@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 189
+sidebar_position: 204
 slug: /instruments/videomancer/parallax
 title: "Parallax"
 image: /img/instruments/videomancer/parallax/parallax_hero.png
-description: "In the 1980s and early 1990s, the Amiga computer's custom Copper coprocessor could change hardware color registers on a per-scanline basis, enabling pro..."
+description: "In the 1980s and early 1990s, the Amiga computer's custom Copper coprocessor could change hardware color registers on a per-scanline basis, enabling programmers to produce smooth horizontal color gradients and scrolling raster bar effects that seemed impossible for the era's hardware."
 ---
 
+import parallax_hero from '/img/instruments/videomancer/parallax/parallax_hero.png';
 import parallax_animation from '/img/instruments/videomancer/parallax/parallax_animation.gif';
 import parallax_control_panel from '/img/instruments/videomancer/parallax/parallax_control_panel.png';
 import parallax_exercise1_result from '/img/instruments/videomancer/parallax/parallax_exercise1_result.gif';
 import parallax_exercise2_result from '/img/instruments/videomancer/parallax/parallax_exercise2_result.gif';
 import parallax_exercise3_result from '/img/instruments/videomancer/parallax/parallax_exercise3_result.gif';
-import parallax_hero from '/img/instruments/videomancer/parallax/parallax_hero.png';
 
 # Parallax
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={parallax_hero} alt="Parallax hero image"/>
 *Parallax generating multi-layered horizontal raster bars with depth-based scroll speeds and palette color cycling, evoking classic Amiga demoscene copper effects.*
@@ -212,7 +208,7 @@ Crossfades between the dry (original) input signal and the wet (raster bar) outp
 
 ## Guided Exercises
 
-These exercises progress from basic raster bars to complex animated color fields, exploring the interplay between DDS frequency, palette selection, waveshaping, and video modulation.
+These exercises progress from basic raster bars to complex animated colour fields, exploring the interplay between DDS frequency, palette selection, waveshaping, and video modulation.
 
 ### Exercise 1: Classic Copper Bars
 
@@ -240,12 +236,12 @@ These exercises progress from basic raster bars to complex animated color fields
 1. **Select Plasma palette**: Set Palette to position 5 (Plasma) for the classic demoscene warm-to-cool cycle.
 2. **Set vertical frequency**: V Freq ~40% for moderate vertical repetition.
 3. **Enable horizontal oscillator**: Toggle H Enable On and set H Freq to ~35%. Diagonal color bands appear as the horizontal phase combines with the vertical.
-4. **Triangle waveshape**: Set Waveshape to position 1 (Triangle) for smooth, symmetric color transitions.
+4. **Triangle waveshape**: Set Waveshape to position 1 (Triangle) for smooth, symmetric colour transitions.
 5. **Enable mirror**: Toggle Mirror On. The pattern reflects from the center, creating a kaleidoscopic symmetry.
 6. **Slow scroll**: Set Scroll to ~55% for gentle upward drift. The plasma field undulates slowly.
-7. **Observe**: The display shows a 2D color plasma reminiscent of classic demoscene effects, with symmetric reflections and smooth color cycling.
+7. **Observe**: The display shows a 2D color plasma reminiscent of classic demoscene effects, with symmetric reflections and smooth colour cycling.
 
-**Key concepts**: Horizontal DDS adds a second dimension to the bar pattern, mirror creates bilateral symmetry, triangle waveshape produces smooth gradients, palette selection defines the overall color character
+**Key concepts**: Horizontal DDS adds a second dimension to the bar pattern, mirror creates bilateral symmetry, triangle waveshape produces smooth gradients, palette selection defines the overall colour character
 
 ---
 
@@ -253,14 +249,14 @@ These exercises progress from basic raster bars to complex animated color fields
 
 <img src={parallax_exercise3_result} alt="Neon Video Overlay result"/>
 *Neon Video Overlay — simulated result across source images.*
-**Objective**: Use additive blend mode and video modulation to overlay neon-colored raster bars onto live footage, creating a vivid color-treated image.
+**Objective**: Use additive blend mode and video modulation to overlay neon-coloured raster bars onto live footage, creating a vivid colour-treated image.
 
 1. **Select Neon palette**: Set Palette to position 3 (Neon) for synthwave purples and pinks.
 2. **Set video depth**: Turn Video Depth to ~70%. The bars will be strongly influenced by the video brightness.
-3. **Additive blend**: Toggle Blend Mode to Additive. The bar colors add to the video signal, creating glowing highlights.
-4. **Moderate frequency**: V Freq ~25% for wide color bands that wash across the frame.
-5. **Ramp waveshape**: Set Waveshape to position 0 (Ramp) for asymmetric color transitions — gradual on one side, sharp on the other.
-6. **Scroll for animation**: Scroll ~45% (gentle downward) for slow color cycling over the video.
+3. **Additive blend**: Toggle Blend Mode to Additive. The bar colours add to the video signal, creating glowing highlights.
+4. **Moderate frequency**: V Freq ~25% for wide colour bands that wash across the frame.
+5. **Ramp waveshape**: Set Waveshape to position 0 (Ramp) for asymmetric colour transitions — gradual on one side, sharp on the other.
+6. **Scroll for animation**: Scroll ~45% (gentle downward) for slow colour cycling over the video.
 7. **Adjust mix**: Pull Mix to ~70% to let some of the original video show through unaffected.
 
 **Key concepts**: Additive blend mode creates neon glow overlays, video depth modulation anchors bars to video brightness, mix control blends original and processed for subtlety
@@ -270,14 +266,14 @@ These exercises progress from basic raster bars to complex animated color fields
 
 ## Tips
 
-- **Square waveshape for retro authenticity**: The square waveshape produces flat color bands with hard edges — the closest visual match to original Amiga copper bar effects.
+- **Square waveshape for retro authenticity**: The square waveshape produces flat colour bands with hard edges — the closest visual match to original Amiga copper bar effects.
 - **Ramp for asymmetry**: The ramp (sawtooth) waveshape creates bars that rise gradually and drop sharply, producing a distinctive directional quality that interacts well with vertical scrolling.
 - **Palette 7 (Binary) for strobing**: The black/white alternating palette combined with square waveshape creates dramatic high-contrast stripe patterns suitable for projection onto three-dimensional objects.
-- **Video Depth at ~50% for glass effects**: With multiply blend, moderate Video Depth creates a colored-glass overlay where the video content is visible through tinted horizontal bands.
-- **H Enable + Mirror for kaleidoscope**: Combining horizontal oscillation with vertical mirroring creates symmetric 2D color fields reminiscent of kaleidoscope patterns.
+- **Video Depth at ~50% for glass effects**: With multiply blend, moderate Video Depth creates a coloured-glass overlay where the video content is visible through tinted horizontal bands.
+- **H Enable + Mirror for kaleidoscope**: Combining horizontal oscillation with vertical mirroring creates symmetric 2D colour fields reminiscent of kaleidoscope patterns.
 - **Sync Field for composition**: Enable Sync Field to freeze the bar pattern while adjusting frequency, palette, and waveshape. Once the composition looks right, disable Sync Field to let it animate.
-- **Feedback with raster bars**: Routing Parallax output back to the input with additive blend creates self-reinforcing color accumulation — the bars compound in brightness with each pass, producing vivid neon streaks.
-- **Mix at 30–50% for texture**: Full-strength raster bars can overwhelm video content. Pull Mix to 30–50% for a subtle color wash that adds retro character without obscuring the picture.
+- **Feedback with raster bars**: Routing Parallax output back to the input with additive blend creates self-reinforcing colour accumulation — the bars compound in brightness with each pass, producing vivid neon streaks.
+- **Mix at 30–50% for texture**: Full-strength raster bars can overwhelm video content. Pull Mix to 30–50% for a subtle colour wash that adds retro character without obscuring the picture.
 
 ---
 
@@ -286,13 +282,15 @@ These exercises progress from basic raster bars to complex animated color fields
 | Term | Definition |
 |------|------------|
 | **Additive blend** | A compositing mode where pixel values are summed, producing brighter results where both signals are present; creates a neon glow effect. |
-| **Copper** | The Amiga computer's co-processor, capable of changing hardware registers at specific beam positions to create per-scanline color effects. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **Copper** | The Amiga computer's co-processor, capable of changing hardware registers at specific beam positions to create per-scanline colour effects. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator incremented by a frequency word each clock cycle. |
 | **Demoscene** | A computer art subculture focused on creating real-time audio-visual productions (demos) that push hardware to its limits. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Multiply blend** | A compositing mode where pixel values are multiplied, producing darker results where either signal is dark; creates a colored-glass effect. |
-| **Palette** | An indexed set of predefined colors; in Parallax, 8 palettes of 8 colors each provide the bar coloring. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **Multiply blend** | A compositing mode where pixel values are multiplied, producing darker results where either signal is dark; creates a coloured-glass effect. |
+| **Palette** | An indexed set of predefined colours; in Parallax, 8 palettes of 8 colours each provide the bar colouring. |
 | **Phase accumulator** | A digital counter that wraps at its maximum value, producing a periodic ramp used as the basis for DDS waveform generation. |
-| **Raster bar** | A horizontal band of color produced by changing the display palette on a per-scanline basis, a signature effect of 1980s–90s demoscene productions. |
+| **Raster bar** | A horizontal band of colour produced by changing the display palette on a per-scanline basis, a signature effect of 1980s–90s demoscene productions. |
 | **Waveshaping** | The process of transforming a raw phase ramp into a specific waveform profile (triangle, sine, square, etc.) for different visual bar profiles. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+---

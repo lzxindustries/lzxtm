@@ -283,15 +283,15 @@ These exercises progress from a simple static overlay to an animated infinite la
 |------|------------|
 | **Avalanche property** | A desirable hash function characteristic where a small change in input produces a large, unpredictable change in output, ensuring adjacent seeds generate unrelated mazes. |
 | **Binary space partitioning** | A method of recursively subdividing a spatial region into two halves; used conceptually here to generate maze corridor structures from coordinate-based hash decisions. |
-| **Chrominance** | The color difference components of a video signal (U and V channels); discarded in Video wall mode to produce monochromatic wall rendering. |
+| **Chrominance** | The colour difference components of a video signal (U and V channels); discarded in Video wall mode to produce monochromatic wall rendering. |
 | **Combinational logic** | Digital circuitry whose output depends solely on current inputs with no clock or stored state; the entire maze is computed combinationally per pixel. |
 | **Figure-ground** | A perceptual relationship describing which region of an image reads as the foreground object versus the background space; the Invert toggle swaps this relationship. |
 | **Hash function** | An algorithm that maps input coordinates to a deterministic but pseudo-random output value, used here to decide wall or corridor status for each pixel. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | Short for luminance; the brightness component of a video signal, used in Video wall mode to render monochromatic wall surfaces. |
 | **Parallax** | The visual effect of foreground and background elements appearing to move at different speeds, created when maze scroll direction opposes video motion. |
 | **Procedural generation** | The algorithmic creation of content from mathematical rules rather than stored data; the maze is generated per-pixel from cascaded hash computations. |
 | **Topology** | The spatial arrangement and connectivity of corridors and walls within the maze; each seed value produces a unique topology. |
 | **XOR-rotate** | A fast integer mixing operation combining bitwise exclusive-OR with bit rotation, used in cascade to build the maze's deterministic hash function. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

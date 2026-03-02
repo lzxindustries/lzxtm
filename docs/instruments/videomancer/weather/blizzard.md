@@ -300,16 +300,16 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 | Term | Definition |
 |------|------------|
 | **Additive compositing** | A blending method where pixel brightness values are summed rather than averaged, causing overlapping elements to appear brighter; physically models light-scattering particles. |
-| **Chromatic shift** | A fixed offset applied to the U and V color channels of a video signal, producing an overall color cast such as the blue tint of the frost overlay. |
+| **Chromatic shift** | A fixed offset applied to the U and V colour channels of a video signal, producing an overall colour cast such as the blue tint of the frost overlay. |
 | **Depth blur** | Additional brightness attenuation applied to the far snow layer to increase the perceived distance between near and far particles. |
 | **Grid masking** | A technique using a bitwise AND operation to test whether a pixel coordinate falls on a regularly spaced grid, used here to determine potential flake positions. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
+| **LFSR** | Linear Feedback Shift Register; a shift register that produces a deterministic pseudo-random bit sequence, used here to generate spatially varying flake positions without memory storage. |
+| **Luma** | The brightness component (Y) of a YUV video signal, independent of colour information. |
 | **MSB** | Most Significant Bit; the highest-value bit in a binary number, forced high in Heavy mode to approximately double flake density. |
 | **Parallax** | The apparent difference in speed or position of objects at different depths; Blizzard uses a 2:1 speed ratio between near and far layers to simulate volumetric depth. |
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value (1023) rather than wrapping around on overflow. |
 | **XOR** | Exclusive-OR; a bitwise operation that outputs 1 when its two input bits differ, used here to combine pixel coordinates with LFSR output for pseudo-random spatial distribution. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
 
 ---

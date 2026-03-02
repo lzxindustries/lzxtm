@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 134
+sidebar_position: 146
 slug: /instruments/videomancer/joust
 title: "Joust"
 image: /img/instruments/videomancer/joust/joust_hero.png
 description: "Classic arcade and console hardware did not have enough video memory to draw an entire screen at once."
 ---
 
+import joust_hero from '/img/instruments/videomancer/joust/joust_hero.png';
 import joust_before_after from '/img/instruments/videomancer/joust/joust_before_after.png';
 import joust_control_panel from '/img/instruments/videomancer/joust/joust_control_panel.png';
 import joust_exercise1_result from '/img/instruments/videomancer/joust/joust_exercise1_result.png';
 import joust_exercise2_result from '/img/instruments/videomancer/joust/joust_exercise2_result.png';
 import joust_exercise3_result from '/img/instruments/videomancer/joust/joust_exercise3_result.png';
-import joust_hero from '/img/instruments/videomancer/joust/joust_hero.png';
-import joust_source1_kodim15 from '/img/instruments/videomancer/joust/joust_source1_kodim15.png';
-import joust_source2_kodim03 from '/img/instruments/videomancer/joust/joust_source2_kodim03.png';
-import joust_source3_kodim15_bw from '/img/instruments/videomancer/joust/joust_source3_kodim15_bw.png';
 
 # Joust
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={joust_hero} alt="Joust hero image"/>
 *Joust dividing a video source into horizontal strips with luminance-keyed transparency, palette quantization, and NES-style sprite-overflow flicker.*
@@ -293,11 +286,13 @@ These exercises progress from basic strip division to full sprite-engine simulat
 | **Luminance Key** | Transparency determined by brightness: pixels darker than the key threshold are treated as transparent. |
 | **NES** | Nintendo Entertainment System; an 8-bit game console whose sprite engine could display a maximum of 8 sprites per scan line, producing characteristic overflow flicker. |
 | **Palette Quantization** | Reducing the number of distinct colors by truncating the lower bits of each color channel. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages; Joust uses 8 clock cycles (4 processing + 4 interpolator). |
 | **Priority Rotation** | A round-robin scheme that changes which sprites are dropped each frame, ensuring all sprites are visible at least part of the time. |
 | **Sine LUT** | A 32-entry lookup table of signed 8-bit sine values used to compute per-strip horizontal scroll offsets. |
 | **Sprite** | A small, independently movable graphic object composited onto the display by dedicated hardware in classic game systems. |
 | **Sprite Engine** | The hardware subsystem in classic game consoles responsible for positioning, prioritizing, and compositing sprites during video scan-out. |
 | **Sprite Overflow** | The condition where more sprites appear on a scan line than the hardware can render, causing excess sprites to be dropped. |
 | **Strip** | In Joust, one of N horizontal bands into which the screen is divided, each treated as an independent sprite layer. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

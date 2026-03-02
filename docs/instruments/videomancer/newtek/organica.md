@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 184
+sidebar_position: 199
 slug: /instruments/videomancer/organica
 title: "Organica"
 image: /img/instruments/videomancer/organica/organica_hero.png
 description: "Organica generates procedural color palettes by sweeping a six-segment hue wheel across the video frame."
 ---
 
+import organica_hero from '/img/instruments/videomancer/organica/organica_hero.png';
 import organica_before_after from '/img/instruments/videomancer/organica/organica_before_after.png';
 import organica_control_panel from '/img/instruments/videomancer/organica/organica_control_panel.png';
 import organica_exercise1_result from '/img/instruments/videomancer/organica/organica_exercise1_result.png';
 import organica_exercise2_result from '/img/instruments/videomancer/organica/organica_exercise2_result.png';
 import organica_exercise3_result from '/img/instruments/videomancer/organica/organica_exercise3_result.png';
-import organica_hero from '/img/instruments/videomancer/organica/organica_hero.png';
-import organica_source1_kodim15 from '/img/instruments/videomancer/organica/organica_source1_kodim15.png';
-import organica_source2_kodim03 from '/img/instruments/videomancer/organica/organica_source2_kodim03.png';
-import organica_source3_kodim13_bw from '/img/instruments/videomancer/organica/organica_source3_kodim13_bw.png';
 
 # Organica
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={organica_hero} alt="Organica hero image"/>
 *Organica painting a flowing procedural color palette across the video frame, with hue gradients driven by horizontal position and input luminance.*
@@ -277,13 +270,15 @@ These exercises progress from a static single-color field to animated, video-res
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 color space standard defining the YUV encoding used throughout the Videomancer video pipeline. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator and lookup table to generate periodic waveforms. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue Wheel** | A circular arrangement of spectral hues divided into six sectors (red, yellow, green, cyan, blue, magenta). |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Phase Accumulator** | A register that increments by a fixed step each clock; its overflow creates a periodic ramp waveform. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

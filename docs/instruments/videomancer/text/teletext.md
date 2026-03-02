@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 257
+sidebar_position: 282
 slug: /instruments/videomancer/teletext
 title: "Teletext"
 image: /img/instruments/videomancer/teletext/teletext_hero.png
 description: "Every pixel in a video frame carries brightness information."
 ---
 
+import teletext_hero from '/img/instruments/videomancer/teletext/teletext_hero.png';
 import teletext_before_after from '/img/instruments/videomancer/teletext/teletext_before_after.png';
 import teletext_control_panel from '/img/instruments/videomancer/teletext/teletext_control_panel.png';
 import teletext_exercise1_result from '/img/instruments/videomancer/teletext/teletext_exercise1_result.png';
 import teletext_exercise2_result from '/img/instruments/videomancer/teletext/teletext_exercise2_result.png';
 import teletext_exercise3_result from '/img/instruments/videomancer/teletext/teletext_exercise3_result.png';
-import teletext_hero from '/img/instruments/videomancer/teletext/teletext_hero.png';
-import teletext_source1_kodim15 from '/img/instruments/videomancer/teletext/teletext_source1_kodim15.png';
-import teletext_source2_kodim15_bw from '/img/instruments/videomancer/teletext/teletext_source2_kodim15_bw.png';
-import teletext_source3_male_1024 from '/img/instruments/videomancer/teletext/teletext_source3_male_1024.png';
 
 # Teletext
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={teletext_hero} alt="Teletext hero image"/>
 *Teletext rendering live video as density-sorted ASCII art through four selectable character sets — sixel mosaics, PETSCII semigraphics, CP437 shading, and Braille dot patterns.*
@@ -36,7 +29,7 @@ import teletext_source3_male_1024 from '/img/instruments/videomancer/teletext/te
 
 Every pixel in a video frame carries brightness information. Teletext takes that brightness and translates it into a grid of typographic symbols — dense characters for bright areas, sparse characters for dark areas. The result is a live video image rendered entirely in text, recalling the character-mode graphics of 1970s Teletext broadcast services, Commodore 64 PETSCII art, and IBM PC ANSI art terminals.
 
-The program divides the screen into a grid of rectangular cells, each mapped to one of sixteen density-sorted glyphs from a selectable character ROM. Four character sets are available: Teletext sixel mosaics (2×3 block graphics), PETSCII semigraphics (C64-style shapes), CP437 density ramp (IBM PC ASCII art characters), and Braille dot patterns (2×4 dot matrix). All glyphs are 8×8 pixels stored as synthesis-time constants — no BRAM is consumed by the font data. A single BRAM stores per-column luma samples and source color values for the character mapping process.
+The program divides the screen into a grid of rectangular cells, each mapped to one of sixteen density-sorted glyphs from a selectable character ROM. Four character sets are available: Teletext sixel mosaics (2×3 block graphics), PETSCII semigraphics (C64-style shapes), CP437 density ramp (IBM PC ASCII art characters), and Braille dot patterns (2×4 dot matrix). All glyphs are 8×8 pixels stored as synthesis-time constants — no BRAM is consumed by the font data. A single BRAM stores per-column luma samples and source colour values for the character mapping process.
 
 The name references the **Teletext** broadcast data service that transmitted pages of blocky text graphics alongside analog television signals throughout Europe from the 1970s onward. In that system, character cells on screen were selected by data codes embedded in the vertical blanking interval — a grid of glyphs painted over the broadcast image. Teletext does something analogous: it *reads* the video image and *writes* it back as a grid of typographic symbols.
 
@@ -281,7 +274,7 @@ These exercises progress from basic character rendering to advanced color and co
 | Term | Definition |
 |------|------------|
 | **Braille** | A tactile writing system using raised dot patterns in a 2×4 matrix, repurposed here as a fine-grained display font. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory used here for the per-column luma sample buffer. |
 | **Cell** | A rectangular region of the screen grid mapped to a single character glyph. |
 | **CP437** | Code Page 437; the original IBM PC character set including block-shading characters (░▒▓█). |
 | **Density sorting** | Ordering glyphs from fewest lit pixels (sparse) to most lit pixels (dense) for luminance mapping. |
@@ -289,4 +282,6 @@ These exercises progress from basic character rendering to advanced color and co
 | **PETSCII** | The Commodore 64 character set, including geometric shapes and semigraphic blocks. |
 | **Sixel** | A 2×3 grid of sub-blocks within a character cell; the fundamental building block of Teletext mosaic graphics. |
 | **Source Color** | A rendering mode that inherits the hue of the input video per cell, rather than using a fixed foreground color. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 62
+sidebar_position: 69
 slug: /instruments/videomancer/daguerro
 title: "Daguerro"
 image: /img/instruments/videomancer/daguerro/daguerro_hero.png
@@ -279,13 +279,13 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 | **Daguerreotype** | The first commercially practical photographic process (1839), producing a unique image on a polished silver-plated copper sheet. |
 | **Dynamic Range** | The ratio between the brightest and darkest values a system can capture; daguerreotype plates have very limited dynamic range. |
 | **Gold Toning** | A chemical treatment using gold chloride that shifts a daguerreotype's color temperature from cold silver to warm amber while improving permanence. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to create plate texture and tarnish zone patterns. |
 | **Mercury Process** | The original daguerreotype development method using heated mercury vapor to form a bright amalgam on exposed silver halide. |
 | **Patina** | A surface coating that develops through age and exposure; on daguerreotypes, tarnish patina appears as iridescent blue-green halos. |
 | **Silver Halide** | Light-sensitive silver compounds (silver iodide, silver bromide) that form the photosensitive layer on a daguerreotype plate. |
 | **Silver Sulfide** | The dark, iridescent compound formed when atmospheric sulfur reacts with silver; the primary component of daguerreotype tarnish. |
 | **Solarization** | A tonal reversal in overexposed highlights where the image curve bends back toward mid-tones, characteristic of the Becquerel process. |
 | **Tonal Compression** | Narrowing the range of brightness values in an image by raising the floor and lowering the ceiling of the output range. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

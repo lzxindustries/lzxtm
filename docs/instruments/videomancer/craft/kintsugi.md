@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 139
+sidebar_position: 152
 slug: /instruments/videomancer/kintsugi
 title: "Kintsugi"
 image: /img/instruments/videomancer/kintsugi/kintsugi_hero.png
-description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hi..."
+description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hiding them."
 ---
 
+import kintsugi_hero from '/img/instruments/videomancer/kintsugi/kintsugi_hero.png';
 import kintsugi_before_after from '/img/instruments/videomancer/kintsugi/kintsugi_before_after.png';
 import kintsugi_control_panel from '/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png';
 import kintsugi_exercise1_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise1_result.png';
 import kintsugi_exercise2_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise2_result.png';
 import kintsugi_exercise3_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise3_result.png';
-import kintsugi_hero from '/img/instruments/videomancer/kintsugi/kintsugi_hero.png';
-import kintsugi_source1_kodim03 from '/img/instruments/videomancer/kintsugi/kintsugi_source1_kodim03.png';
-import kintsugi_source2_kodim13 from '/img/instruments/videomancer/kintsugi/kintsugi_source2_kodim13.png';
-import kintsugi_source3_kodim13_bw from '/img/instruments/videomancer/kintsugi/kintsugi_source3_kodim13_bw.png';
 
 # Kintsugi
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={kintsugi_hero} alt="Kintsugi hero image"/>
 *Kintsugi tracing luminance edges in gold lacquer lines across a video source, transforming discontinuities into radiant metallic seams.*
@@ -291,16 +284,18 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the standard color matrix used for converting between RGB and YUV in standard-definition video. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Edge detection** | The process of identifying pixel locations where luminance changes abruptly, indicating boundaries between distinct regions. |
 | **Fill counter** | A countdown register that holds the edge-active flag for a configurable number of pixels after an edge trigger, widening detected edges into bands. |
 | **Finite difference** | A discrete approximation of a derivative, computed as the difference between adjacent sample values. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. |
 | **Kintsugi** | Japanese art of repairing broken pottery with gold-dusted lacquer, celebrating the repair as part of the object's history. |
 | **Lookback** | A delayed comparison where the current pixel is compared to a pixel several clocks earlier in the scan line, catching broader transitions. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages on each clock cycle; Kintsugi uses an 8-clock pipeline. |
 | **Wabi-sabi** | Japanese aesthetic rooted in the acceptance of transience and imperfection. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 41
+sidebar_position: 43
 slug: /instruments/videomancer/chatoyant
 title: "Chatoyant"
 image: /img/instruments/videomancer/chatoyant/chatoyant_hero.png
@@ -31,7 +31,7 @@ Certain gemstones — tiger's eye, chrysoberyl, moonstone — contain parallel f
 
 Chatoyant recreates this optical phenomenon in the digital video domain. A virtual streak line is positioned across the frame, and every pixel's distance to that line is computed in real time. Pixels within the streak band receive a brightness boost proportional to their source luminance — bright areas catch the highlight like the facets of a cabochon, while dark areas remain unaffected. A line buffer stores the previous scanline's Y channel to compute a vertical gradient, which can be folded into the highlight to emphasise edges and surface transitions within the streak zone. The streak can be locked to horizontal, vertical, or diagonal orientations, or allowed to sweep freely at angles controlled by the Axis Angle knob.
 
-At subtle settings, Chatoyant adds a delicate specular sheen — a luminous stripe that makes the video surface appear polished, capturing a sense of reflected light that shifts with the source content. At extreme settings the streak becomes a hot band of clipped white or tinted color that burns across the frame, splitting the image into illuminated and shadowed halves like a gem rotated past its critical angle. Double-streak mode mirrors the highlight across the frame centre, and the animation toggle sets the streak bouncing back and forth — a slow, hypnotic sweep that evokes a jeweller's loupe swaying over a display case.
+At subtle settings, Chatoyant adds a delicate specular sheen — a luminous stripe that makes the video surface appear polished, capturing a sense of reflected light that shifts with the source content. At extreme settings the streak becomes a hot band of clipped white or tinted colour that burns across the frame, splitting the image into illuminated and shadowed halves like a gem rotated past its critical angle. Double-streak mode mirrors the highlight across the frame centre, and the animation toggle sets the streak bouncing back and forth — a slow, hypnotic sweep that evokes a jeweller's loupe swaying over a display case.
 
 ---
 
@@ -53,9 +53,9 @@ The streak is a mathematical line across the frame. Each pixel's perpendicular d
 
 The highlight intensity is not uniform across the streak band. At the centre of the band — where the pixel's distance to the streak line is near zero — the boost is at full strength. As the distance increases toward the edge of the band, the Falloff control attenuates the highlight by shifting the luma contribution rightward (dividing by powers of two). A sharp falloff produces a hard-edged stripe with a distinct border; a gradual falloff feathers the edges into a soft glow that tapers smoothly into the unaffected background. The Streak Width knob sets the total radius of the band, while Falloff controls the transition profile within it — analogous to the sharpness of a real chatoyant band, which depends on how tightly the fibrous inclusions are aligned.
 
-### Color Temperature and Specular Tinting
+### Colour Temperature and Specular Tinting
 
-Real chatoyant highlights are rarely pure white. Tiger's eye produces warm golden-amber streaks; moonstone glows with a cool blue adularescence; opal scatters the full spectrum. Chatoyant simulates this by optionally tinting the highlight in the UV color plane. When the color highlight toggle is active and the boost exceeds a minimum threshold, the program shifts U and V away from neutral: warm tint pulls U below centre and pushes V above (toward amber-gold), while cool tint does the reverse (toward ice-blue). The tint is proportional to the boost amount — stronger highlights receive deeper color, weaker highlights remain closer to neutral. The tinted chroma is blended 50/50 with the source chroma, preserving some of the original color character while adding the specular hue.
+Real chatoyant highlights are rarely pure white. Tiger's eye produces warm golden-amber streaks; moonstone glows with a cool blue adularescence; opal scatters the full spectrum. Chatoyant simulates this by optionally tinting the highlight in the UV colour plane. When the colour highlight toggle is active and the boost exceeds a minimum threshold, the program shifts U and V away from neutral: warm tint pulls U below centre and pushes V above (toward amber-gold), while cool tint does the reverse (toward ice-blue). The tint is proportional to the boost amount — stronger highlights receive deeper colour, weaker highlights remain closer to neutral. The tinted chroma is blended 50/50 with the source chroma, preserving some of the original colour character while adding the specular hue.
 
 
 ---
@@ -89,7 +89,7 @@ Input Video (YUV 4:4:4)
 │      │   └─ Use min(A, B)
 │      └─ In-streak flag = (distance < width_threshold)
 │
-├─ 6. Highlight Compose + Color Tint                         (1 clk)
+├─ 6. Highlight Compose + Colour Tint                         (1 clk)
 │      ├─ Inside streak band:
 │      │   ├─ luma_scale = source_Y >> 2
 │      │   ├─ Centre half: full luma_scale
@@ -97,7 +97,7 @@ Input Video (YUV 4:4:4)
 │      │   ├─ + gradient contribution (if softness > 512)
 │      │   ├─ Apply highlight_shift (intensity control)
 │      │   ├─ Y_out = Y_in + boost  (clamped 0–1023)
-│      │   └─ If boost > 16 and color highlight on:
+│      │   └─ If boost > 16 and colour highlight on:
 │      │       ├─ Warm: U = mid − boost/4, V = mid + boost/4
 │      │       └─ Cool: U = mid + boost/4, V = mid − boost/4
 │      │       └─ Blend 50/50 with source chroma
@@ -117,7 +117,7 @@ The critical path runs through the line buffer: current Y is written on stage 1,
 
 The streak distance computation in stage 5 is the most logic-intensive step, with a four-way case statement selecting the geometry based on Gem Type. The free mode (Tigers) uses a shift-selected slope approximation: the three MSBs of the angle register select one of eight discrete slope levels for the horizontal contribution, avoiding a full multiply. This shift-and-add approach keeps the design within the iCE40 HX4K's LUT budget while providing enough angular resolution for smooth visual sweeps.
 
-The color tinting in stage 6 only activates when the boost exceeds 16 (out of 1023), preventing noise-level highlights from introducing chroma artefacts. When active, the tint magnitude scales with the boost — a subtle highlight gets a subtle color shift, while a strong highlight gets a deep tint. This proportional coupling mirrors real chatoyancy, where the color saturation of the band depends on how directly the light strikes the fibre axis.
+The colour tinting in stage 6 only activates when the boost exceeds 16 (out of 1023), preventing noise-level highlights from introducing chroma artefacts. When active, the tint magnitude scales with the boost — a subtle highlight gets a subtle colour shift, while a strong highlight gets a deep tint. This proportional coupling mirrors real chatoyancy, where the colour saturation of the band depends on how directly the light strikes the fibre axis.
 
 ---
 
@@ -190,7 +190,7 @@ Sets the length or extent of the streak across the frame by controlling its base
 | Default | 0° |
 | Suffix | ° |
 
-Shifts the color temperature of the specular highlight by controlling how much vertical gradient information contributes to the highlight computation. When turned past centre, the gradient signal — the vertical edge energy detected from the line buffer — is folded into the highlight intensity, causing the streak to respond more strongly to textured and edge-rich areas of the source image. This creates a surface-aware highlight that catches the contours and transitions within the streak band, producing a more complex, organic chatoyant appearance reminiscent of inclusions scattering light at slightly different angles. Below centre, the gradient contribution is suppressed and the highlight responds only to raw source brightness.
+Shifts the colour temperature of the specular highlight by controlling how much vertical gradient information contributes to the highlight computation. When turned past centre, the gradient signal — the vertical edge energy detected from the line buffer — is folded into the highlight intensity, causing the streak to respond more strongly to textured and edge-rich areas of the source image. This creates a surface-aware highlight that catches the contours and transitions within the streak band, producing a more complex, organic chatoyant appearance reminiscent of inclusions scattering light at slightly different angles. Below centre, the gradient contribution is suppressed and the highlight responds only to raw source brightness.
 
 ---
 
@@ -204,7 +204,7 @@ Shifts the color temperature of the specular highlight by controlling how much v
 | **10 — Anim** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggle switches address independent aspects of the streak's character. Gem Type (Toggle 7) and Streaks (Toggle 8) are the primary shape controls — Gem Type sets the geometric orientation of the streak line, while Streaks multiplies the number of visible bands. Color Highlight (Toggle 9) activates chromatic tinting in the UV plane, adding warm or cool hue to the specular band. Animation (Toggle 10) sets the streak in motion with a bounce sweep. Bypass (Toggle 11) overrides all processing. The toggles combine freely: a four-streak animated configuration with color highlighting in Opal diagonal mode produces a complex, shimmering pattern of intersecting colored bands sweeping across the frame.
+The five toggle switches address independent aspects of the streak's character. Gem Type (Toggle 7) and Streaks (Toggle 8) are the primary shape controls — Gem Type sets the geometric orientation of the streak line, while Streaks multiplies the number of visible bands. Colour Highlight (Toggle 9) activates chromatic tinting in the UV plane, adding warm or cool hue to the specular band. Animation (Toggle 10) sets the streak in motion with a bounce sweep. Bypass (Toggle 11) overrides all processing. The toggles combine freely: a four-streak animated configuration with colour highlighting in Opal diagonal mode produces a complex, shimmering pattern of intersecting coloured bands sweeping across the frame.
 
 ---
 
@@ -243,11 +243,11 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 ---
 
-### Exercise 2: Gem Modes and Color Tinting
+### Exercise 2: Gem Modes and Colour Tinting
 
-<img src={chatoyant_exercise2_result} alt="Gem Modes and Color Tinting result"/>
-*Gem Modes and Color Tinting — simulated result across source images.*
-**Source**: Colorful footage with strong edges — a garden scene, textured fabrics, or stained glass.
+<img src={chatoyant_exercise2_result} alt="Gem Modes and Colour Tinting result"/>
+*Gem Modes and Colour Tinting — simulated result across source images.*
+**Source**: Colourful footage with strong edges — a garden scene, textured fabrics, or stained glass.
 
 **Objective**: Explore the four Gem Type orientations and add warm or cool chromatic tinting to the specular band.
 
@@ -256,10 +256,10 @@ These exercises build from a simple single-streak highlight through multi-mode e
 3. **Lock to horizontal**: Switch Gem Type to Star. The streak snaps to a horizontal band regardless of the Axis Ang setting.
 4. **Lock to vertical**: Switch to Moon. The streak rotates to a vertical column of light.
 5. **Try diagonal**: Switch to Opal. The streak settles at 45 degrees, cutting diagonally across the frame.
-6. **Enable color**: Toggle Color Hlt on. The highlight acquires a warm amber tint in warm mode. Observe how the tint intensifies with the highlight boost — strong specular areas glow golden while weaker areas remain nearly neutral.
+6. **Enable colour**: Toggle Color Hlt on. The highlight acquires a warm amber tint in warm mode. Observe how the tint intensifies with the highlight boost — strong specular areas glow golden while weaker areas remain nearly neutral.
 7. **Adjust hue contribution**: Turn Hue Tint past centre. The streak begins responding to vertical edge structure in the source, creating a more textured, organic highlight pattern.
 
-**Key concepts**: Gem Type selects the streak geometry — free mode gives continuous angle control while locked modes constrain to H/V/diagonal; color tinting is proportional to highlight intensity, preserving source hue in weak highlights; gradient contribution adds surface-awareness to the highlight.
+**Key concepts**: Gem Type selects the streak geometry — free mode gives continuous angle control while locked modes constrain to H/V/diagonal; colour tinting is proportional to highlight intensity, preserving source hue in weak highlights; gradient contribution adds surface-awareness to the highlight.
 
 ---
 
@@ -273,12 +273,12 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 1. **Prepare twin streaks**: Set Streak W ~35%, Threshold ~70%, Mix ~80%. Enable Streaks = 2 (double streak). A mirrored pair of bands appears, symmetric about the frame centre.
 2. **Start animation**: Toggle Anim on. The streak pair begins a slow bounce sweep, drifting from the centre toward the edges and back.
-3. **Add color**: Toggle Color Hlt on. The sweeping bands acquire chromatic tinting, creating twin colored reflections that slide across the source.
+3. **Add colour**: Toggle Color Hlt on. The sweeping bands acquire chromatic tinting, creating twin coloured reflections that slide across the source.
 4. **Try Opal mode**: Switch Gem Type to Opal (diagonal). The streaks lock to 45 degrees and sweep diagonally, crossing the frame at an angle.
 5. **Widen and soften**: Increase Streak W to ~60% and set Intensity (Falloff) to maximum (gradual). The streaks become broad, soft glows that overlap as they approach the centre — creating a luminous crossover zone.
 6. **Return to Tigers**: Switch back to free mode and sweep Axis Ang. The animated double streak tilts as you turn, creating a continuously evolving pattern of intersecting highlights.
 
-**Key concepts**: Double-streak mirrors the primary highlight about the frame centre, producing symmetry from a single streak computation; animation adds temporal variation via a bounce accumulator; combining color, animation, and multiple streaks builds complex asterism-like patterns.
+**Key concepts**: Double-streak mirrors the primary highlight about the frame centre, producing symmetry from a single streak computation; animation adds temporal variation via a bounce accumulator; combining colour, animation, and multiple streaks builds complex asterism-like patterns.
 
 ---
 
@@ -289,10 +289,10 @@ These exercises build from a simple single-streak highlight through multi-mode e
 - **Source brightness matters**: The highlight is multiplicative with source luma — it boosts what is already bright. Feed high-contrast material for the most dramatic results; low-contrast sources produce subtler, more diffuse highlights.
 - **Falloff shapes the character**: A sharp falloff with narrow width creates a laser-thin specular line. A gradual falloff with wide width creates a soft bloom. The combination of these two knobs determines whether the effect reads as a sharp reflection or a glowing aura.
 - **Gradient for texture**: Turn Hue Tint past centre to fold vertical edge energy into the highlight. This makes the streak respond to surface detail — fabric weave, hair strands, architectural lines — rather than raw brightness alone.
-- **Double for symmetry**: Double streak creates instant symmetry without needing to duplicate any processing. The two bands share the same width, intensity, and color settings, so the look remains balanced.
-- **Animate for life**: Even a slow sweep transforms a static highlight into a living shimmer. Combine animation with color tinting for the full chatoyant experience — a warm band drifting across the frame like light across a polished cabochon.
+- **Double for symmetry**: Double streak creates instant symmetry without needing to duplicate any processing. The two bands share the same width, intensity, and colour settings, so the look remains balanced.
+- **Animate for life**: Even a slow sweep transforms a static highlight into a living shimmer. Combine animation with colour tinting for the full chatoyant experience — a warm band drifting across the frame like light across a polished cabochon.
 - **Mix as master intensity**: Use the fader to balance the effect against the dry signal. A low mix (20–30%) adds a subtle specular sheen; a high mix (80–100%) makes the streak the dominant visual feature.
-- **Combine modes freely**: Try animated double streaks in Opal mode with color highlighting. The diagonal mirrored bands create an X-shaped pattern that sweeps back and forth — a simple but visually rich asterism.
+- **Combine modes freely**: Try animated double streaks in Opal mode with colour highlighting. The diagonal mirrored bands create an X-shaped pattern that sweeps back and forth — a simple but visually rich asterism.
 
 ---
 
@@ -307,10 +307,10 @@ These exercises build from a simple single-streak highlight through multi-mode e
 | **Chatoyancy** | The cat's-eye optical effect produced by parallel fibrous inclusions in a polished gemstone reflecting a single band of light perpendicular to the fibre axis. |
 | **Falloff** | The rate at which highlight intensity diminishes with increasing distance from the streak centre, controlling the edge sharpness of the specular band. |
 | **Line buffer** | A BRAM-based storage element that holds one complete scanline of video data, enabling comparison between the current and previous lines for gradient detection. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | Short for luminance; the brightness component (Y channel) of a YUV video signal. |
 | **Specular highlight** | A bright reflection of a light source on a surface, appearing as a localised region of increased brightness. |
-| **UV color plane** | The two-dimensional space defined by the U and V chrominance axes, in which hue and saturation are represented independently of brightness. |
+| **UV colour plane** | The two-dimensional space defined by the U and V chrominance axes, in which hue and saturation are represented independently of brightness. |
 | **Vertical gradient** | The absolute difference in luminance between a pixel and the pixel directly above it, used to detect horizontal edges and surface transitions. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
 
 ---

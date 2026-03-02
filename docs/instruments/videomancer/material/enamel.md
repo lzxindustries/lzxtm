@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 87
+sidebar_position: 95
 slug: /instruments/videomancer/enamel
 title: "Enamel"
 image: /img/instruments/videomancer/enamel/enamel_hero.png
-description: "Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto ..."
+description: "Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto a surface to form cells, each filled with vitreous glass paste and fired to a glossy finish."
 ---
 
 import enamel_hero from '/img/instruments/videomancer/enamel/enamel_hero.png';
@@ -299,20 +299,20 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the video line buffer that stores one line of Y data for vertical edge detection. |
 | **Chroma** | The color information in a video signal, encoded as U and V components centered on midpoint 512 in 10-bit YUV color space. |
 | **Cloisonné** | A decorative enamel technique using thin metal wire to form enclosed cells (cloisons) filled with vitreous glass paste. |
 | **Edge Detection** | Identification of sharp luminance transitions in an image by computing the gradient (rate of change) between neighboring pixels. |
 | **Gradient** | The magnitude of brightness change between adjacent pixels; the basis for wire/fill classification in Enamel's processing pipeline. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values based on a blend factor; used for wet/dry mix. |
 | **Line Buffer** | A single-line delay implemented in BRAM that stores one horizontal line of video data, enabling vertical pixel comparisons. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle; Enamel uses a 10-stage pipeline. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image by masking lower bits, creating flat bands of uniform brightness. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels; Enamel quantizes Y via bit-shift masking. |
 | **Saturation** | The intensity or purity of a color; Enamel boosts saturation by pushing U and V values away from neutral midpoint. |
 | **Vitreous Enamel** | A glassy coating made from powdered glass fused to a metal surface by firing; characterized by vivid, opaque color and a glossy finish. |
 | **XOR** | Exclusive OR; a bitwise operation used in Enamel to generate quasi-periodic patterns for gloss shimmer and wire animation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

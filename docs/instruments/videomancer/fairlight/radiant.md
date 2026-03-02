@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 211
+sidebar_position: 226
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero.png
-description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites wi..."
+description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal."
 ---
 
+import radiant_hero from '/img/instruments/videomancer/radiant/radiant_hero.png';
 import radiant_before_after from '/img/instruments/videomancer/radiant/radiant_before_after.png';
 import radiant_control_panel from '/img/instruments/videomancer/radiant/radiant_control_panel.png';
 import radiant_exercise1_result from '/img/instruments/videomancer/radiant/radiant_exercise1_result.png';
 import radiant_exercise2_result from '/img/instruments/videomancer/radiant/radiant_exercise2_result.png';
 import radiant_exercise3_result from '/img/instruments/videomancer/radiant/radiant_exercise3_result.png';
-import radiant_hero from '/img/instruments/videomancer/radiant/radiant_hero.png';
-import radiant_source1_kodim15 from '/img/instruments/videomancer/radiant/radiant_source1_kodim15.png';
-import radiant_source2_kodim01 from '/img/instruments/videomancer/radiant/radiant_source2_kodim01.png';
-import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/radiant_source3_kodim01_bw.png';
 
 # Radiant
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={radiant_hero} alt="Radiant hero image"/>
 *Radiant projecting concentric expanding color rings from a movable center point, composited over live video via additive blending.*
@@ -34,7 +27,7 @@ import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/rad
 
 ## Overview
 
-Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal. The effect is inspired by the Fairlight CVI's color wash modes — procedural gradient generation that interacts with live imagery to produce color fields, spotlight effects, and pulsing radial animations.
+Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal. The effect is inspired by the Fairlight CVI's colour wash modes — procedural gradient generation that interacts with live imagery to produce color fields, spotlight effects, and pulsing radial animations.
 
 The program computes an octagonal distance approximation from each pixel to the center point, then maps that distance through a scrolling color palette to determine ring hue and brightness. The distance-to-color mapping wraps cyclically, producing repeating bands of color that appear to expand or contract when the frame scroll DDS advances. Three `interpolator_u` instances handle the wet/dry crossfade. The entire pipeline uses zero BRAM — all color generation is procedural, computed per-pixel from distance, hue wheel position, and saturation scaling.
 
@@ -307,3 +300,5 @@ These exercises explore Radiant's core capabilities — from static centered gra
 - **Orbit is quasi-random**: The X and Y orbit rates differ by design (offsets of 32 vs 48), so the center path never repeats exactly within a typical viewing session.
 - **Wide Ring halves density**: Enabling Wide Ring right-shifts the distance, doubling apparent ring width — useful for broad color washes rather than tight interference patterns.
 - **Additive clips to white**: In additive mode with high Value, source highlights will clip to peak white — reduce Value or Mix to preserve source dynamic range.
+
+---

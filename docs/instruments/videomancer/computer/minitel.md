@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 168
+sidebar_position: 184
 slug: /instruments/videomancer/minitel
 title: "Minitel"
 image: /img/instruments/videomancer/minitel/minitel_hero.png
-description: "The Minitel was France's pre-internet information terminal — a small beige box with a keyboard and a 40-column text display that connected millions of F..."
+description: "The Minitel was France's pre-internet information terminal — a small beige box with a keyboard and a 40-column text display that connected millions of French households to online services from 1982 until its retirement in 2012."
 ---
 
+import minitel_hero from '/img/instruments/videomancer/minitel/minitel_hero.png';
 import minitel_before_after from '/img/instruments/videomancer/minitel/minitel_before_after.png';
 import minitel_control_panel from '/img/instruments/videomancer/minitel/minitel_control_panel.png';
 import minitel_exercise1_result from '/img/instruments/videomancer/minitel/minitel_exercise1_result.png';
 import minitel_exercise2_result from '/img/instruments/videomancer/minitel/minitel_exercise2_result.png';
 import minitel_exercise3_result from '/img/instruments/videomancer/minitel/minitel_exercise3_result.png';
-import minitel_hero from '/img/instruments/videomancer/minitel/minitel_hero.png';
-import minitel_source1_kodim15 from '/img/instruments/videomancer/minitel/minitel_source1_kodim15.png';
-import minitel_source2_kodim03 from '/img/instruments/videomancer/minitel/minitel_source2_kodim03.png';
-import minitel_source3_kodim15_bw from '/img/instruments/videomancer/minitel/minitel_source3_kodim15_bw.png';
 
 # Minitel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={minitel_hero} alt="Minitel hero image"/>
 *Minitel reducing a video stream to eight-color mosaic blocks with sample-and-hold quantization and scanline darkening.*
@@ -279,13 +272,15 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 |------|------------|
 | **Cell** | A rectangular region of pixels that are all assigned the same color value through sample-and-hold quantization. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Minitel** | A French videotex online service and terminal system operated from 1982 to 2012 by France Télécom. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
 | **Sample-and-Hold** | A technique where one input sample is captured and its value is replicated across subsequent samples until the next capture point. |
 | **Scanline** | A single horizontal line of pixels in a video frame; scanline darkening simulates the visible gaps between lines on a CRT display. |
 | **Sixel** | A block-mosaic graphics encoding used by videotex and early terminal systems, subdividing character cells into a 2×3 grid. |
 | **Videotex** | A family of pre-internet interactive information systems using telephone lines and dedicated terminals, including France's Minitel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

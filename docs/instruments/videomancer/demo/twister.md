@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 270
+sidebar_position: 296
 slug: /instruments/videomancer/twister
 title: "Twister"
 image: /img/instruments/videomancer/twister/twister_hero.png
-description: "Twister is a pure synthesis program — it generates imagery from scratch, producing the iconic rotating bar effect that was a staple of Amiga and Atari S..."
+description: "Twister is a pure synthesis program — it generates imagery from scratch, producing the iconic rotating bar effect that was a staple of Amiga and Atari ST demoscene productions in the late 1980s and early 1990s."
 ---
 
+import twister_hero from '/img/instruments/videomancer/twister/twister_hero.png';
 import twister_animation from '/img/instruments/videomancer/twister/twister_animation.gif';
 import twister_control_panel from '/img/instruments/videomancer/twister/twister_control_panel.png';
 import twister_exercise1_result from '/img/instruments/videomancer/twister/twister_exercise1_result.gif';
 import twister_exercise2_result from '/img/instruments/videomancer/twister/twister_exercise2_result.gif';
 import twister_exercise3_result from '/img/instruments/videomancer/twister/twister_exercise3_result.gif';
-import twister_hero from '/img/instruments/videomancer/twister/twister_hero.png';
 
 # Twister
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={twister_hero} alt="Twister hero image"/>
 *Twister rendering a helically twisted vertical bar with four-face shading, evoking the classic Amiga demoscene rotating column effect.*
@@ -284,13 +280,15 @@ These exercises explore the twister from simple rotation through helical twist t
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BT.601** | ITU-R BT.601, the standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by accumulating a phase increment per sample and using it to index a lookup table. |
 | **Demoscene** | A computer art subculture focused on creating real-time audiovisual demonstrations within hardware constraints; originated in the 1980s on Amiga and Atari ST platforms. |
 | **Face ID** | An integer (0–3) identifying which of the four faces of the virtual square bar is visible at a given pixel; determines color from the palette. |
 | **Helical Twist** | A deformation that rotates a shape progressively along its vertical axis, creating a coiling or corkscrew appearance. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade unit that blends between two values based on a mix parameter, used for wet/dry blending. |
 | **Lambert Shading** | A lighting model where surface brightness is proportional to the cosine of the angle between the surface normal and the light direction; produces convincing matte surface illumination. |
 | **LUT** | Lookup Table; a precomputed array of values used to replace runtime computation, here a quarter-wave sine table with 256 entries. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave** | A sine table optimization that stores only 0°–90° and reconstructs the remaining three quadrants using symmetry (mirror and negate). |
+
+---

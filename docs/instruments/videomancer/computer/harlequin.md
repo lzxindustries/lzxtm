@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 118
+sidebar_position: 127
 slug: /instruments/videomancer/harlequin
 title: "Harlequin"
 image: /img/instruments/videomancer/harlequin/harlequin_hero.png
-description: "The Atari Video Music (model C240) was released in 1977 — a consumer device that plugged into a television and translated stereo audio into geometric co..."
+description: "The Atari Video Music (model C240) was released in 1977 — a consumer device that plugged into a television and translated stereo audio into geometric color patterns."
 ---
 
 import harlequin_hero from '/img/instruments/videomancer/harlequin/harlequin_hero.png';
@@ -152,7 +152,7 @@ Controls the IIR smoothing constant for the luminance averaging filters. Higher 
 | Range | 1 – 5 |
 | Default | 1 |
 
-Selects the horizontal tile count from the preset table `{1, 2, 3, 5}`. The control operates in four discrete steps — the upper two bits of the 10-bit register select the preset index. At 1 tile the diamond spans the full screen width. At 5 tiles the screen is divided into five equal columns, each containing its own diamond. The non-power-of-two values (3, 5) produce even divisions of the 1280-pixel active width.
+Selects the horizontal tile count from the preset table {1, 2, 3, 5}. The control operates in four discrete steps — the upper two bits of the 10-bit register select the preset index. At 1 tile the diamond spans the full screen width. At 5 tiles the screen is divided into five equal columns, each containing its own diamond. The non-power-of-two values (3, 5) produce even divisions of the 1280-pixel active width.
 
 ---
 
@@ -162,7 +162,7 @@ Selects the horizontal tile count from the preset table `{1, 2, 3, 5}`. The cont
 | Range | 1 – 8 |
 | Default | 1 |
 
-Selects the vertical tile count from the preset table `{1, 2, 4, 8}`. Combined with H Tiles, this creates a grid of diamonds. At 1×1 there is a single centered diamond. At 5×8 there are 40 diamonds on screen simultaneously. Large tile counts produce smaller diamonds because each tile occupies a smaller portion of the screen. Vertical tiling interacts with the IIR averaging — the upper/lower half split at scanline 360 is independent of the tile boundaries, so all tiles respond to the same two luminance averages.
+Selects the vertical tile count from the preset table {1, 2, 4, 8}. Combined with H Tiles, this creates a grid of diamonds. At 1×1 there is a single centered diamond. At 5×8 there are 40 diamonds on screen simultaneously. Large tile counts produce smaller diamonds because each tile occupies a smaller portion of the screen. Vertical tiling interacts with the IIR averaging — the upper/lower half split at scanline 360 is independent of the tile boundaries, so all tiles respond to the same two luminance averages.
 
 ---
 
@@ -271,16 +271,16 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric. Harlequin uses 0 BRAMs — all state fits in LUT-based registers. |
+| **DDS** | Direct Digital Synthesis; a technique for generating a periodic waveform by incrementing a phase accumulator and using it to index a lookup table. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both the current input and the filter's own previous output, creating exponential smoothing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear-Feedback Shift Register; a pseudo-random number generator using a shift register with XOR-combined feedback taps. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **LUT** | Lookup Table; (1) in DSP context, a precomputed table of function values indexed by input; (2) in FPGA context, the basic logic element. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical displacements between two points; produces diamond-shaped equidistant contours. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage completes in one clock cycle, passing results to the next stage. |
 | **Quarter-wave sine** | A lookup table storing only 0°–90° of a sine wave; the remaining quadrants are reconstructed by mirroring and negation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

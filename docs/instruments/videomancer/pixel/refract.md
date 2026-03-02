@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 216
+sidebar_position: 232
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero.png
 description: "Light bends when it passes through glass, water, or any boundary between materials of different density."
 ---
 
+import refract_hero from '/img/instruments/videomancer/refract/refract_hero.png';
 import refract_before_after from '/img/instruments/videomancer/refract/refract_before_after.png';
 import refract_control_panel from '/img/instruments/videomancer/refract/refract_control_panel.png';
 import refract_exercise1_result from '/img/instruments/videomancer/refract/refract_exercise1_result.png';
 import refract_exercise2_result from '/img/instruments/videomancer/refract/refract_exercise2_result.png';
 import refract_exercise3_result from '/img/instruments/videomancer/refract/refract_exercise3_result.png';
-import refract_hero from '/img/instruments/videomancer/refract/refract_hero.png';
-import refract_source1_kodim02 from '/img/instruments/videomancer/refract/refract_source1_kodim02.png';
-import refract_source2_kodim07 from '/img/instruments/videomancer/refract/refract_source2_kodim07.png';
-import refract_source3_kodim01_bw from '/img/instruments/videomancer/refract/refract_source3_kodim01_bw.png';
 
 # Refract
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={refract_hero} alt="Refract hero image"/>
 *Refract applying luma-driven displacement mapping with chromatic aberration and fresnel edge bending to split and distort a live video signal.*
@@ -276,13 +269,15 @@ These exercises progress from basic displacement through chromatic aberration to
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BRAM** | Block RAM; dedicated on-chip memory in the FPGA used as line buffers for displaced pixel readback. |
+| **BT.601** | ITU-R BT.601 color standard defining the YUV encoding used in the Videomancer pipeline. |
 | **Chromatic Aberration** | Wavelength-dependent refraction causing different colors to focus at different points, creating color fringing at edges. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a numerically-controlled oscillator that generates a continuous sweep of the angle parameter for animation. |
 | **Displacement Mapping** | A spatial transformation where pixel positions are shifted by an amount determined by a control signal, here the input luminance. |
 | **Fresnel** | In optics, the increase in reflectance and refraction at glancing incidence angles; here approximated as radial distance-based displacement scaling. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A sub-pixel smoothing module (`interpolator_u`) that blends between adjacent displaced samples for artifact-free warping. |
 | **LUT** | Lookup Table; the 32-entry sin/cos table that converts the angle register into horizontal and vertical displacement components. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | Sequential processing stages, each operating on the previous stage's output every clock cycle; Refract uses 10 pipeline stages. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 2
+sidebar_position: 1
 slug: /instruments/videomancer/afterdark
 title: "Afterdark"
 image: /img/instruments/videomancer/afterdark/afterdark_hero.png
@@ -255,16 +255,16 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 | Term | Definition |
 |------|------------|
 | **Color Cycling** | Continuously incrementing a hue angle to produce a smooth rainbow progression over time. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; an accumulator-based technique for generating waveforms at precise frequencies. |
 | **Edge Reflection** | Reversing a velocity component when a moving object reaches a boundary, simulating an elastic collision. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue** | The attribute of color perception described as red, green, blue, etc.; the angular position on the color wheel. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Screensaver** | Software that displays moving graphics to prevent CRT phosphor burn-in during idle periods. |
 | **Sprite** | A two-dimensional graphical object that can be moved independently across a display. |
 | **Velocity Accumulator** | A register that adds a step value each frame to compute position, implementing constant-velocity motion. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 
 ---

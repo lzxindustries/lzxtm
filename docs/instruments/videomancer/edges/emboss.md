@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 86
+sidebar_position: 94
 slug: /instruments/videomancer/emboss
 title: "Emboss"
 image: /img/instruments/videomancer/emboss/emboss_hero.png
@@ -281,18 +281,18 @@ These exercises progress from basic directional emboss to complex metallic surfa
 |------|------------|
 | **Bas-Relief** | A sculptural technique where figures project slightly from a flat background, creating the illusion of depth through light and shadow. |
 | **Bias** | A DC offset added to a signal to shift its operating point; in Emboss, the neutral surface brightness level. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
 | **Deboss** | The opposite of emboss; pressing a design into a surface rather than raising it above the surface. |
 | **Dot Product** | A mathematical operation that projects one vector onto another; used in lighting calculations to determine surface brightness. |
 | **Gradient** | The rate of change of a value across space; in image processing, the difference between adjacent pixel values. |
 | **Heightfield** | A 2D representation of a 3D surface where pixel brightness represents height above a base plane. |
 | **Intaglio** | A printmaking technique where the image is incised into a surface and ink is held in the grooves. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | An FPGA IP block that computes weighted average (crossfade) between two input values based on a control parameter. |
 | **Line Buffer** | A BRAM-based memory storing one complete scanline of pixel data, enabling vertical comparisons between adjacent lines. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Sobel Operator** | A 3×3 convolution kernel used in image processing to compute horizontal and vertical gradient approximations for edge detection. |
 | **Surface Normal** | A vector perpendicular to a surface at a given point, used in lighting calculations to determine the angle of incidence. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

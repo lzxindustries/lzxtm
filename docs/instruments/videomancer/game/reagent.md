@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 213
+sidebar_position: 229
 slug: /instruments/videomancer/reagent
 title: "Reagent"
 image: /img/instruments/videomancer/reagent/reagent_hero.png
 description: "Chemistry has a beautiful color language."
 ---
 
+import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
 import reagent_before_after from '/img/instruments/videomancer/reagent/reagent_before_after.png';
 import reagent_control_panel from '/img/instruments/videomancer/reagent/reagent_control_panel.png';
 import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.png';
 import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.png';
 import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reagent_exercise3_result.png';
-import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
-import reagent_source1_kodim15 from '/img/instruments/videomancer/reagent/reagent_source1_kodim15.png';
-import reagent_source2_kodim03 from '/img/instruments/videomancer/reagent/reagent_source2_kodim03.png';
-import reagent_source3_kodim15_bw from '/img/instruments/videomancer/reagent/reagent_source3_kodim15_bw.png';
 
 # Reagent
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={reagent_hero} alt="Reagent hero image"/>
 *Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
@@ -290,8 +283,10 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 | **Buffer Zone** | A transition region near the acid-base boundary where pixels receive distinct emphasis or highlighting, similar to a chemical buffer that resists pH change. |
 | **Hue Wheel** | A circular arrangement of colors divided into six segments (red, yellow, green, cyan, blue, magenta). The Acid Hue and Base Hue controls each select a position on this wheel. |
 | **Indicator** | A substance (or in Reagent's case, a color-mapping mode) that produces a multi-color response across a range of pH values, as opposed to a binary litmus-style response. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware component that linearly blends between two values. Reagent uses three interpolators for wet/dry crossfade on Y, U, and V channels. |
 | **Litmus** | A simple binary indicator that turns red in acid and blue in base. Reagent's non-gradient mode approximates this behavior. |
 | **Neutral Zone** | The luminance range between pH Low and pH High where pixels are classified as neither acid nor base. |
 | **Pseudocolor** | False-color mapping that assigns colors to a grayscale signal based on intensity, used in thermal imaging, medical scans, and scientific visualization. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

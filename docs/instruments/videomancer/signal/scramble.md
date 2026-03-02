@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 6
+sidebar_position: 245
 slug: /instruments/videomancer/scramble
 title: "Scramble"
 image: /img/instruments/videomancer/scramble/scramble_hero.png
@@ -274,12 +274,15 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 | **Chroma** | The color-carrying component of a video signal, as distinct from luminance (brightness). |
 | **Crossfade** | A gradual blend between two signals, here used to mix between the processed (wet) and unprocessed (dry) video paths. |
 | **Cut-and-rotate** | A scrambling technique that splits each scanline at a variable cut point and swaps the two halves, wrapping around the line boundary. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware circuit that generates a deterministic pseudo-random bit sequence by feeding back the XOR of selected register tap positions. |
 | **Line buffer** | A block of memory sized to store one complete horizontal scanline of pixel data, enabling per-line read and write at independent addresses. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The luminance (brightness) component of a video signal, represented by the Y channel in YUV encoding. |
 | **Sawtooth** | A waveform that rises linearly from minimum to maximum and then resets, used here as an alternative to LFSR for generating progressive per-line displacement offsets. |
 | **Seed** | An initial value loaded into a pseudo-random generator that determines the entire subsequent output sequence. |
 | **Sync suppression** | Deliberate removal or attenuation of horizontal synchronization pulses in an analog video signal, causing the receiving display to lose horizontal timing. |
 | **Wet/dry** | Audio and video processing convention where "wet" refers to the fully processed signal and "dry" refers to the original unprocessed signal. |
 | **XOR** | Exclusive OR; a binary logic operation that outputs 1 when its two inputs differ, used in LFSR feedback paths and bit-level manipulation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding scheme that separates luminance (Y) from two chrominance difference signals (U and V), standard in broadcast and digital video processing. |
+
+
+---

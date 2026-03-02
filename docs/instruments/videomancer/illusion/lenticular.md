@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 146
+sidebar_position: 160
 slug: /instruments/videomancer/lenticular
 title: "Lenticular"
 image: /img/instruments/videomancer/lenticular/lenticular_hero.png
 description: "Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them."
 ---
 
+import lenticular_hero from '/img/instruments/videomancer/lenticular/lenticular_hero.png';
 import lenticular_before_after from '/img/instruments/videomancer/lenticular/lenticular_before_after.png';
 import lenticular_control_panel from '/img/instruments/videomancer/lenticular/lenticular_control_panel.png';
 import lenticular_exercise1_result from '/img/instruments/videomancer/lenticular/lenticular_exercise1_result.png';
 import lenticular_exercise2_result from '/img/instruments/videomancer/lenticular/lenticular_exercise2_result.png';
 import lenticular_exercise3_result from '/img/instruments/videomancer/lenticular/lenticular_exercise3_result.png';
-import lenticular_hero from '/img/instruments/videomancer/lenticular/lenticular_hero.png';
-import lenticular_source1_kodim01 from '/img/instruments/videomancer/lenticular/lenticular_source1_kodim01.png';
-import lenticular_source2_kodim02 from '/img/instruments/videomancer/lenticular/lenticular_source2_kodim02.png';
-import lenticular_source3_kodim01_bw from '/img/instruments/videomancer/lenticular/lenticular_source3_kodim01_bw.png';
 
 # Lenticular
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lenticular_hero} alt="Lenticular hero image"/>
 *Lenticular dividing a portrait into alternating shifted stripes, creating a shimmering parallax depth effect reminiscent of holographic trading cards.*
@@ -297,16 +290,18 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory tiles used for line buffers and large delay structures. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interleave** | Spatially alternating between two views stripe-by-stripe within a single frame. |
 | **Lenticular** | A printing technology using cylindrical lens arrays to create images with depth or animation effects. |
 | **Line Buffer** | A memory that stores one complete scan line for comparison or mixing with adjacent lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Parallax** | The apparent displacement of an object when viewed from different positions; the basis of stereoscopic depth perception. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing selectable time delay. |
 | **Stereopsis** | The brain's ability to perceive depth by comparing the slightly different images received by each eye. |
 | **Wiggle** | Temporal alternation between views on successive frames, mimicking the effect of tilting a lenticular card. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

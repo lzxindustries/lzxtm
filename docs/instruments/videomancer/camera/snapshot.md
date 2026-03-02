@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 239
+sidebar_position: 261
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
 image: /img/instruments/videomancer/snapshot/snapshot_hero.png
-description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened ..."
+description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened by vignetting, visible film grain, a warm or cool color cast from the film stock, and the harsh flat light of a built-in flash."
 ---
 
+import snapshot_hero from '/img/instruments/videomancer/snapshot/snapshot_hero.png';
 import snapshot_before_after from '/img/instruments/videomancer/snapshot/snapshot_before_after.png';
 import snapshot_control_panel from '/img/instruments/videomancer/snapshot/snapshot_control_panel.png';
 import snapshot_exercise1_result from '/img/instruments/videomancer/snapshot/snapshot_exercise1_result.png';
 import snapshot_exercise2_result from '/img/instruments/videomancer/snapshot/snapshot_exercise2_result.png';
 import snapshot_exercise3_result from '/img/instruments/videomancer/snapshot/snapshot_exercise3_result.png';
-import snapshot_hero from '/img/instruments/videomancer/snapshot/snapshot_hero.png';
-import snapshot_source1_kodim05 from '/img/instruments/videomancer/snapshot/snapshot_source1_kodim05.png';
-import snapshot_source2_kodim15 from '/img/instruments/videomancer/snapshot/snapshot_source2_kodim15.png';
-import snapshot_source3_kodim15_bw from '/img/instruments/videomancer/snapshot/snapshot_source3_kodim15_bw.png';
 
 # Snapshot
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={snapshot_hero} alt="Snapshot hero image"/>
 *Snapshot applying disposable-camera color saturation, vignette darkening, and film grain to transform clean digital video into nostalgic lo-fi photography.*
@@ -280,15 +273,17 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation 601; the color matrix standard used to convert between RGB and YUV color spaces in standard-definition video. |
 | **C-41** | The standard chemical process for developing color negative film; produces the familiar orange-masked negatives used in consumer photography. |
 | **Chrominance** | The color difference information in a video signal, represented as U (blue-difference) and V (red-difference) components. |
 | **Cross Processing** | Deliberately developing photographic film in chemistry intended for a different film type, producing shifted colors and increased contrast. |
 | **E-6** | The standard chemical process for developing color reversal (slide) film; produces positive transparencies. |
 | **Film Grain** | The visible clumping of light-sensitive particles in photographic emulsion, producing a textured noise pattern. |
 | **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the calculation, producing exponential-decay smoothing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **LFSR** | Linear Feedback Shift Register; a digital circuit that produces a deterministic pseudo-random binary sequence. |
+| **Luminance** | The brightness component (Y) of a YUV video signal. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Vignette** | Darkening of image corners and edges caused by optical limitations of the lens, or applied intentionally for artistic effect. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

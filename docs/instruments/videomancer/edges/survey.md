@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 252
+sidebar_position: 276
 slug: /instruments/videomancer/survey
 title: "Survey"
 image: /img/instruments/videomancer/survey/survey_hero.png
 description: "Topographic maps translate three-dimensional terrain into two-dimensional line drawings."
 ---
 
+import survey_hero from '/img/instruments/videomancer/survey/survey_hero.png';
 import survey_before_after from '/img/instruments/videomancer/survey/survey_before_after.png';
 import survey_control_panel from '/img/instruments/videomancer/survey/survey_control_panel.png';
 import survey_exercise1_result from '/img/instruments/videomancer/survey/survey_exercise1_result.png';
 import survey_exercise2_result from '/img/instruments/videomancer/survey/survey_exercise2_result.png';
 import survey_exercise3_result from '/img/instruments/videomancer/survey/survey_exercise3_result.png';
-import survey_hero from '/img/instruments/videomancer/survey/survey_hero.png';
-import survey_source1_kodim02 from '/img/instruments/videomancer/survey/survey_source1_kodim02.png';
-import survey_source2_kodim07 from '/img/instruments/videomancer/survey/survey_source2_kodim07.png';
-import survey_source3_kodim01_bw from '/img/instruments/videomancer/survey/survey_source3_kodim01_bw.png';
 
 # Survey
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={survey_hero} alt="Survey hero image"/>
 *Survey rendering topographic contour lines from a natural scene, with relief shading and altitude-banded color tinting.*
@@ -36,9 +29,9 @@ import survey_source3_kodim01_bw from '/img/instruments/videomancer/survey/surve
 
 Topographic maps translate three-dimensional terrain into two-dimensional line drawings. Contour lines connect points of equal elevation; where the lines crowd together, the terrain is steep; where they spread apart, it is flat. Survey applies this cartographic principle to the luminance channel of live video. Brightness becomes elevation, and the program draws contour lines wherever the luma value crosses a power-of-two boundary.
 
-The contour detection is entirely bitwise — no division or modulus operators appear anywhere in the design. Instead, the program AND-masks the 10-bit luma value against a power-of-two mask and tests whether the masked result is near zero or near the mask value. This simple bit test detects boundary crossings at geometrically-spaced intervals (every 16, 32, 64, 128, 256, or 512 luma levels). A one-line BRAM delay provides the previous scanline's luma for vertical gradient calculation, enabling relief shading that simulates directional hillside lighting. Between contour lines, the luma is divided into altitude bands that can be color-tinted with a cartographic color ramp.
+The contour detection is entirely bitwise — no division or modulus operators appear anywhere in the design. Instead, the program AND-masks the 10-bit luma value against a power-of-two mask and tests whether the masked result is near zero or near the mask value. This simple bit test detects boundary crossings at geometrically-spaced intervals (every 16, 32, 64, 128, 256, or 512 luma levels). A one-line BRAM delay provides the previous scanline's luma for vertical gradient calculation, enabling relief shading that simulates directional hillside lighting. Between contour lines, the luma is divided into altitude bands that can be color-tinted with a cartographic colour ramp.
 
-At subtle settings — wide interval spacing, thin lines, gentle tinting — Survey adds a delicate topographic overlay to any video source. At extreme settings — narrow spacing, thick lines, strong relief — the image transforms into an abstracted terrain map where the original content is barely recognizable beneath its own elevation contours.
+At subtle settings — wide interval spacing, thin lines, gentle tinting — Survey adds a delicate topographic overlay to any video source. At extreme settings — narrow spacing, thick lines, strong relief — the image transforms into an abstracted terrain map where the original content is barely recognisable beneath its own elevation contours.
 
 ---
 
@@ -56,9 +49,9 @@ Survey avoids all arithmetic division. Instead, it detects contour boundaries by
 
 Relief shading simulates the effect of a light source illuminating terrain from one direction. In traditional cartography, the illumination direction is conventionally from the northwest. Survey computes a simplified version: the vertical gradient (current line Y minus previous line Y from the BRAM line buffer) serves as a proxy for slope. Positive gradients (brightening downward) receive a brightness boost; negative gradients (darkening downward) receive a dimming. The relief strength parameter scales this gradient before adding it to the background luma. The result is an embossed, three-dimensional quality that makes the contour map appear to have depth.
 
-### Altitude Color Tinting (Hypsometric Tints)
+### Altitude Colour Tinting (Hypsometric Tints)
 
-On printed topographic maps, the regions between contour lines are often filled with **hypsometric tints** — color gradients that encode elevation. Low elevations might be green (vegetation), middle elevations brown (rock), and high elevations white (snow). Survey achieves a simplified version: the upper 4 bits of the luma value define an altitude band (0–15), and this band index is multiplied by the altitude tint parameter to produce U and V offsets from the chroma midpoint. The U offset uses the band value directly; the V offset uses its bitwise complement, creating a complementary color spectrum across the altitude range.
+On printed topographic maps, the regions between contour lines are often filled with **hypsometric tints** — colour gradients that encode elevation. Low elevations might be green (vegetation), middle elevations brown (rock), and high elevations white (snow). Survey achieves a simplified version: the upper 4 bits of the luma value define an altitude band (0–15), and this band index is multiplied by the altitude tint parameter to produce U and V offsets from the chroma midpoint. The U offset uses the band value directly; the V offset uses its bitwise complement, creating a complementary colour spectrum across the altitude range.
 
 ### Line Buffers and Vertical Delay
 
@@ -91,7 +84,7 @@ Input Video (YUV 4:4:4)
 ├── Stage 4: Composite Mux ────────────────────────────────────
 │   ├─ Contour pixel → Y = contour_luma, U = V = 512
 │   └─ Non-contour pixel → Y = bg_y + relief_add (clamped)
-│      + altitude color (if enabled): U/V = 512 + tint offsets
+│      + altitude colour (if enabled): U/V = 512 + tint offsets
 │
 ├── Stage 5: Output Register ──────────────────────────────────
 │
@@ -140,7 +133,7 @@ Sets the thickness of contour lines by controlling the width threshold for the e
 | Range | 2 – 8 |
 | Default | 5 |
 
-Controls the saturation of the altitude color tinting applied between contour lines. At zero, the fill regions are monochrome (controlled only by the Smooth brightness). As the value increases, the altitude bands receive progressively stronger U and V offsets, creating a color spectrum across the elevation range. The U channel offset follows the altitude band index directly; the V channel uses the bitwise complement, so high and low elevations receive complementary colors. At maximum, the color banding is vivid and clearly delineates each altitude zone.
+Controls the saturation of the altitude colour tinting applied between contour lines. At zero, the fill regions are monochrome (controlled only by the Smooth brightness). As the value increases, the altitude bands receive progressively stronger U and V offsets, creating a colour spectrum across the elevation range. The U channel offset follows the altitude band index directly; the V channel uses the bitwise complement, so high and low elevations receive complementary colours. At maximum, the colour banding is vivid and clearly delineates each altitude zone.
 
 ---
 
@@ -187,7 +180,7 @@ Sets the brightness of contour line pixels directly. When a pixel is classified 
 | **10 — Labels** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control independent binary features. Palette enables or disables relief shading. Index Bold doubles the contour line thickness. Fill Mode enables or disables altitude color tinting. Labels inverts the contour detection polarity. Bypass routes the input directly to output. These switches operate independently — each affects a single processing decision in the pipeline.
+The five toggles control independent binary features. Palette enables or disables relief shading. Index Bold doubles the contour line thickness. Fill Mode enables or disables altitude colour tinting. Labels inverts the contour detection polarity. Bypass routes the input directly to output. These switches operate independently — each affects a single processing decision in the pipeline.
 
 ---
 
@@ -206,7 +199,7 @@ Crossfades between the dry (unprocessed) input and the wet (contour-mapped) outp
 
 ## Guided Exercises
 
-These exercises progress from basic contour extraction through relief shading to full cartographic terrain rendering with color tinting and inversion.
+These exercises progress from basic contour extraction through relief shading to full cartographic terrain rendering with colour tinting and inversion.
 
 ### Exercise 1: Basic Contour Lines
 
@@ -252,16 +245,16 @@ These exercises progress from basic contour extraction through relief shading to
 *Full Cartographic Rendering — simulated result across source images.*
 **Source**: Any footage with a range of brightness levels — a landscape, a still life, or abstract video synthesis.
 
-**Objective**: Combine contour lines, relief shading, and altitude color tinting for a complete terrain map aesthetic.
+**Objective**: Combine contour lines, relief shading, and altitude colour tinting for a complete terrain map aesthetic.
 
-1. **Color tinting**: Set Fill Mode to Color and increase Index Sp (altitude tint) to ~60%. Color bands appear between contour lines.
-2. **Relief + color**: Enable Palette (relief) and set Color Ramp to ~50%. The color bands now have three-dimensional shading.
-3. **Dense contours**: Set Interval to ~30% for detailed linework over the colored terrain.
+1. **Colour tinting**: Set Fill Mode to Color and increase Index Sp (altitude tint) to ~60%. Colour bands appear between contour lines.
+2. **Relief + colour**: Enable Palette (relief) and set Color Ramp to ~50%. The colour bands now have three-dimensional shading.
+3. **Dense contours**: Set Interval to ~30% for detailed linework over the coloured terrain.
 4. **Invert**: Enable Labels (invert polarity). The contour bands become solid fills and the boundaries become background gaps — a negative terrain map.
 5. **Thick lines**: Enable Index Bold and increase Line W to ~60%. Bold contour bands dominate the image.
 6. **Mix overlay**: Reduce Mix to ~60% to overlay the terrain map transparently on the original source.
 
-**Key concepts**: Altitude tinting uses upper bits of source luma to create complementary U/V offsets, relief shading operates independently of color tinting, invert polarity swaps contour and background roles
+**Key concepts**: Altitude tinting uses upper bits of source luma to create complementary U/V offsets, relief shading operates independently of colour tinting, invert polarity swaps contour and background roles
 
 ---
 
@@ -272,10 +265,10 @@ These exercises progress from basic contour extraction through relief shading to
 - **Line width scales with interval**: The width threshold is derived from the contour mask, so the same Line W setting produces visually different thicknesses at different intervals. Adjust both together.
 - **Relief needs Palette enabled**: The Color Ramp knob has no effect unless the Palette toggle is set to Terrain (relief enabled). Check the toggle first if relief isn't visible.
 - **Dark background for drama**: Set Smooth low and Contrast high for bright contour lines on a dark relief-shaded terrain — the classic cartographic look.
-- **Invert for negative maps**: The Labels toggle creates a negative-image effect that turns contour lines into filled bands. Combined with altitude color, this produces broad elevation color chips.
+- **Invert for negative maps**: The Labels toggle creates a negative-image effect that turns contour lines into filled bands. Combined with altitude colour, this produces broad elevation colour chips.
 - **Mix for overlay**: Use the Mix fader at 50–70% to overlay the contour map transparently on the source footage — a topographic annotation layer that preserves the original image.
 - **Feedback loops**: Route the output back to the input. The contour detector re-processes its own quantised bands, creating recursive fractal-like contour patterns at each power-of-two boundary.
-- **Flat input test**: Feed a uniform color to confirm zero contours — useful for verifying the program is running correctly before applying to complex sources.
+- **Flat input test**: Feed a uniform colour to confirm zero contours — useful for verifying the program is running correctly before applying to complex sources.
 
 ---
 
@@ -283,13 +276,15 @@ These exercises progress from basic contour extraction through relief shading to
 
 | Term | Definition |
 |------|------------|
-| **Altitude Band** | A quantised elevation zone defined by the upper bits of the luma value, used to assign hypsometric color tints. |
+| **Altitude Band** | A quantised elevation zone defined by the upper bits of the luma value, used to assign hypsometric colour tints. |
 | **Bitmask** | A binary pattern used to isolate specific bits of a value; Survey uses bitmask AND for division-free contour detection. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated on-chip memory used for the scanline delay buffer that stores previous-line luma for relief calculation. |
 | **Contour Interval** | The vertical distance (in luma levels) between adjacent contour lines; always a power of two in Survey. |
 | **Contour Line** | A line connecting points of equal luminance, analogous to an isohypse on a topographic map. |
-| **Hypsometric Tint** | A color assigned to an elevation band on a topographic map, encoding altitude as hue. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Hypsometric Tint** | A colour assigned to an elevation band on a topographic map, encoding altitude as hue. |
+| **LFSR** | Linear Feedback Shift Register (not used in Survey but referenced in glossary for completeness). |
 | **Line Buffer** | A BRAM-based FIFO that delays one scanline of pixel data, providing vertical neighbor access for gradient calculation. |
 | **Relief Shading** | A cartographic technique that simulates directional lighting on terrain to create a three-dimensional appearance. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

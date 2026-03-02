@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 94
+sidebar_position: 102
 slug: /instruments/videomancer/fauxtress
 title: "Fauxtress"
 image: /img/instruments/videomancer/fauxtress/fauxtress_hero.png
@@ -27,7 +27,7 @@ import fauxtress_exercise3_result from '/img/instruments/videomancer/fauxtress/f
 
 ## Overview
 
-Fauxtress is a faithful reimplementation of the LZX Industries Fortress EuroRack module as a Videomancer FPGA program. Fortress was a standalone geometric pattern synthesizer — a "video oscillator on steroids" — that combined phase-accumulator waveforms, multiple pattern generation algorithms, an arithmetic logic unit (ALU), and a bank of curated color palettes to produce an enormous range of geometric, textural, and noise-based video imagery from scratch. Its signature was the cross-modulation between horizontal and animation accumulators, which produced the sweeping diagonal moiré patterns instantly recognizable to LZX modular video users.
+Fauxtress is a faithful reimplementation of the LZX Industries Fortress EuroRack module as a Videomancer FPGA program. Fortress was a standalone geometric pattern synthesizer — a "video oscillator on steroids" — that combined phase-accumulator waveforms, multiple pattern generation algorithms, an arithmetic logic unit (ALU), and a bank of curated color palettes to produce an enormous range of geometric, textural, and noise-based video imagery from scratch. Its signature was the cross-modulation between horizontal and animation accumulators, which produced the sweeping diagonal moire patterns instantly recognizable to LZX modular video users.
 
 Fauxtress reproduces all four of Fortress's pattern generation programs: direct waveform combining, a 16-stage shift register delay, 32-cell 1D cellular automata running classic Wolfram rules, and a configurable linear feedback shift register (LFSR) noise generator. Each program feeds its output through one of eight ALU operations — Add, Subtract, AND, OR, XOR, NAND, NOR, XNOR — and the 3-bit result indexes into one of eight color palettes ported directly from the original hardware. The result is a combinatorial space of thousands of distinct visual textures, from razor-sharp geometric grids to evolving organic cellular structures to pseudo-random noise fields, all rendered in the original Fortress color language.
 
@@ -55,7 +55,7 @@ A linear feedback shift register generates pseudo-random binary sequences by XOR
 
 ### ALU Operations in Video Synthesis
 
-In conventional computing, the ALU performs arithmetic and logic on data. In video synthesis, these same operations become spatial composition tools. Adding two periodic waveforms produces a sum pattern whose frequency content is the union of both inputs — creating dense moiré grids. Subtracting emphasizes differences and produces complementary patterns. The bitwise operations (AND, OR, XOR, NAND, NOR, XNOR) treat the waveform values as 10-bit integers and combine them bit by bit, producing hard-edged quantized patterns that are distinctly digital in character. XOR in particular is a classic video synthesis operation: it produces patterns that are zero wherever the inputs match and maximal wherever they differ, creating a checkerboard-like interference that highlights the spatial frequency structure of both inputs simultaneously.
+In conventional computing, the ALU performs arithmetic and logic on data. In video synthesis, these same operations become spatial composition tools. Adding two periodic waveforms produces a sum pattern whose frequency content is the union of both inputs — creating dense moire grids. Subtracting emphasizes differences and produces complementary patterns. The bitwise operations (AND, OR, XOR, NAND, NOR, XNOR) treat the waveform values as 10-bit integers and combine them bit by bit, producing hard-edged quantized patterns that are distinctly digital in character. XOR in particular is a classic video synthesis operation: it produces patterns that are zero wherever the inputs match and maximal wherever they differ, creating a checkerboard-like interference that highlights the spatial frequency structure of both inputs simultaneously.
 
 
 ---
@@ -113,7 +113,7 @@ Phase Accumulators
     └─ Bypass On → pass input directly; Off → mixed output
 ```
 
-The cross-modulation between the animation and horizontal accumulators is the most distinctive feature of the signal flow. Because the horizontal accumulator is preloaded from the animation accumulator at each hsync, the starting phase of each scanline shifts progressively — producing diagonal patterns whose angle is determined by the ratio of the animation rate to the horizontal rate. When the animation rate is zero, the horizontal pattern is purely horizontal (identical on every line). As the animation rate increases, the phase offset between successive lines grows, rotating the pattern toward the diagonal. This mechanism is computationally free — it uses no additional logic, only the accumulator preload — yet it produces the rich moiré interference patterns that defined the original Fortress aesthetic. The ALU pipeline register between the ALU output and the palette lookup breaks what would otherwise be a long combinational path through waveform generation, program selection, ALU operation, and palette ROM lookup.
+The cross-modulation between the animation and horizontal accumulators is the most distinctive feature of the signal flow. Because the horizontal accumulator is preloaded from the animation accumulator at each hsync, the starting phase of each scanline shifts progressively — producing diagonal patterns whose angle is determined by the ratio of the animation rate to the horizontal rate. When the animation rate is zero, the horizontal pattern is purely horizontal (identical on every line). As the animation rate increases, the phase offset between successive lines grows, rotating the pattern toward the diagonal. This mechanism is computationally free — it uses no additional logic, only the accumulator preload — yet it produces the rich moire interference patterns that defined the original Fortress aesthetic. The ALU pipeline register between the ALU output and the palette lookup breaks what would otherwise be a long combinational path through waveform generation, program selection, ALU operation, and palette ROM lookup.
 
 ---
 
@@ -150,7 +150,7 @@ Controls the frequency of the vertical phase accumulator. At zero, the vertical 
 | Range | 0 – 1023 |
 | Default | 0 |
 
-Controls the animation accumulator rate. When set to zero, the animation accumulator remains at zero and the horizontal accumulator starts each scanline at the same phase — the pattern is static and purely horizontal/vertical. As Anim Rate increases, the animation accumulator advances by this value on every pixel clock (free-running), and the horizontal accumulator is preloaded from it at each hsync. This creates a per-scanline phase shift that produces diagonal interference patterns and sweeping moiré effects. Higher values produce faster diagonal drift and more complex cross-modulation. The animation accumulator never resets, so the pattern continuously evolves over time.
+Controls the animation accumulator rate. When set to zero, the animation accumulator remains at zero and the horizontal accumulator starts each scanline at the same phase — the pattern is static and purely horizontal/vertical. As Anim Rate increases, the animation accumulator advances by this value on every pixel clock (free-running), and the horizontal accumulator is preloaded from it at each hsync. This creates a per-scanline phase shift that produces diagonal interference patterns and sweeping moire effects. Higher values produce faster diagonal drift and more complex cross-modulation. The animation accumulator never resets, so the pattern continuously evolves over time.
 
 ---
 
@@ -160,7 +160,7 @@ Controls the animation accumulator rate. When set to zero, the animation accumul
 | Range | 0 – 7 |
 | Default | 0 |
 
-Selects one of eight ALU operations via the top 3 bits of the register value. The operation determines how the two waveform operands are combined: Add (0) creates sum patterns with rich moiré, Subtract (1) emphasizes differences, AND (2) produces sparse intersection patterns, OR (3) creates dense union patterns, XOR (4) generates complementary checkerboard interference, NAND (5) inverts AND's sparse patterns into dense fields, NOR (6) inverts OR's dense patterns into sparse voids, and XNOR (7) produces the complement of XOR. The ALU operates on full 10-bit values with modular arithmetic (wrapping), so sum and difference operations produce wrap-around patterns at the extremes.
+Selects one of eight ALU operations via the top 3 bits of the register value. The operation determines how the two waveform operands are combined: Add (0) creates sum patterns with rich moire, Subtract (1) emphasizes differences, AND (2) produces sparse intersection patterns, OR (3) creates dense union patterns, XOR (4) generates complementary checkerboard interference, NAND (5) inverts AND's sparse patterns into dense fields, NOR (6) inverts OR's dense patterns into sparse voids, and XNOR (7) produces the complement of XOR. The ALU operates on full 10-bit values with modular arithmetic (wrapping), so sum and difference operations produce wrap-around patterns at the extremes.
 
 ---
 
@@ -215,10 +215,10 @@ Wet/dry crossfade between the input video and the generated pattern. At 100% (fu
 
 These exercises explore the four pattern programs, the ALU's combining operations, and the animation cross-modulation that defines the Fauxtress visual language. Each builds on the previous, progressing from simple geometric grids to evolving cellular structures.
 
-### Exercise 1: Geometric Moiré Grid
+### Exercise 1: Geometric Moire Grid
 
-<img src={fauxtress_exercise1_result} alt="Geometric Moiré Grid result"/>
-*Geometric Moiré Grid — simulated result across source images.*
+<img src={fauxtress_exercise1_result} alt="Geometric Moire Grid result"/>
+*Geometric Moire Grid — simulated result across source images.*
 **Objective**: Generate a classic Fortress-style geometric grid using the Direct program, exploring how waveform shapes, ALU operations, and the animation accumulator produce diagonal interference patterns.
 
 1. **Set Direct mode**: Both Shift Reg and CA/LFSR toggles **Off** (program 00).
@@ -274,7 +274,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 ## Tips
 
 - **Start with Direct + XOR for instant patterns**: Program 00 with the XOR operation produces the widest variety of classic Fortress geometric grids. It's the fastest path to a recognizable signal from which to explore other program modes.
-- **Anim Rate is diagonal tilt**: Think of the animation rate as a "tilt" control for the pattern. Zero produces purely orthogonal (horizontal/vertical) structures. Small values tilt the pattern slightly diagonal. Large values produce rapidly sweeping moiré interference.
+- **Anim Rate is diagonal tilt**: Think of the animation rate as a "tilt" control for the pattern. Zero produces purely orthogonal (horizontal/vertical) structures. Small values tilt the pattern slightly diagonal. Large values produce rapidly sweeping moire interference.
 - **Triangle smooths, Ramp sharpens**: Triangle waveforms produce mirrored, smooth patterns with no wrap-around discontinuity. Ramp waveforms produce sawtooth patterns with a sharp edge at the wrap boundary. Mix and match for asymmetric textures.
 - **CA rules have distinct personalities**: Rule 110 is complex and non-repeating (Turing-complete). Rule 30 is chaotic. Rule 57 produces clean stripes. Rule 9 is sparse and crystalline. Cycle through rules slowly to find the texture you need.
 - **LFSR polynomial shapes the noise**: Not all LFSR polynomials produce long sequences. Some produce very short, highly structured patterns that act more like geometric textures than noise. Sweep Seed slowly in LFSR mode to find the sweet spots.
@@ -292,12 +292,12 @@ These exercises explore the four pattern programs, the ALU's combining operation
 | **Cellular automaton (CA)** | A computational system consisting of a row (1D) or grid (2D) of cells, each updating its state based on the states of its neighbors according to a fixed rule. In Fauxtress, a 32-cell 1D elementary CA evolves one generation per scanline. |
 | **Cross-modulation** | The technique of feeding the output of one oscillator into the phase or frequency input of another, producing interference patterns. In Fauxtress, the animation accumulator cross-modulates the horizontal accumulator by preloading its value at hsync. |
 | **Elementary CA** | A 1D cellular automaton where each cell has 2 states (0 or 1) and a 3-cell neighborhood (left, center, right). There are exactly 256 possible elementary CA rules, identified by Wolfram numbers. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Moiré** | An interference pattern produced when two periodic structures (such as ramp waveforms at different frequencies) overlap, creating visible beat frequencies larger than either original pattern. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state. Produces pseudo-random binary sequences whose period and character depend on the feedback polynomial. |
+| **Moire** | An interference pattern produced when two periodic structures (such as ramp waveforms at different frequencies) overlap, creating visible beat frequencies larger than either original pattern. |
 | **Phase accumulator** | A digital counter that increments by a fixed value (the frequency word) on each clock cycle, wrapping at its maximum count. The most significant bits represent the instantaneous phase of a periodic waveform. |
 | **Polynomial (LFSR)** | A binary mask that selects which bit positions of the LFSR contribute XOR feedback. Different polynomials produce different pseudo-random sequences with different periods and statistical properties. |
 | **Spacetime diagram** | A visualization of a 1D cellular automaton's evolution, where the horizontal axis represents cell position and the vertical axis represents successive generations (time). Each row is one generation of the CA. |
 | **Wolfram number** | A decimal integer (0–255) that uniquely identifies an elementary cellular automaton rule by encoding the 8-bit output pattern for all possible 3-cell neighborhoods. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. BT.601 defines the conversion coefficients from RGB. |
 
 ---

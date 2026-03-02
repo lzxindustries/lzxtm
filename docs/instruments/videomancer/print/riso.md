@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 220
+sidebar_position: 236
 slug: /instruments/videomancer/riso
 title: "Riso"
 image: /img/instruments/videomancer/riso/riso_hero.png
-description: "Risograph printing is a stencil-based duplicating process beloved by artists and zine-makers for its vivid spot inks, imperfect registration, and textur..."
+description: "Risograph printing is a stencil-based duplicating process beloved by artists and zine-makers for its vivid spot inks, imperfect registration, and textured grain."
 ---
 
+import riso_hero from '/img/instruments/videomancer/riso/riso_hero.png';
 import riso_before_after from '/img/instruments/videomancer/riso/riso_before_after.png';
 import riso_control_panel from '/img/instruments/videomancer/riso/riso_control_panel.png';
 import riso_exercise1_result from '/img/instruments/videomancer/riso/riso_exercise1_result.png';
 import riso_exercise2_result from '/img/instruments/videomancer/riso/riso_exercise2_result.png';
 import riso_exercise3_result from '/img/instruments/videomancer/riso/riso_exercise3_result.png';
-import riso_hero from '/img/instruments/videomancer/riso/riso_hero.png';
-import riso_source1_kodim02 from '/img/instruments/videomancer/riso/riso_source1_kodim02.png';
-import riso_source2_kodim07 from '/img/instruments/videomancer/riso/riso_source2_kodim07.png';
-import riso_source3_kodim01_bw from '/img/instruments/videomancer/riso/riso_source3_kodim01_bw.png';
 
 # Riso
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={riso_hero} alt="Riso hero image"/>
 *Riso applying dual-ink subtractive spot color separation with stencil grain texture and horizontal misregistration offset.*
@@ -283,11 +276,13 @@ These exercises progress from simple duotone separation to full multi-layer misr
 |------|------------|
 | **Absorption** | In subtractive color mixing, the amount of light energy removed by an ink layer; computed as (paper brightness − ink brightness) × coverage. |
 | **Duotone** | A printing technique using two ink colors to reproduce a tonal image, typically one dark and one mid-tone or accent color. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator used to create the stencil grain noise pattern. |
 | **Misregistration** | Spatial misalignment between separately printed ink layers, visible as colored fringe at tonal edges. |
 | **Risograph** | A high-speed stencil-based digital duplicator manufactured by Riso Kagaku Corporation, widely adopted for art printing. |
 | **Spot Color** | A single pre-mixed ink color (as opposed to CMYK process color), applied as a uniform hue across the entire print. |
 | **Stencil** | A perforated master sheet through which ink is pressed; in risograph printing, a wax thermal master with variable porosity. |
 | **Subtractive Mixing** | Color mixing where layered pigments or inks absorb light, producing darker results as more layers are added. |
 | **Tonal Separation** | Dividing a continuous-tone image into discrete brightness zones, each assigned a specific treatment or ink color. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

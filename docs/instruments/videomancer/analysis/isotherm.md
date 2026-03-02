@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 131
+sidebar_position: 143
 slug: /instruments/videomancer/isotherm
 title: "Isotherm"
 image: /img/instruments/videomancer/isotherm/isotherm_hero.png
 description: "Every surface radiates energy."
 ---
 
+import isotherm_hero from '/img/instruments/videomancer/isotherm/isotherm_hero.png';
 import isotherm_before_after from '/img/instruments/videomancer/isotherm/isotherm_before_after.png';
 import isotherm_control_panel from '/img/instruments/videomancer/isotherm/isotherm_control_panel.png';
 import isotherm_exercise1_result from '/img/instruments/videomancer/isotherm/isotherm_exercise1_result.png';
 import isotherm_exercise2_result from '/img/instruments/videomancer/isotherm/isotherm_exercise2_result.png';
 import isotherm_exercise3_result from '/img/instruments/videomancer/isotherm/isotherm_exercise3_result.png';
-import isotherm_hero from '/img/instruments/videomancer/isotherm/isotherm_hero.png';
-import isotherm_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source1_grayscale_ramp_h_1920x1080.png';
-import isotherm_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source2_grayscale_ramp_v_1920x1080.png';
-import isotherm_source3_step_wedge_21level_512 from '/img/instruments/videomancer/isotherm/isotherm_source3_step_wedge_21level_512.png';
 
 # Isotherm
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={isotherm_hero} alt="Isotherm hero image"/>
 *Isotherm mapping video luminance into false-color thermal palettes with contour lines and HUD overlay.*
@@ -34,7 +27,7 @@ import isotherm_source3_step_wedge_21level_512 from '/img/instruments/videomance
 
 ## Overview
 
-Every surface radiates energy. Thermal cameras translate that invisible radiation into visible color maps — turning temperature differences into vivid gradients that the eye can instantly parse. Isotherm brings this scientific imaging language into the creative video domain. It treats the luminance channel of the input signal as a proxy for temperature and maps it through one of four selectable color palettes to produce a false-color rendering of the original scene.
+Every surface radiates energy. Thermal cameras translate that invisible radiation into visible colour maps — turning temperature differences into vivid gradients that the eye can instantly parse. Isotherm brings this scientific imaging language into the creative video domain. It treats the luminance channel of the input signal as a proxy for temperature and maps it through one of four selectable colour palettes to produce a false-colour rendering of the original scene.
 
 The name comes from the meteorological term *isotherm* — a contour line connecting points of equal temperature on a weather map. In this program, isotherm contour lines are drawn at configurable intervals across the palette-mapped image, adding topographic-like banding that delineates regions of equal brightness. An optional auto-ranging envelope tracker dynamically stretches the input luma to fill the full palette range, maximising contrast regardless of the source signal's native dynamic range.
 
@@ -44,25 +37,25 @@ A heads-up display overlay adds crosshair and corner bracket reticles, completin
 
 ## Background
 
-### False Color in Scientific Imaging
+### False Colour in Scientific Imaging
 
-False color is a visualisation technique in which data values are mapped to colors that bear no relation to the subject's actual appearance. Thermal cameras are the most familiar example — they assign blues and purples to cool regions and reds, oranges, and whites to warm regions. But the technique extends far beyond thermography: astronomers use false color to visualise wavelengths outside the visible spectrum, geologists use it to distinguish rock types in satellite imagery, and medical imaging uses it to highlight blood flow and tissue density. The common thread is replacing a single variable (temperature, wavelength, density) with a color gradient that makes spatial patterns immediately visible.
+False colour is a visualisation technique in which data values are mapped to colours that bear no relation to the subject's actual appearance. Thermal cameras are the most familiar example — they assign blues and purples to cool regions and reds, oranges, and whites to warm regions. But the technique extends far beyond thermography: astronomers use false colour to visualise wavelengths outside the visible spectrum, geologists use it to distinguish rock types in satellite imagery, and medical imaging uses it to highlight blood flow and tissue density. The common thread is replacing a single variable (temperature, wavelength, density) with a colour gradient that makes spatial patterns immediately visible.
 
 ### Piecewise-Linear Palette Interpolation
 
-A naive lookup table with 1024 entries for a 10-bit luma value would consume significant FPGA resources. Isotherm instead stores each palette as 16 key-point colors evenly spaced across the luma range. Between key-points, the output color is linearly interpolated using the fractional position within each segment. This piecewise-linear approach produces smooth color gradients with only 64 color constants (16 key-points × 4 palettes × 3 channels), entirely in registers — no BRAM required.
+A naive lookup table with 1024 entries for a 10-bit luma value would consume significant FPGA resources. Isotherm instead stores each palette as 16 key-point colours evenly spaced across the luma range. Between key-points, the output colour is linearly interpolated using the fractional position within each segment. This piecewise-linear approach produces smooth colour gradients with only 64 colour constants (16 key-points × 4 palettes × 3 channels), entirely in registers — no BRAM required.
 
 ### Auto-Range Envelope Tracking
 
-Many video signals use only a fraction of the available dynamic range. A dimly lit scene might occupy only the bottom quarter of the luma scale, meaning most of the palette's color range goes unused. Isotherm's auto-range mode tracks the minimum and maximum luma values across each frame using an IIR (infinite impulse response) envelope follower with fast attack and slow release. The tracked range is then used to normalise incoming luma before palette lookup, effectively stretching any input signal to span the full palette.
+Many video signals use only a fraction of the available dynamic range. A dimly lit scene might occupy only the bottom quarter of the luma scale, meaning most of the palette's colour range goes unused. Isotherm's auto-range mode tracks the minimum and maximum luma values across each frame using an IIR (infinite impulse response) envelope follower with fast attack and slow release. The tracked range is then used to normalise incoming luma before palette lookup, effectively stretching any input signal to span the full palette.
 
 ### Contour Lines and Topographic Mapping
 
-Contour lines on a topographic map connect points of equal elevation. In Isotherm, they connect pixels of equal normalised brightness. The contour detection works by computing the modular remainder of the normalised luma value with respect to a configurable interval. When the remainder falls within a threshold distance of zero, the pixel is classified as on-contour and rendered in bright white, cutting across the palette colors like elevation lines carved into a painted relief map.
+Contour lines on a topographic map connect points of equal elevation. In Isotherm, they connect pixels of equal normalised brightness. The contour detection works by computing the modular remainder of the normalised luma value with respect to a configurable interval. When the remainder falls within a threshold distance of zero, the pixel is classified as on-contour and rendered in bright white, cutting across the palette colours like elevation lines carved into a painted relief map.
 
 ### Heads-Up Display Overlays
 
-HUD overlays originated in military aviation, where critical flight data was projected onto the pilot's forward view so they never had to look away from their target. Isotherm borrows this visual language with a centre crosshair and corner reticle brackets. Beyond aesthetics, these elements provide fixed spatial reference points that help the viewer gauge feature positions within the false-color field — particularly useful when auto-range is stretching and shifting the color mapping frame to frame.
+HUD overlays originated in military aviation, where critical flight data was projected onto the pilot's forward view so they never had to look away from their target. Isotherm borrows this visual language with a centre crosshair and corner reticle brackets. Beyond aesthetics, these elements provide fixed spatial reference points that help the viewer gauge feature positions within the false-colour field — particularly useful when auto-range is stretching and shifting the colour mapping frame to frame.
 
 
 ---
@@ -97,7 +90,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-The critical architectural decision is that Isotherm discards the input chrominance entirely. The U and V channels of the output come exclusively from the palette lookup — the original color information is not blended or preserved (except through the wet/dry mix fader which interpolates against the delayed dry signal). This means the program is fundamentally a luma-to-color mapper: all output color is derived from input brightness.
+The critical architectural decision is that Isotherm discards the input chrominance entirely. The U and V channels of the output come exclusively from the palette lookup — the original colour information is not blended or preserved (except through the wet/dry mix fader which interpolates against the delayed dry signal). This means the program is fundamentally a luma-to-colour mapper: all output colour is derived from input brightness.
 
 The auto-range normalisation stage sits between input smoothing and palette lookup, which means the palette always receives a signal stretched to the full 0–1023 range (when auto-range is active). The contour detector operates on the normalised luma, so contour line positions shift dynamically as the auto-range envelope adapts — contour lines track the scene content rather than fixed absolute brightness levels.
 
@@ -137,7 +130,7 @@ Sets the spacing between isotherm contour lines. The control is quantised to eig
 | Range | 1 – 4 |
 | Default | 2 |
 
-Selects the spatial smoothing kernel applied to the input luma before any further processing. Four modes are available: no smoothing (raw pixel values), light 2-tap average, weighted 2-tap (3:1 ratio favouring the current pixel), and heavy 2-tap average. Smoothing reduces noise and pixel-level jitter in the palette mapping, producing cleaner color transitions at the cost of spatial resolution. On noisy analogue sources, moderate smoothing prevents the contour lines from chattering.
+Selects the spatial smoothing kernel applied to the input luma before any further processing. Four modes are available: no smoothing (raw pixel values), light 2-tap average, weighted 2-tap (3:1 ratio favouring the current pixel), and heavy 2-tap average. Smoothing reduces noise and pixel-level jitter in the palette mapping, producing cleaner colour transitions at the cost of spatial resolution. On noisy analogue sources, moderate smoothing prevents the contour lines from chattering.
 
 ---
 
@@ -170,7 +163,7 @@ Manual brightness offset added after gain. At centre position (512), no offset i
 | Default | 25.0% |
 | Suffix | % |
 
-Sets the thickness of contour lines. Internally, this controls the threshold distance from the modular remainder zero-crossing — wider thresholds produce thicker white contour strokes. At minimum, contour lines are a single pixel thin. At maximum, the contour regions expand to fill a significant portion of each interval, producing wide bands of white that begin to dominate the palette colors.
+Sets the thickness of contour lines. Internally, this controls the threshold distance from the modular remainder zero-crossing — wider thresholds produce thicker white contour strokes. At minimum, contour lines are a single pixel thin. At maximum, the contour regions expand to fill a significant portion of each interval, producing wide bands of white that begin to dominate the palette colours.
 
 ---
 
@@ -184,7 +177,7 @@ Sets the thickness of contour lines. Internally, this controls the threshold dis
 | **10 — HUD** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggle switches divide into three functional groups. Palette A and Palette B form a 2-bit binary selector for the four color palettes (00 = Ironbow, 01 = Rainbow, 10 = WhiteHot, 11 = BlackHot). Auto Range independently enables or disables the IIR envelope tracker. HUD enables or disables the crosshair and bracket overlay. Bypass routes the input directly to the output. The palette toggles interact — changing either one immediately changes the output color scheme across the entire image.
+The five toggle switches divide into three functional groups. Palette A and Palette B form a 2-bit binary selector for the four colour palettes (00 = Ironbow, 01 = Rainbow, 10 = WhiteHot, 11 = BlackHot). Auto Range independently enables or disables the IIR envelope tracker. HUD enables or disables the crosshair and bracket overlay. Bypass routes the input directly to the output. The palette toggles interact — changing either one immediately changes the output colour scheme across the entire image.
 
 ---
 
@@ -197,7 +190,7 @@ The five toggle switches divide into three functional groups. Palette A and Pale
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the processed (palette-mapped, contour, HUD) signal and the delayed dry input signal. At 100% (fully clockwise), the output is entirely the false-color rendering. At 0% (fully counter-clockwise), the output is the original input (equivalent to full bypass). Intermediate positions blend the two, creating a semi-transparent false-color overlay that allows the original image structure to show through the thermal palette. This is particularly effective with the Ironbow or Rainbow palette at 40–60% mix, producing a color-wash effect that tints the original image according to its brightness.
+Controls the wet/dry crossfade between the processed (palette-mapped, contour, HUD) signal and the delayed dry input signal. At 100% (fully clockwise), the output is entirely the false-colour rendering. At 0% (fully counter-clockwise), the output is the original input (equivalent to full bypass). Intermediate positions blend the two, creating a semi-transparent false-colour overlay that allows the original image structure to show through the thermal palette. This is particularly effective with the Ironbow or Rainbow palette at 40–60% mix, producing a colour-wash effect that tints the original image according to its brightness.
 
 ---
 
@@ -215,11 +208,11 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 1. **Start with defaults**: Ensure Auto Range is On, HUD is Off, Bypass is Off, and Mix is at 100%.
 2. **Ironbow palette**: Set Palette A and B both to Lo (Ironbow). The image immediately maps to the classic thermal gradient — dark blues for cool (dark) areas, reds and oranges for warm (bright) areas, and white for the hottest (brightest) regions.
-3. **Adjust sensitivity**: Sweep the Sensitivity knob. Notice how faster settings make the color mapping react more quickly to scene changes, while slower settings produce a more stable but less responsive render.
+3. **Adjust sensitivity**: Sweep the Sensitivity knob. Notice how faster settings make the colour mapping react more quickly to scene changes, while slower settings produce a more stable but less responsive render.
 4. **Add contours**: Set Contour Int to step 4 (~64 levels). White isotherm lines appear, banding the image like a topographic map. Increase Contour Width to make the lines bolder.
 5. **Enable HUD**: Switch HUD On. The crosshair and corner brackets appear in bright white, completing the thermal camera aesthetic.
 
-**Key concepts**: Auto-range stretches any input to fill the full palette, Ironbow is the classic thermal camera color scheme, contour lines add topographic banding
+**Key concepts**: Auto-range stretches any input to fill the full palette, Ironbow is the classic thermal camera colour scheme, contour lines add topographic banding
 
 ---
 
@@ -241,35 +234,35 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 ---
 
-### Exercise 3: False-Color Overlay
+### Exercise 3: False-Colour Overlay
 
-<img src={isotherm_exercise3_result} alt="False-Color Overlay result"/>
-*False-Color Overlay — simulated result across source images.*
-**Source**: Any recognizable footage — faces, landscapes, architecture.
+<img src={isotherm_exercise3_result} alt="False-Colour Overlay result"/>
+*False-Colour Overlay — simulated result across source images.*
+**Source**: Any recognisable footage — faces, landscapes, architecture.
 
-**Objective**: Blend the false-color palette with the original image for a color-wash overlay effect.
+**Objective**: Blend the false-colour palette with the original image for a colour-wash overlay effect.
 
-1. **Half mix**: Set Mix to ~50%. The original image structure shows through the false color.
+1. **Half mix**: Set Mix to ~50%. The original image structure shows through the false colour.
 2. **Ironbow tint**: With the Ironbow palette, the image gains a warm-to-cool tint that follows brightness — shadow areas turn blue, highlights turn amber.
 3. **Rainbow wash**: Switch to Rainbow. The spectrum overlays the scene, creating a psychedelic brightness map.
 4. **Fine-tune gain**: Turn Auto Range Off and manually adjust Gain and Offset to control where the palette gradient sits relative to the source tones.
 5. **Add subtle contours**: Set Contour Int to step 5 and Contour Width to minimum. Barely-visible contour lines add topographic texture to the blended result.
 
-**Key concepts**: Partial mix blends false color with the original, manual gain and offset provide precise control of palette placement, subtle contours add texture without overwhelming the source
+**Key concepts**: Partial mix blends false colour with the original, manual gain and offset provide precise control of palette placement, subtle contours add texture without overwhelming the source
 
 ---
 
 
 ## Tips
 
-- **Ironbow for realism**: The Ironbow palette closely matches FLIR thermal camera color schemes. Combined with auto-range and HUD, it produces the most convincing thermal simulation.
+- **Ironbow for realism**: The Ironbow palette closely matches FLIR thermal camera colour schemes. Combined with auto-range and HUD, it produces the most convincing thermal simulation.
 - **Auto-range is your friend**: Leave it on unless you need precise manual control. It ensures the full palette range is always used, regardless of input levels.
-- **Contours reveal structure**: Even at minimum width, a few contour lines add significant perceptual depth to the false-color rendering. Try step 5 or 6 for subtle topographic detail.
-- **Partial mix for color wash**: At 40–60% mix, the false color overlays the original image like a luminance-dependent color filter — useful for artistic grading.
-- **WhiteHot for analysis**: The WhiteHot palette is a simple greyscale ramp — use it to verify auto-range behaviour or check input signal levels without the distraction of color.
+- **Contours reveal structure**: Even at minimum width, a few contour lines add significant perceptual depth to the false-colour rendering. Try step 5 or 6 for subtle topographic detail.
+- **Partial mix for colour wash**: At 40–60% mix, the false colour overlays the original image like a luminance-dependent colour filter — useful for artistic grading.
+- **WhiteHot for analysis**: The WhiteHot palette is a simple greyscale ramp — use it to verify auto-range behaviour or check input signal levels without the distraction of colour.
 - **Smoothing tames noise**: If contour lines are jittery on noisy sources, increase Smoothing to step 3 or 4 before reaching for sensitivity.
 - **Gain and Offset are manual-mode only**: These controls are bypassed when Auto Range is On. Switch Auto Range Off to access precise manual palette positioning.
-- **Feedback loops**: Feeding the output back into the input with a Rainbow palette creates recursive false-color layering — each brightness band gets re-mapped through the spectrum.
+- **Feedback loops**: Feeding the output back into the input with a Rainbow palette creates recursive false-colour layering — each brightness band gets re-mapped through the spectrum.
 
 ---
 
@@ -278,14 +271,16 @@ These exercises progress from basic palette exploration to advanced contour mapp
 | Term | Definition |
 |------|------------|
 | **Auto-Range** | Dynamic normalisation that stretches the input signal's native range to span the full palette, maximising contrast automatically. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the standard colour space for standard-definition video, used here for YUV↔RGB conversion. |
 | **Contour Line** | A line drawn at pixels where the normalised luma falls at a regular modular interval, analogous to elevation lines on a topographic map. |
-| **False Color** | A visualisation technique that maps a single-variable data range (here, luminance) to an arbitrary color gradient. |
+| **False Colour** | A visualisation technique that maps a single-variable data range (here, luminance) to an arbitrary colour gradient. |
 | **HUD** | Heads-Up Display; an overlay of graphical reference elements (crosshair, brackets) superimposed on the processed image. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both current input and previous output, used here for envelope tracking. |
-| **Ironbow** | A false-color palette progressing from black through deep blue, red, orange, yellow, to white, mimicking standard thermal camera rendering. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Ironbow** | A false-colour palette progressing from black through deep blue, red, orange, yellow, to white, mimicking standard thermal camera rendering. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Normalisation** | Scaling a signal so that its minimum maps to 0 and its maximum maps to full scale. |
 | **Piecewise-Linear** | An interpolation method that connects key-points with straight line segments, producing smooth gradients with minimal data. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

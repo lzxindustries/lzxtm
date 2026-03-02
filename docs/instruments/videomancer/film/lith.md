@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 151
+sidebar_position: 166
 slug: /instruments/videomancer/lith
 title: "Lith"
 image: /img/instruments/videomancer/lith/lith_hero.png
 description: "In the photographic darkroom, lith printing is a process that defies conventional wisdom."
 ---
 
+import lith_hero from '/img/instruments/videomancer/lith/lith_hero.png';
 import lith_before_after from '/img/instruments/videomancer/lith/lith_before_after.png';
 import lith_control_panel from '/img/instruments/videomancer/lith/lith_control_panel.png';
 import lith_exercise1_result from '/img/instruments/videomancer/lith/lith_exercise1_result.png';
 import lith_exercise2_result from '/img/instruments/videomancer/lith/lith_exercise2_result.png';
 import lith_exercise3_result from '/img/instruments/videomancer/lith/lith_exercise3_result.png';
-import lith_hero from '/img/instruments/videomancer/lith/lith_hero.png';
-import lith_source1_kodim03 from '/img/instruments/videomancer/lith/lith_source1_kodim03.png';
-import lith_source2_kodim13 from '/img/instruments/videomancer/lith/lith_source2_kodim13.png';
-import lith_source3_kodim13_bw from '/img/instruments/videomancer/lith/lith_source3_kodim13_bw.png';
 
 # Lith
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lith_hero} alt="Lith hero image"/>
 *Lith applying infectious development processing to transform video into ultra-high-contrast prints with warm brown shadow tones and papery highlights.*
@@ -36,7 +29,7 @@ import lith_source3_kodim13_bw from '/img/instruments/videomancer/lith/lith_sour
 
 In the photographic darkroom, lith printing is a process that defies conventional wisdom. You deliberately overexpose silver gelatin paper by two to four stops, then develop the print in extremely dilute lith developer — so dilute that development proceeds at a glacial pace. The chemistry exhausts differently in shadows than in highlights, creating a phenomenon called *infectious development*: once a dark area begins to develop, it accelerates its own development and the development of neighboring areas, producing an abrupt, almost binary transition between black and white. The highlights, meanwhile, develop slowly and never reach full density, settling into soft, creamy tones — the characteristic "papery" whites that lith printers prize.
 
-Lith recreates this photochemical process in the digital domain. The program constructs a nonlinear transfer curve that mimics the infectious development step function: below the exposure threshold, values collapse to black; above it, they rise rapidly to a configurable paper white. The mid-tone transition zone — where the chemistry fights between development and exhaustion — is where the most interesting things happen. Grain concentrates in this transition zone, warm brown toning appears in the shadows, and optional split-tone processing adds cool blue-gray accents to the highlights. The name is simply the darkroom shorthand for the technique itself.
+Lith recreates this photochemical process in the digital domain. The program constructs a nonlinear transfer curve that mimics the infectious development step function: below the exposure threshold, values collapse to black; above it, they rise rapidly to a configurable paper white. The mid-tone transition zone — where the chemistry fights between development and exhaustion — is where the most interesting things happen. Grain concentrates in this transition zone, warm brown toning appears in the shadows, and optional split-tone processing adds cool blue-grey accents to the highlights. The name is simply the darkroom shorthand for the technique itself.
 
 At moderate settings, Lith produces the subtle warmth and gentle grain of a carefully processed darkroom print. At extreme settings, it reduces the image to stark black-and-white silhouettes with hot paper whites and deep, warm blacks — the signature lith aesthetic that photographers spend hours chasing in the darkroom.
 
@@ -214,7 +207,7 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 2. **Center the threshold**: Set Exposure to about 50%. The image should show a clear division between black and white regions.
 3. **Widen the spread**: Increase Spread from minimum. Watch the abrupt black/white boundary soften into a transition zone with intermediate tones.
 4. **Shift the exposure**: Sweep Exposure slowly from low to high. Watch the boundary slide across the image — more of the frame goes dark as exposure increases.
-5. **Lower Paper**: Pull Paper back to about 50%. The highlights dim to a soft gray rather than blinding white.
+5. **Lower Paper**: Pull Paper back to about 50%. The highlights dim to a soft grey rather than blinding white.
 
 **Key concepts**: Exposure sets threshold center, Spread controls transition width, Paper sets highlight ceiling, these three controls define the fundamental lith print geometry
 
@@ -232,7 +225,7 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 2. **Sweep Infection**: Slowly increase Infection from zero. Watch the mid-tone transition steepen — smooth gradients collapse into sharper divisions.
 3. **Toggle Developer**: Switch from Dilute to Strong. Notice how the same Infection setting produces a much harder step.
 4. **Add warmth**: Increase Warmth from zero. The dark regions take on a brown-sepia cast while the paper whites remain neutral.
-5. **Enable split tone**: Toggle Split On. The highlights shift to a cool blue-gray, creating warm/cool contrast.
+5. **Enable split tone**: Toggle Split On. The highlights shift to a cool blue-grey, creating warm/cool contrast.
 6. **Add grain**: Increase Grain to about 30%. Texture appears in the transition zone — the narrow band between black and paper white.
 
 **Key concepts**: Infection shapes the transfer curve steepness, Developer selects the curve family, Warmth tones shadows independently, Split adds cool counterpoint to warm shadows, grain concentrates in mid-tones
@@ -278,14 +271,16 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 | Term | Definition |
 |------|------------|
 | **Autocatalytic** | A chemical reaction whose products accelerate the same reaction, creating positive feedback. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | The ITU-R standard defining the YUV color space used by standard-definition video and throughout the Videomancer pipeline. |
 | **Dilute Developer** | Lith chemistry diluted to slow the development process and widen the transition between developed and undeveloped regions. |
 | **Infectious Development** | The autocatalytic behavior of lith developer where heavily exposed areas accelerate the development of neighboring areas. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for grain noise. |
 | **Lith Printing** | A photographic darkroom process using dilute lith developer and overexposure to produce extreme contrast with warm-toned shadows. |
 | **Mid-tone Flag** | A per-pixel boolean indicating that the input luminance falls within the transition zone between the low and high threshold edges. |
 | **Paper White** | The maximum brightness of the unexposed paper surface in a photographic print; in Lith, the ceiling of the transfer curve. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Tone** | A toning technique where shadows and highlights receive different color casts — typically warm shadows and cool highlights. |
 | **Transfer Curve** | The mathematical function mapping input luminance to output luminance, here shaped by infectious development dynamics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 112
+sidebar_position: 121
 slug: /instruments/videomancer/geode
 title: "Geode"
 image: /img/instruments/videomancer/geode/geode_hero.png
-description: "Geode draws regular polygons on screen — triangles, squares, pentagons, hexagons, heptagons, and octagons — using a real-time half-plane rasterizer buil..."
+description: "Geode draws regular polygons on screen — triangles, squares, pentagons, hexagons, heptagons, and octagons — using a real-time half-plane rasterizer built entirely in FPGA logic."
 ---
 
 import geode_hero from '/img/instruments/videomancer/geode/geode_hero.png';
@@ -274,17 +274,17 @@ These exercises progress from a simple static polygon to animated dual-polygon c
 | Term | Definition |
 |------|------------|
 | **Convex Polygon** | A polygon where all interior angles are less than 180°; any line segment between two interior points lies entirely within the polygon. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a fixed rate and using its value to index a lookup table. |
 | **Edge Function** | A linear equation evaluated per pixel that determines which side of a polygon edge the pixel lies on; the sign of the result indicates inside or outside. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Half-Plane Rasterization** | A method for determining polygon interior by testing whether a pixel lies on the correct side of all edges simultaneously. |
 | **Incremental Evaluation** | An optimization where per-pixel computation is reduced to a single addition by exploiting the fact that only one coordinate changes along a scanline. |
 | **LUT** | Look-Up Table; in FPGA context, a small memory element used to implement combinational logic or ROM data. |
 | **Morph** | Radial deformation of polygon vertices that creates breathing, pulsing shapes by oscillating vertex distance from center. |
 | **N-gon** | A polygon with N sides; a regular N-gon has all sides equal and all angles equal. |
 | **Phase Accumulator** | A register that increments by a fixed value each cycle; its overflow rate generates a frequency, used here for rotation animation. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sin/Cos LUT** | A lookup table that maps angle values to sine and cosine outputs, used for positioning vertices on a circle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 199
+sidebar_position: 214
 slug: /instruments/videomancer/phosphor
 title: "Phosphor"
 image: /img/instruments/videomancer/phosphor/phosphor_hero.png
-description: "Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the..."
+description: "Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the characteristic colour of a phosphor screen."
 ---
 
+import phosphor_hero from '/img/instruments/videomancer/phosphor/phosphor_hero.png';
 import phosphor_before_after from '/img/instruments/videomancer/phosphor/phosphor_before_after.png';
 import phosphor_control_panel from '/img/instruments/videomancer/phosphor/phosphor_control_panel.png';
 import phosphor_exercise1_result from '/img/instruments/videomancer/phosphor/phosphor_exercise1_result.png';
 import phosphor_exercise2_result from '/img/instruments/videomancer/phosphor/phosphor_exercise2_result.png';
 import phosphor_exercise3_result from '/img/instruments/videomancer/phosphor/phosphor_exercise3_result.png';
-import phosphor_hero from '/img/instruments/videomancer/phosphor/phosphor_hero.png';
-import phosphor_source1_kodim15 from '/img/instruments/videomancer/phosphor/phosphor_source1_kodim15.png';
-import phosphor_source2_kodim01 from '/img/instruments/videomancer/phosphor/phosphor_source2_kodim01.png';
-import phosphor_source3_kodim01_bw from '/img/instruments/videomancer/phosphor/phosphor_source3_kodim01_bw.png';
 
 # Phosphor
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={phosphor_hero} alt="Phosphor hero image"/>
 *Phosphor simulating a P1 green CRT monitor with visible scanlines, horizontal bloom, and edge vignette applied to a live video input.*
@@ -34,9 +27,9 @@ import phosphor_source3_kodim01_bw from '/img/instruments/videomancer/phosphor/p
 
 ## Overview
 
-Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the characteristic color of a phosphor screen. It is a processing program: it takes an incoming video signal and reshapes it to look as though it is being displayed on a vintage monitor.
+Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the characteristic colour of a phosphor screen. It is a processing program: it takes an incoming video signal and reshapes it to look as though it is being displayed on a vintage monitor.
 
-The name refers to the phosphor coating on the inside of a cathode-ray tube. When an electron beam strikes the phosphor, it glows briefly in a color determined by the chemical compound: P1 (zinc silicate) glows green, P4 (white) is the standard television phosphor, P7 (yellow–green) has a long-persistence afterglow used in radar displays, and P31 (zinc sulfide) is the bluish short-persistence type preferred for oscilloscopes. Phosphor provides eight phosphor presets covering these classic compounds, plus a Custom mode that lets you dial in any hue.
+The name refers to the phosphor coating on the inside of a cathode-ray tube. When an electron beam strikes the phosphor, it glows briefly in a colour determined by the chemical compound: P1 (zinc silicate) glows green, P4 (white) is the standard television phosphor, P7 (yellow–green) has a long-persistence afterglow used in radar displays, and P31 (zinc sulfide) is the bluish short-persistence type preferred for oscilloscopes. Phosphor provides eight phosphor presets covering these classic compounds, plus a Custom mode that lets you dial in any hue.
 
 At subtle settings Phosphor adds a gentle CRT warmth — faint scanlines, a touch of green tint. Pushed hard, it becomes a full-on retro monitor: thick scanline bars, heavy rightward bloom glow, deep vignette shadows, and binary-clipped vector-display graphics. The Hi Contrast mode clamps the signal to 1-bit, recreating the look of a vector arcade game or oscilloscope trace.
 
@@ -62,7 +55,7 @@ CRT displays are naturally dimmer at the edges than the centre — the electron 
 
 ### Vector Display Mode
 
-Early arcade games and oscilloscope displays used CRT tubes driven in "vector" mode — the beam traces lines rather than raster-scanning. The visual result is pure black-and-white with no gray tones. Phosphor's Hi Contrast toggle replicates this by clamping the signal to 1-bit: any pixel brighter than mid-gray becomes full white, everything else becomes black. Combined with a green or amber phosphor tint and heavy bloom, this creates an authentic vector-game look.
+Early arcade games and oscilloscope displays used CRT tubes driven in "vector" mode — the beam traces lines rather than raster-scanning. The visual result is pure black-and-white with no grey tones. Phosphor's Hi Contrast toggle replicates this by clamping the signal to 1-bit: any pixel brighter than mid-grey becomes full white, everything else becomes black. Combined with a green or amber phosphor tint and heavy bloom, this creates an authentic vector-game look.
 
 
 ---
@@ -175,7 +168,7 @@ Scanlines controls the depth of scanline darkening. At 0% all lines are equally 
 | Range | 0 – 7 |
 | Default | 0 |
 
-Phosphor selects the tint applied to the output — a monochrome colorization that simulates the phosphor coating of a historical CRT type. The 3 most significant bits of the register select one of 8 presets: P1 green (0), P4 white (1), P7 amber (2), P31 blue-white (3), P22 green (4), P33 orange (5), P43 cyan (6), or Custom (7). Each preset defines fixed U and V values; the luminance channel carries the image detail.
+Phosphor selects the tint applied to the output — a monochrome colourisation that simulates the phosphor coating of a historical CRT type. The 3 most significant bits of the register select one of 8 presets: P1 green (0), P4 white (1), P7 amber (2), P31 blue-white (3), P22 green (4), P33 orange (5), P43 cyan (6), or Custom (7). Each preset defines fixed U and V values; the luminance channel carries the image detail.
 
 ---
 
@@ -225,7 +218,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 <img src={phosphor_exercise1_result} alt="Contrast and Brightness Calibration result"/>
 *Contrast and Brightness Calibration — simulated result across source images.*
-**Source**: A greyscale gradient or color bar test pattern.
+**Source**: A greyscale gradient or colour bar test pattern.
 
 **Objective**: Learn how contrast and brightness interact as a gain-and-offset pair, and observe the shift-add contrast approximation.
 
@@ -243,7 +236,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 <img src={phosphor_exercise2_result} alt="Scanline and Phosphor CRT Look result"/>
 *Scanline and Phosphor CRT Look — simulated result across source images.*
-**Source**: Live camera footage or full-color video content.
+**Source**: Live camera footage or full-colour video content.
 
 **Objective**: Build the classic CRT monitor aesthetic by combining scanlines and phosphor tinting.
 
@@ -251,8 +244,8 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 2. **Add scanlines**: Increase Scanlines to ~50%. Dark gaps appear between alternate lines — the characteristic CRT raster. At ~80% the effect becomes quite pronounced.
 3. **Triple mode**: Switch Scan Mode (Toggle 7) to Triple. Now every third line is darkened instead of every second. The image retains more brightness but the scanline texture is subtler.
 4. **Amber monitor**: Set Phosphor to 2 (P7 amber). Combined with scanlines, this creates the warm amber look of an IBM PC monochrome display.
-5. **Custom color**: Set Phosphor to 7 (Custom) and sweep Custom Hue from 0° to 360°. Watch the tint cycle through red, yellow, green, cyan. Find a color that matches a specific monitor you remember.
-6. **White phosphor**: Set Phosphor to 1 (P4 white). The tint is neutral — scanlines are visible but color is preserved from the input. This is the standard television phosphor look.
+5. **Custom colour**: Set Phosphor to 7 (Custom) and sweep Custom Hue from 0° to 360°. Watch the tint cycle through red, yellow, green, cyan. Find a colour that matches a specific monitor you remember.
+6. **White phosphor**: Set Phosphor to 1 (P4 white). The tint is neutral — scanlines are visible but colour is preserved from the input. This is the standard television phosphor look.
 
 **Key concepts**: Phosphor presets are fixed UV pairs, scanline darkening is multiplicative, alternate vs triple scanline spacing, custom hue uses 4-quadrant UV mapping
 
@@ -301,10 +294,12 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 | **Hi Contrast** | 1-bit quantisation that clamps the signal to black (0) or white (1023) at the 512 threshold. |
 | **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the computation, creating sustained response. |
 | **Phosphor** | A chemical compound coating the inside of a CRT that emits light when struck by electrons. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc Amp** | Processing Amplifier; the gain-and-offset stage that implements brightness/contrast adjustment. |
 | **Raster** | The pattern of horizontal scanlines that compose a CRT image, painted sequentially from top to bottom. |
 | **Scanline** | A single horizontal line of the raster; in CRT simulation, alternating bright and dark lines create the visible line structure. |
 | **Shift-Add** | A multiplication approximation technique that replaces hardware multipliers with combinations of bit-shifts and additions. |
 | **Vector Display** | A CRT display mode where the electron beam traces lines directly rather than raster-scanning, producing bright lines on a dark background. |
 | **Vignette** | Darkening at the edges of the frame, simulating the optical falloff of CRT displays. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

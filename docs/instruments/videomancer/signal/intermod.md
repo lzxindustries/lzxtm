@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 128
+sidebar_position: 139
 slug: /instruments/videomancer/intermod
 title: "Intermod"
 image: /img/instruments/videomancer/intermod/intermod_hero.png
 description: "Analog amplifiers do not clip gracefully."
 ---
 
+import intermod_hero from '/img/instruments/videomancer/intermod/intermod_hero.png';
 import intermod_before_after from '/img/instruments/videomancer/intermod/intermod_before_after.png';
 import intermod_control_panel from '/img/instruments/videomancer/intermod/intermod_control_panel.png';
 import intermod_exercise1_result from '/img/instruments/videomancer/intermod/intermod_exercise1_result.png';
 import intermod_exercise2_result from '/img/instruments/videomancer/intermod/intermod_exercise2_result.png';
 import intermod_exercise3_result from '/img/instruments/videomancer/intermod/intermod_exercise3_result.png';
-import intermod_hero from '/img/instruments/videomancer/intermod/intermod_hero.png';
-import intermod_source1_kodim15 from '/img/instruments/videomancer/intermod/intermod_source1_kodim15.png';
-import intermod_source2_kodim01 from '/img/instruments/videomancer/intermod/intermod_source2_kodim01.png';
-import intermod_source3_stream_bridge_512 from '/img/instruments/videomancer/intermod/intermod_source3_stream_bridge_512.png';
 
 # Intermod
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={intermod_hero} alt="Intermod hero image"/>
 *Intermod applying polynomial non-linear distortion with cross-channel coupling to produce overdriven harmonic textures and saturated color artifacts.*
@@ -283,3 +276,5 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 - **Asymmetry biases clipping:** Shifting asymmetry off-center determines which polarity clips first. Use this to create intentionally bright-biased or dark-biased distortion.
 - **Rectify doubles frequency:** Full-wave rectification folds negative excursions upward, effectively doubling the spatial frequency of brightness variations. Combine with moderate 3rd-order for complex waveform shapes.
 - **Mix for parallel distortion:** Blending the distorted signal with the clean original at 30–50% creates a parallel distortion effect — harmonic content is added without fully replacing the clean signal.
+
+---

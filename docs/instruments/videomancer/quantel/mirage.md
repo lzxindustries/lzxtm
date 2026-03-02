@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 169
+sidebar_position: 185
 slug: /instruments/videomancer/mirage
 title: "Mirage"
 image: /img/instruments/videomancer/mirage/mirage_hero.png
-description: "The Quantel Mirage DVM8000, introduced in 1982, was the first real-time digital video effects system capable of mapping live television onto arbitrary 3..."
+description: "The Quantel Mirage DVM8000, introduced in 1982, was the first real-time digital video effects system capable of mapping live television onto arbitrary 3D surfaces."
 ---
 
+import mirage_hero from '/img/instruments/videomancer/mirage/mirage_hero.png';
 import mirage_before_after from '/img/instruments/videomancer/mirage/mirage_before_after.png';
 import mirage_control_panel from '/img/instruments/videomancer/mirage/mirage_control_panel.png';
 import mirage_exercise1_result from '/img/instruments/videomancer/mirage/mirage_exercise1_result.png';
 import mirage_exercise2_result from '/img/instruments/videomancer/mirage/mirage_exercise2_result.png';
 import mirage_exercise3_result from '/img/instruments/videomancer/mirage/mirage_exercise3_result.png';
-import mirage_hero from '/img/instruments/videomancer/mirage/mirage_hero.png';
-import mirage_source1_kodim15 from '/img/instruments/videomancer/mirage/mirage_source1_kodim15.png';
-import mirage_source2_kodim15_bw from '/img/instruments/videomancer/mirage/mirage_source2_kodim15_bw.png';
-import mirage_source3_male_1024 from '/img/instruments/videomancer/mirage/mirage_source3_male_1024.png';
 
 # Mirage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={mirage_hero} alt="Mirage hero image"/>
 *Mirage wrapping a live video stream onto a rotating cylindrical surface with perspective shading and configurable background fill.*
@@ -293,17 +286,19 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline buffer storage. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Coordinate Remapping** | Computing a displaced source address for each output pixel, creating the illusion of geometric transformation. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase accumulator technique used here to drive continuous animation of the surface transformation. |
 | **Edge Masking** | Replacing pixels that fall outside valid source bounds with a background fill color. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **LUT** | Look-Up Table; a pre-computed array of values (here, sine and cosine) indexed by angle for fast trigonometric evaluation. |
 | **Perspective Shading** | Darkening surface regions that face away from the viewer, based on the cosine of the surface normal angle. |
 | **Phase Accumulator** | A counter that adds a fixed increment each cycle, producing a linearly increasing phase angle that wraps modulo 2π. |
 | **Quantel** | A British company that pioneered real-time digital video effects hardware in the 1980s. |
 | **Scanline Buffer** | BRAM storage holding one or more complete video lines, enabling random-access reads for coordinate remapping. |
 | **Surface Equation** | The mathematical function that maps output pixel coordinates to displaced source coordinates for a given 3D surface type. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

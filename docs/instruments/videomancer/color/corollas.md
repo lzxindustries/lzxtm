@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 57
+sidebar_position: 63
 slug: /instruments/videomancer/corollas
 title: "Corollas"
 image: /img/instruments/videomancer/corollas/corollas_hero.png
-description: "Corollas is a frequency-doubling harmonic processor that transforms the luminance channel of an incoming video signal into a series of concentric, petal..."
+description: "Corollas is a frequency-doubling harmonic processor that transforms the luminance channel of an incoming video signal into a series of concentric, petal-like interference patterns distributed across the Y, U, and V output channels."
 ---
 
 import corollas_hero from '/img/instruments/videomancer/corollas/corollas_hero.png';
@@ -155,7 +155,7 @@ Sets the wrapping brightness offset for harmonic 1, the 2× frequency-doubled si
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the wrapping brightness offset for harmonic 2, the 4× frequency-doubled signal. This harmonic shares the Y output channel with harmonic 1 via averaging, so its offset interacts directly with Hue 1 to determine the composite luminance pattern. When both offsets are swept simultaneously in opposite directions, the averaging creates a moiré-like beat pattern between the 2× and 4× harmonics. When swept together, the luminance pattern shifts uniformly without changing its internal structure. Setting Hue 2 to its midpoint while leaving Hue 1 at zero creates a half-period phase offset between the two Y-channel harmonics, emphasizing even-order peaks.
+Sets the wrapping brightness offset for harmonic 2, the 4× frequency-doubled signal. This harmonic shares the Y output channel with harmonic 1 via averaging, so its offset interacts directly with Hue 1 to determine the composite luminance pattern. When both offsets are swept simultaneously in opposite directions, the averaging creates a moire-like beat pattern between the 2× and 4× harmonics. When swept together, the luminance pattern shifts uniformly without changing its internal structure. Setting Hue 2 to its midpoint while leaving Hue 1 at zero creates a half-period phase offset between the two Y-channel harmonics, emphasizing even-order peaks.
 
 ---
 
@@ -304,9 +304,9 @@ These three exercises progress from observing the raw harmonic structure through
 | **Frequency doubler** | A module that folds a signal at its midpoint, converting a ramp to a triangle wave and doubling the spatial frequency. Cascading four doublers produces 2×, 4×, 8×, and 16× harmonics. |
 | **Harmonic** | An integer multiple of a fundamental frequency. In Corollas, the fundamental is the input luma after proc amp conditioning, and the harmonics are successive frequency-doubled versions at 2×, 4×, 8×, and 16×. |
 | **Phase offset** | A shift in the alignment of a periodic waveform, controlled here by the Hue brightness offset parameters. Wrapping addition rotates the waveform's phase without changing its frequency. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc amp** | Processing amplifier; applies contrast (gain around midpoint) and brightness (DC offset) to condition the input signal before harmonic generation. |
 | **Threshold key** | A gating function that forces pixels to black when their luminance falls below a configurable level, creating hard-edged cutouts from the smooth harmonic pattern. |
 | **Wrapping offset** | An unsigned addition that overflows at the 10-bit boundary (1024), creating a circular shift rather than a clamped shift. Sweeping a wrapping offset through its full range returns the pattern to its starting position. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. Corollas maps independent harmonics to each channel. |
 
 ---

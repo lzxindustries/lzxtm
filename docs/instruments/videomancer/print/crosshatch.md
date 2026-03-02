@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 59
+sidebar_position: 65
 slug: /instruments/videomancer/crosshatch
 title: "Crosshatch"
 image: /img/instruments/videomancer/crosshatch/crosshatch_hero.png
-description: "Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only mar..."
+description: "Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only marks and blank surface."
 ---
 
 import crosshatch_hero from '/img/instruments/videomancer/crosshatch/crosshatch_hero.png';
@@ -79,7 +79,7 @@ Input Video (YUV 4:4:4)
 │   ├─ on_vert    = ((h_count AND hatch_mask) AND thick_mask) == 0
 │   └─ on_any_hatch = diag45 OR diag135 OR horiz OR vert
 │
-├── Stage 3: Color Composite ───────────────────────────────
+├── Stage 3: Colour Composite ───────────────────────────────
 │   ├─ if on_any_hatch → (line_bright, 512, 512)
 │   └─ else            → (wash_y, wash_u, wash_v)
 │
@@ -280,17 +280,17 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 | Term | Definition |
 |------|------------|
 | **Bitmask** | A binary pattern used with AND logic to test specific bit positions in a counter; in Crosshatch, determines whether a pixel lies on a hatch line. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory. Crosshatch uses zero BRAM because all line detection is combinational. |
 | **Chroma** | The color information in a video signal, encoded as U (Cb) and V (Cr) in YUV color space. |
 | **Copperplate** | An engraving technique where lines are incised into a copper plate; Crosshatch's Engrave style emulates this multi-directional line pattern. |
 | **Cross-Hatching** | A shading technique using two or more sets of intersecting parallel lines to build tone. Denser overlap produces darker values. |
 | **Hatching** | A shading technique using parallel lines at regular spacing; a single family of strokes without crossing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A pipelined arithmetic unit that computes `a + (b − a) × t`; used here for the wet/dry mix between source and hatch composite. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **LUT** | Look-Up Table; the fundamental logic element in an FPGA, used for combinational functions. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of clocked processing stages where each stage's output feeds the next stage's input. |
 | **Power-of-Two** | A spacing value that is a power of 2 (8, 16, 32, …), enabling detection via bitmask AND rather than division. |
 | **Wash** | The background color that appears between hatch strokes; analogous to paper color in printmaking. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
 
 ---

@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 127
+sidebar_position: 137
 slug: /instruments/videomancer/inferno
 title: "Inferno"
 image: /img/instruments/videomancer/inferno/inferno_hero.png
-description: "Fire is one of the oldest and most beloved effects in the demoscene — the underground computer art movement that emerged in the 1980s alongside cracking..."
+description: "Fire is one of the oldest and most beloved effects in the demoscene — the underground computer art movement that emerged in the 1980s alongside cracking groups and BBS culture."
 ---
 
 import inferno_hero from '/img/instruments/videomancer/inferno/inferno_hero.png';
@@ -266,15 +266,15 @@ These exercises progress from a basic fire to full creative control with palette
 | **Compositing** | Combining two image layers into one; Video Burn mode uses additive compositing. |
 | **Demoscene** | A computer art subculture originating in the 1980s, focused on creating real-time audiovisual demonstrations. |
 | **Elaboration** | The FPGA synthesis stage where constant values (like palette tables) are computed and embedded as fixed logic. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
+| **Interpolator** | A crossfade module that linearly blends between two signals based on a mix coefficient. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback taps. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Palette** | A lookup table mapping temperature index values to specific Y, U, V color constants. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Propagation** | The per-frame process of updating each fire grid cell from its neighbors, simulating heat transfer. |
 | **Quantization** | Here, reducing screen coordinates to the coarse fire grid resolution (1920×1080 → 120×68 equivalent). |
 | **Temperature** | A 6-bit unsigned value (0–63) stored per fire grid cell, representing heat intensity. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
 
 ---

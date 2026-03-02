@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 217
+sidebar_position: 233
 slug: /instruments/videomancer/relief
 title: "Relief"
 image: /img/instruments/videomancer/relief/relief_hero.png
 description: "A bas-relief is a sculptural technique where figures are carved into a flat surface, projecting slightly outward to catch light at their edges."
 ---
 
+import relief_hero from '/img/instruments/videomancer/relief/relief_hero.png';
 import relief_before_after from '/img/instruments/videomancer/relief/relief_before_after.png';
 import relief_control_panel from '/img/instruments/videomancer/relief/relief_control_panel.png';
 import relief_exercise1_result from '/img/instruments/videomancer/relief/relief_exercise1_result.png';
 import relief_exercise2_result from '/img/instruments/videomancer/relief/relief_exercise2_result.png';
 import relief_exercise3_result from '/img/instruments/videomancer/relief/relief_exercise3_result.png';
-import relief_hero from '/img/instruments/videomancer/relief/relief_hero.png';
-import relief_source1_kodim15 from '/img/instruments/videomancer/relief/relief_source1_kodim15.png';
-import relief_source2_kodim15_bw from '/img/instruments/videomancer/relief/relief_source2_kodim15_bw.png';
-import relief_source3_male_1024 from '/img/instruments/videomancer/relief/relief_source3_male_1024.png';
 
 # Relief
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={relief_hero} alt="Relief hero image"/>
 *Relief applying directional emboss with specular highlights and Lambertian surface lighting to sculpt a flat video signal into a three-dimensional bas-relief.*
@@ -280,14 +273,16 @@ These exercises progress from basic directional emboss through surface lighting 
 |------|------------|
 | **Ambient** | The minimum brightness level applied uniformly to all pixels, preventing shadow regions from going completely black. |
 | **Bas-Relief** | A sculptural technique where shapes are carved to project slightly from a flat background surface. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 color standard defining the YUV encoding used in the Videomancer pipeline. |
 | **Derivative** | The rate of change of a signal; the directional derivative measures brightness change along a specific angle. |
 | **Emboss** | A visual effect that makes features appear to protrude from a surface, created by adding the directional derivative to a base brightness. |
 | **Engrave** | The opposite of emboss; makes features appear recessed by subtracting the directional derivative. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
 | **Height Field** | A 2D map of elevation values; here, the input luminance treated as a surface height for lighting calculations. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A smoothing module (`interpolator_u`) used here for pre-detection blur of the input luminance. |
 | **Lambertian** | A shading model where surface brightness depends on the cosine of the angle between the surface normal and light direction. |
 | **LUT** | Lookup Table; the 32-entry sin/cos table that converts the direction register into neighbor-sampling offsets. |
 | **Specular** | Bright highlight reflections that occur when viewing angle aligns with reflected light direction; approximated here by thresholding the derivative magnitude. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

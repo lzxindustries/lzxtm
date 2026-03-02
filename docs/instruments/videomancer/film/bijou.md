@@ -55,7 +55,7 @@ Before synchronised sound, dialogue and narrative exposition were conveyed throu
 
 ### Tint and Fill Processing
 
-Silent films were often tinted by hand or chemically: amber for daytime scenes, blue for night, green for exteriors. Bijou's tint system divides the Tint Color pot into four quadrants — sepia, green, blue, and magenta — applied as additive U/V offsets to the fill region's chroma. Combined with the Fill Brightness control that scales the fill luma, this recreates the colored fills seen in tinted silent film prints.
+Silent films were often tinted by hand or chemically: amber for daytime scenes, blue for night, green for exteriors. Bijou's tint system divides the Tint Color pot into four quadrants — sepia, green, blue, and magenta — applied as additive U/V offsets to the fill region's chroma. Combined with the Fill Brightness control that scales the fill luma, this recreates the coloured fills seen in tinted silent film prints.
 
 
 ---
@@ -177,7 +177,7 @@ Sets the brightness of the fill region — the area outside the iris (or between
 | Default | 12.5% |
 | Suffix | % |
 
-Selects the color tint applied to the fill region and title card borders. The pot's top two bits select one of four color quadrants: sepia/amber (U−30, V+50), green (U−40, V−30), blue (U+60, V−20), or magenta (U+30, V+40). These offsets are added to the fill region's chroma channels, tinting the dimmed surround. In title card mode, the same tint color is used for the border lines themselves, drawn at a fixed brightness of 800.
+Selects the colour tint applied to the fill region and title card borders. The pot's top two bits select one of four colour quadrants: sepia/amber (U−30, V+50), green (U−40, V−30), blue (U+60, V−20), or magenta (U+30, V+40). These offsets are added to the fill region's chroma channels, tinting the dimmed surround. In title card mode, the same tint colour is used for the border lines themselves, drawn at a fixed brightness of 800.
 
 ---
 
@@ -235,7 +235,7 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 <img src={bijou_exercise2_result} alt="Shape Exploration result"/>
 *Shape Exploration — simulated result across source images.*
-**Source**: A colorful scene with strong composition.
+**Source**: A colourful scene with strong composition.
 
 **Objective**: Compare the four iris shapes and understand their geometric properties.
 
@@ -265,7 +265,7 @@ These exercises progress from simple iris masks through shape exploration to tit
 5. **Add ornaments**: Toggle Shape Alt to Keyhole. Small 8×8 corner ornament blocks appear at the inner rectangle's corners.
 6. **Try blue tint**: Move Tint Color to the blue quadrant (around 60%). The frame takes on a cool blue tone — the nighttime tint of silent cinema.
 
-**Key concepts**: Title card mode generates geometric border frames, Size controls margin width, Tint Color sets border and fill color, Shape Alt enables corner ornaments
+**Key concepts**: Title card mode generates geometric border frames, Size controls margin width, Tint Color sets border and fill colour, Shape Alt enables corner ornaments
 
 ---
 
@@ -291,13 +291,13 @@ These exercises progress from simple iris masks through shape exploration to tit
 | **Art Deco** | An early 20th-century decorative style characterized by bold geometric forms, influencing the ornamental borders of silent-film title cards. |
 | **Chebyshev distance** | A distance metric returning the greater of the horizontal and vertical separations between two points; used here for the rectangle iris shape. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
+| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
 | **Iris diaphragm** | A mechanical aperture in a camera lens made of overlapping blades that can be opened or closed to control the exposed area of the frame. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical differences between two points (L1 norm); used here for the diamond iris shape. |
 | **SDF** | Signed Distance Field; a representation where each pixel stores its signed distance from a shape boundary, enabling smooth feathered-edge rendering. |
 | **Vignette** | A gradual darkening or fading toward the edges of an image, often used to draw attention to the centre of the frame. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
 
 ---

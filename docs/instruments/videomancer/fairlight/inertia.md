@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 126
+sidebar_position: 136
 slug: /instruments/videomancer/inertia
 title: "Inertia"
 image: /img/instruments/videomancer/inertia/inertia_hero.png
@@ -271,13 +271,13 @@ These exercises progress from simple directional drift to full multi-axis moment
 | **Dead Zone** | A range of input values around center that the program treats as exactly zero, preventing noise-induced drift. |
 | **Fairlight CVI** | Computer Video Instrument (1984); an early digital video processor that pioneered inertial control for image effects. |
 | **Fixed-Point** | A number representation using a fixed number of integer and fractional bits (here, 16.8 signed: 16 integer bits, 8 fractional). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **Friction** | A velocity decay mechanism that subtracts a fraction of the current velocity each frame, simulating physical drag. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A crossfade module that linearly blends between two signals based on a mix coefficient. |
 | **Momentum** | The tendency of the internal state to continue moving after force is removed, arising from velocity integration. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Sample-and-Hold** | A technique that captures a signal value at one instant and holds it constant until the next capture, creating uniform blocks. |
 | **Wrap** | Boundary behavior where position overflows continuously to the opposite extreme, creating seamless scrolling. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
 
 ---

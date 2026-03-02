@@ -4,7 +4,7 @@ sidebar_position: 12
 slug: /instruments/videomancer/aurora
 title: "Aurora"
 image: /img/instruments/videomancer/aurora/aurora_hero.png
-description: "In the early 1990s, the Amiga demoscene invented an effect called 'shadebobs' — small sprites drawn additively into a framebuffer without ever clearing ..."
+description: "In the early 1990s, the Amiga demoscene invented an effect called \"shadebobs\" — small sprites drawn additively into a framebuffer without ever clearing the screen."
 ---
 
 import aurora_hero from '/img/instruments/videomancer/aurora/aurora_hero.png';
@@ -340,7 +340,7 @@ These exercises progress from basic trail painting to complex multi-bob composit
 | Term | Definition |
 |------|------------|
 | **Additive compositing** | A blending mode where pixel brightness values are summed rather than overwritten, causing overlapping elements to appear brighter at intersection points. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the persistent 40×32 framebuffer that stores accumulated bob trail data. |
 | **Demo** | A computer art subculture focused on producing real-time audio-visual programs (demos) that showcase creative programming within hardware constraints. |
 | **Framebuffer** | A block of memory storing a complete image; Aurora's framebuffer persists across frames, accumulating luminance from bob stamps over time. |
 | **FSM** | Finite State Machine; the sequential control logic that coordinates bob position computation, global fade, and stamp operations during vertical blanking. |
@@ -351,6 +351,6 @@ These exercises progress from basic trail painting to complex multi-bob composit
 | **Saturation** | The condition where a pixel value reaches its maximum (255 for 8-bit) and cannot increase further despite additional additive stamps. |
 | **Shadebobs** | An Amiga demoscene effect where small sprites are additively stamped into a persistent framebuffer without clearing, painting luminous trail patterns. |
 | **Vsync** | Vertical synchronisation; the timing pulse marking the start of each video frame, during which Aurora executes its frame update FSM. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

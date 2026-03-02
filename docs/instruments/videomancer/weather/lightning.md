@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 148
+sidebar_position: 162
 slug: /instruments/videomancer/lightning
 title: "Lightning"
 image: /img/instruments/videomancer/lightning/lightning_hero.png
-description: "Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto th..."
+description: "Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto the input video."
 ---
 
+import lightning_hero from '/img/instruments/videomancer/lightning/lightning_hero.png';
 import lightning_before_after from '/img/instruments/videomancer/lightning/lightning_before_after.png';
 import lightning_control_panel from '/img/instruments/videomancer/lightning/lightning_control_panel.png';
 import lightning_exercise1_result from '/img/instruments/videomancer/lightning/lightning_exercise1_result.png';
 import lightning_exercise2_result from '/img/instruments/videomancer/lightning/lightning_exercise2_result.png';
 import lightning_exercise3_result from '/img/instruments/videomancer/lightning/lightning_exercise3_result.png';
-import lightning_hero from '/img/instruments/videomancer/lightning/lightning_hero.png';
-import lightning_source1_kodim01 from '/img/instruments/videomancer/lightning/lightning_source1_kodim01.png';
-import lightning_source2_kodim02 from '/img/instruments/videomancer/lightning/lightning_source2_kodim02.png';
-import lightning_source3_stream_bridge_512 from '/img/instruments/videomancer/lightning/lightning_source3_stream_bridge_512.png';
 
 # Lightning
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lightning_hero} alt="Lightning hero image"/>
 *Lightning bolt effect overlaid on video, jagged LFSR-driven discharge paths cutting down the screen with distance-based brightness falloff and periodic flash modulation.*
@@ -38,7 +31,7 @@ Lightning is a processing program that renders one or two bright, jagged bolt pa
 
 The entire bolt assembly "flashes" periodically, controlled by a DDS (Direct Digital Synthesis) phase accumulator that increments once per frame. When the upper bits of the accumulator reach a threshold, the bolt fires at full brightness; between flashes, it dims to one quarter intensity. This creates a rhythmic strobe-like discharge pattern. A random flash mode adds LFSR noise to the DDS increment, producing irregular timing that more closely resembles natural electrical discharge.
 
-At minimum settings, Lightning produces a thin, barely visible line with subtle jitter. At maximum, it creates a wide, bright, violently jagged bolt that floods the screen with light during flash peaks. A color tint toggle shifts the bolt from pure white to a purple-blue cast, and double bolt mode adds a mirrored second bolt that wanders with inverted jitter.
+At minimum settings, Lightning produces a thin, barely visible line with subtle jitter. At maximum, it creates a wide, bright, violently jagged bolt that floods the screen with light during flash peaks. A colour tint toggle shifts the bolt from pure white to a purple-blue cast, and double bolt mode adds a mirrored second bolt that wanders with inverted jitter.
 
 ---
 
@@ -62,7 +55,7 @@ Below a certain scanline (set by the Branch control), a secondary bolt path fork
 
 ### Additive Compositing
 
-Lightning uses additive compositing: the bolt brightness is *added* to the source video luma, then clamped at 1023 (maximum white). This means the bolt always brightens the image — it never darkens or replaces the source. Dark areas of the input receive the most visible bolt; bright areas may clip to white. The color tint mode shifts the bolt's chroma away from neutral white toward purple-blue by increasing U and V above the 512 midpoint proportionally to the bolt brightness.
+Lightning uses additive compositing: the bolt brightness is *added* to the source video luma, then clamped at 1023 (maximum white). This means the bolt always brightens the image — it never darkens or replaces the source. Dark areas of the input receive the most visible bolt; bright areas may clip to white. The colour tint mode shifts the bolt's chroma away from neutral white toward purple-blue by increasing U and V above the 512 midpoint proportionally to the bolt brightness.
 
 
 ---
@@ -98,7 +91,7 @@ Input Video (YUV 4:4:4)
 ├── Stage 3: Flash Modulation ───────────────────────────────
 │   └── flash_bright = bolt_bright (flash) or bolt_bright>>2 (dim)
 │
-├── Stage 4: Brightness Add + Color Tint + Compose ─────────
+├── Stage 4: Brightness Add + Colour Tint + Compose ─────────
 │   ├── Y: source_y + flash_bright  [clamped 0..1023]
 │   ├── U: +flash_bright>>2 toward blue  (if tint on)
 │   └── V: +flash_bright>>3 toward blue  (if tint on)
@@ -182,7 +175,7 @@ Despite its TOML label "Jitter," this register controls the bolt's peak brightne
 | Default | 50% |
 | Suffix | % |
 
-This register is mapped to `registers_in(5)` in the TOML as "Tint," but the VHDL does not connect it to any signal. The register is not read, and the value has no effect on the output. The color tint is controlled by Toggle 8 (a binary on/off), not by this continuous control.
+This register is mapped to `registers_in(5)` in the TOML as "Tint," but the VHDL does not connect it to any signal. The register is not read, and the value has no effect on the output. The colour tint is controlled by Toggle 8 (a binary on/off), not by this continuous control.
 
 ---
 
@@ -215,7 +208,7 @@ Master wet/dry crossfade. At 0%, the output is the original source video with no
 
 ## Guided Exercises
 
-These exercises progress from a simple static bolt to complex multi-bolt flashing lightning effects, building familiarity with jitter, branching, flash timing, and color tinting.
+These exercises progress from a simple static bolt to complex multi-bolt flashing lightning effects, building familiarity with jitter, branching, flash timing, and colour tinting.
 
 ### Exercise 1: Simple Bolt
 
@@ -262,17 +255,17 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 *Electric Storm — simulated result across source images.*
 **Source**: Any footage — the effect will be dramatic regardless of source content.
 
-**Objective**: Combine double bolts, color tint, heavy jitter, and random flash for a full storm effect.
+**Objective**: Combine double bolts, colour tint, heavy jitter, and random flash for a full storm effect.
 
 1. Enable double bolt (Switch 7 on). Two bolts appear, wandering in opposite directions.
-2. Enable color tint (Switch 8 on). Bolts shift from white to purple-blue.
+2. Enable colour tint (Switch 8 on). Bolts shift from white to purple-blue.
 3. Set Width to ~70%, Jitter to ~80%, Brightness to ~90%.
 4. Set Flash Rate to ~60% with random flash (Switch 9 on). Bolts flash irregularly.
 5. Set Branch Density to ~30% so branches fork early and diverge dramatically.
 6. Reduce Mix to ~70% to let some of the source video show through the storm.
-7. Observe how the double bolts, their branches, and the color tint combine to fill the screen with forking electrical discharge.
+7. Observe how the double bolts, their branches, and the colour tint combine to fill the screen with forking electrical discharge.
 
-**Key concepts**: Double bolt mirrors jitter for symmetric divergence, additive compositing means bolts always brighten, color tint adds chroma shift proportional to brightness
+**Key concepts**: Double bolt mirrors jitter for symmetric divergence, additive compositing means bolts always brighten, colour tint adds chroma shift proportional to brightness
 
 ---
 
@@ -284,7 +277,7 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 - **Jitter accumulates**: Even small per-scanline jitter produces significant wandering over 1080 lines. Start with low Jitter values to understand the accumulation before going extreme.
 - **Flash Rate is tempo**: Think of the Flash Rate control as a tempo knob — it sets the rhythm of the lightning flashes. Random flash mode adds syncopation.
 - **Branch = 2× jitter**: The branch forks from the main bolt with doubled jitter amplitude, so it diverges rapidly. Use low Branch Density values (fork near top) for maximum branching drama.
-- **Color tint is brightness-proportional**: The purple-blue shift only appears where the bolt is bright. Dim inter-flash areas retain their source color, creating a natural color gradient along the bolt's falloff.
+- **Colour tint is brightness-proportional**: The purple-blue shift only appears where the bolt is bright. Dim inter-flash areas retain their source colour, creating a natural colour gradient along the bolt's falloff.
 - **Mix for subtlety**: At full mix, the bolt overlay is dramatic. Reduce Mix to 40–60% for a more atmospheric, background-lightning effect.
 - **Unused controls**: Knob 6 ("Tint") and Switch 10 ("Animate") have no effect in the current VHDL implementation.
 
@@ -295,13 +288,15 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 | Term | Definition |
 |------|------------|
 | **Additive Compositing** | Combining two signals by adding their values, clamping at the maximum. The bolt brightness is added to the source luma. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated FPGA memory resources. Lightning uses zero BRAM. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic signals at arbitrary frequencies. |
 | **Distance Falloff** | The decrease in brightness with increasing distance from the bolt centre, creating a glow effect. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
+| **LFSR** | Linear Feedback Shift Register; produces pseudo-random bit sequences used for bolt jitter and flash randomisation. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of absolute coordinate differences, $|x_1-x_2|+|y_1-y_2|$. |
 | **Phase Accumulator** | A register that increments by a fixed amount each clock cycle, wrapping at its maximum value, used in DDS to control frequency. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A series of sequential processing stages, each operating in one clock cycle. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

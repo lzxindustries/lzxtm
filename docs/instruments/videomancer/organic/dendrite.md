@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 69
+sidebar_position: 76
 slug: /instruments/videomancer/dendrite
 title: "Dendrite"
 image: /img/instruments/videomancer/dendrite/dendrite_hero.png
@@ -276,18 +276,18 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Dendrite uses register storage only, no BRAM. |
 | **Compass Direction LUT** | A lookup table mapping 8 integer indices (0–7) to unit vectors in the cardinal and ordinal directions (E, NE, N, NW, W, SW, S, SE). |
 | **Dendritic** | Tree-like; branching structures that subdivide recursively, named from the Greek *dendron* (tree). |
 | **DLA** | Diffusion-Limited Aggregation; a model of particle growth where random-walking particles stick to a growing cluster on contact, producing fractal branching. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Glow Threshold** | The maximum Manhattan distance from a branch tip at which a pixel receives crystal brightening; pixels beyond this distance are treated as background. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Interpolator** | A linear blending unit that computes `a + (b - a) * t` in fixed-point arithmetic, used for wet/dry mix. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a function of its previous state, generating a deterministic pseudo-random sequence. |
 | **Lichtenberg Figure** | A branching electrical discharge pattern captured in an insulating material; visually similar to DLA structures. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical offsets between two points; produces diamond-shaped equidistant contours rather than the circles of Euclidean distance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Vsync** | Vertical synchronization pulse marking the boundary between video frames; Dendrite updates branch positions on the vsync rising edge. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

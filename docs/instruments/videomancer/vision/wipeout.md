@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 286
+sidebar_position: 312
 slug: /instruments/videomancer/wipeout
 title: "Wipeout"
 image: /img/instruments/videomancer/wipeout/wipeout_hero.png
 description: "Every broadcast television viewer has seen a wipe — a geometric edge that sweeps across the screen, replacing one image with another."
 ---
 
+import wipeout_hero from '/img/instruments/videomancer/wipeout/wipeout_hero.png';
 import wipeout_before_after from '/img/instruments/videomancer/wipeout/wipeout_before_after.png';
 import wipeout_control_panel from '/img/instruments/videomancer/wipeout/wipeout_control_panel.png';
 import wipeout_exercise1_result from '/img/instruments/videomancer/wipeout/wipeout_exercise1_result.png';
 import wipeout_exercise2_result from '/img/instruments/videomancer/wipeout/wipeout_exercise2_result.png';
 import wipeout_exercise3_result from '/img/instruments/videomancer/wipeout/wipeout_exercise3_result.png';
-import wipeout_hero from '/img/instruments/videomancer/wipeout/wipeout_hero.png';
-import wipeout_source1_kodim15 from '/img/instruments/videomancer/wipeout/wipeout_source1_kodim15.png';
-import wipeout_source2_kodim15_bw from '/img/instruments/videomancer/wipeout/wipeout_source2_kodim15_bw.png';
-import wipeout_source3_male_1024 from '/img/instruments/videomancer/wipeout/wipeout_source3_male_1024.png';
 
 # Wipeout
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={wipeout_hero} alt="Wipeout hero image"/>
 *Wipeout performing a clock wipe transition with soft edge and colored border, revealing a luminance matte beneath live video.*
@@ -300,3 +293,5 @@ These exercises progress from basic wipe transitions to complex content-reactive
 | **Production Switcher** | A broadcast video mixing console used for live television production, featuring wipe pattern generators. |
 | **Soft Edge** | A gradual transition zone at a wipe boundary, replacing a hard cut with a smooth alpha ramp. |
 | **T-Bar** | The physical fader on a production switcher that controls the wipe transition position. |
+
+---

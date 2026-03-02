@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 149
+sidebar_position: 164
 slug: /instruments/videomancer/linotype
 title: "Linotype"
 image: /img/instruments/videomancer/linotype/linotype_hero.png
-description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized printing by casting entire lines of metal type in a single operation — 'line o' type.' An..."
+description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized printing by casting entire lines of metal type in a single operation — \"line o' type.\" An operator would key in text, and the machine would assemble brass matrices, cast a lead slug of the complete line, then advance to the next."
 ---
 
+import linotype_hero from '/img/instruments/videomancer/linotype/linotype_hero.png';
 import linotype_before_after from '/img/instruments/videomancer/linotype/linotype_before_after.png';
 import linotype_control_panel from '/img/instruments/videomancer/linotype/linotype_control_panel.png';
 import linotype_exercise1_result from '/img/instruments/videomancer/linotype/linotype_exercise1_result.png';
 import linotype_exercise2_result from '/img/instruments/videomancer/linotype/linotype_exercise2_result.png';
 import linotype_exercise3_result from '/img/instruments/videomancer/linotype/linotype_exercise3_result.png';
-import linotype_hero from '/img/instruments/videomancer/linotype/linotype_hero.png';
-import linotype_source1_kodim15 from '/img/instruments/videomancer/linotype/linotype_source1_kodim15.png';
-import linotype_source2_kodim15_bw from '/img/instruments/videomancer/linotype/linotype_source2_kodim15_bw.png';
-import linotype_source3_male_1024 from '/img/instruments/videomancer/linotype/linotype_source3_male_1024.png';
 
 # Linotype
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={linotype_hero} alt="Linotype hero image"/>
 *Linotype progressively composing a cityscape line by line, the bright cursor bar advancing downward as inked content darkens above.*
@@ -304,15 +297,17 @@ These exercises progress from a basic slow scroll through speed and direction va
 | Term | Definition |
 |------|------------|
 | **Bank swap** | Alternating between two memory banks so one can be written while the other is read, preventing read-write conflicts in the line buffer. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used here as a dual-bank video line buffer for capturing and replaying horizontal strips. |
 | **Cursor** | The active composition edge that marks where new video content is being captured into the line buffer. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic signals, used here for frame counting. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware that implements the video processing pipeline. |
 | **Galley** | In typesetting, a tray that holds composed lines of type; analogously, the region above the cursor where captured content is displayed. |
 | **Ink darkness** | Luminance attenuation applied to captured content, simulating the darkening of cast metal type as it ages. |
 | **Leading** | The vertical space between lines of composed text (or captured video strips), named for the lead spacer strips used in metal typesetting. |
 | **Linotype** | A hot-metal typesetting machine (1886) that cast entire lines of text as single metal slugs; the namesake and conceptual model for this program. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Pipeline** | A sequence of processing stages where each stage's output feeds the next on each clock cycle. |
+| **Proc amp** | Processing amplifier; a gain-and-offset video circuit used here within the interpolator stage for wet/dry mixing. |
 | **Scan line** | A single horizontal row of pixels in a video frame; the fundamental unit of capture in this program. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+---

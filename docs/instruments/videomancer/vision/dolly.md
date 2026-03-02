@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 75
+sidebar_position: 82
 slug: /instruments/videomancer/dolly
 title: "Dolly"
 image: /img/instruments/videomancer/dolly/dolly_hero.png
-description: "Every broadcast control room has a button that shrinks the on-screen talent into a box and slides that box to any corner of the frame — usually to make ..."
+description: "Every broadcast control room has a button that shrinks the on-screen talent into a box and slides that box to any corner of the frame — usually to make room for a map, a graphic, or a second camera feed."
 ---
 
 import dolly_hero from '/img/instruments/videomancer/dolly/dolly_hero.png';
@@ -288,16 +288,16 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Compositor** | The output stage that selects between image, border, and background pixels based on region classification. |
 | **DDA** | Digital Differential Analyzer; a fixed-point accumulator-based technique for computing evenly spaced sample addresses, used here for horizontal scaling. |
 | **DVE** | Digital Video Effect; a broadcast industry term for real-time geometric manipulation (scale, position, rotation) of a video signal. |
 | **Hue** | The attribute of a color that distinguishes it from other colors on the color wheel (red, green, blue, etc.), independent of brightness or saturation. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A component that computes weighted averages between two values; used here for the wet/dry mix crossfade. |
 | **Line Buffer** | A dual-port BRAM that stores one scanline of pixel data, allowing linear write and random-access read for scaling operations. |
 | **Ping-Pong** | A double-buffering technique where two memory regions alternate roles (read/write) to allow simultaneous input capture and output generation. |
 | **PiP** | Picture-in-Picture; a composition technique where a smaller image is displayed within a larger frame. |
 | **Region Classifier** | Logic that determines whether each output pixel belongs to the image, border, or background region based on coordinate comparisons. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

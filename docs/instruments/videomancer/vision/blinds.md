@@ -283,15 +283,15 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 | Term | Definition |
 |------|------------|
 | **Cascade** | A progressive phase offset applied to each successive slat so they open or close in sequence rather than simultaneously, producing a wave-like reveal. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle. |
 | **DVE** | Digital Video Effects; a hardware processor for real-time video transformations such as wipes, squeezes, and rotations, common in broadcast production. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet and foreground/background blending. |
 | **Phase accumulator** | A register that increments by a fixed step each vertical sync pulse; its value drives the triangle wave oscillator for auto-animation. |
 | **Reciprocal multiply** | A division approximation that replaces expensive hardware division with multiplication by a pre-computed reciprocal constant followed by a right shift. |
 | **Reveal mask** | A per-pixel value (0–1023) indicating the proportion of source video visible versus background at that pixel location. |
 | **Slat** | One horizontal or vertical band in a venetian blind division of the frame, analogous to a single louver in a physical window blind. |
 | **SMPTE** | Society of Motion Picture and Television Engineers; the standards body that defines broadcast wipe patterns, timecode, and video signal formats. |
 | **Triangle wave** | A periodic waveform that ramps linearly up then linearly down, used by the auto-animation oscillator to sweep slat opening back and forth. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
 
 ---

@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 264
+sidebar_position: 290
 slug: /instruments/videomancer/tidepool
 title: "Tidepool"
 image: /img/instruments/videomancer/tidepool/tidepool_hero.png
 description: "Drop a stone into still water and concentric circles expand outward."
 ---
 
+import tidepool_hero from '/img/instruments/videomancer/tidepool/tidepool_hero.png';
 import tidepool_animation from '/img/instruments/videomancer/tidepool/tidepool_animation.gif';
 import tidepool_control_panel from '/img/instruments/videomancer/tidepool/tidepool_control_panel.png';
 import tidepool_exercise1_result from '/img/instruments/videomancer/tidepool/tidepool_exercise1_result.gif';
 import tidepool_exercise2_result from '/img/instruments/videomancer/tidepool/tidepool_exercise2_result.gif';
 import tidepool_exercise3_result from '/img/instruments/videomancer/tidepool/tidepool_exercise3_result.gif';
-import tidepool_hero from '/img/instruments/videomancer/tidepool/tidepool_hero.png';
 
 # Tidepool
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={tidepool_hero} alt="Tidepool hero image"/>
 *Tidepool generating four-source concentric ripple interference with constructive and destructive wave patterns overlaid on a live video feed.*
@@ -59,9 +55,9 @@ Each source's position is driven by a pair of DDS (Direct Digital Synthesis) pha
 
 The frequency constants are chosen to be co-prime and irrational in ratio: (137, 193), (211, 157), (173, 229), (251, 181). Because no two sources share a common frequency, their position trajectories never synchronize — the pattern continuously evolves without repeating on any human-observable timescale.
 
-### Moiré Patterns in Multi-Source Interference
+### Moire Patterns in Multi-Source Interference
 
-When two sets of concentric rings overlap with slightly different spatial frequencies, a secondary large-scale pattern emerges — the Moiré effect. Tidepool's multi-source interference naturally produces Moiré fringes as a byproduct of wave superposition. The Wavelength control changes the spatial frequency of all sources simultaneously, but the frequency ratios between sources remain fixed by the DDS constants, so the Moiré patterns shift and scale as Wavelength is swept.
+When two sets of concentric rings overlap with slightly different spatial frequencies, a secondary large-scale pattern emerges — the Moire effect. Tidepool's multi-source interference naturally produces Moire fringes as a byproduct of wave superposition. The Wavelength control changes the spatial frequency of all sources simultaneously, but the frequency ratios between sources remain fixed by the DDS constants, so the Moire patterns shift and scale as Wavelength is swept.
 
 
 ---
@@ -123,7 +119,7 @@ The triangle wave function is the waveshaping core. It maps a 12-bit unsigned ph
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial frequency of the ripple rings. The register value is right-shifted by 7 and clamped to 0–8 to derive a left-shift amount applied to the distance before the triangle wave lookup. At 0 the rings are very widely spaced — only one or two cycles visible across the full frame. At maximum the rings are tightly packed, producing fine concentric line patterns. Higher values create more visible Moiré interference where sources overlap.
+Controls the spatial frequency of the ripple rings. The register value is right-shifted by 7 and clamped to 0–8 to derive a left-shift amount applied to the distance before the triangle wave lookup. At 0 the rings are very widely spaced — only one or two cycles visible across the full frame. At maximum the rings are tightly packed, producing fine concentric line patterns. Higher values create more visible Moire interference where sources overlap.
 
 ---
 
@@ -252,14 +248,14 @@ These exercises progress from simple single-source rings to complex four-source 
 **Objective**: Explore the rich interference lattice produced by four animated sources with color and mode variations.
 
 1. **Four sources**: Set Sources to 4 (fully clockwise). Four independent ring patterns overlap, creating a complex lattice.
-2. **Moderate wavelength**: Set Wavelength to ~40%. This produces enough ring density for visible Moiré patterns between source pairs.
+2. **Moderate wavelength**: Set Wavelength to ~40%. This produces enough ring density for visible Moire patterns between source pairs.
 3. **Full depth**: Set Depth to ~80% for strong contrast.
 4. **Animate**: Enable Animate with Drift Sp at ~50%. The lattice evolves continuously — nodes appear, merge, split, and dissolve.
 5. **Replace + Rainbow**: Switch to Replace mode with Color = Rainbow. The output is a pure interference pattern with chromatic fringes — no input video.
 6. **Invert**: Toggle Invert. Bright fringes become dark; dark nodes become bright. The overall structure is the same but the polarity reverses.
 7. **Mix layering**: Switch back to Overlay mode. Lower Mix to ~60% to blend the interference pattern transparently over the source video.
 
-**Key concepts**: Four sources produce a 2D lattice with Moiré fringes, irrational DDS ratios ensure non-repeating evolution, Replace mode generates standalone patterns, Invert reverses fringe polarity
+**Key concepts**: Four sources produce a 2D lattice with Moire fringes, irrational DDS ratios ensure non-repeating evolution, Replace mode generates standalone patterns, Invert reverses fringe polarity
 
 ---
 
@@ -281,16 +277,18 @@ These exercises progress from simple single-source rings to complex four-source 
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601 defining standard-definition YUV color encoding with separate luminance and chrominance channels. |
 | **Constructive Interference** | The reinforcement that occurs when two or more wave crests coincide, producing a combined amplitude greater than either wave alone. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented by a fixed frequency constant each clock cycle. |
 | **Destructive Interference** | The cancellation that occurs when a wave crest coincides with a wave trough, reducing the combined amplitude. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Tidepool processing pipeline. |
 | **Interference Pattern** | The spatial distribution of constructive and destructive wave interactions, producing alternating bright and dark fringes. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|dx| + |dy|); produces diamond-shaped contours instead of circular. |
-| **Moiré Pattern** | A secondary large-scale pattern that emerges when two sets of fine periodic structures overlap with slightly different frequencies. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Moire Pattern** | A secondary large-scale pattern that emerges when two sets of fine periodic structures overlap with slightly different frequencies. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Superposition** | The principle that the combined amplitude of overlapping waves equals the sum of their individual amplitudes at each point. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used as an approximation to a sine wave for distance-to-amplitude mapping. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

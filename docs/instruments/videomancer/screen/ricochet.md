@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 218
+sidebar_position: 234
 slug: /instruments/videomancer/ricochet
 title: "Ricochet"
 image: /img/instruments/videomancer/ricochet/ricochet_hero.png
-description: "Every office worker of the 1990s had the same secret hope — that the DVD logo bouncing endlessly in the corner would finally hit the exact corner of the..."
+description: "Every office worker of the 1990s had the same secret hope — that the DVD logo bouncing endlessly in the corner would finally hit the exact corner of the screen."
 ---
 
+import ricochet_hero from '/img/instruments/videomancer/ricochet/ricochet_hero.png';
 import ricochet_animation from '/img/instruments/videomancer/ricochet/ricochet_animation.gif';
 import ricochet_control_panel from '/img/instruments/videomancer/ricochet/ricochet_control_panel.png';
 import ricochet_exercise1_result from '/img/instruments/videomancer/ricochet/ricochet_exercise1_result.gif';
 import ricochet_exercise2_result from '/img/instruments/videomancer/ricochet/ricochet_exercise2_result.gif';
 import ricochet_exercise3_result from '/img/instruments/videomancer/ricochet/ricochet_exercise3_result.gif';
-import ricochet_hero from '/img/instruments/videomancer/ricochet/ricochet_hero.png';
 
 # Ricochet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={ricochet_hero} alt="Ricochet hero image"/>
 *Ricochet generating a bouncing spotlight revealing processed video over a dimmed background, with color-cycling border glow and trail persistence.*
@@ -264,15 +260,17 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for trail cell storage. |
 | **Color Palette** | An 8-entry table of YUV values indexed by the corner-hit counter, cycling through preset colors. |
 | **Corner Hit** | A rare event where the bouncing shape collides with two screen edges simultaneously, triggering a color cycle and optional flash. |
 | **Edge Reflection** | Reversing a velocity component when a moving object reaches a boundary, simulating an elastic collision. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hit Test** | Per-pixel computation determining whether the current screen position is inside, on the border of, or outside the bouncing shape. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware mixing stage that blends two values by a fractional amount; used for the wet/dry mix fader. |
 | **Octagonal Approximation** | A fast distance metric `max(|dx|,|dy|) + min(|dx|,|dy|)/2` that approximates circular distance using only adds and shifts. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Solarize** | A photographic effect that folds brightness values above a threshold back toward black, creating a partial-negative appearance. |
 | **Trail BRAM** | A 120×68-cell binary grid recording which screen regions the spotlight has visited. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

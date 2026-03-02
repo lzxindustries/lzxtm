@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 137
+sidebar_position: 150
 slug: /instruments/videomancer/keystone
 title: "Keystone"
 image: /img/instruments/videomancer/keystone/keystone_hero.png
 description: "Most video is captured as a rectangle, and most displays reproduce it as a rectangle."
 ---
 
+import keystone_hero from '/img/instruments/videomancer/keystone/keystone_hero.png';
 import keystone_before_after from '/img/instruments/videomancer/keystone/keystone_before_after.png';
 import keystone_control_panel from '/img/instruments/videomancer/keystone/keystone_control_panel.png';
 import keystone_exercise1_result from '/img/instruments/videomancer/keystone/keystone_exercise1_result.png';
 import keystone_exercise2_result from '/img/instruments/videomancer/keystone/keystone_exercise2_result.png';
 import keystone_exercise3_result from '/img/instruments/videomancer/keystone/keystone_exercise3_result.png';
-import keystone_hero from '/img/instruments/videomancer/keystone/keystone_hero.png';
-import keystone_source1_kodim15 from '/img/instruments/videomancer/keystone/keystone_source1_kodim15.png';
-import keystone_source2_kodim15_bw from '/img/instruments/videomancer/keystone/keystone_source2_kodim15_bw.png';
-import keystone_source3_male_1024 from '/img/instruments/videomancer/keystone/keystone_source3_male_1024.png';
 
 # Keystone
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={keystone_hero} alt="Keystone hero image"/>
 *Keystone applying horizontal perspective foreshortening and skew to transform rectangular video into converging trapezoids.*
@@ -273,16 +266,18 @@ These exercises progress from simple skew to animated compound transforms, build
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **DDA** | Digital Differential Analyzer; an incremental algorithm for stepping through coordinates at a variable sampling rate. |
 | **Foreshortening** | The apparent compression of an object's dimension when viewed at an angle; perspective convergence. |
 | **Line Buffer** | A single-scanline memory that stores one row of pixel data for non-sequential readout. |
 | **LUT** | Look-Up Table; a pre-computed array of values indexed by an input to avoid runtime calculation (used here for sine wave). |
 | **Parallelogram** | A quadrilateral with two pairs of parallel sides; the result of a purely-shear (skew) transform applied to a rectangle. |
 | **Ping-Pong** | A dual-buffer scheme where one buffer is written while the other is read, alternating each scanline. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Shear** | A geometric transformation that displaces each point by an amount proportional to its distance from a reference axis. |
 | **Trapezoid** | A quadrilateral with one pair of parallel sides; the result of a perspective distortion applied to a rectangle. |
 | **Vanishing Point** | The point in a perspective projection where parallel lines appear to converge; configured by the VP Y control. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

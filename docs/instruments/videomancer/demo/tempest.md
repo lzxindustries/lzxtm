@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 259
+sidebar_position: 284
 slug: /instruments/videomancer/tempest
 title: "Tempest"
 image: /img/instruments/videomancer/tempest/tempest_hero.png
 description: "A storm is not random — it is a system of interacting oscillations, each warping the others."
 ---
 
+import tempest_hero from '/img/instruments/videomancer/tempest/tempest_hero.png';
 import tempest_animation from '/img/instruments/videomancer/tempest/tempest_animation.gif';
 import tempest_control_panel from '/img/instruments/videomancer/tempest/tempest_control_panel.png';
 import tempest_exercise1_result from '/img/instruments/videomancer/tempest/tempest_exercise1_result.gif';
 import tempest_exercise2_result from '/img/instruments/videomancer/tempest/tempest_exercise2_result.gif';
 import tempest_exercise3_result from '/img/instruments/videomancer/tempest/tempest_exercise3_result.gif';
-import tempest_hero from '/img/instruments/videomancer/tempest/tempest_hero.png';
 
 # Tempest
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={tempest_hero} alt="Tempest hero image"/>
 *Tempest generating storm-like spatial turbulence from three noise-modulated DDS oscillators folded through triangle waveshaping.*
@@ -33,9 +29,9 @@ import tempest_hero from '/img/instruments/videomancer/tempest/tempest_hero.png'
 
 A storm is not random — it is a system of interacting oscillations, each warping the others. Tempest translates this principle into the video domain. Three direct digital synthesis oscillators sweep across horizontal, vertical, and temporal axes, their frequencies noise-modulated via FM synthesis to create churning, turbulent spatial patterns. The result is a generative texture field that ranges from gentle, rippling interference to violent visual chaos.
 
-The name comes from the atmospheric phenomenon and its connotation of barely-controlled energy. At low noise modulation, Tempest produces orderly interference patterns — standing waves and Moiré-like lattice structures. As noise-to-phase modulation increases, the oscillators' frequencies jitter unpredictably, and the pattern disintegrates into turbulence. A second noise injection path adds grain texture directly to the output luminance, independent of the spatial pattern.
+The name comes from the atmospheric phenomenon and its connotation of barely-controlled energy. At low noise modulation, Tempest produces orderly interference patterns — standing waves and Moire-like lattice structures. As noise-to-phase modulation increases, the oscillators' frequencies jitter unpredictably, and the pattern disintegrates into turbulence. A second noise injection path adds grain texture directly to the output luminance, independent of the spatial pattern.
 
-The program processes input video through a proc_amp stage where the combined oscillator pattern becomes the brightness offset, and the Luma Gain control sets the contrast (how strongly the input modulates the output). This means Tempest can function as a pure spatial synthesizer (low gain, high cutoffs) or as a turbulence overlay on live video (high gain). Fade Amount crossfades between the processed output and a solid target color, while desaturation and luma inversion provide final tonal shaping.
+The program processes input video through a proc_amp stage where the combined oscillator pattern becomes the brightness offset, and the Luma Gain control sets the contrast (how strongly the input modulates the output). This means Tempest can function as a pure spatial synthesizer (low gain, high cutoffs) or as a turbulence overlay on live video (high gain). Fade Amount crossfades between the processed output and a solid target colour, while desaturation and luma inversion provide final tonal shaping.
 
 ---
 
@@ -70,61 +66,61 @@ The frequency doubler module folds a sawtooth ramp into a triangle wave by mirro
 [Video Timing Generator]
 │
 ├─ H/V/F position ────────────────────────────────────────────
-│                                                              
-│  ┌──────────────────────────────────────┐                   
-│  │  LFSR Noise ─or─ Ramp H XOR Ramp V  │◄── Noise Algo     
-│  │            (Noise Source)            │                    
-│  └──────────┬───────────────────┬───────┘                   
-│             │                   │                            
-│     ┌───────▼────────┐  ┌──────▼──────────┐                
-│     │  FM Modulation │  │ Noise to Luma   │                
-│     │  × Noise to    │  │   Offset        │                
-│     │    Phase       │  └──────┬──────────┘                
-│     └───────┬────────┘         │                            
-│             │                  │                            
-│    ┌────────▼─────────────┐    │                            
-│    │  3× DDS Accumulator  │    │                            
-│    │  H (pixel), V (line),│    │                            
-│    │  F (frame)           │    │                            
-│    └────────┬─────────────┘    │                            
-│             │                  │                            
-│    ┌────────▼─────────────┐    │                            
-│    │  3× Triangle Fold    │    │                            
-│    │  (frequency doubler) │    │                            
-│    └────────┬─────────────┘    │                            
-│             │                  │                            
-│    ┌────────▼─────────────┐    │                            
-│    │  Sum / 4 + Noise     │◄───┘                            
-│    │  (Pattern Brightness)│                                 
-│    └────────┬─────────────┘                                 
-│             │                                                
-├─ Input Y ──►│                                               
-│    ┌────────▼─────────────┐                                 
-│    │  proc_amp_u          │◄── Luma Gain (contrast)         
-│    │  contrast × input    │                                 
-│    │  + pattern brightness│                                 
-│    └────────┬─────────────┘                                 
-│             │                                                
-│    ┌────────▼─────────────┐                                 
-│    │  Luma Invert (opt.)  │                                 
-│    └────────┬─────────────┘                                 
-│             │                                                
-├─ U/V ──────►│                                               
-│    ┌────────▼─────────────┐                                 
-│    │  Desaturate (opt.)   │                                 
-│    │  U,V → 512 midpoint  │                                 
-│    └────────┬─────────────┘                                 
-│             │                                                
-│    ┌────────▼─────────────┐                                 
-│    │  Fade-to-Color      │◄── Fade Amount, Fade Color      
-│    │  (interpolator_u ×3) │                                 
-│    └────────┬─────────────┘                                 
-│             │                                                
-│    ┌────────▼─────────────┐                                 
-│    │  Bypass Mux          │◄── Bypass                       
-│    └────────┬─────────────┘                                 
-│             ▼                                                
-│        Output YUV                                           
+│
+│  ┌──────────────────────────────────────┐
+│  │  LFSR Noise ─or─ Ramp H XOR Ramp V  │◄── Noise Algo
+│  │            (Noise Source)            │
+│  └──────────┬───────────────────┬───────┘
+│             │                   │
+│     ┌───────▼────────┐  ┌──────▼──────────┐
+│     │  FM Modulation │  │ Noise to Luma   │
+│     │  × Noise to    │  │   Offset        │
+│     │    Phase       │  └──────┬──────────┘
+│     └───────┬────────┘         │
+│             │                  │
+│    ┌────────▼─────────────┐    │
+│    │  3× DDS Accumulator  │    │
+│    │  H (pixel), V (line),│    │
+│    │  F (frame)           │    │
+│    └────────┬─────────────┘    │
+│             │                  │
+│    ┌────────▼─────────────┐    │
+│    │  3× Triangle Fold    │    │
+│    │  (frequency doubler) │    │
+│    └────────┬─────────────┘    │
+│             │                  │
+│    ┌────────▼─────────────┐    │
+│    │  Sum / 4 + Noise     │◄───┘
+│    │  (Pattern Brightness)│
+│    └────────┬─────────────┘
+│             │
+├─ Input Y ──►│
+│    ┌────────▼─────────────┐
+│    │  proc_amp_u          │◄── Luma Gain (contrast)
+│    │  contrast × input    │
+│    │  + pattern brightness│
+│    └────────┬─────────────┘
+│             │
+│    ┌────────▼─────────────┐
+│    │  Luma Invert (opt.)  │
+│    └────────┬─────────────┘
+│             │
+├─ U/V ──────►│
+│    ┌────────▼─────────────┐
+│    │  Desaturate (opt.)   │
+│    │  U,V → 512 midpoint  │
+│    └────────┬─────────────┘
+│             │
+│    ┌────────▼─────────────┐
+│    │  Fade-to-Colour      │◄── Fade Amount, Fade Color
+│    │  (interpolator_u ×3) │
+│    └────────┬─────────────┘
+│             │
+│    ┌────────▼─────────────┐
+│    │  Bypass Mux          │◄── Bypass
+│    └────────┬─────────────┘
+│             ▼
+│        Output YUV
 ```
 
 The critical interaction is the noise-to-oscillator feedback path. Noise modulates all three oscillator frequencies simultaneously, but the oscillators sweep at different spatial rates (pixel, line, frame), so the same noise field produces different turbulence textures in each dimension. The noise source selection (LFSR vs. XOR pattern) fundamentally changes the character of this modulation — LFSR produces grain-like randomness while XOR produces structured, self-referencing interference because the ramp values used in the XOR are derived from the same accumulators being modulated.
@@ -180,7 +176,7 @@ Controls the animation (frame-rate) oscillator frequency. This oscillator accumu
 | Default | 50.0% |
 | Suffix | % |
 
-Noise to Phase depth — controls how strongly the noise source modulates the oscillator frequencies. At zero, the three oscillators produce clean, orderly interference patterns (standing waves, Moiré lattices). As this control increases, noise pushes each pixel's local oscillator frequency away from the base value, creating spatial turbulence. At maximum, frequency modulation dominates and the geometric structure of the oscillators dissolves into chaotic storm-like textures. The FM offset is computed as (noise − 512) × depth >> 8, symmetric around zero, so bright noise pixels speed up the oscillators and dark pixels slow them down.
+Noise to Phase depth — controls how strongly the noise source modulates the oscillator frequencies. At zero, the three oscillators produce clean, orderly interference patterns (standing waves, Moire lattices). As this control increases, noise pushes each pixel's local oscillator frequency away from the base value, creating spatial turbulence. At maximum, frequency modulation dominates and the geometric structure of the oscillators dissolves into chaotic storm-like textures. The FM offset is computed as (noise − 512) × depth >> 8, symmetric around zero, so bright noise pixels speed up the oscillators and dark pixels slow them down.
 
 ---
 
@@ -229,7 +225,7 @@ The five toggles control binary processing options at different points in the si
 | Default | 50.0% |
 | Suffix | % |
 
-Fade Amount controls the crossfade between the processed output and the solid target color (black or white, set by Fade Color). At maximum (1023), the full processed signal passes through — oscillator pattern, noise, gain, inversion, and all. At zero, the output is solid black or white. At intermediate values, the processed pattern is partially transparent over the target, creating washed-out or silhouette effects. The interpolation is linear via the interpolator_u entity.
+Fade Amount controls the crossfade between the processed output and the solid target colour (black or white, set by Fade Color). At maximum (1023), the full processed signal passes through — oscillator pattern, noise, gain, inversion, and all. At zero, the output is solid black or white. At intermediate values, the processed pattern is partially transparent over the target, creating washed-out or silhouette effects. The interpolation is linear via the interpolator_u entity.
 
 ---
 
@@ -275,14 +271,14 @@ These exercises build from static spatial patterns through animated turbulence t
 
 <img src={tempest_exercise3_result} alt="Fade and Inversion Sculpting result"/>
 *Fade and Inversion Sculpting — simulated result across source images.*
-**Objective**: Use the fade-to-color crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
+**Objective**: Use the fade-to-colour crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
 
 1. **Establish turbulence**: Set H Cutoff ~40%, V Cutoff ~30%, Noise to Phase ~60%, F Cutoff ~15%.
 2. **Fade to black**: Lower Fade Amount to ~50%. The pattern becomes semi-transparent over black, creating a dark atmospheric effect.
 3. **Switch to white**: Toggle Fade Color to White. The same fade now washes the pattern toward bright white — the visual character reverses entirely.
 4. **Invert**: Toggle Luma Invert. The bright peaks become dark valleys against the fade target, creating a negative-image effect.
-5. **Desaturate off**: If using with input video, disable Desaturate to allow color through. With pure synthesis, the chroma channels remain neutral.
-6. **Full fade sweep**: Slowly sweep Fade Amount from 0% to 100% to see the full range of the crossfade. At the extremes, the pattern vanishes into solid color; in the middle, it creates translucent overlay textures.
+5. **Desaturate off**: If using with input video, disable Desaturate to allow colour through. With pure synthesis, the chroma channels remain neutral.
+6. **Full fade sweep**: Slowly sweep Fade Amount from 0% to 100% to see the full range of the crossfade. At the extremes, the pattern vanishes into solid colour; in the middle, it creates translucent overlay textures.
 
 **Key concepts**: Fade Amount crossfades linearly between processed and solid target. Fade Color selects the target (black or white). Luma Invert reverses the pattern after processing. These controls sculpt the final tonal range of the turbulence output.
 
@@ -305,15 +301,17 @@ These exercises build from static spatial patterns through animated turbulence t
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a method of generating waveforms by incrementing a phase accumulator at a rate determined by a frequency word. |
 | **FM** | Frequency Modulation; modulating the frequency of one signal with another to create complex sidebands and timbral variation. |
 | **Frequency Doubler** | A waveshaping module that folds a sawtooth ramp into a triangle wave by mirroring the upper half, doubling the apparent frequency. |
 | **Frequency Word** | The value added to a DDS phase accumulator on each clock cycle; determines the output frequency. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Moiré** | An interference pattern produced when two periodic patterns overlap at slightly different frequencies or angles. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback of selected bit positions. |
+| **Moire** | An interference pattern produced when two periodic patterns overlap at slightly different frequencies or angles. |
 | **Phase Accumulator** | A register that wraps around at a fixed modulus, producing a periodic ramp waveform; the core of any DDS oscillator. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a video signal. |
 | **Triangle Wave** | A periodic waveform that rises and falls linearly, creating smooth spatial gradients without the abrupt discontinuity of a sawtooth. |
 | **Turbulence** | In this context, spatial frequency distortion caused by noise-modulating the oscillator DDS — analogous to atmospheric turbulence distorting light. |
 | **XOR** | Exclusive OR; a bitwise operation where corresponding bits differ produces 1, creating structured spatial interference patterns when applied to ramp waves. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 74
+sidebar_position: 81
 slug: /instruments/videomancer/discrot
 title: "Discrot"
 image: /img/instruments/videomancer/discrot/discrot_hero.png
@@ -302,14 +302,14 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 | **Disc Rot** | Progressive oxidation of the aluminum reflective layer in LaserDiscs, causing read errors and visible video artifacts. |
 | **Dropout** | A region of missing or corrupted video caused by physical damage to the storage medium. |
 | **FM Carrier** | Frequency-modulated radio signal used to encode analog video on optical disc formats. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hold-Previous** | Dropout concealment technique where the last good sample is repeated through the damaged region. |
 | **LaserDisc** | Optical disc format (1978–2001) encoding analog video as frequency-modulated pit patterns read by laser. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for noise generation in FPGA designs. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Snow** | Random noise pattern resembling television static, characteristic of a completely lost analog signal. |
 | **Speckle** | Bright noise dots caused by laser scattering off partially corroded or irregularly shaped pits. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 98
+sidebar_position: 107
 slug: /instruments/videomancer/fisheye
 title: "Fisheye"
 image: /img/instruments/videomancer/fisheye/fisheye_hero.png
@@ -289,12 +289,12 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 | **Barrel Distortion** | A lens aberration where straight lines bow outward from the center, giving the image a convex, bulging appearance. |
 | **Chromatic Aberration** | Colored fringing caused by a lens focusing different wavelengths at slightly different points, most visible at image edges. |
 | **Distance-Squared** | The sum of squared horizontal and vertical offsets from a reference point; used as a computationally efficient proxy for radial distance. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that performs linear interpolation (lerp) between two values, used here for wet/dry mixing. |
 | **Pincushion Distortion** | A lens aberration where straight lines bow inward toward the center, giving the image a concave, pinched appearance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Radial Falloff** | A brightness attenuation that increases with distance from a central point, simulating optical vignetting. |
 | **Vignetting** | The gradual darkening of an image toward its edges and corners, caused by optical or mechanical properties of a lens system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

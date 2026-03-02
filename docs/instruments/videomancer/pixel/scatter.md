@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 226
+sidebar_position: 243
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero.png
 description: "Every pixel in a digital video frame is a number."
 ---
 
+import scatter_hero from '/img/instruments/videomancer/scatter/scatter_hero.png';
 import scatter_before_after from '/img/instruments/videomancer/scatter/scatter_before_after.png';
 import scatter_control_panel from '/img/instruments/videomancer/scatter/scatter_control_panel.png';
 import scatter_exercise1_result from '/img/instruments/videomancer/scatter/scatter_exercise1_result.png';
 import scatter_exercise2_result from '/img/instruments/videomancer/scatter/scatter_exercise2_result.png';
 import scatter_exercise3_result from '/img/instruments/videomancer/scatter/scatter_exercise3_result.png';
-import scatter_hero from '/img/instruments/videomancer/scatter/scatter_hero.png';
-import scatter_source1_kodim02 from '/img/instruments/videomancer/scatter/scatter_source1_kodim02.png';
-import scatter_source2_kodim07 from '/img/instruments/videomancer/scatter/scatter_source2_kodim07.png';
-import scatter_source3_kodim01_bw from '/img/instruments/videomancer/scatter/scatter_source3_kodim01_bw.png';
 
 # Scatter
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={scatter_hero} alt="Scatter hero image"/>
 *Scatter applying XOR-based pixel corruption with structured hash patterns and edge-faded intensity to fracture a video signal into digital noise textures.*
@@ -286,13 +279,15 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Scatter uses no BRAMs. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Edge Fade** | Spatial attenuation of an effect based on distance from the frame boundary, producing a vignette pattern. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hash** | A deterministic function that maps input coordinates to a pseudo-random output value for structured patterns. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random sequence. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **XOR** | Exclusive-or; a bitwise operation that outputs 1 when inputs differ and 0 when inputs agree. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

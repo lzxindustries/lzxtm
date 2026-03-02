@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 212
+sidebar_position: 227
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero.png
 description: "Every castle begins with a wall."
 ---
 
+import rampart_hero from '/img/instruments/videomancer/rampart/rampart_hero.png';
 import rampart_before_after from '/img/instruments/videomancer/rampart/rampart_before_after.png';
 import rampart_control_panel from '/img/instruments/videomancer/rampart/rampart_control_panel.png';
 import rampart_exercise1_result from '/img/instruments/videomancer/rampart/rampart_exercise1_result.png';
 import rampart_exercise2_result from '/img/instruments/videomancer/rampart/rampart_exercise2_result.png';
 import rampart_exercise3_result from '/img/instruments/videomancer/rampart/rampart_exercise3_result.png';
-import rampart_hero from '/img/instruments/videomancer/rampart/rampart_hero.png';
-import rampart_source1_kodim15 from '/img/instruments/videomancer/rampart/rampart_source1_kodim15.png';
-import rampart_source2_kodim01 from '/img/instruments/videomancer/rampart/rampart_source2_kodim01.png';
-import rampart_source3_stream_bridge_512 from '/img/instruments/videomancer/rampart/rampart_source3_stream_bridge_512.png';
 
 # Rampart
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={rampart_hero} alt="Rampart hero image"/>
 *Rampart generating a fortress-wall brick lattice with running bond, mortar shadowing, and video-filled crenellations over a live input.*
@@ -271,13 +264,15 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 |------|------------|
 | **ABI** | Application Binary Interface; the fixed register layout through which the Videomancer firmware communicates parameter values to FPGA programs. Limited to 8 registers (indices 0–7). |
 | **Bond** | The pattern in which bricks are laid in a wall. Running bond offsets alternating rows; stack bond aligns all rows vertically. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Rampart uses zero BRAMs — all computation is combinational. |
 | **Crenel** | The gap (open section) in a crenellated battlement wall. The raised solid sections between crenels are called merlons. |
 | **Crenellation** | The alternating tooth-shaped parapet profile along the top of a fortress wall, consisting of merlons and crenels. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware component that linearly blends between two values based on a mix parameter. Rampart uses three interpolators for wet/dry crossfade on Y, U, and V channels. |
 | **Merlon** | The raised solid portion between two crenels in a battlement wall. |
 | **Modular Arithmetic** | Division remainder operation (mod) that creates infinite repetition: `h mod w` produces a periodic pattern with period `w`. |
 | **Mortar** | The material (or in Rampart's case, the pixel region) between adjacent bricks, rendered as lines of configurable width and brightness. |
 | **Running Bond** | A brick bonding pattern where each course is offset by half a brick width, staggering vertical joints. |
 | **Stack Bond** | A brick bonding pattern where all courses align vertically, creating continuous vertical mortar lines. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

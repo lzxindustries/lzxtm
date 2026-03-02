@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 114
+sidebar_position: 123
 slug: /instruments/videomancer/gouraud
 title: "Gouraud"
 image: /img/instruments/videomancer/gouraud/gouraud_hero.png
@@ -261,16 +261,16 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 | Term | Definition |
 |------|------------|
 | **Barycentric Coordinates** | A coordinate system for points inside a triangle, expressed as weighted averages of the three vertices; used in Gouraud interpolation. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator incremented by a fixed value each cycle. |
 | **Edge Function** | A signed area computation that determines whether a point lies on the inside or outside of a triangle edge; all three must agree for the point to be inside. |
 | **Fan Topology** | A triangle arrangement where all triangles share a common vertex (here, screen center), radiating outward like blades of a fan. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gouraud Shading** | A shading technique that interpolates vertex colors across a polygon face, producing smooth gradients; introduced by Henri Gouraud in 1971. |
 | **Lissajous Figure** | A parametric curve traced by combining two sinusoidal oscillations along perpendicular axes; each vertex follows a unique Lissajous path. |
 | **LUT** | Lookup Table; a pre-computed array of values indexed by an input, used here implicitly by the triangle wave function. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Rasterization** | The process of determining which pixels are covered by a geometric primitive (triangle) and computing their colors. |
 | **Triangle Wave** | A piecewise linear waveform that approximates a sine wave using four linear ramp segments; used for vertex position and color oscillation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

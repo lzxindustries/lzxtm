@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 261
+sidebar_position: 286
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
 image: /img/instruments/videomancer/terracotta/terracotta_hero.png
 description: "The Terracotta Army of Emperor Qin Shi Huang contains over eight thousand life-sized warriors, no two of them identical."
 ---
 
+import terracotta_hero from '/img/instruments/videomancer/terracotta/terracotta_hero.png';
 import terracotta_before_after from '/img/instruments/videomancer/terracotta/terracotta_before_after.png';
 import terracotta_control_panel from '/img/instruments/videomancer/terracotta/terracotta_control_panel.png';
 import terracotta_exercise1_result from '/img/instruments/videomancer/terracotta/terracotta_exercise1_result.png';
 import terracotta_exercise2_result from '/img/instruments/videomancer/terracotta/terracotta_exercise2_result.png';
 import terracotta_exercise3_result from '/img/instruments/videomancer/terracotta/terracotta_exercise3_result.png';
-import terracotta_hero from '/img/instruments/videomancer/terracotta/terracotta_hero.png';
-import terracotta_source1_kodim03 from '/img/instruments/videomancer/terracotta/terracotta_source1_kodim03.png';
-import terracotta_source2_kodim13 from '/img/instruments/videomancer/terracotta/terracotta_source2_kodim13.png';
-import terracotta_source3_kodim13_bw from '/img/instruments/videomancer/terracotta/terracotta_source3_kodim13_bw.png';
 
 # Terracotta
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={terracotta_hero} alt="Terracotta hero image"/>
 *Terracotta replicating a video frame into a grid of individually varied tiles, each bearing a unique luminance and hue signature derived from XOR hashing.*
@@ -283,16 +276,18 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory within the FPGA. Terracotta uses zero BRAM — all operations are combinational. |
 | **Combinational** | Logic that produces output purely from current inputs, without memory elements or clock-dependent state. |
 | **Earth Tone** | A warm, desaturated YUV color (Y=560, U=460, V=580) resembling fired clay. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video pipeline. |
 | **Grid Line** | A rendered dark bar at tile boundaries with fixed color (Y=180, U=500, V=520). |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear interpolation module used for wet/dry crossfade mixing. |
 | **LUT** | Look-Up Table; the basic logic element of an FPGA, used here for division, modulo, and XOR. |
 | **Modular Arithmetic** | Division and modulo operations that remap pixel coordinates into repeating tile coordinates. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages executing on consecutive clock cycles. |
 | **Running Bond** | A brick laying pattern where alternating courses are offset by half a brick width. |
 | **Stagger** | Horizontal offset of odd rows by half a tile width, producing a brick layout. |
 | **XOR Hash** | A bitwise exclusive-OR function used to generate deterministic per-tile variation signatures. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout Videomancer. |
+
+---

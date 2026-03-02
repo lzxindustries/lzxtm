@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 230
+sidebar_position: 247
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero.png
 description: "Before digital oscilloscopes and computer displays, scientific instruments recorded data by dragging an inked pen across a moving strip of paper."
 ---
 
+import seismograph_hero from '/img/instruments/videomancer/seismograph/seismograph_hero.png';
 import seismograph_before_after from '/img/instruments/videomancer/seismograph/seismograph_before_after.png';
 import seismograph_control_panel from '/img/instruments/videomancer/seismograph/seismograph_control_panel.png';
 import seismograph_exercise1_result from '/img/instruments/videomancer/seismograph/seismograph_exercise1_result.png';
 import seismograph_exercise2_result from '/img/instruments/videomancer/seismograph/seismograph_exercise2_result.png';
 import seismograph_exercise3_result from '/img/instruments/videomancer/seismograph/seismograph_exercise3_result.png';
-import seismograph_hero from '/img/instruments/videomancer/seismograph/seismograph_hero.png';
-import seismograph_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source1_grayscale_ramp_h_1920x1080.png';
-import seismograph_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source2_grayscale_ramp_v_1920x1080.png';
-import seismograph_source3_step_wedge_21level_512 from '/img/instruments/videomancer/seismograph/seismograph_source3_step_wedge_21level_512.png';
 
 # Seismograph
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={seismograph_hero} alt="Seismograph hero image"/>
 *Seismograph rendering live video luminance as multi-channel pen traces on a scrolling chart recorder with persistence and fill-under.*
@@ -295,7 +288,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | Term | Definition |
 |------|------------|
 | **Band** | One horizontal subdivision of the screen, containing a single trace channel; height = screen height / trace count. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the line buffer that stores pen positions for persistence. |
 | **Chart Recorder** | An analog instrument that records measured values as continuous pen traces on advancing paper. |
 | **Deflection** | The vertical displacement of the pen from the band center, proportional to the sampled luminance value. |
 | **Fill-Under** | Coloring the area between a trace curve and its baseline (band center), creating an area chart visualization. |
@@ -308,4 +301,6 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | **Persistence** | The visual trail left by a trace as it moves, created by blending current and previous pen positions — analogous to phosphor afterglow. |
 | **Scroll** | The continuous horizontal advancement of the chart, simulating paper advancing past a stationary pen. |
 | **Trace** | A continuous line drawn by the pen, representing the sampled luminance value over the horizontal extent of each band. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 122
+sidebar_position: 132
 slug: /instruments/videomancer/honeycomb
 title: "Honeycomb"
 image: /img/instruments/videomancer/honeycomb/honeycomb_hero.png
-description: "Honeycomb draws a hexagonal grid directly onto the video output — bright lines marking cell boundaries over either a dark background or the incoming vid..."
+description: "Honeycomb draws a hexagonal grid directly onto the video output — bright lines marking cell boundaries over either a dark background or the incoming video signal."
 ---
 
 import honeycomb_hero from '/img/instruments/videomancer/honeycomb/honeycomb_hero.png';
@@ -269,14 +269,14 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the standard color matrix used for converting between RGB and YUV in standard-definition video. Videomancer uses BT.601 coefficients throughout. |
 | **Edge pixel** | A pixel whose local coordinates within a grid cell fall within the line width boundary, classified as part of the grid line structure. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the grid generation and video processing pipeline. |
 | **Hue** | The attribute of color that distinguishes red from blue, green from yellow, etc. In YUV, hue is determined by the angle formed by the U and V components. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. Used here for the wet/dry output mix. |
 | **Modular arithmetic** | Arithmetic where values wrap around upon reaching a fixed modulus. Used here for computing local pixel position within a cell (6-bit wraparound). |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. Honeycomb uses an 8-clock pipeline. |
 | **Tessellation** | A pattern that tiles a plane without gaps or overlaps. Regular hexagons form one of three regular tessellations (along with squares and equilateral triangles). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V). Honeycomb generates patterns directly in YUV and applies color by manipulating U and V values. |
 
 ---

@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 269
+sidebar_position: 295
 slug: /instruments/videomancer/tweed
 title: "Tweed"
 image: /img/instruments/videomancer/tweed/tweed_hero.png
 description: "Tweed is a textile simulator — it renders the geometric patterns of woven fabric directly onto the video signal."
 ---
 
+import tweed_hero from '/img/instruments/videomancer/tweed/tweed_hero.png';
 import tweed_before_after from '/img/instruments/videomancer/tweed/tweed_before_after.png';
 import tweed_control_panel from '/img/instruments/videomancer/tweed/tweed_control_panel.png';
 import tweed_exercise1_result from '/img/instruments/videomancer/tweed/tweed_exercise1_result.png';
 import tweed_exercise2_result from '/img/instruments/videomancer/tweed/tweed_exercise2_result.png';
 import tweed_exercise3_result from '/img/instruments/videomancer/tweed/tweed_exercise3_result.png';
-import tweed_hero from '/img/instruments/videomancer/tweed/tweed_hero.png';
-import tweed_source1_kodim15 from '/img/instruments/videomancer/tweed/tweed_source1_kodim15.png';
-import tweed_source2_kodim03 from '/img/instruments/videomancer/tweed/tweed_source2_kodim03.png';
-import tweed_source3_kodim13_bw from '/img/instruments/videomancer/tweed/tweed_source3_kodim13_bw.png';
 
 # Tweed
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={tweed_hero} alt="Tweed hero image"/>
 *Tweed applying herringbone weave pattern with color fleck scattering to simulate traditional woven fabric texture.*
@@ -86,7 +79,7 @@ Input Video (YUV 4:4:4)
 ├── Stage 3: Weave Color Compose + Fleck Scatter ───────────────
 │   ├─ Warp: source + (source >> 3)  [brighter]
 │   ├─ Weft: source - (source >> 3)  [darker]
-│   ├─ Palette tint: warm brown or cool gray
+│   ├─ Palette tint: warm brown or cool grey
 │   └─ If fleck: add random U/V offset + slight Y variation
 │
 ├── Stage 4: Contrast Adjust + Clamp ──────────────────────────
@@ -242,7 +235,7 @@ These exercises progress from basic herringbone geometry through color palette e
 
 1. **Set moderate weave**: Zigzag W ~50%, Band Hght ~50%, Weave Vis ~60%.
 2. **Warm palette**: Set Palette to Harris (warm brown tint). Notice the U/V shift adding earthy warmth.
-3. **Cool palette**: Switch Palette to Donegal (cool gray). The weave desaturates toward neutral.
+3. **Cool palette**: Switch Palette to Donegal (cool grey). The weave desaturates toward neutral.
 4. **Increase contrast**: Push Contrast to ~75%. The warp/weft brightness difference becomes more pronounced.
 5. **Reduce contrast**: Pull Contrast to ~25%. The weave pattern nearly vanishes into uniform tone.
 6. **Blend with mix**: Pull Mix to ~60% to overlay the weave as a subtle texture rather than full replacement.
@@ -278,7 +271,7 @@ These exercises progress from basic herringbone geometry through color palette e
 - **Subtle overlay**: Use Mix at ~50–60% to overlay the tweed texture on source video without completely obscuring the content. This creates a convincing "viewed through fabric" effect.
 - **Fleck density sweet spot**: Around 30–40% fleck density produces the most realistic tweed simulation. Higher densities overwhelm the weave structure with noise.
 - **Contrast for definition**: Moderate contrast (~50–70%) makes the weave visible without crushing the luma range. Lower contrast produces a softer, more muted textile feel.
-- **Cool palette for monochrome**: The cool gray palette combined with reduced fleck scatter creates a clean, modern herringbone pattern suitable for graphic compositions.
+- **Cool palette for monochrome**: The cool grey palette combined with reduced fleck scatter creates a clean, modern herringbone pattern suitable for graphic compositions.
 - **Animation for motion graphics**: Enable Animate to scroll the weave pattern. Combined with a static source, this creates a fabric-pulling effect suitable for transitions or background textures.
 - **Feedback routing**: Route the output back to the input to create recursive weave patterns — each pass adds another layer of herringbone geometry.
 
@@ -288,13 +281,15 @@ These exercises progress from basic herringbone geometry through color palette e
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601, the standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
 | **Fleck** | A small inclusion of contrasting-colored fiber in tweed fabric; simulated by LFSR-driven random chrominance scatter. |
 | **Herringbone** | A zigzag weave pattern created by reversing the diagonal direction in alternating horizontal bands; named after the skeletal structure of herring fish. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Interpolator** | A linear crossfade unit that blends between two values based on a mix parameter, used for wet/dry blending. |
+| **LFSR** | Linear Feedback Shift Register; a digital circuit that produces a pseudo-random binary sequence used for noise generation. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Twill** | A weave pattern with uniform diagonal lines running in one direction without reversal; the non-zigzag counterpart to herringbone. |
 | **Warp** | The set of lengthwise threads on a loom; in Tweed, pixels classified as warp receive a slight brightness boost. |
 | **Weft** | The crosswise threads that interlace with the warp; in Tweed, weft pixels receive a slight brightness reduction. |
+
+---

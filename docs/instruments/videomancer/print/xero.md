@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 288
+sidebar_position: 315
 slug: /instruments/videomancer/xero
 title: "Xero"
 image: /img/instruments/videomancer/xero/xero_hero.png
 description: "Before digital networking, the photocopier was the medium of underground publishing."
 ---
 
+import xero_hero from '/img/instruments/videomancer/xero/xero_hero.png';
 import xero_before_after from '/img/instruments/videomancer/xero/xero_before_after.png';
 import xero_control_panel from '/img/instruments/videomancer/xero/xero_control_panel.png';
 import xero_exercise1_result from '/img/instruments/videomancer/xero/xero_exercise1_result.png';
 import xero_exercise2_result from '/img/instruments/videomancer/xero/xero_exercise2_result.png';
 import xero_exercise3_result from '/img/instruments/videomancer/xero/xero_exercise3_result.png';
-import xero_hero from '/img/instruments/videomancer/xero/xero_hero.png';
-import xero_source1_kodim02 from '/img/instruments/videomancer/xero/xero_source1_kodim02.png';
-import xero_source2_kodim07 from '/img/instruments/videomancer/xero/xero_source2_kodim07.png';
-import xero_source3_kodim01_bw from '/img/instruments/videomancer/xero/xero_source3_kodim01_bw.png';
 
 # Xero
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={xero_hero} alt="Xero hero image"/>
 *Xero applying multi-generational copy degradation with blue toner and warm recycled paper, transforming video into a faded office photocopy.*
@@ -293,8 +286,10 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 | **Fuser** | The heated roller in a photocopier that melts toner particles onto paper; defects cause vertical streak artifacts. |
 | **Generation Loss** | Progressive degradation of image quality when a copy is made from a copy, modeled as an S-curve contrast function. |
 | **Laplacian** | A spatial second-derivative operator that detects edges; here implemented as a 3-pixel horizontal kernel. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for toner grain noise and fuser streak position. |
 | **Photoconductor** | The light-sensitive drum in a xerographic copier that holds the electrostatic image pattern. |
 | **S-Curve** | A sigmoidal contrast function that compresses shadows and highlights while steepening midtone contrast. |
 | **Toner** | Dry powder (polymer particles with carbon black) fused to paper by heat in xerographic copying. |
 | **Xerography** | The dry electrostatic copying process invented by Chester Carlson in 1938, commercialized by Haloid/Xerox. |
+
+---

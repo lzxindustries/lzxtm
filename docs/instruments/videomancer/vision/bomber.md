@@ -315,6 +315,6 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 | **SMPTE** | Society of Motion Picture and Television Engineers, the standards body that defines broadcast video wipe patterns and transition types. |
 | **Vsync (Vertical Sync)** | A timing pulse that marks the beginning of each new video frame, used here to trigger per-frame wave expansion. |
 | **Wavefront zone** | The annular region between the inner and outer ring boundaries where the active visual effect is applied to each pixel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems. |
 
 ---

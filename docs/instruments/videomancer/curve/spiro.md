@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 241
+sidebar_position: 265
 slug: /instruments/videomancer/spiro
 title: "Spiro"
 image: /img/instruments/videomancer/spiro/spiro_hero.png
-description: "The Spirograph — that beloved plastic drawing toy invented by Denys Fisher in 1965 — works by rolling a toothed wheel inside (or around) a larger toothe..."
+description: "The Spirograph — that beloved plastic drawing toy invented by Denys Fisher in 1965 — works by rolling a toothed wheel inside (or around) a larger toothed ring."
 ---
 
+import spiro_hero from '/img/instruments/videomancer/spiro/spiro_hero.png';
 import spiro_animation from '/img/instruments/videomancer/spiro/spiro_animation.gif';
 import spiro_control_panel from '/img/instruments/videomancer/spiro/spiro_control_panel.png';
 import spiro_exercise1_result from '/img/instruments/videomancer/spiro/spiro_exercise1_result.gif';
 import spiro_exercise2_result from '/img/instruments/videomancer/spiro/spiro_exercise2_result.gif';
 import spiro_exercise3_result from '/img/instruments/videomancer/spiro/spiro_exercise3_result.gif';
-import spiro_hero from '/img/instruments/videomancer/spiro/spiro_hero.png';
 
 # Spiro
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={spiro_hero} alt="Spiro hero image"/>
 *Spiro tracing rainbow-hued hypotrochoid curves onto a persistent canvas, each gear ratio preset producing a distinct geometric rosette.*
@@ -245,7 +241,7 @@ These exercises progress from simple static figures through evolving morphing cu
 2. **Select a complex ratio**: Set Gear Ratio to preset 7 (~100%, the 11/16 complex figure).
 3. **Enable morph**: Slowly increase Morph Rate from 0% to ~30%. The pen position begins sweeping, and the curve shape evolves continuously.
 4. **Moderate trail decay**: Set Trail Decay to ~60% so older curve iterations slowly fade, preventing the canvas from becoming a solid mass.
-5. **Watch the evolution**: Over 30–60 seconds, the curve wanders through a family of related shapes, creating overlapping traces that form intricate moiré-like interference patterns.
+5. **Watch the evolution**: Over 30–60 seconds, the curve wanders through a family of related shapes, creating overlapping traces that form intricate moire-like interference patterns.
 6. **Switch to epitrochoid**: Toggle Epitrochoid to Epi. The curve family changes character from cusped stars to rounded lobes. The morph continues sweeping through the new family.
 
 **Key concepts**: Morph oscillator sweeps pen position continuously, trail decay creates layered ghost traces, switching epitrochoid/hypotrochoid mid-morph creates hybrid compositions
@@ -278,7 +274,7 @@ These exercises progress from simple static figures through evolving morphing cu
 - **Speed affects density**: Low Draw Speed values stamp fewer points per frame, making the curve appear as a dotted line. High values provide smooth, dense curves but trace the full figure faster.
 - **Epitrochoid for lobes**: Epitrochoid mode tends to produce outward-looping, flower-like curves compared to the inward-cusping stars of hypotrochoid mode. The visual difference is most dramatic with gear ratios where the numerator and denominator are close in value.
 - **Video Mod for organic flavour**: Even subtle video modulation — especially from slowly moving footage — adds a gentle wobble that makes the mathematical curves feel alive and hand-drawn.
-- **Rainbow hue cycling**: The hue palette cycles automatically. Adjust Hue Offset to start the cycle at a preferred color range (warm reds, cool blues, etc.).
+- **Rainbow hue cycling**: The hue palette cycles automatically. Adjust Hue Offset to start the cycle at a preferred colour range (warm reds, cool blues, etc.).
 - **Mix for overlay**: At 50–70% Mix, the curve floats translucently over the input video, creating a distinctive layered aesthetic suitable for live performance.
 
 ---
@@ -287,10 +283,10 @@ These exercises progress from simple static figures through evolving morphing cu
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the persistent 128×96 one-bit canvas. |
 | **Canvas** | The 128×96 one-bit bitmap stored in BRAM where trail points are accumulated. |
 | **Cusp** | A pointed feature on a hypotrochoid curve where the pen direction reverses sharply. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
 | **Epitrochoid** | The curve traced by a point on a circle rolling outside a fixed circle. |
 | **Gear Ratio** | The ratio r/R of the rolling wheel radius to the fixed ring radius, determining the number of lobes or cusps in the figure. |
 | **Hypotrochoid** | The curve traced by a point on a circle rolling inside a fixed circle. |
@@ -300,3 +296,5 @@ These exercises progress from simple static figures through evolving morphing cu
 | **Quarter-Wave LUT** | A 256-entry lookup table storing the first quarter of a sine wave; the remaining three quarters are reconstructed by symmetry. |
 | **Roulette** | The general mathematical term for curves traced by a point on a circle rolling along another circle. |
 | **Trail Decay** | The rate at which the canvas fade mechanism erases older marks. |
+
+---

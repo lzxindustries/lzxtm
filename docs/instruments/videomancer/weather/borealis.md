@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 27
+sidebar_position: 28
 slug: /instruments/videomancer/borealis
 title: "Borealis"
 image: /img/instruments/videomancer/borealis/borealis_hero.png
@@ -309,12 +309,12 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 | **DDS (Direct Digital Synthesis)** | A technique for generating waveforms using a phase accumulator that increments at a programmable rate, used here to drive curtain drift oscillators. |
 | **Emission spectrum** | The set of specific wavelengths of light radiated by excited atoms or molecules; auroral green (557.7 nm) and red (630.0 nm) are both oxygen emission lines. |
 | **LFSR (Linear Feedback Shift Register)** | A shift register producing a deterministic pseudo-random bit sequence, used here for substorm brightness pulsation. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The luminance (Y) component of a YUV video signal, representing perceived brightness. |
 | **Magnetotail** | The elongated region of Earth's magnetosphere on the side opposite the Sun, where energy accumulates before being released in auroral substorms. |
 | **Phase accumulator** | A digital counter that advances by a fixed increment each clock cycle, wrapping at overflow to produce a repeating ramp; the core element of a DDS oscillator. |
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value instead of wrapping around on overflow. |
 | **Scallop** | A repeating wave-shaped undulation modulating the lower edge of each aurora curtain, simulating plasma instabilities at the precipitation boundary. |
 | **Substorm** | A sudden intensification of auroral activity caused by rapid energy release from the magnetotail, characterised by pulsating brightness and arc breakup. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video signal processing. |
 
 ---

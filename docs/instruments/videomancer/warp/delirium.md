@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 68
+sidebar_position: 75
 slug: /instruments/videomancer/delirium
 title: "Delirium"
 image: /img/instruments/videomancer/delirium/delirium_hero.png
@@ -314,19 +314,19 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Cascade** | Serial composition of two distortion layers where the output of one feeds the input of the other, producing compound effects. |
 | **Displacement** | Shifting a pixel's read position by an offset, causing the image to appear moved at that location. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interlaced Displacement** | A distortion mode where even and odd scanlines receive opposite horizontal offsets, creating a zigzag tearing effect. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware module that computes weighted averages between two values, used here for wet/dry crossfading. |
 | **Line Buffer** | A memory buffer storing one full scanline of video data, enabling displaced reads at arbitrary horizontal positions. |
 | **LUT** | Lookup Table; a memory array storing precomputed function values, used here for the quarter-wave sine function. |
 | **Phase Accumulator** | A counter that advances by a speed value each frame, providing the time-varying phase offset for wave animation. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quadrant Folding** | A technique for computing a full-cycle sine function from a quarter-wave lookup table by mirroring and negating values based on the phase quadrant. |
 | **Scanline** | A single horizontal line of video data; Delirium computes one displacement offset per scanline. |
 | **Sinusoidal Distortion** | Applying a sine-wave-shaped offset to pixel positions, creating smooth, periodic undulation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

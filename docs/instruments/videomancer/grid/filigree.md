@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 96
+sidebar_position: 104
 slug: /instruments/videomancer/filigree
 title: "Filigree"
 image: /img/instruments/videomancer/filigree/filigree_hero.png
@@ -295,13 +295,13 @@ These exercises progress from basic grid exploration to complex animated metalli
 | **AND Mask** | A bitwise operation that isolates specific bit positions from a coordinate value, creating repeating modular patterns. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Coordinate Folding** | Applying absolute-value reflections to screen coordinates to create mirror symmetry; `abs(x − center)` maps both halves onto the same range. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating precise, jitter-free periodic waveforms or animation offsets. |
 | **Dihedral Symmetry** | The symmetry group of a regular polygon, combining rotational and reflective symmetries; D₄ (8-fold) is the highest mode available in this program. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that linearly blends between two input values based on a fractional mix parameter. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **XOR** | Exclusive OR; a bitwise operation that outputs 1 where inputs differ and 0 where they match, used here to combine diagonal and cross patterns into diamond motifs. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

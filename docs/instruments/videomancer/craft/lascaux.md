@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 142
+sidebar_position: 155
 slug: /instruments/videomancer/lascaux
 title: "Lascaux"
 image: /img/instruments/videomancer/lascaux/lascaux_hero.png
-description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough ston..."
+description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough stone walls using nothing but mineral pigments and firelight."
 ---
 
+import lascaux_hero from '/img/instruments/videomancer/lascaux/lascaux_hero.png';
 import lascaux_before_after from '/img/instruments/videomancer/lascaux/lascaux_before_after.png';
 import lascaux_control_panel from '/img/instruments/videomancer/lascaux/lascaux_control_panel.png';
 import lascaux_exercise1_result from '/img/instruments/videomancer/lascaux/lascaux_exercise1_result.png';
 import lascaux_exercise2_result from '/img/instruments/videomancer/lascaux/lascaux_exercise2_result.png';
 import lascaux_exercise3_result from '/img/instruments/videomancer/lascaux/lascaux_exercise3_result.png';
-import lascaux_hero from '/img/instruments/videomancer/lascaux/lascaux_hero.png';
-import lascaux_source1_kodim03 from '/img/instruments/videomancer/lascaux/lascaux_source1_kodim03.png';
-import lascaux_source2_kodim13 from '/img/instruments/videomancer/lascaux/lascaux_source2_kodim13.png';
-import lascaux_source3_kodim13_bw from '/img/instruments/videomancer/lascaux/lascaux_source3_kodim13_bw.png';
 
 # Lascaux
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lascaux_hero} alt="Lascaux hero image"/>
 *Lascaux transforming a video portrait into earth-tone cave pigments illuminated by a flickering torch drifting across rough stone.*
@@ -296,15 +289,17 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory within the FPGA fabric, used here for the one-scanline vertical edge detection buffer. |
 | **Contour extraction** | Detection of edges in an image by computing gradient magnitudes between adjacent pixels, used to simulate charcoal outlines. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a technique using phase accumulators to generate periodic waveforms, used here to animate the torch position along a Lissajous path. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Goethite** | An iron oxyhydroxide mineral (FeOOH) that produces yellow-ochre pigment, one of the primary colorants used at Lascaux. |
 | **Haematite** | An iron oxide mineral (Fe₂O₃) that produces red-ochre pigment, widely used in Paleolithic cave art. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for both stone surface grain and torch flicker. |
 | **Lissajous figure** | A parametric curve traced when two perpendicular sinusoidal oscillations are combined, used to describe the torch drift path. |
 | **Manhattan distance** | The sum of absolute differences along each axis, used as a computationally cheap alternative to Euclidean distance for palette matching and torch falloff. |
 | **Palette quantization** | Reducing a continuous-color image to a limited set of discrete colors by mapping each pixel to the nearest palette entry. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage for video signals. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+---

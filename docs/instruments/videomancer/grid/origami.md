@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 185
+sidebar_position: 200
 slug: /instruments/videomancer/origami
 title: "Origami"
 image: /img/instruments/videomancer/origami/origami_hero.png
-description: "Origami takes an input video signal and tiles it into a grid of folded panels, simulating the appearance of a sheet of paper folded and unfolded to reve..."
+description: "Origami takes an input video signal and tiles it into a grid of folded panels, simulating the appearance of a sheet of paper folded and unfolded to reveal repeated, mirrored copies of the original image."
 ---
 
+import origami_hero from '/img/instruments/videomancer/origami/origami_hero.png';
 import origami_animation from '/img/instruments/videomancer/origami/origami_animation.gif';
 import origami_control_panel from '/img/instruments/videomancer/origami/origami_control_panel.png';
 import origami_exercise1_result from '/img/instruments/videomancer/origami/origami_exercise1_result.gif';
 import origami_exercise2_result from '/img/instruments/videomancer/origami/origami_exercise2_result.gif';
 import origami_exercise3_result from '/img/instruments/videomancer/origami/origami_exercise3_result.gif';
-import origami_hero from '/img/instruments/videomancer/origami/origami_hero.png';
 
 # Origami
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={origami_hero} alt="Origami hero image"/>
 *Origami dividing a video frame into mirrored geometric fold panels with crease highlights, gap borders, and facet-dependent shadow gradients.*
@@ -51,7 +47,7 @@ When a mirror toggle is active, odd-numbered fold cells reverse their sampling d
 
 ### Gap and Border Effects
 
-Real paper folds have physical thickness. Origami simulates this by inserting narrow strips of dark or neutral color between adjacent fold panels. The Gap Width control sets the width of these dead zones. When the Border toggle is active, the gap edges are drawn as thin bright lines, simulating the visible edge of folded paper catching light. These border lines provide visual structure that makes the fold grid legible even when the source material is complex.
+Real paper folds have physical thickness. Origami simulates this by inserting narrow strips of dark or neutral colour between adjacent fold panels. The Gap Width control sets the width of these dead zones. When the Border toggle is active, the gap edges are drawn as thin bright lines, simulating the visible edge of folded paper catching light. These border lines provide visual structure that makes the fold grid legible even when the source material is complex.
 
 ### Shadow and Crease Shading
 
@@ -272,14 +268,16 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 | Term | Definition |
 |------|------------|
 | **Address Wrapping** | Computing source pixel coordinates using modular arithmetic so that the fold pattern repeats seamlessly across the frame. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Fold Cell** | A single rectangular (or diamond) region of the fold grid, containing one copy of the source tile. |
 | **Fold Period** | The width (or height) of a single fold cell in pixels, equal to the frame dimension divided by the fold count. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Kaleidoscope** | An optical instrument using mirrors to create symmetric patterns; Origami's mirror mode produces similar bilateral symmetry. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Mirror Reflection** | Reversing the sampling direction in alternate fold cells to create bilateral symmetry at fold boundaries. |
 | **Modular Arithmetic** | Division with remainder, used to wrap pixel coordinates into repeating fold cells. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

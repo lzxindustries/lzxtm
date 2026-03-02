@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 103
+sidebar_position: 112
 slug: /instruments/videomancer/flurry
 title: "Flurry"
 image: /img/instruments/videomancer/flurry/flurry_hero.png
-description: "Flurry renders a single orbiting luminous particle that traces an elliptical path across the screen, producing a drifting point of light with a diamond-..."
+description: "Flurry renders a single orbiting luminous particle that traces an elliptical path across the screen, producing a drifting point of light with a diamond-shaped glow field."
 ---
 
 import flurry_hero from '/img/instruments/videomancer/flurry/flurry_hero.png';
@@ -318,6 +318,6 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 | **Phase accumulator** | A counter that wraps at its maximum value, used to generate a continuously advancing angle for periodic motion. Flurry's 16-bit accumulator wraps at 65536, with the upper 5 bits indexing the 32-entry sine LUT. |
 | **Quarter-wave sine LUT** | A lookup table storing one quarter of a sine cycle (0 to peak), from which the full sine wave can be reconstructed through symmetry. Flurry's 32-entry table stores a half-wave (ascending and descending) used directly as both sine and cosine via phase offset. |
 | **Screensaver** | A class of autonomous generative animation programs originally designed to prevent CRT phosphor burn-in, now valued as ambient visual art. Flurry belongs to this tradition alongside classics like macOS Flurry and After Dark. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), the native pixel format in the Videomancer video pipeline. U and V are centered at 512 in the 10-bit domain; values above and below midpoint represent opposite color directions. |
 
 ---

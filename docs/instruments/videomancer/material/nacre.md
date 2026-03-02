@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 176
+sidebar_position: 191
 slug: /instruments/videomancer/nacre
 title: "Nacre"
 image: /img/instruments/videomancer/nacre/nacre_hero.png
-description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets its color not from pigment but from thin-film interference — light waves reflecting off ..."
+description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets its color not from pigment but from thin-film interference — light waves reflecting off microscopic layers of aragonite, interfering constructively and destructively so that the apparent hue shifts with viewing angle and position."
 ---
 
+import nacre_hero from '/img/instruments/videomancer/nacre/nacre_hero.png';
 import nacre_before_after from '/img/instruments/videomancer/nacre/nacre_before_after.png';
 import nacre_control_panel from '/img/instruments/videomancer/nacre/nacre_control_panel.png';
 import nacre_exercise1_result from '/img/instruments/videomancer/nacre/nacre_exercise1_result.png';
 import nacre_exercise2_result from '/img/instruments/videomancer/nacre/nacre_exercise2_result.png';
 import nacre_exercise3_result from '/img/instruments/videomancer/nacre/nacre_exercise3_result.png';
-import nacre_hero from '/img/instruments/videomancer/nacre/nacre_hero.png';
-import nacre_source1_kodim15 from '/img/instruments/videomancer/nacre/nacre_source1_kodim15.png';
-import nacre_source2_kodim03 from '/img/instruments/videomancer/nacre/nacre_source2_kodim03.png';
-import nacre_source3_kodim13_bw from '/img/instruments/videomancer/nacre/nacre_source3_kodim13_bw.png';
 
 # Nacre
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={nacre_hero} alt="Nacre hero image"/>
 *Nacre applying position-dependent hue rotation and pearlescent shimmer to create thin-film iridescence across the video signal.*
@@ -290,16 +283,18 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating periodic waveforms by adding a tuning word each cycle. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **Hue** | The angular position of the chrominance vector in the UV plane, determining the perceived color (red, green, blue, etc.). |
 | **iCE40** | Lattice iCE40 HX4K FPGA used in Videomancer hardware. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter. |
+| **Luminance** | The brightness component (Y) of a YUV signal. |
 | **LUT** | Lookup Table; pre-computed values stored in FPGA fabric, accessed by index for single-cycle retrieval. |
 | **Nacre** | Mother-of-pearl; the iridescent inner lining of mollusc shells composed of layered aragonite crystals. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Thin-Film Interference** | Optical phenomenon where light reflecting from two surfaces of a thin transparent layer produces position-dependent color. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+---

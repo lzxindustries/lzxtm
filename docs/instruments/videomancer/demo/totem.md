@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 266
+sidebar_position: 292
 slug: /instruments/videomancer/totem
 title: "Totem"
 image: /img/instruments/videomancer/totem/totem_hero.png
 description: "In the Amiga demoscene of the early 1990s, one visual effect became a calling card of technical prowess: the copper bar."
 ---
 
+import totem_hero from '/img/instruments/videomancer/totem/totem_hero.png';
 import totem_animation from '/img/instruments/videomancer/totem/totem_animation.gif';
 import totem_control_panel from '/img/instruments/videomancer/totem/totem_control_panel.png';
 import totem_exercise1_result from '/img/instruments/videomancer/totem/totem_exercise1_result.gif';
 import totem_exercise2_result from '/img/instruments/videomancer/totem/totem_exercise2_result.gif';
 import totem_exercise3_result from '/img/instruments/videomancer/totem/totem_exercise3_result.gif';
-import totem_hero from '/img/instruments/videomancer/totem/totem_hero.png';
 
 # Totem
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={totem_hero} alt="Totem hero image"/>
 *Totem rendering eight interleaved Kefrens bars in the Braid preset, their sinusoidal paths weaving a luminous twisted column against black.*
@@ -296,7 +292,7 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 |------|------------|
 | **Additive Compositing** | Layer blending where pixel values are summed; overlapping regions become brighter, mimicking real light addition. |
 | **Copper** | The Amiga custom coprocessor that could modify display registers synchronized to the video beam, enabling raster bar effects. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating smooth periodic waveforms at arbitrary frequencies. |
 | **Demoscene** | Computer art subculture focused on creating audio-visual presentations (demos) that push hardware to its limits. |
 | **Gradient** | A smooth transition in brightness from center to edge within each bar, creating a cylinder-like 3D illusion. |
 | **Half-Width** | Half the total bar width; the distance from bar center to the point where brightness falls to zero. |
@@ -306,4 +302,6 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 | **Preset** | A predefined set of frequency multipliers and phase offsets for all 8 bar layers, defining the visual geometry. |
 | **Raster Bars** | Horizontal color bars created by modifying palette registers per scanline; the predecessor to Kefrens bars. |
 | **Sine LUT** | A lookup table storing precomputed sine values, used to evaluate trigonometric functions efficiently in FPGA logic. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

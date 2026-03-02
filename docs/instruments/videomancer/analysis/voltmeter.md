@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 282
+sidebar_position: 308
 slug: /instruments/videomancer/voltmeter
 title: "Voltmeter"
 image: /img/instruments/videomancer/voltmeter/voltmeter_hero.png
-description: "Before digital meters conquered the audio world, every studio console featured a row of illuminated VU meters — those satisfying semicircular gauges wit..."
+description: "Before digital meters conquered the audio world, every studio console featured a row of illuminated VU meters — those satisfying semicircular gauges with swinging needles that danced to the music."
 ---
 
+import voltmeter_hero from '/img/instruments/videomancer/voltmeter/voltmeter_hero.png';
 import voltmeter_before_after from '/img/instruments/videomancer/voltmeter/voltmeter_before_after.png';
 import voltmeter_control_panel from '/img/instruments/videomancer/voltmeter/voltmeter_control_panel.png';
 import voltmeter_exercise1_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise1_result.png';
 import voltmeter_exercise2_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise2_result.png';
 import voltmeter_exercise3_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise3_result.png';
-import voltmeter_hero from '/img/instruments/videomancer/voltmeter/voltmeter_hero.png';
-import voltmeter_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source1_grayscale_ramp_h_1920x1080.png';
-import voltmeter_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source2_grayscale_ramp_v_1920x1080.png';
-import voltmeter_source3_step_wedge_21level_512 from '/img/instruments/videomancer/voltmeter/voltmeter_source3_step_wedge_21level_512.png';
 
 # Voltmeter
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={voltmeter_hero} alt="Voltmeter hero image"/>
 *Voltmeter projecting an analog VU gauge over a live video feed, the needle tracking average frame luminance in real time.*
@@ -277,3 +270,5 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 - **Mix as fade control** — rather than using bypass, gradually reducing the Mix fader lets you preview the gauge at various opacity levels.
 - **Pair with high-contrast sources** — Voltmeter is most dramatic when the input has a wide dynamic range, causing the needle to sweep through a large arc.
 - **Bypass for instant comparison** — toggle bypass on and off rapidly to compare the overlaid and clean versions without touching any other settings.
+
+---

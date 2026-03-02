@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 200
+sidebar_position: 215
 slug: /instruments/videomancer/phyllo
 title: "Phyllo"
 image: /img/instruments/videomancer/phyllo/phyllo_hero.png
 description: "Nature encodes efficient packing solutions in the arrangement of sunflower seeds, pinecone scales, and cactus spines."
 ---
 
+import phyllo_hero from '/img/instruments/videomancer/phyllo/phyllo_hero.png';
 import phyllo_animation from '/img/instruments/videomancer/phyllo/phyllo_animation.gif';
 import phyllo_control_panel from '/img/instruments/videomancer/phyllo/phyllo_control_panel.png';
 import phyllo_exercise1_result from '/img/instruments/videomancer/phyllo/phyllo_exercise1_result.gif';
 import phyllo_exercise2_result from '/img/instruments/videomancer/phyllo/phyllo_exercise2_result.gif';
 import phyllo_exercise3_result from '/img/instruments/videomancer/phyllo/phyllo_exercise3_result.gif';
-import phyllo_hero from '/img/instruments/videomancer/phyllo/phyllo_hero.png';
 
 # Phyllo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={phyllo_hero} alt="Phyllo hero image"/>
 *Phyllo generating a golden-angle phyllotactic spiral pattern with color-cycling dots overlaid on a live video source.*
@@ -234,16 +230,16 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 <img src={phyllo_exercise2_result} alt="Rainbow Spiral Animation result"/>
 *Rainbow Spiral Animation — simulated result across source images.*
-**Objective**: Combine color cycling with rotation animation to create evolving psychedelic spirals.
+**Objective**: Combine colour cycling with rotation animation to create evolving psychedelic spirals.
 
 1. **Enable animation**: Toggle Animate on. Watch the pattern slowly rotate.
-2. **Enable color**: Toggle Color on. Dots acquire rainbow tint from the hue LUT.
-3. **Sweep Tint Hue**: Rotate the Tint Hue knob — the color palette shifts along the arms.
-4. **Switch to spiral mode**: Toggle Mode to Spiral. The continuous arcs create more vivid color gradients.
+2. **Enable colour**: Toggle Color on. Dots acquire rainbow tint from the hue LUT.
+3. **Sweep Tint Hue**: Rotate the Tint Hue knob — the colour palette shifts along the arms.
+4. **Switch to spiral mode**: Toggle Mode to Spiral. The continuous arcs create more vivid colour gradients.
 5. **Adjust scale**: Sweep Scale from tight to sparse — the spiral winds and unwinds in real time.
-6. **Brighten**: Increase Brightness to maximum for saturated neon colors.
+6. **Brighten**: Increase Brightness to maximum for saturated neon colours.
 
-**Key concepts**: Hue LUT index combines pot position and arm test bits for position-dependent color, animation phase increments once per field, color cycles independently of animation speed
+**Key concepts**: Hue LUT index combines pot position and arm test bits for position-dependent colour, animation phase increments once per field, colour cycles independently of animation speed
 
 ---
 
@@ -256,7 +252,7 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 1. **Prepare source**: Feed a high-contrast source with distinct bright and dark regions.
 2. **Enable video reactive**: Toggle Video React on. Dots disappear from dark areas.
 3. **Adjust brightness**: Increase Brightness so dots are clearly visible in bright regions.
-4. **Enable color**: Toggle Color on. The spiral pattern decorates only the bright content.
+4. **Enable colour**: Toggle Color on. The spiral pattern decorates only the bright content.
 5. **Animate**: Toggle Animate on. The pattern rotates across the bright regions.
 6. **Mix down**: Reduce Mix to ~60% to blend the effect subtly with the source.
 
@@ -272,7 +268,7 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 - **Scale shift is logarithmic**: The four-step shift-based spacing produces a logarithmic tightness curve — most of the useful range for tight spirals is in the lowest quarter of knob travel.
 - **Video reactive is a hard gate**: The Y < 256 threshold is not proportional — it is all-or-nothing. For softer interaction with the source, use the Mix fader to blend instead.
 - **Animate speed is fixed**: The rotation rate is always 1 step per field (~6 RPM at 60 Hz). There is no speed control — use external modulation or animation of the Rotation pot for faster effects.
-- **Hue cycling follows arm position**: The color pattern repeats every 8 arm test values. With 8 arms visible, each arm gets a distinct hue. With fewer arms, a single arm cycles through all 8 colors along its length.
+- **Hue cycling follows arm position**: The colour pattern repeats every 8 arm test values. With 8 arms visible, each arm gets a distinct hue. With fewer arms, a single arm cycles through all 8 colours along its length.
 - **Feedback loops**: Routing the output back to the input creates recursive spiral overlays — dot patterns accumulate and interact with themselves, building increasingly dense textures.
 
 ---
@@ -281,13 +277,15 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms from a fixed clock. |
 | **Golden Angle** | Approximately 137.508°; the angle that divides a full circle in the ratio 1:φ, used in phyllotactic seed placement. |
 | **Manhattan Distance** | The sum of absolute coordinate differences |Δx| + |Δy|; cheaper to compute than Euclidean distance but produces diamond-shaped contours. |
 | **Octant** | One eighth of a full circle; the VHDL angle approximation divides the plane into 8 octants and interpolates linearly within each. |
 | **Phase Accumulator** | A counter that wraps at a fixed modulus; its overflow rate sets the output frequency in DDS systems. |
 | **Phyllotaxis** | The arrangement of leaves, seeds, or other lateral organs around a plant stem, typically governed by the golden angle. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Polar Coordinates** | A 2D coordinate system using radius and angle rather than x and y; the natural domain for spiral patterns. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

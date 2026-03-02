@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 215
+sidebar_position: 231
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero.png
 description: "Broadcast television and government documents share a common visual vocabulary: the black bar."
 ---
 
+import redacted_hero from '/img/instruments/videomancer/redacted/redacted_hero.png';
 import redacted_before_after from '/img/instruments/videomancer/redacted/redacted_before_after.png';
 import redacted_control_panel from '/img/instruments/videomancer/redacted/redacted_control_panel.png';
 import redacted_exercise1_result from '/img/instruments/videomancer/redacted/redacted_exercise1_result.png';
 import redacted_exercise2_result from '/img/instruments/videomancer/redacted/redacted_exercise2_result.png';
 import redacted_exercise3_result from '/img/instruments/videomancer/redacted/redacted_exercise3_result.png';
-import redacted_hero from '/img/instruments/videomancer/redacted/redacted_hero.png';
-import redacted_source1_kodim15 from '/img/instruments/videomancer/redacted/redacted_source1_kodim15.png';
-import redacted_source2_kodim15_bw from '/img/instruments/videomancer/redacted/redacted_source2_kodim15_bw.png';
-import redacted_source3_male_1024 from '/img/instruments/videomancer/redacted/redacted_source3_male_1024.png';
 
 # Redacted
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={redacted_hero} alt="Redacted hero image"/>
 *Redacted applying luma-threshold censorship bars to bright regions of a video stream, with configurable bar orientation and white border trim.*
@@ -284,12 +277,14 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 | Term | Definition |
 |------|------------|
 | **Bar** | A solid rectangular region drawn over detected content, typically near-black (Y=64), simulating broadcast censorship or document redaction. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **BRAM** | Block RAM; dedicated FPGA memory, not used by this program (zero BRAM, register-based design). |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a digital filter whose output depends on both current input and previous output, used here for line brightness accumulation. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A hardware multiply-accumulate unit for linear crossfading between two signals. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Margin** | Extra pixels of bar coverage extending past the end of a detected bright run, preventing partial exposure. |
 | **Run-Length** | The number of consecutive pixels meeting a condition; used here to require sustained brightness before triggering redaction. |
 | **Threshold** | A brightness cutoff value; pixels above (or below, when inverted) this level are flagged for redaction. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

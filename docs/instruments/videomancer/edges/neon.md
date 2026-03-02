@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 178
+sidebar_position: 193
 slug: /instruments/videomancer/neon
 title: "Neon"
 image: /img/instruments/videomancer/neon/neon_hero.png
 description: "Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts."
 ---
 
+import neon_hero from '/img/instruments/videomancer/neon/neon_hero.png';
 import neon_before_after from '/img/instruments/videomancer/neon/neon_before_after.png';
 import neon_control_panel from '/img/instruments/videomancer/neon/neon_control_panel.png';
 import neon_exercise1_result from '/img/instruments/videomancer/neon/neon_exercise1_result.png';
 import neon_exercise2_result from '/img/instruments/videomancer/neon/neon_exercise2_result.png';
 import neon_exercise3_result from '/img/instruments/videomancer/neon/neon_exercise3_result.png';
-import neon_hero from '/img/instruments/videomancer/neon/neon_hero.png';
-import neon_source1_kodim02 from '/img/instruments/videomancer/neon/neon_source1_kodim02.png';
-import neon_source2_kodim07 from '/img/instruments/videomancer/neon/neon_source2_kodim07.png';
-import neon_source3_kodim01_bw from '/img/instruments/videomancer/neon/neon_source3_kodim01_bw.png';
 
 # Neon
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={neon_hero} alt="Neon hero image"/>
 *Neon rendering luminous colored edge halos over a darkened background, transforming video contours into glowing tube outlines.*
@@ -280,13 +273,15 @@ These exercises build from basic edge glow through color and background styling 
 | Term | Definition |
 |------|------------|
 | **Additive Composite** | Pixel combination by summing luminance values, with clamping at maximum (1023) to prevent overflow. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation around the (512, 512) neutral midpoint. |
 | **First-Order Difference** | Edge detection by computing |pixel[x] − pixel[x−1]|, the simplest discrete derivative. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both the current input and its own previous output, creating exponentially decaying response. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
+| **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
 | **Piecewise Hue Mapping** | Dividing the 360° color circle into discrete sectors, each with fixed U/V offset directions, rather than computing continuous trigonometric functions. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+---

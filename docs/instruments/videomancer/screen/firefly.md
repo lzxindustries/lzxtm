@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 97
+sidebar_position: 106
 slug: /instruments/videomancer/firefly
 title: "Firefly"
 image: /img/instruments/videomancer/firefly/firefly_hero.png
@@ -319,11 +319,11 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 | **Bioluminescence** | The production and emission of light by living organisms, typically through the enzymatic oxidation of a luciferin substrate. Fireflies (family Lampyridae) are the most familiar terrestrial example. |
 | **Brownian motion** | Random motion of particles resulting from collisions with surrounding molecules, first systematically observed by Robert Brown in 1827 and theoretically explained by Einstein in 1905. Characterized by a random walk where displacement grows as the square root of time. |
 | **Clamping** | Restricting a computed value to a fixed range (here 0–1023) by replacing out-of-range results with the nearest boundary value. Prevents arithmetic overflow from producing visual artifacts. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator that produces a deterministic but statistically uniform bit sequence through XOR feedback taps. Firefly uses a 16-bit LFSR with taps at positions 15, 13, 12, and 10. |
 | **Manhattan distance** | A distance metric defined as the sum of the absolute differences along each axis: $|dx| + |dy|$. Named after the grid-like street layout of Manhattan, where travel distance between two points is measured along right-angle paths. Produces diamond-shaped iso-distance contours. |
 | **Particle system** | A computer graphics technique representing phenomena as collections of independent point masses, each with position and visual attributes. Firefly maintains 8 particles in register fabric with no frame buffer. |
 | **Pulse modulation** | Periodic variation of signal amplitude. Firefly's pulse halves brightness every 8 frames at 60 Hz, producing a ~3.75 Hz on/off rhythm that mimics natural firefly flash patterns. |
 | **Wrap-around** | Position arithmetic where values exceeding the screen boundary (1280×720) are reset to zero, causing particles to reappear at the opposite edge. A simple form of periodic boundary condition. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer video processing pipeline. U and V are centered at 512 (neutral gray). |
 
 ---

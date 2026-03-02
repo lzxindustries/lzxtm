@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 268
+sidebar_position: 294
 slug: /instruments/videomancer/truchet
 title: "Truchet"
 image: /img/instruments/videomancer/truchet/truchet_hero.png
-description: "In 1704, the Dominican priest Sébastien Truchet noticed something remarkable about square tiles decorated with a simple diagonal line: when placed on a ..."
+description: "In 1704, the Dominican priest Sébastien Truchet noticed something remarkable about square tiles decorated with a simple diagonal line: when placed on a grid with random orientations, the lines connect across tile boundaries to form intricate, maze-like patterns that appear far more complex than the individual tiles that compose them."
 ---
 
+import truchet_hero from '/img/instruments/videomancer/truchet/truchet_hero.png';
 import truchet_animation from '/img/instruments/videomancer/truchet/truchet_animation.gif';
 import truchet_control_panel from '/img/instruments/videomancer/truchet/truchet_control_panel.png';
 import truchet_exercise1_result from '/img/instruments/videomancer/truchet/truchet_exercise1_result.gif';
 import truchet_exercise2_result from '/img/instruments/videomancer/truchet/truchet_exercise2_result.gif';
 import truchet_exercise3_result from '/img/instruments/videomancer/truchet/truchet_exercise3_result.gif';
-import truchet_hero from '/img/instruments/videomancer/truchet/truchet_hero.png';
 
 # Truchet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={truchet_hero} alt="Truchet hero image"/>
 *Truchet tile mosaic with quarter-circle arcs forming emergent meandering curves across a grid of LFSR-oriented tiles.*
@@ -282,12 +278,14 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms, used here to cycle the animation seed. |
 | **Emergent Connectivity** | Global structures (loops, paths, mazes) that arise from local random tile orientations connecting across boundaries. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the tile pattern pipeline in real time. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to assign tile orientations. |
 | **LUT** | Look-Up Table; the basic logic element of the FPGA fabric, used for combinational logic. |
 | **Octagonal Approximation** | A computationally cheap distance estimate: max(|dx|, |dy|) + 3/8 × min(|dx|, |dy|), producing an octagon instead of a circle. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for contrast and brightness adjustment. |
 | **Truchet Tiling** | A tiling pattern where identical square tiles with asymmetric decoration are placed in random orientations to create emergent global patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

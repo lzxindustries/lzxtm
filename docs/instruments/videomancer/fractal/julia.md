@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 135
+sidebar_position: 147
 slug: /instruments/videomancer/julia
 title: "Julia"
 image: /img/instruments/videomancer/julia/julia_hero.png
 description: "In 1918, the French mathematician Gaston Julia explored the behavior of iterated rational functions in the complex plane."
 ---
 
+import julia_hero from '/img/instruments/videomancer/julia/julia_hero.png';
 import julia_animation from '/img/instruments/videomancer/julia/julia_animation.gif';
 import julia_control_panel from '/img/instruments/videomancer/julia/julia_control_panel.png';
 import julia_exercise1_result from '/img/instruments/videomancer/julia/julia_exercise1_result.gif';
 import julia_exercise2_result from '/img/instruments/videomancer/julia/julia_exercise2_result.gif';
 import julia_exercise3_result from '/img/instruments/videomancer/julia/julia_exercise3_result.gif';
-import julia_hero from '/img/instruments/videomancer/julia/julia_hero.png';
 
 # Julia
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={julia_hero} alt="Julia hero image"/>
 *Julia rendering an intricate fractal boundary in blue-gold palette, the infinite complexity of z²+c made visible at video rate.*
@@ -128,11 +124,14 @@ Controls the imaginary part of c. Together with C Real, this selects a specific 
 
 ---
 
-#### Knob 3 — Zoom *(inactive)*
+#### Knob 3 — Zoom
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+| Suffix | % |
 
-:::note
-This control is declared but not connected in the current firmware. Turning it has no visible effect. Reserved for a future revision.
-:::
+Labeled "Zoom" on the panel but not applied in the current VHDL implementation. The register is read and stored but the coordinate mapping uses a fixed −2 to +2 range regardless of this control's value. Turning this knob has no visible effect. It is reserved for a future firmware revision that may implement viewport scaling.
 
 ---
 
@@ -157,11 +156,14 @@ Rotates the color palette by adding an offset to the iteration count before the 
 
 ---
 
-#### Knob 6 — VidBlnd *(inactive)*
+#### Knob 6 — VidBlnd
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+| Suffix | % |
 
-:::note
-This control is declared but not connected in the current firmware. Turning it has no visible effect. Reserved for a future revision.
-:::
+Labeled "VidBlnd" on the panel but not referenced in the current pipeline. The register is declared and read from the SPI bus but no processing stage uses its value. Turning this knob has no visible effect. It is reserved for a future revision that may blend the fractal output with the input video signal.
 
 ---
 
@@ -175,11 +177,7 @@ This control is declared but not connected in the current firmware. Turning it h
 | **10 — Palette** | Color | Mono |
 | **11 — Bypass** | Off | On |
 
-The five toggles control mode selection, animation, and visual style. Mandel and AnimC interact: in AnimC+Julia mode, the c parameter auto-orbits, continuously transforming the Julia set shape. In AnimC+Mandelbrot mode, the auto-orbit has no effect because c is determined per-pixel. Palette selects between the blue-gold color scheme and a monochrome luminance ramp.
-
-:::note
-VidSeed (Switch 8) is declared but not connected in the current firmware — it has no visible effect.
-:::
+The five toggles control mode selection, animation, and visual style. Mandel and AnimC interact: in AnimC+Julia mode, the c parameter auto-orbits, continuously transforming the Julia set shape. In AnimC+Mandelbrot mode, the auto-orbit has no effect because c is determined per-pixel. Palette selects between the blue-gold color scheme and a monochrome luminance ramp. VidSeed is declared but not referenced in the current VHDL — it has no visible effect.
 
 ---
 
@@ -258,6 +256,7 @@ These exercises progress from static fractal exploration through palette animati
 - **Palette cycling is free animation**: Once the fractal is computed, cycling the palette offset creates vivid color flow without any additional computation. Combine with a static Julia shape for performance-ready visuals.
 - **MaxIter trades detail for speed**: Higher iteration counts reveal finer boundary structure but require more computation time per frame. At 32 iterations maximum, the engine comfortably fits within one frame period.
 - **AnimC for hands-free morphing**: The auto-orbit continuously transforms the Julia set shape, crossing between connected and disconnected phases. Ideal for installations or live performance backgrounds.
+- **Unused controls are harmless**: Zoom, VidBlnd, and VidSeed are declared but unconnected in the current firmware. Turning these knobs will not cause any visual change or instability.
 - **Mix for overlay compositing**: At intermediate Mix values, the fractal is superimposed over the input video as a translucent layer. This is effective for blending mathematical graphics with live camera feeds.
 - **Block resolution is intentional**: The 80×45 grid creates a chunky, retro aesthetic. Each "pixel" of the fractal covers a 24×12 screen-pixel block, giving the output a mosaic quality that references early computer graphics.
 
@@ -267,15 +266,17 @@ These exercises progress from static fractal exploration through palette animati
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used to store the iteration result grid. |
 | **Complex Plane** | A two-dimensional number system where horizontal position represents the real part and vertical position represents the imaginary part of a complex number. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
 | **Escape Radius** | The magnitude threshold (|z|² > 4.0) beyond which a sequence is declared divergent. Choosing 4.0 is sufficient because once |z| > 2, the sequence is guaranteed to escape for the z² + c formula. |
 | **Fixed-Point** | A number representation where the binary point is at a fixed position (here, signed 4.12 — 4 integer bits, 12 fractional bits). Provides predictable precision without the hardware cost of floating-point. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Iteration Count** | The number of z² + c steps required for a point to exceed the escape radius. Determines the color assigned to that point. |
 | **Julia Set** | The fractal boundary in the complex plane between points whose iteration sequences remain bounded and those that escape, for a fixed constant c. |
 | **Mandelbrot Set** | The set of complex constants c for which the iteration z² + c starting from z₀ = 0 remains bounded. Acts as a catalog of all Julia sets. |
 | **Palette** | A lookup table mapping iteration counts to YUV color values. Julia uses a 32-entry palette with color and monochrome variants. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 179
+sidebar_position: 194
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
 image: /img/instruments/videomancer/nightshot/nightshot_hero.png
-description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — a mode that disabled the infrared cut filter and boosted CCD gain, producing the distinc..."
+description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — a mode that disabled the infrared cut filter and boosted CCD gain, producing the distinctive green-tinted night vision imagery that became a cultural icon of late-90s camcorder footage."
 ---
 
+import nightshot_hero from '/img/instruments/videomancer/nightshot/nightshot_hero.png';
 import nightshot_before_after from '/img/instruments/videomancer/nightshot/nightshot_before_after.png';
 import nightshot_control_panel from '/img/instruments/videomancer/nightshot/nightshot_control_panel.png';
 import nightshot_exercise1_result from '/img/instruments/videomancer/nightshot/nightshot_exercise1_result.png';
 import nightshot_exercise2_result from '/img/instruments/videomancer/nightshot/nightshot_exercise2_result.png';
 import nightshot_exercise3_result from '/img/instruments/videomancer/nightshot/nightshot_exercise3_result.png';
-import nightshot_hero from '/img/instruments/videomancer/nightshot/nightshot_hero.png';
-import nightshot_source1_kodim05 from '/img/instruments/videomancer/nightshot/nightshot_source1_kodim05.png';
-import nightshot_source2_kodim15 from '/img/instruments/videomancer/nightshot/nightshot_source2_kodim15.png';
-import nightshot_source3_kodim15_bw from '/img/instruments/videomancer/nightshot/nightshot_source3_kodim15_bw.png';
 
 # Nightshot
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={nightshot_hero} alt="Nightshot hero image"/>
 *Nightshot rendering infrared-style green phosphor night vision with gain boost, noise grain, horizontal bloom, and auto-gain pumping across the video signal.*
@@ -288,16 +281,18 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 |------|------------|
 | **AGC** | Automatic Gain Control; a feedback circuit in cameras that adjusts amplification to maintain target brightness, often causing visible gain hunting in low light. |
 | **Bloom** | Horizontal brightness smear caused by CCD charge well overflow bleeding along the readout register. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **CCD** | Charge-Coupled Device; the image sensor technology used in late-1990s camcorders. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on its own previous output. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
 | **IR** | Infrared; electromagnetic radiation with wavelength longer than visible red light (~700 nm+). |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function (XOR) of selected bit positions, producing a pseudo-random sequence. |
+| **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
 | **NightShot** | Sony Handycam feature (1998+) that disabled the IR cut filter and boosted CCD gain for night recording. |
 | **P43** | Green phosphor compound used in image intensifier tubes and night vision devices. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Triangle Wave** | A periodic waveform that linearly ramps up and down between bounds, used here for the AGC pump oscillator. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+---

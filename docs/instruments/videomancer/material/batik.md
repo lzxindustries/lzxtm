@@ -27,7 +27,7 @@ import batik_exercise3_result from '/img/instruments/videomancer/batik/batik_exe
 
 ## Overview
 
-Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain. The program generates a crackle vein network — dark boundary lines that recall the characteristic cracks formed when molten wax dries and fractures on cloth — and overlays it on a palette-quantised version of the input video. The result resembles hand-dyed fabric where each region between wax cracks holds a limited range of dye colors.
+Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain. The program generates a crackle vein network — dark boundary lines that recall the characteristic cracks formed when molten wax dries and fractures on cloth — and overlays it on a palette-quantised version of the input video. The result resembles hand-dyed fabric where each region between wax cracks holds a limited range of dye colours.
 
 The crackle pattern is produced by a pseudo-Voronoi cell algorithm seeded from a free-running LFSR. For every pixel, the hardware divides the frame into coarse rectangular regions and hashes the region coordinates to create a pseudo-random cell centre. Chebyshev distance to the nearest cell boundary determines whether a pixel falls on a dark vein or inside a cell body. Cell bodies receive palette-quantised luma (reducing brightness to 2–64 discrete levels like limited dye baths) and hue-rotated chroma to simulate indigo, ochre, or earth-tone palettes.
 
@@ -39,19 +39,19 @@ The name references *batik tulis*, the hand-drawn Javanese method where artisans
 
 ### What Is Batik?
 
-Batik is a textile dyeing technique originating in Java, Indonesia, where hot wax is applied to fabric as a resist before immersion in dye. Areas covered by wax remain undyed. The wax inevitably cracks, allowing thin lines of dye to seep through — these "crackle" veins are the hallmark of authentic batik. The process is repeated with different wax patterns and dye colors to build up complex multi-layered designs. UNESCO recognized Indonesian batik as an Intangible Cultural Heritage of Humanity in 2009.
+Batik is a textile dyeing technique originating in Java, Indonesia, where hot wax is applied to fabric as a resist before immersion in dye. Areas covered by wax remain undyed. The wax inevitably cracks, allowing thin lines of dye to seep through — these "crackle" veins are the hallmark of authentic batik. The process is repeated with different wax patterns and dye colours to build up complex multi-layered designs. UNESCO recognised Indonesian batik as an Intangible Cultural Heritage of Humanity in 2009.
 
 ### Voronoi Cells and Distance Fields
 
-A Voronoi diagram partitions a plane into regions based on proximity to a set of seed points — every point in a region is closer to its seed than to any other. The boundaries between regions form a network of edges. Batik approximates this by dividing the frame into coarse grid regions, hashing the coordinates to generate a pseudo-random "seed" position within each cell, then computing the Chebyshev distance (maximum of horizontal and vertical displacement) from each pixel to its cell boundary. Pixels near a boundary fall on a vein; pixels deep inside a cell receive the dyed color.
+A Voronoi diagram partitions a plane into regions based on proximity to a set of seed points — every point in a region is closer to its seed than to any other. The boundaries between regions form a network of edges. Batik approximates this by dividing the frame into coarse grid regions, hashing the coordinates to generate a pseudo-random "seed" position within each cell, then computing the Chebyshev distance (maximum of horizontal and vertical displacement) from each pixel to its cell boundary. Pixels near a boundary fall on a vein; pixels deep inside a cell receive the dyed colour.
 
 ### Palette Quantisation
 
-Traditional batik fabric typically uses only a few dye colors per layer — sometimes as few as two (indigo and white) in the simplest *batik cap* stamps. The program mimics this constraint by reducing the 10-bit luma channel to a small number of discrete levels via bit-shifting. At the lowest setting, only 2 brightness levels survive; at the highest, 64 levels preserve most of the original tonal detail. This staircase effect creates the flat color fields characteristic of dyed cloth.
+Traditional batik fabric typically uses only a few dye colours per layer — sometimes as few as two (indigo and white) in the simplest *batik cap* stamps. The program mimics this constraint by reducing the 10-bit luma channel to a small number of discrete levels via bit-shifting. At the lowest setting, only 2 brightness levels survive; at the highest, 64 levels preserve most of the original tonal detail. This staircase effect creates the flat colour fields characteristic of dyed cloth.
 
 ### Hue Rotation as Dye Palette
 
-Rather than replacing colors entirely, the hue rotation stage shifts the U and V chroma channels by an offset derived from the Palette knob. This rotates the original image's color wheel, transforming naturalistic colors into the earthy indigos, ochres, and greens typical of traditional batik cloth. The rotation is additive on U and subtractive on V (or vice versa), maintaining color saturation while changing hue.
+Rather than replacing colours entirely, the hue rotation stage shifts the U and V chroma channels by an offset derived from the Palette knob. This rotates the original image's colour wheel, transforming naturalistic colours into the earthy indigos, ochres, and greens typical of traditional batik cloth. The rotation is additive on U and subtractive on V (or vice versa), maintaining colour saturation while changing hue.
 
 ### LFSR-Based Procedural Noise
 
@@ -112,7 +112,7 @@ data_in ──► [sync delay] ──► dry ──► Interpolator ◄── we
                                       data_out
 ```
 
-The pipeline splits into two parallel paths after input: the processing path computes the crackle overlay and palette quantisation, while the sync delay path preserves the original data for the final wet/dry mix. The cell hash in Stage 2 is the critical creative step — it converts deterministic pixel coordinates into a pseudo-random cell boundary distance that drives the entire vein pattern. Stages 3 through 6 progressively shape how those veins appear: quantized color in the cell bodies, hue-shifted chroma for dye palette simulation, and opacity-controlled darkening along the crack boundaries.
+The pipeline splits into two parallel paths after input: the processing path computes the crackle overlay and palette quantisation, while the sync delay path preserves the original data for the final wet/dry mix. The cell hash in Stage 2 is the critical creative step — it converts deterministic pixel coordinates into a pseudo-random cell boundary distance that drives the entire vein pattern. Stages 3 through 6 progressively shape how those veins appear: quantized colour in the cell bodies, hue-shifted chroma for dye palette simulation, and opacity-controlled darkening along the crack boundaries.
 
 The Mono mode switch bypasses hue rotation entirely, forcing U and V to neutral 512 — this produces the monochrome indigo-and-white look of traditional *batik tulis* in its simplest form.
 
@@ -131,7 +131,7 @@ The Mono mode switch bypasses hue rotation entirely, forcing U and V to neutral 
 | Range | 4 – 64 |
 | Default | 27 |
 
-Controls the spatial scale of the Voronoi cell grid. The pot value is mapped through a threshold decoder that selects one of three cell sizes, with the Dense/Sparse toggle determining the range. In Dense mode, cells range from 8 to 32 pixels; in Sparse mode, from 32 to 128 pixels. Smaller cells create a fine, intricate crackle network reminiscent of aged wax; larger cells produce bold, architectural vein patterns. At the smallest sizes the pattern becomes a dense mesh of dark lines with tiny color patches between them.
+Controls the spatial scale of the Voronoi cell grid. The pot value is mapped through a threshold decoder that selects one of three cell sizes, with the Dense/Sparse toggle determining the range. In Dense mode, cells range from 8 to 32 pixels; in Sparse mode, from 32 to 128 pixels. Smaller cells create a fine, intricate crackle network reminiscent of aged wax; larger cells produce bold, architectural vein patterns. At the smallest sizes the pattern becomes a dense mesh of dark lines with tiny colour patches between them.
 
 ---
 
@@ -142,7 +142,7 @@ Controls the spatial scale of the Voronoi cell grid. The pot value is mapped thr
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the width of the dark crackle veins. The pot value is scaled to an 8-bit threshold that determines how close to a cell boundary a pixel must be before it is classified as a vein pixel. At minimum, only the thinnest hairline cracks appear — a subtle texture overlay. At maximum, veins grow wide enough to dominate the image, leaving only small islands of dyed color. Mid-range settings around 40% produce the most natural-looking crackle patterns reminiscent of actual wax fractures.
+Sets the width of the dark crackle veins. The pot value is scaled to an 8-bit threshold that determines how close to a cell boundary a pixel must be before it is classified as a vein pixel. At minimum, only the thinnest hairline cracks appear — a subtle texture overlay. At maximum, veins grow wide enough to dominate the image, leaving only small islands of dyed colour. Mid-range settings around 40% produce the most natural-looking crackle patterns reminiscent of actual wax fractures.
 
 ---
 
@@ -153,7 +153,7 @@ Sets the width of the dark crackle veins. The pot value is scaled to an 8-bit th
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the luma quantisation depth, simulating the limited number of dye colors available in a traditional batik process. The pot maps to six discrete quantisation levels: 2, 4, 8, 16, 32, or 64 brightness steps. At the lowest setting (2 levels), the image becomes a stark two-tone design; at the highest (64 levels), color transitions remain fairly smooth. The quantisation is applied via shift-right then shift-left, which truncates the least-significant bits and creates the characteristic flat color banding of dyed fabric.
+Controls the luma quantisation depth, simulating the limited number of dye colours available in a traditional batik process. The pot maps to six discrete quantisation levels: 2, 4, 8, 16, 32, or 64 brightness steps. At the lowest setting (2 levels), the image becomes a stark two-tone design; at the highest (64 levels), colour transitions remain fairly smooth. The quantisation is applied via shift-right then shift-left, which truncates the least-significant bits and creates the characteristic flat colour banding of dyed fabric.
 
 ---
 
@@ -163,7 +163,7 @@ Controls the luma quantisation depth, simulating the limited number of dye color
 | Range | 1 – 8 |
 | Default | 1 |
 
-Rotates the chroma hue by adding a signed offset to U and subtracting it from V. At the center position (512), no rotation occurs and original colors are preserved. Turning counter-clockwise shifts toward cool indigo and blue tones; turning clockwise shifts toward warm ochre and brown tones. The eight steps on this knob give you eight distinct dye palettes, each evoking a different regional batik tradition — Javanese indigo, Balinese earth tones, or Pekalongan coastal colors.
+Rotates the chroma hue by adding a signed offset to U and subtracting it from V. At the center position (512), no rotation occurs and original colours are preserved. Turning counter-clockwise shifts toward cool indigo and blue tones; turning clockwise shifts toward warm ochre and brown tones. The eight steps on this knob give you eight distinct dye palettes, each evoking a different regional batik tradition — Javanese indigo, Balinese earth tones, or Pekalongan coastal colours.
 
 ---
 
@@ -199,7 +199,7 @@ Scales the vein darkening effect via an opacity multiplication stage. The comput
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control independent aspects of the batik simulation. Toggle 7 selects Dense or Sparse cell grids, fundamentally changing the crackle scale. Toggle 8 switches between full-color and monochrome (desaturated) output. Toggle 9 enables frame-by-frame animation of the crackle pattern. Toggle 10 inverts the vein/cell classification so that cell interiors become dark and vein boundaries become bright. Toggle 11 bypasses all processing.
+The five toggles control independent aspects of the batik simulation. Toggle 7 selects Dense or Sparse cell grids, fundamentally changing the crackle scale. Toggle 8 switches between full-colour and monochrome (desaturated) output. Toggle 9 enables frame-by-frame animation of the crackle pattern. Toggle 10 inverts the vein/cell classification so that cell interiors become dark and vein boundaries become bright. Toggle 11 bypasses all processing.
 
 ---
 
@@ -243,17 +243,17 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 <img src={batik_exercise2_result} alt="Dye Palette Exploration result"/>
 *Dye Palette Exploration — simulated result across source images.*
-**Source**: Footage with varied colors — flowers, fabrics, or colorful scenery.
+**Source**: Footage with varied colours — flowers, fabrics, or colourful scenery.
 
 **Objective**: Explore palette quantisation and hue rotation for traditional dye effects.
 
-1. **Reduce dye levels**: Set Dye Depth low (around 20%). Watch the image snap to just a few brightness levels, like a two-color dye bath.
+1. **Reduce dye levels**: Set Dye Depth low (around 20%). Watch the image snap to just a few brightness levels, like a two-colour dye bath.
 2. **Increase gradually**: Sweep Dye Depth upward. More tonal steps appear, from stark two-tone through 4, 8, 16, 32, to nearly full-range at 64 levels.
-3. **Rotate palette**: With Dye Depth at about 40% (8 levels), sweep the Palette knob. Watch the colors shift through indigo, ochre, green, and magenta ranges.
-4. **Monochrome**: Enable Wax Show (Toggle 8). All color drops out, leaving only quantised luminance — a monochrome batik.
-5. **Combine with crackle**: Return to color mode and set moderate crackle (Vein Width ~35%, Crackle ~70%). The crackle veins now overlay the dye-limited palette.
+3. **Rotate palette**: With Dye Depth at about 40% (8 levels), sweep the Palette knob. Watch the colours shift through indigo, ochre, green, and magenta ranges.
+4. **Monochrome**: Enable Wax Show (Toggle 8). All colour drops out, leaving only quantised luminance — a monochrome batik.
+5. **Combine with crackle**: Return to colour mode and set moderate crackle (Vein Width ~35%, Crackle ~70%). The crackle veins now overlay the dye-limited palette.
 
-**Key concepts**: Dye Depth controls quantisation levels, Palette rotates the color wheel to simulate different dye traditions, monochrome mode removes chroma for single-dye effects
+**Key concepts**: Dye Depth controls quantisation levels, Palette rotates the colour wheel to simulate different dye traditions, monochrome mode removes chroma for single-dye effects
 
 ---
 
@@ -295,15 +295,15 @@ These exercises progress from basic crackle generation to full batik simulation 
 | **Chebyshev distance** | A distance metric where the distance between two points is the greater of their horizontal and vertical separations; used here for cell boundary detection. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
 | **Crackle** | The network of fine lines in traditional batik cloth caused by dye seeping through cracks in the wax resist layer. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Hue rotation** | Shifting U and V chroma values by a signed offset to change perceived color without altering brightness or saturation. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Palette quantisation** | Reducing a full-range luminance signal to a small number of discrete levels, simulating the limited dye colors of textile printing. |
+| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random bit sequence. |
+| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
+| **Palette quantisation** | Reducing a full-range luminance signal to a small number of discrete levels, simulating the limited dye colours of textile printing. |
 | **Voronoi diagram** | A spatial partition where each region contains all points closer to one seed than to any other, producing a network of cell boundaries. |
-| **Wax resist** | A dyeing technique where areas coated with wax repel dye, preserving the original fabric color beneath. |
+| **Wax resist** | A dyeing technique where areas coated with wax repel dye, preserving the original fabric colour beneath. |
 | **XOR** | Exclusive OR; a bitwise logic operation that outputs 1 when its two inputs differ, used here to mix the frame counter into the hash seed. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
 
 ---

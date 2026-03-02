@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 85
+sidebar_position: 93
 slug: /instruments/videomancer/embers
 title: "Embers"
 image: /img/instruments/videomancer/embers/embers_hero.png
@@ -321,11 +321,11 @@ These exercises progress from a basic centered fountain through physics-driven t
 | **Drag coefficient** | A damping factor applied to particle velocity on each frame, simulating air resistance. Embers uses a fixed 1/8 reduction per frame when drag is enabled. |
 | **Euler integration** | The simplest numerical method for solving differential equations: new_position = position + velocity × dt. Used here with dt = 1 frame. |
 | **Lerp** | Linear interpolation between two values: result = a + (b − a) × t. Used in the additive compositing stage to blend particle color with the source video. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback taps. Embers uses a 16-bit maximal-length LFSR seeded at 0xCAFE. |
 | **Particle system** | A computer graphics technique representing complex phenomena as collections of independent point masses, each with position, velocity, lifetime, and visual attributes. |
 | **Register file** | A set of flip-flop registers (as opposed to BRAM) used to store particle state. Embers maintains all 8 particles in registers, consuming zero block RAM. |
 | **Saturating arithmetic** | Integer arithmetic that clamps at the minimum and maximum representable values rather than wrapping around. Used for position updates to prevent particles from teleporting across frame boundaries. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer video processing pipeline. |
 
 
 ---

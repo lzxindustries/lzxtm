@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 56
+sidebar_position: 62
 slug: /instruments/videomancer/coral
 title: "Coral"
 image: /img/instruments/videomancer/coral/coral_hero.png
@@ -299,15 +299,15 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 | Term | Definition |
 |------|------------|
 | **Accumulator** | A register that sums an increment on each clock cycle; used here for branch height growth, adding a fixed value per frame until clamped at the screen edge. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory. Coral uses zero BRAMs — all state is held in distributed register logic. |
 | **Branch column** | One of eight vertical growth fronts, each defined by an X position, a height accumulator, and a computed tip position. |
 | **Depth gradient** | A vertical luminance attenuation that darkens pixels near the branch root, simulating underwater light absorption with increasing depth. |
 | **Hit detection** | The per-pixel comparison that determines whether a pixel falls within any branch's horizontal thickness and vertical extent. |
 | **L-system** | Lindenmayer system; a formal grammar for modeling branching growth, the theoretical ancestor of Coral's column-based branching model. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to trigger stochastic split events between adjacent branches. |
 | **Scleractinia** | The order of hard corals that build calcium carbonate skeletons, forming the biological reef structures that the program simulates. |
 | **Split event** | A frame-level transfer of growth energy from one branch column to a neighbor, triggered when the LFSR output falls below the Split Rate threshold. |
 | **Tip** | The growing end of a branch column; computed as the screen bottom minus accumulated height (for upward growth) or the accumulated height itself (for downward growth). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
 
 ---

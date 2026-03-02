@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 285
+sidebar_position: 311
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
 image: /img/instruments/videomancer/wiggle/wiggle_hero.png
 description: "Wiggle displaces pixels horizontally by an amount proportional to their brightness."
 ---
 
+import wiggle_hero from '/img/instruments/videomancer/wiggle/wiggle_hero.png';
 import wiggle_before_after from '/img/instruments/videomancer/wiggle/wiggle_before_after.png';
 import wiggle_control_panel from '/img/instruments/videomancer/wiggle/wiggle_control_panel.png';
 import wiggle_exercise1_result from '/img/instruments/videomancer/wiggle/wiggle_exercise1_result.png';
 import wiggle_exercise2_result from '/img/instruments/videomancer/wiggle/wiggle_exercise2_result.png';
 import wiggle_exercise3_result from '/img/instruments/videomancer/wiggle/wiggle_exercise3_result.png';
-import wiggle_hero from '/img/instruments/videomancer/wiggle/wiggle_hero.png';
-import wiggle_source1_kodim15 from '/img/instruments/videomancer/wiggle/wiggle_source1_kodim15.png';
-import wiggle_source2_kodim01 from '/img/instruments/videomancer/wiggle/wiggle_source2_kodim01.png';
-import wiggle_source3_kodim01_bw from '/img/instruments/videomancer/wiggle/wiggle_source3_kodim01_bw.png';
 
 # Wiggle
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={wiggle_hero} alt="Wiggle hero image"/>
 *Autostereoscopic depth wobble: luminance-proportional displacement on alternating fields conjures illusory depth from flat video.*
@@ -131,7 +124,7 @@ Osc Rate sets the speed at which the displacement direction oscillates when Stro
 | Default | 50.0% |
 | Suffix | % |
 
-Depth Curve blends the displacement response between linear (fully CCW) and exponential (fully CW). Linear response gives uniform depth sensitivity across all brightness levels: a mid-gray pixel displaces half as far as peak white. Exponential response compresses displacement for mid-tones and expands it for highlights, concentrating the depth pop on the brightest elements while leaving shadows and mid-grays relatively flat. Intermediate settings provide a gentle roll-off that often looks most natural.
+Depth Curve blends the displacement response between linear (fully CCW) and exponential (fully CW). Linear response gives uniform depth sensitivity across all brightness levels: a mid-grey pixel displaces half as far as peak white. Exponential response compresses displacement for mid-tones and expands it for highlights, concentrating the depth pop on the brightest elements while leaving shadows and mid-greys relatively flat. Intermediate settings provide a gentle roll-off that often looks most natural.
 
 ---
 
@@ -269,3 +262,5 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 - **Brightness for emphasis**: Push Brightness above 50 % to intentionally blow out displaced highlights—this creates a glowing halo effect on bright objects.
 - **Freeze for static offsets**: Using Invert Depth (Freeze) disables the wobble entirely, turning Wiggle into a static luminance-driven displacement map useful for lenticular-style parallax frames.
 - **Strobe slow roll**: Osc Rate below 10 % in Strobe mode creates a very slow, meditative depth breathing that works well for ambient installations.
+
+---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 108
+sidebar_position: 117
 slug: /instruments/videomancer/gauntlet
 title: "Gauntlet"
 image: /img/instruments/videomancer/gauntlet/gauntlet_hero.png
@@ -279,17 +279,17 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks in the FPGA fabric. Gauntlet uses zero BRAMs — all storage is distributed RAM and registers. |
 | **CRT** | Cathode Ray Tube; a vacuum tube display that produces images by scanning an electron beam across a phosphor-coated screen. |
 | **Distributed RAM** | Small RAM blocks synthesized from the FPGA's lookup tables, used here for the 2048×10-bit persistence line buffer. |
 | **Edge Detection** | The process of identifying pixels where signal values change abruptly, implemented here as a horizontal absolute difference weighted across Y, U, and V channels. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **Glow LUT** | A lookup table mapping distance-from-edge to brightness using exponential decay curves. Three LUTs provide narrow, medium, and wide beam profiles. |
 | **IIR** | Infinite Impulse Response; a filter topology where the output depends on both the current input and previous outputs. Used in the persistence stage as `max(new, decayed_old)`. |
 | **Phosphor** | The luminescent coating on a CRT screen that glows when struck by the electron beam. Different phosphor types (P1, P22, P31) have different colors and decay rates. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. Gauntlet has 11 pipeline stages. |
 | **Priority Encoder** | A circuit that scans a set of bits and returns the position of the first (nearest) active bit. Used here to find the closest edge in the 16-tap shift register. |
 | **Shift Register** | A chain of flip-flops where data shifts one position per clock cycle. The 16-tap edge shift register provides spatial memory of recent edge positions. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

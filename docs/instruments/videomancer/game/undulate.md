@@ -1,32 +1,25 @@
 ---
 draft: true
-sidebar_position: 272
+sidebar_position: 298
 slug: /instruments/videomancer/undulate
 title: "Undulate"
 image: /img/instruments/videomancer/undulate/undulate_hero.png
-description: "The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could reprogram video registers at the start of every scanline without CPU interv..."
+description: "The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could reprogram video registers at the start of every scanline without CPU intervention."
 ---
 
+import undulate_hero from '/img/instruments/videomancer/undulate/undulate_hero.png';
 import undulate_before_after from '/img/instruments/videomancer/undulate/undulate_before_after.png';
 import undulate_control_panel from '/img/instruments/videomancer/undulate/undulate_control_panel.png';
 import undulate_exercise1_result from '/img/instruments/videomancer/undulate/undulate_exercise1_result.png';
 import undulate_exercise2_result from '/img/instruments/videomancer/undulate/undulate_exercise2_result.png';
 import undulate_exercise3_result from '/img/instruments/videomancer/undulate/undulate_exercise3_result.png';
-import undulate_hero from '/img/instruments/videomancer/undulate/undulate_hero.png';
-import undulate_source1_kodim15 from '/img/instruments/videomancer/undulate/undulate_source1_kodim15.png';
-import undulate_source2_kodim03 from '/img/instruments/videomancer/undulate/undulate_source2_kodim03.png';
-import undulate_source3_kodim15_bw from '/img/instruments/videomancer/undulate/undulate_source3_kodim15_bw.png';
 
 # Undulate
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-
----
-
-
 <img src={undulate_hero} alt="Undulate hero image"/>
-*Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, color-shifting dreamscape.*
+*Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, colour-shifting dreamscape.*
 <img src={undulate_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Undulate applied.*
 
@@ -34,11 +27,11 @@ import undulate_source3_kodim15_bw from '/img/instruments/videomancer/undulate/u
 
 ## Overview
 
-The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could reprogram video registers at the start of every scanline without CPU intervention. Developers used it to warp backgrounds with per-line scrolling, create underwater wobble effects, cycle color palettes, and produce the wavy heat-haze distortions seen in RPG battle scenes. Undulate channels this technique into three independent per-scanline modulation channels — brightness, hue, and displacement — each with its own frequency, depth, and waveform shape, driven by a shared quarter-wave sine lookup table.
+The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could reprogram video registers at the start of every scanline without CPU intervention. Developers used it to warp backgrounds with per-line scrolling, create underwater wobble effects, cycle colour palettes, and produce the wavy heat-haze distortions seen in RPG battle scenes. Undulate channels this technique into three independent per-scanline modulation channels — brightness, hue, and displacement — each with its own frequency, depth, and waveform shape, driven by a shared quarter-wave sine lookup table.
 
-Each channel generates a waveform that varies from one horizontal line to the next. The brightness channel modulates the luminance of every pixel on a given scanline by a single value, creating bands of light and dark that ripple vertically through the frame. The hue channel applies a UV rotation per scanline, shifting colors in bands. The displacement channel horizontally shifts entire scanlines left or right, physically moving pixels to create the wobble effect. When all three channels are active at different frequencies, the image appears to undulate like fabric in water — hence the name.
+Each channel generates a waveform that varies from one horizontal line to the next. The brightness channel modulates the luminance of every pixel on a given scanline by a single value, creating bands of light and dark that ripple vertically through the frame. The hue channel applies a UV rotation per scanline, shifting colours in bands. The displacement channel horizontally shifts entire scanlines left or right, physically moving pixels to create the wobble effect. When all three channels are active at different frequencies, the image appears to undulate like fabric in water — hence the name.
 
-At subtle settings, Undulate adds gentle luminance striping and a barely perceptible swim to the image. At extreme settings, the three modulation channels interact to produce violently distorted, color-shifted, horizontally torn video that recalls broken CRT displays and corrupted video RAM — an effect that is equally useful for music video aesthetics and glitch art performances.
+At subtle settings, Undulate adds gentle luminance striping and a barely perceptible swim to the image. At extreme settings, the three modulation channels interact to produce violently distorted, colour-shifted, horizontally torn video that recalls broken CRT displays and corrupted video RAM — an effect that is equally useful for music video aesthetics and glitch art performances.
 
 ---
 
@@ -46,7 +39,7 @@ At subtle settings, Undulate adds gentle luminance striping and a barely percept
 
 ### SNES HDMA and Per-Scanline Effects
 
-The Super Nintendo's DMA controller included a specialised mode called Horizontal DMA that could update PPU registers during the horizontal blanking interval between each scanline. This allowed the programmer to specify a table of values — one per scanline — that would be automatically loaded into any PPU register without interrupting game logic. The PPU contained registers for scroll position, color math parameters, window boundaries, and mosaic size, among others. By targeting the scroll registers, HDMA created wavy backgrounds. By targeting color math registers, it created per-scanline brightness fades and color cycles. Undulate implements three such register-modification channels simultaneously, exceeding what was possible on original hardware.
+The Super Nintendo's DMA controller included a specialised mode called Horizontal DMA that could update PPU registers during the horizontal blanking interval between each scanline. This allowed the programmer to specify a table of values — one per scanline — that would be automatically loaded into any PPU register without interrupting game logic. The PPU contained registers for scroll position, colour math parameters, window boundaries, and mosaic size, among others. By targeting the scroll registers, HDMA created wavy backgrounds. By targeting colour math registers, it created per-scanline brightness fades and colour cycles. Undulate implements three such register-modification channels simultaneously, exceeding what was possible on original hardware.
 
 ### Waveform Generation from Quarter-Wave LUT
 
@@ -58,12 +51,12 @@ The core idea is simple: for each scanline, evaluate a waveform function at a ph
 
 ### UV Hue Rotation
 
-Rotating color hue in YUV space is accomplished by applying a 2D rotation matrix to the U and V channels:
+Rotating colour hue in YUV space is accomplished by applying a 2D rotation matrix to the U and V channels:
 
     U' = U·cos(θ) − V·sin(θ)
     V' = U·sin(θ) + V·cos(θ)
 
-where θ is the per-scanline rotation angle from the hue channel waveform. This rotates the color vector around the achromatic axis (the Y axis), shifting reds toward greens, greens toward blues, and so on. Because the rotation angle varies per scanline, different horizontal bands of the image shift to different hues, creating rainbow striping effects.
+where θ is the per-scanline rotation angle from the hue channel waveform. This rotates the colour vector around the achromatic axis (the Y axis), shifting reds toward greens, greens toward blues, and so on. Because the rotation angle varies per scanline, different horizontal bands of the image shift to different hues, creating rainbow striping effects.
 
 ### Scanline Displacement
 
@@ -149,7 +142,7 @@ Controls the amplitude of the brightness modulation. At zero, no brightness vari
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the spatial frequency of the hue rotation waveform. At zero, a single uniform hue shift applies to the entire frame. As Hue Freq increases, more rotation cycles fit within the frame, creating narrower bands of hue variation — rainbow striping when depth is high enough. The frequency relationship between the hue and brightness channels determines whether the color bands align with or cut across the brightness bands.
+Controls the spatial frequency of the hue rotation waveform. At zero, a single uniform hue shift applies to the entire frame. As Hue Freq increases, more rotation cycles fit within the frame, creating narrower bands of hue variation — rainbow striping when depth is high enough. The frequency relationship between the hue and brightness channels determines whether the colour bands align with or cut across the brightness bands.
 
 ---
 
@@ -160,7 +153,7 @@ Controls the spatial frequency of the hue rotation waveform. At zero, a single u
 | Default | 106° |
 | Suffix | ° |
 
-Controls the maximum angle of per-scanline hue rotation. At 0°, no hue shift occurs. As Hue Depth increases, the angle of UV rotation grows, sweeping through more of the color wheel per cycle. At 360°, a full revolution maps all hues within a single wave cycle, creating complete rainbow bands. The polar degree scale maps directly to the rotation matrix angle.
+Controls the maximum angle of per-scanline hue rotation. At 0°, no hue shift occurs. As Hue Depth increases, the angle of UV rotation grows, sweeping through more of the colour wheel per cycle. At 360°, a full revolution maps all hues within a single wave cycle, creating complete rainbow bands. The polar degree scale maps directly to the rotation matrix angle.
 
 ---
 
@@ -239,17 +232,17 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 <img src={undulate_exercise2_result} alt="Rainbow Striping result"/>
 *Rainbow Striping — simulated result across source images.*
-**Source**: A monochrome or desaturated scene — black-and-white photography, a gray wall, or a dim room.
+**Source**: A monochrome or desaturated scene — black-and-white photography, a grey wall, or a dim room.
 
 **Objective**: Apply per-scanline hue rotation to paint rainbow bands across a neutral source, then combine with brightness modulation.
 
 1. **Set up hue rotation**: Hue Freq ~30%, Hue Depth ~180°. Rainbow bands appear across the frame.
 2. **Try Triangle wave**: Toggle Hue Wave to Tri. The smooth rainbow gradients sharpen into linear ramps.
 3. **Add brightness**: Set Brt Freq to a different value (~40%) and Brt Depth to ~30%.
-4. **Observe the interference**: Because the two channels run at different frequencies, their bands create a moiré-like interference pattern — something not easily achievable with single-channel processing.
+4. **Observe the interference**: Because the two channels run at different frequencies, their bands create a moire-like interference pattern — something not easily achievable with single-channel processing.
 5. **Speed up**: Toggle Speed to Fast. The rainbow bands and brightness bands now ripple through the frame more quickly.
 
-**Key concepts**: Hue rotation creates rainbow bands in achromatic or desaturated footage, triangle wave produces sharper color boundaries, different channel frequencies create interference, speed toggle controls animation rate globally
+**Key concepts**: Hue rotation creates rainbow bands in achromatic or desaturated footage, triangle wave produces sharper colour boundaries, different channel frequencies create interference, speed toggle controls animation rate globally
 
 ---
 
@@ -265,7 +258,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 2. **Try Sawtooth**: Toggle Disp Wave to Saw. The smooth wobble becomes an asymmetric shear.
 3. **Add brightness**: Brt Freq ~25%, Brt Depth ~40%, Sine wave.
 4. **Add hue**: Hue Freq ~35%, Hue Depth ~120°, Sine wave.
-5. **Observe the composite**: All three channels modulate the image simultaneously — it wobbles, brightens, and shifts color in overlapping wave patterns.
+5. **Observe the composite**: All three channels modulate the image simultaneously — it wobbles, brightens, and shifts colour in overlapping wave patterns.
 6. **Speed for energy**: Toggle Speed to Fast for a dynamic, music-performance-ready effect.
 7. **Back off Mix**: Lower Mix to ~60% to soften the composite while retaining the sense of motion.
 
@@ -282,7 +275,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 - **Square brightness for scanlines**: Setting Brt Wave to Square with high frequency and moderate depth produces a convincing CRT scanline effect — hard-edged horizontal stripes of alternating brightness.
 - **Low displacement for underwater**: Disp Freq ~20%, Disp Depth ~10% with Sine wave produces the gentle wobble associated with viewing objects through moving water.
 - **Sawtooth for glitch art**: Sawtooth displacement combined with fast speed and high depth tears the image apart with an aggressive, digital corruption aesthetic.
-- **Hue on monochrome sources**: Applying hue rotation to a desaturated or black-and-white source paints the frame with pure synthetic color bands — a powerful effect that adds color to colorless material.
+- **Hue on monochrome sources**: Applying hue rotation to a desaturated or black-and-white source paints the frame with pure synthetic colour bands — a powerful effect that adds colour to colourless material.
 
 ---
 
@@ -290,15 +283,17 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated FPGA memory used for the quarter-wave sine LUT and scanline line buffers. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator method for generating periodic waveforms from a fixed-rate clock. |
 | **HDMA** | Horizontal DMA; a Super Nintendo hardware feature that updates video registers at the start of each scanline. |
-| **Hue Rotation** | A 2D rotation applied to the U and V chrominance channels, shifting all colors around the color wheel. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Hue Rotation** | A 2D rotation applied to the U and V chrominance channels, shifting all colours around the colour wheel. |
+| **LFSR** | Linear-Feedback Shift Register; though not directly used in Undulate, it is a common waveform source in companion programs. |
 | **Per-Scanline Modulation** | Applying a different processing parameter value to each horizontal line, creating vertically-varying effects. |
 | **Phase Accumulator** | A counter that increments by a frequency-related value per clock cycle; its current value determines the waveform phase. |
 | **Quarter-Wave LUT** | A lookup table storing one quarter of a sine wave period; full sine/cosine access is achieved through mirroring and sign-flipping. |
 | **Sawtooth Wave** | A waveform that ramps linearly from minimum to maximum then resets, producing asymmetric modulation. |
 | **Triangle Wave** | A waveform that ramps linearly up then linearly down, creating angular modulation with sharper peaks than sine. |
-| **UV Rotation** | Synonymous with hue rotation; rotating the chrominance vector in the UV color plane. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **UV Rotation** | Synonymous with hue rotation; rotating the chrominance vector in the UV colour plane. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

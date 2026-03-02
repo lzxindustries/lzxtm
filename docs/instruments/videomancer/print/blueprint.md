@@ -29,7 +29,7 @@ import blueprint_exercise3_result from '/img/instruments/videomancer/blueprint/b
 
 Blueprint transforms a video signal into a cyanotype-style technical drawing. Every edge in the source image is extracted as a white (or blue) contour line on a deep Prussian blue (or white) background. An optional dotted engineering grid overlays the result with horizontal and vertical reference lines at power-of-two spacings, and dimension tick marks appear at grid intersections when enabled.
 
-The edge detection operates on luminance only, computing horizontal differences between adjacent pixels and vertical differences between adjacent lines via a single BRAM line buffer. The two gradient components — horizontal and vertical — are summed, thresholded, and scaled to produce contour luminance. The result is composited with a constant Prussian blue background color (Y≈180, U=650, V=350), producing the characteristic deep blue of iron-based photographic prints.
+The edge detection operates on luminance only, computing horizontal differences between adjacent pixels and vertical differences between adjacent lines via a single BRAM line buffer. The two gradient components — horizontal and vertical — are summed, thresholded, and scaled to produce contour luminance. The result is composited with a constant Prussian blue background colour (Y≈180, U=650, V=350), producing the characteristic deep blue of iron-based photographic prints.
 
 The name references the cyanotype contact-printing process invented by Sir John Herschel in 1842. Originally used for reproducing architectural and engineering drawings, the "blueprint" became synonymous with technical documentation. Blueprint brings this analogue reproduction process into real-time video, turning any live source into a continuously-updating technical drawing.
 
@@ -51,7 +51,7 @@ Engineering drawings use reference grids at regular intervals. Blueprint impleme
 
 ### Shift-Based Contrast Scaling
 
-Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (`>>2`), ×0.5 (`>>1`), ×1.0 (none), ×2.0 (`<<1`, clamped), and ×4.0 (`<<2`, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
+Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (>>2), ×0.5 (>>1), ×1.0 (none), ×2.0 (<<1, clamped), and ×4.0 (<<2, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
 
 
 ---
@@ -165,7 +165,7 @@ Controls the brightness of grid lines and dimension marks. The pot value is halv
 | Default | 50% |
 | Suffix | % |
 
-Controls the depth of the Prussian blue background. The pot value scales the background luminance: `bg_y = 180 × blue_depth / 1024`. At 0%, the background is black. At 50%, it's a dark navy. At 100%, it's the full Prussian blue color at Y≈180 with U=650, V=350. This allows the artist to make the background darker for a deeper, more saturated blue or lighter for a more washed-out cyanotype print.
+Controls the depth of the Prussian blue background. The pot value scales the background luminance: `bg_y = 180 × blue_depth / 1024`. At 0%, the background is black. At 50%, it's a dark navy. At 100%, it's the full Prussian blue colour at Y≈180 with U=650, V=350. This allows the artist to make the background darker for a deeper, more saturated blue or lighter for a more washed-out cyanotype print.
 
 ---
 
@@ -176,7 +176,7 @@ Controls the depth of the Prussian blue background. The pot value scales the bac
 | Default | 50% |
 | Suffix | % |
 
-Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (`>>2`, very faint lines), 205–409 → ×0.5 (`>>1`, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (`<<1`, boosted), 819–1023 → ×4.0 (`<<2`, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
+Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (>>2, very faint lines), 205–409 → ×0.5 (>>1, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (<<1, boosted), 819–1023 → ×4.0 (<<2, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
 
 ---
 
@@ -226,7 +226,7 @@ These exercises progress from basic edge extraction through grid overlay to the 
 5. **Blue depth**: Adjust Blue Depth (Pot 5) from 0% to 80%. Watch the background shift from black to Prussian blue.
 6. **Toggle polarity**: Enable Invert (Toggle 10) to see the negative — blue lines on white.
 
-**Key concepts**: Higher threshold = fewer edges, contrast scaling boosts faint edges, blue depth controls background color, negative flips the cyanotype polarity
+**Key concepts**: Higher threshold = fewer edges, contrast scaling boosts faint edges, blue depth controls background colour, negative flips the cyanotype polarity
 
 ---
 
@@ -288,17 +288,17 @@ These exercises progress from basic edge extraction through grid overlay to the 
 | Term | Definition |
 |------|------------|
 | **Bitmask** | A binary pattern used with a bitwise AND operation to test whether a pixel coordinate falls on a power-of-two grid line, replacing expensive modulo division. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within an FPGA, used here to store one full line of luminance data for vertical edge detection. |
 | **Cyanotype** | A photographic contact-printing process using iron salts that produces white imagery on a deep Prussian blue background, invented by Sir John Herschel in 1842. |
 | **Diazo** | A reprographic printing process that produces dark lines on a white or off-white background, the tonal inverse of a cyanotype; also called a whiteprint. |
 | **DSP** | Digital Signal Processor; a dedicated hardware multiplication block within an FPGA, avoided by Blueprint's shift-based contrast scaling. |
 | **Finite difference** | A numerical method that approximates a derivative by computing the difference between adjacent sample values, used here for edge detection. |
 | **Gradient** | The rate of brightness change between adjacent pixels, used as a measure of edge strength in the horizontal or vertical direction. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
+| **Luma** | The brightness component (Y) of a YUV video signal, the only channel used for edge detection in Blueprint. |
 | **LUT** | Look-Up Table; a small memory or combinational logic structure that maps an input index to a pre-computed output value. |
-| **Prussian blue** | Iron hexacyanoferrate; the deep blue pigment produced by the cyanotype chemical reaction, used as the background color (Y≈180, U=650, V=350). |
+| **Prussian blue** | Iron hexacyanoferrate; the deep blue pigment produced by the cyanotype chemical reaction, used as the background colour (Y≈180, U=650, V=350). |
 | **Sobel operator** | A standard image processing edge detection kernel that combines horizontal and vertical gradient estimates with smoothing; Blueprint uses a simplified variant without the smoothing kernels. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
 
 ---

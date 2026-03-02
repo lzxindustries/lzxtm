@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 275
+sidebar_position: 301
 slug: /instruments/videomancer/vertex
 title: "Vertex"
 image: /img/instruments/videomancer/vertex/vertex_hero.png
-description: "Vertex recreates the unmistakable visual artefacts of early 3D game consoles — specifically the PlayStation 1 and Sega Saturn — whose GPUs operated with..."
+description: "Vertex recreates the unmistakable visual artefacts of early 3D game consoles — specifically the PlayStation 1 and Sega Saturn — whose GPUs operated without subpixel vertex precision, perspective-correct texture mapping, or sufficient colour gradient resolution."
 ---
 
+import vertex_hero from '/img/instruments/videomancer/vertex/vertex_hero.png';
 import vertex_before_after from '/img/instruments/videomancer/vertex/vertex_before_after.png';
 import vertex_control_panel from '/img/instruments/videomancer/vertex/vertex_control_panel.png';
 import vertex_exercise1_result from '/img/instruments/videomancer/vertex/vertex_exercise1_result.png';
 import vertex_exercise2_result from '/img/instruments/videomancer/vertex/vertex_exercise2_result.png';
 import vertex_exercise3_result from '/img/instruments/videomancer/vertex/vertex_exercise3_result.png';
-import vertex_hero from '/img/instruments/videomancer/vertex/vertex_hero.png';
-import vertex_source1_kodim15 from '/img/instruments/videomancer/vertex/vertex_source1_kodim15.png';
-import vertex_source2_kodim03 from '/img/instruments/videomancer/vertex/vertex_source2_kodim03.png';
-import vertex_source3_kodim15_bw from '/img/instruments/videomancer/vertex/vertex_source3_kodim15_bw.png';
 
 # Vertex
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={vertex_hero} alt="Vertex hero image"/>
 *Vertex shattering a live video feed into a jittering polygon mesh with PS1-era vertex wobble, posterised Gouraud banding, wireframe grid overlay, and ordered dithering across a field of flat-shaded quads.*
@@ -34,11 +27,11 @@ import vertex_source3_kodim15_bw from '/img/instruments/videomancer/vertex/verte
 
 ## Overview
 
-Vertex recreates the unmistakable visual artefacts of early 3D game consoles — specifically the PlayStation 1 and Sega Saturn — whose GPUs operated without subpixel vertex precision, perspective-correct texture mapping, or sufficient color gradient resolution. The result was a generation of games where polygon geometry wobbled and danced, color gradients stairstepped into visible bands, and wireframe edges occasionally showed through the mesh. What were once engineering limitations are now a celebrated aesthetic, and Vertex applies this full suite of artefacts to any live video feed.
+Vertex recreates the unmistakable visual artefacts of early 3D game consoles — specifically the PlayStation 1 and Sega Saturn — whose GPUs operated without subpixel vertex precision, perspective-correct texture mapping, or sufficient colour gradient resolution. The result was a generation of games where polygon geometry wobbled and danced, colour gradients stairstepped into visible bands, and wireframe edges occasionally showed through the mesh. What were once engineering limitations are now a celebrated aesthetic, and Vertex applies this full suite of artefacts to any live video feed.
 
 The name references the mathematical vertices that define polygon corners in 3D rendering pipelines. On the PS1, vertex coordinates were snapped to integer screen positions, causing geometry to jitter by up to a full pixel as the camera moved — a distinctive wobble that became the visual signature of an entire console generation. Vertex simulates this by applying LFSR-derived per-scanline horizontal displacement to the video through line buffer readout address perturbation, creating the characteristic swimming, unstable geometry.
 
-At mild settings, Vertex adds a subtle retro texture to the image — gentle posterisation and faint grid lines that evoke the low-poly era without overwhelming the source. Pushed to extremes, the effect is unmistakable: heavy jitter tears the image apart, aggressive posterisation reduces the palette to a handful of banded colors, thick wireframe grids carve the frame into visible polygons, and per-cell tint simulates the flat-faceted normals of an untextured 3D model.
+At mild settings, Vertex adds a subtle retro texture to the image — gentle posterisation and faint grid lines that evoke the low-poly era without overwhelming the source. Pushed to extremes, the effect is unmistakable: heavy jitter tears the image apart, aggressive posterisation reduces the palette to a handful of banded colours, thick wireframe grids carve the frame into visible polygons, and per-cell tint simulates the flat-faceted normals of an untextured 3D model.
 
 ---
 
@@ -48,9 +41,9 @@ At mild settings, Vertex adds a subtle retro texture to the image — gentle pos
 
 The PlayStation 1's GPU (designed by Toshiba) operated entirely with fixed-point integer arithmetic for vertex positioning. Unlike later GPUs that used sub-pixel precision to smoothly interpolate polygon edges, the PS1 snapped every vertex to the nearest integer pixel coordinate. As a 3D camera moved, vertices quantised to different integer positions frame-to-frame, causing the characteristic jitter where polygon edges and textures appeared to swim and vibrate. This was most visible on large, flat surfaces and distant objects where small camera movements caused disproportionate integer snapping. Vertex simulates this by applying a per-scanline random horizontal offset to the line buffer readout, displacing each row of pixels by a different amount.
 
-### Gouraud Shading and Color Banding
+### Gouraud Shading and Colour Banding
 
-Gouraud shading interpolates vertex colors across polygon faces, producing smooth color gradients. On the PS1, this interpolation was performed with limited precision — typically 5 bits per color channel — producing visible banding where the gradient stairstepped between discrete color levels. This banding was especially prominent on large polygons spanning significant color differences, such as lighting gradients across walls or skin tones. Vertex recreates this effect through bit-depth reduction (posterisation), progressively shifting and masking the color channels to simulate the limited interpolation precision of 1990s consumer GPUs.
+Gouraud shading interpolates vertex colours across polygon faces, producing smooth colour gradients. On the PS1, this interpolation was performed with limited precision — typically 5 bits per colour channel — producing visible banding where the gradient stairstepped between discrete colour levels. This banding was especially prominent on large polygons spanning significant colour differences, such as lighting gradients across walls or skin tones. Vertex recreates this effect through bit-depth reduction (posterisation), progressively shifting and masking the colour channels to simulate the limited interpolation precision of 1990s consumer GPUs.
 
 ### Wireframe Debug Rendering
 
@@ -58,11 +51,11 @@ During game development, artists and programmers frequently toggled wireframe re
 
 ### Ordered Dithering
 
-Ordered dithering is a deterministic technique for reducing color banding when quantising to a lower bit depth. By adding a fixed threshold pattern (a Bayer matrix) to pixel values before quantisation, the resulting banding breaks up into a regular dot pattern that the eye integrates into a smoother apparent gradient. The technique was widely used in 1990s game rendering to mask the visible stairstepping of Gouraud shading. Vertex implements a 2×2 Bayer matrix dither that adds a position-dependent offset before posterisation, producing the distinctive crosshatch pattern visible in many PS1 titles.
+Ordered dithering is a deterministic technique for reducing colour banding when quantising to a lower bit depth. By adding a fixed threshold pattern (a Bayer matrix) to pixel values before quantisation, the resulting banding breaks up into a regular dot pattern that the eye integrates into a smoother apparent gradient. The technique was widely used in 1990s game rendering to mask the visible stairstepping of Gouraud shading. Vertex implements a 2×2 Bayer matrix dither that adds a position-dependent offset before posterisation, producing the distinctive crosshatch pattern visible in many PS1 titles.
 
-### Flat Shading and Per-Face Color
+### Flat Shading and Per-Face Colour
 
-Before Gouraud shading became standard, flat shading assigned a single color to each polygon face based on its surface normal relative to the light source. This produced a faceted, polygonal look where each face was a uniform color with hard edges at polygon boundaries — a look that defined early 3D games like Virtua Fighter and Star Fox. Vertex's Flat Shade mode forces chrominance to neutral and uses only the quantised luminance per cell, creating uniform-color grid cells that simulate the per-face flat shading of untextured polygon models.
+Before Gouraud shading became standard, flat shading assigned a single colour to each polygon face based on its surface normal relative to the light source. This produced a faceted, polygonal look where each face was a uniform colour with hard edges at polygon boundaries — a look that defined early 3D games like Virtua Fighter and Star Fox. Vertex's Flat Shade mode forces chrominance to neutral and uses only the quantised luminance per cell, creating uniform-colour grid cells that simulate the per-face flat shading of untextured polygon models.
 
 
 ---
@@ -120,7 +113,7 @@ Input Video (YUV 4:4:4)
     └─ Direct output (no bypass toggle in this program)
 ```
 
-The pipeline order reflects the logical sequence of PS1 rendering artefacts. Vertex jitter occurs first at the geometry stage — displacing pixel positions before any shading computation, just as integer vertex snapping happened before rasterisation in actual hardware. Posterisation follows as the Gouraud shading artefact, reducing color resolution during the interpolation stage. Cell tint adds per-polygon brightness variation simulating flat-shaded face normals. The wireframe overlay is last because it represents the polygon edge structure drawn on top of the filled and shaded faces.
+The pipeline order reflects the logical sequence of PS1 rendering artefacts. Vertex jitter occurs first at the geometry stage — displacing pixel positions before any shading computation, just as integer vertex snapping happened before rasterisation in actual hardware. Posterisation follows as the Gouraud shading artefact, reducing colour resolution during the interpolation stage. Cell tint adds per-polygon brightness variation simulating flat-shaded face normals. The wireframe overlay is last because it represents the polygon edge structure drawn on top of the filled and shaded faces.
 
 The line buffer is essential for horizontal jitter — the FPGA reads each scanline from BRAM at an offset address, effectively shifting the entire row left or right by the LFSR-derived displacement. The LFSR re-seeds each frame when Animate is enabled, causing the jitter pattern to change every frame (simulating the camera-movement-dependent wobble of real PS1 geometry). In Static mode, the LFSR state is fixed, producing consistent per-line displacement that remains stable frame-to-frame.
 
@@ -150,7 +143,7 @@ Controls the magnitude of per-scanline horizontal displacement applied to the li
 | Range | 0 – 3 |
 | Default | 1 |
 
-Selects the grid cell size that defines the polygon mesh resolution. The four positions map to 8×8, 16×16, 32×32, and 64×64 pixel cells. Smaller cells create a denser polygon mesh with more wireframe lines and more per-cell tinting variety. Larger cells create bigger polygons with more visible flat shading and more dramatic wireframe structure. The grid size also affects the perceived posterisation, since larger cells contain more color variation within each quantised region.
+Selects the grid cell size that defines the polygon mesh resolution. The four positions map to 8×8, 16×16, 32×32, and 64×64 pixel cells. Smaller cells create a denser polygon mesh with more wireframe lines and more per-cell tinting variety. Larger cells create bigger polygons with more visible flat shading and more dramatic wireframe structure. The grid size also affects the perceived posterisation, since larger cells contain more colour variation within each quantised region.
 
 ---
 
@@ -161,7 +154,7 @@ Selects the grid cell size that defines the polygon mesh resolution. The four po
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the bit-depth reduction applied to the color channels. At zero, no posterisation occurs — full 10-bit color depth is preserved. As Posterize increases, progressively more least-significant bits are dropped, creating stairstepped color bands. At moderate values, the effect is subtle — gentle banding in gradients resembling Gouraud shading precision limits. At maximum, the image reduces to a handful of discrete brightness levels with dramatic hard-edged color bands.
+Controls the bit-depth reduction applied to the colour channels. At zero, no posterisation occurs — full 10-bit colour depth is preserved. As Posterize increases, progressively more least-significant bits are dropped, creating stairstepped colour bands. At moderate values, the effect is subtle — gentle banding in gradients resembling Gouraud shading precision limits. At maximum, the image reduces to a handful of discrete brightness levels with dramatic hard-edged colour bands.
 
 ---
 
@@ -208,7 +201,7 @@ Controls the brightness of the wireframe grid overlay at cell boundaries. At zer
 | **10 — Color Kill** | Off | On |
 | **11 — Dither** | Off | On |
 
-The five toggles configure the geometric, shading, and color characteristics of the polygon artefact simulation. Grid Shape and Shading define the fundamental polygon rendering mode. Animate controls whether jitter evolves frame-to-frame. Color Kill and Dither modify the color treatment of the posterised output. Note that this program does not include a Bypass toggle — toggle 11 controls the Dither effect instead.
+The five toggles configure the geometric, shading, and colour characteristics of the polygon artefact simulation. Grid Shape and Shading define the fundamental polygon rendering mode. Animate controls whether jitter evolves frame-to-frame. Color Kill and Dither modify the colour treatment of the posterised output. Note that this program does not include a Bypass toggle — toggle 11 controls the Dither effect instead.
 
 ---
 
@@ -251,18 +244,18 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 
 <img src={vertex_exercise2_result} alt="Gouraud Banding result"/>
 *Gouraud Banding — simulated result across source images.*
-**Source**: A smooth gradient scene — a sunset, a softly lit face, a colored backdrop, or any content with continuous tonal transitions.
+**Source**: A smooth gradient scene — a sunset, a softly lit face, a coloured backdrop, or any content with continuous tonal transitions.
 
-**Objective**: Recreate the Gouraud shading color banding of PS1 graphics and explore how dithering mitigates it.
+**Objective**: Recreate the Gouraud shading colour banding of PS1 graphics and explore how dithering mitigates it.
 
-1. **No jitter**: Set Jitter to 0% to isolate the color effect.
-2. **Posterise**: Increase Posterize to ~60%. Watch smooth gradients break into visible color bands.
+1. **No jitter**: Set Jitter to 0% to isolate the colour effect.
+2. **Posterise**: Increase Posterize to ~60%. Watch smooth gradients break into visible colour bands.
 3. **Add dithering**: Toggle Dither to On. The hard band edges soften into a crosshatch pattern.
 4. **Increase posterisation**: Push Posterize to ~80%. The bands become fewer and wider, with the dither pattern more prominent.
 5. **Cell tint**: Add Cell Tint at ~30% with Grid Size 32x32. Each cell gets a slightly different brightness, simulating per-face normal variation.
 6. **Flat shade**: Toggle Shading to Flat. Chrominance disappears, leaving only luminance bands — the look of an untextured flat-shaded model.
 
-**Key concepts**: Posterisation simulates limited Gouraud interpolation precision, dithering breaks up banding into tolerable patterns, flat shading removes color to emphasise polygon structure
+**Key concepts**: Posterisation simulates limited Gouraud interpolation precision, dithering breaks up banding into tolerable patterns, flat shading removes colour to emphasise polygon structure
 
 ---
 
@@ -270,19 +263,19 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 
 <img src={vertex_exercise3_result} alt="Full PS1 Composite result"/>
 *Full PS1 Composite — simulated result across source images.*
-**Source**: A moving scene with both detail and broad color areas — gameplay footage, a dancing figure, or a busy street with architectural elements.
+**Source**: A moving scene with both detail and broad colour areas — gameplay footage, a dancing figure, or a busy street with architectural elements.
 
-**Objective**: Combine all PS1 artefacts into a complete retro-game aesthetic: jittering geometry, color-banded shading, wireframe mesh, and animated wobble.
+**Objective**: Combine all PS1 artefacts into a complete retro-game aesthetic: jittering geometry, colour-banded shading, wireframe mesh, and animated wobble.
 
 1. **Jitter + animate**: Jitter ~50%, Animate On, Wobble Spd ~40%.
 2. **Posterise with dither**: Posterize ~50%, Dither On.
 3. **Cell tint for faceted look**: Cell Tint ~40%, Grid Size 16x16.
 4. **Triangle mesh**: Toggle Grid Shape to Triangle. Diagonal wireframe lines appear within each cell.
 5. **Wireframe overlay**: Edge Glow ~40%. The full triangulated mesh structure becomes visible.
-6. **Color Kill for monochrome**: Toggle Color Kill On for maximum retro impact, then toggle Off to compare the color version.
+6. **Color Kill for monochrome**: Toggle Color Kill On for maximum retro impact, then toggle Off to compare the colour version.
 7. **Mix control**: Reduce Mix to ~70% to blend the PS1 effect with the original, creating a subtle retro filter.
 
-**Key concepts**: Layering all artefacts together produces the authentic early-3D-game look, triangle grid adds mesh complexity, color kill recreates the wireframe debug aesthetic, partial mix creates a subtler retro treatment
+**Key concepts**: Layering all artefacts together produces the authentic early-3D-game look, triangle grid adds mesh complexity, colour kill recreates the wireframe debug aesthetic, partial mix creates a subtler retro treatment
 
 ---
 
@@ -290,7 +283,7 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 ## Tips
 
 - **Match Grid Size to content scale**: Use 8×8 or 16×16 cells for detailed subjects (faces, text), and 32×32 or 64×64 for broad scenic content (landscapes, architecture). The grid should be small enough to create visible polygon structure but large enough to contain meaningful image content per cell.
-- **Jitter + Animate sells the PS1 feel**: The single most recognizable PS1 artefact is the swimming vertex jitter. Even with all other effects disabled, Jitter at 30–40% with Animate On creates an instantly recognizable retro-game look.
+- **Jitter + Animate sells the PS1 feel**: The single most recognisable PS1 artefact is the swimming vertex jitter. Even with all other effects disabled, Jitter at 30–40% with Animate On creates an instantly recognisable retro-game look.
 - **Dither at moderate posterisation**: Dithering is most effective at moderate posterisation levels (40–60%) where it breaks up visible banding without creating an overwhelming pattern. At very high posterisation, the dither becomes a dominant visual element.
 - **Cell Tint for faceted look**: Even small amounts of Cell Tint (15–25%) dramatically change the perceived surface quality, making flat areas appear as individually lit polygon faces.
 - **No Bypass — use Mix**: Since this program has no bypass toggle, use the Mix fader to compare the processed output with the source. Mix at 0% gives the original video; mix at 100% gives the full effect.
@@ -305,13 +298,15 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 | Term | Definition |
 |------|------------|
 | **Bayer Matrix** | An ordered threshold array used for dithering; Vertex uses a 2×2 matrix producing a four-level crosshatch pattern. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory used here as three 1024×10-bit line buffers for Y, U, and V channels. |
 | **Cell Hash** | XOR combination of cell grid coordinates and LFSR state, producing a pseudo-random value unique to each grid cell for tinting. |
-| **Flat Shading** | A rendering technique assigning a single color to each polygon face, producing a faceted, low-poly appearance. |
-| **Gouraud Shading** | A rendering technique interpolating vertex colors across polygon surfaces, producing smooth but precision-limited gradients. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Flat Shading** | A rendering technique assigning a single colour to each polygon face, producing a faceted, low-poly appearance. |
+| **Gouraud Shading** | A rendering technique interpolating vertex colours across polygon surfaces, producing smooth but precision-limited gradients. |
+| **LFSR** | Linear-Feedback Shift Register; generates the pseudo-random per-scanline jitter offsets and per-cell hash contributions. |
 | **Line Buffer** | BRAM-based scanline storage enabling horizontal readout displacement for the jitter effect. |
-| **Posterisation** | Reduction of color bit depth by shifting right then left, creating stairstepped color bands from smooth gradients. |
+| **Posterisation** | Reduction of colour bit depth by shifting right then left, creating stairstepped colour bands from smooth gradients. |
 | **Subpixel Precision** | The ability to position vertices at fractional pixel coordinates, absent in PS1 hardware, causing integer-snapping wobble. |
 | **Wireframe** | A rendering mode showing only polygon edges, simulated here by drawing grid cell boundary lines at Edge Glow brightness. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

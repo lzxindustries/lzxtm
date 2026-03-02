@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 10
+sidebar_position: 9
 slug: /instruments/videomancer/aquifer
 title: "Aquifer"
 image: /img/instruments/videomancer/aquifer/aquifer_hero.png
@@ -137,7 +137,7 @@ A **Linear Feedback Shift Register** (LFSR) is a digital circuit that produces a
 
 The processing chain has two distinct phases: the wave simulation update (during vertical blanking) and the per-pixel displacement pipeline (during active video). The wave update processes one grid column per clock, completing the full 32-column sweep within the blanking interval. During active video, the height field is read but not written — it remains stable across the entire frame.
 
-The horizontal displacement path is the most critical. Input video is written into a 2048-deep BRAM scanline buffer. The height field gradient is computed in Stage 1b, generating a displacement offset that modifies the BRAM read address. The BRAM read has one clock of latency, so the gradient magnitude computation (Stage 2) runs in parallel while the BRAM data is in flight. A one-clock delay register aligns the gradient magnitude with the BRAM output for the caustic brightness application in Stage 3. The Tint Depth toggle adds a blue-shifted chroma tint proportional to the displacement magnitude, giving displaced areas a "underwater" color cast.
+The horizontal displacement path is the most critical. Input video is written into a 2048-deep BRAM scanline buffer. The height field gradient is computed in Stage 1b, generating a displacement offset that modifies the BRAM read address. The BRAM read has one clock of latency, so the gradient magnitude computation (Stage 2) runs in parallel while the BRAM data is in flight. A one-clock delay register aligns the gradient magnitude with the BRAM output for the caustic brightness application in Stage 3. The Tint Depth toggle adds a blue-shifted chroma tint proportional to the displacement magnitude, giving displaced areas a "underwater" colour cast.
 
 ---
 
@@ -268,7 +268,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 <img src={aquifer_exercise2_result} alt="Caustic Light Patterns result"/>
 *Caustic Light Patterns — simulated result across source images.*
-**Source**: Moderately bright footage with areas of uniform color — sky, walls, or fabric show caustic lines most clearly.
+**Source**: Moderately bright footage with areas of uniform colour — sky, walls, or fabric show caustic lines most clearly.
 
 **Objective**: Understand how caustic brightness enhancement creates the characteristic underwater light patterns and how it interacts with displacement.
 
@@ -276,7 +276,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 2. **Enable caustic**: Turn Caustic (Knob 4) to ~60%. Bright lines appear along every ripple front — the gradient magnitude drives a brightness boost on the Y channel.
 3. **Observe caustic character**: Where ripples are strongest (near drop impacts), the caustic lines are brightest. Between ripple rings, the image is undisturbed. At interference points where two ripple fronts cross, the caustic is especially bright.
 4. **Maximum caustic**: Push Caustic to 100%. The bright lines become vivid white filaments tracing every wave crest. Areas of high gradient saturate to peak white.
-5. **Enable tint**: Switch Tint Depth (Toggle 9) to On. Displaced areas take on a blue-green color cast, giving the effect a distinctly underwater quality.
+5. **Enable tint**: Switch Tint Depth (Toggle 9) to On. Displaced areas take on a blue-green colour cast, giving the effect a distinctly underwater quality.
 6. **Reduce refraction**: Pull Refraction to ~10%. The displacement is minimal but the caustic brightness remains — the image is mostly undistorted but latticed with bright light patterns.
 
 **Key concepts**: Gradient magnitude as caustic driver, caustic brightness boost independent of displacement magnitude, tint depth adds chroma dimension, brightness saturation at high caustic settings
@@ -310,7 +310,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 - **Drop Rate controls activity level**: Zero drop rate = calm water. Maximum drop rate = continuous rain. The simulation naturally decays to stillness when no new drops fall.
 - **Damping and Drop Rate are the primary equilibrium controls**: High drop rate with low damping creates a chaotically active surface. Low drop rate with high damping creates brief, isolated disturbances. Find the balance that suits the content.
 - **Refraction and Caustic are independent**: You can have strong displacement with no caustic boost (pure wobble), or strong caustic with no displacement (pure brightness patterns on an undistorted image). The most natural water look uses moderate amounts of both.
-- **Tint Depth sells the underwater look**: Enabling the blue-shift tint gives displaced areas a convincing aquatic color cast that significantly enhances the water illusion.
+- **Tint Depth sells the underwater look**: Enabling the blue-shift tint gives displaced areas a convincing aquatic colour cast that significantly enhances the water illusion.
 - **Freeze captures a moment**: Use Freeze to lock an interesting ripple pattern in place. The frozen pattern continues to displacement-process every incoming frame, creating a consistent spatial distortion.
 - **Reflect mode creates standing waves**: With reflected edges and persistent ripples, energy bounces back and forth across the grid, eventually creating standing wave patterns — stable nodal lines where the surface is permanently still and anti-nodes where it oscillates strongly.
 - **Feedback loops create recursive distortion**: Routing the output back to the input causes each frame to be displaced by the ripple pattern and then displaced again, creating accumulating geometric distortion.
@@ -322,17 +322,17 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the scanline delay buffer that enables horizontal refraction displacement. |
 | **Caustic** | Bright curved lines formed when light rays converge after refracting through a curved transparent surface such as water. |
 | **Damping** | The gradual reduction of wave amplitude over time, simulating energy loss due to viscosity and surface tension in the water model. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique using phase accumulators and lookup tables to generate periodic waveforms, used here to animate raindrop positions. |
 | **Height field** | A 2D grid of elevation values representing the water surface displacement at each spatial sample point. |
 | **Interference** | The combination of overlapping wave patterns producing regions where crests reinforce (constructive) or cancel (destructive) each other. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a digital circuit producing a pseudo-random bit sequence by shifting and feeding back tapped bits, used to randomise raindrop positions. |
 | **Refraction** | The bending of light as it passes between media of different optical density, simulated here as horizontal pixel displacement proportional to the water surface gradient. |
 | **Snell's law** | The physical law relating the angle of incidence to the angle of refraction when light crosses a boundary between two media of different refractive index. |
 | **Standing wave** | A stable wave pattern formed when reflected waves interfere with incoming waves, producing fixed nodes where the surface is still and anti-nodes where it oscillates. |
 | **Wave equation** | A partial differential equation describing how disturbances propagate through a medium; discretised here as a 4-neighbour average minus the previous height value. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

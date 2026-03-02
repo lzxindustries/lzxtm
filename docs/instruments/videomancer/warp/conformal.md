@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 54
+sidebar_position: 58
 slug: /instruments/videomancer/conformal
 title: "Conformal"
 image: /img/instruments/videomancer/conformal/conformal_hero.png
-description: "Mathematics is full of functions that preserve angles — and in the complex plane, those functions transform images in ways that are surprising, beautifu..."
+description: "Mathematics is full of functions that preserve angles — and in the complex plane, those functions transform images in ways that are surprising, beautiful, and deeply connected to physics and engineering."
 ---
 
 import conformal_hero from '/img/instruments/videomancer/conformal/conformal_hero.png';

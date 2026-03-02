@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 48
+sidebar_position: 50
 slug: /instruments/videomancer/chrysalis
 title: "Chrysalis"
 image: /img/instruments/videomancer/chrysalis/chrysalis_hero.png
@@ -29,7 +29,7 @@ import chrysalis_exercise3_result from '/img/instruments/videomancer/chrysalis/c
 
 A chrysalis is the transitional shell between caterpillar and butterfly — ordinary tissue reorganised into something with entirely new symmetry. This program performs an analogous transformation on video. It takes a conventional left-to-right scanline and remaps its pixel addresses through a DDS (direct digital synthesis) accumulator, folding the horizontal axis into repeating, mirrored segments that turn mundane source material into radial kaleidoscope patterns.
 
-The core technique is address-domain transformation: rather than altering pixel values (brightness, color, contrast), Chrysalis alters *where* each pixel is read from within the scanline buffer. A DDS frequency accumulator divides the horizontal span into a configurable number of segments. Within each segment, a triangle-wave fold causes the read address to sweep forward and then reverse, producing a mirror-image repeat. A per-line phase slant offsets the pattern progressively down the frame, tilting the symmetry axis from vertical toward diagonal or spiral. The result is a real-time kaleidoscope processor — every frame of incoming video is refracted through a crystalline symmetry structure.
+The core technique is address-domain transformation: rather than altering pixel values (brightness, colour, contrast), Chrysalis alters *where* each pixel is read from within the scanline buffer. A DDS frequency accumulator divides the horizontal span into a configurable number of segments. Within each segment, a triangle-wave fold causes the read address to sweep forward and then reverse, producing a mirror-image repeat. A per-line phase slant offsets the pattern progressively down the frame, tilting the symmetry axis from vertical toward diagonal or spiral. The result is a real-time kaleidoscope processor — every frame of incoming video is refracted through a crystalline symmetry structure.
 
 At conservative settings — two or four segments with gentle slant — Chrysalis produces clean bilateral or quadrilateral symmetry that enhances the compositional balance of ordinary footage. At extreme settings — sixteen segments with high slant and animation enabled — the image shatters into a rotating mandala of mirrored shards, each one a tiny window into the source material, spinning continuously as the DDS phase accumulator advances frame by frame.
 
@@ -117,7 +117,7 @@ The Slant offset is computed once per line (Y × slant coefficient) and added to
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the number of kaleidoscope segments — the angular divisions of the transformed image. The stepped control snaps to values between 2 and 16 in 8 discrete steps: at the lowest setting, the scanline is divided into two mirrored halves (bilateral symmetry); at the highest, sixteen narrow segments tile across the frame (fine crystalline facets). This control directly sets the DDS frequency word's coarse component — doubling the segment count doubles the spatial frequency of the address sweep, halving the width of each segment. Fewer segments produce bold, recognizable reflections of the source; more segments produce intricate, gem-like patterns where the source becomes almost abstract.
+Sets the number of kaleidoscope segments — the angular divisions of the transformed image. The stepped control snaps to values between 2 and 16 in 8 discrete steps: at the lowest setting, the scanline is divided into two mirrored halves (bilateral symmetry); at the highest, sixteen narrow segments tile across the frame (fine crystalline facets). This control directly sets the DDS frequency word's coarse component — doubling the segment count doubles the spatial frequency of the address sweep, halving the width of each segment. Fewer segments produce bold, recognisable reflections of the source; more segments produce intricate, gem-like patterns where the source becomes almost abstract.
 
 ---
 
@@ -149,7 +149,7 @@ Adds a per-line phase offset that tilts the symmetry axis away from vertical. At
 | Default | 0.0% |
 | Suffix | % |
 
-Scales the DDS frequency, acting as a spatial zoom control. At 50% (centre), the frequency word matches the Segments control — the configured number of segments fits exactly within the active picture width. Turning below centre reduces the frequency (zoom in): segments become wider, fewer fit on screen, and individual reflections are larger and more recognizable. Turning above centre increases the frequency (zoom out): segments become narrower, more repetitions pack into the frame, and the pattern becomes finer and more abstract. Zoom interacts multiplicatively with Segments — 4 segments at 2× zoom looks identical to 8 segments at 1× zoom.
+Scales the DDS frequency, acting as a spatial zoom control. At 50% (centre), the frequency word matches the Segments control — the configured number of segments fits exactly within the active picture width. Turning below centre reduces the frequency (zoom in): segments become wider, fewer fit on screen, and individual reflections are larger and more recognisable. Turning above centre increases the frequency (zoom out): segments become narrower, more repetitions pack into the frame, and the pattern becomes finer and more abstract. Zoom interacts multiplicatively with Segments — 4 segments at 2× zoom looks identical to 8 segments at 1× zoom.
 
 ---
 
@@ -198,7 +198,7 @@ The five toggles control independent binary features whose combinations produce 
 | Default | 100.0% |
 | Suffix | % |
 
-Crossfades between the dry input signal and the kaleidoscope-processed signal. At 0% (fader down), the output is pure dry — the original, unmodified video. At 100% (fader up), the output is pure wet — the full kaleidoscope transformation. Intermediate positions blend the two, creating a ghostly overlay where the original image shows through the symmetric pattern. This is useful for performance — you can bring the kaleidoscope effect in and out smoothly, or hold it at a partial blend where the source remains recognizable inside the symmetry structure.
+Crossfades between the dry input signal and the kaleidoscope-processed signal. At 0% (fader down), the output is pure dry — the original, unmodified video. At 100% (fader up), the output is pure wet — the full kaleidoscope transformation. Intermediate positions blend the two, creating a ghostly overlay where the original image shows through the symmetric pattern. This is useful for performance — you can bring the kaleidoscope effect in and out smoothly, or hold it at a partial blend where the source remains recognisable inside the symmetry structure.
 
 ---
 
@@ -217,8 +217,8 @@ These exercises progress from simple bilateral symmetry through animated mandala
 1. **Two-segment mirror**: Set Segments to the lowest step (2 segments). Enable Mirror (Toggle 7). Set Mix fader to 100%. The image splits into two mirrored halves — a Rorschach-like bilateral symmetry.
 2. **Adjust fold point**: Sweep the Fold knob from 0% to 100%. Watch how the mirror axis shifts within each segment — at 50%, perfect symmetry; off-centre, one half dominates.
 3. **Increase segments**: Step Segments up to 4, then 8. The image refracts into progressively more facets, each one a mirrored slice of the source.
-4. **Zoom in**: Turn Zoom below centre to enlarge the segments. Each facet now shows a larger portion of the source, making individual reflections more recognizable.
-5. **Offset framing**: Adjust Offset to slide the pattern until an interesting feature (an eye, a color boundary) sits at the centre of a fold axis.
+4. **Zoom in**: Turn Zoom below centre to enlarge the segments. Each facet now shows a larger portion of the source, making individual reflections more recognisable.
+5. **Offset framing**: Adjust Offset to slide the pattern until an interesting feature (an eye, a colour boundary) sits at the centre of a fold axis.
 
 **Key concepts**: Segment count sets the angular divisions, fold point controls the symmetry balance within each segment, mirror enables reflection vs tiled repetition, zoom scales segment width, offset frames the source
 
@@ -237,7 +237,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 3. **Moderate slant**: At ~40%, the segment boundaries form clear diagonal lines across the frame. The kaleidoscope pattern now has a rotational quality.
 4. **High slant**: Push Slant toward 80–100%. The boundaries wrap around, creating spiral or helical patterns — the symmetry axis corkscrews down the frame.
 5. **Zoom interaction**: Reduce Zoom to enlarge the spiral structure. Increase Zoom to tighten it into fine helical threads.
-6. **Wrap vs clamp**: Toggle Wrap (Toggle 9). With Wrap on, the spiral tiles seamlessly. With Wrap off, clamped edges create bands of solid color at the spiral boundaries.
+6. **Wrap vs clamp**: Toggle Wrap (Toggle 9). With Wrap on, the spiral tiles seamlessly. With Wrap off, clamped edges create bands of solid colour at the spiral boundaries.
 
 **Key concepts**: Slant adds per-line phase offset tilting the symmetry axis, high slant creates spiral/helical patterns, slant and zoom interact to control spiral pitch, wrap ensures seamless tiling at boundaries
 
@@ -247,7 +247,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 <img src={chrysalis_exercise3_result} alt="Animated Mandala result"/>
 *Animated Mandala — simulated result across source images.*
-**Source**: Colorful, textured footage — nature scenes, fabrics, or abstract video feedback.
+**Source**: Colourful, textured footage — nature scenes, fabrics, or abstract video feedback.
 
 **Objective**: Combine animation, slant, and high segment counts to create a continuously rotating mandala.
 
@@ -258,7 +258,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 5. **Fine-tune speed**: Adjust Speed for a meditative, slow rotation. Very low values (~5–10%) produce a glacial drift; higher values (~60%+) spin rapidly.
 6. **Add zoom variation**: Sweep Zoom while animation runs. Zooming in creates large, slow-moving reflections; zooming out tightens the pattern into a dense, fast-spinning rosette.
 7. **Invert direction**: Toggle Invert (Toggle 10) to reverse the scroll direction — the mandala now rotates the opposite way.
-8. **Partial mix**: Pull the Mix fader to ~60%. The original source ghosts through the kaleidoscope, grounding the abstract pattern in recognizable imagery.
+8. **Partial mix**: Pull the Mix fader to ~60%. The original source ghosts through the kaleidoscope, grounding the abstract pattern in recognisable imagery.
 
 **Key concepts**: Animation adds per-frame phase offset for continuous scrolling, speed controls the rotation rate, high segment counts create dense mandala geometry, invert reverses rotation direction, partial mix reveals the source inside the pattern
 
@@ -273,7 +273,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 - **Zoom and Segments interact**: Doubling segments at fixed zoom is equivalent to halving zoom at fixed segments. Use Segments for coarse control and Zoom for fine adjustment.
 - **Wrap for seamless patterns**: Always enable Wrap unless you specifically want the clamped-edge glitch effect. Wrap ensures clean tiling at all segment boundaries.
 - **Animate for performance**: The Animate + Speed combination turns Chrysalis into a self-running visual instrument. Set a speed and let the mandala evolve — no hands required.
-- **Partial mix grounds the image**: At 50–70% mix, the source remains visible inside the kaleidoscope pattern. This creates a layered effect where symmetrical geometry overlays recognizable imagery.
+- **Partial mix grounds the image**: At 50–70% mix, the source remains visible inside the kaleidoscope pattern. This creates a layered effect where symmetrical geometry overlays recognisable imagery.
 - **Invert for instant variety**: Toggling Invert flips the entire pattern horizontally. In animation mode, this reverses the rotation direction for an immediate visual change.
 
 ---
@@ -283,11 +283,11 @@ These exercises progress from simple bilateral symmetry through animated mandala
 | Term | Definition |
 |------|------------|
 | **Bilateral symmetry** | Symmetry across a single axis, producing two mirror-image halves; the simplest kaleidoscope mode with two segments. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within the iCE40 FPGA used here as scanline buffers for address-remapped pixel lookup. |
 | **Crossfade** | A gradual blend between two signals (dry and wet) controlled by the Mix fader, allowing partial transparency between the original and processed images. |
 | **DDS (Direct Digital Synthesis)** | A technique using a phase accumulator with a tunable frequency word to generate precise waveforms; repurposed here to produce scanline read addresses instead of RF carriers. |
 | **Dry/wet** | Signal routing terminology where "dry" is the unprocessed original and "wet" is the effect-processed output. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip (Lattice iCE40 HX4K) that executes the video processing pipeline in real time. |
 | **Frequency word** | The fixed increment added to a DDS phase accumulator on each clock cycle, determining the output waveform's spatial frequency and thus the number of segments. |
 | **iCE40** | The Lattice Semiconductor FPGA family used in Videomancer; provides the logic fabric, BRAM, and DSP resources for real-time video processing. |
 | **N-fold symmetry** | Rotational symmetry of order N, where a pattern repeats N times around a central point; set by the Segments control. |

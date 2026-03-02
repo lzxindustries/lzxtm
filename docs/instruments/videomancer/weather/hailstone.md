@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 117
+sidebar_position: 126
 slug: /instruments/videomancer/hailstone
 title: "Hailstone"
 image: /img/instruments/videomancer/hailstone/hailstone_hero.png
@@ -33,7 +33,7 @@ The name *hailstone* comes from the colloquial term for frozen precipitation tha
 
 At conservative settings — small radius, low gravity, two particles — Hailstone produces gentle bright dots drifting across the live video. At extreme settings — four large particles, high gravity, wide splashes, blue tint — the screen fills with diamond flashes and bright impact bars that dramatically transform the source.
 
-> **TOML vs. VHDL discrepancies**: The TOML parameter names and descriptions were written to describe an aspirational feature set. The VHDL implementation is simpler. This supplement documents what the VHDL *actually does*. See individual parameter descriptions for specific discrepancies.
+
 
 ---
 
@@ -174,7 +174,7 @@ Controls the horizontal radius of the splash bars that appear when a particle bo
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Switches 7–11 are independent binary options, though their TOML descriptions substantially overstate the implemented functionality. Switch 7 toggles between 2 and 4 active particles. Switch 8 enables a glow trail mode. Switch 9 enables a blue color tint on particle and splash pixels. Switch 10 is mapped but unused in the VHDL. Switch 11 bypasses all processing. The TOML describes Switches 7 and 8 as multi-state selectors (steps_4), but the VHDL reads only a single bit from each, so they function as simple on/off toggles despite the TOML listing four value labels.
+Switches 7–11 are independent binary options, though their TOML descriptions substantially overstate the implemented functionality. Switch 7 toggles between 2 and 4 active particles. Switch 8 enables a glow trail mode. Switch 9 enables a blue colour tint on particle and splash pixels. Switch 10 is mapped but unused in the VHDL. Switch 11 bypasses all processing. The TOML describes Switches 7 and 8 as multi-state selectors (steps_4), but the VHDL reads only a single bit from each, so they function as simple on/off toggles despite the TOML listing four value labels.
 
 ---
 
@@ -193,7 +193,7 @@ Controls the wet/dry crossfade via three interpolator_u instances (one per YUV c
 
 ## Guided Exercises
 
-These exercises progress from simple falling particles through splash effects to the full particle system with color tinting and trail mode.
+These exercises progress from simple falling particles through splash effects to the full particle system with colour tinting and trail mode.
 
 ### Exercise 1: Falling Diamonds
 
@@ -262,7 +262,7 @@ These exercises progress from simple falling particles through splash effects to
 - **Pot 6 and Toggle 10 are inert**: Impact Brightness (Pot 6) and Animate (Toggle 10) are mapped to registers but unused in the VHDL. Turning them has no visible effect.
 - **Splash bars are brief**: Each splash lasts only 8 frames (~130 ms). With low gravity, bounces are infrequent and splashes rare. Increase gravity for more frequent impacts and more visible splash activity.
 - **Trail mode is not persistence**: Trail mode does not accumulate across frames — it is a per-pixel-clock computation that draws a glow halo around each particle's current position. The halo disappears instantly when the particle moves to a new position.
-- **Blue tint is selective**: The color tint only applies to pixels that pass the hit or splash test. Background pixels are completely unaffected, so the tint acts as a color key for the particle overlay.
+- **Blue tint is selective**: The colour tint only applies to pixels that pass the hit or splash test. Background pixels are completely unaffected, so the tint acts as a colour key for the particle overlay.
 - **Feedback loops**: Routing the output back to the input creates additive particle trails that accumulate frame over frame — particles leave bright streaks across the image.
 - **Bypass for A/B comparison**: Switch 11 removes all particle overlays instantly.
 
@@ -274,15 +274,15 @@ These exercises progress from simple falling particles through splash effects to
 |------|------------|
 | **Additive Overlay** | A compositing method that adds foreground brightness to the background, never darkening it; values exceeding the maximum (1023) are clamped. |
 | **Bounce Restitution** | The proportion of velocity retained after a bounce; in Hailstone, the bounce velocity is a fixed value rather than a proportion of impact velocity. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gravity** | In a discrete-time particle system, a constant per-frame increment to vertical velocity that simulates downward acceleration. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Interpolator** | A hardware module that performs linear crossfading between two input values based on a mix parameter. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator that produces a deterministic but random-looking bit sequence. |
 | **LUT** | Look-Up Table; a fundamental FPGA logic resource used to implement combinational functions. |
 | **Manhattan Distance** | The sum of absolute differences along each axis: |Δx| + |Δy|. Produces diamond-shaped distance contours rather than circular ones. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Splash Bar** | A bright horizontal stripe composited near the bottom boundary when a particle bounces, simulating the visual effect of impact. |
 | **SPSC Queue** | Single-Producer Single-Consumer lock-free queue used for cross-core communication in the Videomancer kernel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

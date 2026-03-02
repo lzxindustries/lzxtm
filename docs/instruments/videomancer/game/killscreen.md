@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 138
+sidebar_position: 151
 slug: /instruments/videomancer/killscreen
 title: "Killscreen"
 image: /img/instruments/videomancer/killscreen/killscreen_hero.png
-description: "On September 21, 1982, Billy Mitchell became the first person to reach screen 256 of Pac-Man — and discovered that the game's level counter overflowed i..."
+description: "On September 21, 1982, Billy Mitchell became the first person to reach screen 256 of Pac-Man — and discovered that the game's level counter overflowed its 8-bit storage."
 ---
 
+import killscreen_hero from '/img/instruments/videomancer/killscreen/killscreen_hero.png';
 import killscreen_before_after from '/img/instruments/videomancer/killscreen/killscreen_before_after.png';
 import killscreen_control_panel from '/img/instruments/videomancer/killscreen/killscreen_control_panel.png';
 import killscreen_exercise1_result from '/img/instruments/videomancer/killscreen/killscreen_exercise1_result.png';
 import killscreen_exercise2_result from '/img/instruments/videomancer/killscreen/killscreen_exercise2_result.png';
 import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen/killscreen_exercise3_result.png';
-import killscreen_hero from '/img/instruments/videomancer/killscreen/killscreen_hero.png';
-import killscreen_source1_kodim15 from '/img/instruments/videomancer/killscreen/killscreen_source1_kodim15.png';
-import killscreen_source2_kodim03 from '/img/instruments/videomancer/killscreen/killscreen_source2_kodim03.png';
-import killscreen_source3_kodim15_bw from '/img/instruments/videomancer/killscreen/killscreen_source3_kodim15_bw.png';
 
 # Killscreen
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={killscreen_hero} alt="Killscreen hero image"/>
 *Killscreen corrupting a video feed into tile-mapped glitch patterns inspired by the Pac-Man level 256 overflow bug.*
@@ -284,9 +277,11 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 | **Galois LFSR** | A Linear Feedback Shift Register using XOR taps on the output bit; produces a pseudo-random binary sequence used for tile hashing. |
 | **Hash** | A deterministic function that maps tile coordinates to a pseudo-random value, ensuring repeatable per-tile corruption decisions. |
 | **Kill Screen** | A level in an arcade game where a software bug causes the display to become unplayable due to memory corruption; most famously, Pac-Man level 256. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state, producing a repeating pseudo-random sequence. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Tile** | A fixed-size rectangular block of pixels (e.g., 8×8 or 16×16) treated as a single unit in a tile-based graphics system. |
 | **Tile Map** | A data structure mapping screen grid positions to pattern indices in a character ROM; the addressing scheme corrupted by kill-screen bugs. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

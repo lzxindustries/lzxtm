@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 73
+sidebar_position: 80
 slug: /instruments/videomancer/diptych
 title: "Diptych"
 image: /img/instruments/videomancer/diptych/diptych_hero.png
@@ -285,11 +285,11 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Complementary Colors** | Color pairs that sit opposite each other on the color wheel; in YUV, swapping a chroma channel via NOT maps every hue to its complement. |
 | **Diptych** | A two-panel artwork, historically hinged along a central fold; the namesake of this program. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that linearly blends between two values based on a mix parameter; used here for wet/dry crossfading. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Point** | The horizontal pixel position at which the frame is divided into normal and inverted halves. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

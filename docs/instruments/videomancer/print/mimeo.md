@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 167
+sidebar_position: 183
 slug: /instruments/videomancer/mimeo
 title: "Mimeo"
 image: /img/instruments/videomancer/mimeo/mimeo_hero.png
 description: "Before photocopiers, before laser printers, there was the mimeograph."
 ---
 
+import mimeo_hero from '/img/instruments/videomancer/mimeo/mimeo_hero.png';
 import mimeo_before_after from '/img/instruments/videomancer/mimeo/mimeo_before_after.png';
 import mimeo_control_panel from '/img/instruments/videomancer/mimeo/mimeo_control_panel.png';
 import mimeo_exercise1_result from '/img/instruments/videomancer/mimeo/mimeo_exercise1_result.png';
 import mimeo_exercise2_result from '/img/instruments/videomancer/mimeo/mimeo_exercise2_result.png';
 import mimeo_exercise3_result from '/img/instruments/videomancer/mimeo/mimeo_exercise3_result.png';
-import mimeo_hero from '/img/instruments/videomancer/mimeo/mimeo_hero.png';
-import mimeo_source1_kodim02 from '/img/instruments/videomancer/mimeo/mimeo_source1_kodim02.png';
-import mimeo_source2_kodim07 from '/img/instruments/videomancer/mimeo/mimeo_source2_kodim07.png';
-import mimeo_source3_kodim01_bw from '/img/instruments/videomancer/mimeo/mimeo_source3_kodim01_bw.png';
 
 # Mimeo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={mimeo_hero} alt="Mimeo hero image"/>
 *Mimeo rendering a spirit duplicator print with purple ink on cream paper stock, showing letterform fill-in and progressive copy fade.*
@@ -291,10 +284,12 @@ These exercises progress from basic posterized prints through fully degraded mul
 | **Hectograph** | A duplicating process using a gelatin pad to transfer dye to paper, typically producing blue prints. |
 | **IIR** | Infinite Impulse Response; a filter type where the output feeds back into the input, creating persistent temporal or spatial effects. |
 | **Letterform Fill-In** | The flooding of narrow white spaces between dark ink areas, caused by capillary action and ink pressure in stencil printing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a digital circuit that generates pseudo-random binary sequences, used here for ink noise and paper grain. |
 | **Mimeograph** | A stencil duplicator that forces ink through a perforated wax stencil onto paper, widely used from the 1880s through the 1970s. |
 | **Paper Grain** | The visible fiber texture of paper caused by variations in pulp density, especially noticeable on cheap duplicator stock. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform brightness. |
 | **Spirit Duplicator** | A duplicating machine (e.g., Ditto machine) that transfers aniline dye from a wax master to paper using a volatile solvent. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

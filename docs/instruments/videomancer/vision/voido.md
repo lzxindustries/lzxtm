@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 281
+sidebar_position: 307
 slug: /instruments/videomancer/voido
 title: "Voido"
 image: /img/instruments/videomancer/voido/voido_hero.png
-description: "Early television chromakey — known at the BBC as Color Separation Overlay (CSO) — was a crude but effective technique."
+description: "Early television chromakey — known at the BBC as Colour Separation Overlay (CSO) — was a crude but effective technique."
 ---
 
+import voido_hero from '/img/instruments/videomancer/voido/voido_hero.png';
 import voido_before_after from '/img/instruments/videomancer/voido/voido_before_after.png';
 import voido_control_panel from '/img/instruments/videomancer/voido/voido_control_panel.png';
 import voido_exercise1_result from '/img/instruments/videomancer/voido/voido_exercise1_result.png';
 import voido_exercise2_result from '/img/instruments/videomancer/voido/voido_exercise2_result.png';
 import voido_exercise3_result from '/img/instruments/videomancer/voido/voido_exercise3_result.png';
-import voido_hero from '/img/instruments/videomancer/voido/voido_hero.png';
-import voido_source1_kodim15 from '/img/instruments/videomancer/voido/voido_source1_kodim15.png';
-import voido_source2_kodim15_bw from '/img/instruments/videomancer/voido/voido_source2_kodim15_bw.png';
-import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_source3_male_1024.png';
 
 # Voido
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={voido_hero} alt="Voido hero image"/>
 *Voido performing BBC-style chromakey separation with deliberate edge artifacts, spill suppression, and patterned fill behind keyed regions.*
@@ -34,7 +27,7 @@ import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_so
 
 ## Overview
 
-Early television chromakey — known at the BBC as Color Separation Overlay (CSO) — was a crude but effective technique. A camera pointed at a performer standing in front of a uniformly colored backdrop; an analog circuit compared each pixel's hue to a reference, and wherever the hue matched, the pixel was replaced with a second video source. The system was imprecise. Edges tore and flickered, the key color bled into foreground skin tones, and the threshold between "in" and "out" wobbled with lighting changes. Voido recreates this experience faithfully.
+Early television chromakey — known at the BBC as Colour Separation Overlay (CSO) — was a crude but effective technique. A camera pointed at a performer standing in front of a uniformly colored backdrop; an analog circuit compared each pixel's hue to a reference, and wherever the hue matched, the pixel was replaced with a second video source. The system was imprecise. Edges tore and flickered, the key color bled into foreground skin tones, and the threshold between "in" and "out" wobbled with lighting changes. Voido recreates this experience faithfully.
 
 The name *Voido* is a play on *video* and *void* — the empty space left behind when the key removes the background. The program operates entirely in the hue domain: it extracts an approximate hue angle from the U/V chroma channels using an octant-plus-ratio atan2 approximation, computes the circular distance to a user-selected key hue, and generates a soft or hard key signal. Foreground pixels are despilled to remove contamination from the key color, while keyed regions are filled with one of four selectable patterns — a flat matte, horizontal bars, a color ramp, or a grid. An artifact generator adds LFSR-driven noise and slew-rate limiting to the key signal, replicating the edge tearing and hysteresis of vintage CSO hardware.
 
@@ -44,9 +37,9 @@ At clean settings Voido is a functional chromakey — usable for real compositin
 
 ## Background
 
-### BBC Color Separation Overlay
+### BBC Colour Separation Overlay
 
-Color Separation Overlay (CSO) was the BBC's name for their chromakey system, first used in production in the late 1960s. Unlike American systems that typically keyed on blue, the BBC's CSO could key on any saturated color, though yellow and green were most common for Doctor Who-era effects. The circuit compared the amplitude and phase of the chrominance signal to a reference, producing a switching signal that selected between two video inputs on a pixel-by-pixel basis. Early CSO was notoriously temperamental — uneven lighting, wrinkled backdrops, and reflective costumes all caused the key to break down, producing the characteristic "halo" and "tearing" artifacts visible in 1970s BBC productions.
+Colour Separation Overlay (CSO) was the BBC's name for their chromakey system, first used in production in the late 1960s. Unlike American systems that typically keyed on blue, the BBC's CSO could key on any saturated color, though yellow and green were most common for Doctor Who-era effects. The circuit compared the amplitude and phase of the chrominance signal to a reference, producing a switching signal that selected between two video inputs on a pixel-by-pixel basis. Early CSO was notoriously temperamental — uneven lighting, wrinkled backdrops, and reflective costumes all caused the key to break down, producing the characteristic "halo" and "tearing" artifacts visible in 1970s BBC productions.
 
 ### Hue-Domain Keying
 
@@ -235,7 +228,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 *Vintage BBC CSO Artifacts — simulated result across source images.*
 **Source**: Same green-screen footage as Exercise 1, or any keyed material.
 
-**Objective**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Color Separation Overlay.
+**Objective**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Colour Separation Overlay.
 
 1. **Start clean**: Begin with the clean key from Exercise 1.
 2. **Add artifacts**: Slowly increase Artifact from 0% to about 50%. Watch the key edges begin to tear and flicker with noise.
@@ -289,14 +282,16 @@ These exercises progress from basic chromakeying through creative artifact gener
 | **Artifact** | Deliberate imperfections added to the key signal to replicate the edge behavior of vintage chromakey hardware. |
 | **Chroma Magnitude** | The length of the UV vector; larger values indicate more saturated color. Used by the saturation gate to exclude desaturated pixels. |
 | **Chromakey** | The technique of replacing pixels matching a specific key color with an alternate video source or fill pattern. |
-| **CSO** | Color Separation Overlay; the BBC's term for their chromakey system, used from the late 1960s through the 1980s. |
+| **CSO** | Colour Separation Overlay; the BBC's term for their chromakey system, used from the late 1960s through the 1980s. |
 | **Despill** | Removing contamination of the key color from foreground pixels by subtracting the key-hue UV component. |
 | **Fill** | The video content displayed in keyed-out regions; Voido provides four built-in patterns. |
 | **Hard Key** | A binary key mode where pixels are either fully keyed or fully unkeyed, with no intermediate values. |
 | **Hue Angle** | The angular direction of the UV chroma vector, representing the pure color (red, green, blue, etc.) independent of saturation. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator used to produce noise for the artifact stage. |
 | **Octant** | One of eight 45° sectors used in the atan2 approximation to extract hue angle from U/V coordinates. |
 | **Slew Rate** | The maximum speed at which the key signal can change between adjacent pixels; limiting slew rate produces gradual transitions and tearing. |
 | **Soft Key** | A key mode with linear ramp transitions at edges, producing smooth, anti-aliased boundaries between foreground and fill. |
 | **Spill** | Reflected light from the backdrop that contaminates the foreground subject's colors with the key hue. |
 | **Tolerance** | The angular width of the hue acceptance window; larger tolerance captures a wider range of hues around the key target. |
+
+---

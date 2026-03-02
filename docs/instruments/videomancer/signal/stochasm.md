@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 249
+sidebar_position: 273
 slug: /instruments/videomancer/stochasm
 title: "Stochasm"
 image: /img/instruments/videomancer/stochasm/stochasm_hero.png
 description: "In most signal processing contexts, noise is the enemy — an unwanted corruption that obscures the signal you are trying to preserve."
 ---
 
+import stochasm_hero from '/img/instruments/videomancer/stochasm/stochasm_hero.png';
 import stochasm_before_after from '/img/instruments/videomancer/stochasm/stochasm_before_after.png';
 import stochasm_control_panel from '/img/instruments/videomancer/stochasm/stochasm_control_panel.png';
 import stochasm_exercise1_result from '/img/instruments/videomancer/stochasm/stochasm_exercise1_result.png';
 import stochasm_exercise2_result from '/img/instruments/videomancer/stochasm/stochasm_exercise2_result.png';
 import stochasm_exercise3_result from '/img/instruments/videomancer/stochasm/stochasm_exercise3_result.png';
-import stochasm_hero from '/img/instruments/videomancer/stochasm/stochasm_hero.png';
-import stochasm_source1_kodim15 from '/img/instruments/videomancer/stochasm/stochasm_source1_kodim15.png';
-import stochasm_source2_kodim01 from '/img/instruments/videomancer/stochasm/stochasm_source2_kodim01.png';
-import stochasm_source3_stream_bridge_512 from '/img/instruments/videomancer/stochasm/stochasm_source3_stream_bridge_512.png';
 
 # Stochasm
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={stochasm_hero} alt="Stochasm hero image"/>
 *Stochasm applying multi-stage stochastic resonance to extract sub-threshold signal features through controlled noise injection.*
@@ -262,10 +255,10 @@ These exercises progress from basic threshold quantisation to full stochastic re
 2. **Resonance sweep**: Increase Noise Amp to ~40%. The output should show a granular reconstruction of the source with visible stochastic texture.
 3. **Temporal persistence**: Increase Correlation above 50%. The flickering noise freezes into a stable stipple pattern.
 4. **Luma-only processing**: Enable Luma Only (Switch 9). The stochastic texture is confined to brightness variations while chrominance stays smooth.
-5. **Inversion**: Toggle Invert (Switch 10) for a solarized, high-contrast result. The quantisation levels reverse — dark areas become bright band graphics.
+5. **Inversion**: Toggle Invert (Switch 10) for a solarised, high-contrast result. The quantisation levels reverse — dark areas become bright band graphics.
 6. **Blend**: Lower the Mix fader to ~60% to layer the stochastic texture over the original image as a subtle overlay.
 
-**Key concepts**: Stochastic resonance reveals structure hidden below the noise floor, temporal correlation converts flicker to texture, luma-only processing preserves color fidelity
+**Key concepts**: Stochastic resonance reveals structure hidden below the noise floor, temporal correlation converts flicker to texture, luma-only processing preserves colour fidelity
 
 ---
 
@@ -275,7 +268,7 @@ These exercises progress from basic threshold quantisation to full stochastic re
 - **Match noise to spacing**: The stochastic resonance sweet spot occurs when the noise amplitude is roughly equal to the spacing between adjacent thresholds. Start with both at ~30% and fine-tune from there.
 - **Signed noise for symmetry**: Signed mode produces zero-mean dither that preserves the average brightness of the source. Unsigned mode adds a positive bias — useful for intentionally shifting the threshold response upward.
 - **Temporal correlation for texture**: Without correlation, the noise flickers every pixel — energetic but visually busy. Enabling correlation creates a stable stipple pattern that reads as a textured surface rather than random grain.
-- **Luma-only for subtlety**: Applying stochastic resonance only to the Y channel preserves the original color information while adding monochromatic texture — a useful mode for overlaying grain on clean footage.
+- **Luma-only for subtlety**: Applying stochastic resonance only to the Y channel preserves the original colour information while adding monochromatic texture — a useful mode for overlaying grain on clean footage.
 - **Weight curve for tone**: The exponentially decaying weight mode creates a nonlinear brightness response — useful for producing dark, moody images where only the brightest features survive.
 - **Feedback loops**: Route Stochasm's output back to its input for recursive stochastic resonance. The cascade progressively re-quantises its own output, creating evolving textures that settle into periodic attractors.
 - **Stage count shapes granularity**: One stage = hard threshold. Eight stages = fine-grain quantisation with noise. Use intermediate values to control the coarseness of the stochastic texture.
@@ -290,11 +283,13 @@ These exercises progress from basic threshold quantisation to full stochastic re
 | **Cascade** | A series of identical processing stages connected in sequence, where each stage's decision contributes to the final output. |
 | **Comparator** | A circuit that produces a binary (1-bit) output: high if the input exceeds a threshold, low otherwise. |
 | **Dither** | Small noise added to a signal before quantisation to break up banding and create the appearance of additional tonal levels. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Galois LFSR** | A type of linear feedback shift register where XOR gates are placed in the data path between register stages, producing pseudo-random sequences. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state, generating a pseudo-random binary sequence. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Quantisation** | Mapping a continuous range of values to a smaller set of discrete levels. |
 | **Stochastic Resonance** | A phenomenon where adding noise to a sub-threshold signal improves its detection by a nonlinear system (threshold comparator). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

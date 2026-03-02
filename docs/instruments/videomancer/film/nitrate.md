@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 181
+sidebar_position: 196
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
 image: /img/instruments/videomancer/nitrate/nitrate_hero.png
 description: "Before Technicolor, cinema was colored by hand."
 ---
 
+import nitrate_hero from '/img/instruments/videomancer/nitrate/nitrate_hero.png';
 import nitrate_before_after from '/img/instruments/videomancer/nitrate/nitrate_before_after.png';
 import nitrate_control_panel from '/img/instruments/videomancer/nitrate/nitrate_control_panel.png';
 import nitrate_exercise1_result from '/img/instruments/videomancer/nitrate/nitrate_exercise1_result.png';
 import nitrate_exercise2_result from '/img/instruments/videomancer/nitrate/nitrate_exercise2_result.png';
 import nitrate_exercise3_result from '/img/instruments/videomancer/nitrate/nitrate_exercise3_result.png';
-import nitrate_hero from '/img/instruments/videomancer/nitrate/nitrate_hero.png';
-import nitrate_source1_kodim03 from '/img/instruments/videomancer/nitrate/nitrate_source1_kodim03.png';
-import nitrate_source2_kodim13 from '/img/instruments/videomancer/nitrate/nitrate_source2_kodim13.png';
-import nitrate_source3_kodim13_bw from '/img/instruments/videomancer/nitrate/nitrate_source3_kodim13_bw.png';
 
 # Nitrate
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={nitrate_hero} alt="Nitrate hero image"/>
 *Nitrate applying sepia-toned tinting and blue-toned toning to create a hand-painted silent cinema colorization effect.*
@@ -39,6 +32,7 @@ Before Technicolor, cinema was colored by hand. From the 1890s through the late 
 Nitrate recreates these photochemical coloring processes in real-time video. Two independent hue wheels (Tint Hue and Tone Hue) select colors from an eight-segment piecewise UV mapping. The tint process applies color proportional to luminance (brighter pixels get more color); the tone process applies color proportional to inverse luminance (darker pixels get more color). Four blending modes — combined tint+tone, tone-only, and stencil multi-zone — determine how the two colors interact. A per-frame LFSR flicker gate simulates the brightness variations of nitrate prints projected on carbon arc equipment.
 
 The name refers to cellulose nitrate, the highly flammable film stock used in the silent era. Most surviving tinted and toned prints are nitrate originals, and their characteristic warm amber patina and occasional frame-by-frame brightness flutter are the visual signatures that Nitrate reproduces.
+
 
 
 ---
@@ -293,10 +287,12 @@ These exercises progress from basic single-color tinting through duotone process
 |------|------------|
 | **Carbon Arc** | A type of electric lamp used in early film projection, producing light by passing current through carbon electrodes. Known for frame-to-frame brightness variation. |
 | **Duotone** | A colorization technique combining two colors, typically one for highlights and one for shadows. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator. Nitrate uses one to produce per-frame flicker noise. |
+| **Luminance** | The brightness component (Y) of a YUV video signal. |
 | **Nitrate** | Cellulose nitrate; the flammable film stock used in cinema from the 1890s through the 1950s. |
 | **Pathé Stencil** | A hand-cut stencil process developed by Pathé Frères for applying multiple colors to different zones within a single film frame. |
 | **Tinting** | Coloring the bright areas of a film print by dyeing the film base. Color is proportional to luminance. |
 | **Toning** | Coloring the dark areas of a film print by replacing silver with a metallic salt. Color is proportional to inverse luminance. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+
+---

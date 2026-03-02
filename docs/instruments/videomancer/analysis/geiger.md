@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 111
+sidebar_position: 120
 slug: /instruments/videomancer/geiger
 title: "Geiger"
 image: /img/instruments/videomancer/geiger/geiger_hero.png
@@ -283,18 +283,18 @@ These exercises progress from basic radiation detection to composite visualizati
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Geiger uses zero BRAM. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Flash Type** | One of four rendering modes (Point, Ring, Bloom, Invert) controlling the brightness and character of detection event visualization. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter topology where the output feeds back into the computation, creating exponential decay or persistence. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a shift register with XOR taps that generates a pseudo-random binary sequence. Geiger uses a 16-bit LFSR for threshold generation and spatial gating. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Meter** | A horizontal brightness bar rendered at the bottom 32 rows of the screen, showing detection count from the previous frame. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Scintillation** | A brief flash of light produced when a particle strikes a phosphor or crystal; the visual metaphor behind Geiger's flash rendering. |
 | **Spatial Gate** | A secondary LFSR-based filter that randomly sub-samples which pixels are eligible for detection, controlled by Click Rate. |
 | **Stochastic** | Involving randomness; Geiger's detection is stochastic because a pseudo-random threshold is compared against luminance each pixel clock. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

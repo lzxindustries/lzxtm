@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 196
+sidebar_position: 211
 slug: /instruments/videomancer/petrichor
 title: "Petrichor"
 image: /img/instruments/videomancer/petrichor/petrichor_hero.png
 description: "Video monitors show flat images."
 ---
 
+import petrichor_hero from '/img/instruments/videomancer/petrichor/petrichor_hero.png';
 import petrichor_before_after from '/img/instruments/videomancer/petrichor/petrichor_before_after.png';
 import petrichor_control_panel from '/img/instruments/videomancer/petrichor/petrichor_control_panel.png';
 import petrichor_exercise1_result from '/img/instruments/videomancer/petrichor/petrichor_exercise1_result.png';
 import petrichor_exercise2_result from '/img/instruments/videomancer/petrichor/petrichor_exercise2_result.png';
 import petrichor_exercise3_result from '/img/instruments/videomancer/petrichor/petrichor_exercise3_result.png';
-import petrichor_hero from '/img/instruments/videomancer/petrichor/petrichor_hero.png';
-import petrichor_source1_kodim01 from '/img/instruments/videomancer/petrichor/petrichor_source1_kodim01.png';
-import petrichor_source2_kodim02 from '/img/instruments/videomancer/petrichor/petrichor_source2_kodim02.png';
-import petrichor_source3_stream_bridge_512 from '/img/instruments/videomancer/petrichor/petrichor_source3_stream_bridge_512.png';
 
 # Petrichor
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={petrichor_hero} alt="Petrichor hero image"/>
 *Petrichor splitting the frame at the horizon to produce rain-slicked pavement reflections, atmospheric haze, and animated rain streaks over a cityscape.*
@@ -278,14 +271,16 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the scanline ring buffer. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by accumulating a phase value each clock cycle and looking up the corresponding amplitude. |
 | **Haze** | Simulated atmospheric scattering that compresses contrast and tints the image toward a target color. |
 | **Horizon** | The horizontal dividing line between the sky region (above) and the reflective surface region (below). |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for puddle zone modulation. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Reflection** | A vertically-flipped, attenuated copy of buffered scanlines displayed below the horizon to simulate wet-surface mirroring. |
 | **Ring Buffer** | A circular memory structure where the write pointer wraps around to the beginning after reaching the end, continuously overwriting the oldest data. |
 | **Sine LUT** | A lookup table storing pre-computed sine values used to generate the rain streak spatial pattern. |
 | **Stretch** | Address compression applied to the reflection readback, simulating the geometric elongation of oblique-angle reflections. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

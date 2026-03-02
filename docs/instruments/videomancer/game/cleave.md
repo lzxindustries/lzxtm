@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 50
+sidebar_position: 52
 slug: /instruments/videomancer/cleave
 title: "Cleave"
 image: /img/instruments/videomancer/cleave/cleave_hero.png
-description: "The Nintendo Entertainment System's Picture Processing Unit had a peculiar timing trick: the PPU could detect the moment a special 'sprite zero' pixel o..."
+description: "The Nintendo Entertainment System's Picture Processing Unit had a peculiar timing trick: the PPU could detect the moment a special \"sprite zero\" pixel overlapped the background, and the CPU would spin in a tight polling loop waiting for that flag."
 ---
 
 import cleave_hero from '/img/instruments/videomancer/cleave/cleave_hero.png';
@@ -292,21 +292,21 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the quarter-wave sine lookup table. |
 | **Chroma** | The color information in a video signal, encoded as U and V components offset around 512 in the 10-bit domain. |
 | **Glitch Bar** | A bright horizontal artifact at the raster split boundary, replicating the register-rewrite artifact from NES hardware. |
 | **Hue Rotation** | A 2×2 matrix transformation applied to the U/V chrominance pair, rotating colors around the color wheel by a specified angle. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A pipelined hardware module that computes linear interpolation between two values, used for the wet/dry mix. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that produces a deterministic but seemingly random sequence of bits, used for split-line jitter. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **NES** | Nintendo Entertainment System; the 8-bit console whose PPU inspired the raster-split concept. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle; Cleave uses a 6-clock pipeline. |
 | **Posterization** | Reducing the number of distinct tonal levels by truncating least significant bits, producing flat color bands. |
 | **PPU** | Picture Processing Unit; the NES's dedicated video rendering chip (Ricoh 2C02). |
 | **Quarter-Wave LUT** | A lookup table storing only 0°–90° of the sine function; the remaining quadrants are derived by symmetry, saving 75% of storage. |
 | **Raster Split** | A mid-frame change of rendering parameters at a specific scanline, dividing the display into independently-controlled horizontal regions. |
 | **Sprite Zero Hit** | A hardware flag in the NES PPU that signals when sprite zero's opaque pixel overlaps an opaque background pixel, used for scanline-precise split detection. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 
 ---

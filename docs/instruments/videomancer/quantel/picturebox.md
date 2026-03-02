@@ -1,32 +1,25 @@
 ---
 draft: true
-sidebar_position: 201
+sidebar_position: 216
 slug: /instruments/videomancer/picturebox
 title: "Picturebox"
 image: /img/instruments/videomancer/picturebox/picturebox_hero.png
-description: "In the control rooms of 1990s television studios, a wall of small monitors showed multiple camera feeds simultaneously — each screen a window into a dif..."
+description: "In the control rooms of 1990s television studios, a wall of small monitors showed multiple camera feeds simultaneously — each screen a window into a different moment or angle."
 ---
 
+import picturebox_hero from '/img/instruments/videomancer/picturebox/picturebox_hero.png';
 import picturebox_before_after from '/img/instruments/videomancer/picturebox/picturebox_before_after.png';
 import picturebox_control_panel from '/img/instruments/videomancer/picturebox/picturebox_control_panel.png';
 import picturebox_exercise1_result from '/img/instruments/videomancer/picturebox/picturebox_exercise1_result.png';
 import picturebox_exercise2_result from '/img/instruments/videomancer/picturebox/picturebox_exercise2_result.png';
 import picturebox_exercise3_result from '/img/instruments/videomancer/picturebox/picturebox_exercise3_result.png';
-import picturebox_hero from '/img/instruments/videomancer/picturebox/picturebox_hero.png';
-import picturebox_source1_kodim15 from '/img/instruments/videomancer/picturebox/picturebox_source1_kodim15.png';
-import picturebox_source2_kodim01 from '/img/instruments/videomancer/picturebox/picturebox_source2_kodim01.png';
-import picturebox_source3_kodim01_bw from '/img/instruments/videomancer/picturebox/picturebox_source3_kodim01_bw.png';
 
 # Picturebox
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-
----
-
-
 <img src={picturebox_hero} alt="Picturebox hero image"/>
-*Picturebox dividing a single video input into a configurable grid of temporally-delayed panels with colored borders and optional label strips.*
+*Picturebox dividing a single video input into a configurable grid of temporally-delayed panels with coloured borders and optional label strips.*
 <img src={picturebox_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Picturebox applied.*
 
@@ -38,7 +31,7 @@ In the control rooms of 1990s television studios, a wall of small monitors showe
 
 The program stores incoming scanlines in three BRAM circular buffers (Y, U, V), each 2048 entries deep. During active video, each panel reads from the buffer at a different delay offset determined by its position in the grid, so panel 0 shows the most recent frame while panel 15 shows video from several scanlines in the past. The delay between adjacent panels is continuously adjustable, creating everything from a subtle echo effect (small spread) to a dramatic temporal fan where each tile seems to live in its own moment.
 
-Four operating modes extend the grid concept beyond simple temporal mosaic. Spatial tile mode subsamples different regions of the frame into each panel. Freeze cascade mode sequentially freezes panels one per field, building a step-by-step still store. Hybrid mode combines temporal delay with alternating color inversion, producing a pop-art quality where neighboring panels show inverted versions of each other. Configurable colored borders and optional label strips at the bottom of each panel complete the broadcast monitor wall illusion.
+Four operating modes extend the grid concept beyond simple temporal mosaic. Spatial tile mode subsamples different regions of the frame into each panel. Freeze cascade mode sequentially freezes panels one per field, building a step-by-step still store. Hybrid mode combines temporal delay with alternating colour inversion, producing a pop-art quality where neighboring panels show inverted versions of each other. Configurable coloured borders and optional label strips at the bottom of each panel complete the broadcast monitor wall illusion.
 
 ---
 
@@ -58,7 +51,7 @@ The grid is decoded from the Grid Size pot at four discrete levels: 2×2 (4 pane
 
 ### Border Detection and Beveled Corners
 
-A pixel is on the border if its local x or local y coordinate is less than the border width. For squared borders, this produces sharp right-angle corners where horizontal and vertical grid lines meet. The Bevel toggle adds a diagonal check: `local_x + local_y < 2 × border_width` — creating chamfered corners where the grid lines meet at 45° angles. Border pixels are filled with a color selected from an 8-hue palette indexed by the upper 3 bits of the Border Hue pot.
+A pixel is on the border if its local x or local y coordinate is less than the border width. For squared borders, this produces sharp right-angle corners where horizontal and vertical grid lines meet. The Bevel toggle adds a diagonal check: `local_x + local_y < 2 × border_width` — creating chamfered corners where the grid lines meet at 45° angles. Border pixels are filled with a colour selected from an 8-hue palette indexed by the upper 3 bits of the Border Hue pot.
 
 ### Freeze Cascade and Fill Order
 
@@ -96,7 +89,7 @@ Input Video (YUV 4:4:4)
 │
 ├── Stage 4: Output Mux
 │   ├── Border → border_color (8-hue palette)
-│   ├── Label → (label_bright, 512, 512) gray strip
+│   ├── Label → (label_bright, 512, 512) grey strip
 │   ├── Hybrid inversion → 1023 - pixel (odd panel IDs)
 │   └── Normal → panel pixel
 │
@@ -109,7 +102,7 @@ Input Video (YUV 4:4:4)
 └── Output (YUV 4:4:4)
 ```
 
-The temporal delay is computed per-panel, not per-pixel — all pixels within a single panel read from the same BRAM offset. This means the delay is constant across each tile, creating a step-wise temporal fan rather than a smooth spatiotemporal gradient. The border and label detection happens after BRAM read, so borders overlay the panel content rather than replacing it — this matters because border color is independent of the panel's temporal position. In hybrid mode (mode 3), only odd-numbered panels are inverted (panel_id bit 0 = 1), creating a checkerboard of normal and inverted tiles.
+The temporal delay is computed per-panel, not per-pixel — all pixels within a single panel read from the same BRAM offset. This means the delay is constant across each tile, creating a step-wise temporal fan rather than a smooth spatiotemporal gradient. The border and label detection happens after BRAM read, so borders overlay the panel content rather than replacing it — this matters because border colour is independent of the panel's temporal position. In hybrid mode (mode 3), only odd-numbered panels are inverted (panel_id bit 0 = 1), creating a checkerboard of normal and inverted tiles.
 
 ---
 
@@ -148,7 +141,7 @@ Controls the temporal delay between adjacent panels. The upper 6 bits scale the 
 | Default | 20% |
 | Suffix | % |
 
-Controls the width of the grid border lines. The upper 8 bits of the register set the pixel thickness of the horizontal and vertical dividers between panels. At 0, panels share edges with no visible gap. As you increase the value, prominent colored bars separate the panels. Maximum width can consume a significant portion of each panel, creating an effect where the grid structure dominates the image content. The border extends inward from each panel's edge, reducing the visible content area.
+Controls the width of the grid border lines. The upper 8 bits of the register set the pixel thickness of the horizontal and vertical dividers between panels. At 0, panels share edges with no visible gap. As you increase the value, prominent coloured bars separate the panels. Maximum width can consume a significant portion of each panel, creating an effect where the grid structure dominates the image content. The border extends inward from each panel's edge, reducing the visible content area.
 
 ---
 
@@ -159,7 +152,7 @@ Controls the width of the grid border lines. The upper 8 bits of the register se
 | Default | 0° |
 | Suffix | ° |
 
-Selects the border color from an 8-entry palette. The upper 3 bits of the register index into the palette: white (hue 0), blue-magenta, yellow, cyan, green-cyan, dark magenta, magenta, and bright white (hue 7). The palette entries are pre-computed YUV values stored in the VHDL as a combinational case statement. There is no interpolation between hues — the transition is abrupt at each boundary.
+Selects the border colour from an 8-entry palette. The upper 3 bits of the register index into the palette: white (hue 0), blue-magenta, yellow, cyan, green-cyan, dark magenta, magenta, and bright white (hue 7). The palette entries are pre-computed YUV values stored in the VHDL as a combinational case statement. There is no interpolation between hues — the transition is abrupt at each boundary.
 
 ---
 
@@ -170,7 +163,7 @@ Selects the border color from an 8-entry palette. The upper 3 bits of the regist
 | Default | 0% |
 | Suffix | % |
 
-Controls an optional label strip at the bottom of each panel. The upper 8 bits set the strip height in pixels. At 0, no label is shown. As you increase the value, a neutral gray bar appears at the bottom of every panel, reminiscent of the label strips on broadcast monitor walls that identify camera feeds. The label strip replaces the panel content in that region — it does not overlay.
+Controls an optional label strip at the bottom of each panel. The upper 8 bits set the strip height in pixels. At 0, no label is shown. As you increase the value, a neutral grey bar appears at the bottom of every panel, reminiscent of the label strips on broadcast monitor walls that identify camera feeds. The label strip replaces the panel content in that region — it does not overlay.
 
 ---
 
@@ -181,7 +174,7 @@ Controls an optional label strip at the bottom of each panel. The upper 8 bits s
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness of the label strip (Y channel). At 0, the label is black. At 1023, the label is white. The U and V channels are fixed at 512 (neutral), so the label is always achromatic gray regardless of this setting. This control has no effect when Label Height is set to 0.
+Controls the brightness of the label strip (Y channel). At 0, the label is black. At 1023, the label is white. The U and V channels are fixed at 512 (neutral), so the label is always achromatic grey regardless of this setting. This control has no effect when Label Height is set to 0.
 
 ---
 
@@ -225,9 +218,9 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 **Objective**: Learn how grid size and border controls create a multi-monitor display from a single input.
 
 1. **2×2 grid**: Set Grid Size to minimum. Four large panels divide the screen.
-2. **Add borders**: Increase Border Width. Colored bars appear between panels.
-3. **Color the grid**: Sweep Border Hue to cycle through the 8-color palette.
-4. **Add labels**: Increase Label Height. Gray strips appear at the bottom of each panel, like broadcast monitor labels.
+2. **Add borders**: Increase Border Width. Coloured bars appear between panels.
+3. **Colour the grid**: Sweep Border Hue to cycle through the 8-colour palette.
+4. **Add labels**: Increase Label Height. Grey strips appear at the bottom of each panel, like broadcast monitor labels.
 5. **Bevel the corners**: Toggle Grid Style to Bevel. Corners become chamfered.
 6. **Increase density**: Sweep Grid Size to 3×3, then 4×4. More smaller panels fill the screen.
 
@@ -267,7 +260,7 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 3. **Watch the cascade**: Panels freeze one per field in sequence. After 9 fields, the entire grid is frozen.
 4. **Random fill**: Toggle Fill Order to Random. Panels freeze in a scrambled LFSR order.
 5. **Add borders**: Increase Border Width and choose a bright Border Hue to distinguish panels.
-6. **Hybrid mode**: Switch to Mode A = On, Mode B = On (mode 11 = hybrid). Odd panels invert colors, creating a pop-art checkerboard.
+6. **Hybrid mode**: Switch to Mode A = On, Mode B = On (mode 11 = hybrid). Odd panels invert colours, creating a pop-art checkerboard.
 
 **Key concepts**: Freeze cascade advances one panel per field (vsync), sequential vs. LFSR traversal order, hybrid mode inverts odd panel IDs (bit 0 = 1)
 
@@ -279,8 +272,8 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 - **Grid size sets the mood**: 2×2 is intimate — each panel is large and detailed. 4×4 is surveillance — many small tiles create visual density. 1×4 is cinematic — a horizontal panorama strip.
 - **Time Spread with movement**: The temporal mosaic is most effective with smooth, predictable motion. Fast cuts or scene changes produce discontinuities between panels that can be jarring or creative.
 - **Freeze cascade as still store**: In freeze cascade mode, each panel captures a unique moment. Use with slowly changing content to build a contact sheet of distinct frames.
-- **Borders as framing**: At very large Border Width, the border structure dominates the image and the panels become small windows in a colored frame.
-- **Hybrid mode pop art**: The alternating inversion in hybrid mode creates a Warhol-like grid where neighboring panels show complementary colors.
+- **Borders as framing**: At very large Border Width, the border structure dominates the image and the panels become small windows in a coloured frame.
+- **Hybrid mode pop art**: The alternating inversion in hybrid mode creates a Warhol-like grid where neighboring panels show complementary colours.
 - **Label strips as overlays**: The label strip replaces content, not overlays — at large Label Height, the actual video content area within each panel shrinks significantly.
 - **Mix for ghosting**: At intermediate Mix values, the grid panels become semi-transparent over the full-frame source, creating a ghostly multi-exposure effect.
 
@@ -290,14 +283,16 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here as circular scanline delay buffers. |
 | **Circular Buffer** | A fixed-size memory region with wrapping read/write pointers; enables temporal delay without boundary checks. |
 | **Freeze Cascade** | A mode where panels sequentially stop updating from the live buffer, accumulating frozen snapshots. |
 | **Grid Geometry** | The subdivision of video frame coordinates into panel column, row, and local position. |
-| **Hybrid Mode** | Combines temporal delay with per-panel color inversion for pop-art aesthetic. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Hybrid Mode** | Combines temporal delay with per-panel colour inversion for pop-art aesthetic. |
+| **LFSR** | Linear Feedback Shift Register; produces a pseudo-random sequence used for scrambled freeze panel order. |
 | **Manhattan Distance** | Sum of absolute coordinate differences; used in grid geometry calculations. |
 | **Panel ID** | A 4-bit index derived from panel row and column, used to compute temporal delay offset. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Temporal Mosaic** | Displaying multiple time-delayed versions of a single video source in a grid arrangement. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

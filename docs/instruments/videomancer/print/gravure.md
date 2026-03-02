@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 115
+sidebar_position: 124
 slug: /instruments/videomancer/gravure
 title: "Gravure"
 image: /img/instruments/videomancer/gravure/gravure_hero.png
-description: "Before photographic reproduction, the finest printed images were made by photogravure — an intaglio process where an image is etched into a copper plate..."
+description: "Before photographic reproduction, the finest printed images were made by photogravure — an intaglio process where an image is etched into a copper plate, ink is pressed into the recesses, and the plate is run through a press to transfer the image onto dampened paper."
 ---
 
 import gravure_hero from '/img/instruments/videomancer/gravure/gravure_hero.png';
@@ -260,7 +260,7 @@ These exercises build from basic tone curve exploration to full print simulation
 
 - **Sepia for warmth, iron gall for drama**: The four ink presets serve different aesthetic purposes. Warm Sepia and Neutral Brown evoke fine-art portraiture; Cool Black suits documentary or newspaper aesthetics; Iron Gall adds an antique, archival quality.
 - **Grain reveals midtone content**: Because aquatint grain is strongest in the midtones and absent at extremes, it naturally draws the eye to the tonal regions where photographic detail is richest.
-- **Paper warmth interacts with ink color**: Warm paper with warm ink (sepia) produces a harmonious golden tone. Warm paper with cool ink (iron gall) creates a tension between the blue-black ink and the golden paper — historically authentic and visually striking.
+- **Paper warmth interacts with ink colour**: Warm paper with warm ink (sepia) produces a harmonious golden tone. Warm paper with cool ink (iron gall) creates a tension between the blue-black ink and the golden paper — historically authentic and visually striking.
 - **Pooling prevents crushed blacks**: A small amount of ink pooling (10–20%) prevents deep shadows from going to solid black, maintaining the sense of physical depth that distinguishes gravure prints from digital reproductions.
 - **Plate mark as framing**: Enable Plate Mark whenever using Gravure for still image presentation — the rectangular border provides compositional grounding and immediately signals "print" to the viewer.
 - **Feedback loops**: Routing the gravure output back to the input creates a progressively more stylized print effect — each pass deepens the shadow curve and reapplies the grain, producing a woodcut-like quality after several iterations.
@@ -273,18 +273,18 @@ These exercises build from basic tone curve exploration to full print simulation
 | Term | Definition |
 |------|------------|
 | **Aquatint** | A printmaking technique using granular resin to create tonal areas; in Gravure, the stochastic grain texture derived from LFSR noise. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric (Gravure uses zero BRAMs). |
 | **Concave Curve** | A tone curve where the output falls below the identity line, deepening shadows relative to a linear mapping. |
 | **Density** | In printmaking, the amount of ink deposited; higher density = darker areas. The VHDL inverts luminance to create density. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Intaglio** | A family of printing techniques where ink is held in recessed areas of a plate, including photogravure, etching, and engraving. |
 | **Iron Gall** | A historical ink made from iron salts and tannic acid, producing a blue-black color that deepens with age. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to produce the aquatint grain pattern (seed 0x7E5D). |
 | **Photogravure** | An intaglio printing process using acid-etched copper plates to transfer photographic images onto paper with continuous-tone fidelity. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Plate Mark** | The rectangular impression left in the paper by the edge of a copper printing plate; a hallmark of intaglio prints. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Rotogravure** | The industrial cylinder-based variant of gravure used for high-volume printing (newspapers, magazines, packaging). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

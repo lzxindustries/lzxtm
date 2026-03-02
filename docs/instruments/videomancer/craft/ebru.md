@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 83
+sidebar_position: 91
 slug: /instruments/videomancer/ebru
 title: "Ebru"
 image: /img/instruments/videomancer/ebru/ebru_hero.png
@@ -39,7 +39,7 @@ The concentric rings modulate the source video's luminance — bright rings lift
 
 ### Turkish Marbling (Ebru)
 
-The word *ebru* derives from the Persian *ab-rū* ("water surface") and refers to the art of paper marbling practiced in the Ottoman Empire since at least the fifteenth century. The marbler prepares a shallow tray of water thickened with carrageenan or gum tragacanth, then drops pigment mixed with ox gall (a surfactant) onto the surface. Each drop pushes aside the previous colors, forming concentric rings. The artist manipulates these with combs, needles, and rakes to create *battal* (free-form), *gel-git* (back-and-forth), and *tarakli* (combed) patterns before laying a sheet of paper on top to capture the image. Ebru was inscribed in UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2014.
+The word *ebru* derives from the Persian *ab-rū* ("water surface") and refers to the art of paper marbling practiced in the Ottoman Empire since at least the fifteenth century. The marbler prepares a shallow tray of water thickened with carrageenan or gum tragacanth, then drops pigment mixed with ox gall (a surfactant) onto the surface. Each drop pushes aside the previous colours, forming concentric rings. The artist manipulates these with combs, needles, and rakes to create *battal* (free-form), *gel-git* (back-and-forth), and *tarakli* (combed) patterns before laying a sheet of paper on top to capture the image. Ebru was inscribed in UNESCO's Representative List of the Intangible Cultural Heritage of Humanity in 2014.
 
 ### Suminagashi
 
@@ -124,7 +124,7 @@ When multi-drop mode is active, the pipeline computes two complete distance-to-s
 | Default | 50% |
 | Suffix | % |
 
-Ring Space controls the spatial frequency of the concentric rings. At low values, the rings are widely spaced — broad, gentle bands of brightening and darkening radiate outward from the centre point. As the control increases, the rings tighten, producing fine concentric striations. The VHDL multiplies radial distance by the upper 8 bits of this register, so the frequency response is linear with respect to the control position. At very high settings, the rings may alias against the pixel grid, producing Moiré-like shimmer that can be an interesting textural effect in its own right.
+Ring Space controls the spatial frequency of the concentric rings. At low values, the rings are widely spaced — broad, gentle bands of brightening and darkening radiate outward from the centre point. As the control increases, the rings tighten, producing fine concentric striations. The VHDL multiplies radial distance by the upper 8 bits of this register, so the frequency response is linear with respect to the control position. At very high settings, the rings may alias against the pixel grid, producing Moire-like shimmer that can be an interesting textural effect in its own right.
 
 ---
 
@@ -193,7 +193,7 @@ Ink Density controls the depth (strength) of the comb rake displacement. At zero
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control binary processing options that partition the effect into distinct modes. Rake Dir selects the axis of comb displacement. Seeds engages the second virtual ink drop for overlapping ring interference. Color Mode enables ring-outward animation. Animate activates chromatic color banding that shifts U and V in opposite directions. Bypass routes the input directly to the output for instant A/B comparison.
+The five toggles control binary processing options that partition the effect into distinct modes. Rake Dir selects the axis of comb displacement. Seeds engages the second virtual ink drop for overlapping ring interference. Color Mode enables ring-outward animation. Animate activates chromatic colour banding that shifts U and V in opposite directions. Bypass routes the input directly to the output for instant A/B comparison.
 
 ---
 
@@ -236,7 +236,7 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 <img src={ebru_exercise2_result} alt="Comb Rake Shaping result"/>
 *Comb Rake Shaping — simulated result across source images.*
-**Source**: A high-contrast source — black and white patterns, bold graphics, or a color-bar test signal.
+**Source**: A high-contrast source — black and white patterns, bold graphics, or a colour-bar test signal.
 
 **Objective**: Learn how the comb rake displaces ring patterns into flowing marbled S-curves.
 
@@ -254,15 +254,15 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 <img src={ebru_exercise3_result} alt="Multi-Drop Chromatic Marbling result"/>
 *Multi-Drop Chromatic Marbling — simulated result across source images.*
-**Source**: Footage with rich color content — botanical close-ups, textiles, or painted surfaces.
+**Source**: Footage with rich colour content — botanical close-ups, textiles, or painted surfaces.
 
-**Objective**: Combine multi-drop interference and chromatic color bands to create polychromatic Ebru textures.
+**Objective**: Combine multi-drop interference and chromatic colour bands to create polychromatic Ebru textures.
 
 1. **Base pattern**: Set Ring Space ~35%, Rake Pitch ~50%, Ink Density ~40%, Color Spread ~50%.
 2. **Enable multi-drop**: Toggle Seeds to engage the second ring centre. Observe how overlapping ring patterns create interference — bright where both peaks align, neutral where they cancel.
-3. **Enable color bands**: Toggle Animate to On. The ring modulation now pushes U and V chroma in opposite directions, producing rainbow-hued concentric bands.
+3. **Enable colour bands**: Toggle Animate to On. The ring modulation now pushes U and V chroma in opposite directions, producing rainbow-hued concentric bands.
 4. **Animate**: Toggle Color Mode to Palette. The rings begin to expand outward slowly, creating a hypnotic, pulsing marbled texture.
-5. **Subtle blend**: Lower the Mix fader to about 60%. The marbled texture overlays the source more gently, allowing the original color content to show through the chromatic rings.
+5. **Subtle blend**: Lower the Mix fader to about 60%. The marbled texture overlays the source more gently, allowing the original colour content to show through the chromatic rings.
 
 **Key concepts**: Multi-drop creates ring interference patterns, chromatic banding produces rainbow rings via opposing U/V modulation, animation drives continuous ring expansion, mix blending controls effect intensity
 
@@ -275,8 +275,8 @@ These three exercises build from basic ring patterning through comb rake shaping
 - **Centre position is compositional**: Rake Depth and Anim Speed position the virtual ink drop. Placing it on a face, a highlight, or an edge creates different compositional effects — the rings radiate from whatever the centre touches.
 - **Comb direction dictates flow**: Horizontal combing creates vertical flow; vertical combing creates horizontal flow. Think of it as dragging a physical comb through the image — the pattern stretches in the direction of the drag.
 - **Multi-drop adds complexity quickly**: Enabling the second ring centre doubles the pattern density and creates interference. Use lower Ring Space and Rake Pitch values when multi-drop is active to keep the texture legible.
-- **Color bands transform the palette**: The opposing U/V shifts create warm-cool gradients that follow the ring contours. This works especially well with desaturated source material, where the chromatic rings become the dominant color information.
-- **Use Mix for subtlety**: The wet/dry fader is the easiest way to tame an intense marbling effect. Blending at 30–40% creates a gentle watercolor overlay without losing source detail.
+- **Colour bands transform the palette**: The opposing U/V shifts create warm-cool gradients that follow the ring contours. This works especially well with desaturated source material, where the chromatic rings become the dominant colour information.
+- **Use Mix for subtlety**: The wet/dry fader is the easiest way to tame an intense marbling effect. Blending at 30–40% creates a gentle watercolour overlay without losing source detail.
 - **Animation is meditative**: The ring expansion is slow and constant (+4 phase per frame). It works best as a background texture evolution rather than a rhythmic animation. Pair with video feedback for slowly morphing, self-referencing patterns.
 - **Feedback loops with Ebru**: Routing the output back to the input through an external feedback path causes the rings to marble themselves, creating recursive, ever-deepening concentric structures that evolve over time.
 
@@ -286,18 +286,18 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the standard defining YUV colour encoding used throughout the Videomancer video pipeline. |
 | **Comb Rake** | A row of evenly spaced pins dragged through floating ink to create sinusoidal displacement patterns in water marbling. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and waveform lookup table. |
 | **Ebru** | Turkish art of paper marbling, from Persian *ab-rū* ("water surface"); inscribed in UNESCO's Intangible Cultural Heritage list in 2014. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in real time. |
+| **Interpolator** | A linear crossfade unit used for wet/dry mixing, blending two inputs based on a 10-bit mix parameter. |
 | **LUT** | Look-Up Table; a pre-computed array used to evaluate functions (here, the quarter-wave sine) efficiently in hardware. |
 | **Manhattan Distance** | The sum of absolute coordinate differences (|dx| + |dy|), approximating Euclidean distance without square root computation. |
 | **Multi-drop** | A mode that computes ring patterns from two virtual centre points and averages their outputs, simulating overlapping ink drops. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave Sine** | A 32-entry table storing one quarter of a sine cycle; full-wave values are reconstructed via quadrant mirroring and sign inversion. |
 | **Suminagashi** | Japanese floating-ink marbling technique, a parallel tradition to Ebru using *sumi* ink on plain water. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

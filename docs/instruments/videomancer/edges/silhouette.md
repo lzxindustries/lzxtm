@@ -1,32 +1,25 @@
 ---
 draft: true
-sidebar_position: 237
+sidebar_position: 254
 slug: /instruments/videomancer/silhouette
 title: "Silhouette"
 image: /img/instruments/videomancer/silhouette/silhouette_hero.png
-description: "Every image is a landscape of brightness and color values."
+description: "Every image is a landscape of brightness and colour values."
 ---
 
+import silhouette_hero from '/img/instruments/videomancer/silhouette/silhouette_hero.png';
 import silhouette_before_after from '/img/instruments/videomancer/silhouette/silhouette_before_after.png';
 import silhouette_control_panel from '/img/instruments/videomancer/silhouette/silhouette_control_panel.png';
 import silhouette_exercise1_result from '/img/instruments/videomancer/silhouette/silhouette_exercise1_result.png';
 import silhouette_exercise2_result from '/img/instruments/videomancer/silhouette/silhouette_exercise2_result.png';
 import silhouette_exercise3_result from '/img/instruments/videomancer/silhouette/silhouette_exercise3_result.png';
-import silhouette_hero from '/img/instruments/videomancer/silhouette/silhouette_hero.png';
-import silhouette_source1_kodim02 from '/img/instruments/videomancer/silhouette/silhouette_source1_kodim02.png';
-import silhouette_source2_kodim07 from '/img/instruments/videomancer/silhouette/silhouette_source2_kodim07.png';
-import silhouette_source3_kodim01_bw from '/img/instruments/videomancer/silhouette/silhouette_source3_kodim01_bw.png';
 
 # Silhouette
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-
----
-
-
 <img src={silhouette_hero} alt="Silhouette hero image"/>
-*Silhouette extracting a luminance key from a high-contrast portrait, replacing keyed regions with a warm amber matte color.*
+*Silhouette extracting a luminance key from a high-contrast portrait, replacing keyed regions with a warm amber matte colour.*
 <img src={silhouette_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Silhouette applied.*
 
@@ -34,11 +27,11 @@ import silhouette_source3_kodim01_bw from '/img/instruments/videomancer/silhouet
 
 ## Overview
 
-Every image is a landscape of brightness and color values. Silhouette draws a boundary through that landscape — pixels on one side of the threshold pass through unaltered, while pixels on the other side are replaced by a flat matte color. The result is a composited image where parts of the original video appear to float on top of (or cut out from) a solid-color background.
+Every image is a landscape of brightness and colour values. Silhouette draws a boundary through that landscape — pixels on one side of the threshold pass through unaltered, while pixels on the other side are replaced by a flat matte colour. The result is a composited image where parts of the original video appear to float on top of (or cut out from) a solid-colour background.
 
-The program implements a complete keyer with two key modes — *luma* and *chroma* — plus adjustable span (softness), gain, and independent per-channel matte color selection. In luma mode, the key is derived from the absolute distance between each pixel's brightness and a threshold point. In chroma mode, the key is derived from the maximum of the U and V color distances from their respective thresholds. The name *Silhouette* evokes the art of cutting profiles from black paper — reducing complex scenes to their essential outlines.
+The program implements a complete keyer with two key modes — *luma* and *chroma* — plus adjustable span (softness), gain, and independent per-channel matte colour selection. In luma mode, the key is derived from the absolute distance between each pixel's brightness and a threshold point. In chroma mode, the key is derived from the maximum of the U and V colour distances from their respective thresholds. The name *Silhouette* evokes the art of cutting profiles from black paper — reducing complex scenes to their essential outlines.
 
-At extreme settings the key becomes a hard binary mask, producing clean silhouette cut-outs. With moderate span and gain, the key transitions are soft and gradual, blending the matte color into the source image for compositing and overlay effects. The per-channel matte controls allow any arbitrary replacement color in the YUV domain.
+At extreme settings the key becomes a hard binary mask, producing clean silhouette cut-outs. With moderate span and gain, the key transitions are soft and gradual, blending the matte colour into the source image for compositing and overlay effects. The per-channel matte controls allow any arbitrary replacement colour in the YUV domain.
 
 ---
 
@@ -52,7 +45,7 @@ Silhouette's luma key computes `|Y - threshold|` for every pixel, producing a di
 
 ### What Is a Chroma Key?
 
-A **chroma key** extends the same principle to the color channels. Instead of keying on brightness alone, the program computes `|U - threshold|` and `|V - threshold|` and takes the maximum of those two distances. This creates a key that responds to color position in the UV plane — pixels near the threshold color become transparent, while pixels of different hues remain opaque. Chroma keying is the basis of the classic "green screen" effect used in television and film production.
+A **chroma key** extends the same principle to the colour channels. Instead of keying on brightness alone, the program computes `|U - threshold|` and `|V - threshold|` and takes the maximum of those two distances. This creates a key that responds to colour position in the UV plane — pixels near the threshold colour become transparent, while pixels of different hues remain opaque. Chroma keying is the basis of the classic "green screen" effect used in television and film production.
 
 ### What Is Span (Soft-Clip)?
 
@@ -64,7 +57,7 @@ After span clipping, the surviving distance signal is multiplied by the key gain
 
 ### What Is Interpolator Compositing?
 
-The final compositing stage uses three `interpolator_u` instances (one per YUV channel) to crossfade between the matte color and the source video based on the key alpha. Where alpha is 0 (keyed region), the output shows the matte color. Where alpha is 1023 (non-keyed region), the output shows the original source. Intermediate alpha values produce a smooth blend — the soft edge of the silhouette.
+The final compositing stage uses three `interpolator_u` instances (one per YUV channel) to crossfade between the matte colour and the source video based on the key alpha. Where alpha is 0 (keyed region), the output shows the matte colour. Where alpha is 1023 (non-keyed region), the output shows the original source. Intermediate alpha values produce a smooth blend — the soft edge of the silhouette.
 
 
 ---
@@ -112,7 +105,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-The key alpha generation pipeline (stages 1–5) and the video delay pipeline run in parallel. The video delay carries the conditioned source Y/U/V forward by exactly 4 clocks so that it arrives at the interpolator inputs simultaneously with the key alpha from stage 5. The interpolator treats the matte color as input `a` (shown when alpha = 0, keyed region) and the delayed source as input `b` (shown when alpha = 1023, non-keyed region). This means that *increasing* the key alpha reveals *more* of the original source — unintuitive at first, but consistent with the convention that alpha = full means fully opaque (source visible).
+The key alpha generation pipeline (stages 1–5) and the video delay pipeline run in parallel. The video delay carries the conditioned source Y/U/V forward by exactly 4 clocks so that it arrives at the interpolator inputs simultaneously with the key alpha from stage 5. The interpolator treats the matte colour as input `a` (shown when alpha = 0, keyed region) and the delayed source as input `b` (shown when alpha = 1023, non-keyed region). This means that *increasing* the key alpha reveals *more* of the original source — unintuitive at first, but consistent with the convention that alpha = full means fully opaque (source visible).
 
 ---
 
@@ -130,7 +123,7 @@ The key alpha generation pipeline (stages 1–5) and the video delay pipeline ru
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the span (softness) of the key edge. At 0%, the clip level is at maximum and virtually no key signal passes through — the output is almost entirely the original source. As you increase Span toward 100%, the clip level drops and more of the distance signal contributes to the key alpha, widening the soft transition zone between keyed and non-keyed regions. This is the primary control for adjusting how gradually the matte color blends into the source.
+Controls the span (softness) of the key edge. At 0%, the clip level is at maximum and virtually no key signal passes through — the output is almost entirely the original source. As you increase Span toward 100%, the clip level drops and more of the distance signal contributes to the key alpha, widening the soft transition zone between keyed and non-keyed regions. This is the primary control for adjusting how gradually the matte colour blends into the source.
 
 ---
 
@@ -152,7 +145,7 @@ Sets the key threshold for the Y channel (in luma mode) and the U channel (in ch
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the V channel threshold for chroma keying. In luma mode, this control has no visible effect because only the Y distance is used. In chroma mode, the key distance is `max(|U - thresh_yu|, |V - thresh_v|)`, so this control determines the V-axis centre point of the chroma key. Together with Threshold Y/U, it defines the target color in the UV plane.
+Sets the V channel threshold for chroma keying. In luma mode, this control has no visible effect because only the Y distance is used. In chroma mode, the key distance is `max(|U - thresh_yu|, |V - thresh_v|)`, so this control determines the V-axis centre point of the chroma key. Together with Threshold Y/U, it defines the target colour in the UV plane.
 
 ---
 
@@ -163,7 +156,7 @@ Sets the V channel threshold for chroma keying. In luma mode, this control has n
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the Y (luminance) component of the matte replacement color. This controls the brightness of the flat color that replaces keyed regions. At 0% the matte is black, at 50% it is mid-gray, and at 100% it is white. Combined with U Matte and V Matte, any color in the YUV gamut can be specified as the replacement.
+Sets the Y (luminance) component of the matte replacement colour. This controls the brightness of the flat colour that replaces keyed regions. At 0% the matte is black, at 50% it is mid-grey, and at 100% it is white. Combined with U Matte and V Matte, any colour in the YUV gamut can be specified as the replacement.
 
 ---
 
@@ -174,7 +167,7 @@ Sets the Y (luminance) component of the matte replacement color. This controls t
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the U (blue-difference chrominance) component of the matte color. At 50% (register 512), the matte has neutral U chrominance. Values below 50% shift the matte toward yellow, values above 50% shift it toward blue. This operates independently from V Matte, so you can dial in arbitrary target colors by adjusting U and V together.
+Sets the U (blue-difference chrominance) component of the matte colour. At 50% (register 512), the matte has neutral U chrominance. Values below 50% shift the matte toward yellow, values above 50% shift it toward blue. This operates independently from V Matte, so you can dial in arbitrary target colours by adjusting U and V together.
 
 ---
 
@@ -185,7 +178,7 @@ Sets the U (blue-difference chrominance) component of the matte color. At 50% (r
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the V (red-difference chrominance) component of the matte color. At 50% (register 512), the matte has neutral V chrominance. Values below 50% shift the matte toward cyan-green, values above 50% shift it toward red-magenta. With Y Matte, U Matte, and V Matte together, any color in the broadcast YUV space can be produced as the replacement fill.
+Sets the V (red-difference chrominance) component of the matte colour. At 50% (register 512), the matte has neutral V chrominance. Values below 50% shift the matte toward cyan-green, values above 50% shift it toward red-magenta. With Y Matte, U Matte, and V Matte together, any colour in the broadcast YUV space can be produced as the replacement fill.
 
 ---
 
@@ -229,7 +222,7 @@ These exercises progress from basic luma keying through chroma keying to advance
 **Objective**: Learn luma keying fundamentals — threshold placement, span softness, and gain control.
 
 1. **Set the threshold**: Adjust Threshold Y/U to approximately 50% — the midpoint of the brightness range.
-2. **Open the span**: Increase Span to about 70%. You should see mid-gray regions begin to show the matte color (default mid-gray).
+2. **Open the span**: Increase Span to about 70%. You should see mid-grey regions begin to show the matte colour (default mid-grey).
 3. **Set a visible matte**: Turn Y Matte to 0% (black) or 100% (white) to clearly see which regions are keyed.
 4. **Adjust gain**: Sweep Key Gain from 0% to 100%. Watch the key edge sharpen as gain increases.
 5. **Try Key Invert**: Toggle Key Invert to swap which side of the threshold is keyed.
@@ -243,18 +236,18 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 <img src={silhouette_exercise2_result} alt="Chroma Key Compositing result"/>
 *Chroma Key Compositing — simulated result across source images.*
-**Source**: Footage with a strong, saturated color (e.g., a red object on a neutral background, or footage shot against a colored backdrop).
+**Source**: Footage with a strong, saturated colour (e.g., a red object on a neutral background, or footage shot against a coloured backdrop).
 
-**Objective**: Explore chroma keying — removing a specific color from the image and replacing it with a custom matte color.
+**Objective**: Explore chroma keying — removing a specific colour from the image and replacing it with a custom matte colour.
 
 1. **Switch to chroma mode**: Set Key Type to Chroma.
-2. **Target the color**: Adjust Threshold Y/U and Threshold V to match the U and V values of the color you want to key. For a saturated red: Threshold Y/U ~50% (neutral U), Threshold V ~80% (high V).
+2. **Target the colour**: Adjust Threshold Y/U and Threshold V to match the U and V values of the colour you want to key. For a saturated red: Threshold Y/U ~50% (neutral U), Threshold V ~80% (high V).
 3. **Open the span**: Set Span to ~60% to begin seeing the key effect.
-4. **Choose matte color**: Set Y Matte to ~50%, U Matte to ~30%, V Matte to ~30% for a blue-green matte replacement.
-5. **Refine with gain**: Increase Key Gain to tighten the chroma key around the target color.
-6. **Invert**: Toggle Key Invert to see the complementary key — now only the target color remains visible.
+4. **Choose matte colour**: Set Y Matte to ~50%, U Matte to ~30%, V Matte to ~30% for a blue-green matte replacement.
+5. **Refine with gain**: Increase Key Gain to tighten the chroma key around the target colour.
+6. **Invert**: Toggle Key Invert to see the complementary key — now only the target colour remains visible.
 
-**Key concepts**: Chroma key uses max(|U-thresh|, |V-thresh|) for color-based keying, U and V thresholds define target color, matte controls set replacement color
+**Key concepts**: Chroma key uses max(|U-thresh|, |V-thresh|) for colour-based keying, U and V thresholds define target colour, matte controls set replacement colour
 
 ---
 
@@ -283,8 +276,8 @@ These exercises progress from basic luma keying through chroma keying to advance
 - **Span is your softness control**: Think of Span as "feather radius." Higher span = softer edge. Use it before reaching for gain to shape the key transition.
 - **Key Gain is your strength control**: Once you have the right softness via Span, use Key Gain to set how strongly the key replaces the source with matte.
 - **Luma Invert ≠ Key Invert**: Luma Invert flips the Y channel *before* the distance computation (changes *what* gets keyed). Key Invert flips the alpha *after* gain (changes *how* the key composites). They produce different results and can be combined.
-- **16× gain for tight keys**: When you need a narrow key band — keying on a specific brightness or color without affecting nearby values — use 16× Gain Range with a low Key Gain setting.
-- **Matte color as creative tool**: The YUV matte controls can produce any color, not just neutral tones. Use saturated matte colors for graphic design and compositing effects.
+- **16× gain for tight keys**: When you need a narrow key band — keying on a specific brightness or colour without affecting nearby values — use 16× Gain Range with a low Key Gain setting.
+- **Matte colour as creative tool**: The YUV matte controls can produce any colour, not just neutral tones. Use saturated matte colours for graphic design and compositing effects.
 - **Feedback loops**: Route the output back to the input to create recursive keying — the key operates on its own output, producing evolving silhouette patterns.
 - **Threshold sweep for animation**: Slowly modulating Threshold Y/U with an external control creates a "wipe" effect where the key region moves through the brightness range.
 
@@ -295,15 +288,17 @@ These exercises progress from basic luma keying through chroma keying to advance
 | Term | Definition |
 |------|------------|
 | **Alpha** | A transparency value (0 = fully transparent / keyed, 1023 = fully opaque / source visible) used for compositing two signals together. |
-| **Chroma** | The color information in a video signal, encoded as U (blue-difference) and V (red-difference) components in YUV color space. |
-| **Chroma Key** | A keying method that derives the transparency signal from color-channel distances rather than brightness. |
+| **Chroma** | The colour information in a video signal, encoded as U (blue-difference) and V (red-difference) components in YUV colour space. |
+| **Chroma Key** | A keying method that derives the transparency signal from colour-channel distances rather than brightness. |
 | **Compositing** | Combining two video signals into one by blending them according to an alpha (transparency) map. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that linearly crossfades between two input values based on a third value (the alpha or mix control). |
 | **Key** | A signal derived from the input video that determines which regions are transparent and which are opaque. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Luma Key** | A keying method that derives the transparency signal from the absolute luminance distance from a threshold. |
-| **Matte** | A flat replacement color that fills the keyed (transparent) regions of the output image. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Matte** | A flat replacement colour that fills the keyed (transparent) regions of the output image. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Span** | The soft-clip deadband below which key distance is forced to zero, controlling key edge softness. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

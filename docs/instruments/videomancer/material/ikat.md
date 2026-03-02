@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 124
+sidebar_position: 134
 slug: /instruments/videomancer/ikat
 title: "Ikat"
 image: /img/instruments/videomancer/ikat/ikat_hero.png
-description: "Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and process..."
+description: "Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and processing each column as if it were a bundle of warp threads dipped into a dye bath."
 ---
 
 import ikat_hero from '/img/instruments/videomancer/ikat/ikat_hero.png';
@@ -269,13 +269,13 @@ These exercises progress from simple column striping to full textile simulation,
 | **Bleed** | The soft transition zone at column boundaries where chroma fades toward neutral, simulating dye seeping under resist ties. |
 | **Column Quantization** | Dividing the video frame into fixed-width vertical or horizontal stripes, within which pixel values are processed as a group. |
 | **Double Ikat** | A textile technique (and this program's mode) where both warp and weft threads are pre-dyed, creating patterns on two axes simultaneously. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Ikat** | A Malay-Indonesian dyeing technique where yarn is bound with resist material before dyeing, creating patterns with characteristically soft edges. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **Interpolator** | A linear crossfade module that blends between the dry (unprocessed) and wet (processed) signal paths based on the Mix fader position. |
+| **LFSR** | Linear-Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a pseudo-random sequence used for jitter generation. |
 | **LUT** | Look-Up Table; FPGA logic resources used for combinational logic. Ikat uses approximately 700 LUTs. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Resist** | A material (wax, string, rubber) that prevents dye from reaching covered portions of yarn, creating the pattern boundaries in ikat textiles. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

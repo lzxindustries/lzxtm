@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 208
+sidebar_position: 223
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero.png
-description: "Every broadcast facility has a processing amplifier — a 'proc amp' — sitting between source and destination, adjusting signal levels so that everything ..."
+description: "Every broadcast facility has a processing amplifier — a \"proc amp\" — sitting between source and destination, adjusting signal levels so that everything arriving downstream is correctly calibrated."
 ---
 
+import procamp_hero from '/img/instruments/videomancer/procamp/procamp_hero.png';
 import procamp_before_after from '/img/instruments/videomancer/procamp/procamp_before_after.png';
 import procamp_control_panel from '/img/instruments/videomancer/procamp/procamp_control_panel.png';
 import procamp_exercise1_result from '/img/instruments/videomancer/procamp/procamp_exercise1_result.png';
 import procamp_exercise2_result from '/img/instruments/videomancer/procamp/procamp_exercise2_result.png';
 import procamp_exercise3_result from '/img/instruments/videomancer/procamp/procamp_exercise3_result.png';
-import procamp_hero from '/img/instruments/videomancer/procamp/procamp_hero.png';
-import procamp_source1_kodim03 from '/img/instruments/videomancer/procamp/procamp_source1_kodim03.png';
-import procamp_source2_kodim15 from '/img/instruments/videomancer/procamp/procamp_source2_kodim15.png';
-import procamp_source3_peppers_512 from '/img/instruments/videomancer/procamp/procamp_source3_peppers_512.png';
 
 # Procamp
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={procamp_hero} alt="Procamp hero image"/>
 *Procamp applying independent per-channel gain, offset, and inversion across Y/U/V with fade-to-color interpolation.*
@@ -273,6 +266,8 @@ These exercises progress from basic level correction to creative color manipulat
 | **DC Offset** | A constant value added to every sample in a channel, shifting the entire signal up or down. |
 | **Fade-to-Color** | Interpolation between the processed signal and a fixed target color (black, white, or neutral chroma); distinct from a wet/dry mix. |
 | **Gain** | Multiplicative scaling of a signal centered around a reference point (512 in 10-bit YUV); equivalent to "contrast" in broadcast terminology. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Interpolator** | A pipelined hardware unit that computes a + (b − a) × t for crossfading between two values. |
+| **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies contrast and brightness correction to a video signal channel. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U = blue-yellow, V = red-cyan), used throughout the Videomancer video pipeline. |
+
+---

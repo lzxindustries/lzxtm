@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 235
+sidebar_position: 252
 slug: /instruments/videomancer/sierpinski
 title: "Sierpinski"
 image: /img/instruments/videomancer/sierpinski/sierpinski_hero.png
 description: "The Sierpinski triangle is one of the simplest fractals to describe but one of the richest to explore."
 ---
 
+import sierpinski_hero from '/img/instruments/videomancer/sierpinski/sierpinski_hero.png';
 import sierpinski_animation from '/img/instruments/videomancer/sierpinski/sierpinski_animation.gif';
 import sierpinski_control_panel from '/img/instruments/videomancer/sierpinski/sierpinski_control_panel.png';
 import sierpinski_exercise1_result from '/img/instruments/videomancer/sierpinski/sierpinski_exercise1_result.gif';
 import sierpinski_exercise2_result from '/img/instruments/videomancer/sierpinski/sierpinski_exercise2_result.gif';
 import sierpinski_exercise3_result from '/img/instruments/videomancer/sierpinski/sierpinski_exercise3_result.gif';
-import sierpinski_hero from '/img/instruments/videomancer/sierpinski/sierpinski_hero.png';
 
 # Sierpinski
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={sierpinski_hero} alt="Sierpinski hero image"/>
 *Sierpinski generating nested XOR fractal textures with warm-toned color mapping and video-warped coordinate space.*
@@ -55,7 +51,7 @@ A 10-bit XOR result encodes ten different scales of fractal structure simultaneo
 
 ### Boolean Layer Composition
 
-Two fractal layers with different DDS frequencies produce two independent Sierpinski patterns. Combining them with AND yields their intersection — only pixels where both layers are active survive, creating sparse, skeletal forms. XOR combination yields the symmetric difference — pixels active in one layer but not both — producing denser, interlocking textures with moiré-like interference between the two frequency ratios.
+Two fractal layers with different DDS frequencies produce two independent Sierpinski patterns. Combining them with AND yields their intersection — only pixels where both layers are active survive, creating sparse, skeletal forms. XOR combination yields the symmetric difference — pixels active in one layer but not both — producing denser, interlocking textures with moire-like interference between the two frequency ratios.
 
 ### Video-Fractal Interaction
 
@@ -151,7 +147,7 @@ Controls the vertical DDS accumulator increment for layer 1. This sets the verti
 | Default | 25.0% |
 | Suffix | % |
 
-Adds a frequency offset to layer 2's DDS accumulators relative to layer 1. At 0%, both layers run at identical frequencies and produce the same pattern — AND combination yields the original pattern, XOR combination yields black. As Layer 2 Ratio increases, the second layer's fractal shifts in scale, creating interference patterns between the two grids. This is the primary control for the moiré-like interactions between layers.
+Adds a frequency offset to layer 2's DDS accumulators relative to layer 1. At 0%, both layers run at identical frequencies and produce the same pattern — AND combination yields the original pattern, XOR combination yields black. As Layer 2 Ratio increases, the second layer's fractal shifts in scale, creating interference patterns between the two grids. This is the primary control for the moire-like interactions between layers.
 
 ---
 
@@ -242,13 +238,13 @@ These exercises progress from basic fractal generation through multi-layer inter
 **Objective**: Explore how Layer 2 Ratio and Layer Mode create interference patterns between two fractal grids.
 
 1. **Single layer**: Set Layer 2 Ratio to 0%. Both layers are identical — AND shows the original pattern, XOR shows black (identical layers cancel).
-2. **Small offset**: Slowly increase Layer 2 Ratio from 0% toward ~25%. In XOR mode, watch moiré-like interference patterns emerge as the two grids begin to diverge.
+2. **Small offset**: Slowly increase Layer 2 Ratio from 0% toward ~25%. In XOR mode, watch moire-like interference patterns emerge as the two grids begin to diverge.
 3. **AND vs XOR**: Toggle Layer Mode between AND and XOR with Layer 2 Ratio at ~25%. AND creates thin, skeletal intersection lines. XOR creates denser interlocking regions.
 4. **Large offset**: Push Layer 2 Ratio to ~75%. The interference becomes coarser and more chaotic.
 5. **Warm color**: Set Color Map to ~40% and observe how the warm-tone color mapping colorizes the fractal structure.
 6. **Animate**: Enable Animate (Switch 9) to add scrolling motion. The two layers scroll at different rates due to the frequency offset, creating evolving interference.
 
-**Key concepts**: Two fractal layers at different frequencies create moiré interference, AND intersects (sparse), XOR differentiates (dense), Layer 2 Ratio controls the frequency offset between layers
+**Key concepts**: Two fractal layers at different frequencies create moire interference, AND intersects (sparse), XOR differentiates (dense), Layer 2 Ratio controls the frequency offset between layers
 
 ---
 
@@ -274,7 +270,7 @@ These exercises progress from basic fractal generation through multi-layer inter
 
 - **Start with monochrome**: Set Color Map to 0% when exploring fractal geometry. Color adds visual complexity that can make it harder to understand the underlying structure. Add color after you understand the spatial pattern.
 - **Bit Slice is your zoom control**: Sweeping bit slice is the fastest way to explore the fractal. Each level is a magnified copy of the finest structure — a visual demonstration of self-similarity.
-- **Layer 2 Ratio at small offsets creates the richest textures**: Large offsets create coarse interference; small offsets (5–15%) produce intricate moiré patterns between the two fractal grids.
+- **Layer 2 Ratio at small offsets creates the richest textures**: Large offsets create coarse interference; small offsets (5–15%) produce intricate moire patterns between the two fractal grids.
 - **Warp mode with moving video creates organic motion**: Static fractals feel rigid. Route a slowly moving camera through Warp mode to give the self-similar geometry organic, flowing motion.
 - **Use Key Mix for subtle textures**: At 100%, the fractal dominates. At 20–40%, it becomes a translucent overlay — a fractal texture laid over the source video, useful for adding geometric structure without obliterating the image.
 - **Feedback routing amplifies structure**: Route the output back to the input. The fractal modulates its own coordinate space, creating recursive self-similar patterns that evolve and cascade with each feedback pass.
@@ -288,12 +284,14 @@ These exercises progress from basic fractal generation through multi-layer inter
 |------|------------|
 | **AND** | Bitwise logical conjunction; output is 1 only when both inputs are 1. Used as one of two layer combination modes. |
 | **Bit Slice** | Selecting a single binary digit from a multi-bit value. Different bit positions correspond to different spatial scales. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator with a fixed increment to generate repeating waveforms at precise frequencies. |
 | **Fractal** | A geometric structure that exhibits self-similarity at different scales; smaller portions resemble the whole. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Moiré** | An interference pattern created when two similar periodic structures overlap at slightly different scales or orientations. |
+| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values based on a mixing coefficient. |
+| **Moire** | An interference pattern created when two similar periodic structures overlap at slightly different scales or orientations. |
 | **Phase Accumulator** | A counter that wraps around at its maximum value, producing a sawtooth progression proportional to its increment rate. |
 | **Self-Similar** | A property where a structure contains smaller copies of itself at every scale of magnification. |
 | **Sierpinski Triangle** | The specific fractal pattern produced by XOR of spatial coordinates, named after mathematician Wacław Sierpiński. |
 | **XOR** | Bitwise exclusive-or; output is 1 when inputs differ. The core operation generating Sierpinski fractal patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

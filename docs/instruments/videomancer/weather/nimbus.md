@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 180
+sidebar_position: 195
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
 image: /img/instruments/videomancer/nimbus/nimbus_hero.png
-description: "In the early 1820s, the English painter John Constable devoted two summers to painting nothing but clouds over Hampstead Heath — small oil sketches that..."
+description: "In the early 1820s, the English painter John Constable devoted two summers to painting nothing but clouds over Hampstead Heath — small oil sketches that recorded the layered, stratified structure of cumulus and cumulonimbus formations."
 ---
 
+import nimbus_hero from '/img/instruments/videomancer/nimbus/nimbus_hero.png';
 import nimbus_before_after from '/img/instruments/videomancer/nimbus/nimbus_before_after.png';
 import nimbus_control_panel from '/img/instruments/videomancer/nimbus/nimbus_control_panel.png';
 import nimbus_exercise1_result from '/img/instruments/videomancer/nimbus/nimbus_exercise1_result.png';
 import nimbus_exercise2_result from '/img/instruments/videomancer/nimbus/nimbus_exercise2_result.png';
 import nimbus_exercise3_result from '/img/instruments/videomancer/nimbus/nimbus_exercise3_result.png';
-import nimbus_hero from '/img/instruments/videomancer/nimbus/nimbus_hero.png';
-import nimbus_source1_kodim01 from '/img/instruments/videomancer/nimbus/nimbus_source1_kodim01.png';
-import nimbus_source2_kodim02 from '/img/instruments/videomancer/nimbus/nimbus_source2_kodim02.png';
-import nimbus_source3_stream_bridge_512 from '/img/instruments/videomancer/nimbus/nimbus_source3_stream_bridge_512.png';
 
 # Nimbus
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={nimbus_hero} alt="Nimbus hero image"/>
 *Nimbus dividing a video frame into cloud-like horizontal strata with warm tonal compression and altitude-dependent desaturation.*
@@ -291,11 +284,13 @@ These exercises progress from simple stratification to full atmospheric composit
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory within the FPGA. Nimbus uses zero BRAM tiles. |
 | **Chrominance** | The color information (U and V channels) in a YUV video signal. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating smooth, frequency-controlled periodic signals. |
 | **IIR** | Infinite Impulse Response; a recursive digital filter. Nimbus uses a first-order IIR to smooth LFSR noise. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator. |
+| **Luminance** | The brightness component (Y) of a YUV video signal. |
 | **Stratum** | A single horizontal band in the stratification. Each stratum has its own tonal range and chrominance tint. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+
+---

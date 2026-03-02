@@ -1,32 +1,25 @@
 ---
 draft: true
-sidebar_position: 231
+sidebar_position: 248
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
 image: /img/instruments/videomancer/sentinel/sentinel_hero.png
 description: "Surveillance cameras generate vast quantities of footage in which nothing happens."
 ---
 
+import sentinel_hero from '/img/instruments/videomancer/sentinel/sentinel_hero.png';
 import sentinel_before_after from '/img/instruments/videomancer/sentinel/sentinel_before_after.png';
 import sentinel_control_panel from '/img/instruments/videomancer/sentinel/sentinel_control_panel.png';
 import sentinel_exercise1_result from '/img/instruments/videomancer/sentinel/sentinel_exercise1_result.png';
 import sentinel_exercise2_result from '/img/instruments/videomancer/sentinel/sentinel_exercise2_result.png';
 import sentinel_exercise3_result from '/img/instruments/videomancer/sentinel/sentinel_exercise3_result.png';
-import sentinel_hero from '/img/instruments/videomancer/sentinel/sentinel_hero.png';
-import sentinel_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source1_grayscale_ramp_h_1920x1080.png';
-import sentinel_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source2_grayscale_ramp_v_1920x1080.png';
-import sentinel_source3_step_wedge_21level_512 from '/img/instruments/videomancer/sentinel/sentinel_source3_step_wedge_21level_512.png';
 
 # Sentinel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-
----
-
-
 <img src={sentinel_hero} alt="Sentinel hero image"/>
-*Sentinel detecting lateral pixel motion with IIR background subtraction, highlighting moving regions in false color while dimming the static scene.*
+*Sentinel detecting lateral pixel motion with IIR background subtraction, highlighting moving regions in false colour while dimming the static scene.*
 <img src={sentinel_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Sentinel applied.*
 
@@ -34,9 +27,9 @@ import sentinel_source3_step_wedge_21level_512 from '/img/instruments/videomance
 
 ## Overview
 
-Surveillance cameras generate vast quantities of footage in which nothing happens. The real information isn't the image itself — it's the *change*. Sentinel turns that principle into a visual instrument. It builds an adaptive background model of the video signal pixel by pixel, compares each incoming sample against its own smoothed history, and classifies every pixel as either "motion" or "static." The classification drives a false-color overlay: moving regions are highlighted in vivid green or red, while the static background is dimmed and desaturated to recede.
+Surveillance cameras generate vast quantities of footage in which nothing happens. The real information isn't the image itself — it's the *change*. Sentinel turns that principle into a visual instrument. It builds an adaptive background model of the video signal pixel by pixel, compares each incoming sample against its own smoothed history, and classifies every pixel as either "motion" or "static." The classification drives a false-colour overlay: moving regions are highlighted in vivid green or red, while the static background is dimmed and desaturated to recede.
 
-The name *Sentinel* evokes a watchful guardian scanning for intrusion — the same metaphor that gave "motion detection" its place in security engineering. But where a security system outputs a binary alarm, Sentinel outputs video. The threshold, adaptation rate, highlight color, and persistence controls let you tune the detection from a hair-trigger strobe to a gentle thermal-camera glow. At extreme settings the effect inverts, revealing the static scene and hiding the movement entirely.
+The name *Sentinel* evokes a watchful guardian scanning for intrusion — the same metaphor that gave "motion detection" its place in security engineering. But where a security system outputs a binary alarm, Sentinel outputs video. The threshold, adaptation rate, highlight colour, and persistence controls let you tune the detection from a hair-trigger strobe to a gentle thermal-camera glow. At extreme settings the effect inverts, revealing the static scene and hiding the movement entirely.
 
 The entire pipeline is purely combinational and register-based — zero BRAM. A 16-bit LFSR adds noise-floor dithering to the threshold comparator, preventing false triggers on digitally flat regions where quantisation noise alone could cross a tight threshold. Persistence mode holds motion highlights with a -4 per-clock decay, creating comet-like trails behind moving objects.
 
@@ -52,9 +45,9 @@ The core of Sentinel is an infinite impulse response (IIR) filter that tracks th
 
 Motion is declared when the absolute difference between the current pixel and the IIR average exceeds a threshold. In digital video, flat regions produce quantisation noise that hovers at ±1 LSB, which can trigger false positives at tight thresholds. Sentinel injects a pseudo-random noise floor from a 16-bit LFSR into the threshold comparison — effectively dithering the decision boundary so that a single noisy pixel doesn't oscillate between "motion" and "static" from frame to frame. The noise amplitude is user-controllable.
 
-### False-Color Overlay
+### False-Colour Overlay
 
-Once motion is classified, the pipeline applies false color to the detected regions. In green mode, luma is replaced by the Highlight parameter and chrominance is shifted toward green (U and V both pushed below mid). In red/white mode, V is pushed above mid to create a red tint. The highlight brightness is directly controlled by the user, making it possible to create subtle tinted outlines or blazing white flashes.
+Once motion is classified, the pipeline applies false colour to the detected regions. In green mode, luma is replaced by the Highlight parameter and chrominance is shifted toward green (U and V both pushed below mid). In red/white mode, V is pushed above mid to create a red tint. The highlight brightness is directly controlled by the user, making it possible to create subtle tinted outlines or blazing white flashes.
 
 ### Persistence and Decay
 
@@ -81,10 +74,10 @@ Input Video (YUV 4:4:4)
 │   ├─ LFSR noise dither: noise = lfsr(9:0) AND noise_amp
 │   └─ Motion flag: (|diff| > threshold + noise) ? 1 : 0
 │
-├── Stage 3: Classify + Highlight Color
+├── Stage 3: Classify + Highlight Colour
 │   ├─ Invert toggle: optionally flip motion flag
 │   ├─ Persistence: hold highlight brightness with −4/clk decay
-│   └─ Color select: green (U−, V−) or red/white (V+)
+│   └─ Colour select: green (U−, V−) or red/white (V+)
 │
 ├── Stage 4: Composite Output
 │   ├─ Motion pixels → highlight Y, highlight U/V
@@ -138,7 +131,7 @@ Maps to `registers_in(1)`, the IIR adaptation rate. This is converted to a bit-s
 | Default | 50% |
 | Suffix | % |
 
-Maps to `registers_in(2)`, the highlight brightness. This sets the luminance value applied to motion-detected pixels and serves as the starting level for the persistence decay. At full value, motion regions blaze at peak white; at low values, they glow with a subtle tint. The highlight color (green or red) is set by Toggle 7.
+Maps to `registers_in(2)`, the highlight brightness. This sets the luminance value applied to motion-detected pixels and serves as the starting level for the persistence decay. At full value, motion regions blaze at peak white; at low values, they glow with a subtle tint. The highlight colour (green or red) is set by Toggle 7.
 
 ---
 
@@ -185,7 +178,7 @@ Maps to `registers_in(5)`, the LFSR noise-floor amplitude. The noise value is fo
 | **10 — Freeze BG** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggles 7–10 configure independent binary processing options. Toggle 7 selects the highlight color palette. Toggle 8 masks non-motion pixels to black instead of dimming them. Toggle 9 inverts the motion classification so that *static* regions are highlighted. Toggle 10 enables persistence decay on the motion highlight. Toggle 11 is bypass.
+Toggles 7–10 configure independent binary processing options. Toggle 7 selects the highlight colour palette. Toggle 8 masks non-motion pixels to black instead of dimming them. Toggle 9 inverts the motion classification so that *static* regions are highlighted. Toggle 10 enables persistence decay on the motion highlight. Toggle 11 is bypass.
 
 ---
 
@@ -204,7 +197,7 @@ Controls the wet/dry crossfade between the original delayed signal and the compo
 
 ## Guided Exercises
 
-These exercises progress from basic motion detection through false-color tuning to advanced persistence and masking techniques.
+These exercises progress from basic motion detection through false-colour tuning to advanced persistence and masking techniques.
 
 ### Exercise 1: Basic Motion Detection
 
@@ -224,21 +217,21 @@ These exercises progress from basic motion detection through false-color tuning 
 
 ---
 
-### Exercise 2: False-Color Tuning
+### Exercise 2: False-Colour Tuning
 
-<img src={sentinel_exercise2_result} alt="False-Color Tuning result"/>
-*False-Color Tuning — simulated result across source images.*
+<img src={sentinel_exercise2_result} alt="False-Colour Tuning result"/>
+*False-Colour Tuning — simulated result across source images.*
 **Source**: Footage with multiple moving elements at different speeds — a busy street, dancers, or waving hands.
 
-**Objective**: Explore highlight color modes and background dimming to create a surveillance-camera aesthetic.
+**Objective**: Explore highlight colour modes and background dimming to create a surveillance-camera aesthetic.
 
 1. Use settings from Exercise 1 as a baseline.
-2. Toggle Mode (Switch 7) to switch between green and red/white highlights. Note how the color palette changes the emotional tone of the image.
+2. Toggle Mode (Switch 7) to switch between green and red/white highlights. Note how the colour palette changes the emotional tone of the image.
 3. Lower Highlight (Pot 4) to create a dim background — motion pops against a nearly black scene.
 4. Raise Highlight back and switch Channel (Switch 8) to motion-only mode. The background disappears and only the motion regions are visible.
 5. Toggle Invert (Switch 9). The static background glows while the moving regions darken — a negative-space composition.
 
-**Key concepts**: Green vs red color modes change the false-color palette, motion-only mode masks non-motion to black, inversion swaps which regions are highlighted
+**Key concepts**: Green vs red colour modes change the false-colour palette, motion-only mode masks non-motion to black, inversion swaps which regions are highlighted
 
 ---
 
@@ -279,14 +272,16 @@ These exercises progress from basic motion detection through false-color tuning 
 | Term | Definition |
 |------|------------|
 | **Background Subtraction** | An image analysis technique that separates foreground (motion) from background (static) by maintaining and comparing against a reference model. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **Chroma** | The color components (U, V) of a YUV signal, representing hue and saturation. |
+| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Sentinel uses zero BRAM; all state is register-based. |
+| **Chroma** | The colour components (U, V) of a YUV signal, representing hue and saturation. |
 | **Desaturation** | Reducing chrominance toward neutral (U=512, V=512), making the image appear greyscale. |
-| **False Color** | A visualisation technique that maps data values to an arbitrary color palette for enhanced visibility. |
+| **False Colour** | A visualisation technique that maps data values to an arbitrary colour palette for enhanced visibility. |
 | **IIR** | Infinite Impulse Response; a recursive filter whose output depends on its own previous values, creating exponential smoothing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for noise-floor dithering. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Persistence** | Temporal smearing created by decaying a highlight value gradually rather than snapping it off. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Threshold** | The minimum absolute difference required to classify a pixel as "motion." |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 11
+sidebar_position: 10
 slug: /instruments/videomancer/attract
 title: "Attract"
 image: /img/instruments/videomancer/attract/attract_hero.png
-description: "Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — t..."
+description: "Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — the \"attract mode\" phenomenon from decades-old arcade cabinets where demo loops would permanently etch game logos and score readouts into the phosphor screen."
 ---
 
 import attract_hero from '/img/instruments/videomancer/attract/attract_hero.png';
@@ -27,11 +27,11 @@ import attract_exercise3_result from '/img/instruments/videomancer/attract/attra
 
 ## Overview
 
-Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — the "attract mode" phenomenon from decades-old arcade cabinets where demo loops would permanently etch game logos and score readouts into the phosphor screen. The program composites five distinct aging effects: phosphor burn-in via an IIR accumulator, convergence error (horizontal chroma channel offset), radial vignette brightness falloff, color purity drift (position-dependent hue corruption), and scanline dimming.
+Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — the "attract mode" phenomenon from decades-old arcade cabinets where demo loops would permanently etch game logos and score readouts into the phosphor screen. The program composites five distinct aging effects: phosphor burn-in via an IIR accumulator, convergence error (horizontal chroma channel offset), radial vignette brightness falloff, colour purity drift (position-dependent hue corruption), and scanline dimming.
 
-The burn-in effect uses BRAM as a per-scanline accumulator: each pixel's brightness is slowly blended into a persistent memory that represents the "ghost" burned into the phosphor. The burn rate controls how quickly new content writes into the accumulator, and the burn intensity controls how visible the ghost is in the output. The convergence effect simulates the misalignment of the three electron guns (R, G, B) in a color CRT by horizontally offsetting the U and V chroma channels via 8-deep shift register delay lines.
+The burn-in effect uses BRAM as a per-scanline accumulator: each pixel's brightness is slowly blended into a persistent memory that represents the "ghost" burned into the phosphor. The burn rate controls how quickly new content writes into the accumulator, and the burn intensity controls how visible the ghost is in the output. The convergence effect simulates the misalignment of the three electron guns (R, G, B) in a colour CRT by horizontally offsetting the U and V chroma channels via 8-deep shift register delay lines.
 
-At moderate settings, the program adds authentic CRT aging character — darkened edges, subtle color fringing, and a faint ghost of bright areas. At extreme settings, the image is dramatically degraded: heavy vignette tunnels vision to the centre, strong purity drift shifts colors across the screen, and visible scanlines impose horizontal structure.
+At moderate settings, the program adds authentic CRT aging character — darkened edges, subtle colour fringing, and a faint ghost of bright areas. At extreme settings, the image is dramatically degraded: heavy vignette tunnels vision to the centre, strong purity drift shifts colours across the screen, and visible scanlines impose horizontal structure.
 
 ---
 
@@ -45,11 +45,11 @@ The name "attract mode" comes from arcade game terminology: when no one was play
 
 ### What Is Convergence Error?
 
-A color CRT uses three electron guns (red, green, blue) that must be precisely aligned so their beams strike the correct phosphor dots simultaneously. **Convergence error** occurs when the guns go out of alignment — typically due to drift in the magnetic deflection system, physical shock, or thermal expansion over decades. The result is visible color fringing: red, green, and blue components of the image don't quite overlap, creating colored halos around high-contrast edges. In this program, convergence is simulated by horizontally delaying the U and V chroma channels relative to Y luma using shift registers.
+A colour CRT uses three electron guns (red, green, blue) that must be precisely aligned so their beams strike the correct phosphor dots simultaneously. **Convergence error** occurs when the guns go out of alignment — typically due to drift in the magnetic deflection system, physical shock, or thermal expansion over decades. The result is visible colour fringing: red, green, and blue components of the image don't quite overlap, creating coloured halos around high-contrast edges. In this program, convergence is simulated by horizontally delaying the U and V chroma channels relative to Y luma using shift registers.
 
-### What Is Color Purity?
+### What Is Colour Purity?
 
-**Color purity** refers to whether each electron gun's beam strikes only its assigned phosphor dots. On a CRT with perfect purity, each gun illuminates only its color. With degraded purity, beams drift and begin to excite neighbouring phosphor dots of other colors. This creates color casts that vary across the screen — one corner might shift warm (reddish), another cool (bluish), and the edges might gain a green tint. In this program, purity drift is simulated by applying position-dependent UV offsets based on the pixel's distance and direction from the screen centre.
+**Colour purity** refers to whether each electron gun's beam strikes only its assigned phosphor dots. On a CRT with perfect purity, each gun illuminates only its colour. With degraded purity, beams drift and begin to excite neighbouring phosphor dots of other colours. This creates colour casts that vary across the screen — one corner might shift warm (reddish), another cool (bluish), and the edges might gain a green tint. In this program, purity drift is simulated by applying position-dependent UV offsets based on the pixel's distance and direction from the screen centre.
 
 ### What Is Radial Vignette?
 
@@ -131,7 +131,7 @@ Controls the visibility of the burn-in ghost in the output image. At 0%, the bur
 | Range | 0 – 8 |
 | Default | 2 |
 
-Controls the convergence error — the horizontal pixel offset between the Y (luma) and U/V (chroma) channels. At 0, there is no offset and all channels are perfectly aligned. At maximum, the U channel is delayed by up to 8 pixels relative to Y, creating visible color fringing on vertical edges. The V channel remains aligned with Y, so the shift is asymmetric — this simulates how CRT convergence error typically affects one gun more than the others.
+Controls the convergence error — the horizontal pixel offset between the Y (luma) and U/V (chroma) channels. At 0, there is no offset and all channels are perfectly aligned. At maximum, the U channel is delayed by up to 8 pixels relative to Y, creating visible colour fringing on vertical edges. The V channel remains aligned with Y, so the shift is asymmetric — this simulates how CRT convergence error typically affects one gun more than the others.
 
 ---
 
@@ -222,14 +222,14 @@ These exercises progress from individual CRT aging effects through combined degr
 
 <img src={attract_exercise2_result} alt="Convergence Error and Purity Drift result"/>
 *Convergence Error and Purity Drift — simulated result across source images.*
-**Source**: Image with high-contrast vertical edges and varied colors — architecture, text overlays, or graphic patterns.
+**Source**: Image with high-contrast vertical edges and varied colours — architecture, text overlays, or graphic patterns.
 
-**Objective**: Explore how convergence error and purity drift introduce color artefacts typical of aging CRT monitors.
+**Objective**: Explore how convergence error and purity drift introduce colour artefacts typical of aging CRT monitors.
 
-1. **Add convergence**: Set Convergence to ~50% (about 4 pixels). Look at vertical edges — you should see color fringing.
-2. **Maximum convergence**: Push to 100% (8 pixel delay). Very obvious color separation.
+1. **Add convergence**: Set Convergence to ~50% (about 4 pixels). Look at vertical edges — you should see colour fringing.
+2. **Maximum convergence**: Push to 100% (8 pixel delay). Very obvious colour separation.
 3. **Subtle convergence**: Back to ~25% (2 pixels). Barely visible but adds character on fine detail.
-4. **Add purity**: Toggle Purity to Warm/Cool. Notice color casts that vary across the screen — warmer in one direction, cooler in the other.
+4. **Add purity**: Toggle Purity to Warm/Cool. Notice colour casts that vary across the screen — warmer in one direction, cooler in the other.
 5. **Green drift**: Toggle Purity to Grn Drift. The edges gain a green tint that increases toward the corners.
 6. **Rainbow**: Toggle Purity to Rainbow. The full spectrum rotates around the screen centre.
 7. **Scale with wear**: Reduce Wear to ~50%. The purity effect halves in strength.
@@ -278,16 +278,16 @@ These exercises progress from individual CRT aging effects through combined degr
 | Term | Definition |
 |------|------------|
 | **Alpha-max beta-min** | A fast approximation algorithm for computing distance from the origin without square roots, used here for radial vignette distance calculation. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the per-scanline burn-in accumulator. |
 | **Burn-in** | Permanent degradation of CRT phosphor coating where a static image reduces phosphor efficiency, leaving a visible ghost of the displayed content. |
-| **Color purity** | The accuracy with which each CRT electron gun excites only its assigned phosphor dots; degraded purity causes position-dependent color casts across the screen. |
-| **Convergence** | The alignment of the three color electron gun beams in a CRT; convergence error produces visible color fringing when beams strike misaligned phosphor dots. |
+| **Colour purity** | The accuracy with which each CRT electron gun excites only its assigned phosphor dots; degraded purity causes position-dependent colour casts across the screen. |
+| **Convergence** | The alignment of the three colour electron gun beams in a CRT; convergence error produces visible colour fringing when beams strike misaligned phosphor dots. |
 | **CRT** | Cathode-Ray Tube; a vacuum tube display technology that produces images by scanning an electron beam across a phosphor-coated screen. |
 | **DDA** | Digital Differential Analyzer; an incremental algorithm for computing evenly spaced coordinate steps, used here for linearity distortion. |
 | **IIR** | Infinite Impulse Response; a filter structure where output depends on both current input and previous output, creating the temporal smoothing used in the burn-in accumulator. |
 | **Phosphor** | The luminescent coating on the inside of a CRT faceplate that glows when struck by an electron beam and degrades with prolonged use. |
 | **Scanline** | A single horizontal line traced by the electron beam during one pass across the CRT screen; alternating-line dimming simulates the visible gaps between scan lines. |
 | **Vignette** | A gradual darkening of the image from centre to edges, caused on CRT displays by electron beam spread and glass attenuation at the screen periphery. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
 
 ---

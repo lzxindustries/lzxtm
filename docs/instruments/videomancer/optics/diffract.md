@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 71
+sidebar_position: 78
 slug: /instruments/videomancer/diffract
 title: "Diffract"
 image: /img/instruments/videomancer/diffract/diffract_hero.png
-description: "When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly differen..."
+description: "When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly different angle."
 ---
 
 import diffract_hero from '/img/instruments/videomancer/diffract/diffract_hero.png';
@@ -289,17 +289,17 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Chromatic Aberration** | An optical defect where a lens fails to bring all wavelengths to the same focus, producing colored fringes at high-contrast edges. |
 | **Diffraction** | The bending and spreading of waves around obstacles or through apertures, separating wavelengths by angle. |
 | **Dispersion** | The separation of light into its constituent wavelengths, as by a prism or diffraction grating. |
 | **Fringe** | A band of color produced by interference or diffraction, appearing at the boundary between bright and dark regions. |
 | **Grating** | An optical element with periodic structure that diffracts light into multiple spectral orders. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware module that computes weighted averages between two values, used here for wet/dry mixing. |
 | **Line Buffer** | A single-line BRAM delay that stores one scan line of video data for vertical comparison. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing horizontal pixel delay. |
 | **Tap** | A read point within a delay line or shift register, extracting a sample at a specific offset. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

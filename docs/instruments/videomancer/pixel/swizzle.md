@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 253
+sidebar_position: 277
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
 image: /img/instruments/videomancer/swizzle/swizzle_hero.png
 description: "Every pixel in the Videomancer video pipeline is a triplet of numbers — luminance (Y), and two chrominance components (U and V)."
 ---
 
+import swizzle_hero from '/img/instruments/videomancer/swizzle/swizzle_hero.png';
 import swizzle_before_after from '/img/instruments/videomancer/swizzle/swizzle_before_after.png';
 import swizzle_control_panel from '/img/instruments/videomancer/swizzle/swizzle_control_panel.png';
 import swizzle_exercise1_result from '/img/instruments/videomancer/swizzle/swizzle_exercise1_result.png';
 import swizzle_exercise2_result from '/img/instruments/videomancer/swizzle/swizzle_exercise2_result.png';
 import swizzle_exercise3_result from '/img/instruments/videomancer/swizzle/swizzle_exercise3_result.png';
-import swizzle_hero from '/img/instruments/videomancer/swizzle/swizzle_hero.png';
-import swizzle_source1_kodim02 from '/img/instruments/videomancer/swizzle/swizzle_source1_kodim02.png';
-import swizzle_source2_kodim07 from '/img/instruments/videomancer/swizzle/swizzle_source2_kodim07.png';
-import swizzle_source3_kodim01_bw from '/img/instruments/videomancer/swizzle/swizzle_source3_kodim01_bw.png';
 
 # Swizzle
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={swizzle_hero} alt="Swizzle hero image"/>
 *Swizzle reordering and offsetting YUV channels to shift hues and reveal the hidden color structure of video signals.*
@@ -286,12 +279,14 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | The ITU television standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
 | **Channel Rotation** | A cyclic permutation of three components (Y→U→V→Y), moving each channel's data to the next position in the cycle. |
 | **Chrominance** | The color information in a video signal, encoded as U and V components centered at 512 in 10-bit representation. |
 | **DC Offset** | A constant value added to a signal, shifting its entire range up or down without changing its shape. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that linearly blends two input values based on a mix parameter (lerp). |
+| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Swizzle** | In GPU programming, a reordering of vector components; in this program, a reordering of YUV channels. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

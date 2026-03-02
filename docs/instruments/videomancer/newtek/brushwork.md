@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 29
+sidebar_position: 31
 slug: /instruments/videomancer/brushwork
 title: "Brushwork"
 image: /img/instruments/videomancer/brushwork/brushwork_hero.png
@@ -301,11 +301,11 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 | **Feathering** | Gradually blending the edge of a selection or transition from fully opaque to fully transparent, producing a soft rather than hard boundary. |
 | **Fill color** | A solid color generated from a hue/brightness lookup used to paint the brush-stroked region or as the background in video reveal mode. |
 | **Hue** | The attribute of a color that distinguishes it on the color wheel (red, yellow, green, etc.), specified here as an angle in degrees. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware block that linearly blends between two input values based on a mix coefficient, used here for dry/wet crossfading. |
 | **Matte** | A mask defining which regions of a frame are opaque and which are transparent, used to composite the painted and unpainted areas. |
 | **SMPTE** | Society of Motion Picture and Television Engineers, the standards body that defines broadcast video wipe patterns and transition specifications. |
 | **Sweep edge** | The primary boundary that advances across the frame during a transition, modulated by the brush texture to create an organic contour. |
 | **Texture profile** | A stored one-dimensional displacement pattern (32 entries) that modulates the sweep edge, creating the characteristic shape of each brush type. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video signal processing. |
 
 ---

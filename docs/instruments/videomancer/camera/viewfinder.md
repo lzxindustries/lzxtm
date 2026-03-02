@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 277
+sidebar_position: 303
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
 image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png
-description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed ..."
+description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed against the operator's eye."
 ---
 
+import viewfinder_hero from '/img/instruments/videomancer/viewfinder/viewfinder_hero.png';
 import viewfinder_before_after from '/img/instruments/videomancer/viewfinder/viewfinder_before_after.png';
 import viewfinder_control_panel from '/img/instruments/videomancer/viewfinder/viewfinder_control_panel.png';
 import viewfinder_exercise1_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise1_result.png';
 import viewfinder_exercise2_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise2_result.png';
 import viewfinder_exercise3_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise3_result.png';
-import viewfinder_hero from '/img/instruments/videomancer/viewfinder/viewfinder_hero.png';
-import viewfinder_source1_kodim05 from '/img/instruments/videomancer/viewfinder/viewfinder_source1_kodim05.png';
-import viewfinder_source2_kodim15 from '/img/instruments/videomancer/viewfinder/viewfinder_source2_kodim15.png';
-import viewfinder_source3_kodim15_bw from '/img/instruments/videomancer/viewfinder/viewfinder_source3_kodim15_bw.png';
 
 # Viewfinder
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={viewfinder_hero} alt="Viewfinder hero image"/>
 *Viewfinder overlaying zebra exposure stripes, red focus peaking, safe-area guides, and a blinking REC indicator onto a live camera feed — the complete 1990s camcorder EVF experience.*
@@ -262,14 +255,16 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 | Term | Definition |
 |------|------------|
 | **Action-Safe Area** | The inner 90% of a television frame within which all significant action should be visible on overscanning CRT displays. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory resources. Viewfinder uses zero BRAMs. |
 | **CRT** | Cathode Ray Tube; the display technology used in camcorder viewfinders before LCD panels. |
 | **EVF** | Electronic Viewfinder; a miniature display in a camera eyepiece showing the live camera output. |
 | **Focus Peaking** | A camera monitoring technique that highlights in-focus edges with a colored overlay. |
 | **IRE** | Institute of Radio Engineers unit; a scale for measuring video signal amplitude where 100 IRE is peak white. |
 | **LUT** | Look-Up Table; the basic FPGA logic element. Viewfinder uses approximately 350. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Sobel** | A gradient-based edge detection operator; Viewfinder uses a simplified 3-pixel horizontal variant. |
 | **Title-Safe Area** | The inner 80% of a television frame within which all on-screen text must remain visible. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
 | **Zebra Stripes** | Diagonal hatching patterns overlaid on overexposed regions of a camera viewfinder display. |
+
+---

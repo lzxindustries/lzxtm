@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 125
+sidebar_position: 135
 slug: /instruments/videomancer/imprint
 title: "Imprint"
 image: /img/instruments/videomancer/imprint/imprint_hero.png
@@ -31,7 +31,7 @@ Every printed photograph in a newspaper, magazine, or book is an illusion. What 
 
 The program splits the input video into three ink channels (C, M, Y), rotates each channel's dot grid by a different angle using a 32-entry sin/cos lookup table, evaluates a distance function within each grid cell to determine whether a dot is present, and composites the results subtractively onto a paper color. The name *Imprint* refers to the physical act of pressing an inked plate onto paper — the moment when the halftone screen transfers to the page.
 
-At conservative settings — large dot pitch, moderate ink density, separated CMY screens — Imprint produces a convincing newspaper or poster print effect. At extreme settings — small pitch, maximum density, unusual screen angles — the dot patterns become moiré-like interference textures where the three ink layers visually interact in complex ways. Switching to monochrome mode, line screen mode, or diamond dots produces entirely different families of print effects.
+At conservative settings — large dot pitch, moderate ink density, separated CMY screens — Imprint produces a convincing newspaper or poster print effect. At extreme settings — small pitch, maximum density, unusual screen angles — the dot patterns become moire-like interference textures where the three ink layers visually interact in complex ways. Switching to monochrome mode, line screen mode, or diamond dots produces entirely different families of print effects.
 
 ---
 
@@ -91,12 +91,12 @@ Input Video (YUV 4:4:4)
 ├── Stage 4: Subtractive Ink Composite ─────────────────────────
 │   │
 │   ├─ CMY Mode:
-│   │   ├─ Start from paper color (Y, Cb, Cr)
+│   │   ├─ Start from paper colour (Y, Cb, Cr)
 │   │   ├─ Cyan dot:    Y -= 200, Cr -= 180
 │   │   ├─ Magenta dot: Y -= 200, Cb -= 100, Cr += 140
 │   │   ├─ Yellow dot:  Y -= 80, Cb -= 180
 │   │   └─ Clamp [0, 1023]
-│   ├─ Mono Mode: ink color where dot_c active, paper color otherwise
+│   ├─ Mono Mode: ink colour where dot_c active, paper colour otherwise
 │   └─ Invert: complement all channels (1023 - value)
 │
 ├── Sync Signals ───────────────────────────────────────────────
@@ -126,7 +126,7 @@ The pipeline's most critical interaction is between the rotated grid coordinates
 | Range | 1 – 4 |
 | Default | 3 |
 
-Selects the halftone dot pitch — the spacing of the screen grid in pixels. The four available pitches are 4, 8, 16, and 32 pixels, selected as discrete steps. Smaller pitches create finer dot patterns that resolve more detail but can produce dense moiré when combined with screen rotation. Larger pitches create coarse, poster-like dots that are individually visible. The pitch also determines the maximum dot size, since dots cannot exceed the cell boundary.
+Selects the halftone dot pitch — the spacing of the screen grid in pixels. The four available pitches are 4, 8, 16, and 32 pixels, selected as discrete steps. Smaller pitches create finer dot patterns that resolve more detail but can produce dense moire when combined with screen rotation. Larger pitches create coarse, poster-like dots that are individually visible. The pitch also determines the maximum dot size, since dots cannot exceed the cell boundary.
 
 ---
 
@@ -148,7 +148,7 @@ Controls the ink density — how large the halftone dots grow within each grid c
 | Default | 0° |
 | Suffix | ° |
 
-Sets the base rotation angle for the halftone screen grid. At 0°, the dot pattern is axis-aligned with the video raster. As the angle increases, the entire grid rotates. In CMY mode, this angle applies to the cyan screen; the magenta and yellow screens are offset from it by the Angle Spread value. Rotation is essential for avoiding moiré between the dot pattern and the video raster, and for creating the traditional rosette pattern between color separations.
+Sets the base rotation angle for the halftone screen grid. At 0°, the dot pattern is axis-aligned with the video raster. As the angle increases, the entire grid rotates. In CMY mode, this angle applies to the cyan screen; the magenta and yellow screens are offset from it by the Angle Spread value. Rotation is essential for avoiding moire between the dot pattern and the video raster, and for creating the traditional rosette pattern between color separations.
 
 ---
 
@@ -159,7 +159,7 @@ Sets the base rotation angle for the halftone screen grid. At 0°, the dot patte
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the angular separation between the three CMY screen layers. The cyan screen uses the base angle; the magenta screen is offset by one spread increment; the yellow screen by two spread increments. At 0%, all three screens are at the same angle — their dots overlap perfectly, producing a monochromatic pattern. As spread increases, the screens separate and their dots interleave, creating the color rosette pattern characteristic of commercial printing. At maximum spread, the three screens are widely separated, producing vivid moiré interference between the ink layers.
+Controls the angular separation between the three CMY screen layers. The cyan screen uses the base angle; the magenta screen is offset by one spread increment; the yellow screen by two spread increments. At 0%, all three screens are at the same angle — their dots overlap perfectly, producing a monochromatic pattern. As spread increases, the screens separate and their dots interleave, creating the color rosette pattern characteristic of commercial printing. At maximum spread, the three screens are widely separated, producing vivid moire interference between the ink layers.
 
 ---
 
@@ -227,11 +227,11 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 1. **Enable mono mode**: Set Color Mode to Mono. The output is now a single-screen halftone.
 2. **Set coarse pitch**: Set Dot Pitch to step 3 (16-pixel dots). Large, individually visible dots appear.
 3. **Adjust density**: Sweep Ink Density from 0% to 100%. Watch dots grow from tiny points to solid fields. Find a setting (~50%) where faces are clearly recognizable through the dot pattern.
-4. **Rotate the screen**: Increase Screen Angle. The dot grid rotates — notice how the moiré pattern with the video raster changes at different angles.
+4. **Rotate the screen**: Increase Screen Angle. The dot grid rotates — notice how the moire pattern with the video raster changes at different angles.
 5. **Try diamond dots**: Flip Dot Shape to Diamond. The round dots become square diamonds, giving a comic-book print quality.
 6. **Paper and ink**: Set Paper Tint to select newsprint (yellowish). Set Ink Tint to black. The result should resemble a newspaper photograph.
 
-**Key concepts**: Halftone dots create continuous tone illusion, dot size is proportional to source brightness, screen rotation reduces moiré with raster, mono mode uses a single ink channel
+**Key concepts**: Halftone dots create continuous tone illusion, dot size is proportional to source brightness, screen rotation reduces moire with raster, mono mode uses a single ink channel
 
 ---
 
@@ -277,8 +277,8 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 ## Tips
 
-- **Screen angle prevents moiré**: Without rotation, the dot grid aligns with the video raster and produces distracting interference. Even a small rotation angle (5–15°) eliminates raster moiré.
-- **Angle spread creates color**: In CMY mode, the spread between screen angles is what makes the print colorful. At zero spread, the output is nearly monochrome. The traditional print industry uses carefully chosen angles to minimize moiré between the color screens.
+- **Screen angle prevents moire**: Without rotation, the dot grid aligns with the video raster and produces distracting interference. Even a small rotation angle (5–15°) eliminates raster moire.
+- **Angle spread creates color**: In CMY mode, the spread between screen angles is what makes the print colorful. At zero spread, the output is nearly monochrome. The traditional print industry uses carefully chosen angles to minimize moire between the color screens.
 - **Large pitch for clarity, small pitch for detail**: The four pitch options (4/8/16/32 pixels) span from fine photographic halftone to coarse poster-print scale. Start with pitch 4 (32px) to understand the dot mechanics, then reduce pitch for production results.
 - **Line screen for engravings**: Switching to line mode and rotating the screen creates ruled-line patterns that mimic copper-plate or steel-plate engraving — a highly distinctive look, especially in mono mode with sepia ink.
 - **Paper and ink tints set the mood**: The 8×8 combination of paper and ink colors covers classic (sepia on cream), modern (black on white), and experimental (crimson on sky) print aesthetics without touching the halftone geometry itself.
@@ -295,16 +295,16 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 | **CMYK** | Cyan, Magenta, Yellow, and Key (black); the four inks used in process color printing. Imprint implements CMY without explicit black (K). |
 | **Distance Function** | A mathematical formula that computes the distance from a point to a reference location; used here to determine whether a pixel falls inside or outside a halftone dot. |
 | **Dot Pitch** | The spacing between adjacent dot centres in the halftone grid, measured in pixels. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Halftone** | A reprographic technique that simulates continuous tones using dots of varying size, spacing, or density. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade module that blends between the dry (unprocessed) and wet (processed) signal paths based on the Mix fader position. |
 | **LUT** | Look-Up Table; used here for both the sin/cos rotation coefficients and the paper/ink color palettes. |
 | **Manhattan Distance** | The sum of absolute differences along each axis: |dx| + |dy|. Produces diamond-shaped equidistant contours. |
-| **Moiré** | An interference pattern that appears when two regular grids are overlaid at slightly different angles or frequencies. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Moire** | An interference pattern that appears when two regular grids are overlaid at slightly different angles or frequencies. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Rosette Pattern** | The characteristic flower-like pattern visible under magnification in color halftone prints, created by the interaction of differently-angled dot screens. |
 | **Screen Angle** | The rotation angle of a halftone dot grid relative to the horizontal axis, measured in degrees. |
 | **Subtractive Color** | A color model where pigments or inks absorb (subtract) portions of the light spectrum; mixing C, M, and Y inks produces darker colors. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 82
+sidebar_position: 90
 slug: /instruments/videomancer/dynaround
 title: "Dynaround"
 image: /img/instruments/videomancer/dynaround/dynaround_hero.png
@@ -283,16 +283,16 @@ These exercises explore each dithering strategy and its interaction with bit dep
 | **Bayer Matrix** | A recursively constructed threshold pattern used in ordered dithering; distributes quantization decisions evenly across a tile grid. |
 | **Bit Depth** | The number of binary digits used to represent each sample; 10-bit provides 1024 levels, 1-bit provides 2 levels. |
 | **Blue Noise** | A randomness spectrum with minimal low-frequency energy, producing evenly distributed spatial noise without visible clumping. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation 601; the color space standard used for standard-definition video encoding (Y, Cb, Cr). |
 | **Dynamic Rounding** | Quantel's patented technique using discarded bits as a pseudo-random threshold for probabilistic rounding. |
 | **Error Diffusion** | A dithering technique where quantization error is propagated to neighboring pixels to preserve local average intensity. |
 | **Floyd-Steinberg** | A 1976 error diffusion algorithm distributing quantization error to four neighboring pixels with fixed fractional weights. |
 | **Galois LFSR** | A Linear Feedback Shift Register using XOR taps on the output bit; produces a maximal-length pseudo-random sequence. |
 | **Grain** | Additive pseudo-random noise overlaid on the signal to simulate analog film texture. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware module performing linear interpolation (crossfade) between two input signals based on a mix parameter. |
 | **Posterization** | Visible banding artifacts caused by reducing the number of quantization levels in an image. |
 | **Quantization** | The process of mapping a continuous or fine-grained signal to a smaller set of discrete levels. |
 | **Truncation** | Discarding least-significant bits without rounding, always biasing toward zero. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V); used throughout the Videomancer video pipeline. |
 
 ---

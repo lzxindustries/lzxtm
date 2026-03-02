@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 155
+sidebar_position: 170
 slug: /instruments/videomancer/ludosphere
 title: "Ludosphere"
 image: /img/instruments/videomancer/ludosphere/ludosphere_hero.png
 description: "Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time."
 ---
 
+import ludosphere_hero from '/img/instruments/videomancer/ludosphere/ludosphere_hero.png';
 import ludosphere_before_after from '/img/instruments/videomancer/ludosphere/ludosphere_before_after.png';
 import ludosphere_control_panel from '/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png';
 import ludosphere_exercise1_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise1_result.png';
 import ludosphere_exercise2_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise2_result.png';
 import ludosphere_exercise3_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise3_result.png';
-import ludosphere_hero from '/img/instruments/videomancer/ludosphere/ludosphere_hero.png';
-import ludosphere_source1_kodim02 from '/img/instruments/videomancer/ludosphere/ludosphere_source1_kodim02.png';
-import ludosphere_source2_kodim07 from '/img/instruments/videomancer/ludosphere/ludosphere_source2_kodim07.png';
-import ludosphere_source3_kodim01_bw from '/img/instruments/videomancer/ludosphere/ludosphere_source3_kodim01_bw.png';
 
 # Ludosphere
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={ludosphere_hero} alt="Ludosphere hero image"/>
 *Ludosphere applying three-axis oscillator modulation to produce spherical color patterns across the video frame.*
@@ -118,7 +111,7 @@ The three oscillators share no state — each operates on an independent phase a
 | Default | 50.0% |
 | Suffix | % |
 
-Horizontal oscillator frequency word. Low values produce a single wide gradient across the frame — the ramp cycles slowly from left to right. Higher values compress the pattern into multiple oscillation cycles per line, creating vertical stripe patterns. Because the accumulator resets at each active-video start, the horizontal pattern is always phase-locked to the left edge of the frame. At very high values the pattern aliases, producing moiré-like interference with the pixel grid.
+Horizontal oscillator frequency word. Low values produce a single wide gradient across the frame — the ramp cycles slowly from left to right. Higher values compress the pattern into multiple oscillation cycles per line, creating vertical stripe patterns. Because the accumulator resets at each active-video start, the horizontal pattern is always phase-locked to the left edge of the frame. At very high values the pattern aliases, producing moire-like interference with the pixel grid.
 
 ---
 
@@ -282,10 +275,12 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 | **ABI** | Application Binary Interface; the 8-register communication protocol between the firmware and FPGA program. Ludosphere reads beyond this range. |
 | **Accumulator** | A register that sums a frequency word on each clock event, producing a linearly sweeping ramp. |
 | **Chroma** | The color information in a video signal, encoded as U and V channels in YUV color space. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating precise waveforms using a phase accumulator and frequency word. |
 | **Frequency Doubler** | A waveshaper that folds a sawtooth ramp at its midpoint to produce a symmetric triangle wave. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Phase Accumulator** | An integer register that adds a fixed increment on each event, sweeping through its range to produce a ramp waveform. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc Amp** | Processing Amplifier; a brightness/contrast stage. In Ludosphere, repurposed as a modulator blending oscillator and source. |
 | **Triangle Wave** | A symmetric waveform that ramps linearly up then linearly down, with no discontinuity at the peaks. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

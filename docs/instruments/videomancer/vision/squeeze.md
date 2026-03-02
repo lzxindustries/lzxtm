@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 243
+sidebar_position: 267
 slug: /instruments/videomancer/squeeze
 title: "Squeeze"
 image: /img/instruments/videomancer/squeeze/squeeze_hero.png
-description: "In the era of analogue broadcast television, a dedicated hardware box called a DVE — Digital Video Effects unit — sat between the camera switcher and th..."
+description: "In the era of analogue broadcast television, a dedicated hardware box called a DVE — Digital Video Effects unit — sat between the camera switcher and the transmitter."
 ---
 
+import squeeze_hero from '/img/instruments/videomancer/squeeze/squeeze_hero.png';
 import squeeze_before_after from '/img/instruments/videomancer/squeeze/squeeze_before_after.png';
 import squeeze_control_panel from '/img/instruments/videomancer/squeeze/squeeze_control_panel.png';
 import squeeze_exercise1_result from '/img/instruments/videomancer/squeeze/squeeze_exercise1_result.png';
 import squeeze_exercise2_result from '/img/instruments/videomancer/squeeze/squeeze_exercise2_result.png';
 import squeeze_exercise3_result from '/img/instruments/videomancer/squeeze/squeeze_exercise3_result.png';
-import squeeze_hero from '/img/instruments/videomancer/squeeze/squeeze_hero.png';
-import squeeze_source1_kodim15 from '/img/instruments/videomancer/squeeze/squeeze_source1_kodim15.png';
-import squeeze_source2_kodim15_bw from '/img/instruments/videomancer/squeeze/squeeze_source2_kodim15_bw.png';
-import squeeze_source3_male_1024 from '/img/instruments/videomancer/squeeze/squeeze_source3_male_1024.png';
 
 # Squeeze
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={squeeze_hero} alt="Squeeze hero image"/>
 *Squeeze compressing a live video source into a floating inset rectangle with a bright border and dark background, demonstrating classic DVE picture-in-picture composition.*
@@ -185,7 +178,7 @@ Controls the width of the bright border surrounding the inset rectangle. At 0%, 
 | Default | 100% |
 | Suffix | % |
 
-Controls the luminance of the border ring. At 0%, the border is black — visually invisible against a black background but still present as a region that blocks the background content. At 100%, the border is maximum white. The border color is always neutral gray (U=512, V=512) regardless of this setting — only the brightness varies. A bright white border against a dark background is the classic broadcast PIP look. Lower values produce a subtler frame that separates the inset from the background without drawing attention to itself.
+Controls the luminance of the border ring. At 0%, the border is black — visually invisible against a black background but still present as a region that blocks the background content. At 100%, the border is maximum white. The border colour is always neutral gray (U=512, V=512) regardless of this setting — only the brightness varies. A bright white border against a dark background is the classic broadcast PIP look. Lower values produce a subtler frame that separates the inset from the background without drawing attention to itself.
 
 ---
 
@@ -210,7 +203,7 @@ Controls the background fill level. In Black mode (Bg Mode = Black), this sets t
 | **10 — Shadow** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggles control independent binary options. Aspect (toggle 7) is reserved for future aspect ratio locking. Bg Mode (toggle 8) selects between solid color and dimmed video backgrounds. Border (toggle 9) enables or disables the bright border ring around the inset. Shadow (toggle 10) enables or disables the drop shadow offset behind the border. Bypass (toggle 11) overrides everything at the output mux. None of these toggles interact with each other — each controls a single, independent parameter.
+The five toggles control independent binary options. Aspect (toggle 7) is reserved for future aspect ratio locking. Bg Mode (toggle 8) selects between solid colour and dimmed video backgrounds. Border (toggle 9) enables or disables the bright border ring around the inset. Shadow (toggle 10) enables or disables the drop shadow offset behind the border. Bypass (toggle 11) overrides everything at the output mux. None of these toggles interact with each other — each controls a single, independent parameter.
 
 ---
 
@@ -254,7 +247,7 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 <img src={squeeze_exercise2_result} alt="Drop Shadow and Background Modes result"/>
 *Drop Shadow and Background Modes — simulated result across source images.*
-**Source**: Footage with clear foreground subjects and varied background colors.
+**Source**: Footage with clear foreground subjects and varied background colours.
 
 **Objective**: Explore the drop shadow and background mode interactions for broadcast-style composition.
 
@@ -312,9 +305,11 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 | **Compositing** | The process of combining multiple visual elements (inset, border, shadow, background) into a single output frame. |
 | **Drop Shadow** | A dark offset rectangle drawn behind the inset border to create the illusion of the window floating above the background plane. |
 | **DVE** | Digital Video Effects; a dedicated hardware unit for real-time video scaling, positioning, and compositing, used extensively in broadcast television from the late 1970s onward. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that computes the linear interpolation (crossfade) between two values based on a fractional parameter, used for the wet/dry mix stage. |
 | **PIP** | Picture-in-Picture; a video composition technique where one source appears as a reduced inset within another. |
 | **Region Classification** | The per-pixel process of determining whether a pixel falls inside the inset, border, shadow, or background region based on its screen coordinates. |
 | **Squeeze-Back** | The broadcast term for compressing a full-frame video source into a smaller inset rectangle, named for the visual impression of the image being squeezed down. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

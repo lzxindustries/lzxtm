@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 248
+sidebar_position: 272
 slug: /instruments/videomancer/stoa
 title: "Stoa"
 image: /img/instruments/videomancer/stoa/stoa_hero.png
 description: "The stoa was the defining architectural form of ancient Greece — a long covered walkway fronted by a row of columns."
 ---
 
+import stoa_hero from '/img/instruments/videomancer/stoa/stoa_hero.png';
 import stoa_before_after from '/img/instruments/videomancer/stoa/stoa_before_after.png';
 import stoa_control_panel from '/img/instruments/videomancer/stoa/stoa_control_panel.png';
 import stoa_exercise1_result from '/img/instruments/videomancer/stoa/stoa_exercise1_result.png';
 import stoa_exercise2_result from '/img/instruments/videomancer/stoa/stoa_exercise2_result.png';
 import stoa_exercise3_result from '/img/instruments/videomancer/stoa/stoa_exercise3_result.png';
-import stoa_hero from '/img/instruments/videomancer/stoa/stoa_hero.png';
-import stoa_source1_kodim03 from '/img/instruments/videomancer/stoa/stoa_source1_kodim03.png';
-import stoa_source2_kodim13 from '/img/instruments/videomancer/stoa/stoa_source2_kodim13.png';
-import stoa_source3_kodim13_bw from '/img/instruments/videomancer/stoa/stoa_source3_kodim13_bw.png';
 
 # Stoa
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={stoa_hero} alt="Stoa hero image"/>
 *Stoa transforming live video into a Doric colonnade with cosine-shaded fluting, arris ridges, and entablature patterning.*
@@ -282,17 +275,19 @@ These exercises progress from basic column shading through architectural composi
 | Term | Definition |
 |------|------------|
 | **Arris** | The sharp edge or ridge formed where two flute concavities meet on a column shaft; rendered as a dark line in Stoa. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the color matrix standard for standard-definition YUV encoding used throughout the Videomancer pipeline. |
 | **Capital** | The uppermost element of a column, transitioning between the shaft and the entablature; rendered as a bright horizontal band. |
 | **Colonnade** | A row of evenly spaced columns supporting a horizontal entablature; the defining element of a stoa. |
 | **Cosine LUT** | A 32-entry lookup table storing cosine values mapped to [0–1023]; used to compute the flute shading curve. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique used here to generate the animated light rotation at a constant rate per frame. |
 | **Doric** | The oldest and simplest of the three Greek column orders, characterized by 20 flutes with sharp arrises and no base. |
 | **Entablature** | The horizontal structure above the columns, consisting of architrave, frieze (with triglyphs and metopes), and cornice. |
 | **Flute** | A concave vertical channel carved into a column shaft; Stoa simulates flutes using a cosine brightness curve. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Ionic** | The second Greek column order, characterized by 24 flutes with flat fillets and scroll-shaped volute capitals. |
 | **Metope** | The smooth or sculpted panel between triglyphs in a Doric frieze. |
 | **Stoa** | A covered walkway or portico with a row of columns along its front, common in ancient Greek public architecture. |
 | **Triglyph** | A vertically grooved rectangular block in a Doric frieze, alternating with metopes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

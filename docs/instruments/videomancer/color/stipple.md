@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 247
+sidebar_position: 271
 slug: /instruments/videomancer/stipple
 title: "Stipple"
 image: /img/instruments/videomancer/stipple/stipple_hero.png
-description: "Every classic computer had a fixed palette — a small set of colors chosen by the hardware designers, often constrained by cost, memory, and the televisi..."
+description: "Every classic computer had a fixed palette — a small set of colors chosen by the hardware designers, often constrained by cost, memory, and the television standards of the era."
 ---
 
+import stipple_hero from '/img/instruments/videomancer/stipple/stipple_hero.png';
 import stipple_before_after from '/img/instruments/videomancer/stipple/stipple_before_after.png';
 import stipple_control_panel from '/img/instruments/videomancer/stipple/stipple_control_panel.png';
 import stipple_exercise1_result from '/img/instruments/videomancer/stipple/stipple_exercise1_result.png';
 import stipple_exercise2_result from '/img/instruments/videomancer/stipple/stipple_exercise2_result.png';
 import stipple_exercise3_result from '/img/instruments/videomancer/stipple/stipple_exercise3_result.png';
-import stipple_hero from '/img/instruments/videomancer/stipple/stipple_hero.png';
-import stipple_source1_kodim03 from '/img/instruments/videomancer/stipple/stipple_source1_kodim03.png';
-import stipple_source2_kodim15 from '/img/instruments/videomancer/stipple/stipple_source2_kodim15.png';
-import stipple_source3_peppers_512 from '/img/instruments/videomancer/stipple/stipple_source3_peppers_512.png';
 
 # Stipple
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={stipple_hero} alt="Stipple hero image"/>
 *Stipple mapping live video through eight classic computing palettes with ordered Bayer dithering to recreate the look of Game Boy, CGA, Macintosh, NES, EGA, C64, Amiga, and Amstrad CPC screens.*
@@ -280,17 +273,19 @@ These exercises progress from basic palette selection through dither exploration
 | Term | Definition |
 |------|------------|
 | **Bayer Matrix** | A fixed threshold pattern (typically 4×4 or 8×8) used in ordered dithering to create evenly distributed dot patterns that simulate intermediate tones. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the color matrix standard used for standard-definition video YUV encoding throughout the Videomancer pipeline. |
 | **CGA** | Color Graphics Adapter (1981); IBM's first color display standard for PCs, offering 4-color modes. |
 | **CRT** | Cathode Ray Tube; the display technology used by classic computers and televisions, characterized by visible scan lines and phosphor glow. |
 | **Dithering** | Adding a small noise or threshold pattern before quantization to break up banding and simulate additional tonal levels with a limited palette. |
 | **EGA** | Enhanced Graphics Adapter (1984); IBM's second-generation color display standard, offering 16 colors from a 64-color space. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **LFSR** | Linear Feedback Shift Register; a circuit that generates a pseudo-random bit sequence, used here for noise-mode dithering. |
+| **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Palette** | A fixed set of colors from which all pixel values must be drawn; the defining constraint of classic computing displays. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
 | **RGB9** | A compact color representation using 3 bits per channel (red, green, blue), encoding 512 possible colors. Used internally to store palette definitions. |
 | **Shift-Add Multiplication** | Approximating multiplication using bit shifts and additions, avoiding the need for a hardware multiplier. |
 | **Stippling** | A drawing technique that creates tonal gradation using patterns of small dots rather than continuous shading. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

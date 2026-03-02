@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 287
+sidebar_position: 314
 slug: /instruments/videomancer/worley
 title: "Worley"
 image: /img/instruments/videomancer/worley/worley_hero.png
 description: "In 1996 Steven Worley published a paper describing a procedural texture function based on distances to randomly distributed feature points."
 ---
 
+import worley_hero from '/img/instruments/videomancer/worley/worley_hero.png';
 import worley_animation from '/img/instruments/videomancer/worley/worley_animation.gif';
 import worley_control_panel from '/img/instruments/videomancer/worley/worley_control_panel.png';
 import worley_exercise1_result from '/img/instruments/videomancer/worley/worley_exercise1_result.gif';
 import worley_exercise2_result from '/img/instruments/videomancer/worley/worley_exercise2_result.gif';
 import worley_exercise3_result from '/img/instruments/videomancer/worley/worley_exercise3_result.gif';
-import worley_hero from '/img/instruments/videomancer/worley/worley_hero.png';
 
 # Worley
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={worley_hero} alt="Worley hero image"/>
 *Worley generating animated Voronoi cellular textures with Manhattan distance and the Thermal palette, producing volcanic heat-map terrain.*
@@ -98,7 +94,7 @@ When Video Mod is enabled, the cellular noise pattern modulates the input video'
                 │
 ┌───────────────▼─────────────────────────────────────┐
 │  Stage 4: Palette + Video Mod                       │
-│  ├─ Palette color mapping (Organic/Stone/Neon/Thermal) │
+│  ├─ Palette colour mapping (Organic/Stone/Neon/Thermal) │
 │  ├─ Colored Voronoi: cell_hash → U,V               │
 │  ├─ Video Mod: Y += noise/2, keep source U,V       │
 │  └─ Final Y, U, V                                  │
@@ -287,7 +283,7 @@ These exercises progress from static cellular patterns to animated, content-reac
 | **Cell Hash** | A deterministic pseudo-random function that converts grid coordinates into jitter offsets, using prime multiplication and XOR avalanche mixing. |
 | **Cellular Noise** | A procedural texture function based on distances to randomly placed feature points, producing organic cell-like patterns. |
 | **Chebyshev Distance** | A distance metric computed as max(|dx|, |dy|), producing square-shaped iso-distance contours. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate continuous scrolling or animation offsets. |
 | **F1** | The distance from a pixel to the nearest feature point in the Voronoi diagram. |
 | **F2** | The distance from a pixel to the second-nearest feature point. |
 | **Feature Point** | A seed location in the Voronoi diagram; pixels are colored based on their distance to these points. |
@@ -295,3 +291,5 @@ These exercises progress from static cellular patterns to animated, content-reac
 | **Manhattan Distance** | A distance metric computed as |dx| + |dy|, producing diamond-shaped iso-distance contours. |
 | **Voronoi Diagram** | A partition of a plane into regions, each containing all points closer to a particular seed than to any other seed. |
 | **Worley Noise** | Another name for cellular noise, after Steven Worley who published the technique in 1996. |
+
+---

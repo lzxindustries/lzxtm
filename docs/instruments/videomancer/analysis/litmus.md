@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 152
+sidebar_position: 167
 slug: /instruments/videomancer/litmus
 title: "Litmus"
 image: /img/instruments/videomancer/litmus/litmus_hero.png
-description: "In every chemistry laboratory there is a drawer full of narrow paper strips impregnated with chemical indicators — compounds that change color in the pr..."
+description: "In every chemistry laboratory there is a drawer full of narrow paper strips impregnated with chemical indicators — compounds that change color in the presence of specific substances."
 ---
 
+import litmus_hero from '/img/instruments/videomancer/litmus/litmus_hero.png';
 import litmus_before_after from '/img/instruments/videomancer/litmus/litmus_before_after.png';
 import litmus_control_panel from '/img/instruments/videomancer/litmus/litmus_control_panel.png';
 import litmus_exercise1_result from '/img/instruments/videomancer/litmus/litmus_exercise1_result.png';
 import litmus_exercise2_result from '/img/instruments/videomancer/litmus/litmus_exercise2_result.png';
 import litmus_exercise3_result from '/img/instruments/videomancer/litmus/litmus_exercise3_result.png';
-import litmus_hero from '/img/instruments/videomancer/litmus/litmus_hero.png';
-import litmus_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source1_grayscale_ramp_h_1920x1080.png';
-import litmus_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source2_grayscale_ramp_v_1920x1080.png';
-import litmus_source3_step_wedge_21level_512 from '/img/instruments/videomancer/litmus/litmus_source3_step_wedge_21level_512.png';
 
 # Litmus
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={litmus_hero} alt="Litmus hero image"/>
 *Litmus applying pH reagent false-color mapping with paper texture to transform video into chemical indicator strip imagery.*
@@ -278,15 +271,17 @@ These exercises introduce the four reagent palettes and progressively engage the
 | Term | Definition |
 |------|------------|
 | **Biuret Reagent** | A chemical test for proteins; the reagent turns from pale blue to deep purple in proportion to protein concentration. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | The ITU-R standard defining the YUV color space used by standard-definition video and throughout the Videomancer pipeline. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **False Color** | A visualization technique that maps a scalar measurement to an arbitrary color palette designed to reveal structure. |
 | **Iodine Test** | A chemical test for starch; iodine solution turns brown-black in the presence of starch molecules. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for texture noise. |
 | **Litmus** | A pH indicator derived from lichens that turns red in acid and blue in base — the most familiar chemical indicator. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Redox** | Reduction-oxidation potential; a measure of a substance's tendency to gain or lose electrons, visualized by indicator color changes. |
 | **Universal Indicator** | A blend of pH indicators chosen to produce a distinct color at each pH unit, creating a continuous rainbow spectrum. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone Quantization** | Dividing a continuous signal range into a fixed number of discrete bands, each mapped to a single output value. |
+
+---

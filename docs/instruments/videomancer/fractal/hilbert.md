@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 120
+sidebar_position: 130
 slug: /instruments/videomancer/hilbert
 title: "Hilbert"
 image: /img/instruments/videomancer/hilbert/hilbert_hero.png
@@ -255,15 +255,15 @@ These exercises progress from exploring the grid structure to animating the Hilb
 |------|------------|
 | **Block** | A square group of pixels (8×8, 16×16, 32×32, or 64×64) that shares a single Hilbert distance value and is processed as a unit. |
 | **Combinational** | Logic that produces an output immediately from its inputs without waiting for a clock edge, as opposed to registered (clocked) logic. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hilbert Curve** | A continuous, self-similar space-filling curve that visits every cell of a 2D grid exactly once, preserving spatial locality. |
 | **Hilbert Distance** | The one-dimensional index of a cell along the Hilbert curve; used for reveal ordering and color shift computation. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade module that blends between two input signals based on a mix parameter. |
 | **LUT** | Look-Up Table; a basic logic element in FPGA fabric used to implement combinational functions. |
 | **Order** | The number of recursive subdivisions of the Hilbert curve; order *n* produces a 2ⁿ × 2ⁿ grid of cells. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Reveal** | The progressive display of blocks in Hilbert curve order, controlled by a threshold counter compared against each block's curve distance. |
 | **Space-Filling Curve** | A continuous path that passes through every point in a multi-dimensional region; the Hilbert curve is the most common example. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

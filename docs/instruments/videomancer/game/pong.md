@@ -1,26 +1,22 @@
 ---
 draft: false
-sidebar_position: 205
+sidebar_position: 221
 slug: /instruments/videomancer/pong
 title: "Pong"
 image: /img/instruments/videomancer/pong/pong_hero.png
 description: "In 1972, Atari released Pong — a table tennis simulation so simple that its entire rule set fits in a single sentence: a ball bounces between two paddles, and if you miss, your opponent scores."
 ---
 
+import pong_hero from '/img/instruments/videomancer/pong/pong_hero.png';
 import pong_animation from '/img/instruments/videomancer/pong/pong_animation.gif';
 import pong_control_panel from '/img/instruments/videomancer/pong/pong_control_panel.png';
 import pong_exercise1_result from '/img/instruments/videomancer/pong/pong_exercise1_result.gif';
 import pong_exercise2_result from '/img/instruments/videomancer/pong/pong_exercise2_result.gif';
 import pong_exercise3_result from '/img/instruments/videomancer/pong/pong_exercise3_result.gif';
-import pong_hero from '/img/instruments/videomancer/pong/pong_hero.png';
 
 # Pong
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={pong_hero} alt="Pong hero image"/>
 *Pong rendering a classic two-player court with paddles, bouncing ball, dashed center net, and 5x7 dot-matrix score display over processed video.*
@@ -296,3 +292,5 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 | **TTL Logic** | Transistor-Transistor Logic; the discrete integrated circuit technology used to build the original Pong hardware without a CPU. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame; used as the game physics update clock. |
 | **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

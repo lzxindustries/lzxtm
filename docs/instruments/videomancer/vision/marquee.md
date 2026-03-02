@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 162
+sidebar_position: 178
 slug: /instruments/videomancer/marquee
 title: "Marquee"
 image: /img/instruments/videomancer/marquee/marquee_hero.png
-description: "Before desktop publishing and digital titling systems, television stations used dedicated character generators — standalone hardware boxes that composit..."
+description: "Before desktop publishing and digital titling systems, television stations used dedicated character generators — standalone hardware boxes that composited text and graphics over live programme video."
 ---
 
+import marquee_hero from '/img/instruments/videomancer/marquee/marquee_hero.png';
 import marquee_before_after from '/img/instruments/videomancer/marquee/marquee_before_after.png';
 import marquee_control_panel from '/img/instruments/videomancer/marquee/marquee_control_panel.png';
 import marquee_exercise1_result from '/img/instruments/videomancer/marquee/marquee_exercise1_result.png';
 import marquee_exercise2_result from '/img/instruments/videomancer/marquee/marquee_exercise2_result.png';
 import marquee_exercise3_result from '/img/instruments/videomancer/marquee/marquee_exercise3_result.png';
-import marquee_hero from '/img/instruments/videomancer/marquee/marquee_hero.png';
-import marquee_source1_kodim15 from '/img/instruments/videomancer/marquee/marquee_source1_kodim15.png';
-import marquee_source2_kodim15_bw from '/img/instruments/videomancer/marquee/marquee_source2_kodim15_bw.png';
-import marquee_source3_male_1024 from '/img/instruments/videomancer/marquee/marquee_source3_male_1024.png';
 
 # Marquee
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={marquee_hero} alt="Marquee hero image"/>
 *Marquee compositing bold colored titles with outlines and drop shadows over programme video, recreating the broadcast character generator aesthetic of 1970s television.*
@@ -285,17 +278,19 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory within the FPGA used to store one scan line of key data for vertical edge detection and shadow displacement. |
 | **Character Generator** | Dedicated broadcast hardware for compositing text and graphics over live video, widely used in television from the 1970s onward. |
 | **Compositor** | A priority-based layer system that combines multiple visual elements (fill, outline, shadow, box, video) into a single output frame. |
 | **Dilation** | Expanding a binary mask by OR-ing adjacent samples, used here to thicken the outline edge from a single pixel to multiple pixels. |
 | **Drop Shadow** | A displaced dark copy of a foreground element, creating the illusion of depth by simulating a shadow cast onto the background. |
 | **Edge Detection** | Identifying boundaries in a binary signal by comparing adjacent samples (XOR); transitions between 0 and 1 produce an edge flag. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Key Signal** | A binary mask (0 or 1 per pixel) that separates foreground from background for compositing. |
 | **Lower-Third** | A title or graphic overlay positioned in the lower portion of the screen, commonly used for name identifications in broadcast television. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luminance** | The brightness component (Y) of a YUV video signal. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Priority Compositing** | A compositing method where layers are evaluated top-to-bottom and the first active layer determines the output pixel color. |
 | **Shift Register** | A chain of flip-flops that delays a signal by a programmable number of clock cycles, used for horizontal displacement and edge detection. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

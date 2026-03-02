@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 198
+sidebar_position: 213
 slug: /instruments/videomancer/phong
 title: "Phong"
 image: /img/instruments/videomancer/phong/phong_hero.png
 description: "Phong brings classical 3D illumination to the Videomancer pipeline."
 ---
 
+import phong_hero from '/img/instruments/videomancer/phong/phong_hero.png';
 import phong_animation from '/img/instruments/videomancer/phong/phong_animation.gif';
 import phong_control_panel from '/img/instruments/videomancer/phong/phong_control_panel.png';
 import phong_exercise1_result from '/img/instruments/videomancer/phong/phong_exercise1_result.gif';
 import phong_exercise2_result from '/img/instruments/videomancer/phong/phong_exercise2_result.gif';
 import phong_exercise3_result from '/img/instruments/videomancer/phong/phong_exercise3_result.gif';
-import phong_hero from '/img/instruments/videomancer/phong/phong_hero.png';
 
 # Phong
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={phong_hero} alt="Phong hero image"/>
 *Phong rendering animated spheres with Blinn-Phong specular highlights, rim lighting, and user-defined chrominance orbiting against a dark background.*
@@ -35,7 +31,7 @@ Phong brings classical 3D illumination to the Videomancer pipeline. The program 
 
 The name honours Bui Tuong Phong, whose 1973 PhD dissertation at the University of Utah introduced the specular reflection model that bears his name. Every real-time 3D renderer since — from arcade cabinets to modern GPUs — descends from Phong's insight that specular highlights can be approximated by raising the cosine of the reflection angle to a power.
 
-Phong synthesises its own imagery: sphere centers drift in Lissajous orbits driven by DDS phase accumulators, the light source rotates via its own DDS, and the specular power spans seven octaves of shininess. At low Orbit Speed the spheres hover serenely; at high speed they trace complex figures of eight. The Video Sphere toggle replaces the synthetic surface color with the incoming video signal modulated by illumination, turning any camera feed into a spherical projection.
+Phong synthesises its own imagery: sphere centers drift in Lissajous orbits driven by DDS phase accumulators, the light source rotates via its own DDS, and the specular power spans seven octaves of shininess. At low Orbit Speed the spheres hover serenely; at high speed they trace complex figures of eight. The Video Sphere toggle replaces the synthetic surface colour with the incoming video signal modulated by illumination, turning any camera feed into a spherical projection.
 
 ---
 
@@ -91,7 +87,7 @@ DDS Phase Accumulators (updated per frame at vsync)
     │   ├── Rim: dist_sq(19:12) if rim enabled, else 0
     │   └── Total = ambient + diffuse/2 + specular + rim/2, clamped to 1023
     │
-    ├─ Stage 4: Color Output
+    ├─ Stage 4: Colour Output
     │   ├── Video Sphere off: Y = illumination, U/V = hue from quadrant map
     │   ├── Video Sphere on:  Y = input_Y × illumination >> 10, U/V = input
     │   └── Background: Y = 0, U = 512, V = 512
@@ -171,7 +167,7 @@ Light Speed controls the DDS increment for the light-direction phase accumulator
 | Default | 0deg |
 | Suffix | deg |
 
-Sphere Hue uses a 360° polar mode to set the chrominance of the sphere surface. The VHDL maps the 10-bit register to four quadrants of the YUV color space: 0–255 shifts U and V above midpoint, 256–511 drops V while U falls, 512–767 drops both, 768–1023 raises V while U rises. The result cycles through warm reds, greens, cyans, and magentas. When Video Sphere is enabled, this control is ignored — the input video's chrominance replaces the synthetic color.
+Sphere Hue uses a 360° polar mode to set the chrominance of the sphere surface. The VHDL maps the 10-bit register to four quadrants of the YUV colour space: 0–255 shifts U and V above midpoint, 256–511 drops V while U falls, 512–767 drops both, 768–1023 raises V while U rises. The result cycles through warm reds, greens, cyans, and magentas. When Video Sphere is enabled, this control is ignored — the input video's chrominance replaces the synthetic colour.
 
 ---
 
@@ -212,7 +208,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 *Single Lit Sphere — simulated result across source images.*
 **Objective**: Understand the three components of the Phong illumination model: ambient, diffuse, and specular.
 
-1. **Isolate ambient**: Set Ambient to ~50%, Shininess to 1, Orbit Speed and Light Speed to 0%. The sphere appears as a uniform gray disc — no shading variation because the light is static and diffuse is minimal at low exponent.
+1. **Isolate ambient**: Set Ambient to ~50%, Shininess to 1, Orbit Speed and Light Speed to 0%. The sphere appears as a uniform grey disc — no shading variation because the light is static and diffuse is minimal at low exponent.
 2. **Add diffuse**: Observe the sphere. One side is brighter than the other because the static light direction creates a nonzero N·L gradient. Increasing Ambient washes this out; decreasing it makes the gradient more dramatic.
 3. **Sharpen specular**: Increase Shininess to 6 or 7. A tiny, bright highlight appears where N·L is maximum. Move the light by increasing Light Speed slightly — the highlight glides across the surface.
 4. **Rim glow**: Enable Rim Light (Toggle 9). A bright edge appears around the sphere silhouette. Set Ambient low (~10%) and observe the backlit halo effect.
@@ -232,7 +228,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 2. **Four spheres**: Set Spheres to 4. The screen becomes busier. When spheres overlap, only the nearest one is shaded — no transparency or blending. Observe how highlights wink in and out as spheres occlude each other.
 3. **Speed up**: Increase Orbit Speed to ~80%. The complex orbital patterns become visible as the spheres trace loops. At very high speed, the trails may become hard to track — this is where feedback routing would create persistence.
 4. **Change size**: Reduce Sphere Size to ~20%. The small spheres dart quickly across the screen, each carrying its own specular highlight. Increase to ~80% and watch the large overlapping discs create a disco-ball-like effect.
-5. **Add color**: Sweep Sphere Hue from 0° through 360°. All spheres share the same chrominance — the color changes uniformly.
+5. **Add colour**: Sweep Sphere Hue from 0° through 360°. All spheres share the same chrominance — the colour changes uniformly.
 
 **Key concepts**: DDS phase accumulator animation, prime-number frequency offsets, nearest-sphere occlusion, Lissajous figure formation
 
@@ -263,7 +259,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 - **Video Sphere needs input**: In a standalone configuration with no upstream video, Video Sphere mode shows a black sphere. Route a camera or pattern generator upstream for the effect to work.
 - **Feedback loops**: Routing Phong's output back to its input creates recursive illumination — the specular highlight feeds back on itself, creating cascading bright rings.
 - **Rim Light for silhouettes**: Combine Rim Light with low Ambient and zero Shininess for a clean silhouette outline — the sphere appears as a backlit disc.
-- **Color cycling**: Automate Sphere Hue via MIDI CC for smooth color transitions. The quadrant mapping produces four distinct tonal zones per revolution.
+- **Colour cycling**: Automate Sphere Hue via MIDI CC for smooth colour transitions. The quadrant mapping produces four distinct tonal zones per revolution.
 
 ---
 
@@ -273,7 +269,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 |------|------------|
 | **Ambient** | Constant illumination floor; models indirect light reaching all surfaces equally regardless of orientation. |
 | **Blinn-Phong** | Variant specular model using the half-vector instead of the reflection vector; slightly broader highlight than classic Phong. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique that generates waveforms by incrementing a counter and reading a function at each step. |
 | **Diffuse** | Lambertian reflection proportional to the cosine of the angle between the surface normal and the light direction. |
 | **Implicit Surface** | A surface defined by a mathematical condition (e.g., distance from centre ≤ radius) rather than by stored geometry. |
 | **Lissajous Figure** | A parametric curve produced by two harmonic oscillators at different frequencies, creating figure-eight or looping patterns. |
@@ -281,4 +277,6 @@ These exercises progress from a single static sphere through multi-sphere animat
 | **Rim Light** | A bright halo at the silhouette edge of a surface, approximating backlighting. |
 | **Specular Exponent** | The power $n$ in $(\mathbf{R} \cdot \mathbf{V})^n$ that controls the sharpness of the specular highlight. |
 | **Triangle Wave** | A piecewise-linear approximation of a sine wave, rising and falling in straight ramps; used as a zero-BRAM sine substitute. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

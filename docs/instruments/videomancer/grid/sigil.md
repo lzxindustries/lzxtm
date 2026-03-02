@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 236
+sidebar_position: 253
 slug: /instruments/videomancer/sigil
 title: "Sigil"
 image: /img/instruments/videomancer/sigil/sigil_hero.png
 description: "Sigil is a placeholder program currently in development."
 ---
 
+import sigil_hero from '/img/instruments/videomancer/sigil/sigil_hero.png';
 import sigil_animation from '/img/instruments/videomancer/sigil/sigil_animation.gif';
 import sigil_control_panel from '/img/instruments/videomancer/sigil/sigil_control_panel.png';
 import sigil_exercise1_result from '/img/instruments/videomancer/sigil/sigil_exercise1_result.gif';
 import sigil_exercise2_result from '/img/instruments/videomancer/sigil/sigil_exercise2_result.gif';
 import sigil_exercise3_result from '/img/instruments/videomancer/sigil/sigil_exercise3_result.gif';
-import sigil_hero from '/img/instruments/videomancer/sigil/sigil_hero.png';
 
 # Sigil
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={sigil_hero} alt="Sigil hero image"/>
 *Sigil passing video through unchanged — a placeholder program reserving a slot for future grid-based processing.*
@@ -164,4 +160,6 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 | **Flip-Flop** | A basic FPGA storage element that captures and holds a single bit of data on each clock edge. |
 | **Passthrough** | A program that copies input to output without modification, adding only pipeline delay. |
 | **Placeholder** | A program slot reserved in the registry with minimal or no processing, to be replaced by a full implementation in a future firmware release. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

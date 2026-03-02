@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 119
+sidebar_position: 129
 slug: /instruments/videomancer/helix
 title: "Helix"
 image: /img/instruments/videomancer/helix/helix_hero.png
@@ -263,17 +263,17 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 | Term | Definition |
 |------|------------|
 | **Afterglow** | The visible persistence of phosphor excitation after the electron beam has passed, simulated here via IIR feedback on a per-column brightness buffer. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Helix uses 5 BRAMs (2 for afterglow line buffers, 1 for curve sample storage, and sin/cos ROM). |
+| **DDS** | Direct Digital Synthesis; generating a periodic waveform by incrementing a phase accumulator and indexing a lookup table. |
 | **Falloff** | The rate at which beam brightness decreases with distance from the curve center; linear in Soft mode, step function in Hard mode. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both current input and its own previous output. |
 | **Lissajous figure** | A parametric curve produced by combining two perpendicular sinusoidal motions at different frequencies; named after Jules Antoine Lissajous (1857). |
 | **LUT** | Lookup Table; a precomputed array of function values. Helix uses a 1024-entry sin/cos LUT for parametric curve evaluation. |
 | **Phase accumulator** | A register that increments by a fixed value per frame; its running total provides the continuously advancing phase for curve animation. |
 | **Phosphor persistence** | The duration a CRT phosphor continues to glow after excitation; Helix simulates this with IIR decay. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each completes in one clock cycle. Helix uses a 10-clock pipeline (6 stages + 4 interpolator). |
 | **Spirograph** | A geometric drawing toy that produces hypotrochoid and epitrochoid curves; Helix's Spiral mode produces similar rosette patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

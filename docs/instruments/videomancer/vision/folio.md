@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 105
+sidebar_position: 114
 slug: /instruments/videomancer/folio
 title: "Folio"
 image: /img/instruments/videomancer/folio/folio_hero.png
@@ -19,7 +19,7 @@ import folio_exercise3_result from '/img/instruments/videomancer/folio/folio_exe
 <span class="head2_nolink">Videomancer Program Guide</span>
 
 <img src={folio_hero} alt="Folio hero image"/>
-*A photographic image caught mid-page-turn, its right half compressed into a narrow vertical strip against a saturated teal background — the fold edge darkened, the revealed color field filling the vacated screen space.*
+*A photographic image caught mid-page-turn, its right half compressed into a narrow vertical strip against a saturated teal background — the fold edge darkened, the revealed colour field filling the vacated screen space.*
 <img src={folio_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Folio applied.*
 
@@ -27,9 +27,9 @@ import folio_exercise3_result from '/img/instruments/videomancer/folio/folio_exe
 
 ## Overview
 
-Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic. The incoming video frame is treated as a flat page anchored at one edge — the hinge — that rotates away from the viewer to reveal a colored background. As the turn angle increases, the visible width of the page shrinks according to a cosine function: at zero degrees the page is fully open and fills the screen; at ninety degrees it collapses to a vertical line and vanishes. A Digital Differential Analyzer compresses the full source scanline into the narrowing visible region, maintaining horizontal detail as the page folds.
+Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic. The incoming video frame is treated as a flat page anchored at one edge — the hinge — that rotates away from the viewer to reveal a coloured background. As the turn angle increases, the visible width of the page shrinks according to a cosine function: at zero degrees the page is fully open and fills the screen; at ninety degrees it collapses to a vertical line and vanishes. A Digital Differential Analyzer compresses the full source scanline into the narrowing visible region, maintaining horizontal detail as the page folds.
 
-The effect operates on every scanline independently, reading from a line buffer and writing compressed pixels into the visible region while filling the remaining screen with a configurable background color. Fold shading attenuates the luminance of the turning page proportional to the cosine of the turn angle, simulating the way a physical page catches less light as it turns edge-on. An optional sharp shadow near the fold edge adds depth cues. The background is a solid color field whose hue and luminance are controlled independently, allowing the revealed surface to range from deep black through vivid chromatic fields to bright white.
+The effect operates on every scanline independently, reading from a line buffer and writing compressed pixels into the visible region while filling the remaining screen with a configurable background colour. Fold shading attenuates the luminance of the turning page proportional to the cosine of the turn angle, simulating the way a physical page catches less light as it turns edge-on. An optional sharp shadow near the fold edge adds depth cues. The background is a solid colour field whose hue and luminance are controlled independently, allowing the revealed surface to range from deep black through vivid chromatic fields to bright white.
 
 The name *Folio* refers to a single leaf of a book or manuscript — a page that can be turned to reveal the next surface beneath. In bookbinding, a folio is also the largest standard page format, formed by folding a full press sheet once. Both meanings resonate: the program treats the entire video frame as one large page, folding it away to expose a new field.
 
@@ -39,7 +39,7 @@ The name *Folio* refers to a single leaf of a book or manuscript — a page that
 
 ### Page Turn Transitions in Presentation Software
 
-The page turn is one of the oldest and most recognizable slide transitions, appearing in early Macintosh presentation tools and later becoming a standard effect in PowerPoint, Keynote, and PDF viewers. The visual metaphor is immediately legible: the current content lifts from one edge and curls away, revealing the next slide beneath. Early implementations used simple horizontal wipes or accordion folds; modern versions add perspective distortion, specular highlights, and shadow mapping. Folio distills the effect to its geometric essence — cosine-based width compression and luminance attenuation — producing a convincing page turn without the computational overhead of 3D texture mapping or mesh deformation.
+The page turn is one of the oldest and most recognisable slide transitions, appearing in early Macintosh presentation tools and later becoming a standard effect in PowerPoint, Keynote, and PDF viewers. The visual metaphor is immediately legible: the current content lifts from one edge and curls away, revealing the next slide beneath. Early implementations used simple horizontal wipes or accordion folds; modern versions add perspective distortion, specular highlights, and shadow mapping. Folio distills the effect to its geometric essence — cosine-based width compression and luminance attenuation — producing a convincing page turn without the computational overhead of 3D texture mapping or mesh deformation.
 
 ### Cosine-Based Horizontal Compression
 
@@ -55,7 +55,7 @@ In 3D rendering, surfaces that face away from the light source receive less illu
 
 ### Background Chromakey and Hue Selection
 
-The area behind the turning page is filled with a solid color determined by two parameters: a hue angle and a luminance value. The hue is resolved through 64-entry sinusoidal U and V lookup tables that map the 10-bit register to a full $360°$ color wheel at the chroma midpoint. The luminance control sets the Y channel directly. This separation allows the background to take any visible color — from deep saturated primaries at moderate luminance to pastel tints at high luminance to solid black at zero. The background acts as a chromakey surface: downstream keying programs can isolate the revealed region by color, making Folio useful as a shaped mask generator in multi-program video chains.
+The area behind the turning page is filled with a solid colour determined by two parameters: a hue angle and a luminance value. The hue is resolved through 64-entry sinusoidal U and V lookup tables that map the 10-bit register to a full $360°$ colour wheel at the chroma midpoint. The luminance control sets the Y channel directly. This separation allows the background to take any visible colour — from deep saturated primaries at moderate luminance to pastel tints at high luminance to solid black at zero. The background acts as a chromakey surface: downstream keying programs can isolate the revealed region by colour, making Folio useful as a shaped mask generator in multi-program video chains.
 
 
 ---
@@ -153,7 +153,7 @@ Sets the page turn angle in manual mode. At minimum the page is fully open and f
 | Default | 180° |
 | Suffix | ° |
 
-Selects the hue of the background color revealed behind the turning page. The 10-bit register indexes into 64-entry sinusoidal U and V lookup tables that sweep through the full $360°$ color wheel. At $0°$ the background has maximum U (blue-shifted) with neutral V. Sweeping clockwise traverses cyan, green, yellow, red, magenta, and back to blue. The hue control affects only the chrominance of the background — luminance is set independently by BKG Lum. At any hue, the background saturation is fixed at the LUT's peak amplitude; to desaturate, reduce BKG Lum toward zero (which produces dark, near-black tones) or increase it toward maximum (which pushes toward pastel territory as Y rises above the chroma signal).
+Selects the hue of the background colour revealed behind the turning page. The 10-bit register indexes into 64-entry sinusoidal U and V lookup tables that sweep through the full $360°$ colour wheel. At $0°$ the background has maximum U (blue-shifted) with neutral V. Sweeping clockwise traverses cyan, green, yellow, red, magenta, and back to blue. The hue control affects only the chrominance of the background — luminance is set independently by BKG Lum. At any hue, the background saturation is fixed at the LUT's peak amplitude; to desaturate, reduce BKG Lum toward zero (which produces dark, near-black tones) or increase it toward maximum (which pushes toward pastel territory as Y rises above the chroma signal).
 
 ---
 
@@ -197,7 +197,7 @@ Sets the shadow depth — the minimum luminance the page retains at its most edg
 | Default | 50% |
 | Suffix | % |
 
-Sets the luminance of the background color field. This value is applied directly as the Y channel for all background pixels — those outside the visible page region. At zero, the background is black regardless of the hue setting. At maximum, the background is a bright pastel or near-white depending on the hue. At the default midpoint, the background sits at a moderate luminance that allows most hue selections to read as saturated colors. This control is independent of the page's own luminance — the page brightness is governed by the shade factor, while the background brightness is set here. The combination of BKG Hue and BKG Lum provides full control over the revealed surface color.
+Sets the luminance of the background colour field. This value is applied directly as the Y channel for all background pixels — those outside the visible page region. At zero, the background is black regardless of the hue setting. At maximum, the background is a bright pastel or near-white depending on the hue. At the default midpoint, the background sits at a moderate luminance that allows most hue selections to read as saturated colours. This control is independent of the page's own luminance — the page brightness is governed by the shade factor, while the background brightness is set here. The combination of BKG Hue and BKG Lum provides full control over the revealed surface colour.
 
 ---
 
@@ -224,13 +224,13 @@ The five toggles divide into three functional groups. Hinge (7) and Axis (8) def
 | Default | 100% |
 | Suffix | % |
 
-Crossfades between the delayed dry input and the processed page turn composite. At $0$% (fader down), the output is the unprocessed input — no page turn is visible. At $100$% (fader up), the output is the full composite with the page turn effect, fold shading, and background color. Intermediate positions blend the two, allowing the page turn to appear as a semi-transparent overlay. This is useful for softening the transition or for creating ghostly page-fold effects where the background shows through a dimmed, partially visible page. The interpolator operates independently on Y, U, and V channels.
+Crossfades between the delayed dry input and the processed page turn composite. At $0$% (fader down), the output is the unprocessed input — no page turn is visible. At $100$% (fader up), the output is the full composite with the page turn effect, fold shading, and background colour. Intermediate positions blend the two, allowing the page turn to appear as a semi-transparent overlay. This is useful for softening the transition or for creating ghostly page-fold effects where the background shows through a dimmed, partially visible page. The interpolator operates independently on Y, U, and V channels.
 
 ---
 
 ## Guided Exercises
 
-These exercises progress from a static half-turn through animated oscillation to creative use of the background color as a shaped mask. Feed a recognizable source image — text, graphics, or camera footage — so the compression and shading effects are clearly visible.
+These exercises progress from a static half-turn through animated oscillation to creative use of the background colour as a shaped mask. Feed a recognisable source image — text, graphics, or camera footage — so the compression and shading effects are clearly visible.
 
 ### Exercise 1: Static Half Turn
 
@@ -272,23 +272,23 @@ These exercises progress from a static half-turn through animated oscillation to
 
 ---
 
-### Exercise 3: Colored Mask Generation
+### Exercise 3: Coloured Mask Generation
 
-<img src={folio_exercise3_result} alt="Colored Mask Generation result"/>
-*Colored Mask Generation — simulated result across source images.*
-**Source**: Any video source — the source content is secondary to the background color field in this exercise.
+<img src={folio_exercise3_result} alt="Coloured Mask Generation result"/>
+*Coloured Mask Generation — simulated result across source images.*
+**Source**: Any video source — the source content is secondary to the background colour field in this exercise.
 
-**Objective**: Use the page turn as a shaped vertical wipe to create a colored mask region, exploring the background hue and luminance controls for downstream keying applications.
+**Objective**: Use the page turn as a shaped vertical wipe to create a coloured mask region, exploring the background hue and luminance controls for downstream keying applications.
 
 1. **Set a vivid background**: Set BKG Hue to approximately 120° (green region) and BKG Lum to approximately 70%.
 2. **Half turn**: Set Turn Pos to approximately 45° in Manual mode. The background fills roughly 30% of the screen.
 3. **Full shadow suppression**: Set Shadow to 0%. The page content at the fold edge is very dark, creating a clear boundary between page and background.
-4. **Sweep hue**: Slowly rotate BKG Hue through the full range. The background cycles through the color wheel — blue, cyan, green, yellow, red, magenta.
+4. **Sweep hue**: Slowly rotate BKG Hue through the full range. The background cycles through the colour wheel — blue, cyan, green, yellow, red, magenta.
 5. **Luminance extremes**: Set BKG Lum to 0% (black background — the mask disappears into darkness). Then set BKG Lum to 100% (bright, pastel background).
-6. **Increase turn angle**: Advance Turn Pos to 75°. The background now dominates the frame — most of the screen is the solid color field with a narrow strip of compressed page at the hinge.
-7. **Mix reduction**: Pull Mix to 50%. The page turn composite blends with the dry input, creating a partially transparent color overlay.
+6. **Increase turn angle**: Advance Turn Pos to 75°. The background now dominates the frame — most of the screen is the solid colour field with a narrow strip of compressed page at the hinge.
+7. **Mix reduction**: Pull Mix to 50%. The page turn composite blends with the dry input, creating a partially transparent colour overlay.
 
-**Key concepts**: The background color field acts as a solid mask region. Hue and luminance are independently controllable. At high turn angles, the background dominates the frame. The sharp boundary between page and background can serve as a vertical key edge for downstream processing.
+**Key concepts**: The background colour field acts as a solid mask region. Hue and luminance are independently controllable. At high turn angles, the background dominates the frame. The sharp boundary between page and background can serve as a vertical key edge for downstream processing.
 
 ---
 
@@ -298,7 +298,7 @@ These exercises progress from a static half-turn through animated oscillation to
 - **Start in Manual mode**: Set Animate to Manual and explore different turn angles with the Turn Pos knob before enabling auto-animation. This builds intuition for the cosine compression curve.
 - **Shadow depth sets the mood**: Low Shadow values create dramatic contrast between open and closed states — the page darkens significantly as it turns. High values keep the page bright throughout, producing a flatter, more graphic look.
 - **Fold shadow adds depth**: The 8-pixel crease shadow is subtle but effective. Enable it for realistic page turn simulations; disable it for a cleaner, more abstract wipe effect.
-- **Background as chromakey**: Use a vivid, saturated background color (BKG Hue at a primary, BKG Lum at 50–70%) to create a color field that downstream keying programs can isolate. The sharp edge between page and background makes an effective key boundary.
+- **Background as chromakey**: Use a vivid, saturated background colour (BKG Hue at a primary, BKG Lum at 50–70%) to create a colour field that downstream keying programs can isolate. The sharp edge between page and background makes an effective key boundary.
 - **Mix fader for overlays**: At 50% Mix, the page turn composite blends with the dry input, creating a ghost-fold effect where both the original and the compressed page are visible simultaneously.
 - **Hinge for directionality**: Left hinge creates a right-to-left reveal (page folds away rightward); right hinge creates a left-to-right reveal. Choose based on the visual flow of your composition.
 - **Auto speed sweet spot**: Moderate Anim Spd values (20–40%) produce graceful, readable page turns. Very high values create a rapid flicker that can serve as a rhythmic strobe effect.
@@ -319,6 +319,6 @@ These exercises progress from a static half-turn through animated oscillation to
 | **Hinge** | The fixed edge around which the page rotates; determines whether the page folds away from the left or right side of the screen. |
 | **Line buffer** | A dual-port BRAM that stores one scanline of video data, allowing the previous line to be read while the current line is being written. |
 | **Shade factor** | A per-frame luminance multiplier derived from the cosine of the turn angle and the shadow depth parameter, attenuating the page brightness as it rotates away. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from two chrominance components (U and V), used throughout Videomancer's video pipeline. |
 
 ---

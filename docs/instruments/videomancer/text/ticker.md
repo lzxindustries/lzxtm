@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 263
+sidebar_position: 289
 slug: /instruments/videomancer/ticker
 title: "Ticker"
 image: /img/instruments/videomancer/ticker/ticker_hero.png
-description: "Before digital screens, breaking news arrived on paper — a narrow ribbon of stock quotes and wire reports printed character by character on ticker tape ..."
+description: "Before digital screens, breaking news arrived on paper — a narrow ribbon of stock quotes and wire reports printed character by character on ticker tape machines."
 ---
 
+import ticker_hero from '/img/instruments/videomancer/ticker/ticker_hero.png';
 import ticker_before_after from '/img/instruments/videomancer/ticker/ticker_before_after.png';
 import ticker_control_panel from '/img/instruments/videomancer/ticker/ticker_control_panel.png';
 import ticker_exercise1_result from '/img/instruments/videomancer/ticker/ticker_exercise1_result.png';
 import ticker_exercise2_result from '/img/instruments/videomancer/ticker/ticker_exercise2_result.png';
 import ticker_exercise3_result from '/img/instruments/videomancer/ticker/ticker_exercise3_result.png';
-import ticker_hero from '/img/instruments/videomancer/ticker/ticker_hero.png';
-import ticker_source1_kodim15 from '/img/instruments/videomancer/ticker/ticker_source1_kodim15.png';
-import ticker_source2_kodim15_bw from '/img/instruments/videomancer/ticker/ticker_source2_kodim15_bw.png';
-import ticker_source3_male_1024 from '/img/instruments/videomancer/ticker/ticker_source3_male_1024.png';
 
 # Ticker
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={ticker_hero} alt="Ticker hero image"/>
 *Ticker rendering a luminance-quantized scrolling tape band across a live video feed, with bright border lines framing the horizontal strip.*
@@ -285,14 +278,16 @@ These exercises progress from a simple static band to a fully animated scrolling
 | Term | Definition |
 |------|------------|
 | **Band** | The horizontal strip on screen defined by band_top and band_bottom scanline positions, within which quantized content is rendered. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BT.601** | ITU-R Recommendation BT.601, defining standard-definition color encoding with separate luminance (Y) and chrominance (U, V) components. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented at a fixed rate. |
 | **Dimming** | Right-shifting (dividing by powers of 2) the luma value of pixels outside the band to darken them. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Ticker processing pipeline. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds into the next on each clock cycle. |
 | **Posterization** | Reducing the number of distinct brightness levels, collapsing smooth gradients into flat steps. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by truncating lower-order bits. |
 | **Sample-and-Hold** | A decimation technique where a single sample value is held constant across multiple pixel positions, creating uniform blocks. |
 | **Scroll Offset** | A per-frame horizontal pixel counter that shifts the composite position of the band content to create scrolling animation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

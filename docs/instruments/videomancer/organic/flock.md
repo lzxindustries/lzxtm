@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 100
+sidebar_position: 109
 slug: /instruments/videomancer/flock
 title: "Flock"
 image: /img/instruments/videomancer/flock/flock_hero.png
@@ -267,16 +267,16 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 color space standard used for SD video, defining the conversion matrix between RGB and YUV used throughout the Videomancer pipeline. |
 | **Coprime** | Two integers sharing no common factor other than 1; coprime frequency pairs ensure Lissajous orbits do not close into simple loops. |
 | **Coupling** | Phase perturbation where one oscillator's phase is shifted toward a neighbor's, creating coordinated motion between agents. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a method of generating waveforms by accumulating a phase value and mapping it through a wave function (here, triangle wave). |
 | **Flocking** | Collective motion of autonomous agents governed by local interaction rules; coined by Craig Reynolds in the Boids model. |
 | **Glow Falloff** | Linear decrease in brightness with distance from a particle center, producing a soft gradient halo. |
 | **Lissajous Figure** | The curve traced by a point whose X and Y coordinates are independent sinusoidal (or triangular) functions of time at different frequencies. |
 | **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|Δx|+|Δy|), producing diamond-shaped equidistant contours. |
 | **Phase Accumulator** | A register that increments by a frequency word each clock cycle, whose overflow produces periodic waveforms. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used here to convert phase to position. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

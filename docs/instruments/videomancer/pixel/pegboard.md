@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 193
+sidebar_position: 208
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
 image: /img/instruments/videomancer/pegboard/pegboard_hero.png
 description: "Before LCD panels and OLED screens, there was Lite-Brite — a toy that turned translucent colored pegs into glowing pictures when backlit."
 ---
 
+import pegboard_hero from '/img/instruments/videomancer/pegboard/pegboard_hero.png';
 import pegboard_before_after from '/img/instruments/videomancer/pegboard/pegboard_before_after.png';
 import pegboard_control_panel from '/img/instruments/videomancer/pegboard/pegboard_control_panel.png';
 import pegboard_exercise1_result from '/img/instruments/videomancer/pegboard/pegboard_exercise1_result.png';
 import pegboard_exercise2_result from '/img/instruments/videomancer/pegboard/pegboard_exercise2_result.png';
 import pegboard_exercise3_result from '/img/instruments/videomancer/pegboard/pegboard_exercise3_result.png';
-import pegboard_hero from '/img/instruments/videomancer/pegboard/pegboard_hero.png';
-import pegboard_source1_kodim02 from '/img/instruments/videomancer/pegboard/pegboard_source1_kodim02.png';
-import pegboard_source2_kodim07 from '/img/instruments/videomancer/pegboard/pegboard_source2_kodim07.png';
-import pegboard_source3_kodim01_bw from '/img/instruments/videomancer/pegboard/pegboard_source3_kodim01_bw.png';
 
 # Pegboard
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={pegboard_hero} alt="Pegboard hero image"/>
 *Pegboard rendering a live camera feed as glowing Lite-Brite pegs snapped to an eight-color palette on a dark field.*
@@ -111,7 +104,7 @@ Input Video (YUV 4:4:4)
     └─ Delayed sync (hsync, vsync, field, avid)
 ```
 
-The sample-and-hold is the critical stage: each cell's color is determined by a single pixel at the cell center, then held constant for the entire cell. This means the spatial sampling is aliased by design — small features that don't fall on cell centers are missed entirely. The grid alignment is fixed (no sub-pixel offset), so the spatial relationship between the source content and the peg grid creates moiré and aliasing patterns that shift as the source moves.
+The sample-and-hold is the critical stage: each cell's color is determined by a single pixel at the cell center, then held constant for the entire cell. This means the spatial sampling is aliased by design — small features that don't fall on cell centers are missed entirely. The grid alignment is fixed (no sub-pixel offset), so the spatial relationship between the source content and the peg grid creates moire and aliasing patterns that shift as the source moves.
 
 The palette snap and the circle/square rendering are independent operations. Palette snap determines *what color* the peg is; the distance test determines *where* the peg appears. This separation means you can change peg shape and size without affecting color, and vice versa.
 
@@ -300,12 +293,14 @@ These exercises progress from basic peg rendering through color manipulation to 
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Euclidean Distance** | Distance measured as the square root of dx² + dy²; Pegboard uses distance-squared to avoid the square root. |
 | **Falloff** | The radial decrease in brightness from the peg center to its edge, simulating translucent glow. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Lite-Brite** | A 1967 Hasbro toy that creates glowing images by placing translucent colored pegs into a backlit perforated board. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for palette color matching. |
 | **Mosaic** | A visual pattern composed of small uniform-color blocks arranged in a grid. |
 | **Palette Quantization** | Reducing a continuous color space to a fixed set of representative colors by nearest-neighbor matching. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sample and Hold** | Capturing a signal value at one instant (the cell center) and maintaining it for a duration (the entire cell). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

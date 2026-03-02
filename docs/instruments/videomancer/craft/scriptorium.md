@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 229
+sidebar_position: 246
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
 image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png
 description: "Before the printing press and before movable type, every book in Europe was made by hand."
 ---
 
+import scriptorium_hero from '/img/instruments/videomancer/scriptorium/scriptorium_hero.png';
 import scriptorium_before_after from '/img/instruments/videomancer/scriptorium/scriptorium_before_after.png';
 import scriptorium_control_panel from '/img/instruments/videomancer/scriptorium/scriptorium_control_panel.png';
 import scriptorium_exercise1_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise1_result.png';
 import scriptorium_exercise2_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise2_result.png';
 import scriptorium_exercise3_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise3_result.png';
-import scriptorium_hero from '/img/instruments/videomancer/scriptorium/scriptorium_hero.png';
-import scriptorium_source1_kodim03 from '/img/instruments/videomancer/scriptorium/scriptorium_source1_kodim03.png';
-import scriptorium_source2_kodim13 from '/img/instruments/videomancer/scriptorium/scriptorium_source2_kodim13.png';
-import scriptorium_source3_kodim13_bw from '/img/instruments/videomancer/scriptorium/scriptorium_source3_kodim13_bw.png';
 
 # Scriptorium
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={scriptorium_hero} alt="Scriptorium hero image"/>
 *Scriptorium compositing live video into the pictorial field of a procedurally generated illuminated manuscript with knotwork borders and mineral pigment quantization.*
@@ -291,7 +284,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 | **Gilding** | The application of gold leaf or gold paint to a surface, used in manuscripts to highlight important text and borders. |
 | **Insular Art** | The distinctive artistic tradition of early medieval Ireland and Britain, characterized by intricate interlace knotwork, spirals, and carpet pages. |
 | **Knotwork** | Interlaced ribbon patterns that weave over and under in continuous loops, a hallmark of Insular and Celtic art. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator used here for vellum grain texture. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for nearest-pigment color matching. |
 | **Miniature** | In manuscript terminology, a small painting within the text, derived from the Latin *miniare* (to color with red lead), not from "small." |
 | **Mise en Page** | French term for page layout — the arrangement of text, decoration, and illustration within the margins of a manuscript folio. |
@@ -301,4 +294,6 @@ These exercises progress from basic page layout to full illuminated manuscript c
 | **Ultramarine** | A deep blue pigment historically made from ground lapis lazuli; the most expensive pigment in the medieval palette. |
 | **Vellum** | Fine-quality parchment made from calfskin, valued for its smooth writing surface and durability. |
 | **Vermillion** | A brilliant red pigment made from ground cinnabar (mercury sulfide), widely used in medieval illumination. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

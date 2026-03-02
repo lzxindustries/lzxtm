@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 289
+sidebar_position: 317
 slug: /instruments/videomancer/zollner
 title: "Zollner"
 image: /img/instruments/videomancer/zollner/zollner_hero.png
-description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noti..."
+description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noticed that parallel lines on a piece of fabric appeared to converge when crossed by short diagonal hash marks."
 ---
 
+import zollner_hero from '/img/instruments/videomancer/zollner/zollner_hero.png';
 import zollner_before_after from '/img/instruments/videomancer/zollner/zollner_before_after.png';
 import zollner_control_panel from '/img/instruments/videomancer/zollner/zollner_control_panel.png';
 import zollner_exercise1_result from '/img/instruments/videomancer/zollner/zollner_exercise1_result.png';
 import zollner_exercise2_result from '/img/instruments/videomancer/zollner/zollner_exercise2_result.png';
 import zollner_exercise3_result from '/img/instruments/videomancer/zollner/zollner_exercise3_result.png';
-import zollner_hero from '/img/instruments/videomancer/zollner/zollner_hero.png';
-import zollner_source1_kodim01 from '/img/instruments/videomancer/zollner/zollner_source1_kodim01.png';
-import zollner_source2_kodim02 from '/img/instruments/videomancer/zollner/zollner_source2_kodim02.png';
-import zollner_source3_kodim01_bw from '/img/instruments/videomancer/zollner/zollner_source3_kodim01_bw.png';
 
 # Zollner
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={zollner_hero} alt="Zollner hero image"/>
 *Zöllner pattern overlay in Café Wall mode with animated hatching, creating compelling motion illusions on live video.*
@@ -300,3 +293,5 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 | **Opacity** | The blending weight between the illusion pattern and the underlying video (0 = transparent, 1023 = opaque). |
 | **Wundt Illusion** | The inverse of the Hering illusion; parallel lines appear to bow inward when crossed by converging radial lines. |
 | **Zöllner Illusion** | The foundational optical illusion (1860) where parallel lines appear non-parallel due to crossing diagonal hatch marks. |
+
+---

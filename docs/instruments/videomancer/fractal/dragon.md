@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 79
+sidebar_position: 87
 slug: /instruments/videomancer/dragon
 title: "Dragon"
 image: /img/instruments/videomancer/dragon/dragon_hero.png
-description: "In 1966, NASA physicist John Heighway discovered a curve by repeatedly folding a strip of paper in half and unfolding it so that each crease opens to a ..."
+description: "In 1966, NASA physicist John Heighway discovered a curve by repeatedly folding a strip of paper in half and unfolding it so that each crease opens to a right angle."
 ---
 
 import dragon_hero from '/img/instruments/videomancer/dragon/dragon_hero.png';
@@ -288,8 +288,8 @@ These exercises explore the dragon fractal from simple static geometry through c
 | Term | Definition |
 |------|------------|
 | **Affine contraction** | A geometric transformation that combines scaling, rotation, and translation, used to define the self-similar pieces of an IFS fractal. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory within an FPGA. Dragon uses zero BRAMs — its entire fractal computation is combinational. |
+| **DDS** | Direct Digital Synthesis; the technique of generating periodic signals using a phase accumulator, used here to advance the animation frame counter. |
 | **Dragon curve** | A space-filling fractal discovered by John Heighway, constructed by repeated paper folding or equivalently by bit manipulation of integer step indices. |
 | **Fractal dimension** | A measure of geometric complexity; the Heighway dragon has a boundary dimension of 2, meaning its edge is as complex as a filled region. |
 | **Hash function** | A deterministic mapping from input values to pseudo-random output values; the XOR-fold position hash maps (x,y) coordinates to a binary pattern. |
@@ -298,6 +298,6 @@ These exercises explore the dragon fractal from simple static geometry through c
 | **Self-similarity** | The property of looking identical at every scale of magnification, the defining characteristic of fractal geometry. |
 | **Space-filling curve** | A continuous curve that passes through every point in a 2D region; the Heighway dragon fills a compact region of the plane. |
 | **XOR fold** | The operation `hash ^= hash >> k`, which mixes bits separated by k positions to create self-similar interference patterns in the hash output. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
 
 ---

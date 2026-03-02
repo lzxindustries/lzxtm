@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 106
+sidebar_position: 115
 slug: /instruments/videomancer/fresnel
 title: "Fresnel"
 image: /img/instruments/videomancer/fresnel/fresnel_hero.png
-description: "A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a sq..."
+description: "A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a square-root law."
 ---
 
 import fresnel_hero from '/img/instruments/videomancer/fresnel/fresnel_hero.png';
@@ -19,7 +19,7 @@ import fresnel_exercise3_result from '/img/instruments/videomancer/fresnel/fresn
 <span class="head2_nolink">Videomancer Program Guide</span>
 
 <img src={fresnel_hero} alt="Fresnel hero image"/>
-*Fresnel zone plate interference rings radiating from a displaced center, with dual-source moiré and video-tinted coloring.*
+*Fresnel zone plate interference rings radiating from a displaced center, with dual-source moire and video-tinted coloring.*
 <img src={fresnel_before_after} alt="Before and after comparison"/>
 *Left: unprocessed source. Right: Fresnel applied.*
 
@@ -29,7 +29,7 @@ import fresnel_exercise3_result from '/img/instruments/videomancer/fresnel/fresn
 
 A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a square-root law. Fresnel generates this pattern digitally by computing the squared radial distance r² = dx² + dy² for every pixel on every frame, then extracting a single bit from that value to determine whether the pixel belongs to a bright ring or a dark ring. Because the bit positions of r² cycle at rates proportional to the square root of the distance, the rings naturally bunch together as they move outward, producing the distinctive zone plate look without any trigonometric functions or lookup tables.
 
-The program adds several layers of control on top of the raw zone plate. The center can be repositioned anywhere on screen. A second zone plate, mirrored about the screen center, can be XORed with the first to produce moiré interference fringes. The rings can be animated — an accumulating phase offset added to r² before bit selection makes the rings expand outward continuously. And the ring pattern can be colorized by passing the source video's chrominance through the bright zones while desaturating the dark zones, turning the geometric pattern into a video-driven color mask.
+The program adds several layers of control on top of the raw zone plate. The center can be repositioned anywhere on screen. A second zone plate, mirrored about the screen center, can be XORed with the first to produce moire interference fringes. The rings can be animated — an accumulating phase offset added to r² before bit selection makes the rings expand outward continuously. And the ring pattern can be colorized by passing the source video's chrominance through the bright zones while desaturating the dark zones, turning the geometric pattern into a video-driven color mask.
 
 The name references Augustin-Jean Fresnel, the French physicist whose work on wave optics and diffraction gave us the zone plate construction. In Videomancer's signal chain, Fresnel serves as both a standalone pattern generator and a structured keying mask — its rings carve the input video into concentric regions with independently adjustable brightness and contrast.
 
@@ -45,9 +45,9 @@ A Fresnel zone plate is a flat optical element consisting of concentric rings th
 
 The key mathematical property is that the zone boundaries fall at radii proportional to the square root of successive integers: r_n = √(n · λ · f), where λ is the wavelength and f is the focal length. Equivalently, the zone number at radius r is proportional to r². This is exactly what the VHDL computes: r² = dx² + dy², a simple sum of squared pixel distances. The zone assignment comes from examining a single bit of this sum — if the bit is 1 the pixel is in a bright zone, if 0 it is in a dark zone. Different bit positions select different spatial frequencies: higher bits give wider rings (low frequency), lower bits give tighter rings (high frequency). The entire zone plate pattern emerges from one addition, two multiplications, and a bit extraction — no sine waves, no square roots, no lookup tables.
 
-### Moiré from Dual Sources
+### Moire from Dual Sources
 
-When two periodic patterns are overlaid with a slight offset, their interaction produces a third pattern at a much lower spatial frequency — a moiré. In Fresnel, enabling the Dual Source toggle creates a second zone plate centered at the mirror image of the primary center (reflected about the screen midpoint). The XOR of the two binary ring patterns produces interference fringes that move dynamically as you reposition the primary center. Because the zone plate spacing is non-uniform, the moiré fringes are not simple straight lines — they form hyperbolic curves that sweep and rotate as the two centers shift relative to each other.
+When two periodic patterns are overlaid with a slight offset, their interaction produces a third pattern at a much lower spatial frequency — a moire. In Fresnel, enabling the Dual Source toggle creates a second zone plate centered at the mirror image of the primary center (reflected about the screen midpoint). The XOR of the two binary ring patterns produces interference fringes that move dynamically as you reposition the primary center. Because the zone plate spacing is non-uniform, the moire fringes are not simple straight lines — they form hyperbolic curves that sweep and rotate as the two centers shift relative to each other.
 
 ### Zone Plate Photography and Holography
 
@@ -105,7 +105,7 @@ Input Video (YUV 4:4:4)
     └─ Bypass: select processed or delayed original
 ```
 
-The core computation is remarkably compact: two 13-bit multiplications and one addition produce the entire zone plate pattern. The bit-selection stage is the spatial frequency control — moving one bit position up or down doubles or halves the ring count across the screen. Animation works by adding an ever-increasing offset to r² before bit extraction, which shifts all zone boundaries outward at a rate set by the Anim Speed pot. The dual-center XOR creates interference because the two zone plates share the same bit index but have different centers, so their ring boundaries only occasionally coincide — everywhere they disagree, the XOR flips polarity, carving moiré fringes into the combined pattern.
+The core computation is remarkably compact: two 13-bit multiplications and one addition produce the entire zone plate pattern. The bit-selection stage is the spatial frequency control — moving one bit position up or down doubles or halves the ring count across the screen. Animation works by adding an ever-increasing offset to r² before bit extraction, which shifts all zone boundaries outward at a rate set by the Anim Speed pot. The dual-center XOR creates interference because the two zone plates share the same bit index but have different centers, so their ring boundaries only occasionally coincide — everywhere they disagree, the XOR flips polarity, carving moire fringes into the combined pattern.
 
 ---
 
@@ -134,7 +134,7 @@ Selects which bit of the squared radial distance determines ring polarity. Low v
 | Default | 50% |
 | Suffix | % |
 
-Sets the horizontal position of the zone plate center. At midpoint the pattern is centered horizontally on screen. Sweeping left or right moves the concentric rings off-center, revealing the asymmetric ring spacing that is characteristic of off-axis zone plates. When Dual Source is active, this also moves the mirrored secondary center in the opposite direction, causing the moiré fringe pattern to shift and rotate.
+Sets the horizontal position of the zone plate center. At midpoint the pattern is centered horizontally on screen. Sweeping left or right moves the concentric rings off-center, revealing the asymmetric ring spacing that is characteristic of off-axis zone plates. When Dual Source is active, this also moves the mirrored secondary center in the opposite direction, causing the moire fringe pattern to shift and rotate.
 
 ---
 
@@ -192,7 +192,7 @@ Sets the overall brightness of the zone plate pattern. The bright ring level equ
 | **10 — Dual Source** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggles 7–11 control five independent binary options. Toggle 7 (Mode) inverts ring polarity — swapping which zones are bright and which are dark. Toggle 8 (Fill) switches between monochrome rings and video-colored rings. Toggle 9 (Anim) enables the expanding ring animation. Toggle 10 (Dual Source) activates the second zone plate for moiré interference. Toggle 11 (Bypass) routes the input directly to the output. Note that the TOML labels for Toggles 7 and 8 suggest multi-position selectors (Binary/Sine/Chirp/Gabor and Invert/Tint/Key/Add), but the current VHDL implementation reads only one bit from each, providing two-state on/off behavior.
+Toggles 7–11 control five independent binary options. Toggle 7 (Mode) inverts ring polarity — swapping which zones are bright and which are dark. Toggle 8 (Fill) switches between monochrome rings and video-colored rings. Toggle 9 (Anim) enables the expanding ring animation. Toggle 10 (Dual Source) activates the second zone plate for moire interference. Toggle 11 (Bypass) routes the input directly to the output. Note that the TOML labels for Toggles 7 and 8 suggest multi-position selectors (Binary/Sine/Chirp/Gabor and Invert/Tint/Key/Add), but the current VHDL implementation reads only one bit from each, providing two-state on/off behavior.
 
 ---
 
@@ -211,7 +211,7 @@ Controls the wet/dry crossfade between the original input video and the processe
 
 ## Guided Exercises
 
-These exercises build from a basic zone plate through dual-source moiré to video-integrated color masking. Each exercise uses a different combination of controls to explore the program's range.
+These exercises build from a basic zone plate through dual-source moire to video-integrated color masking. Each exercise uses a different combination of controls to explore the program's range.
 
 ### Exercise 1: Basic Zone Plate
 
@@ -232,22 +232,22 @@ These exercises build from a basic zone plate through dual-source moiré to vide
 
 ---
 
-### Exercise 2: Dual-Source Moiré
+### Exercise 2: Dual-Source Moire
 
-<img src={fresnel_exercise2_result} alt="Dual-Source Moiré result"/>
-*Dual-Source Moiré — simulated result across source images.*
-**Source**: A solid color field or gentle gradient — minimal source detail lets the moiré structure stand out.
+<img src={fresnel_exercise2_result} alt="Dual-Source Moire result"/>
+*Dual-Source Moire — simulated result across source images.*
+**Source**: A solid color field or gentle gradient — minimal source detail lets the moire structure stand out.
 
 **Objective**: Explore the interference patterns created by XORing two zone plates with different centers.
 
 1. **Enable dual**: Turn on Dual Source (Toggle 10). A second set of rings appears, XORed with the first.
-2. **Offset center**: Move Center X slightly off-center. Watch large-scale moiré fringes sweep across the screen.
+2. **Offset center**: Move Center X slightly off-center. Watch large-scale moire fringes sweep across the screen.
 3. **Vertical offset**: Now adjust Center Y. The fringe orientation rotates as the axis between the two centers changes.
-4. **Scale interaction**: Change Ring Scale while dual is active. Tighter rings produce finer moiré structure; wider rings produce broader fringes.
-5. **Animate the moiré**: Enable Anim (Toggle 9) and set Anim Speed to about 40%. The expanding rings create a dynamic, pulsating moiré.
-6. **Invert**: Toggle Mode to swap the moiré fringe polarity. Notice how the bright and dark fringes swap everywhere simultaneously.
+4. **Scale interaction**: Change Ring Scale while dual is active. Tighter rings produce finer moire structure; wider rings produce broader fringes.
+5. **Animate the moire**: Enable Anim (Toggle 9) and set Anim Speed to about 40%. The expanding rings create a dynamic, pulsating moire.
+6. **Invert**: Toggle Mode to swap the moire fringe polarity. Notice how the bright and dark fringes swap everywhere simultaneously.
 
-**Key concepts**: Moiré fringes arise from XOR of two non-aligned periodic patterns, fringe spacing and orientation depend on center separation, animation adds temporal dynamics
+**Key concepts**: Moire fringes arise from XOR of two non-aligned periodic patterns, fringe spacing and orientation depend on center separation, animation adds temporal dynamics
 
 ---
 
@@ -263,10 +263,10 @@ These exercises build from a basic zone plate through dual-source moiré to vide
 2. **Partial mix**: Lower Mix to about 60%. The zone plate overlays transparently on the source, creating colored ring bands over the original image.
 3. **Reposition**: Move Center X and Center Y to place the zone plate origin over a specific subject. The rings radiate outward from that subject.
 4. **Fine scale**: Set Ring Scale high (~80%) for tightly-spaced rings. The video alternates between full color and desaturated narrow bands.
-5. **Add dual**: Enable Dual Source to create moiré-patterned color masking — the XOR fringes selectively reveal color in complex curved bands.
+5. **Add dual**: Enable Dual Source to create moire-patterned color masking — the XOR fringes selectively reveal color in complex curved bands.
 6. **Animate**: Enable Anim with moderate speed. The color mask bands expand outward continuously, creating a pulsing color-reveal effect.
 
-**Key concepts**: Zone plate as a structured chroma key, partial mix blends mask with source, dual moiré creates complex shape masking
+**Key concepts**: Zone plate as a structured chroma key, partial mix blends mask with source, dual moire creates complex shape masking
 
 ---
 
@@ -274,7 +274,7 @@ These exercises build from a basic zone plate through dual-source moiré to vide
 ## Tips
 
 - **Ring Scale is logarithmic in effect**: Each step doubles the ring count. Mid-range settings (bits 14–16) give the most recognizable zone plate patterns.
-- **Dual Source is center-sensitive**: Even tiny offsets from center produce large moiré fringes. Use Dual Source with Center X/Y near 50% for the most dramatic fringe effects.
+- **Dual Source is center-sensitive**: Even tiny offsets from center produce large moire fringes. Use Dual Source with Center X/Y near 50% for the most dramatic fringe effects.
 - **Color mask technique**: Enable Fill with partial Mix to overlay colored zone rings on source video — the rings act as a structured chroma key.
 - **Animation speed matters**: Very high Anim Speed creates a strobing effect. For smooth expansion, keep Anim Speed below 30%.
 - **Combine with feedback**: Routing the output back to the input creates recursive zone plate rings that interact with themselves, forming fractal-like nested interference patterns.
@@ -289,17 +289,17 @@ These exercises build from a basic zone plate through dual-source moiré to vide
 | Term | Definition |
 |------|------------|
 | **Bit Selection** | Extracting a single bit from a binary value to determine a binary outcome; in Fresnel, the bit position within r² determines ring polarity. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory. Fresnel uses 0 BRAMs — the pattern is computed combinatorially. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Desaturation** | Reducing the color intensity of a pixel by blending its chroma values toward the neutral midpoint (512 in 10-bit YUV). |
 | **Fresnel Zone Plate** | An optical element with concentric rings whose spacing follows a square-root law, focusing light by diffraction. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Moiré** | A large-scale interference pattern produced when two periodic patterns are overlaid with a slight offset. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Interpolator** | A pipelined linear-interpolation module that crossfades between two values based on a fractional parameter. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Moire** | A large-scale interference pattern produced when two periodic patterns are overlaid with a slight offset. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **r²** | The squared radial distance from the zone plate center; computed as dx² + dy² without taking the square root. |
 | **XOR** | Exclusive OR; a binary operation that returns 1 when its two inputs differ. Used here to combine two zone plate patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone Plate** | Synonym for Fresnel zone plate; a pattern of concentric rings used in optics, photography, and video test signals. |
 
 ---

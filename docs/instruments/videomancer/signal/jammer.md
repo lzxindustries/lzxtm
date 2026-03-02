@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 133
+sidebar_position: 145
 slug: /instruments/videomancer/jammer
 title: "Jammer"
 image: /img/instruments/videomancer/jammer/jammer_hero.png
 description: "Every television signal travels through the air as radio waves, and the air is full of other radio waves."
 ---
 
+import jammer_hero from '/img/instruments/videomancer/jammer/jammer_hero.png';
 import jammer_before_after from '/img/instruments/videomancer/jammer/jammer_before_after.png';
 import jammer_control_panel from '/img/instruments/videomancer/jammer/jammer_control_panel.png';
 import jammer_exercise1_result from '/img/instruments/videomancer/jammer/jammer_exercise1_result.png';
 import jammer_exercise2_result from '/img/instruments/videomancer/jammer/jammer_exercise2_result.png';
 import jammer_exercise3_result from '/img/instruments/videomancer/jammer/jammer_exercise3_result.png';
-import jammer_hero from '/img/instruments/videomancer/jammer/jammer_hero.png';
-import jammer_source1_kodim15 from '/img/instruments/videomancer/jammer/jammer_source1_kodim15.png';
-import jammer_source2_kodim01 from '/img/instruments/videomancer/jammer/jammer_source2_kodim01.png';
-import jammer_source3_stream_bridge_512 from '/img/instruments/videomancer/jammer/jammer_source3_stream_bridge_512.png';
 
 # Jammer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={jammer_hero} alt="Jammer hero image"/>
 *Jammer applying herringbone beat patterns, rolling bars, and multipath ghosting to simulate broadcast RF interference.*
@@ -36,7 +29,7 @@ import jammer_source3_stream_bridge_512 from '/img/instruments/videomancer/jamme
 
 Every television signal travels through the air as radio waves, and the air is full of other radio waves. When an unwanted signal is close in frequency to the desired broadcast, the two interact inside the receiver's tuner and produce structured visual artifacts — diagonal line patterns, rolling horizontal bars, displaced ghost images, and bright noise bursts. These interference signatures were a routine part of the analog television experience, and each type of artifact told a skilled engineer something specific about the source of the problem.
 
-Jammer recreates this entire family of RF interference artifacts as a real-time video processing chain. A DDS (direct digital synthesis) phase accumulator generates herringbone or moiré beat patterns at user-controlled spatial frequency and angle. A secondary vertical phase accumulator creates rolling horizontal bars that sweep the screen. Three 1024×10-bit line buffers produce a horizontally-displaced ghost copy of the input, simulating multipath reception from a reflected signal. A 16-bit LFSR generates impulsive noise bursts and per-line sync jitter. The name *Jammer* refers to the deliberate jamming of a signal — the intentional injection of interference to disrupt communication. Here the disruption becomes the creative medium.
+Jammer recreates this entire family of RF interference artifacts as a real-time video processing chain. A DDS (direct digital synthesis) phase accumulator generates herringbone or moire beat patterns at user-controlled spatial frequency and angle. A secondary vertical phase accumulator creates rolling horizontal bars that sweep the screen. Three 1024×10-bit line buffers produce a horizontally-displaced ghost copy of the input, simulating multipath reception from a reflected signal. A 16-bit LFSR generates impulsive noise bursts and per-line sync jitter. The name *Jammer* refers to the deliberate jamming of a signal — the intentional injection of interference to disrupt communication. Here the disruption becomes the creative medium.
 
 At subtle settings, Jammer adds a faint herringbone texture and barely-visible ghost to an otherwise clean image — the equivalent of a marginal antenna on a windy day. At extreme settings, it reduces the signal to a chaotic overlay of competing patterns, rolling bars, displaced copies, and impulsive noise that overwhelms the source entirely. There is no bypass toggle — the Mix fader is the only way to attenuate the effect, which means the interference can never be fully separated from the signal, just as in real RF conditions.
 
@@ -84,10 +77,10 @@ Input Video (YUV 4:4:4)
 │   │      └─ Ghost Level       (scales ghost copy amplitude)
 │   │      └─ Chroma Int        (ghost added to Y only or full YUV)
 │   │
-│   ├─ 4. Herringbone / Moiré   (DDS phase accumulator → triangle wave)
+│   ├─ 4. Herringbone / Moire   (DDS phase accumulator → triangle wave)
 │   │      ├─ Beat Freq          (per-pixel phase increment)
 │   │      ├─ Angle              (per-line phase offset)
-│   │      ├─ Pattern            (Herringbone diagonal vs. Moiré circular)
+│   │      ├─ Pattern            (Herringbone diagonal vs. Moire circular)
 │   │      └─ Interference       (scales pattern amplitude)
 │   │
 │   ├─ 5. Rolling Bars          (vertical phase accumulator → triangle wave)
@@ -127,7 +120,7 @@ The Chroma Int toggle controls whether the herringbone pattern and ghost image a
 | Default | 25% |
 | Suffix | % |
 
-Controls the spatial frequency of the herringbone (or moiré) interference pattern. This is the per-pixel phase increment of the DDS accumulator. Low values produce coarse, widely-spaced diagonal lines visible as broad bands. High values create fine, tightly-packed lines that appear as a dense texture or moiré shimmer. In real RF interference, this parameter corresponds to the frequency offset between the desired and interfering carriers — a small offset produces slow, visible beats while a large offset produces rapid fine-grain texture.
+Controls the spatial frequency of the herringbone (or moire) interference pattern. This is the per-pixel phase increment of the DDS accumulator. Low values produce coarse, widely-spaced diagonal lines visible as broad bands. High values create fine, tightly-packed lines that appear as a dense texture or moire shimmer. In real RF interference, this parameter corresponds to the frequency offset between the desired and interfering carriers — a small offset produces slow, visible beats while a large offset produces rapid fine-grain texture.
 
 ---
 
@@ -138,7 +131,7 @@ Controls the spatial frequency of the herringbone (or moiré) interference patte
 | Default | 25% |
 | Suffix | % |
 
-Sets the diagonal angle of the herringbone pattern by controlling the per-line phase offset added to the beat accumulator at each horizontal sync. At zero, the interference lines are purely vertical. As Angle increases, the lines tilt diagonally, creating the characteristic V-shaped herringbone weave. At maximum, the lines are nearly horizontal. In moiré mode, Angle has no effect since the pattern is radially symmetric.
+Sets the diagonal angle of the herringbone pattern by controlling the per-line phase offset added to the beat accumulator at each horizontal sync. At zero, the interference lines are purely vertical. As Angle increases, the lines tilt diagonally, creating the characteristic V-shaped herringbone weave. At maximum, the lines are nearly horizontal. In moire mode, Angle has no effect since the pattern is radially symmetric.
 
 ---
 
@@ -229,7 +222,7 @@ These exercises progress from a single interference artifact to the full signal-
 3. **Angle**: Sweep Angle from 0% to 100%. Watch the lines tilt from vertical to nearly horizontal.
 4. **Rolling bars**: Set Roll Rate to ~25%. Broad horizontal bands begin scrolling vertically over the image.
 5. **Bar mode**: Toggle Bar Mode between Add and Multiply. In Add, the bars brighten and darken the image. In Multiply, they modulate the image gain without shifting black level.
-6. **Moiré**: Toggle Pattern to Moiré. The diagonal herringbone is replaced by concentric circular interference rings — note that Angle has no effect in this mode.
+6. **Moire**: Toggle Pattern to Moire. The diagonal herringbone is replaced by concentric circular interference rings — note that Angle has no effect in this mode.
 
 **Key concepts**: Herringbone comes from DDS beat frequency, angle comes from per-line phase offset, rolling bars are a vertical phase accumulator, multiplicative bars preserve black level
 
@@ -281,7 +274,7 @@ These exercises progress from a single interference artifact to the full signal-
 - **Ghost before pattern**: The ghost is blended before the herringbone pattern, so the interference covers both the live and ghost images. To see the ghost clearly, reduce Beat Freq and Interference briefly.
 - **Sync Jam is destructive**: Sync jitter affects the BRAM write address, which means it corrupts the ghost buffer as well. High jitter with large ghost delay produces severe tearing.
 - **Multiply bars for realism**: Multiplicative rolling bars are closer to real AGC modulation, where interference suppresses gain rather than adding brightness. Additive bars are more dramatic visually.
-- **Moiré for circular patterns**: When subject matter has strong circular or radial features, switching to Moiré mode creates concentric interference rings that interact with the content structure.
+- **Moire for circular patterns**: When subject matter has strong circular or radial features, switching to Moire mode creates concentric interference rings that interact with the content structure.
 - **Feedback loops**: Routing Jammer's output back to the input creates self-referencing interference — the ghost ghosts itself, the herringbone interferes with the herringbone, and the signal degrades progressively.
 
 ---
@@ -292,14 +285,16 @@ These exercises progress from a single interference artifact to the full signal-
 |------|------------|
 | **AGC** | Automatic Gain Control; a receiver circuit that adjusts amplification to maintain constant signal level. Strong interference can overload AGC, causing brightness modulation. |
 | **Beat Frequency** | The difference frequency produced when two signals close in frequency are mixed together. Appears as a visible pattern on screen. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 1024×10-bit line buffers that produce ghost delay. |
+| **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator and lookup, used here for herringbone pattern generation. |
 | **Ghost** | A displaced, attenuated copy of the television image caused by multipath signal reception (reflections off buildings, terrain, or aircraft). |
 | **Herringbone** | A diagonal striped interference pattern caused by near-frequency beat interaction between desired and interfering RF carriers. |
 | **Impulse Noise** | Short, intense bursts of radio interference from electrical switching, motors, or ignition systems, appearing as random bright specks. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Moiré** | Circular concentric interference rings produced by radial distance modulation, alternative to diagonal herringbone geometry. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to produce impulse noise and sync jitter patterns. |
+| **Moire** | Circular concentric interference rings produced by radial distance modulation, alternative to diagonal herringbone geometry. |
 | **Multipath** | Signal reception via multiple propagation paths (direct + reflected), causing ghost images due to differential propagation delay. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages; Jammer uses 8 clock cycles (4 processing + 4 interpolator). |
 | **Sync Separator** | A receiver circuit that extracts horizontal and vertical sync pulses from the composite signal. Interference can corrupt separation and cause horizontal jitter. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 283
+sidebar_position: 309
 slug: /instruments/videomancer/vortex
 title: "Vortex"
 image: /img/instruments/videomancer/vortex/vortex_hero.png
-description: "The tunnel effect is one of the defining visual tricks of the demoscene — a community of programmers who have been pushing the limits of real-time graph..."
+description: "The tunnel effect is one of the defining visual tricks of the demoscene — a community of programmers who have been pushing the limits of real-time graphics on constrained hardware since the late 1980s."
 ---
 
+import vortex_hero from '/img/instruments/videomancer/vortex/vortex_hero.png';
 import vortex_animation from '/img/instruments/videomancer/vortex/vortex_animation.gif';
 import vortex_control_panel from '/img/instruments/videomancer/vortex/vortex_control_panel.png';
 import vortex_exercise1_result from '/img/instruments/videomancer/vortex/vortex_exercise1_result.gif';
 import vortex_exercise2_result from '/img/instruments/videomancer/vortex/vortex_exercise2_result.gif';
 import vortex_exercise3_result from '/img/instruments/videomancer/vortex/vortex_exercise3_result.gif';
-import vortex_hero from '/img/instruments/videomancer/vortex/vortex_hero.png';
 
 # Vortex
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={vortex_hero} alt="Vortex hero image"/>
 *Vortex generating a classic demoscene tunnel with checkerboard textures spiralling into infinite depth, animated by DDS-driven scrolling.*
@@ -132,7 +128,7 @@ Depth Speed controls how fast the tunnel appears to rush toward the viewer. The 
 | Default | 12.5% |
 | Suffix | % |
 
-Rotation Speed controls the angular velocity of the tunnel spin. Like Depth Speed, this drives a DDS accumulator that offsets the angular texture coordinate. Low values produce a slow, graceful rotation; high values create a rapid vortex. Combining depth and rotation speeds produces a spiral motion — the viewer appears to fly through a spinning tunnel, creating complex moiré interactions between the radial texture and the rotational scroll.
+Rotation Speed controls the angular velocity of the tunnel spin. Like Depth Speed, this drives a DDS accumulator that offsets the angular texture coordinate. Low values produce a slow, graceful rotation; high values create a rapid vortex. Combining depth and rotation speeds produces a spiral motion — the viewer appears to fly through a spinning tunnel, creating complex moire interactions between the radial texture and the rotational scroll.
 
 ---
 
@@ -165,7 +161,7 @@ Center Y positions the vanishing point vertically. Combined with Center X, this 
 | Default | 50.0% |
 | Suffix | % |
 
-Texture Scale controls the spatial frequency of the procedural pattern. Below 512 the pattern uses its native frequency, producing wide checkerboard squares or broad stripes. Above 512 a left-shift doubles the frequency, creating finer detail with more repeats across the tunnel surface. This interacts dramatically with depth shading — finer patterns produce more intricate moiré interference when scrolling, while coarser patterns emphasize the bold geometric structure of the tunnel.
+Texture Scale controls the spatial frequency of the procedural pattern. Below 512 the pattern uses its native frequency, producing wide checkerboard squares or broad stripes. Above 512 a left-shift doubles the frequency, creating finer detail with more repeats across the tunnel surface. This interacts dramatically with depth shading — finer patterns produce more intricate moire interference when scrolling, while coarser patterns emphasize the bold geometric structure of the tunnel.
 
 ---
 
@@ -276,3 +272,5 @@ These exercises explore Vortex's tunnel synthesis from basic configuration throu
 - **Off-center tunnels for perspective** — moving the vanishing point to one side creates dramatic asymmetric perspectives, ideal for paired or split-screen setups.
 - **Slow speeds for meditation** — very low Depth and Rotation speeds produce a gentle, hypnotic drift suitable for ambient installation work.
 - **Stripes emphasize depth** — the stripe pattern creates concentric rings that make the depth compression effect more visually obvious than the checkerboard.
+
+---

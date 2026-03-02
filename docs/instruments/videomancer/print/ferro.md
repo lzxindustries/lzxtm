@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 95
+sidebar_position: 103
 slug: /instruments/videomancer/ferro
 title: "Ferro"
 image: /img/instruments/videomancer/ferro/ferro_hero.png
-description: "The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto p..."
+description: "The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto paper, exposed through a negative, and developed in running water."
 ---
 
 import ferro_hero from '/img/instruments/videomancer/ferro/ferro_hero.png';
@@ -288,16 +288,16 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used for standard-definition video, defining the YUV matrix coefficients used throughout Videomancer. |
 | **Contact Print** | A photographic print made by placing a negative in direct contact with sensitized paper and exposing to light, producing a 1:1 scale positive image. |
 | **Cyanotype** | A photographic printing process using iron salts that produces images in Prussian blue; invented by Sir John Herschel in 1842. |
 | **Density** | The opacity of a photographic image; higher density means less light transmission (darker print area). |
 | **H-D Curve** | Hurter–Driffield characteristic curve; the S-shaped relationship between log exposure and resulting density in a photographic emulsion. |
 | **IIR** | Infinite Impulse Response; a filter topology where each output sample depends on previous output samples, creating a recursive feedback loop. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback taps. |
 | **Prussian Blue** | Iron(III) hexacyanoferrate(II); the deep blue pigment formed during cyanotype development. |
 | **Sensitometry** | The science of measuring photographic materials' response to light exposure; the basis of the H-D curve. |
 | **Toning** | A post-processing step that chemically alters the color of a photographic print, converting the image substance to a different compound (e.g., sepia, selenium, gold). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

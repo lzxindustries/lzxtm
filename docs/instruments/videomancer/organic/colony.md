@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 52
+sidebar_position: 54
 slug: /instruments/videomancer/colony
 title: "Colony"
 image: /img/instruments/videomancer/colony/colony_hero.png
@@ -291,15 +291,15 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 | Term | Definition |
 |------|------------|
 | **Agar** | A gelatinous growth medium used in microbiology to culture bacterial colonies; Colony simulates expansion on a flat agar surface. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated FPGA memory used for line buffers and look-up tables. Colony uses zero BRAMs. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here to drive colony radius expansion. |
 | **Growth front** | The expanding edge of a colony's territory; modulated by LFSR noise for organic irregularity. |
 | **L1 metric** | Manhattan distance: |Δx| + |Δy|; the distance metric used for nearest-colony assignment, producing diamond-shaped iso-distance contours. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to add stochastic noise to colony growth edges. |
 | **Manhattan distance** | The sum of absolute differences in horizontal and vertical coordinates; used instead of Euclidean distance for hardware efficiency. |
 | **Mutual exclusion boundary** | The zone between two adjacent colonies where neither territory has clear dominance; detected when the gap between nearest and second-nearest distances falls below a threshold. |
 | **Seed point** | The fixed center position from which a colony expands; placed at quadrant centers in Colony's configuration. |
 | **Voronoi diagram** | A partition of a plane into cells, each containing all points closer to a given seed than to any other seed. Colony's territorial map is a Manhattan-metric Voronoi diagram. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
 
 ---

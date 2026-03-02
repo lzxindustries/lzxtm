@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 38
+sidebar_position: 40
 slug: /instruments/videomancer/caustic
 title: "Caustic"
 image: /img/instruments/videomancer/caustic/caustic_hero.png
-description: "Light passing through a disturbed water surface doesn't spread evenly — it focuses into bright caustic lines where refracted rays converge, leaving dark..."
+description: "Light passing through a disturbed water surface doesn't spread evenly — it focuses into bright caustic lines where refracted rays converge, leaving darker regions where they diverge."
 ---
 
 import caustic_hero from '/img/instruments/videomancer/caustic/caustic_hero.png';
@@ -263,12 +263,12 @@ These exercises progress from subtle luminous textures to intense caustic transf
 | **Amplitude** | The peak-to-peak strength of a wave; controls the contrast between bright caustic lines and dark valleys. |
 | **Caustic** | An envelope of light rays focused by refraction or reflection through a curved surface, creating bright concentrated lines. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interference** | The combination of two or more wave patterns, producing reinforcement at some points and cancellation at others. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Triangle Wave** | A periodic waveform that rises and falls linearly, approximating a sine wave with sharper transitions. |
 | **XOR** | Exclusive OR; a bitwise operation that combines two patterns, producing a 1 where inputs differ and 0 where they match. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

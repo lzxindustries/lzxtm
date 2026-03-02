@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 81
+sidebar_position: 89
 slug: /instruments/videomancer/duotone
 title: "Duotone"
 image: /img/instruments/videomancer/duotone/duotone_hero.png
@@ -272,16 +272,16 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used by Videomancer, defining how RGB maps to YUV. |
 | **Chroma** | The color information in a video signal, encoded as U and V components offset from a midpoint of 512 in the 10-bit domain. |
 | **Colorization** | The process of adding color to a monochrome or desaturated signal based on a mapping rule (here, luma-to-hue). |
 | **Duotone** | A printing technique using two ink colors to reproduce a photographic image; by extension, any two-color tonal mapping. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A pipelined hardware module that performs linear blending between two values (dry and wet) controlled by a mix parameter. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Toning** | A photographic technique that applies different color tints to the shadow and highlight regions of an image. |
 | **Threshold** | A brightness cutoff value that divides the image into two tonal zones in hard-edge mode. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

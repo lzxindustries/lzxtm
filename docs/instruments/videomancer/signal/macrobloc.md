@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 159
+sidebar_position: 175
 slug: /instruments/videomancer/macrobloc
 title: "Macrobloc"
 image: /img/instruments/videomancer/macrobloc/macrobloc_hero.png
 description: "Digital video compression divides every frame into small rectangular blocks and encodes each one independently."
 ---
 
+import macrobloc_hero from '/img/instruments/videomancer/macrobloc/macrobloc_hero.png';
 import macrobloc_before_after from '/img/instruments/videomancer/macrobloc/macrobloc_before_after.png';
 import macrobloc_control_panel from '/img/instruments/videomancer/macrobloc/macrobloc_control_panel.png';
 import macrobloc_exercise1_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise1_result.png';
 import macrobloc_exercise2_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise2_result.png';
 import macrobloc_exercise3_result from '/img/instruments/videomancer/macrobloc/macrobloc_exercise3_result.png';
-import macrobloc_hero from '/img/instruments/videomancer/macrobloc/macrobloc_hero.png';
-import macrobloc_source1_kodim15 from '/img/instruments/videomancer/macrobloc/macrobloc_source1_kodim15.png';
-import macrobloc_source2_kodim01 from '/img/instruments/videomancer/macrobloc/macrobloc_source2_kodim01.png';
-import macrobloc_source3_stream_bridge_512 from '/img/instruments/videomancer/macrobloc/macrobloc_source3_stream_bridge_512.png';
 
 # Macrobloc
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={macrobloc_hero} alt="Macrobloc hero image"/>
 *Macrobloc corrupting a video source with block displacement, DC fill, freeze artifacts, and chroma separation errors.*
@@ -294,16 +287,18 @@ These exercises progress from basic block corruption to complex multi-mode degra
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Macrobloc uses 3 BRAMs for Y/U/V line buffers. |
 | **Chroma** | Color information in a video signal, encoded as U and V offsets from neutral gray. |
 | **Chroma Subsampling** | Encoding technique that stores color at lower resolution than brightness (e.g., 4:2:0). |
 | **DC Fill** | Replacing a block with a flat solid color, simulating total data loss for that macroblock. |
 | **Displacement** | Spatial offset applied to a block's read address, simulating a corrupted motion vector. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the processing pipeline. |
 | **Freeze** | Holding a block's previous pixel values instead of reading new ones, simulating reference frame loss. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that drives corruption decisions. |
+| **Luma** | Brightness component (Y) of a YUV video signal. |
 | **Macroblock** | The fundamental rectangular coding unit in MPEG/H.264 compression, typically 8×8 or 16×16 pixels. |
 | **Motion Vector** | A pointer stored per macroblock indicating where to find similar content in a reference frame. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Pipeline** | A chain of sequential processing stages, eight clocks total in this program. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 210
+sidebar_position: 225
 slug: /instruments/videomancer/quilt
 title: "Quilt"
 image: /img/instruments/videomancer/quilt/quilt_hero.png
 description: "Every image carries a grid — the rows and columns of pixels that compose it."
 ---
 
+import quilt_hero from '/img/instruments/videomancer/quilt/quilt_hero.png';
 import quilt_before_after from '/img/instruments/videomancer/quilt/quilt_before_after.png';
 import quilt_control_panel from '/img/instruments/videomancer/quilt/quilt_control_panel.png';
 import quilt_exercise1_result from '/img/instruments/videomancer/quilt/quilt_exercise1_result.png';
 import quilt_exercise2_result from '/img/instruments/videomancer/quilt/quilt_exercise2_result.png';
 import quilt_exercise3_result from '/img/instruments/videomancer/quilt/quilt_exercise3_result.png';
-import quilt_hero from '/img/instruments/videomancer/quilt/quilt_hero.png';
-import quilt_source1_kodim15 from '/img/instruments/videomancer/quilt/quilt_source1_kodim15.png';
-import quilt_source2_kodim03 from '/img/instruments/videomancer/quilt/quilt_source2_kodim03.png';
-import quilt_source3_kodim13_bw from '/img/instruments/videomancer/quilt/quilt_source3_kodim13_bw.png';
 
 # Quilt
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={quilt_hero} alt="Quilt hero image"/>
 *Quilt dividing a video field into patchwork blocks with per-block pattern overlays, LFSR color jitter, and configurable stitch borders.*
@@ -314,3 +307,5 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 - **Hash tinting is per-block**: The warm/cool offset is determined by hash bit 3, so it's consistent within each block — neighboring blocks may have opposite tint directions.
 - **Borders override everything**: A pixel on a stitch border loses all source content and pattern overlay — it becomes a flat monochrome line at the stitch brightness value.
 - **2-pattern mode calms the grid**: Switching Palette to offset (2-pattern mode) removes the checker and diagonal types, producing a more textile-like result.
+
+---

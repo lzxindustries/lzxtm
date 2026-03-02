@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 284
+sidebar_position: 310
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
 image: /img/instruments/videomancer/washbrush/washbrush_hero.png
 description: "The Quantel Paintbox, introduced in 1981, was the first commercially successful digital paint system for broadcast television."
 ---
 
+import washbrush_hero from '/img/instruments/videomancer/washbrush/washbrush_hero.png';
 import washbrush_before_after from '/img/instruments/videomancer/washbrush/washbrush_before_after.png';
 import washbrush_control_panel from '/img/instruments/videomancer/washbrush/washbrush_control_panel.png';
 import washbrush_exercise1_result from '/img/instruments/videomancer/washbrush/washbrush_exercise1_result.png';
 import washbrush_exercise2_result from '/img/instruments/videomancer/washbrush/washbrush_exercise2_result.png';
 import washbrush_exercise3_result from '/img/instruments/videomancer/washbrush/washbrush_exercise3_result.png';
-import washbrush_hero from '/img/instruments/videomancer/washbrush/washbrush_hero.png';
-import washbrush_source1_kodim15 from '/img/instruments/videomancer/washbrush/washbrush_source1_kodim15.png';
-import washbrush_source2_kodim01 from '/img/instruments/videomancer/washbrush/washbrush_source2_kodim01.png';
-import washbrush_source3_kodim01_bw from '/img/instruments/videomancer/washbrush/washbrush_source3_kodim01_bw.png';
 
 # Washbrush
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={washbrush_hero} alt="Washbrush hero image"/>
 *Washbrush painting translucent airbrush strokes along a Lissajous orbit onto a persistent BRAM canvas, with warm hues accumulating over time.*
@@ -283,3 +276,5 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 - **Video sampling creates portraits** — feeding a face or landscape into Video color mode while tracing a space-filling Lissajous creates an impressionistic color reproduction of the source.
 - **Low Intensity + High Permanence = glazing** — many translucent layers building up slowly mimics the glazing technique used in oil painting.
 - **Mix for layering control** — keep Mix at 50–70% to see the canvas strokes layered over the live video input in real time.
+
+---

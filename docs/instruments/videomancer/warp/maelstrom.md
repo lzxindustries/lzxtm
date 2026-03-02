@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 160
+sidebar_position: 176
 slug: /instruments/videomancer/maelstrom
 title: "Maelstrom"
 image: /img/instruments/videomancer/maelstrom/maelstrom_hero.png
 description: "Every pixel in a video frame has a position."
 ---
 
+import maelstrom_hero from '/img/instruments/videomancer/maelstrom/maelstrom_hero.png';
 import maelstrom_before_after from '/img/instruments/videomancer/maelstrom/maelstrom_before_after.png';
 import maelstrom_control_panel from '/img/instruments/videomancer/maelstrom/maelstrom_control_panel.png';
 import maelstrom_exercise1_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise1_result.png';
 import maelstrom_exercise2_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise2_result.png';
 import maelstrom_exercise3_result from '/img/instruments/videomancer/maelstrom/maelstrom_exercise3_result.png';
-import maelstrom_hero from '/img/instruments/videomancer/maelstrom/maelstrom_hero.png';
-import maelstrom_source1_kodim02 from '/img/instruments/videomancer/maelstrom/maelstrom_source1_kodim02.png';
-import maelstrom_source2_kodim07 from '/img/instruments/videomancer/maelstrom/maelstrom_source2_kodim07.png';
-import maelstrom_source3_kodim01_bw from '/img/instruments/videomancer/maelstrom/maelstrom_source3_kodim01_bw.png';
 
 # Maelstrom
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={maelstrom_hero} alt="Maelstrom hero image"/>
 *Maelstrom warping a camera feed into concentric rings of radially displaced, color-inverted imagery radiating from a controllable singularity.*
@@ -288,13 +281,15 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 | Term | Definition |
 |------|------------|
 | **Alpha-max-plus-beta-min** | A fast approximation for Euclidean distance using only comparisons, additions, and bit shifts. Error is typically under 4%. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory tiles on the FPGA used here for 2048×10 scanline buffers. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
 | **Displacement** | Shifting a pixel's read address relative to its write address, causing spatial warping of the image. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline in real time. |
+| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends dry and wet signals based on the Mix parameter. |
 | **Lissajous** | A family of curves traced by combining sinusoidal motions at different frequencies on perpendicular axes. Used here for center drift. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages, each completing one clock cycle of work before passing results to the next stage. |
 | **Quarter-wave LUT** | A lookup table storing one quarter of a sine wave (0° to 90°); the full waveform is reconstructed by quadrant folding and sign inversion. |
 | **Scanline buffer** | A memory that stores one horizontal line of video, enabling displaced horizontal reads for spatial warping. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline at 10-bit precision. |
+
+---

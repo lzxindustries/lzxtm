@@ -242,7 +242,7 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 1. **Enable tint**: Switch Thread Tint to On. Rotate Tint Hue slowly through 360°. Watch the thread color cycle through red → yellow → green → cyan → blue → magenta.
 2. **Pick a hue**: Choose a tint that complements the source content — warm orange (~45°) for cool-toned footage, cyan (~180°) for warm footage.
 3. **Enable animation**: Switch Anim to On. Set Anim Speed to ~25%. The mesh drifts diagonally across the image.
-4. **Speed sweep**: Increase Anim Speed gradually. At high values the mesh scrolls rapidly, creating a moiré shimmer at certain frequencies.
+4. **Speed sweep**: Increase Anim Speed gradually. At high values the mesh scrolls rapidly, creating a moire shimmer at certain frequencies.
 5. **Mix blend**: Lower the Mix fader to ~60%. The lace becomes ghostly and semi-transparent — a different effect from reducing Opacity (which changes thread darkness but keeps the mesh at full Mix).
 6. **Final composition**: Combine Hex mesh, Solid fill, moderate tint, slow animation, and partial Mix for a complex, layered textile effect.
 
@@ -267,17 +267,17 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 | Term | Definition |
 |------|------------|
-| **Chroma** | The color-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **Hue LUT** | A look-up table that maps a control value to U and V chroma offsets corresponding to a specific color around the color wheel. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
+| **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle, used here to animate mesh drift. |
+| **Hue LUT** | A look-up table that maps a control value to U and V chroma offsets corresponding to a specific colour around the colour wheel. |
+| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for thread darkening and dry/wet blending. |
+| **Luma** | The brightness component (Y) of a YUV video signal, darkened proportionally at thread pixel locations. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical distances between two points, used here to measure pixel proximity to a curve without computing a square root. |
-| **Moiré** | An interference pattern produced when two periodic structures (such as the thread mesh and the display pixel grid) overlap at similar spatial frequencies. |
+| **Moire** | An interference pattern produced when two periodic structures (such as the thread mesh and the display pixel grid) overlap at similar spatial frequencies. |
 | **Phase accumulator** | A register that increments by a fixed step each vertical sync interval, whose value offsets both curve families to produce smooth mesh animation. |
 | **Rhombic lattice** | A repeating grid of diamond-shaped cells formed by the intersection of two sinusoidal curve families oscillating at the same frequency. |
 | **Sine LUT** | A look-up table containing 32 pre-computed signed sine values, used to generate smooth wave curves without real-time trigonometric calculation. |
 | **Torchon** | A traditional style of bobbin lace characterized by its regular diamond-mesh ground pattern, the real-world counterpart to Bobbin's Diamond mode. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
 
 ---

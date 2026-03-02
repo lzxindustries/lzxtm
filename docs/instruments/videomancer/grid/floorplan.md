@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 101
+sidebar_position: 110
 slug: /instruments/videomancer/floorplan
 title: "Floorplan"
 image: /img/instruments/videomancer/floorplan/floorplan_hero.png
@@ -279,15 +279,15 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 | Term | Definition |
 |------|------------|
 | **Blueprint** | A cyanotype reproduction of a technical drawing, producing white lines on a blue background; the color scheme replicated by Floorplan's Blue rendering style. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; a dedicated memory resource on the FPGA used here to store one full scan line of luminance data for vertical edge detection. |
 | **Edge Detection** | The process of identifying sharp brightness transitions in an image by computing pixel-to-pixel gradient differences. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in real time. |
 | **Gradient** | The rate of change of pixel brightness across a spatial distance; stronger gradients correspond to sharper image edges. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade circuit that blends two signals according to a configurable mix parameter; Floorplan uses three for Y, U, and V channel mixing. |
 | **Line Buffer** | A single-BRAM memory that stores one horizontal line of video data, enabling vertical comparisons between consecutive scan lines. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luma** | The brightness component (Y) of a YUV video signal; the only channel analyzed for edge detection in Floorplan. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Threshold** | A comparison level that divides edge strengths into "wall" and "not wall" categories; Floorplan uses two thresholds for variable wall thickness. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

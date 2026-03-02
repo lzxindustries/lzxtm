@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 141
+sidebar_position: 154
 slug: /instruments/videomancer/lambert
 title: "Lambert"
 image: /img/instruments/videomancer/lambert/lambert_hero.png
-description: "Lambert draws a single 3D sphere on the screen using the Lambertian reflection model — the same diffuse shading equation that underpins virtually all re..."
+description: "Lambert draws a single 3D sphere on the screen using the Lambertian reflection model — the same diffuse shading equation that underpins virtually all real-time 3D rendering."
 ---
 
+import lambert_hero from '/img/instruments/videomancer/lambert/lambert_hero.png';
 import lambert_animation from '/img/instruments/videomancer/lambert/lambert_animation.gif';
 import lambert_control_panel from '/img/instruments/videomancer/lambert/lambert_control_panel.png';
 import lambert_exercise1_result from '/img/instruments/videomancer/lambert/lambert_exercise1_result.gif';
 import lambert_exercise2_result from '/img/instruments/videomancer/lambert/lambert_exercise2_result.gif';
 import lambert_exercise3_result from '/img/instruments/videomancer/lambert/lambert_exercise3_result.gif';
-import lambert_hero from '/img/instruments/videomancer/lambert/lambert_hero.png';
 
 # Lambert
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lambert_hero} alt="Lambert hero image"/>
 *Lambert rendering a Lambertian-shaded sphere with toon quantization bands floating against a dark void.*
@@ -287,9 +283,11 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 | **Cosine law** | Lambert's law: the intensity of reflected light from a diffuse surface is proportional to the cosine of the angle between the surface normal and the light direction. |
 | **Diffuse reflection** | Light scattered equally in all directions from a matte surface, as described by Lambert's law. Distinguished from specular (mirror-like) reflection. |
 | **Dot product** | The scalar product of two vectors, equal to the product of their magnitudes times the cosine of the angle between them. Used here to compute shading intensity. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Lambertian surface** | An idealized perfectly matte surface that reflects light equally in all directions, obeying Lambert's cosine law. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc amp** | Processing amplifier; a gain-and-offset stage applied to a video signal. The interpolator in Lambert functions as a wet/dry mix rather than a traditional proc amp. |
 | **Surface normal** | A unit vector perpendicular to a surface at a given point, used to compute the angle of incoming light for shading calculations. |
 | **Toon shading** | See cel shading. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+---

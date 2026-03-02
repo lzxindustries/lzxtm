@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 84
+sidebar_position: 92
 slug: /instruments/videomancer/elastica
 title: "Elastica"
 image: /img/instruments/videomancer/elastica/elastica_hero.png
@@ -272,7 +272,7 @@ These exercises progress from basic horizontal displacement through vertical war
 - **Mix for double exposure**: Intermediate mix positions superimpose the warped and unwarped images, useful for creating ghostly layering effects or motion-blur-like smears.
 - **Square wave for rhythmic displacement**: Square waveshape splits the image into two hard-displaced halves — excellent for glitch aesthetics and blocky displacement keyed to a beat.
 - **V-Warp alone for vertical effects**: Toggle V-Warp On with H Amplitude at zero to isolate pure vertical squeeze/stretch without horizontal distortion.
-- **Frequency ratio matters**: The ratio of H Frequency to V Frequency determines the 2D pattern when cross-modulation is active. Simple ratios (1:1, 1:2, 2:3) produce stable patterns; complex ratios create evolving moiré-like textures.
+- **Frequency ratio matters**: The ratio of H Frequency to V Frequency determines the 2D pattern when cross-modulation is active. Simple ratios (1:1, 1:2, 2:3) produce stable patterns; complex ratios create evolving moire-like textures.
 
 ---
 
@@ -280,9 +280,9 @@ These exercises progress from basic horizontal displacement through vertical war
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used to store one full scanline for displaced readback. |
 | **Cross-Modulation** | Using the output of one oscillator to control a parameter of another; here the V-wave triangle modulates the H-warp amplitude. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table or arithmetic. |
 | **Displacement** | Shifting pixel read positions horizontally by an offset derived from the warp waveform, causing spatial distortion. |
 | **Lissajous** | Complex 2D patterns formed by combining two perpendicular oscillations at different frequencies, analogous to the cross-modulated H/V warp. |
 | **Phase Accumulator** | A register that increments by a tuning word each clock event; its upper bits encode the instantaneous phase of the output waveform. |
@@ -291,6 +291,6 @@ These exercises progress from basic horizontal displacement through vertical war
 | **Rubber-Sheet Transform** | A continuous spatial distortion where output pixel positions are displaced versions of input positions, as if the image were printed on elastic material. |
 | **Scanimate** | An analog video computer built by Computer Image Corporation in the 1970s, capable of real-time per-scanline video distortion. |
 | **Tuning Word** | The increment value added to a DDS phase accumulator on each clock event; determines the output frequency. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

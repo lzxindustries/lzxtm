@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 177
+sidebar_position: 192
 slug: /instruments/videomancer/necker
 title: "Necker"
 image: /img/instruments/videomancer/necker/necker_hero.png
-description: "The Necker cube is one of the most iconic figures in visual perception — a wireframe drawing of a cube that appears to spontaneously flip between two va..."
+description: "The Necker cube is one of the most iconic figures in visual perception — a wireframe drawing of a cube that appears to spontaneously flip between two valid three-dimensional interpretations."
 ---
 
+import necker_hero from '/img/instruments/videomancer/necker/necker_hero.png';
 import necker_before_after from '/img/instruments/videomancer/necker/necker_before_after.png';
 import necker_control_panel from '/img/instruments/videomancer/necker/necker_control_panel.png';
 import necker_exercise1_result from '/img/instruments/videomancer/necker/necker_exercise1_result.png';
 import necker_exercise2_result from '/img/instruments/videomancer/necker/necker_exercise2_result.png';
 import necker_exercise3_result from '/img/instruments/videomancer/necker/necker_exercise3_result.png';
-import necker_hero from '/img/instruments/videomancer/necker/necker_hero.png';
-import necker_source1_kodim01 from '/img/instruments/videomancer/necker/necker_source1_kodim01.png';
-import necker_source2_kodim02 from '/img/instruments/videomancer/necker/necker_source2_kodim02.png';
-import necker_source3_kodim01_bw from '/img/instruments/videomancer/necker/necker_source3_kodim01_bw.png';
 
 # Necker
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={necker_hero} alt="Necker hero image"/>
 *Necker rendering a perspective-ambiguous wireframe cube with depth-offset back face and overlay compositing onto the video source.*
@@ -285,10 +278,12 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 | **Axonometric Projection** | A method of representing 3D objects in 2D where parallel lines remain parallel, as opposed to perspective projection where they converge. |
 | **Bistable Perception** | A visual phenomenon where a single image supports two mutually exclusive interpretations that alternate spontaneously. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
+| **Interpolator** | A linear crossfade module blending two 10-bit values based on a mix parameter. |
+| **Luminance** | The brightness component (Y) of a YUV signal. |
 | **Necker Cube** | A wireframe cube drawing first described by Louis Albert Necker in 1832, exhibiting spontaneous depth reversal. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Wireframe** | A 3D object representation showing only edge lines, with no filled surfaces. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+---

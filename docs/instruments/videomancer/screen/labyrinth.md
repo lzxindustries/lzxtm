@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 140
+sidebar_position: 153
 slug: /instruments/videomancer/labyrinth
 title: "Labyrinth"
 image: /img/instruments/videomancer/labyrinth/labyrinth_hero.png
 description: "Labyrinth is a real-time procedural maze generator that draws its entire structure from a single hash function — no frame buffer, no stored map, zero BRAM."
 ---
 
+import labyrinth_hero from '/img/instruments/videomancer/labyrinth/labyrinth_hero.png';
 import labyrinth_animation from '/img/instruments/videomancer/labyrinth/labyrinth_animation.gif';
 import labyrinth_control_panel from '/img/instruments/videomancer/labyrinth/labyrinth_control_panel.png';
 import labyrinth_exercise1_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise1_result.gif';
 import labyrinth_exercise2_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise2_result.gif';
 import labyrinth_exercise3_result from '/img/instruments/videomancer/labyrinth/labyrinth_exercise3_result.gif';
-import labyrinth_hero from '/img/instruments/videomancer/labyrinth/labyrinth_hero.png';
 
 # Labyrinth
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={labyrinth_hero} alt="Labyrinth hero image"/>
 *Labyrinth generating a procedural binary-tree maze with luminous corridors and an explorer dot traversing the passages.*
@@ -298,15 +294,17 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 | Term | Definition |
 |------|------------|
 | **Binary-tree maze** | A maze generation algorithm where each cell opens exactly one passage (east or south), producing a perfect maze with a single path between any two cells. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Labyrinth uses zero BRAM — the maze is computed procedurally. |
 | **Cell** | One unit of the maze grid. Each cell has four potential walls (north, south, east, west) and an interior corridor. |
 | **Deterministic** | A process that always produces the same output for the same input. Labyrinth's hash function is deterministic — the same seed always produces the same maze. |
 | **Explorer** | An animated dot that navigates the maze corridors, changing direction upon encountering walls. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that generates the maze pattern at pixel clock speed. |
 | **Hash function** | A mathematical function that maps input values to pseudo-random output values. Used here to determine wall placement from cell coordinates and seed. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. |
 | **Perfect maze** | A maze with exactly one path between any two cells — no loops and no isolated regions. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages on each clock cycle; Labyrinth uses a 6-clock pipeline. |
 | **Procedural generation** | Creating content algorithmically rather than storing it in memory. Labyrinth generates the entire maze from a hash function with zero storage. |
 | **Seed** | An initial value fed to the hash function that determines the maze topology. Different seeds produce different mazes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

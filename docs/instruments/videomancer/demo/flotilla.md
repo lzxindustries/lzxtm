@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 102
+sidebar_position: 111
 slug: /instruments/videomancer/flotilla
 title: "Flotilla"
 image: /img/instruments/videomancer/flotilla/flotilla_hero.png
-description: "In the early days of home computing, sprites were not abstract concepts — they were hardware resources, tiny bitmaps that the display controller could p..."
+description: "In the early days of home computing, sprites were not abstract concepts — they were hardware resources, tiny bitmaps that the display controller could place at arbitrary screen positions without the CPU redrawing the background."
 ---
 
 import flotilla_hero from '/img/instruments/videomancer/flotilla/flotilla_hero.png';
@@ -39,11 +39,11 @@ The name *Flotilla* evokes a small fleet of vessels moving in formation across o
 
 ### Demoscene Sprite Programming
 
-The demoscene inherited sprite hardware from the game consoles and home computers of the 1980s. The Commodore 64's VIC-II chip offered eight hardware sprites, each 24×21 pixels in a single color or 12×21 in multicolor mode. The Amiga's custom chipset provided eight 16-pixel-wide sprites with independent vertical and horizontal positioning. Demo coders pushed these systems far beyond their intended limits — multiplexing sprites mid-scanline, reusing them at different vertical positions, chaining them into larger composite objects. The technical constraint of a fixed number of small bitmaps became a creative medium: sprite choreography, formation flying, and wave effects were standard fare in demo intros and cracktros. Flotilla distills this tradition to its essentials: eight 8×8 bitmaps, independently positioned, composited in real time.
+The demoscene inherited sprite hardware from the game consoles and home computers of the 1980s. The Commodore 64's VIC-II chip offered eight hardware sprites, each 24×21 pixels in a single colour or 12×21 in multicolour mode. The Amiga's custom chipset provided eight 16-pixel-wide sprites with independent vertical and horizontal positioning. Demo coders pushed these systems far beyond their intended limits — multiplexing sprites mid-scanline, reusing them at different vertical positions, chaining them into larger composite objects. The technical constraint of a fixed number of small bitmaps became a creative medium: sprite choreography, formation flying, and wave effects were standard fare in demo intros and cracktros. Flotilla distills this tradition to its essentials: eight 8×8 bitmaps, independently positioned, composited in real time.
 
 ### 8×8 Bitmap Sprites and ROM Storage
 
-An 8×8 monochrome bitmap requires exactly 64 bits of storage — one bit per pixel. At this scale, every pixel matters: an arrow can be recognizable in a 5-pixel-wide silhouette, and a diamond is simply a rotated square with its corners trimmed. Storing these as 64-bit constants in FPGA fabric costs zero BRAM — the values are encoded directly into the lookup logic, consuming only a handful of LUTs. This is the same approach used by early arcade hardware, where character ROMs held 8×8 tiles as fixed bit patterns. The Flotilla VHDL stores two shapes — arrow and diamond — as compile-time constants, selecting between them with a single multiplexer controlled by Toggle 7.
+An 8×8 monochrome bitmap requires exactly 64 bits of storage — one bit per pixel. At this scale, every pixel matters: an arrow can be recognisable in a 5-pixel-wide silhouette, and a diamond is simply a rotated square with its corners trimmed. Storing these as 64-bit constants in FPGA fabric costs zero BRAM — the values are encoded directly into the lookup logic, consuming only a handful of LUTs. This is the same approach used by early arcade hardware, where character ROMs held 8×8 tiles as fixed bit patterns. The Flotilla VHDL stores two shapes — arrow and diamond — as compile-time constants, selecting between them with a single multiplexer controlled by Toggle 7.
 
 ### Direct Digital Synthesis for Animation
 
@@ -55,7 +55,7 @@ Military flight formations (echelon, V-formation, line abreast) are designed so 
 
 ### Sprite Priority Compositing
 
-When multiple sprites overlap on the same pixel, classic hardware used a priority chain: sprite 0 wins over sprite 1, which wins over sprite 2, and so on. This is computationally trivial — a first-match scan — and produces deterministic layering without the complexity of z-buffering or alpha blending. Flotilla implements the same scheme: all active sprites are tested in parallel against the current pixel coordinate, and the lowest-numbered sprite that registers a hit determines the output color. In mono mode, all sprites share the same hue; in multi mode, each sprite receives a distinct palette color from an eight-entry fixed table, making the priority order visible when sprites cross paths.
+When multiple sprites overlap on the same pixel, classic hardware used a priority chain: sprite 0 wins over sprite 1, which wins over sprite 2, and so on. This is computationally trivial — a first-match scan — and produces deterministic layering without the complexity of z-buffering or alpha blending. Flotilla implements the same scheme: all active sprites are tested in parallel against the current pixel coordinate, and the lowest-numbered sprite that registers a hit determines the output colour. In mono mode, all sprites share the same hue; in multi mode, each sprite receives a distinct palette colour from an eight-entry fixed table, making the priority order visible when sprites cross paths.
 
 
 ---
@@ -115,7 +115,7 @@ When multiple sprites overlap on the same pixel, classic hardware used a priorit
 
 The per-frame DDS update runs once during vertical blanking, incrementing each sprite's position accumulator by the Speed value plus a per-sprite offset. This staggered increment ensures sprites do not all move at exactly the same rate — sprite 0 is slowest, sprite 7 is fastest — which naturally spreads the formation over time even without wave modulation. The upper 12 bits of the 16-bit accumulator serve as the screen coordinate, providing smooth sub-pixel positioning at the cost of limiting the effective resolution to 4096 positions per axis, well beyond the 1920×1080 screen.
 
-Hit detection operates in a single clock cycle despite checking all eight sprites. Each sprite's bounds test and bitmap lookup is fully combinational, with the loop unrolled into parallel hardware. The first-match priority scan uses a cascaded conditional: if sprite 0 hits, its color is selected regardless of whether sprites 1–7 also overlap. This mirrors the priority chain of classic sprite hardware and ensures deterministic rendering order without z-buffer overhead.
+Hit detection operates in a single clock cycle despite checking all eight sprites. Each sprite's bounds test and bitmap lookup is fully combinational, with the loop unrolled into parallel hardware. The first-match priority scan uses a cascaded conditional: if sprite 0 hits, its colour is selected regardless of whether sprites 1–7 also overlap. This mirrors the priority chain of classic sprite hardware and ensures deterministic rendering order without z-buffer overhead.
 
 ---
 
@@ -166,7 +166,7 @@ Controls the rate at which the wave formation evolves over time. This parameter 
 | Default | 2x |
 | Suffix | x |
 
-Selects the sprite magnification factor across four discrete steps. At step 1, each sprite occupies its native 8×8 pixel footprint — tiny points on the HD canvas. Step 2 doubles each pixel to 16×16, making the shape clearly identifiable. Step 3 expands to 32×32, and step 4 fills a 64×64 pixel region, rendering each bitmap detail as an 8×8 block of solid color. Magnification is achieved by right-shifting the pixel-relative coordinates before bitmap lookup, effectively repeating each texel across a square block. The sprite bounding box scales accordingly, so larger sprites are easier to see but more likely to overlap — particularly at high sprite counts with tight formation spacing.
+Selects the sprite magnification factor across four discrete steps. At step 1, each sprite occupies its native 8×8 pixel footprint — tiny points on the HD canvas. Step 2 doubles each pixel to 16×16, making the shape clearly identifiable. Step 3 expands to 32×32, and step 4 fills a 64×64 pixel region, rendering each bitmap detail as an 8×8 block of solid colour. Magnification is achieved by right-shifting the pixel-relative coordinates before bitmap lookup, effectively repeating each texel across a square block. The sprite bounding box scales accordingly, so larger sprites are easier to see but more likely to overlap — particularly at high sprite counts with tight formation spacing.
 
 ---
 
@@ -177,7 +177,7 @@ Selects the sprite magnification factor across four discrete steps. At step 1, e
 | Default | 0d |
 | Suffix | d |
 
-Sets the hue for monochrome color mode. The 10-bit register value is converted to chroma offsets: U receives a quarter of the hue value minus 128, and V receives the complement. At register zero, the sprites are pure white (Y=1023, U=V=512). As the knob sweeps through its range, the sprites cycle through warm and cool tints — the mapping is not a true HSV rainbow but a simple linear ramp through the YUV chroma plane, producing distinctive color shifts at each position. This parameter has no effect when Color is set to Multi, since each sprite draws from the fixed eight-entry palette instead.
+Sets the hue for monochrome colour mode. The 10-bit register value is converted to chroma offsets: U receives a quarter of the hue value minus 128, and V receives the complement. At register zero, the sprites are pure white (Y=1023, U=V=512). As the knob sweeps through its range, the sprites cycle through warm and cool tints — the mapping is not a true HSV rainbow but a simple linear ramp through the YUV chroma plane, producing distinctive colour shifts at each position. This parameter has no effect when Color is set to Multi, since each sprite draws from the fixed eight-entry palette instead.
 
 ---
 
@@ -201,7 +201,7 @@ Selects how many sprites are active, from 1 to 8 in discrete steps. Inactive spr
 | **10 — Background** | Black | Video |
 | **11 — Bypass** | Off | On |
 
-The five toggles divide into three functional clusters. Shape (7) and Direction (8) define the sprite geometry and motion axis — these are the structural controls that set up the visual character of the flotilla. Color (9) and Background (10) affect rendering appearance — mono versus palette coloring and whether non-sprite pixels show black or video passthrough. Bypass (11) overrides everything, routing the delayed input directly to output. All toggles operate independently and can be combined freely: a diamond fleet moving downward over video in multi-color mode is as valid as an arrow fleet moving rightward over black in mono.
+The five toggles divide into three functional clusters. Shape (7) and Direction (8) define the sprite geometry and motion axis — these are the structural controls that set up the visual character of the flotilla. Color (9) and Background (10) affect rendering appearance — mono versus palette colouring and whether non-sprite pixels show black or video passthrough. Bypass (11) overrides everything, routing the delayed input directly to output. All toggles operate independently and can be combined freely: a diamond fleet moving downward over video in multi-colour mode is as valid as an arrow fleet moving rightward over black in mono.
 
 ---
 
@@ -249,11 +249,11 @@ These exercises progress from a single sprite through full-fleet formation flyin
 2. **Moderate speed**: Set Speed to ~30%. The fleet moves rightward, staggered by the per-index speed offsets.
 3. **Add wave spread**: Increase Wave Amp to ~50%. The sprites spread vertically into a wave pattern — sprite 0 stays near centre while outer sprites swing wide.
 4. **Animate the wave**: Increase Wave Freq to ~40%. The formation begins to ripple — sprites drift in and out of alignment as the wave phase advances.
-5. **Multi color**: Switch Color to Multi. Each sprite now shows a different hue from the palette, making individual sprites easy to track as they weave through the formation.
-6. **Observe overlap**: Increase Sprite Size to 3× or 4×. At large sizes, sprites overlap — notice that sprite 0 (the first color) always appears on top at intersections due to priority compositing.
+5. **Multi colour**: Switch Color to Multi. Each sprite now shows a different hue from the palette, making individual sprites easy to track as they weave through the formation.
+6. **Observe overlap**: Increase Sprite Size to 3× or 4×. At large sizes, sprites overlap — notice that sprite 0 (the first colour) always appears on top at intersections due to priority compositing.
 7. **Vary amplitude**: Sweep Wave Amp from 0% to 100%. At zero, the fleet is a horizontal line; at maximum, sprites scatter across the full screen height.
 
-**Key concepts**: Wave Amp controls formation spread, Wave Freq animates the spread over time, multi-color mode makes individual sprites distinguishable, priority compositing determines overlap order, per-index speed offsets create natural formation staggering
+**Key concepts**: Wave Amp controls formation spread, Wave Freq animates the spread over time, multi-colour mode makes individual sprites distinguishable, priority compositing determines overlap order, per-index speed offsets create natural formation staggering
 
 ---
 
@@ -268,11 +268,11 @@ These exercises progress from a single sprite through full-fleet formation flyin
 3. **Vertical motion**: Switch Direction to Down. The diamonds descend over the video like falling gems.
 4. **Slow speed**: Set Speed to ~20%. A gentle descent allows individual sprites to be observed against the video content.
 5. **Subtle wave**: Set Wave Amp to ~30%, Wave Freq to ~25%. The formation sways gently, creating organic motion.
-6. **Mono color**: Set Color to Mono, Hue to ~180°. All sprites share a single tint that contrasts with the video.
+6. **Mono colour**: Set Color to Mono, Hue to ~180°. All sprites share a single tint that contrasts with the video.
 7. **Blend with Mix**: Pull Mix fader to ~60%. The sprites become semi-transparent, ghosting over the video as luminous shapes.
-8. **Experiment with Hue**: Sweep the Hue knob to find a color that complements the video content.
+8. **Experiment with Hue**: Sweep the Hue knob to find a colour that complements the video content.
 
-**Key concepts**: Video background passes input through non-sprite pixels, Mix fader controls sprite opacity over video, mono mode with Hue allows color matching to video content, vertical motion creates a "falling" effect, diamond shape provides compact symmetric overlay
+**Key concepts**: Video background passes input through non-sprite pixels, Mix fader controls sprite opacity over video, mono mode with Hue allows colour matching to video content, vertical motion creates a "falling" effect, diamond shape provides compact symmetric overlay
 
 ---
 
@@ -281,7 +281,7 @@ These exercises progress from a single sprite through full-fleet formation flyin
 
 - **Start with one sprite**: Set Count to 1 to understand DDS motion and wrapping before adding formation complexity. A single sprite at 4× magnification is easy to track.
 - **Wave Amp before Wave Freq**: Set a non-zero Wave Amp first — Wave Freq has no visible effect when Wave Amp is zero, since it modulates the amplitude of the formation spread.
-- **Multi-color for debugging**: Switch to Multi color mode to distinguish individual sprites by index. This is invaluable when studying priority compositing at overlap points.
+- **Multi-colour for debugging**: Switch to Multi colour mode to distinguish individual sprites by index. This is invaluable when studying priority compositing at overlap points.
 - **Video background for compositing**: Video mode layers the sprites over live input, turning Flotilla into a sprite overlay program. Combine with low Mix for subtle animated decorations.
 - **Large sprites overlap more**: At 4× magnification and high Count, sprites frequently overlap. Use this to study the priority chain — sprite 0 always wins.
 - **Direction changes are non-destructive**: Toggling Direction swaps the axis but does not reset the DDS accumulators. The formation reorganises smoothly from whatever state it was in.
@@ -306,6 +306,6 @@ These exercises progress from a single sprite through full-fleet formation flyin
 | **Priority chain** | A compositing rule where the lowest-numbered overlapping element wins, common in hardware sprite systems. |
 | **Screen wrapping** | When an object exits one edge of the screen it re-enters from the opposite edge, implemented here via modular arithmetic on position coordinates. |
 | **Tuning word** | The increment value added to a DDS accumulator each cycle; larger values produce faster motion or higher frequency. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model separating luminance (Y) from two chrominance components (U and V), used throughout Videomancer's video pipeline. |
 
 ---

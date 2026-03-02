@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 127
+sidebar_position: 138
 slug: /instruments/videomancer/infrared
 title: "Infrared"
 image: /img/instruments/videomancer/infrared/infrared_hero.png
 description: "Thermal imaging cameras do not capture color."
 ---
 
+import infrared_hero from '/img/instruments/videomancer/infrared/infrared_hero.png';
 import infrared_before_after from '/img/instruments/videomancer/infrared/infrared_before_after.png';
 import infrared_control_panel from '/img/instruments/videomancer/infrared/infrared_control_panel.png';
 import infrared_exercise1_result from '/img/instruments/videomancer/infrared/infrared_exercise1_result.png';
 import infrared_exercise2_result from '/img/instruments/videomancer/infrared/infrared_exercise2_result.png';
 import infrared_exercise3_result from '/img/instruments/videomancer/infrared/infrared_exercise3_result.png';
-import infrared_hero from '/img/instruments/videomancer/infrared/infrared_hero.png';
-import infrared_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source1_grayscale_ramp_h_1920x1080.png';
-import infrared_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source2_grayscale_ramp_v_1920x1080.png';
-import infrared_source3_step_wedge_21level_512 from '/img/instruments/videomancer/infrared/infrared_source3_step_wedge_21level_512.png';
 
 # Infrared
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={infrared_hero} alt="Infrared hero image"/>
 *Infrared applying false-color thermal palette mapping to transform source luminance into ironbow and arctic color schemes with isotherm contour overlays.*
@@ -112,7 +105,7 @@ The critical path runs through two luminance transformations before the palette 
 | Default | 50% |
 | Suffix | % |
 
-Controls the saturation intensity of the thermal palette colors. Above 50%, the chroma components of each zone are boosted — blues become more vivid, oranges richer. Below 50%, chroma is pulled toward neutral gray, creating a more subdued pastel thermal map. At zero the output is effectively a luminance-only remapping with desaturated hints of the palette. This knob does not change which palette is active (that is determined by toggle 7); it adjusts how strongly the color is applied within whichever palette is selected.
+Controls the saturation intensity of the thermal palette colors. Above 50%, the chroma components of each zone are boosted — blues become more vivid, oranges richer. Below 50%, chroma is pulled toward neutral grey, creating a more subdued pastel thermal map. At zero the output is effectively a luminance-only remapping with desaturated hints of the palette. This knob does not change which palette is active (that is determined by toggle 7); it adjusts how strongly the color is applied within whichever palette is selected.
 
 ---
 
@@ -272,3 +265,5 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 - **Mix for subtlety:** A 30–50% wet/dry mix blends the thermal palette as a color overlay on top of the original image, creating a heads-up-display thermal scanner effect.
 - **Pot 6 is inert:** The Bright knob has no effect in the current firmware. Do not expect brightness adjustment from this control.
 - **Toggle label caveat:** Toggles 7 and 8 show four value labels in the UI, but only two hardware states exist. The third and fourth positions duplicate the second.
+
+---

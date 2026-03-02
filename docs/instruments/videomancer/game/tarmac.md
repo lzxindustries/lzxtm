@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 255
+sidebar_position: 280
 slug: /instruments/videomancer/tarmac
 title: "Tarmac"
 image: /img/instruments/videomancer/tarmac/tarmac_hero.png
 description: "The Super Nintendo's Mode 7 background layer was a hardware trick that changed everything."
 ---
 
+import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
 import tarmac_before_after from '/img/instruments/videomancer/tarmac/tarmac_before_after.png';
 import tarmac_control_panel from '/img/instruments/videomancer/tarmac/tarmac_control_panel.png';
 import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.png';
 import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.png';
 import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_exercise3_result.png';
-import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
-import tarmac_source1_kodim15 from '/img/instruments/videomancer/tarmac/tarmac_source1_kodim15.png';
-import tarmac_source2_kodim03 from '/img/instruments/videomancer/tarmac/tarmac_source2_kodim03.png';
-import tarmac_source3_kodim15_bw from '/img/instruments/videomancer/tarmac/tarmac_source3_kodim15_bw.png';
 
 # Tarmac
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={tarmac_hero} alt="Tarmac hero image"/>
 *Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
@@ -288,13 +281,15 @@ These exercises build from basic perspective rendering to complex animated groun
 | Term | Definition |
 |------|------------|
 | **Affine Transform** | A geometric transformation preserving parallel lines, defined by a 2×2 matrix plus translation; encompasses rotation, scaling, shearing, and translation. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 64×64×30-bit tile buffer. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating continuous rotation and oscillation from a fixed-rate increment counter. |
 | **Foreshortening** | Perspective compression where objects farther from the viewer appear shorter, narrower, and closer together. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the Mode 7 video processing pipeline in real time. |
 | **Mode 7** | A background rendering mode in the Super Nintendo PPU that applies per-scanline affine transformations to a tiled texture for pseudo-3D ground plane effects. |
 | **Per-Scanline Perspective** | Varying the affine matrix scaling coefficient for each horizontal line to simulate depth — the central technique behind Mode 7's 3D illusion. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave Sine LUT** | A lookup table storing one quarter of a sine wave; full 360° sine and cosine coverage is achieved through quadrant mirroring and sign flipping. |
 | **Tile Buffer** | A small (64×64 pixels, 30-bit packed YUV) memory region storing a downsampled snapshot of the input video, used as the texture source for Mode 7 rendering. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

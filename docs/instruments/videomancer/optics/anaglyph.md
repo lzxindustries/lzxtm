@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 7
+sidebar_position: 6
 slug: /instruments/videomancer/anaglyph
 title: "Anaglyph"
 image: /img/instruments/videomancer/anaglyph/anaglyph_hero.png
@@ -27,7 +27,7 @@ import anaglyph_exercise3_result from '/img/instruments/videomancer/anaglyph/ana
 
 ## Overview
 
-Anaglyph creates stereoscopic 3D anaglyphic images from 2D video by using source luminance as a depth map. Bright pixels are treated as near objects and dark pixels as far objects (or vice versa), with each pixel horizontally displaced according to its brightness. Two virtual "eyes" read the displaced image at different horizontal offsets — the left eye reads from one direction and the right eye from the opposite direction — then each eye's view is encoded with complementary color tints. When viewed through red/cyan (or green/magenta) filter glasses, the brain fuses the two color-separated views into a perception of three-dimensional depth.
+Anaglyph creates stereoscopic 3D anaglyphic images from 2D video by using source luminance as a depth map. Bright pixels are treated as near objects and dark pixels as far objects (or vice versa), with each pixel horizontally displaced according to its brightness. Two virtual "eyes" read the displaced image at different horizontal offsets — the left eye reads from one direction and the right eye from the opposite direction — then each eye's view is encoded with complementary colour tints. When viewed through red/cyan (or green/magenta) filter glasses, the brain fuses the two colour-separated views into a perception of three-dimensional depth.
 
 The effect operates on a per-scanline basis using ping-pong line buffers. Six line buffers (Y, U, V for each eye) store the current scanline; the left eye reads at `h_count − displacement` and the right eye at `h_count + displacement`. A convergence offset shifts both eyes equally, controlling where in the image the zero-parallax plane sits — objects at that depth appear to sit on the screen surface, objects in front of it appear to pop out, and objects behind it appear to recede.
 
@@ -39,9 +39,9 @@ At moderate settings, the program produces a subtle but convincing stereoscopic 
 
 ### What Is Anaglyphic 3D?
 
-**Anaglyphic 3D** is one of the oldest stereoscopic display techniques, dating to the 1850s. It works by encoding the left-eye and right-eye views of a scene in complementary colors — typically red for one eye and cyan (blue-green) for the other. When viewed through glasses with matching color filters, each filter blocks one view and passes the other, so each eye sees only its intended perspective. The brain's binocular disparity processing interprets the two slightly different views as depth.
+**Anaglyphic 3D** is one of the oldest stereoscopic display techniques, dating to the 1850s. It works by encoding the left-eye and right-eye views of a scene in complementary colours — typically red for one eye and cyan (blue-green) for the other. When viewed through glasses with matching colour filters, each filter blocks one view and passes the other, so each eye sees only its intended perspective. The brain's binocular disparity processing interprets the two slightly different views as depth.
 
-The most common color pair is **red/cyan**, where the left eye sees through a red filter (blocking cyan) and the right eye through a cyan filter (blocking red). The **green/magenta** pair is an alternative that distributes the color spectrum differently, often producing better color fidelity at the expense of slightly less effective depth separation.
+The most common colour pair is **red/cyan**, where the left eye sees through a red filter (blocking cyan) and the right eye through a cyan filter (blocking red). The **green/magenta** pair is an alternative that distributes the colour spectrum differently, often producing better colour fidelity at the expense of slightly less effective depth separation.
 
 ### What Is Luminance-as-Depth?
 
@@ -87,7 +87,7 @@ The depth computation uses an 8×8 reduced multiply: the top 8 bits of `depth_am
 
 The convergence offset is a signed quantity centred at 512: values below 512 shift both eyes left (moving the convergence plane), values above 512 shift both eyes right. This does not change the magnitude of the stereo separation — it only shifts where zero parallax occurs.
 
-The color tints are computed per-pixel in YUV space. In Red/Cyan mode, the left-eye luma drives V up and U down (red shift), while the right-eye luma drives U up and V down (cyan shift). In Green/Magenta mode, the channels are swapped. The tint strength pot controls the magnitude of these offset: at zero, only the luma channel carries the stereo separation; at maximum, the color separation is dramatic.
+The colour tints are computed per-pixel in YUV space. In Red/Cyan mode, the left-eye luma drives V up and U down (red shift), while the right-eye luma drives U up and V down (cyan shift). In Green/Magenta mode, the channels are swapped. The tint strength pot controls the magnitude of these offset: at zero, only the luma channel carries the stereo separation; at maximum, the colour separation is dramatic.
 
 ---
 
@@ -138,7 +138,7 @@ Controls the inter-eye separation as a secondary multiplier on the displacement.
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the strength of the color tint applied to each eye's view. At 0%, the output luma carries the stereo information but no color separation — the effect is primarily a brightness shift between left and right. At moderate values, a clear red/cyan (or green/magenta) color separation is visible. At 100%, the tint dominates the output color, producing vivid red and cyan hues.
+Controls the strength of the colour tint applied to each eye's view. At 0%, the output luma carries the stereo information but no colour separation — the effect is primarily a brightness shift between left and right. At moderate values, a clear red/cyan (or green/magenta) colour separation is visible. At 100%, the tint dominates the output colour, producing vivid red and cyan hues.
 
 ---
 
@@ -160,7 +160,7 @@ Controls edge enhancement of the depth map before displacement. Higher values sh
 | Default | 50.0% |
 | Suffix | % |
 
-Controls output brightness gain. At 50% (value 512), the brightness is unity (unchanged). Below 50%, the output is dimmer. Above 50%, the output is brighter. This compensates for brightness loss when viewing through the color filter glasses, which typically attenuate overall brightness significantly.
+Controls output brightness gain. At 50% (value 512), the brightness is unity (unchanged). Below 50%, the output is dimmer. Above 50%, the output is brighter. This compensates for brightness loss when viewing through the colour filter glasses, which typically attenuate overall brightness significantly.
 
 ---
 
@@ -174,7 +174,7 @@ Controls output brightness gain. At 50% (value 512), the brightness is unity (un
 | **10 — Crosseye** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggle 7 is a **mode selector** controlling the color pair used for stereoscopic encoding. The VHD implements a single-bit mode (0=Red/Cyan, 1=Green/Magenta). Toggle 8 swaps left and right eye assignments, reversing the depth direction. Toggle 9 forces a mono depth source. Toggle 10 enables an animation counter.
+Toggle 7 is a **mode selector** controlling the colour pair used for stereoscopic encoding. The VHD implements a single-bit mode (0=Red/Cyan, 1=Green/Magenta). Toggle 8 swaps left and right eye assignments, reversing the depth direction. Toggle 9 forces a mono depth source. Toggle 10 enables an animation counter.
 
 ---
 
@@ -193,7 +193,7 @@ Wet/dry crossfade between the original input video (delayed to match the 12-cloc
 
 ## Guided Exercises
 
-These exercises progress from basic depth mapping through stereo configuration to color mode exploration, demonstrating how to create effective stereoscopic imagery from 2D sources.
+These exercises progress from basic depth mapping through stereo configuration to colour mode exploration, demonstrating how to create effective stereoscopic imagery from 2D sources.
 
 ### Exercise 1: Basic Depth Mapping
 
@@ -237,19 +237,19 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 <img src={anaglyph_exercise3_result} alt="Green/Magenta Mode and Brightness Compensation result"/>
 *Green/Magenta Mode and Brightness Compensation — simulated result across source images.*
-**Source**: Colorful subject with varied hues — flowers, artwork, or colored fabrics.
+**Source**: Colourful subject with varied hues — flowers, artwork, or coloured fabrics.
 
-**Objective**: Compare Red/Cyan vs Green/Magenta color separation and understand brightness compensation for glasses viewing.
+**Objective**: Compare Red/Cyan vs Green/Magenta colour separation and understand brightness compensation for glasses viewing.
 
 1. **Red/Cyan baseline**: Mode set to Red/Cyan. Moderate all depth parameters.
-2. **Observe color loss**: Note how the red/cyan tint desaturates some original colors. Red objects look especially affected.
-3. **Switch to Green/Magenta**: Toggle Mode. The color palette shifts — greens and magentas now carry the separation instead.
-4. **Compare color fidelity**: Toggle back and forth between modes. Green/Magenta often preserves more of the original color range.
+2. **Observe colour loss**: Note how the red/cyan tint desaturates some original colours. Red objects look especially affected.
+3. **Switch to Green/Magenta**: Toggle Mode. The colour palette shifts — greens and magentas now carry the separation instead.
+4. **Compare colour fidelity**: Toggle back and forth between modes. Green/Magenta often preserves more of the original colour range.
 5. **Adjust brightness**: With glasses on, the image appears dimmer. Increase Brightness above 50% to compensate.
-6. **High tint strength**: Push Tint Str to ~90%. The color separation is vivid — very strong effect.
-7. **Low tint strength**: Pull Tint Str to ~30%. Subtle separation — the effect is primarily a brightness shift, less color.
+6. **High tint strength**: Push Tint Str to ~90%. The colour separation is vivid — very strong effect.
+7. **Low tint strength**: Pull Tint Str to ~30%. Subtle separation — the effect is primarily a brightness shift, less colour.
 
-**Key concepts**: Red/Cyan vs Green/Magenta encoding, color fidelity trade-offs, brightness compensation for colored filter glasses
+**Key concepts**: Red/Cyan vs Green/Magenta encoding, colour fidelity trade-offs, brightness compensation for coloured filter glasses
 
 ---
 
@@ -257,11 +257,11 @@ These exercises progress from basic depth mapping through stereo configuration t
 ## Tips
 
 - **With glasses, start conservative**: Begin with Depth Amt ~35% and Separation ~30% for comfortable viewing. Increase gradually.
-- **Convergence matters for comfort**: Set convergence so the most important subject has minimal color fringe — that puts it on the screen plane. Objects behind and in front will pop.
-- **Red/Cyan is more available, Green/Magenta is more accurate**: Red/Cyan glasses are cheap and ubiquitous but desaturate reds. Green/Magenta preserves more color but the glasses are less common.
+- **Convergence matters for comfort**: Set convergence so the most important subject has minimal colour fringe — that puts it on the screen plane. Objects behind and in front will pop.
+- **Red/Cyan is more available, Green/Magenta is more accurate**: Red/Cyan glasses are cheap and ubiquitous but desaturate reds. Green/Magenta preserves more colour but the glasses are less common.
 - **Dark subjects need Bright Far**: If your subject is dark against a bright background, toggle Depth Dir to Bright Far for a more natural depth relationship.
-- **Brightness compensation**: Color filter glasses typically reduce brightness by 40-60%. Increase the Brightness pot above 50% to compensate.
-- **Tint strength is creative**: At moderate tint (50-75%), the effect is functional for 3D. At extreme tint, the red/cyan color separation becomes an artistic aesthetic even without glasses.
+- **Brightness compensation**: Colour filter glasses typically reduce brightness by 40-60%. Increase the Brightness pot above 50% to compensate.
+- **Tint strength is creative**: At moderate tint (50-75%), the effect is functional for 3D. At extreme tint, the red/cyan colour separation becomes an artistic aesthetic even without glasses.
 - **Works best with high-contrast sources**: The depth mapping is most effective when the source has strong brightness gradients between foreground and background.
 - **Edge Boost sharpens depth boundaries**: A small amount of Edge Boost (10-20%) clarifies where depth transitions occur, creating crisper separation between near and far planes.
 
@@ -271,17 +271,17 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 | Term | Definition |
 |------|------------|
-| **Anaglyphic 3D** | A stereoscopic display technique encoding left-eye and right-eye views in complementary colors (e.g. red and cyan) so that color-filter glasses separate them for depth perception. |
+| **Anaglyphic 3D** | A stereoscopic display technique encoding left-eye and right-eye views in complementary colours (e.g. red and cyan) so that colour-filter glasses separate them for depth perception. |
 | **Binocular Disparity** | The slight difference between the images seen by the left and right eyes; the brain interprets this difference as depth information. |
 | **Convergence** | The point in a stereoscopic image where left-eye and right-eye views overlap perfectly (zero parallax); objects at this distance appear on the screen plane. |
 | **Depth Map** | A representation where each pixel's brightness encodes its relative distance from the viewer; Anaglyph derives this from the source luminance. |
 | **Line Buffer** | FPGA block RAM storing one scanline of pixel data; Anaglyph uses six ping-pong line buffers (Y, U, V for each virtual eye). |
-| **Luminance (Luma)** | The Y channel of a YUV signal, representing brightness independent of color. |
+| **Luminance (Luma)** | The Y channel of a YUV signal, representing brightness independent of colour. |
 | **Parallax** | The apparent horizontal shift of an object when viewed from two different positions; positive parallax places objects behind the screen, negative parallax places them in front. |
 | **Ping-Pong Buffer** | A double-buffering scheme where one buffer is written while the other is read, then the roles swap each line, preventing read/write conflicts. |
 | **Stereoscopic** | A technique that creates the illusion of three-dimensional depth by presenting slightly different images to each eye. |
 | **Wet/Dry** | A mixing convention where "wet" is the fully processed signal and "dry" is the unprocessed original; the fader crossfades between them. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); each channel is processed at 10-bit precision in Videomancer. |
 | **Zero-Parallax Plane** | The virtual depth at which left and right eye views align exactly; objects here appear to sit on the screen surface, while nearer objects pop forward and farther objects recede. |
 
 ---

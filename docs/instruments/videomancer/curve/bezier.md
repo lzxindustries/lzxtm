@@ -280,19 +280,19 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; a dedicated memory block within the FPGA used to store the 256 evaluated curve sample points. |
 | **Calligraphic stroke** | A rendering style where line width varies along the curve, thickening at endpoints to simulate pressure from a broad-nib pen. |
 | **Coprime** | Two integers sharing no common factor greater than 1; used for DDS frequency multipliers to prevent control point synchronization. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique that generates a waveform by incrementing a phase accumulator at a fixed rate, here driving control point animation. |
 | **De Casteljau algorithm** | A recursive sequence of linear interpolations that evaluates a point on a Bézier curve without computing the polynomial directly. |
 | **Distance field** | A scalar field where each pixel stores the distance to the nearest curve sample, used to render soft-edged glow and stroke thickness. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Lerp** | Linear interpolation; computing a weighted blend between two values based on a parameter t in the range [0, 1]. |
 | **Lissajous pattern** | A complex curve formed by two perpendicular sinusoidal oscillations at different frequencies, here approximated by the multi-DDS animation system. |
 | **Manhattan distance** | The sum of the absolute horizontal and vertical differences between two points (|Δx| + |Δy|); cheaper than Euclidean distance to compute in hardware. |
 | **Phase accumulator** | A register that increments by a fixed step each cycle, wrapping at overflow to produce a continuous ramp for animation timing. |
 | **Triangle wave** | A periodic waveform that ramps linearly up and down, used to fold phase into smooth oscillating position coordinates. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
 
 
 ---

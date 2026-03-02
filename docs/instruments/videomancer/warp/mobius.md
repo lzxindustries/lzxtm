@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 171
+sidebar_position: 187
 slug: /instruments/videomancer/mobius
 title: "Mobius"
 image: /img/instruments/videomancer/mobius/mobius_hero.png
-description: "Mobius maps video onto the surface of a Möbius strip — a one-sided topological surface created by taking a rectangular band, giving it a half-twist, and..."
+description: "Mobius maps video onto the surface of a Möbius strip — a one-sided topological surface created by taking a rectangular band, giving it a half-twist, and joining the ends."
 ---
 
+import mobius_hero from '/img/instruments/videomancer/mobius/mobius_hero.png';
 import mobius_before_after from '/img/instruments/videomancer/mobius/mobius_before_after.png';
 import mobius_control_panel from '/img/instruments/videomancer/mobius/mobius_control_panel.png';
 import mobius_exercise1_result from '/img/instruments/videomancer/mobius/mobius_exercise1_result.png';
 import mobius_exercise2_result from '/img/instruments/videomancer/mobius/mobius_exercise2_result.png';
 import mobius_exercise3_result from '/img/instruments/videomancer/mobius/mobius_exercise3_result.png';
-import mobius_hero from '/img/instruments/videomancer/mobius/mobius_hero.png';
-import mobius_source1_kodim02 from '/img/instruments/videomancer/mobius/mobius_source1_kodim02.png';
-import mobius_source2_kodim07 from '/img/instruments/videomancer/mobius/mobius_source2_kodim07.png';
-import mobius_source3_kodim01_bw from '/img/instruments/videomancer/mobius/mobius_source3_kodim01_bw.png';
 
 # Mobius
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={mobius_hero} alt="Mobius hero image"/>
 *Mobius applying a progressive half-twist warp to a landscape source — the image folds over itself with luma inversion and chroma rotation revealing a seamless topological surface.*
@@ -60,7 +53,7 @@ The twist displacement follows a **triangle wave** profile across the vertical a
 
 ### What Is Quadrant-Based Hue Rotation?
 
-The chroma rotation in Mobius uses a **quadrant-based** approach to transform the U and V color components. The twist phase at each scanline determines a rotation angle, and the U/V pair is rotated in the color plane by that angle. This is implemented approximately using sign flips and interpolation rather than trigonometric functions — the color plane is divided into quadrants, and within each quadrant a linear interpolation approximates the sine/cosine relationship. The result is a smooth but computationally efficient hue shift that tracks the twist progression.
+The chroma rotation in Mobius uses a **quadrant-based** approach to transform the U and V color components. The twist phase at each scanline determines a rotation angle, and the U/V pair is rotated in the color plane by that angle. This is implemented approximately using sign flips and interpolation rather than trigonometric functions — the colour plane is divided into quadrants, and within each quadrant a linear interpolation approximates the sine/cosine relationship. The result is a smooth but computationally efficient hue shift that tracks the twist progression.
 
 
 ---
@@ -293,15 +286,17 @@ These exercises progressively build the Möbius effect from simple displacement 
 
 | Term | Definition |
 |------|------------|
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R BT.601 color space standard defining the YUV encoding matrix used in standard-definition video and throughout the Videomancer pipeline. |
 | **Chroma** | The color components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a technique using an incrementing phase accumulator to generate periodic waveforms or scrolling animations. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video pipeline in hardware. |
 | **Half-Twist** | A 180° rotation of a strip before joining the ends, creating the non-orientable Möbius surface. |
 | **Hue Rotation** | Rotating the (U, V) color vector in the chroma plane, shifting all colors toward different parts of the spectrum. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Interpolator** | A DSP module that linearly blends between two signals based on a mix parameter. |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Möbius Strip** | A non-orientable surface with only one side and one edge, formed by giving a rectangular strip a half-twist and joining the ends. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A chain of processing stages each completing one operation per clock cycle. |
 | **Triangle Wave** | A periodic waveform with constant-slope linear ramps, used here for the twist displacement profile. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V); Videomancer processes all video in YUV 4:4:4 at 30-bit depth. |
+
+---

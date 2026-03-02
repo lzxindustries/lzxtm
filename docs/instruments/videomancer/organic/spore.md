@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 242
+sidebar_position: 266
 slug: /instruments/videomancer/spore
 title: "Spore"
 image: /img/instruments/videomancer/spore/spore_hero.png
-description: "In nature, a spore is a reproductive cell released by fungi, mosses, and ferns — a microscopic package of potential life that drifts outward from its so..."
+description: "In nature, a spore is a reproductive cell released by fungi, mosses, and ferns — a microscopic package of potential life that drifts outward from its source, carried by wind, water, or animal contact."
 ---
 
+import spore_hero from '/img/instruments/videomancer/spore/spore_hero.png';
 import spore_animation from '/img/instruments/videomancer/spore/spore_animation.gif';
 import spore_control_panel from '/img/instruments/videomancer/spore/spore_control_panel.png';
 import spore_exercise1_result from '/img/instruments/videomancer/spore/spore_exercise1_result.gif';
 import spore_exercise2_result from '/img/instruments/videomancer/spore/spore_exercise2_result.gif';
 import spore_exercise3_result from '/img/instruments/videomancer/spore/spore_exercise3_result.gif';
-import spore_hero from '/img/instruments/videomancer/spore/spore_hero.png';
 
 # Spore
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={spore_hero} alt="Spore hero image"/>
 *Spore dispersing concentric particle rings from four source points, Manhattan-distance ripples dissolving into a noisy spore cloud overlay on the input video.*
@@ -59,7 +55,7 @@ When multiple source points are active, each pixel is assigned to the nearest so
 
 ### Additive Brightness Overlay
 
-Rather than replacing the source video, Spore adds brightness to it — each spore pixel increases the luma of the underlying video. This additive compositing preserves the original image as a backdrop while the ring structure appears as a luminous overlay. The brightness control sets the intensity of the overlay, and the optional color tint mode shifts the chroma channels to give the spore particles a subtle green-magenta coloration. The wet/dry mix fader provides final control over how much of the processed signal blends with the original.
+Rather than replacing the source video, Spore adds brightness to it — each spore pixel increases the luma of the underlying video. This additive compositing preserves the original image as a backdrop while the ring structure appears as a luminous overlay. The brightness control sets the intensity of the overlay, and the optional color tint mode shifts the chroma channels to give the spore particles a subtle green-magenta colouration. The wet/dry mix fader provides final control over how much of the processed signal blends with the original.
 
 
 ---
@@ -209,7 +205,7 @@ Controls the final wet/dry mix via the interpolator. At 100%, the full spore com
 
 ## Guided Exercises
 
-These exercises progress from understanding the basic ring geometry through density and color sculpting to dynamic multi-source compositions with drift. Each builds on the spatial interference patterns created by Manhattan-distance ring propagation.
+These exercises progress from understanding the basic ring geometry through density and colour sculpting to dynamic multi-source compositions with drift. Each builds on the spatial interference patterns created by Manhattan-distance ring propagation.
 
 ### Exercise 1: Two-Source Diamond Rings
 
@@ -239,10 +235,10 @@ These exercises progress from understanding the basic ring geometry through dens
 2. **Moderate spread**: Set Spread to ~50%. The four sources form a rectangle around the screen center.
 3. **Wide rings**: Set Width to ~70% for broad ring bands. The four ring fields overlap, creating complex interference at the boundaries where two sources have equal distance.
 4. **Observe boundaries**: The lines where two source distances are equal form the Manhattan Voronoi diagram — straight edges that divide the screen into diamond-shaped regions, each dominated by its nearest source.
-5. **Enable color tint**: Toggle Color to tint mode. The spore particles gain a subtle color cast, making the overlay pattern more visually distinct from the source.
+5. **Enable colour tint**: Toggle Color to tint mode. The spore particles gain a subtle colour cast, making the overlay pattern more visually distinct from the source.
 6. **Enable drift**: Toggle Drift On. The four sources begin wandering, causing the Voronoi boundaries and interference patterns to evolve slowly.
 
-**Key concepts**: Four sources create Manhattan Voronoi tessellation, ring interference at source boundaries produces complex moiré, drift adds temporal evolution to the spatial pattern
+**Key concepts**: Four sources create Manhattan Voronoi tessellation, ring interference at source boundaries produces complex moire, drift adds temporal evolution to the spatial pattern
 
 ---
 
@@ -273,7 +269,7 @@ These exercises progress from understanding the basic ring geometry through dens
 - **Brightness is additive**: Unlike multiplicative overlays, Spore adds brightness to the source. This means it works best over mid-to-dark images. On already-bright footage, the overlay saturates at white and loses definition.
 - **Ring width controls visual density**: Narrow rings with high LFSR density create fine lattice textures. Wide rings with low density create broad cloudy bands of scattered particles.
 - **4 sources for complexity**: The Voronoi boundaries between four sources add geometric structure that isn't present with just two sources. The boundaries create additional straight-line features that divide the diamond rings.
-- **Tint for color**: The default white overlay is clean but can get lost on bright source material. Switching to tint mode gives the spore particles a subtle color identity that stands out against the source chroma.
+- **Tint for colour**: The default white overlay is clean but can get lost on bright source material. Switching to tint mode gives the spore particles a subtle colour identity that stands out against the source chroma.
 - **Feedback loops**: Routing the output back to the input causes the additive overlay to build up over frames, creating self-reinforcing ring structures that bloom outward from the sources.
 
 ---
@@ -283,11 +279,13 @@ These exercises progress from understanding the basic ring geometry through dens
 | Term | Definition |
 |------|------------|
 | **Additive Compositing** | A blending technique where the overlay brightness is added to the source, producing luminous highlights that cannot darken the original image. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
+| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, used to generate pseudo-random bit sequences. |
 | **Manhattan Distance** | The sum of absolute differences |Δx| + |Δy|, producing diamond-shaped isodistance contours. |
 | **Modular Arithmetic** | Distance folded into a fixed period using a bitmask AND operation, creating repeating ring bands. |
 | **Ring Period** | The distance between successive ring band centers, quantised to powers of two (128, 256, 512, 1024). |
 | **Voronoi Diagram** | A partitioning of space into regions, each containing all points nearest to a given source; in Manhattan metric these boundaries are straight-line segments. |
 | **Wet/Dry Mix** | The interpolation factor between the processed (wet) and unprocessed (dry) signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 280
+sidebar_position: 306
 slug: /instruments/videomancer/vitrage
 title: "Vitrage"
 image: /img/instruments/videomancer/vitrage/vitrage_hero.png
-description: "Stained glass is an exercise in constraint — lead strips force the artist to work in discrete regions of flat color, while the glass itself filters and ..."
+description: "Stained glass is an exercise in constraint — lead strips force the artist to work in discrete regions of flat color, while the glass itself filters and saturates light passing through it."
 ---
 
+import vitrage_hero from '/img/instruments/videomancer/vitrage/vitrage_hero.png';
 import vitrage_before_after from '/img/instruments/videomancer/vitrage/vitrage_before_after.png';
 import vitrage_control_panel from '/img/instruments/videomancer/vitrage/vitrage_control_panel.png';
 import vitrage_exercise1_result from '/img/instruments/videomancer/vitrage/vitrage_exercise1_result.png';
 import vitrage_exercise2_result from '/img/instruments/videomancer/vitrage/vitrage_exercise2_result.png';
 import vitrage_exercise3_result from '/img/instruments/videomancer/vitrage/vitrage_exercise3_result.png';
-import vitrage_hero from '/img/instruments/videomancer/vitrage/vitrage_hero.png';
-import vitrage_source1_kodim02 from '/img/instruments/videomancer/vitrage/vitrage_source1_kodim02.png';
-import vitrage_source2_kodim07 from '/img/instruments/videomancer/vitrage/vitrage_source2_kodim07.png';
-import vitrage_source3_kodim01_bw from '/img/instruments/videomancer/vitrage/vitrage_source3_kodim01_bw.png';
 
 # Vitrage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={vitrage_hero} alt="Vitrage hero image"/>
 *Vitrage transforming video into luminous stained glass panels with dark lead came borders, color-flattened panes, and simulated sunlight transmission.*
@@ -38,7 +31,7 @@ Stained glass is an exercise in constraint — lead strips force the artist to w
 
 The name *vitrage* comes from the French *vitrail* / *vitrage*, meaning stained glass or glazing. In practice the program chains six processing stages: edge detection on the luma channel identifies cell boundaries, intra-cell color is quantized and flattened, saturation is boosted to emulate vivid glass pigments, dark came borders are composited over boundary pixels, and a radial brightness gradient simulates sunlight illuminating the pane centres. Four glass-type presets — Clear, Tint, Opal, and Antique — modify the color treatment within each cell to approximate different historical glass-making techniques.
 
-At subtle settings Vitrage adds a gentle faceted quality to the image, like looking through a beveled window. At extreme settings the video collapses into bold stained-glass panels — flat blocks of vivid color separated by prominent dark leading, with a warm glow at each cell centre.
+At subtle settings Vitrage adds a gentle faceted quality to the image, like looking through a beveled window. At extreme settings the video collapses into bold stained-glass panels — flat blocks of vivid colour separated by prominent dark leading, with a warm glow at each cell centre.
 
 ---
 
@@ -280,17 +273,19 @@ These exercises progress from simple edge highlighting through full stained glas
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory used for the video line buffer that sample-holds Y values at cell boundaries. |
 | **Came** | The lead or zinc strips that hold glass pieces together in a stained glass window; rendered as dark borders at cell boundaries. |
 | **Cell** | A rectangular or hexagonal region in the image bounded by came lines; each cell represents one pane of stained glass. |
 | **Chroma** | The color information in YUV video, represented by U and V channels centered at midpoint (512 in 10-bit). |
 | **Edge Detection** | Comparing adjacent pixel values to identify sharp transitions; used to determine where came boundaries are drawn. |
 | **Flattening** | Quantizing the Y channel to a small number of discrete levels, producing uniform color within each glass pane. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware crossfade unit that blends between two signals by a fractional amount; used for the wet/dry Mix control. |
 | **Line Buffer** | A one-line BRAM delay used to compare pixels across scan lines for cell boundary detection. |
 | **Opal** | A glass type characterized by milky translucence and pastel colors, simulated by reducing contrast and desaturating. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | The sequence of processing stages from input to output; Vitrage uses a 10-clock pipeline. |
 | **Quantization** | Reducing the number of discrete levels in a signal; creates the flat, uniform color regions within glass panes. |
 | **Saturate** | Boosting chroma by stretching U/V values away from the neutral midpoint, intensifying colors. |
 | **Vitrage** | French term for stained glass or glazing; the art of creating pictures and patterns from pieces of colored glass joined by lead strips. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V); the native format of the Videomancer video pipeline. |
+
+---

@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 43
+sidebar_position: 45
 slug: /instruments/videomancer/chenille
 title: "Chenille"
 image: /img/instruments/videomancer/chenille/chenille_hero.png
-description: "Chenille is named for the French word meaning 'caterpillar' — the same word that gives its name to the soft, tufted fabric whose surface is made of tiny..."
+description: "Chenille is named for the French word meaning \"caterpillar\" — the same word that gives its name to the soft, tufted fabric whose surface is made of tiny cut threads standing upright in a dense grid."
 ---
 
 import chenille_hero from '/img/instruments/videomancer/chenille/chenille_hero.png';
@@ -55,7 +55,7 @@ The directional shading model uses a simplified **dot product** between the pixe
 
 ### Halftone Screening and Dot-Matrix Printing
 
-Chenille's dot grid has a visual kinship with **halftone screening**, the technique used in offset printing to simulate continuous tone with a pattern of variably-sized ink dots. In traditional halftoning, dot size encodes brightness; in Chenille, dot brightness and color encode the source video's pixel values. The hex pattern mode is particularly reminiscent of rotated halftone screens, which use staggered dot rows to minimize moiré interference. Where halftoning reduces information to binary ink-on-paper, Chenille preserves the full tonal range within each tuft, creating a richer, more luminous result.
+Chenille's dot grid has a visual kinship with **halftone screening**, the technique used in offset printing to simulate continuous tone with a pattern of variably-sized ink dots. In traditional halftoning, dot size encodes brightness; in Chenille, dot brightness and color encode the source video's pixel values. The hex pattern mode is particularly reminiscent of rotated halftone screens, which use staggered dot rows to minimize moire interference. Where halftoning reduces information to binary ink-on-paper, Chenille preserves the full tonal range within each tuft, creating a richer, more luminous result.
 
 
 ---
@@ -274,16 +274,16 @@ These three exercises move from basic grid exploration through directional shadi
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
 | **Dot product** | A mathematical operation that multiplies corresponding components of two vectors and sums the results, used here to compute directional shading across each tuft. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Halftone** | A printing technique that simulates continuous tone using a grid of variably-sized dots, visually related to Chenille's dot-grid texture. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values, enabling fast function evaluation in hardware. |
 | **Manhattan distance** | A distance metric computed as |dx| + |dy|, producing diamond-shaped contours rather than circles; used to determine tuft boundaries. |
-| **Moiré** | An interference pattern produced when two regular grids overlap at slightly different scales or angles. |
+| **Moire** | An interference pattern produced when two regular grids overlap at slightly different scales or angles. |
 | **Pile** | In textiles, the raised surface of cut or looped fibers standing upright from a backing fabric; the physical phenomenon Chenille's shading model simulates. |
 | **Spatial quantization** | The process of dividing a continuous coordinate space into discrete cells, each treated as an independent unit for processing. |
 | **Voronoi tessellation** | A partition of a plane into regions based on proximity to a set of seed points, related to Chenille's cell-based grid decomposition. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
 
 ---

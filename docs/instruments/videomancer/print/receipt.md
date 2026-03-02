@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 214
+sidebar_position: 230
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero.png
 description: "Before digital snapshots were instant, video printers were the only way to get a physical copy of a single video frame."
 ---
 
+import receipt_hero from '/img/instruments/videomancer/receipt/receipt_hero.png';
 import receipt_before_after from '/img/instruments/videomancer/receipt/receipt_before_after.png';
 import receipt_control_panel from '/img/instruments/videomancer/receipt/receipt_control_panel.png';
 import receipt_exercise1_result from '/img/instruments/videomancer/receipt/receipt_exercise1_result.png';
 import receipt_exercise2_result from '/img/instruments/videomancer/receipt/receipt_exercise2_result.png';
 import receipt_exercise3_result from '/img/instruments/videomancer/receipt/receipt_exercise3_result.png';
-import receipt_hero from '/img/instruments/videomancer/receipt/receipt_hero.png';
-import receipt_source1_kodim02 from '/img/instruments/videomancer/receipt/receipt_source1_kodim02.png';
-import receipt_source2_kodim07 from '/img/instruments/videomancer/receipt/receipt_source2_kodim07.png';
-import receipt_source3_kodim01_bw from '/img/instruments/videomancer/receipt/receipt_source3_kodim01_bw.png';
 
 # Receipt
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={receipt_hero} alt="Receipt hero image"/>
 *Receipt reducing a live video stream to dithered thermal printer output with visible block structure, head banding, and warm paper tint.*
@@ -280,14 +273,16 @@ These exercises progress from basic resolution reduction to full thermal printer
 | Term | Definition |
 |------|------------|
 | **Bayer Matrix** | A fixed threshold pattern used for ordered dithering; distributes quantization error in a regular grid to simulate additional tonal levels. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory in the FPGA, not used by this program (zero BRAM design). |
 | **Decimation** | Discarding spatial samples to reduce resolution; Receipt uses sample-and-hold, latching one pixel per block. |
 | **Dithering** | Adding a structured noise pattern before quantization to break up banding and simulate intermediate tones. |
 | **Dot Matrix** | Impact printing technology using pins striking an inked ribbon; characterized by visible dots and coarse mechanical banding. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
+| **Interpolator** | A hardware multiply-accumulate unit used for linear crossfading between two signals (wet/dry mix). |
+| **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Posterization** | Reducing the number of discrete tonal levels, collapsing smooth gradients into flat bands. |
 | **Sample-and-Hold** | Latching a value and holding it constant for a defined interval; used here to create uniform pixel blocks. |
 | **Thermal Printing** | A printing technology that uses heat to darken chemically treated paper; produces smooth transfers with characteristic paper tint and head banding. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+---

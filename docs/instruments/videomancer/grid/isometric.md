@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 130
+sidebar_position: 142
 slug: /instruments/videomancer/isometric
 title: "Isometric"
 image: /img/instruments/videomancer/isometric/isometric_hero.png
-description: "Engineering drawings have used isometric grids since the early nineteenth century — a projection system where three axes are equally spaced at 120 degre..."
+description: "Engineering drawings have used isometric grids since the early nineteenth century — a projection system where three axes are equally spaced at 120 degrees, creating a visual framework that represents three-dimensional space on a flat surface without the convergence of true perspective."
 ---
 
+import isometric_hero from '/img/instruments/videomancer/isometric/isometric_hero.png';
 import isometric_animation from '/img/instruments/videomancer/isometric/isometric_animation.gif';
 import isometric_control_panel from '/img/instruments/videomancer/isometric/isometric_control_panel.png';
 import isometric_exercise1_result from '/img/instruments/videomancer/isometric/isometric_exercise1_result.gif';
 import isometric_exercise2_result from '/img/instruments/videomancer/isometric/isometric_exercise2_result.gif';
 import isometric_exercise3_result from '/img/instruments/videomancer/isometric/isometric_exercise3_result.gif';
-import isometric_hero from '/img/instruments/videomancer/isometric/isometric_hero.png';
 
 # Isometric
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={isometric_hero} alt="Isometric hero image"/>
 *Isometric projecting a three-axis engineering grid over a video source, the 60-degree diagonal lines transforming the frame into a drafting table.*
@@ -159,7 +155,7 @@ Controls the diagonal line enable threshold. Functions identically to the horizo
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical scroll speed. The register value is right-shifted by 4 bits per frame, giving an effective scroll increment of 0 to 63 pixels per frame. At zero, the grid is stationary. At moderate values, the lattice slides smoothly across the frame. At maximum, the scroll is so fast that the grid appears to shimmer or strobe, creating moiré-like visual effects as the power-of-two spacing interacts with the scroll rate.
+Controls the vertical scroll speed. The register value is right-shifted by 4 bits per frame, giving an effective scroll increment of 0 to 63 pixels per frame. At zero, the grid is stationary. At moderate values, the lattice slides smoothly across the frame. At maximum, the scroll is so fast that the grid appears to shimmer or strobe, creating moire-like visual effects as the power-of-two spacing interacts with the scroll rate.
 
 ---
 
@@ -264,7 +260,7 @@ These exercises explore the grid engine's range from architectural overlays to a
 - **Threshold as gate**: The Axis Vis and Scroll Sp knobs act as on/off gates for their respective line directions. Values below ~6% disable the direction entirely.
 - **Diagonals-only for diamond lattice**: Disable horizontal lines to get a pure diamond/rhombus pattern that reads as a different geometric texture.
 - **Dashing for drafting look**: Enable dashed mode for a technical-drawing aesthetic. The 8-pixel dash period is fixed, so it interacts visually with grid spacing.
-- **Scroll for animation**: Even low scroll speeds create a sense of depth and motion. Fast scroll with fine grid spacing produces moiré-like optical textures.
+- **Scroll for animation**: Even low scroll speeds create a sense of depth and motion. Fast scroll with fine grid spacing produces moire-like optical textures.
 - **Additive blend**: The grid is always additive — it never subtracts from the source. Consider this when choosing Line Brightness for bright vs. dark source material.
 - **Opacity knob is reserved**: Knob 6 has no current function. Do not expect it to control visual opacity.
 - **Feedback routing**: Sending the grid output back to the input creates recursive grid-on-grid interference patterns that shift with each feedback iteration.
@@ -278,13 +274,15 @@ These exercises explore the grid engine's range from architectural overlays to a
 | **Additive Compositing** | A blending mode where the overlay value is added to the source, clamping at maximum; always brightens. |
 | **Axonometric** | A family of parallel projections that preserve parallelism, of which isometric is a special case with equal foreshortening on all axes. |
 | **Bitmask** | A binary AND operation used to test whether a counter falls on a power-of-two grid boundary; replaces the modulo operator. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory. Isometric uses zero BRAM — all computation is combinational and registered logic. |
 | **Dashing** | Breaking a continuous line into alternating drawn and undrawn segments using a higher bit of the position counter. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **DDS** | Direct Digital Synthesis; a phase-accumulator technique used here for the scroll offset accumulation. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Grid Mask** | The (spacing − 1) bitmask applied to position counters to detect grid line intersections. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A linear interpolation module that blends two values using a mix parameter; used for wet/dry crossfade. |
 | **Isometric** | A projection where the three coordinate axes are equally spaced at 120°, preserving parallel lines and equal foreshortening. |
-| **Moiré** | An interference pattern created when two regular patterns of similar frequency overlap; can occur with fast scroll and fine grid spacing. |
+| **Moire** | An interference pattern created when two regular patterns of similar frequency overlap; can occur with fast scroll and fine grid spacing. |
 | **Raster** | The horizontal scan-line pattern used to render video; the grid is computed per-pixel as the raster sweeps the frame. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

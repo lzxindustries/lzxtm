@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 42
+sidebar_position: 44
 slug: /instruments/videomancer/checkers
 title: "Checkers"
 image: /img/instruments/videomancer/checkers/checkers_hero.png
-description: "Somewhere in the early 1990s, a coder with a 68000 and a framebuffer figured out that you do not need division to draw a checkerboard floor stretching t..."
+description: "Somewhere in the early 1990s, a coder with a 68000 and a framebuffer figured out that you do not need division to draw a checkerboard floor stretching toward infinity."
 ---
 
 import checkers_hero from '/img/instruments/videomancer/checkers/checkers_hero.png';
@@ -51,7 +51,7 @@ The checkerboard is perhaps the simplest possible two-dimensional pattern. Given
 
 ### Distance-Based Fog
 
-As tiles approach the horizon, their on-screen size shrinks toward zero, creating extreme aliasing and Moiré patterns. Demo coders solved this visually (if not mathematically) with distance fog: tiles nearest the horizon are blended toward a neutral background color. In Checkers, the fog is computed as the complement of the distance from the horizon, clamped by the Fog Dist parameter. Tiles close to the bottom of the screen (near the viewer) receive zero fog. Tiles near the horizon receive maximum fog, fading toward mid-gray (YUV value 512). This serves both the aesthetic purpose of depth perception and the practical purpose of masking perspective artifacts where the approximation is coarsest.
+As tiles approach the horizon, their on-screen size shrinks toward zero, creating extreme aliasing and Moire patterns. Demo coders solved this visually (if not mathematically) with distance fog: tiles nearest the horizon are blended toward a neutral background colour. In Checkers, the fog is computed as the complement of the distance from the horizon, clamped by the Fog Dist parameter. Tiles close to the bottom of the screen (near the viewer) receive zero fog. Tiles near the horizon receive maximum fog, fading toward mid-gray (YUV value 512). This serves both the aesthetic purpose of depth perception and the practical purpose of masking perspective artifacts where the approximation is coarsest.
 
 ### Z-Scroll and the Tunnel Effect
 
@@ -240,21 +240,21 @@ These exercises build from a static floor through animated scroll to complex ove
 
 ---
 
-### Exercise 2: Tunnel Rush with Color
+### Exercise 2: Tunnel Rush with Colour
 
-<img src={checkers_exercise2_result} alt="Tunnel Rush with Color result"/>
-*Tunnel Rush with Color — simulated result across source images.*
-**Objective**: Explore Z-scroll animation and RGB colorization to create a dynamic forward-rushing floor.
+<img src={checkers_exercise2_result} alt="Tunnel Rush with Colour result"/>
+*Tunnel Rush with Colour — simulated result across source images.*
+**Objective**: Explore Z-scroll animation and RGB colourization to create a dynamic forward-rushing floor.
 
 1. **Enable scroll**: Set Scroll (Toggle 7) to On.
 2. **Moderate speed**: Set Speed to ~50%. The floor begins scrolling forward — tiles emerge from the horizon fog and rush toward the viewer.
 3. **Medium tiles**: Set Tile Size to ~50%. A balanced grid density that shows clear tile edges during motion.
-4. **Enable color**: Switch Color (Toggle 8) to RGB. Alternating tiles now show warm red-orange and cool blue-cyan, creating a vibrant chromatic runway.
+4. **Enable colour**: Switch Color (Toggle 8) to RGB. Alternating tiles now show warm red-orange and cool blue-cyan, creating a vibrant chromatic runway.
 5. **Increase speed**: Push Speed toward 80%. The tiles streak past rapidly — the tunnel-rush effect becomes hypnotic at high velocities.
 6. **Pan sideways**: Slowly turn Pan X away from centre (~70%). The floor appears to drift diagonally, as if the viewer is strafing rather than moving straight ahead.
 7. **Lower horizon**: Bring Horizon down to ~60%. The floor occupies less of the frame, and the sky region expands. The rushing tiles are compressed into a narrow band at the bottom.
 
-**Key concepts**: Z-scroll creates forward motion through the tile field, Speed controls scroll rate linearly, RGB mode adds complementary color to alternate tiles, Pan X introduces lateral drift, lowering the horizon shrinks the floor region
+**Key concepts**: Z-scroll creates forward motion through the tile field, Speed controls scroll rate linearly, RGB mode adds complementary colour to alternate tiles, Pan X introduces lateral drift, lowering the horizon shrinks the floor region
 
 ---
 
@@ -283,7 +283,7 @@ These exercises build from a static floor through animated scroll to complex ove
 - **Use fog to taste**: Zero fog reveals the raw perspective approximation and its banding. A moderate fog setting (60–80%) smooths the transition while keeping foreground tiles crisp. Very high fog fades most of the floor to gray.
 - **Pan X for composition**: Pan X lets you offset the vanishing point laterally. Use it to position the floor pattern relative to other elements in a video chain.
 - **Speed zero is valid**: Disabling scroll and setting Speed to 0% creates a perfectly static floor — useful as a geometric overlay or key pattern.
-- **RGB mode for psychedelia**: RGB color with high-speed scroll creates a hypnotic rush of alternating red and blue tiles. Add Invert for a negative-image variant.
+- **RGB mode for psychedelia**: RGB colour with high-speed scroll creates a hypnotic rush of alternating red and blue tiles. Add Invert for a negative-image variant.
 - **Overlay for texture**: In Overlay mode with low Mix, the checkerboard becomes a subtle geometric texture over the video — effective as a compositional grid or spatial reference.
 - **Invert changes fog direction**: Because inversion happens after fog, the fog gradient also inverts — the horizon region becomes bright instead of gray, which can create an interesting glowing horizon effect.
 - **Bypass for glitch-free switching**: Toggle 11 bypasses all processing at the output mux. Use it for instant comparison without affecting the running scroll accumulator.
@@ -299,11 +299,11 @@ These exercises build from a static floor through animated scroll to complex ove
 | **Foreshortening** | The apparent compression of objects or texture along the depth axis in a perspective view, causing distant tiles to appear smaller and narrower. |
 | **FPGA (Field-Programmable Gate Array)** | A reconfigurable integrated circuit whose logic function is defined by a hardware description language rather than fixed at manufacture. |
 | **Log2 approximation** | An estimation of the reciprocal 1/d by finding the position of the leading set bit, avoiding a full hardware division. |
-| **Moiré pattern** | A visual interference artefact produced when two regular patterns overlap at slightly different scales or angles, visible here when tiles become very small near the horizon. |
+| **Moire pattern** | A visual interference artefact produced when two regular patterns overlap at slightly different scales or angles, visible here when tiles become very small near the horizon. |
 | **Perspective projection** | The geometric transformation that maps three-dimensional scene coordinates to two-dimensional screen coordinates, causing distant objects to appear smaller. |
 | **Texel** | A single element of a texture map; the texture-space analogue of a pixel in screen space. |
 | **XOR (Exclusive-OR)** | A logic operation that returns true when exactly one of two inputs is true, used here to generate the alternating checker pattern from texture coordinate bits. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
 | **Z-scroll** | A per-frame offset added to the depth texture coordinate, creating the illusion of forward motion through the tile field. |
 
 ---

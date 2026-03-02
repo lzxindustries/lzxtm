@@ -286,12 +286,12 @@ These exercises progress from individual artefacts through combined degradations
 | **Codec** | A compression/decompression algorithm used to encode and decode digital video; common examples include MPEG and H.264. |
 | **Frame counter** | A hardware register that increments once per video frame, used here to determine frame drop timing. |
 | **Galois LFSR** | A variant of the linear feedback shift register where feedback taps are applied via XOR at multiple internal bit positions, producing an efficient pseudo-random bit sequence. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **Interpolator** | A hardware block that performs linear blending (lerp) between two input values based on a mix coefficient, used here for dry/wet crossfading. |
 | **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a linear function of its previous state, producing a deterministic but pseudo-random bit sequence. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **Luma** | The luminance (Y) component of a YUV video signal, representing perceived brightness. |
 | **Shift-select** | A hardware technique that approximates multiplication by selecting among bit-shifted versions of a value, avoiding the cost of a dedicated multiplier. |
 | **Triangle wave** | A periodic waveform that rises and falls linearly, producing a smooth back-and-forth oscillation used here for the vertical bounce effect. |
 | **Vignetting** | Darkening of the image periphery relative to the center, typically caused by lens geometry or sensor limitations in real cameras. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems to exploit the human eye's greater sensitivity to brightness than to color. |
 
 ---

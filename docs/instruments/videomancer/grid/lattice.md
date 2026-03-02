@@ -1,26 +1,22 @@
 ---
 draft: true
-sidebar_position: 143
+sidebar_position: 157
 slug: /instruments/videomancer/lattice
 title: "Lattice"
 image: /img/instruments/videomancer/lattice/lattice_hero.png
 description: "Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators."
 ---
 
+import lattice_hero from '/img/instruments/videomancer/lattice/lattice_hero.png';
 import lattice_animation from '/img/instruments/videomancer/lattice/lattice_animation.gif';
 import lattice_control_panel from '/img/instruments/videomancer/lattice/lattice_control_panel.png';
 import lattice_exercise1_result from '/img/instruments/videomancer/lattice/lattice_exercise1_result.gif';
 import lattice_exercise2_result from '/img/instruments/videomancer/lattice/lattice_exercise2_result.gif';
 import lattice_exercise3_result from '/img/instruments/videomancer/lattice/lattice_exercise3_result.gif';
-import lattice_hero from '/img/instruments/videomancer/lattice/lattice_hero.png';
 
 # Lattice
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={lattice_hero} alt="Lattice hero image"/>
 *Lattice projecting a luminous XOR checkerboard grid — animated phase offsets ripple through interlocking horizontal and vertical bar patterns at high contrast.*
@@ -31,11 +27,11 @@ import lattice_hero from '/img/instruments/videomancer/lattice/lattice_hero.png'
 
 ## Overview
 
-Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators. The name evokes the mathematical concept of a lattice — a regular, repeating arrangement of points in space — and the visual output delivers exactly that: clean intersecting lines, moiré interference fields, and tessellated checkerboards built from pure arithmetic.
+Lattice is a geometric pattern synthesizer that generates two-dimensional grid structures from a pair of orthogonal frequency accumulators. The name evokes the mathematical concept of a lattice — a regular, repeating arrangement of points in space — and the visual output delivers exactly that: clean intersecting lines, moire interference fields, and tessellated checkerboards built from pure arithmetic.
 
 Two DDS (Direct Digital Synthesis) accumulators run along the horizontal and vertical axes of the video raster. Each produces a sawtooth ramp whose frequency is set by its respective pot. The ramps can optionally be folded into triangle waves via the frequency doubler module, which reflects the upper half of the waveform around the midpoint. The two resulting patterns are then combined through a selectable boolean operation — AND produces grid intersections while XOR produces alternating checkerboard regions. A line width threshold controls the duty cycle of each pattern, determining the ratio of foreground to background. The combined mask keys between a configurable fill color and the input video, and a free-running animation accumulator adds temporal scrolling to the pattern. The final result passes through a wet/dry crossfader.
 
-Despite its apparent simplicity, Lattice occupies a sweet spot between utility and generative art. At integer frequency ratios and narrow line widths it produces pixel-precise test grids. At irrational ratios with XOR combining, it generates complex moiré interference patterns that shift continuously under animation — a digital analogue of the optical beat patterns seen when overlapping two fine screens of differing pitch.
+Despite its apparent simplicity, Lattice occupies a sweet spot between utility and generative art. At integer frequency ratios and narrow line widths it produces pixel-precise test grids. At irrational ratios with XOR combining, it generates complex moire interference patterns that shift continuously under animation — a digital analogue of the optical beat patterns seen when overlapping two fine screens of differing pitch.
 
 ---
 
@@ -53,9 +49,9 @@ A **frequency doubler** (sometimes called a full-wave rectifier or fold circuit)
 
 When two binary patterns are combined with **AND**, only the pixels where both patterns are active survive — producing isolated grid intersection points or narrow cross-hatch lines. When combined with **XOR**, pixels that are active in exactly one pattern (but not both) survive — producing an alternating checkerboard or tiled mosaic. XOR is its own inverse: applying it twice restores the original, which creates interesting visual symmetry properties.
 
-### Moiré Interference
+### Moire Interference
 
-When two periodic patterns of slightly different frequency overlap, they produce **moiré fringes** — large-scale beat patterns whose spatial frequency equals the difference between the two source frequencies. Lattice generates moiré naturally whenever the H and V frequencies differ from simple integer multiples of each other. The animation accumulator shifts these beat patterns over time, creating slowly undulating visual textures reminiscent of watered silk or the iridescence on a compact disc surface.
+When two periodic patterns of slightly different frequency overlap, they produce **moire fringes** — large-scale beat patterns whose spatial frequency equals the difference between the two source frequencies. Lattice generates moire naturally whenever the H and V frequencies differ from simple integer multiples of each other. The animation accumulator shifts these beat patterns over time, creating slowly undulating visual textures reminiscent of watered silk or the iridescence on a compact disc surface.
 
 ### Video Keying
 
@@ -140,7 +136,7 @@ Controls the horizontal pattern frequency. The 10-bit register value is zero-ext
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the vertical pattern frequency. Operates identically to H Freq but the accumulator increments once per line (at avid_start) and resets at each field start. Low values produce wide horizontal bands; high values create fine horizontal stripes. The interaction between H Freq and V Freq determines the overall grid geometry: equal values produce square cells, unequal values produce rectangular cells, and non-integer ratios produce complex moiré beat patterns.
+Controls the vertical pattern frequency. Operates identically to H Freq but the accumulator increments once per line (at avid_start) and resets at each field start. Low values produce wide horizontal bands; high values create fine horizontal stripes. The interaction between H Freq and V Freq determines the overall grid geometry: equal values produce square cells, unequal values produce rectangular cells, and non-integer ratios produce complex moire beat patterns.
 
 ---
 
@@ -217,7 +213,7 @@ Wet/dry crossfade between the delayed input video and the keyed grid output. Des
 
 ## Guided Exercises
 
-These exercises explore Lattice's geometric capabilities, from basic grid generation through complex moiré interference to animated pattern synthesis. Because Lattice is a synthesis program, each exercise produces patterns from scratch — allow a few seconds for the animation to develop.
+These exercises explore Lattice's geometric capabilities, from basic grid generation through complex moire interference to animated pattern synthesis. Because Lattice is a synthesis program, each exercise produces patterns from scratch — allow a few seconds for the animation to develop.
 
 ### Exercise 1: Perfect Cross-Hatch Grid
 
@@ -236,20 +232,20 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 ---
 
-### Exercise 2: XOR Moiré Interference
+### Exercise 2: XOR Moire Interference
 
-<img src={lattice_exercise2_result} alt="XOR Moiré Interference result"/>
-*XOR Moiré Interference — simulated result across source images.*
-**Objective**: Generate complex moiré beat patterns by combining incommensurate frequencies with XOR logic.
+<img src={lattice_exercise2_result} alt="XOR Moire Interference result"/>
+*XOR Moire Interference — simulated result across source images.*
+**Objective**: Generate complex moire beat patterns by combining incommensurate frequencies with XOR logic.
 
 1. **Mismatched frequencies**: Set H Freq to ~35% and V Freq to ~42%. The non-integer ratio creates spatial beat frequencies.
-2. **XOR combine**: Switch Combine to XOR. The alternating pattern fills more area than AND, making the moiré fringes visible.
-3. **Sawtooth mode**: Enable both fold bypasses (H Shape = Triangle, V Shape = Triangle in TOML terms, which actually bypasses the doubler). Raw sawtooth wraps create hard edges that enhance the moiré contrast.
+2. **XOR combine**: Switch Combine to XOR. The alternating pattern fills more area than AND, making the moire fringes visible.
+3. **Sawtooth mode**: Enable both fold bypasses (H Shape = Triangle, V Shape = Triangle in TOML terms, which actually bypasses the doubler). Raw sawtooth wraps create hard edges that enhance the moire contrast.
 4. **Medium threshold**: Set Line Width to ~50% for equal foreground/background duty cycle.
 5. **Add color**: Set Fill Y to ~80%, Fill Hue to ~20% (warm tint). The colored XOR pattern creates an iridescent tile mosaic.
-6. **Animate slowly**: Set Anim Speed to ~10%. Watch the moiré fringes drift horizontally, creating shimmering interference bands.
+6. **Animate slowly**: Set Anim Speed to ~10%. Watch the moire fringes drift horizontally, creating shimmering interference bands.
 
-**Key concepts**: Non-integer frequency ratios produce moiré beat patterns, XOR produces alternating checkerboard tiling, sawtooth wrap edges enhance interference contrast, animation shifts the beat pattern over time
+**Key concepts**: Non-integer frequency ratios produce moire beat patterns, XOR produces alternating checkerboard tiling, sawtooth wrap edges enhance interference contrast, animation shifts the beat pattern over time
 
 ---
 
@@ -281,7 +277,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 - **Triangle vs sawtooth changes the character**: Triangle mode (fold active) produces smooth, symmetric gradients with soft edges. Sawtooth mode (fold bypassed) produces hard wrap edges with aliased transitions. Triangle generally looks cleaner at low frequencies.
 - **Key invert is the fastest way to swap density**: Rather than adjusting the threshold, toggle key invert to instantly swap filled and empty regions.
 - **Mix fader creates overlay effects**: At partial mix values, the lattice grid appears as a semi-transparent overlay on the input video — useful for calibration grids and graphic overlays.
-- **Moiré patterns emerge at irrational frequency ratios**: The most interesting generative textures come from slightly mismatched H and V frequencies combined with XOR and slow animation.
+- **Moire patterns emerge at irrational frequency ratios**: The most interesting generative textures come from slightly mismatched H and V frequencies combined with XOR and slow animation.
 
 ---
 
@@ -289,12 +285,14 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 | Term | Definition |
 |------|------------|
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed step rate, producing precise frequency control via integer arithmetic. |
 | **Duty cycle** | The ratio of foreground (active) to background (inactive) time within one waveform period, controlled by the line width threshold comparator. |
 | **Frequency doubler** | A circuit that folds a sawtooth ramp into a triangle wave by reflecting the upper half around the midpoint, effectively doubling the spatial frequency. |
-| **Moiré** | An interference pattern produced when two periodic structures of slightly different frequency overlap, creating large-scale beat fringes at the difference frequency. |
+| **Moire** | An interference pattern produced when two periodic structures of slightly different frequency overlap, creating large-scale beat fringes at the difference frequency. |
 | **Phase accumulator** | A digital counter that increments by a configurable step value on each clock strobe and wraps at overflow, producing a repeating sawtooth ramp whose frequency is proportional to the step size. |
 | **Sawtooth** | A waveform that ramps linearly from zero to maximum and then wraps sharply back to zero, produced by the raw phase accumulator output. |
 | **Triangle wave** | A waveform that ramps linearly from zero to maximum and then ramps linearly back to zero, produced by folding a sawtooth through the frequency doubler. |
 | **XOR** | Exclusive OR; a boolean operation that is true when exactly one of two inputs is true, producing an alternating checkerboard pattern when applied to two periodic binary masks. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+---

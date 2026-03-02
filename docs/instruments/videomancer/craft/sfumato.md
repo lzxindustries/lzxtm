@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 232
+sidebar_position: 249
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
 image: /img/instruments/videomancer/sfumato/sfumato_hero.png
-description: "Leonardo da Vinci described sfumato as painting 'in the manner of smoke, beyond the plane of focus' — the technique of eliminating hard outlines between..."
+description: "Leonardo da Vinci described sfumato as painting \"in the manner of smoke, beyond the plane of focus\" — the technique of eliminating hard outlines between tones and colours so that forms appear to emerge from the air itself."
 ---
 
+import sfumato_hero from '/img/instruments/videomancer/sfumato/sfumato_hero.png';
 import sfumato_before_after from '/img/instruments/videomancer/sfumato/sfumato_before_after.png';
 import sfumato_control_panel from '/img/instruments/videomancer/sfumato/sfumato_control_panel.png';
 import sfumato_exercise1_result from '/img/instruments/videomancer/sfumato/sfumato_exercise1_result.png';
 import sfumato_exercise2_result from '/img/instruments/videomancer/sfumato/sfumato_exercise2_result.png';
 import sfumato_exercise3_result from '/img/instruments/videomancer/sfumato/sfumato_exercise3_result.png';
-import sfumato_hero from '/img/instruments/videomancer/sfumato/sfumato_hero.png';
-import sfumato_source1_kodim03 from '/img/instruments/videomancer/sfumato/sfumato_source1_kodim03.png';
-import sfumato_source2_kodim13 from '/img/instruments/videomancer/sfumato/sfumato_source2_kodim13.png';
-import sfumato_source3_kodim13_bw from '/img/instruments/videomancer/sfumato/sfumato_source3_kodim13_bw.png';
 
 # Sfumato
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={sfumato_hero} alt="Sfumato hero image"/>
 *Sfumato dissolving tonal boundaries with edge-adaptive IIR blur, depth-dependent shadow diffusion, and atmospheric haze reminiscent of Leonardo's prospettiva aerea.*
@@ -34,11 +27,11 @@ import sfumato_source3_kodim13_bw from '/img/instruments/videomancer/sfumato/sfu
 
 ## Overview
 
-Leonardo da Vinci described *sfumato* as painting "in the manner of smoke, beyond the plane of focus" — the technique of eliminating hard outlines between tones and colors so that forms appear to emerge from the air itself. The Mona Lisa's face is the canonical example: no visible brush boundary separates one shade of skin from the next. This program applies the same principle to live video.
+Leonardo da Vinci described *sfumato* as painting "in the manner of smoke, beyond the plane of focus" — the technique of eliminating hard outlines between tones and colours so that forms appear to emerge from the air itself. The Mona Lisa's face is the canonical example: no visible brush boundary separates one shade of skin from the next. This program applies the same principle to live video.
 
 Sfumato runs an IIR (infinite impulse response) low-pass filter along each scanline, but instead of uniform blurring it adapts the filter strength to the local luminance gradient. Where the image has a strong tonal edge, the filter applies heavily, softening the transition. Where the image is already smooth, the filter relaxes and leaves the signal nearly untouched. The result is selective softening of tonal boundaries while preserving gross spatial structure — exactly Leonardo's technique, executed at 74.25 million pixels per second.
 
-Three additional layers deepen the atmospheric effect: *depth modulation* applies stronger blur to shadows (prospettiva aerea — distant objects appear softer and lighter), *chrominance diffusion* dissolves color boundaries more aggressively than luminance edges, and *ambient haze* lifts shadows and desaturates the entire image to simulate the scattering of light through atmosphere. An optional warm varnish mode tints the output with an amber color shift, evoking the aged appearance of an Old Master oil painting.
+Three additional layers deepen the atmospheric effect: *depth modulation* applies stronger blur to shadows (prospettiva aerea — distant objects appear softer and lighter), *chrominance diffusion* dissolves colour boundaries more aggressively than luminance edges, and *ambient haze* lifts shadows and desaturates the entire image to simulate the scattering of light through atmosphere. An optional warm varnish mode tints the output with an amber colour shift, evoking the aged appearance of an Old Master oil painting.
 
 ---
 
@@ -46,7 +39,7 @@ Three additional layers deepen the atmospheric effect: *depth modulation* applie
 
 ### Leonardo's Sfumato Technique
 
-The term *sfumato* comes from the Italian *sfumare*, "to evaporate" or "to vanish like smoke." Leonardo achieved the effect by applying dozens of translucent oil glazes over a dark underpainting, each layer so thin that individual brushstrokes are invisible. The result is a continuous tonal gradient with no discernible color boundary — what modern image processing would call a *low-pass filtered* signal. This program automates the principle: the IIR filter acts as the digital equivalent of an oil glaze, and the edge-adaptive coefficient determines where the glaze is applied most heavily.
+The term *sfumato* comes from the Italian *sfumare*, "to evaporate" or "to vanish like smoke." Leonardo achieved the effect by applying dozens of translucent oil glazes over a dark underpainting, each layer so thin that individual brushstrokes are invisible. The result is a continuous tonal gradient with no discernible colour boundary — what modern image processing would call a *low-pass filtered* signal. This program automates the principle: the IIR filter acts as the digital equivalent of an oil glaze, and the edge-adaptive coefficient determines where the glaze is applied most heavily.
 
 ### Edge-Adaptive IIR Filtering
 
@@ -58,7 +51,7 @@ In atmospheric perspective, distant objects appear softer, lighter, and less sat
 
 ### Chrominance Diffusion
 
-Human vision is less sensitive to color boundaries than to luminance boundaries (this is why chroma subsampling works). Sfumato exploits this by offering extra chrominance diffusion independent of the luminance blur. When Chroma Lock is disengaged, the UV channels receive an additional half of the Chroma Diffusion parameter added to their filter alpha, causing color boundaries to dissolve further than luminance edges — exactly the way Leonardo's glazes affected pigment hue more than tonal value.
+Human vision is less sensitive to colour boundaries than to luminance boundaries (this is why chroma subsampling works). Sfumato exploits this by offering extra chrominance diffusion independent of the luminance blur. When Chroma Lock is disengaged, the UV channels receive an additional half of the Chroma Diffusion parameter added to their filter alpha, causing colour boundaries to dissolve further than luminance edges — exactly the way Leonardo's glazes affected pigment hue more than tonal value.
 
 ### Atmospheric Haze
 
@@ -151,7 +144,7 @@ Maps to `registers_in(2)`, the luminance-adaptive depth modulation amount. Darke
 | Default | 58.7% |
 | Suffix | % |
 
-Maps to `registers_in(3)`, extra chrominance diffusion. When Chroma Lock (Toggle 9) is disengaged, half of this value is added to the effective UV alpha, causing color boundaries to dissolve more than luminance edges. Setting this high while keeping Diffusion moderate creates an effect where forms maintain their tonal shape but colors bleed into one another — a watercolor-like dissolution of hue.
+Maps to `registers_in(3)`, extra chrominance diffusion. When Chroma Lock (Toggle 9) is disengaged, half of this value is added to the effective UV alpha, causing colour boundaries to dissolve more than luminance edges. Setting this high while keeping Diffusion moderate creates an effect where forms maintain their tonal shape but colours bleed into one another — a watercolour-like dissolution of hue.
 
 ---
 
@@ -173,7 +166,7 @@ Maps to `registers_in(4)`, the atmospheric haze amount. Haze lifts shadow lumina
 | Default | 25.0% |
 | Suffix | % |
 
-Maps to `registers_in(5)`, the warm varnish color temperature shift amount. When the Varnish toggle (Toggle 10) is active, this value (right-shifted by 2) is subtracted from U and added to V, pushing the color balance toward amber. The right-shift limits the maximum shift to about 256 counts, preventing extreme color distortion. At subtle levels it produces the golden warmth of aged varnish on a Renaissance panel painting; at high levels the entire image takes on a deep amber tone.
+Maps to `registers_in(5)`, the warm varnish colour temperature shift amount. When the Varnish toggle (Toggle 10) is active, this value (right-shifted by 2) is subtracted from U and added to V, pushing the colour balance toward amber. The right-shift limits the maximum shift to about 256 counts, preventing extreme colour distortion. At subtle levels it produces the golden warmth of aged varnish on a Renaissance panel painting; at high levels the entire image takes on a deep amber tone.
 
 ---
 
@@ -187,7 +180,7 @@ Maps to `registers_in(5)`, the warm varnish color temperature shift amount. When
 | **10 — Varnish** | Off | On |
 | **11 — Bypass** | Off | On |
 
-Toggles 7–10 control four independent modal options. Toggle 7 selects unidirectional or bidirectional IIR filtering. Toggle 8 chooses linear or quadratic depth modulation. Toggle 9 locks or unlocks chrominance diffusion from luminance. Toggle 10 enables the warm varnish color shift. Each toggle operates independently — all sixteen combinations are valid.
+Toggles 7–10 control four independent modal options. Toggle 7 selects unidirectional or bidirectional IIR filtering. Toggle 8 chooses linear or quadratic depth modulation. Toggle 9 locks or unlocks chrominance diffusion from luminance. Toggle 10 enables the warm varnish colour shift. Each toggle operates independently — all sixteen combinations are valid.
 
 ---
 
@@ -237,7 +230,7 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 1. Use settings from Exercise 1 as a starting point, with Diffusion ~50% and Edge Threshold ~40%.
 2. Raise Depth (Pot 3) to ~60%. Shadows soften dramatically while highlights remain crisp — the dark background dissolves.
 3. Switch Depth Mode (Toggle 8) to Quad. The effect concentrates in the deepest shadows; mid-tones sharpen back up.
-4. Add Haze (Pot 5) at ~30%. Shadows lift toward gray and colors desaturate slightly — a silvery atmospheric veil.
+4. Add Haze (Pot 5) at ~30%. Shadows lift toward gray and colours desaturate slightly — a silvery atmospheric veil.
 5. Toggle back to Linear depth and compare the more gradual falloff.
 
 **Key concepts**: Darker pixels get more blur (atmospheric perspective simulation), quadratic depth steepens the shadow bias, haze lifts shadows and desaturates independently of the IIR filter
@@ -253,13 +246,13 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 **Objective**: Combine all four layers (diffusion, depth, haze, varnish) for a full Renaissance-painting treatment.
 
 1. Set Diffusion ~60%, Edge Threshold ~50%, Depth ~40%.
-2. Add Chroma Diffusion ~70% and unlock Chroma Lock (Switch 9 = Indep). Color boundaries dissolve more than luminance — a watercolor softness.
+2. Add Chroma Diffusion ~70% and unlock Chroma Lock (Switch 9 = Indep). Colour boundaries dissolve more than luminance — a watercolour softness.
 3. Add Haze ~20% for a delicate atmospheric lift.
 4. Enable Varnish (Toggle 10) and raise Warmth (Pot 6) to ~50%. The output takes on a golden amber tone.
 5. Lower Mix to ~70% to blend the varnished result with the original, retaining some of the source's crispness.
 6. Toggle Direction to Bidi for symmetrical softening that better simulates the omni-directional diffusion of oil glazes.
 
-**Key concepts**: Chroma diffusion + independent mode dissolves color beyond luminance, haze and varnish stack to create layered atmospheric effects, wet/dry mix controls the commitment level
+**Key concepts**: Chroma diffusion + independent mode dissolves colour beyond luminance, haze and varnish stack to create layered atmospheric effects, wet/dry mix controls the commitment level
 
 ---
 
@@ -268,7 +261,7 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 - **Edge Threshold is the selectivity control**: Low threshold = everything softens. High threshold = only the hardest tonal edges are treated. Start high and lower until you find the boundary between "selective sfumato" and "uniform blur."
 - **Depth creates foreground/background separation**: Raising Depth makes shadows dissolve while highlights stay sharp. This is the core of atmospheric perspective — use it to push dark regions into the background.
-- **Chroma Diffusion unlocked is the watercolor mode**: When Chroma Lock is set to Indep with high Chroma Diffusion, colors bleed beyond their luminance boundaries like wet pigment.
+- **Chroma Diffusion unlocked is the watercolour mode**: When Chroma Lock is set to Indep with high Chroma Diffusion, colours bleed beyond their luminance boundaries like wet pigment.
 - **Haze and Varnish stack**: Haze lifts and desaturates; Varnish warms. Together they create the complete Old Master palette: soft edges, atmospheric lift, amber warmth.
 - **Bidirectional mode costs one BRAM but eliminates directionality**: Uni mode is lighter on resources but produces a characteristic rightward smear. Switch to Bidi for symmetrical diffusion.
 - **Mix for subtlety**: The full sfumato treatment can overwhelm detail. Blend at 60–80% to retain some of the source's crispness while still softening tonal boundaries.
@@ -281,16 +274,18 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 | Term | Definition |
 |------|------------|
 | **Alpha** | The IIR filter coefficient (0–1023); higher alpha weights the previous output more heavily, creating stronger blur. |
-| **Atmospheric Perspective** | The visual phenomenon where distant objects appear softer, lighter, and less colorful due to intervening atmosphere. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **Chrominance** | The color components (U, V) of a YUV signal. |
+| **Atmospheric Perspective** | The visual phenomenon where distant objects appear softer, lighter, and less colourful due to intervening atmosphere. |
+| **BRAM** | Block RAM; dedicated memory in the FPGA fabric, used here for the bidirectional line buffer. |
+| **Chrominance** | The colour components (U, V) of a YUV signal. |
 | **Depth Modulation** | Varying the blur strength based on pixel luminance to simulate distance-dependent softening. |
 | **Edge-Adaptive** | A filtering strategy that changes its strength based on the local image gradient, preserving structure while smoothing transitions. |
 | **Gradient** | The absolute difference between adjacent pixel luminance values, used to detect tonal edges. |
 | **Haze** | A post-filter stage that lifts shadow luminance and desaturates chrominance, simulating atmospheric scattering. |
 | **IIR** | Infinite Impulse Response; a recursive filter whose output depends on its own previous values. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Luminance** | The brightness component (Y) of a YUV video signal. |
+| **Pipeline** | Sequential processing stages where each stage operates on every clock cycle. |
 | **Sfumato** | Italian for "vanished like smoke"; Leonardo da Vinci's painting technique of eliminating visible tonal boundaries. |
-| **Varnish** | A color temperature shift toward amber, simulating the aged appearance of oil painting varnish. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **Varnish** | A colour temperature shift toward amber, simulating the aged appearance of oil painting varnish. |
+| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V). |
+
+---

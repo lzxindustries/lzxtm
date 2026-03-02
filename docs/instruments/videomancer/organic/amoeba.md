@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 5
+sidebar_position: 4
 slug: /instruments/videomancer/amoeba
 title: "Amoeba"
 image: /img/instruments/videomancer/amoeba/amoeba_hero.png
@@ -31,7 +31,7 @@ Amoeba is a metaball isosurface engine. Up to two animated blobs orbit the scree
 
 The name *Amoeba* describes the visual result exactly. A single-celled amoeba has no fixed shape — its membrane deforms and extends pseudopods as internal forces push it outward. Metaballs behave the same way: when two blob fields overlap, the isosurface between them bulges outward and merges, creating a bridge that looks like a cell dividing in reverse. Reduce the threshold and the blobs separate into independent circles; increase it and they fuse into a single amorphous mass.
 
-At conservative settings — a single blob, slow speed, wide skin — the screen shows a cleanly defined circle gliding across the frame. At extreme settings — two blobs, high speed, narrow skin, rainbow color, outline enabled — the metaball boundaries trace rapidly evolving organic contours in vivid color against a black background, creating complex abstract patterns reminiscent of lava-lamp fluid dynamics or microscope footage of living cells.
+At conservative settings — a single blob, slow speed, wide skin — the screen shows a cleanly defined circle gliding across the frame. At extreme settings — two blobs, high speed, narrow skin, rainbow colour, outline enabled — the metaball boundaries trace rapidly evolving organic contours in vivid colour against a black background, creating complex abstract patterns reminiscent of lava-lamp fluid dynamics or microscope footage of living cells.
 
 ---
 
@@ -214,7 +214,7 @@ Controls the width of the skin classification band below the isosurface threshol
 | Default | 0d |
 | Suffix | d |
 
-Rotates the chroma components of the generated output. At 0°, the hue-shifted U and V values are at their neutral position. Rotating through 360° cycles through the color spectrum. This parameter only has visible effect when Color is set to Rainbow — in Mono mode, all generated chroma is at midpoint regardless of hue shift. In Rainbow mode, the hue shift offsets the base U/V mapping derived from the field value, and when Outline is enabled, the skin zone uses the hue shift directly as its U value with the inverse as V, producing a colored contour line.
+Rotates the chroma components of the generated output. At 0°, the hue-shifted U and V values are at their neutral position. Rotating through 360° cycles through the colour spectrum. This parameter only has visible effect when Color is set to Rainbow — in Mono mode, all generated chroma is at midpoint regardless of hue shift. In Rainbow mode, the hue shift offsets the base U/V mapping derived from the field value, and when Outline is enabled, the skin zone uses the hue shift directly as its U value with the inverse as V, producing a coloured contour line.
 
 ---
 
@@ -238,7 +238,7 @@ Selects how many blobs are active in the field computation: 1 or 2. The control 
 | **10 — Outline** | Off | On |
 | **11 — Bypass** | Off | On |
 
-The five toggle switches control **independent binary options** with no combined selector logic. Fill Mode, Color, Source, and Outline interact to create a wide range of visual styles — solid monochrome fills, hollow outlines, rainbow-tinted interiors, video-keyed shapes, and colored contour lines. Bypass routes the delayed input directly to output.
+The five toggle switches control **independent binary options** with no combined selector logic. Fill Mode, Color, Source, and Outline interact to create a wide range of visual styles — solid monochrome fills, hollow outlines, rainbow-tinted interiors, video-keyed shapes, and coloured contour lines. Bypass routes the delayed input directly to output.
 
 ---
 
@@ -288,7 +288,7 @@ These exercises progress from a single stationary blob through multi-blob mergin
 3. **Observe the split**: As the blobs separate, the bridge between them narrows into a thin neck. The neck pinches and snaps apart, restoring two independent circles. This merge-split cycle repeats every time the orbits cross.
 4. **Increase threshold**: Raise Threshold to ~55%. The blobs merge at greater distances — the combined field exceeds the threshold even when the centers are far apart. The shapes stay merged for longer portions of the orbit.
 5. **Decrease threshold**: Lower Threshold to ~20%. The blobs must be nearly overlapping before their fields combine enough to merge. They appear as independent circles most of the time.
-6. **Rainbow color**: Switch Color (Toggle 8) to Rainbow and set Hue Shift (Knob 5) to ~60°. The field gradient becomes visible as a warm color ramp inside each blob — during merges, the color gradients blend where the fields overlap, revealing how the two contributions combine.
+6. **Rainbow colour**: Switch Color (Toggle 8) to Rainbow and set Hue Shift (Knob 5) to ~60°. The field gradient becomes visible as a warm colour ramp inside each blob — during merges, the colour gradients blend where the fields overlap, revealing how the two contributions combine.
 
 **Key concepts**: Metaball merging from overlapping inverse-square fields, isosurface boundary deformation during approach, threshold controls merge distance, outline makes boundary shape changes clearly visible
 
@@ -298,17 +298,17 @@ These exercises progress from a single stationary blob through multi-blob mergin
 
 <img src={amoeba_exercise3_result} alt="Hollow Rainbow Contours result"/>
 *Hollow Rainbow Contours — simulated result across source images.*
-**Objective**: Create pure vector-style contour line graphics using hollow fill mode with rainbow color, producing bright organic outlines on a black background.
+**Objective**: Create pure vector-style contour line graphics using hollow fill mode with rainbow colour, producing bright organic outlines on a black background.
 
 1. **Hollow outline setup**: Set Fill Mode (Toggle 7) to Hollow and enable Outline (Toggle 10). The blob interiors are black — only the skin-zone contour lines are visible.
 2. **Configure shapes**: Count to 2, Blob Size to ~55%, Threshold to ~35%, Speed to ~20%, Skin Width to ~30%.
 3. **Rainbow contours**: Switch Color (Toggle 8) to Rainbow. Set Hue Shift (Knob 5) to ~270°. The contour lines are now rendered in cool purple-blue tones that shift with the field gradient.
 4. **Observe contour merging**: Watch as the two hollow outlines drift on their Lissajous paths. When they approach, their contours bulge and connect — but the interior remains black, so only the merged boundary line is visible. This produces clean topological transitions.
-5. **Rotate hue**: Slowly rotate Hue Shift through 360°. The contour color cycles through the full spectrum while the geometry stays constant — the line art changes palette without changing shape.
+5. **Rotate hue**: Slowly rotate Hue Shift through 360°. The contour colour cycles through the full spectrum while the geometry stays constant — the line art changes palette without changing shape.
 6. **Widen skin**: Increase Skin Width to ~60%. The contour lines thicken into broad glowing bands, creating a neon-tube aesthetic. Decrease to ~10% for razor-thin lines.
 7. **Compare with solid**: Switch Fill Mode back to Solid to see the filled version of the same shapes. The hollow contour mode strips away the interior, leaving only the boundary — useful for overlaying on other video content via mix.
 
-**Key concepts**: Hollow mode for pure contour graphics, rainbow color maps field gradient to hue, skin width controls line thickness, outline converts gradient band to bright contour, hue shift rotates color palette
+**Key concepts**: Hollow mode for pure contour graphics, rainbow colour maps field gradient to hue, skin width controls line thickness, outline converts gradient band to bright contour, hue shift rotates colour palette
 
 ---
 
@@ -330,17 +330,17 @@ These exercises progress from a single stationary blob through multi-blob mergin
 
 | Term | Definition |
 |------|------------|
-| **Chroma** | The color components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **Chroma** | The colour components (U and V) of a YUV video signal, encoding hue and saturation independently of brightness. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware at pixel-clock speed. |
 | **Inverse-Square Law** | A mathematical relationship where a quantity decreases proportionally to the square of the distance from a source; used here for the metaball field function. |
 | **Isosurface** | The set of all points in a scalar field where the field equals a chosen threshold value; in 2D this is an isoline (contour) dividing inside from outside. |
 | **Lissajous Curve** | A parametric path traced when X and Y coordinates oscillate sinusoidally at different frequencies; the frequency ratio determines the curve's shape (figure-eight, three-lobed, etc.). |
 | **LUT (Lookup Table)** | A precomputed array that maps an input index to an output value, replacing expensive runtime computation with a single memory read. |
 | **Metaball** | A computer-graphics technique for rendering soft organic shapes by summing inverse-distance field contributions from point sources and drawing an isosurface at a chosen threshold. |
 | **Phase Accumulator** | A register that increments by a fixed step each frame, wrapping at overflow to produce a continuously advancing angle for sine-wave orbit generation. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A chain of processing stages each completing one operation per clock cycle; data passes through all stages with fixed total latency. |
 | **Scalar Field** | A function that assigns a single numeric value to every point in a 2D space; in Amoeba, the field value at each pixel is the sum of all active blob contributions. |
 | **Skin Zone** | The classification band between the isosurface threshold and the outer boundary, rendered as a visible edge or contour around each metaball. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); Videomancer processes all video in YUV 4:4:4 at 30-bit depth. |
 
 ---

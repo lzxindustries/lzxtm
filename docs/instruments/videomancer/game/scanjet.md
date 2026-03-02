@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 225
+sidebar_position: 242
 slug: /instruments/videomancer/scanjet
 title: "Scanjet"
 image: /img/instruments/videomancer/scanjet/scanjet_hero.png
-description: "The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, and After Burner — achieved a convincing illusion of three-dimensional forward motion usin..."
+description: "The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, and After Burner — achieved a convincing illusion of three-dimensional forward motion using a technique that never actually rendered a 3D scene."
 ---
 
+import scanjet_hero from '/img/instruments/videomancer/scanjet/scanjet_hero.png';
 import scanjet_before_after from '/img/instruments/videomancer/scanjet/scanjet_before_after.png';
 import scanjet_control_panel from '/img/instruments/videomancer/scanjet/scanjet_control_panel.png';
 import scanjet_exercise1_result from '/img/instruments/videomancer/scanjet/scanjet_exercise1_result.png';
 import scanjet_exercise2_result from '/img/instruments/videomancer/scanjet/scanjet_exercise2_result.png';
 import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanjet_exercise3_result.png';
-import scanjet_hero from '/img/instruments/videomancer/scanjet/scanjet_hero.png';
-import scanjet_source1_kodim15 from '/img/instruments/videomancer/scanjet/scanjet_source1_kodim15.png';
-import scanjet_source2_kodim03 from '/img/instruments/videomancer/scanjet/scanjet_source2_kodim03.png';
-import scanjet_source3_kodim15_bw from '/img/instruments/videomancer/scanjet/scanjet_source3_kodim15_bw.png';
 
 # Scanjet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={scanjet_hero} alt="Scanjet hero image"/>
 *Scanjet transforming live video into a pseudo-3D ground plane with perspective-scaled scanlines, sinusoidal road curvature, and retro sky rendering.*
@@ -289,14 +282,16 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources in the FPGA fabric. Scanjet uses 2 BRAMs for ping-pong line buffers storing packed 30-bit YUV scanline data. |
 | **DDA** | Digital Differential Analyzer; an iterative algorithm that computes source pixel addresses by accumulating a step value per output pixel. Used for per-scanline perspective zoom. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter where output feeds back into input. Not used directly in Scanjet but referenced for comparison with Sabattier's Mackie line spread. |
-| **LFSR** | Linear-Feedback Shift Register; a shift register whose input bit is a function of its previous state, producing pseudo-random sequences. |
+| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator. Referenced in the VHDL but not actively used in Scanjet's main pipeline. |
 | **Line Buffer** | A memory storing one complete scanline of video (2048 × 30-bit words). Scanjet uses two in a ping-pong arrangement. |
 | **Ping-Pong** | A double-buffering technique where two buffers alternate roles: one receives new data while the other provides data for reading. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages. Scanjet uses 4 processing clocks + 4 interpolator clocks = 8 total. |
 | **Sine LUT** | A 64-entry lookup table of signed 8-bit sine values used to generate smooth road curvature offsets. |
 | **Super Scaler** | Sega's per-scanline horizontal scaling technology (1985–1992) that simulated 3D perspective using 2D sprite/background hardware. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

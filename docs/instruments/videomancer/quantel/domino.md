@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 76
+sidebar_position: 83
 slug: /instruments/videomancer/domino
 title: "Domino"
 image: /img/instruments/videomancer/domino/domino_hero.png
-description: "In the world of broadcast television, the most dramatic transitions are the ones that reveal the next image piece by piece — not in a smooth fade but in..."
+description: "In the world of broadcast television, the most dramatic transitions are the ones that reveal the next image piece by piece — not in a smooth fade but in a cascade of discrete cells, each flicking from one state to another like the tiles on a departures board."
 ---
 
 import domino_hero from '/img/instruments/videomancer/domino/domino_hero.png';
@@ -277,17 +277,17 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 | Term | Definition |
 |------|------------|
 | **Bitwise Complement** | Inverting every bit in a binary value; maps 0→1023 and 1023→0 in the 10-bit domain. Also called ones-complement or NOT. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Domino uses zero BRAMs. |
 | **Cascade Dissolve** | A transition effect where tiles in a grid sequentially change state, creating a sweeping reveal pattern. |
 | **Cell Index** | The grid coordinate of a tile, used as the comparison value against the sweep threshold. In diagonal mode, the sum of X and Y cell coordinates. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **DVE** | Digital Video Effects; hardware or software that performs real-time spatial transformations on video signals. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that linearly blends two values based on a mix parameter, used for the wet/dry crossfade. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sweep** | The advancing threshold that determines which tiles are in the flipped state; driven by the frame counter. |
 | **Vsync** | Vertical sync pulse marking the start of each video frame; triggers the frame counter increment. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 51
+sidebar_position: 53
 slug: /instruments/videomancer/cloudgate
 title: "Cloudgate"
 image: /img/instruments/videomancer/cloudgate/cloudgate_hero.png
@@ -284,16 +284,16 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 |------|------------|
 | **Alpha Compositing** | Blending two images using a per-pixel opacity (alpha) value: `output = A × α + B × (1 − α)`. |
 | **Bilinear Interpolation** | Smoothly blending four grid corner values using horizontal then vertical linear interpolation. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R standard defining the YUV color space used in standard-definition video; Videomancer uses 10-bit BT.601. |
 | **Drift Accumulator** | A counter that increments each frame, shifting the noise coordinate space to animate the cloud pattern. |
 | **fBM** | Fractional Brownian Motion; summing multiple octaves of noise at increasing frequency and decreasing amplitude to create natural-looking fractal textures. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hash Function** | A deterministic function that maps grid coordinates to pseudo-random values via a permutation table. |
 | **Octagon Distance** | An approximation of Euclidean distance using only additions and shifts: `max(|dx|,|dy|) + min(|dx|,|dy|)/2 − min(|dx|,|dy|)/8`. |
 | **Octave** | In noise terminology, a single layer of the noise function at a specific spatial frequency; fBM sums multiple octaves. |
 | **Permutation Table** | A fixed array of pseudo-random values indexed by hashed coordinates to generate repeatable noise patterns. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Value Noise** | A type of procedural noise where random values are assigned to lattice points and interpolated between them. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

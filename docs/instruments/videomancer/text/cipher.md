@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 49
+sidebar_position: 51
 slug: /instruments/videomancer/cipher
 title: "Cipher"
 image: /img/instruments/videomancer/cipher/cipher_hero.png

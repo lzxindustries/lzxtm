@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 121
+sidebar_position: 131
 slug: /instruments/videomancer/hologram
 title: "Hologram"
 image: /img/instruments/videomancer/hologram/hologram_hero.png
@@ -274,14 +274,14 @@ These exercises explore the rainbow holographic effect from simple band generati
 | **Additive Mode** | Chrominance composition where the rainbow UV deltas are added to the source video's existing U and V values, tinting the original colors. |
 | **Diamond Approximation** | A piecewise-linear path through UV color space that approximates circular hue rotation using four linear ramp segments, one per quadrant. |
 | **Diffraction Grating** | A periodic structure that separates white light into spectral components; the physical phenomenon that holographic foils exploit for rainbow reflections. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A linear crossfade module that blends between two input signals based on a mix parameter. |
 | **LUT** | Look-Up Table; a basic logic element in FPGA fabric used to implement combinational functions. |
 | **Phase Accumulator** | A register that increments by a fixed amount each frame, producing a sawtooth ramp that wraps at 16-bit overflow to drive cyclic animation. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quadrant** | One of four 90-degree sectors of the UV color plane, each with a distinct sign combination for the U and V linear ramps. |
 | **Replace Mode** | Chrominance composition where the source U and V are discarded and replaced with the rainbow pattern centered on neutral (512, 512). |
 | **Spread** | The magnitude of UV deviation from neutral, controlling how saturated the rainbow bands appear. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---

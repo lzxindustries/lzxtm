@@ -1,29 +1,22 @@
 ---
 draft: true
-sidebar_position: 163
+sidebar_position: 179
 slug: /instruments/videomancer/massif
 title: "Massif"
 image: /img/instruments/videomancer/massif/massif_hero.png
-description: "In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflec..."
+description: "In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflected each scan line vertically by an amount proportional to its brightness."
 ---
 
+import massif_hero from '/img/instruments/videomancer/massif/massif_hero.png';
 import massif_before_after from '/img/instruments/videomancer/massif/massif_before_after.png';
 import massif_control_panel from '/img/instruments/videomancer/massif/massif_control_panel.png';
 import massif_exercise1_result from '/img/instruments/videomancer/massif/massif_exercise1_result.png';
 import massif_exercise2_result from '/img/instruments/videomancer/massif/massif_exercise2_result.png';
 import massif_exercise3_result from '/img/instruments/videomancer/massif/massif_exercise3_result.png';
-import massif_hero from '/img/instruments/videomancer/massif/massif_hero.png';
-import massif_source1_kodim15 from '/img/instruments/videomancer/massif/massif_source1_kodim15.png';
-import massif_source2_kodim01 from '/img/instruments/videomancer/massif/massif_source2_kodim01.png';
-import massif_source3_kodim01_bw from '/img/instruments/videomancer/massif/massif_source3_kodim01_bw.png';
 
 # Massif
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-
----
-
 
 <img src={massif_hero} alt="Massif hero image"/>
 *Massif displacing video scanlines by luminance to sculpt a phosphor-glow terrain landscape from a camera image, evoking the Rutt/Etra Video Synthesizer.*
@@ -287,17 +280,19 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
+| **BRAM** | Block RAM; dedicated FPGA memory used for the 1024-entry column buffers that store the terrain data. |
 | **Column Buffer** | A vertical memory array (1024 × 10-bit) storing one pixel-column of the displaced terrain. Three buffers store Y, U, and V independently. |
 | **CRT** | Cathode Ray Tube; the display technology whose electron-beam deflection and phosphor persistence Massif emulates digitally. |
 | **Decay** | Inter-frame attenuation of the column buffer, simulating the gradual fading of CRT phosphor after excitation. |
 | **Deflection** | Vertical displacement of a scan line based on its luminance value, the core operation of the Rutt/Etra technique. |
 | **Foreshortening** | Perspective scaling where objects closer to the viewer appear larger and more displaced, creating depth illusion. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Luminance** | The brightness component (Y) of a YUV video signal; in Massif, the primary driver of vertical displacement. |
 | **Max-Brightness Compositing** | A write policy where only the brightest pixel value is retained when multiple sources target the same buffer address. |
 | **Persistence** | The visual afterglow of CRT phosphor, simulated by high Decay values that slow the buffer attenuation. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Raster** | The pattern of horizontal scan lines that compose a video frame; Line Gap controls the spacing of these lines in the terrain display. |
 | **Rutt/Etra** | A 1973 analog video synthesizer by Steve Rutt and Bill Etra that deflected CRT scan lines by luminance, creating terrain-like video displays. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+---

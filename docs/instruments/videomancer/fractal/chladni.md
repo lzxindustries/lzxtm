@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 45
+sidebar_position: 47
 slug: /instruments/videomancer/chladni
 title: "Chladni"
 image: /img/instruments/videomancer/chladni/chladni_hero.png
@@ -138,7 +138,7 @@ Controls the horizontal spatial frequency of the standing-wave pattern. At zero 
 | Range | 1 – 8 |
 | Default | 4 |
 
-Controls the vertical spatial frequency. Behaves identically to Freq X but along the Y axis. At zero, only vertical bands from the X oscillator are visible. Increasing Freq Y introduces horizontal nodal lines. The most visually rich patterns occur when both frequencies are moderate and slightly detuned from each other — the near-rational ratio produces a slowly evolving moiré of interlocking curves. When XY Link is engaged, this control is overridden by Freq X, forcing both axes to the same frequency and producing strictly diagonal nodal patterns.
+Controls the vertical spatial frequency. Behaves identically to Freq X but along the Y axis. At zero, only vertical bands from the X oscillator are visible. Increasing Freq Y introduces horizontal nodal lines. The most visually rich patterns occur when both frequencies are moderate and slightly detuned from each other — the near-rational ratio produces a slowly evolving moire of interlocking curves. When XY Link is engaged, this control is overridden by Freq X, forcing both axes to the same frequency and producing strictly diagonal nodal patterns.
 
 ---
 
@@ -225,7 +225,7 @@ These exercises progress from pure mathematical visualization through subtle vid
 
 1. **Enable Draw mode**: Toggle Draw On. The input video disappears, replaced by the standing-wave pattern rendered as white curves on black.
 2. **Set baseline frequencies**: Set Freq X and Freq Y to ~50%. A diamond-grid lattice should appear.
-3. **Explore frequency ratios**: Slowly detune Freq Y while leaving Freq X fixed. Watch the pattern shift from regular diamonds through elongated rectangles to complex, non-repeating moirés.
+3. **Explore frequency ratios**: Slowly detune Freq Y while leaving Freq X fixed. Watch the pattern shift from regular diamonds through elongated rectangles to complex, non-repeating moires.
 4. **Adjust Width**: Increase Width from 0% to see the nodal lines thicken from hairlines to broad bands.
 5. **Rotate Phase**: Sweep Phase from 0° to 360° and observe the entire pattern sliding vertically.
 6. **Try XY Link**: Toggle XY Link On. Both axes lock to Freq X, producing perfect diagonal symmetry regardless of Freq Y.
@@ -289,14 +289,14 @@ These exercises progress from pure mathematical visualization through subtle vid
 | **Amplitude modulation** | A technique where one signal (the carrier) is multiplied by another (the modulator), used in Sculpt mode to shape video brightness with the standing-wave field. |
 | **Antinode** | A point on a standing wave where the oscillation amplitude is at its maximum, the complement of a node. |
 | **Bessel function** | A family of mathematical functions that describe standing-wave patterns on circular plates; rectangular plates use trigonometric products instead. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric used for line delays, framebuffers, and lookup tables. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Moiré** | An interference pattern produced when two periodic structures overlap at slightly different frequencies or angles. |
+| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
+| **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here to animate the Chladni pattern over time. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
+| **Moire** | An interference pattern produced when two periodic structures overlap at slightly different frequencies or angles. |
 | **Node** | A point on a standing wave where the oscillation amplitude is always zero; nodal lines on a Chladni plate are where sand collects. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage that applies contrast (multiplication) and brightness (addition) to a signal. |
+| **Proc amp** | Processing amplifier; a standard video circuit that adjusts contrast and brightness by scaling and offsetting the luminance signal. |
 | **Standing wave** | A wave pattern formed by the superposition of two waves traveling in opposite directions, producing fixed nodes and antinodes. |
 | **Triangle wave** | A periodic waveform that rises and falls linearly, used as a computationally cheap approximation to a sine wave in hardware. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
 
 ---

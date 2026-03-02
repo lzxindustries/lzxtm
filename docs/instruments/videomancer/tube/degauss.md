@@ -1,10 +1,10 @@
 ---
 draft: true
-sidebar_position: 67
+sidebar_position: 74
 slug: /instruments/videomancer/degauss
 title: "Degauss"
 image: /img/instruments/videomancer/degauss/degauss_hero.png
-description: "Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor ..."
+description: "Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor dots."
 ---
 
 import degauss_hero from '/img/instruments/videomancer/degauss/degauss_hero.png';
@@ -285,19 +285,19 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 | Term | Definition |
 |------|------------|
 | **Aperture Grille** | A type of CRT shadow mask using vertical wires instead of holes, used in Trinitron displays; serves the same beam-selection function as a dot-mask. |
-| **BT.601** | The ITU-R standard defining the color matrix used to convert between RGB and YUV in video systems. |
+| **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used in standard-definition video, defining the YUV matrix coefficients. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Chromatic Aberration** | An optical artifact where different wavelengths of light focus at different points, causing color fringing at edges. |
 | **Clamp** | A limiting operation that constrains a value to a defined range (0–1023 in the 10-bit domain). |
 | **Convergence** | The condition where all three electron beams in a CRT meet at the same point on the phosphor screen. |
 | **Degaussing** | The process of demagnetizing a CRT shadow mask using an alternating magnetic field to restore color purity. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip that implements Videomancer's real-time video processing. |
-| **Interpolator** | A linear-blending circuit that crossfades between two input values; used in Videomancer for wet/dry mixing. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived luminance. |
+| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
+| **Interpolator** | A hardware module that performs linear interpolation between two input values based on a mix parameter. |
+| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Misconvergence** | A CRT defect where the three electron beams fail to meet at the same phosphor dot, causing color fringing. |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle on streaming pixel data. |
+| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Shadow Mask** | A perforated metal sheet inside a CRT that ensures each electron beam strikes only its designated phosphor color. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and then linearly down, generated here by XOR-folding a binary counter. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
 ---
