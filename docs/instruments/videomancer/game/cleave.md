@@ -8,7 +8,6 @@ description: "The Nintendo Entertainment System's Picture Processing Unit had a 
 ---
 
 import cleave_hero from '/img/instruments/videomancer/cleave/cleave_hero.png';
-import cleave_before_after from '/img/instruments/videomancer/cleave/cleave_before_after.png';
 import cleave_control_panel from '/img/instruments/videomancer/cleave/cleave_control_panel.png';
 import cleave_exercise1_result from '/img/instruments/videomancer/cleave/cleave_exercise1_result.gif';
 import cleave_exercise2_result from '/img/instruments/videomancer/cleave/cleave_exercise2_result.gif';
@@ -20,9 +19,6 @@ import cleave_exercise3_result from '/img/instruments/videomancer/cleave/cleave_
 
 <img src={cleave_hero} alt="Cleave hero image"/>
 *Cleave splitting a live video feed at a PPU-jittered raster boundary, applying distinct brightness and hue rotation to each region with a visible glitch artifact bar at the seam.*
-<img src={cleave_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Cleave applied.*
-
 ---
 
 ## Overview

@@ -223,8 +223,6 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 1: Inversion Through Center
 
-![Inversion Through Center result](assets/conformal_exercise1_result.png)
-*Inversion Through Center — simulated result across source images.*
 **Source**: Feed a high-contrast graphic or text source — white text on a black background works well because straight edges make the inversion visible.
 
 **Objective**: Demonstrate the 1/z inversion map, which turns the plane inside-out through the center point.
@@ -242,8 +240,6 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 2: Joukowski Airfoil Stretch
 
-![Joukowski Airfoil Stretch result](assets/conformal_exercise2_result.png)
-*Joukowski Airfoil Stretch — simulated result across source images.*
 **Source**: Feed a live camera or a colorful, organic video source with curves and gradients.
 
 **Objective**: Explore the Joukowski map, which creates a distinctive pinch-and-stretch distortion resembling fluid dynamics.
@@ -261,8 +257,6 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 3: Power Map Kaleidoscope with Tiling
 
-![Power Map Kaleidoscope with Tiling result](assets/conformal_exercise3_result.png)
-*Power Map Kaleidoscope with Tiling — simulated result across source images.*
 **Source**: Feed a symmetrical pattern or mandala-like video source — or any video with strong central features.
 
 **Objective**: Use the Power map (z²) with Tile mode to create a kaleidoscopic, fractal-like tiling pattern.

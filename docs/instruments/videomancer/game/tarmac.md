@@ -8,7 +8,6 @@ description: "The Super Nintendo's Mode 7 background layer was a hardware trick 
 ---
 
 import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
-import tarmac_before_after from '/img/instruments/videomancer/tarmac/tarmac_before_after.png';
 import tarmac_control_panel from '/img/instruments/videomancer/tarmac/tarmac_control_panel.png';
 import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.gif';
 import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.gif';
@@ -20,9 +19,6 @@ import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_
 
 <img src={tarmac_hero} alt="Tarmac hero image"/>
 *Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
-<img src={tarmac_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Tarmac applied.*
-
 ---
 
 ## Overview

@@ -8,7 +8,6 @@ description: "The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, an
 ---
 
 import scanjet_hero from '/img/instruments/videomancer/scanjet/scanjet_hero.png';
-import scanjet_before_after from '/img/instruments/videomancer/scanjet/scanjet_before_after.png';
 import scanjet_control_panel from '/img/instruments/videomancer/scanjet/scanjet_control_panel.png';
 import scanjet_exercise1_result from '/img/instruments/videomancer/scanjet/scanjet_exercise1_result.gif';
 import scanjet_exercise2_result from '/img/instruments/videomancer/scanjet/scanjet_exercise2_result.gif';
@@ -20,9 +19,6 @@ import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanj
 
 <img src={scanjet_hero} alt="Scanjet hero image"/>
 *Scanjet transforming live video into a pseudo-3D ground plane with perspective-scaled scanlines, sinusoidal road curvature, and retro sky rendering.*
-<img src={scanjet_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Scanjet applied.*
-
 ---
 
 ## Overview

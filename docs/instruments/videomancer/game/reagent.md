@@ -8,7 +8,6 @@ description: "Chemistry has a beautiful color language."
 ---
 
 import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
-import reagent_before_after from '/img/instruments/videomancer/reagent/reagent_before_after.png';
 import reagent_control_panel from '/img/instruments/videomancer/reagent/reagent_control_panel.png';
 import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.gif';
 import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.gif';
@@ -20,9 +19,6 @@ import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reage
 
 <img src={reagent_hero} alt="Reagent hero image"/>
 *Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
-<img src={reagent_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Reagent applied.*
-
 ---
 
 ## Overview

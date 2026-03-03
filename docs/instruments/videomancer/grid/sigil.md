@@ -10,9 +10,6 @@ description: "Sigil is a placeholder program currently in development."
 import sigil_hero from '/img/instruments/videomancer/sigil/sigil_hero.png';
 import sigil_animation from '/img/instruments/videomancer/sigil/sigil_animation.gif';
 import sigil_control_panel from '/img/instruments/videomancer/sigil/sigil_control_panel.png';
-import sigil_exercise1_result from '/img/instruments/videomancer/sigil/sigil_exercise1_result.png';
-import sigil_exercise2_result from '/img/instruments/videomancer/sigil/sigil_exercise2_result.png';
-import sigil_exercise3_result from '/img/instruments/videomancer/sigil/sigil_exercise3_result.png';
 
 # Sigil
 
@@ -95,8 +92,6 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 1: Passthrough Verification
 
-<img src={sigil_exercise1_result} alt="Passthrough Verification result"/>
-*Passthrough Verification — simulated result across source images.*
 **Objective**: Confirm that Sigil passes the input signal through without any modification to luminance, chrominance, or sync timing.
 
 1. **Load Sigil**: Select the Sigil program on the Videomancer.
@@ -111,8 +106,6 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 2: Latency Measurement
 
-<img src={sigil_exercise2_result} alt="Latency Measurement result"/>
-*Latency Measurement — simulated result across source images.*
 **Objective**: Measure the single-clock pipeline delay introduced by Sigil's register stage.
 
 1. **Split input**: Route the same source to both the Videomancer input and a reference monitor.
@@ -126,8 +119,6 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 3: Control Inactivity Sweep
 
-<img src={sigil_exercise3_result} alt="Control Inactivity Sweep result"/>
-*Control Inactivity Sweep — simulated result across source images.*
 **Objective**: Systematically verify that every control is inactive in the current firmware.
 
 1. **Load Sigil**: Select the Sigil program with a known video input.

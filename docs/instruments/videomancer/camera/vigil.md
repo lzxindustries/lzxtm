@@ -272,8 +272,6 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ### Exercise 3: Total Signal Destruction
 
-![Total Signal Destruction result](assets/vigil_exercise3_result.png)
-*Total Signal Destruction — simulated result across source images.*
 **Source**: Any footage — the heavy processing will obscure most content.
 
 **Objective**: Push all degradation controls to their extremes for abstract glitch video.

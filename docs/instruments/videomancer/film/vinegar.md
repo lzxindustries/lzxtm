@@ -272,8 +272,6 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ### Exercise 3: Terminal Decay
 
-![Terminal Decay result](assets/vinegar_exercise3_result.png)
-*Terminal Decay — simulated result across source images.*
 **Source**: Any footage — heavy processing creates abstract results regardless of source.
 
 **Objective**: Simulate film in the final stages of vinegar syndrome — extreme colour shift, heavy grain, frequent damage, and instability.

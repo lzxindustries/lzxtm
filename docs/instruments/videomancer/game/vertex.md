@@ -8,7 +8,6 @@ description: "Vertex recreates the unmistakable visual artefacts of early 3D gam
 ---
 
 import vertex_hero from '/img/instruments/videomancer/vertex/vertex_hero.png';
-import vertex_before_after from '/img/instruments/videomancer/vertex/vertex_before_after.png';
 import vertex_control_panel from '/img/instruments/videomancer/vertex/vertex_control_panel.png';
 import vertex_exercise1_result from '/img/instruments/videomancer/vertex/vertex_exercise1_result.gif';
 import vertex_exercise2_result from '/img/instruments/videomancer/vertex/vertex_exercise2_result.gif';
@@ -20,9 +19,6 @@ import vertex_exercise3_result from '/img/instruments/videomancer/vertex/vertex_
 
 <img src={vertex_hero} alt="Vertex hero image"/>
 *Vertex shattering a live video feed into a jittering polygon mesh with PS1-era vertex wobble, posterised Gouraud banding, wireframe grid overlay, and ordered dithering across a field of flat-shaded quads.*
-<img src={vertex_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Vertex applied.*
-
 ---
 
 ## Overview

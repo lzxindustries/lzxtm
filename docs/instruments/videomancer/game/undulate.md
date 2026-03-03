@@ -8,7 +8,6 @@ description: "The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature 
 ---
 
 import undulate_hero from '/img/instruments/videomancer/undulate/undulate_hero.png';
-import undulate_before_after from '/img/instruments/videomancer/undulate/undulate_before_after.png';
 import undulate_control_panel from '/img/instruments/videomancer/undulate/undulate_control_panel.png';
 import undulate_exercise1_result from '/img/instruments/videomancer/undulate/undulate_exercise1_result.gif';
 import undulate_exercise2_result from '/img/instruments/videomancer/undulate/undulate_exercise2_result.gif';
@@ -20,9 +19,6 @@ import undulate_exercise3_result from '/img/instruments/videomancer/undulate/und
 
 <img src={undulate_hero} alt="Undulate hero image"/>
 *Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, colour-shifting dreamscape.*
-<img src={undulate_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Undulate applied.*
-
 ---
 
 ## Overview

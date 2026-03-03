@@ -225,8 +225,6 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 1: Basic Punch Card Grid
 
-![Basic Punch Card Grid result](assets/punchcard_exercise1_result.png)
-*Basic Punch Card Grid — simulated result across source images.*
 **Source**: A well-lit face or scene with clear bright and dark regions — high contrast footage works best.
 
 **Objective**: Create a classic punch card readout and learn how cell size and threshold interact.
@@ -243,8 +241,6 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 2: Binary Mosaic
 
-![Binary Mosaic result](assets/punchcard_exercise2_result.png)
-*Binary Mosaic — simulated result across source images.*
 **Source**: Abstract video synthesis output or colorful patterns — something with varied colors and brightness.
 
 **Objective**: Create a borderless binary mosaic that uses the source color in punched regions.
@@ -262,8 +258,6 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 3: Animated Data Stream
 
-![Animated Data Stream result](assets/punchcard_exercise3_result.png)
-*Animated Data Stream — simulated result across source images.*
 **Source**: Slowly moving or evolving footage — a camera pan, time-lapse, or modulated synthesis.
 
 **Objective**: Create a data-stream visualization that responds to the source content in real time.

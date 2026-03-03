@@ -8,7 +8,6 @@ description: "On September 21, 1982, Billy Mitchell became the first person to r
 ---
 
 import killscreen_hero from '/img/instruments/videomancer/killscreen/killscreen_hero.png';
-import killscreen_before_after from '/img/instruments/videomancer/killscreen/killscreen_before_after.png';
 import killscreen_control_panel from '/img/instruments/videomancer/killscreen/killscreen_control_panel.png';
 import killscreen_exercise1_result from '/img/instruments/videomancer/killscreen/killscreen_exercise1_result.gif';
 import killscreen_exercise2_result from '/img/instruments/videomancer/killscreen/killscreen_exercise2_result.gif';
@@ -20,9 +19,6 @@ import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen
 
 <img src={killscreen_hero} alt="Killscreen hero image"/>
 *Killscreen corrupting a video feed into tile-mapped glitch patterns inspired by the Pac-Man level 256 overflow bug.*
-<img src={killscreen_before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Killscreen applied.*
-
 ---
 
 ## Overview

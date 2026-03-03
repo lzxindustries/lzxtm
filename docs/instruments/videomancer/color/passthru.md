@@ -212,8 +212,6 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 1: Brightness and Contrast
 
-![Brightness and Contrast result](assets/passthru_exercise1_result.png)
-*Brightness and Contrast — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
 **Objective**: Learn how brightness and contrast interact in the proc amp formula and observe clipping behavior at extremes.
@@ -230,8 +228,6 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 2: Color Manipulation
 
-![Color Manipulation result](assets/passthru_exercise2_result.png)
-*Color Manipulation — simulated result across source images.*
 **Source**: Footage with strong, varied colors — flowers, painted surfaces, or color bars.
 
 **Objective**: Explore saturation, per-channel inversion, and monochrome mode to understand YUV color space.
@@ -249,8 +245,6 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 3: Signal Chain Exploration
 
-![Signal Chain Exploration result](assets/passthru_exercise3_result.png)
-*Signal Chain Exploration — simulated result across source images.*
 **Source**: Any live or recorded video with moderate contrast and color.
 
 **Objective**: Use Mix, Bypass, and combined settings to understand the full signal chain and gain confidence with A/B comparison.
