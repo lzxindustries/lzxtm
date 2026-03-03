@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 204
+sidebar_position: 207
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
 image: /img/instruments/videomancer/nimbus/nimbus_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the early 1820s, the English painter John Constable devoted two
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import nimbus_control_panel from '/img/instruments/videomancer/nimbus/nimbus_control_panel.png';
 import nimbus_source1_cat from '/img/instruments/videomancer/nimbus/nimbus_source1_cat.png';
 import nimbus_source2_castle from '/img/instruments/videomancer/nimbus/nimbus_source2_castle.png';
 import nimbus_source3_elephant from '/img/instruments/videomancer/nimbus/nimbus_source3_elephant.png';
@@ -140,6 +141,8 @@ The two palettes (warm and cool) are stored as constant arrays in the VHDL. Each
 
 ## Parameter Reference
 
+<img src={nimbus_control_panel} alt="Videomancer front panel with Nimbus loaded"/>
+*Videomancer's front panel with Nimbus active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

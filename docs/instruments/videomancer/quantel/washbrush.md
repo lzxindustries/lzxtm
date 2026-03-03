@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 326
+sidebar_position: 333
 slug: /instruments/videomancer/washbrush
 title: "Washbrush"
-image: /img/instruments/videomancer/washbrush/washbrush_hero.png
+image: /img/instruments/videomancer/washbrush/washbrush_hero_s1.png
 description: "The Quantel Paintbox, introduced in 1981, was the first commercially successful digital paint system for broadcast television."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import washbrush_hero from '/img/instruments/videomancer/washbrush/washbrush_hero.png';
 import washbrush_control_panel from '/img/instruments/videomancer/washbrush/washbrush_control_panel.png';
-import washbrush_exercise1_result from '/img/instruments/videomancer/washbrush/washbrush_exercise1_result.png';
-import washbrush_exercise2_result from '/img/instruments/videomancer/washbrush/washbrush_exercise2_result.png';
-import washbrush_exercise3_result from '/img/instruments/videomancer/washbrush/washbrush_exercise3_result.png';
-import washbrush_source1_kodim15 from '/img/instruments/videomancer/washbrush/washbrush_source1_kodim15.png';
-import washbrush_source2_kodim01 from '/img/instruments/videomancer/washbrush/washbrush_source2_kodim01.png';
-import washbrush_source3_kodim01_bw from '/img/instruments/videomancer/washbrush/washbrush_source3_kodim01_bw.png';
+import washbrush_source1_house from '/img/instruments/videomancer/washbrush/washbrush_source1_house.png';
+import washbrush_source2_car from '/img/instruments/videomancer/washbrush/washbrush_source2_car.png';
+import washbrush_source3_clouds from '/img/instruments/videomancer/washbrush/washbrush_source3_clouds.png';
+import washbrush_source4_pattern from '/img/instruments/videomancer/washbrush/washbrush_source4_pattern.png';
+import washbrush_source5_girl from '/img/instruments/videomancer/washbrush/washbrush_source5_girl.png';
+import washbrush_source6_paint from '/img/instruments/videomancer/washbrush/washbrush_source6_paint.png';
+import washbrush_hero_s1 from '/img/instruments/videomancer/washbrush/washbrush_hero_s1.png';
+import washbrush_hero_s2 from '/img/instruments/videomancer/washbrush/washbrush_hero_s2.png';
+import washbrush_hero_s3 from '/img/instruments/videomancer/washbrush/washbrush_hero_s3.png';
+import washbrush_hero_s4 from '/img/instruments/videomancer/washbrush/washbrush_hero_s4.png';
+import washbrush_hero_s5 from '/img/instruments/videomancer/washbrush/washbrush_hero_s5.png';
+import washbrush_hero_s6 from '/img/instruments/videomancer/washbrush/washbrush_hero_s6.png';
+import washbrush_ex1_s1 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s1.png';
+import washbrush_ex1_s2 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s2.png';
+import washbrush_ex1_s3 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s3.png';
+import washbrush_ex1_s4 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s4.png';
+import washbrush_ex1_s5 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s5.png';
+import washbrush_ex1_s6 from '/img/instruments/videomancer/washbrush/washbrush_ex1_s6.png';
+import washbrush_ex2_s1 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s1.png';
+import washbrush_ex2_s2 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s2.png';
+import washbrush_ex2_s3 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s3.png';
+import washbrush_ex2_s4 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s4.png';
+import washbrush_ex2_s5 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s5.png';
+import washbrush_ex2_s6 from '/img/instruments/videomancer/washbrush/washbrush_ex2_s6.png';
+import washbrush_ex3_s1 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s1.png';
+import washbrush_ex3_s2 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s2.png';
+import washbrush_ex3_s3 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s3.png';
+import washbrush_ex3_s4 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s4.png';
+import washbrush_ex3_s5 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s5.png';
+import washbrush_ex3_s6 from '/img/instruments/videomancer/washbrush/washbrush_ex3_s6.png';
 
 # Washbrush
 
@@ -23,9 +46,12 @@ import washbrush_source3_kodim01_bw from '/img/instruments/videomancer/washbrush
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_hero },
-    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_hero },
-    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_hero },
+    { label: "House", before: washbrush_source1_house, after: washbrush_hero_s1 },
+    { label: "Car", before: washbrush_source2_car, after: washbrush_hero_s2 },
+    { label: "Clouds", before: washbrush_source3_clouds, after: washbrush_hero_s3 },
+    { label: "Pattern", before: washbrush_source4_pattern, after: washbrush_hero_s4 },
+    { label: "Girl", before: washbrush_source5_girl, after: washbrush_hero_s5 },
+    { label: "Paint", before: washbrush_source6_paint, after: washbrush_hero_s6 },
   ]}
 />
 *Washbrush painting translucent airbrush strokes along a Lissajous orbit onto a persistent BRAM canvas, with warm hues accumulating over time.*
@@ -221,9 +247,12 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise1_result },
-    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise1_result },
-    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise1_result },
+    { label: "House", before: washbrush_source1_house, after: washbrush_ex1_s1 },
+    { label: "Car", before: washbrush_source2_car, after: washbrush_ex1_s2 },
+    { label: "Clouds", before: washbrush_source3_clouds, after: washbrush_ex1_s3 },
+    { label: "Pattern", before: washbrush_source4_pattern, after: washbrush_ex1_s4 },
+    { label: "Girl", before: washbrush_source5_girl, after: washbrush_ex1_s5 },
+    { label: "Paint", before: washbrush_source6_paint, after: washbrush_ex1_s6 },
   ]}
 />
 *Simple Airbrush Circle — simulated result across source images.*
@@ -245,9 +274,12 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise2_result },
-    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise2_result },
-    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise2_result },
+    { label: "House", before: washbrush_source1_house, after: washbrush_ex2_s1 },
+    { label: "Car", before: washbrush_source2_car, after: washbrush_ex2_s2 },
+    { label: "Clouds", before: washbrush_source3_clouds, after: washbrush_ex2_s3 },
+    { label: "Pattern", before: washbrush_source4_pattern, after: washbrush_ex2_s4 },
+    { label: "Girl", before: washbrush_source5_girl, after: washbrush_ex2_s5 },
+    { label: "Paint", before: washbrush_source6_paint, after: washbrush_ex2_s6 },
   ]}
 />
 *Chalk Calligraphy — simulated result across source images.*
@@ -269,9 +301,12 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: washbrush_source1_kodim15, after: washbrush_exercise3_result },
-    { label: "Kodim01", before: washbrush_source2_kodim01, after: washbrush_exercise3_result },
-    { label: "Kodim01 B&W", before: washbrush_source3_kodim01_bw, after: washbrush_exercise3_result },
+    { label: "House", before: washbrush_source1_house, after: washbrush_ex3_s1 },
+    { label: "Car", before: washbrush_source2_car, after: washbrush_ex3_s2 },
+    { label: "Clouds", before: washbrush_source3_clouds, after: washbrush_ex3_s3 },
+    { label: "Pattern", before: washbrush_source4_pattern, after: washbrush_ex3_s4 },
+    { label: "Girl", before: washbrush_source5_girl, after: washbrush_ex3_s5 },
+    { label: "Paint", before: washbrush_source6_paint, after: washbrush_ex3_s6 },
   ]}
 />
 *Video-Sampled Wash Sweep — simulated result across source images.*

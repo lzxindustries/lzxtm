@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 310
+sidebar_position: 316
 slug: /instruments/videomancer/tweed
 title: "Tweed"
-image: /img/instruments/videomancer/tweed/tweed_hero.png
+image: /img/instruments/videomancer/tweed/tweed_hero_s1.png
 description: "Tweed is a textile simulator — it renders the geometric patterns of woven fabric directly onto the video signal."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import tweed_hero from '/img/instruments/videomancer/tweed/tweed_hero.png';
 import tweed_control_panel from '/img/instruments/videomancer/tweed/tweed_control_panel.png';
-import tweed_exercise1_result from '/img/instruments/videomancer/tweed/tweed_exercise1_result.png';
-import tweed_exercise2_result from '/img/instruments/videomancer/tweed/tweed_exercise2_result.png';
-import tweed_exercise3_result from '/img/instruments/videomancer/tweed/tweed_exercise3_result.png';
-import tweed_source1_kodim15 from '/img/instruments/videomancer/tweed/tweed_source1_kodim15.png';
-import tweed_source2_kodim03 from '/img/instruments/videomancer/tweed/tweed_source2_kodim03.png';
-import tweed_source3_kodim13_bw from '/img/instruments/videomancer/tweed/tweed_source3_kodim13_bw.png';
+import tweed_source1_dog from '/img/instruments/videomancer/tweed/tweed_source1_dog.png';
+import tweed_source2_house from '/img/instruments/videomancer/tweed/tweed_source2_house.png';
+import tweed_source3_clouds from '/img/instruments/videomancer/tweed/tweed_source3_clouds.png';
+import tweed_source4_pattern from '/img/instruments/videomancer/tweed/tweed_source4_pattern.png';
+import tweed_source5_woman from '/img/instruments/videomancer/tweed/tweed_source5_woman.png';
+import tweed_source6_knit from '/img/instruments/videomancer/tweed/tweed_source6_knit.png';
+import tweed_hero_s1 from '/img/instruments/videomancer/tweed/tweed_hero_s1.png';
+import tweed_hero_s2 from '/img/instruments/videomancer/tweed/tweed_hero_s2.png';
+import tweed_hero_s3 from '/img/instruments/videomancer/tweed/tweed_hero_s3.png';
+import tweed_hero_s4 from '/img/instruments/videomancer/tweed/tweed_hero_s4.png';
+import tweed_hero_s5 from '/img/instruments/videomancer/tweed/tweed_hero_s5.png';
+import tweed_hero_s6 from '/img/instruments/videomancer/tweed/tweed_hero_s6.png';
+import tweed_ex1_s1 from '/img/instruments/videomancer/tweed/tweed_ex1_s1.png';
+import tweed_ex1_s2 from '/img/instruments/videomancer/tweed/tweed_ex1_s2.png';
+import tweed_ex1_s3 from '/img/instruments/videomancer/tweed/tweed_ex1_s3.png';
+import tweed_ex1_s4 from '/img/instruments/videomancer/tweed/tweed_ex1_s4.png';
+import tweed_ex1_s5 from '/img/instruments/videomancer/tweed/tweed_ex1_s5.png';
+import tweed_ex1_s6 from '/img/instruments/videomancer/tweed/tweed_ex1_s6.png';
+import tweed_ex2_s1 from '/img/instruments/videomancer/tweed/tweed_ex2_s1.png';
+import tweed_ex2_s2 from '/img/instruments/videomancer/tweed/tweed_ex2_s2.png';
+import tweed_ex2_s3 from '/img/instruments/videomancer/tweed/tweed_ex2_s3.png';
+import tweed_ex2_s4 from '/img/instruments/videomancer/tweed/tweed_ex2_s4.png';
+import tweed_ex2_s5 from '/img/instruments/videomancer/tweed/tweed_ex2_s5.png';
+import tweed_ex2_s6 from '/img/instruments/videomancer/tweed/tweed_ex2_s6.png';
+import tweed_ex3_s1 from '/img/instruments/videomancer/tweed/tweed_ex3_s1.png';
+import tweed_ex3_s2 from '/img/instruments/videomancer/tweed/tweed_ex3_s2.png';
+import tweed_ex3_s3 from '/img/instruments/videomancer/tweed/tweed_ex3_s3.png';
+import tweed_ex3_s4 from '/img/instruments/videomancer/tweed/tweed_ex3_s4.png';
+import tweed_ex3_s5 from '/img/instruments/videomancer/tweed/tweed_ex3_s5.png';
+import tweed_ex3_s6 from '/img/instruments/videomancer/tweed/tweed_ex3_s6.png';
 
 # Tweed
 
@@ -23,9 +46,12 @@ import tweed_source3_kodim13_bw from '/img/instruments/videomancer/tweed/tweed_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_hero },
-    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_hero },
-    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_hero },
+    { label: "Dog", before: tweed_source1_dog, after: tweed_hero_s1 },
+    { label: "House", before: tweed_source2_house, after: tweed_hero_s2 },
+    { label: "Clouds", before: tweed_source3_clouds, after: tweed_hero_s3 },
+    { label: "Pattern", before: tweed_source4_pattern, after: tweed_hero_s4 },
+    { label: "Woman", before: tweed_source5_woman, after: tweed_hero_s5 },
+    { label: "Knit", before: tweed_source6_knit, after: tweed_hero_s6 },
   ]}
 />
 *Tweed applying herringbone weave pattern with color fleck scattering to simulate traditional woven fabric texture.*
@@ -217,9 +243,12 @@ These exercises progress from basic herringbone geometry through color palette e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise1_result },
-    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise1_result },
-    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise1_result },
+    { label: "Dog", before: tweed_source1_dog, after: tweed_ex1_s1 },
+    { label: "House", before: tweed_source2_house, after: tweed_ex1_s2 },
+    { label: "Clouds", before: tweed_source3_clouds, after: tweed_ex1_s3 },
+    { label: "Pattern", before: tweed_source4_pattern, after: tweed_ex1_s4 },
+    { label: "Woman", before: tweed_source5_woman, after: tweed_ex1_s5 },
+    { label: "Knit", before: tweed_source6_knit, after: tweed_ex1_s6 },
   ]}
 />
 *Herringbone Geometry — simulated result across source images.*
@@ -242,9 +271,12 @@ These exercises progress from basic herringbone geometry through color palette e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise2_result },
-    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise2_result },
-    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise2_result },
+    { label: "Dog", before: tweed_source1_dog, after: tweed_ex2_s1 },
+    { label: "House", before: tweed_source2_house, after: tweed_ex2_s2 },
+    { label: "Clouds", before: tweed_source3_clouds, after: tweed_ex2_s3 },
+    { label: "Pattern", before: tweed_source4_pattern, after: tweed_ex2_s4 },
+    { label: "Woman", before: tweed_source5_woman, after: tweed_ex2_s5 },
+    { label: "Knit", before: tweed_source6_knit, after: tweed_ex2_s6 },
   ]}
 />
 *Color Palettes and Tinting — simulated result across source images.*
@@ -267,9 +299,12 @@ These exercises progress from basic herringbone geometry through color palette e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tweed_source1_kodim15, after: tweed_exercise3_result },
-    { label: "Kodim03", before: tweed_source2_kodim03, after: tweed_exercise3_result },
-    { label: "Kodim13 B&W", before: tweed_source3_kodim13_bw, after: tweed_exercise3_result },
+    { label: "Dog", before: tweed_source1_dog, after: tweed_ex3_s1 },
+    { label: "House", before: tweed_source2_house, after: tweed_ex3_s2 },
+    { label: "Clouds", before: tweed_source3_clouds, after: tweed_ex3_s3 },
+    { label: "Pattern", before: tweed_source4_pattern, after: tweed_ex3_s4 },
+    { label: "Woman", before: tweed_source5_woman, after: tweed_ex3_s5 },
+    { label: "Knit", before: tweed_source6_knit, after: tweed_ex3_s6 },
   ]}
 />
 *Full Tweed Simulation — simulated result across source images.*

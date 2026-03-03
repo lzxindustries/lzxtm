@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 70
+sidebar_position: 71
 slug: /instruments/videomancer/cuneiform
 title: "Cuneiform"
 image: /img/instruments/videomancer/cuneiform/cuneiform_hero_s1.png
@@ -8,6 +8,7 @@ description: "Five thousand years ago, Mesopotamian scribes pressed a reed stylu
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cuneiform_control_panel from '/img/instruments/videomancer/cuneiform/cuneiform_control_panel.png';
 import cuneiform_source1_house from '/img/instruments/videomancer/cuneiform/cuneiform_source1_house.png';
 import cuneiform_source2_dog from '/img/instruments/videomancer/cuneiform/cuneiform_source2_dog.png';
 import cuneiform_source3_clouds from '/img/instruments/videomancer/cuneiform/cuneiform_source3_clouds.png';
@@ -144,6 +145,8 @@ The contrast and clay tint parameters modulate the range and hue of the rendered
 
 ## Parameter Reference
 
+<img src={cuneiform_control_panel} alt="Videomancer front panel with Cuneiform loaded"/>
+*Videomancer's front panel with Cuneiform active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

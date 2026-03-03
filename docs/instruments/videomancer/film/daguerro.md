@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 72
+sidebar_position: 73
 slug: /instruments/videomancer/daguerro
 title: "Daguerro"
 image: /img/instruments/videomancer/daguerro/daguerro_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before film, before paper prints, the first photographs were made 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import daguerro_control_panel from '/img/instruments/videomancer/daguerro/daguerro_control_panel.png';
 import daguerro_source1_car from '/img/instruments/videomancer/daguerro/daguerro_source1_car.png';
 import daguerro_source2_fruit from '/img/instruments/videomancer/daguerro/daguerro_source2_fruit.png';
 import daguerro_source3_turtle from '/img/instruments/videomancer/daguerro/daguerro_source3_turtle.png';
@@ -128,6 +129,8 @@ The Y and U/V channels follow different paths through the pipeline. Luminance pa
 
 ## Parameter Reference
 
+<img src={daguerro_control_panel} alt="Videomancer front panel with Daguerro loaded"/>
+*Videomancer's front panel with Daguerro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

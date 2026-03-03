@@ -8,6 +8,7 @@ description: "There is a particular quality to chrome — the way it swallows th
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chrome_control_panel from '/img/instruments/videomancer/chrome/chrome_control_panel.png';
 import chrome_source1_house from '/img/instruments/videomancer/chrome/chrome_source1_house.png';
 import chrome_source2_cat from '/img/instruments/videomancer/chrome/chrome_source2_cat.png';
 import chrome_source3_elephant from '/img/instruments/videomancer/chrome/chrome_source3_elephant.png';
@@ -140,6 +141,8 @@ The processing chain is strictly serial: every pixel passes through every stage 
 
 ## Parameter Reference
 
+<img src={chrome_control_panel} alt="Videomancer front panel with Chrome loaded"/>
+*Videomancer's front panel with Chrome active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

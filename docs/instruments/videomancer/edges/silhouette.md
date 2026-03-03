@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 267
+sidebar_position: 272
 slug: /instruments/videomancer/silhouette
 title: "Silhouette"
-image: /img/instruments/videomancer/silhouette/silhouette_hero.png
+image: /img/instruments/videomancer/silhouette/silhouette_hero_s1.png
 description: "Every image is a landscape of brightness and colour values."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import silhouette_hero from '/img/instruments/videomancer/silhouette/silhouette_hero.png';
 import silhouette_control_panel from '/img/instruments/videomancer/silhouette/silhouette_control_panel.png';
-import silhouette_exercise1_result from '/img/instruments/videomancer/silhouette/silhouette_exercise1_result.png';
-import silhouette_exercise2_result from '/img/instruments/videomancer/silhouette/silhouette_exercise2_result.png';
-import silhouette_exercise3_result from '/img/instruments/videomancer/silhouette/silhouette_exercise3_result.png';
-import silhouette_source1_kodim02 from '/img/instruments/videomancer/silhouette/silhouette_source1_kodim02.png';
-import silhouette_source2_kodim07 from '/img/instruments/videomancer/silhouette/silhouette_source2_kodim07.png';
-import silhouette_source3_kodim01_bw from '/img/instruments/videomancer/silhouette/silhouette_source3_kodim01_bw.png';
+import silhouette_source1_house from '/img/instruments/videomancer/silhouette/silhouette_source1_house.png';
+import silhouette_source2_parrot from '/img/instruments/videomancer/silhouette/silhouette_source2_parrot.png';
+import silhouette_source3_elephant from '/img/instruments/videomancer/silhouette/silhouette_source3_elephant.png';
+import silhouette_source4_pattern from '/img/instruments/videomancer/silhouette/silhouette_source4_pattern.png';
+import silhouette_source5_woman from '/img/instruments/videomancer/silhouette/silhouette_source5_woman.png';
+import silhouette_source6_wood from '/img/instruments/videomancer/silhouette/silhouette_source6_wood.png';
+import silhouette_hero_s1 from '/img/instruments/videomancer/silhouette/silhouette_hero_s1.png';
+import silhouette_hero_s2 from '/img/instruments/videomancer/silhouette/silhouette_hero_s2.png';
+import silhouette_hero_s3 from '/img/instruments/videomancer/silhouette/silhouette_hero_s3.png';
+import silhouette_hero_s4 from '/img/instruments/videomancer/silhouette/silhouette_hero_s4.png';
+import silhouette_hero_s5 from '/img/instruments/videomancer/silhouette/silhouette_hero_s5.png';
+import silhouette_hero_s6 from '/img/instruments/videomancer/silhouette/silhouette_hero_s6.png';
+import silhouette_ex1_s1 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s1.png';
+import silhouette_ex1_s2 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s2.png';
+import silhouette_ex1_s3 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s3.png';
+import silhouette_ex1_s4 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s4.png';
+import silhouette_ex1_s5 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s5.png';
+import silhouette_ex1_s6 from '/img/instruments/videomancer/silhouette/silhouette_ex1_s6.png';
+import silhouette_ex2_s1 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s1.png';
+import silhouette_ex2_s2 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s2.png';
+import silhouette_ex2_s3 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s3.png';
+import silhouette_ex2_s4 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s4.png';
+import silhouette_ex2_s5 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s5.png';
+import silhouette_ex2_s6 from '/img/instruments/videomancer/silhouette/silhouette_ex2_s6.png';
+import silhouette_ex3_s1 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s1.png';
+import silhouette_ex3_s2 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s2.png';
+import silhouette_ex3_s3 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s3.png';
+import silhouette_ex3_s4 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s4.png';
+import silhouette_ex3_s5 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s5.png';
+import silhouette_ex3_s6 from '/img/instruments/videomancer/silhouette/silhouette_ex3_s6.png';
 
 # Silhouette
 
@@ -23,9 +46,12 @@ import silhouette_source3_kodim01_bw from '/img/instruments/videomancer/silhouet
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_hero },
-    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_hero },
-    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_hero },
+    { label: "House", before: silhouette_source1_house, after: silhouette_hero_s1 },
+    { label: "Parrot", before: silhouette_source2_parrot, after: silhouette_hero_s2 },
+    { label: "Elephant", before: silhouette_source3_elephant, after: silhouette_hero_s3 },
+    { label: "Pattern", before: silhouette_source4_pattern, after: silhouette_hero_s4 },
+    { label: "Woman", before: silhouette_source5_woman, after: silhouette_hero_s5 },
+    { label: "Wood", before: silhouette_source6_wood, after: silhouette_hero_s6 },
   ]}
 />
 *Silhouette extracting a luminance key from a high-contrast portrait, replacing keyed regions with a warm amber matte colour.*
@@ -224,9 +250,12 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise1_result },
-    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise1_result },
-    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise1_result },
+    { label: "House", before: silhouette_source1_house, after: silhouette_ex1_s1 },
+    { label: "Parrot", before: silhouette_source2_parrot, after: silhouette_ex1_s2 },
+    { label: "Elephant", before: silhouette_source3_elephant, after: silhouette_ex1_s3 },
+    { label: "Pattern", before: silhouette_source4_pattern, after: silhouette_ex1_s4 },
+    { label: "Woman", before: silhouette_source5_woman, after: silhouette_ex1_s5 },
+    { label: "Wood", before: silhouette_source6_wood, after: silhouette_ex1_s6 },
   ]}
 />
 *Basic Luma Silhouette — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise2_result },
-    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise2_result },
-    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise2_result },
+    { label: "House", before: silhouette_source1_house, after: silhouette_ex2_s1 },
+    { label: "Parrot", before: silhouette_source2_parrot, after: silhouette_ex2_s2 },
+    { label: "Elephant", before: silhouette_source3_elephant, after: silhouette_ex2_s3 },
+    { label: "Pattern", before: silhouette_source4_pattern, after: silhouette_ex2_s4 },
+    { label: "Woman", before: silhouette_source5_woman, after: silhouette_ex2_s5 },
+    { label: "Wood", before: silhouette_source6_wood, after: silhouette_ex2_s6 },
   ]}
 />
 *Chroma Key Compositing — simulated result across source images.*
@@ -274,9 +306,12 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: silhouette_source1_kodim02, after: silhouette_exercise3_result },
-    { label: "Kodim07", before: silhouette_source2_kodim07, after: silhouette_exercise3_result },
-    { label: "Kodim01 B&W", before: silhouette_source3_kodim01_bw, after: silhouette_exercise3_result },
+    { label: "House", before: silhouette_source1_house, after: silhouette_ex3_s1 },
+    { label: "Parrot", before: silhouette_source2_parrot, after: silhouette_ex3_s2 },
+    { label: "Elephant", before: silhouette_source3_elephant, after: silhouette_ex3_s3 },
+    { label: "Pattern", before: silhouette_source4_pattern, after: silhouette_ex3_s4 },
+    { label: "Woman", before: silhouette_source5_woman, after: silhouette_ex3_s5 },
+    { label: "Wood", before: silhouette_source6_wood, after: silhouette_ex3_s6 },
   ]}
 />
 *Soft Compositing with Luma Invert — simulated result across source images.*

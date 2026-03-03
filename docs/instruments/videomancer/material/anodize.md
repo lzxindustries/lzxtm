@@ -8,6 +8,7 @@ description: "Anodize simulates the appearance of anodized aluminum — the elec
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import anodize_control_panel from '/img/instruments/videomancer/anodize/anodize_control_panel.png';
 import anodize_source1_castle from '/img/instruments/videomancer/anodize/anodize_source1_castle.png';
 import anodize_source2_car from '/img/instruments/videomancer/anodize/anodize_source2_car.png';
 import anodize_source3_elephant from '/img/instruments/videomancer/anodize/anodize_source3_elephant.png';
@@ -124,6 +125,9 @@ The metallic sheen uses 4 tiers based on the Sheen pot value: above 768 → shif
 ---
 
 ## Parameter Reference
+
+<img src={anodize_control_panel} alt="Videomancer front panel with Anodize loaded"/>
+*Videomancer's front panel with Anodize active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

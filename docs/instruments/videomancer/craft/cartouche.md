@@ -8,6 +8,7 @@ description: "Ancient Egyptian artists did not paint pictures the way we underst
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cartouche_control_panel from '/img/instruments/videomancer/cartouche/cartouche_control_panel.png';
 import cartouche_source1_skull from '/img/instruments/videomancer/cartouche/cartouche_source1_skull.png';
 import cartouche_source2_castle from '/img/instruments/videomancer/cartouche/cartouche_source2_castle.png';
 import cartouche_source3_collage from '/img/instruments/videomancer/cartouche/cartouche_source3_collage.png';
@@ -135,6 +136,8 @@ Note that Mode Vary (Toggle 8) and Scale Rank (Toggle 10) are declared as VHDL s
 
 ## Parameter Reference
 
+<img src={cartouche_control_panel} alt="Videomancer front panel with Cartouche loaded"/>
+*Videomancer's front panel with Cartouche active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

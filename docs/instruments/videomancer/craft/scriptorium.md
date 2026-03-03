@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 259
+sidebar_position: 263
 slug: /instruments/videomancer/scriptorium
 title: "Scriptorium"
-image: /img/instruments/videomancer/scriptorium/scriptorium_hero.png
+image: /img/instruments/videomancer/scriptorium/scriptorium_hero_s1.png
 description: "Before the printing press and before movable type, every book in Europe was made by hand."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import scriptorium_hero from '/img/instruments/videomancer/scriptorium/scriptorium_hero.png';
 import scriptorium_control_panel from '/img/instruments/videomancer/scriptorium/scriptorium_control_panel.png';
-import scriptorium_exercise1_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise1_result.png';
-import scriptorium_exercise2_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise2_result.png';
-import scriptorium_exercise3_result from '/img/instruments/videomancer/scriptorium/scriptorium_exercise3_result.png';
-import scriptorium_source1_kodim03 from '/img/instruments/videomancer/scriptorium/scriptorium_source1_kodim03.png';
-import scriptorium_source2_kodim13 from '/img/instruments/videomancer/scriptorium/scriptorium_source2_kodim13.png';
-import scriptorium_source3_kodim13_bw from '/img/instruments/videomancer/scriptorium/scriptorium_source3_kodim13_bw.png';
+import scriptorium_source1_house from '/img/instruments/videomancer/scriptorium/scriptorium_source1_house.png';
+import scriptorium_source2_fruit from '/img/instruments/videomancer/scriptorium/scriptorium_source2_fruit.png';
+import scriptorium_source3_elephant from '/img/instruments/videomancer/scriptorium/scriptorium_source3_elephant.png';
+import scriptorium_source4_pattern from '/img/instruments/videomancer/scriptorium/scriptorium_source4_pattern.png';
+import scriptorium_source5_boy from '/img/instruments/videomancer/scriptorium/scriptorium_source5_boy.png';
+import scriptorium_source6_knit from '/img/instruments/videomancer/scriptorium/scriptorium_source6_knit.png';
+import scriptorium_hero_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s1.png';
+import scriptorium_hero_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s2.png';
+import scriptorium_hero_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s3.png';
+import scriptorium_hero_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s4.png';
+import scriptorium_hero_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s5.png';
+import scriptorium_hero_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_hero_s6.png';
+import scriptorium_ex1_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s1.png';
+import scriptorium_ex1_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s2.png';
+import scriptorium_ex1_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s3.png';
+import scriptorium_ex1_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s4.png';
+import scriptorium_ex1_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s5.png';
+import scriptorium_ex1_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex1_s6.png';
+import scriptorium_ex2_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s1.png';
+import scriptorium_ex2_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s2.png';
+import scriptorium_ex2_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s3.png';
+import scriptorium_ex2_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s4.png';
+import scriptorium_ex2_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s5.png';
+import scriptorium_ex2_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex2_s6.png';
+import scriptorium_ex3_s1 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s1.png';
+import scriptorium_ex3_s2 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s2.png';
+import scriptorium_ex3_s3 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s3.png';
+import scriptorium_ex3_s4 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s4.png';
+import scriptorium_ex3_s5 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s5.png';
+import scriptorium_ex3_s6 from '/img/instruments/videomancer/scriptorium/scriptorium_ex3_s6.png';
 
 # Scriptorium
 
@@ -23,9 +46,12 @@ import scriptorium_source3_kodim13_bw from '/img/instruments/videomancer/scripto
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_hero },
-    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_hero },
-    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_hero },
+    { label: "House", before: scriptorium_source1_house, after: scriptorium_hero_s1 },
+    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_hero_s2 },
+    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_hero_s3 },
+    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_hero_s4 },
+    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_hero_s5 },
+    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_hero_s6 },
   ]}
 />
 *Scriptorium compositing live video into the pictorial field of a procedurally generated illuminated manuscript with knotwork borders and mineral pigment quantization.*
@@ -213,9 +239,12 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise1_result },
-    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise1_result },
-    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise1_result },
+    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex1_s1 },
+    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex1_s2 },
+    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex1_s3 },
+    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex1_s4 },
+    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex1_s5 },
+    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex1_s6 },
   ]}
 />
 *Knotwork Page — simulated result across source images.*
@@ -237,9 +266,12 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise2_result },
-    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise2_result },
-    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise2_result },
+    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex2_s1 },
+    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex2_s2 },
+    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex2_s3 },
+    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex2_s4 },
+    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex2_s5 },
+    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex2_s6 },
   ]}
 />
 *Gilded Miniature — simulated result across source images.*
@@ -262,9 +294,12 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: scriptorium_source1_kodim03, after: scriptorium_exercise3_result },
-    { label: "Kodim13", before: scriptorium_source2_kodim13, after: scriptorium_exercise3_result },
-    { label: "Kodim13 B&W", before: scriptorium_source3_kodim13_bw, after: scriptorium_exercise3_result },
+    { label: "House", before: scriptorium_source1_house, after: scriptorium_ex3_s1 },
+    { label: "Fruit", before: scriptorium_source2_fruit, after: scriptorium_ex3_s2 },
+    { label: "Elephant", before: scriptorium_source3_elephant, after: scriptorium_ex3_s3 },
+    { label: "Pattern", before: scriptorium_source4_pattern, after: scriptorium_ex3_s4 },
+    { label: "Boy", before: scriptorium_source5_boy, after: scriptorium_ex3_s5 },
+    { label: "Knit", before: scriptorium_source6_knit, after: scriptorium_ex3_s6 },
   ]}
 />
 *Four Ornament Comparison — simulated result across source images.*

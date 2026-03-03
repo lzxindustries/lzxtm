@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 163
+sidebar_position: 165
 slug: /instruments/videomancer/lascaux
 title: "Lascaux"
 image: /img/instruments/videomancer/lascaux/lascaux_hero_s1.png
@@ -8,6 +8,7 @@ description: "Thirty-two thousand years ago, artists crouched in the darkness of
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import lascaux_control_panel from '/img/instruments/videomancer/lascaux/lascaux_control_panel.png';
 import lascaux_source1_sunset from '/img/instruments/videomancer/lascaux/lascaux_source1_sunset.png';
 import lascaux_source2_parrot from '/img/instruments/videomancer/lascaux/lascaux_source2_parrot.png';
 import lascaux_source3_clouds from '/img/instruments/videomancer/lascaux/lascaux_source3_clouds.png';
@@ -146,6 +147,8 @@ The four processing stages (palette → contour → grain → torch) execute seq
 
 ## Parameter Reference
 
+<img src={lascaux_control_panel} alt="Videomancer front panel with Lascaux loaded"/>
+*Videomancer's front panel with Lascaux active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 157
+sidebar_position: 159
 slug: /instruments/videomancer/keystone
 title: "Keystone"
 image: /img/instruments/videomancer/keystone/keystone_hero_s1.png
@@ -8,6 +8,7 @@ description: "Most video is captured as a rectangle, and most displays reproduce
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import keystone_control_panel from '/img/instruments/videomancer/keystone/keystone_control_panel.png';
 import keystone_source1_field from '/img/instruments/videomancer/keystone/keystone_source1_field.png';
 import keystone_source2_car from '/img/instruments/videomancer/keystone/keystone_source2_car.png';
 import keystone_source3_elephant from '/img/instruments/videomancer/keystone/keystone_source3_elephant.png';
@@ -123,6 +124,8 @@ The animation oscillator runs independently, advancing its phase accumulator at 
 
 ## Parameter Reference
 
+<img src={keystone_control_panel} alt="Videomancer front panel with Keystone loaded"/>
+*Videomancer's front panel with Keystone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

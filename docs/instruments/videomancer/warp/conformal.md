@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 61
+sidebar_position: 62
 slug: /instruments/videomancer/conformal
 title: "Conformal"
 image: /img/instruments/videomancer/conformal/conformal_hero_s1.png
@@ -8,6 +8,7 @@ description: "Mathematics is full of functions that preserve angles — and in t
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import conformal_control_panel from '/img/instruments/videomancer/conformal/conformal_control_panel.png';
 import conformal_source1_car from '/img/instruments/videomancer/conformal/conformal_source1_car.png';
 import conformal_source2_parrot from '/img/instruments/videomancer/conformal/conformal_source2_parrot.png';
 import conformal_source3_clouds from '/img/instruments/videomancer/conformal/conformal_source3_clouds.png';
@@ -119,6 +120,8 @@ The heart of Conformal is the four-clock coordinate pipeline that transforms pix
 
 ## Parameter Reference
 
+<img src={conformal_control_panel} alt="Videomancer front panel with Conformal loaded"/>
+*Videomancer's front panel with Conformal active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,13 +223,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 1: Inversion Through Center
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise1_result },
-    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise1_result },
-    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise1_result },
-  ]}
-/>
+![Inversion Through Center result](assets/conformal_exercise1_result.png)
 *Inversion Through Center — simulated result across source images.*
 **Source**: Feed a high-contrast graphic or text source — white text on a black background works well because straight edges make the inversion visible.
 
@@ -245,13 +242,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 2: Joukowski Airfoil Stretch
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise2_result },
-    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise2_result },
-    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise2_result },
-  ]}
-/>
+![Joukowski Airfoil Stretch result](assets/conformal_exercise2_result.png)
 *Joukowski Airfoil Stretch — simulated result across source images.*
 **Source**: Feed a live camera or a colorful, organic video source with curves and gradients.
 
@@ -270,13 +261,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ### Exercise 3: Power Map Kaleidoscope with Tiling
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_exercise3_result },
-    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_exercise3_result },
-    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_exercise3_result },
-  ]}
-/>
+![Power Map Kaleidoscope with Tiling result](assets/conformal_exercise3_result.png)
 *Power Map Kaleidoscope with Tiling — simulated result across source images.*
 **Source**: Feed a symmetrical pattern or mandala-like video source — or any video with strong central features.
 

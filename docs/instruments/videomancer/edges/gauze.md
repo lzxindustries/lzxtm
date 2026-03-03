@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 123
+sidebar_position: 124
 slug: /instruments/videomancer/gauze
 title: "Gauze"
 image: /img/instruments/videomancer/gauze/gauze_hero_s1.png
@@ -8,6 +8,7 @@ description: "Video images contain spatial detail at every scale — broad gradi
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import gauze_control_panel from '/img/instruments/videomancer/gauze/gauze_control_panel.png';
 import gauze_source1_house from '/img/instruments/videomancer/gauze/gauze_source1_house.png';
 import gauze_source2_dog from '/img/instruments/videomancer/gauze/gauze_source2_dog.png';
 import gauze_source3_turtle from '/img/instruments/videomancer/gauze/gauze_source3_turtle.png';
@@ -137,6 +138,8 @@ The fade interpolator sits after all filtering and operates in unsigned 10-bit s
 
 ## Parameter Reference
 
+<img src={gauze_control_panel} alt="Videomancer front panel with Gauze loaded"/>
+*Videomancer's front panel with Gauze active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

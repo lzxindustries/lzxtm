@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 109
+sidebar_position: 110
 slug: /instruments/videomancer/filigree
 title: "Filigree"
 image: /img/instruments/videomancer/filigree/filigree_hero.png

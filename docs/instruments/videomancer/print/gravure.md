@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 129
+sidebar_position: 130
 slug: /instruments/videomancer/gravure
 title: "Gravure"
 image: /img/instruments/videomancer/gravure/gravure_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before photographic reproduction, the finest printed images were m
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import gravure_control_panel from '/img/instruments/videomancer/gravure/gravure_control_panel.png';
 import gravure_source1_car from '/img/instruments/videomancer/gravure/gravure_source1_car.png';
 import gravure_source2_castle from '/img/instruments/videomancer/gravure/gravure_source2_castle.png';
 import gravure_source3_collage from '/img/instruments/videomancer/gravure/gravure_source3_collage.png';
@@ -127,6 +128,8 @@ The processing chain converts the input luminance into an ink density value and 
 
 ## Parameter Reference
 
+<img src={gravure_control_panel} alt="Videomancer front panel with Gravure loaded"/>
+*Videomancer's front panel with Gravure active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

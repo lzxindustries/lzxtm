@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 77
+sidebar_position: 78
 slug: /instruments/videomancer/degauss
 title: "Degauss"
 image: /img/instruments/videomancer/degauss/degauss_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every cathode-ray tube shipped from the factory with its electron 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import degauss_control_panel from '/img/instruments/videomancer/degauss/degauss_control_panel.png';
 import degauss_source1_cat from '/img/instruments/videomancer/degauss/degauss_source1_cat.png';
 import degauss_source2_runner from '/img/instruments/videomancer/degauss/degauss_source2_runner.png';
 import degauss_source3_collage from '/img/instruments/videomancer/degauss/degauss_source3_collage.png';
@@ -140,6 +141,8 @@ The core of Degauss is a single interaction: a triangle wave derived from vertic
 
 ## Parameter Reference
 
+<img src={degauss_control_panel} alt="Videomancer front panel with Degauss loaded"/>
+*Videomancer's front panel with Degauss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

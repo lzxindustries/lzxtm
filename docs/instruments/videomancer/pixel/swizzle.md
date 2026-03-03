@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 291
+sidebar_position: 296
 slug: /instruments/videomancer/swizzle
 title: "Swizzle"
-image: /img/instruments/videomancer/swizzle/swizzle_hero.png
+image: /img/instruments/videomancer/swizzle/swizzle_hero_s1.png
 description: "Every pixel in the Videomancer video pipeline is a triplet of numbers — luminance (Y), and two chrominance components (U and V)."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import swizzle_hero from '/img/instruments/videomancer/swizzle/swizzle_hero.png';
 import swizzle_control_panel from '/img/instruments/videomancer/swizzle/swizzle_control_panel.png';
-import swizzle_exercise1_result from '/img/instruments/videomancer/swizzle/swizzle_exercise1_result.png';
-import swizzle_exercise2_result from '/img/instruments/videomancer/swizzle/swizzle_exercise2_result.png';
-import swizzle_exercise3_result from '/img/instruments/videomancer/swizzle/swizzle_exercise3_result.png';
-import swizzle_source1_kodim02 from '/img/instruments/videomancer/swizzle/swizzle_source1_kodim02.png';
-import swizzle_source2_kodim07 from '/img/instruments/videomancer/swizzle/swizzle_source2_kodim07.png';
-import swizzle_source3_kodim01_bw from '/img/instruments/videomancer/swizzle/swizzle_source3_kodim01_bw.png';
+import swizzle_source1_cat from '/img/instruments/videomancer/swizzle/swizzle_source1_cat.png';
+import swizzle_source2_castle from '/img/instruments/videomancer/swizzle/swizzle_source2_castle.png';
+import swizzle_source3_collage from '/img/instruments/videomancer/swizzle/swizzle_source3_collage.png';
+import swizzle_source4_pattern from '/img/instruments/videomancer/swizzle/swizzle_source4_pattern.png';
+import swizzle_source5_man from '/img/instruments/videomancer/swizzle/swizzle_source5_man.png';
+import swizzle_source6_wood from '/img/instruments/videomancer/swizzle/swizzle_source6_wood.png';
+import swizzle_hero_s1 from '/img/instruments/videomancer/swizzle/swizzle_hero_s1.png';
+import swizzle_hero_s2 from '/img/instruments/videomancer/swizzle/swizzle_hero_s2.png';
+import swizzle_hero_s3 from '/img/instruments/videomancer/swizzle/swizzle_hero_s3.png';
+import swizzle_hero_s4 from '/img/instruments/videomancer/swizzle/swizzle_hero_s4.png';
+import swizzle_hero_s5 from '/img/instruments/videomancer/swizzle/swizzle_hero_s5.png';
+import swizzle_hero_s6 from '/img/instruments/videomancer/swizzle/swizzle_hero_s6.png';
+import swizzle_ex1_s1 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s1.png';
+import swizzle_ex1_s2 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s2.png';
+import swizzle_ex1_s3 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s3.png';
+import swizzle_ex1_s4 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s4.png';
+import swizzle_ex1_s5 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s5.png';
+import swizzle_ex1_s6 from '/img/instruments/videomancer/swizzle/swizzle_ex1_s6.png';
+import swizzle_ex2_s1 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s1.png';
+import swizzle_ex2_s2 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s2.png';
+import swizzle_ex2_s3 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s3.png';
+import swizzle_ex2_s4 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s4.png';
+import swizzle_ex2_s5 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s5.png';
+import swizzle_ex2_s6 from '/img/instruments/videomancer/swizzle/swizzle_ex2_s6.png';
+import swizzle_ex3_s1 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s1.png';
+import swizzle_ex3_s2 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s2.png';
+import swizzle_ex3_s3 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s3.png';
+import swizzle_ex3_s4 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s4.png';
+import swizzle_ex3_s5 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s5.png';
+import swizzle_ex3_s6 from '/img/instruments/videomancer/swizzle/swizzle_ex3_s6.png';
 
 # Swizzle
 
@@ -23,9 +46,12 @@ import swizzle_source3_kodim01_bw from '/img/instruments/videomancer/swizzle/swi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_hero },
-    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_hero },
-    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_hero },
+    { label: "Cat", before: swizzle_source1_cat, after: swizzle_hero_s1 },
+    { label: "Castle", before: swizzle_source2_castle, after: swizzle_hero_s2 },
+    { label: "Collage", before: swizzle_source3_collage, after: swizzle_hero_s3 },
+    { label: "Pattern", before: swizzle_source4_pattern, after: swizzle_hero_s4 },
+    { label: "Man", before: swizzle_source5_man, after: swizzle_hero_s5 },
+    { label: "Wood", before: swizzle_source6_wood, after: swizzle_hero_s6 },
   ]}
 />
 *Swizzle reordering and offsetting YUV channels to shift hues and reveal the hidden color structure of video signals.*
@@ -218,9 +244,12 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise1_result },
-    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise1_result },
-    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise1_result },
+    { label: "Cat", before: swizzle_source1_cat, after: swizzle_ex1_s1 },
+    { label: "Castle", before: swizzle_source2_castle, after: swizzle_ex1_s2 },
+    { label: "Collage", before: swizzle_source3_collage, after: swizzle_ex1_s3 },
+    { label: "Pattern", before: swizzle_source4_pattern, after: swizzle_ex1_s4 },
+    { label: "Man", before: swizzle_source5_man, after: swizzle_ex1_s5 },
+    { label: "Wood", before: swizzle_source6_wood, after: swizzle_ex1_s6 },
   ]}
 />
 *Chroma Offset Color Wash — simulated result across source images.*
@@ -242,9 +271,12 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise2_result },
-    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise2_result },
-    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise2_result },
+    { label: "Cat", before: swizzle_source1_cat, after: swizzle_ex2_s1 },
+    { label: "Castle", before: swizzle_source2_castle, after: swizzle_ex2_s2 },
+    { label: "Collage", before: swizzle_source3_collage, after: swizzle_ex2_s3 },
+    { label: "Pattern", before: swizzle_source4_pattern, after: swizzle_ex2_s4 },
+    { label: "Man", before: swizzle_source5_man, after: swizzle_ex2_s5 },
+    { label: "Wood", before: swizzle_source6_wood, after: swizzle_ex2_s6 },
   ]}
 />
 *Channel Swap and Inversion — simulated result across source images.*
@@ -266,9 +298,12 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: swizzle_source1_kodim02, after: swizzle_exercise3_result },
-    { label: "Kodim07", before: swizzle_source2_kodim07, after: swizzle_exercise3_result },
-    { label: "Kodim01 B&W", before: swizzle_source3_kodim01_bw, after: swizzle_exercise3_result },
+    { label: "Cat", before: swizzle_source1_cat, after: swizzle_ex3_s1 },
+    { label: "Castle", before: swizzle_source2_castle, after: swizzle_ex3_s2 },
+    { label: "Collage", before: swizzle_source3_collage, after: swizzle_ex3_s3 },
+    { label: "Pattern", before: swizzle_source4_pattern, after: swizzle_ex3_s4 },
+    { label: "Man", before: swizzle_source5_man, after: swizzle_ex3_s5 },
+    { label: "Wood", before: swizzle_source6_wood, after: swizzle_ex3_s6 },
   ]}
 />
 *Subtle Color Grading with Mix — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 78
+sidebar_position: 79
 slug: /instruments/videomancer/delirium
 title: "Delirium"
 image: /img/instruments/videomancer/delirium/delirium_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every line of a video image is a row of numbers — brightness and
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import delirium_control_panel from '/img/instruments/videomancer/delirium/delirium_control_panel.png';
 import delirium_source1_fruit from '/img/instruments/videomancer/delirium/delirium_source1_fruit.png';
 import delirium_source2_field from '/img/instruments/videomancer/delirium/delirium_source2_field.png';
 import delirium_source3_collage from '/img/instruments/videomancer/delirium/delirium_source3_collage.png';
@@ -171,6 +172,8 @@ The phase accumulators advance once per frame (at vsync), not per scanline. This
 
 ## Parameter Reference
 
+<img src={delirium_control_panel} alt="Videomancer front panel with Delirium loaded"/>
+*Videomancer's front panel with Delirium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

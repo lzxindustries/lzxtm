@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 96
+sidebar_position: 97
 slug: /instruments/videomancer/elastica
 title: "Elastica"
 image: /img/instruments/videomancer/elastica/elastica_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the 1970s, a single machine dominated the world of broadcast mo
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import elastica_control_panel from '/img/instruments/videomancer/elastica/elastica_control_panel.png';
 import elastica_source1_house from '/img/instruments/videomancer/elastica/elastica_source1_house.png';
 import elastica_source2_boat from '/img/instruments/videomancer/elastica/elastica_source2_boat.png';
 import elastica_source3_collage from '/img/instruments/videomancer/elastica/elastica_source3_collage.png';
@@ -135,6 +136,8 @@ The horizontal displacement path and the vertical warp path are largely independ
 
 ## Parameter Reference
 
+<img src={elastica_control_panel} alt="Videomancer front panel with Elastica loaded"/>
+*Videomancer's front panel with Elastica active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

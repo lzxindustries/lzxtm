@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 92
+sidebar_position: 93
 slug: /instruments/videomancer/dropout
 title: "Dropout"
 image: /img/instruments/videomancer/dropout/dropout_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every VHS cassette is a battlefield between the recording and time
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dropout_control_panel from '/img/instruments/videomancer/dropout/dropout_control_panel.png';
 import dropout_source1_runner from '/img/instruments/videomancer/dropout/dropout_source1_runner.png';
 import dropout_source2_boat from '/img/instruments/videomancer/dropout/dropout_source2_boat.png';
 import dropout_source3_elephant from '/img/instruments/videomancer/dropout/dropout_source3_elephant.png';
@@ -135,6 +136,8 @@ The chroma IIR filter resets its state to mid-scale (512) at each line start. Th
 
 ## Parameter Reference
 
+<img src={dropout_control_panel} alt="Videomancer front panel with Dropout loaded"/>
+*Videomancer's front panel with Dropout active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

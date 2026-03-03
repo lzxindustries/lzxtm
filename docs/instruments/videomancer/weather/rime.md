@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 246
+sidebar_position: 250
 slug: /instruments/videomancer/rime
 title: "Rime"
 image: /img/instruments/videomancer/rime/rime_hero_s1.png
@@ -8,6 +8,7 @@ description: "In 1885, a Vermont farmer named Wilson Bentley attached a bellows 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import rime_control_panel from '/img/instruments/videomancer/rime/rime_control_panel.png';
 import rime_source1_skull from '/img/instruments/videomancer/rime/rime_source1_skull.png';
 import rime_source2_boat from '/img/instruments/videomancer/rime/rime_source2_boat.png';
 import rime_source3_clouds from '/img/instruments/videomancer/rime/rime_source3_clouds.png';
@@ -125,6 +126,8 @@ The display pipeline and growth engine operate in different time domains. The gr
 
 ## Parameter Reference
 
+<img src={rime_control_panel} alt="Videomancer front panel with Rime loaded"/>
+*Videomancer's front panel with Rime active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

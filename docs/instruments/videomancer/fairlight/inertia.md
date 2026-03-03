@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 142
+sidebar_position: 143
 slug: /instruments/videomancer/inertia
 title: "Inertia"
 image: /img/instruments/videomancer/inertia/inertia_hero_s1.png
@@ -8,6 +8,7 @@ description: "Most Videomancer programs give you direct control — turn a knob,
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import inertia_control_panel from '/img/instruments/videomancer/inertia/inertia_control_panel.png';
 import inertia_source1_field from '/img/instruments/videomancer/inertia/inertia_source1_field.png';
 import inertia_source2_sunset from '/img/instruments/videomancer/inertia/inertia_source2_sunset.png';
 import inertia_source3_clouds from '/img/instruments/videomancer/inertia/inertia_source3_clouds.png';
@@ -122,6 +123,8 @@ The critical interaction is between the physics engine and the sample-and-hold g
 
 ## Parameter Reference
 
+<img src={inertia_control_panel} alt="Videomancer front panel with Inertia loaded"/>
+*Videomancer's front panel with Inertia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

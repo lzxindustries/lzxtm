@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 213
+sidebar_position: 216
 slug: /instruments/videomancer/parade
 title: "Parade"
 image: /img/instruments/videomancer/parade/parade_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before digital scopes and vectorscopes, broadcast engineers relied
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import parade_control_panel from '/img/instruments/videomancer/parade/parade_control_panel.png';
 import parade_source1_dog from '/img/instruments/videomancer/parade/parade_source1_dog.png';
 import parade_source2_parrot from '/img/instruments/videomancer/parade/parade_source2_parrot.png';
 import parade_source3_elephant from '/img/instruments/videomancer/parade/parade_source3_elephant.png';
@@ -144,6 +145,8 @@ The critical interaction is between the line buffer write path and the display r
 
 ## Parameter Reference
 
+<img src={parade_control_panel} alt="Videomancer front panel with Parade loaded"/>
+*Videomancer's front panel with Parade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

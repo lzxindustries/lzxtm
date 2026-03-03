@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 206
+sidebar_position: 209
 slug: /instruments/videomancer/oilslick
 title: "Oilslick"
 image: /img/instruments/videomancer/oilslick/oilslick_hero_s1.png
@@ -8,6 +8,7 @@ description: "Oil on water shimmers because the film is thin enough that light r
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import oilslick_control_panel from '/img/instruments/videomancer/oilslick/oilslick_control_panel.png';
 import oilslick_source1_field from '/img/instruments/videomancer/oilslick/oilslick_source1_field.png';
 import oilslick_source2_house from '/img/instruments/videomancer/oilslick/oilslick_source2_house.png';
 import oilslick_source3_collage from '/img/instruments/videomancer/oilslick/oilslick_source3_collage.png';
@@ -132,6 +133,8 @@ The phase separation mechanism is the key to spectral variety. When the V-channe
 
 ## Parameter Reference
 
+<img src={oilslick_control_panel} alt="Videomancer front panel with Oilslick loaded"/>
+*Videomancer's front panel with Oilslick active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 222
+sidebar_position: 225
 slug: /instruments/videomancer/phantasma
 title: "Phantasma"
 image: /img/instruments/videomancer/phantasma/phantasma_hero_s1.png
@@ -8,6 +8,7 @@ description: "Phantasma is a pattern generator disguised as a video processor."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import phantasma_control_panel from '/img/instruments/videomancer/phantasma/phantasma_control_panel.png';
 import phantasma_source1_dog from '/img/instruments/videomancer/phantasma/phantasma_source1_dog.png';
 import phantasma_source2_fruit from '/img/instruments/videomancer/phantasma/phantasma_source2_fruit.png';
 import phantasma_source3_elephant from '/img/instruments/videomancer/phantasma/phantasma_source3_elephant.png';
@@ -137,6 +138,8 @@ The key architectural insight is that Phantasma is a *three-oscillator FM synthe
 
 ## Parameter Reference
 
+<img src={phantasma_control_panel} alt="Videomancer front panel with Phantasma loaded"/>
+*Videomancer's front panel with Phantasma active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

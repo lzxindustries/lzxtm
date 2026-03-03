@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 284
+sidebar_position: 289
 slug: /instruments/videomancer/stipple
 title: "Stipple"
-image: /img/instruments/videomancer/stipple/stipple_hero.png
+image: /img/instruments/videomancer/stipple/stipple_hero_s1.png
 description: "Every classic computer had a fixed palette — a small set of colors chosen by the hardware designers, often constrained by cost, memory, and the television standards of the era."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stipple_hero from '/img/instruments/videomancer/stipple/stipple_hero.png';
 import stipple_control_panel from '/img/instruments/videomancer/stipple/stipple_control_panel.png';
-import stipple_exercise1_result from '/img/instruments/videomancer/stipple/stipple_exercise1_result.png';
-import stipple_exercise2_result from '/img/instruments/videomancer/stipple/stipple_exercise2_result.png';
-import stipple_exercise3_result from '/img/instruments/videomancer/stipple/stipple_exercise3_result.png';
-import stipple_source1_kodim03 from '/img/instruments/videomancer/stipple/stipple_source1_kodim03.png';
-import stipple_source2_kodim15 from '/img/instruments/videomancer/stipple/stipple_source2_kodim15.png';
-import stipple_source3_peppers_512 from '/img/instruments/videomancer/stipple/stipple_source3_peppers_512.png';
+import stipple_source1_parrot from '/img/instruments/videomancer/stipple/stipple_source1_parrot.png';
+import stipple_source2_car from '/img/instruments/videomancer/stipple/stipple_source2_car.png';
+import stipple_source3_elephant from '/img/instruments/videomancer/stipple/stipple_source3_elephant.png';
+import stipple_source4_pattern from '/img/instruments/videomancer/stipple/stipple_source4_pattern.png';
+import stipple_source5_woman from '/img/instruments/videomancer/stipple/stipple_source5_woman.png';
+import stipple_source6_berries from '/img/instruments/videomancer/stipple/stipple_source6_berries.png';
+import stipple_hero_s1 from '/img/instruments/videomancer/stipple/stipple_hero_s1.png';
+import stipple_hero_s2 from '/img/instruments/videomancer/stipple/stipple_hero_s2.png';
+import stipple_hero_s3 from '/img/instruments/videomancer/stipple/stipple_hero_s3.png';
+import stipple_hero_s4 from '/img/instruments/videomancer/stipple/stipple_hero_s4.png';
+import stipple_hero_s5 from '/img/instruments/videomancer/stipple/stipple_hero_s5.png';
+import stipple_hero_s6 from '/img/instruments/videomancer/stipple/stipple_hero_s6.png';
+import stipple_ex1_s1 from '/img/instruments/videomancer/stipple/stipple_ex1_s1.png';
+import stipple_ex1_s2 from '/img/instruments/videomancer/stipple/stipple_ex1_s2.png';
+import stipple_ex1_s3 from '/img/instruments/videomancer/stipple/stipple_ex1_s3.png';
+import stipple_ex1_s4 from '/img/instruments/videomancer/stipple/stipple_ex1_s4.png';
+import stipple_ex1_s5 from '/img/instruments/videomancer/stipple/stipple_ex1_s5.png';
+import stipple_ex1_s6 from '/img/instruments/videomancer/stipple/stipple_ex1_s6.png';
+import stipple_ex2_s1 from '/img/instruments/videomancer/stipple/stipple_ex2_s1.png';
+import stipple_ex2_s2 from '/img/instruments/videomancer/stipple/stipple_ex2_s2.png';
+import stipple_ex2_s3 from '/img/instruments/videomancer/stipple/stipple_ex2_s3.png';
+import stipple_ex2_s4 from '/img/instruments/videomancer/stipple/stipple_ex2_s4.png';
+import stipple_ex2_s5 from '/img/instruments/videomancer/stipple/stipple_ex2_s5.png';
+import stipple_ex2_s6 from '/img/instruments/videomancer/stipple/stipple_ex2_s6.png';
+import stipple_ex3_s1 from '/img/instruments/videomancer/stipple/stipple_ex3_s1.png';
+import stipple_ex3_s2 from '/img/instruments/videomancer/stipple/stipple_ex3_s2.png';
+import stipple_ex3_s3 from '/img/instruments/videomancer/stipple/stipple_ex3_s3.png';
+import stipple_ex3_s4 from '/img/instruments/videomancer/stipple/stipple_ex3_s4.png';
+import stipple_ex3_s5 from '/img/instruments/videomancer/stipple/stipple_ex3_s5.png';
+import stipple_ex3_s6 from '/img/instruments/videomancer/stipple/stipple_ex3_s6.png';
 
 # Stipple
 
@@ -23,9 +46,12 @@ import stipple_source3_peppers_512 from '/img/instruments/videomancer/stipple/st
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_hero },
-    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_hero },
-    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_hero },
+    { label: "Parrot", before: stipple_source1_parrot, after: stipple_hero_s1 },
+    { label: "Car", before: stipple_source2_car, after: stipple_hero_s2 },
+    { label: "Elephant", before: stipple_source3_elephant, after: stipple_hero_s3 },
+    { label: "Pattern", before: stipple_source4_pattern, after: stipple_hero_s4 },
+    { label: "Woman", before: stipple_source5_woman, after: stipple_hero_s5 },
+    { label: "Berries", before: stipple_source6_berries, after: stipple_hero_s6 },
   ]}
 />
 *Stipple mapping live video through eight classic computing palettes with ordered Bayer dithering to recreate the look of Game Boy, CGA, Macintosh, NES, EGA, C64, Amiga, and Amstrad CPC screens.*
@@ -208,9 +234,12 @@ These exercises progress from basic palette selection through dither exploration
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise1_result },
-    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise1_result },
-    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise1_result },
+    { label: "Parrot", before: stipple_source1_parrot, after: stipple_ex1_s1 },
+    { label: "Car", before: stipple_source2_car, after: stipple_ex1_s2 },
+    { label: "Elephant", before: stipple_source3_elephant, after: stipple_ex1_s3 },
+    { label: "Pattern", before: stipple_source4_pattern, after: stipple_ex1_s4 },
+    { label: "Woman", before: stipple_source5_woman, after: stipple_ex1_s5 },
+    { label: "Berries", before: stipple_source6_berries, after: stipple_ex1_s6 },
   ]}
 />
 *Platform Showcase — simulated result across source images.*
@@ -232,9 +261,12 @@ These exercises progress from basic palette selection through dither exploration
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise2_result },
-    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise2_result },
-    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise2_result },
+    { label: "Parrot", before: stipple_source1_parrot, after: stipple_ex2_s1 },
+    { label: "Car", before: stipple_source2_car, after: stipple_ex2_s2 },
+    { label: "Elephant", before: stipple_source3_elephant, after: stipple_ex2_s3 },
+    { label: "Pattern", before: stipple_source4_pattern, after: stipple_ex2_s4 },
+    { label: "Woman", before: stipple_source5_woman, after: stipple_ex2_s5 },
+    { label: "Berries", before: stipple_source6_berries, after: stipple_ex2_s6 },
   ]}
 />
 *Dither Textures — simulated result across source images.*
@@ -257,9 +289,12 @@ These exercises progress from basic palette selection through dither exploration
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stipple_source1_kodim03, after: stipple_exercise3_result },
-    { label: "Kodim15", before: stipple_source2_kodim15, after: stipple_exercise3_result },
-    { label: "Peppers", before: stipple_source3_peppers_512, after: stipple_exercise3_result },
+    { label: "Parrot", before: stipple_source1_parrot, after: stipple_ex3_s1 },
+    { label: "Car", before: stipple_source2_car, after: stipple_ex3_s2 },
+    { label: "Elephant", before: stipple_source3_elephant, after: stipple_ex3_s3 },
+    { label: "Pattern", before: stipple_source4_pattern, after: stipple_ex3_s4 },
+    { label: "Woman", before: stipple_source5_woman, after: stipple_ex3_s5 },
+    { label: "Berries", before: stipple_source6_berries, after: stipple_ex3_s6 },
   ]}
 />
 *CRT Emulation — simulated result across source images.*

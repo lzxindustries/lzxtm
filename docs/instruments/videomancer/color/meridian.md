@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 189
+sidebar_position: 191
 slug: /instruments/videomancer/meridian
 title: "Meridian"
 image: /img/instruments/videomancer/meridian/meridian_hero_s1.png
@@ -8,6 +8,7 @@ description: "Meridian is a per-channel colour processor that applies independen
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import meridian_control_panel from '/img/instruments/videomancer/meridian/meridian_control_panel.png';
 import meridian_source1_ballerina from '/img/instruments/videomancer/meridian/meridian_source1_ballerina.png';
 import meridian_source2_fruit from '/img/instruments/videomancer/meridian/meridian_source2_fruit.png';
 import meridian_source3_turtle from '/img/instruments/videomancer/meridian/meridian_source3_turtle.png';
@@ -136,6 +137,8 @@ The proc_amp stage uses a signed multiplier internally (multiplier_s), which is 
 
 ## Parameter Reference
 
+<img src={meridian_control_panel} alt="Videomancer front panel with Meridian loaded"/>
+*Videomancer's front panel with Meridian active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

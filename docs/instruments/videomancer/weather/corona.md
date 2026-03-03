@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 67
+sidebar_position: 68
 slug: /instruments/videomancer/corona
 title: "Corona"
 image: /img/instruments/videomancer/corona/corona_hero_s1.png
@@ -8,6 +8,7 @@ description: "Corona synthesizes the radial streamer field of a total solar ecli
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import corona_control_panel from '/img/instruments/videomancer/corona/corona_control_panel.png';
 import corona_source1_runner from '/img/instruments/videomancer/corona/corona_source1_runner.png';
 import corona_source2_boat from '/img/instruments/videomancer/corona/corona_source2_boat.png';
 import corona_source3_collage from '/img/instruments/videomancer/corona/corona_source3_collage.png';
@@ -170,6 +171,8 @@ The computational core of Corona is the per-pixel angular lobe evaluation in Clo
 
 ## Parameter Reference
 
+<img src={corona_control_panel} alt="Videomancer front panel with Corona loaded"/>
+*Videomancer's front panel with Corona active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

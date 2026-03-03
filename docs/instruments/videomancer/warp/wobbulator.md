@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 330
+sidebar_position: 337
 slug: /instruments/videomancer/wobbulator
 title: "Wobbulator"
-image: /img/instruments/videomancer/wobbulator/wobbulator_hero.png
+image: /img/instruments/videomancer/wobbulator/wobbulator_hero_s1.png
 description: "Wobbulator simulates the electromagnetic raster distortion made famous by Nam June Paik's 1965 \"Magnet TV,\" where a large magnet placed against a CRT bent the electron beam and warped the displayed image in organic, fluid curves."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import wobbulator_hero from '/img/instruments/videomancer/wobbulator/wobbulator_hero.png';
 import wobbulator_control_panel from '/img/instruments/videomancer/wobbulator/wobbulator_control_panel.png';
-import wobbulator_exercise1_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise1_result.png';
-import wobbulator_exercise2_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise2_result.png';
-import wobbulator_exercise3_result from '/img/instruments/videomancer/wobbulator/wobbulator_exercise3_result.png';
-import wobbulator_source1_kodim02 from '/img/instruments/videomancer/wobbulator/wobbulator_source1_kodim02.png';
-import wobbulator_source2_kodim07 from '/img/instruments/videomancer/wobbulator/wobbulator_source2_kodim07.png';
-import wobbulator_source3_kodim01_bw from '/img/instruments/videomancer/wobbulator/wobbulator_source3_kodim01_bw.png';
+import wobbulator_source1_skull from '/img/instruments/videomancer/wobbulator/wobbulator_source1_skull.png';
+import wobbulator_source2_fruit from '/img/instruments/videomancer/wobbulator/wobbulator_source2_fruit.png';
+import wobbulator_source3_elephant from '/img/instruments/videomancer/wobbulator/wobbulator_source3_elephant.png';
+import wobbulator_source4_pattern from '/img/instruments/videomancer/wobbulator/wobbulator_source4_pattern.png';
+import wobbulator_source5_man from '/img/instruments/videomancer/wobbulator/wobbulator_source5_man.png';
+import wobbulator_source6_berries from '/img/instruments/videomancer/wobbulator/wobbulator_source6_berries.png';
+import wobbulator_hero_s1 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s1.png';
+import wobbulator_hero_s2 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s2.png';
+import wobbulator_hero_s3 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s3.png';
+import wobbulator_hero_s4 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s4.png';
+import wobbulator_hero_s5 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s5.png';
+import wobbulator_hero_s6 from '/img/instruments/videomancer/wobbulator/wobbulator_hero_s6.png';
+import wobbulator_ex1_s1 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s1.png';
+import wobbulator_ex1_s2 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s2.png';
+import wobbulator_ex1_s3 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s3.png';
+import wobbulator_ex1_s4 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s4.png';
+import wobbulator_ex1_s5 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s5.png';
+import wobbulator_ex1_s6 from '/img/instruments/videomancer/wobbulator/wobbulator_ex1_s6.png';
+import wobbulator_ex2_s1 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s1.png';
+import wobbulator_ex2_s2 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s2.png';
+import wobbulator_ex2_s3 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s3.png';
+import wobbulator_ex2_s4 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s4.png';
+import wobbulator_ex2_s5 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s5.png';
+import wobbulator_ex2_s6 from '/img/instruments/videomancer/wobbulator/wobbulator_ex2_s6.png';
+import wobbulator_ex3_s1 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s1.png';
+import wobbulator_ex3_s2 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s2.png';
+import wobbulator_ex3_s3 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s3.png';
+import wobbulator_ex3_s4 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s4.png';
+import wobbulator_ex3_s5 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s5.png';
+import wobbulator_ex3_s6 from '/img/instruments/videomancer/wobbulator/wobbulator_ex3_s6.png';
 
 # Wobbulator
 
@@ -23,9 +46,12 @@ import wobbulator_source3_kodim01_bw from '/img/instruments/videomancer/wobbulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_hero },
-    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_hero },
-    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_hero },
+    { label: "Skull", before: wobbulator_source1_skull, after: wobbulator_hero_s1 },
+    { label: "Fruit", before: wobbulator_source2_fruit, after: wobbulator_hero_s2 },
+    { label: "Elephant", before: wobbulator_source3_elephant, after: wobbulator_hero_s3 },
+    { label: "Pattern", before: wobbulator_source4_pattern, after: wobbulator_hero_s4 },
+    { label: "Man", before: wobbulator_source5_man, after: wobbulator_hero_s5 },
+    { label: "Berries", before: wobbulator_source6_berries, after: wobbulator_hero_s6 },
   ]}
 />
 *A radial magnetic warp pulls the centre of a test image inward, compressing scanlines near the focus point while stretching the surrounding field in concentric rings.*
@@ -217,9 +243,12 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise1_result },
-    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise1_result },
-    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise1_result },
+    { label: "Skull", before: wobbulator_source1_skull, after: wobbulator_ex1_s1 },
+    { label: "Fruit", before: wobbulator_source2_fruit, after: wobbulator_ex1_s2 },
+    { label: "Elephant", before: wobbulator_source3_elephant, after: wobbulator_ex1_s3 },
+    { label: "Pattern", before: wobbulator_source4_pattern, after: wobbulator_ex1_s4 },
+    { label: "Man", before: wobbulator_source5_man, after: wobbulator_ex1_s5 },
+    { label: "Berries", before: wobbulator_source6_berries, after: wobbulator_ex1_s6 },
   ]}
 />
 *Magnet On Glass — simulated result across source images.*
@@ -244,9 +273,12 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise2_result },
-    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise2_result },
-    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise2_result },
+    { label: "Skull", before: wobbulator_source1_skull, after: wobbulator_ex2_s1 },
+    { label: "Fruit", before: wobbulator_source2_fruit, after: wobbulator_ex2_s2 },
+    { label: "Elephant", before: wobbulator_source3_elephant, after: wobbulator_ex2_s3 },
+    { label: "Pattern", before: wobbulator_source4_pattern, after: wobbulator_ex2_s4 },
+    { label: "Man", before: wobbulator_source5_man, after: wobbulator_ex2_s5 },
+    { label: "Berries", before: wobbulator_source6_berries, after: wobbulator_ex2_s6 },
   ]}
 />
 *Dual Field Interference — simulated result across source images.*
@@ -271,9 +303,12 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: wobbulator_source1_kodim02, after: wobbulator_exercise3_result },
-    { label: "Kodim07", before: wobbulator_source2_kodim07, after: wobbulator_exercise3_result },
-    { label: "Kodim01 B&W", before: wobbulator_source3_kodim01_bw, after: wobbulator_exercise3_result },
+    { label: "Skull", before: wobbulator_source1_skull, after: wobbulator_ex3_s1 },
+    { label: "Fruit", before: wobbulator_source2_fruit, after: wobbulator_ex3_s2 },
+    { label: "Elephant", before: wobbulator_source3_elephant, after: wobbulator_ex3_s3 },
+    { label: "Pattern", before: wobbulator_source4_pattern, after: wobbulator_ex3_s4 },
+    { label: "Man", before: wobbulator_source5_man, after: wobbulator_ex3_s5 },
+    { label: "Berries", before: wobbulator_source6_berries, after: wobbulator_ex3_s6 },
   ]}
 />
 *Animated Chromatic Wobble — simulated result across source images.*

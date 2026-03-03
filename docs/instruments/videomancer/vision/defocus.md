@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 76
+sidebar_position: 77
 slug: /instruments/videomancer/defocus
 title: "Defocus"
 image: /img/instruments/videomancer/defocus/defocus_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every camera lens has a focal plane — a thin slice of space wher
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import defocus_control_panel from '/img/instruments/videomancer/defocus/defocus_control_panel.png';
 import defocus_source1_dog from '/img/instruments/videomancer/defocus/defocus_source1_dog.png';
 import defocus_source2_cat from '/img/instruments/videomancer/defocus/defocus_source2_cat.png';
 import defocus_source3_elephant from '/img/instruments/videomancer/defocus/defocus_source3_elephant.png';
@@ -138,6 +139,8 @@ Glow operates exclusively on the Y channel and only on the already-blurred signa
 
 ## Parameter Reference
 
+<img src={defocus_control_panel} alt="Videomancer front panel with Defocus loaded"/>
+*Videomancer's front panel with Defocus active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

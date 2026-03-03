@@ -8,6 +8,7 @@ description: "Attract simulates the cumulative degradation of a CRT (cathode-ray
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import attract_control_panel from '/img/instruments/videomancer/attract/attract_control_panel.png';
 import attract_source1_boat from '/img/instruments/videomancer/attract/attract_source1_boat.png';
 import attract_source2_cat from '/img/instruments/videomancer/attract/attract_source2_cat.png';
 import attract_source3_turtle from '/img/instruments/videomancer/attract/attract_source3_turtle.png';
@@ -129,6 +130,9 @@ The purity modes are selected by the bottom 2 bits of the toggle register. Each 
 ---
 
 ## Parameter Reference
+
+<img src={attract_control_panel} alt="Videomancer front panel with Attract loaded"/>
+*Videomancer's front panel with Attract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

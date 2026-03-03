@@ -1,21 +1,36 @@
 ---
 draft: true
-sidebar_position: 321
+sidebar_position: 327
 slug: /instruments/videomancer/vinegar
 title: "Vinegar"
-image: /img/instruments/videomancer/vinegar/vinegar_hero.png
+image: /img/instruments/videomancer/vinegar/vinegar_hero_s1.png
 description: "Film does not last forever."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import vinegar_hero from '/img/instruments/videomancer/vinegar/vinegar_hero.png';
 import vinegar_control_panel from '/img/instruments/videomancer/vinegar/vinegar_control_panel.png';
-import vinegar_exercise1_result from '/img/instruments/videomancer/vinegar/vinegar_exercise1_result.png';
-import vinegar_exercise2_result from '/img/instruments/videomancer/vinegar/vinegar_exercise2_result.png';
-import vinegar_exercise3_result from '/img/instruments/videomancer/vinegar/vinegar_exercise3_result.png';
-import vinegar_source1_kodim03 from '/img/instruments/videomancer/vinegar/vinegar_source1_kodim03.png';
-import vinegar_source2_kodim13 from '/img/instruments/videomancer/vinegar/vinegar_source2_kodim13.png';
-import vinegar_source3_kodim13_bw from '/img/instruments/videomancer/vinegar/vinegar_source3_kodim13_bw.png';
+import vinegar_source1_field from '/img/instruments/videomancer/vinegar/vinegar_source1_field.png';
+import vinegar_source2_castle from '/img/instruments/videomancer/vinegar/vinegar_source2_castle.png';
+import vinegar_source3_elephant from '/img/instruments/videomancer/vinegar/vinegar_source3_elephant.png';
+import vinegar_source4_pattern from '/img/instruments/videomancer/vinegar/vinegar_source4_pattern.png';
+import vinegar_source5_boy from '/img/instruments/videomancer/vinegar/vinegar_source5_boy.png';
+import vinegar_source6_paint from '/img/instruments/videomancer/vinegar/vinegar_source6_paint.png';
+import vinegar_hero_s1 from '/img/instruments/videomancer/vinegar/vinegar_hero_s1.png';
+import vinegar_hero_s2 from '/img/instruments/videomancer/vinegar/vinegar_hero_s2.png';
+import vinegar_hero_s3 from '/img/instruments/videomancer/vinegar/vinegar_hero_s3.png';
+import vinegar_hero_s4 from '/img/instruments/videomancer/vinegar/vinegar_hero_s4.png';
+import vinegar_hero_s5 from '/img/instruments/videomancer/vinegar/vinegar_hero_s5.png';
+import vinegar_hero_s6 from '/img/instruments/videomancer/vinegar/vinegar_hero_s6.png';
+import vinegar_ex1_s1 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s1.png';
+import vinegar_ex1_s2 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s2.png';
+import vinegar_ex1_s3 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s3.png';
+import vinegar_ex1_s4 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s4.png';
+import vinegar_ex1_s5 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s5.png';
+import vinegar_ex1_s6 from '/img/instruments/videomancer/vinegar/vinegar_ex1_s6.png';
+import vinegar_ex2_s1 from '/img/instruments/videomancer/vinegar/vinegar_ex2_s1.png';
+import vinegar_ex2_s2 from '/img/instruments/videomancer/vinegar/vinegar_ex2_s2.png';
+import vinegar_ex2_s3 from '/img/instruments/videomancer/vinegar/vinegar_ex2_s3.png';
+import vinegar_ex2_s4 from '/img/instruments/videomancer/vinegar/vinegar_ex2_s4.png';
 
 # Vinegar
 
@@ -23,9 +38,12 @@ import vinegar_source3_kodim13_bw from '/img/instruments/videomancer/vinegar/vin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_hero },
-    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_hero },
-    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_hero },
+    { label: "Field", before: vinegar_source1_field, after: vinegar_hero_s1 },
+    { label: "Castle", before: vinegar_source2_castle, after: vinegar_hero_s2 },
+    { label: "Elephant", before: vinegar_source3_elephant, after: vinegar_hero_s3 },
+    { label: "Pattern", before: vinegar_source4_pattern, after: vinegar_hero_s4 },
+    { label: "Boy", before: vinegar_source5_boy, after: vinegar_hero_s5 },
+    { label: "Paint", before: vinegar_source6_paint, after: vinegar_hero_s6 },
   ]}
 />
 *Vinegar simulating years of photochemical film decay — gate weave, dye fading, organic burn blobs, grain, and splice flashes transform a clean digital image into deteriorated celluloid.*
@@ -198,9 +216,12 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise1_result },
-    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise1_result },
-    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise1_result },
+    { label: "Field", before: vinegar_source1_field, after: vinegar_ex1_s1 },
+    { label: "Castle", before: vinegar_source2_castle, after: vinegar_ex1_s2 },
+    { label: "Elephant", before: vinegar_source3_elephant, after: vinegar_ex1_s3 },
+    { label: "Pattern", before: vinegar_source4_pattern, after: vinegar_ex1_s4 },
+    { label: "Boy", before: vinegar_source5_boy, after: vinegar_ex1_s5 },
+    { label: "Paint", before: vinegar_source6_paint, after: vinegar_ex1_s6 },
   ]}
 />
 *Gentle Aging — simulated result across source images.*
@@ -224,9 +245,12 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise2_result },
-    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise2_result },
-    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise2_result },
+    { label: "Field", before: vinegar_source1_field, after: vinegar_ex2_s1 },
+    { label: "Castle", before: vinegar_source2_castle, after: vinegar_ex2_s2 },
+    { label: "Elephant", before: vinegar_source3_elephant, after: vinegar_ex2_s3 },
+    { label: "Pattern", before: vinegar_source4_pattern, after: vinegar_ex2_s4 },
+    { label: "Boy", before: vinegar_source5_boy, after: undefined },
+    { label: "Paint", before: vinegar_source6_paint, after: undefined },
   ]}
 />
 *Damaged Print — simulated result across source images.*
@@ -248,13 +272,7 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ### Exercise 3: Terminal Decay
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim03", before: vinegar_source1_kodim03, after: vinegar_exercise3_result },
-    { label: "Kodim13", before: vinegar_source2_kodim13, after: vinegar_exercise3_result },
-    { label: "Kodim13 B&W", before: vinegar_source3_kodim13_bw, after: vinegar_exercise3_result },
-  ]}
-/>
+![Terminal Decay result](assets/vinegar_exercise3_result.png)
 *Terminal Decay — simulated result across source images.*
 **Source**: Any footage — heavy processing creates abstract results regardless of source.
 

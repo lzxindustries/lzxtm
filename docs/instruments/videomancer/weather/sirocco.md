@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 270
+sidebar_position: 275
 slug: /instruments/videomancer/sirocco
 title: "Sirocco"
-image: /img/instruments/videomancer/sirocco/sirocco_hero.png
+image: /img/instruments/videomancer/sirocco/sirocco_hero_s1.png
 description: "A sirocco is a hot, sand-laden wind that blows across the Mediterranean from the Sahara."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sirocco_hero from '/img/instruments/videomancer/sirocco/sirocco_hero.png';
 import sirocco_control_panel from '/img/instruments/videomancer/sirocco/sirocco_control_panel.png';
-import sirocco_exercise1_result from '/img/instruments/videomancer/sirocco/sirocco_exercise1_result.png';
-import sirocco_exercise2_result from '/img/instruments/videomancer/sirocco/sirocco_exercise2_result.png';
-import sirocco_exercise3_result from '/img/instruments/videomancer/sirocco/sirocco_exercise3_result.png';
-import sirocco_source1_kodim01 from '/img/instruments/videomancer/sirocco/sirocco_source1_kodim01.png';
-import sirocco_source2_kodim02 from '/img/instruments/videomancer/sirocco/sirocco_source2_kodim02.png';
-import sirocco_source3_stream_bridge_512 from '/img/instruments/videomancer/sirocco/sirocco_source3_stream_bridge_512.png';
+import sirocco_source1_parrot from '/img/instruments/videomancer/sirocco/sirocco_source1_parrot.png';
+import sirocco_source2_skull from '/img/instruments/videomancer/sirocco/sirocco_source2_skull.png';
+import sirocco_source3_turtle from '/img/instruments/videomancer/sirocco/sirocco_source3_turtle.png';
+import sirocco_source4_pattern from '/img/instruments/videomancer/sirocco/sirocco_source4_pattern.png';
+import sirocco_source5_girl from '/img/instruments/videomancer/sirocco/sirocco_source5_girl.png';
+import sirocco_source6_wood from '/img/instruments/videomancer/sirocco/sirocco_source6_wood.png';
+import sirocco_hero_s1 from '/img/instruments/videomancer/sirocco/sirocco_hero_s1.png';
+import sirocco_hero_s2 from '/img/instruments/videomancer/sirocco/sirocco_hero_s2.png';
+import sirocco_hero_s3 from '/img/instruments/videomancer/sirocco/sirocco_hero_s3.png';
+import sirocco_hero_s4 from '/img/instruments/videomancer/sirocco/sirocco_hero_s4.png';
+import sirocco_hero_s5 from '/img/instruments/videomancer/sirocco/sirocco_hero_s5.png';
+import sirocco_hero_s6 from '/img/instruments/videomancer/sirocco/sirocco_hero_s6.png';
+import sirocco_ex1_s1 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s1.png';
+import sirocco_ex1_s2 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s2.png';
+import sirocco_ex1_s3 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s3.png';
+import sirocco_ex1_s4 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s4.png';
+import sirocco_ex1_s5 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s5.png';
+import sirocco_ex1_s6 from '/img/instruments/videomancer/sirocco/sirocco_ex1_s6.png';
+import sirocco_ex2_s1 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s1.png';
+import sirocco_ex2_s2 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s2.png';
+import sirocco_ex2_s3 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s3.png';
+import sirocco_ex2_s4 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s4.png';
+import sirocco_ex2_s5 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s5.png';
+import sirocco_ex2_s6 from '/img/instruments/videomancer/sirocco/sirocco_ex2_s6.png';
+import sirocco_ex3_s1 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s1.png';
+import sirocco_ex3_s2 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s2.png';
+import sirocco_ex3_s3 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s3.png';
+import sirocco_ex3_s4 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s4.png';
+import sirocco_ex3_s5 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s5.png';
+import sirocco_ex3_s6 from '/img/instruments/videomancer/sirocco/sirocco_ex3_s6.png';
 
 # Sirocco
 
@@ -23,9 +46,12 @@ import sirocco_source3_stream_bridge_512 from '/img/instruments/videomancer/siro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_hero },
-    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_hero },
-    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_hero },
+    { label: "Parrot", before: sirocco_source1_parrot, after: sirocco_hero_s1 },
+    { label: "Skull", before: sirocco_source2_skull, after: sirocco_hero_s2 },
+    { label: "Turtle", before: sirocco_source3_turtle, after: sirocco_hero_s3 },
+    { label: "Pattern", before: sirocco_source4_pattern, after: sirocco_hero_s4 },
+    { label: "Girl", before: sirocco_source5_girl, after: sirocco_hero_s5 },
+    { label: "Wood", before: sirocco_source6_wood, after: sirocco_hero_s6 },
   ]}
 />
 *Sirocco applying brightness ripple and sparse sand particles over a landscape scene, with warm colour temperature shift and high-contrast enhancement.*
@@ -224,9 +250,12 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise1_result },
-    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise1_result },
-    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise1_result },
+    { label: "Parrot", before: sirocco_source1_parrot, after: sirocco_ex1_s1 },
+    { label: "Skull", before: sirocco_source2_skull, after: sirocco_ex1_s2 },
+    { label: "Turtle", before: sirocco_source3_turtle, after: sirocco_ex1_s3 },
+    { label: "Pattern", before: sirocco_source4_pattern, after: sirocco_ex1_s4 },
+    { label: "Girl", before: sirocco_source5_girl, after: sirocco_ex1_s5 },
+    { label: "Wood", before: sirocco_source6_wood, after: sirocco_ex1_s6 },
   ]}
 />
 *Heat Shimmer Ripple — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise2_result },
-    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise2_result },
-    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise2_result },
+    { label: "Parrot", before: sirocco_source1_parrot, after: sirocco_ex2_s1 },
+    { label: "Skull", before: sirocco_source2_skull, after: sirocco_ex2_s2 },
+    { label: "Turtle", before: sirocco_source3_turtle, after: sirocco_ex2_s3 },
+    { label: "Pattern", before: sirocco_source4_pattern, after: sirocco_ex2_s4 },
+    { label: "Girl", before: sirocco_source5_girl, after: sirocco_ex2_s5 },
+    { label: "Wood", before: sirocco_source6_wood, after: sirocco_ex2_s6 },
   ]}
 />
 *Sand Particle Storm — simulated result across source images.*
@@ -274,9 +306,12 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: sirocco_source1_kodim01, after: sirocco_exercise3_result },
-    { label: "Kodim02", before: sirocco_source2_kodim02, after: sirocco_exercise3_result },
-    { label: "Stream Bridge", before: sirocco_source3_stream_bridge_512, after: sirocco_exercise3_result },
+    { label: "Parrot", before: sirocco_source1_parrot, after: sirocco_ex3_s1 },
+    { label: "Skull", before: sirocco_source2_skull, after: sirocco_ex3_s2 },
+    { label: "Turtle", before: sirocco_source3_turtle, after: sirocco_ex3_s3 },
+    { label: "Pattern", before: sirocco_source4_pattern, after: sirocco_ex3_s4 },
+    { label: "Girl", before: sirocco_source5_girl, after: sirocco_ex3_s5 },
+    { label: "Wood", before: sirocco_source6_wood, after: sirocco_ex3_s6 },
   ]}
 />
 *Full Desert Sandstorm — simulated result across source images.*

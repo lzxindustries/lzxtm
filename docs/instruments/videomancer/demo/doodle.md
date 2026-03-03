@@ -1,17 +1,18 @@
 ---
 draft: true
-sidebar_position: 87
+sidebar_position: 88
 slug: /instruments/videomancer/doodle
 title: "Doodle"
+image: /img/instruments/videomancer/doodle/doodle_hero.png
 description: "Doodle is an autonomous pixel-drawing synthesis inspired by the Cromemco Dazzler's DAZZLER-DOODLE program from 1976."
 ---
 
 import doodle_hero from '/img/instruments/videomancer/doodle/doodle_hero.png';
 import doodle_animation from '/img/instruments/videomancer/doodle/doodle_animation.gif';
 import doodle_control_panel from '/img/instruments/videomancer/doodle/doodle_control_panel.png';
-import doodle_exercise1_result from '/img/instruments/videomancer/doodle/doodle_exercise1_result.png';
-import doodle_exercise2_result from '/img/instruments/videomancer/doodle/doodle_exercise2_result.png';
-import doodle_exercise3_result from '/img/instruments/videomancer/doodle/doodle_exercise3_result.png';
+import doodle_exercise1_result from '/img/instruments/videomancer/doodle/doodle_exercise1_result.gif';
+import doodle_exercise2_result from '/img/instruments/videomancer/doodle/doodle_exercise2_result.gif';
+import doodle_exercise3_result from '/img/instruments/videomancer/doodle/doodle_exercise3_result.gif';
 
 # Doodle
 

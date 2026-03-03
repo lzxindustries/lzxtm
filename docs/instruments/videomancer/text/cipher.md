@@ -8,6 +8,7 @@ description: "Every pixel in a digital video frame is a number."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cipher_control_panel from '/img/instruments/videomancer/cipher/cipher_control_panel.png';
 import cipher_source1_skull from '/img/instruments/videomancer/cipher/cipher_source1_skull.png';
 import cipher_source2_house from '/img/instruments/videomancer/cipher/cipher_source2_house.png';
 import cipher_source3_elephant from '/img/instruments/videomancer/cipher/cipher_source3_elephant.png';
@@ -141,6 +142,8 @@ The depth mask is a critical interaction point. It is built as a contiguous run 
 
 ## Parameter Reference
 
+<img src={cipher_control_panel} alt="Videomancer front panel with Cipher loaded"/>
+*Videomancer's front panel with Cipher active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

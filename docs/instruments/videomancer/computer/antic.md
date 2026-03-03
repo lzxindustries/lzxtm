@@ -8,6 +8,7 @@ description: "Antic recreates the distinctive display modes of the Atari 8-bit c
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import antic_control_panel from '/img/instruments/videomancer/antic/antic_control_panel.png';
 import antic_source1_skull from '/img/instruments/videomancer/antic/antic_source1_skull.png';
 import antic_source2_sunset from '/img/instruments/videomancer/antic/antic_source2_sunset.png';
 import antic_source3_collage from '/img/instruments/videomancer/antic/antic_source3_collage.png';
@@ -149,6 +150,9 @@ The saturation stage operates on UV channels after the GTIA mode processing. It 
 ---
 
 ## Parameter Reference
+
+<img src={antic_control_panel} alt="Videomancer front panel with Antic loaded"/>
+*Videomancer's front panel with Antic active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

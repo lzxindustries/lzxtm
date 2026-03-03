@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 207
+sidebar_position: 210
 slug: /instruments/videomancer/optika
 title: "Optika"
 image: /img/instruments/videomancer/optika/optika_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before digital compositing, optical printers were the primary tool
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import optika_control_panel from '/img/instruments/videomancer/optika/optika_control_panel.png';
 import optika_source1_cat from '/img/instruments/videomancer/optika/optika_source1_cat.png';
 import optika_source2_skull from '/img/instruments/videomancer/optika/optika_source2_skull.png';
 import optika_source3_collage from '/img/instruments/videomancer/optika/optika_source3_collage.png';
@@ -134,6 +135,8 @@ A second BRAM stores the previous frame's scanline data for temporal blending. T
 
 ## Parameter Reference
 
+<img src={optika_control_panel} alt="Videomancer front panel with Optika loaded"/>
+*Videomancer's front panel with Optika active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

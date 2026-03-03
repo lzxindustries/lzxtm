@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 137
+sidebar_position: 138
 slug: /instruments/videomancer/hologram
 title: "Hologram"
 image: /img/instruments/videomancer/hologram/hologram_hero_s1.png
@@ -8,6 +8,7 @@ description: "Hologram overlays rainbow-colored bands onto a video signal, simul
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import hologram_control_panel from '/img/instruments/videomancer/hologram/hologram_control_panel.png';
 import hologram_source1_cat from '/img/instruments/videomancer/hologram/hologram_source1_cat.png';
 import hologram_source2_castle from '/img/instruments/videomancer/hologram/hologram_source2_castle.png';
 import hologram_source3_collage from '/img/instruments/videomancer/hologram/hologram_source3_collage.png';
@@ -128,6 +129,8 @@ Two important discrepancies between the TOML and VHDL: First, the VHDL maps `reg
 
 ## Parameter Reference
 
+<img src={hologram_control_panel} alt="Videomancer front panel with Hologram loaded"/>
+*Videomancer's front panel with Hologram active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

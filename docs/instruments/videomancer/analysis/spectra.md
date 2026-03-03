@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 275
+sidebar_position: 280
 slug: /instruments/videomancer/spectra
 title: "Spectra"
-image: /img/instruments/videomancer/spectra/spectra_hero.png
+image: /img/instruments/videomancer/spectra/spectra_hero_s1.png
 description: "Scientific instruments often visualize invisible phenomena by mapping measured values to color — thermal cameras paint heat as a spectrum from cool blue to hot white, weather radar maps rainfall intensity to a green-yellow-red gradient, and medical imaging uses false color to highlight tissue density."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import spectra_hero from '/img/instruments/videomancer/spectra/spectra_hero.png';
 import spectra_control_panel from '/img/instruments/videomancer/spectra/spectra_control_panel.png';
-import spectra_exercise1_result from '/img/instruments/videomancer/spectra/spectra_exercise1_result.png';
-import spectra_exercise2_result from '/img/instruments/videomancer/spectra/spectra_exercise2_result.png';
-import spectra_exercise3_result from '/img/instruments/videomancer/spectra/spectra_exercise3_result.png';
-import spectra_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/spectra/spectra_source1_grayscale_ramp_h_1920x1080.png';
-import spectra_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/spectra/spectra_source2_grayscale_ramp_v_1920x1080.png';
-import spectra_source3_step_wedge_21level_512 from '/img/instruments/videomancer/spectra/spectra_source3_step_wedge_21level_512.png';
+import spectra_source1_house from '/img/instruments/videomancer/spectra/spectra_source1_house.png';
+import spectra_source2_runner from '/img/instruments/videomancer/spectra/spectra_source2_runner.png';
+import spectra_source3_collage from '/img/instruments/videomancer/spectra/spectra_source3_collage.png';
+import spectra_source4_pattern from '/img/instruments/videomancer/spectra/spectra_source4_pattern.png';
+import spectra_source5_girl from '/img/instruments/videomancer/spectra/spectra_source5_girl.png';
+import spectra_source6_wood from '/img/instruments/videomancer/spectra/spectra_source6_wood.png';
+import spectra_hero_s1 from '/img/instruments/videomancer/spectra/spectra_hero_s1.png';
+import spectra_hero_s2 from '/img/instruments/videomancer/spectra/spectra_hero_s2.png';
+import spectra_hero_s3 from '/img/instruments/videomancer/spectra/spectra_hero_s3.png';
+import spectra_hero_s4 from '/img/instruments/videomancer/spectra/spectra_hero_s4.png';
+import spectra_hero_s5 from '/img/instruments/videomancer/spectra/spectra_hero_s5.png';
+import spectra_hero_s6 from '/img/instruments/videomancer/spectra/spectra_hero_s6.png';
+import spectra_ex1_s1 from '/img/instruments/videomancer/spectra/spectra_ex1_s1.png';
+import spectra_ex1_s2 from '/img/instruments/videomancer/spectra/spectra_ex1_s2.png';
+import spectra_ex1_s3 from '/img/instruments/videomancer/spectra/spectra_ex1_s3.png';
+import spectra_ex1_s4 from '/img/instruments/videomancer/spectra/spectra_ex1_s4.png';
+import spectra_ex1_s5 from '/img/instruments/videomancer/spectra/spectra_ex1_s5.png';
+import spectra_ex1_s6 from '/img/instruments/videomancer/spectra/spectra_ex1_s6.png';
+import spectra_ex2_s1 from '/img/instruments/videomancer/spectra/spectra_ex2_s1.png';
+import spectra_ex2_s2 from '/img/instruments/videomancer/spectra/spectra_ex2_s2.png';
+import spectra_ex2_s3 from '/img/instruments/videomancer/spectra/spectra_ex2_s3.png';
+import spectra_ex2_s4 from '/img/instruments/videomancer/spectra/spectra_ex2_s4.png';
+import spectra_ex2_s5 from '/img/instruments/videomancer/spectra/spectra_ex2_s5.png';
+import spectra_ex2_s6 from '/img/instruments/videomancer/spectra/spectra_ex2_s6.png';
+import spectra_ex3_s1 from '/img/instruments/videomancer/spectra/spectra_ex3_s1.png';
+import spectra_ex3_s2 from '/img/instruments/videomancer/spectra/spectra_ex3_s2.png';
+import spectra_ex3_s3 from '/img/instruments/videomancer/spectra/spectra_ex3_s3.png';
+import spectra_ex3_s4 from '/img/instruments/videomancer/spectra/spectra_ex3_s4.png';
+import spectra_ex3_s5 from '/img/instruments/videomancer/spectra/spectra_ex3_s5.png';
+import spectra_ex3_s6 from '/img/instruments/videomancer/spectra/spectra_ex3_s6.png';
 
 # Spectra
 
@@ -23,9 +46,12 @@ import spectra_source3_step_wedge_21level_512 from '/img/instruments/videomancer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_hero },
-    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_hero },
-    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_hero },
+    { label: "House", before: spectra_source1_house, after: spectra_hero_s1 },
+    { label: "Runner", before: spectra_source2_runner, after: spectra_hero_s2 },
+    { label: "Collage", before: spectra_source3_collage, after: spectra_hero_s3 },
+    { label: "Pattern", before: spectra_source4_pattern, after: spectra_hero_s4 },
+    { label: "Girl", before: spectra_source5_girl, after: spectra_hero_s5 },
+    { label: "Wood", before: spectra_source6_wood, after: spectra_hero_s6 },
   ]}
 />
 *Spectra decomposing video luminance into discrete spectral bands and false-coloring each zone with configurable rainbow, heat, cool, or earth palettes.*
@@ -207,9 +233,12 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise1_result },
-    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise1_result },
-    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise1_result },
+    { label: "House", before: spectra_source1_house, after: spectra_ex1_s1 },
+    { label: "Runner", before: spectra_source2_runner, after: spectra_ex1_s2 },
+    { label: "Collage", before: spectra_source3_collage, after: spectra_ex1_s3 },
+    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex1_s4 },
+    { label: "Girl", before: spectra_source5_girl, after: spectra_ex1_s5 },
+    { label: "Wood", before: spectra_source6_wood, after: spectra_ex1_s6 },
   ]}
 />
 *Thermal Camera — simulated result across source images.*
@@ -232,9 +261,12 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise2_result },
-    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise2_result },
-    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise2_result },
+    { label: "House", before: spectra_source1_house, after: spectra_ex2_s1 },
+    { label: "Runner", before: spectra_source2_runner, after: spectra_ex2_s2 },
+    { label: "Collage", before: spectra_source3_collage, after: spectra_ex2_s3 },
+    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex2_s4 },
+    { label: "Girl", before: spectra_source5_girl, after: spectra_ex2_s5 },
+    { label: "Wood", before: spectra_source6_wood, after: spectra_ex2_s6 },
   ]}
 />
 *Topographic Map — simulated result across source images.*
@@ -258,9 +290,12 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectra_source1_grayscale_ramp_h_1920x1080, after: spectra_exercise3_result },
-    { label: "Grayscale Ramp V", before: spectra_source2_grayscale_ramp_v_1920x1080, after: spectra_exercise3_result },
-    { label: "Step Wedge 21level", before: spectra_source3_step_wedge_21level_512, after: spectra_exercise3_result },
+    { label: "House", before: spectra_source1_house, after: spectra_ex3_s1 },
+    { label: "Runner", before: spectra_source2_runner, after: spectra_ex3_s2 },
+    { label: "Collage", before: spectra_source3_collage, after: spectra_ex3_s3 },
+    { label: "Pattern", before: spectra_source4_pattern, after: spectra_ex3_s4 },
+    { label: "Girl", before: spectra_source5_girl, after: spectra_ex3_s5 },
+    { label: "Wood", before: spectra_source6_wood, after: spectra_ex3_s6 },
   ]}
 />
 *Chroma Analysis with Overlay — simulated result across source images.*

@@ -8,6 +8,7 @@ description: "Bobbin draws a mesh of woven threads across the video image, simul
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bobbin_control_panel from '/img/instruments/videomancer/bobbin/bobbin_control_panel.png';
 import bobbin_source1_field from '/img/instruments/videomancer/bobbin/bobbin_source1_field.png';
 import bobbin_source2_parrot from '/img/instruments/videomancer/bobbin/bobbin_source2_parrot.png';
 import bobbin_source3_elephant from '/img/instruments/videomancer/bobbin/bobbin_source3_elephant.png';
@@ -125,6 +126,9 @@ The critical path runs through the sine LUT twice — once for each curve family
 ---
 
 ## Parameter Reference
+
+<img src={bobbin_control_panel} alt="Videomancer front panel with Bobbin loaded"/>
+*Videomancer's front panel with Bobbin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

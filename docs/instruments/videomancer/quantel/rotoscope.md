@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 250
+sidebar_position: 254
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
 image: /img/instruments/videomancer/rotoscope/rotoscope_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the 1980s and 1990s, Quantel's Harry, Harriet, and Henry system
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import rotoscope_control_panel from '/img/instruments/videomancer/rotoscope/rotoscope_control_panel.png';
 import rotoscope_source1_car from '/img/instruments/videomancer/rotoscope/rotoscope_source1_car.png';
 import rotoscope_source2_field from '/img/instruments/videomancer/rotoscope/rotoscope_source2_field.png';
 import rotoscope_source3_elephant from '/img/instruments/videomancer/rotoscope/rotoscope_source3_elephant.png';
@@ -138,6 +139,8 @@ The BRAM delay buffers are the architectural core of Rotoscope. Unlike purely sp
 
 ## Parameter Reference
 
+<img src={rotoscope_control_panel} alt="Videomancer front panel with Rotoscope loaded"/>
+*Videomancer's front panel with Rotoscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

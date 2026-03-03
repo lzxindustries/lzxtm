@@ -8,6 +8,7 @@ description: "In the early 1980s, the Ampex ADO 100 introduced real-time digital
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import carousel_control_panel from '/img/instruments/videomancer/carousel/carousel_control_panel.png';
 import carousel_source1_runner from '/img/instruments/videomancer/carousel/carousel_source1_runner.png';
 import carousel_source2_parrot from '/img/instruments/videomancer/carousel/carousel_source2_parrot.png';
 import carousel_source3_elephant from '/img/instruments/videomancer/carousel/carousel_source3_elephant.png';
@@ -143,6 +144,8 @@ The critical geometry is computed once per scanline at the start of horizontal a
 
 ## Parameter Reference
 
+<img src={carousel_control_panel} alt="Videomancer front panel with Carousel loaded"/>
+*Videomancer's front panel with Carousel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

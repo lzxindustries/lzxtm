@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 219
+sidebar_position: 222
 slug: /instruments/videomancer/penrose
 title: "Penrose"
 image: /img/instruments/videomancer/penrose/penrose_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Penrose triangle is perhaps the most famous impossible object 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import penrose_control_panel from '/img/instruments/videomancer/penrose/penrose_control_panel.png';
 import penrose_source1_house from '/img/instruments/videomancer/penrose/penrose_source1_house.png';
 import penrose_source2_parrot from '/img/instruments/videomancer/penrose/penrose_source2_parrot.png';
 import penrose_source3_collage from '/img/instruments/videomancer/penrose/penrose_source3_collage.png';
@@ -146,6 +147,8 @@ The depth-cue junction shading is a critical visual element — it darkens pixel
 
 ## Parameter Reference
 
+<img src={penrose_control_panel} alt="Videomancer front panel with Penrose loaded"/>
+*Videomancer's front panel with Penrose active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

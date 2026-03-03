@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 324
+sidebar_position: 331
 slug: /instruments/videomancer/voltmeter
 title: "Voltmeter"
-image: /img/instruments/videomancer/voltmeter/voltmeter_hero.png
+image: /img/instruments/videomancer/voltmeter/voltmeter_hero_s1.png
 description: "Before digital meters conquered the audio world, every studio console featured a row of illuminated VU meters — those satisfying semicircular gauges with swinging needles that danced to the music."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import voltmeter_hero from '/img/instruments/videomancer/voltmeter/voltmeter_hero.png';
 import voltmeter_control_panel from '/img/instruments/videomancer/voltmeter/voltmeter_control_panel.png';
-import voltmeter_exercise1_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise1_result.png';
-import voltmeter_exercise2_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise2_result.png';
-import voltmeter_exercise3_result from '/img/instruments/videomancer/voltmeter/voltmeter_exercise3_result.png';
-import voltmeter_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source1_grayscale_ramp_h_1920x1080.png';
-import voltmeter_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/voltmeter/voltmeter_source2_grayscale_ramp_v_1920x1080.png';
-import voltmeter_source3_step_wedge_21level_512 from '/img/instruments/videomancer/voltmeter/voltmeter_source3_step_wedge_21level_512.png';
+import voltmeter_source1_boat from '/img/instruments/videomancer/voltmeter/voltmeter_source1_boat.png';
+import voltmeter_source2_sunset from '/img/instruments/videomancer/voltmeter/voltmeter_source2_sunset.png';
+import voltmeter_source3_clouds from '/img/instruments/videomancer/voltmeter/voltmeter_source3_clouds.png';
+import voltmeter_source4_pattern from '/img/instruments/videomancer/voltmeter/voltmeter_source4_pattern.png';
+import voltmeter_source5_woman from '/img/instruments/videomancer/voltmeter/voltmeter_source5_woman.png';
+import voltmeter_source6_knit from '/img/instruments/videomancer/voltmeter/voltmeter_source6_knit.png';
+import voltmeter_hero_s1 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s1.png';
+import voltmeter_hero_s2 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s2.png';
+import voltmeter_hero_s3 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s3.png';
+import voltmeter_hero_s4 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s4.png';
+import voltmeter_hero_s5 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s5.png';
+import voltmeter_hero_s6 from '/img/instruments/videomancer/voltmeter/voltmeter_hero_s6.png';
+import voltmeter_ex1_s1 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s1.png';
+import voltmeter_ex1_s2 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s2.png';
+import voltmeter_ex1_s3 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s3.png';
+import voltmeter_ex1_s4 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s4.png';
+import voltmeter_ex1_s5 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s5.png';
+import voltmeter_ex1_s6 from '/img/instruments/videomancer/voltmeter/voltmeter_ex1_s6.png';
+import voltmeter_ex2_s1 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s1.png';
+import voltmeter_ex2_s2 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s2.png';
+import voltmeter_ex2_s3 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s3.png';
+import voltmeter_ex2_s4 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s4.png';
+import voltmeter_ex2_s5 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s5.png';
+import voltmeter_ex2_s6 from '/img/instruments/videomancer/voltmeter/voltmeter_ex2_s6.png';
+import voltmeter_ex3_s1 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s1.png';
+import voltmeter_ex3_s2 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s2.png';
+import voltmeter_ex3_s3 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s3.png';
+import voltmeter_ex3_s4 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s4.png';
+import voltmeter_ex3_s5 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s5.png';
+import voltmeter_ex3_s6 from '/img/instruments/videomancer/voltmeter/voltmeter_ex3_s6.png';
 
 # Voltmeter
 
@@ -23,9 +46,12 @@ import voltmeter_source3_step_wedge_21level_512 from '/img/instruments/videomanc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_hero },
-    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_hero },
-    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_hero },
+    { label: "Boat", before: voltmeter_source1_boat, after: voltmeter_hero_s1 },
+    { label: "Sunset", before: voltmeter_source2_sunset, after: voltmeter_hero_s2 },
+    { label: "Clouds", before: voltmeter_source3_clouds, after: voltmeter_hero_s3 },
+    { label: "Pattern", before: voltmeter_source4_pattern, after: voltmeter_hero_s4 },
+    { label: "Woman", before: voltmeter_source5_woman, after: voltmeter_hero_s5 },
+    { label: "Knit", before: voltmeter_source6_knit, after: voltmeter_hero_s6 },
   ]}
 />
 *Voltmeter projecting an analog VU gauge over a live video feed, the needle tracking average frame luminance in real time.*
@@ -210,9 +236,12 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise1_result },
-    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise1_result },
-    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise1_result },
+    { label: "Boat", before: voltmeter_source1_boat, after: voltmeter_ex1_s1 },
+    { label: "Sunset", before: voltmeter_source2_sunset, after: voltmeter_ex1_s2 },
+    { label: "Clouds", before: voltmeter_source3_clouds, after: voltmeter_ex1_s3 },
+    { label: "Pattern", before: voltmeter_source4_pattern, after: voltmeter_ex1_s4 },
+    { label: "Woman", before: voltmeter_source5_woman, after: voltmeter_ex1_s5 },
+    { label: "Knit", before: voltmeter_source6_knit, after: voltmeter_ex1_s6 },
   ]}
 />
 *Studio Brightness Monitor — simulated result across source images.*
@@ -235,9 +264,12 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise2_result },
-    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise2_result },
-    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise2_result },
+    { label: "Boat", before: voltmeter_source1_boat, after: voltmeter_ex2_s1 },
+    { label: "Sunset", before: voltmeter_source2_sunset, after: voltmeter_ex2_s2 },
+    { label: "Clouds", before: voltmeter_source3_clouds, after: voltmeter_ex2_s3 },
+    { label: "Pattern", before: voltmeter_source4_pattern, after: voltmeter_ex2_s4 },
+    { label: "Woman", before: voltmeter_source5_woman, after: voltmeter_ex2_s5 },
+    { label: "Knit", before: voltmeter_source6_knit, after: voltmeter_ex2_s6 },
   ]}
 />
 *Peak Detection Display — simulated result across source images.*
@@ -261,9 +293,12 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: voltmeter_source1_grayscale_ramp_h_1920x1080, after: voltmeter_exercise3_result },
-    { label: "Grayscale Ramp V", before: voltmeter_source2_grayscale_ramp_v_1920x1080, after: voltmeter_exercise3_result },
-    { label: "Step Wedge 21level", before: voltmeter_source3_step_wedge_21level_512, after: voltmeter_exercise3_result },
+    { label: "Boat", before: voltmeter_source1_boat, after: voltmeter_ex3_s1 },
+    { label: "Sunset", before: voltmeter_source2_sunset, after: voltmeter_ex3_s2 },
+    { label: "Clouds", before: voltmeter_source3_clouds, after: voltmeter_ex3_s3 },
+    { label: "Pattern", before: voltmeter_source4_pattern, after: voltmeter_ex3_s4 },
+    { label: "Woman", before: voltmeter_source5_woman, after: voltmeter_ex3_s5 },
+    { label: "Knit", before: voltmeter_source6_knit, after: voltmeter_ex3_s6 },
   ]}
 />
 *Full-Screen Overlay Art — simulated result across source images.*

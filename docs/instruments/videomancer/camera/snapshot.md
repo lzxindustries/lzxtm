@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 274
+sidebar_position: 279
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
-image: /img/instruments/videomancer/snapshot/snapshot_hero.png
+image: /img/instruments/videomancer/snapshot/snapshot_hero_s1.png
 description: "Every photograph taken on a disposable camera or early digital point-and-shoot carries a distinctive look — oversaturated colors, soft corners darkened by vignetting, visible film grain, a warm or cool color cast from the film stock, and the harsh flat light of a built-in flash."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import snapshot_hero from '/img/instruments/videomancer/snapshot/snapshot_hero.png';
 import snapshot_control_panel from '/img/instruments/videomancer/snapshot/snapshot_control_panel.png';
-import snapshot_exercise1_result from '/img/instruments/videomancer/snapshot/snapshot_exercise1_result.png';
-import snapshot_exercise2_result from '/img/instruments/videomancer/snapshot/snapshot_exercise2_result.png';
-import snapshot_exercise3_result from '/img/instruments/videomancer/snapshot/snapshot_exercise3_result.png';
-import snapshot_source1_kodim05 from '/img/instruments/videomancer/snapshot/snapshot_source1_kodim05.png';
-import snapshot_source2_kodim15 from '/img/instruments/videomancer/snapshot/snapshot_source2_kodim15.png';
-import snapshot_source3_kodim15_bw from '/img/instruments/videomancer/snapshot/snapshot_source3_kodim15_bw.png';
+import snapshot_source1_parrot from '/img/instruments/videomancer/snapshot/snapshot_source1_parrot.png';
+import snapshot_source2_skull from '/img/instruments/videomancer/snapshot/snapshot_source2_skull.png';
+import snapshot_source3_collage from '/img/instruments/videomancer/snapshot/snapshot_source3_collage.png';
+import snapshot_source4_pattern from '/img/instruments/videomancer/snapshot/snapshot_source4_pattern.png';
+import snapshot_source5_girl from '/img/instruments/videomancer/snapshot/snapshot_source5_girl.png';
+import snapshot_source6_paint from '/img/instruments/videomancer/snapshot/snapshot_source6_paint.png';
+import snapshot_hero_s1 from '/img/instruments/videomancer/snapshot/snapshot_hero_s1.png';
+import snapshot_hero_s2 from '/img/instruments/videomancer/snapshot/snapshot_hero_s2.png';
+import snapshot_hero_s3 from '/img/instruments/videomancer/snapshot/snapshot_hero_s3.png';
+import snapshot_hero_s4 from '/img/instruments/videomancer/snapshot/snapshot_hero_s4.png';
+import snapshot_hero_s5 from '/img/instruments/videomancer/snapshot/snapshot_hero_s5.png';
+import snapshot_hero_s6 from '/img/instruments/videomancer/snapshot/snapshot_hero_s6.png';
+import snapshot_ex1_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s1.png';
+import snapshot_ex1_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s2.png';
+import snapshot_ex1_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s3.png';
+import snapshot_ex1_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s4.png';
+import snapshot_ex1_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s5.png';
+import snapshot_ex1_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex1_s6.png';
+import snapshot_ex2_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s1.png';
+import snapshot_ex2_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s2.png';
+import snapshot_ex2_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s3.png';
+import snapshot_ex2_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s4.png';
+import snapshot_ex2_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s5.png';
+import snapshot_ex2_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex2_s6.png';
+import snapshot_ex3_s1 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s1.png';
+import snapshot_ex3_s2 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s2.png';
+import snapshot_ex3_s3 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s3.png';
+import snapshot_ex3_s4 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s4.png';
+import snapshot_ex3_s5 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s5.png';
+import snapshot_ex3_s6 from '/img/instruments/videomancer/snapshot/snapshot_ex3_s6.png';
 
 # Snapshot
 
@@ -23,9 +46,12 @@ import snapshot_source3_kodim15_bw from '/img/instruments/videomancer/snapshot/s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_hero },
-    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_hero },
-    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_hero },
+    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_hero_s1 },
+    { label: "Skull", before: snapshot_source2_skull, after: snapshot_hero_s2 },
+    { label: "Collage", before: snapshot_source3_collage, after: snapshot_hero_s3 },
+    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_hero_s4 },
+    { label: "Girl", before: snapshot_source5_girl, after: snapshot_hero_s5 },
+    { label: "Paint", before: snapshot_source6_paint, after: snapshot_hero_s6 },
   ]}
 />
 *Snapshot applying disposable-camera color saturation, vignette darkening, and film grain to transform clean digital video into nostalgic lo-fi photography.*
@@ -206,9 +232,12 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise1_result },
-    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise1_result },
-    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise1_result },
+    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex1_s1 },
+    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex1_s2 },
+    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex1_s3 },
+    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex1_s4 },
+    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex1_s5 },
+    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex1_s6 },
   ]}
 />
 *Warm Film Portrait — simulated result across source images.*
@@ -231,9 +260,12 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise2_result },
-    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise2_result },
-    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise2_result },
+    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex2_s1 },
+    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex2_s2 },
+    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex2_s3 },
+    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex2_s4 },
+    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex2_s5 },
+    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex2_s6 },
   ]}
 />
 *Flash Party Photo — simulated result across source images.*
@@ -257,9 +289,12 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: snapshot_source1_kodim05, after: snapshot_exercise3_result },
-    { label: "Kodim15", before: snapshot_source2_kodim15, after: snapshot_exercise3_result },
-    { label: "Kodim15 B&W", before: snapshot_source3_kodim15_bw, after: snapshot_exercise3_result },
+    { label: "Parrot", before: snapshot_source1_parrot, after: snapshot_ex3_s1 },
+    { label: "Skull", before: snapshot_source2_skull, after: snapshot_ex3_s2 },
+    { label: "Collage", before: snapshot_source3_collage, after: snapshot_ex3_s3 },
+    { label: "Pattern", before: snapshot_source4_pattern, after: snapshot_ex3_s4 },
+    { label: "Girl", before: snapshot_source5_girl, after: snapshot_ex3_s5 },
+    { label: "Paint", before: snapshot_source6_paint, after: snapshot_ex3_s6 },
   ]}
 />
 *Cross-Processed Experimental — simulated result across source images.*

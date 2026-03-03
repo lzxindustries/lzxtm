@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 141
+sidebar_position: 142
 slug: /instruments/videomancer/imprint
 title: "Imprint"
 image: /img/instruments/videomancer/imprint/imprint_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every printed photograph in a newspaper, magazine, or book is an i
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import imprint_control_panel from '/img/instruments/videomancer/imprint/imprint_control_panel.png';
 import imprint_source1_ballerina from '/img/instruments/videomancer/imprint/imprint_source1_ballerina.png';
 import imprint_source2_runner from '/img/instruments/videomancer/imprint/imprint_source2_runner.png';
 import imprint_source3_elephant from '/img/instruments/videomancer/imprint/imprint_source3_elephant.png';
@@ -147,6 +148,8 @@ The pipeline's most critical interaction is between the rotated grid coordinates
 
 ## Parameter Reference
 
+<img src={imprint_control_panel} alt="Videomancer front panel with Imprint loaded"/>
+*Videomancer's front panel with Imprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

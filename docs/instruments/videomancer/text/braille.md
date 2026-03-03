@@ -8,6 +8,7 @@ description: "The Braille cell — six or eight raised dots arranged in a 2×3 o
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import braille_control_panel from '/img/instruments/videomancer/braille/braille_control_panel.png';
 import braille_source1_cat from '/img/instruments/videomancer/braille/braille_source1_cat.png';
 import braille_source2_fruit from '/img/instruments/videomancer/braille/braille_source2_fruit.png';
 import braille_source3_elephant from '/img/instruments/videomancer/braille/braille_source3_elephant.png';
@@ -139,6 +140,9 @@ The pipeline uses exclusively bit-shift and bit-mask operations for cell divisio
 ---
 
 ## Parameter Reference
+
+<img src={braille_control_panel} alt="Videomancer front panel with Braille loaded"/>
+*Videomancer's front panel with Braille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

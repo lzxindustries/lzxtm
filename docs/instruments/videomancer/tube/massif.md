@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 187
+sidebar_position: 189
 slug: /instruments/videomancer/massif
 title: "Massif"
 image: /img/instruments/videomancer/massif/massif_hero_s1.png
@@ -8,6 +8,7 @@ description: "In 1973, Steve Rutt and Bill Etra built a video instrument that di
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import massif_control_panel from '/img/instruments/videomancer/massif/massif_control_panel.png';
 import massif_source1_fruit from '/img/instruments/videomancer/massif/massif_source1_fruit.png';
 import massif_source2_runner from '/img/instruments/videomancer/massif/massif_source2_runner.png';
 import massif_source3_clouds from '/img/instruments/videomancer/massif/massif_source3_clouds.png';
@@ -136,6 +137,8 @@ The column buffer is the heart of the program. It operates as a dual-port BRAM: 
 
 ## Parameter Reference
 
+<img src={massif_control_panel} alt="Videomancer front panel with Massif loaded"/>
+*Videomancer's front panel with Massif active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

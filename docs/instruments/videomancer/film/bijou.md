@@ -8,6 +8,7 @@ description: "Bijou recreates two foundational visual techniques of silent cinem
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bijou_control_panel from '/img/instruments/videomancer/bijou/bijou_control_panel.png';
 import bijou_source1_parrot from '/img/instruments/videomancer/bijou/bijou_source1_parrot.png';
 import bijou_source2_car from '/img/instruments/videomancer/bijou/bijou_source2_car.png';
 import bijou_source3_clouds from '/img/instruments/videomancer/bijou/bijou_source3_clouds.png';
@@ -141,6 +142,9 @@ The 4-clock interpolator at the output provides a final wet/dry crossfade betwee
 ---
 
 ## Parameter Reference
+
+<img src={bijou_control_panel} alt="Videomancer front panel with Bijou loaded"/>
+*Videomancer's front panel with Bijou active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

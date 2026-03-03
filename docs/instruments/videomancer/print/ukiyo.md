@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 312
+sidebar_position: 318
 slug: /instruments/videomancer/ukiyo
 title: "Ukiyo"
-image: /img/instruments/videomancer/ukiyo/ukiyo_hero.png
+image: /img/instruments/videomancer/ukiyo/ukiyo_hero_s1.png
 description: "Ukiyo-e — \"pictures of the floating world\" — was the dominant art form of Japan's Edo period (1603–1868)."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ukiyo_hero from '/img/instruments/videomancer/ukiyo/ukiyo_hero.png';
 import ukiyo_control_panel from '/img/instruments/videomancer/ukiyo/ukiyo_control_panel.png';
-import ukiyo_exercise1_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise1_result.png';
-import ukiyo_exercise2_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise2_result.png';
-import ukiyo_exercise3_result from '/img/instruments/videomancer/ukiyo/ukiyo_exercise3_result.png';
-import ukiyo_source1_kodim02 from '/img/instruments/videomancer/ukiyo/ukiyo_source1_kodim02.png';
-import ukiyo_source2_kodim07 from '/img/instruments/videomancer/ukiyo/ukiyo_source2_kodim07.png';
-import ukiyo_source3_kodim01_bw from '/img/instruments/videomancer/ukiyo/ukiyo_source3_kodim01_bw.png';
+import ukiyo_source1_house from '/img/instruments/videomancer/ukiyo/ukiyo_source1_house.png';
+import ukiyo_source2_runner from '/img/instruments/videomancer/ukiyo/ukiyo_source2_runner.png';
+import ukiyo_source3_clouds from '/img/instruments/videomancer/ukiyo/ukiyo_source3_clouds.png';
+import ukiyo_source4_pattern from '/img/instruments/videomancer/ukiyo/ukiyo_source4_pattern.png';
+import ukiyo_source5_man from '/img/instruments/videomancer/ukiyo/ukiyo_source5_man.png';
+import ukiyo_source6_paint from '/img/instruments/videomancer/ukiyo/ukiyo_source6_paint.png';
+import ukiyo_hero_s1 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s1.png';
+import ukiyo_hero_s2 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s2.png';
+import ukiyo_hero_s3 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s3.png';
+import ukiyo_hero_s4 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s4.png';
+import ukiyo_hero_s5 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s5.png';
+import ukiyo_hero_s6 from '/img/instruments/videomancer/ukiyo/ukiyo_hero_s6.png';
+import ukiyo_ex1_s1 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s1.png';
+import ukiyo_ex1_s2 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s2.png';
+import ukiyo_ex1_s3 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s3.png';
+import ukiyo_ex1_s4 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s4.png';
+import ukiyo_ex1_s5 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s5.png';
+import ukiyo_ex1_s6 from '/img/instruments/videomancer/ukiyo/ukiyo_ex1_s6.png';
+import ukiyo_ex2_s1 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s1.png';
+import ukiyo_ex2_s2 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s2.png';
+import ukiyo_ex2_s3 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s3.png';
+import ukiyo_ex2_s4 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s4.png';
+import ukiyo_ex2_s5 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s5.png';
+import ukiyo_ex2_s6 from '/img/instruments/videomancer/ukiyo/ukiyo_ex2_s6.png';
+import ukiyo_ex3_s1 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s1.png';
+import ukiyo_ex3_s2 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s2.png';
+import ukiyo_ex3_s3 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s3.png';
+import ukiyo_ex3_s4 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s4.png';
+import ukiyo_ex3_s5 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s5.png';
+import ukiyo_ex3_s6 from '/img/instruments/videomancer/ukiyo/ukiyo_ex3_s6.png';
 
 # Ukiyo
 
@@ -23,9 +46,12 @@ import ukiyo_source3_kodim01_bw from '/img/instruments/videomancer/ukiyo/ukiyo_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_hero },
-    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_hero },
-    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_hero },
+    { label: "House", before: ukiyo_source1_house, after: ukiyo_hero_s1 },
+    { label: "Runner", before: ukiyo_source2_runner, after: ukiyo_hero_s2 },
+    { label: "Clouds", before: ukiyo_source3_clouds, after: ukiyo_hero_s3 },
+    { label: "Pattern", before: ukiyo_source4_pattern, after: ukiyo_hero_s4 },
+    { label: "Man", before: ukiyo_source5_man, after: ukiyo_hero_s5 },
+    { label: "Paint", before: ukiyo_source6_paint, after: ukiyo_hero_s6 },
   ]}
 />
 *Ukiyo transforming a live video feed into a woodblock-printed landscape with Edo-period palette mapping, Sobel edge outlines, bokashi gradients, and washi paper grain texture.*
@@ -219,9 +245,12 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise1_result },
-    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise1_result },
-    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise1_result },
+    { label: "House", before: ukiyo_source1_house, after: ukiyo_ex1_s1 },
+    { label: "Runner", before: ukiyo_source2_runner, after: ukiyo_ex1_s2 },
+    { label: "Clouds", before: ukiyo_source3_clouds, after: ukiyo_ex1_s3 },
+    { label: "Pattern", before: ukiyo_source4_pattern, after: ukiyo_ex1_s4 },
+    { label: "Man", before: ukiyo_source5_man, after: ukiyo_ex1_s5 },
+    { label: "Paint", before: ukiyo_source6_paint, after: ukiyo_ex1_s6 },
   ]}
 />
 *First Impression — simulated result across source images.*
@@ -243,9 +272,12 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise2_result },
-    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise2_result },
-    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise2_result },
+    { label: "House", before: ukiyo_source1_house, after: ukiyo_ex2_s1 },
+    { label: "Runner", before: ukiyo_source2_runner, after: ukiyo_ex2_s2 },
+    { label: "Clouds", before: ukiyo_source3_clouds, after: ukiyo_ex2_s3 },
+    { label: "Pattern", before: ukiyo_source4_pattern, after: ukiyo_ex2_s4 },
+    { label: "Man", before: ukiyo_source5_man, after: ukiyo_ex2_s5 },
+    { label: "Paint", before: ukiyo_source6_paint, after: ukiyo_ex2_s6 },
   ]}
 />
 *Weathered Print — simulated result across source images.*
@@ -267,9 +299,12 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ukiyo_source1_kodim02, after: ukiyo_exercise3_result },
-    { label: "Kodim07", before: ukiyo_source2_kodim07, after: ukiyo_exercise3_result },
-    { label: "Kodim01 B&W", before: ukiyo_source3_kodim01_bw, after: ukiyo_exercise3_result },
+    { label: "House", before: ukiyo_source1_house, after: ukiyo_ex3_s1 },
+    { label: "Runner", before: ukiyo_source2_runner, after: ukiyo_ex3_s2 },
+    { label: "Clouds", before: ukiyo_source3_clouds, after: ukiyo_ex3_s3 },
+    { label: "Pattern", before: ukiyo_source4_pattern, after: ukiyo_ex3_s4 },
+    { label: "Man", before: ukiyo_source5_man, after: ukiyo_ex3_s5 },
+    { label: "Paint", before: ukiyo_source6_paint, after: ukiyo_ex3_s6 },
   ]}
 />
 *Prussian Wave — simulated result across source images.*

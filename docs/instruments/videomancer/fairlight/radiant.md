@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 237
+sidebar_position: 241
 slug: /instruments/videomancer/radiant
 title: "Radiant"
 image: /img/instruments/videomancer/radiant/radiant_hero_s1.png
@@ -8,6 +8,7 @@ description: "Radiant generates concentric colored rings that radiate outward fr
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import radiant_control_panel from '/img/instruments/videomancer/radiant/radiant_control_panel.png';
 import radiant_source1_fruit from '/img/instruments/videomancer/radiant/radiant_source1_fruit.png';
 import radiant_source2_field from '/img/instruments/videomancer/radiant/radiant_source2_field.png';
 import radiant_source3_turtle from '/img/instruments/videomancer/radiant/radiant_source3_turtle.png';
@@ -144,6 +145,8 @@ The key interaction is the additive ring index construction: `distance + frame_s
 
 ## Parameter Reference
 
+<img src={radiant_control_panel} alt="Videomancer front panel with Radiant loaded"/>
+*Videomancer's front panel with Radiant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

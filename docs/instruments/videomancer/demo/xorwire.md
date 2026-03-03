@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 333
+sidebar_position: 340
 slug: /instruments/videomancer/xorwire
 title: "Xorwire"
 image: /img/instruments/videomancer/xorwire/xorwire_hero.png

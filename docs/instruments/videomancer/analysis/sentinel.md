@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 261
+sidebar_position: 265
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
 image: /img/instruments/videomancer/sentinel/sentinel_hero_s1.png
@@ -8,6 +8,7 @@ description: "Surveillance cameras generate vast quantities of footage in which 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import sentinel_control_panel from '/img/instruments/videomancer/sentinel/sentinel_control_panel.png';
 import sentinel_source1_parrot from '/img/instruments/videomancer/sentinel/sentinel_source1_parrot.png';
 import sentinel_source2_field from '/img/instruments/videomancer/sentinel/sentinel_source2_field.png';
 import sentinel_source3_elephant from '/img/instruments/videomancer/sentinel/sentinel_source3_elephant.png';
@@ -129,6 +130,8 @@ Two architectural features dominate the signal path. First, the IIR average trac
 
 ## Parameter Reference
 
+<img src={sentinel_control_panel} alt="Videomancer front panel with Sentinel loaded"/>
+*Videomancer's front panel with Sentinel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

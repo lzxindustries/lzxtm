@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 244
+sidebar_position: 248
 slug: /instruments/videomancer/relief
 title: "Relief"
 image: /img/instruments/videomancer/relief/relief_hero_s1.png
@@ -8,6 +8,7 @@ description: "A bas-relief is a sculptural technique where figures are carved in
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import relief_control_panel from '/img/instruments/videomancer/relief/relief_control_panel.png';
 import relief_source1_sunset from '/img/instruments/videomancer/relief/relief_source1_sunset.png';
 import relief_source2_castle from '/img/instruments/videomancer/relief/relief_source2_castle.png';
 import relief_source3_clouds from '/img/instruments/videomancer/relief/relief_source3_clouds.png';
@@ -127,6 +128,8 @@ The core computation is the directional derivative: `output = 512 + (current_pix
 
 ## Parameter Reference
 
+<img src={relief_control_panel} alt="Videomancer front panel with Relief loaded"/>
+*Videomancer's front panel with Relief active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

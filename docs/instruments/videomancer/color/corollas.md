@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 66
+sidebar_position: 67
 slug: /instruments/videomancer/corollas
 title: "Corollas"
 image: /img/instruments/videomancer/corollas/corollas_hero_s1.png
@@ -8,6 +8,7 @@ description: "Corollas is a frequency-doubling harmonic processor that transform
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import corollas_control_panel from '/img/instruments/videomancer/corollas/corollas_control_panel.png';
 import corollas_source1_boat from '/img/instruments/videomancer/corollas/corollas_source1_boat.png';
 import corollas_source2_dog from '/img/instruments/videomancer/corollas/corollas_source2_dog.png';
 import corollas_source3_turtle from '/img/instruments/videomancer/corollas/corollas_source3_turtle.png';
@@ -153,6 +154,8 @@ The separation of harmonics across Y, U, and V channels creates the program's ch
 
 ## Parameter Reference
 
+<img src={corollas_control_panel} alt="Videomancer front panel with Corollas loaded"/>
+*Videomancer's front panel with Corollas active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

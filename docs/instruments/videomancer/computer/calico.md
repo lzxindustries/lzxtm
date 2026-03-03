@@ -8,6 +8,7 @@ description: "The Commodore Amiga's HAM (Hold-And-Modify) display mode was one o
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import calico_control_panel from '/img/instruments/videomancer/calico/calico_control_panel.png';
 import calico_source1_fruit from '/img/instruments/videomancer/calico/calico_source1_fruit.png';
 import calico_source2_dog from '/img/instruments/videomancer/calico/calico_source2_dog.png';
 import calico_source3_turtle from '/img/instruments/videomancer/calico/calico_source3_turtle.png';
@@ -151,6 +152,8 @@ The heart of Calico is the Stage 3 HAM encoder — a per-scanline state machine 
 
 ## Parameter Reference
 
+<img src={calico_control_panel} alt="Videomancer front panel with Calico loaded"/>
+*Videomancer's front panel with Calico active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

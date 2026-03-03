@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 283
+sidebar_position: 288
 slug: /instruments/videomancer/stereogram
 title: "Stereogram"
-image: /img/instruments/videomancer/stereogram/stereogram_hero.png
+image: /img/instruments/videomancer/stereogram/stereogram_hero_s1.png
 description: "Stereogram generates a Single Image Random Dot Stereogram (SIRDS) from the input video's luminance channel."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stereogram_hero from '/img/instruments/videomancer/stereogram/stereogram_hero.png';
 import stereogram_control_panel from '/img/instruments/videomancer/stereogram/stereogram_control_panel.png';
-import stereogram_exercise1_result from '/img/instruments/videomancer/stereogram/stereogram_exercise1_result.png';
-import stereogram_exercise2_result from '/img/instruments/videomancer/stereogram/stereogram_exercise2_result.png';
-import stereogram_exercise3_result from '/img/instruments/videomancer/stereogram/stereogram_exercise3_result.png';
-import stereogram_source1_kodim01 from '/img/instruments/videomancer/stereogram/stereogram_source1_kodim01.png';
-import stereogram_source2_kodim02 from '/img/instruments/videomancer/stereogram/stereogram_source2_kodim02.png';
-import stereogram_source3_kodim01_bw from '/img/instruments/videomancer/stereogram/stereogram_source3_kodim01_bw.png';
+import stereogram_source1_skull from '/img/instruments/videomancer/stereogram/stereogram_source1_skull.png';
+import stereogram_source2_cat from '/img/instruments/videomancer/stereogram/stereogram_source2_cat.png';
+import stereogram_source3_elephant from '/img/instruments/videomancer/stereogram/stereogram_source3_elephant.png';
+import stereogram_source4_pattern from '/img/instruments/videomancer/stereogram/stereogram_source4_pattern.png';
+import stereogram_source5_woman from '/img/instruments/videomancer/stereogram/stereogram_source5_woman.png';
+import stereogram_source6_paint from '/img/instruments/videomancer/stereogram/stereogram_source6_paint.png';
+import stereogram_hero_s1 from '/img/instruments/videomancer/stereogram/stereogram_hero_s1.png';
+import stereogram_hero_s2 from '/img/instruments/videomancer/stereogram/stereogram_hero_s2.png';
+import stereogram_hero_s3 from '/img/instruments/videomancer/stereogram/stereogram_hero_s3.png';
+import stereogram_hero_s4 from '/img/instruments/videomancer/stereogram/stereogram_hero_s4.png';
+import stereogram_hero_s5 from '/img/instruments/videomancer/stereogram/stereogram_hero_s5.png';
+import stereogram_hero_s6 from '/img/instruments/videomancer/stereogram/stereogram_hero_s6.png';
+import stereogram_ex1_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s1.png';
+import stereogram_ex1_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s2.png';
+import stereogram_ex1_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s3.png';
+import stereogram_ex1_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s4.png';
+import stereogram_ex1_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s5.png';
+import stereogram_ex1_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex1_s6.png';
+import stereogram_ex2_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s1.png';
+import stereogram_ex2_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s2.png';
+import stereogram_ex2_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s3.png';
+import stereogram_ex2_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s4.png';
+import stereogram_ex2_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s5.png';
+import stereogram_ex2_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex2_s6.png';
+import stereogram_ex3_s1 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s1.png';
+import stereogram_ex3_s2 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s2.png';
+import stereogram_ex3_s3 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s3.png';
+import stereogram_ex3_s4 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s4.png';
+import stereogram_ex3_s5 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s5.png';
+import stereogram_ex3_s6 from '/img/instruments/videomancer/stereogram/stereogram_ex3_s6.png';
 
 # Stereogram
 
@@ -23,9 +46,12 @@ import stereogram_source3_kodim01_bw from '/img/instruments/videomancer/stereogr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_hero },
-    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_hero },
-    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_hero },
+    { label: "Skull", before: stereogram_source1_skull, after: stereogram_hero_s1 },
+    { label: "Cat", before: stereogram_source2_cat, after: stereogram_hero_s2 },
+    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_hero_s3 },
+    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_hero_s4 },
+    { label: "Woman", before: stereogram_source5_woman, after: stereogram_hero_s5 },
+    { label: "Paint", before: stereogram_source6_paint, after: stereogram_hero_s6 },
   ]}
 />
 *Hidden depths emerge from random-dot fields as the classic autostereogram algorithm transforms video luminance into cross-eyed 3D illusions.*
@@ -238,9 +264,12 @@ These exercises progress from basic stereogram generation through depth control 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise1_result },
-    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise1_result },
-    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise1_result },
+    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex1_s1 },
+    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex1_s2 },
+    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex1_s3 },
+    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex1_s4 },
+    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex1_s5 },
+    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex1_s6 },
   ]}
 />
 *First Stereogram — simulated result across source images.*
@@ -263,9 +292,12 @@ These exercises progress from basic stereogram generation through depth control 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise2_result },
-    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise2_result },
-    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise2_result },
+    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex2_s1 },
+    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex2_s2 },
+    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex2_s3 },
+    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex2_s4 },
+    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex2_s5 },
+    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex2_s6 },
   ]}
 />
 *Depth Control with Video — simulated result across source images.*
@@ -288,9 +320,12 @@ These exercises progress from basic stereogram generation through depth control 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: stereogram_source1_kodim01, after: stereogram_exercise3_result },
-    { label: "Kodim02", before: stereogram_source2_kodim02, after: stereogram_exercise3_result },
-    { label: "Kodim01 B&W", before: stereogram_source3_kodim01_bw, after: stereogram_exercise3_result },
+    { label: "Skull", before: stereogram_source1_skull, after: stereogram_ex3_s1 },
+    { label: "Cat", before: stereogram_source2_cat, after: stereogram_ex3_s2 },
+    { label: "Elephant", before: stereogram_source3_elephant, after: stereogram_ex3_s3 },
+    { label: "Pattern", before: stereogram_source4_pattern, after: stereogram_ex3_s4 },
+    { label: "Woman", before: stereogram_source5_woman, after: stereogram_ex3_s5 },
+    { label: "Paint", before: stereogram_source6_paint, after: stereogram_ex3_s6 },
   ]}
 />
 *Colour Stereogram with Full Processing — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 181
+sidebar_position: 183
 slug: /instruments/videomancer/luminaire
 title: "Luminaire"
 image: /img/instruments/videomancer/luminaire/luminaire_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every stage production needs a spotlight."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import luminaire_control_panel from '/img/instruments/videomancer/luminaire/luminaire_control_panel.png';
 import luminaire_source1_field from '/img/instruments/videomancer/luminaire/luminaire_source1_field.png';
 import luminaire_source2_dog from '/img/instruments/videomancer/luminaire/luminaire_source2_dog.png';
 import luminaire_source3_elephant from '/img/instruments/videomancer/luminaire/luminaire_source3_elephant.png';
@@ -143,6 +144,8 @@ The core processing is a single synchronous process that runs every pixel clock.
 
 ## Parameter Reference
 
+<img src={luminaire_control_panel} alt="Videomancer front panel with Luminaire loaded"/>
+*Videomancer's front panel with Luminaire active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

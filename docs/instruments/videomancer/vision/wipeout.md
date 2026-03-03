@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 329
+sidebar_position: 336
 slug: /instruments/videomancer/wipeout
 title: "Wipeout"
-image: /img/instruments/videomancer/wipeout/wipeout_hero.png
+image: /img/instruments/videomancer/wipeout/wipeout_hero_s1.png
 description: "Every broadcast television viewer has seen a wipe — a geometric edge that sweeps across the screen, replacing one image with another."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import wipeout_hero from '/img/instruments/videomancer/wipeout/wipeout_hero.png';
 import wipeout_control_panel from '/img/instruments/videomancer/wipeout/wipeout_control_panel.png';
-import wipeout_exercise1_result from '/img/instruments/videomancer/wipeout/wipeout_exercise1_result.png';
-import wipeout_exercise2_result from '/img/instruments/videomancer/wipeout/wipeout_exercise2_result.png';
-import wipeout_exercise3_result from '/img/instruments/videomancer/wipeout/wipeout_exercise3_result.png';
-import wipeout_source1_kodim15 from '/img/instruments/videomancer/wipeout/wipeout_source1_kodim15.png';
-import wipeout_source2_kodim15_bw from '/img/instruments/videomancer/wipeout/wipeout_source2_kodim15_bw.png';
-import wipeout_source3_male_1024 from '/img/instruments/videomancer/wipeout/wipeout_source3_male_1024.png';
+import wipeout_source1_runner from '/img/instruments/videomancer/wipeout/wipeout_source1_runner.png';
+import wipeout_source2_boat from '/img/instruments/videomancer/wipeout/wipeout_source2_boat.png';
+import wipeout_source3_elephant from '/img/instruments/videomancer/wipeout/wipeout_source3_elephant.png';
+import wipeout_source4_pattern from '/img/instruments/videomancer/wipeout/wipeout_source4_pattern.png';
+import wipeout_source5_boy from '/img/instruments/videomancer/wipeout/wipeout_source5_boy.png';
+import wipeout_source6_paint from '/img/instruments/videomancer/wipeout/wipeout_source6_paint.png';
+import wipeout_hero_s1 from '/img/instruments/videomancer/wipeout/wipeout_hero_s1.png';
+import wipeout_hero_s2 from '/img/instruments/videomancer/wipeout/wipeout_hero_s2.png';
+import wipeout_hero_s3 from '/img/instruments/videomancer/wipeout/wipeout_hero_s3.png';
+import wipeout_hero_s4 from '/img/instruments/videomancer/wipeout/wipeout_hero_s4.png';
+import wipeout_hero_s5 from '/img/instruments/videomancer/wipeout/wipeout_hero_s5.png';
+import wipeout_hero_s6 from '/img/instruments/videomancer/wipeout/wipeout_hero_s6.png';
+import wipeout_ex1_s1 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s1.png';
+import wipeout_ex1_s2 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s2.png';
+import wipeout_ex1_s3 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s3.png';
+import wipeout_ex1_s4 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s4.png';
+import wipeout_ex1_s5 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s5.png';
+import wipeout_ex1_s6 from '/img/instruments/videomancer/wipeout/wipeout_ex1_s6.png';
+import wipeout_ex2_s1 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s1.png';
+import wipeout_ex2_s2 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s2.png';
+import wipeout_ex2_s3 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s3.png';
+import wipeout_ex2_s4 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s4.png';
+import wipeout_ex2_s5 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s5.png';
+import wipeout_ex2_s6 from '/img/instruments/videomancer/wipeout/wipeout_ex2_s6.png';
+import wipeout_ex3_s1 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s1.png';
+import wipeout_ex3_s2 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s2.png';
+import wipeout_ex3_s3 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s3.png';
+import wipeout_ex3_s4 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s4.png';
+import wipeout_ex3_s5 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s5.png';
+import wipeout_ex3_s6 from '/img/instruments/videomancer/wipeout/wipeout_ex3_s6.png';
 
 # Wipeout
 
@@ -23,9 +46,12 @@ import wipeout_source3_male_1024 from '/img/instruments/videomancer/wipeout/wipe
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_hero },
-    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_hero },
-    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_hero },
+    { label: "Runner", before: wipeout_source1_runner, after: wipeout_hero_s1 },
+    { label: "Boat", before: wipeout_source2_boat, after: wipeout_hero_s2 },
+    { label: "Elephant", before: wipeout_source3_elephant, after: wipeout_hero_s3 },
+    { label: "Pattern", before: wipeout_source4_pattern, after: wipeout_hero_s4 },
+    { label: "Boy", before: wipeout_source5_boy, after: wipeout_hero_s5 },
+    { label: "Paint", before: wipeout_source6_paint, after: wipeout_hero_s6 },
   ]}
 />
 *Wipeout performing a clock wipe transition with soft edge and colored border, revealing a luminance matte beneath live video.*
@@ -221,9 +247,12 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise1_result },
-    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise1_result },
-    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise1_result },
+    { label: "Runner", before: wipeout_source1_runner, after: wipeout_ex1_s1 },
+    { label: "Boat", before: wipeout_source2_boat, after: wipeout_ex1_s2 },
+    { label: "Elephant", before: wipeout_source3_elephant, after: wipeout_ex1_s3 },
+    { label: "Pattern", before: wipeout_source4_pattern, after: wipeout_ex1_s4 },
+    { label: "Boy", before: wipeout_source5_boy, after: wipeout_ex1_s5 },
+    { label: "Paint", before: wipeout_source6_paint, after: wipeout_ex1_s6 },
   ]}
 />
 *Classic Barn Door Transition — simulated result across source images.*
@@ -245,9 +274,12 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise2_result },
-    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise2_result },
-    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise2_result },
+    { label: "Runner", before: wipeout_source1_runner, after: wipeout_ex2_s1 },
+    { label: "Boat", before: wipeout_source2_boat, after: wipeout_ex2_s2 },
+    { label: "Elephant", before: wipeout_source3_elephant, after: wipeout_ex2_s3 },
+    { label: "Pattern", before: wipeout_source4_pattern, after: wipeout_ex2_s4 },
+    { label: "Boy", before: wipeout_source5_boy, after: wipeout_ex2_s5 },
+    { label: "Paint", before: wipeout_source6_paint, after: wipeout_ex2_s6 },
   ]}
 />
 *Venetian Blinds and Checkerboard — simulated result across source images.*
@@ -269,9 +301,12 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wipeout_source1_kodim15, after: wipeout_exercise3_result },
-    { label: "Kodim15 B&W", before: wipeout_source2_kodim15_bw, after: wipeout_exercise3_result },
-    { label: "Male", before: wipeout_source3_male_1024, after: wipeout_exercise3_result },
+    { label: "Runner", before: wipeout_source1_runner, after: wipeout_ex3_s1 },
+    { label: "Boat", before: wipeout_source2_boat, after: wipeout_ex3_s2 },
+    { label: "Elephant", before: wipeout_source3_elephant, after: wipeout_ex3_s3 },
+    { label: "Pattern", before: wipeout_source4_pattern, after: wipeout_ex3_s4 },
+    { label: "Boy", before: wipeout_source5_boy, after: wipeout_ex3_s5 },
+    { label: "Paint", before: wipeout_source6_paint, after: wipeout_ex3_s6 },
   ]}
 />
 *Luma-Reactive Iris — simulated result across source images.*

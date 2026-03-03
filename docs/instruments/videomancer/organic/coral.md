@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 65
+sidebar_position: 66
 slug: /instruments/videomancer/coral
 title: "Coral"
 image: /img/instruments/videomancer/coral/coral_hero.png

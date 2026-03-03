@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 175
+sidebar_position: 177
 slug: /instruments/videomancer/litmus
 title: "Litmus"
 image: /img/instruments/videomancer/litmus/litmus_hero_s1.png
@@ -8,6 +8,7 @@ description: "In every chemistry laboratory there is a drawer full of narrow pap
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import litmus_control_panel from '/img/instruments/videomancer/litmus/litmus_control_panel.png';
 import litmus_source1_car from '/img/instruments/videomancer/litmus/litmus_source1_car.png';
 import litmus_source2_boat from '/img/instruments/videomancer/litmus/litmus_source2_boat.png';
 import litmus_source3_turtle from '/img/instruments/videomancer/litmus/litmus_source3_turtle.png';
@@ -130,6 +131,8 @@ The pipeline splits into two phases. The first phase (Stages 1–2) quantizes th
 
 ## Parameter Reference
 
+<img src={litmus_control_panel} alt="Videomancer front panel with Litmus loaded"/>
+*Videomancer's front panel with Litmus active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

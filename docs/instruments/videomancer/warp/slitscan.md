@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 272
+sidebar_position: 277
 slug: /instruments/videomancer/slitscan
 title: "Slit Scan"
-image: /img/instruments/videomancer/slitscan/slitscan_hero.png
+image: /img/instruments/videomancer/slitscan/slitscan_hero_s1.png
 description: "Slit Scan captures a narrow vertical strip of the input image each frame and writes it into a scrolling BRAM framebuffer."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import slitscan_hero from '/img/instruments/videomancer/slitscan/slitscan_hero.png';
 import slitscan_control_panel from '/img/instruments/videomancer/slitscan/slitscan_control_panel.png';
-import slitscan_exercise1_result from '/img/instruments/videomancer/slitscan/slitscan_exercise1_result.png';
-import slitscan_exercise2_result from '/img/instruments/videomancer/slitscan/slitscan_exercise2_result.png';
-import slitscan_exercise3_result from '/img/instruments/videomancer/slitscan/slitscan_exercise3_result.png';
-import slitscan_source1_kodim02 from '/img/instruments/videomancer/slitscan/slitscan_source1_kodim02.png';
-import slitscan_source2_kodim07 from '/img/instruments/videomancer/slitscan/slitscan_source2_kodim07.png';
-import slitscan_source3_kodim01_bw from '/img/instruments/videomancer/slitscan/slitscan_source3_kodim01_bw.png';
+import slitscan_source1_cat from '/img/instruments/videomancer/slitscan/slitscan_source1_cat.png';
+import slitscan_source2_car from '/img/instruments/videomancer/slitscan/slitscan_source2_car.png';
+import slitscan_source3_elephant from '/img/instruments/videomancer/slitscan/slitscan_source3_elephant.png';
+import slitscan_source4_pattern from '/img/instruments/videomancer/slitscan/slitscan_source4_pattern.png';
+import slitscan_source5_girl from '/img/instruments/videomancer/slitscan/slitscan_source5_girl.png';
+import slitscan_source6_paint from '/img/instruments/videomancer/slitscan/slitscan_source6_paint.png';
+import slitscan_hero_s1 from '/img/instruments/videomancer/slitscan/slitscan_hero_s1.png';
+import slitscan_hero_s2 from '/img/instruments/videomancer/slitscan/slitscan_hero_s2.png';
+import slitscan_hero_s3 from '/img/instruments/videomancer/slitscan/slitscan_hero_s3.png';
+import slitscan_hero_s4 from '/img/instruments/videomancer/slitscan/slitscan_hero_s4.png';
+import slitscan_hero_s5 from '/img/instruments/videomancer/slitscan/slitscan_hero_s5.png';
+import slitscan_hero_s6 from '/img/instruments/videomancer/slitscan/slitscan_hero_s6.png';
+import slitscan_ex1_s1 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s1.png';
+import slitscan_ex1_s2 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s2.png';
+import slitscan_ex1_s3 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s3.png';
+import slitscan_ex1_s4 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s4.png';
+import slitscan_ex1_s5 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s5.png';
+import slitscan_ex1_s6 from '/img/instruments/videomancer/slitscan/slitscan_ex1_s6.png';
+import slitscan_ex2_s1 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s1.png';
+import slitscan_ex2_s2 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s2.png';
+import slitscan_ex2_s3 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s3.png';
+import slitscan_ex2_s4 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s4.png';
+import slitscan_ex2_s5 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s5.png';
+import slitscan_ex2_s6 from '/img/instruments/videomancer/slitscan/slitscan_ex2_s6.png';
+import slitscan_ex3_s1 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s1.png';
+import slitscan_ex3_s2 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s2.png';
+import slitscan_ex3_s3 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s3.png';
+import slitscan_ex3_s4 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s4.png';
+import slitscan_ex3_s5 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s5.png';
+import slitscan_ex3_s6 from '/img/instruments/videomancer/slitscan/slitscan_ex3_s6.png';
 
 # Slit Scan
 
@@ -23,9 +46,12 @@ import slitscan_source3_kodim01_bw from '/img/instruments/videomancer/slitscan/s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_hero },
-    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_hero },
-    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_hero },
+    { label: "Cat", before: slitscan_source1_cat, after: slitscan_hero_s1 },
+    { label: "Car", before: slitscan_source2_car, after: slitscan_hero_s2 },
+    { label: "Elephant", before: slitscan_source3_elephant, after: slitscan_hero_s3 },
+    { label: "Pattern", before: slitscan_source4_pattern, after: slitscan_hero_s4 },
+    { label: "Girl", before: slitscan_source5_girl, after: slitscan_hero_s5 },
+    { label: "Paint", before: slitscan_source6_paint, after: slitscan_hero_s6 },
   ]}
 />
 *Time made visible — each column captures a different moment, scrolling a slit of live video into an ever-shifting streak panorama.*
@@ -196,9 +222,12 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise1_result },
-    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise1_result },
-    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise1_result },
+    { label: "Cat", before: slitscan_source1_cat, after: slitscan_ex1_s1 },
+    { label: "Car", before: slitscan_source2_car, after: slitscan_ex1_s2 },
+    { label: "Elephant", before: slitscan_source3_elephant, after: slitscan_ex1_s3 },
+    { label: "Pattern", before: slitscan_source4_pattern, after: slitscan_ex1_s4 },
+    { label: "Girl", before: slitscan_source5_girl, after: slitscan_ex1_s5 },
+    { label: "Paint", before: slitscan_source6_paint, after: slitscan_ex1_s6 },
   ]}
 />
 *Basic Time Streak — simulated result across source images.*
@@ -220,9 +249,12 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise2_result },
-    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise2_result },
-    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise2_result },
+    { label: "Cat", before: slitscan_source1_cat, after: slitscan_ex2_s1 },
+    { label: "Car", before: slitscan_source2_car, after: slitscan_ex2_s2 },
+    { label: "Elephant", before: slitscan_source3_elephant, after: slitscan_ex2_s3 },
+    { label: "Pattern", before: slitscan_source4_pattern, after: slitscan_ex2_s4 },
+    { label: "Girl", before: slitscan_source5_girl, after: slitscan_ex2_s5 },
+    { label: "Paint", before: slitscan_source6_paint, after: slitscan_ex2_s6 },
   ]}
 />
 *Hue-Tinted Temporal Ribbons — simulated result across source images.*
@@ -245,9 +277,12 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: slitscan_source1_kodim02, after: slitscan_exercise3_result },
-    { label: "Kodim07", before: slitscan_source2_kodim07, after: slitscan_exercise3_result },
-    { label: "Kodim01 B&W", before: slitscan_source3_kodim01_bw, after: slitscan_exercise3_result },
+    { label: "Cat", before: slitscan_source1_cat, after: slitscan_ex3_s1 },
+    { label: "Car", before: slitscan_source2_car, after: slitscan_ex3_s2 },
+    { label: "Elephant", before: slitscan_source3_elephant, after: slitscan_ex3_s3 },
+    { label: "Pattern", before: slitscan_source4_pattern, after: slitscan_ex3_s4 },
+    { label: "Girl", before: slitscan_source5_girl, after: slitscan_ex3_s5 },
+    { label: "Paint", before: slitscan_source6_paint, after: slitscan_ex3_s6 },
   ]}
 />
 *Frozen Panoramic Snapshot — simulated result across source images.*

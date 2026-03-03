@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 62
+sidebar_position: 63
 slug: /instruments/videomancer/contour
 title: "Contour"
 image: /img/instruments/videomancer/contour/contour_hero_s1.png
@@ -8,6 +8,7 @@ description: "A topographic map turns continuous terrain into a set of discrete 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import contour_control_panel from '/img/instruments/videomancer/contour/contour_control_panel.png';
 import contour_source1_field from '/img/instruments/videomancer/contour/contour_source1_field.png';
 import contour_source2_ballerina from '/img/instruments/videomancer/contour/contour_source2_ballerina.png';
 import contour_source3_turtle from '/img/instruments/videomancer/contour/contour_source3_turtle.png';
@@ -135,6 +136,8 @@ The critical interaction is between quantization and neighbor comparison. The In
 
 ## Parameter Reference
 
+<img src={contour_control_panel} alt="Videomancer front panel with Contour loaded"/>
+*Videomancer's front panel with Contour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

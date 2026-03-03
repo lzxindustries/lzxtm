@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 203
+sidebar_position: 206
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
 image: /img/instruments/videomancer/nightshot/nightshot_hero_s1.png
@@ -8,6 +8,7 @@ description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import nightshot_control_panel from '/img/instruments/videomancer/nightshot/nightshot_control_panel.png';
 import nightshot_source1_car from '/img/instruments/videomancer/nightshot/nightshot_source1_car.png';
 import nightshot_source2_castle from '/img/instruments/videomancer/nightshot/nightshot_source2_castle.png';
 import nightshot_source3_clouds from '/img/instruments/videomancer/nightshot/nightshot_source3_clouds.png';
@@ -133,6 +134,8 @@ The invert operation is applied after the IR response curve but before noise inj
 
 ## Parameter Reference
 
+<img src={nightshot_control_panel} alt="Videomancer front panel with Nightshot loaded"/>
+*Videomancer's front panel with Nightshot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

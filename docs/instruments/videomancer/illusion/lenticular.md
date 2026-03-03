@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 168
+sidebar_position: 170
 slug: /instruments/videomancer/lenticular
 title: "Lenticular"
 image: /img/instruments/videomancer/lenticular/lenticular_hero_s1.png
@@ -8,6 +8,7 @@ description: "Lenticular prints are those plastic-ridged cards that seem to shif
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import lenticular_control_panel from '/img/instruments/videomancer/lenticular/lenticular_control_panel.png';
 import lenticular_source1_runner from '/img/instruments/videomancer/lenticular/lenticular_source1_runner.png';
 import lenticular_source2_skull from '/img/instruments/videomancer/lenticular/lenticular_source2_skull.png';
 import lenticular_source3_elephant from '/img/instruments/videomancer/lenticular/lenticular_source3_elephant.png';
@@ -139,6 +140,8 @@ The shift register provides zero-latency random access to any of 64 preceding pi
 
 ## Parameter Reference
 
+<img src={lenticular_control_panel} alt="Videomancer front panel with Lenticular loaded"/>
+*Videomancer's front panel with Lenticular active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

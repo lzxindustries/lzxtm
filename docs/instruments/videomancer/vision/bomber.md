@@ -8,6 +8,7 @@ description: "Every arcade game has its moment of spectacle — the bomb detonat
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bomber_control_panel from '/img/instruments/videomancer/bomber/bomber_control_panel.png';
 import bomber_source1_sunset from '/img/instruments/videomancer/bomber/bomber_source1_sunset.png';
 import bomber_source2_house from '/img/instruments/videomancer/bomber/bomber_source2_house.png';
 import bomber_source3_elephant from '/img/instruments/videomancer/bomber/bomber_source3_elephant.png';
@@ -160,6 +161,9 @@ The LFSR (Linear Feedback Shift Register) is a 16-bit pseudo-random generator se
 ---
 
 ## Parameter Reference
+
+<img src={bomber_control_panel} alt="Videomancer front panel with Bomber loaded"/>
+*Videomancer's front panel with Bomber active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

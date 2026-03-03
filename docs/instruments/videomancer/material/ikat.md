@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 140
+sidebar_position: 141
 slug: /instruments/videomancer/ikat
 title: "Ikat"
 image: /img/instruments/videomancer/ikat/ikat_hero_s1.png
@@ -8,6 +8,7 @@ description: "Ikat simulates the ancient resist-dyeing technique of the same nam
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import ikat_control_panel from '/img/instruments/videomancer/ikat/ikat_control_panel.png';
 import ikat_source1_boat from '/img/instruments/videomancer/ikat/ikat_source1_boat.png';
 import ikat_source2_castle from '/img/instruments/videomancer/ikat/ikat_source2_castle.png';
 import ikat_source3_turtle from '/img/instruments/videomancer/ikat/ikat_source3_turtle.png';
@@ -125,6 +126,8 @@ The key interaction in the pipeline is between column quantization and edge blee
 
 ## Parameter Reference
 
+<img src={ikat_control_panel} alt="Videomancer front panel with Ikat loaded"/>
+*Videomancer's front panel with Ikat active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -8,6 +8,7 @@ description: "Between roughly 1987 and 1994, consumer camcorders from Sony, Pana
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import camcord_control_panel from '/img/instruments/videomancer/camcord/camcord_control_panel.png';
 import camcord_source1_field from '/img/instruments/videomancer/camcord/camcord_source1_field.png';
 import camcord_source2_cat from '/img/instruments/videomancer/camcord/camcord_source2_cat.png';
 import camcord_source3_collage from '/img/instruments/videomancer/camcord/camcord_source3_collage.png';
@@ -137,6 +138,9 @@ The critical interaction is chain order. Trail operates on the output of Slim/St
 ---
 
 ## Parameter Reference
+
+<img src={camcord_control_panel} alt="Videomancer front panel with Camcord loaded"/>
+*Videomancer's front panel with Camcord active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

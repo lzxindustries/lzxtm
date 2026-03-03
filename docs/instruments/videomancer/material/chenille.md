@@ -8,6 +8,7 @@ description: "Chenille is named for the French word meaning \"caterpillar\" — 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chenille_control_panel from '/img/instruments/videomancer/chenille/chenille_control_panel.png';
 import chenille_source1_cat from '/img/instruments/videomancer/chenille/chenille_source1_cat.png';
 import chenille_source2_car from '/img/instruments/videomancer/chenille/chenille_source2_car.png';
 import chenille_source3_turtle from '/img/instruments/videomancer/chenille/chenille_source3_turtle.png';
@@ -130,6 +131,8 @@ The pipeline's key decision happens at clock 2: the Manhattan distance test clea
 
 ## Parameter Reference
 
+<img src={chenille_control_panel} alt="Videomancer front panel with Chenille loaded"/>
+*Videomancer's front panel with Chenille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

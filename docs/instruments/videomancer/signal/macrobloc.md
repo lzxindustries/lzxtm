@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 183
+sidebar_position: 185
 slug: /instruments/videomancer/macrobloc
 title: "Macrobloc"
 image: /img/instruments/videomancer/macrobloc/macrobloc_hero_s1.png
@@ -8,6 +8,7 @@ description: "Digital video compression divides every frame into small rectangul
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import macrobloc_control_panel from '/img/instruments/videomancer/macrobloc/macrobloc_control_panel.png';
 import macrobloc_source1_skull from '/img/instruments/videomancer/macrobloc/macrobloc_source1_skull.png';
 import macrobloc_source2_sunset from '/img/instruments/videomancer/macrobloc/macrobloc_source2_sunset.png';
 import macrobloc_source3_collage from '/img/instruments/videomancer/macrobloc/macrobloc_source3_collage.png';
@@ -142,6 +143,8 @@ The LFSR drives all randomness: which blocks are corrupt, what type of corruptio
 
 ## Parameter Reference
 
+<img src={macrobloc_control_panel} alt="Videomancer front panel with Macrobloc loaded"/>
+*Videomancer's front panel with Macrobloc active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

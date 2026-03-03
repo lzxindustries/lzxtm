@@ -1,21 +1,37 @@
 ---
 draft: true
-sidebar_position: 320
+sidebar_position: 326
 slug: /instruments/videomancer/vigil
 title: "Vigil"
-image: /img/instruments/videomancer/vigil/vigil_hero.png
+image: /img/instruments/videomancer/vigil/vigil_hero_s1.png
 description: "Security cameras do not produce beautiful images."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import vigil_hero from '/img/instruments/videomancer/vigil/vigil_hero.png';
 import vigil_control_panel from '/img/instruments/videomancer/vigil/vigil_control_panel.png';
-import vigil_exercise1_result from '/img/instruments/videomancer/vigil/vigil_exercise1_result.png';
-import vigil_exercise2_result from '/img/instruments/videomancer/vigil/vigil_exercise2_result.png';
-import vigil_exercise3_result from '/img/instruments/videomancer/vigil/vigil_exercise3_result.png';
-import vigil_source1_kodim05 from '/img/instruments/videomancer/vigil/vigil_source1_kodim05.png';
-import vigil_source2_kodim15 from '/img/instruments/videomancer/vigil/vigil_source2_kodim15.png';
-import vigil_source3_kodim15_bw from '/img/instruments/videomancer/vigil/vigil_source3_kodim15_bw.png';
+import vigil_source1_car from '/img/instruments/videomancer/vigil/vigil_source1_car.png';
+import vigil_source2_castle from '/img/instruments/videomancer/vigil/vigil_source2_castle.png';
+import vigil_source3_clouds from '/img/instruments/videomancer/vigil/vigil_source3_clouds.png';
+import vigil_source4_pattern from '/img/instruments/videomancer/vigil/vigil_source4_pattern.png';
+import vigil_source5_boy from '/img/instruments/videomancer/vigil/vigil_source5_boy.png';
+import vigil_source6_berries from '/img/instruments/videomancer/vigil/vigil_source6_berries.png';
+import vigil_hero_s1 from '/img/instruments/videomancer/vigil/vigil_hero_s1.png';
+import vigil_hero_s2 from '/img/instruments/videomancer/vigil/vigil_hero_s2.png';
+import vigil_hero_s3 from '/img/instruments/videomancer/vigil/vigil_hero_s3.png';
+import vigil_hero_s4 from '/img/instruments/videomancer/vigil/vigil_hero_s4.png';
+import vigil_hero_s5 from '/img/instruments/videomancer/vigil/vigil_hero_s5.png';
+import vigil_hero_s6 from '/img/instruments/videomancer/vigil/vigil_hero_s6.png';
+import vigil_ex1_s1 from '/img/instruments/videomancer/vigil/vigil_ex1_s1.png';
+import vigil_ex1_s2 from '/img/instruments/videomancer/vigil/vigil_ex1_s2.png';
+import vigil_ex1_s3 from '/img/instruments/videomancer/vigil/vigil_ex1_s3.png';
+import vigil_ex1_s4 from '/img/instruments/videomancer/vigil/vigil_ex1_s4.png';
+import vigil_ex1_s5 from '/img/instruments/videomancer/vigil/vigil_ex1_s5.png';
+import vigil_ex1_s6 from '/img/instruments/videomancer/vigil/vigil_ex1_s6.png';
+import vigil_ex2_s1 from '/img/instruments/videomancer/vigil/vigil_ex2_s1.png';
+import vigil_ex2_s2 from '/img/instruments/videomancer/vigil/vigil_ex2_s2.png';
+import vigil_ex2_s3 from '/img/instruments/videomancer/vigil/vigil_ex2_s3.png';
+import vigil_ex2_s4 from '/img/instruments/videomancer/vigil/vigil_ex2_s4.png';
+import vigil_ex2_s5 from '/img/instruments/videomancer/vigil/vigil_ex2_s5.png';
 
 # Vigil
 
@@ -23,9 +39,12 @@ import vigil_source3_kodim15_bw from '/img/instruments/videomancer/vigil/vigil_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_hero },
-    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_hero },
-    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_hero },
+    { label: "Car", before: vigil_source1_car, after: vigil_hero_s1 },
+    { label: "Castle", before: vigil_source2_castle, after: vigil_hero_s2 },
+    { label: "Clouds", before: vigil_source3_clouds, after: vigil_hero_s3 },
+    { label: "Pattern", before: vigil_source4_pattern, after: vigil_hero_s4 },
+    { label: "Boy", before: vigil_source5_boy, after: vigil_hero_s5 },
+    { label: "Berries", before: vigil_source6_berries, after: vigil_hero_s6 },
   ]}
 />
 *Vigil degrading a live camera feed into a grainy, desaturated CCTV surveillance image with scanline noise bands, horizontal tearing, line dropouts, and a timestamp bar overlay.*
@@ -198,9 +217,12 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise1_result },
-    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise1_result },
-    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise1_result },
+    { label: "Car", before: vigil_source1_car, after: vigil_ex1_s1 },
+    { label: "Castle", before: vigil_source2_castle, after: vigil_ex1_s2 },
+    { label: "Clouds", before: vigil_source3_clouds, after: vigil_ex1_s3 },
+    { label: "Pattern", before: vigil_source4_pattern, after: vigil_ex1_s4 },
+    { label: "Boy", before: vigil_source5_boy, after: vigil_ex1_s5 },
+    { label: "Berries", before: vigil_source6_berries, after: vigil_ex1_s6 },
   ]}
 />
 *Basic Surveillance Look — simulated result across source images.*
@@ -223,9 +245,12 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise2_result },
-    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise2_result },
-    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise2_result },
+    { label: "Car", before: vigil_source1_car, after: vigil_ex2_s1 },
+    { label: "Castle", before: vigil_source2_castle, after: vigil_ex2_s2 },
+    { label: "Clouds", before: vigil_source3_clouds, after: vigil_ex2_s3 },
+    { label: "Pattern", before: vigil_source4_pattern, after: vigil_ex2_s4 },
+    { label: "Boy", before: vigil_source5_boy, after: vigil_ex2_s5 },
+    { label: "Berries", before: vigil_source6_berries, after: undefined },
   ]}
 />
 *Signal Degradation — simulated result across source images.*
@@ -247,13 +272,7 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ### Exercise 3: Total Signal Destruction
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim05", before: vigil_source1_kodim05, after: vigil_exercise3_result },
-    { label: "Kodim15", before: vigil_source2_kodim15, after: vigil_exercise3_result },
-    { label: "Kodim15 B&W", before: vigil_source3_kodim15_bw, after: vigil_exercise3_result },
-  ]}
-/>
+![Total Signal Destruction result](assets/vigil_exercise3_result.png)
 *Total Signal Destruction — simulated result across source images.*
 **Source**: Any footage — the heavy processing will obscure most content.
 

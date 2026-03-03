@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 178
+sidebar_position: 180
 slug: /instruments/videomancer/ludosphere
 title: "Ludosphere"
 image: /img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png
@@ -8,6 +8,7 @@ description: "Take three spinning wheels — one sweeping left to right across t
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import ludosphere_control_panel from '/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png';
 import ludosphere_source1_dog from '/img/instruments/videomancer/ludosphere/ludosphere_source1_dog.png';
 import ludosphere_source2_runner from '/img/instruments/videomancer/ludosphere/ludosphere_source2_runner.png';
 import ludosphere_source3_collage from '/img/instruments/videomancer/ludosphere/ludosphere_source3_collage.png';
@@ -131,6 +132,8 @@ The three oscillators share no state — each operates on an independent phase a
 
 ## Parameter Reference
 
+<img src={ludosphere_control_panel} alt="Videomancer front panel with Ludosphere loaded"/>
+*Videomancer's front panel with Ludosphere active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

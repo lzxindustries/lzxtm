@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 193
+sidebar_position: 195
 slug: /instruments/videomancer/mirage
 title: "Mirage"
 image: /img/instruments/videomancer/mirage/mirage_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Quantel Mirage DVM8000, introduced in 1982, was the first real
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import mirage_control_panel from '/img/instruments/videomancer/mirage/mirage_control_panel.png';
 import mirage_source1_dog from '/img/instruments/videomancer/mirage/mirage_source1_dog.png';
 import mirage_source2_house from '/img/instruments/videomancer/mirage/mirage_source2_house.png';
 import mirage_source3_elephant from '/img/instruments/videomancer/mirage/mirage_source3_elephant.png';
@@ -142,6 +143,8 @@ The key constraint is that the VHDL uses a dual-bank single-scanline buffer — 
 
 ## Parameter Reference
 
+<img src={mirage_control_panel} alt="Videomancer front panel with Mirage loaded"/>
+*Videomancer's front panel with Mirage active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

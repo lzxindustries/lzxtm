@@ -8,6 +8,7 @@ description: "Every image has a hidden angular geometry."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import centrifuge_control_panel from '/img/instruments/videomancer/centrifuge/centrifuge_control_panel.png';
 import centrifuge_source1_parrot from '/img/instruments/videomancer/centrifuge/centrifuge_source1_parrot.png';
 import centrifuge_source2_fruit from '/img/instruments/videomancer/centrifuge/centrifuge_source2_fruit.png';
 import centrifuge_source3_turtle from '/img/instruments/videomancer/centrifuge/centrifuge_source3_turtle.png';
@@ -138,6 +139,8 @@ The per-sector colour modification in stage 3 follows a complementary pattern: o
 
 ## Parameter Reference
 
+<img src={centrifuge_control_panel} alt="Videomancer front panel with Centrifuge loaded"/>
+*Videomancer's front panel with Centrifuge active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

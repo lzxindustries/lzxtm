@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 264
+sidebar_position: 269
 slug: /instruments/videomancer/sideband
 title: "Sideband"
-image: /img/instruments/videomancer/sideband/sideband_hero.png
+image: /img/instruments/videomancer/sideband/sideband_hero_s1.png
 description: "Before cable and digital broadcasting, television reception was an analog adventure."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sideband_hero from '/img/instruments/videomancer/sideband/sideband_hero.png';
 import sideband_control_panel from '/img/instruments/videomancer/sideband/sideband_control_panel.png';
-import sideband_exercise1_result from '/img/instruments/videomancer/sideband/sideband_exercise1_result.png';
-import sideband_exercise2_result from '/img/instruments/videomancer/sideband/sideband_exercise2_result.png';
-import sideband_exercise3_result from '/img/instruments/videomancer/sideband/sideband_exercise3_result.png';
-import sideband_source1_kodim15 from '/img/instruments/videomancer/sideband/sideband_source1_kodim15.png';
-import sideband_source2_kodim01 from '/img/instruments/videomancer/sideband/sideband_source2_kodim01.png';
-import sideband_source3_stream_bridge_512 from '/img/instruments/videomancer/sideband/sideband_source3_stream_bridge_512.png';
+import sideband_source1_cat from '/img/instruments/videomancer/sideband/sideband_source1_cat.png';
+import sideband_source2_boat from '/img/instruments/videomancer/sideband/sideband_source2_boat.png';
+import sideband_source3_elephant from '/img/instruments/videomancer/sideband/sideband_source3_elephant.png';
+import sideband_source4_pattern from '/img/instruments/videomancer/sideband/sideband_source4_pattern.png';
+import sideband_source5_woman from '/img/instruments/videomancer/sideband/sideband_source5_woman.png';
+import sideband_source6_paint from '/img/instruments/videomancer/sideband/sideband_source6_paint.png';
+import sideband_hero_s1 from '/img/instruments/videomancer/sideband/sideband_hero_s1.png';
+import sideband_hero_s2 from '/img/instruments/videomancer/sideband/sideband_hero_s2.png';
+import sideband_hero_s3 from '/img/instruments/videomancer/sideband/sideband_hero_s3.png';
+import sideband_hero_s4 from '/img/instruments/videomancer/sideband/sideband_hero_s4.png';
+import sideband_hero_s5 from '/img/instruments/videomancer/sideband/sideband_hero_s5.png';
+import sideband_hero_s6 from '/img/instruments/videomancer/sideband/sideband_hero_s6.png';
+import sideband_ex1_s1 from '/img/instruments/videomancer/sideband/sideband_ex1_s1.png';
+import sideband_ex1_s2 from '/img/instruments/videomancer/sideband/sideband_ex1_s2.png';
+import sideband_ex1_s3 from '/img/instruments/videomancer/sideband/sideband_ex1_s3.png';
+import sideband_ex1_s4 from '/img/instruments/videomancer/sideband/sideband_ex1_s4.png';
+import sideband_ex1_s5 from '/img/instruments/videomancer/sideband/sideband_ex1_s5.png';
+import sideband_ex1_s6 from '/img/instruments/videomancer/sideband/sideband_ex1_s6.png';
+import sideband_ex2_s1 from '/img/instruments/videomancer/sideband/sideband_ex2_s1.png';
+import sideband_ex2_s2 from '/img/instruments/videomancer/sideband/sideband_ex2_s2.png';
+import sideband_ex2_s3 from '/img/instruments/videomancer/sideband/sideband_ex2_s3.png';
+import sideband_ex2_s4 from '/img/instruments/videomancer/sideband/sideband_ex2_s4.png';
+import sideband_ex2_s5 from '/img/instruments/videomancer/sideband/sideband_ex2_s5.png';
+import sideband_ex2_s6 from '/img/instruments/videomancer/sideband/sideband_ex2_s6.png';
+import sideband_ex3_s1 from '/img/instruments/videomancer/sideband/sideband_ex3_s1.png';
+import sideband_ex3_s2 from '/img/instruments/videomancer/sideband/sideband_ex3_s2.png';
+import sideband_ex3_s3 from '/img/instruments/videomancer/sideband/sideband_ex3_s3.png';
+import sideband_ex3_s4 from '/img/instruments/videomancer/sideband/sideband_ex3_s4.png';
+import sideband_ex3_s5 from '/img/instruments/videomancer/sideband/sideband_ex3_s5.png';
+import sideband_ex3_s6 from '/img/instruments/videomancer/sideband/sideband_ex3_s6.png';
 
 # Sideband
 
@@ -23,9 +46,12 @@ import sideband_source3_stream_bridge_512 from '/img/instruments/videomancer/sid
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_hero },
-    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_hero },
-    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_hero },
+    { label: "Cat", before: sideband_source1_cat, after: sideband_hero_s1 },
+    { label: "Boat", before: sideband_source2_boat, after: sideband_hero_s2 },
+    { label: "Elephant", before: sideband_source3_elephant, after: sideband_hero_s3 },
+    { label: "Pattern", before: sideband_source4_pattern, after: sideband_hero_s4 },
+    { label: "Woman", before: sideband_source5_woman, after: sideband_hero_s5 },
+    { label: "Paint", before: sideband_source6_paint, after: sideband_hero_s6 },
   ]}
 />
 *Sideband degrading a clean video signal with multipath ghost echoes, herringbone interference, rolling hum bars, and snow noise.*
@@ -221,9 +247,12 @@ These exercises progress from individual artifact exploration through combined d
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise1_result },
-    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise1_result },
-    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise1_result },
+    { label: "Cat", before: sideband_source1_cat, after: sideband_ex1_s1 },
+    { label: "Boat", before: sideband_source2_boat, after: sideband_ex1_s2 },
+    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex1_s3 },
+    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex1_s4 },
+    { label: "Woman", before: sideband_source5_woman, after: sideband_ex1_s5 },
+    { label: "Paint", before: sideband_source6_paint, after: sideband_ex1_s6 },
   ]}
 />
 *Ghost Delay and Polarity — simulated result across source images.*
@@ -246,9 +275,12 @@ These exercises progress from individual artifact exploration through combined d
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise2_result },
-    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise2_result },
-    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise2_result },
+    { label: "Cat", before: sideband_source1_cat, after: sideband_ex2_s1 },
+    { label: "Boat", before: sideband_source2_boat, after: sideband_ex2_s2 },
+    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex2_s3 },
+    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex2_s4 },
+    { label: "Woman", before: sideband_source5_woman, after: sideband_ex2_s5 },
+    { label: "Paint", before: sideband_source6_paint, after: sideband_ex2_s6 },
   ]}
 />
 *Interference and Hum Bars — simulated result across source images.*
@@ -271,9 +303,12 @@ These exercises progress from individual artifact exploration through combined d
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sideband_source1_kodim15, after: sideband_exercise3_result },
-    { label: "Kodim01", before: sideband_source2_kodim01, after: sideband_exercise3_result },
-    { label: "Stream Bridge", before: sideband_source3_stream_bridge_512, after: sideband_exercise3_result },
+    { label: "Cat", before: sideband_source1_cat, after: sideband_ex3_s1 },
+    { label: "Boat", before: sideband_source2_boat, after: sideband_ex3_s2 },
+    { label: "Elephant", before: sideband_source3_elephant, after: sideband_ex3_s3 },
+    { label: "Pattern", before: sideband_source4_pattern, after: sideband_ex3_s4 },
+    { label: "Woman", before: sideband_source5_woman, after: sideband_ex3_s5 },
+    { label: "Paint", before: sideband_source6_paint, after: sideband_ex3_s6 },
   ]}
 />
 *Weak Signal Simulation — simulated result across source images.*

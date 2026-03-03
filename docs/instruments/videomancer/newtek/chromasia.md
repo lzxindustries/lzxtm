@@ -8,6 +8,7 @@ description: "Every video effects box from the 1980s and 1990s shipped with a ba
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chromasia_control_panel from '/img/instruments/videomancer/chromasia/chromasia_control_panel.png';
 import chromasia_source1_dog from '/img/instruments/videomancer/chromasia/chromasia_source1_dog.png';
 import chromasia_source2_field from '/img/instruments/videomancer/chromasia/chromasia_source2_field.png';
 import chromasia_source3_elephant from '/img/instruments/videomancer/chromasia/chromasia_source3_elephant.png';
@@ -135,6 +136,8 @@ The All Channels toggle (Switch 10) is a cross-cutting concern that affects how 
 
 ## Parameter Reference
 
+<img src={chromasia_control_panel} alt="Videomancer front panel with Chromasia loaded"/>
+*Videomancer's front panel with Chromasia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 262
+sidebar_position: 266
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
 image: /img/instruments/videomancer/sfumato/sfumato_hero_s1.png
@@ -8,6 +8,7 @@ description: "Leonardo da Vinci described sfumato as painting \"in the manner of
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import sfumato_control_panel from '/img/instruments/videomancer/sfumato/sfumato_control_panel.png';
 import sfumato_source1_castle from '/img/instruments/videomancer/sfumato/sfumato_source1_castle.png';
 import sfumato_source2_runner from '/img/instruments/videomancer/sfumato/sfumato_source2_runner.png';
 import sfumato_source3_collage from '/img/instruments/videomancer/sfumato/sfumato_source3_collage.png';
@@ -131,6 +132,8 @@ The IIR filter state resets to 512 (mid-gray) at every horizontal sync start, ma
 
 ## Parameter Reference
 
+<img src={sfumato_control_panel} alt="Videomancer front panel with Sfumato loaded"/>
+*Videomancer's front panel with Sfumato active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

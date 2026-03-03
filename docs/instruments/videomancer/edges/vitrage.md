@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 322
+sidebar_position: 328
 slug: /instruments/videomancer/vitrage
 title: "Vitrage"
-image: /img/instruments/videomancer/vitrage/vitrage_hero.png
+image: /img/instruments/videomancer/vitrage/vitrage_hero_s1.png
 description: "Stained glass is an exercise in constraint — lead strips force the artist to work in discrete regions of flat color, while the glass itself filters and saturates light passing through it."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import vitrage_hero from '/img/instruments/videomancer/vitrage/vitrage_hero.png';
 import vitrage_control_panel from '/img/instruments/videomancer/vitrage/vitrage_control_panel.png';
-import vitrage_exercise1_result from '/img/instruments/videomancer/vitrage/vitrage_exercise1_result.png';
-import vitrage_exercise2_result from '/img/instruments/videomancer/vitrage/vitrage_exercise2_result.png';
-import vitrage_exercise3_result from '/img/instruments/videomancer/vitrage/vitrage_exercise3_result.png';
-import vitrage_source1_kodim02 from '/img/instruments/videomancer/vitrage/vitrage_source1_kodim02.png';
-import vitrage_source2_kodim07 from '/img/instruments/videomancer/vitrage/vitrage_source2_kodim07.png';
-import vitrage_source3_kodim01_bw from '/img/instruments/videomancer/vitrage/vitrage_source3_kodim01_bw.png';
+import vitrage_source1_castle from '/img/instruments/videomancer/vitrage/vitrage_source1_castle.png';
+import vitrage_source2_field from '/img/instruments/videomancer/vitrage/vitrage_source2_field.png';
+import vitrage_source3_clouds from '/img/instruments/videomancer/vitrage/vitrage_source3_clouds.png';
+import vitrage_source4_pattern from '/img/instruments/videomancer/vitrage/vitrage_source4_pattern.png';
+import vitrage_source5_girl from '/img/instruments/videomancer/vitrage/vitrage_source5_girl.png';
+import vitrage_source6_knit from '/img/instruments/videomancer/vitrage/vitrage_source6_knit.png';
+import vitrage_hero_s1 from '/img/instruments/videomancer/vitrage/vitrage_hero_s1.png';
+import vitrage_hero_s2 from '/img/instruments/videomancer/vitrage/vitrage_hero_s2.png';
+import vitrage_hero_s3 from '/img/instruments/videomancer/vitrage/vitrage_hero_s3.png';
+import vitrage_hero_s4 from '/img/instruments/videomancer/vitrage/vitrage_hero_s4.png';
+import vitrage_hero_s5 from '/img/instruments/videomancer/vitrage/vitrage_hero_s5.png';
+import vitrage_hero_s6 from '/img/instruments/videomancer/vitrage/vitrage_hero_s6.png';
+import vitrage_ex1_s1 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s1.png';
+import vitrage_ex1_s2 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s2.png';
+import vitrage_ex1_s3 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s3.png';
+import vitrage_ex1_s4 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s4.png';
+import vitrage_ex1_s5 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s5.png';
+import vitrage_ex1_s6 from '/img/instruments/videomancer/vitrage/vitrage_ex1_s6.png';
+import vitrage_ex2_s1 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s1.png';
+import vitrage_ex2_s2 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s2.png';
+import vitrage_ex2_s3 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s3.png';
+import vitrage_ex2_s4 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s4.png';
+import vitrage_ex2_s5 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s5.png';
+import vitrage_ex2_s6 from '/img/instruments/videomancer/vitrage/vitrage_ex2_s6.png';
+import vitrage_ex3_s1 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s1.png';
+import vitrage_ex3_s2 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s2.png';
+import vitrage_ex3_s3 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s3.png';
+import vitrage_ex3_s4 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s4.png';
+import vitrage_ex3_s5 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s5.png';
+import vitrage_ex3_s6 from '/img/instruments/videomancer/vitrage/vitrage_ex3_s6.png';
 
 # Vitrage
 
@@ -23,9 +46,12 @@ import vitrage_source3_kodim01_bw from '/img/instruments/videomancer/vitrage/vit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_hero },
-    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_hero },
-    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_hero },
+    { label: "Castle", before: vitrage_source1_castle, after: vitrage_hero_s1 },
+    { label: "Field", before: vitrage_source2_field, after: vitrage_hero_s2 },
+    { label: "Clouds", before: vitrage_source3_clouds, after: vitrage_hero_s3 },
+    { label: "Pattern", before: vitrage_source4_pattern, after: vitrage_hero_s4 },
+    { label: "Girl", before: vitrage_source5_girl, after: vitrage_hero_s5 },
+    { label: "Knit", before: vitrage_source6_knit, after: vitrage_hero_s6 },
   ]}
 />
 *Vitrage transforming video into luminous stained glass panels with dark lead came borders, color-flattened panes, and simulated sunlight transmission.*
@@ -211,9 +237,12 @@ These exercises progress from simple edge highlighting through full stained glas
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise1_result },
-    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise1_result },
-    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise1_result },
+    { label: "Castle", before: vitrage_source1_castle, after: vitrage_ex1_s1 },
+    { label: "Field", before: vitrage_source2_field, after: vitrage_ex1_s2 },
+    { label: "Clouds", before: vitrage_source3_clouds, after: vitrage_ex1_s3 },
+    { label: "Pattern", before: vitrage_source4_pattern, after: vitrage_ex1_s4 },
+    { label: "Girl", before: vitrage_source5_girl, after: vitrage_ex1_s5 },
+    { label: "Knit", before: vitrage_source6_knit, after: vitrage_ex1_s6 },
   ]}
 />
 *Lead Came Skeleton — simulated result across source images.*
@@ -235,9 +264,12 @@ These exercises progress from simple edge highlighting through full stained glas
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise2_result },
-    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise2_result },
-    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise2_result },
+    { label: "Castle", before: vitrage_source1_castle, after: vitrage_ex2_s1 },
+    { label: "Field", before: vitrage_source2_field, after: vitrage_ex2_s2 },
+    { label: "Clouds", before: vitrage_source3_clouds, after: vitrage_ex2_s3 },
+    { label: "Pattern", before: vitrage_source4_pattern, after: vitrage_ex2_s4 },
+    { label: "Girl", before: vitrage_source5_girl, after: vitrage_ex2_s5 },
+    { label: "Knit", before: vitrage_source6_knit, after: vitrage_ex2_s6 },
   ]}
 />
 *Colored Glass Panels — simulated result across source images.*
@@ -259,9 +291,12 @@ These exercises progress from simple edge highlighting through full stained glas
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: vitrage_source1_kodim02, after: vitrage_exercise3_result },
-    { label: "Kodim07", before: vitrage_source2_kodim07, after: vitrage_exercise3_result },
-    { label: "Kodim01 B&W", before: vitrage_source3_kodim01_bw, after: vitrage_exercise3_result },
+    { label: "Castle", before: vitrage_source1_castle, after: vitrage_ex3_s1 },
+    { label: "Field", before: vitrage_source2_field, after: vitrage_ex3_s2 },
+    { label: "Clouds", before: vitrage_source3_clouds, after: vitrage_ex3_s3 },
+    { label: "Pattern", before: vitrage_source4_pattern, after: vitrage_ex3_s4 },
+    { label: "Girl", before: vitrage_source5_girl, after: vitrage_ex3_s5 },
+    { label: "Knit", before: vitrage_source6_knit, after: vitrage_ex3_s6 },
   ]}
 />
 *Animated Cathedral Window — simulated result across source images.*

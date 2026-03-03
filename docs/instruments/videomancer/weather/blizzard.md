@@ -8,6 +8,7 @@ description: "Snow in real life has depth."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import blizzard_control_panel from '/img/instruments/videomancer/blizzard/blizzard_control_panel.png';
 import blizzard_source1_dog from '/img/instruments/videomancer/blizzard/blizzard_source1_dog.png';
 import blizzard_source2_house from '/img/instruments/videomancer/blizzard/blizzard_source2_house.png';
 import blizzard_source3_turtle from '/img/instruments/videomancer/blizzard/blizzard_source3_turtle.png';
@@ -136,6 +137,9 @@ The key architectural choice is additive compositing: snow brightness is *added*
 ---
 
 ## Parameter Reference
+
+<img src={blizzard_control_panel} alt="Videomancer front panel with Blizzard loaded"/>
+*Videomancer's front panel with Blizzard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 299
+sidebar_position: 304
 slug: /instruments/videomancer/terminal
 title: "Terminal"
-image: /img/instruments/videomancer/terminal/terminal_hero.png
+image: /img/instruments/videomancer/terminal/terminal_hero_s1.png
 description: "Every home computer of the early 1980s presented its output on a CRT monitor with a single-colour phosphor — green, amber, or crisp white."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import terminal_hero from '/img/instruments/videomancer/terminal/terminal_hero.png';
 import terminal_control_panel from '/img/instruments/videomancer/terminal/terminal_control_panel.png';
-import terminal_exercise1_result from '/img/instruments/videomancer/terminal/terminal_exercise1_result.png';
-import terminal_exercise2_result from '/img/instruments/videomancer/terminal/terminal_exercise2_result.png';
-import terminal_exercise3_result from '/img/instruments/videomancer/terminal/terminal_exercise3_result.png';
-import terminal_source1_kodim15 from '/img/instruments/videomancer/terminal/terminal_source1_kodim15.png';
-import terminal_source2_kodim03 from '/img/instruments/videomancer/terminal/terminal_source2_kodim03.png';
-import terminal_source3_kodim15_bw from '/img/instruments/videomancer/terminal/terminal_source3_kodim15_bw.png';
+import terminal_source1_fruit from '/img/instruments/videomancer/terminal/terminal_source1_fruit.png';
+import terminal_source2_runner from '/img/instruments/videomancer/terminal/terminal_source2_runner.png';
+import terminal_source3_collage from '/img/instruments/videomancer/terminal/terminal_source3_collage.png';
+import terminal_source4_pattern from '/img/instruments/videomancer/terminal/terminal_source4_pattern.png';
+import terminal_source5_man from '/img/instruments/videomancer/terminal/terminal_source5_man.png';
+import terminal_source6_wood from '/img/instruments/videomancer/terminal/terminal_source6_wood.png';
+import terminal_hero_s1 from '/img/instruments/videomancer/terminal/terminal_hero_s1.png';
+import terminal_hero_s2 from '/img/instruments/videomancer/terminal/terminal_hero_s2.png';
+import terminal_hero_s3 from '/img/instruments/videomancer/terminal/terminal_hero_s3.png';
+import terminal_hero_s4 from '/img/instruments/videomancer/terminal/terminal_hero_s4.png';
+import terminal_hero_s5 from '/img/instruments/videomancer/terminal/terminal_hero_s5.png';
+import terminal_hero_s6 from '/img/instruments/videomancer/terminal/terminal_hero_s6.png';
+import terminal_ex1_s1 from '/img/instruments/videomancer/terminal/terminal_ex1_s1.png';
+import terminal_ex1_s2 from '/img/instruments/videomancer/terminal/terminal_ex1_s2.png';
+import terminal_ex1_s3 from '/img/instruments/videomancer/terminal/terminal_ex1_s3.png';
+import terminal_ex1_s4 from '/img/instruments/videomancer/terminal/terminal_ex1_s4.png';
+import terminal_ex1_s5 from '/img/instruments/videomancer/terminal/terminal_ex1_s5.png';
+import terminal_ex1_s6 from '/img/instruments/videomancer/terminal/terminal_ex1_s6.png';
+import terminal_ex2_s1 from '/img/instruments/videomancer/terminal/terminal_ex2_s1.png';
+import terminal_ex2_s2 from '/img/instruments/videomancer/terminal/terminal_ex2_s2.png';
+import terminal_ex2_s3 from '/img/instruments/videomancer/terminal/terminal_ex2_s3.png';
+import terminal_ex2_s4 from '/img/instruments/videomancer/terminal/terminal_ex2_s4.png';
+import terminal_ex2_s5 from '/img/instruments/videomancer/terminal/terminal_ex2_s5.png';
+import terminal_ex2_s6 from '/img/instruments/videomancer/terminal/terminal_ex2_s6.png';
+import terminal_ex3_s1 from '/img/instruments/videomancer/terminal/terminal_ex3_s1.png';
+import terminal_ex3_s2 from '/img/instruments/videomancer/terminal/terminal_ex3_s2.png';
+import terminal_ex3_s3 from '/img/instruments/videomancer/terminal/terminal_ex3_s3.png';
+import terminal_ex3_s4 from '/img/instruments/videomancer/terminal/terminal_ex3_s4.png';
+import terminal_ex3_s5 from '/img/instruments/videomancer/terminal/terminal_ex3_s5.png';
+import terminal_ex3_s6 from '/img/instruments/videomancer/terminal/terminal_ex3_s6.png';
 
 # Terminal
 
@@ -23,9 +46,12 @@ import terminal_source3_kodim15_bw from '/img/instruments/videomancer/terminal/t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_hero },
-    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_hero },
-    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_hero },
+    { label: "Fruit", before: terminal_source1_fruit, after: terminal_hero_s1 },
+    { label: "Runner", before: terminal_source2_runner, after: terminal_hero_s2 },
+    { label: "Collage", before: terminal_source3_collage, after: terminal_hero_s3 },
+    { label: "Pattern", before: terminal_source4_pattern, after: terminal_hero_s4 },
+    { label: "Man", before: terminal_source5_man, after: terminal_hero_s5 },
+    { label: "Wood", before: terminal_source6_wood, after: terminal_hero_s6 },
   ]}
 />
 *Terminal applying green phosphor tinting and CRT scanline darkening to transform input video into a vintage computer monitor display.*
@@ -219,9 +245,12 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise1_result },
-    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise1_result },
-    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise1_result },
+    { label: "Fruit", before: terminal_source1_fruit, after: terminal_ex1_s1 },
+    { label: "Runner", before: terminal_source2_runner, after: terminal_ex1_s2 },
+    { label: "Collage", before: terminal_source3_collage, after: terminal_ex1_s3 },
+    { label: "Pattern", before: terminal_source4_pattern, after: terminal_ex1_s4 },
+    { label: "Man", before: terminal_source5_man, after: terminal_ex1_s5 },
+    { label: "Wood", before: terminal_source6_wood, after: terminal_ex1_s6 },
   ]}
 />
 *Classic Green Screen — simulated result across source images.*
@@ -244,9 +273,12 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise2_result },
-    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise2_result },
-    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise2_result },
+    { label: "Fruit", before: terminal_source1_fruit, after: terminal_ex2_s1 },
+    { label: "Runner", before: terminal_source2_runner, after: terminal_ex2_s2 },
+    { label: "Collage", before: terminal_source3_collage, after: terminal_ex2_s3 },
+    { label: "Pattern", before: terminal_source4_pattern, after: terminal_ex2_s4 },
+    { label: "Man", before: terminal_source5_man, after: terminal_ex2_s5 },
+    { label: "Wood", before: terminal_source6_wood, after: terminal_ex2_s6 },
   ]}
 />
 *Amber Bold Terminal — simulated result across source images.*
@@ -269,9 +301,12 @@ These exercises demonstrate Terminal's current capabilities and work within the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: terminal_source1_kodim15, after: terminal_exercise3_result },
-    { label: "Kodim03", before: terminal_source2_kodim03, after: terminal_exercise3_result },
-    { label: "Kodim15 B&W", before: terminal_source3_kodim15_bw, after: terminal_exercise3_result },
+    { label: "Fruit", before: terminal_source1_fruit, after: terminal_ex3_s1 },
+    { label: "Runner", before: terminal_source2_runner, after: terminal_ex3_s2 },
+    { label: "Collage", before: terminal_source3_collage, after: terminal_ex3_s3 },
+    { label: "Pattern", before: terminal_source4_pattern, after: terminal_ex3_s4 },
+    { label: "Man", before: terminal_source5_man, after: terminal_ex3_s5 },
+    { label: "Wood", before: terminal_source6_wood, after: terminal_ex3_s6 },
   ]}
 />
 *Phosphor Tint Overlay — simulated result across source images.*

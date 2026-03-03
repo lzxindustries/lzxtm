@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 79
+sidebar_position: 80
 slug: /instruments/videomancer/dendrite
 title: "Dendrite"
 image: /img/instruments/videomancer/dendrite/dendrite_hero.png

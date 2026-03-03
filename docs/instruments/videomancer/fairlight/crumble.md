@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 69
+sidebar_position: 70
 slug: /instruments/videomancer/crumble
 title: "Crumble"
 image: /img/instruments/videomancer/crumble/crumble_hero_s1.png
@@ -8,6 +8,7 @@ description: "Most video dissolve effects require a frame buffer — dedicated m
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import crumble_control_panel from '/img/instruments/videomancer/crumble/crumble_control_panel.png';
 import crumble_source1_fruit from '/img/instruments/videomancer/crumble/crumble_source1_fruit.png';
 import crumble_source2_skull from '/img/instruments/videomancer/crumble/crumble_source2_skull.png';
 import crumble_source3_elephant from '/img/instruments/videomancer/crumble/crumble_source3_elephant.png';
@@ -143,6 +144,8 @@ The depth control introduces a content-dependent gate before the composite mux. 
 
 ## Parameter Reference
 
+<img src={crumble_control_panel} alt="Videomancer front panel with Crumble loaded"/>
+*Videomancer's front panel with Crumble active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

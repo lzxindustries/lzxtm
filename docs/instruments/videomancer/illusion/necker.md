@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 201
+sidebar_position: 204
 slug: /instruments/videomancer/necker
 title: "Necker"
 image: /img/instruments/videomancer/necker/necker_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Necker cube is one of the most iconic figures in visual percep
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import necker_control_panel from '/img/instruments/videomancer/necker/necker_control_panel.png';
 import necker_source1_parrot from '/img/instruments/videomancer/necker/necker_source1_parrot.png';
 import necker_source2_skull from '/img/instruments/videomancer/necker/necker_source2_skull.png';
 import necker_source3_clouds from '/img/instruments/videomancer/necker/necker_source3_clouds.png';
@@ -133,6 +134,8 @@ Edge thickness is derived from the top 3 bits of the Line Width register plus 1,
 
 ## Parameter Reference
 
+<img src={necker_control_panel} alt="Videomancer front panel with Necker loaded"/>
+*Videomancer's front panel with Necker active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

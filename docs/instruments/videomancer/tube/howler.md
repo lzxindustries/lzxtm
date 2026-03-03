@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 139
+sidebar_position: 140
 slug: /instruments/videomancer/howler
 title: "Howler"
 image: /img/instruments/videomancer/howler/howler_hero_s1.png
@@ -8,6 +8,7 @@ description: "Howler implements a video feedback loop entirely within the FPGA �
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import howler_control_panel from '/img/instruments/videomancer/howler/howler_control_panel.png';
 import howler_source1_skull from '/img/instruments/videomancer/howler/howler_source1_skull.png';
 import howler_source2_fruit from '/img/instruments/videomancer/howler/howler_source2_fruit.png';
 import howler_source3_clouds from '/img/instruments/videomancer/howler/howler_source3_clouds.png';
@@ -133,6 +134,8 @@ The critical detail is what gets written back to BRAM. The write-back data is th
 
 ## Parameter Reference
 
+<img src={howler_control_panel} alt="Videomancer front panel with Howler loaded"/>
+*Videomancer's front panel with Howler active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

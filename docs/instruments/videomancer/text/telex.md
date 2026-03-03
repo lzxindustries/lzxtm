@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 297
+sidebar_position: 302
 slug: /instruments/videomancer/telex
 title: "Telex"
-image: /img/instruments/videomancer/telex/telex_hero.png
+image: /img/instruments/videomancer/telex/telex_hero_s1.png
 description: "Before screens, before pixels, there was the teleprinter — a machine that converted electrical signals into typed characters on a continuous roll of paper."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import telex_hero from '/img/instruments/videomancer/telex/telex_hero.png';
 import telex_control_panel from '/img/instruments/videomancer/telex/telex_control_panel.png';
-import telex_exercise1_result from '/img/instruments/videomancer/telex/telex_exercise1_result.png';
-import telex_exercise2_result from '/img/instruments/videomancer/telex/telex_exercise2_result.png';
-import telex_exercise3_result from '/img/instruments/videomancer/telex/telex_exercise3_result.png';
-import telex_source1_kodim15 from '/img/instruments/videomancer/telex/telex_source1_kodim15.png';
-import telex_source2_kodim15_bw from '/img/instruments/videomancer/telex/telex_source2_kodim15_bw.png';
-import telex_source3_male_1024 from '/img/instruments/videomancer/telex/telex_source3_male_1024.png';
+import telex_source1_field from '/img/instruments/videomancer/telex/telex_source1_field.png';
+import telex_source2_house from '/img/instruments/videomancer/telex/telex_source2_house.png';
+import telex_source3_clouds from '/img/instruments/videomancer/telex/telex_source3_clouds.png';
+import telex_source4_pattern from '/img/instruments/videomancer/telex/telex_source4_pattern.png';
+import telex_source5_girl from '/img/instruments/videomancer/telex/telex_source5_girl.png';
+import telex_source6_paint from '/img/instruments/videomancer/telex/telex_source6_paint.png';
+import telex_hero_s1 from '/img/instruments/videomancer/telex/telex_hero_s1.png';
+import telex_hero_s2 from '/img/instruments/videomancer/telex/telex_hero_s2.png';
+import telex_hero_s3 from '/img/instruments/videomancer/telex/telex_hero_s3.png';
+import telex_hero_s4 from '/img/instruments/videomancer/telex/telex_hero_s4.png';
+import telex_hero_s5 from '/img/instruments/videomancer/telex/telex_hero_s5.png';
+import telex_hero_s6 from '/img/instruments/videomancer/telex/telex_hero_s6.png';
+import telex_ex1_s1 from '/img/instruments/videomancer/telex/telex_ex1_s1.png';
+import telex_ex1_s2 from '/img/instruments/videomancer/telex/telex_ex1_s2.png';
+import telex_ex1_s3 from '/img/instruments/videomancer/telex/telex_ex1_s3.png';
+import telex_ex1_s4 from '/img/instruments/videomancer/telex/telex_ex1_s4.png';
+import telex_ex1_s5 from '/img/instruments/videomancer/telex/telex_ex1_s5.png';
+import telex_ex1_s6 from '/img/instruments/videomancer/telex/telex_ex1_s6.png';
+import telex_ex2_s1 from '/img/instruments/videomancer/telex/telex_ex2_s1.png';
+import telex_ex2_s2 from '/img/instruments/videomancer/telex/telex_ex2_s2.png';
+import telex_ex2_s3 from '/img/instruments/videomancer/telex/telex_ex2_s3.png';
+import telex_ex2_s4 from '/img/instruments/videomancer/telex/telex_ex2_s4.png';
+import telex_ex2_s5 from '/img/instruments/videomancer/telex/telex_ex2_s5.png';
+import telex_ex2_s6 from '/img/instruments/videomancer/telex/telex_ex2_s6.png';
+import telex_ex3_s1 from '/img/instruments/videomancer/telex/telex_ex3_s1.png';
+import telex_ex3_s2 from '/img/instruments/videomancer/telex/telex_ex3_s2.png';
+import telex_ex3_s3 from '/img/instruments/videomancer/telex/telex_ex3_s3.png';
+import telex_ex3_s4 from '/img/instruments/videomancer/telex/telex_ex3_s4.png';
+import telex_ex3_s5 from '/img/instruments/videomancer/telex/telex_ex3_s5.png';
+import telex_ex3_s6 from '/img/instruments/videomancer/telex/telex_ex3_s6.png';
 
 # Telex
 
@@ -23,9 +46,12 @@ import telex_source3_male_1024 from '/img/instruments/videomancer/telex/telex_so
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telex_source1_kodim15, after: telex_hero },
-    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_hero },
-    { label: "Male", before: telex_source3_male_1024, after: telex_hero },
+    { label: "Field", before: telex_source1_field, after: telex_hero_s1 },
+    { label: "House", before: telex_source2_house, after: telex_hero_s2 },
+    { label: "Clouds", before: telex_source3_clouds, after: telex_hero_s3 },
+    { label: "Pattern", before: telex_source4_pattern, after: telex_hero_s4 },
+    { label: "Girl", before: telex_source5_girl, after: telex_hero_s5 },
+    { label: "Paint", before: telex_source6_paint, after: telex_hero_s6 },
   ]}
 />
 *Telex rendering live video as a Baudot teleprinter page — density-sorted 5×7 glyphs typed across the screen by a DDS-driven reveal cursor on colored paper.*
@@ -224,9 +250,12 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise1_result },
-    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise1_result },
-    { label: "Male", before: telex_source3_male_1024, after: telex_exercise1_result },
+    { label: "Field", before: telex_source1_field, after: telex_ex1_s1 },
+    { label: "House", before: telex_source2_house, after: telex_ex1_s2 },
+    { label: "Clouds", before: telex_source3_clouds, after: telex_ex1_s3 },
+    { label: "Pattern", before: telex_source4_pattern, after: telex_ex1_s4 },
+    { label: "Girl", before: telex_source5_girl, after: telex_ex1_s5 },
+    { label: "Paint", before: telex_source6_paint, after: telex_ex1_s6 },
   ]}
 />
 *White Paper Teleprinter — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise2_result },
-    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise2_result },
-    { label: "Male", before: telex_source3_male_1024, after: telex_exercise2_result },
+    { label: "Field", before: telex_source1_field, after: telex_ex2_s1 },
+    { label: "House", before: telex_source2_house, after: telex_ex2_s2 },
+    { label: "Clouds", before: telex_source3_clouds, after: telex_ex2_s3 },
+    { label: "Pattern", before: telex_source4_pattern, after: telex_ex2_s4 },
+    { label: "Girl", before: telex_source5_girl, after: telex_ex2_s5 },
+    { label: "Paint", before: telex_source6_paint, after: telex_ex2_s6 },
   ]}
 />
 *Green Screen Terminal — simulated result across source images.*
@@ -274,9 +306,12 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telex_source1_kodim15, after: telex_exercise3_result },
-    { label: "Kodim15 B&W", before: telex_source2_kodim15_bw, after: telex_exercise3_result },
-    { label: "Male", before: telex_source3_male_1024, after: telex_exercise3_result },
+    { label: "Field", before: telex_source1_field, after: telex_ex3_s1 },
+    { label: "House", before: telex_source2_house, after: telex_ex3_s2 },
+    { label: "Clouds", before: telex_source3_clouds, after: telex_ex3_s3 },
+    { label: "Pattern", before: telex_source4_pattern, after: telex_ex3_s4 },
+    { label: "Girl", before: telex_source5_girl, after: telex_ex3_s5 },
+    { label: "Paint", before: telex_source6_paint, after: telex_ex3_s6 },
   ]}
 />
 *Animated Typewriter Page Fill — simulated result across source images.*

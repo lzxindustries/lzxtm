@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 82
+sidebar_position: 83
 slug: /instruments/videomancer/diorama
 title: "Diorama"
 image: /img/instruments/videomancer/diorama/diorama_hero_s1.png
@@ -8,6 +8,7 @@ description: "A Victorian diorama is a miniature theater — layers of painted s
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import diorama_control_panel from '/img/instruments/videomancer/diorama/diorama_control_panel.png';
 import diorama_source1_castle from '/img/instruments/videomancer/diorama/diorama_source1_castle.png';
 import diorama_source2_parrot from '/img/instruments/videomancer/diorama/diorama_source2_parrot.png';
 import diorama_source3_collage from '/img/instruments/videomancer/diorama/diorama_source3_collage.png';
@@ -143,6 +144,8 @@ The contrast stage sits *after* fog blending, meaning it amplifies or compresses
 
 ## Parameter Reference
 
+<img src={diorama_control_panel} alt="Videomancer front panel with Diorama loaded"/>
+*Videomancer's front panel with Diorama active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

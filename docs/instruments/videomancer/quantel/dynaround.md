@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 94
+sidebar_position: 95
 slug: /instruments/videomancer/dynaround
 title: "Dynaround"
 image: /img/instruments/videomancer/dynaround/dynaround_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every digital video system must decide how many bits to use for ea
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dynaround_control_panel from '/img/instruments/videomancer/dynaround/dynaround_control_panel.png';
 import dynaround_source1_car from '/img/instruments/videomancer/dynaround/dynaround_source1_car.png';
 import dynaround_source2_house from '/img/instruments/videomancer/dynaround/dynaround_source2_house.png';
 import dynaround_source3_turtle from '/img/instruments/videomancer/dynaround/dynaround_source3_turtle.png';
@@ -138,6 +139,8 @@ The three LFSRs operate independently with different initial seeds (0xACE1, 0xBE
 
 ## Parameter Reference
 
+<img src={dynaround_control_panel} alt="Videomancer front panel with Dynaround loaded"/>
+*Videomancer's front panel with Dynaround active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

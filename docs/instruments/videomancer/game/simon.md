@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 268
+sidebar_position: 273
 slug: /instruments/videomancer/simon
 title: "Simon"
 image: /img/instruments/videomancer/simon/simon_hero.png

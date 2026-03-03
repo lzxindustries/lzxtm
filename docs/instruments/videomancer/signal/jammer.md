@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 151
+sidebar_position: 152
 slug: /instruments/videomancer/jammer
 title: "Jammer"
 image: /img/instruments/videomancer/jammer/jammer_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every television signal travels through the air as radio waves, an
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import jammer_control_panel from '/img/instruments/videomancer/jammer/jammer_control_panel.png';
 import jammer_source1_dog from '/img/instruments/videomancer/jammer/jammer_source1_dog.png';
 import jammer_source2_skull from '/img/instruments/videomancer/jammer/jammer_source2_skull.png';
 import jammer_source3_collage from '/img/instruments/videomancer/jammer/jammer_source3_collage.png';
@@ -140,6 +141,8 @@ The Chroma Int toggle controls whether the herringbone pattern and ghost image a
 
 ## Parameter Reference
 
+<img src={jammer_control_panel} alt="Videomancer front panel with Jammer loaded"/>
+*Videomancer's front panel with Jammer active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

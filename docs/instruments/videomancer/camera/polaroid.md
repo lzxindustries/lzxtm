@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 231
+sidebar_position: 234
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
 image: /img/instruments/videomancer/polaroid/polaroid_hero_s1.png
@@ -8,6 +8,7 @@ description: "Polaroid places a white border frame around the active video area,
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import polaroid_control_panel from '/img/instruments/videomancer/polaroid/polaroid_control_panel.png';
 import polaroid_source1_car from '/img/instruments/videomancer/polaroid/polaroid_source1_car.png';
 import polaroid_source2_house from '/img/instruments/videomancer/polaroid/polaroid_source2_house.png';
 import polaroid_source3_collage from '/img/instruments/videomancer/polaroid/polaroid_source3_collage.png';
@@ -123,6 +124,8 @@ The processing pipeline is dominated by a single synchronous process that handle
 
 ## Parameter Reference
 
+<img src={polaroid_control_panel} alt="Videomancer front panel with Polaroid loaded"/>
+*Videomancer's front panel with Polaroid active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

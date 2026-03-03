@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 121
+sidebar_position: 122
 slug: /instruments/videomancer/fringe
 title: "Fringe"
 image: /img/instruments/videomancer/fringe/fringe_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before the era of component video and digital interfaces, nearly a
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import fringe_control_panel from '/img/instruments/videomancer/fringe/fringe_control_panel.png';
 import fringe_source1_runner from '/img/instruments/videomancer/fringe/fringe_source1_runner.png';
 import fringe_source2_dog from '/img/instruments/videomancer/fringe/fringe_source2_dog.png';
 import fringe_source3_collage from '/img/instruments/videomancer/fringe/fringe_source3_collage.png';
@@ -160,6 +161,8 @@ The composite encoding uses a three-bit shift-add approximation rather than a ha
 
 ## Parameter Reference
 
+<img src={fringe_control_panel} alt="Videomancer front panel with Fringe loaded"/>
+*Videomancer's front panel with Fringe active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

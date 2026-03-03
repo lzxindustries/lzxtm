@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 145
+sidebar_position: 146
 slug: /instruments/videomancer/intermod
 title: "Intermod"
 image: /img/instruments/videomancer/intermod/intermod_hero_s1.png
@@ -8,6 +8,7 @@ description: "Analog amplifiers do not clip gracefully."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import intermod_control_panel from '/img/instruments/videomancer/intermod/intermod_control_panel.png';
 import intermod_source1_cat from '/img/instruments/videomancer/intermod/intermod_source1_cat.png';
 import intermod_source2_dog from '/img/instruments/videomancer/intermod/intermod_source2_dog.png';
 import intermod_source3_collage from '/img/instruments/videomancer/intermod/intermod_source3_collage.png';
@@ -20,6 +21,24 @@ import intermod_hero_s3 from '/img/instruments/videomancer/intermod/intermod_her
 import intermod_hero_s4 from '/img/instruments/videomancer/intermod/intermod_hero_s4.png';
 import intermod_hero_s5 from '/img/instruments/videomancer/intermod/intermod_hero_s5.png';
 import intermod_hero_s6 from '/img/instruments/videomancer/intermod/intermod_hero_s6.png';
+import intermod_ex1_s1 from '/img/instruments/videomancer/intermod/intermod_ex1_s1.png';
+import intermod_ex1_s2 from '/img/instruments/videomancer/intermod/intermod_ex1_s2.png';
+import intermod_ex1_s3 from '/img/instruments/videomancer/intermod/intermod_ex1_s3.png';
+import intermod_ex1_s4 from '/img/instruments/videomancer/intermod/intermod_ex1_s4.png';
+import intermod_ex1_s5 from '/img/instruments/videomancer/intermod/intermod_ex1_s5.png';
+import intermod_ex1_s6 from '/img/instruments/videomancer/intermod/intermod_ex1_s6.png';
+import intermod_ex2_s1 from '/img/instruments/videomancer/intermod/intermod_ex2_s1.png';
+import intermod_ex2_s2 from '/img/instruments/videomancer/intermod/intermod_ex2_s2.png';
+import intermod_ex2_s3 from '/img/instruments/videomancer/intermod/intermod_ex2_s3.png';
+import intermod_ex2_s4 from '/img/instruments/videomancer/intermod/intermod_ex2_s4.png';
+import intermod_ex2_s5 from '/img/instruments/videomancer/intermod/intermod_ex2_s5.png';
+import intermod_ex2_s6 from '/img/instruments/videomancer/intermod/intermod_ex2_s6.png';
+import intermod_ex3_s1 from '/img/instruments/videomancer/intermod/intermod_ex3_s1.png';
+import intermod_ex3_s2 from '/img/instruments/videomancer/intermod/intermod_ex3_s2.png';
+import intermod_ex3_s3 from '/img/instruments/videomancer/intermod/intermod_ex3_s3.png';
+import intermod_ex3_s4 from '/img/instruments/videomancer/intermod/intermod_ex3_s4.png';
+import intermod_ex3_s5 from '/img/instruments/videomancer/intermod/intermod_ex3_s5.png';
+import intermod_ex3_s6 from '/img/instruments/videomancer/intermod/intermod_ex3_s6.png';
 
 # Intermod
 
@@ -113,6 +132,8 @@ The pipeline operates in a signed domain: input values are centered around zero 
 
 ## Parameter Reference
 
+<img src={intermod_control_panel} alt="Videomancer front panel with Intermod loaded"/>
+*Videomancer's front panel with Intermod active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +238,12 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise1_result },
-    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise1_result },
-    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise1_result },
+    { label: "Cat", before: intermod_source1_cat, after: intermod_ex1_s1 },
+    { label: "Dog", before: intermod_source2_dog, after: intermod_ex1_s2 },
+    { label: "Collage", before: intermod_source3_collage, after: intermod_ex1_s3 },
+    { label: "Pattern", before: intermod_source4_pattern, after: intermod_ex1_s4 },
+    { label: "Woman", before: intermod_source5_woman, after: intermod_ex1_s5 },
+    { label: "Wood", before: intermod_source6_wood, after: intermod_ex1_s6 },
   ]}
 />
 *Warm Tube Overdrive — simulated result across source images.*
@@ -244,9 +268,12 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise2_result },
-    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise2_result },
-    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise2_result },
+    { label: "Cat", before: intermod_source1_cat, after: intermod_ex2_s1 },
+    { label: "Dog", before: intermod_source2_dog, after: intermod_ex2_s2 },
+    { label: "Collage", before: intermod_source3_collage, after: intermod_ex2_s3 },
+    { label: "Pattern", before: intermod_source4_pattern, after: intermod_ex2_s4 },
+    { label: "Woman", before: intermod_source5_woman, after: intermod_ex2_s5 },
+    { label: "Wood", before: intermod_source6_wood, after: intermod_ex2_s6 },
   ]}
 />
 *Metallic Color Shred — simulated result across source images.*
@@ -271,9 +298,12 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_exercise3_result },
-    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_exercise3_result },
-    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_exercise3_result },
+    { label: "Cat", before: intermod_source1_cat, after: intermod_ex3_s1 },
+    { label: "Dog", before: intermod_source2_dog, after: intermod_ex3_s2 },
+    { label: "Collage", before: intermod_source3_collage, after: intermod_ex3_s3 },
+    { label: "Pattern", before: intermod_source4_pattern, after: intermod_ex3_s4 },
+    { label: "Woman", before: intermod_source5_woman, after: intermod_ex3_s5 },
+    { label: "Wood", before: intermod_source6_wood, after: intermod_ex3_s6 },
   ]}
 />
 *Self-Oscillating Chaos — simulated result across source images.*

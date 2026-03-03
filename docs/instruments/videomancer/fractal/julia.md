@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 153
+sidebar_position: 154
 slug: /instruments/videomancer/julia
 title: "Julia"
 image: /img/instruments/videomancer/julia/julia_hero.png

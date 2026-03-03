@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 97
+sidebar_position: 98
 slug: /instruments/videomancer/embers
 title: "Embers"
 image: /img/instruments/videomancer/embers/embers_hero.png
@@ -326,6 +326,5 @@ These exercises progress from a basic centered fountain through physics-driven t
 | **Register file** | A set of flip-flop registers (as opposed to BRAM) used to store particle state. Embers maintains all 8 particles in registers, consuming zero block RAM. |
 | **Saturating arithmetic** | Integer arithmetic that clamps at the minimum and maximum representable values rather than wrapping around. Used for position updates to prevent particles from teleporting across frame boundaries. |
 | **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer video processing pipeline. |
-
 
 ---

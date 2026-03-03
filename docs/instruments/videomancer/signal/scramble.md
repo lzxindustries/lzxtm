@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 258
+sidebar_position: 262
 slug: /instruments/videomancer/scramble
 title: "Scramble"
 image: /img/instruments/videomancer/scramble/scramble_hero_s1.png
@@ -8,6 +8,7 @@ description: "Analog pay-TV systems of the late 1980s and early 1990s scrambled 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import scramble_control_panel from '/img/instruments/videomancer/scramble/scramble_control_panel.png';
 import scramble_source1_fruit from '/img/instruments/videomancer/scramble/scramble_source1_fruit.png';
 import scramble_source2_skull from '/img/instruments/videomancer/scramble/scramble_source2_skull.png';
 import scramble_source3_turtle from '/img/instruments/videomancer/scramble/scramble_source3_turtle.png';
@@ -126,6 +127,8 @@ Video inversion is applied *after* the line buffer read, meaning the inversion z
 
 ## Parameter Reference
 
+<img src={scramble_control_panel} alt="Videomancer front panel with Scramble loaded"/>
+*Videomancer's front panel with Scramble active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

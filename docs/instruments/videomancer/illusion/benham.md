@@ -8,6 +8,7 @@ description: "In 1895, the English toymaker Charles Benham marketed a painted sp
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import benham_control_panel from '/img/instruments/videomancer/benham/benham_control_panel.png';
 import benham_source1_dog from '/img/instruments/videomancer/benham/benham_source1_dog.png';
 import benham_source2_parrot from '/img/instruments/videomancer/benham/benham_source2_parrot.png';
 import benham_source3_clouds from '/img/instruments/videomancer/benham/benham_source3_clouds.png';
@@ -139,6 +140,9 @@ The critical path for the Benham illusion is the field-mode offset in Stage 3. I
 ---
 
 ## Parameter Reference
+
+<img src={benham_control_panel} alt="Videomancer front panel with Benham loaded"/>
+*Videomancer's front panel with Benham active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

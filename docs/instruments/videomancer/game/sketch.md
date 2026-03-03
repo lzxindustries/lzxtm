@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 271
+sidebar_position: 276
 slug: /instruments/videomancer/sketch
 title: "Sketch"
 image: /img/instruments/videomancer/sketch/sketch_hero.png

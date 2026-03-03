@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 172
+sidebar_position: 174
 slug: /instruments/videomancer/linotype
 title: "Linotype"
 image: /img/instruments/videomancer/linotype/linotype_hero_s1.png
@@ -8,6 +8,7 @@ description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized pri
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import linotype_control_panel from '/img/instruments/videomancer/linotype/linotype_control_panel.png';
 import linotype_source1_house from '/img/instruments/videomancer/linotype/linotype_source1_house.png';
 import linotype_source2_cat from '/img/instruments/videomancer/linotype/linotype_source2_cat.png';
 import linotype_source3_collage from '/img/instruments/videomancer/linotype/linotype_source3_collage.png';
@@ -144,6 +145,8 @@ The dual-bank BRAM is the critical resource. While one bank is being read for di
 
 ## Parameter Reference
 
+<img src={linotype_control_panel} alt="Videomancer front panel with Linotype loaded"/>
+*Videomancer's front panel with Linotype active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

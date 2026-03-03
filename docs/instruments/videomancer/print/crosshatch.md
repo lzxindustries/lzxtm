@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 68
+sidebar_position: 69
 slug: /instruments/videomancer/crosshatch
 title: "Crosshatch"
 image: /img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every illustrator and printmaker who has worked without continuous
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import crosshatch_control_panel from '/img/instruments/videomancer/crosshatch/crosshatch_control_panel.png';
 import crosshatch_source1_castle from '/img/instruments/videomancer/crosshatch/crosshatch_source1_castle.png';
 import crosshatch_source2_ballerina from '/img/instruments/videomancer/crosshatch/crosshatch_source2_ballerina.png';
 import crosshatch_source3_turtle from '/img/instruments/videomancer/crosshatch/crosshatch_source3_turtle.png';
@@ -133,6 +134,8 @@ The critical design insight is that all line detection happens in a single combi
 
 ## Parameter Reference
 
+<img src={crosshatch_control_panel} alt="Videomancer front panel with Crosshatch loaded"/>
+*Videomancer's front panel with Crosshatch active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

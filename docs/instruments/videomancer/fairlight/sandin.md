@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 254
+sidebar_position: 258
 slug: /instruments/videomancer/sandin
 title: "Sandin"
 image: /img/instruments/videomancer/sandin/sandin_hero_s1.png
@@ -8,6 +8,7 @@ description: "Sandin is a digital homage to the Sandin Image Processor (IP), the
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import sandin_control_panel from '/img/instruments/videomancer/sandin/sandin_control_panel.png';
 import sandin_source1_house from '/img/instruments/videomancer/sandin/sandin_source1_house.png';
 import sandin_source2_ballerina from '/img/instruments/videomancer/sandin/sandin_source2_ballerina.png';
 import sandin_source3_turtle from '/img/instruments/videomancer/sandin/sandin_source3_turtle.png';
@@ -146,6 +147,8 @@ The Cascade toggle doubles the derivation chain — two successive edge/offset/i
 
 ## Parameter Reference
 
+<img src={sandin_control_panel} alt="Videomancer front panel with Sandin loaded"/>
+*Videomancer's front panel with Sandin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

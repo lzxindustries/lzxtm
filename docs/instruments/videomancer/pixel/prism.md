@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 233
+sidebar_position: 236
 slug: /instruments/videomancer/prism
 title: "Prism"
 image: /img/instruments/videomancer/prism/prism_hero_s1.png
@@ -8,6 +8,7 @@ description: "Prism takes the three channels of a YUV video signal and shifts ea
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import prism_control_panel from '/img/instruments/videomancer/prism/prism_control_panel.png';
 import prism_source1_fruit from '/img/instruments/videomancer/prism/prism_source1_fruit.png';
 import prism_source2_boat from '/img/instruments/videomancer/prism/prism_source2_boat.png';
 import prism_source3_elephant from '/img/instruments/videomancer/prism/prism_source3_elephant.png';
@@ -132,6 +133,8 @@ The delay computation stage packs significant logic into a single clock: luma mo
 
 ## Parameter Reference
 
+<img src={prism_control_panel} alt="Videomancer front panel with Prism loaded"/>
+*Videomancer's front panel with Prism active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

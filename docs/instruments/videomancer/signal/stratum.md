@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 287
+sidebar_position: 292
 slug: /instruments/videomancer/stratum
 title: "Stratum"
-image: /img/instruments/videomancer/stratum/stratum_hero.png
+image: /img/instruments/videomancer/stratum/stratum_hero_s1.png
 description: "Every pixel of video is a column of thirty binary digits — ten bits each for Y, U, and V, stacked from least significant to most significant."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stratum_hero from '/img/instruments/videomancer/stratum/stratum_hero.png';
 import stratum_control_panel from '/img/instruments/videomancer/stratum/stratum_control_panel.png';
-import stratum_exercise1_result from '/img/instruments/videomancer/stratum/stratum_exercise1_result.png';
-import stratum_exercise2_result from '/img/instruments/videomancer/stratum/stratum_exercise2_result.png';
-import stratum_exercise3_result from '/img/instruments/videomancer/stratum/stratum_exercise3_result.png';
-import stratum_source1_kodim15 from '/img/instruments/videomancer/stratum/stratum_source1_kodim15.png';
-import stratum_source2_kodim01 from '/img/instruments/videomancer/stratum/stratum_source2_kodim01.png';
-import stratum_source3_stream_bridge_512 from '/img/instruments/videomancer/stratum/stratum_source3_stream_bridge_512.png';
+import stratum_source1_cat from '/img/instruments/videomancer/stratum/stratum_source1_cat.png';
+import stratum_source2_castle from '/img/instruments/videomancer/stratum/stratum_source2_castle.png';
+import stratum_source3_turtle from '/img/instruments/videomancer/stratum/stratum_source3_turtle.png';
+import stratum_source4_pattern from '/img/instruments/videomancer/stratum/stratum_source4_pattern.png';
+import stratum_source5_boy from '/img/instruments/videomancer/stratum/stratum_source5_boy.png';
+import stratum_source6_berries from '/img/instruments/videomancer/stratum/stratum_source6_berries.png';
+import stratum_hero_s1 from '/img/instruments/videomancer/stratum/stratum_hero_s1.png';
+import stratum_hero_s2 from '/img/instruments/videomancer/stratum/stratum_hero_s2.png';
+import stratum_hero_s3 from '/img/instruments/videomancer/stratum/stratum_hero_s3.png';
+import stratum_hero_s4 from '/img/instruments/videomancer/stratum/stratum_hero_s4.png';
+import stratum_hero_s5 from '/img/instruments/videomancer/stratum/stratum_hero_s5.png';
+import stratum_hero_s6 from '/img/instruments/videomancer/stratum/stratum_hero_s6.png';
+import stratum_ex1_s1 from '/img/instruments/videomancer/stratum/stratum_ex1_s1.png';
+import stratum_ex1_s2 from '/img/instruments/videomancer/stratum/stratum_ex1_s2.png';
+import stratum_ex1_s3 from '/img/instruments/videomancer/stratum/stratum_ex1_s3.png';
+import stratum_ex1_s4 from '/img/instruments/videomancer/stratum/stratum_ex1_s4.png';
+import stratum_ex1_s5 from '/img/instruments/videomancer/stratum/stratum_ex1_s5.png';
+import stratum_ex1_s6 from '/img/instruments/videomancer/stratum/stratum_ex1_s6.png';
+import stratum_ex2_s1 from '/img/instruments/videomancer/stratum/stratum_ex2_s1.png';
+import stratum_ex2_s2 from '/img/instruments/videomancer/stratum/stratum_ex2_s2.png';
+import stratum_ex2_s3 from '/img/instruments/videomancer/stratum/stratum_ex2_s3.png';
+import stratum_ex2_s4 from '/img/instruments/videomancer/stratum/stratum_ex2_s4.png';
+import stratum_ex2_s5 from '/img/instruments/videomancer/stratum/stratum_ex2_s5.png';
+import stratum_ex2_s6 from '/img/instruments/videomancer/stratum/stratum_ex2_s6.png';
+import stratum_ex3_s1 from '/img/instruments/videomancer/stratum/stratum_ex3_s1.png';
+import stratum_ex3_s2 from '/img/instruments/videomancer/stratum/stratum_ex3_s2.png';
+import stratum_ex3_s3 from '/img/instruments/videomancer/stratum/stratum_ex3_s3.png';
+import stratum_ex3_s4 from '/img/instruments/videomancer/stratum/stratum_ex3_s4.png';
+import stratum_ex3_s5 from '/img/instruments/videomancer/stratum/stratum_ex3_s5.png';
+import stratum_ex3_s6 from '/img/instruments/videomancer/stratum/stratum_ex3_s6.png';
 
 # Stratum
 
@@ -23,9 +46,12 @@ import stratum_source3_stream_bridge_512 from '/img/instruments/videomancer/stra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_hero },
-    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_hero },
-    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_hero },
+    { label: "Cat", before: stratum_source1_cat, after: stratum_hero_s1 },
+    { label: "Castle", before: stratum_source2_castle, after: stratum_hero_s2 },
+    { label: "Turtle", before: stratum_source3_turtle, after: stratum_hero_s3 },
+    { label: "Pattern", before: stratum_source4_pattern, after: stratum_hero_s4 },
+    { label: "Boy", before: stratum_source5_boy, after: stratum_hero_s5 },
+    { label: "Berries", before: stratum_source6_berries, after: stratum_hero_s6 },
   ]}
 />
 *Stratum applying bit-plane barrel rotation and cross-channel XOR to decompose and recombine video into glitched digital strata.*
@@ -211,9 +237,12 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise1_result },
-    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise1_result },
-    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise1_result },
+    { label: "Cat", before: stratum_source1_cat, after: stratum_ex1_s1 },
+    { label: "Castle", before: stratum_source2_castle, after: stratum_ex1_s2 },
+    { label: "Turtle", before: stratum_source3_turtle, after: stratum_ex1_s3 },
+    { label: "Pattern", before: stratum_source4_pattern, after: stratum_ex1_s4 },
+    { label: "Boy", before: stratum_source5_boy, after: stratum_ex1_s5 },
+    { label: "Berries", before: stratum_source6_berries, after: stratum_ex1_s6 },
   ]}
 />
 *Channel Rotation — simulated result across source images.*
@@ -235,9 +264,12 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise2_result },
-    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise2_result },
-    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise2_result },
+    { label: "Cat", before: stratum_source1_cat, after: stratum_ex2_s1 },
+    { label: "Castle", before: stratum_source2_castle, after: stratum_ex2_s2 },
+    { label: "Turtle", before: stratum_source3_turtle, after: stratum_ex2_s3 },
+    { label: "Pattern", before: stratum_source4_pattern, after: stratum_ex2_s4 },
+    { label: "Boy", before: stratum_source5_boy, after: stratum_ex2_s5 },
+    { label: "Berries", before: stratum_source6_berries, after: stratum_ex2_s6 },
   ]}
 />
 *XOR Texture Generation — simulated result across source images.*
@@ -259,9 +291,12 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stratum_source1_kodim15, after: stratum_exercise3_result },
-    { label: "Kodim01", before: stratum_source2_kodim01, after: stratum_exercise3_result },
-    { label: "Stream Bridge", before: stratum_source3_stream_bridge_512, after: stratum_exercise3_result },
+    { label: "Cat", before: stratum_source1_cat, after: stratum_ex3_s1 },
+    { label: "Castle", before: stratum_source2_castle, after: stratum_ex3_s2 },
+    { label: "Turtle", before: stratum_source3_turtle, after: stratum_ex3_s3 },
+    { label: "Pattern", before: stratum_source4_pattern, after: stratum_ex3_s4 },
+    { label: "Boy", before: stratum_source5_boy, after: stratum_ex3_s5 },
+    { label: "Berries", before: stratum_source6_berries, after: stratum_ex3_s6 },
   ]}
 />
 *Temporal Bit-Plane Animation — simulated result across source images.*

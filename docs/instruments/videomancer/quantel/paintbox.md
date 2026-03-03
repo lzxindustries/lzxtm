@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 212
+sidebar_position: 215
 slug: /instruments/videomancer/paintbox
 title: "Paintbox"
 image: /img/instruments/videomancer/paintbox/paintbox_hero_s1.png
@@ -8,6 +8,7 @@ description: "Paintbox reduces the continuous 10-bit YUV color space to a finite
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import paintbox_control_panel from '/img/instruments/videomancer/paintbox/paintbox_control_panel.png';
 import paintbox_source1_runner from '/img/instruments/videomancer/paintbox/paintbox_source1_runner.png';
 import paintbox_source2_castle from '/img/instruments/videomancer/paintbox/paintbox_source2_castle.png';
 import paintbox_source3_collage from '/img/instruments/videomancer/paintbox/paintbox_source3_collage.png';
@@ -140,6 +141,8 @@ The Y Only toggle is particularly useful with colored palettes — quantizing lu
 
 ## Parameter Reference
 
+<img src={paintbox_control_panel} alt="Videomancer front panel with Paintbox loaded"/>
+*Videomancer's front panel with Paintbox active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

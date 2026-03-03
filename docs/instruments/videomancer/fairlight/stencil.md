@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 282
+sidebar_position: 287
 slug: /instruments/videomancer/stencil
 title: "Stencil"
-image: /img/instruments/videomancer/stencil/stencil_hero.png
+image: /img/instruments/videomancer/stencil/stencil_hero_s1.png
 description: "Stencil converts the input video into a binary mask based on luminance threshold, then uses that mask to selectively reveal either a solid fill colour or the original image — creating bold, graphic compositions reminiscent of screen-printed posters and paper stencil art."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stencil_hero from '/img/instruments/videomancer/stencil/stencil_hero.png';
 import stencil_control_panel from '/img/instruments/videomancer/stencil/stencil_control_panel.png';
-import stencil_exercise1_result from '/img/instruments/videomancer/stencil/stencil_exercise1_result.png';
-import stencil_exercise2_result from '/img/instruments/videomancer/stencil/stencil_exercise2_result.png';
-import stencil_exercise3_result from '/img/instruments/videomancer/stencil/stencil_exercise3_result.png';
-import stencil_source1_kodim15 from '/img/instruments/videomancer/stencil/stencil_source1_kodim15.png';
-import stencil_source2_kodim01 from '/img/instruments/videomancer/stencil/stencil_source2_kodim01.png';
-import stencil_source3_kodim01_bw from '/img/instruments/videomancer/stencil/stencil_source3_kodim01_bw.png';
+import stencil_source1_sunset from '/img/instruments/videomancer/stencil/stencil_source1_sunset.png';
+import stencil_source2_cat from '/img/instruments/videomancer/stencil/stencil_source2_cat.png';
+import stencil_source3_clouds from '/img/instruments/videomancer/stencil/stencil_source3_clouds.png';
+import stencil_source4_pattern from '/img/instruments/videomancer/stencil/stencil_source4_pattern.png';
+import stencil_source5_girl from '/img/instruments/videomancer/stencil/stencil_source5_girl.png';
+import stencil_source6_wood from '/img/instruments/videomancer/stencil/stencil_source6_wood.png';
+import stencil_hero_s1 from '/img/instruments/videomancer/stencil/stencil_hero_s1.png';
+import stencil_hero_s2 from '/img/instruments/videomancer/stencil/stencil_hero_s2.png';
+import stencil_hero_s3 from '/img/instruments/videomancer/stencil/stencil_hero_s3.png';
+import stencil_hero_s4 from '/img/instruments/videomancer/stencil/stencil_hero_s4.png';
+import stencil_hero_s5 from '/img/instruments/videomancer/stencil/stencil_hero_s5.png';
+import stencil_hero_s6 from '/img/instruments/videomancer/stencil/stencil_hero_s6.png';
+import stencil_ex1_s1 from '/img/instruments/videomancer/stencil/stencil_ex1_s1.png';
+import stencil_ex1_s2 from '/img/instruments/videomancer/stencil/stencil_ex1_s2.png';
+import stencil_ex1_s3 from '/img/instruments/videomancer/stencil/stencil_ex1_s3.png';
+import stencil_ex1_s4 from '/img/instruments/videomancer/stencil/stencil_ex1_s4.png';
+import stencil_ex1_s5 from '/img/instruments/videomancer/stencil/stencil_ex1_s5.png';
+import stencil_ex1_s6 from '/img/instruments/videomancer/stencil/stencil_ex1_s6.png';
+import stencil_ex2_s1 from '/img/instruments/videomancer/stencil/stencil_ex2_s1.png';
+import stencil_ex2_s2 from '/img/instruments/videomancer/stencil/stencil_ex2_s2.png';
+import stencil_ex2_s3 from '/img/instruments/videomancer/stencil/stencil_ex2_s3.png';
+import stencil_ex2_s4 from '/img/instruments/videomancer/stencil/stencil_ex2_s4.png';
+import stencil_ex2_s5 from '/img/instruments/videomancer/stencil/stencil_ex2_s5.png';
+import stencil_ex2_s6 from '/img/instruments/videomancer/stencil/stencil_ex2_s6.png';
+import stencil_ex3_s1 from '/img/instruments/videomancer/stencil/stencil_ex3_s1.png';
+import stencil_ex3_s2 from '/img/instruments/videomancer/stencil/stencil_ex3_s2.png';
+import stencil_ex3_s3 from '/img/instruments/videomancer/stencil/stencil_ex3_s3.png';
+import stencil_ex3_s4 from '/img/instruments/videomancer/stencil/stencil_ex3_s4.png';
+import stencil_ex3_s5 from '/img/instruments/videomancer/stencil/stencil_ex3_s5.png';
+import stencil_ex3_s6 from '/img/instruments/videomancer/stencil/stencil_ex3_s6.png';
 
 # Stencil
 
@@ -23,9 +46,12 @@ import stencil_source3_kodim01_bw from '/img/instruments/videomancer/stencil/ste
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_hero },
-    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_hero },
-    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_hero },
+    { label: "Sunset", before: stencil_source1_sunset, after: stencil_hero_s1 },
+    { label: "Cat", before: stencil_source2_cat, after: stencil_hero_s2 },
+    { label: "Clouds", before: stencil_source3_clouds, after: stencil_hero_s3 },
+    { label: "Pattern", before: stencil_source4_pattern, after: stencil_hero_s4 },
+    { label: "Girl", before: stencil_source5_girl, after: stencil_hero_s5 },
+    { label: "Wood", before: stencil_source6_wood, after: stencil_hero_s6 },
   ]}
 />
 *Hard-edged luminance masks carve vivid fill colours from the video stream, turning every frame into a cut-paper silhouette.*
@@ -234,9 +260,12 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise1_result },
-    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise1_result },
-    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise1_result },
+    { label: "Sunset", before: stencil_source1_sunset, after: stencil_ex1_s1 },
+    { label: "Cat", before: stencil_source2_cat, after: stencil_ex1_s2 },
+    { label: "Clouds", before: stencil_source3_clouds, after: stencil_ex1_s3 },
+    { label: "Pattern", before: stencil_source4_pattern, after: stencil_ex1_s4 },
+    { label: "Girl", before: stencil_source5_girl, after: stencil_ex1_s5 },
+    { label: "Wood", before: stencil_source6_wood, after: stencil_ex1_s6 },
   ]}
 />
 *Basic Threshold Mask — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise2_result },
-    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise2_result },
-    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise2_result },
+    { label: "Sunset", before: stencil_source1_sunset, after: stencil_ex2_s1 },
+    { label: "Cat", before: stencil_source2_cat, after: stencil_ex2_s2 },
+    { label: "Clouds", before: stencil_source3_clouds, after: stencil_ex2_s3 },
+    { label: "Pattern", before: stencil_source4_pattern, after: stencil_ex2_s4 },
+    { label: "Girl", before: stencil_source5_girl, after: stencil_ex2_s5 },
+    { label: "Wood", before: stencil_source6_wood, after: stencil_ex2_s6 },
   ]}
 />
 *Coloured Stencil with Edge — simulated result across source images.*
@@ -284,9 +316,12 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stencil_source1_kodim15, after: stencil_exercise3_result },
-    { label: "Kodim01", before: stencil_source2_kodim01, after: stencil_exercise3_result },
-    { label: "Kodim01 B&W", before: stencil_source3_kodim01_bw, after: stencil_exercise3_result },
+    { label: "Sunset", before: stencil_source1_sunset, after: stencil_ex3_s1 },
+    { label: "Cat", before: stencil_source2_cat, after: stencil_ex3_s2 },
+    { label: "Clouds", before: stencil_source3_clouds, after: stencil_ex3_s3 },
+    { label: "Pattern", before: stencil_source4_pattern, after: stencil_ex3_s4 },
+    { label: "Girl", before: stencil_source5_girl, after: stencil_ex3_s5 },
+    { label: "Wood", before: stencil_source6_wood, after: stencil_ex3_s6 },
   ]}
 />
 *Soft Stencil with Offset — simulated result across source images.*

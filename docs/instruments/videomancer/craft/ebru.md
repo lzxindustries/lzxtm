@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 95
+sidebar_position: 96
 slug: /instruments/videomancer/ebru
 title: "Ebru"
 image: /img/instruments/videomancer/ebru/ebru_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the art of Turkish marbling, pigment drops fall onto the surfac
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import ebru_control_panel from '/img/instruments/videomancer/ebru/ebru_control_panel.png';
 import ebru_source1_runner from '/img/instruments/videomancer/ebru/ebru_source1_runner.png';
 import ebru_source2_dog from '/img/instruments/videomancer/ebru/ebru_source2_dog.png';
 import ebru_source3_turtle from '/img/instruments/videomancer/ebru/ebru_source3_turtle.png';
@@ -144,6 +145,8 @@ When multi-drop mode is active, the pipeline computes two complete distance-to-s
 
 ## Parameter Reference
 
+<img src={ebru_control_panel} alt="Videomancer front panel with Ebru loaded"/>
+*Videomancer's front panel with Ebru active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

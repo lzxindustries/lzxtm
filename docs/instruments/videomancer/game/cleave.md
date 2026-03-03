@@ -7,28 +7,21 @@ image: /img/instruments/videomancer/cleave/cleave_hero.png
 description: "The Nintendo Entertainment System's Picture Processing Unit had a peculiar timing trick: the PPU could detect the moment a special \"sprite zero\" pixel overlapped the background, and the CPU would spin in a tight polling loop waiting for that flag."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import cleave_hero from '/img/instruments/videomancer/cleave/cleave_hero.png';
+import cleave_before_after from '/img/instruments/videomancer/cleave/cleave_before_after.png';
 import cleave_control_panel from '/img/instruments/videomancer/cleave/cleave_control_panel.png';
-import cleave_exercise1_result from '/img/instruments/videomancer/cleave/cleave_exercise1_result.png';
-import cleave_exercise2_result from '/img/instruments/videomancer/cleave/cleave_exercise2_result.png';
-import cleave_exercise3_result from '/img/instruments/videomancer/cleave/cleave_exercise3_result.png';
-import cleave_source1_kodim15 from '/img/instruments/videomancer/cleave/cleave_source1_kodim15.png';
-import cleave_source2_kodim03 from '/img/instruments/videomancer/cleave/cleave_source2_kodim03.png';
-import cleave_source3_kodim15_bw from '/img/instruments/videomancer/cleave/cleave_source3_kodim15_bw.png';
+import cleave_exercise1_result from '/img/instruments/videomancer/cleave/cleave_exercise1_result.gif';
+import cleave_exercise2_result from '/img/instruments/videomancer/cleave/cleave_exercise2_result.gif';
+import cleave_exercise3_result from '/img/instruments/videomancer/cleave/cleave_exercise3_result.gif';
 
 # Cleave
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: cleave_source1_kodim15, after: cleave_hero },
-    { label: "Kodim03", before: cleave_source2_kodim03, after: cleave_hero },
-    { label: "Kodim15 B&W", before: cleave_source3_kodim15_bw, after: cleave_hero },
-  ]}
-/>
+<img src={cleave_hero} alt="Cleave hero image"/>
 *Cleave splitting a live video feed at a PPU-jittered raster boundary, applying distinct brightness and hue rotation to each region with a visible glitch artifact bar at the seam.*
+<img src={cleave_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Cleave applied.*
 
 ---
 
@@ -224,13 +217,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 ### Exercise 1: Retro Status Bar Split
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: cleave_source1_kodim15, after: cleave_exercise1_result },
-    { label: "Kodim03", before: cleave_source2_kodim03, after: cleave_exercise1_result },
-    { label: "Kodim15 B&W", before: cleave_source3_kodim15_bw, after: cleave_exercise1_result },
-  ]}
-/>
+<img src={cleave_exercise1_result} alt="Retro Status Bar Split result"/>
 *Retro Status Bar Split — simulated result across source images.*
 **Source**: A live camera feed or recorded footage of a scene with clear vertical structure (sky and ground, ceiling and floor).
 
@@ -249,13 +236,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 ### Exercise 2: Complementary Color Split
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: cleave_source1_kodim15, after: cleave_exercise2_result },
-    { label: "Kodim03", before: cleave_source2_kodim03, after: cleave_exercise2_result },
-    { label: "Kodim15 B&W", before: cleave_source3_kodim15_bw, after: cleave_exercise2_result },
-  ]}
-/>
+<img src={cleave_exercise2_result} alt="Complementary Color Split result"/>
 *Complementary Color Split — simulated result across source images.*
 **Source**: Footage with rich color content — flowers, graffiti, or colorful fabrics.
 
@@ -275,13 +256,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 ### Exercise 3: Three-Zone Vignette
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: cleave_source1_kodim15, after: cleave_exercise3_result },
-    { label: "Kodim03", before: cleave_source2_kodim03, after: cleave_exercise3_result },
-    { label: "Kodim15 B&W", before: cleave_source3_kodim15_bw, after: cleave_exercise3_result },
-  ]}
-/>
+<img src={cleave_exercise3_result} alt="Three-Zone Vignette result"/>
 *Three-Zone Vignette — simulated result across source images.*
 **Source**: Any footage — talking head, landscape, or abstract pattern.
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 260
+sidebar_position: 264
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
 image: /img/instruments/videomancer/seismograph/seismograph_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before digital oscilloscopes and computer displays, scientific ins
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import seismograph_control_panel from '/img/instruments/videomancer/seismograph/seismograph_control_panel.png';
 import seismograph_source1_runner from '/img/instruments/videomancer/seismograph/seismograph_source1_runner.png';
 import seismograph_source2_ballerina from '/img/instruments/videomancer/seismograph/seismograph_source2_ballerina.png';
 import seismograph_source3_elephant from '/img/instruments/videomancer/seismograph/seismograph_source3_elephant.png';
@@ -140,6 +141,8 @@ The critical design feature is the **shift-based band computation** in stage 2. 
 
 ## Parameter Reference
 
+<img src={seismograph_control_panel} alt="Videomancer front panel with Seismograph loaded"/>
+*Videomancer's front panel with Seismograph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

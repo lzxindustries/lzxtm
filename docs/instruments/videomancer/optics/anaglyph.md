@@ -8,6 +8,7 @@ description: "Anaglyph creates stereoscopic 3D anaglyphic images from 2D video b
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import anaglyph_control_panel from '/img/instruments/videomancer/anaglyph/anaglyph_control_panel.png';
 import anaglyph_source1_runner from '/img/instruments/videomancer/anaglyph/anaglyph_source1_runner.png';
 import anaglyph_source2_field from '/img/instruments/videomancer/anaglyph/anaglyph_source2_field.png';
 import anaglyph_source3_clouds from '/img/instruments/videomancer/anaglyph/anaglyph_source3_clouds.png';
@@ -124,6 +125,9 @@ The colour tints are computed per-pixel in YUV space. In Red/Cyan mode, the left
 ---
 
 ## Parameter Reference
+
+<img src={anaglyph_control_panel} alt="Videomancer front panel with Anaglyph loaded"/>
+*Videomancer's front panel with Anaglyph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

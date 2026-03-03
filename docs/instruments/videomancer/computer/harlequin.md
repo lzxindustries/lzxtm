@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 132
+sidebar_position: 133
 slug: /instruments/videomancer/harlequin
 title: "Harlequin"
 image: /img/instruments/videomancer/harlequin/harlequin_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Atari Video Music (model C240) was released in 1977 — a cons
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import harlequin_control_panel from '/img/instruments/videomancer/harlequin/harlequin_control_panel.png';
 import harlequin_source1_sunset from '/img/instruments/videomancer/harlequin/harlequin_source1_sunset.png';
 import harlequin_source2_ballerina from '/img/instruments/videomancer/harlequin/harlequin_source2_ballerina.png';
 import harlequin_source3_elephant from '/img/instruments/videomancer/harlequin/harlequin_source3_elephant.png';
@@ -129,6 +130,8 @@ Two signal paths feed into the diamond rendering. First, the **IIR luminance ana
 
 ## Parameter Reference
 
+<img src={harlequin_control_panel} alt="Videomancer front panel with Harlequin loaded"/>
+*Videomancer's front panel with Harlequin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

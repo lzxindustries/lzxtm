@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 154
+sidebar_position: 155
 slug: /instruments/videomancer/kaledos
 title: "Kaledos"
 image: /img/instruments/videomancer/kaledos/kaledos_hero_s1.png
@@ -8,6 +8,7 @@ description: "In 1816, the Scottish physicist Sir David Brewster patented the ka
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import kaledos_control_panel from '/img/instruments/videomancer/kaledos/kaledos_control_panel.png';
 import kaledos_source1_ballerina from '/img/instruments/videomancer/kaledos/kaledos_source1_ballerina.png';
 import kaledos_source2_field from '/img/instruments/videomancer/kaledos/kaledos_source2_field.png';
 import kaledos_source3_collage from '/img/instruments/videomancer/kaledos/kaledos_source3_collage.png';
@@ -143,6 +144,8 @@ The BRAM write and display readout operate on the same scanline — the line buf
 
 ## Parameter Reference
 
+<img src={kaledos_control_panel} alt="Videomancer front panel with Kaledos loaded"/>
+*Videomancer's front panel with Kaledos active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

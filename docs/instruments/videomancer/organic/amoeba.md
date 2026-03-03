@@ -10,9 +10,9 @@ description: "Amoeba is a metaball isosurface engine."
 import amoeba_hero from '/img/instruments/videomancer/amoeba/amoeba_hero.png';
 import amoeba_animation from '/img/instruments/videomancer/amoeba/amoeba_animation.gif';
 import amoeba_control_panel from '/img/instruments/videomancer/amoeba/amoeba_control_panel.png';
-import amoeba_exercise1_result from '/img/instruments/videomancer/amoeba/amoeba_exercise1_result.png';
-import amoeba_exercise2_result from '/img/instruments/videomancer/amoeba/amoeba_exercise2_result.png';
-import amoeba_exercise3_result from '/img/instruments/videomancer/amoeba/amoeba_exercise3_result.png';
+import amoeba_exercise1_result from '/img/instruments/videomancer/amoeba/amoeba_exercise1_result.gif';
+import amoeba_exercise2_result from '/img/instruments/videomancer/amoeba/amoeba_exercise2_result.gif';
+import amoeba_exercise3_result from '/img/instruments/videomancer/amoeba/amoeba_exercise3_result.gif';
 
 # Amoeba
 

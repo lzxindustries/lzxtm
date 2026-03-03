@@ -1,34 +1,27 @@
 ---
 draft: true
-sidebar_position: 317
+sidebar_position: 323
 slug: /instruments/videomancer/vertex
 title: "Vertex"
 image: /img/instruments/videomancer/vertex/vertex_hero.png
 description: "Vertex recreates the unmistakable visual artefacts of early 3D game consoles — specifically the PlayStation 1 and Sega Saturn — whose GPUs operated without subpixel vertex precision, perspective-correct texture mapping, or sufficient colour gradient resolution."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import vertex_hero from '/img/instruments/videomancer/vertex/vertex_hero.png';
+import vertex_before_after from '/img/instruments/videomancer/vertex/vertex_before_after.png';
 import vertex_control_panel from '/img/instruments/videomancer/vertex/vertex_control_panel.png';
-import vertex_exercise1_result from '/img/instruments/videomancer/vertex/vertex_exercise1_result.png';
-import vertex_exercise2_result from '/img/instruments/videomancer/vertex/vertex_exercise2_result.png';
-import vertex_exercise3_result from '/img/instruments/videomancer/vertex/vertex_exercise3_result.png';
-import vertex_source1_kodim15 from '/img/instruments/videomancer/vertex/vertex_source1_kodim15.png';
-import vertex_source2_kodim03 from '/img/instruments/videomancer/vertex/vertex_source2_kodim03.png';
-import vertex_source3_kodim15_bw from '/img/instruments/videomancer/vertex/vertex_source3_kodim15_bw.png';
+import vertex_exercise1_result from '/img/instruments/videomancer/vertex/vertex_exercise1_result.gif';
+import vertex_exercise2_result from '/img/instruments/videomancer/vertex/vertex_exercise2_result.gif';
+import vertex_exercise3_result from '/img/instruments/videomancer/vertex/vertex_exercise3_result.gif';
 
 # Vertex
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: vertex_source1_kodim15, after: vertex_hero },
-    { label: "Kodim03", before: vertex_source2_kodim03, after: vertex_hero },
-    { label: "Kodim15 B&W", before: vertex_source3_kodim15_bw, after: vertex_hero },
-  ]}
-/>
+<img src={vertex_hero} alt="Vertex hero image"/>
 *Vertex shattering a live video feed into a jittering polygon mesh with PS1-era vertex wobble, posterised Gouraud banding, wireframe grid overlay, and ordered dithering across a field of flat-shaded quads.*
+<img src={vertex_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Vertex applied.*
 
 ---
 
@@ -231,13 +224,7 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 
 ### Exercise 1: Vertex Wobble
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: vertex_source1_kodim15, after: vertex_exercise1_result },
-    { label: "Kodim03", before: vertex_source2_kodim03, after: vertex_exercise1_result },
-    { label: "Kodim15 B&W", before: vertex_source3_kodim15_bw, after: vertex_exercise1_result },
-  ]}
-/>
+<img src={vertex_exercise1_result} alt="Vertex Wobble result"/>
 *Vertex Wobble — simulated result across source images.*
 **Source**: A static scene with strong straight lines — architecture, a bookshelf, window frames, or geometric patterns.
 
@@ -255,13 +242,7 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 
 ### Exercise 2: Gouraud Banding
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: vertex_source1_kodim15, after: vertex_exercise2_result },
-    { label: "Kodim03", before: vertex_source2_kodim03, after: vertex_exercise2_result },
-    { label: "Kodim15 B&W", before: vertex_source3_kodim15_bw, after: vertex_exercise2_result },
-  ]}
-/>
+<img src={vertex_exercise2_result} alt="Gouraud Banding result"/>
 *Gouraud Banding — simulated result across source images.*
 **Source**: A smooth gradient scene — a sunset, a softly lit face, a coloured backdrop, or any content with continuous tonal transitions.
 
@@ -280,13 +261,7 @@ These exercises progress from basic jitter and posterisation to a full PS1-era p
 
 ### Exercise 3: Full PS1 Composite
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: vertex_source1_kodim15, after: vertex_exercise3_result },
-    { label: "Kodim03", before: vertex_source2_kodim03, after: vertex_exercise3_result },
-    { label: "Kodim15 B&W", before: vertex_source3_kodim15_bw, after: vertex_exercise3_result },
-  ]}
-/>
+<img src={vertex_exercise3_result} alt="Full PS1 Composite result"/>
 *Full PS1 Composite — simulated result across source images.*
 **Source**: A moving scene with both detail and broad colour areas — gameplay footage, a dancing figure, or a busy street with architectural elements.
 

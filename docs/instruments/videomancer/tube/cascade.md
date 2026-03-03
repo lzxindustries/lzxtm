@@ -8,6 +8,7 @@ description: "A CRT phosphor does not turn off instantly."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cascade_control_panel from '/img/instruments/videomancer/cascade/cascade_control_panel.png';
 import cascade_source1_house from '/img/instruments/videomancer/cascade/cascade_source1_house.png';
 import cascade_source2_skull from '/img/instruments/videomancer/cascade/cascade_source2_skull.png';
 import cascade_source3_clouds from '/img/instruments/videomancer/cascade/cascade_source3_clouds.png';
@@ -140,6 +141,9 @@ The two echo taps (A and B) are not blended in parallel — the delay line selec
 ---
 
 ## Parameter Reference
+
+<img src={cascade_control_panel} alt="Videomancer front panel with Cascade loaded"/>
+*Videomancer's front panel with Cascade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

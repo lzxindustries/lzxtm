@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 242
+sidebar_position: 246
 slug: /instruments/videomancer/redacted
 title: "Redacted"
 image: /img/instruments/videomancer/redacted/redacted_hero_s1.png
@@ -8,6 +8,7 @@ description: "Broadcast television and government documents share a common visua
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import redacted_control_panel from '/img/instruments/videomancer/redacted/redacted_control_panel.png';
 import redacted_source1_castle from '/img/instruments/videomancer/redacted/redacted_source1_castle.png';
 import redacted_source2_parrot from '/img/instruments/videomancer/redacted/redacted_source2_parrot.png';
 import redacted_source3_turtle from '/img/instruments/videomancer/redacted/redacted_source3_turtle.png';
@@ -131,6 +132,8 @@ The detection pipeline is purely one-dimensional — horizontal bars track pixel
 
 ## Parameter Reference
 
+<img src={redacted_control_panel} alt="Videomancer front panel with Redacted loaded"/>
+*Videomancer's front panel with Redacted active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

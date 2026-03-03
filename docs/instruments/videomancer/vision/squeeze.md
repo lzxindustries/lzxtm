@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 280
+sidebar_position: 285
 slug: /instruments/videomancer/squeeze
 title: "Squeeze"
-image: /img/instruments/videomancer/squeeze/squeeze_hero.png
+image: /img/instruments/videomancer/squeeze/squeeze_hero_s1.png
 description: "In the era of analogue broadcast television, a dedicated hardware box called a DVE — Digital Video Effects unit — sat between the camera switcher and the transmitter."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import squeeze_hero from '/img/instruments/videomancer/squeeze/squeeze_hero.png';
 import squeeze_control_panel from '/img/instruments/videomancer/squeeze/squeeze_control_panel.png';
-import squeeze_exercise1_result from '/img/instruments/videomancer/squeeze/squeeze_exercise1_result.png';
-import squeeze_exercise2_result from '/img/instruments/videomancer/squeeze/squeeze_exercise2_result.png';
-import squeeze_exercise3_result from '/img/instruments/videomancer/squeeze/squeeze_exercise3_result.png';
-import squeeze_source1_kodim15 from '/img/instruments/videomancer/squeeze/squeeze_source1_kodim15.png';
-import squeeze_source2_kodim15_bw from '/img/instruments/videomancer/squeeze/squeeze_source2_kodim15_bw.png';
-import squeeze_source3_male_1024 from '/img/instruments/videomancer/squeeze/squeeze_source3_male_1024.png';
+import squeeze_source1_skull from '/img/instruments/videomancer/squeeze/squeeze_source1_skull.png';
+import squeeze_source2_fruit from '/img/instruments/videomancer/squeeze/squeeze_source2_fruit.png';
+import squeeze_source3_collage from '/img/instruments/videomancer/squeeze/squeeze_source3_collage.png';
+import squeeze_source4_pattern from '/img/instruments/videomancer/squeeze/squeeze_source4_pattern.png';
+import squeeze_source5_man from '/img/instruments/videomancer/squeeze/squeeze_source5_man.png';
+import squeeze_source6_knit from '/img/instruments/videomancer/squeeze/squeeze_source6_knit.png';
+import squeeze_hero_s1 from '/img/instruments/videomancer/squeeze/squeeze_hero_s1.png';
+import squeeze_hero_s2 from '/img/instruments/videomancer/squeeze/squeeze_hero_s2.png';
+import squeeze_hero_s3 from '/img/instruments/videomancer/squeeze/squeeze_hero_s3.png';
+import squeeze_hero_s4 from '/img/instruments/videomancer/squeeze/squeeze_hero_s4.png';
+import squeeze_hero_s5 from '/img/instruments/videomancer/squeeze/squeeze_hero_s5.png';
+import squeeze_hero_s6 from '/img/instruments/videomancer/squeeze/squeeze_hero_s6.png';
+import squeeze_ex1_s1 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s1.png';
+import squeeze_ex1_s2 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s2.png';
+import squeeze_ex1_s3 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s3.png';
+import squeeze_ex1_s4 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s4.png';
+import squeeze_ex1_s5 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s5.png';
+import squeeze_ex1_s6 from '/img/instruments/videomancer/squeeze/squeeze_ex1_s6.png';
+import squeeze_ex2_s1 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s1.png';
+import squeeze_ex2_s2 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s2.png';
+import squeeze_ex2_s3 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s3.png';
+import squeeze_ex2_s4 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s4.png';
+import squeeze_ex2_s5 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s5.png';
+import squeeze_ex2_s6 from '/img/instruments/videomancer/squeeze/squeeze_ex2_s6.png';
+import squeeze_ex3_s1 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s1.png';
+import squeeze_ex3_s2 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s2.png';
+import squeeze_ex3_s3 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s3.png';
+import squeeze_ex3_s4 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s4.png';
+import squeeze_ex3_s5 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s5.png';
+import squeeze_ex3_s6 from '/img/instruments/videomancer/squeeze/squeeze_ex3_s6.png';
 
 # Squeeze
 
@@ -23,9 +46,12 @@ import squeeze_source3_male_1024 from '/img/instruments/videomancer/squeeze/sque
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_hero },
-    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_hero },
-    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_hero },
+    { label: "Skull", before: squeeze_source1_skull, after: squeeze_hero_s1 },
+    { label: "Fruit", before: squeeze_source2_fruit, after: squeeze_hero_s2 },
+    { label: "Collage", before: squeeze_source3_collage, after: squeeze_hero_s3 },
+    { label: "Pattern", before: squeeze_source4_pattern, after: squeeze_hero_s4 },
+    { label: "Man", before: squeeze_source5_man, after: squeeze_hero_s5 },
+    { label: "Knit", before: squeeze_source6_knit, after: squeeze_hero_s6 },
   ]}
 />
 *Squeeze compressing a live video source into a floating inset rectangle with a bright border and dark background, demonstrating classic DVE picture-in-picture composition.*
@@ -235,9 +261,12 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise1_result },
-    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise1_result },
-    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise1_result },
+    { label: "Skull", before: squeeze_source1_skull, after: squeeze_ex1_s1 },
+    { label: "Fruit", before: squeeze_source2_fruit, after: squeeze_ex1_s2 },
+    { label: "Collage", before: squeeze_source3_collage, after: squeeze_ex1_s3 },
+    { label: "Pattern", before: squeeze_source4_pattern, after: squeeze_ex1_s4 },
+    { label: "Man", before: squeeze_source5_man, after: squeeze_ex1_s5 },
+    { label: "Knit", before: squeeze_source6_knit, after: squeeze_ex1_s6 },
   ]}
 />
 *Centered Picture-in-Picture — simulated result across source images.*
@@ -260,9 +289,12 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise2_result },
-    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise2_result },
-    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise2_result },
+    { label: "Skull", before: squeeze_source1_skull, after: squeeze_ex2_s1 },
+    { label: "Fruit", before: squeeze_source2_fruit, after: squeeze_ex2_s2 },
+    { label: "Collage", before: squeeze_source3_collage, after: squeeze_ex2_s3 },
+    { label: "Pattern", before: squeeze_source4_pattern, after: squeeze_ex2_s4 },
+    { label: "Man", before: squeeze_source5_man, after: squeeze_ex2_s5 },
+    { label: "Knit", before: squeeze_source6_knit, after: squeeze_ex2_s6 },
   ]}
 />
 *Drop Shadow and Background Modes — simulated result across source images.*
@@ -285,9 +317,12 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: squeeze_source1_kodim15, after: squeeze_exercise3_result },
-    { label: "Kodim15 B&W", before: squeeze_source2_kodim15_bw, after: squeeze_exercise3_result },
-    { label: "Male", before: squeeze_source3_male_1024, after: squeeze_exercise3_result },
+    { label: "Skull", before: squeeze_source1_skull, after: squeeze_ex3_s1 },
+    { label: "Fruit", before: squeeze_source2_fruit, after: squeeze_ex3_s2 },
+    { label: "Collage", before: squeeze_source3_collage, after: squeeze_ex3_s3 },
+    { label: "Pattern", before: squeeze_source4_pattern, after: squeeze_ex3_s4 },
+    { label: "Man", before: squeeze_source5_man, after: squeeze_ex3_s5 },
+    { label: "Knit", before: squeeze_source6_knit, after: squeeze_ex3_s6 },
   ]}
 />
 *Animated PIP Composition — simulated result across source images.*

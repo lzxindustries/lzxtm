@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 288
+sidebar_position: 293
 slug: /instruments/videomancer/strobe
 title: "Strobe"
-image: /img/instruments/videomancer/strobe/strobe_hero.png
+image: /img/instruments/videomancer/strobe/strobe_hero_s1.png
 description: "Stroboscopic photography freezes motion at impossible intervals — a dancer captured ten times in a single exposure, each ghost slightly advanced from the last."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import strobe_hero from '/img/instruments/videomancer/strobe/strobe_hero.png';
 import strobe_control_panel from '/img/instruments/videomancer/strobe/strobe_control_panel.png';
-import strobe_exercise1_result from '/img/instruments/videomancer/strobe/strobe_exercise1_result.png';
-import strobe_exercise2_result from '/img/instruments/videomancer/strobe/strobe_exercise2_result.png';
-import strobe_exercise3_result from '/img/instruments/videomancer/strobe/strobe_exercise3_result.png';
-import strobe_source1_kodim03 from '/img/instruments/videomancer/strobe/strobe_source1_kodim03.png';
-import strobe_source2_kodim13 from '/img/instruments/videomancer/strobe/strobe_source2_kodim13.png';
-import strobe_source3_kodim13_bw from '/img/instruments/videomancer/strobe/strobe_source3_kodim13_bw.png';
+import strobe_source1_runner from '/img/instruments/videomancer/strobe/strobe_source1_runner.png';
+import strobe_source2_dog from '/img/instruments/videomancer/strobe/strobe_source2_dog.png';
+import strobe_source3_collage from '/img/instruments/videomancer/strobe/strobe_source3_collage.png';
+import strobe_source4_pattern from '/img/instruments/videomancer/strobe/strobe_source4_pattern.png';
+import strobe_source5_boy from '/img/instruments/videomancer/strobe/strobe_source5_boy.png';
+import strobe_source6_knit from '/img/instruments/videomancer/strobe/strobe_source6_knit.png';
+import strobe_hero_s1 from '/img/instruments/videomancer/strobe/strobe_hero_s1.png';
+import strobe_hero_s2 from '/img/instruments/videomancer/strobe/strobe_hero_s2.png';
+import strobe_hero_s3 from '/img/instruments/videomancer/strobe/strobe_hero_s3.png';
+import strobe_hero_s4 from '/img/instruments/videomancer/strobe/strobe_hero_s4.png';
+import strobe_hero_s5 from '/img/instruments/videomancer/strobe/strobe_hero_s5.png';
+import strobe_hero_s6 from '/img/instruments/videomancer/strobe/strobe_hero_s6.png';
+import strobe_ex1_s1 from '/img/instruments/videomancer/strobe/strobe_ex1_s1.png';
+import strobe_ex1_s2 from '/img/instruments/videomancer/strobe/strobe_ex1_s2.png';
+import strobe_ex1_s3 from '/img/instruments/videomancer/strobe/strobe_ex1_s3.png';
+import strobe_ex1_s4 from '/img/instruments/videomancer/strobe/strobe_ex1_s4.png';
+import strobe_ex1_s5 from '/img/instruments/videomancer/strobe/strobe_ex1_s5.png';
+import strobe_ex1_s6 from '/img/instruments/videomancer/strobe/strobe_ex1_s6.png';
+import strobe_ex2_s1 from '/img/instruments/videomancer/strobe/strobe_ex2_s1.png';
+import strobe_ex2_s2 from '/img/instruments/videomancer/strobe/strobe_ex2_s2.png';
+import strobe_ex2_s3 from '/img/instruments/videomancer/strobe/strobe_ex2_s3.png';
+import strobe_ex2_s4 from '/img/instruments/videomancer/strobe/strobe_ex2_s4.png';
+import strobe_ex2_s5 from '/img/instruments/videomancer/strobe/strobe_ex2_s5.png';
+import strobe_ex2_s6 from '/img/instruments/videomancer/strobe/strobe_ex2_s6.png';
+import strobe_ex3_s1 from '/img/instruments/videomancer/strobe/strobe_ex3_s1.png';
+import strobe_ex3_s2 from '/img/instruments/videomancer/strobe/strobe_ex3_s2.png';
+import strobe_ex3_s3 from '/img/instruments/videomancer/strobe/strobe_ex3_s3.png';
+import strobe_ex3_s4 from '/img/instruments/videomancer/strobe/strobe_ex3_s4.png';
+import strobe_ex3_s5 from '/img/instruments/videomancer/strobe/strobe_ex3_s5.png';
+import strobe_ex3_s6 from '/img/instruments/videomancer/strobe/strobe_ex3_s6.png';
 
 # Strobe
 
@@ -23,9 +46,12 @@ import strobe_source3_kodim13_bw from '/img/instruments/videomancer/strobe/strob
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_hero },
-    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_hero },
-    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_hero },
+    { label: "Runner", before: strobe_source1_runner, after: strobe_hero_s1 },
+    { label: "Dog", before: strobe_source2_dog, after: strobe_hero_s2 },
+    { label: "Collage", before: strobe_source3_collage, after: strobe_hero_s3 },
+    { label: "Pattern", before: strobe_source4_pattern, after: strobe_hero_s4 },
+    { label: "Boy", before: strobe_source5_boy, after: strobe_hero_s5 },
+    { label: "Knit", before: strobe_source6_knit, after: strobe_hero_s6 },
   ]}
 />
 *Strobe freezing a moving subject into layered multi-exposure echoes with DDS-driven periodic flash and IIR persistence trails.*
@@ -218,9 +244,12 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise1_result },
-    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise1_result },
-    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise1_result },
+    { label: "Runner", before: strobe_source1_runner, after: strobe_ex1_s1 },
+    { label: "Dog", before: strobe_source2_dog, after: strobe_ex1_s2 },
+    { label: "Collage", before: strobe_source3_collage, after: strobe_ex1_s3 },
+    { label: "Pattern", before: strobe_source4_pattern, after: strobe_ex1_s4 },
+    { label: "Boy", before: strobe_source5_boy, after: strobe_ex1_s5 },
+    { label: "Knit", before: strobe_source6_knit, after: strobe_ex1_s6 },
   ]}
 />
 *Basic Strobe Freeze — simulated result across source images.*
@@ -242,9 +271,12 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise2_result },
-    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise2_result },
-    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise2_result },
+    { label: "Runner", before: strobe_source1_runner, after: strobe_ex2_s1 },
+    { label: "Dog", before: strobe_source2_dog, after: strobe_ex2_s2 },
+    { label: "Collage", before: strobe_source3_collage, after: strobe_ex2_s3 },
+    { label: "Pattern", before: strobe_source4_pattern, after: strobe_ex2_s4 },
+    { label: "Boy", before: strobe_source5_boy, after: strobe_ex2_s5 },
+    { label: "Knit", before: strobe_source6_knit, after: strobe_ex2_s6 },
   ]}
 />
 *Persistence Trails — simulated result across source images.*
@@ -267,9 +299,12 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: strobe_source1_kodim03, after: strobe_exercise3_result },
-    { label: "Kodim13", before: strobe_source2_kodim13, after: strobe_exercise3_result },
-    { label: "Kodim13 B&W", before: strobe_source3_kodim13_bw, after: strobe_exercise3_result },
+    { label: "Runner", before: strobe_source1_runner, after: strobe_ex3_s1 },
+    { label: "Dog", before: strobe_source2_dog, after: strobe_ex3_s2 },
+    { label: "Collage", before: strobe_source3_collage, after: strobe_ex3_s3 },
+    { label: "Pattern", before: strobe_source4_pattern, after: strobe_ex3_s4 },
+    { label: "Boy", before: strobe_source5_boy, after: strobe_ex3_s5 },
+    { label: "Knit", before: strobe_source6_knit, after: strobe_ex3_s6 },
   ]}
 />
 *Stroboscopic Abstraction — simulated result across source images.*

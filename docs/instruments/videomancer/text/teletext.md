@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 296
+sidebar_position: 301
 slug: /instruments/videomancer/teletext
 title: "Teletext"
-image: /img/instruments/videomancer/teletext/teletext_hero.png
+image: /img/instruments/videomancer/teletext/teletext_hero_s1.png
 description: "Every pixel in a video frame carries brightness information."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import teletext_hero from '/img/instruments/videomancer/teletext/teletext_hero.png';
 import teletext_control_panel from '/img/instruments/videomancer/teletext/teletext_control_panel.png';
-import teletext_exercise1_result from '/img/instruments/videomancer/teletext/teletext_exercise1_result.png';
-import teletext_exercise2_result from '/img/instruments/videomancer/teletext/teletext_exercise2_result.png';
-import teletext_exercise3_result from '/img/instruments/videomancer/teletext/teletext_exercise3_result.png';
-import teletext_source1_kodim15 from '/img/instruments/videomancer/teletext/teletext_source1_kodim15.png';
-import teletext_source2_kodim15_bw from '/img/instruments/videomancer/teletext/teletext_source2_kodim15_bw.png';
-import teletext_source3_male_1024 from '/img/instruments/videomancer/teletext/teletext_source3_male_1024.png';
+import teletext_source1_car from '/img/instruments/videomancer/teletext/teletext_source1_car.png';
+import teletext_source2_dog from '/img/instruments/videomancer/teletext/teletext_source2_dog.png';
+import teletext_source3_elephant from '/img/instruments/videomancer/teletext/teletext_source3_elephant.png';
+import teletext_source4_pattern from '/img/instruments/videomancer/teletext/teletext_source4_pattern.png';
+import teletext_source5_woman from '/img/instruments/videomancer/teletext/teletext_source5_woman.png';
+import teletext_source6_berries from '/img/instruments/videomancer/teletext/teletext_source6_berries.png';
+import teletext_hero_s1 from '/img/instruments/videomancer/teletext/teletext_hero_s1.png';
+import teletext_hero_s2 from '/img/instruments/videomancer/teletext/teletext_hero_s2.png';
+import teletext_hero_s3 from '/img/instruments/videomancer/teletext/teletext_hero_s3.png';
+import teletext_hero_s4 from '/img/instruments/videomancer/teletext/teletext_hero_s4.png';
+import teletext_hero_s5 from '/img/instruments/videomancer/teletext/teletext_hero_s5.png';
+import teletext_hero_s6 from '/img/instruments/videomancer/teletext/teletext_hero_s6.png';
+import teletext_ex1_s1 from '/img/instruments/videomancer/teletext/teletext_ex1_s1.png';
+import teletext_ex1_s2 from '/img/instruments/videomancer/teletext/teletext_ex1_s2.png';
+import teletext_ex1_s3 from '/img/instruments/videomancer/teletext/teletext_ex1_s3.png';
+import teletext_ex1_s4 from '/img/instruments/videomancer/teletext/teletext_ex1_s4.png';
+import teletext_ex1_s5 from '/img/instruments/videomancer/teletext/teletext_ex1_s5.png';
+import teletext_ex1_s6 from '/img/instruments/videomancer/teletext/teletext_ex1_s6.png';
+import teletext_ex2_s1 from '/img/instruments/videomancer/teletext/teletext_ex2_s1.png';
+import teletext_ex2_s2 from '/img/instruments/videomancer/teletext/teletext_ex2_s2.png';
+import teletext_ex2_s3 from '/img/instruments/videomancer/teletext/teletext_ex2_s3.png';
+import teletext_ex2_s4 from '/img/instruments/videomancer/teletext/teletext_ex2_s4.png';
+import teletext_ex2_s5 from '/img/instruments/videomancer/teletext/teletext_ex2_s5.png';
+import teletext_ex2_s6 from '/img/instruments/videomancer/teletext/teletext_ex2_s6.png';
+import teletext_ex3_s1 from '/img/instruments/videomancer/teletext/teletext_ex3_s1.png';
+import teletext_ex3_s2 from '/img/instruments/videomancer/teletext/teletext_ex3_s2.png';
+import teletext_ex3_s3 from '/img/instruments/videomancer/teletext/teletext_ex3_s3.png';
+import teletext_ex3_s4 from '/img/instruments/videomancer/teletext/teletext_ex3_s4.png';
+import teletext_ex3_s5 from '/img/instruments/videomancer/teletext/teletext_ex3_s5.png';
+import teletext_ex3_s6 from '/img/instruments/videomancer/teletext/teletext_ex3_s6.png';
 
 # Teletext
 
@@ -23,9 +46,12 @@ import teletext_source3_male_1024 from '/img/instruments/videomancer/teletext/te
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_hero },
-    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_hero },
-    { label: "Male", before: teletext_source3_male_1024, after: teletext_hero },
+    { label: "Car", before: teletext_source1_car, after: teletext_hero_s1 },
+    { label: "Dog", before: teletext_source2_dog, after: teletext_hero_s2 },
+    { label: "Elephant", before: teletext_source3_elephant, after: teletext_hero_s3 },
+    { label: "Pattern", before: teletext_source4_pattern, after: teletext_hero_s4 },
+    { label: "Woman", before: teletext_source5_woman, after: teletext_hero_s5 },
+    { label: "Berries", before: teletext_source6_berries, after: teletext_hero_s6 },
   ]}
 />
 *Teletext rendering live video as density-sorted ASCII art through four selectable character sets — sixel mosaics, PETSCII semigraphics, CP437 shading, and Braille dot patterns.*
@@ -212,9 +238,12 @@ These exercises progress from basic character rendering to advanced color and co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise1_result },
-    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise1_result },
-    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise1_result },
+    { label: "Car", before: teletext_source1_car, after: teletext_ex1_s1 },
+    { label: "Dog", before: teletext_source2_dog, after: teletext_ex1_s2 },
+    { label: "Elephant", before: teletext_source3_elephant, after: teletext_ex1_s3 },
+    { label: "Pattern", before: teletext_source4_pattern, after: teletext_ex1_s4 },
+    { label: "Woman", before: teletext_source5_woman, after: teletext_ex1_s5 },
+    { label: "Berries", before: teletext_source6_berries, after: teletext_ex1_s6 },
   ]}
 />
 *Classic Terminal Text — simulated result across source images.*
@@ -236,9 +265,12 @@ These exercises progress from basic character rendering to advanced color and co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise2_result },
-    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise2_result },
-    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise2_result },
+    { label: "Car", before: teletext_source1_car, after: teletext_ex2_s1 },
+    { label: "Dog", before: teletext_source2_dog, after: teletext_ex2_s2 },
+    { label: "Elephant", before: teletext_source3_elephant, after: teletext_ex2_s3 },
+    { label: "Pattern", before: teletext_source4_pattern, after: teletext_ex2_s4 },
+    { label: "Woman", before: teletext_source5_woman, after: teletext_ex2_s5 },
+    { label: "Berries", before: teletext_source6_berries, after: teletext_ex2_s6 },
   ]}
 />
 *ANSI Art Color Mode — simulated result across source images.*
@@ -260,9 +292,12 @@ These exercises progress from basic character rendering to advanced color and co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: teletext_source1_kodim15, after: teletext_exercise3_result },
-    { label: "Kodim15 B&W", before: teletext_source2_kodim15_bw, after: teletext_exercise3_result },
-    { label: "Male", before: teletext_source3_male_1024, after: teletext_exercise3_result },
+    { label: "Car", before: teletext_source1_car, after: teletext_ex3_s1 },
+    { label: "Dog", before: teletext_source2_dog, after: teletext_ex3_s2 },
+    { label: "Elephant", before: teletext_source3_elephant, after: teletext_ex3_s3 },
+    { label: "Pattern", before: teletext_source4_pattern, after: teletext_ex3_s4 },
+    { label: "Woman", before: teletext_source5_woman, after: teletext_ex3_s5 },
+    { label: "Berries", before: teletext_source6_berries, after: teletext_ex3_s6 },
   ]}
 />
 *Braille Pointillism — simulated result across source images.*

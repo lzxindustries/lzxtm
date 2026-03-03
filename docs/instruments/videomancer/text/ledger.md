@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 167
+sidebar_position: 169
 slug: /instruments/videomancer/ledger
 title: "Ledger"
 image: /img/instruments/videomancer/ledger/ledger_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before spreadsheets, before screens, accountants lived on paper."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import ledger_control_panel from '/img/instruments/videomancer/ledger/ledger_control_panel.png';
 import ledger_source1_sunset from '/img/instruments/videomancer/ledger/ledger_source1_sunset.png';
 import ledger_source2_car from '/img/instruments/videomancer/ledger/ledger_source2_car.png';
 import ledger_source3_collage from '/img/instruments/videomancer/ledger/ledger_source3_collage.png';
@@ -135,6 +136,8 @@ The pattern is generated purely from position counters — no BRAM is consumed. 
 
 ## Parameter Reference
 
+<img src={ledger_control_panel} alt="Videomancer front panel with Ledger loaded"/>
+*Videomancer's front panel with Ledger active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

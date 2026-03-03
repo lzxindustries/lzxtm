@@ -1,34 +1,27 @@
 ---
 draft: true
-sidebar_position: 255
+sidebar_position: 259
 slug: /instruments/videomancer/scanjet
 title: "Scanjet"
 image: /img/instruments/videomancer/scanjet/scanjet_hero.png
 description: "The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, and After Burner — achieved a convincing illusion of three-dimensional forward motion using a technique that never actually rendered a 3D scene."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import scanjet_hero from '/img/instruments/videomancer/scanjet/scanjet_hero.png';
+import scanjet_before_after from '/img/instruments/videomancer/scanjet/scanjet_before_after.png';
 import scanjet_control_panel from '/img/instruments/videomancer/scanjet/scanjet_control_panel.png';
-import scanjet_exercise1_result from '/img/instruments/videomancer/scanjet/scanjet_exercise1_result.png';
-import scanjet_exercise2_result from '/img/instruments/videomancer/scanjet/scanjet_exercise2_result.png';
-import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanjet_exercise3_result.png';
-import scanjet_source1_kodim15 from '/img/instruments/videomancer/scanjet/scanjet_source1_kodim15.png';
-import scanjet_source2_kodim03 from '/img/instruments/videomancer/scanjet/scanjet_source2_kodim03.png';
-import scanjet_source3_kodim15_bw from '/img/instruments/videomancer/scanjet/scanjet_source3_kodim15_bw.png';
+import scanjet_exercise1_result from '/img/instruments/videomancer/scanjet/scanjet_exercise1_result.gif';
+import scanjet_exercise2_result from '/img/instruments/videomancer/scanjet/scanjet_exercise2_result.gif';
+import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanjet_exercise3_result.gif';
 
 # Scanjet
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: scanjet_source1_kodim15, after: scanjet_hero },
-    { label: "Kodim03", before: scanjet_source2_kodim03, after: scanjet_hero },
-    { label: "Kodim15 B&W", before: scanjet_source3_kodim15_bw, after: scanjet_hero },
-  ]}
-/>
+<img src={scanjet_hero} alt="Scanjet hero image"/>
 *Scanjet transforming live video into a pseudo-3D ground plane with perspective-scaled scanlines, sinusoidal road curvature, and retro sky rendering.*
+<img src={scanjet_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Scanjet applied.*
 
 ---
 
@@ -217,13 +210,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 ### Exercise 1: Static Ground Plane
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: scanjet_source1_kodim15, after: scanjet_exercise1_result },
-    { label: "Kodim03", before: scanjet_source2_kodim03, after: scanjet_exercise1_result },
-    { label: "Kodim15 B&W", before: scanjet_source3_kodim15_bw, after: scanjet_exercise1_result },
-  ]}
-/>
+<img src={scanjet_exercise1_result} alt="Static Ground Plane result"/>
 *Static Ground Plane — simulated result across source images.*
 **Source**: A repeating geometric pattern — color bars, a grid test pattern, or tiled graphics.
 
@@ -241,13 +228,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 ### Exercise 2: Road Curvature
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: scanjet_source1_kodim15, after: scanjet_exercise2_result },
-    { label: "Kodim03", before: scanjet_source2_kodim03, after: scanjet_exercise2_result },
-    { label: "Kodim15 B&W", before: scanjet_source3_kodim15_bw, after: scanjet_exercise2_result },
-  ]}
-/>
+<img src={scanjet_exercise2_result} alt="Road Curvature result"/>
 *Road Curvature — simulated result across source images.*
 **Source**: A simple repeating pattern such as horizontal stripes or a single-color gradient so the curvature is clearly visible.
 
@@ -266,13 +247,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 ### Exercise 3: Full Arcade Scene
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: scanjet_source1_kodim15, after: scanjet_exercise3_result },
-    { label: "Kodim03", before: scanjet_source2_kodim03, after: scanjet_exercise3_result },
-    { label: "Kodim15 B&W", before: scanjet_source3_kodim15_bw, after: scanjet_exercise3_result },
-  ]}
-/>
+<img src={scanjet_exercise3_result} alt="Full Arcade Scene result"/>
 *Full Arcade Scene — simulated result across source images.*
 **Source**: Live camera footage or richly textured video — the more detail, the more convincing the ground plane texture appears.
 

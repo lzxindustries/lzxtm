@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 200
+sidebar_position: 203
 slug: /instruments/videomancer/nacre
 title: "Nacre"
 image: /img/instruments/videomancer/nacre/nacre_hero_s1.png
@@ -8,6 +8,7 @@ description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets it
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import nacre_control_panel from '/img/instruments/videomancer/nacre/nacre_control_panel.png';
 import nacre_source1_parrot from '/img/instruments/videomancer/nacre/nacre_source1_parrot.png';
 import nacre_source2_cat from '/img/instruments/videomancer/nacre/nacre_source2_cat.png';
 import nacre_source3_elephant from '/img/instruments/videomancer/nacre/nacre_source3_elephant.png';
@@ -140,6 +141,8 @@ The saturation control is applied to the *source* chroma before the iridescent o
 
 ## Parameter Reference
 
+<img src={nacre_control_panel} alt="Videomancer front panel with Nacre loaded"/>
+*Videomancer's front panel with Nacre active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

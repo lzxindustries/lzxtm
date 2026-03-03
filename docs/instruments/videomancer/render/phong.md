@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 223
+sidebar_position: 226
 slug: /instruments/videomancer/phong
 title: "Phong"
 image: /img/instruments/videomancer/phong/phong_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 177
+sidebar_position: 179
 slug: /instruments/videomancer/lorenz
 title: "Lorenz"
 image: /img/instruments/videomancer/lorenz/lorenz_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 103
+sidebar_position: 104
 slug: /instruments/videomancer/facet
 title: "Facet"
 image: /img/instruments/videomancer/facet/facet_hero_s1.png
@@ -8,6 +8,7 @@ description: "Most video effects blur, bend, or color-grade a continuous image."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import facet_control_panel from '/img/instruments/videomancer/facet/facet_control_panel.png';
 import facet_source1_skull from '/img/instruments/videomancer/facet/facet_source1_skull.png';
 import facet_source2_cat from '/img/instruments/videomancer/facet/facet_source2_cat.png';
 import facet_source3_clouds from '/img/instruments/videomancer/facet/facet_source3_clouds.png';
@@ -134,6 +135,8 @@ The edge width is derived from bits [9:7] of the Edge Width register, giving a 3
 
 ## Parameter Reference
 
+<img src={facet_control_panel} alt="Videomancer front panel with Facet loaded"/>
+*Videomancer's front panel with Facet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

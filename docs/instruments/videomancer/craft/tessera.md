@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 301
+sidebar_position: 306
 slug: /instruments/videomancer/tessera
 title: "Tessera"
-image: /img/instruments/videomancer/tessera/tessera_hero.png
+image: /img/instruments/videomancer/tessera/tessera_hero_s1.png
 description: "Byzantine mosaics are among the most enduring art forms in human history."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import tessera_hero from '/img/instruments/videomancer/tessera/tessera_hero.png';
 import tessera_control_panel from '/img/instruments/videomancer/tessera/tessera_control_panel.png';
-import tessera_exercise1_result from '/img/instruments/videomancer/tessera/tessera_exercise1_result.png';
-import tessera_exercise2_result from '/img/instruments/videomancer/tessera/tessera_exercise2_result.png';
-import tessera_exercise3_result from '/img/instruments/videomancer/tessera/tessera_exercise3_result.png';
-import tessera_source1_kodim03 from '/img/instruments/videomancer/tessera/tessera_source1_kodim03.png';
-import tessera_source2_kodim13 from '/img/instruments/videomancer/tessera/tessera_source2_kodim13.png';
-import tessera_source3_kodim13_bw from '/img/instruments/videomancer/tessera/tessera_source3_kodim13_bw.png';
+import tessera_source1_ballerina from '/img/instruments/videomancer/tessera/tessera_source1_ballerina.png';
+import tessera_source2_sunset from '/img/instruments/videomancer/tessera/tessera_source2_sunset.png';
+import tessera_source3_turtle from '/img/instruments/videomancer/tessera/tessera_source3_turtle.png';
+import tessera_source4_pattern from '/img/instruments/videomancer/tessera/tessera_source4_pattern.png';
+import tessera_source5_woman from '/img/instruments/videomancer/tessera/tessera_source5_woman.png';
+import tessera_source6_wood from '/img/instruments/videomancer/tessera/tessera_source6_wood.png';
+import tessera_hero_s1 from '/img/instruments/videomancer/tessera/tessera_hero_s1.png';
+import tessera_hero_s2 from '/img/instruments/videomancer/tessera/tessera_hero_s2.png';
+import tessera_hero_s3 from '/img/instruments/videomancer/tessera/tessera_hero_s3.png';
+import tessera_hero_s4 from '/img/instruments/videomancer/tessera/tessera_hero_s4.png';
+import tessera_hero_s5 from '/img/instruments/videomancer/tessera/tessera_hero_s5.png';
+import tessera_hero_s6 from '/img/instruments/videomancer/tessera/tessera_hero_s6.png';
+import tessera_ex1_s1 from '/img/instruments/videomancer/tessera/tessera_ex1_s1.png';
+import tessera_ex1_s2 from '/img/instruments/videomancer/tessera/tessera_ex1_s2.png';
+import tessera_ex1_s3 from '/img/instruments/videomancer/tessera/tessera_ex1_s3.png';
+import tessera_ex1_s4 from '/img/instruments/videomancer/tessera/tessera_ex1_s4.png';
+import tessera_ex1_s5 from '/img/instruments/videomancer/tessera/tessera_ex1_s5.png';
+import tessera_ex1_s6 from '/img/instruments/videomancer/tessera/tessera_ex1_s6.png';
+import tessera_ex2_s1 from '/img/instruments/videomancer/tessera/tessera_ex2_s1.png';
+import tessera_ex2_s2 from '/img/instruments/videomancer/tessera/tessera_ex2_s2.png';
+import tessera_ex2_s3 from '/img/instruments/videomancer/tessera/tessera_ex2_s3.png';
+import tessera_ex2_s4 from '/img/instruments/videomancer/tessera/tessera_ex2_s4.png';
+import tessera_ex2_s5 from '/img/instruments/videomancer/tessera/tessera_ex2_s5.png';
+import tessera_ex2_s6 from '/img/instruments/videomancer/tessera/tessera_ex2_s6.png';
+import tessera_ex3_s1 from '/img/instruments/videomancer/tessera/tessera_ex3_s1.png';
+import tessera_ex3_s2 from '/img/instruments/videomancer/tessera/tessera_ex3_s2.png';
+import tessera_ex3_s3 from '/img/instruments/videomancer/tessera/tessera_ex3_s3.png';
+import tessera_ex3_s4 from '/img/instruments/videomancer/tessera/tessera_ex3_s4.png';
+import tessera_ex3_s5 from '/img/instruments/videomancer/tessera/tessera_ex3_s5.png';
+import tessera_ex3_s6 from '/img/instruments/videomancer/tessera/tessera_ex3_s6.png';
 
 # Tessera
 
@@ -23,9 +46,12 @@ import tessera_source3_kodim13_bw from '/img/instruments/videomancer/tessera/tes
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_hero },
-    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_hero },
-    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_hero },
+    { label: "Ballerina", before: tessera_source1_ballerina, after: tessera_hero_s1 },
+    { label: "Sunset", before: tessera_source2_sunset, after: tessera_hero_s2 },
+    { label: "Turtle", before: tessera_source3_turtle, after: tessera_hero_s3 },
+    { label: "Pattern", before: tessera_source4_pattern, after: tessera_hero_s4 },
+    { label: "Woman", before: tessera_source5_woman, after: tessera_hero_s5 },
+    { label: "Wood", before: tessera_source6_wood, after: tessera_hero_s6 },
   ]}
 />
 *Tessera quantizing a video frame into Byzantine smalti mosaic with gold-leaf highlights, visible grout lines, and per-tessera scintillation jitter.*
@@ -213,9 +239,12 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise1_result },
-    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise1_result },
-    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise1_result },
+    { label: "Ballerina", before: tessera_source1_ballerina, after: tessera_ex1_s1 },
+    { label: "Sunset", before: tessera_source2_sunset, after: tessera_ex1_s2 },
+    { label: "Turtle", before: tessera_source3_turtle, after: tessera_ex1_s3 },
+    { label: "Pattern", before: tessera_source4_pattern, after: tessera_ex1_s4 },
+    { label: "Woman", before: tessera_source5_woman, after: tessera_ex1_s5 },
+    { label: "Wood", before: tessera_source6_wood, after: tessera_ex1_s6 },
   ]}
 />
 *Smalti Quantization — simulated result across source images.*
@@ -237,9 +266,12 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise2_result },
-    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise2_result },
-    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise2_result },
+    { label: "Ballerina", before: tessera_source1_ballerina, after: tessera_ex2_s1 },
+    { label: "Sunset", before: tessera_source2_sunset, after: tessera_ex2_s2 },
+    { label: "Turtle", before: tessera_source3_turtle, after: tessera_ex2_s3 },
+    { label: "Pattern", before: tessera_source4_pattern, after: tessera_ex2_s4 },
+    { label: "Woman", before: tessera_source5_woman, after: tessera_ex2_s5 },
+    { label: "Wood", before: tessera_source6_wood, after: tessera_ex2_s6 },
   ]}
 />
 *Gold Ground Composition — simulated result across source images.*
@@ -261,9 +293,12 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tessera_source1_kodim03, after: tessera_exercise3_result },
-    { label: "Kodim13", before: tessera_source2_kodim13, after: tessera_exercise3_result },
-    { label: "Kodim13 B&W", before: tessera_source3_kodim13_bw, after: tessera_exercise3_result },
+    { label: "Ballerina", before: tessera_source1_ballerina, after: tessera_ex3_s1 },
+    { label: "Sunset", before: tessera_source2_sunset, after: tessera_ex3_s2 },
+    { label: "Turtle", before: tessera_source3_turtle, after: tessera_ex3_s3 },
+    { label: "Pattern", before: tessera_source4_pattern, after: tessera_ex3_s4 },
+    { label: "Woman", before: tessera_source5_woman, after: tessera_ex3_s5 },
+    { label: "Wood", before: tessera_source6_wood, after: tessera_ex3_s6 },
   ]}
 />
 *Ancient Mosaic Restoration — simulated result across source images.*

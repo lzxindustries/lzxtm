@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 180
+sidebar_position: 182
 slug: /instruments/videomancer/lumigraph
 title: "Lumigraph"
 image: /img/instruments/videomancer/lumigraph/lumigraph_hero.png

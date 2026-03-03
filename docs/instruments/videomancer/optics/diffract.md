@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 81
+sidebar_position: 82
 slug: /instruments/videomancer/diffract
 title: "Diffract"
 image: /img/instruments/videomancer/diffract/diffract_hero_s1.png
@@ -8,6 +8,7 @@ description: "When white light passes through a diffraction grating — a surfac
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import diffract_control_panel from '/img/instruments/videomancer/diffract/diffract_control_panel.png';
 import diffract_source1_car from '/img/instruments/videomancer/diffract/diffract_source1_car.png';
 import diffract_source2_parrot from '/img/instruments/videomancer/diffract/diffract_source2_parrot.png';
 import diffract_source3_clouds from '/img/instruments/videomancer/diffract/diffract_source3_clouds.png';
@@ -147,6 +148,8 @@ The critical design decision is that luminance passes through unmodified — onl
 
 ## Parameter Reference
 
+<img src={diffract_control_panel} alt="Videomancer front panel with Diffract loaded"/>
+*Videomancer's front panel with Diffract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 80
+sidebar_position: 81
 slug: /instruments/videomancer/derez
 title: "Derez"
 image: /img/instruments/videomancer/derez/derez_hero_s1.png
@@ -8,6 +8,7 @@ description: "Real memory corruption is never random."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import derez_control_panel from '/img/instruments/videomancer/derez/derez_control_panel.png';
 import derez_source1_field from '/img/instruments/videomancer/derez/derez_source1_field.png';
 import derez_source2_skull from '/img/instruments/videomancer/derez/derez_source2_skull.png';
 import derez_source3_elephant from '/img/instruments/videomancer/derez/derez_source3_elephant.png';
@@ -140,6 +141,8 @@ The LFSR is re-seeded from the Glitch Seed pot at every vsync. In Static mode th
 
 ## Parameter Reference
 
+<img src={derez_control_panel} alt="Videomancer front panel with Derez loaded"/>
+*Videomancer's front panel with Derez active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

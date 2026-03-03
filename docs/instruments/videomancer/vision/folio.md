@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 119
+sidebar_position: 120
 slug: /instruments/videomancer/folio
 title: "Folio"
 image: /img/instruments/videomancer/folio/folio_hero_s1.png
@@ -8,6 +8,7 @@ description: "Folio simulates the page turn transition familiar from presentatio
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import folio_control_panel from '/img/instruments/videomancer/folio/folio_control_panel.png';
 import folio_source1_sunset from '/img/instruments/videomancer/folio/folio_source1_sunset.png';
 import folio_source2_house from '/img/instruments/videomancer/folio/folio_source2_house.png';
 import folio_source3_elephant from '/img/instruments/videomancer/folio/folio_source3_elephant.png';
@@ -162,6 +163,8 @@ The fold zone detection identifies the 8 pixels nearest the fold edge — the bo
 
 ## Parameter Reference
 
+<img src={folio_control_panel} alt="Videomancer front panel with Folio loaded"/>
+*Videomancer's front panel with Folio active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

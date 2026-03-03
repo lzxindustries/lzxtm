@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 118
+sidebar_position: 119
 slug: /instruments/videomancer/fogbank
 title: "Fogbank"
 image: /img/instruments/videomancer/fogbank/fogbank_hero_s1.png
@@ -8,6 +8,7 @@ description: "Fog is the atmosphere made visible."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import fogbank_control_panel from '/img/instruments/videomancer/fogbank/fogbank_control_panel.png';
 import fogbank_source1_skull from '/img/instruments/videomancer/fogbank/fogbank_source1_skull.png';
 import fogbank_source2_dog from '/img/instruments/videomancer/fogbank/fogbank_source2_dog.png';
 import fogbank_source3_collage from '/img/instruments/videomancer/fogbank/fogbank_source3_collage.png';
@@ -149,6 +150,8 @@ The fog blend stage pushes luma toward the target brightness while simultaneousl
 
 ## Parameter Reference
 
+<img src={fogbank_control_panel} alt="Videomancer front panel with Fogbank loaded"/>
+*Videomancer's front panel with Fogbank active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

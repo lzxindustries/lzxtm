@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 75
+sidebar_position: 76
 slug: /instruments/videomancer/decibel
 title: "Decibel"
 image: /img/instruments/videomancer/decibel/decibel_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every sound engineer knows the VU meter — a swinging needle that
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import decibel_control_panel from '/img/instruments/videomancer/decibel/decibel_control_panel.png';
 import decibel_source1_runner from '/img/instruments/videomancer/decibel/decibel_source1_runner.png';
 import decibel_source2_fruit from '/img/instruments/videomancer/decibel/decibel_source2_fruit.png';
 import decibel_source3_clouds from '/img/instruments/videomancer/decibel/decibel_source3_clouds.png';
@@ -129,6 +130,8 @@ The critical path runs through the IIR envelope follower, which maintains state 
 
 ## Parameter Reference
 
+<img src={decibel_control_panel} alt="Videomancer front panel with Decibel loaded"/>
+*Videomancer's front panel with Decibel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

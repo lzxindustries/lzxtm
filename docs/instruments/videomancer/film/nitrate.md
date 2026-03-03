@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 205
+sidebar_position: 208
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
 image: /img/instruments/videomancer/nitrate/nitrate_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before Technicolor, cinema was colored by hand."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import nitrate_control_panel from '/img/instruments/videomancer/nitrate/nitrate_control_panel.png';
 import nitrate_source1_parrot from '/img/instruments/videomancer/nitrate/nitrate_source1_parrot.png';
 import nitrate_source2_field from '/img/instruments/videomancer/nitrate/nitrate_source2_field.png';
 import nitrate_source3_turtle from '/img/instruments/videomancer/nitrate/nitrate_source3_turtle.png';
@@ -142,6 +143,8 @@ The flicker gate operates only on luminance — chrominance UV passes through un
 
 ## Parameter Reference
 
+<img src={nitrate_control_panel} alt="Videomancer front panel with Nitrate loaded"/>
+*Videomancer's front panel with Nitrate active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

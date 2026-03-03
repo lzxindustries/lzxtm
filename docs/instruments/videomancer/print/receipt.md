@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 241
+sidebar_position: 245
 slug: /instruments/videomancer/receipt
 title: "Receipt"
 image: /img/instruments/videomancer/receipt/receipt_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before digital snapshots were instant, video printers were the onl
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import receipt_control_panel from '/img/instruments/videomancer/receipt/receipt_control_panel.png';
 import receipt_source1_cat from '/img/instruments/videomancer/receipt/receipt_source1_cat.png';
 import receipt_source2_fruit from '/img/instruments/videomancer/receipt/receipt_source2_fruit.png';
 import receipt_source3_elephant from '/img/instruments/videomancer/receipt/receipt_source3_elephant.png';
@@ -129,6 +130,8 @@ The critical ordering is: decimation happens *before* level quantization, so the
 
 ## Parameter Reference
 
+<img src={receipt_control_panel} alt="Videomancer front panel with Receipt loaded"/>
+*Videomancer's front panel with Receipt active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

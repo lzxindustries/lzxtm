@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 64
+sidebar_position: 65
 slug: /instruments/videomancer/copperwash
 title: "Copperwash"
 image: /img/instruments/videomancer/copperwash/copperwash_hero.png

@@ -8,6 +8,7 @@ description: "Barcodes are a visual language designed for machines — parallel 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import barcode_control_panel from '/img/instruments/videomancer/barcode/barcode_control_panel.png';
 import barcode_source1_boat from '/img/instruments/videomancer/barcode/barcode_source1_boat.png';
 import barcode_source2_house from '/img/instruments/videomancer/barcode/barcode_source2_house.png';
 import barcode_source3_clouds from '/img/instruments/videomancer/barcode/barcode_source3_clouds.png';
@@ -137,6 +138,9 @@ The critical interaction is between the quantization and bar-draw stages. Quanti
 ---
 
 ## Parameter Reference
+
+<img src={barcode_control_panel} alt="Videomancer front panel with Barcode loaded"/>
+*Videomancer's front panel with Barcode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -8,6 +8,7 @@ description: "Aquifer simulates the visual distortion of viewing video through a
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import aquifer_control_panel from '/img/instruments/videomancer/aquifer/aquifer_control_panel.png';
 import aquifer_source1_ballerina from '/img/instruments/videomancer/aquifer/aquifer_source1_ballerina.png';
 import aquifer_source2_boat from '/img/instruments/videomancer/aquifer/aquifer_source2_boat.png';
 import aquifer_source3_clouds from '/img/instruments/videomancer/aquifer/aquifer_source3_clouds.png';
@@ -174,6 +175,9 @@ The horizontal displacement path is the most critical. Input video is written in
 ---
 
 ## Parameter Reference
+
+<img src={aquifer_control_panel} alt="Videomancer front panel with Aquifer loaded"/>
+*Videomancer's front panel with Aquifer active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

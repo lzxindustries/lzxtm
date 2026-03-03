@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 286
+sidebar_position: 291
 slug: /instruments/videomancer/stochasm
 title: "Stochasm"
-image: /img/instruments/videomancer/stochasm/stochasm_hero.png
+image: /img/instruments/videomancer/stochasm/stochasm_hero_s1.png
 description: "In most signal processing contexts, noise is the enemy — an unwanted corruption that obscures the signal you are trying to preserve."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stochasm_hero from '/img/instruments/videomancer/stochasm/stochasm_hero.png';
 import stochasm_control_panel from '/img/instruments/videomancer/stochasm/stochasm_control_panel.png';
-import stochasm_exercise1_result from '/img/instruments/videomancer/stochasm/stochasm_exercise1_result.png';
-import stochasm_exercise2_result from '/img/instruments/videomancer/stochasm/stochasm_exercise2_result.png';
-import stochasm_exercise3_result from '/img/instruments/videomancer/stochasm/stochasm_exercise3_result.png';
-import stochasm_source1_kodim15 from '/img/instruments/videomancer/stochasm/stochasm_source1_kodim15.png';
-import stochasm_source2_kodim01 from '/img/instruments/videomancer/stochasm/stochasm_source2_kodim01.png';
-import stochasm_source3_stream_bridge_512 from '/img/instruments/videomancer/stochasm/stochasm_source3_stream_bridge_512.png';
+import stochasm_source1_field from '/img/instruments/videomancer/stochasm/stochasm_source1_field.png';
+import stochasm_source2_car from '/img/instruments/videomancer/stochasm/stochasm_source2_car.png';
+import stochasm_source3_clouds from '/img/instruments/videomancer/stochasm/stochasm_source3_clouds.png';
+import stochasm_source4_pattern from '/img/instruments/videomancer/stochasm/stochasm_source4_pattern.png';
+import stochasm_source5_boy from '/img/instruments/videomancer/stochasm/stochasm_source5_boy.png';
+import stochasm_source6_paint from '/img/instruments/videomancer/stochasm/stochasm_source6_paint.png';
+import stochasm_hero_s1 from '/img/instruments/videomancer/stochasm/stochasm_hero_s1.png';
+import stochasm_hero_s2 from '/img/instruments/videomancer/stochasm/stochasm_hero_s2.png';
+import stochasm_hero_s3 from '/img/instruments/videomancer/stochasm/stochasm_hero_s3.png';
+import stochasm_hero_s4 from '/img/instruments/videomancer/stochasm/stochasm_hero_s4.png';
+import stochasm_hero_s5 from '/img/instruments/videomancer/stochasm/stochasm_hero_s5.png';
+import stochasm_hero_s6 from '/img/instruments/videomancer/stochasm/stochasm_hero_s6.png';
+import stochasm_ex1_s1 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s1.png';
+import stochasm_ex1_s2 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s2.png';
+import stochasm_ex1_s3 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s3.png';
+import stochasm_ex1_s4 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s4.png';
+import stochasm_ex1_s5 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s5.png';
+import stochasm_ex1_s6 from '/img/instruments/videomancer/stochasm/stochasm_ex1_s6.png';
+import stochasm_ex2_s1 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s1.png';
+import stochasm_ex2_s2 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s2.png';
+import stochasm_ex2_s3 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s3.png';
+import stochasm_ex2_s4 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s4.png';
+import stochasm_ex2_s5 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s5.png';
+import stochasm_ex2_s6 from '/img/instruments/videomancer/stochasm/stochasm_ex2_s6.png';
+import stochasm_ex3_s1 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s1.png';
+import stochasm_ex3_s2 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s2.png';
+import stochasm_ex3_s3 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s3.png';
+import stochasm_ex3_s4 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s4.png';
+import stochasm_ex3_s5 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s5.png';
+import stochasm_ex3_s6 from '/img/instruments/videomancer/stochasm/stochasm_ex3_s6.png';
 
 # Stochasm
 
@@ -23,9 +46,12 @@ import stochasm_source3_stream_bridge_512 from '/img/instruments/videomancer/sto
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_hero },
-    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_hero },
-    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_hero },
+    { label: "Field", before: stochasm_source1_field, after: stochasm_hero_s1 },
+    { label: "Car", before: stochasm_source2_car, after: stochasm_hero_s2 },
+    { label: "Clouds", before: stochasm_source3_clouds, after: stochasm_hero_s3 },
+    { label: "Pattern", before: stochasm_source4_pattern, after: stochasm_hero_s4 },
+    { label: "Boy", before: stochasm_source5_boy, after: stochasm_hero_s5 },
+    { label: "Paint", before: stochasm_source6_paint, after: stochasm_hero_s6 },
   ]}
 />
 *Stochasm applying multi-stage stochastic resonance to extract sub-threshold signal features through controlled noise injection.*
@@ -219,9 +245,12 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise1_result },
-    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise1_result },
-    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise1_result },
+    { label: "Field", before: stochasm_source1_field, after: stochasm_ex1_s1 },
+    { label: "Car", before: stochasm_source2_car, after: stochasm_ex1_s2 },
+    { label: "Clouds", before: stochasm_source3_clouds, after: stochasm_ex1_s3 },
+    { label: "Pattern", before: stochasm_source4_pattern, after: stochasm_ex1_s4 },
+    { label: "Boy", before: stochasm_source5_boy, after: stochasm_ex1_s5 },
+    { label: "Paint", before: stochasm_source6_paint, after: stochasm_ex1_s6 },
   ]}
 />
 *Single-Stage Threshold — simulated result across source images.*
@@ -242,9 +271,12 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise2_result },
-    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise2_result },
-    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise2_result },
+    { label: "Field", before: stochasm_source1_field, after: stochasm_ex2_s1 },
+    { label: "Car", before: stochasm_source2_car, after: stochasm_ex2_s2 },
+    { label: "Clouds", before: stochasm_source3_clouds, after: stochasm_ex2_s3 },
+    { label: "Pattern", before: stochasm_source4_pattern, after: stochasm_ex2_s4 },
+    { label: "Boy", before: stochasm_source5_boy, after: stochasm_ex2_s5 },
+    { label: "Paint", before: stochasm_source6_paint, after: stochasm_ex2_s6 },
   ]}
 />
 *Multi-Stage Quantisation — simulated result across source images.*
@@ -266,9 +298,12 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: stochasm_source1_kodim15, after: stochasm_exercise3_result },
-    { label: "Kodim01", before: stochasm_source2_kodim01, after: stochasm_exercise3_result },
-    { label: "Stream Bridge", before: stochasm_source3_stream_bridge_512, after: stochasm_exercise3_result },
+    { label: "Field", before: stochasm_source1_field, after: stochasm_ex3_s1 },
+    { label: "Car", before: stochasm_source2_car, after: stochasm_ex3_s2 },
+    { label: "Clouds", before: stochasm_source3_clouds, after: stochasm_ex3_s3 },
+    { label: "Pattern", before: stochasm_source4_pattern, after: stochasm_ex3_s4 },
+    { label: "Boy", before: stochasm_source5_boy, after: stochasm_ex3_s5 },
+    { label: "Paint", before: stochasm_source6_paint, after: stochasm_ex3_s6 },
   ]}
 />
 *Stochastic Texture Synthesis — simulated result across source images.*

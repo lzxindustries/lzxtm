@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 104
+sidebar_position: 105
 slug: /instruments/videomancer/fathom
 title: "Fathom"
 image: /img/instruments/videomancer/fathom/fathom_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every topographic map you have ever seen uses the same trick: draw
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import fathom_control_panel from '/img/instruments/videomancer/fathom/fathom_control_panel.png';
 import fathom_source1_cat from '/img/instruments/videomancer/fathom/fathom_source1_cat.png';
 import fathom_source2_fruit from '/img/instruments/videomancer/fathom/fathom_source2_fruit.png';
 import fathom_source3_clouds from '/img/instruments/videomancer/fathom/fathom_source3_clouds.png';
@@ -133,6 +134,8 @@ The critical interaction is between contour detection and zone colouring. Contou
 
 ## Parameter Reference
 
+<img src={fathom_control_panel} alt="Videomancer front panel with Fathom loaded"/>
+*Videomancer's front panel with Fathom active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

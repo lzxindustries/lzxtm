@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 176
+sidebar_position: 178
 slug: /instruments/videomancer/loadstar
 title: "Loadstar"
 image: /img/instruments/videomancer/loadstar/loadstar_hero_s1.png
@@ -8,6 +8,7 @@ description: "There was a ritual shared by an entire generation of home computer
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import loadstar_control_panel from '/img/instruments/videomancer/loadstar/loadstar_control_panel.png';
 import loadstar_source1_fruit from '/img/instruments/videomancer/loadstar/loadstar_source1_fruit.png';
 import loadstar_source2_boat from '/img/instruments/videomancer/loadstar/loadstar_source2_boat.png';
 import loadstar_source3_clouds from '/img/instruments/videomancer/loadstar/loadstar_source3_clouds.png';
@@ -135,6 +136,8 @@ The pipeline does not instantiate a `video_timing_generator` entity. Instead, it
 
 ## Parameter Reference
 
+<img src={loadstar_control_panel} alt="Videomancer front panel with Loadstar loaded"/>
+*Videomancer's front panel with Loadstar active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

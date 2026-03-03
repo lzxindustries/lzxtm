@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 332
+sidebar_position: 339
 slug: /instruments/videomancer/xero
 title: "Xero"
-image: /img/instruments/videomancer/xero/xero_hero.png
+image: /img/instruments/videomancer/xero/xero_hero_s1.png
 description: "Before digital networking, the photocopier was the medium of underground publishing."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import xero_hero from '/img/instruments/videomancer/xero/xero_hero.png';
 import xero_control_panel from '/img/instruments/videomancer/xero/xero_control_panel.png';
-import xero_exercise1_result from '/img/instruments/videomancer/xero/xero_exercise1_result.png';
-import xero_exercise2_result from '/img/instruments/videomancer/xero/xero_exercise2_result.png';
-import xero_exercise3_result from '/img/instruments/videomancer/xero/xero_exercise3_result.png';
-import xero_source1_kodim02 from '/img/instruments/videomancer/xero/xero_source1_kodim02.png';
-import xero_source2_kodim07 from '/img/instruments/videomancer/xero/xero_source2_kodim07.png';
-import xero_source3_kodim01_bw from '/img/instruments/videomancer/xero/xero_source3_kodim01_bw.png';
+import xero_source1_parrot from '/img/instruments/videomancer/xero/xero_source1_parrot.png';
+import xero_source2_dog from '/img/instruments/videomancer/xero/xero_source2_dog.png';
+import xero_source3_elephant from '/img/instruments/videomancer/xero/xero_source3_elephant.png';
+import xero_source4_pattern from '/img/instruments/videomancer/xero/xero_source4_pattern.png';
+import xero_source5_woman from '/img/instruments/videomancer/xero/xero_source5_woman.png';
+import xero_source6_berries from '/img/instruments/videomancer/xero/xero_source6_berries.png';
+import xero_hero_s1 from '/img/instruments/videomancer/xero/xero_hero_s1.png';
+import xero_hero_s2 from '/img/instruments/videomancer/xero/xero_hero_s2.png';
+import xero_hero_s3 from '/img/instruments/videomancer/xero/xero_hero_s3.png';
+import xero_hero_s4 from '/img/instruments/videomancer/xero/xero_hero_s4.png';
+import xero_hero_s5 from '/img/instruments/videomancer/xero/xero_hero_s5.png';
+import xero_hero_s6 from '/img/instruments/videomancer/xero/xero_hero_s6.png';
+import xero_ex1_s1 from '/img/instruments/videomancer/xero/xero_ex1_s1.png';
+import xero_ex1_s2 from '/img/instruments/videomancer/xero/xero_ex1_s2.png';
+import xero_ex1_s3 from '/img/instruments/videomancer/xero/xero_ex1_s3.png';
+import xero_ex1_s4 from '/img/instruments/videomancer/xero/xero_ex1_s4.png';
+import xero_ex1_s5 from '/img/instruments/videomancer/xero/xero_ex1_s5.png';
+import xero_ex1_s6 from '/img/instruments/videomancer/xero/xero_ex1_s6.png';
+import xero_ex2_s1 from '/img/instruments/videomancer/xero/xero_ex2_s1.png';
+import xero_ex2_s2 from '/img/instruments/videomancer/xero/xero_ex2_s2.png';
+import xero_ex2_s3 from '/img/instruments/videomancer/xero/xero_ex2_s3.png';
+import xero_ex2_s4 from '/img/instruments/videomancer/xero/xero_ex2_s4.png';
+import xero_ex2_s5 from '/img/instruments/videomancer/xero/xero_ex2_s5.png';
+import xero_ex2_s6 from '/img/instruments/videomancer/xero/xero_ex2_s6.png';
+import xero_ex3_s1 from '/img/instruments/videomancer/xero/xero_ex3_s1.png';
+import xero_ex3_s2 from '/img/instruments/videomancer/xero/xero_ex3_s2.png';
+import xero_ex3_s3 from '/img/instruments/videomancer/xero/xero_ex3_s3.png';
+import xero_ex3_s4 from '/img/instruments/videomancer/xero/xero_ex3_s4.png';
+import xero_ex3_s5 from '/img/instruments/videomancer/xero/xero_ex3_s5.png';
+import xero_ex3_s6 from '/img/instruments/videomancer/xero/xero_ex3_s6.png';
 
 # Xero
 
@@ -23,9 +46,12 @@ import xero_source3_kodim01_bw from '/img/instruments/videomancer/xero/xero_sour
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: xero_source1_kodim02, after: xero_hero },
-    { label: "Kodim07", before: xero_source2_kodim07, after: xero_hero },
-    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_hero },
+    { label: "Parrot", before: xero_source1_parrot, after: xero_hero_s1 },
+    { label: "Dog", before: xero_source2_dog, after: xero_hero_s2 },
+    { label: "Elephant", before: xero_source3_elephant, after: xero_hero_s3 },
+    { label: "Pattern", before: xero_source4_pattern, after: xero_hero_s4 },
+    { label: "Woman", before: xero_source5_woman, after: xero_hero_s5 },
+    { label: "Berries", before: xero_source6_berries, after: xero_hero_s6 },
   ]}
 />
 *Xero applying multi-generational copy degradation with blue toner and warm recycled paper, transforming video into a faded office photocopy.*
@@ -218,9 +244,12 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise1_result },
-    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise1_result },
-    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise1_result },
+    { label: "Parrot", before: xero_source1_parrot, after: xero_ex1_s1 },
+    { label: "Dog", before: xero_source2_dog, after: xero_ex1_s2 },
+    { label: "Elephant", before: xero_source3_elephant, after: xero_ex1_s3 },
+    { label: "Pattern", before: xero_source4_pattern, after: xero_ex1_s4 },
+    { label: "Woman", before: xero_source5_woman, after: xero_ex1_s5 },
+    { label: "Berries", before: xero_source6_berries, after: xero_ex1_s6 },
   ]}
 />
 *First-Generation Copy — simulated result across source images.*
@@ -242,9 +271,12 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise2_result },
-    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise2_result },
-    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise2_result },
+    { label: "Parrot", before: xero_source1_parrot, after: xero_ex2_s1 },
+    { label: "Dog", before: xero_source2_dog, after: xero_ex2_s2 },
+    { label: "Elephant", before: xero_source3_elephant, after: xero_ex2_s3 },
+    { label: "Pattern", before: xero_source4_pattern, after: xero_ex2_s4 },
+    { label: "Woman", before: xero_source5_woman, after: xero_ex2_s5 },
+    { label: "Berries", before: xero_source6_berries, after: xero_ex2_s6 },
   ]}
 />
 *Fifth-Generation Degradation — simulated result across source images.*
@@ -267,9 +299,12 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: xero_source1_kodim02, after: xero_exercise3_result },
-    { label: "Kodim07", before: xero_source2_kodim07, after: xero_exercise3_result },
-    { label: "Kodim01 B&W", before: xero_source3_kodim01_bw, after: xero_exercise3_result },
+    { label: "Parrot", before: xero_source1_parrot, after: xero_ex3_s1 },
+    { label: "Dog", before: xero_source2_dog, after: xero_ex3_s2 },
+    { label: "Elephant", before: xero_source3_elephant, after: xero_ex3_s3 },
+    { label: "Pattern", before: xero_source4_pattern, after: xero_ex3_s4 },
+    { label: "Woman", before: xero_source5_woman, after: xero_ex3_s5 },
+    { label: "Berries", before: xero_source6_berries, after: xero_ex3_s6 },
   ]}
 />
 *Copy Art Extreme — simulated result across source images.*

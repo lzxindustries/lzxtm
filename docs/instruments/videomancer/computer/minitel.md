@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 192
+sidebar_position: 194
 slug: /instruments/videomancer/minitel
 title: "Minitel"
 image: /img/instruments/videomancer/minitel/minitel_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Minitel was France's pre-internet information terminal — a s
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import minitel_control_panel from '/img/instruments/videomancer/minitel/minitel_control_panel.png';
 import minitel_source1_fruit from '/img/instruments/videomancer/minitel/minitel_source1_fruit.png';
 import minitel_source2_field from '/img/instruments/videomancer/minitel/minitel_source2_field.png';
 import minitel_source3_collage from '/img/instruments/videomancer/minitel/minitel_source3_collage.png';
@@ -129,6 +130,8 @@ The pipeline is intentionally minimal: sample-and-hold feeds directly into quant
 
 ## Parameter Reference
 
+<img src={minitel_control_panel} alt="Videomancer front panel with Minitel loaded"/>
+*Videomancer's front panel with Minitel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,17 +1,18 @@
 ---
 draft: true
-sidebar_position: 156
+sidebar_position: 157
 slug: /instruments/videomancer/kaleidoscope
 title: "Kaleidoscope"
+image: /img/instruments/videomancer/kaleidoscope/kaleidoscope_hero.png
 description: "Kaleidoscope is a faithful recreation of Li-Chen Wang's legendary 1976 demo for the Cromemco Dazzler — one of the earliest consumer video graphics boards."
 ---
 
 import kaleidoscope_hero from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_hero.png';
 import kaleidoscope_animation from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_animation.gif';
 import kaleidoscope_control_panel from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_control_panel.png';
-import kaleidoscope_exercise1_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise1_result.png';
-import kaleidoscope_exercise2_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise2_result.png';
-import kaleidoscope_exercise3_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise3_result.png';
+import kaleidoscope_exercise1_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise1_result.gif';
+import kaleidoscope_exercise2_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise2_result.gif';
+import kaleidoscope_exercise3_result from '/img/instruments/videomancer/kaleidoscope/kaleidoscope_exercise3_result.gif';
 
 # Kaleidoscope
 

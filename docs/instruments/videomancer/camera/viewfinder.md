@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 319
+sidebar_position: 325
 slug: /instruments/videomancer/viewfinder
 title: "Viewfinder"
-image: /img/instruments/videomancer/viewfinder/viewfinder_hero.png
+image: /img/instruments/videomancer/viewfinder/viewfinder_hero_s1.png
 description: "Every camcorder from the late 1980s through the early 2000s shipped with a tiny electronic viewfinder — a monochrome CRT barely an inch across, pressed against the operator's eye."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import viewfinder_hero from '/img/instruments/videomancer/viewfinder/viewfinder_hero.png';
 import viewfinder_control_panel from '/img/instruments/videomancer/viewfinder/viewfinder_control_panel.png';
-import viewfinder_exercise1_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise1_result.png';
-import viewfinder_exercise2_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise2_result.png';
-import viewfinder_exercise3_result from '/img/instruments/videomancer/viewfinder/viewfinder_exercise3_result.png';
-import viewfinder_source1_kodim05 from '/img/instruments/videomancer/viewfinder/viewfinder_source1_kodim05.png';
-import viewfinder_source2_kodim15 from '/img/instruments/videomancer/viewfinder/viewfinder_source2_kodim15.png';
-import viewfinder_source3_kodim15_bw from '/img/instruments/videomancer/viewfinder/viewfinder_source3_kodim15_bw.png';
+import viewfinder_source1_boat from '/img/instruments/videomancer/viewfinder/viewfinder_source1_boat.png';
+import viewfinder_source2_fruit from '/img/instruments/videomancer/viewfinder/viewfinder_source2_fruit.png';
+import viewfinder_source3_clouds from '/img/instruments/videomancer/viewfinder/viewfinder_source3_clouds.png';
+import viewfinder_source4_pattern from '/img/instruments/videomancer/viewfinder/viewfinder_source4_pattern.png';
+import viewfinder_source5_man from '/img/instruments/videomancer/viewfinder/viewfinder_source5_man.png';
+import viewfinder_source6_knit from '/img/instruments/videomancer/viewfinder/viewfinder_source6_knit.png';
+import viewfinder_hero_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s1.png';
+import viewfinder_hero_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s2.png';
+import viewfinder_hero_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s3.png';
+import viewfinder_hero_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s4.png';
+import viewfinder_hero_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s5.png';
+import viewfinder_hero_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_hero_s6.png';
+import viewfinder_ex1_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s1.png';
+import viewfinder_ex1_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s2.png';
+import viewfinder_ex1_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s3.png';
+import viewfinder_ex1_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s4.png';
+import viewfinder_ex1_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s5.png';
+import viewfinder_ex1_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex1_s6.png';
+import viewfinder_ex2_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s1.png';
+import viewfinder_ex2_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s2.png';
+import viewfinder_ex2_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s3.png';
+import viewfinder_ex2_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s4.png';
+import viewfinder_ex2_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s5.png';
+import viewfinder_ex2_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex2_s6.png';
+import viewfinder_ex3_s1 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s1.png';
+import viewfinder_ex3_s2 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s2.png';
+import viewfinder_ex3_s3 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s3.png';
+import viewfinder_ex3_s4 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s4.png';
+import viewfinder_ex3_s5 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s5.png';
+import viewfinder_ex3_s6 from '/img/instruments/videomancer/viewfinder/viewfinder_ex3_s6.png';
 
 # Viewfinder
 
@@ -23,9 +46,12 @@ import viewfinder_source3_kodim15_bw from '/img/instruments/videomancer/viewfind
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_hero },
-    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_hero },
-    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_hero },
+    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_hero_s1 },
+    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_hero_s2 },
+    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_hero_s3 },
+    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_hero_s4 },
+    { label: "Man", before: viewfinder_source5_man, after: viewfinder_hero_s5 },
+    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_hero_s6 },
   ]}
 />
 *Viewfinder overlaying zebra exposure stripes, red focus peaking, safe-area guides, and a blinking REC indicator onto a live camera feed — the complete 1990s camcorder EVF experience.*
@@ -191,9 +217,12 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise1_result },
-    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise1_result },
-    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise1_result },
+    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex1_s1 },
+    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex1_s2 },
+    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex1_s3 },
+    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex1_s4 },
+    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex1_s5 },
+    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex1_s6 },
   ]}
 />
 *Exposure Monitoring with Zebras — simulated result across source images.*
@@ -215,9 +244,12 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise2_result },
-    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise2_result },
-    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise2_result },
+    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex2_s1 },
+    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex2_s2 },
+    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex2_s3 },
+    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex2_s4 },
+    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex2_s5 },
+    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex2_s6 },
   ]}
 />
 *Focus Peaking and Desaturation — simulated result across source images.*
@@ -240,9 +272,12 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: viewfinder_source1_kodim05, after: viewfinder_exercise3_result },
-    { label: "Kodim15", before: viewfinder_source2_kodim15, after: viewfinder_exercise3_result },
-    { label: "Kodim15 B&W", before: viewfinder_source3_kodim15_bw, after: viewfinder_exercise3_result },
+    { label: "Boat", before: viewfinder_source1_boat, after: viewfinder_ex3_s1 },
+    { label: "Fruit", before: viewfinder_source2_fruit, after: viewfinder_ex3_s2 },
+    { label: "Clouds", before: viewfinder_source3_clouds, after: viewfinder_ex3_s3 },
+    { label: "Pattern", before: viewfinder_source4_pattern, after: viewfinder_ex3_s4 },
+    { label: "Man", before: viewfinder_source5_man, after: viewfinder_ex3_s5 },
+    { label: "Knit", before: viewfinder_source6_knit, after: viewfinder_ex3_s6 },
   ]}
 />
 *Full EVF Simulation — simulated result across source images.*

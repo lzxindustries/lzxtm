@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 60
+sidebar_position: 61
 slug: /instruments/videomancer/concave
 title: "Concave"
 image: /img/instruments/videomancer/concave/concave_hero_s1.png
@@ -8,6 +8,7 @@ description: "A concave mirror curves inward, gathering light toward a focal poi
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import concave_control_panel from '/img/instruments/videomancer/concave/concave_control_panel.png';
 import concave_source1_castle from '/img/instruments/videomancer/concave/concave_source1_castle.png';
 import concave_source2_field from '/img/instruments/videomancer/concave/concave_source2_field.png';
 import concave_source3_clouds from '/img/instruments/videomancer/concave/concave_source3_clouds.png';
@@ -130,6 +131,8 @@ The U and V channels pass through unmodified to the mix stage, preserving the or
 
 ## Parameter Reference
 
+<img src={concave_control_panel} alt="Videomancer front panel with Concave loaded"/>
+*Videomancer's front panel with Concave active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

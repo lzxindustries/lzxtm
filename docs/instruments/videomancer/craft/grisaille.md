@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 130
+sidebar_position: 131
 slug: /instruments/videomancer/grisaille
 title: "Grisaille"
 image: /img/instruments/videomancer/grisaille/grisaille_hero_s1.png
@@ -8,6 +8,7 @@ description: "Oil painters of the Renaissance did not paint colour directly onto
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import grisaille_control_panel from '/img/instruments/videomancer/grisaille/grisaille_control_panel.png';
 import grisaille_source1_castle from '/img/instruments/videomancer/grisaille/grisaille_source1_castle.png';
 import grisaille_source2_dog from '/img/instruments/videomancer/grisaille/grisaille_source2_dog.png';
 import grisaille_source3_turtle from '/img/instruments/videomancer/grisaille/grisaille_source3_turtle.png';
@@ -124,6 +125,8 @@ The critical interaction is between the Y tone curve (Stage 1) and the luminance
 
 ## Parameter Reference
 
+<img src={grisaille_control_panel} alt="Videomancer front panel with Grisaille loaded"/>
+*Videomancer's front panel with Grisaille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

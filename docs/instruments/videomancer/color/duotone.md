@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 93
+sidebar_position: 94
 slug: /instruments/videomancer/duotone
 title: "Duotone"
 image: /img/instruments/videomancer/duotone/duotone_hero_s1.png
@@ -8,6 +8,7 @@ description: "Most color video processors adjust the colors that already exist i
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import duotone_control_panel from '/img/instruments/videomancer/duotone/duotone_control_panel.png';
 import duotone_source1_car from '/img/instruments/videomancer/duotone/duotone_source1_car.png';
 import duotone_source2_parrot from '/img/instruments/videomancer/duotone/duotone_source2_parrot.png';
 import duotone_source3_clouds from '/img/instruments/videomancer/duotone/duotone_source3_clouds.png';
@@ -130,6 +131,8 @@ Second, the hue controls map to fixed complementary UV axes rather than arbitrar
 
 ## Parameter Reference
 
+<img src={duotone_control_panel} alt="Videomancer front panel with Duotone loaded"/>
+*Videomancer's front panel with Duotone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

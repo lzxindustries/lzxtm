@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 238
+sidebar_position: 242
 slug: /instruments/videomancer/rampart
 title: "Rampart"
 image: /img/instruments/videomancer/rampart/rampart_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every castle begins with a wall."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import rampart_control_panel from '/img/instruments/videomancer/rampart/rampart_control_panel.png';
 import rampart_source1_field from '/img/instruments/videomancer/rampart/rampart_source1_field.png';
 import rampart_source2_runner from '/img/instruments/videomancer/rampart/rampart_source2_runner.png';
 import rampart_source3_clouds from '/img/instruments/videomancer/rampart/rampart_source3_clouds.png';
@@ -127,6 +128,8 @@ The grid is computed entirely from pixel coordinates — no BRAMs or line buffer
 
 ## Parameter Reference
 
+<img src={rampart_control_panel} alt="Videomancer front panel with Rampart loaded"/>
+*Videomancer's front panel with Rampart active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

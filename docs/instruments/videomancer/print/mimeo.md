@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 191
+sidebar_position: 193
 slug: /instruments/videomancer/mimeo
 title: "Mimeo"
 image: /img/instruments/videomancer/mimeo/mimeo_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before photocopiers, before laser printers, there was the mimeogra
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import mimeo_control_panel from '/img/instruments/videomancer/mimeo/mimeo_control_panel.png';
 import mimeo_source1_car from '/img/instruments/videomancer/mimeo/mimeo_source1_car.png';
 import mimeo_source2_ballerina from '/img/instruments/videomancer/mimeo/mimeo_source2_ballerina.png';
 import mimeo_source3_clouds from '/img/instruments/videomancer/mimeo/mimeo_source3_clouds.png';
@@ -133,6 +134,8 @@ The processing chain is strictly luminance-driven. Chrominance is generated enti
 
 ## Parameter Reference
 
+<img src={mimeo_control_panel} alt="Videomancer front panel with Mimeo loaded"/>
+*Videomancer's front panel with Mimeo active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

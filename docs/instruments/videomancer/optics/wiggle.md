@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 328
+sidebar_position: 335
 slug: /instruments/videomancer/wiggle
 title: "Wiggle"
-image: /img/instruments/videomancer/wiggle/wiggle_hero.png
+image: /img/instruments/videomancer/wiggle/wiggle_hero_s1.png
 description: "Wiggle displaces pixels horizontally by an amount proportional to their brightness."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import wiggle_hero from '/img/instruments/videomancer/wiggle/wiggle_hero.png';
 import wiggle_control_panel from '/img/instruments/videomancer/wiggle/wiggle_control_panel.png';
-import wiggle_exercise1_result from '/img/instruments/videomancer/wiggle/wiggle_exercise1_result.png';
-import wiggle_exercise2_result from '/img/instruments/videomancer/wiggle/wiggle_exercise2_result.png';
-import wiggle_exercise3_result from '/img/instruments/videomancer/wiggle/wiggle_exercise3_result.png';
-import wiggle_source1_kodim15 from '/img/instruments/videomancer/wiggle/wiggle_source1_kodim15.png';
-import wiggle_source2_kodim01 from '/img/instruments/videomancer/wiggle/wiggle_source2_kodim01.png';
-import wiggle_source3_kodim01_bw from '/img/instruments/videomancer/wiggle/wiggle_source3_kodim01_bw.png';
+import wiggle_source1_castle from '/img/instruments/videomancer/wiggle/wiggle_source1_castle.png';
+import wiggle_source2_dog from '/img/instruments/videomancer/wiggle/wiggle_source2_dog.png';
+import wiggle_source3_turtle from '/img/instruments/videomancer/wiggle/wiggle_source3_turtle.png';
+import wiggle_source4_pattern from '/img/instruments/videomancer/wiggle/wiggle_source4_pattern.png';
+import wiggle_source5_boy from '/img/instruments/videomancer/wiggle/wiggle_source5_boy.png';
+import wiggle_source6_berries from '/img/instruments/videomancer/wiggle/wiggle_source6_berries.png';
+import wiggle_hero_s1 from '/img/instruments/videomancer/wiggle/wiggle_hero_s1.png';
+import wiggle_hero_s2 from '/img/instruments/videomancer/wiggle/wiggle_hero_s2.png';
+import wiggle_hero_s3 from '/img/instruments/videomancer/wiggle/wiggle_hero_s3.png';
+import wiggle_hero_s4 from '/img/instruments/videomancer/wiggle/wiggle_hero_s4.png';
+import wiggle_hero_s5 from '/img/instruments/videomancer/wiggle/wiggle_hero_s5.png';
+import wiggle_hero_s6 from '/img/instruments/videomancer/wiggle/wiggle_hero_s6.png';
+import wiggle_ex1_s1 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s1.png';
+import wiggle_ex1_s2 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s2.png';
+import wiggle_ex1_s3 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s3.png';
+import wiggle_ex1_s4 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s4.png';
+import wiggle_ex1_s5 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s5.png';
+import wiggle_ex1_s6 from '/img/instruments/videomancer/wiggle/wiggle_ex1_s6.png';
+import wiggle_ex2_s1 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s1.png';
+import wiggle_ex2_s2 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s2.png';
+import wiggle_ex2_s3 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s3.png';
+import wiggle_ex2_s4 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s4.png';
+import wiggle_ex2_s5 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s5.png';
+import wiggle_ex2_s6 from '/img/instruments/videomancer/wiggle/wiggle_ex2_s6.png';
+import wiggle_ex3_s1 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s1.png';
+import wiggle_ex3_s2 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s2.png';
+import wiggle_ex3_s3 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s3.png';
+import wiggle_ex3_s4 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s4.png';
+import wiggle_ex3_s5 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s5.png';
+import wiggle_ex3_s6 from '/img/instruments/videomancer/wiggle/wiggle_ex3_s6.png';
 
 # Wiggle
 
@@ -23,9 +46,12 @@ import wiggle_source3_kodim01_bw from '/img/instruments/videomancer/wiggle/wiggl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_hero },
-    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_hero },
-    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_hero },
+    { label: "Castle", before: wiggle_source1_castle, after: wiggle_hero_s1 },
+    { label: "Dog", before: wiggle_source2_dog, after: wiggle_hero_s2 },
+    { label: "Turtle", before: wiggle_source3_turtle, after: wiggle_hero_s3 },
+    { label: "Pattern", before: wiggle_source4_pattern, after: wiggle_hero_s4 },
+    { label: "Boy", before: wiggle_source5_boy, after: wiggle_hero_s5 },
+    { label: "Berries", before: wiggle_source6_berries, after: wiggle_hero_s6 },
   ]}
 />
 *Autostereoscopic depth wobble: luminance-proportional displacement on alternating fields conjures illusory depth from flat video.*
@@ -203,9 +229,12 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise1_result },
-    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise1_result },
-    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise1_result },
+    { label: "Castle", before: wiggle_source1_castle, after: wiggle_ex1_s1 },
+    { label: "Dog", before: wiggle_source2_dog, after: wiggle_ex1_s2 },
+    { label: "Turtle", before: wiggle_source3_turtle, after: wiggle_ex1_s3 },
+    { label: "Pattern", before: wiggle_source4_pattern, after: wiggle_ex1_s4 },
+    { label: "Boy", before: wiggle_source5_boy, after: wiggle_ex1_s5 },
+    { label: "Berries", before: wiggle_source6_berries, after: wiggle_ex1_s6 },
   ]}
 />
 *Gentle Portrait Depth — simulated result across source images.*
@@ -228,9 +257,12 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise2_result },
-    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise2_result },
-    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise2_result },
+    { label: "Castle", before: wiggle_source1_castle, after: wiggle_ex2_s1 },
+    { label: "Dog", before: wiggle_source2_dog, after: wiggle_ex2_s2 },
+    { label: "Turtle", before: wiggle_source3_turtle, after: wiggle_ex2_s3 },
+    { label: "Pattern", before: wiggle_source4_pattern, after: wiggle_ex2_s4 },
+    { label: "Boy", before: wiggle_source5_boy, after: wiggle_ex2_s5 },
+    { label: "Berries", before: wiggle_source6_berries, after: wiggle_ex2_s6 },
   ]}
 />
 *Abstract Warp Field — simulated result across source images.*
@@ -254,9 +286,12 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: wiggle_source1_kodim15, after: wiggle_exercise3_result },
-    { label: "Kodim01", before: wiggle_source2_kodim01, after: wiggle_exercise3_result },
-    { label: "Kodim01 B&W", before: wiggle_source3_kodim01_bw, after: wiggle_exercise3_result },
+    { label: "Castle", before: wiggle_source1_castle, after: wiggle_ex3_s1 },
+    { label: "Dog", before: wiggle_source2_dog, after: wiggle_ex3_s2 },
+    { label: "Turtle", before: wiggle_source3_turtle, after: wiggle_ex3_s3 },
+    { label: "Pattern", before: wiggle_source4_pattern, after: wiggle_ex3_s4 },
+    { label: "Boy", before: wiggle_source5_boy, after: wiggle_ex3_s5 },
+    { label: "Berries", before: wiggle_source6_berries, after: wiggle_ex3_s6 },
   ]}
 />
 *Frozen Parallax Layer — simulated result across source images.*

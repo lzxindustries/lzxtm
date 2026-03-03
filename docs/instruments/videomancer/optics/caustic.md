@@ -8,6 +8,7 @@ description: "Light passing through a disturbed water surface doesn't spread eve
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import caustic_control_panel from '/img/instruments/videomancer/caustic/caustic_control_panel.png';
 import caustic_source1_house from '/img/instruments/videomancer/caustic/caustic_source1_house.png';
 import caustic_source2_skull from '/img/instruments/videomancer/caustic/caustic_source2_skull.png';
 import caustic_source3_clouds from '/img/instruments/videomancer/caustic/caustic_source3_clouds.png';
@@ -116,6 +117,8 @@ The XOR fold at stage 3 is the key to the caustic pattern. By XOR-ing the horizo
 
 ## Parameter Reference
 
+<img src={caustic_control_panel} alt="Videomancer front panel with Caustic loaded"/>
+*Videomancer's front panel with Caustic active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

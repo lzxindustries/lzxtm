@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 234
+sidebar_position: 237
 slug: /instruments/videomancer/procamp
 title: "Procamp"
 image: /img/instruments/videomancer/procamp/procamp_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every broadcast facility has a processing amplifier — a \"proc a
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import procamp_control_panel from '/img/instruments/videomancer/procamp/procamp_control_panel.png';
 import procamp_source1_castle from '/img/instruments/videomancer/procamp/procamp_source1_castle.png';
 import procamp_source2_ballerina from '/img/instruments/videomancer/procamp/procamp_source2_ballerina.png';
 import procamp_source3_collage from '/img/instruments/videomancer/procamp/procamp_source3_collage.png';
@@ -121,6 +122,8 @@ All three channels are processed in parallel through identical pipelines, but ea
 
 ## Parameter Reference
 
+<img src={procamp_control_panel} alt="Videomancer front panel with Procamp loaded"/>
+*Videomancer's front panel with Procamp active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

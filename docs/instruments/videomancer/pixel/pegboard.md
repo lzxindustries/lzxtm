@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 218
+sidebar_position: 221
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
 image: /img/instruments/videomancer/pegboard/pegboard_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before LCD panels and OLED screens, there was Lite-Brite — a toy
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import pegboard_control_panel from '/img/instruments/videomancer/pegboard/pegboard_control_panel.png';
 import pegboard_source1_boat from '/img/instruments/videomancer/pegboard/pegboard_source1_boat.png';
 import pegboard_source2_runner from '/img/instruments/videomancer/pegboard/pegboard_source2_runner.png';
 import pegboard_source3_elephant from '/img/instruments/videomancer/pegboard/pegboard_source3_elephant.png';
@@ -144,6 +145,8 @@ The palette snap and the circle/square rendering are independent operations. Pal
 
 ## Parameter Reference
 
+<img src={pegboard_control_panel} alt="Videomancer front panel with Pegboard loaded"/>
+*Videomancer's front panel with Pegboard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

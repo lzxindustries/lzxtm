@@ -8,6 +8,7 @@ description: "Blueprint transforms a video signal into a cyanotype-style technic
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import blueprint_control_panel from '/img/instruments/videomancer/blueprint/blueprint_control_panel.png';
 import blueprint_source1_parrot from '/img/instruments/videomancer/blueprint/blueprint_source1_parrot.png';
 import blueprint_source2_field from '/img/instruments/videomancer/blueprint/blueprint_source2_field.png';
 import blueprint_source3_elephant from '/img/instruments/videomancer/blueprint/blueprint_source3_elephant.png';
@@ -83,7 +84,7 @@ Engineering drawings use reference grids at regular intervals. Blueprint impleme
 
 ### Shift-Based Contrast Scaling
 
-Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (`>>2`), ×0.5 (`>>1`), ×1.0 (none), ×2.0 (`<<1`, clamped), and ×4.0 (`<<2`, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
+Rather than using hardware multipliers for edge brightness scaling, Blueprint uses five discrete shift levels: ×0.25 (>>2), ×0.5 (>>1), ×1.0 (none), ×2.0 (<<1, clamped), and ×4.0 (<<2, clamped). This creates a stepped contrast curve that can boost faint edges into visibility or pull strong edges back to subtle outlines, all without consuming DSP resources.
 
 
 ---
@@ -141,6 +142,9 @@ The composite stage has a clear priority order: edges take highest priority (whi
 ---
 
 ## Parameter Reference
+
+<img src={blueprint_control_panel} alt="Videomancer front panel with Blueprint loaded"/>
+*Videomancer's front panel with Blueprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -205,7 +209,7 @@ Controls the depth of the Prussian blue background. The pot value scales the bac
 | Default | 50% |
 | Suffix | % |
 
-Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (`>>2`, very faint lines), 205–409 → ×0.5 (`>>1`, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (`<<1`, boosted), 819–1023 → ×4.0 (`<<2`, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
+Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (>>2, very faint lines), 205–409 → ×0.5 (>>1, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (<<1, boosted), 819–1023 → ×4.0 (<<2, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
 
 ---
 

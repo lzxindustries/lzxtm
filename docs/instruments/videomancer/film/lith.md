@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 174
+sidebar_position: 176
 slug: /instruments/videomancer/lith
 title: "Lith"
 image: /img/instruments/videomancer/lith/lith_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the photographic darkroom, lith printing is a process that defi
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import lith_control_panel from '/img/instruments/videomancer/lith/lith_control_panel.png';
 import lith_source1_dog from '/img/instruments/videomancer/lith/lith_source1_dog.png';
 import lith_source2_fruit from '/img/instruments/videomancer/lith/lith_source2_fruit.png';
 import lith_source3_turtle from '/img/instruments/videomancer/lith/lith_source3_turtle.png';
@@ -125,6 +126,8 @@ The critical interaction is between the threshold edge calculation (Stage 2) and
 
 ## Parameter Reference
 
+<img src={lith_control_panel} alt="Videomancer front panel with Lith loaded"/>
+*Videomancer's front panel with Lith active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

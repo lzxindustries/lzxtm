@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 221
+sidebar_position: 224
 slug: /instruments/videomancer/petrichor
 title: "Petrichor"
 image: /img/instruments/videomancer/petrichor/petrichor_hero_s1.png
@@ -8,6 +8,7 @@ description: "Video monitors show flat images."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import petrichor_control_panel from '/img/instruments/videomancer/petrichor/petrichor_control_panel.png';
 import petrichor_source1_field from '/img/instruments/videomancer/petrichor/petrichor_source1_field.png';
 import petrichor_source2_skull from '/img/instruments/videomancer/petrichor/petrichor_source2_skull.png';
 import petrichor_source3_elephant from '/img/instruments/videomancer/petrichor/petrichor_source3_elephant.png';
@@ -127,6 +128,8 @@ The pipeline has two major spatial divisions. Above the horizon, pixels receive 
 
 ## Parameter Reference
 
+<img src={petrichor_control_panel} alt="Videomancer front panel with Petrichor loaded"/>
+*Videomancer's front panel with Petrichor active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

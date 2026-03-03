@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 253
+sidebar_position: 257
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
 image: /img/instruments/videomancer/sabattier/sabattier_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the traditional photographic darkroom, the Sabattier effect occ
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import sabattier_control_panel from '/img/instruments/videomancer/sabattier/sabattier_control_panel.png';
 import sabattier_source1_sunset from '/img/instruments/videomancer/sabattier/sabattier_source1_sunset.png';
 import sabattier_source2_castle from '/img/instruments/videomancer/sabattier/sabattier_source2_castle.png';
 import sabattier_source3_elephant from '/img/instruments/videomancer/sabattier/sabattier_source3_elephant.png';
@@ -134,6 +135,8 @@ Two key interactions define the character of the output. First, the Mackie line 
 
 ## Parameter Reference
 
+<img src={sabattier_control_panel} alt="Videomancer front panel with Sabattier loaded"/>
+*Videomancer's front panel with Sabattier active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

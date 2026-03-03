@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 90
+sidebar_position: 91
 slug: /instruments/videomancer/downpour
 title: "Downpour"
 image: /img/instruments/videomancer/downpour/downpour_hero_s1.png
@@ -8,6 +8,7 @@ description: "Rain is one of those visual phenomena that sits right at the bound
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import downpour_control_panel from '/img/instruments/videomancer/downpour/downpour_control_panel.png';
 import downpour_source1_runner from '/img/instruments/videomancer/downpour/downpour_source1_runner.png';
 import downpour_source2_fruit from '/img/instruments/videomancer/downpour/downpour_source2_fruit.png';
 import downpour_source3_elephant from '/img/instruments/videomancer/downpour/downpour_source3_elephant.png';
@@ -151,6 +152,8 @@ The key architectural choice is that rain drops have no persistent per-particle 
 
 ## Parameter Reference
 
+<img src={downpour_control_panel} alt="Videomancer front panel with Downpour loaded"/>
+*Videomancer's front panel with Downpour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

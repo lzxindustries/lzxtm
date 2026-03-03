@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 276
+sidebar_position: 281
 slug: /instruments/videomancer/spectrogram
 title: "Spectrogram"
-image: /img/instruments/videomancer/spectrogram/spectrogram_hero.png
+image: /img/instruments/videomancer/spectrogram/spectrogram_hero_s1.png
 description: "Spectrogram converts a video signal into a scrolling waterfall display, treating each incoming scanline as a row of \"spectral\" data that is colour-mapped, written into a framebuffer, and scrolled vertically over time."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import spectrogram_hero from '/img/instruments/videomancer/spectrogram/spectrogram_hero.png';
 import spectrogram_control_panel from '/img/instruments/videomancer/spectrogram/spectrogram_control_panel.png';
-import spectrogram_exercise1_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise1_result.png';
-import spectrogram_exercise2_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise2_result.png';
-import spectrogram_exercise3_result from '/img/instruments/videomancer/spectrogram/spectrogram_exercise3_result.png';
-import spectrogram_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/spectrogram/spectrogram_source1_grayscale_ramp_h_1920x1080.png';
-import spectrogram_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/spectrogram/spectrogram_source2_grayscale_ramp_v_1920x1080.png';
-import spectrogram_source3_step_wedge_21level_512 from '/img/instruments/videomancer/spectrogram/spectrogram_source3_step_wedge_21level_512.png';
+import spectrogram_source1_dog from '/img/instruments/videomancer/spectrogram/spectrogram_source1_dog.png';
+import spectrogram_source2_runner from '/img/instruments/videomancer/spectrogram/spectrogram_source2_runner.png';
+import spectrogram_source3_clouds from '/img/instruments/videomancer/spectrogram/spectrogram_source3_clouds.png';
+import spectrogram_source4_pattern from '/img/instruments/videomancer/spectrogram/spectrogram_source4_pattern.png';
+import spectrogram_source5_boy from '/img/instruments/videomancer/spectrogram/spectrogram_source5_boy.png';
+import spectrogram_source6_paint from '/img/instruments/videomancer/spectrogram/spectrogram_source6_paint.png';
+import spectrogram_hero_s1 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s1.png';
+import spectrogram_hero_s2 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s2.png';
+import spectrogram_hero_s3 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s3.png';
+import spectrogram_hero_s4 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s4.png';
+import spectrogram_hero_s5 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s5.png';
+import spectrogram_hero_s6 from '/img/instruments/videomancer/spectrogram/spectrogram_hero_s6.png';
+import spectrogram_ex1_s1 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s1.png';
+import spectrogram_ex1_s2 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s2.png';
+import spectrogram_ex1_s3 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s3.png';
+import spectrogram_ex1_s4 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s4.png';
+import spectrogram_ex1_s5 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s5.png';
+import spectrogram_ex1_s6 from '/img/instruments/videomancer/spectrogram/spectrogram_ex1_s6.png';
+import spectrogram_ex2_s1 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s1.png';
+import spectrogram_ex2_s2 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s2.png';
+import spectrogram_ex2_s3 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s3.png';
+import spectrogram_ex2_s4 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s4.png';
+import spectrogram_ex2_s5 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s5.png';
+import spectrogram_ex2_s6 from '/img/instruments/videomancer/spectrogram/spectrogram_ex2_s6.png';
+import spectrogram_ex3_s1 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s1.png';
+import spectrogram_ex3_s2 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s2.png';
+import spectrogram_ex3_s3 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s3.png';
+import spectrogram_ex3_s4 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s4.png';
+import spectrogram_ex3_s5 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s5.png';
+import spectrogram_ex3_s6 from '/img/instruments/videomancer/spectrogram/spectrogram_ex3_s6.png';
 
 # Spectrogram
 
@@ -23,9 +46,12 @@ import spectrogram_source3_step_wedge_21level_512 from '/img/instruments/videoma
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_hero },
-    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_hero },
-    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_hero },
+    { label: "Dog", before: spectrogram_source1_dog, after: spectrogram_hero_s1 },
+    { label: "Runner", before: spectrogram_source2_runner, after: spectrogram_hero_s2 },
+    { label: "Clouds", before: spectrogram_source3_clouds, after: spectrogram_hero_s3 },
+    { label: "Pattern", before: spectrogram_source4_pattern, after: spectrogram_hero_s4 },
+    { label: "Boy", before: spectrogram_source5_boy, after: spectrogram_hero_s5 },
+    { label: "Paint", before: spectrogram_source6_paint, after: spectrogram_hero_s6 },
   ]}
 />
 *A waterfall display scrolls upward, painting false-colour spectral bands over the incoming video field — bright luma spikes burn yellow-white while dark regions cool to deep indigo.*
@@ -223,9 +249,12 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise1_result },
-    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise1_result },
-    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise1_result },
+    { label: "Dog", before: spectrogram_source1_dog, after: spectrogram_ex1_s1 },
+    { label: "Runner", before: spectrogram_source2_runner, after: spectrogram_ex1_s2 },
+    { label: "Clouds", before: spectrogram_source3_clouds, after: spectrogram_ex1_s3 },
+    { label: "Pattern", before: spectrogram_source4_pattern, after: spectrogram_ex1_s4 },
+    { label: "Boy", before: spectrogram_source5_boy, after: spectrogram_ex1_s5 },
+    { label: "Paint", before: spectrogram_source6_paint, after: spectrogram_ex1_s6 },
   ]}
 />
 *Classic Thermal Waterfall — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise2_result },
-    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise2_result },
-    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise2_result },
+    { label: "Dog", before: spectrogram_source1_dog, after: spectrogram_ex2_s1 },
+    { label: "Runner", before: spectrogram_source2_runner, after: spectrogram_ex2_s2 },
+    { label: "Clouds", before: spectrogram_source3_clouds, after: spectrogram_ex2_s3 },
+    { label: "Pattern", before: spectrogram_source4_pattern, after: spectrogram_ex2_s4 },
+    { label: "Boy", before: spectrogram_source5_boy, after: spectrogram_ex2_s5 },
+    { label: "Paint", before: spectrogram_source6_paint, after: spectrogram_ex2_s6 },
   ]}
 />
 *Spectral Logarithmic Analysis — simulated result across source images.*
@@ -275,9 +307,12 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: spectrogram_source1_grayscale_ramp_h_1920x1080, after: spectrogram_exercise3_result },
-    { label: "Grayscale Ramp V", before: spectrogram_source2_grayscale_ramp_v_1920x1080, after: spectrogram_exercise3_result },
-    { label: "Step Wedge 21level", before: spectrogram_source3_step_wedge_21level_512, after: spectrogram_exercise3_result },
+    { label: "Dog", before: spectrogram_source1_dog, after: spectrogram_ex3_s1 },
+    { label: "Runner", before: spectrogram_source2_runner, after: spectrogram_ex3_s2 },
+    { label: "Clouds", before: spectrogram_source3_clouds, after: spectrogram_ex3_s3 },
+    { label: "Pattern", before: spectrogram_source4_pattern, after: spectrogram_ex3_s4 },
+    { label: "Boy", before: spectrogram_source5_boy, after: spectrogram_ex3_s5 },
+    { label: "Paint", before: spectrogram_source6_paint, after: spectrogram_ex3_s6 },
   ]}
 />
 *Heads-Up Overlay — simulated result across source images.*

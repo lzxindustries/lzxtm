@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 98
+sidebar_position: 99
 slug: /instruments/videomancer/emboss
 title: "Emboss"
 image: /img/instruments/videomancer/emboss/emboss_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every surface tells a story through the way it catches light."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import emboss_control_panel from '/img/instruments/videomancer/emboss/emboss_control_panel.png';
 import emboss_source1_boat from '/img/instruments/videomancer/emboss/emboss_source1_boat.png';
 import emboss_source2_parrot from '/img/instruments/videomancer/emboss/emboss_source2_parrot.png';
 import emboss_source3_collage from '/img/instruments/videomancer/emboss/emboss_source3_collage.png';
@@ -136,6 +137,8 @@ After direction selection, the combined gradient passes through depth scaling (m
 
 ## Parameter Reference
 
+<img src={emboss_control_panel} alt="Videomancer front panel with Emboss loaded"/>
+*Videomancer's front panel with Emboss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

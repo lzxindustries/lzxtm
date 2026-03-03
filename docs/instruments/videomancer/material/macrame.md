@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 182
+sidebar_position: 184
 slug: /instruments/videomancer/macrame
 title: "Macrame"
 image: /img/instruments/videomancer/macrame/macrame_hero_s1.png
@@ -8,6 +8,7 @@ description: "Fiber arts begin with repetition — a single knot tied again and 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import macrame_control_panel from '/img/instruments/videomancer/macrame/macrame_control_panel.png';
 import macrame_source1_field from '/img/instruments/videomancer/macrame/macrame_source1_field.png';
 import macrame_source2_ballerina from '/img/instruments/videomancer/macrame/macrame_source2_ballerina.png';
 import macrame_source3_collage from '/img/instruments/videomancer/macrame/macrame_source3_collage.png';
@@ -147,6 +148,8 @@ The overlay stage's additive mode adds half the pattern brightness to the source
 
 ## Parameter Reference
 
+<img src={macrame_control_panel} alt="Videomancer front panel with Macrame loaded"/>
+*Videomancer's front panel with Macrame active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

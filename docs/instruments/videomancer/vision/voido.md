@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 323
+sidebar_position: 330
 slug: /instruments/videomancer/voido
 title: "Voido"
-image: /img/instruments/videomancer/voido/voido_hero.png
+image: /img/instruments/videomancer/voido/voido_hero_s1.png
 description: "Early television chromakey — known at the BBC as Colour Separation Overlay (CSO) — was a crude but effective technique."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import voido_hero from '/img/instruments/videomancer/voido/voido_hero.png';
 import voido_control_panel from '/img/instruments/videomancer/voido/voido_control_panel.png';
-import voido_exercise1_result from '/img/instruments/videomancer/voido/voido_exercise1_result.png';
-import voido_exercise2_result from '/img/instruments/videomancer/voido/voido_exercise2_result.png';
-import voido_exercise3_result from '/img/instruments/videomancer/voido/voido_exercise3_result.png';
-import voido_source1_kodim15 from '/img/instruments/videomancer/voido/voido_source1_kodim15.png';
-import voido_source2_kodim15_bw from '/img/instruments/videomancer/voido/voido_source2_kodim15_bw.png';
-import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_source3_male_1024.png';
+import voido_source1_parrot from '/img/instruments/videomancer/voido/voido_source1_parrot.png';
+import voido_source2_sunset from '/img/instruments/videomancer/voido/voido_source2_sunset.png';
+import voido_source3_collage from '/img/instruments/videomancer/voido/voido_source3_collage.png';
+import voido_source4_pattern from '/img/instruments/videomancer/voido/voido_source4_pattern.png';
+import voido_source5_woman from '/img/instruments/videomancer/voido/voido_source5_woman.png';
+import voido_source6_knit from '/img/instruments/videomancer/voido/voido_source6_knit.png';
+import voido_hero_s1 from '/img/instruments/videomancer/voido/voido_hero_s1.png';
+import voido_hero_s2 from '/img/instruments/videomancer/voido/voido_hero_s2.png';
+import voido_hero_s3 from '/img/instruments/videomancer/voido/voido_hero_s3.png';
+import voido_hero_s4 from '/img/instruments/videomancer/voido/voido_hero_s4.png';
+import voido_hero_s5 from '/img/instruments/videomancer/voido/voido_hero_s5.png';
+import voido_hero_s6 from '/img/instruments/videomancer/voido/voido_hero_s6.png';
+import voido_ex1_s1 from '/img/instruments/videomancer/voido/voido_ex1_s1.png';
+import voido_ex1_s2 from '/img/instruments/videomancer/voido/voido_ex1_s2.png';
+import voido_ex1_s3 from '/img/instruments/videomancer/voido/voido_ex1_s3.png';
+import voido_ex1_s4 from '/img/instruments/videomancer/voido/voido_ex1_s4.png';
+import voido_ex1_s5 from '/img/instruments/videomancer/voido/voido_ex1_s5.png';
+import voido_ex1_s6 from '/img/instruments/videomancer/voido/voido_ex1_s6.png';
+import voido_ex2_s1 from '/img/instruments/videomancer/voido/voido_ex2_s1.png';
+import voido_ex2_s2 from '/img/instruments/videomancer/voido/voido_ex2_s2.png';
+import voido_ex2_s3 from '/img/instruments/videomancer/voido/voido_ex2_s3.png';
+import voido_ex2_s4 from '/img/instruments/videomancer/voido/voido_ex2_s4.png';
+import voido_ex2_s5 from '/img/instruments/videomancer/voido/voido_ex2_s5.png';
+import voido_ex2_s6 from '/img/instruments/videomancer/voido/voido_ex2_s6.png';
+import voido_ex3_s1 from '/img/instruments/videomancer/voido/voido_ex3_s1.png';
+import voido_ex3_s2 from '/img/instruments/videomancer/voido/voido_ex3_s2.png';
+import voido_ex3_s3 from '/img/instruments/videomancer/voido/voido_ex3_s3.png';
+import voido_ex3_s4 from '/img/instruments/videomancer/voido/voido_ex3_s4.png';
+import voido_ex3_s5 from '/img/instruments/videomancer/voido/voido_ex3_s5.png';
+import voido_ex3_s6 from '/img/instruments/videomancer/voido/voido_ex3_s6.png';
 
 # Voido
 
@@ -23,9 +46,12 @@ import voido_source3_male_1024 from '/img/instruments/videomancer/voido/voido_so
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: voido_source1_kodim15, after: voido_hero },
-    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_hero },
-    { label: "Male", before: voido_source3_male_1024, after: voido_hero },
+    { label: "Parrot", before: voido_source1_parrot, after: voido_hero_s1 },
+    { label: "Sunset", before: voido_source2_sunset, after: voido_hero_s2 },
+    { label: "Collage", before: voido_source3_collage, after: voido_hero_s3 },
+    { label: "Pattern", before: voido_source4_pattern, after: voido_hero_s4 },
+    { label: "Woman", before: voido_source5_woman, after: voido_hero_s5 },
+    { label: "Knit", before: voido_source6_knit, after: voido_hero_s6 },
   ]}
 />
 *Voido performing BBC-style chromakey separation with deliberate edge artifacts, spill suppression, and patterned fill behind keyed regions.*
@@ -215,9 +241,12 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise1_result },
-    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise1_result },
-    { label: "Male", before: voido_source3_male_1024, after: voido_exercise1_result },
+    { label: "Parrot", before: voido_source1_parrot, after: voido_ex1_s1 },
+    { label: "Sunset", before: voido_source2_sunset, after: voido_ex1_s2 },
+    { label: "Collage", before: voido_source3_collage, after: voido_ex1_s3 },
+    { label: "Pattern", before: voido_source4_pattern, after: voido_ex1_s4 },
+    { label: "Woman", before: voido_source5_woman, after: voido_ex1_s5 },
+    { label: "Knit", before: voido_source6_knit, after: voido_ex1_s6 },
   ]}
 />
 *Clean Green Screen Key — simulated result across source images.*
@@ -239,9 +268,12 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise2_result },
-    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise2_result },
-    { label: "Male", before: voido_source3_male_1024, after: voido_exercise2_result },
+    { label: "Parrot", before: voido_source1_parrot, after: voido_ex2_s1 },
+    { label: "Sunset", before: voido_source2_sunset, after: voido_ex2_s2 },
+    { label: "Collage", before: voido_source3_collage, after: voido_ex2_s3 },
+    { label: "Pattern", before: voido_source4_pattern, after: voido_ex2_s4 },
+    { label: "Woman", before: voido_source5_woman, after: voido_ex2_s5 },
+    { label: "Knit", before: voido_source6_knit, after: voido_ex2_s6 },
   ]}
 />
 *Vintage BBC CSO Artifacts — simulated result across source images.*
@@ -264,9 +296,12 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: voido_source1_kodim15, after: voido_exercise3_result },
-    { label: "Kodim15 B&W", before: voido_source2_kodim15_bw, after: voido_exercise3_result },
-    { label: "Male", before: voido_source3_male_1024, after: voido_exercise3_result },
+    { label: "Parrot", before: voido_source1_parrot, after: voido_ex3_s1 },
+    { label: "Sunset", before: voido_source2_sunset, after: voido_ex3_s2 },
+    { label: "Collage", before: voido_source3_collage, after: voido_ex3_s3 },
+    { label: "Pattern", before: voido_source4_pattern, after: voido_ex3_s4 },
+    { label: "Woman", before: voido_source5_woman, after: voido_ex3_s5 },
+    { label: "Knit", before: voido_source6_knit, after: voido_ex3_s6 },
   ]}
 />
 *Creative Color Extraction — simulated result across source images.*

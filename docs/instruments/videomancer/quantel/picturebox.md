@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 226
+sidebar_position: 229
 slug: /instruments/videomancer/picturebox
 title: "Picturebox"
 image: /img/instruments/videomancer/picturebox/picturebox_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the control rooms of 1990s television studios, a wall of small 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import picturebox_control_panel from '/img/instruments/videomancer/picturebox/picturebox_control_panel.png';
 import picturebox_source1_dog from '/img/instruments/videomancer/picturebox/picturebox_source1_dog.png';
 import picturebox_source2_skull from '/img/instruments/videomancer/picturebox/picturebox_source2_skull.png';
 import picturebox_source3_elephant from '/img/instruments/videomancer/picturebox/picturebox_source3_elephant.png';
@@ -140,6 +141,8 @@ The temporal delay is computed per-panel, not per-pixel — all pixels within a 
 
 ## Parameter Reference
 
+<img src={picturebox_control_panel} alt="Videomancer front panel with Picturebox loaded"/>
+*Videomancer's front panel with Picturebox active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

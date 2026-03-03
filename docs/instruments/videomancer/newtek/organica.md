@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 208
+sidebar_position: 211
 slug: /instruments/videomancer/organica
 title: "Organica"
 image: /img/instruments/videomancer/organica/organica_hero_s1.png
@@ -8,6 +8,7 @@ description: "Organica generates procedural color palettes by sweeping a six-seg
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import organica_control_panel from '/img/instruments/videomancer/organica/organica_control_panel.png';
 import organica_source1_field from '/img/instruments/videomancer/organica/organica_source1_field.png';
 import organica_source2_fruit from '/img/instruments/videomancer/organica/organica_source2_fruit.png';
 import organica_source3_turtle from '/img/instruments/videomancer/organica/organica_source3_turtle.png';
@@ -124,6 +125,8 @@ The central interaction is between position-based hue mapping and video-driven m
 
 ## Parameter Reference
 
+<img src={organica_control_panel} alt="Videomancer front panel with Organica loaded"/>
+*Videomancer's front panel with Organica active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

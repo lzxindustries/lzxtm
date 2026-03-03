@@ -8,6 +8,7 @@ description: "Before cinema, before animation, there was the paper theater — a
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cardboard_control_panel from '/img/instruments/videomancer/cardboard/cardboard_control_panel.png';
 import cardboard_source1_sunset from '/img/instruments/videomancer/cardboard/cardboard_source1_sunset.png';
 import cardboard_source2_fruit from '/img/instruments/videomancer/cardboard/cardboard_source2_fruit.png';
 import cardboard_source3_clouds from '/img/instruments/videomancer/cardboard/cardboard_source3_clouds.png';
@@ -132,6 +133,9 @@ Edge detection also operates on the original (unshifted) luminance, comparing th
 ---
 
 ## Parameter Reference
+
+<img src={cardboard_control_panel} alt="Videomancer front panel with Cardboard loaded"/>
+*Videomancer's front panel with Cardboard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

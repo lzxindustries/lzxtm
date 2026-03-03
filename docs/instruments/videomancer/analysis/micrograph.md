@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 190
+sidebar_position: 192
 slug: /instruments/videomancer/micrograph
 title: "Micrograph"
 image: /img/instruments/videomancer/micrograph/micrograph_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every laboratory microscope presents the world through a particula
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import micrograph_control_panel from '/img/instruments/videomancer/micrograph/micrograph_control_panel.png';
 import micrograph_source1_boat from '/img/instruments/videomancer/micrograph/micrograph_source1_boat.png';
 import micrograph_source2_skull from '/img/instruments/videomancer/micrograph/micrograph_source2_skull.png';
 import micrograph_source3_turtle from '/img/instruments/videomancer/micrograph/micrograph_source3_turtle.png';
@@ -140,6 +141,8 @@ The program's spatial awareness comes from the video_timing_generator, which sup
 
 ## Parameter Reference
 
+<img src={micrograph_control_panel} alt="Videomancer front panel with Micrograph loaded"/>
+*Videomancer's front panel with Micrograph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

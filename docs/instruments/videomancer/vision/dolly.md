@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 85
+sidebar_position: 86
 slug: /instruments/videomancer/dolly
 title: "Dolly"
 image: /img/instruments/videomancer/dolly/dolly_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every broadcast control room has a button that shrinks the on-scre
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dolly_control_panel from '/img/instruments/videomancer/dolly/dolly_control_panel.png';
 import dolly_source1_house from '/img/instruments/videomancer/dolly/dolly_source1_house.png';
 import dolly_source2_dog from '/img/instruments/videomancer/dolly/dolly_source2_dog.png';
 import dolly_source3_elephant from '/img/instruments/videomancer/dolly/dolly_source3_elephant.png';
@@ -144,6 +145,8 @@ The critical path runs vertically through time: geometry is computed once per fr
 
 ## Parameter Reference
 
+<img src={dolly_control_panel} alt="Videomancer front panel with Dolly loaded"/>
+*Videomancer's front panel with Dolly active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

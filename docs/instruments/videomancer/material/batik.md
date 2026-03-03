@@ -8,6 +8,7 @@ description: "Batik simulates the centuries-old Indonesian wax-resist textile dy
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import batik_control_panel from '/img/instruments/videomancer/batik/batik_control_panel.png';
 import batik_source1_house from '/img/instruments/videomancer/batik/batik_source1_house.png';
 import batik_source2_parrot from '/img/instruments/videomancer/batik/batik_source2_parrot.png';
 import batik_source3_clouds from '/img/instruments/videomancer/batik/batik_source3_clouds.png';
@@ -151,6 +152,9 @@ The Mono mode switch bypasses hue rotation entirely, forcing U and V to neutral 
 ---
 
 ## Parameter Reference
+
+<img src={batik_control_panel} alt="Videomancer front panel with Batik loaded"/>
+*Videomancer's front panel with Batik active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

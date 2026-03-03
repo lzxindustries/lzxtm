@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 215
+sidebar_position: 218
 slug: /instruments/videomancer/passthru
 title: "Passthru"
 image: /img/instruments/videomancer/passthru/passthru_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every video processing chain begins with a signal that enters and 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import passthru_control_panel from '/img/instruments/videomancer/passthru/passthru_control_panel.png';
 import passthru_source1_cat from '/img/instruments/videomancer/passthru/passthru_source1_cat.png';
 import passthru_source2_dog from '/img/instruments/videomancer/passthru/passthru_source2_dog.png';
 import passthru_source3_collage from '/img/instruments/videomancer/passthru/passthru_source3_collage.png';
@@ -107,6 +108,8 @@ The proc amp stage runs on all three channels simultaneously through three paral
 
 ## Parameter Reference
 
+<img src={passthru_control_panel} alt="Videomancer front panel with Passthru loaded"/>
+*Videomancer's front panel with Passthru active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,13 +212,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 1: Brightness and Contrast
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise1_result },
-    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise1_result },
-    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise1_result },
-  ]}
-/>
+![Brightness and Contrast result](assets/passthru_exercise1_result.png)
 *Brightness and Contrast — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
@@ -233,13 +230,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 2: Color Manipulation
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise2_result },
-    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise2_result },
-    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise2_result },
-  ]}
-/>
+![Color Manipulation result](assets/passthru_exercise2_result.png)
 *Color Manipulation — simulated result across source images.*
 **Source**: Footage with strong, varied colors — flowers, painted surfaces, or color bars.
 
@@ -258,13 +249,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 3: Signal Chain Exploration
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_exercise3_result },
-    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_exercise3_result },
-    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_exercise3_result },
-  ]}
-/>
+![Signal Chain Exploration result](assets/passthru_exercise3_result.png)
 *Signal Chain Exploration — simulated result across source images.*
 **Source**: Any live or recorded video with moderate contrast and color.
 

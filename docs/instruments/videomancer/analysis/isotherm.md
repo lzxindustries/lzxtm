@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 149
+sidebar_position: 150
 slug: /instruments/videomancer/isotherm
 title: "Isotherm"
 image: /img/instruments/videomancer/isotherm/isotherm_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every surface radiates energy."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import isotherm_control_panel from '/img/instruments/videomancer/isotherm/isotherm_control_panel.png';
 import isotherm_source1_sunset from '/img/instruments/videomancer/isotherm/isotherm_source1_sunset.png';
 import isotherm_source2_fruit from '/img/instruments/videomancer/isotherm/isotherm_source2_fruit.png';
 import isotherm_source3_clouds from '/img/instruments/videomancer/isotherm/isotherm_source3_clouds.png';
@@ -130,6 +131,8 @@ The auto-range normalisation stage sits between input smoothing and palette look
 
 ## Parameter Reference
 
+<img src={isotherm_control_panel} alt="Videomancer front panel with Isotherm loaded"/>
+*Videomancer's front panel with Isotherm active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

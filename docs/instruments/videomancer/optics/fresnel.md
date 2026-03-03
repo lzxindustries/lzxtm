@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 120
+sidebar_position: 121
 slug: /instruments/videomancer/fresnel
 title: "Fresnel"
-image: /img/instruments/videomancer/fresnel/fresnel_hero.png
+image: /img/instruments/videomancer/fresnel/fresnel_hero_s1.png
 description: "A Fresnel zone plate is one of the oldest optical test patterns — concentric rings whose spacing decreases with distance from the center, following a square-root law."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import fresnel_hero from '/img/instruments/videomancer/fresnel/fresnel_hero.png';
 import fresnel_control_panel from '/img/instruments/videomancer/fresnel/fresnel_control_panel.png';
-import fresnel_exercise1_result from '/img/instruments/videomancer/fresnel/fresnel_exercise1_result.png';
-import fresnel_exercise2_result from '/img/instruments/videomancer/fresnel/fresnel_exercise2_result.png';
-import fresnel_exercise3_result from '/img/instruments/videomancer/fresnel/fresnel_exercise3_result.png';
-import fresnel_source1_kodim15 from '/img/instruments/videomancer/fresnel/fresnel_source1_kodim15.png';
-import fresnel_source2_kodim01 from '/img/instruments/videomancer/fresnel/fresnel_source2_kodim01.png';
-import fresnel_source3_kodim01_bw from '/img/instruments/videomancer/fresnel/fresnel_source3_kodim01_bw.png';
+import fresnel_source1_sunset from '/img/instruments/videomancer/fresnel/fresnel_source1_sunset.png';
+import fresnel_source2_field from '/img/instruments/videomancer/fresnel/fresnel_source2_field.png';
+import fresnel_source3_turtle from '/img/instruments/videomancer/fresnel/fresnel_source3_turtle.png';
+import fresnel_source4_pattern from '/img/instruments/videomancer/fresnel/fresnel_source4_pattern.png';
+import fresnel_source5_boy from '/img/instruments/videomancer/fresnel/fresnel_source5_boy.png';
+import fresnel_source6_wood from '/img/instruments/videomancer/fresnel/fresnel_source6_wood.png';
+import fresnel_hero_s1 from '/img/instruments/videomancer/fresnel/fresnel_hero_s1.png';
+import fresnel_hero_s2 from '/img/instruments/videomancer/fresnel/fresnel_hero_s2.png';
+import fresnel_hero_s3 from '/img/instruments/videomancer/fresnel/fresnel_hero_s3.png';
+import fresnel_hero_s4 from '/img/instruments/videomancer/fresnel/fresnel_hero_s4.png';
+import fresnel_hero_s5 from '/img/instruments/videomancer/fresnel/fresnel_hero_s5.png';
+import fresnel_hero_s6 from '/img/instruments/videomancer/fresnel/fresnel_hero_s6.png';
+import fresnel_ex1_s1 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s1.png';
+import fresnel_ex1_s2 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s2.png';
+import fresnel_ex1_s3 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s3.png';
+import fresnel_ex1_s4 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s4.png';
+import fresnel_ex1_s5 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s5.png';
+import fresnel_ex1_s6 from '/img/instruments/videomancer/fresnel/fresnel_ex1_s6.png';
+import fresnel_ex2_s1 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s1.png';
+import fresnel_ex2_s2 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s2.png';
+import fresnel_ex2_s3 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s3.png';
+import fresnel_ex2_s4 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s4.png';
+import fresnel_ex2_s5 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s5.png';
+import fresnel_ex2_s6 from '/img/instruments/videomancer/fresnel/fresnel_ex2_s6.png';
+import fresnel_ex3_s1 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s1.png';
+import fresnel_ex3_s2 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s2.png';
+import fresnel_ex3_s3 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s3.png';
+import fresnel_ex3_s4 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s4.png';
+import fresnel_ex3_s5 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s5.png';
+import fresnel_ex3_s6 from '/img/instruments/videomancer/fresnel/fresnel_ex3_s6.png';
 
 # Fresnel
 
@@ -23,9 +46,12 @@ import fresnel_source3_kodim01_bw from '/img/instruments/videomancer/fresnel/fre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_hero },
-    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_hero },
-    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_hero },
+    { label: "Sunset", before: fresnel_source1_sunset, after: fresnel_hero_s1 },
+    { label: "Field", before: fresnel_source2_field, after: fresnel_hero_s2 },
+    { label: "Turtle", before: fresnel_source3_turtle, after: fresnel_hero_s3 },
+    { label: "Pattern", before: fresnel_source4_pattern, after: fresnel_hero_s4 },
+    { label: "Boy", before: fresnel_source5_boy, after: fresnel_hero_s5 },
+    { label: "Wood", before: fresnel_source6_wood, after: fresnel_hero_s6 },
   ]}
 />
 *Fresnel zone plate interference rings radiating from a displaced center, with dual-source moire and video-tinted coloring.*
@@ -224,9 +250,12 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise1_result },
-    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise1_result },
-    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise1_result },
+    { label: "Sunset", before: fresnel_source1_sunset, after: fresnel_ex1_s1 },
+    { label: "Field", before: fresnel_source2_field, after: fresnel_ex1_s2 },
+    { label: "Turtle", before: fresnel_source3_turtle, after: fresnel_ex1_s3 },
+    { label: "Pattern", before: fresnel_source4_pattern, after: fresnel_ex1_s4 },
+    { label: "Boy", before: fresnel_source5_boy, after: fresnel_ex1_s5 },
+    { label: "Wood", before: fresnel_source6_wood, after: fresnel_ex1_s6 },
   ]}
 />
 *Basic Zone Plate — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise2_result },
-    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise2_result },
-    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise2_result },
+    { label: "Sunset", before: fresnel_source1_sunset, after: fresnel_ex2_s1 },
+    { label: "Field", before: fresnel_source2_field, after: fresnel_ex2_s2 },
+    { label: "Turtle", before: fresnel_source3_turtle, after: fresnel_ex2_s3 },
+    { label: "Pattern", before: fresnel_source4_pattern, after: fresnel_ex2_s4 },
+    { label: "Boy", before: fresnel_source5_boy, after: fresnel_ex2_s5 },
+    { label: "Wood", before: fresnel_source6_wood, after: fresnel_ex2_s6 },
   ]}
 />
 *Dual-Source Moire — simulated result across source images.*
@@ -274,9 +306,12 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fresnel_source1_kodim15, after: fresnel_exercise3_result },
-    { label: "Kodim01", before: fresnel_source2_kodim01, after: fresnel_exercise3_result },
-    { label: "Kodim01 B&W", before: fresnel_source3_kodim01_bw, after: fresnel_exercise3_result },
+    { label: "Sunset", before: fresnel_source1_sunset, after: fresnel_ex3_s1 },
+    { label: "Field", before: fresnel_source2_field, after: fresnel_ex3_s2 },
+    { label: "Turtle", before: fresnel_source3_turtle, after: fresnel_ex3_s3 },
+    { label: "Pattern", before: fresnel_source4_pattern, after: fresnel_ex3_s4 },
+    { label: "Boy", before: fresnel_source5_boy, after: fresnel_ex3_s5 },
+    { label: "Wood", before: fresnel_source6_wood, after: fresnel_ex3_s6 },
   ]}
 />
 *Color Zone Mask — simulated result across source images.*

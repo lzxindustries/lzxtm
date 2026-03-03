@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 160
+sidebar_position: 162
 slug: /instruments/videomancer/kintsugi
 title: "Kintsugi"
 image: /img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is rep
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import kintsugi_control_panel from '/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png';
 import kintsugi_source1_runner from '/img/instruments/videomancer/kintsugi/kintsugi_source1_runner.png';
 import kintsugi_source2_ballerina from '/img/instruments/videomancer/kintsugi/kintsugi_source2_ballerina.png';
 import kintsugi_source3_turtle from '/img/instruments/videomancer/kintsugi/kintsugi_source3_turtle.png';
@@ -140,6 +141,8 @@ The two edge detection paths operate in parallel on the same input luma. The hor
 
 ## Parameter Reference
 
+<img src={kintsugi_control_panel} alt="Videomancer front panel with Kintsugi loaded"/>
+*Videomancer's front panel with Kintsugi active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

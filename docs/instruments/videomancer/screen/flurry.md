@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 117
+sidebar_position: 118
 slug: /instruments/videomancer/flurry
 title: "Flurry"
 image: /img/instruments/videomancer/flurry/flurry_hero.png

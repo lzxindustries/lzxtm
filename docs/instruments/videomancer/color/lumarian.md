@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 179
+sidebar_position: 181
 slug: /instruments/videomancer/lumarian
 title: "Lumarian"
 image: /img/instruments/videomancer/lumarian/lumarian_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every video image is made of three things: how bright each pixel i
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import lumarian_control_panel from '/img/instruments/videomancer/lumarian/lumarian_control_panel.png';
 import lumarian_source1_house from '/img/instruments/videomancer/lumarian/lumarian_source1_house.png';
 import lumarian_source2_ballerina from '/img/instruments/videomancer/lumarian/lumarian_source2_ballerina.png';
 import lumarian_source3_turtle from '/img/instruments/videomancer/lumarian/lumarian_source3_turtle.png';
@@ -121,6 +122,8 @@ Notice that the Y channel has more processing stages than U and V. If all three 
 
 ## Parameter Reference
 
+<img src={lumarian_control_panel} alt="Videomancer front panel with Lumarian loaded"/>
+*Videomancer's front panel with Lumarian active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

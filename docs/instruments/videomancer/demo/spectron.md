@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 277
+sidebar_position: 282
 slug: /instruments/videomancer/spectron
 title: "Spectron"
 image: /img/instruments/videomancer/spectron/spectron_hero.png

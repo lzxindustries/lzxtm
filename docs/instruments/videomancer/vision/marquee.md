@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 186
+sidebar_position: 188
 slug: /instruments/videomancer/marquee
 title: "Marquee"
 image: /img/instruments/videomancer/marquee/marquee_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before desktop publishing and digital titling systems, television 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import marquee_control_panel from '/img/instruments/videomancer/marquee/marquee_control_panel.png';
 import marquee_source1_fruit from '/img/instruments/videomancer/marquee/marquee_source1_fruit.png';
 import marquee_source2_ballerina from '/img/instruments/videomancer/marquee/marquee_source2_ballerina.png';
 import marquee_source3_turtle from '/img/instruments/videomancer/marquee/marquee_source3_turtle.png';
@@ -136,6 +137,8 @@ The critical interaction is between the key extraction and the multi-layer compo
 
 ## Parameter Reference
 
+<img src={marquee_control_panel} alt="Videomancer front panel with Marquee loaded"/>
+*Videomancer's front panel with Marquee active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

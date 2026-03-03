@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 209
+sidebar_position: 212
 slug: /instruments/videomancer/origami
 title: "Origami"
 image: /img/instruments/videomancer/origami/origami_hero.png

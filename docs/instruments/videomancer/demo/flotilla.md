@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 116
+sidebar_position: 117
 slug: /instruments/videomancer/flotilla
 title: "Flotilla"
 image: /img/instruments/videomancer/flotilla/flotilla_hero.png

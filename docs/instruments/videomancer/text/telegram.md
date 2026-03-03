@@ -1,21 +1,40 @@
 ---
 draft: true
-sidebar_position: 295
+sidebar_position: 300
 slug: /instruments/videomancer/telegram
 title: "Telegram"
-image: /img/instruments/videomancer/telegram/telegram_hero.png
+image: /img/instruments/videomancer/telegram/telegram_hero_s1.png
 description: "Before digital communication, before fax machines, before even the telephone reached most of the world, there was the telegraph."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import telegram_hero from '/img/instruments/videomancer/telegram/telegram_hero.png';
 import telegram_control_panel from '/img/instruments/videomancer/telegram/telegram_control_panel.png';
-import telegram_exercise1_result from '/img/instruments/videomancer/telegram/telegram_exercise1_result.png';
-import telegram_exercise2_result from '/img/instruments/videomancer/telegram/telegram_exercise2_result.png';
-import telegram_exercise3_result from '/img/instruments/videomancer/telegram/telegram_exercise3_result.png';
-import telegram_source1_kodim15 from '/img/instruments/videomancer/telegram/telegram_source1_kodim15.png';
-import telegram_source2_kodim15_bw from '/img/instruments/videomancer/telegram/telegram_source2_kodim15_bw.png';
-import telegram_source3_male_1024 from '/img/instruments/videomancer/telegram/telegram_source3_male_1024.png';
+import telegram_source1_fruit from '/img/instruments/videomancer/telegram/telegram_source1_fruit.png';
+import telegram_source2_sunset from '/img/instruments/videomancer/telegram/telegram_source2_sunset.png';
+import telegram_source3_clouds from '/img/instruments/videomancer/telegram/telegram_source3_clouds.png';
+import telegram_source4_pattern from '/img/instruments/videomancer/telegram/telegram_source4_pattern.png';
+import telegram_source5_woman from '/img/instruments/videomancer/telegram/telegram_source5_woman.png';
+import telegram_source6_knit from '/img/instruments/videomancer/telegram/telegram_source6_knit.png';
+import telegram_hero_s1 from '/img/instruments/videomancer/telegram/telegram_hero_s1.png';
+import telegram_hero_s2 from '/img/instruments/videomancer/telegram/telegram_hero_s2.png';
+import telegram_hero_s3 from '/img/instruments/videomancer/telegram/telegram_hero_s3.png';
+import telegram_hero_s4 from '/img/instruments/videomancer/telegram/telegram_hero_s4.png';
+import telegram_hero_s5 from '/img/instruments/videomancer/telegram/telegram_hero_s5.png';
+import telegram_hero_s6 from '/img/instruments/videomancer/telegram/telegram_hero_s6.png';
+import telegram_ex1_s1 from '/img/instruments/videomancer/telegram/telegram_ex1_s1.png';
+import telegram_ex1_s2 from '/img/instruments/videomancer/telegram/telegram_ex1_s2.png';
+import telegram_ex1_s3 from '/img/instruments/videomancer/telegram/telegram_ex1_s3.png';
+import telegram_ex1_s4 from '/img/instruments/videomancer/telegram/telegram_ex1_s4.png';
+import telegram_ex1_s5 from '/img/instruments/videomancer/telegram/telegram_ex1_s5.png';
+import telegram_ex1_s6 from '/img/instruments/videomancer/telegram/telegram_ex1_s6.png';
+import telegram_ex2_s1 from '/img/instruments/videomancer/telegram/telegram_ex2_s1.png';
+import telegram_ex2_s2 from '/img/instruments/videomancer/telegram/telegram_ex2_s2.png';
+import telegram_ex2_s3 from '/img/instruments/videomancer/telegram/telegram_ex2_s3.png';
+import telegram_ex2_s4 from '/img/instruments/videomancer/telegram/telegram_ex2_s4.png';
+import telegram_ex2_s5 from '/img/instruments/videomancer/telegram/telegram_ex2_s5.png';
+import telegram_ex2_s6 from '/img/instruments/videomancer/telegram/telegram_ex2_s6.png';
+import telegram_ex3_s1 from '/img/instruments/videomancer/telegram/telegram_ex3_s1.png';
+import telegram_ex3_s2 from '/img/instruments/videomancer/telegram/telegram_ex3_s2.png';
 
 # Telegram
 
@@ -23,9 +42,12 @@ import telegram_source3_male_1024 from '/img/instruments/videomancer/telegram/te
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_hero },
-    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_hero },
-    { label: "Male", before: telegram_source3_male_1024, after: telegram_hero },
+    { label: "Fruit", before: telegram_source1_fruit, after: telegram_hero_s1 },
+    { label: "Sunset", before: telegram_source2_sunset, after: telegram_hero_s2 },
+    { label: "Clouds", before: telegram_source3_clouds, after: telegram_hero_s3 },
+    { label: "Pattern", before: telegram_source4_pattern, after: telegram_hero_s4 },
+    { label: "Woman", before: telegram_source5_woman, after: telegram_hero_s5 },
+    { label: "Knit", before: telegram_source6_knit, after: telegram_hero_s6 },
   ]}
 />
 *Telegram rendering Morse code dot-dash patterns from source luminance as scrolling horizontal bars across configurable tape bands.*
@@ -225,9 +247,12 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise1_result },
-    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise1_result },
-    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise1_result },
+    { label: "Fruit", before: telegram_source1_fruit, after: telegram_ex1_s1 },
+    { label: "Sunset", before: telegram_source2_sunset, after: telegram_ex1_s2 },
+    { label: "Clouds", before: telegram_source3_clouds, after: telegram_ex1_s3 },
+    { label: "Pattern", before: telegram_source4_pattern, after: telegram_ex1_s4 },
+    { label: "Woman", before: telegram_source5_woman, after: telegram_ex1_s5 },
+    { label: "Knit", before: telegram_source6_knit, after: telegram_ex1_s6 },
   ]}
 />
 *Basic Telegraph Tape — simulated result across source images.*
@@ -250,9 +275,12 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise2_result },
-    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise2_result },
-    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise2_result },
+    { label: "Fruit", before: telegram_source1_fruit, after: telegram_ex2_s1 },
+    { label: "Sunset", before: telegram_source2_sunset, after: telegram_ex2_s2 },
+    { label: "Clouds", before: telegram_source3_clouds, after: telegram_ex2_s3 },
+    { label: "Pattern", before: telegram_source4_pattern, after: telegram_ex2_s4 },
+    { label: "Woman", before: telegram_source5_woman, after: telegram_ex2_s5 },
+    { label: "Knit", before: telegram_source6_knit, after: telegram_ex2_s6 },
   ]}
 />
 *Luma-Driven Encoding — simulated result across source images.*
@@ -274,9 +302,12 @@ These exercises progressively build from simple Morse overlay recognition to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: telegram_source1_kodim15, after: telegram_exercise3_result },
-    { label: "Kodim15 B&W", before: telegram_source2_kodim15_bw, after: telegram_exercise3_result },
-    { label: "Male", before: telegram_source3_male_1024, after: telegram_exercise3_result },
+    { label: "Fruit", before: telegram_source1_fruit, after: telegram_ex3_s1 },
+    { label: "Sunset", before: telegram_source2_sunset, after: telegram_ex3_s2 },
+    { label: "Clouds", before: telegram_source3_clouds, after: undefined },
+    { label: "Pattern", before: telegram_source4_pattern, after: undefined },
+    { label: "Woman", before: telegram_source5_woman, after: undefined },
+    { label: "Knit", before: telegram_source6_knit, after: undefined },
   ]}
 />
 *Full Transmission — simulated result across source images.*

@@ -8,6 +8,7 @@ description: "Every broadcast engineer knows the venetian blind wipe — a grid 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import blinds_control_panel from '/img/instruments/videomancer/blinds/blinds_control_panel.png';
 import blinds_source1_cat from '/img/instruments/videomancer/blinds/blinds_source1_cat.png';
 import blinds_source2_skull from '/img/instruments/videomancer/blinds/blinds_source2_skull.png';
 import blinds_source3_clouds from '/img/instruments/videomancer/blinds/blinds_source3_clouds.png';
@@ -136,6 +137,9 @@ The critical interaction is between cascade and edge softness. Cascade distribut
 ---
 
 ## Parameter Reference
+
+<img src={blinds_control_panel} alt="Videomancer front panel with Blinds loaded"/>
+*Videomancer's front panel with Blinds active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

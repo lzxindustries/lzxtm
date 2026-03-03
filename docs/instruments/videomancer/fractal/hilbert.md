@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 135
+sidebar_position: 136
 slug: /instruments/videomancer/hilbert
 title: "Hilbert"
 image: /img/instruments/videomancer/hilbert/hilbert_hero.png

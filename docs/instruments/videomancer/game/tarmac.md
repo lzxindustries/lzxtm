@@ -1,34 +1,27 @@
 ---
 draft: true
-sidebar_position: 294
+sidebar_position: 299
 slug: /instruments/videomancer/tarmac
 title: "Tarmac"
 image: /img/instruments/videomancer/tarmac/tarmac_hero.png
 description: "The Super Nintendo's Mode 7 background layer was a hardware trick that changed everything."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
+import tarmac_before_after from '/img/instruments/videomancer/tarmac/tarmac_before_after.png';
 import tarmac_control_panel from '/img/instruments/videomancer/tarmac/tarmac_control_panel.png';
-import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.png';
-import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.png';
-import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_exercise3_result.png';
-import tarmac_source1_kodim15 from '/img/instruments/videomancer/tarmac/tarmac_source1_kodim15.png';
-import tarmac_source2_kodim03 from '/img/instruments/videomancer/tarmac/tarmac_source2_kodim03.png';
-import tarmac_source3_kodim15_bw from '/img/instruments/videomancer/tarmac/tarmac_source3_kodim15_bw.png';
+import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.gif';
+import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.gif';
+import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_exercise3_result.gif';
 
 # Tarmac
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: tarmac_source1_kodim15, after: tarmac_hero },
-    { label: "Kodim03", before: tarmac_source2_kodim03, after: tarmac_hero },
-    { label: "Kodim15 B&W", before: tarmac_source3_kodim15_bw, after: tarmac_hero },
-  ]}
-/>
+<img src={tarmac_hero} alt="Tarmac hero image"/>
 *Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
+<img src={tarmac_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Tarmac applied.*
 
 ---
 
@@ -216,13 +209,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 ### Exercise 1: First Ground Plane
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: tarmac_source1_kodim15, after: tarmac_exercise1_result },
-    { label: "Kodim03", before: tarmac_source2_kodim03, after: tarmac_exercise1_result },
-    { label: "Kodim15 B&W", before: tarmac_source3_kodim15_bw, after: tarmac_exercise1_result },
-  ]}
-/>
+<img src={tarmac_exercise1_result} alt="First Ground Plane result"/>
 *First Ground Plane — simulated result across source images.*
 **Source**: A still image or camera feed with strong texture — brickwork, fabric pattern, tile floor, or printed text.
 
@@ -240,13 +227,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 ### Exercise 2: Spinning Floor
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: tarmac_source1_kodim15, after: tarmac_exercise2_result },
-    { label: "Kodim03", before: tarmac_source2_kodim03, after: tarmac_exercise2_result },
-    { label: "Kodim15 B&W", before: tarmac_source3_kodim15_bw, after: tarmac_exercise2_result },
-  ]}
-/>
+<img src={tarmac_exercise2_result} alt="Spinning Floor result"/>
 *Spinning Floor — simulated result across source images.*
 **Source**: A colorful pattern, logo, or high-contrast graphic with recognizable orientation.
 
@@ -264,13 +245,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 ### Exercise 3: Racing Game Composite
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: tarmac_source1_kodim15, after: tarmac_exercise3_result },
-    { label: "Kodim03", before: tarmac_source2_kodim03, after: tarmac_exercise3_result },
-    { label: "Kodim15 B&W", before: tarmac_source3_kodim15_bw, after: tarmac_exercise3_result },
-  ]}
-/>
+<img src={tarmac_exercise3_result} alt="Racing Game Composite result"/>
 *Racing Game Composite — simulated result across source images.*
 **Source**: A camera feed of a road, floor tiles, or any directional texture.
 

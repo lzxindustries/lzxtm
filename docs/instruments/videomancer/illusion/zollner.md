@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 334
+sidebar_position: 341
 slug: /instruments/videomancer/zollner
 title: "Zollner"
-image: /img/instruments/videomancer/zollner/zollner_hero.png
+image: /img/instruments/videomancer/zollner/zollner_hero_s1.png
 description: "The Zöllner illusion is one of the oldest documented optical illusions — discovered in 1860 by astrophysicist Johann Karl Friedrich Zöllner when he noticed that parallel lines on a piece of fabric appeared to converge when crossed by short diagonal hash marks."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import zollner_hero from '/img/instruments/videomancer/zollner/zollner_hero.png';
 import zollner_control_panel from '/img/instruments/videomancer/zollner/zollner_control_panel.png';
-import zollner_exercise1_result from '/img/instruments/videomancer/zollner/zollner_exercise1_result.png';
-import zollner_exercise2_result from '/img/instruments/videomancer/zollner/zollner_exercise2_result.png';
-import zollner_exercise3_result from '/img/instruments/videomancer/zollner/zollner_exercise3_result.png';
-import zollner_source1_kodim01 from '/img/instruments/videomancer/zollner/zollner_source1_kodim01.png';
-import zollner_source2_kodim02 from '/img/instruments/videomancer/zollner/zollner_source2_kodim02.png';
-import zollner_source3_kodim01_bw from '/img/instruments/videomancer/zollner/zollner_source3_kodim01_bw.png';
+import zollner_source1_dog from '/img/instruments/videomancer/zollner/zollner_source1_dog.png';
+import zollner_source2_fruit from '/img/instruments/videomancer/zollner/zollner_source2_fruit.png';
+import zollner_source3_turtle from '/img/instruments/videomancer/zollner/zollner_source3_turtle.png';
+import zollner_source4_pattern from '/img/instruments/videomancer/zollner/zollner_source4_pattern.png';
+import zollner_source5_woman from '/img/instruments/videomancer/zollner/zollner_source5_woman.png';
+import zollner_source6_paint from '/img/instruments/videomancer/zollner/zollner_source6_paint.png';
+import zollner_hero_s1 from '/img/instruments/videomancer/zollner/zollner_hero_s1.png';
+import zollner_hero_s2 from '/img/instruments/videomancer/zollner/zollner_hero_s2.png';
+import zollner_hero_s3 from '/img/instruments/videomancer/zollner/zollner_hero_s3.png';
+import zollner_hero_s4 from '/img/instruments/videomancer/zollner/zollner_hero_s4.png';
+import zollner_hero_s5 from '/img/instruments/videomancer/zollner/zollner_hero_s5.png';
+import zollner_hero_s6 from '/img/instruments/videomancer/zollner/zollner_hero_s6.png';
+import zollner_ex1_s1 from '/img/instruments/videomancer/zollner/zollner_ex1_s1.png';
+import zollner_ex1_s2 from '/img/instruments/videomancer/zollner/zollner_ex1_s2.png';
+import zollner_ex1_s3 from '/img/instruments/videomancer/zollner/zollner_ex1_s3.png';
+import zollner_ex1_s4 from '/img/instruments/videomancer/zollner/zollner_ex1_s4.png';
+import zollner_ex1_s5 from '/img/instruments/videomancer/zollner/zollner_ex1_s5.png';
+import zollner_ex1_s6 from '/img/instruments/videomancer/zollner/zollner_ex1_s6.png';
+import zollner_ex2_s1 from '/img/instruments/videomancer/zollner/zollner_ex2_s1.png';
+import zollner_ex2_s2 from '/img/instruments/videomancer/zollner/zollner_ex2_s2.png';
+import zollner_ex2_s3 from '/img/instruments/videomancer/zollner/zollner_ex2_s3.png';
+import zollner_ex2_s4 from '/img/instruments/videomancer/zollner/zollner_ex2_s4.png';
+import zollner_ex2_s5 from '/img/instruments/videomancer/zollner/zollner_ex2_s5.png';
+import zollner_ex2_s6 from '/img/instruments/videomancer/zollner/zollner_ex2_s6.png';
+import zollner_ex3_s1 from '/img/instruments/videomancer/zollner/zollner_ex3_s1.png';
+import zollner_ex3_s2 from '/img/instruments/videomancer/zollner/zollner_ex3_s2.png';
+import zollner_ex3_s3 from '/img/instruments/videomancer/zollner/zollner_ex3_s3.png';
+import zollner_ex3_s4 from '/img/instruments/videomancer/zollner/zollner_ex3_s4.png';
+import zollner_ex3_s5 from '/img/instruments/videomancer/zollner/zollner_ex3_s5.png';
+import zollner_ex3_s6 from '/img/instruments/videomancer/zollner/zollner_ex3_s6.png';
 
 # Zollner
 
@@ -23,9 +46,12 @@ import zollner_source3_kodim01_bw from '/img/instruments/videomancer/zollner/zol
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_hero },
-    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_hero },
-    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_hero },
+    { label: "Dog", before: zollner_source1_dog, after: zollner_hero_s1 },
+    { label: "Fruit", before: zollner_source2_fruit, after: zollner_hero_s2 },
+    { label: "Turtle", before: zollner_source3_turtle, after: zollner_hero_s3 },
+    { label: "Pattern", before: zollner_source4_pattern, after: zollner_hero_s4 },
+    { label: "Woman", before: zollner_source5_woman, after: zollner_hero_s5 },
+    { label: "Paint", before: zollner_source6_paint, after: zollner_hero_s6 },
   ]}
 />
 *Zöllner pattern overlay in Café Wall mode with animated hatching, creating compelling motion illusions on live video.*
@@ -218,9 +244,12 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise1_result },
-    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise1_result },
-    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise1_result },
+    { label: "Dog", before: zollner_source1_dog, after: zollner_ex1_s1 },
+    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex1_s2 },
+    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex1_s3 },
+    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex1_s4 },
+    { label: "Woman", before: zollner_source5_woman, after: zollner_ex1_s5 },
+    { label: "Paint", before: zollner_source6_paint, after: zollner_ex1_s6 },
   ]}
 />
 *Classic Zöllner — simulated result across source images.*
@@ -243,9 +272,12 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise2_result },
-    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise2_result },
-    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise2_result },
+    { label: "Dog", before: zollner_source1_dog, after: zollner_ex2_s1 },
+    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex2_s2 },
+    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex2_s3 },
+    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex2_s4 },
+    { label: "Woman", before: zollner_source5_woman, after: zollner_ex2_s5 },
+    { label: "Paint", before: zollner_source6_paint, after: zollner_ex2_s6 },
   ]}
 />
 *Animated Hering Curves — simulated result across source images.*
@@ -268,9 +300,12 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: zollner_source1_kodim01, after: zollner_exercise3_result },
-    { label: "Kodim02", before: zollner_source2_kodim02, after: zollner_exercise3_result },
-    { label: "Kodim01 B&W", before: zollner_source3_kodim01_bw, after: zollner_exercise3_result },
+    { label: "Dog", before: zollner_source1_dog, after: zollner_ex3_s1 },
+    { label: "Fruit", before: zollner_source2_fruit, after: zollner_ex3_s2 },
+    { label: "Turtle", before: zollner_source3_turtle, after: zollner_ex3_s3 },
+    { label: "Pattern", before: zollner_source4_pattern, after: zollner_ex3_s4 },
+    { label: "Woman", before: zollner_source5_woman, after: zollner_ex3_s5 },
+    { label: "Paint", before: zollner_source6_paint, after: zollner_ex3_s6 },
   ]}
 />
 *Café Wall with Thick Lines — simulated result across source images.*

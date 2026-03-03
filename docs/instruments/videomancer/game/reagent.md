@@ -1,34 +1,27 @@
 ---
 draft: true
-sidebar_position: 240
+sidebar_position: 244
 slug: /instruments/videomancer/reagent
 title: "Reagent"
 image: /img/instruments/videomancer/reagent/reagent_hero.png
 description: "Chemistry has a beautiful color language."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
+import reagent_before_after from '/img/instruments/videomancer/reagent/reagent_before_after.png';
 import reagent_control_panel from '/img/instruments/videomancer/reagent/reagent_control_panel.png';
-import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.png';
-import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.png';
-import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reagent_exercise3_result.png';
-import reagent_source1_kodim15 from '/img/instruments/videomancer/reagent/reagent_source1_kodim15.png';
-import reagent_source2_kodim03 from '/img/instruments/videomancer/reagent/reagent_source2_kodim03.png';
-import reagent_source3_kodim15_bw from '/img/instruments/videomancer/reagent/reagent_source3_kodim15_bw.png';
+import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.gif';
+import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.gif';
+import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reagent_exercise3_result.gif';
 
 # Reagent
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: reagent_source1_kodim15, after: reagent_hero },
-    { label: "Kodim03", before: reagent_source2_kodim03, after: reagent_hero },
-    { label: "Kodim15 B&W", before: reagent_source3_kodim15_bw, after: reagent_hero },
-  ]}
-/>
+<img src={reagent_hero} alt="Reagent hero image"/>
 *Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
+<img src={reagent_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Reagent applied.*
 
 ---
 
@@ -213,13 +206,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 ### Exercise 1: Litmus Paper
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: reagent_source1_kodim15, after: reagent_exercise1_result },
-    { label: "Kodim03", before: reagent_source2_kodim03, after: reagent_exercise1_result },
-    { label: "Kodim15 B&W", before: reagent_source3_kodim15_bw, after: reagent_exercise1_result },
-  ]}
-/>
+<img src={reagent_exercise1_result} alt="Litmus Paper result"/>
 *Litmus Paper — simulated result across source images.*
 **Source**: High-contrast footage with clear shadows and highlights — a face lit from one side, or text on a light background.
 
@@ -238,13 +225,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 ### Exercise 2: Universal Indicator
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: reagent_source1_kodim15, after: reagent_exercise2_result },
-    { label: "Kodim03", before: reagent_source2_kodim03, after: reagent_exercise2_result },
-    { label: "Kodim15 B&W", before: reagent_source3_kodim15_bw, after: reagent_exercise2_result },
-  ]}
-/>
+<img src={reagent_exercise2_result} alt="Universal Indicator result"/>
 *Universal Indicator — simulated result across source images.*
 **Source**: Footage with a wide tonal range — outdoor scenes with sky, midtones, and deep shadows.
 
@@ -263,13 +244,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 ### Exercise 3: Contour Map
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: reagent_source1_kodim15, after: reagent_exercise3_result },
-    { label: "Kodim03", before: reagent_source2_kodim03, after: reagent_exercise3_result },
-    { label: "Kodim15 B&W", before: reagent_source3_kodim15_bw, after: reagent_exercise3_result },
-  ]}
-/>
+<img src={reagent_exercise3_result} alt="Contour Map result"/>
 *Contour Map — simulated result across source images.*
 **Source**: Footage with gradual tonal gradients — skin tones, gradient backgrounds, or landscape horizons.
 

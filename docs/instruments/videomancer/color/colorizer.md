@@ -8,6 +8,7 @@ description: "Colorizer is a hard-band luminance colorizer inspired by the Paik-
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import colorizer_control_panel from '/img/instruments/videomancer/colorizer/colorizer_control_panel.png';
 import colorizer_source1_parrot from '/img/instruments/videomancer/colorizer/colorizer_source1_parrot.png';
 import colorizer_source2_runner from '/img/instruments/videomancer/colorizer/colorizer_source2_runner.png';
 import colorizer_source3_elephant from '/img/instruments/videomancer/colorizer/colorizer_source3_elephant.png';
@@ -128,6 +129,8 @@ The band index calculation uses integer division of the shifted luminance by the
 
 ## Parameter Reference
 
+<img src={colorizer_control_panel} alt="Videomancer front panel with Colorizer loaded"/>
+*Videomancer's front panel with Colorizer active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 290
+sidebar_position: 295
 slug: /instruments/videomancer/survey
 title: "Survey"
-image: /img/instruments/videomancer/survey/survey_hero.png
+image: /img/instruments/videomancer/survey/survey_hero_s1.png
 description: "Topographic maps translate three-dimensional terrain into two-dimensional line drawings."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import survey_hero from '/img/instruments/videomancer/survey/survey_hero.png';
 import survey_control_panel from '/img/instruments/videomancer/survey/survey_control_panel.png';
-import survey_exercise1_result from '/img/instruments/videomancer/survey/survey_exercise1_result.png';
-import survey_exercise2_result from '/img/instruments/videomancer/survey/survey_exercise2_result.png';
-import survey_exercise3_result from '/img/instruments/videomancer/survey/survey_exercise3_result.png';
-import survey_source1_kodim02 from '/img/instruments/videomancer/survey/survey_source1_kodim02.png';
-import survey_source2_kodim07 from '/img/instruments/videomancer/survey/survey_source2_kodim07.png';
-import survey_source3_kodim01_bw from '/img/instruments/videomancer/survey/survey_source3_kodim01_bw.png';
+import survey_source1_castle from '/img/instruments/videomancer/survey/survey_source1_castle.png';
+import survey_source2_car from '/img/instruments/videomancer/survey/survey_source2_car.png';
+import survey_source3_elephant from '/img/instruments/videomancer/survey/survey_source3_elephant.png';
+import survey_source4_pattern from '/img/instruments/videomancer/survey/survey_source4_pattern.png';
+import survey_source5_boy from '/img/instruments/videomancer/survey/survey_source5_boy.png';
+import survey_source6_paint from '/img/instruments/videomancer/survey/survey_source6_paint.png';
+import survey_hero_s1 from '/img/instruments/videomancer/survey/survey_hero_s1.png';
+import survey_hero_s2 from '/img/instruments/videomancer/survey/survey_hero_s2.png';
+import survey_hero_s3 from '/img/instruments/videomancer/survey/survey_hero_s3.png';
+import survey_hero_s4 from '/img/instruments/videomancer/survey/survey_hero_s4.png';
+import survey_hero_s5 from '/img/instruments/videomancer/survey/survey_hero_s5.png';
+import survey_hero_s6 from '/img/instruments/videomancer/survey/survey_hero_s6.png';
+import survey_ex1_s1 from '/img/instruments/videomancer/survey/survey_ex1_s1.png';
+import survey_ex1_s2 from '/img/instruments/videomancer/survey/survey_ex1_s2.png';
+import survey_ex1_s3 from '/img/instruments/videomancer/survey/survey_ex1_s3.png';
+import survey_ex1_s4 from '/img/instruments/videomancer/survey/survey_ex1_s4.png';
+import survey_ex1_s5 from '/img/instruments/videomancer/survey/survey_ex1_s5.png';
+import survey_ex1_s6 from '/img/instruments/videomancer/survey/survey_ex1_s6.png';
+import survey_ex2_s1 from '/img/instruments/videomancer/survey/survey_ex2_s1.png';
+import survey_ex2_s2 from '/img/instruments/videomancer/survey/survey_ex2_s2.png';
+import survey_ex2_s3 from '/img/instruments/videomancer/survey/survey_ex2_s3.png';
+import survey_ex2_s4 from '/img/instruments/videomancer/survey/survey_ex2_s4.png';
+import survey_ex2_s5 from '/img/instruments/videomancer/survey/survey_ex2_s5.png';
+import survey_ex2_s6 from '/img/instruments/videomancer/survey/survey_ex2_s6.png';
+import survey_ex3_s1 from '/img/instruments/videomancer/survey/survey_ex3_s1.png';
+import survey_ex3_s2 from '/img/instruments/videomancer/survey/survey_ex3_s2.png';
+import survey_ex3_s3 from '/img/instruments/videomancer/survey/survey_ex3_s3.png';
+import survey_ex3_s4 from '/img/instruments/videomancer/survey/survey_ex3_s4.png';
+import survey_ex3_s5 from '/img/instruments/videomancer/survey/survey_ex3_s5.png';
+import survey_ex3_s6 from '/img/instruments/videomancer/survey/survey_ex3_s6.png';
 
 # Survey
 
@@ -23,9 +46,12 @@ import survey_source3_kodim01_bw from '/img/instruments/videomancer/survey/surve
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: survey_source1_kodim02, after: survey_hero },
-    { label: "Kodim07", before: survey_source2_kodim07, after: survey_hero },
-    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_hero },
+    { label: "Castle", before: survey_source1_castle, after: survey_hero_s1 },
+    { label: "Car", before: survey_source2_car, after: survey_hero_s2 },
+    { label: "Elephant", before: survey_source3_elephant, after: survey_hero_s3 },
+    { label: "Pattern", before: survey_source4_pattern, after: survey_hero_s4 },
+    { label: "Boy", before: survey_source5_boy, after: survey_hero_s5 },
+    { label: "Paint", before: survey_source6_paint, after: survey_hero_s6 },
   ]}
 />
 *Survey rendering topographic contour lines from a natural scene, with relief shading and altitude-banded color tinting.*
@@ -212,9 +238,12 @@ These exercises progress from basic contour extraction through relief shading to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise1_result },
-    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise1_result },
-    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise1_result },
+    { label: "Castle", before: survey_source1_castle, after: survey_ex1_s1 },
+    { label: "Car", before: survey_source2_car, after: survey_ex1_s2 },
+    { label: "Elephant", before: survey_source3_elephant, after: survey_ex1_s3 },
+    { label: "Pattern", before: survey_source4_pattern, after: survey_ex1_s4 },
+    { label: "Boy", before: survey_source5_boy, after: survey_ex1_s5 },
+    { label: "Paint", before: survey_source6_paint, after: survey_ex1_s6 },
   ]}
 />
 *Basic Contour Lines — simulated result across source images.*
@@ -237,9 +266,12 @@ These exercises progress from basic contour extraction through relief shading to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise2_result },
-    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise2_result },
-    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise2_result },
+    { label: "Castle", before: survey_source1_castle, after: survey_ex2_s1 },
+    { label: "Car", before: survey_source2_car, after: survey_ex2_s2 },
+    { label: "Elephant", before: survey_source3_elephant, after: survey_ex2_s3 },
+    { label: "Pattern", before: survey_source4_pattern, after: survey_ex2_s4 },
+    { label: "Boy", before: survey_source5_boy, after: survey_ex2_s5 },
+    { label: "Paint", before: survey_source6_paint, after: survey_ex2_s6 },
   ]}
 />
 *Relief Shading — simulated result across source images.*
@@ -262,9 +294,12 @@ These exercises progress from basic contour extraction through relief shading to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: survey_source1_kodim02, after: survey_exercise3_result },
-    { label: "Kodim07", before: survey_source2_kodim07, after: survey_exercise3_result },
-    { label: "Kodim01 B&W", before: survey_source3_kodim01_bw, after: survey_exercise3_result },
+    { label: "Castle", before: survey_source1_castle, after: survey_ex3_s1 },
+    { label: "Car", before: survey_source2_car, after: survey_ex3_s2 },
+    { label: "Elephant", before: survey_source3_elephant, after: survey_ex3_s3 },
+    { label: "Pattern", before: survey_source4_pattern, after: survey_ex3_s4 },
+    { label: "Boy", before: survey_source5_boy, after: survey_ex3_s5 },
+    { label: "Paint", before: survey_source6_paint, after: survey_ex3_s6 },
   ]}
 />
 *Full Cartographic Rendering — simulated result across source images.*

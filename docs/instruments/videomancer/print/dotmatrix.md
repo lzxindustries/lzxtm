@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 88
+sidebar_position: 89
 slug: /instruments/videomancer/dotmatrix
 title: "Dotmatrix"
 image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero_s1.png
@@ -8,6 +8,7 @@ description: "Before inkjet printers and laser engines, the dominant output devi
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dotmatrix_control_panel from '/img/instruments/videomancer/dotmatrix/dotmatrix_control_panel.png';
 import dotmatrix_source1_castle from '/img/instruments/videomancer/dotmatrix/dotmatrix_source1_castle.png';
 import dotmatrix_source2_car from '/img/instruments/videomancer/dotmatrix/dotmatrix_source2_car.png';
 import dotmatrix_source3_turtle from '/img/instruments/videomancer/dotmatrix/dotmatrix_source3_turtle.png';
@@ -146,6 +147,8 @@ The sweep reveal mechanism operates independently from the dot rendering pipelin
 
 ## Parameter Reference
 
+<img src={dotmatrix_control_panel} alt="Videomancer front panel with Dotmatrix loaded"/>
+*Videomancer's front panel with Dotmatrix active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

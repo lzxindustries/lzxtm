@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 220
+sidebar_position: 223
 slug: /instruments/videomancer/perlin
 title: "Perlin"
 image: /img/instruments/videomancer/perlin/perlin_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 73
+sidebar_position: 74
 slug: /instruments/videomancer/dashcam
 title: "Dashcam"
 image: /img/instruments/videomancer/dashcam/dashcam_hero_s1.png
@@ -8,6 +8,7 @@ description: "Dashcam emulates the look of footage recorded by a low-cost dashbo
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dashcam_control_panel from '/img/instruments/videomancer/dashcam/dashcam_control_panel.png';
 import dashcam_source1_boat from '/img/instruments/videomancer/dashcam/dashcam_source1_boat.png';
 import dashcam_source2_dog from '/img/instruments/videomancer/dashcam/dashcam_source2_dog.png';
 import dashcam_source3_turtle from '/img/instruments/videomancer/dashcam/dashcam_source3_turtle.png';
@@ -130,6 +131,8 @@ The vignette and noise injection both operate on the Y channel only — chroma p
 
 ## Parameter Reference
 
+<img src={dashcam_control_panel} alt="Videomancer front panel with Dashcam loaded"/>
+*Videomancer's front panel with Dashcam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

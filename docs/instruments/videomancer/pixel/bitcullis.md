@@ -8,6 +8,7 @@ description: "Digital video is made of discrete numbers — brightness and color
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bitcullis_control_panel from '/img/instruments/videomancer/bitcullis/bitcullis_control_panel.png';
 import bitcullis_source1_fruit from '/img/instruments/videomancer/bitcullis/bitcullis_source1_fruit.png';
 import bitcullis_source2_field from '/img/instruments/videomancer/bitcullis/bitcullis_source2_field.png';
 import bitcullis_source3_elephant from '/img/instruments/videomancer/bitcullis/bitcullis_source3_elephant.png';
@@ -128,6 +129,9 @@ Two key interactions: (1) **Luminance-driven modulation**: The Y channel drives 
 ---
 
 ## Parameter Reference
+
+<img src={bitcullis_control_panel} alt="Videomancer front panel with Bitcullis loaded"/>
+*Videomancer's front panel with Bitcullis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

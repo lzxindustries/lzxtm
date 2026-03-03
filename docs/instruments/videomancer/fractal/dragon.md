@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 91
+sidebar_position: 92
 slug: /instruments/videomancer/dragon
 title: "Dragon"
 image: /img/instruments/videomancer/dragon/dragon_hero.png

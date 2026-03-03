@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 303
+sidebar_position: 308
 slug: /instruments/videomancer/ticker
 title: "Ticker"
-image: /img/instruments/videomancer/ticker/ticker_hero.png
+image: /img/instruments/videomancer/ticker/ticker_hero_s1.png
 description: "Before digital screens, breaking news arrived on paper — a narrow ribbon of stock quotes and wire reports printed character by character on ticker tape machines."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ticker_hero from '/img/instruments/videomancer/ticker/ticker_hero.png';
 import ticker_control_panel from '/img/instruments/videomancer/ticker/ticker_control_panel.png';
-import ticker_exercise1_result from '/img/instruments/videomancer/ticker/ticker_exercise1_result.png';
-import ticker_exercise2_result from '/img/instruments/videomancer/ticker/ticker_exercise2_result.png';
-import ticker_exercise3_result from '/img/instruments/videomancer/ticker/ticker_exercise3_result.png';
-import ticker_source1_kodim15 from '/img/instruments/videomancer/ticker/ticker_source1_kodim15.png';
-import ticker_source2_kodim15_bw from '/img/instruments/videomancer/ticker/ticker_source2_kodim15_bw.png';
-import ticker_source3_male_1024 from '/img/instruments/videomancer/ticker/ticker_source3_male_1024.png';
+import ticker_source1_sunset from '/img/instruments/videomancer/ticker/ticker_source1_sunset.png';
+import ticker_source2_parrot from '/img/instruments/videomancer/ticker/ticker_source2_parrot.png';
+import ticker_source3_clouds from '/img/instruments/videomancer/ticker/ticker_source3_clouds.png';
+import ticker_source4_pattern from '/img/instruments/videomancer/ticker/ticker_source4_pattern.png';
+import ticker_source5_man from '/img/instruments/videomancer/ticker/ticker_source5_man.png';
+import ticker_source6_wood from '/img/instruments/videomancer/ticker/ticker_source6_wood.png';
+import ticker_hero_s1 from '/img/instruments/videomancer/ticker/ticker_hero_s1.png';
+import ticker_hero_s2 from '/img/instruments/videomancer/ticker/ticker_hero_s2.png';
+import ticker_hero_s3 from '/img/instruments/videomancer/ticker/ticker_hero_s3.png';
+import ticker_hero_s4 from '/img/instruments/videomancer/ticker/ticker_hero_s4.png';
+import ticker_hero_s5 from '/img/instruments/videomancer/ticker/ticker_hero_s5.png';
+import ticker_hero_s6 from '/img/instruments/videomancer/ticker/ticker_hero_s6.png';
+import ticker_ex1_s1 from '/img/instruments/videomancer/ticker/ticker_ex1_s1.png';
+import ticker_ex1_s2 from '/img/instruments/videomancer/ticker/ticker_ex1_s2.png';
+import ticker_ex1_s3 from '/img/instruments/videomancer/ticker/ticker_ex1_s3.png';
+import ticker_ex1_s4 from '/img/instruments/videomancer/ticker/ticker_ex1_s4.png';
+import ticker_ex1_s5 from '/img/instruments/videomancer/ticker/ticker_ex1_s5.png';
+import ticker_ex1_s6 from '/img/instruments/videomancer/ticker/ticker_ex1_s6.png';
+import ticker_ex2_s1 from '/img/instruments/videomancer/ticker/ticker_ex2_s1.png';
+import ticker_ex2_s2 from '/img/instruments/videomancer/ticker/ticker_ex2_s2.png';
+import ticker_ex2_s3 from '/img/instruments/videomancer/ticker/ticker_ex2_s3.png';
+import ticker_ex2_s4 from '/img/instruments/videomancer/ticker/ticker_ex2_s4.png';
+import ticker_ex2_s5 from '/img/instruments/videomancer/ticker/ticker_ex2_s5.png';
+import ticker_ex2_s6 from '/img/instruments/videomancer/ticker/ticker_ex2_s6.png';
+import ticker_ex3_s1 from '/img/instruments/videomancer/ticker/ticker_ex3_s1.png';
+import ticker_ex3_s2 from '/img/instruments/videomancer/ticker/ticker_ex3_s2.png';
+import ticker_ex3_s3 from '/img/instruments/videomancer/ticker/ticker_ex3_s3.png';
+import ticker_ex3_s4 from '/img/instruments/videomancer/ticker/ticker_ex3_s4.png';
+import ticker_ex3_s5 from '/img/instruments/videomancer/ticker/ticker_ex3_s5.png';
+import ticker_ex3_s6 from '/img/instruments/videomancer/ticker/ticker_ex3_s6.png';
 
 # Ticker
 
@@ -23,9 +46,12 @@ import ticker_source3_male_1024 from '/img/instruments/videomancer/ticker/ticker
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_hero },
-    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_hero },
-    { label: "Male", before: ticker_source3_male_1024, after: ticker_hero },
+    { label: "Sunset", before: ticker_source1_sunset, after: ticker_hero_s1 },
+    { label: "Parrot", before: ticker_source2_parrot, after: ticker_hero_s2 },
+    { label: "Clouds", before: ticker_source3_clouds, after: ticker_hero_s3 },
+    { label: "Pattern", before: ticker_source4_pattern, after: ticker_hero_s4 },
+    { label: "Man", before: ticker_source5_man, after: ticker_hero_s5 },
+    { label: "Wood", before: ticker_source6_wood, after: ticker_hero_s6 },
   ]}
 />
 *Ticker rendering a luminance-quantized scrolling tape band across a live video feed, with bright border lines framing the horizontal strip.*
@@ -213,9 +239,12 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise1_result },
-    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise1_result },
-    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise1_result },
+    { label: "Sunset", before: ticker_source1_sunset, after: ticker_ex1_s1 },
+    { label: "Parrot", before: ticker_source2_parrot, after: ticker_ex1_s2 },
+    { label: "Clouds", before: ticker_source3_clouds, after: ticker_ex1_s3 },
+    { label: "Pattern", before: ticker_source4_pattern, after: ticker_ex1_s4 },
+    { label: "Man", before: ticker_source5_man, after: ticker_ex1_s5 },
+    { label: "Wood", before: ticker_source6_wood, after: ticker_ex1_s6 },
   ]}
 />
 *Static Ticker Band — simulated result across source images.*
@@ -237,9 +266,12 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise2_result },
-    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise2_result },
-    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise2_result },
+    { label: "Sunset", before: ticker_source1_sunset, after: ticker_ex2_s1 },
+    { label: "Parrot", before: ticker_source2_parrot, after: ticker_ex2_s2 },
+    { label: "Clouds", before: ticker_source3_clouds, after: ticker_ex2_s3 },
+    { label: "Pattern", before: ticker_source4_pattern, after: ticker_ex2_s4 },
+    { label: "Man", before: ticker_source5_man, after: ticker_ex2_s5 },
+    { label: "Wood", before: ticker_source6_wood, after: ticker_ex2_s6 },
   ]}
 />
 *Scrolling News Crawl — simulated result across source images.*
@@ -262,9 +294,12 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ticker_source1_kodim15, after: ticker_exercise3_result },
-    { label: "Kodim15 B&W", before: ticker_source2_kodim15_bw, after: ticker_exercise3_result },
-    { label: "Male", before: ticker_source3_male_1024, after: ticker_exercise3_result },
+    { label: "Sunset", before: ticker_source1_sunset, after: ticker_ex3_s1 },
+    { label: "Parrot", before: ticker_source2_parrot, after: ticker_ex3_s2 },
+    { label: "Clouds", before: ticker_source3_clouds, after: ticker_ex3_s3 },
+    { label: "Pattern", before: ticker_source4_pattern, after: ticker_ex3_s4 },
+    { label: "Man", before: ticker_source5_man, after: ticker_ex3_s5 },
+    { label: "Wood", before: ticker_source6_wood, after: ticker_ex3_s6 },
   ]}
 />
 *Vintage Telegraph Tape — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 198
+sidebar_position: 201
 slug: /instruments/videomancer/mycelium
 title: "Mycelium"
 image: /img/instruments/videomancer/mycelium/mycelium_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 127
+sidebar_position: 128
 slug: /instruments/videomancer/glorious
 title: "Glorious"
 image: /img/instruments/videomancer/glorious/glorious_hero_s1.png
@@ -8,6 +8,7 @@ description: "Glorious recreates the look of Technicolor Process 4 — the three
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import glorious_control_panel from '/img/instruments/videomancer/glorious/glorious_control_panel.png';
 import glorious_source1_parrot from '/img/instruments/videomancer/glorious/glorious_source1_parrot.png';
 import glorious_source2_boat from '/img/instruments/videomancer/glorious/glorious_source2_boat.png';
 import glorious_source3_clouds from '/img/instruments/videomancer/glorious/glorious_source3_clouds.png';
@@ -122,6 +123,8 @@ The entire signal processing chain operates in the RGB domain. The input YUV sig
 
 ## Parameter Reference
 
+<img src={glorious_control_panel} alt="Videomancer front panel with Glorious loaded"/>
+*Videomancer's front panel with Glorious active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

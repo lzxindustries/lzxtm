@@ -8,6 +8,7 @@ description: "Bleach simulates the photochemical bleach bypass (also known as sk
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bleach_control_panel from '/img/instruments/videomancer/bleach/bleach_control_panel.png';
 import bleach_source1_cat from '/img/instruments/videomancer/bleach/bleach_source1_cat.png';
 import bleach_source2_field from '/img/instruments/videomancer/bleach/bleach_source2_field.png';
 import bleach_source3_clouds from '/img/instruments/videomancer/bleach/bleach_source3_clouds.png';
@@ -142,6 +143,9 @@ The signal path for the original Y value is carried through as `s_y_orig` for th
 ---
 
 ## Parameter Reference
+
+<img src={bleach_control_panel} alt="Videomancer front panel with Bleach loaded"/>
+*Videomancer's front panel with Bleach active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

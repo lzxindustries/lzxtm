@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 248
+sidebar_position: 252
 slug: /instruments/videomancer/riso
 title: "Riso"
 image: /img/instruments/videomancer/riso/riso_hero_s1.png
@@ -8,6 +8,7 @@ description: "Risograph printing is a stencil-based duplicating process beloved 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import riso_control_panel from '/img/instruments/videomancer/riso/riso_control_panel.png';
 import riso_source1_car from '/img/instruments/videomancer/riso/riso_source1_car.png';
 import riso_source2_field from '/img/instruments/videomancer/riso/riso_source2_field.png';
 import riso_source3_turtle from '/img/instruments/videomancer/riso/riso_source3_turtle.png';
@@ -133,6 +134,8 @@ The key architectural insight is that Riso is a *luminance-only* separation engi
 
 ## Parameter Reference
 
+<img src={riso_control_panel} alt="Videomancer front panel with Riso loaded"/>
+*Videomancer's front panel with Riso active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 256
+sidebar_position: 260
 slug: /instruments/videomancer/scatter
 title: "Scatter"
 image: /img/instruments/videomancer/scatter/scatter_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every pixel in a digital video frame is a number."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import scatter_control_panel from '/img/instruments/videomancer/scatter/scatter_control_panel.png';
 import scatter_source1_castle from '/img/instruments/videomancer/scatter/scatter_source1_castle.png';
 import scatter_source2_house from '/img/instruments/videomancer/scatter/scatter_source2_house.png';
 import scatter_source3_turtle from '/img/instruments/videomancer/scatter/scatter_source3_turtle.png';
@@ -136,6 +137,8 @@ The critical distinction is that Scatter performs *bitwise* corruption, not spat
 
 ## Parameter Reference
 
+<img src={scatter_control_panel} alt="Videomancer front panel with Scatter loaded"/>
+*Videomancer's front panel with Scatter active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

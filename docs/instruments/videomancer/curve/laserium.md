@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 164
+sidebar_position: 166
 slug: /instruments/videomancer/laserium
 title: "Laserium"
 image: /img/instruments/videomancer/laserium/laserium_hero.png

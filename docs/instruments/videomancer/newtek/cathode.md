@@ -8,6 +8,7 @@ description: "Lightning is nature's most dramatic display of electrical energy �
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cathode_control_panel from '/img/instruments/videomancer/cathode/cathode_control_panel.png';
 import cathode_source1_ballerina from '/img/instruments/videomancer/cathode/cathode_source1_ballerina.png';
 import cathode_source2_car from '/img/instruments/videomancer/cathode/cathode_source2_car.png';
 import cathode_source3_collage from '/img/instruments/videomancer/cathode/cathode_source3_collage.png';
@@ -140,6 +141,9 @@ The bolt path is generated entirely during the vertical blanking interval, filli
 ---
 
 ## Parameter Reference
+
+<img src={cathode_control_panel} alt="Videomancer front panel with Cathode loaded"/>
+*Videomancer's front panel with Cathode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

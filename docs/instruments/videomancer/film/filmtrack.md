@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 110
+sidebar_position: 111
 slug: /instruments/videomancer/filmtrack
 title: "Film Track"
-image: /img/instruments/videomancer/filmtrack/filmtrack_hero.png
+image: /img/instruments/videomancer/filmtrack/filmtrack_hero_s1.png
 description: "Film Track converts input video luminance into scrolling horizontal stripe patterns inspired by the optical sound tracks found on 35 mm motion picture film."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import filmtrack_hero from '/img/instruments/videomancer/filmtrack/filmtrack_hero.png';
 import filmtrack_control_panel from '/img/instruments/videomancer/filmtrack/filmtrack_control_panel.png';
-import filmtrack_exercise1_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise1_result.png';
-import filmtrack_exercise2_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise2_result.png';
-import filmtrack_exercise3_result from '/img/instruments/videomancer/filmtrack/filmtrack_exercise3_result.png';
-import filmtrack_source1_kodim03 from '/img/instruments/videomancer/filmtrack/filmtrack_source1_kodim03.png';
-import filmtrack_source2_kodim13 from '/img/instruments/videomancer/filmtrack/filmtrack_source2_kodim13.png';
-import filmtrack_source3_kodim13_bw from '/img/instruments/videomancer/filmtrack/filmtrack_source3_kodim13_bw.png';
+import filmtrack_source1_car from '/img/instruments/videomancer/filmtrack/filmtrack_source1_car.png';
+import filmtrack_source2_ballerina from '/img/instruments/videomancer/filmtrack/filmtrack_source2_ballerina.png';
+import filmtrack_source3_elephant from '/img/instruments/videomancer/filmtrack/filmtrack_source3_elephant.png';
+import filmtrack_source4_pattern from '/img/instruments/videomancer/filmtrack/filmtrack_source4_pattern.png';
+import filmtrack_source5_woman from '/img/instruments/videomancer/filmtrack/filmtrack_source5_woman.png';
+import filmtrack_source6_knit from '/img/instruments/videomancer/filmtrack/filmtrack_source6_knit.png';
+import filmtrack_hero_s1 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s1.png';
+import filmtrack_hero_s2 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s2.png';
+import filmtrack_hero_s3 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s3.png';
+import filmtrack_hero_s4 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s4.png';
+import filmtrack_hero_s5 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s5.png';
+import filmtrack_hero_s6 from '/img/instruments/videomancer/filmtrack/filmtrack_hero_s6.png';
+import filmtrack_ex1_s1 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s1.png';
+import filmtrack_ex1_s2 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s2.png';
+import filmtrack_ex1_s3 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s3.png';
+import filmtrack_ex1_s4 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s4.png';
+import filmtrack_ex1_s5 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s5.png';
+import filmtrack_ex1_s6 from '/img/instruments/videomancer/filmtrack/filmtrack_ex1_s6.png';
+import filmtrack_ex2_s1 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s1.png';
+import filmtrack_ex2_s2 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s2.png';
+import filmtrack_ex2_s3 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s3.png';
+import filmtrack_ex2_s4 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s4.png';
+import filmtrack_ex2_s5 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s5.png';
+import filmtrack_ex2_s6 from '/img/instruments/videomancer/filmtrack/filmtrack_ex2_s6.png';
+import filmtrack_ex3_s1 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s1.png';
+import filmtrack_ex3_s2 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s2.png';
+import filmtrack_ex3_s3 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s3.png';
+import filmtrack_ex3_s4 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s4.png';
+import filmtrack_ex3_s5 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s5.png';
+import filmtrack_ex3_s6 from '/img/instruments/videomancer/filmtrack/filmtrack_ex3_s6.png';
 
 # Film Track
 
@@ -23,9 +46,12 @@ import filmtrack_source3_kodim13_bw from '/img/instruments/videomancer/filmtrack
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_hero },
-    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_hero },
-    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_hero },
+    { label: "Car", before: filmtrack_source1_car, after: filmtrack_hero_s1 },
+    { label: "Ballerina", before: filmtrack_source2_ballerina, after: filmtrack_hero_s2 },
+    { label: "Elephant", before: filmtrack_source3_elephant, after: filmtrack_hero_s3 },
+    { label: "Pattern", before: filmtrack_source4_pattern, after: filmtrack_hero_s4 },
+    { label: "Woman", before: filmtrack_source5_woman, after: filmtrack_hero_s5 },
+    { label: "Knit", before: filmtrack_source6_knit, after: filmtrack_hero_s6 },
   ]}
 />
 *Moving video becomes a scrolling strip of optical sound tracks — variable-area and variable-density stripes flowing downward like a film projector frozen mid-frame.*
@@ -215,9 +241,12 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise1_result },
-    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise1_result },
-    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise1_result },
+    { label: "Car", before: filmtrack_source1_car, after: filmtrack_ex1_s1 },
+    { label: "Ballerina", before: filmtrack_source2_ballerina, after: filmtrack_ex1_s2 },
+    { label: "Elephant", before: filmtrack_source3_elephant, after: filmtrack_ex1_s3 },
+    { label: "Pattern", before: filmtrack_source4_pattern, after: filmtrack_ex1_s4 },
+    { label: "Woman", before: filmtrack_source5_woman, after: filmtrack_ex1_s5 },
+    { label: "Knit", before: filmtrack_source6_knit, after: filmtrack_ex1_s6 },
   ]}
 />
 *Classic Mono Variable-Area — simulated result across source images.*
@@ -240,9 +269,12 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise2_result },
-    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise2_result },
-    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise2_result },
+    { label: "Car", before: filmtrack_source1_car, after: filmtrack_ex2_s1 },
+    { label: "Ballerina", before: filmtrack_source2_ballerina, after: filmtrack_ex2_s2 },
+    { label: "Elephant", before: filmtrack_source3_elephant, after: filmtrack_ex2_s3 },
+    { label: "Pattern", before: filmtrack_source4_pattern, after: filmtrack_ex2_s4 },
+    { label: "Woman", before: filmtrack_source5_woman, after: filmtrack_ex2_s5 },
+    { label: "Knit", before: filmtrack_source6_knit, after: filmtrack_ex2_s6 },
   ]}
 />
 *Tinted Film Strip — simulated result across source images.*
@@ -264,9 +296,12 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: filmtrack_source1_kodim03, after: filmtrack_exercise3_result },
-    { label: "Kodim13", before: filmtrack_source2_kodim13, after: filmtrack_exercise3_result },
-    { label: "Kodim13 B&W", before: filmtrack_source3_kodim13_bw, after: filmtrack_exercise3_result },
+    { label: "Car", before: filmtrack_source1_car, after: filmtrack_ex3_s1 },
+    { label: "Ballerina", before: filmtrack_source2_ballerina, after: filmtrack_ex3_s2 },
+    { label: "Elephant", before: filmtrack_source3_elephant, after: filmtrack_ex3_s3 },
+    { label: "Pattern", before: filmtrack_source4_pattern, after: filmtrack_ex3_s4 },
+    { label: "Woman", before: filmtrack_source5_woman, after: filmtrack_ex3_s5 },
+    { label: "Knit", before: filmtrack_source6_knit, after: filmtrack_ex3_s6 },
   ]}
 />
 *Dynamic Scan Sweep — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 86
+sidebar_position: 87
 slug: /instruments/videomancer/domino
 title: "Domino"
 image: /img/instruments/videomancer/domino/domino_hero_s1.png
@@ -8,6 +8,7 @@ description: "In the world of broadcast television, the most dramatic transition
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import domino_control_panel from '/img/instruments/videomancer/domino/domino_control_panel.png';
 import domino_source1_skull from '/img/instruments/videomancer/domino/domino_source1_skull.png';
 import domino_source2_house from '/img/instruments/videomancer/domino/domino_source2_house.png';
 import domino_source3_turtle from '/img/instruments/videomancer/domino/domino_source3_turtle.png';
@@ -131,6 +132,8 @@ The cascade effect emerges from a single comparison: cell index versus sweep cou
 
 ## Parameter Reference
 
+<img src={domino_control_panel} alt="Videomancer front panel with Domino loaded"/>
+*Videomancer's front panel with Domino active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

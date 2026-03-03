@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 285
+sidebar_position: 290
 slug: /instruments/videomancer/stoa
 title: "Stoa"
-image: /img/instruments/videomancer/stoa/stoa_hero.png
+image: /img/instruments/videomancer/stoa/stoa_hero_s1.png
 description: "The stoa was the defining architectural form of ancient Greece — a long covered walkway fronted by a row of columns."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import stoa_hero from '/img/instruments/videomancer/stoa/stoa_hero.png';
 import stoa_control_panel from '/img/instruments/videomancer/stoa/stoa_control_panel.png';
-import stoa_exercise1_result from '/img/instruments/videomancer/stoa/stoa_exercise1_result.png';
-import stoa_exercise2_result from '/img/instruments/videomancer/stoa/stoa_exercise2_result.png';
-import stoa_exercise3_result from '/img/instruments/videomancer/stoa/stoa_exercise3_result.png';
-import stoa_source1_kodim03 from '/img/instruments/videomancer/stoa/stoa_source1_kodim03.png';
-import stoa_source2_kodim13 from '/img/instruments/videomancer/stoa/stoa_source2_kodim13.png';
-import stoa_source3_kodim13_bw from '/img/instruments/videomancer/stoa/stoa_source3_kodim13_bw.png';
+import stoa_source1_runner from '/img/instruments/videomancer/stoa/stoa_source1_runner.png';
+import stoa_source2_skull from '/img/instruments/videomancer/stoa/stoa_source2_skull.png';
+import stoa_source3_collage from '/img/instruments/videomancer/stoa/stoa_source3_collage.png';
+import stoa_source4_pattern from '/img/instruments/videomancer/stoa/stoa_source4_pattern.png';
+import stoa_source5_girl from '/img/instruments/videomancer/stoa/stoa_source5_girl.png';
+import stoa_source6_knit from '/img/instruments/videomancer/stoa/stoa_source6_knit.png';
+import stoa_hero_s1 from '/img/instruments/videomancer/stoa/stoa_hero_s1.png';
+import stoa_hero_s2 from '/img/instruments/videomancer/stoa/stoa_hero_s2.png';
+import stoa_hero_s3 from '/img/instruments/videomancer/stoa/stoa_hero_s3.png';
+import stoa_hero_s4 from '/img/instruments/videomancer/stoa/stoa_hero_s4.png';
+import stoa_hero_s5 from '/img/instruments/videomancer/stoa/stoa_hero_s5.png';
+import stoa_hero_s6 from '/img/instruments/videomancer/stoa/stoa_hero_s6.png';
+import stoa_ex1_s1 from '/img/instruments/videomancer/stoa/stoa_ex1_s1.png';
+import stoa_ex1_s2 from '/img/instruments/videomancer/stoa/stoa_ex1_s2.png';
+import stoa_ex1_s3 from '/img/instruments/videomancer/stoa/stoa_ex1_s3.png';
+import stoa_ex1_s4 from '/img/instruments/videomancer/stoa/stoa_ex1_s4.png';
+import stoa_ex1_s5 from '/img/instruments/videomancer/stoa/stoa_ex1_s5.png';
+import stoa_ex1_s6 from '/img/instruments/videomancer/stoa/stoa_ex1_s6.png';
+import stoa_ex2_s1 from '/img/instruments/videomancer/stoa/stoa_ex2_s1.png';
+import stoa_ex2_s2 from '/img/instruments/videomancer/stoa/stoa_ex2_s2.png';
+import stoa_ex2_s3 from '/img/instruments/videomancer/stoa/stoa_ex2_s3.png';
+import stoa_ex2_s4 from '/img/instruments/videomancer/stoa/stoa_ex2_s4.png';
+import stoa_ex2_s5 from '/img/instruments/videomancer/stoa/stoa_ex2_s5.png';
+import stoa_ex2_s6 from '/img/instruments/videomancer/stoa/stoa_ex2_s6.png';
+import stoa_ex3_s1 from '/img/instruments/videomancer/stoa/stoa_ex3_s1.png';
+import stoa_ex3_s2 from '/img/instruments/videomancer/stoa/stoa_ex3_s2.png';
+import stoa_ex3_s3 from '/img/instruments/videomancer/stoa/stoa_ex3_s3.png';
+import stoa_ex3_s4 from '/img/instruments/videomancer/stoa/stoa_ex3_s4.png';
+import stoa_ex3_s5 from '/img/instruments/videomancer/stoa/stoa_ex3_s5.png';
+import stoa_ex3_s6 from '/img/instruments/videomancer/stoa/stoa_ex3_s6.png';
 
 # Stoa
 
@@ -23,9 +46,12 @@ import stoa_source3_kodim13_bw from '/img/instruments/videomancer/stoa/stoa_sour
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_hero },
-    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_hero },
-    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_hero },
+    { label: "Runner", before: stoa_source1_runner, after: stoa_hero_s1 },
+    { label: "Skull", before: stoa_source2_skull, after: stoa_hero_s2 },
+    { label: "Collage", before: stoa_source3_collage, after: stoa_hero_s3 },
+    { label: "Pattern", before: stoa_source4_pattern, after: stoa_hero_s4 },
+    { label: "Girl", before: stoa_source5_girl, after: stoa_hero_s5 },
+    { label: "Knit", before: stoa_source6_knit, after: stoa_hero_s6 },
   ]}
 />
 *Stoa transforming live video into a Doric colonnade with cosine-shaded fluting, arris ridges, and entablature patterning.*
@@ -211,9 +237,12 @@ These exercises progress from basic column shading through architectural composi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise1_result },
-    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise1_result },
-    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise1_result },
+    { label: "Runner", before: stoa_source1_runner, after: stoa_ex1_s1 },
+    { label: "Skull", before: stoa_source2_skull, after: stoa_ex1_s2 },
+    { label: "Collage", before: stoa_source3_collage, after: stoa_ex1_s3 },
+    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex1_s4 },
+    { label: "Girl", before: stoa_source5_girl, after: stoa_ex1_s5 },
+    { label: "Knit", before: stoa_source6_knit, after: stoa_ex1_s6 },
   ]}
 />
 *Columnar Light Study — simulated result across source images.*
@@ -235,9 +264,12 @@ These exercises progress from basic column shading through architectural composi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise2_result },
-    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise2_result },
-    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise2_result },
+    { label: "Runner", before: stoa_source1_runner, after: stoa_ex2_s1 },
+    { label: "Skull", before: stoa_source2_skull, after: stoa_ex2_s2 },
+    { label: "Collage", before: stoa_source3_collage, after: stoa_ex2_s3 },
+    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex2_s4 },
+    { label: "Girl", before: stoa_source5_girl, after: stoa_ex2_s5 },
+    { label: "Knit", before: stoa_source6_knit, after: stoa_ex2_s6 },
   ]}
 />
 *Architectural Composition — simulated result across source images.*
@@ -260,9 +292,12 @@ These exercises progress from basic column shading through architectural composi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: stoa_source1_kodim03, after: stoa_exercise3_result },
-    { label: "Kodim13", before: stoa_source2_kodim13, after: stoa_exercise3_result },
-    { label: "Kodim13 B&W", before: stoa_source3_kodim13_bw, after: stoa_exercise3_result },
+    { label: "Runner", before: stoa_source1_runner, after: stoa_ex3_s1 },
+    { label: "Skull", before: stoa_source2_skull, after: stoa_ex3_s2 },
+    { label: "Collage", before: stoa_source3_collage, after: stoa_ex3_s3 },
+    { label: "Pattern", before: stoa_source4_pattern, after: stoa_ex3_s4 },
+    { label: "Girl", before: stoa_source5_girl, after: stoa_ex3_s5 },
+    { label: "Knit", before: stoa_source6_knit, after: stoa_ex3_s6 },
   ]}
 />
 *Animated Light Sweep — simulated result across source images.*

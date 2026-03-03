@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 131
+sidebar_position: 132
 slug: /instruments/videomancer/hailstone
 title: "Hailstone"
 image: /img/instruments/videomancer/hailstone/hailstone_hero_s1.png
@@ -8,6 +8,7 @@ description: "Hailstone is a particle physics simulation that overlays bright, b
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import hailstone_control_panel from '/img/instruments/videomancer/hailstone/hailstone_control_panel.png';
 import hailstone_source1_runner from '/img/instruments/videomancer/hailstone/hailstone_source1_runner.png';
 import hailstone_source2_sunset from '/img/instruments/videomancer/hailstone/hailstone_source2_sunset.png';
 import hailstone_source3_clouds from '/img/instruments/videomancer/hailstone/hailstone_source3_clouds.png';
@@ -125,6 +126,8 @@ The particle physics runs in a separate process triggered once per frame at the 
 
 ## Parameter Reference
 
+<img src={hailstone_control_panel} alt="Videomancer front panel with Hailstone loaded"/>
+*Videomancer's front panel with Hailstone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 32
+sidebar_position: 33
 slug: /instruments/videomancer/burin
 title: "Burin"
 image: /img/instruments/videomancer/burin/burin_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every photograph contains continuous tonal gradations — smooth t
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import burin_control_panel from '/img/instruments/videomancer/burin/burin_control_panel.png';
 import burin_source1_car from '/img/instruments/videomancer/burin/burin_source1_car.png';
 import burin_source2_boat from '/img/instruments/videomancer/burin/burin_source2_boat.png';
 import burin_source3_turtle from '/img/instruments/videomancer/burin/burin_source3_turtle.png';
@@ -144,6 +145,8 @@ The pipeline is purely combinational on pixel coordinates — no BRAM or framebu
 
 ## Parameter Reference
 
+<img src={burin_control_panel} alt="Videomancer front panel with Burin loaded"/>
+*Videomancer's front panel with Burin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

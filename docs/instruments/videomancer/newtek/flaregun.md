@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 113
+sidebar_position: 114
 slug: /instruments/videomancer/flaregun
 title: "Flaregun"
 image: /img/instruments/videomancer/flaregun/flaregun_hero_s1.png
@@ -8,6 +8,7 @@ description: "Bright light entering a camera lens scatters off internal glass su
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import flaregun_control_panel from '/img/instruments/videomancer/flaregun/flaregun_control_panel.png';
 import flaregun_source1_boat from '/img/instruments/videomancer/flaregun/flaregun_source1_boat.png';
 import flaregun_source2_car from '/img/instruments/videomancer/flaregun/flaregun_source2_car.png';
 import flaregun_source3_collage from '/img/instruments/videomancer/flaregun/flaregun_source3_collage.png';
@@ -143,6 +144,8 @@ The three flare components — core bloom, anamorphic streak, and starburst rays
 
 ## Parameter Reference
 
+<img src={flaregun_control_panel} alt="Videomancer front panel with Flaregun loaded"/>
+*Videomancer's front panel with Flaregun active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

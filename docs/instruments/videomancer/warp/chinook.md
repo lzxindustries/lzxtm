@@ -8,6 +8,7 @@ description: "There is a luminous trembling in the late paintings of J.M.W."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chinook_control_panel from '/img/instruments/videomancer/chinook/chinook_control_panel.png';
 import chinook_source1_castle from '/img/instruments/videomancer/chinook/chinook_source1_castle.png';
 import chinook_source2_fruit from '/img/instruments/videomancer/chinook/chinook_source2_fruit.png';
 import chinook_source3_collage from '/img/instruments/videomancer/chinook/chinook_source3_collage.png';
@@ -147,6 +148,8 @@ The pipeline is purely combinatorial per pixel — zero BRAM — which means eve
 
 ## Parameter Reference
 
+<img src={chinook_control_panel} alt="Videomancer front panel with Chinook loaded"/>
+*Videomancer's front panel with Chinook active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

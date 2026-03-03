@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 266
+sidebar_position: 271
 slug: /instruments/videomancer/sigil
 title: "Sigil"
 image: /img/instruments/videomancer/sigil/sigil_hero.png
@@ -10,9 +10,9 @@ description: "Sigil is a placeholder program currently in development."
 import sigil_hero from '/img/instruments/videomancer/sigil/sigil_hero.png';
 import sigil_animation from '/img/instruments/videomancer/sigil/sigil_animation.gif';
 import sigil_control_panel from '/img/instruments/videomancer/sigil/sigil_control_panel.png';
-import sigil_exercise1_result from '/img/instruments/videomancer/sigil/sigil_exercise1_result.gif';
-import sigil_exercise2_result from '/img/instruments/videomancer/sigil/sigil_exercise2_result.gif';
-import sigil_exercise3_result from '/img/instruments/videomancer/sigil/sigil_exercise3_result.gif';
+import sigil_exercise1_result from '/img/instruments/videomancer/sigil/sigil_exercise1_result.png';
+import sigil_exercise2_result from '/img/instruments/videomancer/sigil/sigil_exercise2_result.png';
+import sigil_exercise3_result from '/img/instruments/videomancer/sigil/sigil_exercise3_result.png';
 
 # Sigil
 

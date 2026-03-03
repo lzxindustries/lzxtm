@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 101
+sidebar_position: 102
 slug: /instruments/videomancer/engraver
 title: "Engraver"
 image: /img/instruments/videomancer/engraver/engraver_hero_s1.png
@@ -8,6 +8,7 @@ description: "In traditional engraving, a craftsman cuts lines into a metal plat
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import engraver_control_panel from '/img/instruments/videomancer/engraver/engraver_control_panel.png';
 import engraver_source1_boat from '/img/instruments/videomancer/engraver/engraver_source1_boat.png';
 import engraver_source2_skull from '/img/instruments/videomancer/engraver/engraver_source2_skull.png';
 import engraver_source3_collage from '/img/instruments/videomancer/engraver/engraver_source3_collage.png';
@@ -150,6 +151,8 @@ The compose stage uses a strict priority: edge pixels always win over fill. This
 
 ## Parameter Reference
 
+<img src={engraver_control_panel} alt="Videomancer front panel with Engraver loaded"/>
+*Videomancer's front panel with Engraver active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 216
+sidebar_position: 219
 slug: /instruments/videomancer/patina
 title: "Patina"
 image: /img/instruments/videomancer/patina/patina_hero_s1.png
@@ -8,6 +8,7 @@ description: "Copper starts bright and warm."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import patina_control_panel from '/img/instruments/videomancer/patina/patina_control_panel.png';
 import patina_source1_boat from '/img/instruments/videomancer/patina/patina_source1_boat.png';
 import patina_source2_sunset from '/img/instruments/videomancer/patina/patina_source2_sunset.png';
 import patina_source3_clouds from '/img/instruments/videomancer/patina/patina_source3_clouds.png';
@@ -141,6 +142,8 @@ The oxidation threshold combines the static Age control with a time-varying anim
 
 ## Parameter Reference
 
+<img src={patina_control_panel} alt="Videomancer front panel with Patina loaded"/>
+*Videomancer's front panel with Patina active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

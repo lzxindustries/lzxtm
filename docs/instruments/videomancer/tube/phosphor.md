@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 224
+sidebar_position: 227
 slug: /instruments/videomancer/phosphor
 title: "Phosphor"
 image: /img/instruments/videomancer/phosphor/phosphor_hero_s1.png
@@ -8,6 +8,7 @@ description: "Phosphor recreates the look of analogue CRT monitors — the faint
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import phosphor_control_panel from '/img/instruments/videomancer/phosphor/phosphor_control_panel.png';
 import phosphor_source1_runner from '/img/instruments/videomancer/phosphor/phosphor_source1_runner.png';
 import phosphor_source2_car from '/img/instruments/videomancer/phosphor/phosphor_source2_car.png';
 import phosphor_source3_turtle from '/img/instruments/videomancer/phosphor/phosphor_source3_turtle.png';
@@ -145,6 +146,8 @@ Contrast and brightness are applied in sequence: contrast scales the dynamic ran
 
 ## Parameter Reference
 
+<img src={phosphor_control_panel} alt="Videomancer front panel with Phosphor loaded"/>
+*Videomancer's front panel with Phosphor active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

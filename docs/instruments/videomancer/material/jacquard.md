@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 150
+sidebar_position: 151
 slug: /instruments/videomancer/jacquard
 title: "Jacquard"
 image: /img/instruments/videomancer/jacquard/jacquard_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Jacquard loom, invented in 1804 by Joseph Marie Jacquard, was 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import jacquard_control_panel from '/img/instruments/videomancer/jacquard/jacquard_control_panel.png';
 import jacquard_source1_parrot from '/img/instruments/videomancer/jacquard/jacquard_source1_parrot.png';
 import jacquard_source2_fruit from '/img/instruments/videomancer/jacquard/jacquard_source2_fruit.png';
 import jacquard_source3_clouds from '/img/instruments/videomancer/jacquard/jacquard_source3_clouds.png';
@@ -133,6 +134,8 @@ The colour tinting path has an important toggle: Color Src selects whether the U
 
 ## Parameter Reference
 
+<img src={jacquard_control_panel} alt="Videomancer front panel with Jacquard loaded"/>
+*Videomancer's front panel with Jacquard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 252
+sidebar_position: 256
 slug: /instruments/videomancer/rupture
 title: "Rupture"
 image: /img/instruments/videomancer/rupture/rupture_hero_s1.png
@@ -8,6 +8,7 @@ description: "Color folding is the video equivalent of bending sheet metal past 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import rupture_control_panel from '/img/instruments/videomancer/rupture/rupture_control_panel.png';
 import rupture_source1_car from '/img/instruments/videomancer/rupture/rupture_source1_car.png';
 import rupture_source2_sunset from '/img/instruments/videomancer/rupture/rupture_source2_sunset.png';
 import rupture_source3_collage from '/img/instruments/videomancer/rupture/rupture_source3_collage.png';
@@ -140,6 +141,8 @@ The fold function is the heart of Rupture. It adds an offset to the channel valu
 
 ## Parameter Reference
 
+<img src={rupture_control_panel} alt="Videomancer front panel with Rupture loaded"/>
+*Videomancer's front panel with Rupture active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

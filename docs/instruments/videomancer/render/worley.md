@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 331
+sidebar_position: 338
 slug: /instruments/videomancer/worley
 title: "Worley"
 image: /img/instruments/videomancer/worley/worley_hero.png

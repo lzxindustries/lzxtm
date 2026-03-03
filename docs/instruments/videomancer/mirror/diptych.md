@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 83
+sidebar_position: 84
 slug: /instruments/videomancer/diptych
 title: "Diptych"
 image: /img/instruments/videomancer/diptych/diptych_hero_s1.png
@@ -8,6 +8,7 @@ description: "A diptych is a two-panel artwork — two images joined along a cen
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import diptych_control_panel from '/img/instruments/videomancer/diptych/diptych_control_panel.png';
 import diptych_source1_cat from '/img/instruments/videomancer/diptych/diptych_source1_cat.png';
 import diptych_source2_boat from '/img/instruments/videomancer/diptych/diptych_source2_boat.png';
 import diptych_source3_collage from '/img/instruments/videomancer/diptych/diptych_source3_collage.png';
@@ -137,6 +138,8 @@ The Offset, Zoom, Tilt, Tint, Double, and Color Tint controls are declared as re
 
 ## Parameter Reference
 
+<img src={diptych_control_panel} alt="Videomancer front panel with Diptych loaded"/>
+*Videomancer's front panel with Diptych active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

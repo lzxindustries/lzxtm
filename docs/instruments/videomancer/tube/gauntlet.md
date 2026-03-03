@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 122
+sidebar_position: 123
 slug: /instruments/videomancer/gauntlet
 title: "Gauntlet"
 image: /img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every pixel of a video signal carries brightness and color — smo
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import gauntlet_control_panel from '/img/instruments/videomancer/gauntlet/gauntlet_control_panel.png';
 import gauntlet_source1_parrot from '/img/instruments/videomancer/gauntlet/gauntlet_source1_parrot.png';
 import gauntlet_source2_skull from '/img/instruments/videomancer/gauntlet/gauntlet_source2_skull.png';
 import gauntlet_source3_collage from '/img/instruments/videomancer/gauntlet/gauntlet_source3_collage.png';
@@ -135,6 +136,8 @@ Two key interactions define the program's character: (1) the 16-tap sliding wind
 
 ## Parameter Reference
 
+<img src={gauntlet_control_panel} alt="Videomancer front panel with Gauntlet loaded"/>
+*Videomancer's front panel with Gauntlet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 111
+sidebar_position: 112
 slug: /instruments/videomancer/firefly
 title: "Firefly"
 image: /img/instruments/videomancer/firefly/firefly_hero.png

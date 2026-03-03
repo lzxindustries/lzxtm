@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 235
+sidebar_position: 239
 slug: /instruments/videomancer/punchcard
 title: "Punchcard"
 image: /img/instruments/videomancer/punchcard/punchcard_hero_s1.png
@@ -8,6 +8,7 @@ description: "The IBM punched card — 80 columns, 12 rows, one character per co
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import punchcard_control_panel from '/img/instruments/videomancer/punchcard/punchcard_control_panel.png';
 import punchcard_source1_boat from '/img/instruments/videomancer/punchcard/punchcard_source1_boat.png';
 import punchcard_source2_runner from '/img/instruments/videomancer/punchcard/punchcard_source2_runner.png';
 import punchcard_source3_clouds from '/img/instruments/videomancer/punchcard/punchcard_source3_clouds.png';
@@ -120,6 +121,8 @@ The critical subtlety is *where* the luma is sampled for the punch decision: at 
 
 ## Parameter Reference
 
+<img src={punchcard_control_panel} alt="Videomancer front panel with Punchcard loaded"/>
+*Videomancer's front panel with Punchcard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,13 +225,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 1: Basic Punch Card Grid
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise1_result },
-    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise1_result },
-    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise1_result },
-  ]}
-/>
+![Basic Punch Card Grid result](assets/punchcard_exercise1_result.png)
 *Basic Punch Card Grid — simulated result across source images.*
 **Source**: A well-lit face or scene with clear bright and dark regions — high contrast footage works best.
 
@@ -246,13 +243,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 2: Binary Mosaic
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise2_result },
-    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise2_result },
-    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise2_result },
-  ]}
-/>
+![Binary Mosaic result](assets/punchcard_exercise2_result.png)
 *Binary Mosaic — simulated result across source images.*
 **Source**: Abstract video synthesis output or colorful patterns — something with varied colors and brightness.
 
@@ -271,13 +262,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ### Exercise 3: Animated Data Stream
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_exercise3_result },
-    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_exercise3_result },
-    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_exercise3_result },
-  ]}
-/>
+![Animated Data Stream result](assets/punchcard_exercise3_result.png)
 *Animated Data Stream — simulated result across source images.*
 **Source**: Slowly moving or evolving footage — a camera pan, time-lapse, or modulated synthesis.
 

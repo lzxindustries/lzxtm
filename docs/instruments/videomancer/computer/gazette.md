@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 124
+sidebar_position: 125
 slug: /instruments/videomancer/gazette
 title: "Gazette"
 image: /img/instruments/videomancer/gazette/gazette_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every home computer of the early 1980s faced the same engineering 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import gazette_control_panel from '/img/instruments/videomancer/gazette/gazette_control_panel.png';
 import gazette_source1_castle from '/img/instruments/videomancer/gazette/gazette_source1_castle.png';
 import gazette_source2_car from '/img/instruments/videomancer/gazette/gazette_source2_car.png';
 import gazette_source3_turtle from '/img/instruments/videomancer/gazette/gazette_source3_turtle.png';
@@ -147,6 +148,8 @@ The Color Bleed IIR filter at Stage 3b operates only on chroma, leaving luma sha
 
 ## Parameter Reference
 
+<img src={gazette_control_panel} alt="Videomancer front panel with Gazette loaded"/>
+*Videomancer's front panel with Gazette active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

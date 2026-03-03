@@ -8,6 +8,7 @@ description: "Bodycam simulates the look of footage from a low-quality body-worn
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import bodycam_control_panel from '/img/instruments/videomancer/bodycam/bodycam_control_panel.png';
 import bodycam_source1_skull from '/img/instruments/videomancer/bodycam/bodycam_source1_skull.png';
 import bodycam_source2_parrot from '/img/instruments/videomancer/bodycam/bodycam_source2_parrot.png';
 import bodycam_source3_elephant from '/img/instruments/videomancer/bodycam/bodycam_source3_elephant.png';
@@ -136,6 +137,9 @@ The bounce effect modulates the vertical line counter with a triangle wave, but 
 ---
 
 ## Parameter Reference
+
+<img src={bodycam_control_panel} alt="Videomancer front panel with Bodycam loaded"/>
+*Videomancer's front panel with Bodycam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 281
+sidebar_position: 286
 slug: /instruments/videomancer/starfield
 title: "Starfield"
 image: /img/instruments/videomancer/starfield/starfield_hero.png

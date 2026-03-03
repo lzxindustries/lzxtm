@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 195
+sidebar_position: 197
 slug: /instruments/videomancer/mobius
 title: "Mobius"
 image: /img/instruments/videomancer/mobius/mobius_hero_s1.png
@@ -8,6 +8,7 @@ description: "Mobius maps video onto the surface of a Möbius strip — a one-si
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import mobius_control_panel from '/img/instruments/videomancer/mobius/mobius_control_panel.png';
 import mobius_source1_fruit from '/img/instruments/videomancer/mobius/mobius_source1_fruit.png';
 import mobius_source2_ballerina from '/img/instruments/videomancer/mobius/mobius_source2_ballerina.png';
 import mobius_source3_clouds from '/img/instruments/videomancer/mobius/mobius_source3_clouds.png';
@@ -141,6 +142,8 @@ The key interaction is between the twist displacement and the luma inversion / c
 
 ## Parameter Reference
 
+<img src={mobius_control_panel} alt="Videomancer front panel with Mobius loaded"/>
+*Videomancer's front panel with Mobius active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

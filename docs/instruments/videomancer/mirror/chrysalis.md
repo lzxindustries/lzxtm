@@ -8,6 +8,7 @@ description: "A chrysalis is the transitional shell between caterpillar and butt
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chrysalis_control_panel from '/img/instruments/videomancer/chrysalis/chrysalis_control_panel.png';
 import chrysalis_source1_ballerina from '/img/instruments/videomancer/chrysalis/chrysalis_source1_ballerina.png';
 import chrysalis_source2_castle from '/img/instruments/videomancer/chrysalis/chrysalis_source2_castle.png';
 import chrysalis_source3_collage from '/img/instruments/videomancer/chrysalis/chrysalis_source3_collage.png';
@@ -137,6 +138,8 @@ The Slant offset is computed once per line (Y × slant coefficient) and added to
 
 ## Parameter Reference
 
+<img src={chrysalis_control_panel} alt="Videomancer front panel with Chrysalis loaded"/>
+*Videomancer's front panel with Chrysalis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 236
+sidebar_position: 240
 slug: /instruments/videomancer/quilt
 title: "Quilt"
 image: /img/instruments/videomancer/quilt/quilt_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every image carries a grid — the rows and columns of pixels that
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import quilt_control_panel from '/img/instruments/videomancer/quilt/quilt_control_panel.png';
 import quilt_source1_cat from '/img/instruments/videomancer/quilt/quilt_source1_cat.png';
 import quilt_source2_field from '/img/instruments/videomancer/quilt/quilt_source2_field.png';
 import quilt_source3_clouds from '/img/instruments/videomancer/quilt/quilt_source3_clouds.png';
@@ -152,6 +153,8 @@ The critical interaction is between the position hash and the LFSR jitter. The h
 
 ## Parameter Reference
 
+<img src={quilt_control_panel} alt="Videomancer front panel with Quilt loaded"/>
+*Videomancer's front panel with Quilt active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

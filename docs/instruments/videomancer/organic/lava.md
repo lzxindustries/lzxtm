@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 166
+sidebar_position: 168
 slug: /instruments/videomancer/lava
 title: "Lava"
 image: /img/instruments/videomancer/lava/lava_hero.png

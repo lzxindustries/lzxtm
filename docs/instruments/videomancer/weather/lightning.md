@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 170
+sidebar_position: 172
 slug: /instruments/videomancer/lightning
 title: "Lightning"
 image: /img/instruments/videomancer/lightning/lightning_hero_s1.png
@@ -8,6 +8,7 @@ description: "Lightning is a processing program that renders one or two bright, 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import lightning_control_panel from '/img/instruments/videomancer/lightning/lightning_control_panel.png';
 import lightning_source1_boat from '/img/instruments/videomancer/lightning/lightning_source1_boat.png';
 import lightning_source2_car from '/img/instruments/videomancer/lightning/lightning_source2_car.png';
 import lightning_source3_turtle from '/img/instruments/videomancer/lightning/lightning_source3_turtle.png';
@@ -140,6 +141,8 @@ The key architectural feature is that the bolt path is built *incrementally* via
 
 ## Parameter Reference
 
+<img src={lightning_control_panel} alt="Videomancer front panel with Lightning loaded"/>
+*Videomancer's front panel with Lightning active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

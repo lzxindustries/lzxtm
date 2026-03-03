@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 306
+sidebar_position: 311
 slug: /instruments/videomancer/tincture
 title: "Tincture"
-image: /img/instruments/videomancer/tincture/tincture_hero.png
+image: /img/instruments/videomancer/tincture/tincture_hero_s1.png
 description: "Before digital color grading became commonplace, television engineers used false-color generators to visualize exposure levels."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import tincture_hero from '/img/instruments/videomancer/tincture/tincture_hero.png';
 import tincture_control_panel from '/img/instruments/videomancer/tincture/tincture_control_panel.png';
-import tincture_exercise1_result from '/img/instruments/videomancer/tincture/tincture_exercise1_result.png';
-import tincture_exercise2_result from '/img/instruments/videomancer/tincture/tincture_exercise2_result.png';
-import tincture_exercise3_result from '/img/instruments/videomancer/tincture/tincture_exercise3_result.png';
-import tincture_source1_kodim15 from '/img/instruments/videomancer/tincture/tincture_source1_kodim15.png';
-import tincture_source2_kodim03 from '/img/instruments/videomancer/tincture/tincture_source2_kodim03.png';
-import tincture_source3_kodim13_bw from '/img/instruments/videomancer/tincture/tincture_source3_kodim13_bw.png';
+import tincture_source1_boat from '/img/instruments/videomancer/tincture/tincture_source1_boat.png';
+import tincture_source2_parrot from '/img/instruments/videomancer/tincture/tincture_source2_parrot.png';
+import tincture_source3_turtle from '/img/instruments/videomancer/tincture/tincture_source3_turtle.png';
+import tincture_source4_pattern from '/img/instruments/videomancer/tincture/tincture_source4_pattern.png';
+import tincture_source5_man from '/img/instruments/videomancer/tincture/tincture_source5_man.png';
+import tincture_source6_wood from '/img/instruments/videomancer/tincture/tincture_source6_wood.png';
+import tincture_hero_s1 from '/img/instruments/videomancer/tincture/tincture_hero_s1.png';
+import tincture_hero_s2 from '/img/instruments/videomancer/tincture/tincture_hero_s2.png';
+import tincture_hero_s3 from '/img/instruments/videomancer/tincture/tincture_hero_s3.png';
+import tincture_hero_s4 from '/img/instruments/videomancer/tincture/tincture_hero_s4.png';
+import tincture_hero_s5 from '/img/instruments/videomancer/tincture/tincture_hero_s5.png';
+import tincture_hero_s6 from '/img/instruments/videomancer/tincture/tincture_hero_s6.png';
+import tincture_ex1_s1 from '/img/instruments/videomancer/tincture/tincture_ex1_s1.png';
+import tincture_ex1_s2 from '/img/instruments/videomancer/tincture/tincture_ex1_s2.png';
+import tincture_ex1_s3 from '/img/instruments/videomancer/tincture/tincture_ex1_s3.png';
+import tincture_ex1_s4 from '/img/instruments/videomancer/tincture/tincture_ex1_s4.png';
+import tincture_ex1_s5 from '/img/instruments/videomancer/tincture/tincture_ex1_s5.png';
+import tincture_ex1_s6 from '/img/instruments/videomancer/tincture/tincture_ex1_s6.png';
+import tincture_ex2_s1 from '/img/instruments/videomancer/tincture/tincture_ex2_s1.png';
+import tincture_ex2_s2 from '/img/instruments/videomancer/tincture/tincture_ex2_s2.png';
+import tincture_ex2_s3 from '/img/instruments/videomancer/tincture/tincture_ex2_s3.png';
+import tincture_ex2_s4 from '/img/instruments/videomancer/tincture/tincture_ex2_s4.png';
+import tincture_ex2_s5 from '/img/instruments/videomancer/tincture/tincture_ex2_s5.png';
+import tincture_ex2_s6 from '/img/instruments/videomancer/tincture/tincture_ex2_s6.png';
+import tincture_ex3_s1 from '/img/instruments/videomancer/tincture/tincture_ex3_s1.png';
+import tincture_ex3_s2 from '/img/instruments/videomancer/tincture/tincture_ex3_s2.png';
+import tincture_ex3_s3 from '/img/instruments/videomancer/tincture/tincture_ex3_s3.png';
+import tincture_ex3_s4 from '/img/instruments/videomancer/tincture/tincture_ex3_s4.png';
+import tincture_ex3_s5 from '/img/instruments/videomancer/tincture/tincture_ex3_s5.png';
+import tincture_ex3_s6 from '/img/instruments/videomancer/tincture/tincture_ex3_s6.png';
 
 # Tincture
 
@@ -23,9 +46,12 @@ import tincture_source3_kodim13_bw from '/img/instruments/videomancer/tincture/t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_hero },
-    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_hero },
-    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_hero },
+    { label: "Boat", before: tincture_source1_boat, after: tincture_hero_s1 },
+    { label: "Parrot", before: tincture_source2_parrot, after: tincture_hero_s2 },
+    { label: "Turtle", before: tincture_source3_turtle, after: tincture_hero_s3 },
+    { label: "Pattern", before: tincture_source4_pattern, after: tincture_hero_s4 },
+    { label: "Man", before: tincture_source5_man, after: tincture_hero_s5 },
+    { label: "Wood", before: tincture_source6_wood, after: tincture_hero_s6 },
   ]}
 />
 *Tincture mapping a live camera feed through the Thermal false-color palette with edge detection overlay, revealing luminance contours as glowing topographic lines.*
@@ -209,9 +235,12 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay â
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise1_result },
-    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise1_result },
-    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise1_result },
+    { label: "Boat", before: tincture_source1_boat, after: tincture_ex1_s1 },
+    { label: "Parrot", before: tincture_source2_parrot, after: tincture_ex1_s2 },
+    { label: "Turtle", before: tincture_source3_turtle, after: tincture_ex1_s3 },
+    { label: "Pattern", before: tincture_source4_pattern, after: tincture_ex1_s4 },
+    { label: "Man", before: tincture_source5_man, after: tincture_ex1_s5 },
+    { label: "Wood", before: tincture_source6_wood, after: tincture_ex1_s6 },
   ]}
 />
 *Thermal Camera Emulation â€” simulated result across source images.*
@@ -233,9 +262,12 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay â
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise2_result },
-    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise2_result },
-    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise2_result },
+    { label: "Boat", before: tincture_source1_boat, after: tincture_ex2_s1 },
+    { label: "Parrot", before: tincture_source2_parrot, after: tincture_ex2_s2 },
+    { label: "Turtle", before: tincture_source3_turtle, after: tincture_ex2_s3 },
+    { label: "Pattern", before: tincture_source4_pattern, after: tincture_ex2_s4 },
+    { label: "Man", before: tincture_source5_man, after: tincture_ex2_s5 },
+    { label: "Wood", before: tincture_source6_wood, after: tincture_ex2_s6 },
   ]}
 />
 *Topographic Contour Map â€” simulated result across source images.*
@@ -257,9 +289,12 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay â
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: tincture_source1_kodim15, after: tincture_exercise3_result },
-    { label: "Kodim03", before: tincture_source2_kodim03, after: tincture_exercise3_result },
-    { label: "Kodim13 B&W", before: tincture_source3_kodim13_bw, after: tincture_exercise3_result },
+    { label: "Boat", before: tincture_source1_boat, after: tincture_ex3_s1 },
+    { label: "Parrot", before: tincture_source2_parrot, after: tincture_ex3_s2 },
+    { label: "Turtle", before: tincture_source3_turtle, after: tincture_ex3_s3 },
+    { label: "Pattern", before: tincture_source4_pattern, after: tincture_ex3_s4 },
+    { label: "Man", before: tincture_source5_man, after: tincture_ex3_s5 },
+    { label: "Wood", before: tincture_source6_wood, after: tincture_ex3_s6 },
   ]}
 />
 *Psychedelic Poster Art â€” simulated result across source images.*

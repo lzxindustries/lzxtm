@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 99
+sidebar_position: 100
 slug: /instruments/videomancer/enamel
 title: "Enamel"
 image: /img/instruments/videomancer/enamel/enamel_hero_s1.png
@@ -8,6 +8,7 @@ description: "Enamel transforms live video into a digital simulation of cloisonn
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import enamel_control_panel from '/img/instruments/videomancer/enamel/enamel_control_panel.png';
 import enamel_source1_parrot from '/img/instruments/videomancer/enamel/enamel_source1_parrot.png';
 import enamel_source2_cat from '/img/instruments/videomancer/enamel/enamel_source2_cat.png';
 import enamel_source3_collage from '/img/instruments/videomancer/enamel/enamel_source3_collage.png';
@@ -155,6 +156,8 @@ The critical interaction is between edge detection and quantization. Edge detect
 
 ## Parameter Reference
 
+<img src={enamel_control_panel} alt="Videomancer front panel with Enamel loaded"/>
+*Videomancer's front panel with Enamel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 108
+sidebar_position: 109
 slug: /instruments/videomancer/ferro
 title: "Ferro"
 image: /img/instruments/videomancer/ferro/ferro_hero_s1.png
@@ -8,6 +8,7 @@ description: "The cyanotype is one of the oldest photographic processes — a UV
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import ferro_control_panel from '/img/instruments/videomancer/ferro/ferro_control_panel.png';
 import ferro_source1_house from '/img/instruments/videomancer/ferro/ferro_source1_house.png';
 import ferro_source2_castle from '/img/instruments/videomancer/ferro/ferro_source2_castle.png';
 import ferro_source3_collage from '/img/instruments/videomancer/ferro/ferro_source3_collage.png';
@@ -143,6 +144,8 @@ Edge diffusion and paper texture operate only on the Y channel after colorizatio
 
 ## Parameter Reference
 
+<img src={ferro_control_panel} alt="Videomancer front panel with Ferro loaded"/>
+*Videomancer's front panel with Ferro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

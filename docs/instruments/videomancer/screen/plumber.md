@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 230
+sidebar_position: 233
 slug: /instruments/videomancer/plumber
 title: "Plumber"
 image: /img/instruments/videomancer/plumber/plumber_hero.png

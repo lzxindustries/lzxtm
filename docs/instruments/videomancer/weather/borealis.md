@@ -8,6 +8,7 @@ description: "In 1860, the explorer Isaac Israel Hayes sailed north of Greenland
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import borealis_control_panel from '/img/instruments/videomancer/borealis/borealis_control_panel.png';
 import borealis_source1_sunset from '/img/instruments/videomancer/borealis/borealis_source1_sunset.png';
 import borealis_source2_field from '/img/instruments/videomancer/borealis/borealis_source2_field.png';
 import borealis_source3_elephant from '/img/instruments/videomancer/borealis/borealis_source3_elephant.png';
@@ -141,6 +142,9 @@ Two critical design decisions define the aurora's appearance. First, the luma co
 ---
 
 ## Parameter Reference
+
+<img src={borealis_control_panel} alt="Videomancer front panel with Borealis loaded"/>
+*Videomancer's front panel with Borealis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

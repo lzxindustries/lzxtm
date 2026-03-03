@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 102
+sidebar_position: 103
 slug: /instruments/videomancer/enhance
 title: "Enhance"
 image: /img/instruments/videomancer/enhance/enhance_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every crime drama fan knows the scene: a detective peers at a grai
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import enhance_control_panel from '/img/instruments/videomancer/enhance/enhance_control_panel.png';
 import enhance_source1_fruit from '/img/instruments/videomancer/enhance/enhance_source1_fruit.png';
 import enhance_source2_runner from '/img/instruments/videomancer/enhance/enhance_source2_runner.png';
 import enhance_source3_elephant from '/img/instruments/videomancer/enhance/enhance_source3_elephant.png';
@@ -156,6 +157,8 @@ Two important characteristics define the processing path. First, only the Y (lum
 
 ## Parameter Reference
 
+<img src={enhance_control_panel} alt="Videomancer front panel with Enhance loaded"/>
+*Videomancer's front panel with Enhance active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

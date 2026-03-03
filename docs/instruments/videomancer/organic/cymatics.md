@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 71
+sidebar_position: 72
 slug: /instruments/videomancer/cymatics
 title: "Cymatics"
 image: /img/instruments/videomancer/cymatics/cymatics_hero.png

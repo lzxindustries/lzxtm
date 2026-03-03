@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 292
+sidebar_position: 297
 slug: /instruments/videomancer/syncmod
 title: "Sync Mod"
-image: /img/instruments/videomancer/syncmod/syncmod_hero.png
+image: /img/instruments/videomancer/syncmod/syncmod_hero_s1.png
 description: "Sync Mod rewrites the television raster in real time."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import syncmod_hero from '/img/instruments/videomancer/syncmod/syncmod_hero.png';
 import syncmod_control_panel from '/img/instruments/videomancer/syncmod/syncmod_control_panel.png';
-import syncmod_exercise1_result from '/img/instruments/videomancer/syncmod/syncmod_exercise1_result.png';
-import syncmod_exercise2_result from '/img/instruments/videomancer/syncmod/syncmod_exercise2_result.png';
-import syncmod_exercise3_result from '/img/instruments/videomancer/syncmod/syncmod_exercise3_result.png';
-import syncmod_source1_kodim15 from '/img/instruments/videomancer/syncmod/syncmod_source1_kodim15.png';
-import syncmod_source2_kodim01 from '/img/instruments/videomancer/syncmod/syncmod_source2_kodim01.png';
-import syncmod_source3_stream_bridge_512 from '/img/instruments/videomancer/syncmod/syncmod_source3_stream_bridge_512.png';
+import syncmod_source1_dog from '/img/instruments/videomancer/syncmod/syncmod_source1_dog.png';
+import syncmod_source2_field from '/img/instruments/videomancer/syncmod/syncmod_source2_field.png';
+import syncmod_source3_clouds from '/img/instruments/videomancer/syncmod/syncmod_source3_clouds.png';
+import syncmod_source4_pattern from '/img/instruments/videomancer/syncmod/syncmod_source4_pattern.png';
+import syncmod_source5_woman from '/img/instruments/videomancer/syncmod/syncmod_source5_woman.png';
+import syncmod_source6_wood from '/img/instruments/videomancer/syncmod/syncmod_source6_wood.png';
+import syncmod_hero_s1 from '/img/instruments/videomancer/syncmod/syncmod_hero_s1.png';
+import syncmod_hero_s2 from '/img/instruments/videomancer/syncmod/syncmod_hero_s2.png';
+import syncmod_hero_s3 from '/img/instruments/videomancer/syncmod/syncmod_hero_s3.png';
+import syncmod_hero_s4 from '/img/instruments/videomancer/syncmod/syncmod_hero_s4.png';
+import syncmod_hero_s5 from '/img/instruments/videomancer/syncmod/syncmod_hero_s5.png';
+import syncmod_hero_s6 from '/img/instruments/videomancer/syncmod/syncmod_hero_s6.png';
+import syncmod_ex1_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s1.png';
+import syncmod_ex1_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s2.png';
+import syncmod_ex1_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s3.png';
+import syncmod_ex1_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s4.png';
+import syncmod_ex1_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s5.png';
+import syncmod_ex1_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex1_s6.png';
+import syncmod_ex2_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s1.png';
+import syncmod_ex2_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s2.png';
+import syncmod_ex2_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s3.png';
+import syncmod_ex2_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s4.png';
+import syncmod_ex2_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s5.png';
+import syncmod_ex2_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex2_s6.png';
+import syncmod_ex3_s1 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s1.png';
+import syncmod_ex3_s2 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s2.png';
+import syncmod_ex3_s3 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s3.png';
+import syncmod_ex3_s4 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s4.png';
+import syncmod_ex3_s5 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s5.png';
+import syncmod_ex3_s6 from '/img/instruments/videomancer/syncmod/syncmod_ex3_s6.png';
 
 # Sync Mod
 
@@ -23,9 +46,12 @@ import syncmod_source3_stream_bridge_512 from '/img/instruments/videomancer/sync
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_hero },
-    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_hero },
-    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_hero },
+    { label: "Dog", before: syncmod_source1_dog, after: syncmod_hero_s1 },
+    { label: "Field", before: syncmod_source2_field, after: syncmod_hero_s2 },
+    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_hero_s3 },
+    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_hero_s4 },
+    { label: "Woman", before: syncmod_source5_woman, after: syncmod_hero_s5 },
+    { label: "Wood", before: syncmod_source6_wood, after: syncmod_hero_s6 },
   ]}
 />
 *Horizontal scanlines warp sinusoidally across the frame, tearing apart a stable image into undulating bands of displaced colour.*
@@ -211,9 +237,12 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise1_result },
-    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise1_result },
-    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise1_result },
+    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex1_s1 },
+    { label: "Field", before: syncmod_source2_field, after: syncmod_ex1_s2 },
+    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex1_s3 },
+    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex1_s4 },
+    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex1_s5 },
+    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex1_s6 },
   ]}
 />
 *Gentle Horizontal Waves — simulated result across source images.*
@@ -236,9 +265,12 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise2_result },
-    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise2_result },
-    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise2_result },
+    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex2_s1 },
+    { label: "Field", before: syncmod_source2_field, after: syncmod_ex2_s2 },
+    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex2_s3 },
+    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex2_s4 },
+    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex2_s5 },
+    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex2_s6 },
   ]}
 />
 *Ramp Shear with Vertical Blend — simulated result across source images.*
@@ -261,9 +293,12 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: syncmod_source1_kodim15, after: syncmod_exercise3_result },
-    { label: "Kodim01", before: syncmod_source2_kodim01, after: syncmod_exercise3_result },
-    { label: "Stream Bridge", before: syncmod_source3_stream_bridge_512, after: syncmod_exercise3_result },
+    { label: "Dog", before: syncmod_source1_dog, after: syncmod_ex3_s1 },
+    { label: "Field", before: syncmod_source2_field, after: syncmod_ex3_s2 },
+    { label: "Clouds", before: syncmod_source3_clouds, after: syncmod_ex3_s3 },
+    { label: "Pattern", before: syncmod_source4_pattern, after: syncmod_ex3_s4 },
+    { label: "Woman", before: syncmod_source5_woman, after: syncmod_ex3_s5 },
+    { label: "Wood", before: syncmod_source6_wood, after: syncmod_ex3_s6 },
   ]}
 />
 *Vasulka Tear Storm — simulated result across source images.*

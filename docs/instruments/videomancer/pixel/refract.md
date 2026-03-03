@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 243
+sidebar_position: 247
 slug: /instruments/videomancer/refract
 title: "Refract"
 image: /img/instruments/videomancer/refract/refract_hero_s1.png
@@ -8,6 +8,7 @@ description: "Light bends when it passes through glass, water, or any boundary b
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import refract_control_panel from '/img/instruments/videomancer/refract/refract_control_panel.png';
 import refract_source1_sunset from '/img/instruments/videomancer/refract/refract_source1_sunset.png';
 import refract_source2_fruit from '/img/instruments/videomancer/refract/refract_source2_fruit.png';
 import refract_source3_collage from '/img/instruments/videomancer/refract/refract_source3_collage.png';
@@ -130,6 +131,8 @@ The core interaction is between luma drive and displacement strength. Luma drive
 
 ## Parameter Reference
 
+<img src={refract_control_panel} alt="Videomancer front panel with Refract loaded"/>
+*Videomancer's front panel with Refract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

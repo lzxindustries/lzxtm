@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 293
+sidebar_position: 298
 slug: /instruments/videomancer/tableau
 title: "Tableau"
-image: /img/instruments/videomancer/tableau/tableau_hero.png
+image: /img/instruments/videomancer/tableau/tableau_hero_s1.png
 description: "In the golden age of Hollywood visual effects, matte painters would paint scenery — castles, skylines, alien landscapes — onto sheets of glass positioned between the camera and the set."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import tableau_hero from '/img/instruments/videomancer/tableau/tableau_hero.png';
 import tableau_control_panel from '/img/instruments/videomancer/tableau/tableau_control_panel.png';
-import tableau_exercise1_result from '/img/instruments/videomancer/tableau/tableau_exercise1_result.png';
-import tableau_exercise2_result from '/img/instruments/videomancer/tableau/tableau_exercise2_result.png';
-import tableau_exercise3_result from '/img/instruments/videomancer/tableau/tableau_exercise3_result.png';
-import tableau_source1_kodim03 from '/img/instruments/videomancer/tableau/tableau_source1_kodim03.png';
-import tableau_source2_kodim13 from '/img/instruments/videomancer/tableau/tableau_source2_kodim13.png';
-import tableau_source3_kodim13_bw from '/img/instruments/videomancer/tableau/tableau_source3_kodim13_bw.png';
+import tableau_source1_dog from '/img/instruments/videomancer/tableau/tableau_source1_dog.png';
+import tableau_source2_boat from '/img/instruments/videomancer/tableau/tableau_source2_boat.png';
+import tableau_source3_turtle from '/img/instruments/videomancer/tableau/tableau_source3_turtle.png';
+import tableau_source4_pattern from '/img/instruments/videomancer/tableau/tableau_source4_pattern.png';
+import tableau_source5_woman from '/img/instruments/videomancer/tableau/tableau_source5_woman.png';
+import tableau_source6_berries from '/img/instruments/videomancer/tableau/tableau_source6_berries.png';
+import tableau_hero_s1 from '/img/instruments/videomancer/tableau/tableau_hero_s1.png';
+import tableau_hero_s2 from '/img/instruments/videomancer/tableau/tableau_hero_s2.png';
+import tableau_hero_s3 from '/img/instruments/videomancer/tableau/tableau_hero_s3.png';
+import tableau_hero_s4 from '/img/instruments/videomancer/tableau/tableau_hero_s4.png';
+import tableau_hero_s5 from '/img/instruments/videomancer/tableau/tableau_hero_s5.png';
+import tableau_hero_s6 from '/img/instruments/videomancer/tableau/tableau_hero_s6.png';
+import tableau_ex1_s1 from '/img/instruments/videomancer/tableau/tableau_ex1_s1.png';
+import tableau_ex1_s2 from '/img/instruments/videomancer/tableau/tableau_ex1_s2.png';
+import tableau_ex1_s3 from '/img/instruments/videomancer/tableau/tableau_ex1_s3.png';
+import tableau_ex1_s4 from '/img/instruments/videomancer/tableau/tableau_ex1_s4.png';
+import tableau_ex1_s5 from '/img/instruments/videomancer/tableau/tableau_ex1_s5.png';
+import tableau_ex1_s6 from '/img/instruments/videomancer/tableau/tableau_ex1_s6.png';
+import tableau_ex2_s1 from '/img/instruments/videomancer/tableau/tableau_ex2_s1.png';
+import tableau_ex2_s2 from '/img/instruments/videomancer/tableau/tableau_ex2_s2.png';
+import tableau_ex2_s3 from '/img/instruments/videomancer/tableau/tableau_ex2_s3.png';
+import tableau_ex2_s4 from '/img/instruments/videomancer/tableau/tableau_ex2_s4.png';
+import tableau_ex2_s5 from '/img/instruments/videomancer/tableau/tableau_ex2_s5.png';
+import tableau_ex2_s6 from '/img/instruments/videomancer/tableau/tableau_ex2_s6.png';
+import tableau_ex3_s1 from '/img/instruments/videomancer/tableau/tableau_ex3_s1.png';
+import tableau_ex3_s2 from '/img/instruments/videomancer/tableau/tableau_ex3_s2.png';
+import tableau_ex3_s3 from '/img/instruments/videomancer/tableau/tableau_ex3_s3.png';
+import tableau_ex3_s4 from '/img/instruments/videomancer/tableau/tableau_ex3_s4.png';
+import tableau_ex3_s5 from '/img/instruments/videomancer/tableau/tableau_ex3_s5.png';
+import tableau_ex3_s6 from '/img/instruments/videomancer/tableau/tableau_ex3_s6.png';
 
 # Tableau
 
@@ -23,9 +46,12 @@ import tableau_source3_kodim13_bw from '/img/instruments/videomancer/tableau/tab
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_hero },
-    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_hero },
-    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_hero },
+    { label: "Dog", before: tableau_source1_dog, after: tableau_hero_s1 },
+    { label: "Boat", before: tableau_source2_boat, after: tableau_hero_s2 },
+    { label: "Turtle", before: tableau_source3_turtle, after: tableau_hero_s3 },
+    { label: "Pattern", before: tableau_source4_pattern, after: tableau_hero_s4 },
+    { label: "Woman", before: tableau_source5_woman, after: tableau_hero_s5 },
+    { label: "Berries", before: tableau_source6_berries, after: tableau_hero_s6 },
   ]}
 />
 *Tableau dividing the frame with a feathered matte boundary, desaturating and tinting one region to simulate classic glass painting composites.*
@@ -224,9 +250,12 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise1_result },
-    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise1_result },
-    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise1_result },
+    { label: "Dog", before: tableau_source1_dog, after: tableau_ex1_s1 },
+    { label: "Boat", before: tableau_source2_boat, after: tableau_ex1_s2 },
+    { label: "Turtle", before: tableau_source3_turtle, after: tableau_ex1_s3 },
+    { label: "Pattern", before: tableau_source4_pattern, after: tableau_ex1_s4 },
+    { label: "Woman", before: tableau_source5_woman, after: tableau_ex1_s5 },
+    { label: "Berries", before: tableau_source6_berries, after: tableau_ex1_s6 },
   ]}
 />
 *Simple Split Screen — simulated result across source images.*
@@ -249,9 +278,12 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise2_result },
-    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise2_result },
-    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise2_result },
+    { label: "Dog", before: tableau_source1_dog, after: tableau_ex2_s1 },
+    { label: "Boat", before: tableau_source2_boat, after: tableau_ex2_s2 },
+    { label: "Turtle", before: tableau_source3_turtle, after: tableau_ex2_s3 },
+    { label: "Pattern", before: tableau_source4_pattern, after: tableau_ex2_s4 },
+    { label: "Woman", before: tableau_source5_woman, after: tableau_ex2_s5 },
+    { label: "Berries", before: tableau_source6_berries, after: tableau_ex2_s6 },
   ]}
 />
 *Painted Region Processing — simulated result across source images.*
@@ -273,9 +305,12 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: tableau_source1_kodim03, after: tableau_exercise3_result },
-    { label: "Kodim13", before: tableau_source2_kodim13, after: tableau_exercise3_result },
-    { label: "Kodim13 B&W", before: tableau_source3_kodim13_bw, after: tableau_exercise3_result },
+    { label: "Dog", before: tableau_source1_dog, after: tableau_ex3_s1 },
+    { label: "Boat", before: tableau_source2_boat, after: tableau_ex3_s2 },
+    { label: "Turtle", before: tableau_source3_turtle, after: tableau_ex3_s3 },
+    { label: "Pattern", before: tableau_source4_pattern, after: tableau_ex3_s4 },
+    { label: "Woman", before: tableau_source5_woman, after: tableau_ex3_s5 },
+    { label: "Berries", before: tableau_source6_berries, after: tableau_ex3_s6 },
   ]}
 />
 *Full Cinematic Composite — simulated result across source images.*

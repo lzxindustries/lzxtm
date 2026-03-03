@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 197
+sidebar_position: 199
 slug: /instruments/videomancer/mosaic
 title: "Mosaic"
 image: /img/instruments/videomancer/mosaic/mosaic_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every digital image is already a mosaic — a grid of discrete sam
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import mosaic_control_panel from '/img/instruments/videomancer/mosaic/mosaic_control_panel.png';
 import mosaic_source1_boat from '/img/instruments/videomancer/mosaic/mosaic_source1_boat.png';
 import mosaic_source2_parrot from '/img/instruments/videomancer/mosaic/mosaic_source2_parrot.png';
 import mosaic_source3_clouds from '/img/instruments/videomancer/mosaic/mosaic_source3_clouds.png';
@@ -133,6 +134,8 @@ The luma inversion happens *before* the luma modulation computation, so it rever
 
 ## Parameter Reference
 
+<img src={mosaic_control_panel} alt="Videomancer front panel with Mosaic loaded"/>
+*Videomancer's front panel with Mosaic active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

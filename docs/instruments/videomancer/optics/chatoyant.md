@@ -8,6 +8,7 @@ description: "Certain gemstones — tiger's eye, chrysoberyl, moonstone — cont
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import chatoyant_control_panel from '/img/instruments/videomancer/chatoyant/chatoyant_control_panel.png';
 import chatoyant_source1_field from '/img/instruments/videomancer/chatoyant/chatoyant_source1_field.png';
 import chatoyant_source2_castle from '/img/instruments/videomancer/chatoyant/chatoyant_source2_castle.png';
 import chatoyant_source3_collage from '/img/instruments/videomancer/chatoyant/chatoyant_source3_collage.png';
@@ -155,6 +156,8 @@ The colour tinting in stage 6 only activates when the boost exceeds 16 (out of 1
 
 ## Parameter Reference
 
+<img src={chatoyant_control_panel} alt="Videomancer front panel with Chatoyant loaded"/>
+*Videomancer's front panel with Chatoyant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

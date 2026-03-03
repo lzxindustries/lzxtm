@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 300
+sidebar_position: 305
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
-image: /img/instruments/videomancer/terracotta/terracotta_hero.png
+image: /img/instruments/videomancer/terracotta/terracotta_hero_s1.png
 description: "The Terracotta Army of Emperor Qin Shi Huang contains over eight thousand life-sized warriors, no two of them identical."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import terracotta_hero from '/img/instruments/videomancer/terracotta/terracotta_hero.png';
 import terracotta_control_panel from '/img/instruments/videomancer/terracotta/terracotta_control_panel.png';
-import terracotta_exercise1_result from '/img/instruments/videomancer/terracotta/terracotta_exercise1_result.png';
-import terracotta_exercise2_result from '/img/instruments/videomancer/terracotta/terracotta_exercise2_result.png';
-import terracotta_exercise3_result from '/img/instruments/videomancer/terracotta/terracotta_exercise3_result.png';
-import terracotta_source1_kodim03 from '/img/instruments/videomancer/terracotta/terracotta_source1_kodim03.png';
-import terracotta_source2_kodim13 from '/img/instruments/videomancer/terracotta/terracotta_source2_kodim13.png';
-import terracotta_source3_kodim13_bw from '/img/instruments/videomancer/terracotta/terracotta_source3_kodim13_bw.png';
+import terracotta_source1_fruit from '/img/instruments/videomancer/terracotta/terracotta_source1_fruit.png';
+import terracotta_source2_ballerina from '/img/instruments/videomancer/terracotta/terracotta_source2_ballerina.png';
+import terracotta_source3_collage from '/img/instruments/videomancer/terracotta/terracotta_source3_collage.png';
+import terracotta_source4_pattern from '/img/instruments/videomancer/terracotta/terracotta_source4_pattern.png';
+import terracotta_source5_woman from '/img/instruments/videomancer/terracotta/terracotta_source5_woman.png';
+import terracotta_source6_wood from '/img/instruments/videomancer/terracotta/terracotta_source6_wood.png';
+import terracotta_hero_s1 from '/img/instruments/videomancer/terracotta/terracotta_hero_s1.png';
+import terracotta_hero_s2 from '/img/instruments/videomancer/terracotta/terracotta_hero_s2.png';
+import terracotta_hero_s3 from '/img/instruments/videomancer/terracotta/terracotta_hero_s3.png';
+import terracotta_hero_s4 from '/img/instruments/videomancer/terracotta/terracotta_hero_s4.png';
+import terracotta_hero_s5 from '/img/instruments/videomancer/terracotta/terracotta_hero_s5.png';
+import terracotta_hero_s6 from '/img/instruments/videomancer/terracotta/terracotta_hero_s6.png';
+import terracotta_ex1_s1 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s1.png';
+import terracotta_ex1_s2 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s2.png';
+import terracotta_ex1_s3 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s3.png';
+import terracotta_ex1_s4 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s4.png';
+import terracotta_ex1_s5 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s5.png';
+import terracotta_ex1_s6 from '/img/instruments/videomancer/terracotta/terracotta_ex1_s6.png';
+import terracotta_ex2_s1 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s1.png';
+import terracotta_ex2_s2 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s2.png';
+import terracotta_ex2_s3 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s3.png';
+import terracotta_ex2_s4 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s4.png';
+import terracotta_ex2_s5 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s5.png';
+import terracotta_ex2_s6 from '/img/instruments/videomancer/terracotta/terracotta_ex2_s6.png';
+import terracotta_ex3_s1 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s1.png';
+import terracotta_ex3_s2 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s2.png';
+import terracotta_ex3_s3 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s3.png';
+import terracotta_ex3_s4 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s4.png';
+import terracotta_ex3_s5 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s5.png';
+import terracotta_ex3_s6 from '/img/instruments/videomancer/terracotta/terracotta_ex3_s6.png';
 
 # Terracotta
 
@@ -23,9 +46,12 @@ import terracotta_source3_kodim13_bw from '/img/instruments/videomancer/terracot
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_hero },
-    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_hero },
-    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_hero },
+    { label: "Fruit", before: terracotta_source1_fruit, after: terracotta_hero_s1 },
+    { label: "Ballerina", before: terracotta_source2_ballerina, after: terracotta_hero_s2 },
+    { label: "Collage", before: terracotta_source3_collage, after: terracotta_hero_s3 },
+    { label: "Pattern", before: terracotta_source4_pattern, after: terracotta_hero_s4 },
+    { label: "Woman", before: terracotta_source5_woman, after: terracotta_hero_s5 },
+    { label: "Wood", before: terracotta_source6_wood, after: terracotta_hero_s6 },
   ]}
 />
 *Terracotta replicating a video frame into a grid of individually varied tiles, each bearing a unique luminance and hue signature derived from XOR hashing.*
@@ -213,9 +239,12 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise1_result },
-    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise1_result },
-    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise1_result },
+    { label: "Fruit", before: terracotta_source1_fruit, after: terracotta_ex1_s1 },
+    { label: "Ballerina", before: terracotta_source2_ballerina, after: terracotta_ex1_s2 },
+    { label: "Collage", before: terracotta_source3_collage, after: terracotta_ex1_s3 },
+    { label: "Pattern", before: terracotta_source4_pattern, after: terracotta_ex1_s4 },
+    { label: "Woman", before: terracotta_source5_woman, after: terracotta_ex1_s5 },
+    { label: "Wood", before: terracotta_source6_wood, after: terracotta_ex1_s6 },
   ]}
 />
 *Basic Grid Tiling — simulated result across source images.*
@@ -237,9 +266,12 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise2_result },
-    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise2_result },
-    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise2_result },
+    { label: "Fruit", before: terracotta_source1_fruit, after: terracotta_ex2_s1 },
+    { label: "Ballerina", before: terracotta_source2_ballerina, after: terracotta_ex2_s2 },
+    { label: "Collage", before: terracotta_source3_collage, after: terracotta_ex2_s3 },
+    { label: "Pattern", before: terracotta_source4_pattern, after: terracotta_ex2_s4 },
+    { label: "Woman", before: terracotta_source5_woman, after: terracotta_ex2_s5 },
+    { label: "Wood", before: terracotta_source6_wood, after: terracotta_ex2_s6 },
   ]}
 />
 *Terracotta Variation — simulated result across source images.*
@@ -261,9 +293,12 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: terracotta_source1_kodim03, after: terracotta_exercise3_result },
-    { label: "Kodim13", before: terracotta_source2_kodim13, after: terracotta_exercise3_result },
-    { label: "Kodim13 B&W", before: terracotta_source3_kodim13_bw, after: terracotta_exercise3_result },
+    { label: "Fruit", before: terracotta_source1_fruit, after: terracotta_ex3_s1 },
+    { label: "Ballerina", before: terracotta_source2_ballerina, after: terracotta_ex3_s2 },
+    { label: "Collage", before: terracotta_source3_collage, after: terracotta_ex3_s3 },
+    { label: "Pattern", before: terracotta_source4_pattern, after: terracotta_ex3_s4 },
+    { label: "Woman", before: terracotta_source5_woman, after: terracotta_ex3_s5 },
+    { label: "Wood", before: terracotta_source6_wood, after: terracotta_ex3_s6 },
   ]}
 />
 *Architectural Relief — simulated result across source images.*

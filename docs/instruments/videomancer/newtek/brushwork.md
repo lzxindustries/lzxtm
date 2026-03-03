@@ -8,6 +8,7 @@ description: "In 1990, NewTek shipped the NewTek — an Amiga-based video effect
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import brushwork_control_panel from '/img/instruments/videomancer/brushwork/brushwork_control_panel.png';
 import brushwork_source1_runner from '/img/instruments/videomancer/brushwork/brushwork_source1_runner.png';
 import brushwork_source2_field from '/img/instruments/videomancer/brushwork/brushwork_source2_field.png';
 import brushwork_source3_turtle from '/img/instruments/videomancer/brushwork/brushwork_source3_turtle.png';
@@ -132,6 +133,9 @@ The key insight of Brushwork's pipeline is that all edge modulation happens in a
 ---
 
 ## Parameter Reference
+
+<img src={brushwork_control_panel} alt="Videomancer front panel with Brushwork loaded"/>
+*Videomancer's front panel with Brushwork active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

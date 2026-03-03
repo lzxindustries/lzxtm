@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 184
+sidebar_position: 186
 slug: /instruments/videomancer/maelstrom
 title: "Maelstrom"
 image: /img/instruments/videomancer/maelstrom/maelstrom_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every pixel in a video frame has a position."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import maelstrom_control_panel from '/img/instruments/videomancer/maelstrom/maelstrom_control_panel.png';
 import maelstrom_source1_field from '/img/instruments/videomancer/maelstrom/maelstrom_source1_field.png';
 import maelstrom_source2_house from '/img/instruments/videomancer/maelstrom/maelstrom_source2_house.png';
 import maelstrom_source3_collage from '/img/instruments/videomancer/maelstrom/maelstrom_source3_collage.png';
@@ -138,6 +139,8 @@ The displacement operates only in the horizontal direction — each pixel's read
 
 ## Parameter Reference
 
+<img src={maelstrom_control_panel} alt="Videomancer front panel with Maelstrom loaded"/>
+*Videomancer's front panel with Maelstrom active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

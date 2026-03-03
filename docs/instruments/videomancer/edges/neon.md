@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 202
+sidebar_position: 205
 slug: /instruments/videomancer/neon
 title: "Neon"
 image: /img/instruments/videomancer/neon/neon_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every city at dusk has them — glass tubes bent into letters and 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import neon_control_panel from '/img/instruments/videomancer/neon/neon_control_panel.png';
 import neon_source1_car from '/img/instruments/videomancer/neon/neon_source1_car.png';
 import neon_source2_sunset from '/img/instruments/videomancer/neon/neon_source2_sunset.png';
 import neon_source3_turtle from '/img/instruments/videomancer/neon/neon_source3_turtle.png';
@@ -127,6 +128,8 @@ The chrominance crossover at glow level 64 is an important design detail. Rather
 
 ## Parameter Reference
 
+<img src={neon_control_panel} alt="Videomancer front panel with Neon loaded"/>
+*Videomancer's front panel with Neon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

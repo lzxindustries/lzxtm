@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 138
+sidebar_position: 139
 slug: /instruments/videomancer/honeycomb
 title: "Honeycomb"
 image: /img/instruments/videomancer/honeycomb/honeycomb_hero.png

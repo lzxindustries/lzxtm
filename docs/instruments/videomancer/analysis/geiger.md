@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 125
+sidebar_position: 126
 slug: /instruments/videomancer/geiger
 title: "Geiger"
 image: /img/instruments/videomancer/geiger/geiger_hero_s1.png
@@ -8,6 +8,7 @@ description: "A Geiger counter measures invisible radiation by converting partic
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import geiger_control_panel from '/img/instruments/videomancer/geiger/geiger_control_panel.png';
 import geiger_source1_dog from '/img/instruments/videomancer/geiger/geiger_source1_dog.png';
 import geiger_source2_boat from '/img/instruments/videomancer/geiger/geiger_source2_boat.png';
 import geiger_source3_elephant from '/img/instruments/videomancer/geiger/geiger_source3_elephant.png';
@@ -138,6 +139,8 @@ The IIR decay in Stage 3 operates on a single register (`s_iir_y`) rather than a
 
 ## Parameter Reference
 
+<img src={geiger_control_panel} alt="Videomancer front panel with Geiger loaded"/>
+*Videomancer's front panel with Geiger active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

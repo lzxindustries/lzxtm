@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 105
+sidebar_position: 106
 slug: /instruments/videomancer/faultplane
 title: "Faultplane"
 image: /img/instruments/videomancer/faultplane/faultplane_hero_s1.png
@@ -8,6 +8,7 @@ description: "Faultplane is a spatial displacement and zone-blanking program tha
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import faultplane_control_panel from '/img/instruments/videomancer/faultplane/faultplane_control_panel.png';
 import faultplane_source1_dog from '/img/instruments/videomancer/faultplane/faultplane_source1_dog.png';
 import faultplane_source2_cat from '/img/instruments/videomancer/faultplane/faultplane_source2_cat.png';
 import faultplane_source3_clouds from '/img/instruments/videomancer/faultplane/faultplane_source3_clouds.png';
@@ -124,6 +125,8 @@ The architecture splits naturally into two domains: the **timing domain** (accum
 
 ## Parameter Reference
 
+<img src={faultplane_control_panel} alt="Videomancer front panel with Faultplane loaded"/>
+*Videomancer's front panel with Faultplane active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

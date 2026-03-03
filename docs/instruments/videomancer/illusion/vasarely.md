@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 314
+sidebar_position: 320
 slug: /instruments/videomancer/vasarely
 title: "Vasarely"
-image: /img/instruments/videomancer/vasarely/vasarely_hero.png
+image: /img/instruments/videomancer/vasarely/vasarely_hero_s1.png
 description: "Victor Vasarely (1906–1997) was the father of Op Art — a movement that used precise geometric patterns and optical illusions to create the sensation of depth, motion, and vibration on a flat surface."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import vasarely_hero from '/img/instruments/videomancer/vasarely/vasarely_hero.png';
 import vasarely_control_panel from '/img/instruments/videomancer/vasarely/vasarely_control_panel.png';
-import vasarely_exercise1_result from '/img/instruments/videomancer/vasarely/vasarely_exercise1_result.png';
-import vasarely_exercise2_result from '/img/instruments/videomancer/vasarely/vasarely_exercise2_result.png';
-import vasarely_exercise3_result from '/img/instruments/videomancer/vasarely/vasarely_exercise3_result.png';
-import vasarely_source1_kodim01 from '/img/instruments/videomancer/vasarely/vasarely_source1_kodim01.png';
-import vasarely_source2_kodim02 from '/img/instruments/videomancer/vasarely/vasarely_source2_kodim02.png';
-import vasarely_source3_kodim01_bw from '/img/instruments/videomancer/vasarely/vasarely_source3_kodim01_bw.png';
+import vasarely_source1_ballerina from '/img/instruments/videomancer/vasarely/vasarely_source1_ballerina.png';
+import vasarely_source2_fruit from '/img/instruments/videomancer/vasarely/vasarely_source2_fruit.png';
+import vasarely_source3_elephant from '/img/instruments/videomancer/vasarely/vasarely_source3_elephant.png';
+import vasarely_source4_pattern from '/img/instruments/videomancer/vasarely/vasarely_source4_pattern.png';
+import vasarely_source5_woman from '/img/instruments/videomancer/vasarely/vasarely_source5_woman.png';
+import vasarely_source6_wood from '/img/instruments/videomancer/vasarely/vasarely_source6_wood.png';
+import vasarely_hero_s1 from '/img/instruments/videomancer/vasarely/vasarely_hero_s1.png';
+import vasarely_hero_s2 from '/img/instruments/videomancer/vasarely/vasarely_hero_s2.png';
+import vasarely_hero_s3 from '/img/instruments/videomancer/vasarely/vasarely_hero_s3.png';
+import vasarely_hero_s4 from '/img/instruments/videomancer/vasarely/vasarely_hero_s4.png';
+import vasarely_hero_s5 from '/img/instruments/videomancer/vasarely/vasarely_hero_s5.png';
+import vasarely_hero_s6 from '/img/instruments/videomancer/vasarely/vasarely_hero_s6.png';
+import vasarely_ex1_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s1.png';
+import vasarely_ex1_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s2.png';
+import vasarely_ex1_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s3.png';
+import vasarely_ex1_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s4.png';
+import vasarely_ex1_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s5.png';
+import vasarely_ex1_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s6.png';
+import vasarely_ex2_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s1.png';
+import vasarely_ex2_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s2.png';
+import vasarely_ex2_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s3.png';
+import vasarely_ex2_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s4.png';
+import vasarely_ex2_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s5.png';
+import vasarely_ex2_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s6.png';
+import vasarely_ex3_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s1.png';
+import vasarely_ex3_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s2.png';
+import vasarely_ex3_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s3.png';
+import vasarely_ex3_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s4.png';
+import vasarely_ex3_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s5.png';
+import vasarely_ex3_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s6.png';
 
 # Vasarely
 
@@ -23,9 +46,12 @@ import vasarely_source3_kodim01_bw from '/img/instruments/videomancer/vasarely/v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_hero },
-    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_hero },
-    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_hero },
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_hero_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_hero_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_hero_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_hero_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_hero_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_hero_s6 },
   ]}
 />
 *Vasarely applying spherical grid bulge deformation to live video, producing an Op Art composition where a checkerboard pattern warps around an invisible sphere as if painted on its surface.*
@@ -219,9 +245,12 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise1_result },
-    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise1_result },
-    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise1_result },
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex1_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex1_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex1_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex1_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex1_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex1_s6 },
   ]}
 />
 *The Classic Orb — simulated result across source images.*
@@ -244,9 +273,12 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise2_result },
-    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise2_result },
-    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise2_result },
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex2_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex2_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex2_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex2_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex2_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex2_s6 },
   ]}
 />
 *Ripple Field — simulated result across source images.*
@@ -269,9 +301,12 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: vasarely_source1_kodim01, after: vasarely_exercise3_result },
-    { label: "Kodim02", before: vasarely_source2_kodim02, after: vasarely_exercise3_result },
-    { label: "Kodim01 B&W", before: vasarely_source3_kodim01_bw, after: vasarely_exercise3_result },
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex3_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex3_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex3_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex3_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex3_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex3_s6 },
   ]}
 />
 *Asymmetric Saddle Composition — simulated result across source images.*

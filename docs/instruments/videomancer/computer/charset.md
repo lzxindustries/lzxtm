@@ -8,6 +8,7 @@ description: "Every screen you have ever read — every terminal, every text edi
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import charset_control_panel from '/img/instruments/videomancer/charset/charset_control_panel.png';
 import charset_source1_runner from '/img/instruments/videomancer/charset/charset_source1_runner.png';
 import charset_source2_boat from '/img/instruments/videomancer/charset/charset_source2_boat.png';
 import charset_source3_clouds from '/img/instruments/videomancer/charset/charset_source3_clouds.png';
@@ -143,6 +144,8 @@ The pattern generator is purely combinatorial: no ROM, no memory, no BRAM. Each 
 
 ## Parameter Reference
 
+<img src={charset_control_panel} alt="Videomancer front panel with Charset loaded"/>
+*Videomancer's front panel with Charset active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

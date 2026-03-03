@@ -8,6 +8,7 @@ description: "In the early 1990s, the NewTek Video Toaster turned commodity hard
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import cloudgate_control_panel from '/img/instruments/videomancer/cloudgate/cloudgate_control_panel.png';
 import cloudgate_source1_house from '/img/instruments/videomancer/cloudgate/cloudgate_source1_house.png';
 import cloudgate_source2_car from '/img/instruments/videomancer/cloudgate/cloudgate_source2_car.png';
 import cloudgate_source3_collage from '/img/instruments/videomancer/cloudgate/cloudgate_source3_collage.png';
@@ -132,6 +133,8 @@ The density-to-opacity conversion applies a hard threshold followed by a ×4 gai
 
 ## Parameter Reference
 
+<img src={cloudgate_control_panel} alt="Videomancer front panel with Cloudgate loaded"/>
+*Videomancer's front panel with Cloudgate active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

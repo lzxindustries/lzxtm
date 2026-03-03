@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 100
+sidebar_position: 101
 slug: /instruments/videomancer/encore
 title: "Encore"
 image: /img/instruments/videomancer/encore/encore_hero_s1.png
@@ -8,6 +8,7 @@ description: "Broadcast television invented picture-in-picture to show two thing
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import encore_control_panel from '/img/instruments/videomancer/encore/encore_control_panel.png';
 import encore_source1_ballerina from '/img/instruments/videomancer/encore/encore_source1_ballerina.png';
 import encore_source2_boat from '/img/instruments/videomancer/encore/encore_source2_boat.png';
 import encore_source3_turtle from '/img/instruments/videomancer/encore/encore_source3_turtle.png';
@@ -132,6 +133,8 @@ The pipeline has two parallel paths: the processing path computes per-pixel wind
 
 ## Parameter Reference
 
+<img src={encore_control_panel} alt="Videomancer front panel with Encore loaded"/>
+*Videomancer's front panel with Encore active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

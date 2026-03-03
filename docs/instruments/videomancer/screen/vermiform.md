@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 316
+sidebar_position: 322
 slug: /instruments/videomancer/vermiform
 title: "Vermiform"
 image: /img/instruments/videomancer/vermiform/vermiform_hero.png

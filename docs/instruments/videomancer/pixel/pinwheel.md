@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 227
+sidebar_position: 230
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
 image: /img/instruments/videomancer/pinwheel/pinwheel_hero_s1.png
@@ -8,6 +8,7 @@ description: "Color in digital video is encoded as numbers."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import pinwheel_control_panel from '/img/instruments/videomancer/pinwheel/pinwheel_control_panel.png';
 import pinwheel_source1_car from '/img/instruments/videomancer/pinwheel/pinwheel_source1_car.png';
 import pinwheel_source2_cat from '/img/instruments/videomancer/pinwheel/pinwheel_source2_cat.png';
 import pinwheel_source3_collage from '/img/instruments/videomancer/pinwheel/pinwheel_source3_collage.png';
@@ -120,6 +121,8 @@ Two key interactions: (1) **Luminance drives chrominance**: The hue rotation ang
 
 ## Parameter Reference
 
+<img src={pinwheel_control_panel} alt="Videomancer front panel with Pinwheel loaded"/>
+*Videomancer's front panel with Pinwheel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

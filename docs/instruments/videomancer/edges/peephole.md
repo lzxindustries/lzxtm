@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 217
+sidebar_position: 220
 slug: /instruments/videomancer/peephole
 title: "Peephole"
 image: /img/instruments/videomancer/peephole/peephole_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every video synthesizer needs a way to isolate part of the frame �
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import peephole_control_panel from '/img/instruments/videomancer/peephole/peephole_control_panel.png';
 import peephole_source1_ballerina from '/img/instruments/videomancer/peephole/peephole_source1_ballerina.png';
 import peephole_source2_car from '/img/instruments/videomancer/peephole/peephole_source2_car.png';
 import peephole_source3_collage from '/img/instruments/videomancer/peephole/peephole_source3_collage.png';
@@ -148,6 +149,8 @@ The output mix scales luma directly (zero key = black) but applies chroma relati
 
 ## Parameter Reference
 
+<img src={peephole_control_panel} alt="Videomancer front panel with Peephole loaded"/>
+*Videomancer's front panel with Peephole active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

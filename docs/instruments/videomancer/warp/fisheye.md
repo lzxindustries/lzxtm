@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 112
+sidebar_position: 113
 slug: /instruments/videomancer/fisheye
 title: "Fisheye"
 image: /img/instruments/videomancer/fisheye/fisheye_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every lens bends light."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import fisheye_control_panel from '/img/instruments/videomancer/fisheye/fisheye_control_panel.png';
 import fisheye_source1_fruit from '/img/instruments/videomancer/fisheye/fisheye_source1_fruit.png';
 import fisheye_source2_parrot from '/img/instruments/videomancer/fisheye/fisheye_source2_parrot.png';
 import fisheye_source3_elephant from '/img/instruments/videomancer/fisheye/fisheye_source3_elephant.png';
@@ -141,6 +142,8 @@ The border fill stage overwrites the darkening result when active, replacing out
 
 ## Parameter Reference
 
+<img src={fisheye_control_panel} alt="Videomancer front panel with Fisheye loaded"/>
+*Videomancer's front panel with Fisheye active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

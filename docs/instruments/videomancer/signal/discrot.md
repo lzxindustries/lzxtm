@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 84
+sidebar_position: 85
 slug: /instruments/videomancer/discrot
 title: "Discrot"
 image: /img/instruments/videomancer/discrot/discrot_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every technology carries the seeds of its own decay."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import discrot_control_panel from '/img/instruments/videomancer/discrot/discrot_control_panel.png';
 import discrot_source1_skull from '/img/instruments/videomancer/discrot/discrot_source1_skull.png';
 import discrot_source2_car from '/img/instruments/videomancer/discrot/discrot_source2_car.png';
 import discrot_source3_turtle from '/img/instruments/videomancer/discrot/discrot_source3_turtle.png';
@@ -151,6 +152,8 @@ The processing chain applies damage effects only to pixels that fall within the 
 
 ## Parameter Reference
 
+<img src={discrot_control_panel} alt="Videomancer front panel with Discrot loaded"/>
+*Videomancer's front panel with Discrot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 257
+sidebar_position: 261
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
 image: /img/instruments/videomancer/schufftan/schufftan_hero_s1.png
@@ -8,6 +8,7 @@ description: "The Schüfftan process was a visual effects technique invented in 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import schufftan_control_panel from '/img/instruments/videomancer/schufftan/schufftan_control_panel.png';
 import schufftan_source1_parrot from '/img/instruments/videomancer/schufftan/schufftan_source1_parrot.png';
 import schufftan_source2_dog from '/img/instruments/videomancer/schufftan/schufftan_source2_dog.png';
 import schufftan_source3_turtle from '/img/instruments/videomancer/schufftan/schufftan_source3_turtle.png';
@@ -144,6 +145,8 @@ The pipeline has two distinct phases: key generation (Stages 0–2) and mirror p
 
 ## Parameter Reference
 
+<img src={schufftan_control_panel} alt="Videomancer front panel with Schufftan loaded"/>
+*Videomancer's front panel with Schufftan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

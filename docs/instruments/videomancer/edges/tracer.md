@@ -1,21 +1,44 @@
 ---
 draft: true
-sidebar_position: 308
+sidebar_position: 313
 slug: /instruments/videomancer/tracer
 title: "Tracer"
-image: /img/instruments/videomancer/tracer/tracer_hero.png
+image: /img/instruments/videomancer/tracer/tracer_hero_s1.png
 description: "Every child of the 1970s and 1980s remembers the feeling: two white knobs, a silver screen, and a stylus hidden behind a pane of glass, scraping aluminum powder off to reveal dark lines."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import tracer_hero from '/img/instruments/videomancer/tracer/tracer_hero.png';
 import tracer_control_panel from '/img/instruments/videomancer/tracer/tracer_control_panel.png';
-import tracer_exercise1_result from '/img/instruments/videomancer/tracer/tracer_exercise1_result.png';
-import tracer_exercise2_result from '/img/instruments/videomancer/tracer/tracer_exercise2_result.png';
-import tracer_exercise3_result from '/img/instruments/videomancer/tracer/tracer_exercise3_result.png';
-import tracer_source1_kodim02 from '/img/instruments/videomancer/tracer/tracer_source1_kodim02.png';
-import tracer_source2_kodim07 from '/img/instruments/videomancer/tracer/tracer_source2_kodim07.png';
-import tracer_source3_kodim01_bw from '/img/instruments/videomancer/tracer/tracer_source3_kodim01_bw.png';
+import tracer_source1_field from '/img/instruments/videomancer/tracer/tracer_source1_field.png';
+import tracer_source2_house from '/img/instruments/videomancer/tracer/tracer_source2_house.png';
+import tracer_source3_collage from '/img/instruments/videomancer/tracer/tracer_source3_collage.png';
+import tracer_source4_pattern from '/img/instruments/videomancer/tracer/tracer_source4_pattern.png';
+import tracer_source5_girl from '/img/instruments/videomancer/tracer/tracer_source5_girl.png';
+import tracer_source6_wood from '/img/instruments/videomancer/tracer/tracer_source6_wood.png';
+import tracer_hero_s1 from '/img/instruments/videomancer/tracer/tracer_hero_s1.png';
+import tracer_hero_s2 from '/img/instruments/videomancer/tracer/tracer_hero_s2.png';
+import tracer_hero_s3 from '/img/instruments/videomancer/tracer/tracer_hero_s3.png';
+import tracer_hero_s4 from '/img/instruments/videomancer/tracer/tracer_hero_s4.png';
+import tracer_hero_s5 from '/img/instruments/videomancer/tracer/tracer_hero_s5.png';
+import tracer_hero_s6 from '/img/instruments/videomancer/tracer/tracer_hero_s6.png';
+import tracer_ex1_s1 from '/img/instruments/videomancer/tracer/tracer_ex1_s1.png';
+import tracer_ex1_s2 from '/img/instruments/videomancer/tracer/tracer_ex1_s2.png';
+import tracer_ex1_s3 from '/img/instruments/videomancer/tracer/tracer_ex1_s3.png';
+import tracer_ex1_s4 from '/img/instruments/videomancer/tracer/tracer_ex1_s4.png';
+import tracer_ex1_s5 from '/img/instruments/videomancer/tracer/tracer_ex1_s5.png';
+import tracer_ex1_s6 from '/img/instruments/videomancer/tracer/tracer_ex1_s6.png';
+import tracer_ex2_s1 from '/img/instruments/videomancer/tracer/tracer_ex2_s1.png';
+import tracer_ex2_s2 from '/img/instruments/videomancer/tracer/tracer_ex2_s2.png';
+import tracer_ex2_s3 from '/img/instruments/videomancer/tracer/tracer_ex2_s3.png';
+import tracer_ex2_s4 from '/img/instruments/videomancer/tracer/tracer_ex2_s4.png';
+import tracer_ex2_s5 from '/img/instruments/videomancer/tracer/tracer_ex2_s5.png';
+import tracer_ex2_s6 from '/img/instruments/videomancer/tracer/tracer_ex2_s6.png';
+import tracer_ex3_s1 from '/img/instruments/videomancer/tracer/tracer_ex3_s1.png';
+import tracer_ex3_s2 from '/img/instruments/videomancer/tracer/tracer_ex3_s2.png';
+import tracer_ex3_s3 from '/img/instruments/videomancer/tracer/tracer_ex3_s3.png';
+import tracer_ex3_s4 from '/img/instruments/videomancer/tracer/tracer_ex3_s4.png';
+import tracer_ex3_s5 from '/img/instruments/videomancer/tracer/tracer_ex3_s5.png';
+import tracer_ex3_s6 from '/img/instruments/videomancer/tracer/tracer_ex3_s6.png';
 
 # Tracer
 
@@ -23,9 +46,12 @@ import tracer_source3_kodim01_bw from '/img/instruments/videomancer/tracer/trace
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_hero },
-    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_hero },
-    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_hero },
+    { label: "Field", before: tracer_source1_field, after: tracer_hero_s1 },
+    { label: "House", before: tracer_source2_house, after: tracer_hero_s2 },
+    { label: "Collage", before: tracer_source3_collage, after: tracer_hero_s3 },
+    { label: "Pattern", before: tracer_source4_pattern, after: tracer_hero_s4 },
+    { label: "Girl", before: tracer_source5_girl, after: tracer_hero_s5 },
+    { label: "Wood", before: tracer_source6_wood, after: tracer_hero_s6 },
   ]}
 />
 *Tracer accumulating edge contours onto a persistent canvas, rendering the aluminum-powder texture of a miniature drawing toy.*
@@ -220,9 +246,12 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise1_result },
-    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise1_result },
-    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise1_result },
+    { label: "Field", before: tracer_source1_field, after: tracer_ex1_s1 },
+    { label: "House", before: tracer_source2_house, after: tracer_ex1_s2 },
+    { label: "Collage", before: tracer_source3_collage, after: tracer_ex1_s3 },
+    { label: "Pattern", before: tracer_source4_pattern, after: tracer_ex1_s4 },
+    { label: "Girl", before: tracer_source5_girl, after: tracer_ex1_s5 },
+    { label: "Wood", before: tracer_source6_wood, after: tracer_ex1_s6 },
   ]}
 />
 *Live Contour Drawing — simulated result across source images.*
@@ -244,9 +273,12 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise2_result },
-    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise2_result },
-    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise2_result },
+    { label: "Field", before: tracer_source1_field, after: tracer_ex2_s1 },
+    { label: "House", before: tracer_source2_house, after: tracer_ex2_s2 },
+    { label: "Collage", before: tracer_source3_collage, after: tracer_ex2_s3 },
+    { label: "Pattern", before: tracer_source4_pattern, after: tracer_ex2_s4 },
+    { label: "Girl", before: tracer_source5_girl, after: tracer_ex2_s5 },
+    { label: "Wood", before: tracer_source6_wood, after: tracer_ex2_s6 },
   ]}
 />
 *Classic Etch A Sketch Aesthetic — simulated result across source images.*
@@ -269,9 +301,12 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: tracer_source1_kodim02, after: tracer_exercise3_result },
-    { label: "Kodim07", before: tracer_source2_kodim07, after: tracer_exercise3_result },
-    { label: "Kodim01 B&W", before: tracer_source3_kodim01_bw, after: tracer_exercise3_result },
+    { label: "Field", before: tracer_source1_field, after: tracer_ex3_s1 },
+    { label: "House", before: tracer_source2_house, after: tracer_ex3_s2 },
+    { label: "Collage", before: tracer_source3_collage, after: tracer_ex3_s3 },
+    { label: "Pattern", before: tracer_source4_pattern, after: tracer_ex3_s4 },
+    { label: "Girl", before: tracer_source5_girl, after: tracer_ex3_s5 },
+    { label: "Wood", before: tracer_source6_wood, after: tracer_ex3_s6 },
   ]}
 />
 *Inverted Trace with Motion Trails — simulated result across source images.*

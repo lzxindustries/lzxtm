@@ -1,34 +1,27 @@
 ---
 draft: true
-sidebar_position: 158
+sidebar_position: 160
 slug: /instruments/videomancer/killscreen
 title: "Killscreen"
 image: /img/instruments/videomancer/killscreen/killscreen_hero.png
 description: "On September 21, 1982, Billy Mitchell became the first person to reach screen 256 of Pac-Man — and discovered that the game's level counter overflowed its 8-bit storage."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import killscreen_hero from '/img/instruments/videomancer/killscreen/killscreen_hero.png';
+import killscreen_before_after from '/img/instruments/videomancer/killscreen/killscreen_before_after.png';
 import killscreen_control_panel from '/img/instruments/videomancer/killscreen/killscreen_control_panel.png';
-import killscreen_exercise1_result from '/img/instruments/videomancer/killscreen/killscreen_exercise1_result.png';
-import killscreen_exercise2_result from '/img/instruments/videomancer/killscreen/killscreen_exercise2_result.png';
-import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen/killscreen_exercise3_result.png';
-import killscreen_source1_kodim15 from '/img/instruments/videomancer/killscreen/killscreen_source1_kodim15.png';
-import killscreen_source2_kodim03 from '/img/instruments/videomancer/killscreen/killscreen_source2_kodim03.png';
-import killscreen_source3_kodim15_bw from '/img/instruments/videomancer/killscreen/killscreen_source3_kodim15_bw.png';
+import killscreen_exercise1_result from '/img/instruments/videomancer/killscreen/killscreen_exercise1_result.gif';
+import killscreen_exercise2_result from '/img/instruments/videomancer/killscreen/killscreen_exercise2_result.gif';
+import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen/killscreen_exercise3_result.gif';
 
 # Killscreen
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: killscreen_source1_kodim15, after: killscreen_hero },
-    { label: "Kodim03", before: killscreen_source2_kodim03, after: killscreen_hero },
-    { label: "Kodim15 B&W", before: killscreen_source3_kodim15_bw, after: killscreen_hero },
-  ]}
-/>
+<img src={killscreen_hero} alt="Killscreen hero image"/>
 *Killscreen corrupting a video feed into tile-mapped glitch patterns inspired by the Pac-Man level 256 overflow bug.*
+<img src={killscreen_before_after} alt="Before and after comparison"/>
+*Left: unprocessed source. Right: Killscreen applied.*
 
 ---
 
@@ -208,13 +201,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 ### Exercise 1: Split-Screen Corruption
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: killscreen_source1_kodim15, after: killscreen_exercise1_result },
-    { label: "Kodim03", before: killscreen_source2_kodim03, after: killscreen_exercise1_result },
-    { label: "Kodim15 B&W", before: killscreen_source3_kodim15_bw, after: killscreen_exercise1_result },
-  ]}
-/>
+<img src={killscreen_exercise1_result} alt="Split-Screen Corruption result"/>
 *Split-Screen Corruption — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable subjects and saturated color.
 
@@ -232,13 +219,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 ### Exercise 2: Pac-Man Mode
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: killscreen_source1_kodim15, after: killscreen_exercise2_result },
-    { label: "Kodim03", before: killscreen_source2_kodim03, after: killscreen_exercise2_result },
-    { label: "Kodim15 B&W", before: killscreen_source3_kodim15_bw, after: killscreen_exercise2_result },
-  ]}
-/>
+<img src={killscreen_exercise2_result} alt="Pac-Man Mode result"/>
 *Pac-Man Mode — simulated result across source images.*
 **Source**: Footage with geometric patterns or text — anything where tile displacement is clearly visible.
 
@@ -256,13 +237,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 ### Exercise 3: 8-Bit Breakdown
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Kodim15", before: killscreen_source1_kodim15, after: killscreen_exercise3_result },
-    { label: "Kodim03", before: killscreen_source2_kodim03, after: killscreen_exercise3_result },
-    { label: "Kodim15 B&W", before: killscreen_source3_kodim15_bw, after: killscreen_exercise3_result },
-  ]}
-/>
+<img src={killscreen_exercise3_result} alt="8-Bit Breakdown result"/>
 *8-Bit Breakdown — simulated result across source images.*
 **Source**: Any dynamic video — music performance, abstract patterns, or live camera.
 

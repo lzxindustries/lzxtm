@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 74
+sidebar_position: 75
 slug: /instruments/videomancer/dazzle
 title: "Dazzle"
 image: /img/instruments/videomancer/dazzle/dazzle_hero_s1.png
@@ -8,6 +8,7 @@ description: "Every broadcast television viewer has seen the sparkle effect — 
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import dazzle_control_panel from '/img/instruments/videomancer/dazzle/dazzle_control_panel.png';
 import dazzle_source1_parrot from '/img/instruments/videomancer/dazzle/dazzle_source1_parrot.png';
 import dazzle_source2_boat from '/img/instruments/videomancer/dazzle/dazzle_source2_boat.png';
 import dazzle_source3_collage from '/img/instruments/videomancer/dazzle/dazzle_source3_collage.png';
@@ -127,6 +128,8 @@ The critical interaction is between threshold detection and the shape kernel. Th
 
 ## Parameter Reference
 
+<img src={dazzle_control_panel} alt="Videomancer front panel with Dazzle loaded"/>
+*Videomancer's front panel with Dazzle active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
