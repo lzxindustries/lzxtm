@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 39
+sidebar_position: 40
 slug: /instruments/videomancer/cathode
 title: "Cathode"
-image: /img/instruments/videomancer/cathode/cathode_hero.png
+image: /img/instruments/videomancer/cathode/cathode_hero_s1.png
 description: "Lightning is nature's most dramatic display of electrical energy — a branching, jagged path of ionized air that exists for less than a millisecond but burns into visual memory."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cathode_hero from '/img/instruments/videomancer/cathode/cathode_hero.png';
-import cathode_control_panel from '/img/instruments/videomancer/cathode/cathode_control_panel.png';
-import cathode_exercise1_result from '/img/instruments/videomancer/cathode/cathode_exercise1_result.png';
-import cathode_exercise2_result from '/img/instruments/videomancer/cathode/cathode_exercise2_result.png';
-import cathode_exercise3_result from '/img/instruments/videomancer/cathode/cathode_exercise3_result.png';
-import cathode_source1_kodim15 from '/img/instruments/videomancer/cathode/cathode_source1_kodim15.png';
-import cathode_source2_kodim03 from '/img/instruments/videomancer/cathode/cathode_source2_kodim03.png';
-import cathode_source3_kodim13_bw from '/img/instruments/videomancer/cathode/cathode_source3_kodim13_bw.png';
+import cathode_source1_ballerina from '/img/instruments/videomancer/cathode/cathode_source1_ballerina.png';
+import cathode_source2_car from '/img/instruments/videomancer/cathode/cathode_source2_car.png';
+import cathode_source3_collage from '/img/instruments/videomancer/cathode/cathode_source3_collage.png';
+import cathode_source4_pattern from '/img/instruments/videomancer/cathode/cathode_source4_pattern.png';
+import cathode_source5_man from '/img/instruments/videomancer/cathode/cathode_source5_man.png';
+import cathode_source6_knit from '/img/instruments/videomancer/cathode/cathode_source6_knit.png';
+import cathode_hero_s1 from '/img/instruments/videomancer/cathode/cathode_hero_s1.png';
+import cathode_hero_s2 from '/img/instruments/videomancer/cathode/cathode_hero_s2.png';
+import cathode_hero_s3 from '/img/instruments/videomancer/cathode/cathode_hero_s3.png';
+import cathode_hero_s4 from '/img/instruments/videomancer/cathode/cathode_hero_s4.png';
+import cathode_hero_s5 from '/img/instruments/videomancer/cathode/cathode_hero_s5.png';
+import cathode_hero_s6 from '/img/instruments/videomancer/cathode/cathode_hero_s6.png';
+import cathode_ex1_s1 from '/img/instruments/videomancer/cathode/cathode_ex1_s1.png';
+import cathode_ex1_s2 from '/img/instruments/videomancer/cathode/cathode_ex1_s2.png';
+import cathode_ex1_s3 from '/img/instruments/videomancer/cathode/cathode_ex1_s3.png';
+import cathode_ex1_s4 from '/img/instruments/videomancer/cathode/cathode_ex1_s4.png';
+import cathode_ex1_s5 from '/img/instruments/videomancer/cathode/cathode_ex1_s5.png';
+import cathode_ex1_s6 from '/img/instruments/videomancer/cathode/cathode_ex1_s6.png';
+import cathode_ex2_s1 from '/img/instruments/videomancer/cathode/cathode_ex2_s1.png';
+import cathode_ex2_s2 from '/img/instruments/videomancer/cathode/cathode_ex2_s2.png';
+import cathode_ex2_s3 from '/img/instruments/videomancer/cathode/cathode_ex2_s3.png';
+import cathode_ex2_s4 from '/img/instruments/videomancer/cathode/cathode_ex2_s4.png';
+import cathode_ex2_s5 from '/img/instruments/videomancer/cathode/cathode_ex2_s5.png';
+import cathode_ex2_s6 from '/img/instruments/videomancer/cathode/cathode_ex2_s6.png';
+import cathode_ex3_s1 from '/img/instruments/videomancer/cathode/cathode_ex3_s1.png';
+import cathode_ex3_s2 from '/img/instruments/videomancer/cathode/cathode_ex3_s2.png';
+import cathode_ex3_s3 from '/img/instruments/videomancer/cathode/cathode_ex3_s3.png';
+import cathode_ex3_s4 from '/img/instruments/videomancer/cathode/cathode_ex3_s4.png';
+import cathode_ex3_s5 from '/img/instruments/videomancer/cathode/cathode_ex3_s5.png';
+import cathode_ex3_s6 from '/img/instruments/videomancer/cathode/cathode_ex3_s6.png';
 
 # Cathode
 
@@ -23,9 +45,12 @@ import cathode_source3_kodim13_bw from '/img/instruments/videomancer/cathode/cat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_hero },
-    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_hero },
-    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_hero },
+    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_hero_s1 },
+    { label: "Car", before: cathode_source2_car, after: cathode_hero_s2 },
+    { label: "Collage", before: cathode_source3_collage, after: cathode_hero_s3 },
+    { label: "Pattern", before: cathode_source4_pattern, after: cathode_hero_s4 },
+    { label: "Man", before: cathode_source5_man, after: cathode_hero_s5 },
+    { label: "Knit", before: cathode_source6_knit, after: cathode_hero_s6 },
   ]}
 />
 *Cathode striking a procedural lightning bolt across a nighttime cityscape, the electric-blue glow bleeding into the surrounding video.*
@@ -115,9 +140,6 @@ The bolt path is generated entirely during the vertical blanking interval, filli
 ---
 
 ## Parameter Reference
-
-<img src={cathode_control_panel} alt="Videomancer front panel with Cathode loaded"/>
-*Videomancer's front panel with Cathode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,9 +244,12 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise1_result },
-    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise1_result },
-    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise1_result },
+    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex1_s1 },
+    { label: "Car", before: cathode_source2_car, after: cathode_ex1_s2 },
+    { label: "Collage", before: cathode_source3_collage, after: cathode_ex1_s3 },
+    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex1_s4 },
+    { label: "Man", before: cathode_source5_man, after: cathode_ex1_s5 },
+    { label: "Knit", before: cathode_source6_knit, after: cathode_ex1_s6 },
   ]}
 />
 *Static Bolt Anatomy — simulated result across source images.*
@@ -247,9 +272,12 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise2_result },
-    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise2_result },
-    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise2_result },
+    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex2_s1 },
+    { label: "Car", before: cathode_source2_car, after: cathode_ex2_s2 },
+    { label: "Collage", before: cathode_source3_collage, after: cathode_ex2_s3 },
+    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex2_s4 },
+    { label: "Man", before: cathode_source5_man, after: cathode_ex2_s5 },
+    { label: "Knit", before: cathode_source6_knit, after: cathode_ex2_s6 },
   ]}
 />
 *Flash-Hold-Fade Animation — simulated result across source images.*
@@ -272,9 +300,12 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cathode_source1_kodim15, after: cathode_exercise3_result },
-    { label: "Kodim03", before: cathode_source2_kodim03, after: cathode_exercise3_result },
-    { label: "Kodim13 B&W", before: cathode_source3_kodim13_bw, after: cathode_exercise3_result },
+    { label: "Ballerina", before: cathode_source1_ballerina, after: cathode_ex3_s1 },
+    { label: "Car", before: cathode_source2_car, after: cathode_ex3_s2 },
+    { label: "Collage", before: cathode_source3_collage, after: cathode_ex3_s3 },
+    { label: "Pattern", before: cathode_source4_pattern, after: cathode_ex3_s4 },
+    { label: "Man", before: cathode_source5_man, after: cathode_ex3_s5 },
+    { label: "Knit", before: cathode_source6_knit, after: cathode_ex3_s6 },
   ]}
 />
 *Palette Exploration — simulated result across source images.*

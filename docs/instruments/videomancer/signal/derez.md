@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 77
+sidebar_position: 80
 slug: /instruments/videomancer/derez
 title: "Derez"
-image: /img/instruments/videomancer/derez/derez_hero.png
+image: /img/instruments/videomancer/derez/derez_hero_s1.png
 description: "Real memory corruption is never random."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import derez_hero from '/img/instruments/videomancer/derez/derez_hero.png';
-import derez_control_panel from '/img/instruments/videomancer/derez/derez_control_panel.png';
-import derez_exercise1_result from '/img/instruments/videomancer/derez/derez_exercise1_result.png';
-import derez_exercise2_result from '/img/instruments/videomancer/derez/derez_exercise2_result.png';
-import derez_exercise3_result from '/img/instruments/videomancer/derez/derez_exercise3_result.png';
-import derez_source1_kodim15 from '/img/instruments/videomancer/derez/derez_source1_kodim15.png';
-import derez_source2_kodim01 from '/img/instruments/videomancer/derez/derez_source2_kodim01.png';
-import derez_source3_stream_bridge_512 from '/img/instruments/videomancer/derez/derez_source3_stream_bridge_512.png';
+import derez_source1_field from '/img/instruments/videomancer/derez/derez_source1_field.png';
+import derez_source2_skull from '/img/instruments/videomancer/derez/derez_source2_skull.png';
+import derez_source3_elephant from '/img/instruments/videomancer/derez/derez_source3_elephant.png';
+import derez_source4_pattern from '/img/instruments/videomancer/derez/derez_source4_pattern.png';
+import derez_source5_man from '/img/instruments/videomancer/derez/derez_source5_man.png';
+import derez_source6_wood from '/img/instruments/videomancer/derez/derez_source6_wood.png';
+import derez_hero_s1 from '/img/instruments/videomancer/derez/derez_hero_s1.png';
+import derez_hero_s2 from '/img/instruments/videomancer/derez/derez_hero_s2.png';
+import derez_hero_s3 from '/img/instruments/videomancer/derez/derez_hero_s3.png';
+import derez_hero_s4 from '/img/instruments/videomancer/derez/derez_hero_s4.png';
+import derez_hero_s5 from '/img/instruments/videomancer/derez/derez_hero_s5.png';
+import derez_hero_s6 from '/img/instruments/videomancer/derez/derez_hero_s6.png';
+import derez_ex1_s1 from '/img/instruments/videomancer/derez/derez_ex1_s1.png';
+import derez_ex1_s2 from '/img/instruments/videomancer/derez/derez_ex1_s2.png';
+import derez_ex1_s3 from '/img/instruments/videomancer/derez/derez_ex1_s3.png';
+import derez_ex1_s4 from '/img/instruments/videomancer/derez/derez_ex1_s4.png';
+import derez_ex1_s5 from '/img/instruments/videomancer/derez/derez_ex1_s5.png';
+import derez_ex1_s6 from '/img/instruments/videomancer/derez/derez_ex1_s6.png';
+import derez_ex2_s1 from '/img/instruments/videomancer/derez/derez_ex2_s1.png';
+import derez_ex2_s2 from '/img/instruments/videomancer/derez/derez_ex2_s2.png';
+import derez_ex2_s3 from '/img/instruments/videomancer/derez/derez_ex2_s3.png';
+import derez_ex2_s4 from '/img/instruments/videomancer/derez/derez_ex2_s4.png';
+import derez_ex2_s5 from '/img/instruments/videomancer/derez/derez_ex2_s5.png';
+import derez_ex2_s6 from '/img/instruments/videomancer/derez/derez_ex2_s6.png';
+import derez_ex3_s1 from '/img/instruments/videomancer/derez/derez_ex3_s1.png';
+import derez_ex3_s2 from '/img/instruments/videomancer/derez/derez_ex3_s2.png';
+import derez_ex3_s3 from '/img/instruments/videomancer/derez/derez_ex3_s3.png';
+import derez_ex3_s4 from '/img/instruments/videomancer/derez/derez_ex3_s4.png';
+import derez_ex3_s5 from '/img/instruments/videomancer/derez/derez_ex3_s5.png';
+import derez_ex3_s6 from '/img/instruments/videomancer/derez/derez_ex3_s6.png';
 
 # Derez
 
@@ -23,9 +45,12 @@ import derez_source3_stream_bridge_512 from '/img/instruments/videomancer/derez/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: derez_source1_kodim15, after: derez_hero },
-    { label: "Kodim01", before: derez_source2_kodim01, after: derez_hero },
-    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_hero },
+    { label: "Field", before: derez_source1_field, after: derez_hero_s1 },
+    { label: "Skull", before: derez_source2_skull, after: derez_hero_s2 },
+    { label: "Elephant", before: derez_source3_elephant, after: derez_hero_s3 },
+    { label: "Pattern", before: derez_source4_pattern, after: derez_hero_s4 },
+    { label: "Man", before: derez_source5_man, after: derez_hero_s5 },
+    { label: "Wood", before: derez_source6_wood, after: derez_hero_s6 },
   ]}
 />
 *Derez corrupting spatial addressing and data bus integrity to produce geometric mirroring, bit-plane separation, and dead-line dropout artifacts.*
@@ -115,8 +140,6 @@ The LFSR is re-seeded from the Glitch Seed pot at every vsync. In Static mode th
 
 ## Parameter Reference
 
-<img src={derez_control_panel} alt="Videomancer front panel with Derez loaded"/>
-*Videomancer's front panel with Derez active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -219,9 +242,12 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise1_result },
-    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise1_result },
-    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise1_result },
+    { label: "Field", before: derez_source1_field, after: derez_ex1_s1 },
+    { label: "Skull", before: derez_source2_skull, after: derez_ex1_s2 },
+    { label: "Elephant", before: derez_source3_elephant, after: derez_ex1_s3 },
+    { label: "Pattern", before: derez_source4_pattern, after: derez_ex1_s4 },
+    { label: "Man", before: derez_source5_man, after: derez_ex1_s5 },
+    { label: "Wood", before: derez_source6_wood, after: derez_ex1_s6 },
   ]}
 />
 *Address Line Failure — simulated result across source images.*
@@ -243,9 +269,12 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise2_result },
-    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise2_result },
-    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise2_result },
+    { label: "Field", before: derez_source1_field, after: derez_ex2_s1 },
+    { label: "Skull", before: derez_source2_skull, after: derez_ex2_s2 },
+    { label: "Elephant", before: derez_source3_elephant, after: derez_ex2_s3 },
+    { label: "Pattern", before: derez_source4_pattern, after: derez_ex2_s4 },
+    { label: "Man", before: derez_source5_man, after: derez_ex2_s5 },
+    { label: "Wood", before: derez_source6_wood, after: derez_ex2_s6 },
   ]}
 />
 *Data Bus Failure and Bit-Plane Separation — simulated result across source images.*
@@ -267,9 +296,12 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: derez_source1_kodim15, after: derez_exercise3_result },
-    { label: "Kodim01", before: derez_source2_kodim01, after: derez_exercise3_result },
-    { label: "Stream Bridge", before: derez_source3_stream_bridge_512, after: derez_exercise3_result },
+    { label: "Field", before: derez_source1_field, after: derez_ex3_s1 },
+    { label: "Skull", before: derez_source2_skull, after: derez_ex3_s2 },
+    { label: "Elephant", before: derez_source3_elephant, after: derez_ex3_s3 },
+    { label: "Pattern", before: derez_source4_pattern, after: derez_ex3_s4 },
+    { label: "Man", before: derez_source5_man, after: derez_ex3_s5 },
+    { label: "Wood", before: derez_source6_wood, after: derez_ex3_s6 },
   ]}
 />
 *Full Memory Failure — simulated result across source images.*

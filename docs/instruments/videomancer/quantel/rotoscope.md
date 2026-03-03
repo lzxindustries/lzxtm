@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 238
+sidebar_position: 250
 slug: /instruments/videomancer/rotoscope
 title: "Rotoscope"
-image: /img/instruments/videomancer/rotoscope/rotoscope_hero.png
+image: /img/instruments/videomancer/rotoscope/rotoscope_hero_s1.png
 description: "In the 1980s and 1990s, Quantel's Harry, Harriet, and Henry systems defined a generation of broadcast visual effects."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import rotoscope_hero from '/img/instruments/videomancer/rotoscope/rotoscope_hero.png';
-import rotoscope_control_panel from '/img/instruments/videomancer/rotoscope/rotoscope_control_panel.png';
-import rotoscope_exercise1_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise1_result.png';
-import rotoscope_exercise2_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise2_result.png';
-import rotoscope_exercise3_result from '/img/instruments/videomancer/rotoscope/rotoscope_exercise3_result.png';
-import rotoscope_source1_kodim15 from '/img/instruments/videomancer/rotoscope/rotoscope_source1_kodim15.png';
-import rotoscope_source2_kodim01 from '/img/instruments/videomancer/rotoscope/rotoscope_source2_kodim01.png';
-import rotoscope_source3_kodim01_bw from '/img/instruments/videomancer/rotoscope/rotoscope_source3_kodim01_bw.png';
+import rotoscope_source1_car from '/img/instruments/videomancer/rotoscope/rotoscope_source1_car.png';
+import rotoscope_source2_field from '/img/instruments/videomancer/rotoscope/rotoscope_source2_field.png';
+import rotoscope_source3_elephant from '/img/instruments/videomancer/rotoscope/rotoscope_source3_elephant.png';
+import rotoscope_source4_pattern from '/img/instruments/videomancer/rotoscope/rotoscope_source4_pattern.png';
+import rotoscope_source5_boy from '/img/instruments/videomancer/rotoscope/rotoscope_source5_boy.png';
+import rotoscope_source6_paint from '/img/instruments/videomancer/rotoscope/rotoscope_source6_paint.png';
+import rotoscope_hero_s1 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s1.png';
+import rotoscope_hero_s2 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s2.png';
+import rotoscope_hero_s3 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s3.png';
+import rotoscope_hero_s4 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s4.png';
+import rotoscope_hero_s5 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s5.png';
+import rotoscope_hero_s6 from '/img/instruments/videomancer/rotoscope/rotoscope_hero_s6.png';
+import rotoscope_ex1_s1 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s1.png';
+import rotoscope_ex1_s2 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s2.png';
+import rotoscope_ex1_s3 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s3.png';
+import rotoscope_ex1_s4 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s4.png';
+import rotoscope_ex1_s5 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s5.png';
+import rotoscope_ex1_s6 from '/img/instruments/videomancer/rotoscope/rotoscope_ex1_s6.png';
+import rotoscope_ex2_s1 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s1.png';
+import rotoscope_ex2_s2 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s2.png';
+import rotoscope_ex2_s3 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s3.png';
+import rotoscope_ex2_s4 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s4.png';
+import rotoscope_ex2_s5 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s5.png';
+import rotoscope_ex2_s6 from '/img/instruments/videomancer/rotoscope/rotoscope_ex2_s6.png';
+import rotoscope_ex3_s1 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s1.png';
+import rotoscope_ex3_s2 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s2.png';
+import rotoscope_ex3_s3 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s3.png';
+import rotoscope_ex3_s4 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s4.png';
+import rotoscope_ex3_s5 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s5.png';
+import rotoscope_ex3_s6 from '/img/instruments/videomancer/rotoscope/rotoscope_ex3_s6.png';
 
 # Rotoscope
 
@@ -23,9 +45,12 @@ import rotoscope_source3_kodim01_bw from '/img/instruments/videomancer/rotoscope
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_hero },
-    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_hero },
-    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_hero },
+    { label: "Car", before: rotoscope_source1_car, after: rotoscope_hero_s1 },
+    { label: "Field", before: rotoscope_source2_field, after: rotoscope_hero_s2 },
+    { label: "Elephant", before: rotoscope_source3_elephant, after: rotoscope_hero_s3 },
+    { label: "Pattern", before: rotoscope_source4_pattern, after: rotoscope_hero_s4 },
+    { label: "Boy", before: rotoscope_source5_boy, after: rotoscope_hero_s5 },
+    { label: "Paint", before: rotoscope_source6_paint, after: rotoscope_hero_s6 },
   ]}
 />
 *Rotoscope compositing four temporally displaced trail layers with tinted treatment and screen blending to produce the characteristic Quantel-era trailing echo effect.*
@@ -113,8 +138,6 @@ The BRAM delay buffers are the architectural core of Rotoscope. Unlike purely sp
 
 ## Parameter Reference
 
-<img src={rotoscope_control_panel} alt="Videomancer front panel with Rotoscope loaded"/>
-*Videomancer's front panel with Rotoscope active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +241,12 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise1_result },
-    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise1_result },
-    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise1_result },
+    { label: "Car", before: rotoscope_source1_car, after: rotoscope_ex1_s1 },
+    { label: "Field", before: rotoscope_source2_field, after: rotoscope_ex1_s2 },
+    { label: "Elephant", before: rotoscope_source3_elephant, after: rotoscope_ex1_s3 },
+    { label: "Pattern", before: rotoscope_source4_pattern, after: rotoscope_ex1_s4 },
+    { label: "Boy", before: rotoscope_source5_boy, after: rotoscope_ex1_s5 },
+    { label: "Paint", before: rotoscope_source6_paint, after: rotoscope_ex1_s6 },
   ]}
 />
 *Simple Motion Echo — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise2_result },
-    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise2_result },
-    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise2_result },
+    { label: "Car", before: rotoscope_source1_car, after: rotoscope_ex2_s1 },
+    { label: "Field", before: rotoscope_source2_field, after: rotoscope_ex2_s2 },
+    { label: "Elephant", before: rotoscope_source3_elephant, after: rotoscope_ex2_s3 },
+    { label: "Pattern", before: rotoscope_source4_pattern, after: rotoscope_ex2_s4 },
+    { label: "Boy", before: rotoscope_source5_boy, after: rotoscope_ex2_s5 },
+    { label: "Paint", before: rotoscope_source6_paint, after: rotoscope_ex2_s6 },
   ]}
 />
 *Tinted Trail Composition — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rotoscope_source1_kodim15, after: rotoscope_exercise3_result },
-    { label: "Kodim01", before: rotoscope_source2_kodim01, after: rotoscope_exercise3_result },
-    { label: "Kodim01 B&W", before: rotoscope_source3_kodim01_bw, after: rotoscope_exercise3_result },
+    { label: "Car", before: rotoscope_source1_car, after: rotoscope_ex3_s1 },
+    { label: "Field", before: rotoscope_source2_field, after: rotoscope_ex3_s2 },
+    { label: "Elephant", before: rotoscope_source3_elephant, after: rotoscope_ex3_s3 },
+    { label: "Pattern", before: rotoscope_source4_pattern, after: rotoscope_ex3_s4 },
+    { label: "Boy", before: rotoscope_source5_boy, after: rotoscope_ex3_s5 },
+    { label: "Paint", before: rotoscope_source6_paint, after: rotoscope_ex3_s6 },
   ]}
 />
 *Edge Trace Contours — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 174
+sidebar_position: 182
 slug: /instruments/videomancer/macrame
 title: "Macrame"
-image: /img/instruments/videomancer/macrame/macrame_hero.png
+image: /img/instruments/videomancer/macrame/macrame_hero_s1.png
 description: "Fiber arts begin with repetition — a single knot tied again and again until a flat cord becomes a surface."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import macrame_hero from '/img/instruments/videomancer/macrame/macrame_hero.png';
-import macrame_control_panel from '/img/instruments/videomancer/macrame/macrame_control_panel.png';
-import macrame_exercise1_result from '/img/instruments/videomancer/macrame/macrame_exercise1_result.png';
-import macrame_exercise2_result from '/img/instruments/videomancer/macrame/macrame_exercise2_result.png';
-import macrame_exercise3_result from '/img/instruments/videomancer/macrame/macrame_exercise3_result.png';
-import macrame_source1_kodim15 from '/img/instruments/videomancer/macrame/macrame_source1_kodim15.png';
-import macrame_source2_kodim03 from '/img/instruments/videomancer/macrame/macrame_source2_kodim03.png';
-import macrame_source3_kodim13_bw from '/img/instruments/videomancer/macrame/macrame_source3_kodim13_bw.png';
+import macrame_source1_field from '/img/instruments/videomancer/macrame/macrame_source1_field.png';
+import macrame_source2_ballerina from '/img/instruments/videomancer/macrame/macrame_source2_ballerina.png';
+import macrame_source3_collage from '/img/instruments/videomancer/macrame/macrame_source3_collage.png';
+import macrame_source4_pattern from '/img/instruments/videomancer/macrame/macrame_source4_pattern.png';
+import macrame_source5_boy from '/img/instruments/videomancer/macrame/macrame_source5_boy.png';
+import macrame_source6_wood from '/img/instruments/videomancer/macrame/macrame_source6_wood.png';
+import macrame_hero_s1 from '/img/instruments/videomancer/macrame/macrame_hero_s1.png';
+import macrame_hero_s2 from '/img/instruments/videomancer/macrame/macrame_hero_s2.png';
+import macrame_hero_s3 from '/img/instruments/videomancer/macrame/macrame_hero_s3.png';
+import macrame_hero_s4 from '/img/instruments/videomancer/macrame/macrame_hero_s4.png';
+import macrame_hero_s5 from '/img/instruments/videomancer/macrame/macrame_hero_s5.png';
+import macrame_hero_s6 from '/img/instruments/videomancer/macrame/macrame_hero_s6.png';
+import macrame_ex1_s1 from '/img/instruments/videomancer/macrame/macrame_ex1_s1.png';
+import macrame_ex1_s2 from '/img/instruments/videomancer/macrame/macrame_ex1_s2.png';
+import macrame_ex1_s3 from '/img/instruments/videomancer/macrame/macrame_ex1_s3.png';
+import macrame_ex1_s4 from '/img/instruments/videomancer/macrame/macrame_ex1_s4.png';
+import macrame_ex1_s5 from '/img/instruments/videomancer/macrame/macrame_ex1_s5.png';
+import macrame_ex1_s6 from '/img/instruments/videomancer/macrame/macrame_ex1_s6.png';
+import macrame_ex2_s1 from '/img/instruments/videomancer/macrame/macrame_ex2_s1.png';
+import macrame_ex2_s2 from '/img/instruments/videomancer/macrame/macrame_ex2_s2.png';
+import macrame_ex2_s3 from '/img/instruments/videomancer/macrame/macrame_ex2_s3.png';
+import macrame_ex2_s4 from '/img/instruments/videomancer/macrame/macrame_ex2_s4.png';
+import macrame_ex2_s5 from '/img/instruments/videomancer/macrame/macrame_ex2_s5.png';
+import macrame_ex2_s6 from '/img/instruments/videomancer/macrame/macrame_ex2_s6.png';
+import macrame_ex3_s1 from '/img/instruments/videomancer/macrame/macrame_ex3_s1.png';
+import macrame_ex3_s2 from '/img/instruments/videomancer/macrame/macrame_ex3_s2.png';
+import macrame_ex3_s3 from '/img/instruments/videomancer/macrame/macrame_ex3_s3.png';
+import macrame_ex3_s4 from '/img/instruments/videomancer/macrame/macrame_ex3_s4.png';
+import macrame_ex3_s5 from '/img/instruments/videomancer/macrame/macrame_ex3_s5.png';
+import macrame_ex3_s6 from '/img/instruments/videomancer/macrame/macrame_ex3_s6.png';
 
 # Macrame
 
@@ -23,9 +45,12 @@ import macrame_source3_kodim13_bw from '/img/instruments/videomancer/macrame/mac
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_hero },
-    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_hero },
-    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_hero },
+    { label: "Field", before: macrame_source1_field, after: macrame_hero_s1 },
+    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_hero_s2 },
+    { label: "Collage", before: macrame_source3_collage, after: macrame_hero_s3 },
+    { label: "Pattern", before: macrame_source4_pattern, after: macrame_hero_s4 },
+    { label: "Boy", before: macrame_source5_boy, after: macrame_hero_s5 },
+    { label: "Wood", before: macrame_source6_wood, after: macrame_hero_s6 },
   ]}
 />
 *Macrame overlaying a knotted diamond cord lattice with textured intersections across a video source.*
@@ -122,8 +147,6 @@ The overlay stage's additive mode adds half the pattern brightness to the source
 
 ## Parameter Reference
 
-<img src={macrame_control_panel} alt="Videomancer front panel with Macrame loaded"/>
-*Videomancer's front panel with Macrame active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -228,9 +251,12 @@ These exercises build from basic lattice construction to full textile overlay co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise1_result },
-    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise1_result },
-    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise1_result },
+    { label: "Field", before: macrame_source1_field, after: macrame_ex1_s1 },
+    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex1_s2 },
+    { label: "Collage", before: macrame_source3_collage, after: macrame_ex1_s3 },
+    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex1_s4 },
+    { label: "Boy", before: macrame_source5_boy, after: macrame_ex1_s5 },
+    { label: "Wood", before: macrame_source6_wood, after: macrame_ex1_s6 },
   ]}
 />
 *Diamond Lattice Construction — simulated result across source images.*
@@ -253,9 +279,12 @@ These exercises build from basic lattice construction to full textile overlay co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise2_result },
-    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise2_result },
-    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise2_result },
+    { label: "Field", before: macrame_source1_field, after: macrame_ex2_s1 },
+    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex2_s2 },
+    { label: "Collage", before: macrame_source3_collage, after: macrame_ex2_s3 },
+    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex2_s4 },
+    { label: "Boy", before: macrame_source5_boy, after: macrame_ex2_s5 },
+    { label: "Wood", before: macrame_source6_wood, after: macrame_ex2_s6 },
   ]}
 />
 *Colored Textile Overlay — simulated result across source images.*
@@ -278,9 +307,12 @@ These exercises build from basic lattice construction to full textile overlay co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: macrame_source1_kodim15, after: macrame_exercise3_result },
-    { label: "Kodim03", before: macrame_source2_kodim03, after: macrame_exercise3_result },
-    { label: "Kodim13 B&W", before: macrame_source3_kodim13_bw, after: macrame_exercise3_result },
+    { label: "Field", before: macrame_source1_field, after: macrame_ex3_s1 },
+    { label: "Ballerina", before: macrame_source2_ballerina, after: macrame_ex3_s2 },
+    { label: "Collage", before: macrame_source3_collage, after: macrame_ex3_s3 },
+    { label: "Pattern", before: macrame_source4_pattern, after: macrame_ex3_s4 },
+    { label: "Boy", before: macrame_source5_boy, after: macrame_ex3_s5 },
+    { label: "Wood", before: macrame_source6_wood, after: macrame_ex3_s6 },
   ]}
 />
 *Animated Lattice Drift — simulated result across source images.*

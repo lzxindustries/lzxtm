@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 186
+sidebar_position: 194
 slug: /instruments/videomancer/mitosis
 title: "Mitosis"
 image: /img/instruments/videomancer/mitosis/mitosis_hero.png

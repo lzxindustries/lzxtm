@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 128
+sidebar_position: 133
 slug: /instruments/videomancer/harmono
 title: "Harmono"
 image: /img/instruments/videomancer/harmono/harmono_hero.png

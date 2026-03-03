@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 258
+sidebar_position: 270
 slug: /instruments/videomancer/sirocco
 title: "Sirocco"
 image: /img/instruments/videomancer/sirocco/sirocco_hero.png

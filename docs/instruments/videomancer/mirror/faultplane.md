@@ -1,23 +1,43 @@
 ---
 draft: false
-sidebar_position: 101
+sidebar_position: 105
 slug: /instruments/videomancer/faultplane
 title: "Faultplane"
-image: /img/instruments/videomancer/faultplane/faultplane_hero.png
+image: /img/instruments/videomancer/faultplane/faultplane_hero_s1.png
 description: "Faultplane is a spatial displacement and zone-blanking program that splits the video frame into alternating regions using two timing accumulators and applies independent horizontal pixel shifts, mirror flips, and color inversions to each region."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import faultplane_hero from '/img/instruments/videomancer/faultplane/faultplane_hero.png';
-import faultplane_control_panel from '/img/instruments/videomancer/faultplane/faultplane_control_panel.png';
-import faultplane_exercise1_result from '/img/instruments/videomancer/faultplane/faultplane_exercise1_result.png';
-import faultplane_exercise2_result from '/img/instruments/videomancer/faultplane/faultplane_exercise2_result.png';
-import faultplane_exercise3_result from '/img/instruments/videomancer/faultplane/faultplane_exercise3_result.png';
-import faultplane_source1_kodim01 from '/img/instruments/videomancer/faultplane/faultplane_source1_kodim01.png';
-import faultplane_source2_kodim02 from '/img/instruments/videomancer/faultplane/faultplane_source2_kodim02.png';
-import faultplane_source2_kodim13 from '/img/instruments/videomancer/faultplane/faultplane_source2_kodim13.png';
-import faultplane_source3_kodim01_bw from '/img/instruments/videomancer/faultplane/faultplane_source3_kodim01_bw.png';
-import faultplane_source3_moon_256 from '/img/instruments/videomancer/faultplane/faultplane_source3_moon_256.png';
+import faultplane_source1_dog from '/img/instruments/videomancer/faultplane/faultplane_source1_dog.png';
+import faultplane_source2_cat from '/img/instruments/videomancer/faultplane/faultplane_source2_cat.png';
+import faultplane_source3_clouds from '/img/instruments/videomancer/faultplane/faultplane_source3_clouds.png';
+import faultplane_source4_pattern from '/img/instruments/videomancer/faultplane/faultplane_source4_pattern.png';
+import faultplane_source5_woman from '/img/instruments/videomancer/faultplane/faultplane_source5_woman.png';
+import faultplane_source6_berries from '/img/instruments/videomancer/faultplane/faultplane_source6_berries.png';
+import faultplane_hero_s1 from '/img/instruments/videomancer/faultplane/faultplane_hero_s1.png';
+import faultplane_hero_s2 from '/img/instruments/videomancer/faultplane/faultplane_hero_s2.png';
+import faultplane_hero_s3 from '/img/instruments/videomancer/faultplane/faultplane_hero_s3.png';
+import faultplane_hero_s4 from '/img/instruments/videomancer/faultplane/faultplane_hero_s4.png';
+import faultplane_hero_s5 from '/img/instruments/videomancer/faultplane/faultplane_hero_s5.png';
+import faultplane_hero_s6 from '/img/instruments/videomancer/faultplane/faultplane_hero_s6.png';
+import faultplane_ex1_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s1.png';
+import faultplane_ex1_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s2.png';
+import faultplane_ex1_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s3.png';
+import faultplane_ex1_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s4.png';
+import faultplane_ex1_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s5.png';
+import faultplane_ex1_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s6.png';
+import faultplane_ex2_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s1.png';
+import faultplane_ex2_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s2.png';
+import faultplane_ex2_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s3.png';
+import faultplane_ex2_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s4.png';
+import faultplane_ex2_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s5.png';
+import faultplane_ex2_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s6.png';
+import faultplane_ex3_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s1.png';
+import faultplane_ex3_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s2.png';
+import faultplane_ex3_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s3.png';
+import faultplane_ex3_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s4.png';
+import faultplane_ex3_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s5.png';
+import faultplane_ex3_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s6.png';
 
 # Faultplane
 
@@ -25,11 +45,12 @@ import faultplane_source3_moon_256 from '/img/instruments/videomancer/faultplane
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_hero },
-    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_hero },
-    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_hero },
-    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_hero },
-    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_hero },
+    { label: "Dog", before: faultplane_source1_dog, after: faultplane_hero_s1 },
+    { label: "Cat", before: faultplane_source2_cat, after: faultplane_hero_s2 },
+    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_hero_s3 },
+    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_hero_s4 },
+    { label: "Woman", before: faultplane_source5_woman, after: faultplane_hero_s5 },
+    { label: "Berries", before: faultplane_source6_berries, after: faultplane_hero_s6 },
   ]}
 />
 *Faultplane fracturing a natural scene into displaced, mirrored zones with selective blanking.*
@@ -103,8 +124,6 @@ The architecture splits naturally into two domains: the **timing domain** (accum
 
 ## Parameter Reference
 
-<img src={faultplane_control_panel} alt="Videomancer front panel with Faultplane loaded"/>
-*Videomancer's front panel with Faultplane active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,11 +228,12 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise1_result },
-    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise1_result },
-    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise1_result },
-    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise1_result },
-    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise1_result },
+    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex1_s1 },
+    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex1_s2 },
+    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex1_s3 },
+    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex1_s4 },
+    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex1_s5 },
+    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex1_s6 },
   ]}
 />
 *Horizontal Displacement Bands — simulated result across source images.*
@@ -237,11 +257,12 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise2_result },
-    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise2_result },
-    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise2_result },
-    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise2_result },
-    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise2_result },
+    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex2_s1 },
+    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex2_s2 },
+    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex2_s3 },
+    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex2_s4 },
+    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex2_s5 },
+    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex2_s6 },
   ]}
 />
 *Mirror and Invert Zones — simulated result across source images.*
@@ -264,11 +285,12 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: faultplane_source1_kodim01, after: faultplane_exercise3_result },
-    { label: "Kodim02", before: faultplane_source2_kodim02, after: faultplane_exercise3_result },
-    { label: "Kodim13", before: faultplane_source2_kodim13, after: faultplane_exercise3_result },
-    { label: "Kodim01 B&W", before: faultplane_source3_kodim01_bw, after: faultplane_exercise3_result },
-    { label: "Moon", before: faultplane_source3_moon_256, after: faultplane_exercise3_result },
+    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex3_s1 },
+    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex3_s2 },
+    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex3_s3 },
+    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex3_s4 },
+    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex3_s5 },
+    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex3_s6 },
   ]}
 />
 *Checkerboard Grid with Blanking — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 232
+sidebar_position: 242
 slug: /instruments/videomancer/redacted
 title: "Redacted"
-image: /img/instruments/videomancer/redacted/redacted_hero.png
+image: /img/instruments/videomancer/redacted/redacted_hero_s1.png
 description: "Broadcast television and government documents share a common visual vocabulary: the black bar."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import redacted_hero from '/img/instruments/videomancer/redacted/redacted_hero.png';
-import redacted_control_panel from '/img/instruments/videomancer/redacted/redacted_control_panel.png';
-import redacted_exercise1_result from '/img/instruments/videomancer/redacted/redacted_exercise1_result.png';
-import redacted_exercise2_result from '/img/instruments/videomancer/redacted/redacted_exercise2_result.png';
-import redacted_exercise3_result from '/img/instruments/videomancer/redacted/redacted_exercise3_result.png';
-import redacted_source1_kodim15 from '/img/instruments/videomancer/redacted/redacted_source1_kodim15.png';
-import redacted_source2_kodim15_bw from '/img/instruments/videomancer/redacted/redacted_source2_kodim15_bw.png';
-import redacted_source3_male_1024 from '/img/instruments/videomancer/redacted/redacted_source3_male_1024.png';
+import redacted_source1_castle from '/img/instruments/videomancer/redacted/redacted_source1_castle.png';
+import redacted_source2_parrot from '/img/instruments/videomancer/redacted/redacted_source2_parrot.png';
+import redacted_source3_turtle from '/img/instruments/videomancer/redacted/redacted_source3_turtle.png';
+import redacted_source4_pattern from '/img/instruments/videomancer/redacted/redacted_source4_pattern.png';
+import redacted_source5_girl from '/img/instruments/videomancer/redacted/redacted_source5_girl.png';
+import redacted_source6_paint from '/img/instruments/videomancer/redacted/redacted_source6_paint.png';
+import redacted_hero_s1 from '/img/instruments/videomancer/redacted/redacted_hero_s1.png';
+import redacted_hero_s2 from '/img/instruments/videomancer/redacted/redacted_hero_s2.png';
+import redacted_hero_s3 from '/img/instruments/videomancer/redacted/redacted_hero_s3.png';
+import redacted_hero_s4 from '/img/instruments/videomancer/redacted/redacted_hero_s4.png';
+import redacted_hero_s5 from '/img/instruments/videomancer/redacted/redacted_hero_s5.png';
+import redacted_hero_s6 from '/img/instruments/videomancer/redacted/redacted_hero_s6.png';
+import redacted_ex1_s1 from '/img/instruments/videomancer/redacted/redacted_ex1_s1.png';
+import redacted_ex1_s2 from '/img/instruments/videomancer/redacted/redacted_ex1_s2.png';
+import redacted_ex1_s3 from '/img/instruments/videomancer/redacted/redacted_ex1_s3.png';
+import redacted_ex1_s4 from '/img/instruments/videomancer/redacted/redacted_ex1_s4.png';
+import redacted_ex1_s5 from '/img/instruments/videomancer/redacted/redacted_ex1_s5.png';
+import redacted_ex1_s6 from '/img/instruments/videomancer/redacted/redacted_ex1_s6.png';
+import redacted_ex2_s1 from '/img/instruments/videomancer/redacted/redacted_ex2_s1.png';
+import redacted_ex2_s2 from '/img/instruments/videomancer/redacted/redacted_ex2_s2.png';
+import redacted_ex2_s3 from '/img/instruments/videomancer/redacted/redacted_ex2_s3.png';
+import redacted_ex2_s4 from '/img/instruments/videomancer/redacted/redacted_ex2_s4.png';
+import redacted_ex2_s5 from '/img/instruments/videomancer/redacted/redacted_ex2_s5.png';
+import redacted_ex2_s6 from '/img/instruments/videomancer/redacted/redacted_ex2_s6.png';
+import redacted_ex3_s1 from '/img/instruments/videomancer/redacted/redacted_ex3_s1.png';
+import redacted_ex3_s2 from '/img/instruments/videomancer/redacted/redacted_ex3_s2.png';
+import redacted_ex3_s3 from '/img/instruments/videomancer/redacted/redacted_ex3_s3.png';
+import redacted_ex3_s4 from '/img/instruments/videomancer/redacted/redacted_ex3_s4.png';
+import redacted_ex3_s5 from '/img/instruments/videomancer/redacted/redacted_ex3_s5.png';
+import redacted_ex3_s6 from '/img/instruments/videomancer/redacted/redacted_ex3_s6.png';
 
 # Redacted
 
@@ -23,9 +45,12 @@ import redacted_source3_male_1024 from '/img/instruments/videomancer/redacted/re
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_hero },
-    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_hero },
-    { label: "Male", before: redacted_source3_male_1024, after: redacted_hero },
+    { label: "Castle", before: redacted_source1_castle, after: redacted_hero_s1 },
+    { label: "Parrot", before: redacted_source2_parrot, after: redacted_hero_s2 },
+    { label: "Turtle", before: redacted_source3_turtle, after: redacted_hero_s3 },
+    { label: "Pattern", before: redacted_source4_pattern, after: redacted_hero_s4 },
+    { label: "Girl", before: redacted_source5_girl, after: redacted_hero_s5 },
+    { label: "Paint", before: redacted_source6_paint, after: redacted_hero_s6 },
   ]}
 />
 *Redacted applying luma-threshold censorship bars to bright regions of a video stream, with configurable bar orientation and white border trim.*
@@ -106,8 +131,6 @@ The detection pipeline is purely one-dimensional — horizontal bars track pixel
 
 ## Parameter Reference
 
-<img src={redacted_control_panel} alt="Videomancer front panel with Redacted loaded"/>
-*Videomancer's front panel with Redacted active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,9 +235,12 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise1_result },
-    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise1_result },
-    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise1_result },
+    { label: "Castle", before: redacted_source1_castle, after: redacted_ex1_s1 },
+    { label: "Parrot", before: redacted_source2_parrot, after: redacted_ex1_s2 },
+    { label: "Turtle", before: redacted_source3_turtle, after: redacted_ex1_s3 },
+    { label: "Pattern", before: redacted_source4_pattern, after: redacted_ex1_s4 },
+    { label: "Girl", before: redacted_source5_girl, after: redacted_ex1_s5 },
+    { label: "Paint", before: redacted_source6_paint, after: redacted_ex1_s6 },
   ]}
 />
 *Classic Censorship Bars — simulated result across source images.*
@@ -237,9 +263,12 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise2_result },
-    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise2_result },
-    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise2_result },
+    { label: "Castle", before: redacted_source1_castle, after: redacted_ex2_s1 },
+    { label: "Parrot", before: redacted_source2_parrot, after: redacted_ex2_s2 },
+    { label: "Turtle", before: redacted_source3_turtle, after: redacted_ex2_s3 },
+    { label: "Pattern", before: redacted_source4_pattern, after: redacted_ex2_s4 },
+    { label: "Girl", before: redacted_source5_girl, after: redacted_ex2_s5 },
+    { label: "Paint", before: redacted_source6_paint, after: redacted_ex2_s6 },
   ]}
 />
 *Vertical Redaction Columns — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: redacted_source1_kodim15, after: redacted_exercise3_result },
-    { label: "Kodim15 B&W", before: redacted_source2_kodim15_bw, after: redacted_exercise3_result },
-    { label: "Male", before: redacted_source3_male_1024, after: redacted_exercise3_result },
+    { label: "Castle", before: redacted_source1_castle, after: redacted_ex3_s1 },
+    { label: "Parrot", before: redacted_source2_parrot, after: redacted_ex3_s2 },
+    { label: "Turtle", before: redacted_source3_turtle, after: redacted_ex3_s3 },
+    { label: "Pattern", before: redacted_source4_pattern, after: redacted_ex3_s4 },
+    { label: "Girl", before: redacted_source5_girl, after: redacted_ex3_s5 },
+    { label: "Paint", before: redacted_source6_paint, after: redacted_ex3_s6 },
   ]}
 />
 *Abstract Threshold Patterns — simulated result across source images.*

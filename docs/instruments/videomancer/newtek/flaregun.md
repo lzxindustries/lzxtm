@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 108
+sidebar_position: 113
 slug: /instruments/videomancer/flaregun
 title: "Flaregun"
-image: /img/instruments/videomancer/flaregun/flaregun_hero.png
+image: /img/instruments/videomancer/flaregun/flaregun_hero_s1.png
 description: "Bright light entering a camera lens scatters off internal glass surfaces, creating glowing halos, horizontal streaks, and star-shaped diffraction patterns."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import flaregun_hero from '/img/instruments/videomancer/flaregun/flaregun_hero.png';
-import flaregun_control_panel from '/img/instruments/videomancer/flaregun/flaregun_control_panel.png';
-import flaregun_exercise1_result from '/img/instruments/videomancer/flaregun/flaregun_exercise1_result.png';
-import flaregun_exercise2_result from '/img/instruments/videomancer/flaregun/flaregun_exercise2_result.png';
-import flaregun_exercise3_result from '/img/instruments/videomancer/flaregun/flaregun_exercise3_result.png';
-import flaregun_source1_kodim15 from '/img/instruments/videomancer/flaregun/flaregun_source1_kodim15.png';
-import flaregun_source2_kodim03 from '/img/instruments/videomancer/flaregun/flaregun_source2_kodim03.png';
-import flaregun_source3_kodim13_bw from '/img/instruments/videomancer/flaregun/flaregun_source3_kodim13_bw.png';
+import flaregun_source1_boat from '/img/instruments/videomancer/flaregun/flaregun_source1_boat.png';
+import flaregun_source2_car from '/img/instruments/videomancer/flaregun/flaregun_source2_car.png';
+import flaregun_source3_collage from '/img/instruments/videomancer/flaregun/flaregun_source3_collage.png';
+import flaregun_source4_pattern from '/img/instruments/videomancer/flaregun/flaregun_source4_pattern.png';
+import flaregun_source5_man from '/img/instruments/videomancer/flaregun/flaregun_source5_man.png';
+import flaregun_source6_berries from '/img/instruments/videomancer/flaregun/flaregun_source6_berries.png';
+import flaregun_hero_s1 from '/img/instruments/videomancer/flaregun/flaregun_hero_s1.png';
+import flaregun_hero_s2 from '/img/instruments/videomancer/flaregun/flaregun_hero_s2.png';
+import flaregun_hero_s3 from '/img/instruments/videomancer/flaregun/flaregun_hero_s3.png';
+import flaregun_hero_s4 from '/img/instruments/videomancer/flaregun/flaregun_hero_s4.png';
+import flaregun_hero_s5 from '/img/instruments/videomancer/flaregun/flaregun_hero_s5.png';
+import flaregun_hero_s6 from '/img/instruments/videomancer/flaregun/flaregun_hero_s6.png';
+import flaregun_ex1_s1 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s1.png';
+import flaregun_ex1_s2 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s2.png';
+import flaregun_ex1_s3 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s3.png';
+import flaregun_ex1_s4 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s4.png';
+import flaregun_ex1_s5 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s5.png';
+import flaregun_ex1_s6 from '/img/instruments/videomancer/flaregun/flaregun_ex1_s6.png';
+import flaregun_ex2_s1 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s1.png';
+import flaregun_ex2_s2 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s2.png';
+import flaregun_ex2_s3 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s3.png';
+import flaregun_ex2_s4 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s4.png';
+import flaregun_ex2_s5 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s5.png';
+import flaregun_ex2_s6 from '/img/instruments/videomancer/flaregun/flaregun_ex2_s6.png';
+import flaregun_ex3_s1 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s1.png';
+import flaregun_ex3_s2 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s2.png';
+import flaregun_ex3_s3 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s3.png';
+import flaregun_ex3_s4 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s4.png';
+import flaregun_ex3_s5 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s5.png';
+import flaregun_ex3_s6 from '/img/instruments/videomancer/flaregun/flaregun_ex3_s6.png';
 
 # Flaregun
 
@@ -23,9 +45,12 @@ import flaregun_source3_kodim13_bw from '/img/instruments/videomancer/flaregun/f
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_hero },
-    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_hero },
-    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_hero },
+    { label: "Boat", before: flaregun_source1_boat, after: flaregun_hero_s1 },
+    { label: "Car", before: flaregun_source2_car, after: flaregun_hero_s2 },
+    { label: "Collage", before: flaregun_source3_collage, after: flaregun_hero_s3 },
+    { label: "Pattern", before: flaregun_source4_pattern, after: flaregun_hero_s4 },
+    { label: "Man", before: flaregun_source5_man, after: flaregun_hero_s5 },
+    { label: "Berries", before: flaregun_source6_berries, after: flaregun_hero_s6 },
   ]}
 />
 *Flaregun compositing radial Gaussian bloom, anamorphic streak, and starburst rays over video in the style of the NewTek Video Toaster's Flare Center effect.*
@@ -118,8 +143,6 @@ The three flare components — core bloom, anamorphic streak, and starburst rays
 
 ## Parameter Reference
 
-<img src={flaregun_control_panel} alt="Videomancer front panel with Flaregun loaded"/>
-*Videomancer's front panel with Flaregun active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise1_result },
-    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise1_result },
-    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise1_result },
+    { label: "Boat", before: flaregun_source1_boat, after: flaregun_ex1_s1 },
+    { label: "Car", before: flaregun_source2_car, after: flaregun_ex1_s2 },
+    { label: "Collage", before: flaregun_source3_collage, after: flaregun_ex1_s3 },
+    { label: "Pattern", before: flaregun_source4_pattern, after: flaregun_ex1_s4 },
+    { label: "Man", before: flaregun_source5_man, after: flaregun_ex1_s5 },
+    { label: "Berries", before: flaregun_source6_berries, after: flaregun_ex1_s6 },
   ]}
 />
 *Classic Toaster Bloom — simulated result across source images.*
@@ -248,9 +274,12 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise2_result },
-    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise2_result },
-    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise2_result },
+    { label: "Boat", before: flaregun_source1_boat, after: flaregun_ex2_s1 },
+    { label: "Car", before: flaregun_source2_car, after: flaregun_ex2_s2 },
+    { label: "Collage", before: flaregun_source3_collage, after: flaregun_ex2_s3 },
+    { label: "Pattern", before: flaregun_source4_pattern, after: flaregun_ex2_s4 },
+    { label: "Man", before: flaregun_source5_man, after: flaregun_ex2_s5 },
+    { label: "Berries", before: flaregun_source6_berries, after: flaregun_ex2_s6 },
   ]}
 />
 *Starburst Highlight — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: flaregun_source1_kodim15, after: flaregun_exercise3_result },
-    { label: "Kodim03", before: flaregun_source2_kodim03, after: flaregun_exercise3_result },
-    { label: "Kodim13 B&W", before: flaregun_source3_kodim13_bw, after: flaregun_exercise3_result },
+    { label: "Boat", before: flaregun_source1_boat, after: flaregun_ex3_s1 },
+    { label: "Car", before: flaregun_source2_car, after: flaregun_ex3_s2 },
+    { label: "Collage", before: flaregun_source3_collage, after: flaregun_ex3_s3 },
+    { label: "Pattern", before: flaregun_source4_pattern, after: flaregun_ex3_s4 },
+    { label: "Man", before: flaregun_source5_man, after: flaregun_ex3_s5 },
+    { label: "Berries", before: flaregun_source6_berries, after: flaregun_ex3_s6 },
   ]}
 />
 *Cinematic Anamorphic Sweep — simulated result across source images.*

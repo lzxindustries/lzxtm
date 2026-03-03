@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 244
+sidebar_position: 256
 slug: /instruments/videomancer/scatter
 title: "Scatter"
-image: /img/instruments/videomancer/scatter/scatter_hero.png
+image: /img/instruments/videomancer/scatter/scatter_hero_s1.png
 description: "Every pixel in a digital video frame is a number."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import scatter_hero from '/img/instruments/videomancer/scatter/scatter_hero.png';
-import scatter_control_panel from '/img/instruments/videomancer/scatter/scatter_control_panel.png';
-import scatter_exercise1_result from '/img/instruments/videomancer/scatter/scatter_exercise1_result.png';
-import scatter_exercise2_result from '/img/instruments/videomancer/scatter/scatter_exercise2_result.png';
-import scatter_exercise3_result from '/img/instruments/videomancer/scatter/scatter_exercise3_result.png';
-import scatter_source1_kodim02 from '/img/instruments/videomancer/scatter/scatter_source1_kodim02.png';
-import scatter_source2_kodim07 from '/img/instruments/videomancer/scatter/scatter_source2_kodim07.png';
-import scatter_source3_kodim01_bw from '/img/instruments/videomancer/scatter/scatter_source3_kodim01_bw.png';
+import scatter_source1_castle from '/img/instruments/videomancer/scatter/scatter_source1_castle.png';
+import scatter_source2_house from '/img/instruments/videomancer/scatter/scatter_source2_house.png';
+import scatter_source3_turtle from '/img/instruments/videomancer/scatter/scatter_source3_turtle.png';
+import scatter_source4_pattern from '/img/instruments/videomancer/scatter/scatter_source4_pattern.png';
+import scatter_source5_boy from '/img/instruments/videomancer/scatter/scatter_source5_boy.png';
+import scatter_source6_paint from '/img/instruments/videomancer/scatter/scatter_source6_paint.png';
+import scatter_hero_s1 from '/img/instruments/videomancer/scatter/scatter_hero_s1.png';
+import scatter_hero_s2 from '/img/instruments/videomancer/scatter/scatter_hero_s2.png';
+import scatter_hero_s3 from '/img/instruments/videomancer/scatter/scatter_hero_s3.png';
+import scatter_hero_s4 from '/img/instruments/videomancer/scatter/scatter_hero_s4.png';
+import scatter_hero_s5 from '/img/instruments/videomancer/scatter/scatter_hero_s5.png';
+import scatter_hero_s6 from '/img/instruments/videomancer/scatter/scatter_hero_s6.png';
+import scatter_ex1_s1 from '/img/instruments/videomancer/scatter/scatter_ex1_s1.png';
+import scatter_ex1_s2 from '/img/instruments/videomancer/scatter/scatter_ex1_s2.png';
+import scatter_ex1_s3 from '/img/instruments/videomancer/scatter/scatter_ex1_s3.png';
+import scatter_ex1_s4 from '/img/instruments/videomancer/scatter/scatter_ex1_s4.png';
+import scatter_ex1_s5 from '/img/instruments/videomancer/scatter/scatter_ex1_s5.png';
+import scatter_ex1_s6 from '/img/instruments/videomancer/scatter/scatter_ex1_s6.png';
+import scatter_ex2_s1 from '/img/instruments/videomancer/scatter/scatter_ex2_s1.png';
+import scatter_ex2_s2 from '/img/instruments/videomancer/scatter/scatter_ex2_s2.png';
+import scatter_ex2_s3 from '/img/instruments/videomancer/scatter/scatter_ex2_s3.png';
+import scatter_ex2_s4 from '/img/instruments/videomancer/scatter/scatter_ex2_s4.png';
+import scatter_ex2_s5 from '/img/instruments/videomancer/scatter/scatter_ex2_s5.png';
+import scatter_ex2_s6 from '/img/instruments/videomancer/scatter/scatter_ex2_s6.png';
+import scatter_ex3_s1 from '/img/instruments/videomancer/scatter/scatter_ex3_s1.png';
+import scatter_ex3_s2 from '/img/instruments/videomancer/scatter/scatter_ex3_s2.png';
+import scatter_ex3_s3 from '/img/instruments/videomancer/scatter/scatter_ex3_s3.png';
+import scatter_ex3_s4 from '/img/instruments/videomancer/scatter/scatter_ex3_s4.png';
+import scatter_ex3_s5 from '/img/instruments/videomancer/scatter/scatter_ex3_s5.png';
+import scatter_ex3_s6 from '/img/instruments/videomancer/scatter/scatter_ex3_s6.png';
 
 # Scatter
 
@@ -23,9 +45,12 @@ import scatter_source3_kodim01_bw from '/img/instruments/videomancer/scatter/sca
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_hero },
-    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_hero },
-    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_hero },
+    { label: "Castle", before: scatter_source1_castle, after: scatter_hero_s1 },
+    { label: "House", before: scatter_source2_house, after: scatter_hero_s2 },
+    { label: "Turtle", before: scatter_source3_turtle, after: scatter_hero_s3 },
+    { label: "Pattern", before: scatter_source4_pattern, after: scatter_hero_s4 },
+    { label: "Boy", before: scatter_source5_boy, after: scatter_hero_s5 },
+    { label: "Paint", before: scatter_source6_paint, after: scatter_hero_s6 },
   ]}
 />
 *Scatter applying XOR-based pixel corruption with structured hash patterns and edge-faded intensity to fracture a video signal into digital noise textures.*
@@ -111,8 +136,6 @@ The critical distinction is that Scatter performs *bitwise* corruption, not spat
 
 ## Parameter Reference
 
-<img src={scatter_control_panel} alt="Videomancer front panel with Scatter loaded"/>
-*Videomancer's front panel with Scatter active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +240,12 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise1_result },
-    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise1_result },
-    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise1_result },
+    { label: "Castle", before: scatter_source1_castle, after: scatter_ex1_s1 },
+    { label: "House", before: scatter_source2_house, after: scatter_ex1_s2 },
+    { label: "Turtle", before: scatter_source3_turtle, after: scatter_ex1_s3 },
+    { label: "Pattern", before: scatter_source4_pattern, after: scatter_ex1_s4 },
+    { label: "Boy", before: scatter_source5_boy, after: scatter_ex1_s5 },
+    { label: "Paint", before: scatter_source6_paint, after: scatter_ex1_s6 },
   ]}
 />
 *Digital Grain Texture — simulated result across source images.*
@@ -241,9 +267,12 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise2_result },
-    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise2_result },
-    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise2_result },
+    { label: "Castle", before: scatter_source1_castle, after: scatter_ex2_s1 },
+    { label: "House", before: scatter_source2_house, after: scatter_ex2_s2 },
+    { label: "Turtle", before: scatter_source3_turtle, after: scatter_ex2_s3 },
+    { label: "Pattern", before: scatter_source4_pattern, after: scatter_ex2_s4 },
+    { label: "Boy", before: scatter_source5_boy, after: scatter_ex2_s5 },
+    { label: "Paint", before: scatter_source6_paint, after: scatter_ex2_s6 },
   ]}
 />
 *Chroma Destruction — simulated result across source images.*
@@ -265,9 +294,12 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: scatter_source1_kodim02, after: scatter_exercise3_result },
-    { label: "Kodim07", before: scatter_source2_kodim07, after: scatter_exercise3_result },
-    { label: "Kodim01 B&W", before: scatter_source3_kodim01_bw, after: scatter_exercise3_result },
+    { label: "Castle", before: scatter_source1_castle, after: scatter_ex3_s1 },
+    { label: "House", before: scatter_source2_house, after: scatter_ex3_s2 },
+    { label: "Turtle", before: scatter_source3_turtle, after: scatter_ex3_s3 },
+    { label: "Pattern", before: scatter_source4_pattern, after: scatter_ex3_s4 },
+    { label: "Boy", before: scatter_source5_boy, after: scatter_ex3_s5 },
+    { label: "Paint", before: scatter_source6_paint, after: scatter_ex3_s6 },
   ]}
 />
 *Full Signal Disintegration — simulated result across source images.*

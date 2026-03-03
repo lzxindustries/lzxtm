@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 203
+sidebar_position: 212
 slug: /instruments/videomancer/paintbox
 title: "Paintbox"
-image: /img/instruments/videomancer/paintbox/paintbox_hero.png
+image: /img/instruments/videomancer/paintbox/paintbox_hero_s1.png
 description: "Paintbox reduces the continuous 10-bit YUV color space to a finite number of discrete levels, creating the characteristic flat, posterized look of screen-printed posters, early video games, and pop-art silk screening."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import paintbox_hero from '/img/instruments/videomancer/paintbox/paintbox_hero.png';
-import paintbox_control_panel from '/img/instruments/videomancer/paintbox/paintbox_control_panel.png';
-import paintbox_exercise1_result from '/img/instruments/videomancer/paintbox/paintbox_exercise1_result.png';
-import paintbox_exercise2_result from '/img/instruments/videomancer/paintbox/paintbox_exercise2_result.png';
-import paintbox_exercise3_result from '/img/instruments/videomancer/paintbox/paintbox_exercise3_result.png';
-import paintbox_source1_kodim15 from '/img/instruments/videomancer/paintbox/paintbox_source1_kodim15.png';
-import paintbox_source2_kodim01 from '/img/instruments/videomancer/paintbox/paintbox_source2_kodim01.png';
-import paintbox_source3_kodim01_bw from '/img/instruments/videomancer/paintbox/paintbox_source3_kodim01_bw.png';
+import paintbox_source1_runner from '/img/instruments/videomancer/paintbox/paintbox_source1_runner.png';
+import paintbox_source2_castle from '/img/instruments/videomancer/paintbox/paintbox_source2_castle.png';
+import paintbox_source3_collage from '/img/instruments/videomancer/paintbox/paintbox_source3_collage.png';
+import paintbox_source4_pattern from '/img/instruments/videomancer/paintbox/paintbox_source4_pattern.png';
+import paintbox_source5_man from '/img/instruments/videomancer/paintbox/paintbox_source5_man.png';
+import paintbox_source6_wood from '/img/instruments/videomancer/paintbox/paintbox_source6_wood.png';
+import paintbox_hero_s1 from '/img/instruments/videomancer/paintbox/paintbox_hero_s1.png';
+import paintbox_hero_s2 from '/img/instruments/videomancer/paintbox/paintbox_hero_s2.png';
+import paintbox_hero_s3 from '/img/instruments/videomancer/paintbox/paintbox_hero_s3.png';
+import paintbox_hero_s4 from '/img/instruments/videomancer/paintbox/paintbox_hero_s4.png';
+import paintbox_hero_s5 from '/img/instruments/videomancer/paintbox/paintbox_hero_s5.png';
+import paintbox_hero_s6 from '/img/instruments/videomancer/paintbox/paintbox_hero_s6.png';
+import paintbox_ex1_s1 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s1.png';
+import paintbox_ex1_s2 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s2.png';
+import paintbox_ex1_s3 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s3.png';
+import paintbox_ex1_s4 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s4.png';
+import paintbox_ex1_s5 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s5.png';
+import paintbox_ex1_s6 from '/img/instruments/videomancer/paintbox/paintbox_ex1_s6.png';
+import paintbox_ex2_s1 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s1.png';
+import paintbox_ex2_s2 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s2.png';
+import paintbox_ex2_s3 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s3.png';
+import paintbox_ex2_s4 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s4.png';
+import paintbox_ex2_s5 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s5.png';
+import paintbox_ex2_s6 from '/img/instruments/videomancer/paintbox/paintbox_ex2_s6.png';
+import paintbox_ex3_s1 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s1.png';
+import paintbox_ex3_s2 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s2.png';
+import paintbox_ex3_s3 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s3.png';
+import paintbox_ex3_s4 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s4.png';
+import paintbox_ex3_s5 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s5.png';
+import paintbox_ex3_s6 from '/img/instruments/videomancer/paintbox/paintbox_ex3_s6.png';
 
 # Paintbox
 
@@ -23,9 +45,12 @@ import paintbox_source3_kodim01_bw from '/img/instruments/videomancer/paintbox/p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_hero },
-    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_hero },
-    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_hero },
+    { label: "Runner", before: paintbox_source1_runner, after: paintbox_hero_s1 },
+    { label: "Castle", before: paintbox_source2_castle, after: paintbox_hero_s2 },
+    { label: "Collage", before: paintbox_source3_collage, after: paintbox_hero_s3 },
+    { label: "Pattern", before: paintbox_source4_pattern, after: paintbox_hero_s4 },
+    { label: "Man", before: paintbox_source5_man, after: paintbox_hero_s5 },
+    { label: "Wood", before: paintbox_source6_wood, after: paintbox_hero_s6 },
   ]}
 />
 *A sunset photograph reduced to eight flat color bands — each pixel snapped to its nearest palette entry with ordered dither softening the transitions between quantized zones.*
@@ -115,8 +140,6 @@ The Y Only toggle is particularly useful with colored palettes — quantizing lu
 
 ## Parameter Reference
 
-<img src={paintbox_control_panel} alt="Videomancer front panel with Paintbox loaded"/>
-*Videomancer's front panel with Paintbox active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These exercises progress from basic posterization through palette mapping to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise1_result },
-    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise1_result },
-    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise1_result },
+    { label: "Runner", before: paintbox_source1_runner, after: paintbox_ex1_s1 },
+    { label: "Castle", before: paintbox_source2_castle, after: paintbox_ex1_s2 },
+    { label: "Collage", before: paintbox_source3_collage, after: paintbox_ex1_s3 },
+    { label: "Pattern", before: paintbox_source4_pattern, after: paintbox_ex1_s4 },
+    { label: "Man", before: paintbox_source5_man, after: paintbox_ex1_s5 },
+    { label: "Wood", before: paintbox_source6_wood, after: paintbox_ex1_s6 },
   ]}
 />
 *Pop-Art Posterization — simulated result across source images.*
@@ -246,9 +272,12 @@ These exercises progress from basic posterization through palette mapping to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise2_result },
-    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise2_result },
-    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise2_result },
+    { label: "Runner", before: paintbox_source1_runner, after: paintbox_ex2_s1 },
+    { label: "Castle", before: paintbox_source2_castle, after: paintbox_ex2_s2 },
+    { label: "Collage", before: paintbox_source3_collage, after: paintbox_ex2_s3 },
+    { label: "Pattern", before: paintbox_source4_pattern, after: paintbox_ex2_s4 },
+    { label: "Man", before: paintbox_source5_man, after: paintbox_ex2_s5 },
+    { label: "Wood", before: paintbox_source6_wood, after: paintbox_ex2_s6 },
   ]}
 />
 *Sepia Palette with Ordered Dither — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from basic posterization through palette mapping to com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: paintbox_source1_kodim15, after: paintbox_exercise3_result },
-    { label: "Kodim01", before: paintbox_source2_kodim01, after: paintbox_exercise3_result },
-    { label: "Kodim01 B&W", before: paintbox_source3_kodim01_bw, after: paintbox_exercise3_result },
+    { label: "Runner", before: paintbox_source1_runner, after: paintbox_ex3_s1 },
+    { label: "Castle", before: paintbox_source2_castle, after: paintbox_ex3_s2 },
+    { label: "Collage", before: paintbox_source3_collage, after: paintbox_ex3_s3 },
+    { label: "Pattern", before: paintbox_source4_pattern, after: paintbox_ex3_s4 },
+    { label: "Man", before: paintbox_source5_man, after: paintbox_ex3_s5 },
+    { label: "Wood", before: paintbox_source6_wood, after: paintbox_ex3_s6 },
   ]}
 />
 *Night Vision with Random Noise — simulated result across source images.*

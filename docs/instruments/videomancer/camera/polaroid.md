@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 221
+sidebar_position: 231
 slug: /instruments/videomancer/polaroid
 title: "Polaroid"
-image: /img/instruments/videomancer/polaroid/polaroid_hero.png
+image: /img/instruments/videomancer/polaroid/polaroid_hero_s1.png
 description: "Polaroid places a white border frame around the active video area, mimicking the distinctive look of instant-film prints."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import polaroid_hero from '/img/instruments/videomancer/polaroid/polaroid_hero.png';
-import polaroid_control_panel from '/img/instruments/videomancer/polaroid/polaroid_control_panel.png';
-import polaroid_exercise1_result from '/img/instruments/videomancer/polaroid/polaroid_exercise1_result.png';
-import polaroid_exercise2_result from '/img/instruments/videomancer/polaroid/polaroid_exercise2_result.png';
-import polaroid_exercise3_result from '/img/instruments/videomancer/polaroid/polaroid_exercise3_result.png';
-import polaroid_source1_kodim05 from '/img/instruments/videomancer/polaroid/polaroid_source1_kodim05.png';
-import polaroid_source2_kodim15 from '/img/instruments/videomancer/polaroid/polaroid_source2_kodim15.png';
-import polaroid_source3_kodim15_bw from '/img/instruments/videomancer/polaroid/polaroid_source3_kodim15_bw.png';
+import polaroid_source1_car from '/img/instruments/videomancer/polaroid/polaroid_source1_car.png';
+import polaroid_source2_house from '/img/instruments/videomancer/polaroid/polaroid_source2_house.png';
+import polaroid_source3_collage from '/img/instruments/videomancer/polaroid/polaroid_source3_collage.png';
+import polaroid_source4_pattern from '/img/instruments/videomancer/polaroid/polaroid_source4_pattern.png';
+import polaroid_source5_girl from '/img/instruments/videomancer/polaroid/polaroid_source5_girl.png';
+import polaroid_source6_paint from '/img/instruments/videomancer/polaroid/polaroid_source6_paint.png';
+import polaroid_hero_s1 from '/img/instruments/videomancer/polaroid/polaroid_hero_s1.png';
+import polaroid_hero_s2 from '/img/instruments/videomancer/polaroid/polaroid_hero_s2.png';
+import polaroid_hero_s3 from '/img/instruments/videomancer/polaroid/polaroid_hero_s3.png';
+import polaroid_hero_s4 from '/img/instruments/videomancer/polaroid/polaroid_hero_s4.png';
+import polaroid_hero_s5 from '/img/instruments/videomancer/polaroid/polaroid_hero_s5.png';
+import polaroid_hero_s6 from '/img/instruments/videomancer/polaroid/polaroid_hero_s6.png';
+import polaroid_ex1_s1 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s1.png';
+import polaroid_ex1_s2 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s2.png';
+import polaroid_ex1_s3 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s3.png';
+import polaroid_ex1_s4 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s4.png';
+import polaroid_ex1_s5 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s5.png';
+import polaroid_ex1_s6 from '/img/instruments/videomancer/polaroid/polaroid_ex1_s6.png';
+import polaroid_ex2_s1 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s1.png';
+import polaroid_ex2_s2 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s2.png';
+import polaroid_ex2_s3 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s3.png';
+import polaroid_ex2_s4 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s4.png';
+import polaroid_ex2_s5 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s5.png';
+import polaroid_ex2_s6 from '/img/instruments/videomancer/polaroid/polaroid_ex2_s6.png';
+import polaroid_ex3_s1 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s1.png';
+import polaroid_ex3_s2 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s2.png';
+import polaroid_ex3_s3 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s3.png';
+import polaroid_ex3_s4 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s4.png';
+import polaroid_ex3_s5 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s5.png';
+import polaroid_ex3_s6 from '/img/instruments/videomancer/polaroid/polaroid_ex3_s6.png';
 
 # Polaroid
 
@@ -23,9 +45,12 @@ import polaroid_source3_kodim15_bw from '/img/instruments/videomancer/polaroid/p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_hero },
-    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_hero },
-    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_hero },
+    { label: "Car", before: polaroid_source1_car, after: polaroid_hero_s1 },
+    { label: "House", before: polaroid_source2_house, after: polaroid_hero_s2 },
+    { label: "Collage", before: polaroid_source3_collage, after: polaroid_hero_s3 },
+    { label: "Pattern", before: polaroid_source4_pattern, after: polaroid_hero_s4 },
+    { label: "Girl", before: polaroid_source5_girl, after: polaroid_hero_s5 },
+    { label: "Paint", before: polaroid_source6_paint, after: polaroid_hero_s6 },
   ]}
 />
 *Polaroid applying instant-film border framing and warm colour shift to transform video into nostalgic snapshots.*
@@ -98,8 +123,6 @@ The processing pipeline is dominated by a single synchronous process that handle
 
 ## Parameter Reference
 
-<img src={polaroid_control_panel} alt="Videomancer front panel with Polaroid loaded"/>
-*Videomancer's front panel with Polaroid active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -204,9 +227,12 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise1_result },
-    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise1_result },
-    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise1_result },
+    { label: "Car", before: polaroid_source1_car, after: polaroid_ex1_s1 },
+    { label: "House", before: polaroid_source2_house, after: polaroid_ex1_s2 },
+    { label: "Collage", before: polaroid_source3_collage, after: polaroid_ex1_s3 },
+    { label: "Pattern", before: polaroid_source4_pattern, after: polaroid_ex1_s4 },
+    { label: "Girl", before: polaroid_source5_girl, after: polaroid_ex1_s5 },
+    { label: "Paint", before: polaroid_source6_paint, after: polaroid_ex1_s6 },
   ]}
 />
 *Classic Instant Print — simulated result across source images.*
@@ -228,9 +254,12 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise2_result },
-    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise2_result },
-    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise2_result },
+    { label: "Car", before: polaroid_source1_car, after: polaroid_ex2_s1 },
+    { label: "House", before: polaroid_source2_house, after: polaroid_ex2_s2 },
+    { label: "Collage", before: polaroid_source3_collage, after: polaroid_ex2_s3 },
+    { label: "Pattern", before: polaroid_source4_pattern, after: polaroid_ex2_s4 },
+    { label: "Girl", before: polaroid_source5_girl, after: polaroid_ex2_s5 },
+    { label: "Paint", before: polaroid_source6_paint, after: polaroid_ex2_s6 },
   ]}
 />
 *Bold Frame Graphic — simulated result across source images.*
@@ -252,9 +281,12 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: polaroid_source1_kodim05, after: polaroid_exercise3_result },
-    { label: "Kodim15", before: polaroid_source2_kodim15, after: polaroid_exercise3_result },
-    { label: "Kodim15 B&W", before: polaroid_source3_kodim15_bw, after: polaroid_exercise3_result },
+    { label: "Car", before: polaroid_source1_car, after: polaroid_ex3_s1 },
+    { label: "House", before: polaroid_source2_house, after: polaroid_ex3_s2 },
+    { label: "Collage", before: polaroid_source3_collage, after: polaroid_ex3_s3 },
+    { label: "Pattern", before: polaroid_source4_pattern, after: polaroid_ex3_s4 },
+    { label: "Girl", before: polaroid_source5_girl, after: polaroid_ex3_s5 },
+    { label: "Paint", before: polaroid_source6_paint, after: polaroid_ex3_s6 },
   ]}
 />
 *Neutral Frame with Full Brightness — simulated result across source images.*

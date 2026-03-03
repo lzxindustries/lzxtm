@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 129
+sidebar_position: 134
 slug: /instruments/videomancer/helix
 title: "Helix"
 image: /img/instruments/videomancer/helix/helix_hero.png

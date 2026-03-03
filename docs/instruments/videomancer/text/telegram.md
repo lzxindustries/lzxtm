@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 282
+sidebar_position: 295
 slug: /instruments/videomancer/telegram
 title: "Telegram"
 image: /img/instruments/videomancer/telegram/telegram_hero.png

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 224
+sidebar_position: 234
 slug: /instruments/videomancer/procamp
 title: "Procamp"
-image: /img/instruments/videomancer/procamp/procamp_hero.png
+image: /img/instruments/videomancer/procamp/procamp_hero_s1.png
 description: "Every broadcast facility has a processing amplifier — a \"proc amp\" — sitting between source and destination, adjusting signal levels so that everything arriving downstream is correctly calibrated."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import procamp_hero from '/img/instruments/videomancer/procamp/procamp_hero.png';
-import procamp_control_panel from '/img/instruments/videomancer/procamp/procamp_control_panel.png';
-import procamp_exercise1_result from '/img/instruments/videomancer/procamp/procamp_exercise1_result.png';
-import procamp_exercise2_result from '/img/instruments/videomancer/procamp/procamp_exercise2_result.png';
-import procamp_exercise3_result from '/img/instruments/videomancer/procamp/procamp_exercise3_result.png';
-import procamp_source1_kodim03 from '/img/instruments/videomancer/procamp/procamp_source1_kodim03.png';
-import procamp_source2_kodim15 from '/img/instruments/videomancer/procamp/procamp_source2_kodim15.png';
-import procamp_source3_peppers_512 from '/img/instruments/videomancer/procamp/procamp_source3_peppers_512.png';
+import procamp_source1_castle from '/img/instruments/videomancer/procamp/procamp_source1_castle.png';
+import procamp_source2_ballerina from '/img/instruments/videomancer/procamp/procamp_source2_ballerina.png';
+import procamp_source3_collage from '/img/instruments/videomancer/procamp/procamp_source3_collage.png';
+import procamp_source4_pattern from '/img/instruments/videomancer/procamp/procamp_source4_pattern.png';
+import procamp_source5_boy from '/img/instruments/videomancer/procamp/procamp_source5_boy.png';
+import procamp_source6_paint from '/img/instruments/videomancer/procamp/procamp_source6_paint.png';
+import procamp_hero_s1 from '/img/instruments/videomancer/procamp/procamp_hero_s1.png';
+import procamp_hero_s2 from '/img/instruments/videomancer/procamp/procamp_hero_s2.png';
+import procamp_hero_s3 from '/img/instruments/videomancer/procamp/procamp_hero_s3.png';
+import procamp_hero_s4 from '/img/instruments/videomancer/procamp/procamp_hero_s4.png';
+import procamp_hero_s5 from '/img/instruments/videomancer/procamp/procamp_hero_s5.png';
+import procamp_hero_s6 from '/img/instruments/videomancer/procamp/procamp_hero_s6.png';
+import procamp_ex1_s1 from '/img/instruments/videomancer/procamp/procamp_ex1_s1.png';
+import procamp_ex1_s2 from '/img/instruments/videomancer/procamp/procamp_ex1_s2.png';
+import procamp_ex1_s3 from '/img/instruments/videomancer/procamp/procamp_ex1_s3.png';
+import procamp_ex1_s4 from '/img/instruments/videomancer/procamp/procamp_ex1_s4.png';
+import procamp_ex1_s5 from '/img/instruments/videomancer/procamp/procamp_ex1_s5.png';
+import procamp_ex1_s6 from '/img/instruments/videomancer/procamp/procamp_ex1_s6.png';
+import procamp_ex2_s1 from '/img/instruments/videomancer/procamp/procamp_ex2_s1.png';
+import procamp_ex2_s2 from '/img/instruments/videomancer/procamp/procamp_ex2_s2.png';
+import procamp_ex2_s3 from '/img/instruments/videomancer/procamp/procamp_ex2_s3.png';
+import procamp_ex2_s4 from '/img/instruments/videomancer/procamp/procamp_ex2_s4.png';
+import procamp_ex2_s5 from '/img/instruments/videomancer/procamp/procamp_ex2_s5.png';
+import procamp_ex2_s6 from '/img/instruments/videomancer/procamp/procamp_ex2_s6.png';
+import procamp_ex3_s1 from '/img/instruments/videomancer/procamp/procamp_ex3_s1.png';
+import procamp_ex3_s2 from '/img/instruments/videomancer/procamp/procamp_ex3_s2.png';
+import procamp_ex3_s3 from '/img/instruments/videomancer/procamp/procamp_ex3_s3.png';
+import procamp_ex3_s4 from '/img/instruments/videomancer/procamp/procamp_ex3_s4.png';
+import procamp_ex3_s5 from '/img/instruments/videomancer/procamp/procamp_ex3_s5.png';
+import procamp_ex3_s6 from '/img/instruments/videomancer/procamp/procamp_ex3_s6.png';
 
 # Procamp
 
@@ -23,9 +45,12 @@ import procamp_source3_peppers_512 from '/img/instruments/videomancer/procamp/pr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_hero },
-    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_hero },
-    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_hero },
+    { label: "Castle", before: procamp_source1_castle, after: procamp_hero_s1 },
+    { label: "Ballerina", before: procamp_source2_ballerina, after: procamp_hero_s2 },
+    { label: "Collage", before: procamp_source3_collage, after: procamp_hero_s3 },
+    { label: "Pattern", before: procamp_source4_pattern, after: procamp_hero_s4 },
+    { label: "Boy", before: procamp_source5_boy, after: procamp_hero_s5 },
+    { label: "Paint", before: procamp_source6_paint, after: procamp_hero_s6 },
   ]}
 />
 *Procamp applying independent per-channel gain, offset, and inversion across Y/U/V with fade-to-color interpolation.*
@@ -96,8 +121,6 @@ All three channels are processed in parallel through identical pipelines, but ea
 
 ## Parameter Reference
 
-<img src={procamp_control_panel} alt="Videomancer front panel with Procamp loaded"/>
-*Videomancer's front panel with Procamp active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -202,9 +225,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise1_result },
-    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise1_result },
-    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise1_result },
+    { label: "Castle", before: procamp_source1_castle, after: procamp_ex1_s1 },
+    { label: "Ballerina", before: procamp_source2_ballerina, after: procamp_ex1_s2 },
+    { label: "Collage", before: procamp_source3_collage, after: procamp_ex1_s3 },
+    { label: "Pattern", before: procamp_source4_pattern, after: procamp_ex1_s4 },
+    { label: "Boy", before: procamp_source5_boy, after: procamp_ex1_s5 },
+    { label: "Paint", before: procamp_source6_paint, after: procamp_ex1_s6 },
   ]}
 />
 *Luminance Calibration — simulated result across source images.*
@@ -226,9 +252,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise2_result },
-    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise2_result },
-    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise2_result },
+    { label: "Castle", before: procamp_source1_castle, after: procamp_ex2_s1 },
+    { label: "Ballerina", before: procamp_source2_ballerina, after: procamp_ex2_s2 },
+    { label: "Collage", before: procamp_source3_collage, after: procamp_ex2_s3 },
+    { label: "Pattern", before: procamp_source4_pattern, after: procamp_ex2_s4 },
+    { label: "Boy", before: procamp_source5_boy, after: procamp_ex2_s5 },
+    { label: "Paint", before: procamp_source6_paint, after: procamp_ex2_s6 },
   ]}
 />
 *Creative Color Tinting — simulated result across source images.*
@@ -250,9 +279,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: procamp_source1_kodim03, after: procamp_exercise3_result },
-    { label: "Kodim15", before: procamp_source2_kodim15, after: procamp_exercise3_result },
-    { label: "Peppers", before: procamp_source3_peppers_512, after: procamp_exercise3_result },
+    { label: "Castle", before: procamp_source1_castle, after: procamp_ex3_s1 },
+    { label: "Ballerina", before: procamp_source2_ballerina, after: procamp_ex3_s2 },
+    { label: "Collage", before: procamp_source3_collage, after: procamp_ex3_s3 },
+    { label: "Pattern", before: procamp_source4_pattern, after: procamp_ex3_s4 },
+    { label: "Boy", before: procamp_source5_boy, after: procamp_ex3_s5 },
+    { label: "Paint", before: procamp_source6_paint, after: procamp_ex3_s6 },
   ]}
 />
 *Fade-to-Color Drama — simulated result across source images.*

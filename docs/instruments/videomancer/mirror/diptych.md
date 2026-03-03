@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 80
+sidebar_position: 83
 slug: /instruments/videomancer/diptych
 title: "Diptych"
-image: /img/instruments/videomancer/diptych/diptych_hero.png
+image: /img/instruments/videomancer/diptych/diptych_hero_s1.png
 description: "A diptych is a two-panel artwork — two images joined along a central hinge."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import diptych_hero from '/img/instruments/videomancer/diptych/diptych_hero.png';
-import diptych_control_panel from '/img/instruments/videomancer/diptych/diptych_control_panel.png';
-import diptych_exercise1_result from '/img/instruments/videomancer/diptych/diptych_exercise1_result.png';
-import diptych_exercise2_result from '/img/instruments/videomancer/diptych/diptych_exercise2_result.png';
-import diptych_exercise3_result from '/img/instruments/videomancer/diptych/diptych_exercise3_result.png';
-import diptych_source1_kodim01 from '/img/instruments/videomancer/diptych/diptych_source1_kodim01.png';
-import diptych_source2_kodim02 from '/img/instruments/videomancer/diptych/diptych_source2_kodim02.png';
-import diptych_source3_kodim01_bw from '/img/instruments/videomancer/diptych/diptych_source3_kodim01_bw.png';
+import diptych_source1_cat from '/img/instruments/videomancer/diptych/diptych_source1_cat.png';
+import diptych_source2_boat from '/img/instruments/videomancer/diptych/diptych_source2_boat.png';
+import diptych_source3_collage from '/img/instruments/videomancer/diptych/diptych_source3_collage.png';
+import diptych_source4_pattern from '/img/instruments/videomancer/diptych/diptych_source4_pattern.png';
+import diptych_source5_boy from '/img/instruments/videomancer/diptych/diptych_source5_boy.png';
+import diptych_source6_knit from '/img/instruments/videomancer/diptych/diptych_source6_knit.png';
+import diptych_hero_s1 from '/img/instruments/videomancer/diptych/diptych_hero_s1.png';
+import diptych_hero_s2 from '/img/instruments/videomancer/diptych/diptych_hero_s2.png';
+import diptych_hero_s3 from '/img/instruments/videomancer/diptych/diptych_hero_s3.png';
+import diptych_hero_s4 from '/img/instruments/videomancer/diptych/diptych_hero_s4.png';
+import diptych_hero_s5 from '/img/instruments/videomancer/diptych/diptych_hero_s5.png';
+import diptych_hero_s6 from '/img/instruments/videomancer/diptych/diptych_hero_s6.png';
+import diptych_ex1_s1 from '/img/instruments/videomancer/diptych/diptych_ex1_s1.png';
+import diptych_ex1_s2 from '/img/instruments/videomancer/diptych/diptych_ex1_s2.png';
+import diptych_ex1_s3 from '/img/instruments/videomancer/diptych/diptych_ex1_s3.png';
+import diptych_ex1_s4 from '/img/instruments/videomancer/diptych/diptych_ex1_s4.png';
+import diptych_ex1_s5 from '/img/instruments/videomancer/diptych/diptych_ex1_s5.png';
+import diptych_ex1_s6 from '/img/instruments/videomancer/diptych/diptych_ex1_s6.png';
+import diptych_ex2_s1 from '/img/instruments/videomancer/diptych/diptych_ex2_s1.png';
+import diptych_ex2_s2 from '/img/instruments/videomancer/diptych/diptych_ex2_s2.png';
+import diptych_ex2_s3 from '/img/instruments/videomancer/diptych/diptych_ex2_s3.png';
+import diptych_ex2_s4 from '/img/instruments/videomancer/diptych/diptych_ex2_s4.png';
+import diptych_ex2_s5 from '/img/instruments/videomancer/diptych/diptych_ex2_s5.png';
+import diptych_ex2_s6 from '/img/instruments/videomancer/diptych/diptych_ex2_s6.png';
+import diptych_ex3_s1 from '/img/instruments/videomancer/diptych/diptych_ex3_s1.png';
+import diptych_ex3_s2 from '/img/instruments/videomancer/diptych/diptych_ex3_s2.png';
+import diptych_ex3_s3 from '/img/instruments/videomancer/diptych/diptych_ex3_s3.png';
+import diptych_ex3_s4 from '/img/instruments/videomancer/diptych/diptych_ex3_s4.png';
+import diptych_ex3_s5 from '/img/instruments/videomancer/diptych/diptych_ex3_s5.png';
+import diptych_ex3_s6 from '/img/instruments/videomancer/diptych/diptych_ex3_s6.png';
 
 # Diptych
 
@@ -23,9 +45,12 @@ import diptych_source3_kodim01_bw from '/img/instruments/videomancer/diptych/dip
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_hero },
-    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_hero },
-    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_hero },
+    { label: "Cat", before: diptych_source1_cat, after: diptych_hero_s1 },
+    { label: "Boat", before: diptych_source2_boat, after: diptych_hero_s2 },
+    { label: "Collage", before: diptych_source3_collage, after: diptych_hero_s3 },
+    { label: "Pattern", before: diptych_source4_pattern, after: diptych_hero_s4 },
+    { label: "Boy", before: diptych_source5_boy, after: diptych_hero_s5 },
+    { label: "Knit", before: diptych_source6_knit, after: diptych_hero_s6 },
   ]}
 />
 *Diptych splitting a live camera feed at mid-frame with complementary color inversion on the mirrored half and a narrow black gap at the fold line.*
@@ -112,8 +137,6 @@ The Offset, Zoom, Tilt, Tint, Double, and Color Tint controls are declared as re
 
 ## Parameter Reference
 
-<img src={diptych_control_panel} alt="Videomancer front panel with Diptych loaded"/>
-*Videomancer's front panel with Diptych active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +241,12 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise1_result },
-    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise1_result },
-    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise1_result },
+    { label: "Cat", before: diptych_source1_cat, after: diptych_ex1_s1 },
+    { label: "Boat", before: diptych_source2_boat, after: diptych_ex1_s2 },
+    { label: "Collage", before: diptych_source3_collage, after: diptych_ex1_s3 },
+    { label: "Pattern", before: diptych_source4_pattern, after: diptych_ex1_s4 },
+    { label: "Boy", before: diptych_source5_boy, after: diptych_ex1_s5 },
+    { label: "Knit", before: diptych_source6_knit, after: diptych_ex1_s6 },
   ]}
 />
 *Bilateral Color Fold — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise2_result },
-    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise2_result },
-    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise2_result },
+    { label: "Cat", before: diptych_source1_cat, after: diptych_ex2_s1 },
+    { label: "Boat", before: diptych_source2_boat, after: diptych_ex2_s2 },
+    { label: "Collage", before: diptych_source3_collage, after: diptych_ex2_s3 },
+    { label: "Pattern", before: diptych_source4_pattern, after: diptych_ex2_s4 },
+    { label: "Boy", before: diptych_source5_boy, after: diptych_ex2_s5 },
+    { label: "Knit", before: diptych_source6_knit, after: diptych_ex2_s6 },
   ]}
 />
 *Full Negative Mirror — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: diptych_source1_kodim01, after: diptych_exercise3_result },
-    { label: "Kodim02", before: diptych_source2_kodim02, after: diptych_exercise3_result },
-    { label: "Kodim01 B&W", before: diptych_source3_kodim01_bw, after: diptych_exercise3_result },
+    { label: "Cat", before: diptych_source1_cat, after: diptych_ex3_s1 },
+    { label: "Boat", before: diptych_source2_boat, after: diptych_ex3_s2 },
+    { label: "Collage", before: diptych_source3_collage, after: diptych_ex3_s3 },
+    { label: "Pattern", before: diptych_source4_pattern, after: diptych_ex3_s4 },
+    { label: "Boy", before: diptych_source5_boy, after: diptych_ex3_s5 },
+    { label: "Knit", before: diptych_source6_knit, after: diptych_ex3_s6 },
   ]}
 />
 *Framed Diptych Composition — simulated result across source images.*

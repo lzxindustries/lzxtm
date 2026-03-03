@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 119
+sidebar_position: 124
 slug: /instruments/videomancer/gazette
 title: "Gazette"
-image: /img/instruments/videomancer/gazette/gazette_hero.png
+image: /img/instruments/videomancer/gazette/gazette_hero_s1.png
 description: "Every home computer of the early 1980s faced the same engineering constraint: memory was expensive, and storing a unique color for every pixel on screen was a luxury none of them could afford."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import gazette_hero from '/img/instruments/videomancer/gazette/gazette_hero.png';
-import gazette_control_panel from '/img/instruments/videomancer/gazette/gazette_control_panel.png';
-import gazette_exercise1_result from '/img/instruments/videomancer/gazette/gazette_exercise1_result.png';
-import gazette_exercise2_result from '/img/instruments/videomancer/gazette/gazette_exercise2_result.png';
-import gazette_exercise3_result from '/img/instruments/videomancer/gazette/gazette_exercise3_result.png';
-import gazette_source1_kodim15 from '/img/instruments/videomancer/gazette/gazette_source1_kodim15.png';
-import gazette_source2_kodim03 from '/img/instruments/videomancer/gazette/gazette_source2_kodim03.png';
-import gazette_source3_kodim15_bw from '/img/instruments/videomancer/gazette/gazette_source3_kodim15_bw.png';
+import gazette_source1_castle from '/img/instruments/videomancer/gazette/gazette_source1_castle.png';
+import gazette_source2_car from '/img/instruments/videomancer/gazette/gazette_source2_car.png';
+import gazette_source3_turtle from '/img/instruments/videomancer/gazette/gazette_source3_turtle.png';
+import gazette_source4_pattern from '/img/instruments/videomancer/gazette/gazette_source4_pattern.png';
+import gazette_source5_man from '/img/instruments/videomancer/gazette/gazette_source5_man.png';
+import gazette_source6_knit from '/img/instruments/videomancer/gazette/gazette_source6_knit.png';
+import gazette_hero_s1 from '/img/instruments/videomancer/gazette/gazette_hero_s1.png';
+import gazette_hero_s2 from '/img/instruments/videomancer/gazette/gazette_hero_s2.png';
+import gazette_hero_s3 from '/img/instruments/videomancer/gazette/gazette_hero_s3.png';
+import gazette_hero_s4 from '/img/instruments/videomancer/gazette/gazette_hero_s4.png';
+import gazette_hero_s5 from '/img/instruments/videomancer/gazette/gazette_hero_s5.png';
+import gazette_hero_s6 from '/img/instruments/videomancer/gazette/gazette_hero_s6.png';
+import gazette_ex1_s1 from '/img/instruments/videomancer/gazette/gazette_ex1_s1.png';
+import gazette_ex1_s2 from '/img/instruments/videomancer/gazette/gazette_ex1_s2.png';
+import gazette_ex1_s3 from '/img/instruments/videomancer/gazette/gazette_ex1_s3.png';
+import gazette_ex1_s4 from '/img/instruments/videomancer/gazette/gazette_ex1_s4.png';
+import gazette_ex1_s5 from '/img/instruments/videomancer/gazette/gazette_ex1_s5.png';
+import gazette_ex1_s6 from '/img/instruments/videomancer/gazette/gazette_ex1_s6.png';
+import gazette_ex2_s1 from '/img/instruments/videomancer/gazette/gazette_ex2_s1.png';
+import gazette_ex2_s2 from '/img/instruments/videomancer/gazette/gazette_ex2_s2.png';
+import gazette_ex2_s3 from '/img/instruments/videomancer/gazette/gazette_ex2_s3.png';
+import gazette_ex2_s4 from '/img/instruments/videomancer/gazette/gazette_ex2_s4.png';
+import gazette_ex2_s5 from '/img/instruments/videomancer/gazette/gazette_ex2_s5.png';
+import gazette_ex2_s6 from '/img/instruments/videomancer/gazette/gazette_ex2_s6.png';
+import gazette_ex3_s1 from '/img/instruments/videomancer/gazette/gazette_ex3_s1.png';
+import gazette_ex3_s2 from '/img/instruments/videomancer/gazette/gazette_ex3_s2.png';
+import gazette_ex3_s3 from '/img/instruments/videomancer/gazette/gazette_ex3_s3.png';
+import gazette_ex3_s4 from '/img/instruments/videomancer/gazette/gazette_ex3_s4.png';
+import gazette_ex3_s5 from '/img/instruments/videomancer/gazette/gazette_ex3_s5.png';
+import gazette_ex3_s6 from '/img/instruments/videomancer/gazette/gazette_ex3_s6.png';
 
 # Gazette
 
@@ -23,9 +45,12 @@ import gazette_source3_kodim15_bw from '/img/instruments/videomancer/gazette/gaz
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_hero },
-    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_hero },
-    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_hero },
+    { label: "Castle", before: gazette_source1_castle, after: gazette_hero_s1 },
+    { label: "Car", before: gazette_source2_car, after: gazette_hero_s2 },
+    { label: "Turtle", before: gazette_source3_turtle, after: gazette_hero_s3 },
+    { label: "Pattern", before: gazette_source4_pattern, after: gazette_hero_s4 },
+    { label: "Man", before: gazette_source5_man, after: gazette_hero_s5 },
+    { label: "Knit", before: gazette_source6_knit, after: gazette_hero_s6 },
   ]}
 />
 *Gazette imposing ZX Spectrum-style attribute cell restrictions on live video, producing characteristic two-color-per-cell patterns with chroma bleed artifacts.*
@@ -122,8 +147,6 @@ The Color Bleed IIR filter at Stage 3b operates only on chroma, leaving luma sha
 
 ## Parameter Reference
 
-<img src={gazette_control_panel} alt="Videomancer front panel with Gazette loaded"/>
-*Videomancer's front panel with Gazette active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -226,9 +249,12 @@ These exercises progress from exploring basic palette restriction to combining c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise1_result },
-    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise1_result },
-    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise1_result },
+    { label: "Castle", before: gazette_source1_castle, after: gazette_ex1_s1 },
+    { label: "Car", before: gazette_source2_car, after: gazette_ex1_s2 },
+    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex1_s3 },
+    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex1_s4 },
+    { label: "Man", before: gazette_source5_man, after: gazette_ex1_s5 },
+    { label: "Knit", before: gazette_source6_knit, after: gazette_ex1_s6 },
   ]}
 />
 *ZX Spectrum Text Screen — simulated result across source images.*
@@ -253,9 +279,12 @@ These exercises progress from exploring basic palette restriction to combining c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise2_result },
-    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise2_result },
-    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise2_result },
+    { label: "Castle", before: gazette_source1_castle, after: gazette_ex2_s1 },
+    { label: "Car", before: gazette_source2_car, after: gazette_ex2_s2 },
+    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex2_s3 },
+    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex2_s4 },
+    { label: "Man", before: gazette_source5_man, after: gazette_ex2_s5 },
+    { label: "Knit", before: gazette_source6_knit, after: gazette_ex2_s6 },
   ]}
 />
 *Commodore Color Clash — simulated result across source images.*
@@ -280,9 +309,12 @@ These exercises progress from exploring basic palette restriction to combining c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gazette_source1_kodim15, after: gazette_exercise3_result },
-    { label: "Kodim03", before: gazette_source2_kodim03, after: gazette_exercise3_result },
-    { label: "Kodim15 B&W", before: gazette_source3_kodim15_bw, after: gazette_exercise3_result },
+    { label: "Castle", before: gazette_source1_castle, after: gazette_ex3_s1 },
+    { label: "Car", before: gazette_source2_car, after: gazette_ex3_s2 },
+    { label: "Turtle", before: gazette_source3_turtle, after: gazette_ex3_s3 },
+    { label: "Pattern", before: gazette_source4_pattern, after: gazette_ex3_s4 },
+    { label: "Man", before: gazette_source5_man, after: gazette_ex3_s5 },
+    { label: "Knit", before: gazette_source6_knit, after: gazette_ex3_s6 },
   ]}
 />
 *Composite Artifact Machine — simulated result across source images.*

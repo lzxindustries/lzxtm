@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 41
+sidebar_position: 42
 slug: /instruments/videomancer/centrifuge
 title: "Centrifuge"
-image: /img/instruments/videomancer/centrifuge/centrifuge_hero.png
+image: /img/instruments/videomancer/centrifuge/centrifuge_hero_s1.png
 description: "Every image has a hidden angular geometry."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import centrifuge_hero from '/img/instruments/videomancer/centrifuge/centrifuge_hero.png';
-import centrifuge_control_panel from '/img/instruments/videomancer/centrifuge/centrifuge_control_panel.png';
-import centrifuge_exercise1_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise1_result.png';
-import centrifuge_exercise2_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise2_result.png';
-import centrifuge_exercise3_result from '/img/instruments/videomancer/centrifuge/centrifuge_exercise3_result.png';
-import centrifuge_source1_kodim02 from '/img/instruments/videomancer/centrifuge/centrifuge_source1_kodim02.png';
-import centrifuge_source2_kodim07 from '/img/instruments/videomancer/centrifuge/centrifuge_source2_kodim07.png';
-import centrifuge_source3_kodim01_bw from '/img/instruments/videomancer/centrifuge/centrifuge_source3_kodim01_bw.png';
+import centrifuge_source1_parrot from '/img/instruments/videomancer/centrifuge/centrifuge_source1_parrot.png';
+import centrifuge_source2_fruit from '/img/instruments/videomancer/centrifuge/centrifuge_source2_fruit.png';
+import centrifuge_source3_turtle from '/img/instruments/videomancer/centrifuge/centrifuge_source3_turtle.png';
+import centrifuge_source4_pattern from '/img/instruments/videomancer/centrifuge/centrifuge_source4_pattern.png';
+import centrifuge_source5_man from '/img/instruments/videomancer/centrifuge/centrifuge_source5_man.png';
+import centrifuge_source6_paint from '/img/instruments/videomancer/centrifuge/centrifuge_source6_paint.png';
+import centrifuge_hero_s1 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s1.png';
+import centrifuge_hero_s2 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s2.png';
+import centrifuge_hero_s3 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s3.png';
+import centrifuge_hero_s4 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s4.png';
+import centrifuge_hero_s5 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s5.png';
+import centrifuge_hero_s6 from '/img/instruments/videomancer/centrifuge/centrifuge_hero_s6.png';
+import centrifuge_ex1_s1 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s1.png';
+import centrifuge_ex1_s2 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s2.png';
+import centrifuge_ex1_s3 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s3.png';
+import centrifuge_ex1_s4 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s4.png';
+import centrifuge_ex1_s5 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s5.png';
+import centrifuge_ex1_s6 from '/img/instruments/videomancer/centrifuge/centrifuge_ex1_s6.png';
+import centrifuge_ex2_s1 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s1.png';
+import centrifuge_ex2_s2 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s2.png';
+import centrifuge_ex2_s3 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s3.png';
+import centrifuge_ex2_s4 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s4.png';
+import centrifuge_ex2_s5 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s5.png';
+import centrifuge_ex2_s6 from '/img/instruments/videomancer/centrifuge/centrifuge_ex2_s6.png';
+import centrifuge_ex3_s1 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s1.png';
+import centrifuge_ex3_s2 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s2.png';
+import centrifuge_ex3_s3 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s3.png';
+import centrifuge_ex3_s4 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s4.png';
+import centrifuge_ex3_s5 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s5.png';
+import centrifuge_ex3_s6 from '/img/instruments/videomancer/centrifuge/centrifuge_ex3_s6.png';
 
 # Centrifuge
 
@@ -23,9 +45,12 @@ import centrifuge_source3_kodim01_bw from '/img/instruments/videomancer/centrifu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_hero },
-    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_hero },
-    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_hero },
+    { label: "Parrot", before: centrifuge_source1_parrot, after: centrifuge_hero_s1 },
+    { label: "Fruit", before: centrifuge_source2_fruit, after: centrifuge_hero_s2 },
+    { label: "Turtle", before: centrifuge_source3_turtle, after: centrifuge_hero_s3 },
+    { label: "Pattern", before: centrifuge_source4_pattern, after: centrifuge_hero_s4 },
+    { label: "Man", before: centrifuge_source5_man, after: centrifuge_hero_s5 },
+    { label: "Paint", before: centrifuge_source6_paint, after: centrifuge_hero_s6 },
   ]}
 />
 *Centrifuge splitting a sunlit porch into eight spinning colour wedges, each sector carrying a different luma and chroma offset as the angular wheel rotates through the frame.*
@@ -113,8 +138,6 @@ The per-sector colour modification in stage 3 follows a complementary pattern: o
 
 ## Parameter Reference
 
-<img src={centrifuge_control_panel} alt="Videomancer front panel with Centrifuge loaded"/>
-*Videomancer's front panel with Centrifuge active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -219,9 +242,12 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise1_result },
-    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise1_result },
-    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise1_result },
+    { label: "Parrot", before: centrifuge_source1_parrot, after: centrifuge_ex1_s1 },
+    { label: "Fruit", before: centrifuge_source2_fruit, after: centrifuge_ex1_s2 },
+    { label: "Turtle", before: centrifuge_source3_turtle, after: centrifuge_ex1_s3 },
+    { label: "Pattern", before: centrifuge_source4_pattern, after: centrifuge_ex1_s4 },
+    { label: "Man", before: centrifuge_source5_man, after: centrifuge_ex1_s5 },
+    { label: "Paint", before: centrifuge_source6_paint, after: centrifuge_ex1_s6 },
   ]}
 />
 *Static Colour Rosette — simulated result across source images.*
@@ -244,9 +270,12 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise2_result },
-    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise2_result },
-    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise2_result },
+    { label: "Parrot", before: centrifuge_source1_parrot, after: centrifuge_ex2_s1 },
+    { label: "Fruit", before: centrifuge_source2_fruit, after: centrifuge_ex2_s2 },
+    { label: "Turtle", before: centrifuge_source3_turtle, after: centrifuge_ex2_s3 },
+    { label: "Pattern", before: centrifuge_source4_pattern, after: centrifuge_ex2_s4 },
+    { label: "Man", before: centrifuge_source5_man, after: centrifuge_ex2_s5 },
+    { label: "Paint", before: centrifuge_source6_paint, after: centrifuge_ex2_s6 },
   ]}
 />
 *Spinning Colour Wheel — simulated result across source images.*
@@ -269,9 +298,12 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: centrifuge_source1_kodim02, after: centrifuge_exercise3_result },
-    { label: "Kodim07", before: centrifuge_source2_kodim07, after: centrifuge_exercise3_result },
-    { label: "Kodim01 B&W", before: centrifuge_source3_kodim01_bw, after: centrifuge_exercise3_result },
+    { label: "Parrot", before: centrifuge_source1_parrot, after: centrifuge_ex3_s1 },
+    { label: "Fruit", before: centrifuge_source2_fruit, after: centrifuge_ex3_s2 },
+    { label: "Turtle", before: centrifuge_source3_turtle, after: centrifuge_ex3_s3 },
+    { label: "Pattern", before: centrifuge_source4_pattern, after: centrifuge_ex3_s4 },
+    { label: "Man", before: centrifuge_source5_man, after: centrifuge_ex3_s5 },
+    { label: "Paint", before: centrifuge_source6_paint, after: centrifuge_ex3_s6 },
   ]}
 />
 *Off-Centre Composition — simulated result across source images.*

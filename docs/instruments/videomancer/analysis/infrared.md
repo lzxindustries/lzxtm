@@ -1,21 +1,25 @@
 ---
 draft: true
-sidebar_position: 138
+sidebar_position: 144
 slug: /instruments/videomancer/infrared
 title: "Infrared"
-image: /img/instruments/videomancer/infrared/infrared_hero.png
+image: /img/instruments/videomancer/infrared/infrared_hero_s1.png
 description: "Thermal imaging cameras do not capture color."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import infrared_hero from '/img/instruments/videomancer/infrared/infrared_hero.png';
-import infrared_control_panel from '/img/instruments/videomancer/infrared/infrared_control_panel.png';
-import infrared_exercise1_result from '/img/instruments/videomancer/infrared/infrared_exercise1_result.png';
-import infrared_exercise2_result from '/img/instruments/videomancer/infrared/infrared_exercise2_result.png';
-import infrared_exercise3_result from '/img/instruments/videomancer/infrared/infrared_exercise3_result.png';
-import infrared_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source1_grayscale_ramp_h_1920x1080.png';
-import infrared_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/infrared/infrared_source2_grayscale_ramp_v_1920x1080.png';
-import infrared_source3_step_wedge_21level_512 from '/img/instruments/videomancer/infrared/infrared_source3_step_wedge_21level_512.png';
+import infrared_source1_cat from '/img/instruments/videomancer/infrared/infrared_source1_cat.png';
+import infrared_source2_parrot from '/img/instruments/videomancer/infrared/infrared_source2_parrot.png';
+import infrared_source3_elephant from '/img/instruments/videomancer/infrared/infrared_source3_elephant.png';
+import infrared_source4_pattern from '/img/instruments/videomancer/infrared/infrared_source4_pattern.png';
+import infrared_source5_girl from '/img/instruments/videomancer/infrared/infrared_source5_girl.png';
+import infrared_source6_paint from '/img/instruments/videomancer/infrared/infrared_source6_paint.png';
+import infrared_hero_s1 from '/img/instruments/videomancer/infrared/infrared_hero_s1.png';
+import infrared_hero_s2 from '/img/instruments/videomancer/infrared/infrared_hero_s2.png';
+import infrared_hero_s3 from '/img/instruments/videomancer/infrared/infrared_hero_s3.png';
+import infrared_hero_s4 from '/img/instruments/videomancer/infrared/infrared_hero_s4.png';
+import infrared_hero_s5 from '/img/instruments/videomancer/infrared/infrared_hero_s5.png';
+import infrared_hero_s6 from '/img/instruments/videomancer/infrared/infrared_hero_s6.png';
 
 # Infrared
 
@@ -23,9 +27,12 @@ import infrared_source3_step_wedge_21level_512 from '/img/instruments/videomance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: infrared_source1_grayscale_ramp_h_1920x1080, after: infrared_hero },
-    { label: "Grayscale Ramp V", before: infrared_source2_grayscale_ramp_v_1920x1080, after: infrared_hero },
-    { label: "Step Wedge 21level", before: infrared_source3_step_wedge_21level_512, after: infrared_hero },
+    { label: "Cat", before: infrared_source1_cat, after: infrared_hero_s1 },
+    { label: "Parrot", before: infrared_source2_parrot, after: infrared_hero_s2 },
+    { label: "Elephant", before: infrared_source3_elephant, after: infrared_hero_s3 },
+    { label: "Pattern", before: infrared_source4_pattern, after: infrared_hero_s4 },
+    { label: "Girl", before: infrared_source5_girl, after: infrared_hero_s5 },
+    { label: "Paint", before: infrared_source6_paint, after: infrared_hero_s6 },
   ]}
 />
 *Infrared applying false-color thermal palette mapping to transform source luminance into ironbow and arctic color schemes with isotherm contour overlays.*
@@ -100,8 +107,6 @@ The critical path runs through two luminance transformations before the palette 
 
 ## Parameter Reference
 
-<img src={infrared_control_panel} alt="Videomancer front panel with Infrared loaded"/>
-*Videomancer's front panel with Infrared active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

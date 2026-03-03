@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 37
+sidebar_position: 38
 slug: /instruments/videomancer/cartouche
 title: "Cartouche"
-image: /img/instruments/videomancer/cartouche/cartouche_hero.png
+image: /img/instruments/videomancer/cartouche/cartouche_hero_s1.png
 description: "Ancient Egyptian artists did not paint pictures the way we understand them."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cartouche_hero from '/img/instruments/videomancer/cartouche/cartouche_hero.png';
-import cartouche_control_panel from '/img/instruments/videomancer/cartouche/cartouche_control_panel.png';
-import cartouche_exercise1_result from '/img/instruments/videomancer/cartouche/cartouche_exercise1_result.png';
-import cartouche_exercise2_result from '/img/instruments/videomancer/cartouche/cartouche_exercise2_result.png';
-import cartouche_exercise3_result from '/img/instruments/videomancer/cartouche/cartouche_exercise3_result.png';
-import cartouche_source1_kodim03 from '/img/instruments/videomancer/cartouche/cartouche_source1_kodim03.png';
-import cartouche_source2_kodim13 from '/img/instruments/videomancer/cartouche/cartouche_source2_kodim13.png';
-import cartouche_source3_kodim13_bw from '/img/instruments/videomancer/cartouche/cartouche_source3_kodim13_bw.png';
+import cartouche_source1_skull from '/img/instruments/videomancer/cartouche/cartouche_source1_skull.png';
+import cartouche_source2_castle from '/img/instruments/videomancer/cartouche/cartouche_source2_castle.png';
+import cartouche_source3_collage from '/img/instruments/videomancer/cartouche/cartouche_source3_collage.png';
+import cartouche_source4_pattern from '/img/instruments/videomancer/cartouche/cartouche_source4_pattern.png';
+import cartouche_source5_girl from '/img/instruments/videomancer/cartouche/cartouche_source5_girl.png';
+import cartouche_source6_wood from '/img/instruments/videomancer/cartouche/cartouche_source6_wood.png';
+import cartouche_hero_s1 from '/img/instruments/videomancer/cartouche/cartouche_hero_s1.png';
+import cartouche_hero_s2 from '/img/instruments/videomancer/cartouche/cartouche_hero_s2.png';
+import cartouche_hero_s3 from '/img/instruments/videomancer/cartouche/cartouche_hero_s3.png';
+import cartouche_hero_s4 from '/img/instruments/videomancer/cartouche/cartouche_hero_s4.png';
+import cartouche_hero_s5 from '/img/instruments/videomancer/cartouche/cartouche_hero_s5.png';
+import cartouche_hero_s6 from '/img/instruments/videomancer/cartouche/cartouche_hero_s6.png';
+import cartouche_ex1_s1 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s1.png';
+import cartouche_ex1_s2 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s2.png';
+import cartouche_ex1_s3 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s3.png';
+import cartouche_ex1_s4 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s4.png';
+import cartouche_ex1_s5 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s5.png';
+import cartouche_ex1_s6 from '/img/instruments/videomancer/cartouche/cartouche_ex1_s6.png';
+import cartouche_ex2_s1 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s1.png';
+import cartouche_ex2_s2 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s2.png';
+import cartouche_ex2_s3 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s3.png';
+import cartouche_ex2_s4 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s4.png';
+import cartouche_ex2_s5 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s5.png';
+import cartouche_ex2_s6 from '/img/instruments/videomancer/cartouche/cartouche_ex2_s6.png';
+import cartouche_ex3_s1 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s1.png';
+import cartouche_ex3_s2 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s2.png';
+import cartouche_ex3_s3 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s3.png';
+import cartouche_ex3_s4 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s4.png';
+import cartouche_ex3_s5 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s5.png';
+import cartouche_ex3_s6 from '/img/instruments/videomancer/cartouche/cartouche_ex3_s6.png';
 
 # Cartouche
 
@@ -23,9 +45,12 @@ import cartouche_source3_kodim13_bw from '/img/instruments/videomancer/cartouche
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_hero },
-    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_hero },
-    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_hero },
+    { label: "Skull", before: cartouche_source1_skull, after: cartouche_hero_s1 },
+    { label: "Castle", before: cartouche_source2_castle, after: cartouche_hero_s2 },
+    { label: "Collage", before: cartouche_source3_collage, after: cartouche_hero_s3 },
+    { label: "Pattern", before: cartouche_source4_pattern, after: cartouche_hero_s4 },
+    { label: "Girl", before: cartouche_source5_girl, after: cartouche_hero_s5 },
+    { label: "Wood", before: cartouche_source6_wood, after: cartouche_hero_s6 },
   ]}
 />
 *Cartouche dividing a landscape into four horizontal registers with Egyptian mineral pigment palette quantization and painted ground line separators.*
@@ -110,8 +135,6 @@ Note that Mode Vary (Toggle 8) and Scale Rank (Toggle 10) are declared as VHDL s
 
 ## Parameter Reference
 
-<img src={cartouche_control_panel} alt="Videomancer front panel with Cartouche loaded"/>
-*Videomancer's front panel with Cartouche active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +237,12 @@ These exercises explore the register system, mineral palette, and ground line se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise1_result },
-    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise1_result },
-    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise1_result },
+    { label: "Skull", before: cartouche_source1_skull, after: cartouche_ex1_s1 },
+    { label: "Castle", before: cartouche_source2_castle, after: cartouche_ex1_s2 },
+    { label: "Collage", before: cartouche_source3_collage, after: cartouche_ex1_s3 },
+    { label: "Pattern", before: cartouche_source4_pattern, after: cartouche_ex1_s4 },
+    { label: "Girl", before: cartouche_source5_girl, after: cartouche_ex1_s5 },
+    { label: "Wood", before: cartouche_source6_wood, after: cartouche_ex1_s6 },
   ]}
 />
 *Register Division and Ground Lines — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises explore the register system, mineral palette, and ground line se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise2_result },
-    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise2_result },
-    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise2_result },
+    { label: "Skull", before: cartouche_source1_skull, after: cartouche_ex2_s1 },
+    { label: "Castle", before: cartouche_source2_castle, after: cartouche_ex2_s2 },
+    { label: "Collage", before: cartouche_source3_collage, after: cartouche_ex2_s3 },
+    { label: "Pattern", before: cartouche_source4_pattern, after: cartouche_ex2_s4 },
+    { label: "Girl", before: cartouche_source5_girl, after: cartouche_ex2_s5 },
+    { label: "Wood", before: cartouche_source6_wood, after: cartouche_ex2_s6 },
   ]}
 />
 *Mineral Pigment Palette — simulated result across source images.*
@@ -263,9 +292,12 @@ These exercises explore the register system, mineral palette, and ground line se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: cartouche_source1_kodim03, after: cartouche_exercise3_result },
-    { label: "Kodim13", before: cartouche_source2_kodim13, after: cartouche_exercise3_result },
-    { label: "Kodim13 B&W", before: cartouche_source3_kodim13_bw, after: cartouche_exercise3_result },
+    { label: "Skull", before: cartouche_source1_skull, after: cartouche_ex3_s1 },
+    { label: "Castle", before: cartouche_source2_castle, after: cartouche_ex3_s2 },
+    { label: "Collage", before: cartouche_source3_collage, after: cartouche_ex3_s3 },
+    { label: "Pattern", before: cartouche_source4_pattern, after: cartouche_ex3_s4 },
+    { label: "Girl", before: cartouche_source5_girl, after: cartouche_ex3_s5 },
+    { label: "Wood", before: cartouche_source6_wood, after: cartouche_ex3_s6 },
   ]}
 />
 *Complete Tomb Wall Composition — simulated result across source images.*

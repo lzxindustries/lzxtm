@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 202
+sidebar_position: 210
 slug: /instruments/videomancer/ouroboros
 title: "Ouroboros"
 image: /img/instruments/videomancer/ouroboros/ouroboros_hero.png

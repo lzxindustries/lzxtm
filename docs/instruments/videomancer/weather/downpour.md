@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 86
+sidebar_position: 90
 slug: /instruments/videomancer/downpour
 title: "Downpour"
-image: /img/instruments/videomancer/downpour/downpour_hero.png
+image: /img/instruments/videomancer/downpour/downpour_hero_s1.png
 description: "Rain is one of those visual phenomena that sits right at the boundary between order and chaos."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import downpour_hero from '/img/instruments/videomancer/downpour/downpour_hero.png';
-import downpour_control_panel from '/img/instruments/videomancer/downpour/downpour_control_panel.png';
-import downpour_exercise1_result from '/img/instruments/videomancer/downpour/downpour_exercise1_result.png';
-import downpour_exercise2_result from '/img/instruments/videomancer/downpour/downpour_exercise2_result.png';
-import downpour_exercise3_result from '/img/instruments/videomancer/downpour/downpour_exercise3_result.png';
-import downpour_source1_kodim01 from '/img/instruments/videomancer/downpour/downpour_source1_kodim01.png';
-import downpour_source2_kodim02 from '/img/instruments/videomancer/downpour/downpour_source2_kodim02.png';
-import downpour_source3_stream_bridge_512 from '/img/instruments/videomancer/downpour/downpour_source3_stream_bridge_512.png';
+import downpour_source1_runner from '/img/instruments/videomancer/downpour/downpour_source1_runner.png';
+import downpour_source2_fruit from '/img/instruments/videomancer/downpour/downpour_source2_fruit.png';
+import downpour_source3_elephant from '/img/instruments/videomancer/downpour/downpour_source3_elephant.png';
+import downpour_source4_pattern from '/img/instruments/videomancer/downpour/downpour_source4_pattern.png';
+import downpour_source5_boy from '/img/instruments/videomancer/downpour/downpour_source5_boy.png';
+import downpour_source6_paint from '/img/instruments/videomancer/downpour/downpour_source6_paint.png';
+import downpour_hero_s1 from '/img/instruments/videomancer/downpour/downpour_hero_s1.png';
+import downpour_hero_s2 from '/img/instruments/videomancer/downpour/downpour_hero_s2.png';
+import downpour_hero_s3 from '/img/instruments/videomancer/downpour/downpour_hero_s3.png';
+import downpour_hero_s4 from '/img/instruments/videomancer/downpour/downpour_hero_s4.png';
+import downpour_hero_s5 from '/img/instruments/videomancer/downpour/downpour_hero_s5.png';
+import downpour_hero_s6 from '/img/instruments/videomancer/downpour/downpour_hero_s6.png';
+import downpour_ex1_s1 from '/img/instruments/videomancer/downpour/downpour_ex1_s1.png';
+import downpour_ex1_s2 from '/img/instruments/videomancer/downpour/downpour_ex1_s2.png';
+import downpour_ex1_s3 from '/img/instruments/videomancer/downpour/downpour_ex1_s3.png';
+import downpour_ex1_s4 from '/img/instruments/videomancer/downpour/downpour_ex1_s4.png';
+import downpour_ex1_s5 from '/img/instruments/videomancer/downpour/downpour_ex1_s5.png';
+import downpour_ex1_s6 from '/img/instruments/videomancer/downpour/downpour_ex1_s6.png';
+import downpour_ex2_s1 from '/img/instruments/videomancer/downpour/downpour_ex2_s1.png';
+import downpour_ex2_s2 from '/img/instruments/videomancer/downpour/downpour_ex2_s2.png';
+import downpour_ex2_s3 from '/img/instruments/videomancer/downpour/downpour_ex2_s3.png';
+import downpour_ex2_s4 from '/img/instruments/videomancer/downpour/downpour_ex2_s4.png';
+import downpour_ex2_s5 from '/img/instruments/videomancer/downpour/downpour_ex2_s5.png';
+import downpour_ex2_s6 from '/img/instruments/videomancer/downpour/downpour_ex2_s6.png';
+import downpour_ex3_s1 from '/img/instruments/videomancer/downpour/downpour_ex3_s1.png';
+import downpour_ex3_s2 from '/img/instruments/videomancer/downpour/downpour_ex3_s2.png';
+import downpour_ex3_s3 from '/img/instruments/videomancer/downpour/downpour_ex3_s3.png';
+import downpour_ex3_s4 from '/img/instruments/videomancer/downpour/downpour_ex3_s4.png';
+import downpour_ex3_s5 from '/img/instruments/videomancer/downpour/downpour_ex3_s5.png';
+import downpour_ex3_s6 from '/img/instruments/videomancer/downpour/downpour_ex3_s6.png';
 
 # Downpour
 
@@ -23,9 +45,12 @@ import downpour_source3_stream_bridge_512 from '/img/instruments/videomancer/dow
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_hero },
-    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_hero },
-    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_hero },
+    { label: "Runner", before: downpour_source1_runner, after: downpour_hero_s1 },
+    { label: "Fruit", before: downpour_source2_fruit, after: downpour_hero_s2 },
+    { label: "Elephant", before: downpour_source3_elephant, after: downpour_hero_s3 },
+    { label: "Pattern", before: downpour_source4_pattern, after: downpour_hero_s4 },
+    { label: "Boy", before: downpour_source5_boy, after: downpour_hero_s5 },
+    { label: "Paint", before: downpour_source6_paint, after: downpour_hero_s6 },
   ]}
 />
 *Downpour compositing LFSR-seeded diagonal rain streaks with splash highlights and fog overlay onto live video.*
@@ -126,8 +151,6 @@ The key architectural choice is that rain drops have no persistent per-particle 
 
 ## Parameter Reference
 
-<img src={downpour_control_panel} alt="Videomancer front panel with Downpour loaded"/>
-*Videomancer's front panel with Downpour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -232,9 +255,12 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise1_result },
-    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise1_result },
-    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise1_result },
+    { label: "Runner", before: downpour_source1_runner, after: downpour_ex1_s1 },
+    { label: "Fruit", before: downpour_source2_fruit, after: downpour_ex1_s2 },
+    { label: "Elephant", before: downpour_source3_elephant, after: downpour_ex1_s3 },
+    { label: "Pattern", before: downpour_source4_pattern, after: downpour_ex1_s4 },
+    { label: "Boy", before: downpour_source5_boy, after: downpour_ex1_s5 },
+    { label: "Paint", before: downpour_source6_paint, after: downpour_ex1_s6 },
   ]}
 />
 *Gentle Drizzle — simulated result across source images.*
@@ -257,9 +283,12 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise2_result },
-    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise2_result },
-    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise2_result },
+    { label: "Runner", before: downpour_source1_runner, after: downpour_ex2_s1 },
+    { label: "Fruit", before: downpour_source2_fruit, after: downpour_ex2_s2 },
+    { label: "Elephant", before: downpour_source3_elephant, after: downpour_ex2_s3 },
+    { label: "Pattern", before: downpour_source4_pattern, after: downpour_ex2_s4 },
+    { label: "Boy", before: downpour_source5_boy, after: downpour_ex2_s5 },
+    { label: "Paint", before: downpour_source6_paint, after: downpour_ex2_s6 },
   ]}
 />
 *Thunderstorm — simulated result across source images.*
@@ -284,9 +313,12 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: downpour_source1_kodim01, after: downpour_exercise3_result },
-    { label: "Kodim02", before: downpour_source2_kodim02, after: downpour_exercise3_result },
-    { label: "Stream Bridge", before: downpour_source3_stream_bridge_512, after: downpour_exercise3_result },
+    { label: "Runner", before: downpour_source1_runner, after: downpour_ex3_s1 },
+    { label: "Fruit", before: downpour_source2_fruit, after: downpour_ex3_s2 },
+    { label: "Elephant", before: downpour_source3_elephant, after: downpour_ex3_s3 },
+    { label: "Pattern", before: downpour_source4_pattern, after: downpour_ex3_s4 },
+    { label: "Boy", before: downpour_source5_boy, after: downpour_ex3_s5 },
+    { label: "Paint", before: downpour_source6_paint, after: downpour_ex3_s6 },
   ]}
 />
 *Abstract Rain Texture — simulated result across source images.*

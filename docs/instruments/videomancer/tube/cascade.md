@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 38
+sidebar_position: 39
 slug: /instruments/videomancer/cascade
 title: "Cascade"
-image: /img/instruments/videomancer/cascade/cascade_hero.png
+image: /img/instruments/videomancer/cascade/cascade_hero_s1.png
 description: "A CRT phosphor does not turn off instantly."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cascade_hero from '/img/instruments/videomancer/cascade/cascade_hero.png';
-import cascade_control_panel from '/img/instruments/videomancer/cascade/cascade_control_panel.png';
-import cascade_exercise1_result from '/img/instruments/videomancer/cascade/cascade_exercise1_result.png';
-import cascade_exercise2_result from '/img/instruments/videomancer/cascade/cascade_exercise2_result.png';
-import cascade_exercise3_result from '/img/instruments/videomancer/cascade/cascade_exercise3_result.png';
-import cascade_source1_kodim15 from '/img/instruments/videomancer/cascade/cascade_source1_kodim15.png';
-import cascade_source2_kodim01 from '/img/instruments/videomancer/cascade/cascade_source2_kodim01.png';
-import cascade_source3_kodim01_bw from '/img/instruments/videomancer/cascade/cascade_source3_kodim01_bw.png';
+import cascade_source1_house from '/img/instruments/videomancer/cascade/cascade_source1_house.png';
+import cascade_source2_skull from '/img/instruments/videomancer/cascade/cascade_source2_skull.png';
+import cascade_source3_clouds from '/img/instruments/videomancer/cascade/cascade_source3_clouds.png';
+import cascade_source4_pattern from '/img/instruments/videomancer/cascade/cascade_source4_pattern.png';
+import cascade_source5_woman from '/img/instruments/videomancer/cascade/cascade_source5_woman.png';
+import cascade_source6_knit from '/img/instruments/videomancer/cascade/cascade_source6_knit.png';
+import cascade_hero_s1 from '/img/instruments/videomancer/cascade/cascade_hero_s1.png';
+import cascade_hero_s2 from '/img/instruments/videomancer/cascade/cascade_hero_s2.png';
+import cascade_hero_s3 from '/img/instruments/videomancer/cascade/cascade_hero_s3.png';
+import cascade_hero_s4 from '/img/instruments/videomancer/cascade/cascade_hero_s4.png';
+import cascade_hero_s5 from '/img/instruments/videomancer/cascade/cascade_hero_s5.png';
+import cascade_hero_s6 from '/img/instruments/videomancer/cascade/cascade_hero_s6.png';
+import cascade_ex1_s1 from '/img/instruments/videomancer/cascade/cascade_ex1_s1.png';
+import cascade_ex1_s2 from '/img/instruments/videomancer/cascade/cascade_ex1_s2.png';
+import cascade_ex1_s3 from '/img/instruments/videomancer/cascade/cascade_ex1_s3.png';
+import cascade_ex1_s4 from '/img/instruments/videomancer/cascade/cascade_ex1_s4.png';
+import cascade_ex1_s5 from '/img/instruments/videomancer/cascade/cascade_ex1_s5.png';
+import cascade_ex1_s6 from '/img/instruments/videomancer/cascade/cascade_ex1_s6.png';
+import cascade_ex2_s1 from '/img/instruments/videomancer/cascade/cascade_ex2_s1.png';
+import cascade_ex2_s2 from '/img/instruments/videomancer/cascade/cascade_ex2_s2.png';
+import cascade_ex2_s3 from '/img/instruments/videomancer/cascade/cascade_ex2_s3.png';
+import cascade_ex2_s4 from '/img/instruments/videomancer/cascade/cascade_ex2_s4.png';
+import cascade_ex2_s5 from '/img/instruments/videomancer/cascade/cascade_ex2_s5.png';
+import cascade_ex2_s6 from '/img/instruments/videomancer/cascade/cascade_ex2_s6.png';
+import cascade_ex3_s1 from '/img/instruments/videomancer/cascade/cascade_ex3_s1.png';
+import cascade_ex3_s2 from '/img/instruments/videomancer/cascade/cascade_ex3_s2.png';
+import cascade_ex3_s3 from '/img/instruments/videomancer/cascade/cascade_ex3_s3.png';
+import cascade_ex3_s4 from '/img/instruments/videomancer/cascade/cascade_ex3_s4.png';
+import cascade_ex3_s5 from '/img/instruments/videomancer/cascade/cascade_ex3_s5.png';
+import cascade_ex3_s6 from '/img/instruments/videomancer/cascade/cascade_ex3_s6.png';
 
 # Cascade
 
@@ -23,9 +45,12 @@ import cascade_source3_kodim01_bw from '/img/instruments/videomancer/cascade/cas
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_hero },
-    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_hero },
-    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_hero },
+    { label: "House", before: cascade_source1_house, after: cascade_hero_s1 },
+    { label: "Skull", before: cascade_source2_skull, after: cascade_hero_s2 },
+    { label: "Clouds", before: cascade_source3_clouds, after: cascade_hero_s3 },
+    { label: "Pattern", before: cascade_source4_pattern, after: cascade_hero_s4 },
+    { label: "Woman", before: cascade_source5_woman, after: cascade_hero_s5 },
+    { label: "Knit", before: cascade_source6_knit, after: cascade_hero_s6 },
   ]}
 />
 *Cascade painting tinted scanline echoes across a portrait, each delay tap accumulating warm phosphor trails that bleed through the frame.*
@@ -115,9 +140,6 @@ The two echo taps (A and B) are not blended in parallel — the delay line selec
 ---
 
 ## Parameter Reference
-
-<img src={cascade_control_panel} alt="Videomancer front panel with Cascade loaded"/>
-*Videomancer's front panel with Cascade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,9 +244,12 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise1_result },
-    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise1_result },
-    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise1_result },
+    { label: "House", before: cascade_source1_house, after: cascade_ex1_s1 },
+    { label: "Skull", before: cascade_source2_skull, after: cascade_ex1_s2 },
+    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex1_s3 },
+    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex1_s4 },
+    { label: "Woman", before: cascade_source5_woman, after: cascade_ex1_s5 },
+    { label: "Knit", before: cascade_source6_knit, after: cascade_ex1_s6 },
   ]}
 />
 *Basic Echo Trail — simulated result across source images.*
@@ -246,9 +271,12 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise2_result },
-    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise2_result },
-    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise2_result },
+    { label: "House", before: cascade_source1_house, after: cascade_ex2_s1 },
+    { label: "Skull", before: cascade_source2_skull, after: cascade_ex2_s2 },
+    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex2_s3 },
+    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex2_s4 },
+    { label: "Woman", before: cascade_source5_woman, after: cascade_ex2_s5 },
+    { label: "Knit", before: cascade_source6_knit, after: cascade_ex2_s6 },
   ]}
 />
 *Phosphor Tint Trails — simulated result across source images.*
@@ -271,9 +299,12 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cascade_source1_kodim15, after: cascade_exercise3_result },
-    { label: "Kodim01", before: cascade_source2_kodim01, after: cascade_exercise3_result },
-    { label: "Kodim01 B&W", before: cascade_source3_kodim01_bw, after: cascade_exercise3_result },
+    { label: "House", before: cascade_source1_house, after: cascade_ex3_s1 },
+    { label: "Skull", before: cascade_source2_skull, after: cascade_ex3_s2 },
+    { label: "Clouds", before: cascade_source3_clouds, after: cascade_ex3_s3 },
+    { label: "Pattern", before: cascade_source4_pattern, after: cascade_ex3_s4 },
+    { label: "Woman", before: cascade_source5_woman, after: cascade_ex3_s5 },
+    { label: "Knit", before: cascade_source6_knit, after: cascade_ex3_s6 },
   ]}
 />
 *Feedback Stutter and Freeze — simulated result across source images.*

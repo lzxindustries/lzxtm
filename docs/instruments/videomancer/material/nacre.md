@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 192
+sidebar_position: 200
 slug: /instruments/videomancer/nacre
 title: "Nacre"
-image: /img/instruments/videomancer/nacre/nacre_hero.png
+image: /img/instruments/videomancer/nacre/nacre_hero_s1.png
 description: "Mother-of-pearl, the iridescent lining of a mollusc shell, gets its color not from pigment but from thin-film interference — light waves reflecting off microscopic layers of aragonite, interfering constructively and destructively so that the apparent hue shifts with viewing angle and position."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import nacre_hero from '/img/instruments/videomancer/nacre/nacre_hero.png';
-import nacre_control_panel from '/img/instruments/videomancer/nacre/nacre_control_panel.png';
-import nacre_exercise1_result from '/img/instruments/videomancer/nacre/nacre_exercise1_result.png';
-import nacre_exercise2_result from '/img/instruments/videomancer/nacre/nacre_exercise2_result.png';
-import nacre_exercise3_result from '/img/instruments/videomancer/nacre/nacre_exercise3_result.png';
-import nacre_source1_kodim15 from '/img/instruments/videomancer/nacre/nacre_source1_kodim15.png';
-import nacre_source2_kodim03 from '/img/instruments/videomancer/nacre/nacre_source2_kodim03.png';
-import nacre_source3_kodim13_bw from '/img/instruments/videomancer/nacre/nacre_source3_kodim13_bw.png';
+import nacre_source1_parrot from '/img/instruments/videomancer/nacre/nacre_source1_parrot.png';
+import nacre_source2_cat from '/img/instruments/videomancer/nacre/nacre_source2_cat.png';
+import nacre_source3_elephant from '/img/instruments/videomancer/nacre/nacre_source3_elephant.png';
+import nacre_source4_pattern from '/img/instruments/videomancer/nacre/nacre_source4_pattern.png';
+import nacre_source5_boy from '/img/instruments/videomancer/nacre/nacre_source5_boy.png';
+import nacre_source6_wood from '/img/instruments/videomancer/nacre/nacre_source6_wood.png';
+import nacre_hero_s1 from '/img/instruments/videomancer/nacre/nacre_hero_s1.png';
+import nacre_hero_s2 from '/img/instruments/videomancer/nacre/nacre_hero_s2.png';
+import nacre_hero_s3 from '/img/instruments/videomancer/nacre/nacre_hero_s3.png';
+import nacre_hero_s4 from '/img/instruments/videomancer/nacre/nacre_hero_s4.png';
+import nacre_hero_s5 from '/img/instruments/videomancer/nacre/nacre_hero_s5.png';
+import nacre_hero_s6 from '/img/instruments/videomancer/nacre/nacre_hero_s6.png';
+import nacre_ex1_s1 from '/img/instruments/videomancer/nacre/nacre_ex1_s1.png';
+import nacre_ex1_s2 from '/img/instruments/videomancer/nacre/nacre_ex1_s2.png';
+import nacre_ex1_s3 from '/img/instruments/videomancer/nacre/nacre_ex1_s3.png';
+import nacre_ex1_s4 from '/img/instruments/videomancer/nacre/nacre_ex1_s4.png';
+import nacre_ex1_s5 from '/img/instruments/videomancer/nacre/nacre_ex1_s5.png';
+import nacre_ex1_s6 from '/img/instruments/videomancer/nacre/nacre_ex1_s6.png';
+import nacre_ex2_s1 from '/img/instruments/videomancer/nacre/nacre_ex2_s1.png';
+import nacre_ex2_s2 from '/img/instruments/videomancer/nacre/nacre_ex2_s2.png';
+import nacre_ex2_s3 from '/img/instruments/videomancer/nacre/nacre_ex2_s3.png';
+import nacre_ex2_s4 from '/img/instruments/videomancer/nacre/nacre_ex2_s4.png';
+import nacre_ex2_s5 from '/img/instruments/videomancer/nacre/nacre_ex2_s5.png';
+import nacre_ex2_s6 from '/img/instruments/videomancer/nacre/nacre_ex2_s6.png';
+import nacre_ex3_s1 from '/img/instruments/videomancer/nacre/nacre_ex3_s1.png';
+import nacre_ex3_s2 from '/img/instruments/videomancer/nacre/nacre_ex3_s2.png';
+import nacre_ex3_s3 from '/img/instruments/videomancer/nacre/nacre_ex3_s3.png';
+import nacre_ex3_s4 from '/img/instruments/videomancer/nacre/nacre_ex3_s4.png';
+import nacre_ex3_s5 from '/img/instruments/videomancer/nacre/nacre_ex3_s5.png';
+import nacre_ex3_s6 from '/img/instruments/videomancer/nacre/nacre_ex3_s6.png';
 
 # Nacre
 
@@ -23,9 +45,12 @@ import nacre_source3_kodim13_bw from '/img/instruments/videomancer/nacre/nacre_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_hero },
-    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_hero },
-    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_hero },
+    { label: "Parrot", before: nacre_source1_parrot, after: nacre_hero_s1 },
+    { label: "Cat", before: nacre_source2_cat, after: nacre_hero_s2 },
+    { label: "Elephant", before: nacre_source3_elephant, after: nacre_hero_s3 },
+    { label: "Pattern", before: nacre_source4_pattern, after: nacre_hero_s4 },
+    { label: "Boy", before: nacre_source5_boy, after: nacre_hero_s5 },
+    { label: "Wood", before: nacre_source6_wood, after: nacre_hero_s6 },
   ]}
 />
 *Nacre applying position-dependent hue rotation and pearlescent shimmer to create thin-film iridescence across the video signal.*
@@ -115,8 +140,6 @@ The saturation control is applied to the *source* chroma before the iridescent o
 
 ## Parameter Reference
 
-<img src={nacre_control_panel} alt="Videomancer front panel with Nacre loaded"/>
-*Videomancer's front panel with Nacre active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise1_result },
-    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise1_result },
-    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise1_result },
+    { label: "Parrot", before: nacre_source1_parrot, after: nacre_ex1_s1 },
+    { label: "Cat", before: nacre_source2_cat, after: nacre_ex1_s2 },
+    { label: "Elephant", before: nacre_source3_elephant, after: nacre_ex1_s3 },
+    { label: "Pattern", before: nacre_source4_pattern, after: nacre_ex1_s4 },
+    { label: "Boy", before: nacre_source5_boy, after: nacre_ex1_s5 },
+    { label: "Wood", before: nacre_source6_wood, after: nacre_ex1_s6 },
   ]}
 />
 *Diagonal Rainbow Bands — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise2_result },
-    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise2_result },
-    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise2_result },
+    { label: "Parrot", before: nacre_source1_parrot, after: nacre_ex2_s1 },
+    { label: "Cat", before: nacre_source2_cat, after: nacre_ex2_s2 },
+    { label: "Elephant", before: nacre_source3_elephant, after: nacre_ex2_s3 },
+    { label: "Pattern", before: nacre_source4_pattern, after: nacre_ex2_s4 },
+    { label: "Boy", before: nacre_source5_boy, after: nacre_ex2_s5 },
+    { label: "Wood", before: nacre_source6_wood, after: nacre_ex2_s6 },
   ]}
 />
 *Animated Pearlescent Shimmer — simulated result across source images.*
@@ -270,9 +299,12 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: nacre_source1_kodim15, after: nacre_exercise3_result },
-    { label: "Kodim03", before: nacre_source2_kodim03, after: nacre_exercise3_result },
-    { label: "Kodim13 B&W", before: nacre_source3_kodim13_bw, after: nacre_exercise3_result },
+    { label: "Parrot", before: nacre_source1_parrot, after: nacre_ex3_s1 },
+    { label: "Cat", before: nacre_source2_cat, after: nacre_ex3_s2 },
+    { label: "Elephant", before: nacre_source3_elephant, after: nacre_ex3_s3 },
+    { label: "Pattern", before: nacre_source4_pattern, after: nacre_ex3_s4 },
+    { label: "Boy", before: nacre_source5_boy, after: nacre_ex3_s5 },
+    { label: "Wood", before: nacre_source6_wood, after: nacre_ex3_s6 },
   ]}
 />
 *Radial Diamond Iridescence — simulated result across source images.*

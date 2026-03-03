@@ -266,5 +266,4 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 | **Velocity Accumulator** | A register that adds a step value each frame to compute position, implementing constant-velocity motion. |
 | **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
-
 ---

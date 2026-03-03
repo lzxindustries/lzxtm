@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 72
+sidebar_position: 75
 slug: /instruments/videomancer/decibel
 title: "Decibel"
-image: /img/instruments/videomancer/decibel/decibel_hero.png
+image: /img/instruments/videomancer/decibel/decibel_hero_s1.png
 description: "Every sound engineer knows the VU meter — a swinging needle that follows the loudness of audio in near-real-time, giving an immediate, visceral sense of energy."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import decibel_hero from '/img/instruments/videomancer/decibel/decibel_hero.png';
-import decibel_control_panel from '/img/instruments/videomancer/decibel/decibel_control_panel.png';
-import decibel_exercise1_result from '/img/instruments/videomancer/decibel/decibel_exercise1_result.png';
-import decibel_exercise2_result from '/img/instruments/videomancer/decibel/decibel_exercise2_result.png';
-import decibel_exercise3_result from '/img/instruments/videomancer/decibel/decibel_exercise3_result.png';
-import decibel_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/decibel/decibel_source1_grayscale_ramp_h_1920x1080.png';
-import decibel_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/decibel/decibel_source2_grayscale_ramp_v_1920x1080.png';
-import decibel_source3_step_wedge_21level_512 from '/img/instruments/videomancer/decibel/decibel_source3_step_wedge_21level_512.png';
+import decibel_source1_runner from '/img/instruments/videomancer/decibel/decibel_source1_runner.png';
+import decibel_source2_fruit from '/img/instruments/videomancer/decibel/decibel_source2_fruit.png';
+import decibel_source3_clouds from '/img/instruments/videomancer/decibel/decibel_source3_clouds.png';
+import decibel_source4_pattern from '/img/instruments/videomancer/decibel/decibel_source4_pattern.png';
+import decibel_source5_man from '/img/instruments/videomancer/decibel/decibel_source5_man.png';
+import decibel_source6_paint from '/img/instruments/videomancer/decibel/decibel_source6_paint.png';
+import decibel_hero_s1 from '/img/instruments/videomancer/decibel/decibel_hero_s1.png';
+import decibel_hero_s2 from '/img/instruments/videomancer/decibel/decibel_hero_s2.png';
+import decibel_hero_s3 from '/img/instruments/videomancer/decibel/decibel_hero_s3.png';
+import decibel_hero_s4 from '/img/instruments/videomancer/decibel/decibel_hero_s4.png';
+import decibel_hero_s5 from '/img/instruments/videomancer/decibel/decibel_hero_s5.png';
+import decibel_hero_s6 from '/img/instruments/videomancer/decibel/decibel_hero_s6.png';
+import decibel_ex1_s1 from '/img/instruments/videomancer/decibel/decibel_ex1_s1.png';
+import decibel_ex1_s2 from '/img/instruments/videomancer/decibel/decibel_ex1_s2.png';
+import decibel_ex1_s3 from '/img/instruments/videomancer/decibel/decibel_ex1_s3.png';
+import decibel_ex1_s4 from '/img/instruments/videomancer/decibel/decibel_ex1_s4.png';
+import decibel_ex1_s5 from '/img/instruments/videomancer/decibel/decibel_ex1_s5.png';
+import decibel_ex1_s6 from '/img/instruments/videomancer/decibel/decibel_ex1_s6.png';
+import decibel_ex2_s1 from '/img/instruments/videomancer/decibel/decibel_ex2_s1.png';
+import decibel_ex2_s2 from '/img/instruments/videomancer/decibel/decibel_ex2_s2.png';
+import decibel_ex2_s3 from '/img/instruments/videomancer/decibel/decibel_ex2_s3.png';
+import decibel_ex2_s4 from '/img/instruments/videomancer/decibel/decibel_ex2_s4.png';
+import decibel_ex2_s5 from '/img/instruments/videomancer/decibel/decibel_ex2_s5.png';
+import decibel_ex2_s6 from '/img/instruments/videomancer/decibel/decibel_ex2_s6.png';
+import decibel_ex3_s1 from '/img/instruments/videomancer/decibel/decibel_ex3_s1.png';
+import decibel_ex3_s2 from '/img/instruments/videomancer/decibel/decibel_ex3_s2.png';
+import decibel_ex3_s3 from '/img/instruments/videomancer/decibel/decibel_ex3_s3.png';
+import decibel_ex3_s4 from '/img/instruments/videomancer/decibel/decibel_ex3_s4.png';
+import decibel_ex3_s5 from '/img/instruments/videomancer/decibel/decibel_ex3_s5.png';
+import decibel_ex3_s6 from '/img/instruments/videomancer/decibel/decibel_ex3_s6.png';
 
 # Decibel
 
@@ -23,9 +45,12 @@ import decibel_source3_step_wedge_21level_512 from '/img/instruments/videomancer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_hero },
-    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_hero },
-    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_hero },
+    { label: "Runner", before: decibel_source1_runner, after: decibel_hero_s1 },
+    { label: "Fruit", before: decibel_source2_fruit, after: decibel_hero_s2 },
+    { label: "Clouds", before: decibel_source3_clouds, after: decibel_hero_s3 },
+    { label: "Pattern", before: decibel_source4_pattern, after: decibel_hero_s4 },
+    { label: "Man", before: decibel_source5_man, after: decibel_hero_s5 },
+    { label: "Paint", before: decibel_source6_paint, after: decibel_hero_s6 },
   ]}
 />
 *Decibel rendering a 16-segment rainbow bar meter across a live video feed, with peak hold markers tracing transient brightness spikes in red.*
@@ -104,8 +129,6 @@ The critical path runs through the IIR envelope follower, which maintains state 
 
 ## Parameter Reference
 
-<img src={decibel_control_panel} alt="Videomancer front panel with Decibel loaded"/>
-*Videomancer's front panel with Decibel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,9 +232,12 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise1_result },
-    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise1_result },
-    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise1_result },
+    { label: "Runner", before: decibel_source1_runner, after: decibel_ex1_s1 },
+    { label: "Fruit", before: decibel_source2_fruit, after: decibel_ex1_s2 },
+    { label: "Clouds", before: decibel_source3_clouds, after: decibel_ex1_s3 },
+    { label: "Pattern", before: decibel_source4_pattern, after: decibel_ex1_s4 },
+    { label: "Man", before: decibel_source5_man, after: decibel_ex1_s5 },
+    { label: "Paint", before: decibel_source6_paint, after: decibel_ex1_s6 },
   ]}
 />
 *Classic Bar Meter — simulated result across source images.*
@@ -233,9 +259,12 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise2_result },
-    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise2_result },
-    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise2_result },
+    { label: "Runner", before: decibel_source1_runner, after: decibel_ex2_s1 },
+    { label: "Fruit", before: decibel_source2_fruit, after: decibel_ex2_s2 },
+    { label: "Clouds", before: decibel_source3_clouds, after: decibel_ex2_s3 },
+    { label: "Pattern", before: decibel_source4_pattern, after: decibel_ex2_s4 },
+    { label: "Man", before: decibel_source5_man, after: decibel_ex2_s5 },
+    { label: "Paint", before: decibel_source6_paint, after: decibel_ex2_s6 },
   ]}
 />
 *Peak Hold and Rainbow Color — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: decibel_source1_grayscale_ramp_h_1920x1080, after: decibel_exercise3_result },
-    { label: "Grayscale Ramp V", before: decibel_source2_grayscale_ramp_v_1920x1080, after: decibel_exercise3_result },
-    { label: "Step Wedge 21level", before: decibel_source3_step_wedge_21level_512, after: decibel_exercise3_result },
+    { label: "Runner", before: decibel_source1_runner, after: decibel_ex3_s1 },
+    { label: "Fruit", before: decibel_source2_fruit, after: decibel_ex3_s2 },
+    { label: "Clouds", before: decibel_source3_clouds, after: decibel_ex3_s3 },
+    { label: "Pattern", before: decibel_source4_pattern, after: decibel_ex3_s4 },
+    { label: "Man", before: decibel_source5_man, after: decibel_ex3_s5 },
+    { label: "Paint", before: decibel_source6_paint, after: decibel_ex3_s6 },
   ]}
 />
 *Composited Meter Overlay — simulated result across source images.*

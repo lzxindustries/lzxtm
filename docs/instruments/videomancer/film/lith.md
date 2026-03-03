@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 166
+sidebar_position: 174
 slug: /instruments/videomancer/lith
 title: "Lith"
-image: /img/instruments/videomancer/lith/lith_hero.png
+image: /img/instruments/videomancer/lith/lith_hero_s1.png
 description: "In the photographic darkroom, lith printing is a process that defies conventional wisdom."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lith_hero from '/img/instruments/videomancer/lith/lith_hero.png';
-import lith_control_panel from '/img/instruments/videomancer/lith/lith_control_panel.png';
-import lith_exercise1_result from '/img/instruments/videomancer/lith/lith_exercise1_result.png';
-import lith_exercise2_result from '/img/instruments/videomancer/lith/lith_exercise2_result.png';
-import lith_exercise3_result from '/img/instruments/videomancer/lith/lith_exercise3_result.png';
-import lith_source1_kodim03 from '/img/instruments/videomancer/lith/lith_source1_kodim03.png';
-import lith_source2_kodim13 from '/img/instruments/videomancer/lith/lith_source2_kodim13.png';
-import lith_source3_kodim13_bw from '/img/instruments/videomancer/lith/lith_source3_kodim13_bw.png';
+import lith_source1_dog from '/img/instruments/videomancer/lith/lith_source1_dog.png';
+import lith_source2_fruit from '/img/instruments/videomancer/lith/lith_source2_fruit.png';
+import lith_source3_turtle from '/img/instruments/videomancer/lith/lith_source3_turtle.png';
+import lith_source4_pattern from '/img/instruments/videomancer/lith/lith_source4_pattern.png';
+import lith_source5_girl from '/img/instruments/videomancer/lith/lith_source5_girl.png';
+import lith_source6_wood from '/img/instruments/videomancer/lith/lith_source6_wood.png';
+import lith_hero_s1 from '/img/instruments/videomancer/lith/lith_hero_s1.png';
+import lith_hero_s2 from '/img/instruments/videomancer/lith/lith_hero_s2.png';
+import lith_hero_s3 from '/img/instruments/videomancer/lith/lith_hero_s3.png';
+import lith_hero_s4 from '/img/instruments/videomancer/lith/lith_hero_s4.png';
+import lith_hero_s5 from '/img/instruments/videomancer/lith/lith_hero_s5.png';
+import lith_hero_s6 from '/img/instruments/videomancer/lith/lith_hero_s6.png';
+import lith_ex1_s1 from '/img/instruments/videomancer/lith/lith_ex1_s1.png';
+import lith_ex1_s2 from '/img/instruments/videomancer/lith/lith_ex1_s2.png';
+import lith_ex1_s3 from '/img/instruments/videomancer/lith/lith_ex1_s3.png';
+import lith_ex1_s4 from '/img/instruments/videomancer/lith/lith_ex1_s4.png';
+import lith_ex1_s5 from '/img/instruments/videomancer/lith/lith_ex1_s5.png';
+import lith_ex1_s6 from '/img/instruments/videomancer/lith/lith_ex1_s6.png';
+import lith_ex2_s1 from '/img/instruments/videomancer/lith/lith_ex2_s1.png';
+import lith_ex2_s2 from '/img/instruments/videomancer/lith/lith_ex2_s2.png';
+import lith_ex2_s3 from '/img/instruments/videomancer/lith/lith_ex2_s3.png';
+import lith_ex2_s4 from '/img/instruments/videomancer/lith/lith_ex2_s4.png';
+import lith_ex2_s5 from '/img/instruments/videomancer/lith/lith_ex2_s5.png';
+import lith_ex2_s6 from '/img/instruments/videomancer/lith/lith_ex2_s6.png';
+import lith_ex3_s1 from '/img/instruments/videomancer/lith/lith_ex3_s1.png';
+import lith_ex3_s2 from '/img/instruments/videomancer/lith/lith_ex3_s2.png';
+import lith_ex3_s3 from '/img/instruments/videomancer/lith/lith_ex3_s3.png';
+import lith_ex3_s4 from '/img/instruments/videomancer/lith/lith_ex3_s4.png';
+import lith_ex3_s5 from '/img/instruments/videomancer/lith/lith_ex3_s5.png';
+import lith_ex3_s6 from '/img/instruments/videomancer/lith/lith_ex3_s6.png';
 
 # Lith
 
@@ -23,9 +45,12 @@ import lith_source3_kodim13_bw from '/img/instruments/videomancer/lith/lith_sour
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lith_source1_kodim03, after: lith_hero },
-    { label: "Kodim13", before: lith_source2_kodim13, after: lith_hero },
-    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_hero },
+    { label: "Dog", before: lith_source1_dog, after: lith_hero_s1 },
+    { label: "Fruit", before: lith_source2_fruit, after: lith_hero_s2 },
+    { label: "Turtle", before: lith_source3_turtle, after: lith_hero_s3 },
+    { label: "Pattern", before: lith_source4_pattern, after: lith_hero_s4 },
+    { label: "Girl", before: lith_source5_girl, after: lith_hero_s5 },
+    { label: "Wood", before: lith_source6_wood, after: lith_hero_s6 },
   ]}
 />
 *Lith applying infectious development processing to transform video into ultra-high-contrast prints with warm brown shadow tones and papery highlights.*
@@ -100,8 +125,6 @@ The critical interaction is between the threshold edge calculation (Stage 2) and
 
 ## Parameter Reference
 
-<img src={lith_control_panel} alt="Videomancer front panel with Lith loaded"/>
-*Videomancer's front panel with Lith active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -206,9 +229,12 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise1_result },
-    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise1_result },
-    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise1_result },
+    { label: "Dog", before: lith_source1_dog, after: lith_ex1_s1 },
+    { label: "Fruit", before: lith_source2_fruit, after: lith_ex1_s2 },
+    { label: "Turtle", before: lith_source3_turtle, after: lith_ex1_s3 },
+    { label: "Pattern", before: lith_source4_pattern, after: lith_ex1_s4 },
+    { label: "Girl", before: lith_source5_girl, after: lith_ex1_s5 },
+    { label: "Wood", before: lith_source6_wood, after: lith_ex1_s6 },
   ]}
 />
 *Basic Lith Threshold — simulated result across source images.*
@@ -230,9 +256,12 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise2_result },
-    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise2_result },
-    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise2_result },
+    { label: "Dog", before: lith_source1_dog, after: lith_ex2_s1 },
+    { label: "Fruit", before: lith_source2_fruit, after: lith_ex2_s2 },
+    { label: "Turtle", before: lith_source3_turtle, after: lith_ex2_s3 },
+    { label: "Pattern", before: lith_source4_pattern, after: lith_ex2_s4 },
+    { label: "Girl", before: lith_source5_girl, after: lith_ex2_s5 },
+    { label: "Wood", before: lith_source6_wood, after: lith_ex2_s6 },
   ]}
 />
 *Infectious Development and Toning — simulated result across source images.*
@@ -255,9 +284,12 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lith_source1_kodim03, after: lith_exercise3_result },
-    { label: "Kodim13", before: lith_source2_kodim13, after: lith_exercise3_result },
-    { label: "Kodim13 B&W", before: lith_source3_kodim13_bw, after: lith_exercise3_result },
+    { label: "Dog", before: lith_source1_dog, after: lith_ex3_s1 },
+    { label: "Fruit", before: lith_source2_fruit, after: lith_ex3_s2 },
+    { label: "Turtle", before: lith_source3_turtle, after: lith_ex3_s3 },
+    { label: "Pattern", before: lith_source4_pattern, after: lith_ex3_s4 },
+    { label: "Girl", before: lith_source5_girl, after: lith_ex3_s5 },
+    { label: "Wood", before: lith_source6_wood, after: lith_ex3_s6 },
   ]}
 />
 *Full Lith Darkroom — simulated result across source images.*

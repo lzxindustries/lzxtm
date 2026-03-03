@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 105
+sidebar_position: 110
 slug: /instruments/videomancer/filmtrack
 title: "Film Track"
 image: /img/instruments/videomancer/filmtrack/filmtrack_hero.png

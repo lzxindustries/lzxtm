@@ -1,6 +1,6 @@
 ---
 draft: false
-sidebar_position: 222
+sidebar_position: 232
 slug: /instruments/videomancer/pong
 title: "Pong"
 image: /img/instruments/videomancer/pong/pong_hero.png

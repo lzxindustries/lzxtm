@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 69
+sidebar_position: 72
 slug: /instruments/videomancer/daguerro
 title: "Daguerro"
-image: /img/instruments/videomancer/daguerro/daguerro_hero.png
+image: /img/instruments/videomancer/daguerro/daguerro_hero_s1.png
 description: "Before film, before paper prints, the first photographs were made on polished silver plates."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import daguerro_hero from '/img/instruments/videomancer/daguerro/daguerro_hero.png';
-import daguerro_control_panel from '/img/instruments/videomancer/daguerro/daguerro_control_panel.png';
-import daguerro_exercise1_result from '/img/instruments/videomancer/daguerro/daguerro_exercise1_result.png';
-import daguerro_exercise2_result from '/img/instruments/videomancer/daguerro/daguerro_exercise2_result.png';
-import daguerro_exercise3_result from '/img/instruments/videomancer/daguerro/daguerro_exercise3_result.png';
-import daguerro_source1_kodim15 from '/img/instruments/videomancer/daguerro/daguerro_source1_kodim15.png';
-import daguerro_source2_kodim15_bw from '/img/instruments/videomancer/daguerro/daguerro_source2_kodim15_bw.png';
-import daguerro_source3_male_1024 from '/img/instruments/videomancer/daguerro/daguerro_source3_male_1024.png';
+import daguerro_source1_car from '/img/instruments/videomancer/daguerro/daguerro_source1_car.png';
+import daguerro_source2_fruit from '/img/instruments/videomancer/daguerro/daguerro_source2_fruit.png';
+import daguerro_source3_turtle from '/img/instruments/videomancer/daguerro/daguerro_source3_turtle.png';
+import daguerro_source4_pattern from '/img/instruments/videomancer/daguerro/daguerro_source4_pattern.png';
+import daguerro_source5_man from '/img/instruments/videomancer/daguerro/daguerro_source5_man.png';
+import daguerro_source6_berries from '/img/instruments/videomancer/daguerro/daguerro_source6_berries.png';
+import daguerro_hero_s1 from '/img/instruments/videomancer/daguerro/daguerro_hero_s1.png';
+import daguerro_hero_s2 from '/img/instruments/videomancer/daguerro/daguerro_hero_s2.png';
+import daguerro_hero_s3 from '/img/instruments/videomancer/daguerro/daguerro_hero_s3.png';
+import daguerro_hero_s4 from '/img/instruments/videomancer/daguerro/daguerro_hero_s4.png';
+import daguerro_hero_s5 from '/img/instruments/videomancer/daguerro/daguerro_hero_s5.png';
+import daguerro_hero_s6 from '/img/instruments/videomancer/daguerro/daguerro_hero_s6.png';
+import daguerro_ex1_s1 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s1.png';
+import daguerro_ex1_s2 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s2.png';
+import daguerro_ex1_s3 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s3.png';
+import daguerro_ex1_s4 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s4.png';
+import daguerro_ex1_s5 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s5.png';
+import daguerro_ex1_s6 from '/img/instruments/videomancer/daguerro/daguerro_ex1_s6.png';
+import daguerro_ex2_s1 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s1.png';
+import daguerro_ex2_s2 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s2.png';
+import daguerro_ex2_s3 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s3.png';
+import daguerro_ex2_s4 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s4.png';
+import daguerro_ex2_s5 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s5.png';
+import daguerro_ex2_s6 from '/img/instruments/videomancer/daguerro/daguerro_ex2_s6.png';
+import daguerro_ex3_s1 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s1.png';
+import daguerro_ex3_s2 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s2.png';
+import daguerro_ex3_s3 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s3.png';
+import daguerro_ex3_s4 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s4.png';
+import daguerro_ex3_s5 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s5.png';
+import daguerro_ex3_s6 from '/img/instruments/videomancer/daguerro/daguerro_ex3_s6.png';
 
 # Daguerro
 
@@ -23,9 +45,12 @@ import daguerro_source3_male_1024 from '/img/instruments/videomancer/daguerro/da
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_hero },
-    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_hero },
-    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_hero },
+    { label: "Car", before: daguerro_source1_car, after: daguerro_hero_s1 },
+    { label: "Fruit", before: daguerro_source2_fruit, after: daguerro_hero_s2 },
+    { label: "Turtle", before: daguerro_source3_turtle, after: daguerro_hero_s3 },
+    { label: "Pattern", before: daguerro_source4_pattern, after: daguerro_hero_s4 },
+    { label: "Man", before: daguerro_source5_man, after: daguerro_hero_s5 },
+    { label: "Berries", before: daguerro_source6_berries, after: daguerro_hero_s6 },
   ]}
 />
 *Daguerro transforming video into a silver-mirror daguerreotype with compressed tonal range, cold plate tinting, and iridescent tarnish patina.*
@@ -103,8 +128,6 @@ The Y and U/V channels follow different paths through the pipeline. Luminance pa
 
 ## Parameter Reference
 
-<img src={daguerro_control_panel} alt="Videomancer front panel with Daguerro loaded"/>
-*Videomancer's front panel with Daguerro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,9 +232,12 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise1_result },
-    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise1_result },
-    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise1_result },
+    { label: "Car", before: daguerro_source1_car, after: daguerro_ex1_s1 },
+    { label: "Fruit", before: daguerro_source2_fruit, after: daguerro_ex1_s2 },
+    { label: "Turtle", before: daguerro_source3_turtle, after: daguerro_ex1_s3 },
+    { label: "Pattern", before: daguerro_source4_pattern, after: daguerro_ex1_s4 },
+    { label: "Man", before: daguerro_source5_man, after: daguerro_ex1_s5 },
+    { label: "Berries", before: daguerro_source6_berries, after: daguerro_ex1_s6 },
   ]}
 />
 *Classic Mercury Daguerreotype — simulated result across source images.*
@@ -234,9 +260,12 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise2_result },
-    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise2_result },
-    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise2_result },
+    { label: "Car", before: daguerro_source1_car, after: daguerro_ex2_s1 },
+    { label: "Fruit", before: daguerro_source2_fruit, after: daguerro_ex2_s2 },
+    { label: "Turtle", before: daguerro_source3_turtle, after: daguerro_ex2_s3 },
+    { label: "Pattern", before: daguerro_source4_pattern, after: daguerro_ex2_s4 },
+    { label: "Man", before: daguerro_source5_man, after: daguerro_ex2_s5 },
+    { label: "Berries", before: daguerro_source6_berries, after: daguerro_ex2_s6 },
   ]}
 />
 *Aged and Tarnished Plate — simulated result across source images.*
@@ -259,9 +288,12 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: daguerro_source1_kodim15, after: daguerro_exercise3_result },
-    { label: "Kodim15 B&W", before: daguerro_source2_kodim15_bw, after: daguerro_exercise3_result },
-    { label: "Male", before: daguerro_source3_male_1024, after: daguerro_exercise3_result },
+    { label: "Car", before: daguerro_source1_car, after: daguerro_ex3_s1 },
+    { label: "Fruit", before: daguerro_source2_fruit, after: daguerro_ex3_s2 },
+    { label: "Turtle", before: daguerro_source3_turtle, after: daguerro_ex3_s3 },
+    { label: "Pattern", before: daguerro_source4_pattern, after: daguerro_ex3_s4 },
+    { label: "Man", before: daguerro_source5_man, after: daguerro_ex3_s5 },
+    { label: "Berries", before: daguerro_source6_berries, after: daguerro_ex3_s6 },
   ]}
 />
 *Becquerel Negative — simulated result across source images.*

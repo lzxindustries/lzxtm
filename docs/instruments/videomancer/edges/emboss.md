@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 94
+sidebar_position: 98
 slug: /instruments/videomancer/emboss
 title: "Emboss"
-image: /img/instruments/videomancer/emboss/emboss_hero.png
+image: /img/instruments/videomancer/emboss/emboss_hero_s1.png
 description: "Every surface tells a story through the way it catches light."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import emboss_hero from '/img/instruments/videomancer/emboss/emboss_hero.png';
-import emboss_control_panel from '/img/instruments/videomancer/emboss/emboss_control_panel.png';
-import emboss_exercise1_result from '/img/instruments/videomancer/emboss/emboss_exercise1_result.png';
-import emboss_exercise2_result from '/img/instruments/videomancer/emboss/emboss_exercise2_result.png';
-import emboss_exercise3_result from '/img/instruments/videomancer/emboss/emboss_exercise3_result.png';
-import emboss_source1_kodim02 from '/img/instruments/videomancer/emboss/emboss_source1_kodim02.png';
-import emboss_source2_kodim07 from '/img/instruments/videomancer/emboss/emboss_source2_kodim07.png';
-import emboss_source3_kodim01_bw from '/img/instruments/videomancer/emboss/emboss_source3_kodim01_bw.png';
+import emboss_source1_boat from '/img/instruments/videomancer/emboss/emboss_source1_boat.png';
+import emboss_source2_parrot from '/img/instruments/videomancer/emboss/emboss_source2_parrot.png';
+import emboss_source3_collage from '/img/instruments/videomancer/emboss/emboss_source3_collage.png';
+import emboss_source4_pattern from '/img/instruments/videomancer/emboss/emboss_source4_pattern.png';
+import emboss_source5_woman from '/img/instruments/videomancer/emboss/emboss_source5_woman.png';
+import emboss_source6_knit from '/img/instruments/videomancer/emboss/emboss_source6_knit.png';
+import emboss_hero_s1 from '/img/instruments/videomancer/emboss/emboss_hero_s1.png';
+import emboss_hero_s2 from '/img/instruments/videomancer/emboss/emboss_hero_s2.png';
+import emboss_hero_s3 from '/img/instruments/videomancer/emboss/emboss_hero_s3.png';
+import emboss_hero_s4 from '/img/instruments/videomancer/emboss/emboss_hero_s4.png';
+import emboss_hero_s5 from '/img/instruments/videomancer/emboss/emboss_hero_s5.png';
+import emboss_hero_s6 from '/img/instruments/videomancer/emboss/emboss_hero_s6.png';
+import emboss_ex1_s1 from '/img/instruments/videomancer/emboss/emboss_ex1_s1.png';
+import emboss_ex1_s2 from '/img/instruments/videomancer/emboss/emboss_ex1_s2.png';
+import emboss_ex1_s3 from '/img/instruments/videomancer/emboss/emboss_ex1_s3.png';
+import emboss_ex1_s4 from '/img/instruments/videomancer/emboss/emboss_ex1_s4.png';
+import emboss_ex1_s5 from '/img/instruments/videomancer/emboss/emboss_ex1_s5.png';
+import emboss_ex1_s6 from '/img/instruments/videomancer/emboss/emboss_ex1_s6.png';
+import emboss_ex2_s1 from '/img/instruments/videomancer/emboss/emboss_ex2_s1.png';
+import emboss_ex2_s2 from '/img/instruments/videomancer/emboss/emboss_ex2_s2.png';
+import emboss_ex2_s3 from '/img/instruments/videomancer/emboss/emboss_ex2_s3.png';
+import emboss_ex2_s4 from '/img/instruments/videomancer/emboss/emboss_ex2_s4.png';
+import emboss_ex2_s5 from '/img/instruments/videomancer/emboss/emboss_ex2_s5.png';
+import emboss_ex2_s6 from '/img/instruments/videomancer/emboss/emboss_ex2_s6.png';
+import emboss_ex3_s1 from '/img/instruments/videomancer/emboss/emboss_ex3_s1.png';
+import emboss_ex3_s2 from '/img/instruments/videomancer/emboss/emboss_ex3_s2.png';
+import emboss_ex3_s3 from '/img/instruments/videomancer/emboss/emboss_ex3_s3.png';
+import emboss_ex3_s4 from '/img/instruments/videomancer/emboss/emboss_ex3_s4.png';
+import emboss_ex3_s5 from '/img/instruments/videomancer/emboss/emboss_ex3_s5.png';
+import emboss_ex3_s6 from '/img/instruments/videomancer/emboss/emboss_ex3_s6.png';
 
 # Emboss
 
@@ -23,9 +45,12 @@ import emboss_source3_kodim01_bw from '/img/instruments/videomancer/emboss/embos
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_hero },
-    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_hero },
-    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_hero },
+    { label: "Boat", before: emboss_source1_boat, after: emboss_hero_s1 },
+    { label: "Parrot", before: emboss_source2_parrot, after: emboss_hero_s2 },
+    { label: "Collage", before: emboss_source3_collage, after: emboss_hero_s3 },
+    { label: "Pattern", before: emboss_source4_pattern, after: emboss_hero_s4 },
+    { label: "Woman", before: emboss_source5_woman, after: emboss_hero_s5 },
+    { label: "Knit", before: emboss_source6_knit, after: emboss_hero_s6 },
   ]}
 />
 *Emboss rendering directional bas-relief lighting across luminance gradients, carving depth from flat video.*
@@ -111,8 +136,6 @@ After direction selection, the combined gradient passes through depth scaling (m
 
 ## Parameter Reference
 
-<img src={emboss_control_panel} alt="Videomancer front panel with Emboss loaded"/>
-*Videomancer's front panel with Emboss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +240,12 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise1_result },
-    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise1_result },
-    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise1_result },
+    { label: "Boat", before: emboss_source1_boat, after: emboss_ex1_s1 },
+    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex1_s2 },
+    { label: "Collage", before: emboss_source3_collage, after: emboss_ex1_s3 },
+    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex1_s4 },
+    { label: "Woman", before: emboss_source5_woman, after: emboss_ex1_s5 },
+    { label: "Knit", before: emboss_source6_knit, after: emboss_ex1_s6 },
   ]}
 />
 *Sculptural Relief — simulated result across source images.*
@@ -241,9 +267,12 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise2_result },
-    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise2_result },
-    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise2_result },
+    { label: "Boat", before: emboss_source1_boat, after: emboss_ex2_s1 },
+    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex2_s2 },
+    { label: "Collage", before: emboss_source3_collage, after: emboss_ex2_s3 },
+    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex2_s4 },
+    { label: "Woman", before: emboss_source5_woman, after: emboss_ex2_s5 },
+    { label: "Knit", before: emboss_source6_knit, after: emboss_ex2_s6 },
   ]}
 />
 *Metallic Color Emboss — simulated result across source images.*
@@ -265,9 +294,12 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: emboss_source1_kodim02, after: emboss_exercise3_result },
-    { label: "Kodim07", before: emboss_source2_kodim07, after: emboss_exercise3_result },
-    { label: "Kodim01 B&W", before: emboss_source3_kodim01_bw, after: emboss_exercise3_result },
+    { label: "Boat", before: emboss_source1_boat, after: emboss_ex3_s1 },
+    { label: "Parrot", before: emboss_source2_parrot, after: emboss_ex3_s2 },
+    { label: "Collage", before: emboss_source3_collage, after: emboss_ex3_s3 },
+    { label: "Pattern", before: emboss_source4_pattern, after: emboss_ex3_s4 },
+    { label: "Woman", before: emboss_source5_woman, after: emboss_ex3_s5 },
+    { label: "Knit", before: emboss_source6_knit, after: emboss_ex3_s6 },
   ]}
 />
 *Edge Map Key Source — simulated result across source images.*

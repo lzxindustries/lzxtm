@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 198
+sidebar_position: 206
 slug: /instruments/videomancer/oilslick
 title: "Oilslick"
-image: /img/instruments/videomancer/oilslick/oilslick_hero.png
+image: /img/instruments/videomancer/oilslick/oilslick_hero_s1.png
 description: "Oil on water shimmers because the film is thin enough that light reflecting off its top and bottom surfaces interferes constructively at different wavelengths depending on the film thickness."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import oilslick_hero from '/img/instruments/videomancer/oilslick/oilslick_hero.png';
-import oilslick_control_panel from '/img/instruments/videomancer/oilslick/oilslick_control_panel.png';
-import oilslick_exercise1_result from '/img/instruments/videomancer/oilslick/oilslick_exercise1_result.png';
-import oilslick_exercise2_result from '/img/instruments/videomancer/oilslick/oilslick_exercise2_result.png';
-import oilslick_exercise3_result from '/img/instruments/videomancer/oilslick/oilslick_exercise3_result.png';
-import oilslick_source1_kodim15 from '/img/instruments/videomancer/oilslick/oilslick_source1_kodim15.png';
-import oilslick_source2_kodim01 from '/img/instruments/videomancer/oilslick/oilslick_source2_kodim01.png';
-import oilslick_source3_kodim01_bw from '/img/instruments/videomancer/oilslick/oilslick_source3_kodim01_bw.png';
+import oilslick_source1_field from '/img/instruments/videomancer/oilslick/oilslick_source1_field.png';
+import oilslick_source2_house from '/img/instruments/videomancer/oilslick/oilslick_source2_house.png';
+import oilslick_source3_collage from '/img/instruments/videomancer/oilslick/oilslick_source3_collage.png';
+import oilslick_source4_pattern from '/img/instruments/videomancer/oilslick/oilslick_source4_pattern.png';
+import oilslick_source5_man from '/img/instruments/videomancer/oilslick/oilslick_source5_man.png';
+import oilslick_source6_berries from '/img/instruments/videomancer/oilslick/oilslick_source6_berries.png';
+import oilslick_hero_s1 from '/img/instruments/videomancer/oilslick/oilslick_hero_s1.png';
+import oilslick_hero_s2 from '/img/instruments/videomancer/oilslick/oilslick_hero_s2.png';
+import oilslick_hero_s3 from '/img/instruments/videomancer/oilslick/oilslick_hero_s3.png';
+import oilslick_hero_s4 from '/img/instruments/videomancer/oilslick/oilslick_hero_s4.png';
+import oilslick_hero_s5 from '/img/instruments/videomancer/oilslick/oilslick_hero_s5.png';
+import oilslick_hero_s6 from '/img/instruments/videomancer/oilslick/oilslick_hero_s6.png';
+import oilslick_ex1_s1 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s1.png';
+import oilslick_ex1_s2 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s2.png';
+import oilslick_ex1_s3 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s3.png';
+import oilslick_ex1_s4 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s4.png';
+import oilslick_ex1_s5 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s5.png';
+import oilslick_ex1_s6 from '/img/instruments/videomancer/oilslick/oilslick_ex1_s6.png';
+import oilslick_ex2_s1 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s1.png';
+import oilslick_ex2_s2 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s2.png';
+import oilslick_ex2_s3 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s3.png';
+import oilslick_ex2_s4 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s4.png';
+import oilslick_ex2_s5 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s5.png';
+import oilslick_ex2_s6 from '/img/instruments/videomancer/oilslick/oilslick_ex2_s6.png';
+import oilslick_ex3_s1 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s1.png';
+import oilslick_ex3_s2 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s2.png';
+import oilslick_ex3_s3 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s3.png';
+import oilslick_ex3_s4 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s4.png';
+import oilslick_ex3_s5 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s5.png';
+import oilslick_ex3_s6 from '/img/instruments/videomancer/oilslick/oilslick_ex3_s6.png';
 
 # Oilslick
 
@@ -23,9 +45,12 @@ import oilslick_source3_kodim01_bw from '/img/instruments/videomancer/oilslick/o
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_hero },
-    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_hero },
-    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_hero },
+    { label: "Field", before: oilslick_source1_field, after: oilslick_hero_s1 },
+    { label: "House", before: oilslick_source2_house, after: oilslick_hero_s2 },
+    { label: "Collage", before: oilslick_source3_collage, after: oilslick_hero_s3 },
+    { label: "Pattern", before: oilslick_source4_pattern, after: oilslick_hero_s4 },
+    { label: "Man", before: oilslick_source5_man, after: oilslick_hero_s5 },
+    { label: "Berries", before: oilslick_source6_berries, after: oilslick_hero_s6 },
   ]}
 />
 *Oilslick generating vivid position-dependent rainbow iridescence patterns over a live video source through DDS-based thin-film interference simulation.*
@@ -107,8 +132,6 @@ The phase separation mechanism is the key to spectral variety. When the V-channe
 
 ## Parameter Reference
 
-<img src={oilslick_control_panel} alt="Videomancer front panel with Oilslick loaded"/>
-*Videomancer's front panel with Oilslick active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise1_result },
-    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise1_result },
-    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise1_result },
+    { label: "Field", before: oilslick_source1_field, after: oilslick_ex1_s1 },
+    { label: "House", before: oilslick_source2_house, after: oilslick_ex1_s2 },
+    { label: "Collage", before: oilslick_source3_collage, after: oilslick_ex1_s3 },
+    { label: "Pattern", before: oilslick_source4_pattern, after: oilslick_ex1_s4 },
+    { label: "Man", before: oilslick_source5_man, after: oilslick_ex1_s5 },
+    { label: "Berries", before: oilslick_source6_berries, after: oilslick_ex1_s6 },
   ]}
 />
 *Static Rainbow Wash — simulated result across source images.*
@@ -236,9 +262,12 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise2_result },
-    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise2_result },
-    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise2_result },
+    { label: "Field", before: oilslick_source1_field, after: oilslick_ex2_s1 },
+    { label: "House", before: oilslick_source2_house, after: oilslick_ex2_s2 },
+    { label: "Collage", before: oilslick_source3_collage, after: oilslick_ex2_s3 },
+    { label: "Pattern", before: oilslick_source4_pattern, after: oilslick_ex2_s4 },
+    { label: "Man", before: oilslick_source5_man, after: oilslick_ex2_s5 },
+    { label: "Berries", before: oilslick_source6_berries, after: oilslick_ex2_s6 },
   ]}
 />
 *Animated Oil Shimmer — simulated result across source images.*
@@ -259,9 +288,12 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: oilslick_source1_kodim15, after: oilslick_exercise3_result },
-    { label: "Kodim01", before: oilslick_source2_kodim01, after: oilslick_exercise3_result },
-    { label: "Kodim01 B&W", before: oilslick_source3_kodim01_bw, after: oilslick_exercise3_result },
+    { label: "Field", before: oilslick_source1_field, after: oilslick_ex3_s1 },
+    { label: "House", before: oilslick_source2_house, after: oilslick_ex3_s2 },
+    { label: "Collage", before: oilslick_source3_collage, after: oilslick_ex3_s3 },
+    { label: "Pattern", before: oilslick_source4_pattern, after: oilslick_ex3_s4 },
+    { label: "Man", before: oilslick_source5_man, after: oilslick_ex3_s5 },
+    { label: "Berries", before: oilslick_source6_berries, after: oilslick_ex3_s6 },
   ]}
 />
 *Crystalline XOR Textures — simulated result across source images.*

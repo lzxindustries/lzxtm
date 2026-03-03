@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 82
+sidebar_position: 85
 slug: /instruments/videomancer/dolly
 title: "Dolly"
-image: /img/instruments/videomancer/dolly/dolly_hero.png
+image: /img/instruments/videomancer/dolly/dolly_hero_s1.png
 description: "Every broadcast control room has a button that shrinks the on-screen talent into a box and slides that box to any corner of the frame — usually to make room for a map, a graphic, or a second camera feed."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dolly_hero from '/img/instruments/videomancer/dolly/dolly_hero.png';
-import dolly_control_panel from '/img/instruments/videomancer/dolly/dolly_control_panel.png';
-import dolly_exercise1_result from '/img/instruments/videomancer/dolly/dolly_exercise1_result.png';
-import dolly_exercise2_result from '/img/instruments/videomancer/dolly/dolly_exercise2_result.png';
-import dolly_exercise3_result from '/img/instruments/videomancer/dolly/dolly_exercise3_result.png';
-import dolly_source1_kodim15 from '/img/instruments/videomancer/dolly/dolly_source1_kodim15.png';
-import dolly_source2_kodim15_bw from '/img/instruments/videomancer/dolly/dolly_source2_kodim15_bw.png';
-import dolly_source3_male_1024 from '/img/instruments/videomancer/dolly/dolly_source3_male_1024.png';
+import dolly_source1_house from '/img/instruments/videomancer/dolly/dolly_source1_house.png';
+import dolly_source2_dog from '/img/instruments/videomancer/dolly/dolly_source2_dog.png';
+import dolly_source3_elephant from '/img/instruments/videomancer/dolly/dolly_source3_elephant.png';
+import dolly_source4_pattern from '/img/instruments/videomancer/dolly/dolly_source4_pattern.png';
+import dolly_source5_girl from '/img/instruments/videomancer/dolly/dolly_source5_girl.png';
+import dolly_source6_berries from '/img/instruments/videomancer/dolly/dolly_source6_berries.png';
+import dolly_hero_s1 from '/img/instruments/videomancer/dolly/dolly_hero_s1.png';
+import dolly_hero_s2 from '/img/instruments/videomancer/dolly/dolly_hero_s2.png';
+import dolly_hero_s3 from '/img/instruments/videomancer/dolly/dolly_hero_s3.png';
+import dolly_hero_s4 from '/img/instruments/videomancer/dolly/dolly_hero_s4.png';
+import dolly_hero_s5 from '/img/instruments/videomancer/dolly/dolly_hero_s5.png';
+import dolly_hero_s6 from '/img/instruments/videomancer/dolly/dolly_hero_s6.png';
+import dolly_ex1_s1 from '/img/instruments/videomancer/dolly/dolly_ex1_s1.png';
+import dolly_ex1_s2 from '/img/instruments/videomancer/dolly/dolly_ex1_s2.png';
+import dolly_ex1_s3 from '/img/instruments/videomancer/dolly/dolly_ex1_s3.png';
+import dolly_ex1_s4 from '/img/instruments/videomancer/dolly/dolly_ex1_s4.png';
+import dolly_ex1_s5 from '/img/instruments/videomancer/dolly/dolly_ex1_s5.png';
+import dolly_ex1_s6 from '/img/instruments/videomancer/dolly/dolly_ex1_s6.png';
+import dolly_ex2_s1 from '/img/instruments/videomancer/dolly/dolly_ex2_s1.png';
+import dolly_ex2_s2 from '/img/instruments/videomancer/dolly/dolly_ex2_s2.png';
+import dolly_ex2_s3 from '/img/instruments/videomancer/dolly/dolly_ex2_s3.png';
+import dolly_ex2_s4 from '/img/instruments/videomancer/dolly/dolly_ex2_s4.png';
+import dolly_ex2_s5 from '/img/instruments/videomancer/dolly/dolly_ex2_s5.png';
+import dolly_ex2_s6 from '/img/instruments/videomancer/dolly/dolly_ex2_s6.png';
+import dolly_ex3_s1 from '/img/instruments/videomancer/dolly/dolly_ex3_s1.png';
+import dolly_ex3_s2 from '/img/instruments/videomancer/dolly/dolly_ex3_s2.png';
+import dolly_ex3_s3 from '/img/instruments/videomancer/dolly/dolly_ex3_s3.png';
+import dolly_ex3_s4 from '/img/instruments/videomancer/dolly/dolly_ex3_s4.png';
+import dolly_ex3_s5 from '/img/instruments/videomancer/dolly/dolly_ex3_s5.png';
+import dolly_ex3_s6 from '/img/instruments/videomancer/dolly/dolly_ex3_s6.png';
 
 # Dolly
 
@@ -23,9 +45,12 @@ import dolly_source3_male_1024 from '/img/instruments/videomancer/dolly/dolly_so
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_hero },
-    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_hero },
-    { label: "Male", before: dolly_source3_male_1024, after: dolly_hero },
+    { label: "House", before: dolly_source1_house, after: dolly_hero_s1 },
+    { label: "Dog", before: dolly_source2_dog, after: dolly_hero_s2 },
+    { label: "Elephant", before: dolly_source3_elephant, after: dolly_hero_s3 },
+    { label: "Pattern", before: dolly_source4_pattern, after: dolly_hero_s4 },
+    { label: "Girl", before: dolly_source5_girl, after: dolly_hero_s5 },
+    { label: "Berries", before: dolly_source6_berries, after: dolly_hero_s6 },
   ]}
 />
 *Dolly repositioning and scaling a live camera feed within a colored background frame, demonstrating picture-in-picture composition.*
@@ -119,8 +144,6 @@ The critical path runs vertically through time: geometry is computed once per fr
 
 ## Parameter Reference
 
-<img src={dolly_control_panel} alt="Videomancer front panel with Dolly loaded"/>
-*Videomancer's front panel with Dolly active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise1_result },
-    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise1_result },
-    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise1_result },
+    { label: "House", before: dolly_source1_house, after: dolly_ex1_s1 },
+    { label: "Dog", before: dolly_source2_dog, after: dolly_ex1_s2 },
+    { label: "Elephant", before: dolly_source3_elephant, after: dolly_ex1_s3 },
+    { label: "Pattern", before: dolly_source4_pattern, after: dolly_ex1_s4 },
+    { label: "Girl", before: dolly_source5_girl, after: dolly_ex1_s5 },
+    { label: "Berries", before: dolly_source6_berries, after: dolly_ex1_s6 },
   ]}
 />
 *Classic Picture-in-Picture — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise2_result },
-    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise2_result },
-    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise2_result },
+    { label: "House", before: dolly_source1_house, after: dolly_ex2_s1 },
+    { label: "Dog", before: dolly_source2_dog, after: dolly_ex2_s2 },
+    { label: "Elephant", before: dolly_source3_elephant, after: dolly_ex2_s3 },
+    { label: "Pattern", before: dolly_source4_pattern, after: dolly_ex2_s4 },
+    { label: "Girl", before: dolly_source5_girl, after: dolly_ex2_s5 },
+    { label: "Berries", before: dolly_source6_berries, after: dolly_ex2_s6 },
   ]}
 />
 *Anamorphic Squeeze and Stretch — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dolly_source1_kodim15, after: dolly_exercise3_result },
-    { label: "Kodim15 B&W", before: dolly_source2_kodim15_bw, after: dolly_exercise3_result },
-    { label: "Male", before: dolly_source3_male_1024, after: dolly_exercise3_result },
+    { label: "House", before: dolly_source1_house, after: dolly_ex3_s1 },
+    { label: "Dog", before: dolly_source2_dog, after: dolly_ex3_s2 },
+    { label: "Elephant", before: dolly_source3_elephant, after: dolly_ex3_s3 },
+    { label: "Pattern", before: dolly_source4_pattern, after: dolly_ex3_s4 },
+    { label: "Girl", before: dolly_source5_girl, after: dolly_ex3_s5 },
+    { label: "Berries", before: dolly_source6_berries, after: dolly_ex3_s6 },
   ]}
 />
 *Animated DVE Dissolve — simulated result across source images.*

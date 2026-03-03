@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 184
+sidebar_position: 192
 slug: /instruments/videomancer/minitel
 title: "Minitel"
-image: /img/instruments/videomancer/minitel/minitel_hero.png
+image: /img/instruments/videomancer/minitel/minitel_hero_s1.png
 description: "The Minitel was France's pre-internet information terminal — a small beige box with a keyboard and a 40-column text display that connected millions of French households to online services from 1982 until its retirement in 2012."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import minitel_hero from '/img/instruments/videomancer/minitel/minitel_hero.png';
-import minitel_control_panel from '/img/instruments/videomancer/minitel/minitel_control_panel.png';
-import minitel_exercise1_result from '/img/instruments/videomancer/minitel/minitel_exercise1_result.png';
-import minitel_exercise2_result from '/img/instruments/videomancer/minitel/minitel_exercise2_result.png';
-import minitel_exercise3_result from '/img/instruments/videomancer/minitel/minitel_exercise3_result.png';
-import minitel_source1_kodim15 from '/img/instruments/videomancer/minitel/minitel_source1_kodim15.png';
-import minitel_source2_kodim03 from '/img/instruments/videomancer/minitel/minitel_source2_kodim03.png';
-import minitel_source3_kodim15_bw from '/img/instruments/videomancer/minitel/minitel_source3_kodim15_bw.png';
+import minitel_source1_fruit from '/img/instruments/videomancer/minitel/minitel_source1_fruit.png';
+import minitel_source2_field from '/img/instruments/videomancer/minitel/minitel_source2_field.png';
+import minitel_source3_collage from '/img/instruments/videomancer/minitel/minitel_source3_collage.png';
+import minitel_source4_pattern from '/img/instruments/videomancer/minitel/minitel_source4_pattern.png';
+import minitel_source5_woman from '/img/instruments/videomancer/minitel/minitel_source5_woman.png';
+import minitel_source6_paint from '/img/instruments/videomancer/minitel/minitel_source6_paint.png';
+import minitel_hero_s1 from '/img/instruments/videomancer/minitel/minitel_hero_s1.png';
+import minitel_hero_s2 from '/img/instruments/videomancer/minitel/minitel_hero_s2.png';
+import minitel_hero_s3 from '/img/instruments/videomancer/minitel/minitel_hero_s3.png';
+import minitel_hero_s4 from '/img/instruments/videomancer/minitel/minitel_hero_s4.png';
+import minitel_hero_s5 from '/img/instruments/videomancer/minitel/minitel_hero_s5.png';
+import minitel_hero_s6 from '/img/instruments/videomancer/minitel/minitel_hero_s6.png';
+import minitel_ex1_s1 from '/img/instruments/videomancer/minitel/minitel_ex1_s1.png';
+import minitel_ex1_s2 from '/img/instruments/videomancer/minitel/minitel_ex1_s2.png';
+import minitel_ex1_s3 from '/img/instruments/videomancer/minitel/minitel_ex1_s3.png';
+import minitel_ex1_s4 from '/img/instruments/videomancer/minitel/minitel_ex1_s4.png';
+import minitel_ex1_s5 from '/img/instruments/videomancer/minitel/minitel_ex1_s5.png';
+import minitel_ex1_s6 from '/img/instruments/videomancer/minitel/minitel_ex1_s6.png';
+import minitel_ex2_s1 from '/img/instruments/videomancer/minitel/minitel_ex2_s1.png';
+import minitel_ex2_s2 from '/img/instruments/videomancer/minitel/minitel_ex2_s2.png';
+import minitel_ex2_s3 from '/img/instruments/videomancer/minitel/minitel_ex2_s3.png';
+import minitel_ex2_s4 from '/img/instruments/videomancer/minitel/minitel_ex2_s4.png';
+import minitel_ex2_s5 from '/img/instruments/videomancer/minitel/minitel_ex2_s5.png';
+import minitel_ex2_s6 from '/img/instruments/videomancer/minitel/minitel_ex2_s6.png';
+import minitel_ex3_s1 from '/img/instruments/videomancer/minitel/minitel_ex3_s1.png';
+import minitel_ex3_s2 from '/img/instruments/videomancer/minitel/minitel_ex3_s2.png';
+import minitel_ex3_s3 from '/img/instruments/videomancer/minitel/minitel_ex3_s3.png';
+import minitel_ex3_s4 from '/img/instruments/videomancer/minitel/minitel_ex3_s4.png';
+import minitel_ex3_s5 from '/img/instruments/videomancer/minitel/minitel_ex3_s5.png';
+import minitel_ex3_s6 from '/img/instruments/videomancer/minitel/minitel_ex3_s6.png';
 
 # Minitel
 
@@ -23,9 +45,12 @@ import minitel_source3_kodim15_bw from '/img/instruments/videomancer/minitel/min
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_hero },
-    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_hero },
-    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_hero },
+    { label: "Fruit", before: minitel_source1_fruit, after: minitel_hero_s1 },
+    { label: "Field", before: minitel_source2_field, after: minitel_hero_s2 },
+    { label: "Collage", before: minitel_source3_collage, after: minitel_hero_s3 },
+    { label: "Pattern", before: minitel_source4_pattern, after: minitel_hero_s4 },
+    { label: "Woman", before: minitel_source5_woman, after: minitel_hero_s5 },
+    { label: "Paint", before: minitel_source6_paint, after: minitel_hero_s6 },
   ]}
 />
 *Minitel reducing a video stream to eight-color mosaic blocks with sample-and-hold quantization and scanline darkening.*
@@ -104,8 +129,6 @@ The pipeline is intentionally minimal: sample-and-hold feeds directly into quant
 
 ## Parameter Reference
 
-<img src={minitel_control_panel} alt="Videomancer front panel with Minitel loaded"/>
-*Videomancer's front panel with Minitel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,9 +232,12 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise1_result },
-    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise1_result },
-    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise1_result },
+    { label: "Fruit", before: minitel_source1_fruit, after: minitel_ex1_s1 },
+    { label: "Field", before: minitel_source2_field, after: minitel_ex1_s2 },
+    { label: "Collage", before: minitel_source3_collage, after: minitel_ex1_s3 },
+    { label: "Pattern", before: minitel_source4_pattern, after: minitel_ex1_s4 },
+    { label: "Woman", before: minitel_source5_woman, after: minitel_ex1_s5 },
+    { label: "Paint", before: minitel_source6_paint, after: minitel_ex1_s6 },
   ]}
 />
 *Basic Mosaic Grid — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise2_result },
-    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise2_result },
-    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise2_result },
+    { label: "Fruit", before: minitel_source1_fruit, after: minitel_ex2_s1 },
+    { label: "Field", before: minitel_source2_field, after: minitel_ex2_s2 },
+    { label: "Collage", before: minitel_source3_collage, after: minitel_ex2_s3 },
+    { label: "Pattern", before: minitel_source4_pattern, after: minitel_ex2_s4 },
+    { label: "Woman", before: minitel_source5_woman, after: minitel_ex2_s5 },
+    { label: "Paint", before: minitel_source6_paint, after: minitel_ex2_s6 },
   ]}
 />
 *Inverted Scanline Terminal — simulated result across source images.*
@@ -256,9 +285,12 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: minitel_source1_kodim15, after: minitel_exercise3_result },
-    { label: "Kodim03", before: minitel_source2_kodim03, after: minitel_exercise3_result },
-    { label: "Kodim15 B&W", before: minitel_source3_kodim15_bw, after: minitel_exercise3_result },
+    { label: "Fruit", before: minitel_source1_fruit, after: minitel_ex3_s1 },
+    { label: "Field", before: minitel_source2_field, after: minitel_ex3_s2 },
+    { label: "Collage", before: minitel_source3_collage, after: minitel_ex3_s3 },
+    { label: "Pattern", before: minitel_source4_pattern, after: minitel_ex3_s4 },
+    { label: "Woman", before: minitel_source5_woman, after: minitel_ex3_s5 },
+    { label: "Paint", before: minitel_source6_paint, after: minitel_ex3_s6 },
   ]}
 />
 *Teletext Color Blocks — simulated result across source images.*

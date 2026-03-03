@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 135
+sidebar_position: 141
 slug: /instruments/videomancer/imprint
 title: "Imprint"
-image: /img/instruments/videomancer/imprint/imprint_hero.png
+image: /img/instruments/videomancer/imprint/imprint_hero_s1.png
 description: "Every printed photograph in a newspaper, magazine, or book is an illusion."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import imprint_hero from '/img/instruments/videomancer/imprint/imprint_hero.png';
-import imprint_control_panel from '/img/instruments/videomancer/imprint/imprint_control_panel.png';
-import imprint_exercise1_result from '/img/instruments/videomancer/imprint/imprint_exercise1_result.png';
-import imprint_exercise2_result from '/img/instruments/videomancer/imprint/imprint_exercise2_result.png';
-import imprint_exercise3_result from '/img/instruments/videomancer/imprint/imprint_exercise3_result.png';
-import imprint_source1_kodim02 from '/img/instruments/videomancer/imprint/imprint_source1_kodim02.png';
-import imprint_source2_kodim07 from '/img/instruments/videomancer/imprint/imprint_source2_kodim07.png';
-import imprint_source3_kodim01_bw from '/img/instruments/videomancer/imprint/imprint_source3_kodim01_bw.png';
+import imprint_source1_ballerina from '/img/instruments/videomancer/imprint/imprint_source1_ballerina.png';
+import imprint_source2_runner from '/img/instruments/videomancer/imprint/imprint_source2_runner.png';
+import imprint_source3_elephant from '/img/instruments/videomancer/imprint/imprint_source3_elephant.png';
+import imprint_source4_pattern from '/img/instruments/videomancer/imprint/imprint_source4_pattern.png';
+import imprint_source5_girl from '/img/instruments/videomancer/imprint/imprint_source5_girl.png';
+import imprint_source6_wood from '/img/instruments/videomancer/imprint/imprint_source6_wood.png';
+import imprint_hero_s1 from '/img/instruments/videomancer/imprint/imprint_hero_s1.png';
+import imprint_hero_s2 from '/img/instruments/videomancer/imprint/imprint_hero_s2.png';
+import imprint_hero_s3 from '/img/instruments/videomancer/imprint/imprint_hero_s3.png';
+import imprint_hero_s4 from '/img/instruments/videomancer/imprint/imprint_hero_s4.png';
+import imprint_hero_s5 from '/img/instruments/videomancer/imprint/imprint_hero_s5.png';
+import imprint_hero_s6 from '/img/instruments/videomancer/imprint/imprint_hero_s6.png';
+import imprint_ex1_s1 from '/img/instruments/videomancer/imprint/imprint_ex1_s1.png';
+import imprint_ex1_s2 from '/img/instruments/videomancer/imprint/imprint_ex1_s2.png';
+import imprint_ex1_s3 from '/img/instruments/videomancer/imprint/imprint_ex1_s3.png';
+import imprint_ex1_s4 from '/img/instruments/videomancer/imprint/imprint_ex1_s4.png';
+import imprint_ex1_s5 from '/img/instruments/videomancer/imprint/imprint_ex1_s5.png';
+import imprint_ex1_s6 from '/img/instruments/videomancer/imprint/imprint_ex1_s6.png';
+import imprint_ex2_s1 from '/img/instruments/videomancer/imprint/imprint_ex2_s1.png';
+import imprint_ex2_s2 from '/img/instruments/videomancer/imprint/imprint_ex2_s2.png';
+import imprint_ex2_s3 from '/img/instruments/videomancer/imprint/imprint_ex2_s3.png';
+import imprint_ex2_s4 from '/img/instruments/videomancer/imprint/imprint_ex2_s4.png';
+import imprint_ex2_s5 from '/img/instruments/videomancer/imprint/imprint_ex2_s5.png';
+import imprint_ex2_s6 from '/img/instruments/videomancer/imprint/imprint_ex2_s6.png';
+import imprint_ex3_s1 from '/img/instruments/videomancer/imprint/imprint_ex3_s1.png';
+import imprint_ex3_s2 from '/img/instruments/videomancer/imprint/imprint_ex3_s2.png';
+import imprint_ex3_s3 from '/img/instruments/videomancer/imprint/imprint_ex3_s3.png';
+import imprint_ex3_s4 from '/img/instruments/videomancer/imprint/imprint_ex3_s4.png';
+import imprint_ex3_s5 from '/img/instruments/videomancer/imprint/imprint_ex3_s5.png';
+import imprint_ex3_s6 from '/img/instruments/videomancer/imprint/imprint_ex3_s6.png';
 
 # Imprint
 
@@ -23,9 +45,12 @@ import imprint_source3_kodim01_bw from '/img/instruments/videomancer/imprint/imp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_hero },
-    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_hero },
-    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_hero },
+    { label: "Ballerina", before: imprint_source1_ballerina, after: imprint_hero_s1 },
+    { label: "Runner", before: imprint_source2_runner, after: imprint_hero_s2 },
+    { label: "Elephant", before: imprint_source3_elephant, after: imprint_hero_s3 },
+    { label: "Pattern", before: imprint_source4_pattern, after: imprint_hero_s4 },
+    { label: "Girl", before: imprint_source5_girl, after: imprint_hero_s5 },
+    { label: "Wood", before: imprint_source6_wood, after: imprint_hero_s6 },
   ]}
 />
 *Imprint rendering CMYK halftone dot screens with rotated color separations and subtractive ink composite over a warm paper background.*
@@ -122,8 +147,6 @@ The pipeline's most critical interaction is between the rotated grid coordinates
 
 ## Parameter Reference
 
-<img src={imprint_control_panel} alt="Videomancer front panel with Imprint loaded"/>
-*Videomancer's front panel with Imprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -227,9 +250,12 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise1_result },
-    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise1_result },
-    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise1_result },
+    { label: "Ballerina", before: imprint_source1_ballerina, after: imprint_ex1_s1 },
+    { label: "Runner", before: imprint_source2_runner, after: imprint_ex1_s2 },
+    { label: "Elephant", before: imprint_source3_elephant, after: imprint_ex1_s3 },
+    { label: "Pattern", before: imprint_source4_pattern, after: imprint_ex1_s4 },
+    { label: "Girl", before: imprint_source5_girl, after: imprint_ex1_s5 },
+    { label: "Wood", before: imprint_source6_wood, after: imprint_ex1_s6 },
   ]}
 />
 *Newspaper Halftone — simulated result across source images.*
@@ -252,9 +278,12 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise2_result },
-    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise2_result },
-    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise2_result },
+    { label: "Ballerina", before: imprint_source1_ballerina, after: imprint_ex2_s1 },
+    { label: "Runner", before: imprint_source2_runner, after: imprint_ex2_s2 },
+    { label: "Elephant", before: imprint_source3_elephant, after: imprint_ex2_s3 },
+    { label: "Pattern", before: imprint_source4_pattern, after: imprint_ex2_s4 },
+    { label: "Girl", before: imprint_source5_girl, after: imprint_ex2_s5 },
+    { label: "Wood", before: imprint_source6_wood, after: imprint_ex2_s6 },
   ]}
 />
 *Color Separation Rosettes — simulated result across source images.*
@@ -277,9 +306,12 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: imprint_source1_kodim02, after: imprint_exercise3_result },
-    { label: "Kodim07", before: imprint_source2_kodim07, after: imprint_exercise3_result },
-    { label: "Kodim01 B&W", before: imprint_source3_kodim01_bw, after: imprint_exercise3_result },
+    { label: "Ballerina", before: imprint_source1_ballerina, after: imprint_ex3_s1 },
+    { label: "Runner", before: imprint_source2_runner, after: imprint_ex3_s2 },
+    { label: "Elephant", before: imprint_source3_elephant, after: imprint_ex3_s3 },
+    { label: "Pattern", before: imprint_source4_pattern, after: imprint_ex3_s4 },
+    { label: "Girl", before: imprint_source5_girl, after: imprint_ex3_s5 },
+    { label: "Wood", before: imprint_source6_wood, after: imprint_ex3_s6 },
   ]}
 />
 *Engraved Line Print — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 228
+sidebar_position: 238
 slug: /instruments/videomancer/rampart
 title: "Rampart"
-image: /img/instruments/videomancer/rampart/rampart_hero.png
+image: /img/instruments/videomancer/rampart/rampart_hero_s1.png
 description: "Every castle begins with a wall."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import rampart_hero from '/img/instruments/videomancer/rampart/rampart_hero.png';
-import rampart_control_panel from '/img/instruments/videomancer/rampart/rampart_control_panel.png';
-import rampart_exercise1_result from '/img/instruments/videomancer/rampart/rampart_exercise1_result.png';
-import rampart_exercise2_result from '/img/instruments/videomancer/rampart/rampart_exercise2_result.png';
-import rampart_exercise3_result from '/img/instruments/videomancer/rampart/rampart_exercise3_result.png';
-import rampart_source1_kodim15 from '/img/instruments/videomancer/rampart/rampart_source1_kodim15.png';
-import rampart_source2_kodim01 from '/img/instruments/videomancer/rampart/rampart_source2_kodim01.png';
-import rampart_source3_stream_bridge_512 from '/img/instruments/videomancer/rampart/rampart_source3_stream_bridge_512.png';
+import rampart_source1_field from '/img/instruments/videomancer/rampart/rampart_source1_field.png';
+import rampart_source2_runner from '/img/instruments/videomancer/rampart/rampart_source2_runner.png';
+import rampart_source3_clouds from '/img/instruments/videomancer/rampart/rampart_source3_clouds.png';
+import rampart_source4_pattern from '/img/instruments/videomancer/rampart/rampart_source4_pattern.png';
+import rampart_source5_woman from '/img/instruments/videomancer/rampart/rampart_source5_woman.png';
+import rampart_source6_wood from '/img/instruments/videomancer/rampart/rampart_source6_wood.png';
+import rampart_hero_s1 from '/img/instruments/videomancer/rampart/rampart_hero_s1.png';
+import rampart_hero_s2 from '/img/instruments/videomancer/rampart/rampart_hero_s2.png';
+import rampart_hero_s3 from '/img/instruments/videomancer/rampart/rampart_hero_s3.png';
+import rampart_hero_s4 from '/img/instruments/videomancer/rampart/rampart_hero_s4.png';
+import rampart_hero_s5 from '/img/instruments/videomancer/rampart/rampart_hero_s5.png';
+import rampart_hero_s6 from '/img/instruments/videomancer/rampart/rampart_hero_s6.png';
+import rampart_ex1_s1 from '/img/instruments/videomancer/rampart/rampart_ex1_s1.png';
+import rampart_ex1_s2 from '/img/instruments/videomancer/rampart/rampart_ex1_s2.png';
+import rampart_ex1_s3 from '/img/instruments/videomancer/rampart/rampart_ex1_s3.png';
+import rampart_ex1_s4 from '/img/instruments/videomancer/rampart/rampart_ex1_s4.png';
+import rampart_ex1_s5 from '/img/instruments/videomancer/rampart/rampart_ex1_s5.png';
+import rampart_ex1_s6 from '/img/instruments/videomancer/rampart/rampart_ex1_s6.png';
+import rampart_ex2_s1 from '/img/instruments/videomancer/rampart/rampart_ex2_s1.png';
+import rampart_ex2_s2 from '/img/instruments/videomancer/rampart/rampart_ex2_s2.png';
+import rampart_ex2_s3 from '/img/instruments/videomancer/rampart/rampart_ex2_s3.png';
+import rampart_ex2_s4 from '/img/instruments/videomancer/rampart/rampart_ex2_s4.png';
+import rampart_ex2_s5 from '/img/instruments/videomancer/rampart/rampart_ex2_s5.png';
+import rampart_ex2_s6 from '/img/instruments/videomancer/rampart/rampart_ex2_s6.png';
+import rampart_ex3_s1 from '/img/instruments/videomancer/rampart/rampart_ex3_s1.png';
+import rampart_ex3_s2 from '/img/instruments/videomancer/rampart/rampart_ex3_s2.png';
+import rampart_ex3_s3 from '/img/instruments/videomancer/rampart/rampart_ex3_s3.png';
+import rampart_ex3_s4 from '/img/instruments/videomancer/rampart/rampart_ex3_s4.png';
+import rampart_ex3_s5 from '/img/instruments/videomancer/rampart/rampart_ex3_s5.png';
+import rampart_ex3_s6 from '/img/instruments/videomancer/rampart/rampart_ex3_s6.png';
 
 # Rampart
 
@@ -23,9 +45,12 @@ import rampart_source3_stream_bridge_512 from '/img/instruments/videomancer/ramp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_hero },
-    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_hero },
-    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_hero },
+    { label: "Field", before: rampart_source1_field, after: rampart_hero_s1 },
+    { label: "Runner", before: rampart_source2_runner, after: rampart_hero_s2 },
+    { label: "Clouds", before: rampart_source3_clouds, after: rampart_hero_s3 },
+    { label: "Pattern", before: rampart_source4_pattern, after: rampart_hero_s4 },
+    { label: "Woman", before: rampart_source5_woman, after: rampart_hero_s5 },
+    { label: "Wood", before: rampart_source6_wood, after: rampart_hero_s6 },
   ]}
 />
 *Rampart generating a fortress-wall brick lattice with running bond, mortar shadowing, and video-filled crenellations over a live input.*
@@ -102,8 +127,6 @@ The grid is computed entirely from pixel coordinates — no BRAMs or line buffer
 
 ## Parameter Reference
 
-<img src={rampart_control_panel} alt="Videomancer front panel with Rampart loaded"/>
-*Videomancer's front panel with Rampart active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -202,9 +225,12 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise1_result },
-    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise1_result },
-    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise1_result },
+    { label: "Field", before: rampart_source1_field, after: rampart_ex1_s1 },
+    { label: "Runner", before: rampart_source2_runner, after: rampart_ex1_s2 },
+    { label: "Clouds", before: rampart_source3_clouds, after: rampart_ex1_s3 },
+    { label: "Pattern", before: rampart_source4_pattern, after: rampart_ex1_s4 },
+    { label: "Woman", before: rampart_source5_woman, after: rampart_ex1_s5 },
+    { label: "Wood", before: rampart_source6_wood, after: rampart_ex1_s6 },
   ]}
 />
 *Basic Brick Grid — simulated result across source images.*
@@ -226,9 +252,12 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise2_result },
-    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise2_result },
-    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise2_result },
+    { label: "Field", before: rampart_source1_field, after: rampart_ex2_s1 },
+    { label: "Runner", before: rampart_source2_runner, after: rampart_ex2_s2 },
+    { label: "Clouds", before: rampart_source3_clouds, after: rampart_ex2_s3 },
+    { label: "Pattern", before: rampart_source4_pattern, after: rampart_ex2_s4 },
+    { label: "Woman", before: rampart_source5_woman, after: rampart_ex2_s5 },
+    { label: "Wood", before: rampart_source6_wood, after: rampart_ex2_s6 },
   ]}
 />
 *Video Fill and Shadow — simulated result across source images.*
@@ -250,9 +279,12 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rampart_source1_kodim15, after: rampart_exercise3_result },
-    { label: "Kodim01", before: rampart_source2_kodim01, after: rampart_exercise3_result },
-    { label: "Stream Bridge", before: rampart_source3_stream_bridge_512, after: rampart_exercise3_result },
+    { label: "Field", before: rampart_source1_field, after: rampart_ex3_s1 },
+    { label: "Runner", before: rampart_source2_runner, after: rampart_ex3_s2 },
+    { label: "Clouds", before: rampart_source3_clouds, after: rampart_ex3_s3 },
+    { label: "Pattern", before: rampart_source4_pattern, after: rampart_ex3_s4 },
+    { label: "Woman", before: rampart_source5_woman, after: rampart_ex3_s5 },
+    { label: "Wood", before: rampart_source6_wood, after: rampart_ex3_s6 },
   ]}
 />
 *Full Fortress Wall — simulated result across source images.*

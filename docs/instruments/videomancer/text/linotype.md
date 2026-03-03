@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 164
+sidebar_position: 172
 slug: /instruments/videomancer/linotype
 title: "Linotype"
-image: /img/instruments/videomancer/linotype/linotype_hero.png
+image: /img/instruments/videomancer/linotype/linotype_hero_s1.png
 description: "In 1886, Ottmar Mergenthaler's Linotype machine revolutionized printing by casting entire lines of metal type in a single operation — \"line o' type.\" An operator would key in text, and the machine would assemble brass matrices, cast a lead slug of the complete line, then advance to the next."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import linotype_hero from '/img/instruments/videomancer/linotype/linotype_hero.png';
-import linotype_control_panel from '/img/instruments/videomancer/linotype/linotype_control_panel.png';
-import linotype_exercise1_result from '/img/instruments/videomancer/linotype/linotype_exercise1_result.png';
-import linotype_exercise2_result from '/img/instruments/videomancer/linotype/linotype_exercise2_result.png';
-import linotype_exercise3_result from '/img/instruments/videomancer/linotype/linotype_exercise3_result.png';
-import linotype_source1_kodim15 from '/img/instruments/videomancer/linotype/linotype_source1_kodim15.png';
-import linotype_source2_kodim15_bw from '/img/instruments/videomancer/linotype/linotype_source2_kodim15_bw.png';
-import linotype_source3_male_1024 from '/img/instruments/videomancer/linotype/linotype_source3_male_1024.png';
+import linotype_source1_house from '/img/instruments/videomancer/linotype/linotype_source1_house.png';
+import linotype_source2_cat from '/img/instruments/videomancer/linotype/linotype_source2_cat.png';
+import linotype_source3_collage from '/img/instruments/videomancer/linotype/linotype_source3_collage.png';
+import linotype_source4_pattern from '/img/instruments/videomancer/linotype/linotype_source4_pattern.png';
+import linotype_source5_man from '/img/instruments/videomancer/linotype/linotype_source5_man.png';
+import linotype_source6_wood from '/img/instruments/videomancer/linotype/linotype_source6_wood.png';
+import linotype_hero_s1 from '/img/instruments/videomancer/linotype/linotype_hero_s1.png';
+import linotype_hero_s2 from '/img/instruments/videomancer/linotype/linotype_hero_s2.png';
+import linotype_hero_s3 from '/img/instruments/videomancer/linotype/linotype_hero_s3.png';
+import linotype_hero_s4 from '/img/instruments/videomancer/linotype/linotype_hero_s4.png';
+import linotype_hero_s5 from '/img/instruments/videomancer/linotype/linotype_hero_s5.png';
+import linotype_hero_s6 from '/img/instruments/videomancer/linotype/linotype_hero_s6.png';
+import linotype_ex1_s1 from '/img/instruments/videomancer/linotype/linotype_ex1_s1.png';
+import linotype_ex1_s2 from '/img/instruments/videomancer/linotype/linotype_ex1_s2.png';
+import linotype_ex1_s3 from '/img/instruments/videomancer/linotype/linotype_ex1_s3.png';
+import linotype_ex1_s4 from '/img/instruments/videomancer/linotype/linotype_ex1_s4.png';
+import linotype_ex1_s5 from '/img/instruments/videomancer/linotype/linotype_ex1_s5.png';
+import linotype_ex1_s6 from '/img/instruments/videomancer/linotype/linotype_ex1_s6.png';
+import linotype_ex2_s1 from '/img/instruments/videomancer/linotype/linotype_ex2_s1.png';
+import linotype_ex2_s2 from '/img/instruments/videomancer/linotype/linotype_ex2_s2.png';
+import linotype_ex2_s3 from '/img/instruments/videomancer/linotype/linotype_ex2_s3.png';
+import linotype_ex2_s4 from '/img/instruments/videomancer/linotype/linotype_ex2_s4.png';
+import linotype_ex2_s5 from '/img/instruments/videomancer/linotype/linotype_ex2_s5.png';
+import linotype_ex2_s6 from '/img/instruments/videomancer/linotype/linotype_ex2_s6.png';
+import linotype_ex3_s1 from '/img/instruments/videomancer/linotype/linotype_ex3_s1.png';
+import linotype_ex3_s2 from '/img/instruments/videomancer/linotype/linotype_ex3_s2.png';
+import linotype_ex3_s3 from '/img/instruments/videomancer/linotype/linotype_ex3_s3.png';
+import linotype_ex3_s4 from '/img/instruments/videomancer/linotype/linotype_ex3_s4.png';
+import linotype_ex3_s5 from '/img/instruments/videomancer/linotype/linotype_ex3_s5.png';
+import linotype_ex3_s6 from '/img/instruments/videomancer/linotype/linotype_ex3_s6.png';
 
 # Linotype
 
@@ -23,9 +45,12 @@ import linotype_source3_male_1024 from '/img/instruments/videomancer/linotype/li
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_hero },
-    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_hero },
-    { label: "Male", before: linotype_source3_male_1024, after: linotype_hero },
+    { label: "House", before: linotype_source1_house, after: linotype_hero_s1 },
+    { label: "Cat", before: linotype_source2_cat, after: linotype_hero_s2 },
+    { label: "Collage", before: linotype_source3_collage, after: linotype_hero_s3 },
+    { label: "Pattern", before: linotype_source4_pattern, after: linotype_hero_s4 },
+    { label: "Man", before: linotype_source5_man, after: linotype_hero_s5 },
+    { label: "Wood", before: linotype_source6_wood, after: linotype_hero_s6 },
   ]}
 />
 *Linotype progressively composing a cityscape line by line, the bright cursor bar advancing downward as inked content darkens above.*
@@ -119,8 +144,6 @@ The dual-bank BRAM is the critical resource. While one bank is being read for di
 
 ## Parameter Reference
 
-<img src={linotype_control_panel} alt="Videomancer front panel with Linotype loaded"/>
-*Videomancer's front panel with Linotype active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise1_result },
-    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise1_result },
-    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise1_result },
+    { label: "House", before: linotype_source1_house, after: linotype_ex1_s1 },
+    { label: "Cat", before: linotype_source2_cat, after: linotype_ex1_s2 },
+    { label: "Collage", before: linotype_source3_collage, after: linotype_ex1_s3 },
+    { label: "Pattern", before: linotype_source4_pattern, after: linotype_ex1_s4 },
+    { label: "Man", before: linotype_source5_man, after: linotype_ex1_s5 },
+    { label: "Wood", before: linotype_source6_wood, after: linotype_ex1_s6 },
   ]}
 />
 *Slow Reveal — simulated result across source images.*
@@ -254,9 +280,12 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise2_result },
-    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise2_result },
-    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise2_result },
+    { label: "House", before: linotype_source1_house, after: linotype_ex2_s1 },
+    { label: "Cat", before: linotype_source2_cat, after: linotype_ex2_s2 },
+    { label: "Collage", before: linotype_source3_collage, after: linotype_ex2_s3 },
+    { label: "Pattern", before: linotype_source4_pattern, after: linotype_ex2_s4 },
+    { label: "Man", before: linotype_source5_man, after: linotype_ex2_s5 },
+    { label: "Wood", before: linotype_source6_wood, after: linotype_ex2_s6 },
   ]}
 />
 *Ink Fade and Leading — simulated result across source images.*
@@ -280,9 +309,12 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: linotype_source1_kodim15, after: linotype_exercise3_result },
-    { label: "Kodim15 B&W", before: linotype_source2_kodim15_bw, after: linotype_exercise3_result },
-    { label: "Male", before: linotype_source3_male_1024, after: linotype_exercise3_result },
+    { label: "House", before: linotype_source1_house, after: linotype_ex3_s1 },
+    { label: "Cat", before: linotype_source2_cat, after: linotype_ex3_s2 },
+    { label: "Collage", before: linotype_source3_collage, after: linotype_ex3_s3 },
+    { label: "Pattern", before: linotype_source4_pattern, after: linotype_ex3_s4 },
+    { label: "Man", before: linotype_source5_man, after: linotype_ex3_s5 },
+    { label: "Wood", before: linotype_source6_wood, after: linotype_ex3_s6 },
   ]}
 />
 *Rapid Composition Loop — simulated result across source images.*

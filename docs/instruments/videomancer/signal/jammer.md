@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 145
+sidebar_position: 151
 slug: /instruments/videomancer/jammer
 title: "Jammer"
-image: /img/instruments/videomancer/jammer/jammer_hero.png
+image: /img/instruments/videomancer/jammer/jammer_hero_s1.png
 description: "Every television signal travels through the air as radio waves, and the air is full of other radio waves."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import jammer_hero from '/img/instruments/videomancer/jammer/jammer_hero.png';
-import jammer_control_panel from '/img/instruments/videomancer/jammer/jammer_control_panel.png';
-import jammer_exercise1_result from '/img/instruments/videomancer/jammer/jammer_exercise1_result.png';
-import jammer_exercise2_result from '/img/instruments/videomancer/jammer/jammer_exercise2_result.png';
-import jammer_exercise3_result from '/img/instruments/videomancer/jammer/jammer_exercise3_result.png';
-import jammer_source1_kodim15 from '/img/instruments/videomancer/jammer/jammer_source1_kodim15.png';
-import jammer_source2_kodim01 from '/img/instruments/videomancer/jammer/jammer_source2_kodim01.png';
-import jammer_source3_stream_bridge_512 from '/img/instruments/videomancer/jammer/jammer_source3_stream_bridge_512.png';
+import jammer_source1_dog from '/img/instruments/videomancer/jammer/jammer_source1_dog.png';
+import jammer_source2_skull from '/img/instruments/videomancer/jammer/jammer_source2_skull.png';
+import jammer_source3_collage from '/img/instruments/videomancer/jammer/jammer_source3_collage.png';
+import jammer_source4_pattern from '/img/instruments/videomancer/jammer/jammer_source4_pattern.png';
+import jammer_source5_girl from '/img/instruments/videomancer/jammer/jammer_source5_girl.png';
+import jammer_source6_wood from '/img/instruments/videomancer/jammer/jammer_source6_wood.png';
+import jammer_hero_s1 from '/img/instruments/videomancer/jammer/jammer_hero_s1.png';
+import jammer_hero_s2 from '/img/instruments/videomancer/jammer/jammer_hero_s2.png';
+import jammer_hero_s3 from '/img/instruments/videomancer/jammer/jammer_hero_s3.png';
+import jammer_hero_s4 from '/img/instruments/videomancer/jammer/jammer_hero_s4.png';
+import jammer_hero_s5 from '/img/instruments/videomancer/jammer/jammer_hero_s5.png';
+import jammer_hero_s6 from '/img/instruments/videomancer/jammer/jammer_hero_s6.png';
+import jammer_ex1_s1 from '/img/instruments/videomancer/jammer/jammer_ex1_s1.png';
+import jammer_ex1_s2 from '/img/instruments/videomancer/jammer/jammer_ex1_s2.png';
+import jammer_ex1_s3 from '/img/instruments/videomancer/jammer/jammer_ex1_s3.png';
+import jammer_ex1_s4 from '/img/instruments/videomancer/jammer/jammer_ex1_s4.png';
+import jammer_ex1_s5 from '/img/instruments/videomancer/jammer/jammer_ex1_s5.png';
+import jammer_ex1_s6 from '/img/instruments/videomancer/jammer/jammer_ex1_s6.png';
+import jammer_ex2_s1 from '/img/instruments/videomancer/jammer/jammer_ex2_s1.png';
+import jammer_ex2_s2 from '/img/instruments/videomancer/jammer/jammer_ex2_s2.png';
+import jammer_ex2_s3 from '/img/instruments/videomancer/jammer/jammer_ex2_s3.png';
+import jammer_ex2_s4 from '/img/instruments/videomancer/jammer/jammer_ex2_s4.png';
+import jammer_ex2_s5 from '/img/instruments/videomancer/jammer/jammer_ex2_s5.png';
+import jammer_ex2_s6 from '/img/instruments/videomancer/jammer/jammer_ex2_s6.png';
+import jammer_ex3_s1 from '/img/instruments/videomancer/jammer/jammer_ex3_s1.png';
+import jammer_ex3_s2 from '/img/instruments/videomancer/jammer/jammer_ex3_s2.png';
+import jammer_ex3_s3 from '/img/instruments/videomancer/jammer/jammer_ex3_s3.png';
+import jammer_ex3_s4 from '/img/instruments/videomancer/jammer/jammer_ex3_s4.png';
+import jammer_ex3_s5 from '/img/instruments/videomancer/jammer/jammer_ex3_s5.png';
+import jammer_ex3_s6 from '/img/instruments/videomancer/jammer/jammer_ex3_s6.png';
 
 # Jammer
 
@@ -23,9 +45,12 @@ import jammer_source3_stream_bridge_512 from '/img/instruments/videomancer/jamme
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_hero },
-    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_hero },
-    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_hero },
+    { label: "Dog", before: jammer_source1_dog, after: jammer_hero_s1 },
+    { label: "Skull", before: jammer_source2_skull, after: jammer_hero_s2 },
+    { label: "Collage", before: jammer_source3_collage, after: jammer_hero_s3 },
+    { label: "Pattern", before: jammer_source4_pattern, after: jammer_hero_s4 },
+    { label: "Girl", before: jammer_source5_girl, after: jammer_hero_s5 },
+    { label: "Wood", before: jammer_source6_wood, after: jammer_hero_s6 },
   ]}
 />
 *Jammer applying herringbone beat patterns, rolling bars, and multipath ghosting to simulate broadcast RF interference.*
@@ -115,8 +140,6 @@ The Chroma Int toggle controls whether the herringbone pattern and ghost image a
 
 ## Parameter Reference
 
-<img src={jammer_control_panel} alt="Videomancer front panel with Jammer loaded"/>
-*Videomancer's front panel with Jammer active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from a single interference artifact to the full signal-
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise1_result },
-    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise1_result },
-    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise1_result },
+    { label: "Dog", before: jammer_source1_dog, after: jammer_ex1_s1 },
+    { label: "Skull", before: jammer_source2_skull, after: jammer_ex1_s2 },
+    { label: "Collage", before: jammer_source3_collage, after: jammer_ex1_s3 },
+    { label: "Pattern", before: jammer_source4_pattern, after: jammer_ex1_s4 },
+    { label: "Girl", before: jammer_source5_girl, after: jammer_ex1_s5 },
+    { label: "Wood", before: jammer_source6_wood, after: jammer_ex1_s6 },
   ]}
 />
 *Herringbone and Rolling Bars — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from a single interference artifact to the full signal-
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise2_result },
-    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise2_result },
-    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise2_result },
+    { label: "Dog", before: jammer_source1_dog, after: jammer_ex2_s1 },
+    { label: "Skull", before: jammer_source2_skull, after: jammer_ex2_s2 },
+    { label: "Collage", before: jammer_source3_collage, after: jammer_ex2_s3 },
+    { label: "Pattern", before: jammer_source4_pattern, after: jammer_ex2_s4 },
+    { label: "Girl", before: jammer_source5_girl, after: jammer_ex2_s5 },
+    { label: "Wood", before: jammer_source6_wood, after: jammer_ex2_s6 },
   ]}
 />
 *Multipath Ghosting — simulated result across source images.*
@@ -269,9 +298,12 @@ These exercises progress from a single interference artifact to the full signal-
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jammer_source1_kodim15, after: jammer_exercise3_result },
-    { label: "Kodim01", before: jammer_source2_kodim01, after: jammer_exercise3_result },
-    { label: "Stream Bridge", before: jammer_source3_stream_bridge_512, after: jammer_exercise3_result },
+    { label: "Dog", before: jammer_source1_dog, after: jammer_ex3_s1 },
+    { label: "Skull", before: jammer_source2_skull, after: jammer_ex3_s2 },
+    { label: "Collage", before: jammer_source3_collage, after: jammer_ex3_s3 },
+    { label: "Pattern", before: jammer_source4_pattern, after: jammer_ex3_s4 },
+    { label: "Girl", before: jammer_source5_girl, after: jammer_ex3_s5 },
+    { label: "Wood", before: jammer_source6_wood, after: jammer_ex3_s6 },
   ]}
 />
 *Total Signal Jamming — simulated result across source images.*

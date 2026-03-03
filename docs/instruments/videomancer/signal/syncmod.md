@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 279
+sidebar_position: 292
 slug: /instruments/videomancer/syncmod
 title: "Sync Mod"
 image: /img/instruments/videomancer/syncmod/syncmod_hero.png

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 34
+sidebar_position: 35
 slug: /instruments/videomancer/camcord
 title: "Camcord"
-image: /img/instruments/videomancer/camcord/camcord_hero.png
+image: /img/instruments/videomancer/camcord/camcord_hero_s1.png
 description: "Between roughly 1987 and 1994, consumer camcorders from Sony, Panasonic, and JVC shipped with built-in digital effects processors — tiny DSP chips that could freeze a frame, pixelate it into mosaic blocks, compress the image into a slim strip, or key areas of brightness to a colored matte."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import camcord_hero from '/img/instruments/videomancer/camcord/camcord_hero.png';
-import camcord_control_panel from '/img/instruments/videomancer/camcord/camcord_control_panel.png';
-import camcord_exercise1_result from '/img/instruments/videomancer/camcord/camcord_exercise1_result.png';
-import camcord_exercise2_result from '/img/instruments/videomancer/camcord/camcord_exercise2_result.png';
-import camcord_exercise3_result from '/img/instruments/videomancer/camcord/camcord_exercise3_result.png';
-import camcord_source1_kodim05 from '/img/instruments/videomancer/camcord/camcord_source1_kodim05.png';
-import camcord_source2_kodim15 from '/img/instruments/videomancer/camcord/camcord_source2_kodim15.png';
-import camcord_source3_kodim15_bw from '/img/instruments/videomancer/camcord/camcord_source3_kodim15_bw.png';
+import camcord_source1_field from '/img/instruments/videomancer/camcord/camcord_source1_field.png';
+import camcord_source2_cat from '/img/instruments/videomancer/camcord/camcord_source2_cat.png';
+import camcord_source3_collage from '/img/instruments/videomancer/camcord/camcord_source3_collage.png';
+import camcord_source4_pattern from '/img/instruments/videomancer/camcord/camcord_source4_pattern.png';
+import camcord_source5_woman from '/img/instruments/videomancer/camcord/camcord_source5_woman.png';
+import camcord_source6_wood from '/img/instruments/videomancer/camcord/camcord_source6_wood.png';
+import camcord_hero_s1 from '/img/instruments/videomancer/camcord/camcord_hero_s1.png';
+import camcord_hero_s2 from '/img/instruments/videomancer/camcord/camcord_hero_s2.png';
+import camcord_hero_s3 from '/img/instruments/videomancer/camcord/camcord_hero_s3.png';
+import camcord_hero_s4 from '/img/instruments/videomancer/camcord/camcord_hero_s4.png';
+import camcord_hero_s5 from '/img/instruments/videomancer/camcord/camcord_hero_s5.png';
+import camcord_hero_s6 from '/img/instruments/videomancer/camcord/camcord_hero_s6.png';
+import camcord_ex1_s1 from '/img/instruments/videomancer/camcord/camcord_ex1_s1.png';
+import camcord_ex1_s2 from '/img/instruments/videomancer/camcord/camcord_ex1_s2.png';
+import camcord_ex1_s3 from '/img/instruments/videomancer/camcord/camcord_ex1_s3.png';
+import camcord_ex1_s4 from '/img/instruments/videomancer/camcord/camcord_ex1_s4.png';
+import camcord_ex1_s5 from '/img/instruments/videomancer/camcord/camcord_ex1_s5.png';
+import camcord_ex1_s6 from '/img/instruments/videomancer/camcord/camcord_ex1_s6.png';
+import camcord_ex2_s1 from '/img/instruments/videomancer/camcord/camcord_ex2_s1.png';
+import camcord_ex2_s2 from '/img/instruments/videomancer/camcord/camcord_ex2_s2.png';
+import camcord_ex2_s3 from '/img/instruments/videomancer/camcord/camcord_ex2_s3.png';
+import camcord_ex2_s4 from '/img/instruments/videomancer/camcord/camcord_ex2_s4.png';
+import camcord_ex2_s5 from '/img/instruments/videomancer/camcord/camcord_ex2_s5.png';
+import camcord_ex2_s6 from '/img/instruments/videomancer/camcord/camcord_ex2_s6.png';
+import camcord_ex3_s1 from '/img/instruments/videomancer/camcord/camcord_ex3_s1.png';
+import camcord_ex3_s2 from '/img/instruments/videomancer/camcord/camcord_ex3_s2.png';
+import camcord_ex3_s3 from '/img/instruments/videomancer/camcord/camcord_ex3_s3.png';
+import camcord_ex3_s4 from '/img/instruments/videomancer/camcord/camcord_ex3_s4.png';
+import camcord_ex3_s5 from '/img/instruments/videomancer/camcord/camcord_ex3_s5.png';
+import camcord_ex3_s6 from '/img/instruments/videomancer/camcord/camcord_ex3_s6.png';
 
 # Camcord
 
@@ -23,9 +45,12 @@ import camcord_source3_kodim15_bw from '/img/instruments/videomancer/camcord/cam
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_hero },
-    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_hero },
-    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_hero },
+    { label: "Field", before: camcord_source1_field, after: camcord_hero_s1 },
+    { label: "Cat", before: camcord_source2_cat, after: camcord_hero_s2 },
+    { label: "Collage", before: camcord_source3_collage, after: camcord_hero_s3 },
+    { label: "Pattern", before: camcord_source4_pattern, after: camcord_hero_s4 },
+    { label: "Woman", before: camcord_source5_woman, after: camcord_hero_s5 },
+    { label: "Wood", before: camcord_source6_wood, after: camcord_hero_s6 },
   ]}
 />
 *Camcord applying mosaic pixelation and persistence trail to transform a live image into a blocky, ghosting camcorder effect.*
@@ -112,9 +137,6 @@ The critical interaction is chain order. Trail operates on the output of Slim/St
 ---
 
 ## Parameter Reference
-
-<img src={camcord_control_panel} alt="Videomancer front panel with Camcord loaded"/>
-*Videomancer's front panel with Camcord active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +239,12 @@ These exercises progress through the five effects in chain order, starting with 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise1_result },
-    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise1_result },
-    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise1_result },
+    { label: "Field", before: camcord_source1_field, after: camcord_ex1_s1 },
+    { label: "Cat", before: camcord_source2_cat, after: camcord_ex1_s2 },
+    { label: "Collage", before: camcord_source3_collage, after: camcord_ex1_s3 },
+    { label: "Pattern", before: camcord_source4_pattern, after: camcord_ex1_s4 },
+    { label: "Woman", before: camcord_source5_woman, after: camcord_ex1_s5 },
+    { label: "Wood", before: camcord_source6_wood, after: camcord_ex1_s6 },
   ]}
 />
 *Mosaic Freeze Frame — simulated result across source images.*
@@ -241,9 +266,12 @@ These exercises progress through the five effects in chain order, starting with 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise2_result },
-    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise2_result },
-    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise2_result },
+    { label: "Field", before: camcord_source1_field, after: camcord_ex2_s1 },
+    { label: "Cat", before: camcord_source2_cat, after: camcord_ex2_s2 },
+    { label: "Collage", before: camcord_source3_collage, after: camcord_ex2_s3 },
+    { label: "Pattern", before: camcord_source4_pattern, after: camcord_ex2_s4 },
+    { label: "Woman", before: camcord_source5_woman, after: camcord_ex2_s5 },
+    { label: "Wood", before: camcord_source6_wood, after: camcord_ex2_s6 },
   ]}
 />
 *Persistence Trail with Compression — simulated result across source images.*
@@ -266,9 +294,12 @@ These exercises progress through the five effects in chain order, starting with 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: camcord_source1_kodim05, after: camcord_exercise3_result },
-    { label: "Kodim15", before: camcord_source2_kodim15, after: camcord_exercise3_result },
-    { label: "Kodim15 B&W", before: camcord_source3_kodim15_bw, after: camcord_exercise3_result },
+    { label: "Field", before: camcord_source1_field, after: camcord_ex3_s1 },
+    { label: "Cat", before: camcord_source2_cat, after: camcord_ex3_s2 },
+    { label: "Collage", before: camcord_source3_collage, after: camcord_ex3_s3 },
+    { label: "Pattern", before: camcord_source4_pattern, after: camcord_ex3_s4 },
+    { label: "Woman", before: camcord_source5_woman, after: camcord_ex3_s5 },
+    { label: "Wood", before: camcord_source6_wood, after: camcord_ex3_s6 },
   ]}
 />
 *Full Camcorder Effects Chain — simulated result across source images.*

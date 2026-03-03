@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 60
+sidebar_position: 63
 slug: /instruments/videomancer/conway
 title: "Conway"
 image: /img/instruments/videomancer/conway/conway_hero.png

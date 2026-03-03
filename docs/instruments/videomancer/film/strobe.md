@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 276
+sidebar_position: 288
 slug: /instruments/videomancer/strobe
 title: "Strobe"
 image: /img/instruments/videomancer/strobe/strobe_hero.png

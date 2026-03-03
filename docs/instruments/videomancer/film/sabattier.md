@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 241
+sidebar_position: 253
 slug: /instruments/videomancer/sabattier
 title: "Sabattier"
-image: /img/instruments/videomancer/sabattier/sabattier_hero.png
+image: /img/instruments/videomancer/sabattier/sabattier_hero_s1.png
 description: "In the traditional photographic darkroom, the Sabattier effect occurs when a partially developed print is briefly re-exposed to light."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sabattier_hero from '/img/instruments/videomancer/sabattier/sabattier_hero.png';
-import sabattier_control_panel from '/img/instruments/videomancer/sabattier/sabattier_control_panel.png';
-import sabattier_exercise1_result from '/img/instruments/videomancer/sabattier/sabattier_exercise1_result.png';
-import sabattier_exercise2_result from '/img/instruments/videomancer/sabattier/sabattier_exercise2_result.png';
-import sabattier_exercise3_result from '/img/instruments/videomancer/sabattier/sabattier_exercise3_result.png';
-import sabattier_source1_kodim03 from '/img/instruments/videomancer/sabattier/sabattier_source1_kodim03.png';
-import sabattier_source2_kodim13 from '/img/instruments/videomancer/sabattier/sabattier_source2_kodim13.png';
-import sabattier_source3_kodim13_bw from '/img/instruments/videomancer/sabattier/sabattier_source3_kodim13_bw.png';
+import sabattier_source1_sunset from '/img/instruments/videomancer/sabattier/sabattier_source1_sunset.png';
+import sabattier_source2_castle from '/img/instruments/videomancer/sabattier/sabattier_source2_castle.png';
+import sabattier_source3_elephant from '/img/instruments/videomancer/sabattier/sabattier_source3_elephant.png';
+import sabattier_source4_pattern from '/img/instruments/videomancer/sabattier/sabattier_source4_pattern.png';
+import sabattier_source5_boy from '/img/instruments/videomancer/sabattier/sabattier_source5_boy.png';
+import sabattier_source6_paint from '/img/instruments/videomancer/sabattier/sabattier_source6_paint.png';
+import sabattier_hero_s1 from '/img/instruments/videomancer/sabattier/sabattier_hero_s1.png';
+import sabattier_hero_s2 from '/img/instruments/videomancer/sabattier/sabattier_hero_s2.png';
+import sabattier_hero_s3 from '/img/instruments/videomancer/sabattier/sabattier_hero_s3.png';
+import sabattier_hero_s4 from '/img/instruments/videomancer/sabattier/sabattier_hero_s4.png';
+import sabattier_hero_s5 from '/img/instruments/videomancer/sabattier/sabattier_hero_s5.png';
+import sabattier_hero_s6 from '/img/instruments/videomancer/sabattier/sabattier_hero_s6.png';
+import sabattier_ex1_s1 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s1.png';
+import sabattier_ex1_s2 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s2.png';
+import sabattier_ex1_s3 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s3.png';
+import sabattier_ex1_s4 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s4.png';
+import sabattier_ex1_s5 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s5.png';
+import sabattier_ex1_s6 from '/img/instruments/videomancer/sabattier/sabattier_ex1_s6.png';
+import sabattier_ex2_s1 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s1.png';
+import sabattier_ex2_s2 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s2.png';
+import sabattier_ex2_s3 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s3.png';
+import sabattier_ex2_s4 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s4.png';
+import sabattier_ex2_s5 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s5.png';
+import sabattier_ex2_s6 from '/img/instruments/videomancer/sabattier/sabattier_ex2_s6.png';
+import sabattier_ex3_s1 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s1.png';
+import sabattier_ex3_s2 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s2.png';
+import sabattier_ex3_s3 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s3.png';
+import sabattier_ex3_s4 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s4.png';
+import sabattier_ex3_s5 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s5.png';
+import sabattier_ex3_s6 from '/img/instruments/videomancer/sabattier/sabattier_ex3_s6.png';
 
 # Sabattier
 
@@ -23,9 +45,12 @@ import sabattier_source3_kodim13_bw from '/img/instruments/videomancer/sabattier
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_hero },
-    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_hero },
-    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_hero },
+    { label: "Sunset", before: sabattier_source1_sunset, after: sabattier_hero_s1 },
+    { label: "Castle", before: sabattier_source2_castle, after: sabattier_hero_s2 },
+    { label: "Elephant", before: sabattier_source3_elephant, after: sabattier_hero_s3 },
+    { label: "Pattern", before: sabattier_source4_pattern, after: sabattier_hero_s4 },
+    { label: "Boy", before: sabattier_source5_boy, after: sabattier_hero_s5 },
+    { label: "Paint", before: sabattier_source6_paint, after: sabattier_hero_s6 },
   ]}
 />
 *Sabattier applying pseudo-solarization with Mackie line edge glow and metallic tinting to create surreal darkroom-inspired tonal reversals.*
@@ -109,8 +134,6 @@ Two key interactions define the character of the output. First, the Mackie line 
 
 ## Parameter Reference
 
-<img src={sabattier_control_panel} alt="Videomancer front panel with Sabattier loaded"/>
-*Videomancer's front panel with Sabattier active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -215,9 +238,12 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise1_result },
-    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise1_result },
-    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise1_result },
+    { label: "Sunset", before: sabattier_source1_sunset, after: sabattier_ex1_s1 },
+    { label: "Castle", before: sabattier_source2_castle, after: sabattier_ex1_s2 },
+    { label: "Elephant", before: sabattier_source3_elephant, after: sabattier_ex1_s3 },
+    { label: "Pattern", before: sabattier_source4_pattern, after: sabattier_ex1_s4 },
+    { label: "Boy", before: sabattier_source5_boy, after: sabattier_ex1_s5 },
+    { label: "Paint", before: sabattier_source6_paint, after: sabattier_ex1_s6 },
   ]}
 />
 *Basic Solarization — simulated result across source images.*
@@ -239,9 +265,12 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise2_result },
-    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise2_result },
-    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise2_result },
+    { label: "Sunset", before: sabattier_source1_sunset, after: sabattier_ex2_s1 },
+    { label: "Castle", before: sabattier_source2_castle, after: sabattier_ex2_s2 },
+    { label: "Elephant", before: sabattier_source3_elephant, after: sabattier_ex2_s3 },
+    { label: "Pattern", before: sabattier_source4_pattern, after: sabattier_ex2_s4 },
+    { label: "Boy", before: sabattier_source5_boy, after: sabattier_ex2_s5 },
+    { label: "Paint", before: sabattier_source6_paint, after: sabattier_ex2_s6 },
   ]}
 />
 *Metallic Portraiture — simulated result across source images.*
@@ -263,9 +292,12 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sabattier_source1_kodim03, after: sabattier_exercise3_result },
-    { label: "Kodim13", before: sabattier_source2_kodim13, after: sabattier_exercise3_result },
-    { label: "Kodim13 B&W", before: sabattier_source3_kodim13_bw, after: sabattier_exercise3_result },
+    { label: "Sunset", before: sabattier_source1_sunset, after: sabattier_ex3_s1 },
+    { label: "Castle", before: sabattier_source2_castle, after: sabattier_ex3_s2 },
+    { label: "Elephant", before: sabattier_source3_elephant, after: sabattier_ex3_s3 },
+    { label: "Pattern", before: sabattier_source4_pattern, after: sabattier_ex3_s4 },
+    { label: "Boy", before: sabattier_source5_boy, after: sabattier_ex3_s5 },
+    { label: "Paint", before: sabattier_source6_paint, after: sabattier_ex3_s6 },
   ]}
 />
 *Equidensity Contour Map — simulated result across source images.*

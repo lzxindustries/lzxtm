@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 180
+sidebar_position: 188
 slug: /instruments/videomancer/mercury
 title: "Mercury"
 image: /img/instruments/videomancer/mercury/mercury_hero.png

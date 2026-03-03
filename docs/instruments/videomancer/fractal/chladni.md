@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 47
+sidebar_position: 48
 slug: /instruments/videomancer/chladni
 title: "Chladni"
 image: /img/instruments/videomancer/chladni/chladni_hero.png

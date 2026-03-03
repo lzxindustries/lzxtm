@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 141
+sidebar_position: 147
 slug: /instruments/videomancer/involute
 title: "Involute"
 image: /img/instruments/videomancer/involute/involute_hero.png

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 118
+sidebar_position: 123
 slug: /instruments/videomancer/gauze
 title: "Gauze"
-image: /img/instruments/videomancer/gauze/gauze_hero.png
+image: /img/instruments/videomancer/gauze/gauze_hero_s1.png
 description: "Video images contain spatial detail at every scale — broad gradients, mid-frequency textures, and fine pixel-level edges."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import gauze_hero from '/img/instruments/videomancer/gauze/gauze_hero.png';
-import gauze_control_panel from '/img/instruments/videomancer/gauze/gauze_control_panel.png';
-import gauze_exercise1_result from '/img/instruments/videomancer/gauze/gauze_exercise1_result.png';
-import gauze_exercise2_result from '/img/instruments/videomancer/gauze/gauze_exercise2_result.png';
-import gauze_exercise3_result from '/img/instruments/videomancer/gauze/gauze_exercise3_result.png';
-import gauze_source1_kodim02 from '/img/instruments/videomancer/gauze/gauze_source1_kodim02.png';
-import gauze_source2_kodim07 from '/img/instruments/videomancer/gauze/gauze_source2_kodim07.png';
-import gauze_source3_kodim01_bw from '/img/instruments/videomancer/gauze/gauze_source3_kodim01_bw.png';
+import gauze_source1_house from '/img/instruments/videomancer/gauze/gauze_source1_house.png';
+import gauze_source2_dog from '/img/instruments/videomancer/gauze/gauze_source2_dog.png';
+import gauze_source3_turtle from '/img/instruments/videomancer/gauze/gauze_source3_turtle.png';
+import gauze_source4_pattern from '/img/instruments/videomancer/gauze/gauze_source4_pattern.png';
+import gauze_source5_woman from '/img/instruments/videomancer/gauze/gauze_source5_woman.png';
+import gauze_source6_berries from '/img/instruments/videomancer/gauze/gauze_source6_berries.png';
+import gauze_hero_s1 from '/img/instruments/videomancer/gauze/gauze_hero_s1.png';
+import gauze_hero_s2 from '/img/instruments/videomancer/gauze/gauze_hero_s2.png';
+import gauze_hero_s3 from '/img/instruments/videomancer/gauze/gauze_hero_s3.png';
+import gauze_hero_s4 from '/img/instruments/videomancer/gauze/gauze_hero_s4.png';
+import gauze_hero_s5 from '/img/instruments/videomancer/gauze/gauze_hero_s5.png';
+import gauze_hero_s6 from '/img/instruments/videomancer/gauze/gauze_hero_s6.png';
+import gauze_ex1_s1 from '/img/instruments/videomancer/gauze/gauze_ex1_s1.png';
+import gauze_ex1_s2 from '/img/instruments/videomancer/gauze/gauze_ex1_s2.png';
+import gauze_ex1_s3 from '/img/instruments/videomancer/gauze/gauze_ex1_s3.png';
+import gauze_ex1_s4 from '/img/instruments/videomancer/gauze/gauze_ex1_s4.png';
+import gauze_ex1_s5 from '/img/instruments/videomancer/gauze/gauze_ex1_s5.png';
+import gauze_ex1_s6 from '/img/instruments/videomancer/gauze/gauze_ex1_s6.png';
+import gauze_ex2_s1 from '/img/instruments/videomancer/gauze/gauze_ex2_s1.png';
+import gauze_ex2_s2 from '/img/instruments/videomancer/gauze/gauze_ex2_s2.png';
+import gauze_ex2_s3 from '/img/instruments/videomancer/gauze/gauze_ex2_s3.png';
+import gauze_ex2_s4 from '/img/instruments/videomancer/gauze/gauze_ex2_s4.png';
+import gauze_ex2_s5 from '/img/instruments/videomancer/gauze/gauze_ex2_s5.png';
+import gauze_ex2_s6 from '/img/instruments/videomancer/gauze/gauze_ex2_s6.png';
+import gauze_ex3_s1 from '/img/instruments/videomancer/gauze/gauze_ex3_s1.png';
+import gauze_ex3_s2 from '/img/instruments/videomancer/gauze/gauze_ex3_s2.png';
+import gauze_ex3_s3 from '/img/instruments/videomancer/gauze/gauze_ex3_s3.png';
+import gauze_ex3_s4 from '/img/instruments/videomancer/gauze/gauze_ex3_s4.png';
+import gauze_ex3_s5 from '/img/instruments/videomancer/gauze/gauze_ex3_s5.png';
+import gauze_ex3_s6 from '/img/instruments/videomancer/gauze/gauze_ex3_s6.png';
 
 # Gauze
 
@@ -23,9 +45,12 @@ import gauze_source3_kodim01_bw from '/img/instruments/videomancer/gauze/gauze_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_hero },
-    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_hero },
-    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_hero },
+    { label: "House", before: gauze_source1_house, after: gauze_hero_s1 },
+    { label: "Dog", before: gauze_source2_dog, after: gauze_hero_s2 },
+    { label: "Turtle", before: gauze_source3_turtle, after: gauze_hero_s3 },
+    { label: "Pattern", before: gauze_source4_pattern, after: gauze_hero_s4 },
+    { label: "Woman", before: gauze_source5_woman, after: gauze_hero_s5 },
+    { label: "Berries", before: gauze_source6_berries, after: gauze_hero_s6 },
   ]}
 />
 *Gauze applying per-channel cascaded IIR filtering with fade — softening chrominance while sharpening luminance to reveal hidden edge structure.*
@@ -112,8 +137,6 @@ The fade interpolator sits after all filtering and operates in unsigned 10-bit s
 
 ## Parameter Reference
 
-<img src={gauze_control_panel} alt="Videomancer front panel with Gauze loaded"/>
-*Videomancer's front panel with Gauze active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +241,12 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise1_result },
-    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise1_result },
-    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise1_result },
+    { label: "House", before: gauze_source1_house, after: gauze_ex1_s1 },
+    { label: "Dog", before: gauze_source2_dog, after: gauze_ex1_s2 },
+    { label: "Turtle", before: gauze_source3_turtle, after: gauze_ex1_s3 },
+    { label: "Pattern", before: gauze_source4_pattern, after: gauze_ex1_s4 },
+    { label: "Woman", before: gauze_source5_woman, after: gauze_ex1_s5 },
+    { label: "Berries", before: gauze_source6_berries, after: gauze_ex1_s6 },
   ]}
 />
 *Soft Focus Portrait — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise2_result },
-    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise2_result },
-    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise2_result },
+    { label: "House", before: gauze_source1_house, after: gauze_ex2_s1 },
+    { label: "Dog", before: gauze_source2_dog, after: gauze_ex2_s2 },
+    { label: "Turtle", before: gauze_source3_turtle, after: gauze_ex2_s3 },
+    { label: "Pattern", before: gauze_source4_pattern, after: gauze_ex2_s4 },
+    { label: "Woman", before: gauze_source5_woman, after: gauze_ex2_s5 },
+    { label: "Berries", before: gauze_source6_berries, after: gauze_ex2_s6 },
   ]}
 />
 *Luminance Edge Extraction — simulated result across source images.*
@@ -267,9 +296,12 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: gauze_source1_kodim02, after: gauze_exercise3_result },
-    { label: "Kodim07", before: gauze_source2_kodim07, after: gauze_exercise3_result },
-    { label: "Kodim01 B&W", before: gauze_source3_kodim01_bw, after: gauze_exercise3_result },
+    { label: "House", before: gauze_source1_house, after: gauze_ex3_s1 },
+    { label: "Dog", before: gauze_source2_dog, after: gauze_ex3_s2 },
+    { label: "Turtle", before: gauze_source3_turtle, after: gauze_ex3_s3 },
+    { label: "Pattern", before: gauze_source4_pattern, after: gauze_ex3_s4 },
+    { label: "Woman", before: gauze_source5_woman, after: gauze_ex3_s5 },
+    { label: "Berries", before: gauze_source6_berries, after: gauze_ex3_s6 },
   ]}
 />
 *Bandpass Color Isolation — simulated result across source images.*

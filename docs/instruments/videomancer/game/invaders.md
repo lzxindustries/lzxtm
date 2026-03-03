@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 140
+sidebar_position: 146
 slug: /instruments/videomancer/invaders
 title: "Invaders"
 image: /img/instruments/videomancer/invaders/invaders_hero.png

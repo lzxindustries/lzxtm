@@ -1,21 +1,31 @@
 ---
 draft: true
-sidebar_position: 251
+sidebar_position: 263
 slug: /instruments/videomancer/shatter
 title: "Shatter"
-image: /img/instruments/videomancer/shatter/shatter_hero.png
+image: /img/instruments/videomancer/shatter/shatter_hero_s1.png
 description: "Analog video synthesizers from the 1980s had a distinctive trick: split the screen into two complementary regions using a spatial pattern, apply a different processing effect to each region, then alternate them at a controllable rate."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import shatter_hero from '/img/instruments/videomancer/shatter/shatter_hero.png';
-import shatter_control_panel from '/img/instruments/videomancer/shatter/shatter_control_panel.png';
-import shatter_exercise1_result from '/img/instruments/videomancer/shatter/shatter_exercise1_result.png';
-import shatter_exercise2_result from '/img/instruments/videomancer/shatter/shatter_exercise2_result.png';
-import shatter_exercise3_result from '/img/instruments/videomancer/shatter/shatter_exercise3_result.png';
-import shatter_source1_kodim15 from '/img/instruments/videomancer/shatter/shatter_source1_kodim15.png';
-import shatter_source2_kodim01 from '/img/instruments/videomancer/shatter/shatter_source2_kodim01.png';
-import shatter_source3_kodim01_bw from '/img/instruments/videomancer/shatter/shatter_source3_kodim01_bw.png';
+import shatter_source1_boat from '/img/instruments/videomancer/shatter/shatter_source1_boat.png';
+import shatter_source2_dog from '/img/instruments/videomancer/shatter/shatter_source2_dog.png';
+import shatter_source3_clouds from '/img/instruments/videomancer/shatter/shatter_source3_clouds.png';
+import shatter_source4_pattern from '/img/instruments/videomancer/shatter/shatter_source4_pattern.png';
+import shatter_source5_woman from '/img/instruments/videomancer/shatter/shatter_source5_woman.png';
+import shatter_source6_berries from '/img/instruments/videomancer/shatter/shatter_source6_berries.png';
+import shatter_hero_s1 from '/img/instruments/videomancer/shatter/shatter_hero_s1.png';
+import shatter_hero_s2 from '/img/instruments/videomancer/shatter/shatter_hero_s2.png';
+import shatter_hero_s3 from '/img/instruments/videomancer/shatter/shatter_hero_s3.png';
+import shatter_hero_s4 from '/img/instruments/videomancer/shatter/shatter_hero_s4.png';
+import shatter_hero_s5 from '/img/instruments/videomancer/shatter/shatter_hero_s5.png';
+import shatter_hero_s6 from '/img/instruments/videomancer/shatter/shatter_hero_s6.png';
+import shatter_ex1_s1 from '/img/instruments/videomancer/shatter/shatter_ex1_s1.png';
+import shatter_ex1_s2 from '/img/instruments/videomancer/shatter/shatter_ex1_s2.png';
+import shatter_ex1_s3 from '/img/instruments/videomancer/shatter/shatter_ex1_s3.png';
+import shatter_ex1_s4 from '/img/instruments/videomancer/shatter/shatter_ex1_s4.png';
+import shatter_ex1_s5 from '/img/instruments/videomancer/shatter/shatter_ex1_s5.png';
+import shatter_ex1_s6 from '/img/instruments/videomancer/shatter/shatter_ex1_s6.png';
 
 # Shatter
 
@@ -23,9 +33,12 @@ import shatter_source3_kodim01_bw from '/img/instruments/videomancer/shatter/sha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_hero },
-    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_hero },
-    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_hero },
+    { label: "Boat", before: shatter_source1_boat, after: shatter_hero_s1 },
+    { label: "Dog", before: shatter_source2_dog, after: shatter_hero_s2 },
+    { label: "Clouds", before: shatter_source3_clouds, after: shatter_hero_s3 },
+    { label: "Pattern", before: shatter_source4_pattern, after: shatter_hero_s4 },
+    { label: "Woman", before: shatter_source5_woman, after: shatter_hero_s5 },
+    { label: "Berries", before: shatter_source6_berries, after: shatter_hero_s6 },
   ]}
 />
 *Shatter splitting a video signal into strobing binary pattern regions with solarized processing and checkerboard compositing.*
@@ -111,8 +124,6 @@ The key architectural feature is the separation of spatial pattern generation (S
 
 ## Parameter Reference
 
-<img src={shatter_control_panel} alt="Videomancer front panel with Shatter loaded"/>
-*Videomancer's front panel with Shatter active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -215,9 +226,12 @@ These exercises progress from static pattern exploration through processing mode
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: shatter_source1_kodim15, after: shatter_exercise1_result },
-    { label: "Kodim01", before: shatter_source2_kodim01, after: shatter_exercise1_result },
-    { label: "Kodim01 B&W", before: shatter_source3_kodim01_bw, after: shatter_exercise1_result },
+    { label: "Boat", before: shatter_source1_boat, after: shatter_ex1_s1 },
+    { label: "Dog", before: shatter_source2_dog, after: shatter_ex1_s2 },
+    { label: "Clouds", before: shatter_source3_clouds, after: shatter_ex1_s3 },
+    { label: "Pattern", before: shatter_source4_pattern, after: shatter_ex1_s4 },
+    { label: "Woman", before: shatter_source5_woman, after: shatter_ex1_s5 },
+    { label: "Berries", before: shatter_source6_berries, after: shatter_ex1_s6 },
   ]}
 />
 *Pattern Gallery — simulated result across source images.*

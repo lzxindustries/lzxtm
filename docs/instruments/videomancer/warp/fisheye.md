@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 107
+sidebar_position: 112
 slug: /instruments/videomancer/fisheye
 title: "Fisheye"
-image: /img/instruments/videomancer/fisheye/fisheye_hero.png
+image: /img/instruments/videomancer/fisheye/fisheye_hero_s1.png
 description: "Every lens bends light."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import fisheye_hero from '/img/instruments/videomancer/fisheye/fisheye_hero.png';
-import fisheye_control_panel from '/img/instruments/videomancer/fisheye/fisheye_control_panel.png';
-import fisheye_exercise1_result from '/img/instruments/videomancer/fisheye/fisheye_exercise1_result.png';
-import fisheye_exercise2_result from '/img/instruments/videomancer/fisheye/fisheye_exercise2_result.png';
-import fisheye_exercise3_result from '/img/instruments/videomancer/fisheye/fisheye_exercise3_result.png';
-import fisheye_source1_kodim02 from '/img/instruments/videomancer/fisheye/fisheye_source1_kodim02.png';
-import fisheye_source2_kodim07 from '/img/instruments/videomancer/fisheye/fisheye_source2_kodim07.png';
-import fisheye_source3_kodim01_bw from '/img/instruments/videomancer/fisheye/fisheye_source3_kodim01_bw.png';
+import fisheye_source1_fruit from '/img/instruments/videomancer/fisheye/fisheye_source1_fruit.png';
+import fisheye_source2_parrot from '/img/instruments/videomancer/fisheye/fisheye_source2_parrot.png';
+import fisheye_source3_elephant from '/img/instruments/videomancer/fisheye/fisheye_source3_elephant.png';
+import fisheye_source4_pattern from '/img/instruments/videomancer/fisheye/fisheye_source4_pattern.png';
+import fisheye_source5_man from '/img/instruments/videomancer/fisheye/fisheye_source5_man.png';
+import fisheye_source6_knit from '/img/instruments/videomancer/fisheye/fisheye_source6_knit.png';
+import fisheye_hero_s1 from '/img/instruments/videomancer/fisheye/fisheye_hero_s1.png';
+import fisheye_hero_s2 from '/img/instruments/videomancer/fisheye/fisheye_hero_s2.png';
+import fisheye_hero_s3 from '/img/instruments/videomancer/fisheye/fisheye_hero_s3.png';
+import fisheye_hero_s4 from '/img/instruments/videomancer/fisheye/fisheye_hero_s4.png';
+import fisheye_hero_s5 from '/img/instruments/videomancer/fisheye/fisheye_hero_s5.png';
+import fisheye_hero_s6 from '/img/instruments/videomancer/fisheye/fisheye_hero_s6.png';
+import fisheye_ex1_s1 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s1.png';
+import fisheye_ex1_s2 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s2.png';
+import fisheye_ex1_s3 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s3.png';
+import fisheye_ex1_s4 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s4.png';
+import fisheye_ex1_s5 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s5.png';
+import fisheye_ex1_s6 from '/img/instruments/videomancer/fisheye/fisheye_ex1_s6.png';
+import fisheye_ex2_s1 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s1.png';
+import fisheye_ex2_s2 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s2.png';
+import fisheye_ex2_s3 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s3.png';
+import fisheye_ex2_s4 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s4.png';
+import fisheye_ex2_s5 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s5.png';
+import fisheye_ex2_s6 from '/img/instruments/videomancer/fisheye/fisheye_ex2_s6.png';
+import fisheye_ex3_s1 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s1.png';
+import fisheye_ex3_s2 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s2.png';
+import fisheye_ex3_s3 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s3.png';
+import fisheye_ex3_s4 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s4.png';
+import fisheye_ex3_s5 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s5.png';
+import fisheye_ex3_s6 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s6.png';
 
 # Fisheye
 
@@ -23,9 +45,12 @@ import fisheye_source3_kodim01_bw from '/img/instruments/videomancer/fisheye/fis
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_hero },
-    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_hero },
-    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_hero },
+    { label: "Fruit", before: fisheye_source1_fruit, after: fisheye_hero_s1 },
+    { label: "Parrot", before: fisheye_source2_parrot, after: fisheye_hero_s2 },
+    { label: "Elephant", before: fisheye_source3_elephant, after: fisheye_hero_s3 },
+    { label: "Pattern", before: fisheye_source4_pattern, after: fisheye_hero_s4 },
+    { label: "Man", before: fisheye_source5_man, after: fisheye_hero_s5 },
+    { label: "Knit", before: fisheye_source6_knit, after: fisheye_hero_s6 },
   ]}
 />
 *Fisheye applying radial brightness falloff and chromatic aberration to simulate barrel lens distortion across a multi-source video composite.*
@@ -116,8 +141,6 @@ The border fill stage overwrites the darkening result when active, replacing out
 
 ## Parameter Reference
 
-<img src={fisheye_control_panel} alt="Videomancer front panel with Fisheye loaded"/>
-*Videomancer's front panel with Fisheye active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,9 +245,12 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise1_result },
-    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise1_result },
-    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise1_result },
+    { label: "Fruit", before: fisheye_source1_fruit, after: fisheye_ex1_s1 },
+    { label: "Parrot", before: fisheye_source2_parrot, after: fisheye_ex1_s2 },
+    { label: "Elephant", before: fisheye_source3_elephant, after: fisheye_ex1_s3 },
+    { label: "Pattern", before: fisheye_source4_pattern, after: fisheye_ex1_s4 },
+    { label: "Man", before: fisheye_source5_man, after: fisheye_ex1_s5 },
+    { label: "Knit", before: fisheye_source6_knit, after: fisheye_ex1_s6 },
   ]}
 />
 *Classic Vignette — simulated result across source images.*
@@ -246,9 +272,12 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise2_result },
-    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise2_result },
-    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise2_result },
+    { label: "Fruit", before: fisheye_source1_fruit, after: fisheye_ex2_s1 },
+    { label: "Parrot", before: fisheye_source2_parrot, after: fisheye_ex2_s2 },
+    { label: "Elephant", before: fisheye_source3_elephant, after: fisheye_ex2_s3 },
+    { label: "Pattern", before: fisheye_source4_pattern, after: fisheye_ex2_s4 },
+    { label: "Man", before: fisheye_source5_man, after: fisheye_ex2_s5 },
+    { label: "Knit", before: fisheye_source6_knit, after: fisheye_ex2_s6 },
   ]}
 />
 *Barrel vs. Pincushion — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fisheye_source1_kodim02, after: fisheye_exercise3_result },
-    { label: "Kodim07", before: fisheye_source2_kodim07, after: fisheye_exercise3_result },
-    { label: "Kodim01 B&W", before: fisheye_source3_kodim01_bw, after: fisheye_exercise3_result },
+    { label: "Fruit", before: fisheye_source1_fruit, after: fisheye_ex3_s1 },
+    { label: "Parrot", before: fisheye_source2_parrot, after: fisheye_ex3_s2 },
+    { label: "Elephant", before: fisheye_source3_elephant, after: fisheye_ex3_s3 },
+    { label: "Pattern", before: fisheye_source4_pattern, after: fisheye_ex3_s4 },
+    { label: "Man", before: fisheye_source5_man, after: fisheye_ex3_s5 },
+    { label: "Knit", before: fisheye_source6_knit, after: fisheye_ex3_s6 },
   ]}
 />
 *Chromatic Fringing — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 127
+sidebar_position: 132
 slug: /instruments/videomancer/harlequin
 title: "Harlequin"
-image: /img/instruments/videomancer/harlequin/harlequin_hero.png
+image: /img/instruments/videomancer/harlequin/harlequin_hero_s1.png
 description: "The Atari Video Music (model C240) was released in 1977 — a consumer device that plugged into a television and translated stereo audio into geometric color patterns."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import harlequin_hero from '/img/instruments/videomancer/harlequin/harlequin_hero.png';
-import harlequin_control_panel from '/img/instruments/videomancer/harlequin/harlequin_control_panel.png';
-import harlequin_exercise1_result from '/img/instruments/videomancer/harlequin/harlequin_exercise1_result.png';
-import harlequin_exercise2_result from '/img/instruments/videomancer/harlequin/harlequin_exercise2_result.png';
-import harlequin_exercise3_result from '/img/instruments/videomancer/harlequin/harlequin_exercise3_result.png';
-import harlequin_source1_kodim15 from '/img/instruments/videomancer/harlequin/harlequin_source1_kodim15.png';
-import harlequin_source2_kodim03 from '/img/instruments/videomancer/harlequin/harlequin_source2_kodim03.png';
-import harlequin_source3_kodim15_bw from '/img/instruments/videomancer/harlequin/harlequin_source3_kodim15_bw.png';
+import harlequin_source1_sunset from '/img/instruments/videomancer/harlequin/harlequin_source1_sunset.png';
+import harlequin_source2_ballerina from '/img/instruments/videomancer/harlequin/harlequin_source2_ballerina.png';
+import harlequin_source3_elephant from '/img/instruments/videomancer/harlequin/harlequin_source3_elephant.png';
+import harlequin_source4_pattern from '/img/instruments/videomancer/harlequin/harlequin_source4_pattern.png';
+import harlequin_source5_boy from '/img/instruments/videomancer/harlequin/harlequin_source5_boy.png';
+import harlequin_source6_wood from '/img/instruments/videomancer/harlequin/harlequin_source6_wood.png';
+import harlequin_hero_s1 from '/img/instruments/videomancer/harlequin/harlequin_hero_s1.png';
+import harlequin_hero_s2 from '/img/instruments/videomancer/harlequin/harlequin_hero_s2.png';
+import harlequin_hero_s3 from '/img/instruments/videomancer/harlequin/harlequin_hero_s3.png';
+import harlequin_hero_s4 from '/img/instruments/videomancer/harlequin/harlequin_hero_s4.png';
+import harlequin_hero_s5 from '/img/instruments/videomancer/harlequin/harlequin_hero_s5.png';
+import harlequin_hero_s6 from '/img/instruments/videomancer/harlequin/harlequin_hero_s6.png';
+import harlequin_ex1_s1 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s1.png';
+import harlequin_ex1_s2 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s2.png';
+import harlequin_ex1_s3 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s3.png';
+import harlequin_ex1_s4 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s4.png';
+import harlequin_ex1_s5 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s5.png';
+import harlequin_ex1_s6 from '/img/instruments/videomancer/harlequin/harlequin_ex1_s6.png';
+import harlequin_ex2_s1 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s1.png';
+import harlequin_ex2_s2 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s2.png';
+import harlequin_ex2_s3 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s3.png';
+import harlequin_ex2_s4 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s4.png';
+import harlequin_ex2_s5 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s5.png';
+import harlequin_ex2_s6 from '/img/instruments/videomancer/harlequin/harlequin_ex2_s6.png';
+import harlequin_ex3_s1 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s1.png';
+import harlequin_ex3_s2 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s2.png';
+import harlequin_ex3_s3 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s3.png';
+import harlequin_ex3_s4 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s4.png';
+import harlequin_ex3_s5 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s5.png';
+import harlequin_ex3_s6 from '/img/instruments/videomancer/harlequin/harlequin_ex3_s6.png';
 
 # Harlequin
 
@@ -23,9 +45,12 @@ import harlequin_source3_kodim15_bw from '/img/instruments/videomancer/harlequin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_hero },
-    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_hero },
-    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_hero },
+    { label: "Sunset", before: harlequin_source1_sunset, after: harlequin_hero_s1 },
+    { label: "Ballerina", before: harlequin_source2_ballerina, after: harlequin_hero_s2 },
+    { label: "Elephant", before: harlequin_source3_elephant, after: harlequin_hero_s3 },
+    { label: "Pattern", before: harlequin_source4_pattern, after: harlequin_hero_s4 },
+    { label: "Boy", before: harlequin_source5_boy, after: harlequin_hero_s5 },
+    { label: "Wood", before: harlequin_source6_wood, after: harlequin_hero_s6 },
   ]}
 />
 *Harlequin rendering tiled Manhattan distance diamonds over a video source, colored by DDS hue cycling and modulated by IIR-averaged luminance.*
@@ -104,8 +129,6 @@ Two signal paths feed into the diamond rendering. First, the **IIR luminance ana
 
 ## Parameter Reference
 
-<img src={harlequin_control_panel} alt="Videomancer front panel with Harlequin loaded"/>
-*Videomancer's front panel with Harlequin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise1_result },
-    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise1_result },
-    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise1_result },
+    { label: "Sunset", before: harlequin_source1_sunset, after: harlequin_ex1_s1 },
+    { label: "Ballerina", before: harlequin_source2_ballerina, after: harlequin_ex1_s2 },
+    { label: "Elephant", before: harlequin_source3_elephant, after: harlequin_ex1_s3 },
+    { label: "Pattern", before: harlequin_source4_pattern, after: harlequin_ex1_s4 },
+    { label: "Boy", before: harlequin_source5_boy, after: harlequin_ex1_s5 },
+    { label: "Wood", before: harlequin_source6_wood, after: harlequin_ex1_s6 },
   ]}
 />
 *Single Breathing Diamond — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise2_result },
-    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise2_result },
-    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise2_result },
+    { label: "Sunset", before: harlequin_source1_sunset, after: harlequin_ex2_s1 },
+    { label: "Ballerina", before: harlequin_source2_ballerina, after: harlequin_ex2_s2 },
+    { label: "Elephant", before: harlequin_source3_elephant, after: harlequin_ex2_s3 },
+    { label: "Pattern", before: harlequin_source4_pattern, after: harlequin_ex2_s4 },
+    { label: "Boy", before: harlequin_source5_boy, after: harlequin_ex2_s5 },
+    { label: "Wood", before: harlequin_source6_wood, after: harlequin_ex2_s6 },
   ]}
 />
 *Hole and Ring Modes — simulated result across source images.*
@@ -257,9 +286,12 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: harlequin_source1_kodim15, after: harlequin_exercise3_result },
-    { label: "Kodim03", before: harlequin_source2_kodim03, after: harlequin_exercise3_result },
-    { label: "Kodim15 B&W", before: harlequin_source3_kodim15_bw, after: harlequin_exercise3_result },
+    { label: "Sunset", before: harlequin_source1_sunset, after: harlequin_ex3_s1 },
+    { label: "Ballerina", before: harlequin_source2_ballerina, after: harlequin_ex3_s2 },
+    { label: "Elephant", before: harlequin_source3_elephant, after: harlequin_ex3_s3 },
+    { label: "Pattern", before: harlequin_source4_pattern, after: harlequin_ex3_s4 },
+    { label: "Boy", before: harlequin_source5_boy, after: harlequin_ex3_s5 },
+    { label: "Wood", before: harlequin_source6_wood, after: harlequin_ex3_s6 },
   ]}
 />
 *Full Atari Video Music Recreation — simulated result across source images.*

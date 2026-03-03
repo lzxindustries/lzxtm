@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 91
+sidebar_position: 95
 slug: /instruments/videomancer/ebru
 title: "Ebru"
-image: /img/instruments/videomancer/ebru/ebru_hero.png
+image: /img/instruments/videomancer/ebru/ebru_hero_s1.png
 description: "In the art of Turkish marbling, pigment drops fall onto the surface of a water bath treated with gum solution."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ebru_hero from '/img/instruments/videomancer/ebru/ebru_hero.png';
-import ebru_control_panel from '/img/instruments/videomancer/ebru/ebru_control_panel.png';
-import ebru_exercise1_result from '/img/instruments/videomancer/ebru/ebru_exercise1_result.png';
-import ebru_exercise2_result from '/img/instruments/videomancer/ebru/ebru_exercise2_result.png';
-import ebru_exercise3_result from '/img/instruments/videomancer/ebru/ebru_exercise3_result.png';
-import ebru_source1_kodim13 from '/img/instruments/videomancer/ebru/ebru_source1_kodim13.png';
-import ebru_source2_kodim13_bw from '/img/instruments/videomancer/ebru/ebru_source2_kodim13_bw.png';
-import ebru_source3_kodim03 from '/img/instruments/videomancer/ebru/ebru_source3_kodim03.png';
+import ebru_source1_runner from '/img/instruments/videomancer/ebru/ebru_source1_runner.png';
+import ebru_source2_dog from '/img/instruments/videomancer/ebru/ebru_source2_dog.png';
+import ebru_source3_turtle from '/img/instruments/videomancer/ebru/ebru_source3_turtle.png';
+import ebru_source4_pattern from '/img/instruments/videomancer/ebru/ebru_source4_pattern.png';
+import ebru_source5_woman from '/img/instruments/videomancer/ebru/ebru_source5_woman.png';
+import ebru_source6_knit from '/img/instruments/videomancer/ebru/ebru_source6_knit.png';
+import ebru_hero_s1 from '/img/instruments/videomancer/ebru/ebru_hero_s1.png';
+import ebru_hero_s2 from '/img/instruments/videomancer/ebru/ebru_hero_s2.png';
+import ebru_hero_s3 from '/img/instruments/videomancer/ebru/ebru_hero_s3.png';
+import ebru_hero_s4 from '/img/instruments/videomancer/ebru/ebru_hero_s4.png';
+import ebru_hero_s5 from '/img/instruments/videomancer/ebru/ebru_hero_s5.png';
+import ebru_hero_s6 from '/img/instruments/videomancer/ebru/ebru_hero_s6.png';
+import ebru_ex1_s1 from '/img/instruments/videomancer/ebru/ebru_ex1_s1.png';
+import ebru_ex1_s2 from '/img/instruments/videomancer/ebru/ebru_ex1_s2.png';
+import ebru_ex1_s3 from '/img/instruments/videomancer/ebru/ebru_ex1_s3.png';
+import ebru_ex1_s4 from '/img/instruments/videomancer/ebru/ebru_ex1_s4.png';
+import ebru_ex1_s5 from '/img/instruments/videomancer/ebru/ebru_ex1_s5.png';
+import ebru_ex1_s6 from '/img/instruments/videomancer/ebru/ebru_ex1_s6.png';
+import ebru_ex2_s1 from '/img/instruments/videomancer/ebru/ebru_ex2_s1.png';
+import ebru_ex2_s2 from '/img/instruments/videomancer/ebru/ebru_ex2_s2.png';
+import ebru_ex2_s3 from '/img/instruments/videomancer/ebru/ebru_ex2_s3.png';
+import ebru_ex2_s4 from '/img/instruments/videomancer/ebru/ebru_ex2_s4.png';
+import ebru_ex2_s5 from '/img/instruments/videomancer/ebru/ebru_ex2_s5.png';
+import ebru_ex2_s6 from '/img/instruments/videomancer/ebru/ebru_ex2_s6.png';
+import ebru_ex3_s1 from '/img/instruments/videomancer/ebru/ebru_ex3_s1.png';
+import ebru_ex3_s2 from '/img/instruments/videomancer/ebru/ebru_ex3_s2.png';
+import ebru_ex3_s3 from '/img/instruments/videomancer/ebru/ebru_ex3_s3.png';
+import ebru_ex3_s4 from '/img/instruments/videomancer/ebru/ebru_ex3_s4.png';
+import ebru_ex3_s5 from '/img/instruments/videomancer/ebru/ebru_ex3_s5.png';
+import ebru_ex3_s6 from '/img/instruments/videomancer/ebru/ebru_ex3_s6.png';
 
 # Ebru
 
@@ -23,9 +45,12 @@ import ebru_source3_kodim03 from '/img/instruments/videomancer/ebru/ebru_source3
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_hero },
-    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_hero },
-    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_hero },
+    { label: "Runner", before: ebru_source1_runner, after: ebru_hero_s1 },
+    { label: "Dog", before: ebru_source2_dog, after: ebru_hero_s2 },
+    { label: "Turtle", before: ebru_source3_turtle, after: ebru_hero_s3 },
+    { label: "Pattern", before: ebru_source4_pattern, after: ebru_hero_s4 },
+    { label: "Woman", before: ebru_source5_woman, after: ebru_hero_s5 },
+    { label: "Knit", before: ebru_source6_knit, after: ebru_hero_s6 },
   ]}
 />
 *Ebru applying concentric ring distortion and sinusoidal comb rake displacement to create Turkish water marbling textures from live video.*
@@ -119,8 +144,6 @@ When multi-drop mode is active, the pipeline computes two complete distance-to-s
 
 ## Parameter Reference
 
-<img src={ebru_control_panel} alt="Videomancer front panel with Ebru loaded"/>
-*Videomancer's front panel with Ebru active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise1_result },
-    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise1_result },
-    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise1_result },
+    { label: "Runner", before: ebru_source1_runner, after: ebru_ex1_s1 },
+    { label: "Dog", before: ebru_source2_dog, after: ebru_ex1_s2 },
+    { label: "Turtle", before: ebru_source3_turtle, after: ebru_ex1_s3 },
+    { label: "Pattern", before: ebru_source4_pattern, after: ebru_ex1_s4 },
+    { label: "Woman", before: ebru_source5_woman, after: ebru_ex1_s5 },
+    { label: "Knit", before: ebru_source6_knit, after: ebru_ex1_s6 },
   ]}
 />
 *Concentric Rings — simulated result across source images.*
@@ -249,9 +275,12 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise2_result },
-    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise2_result },
-    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise2_result },
+    { label: "Runner", before: ebru_source1_runner, after: ebru_ex2_s1 },
+    { label: "Dog", before: ebru_source2_dog, after: ebru_ex2_s2 },
+    { label: "Turtle", before: ebru_source3_turtle, after: ebru_ex2_s3 },
+    { label: "Pattern", before: ebru_source4_pattern, after: ebru_ex2_s4 },
+    { label: "Woman", before: ebru_source5_woman, after: ebru_ex2_s5 },
+    { label: "Knit", before: ebru_source6_knit, after: ebru_ex2_s6 },
   ]}
 />
 *Comb Rake Shaping — simulated result across source images.*
@@ -273,9 +302,12 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim13", before: ebru_source1_kodim13, after: ebru_exercise3_result },
-    { label: "Kodim13 B&W", before: ebru_source2_kodim13_bw, after: ebru_exercise3_result },
-    { label: "Kodim03", before: ebru_source3_kodim03, after: ebru_exercise3_result },
+    { label: "Runner", before: ebru_source1_runner, after: ebru_ex3_s1 },
+    { label: "Dog", before: ebru_source2_dog, after: ebru_ex3_s2 },
+    { label: "Turtle", before: ebru_source3_turtle, after: ebru_ex3_s3 },
+    { label: "Pattern", before: ebru_source4_pattern, after: ebru_ex3_s4 },
+    { label: "Woman", before: ebru_source5_woman, after: ebru_ex3_s5 },
+    { label: "Knit", before: ebru_source6_knit, after: ebru_ex3_s6 },
   ]}
 />
 *Multi-Drop Chromatic Marbling — simulated result across source images.*

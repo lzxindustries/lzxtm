@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 81
+sidebar_position: 84
 slug: /instruments/videomancer/discrot
 title: "Discrot"
-image: /img/instruments/videomancer/discrot/discrot_hero.png
+image: /img/instruments/videomancer/discrot/discrot_hero_s1.png
 description: "Every technology carries the seeds of its own decay."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import discrot_hero from '/img/instruments/videomancer/discrot/discrot_hero.png';
-import discrot_control_panel from '/img/instruments/videomancer/discrot/discrot_control_panel.png';
-import discrot_exercise1_result from '/img/instruments/videomancer/discrot/discrot_exercise1_result.png';
-import discrot_exercise2_result from '/img/instruments/videomancer/discrot/discrot_exercise2_result.png';
-import discrot_exercise3_result from '/img/instruments/videomancer/discrot/discrot_exercise3_result.png';
-import discrot_source1_kodim15 from '/img/instruments/videomancer/discrot/discrot_source1_kodim15.png';
-import discrot_source2_kodim01 from '/img/instruments/videomancer/discrot/discrot_source2_kodim01.png';
-import discrot_source3_stream_bridge_512 from '/img/instruments/videomancer/discrot/discrot_source3_stream_bridge_512.png';
+import discrot_source1_skull from '/img/instruments/videomancer/discrot/discrot_source1_skull.png';
+import discrot_source2_car from '/img/instruments/videomancer/discrot/discrot_source2_car.png';
+import discrot_source3_turtle from '/img/instruments/videomancer/discrot/discrot_source3_turtle.png';
+import discrot_source4_pattern from '/img/instruments/videomancer/discrot/discrot_source4_pattern.png';
+import discrot_source5_woman from '/img/instruments/videomancer/discrot/discrot_source5_woman.png';
+import discrot_source6_paint from '/img/instruments/videomancer/discrot/discrot_source6_paint.png';
+import discrot_hero_s1 from '/img/instruments/videomancer/discrot/discrot_hero_s1.png';
+import discrot_hero_s2 from '/img/instruments/videomancer/discrot/discrot_hero_s2.png';
+import discrot_hero_s3 from '/img/instruments/videomancer/discrot/discrot_hero_s3.png';
+import discrot_hero_s4 from '/img/instruments/videomancer/discrot/discrot_hero_s4.png';
+import discrot_hero_s5 from '/img/instruments/videomancer/discrot/discrot_hero_s5.png';
+import discrot_hero_s6 from '/img/instruments/videomancer/discrot/discrot_hero_s6.png';
+import discrot_ex1_s1 from '/img/instruments/videomancer/discrot/discrot_ex1_s1.png';
+import discrot_ex1_s2 from '/img/instruments/videomancer/discrot/discrot_ex1_s2.png';
+import discrot_ex1_s3 from '/img/instruments/videomancer/discrot/discrot_ex1_s3.png';
+import discrot_ex1_s4 from '/img/instruments/videomancer/discrot/discrot_ex1_s4.png';
+import discrot_ex1_s5 from '/img/instruments/videomancer/discrot/discrot_ex1_s5.png';
+import discrot_ex1_s6 from '/img/instruments/videomancer/discrot/discrot_ex1_s6.png';
+import discrot_ex2_s1 from '/img/instruments/videomancer/discrot/discrot_ex2_s1.png';
+import discrot_ex2_s2 from '/img/instruments/videomancer/discrot/discrot_ex2_s2.png';
+import discrot_ex2_s3 from '/img/instruments/videomancer/discrot/discrot_ex2_s3.png';
+import discrot_ex2_s4 from '/img/instruments/videomancer/discrot/discrot_ex2_s4.png';
+import discrot_ex2_s5 from '/img/instruments/videomancer/discrot/discrot_ex2_s5.png';
+import discrot_ex2_s6 from '/img/instruments/videomancer/discrot/discrot_ex2_s6.png';
+import discrot_ex3_s1 from '/img/instruments/videomancer/discrot/discrot_ex3_s1.png';
+import discrot_ex3_s2 from '/img/instruments/videomancer/discrot/discrot_ex3_s2.png';
+import discrot_ex3_s3 from '/img/instruments/videomancer/discrot/discrot_ex3_s3.png';
+import discrot_ex3_s4 from '/img/instruments/videomancer/discrot/discrot_ex3_s4.png';
+import discrot_ex3_s5 from '/img/instruments/videomancer/discrot/discrot_ex3_s5.png';
+import discrot_ex3_s6 from '/img/instruments/videomancer/discrot/discrot_ex3_s6.png';
 
 # Discrot
 
@@ -23,9 +45,12 @@ import discrot_source3_stream_bridge_512 from '/img/instruments/videomancer/disc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_hero },
-    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_hero },
-    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_hero },
+    { label: "Skull", before: discrot_source1_skull, after: discrot_hero_s1 },
+    { label: "Car", before: discrot_source2_car, after: discrot_hero_s2 },
+    { label: "Turtle", before: discrot_source3_turtle, after: discrot_hero_s3 },
+    { label: "Pattern", before: discrot_source4_pattern, after: discrot_hero_s4 },
+    { label: "Woman", before: discrot_source5_woman, after: discrot_hero_s5 },
+    { label: "Paint", before: discrot_source6_paint, after: discrot_hero_s6 },
   ]}
 />
 *Discrot applying concentric ring dropouts and speckle noise to simulate LaserDisc oxidation damage on a live video signal.*
@@ -126,8 +151,6 @@ The processing chain applies damage effects only to pixels that fall within the 
 
 ## Parameter Reference
 
-<img src={discrot_control_panel} alt="Videomancer front panel with Discrot loaded"/>
-*Videomancer's front panel with Discrot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -232,9 +255,12 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise1_result },
-    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise1_result },
-    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise1_result },
+    { label: "Skull", before: discrot_source1_skull, after: discrot_ex1_s1 },
+    { label: "Car", before: discrot_source2_car, after: discrot_ex1_s2 },
+    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex1_s3 },
+    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex1_s4 },
+    { label: "Woman", before: discrot_source5_woman, after: discrot_ex1_s5 },
+    { label: "Paint", before: discrot_source6_paint, after: discrot_ex1_s6 },
   ]}
 />
 *Gentle Disc Wear — simulated result across source images.*
@@ -256,9 +282,12 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise2_result },
-    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise2_result },
-    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise2_result },
+    { label: "Skull", before: discrot_source1_skull, after: discrot_ex2_s1 },
+    { label: "Car", before: discrot_source2_car, after: discrot_ex2_s2 },
+    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex2_s3 },
+    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex2_s4 },
+    { label: "Woman", before: discrot_source5_woman, after: discrot_ex2_s5 },
+    { label: "Paint", before: discrot_source6_paint, after: discrot_ex2_s6 },
   ]}
 />
 *Specular Speckle and Snow — simulated result across source images.*
@@ -281,9 +310,12 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: discrot_source1_kodim15, after: discrot_exercise3_result },
-    { label: "Kodim01", before: discrot_source2_kodim01, after: discrot_exercise3_result },
-    { label: "Stream Bridge", before: discrot_source3_stream_bridge_512, after: discrot_exercise3_result },
+    { label: "Skull", before: discrot_source1_skull, after: discrot_ex3_s1 },
+    { label: "Car", before: discrot_source2_car, after: discrot_ex3_s2 },
+    { label: "Turtle", before: discrot_source3_turtle, after: discrot_ex3_s3 },
+    { label: "Pattern", before: discrot_source4_pattern, after: discrot_ex3_s4 },
+    { label: "Woman", before: discrot_source5_woman, after: discrot_ex3_s5 },
+    { label: "Paint", before: discrot_source6_paint, after: discrot_ex3_s6 },
   ]}
 />
 *Catastrophic Media Failure — simulated result across source images.*

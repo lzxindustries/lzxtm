@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 250
+sidebar_position: 262
 slug: /instruments/videomancer/sfumato
 title: "Sfumato"
-image: /img/instruments/videomancer/sfumato/sfumato_hero.png
+image: /img/instruments/videomancer/sfumato/sfumato_hero_s1.png
 description: "Leonardo da Vinci described sfumato as painting \"in the manner of smoke, beyond the plane of focus\" — the technique of eliminating hard outlines between tones and colours so that forms appear to emerge from the air itself."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sfumato_hero from '/img/instruments/videomancer/sfumato/sfumato_hero.png';
-import sfumato_control_panel from '/img/instruments/videomancer/sfumato/sfumato_control_panel.png';
-import sfumato_exercise1_result from '/img/instruments/videomancer/sfumato/sfumato_exercise1_result.png';
-import sfumato_exercise2_result from '/img/instruments/videomancer/sfumato/sfumato_exercise2_result.png';
-import sfumato_exercise3_result from '/img/instruments/videomancer/sfumato/sfumato_exercise3_result.png';
-import sfumato_source1_kodim03 from '/img/instruments/videomancer/sfumato/sfumato_source1_kodim03.png';
-import sfumato_source2_kodim13 from '/img/instruments/videomancer/sfumato/sfumato_source2_kodim13.png';
-import sfumato_source3_kodim13_bw from '/img/instruments/videomancer/sfumato/sfumato_source3_kodim13_bw.png';
+import sfumato_source1_castle from '/img/instruments/videomancer/sfumato/sfumato_source1_castle.png';
+import sfumato_source2_runner from '/img/instruments/videomancer/sfumato/sfumato_source2_runner.png';
+import sfumato_source3_collage from '/img/instruments/videomancer/sfumato/sfumato_source3_collage.png';
+import sfumato_source4_pattern from '/img/instruments/videomancer/sfumato/sfumato_source4_pattern.png';
+import sfumato_source5_boy from '/img/instruments/videomancer/sfumato/sfumato_source5_boy.png';
+import sfumato_source6_berries from '/img/instruments/videomancer/sfumato/sfumato_source6_berries.png';
+import sfumato_hero_s1 from '/img/instruments/videomancer/sfumato/sfumato_hero_s1.png';
+import sfumato_hero_s2 from '/img/instruments/videomancer/sfumato/sfumato_hero_s2.png';
+import sfumato_hero_s3 from '/img/instruments/videomancer/sfumato/sfumato_hero_s3.png';
+import sfumato_hero_s4 from '/img/instruments/videomancer/sfumato/sfumato_hero_s4.png';
+import sfumato_hero_s5 from '/img/instruments/videomancer/sfumato/sfumato_hero_s5.png';
+import sfumato_hero_s6 from '/img/instruments/videomancer/sfumato/sfumato_hero_s6.png';
+import sfumato_ex1_s1 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s1.png';
+import sfumato_ex1_s2 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s2.png';
+import sfumato_ex1_s3 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s3.png';
+import sfumato_ex1_s4 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s4.png';
+import sfumato_ex1_s5 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s5.png';
+import sfumato_ex1_s6 from '/img/instruments/videomancer/sfumato/sfumato_ex1_s6.png';
+import sfumato_ex2_s1 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s1.png';
+import sfumato_ex2_s2 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s2.png';
+import sfumato_ex2_s3 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s3.png';
+import sfumato_ex2_s4 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s4.png';
+import sfumato_ex2_s5 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s5.png';
+import sfumato_ex2_s6 from '/img/instruments/videomancer/sfumato/sfumato_ex2_s6.png';
+import sfumato_ex3_s1 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s1.png';
+import sfumato_ex3_s2 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s2.png';
+import sfumato_ex3_s3 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s3.png';
+import sfumato_ex3_s4 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s4.png';
+import sfumato_ex3_s5 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s5.png';
+import sfumato_ex3_s6 from '/img/instruments/videomancer/sfumato/sfumato_ex3_s6.png';
 
 # Sfumato
 
@@ -23,9 +45,12 @@ import sfumato_source3_kodim13_bw from '/img/instruments/videomancer/sfumato/sfu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_hero },
-    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_hero },
-    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_hero },
+    { label: "Castle", before: sfumato_source1_castle, after: sfumato_hero_s1 },
+    { label: "Runner", before: sfumato_source2_runner, after: sfumato_hero_s2 },
+    { label: "Collage", before: sfumato_source3_collage, after: sfumato_hero_s3 },
+    { label: "Pattern", before: sfumato_source4_pattern, after: sfumato_hero_s4 },
+    { label: "Boy", before: sfumato_source5_boy, after: sfumato_hero_s5 },
+    { label: "Berries", before: sfumato_source6_berries, after: sfumato_hero_s6 },
   ]}
 />
 *Sfumato dissolving tonal boundaries with edge-adaptive IIR blur, depth-dependent shadow diffusion, and atmospheric haze reminiscent of Leonardo's prospettiva aerea.*
@@ -106,8 +131,6 @@ The IIR filter state resets to 512 (mid-gray) at every horizontal sync start, ma
 
 ## Parameter Reference
 
-<img src={sfumato_control_panel} alt="Videomancer front panel with Sfumato loaded"/>
-*Videomancer's front panel with Sfumato active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,9 +235,12 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise1_result },
-    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise1_result },
-    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise1_result },
+    { label: "Castle", before: sfumato_source1_castle, after: sfumato_ex1_s1 },
+    { label: "Runner", before: sfumato_source2_runner, after: sfumato_ex1_s2 },
+    { label: "Collage", before: sfumato_source3_collage, after: sfumato_ex1_s3 },
+    { label: "Pattern", before: sfumato_source4_pattern, after: sfumato_ex1_s4 },
+    { label: "Boy", before: sfumato_source5_boy, after: sfumato_ex1_s5 },
+    { label: "Berries", before: sfumato_source6_berries, after: sfumato_ex1_s6 },
   ]}
 />
 *Edge-Adaptive Softening — simulated result across source images.*
@@ -236,9 +262,12 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise2_result },
-    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise2_result },
-    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise2_result },
+    { label: "Castle", before: sfumato_source1_castle, after: sfumato_ex2_s1 },
+    { label: "Runner", before: sfumato_source2_runner, after: sfumato_ex2_s2 },
+    { label: "Collage", before: sfumato_source3_collage, after: sfumato_ex2_s3 },
+    { label: "Pattern", before: sfumato_source4_pattern, after: sfumato_ex2_s4 },
+    { label: "Boy", before: sfumato_source5_boy, after: sfumato_ex2_s5 },
+    { label: "Berries", before: sfumato_source6_berries, after: sfumato_ex2_s6 },
   ]}
 />
 *Atmospheric Perspective — simulated result across source images.*
@@ -260,9 +289,12 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: sfumato_source1_kodim03, after: sfumato_exercise3_result },
-    { label: "Kodim13", before: sfumato_source2_kodim13, after: sfumato_exercise3_result },
-    { label: "Kodim13 B&W", before: sfumato_source3_kodim13_bw, after: sfumato_exercise3_result },
+    { label: "Castle", before: sfumato_source1_castle, after: sfumato_ex3_s1 },
+    { label: "Runner", before: sfumato_source2_runner, after: sfumato_ex3_s2 },
+    { label: "Collage", before: sfumato_source3_collage, after: sfumato_ex3_s3 },
+    { label: "Pattern", before: sfumato_source4_pattern, after: sfumato_ex3_s4 },
+    { label: "Boy", before: sfumato_source5_boy, after: sfumato_ex3_s5 },
+    { label: "Berries", before: sfumato_source6_berries, after: sfumato_ex3_s6 },
   ]}
 />
 *Venetian Varnish — simulated result across source images.*

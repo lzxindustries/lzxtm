@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 303
+sidebar_position: 318
 slug: /instruments/videomancer/vertigo
 title: "Vertigo"
 image: /img/instruments/videomancer/vertigo/vertigo_hero.png

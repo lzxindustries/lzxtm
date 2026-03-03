@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 148
+sidebar_position: 154
 slug: /instruments/videomancer/kaledos
 title: "Kaledos"
-image: /img/instruments/videomancer/kaledos/kaledos_hero.png
+image: /img/instruments/videomancer/kaledos/kaledos_hero_s1.png
 description: "In 1816, the Scottish physicist Sir David Brewster patented the kaleidoscope — a tube of mirrors that transforms a handful of colored fragments into an infinite tiling of perfect symmetry."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import kaledos_hero from '/img/instruments/videomancer/kaledos/kaledos_hero.png';
-import kaledos_control_panel from '/img/instruments/videomancer/kaledos/kaledos_control_panel.png';
-import kaledos_exercise1_result from '/img/instruments/videomancer/kaledos/kaledos_exercise1_result.png';
-import kaledos_exercise2_result from '/img/instruments/videomancer/kaledos/kaledos_exercise2_result.png';
-import kaledos_exercise3_result from '/img/instruments/videomancer/kaledos/kaledos_exercise3_result.png';
-import kaledos_source1_kodim01 from '/img/instruments/videomancer/kaledos/kaledos_source1_kodim01.png';
-import kaledos_source2_kodim02 from '/img/instruments/videomancer/kaledos/kaledos_source2_kodim02.png';
-import kaledos_source3_kodim01_bw from '/img/instruments/videomancer/kaledos/kaledos_source3_kodim01_bw.png';
+import kaledos_source1_ballerina from '/img/instruments/videomancer/kaledos/kaledos_source1_ballerina.png';
+import kaledos_source2_field from '/img/instruments/videomancer/kaledos/kaledos_source2_field.png';
+import kaledos_source3_collage from '/img/instruments/videomancer/kaledos/kaledos_source3_collage.png';
+import kaledos_source4_pattern from '/img/instruments/videomancer/kaledos/kaledos_source4_pattern.png';
+import kaledos_source5_boy from '/img/instruments/videomancer/kaledos/kaledos_source5_boy.png';
+import kaledos_source6_wood from '/img/instruments/videomancer/kaledos/kaledos_source6_wood.png';
+import kaledos_hero_s1 from '/img/instruments/videomancer/kaledos/kaledos_hero_s1.png';
+import kaledos_hero_s2 from '/img/instruments/videomancer/kaledos/kaledos_hero_s2.png';
+import kaledos_hero_s3 from '/img/instruments/videomancer/kaledos/kaledos_hero_s3.png';
+import kaledos_hero_s4 from '/img/instruments/videomancer/kaledos/kaledos_hero_s4.png';
+import kaledos_hero_s5 from '/img/instruments/videomancer/kaledos/kaledos_hero_s5.png';
+import kaledos_hero_s6 from '/img/instruments/videomancer/kaledos/kaledos_hero_s6.png';
+import kaledos_ex1_s1 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s1.png';
+import kaledos_ex1_s2 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s2.png';
+import kaledos_ex1_s3 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s3.png';
+import kaledos_ex1_s4 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s4.png';
+import kaledos_ex1_s5 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s5.png';
+import kaledos_ex1_s6 from '/img/instruments/videomancer/kaledos/kaledos_ex1_s6.png';
+import kaledos_ex2_s1 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s1.png';
+import kaledos_ex2_s2 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s2.png';
+import kaledos_ex2_s3 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s3.png';
+import kaledos_ex2_s4 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s4.png';
+import kaledos_ex2_s5 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s5.png';
+import kaledos_ex2_s6 from '/img/instruments/videomancer/kaledos/kaledos_ex2_s6.png';
+import kaledos_ex3_s1 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s1.png';
+import kaledos_ex3_s2 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s2.png';
+import kaledos_ex3_s3 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s3.png';
+import kaledos_ex3_s4 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s4.png';
+import kaledos_ex3_s5 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s5.png';
+import kaledos_ex3_s6 from '/img/instruments/videomancer/kaledos/kaledos_ex3_s6.png';
 
 # Kaledos
 
@@ -23,9 +45,12 @@ import kaledos_source3_kodim01_bw from '/img/instruments/videomancer/kaledos/kal
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_hero },
-    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_hero },
-    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_hero },
+    { label: "Ballerina", before: kaledos_source1_ballerina, after: kaledos_hero_s1 },
+    { label: "Field", before: kaledos_source2_field, after: kaledos_hero_s2 },
+    { label: "Collage", before: kaledos_source3_collage, after: kaledos_hero_s3 },
+    { label: "Pattern", before: kaledos_source4_pattern, after: kaledos_hero_s4 },
+    { label: "Boy", before: kaledos_source5_boy, after: kaledos_hero_s5 },
+    { label: "Wood", before: kaledos_source6_wood, after: kaledos_hero_s6 },
   ]}
 />
 *Kaledos splitting a cathedral window into twelve-fold crystalline symmetry, each sector tinted by per-sector hue rotation through the full color wheel.*
@@ -118,8 +143,6 @@ The BRAM write and display readout operate on the same scanline — the line buf
 
 ## Parameter Reference
 
-<img src={kaledos_control_panel} alt="Videomancer front panel with Kaledos loaded"/>
-*Videomancer's front panel with Kaledos active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from simple mirroring through decorative features to co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise1_result },
-    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise1_result },
-    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise1_result },
+    { label: "Ballerina", before: kaledos_source1_ballerina, after: kaledos_ex1_s1 },
+    { label: "Field", before: kaledos_source2_field, after: kaledos_ex1_s2 },
+    { label: "Collage", before: kaledos_source3_collage, after: kaledos_ex1_s3 },
+    { label: "Pattern", before: kaledos_source4_pattern, after: kaledos_ex1_s4 },
+    { label: "Boy", before: kaledos_source5_boy, after: kaledos_ex1_s5 },
+    { label: "Wood", before: kaledos_source6_wood, after: kaledos_ex1_s6 },
   ]}
 />
 *Basic Mirror Symmetry — simulated result across source images.*
@@ -248,9 +274,12 @@ These exercises progress from simple mirroring through decorative features to co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise2_result },
-    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise2_result },
-    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise2_result },
+    { label: "Ballerina", before: kaledos_source1_ballerina, after: kaledos_ex2_s1 },
+    { label: "Field", before: kaledos_source2_field, after: kaledos_ex2_s2 },
+    { label: "Collage", before: kaledos_source3_collage, after: kaledos_ex2_s3 },
+    { label: "Pattern", before: kaledos_source4_pattern, after: kaledos_ex2_s4 },
+    { label: "Boy", before: kaledos_source5_boy, after: kaledos_ex2_s5 },
+    { label: "Wood", before: kaledos_source6_wood, after: kaledos_ex2_s6 },
   ]}
 />
 *Colored Glass Kaleidoscope — simulated result across source images.*
@@ -273,9 +302,12 @@ These exercises progress from simple mirroring through decorative features to co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: kaledos_source1_kodim01, after: kaledos_exercise3_result },
-    { label: "Kodim02", before: kaledos_source2_kodim02, after: kaledos_exercise3_result },
-    { label: "Kodim01 B&W", before: kaledos_source3_kodim01_bw, after: kaledos_exercise3_result },
+    { label: "Ballerina", before: kaledos_source1_ballerina, after: kaledos_ex3_s1 },
+    { label: "Field", before: kaledos_source2_field, after: kaledos_ex3_s2 },
+    { label: "Collage", before: kaledos_source3_collage, after: kaledos_ex3_s3 },
+    { label: "Pattern", before: kaledos_source4_pattern, after: kaledos_ex3_s4 },
+    { label: "Boy", before: kaledos_source5_boy, after: kaledos_ex3_s5 },
+    { label: "Wood", before: kaledos_source6_wood, after: kaledos_ex3_s6 },
   ]}
 />
 *Spinning Kaleidoscope — simulated result across source images.*

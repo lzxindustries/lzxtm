@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 43
+sidebar_position: 44
 slug: /instruments/videomancer/chatoyant
 title: "Chatoyant"
-image: /img/instruments/videomancer/chatoyant/chatoyant_hero.png
+image: /img/instruments/videomancer/chatoyant/chatoyant_hero_s1.png
 description: "Certain gemstones — tiger's eye, chrysoberyl, moonstone — contain parallel fibrous inclusions that act as a natural diffraction grating."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chatoyant_hero from '/img/instruments/videomancer/chatoyant/chatoyant_hero.png';
-import chatoyant_control_panel from '/img/instruments/videomancer/chatoyant/chatoyant_control_panel.png';
-import chatoyant_exercise1_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise1_result.png';
-import chatoyant_exercise2_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise2_result.png';
-import chatoyant_exercise3_result from '/img/instruments/videomancer/chatoyant/chatoyant_exercise3_result.png';
-import chatoyant_source1_kodim15 from '/img/instruments/videomancer/chatoyant/chatoyant_source1_kodim15.png';
-import chatoyant_source2_kodim01 from '/img/instruments/videomancer/chatoyant/chatoyant_source2_kodim01.png';
-import chatoyant_source3_kodim01_bw from '/img/instruments/videomancer/chatoyant/chatoyant_source3_kodim01_bw.png';
+import chatoyant_source1_field from '/img/instruments/videomancer/chatoyant/chatoyant_source1_field.png';
+import chatoyant_source2_castle from '/img/instruments/videomancer/chatoyant/chatoyant_source2_castle.png';
+import chatoyant_source3_collage from '/img/instruments/videomancer/chatoyant/chatoyant_source3_collage.png';
+import chatoyant_source4_pattern from '/img/instruments/videomancer/chatoyant/chatoyant_source4_pattern.png';
+import chatoyant_source5_boy from '/img/instruments/videomancer/chatoyant/chatoyant_source5_boy.png';
+import chatoyant_source6_berries from '/img/instruments/videomancer/chatoyant/chatoyant_source6_berries.png';
+import chatoyant_hero_s1 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s1.png';
+import chatoyant_hero_s2 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s2.png';
+import chatoyant_hero_s3 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s3.png';
+import chatoyant_hero_s4 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s4.png';
+import chatoyant_hero_s5 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s5.png';
+import chatoyant_hero_s6 from '/img/instruments/videomancer/chatoyant/chatoyant_hero_s6.png';
+import chatoyant_ex1_s1 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s1.png';
+import chatoyant_ex1_s2 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s2.png';
+import chatoyant_ex1_s3 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s3.png';
+import chatoyant_ex1_s4 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s4.png';
+import chatoyant_ex1_s5 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s5.png';
+import chatoyant_ex1_s6 from '/img/instruments/videomancer/chatoyant/chatoyant_ex1_s6.png';
+import chatoyant_ex2_s1 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s1.png';
+import chatoyant_ex2_s2 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s2.png';
+import chatoyant_ex2_s3 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s3.png';
+import chatoyant_ex2_s4 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s4.png';
+import chatoyant_ex2_s5 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s5.png';
+import chatoyant_ex2_s6 from '/img/instruments/videomancer/chatoyant/chatoyant_ex2_s6.png';
+import chatoyant_ex3_s1 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s1.png';
+import chatoyant_ex3_s2 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s2.png';
+import chatoyant_ex3_s3 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s3.png';
+import chatoyant_ex3_s4 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s4.png';
+import chatoyant_ex3_s5 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s5.png';
+import chatoyant_ex3_s6 from '/img/instruments/videomancer/chatoyant/chatoyant_ex3_s6.png';
 
 # Chatoyant
 
@@ -23,9 +45,12 @@ import chatoyant_source3_kodim01_bw from '/img/instruments/videomancer/chatoyant
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_hero },
-    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_hero },
-    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_hero },
+    { label: "Field", before: chatoyant_source1_field, after: chatoyant_hero_s1 },
+    { label: "Castle", before: chatoyant_source2_castle, after: chatoyant_hero_s2 },
+    { label: "Collage", before: chatoyant_source3_collage, after: chatoyant_hero_s3 },
+    { label: "Pattern", before: chatoyant_source4_pattern, after: chatoyant_hero_s4 },
+    { label: "Boy", before: chatoyant_source5_boy, after: chatoyant_hero_s5 },
+    { label: "Berries", before: chatoyant_source6_berries, after: chatoyant_hero_s6 },
   ]}
 />
 *Chatoyant drawing a warm specular streak across a landscape, the highlight band tracing the axis of light like a cat's-eye cabochon tilted under a single point source.*
@@ -130,8 +155,6 @@ The colour tinting in stage 6 only activates when the boost exceeds 16 (out of 1
 
 ## Parameter Reference
 
-<img src={chatoyant_control_panel} alt="Videomancer front panel with Chatoyant loaded"/>
-*Videomancer's front panel with Chatoyant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -236,9 +259,12 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise1_result },
-    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise1_result },
-    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise1_result },
+    { label: "Field", before: chatoyant_source1_field, after: chatoyant_ex1_s1 },
+    { label: "Castle", before: chatoyant_source2_castle, after: chatoyant_ex1_s2 },
+    { label: "Collage", before: chatoyant_source3_collage, after: chatoyant_ex1_s3 },
+    { label: "Pattern", before: chatoyant_source4_pattern, after: chatoyant_ex1_s4 },
+    { label: "Boy", before: chatoyant_source5_boy, after: chatoyant_ex1_s5 },
+    { label: "Berries", before: chatoyant_source6_berries, after: chatoyant_ex1_s6 },
   ]}
 />
 *Single Specular Band — simulated result across source images.*
@@ -260,9 +286,12 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise2_result },
-    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise2_result },
-    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise2_result },
+    { label: "Field", before: chatoyant_source1_field, after: chatoyant_ex2_s1 },
+    { label: "Castle", before: chatoyant_source2_castle, after: chatoyant_ex2_s2 },
+    { label: "Collage", before: chatoyant_source3_collage, after: chatoyant_ex2_s3 },
+    { label: "Pattern", before: chatoyant_source4_pattern, after: chatoyant_ex2_s4 },
+    { label: "Boy", before: chatoyant_source5_boy, after: chatoyant_ex2_s5 },
+    { label: "Berries", before: chatoyant_source6_berries, after: chatoyant_ex2_s6 },
   ]}
 />
 *Gem Modes and Colour Tinting — simulated result across source images.*
@@ -286,9 +315,12 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chatoyant_source1_kodim15, after: chatoyant_exercise3_result },
-    { label: "Kodim01", before: chatoyant_source2_kodim01, after: chatoyant_exercise3_result },
-    { label: "Kodim01 B&W", before: chatoyant_source3_kodim01_bw, after: chatoyant_exercise3_result },
+    { label: "Field", before: chatoyant_source1_field, after: chatoyant_ex3_s1 },
+    { label: "Castle", before: chatoyant_source2_castle, after: chatoyant_ex3_s2 },
+    { label: "Collage", before: chatoyant_source3_collage, after: chatoyant_ex3_s3 },
+    { label: "Pattern", before: chatoyant_source4_pattern, after: chatoyant_ex3_s4 },
+    { label: "Boy", before: chatoyant_source5_boy, after: chatoyant_ex3_s5 },
+    { label: "Berries", before: chatoyant_source6_berries, after: chatoyant_ex3_s6 },
   ]}
 />
 *Animated Asterism — simulated result across source images.*

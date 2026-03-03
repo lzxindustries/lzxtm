@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 42
+sidebar_position: 43
 slug: /instruments/videomancer/charset
 title: "Charset"
-image: /img/instruments/videomancer/charset/charset_hero.png
+image: /img/instruments/videomancer/charset/charset_hero_s1.png
 description: "Every screen you have ever read — every terminal, every text editor, every status display — renders characters on a fixed grid."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import charset_hero from '/img/instruments/videomancer/charset/charset_hero.png';
-import charset_control_panel from '/img/instruments/videomancer/charset/charset_control_panel.png';
-import charset_exercise1_result from '/img/instruments/videomancer/charset/charset_exercise1_result.png';
-import charset_exercise2_result from '/img/instruments/videomancer/charset/charset_exercise2_result.png';
-import charset_exercise3_result from '/img/instruments/videomancer/charset/charset_exercise3_result.png';
-import charset_source1_kodim15 from '/img/instruments/videomancer/charset/charset_source1_kodim15.png';
-import charset_source2_kodim03 from '/img/instruments/videomancer/charset/charset_source2_kodim03.png';
-import charset_source3_kodim15_bw from '/img/instruments/videomancer/charset/charset_source3_kodim15_bw.png';
+import charset_source1_runner from '/img/instruments/videomancer/charset/charset_source1_runner.png';
+import charset_source2_boat from '/img/instruments/videomancer/charset/charset_source2_boat.png';
+import charset_source3_clouds from '/img/instruments/videomancer/charset/charset_source3_clouds.png';
+import charset_source4_pattern from '/img/instruments/videomancer/charset/charset_source4_pattern.png';
+import charset_source5_girl from '/img/instruments/videomancer/charset/charset_source5_girl.png';
+import charset_source6_knit from '/img/instruments/videomancer/charset/charset_source6_knit.png';
+import charset_hero_s1 from '/img/instruments/videomancer/charset/charset_hero_s1.png';
+import charset_hero_s2 from '/img/instruments/videomancer/charset/charset_hero_s2.png';
+import charset_hero_s3 from '/img/instruments/videomancer/charset/charset_hero_s3.png';
+import charset_hero_s4 from '/img/instruments/videomancer/charset/charset_hero_s4.png';
+import charset_hero_s5 from '/img/instruments/videomancer/charset/charset_hero_s5.png';
+import charset_hero_s6 from '/img/instruments/videomancer/charset/charset_hero_s6.png';
+import charset_ex1_s1 from '/img/instruments/videomancer/charset/charset_ex1_s1.png';
+import charset_ex1_s2 from '/img/instruments/videomancer/charset/charset_ex1_s2.png';
+import charset_ex1_s3 from '/img/instruments/videomancer/charset/charset_ex1_s3.png';
+import charset_ex1_s4 from '/img/instruments/videomancer/charset/charset_ex1_s4.png';
+import charset_ex1_s5 from '/img/instruments/videomancer/charset/charset_ex1_s5.png';
+import charset_ex1_s6 from '/img/instruments/videomancer/charset/charset_ex1_s6.png';
+import charset_ex2_s1 from '/img/instruments/videomancer/charset/charset_ex2_s1.png';
+import charset_ex2_s2 from '/img/instruments/videomancer/charset/charset_ex2_s2.png';
+import charset_ex2_s3 from '/img/instruments/videomancer/charset/charset_ex2_s3.png';
+import charset_ex2_s4 from '/img/instruments/videomancer/charset/charset_ex2_s4.png';
+import charset_ex2_s5 from '/img/instruments/videomancer/charset/charset_ex2_s5.png';
+import charset_ex2_s6 from '/img/instruments/videomancer/charset/charset_ex2_s6.png';
+import charset_ex3_s1 from '/img/instruments/videomancer/charset/charset_ex3_s1.png';
+import charset_ex3_s2 from '/img/instruments/videomancer/charset/charset_ex3_s2.png';
+import charset_ex3_s3 from '/img/instruments/videomancer/charset/charset_ex3_s3.png';
+import charset_ex3_s4 from '/img/instruments/videomancer/charset/charset_ex3_s4.png';
+import charset_ex3_s5 from '/img/instruments/videomancer/charset/charset_ex3_s5.png';
+import charset_ex3_s6 from '/img/instruments/videomancer/charset/charset_ex3_s6.png';
 
 # Charset
 
@@ -23,9 +45,12 @@ import charset_source3_kodim15_bw from '/img/instruments/videomancer/charset/cha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: charset_source1_kodim15, after: charset_hero },
-    { label: "Kodim03", before: charset_source2_kodim03, after: charset_hero },
-    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_hero },
+    { label: "Runner", before: charset_source1_runner, after: charset_hero_s1 },
+    { label: "Boat", before: charset_source2_boat, after: charset_hero_s2 },
+    { label: "Clouds", before: charset_source3_clouds, after: charset_hero_s3 },
+    { label: "Pattern", before: charset_source4_pattern, after: charset_hero_s4 },
+    { label: "Girl", before: charset_source5_girl, after: charset_hero_s5 },
+    { label: "Knit", before: charset_source6_knit, after: charset_hero_s6 },
   ]}
 />
 *Charset rendering video luminance as density-mapped glyph patterns on an 8×8 cell grid, transforming continuous imagery into typographic texture.*
@@ -118,8 +143,6 @@ The pattern generator is purely combinatorial: no ROM, no memory, no BRAM. Each 
 
 ## Parameter Reference
 
-<img src={charset_control_panel} alt="Videomancer front panel with Charset loaded"/>
-*Videomancer's front panel with Charset active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise1_result },
-    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise1_result },
-    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise1_result },
+    { label: "Runner", before: charset_source1_runner, after: charset_ex1_s1 },
+    { label: "Boat", before: charset_source2_boat, after: charset_ex1_s2 },
+    { label: "Clouds", before: charset_source3_clouds, after: charset_ex1_s3 },
+    { label: "Pattern", before: charset_source4_pattern, after: charset_ex1_s4 },
+    { label: "Girl", before: charset_source5_girl, after: charset_ex1_s5 },
+    { label: "Knit", before: charset_source6_knit, after: charset_ex1_s6 },
   ]}
 />
 *Terminal Display — simulated result across source images.*
@@ -247,9 +273,12 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise2_result },
-    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise2_result },
-    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise2_result },
+    { label: "Runner", before: charset_source1_runner, after: charset_ex2_s1 },
+    { label: "Boat", before: charset_source2_boat, after: charset_ex2_s2 },
+    { label: "Clouds", before: charset_source3_clouds, after: charset_ex2_s3 },
+    { label: "Pattern", before: charset_source4_pattern, after: charset_ex2_s4 },
+    { label: "Girl", before: charset_source5_girl, after: charset_ex2_s5 },
+    { label: "Knit", before: charset_source6_knit, after: charset_ex2_s6 },
   ]}
 />
 *Inverted Dot Matrix — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: charset_source1_kodim15, after: charset_exercise3_result },
-    { label: "Kodim03", before: charset_source2_kodim03, after: charset_exercise3_result },
-    { label: "Kodim15 B&W", before: charset_source3_kodim15_bw, after: charset_exercise3_result },
+    { label: "Runner", before: charset_source1_runner, after: charset_ex3_s1 },
+    { label: "Boat", before: charset_source2_boat, after: charset_ex3_s2 },
+    { label: "Clouds", before: charset_source3_clouds, after: charset_ex3_s3 },
+    { label: "Pattern", before: charset_source4_pattern, after: charset_ex3_s4 },
+    { label: "Girl", before: charset_source5_girl, after: charset_ex3_s5 },
+    { label: "Knit", before: charset_source6_knit, after: charset_ex3_s6 },
   ]}
 />
 *Color Character Mosaic — simulated result across source images.*

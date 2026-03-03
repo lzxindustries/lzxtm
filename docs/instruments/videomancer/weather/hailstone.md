@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 126
+sidebar_position: 131
 slug: /instruments/videomancer/hailstone
 title: "Hailstone"
-image: /img/instruments/videomancer/hailstone/hailstone_hero.png
+image: /img/instruments/videomancer/hailstone/hailstone_hero_s1.png
 description: "Hailstone is a particle physics simulation that overlays bright, bouncing shapes onto the input video signal."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import hailstone_hero from '/img/instruments/videomancer/hailstone/hailstone_hero.png';
-import hailstone_control_panel from '/img/instruments/videomancer/hailstone/hailstone_control_panel.png';
-import hailstone_exercise1_result from '/img/instruments/videomancer/hailstone/hailstone_exercise1_result.png';
-import hailstone_exercise2_result from '/img/instruments/videomancer/hailstone/hailstone_exercise2_result.png';
-import hailstone_exercise3_result from '/img/instruments/videomancer/hailstone/hailstone_exercise3_result.png';
-import hailstone_source1_kodim01 from '/img/instruments/videomancer/hailstone/hailstone_source1_kodim01.png';
-import hailstone_source2_kodim02 from '/img/instruments/videomancer/hailstone/hailstone_source2_kodim02.png';
-import hailstone_source3_stream_bridge_512 from '/img/instruments/videomancer/hailstone/hailstone_source3_stream_bridge_512.png';
+import hailstone_source1_runner from '/img/instruments/videomancer/hailstone/hailstone_source1_runner.png';
+import hailstone_source2_sunset from '/img/instruments/videomancer/hailstone/hailstone_source2_sunset.png';
+import hailstone_source3_clouds from '/img/instruments/videomancer/hailstone/hailstone_source3_clouds.png';
+import hailstone_source4_pattern from '/img/instruments/videomancer/hailstone/hailstone_source4_pattern.png';
+import hailstone_source5_woman from '/img/instruments/videomancer/hailstone/hailstone_source5_woman.png';
+import hailstone_source6_knit from '/img/instruments/videomancer/hailstone/hailstone_source6_knit.png';
+import hailstone_hero_s1 from '/img/instruments/videomancer/hailstone/hailstone_hero_s1.png';
+import hailstone_hero_s2 from '/img/instruments/videomancer/hailstone/hailstone_hero_s2.png';
+import hailstone_hero_s3 from '/img/instruments/videomancer/hailstone/hailstone_hero_s3.png';
+import hailstone_hero_s4 from '/img/instruments/videomancer/hailstone/hailstone_hero_s4.png';
+import hailstone_hero_s5 from '/img/instruments/videomancer/hailstone/hailstone_hero_s5.png';
+import hailstone_hero_s6 from '/img/instruments/videomancer/hailstone/hailstone_hero_s6.png';
+import hailstone_ex1_s1 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s1.png';
+import hailstone_ex1_s2 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s2.png';
+import hailstone_ex1_s3 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s3.png';
+import hailstone_ex1_s4 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s4.png';
+import hailstone_ex1_s5 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s5.png';
+import hailstone_ex1_s6 from '/img/instruments/videomancer/hailstone/hailstone_ex1_s6.png';
+import hailstone_ex2_s1 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s1.png';
+import hailstone_ex2_s2 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s2.png';
+import hailstone_ex2_s3 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s3.png';
+import hailstone_ex2_s4 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s4.png';
+import hailstone_ex2_s5 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s5.png';
+import hailstone_ex2_s6 from '/img/instruments/videomancer/hailstone/hailstone_ex2_s6.png';
+import hailstone_ex3_s1 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s1.png';
+import hailstone_ex3_s2 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s2.png';
+import hailstone_ex3_s3 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s3.png';
+import hailstone_ex3_s4 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s4.png';
+import hailstone_ex3_s5 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s5.png';
+import hailstone_ex3_s6 from '/img/instruments/videomancer/hailstone/hailstone_ex3_s6.png';
 
 # Hailstone
 
@@ -23,9 +45,12 @@ import hailstone_source3_stream_bridge_512 from '/img/instruments/videomancer/ha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_hero },
-    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_hero },
-    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_hero },
+    { label: "Runner", before: hailstone_source1_runner, after: hailstone_hero_s1 },
+    { label: "Sunset", before: hailstone_source2_sunset, after: hailstone_hero_s2 },
+    { label: "Clouds", before: hailstone_source3_clouds, after: hailstone_hero_s3 },
+    { label: "Pattern", before: hailstone_source4_pattern, after: hailstone_hero_s4 },
+    { label: "Woman", before: hailstone_source5_woman, after: hailstone_hero_s5 },
+    { label: "Knit", before: hailstone_source6_knit, after: hailstone_hero_s6 },
   ]}
 />
 *Hailstone overlaying bright bouncing diamond-shaped particles with splash bars onto a live video source.*
@@ -100,8 +125,6 @@ The particle physics runs in a separate process triggered once per frame at the 
 
 ## Parameter Reference
 
-<img src={hailstone_control_panel} alt="Videomancer front panel with Hailstone loaded"/>
-*Videomancer's front panel with Hailstone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -206,9 +229,12 @@ These exercises progress from simple falling particles through splash effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise1_result },
-    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise1_result },
-    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise1_result },
+    { label: "Runner", before: hailstone_source1_runner, after: hailstone_ex1_s1 },
+    { label: "Sunset", before: hailstone_source2_sunset, after: hailstone_ex1_s2 },
+    { label: "Clouds", before: hailstone_source3_clouds, after: hailstone_ex1_s3 },
+    { label: "Pattern", before: hailstone_source4_pattern, after: hailstone_ex1_s4 },
+    { label: "Woman", before: hailstone_source5_woman, after: hailstone_ex1_s5 },
+    { label: "Knit", before: hailstone_source6_knit, after: hailstone_ex1_s6 },
   ]}
 />
 *Falling Diamonds — simulated result across source images.*
@@ -231,9 +257,12 @@ These exercises progress from simple falling particles through splash effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise2_result },
-    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise2_result },
-    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise2_result },
+    { label: "Runner", before: hailstone_source1_runner, after: hailstone_ex2_s1 },
+    { label: "Sunset", before: hailstone_source2_sunset, after: hailstone_ex2_s2 },
+    { label: "Clouds", before: hailstone_source3_clouds, after: hailstone_ex2_s3 },
+    { label: "Pattern", before: hailstone_source4_pattern, after: hailstone_ex2_s4 },
+    { label: "Woman", before: hailstone_source5_woman, after: hailstone_ex2_s5 },
+    { label: "Knit", before: hailstone_source6_knit, after: hailstone_ex2_s6 },
   ]}
 />
 *Splash and Trail — simulated result across source images.*
@@ -256,9 +285,12 @@ These exercises progress from simple falling particles through splash effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: hailstone_source1_kodim01, after: hailstone_exercise3_result },
-    { label: "Kodim02", before: hailstone_source2_kodim02, after: hailstone_exercise3_result },
-    { label: "Stream Bridge", before: hailstone_source3_stream_bridge_512, after: hailstone_exercise3_result },
+    { label: "Runner", before: hailstone_source1_runner, after: hailstone_ex3_s1 },
+    { label: "Sunset", before: hailstone_source2_sunset, after: hailstone_ex3_s2 },
+    { label: "Clouds", before: hailstone_source3_clouds, after: hailstone_ex3_s3 },
+    { label: "Pattern", before: hailstone_source4_pattern, after: hailstone_ex3_s4 },
+    { label: "Woman", before: hailstone_source5_woman, after: hailstone_ex3_s5 },
+    { label: "Knit", before: hailstone_source6_knit, after: hailstone_ex3_s6 },
   ]}
 />
 *Blue Ice Storm — simulated result across source images.*

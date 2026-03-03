@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 117
+sidebar_position: 122
 slug: /instruments/videomancer/gauntlet
 title: "Gauntlet"
-image: /img/instruments/videomancer/gauntlet/gauntlet_hero.png
+image: /img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png
 description: "Every pixel of a video signal carries brightness and color — smooth gradients, soft shadows, gentle transitions."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import gauntlet_hero from '/img/instruments/videomancer/gauntlet/gauntlet_hero.png';
-import gauntlet_control_panel from '/img/instruments/videomancer/gauntlet/gauntlet_control_panel.png';
-import gauntlet_exercise1_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise1_result.png';
-import gauntlet_exercise2_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise2_result.png';
-import gauntlet_exercise3_result from '/img/instruments/videomancer/gauntlet/gauntlet_exercise3_result.png';
-import gauntlet_source1_kodim15 from '/img/instruments/videomancer/gauntlet/gauntlet_source1_kodim15.png';
-import gauntlet_source2_kodim01 from '/img/instruments/videomancer/gauntlet/gauntlet_source2_kodim01.png';
-import gauntlet_source3_kodim01_bw from '/img/instruments/videomancer/gauntlet/gauntlet_source3_kodim01_bw.png';
+import gauntlet_source1_parrot from '/img/instruments/videomancer/gauntlet/gauntlet_source1_parrot.png';
+import gauntlet_source2_skull from '/img/instruments/videomancer/gauntlet/gauntlet_source2_skull.png';
+import gauntlet_source3_collage from '/img/instruments/videomancer/gauntlet/gauntlet_source3_collage.png';
+import gauntlet_source4_pattern from '/img/instruments/videomancer/gauntlet/gauntlet_source4_pattern.png';
+import gauntlet_source5_woman from '/img/instruments/videomancer/gauntlet/gauntlet_source5_woman.png';
+import gauntlet_source6_paint from '/img/instruments/videomancer/gauntlet/gauntlet_source6_paint.png';
+import gauntlet_hero_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s1.png';
+import gauntlet_hero_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s2.png';
+import gauntlet_hero_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s3.png';
+import gauntlet_hero_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s4.png';
+import gauntlet_hero_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s5.png';
+import gauntlet_hero_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_hero_s6.png';
+import gauntlet_ex1_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s1.png';
+import gauntlet_ex1_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s2.png';
+import gauntlet_ex1_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s3.png';
+import gauntlet_ex1_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s4.png';
+import gauntlet_ex1_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s5.png';
+import gauntlet_ex1_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex1_s6.png';
+import gauntlet_ex2_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s1.png';
+import gauntlet_ex2_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s2.png';
+import gauntlet_ex2_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s3.png';
+import gauntlet_ex2_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s4.png';
+import gauntlet_ex2_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s5.png';
+import gauntlet_ex2_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex2_s6.png';
+import gauntlet_ex3_s1 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s1.png';
+import gauntlet_ex3_s2 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s2.png';
+import gauntlet_ex3_s3 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s3.png';
+import gauntlet_ex3_s4 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s4.png';
+import gauntlet_ex3_s5 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s5.png';
+import gauntlet_ex3_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_s6.png';
 
 # Gauntlet
 
@@ -23,9 +45,12 @@ import gauntlet_source3_kodim01_bw from '/img/instruments/videomancer/gauntlet/g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_hero },
-    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_hero },
-    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_hero },
+    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_hero_s1 },
+    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_hero_s2 },
+    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_hero_s3 },
+    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_hero_s4 },
+    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_hero_s5 },
+    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_hero_s6 },
   ]}
 />
 *Gauntlet rendering phosphor beam traces from edge-detected video, casting green CRT glow across a high-contrast source image.*
@@ -110,8 +135,6 @@ Two key interactions define the program's character: (1) the 16-tap sliding wind
 
 ## Parameter Reference
 
-<img src={gauntlet_control_panel} alt="Videomancer front panel with Gauntlet loaded"/>
-*Videomancer's front panel with Gauntlet active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,9 +239,12 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise1_result },
-    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise1_result },
-    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise1_result },
+    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex1_s1 },
+    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex1_s2 },
+    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex1_s3 },
+    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex1_s4 },
+    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex1_s5 },
+    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex1_s6 },
   ]}
 />
 *Basic Edge Detection — simulated result across source images.*
@@ -240,9 +266,12 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise2_result },
-    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise2_result },
-    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise2_result },
+    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex2_s1 },
+    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex2_s2 },
+    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex2_s3 },
+    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex2_s4 },
+    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex2_s5 },
+    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex2_s6 },
   ]}
 />
 *Phosphor Persistence and Color — simulated result across source images.*
@@ -265,9 +294,12 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: gauntlet_source1_kodim15, after: gauntlet_exercise3_result },
-    { label: "Kodim01", before: gauntlet_source2_kodim01, after: gauntlet_exercise3_result },
-    { label: "Kodim01 B&W", before: gauntlet_source3_kodim01_bw, after: gauntlet_exercise3_result },
+    { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_ex3_s1 },
+    { label: "Skull", before: gauntlet_source2_skull, after: gauntlet_ex3_s2 },
+    { label: "Collage", before: gauntlet_source3_collage, after: gauntlet_ex3_s3 },
+    { label: "Pattern", before: gauntlet_source4_pattern, after: gauntlet_ex3_s4 },
+    { label: "Woman", before: gauntlet_source5_woman, after: gauntlet_ex3_s5 },
+    { label: "Paint", before: gauntlet_source6_paint, after: gauntlet_ex3_s6 },
   ]}
 />
 *Full Vector Display — simulated result across source images.*

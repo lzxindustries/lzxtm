@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 173
+sidebar_position: 181
 slug: /instruments/videomancer/luminaire
 title: "Luminaire"
-image: /img/instruments/videomancer/luminaire/luminaire_hero.png
+image: /img/instruments/videomancer/luminaire/luminaire_hero_s1.png
 description: "Every stage production needs a spotlight."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import luminaire_hero from '/img/instruments/videomancer/luminaire/luminaire_hero.png';
-import luminaire_control_panel from '/img/instruments/videomancer/luminaire/luminaire_control_panel.png';
-import luminaire_exercise1_result from '/img/instruments/videomancer/luminaire/luminaire_exercise1_result.png';
-import luminaire_exercise2_result from '/img/instruments/videomancer/luminaire/luminaire_exercise2_result.png';
-import luminaire_exercise3_result from '/img/instruments/videomancer/luminaire/luminaire_exercise3_result.png';
-import luminaire_source1_kodim15 from '/img/instruments/videomancer/luminaire/luminaire_source1_kodim15.png';
-import luminaire_source2_kodim03 from '/img/instruments/videomancer/luminaire/luminaire_source2_kodim03.png';
-import luminaire_source3_kodim13_bw from '/img/instruments/videomancer/luminaire/luminaire_source3_kodim13_bw.png';
+import luminaire_source1_field from '/img/instruments/videomancer/luminaire/luminaire_source1_field.png';
+import luminaire_source2_dog from '/img/instruments/videomancer/luminaire/luminaire_source2_dog.png';
+import luminaire_source3_elephant from '/img/instruments/videomancer/luminaire/luminaire_source3_elephant.png';
+import luminaire_source4_pattern from '/img/instruments/videomancer/luminaire/luminaire_source4_pattern.png';
+import luminaire_source5_girl from '/img/instruments/videomancer/luminaire/luminaire_source5_girl.png';
+import luminaire_source6_wood from '/img/instruments/videomancer/luminaire/luminaire_source6_wood.png';
+import luminaire_hero_s1 from '/img/instruments/videomancer/luminaire/luminaire_hero_s1.png';
+import luminaire_hero_s2 from '/img/instruments/videomancer/luminaire/luminaire_hero_s2.png';
+import luminaire_hero_s3 from '/img/instruments/videomancer/luminaire/luminaire_hero_s3.png';
+import luminaire_hero_s4 from '/img/instruments/videomancer/luminaire/luminaire_hero_s4.png';
+import luminaire_hero_s5 from '/img/instruments/videomancer/luminaire/luminaire_hero_s5.png';
+import luminaire_hero_s6 from '/img/instruments/videomancer/luminaire/luminaire_hero_s6.png';
+import luminaire_ex1_s1 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s1.png';
+import luminaire_ex1_s2 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s2.png';
+import luminaire_ex1_s3 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s3.png';
+import luminaire_ex1_s4 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s4.png';
+import luminaire_ex1_s5 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s5.png';
+import luminaire_ex1_s6 from '/img/instruments/videomancer/luminaire/luminaire_ex1_s6.png';
+import luminaire_ex2_s1 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s1.png';
+import luminaire_ex2_s2 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s2.png';
+import luminaire_ex2_s3 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s3.png';
+import luminaire_ex2_s4 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s4.png';
+import luminaire_ex2_s5 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s5.png';
+import luminaire_ex2_s6 from '/img/instruments/videomancer/luminaire/luminaire_ex2_s6.png';
+import luminaire_ex3_s1 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s1.png';
+import luminaire_ex3_s2 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s2.png';
+import luminaire_ex3_s3 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s3.png';
+import luminaire_ex3_s4 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s4.png';
+import luminaire_ex3_s5 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s5.png';
+import luminaire_ex3_s6 from '/img/instruments/videomancer/luminaire/luminaire_ex3_s6.png';
 
 # Luminaire
 
@@ -23,9 +45,12 @@ import luminaire_source3_kodim13_bw from '/img/instruments/videomancer/luminaire
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_hero },
-    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_hero },
-    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_hero },
+    { label: "Field", before: luminaire_source1_field, after: luminaire_hero_s1 },
+    { label: "Dog", before: luminaire_source2_dog, after: luminaire_hero_s2 },
+    { label: "Elephant", before: luminaire_source3_elephant, after: luminaire_hero_s3 },
+    { label: "Pattern", before: luminaire_source4_pattern, after: luminaire_hero_s4 },
+    { label: "Girl", before: luminaire_source5_girl, after: luminaire_hero_s5 },
+    { label: "Wood", before: luminaire_source6_wood, after: luminaire_hero_s6 },
   ]}
 />
 *Luminaire casting a warm radial glow across the video frame, simulating a stage spotlight with adjustable position and intensity.*
@@ -118,8 +143,6 @@ The core processing is a single synchronous process that runs every pixel clock.
 
 ## Parameter Reference
 
-<img src={luminaire_control_panel} alt="Videomancer front panel with Luminaire loaded"/>
-*Videomancer's front panel with Luminaire active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +247,12 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise1_result },
-    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise1_result },
-    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise1_result },
+    { label: "Field", before: luminaire_source1_field, after: luminaire_ex1_s1 },
+    { label: "Dog", before: luminaire_source2_dog, after: luminaire_ex1_s2 },
+    { label: "Elephant", before: luminaire_source3_elephant, after: luminaire_ex1_s3 },
+    { label: "Pattern", before: luminaire_source4_pattern, after: luminaire_ex1_s4 },
+    { label: "Girl", before: luminaire_source5_girl, after: luminaire_ex1_s5 },
+    { label: "Wood", before: luminaire_source6_wood, after: luminaire_ex1_s6 },
   ]}
 />
 *Spotlight Placement — simulated result across source images.*
@@ -248,9 +274,12 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise2_result },
-    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise2_result },
-    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise2_result },
+    { label: "Field", before: luminaire_source1_field, after: luminaire_ex2_s1 },
+    { label: "Dog", before: luminaire_source2_dog, after: luminaire_ex2_s2 },
+    { label: "Elephant", before: luminaire_source3_elephant, after: luminaire_ex2_s3 },
+    { label: "Pattern", before: luminaire_source4_pattern, after: luminaire_ex2_s4 },
+    { label: "Girl", before: luminaire_source5_girl, after: luminaire_ex2_s5 },
+    { label: "Wood", before: luminaire_source6_wood, after: luminaire_ex2_s6 },
   ]}
 />
 *Warm and Cool Stage Lighting — simulated result across source images.*
@@ -272,9 +301,12 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: luminaire_source1_kodim15, after: luminaire_exercise3_result },
-    { label: "Kodim03", before: luminaire_source2_kodim03, after: luminaire_exercise3_result },
-    { label: "Kodim13 B&W", before: luminaire_source3_kodim13_bw, after: luminaire_exercise3_result },
+    { label: "Field", before: luminaire_source1_field, after: luminaire_ex3_s1 },
+    { label: "Dog", before: luminaire_source2_dog, after: luminaire_ex3_s2 },
+    { label: "Elephant", before: luminaire_source3_elephant, after: luminaire_ex3_s3 },
+    { label: "Pattern", before: luminaire_source4_pattern, after: luminaire_ex3_s4 },
+    { label: "Girl", before: luminaire_source5_girl, after: luminaire_ex3_s5 },
+    { label: "Wood", before: luminaire_source6_wood, after: luminaire_ex3_s6 },
   ]}
 />
 *Flickering Light Source — simulated result across source images.*

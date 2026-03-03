@@ -1,24 +1,43 @@
 ---
 draft: false
-sidebar_position: 19
+sidebar_position: 20
 slug: /instruments/videomancer/bitcullis
 title: "Bitcullis"
-image: /img/instruments/videomancer/bitcullis/bitcullis_hero.png
+image: /img/instruments/videomancer/bitcullis/bitcullis_hero_s1.png
 description: "Digital video is made of discrete numbers — brightness and color values laid out on a grid of pixels."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bitcullis_hero from '/img/instruments/videomancer/bitcullis/bitcullis_hero.png';
-import bitcullis_control_panel from '/img/instruments/videomancer/bitcullis/bitcullis_control_panel.png';
-import bitcullis_exercise1_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise1_result.png';
-import bitcullis_exercise2_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise2_result.png';
-import bitcullis_exercise3_result from '/img/instruments/videomancer/bitcullis/bitcullis_exercise3_result.png';
-import bitcullis_source1_kodim02 from '/img/instruments/videomancer/bitcullis/bitcullis_source1_kodim02.png';
-import bitcullis_source1_kodim23 from '/img/instruments/videomancer/bitcullis/bitcullis_source1_kodim23.png';
-import bitcullis_source2_kodim04 from '/img/instruments/videomancer/bitcullis/bitcullis_source2_kodim04.png';
-import bitcullis_source2_kodim07 from '/img/instruments/videomancer/bitcullis/bitcullis_source2_kodim07.png';
-import bitcullis_source3_kodim01_bw from '/img/instruments/videomancer/bitcullis/bitcullis_source3_kodim01_bw.png';
-import bitcullis_source3_mandrill_512 from '/img/instruments/videomancer/bitcullis/bitcullis_source3_mandrill_512.png';
+import bitcullis_source1_fruit from '/img/instruments/videomancer/bitcullis/bitcullis_source1_fruit.png';
+import bitcullis_source2_field from '/img/instruments/videomancer/bitcullis/bitcullis_source2_field.png';
+import bitcullis_source3_elephant from '/img/instruments/videomancer/bitcullis/bitcullis_source3_elephant.png';
+import bitcullis_source4_pattern from '/img/instruments/videomancer/bitcullis/bitcullis_source4_pattern.png';
+import bitcullis_source5_man from '/img/instruments/videomancer/bitcullis/bitcullis_source5_man.png';
+import bitcullis_source6_berries from '/img/instruments/videomancer/bitcullis/bitcullis_source6_berries.png';
+import bitcullis_hero_s1 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s1.png';
+import bitcullis_hero_s2 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s2.png';
+import bitcullis_hero_s3 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s3.png';
+import bitcullis_hero_s4 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s4.png';
+import bitcullis_hero_s5 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s5.png';
+import bitcullis_hero_s6 from '/img/instruments/videomancer/bitcullis/bitcullis_hero_s6.png';
+import bitcullis_ex1_s1 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s1.png';
+import bitcullis_ex1_s2 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s2.png';
+import bitcullis_ex1_s3 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s3.png';
+import bitcullis_ex1_s4 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s4.png';
+import bitcullis_ex1_s5 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s5.png';
+import bitcullis_ex1_s6 from '/img/instruments/videomancer/bitcullis/bitcullis_ex1_s6.png';
+import bitcullis_ex2_s1 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s1.png';
+import bitcullis_ex2_s2 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s2.png';
+import bitcullis_ex2_s3 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s3.png';
+import bitcullis_ex2_s4 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s4.png';
+import bitcullis_ex2_s5 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s5.png';
+import bitcullis_ex2_s6 from '/img/instruments/videomancer/bitcullis/bitcullis_ex2_s6.png';
+import bitcullis_ex3_s1 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s1.png';
+import bitcullis_ex3_s2 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s2.png';
+import bitcullis_ex3_s3 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s3.png';
+import bitcullis_ex3_s4 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s4.png';
+import bitcullis_ex3_s5 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s5.png';
+import bitcullis_ex3_s6 from '/img/instruments/videomancer/bitcullis/bitcullis_ex3_s6.png';
 
 # Bitcullis
 
@@ -26,12 +45,12 @@ import bitcullis_source3_mandrill_512 from '/img/instruments/videomancer/bitcull
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_hero },
-    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_hero },
-    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_hero },
-    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_hero },
-    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_hero },
-    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_hero },
+    { label: "Fruit", before: bitcullis_source1_fruit, after: bitcullis_hero_s1 },
+    { label: "Field", before: bitcullis_source2_field, after: bitcullis_hero_s2 },
+    { label: "Elephant", before: bitcullis_source3_elephant, after: bitcullis_hero_s3 },
+    { label: "Pattern", before: bitcullis_source4_pattern, after: bitcullis_hero_s4 },
+    { label: "Man", before: bitcullis_source5_man, after: bitcullis_hero_s5 },
+    { label: "Berries", before: bitcullis_source6_berries, after: bitcullis_hero_s6 },
   ]}
 />
 *Bitcullis applying luminance-modulated decimation and ordered dithering to create adaptive mosaic textures.*
@@ -109,9 +128,6 @@ Two key interactions: (1) **Luminance-driven modulation**: The Y channel drives 
 ---
 
 ## Parameter Reference
-
-<img src={bitcullis_control_panel} alt="Videomancer front panel with Bitcullis loaded"/>
-*Videomancer's front panel with Bitcullis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,12 +232,12 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise1_result },
-    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise1_result },
-    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise1_result },
-    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise1_result },
-    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise1_result },
-    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise1_result },
+    { label: "Fruit", before: bitcullis_source1_fruit, after: bitcullis_ex1_s1 },
+    { label: "Field", before: bitcullis_source2_field, after: bitcullis_ex1_s2 },
+    { label: "Elephant", before: bitcullis_source3_elephant, after: bitcullis_ex1_s3 },
+    { label: "Pattern", before: bitcullis_source4_pattern, after: bitcullis_ex1_s4 },
+    { label: "Man", before: bitcullis_source5_man, after: bitcullis_ex1_s5 },
+    { label: "Berries", before: bitcullis_source6_berries, after: bitcullis_ex1_s6 },
   ]}
 />
 *Mosaic Pixelation — simulated result across source images.*
@@ -243,12 +259,12 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise2_result },
-    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise2_result },
-    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise2_result },
-    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise2_result },
-    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise2_result },
-    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise2_result },
+    { label: "Fruit", before: bitcullis_source1_fruit, after: bitcullis_ex2_s1 },
+    { label: "Field", before: bitcullis_source2_field, after: bitcullis_ex2_s2 },
+    { label: "Elephant", before: bitcullis_source3_elephant, after: bitcullis_ex2_s3 },
+    { label: "Pattern", before: bitcullis_source4_pattern, after: bitcullis_ex2_s4 },
+    { label: "Man", before: bitcullis_source5_man, after: bitcullis_ex2_s5 },
+    { label: "Berries", before: bitcullis_source6_berries, after: bitcullis_ex2_s6 },
   ]}
 />
 *Posterized Graphics — simulated result across source images.*
@@ -271,12 +287,12 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: bitcullis_source1_kodim02, after: bitcullis_exercise3_result },
-    { label: "Kodim23", before: bitcullis_source1_kodim23, after: bitcullis_exercise3_result },
-    { label: "Kodim04", before: bitcullis_source2_kodim04, after: bitcullis_exercise3_result },
-    { label: "Kodim07", before: bitcullis_source2_kodim07, after: bitcullis_exercise3_result },
-    { label: "Kodim01 B&W", before: bitcullis_source3_kodim01_bw, after: bitcullis_exercise3_result },
-    { label: "Mandrill", before: bitcullis_source3_mandrill_512, after: bitcullis_exercise3_result },
+    { label: "Fruit", before: bitcullis_source1_fruit, after: bitcullis_ex3_s1 },
+    { label: "Field", before: bitcullis_source2_field, after: bitcullis_ex3_s2 },
+    { label: "Elephant", before: bitcullis_source3_elephant, after: bitcullis_ex3_s3 },
+    { label: "Pattern", before: bitcullis_source4_pattern, after: bitcullis_ex3_s4 },
+    { label: "Man", before: bitcullis_source5_man, after: bitcullis_ex3_s5 },
+    { label: "Berries", before: bitcullis_source6_berries, after: bitcullis_ex3_s6 },
   ]}
 />
 *Digital Texture Synthesis — simulated result across source images.*

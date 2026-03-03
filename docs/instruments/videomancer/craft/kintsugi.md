@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 152
+sidebar_position: 160
 slug: /instruments/videomancer/kintsugi
 title: "Kintsugi"
-image: /img/instruments/videomancer/kintsugi/kintsugi_hero.png
+image: /img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png
 description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hiding them."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import kintsugi_hero from '/img/instruments/videomancer/kintsugi/kintsugi_hero.png';
-import kintsugi_control_panel from '/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png';
-import kintsugi_exercise1_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise1_result.png';
-import kintsugi_exercise2_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise2_result.png';
-import kintsugi_exercise3_result from '/img/instruments/videomancer/kintsugi/kintsugi_exercise3_result.png';
-import kintsugi_source1_kodim03 from '/img/instruments/videomancer/kintsugi/kintsugi_source1_kodim03.png';
-import kintsugi_source2_kodim13 from '/img/instruments/videomancer/kintsugi/kintsugi_source2_kodim13.png';
-import kintsugi_source3_kodim13_bw from '/img/instruments/videomancer/kintsugi/kintsugi_source3_kodim13_bw.png';
+import kintsugi_source1_runner from '/img/instruments/videomancer/kintsugi/kintsugi_source1_runner.png';
+import kintsugi_source2_ballerina from '/img/instruments/videomancer/kintsugi/kintsugi_source2_ballerina.png';
+import kintsugi_source3_turtle from '/img/instruments/videomancer/kintsugi/kintsugi_source3_turtle.png';
+import kintsugi_source4_pattern from '/img/instruments/videomancer/kintsugi/kintsugi_source4_pattern.png';
+import kintsugi_source5_boy from '/img/instruments/videomancer/kintsugi/kintsugi_source5_boy.png';
+import kintsugi_source6_wood from '/img/instruments/videomancer/kintsugi/kintsugi_source6_wood.png';
+import kintsugi_hero_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png';
+import kintsugi_hero_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s2.png';
+import kintsugi_hero_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s3.png';
+import kintsugi_hero_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s4.png';
+import kintsugi_hero_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s5.png';
+import kintsugi_hero_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s6.png';
+import kintsugi_ex1_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s1.png';
+import kintsugi_ex1_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s2.png';
+import kintsugi_ex1_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s3.png';
+import kintsugi_ex1_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s4.png';
+import kintsugi_ex1_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s5.png';
+import kintsugi_ex1_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s6.png';
+import kintsugi_ex2_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s1.png';
+import kintsugi_ex2_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s2.png';
+import kintsugi_ex2_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s3.png';
+import kintsugi_ex2_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s4.png';
+import kintsugi_ex2_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s5.png';
+import kintsugi_ex2_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s6.png';
+import kintsugi_ex3_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s1.png';
+import kintsugi_ex3_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s2.png';
+import kintsugi_ex3_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s3.png';
+import kintsugi_ex3_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s4.png';
+import kintsugi_ex3_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s5.png';
+import kintsugi_ex3_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s6.png';
 
 # Kintsugi
 
@@ -23,9 +45,12 @@ import kintsugi_source3_kodim13_bw from '/img/instruments/videomancer/kintsugi/k
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_hero },
-    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_hero },
-    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_hero },
+    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_hero_s1 },
+    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_hero_s2 },
+    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_hero_s3 },
+    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_hero_s4 },
+    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_hero_s5 },
+    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_hero_s6 },
   ]}
 />
 *Kintsugi tracing luminance edges in gold lacquer lines across a video source, transforming discontinuities into radiant metallic seams.*
@@ -115,8 +140,6 @@ The two edge detection paths operate in parallel on the same input luma. The hor
 
 ## Parameter Reference
 
-<img src={kintsugi_control_panel} alt="Videomancer front panel with Kintsugi loaded"/>
-*Videomancer's front panel with Kintsugi active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise1_result },
-    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise1_result },
-    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise1_result },
+    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex1_s1 },
+    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex1_s2 },
+    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex1_s3 },
+    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex1_s4 },
+    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex1_s5 },
+    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex1_s6 },
   ]}
 />
 *Thin Gold Traces — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise2_result },
-    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise2_result },
-    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise2_result },
+    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex2_s1 },
+    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex2_s2 },
+    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex2_s3 },
+    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex2_s4 },
+    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex2_s5 },
+    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex2_s6 },
   ]}
 />
 *Wide Metallic Bands — simulated result across source images.*
@@ -269,9 +298,12 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: kintsugi_source1_kodim03, after: kintsugi_exercise3_result },
-    { label: "Kodim13", before: kintsugi_source2_kodim13, after: kintsugi_exercise3_result },
-    { label: "Kodim13 B&W", before: kintsugi_source3_kodim13_bw, after: kintsugi_exercise3_result },
+    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex3_s1 },
+    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex3_s2 },
+    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex3_s3 },
+    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex3_s4 },
+    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex3_s5 },
+    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex3_s6 },
   ]}
 />
 *Golden Web Overlay — simulated result across source images.*

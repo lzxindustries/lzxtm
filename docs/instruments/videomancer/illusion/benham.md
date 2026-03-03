@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 16
 slug: /instruments/videomancer/benham
 title: "Benham"
-image: /img/instruments/videomancer/benham/benham_hero.png
+image: /img/instruments/videomancer/benham/benham_hero_s1.png
 description: "In 1895, the English toymaker Charles Benham marketed a painted spinning top that seemed to do the impossible — produce vivid color sensations from nothing but black and white."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import benham_hero from '/img/instruments/videomancer/benham/benham_hero.png';
-import benham_control_panel from '/img/instruments/videomancer/benham/benham_control_panel.png';
-import benham_exercise1_result from '/img/instruments/videomancer/benham/benham_exercise1_result.png';
-import benham_exercise2_result from '/img/instruments/videomancer/benham/benham_exercise2_result.png';
-import benham_exercise3_result from '/img/instruments/videomancer/benham/benham_exercise3_result.png';
-import benham_source1_kodim01 from '/img/instruments/videomancer/benham/benham_source1_kodim01.png';
-import benham_source2_kodim02 from '/img/instruments/videomancer/benham/benham_source2_kodim02.png';
-import benham_source3_kodim01_bw from '/img/instruments/videomancer/benham/benham_source3_kodim01_bw.png';
+import benham_source1_dog from '/img/instruments/videomancer/benham/benham_source1_dog.png';
+import benham_source2_parrot from '/img/instruments/videomancer/benham/benham_source2_parrot.png';
+import benham_source3_clouds from '/img/instruments/videomancer/benham/benham_source3_clouds.png';
+import benham_source4_pattern from '/img/instruments/videomancer/benham/benham_source4_pattern.png';
+import benham_source5_woman from '/img/instruments/videomancer/benham/benham_source5_woman.png';
+import benham_source6_wood from '/img/instruments/videomancer/benham/benham_source6_wood.png';
+import benham_hero_s1 from '/img/instruments/videomancer/benham/benham_hero_s1.png';
+import benham_hero_s2 from '/img/instruments/videomancer/benham/benham_hero_s2.png';
+import benham_hero_s3 from '/img/instruments/videomancer/benham/benham_hero_s3.png';
+import benham_hero_s4 from '/img/instruments/videomancer/benham/benham_hero_s4.png';
+import benham_hero_s5 from '/img/instruments/videomancer/benham/benham_hero_s5.png';
+import benham_hero_s6 from '/img/instruments/videomancer/benham/benham_hero_s6.png';
+import benham_ex1_s1 from '/img/instruments/videomancer/benham/benham_ex1_s1.png';
+import benham_ex1_s2 from '/img/instruments/videomancer/benham/benham_ex1_s2.png';
+import benham_ex1_s3 from '/img/instruments/videomancer/benham/benham_ex1_s3.png';
+import benham_ex1_s4 from '/img/instruments/videomancer/benham/benham_ex1_s4.png';
+import benham_ex1_s5 from '/img/instruments/videomancer/benham/benham_ex1_s5.png';
+import benham_ex1_s6 from '/img/instruments/videomancer/benham/benham_ex1_s6.png';
+import benham_ex2_s1 from '/img/instruments/videomancer/benham/benham_ex2_s1.png';
+import benham_ex2_s2 from '/img/instruments/videomancer/benham/benham_ex2_s2.png';
+import benham_ex2_s3 from '/img/instruments/videomancer/benham/benham_ex2_s3.png';
+import benham_ex2_s4 from '/img/instruments/videomancer/benham/benham_ex2_s4.png';
+import benham_ex2_s5 from '/img/instruments/videomancer/benham/benham_ex2_s5.png';
+import benham_ex2_s6 from '/img/instruments/videomancer/benham/benham_ex2_s6.png';
+import benham_ex3_s1 from '/img/instruments/videomancer/benham/benham_ex3_s1.png';
+import benham_ex3_s2 from '/img/instruments/videomancer/benham/benham_ex3_s2.png';
+import benham_ex3_s3 from '/img/instruments/videomancer/benham/benham_ex3_s3.png';
+import benham_ex3_s4 from '/img/instruments/videomancer/benham/benham_ex3_s4.png';
+import benham_ex3_s5 from '/img/instruments/videomancer/benham/benham_ex3_s5.png';
+import benham_ex3_s6 from '/img/instruments/videomancer/benham/benham_ex3_s6.png';
 
 # Benham
 
@@ -23,9 +45,12 @@ import benham_source3_kodim01_bw from '/img/instruments/videomancer/benham/benha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: benham_source1_kodim01, after: benham_hero },
-    { label: "Kodim02", before: benham_source2_kodim02, after: benham_hero },
-    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_hero },
+    { label: "Dog", before: benham_source1_dog, after: benham_hero_s1 },
+    { label: "Parrot", before: benham_source2_parrot, after: benham_hero_s2 },
+    { label: "Clouds", before: benham_source3_clouds, after: benham_hero_s3 },
+    { label: "Pattern", before: benham_source4_pattern, after: benham_hero_s4 },
+    { label: "Woman", before: benham_source5_woman, after: benham_hero_s5 },
+    { label: "Wood", before: benham_source6_wood, after: benham_hero_s6 },
   ]}
 />
 *Benham disc generating field-alternating monochrome arc sectors that induce subjective color perception through temporal flicker.*
@@ -114,9 +139,6 @@ The critical path for the Benham illusion is the field-mode offset in Stage 3. I
 ---
 
 ## Parameter Reference
-
-<img src={benham_control_panel} alt="Videomancer front panel with Benham loaded"/>
-*Videomancer's front panel with Benham active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +242,12 @@ These exercises progress from static pattern observation to animated field-alter
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise1_result },
-    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise1_result },
-    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise1_result },
+    { label: "Dog", before: benham_source1_dog, after: benham_ex1_s1 },
+    { label: "Parrot", before: benham_source2_parrot, after: benham_ex1_s2 },
+    { label: "Clouds", before: benham_source3_clouds, after: benham_ex1_s3 },
+    { label: "Pattern", before: benham_source4_pattern, after: benham_ex1_s4 },
+    { label: "Woman", before: benham_source5_woman, after: benham_ex1_s5 },
+    { label: "Wood", before: benham_source6_wood, after: benham_ex1_s6 },
   ]}
 />
 *Static Disc Observation — simulated result across source images.*
@@ -244,9 +269,12 @@ These exercises progress from static pattern observation to animated field-alter
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise2_result },
-    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise2_result },
-    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise2_result },
+    { label: "Dog", before: benham_source1_dog, after: benham_ex2_s1 },
+    { label: "Parrot", before: benham_source2_parrot, after: benham_ex2_s2 },
+    { label: "Clouds", before: benham_source3_clouds, after: benham_ex2_s3 },
+    { label: "Pattern", before: benham_source4_pattern, after: benham_ex2_s4 },
+    { label: "Woman", before: benham_source5_woman, after: benham_ex2_s5 },
+    { label: "Wood", before: benham_source6_wood, after: benham_ex2_s6 },
   ]}
 />
 *Fechner Color Illusion — simulated result across source images.*
@@ -269,9 +297,12 @@ These exercises progress from static pattern observation to animated field-alter
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: benham_source1_kodim01, after: benham_exercise3_result },
-    { label: "Kodim02", before: benham_source2_kodim02, after: benham_exercise3_result },
-    { label: "Kodim01 B&W", before: benham_source3_kodim01_bw, after: benham_exercise3_result },
+    { label: "Dog", before: benham_source1_dog, after: benham_ex3_s1 },
+    { label: "Parrot", before: benham_source2_parrot, after: benham_ex3_s2 },
+    { label: "Clouds", before: benham_source3_clouds, after: benham_ex3_s3 },
+    { label: "Pattern", before: benham_source4_pattern, after: benham_ex3_s4 },
+    { label: "Woman", before: benham_source5_woman, after: benham_ex3_s5 },
+    { label: "Wood", before: benham_source6_wood, after: benham_ex3_s6 },
   ]}
 />
 *Video-Modulated Pattern — simulated result across source images.*

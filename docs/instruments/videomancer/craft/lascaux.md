@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 155
+sidebar_position: 163
 slug: /instruments/videomancer/lascaux
 title: "Lascaux"
-image: /img/instruments/videomancer/lascaux/lascaux_hero.png
+image: /img/instruments/videomancer/lascaux/lascaux_hero_s1.png
 description: "Thirty-two thousand years ago, artists crouched in the darkness of limestone caves and painted animals, handprints, and abstract symbols onto rough stone walls using nothing but mineral pigments and firelight."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lascaux_hero from '/img/instruments/videomancer/lascaux/lascaux_hero.png';
-import lascaux_control_panel from '/img/instruments/videomancer/lascaux/lascaux_control_panel.png';
-import lascaux_exercise1_result from '/img/instruments/videomancer/lascaux/lascaux_exercise1_result.png';
-import lascaux_exercise2_result from '/img/instruments/videomancer/lascaux/lascaux_exercise2_result.png';
-import lascaux_exercise3_result from '/img/instruments/videomancer/lascaux/lascaux_exercise3_result.png';
-import lascaux_source1_kodim03 from '/img/instruments/videomancer/lascaux/lascaux_source1_kodim03.png';
-import lascaux_source2_kodim13 from '/img/instruments/videomancer/lascaux/lascaux_source2_kodim13.png';
-import lascaux_source3_kodim13_bw from '/img/instruments/videomancer/lascaux/lascaux_source3_kodim13_bw.png';
+import lascaux_source1_sunset from '/img/instruments/videomancer/lascaux/lascaux_source1_sunset.png';
+import lascaux_source2_parrot from '/img/instruments/videomancer/lascaux/lascaux_source2_parrot.png';
+import lascaux_source3_clouds from '/img/instruments/videomancer/lascaux/lascaux_source3_clouds.png';
+import lascaux_source4_pattern from '/img/instruments/videomancer/lascaux/lascaux_source4_pattern.png';
+import lascaux_source5_woman from '/img/instruments/videomancer/lascaux/lascaux_source5_woman.png';
+import lascaux_source6_berries from '/img/instruments/videomancer/lascaux/lascaux_source6_berries.png';
+import lascaux_hero_s1 from '/img/instruments/videomancer/lascaux/lascaux_hero_s1.png';
+import lascaux_hero_s2 from '/img/instruments/videomancer/lascaux/lascaux_hero_s2.png';
+import lascaux_hero_s3 from '/img/instruments/videomancer/lascaux/lascaux_hero_s3.png';
+import lascaux_hero_s4 from '/img/instruments/videomancer/lascaux/lascaux_hero_s4.png';
+import lascaux_hero_s5 from '/img/instruments/videomancer/lascaux/lascaux_hero_s5.png';
+import lascaux_hero_s6 from '/img/instruments/videomancer/lascaux/lascaux_hero_s6.png';
+import lascaux_ex1_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s1.png';
+import lascaux_ex1_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s2.png';
+import lascaux_ex1_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s3.png';
+import lascaux_ex1_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s4.png';
+import lascaux_ex1_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s5.png';
+import lascaux_ex1_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex1_s6.png';
+import lascaux_ex2_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s1.png';
+import lascaux_ex2_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s2.png';
+import lascaux_ex2_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s3.png';
+import lascaux_ex2_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s4.png';
+import lascaux_ex2_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s5.png';
+import lascaux_ex2_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex2_s6.png';
+import lascaux_ex3_s1 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s1.png';
+import lascaux_ex3_s2 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s2.png';
+import lascaux_ex3_s3 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s3.png';
+import lascaux_ex3_s4 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s4.png';
+import lascaux_ex3_s5 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s5.png';
+import lascaux_ex3_s6 from '/img/instruments/videomancer/lascaux/lascaux_ex3_s6.png';
 
 # Lascaux
 
@@ -23,9 +45,12 @@ import lascaux_source3_kodim13_bw from '/img/instruments/videomancer/lascaux/las
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_hero },
-    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_hero },
-    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_hero },
+    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_hero_s1 },
+    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_hero_s2 },
+    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_hero_s3 },
+    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_hero_s4 },
+    { label: "Woman", before: lascaux_source5_woman, after: lascaux_hero_s5 },
+    { label: "Berries", before: lascaux_source6_berries, after: lascaux_hero_s6 },
   ]}
 />
 *Lascaux transforming a video portrait into earth-tone cave pigments illuminated by a flickering torch drifting across rough stone.*
@@ -121,8 +146,6 @@ The four processing stages (palette → contour → grain → torch) execute seq
 
 ## Parameter Reference
 
-<img src={lascaux_control_panel} alt="Videomancer front panel with Lascaux loaded"/>
-*Videomancer's front panel with Lascaux active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -226,9 +249,12 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise1_result },
-    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise1_result },
-    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise1_result },
+    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex1_s1 },
+    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex1_s2 },
+    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex1_s3 },
+    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex1_s4 },
+    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex1_s5 },
+    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex1_s6 },
   ]}
 />
 *Earth-Tone Palette — simulated result across source images.*
@@ -250,9 +276,12 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise2_result },
-    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise2_result },
-    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise2_result },
+    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex2_s1 },
+    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex2_s2 },
+    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex2_s3 },
+    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex2_s4 },
+    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex2_s5 },
+    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex2_s6 },
   ]}
 />
 *Stone Surface and Torch — simulated result across source images.*
@@ -275,9 +304,12 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lascaux_source1_kodim03, after: lascaux_exercise3_result },
-    { label: "Kodim13", before: lascaux_source2_kodim13, after: lascaux_exercise3_result },
-    { label: "Kodim13 B&W", before: lascaux_source3_kodim13_bw, after: lascaux_exercise3_result },
+    { label: "Sunset", before: lascaux_source1_sunset, after: lascaux_ex3_s1 },
+    { label: "Parrot", before: lascaux_source2_parrot, after: lascaux_ex3_s2 },
+    { label: "Clouds", before: lascaux_source3_clouds, after: lascaux_ex3_s3 },
+    { label: "Pattern", before: lascaux_source4_pattern, after: lascaux_ex3_s4 },
+    { label: "Woman", before: lascaux_source5_woman, after: lascaux_ex3_s5 },
+    { label: "Berries", before: lascaux_source6_berries, after: lascaux_ex3_s6 },
   ]}
 />
 *Charcoal Study — simulated result across source images.*

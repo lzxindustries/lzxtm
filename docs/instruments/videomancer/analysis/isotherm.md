@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 143
+sidebar_position: 149
 slug: /instruments/videomancer/isotherm
 title: "Isotherm"
-image: /img/instruments/videomancer/isotherm/isotherm_hero.png
+image: /img/instruments/videomancer/isotherm/isotherm_hero_s1.png
 description: "Every surface radiates energy."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import isotherm_hero from '/img/instruments/videomancer/isotherm/isotherm_hero.png';
-import isotherm_control_panel from '/img/instruments/videomancer/isotherm/isotherm_control_panel.png';
-import isotherm_exercise1_result from '/img/instruments/videomancer/isotherm/isotherm_exercise1_result.png';
-import isotherm_exercise2_result from '/img/instruments/videomancer/isotherm/isotherm_exercise2_result.png';
-import isotherm_exercise3_result from '/img/instruments/videomancer/isotherm/isotherm_exercise3_result.png';
-import isotherm_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source1_grayscale_ramp_h_1920x1080.png';
-import isotherm_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/isotherm/isotherm_source2_grayscale_ramp_v_1920x1080.png';
-import isotherm_source3_step_wedge_21level_512 from '/img/instruments/videomancer/isotherm/isotherm_source3_step_wedge_21level_512.png';
+import isotherm_source1_sunset from '/img/instruments/videomancer/isotherm/isotherm_source1_sunset.png';
+import isotherm_source2_fruit from '/img/instruments/videomancer/isotherm/isotherm_source2_fruit.png';
+import isotherm_source3_clouds from '/img/instruments/videomancer/isotherm/isotherm_source3_clouds.png';
+import isotherm_source4_pattern from '/img/instruments/videomancer/isotherm/isotherm_source4_pattern.png';
+import isotherm_source5_woman from '/img/instruments/videomancer/isotherm/isotherm_source5_woman.png';
+import isotherm_source6_wood from '/img/instruments/videomancer/isotherm/isotherm_source6_wood.png';
+import isotherm_hero_s1 from '/img/instruments/videomancer/isotherm/isotherm_hero_s1.png';
+import isotherm_hero_s2 from '/img/instruments/videomancer/isotherm/isotherm_hero_s2.png';
+import isotherm_hero_s3 from '/img/instruments/videomancer/isotherm/isotherm_hero_s3.png';
+import isotherm_hero_s4 from '/img/instruments/videomancer/isotherm/isotherm_hero_s4.png';
+import isotherm_hero_s5 from '/img/instruments/videomancer/isotherm/isotherm_hero_s5.png';
+import isotherm_hero_s6 from '/img/instruments/videomancer/isotherm/isotherm_hero_s6.png';
+import isotherm_ex1_s1 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s1.png';
+import isotherm_ex1_s2 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s2.png';
+import isotherm_ex1_s3 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s3.png';
+import isotherm_ex1_s4 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s4.png';
+import isotherm_ex1_s5 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s5.png';
+import isotherm_ex1_s6 from '/img/instruments/videomancer/isotherm/isotherm_ex1_s6.png';
+import isotherm_ex2_s1 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s1.png';
+import isotherm_ex2_s2 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s2.png';
+import isotherm_ex2_s3 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s3.png';
+import isotherm_ex2_s4 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s4.png';
+import isotherm_ex2_s5 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s5.png';
+import isotherm_ex2_s6 from '/img/instruments/videomancer/isotherm/isotherm_ex2_s6.png';
+import isotherm_ex3_s1 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s1.png';
+import isotherm_ex3_s2 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s2.png';
+import isotherm_ex3_s3 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s3.png';
+import isotherm_ex3_s4 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s4.png';
+import isotherm_ex3_s5 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s5.png';
+import isotherm_ex3_s6 from '/img/instruments/videomancer/isotherm/isotherm_ex3_s6.png';
 
 # Isotherm
 
@@ -23,9 +45,12 @@ import isotherm_source3_step_wedge_21level_512 from '/img/instruments/videomance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_hero },
-    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_hero },
-    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_hero },
+    { label: "Sunset", before: isotherm_source1_sunset, after: isotherm_hero_s1 },
+    { label: "Fruit", before: isotherm_source2_fruit, after: isotherm_hero_s2 },
+    { label: "Clouds", before: isotherm_source3_clouds, after: isotherm_hero_s3 },
+    { label: "Pattern", before: isotherm_source4_pattern, after: isotherm_hero_s4 },
+    { label: "Woman", before: isotherm_source5_woman, after: isotherm_hero_s5 },
+    { label: "Wood", before: isotherm_source6_wood, after: isotherm_hero_s6 },
   ]}
 />
 *Isotherm mapping video luminance into false-color thermal palettes with contour lines and HUD overlay.*
@@ -105,8 +130,6 @@ The auto-range normalisation stage sits between input smoothing and palette look
 
 ## Parameter Reference
 
-<img src={isotherm_control_panel} alt="Videomancer front panel with Isotherm loaded"/>
-*Videomancer's front panel with Isotherm active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,9 +232,12 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise1_result },
-    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise1_result },
-    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise1_result },
+    { label: "Sunset", before: isotherm_source1_sunset, after: isotherm_ex1_s1 },
+    { label: "Fruit", before: isotherm_source2_fruit, after: isotherm_ex1_s2 },
+    { label: "Clouds", before: isotherm_source3_clouds, after: isotherm_ex1_s3 },
+    { label: "Pattern", before: isotherm_source4_pattern, after: isotherm_ex1_s4 },
+    { label: "Woman", before: isotherm_source5_woman, after: isotherm_ex1_s5 },
+    { label: "Wood", before: isotherm_source6_wood, after: isotherm_ex1_s6 },
   ]}
 />
 *Thermal Camera Simulation — simulated result across source images.*
@@ -233,9 +259,12 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise2_result },
-    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise2_result },
-    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise2_result },
+    { label: "Sunset", before: isotherm_source1_sunset, after: isotherm_ex2_s1 },
+    { label: "Fruit", before: isotherm_source2_fruit, after: isotherm_ex2_s2 },
+    { label: "Clouds", before: isotherm_source3_clouds, after: isotherm_ex2_s3 },
+    { label: "Pattern", before: isotherm_source4_pattern, after: isotherm_ex2_s4 },
+    { label: "Woman", before: isotherm_source5_woman, after: isotherm_ex2_s5 },
+    { label: "Wood", before: isotherm_source6_wood, after: isotherm_ex2_s6 },
   ]}
 />
 *Contour Mapping — simulated result across source images.*
@@ -257,9 +286,12 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: isotherm_source1_grayscale_ramp_h_1920x1080, after: isotherm_exercise3_result },
-    { label: "Grayscale Ramp V", before: isotherm_source2_grayscale_ramp_v_1920x1080, after: isotherm_exercise3_result },
-    { label: "Step Wedge 21level", before: isotherm_source3_step_wedge_21level_512, after: isotherm_exercise3_result },
+    { label: "Sunset", before: isotherm_source1_sunset, after: isotherm_ex3_s1 },
+    { label: "Fruit", before: isotherm_source2_fruit, after: isotherm_ex3_s2 },
+    { label: "Clouds", before: isotherm_source3_clouds, after: isotherm_ex3_s3 },
+    { label: "Pattern", before: isotherm_source4_pattern, after: isotherm_ex3_s4 },
+    { label: "Woman", before: isotherm_source5_woman, after: isotherm_ex3_s5 },
+    { label: "Wood", before: isotherm_source6_wood, after: isotherm_ex3_s6 },
   ]}
 />
 *False-Colour Overlay — simulated result across source images.*

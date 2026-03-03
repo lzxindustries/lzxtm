@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 26
+sidebar_position: 27
 slug: /instruments/videomancer/bomber
 title: "Bomber"
-image: /img/instruments/videomancer/bomber/bomber_hero.png
+image: /img/instruments/videomancer/bomber/bomber_hero_s1.png
 description: "Every arcade game has its moment of spectacle — the bomb detonation, the boss defeat, the screen-clearing super move."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bomber_hero from '/img/instruments/videomancer/bomber/bomber_hero.png';
-import bomber_control_panel from '/img/instruments/videomancer/bomber/bomber_control_panel.png';
-import bomber_exercise1_result from '/img/instruments/videomancer/bomber/bomber_exercise1_result.png';
-import bomber_exercise2_result from '/img/instruments/videomancer/bomber/bomber_exercise2_result.png';
-import bomber_exercise3_result from '/img/instruments/videomancer/bomber/bomber_exercise3_result.png';
-import bomber_source1_kodim15 from '/img/instruments/videomancer/bomber/bomber_source1_kodim15.png';
-import bomber_source2_kodim15_bw from '/img/instruments/videomancer/bomber/bomber_source2_kodim15_bw.png';
-import bomber_source3_male_1024 from '/img/instruments/videomancer/bomber/bomber_source3_male_1024.png';
+import bomber_source1_sunset from '/img/instruments/videomancer/bomber/bomber_source1_sunset.png';
+import bomber_source2_house from '/img/instruments/videomancer/bomber/bomber_source2_house.png';
+import bomber_source3_elephant from '/img/instruments/videomancer/bomber/bomber_source3_elephant.png';
+import bomber_source4_pattern from '/img/instruments/videomancer/bomber/bomber_source4_pattern.png';
+import bomber_source5_boy from '/img/instruments/videomancer/bomber/bomber_source5_boy.png';
+import bomber_source6_berries from '/img/instruments/videomancer/bomber/bomber_source6_berries.png';
+import bomber_hero_s1 from '/img/instruments/videomancer/bomber/bomber_hero_s1.png';
+import bomber_hero_s2 from '/img/instruments/videomancer/bomber/bomber_hero_s2.png';
+import bomber_hero_s3 from '/img/instruments/videomancer/bomber/bomber_hero_s3.png';
+import bomber_hero_s4 from '/img/instruments/videomancer/bomber/bomber_hero_s4.png';
+import bomber_hero_s5 from '/img/instruments/videomancer/bomber/bomber_hero_s5.png';
+import bomber_hero_s6 from '/img/instruments/videomancer/bomber/bomber_hero_s6.png';
+import bomber_ex1_s1 from '/img/instruments/videomancer/bomber/bomber_ex1_s1.png';
+import bomber_ex1_s2 from '/img/instruments/videomancer/bomber/bomber_ex1_s2.png';
+import bomber_ex1_s3 from '/img/instruments/videomancer/bomber/bomber_ex1_s3.png';
+import bomber_ex1_s4 from '/img/instruments/videomancer/bomber/bomber_ex1_s4.png';
+import bomber_ex1_s5 from '/img/instruments/videomancer/bomber/bomber_ex1_s5.png';
+import bomber_ex1_s6 from '/img/instruments/videomancer/bomber/bomber_ex1_s6.png';
+import bomber_ex2_s1 from '/img/instruments/videomancer/bomber/bomber_ex2_s1.png';
+import bomber_ex2_s2 from '/img/instruments/videomancer/bomber/bomber_ex2_s2.png';
+import bomber_ex2_s3 from '/img/instruments/videomancer/bomber/bomber_ex2_s3.png';
+import bomber_ex2_s4 from '/img/instruments/videomancer/bomber/bomber_ex2_s4.png';
+import bomber_ex2_s5 from '/img/instruments/videomancer/bomber/bomber_ex2_s5.png';
+import bomber_ex2_s6 from '/img/instruments/videomancer/bomber/bomber_ex2_s6.png';
+import bomber_ex3_s1 from '/img/instruments/videomancer/bomber/bomber_ex3_s1.png';
+import bomber_ex3_s2 from '/img/instruments/videomancer/bomber/bomber_ex3_s2.png';
+import bomber_ex3_s3 from '/img/instruments/videomancer/bomber/bomber_ex3_s3.png';
+import bomber_ex3_s4 from '/img/instruments/videomancer/bomber/bomber_ex3_s4.png';
+import bomber_ex3_s5 from '/img/instruments/videomancer/bomber/bomber_ex3_s5.png';
+import bomber_ex3_s6 from '/img/instruments/videomancer/bomber/bomber_ex3_s6.png';
 
 # Bomber
 
@@ -23,9 +45,12 @@ import bomber_source3_male_1024 from '/img/instruments/videomancer/bomber/bomber
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_hero },
-    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_hero },
-    { label: "Male", before: bomber_source3_male_1024, after: bomber_hero },
+    { label: "Sunset", before: bomber_source1_sunset, after: bomber_hero_s1 },
+    { label: "House", before: bomber_source2_house, after: bomber_hero_s2 },
+    { label: "Elephant", before: bomber_source3_elephant, after: bomber_hero_s3 },
+    { label: "Pattern", before: bomber_source4_pattern, after: bomber_hero_s4 },
+    { label: "Boy", before: bomber_source5_boy, after: bomber_hero_s5 },
+    { label: "Berries", before: bomber_source6_berries, after: bomber_hero_s6 },
   ]}
 />
 *Bomber launching an expanding concentric shockwave with white flash effect, the ring sweeping outward from center and leaving a dimmed aftermath in its wake.*
@@ -136,9 +161,6 @@ The LFSR (Linear Feedback Shift Register) is a 16-bit pseudo-random generator se
 
 ## Parameter Reference
 
-<img src={bomber_control_panel} alt="Videomancer front panel with Bomber loaded"/>
-*Videomancer's front panel with Bomber active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
 ### Rotary Potentiometers (Knobs 1–6)
 
 #### Knob 1 — Speed
@@ -242,9 +264,12 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise1_result },
-    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise1_result },
-    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise1_result },
+    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex1_s1 },
+    { label: "House", before: bomber_source2_house, after: bomber_ex1_s2 },
+    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex1_s3 },
+    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex1_s4 },
+    { label: "Boy", before: bomber_source5_boy, after: bomber_ex1_s5 },
+    { label: "Berries", before: bomber_source6_berries, after: bomber_ex1_s6 },
   ]}
 />
 *The Expanding Ring — simulated result across source images.*
@@ -266,9 +291,12 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise2_result },
-    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise2_result },
-    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise2_result },
+    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex2_s1 },
+    { label: "House", before: bomber_source2_house, after: bomber_ex2_s2 },
+    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex2_s3 },
+    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex2_s4 },
+    { label: "Boy", before: bomber_source5_boy, after: bomber_ex2_s5 },
+    { label: "Berries", before: bomber_source6_berries, after: bomber_ex2_s6 },
   ]}
 />
 *Aftermath and Latch — simulated result across source images.*
@@ -290,9 +318,12 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: bomber_source1_kodim15, after: bomber_exercise3_result },
-    { label: "Kodim15 B&W", before: bomber_source2_kodim15_bw, after: bomber_exercise3_result },
-    { label: "Male", before: bomber_source3_male_1024, after: bomber_exercise3_result },
+    { label: "Sunset", before: bomber_source1_sunset, after: bomber_ex3_s1 },
+    { label: "House", before: bomber_source2_house, after: bomber_ex3_s2 },
+    { label: "Elephant", before: bomber_source3_elephant, after: bomber_ex3_s3 },
+    { label: "Pattern", before: bomber_source4_pattern, after: bomber_ex3_s4 },
+    { label: "Boy", before: bomber_source5_boy, after: bomber_ex3_s5 },
+    { label: "Berries", before: bomber_source6_berries, after: bomber_ex3_s6 },
   ]}
 />
 *Bombardment — simulated result across source images.*

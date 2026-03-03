@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 136
+sidebar_position: 142
 slug: /instruments/videomancer/inertia
 title: "Inertia"
-image: /img/instruments/videomancer/inertia/inertia_hero.png
+image: /img/instruments/videomancer/inertia/inertia_hero_s1.png
 description: "Most Videomancer programs give you direct control — turn a knob, the image changes proportionally."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import inertia_hero from '/img/instruments/videomancer/inertia/inertia_hero.png';
-import inertia_control_panel from '/img/instruments/videomancer/inertia/inertia_control_panel.png';
-import inertia_exercise1_result from '/img/instruments/videomancer/inertia/inertia_exercise1_result.png';
-import inertia_exercise2_result from '/img/instruments/videomancer/inertia/inertia_exercise2_result.png';
-import inertia_exercise3_result from '/img/instruments/videomancer/inertia/inertia_exercise3_result.png';
-import inertia_source1_kodim15 from '/img/instruments/videomancer/inertia/inertia_source1_kodim15.png';
-import inertia_source2_kodim01 from '/img/instruments/videomancer/inertia/inertia_source2_kodim01.png';
-import inertia_source3_kodim01_bw from '/img/instruments/videomancer/inertia/inertia_source3_kodim01_bw.png';
+import inertia_source1_field from '/img/instruments/videomancer/inertia/inertia_source1_field.png';
+import inertia_source2_sunset from '/img/instruments/videomancer/inertia/inertia_source2_sunset.png';
+import inertia_source3_clouds from '/img/instruments/videomancer/inertia/inertia_source3_clouds.png';
+import inertia_source4_pattern from '/img/instruments/videomancer/inertia/inertia_source4_pattern.png';
+import inertia_source5_woman from '/img/instruments/videomancer/inertia/inertia_source5_woman.png';
+import inertia_source6_knit from '/img/instruments/videomancer/inertia/inertia_source6_knit.png';
+import inertia_hero_s1 from '/img/instruments/videomancer/inertia/inertia_hero_s1.png';
+import inertia_hero_s2 from '/img/instruments/videomancer/inertia/inertia_hero_s2.png';
+import inertia_hero_s3 from '/img/instruments/videomancer/inertia/inertia_hero_s3.png';
+import inertia_hero_s4 from '/img/instruments/videomancer/inertia/inertia_hero_s4.png';
+import inertia_hero_s5 from '/img/instruments/videomancer/inertia/inertia_hero_s5.png';
+import inertia_hero_s6 from '/img/instruments/videomancer/inertia/inertia_hero_s6.png';
+import inertia_ex1_s1 from '/img/instruments/videomancer/inertia/inertia_ex1_s1.png';
+import inertia_ex1_s2 from '/img/instruments/videomancer/inertia/inertia_ex1_s2.png';
+import inertia_ex1_s3 from '/img/instruments/videomancer/inertia/inertia_ex1_s3.png';
+import inertia_ex1_s4 from '/img/instruments/videomancer/inertia/inertia_ex1_s4.png';
+import inertia_ex1_s5 from '/img/instruments/videomancer/inertia/inertia_ex1_s5.png';
+import inertia_ex1_s6 from '/img/instruments/videomancer/inertia/inertia_ex1_s6.png';
+import inertia_ex2_s1 from '/img/instruments/videomancer/inertia/inertia_ex2_s1.png';
+import inertia_ex2_s2 from '/img/instruments/videomancer/inertia/inertia_ex2_s2.png';
+import inertia_ex2_s3 from '/img/instruments/videomancer/inertia/inertia_ex2_s3.png';
+import inertia_ex2_s4 from '/img/instruments/videomancer/inertia/inertia_ex2_s4.png';
+import inertia_ex2_s5 from '/img/instruments/videomancer/inertia/inertia_ex2_s5.png';
+import inertia_ex2_s6 from '/img/instruments/videomancer/inertia/inertia_ex2_s6.png';
+import inertia_ex3_s1 from '/img/instruments/videomancer/inertia/inertia_ex3_s1.png';
+import inertia_ex3_s2 from '/img/instruments/videomancer/inertia/inertia_ex3_s2.png';
+import inertia_ex3_s3 from '/img/instruments/videomancer/inertia/inertia_ex3_s3.png';
+import inertia_ex3_s4 from '/img/instruments/videomancer/inertia/inertia_ex3_s4.png';
+import inertia_ex3_s5 from '/img/instruments/videomancer/inertia/inertia_ex3_s5.png';
+import inertia_ex3_s6 from '/img/instruments/videomancer/inertia/inertia_ex3_s6.png';
 
 # Inertia
 
@@ -23,9 +45,12 @@ import inertia_source3_kodim01_bw from '/img/instruments/videomancer/inertia/ine
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_hero },
-    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_hero },
-    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_hero },
+    { label: "Field", before: inertia_source1_field, after: inertia_hero_s1 },
+    { label: "Sunset", before: inertia_source2_sunset, after: inertia_hero_s2 },
+    { label: "Clouds", before: inertia_source3_clouds, after: inertia_hero_s3 },
+    { label: "Pattern", before: inertia_source4_pattern, after: inertia_hero_s4 },
+    { label: "Woman", before: inertia_source5_woman, after: inertia_hero_s5 },
+    { label: "Knit", before: inertia_source6_knit, after: inertia_hero_s6 },
   ]}
 />
 *Inertia applying momentum-driven pixelation drift to a colorful video source, with blocks sliding and zooming under accumulated velocity.*
@@ -97,8 +122,6 @@ The critical interaction is between the physics engine and the sample-and-hold g
 
 ## Parameter Reference
 
-<img src={inertia_control_panel} alt="Videomancer front panel with Inertia loaded"/>
-*Videomancer's front panel with Inertia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -203,9 +226,12 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise1_result },
-    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise1_result },
-    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise1_result },
+    { label: "Field", before: inertia_source1_field, after: inertia_ex1_s1 },
+    { label: "Sunset", before: inertia_source2_sunset, after: inertia_ex1_s2 },
+    { label: "Clouds", before: inertia_source3_clouds, after: inertia_ex1_s3 },
+    { label: "Pattern", before: inertia_source4_pattern, after: inertia_ex1_s4 },
+    { label: "Woman", before: inertia_source5_woman, after: inertia_ex1_s5 },
+    { label: "Knit", before: inertia_source6_knit, after: inertia_ex1_s6 },
   ]}
 />
 *Horizontal Drift — simulated result across source images.*
@@ -227,9 +253,12 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise2_result },
-    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise2_result },
-    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise2_result },
+    { label: "Field", before: inertia_source1_field, after: inertia_ex2_s1 },
+    { label: "Sunset", before: inertia_source2_sunset, after: inertia_ex2_s2 },
+    { label: "Clouds", before: inertia_source3_clouds, after: inertia_ex2_s3 },
+    { label: "Pattern", before: inertia_source4_pattern, after: inertia_ex2_s4 },
+    { label: "Woman", before: inertia_source5_woman, after: inertia_ex2_s5 },
+    { label: "Knit", before: inertia_source6_knit, after: inertia_ex2_s6 },
   ]}
 />
 *Bounce and Zoom — simulated result across source images.*
@@ -251,9 +280,12 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: inertia_source1_kodim15, after: inertia_exercise3_result },
-    { label: "Kodim01", before: inertia_source2_kodim01, after: inertia_exercise3_result },
-    { label: "Kodim01 B&W", before: inertia_source3_kodim01_bw, after: inertia_exercise3_result },
+    { label: "Field", before: inertia_source1_field, after: inertia_ex3_s1 },
+    { label: "Sunset", before: inertia_source2_sunset, after: inertia_ex3_s2 },
+    { label: "Clouds", before: inertia_source3_clouds, after: inertia_ex3_s3 },
+    { label: "Pattern", before: inertia_source4_pattern, after: inertia_ex3_s4 },
+    { label: "Woman", before: inertia_source5_woman, after: inertia_ex3_s5 },
+    { label: "Knit", before: inertia_source6_knit, after: inertia_ex3_s6 },
   ]}
 />
 *Full Momentum Chaos — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 78
+sidebar_position: 81
 slug: /instruments/videomancer/diffract
 title: "Diffract"
-image: /img/instruments/videomancer/diffract/diffract_hero.png
+image: /img/instruments/videomancer/diffract/diffract_hero_s1.png
 description: "When white light passes through a diffraction grating — a surface scored with thousands of parallel slits — each wavelength bends at a slightly different angle."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import diffract_hero from '/img/instruments/videomancer/diffract/diffract_hero.png';
-import diffract_control_panel from '/img/instruments/videomancer/diffract/diffract_control_panel.png';
-import diffract_exercise1_result from '/img/instruments/videomancer/diffract/diffract_exercise1_result.png';
-import diffract_exercise2_result from '/img/instruments/videomancer/diffract/diffract_exercise2_result.png';
-import diffract_exercise3_result from '/img/instruments/videomancer/diffract/diffract_exercise3_result.png';
-import diffract_source1_kodim15 from '/img/instruments/videomancer/diffract/diffract_source1_kodim15.png';
-import diffract_source2_kodim01 from '/img/instruments/videomancer/diffract/diffract_source2_kodim01.png';
-import diffract_source3_kodim01_bw from '/img/instruments/videomancer/diffract/diffract_source3_kodim01_bw.png';
+import diffract_source1_car from '/img/instruments/videomancer/diffract/diffract_source1_car.png';
+import diffract_source2_parrot from '/img/instruments/videomancer/diffract/diffract_source2_parrot.png';
+import diffract_source3_clouds from '/img/instruments/videomancer/diffract/diffract_source3_clouds.png';
+import diffract_source4_pattern from '/img/instruments/videomancer/diffract/diffract_source4_pattern.png';
+import diffract_source5_girl from '/img/instruments/videomancer/diffract/diffract_source5_girl.png';
+import diffract_source6_paint from '/img/instruments/videomancer/diffract/diffract_source6_paint.png';
+import diffract_hero_s1 from '/img/instruments/videomancer/diffract/diffract_hero_s1.png';
+import diffract_hero_s2 from '/img/instruments/videomancer/diffract/diffract_hero_s2.png';
+import diffract_hero_s3 from '/img/instruments/videomancer/diffract/diffract_hero_s3.png';
+import diffract_hero_s4 from '/img/instruments/videomancer/diffract/diffract_hero_s4.png';
+import diffract_hero_s5 from '/img/instruments/videomancer/diffract/diffract_hero_s5.png';
+import diffract_hero_s6 from '/img/instruments/videomancer/diffract/diffract_hero_s6.png';
+import diffract_ex1_s1 from '/img/instruments/videomancer/diffract/diffract_ex1_s1.png';
+import diffract_ex1_s2 from '/img/instruments/videomancer/diffract/diffract_ex1_s2.png';
+import diffract_ex1_s3 from '/img/instruments/videomancer/diffract/diffract_ex1_s3.png';
+import diffract_ex1_s4 from '/img/instruments/videomancer/diffract/diffract_ex1_s4.png';
+import diffract_ex1_s5 from '/img/instruments/videomancer/diffract/diffract_ex1_s5.png';
+import diffract_ex1_s6 from '/img/instruments/videomancer/diffract/diffract_ex1_s6.png';
+import diffract_ex2_s1 from '/img/instruments/videomancer/diffract/diffract_ex2_s1.png';
+import diffract_ex2_s2 from '/img/instruments/videomancer/diffract/diffract_ex2_s2.png';
+import diffract_ex2_s3 from '/img/instruments/videomancer/diffract/diffract_ex2_s3.png';
+import diffract_ex2_s4 from '/img/instruments/videomancer/diffract/diffract_ex2_s4.png';
+import diffract_ex2_s5 from '/img/instruments/videomancer/diffract/diffract_ex2_s5.png';
+import diffract_ex2_s6 from '/img/instruments/videomancer/diffract/diffract_ex2_s6.png';
+import diffract_ex3_s1 from '/img/instruments/videomancer/diffract/diffract_ex3_s1.png';
+import diffract_ex3_s2 from '/img/instruments/videomancer/diffract/diffract_ex3_s2.png';
+import diffract_ex3_s3 from '/img/instruments/videomancer/diffract/diffract_ex3_s3.png';
+import diffract_ex3_s4 from '/img/instruments/videomancer/diffract/diffract_ex3_s4.png';
+import diffract_ex3_s5 from '/img/instruments/videomancer/diffract/diffract_ex3_s5.png';
+import diffract_ex3_s6 from '/img/instruments/videomancer/diffract/diffract_ex3_s6.png';
 
 # Diffract
 
@@ -23,9 +45,12 @@ import diffract_source3_kodim01_bw from '/img/instruments/videomancer/diffract/d
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_hero },
-    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_hero },
-    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_hero },
+    { label: "Car", before: diffract_source1_car, after: diffract_hero_s1 },
+    { label: "Parrot", before: diffract_source2_parrot, after: diffract_hero_s2 },
+    { label: "Clouds", before: diffract_source3_clouds, after: diffract_hero_s3 },
+    { label: "Pattern", before: diffract_source4_pattern, after: diffract_hero_s4 },
+    { label: "Girl", before: diffract_source5_girl, after: diffract_hero_s5 },
+    { label: "Paint", before: diffract_source6_paint, after: diffract_hero_s6 },
   ]}
 />
 *Diffract splitting edge transitions into prismatic color fringes through horizontal shift register tap differencing.*
@@ -122,8 +147,6 @@ The critical design decision is that luminance passes through unmodified — onl
 
 ## Parameter Reference
 
-<img src={diffract_control_panel} alt="Videomancer front panel with Diffract loaded"/>
-*Videomancer's front panel with Diffract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -228,9 +251,12 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise1_result },
-    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise1_result },
-    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise1_result },
+    { label: "Car", before: diffract_source1_car, after: diffract_ex1_s1 },
+    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex1_s2 },
+    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex1_s3 },
+    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex1_s4 },
+    { label: "Girl", before: diffract_source5_girl, after: diffract_ex1_s5 },
+    { label: "Paint", before: diffract_source6_paint, after: diffract_ex1_s6 },
   ]}
 />
 *Horizontal Edge Fringes — simulated result across source images.*
@@ -252,9 +278,12 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise2_result },
-    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise2_result },
-    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise2_result },
+    { label: "Car", before: diffract_source1_car, after: diffract_ex2_s1 },
+    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex2_s2 },
+    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex2_s3 },
+    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex2_s4 },
+    { label: "Girl", before: diffract_source5_girl, after: diffract_ex2_s5 },
+    { label: "Paint", before: diffract_source6_paint, after: diffract_ex2_s6 },
   ]}
 />
 *Vertical Fringe Mode — simulated result across source images.*
@@ -276,9 +305,12 @@ These exercises progress from basic horizontal chromatic fringes through vertica
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: diffract_source1_kodim15, after: diffract_exercise3_result },
-    { label: "Kodim01", before: diffract_source2_kodim01, after: diffract_exercise3_result },
-    { label: "Kodim01 B&W", before: diffract_source3_kodim01_bw, after: diffract_exercise3_result },
+    { label: "Car", before: diffract_source1_car, after: diffract_ex3_s1 },
+    { label: "Parrot", before: diffract_source2_parrot, after: diffract_ex3_s2 },
+    { label: "Clouds", before: diffract_source3_clouds, after: diffract_ex3_s3 },
+    { label: "Pattern", before: diffract_source4_pattern, after: diffract_ex3_s4 },
+    { label: "Girl", before: diffract_source5_girl, after: diffract_ex3_s5 },
+    { label: "Paint", before: diffract_source6_paint, after: diffract_ex3_s6 },
   ]}
 />
 *Prismatic Texture Synthesis — simulated result across source images.*

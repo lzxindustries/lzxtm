@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 55
+sidebar_position: 57
 slug: /instruments/videomancer/colorgan
 title: "Colorgan"
 image: /img/instruments/videomancer/colorgan/colorgan_hero.png

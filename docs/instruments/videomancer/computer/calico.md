@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 33
+sidebar_position: 34
 slug: /instruments/videomancer/calico
 title: "Calico"
-image: /img/instruments/videomancer/calico/calico_hero.png
+image: /img/instruments/videomancer/calico/calico_hero_s1.png
 description: "The Commodore Amiga's HAM (Hold-And-Modify) display mode was one of the most ingenious compromises in the history of computer graphics."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import calico_hero from '/img/instruments/videomancer/calico/calico_hero.png';
-import calico_control_panel from '/img/instruments/videomancer/calico/calico_control_panel.png';
-import calico_exercise1_result from '/img/instruments/videomancer/calico/calico_exercise1_result.png';
-import calico_exercise2_result from '/img/instruments/videomancer/calico/calico_exercise2_result.png';
-import calico_exercise3_result from '/img/instruments/videomancer/calico/calico_exercise3_result.png';
-import calico_source1_kodim15 from '/img/instruments/videomancer/calico/calico_source1_kodim15.png';
-import calico_source2_kodim03 from '/img/instruments/videomancer/calico/calico_source2_kodim03.png';
-import calico_source3_kodim15_bw from '/img/instruments/videomancer/calico/calico_source3_kodim15_bw.png';
+import calico_source1_fruit from '/img/instruments/videomancer/calico/calico_source1_fruit.png';
+import calico_source2_dog from '/img/instruments/videomancer/calico/calico_source2_dog.png';
+import calico_source3_turtle from '/img/instruments/videomancer/calico/calico_source3_turtle.png';
+import calico_source4_pattern from '/img/instruments/videomancer/calico/calico_source4_pattern.png';
+import calico_source5_girl from '/img/instruments/videomancer/calico/calico_source5_girl.png';
+import calico_source6_wood from '/img/instruments/videomancer/calico/calico_source6_wood.png';
+import calico_hero_s1 from '/img/instruments/videomancer/calico/calico_hero_s1.png';
+import calico_hero_s2 from '/img/instruments/videomancer/calico/calico_hero_s2.png';
+import calico_hero_s3 from '/img/instruments/videomancer/calico/calico_hero_s3.png';
+import calico_hero_s4 from '/img/instruments/videomancer/calico/calico_hero_s4.png';
+import calico_hero_s5 from '/img/instruments/videomancer/calico/calico_hero_s5.png';
+import calico_hero_s6 from '/img/instruments/videomancer/calico/calico_hero_s6.png';
+import calico_ex1_s1 from '/img/instruments/videomancer/calico/calico_ex1_s1.png';
+import calico_ex1_s2 from '/img/instruments/videomancer/calico/calico_ex1_s2.png';
+import calico_ex1_s3 from '/img/instruments/videomancer/calico/calico_ex1_s3.png';
+import calico_ex1_s4 from '/img/instruments/videomancer/calico/calico_ex1_s4.png';
+import calico_ex1_s5 from '/img/instruments/videomancer/calico/calico_ex1_s5.png';
+import calico_ex1_s6 from '/img/instruments/videomancer/calico/calico_ex1_s6.png';
+import calico_ex2_s1 from '/img/instruments/videomancer/calico/calico_ex2_s1.png';
+import calico_ex2_s2 from '/img/instruments/videomancer/calico/calico_ex2_s2.png';
+import calico_ex2_s3 from '/img/instruments/videomancer/calico/calico_ex2_s3.png';
+import calico_ex2_s4 from '/img/instruments/videomancer/calico/calico_ex2_s4.png';
+import calico_ex2_s5 from '/img/instruments/videomancer/calico/calico_ex2_s5.png';
+import calico_ex2_s6 from '/img/instruments/videomancer/calico/calico_ex2_s6.png';
+import calico_ex3_s1 from '/img/instruments/videomancer/calico/calico_ex3_s1.png';
+import calico_ex3_s2 from '/img/instruments/videomancer/calico/calico_ex3_s2.png';
+import calico_ex3_s3 from '/img/instruments/videomancer/calico/calico_ex3_s3.png';
+import calico_ex3_s4 from '/img/instruments/videomancer/calico/calico_ex3_s4.png';
+import calico_ex3_s5 from '/img/instruments/videomancer/calico/calico_ex3_s5.png';
+import calico_ex3_s6 from '/img/instruments/videomancer/calico/calico_ex3_s6.png';
 
 # Calico
 
@@ -23,9 +45,12 @@ import calico_source3_kodim15_bw from '/img/instruments/videomancer/calico/calic
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: calico_source1_kodim15, after: calico_hero },
-    { label: "Kodim03", before: calico_source2_kodim03, after: calico_hero },
-    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_hero },
+    { label: "Fruit", before: calico_source1_fruit, after: calico_hero_s1 },
+    { label: "Dog", before: calico_source2_dog, after: calico_hero_s2 },
+    { label: "Turtle", before: calico_source3_turtle, after: calico_hero_s3 },
+    { label: "Pattern", before: calico_source4_pattern, after: calico_hero_s4 },
+    { label: "Girl", before: calico_source5_girl, after: calico_hero_s5 },
+    { label: "Wood", before: calico_source6_wood, after: calico_hero_s6 },
   ]}
 />
 *Calico rendering a portrait through Amiga HAM6 encoding with the Workbench palette, producing characteristic horizontal color fringing at every sharp edge.*
@@ -126,8 +151,6 @@ The heart of Calico is the Stage 3 HAM encoder — a per-scanline state machine 
 
 ## Parameter Reference
 
-<img src={calico_control_panel} alt="Videomancer front panel with Calico loaded"/>
-*Videomancer's front panel with Calico active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -230,9 +253,12 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise1_result },
-    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise1_result },
-    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise1_result },
+    { label: "Fruit", before: calico_source1_fruit, after: calico_ex1_s1 },
+    { label: "Dog", before: calico_source2_dog, after: calico_ex1_s2 },
+    { label: "Turtle", before: calico_source3_turtle, after: calico_ex1_s3 },
+    { label: "Pattern", before: calico_source4_pattern, after: calico_ex1_s4 },
+    { label: "Girl", before: calico_source5_girl, after: calico_ex1_s5 },
+    { label: "Wood", before: calico_source6_wood, after: calico_ex1_s6 },
   ]}
 />
 *Palette Character — simulated result across source images.*
@@ -254,9 +280,12 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise2_result },
-    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise2_result },
-    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise2_result },
+    { label: "Fruit", before: calico_source1_fruit, after: calico_ex2_s1 },
+    { label: "Dog", before: calico_source2_dog, after: calico_ex2_s2 },
+    { label: "Turtle", before: calico_source3_turtle, after: calico_ex2_s3 },
+    { label: "Pattern", before: calico_source4_pattern, after: calico_ex2_s4 },
+    { label: "Girl", before: calico_source5_girl, after: calico_ex2_s5 },
+    { label: "Wood", before: calico_source6_wood, after: calico_ex2_s6 },
   ]}
 />
 *Fringing and Direction — simulated result across source images.*
@@ -278,9 +307,12 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: calico_source1_kodim15, after: calico_exercise3_result },
-    { label: "Kodim03", before: calico_source2_kodim03, after: calico_exercise3_result },
-    { label: "Kodim15 B&W", before: calico_source3_kodim15_bw, after: calico_exercise3_result },
+    { label: "Fruit", before: calico_source1_fruit, after: calico_ex3_s1 },
+    { label: "Dog", before: calico_source2_dog, after: calico_ex3_s2 },
+    { label: "Turtle", before: calico_source3_turtle, after: calico_ex3_s3 },
+    { label: "Pattern", before: calico_source4_pattern, after: calico_ex3_s4 },
+    { label: "Girl", before: calico_source5_girl, after: calico_ex3_s5 },
+    { label: "Wood", before: calico_source6_wood, after: calico_ex3_s6 },
   ]}
 />
 *Genlock Compositing — simulated result across source images.*

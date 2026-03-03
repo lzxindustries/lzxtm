@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 167
+sidebar_position: 175
 slug: /instruments/videomancer/litmus
 title: "Litmus"
-image: /img/instruments/videomancer/litmus/litmus_hero.png
+image: /img/instruments/videomancer/litmus/litmus_hero_s1.png
 description: "In every chemistry laboratory there is a drawer full of narrow paper strips impregnated with chemical indicators — compounds that change color in the presence of specific substances."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import litmus_hero from '/img/instruments/videomancer/litmus/litmus_hero.png';
-import litmus_control_panel from '/img/instruments/videomancer/litmus/litmus_control_panel.png';
-import litmus_exercise1_result from '/img/instruments/videomancer/litmus/litmus_exercise1_result.png';
-import litmus_exercise2_result from '/img/instruments/videomancer/litmus/litmus_exercise2_result.png';
-import litmus_exercise3_result from '/img/instruments/videomancer/litmus/litmus_exercise3_result.png';
-import litmus_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source1_grayscale_ramp_h_1920x1080.png';
-import litmus_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/litmus/litmus_source2_grayscale_ramp_v_1920x1080.png';
-import litmus_source3_step_wedge_21level_512 from '/img/instruments/videomancer/litmus/litmus_source3_step_wedge_21level_512.png';
+import litmus_source1_car from '/img/instruments/videomancer/litmus/litmus_source1_car.png';
+import litmus_source2_boat from '/img/instruments/videomancer/litmus/litmus_source2_boat.png';
+import litmus_source3_turtle from '/img/instruments/videomancer/litmus/litmus_source3_turtle.png';
+import litmus_source4_pattern from '/img/instruments/videomancer/litmus/litmus_source4_pattern.png';
+import litmus_source5_boy from '/img/instruments/videomancer/litmus/litmus_source5_boy.png';
+import litmus_source6_knit from '/img/instruments/videomancer/litmus/litmus_source6_knit.png';
+import litmus_hero_s1 from '/img/instruments/videomancer/litmus/litmus_hero_s1.png';
+import litmus_hero_s2 from '/img/instruments/videomancer/litmus/litmus_hero_s2.png';
+import litmus_hero_s3 from '/img/instruments/videomancer/litmus/litmus_hero_s3.png';
+import litmus_hero_s4 from '/img/instruments/videomancer/litmus/litmus_hero_s4.png';
+import litmus_hero_s5 from '/img/instruments/videomancer/litmus/litmus_hero_s5.png';
+import litmus_hero_s6 from '/img/instruments/videomancer/litmus/litmus_hero_s6.png';
+import litmus_ex1_s1 from '/img/instruments/videomancer/litmus/litmus_ex1_s1.png';
+import litmus_ex1_s2 from '/img/instruments/videomancer/litmus/litmus_ex1_s2.png';
+import litmus_ex1_s3 from '/img/instruments/videomancer/litmus/litmus_ex1_s3.png';
+import litmus_ex1_s4 from '/img/instruments/videomancer/litmus/litmus_ex1_s4.png';
+import litmus_ex1_s5 from '/img/instruments/videomancer/litmus/litmus_ex1_s5.png';
+import litmus_ex1_s6 from '/img/instruments/videomancer/litmus/litmus_ex1_s6.png';
+import litmus_ex2_s1 from '/img/instruments/videomancer/litmus/litmus_ex2_s1.png';
+import litmus_ex2_s2 from '/img/instruments/videomancer/litmus/litmus_ex2_s2.png';
+import litmus_ex2_s3 from '/img/instruments/videomancer/litmus/litmus_ex2_s3.png';
+import litmus_ex2_s4 from '/img/instruments/videomancer/litmus/litmus_ex2_s4.png';
+import litmus_ex2_s5 from '/img/instruments/videomancer/litmus/litmus_ex2_s5.png';
+import litmus_ex2_s6 from '/img/instruments/videomancer/litmus/litmus_ex2_s6.png';
+import litmus_ex3_s1 from '/img/instruments/videomancer/litmus/litmus_ex3_s1.png';
+import litmus_ex3_s2 from '/img/instruments/videomancer/litmus/litmus_ex3_s2.png';
+import litmus_ex3_s3 from '/img/instruments/videomancer/litmus/litmus_ex3_s3.png';
+import litmus_ex3_s4 from '/img/instruments/videomancer/litmus/litmus_ex3_s4.png';
+import litmus_ex3_s5 from '/img/instruments/videomancer/litmus/litmus_ex3_s5.png';
+import litmus_ex3_s6 from '/img/instruments/videomancer/litmus/litmus_ex3_s6.png';
 
 # Litmus
 
@@ -23,9 +45,12 @@ import litmus_source3_step_wedge_21level_512 from '/img/instruments/videomancer/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_hero },
-    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_hero },
-    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_hero },
+    { label: "Car", before: litmus_source1_car, after: litmus_hero_s1 },
+    { label: "Boat", before: litmus_source2_boat, after: litmus_hero_s2 },
+    { label: "Turtle", before: litmus_source3_turtle, after: litmus_hero_s3 },
+    { label: "Pattern", before: litmus_source4_pattern, after: litmus_hero_s4 },
+    { label: "Boy", before: litmus_source5_boy, after: litmus_hero_s5 },
+    { label: "Knit", before: litmus_source6_knit, after: litmus_hero_s6 },
   ]}
 />
 *Litmus applying pH reagent false-color mapping with paper texture to transform video into chemical indicator strip imagery.*
@@ -105,8 +130,6 @@ The pipeline splits into two phases. The first phase (Stages 1–2) quantizes th
 
 ## Parameter Reference
 
-<img src={litmus_control_panel} alt="Videomancer front panel with Litmus loaded"/>
-*Videomancer's front panel with Litmus active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -210,9 +233,12 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise1_result },
-    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise1_result },
-    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise1_result },
+    { label: "Car", before: litmus_source1_car, after: litmus_ex1_s1 },
+    { label: "Boat", before: litmus_source2_boat, after: litmus_ex1_s2 },
+    { label: "Turtle", before: litmus_source3_turtle, after: litmus_ex1_s3 },
+    { label: "Pattern", before: litmus_source4_pattern, after: litmus_ex1_s4 },
+    { label: "Boy", before: litmus_source5_boy, after: litmus_ex1_s5 },
+    { label: "Knit", before: litmus_source6_knit, after: litmus_ex1_s6 },
   ]}
 />
 *pH Strip Colorization — simulated result across source images.*
@@ -234,9 +260,12 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise2_result },
-    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise2_result },
-    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise2_result },
+    { label: "Car", before: litmus_source1_car, after: litmus_ex2_s1 },
+    { label: "Boat", before: litmus_source2_boat, after: litmus_ex2_s2 },
+    { label: "Turtle", before: litmus_source3_turtle, after: litmus_ex2_s3 },
+    { label: "Pattern", before: litmus_source4_pattern, after: litmus_ex2_s4 },
+    { label: "Boy", before: litmus_source5_boy, after: litmus_ex2_s5 },
+    { label: "Knit", before: litmus_source6_knit, after: litmus_ex2_s6 },
   ]}
 />
 *Paper Texture and Zone Bleed — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: litmus_source1_grayscale_ramp_h_1920x1080, after: litmus_exercise3_result },
-    { label: "Grayscale Ramp V", before: litmus_source2_grayscale_ramp_v_1920x1080, after: litmus_exercise3_result },
-    { label: "Step Wedge 21level", before: litmus_source3_step_wedge_21level_512, after: litmus_exercise3_result },
+    { label: "Car", before: litmus_source1_car, after: litmus_ex3_s1 },
+    { label: "Boat", before: litmus_source2_boat, after: litmus_ex3_s2 },
+    { label: "Turtle", before: litmus_source3_turtle, after: litmus_ex3_s3 },
+    { label: "Pattern", before: litmus_source4_pattern, after: litmus_ex3_s4 },
+    { label: "Boy", before: litmus_source5_boy, after: litmus_ex3_s5 },
+    { label: "Knit", before: litmus_source6_knit, after: litmus_ex3_s6 },
   ]}
 />
 *Chroma Source and Reagent Comparison — simulated result across source images.*

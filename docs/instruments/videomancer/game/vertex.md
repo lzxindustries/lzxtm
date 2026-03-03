@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 302
+sidebar_position: 317
 slug: /instruments/videomancer/vertex
 title: "Vertex"
 image: /img/instruments/videomancer/vertex/vertex_hero.png

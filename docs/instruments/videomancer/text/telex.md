@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 284
+sidebar_position: 297
 slug: /instruments/videomancer/telex
 title: "Telex"
 image: /img/instruments/videomancer/telex/telex_hero.png

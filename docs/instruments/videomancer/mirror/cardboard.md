@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 35
+sidebar_position: 36
 slug: /instruments/videomancer/cardboard
 title: "Cardboard"
-image: /img/instruments/videomancer/cardboard/cardboard_hero.png
+image: /img/instruments/videomancer/cardboard/cardboard_hero_s1.png
 description: "Before cinema, before animation, there was the paper theater — a miniature stage built from flat cardboard cutouts arranged in parallel planes."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cardboard_hero from '/img/instruments/videomancer/cardboard/cardboard_hero.png';
-import cardboard_control_panel from '/img/instruments/videomancer/cardboard/cardboard_control_panel.png';
-import cardboard_exercise1_result from '/img/instruments/videomancer/cardboard/cardboard_exercise1_result.png';
-import cardboard_exercise2_result from '/img/instruments/videomancer/cardboard/cardboard_exercise2_result.png';
-import cardboard_exercise3_result from '/img/instruments/videomancer/cardboard/cardboard_exercise3_result.png';
-import cardboard_source1_kodim01 from '/img/instruments/videomancer/cardboard/cardboard_source1_kodim01.png';
-import cardboard_source2_kodim02 from '/img/instruments/videomancer/cardboard/cardboard_source2_kodim02.png';
-import cardboard_source3_kodim01_bw from '/img/instruments/videomancer/cardboard/cardboard_source3_kodim01_bw.png';
+import cardboard_source1_sunset from '/img/instruments/videomancer/cardboard/cardboard_source1_sunset.png';
+import cardboard_source2_fruit from '/img/instruments/videomancer/cardboard/cardboard_source2_fruit.png';
+import cardboard_source3_clouds from '/img/instruments/videomancer/cardboard/cardboard_source3_clouds.png';
+import cardboard_source4_pattern from '/img/instruments/videomancer/cardboard/cardboard_source4_pattern.png';
+import cardboard_source5_girl from '/img/instruments/videomancer/cardboard/cardboard_source5_girl.png';
+import cardboard_source6_wood from '/img/instruments/videomancer/cardboard/cardboard_source6_wood.png';
+import cardboard_hero_s1 from '/img/instruments/videomancer/cardboard/cardboard_hero_s1.png';
+import cardboard_hero_s2 from '/img/instruments/videomancer/cardboard/cardboard_hero_s2.png';
+import cardboard_hero_s3 from '/img/instruments/videomancer/cardboard/cardboard_hero_s3.png';
+import cardboard_hero_s4 from '/img/instruments/videomancer/cardboard/cardboard_hero_s4.png';
+import cardboard_hero_s5 from '/img/instruments/videomancer/cardboard/cardboard_hero_s5.png';
+import cardboard_hero_s6 from '/img/instruments/videomancer/cardboard/cardboard_hero_s6.png';
+import cardboard_ex1_s1 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s1.png';
+import cardboard_ex1_s2 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s2.png';
+import cardboard_ex1_s3 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s3.png';
+import cardboard_ex1_s4 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s4.png';
+import cardboard_ex1_s5 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s5.png';
+import cardboard_ex1_s6 from '/img/instruments/videomancer/cardboard/cardboard_ex1_s6.png';
+import cardboard_ex2_s1 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s1.png';
+import cardboard_ex2_s2 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s2.png';
+import cardboard_ex2_s3 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s3.png';
+import cardboard_ex2_s4 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s4.png';
+import cardboard_ex2_s5 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s5.png';
+import cardboard_ex2_s6 from '/img/instruments/videomancer/cardboard/cardboard_ex2_s6.png';
+import cardboard_ex3_s1 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s1.png';
+import cardboard_ex3_s2 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s2.png';
+import cardboard_ex3_s3 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s3.png';
+import cardboard_ex3_s4 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s4.png';
+import cardboard_ex3_s5 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s5.png';
+import cardboard_ex3_s6 from '/img/instruments/videomancer/cardboard/cardboard_ex3_s6.png';
 
 # Cardboard
 
@@ -23,9 +45,12 @@ import cardboard_source3_kodim01_bw from '/img/instruments/videomancer/cardboard
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_hero },
-    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_hero },
-    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_hero },
+    { label: "Sunset", before: cardboard_source1_sunset, after: cardboard_hero_s1 },
+    { label: "Fruit", before: cardboard_source2_fruit, after: cardboard_hero_s2 },
+    { label: "Clouds", before: cardboard_source3_clouds, after: cardboard_hero_s3 },
+    { label: "Pattern", before: cardboard_source4_pattern, after: cardboard_hero_s4 },
+    { label: "Girl", before: cardboard_source5_girl, after: cardboard_hero_s5 },
+    { label: "Wood", before: cardboard_source6_wood, after: cardboard_hero_s6 },
   ]}
 />
 *Cardboard splitting a portrait into four luma-driven depth planes with staggered horizontal parallax, revealing paper theater cutout layers in a single video frame.*
@@ -107,9 +132,6 @@ Edge detection also operates on the original (unshifted) luminance, comparing th
 ---
 
 ## Parameter Reference
-
-<img src={cardboard_control_panel} alt="Videomancer front panel with Cardboard loaded"/>
-*Videomancer's front panel with Cardboard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +236,12 @@ These exercises progress from basic layer separation to full paper theater paral
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise1_result },
-    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise1_result },
-    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise1_result },
+    { label: "Sunset", before: cardboard_source1_sunset, after: cardboard_ex1_s1 },
+    { label: "Fruit", before: cardboard_source2_fruit, after: cardboard_ex1_s2 },
+    { label: "Clouds", before: cardboard_source3_clouds, after: cardboard_ex1_s3 },
+    { label: "Pattern", before: cardboard_source4_pattern, after: cardboard_ex1_s4 },
+    { label: "Girl", before: cardboard_source5_girl, after: cardboard_ex1_s5 },
+    { label: "Wood", before: cardboard_source6_wood, after: cardboard_ex1_s6 },
   ]}
 />
 *Layer Separation — simulated result across source images.*
@@ -239,9 +264,12 @@ These exercises progress from basic layer separation to full paper theater paral
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise2_result },
-    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise2_result },
-    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise2_result },
+    { label: "Sunset", before: cardboard_source1_sunset, after: cardboard_ex2_s1 },
+    { label: "Fruit", before: cardboard_source2_fruit, after: cardboard_ex2_s2 },
+    { label: "Clouds", before: cardboard_source3_clouds, after: cardboard_ex2_s3 },
+    { label: "Pattern", before: cardboard_source4_pattern, after: cardboard_ex2_s4 },
+    { label: "Girl", before: cardboard_source5_girl, after: cardboard_ex2_s5 },
+    { label: "Wood", before: cardboard_source6_wood, after: cardboard_ex2_s6 },
   ]}
 />
 *Parallax Depth — simulated result across source images.*
@@ -264,9 +292,12 @@ These exercises progress from basic layer separation to full paper theater paral
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: cardboard_source1_kodim01, after: cardboard_exercise3_result },
-    { label: "Kodim02", before: cardboard_source2_kodim02, after: cardboard_exercise3_result },
-    { label: "Kodim01 B&W", before: cardboard_source3_kodim01_bw, after: cardboard_exercise3_result },
+    { label: "Sunset", before: cardboard_source1_sunset, after: cardboard_ex3_s1 },
+    { label: "Fruit", before: cardboard_source2_fruit, after: cardboard_ex3_s2 },
+    { label: "Clouds", before: cardboard_source3_clouds, after: cardboard_ex3_s3 },
+    { label: "Pattern", before: cardboard_source4_pattern, after: cardboard_ex3_s4 },
+    { label: "Girl", before: cardboard_source5_girl, after: cardboard_ex3_s5 },
+    { label: "Wood", before: cardboard_source6_wood, after: cardboard_ex3_s6 },
   ]}
 />
 *Cardboard Diorama — simulated result across source images.*

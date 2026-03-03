@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 177
+sidebar_position: 185
 slug: /instruments/videomancer/marcher
 title: "Marcher"
 image: /img/instruments/videomancer/marcher/marcher_hero.png

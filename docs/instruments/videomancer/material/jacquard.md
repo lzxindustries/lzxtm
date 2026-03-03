@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 144
+sidebar_position: 150
 slug: /instruments/videomancer/jacquard
 title: "Jacquard"
-image: /img/instruments/videomancer/jacquard/jacquard_hero.png
+image: /img/instruments/videomancer/jacquard/jacquard_hero_s1.png
 description: "The Jacquard loom, invented in 1804 by Joseph Marie Jacquard, was the first machine to use punched cards for controlling the pattern of a weave."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import jacquard_hero from '/img/instruments/videomancer/jacquard/jacquard_hero.png';
-import jacquard_control_panel from '/img/instruments/videomancer/jacquard/jacquard_control_panel.png';
-import jacquard_exercise1_result from '/img/instruments/videomancer/jacquard/jacquard_exercise1_result.png';
-import jacquard_exercise2_result from '/img/instruments/videomancer/jacquard/jacquard_exercise2_result.png';
-import jacquard_exercise3_result from '/img/instruments/videomancer/jacquard/jacquard_exercise3_result.png';
-import jacquard_source1_kodim15 from '/img/instruments/videomancer/jacquard/jacquard_source1_kodim15.png';
-import jacquard_source2_kodim03 from '/img/instruments/videomancer/jacquard/jacquard_source2_kodim03.png';
-import jacquard_source3_kodim13_bw from '/img/instruments/videomancer/jacquard/jacquard_source3_kodim13_bw.png';
+import jacquard_source1_parrot from '/img/instruments/videomancer/jacquard/jacquard_source1_parrot.png';
+import jacquard_source2_fruit from '/img/instruments/videomancer/jacquard/jacquard_source2_fruit.png';
+import jacquard_source3_clouds from '/img/instruments/videomancer/jacquard/jacquard_source3_clouds.png';
+import jacquard_source4_pattern from '/img/instruments/videomancer/jacquard/jacquard_source4_pattern.png';
+import jacquard_source5_boy from '/img/instruments/videomancer/jacquard/jacquard_source5_boy.png';
+import jacquard_source6_berries from '/img/instruments/videomancer/jacquard/jacquard_source6_berries.png';
+import jacquard_hero_s1 from '/img/instruments/videomancer/jacquard/jacquard_hero_s1.png';
+import jacquard_hero_s2 from '/img/instruments/videomancer/jacquard/jacquard_hero_s2.png';
+import jacquard_hero_s3 from '/img/instruments/videomancer/jacquard/jacquard_hero_s3.png';
+import jacquard_hero_s4 from '/img/instruments/videomancer/jacquard/jacquard_hero_s4.png';
+import jacquard_hero_s5 from '/img/instruments/videomancer/jacquard/jacquard_hero_s5.png';
+import jacquard_hero_s6 from '/img/instruments/videomancer/jacquard/jacquard_hero_s6.png';
+import jacquard_ex1_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s1.png';
+import jacquard_ex1_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s2.png';
+import jacquard_ex1_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s3.png';
+import jacquard_ex1_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s4.png';
+import jacquard_ex1_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s5.png';
+import jacquard_ex1_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex1_s6.png';
+import jacquard_ex2_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s1.png';
+import jacquard_ex2_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s2.png';
+import jacquard_ex2_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s3.png';
+import jacquard_ex2_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s4.png';
+import jacquard_ex2_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s5.png';
+import jacquard_ex2_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex2_s6.png';
+import jacquard_ex3_s1 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s1.png';
+import jacquard_ex3_s2 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s2.png';
+import jacquard_ex3_s3 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s3.png';
+import jacquard_ex3_s4 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s4.png';
+import jacquard_ex3_s5 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s5.png';
+import jacquard_ex3_s6 from '/img/instruments/videomancer/jacquard/jacquard_ex3_s6.png';
 
 # Jacquard
 
@@ -23,9 +45,12 @@ import jacquard_source3_kodim13_bw from '/img/instruments/videomancer/jacquard/j
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_hero },
-    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_hero },
-    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_hero },
+    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_hero_s1 },
+    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_hero_s2 },
+    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_hero_s3 },
+    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_hero_s4 },
+    { label: "Boy", before: jacquard_source5_boy, after: jacquard_hero_s5 },
+    { label: "Berries", before: jacquard_source6_berries, after: jacquard_hero_s6 },
   ]}
 />
 *Jacquard weaving video pixels into interlaced textile patterns with warp and weft hue tinting.*
@@ -108,8 +133,6 @@ The colour tinting path has an important toggle: Color Src selects whether the U
 
 ## Parameter Reference
 
-<img src={jacquard_control_panel} alt="Videomancer front panel with Jacquard loaded"/>
-*Videomancer's front panel with Jacquard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise1_result },
-    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise1_result },
-    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise1_result },
+    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex1_s1 },
+    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex1_s2 },
+    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex1_s3 },
+    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex1_s4 },
+    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex1_s5 },
+    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex1_s6 },
   ]}
 />
 *Basic Weave Patterns — simulated result across source images.*
@@ -239,9 +265,12 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise2_result },
-    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise2_result },
-    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise2_result },
+    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex2_s1 },
+    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex2_s2 },
+    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex2_s3 },
+    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex2_s4 },
+    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex2_s5 },
+    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex2_s6 },
   ]}
 />
 *Tartan Colourisation — simulated result across source images.*
@@ -264,9 +293,12 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: jacquard_source1_kodim15, after: jacquard_exercise3_result },
-    { label: "Kodim03", before: jacquard_source2_kodim03, after: jacquard_exercise3_result },
-    { label: "Kodim13 B&W", before: jacquard_source3_kodim13_bw, after: jacquard_exercise3_result },
+    { label: "Parrot", before: jacquard_source1_parrot, after: jacquard_ex3_s1 },
+    { label: "Fruit", before: jacquard_source2_fruit, after: jacquard_ex3_s2 },
+    { label: "Clouds", before: jacquard_source3_clouds, after: jacquard_ex3_s3 },
+    { label: "Pattern", before: jacquard_source4_pattern, after: jacquard_ex3_s4 },
+    { label: "Boy", before: jacquard_source5_boy, after: jacquard_ex3_s5 },
+    { label: "Berries", before: jacquard_source6_berries, after: jacquard_ex3_s6 },
   ]}
 />
 *Canvas Texture Overlay — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 84
+sidebar_position: 88
 slug: /instruments/videomancer/dotmatrix
 title: "Dotmatrix"
-image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero.png
+image: /img/instruments/videomancer/dotmatrix/dotmatrix_hero_s1.png
 description: "Before inkjet printers and laser engines, the dominant output device for personal computers was the impact dot-matrix printer."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dotmatrix_hero from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero.png';
-import dotmatrix_control_panel from '/img/instruments/videomancer/dotmatrix/dotmatrix_control_panel.png';
-import dotmatrix_exercise1_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise1_result.png';
-import dotmatrix_exercise2_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise2_result.png';
-import dotmatrix_exercise3_result from '/img/instruments/videomancer/dotmatrix/dotmatrix_exercise3_result.png';
-import dotmatrix_source1_kodim02 from '/img/instruments/videomancer/dotmatrix/dotmatrix_source1_kodim02.png';
-import dotmatrix_source2_kodim07 from '/img/instruments/videomancer/dotmatrix/dotmatrix_source2_kodim07.png';
-import dotmatrix_source3_kodim01_bw from '/img/instruments/videomancer/dotmatrix/dotmatrix_source3_kodim01_bw.png';
+import dotmatrix_source1_castle from '/img/instruments/videomancer/dotmatrix/dotmatrix_source1_castle.png';
+import dotmatrix_source2_car from '/img/instruments/videomancer/dotmatrix/dotmatrix_source2_car.png';
+import dotmatrix_source3_turtle from '/img/instruments/videomancer/dotmatrix/dotmatrix_source3_turtle.png';
+import dotmatrix_source4_pattern from '/img/instruments/videomancer/dotmatrix/dotmatrix_source4_pattern.png';
+import dotmatrix_source5_girl from '/img/instruments/videomancer/dotmatrix/dotmatrix_source5_girl.png';
+import dotmatrix_source6_berries from '/img/instruments/videomancer/dotmatrix/dotmatrix_source6_berries.png';
+import dotmatrix_hero_s1 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s1.png';
+import dotmatrix_hero_s2 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s2.png';
+import dotmatrix_hero_s3 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s3.png';
+import dotmatrix_hero_s4 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s4.png';
+import dotmatrix_hero_s5 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s5.png';
+import dotmatrix_hero_s6 from '/img/instruments/videomancer/dotmatrix/dotmatrix_hero_s6.png';
+import dotmatrix_ex1_s1 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s1.png';
+import dotmatrix_ex1_s2 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s2.png';
+import dotmatrix_ex1_s3 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s3.png';
+import dotmatrix_ex1_s4 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s4.png';
+import dotmatrix_ex1_s5 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s5.png';
+import dotmatrix_ex1_s6 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex1_s6.png';
+import dotmatrix_ex2_s1 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s1.png';
+import dotmatrix_ex2_s2 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s2.png';
+import dotmatrix_ex2_s3 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s3.png';
+import dotmatrix_ex2_s4 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s4.png';
+import dotmatrix_ex2_s5 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s5.png';
+import dotmatrix_ex2_s6 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex2_s6.png';
+import dotmatrix_ex3_s1 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s1.png';
+import dotmatrix_ex3_s2 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s2.png';
+import dotmatrix_ex3_s3 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s3.png';
+import dotmatrix_ex3_s4 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s4.png';
+import dotmatrix_ex3_s5 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s5.png';
+import dotmatrix_ex3_s6 from '/img/instruments/videomancer/dotmatrix/dotmatrix_ex3_s6.png';
 
 # Dotmatrix
 
@@ -23,9 +45,12 @@ import dotmatrix_source3_kodim01_bw from '/img/instruments/videomancer/dotmatrix
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_hero },
-    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_hero },
-    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_hero },
+    { label: "Castle", before: dotmatrix_source1_castle, after: dotmatrix_hero_s1 },
+    { label: "Car", before: dotmatrix_source2_car, after: dotmatrix_hero_s2 },
+    { label: "Turtle", before: dotmatrix_source3_turtle, after: dotmatrix_hero_s3 },
+    { label: "Pattern", before: dotmatrix_source4_pattern, after: dotmatrix_hero_s4 },
+    { label: "Girl", before: dotmatrix_source5_girl, after: dotmatrix_hero_s5 },
+    { label: "Berries", before: dotmatrix_source6_berries, after: dotmatrix_hero_s6 },
   ]}
 />
 *Dotmatrix rendering photographic video as discrete ink impacts on tinted paper through grid-based halftone printing simulation.*
@@ -121,8 +146,6 @@ The sweep reveal mechanism operates independently from the dot rendering pipelin
 
 ## Parameter Reference
 
-<img src={dotmatrix_control_panel} alt="Videomancer front panel with Dotmatrix loaded"/>
-*Videomancer's front panel with Dotmatrix active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -227,9 +250,12 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise1_result },
-    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise1_result },
-    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise1_result },
+    { label: "Castle", before: dotmatrix_source1_castle, after: dotmatrix_ex1_s1 },
+    { label: "Car", before: dotmatrix_source2_car, after: dotmatrix_ex1_s2 },
+    { label: "Turtle", before: dotmatrix_source3_turtle, after: dotmatrix_ex1_s3 },
+    { label: "Pattern", before: dotmatrix_source4_pattern, after: dotmatrix_ex1_s4 },
+    { label: "Girl", before: dotmatrix_source5_girl, after: dotmatrix_ex1_s5 },
+    { label: "Berries", before: dotmatrix_source6_berries, after: dotmatrix_ex1_s6 },
   ]}
 />
 *Classic Halftone — simulated result across source images.*
@@ -251,9 +277,12 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise2_result },
-    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise2_result },
-    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise2_result },
+    { label: "Castle", before: dotmatrix_source1_castle, after: dotmatrix_ex2_s1 },
+    { label: "Car", before: dotmatrix_source2_car, after: dotmatrix_ex2_s2 },
+    { label: "Turtle", before: dotmatrix_source3_turtle, after: dotmatrix_ex2_s3 },
+    { label: "Pattern", before: dotmatrix_source4_pattern, after: dotmatrix_ex2_s4 },
+    { label: "Girl", before: dotmatrix_source5_girl, after: dotmatrix_ex2_s5 },
+    { label: "Berries", before: dotmatrix_source6_berries, after: dotmatrix_ex2_s6 },
   ]}
 />
 *Bidirectional Sweep Animation — simulated result across source images.*
@@ -275,9 +304,12 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: dotmatrix_source1_kodim02, after: dotmatrix_exercise3_result },
-    { label: "Kodim07", before: dotmatrix_source2_kodim07, after: dotmatrix_exercise3_result },
-    { label: "Kodim01 B&W", before: dotmatrix_source3_kodim01_bw, after: dotmatrix_exercise3_result },
+    { label: "Castle", before: dotmatrix_source1_castle, after: dotmatrix_ex3_s1 },
+    { label: "Car", before: dotmatrix_source2_car, after: dotmatrix_ex3_s2 },
+    { label: "Turtle", before: dotmatrix_source3_turtle, after: dotmatrix_ex3_s3 },
+    { label: "Pattern", before: dotmatrix_source4_pattern, after: dotmatrix_ex3_s4 },
+    { label: "Girl", before: dotmatrix_source5_girl, after: dotmatrix_ex3_s5 },
+    { label: "Berries", before: dotmatrix_source6_berries, after: dotmatrix_ex3_s6 },
   ]}
 />
 *Textured Print Artifacts — simulated result across source images.*

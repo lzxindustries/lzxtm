@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 21
+sidebar_position: 22
 slug: /instruments/videomancer/blinds
 title: "Blinds"
-image: /img/instruments/videomancer/blinds/blinds_hero.png
+image: /img/instruments/videomancer/blinds/blinds_hero_s1.png
 description: "Every broadcast engineer knows the venetian blind wipe — a grid of horizontal or vertical slats that open or close to reveal or conceal a video source."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import blinds_hero from '/img/instruments/videomancer/blinds/blinds_hero.png';
-import blinds_control_panel from '/img/instruments/videomancer/blinds/blinds_control_panel.png';
-import blinds_exercise1_result from '/img/instruments/videomancer/blinds/blinds_exercise1_result.png';
-import blinds_exercise2_result from '/img/instruments/videomancer/blinds/blinds_exercise2_result.png';
-import blinds_exercise3_result from '/img/instruments/videomancer/blinds/blinds_exercise3_result.png';
-import blinds_source1_kodim15 from '/img/instruments/videomancer/blinds/blinds_source1_kodim15.png';
-import blinds_source2_kodim15_bw from '/img/instruments/videomancer/blinds/blinds_source2_kodim15_bw.png';
-import blinds_source3_male_1024 from '/img/instruments/videomancer/blinds/blinds_source3_male_1024.png';
+import blinds_source1_cat from '/img/instruments/videomancer/blinds/blinds_source1_cat.png';
+import blinds_source2_skull from '/img/instruments/videomancer/blinds/blinds_source2_skull.png';
+import blinds_source3_clouds from '/img/instruments/videomancer/blinds/blinds_source3_clouds.png';
+import blinds_source4_pattern from '/img/instruments/videomancer/blinds/blinds_source4_pattern.png';
+import blinds_source5_man from '/img/instruments/videomancer/blinds/blinds_source5_man.png';
+import blinds_source6_wood from '/img/instruments/videomancer/blinds/blinds_source6_wood.png';
+import blinds_hero_s1 from '/img/instruments/videomancer/blinds/blinds_hero_s1.png';
+import blinds_hero_s2 from '/img/instruments/videomancer/blinds/blinds_hero_s2.png';
+import blinds_hero_s3 from '/img/instruments/videomancer/blinds/blinds_hero_s3.png';
+import blinds_hero_s4 from '/img/instruments/videomancer/blinds/blinds_hero_s4.png';
+import blinds_hero_s5 from '/img/instruments/videomancer/blinds/blinds_hero_s5.png';
+import blinds_hero_s6 from '/img/instruments/videomancer/blinds/blinds_hero_s6.png';
+import blinds_ex1_s1 from '/img/instruments/videomancer/blinds/blinds_ex1_s1.png';
+import blinds_ex1_s2 from '/img/instruments/videomancer/blinds/blinds_ex1_s2.png';
+import blinds_ex1_s3 from '/img/instruments/videomancer/blinds/blinds_ex1_s3.png';
+import blinds_ex1_s4 from '/img/instruments/videomancer/blinds/blinds_ex1_s4.png';
+import blinds_ex1_s5 from '/img/instruments/videomancer/blinds/blinds_ex1_s5.png';
+import blinds_ex1_s6 from '/img/instruments/videomancer/blinds/blinds_ex1_s6.png';
+import blinds_ex2_s1 from '/img/instruments/videomancer/blinds/blinds_ex2_s1.png';
+import blinds_ex2_s2 from '/img/instruments/videomancer/blinds/blinds_ex2_s2.png';
+import blinds_ex2_s3 from '/img/instruments/videomancer/blinds/blinds_ex2_s3.png';
+import blinds_ex2_s4 from '/img/instruments/videomancer/blinds/blinds_ex2_s4.png';
+import blinds_ex2_s5 from '/img/instruments/videomancer/blinds/blinds_ex2_s5.png';
+import blinds_ex2_s6 from '/img/instruments/videomancer/blinds/blinds_ex2_s6.png';
+import blinds_ex3_s1 from '/img/instruments/videomancer/blinds/blinds_ex3_s1.png';
+import blinds_ex3_s2 from '/img/instruments/videomancer/blinds/blinds_ex3_s2.png';
+import blinds_ex3_s3 from '/img/instruments/videomancer/blinds/blinds_ex3_s3.png';
+import blinds_ex3_s4 from '/img/instruments/videomancer/blinds/blinds_ex3_s4.png';
+import blinds_ex3_s5 from '/img/instruments/videomancer/blinds/blinds_ex3_s5.png';
+import blinds_ex3_s6 from '/img/instruments/videomancer/blinds/blinds_ex3_s6.png';
 
 # Blinds
 
@@ -23,9 +45,12 @@ import blinds_source3_male_1024 from '/img/instruments/videomancer/blinds/blinds
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_hero },
-    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_hero },
-    { label: "Male", before: blinds_source3_male_1024, after: blinds_hero },
+    { label: "Cat", before: blinds_source1_cat, after: blinds_hero_s1 },
+    { label: "Skull", before: blinds_source2_skull, after: blinds_hero_s2 },
+    { label: "Clouds", before: blinds_source3_clouds, after: blinds_hero_s3 },
+    { label: "Pattern", before: blinds_source4_pattern, after: blinds_hero_s4 },
+    { label: "Man", before: blinds_source5_man, after: blinds_hero_s5 },
+    { label: "Wood", before: blinds_source6_wood, after: blinds_hero_s6 },
   ]}
 />
 *Blinds splitting a broadcast frame into cascading horizontal slats with soft edges, revealing a dimmed background through partially open gaps.*
@@ -111,9 +136,6 @@ The critical interaction is between cascade and edge softness. Cascade distribut
 ---
 
 ## Parameter Reference
-
-<img src={blinds_control_panel} alt="Videomancer front panel with Blinds loaded"/>
-*Videomancer's front panel with Blinds active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +239,12 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise1_result },
-    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise1_result },
-    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise1_result },
+    { label: "Cat", before: blinds_source1_cat, after: blinds_ex1_s1 },
+    { label: "Skull", before: blinds_source2_skull, after: blinds_ex1_s2 },
+    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex1_s3 },
+    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex1_s4 },
+    { label: "Man", before: blinds_source5_man, after: blinds_ex1_s5 },
+    { label: "Wood", before: blinds_source6_wood, after: blinds_ex1_s6 },
   ]}
 />
 *Manual Venetian Blind Wipe — simulated result across source images.*
@@ -242,9 +267,12 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise2_result },
-    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise2_result },
-    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise2_result },
+    { label: "Cat", before: blinds_source1_cat, after: blinds_ex2_s1 },
+    { label: "Skull", before: blinds_source2_skull, after: blinds_ex2_s2 },
+    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex2_s3 },
+    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex2_s4 },
+    { label: "Man", before: blinds_source5_man, after: blinds_ex2_s5 },
+    { label: "Wood", before: blinds_source6_wood, after: blinds_ex2_s6 },
   ]}
 />
 *Cascading Wipe with Soft Edges — simulated result across source images.*
@@ -267,9 +295,12 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: blinds_source1_kodim15, after: blinds_exercise3_result },
-    { label: "Kodim15 B&W", before: blinds_source2_kodim15_bw, after: blinds_exercise3_result },
-    { label: "Male", before: blinds_source3_male_1024, after: blinds_exercise3_result },
+    { label: "Cat", before: blinds_source1_cat, after: blinds_ex3_s1 },
+    { label: "Skull", before: blinds_source2_skull, after: blinds_ex3_s2 },
+    { label: "Clouds", before: blinds_source3_clouds, after: blinds_ex3_s3 },
+    { label: "Pattern", before: blinds_source4_pattern, after: blinds_ex3_s4 },
+    { label: "Man", before: blinds_source5_man, after: blinds_ex3_s5 },
+    { label: "Wood", before: blinds_source6_wood, after: blinds_ex3_s6 },
   ]}
 />
 *Dimmed Video Background Composition — simulated result across source images.*

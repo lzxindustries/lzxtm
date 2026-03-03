@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 122
+sidebar_position: 127
 slug: /instruments/videomancer/glorious
 title: "Glorious"
-image: /img/instruments/videomancer/glorious/glorious_hero.png
+image: /img/instruments/videomancer/glorious/glorious_hero_s1.png
 description: "Glorious recreates the look of Technicolor Process 4 — the three-strip dye transfer printing system that defined the color aesthetic of Hollywood cinema from the 1930s through the 1960s."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import glorious_hero from '/img/instruments/videomancer/glorious/glorious_hero.png';
-import glorious_control_panel from '/img/instruments/videomancer/glorious/glorious_control_panel.png';
-import glorious_exercise1_result from '/img/instruments/videomancer/glorious/glorious_exercise1_result.png';
-import glorious_exercise2_result from '/img/instruments/videomancer/glorious/glorious_exercise2_result.png';
-import glorious_exercise3_result from '/img/instruments/videomancer/glorious/glorious_exercise3_result.png';
-import glorious_source1_kodim03 from '/img/instruments/videomancer/glorious/glorious_source1_kodim03.png';
-import glorious_source2_kodim13 from '/img/instruments/videomancer/glorious/glorious_source2_kodim13.png';
-import glorious_source3_kodim13_bw from '/img/instruments/videomancer/glorious/glorious_source3_kodim13_bw.png';
+import glorious_source1_parrot from '/img/instruments/videomancer/glorious/glorious_source1_parrot.png';
+import glorious_source2_boat from '/img/instruments/videomancer/glorious/glorious_source2_boat.png';
+import glorious_source3_clouds from '/img/instruments/videomancer/glorious/glorious_source3_clouds.png';
+import glorious_source4_pattern from '/img/instruments/videomancer/glorious/glorious_source4_pattern.png';
+import glorious_source5_girl from '/img/instruments/videomancer/glorious/glorious_source5_girl.png';
+import glorious_source6_berries from '/img/instruments/videomancer/glorious/glorious_source6_berries.png';
+import glorious_hero_s1 from '/img/instruments/videomancer/glorious/glorious_hero_s1.png';
+import glorious_hero_s2 from '/img/instruments/videomancer/glorious/glorious_hero_s2.png';
+import glorious_hero_s3 from '/img/instruments/videomancer/glorious/glorious_hero_s3.png';
+import glorious_hero_s4 from '/img/instruments/videomancer/glorious/glorious_hero_s4.png';
+import glorious_hero_s5 from '/img/instruments/videomancer/glorious/glorious_hero_s5.png';
+import glorious_hero_s6 from '/img/instruments/videomancer/glorious/glorious_hero_s6.png';
+import glorious_ex1_s1 from '/img/instruments/videomancer/glorious/glorious_ex1_s1.png';
+import glorious_ex1_s2 from '/img/instruments/videomancer/glorious/glorious_ex1_s2.png';
+import glorious_ex1_s3 from '/img/instruments/videomancer/glorious/glorious_ex1_s3.png';
+import glorious_ex1_s4 from '/img/instruments/videomancer/glorious/glorious_ex1_s4.png';
+import glorious_ex1_s5 from '/img/instruments/videomancer/glorious/glorious_ex1_s5.png';
+import glorious_ex1_s6 from '/img/instruments/videomancer/glorious/glorious_ex1_s6.png';
+import glorious_ex2_s1 from '/img/instruments/videomancer/glorious/glorious_ex2_s1.png';
+import glorious_ex2_s2 from '/img/instruments/videomancer/glorious/glorious_ex2_s2.png';
+import glorious_ex2_s3 from '/img/instruments/videomancer/glorious/glorious_ex2_s3.png';
+import glorious_ex2_s4 from '/img/instruments/videomancer/glorious/glorious_ex2_s4.png';
+import glorious_ex2_s5 from '/img/instruments/videomancer/glorious/glorious_ex2_s5.png';
+import glorious_ex2_s6 from '/img/instruments/videomancer/glorious/glorious_ex2_s6.png';
+import glorious_ex3_s1 from '/img/instruments/videomancer/glorious/glorious_ex3_s1.png';
+import glorious_ex3_s2 from '/img/instruments/videomancer/glorious/glorious_ex3_s2.png';
+import glorious_ex3_s3 from '/img/instruments/videomancer/glorious/glorious_ex3_s3.png';
+import glorious_ex3_s4 from '/img/instruments/videomancer/glorious/glorious_ex3_s4.png';
+import glorious_ex3_s5 from '/img/instruments/videomancer/glorious/glorious_ex3_s5.png';
+import glorious_ex3_s6 from '/img/instruments/videomancer/glorious/glorious_ex3_s6.png';
 
 # Glorious
 
@@ -23,9 +45,12 @@ import glorious_source3_kodim13_bw from '/img/instruments/videomancer/glorious/g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_hero },
-    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_hero },
-    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_hero },
+    { label: "Parrot", before: glorious_source1_parrot, after: glorious_hero_s1 },
+    { label: "Boat", before: glorious_source2_boat, after: glorious_hero_s2 },
+    { label: "Clouds", before: glorious_source3_clouds, after: glorious_hero_s3 },
+    { label: "Pattern", before: glorious_source4_pattern, after: glorious_hero_s4 },
+    { label: "Girl", before: glorious_source5_girl, after: glorious_hero_s5 },
+    { label: "Berries", before: glorious_source6_berries, after: glorious_hero_s6 },
   ]}
 />
 *Glorious applying three-strip Technicolor dye transfer simulation with per-channel exposure, H&D S-curve response, and fringe misregistration to a studio portrait.*
@@ -97,8 +122,6 @@ The entire signal processing chain operates in the RGB domain. The input YUV sig
 
 ## Parameter Reference
 
-<img src={glorious_control_panel} alt="Videomancer front panel with Glorious loaded"/>
-*Videomancer's front panel with Glorious active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -202,9 +225,12 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise1_result },
-    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise1_result },
-    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise1_result },
+    { label: "Parrot", before: glorious_source1_parrot, after: glorious_ex1_s1 },
+    { label: "Boat", before: glorious_source2_boat, after: glorious_ex1_s2 },
+    { label: "Clouds", before: glorious_source3_clouds, after: glorious_ex1_s3 },
+    { label: "Pattern", before: glorious_source4_pattern, after: glorious_ex1_s4 },
+    { label: "Girl", before: glorious_source5_girl, after: glorious_ex1_s5 },
+    { label: "Berries", before: glorious_source6_berries, after: glorious_ex1_s6 },
   ]}
 />
 *Strip Exposure Color Grading — simulated result across source images.*
@@ -226,9 +252,12 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise2_result },
-    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise2_result },
-    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise2_result },
+    { label: "Parrot", before: glorious_source1_parrot, after: glorious_ex2_s1 },
+    { label: "Boat", before: glorious_source2_boat, after: glorious_ex2_s2 },
+    { label: "Clouds", before: glorious_source3_clouds, after: glorious_ex2_s3 },
+    { label: "Pattern", before: glorious_source4_pattern, after: glorious_ex2_s4 },
+    { label: "Girl", before: glorious_source5_girl, after: glorious_ex2_s5 },
+    { label: "Berries", before: glorious_source6_berries, after: glorious_ex2_s6 },
   ]}
 />
 *H&D Curve and Fringe — simulated result across source images.*
@@ -251,9 +280,12 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: glorious_source1_kodim03, after: glorious_exercise3_result },
-    { label: "Kodim13", before: glorious_source2_kodim13, after: glorious_exercise3_result },
-    { label: "Kodim13 B&W", before: glorious_source3_kodim13_bw, after: glorious_exercise3_result },
+    { label: "Parrot", before: glorious_source1_parrot, after: glorious_ex3_s1 },
+    { label: "Boat", before: glorious_source2_boat, after: glorious_ex3_s2 },
+    { label: "Clouds", before: glorious_source3_clouds, after: glorious_ex3_s3 },
+    { label: "Pattern", before: glorious_source4_pattern, after: glorious_ex3_s4 },
+    { label: "Girl", before: glorious_source5_girl, after: glorious_ex3_s5 },
+    { label: "Berries", before: glorious_source6_berries, after: glorious_ex3_s6 },
   ]}
 />
 *Vintage Aged Print — simulated result across source images.*

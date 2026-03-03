@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 67
+sidebar_position: 70
 slug: /instruments/videomancer/cuneiform
 title: "Cuneiform"
-image: /img/instruments/videomancer/cuneiform/cuneiform_hero.png
+image: /img/instruments/videomancer/cuneiform/cuneiform_hero_s1.png
 description: "Five thousand years ago, Mesopotamian scribes pressed a reed stylus into wet clay to record the world's first written language."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cuneiform_hero from '/img/instruments/videomancer/cuneiform/cuneiform_hero.png';
-import cuneiform_control_panel from '/img/instruments/videomancer/cuneiform/cuneiform_control_panel.png';
-import cuneiform_exercise1_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise1_result.png';
-import cuneiform_exercise2_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise2_result.png';
-import cuneiform_exercise3_result from '/img/instruments/videomancer/cuneiform/cuneiform_exercise3_result.png';
-import cuneiform_source1_kodim15 from '/img/instruments/videomancer/cuneiform/cuneiform_source1_kodim15.png';
-import cuneiform_source2_kodim15_bw from '/img/instruments/videomancer/cuneiform/cuneiform_source2_kodim15_bw.png';
-import cuneiform_source3_male_1024 from '/img/instruments/videomancer/cuneiform/cuneiform_source3_male_1024.png';
+import cuneiform_source1_house from '/img/instruments/videomancer/cuneiform/cuneiform_source1_house.png';
+import cuneiform_source2_dog from '/img/instruments/videomancer/cuneiform/cuneiform_source2_dog.png';
+import cuneiform_source3_clouds from '/img/instruments/videomancer/cuneiform/cuneiform_source3_clouds.png';
+import cuneiform_source4_pattern from '/img/instruments/videomancer/cuneiform/cuneiform_source4_pattern.png';
+import cuneiform_source5_woman from '/img/instruments/videomancer/cuneiform/cuneiform_source5_woman.png';
+import cuneiform_source6_berries from '/img/instruments/videomancer/cuneiform/cuneiform_source6_berries.png';
+import cuneiform_hero_s1 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s1.png';
+import cuneiform_hero_s2 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s2.png';
+import cuneiform_hero_s3 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s3.png';
+import cuneiform_hero_s4 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s4.png';
+import cuneiform_hero_s5 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s5.png';
+import cuneiform_hero_s6 from '/img/instruments/videomancer/cuneiform/cuneiform_hero_s6.png';
+import cuneiform_ex1_s1 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s1.png';
+import cuneiform_ex1_s2 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s2.png';
+import cuneiform_ex1_s3 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s3.png';
+import cuneiform_ex1_s4 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s4.png';
+import cuneiform_ex1_s5 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s5.png';
+import cuneiform_ex1_s6 from '/img/instruments/videomancer/cuneiform/cuneiform_ex1_s6.png';
+import cuneiform_ex2_s1 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s1.png';
+import cuneiform_ex2_s2 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s2.png';
+import cuneiform_ex2_s3 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s3.png';
+import cuneiform_ex2_s4 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s4.png';
+import cuneiform_ex2_s5 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s5.png';
+import cuneiform_ex2_s6 from '/img/instruments/videomancer/cuneiform/cuneiform_ex2_s6.png';
+import cuneiform_ex3_s1 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s1.png';
+import cuneiform_ex3_s2 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s2.png';
+import cuneiform_ex3_s3 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s3.png';
+import cuneiform_ex3_s4 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s4.png';
+import cuneiform_ex3_s5 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s5.png';
+import cuneiform_ex3_s6 from '/img/instruments/videomancer/cuneiform/cuneiform_ex3_s6.png';
 
 # Cuneiform
 
@@ -23,9 +45,12 @@ import cuneiform_source3_male_1024 from '/img/instruments/videomancer/cuneiform/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_hero },
-    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_hero },
-    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_hero },
+    { label: "House", before: cuneiform_source1_house, after: cuneiform_hero_s1 },
+    { label: "Dog", before: cuneiform_source2_dog, after: cuneiform_hero_s2 },
+    { label: "Clouds", before: cuneiform_source3_clouds, after: cuneiform_hero_s3 },
+    { label: "Pattern", before: cuneiform_source4_pattern, after: cuneiform_hero_s4 },
+    { label: "Woman", before: cuneiform_source5_woman, after: cuneiform_hero_s5 },
+    { label: "Berries", before: cuneiform_source6_berries, after: cuneiform_hero_s6 },
   ]}
 />
 *Cuneiform converting luminance gradients into oriented wedge impressions on a simulated clay tablet surface.*
@@ -119,8 +144,6 @@ The contrast and clay tint parameters modulate the range and hue of the rendered
 
 ## Parameter Reference
 
-<img src={cuneiform_control_panel} alt="Videomancer front panel with Cuneiform loaded"/>
-*Videomancer's front panel with Cuneiform active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise1_result },
-    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise1_result },
-    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise1_result },
+    { label: "House", before: cuneiform_source1_house, after: cuneiform_ex1_s1 },
+    { label: "Dog", before: cuneiform_source2_dog, after: cuneiform_ex1_s2 },
+    { label: "Clouds", before: cuneiform_source3_clouds, after: cuneiform_ex1_s3 },
+    { label: "Pattern", before: cuneiform_source4_pattern, after: cuneiform_ex1_s4 },
+    { label: "Woman", before: cuneiform_source5_woman, after: cuneiform_ex1_s5 },
+    { label: "Berries", before: cuneiform_source6_berries, after: cuneiform_ex1_s6 },
   ]}
 />
 *Reed Impressions — simulated result across source images.*
@@ -247,9 +273,12 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise2_result },
-    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise2_result },
-    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise2_result },
+    { label: "House", before: cuneiform_source1_house, after: cuneiform_ex2_s1 },
+    { label: "Dog", before: cuneiform_source2_dog, after: cuneiform_ex2_s2 },
+    { label: "Clouds", before: cuneiform_source3_clouds, after: cuneiform_ex2_s3 },
+    { label: "Pattern", before: cuneiform_source4_pattern, after: cuneiform_ex2_s4 },
+    { label: "Woman", before: cuneiform_source5_woman, after: cuneiform_ex2_s5 },
+    { label: "Berries", before: cuneiform_source6_berries, after: cuneiform_ex2_s6 },
   ]}
 />
 *Gradient Tracing — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cuneiform_source1_kodim15, after: cuneiform_exercise3_result },
-    { label: "Kodim15 B&W", before: cuneiform_source2_kodim15_bw, after: cuneiform_exercise3_result },
-    { label: "Male", before: cuneiform_source3_male_1024, after: cuneiform_exercise3_result },
+    { label: "House", before: cuneiform_source1_house, after: cuneiform_ex3_s1 },
+    { label: "Dog", before: cuneiform_source2_dog, after: cuneiform_ex3_s2 },
+    { label: "Clouds", before: cuneiform_source3_clouds, after: cuneiform_ex3_s3 },
+    { label: "Pattern", before: cuneiform_source4_pattern, after: cuneiform_ex3_s4 },
+    { label: "Woman", before: cuneiform_source5_woman, after: cuneiform_ex3_s5 },
+    { label: "Berries", before: cuneiform_source6_berries, after: cuneiform_ex3_s6 },
   ]}
 />
 *Ancient Artifact — simulated result across source images.*

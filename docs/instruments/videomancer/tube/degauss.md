@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 74
+sidebar_position: 77
 slug: /instruments/videomancer/degauss
 title: "Degauss"
-image: /img/instruments/videomancer/degauss/degauss_hero.png
+image: /img/instruments/videomancer/degauss/degauss_hero_s1.png
 description: "Every cathode-ray tube shipped from the factory with its electron beams converged — red, green, and blue landing precisely on their respective phosphor dots."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import degauss_hero from '/img/instruments/videomancer/degauss/degauss_hero.png';
-import degauss_control_panel from '/img/instruments/videomancer/degauss/degauss_control_panel.png';
-import degauss_exercise1_result from '/img/instruments/videomancer/degauss/degauss_exercise1_result.png';
-import degauss_exercise2_result from '/img/instruments/videomancer/degauss/degauss_exercise2_result.png';
-import degauss_exercise3_result from '/img/instruments/videomancer/degauss/degauss_exercise3_result.png';
-import degauss_source1_kodim15 from '/img/instruments/videomancer/degauss/degauss_source1_kodim15.png';
-import degauss_source2_kodim01 from '/img/instruments/videomancer/degauss/degauss_source2_kodim01.png';
-import degauss_source3_kodim01_bw from '/img/instruments/videomancer/degauss/degauss_source3_kodim01_bw.png';
+import degauss_source1_cat from '/img/instruments/videomancer/degauss/degauss_source1_cat.png';
+import degauss_source2_runner from '/img/instruments/videomancer/degauss/degauss_source2_runner.png';
+import degauss_source3_collage from '/img/instruments/videomancer/degauss/degauss_source3_collage.png';
+import degauss_source4_pattern from '/img/instruments/videomancer/degauss/degauss_source4_pattern.png';
+import degauss_source5_woman from '/img/instruments/videomancer/degauss/degauss_source5_woman.png';
+import degauss_source6_paint from '/img/instruments/videomancer/degauss/degauss_source6_paint.png';
+import degauss_hero_s1 from '/img/instruments/videomancer/degauss/degauss_hero_s1.png';
+import degauss_hero_s2 from '/img/instruments/videomancer/degauss/degauss_hero_s2.png';
+import degauss_hero_s3 from '/img/instruments/videomancer/degauss/degauss_hero_s3.png';
+import degauss_hero_s4 from '/img/instruments/videomancer/degauss/degauss_hero_s4.png';
+import degauss_hero_s5 from '/img/instruments/videomancer/degauss/degauss_hero_s5.png';
+import degauss_hero_s6 from '/img/instruments/videomancer/degauss/degauss_hero_s6.png';
+import degauss_ex1_s1 from '/img/instruments/videomancer/degauss/degauss_ex1_s1.png';
+import degauss_ex1_s2 from '/img/instruments/videomancer/degauss/degauss_ex1_s2.png';
+import degauss_ex1_s3 from '/img/instruments/videomancer/degauss/degauss_ex1_s3.png';
+import degauss_ex1_s4 from '/img/instruments/videomancer/degauss/degauss_ex1_s4.png';
+import degauss_ex1_s5 from '/img/instruments/videomancer/degauss/degauss_ex1_s5.png';
+import degauss_ex1_s6 from '/img/instruments/videomancer/degauss/degauss_ex1_s6.png';
+import degauss_ex2_s1 from '/img/instruments/videomancer/degauss/degauss_ex2_s1.png';
+import degauss_ex2_s2 from '/img/instruments/videomancer/degauss/degauss_ex2_s2.png';
+import degauss_ex2_s3 from '/img/instruments/videomancer/degauss/degauss_ex2_s3.png';
+import degauss_ex2_s4 from '/img/instruments/videomancer/degauss/degauss_ex2_s4.png';
+import degauss_ex2_s5 from '/img/instruments/videomancer/degauss/degauss_ex2_s5.png';
+import degauss_ex2_s6 from '/img/instruments/videomancer/degauss/degauss_ex2_s6.png';
+import degauss_ex3_s1 from '/img/instruments/videomancer/degauss/degauss_ex3_s1.png';
+import degauss_ex3_s2 from '/img/instruments/videomancer/degauss/degauss_ex3_s2.png';
+import degauss_ex3_s3 from '/img/instruments/videomancer/degauss/degauss_ex3_s3.png';
+import degauss_ex3_s4 from '/img/instruments/videomancer/degauss/degauss_ex3_s4.png';
+import degauss_ex3_s5 from '/img/instruments/videomancer/degauss/degauss_ex3_s5.png';
+import degauss_ex3_s6 from '/img/instruments/videomancer/degauss/degauss_ex3_s6.png';
 
 # Degauss
 
@@ -23,9 +45,12 @@ import degauss_source3_kodim01_bw from '/img/instruments/videomancer/degauss/deg
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_hero },
-    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_hero },
-    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_hero },
+    { label: "Cat", before: degauss_source1_cat, after: degauss_hero_s1 },
+    { label: "Runner", before: degauss_source2_runner, after: degauss_hero_s2 },
+    { label: "Collage", before: degauss_source3_collage, after: degauss_hero_s3 },
+    { label: "Pattern", before: degauss_source4_pattern, after: degauss_hero_s4 },
+    { label: "Woman", before: degauss_source5_woman, after: degauss_hero_s5 },
+    { label: "Paint", before: degauss_source6_paint, after: degauss_hero_s6 },
   ]}
 />
 *Degauss applying vertical-position-dependent chroma offsets to create rainbow color fringing reminiscent of a CRT degaussing coil sweep.*
@@ -115,8 +140,6 @@ The core of Degauss is a single interaction: a triangle wave derived from vertic
 
 ## Parameter Reference
 
-<img src={degauss_control_panel} alt="Videomancer front panel with Degauss loaded"/>
-*Videomancer's front panel with Degauss active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise1_result },
-    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise1_result },
-    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise1_result },
+    { label: "Cat", before: degauss_source1_cat, after: degauss_ex1_s1 },
+    { label: "Runner", before: degauss_source2_runner, after: degauss_ex1_s2 },
+    { label: "Collage", before: degauss_source3_collage, after: degauss_ex1_s3 },
+    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex1_s4 },
+    { label: "Woman", before: degauss_source5_woman, after: degauss_ex1_s5 },
+    { label: "Paint", before: degauss_source6_paint, after: degauss_ex1_s6 },
   ]}
 />
 *Static Rainbow Fringing — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise2_result },
-    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise2_result },
-    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise2_result },
+    { label: "Cat", before: degauss_source1_cat, after: degauss_ex2_s1 },
+    { label: "Runner", before: degauss_source2_runner, after: degauss_ex2_s2 },
+    { label: "Collage", before: degauss_source3_collage, after: degauss_ex2_s3 },
+    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex2_s4 },
+    { label: "Woman", before: degauss_source5_woman, after: degauss_ex2_s5 },
+    { label: "Paint", before: degauss_source6_paint, after: degauss_ex2_s6 },
   ]}
 />
 *Animated Degauss Sweep — simulated result across source images.*
@@ -270,9 +299,12 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: degauss_source1_kodim15, after: degauss_exercise3_result },
-    { label: "Kodim01", before: degauss_source2_kodim01, after: degauss_exercise3_result },
-    { label: "Kodim01 B&W", before: degauss_source3_kodim01_bw, after: degauss_exercise3_result },
+    { label: "Cat", before: degauss_source1_cat, after: degauss_ex3_s1 },
+    { label: "Runner", before: degauss_source2_runner, after: degauss_ex3_s2 },
+    { label: "Collage", before: degauss_source3_collage, after: degauss_ex3_s3 },
+    { label: "Pattern", before: degauss_source4_pattern, after: degauss_ex3_s4 },
+    { label: "Woman", before: degauss_source5_woman, after: degauss_ex3_s5 },
+    { label: "Paint", before: degauss_source6_paint, after: degauss_ex3_s6 },
   ]}
 />
 *Chromatic Dissolution — simulated result across source images.*

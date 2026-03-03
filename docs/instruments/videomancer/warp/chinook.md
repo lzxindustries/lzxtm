@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 46
+sidebar_position: 47
 slug: /instruments/videomancer/chinook
 title: "Chinook"
-image: /img/instruments/videomancer/chinook/chinook_hero.png
+image: /img/instruments/videomancer/chinook/chinook_hero_s1.png
 description: "There is a luminous trembling in the late paintings of J.M.W."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chinook_hero from '/img/instruments/videomancer/chinook/chinook_hero.png';
-import chinook_control_panel from '/img/instruments/videomancer/chinook/chinook_control_panel.png';
-import chinook_exercise1_result from '/img/instruments/videomancer/chinook/chinook_exercise1_result.png';
-import chinook_exercise2_result from '/img/instruments/videomancer/chinook/chinook_exercise2_result.png';
-import chinook_exercise3_result from '/img/instruments/videomancer/chinook/chinook_exercise3_result.png';
-import chinook_source1_kodim02 from '/img/instruments/videomancer/chinook/chinook_source1_kodim02.png';
-import chinook_source2_kodim07 from '/img/instruments/videomancer/chinook/chinook_source2_kodim07.png';
-import chinook_source3_kodim01_bw from '/img/instruments/videomancer/chinook/chinook_source3_kodim01_bw.png';
+import chinook_source1_castle from '/img/instruments/videomancer/chinook/chinook_source1_castle.png';
+import chinook_source2_fruit from '/img/instruments/videomancer/chinook/chinook_source2_fruit.png';
+import chinook_source3_collage from '/img/instruments/videomancer/chinook/chinook_source3_collage.png';
+import chinook_source4_pattern from '/img/instruments/videomancer/chinook/chinook_source4_pattern.png';
+import chinook_source5_boy from '/img/instruments/videomancer/chinook/chinook_source5_boy.png';
+import chinook_source6_berries from '/img/instruments/videomancer/chinook/chinook_source6_berries.png';
+import chinook_hero_s1 from '/img/instruments/videomancer/chinook/chinook_hero_s1.png';
+import chinook_hero_s2 from '/img/instruments/videomancer/chinook/chinook_hero_s2.png';
+import chinook_hero_s3 from '/img/instruments/videomancer/chinook/chinook_hero_s3.png';
+import chinook_hero_s4 from '/img/instruments/videomancer/chinook/chinook_hero_s4.png';
+import chinook_hero_s5 from '/img/instruments/videomancer/chinook/chinook_hero_s5.png';
+import chinook_hero_s6 from '/img/instruments/videomancer/chinook/chinook_hero_s6.png';
+import chinook_ex1_s1 from '/img/instruments/videomancer/chinook/chinook_ex1_s1.png';
+import chinook_ex1_s2 from '/img/instruments/videomancer/chinook/chinook_ex1_s2.png';
+import chinook_ex1_s3 from '/img/instruments/videomancer/chinook/chinook_ex1_s3.png';
+import chinook_ex1_s4 from '/img/instruments/videomancer/chinook/chinook_ex1_s4.png';
+import chinook_ex1_s5 from '/img/instruments/videomancer/chinook/chinook_ex1_s5.png';
+import chinook_ex1_s6 from '/img/instruments/videomancer/chinook/chinook_ex1_s6.png';
+import chinook_ex2_s1 from '/img/instruments/videomancer/chinook/chinook_ex2_s1.png';
+import chinook_ex2_s2 from '/img/instruments/videomancer/chinook/chinook_ex2_s2.png';
+import chinook_ex2_s3 from '/img/instruments/videomancer/chinook/chinook_ex2_s3.png';
+import chinook_ex2_s4 from '/img/instruments/videomancer/chinook/chinook_ex2_s4.png';
+import chinook_ex2_s5 from '/img/instruments/videomancer/chinook/chinook_ex2_s5.png';
+import chinook_ex2_s6 from '/img/instruments/videomancer/chinook/chinook_ex2_s6.png';
+import chinook_ex3_s1 from '/img/instruments/videomancer/chinook/chinook_ex3_s1.png';
+import chinook_ex3_s2 from '/img/instruments/videomancer/chinook/chinook_ex3_s2.png';
+import chinook_ex3_s3 from '/img/instruments/videomancer/chinook/chinook_ex3_s3.png';
+import chinook_ex3_s4 from '/img/instruments/videomancer/chinook/chinook_ex3_s4.png';
+import chinook_ex3_s5 from '/img/instruments/videomancer/chinook/chinook_ex3_s5.png';
+import chinook_ex3_s6 from '/img/instruments/videomancer/chinook/chinook_ex3_s6.png';
 
 # Chinook
 
@@ -23,9 +45,12 @@ import chinook_source3_kodim01_bw from '/img/instruments/videomancer/chinook/chi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_hero },
-    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_hero },
-    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_hero },
+    { label: "Castle", before: chinook_source1_castle, after: chinook_hero_s1 },
+    { label: "Fruit", before: chinook_source2_fruit, after: chinook_hero_s2 },
+    { label: "Collage", before: chinook_source3_collage, after: chinook_hero_s3 },
+    { label: "Pattern", before: chinook_source4_pattern, after: chinook_hero_s4 },
+    { label: "Boy", before: chinook_source5_boy, after: chinook_hero_s5 },
+    { label: "Berries", before: chinook_source6_berries, after: chinook_hero_s6 },
   ]}
 />
 *Chinook applying hash-driven thermal displacement with bottom-up gradient envelope and atmospheric haze to create Turner-esque heat shimmer.*
@@ -122,8 +147,6 @@ The pipeline is purely combinatorial per pixel — zero BRAM — which means eve
 
 ## Parameter Reference
 
-<img src={chinook_control_panel} alt="Videomancer front panel with Chinook loaded"/>
-*Videomancer's front panel with Chinook active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -228,9 +251,12 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise1_result },
-    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise1_result },
-    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise1_result },
+    { label: "Castle", before: chinook_source1_castle, after: chinook_ex1_s1 },
+    { label: "Fruit", before: chinook_source2_fruit, after: chinook_ex1_s2 },
+    { label: "Collage", before: chinook_source3_collage, after: chinook_ex1_s3 },
+    { label: "Pattern", before: chinook_source4_pattern, after: chinook_ex1_s4 },
+    { label: "Boy", before: chinook_source5_boy, after: chinook_ex1_s5 },
+    { label: "Berries", before: chinook_source6_berries, after: chinook_ex1_s6 },
   ]}
 />
 *Ground-Level Heat Haze — simulated result across source images.*
@@ -252,9 +278,12 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise2_result },
-    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise2_result },
-    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise2_result },
+    { label: "Castle", before: chinook_source1_castle, after: chinook_ex2_s1 },
+    { label: "Fruit", before: chinook_source2_fruit, after: chinook_ex2_s2 },
+    { label: "Collage", before: chinook_source3_collage, after: chinook_ex2_s3 },
+    { label: "Pattern", before: chinook_source4_pattern, after: chinook_ex2_s4 },
+    { label: "Boy", before: chinook_source5_boy, after: chinook_ex2_s5 },
+    { label: "Berries", before: chinook_source6_berries, after: chinook_ex2_s6 },
   ]}
 />
 *Thermal Band with Radial Focus — simulated result across source images.*
@@ -276,9 +305,12 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: chinook_source1_kodim02, after: chinook_exercise3_result },
-    { label: "Kodim07", before: chinook_source2_kodim07, after: chinook_exercise3_result },
-    { label: "Kodim01 B&W", before: chinook_source3_kodim01_bw, after: chinook_exercise3_result },
+    { label: "Castle", before: chinook_source1_castle, after: chinook_ex3_s1 },
+    { label: "Fruit", before: chinook_source2_fruit, after: chinook_ex3_s2 },
+    { label: "Collage", before: chinook_source3_collage, after: chinook_ex3_s3 },
+    { label: "Pattern", before: chinook_source4_pattern, after: chinook_ex3_s4 },
+    { label: "Boy", before: chinook_source5_boy, after: chinook_ex3_s5 },
+    { label: "Berries", before: chinook_source6_berries, after: chinook_ex3_s6 },
   ]}
 />
 *Full Atmospheric Dissolution — simulated result across source images.*

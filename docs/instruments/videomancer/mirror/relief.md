@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 234
+sidebar_position: 244
 slug: /instruments/videomancer/relief
 title: "Relief"
-image: /img/instruments/videomancer/relief/relief_hero.png
+image: /img/instruments/videomancer/relief/relief_hero_s1.png
 description: "A bas-relief is a sculptural technique where figures are carved into a flat surface, projecting slightly outward to catch light at their edges."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import relief_hero from '/img/instruments/videomancer/relief/relief_hero.png';
-import relief_control_panel from '/img/instruments/videomancer/relief/relief_control_panel.png';
-import relief_exercise1_result from '/img/instruments/videomancer/relief/relief_exercise1_result.png';
-import relief_exercise2_result from '/img/instruments/videomancer/relief/relief_exercise2_result.png';
-import relief_exercise3_result from '/img/instruments/videomancer/relief/relief_exercise3_result.png';
-import relief_source1_kodim15 from '/img/instruments/videomancer/relief/relief_source1_kodim15.png';
-import relief_source2_kodim15_bw from '/img/instruments/videomancer/relief/relief_source2_kodim15_bw.png';
-import relief_source3_male_1024 from '/img/instruments/videomancer/relief/relief_source3_male_1024.png';
+import relief_source1_sunset from '/img/instruments/videomancer/relief/relief_source1_sunset.png';
+import relief_source2_castle from '/img/instruments/videomancer/relief/relief_source2_castle.png';
+import relief_source3_clouds from '/img/instruments/videomancer/relief/relief_source3_clouds.png';
+import relief_source4_pattern from '/img/instruments/videomancer/relief/relief_source4_pattern.png';
+import relief_source5_woman from '/img/instruments/videomancer/relief/relief_source5_woman.png';
+import relief_source6_wood from '/img/instruments/videomancer/relief/relief_source6_wood.png';
+import relief_hero_s1 from '/img/instruments/videomancer/relief/relief_hero_s1.png';
+import relief_hero_s2 from '/img/instruments/videomancer/relief/relief_hero_s2.png';
+import relief_hero_s3 from '/img/instruments/videomancer/relief/relief_hero_s3.png';
+import relief_hero_s4 from '/img/instruments/videomancer/relief/relief_hero_s4.png';
+import relief_hero_s5 from '/img/instruments/videomancer/relief/relief_hero_s5.png';
+import relief_hero_s6 from '/img/instruments/videomancer/relief/relief_hero_s6.png';
+import relief_ex1_s1 from '/img/instruments/videomancer/relief/relief_ex1_s1.png';
+import relief_ex1_s2 from '/img/instruments/videomancer/relief/relief_ex1_s2.png';
+import relief_ex1_s3 from '/img/instruments/videomancer/relief/relief_ex1_s3.png';
+import relief_ex1_s4 from '/img/instruments/videomancer/relief/relief_ex1_s4.png';
+import relief_ex1_s5 from '/img/instruments/videomancer/relief/relief_ex1_s5.png';
+import relief_ex1_s6 from '/img/instruments/videomancer/relief/relief_ex1_s6.png';
+import relief_ex2_s1 from '/img/instruments/videomancer/relief/relief_ex2_s1.png';
+import relief_ex2_s2 from '/img/instruments/videomancer/relief/relief_ex2_s2.png';
+import relief_ex2_s3 from '/img/instruments/videomancer/relief/relief_ex2_s3.png';
+import relief_ex2_s4 from '/img/instruments/videomancer/relief/relief_ex2_s4.png';
+import relief_ex2_s5 from '/img/instruments/videomancer/relief/relief_ex2_s5.png';
+import relief_ex2_s6 from '/img/instruments/videomancer/relief/relief_ex2_s6.png';
+import relief_ex3_s1 from '/img/instruments/videomancer/relief/relief_ex3_s1.png';
+import relief_ex3_s2 from '/img/instruments/videomancer/relief/relief_ex3_s2.png';
+import relief_ex3_s3 from '/img/instruments/videomancer/relief/relief_ex3_s3.png';
+import relief_ex3_s4 from '/img/instruments/videomancer/relief/relief_ex3_s4.png';
+import relief_ex3_s5 from '/img/instruments/videomancer/relief/relief_ex3_s5.png';
+import relief_ex3_s6 from '/img/instruments/videomancer/relief/relief_ex3_s6.png';
 
 # Relief
 
@@ -23,9 +45,12 @@ import relief_source3_male_1024 from '/img/instruments/videomancer/relief/relief
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: relief_source1_kodim15, after: relief_hero },
-    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_hero },
-    { label: "Male", before: relief_source3_male_1024, after: relief_hero },
+    { label: "Sunset", before: relief_source1_sunset, after: relief_hero_s1 },
+    { label: "Castle", before: relief_source2_castle, after: relief_hero_s2 },
+    { label: "Clouds", before: relief_source3_clouds, after: relief_hero_s3 },
+    { label: "Pattern", before: relief_source4_pattern, after: relief_hero_s4 },
+    { label: "Woman", before: relief_source5_woman, after: relief_hero_s5 },
+    { label: "Wood", before: relief_source6_wood, after: relief_hero_s6 },
   ]}
 />
 *Relief applying directional emboss with specular highlights and Lambertian surface lighting to sculpt a flat video signal into a three-dimensional bas-relief.*
@@ -102,8 +127,6 @@ The core computation is the directional derivative: `output = 512 + (current_pix
 
 ## Parameter Reference
 
-<img src={relief_control_panel} alt="Videomancer front panel with Relief loaded"/>
-*Videomancer's front panel with Relief active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -207,9 +230,12 @@ These exercises progress from basic directional emboss through surface lighting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise1_result },
-    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise1_result },
-    { label: "Male", before: relief_source3_male_1024, after: relief_exercise1_result },
+    { label: "Sunset", before: relief_source1_sunset, after: relief_ex1_s1 },
+    { label: "Castle", before: relief_source2_castle, after: relief_ex1_s2 },
+    { label: "Clouds", before: relief_source3_clouds, after: relief_ex1_s3 },
+    { label: "Pattern", before: relief_source4_pattern, after: relief_ex1_s4 },
+    { label: "Woman", before: relief_source5_woman, after: relief_ex1_s5 },
+    { label: "Wood", before: relief_source6_wood, after: relief_ex1_s6 },
   ]}
 />
 *Stone Carving — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises progress from basic directional emboss through surface lighting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise2_result },
-    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise2_result },
-    { label: "Male", before: relief_source3_male_1024, after: relief_exercise2_result },
+    { label: "Sunset", before: relief_source1_sunset, after: relief_ex2_s1 },
+    { label: "Castle", before: relief_source2_castle, after: relief_ex2_s2 },
+    { label: "Clouds", before: relief_source3_clouds, after: relief_ex2_s3 },
+    { label: "Pattern", before: relief_source4_pattern, after: relief_ex2_s4 },
+    { label: "Woman", before: relief_source5_woman, after: relief_ex2_s5 },
+    { label: "Wood", before: relief_source6_wood, after: relief_ex2_s6 },
   ]}
 />
 *Metallic Surface — simulated result across source images.*
@@ -257,9 +286,12 @@ These exercises progress from basic directional emboss through surface lighting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: relief_source1_kodim15, after: relief_exercise3_result },
-    { label: "Kodim15 B&W", before: relief_source2_kodim15_bw, after: relief_exercise3_result },
-    { label: "Male", before: relief_source3_male_1024, after: relief_exercise3_result },
+    { label: "Sunset", before: relief_source1_sunset, after: relief_ex3_s1 },
+    { label: "Castle", before: relief_source2_castle, after: relief_ex3_s2 },
+    { label: "Clouds", before: relief_source3_clouds, after: relief_ex3_s3 },
+    { label: "Pattern", before: relief_source4_pattern, after: relief_ex3_s4 },
+    { label: "Woman", before: relief_source5_woman, after: relief_ex3_s5 },
+    { label: "Wood", before: relief_source6_wood, after: relief_ex3_s6 },
   ]}
 />
 *Emboss Edge Map — simulated result across source images.*

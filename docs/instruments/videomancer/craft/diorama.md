@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 79
+sidebar_position: 82
 slug: /instruments/videomancer/diorama
 title: "Diorama"
-image: /img/instruments/videomancer/diorama/diorama_hero.png
+image: /img/instruments/videomancer/diorama/diorama_hero_s1.png
 description: "A Victorian diorama is a miniature theater — layers of painted scenery stacked at different distances from the viewer, lit from behind so that near layers appear sharp and vivid while far layers recede into haze."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import diorama_hero from '/img/instruments/videomancer/diorama/diorama_hero.png';
-import diorama_control_panel from '/img/instruments/videomancer/diorama/diorama_control_panel.png';
-import diorama_exercise1_result from '/img/instruments/videomancer/diorama/diorama_exercise1_result.png';
-import diorama_exercise2_result from '/img/instruments/videomancer/diorama/diorama_exercise2_result.png';
-import diorama_exercise3_result from '/img/instruments/videomancer/diorama/diorama_exercise3_result.png';
-import diorama_source1_kodim03 from '/img/instruments/videomancer/diorama/diorama_source1_kodim03.png';
-import diorama_source2_kodim13 from '/img/instruments/videomancer/diorama/diorama_source2_kodim13.png';
-import diorama_source3_kodim13_bw from '/img/instruments/videomancer/diorama/diorama_source3_kodim13_bw.png';
+import diorama_source1_castle from '/img/instruments/videomancer/diorama/diorama_source1_castle.png';
+import diorama_source2_parrot from '/img/instruments/videomancer/diorama/diorama_source2_parrot.png';
+import diorama_source3_collage from '/img/instruments/videomancer/diorama/diorama_source3_collage.png';
+import diorama_source4_pattern from '/img/instruments/videomancer/diorama/diorama_source4_pattern.png';
+import diorama_source5_man from '/img/instruments/videomancer/diorama/diorama_source5_man.png';
+import diorama_source6_berries from '/img/instruments/videomancer/diorama/diorama_source6_berries.png';
+import diorama_hero_s1 from '/img/instruments/videomancer/diorama/diorama_hero_s1.png';
+import diorama_hero_s2 from '/img/instruments/videomancer/diorama/diorama_hero_s2.png';
+import diorama_hero_s3 from '/img/instruments/videomancer/diorama/diorama_hero_s3.png';
+import diorama_hero_s4 from '/img/instruments/videomancer/diorama/diorama_hero_s4.png';
+import diorama_hero_s5 from '/img/instruments/videomancer/diorama/diorama_hero_s5.png';
+import diorama_hero_s6 from '/img/instruments/videomancer/diorama/diorama_hero_s6.png';
+import diorama_ex1_s1 from '/img/instruments/videomancer/diorama/diorama_ex1_s1.png';
+import diorama_ex1_s2 from '/img/instruments/videomancer/diorama/diorama_ex1_s2.png';
+import diorama_ex1_s3 from '/img/instruments/videomancer/diorama/diorama_ex1_s3.png';
+import diorama_ex1_s4 from '/img/instruments/videomancer/diorama/diorama_ex1_s4.png';
+import diorama_ex1_s5 from '/img/instruments/videomancer/diorama/diorama_ex1_s5.png';
+import diorama_ex1_s6 from '/img/instruments/videomancer/diorama/diorama_ex1_s6.png';
+import diorama_ex2_s1 from '/img/instruments/videomancer/diorama/diorama_ex2_s1.png';
+import diorama_ex2_s2 from '/img/instruments/videomancer/diorama/diorama_ex2_s2.png';
+import diorama_ex2_s3 from '/img/instruments/videomancer/diorama/diorama_ex2_s3.png';
+import diorama_ex2_s4 from '/img/instruments/videomancer/diorama/diorama_ex2_s4.png';
+import diorama_ex2_s5 from '/img/instruments/videomancer/diorama/diorama_ex2_s5.png';
+import diorama_ex2_s6 from '/img/instruments/videomancer/diorama/diorama_ex2_s6.png';
+import diorama_ex3_s1 from '/img/instruments/videomancer/diorama/diorama_ex3_s1.png';
+import diorama_ex3_s2 from '/img/instruments/videomancer/diorama/diorama_ex3_s2.png';
+import diorama_ex3_s3 from '/img/instruments/videomancer/diorama/diorama_ex3_s3.png';
+import diorama_ex3_s4 from '/img/instruments/videomancer/diorama/diorama_ex3_s4.png';
+import diorama_ex3_s5 from '/img/instruments/videomancer/diorama/diorama_ex3_s5.png';
+import diorama_ex3_s6 from '/img/instruments/videomancer/diorama/diorama_ex3_s6.png';
 
 # Diorama
 
@@ -23,9 +45,12 @@ import diorama_source3_kodim13_bw from '/img/instruments/videomancer/diorama/dio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_hero },
-    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_hero },
-    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_hero },
+    { label: "Castle", before: diorama_source1_castle, after: diorama_hero_s1 },
+    { label: "Parrot", before: diorama_source2_parrot, after: diorama_hero_s2 },
+    { label: "Collage", before: diorama_source3_collage, after: diorama_hero_s3 },
+    { label: "Pattern", before: diorama_source4_pattern, after: diorama_hero_s4 },
+    { label: "Man", before: diorama_source5_man, after: diorama_hero_s5 },
+    { label: "Berries", before: diorama_source6_berries, after: diorama_hero_s6 },
   ]}
 />
 *Diorama layering luminance-stratified depth zones with atmospheric fog and chroma desaturation to create a theatrical parallax illusion.*
@@ -118,8 +143,6 @@ The contrast stage sits *after* fog blending, meaning it amplifies or compresses
 
 ## Parameter Reference
 
-<img src={diorama_control_panel} alt="Videomancer front panel with Diorama loaded"/>
-*Videomancer's front panel with Diorama active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from basic depth classification through atmospheric fog
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise1_result },
-    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise1_result },
-    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise1_result },
+    { label: "Castle", before: diorama_source1_castle, after: diorama_ex1_s1 },
+    { label: "Parrot", before: diorama_source2_parrot, after: diorama_ex1_s2 },
+    { label: "Collage", before: diorama_source3_collage, after: diorama_ex1_s3 },
+    { label: "Pattern", before: diorama_source4_pattern, after: diorama_ex1_s4 },
+    { label: "Man", before: diorama_source5_man, after: diorama_ex1_s5 },
+    { label: "Berries", before: diorama_source6_berries, after: diorama_ex1_s6 },
   ]}
 />
 *Depth Zone Mapping — simulated result across source images.*
@@ -247,9 +273,12 @@ These exercises progress from basic depth classification through atmospheric fog
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise2_result },
-    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise2_result },
-    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise2_result },
+    { label: "Castle", before: diorama_source1_castle, after: diorama_ex2_s1 },
+    { label: "Parrot", before: diorama_source2_parrot, after: diorama_ex2_s2 },
+    { label: "Collage", before: diorama_source3_collage, after: diorama_ex2_s3 },
+    { label: "Pattern", before: diorama_source4_pattern, after: diorama_ex2_s4 },
+    { label: "Man", before: diorama_source5_man, after: diorama_ex2_s5 },
+    { label: "Berries", before: diorama_source6_berries, after: diorama_ex2_s6 },
   ]}
 />
 *Atmospheric Fog Grading — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from basic depth classification through atmospheric fog
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: diorama_source1_kodim03, after: diorama_exercise3_result },
-    { label: "Kodim13", before: diorama_source2_kodim13, after: diorama_exercise3_result },
-    { label: "Kodim13 B&W", before: diorama_source3_kodim13_bw, after: diorama_exercise3_result },
+    { label: "Castle", before: diorama_source1_castle, after: diorama_ex3_s1 },
+    { label: "Parrot", before: diorama_source2_parrot, after: diorama_ex3_s2 },
+    { label: "Collage", before: diorama_source3_collage, after: diorama_ex3_s3 },
+    { label: "Pattern", before: diorama_source4_pattern, after: diorama_ex3_s4 },
+    { label: "Man", before: diorama_source5_man, after: diorama_ex3_s5 },
+    { label: "Berries", before: diorama_source6_berries, after: diorama_ex3_s6 },
   ]}
 />
 *Animated Paper Theater — simulated result across source images.*

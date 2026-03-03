@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 100
+sidebar_position: 104
 slug: /instruments/videomancer/fathom
 title: "Fathom"
-image: /img/instruments/videomancer/fathom/fathom_hero.png
+image: /img/instruments/videomancer/fathom/fathom_hero_s1.png
 description: "Every topographic map you have ever seen uses the same trick: draw lines where the ground crosses a constant altitude, then fill the zones between those lines with colours that suggest the terrain — green lowlands, brown mountains, white glacial peaks."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import fathom_hero from '/img/instruments/videomancer/fathom/fathom_hero.png';
-import fathom_control_panel from '/img/instruments/videomancer/fathom/fathom_control_panel.png';
-import fathom_exercise1_result from '/img/instruments/videomancer/fathom/fathom_exercise1_result.png';
-import fathom_exercise2_result from '/img/instruments/videomancer/fathom/fathom_exercise2_result.png';
-import fathom_exercise3_result from '/img/instruments/videomancer/fathom/fathom_exercise3_result.png';
-import fathom_source1_kodim02 from '/img/instruments/videomancer/fathom/fathom_source1_kodim02.png';
-import fathom_source2_kodim07 from '/img/instruments/videomancer/fathom/fathom_source2_kodim07.png';
-import fathom_source3_kodim01_bw from '/img/instruments/videomancer/fathom/fathom_source3_kodim01_bw.png';
+import fathom_source1_cat from '/img/instruments/videomancer/fathom/fathom_source1_cat.png';
+import fathom_source2_fruit from '/img/instruments/videomancer/fathom/fathom_source2_fruit.png';
+import fathom_source3_clouds from '/img/instruments/videomancer/fathom/fathom_source3_clouds.png';
+import fathom_source4_pattern from '/img/instruments/videomancer/fathom/fathom_source4_pattern.png';
+import fathom_source5_boy from '/img/instruments/videomancer/fathom/fathom_source5_boy.png';
+import fathom_source6_paint from '/img/instruments/videomancer/fathom/fathom_source6_paint.png';
+import fathom_hero_s1 from '/img/instruments/videomancer/fathom/fathom_hero_s1.png';
+import fathom_hero_s2 from '/img/instruments/videomancer/fathom/fathom_hero_s2.png';
+import fathom_hero_s3 from '/img/instruments/videomancer/fathom/fathom_hero_s3.png';
+import fathom_hero_s4 from '/img/instruments/videomancer/fathom/fathom_hero_s4.png';
+import fathom_hero_s5 from '/img/instruments/videomancer/fathom/fathom_hero_s5.png';
+import fathom_hero_s6 from '/img/instruments/videomancer/fathom/fathom_hero_s6.png';
+import fathom_ex1_s1 from '/img/instruments/videomancer/fathom/fathom_ex1_s1.png';
+import fathom_ex1_s2 from '/img/instruments/videomancer/fathom/fathom_ex1_s2.png';
+import fathom_ex1_s3 from '/img/instruments/videomancer/fathom/fathom_ex1_s3.png';
+import fathom_ex1_s4 from '/img/instruments/videomancer/fathom/fathom_ex1_s4.png';
+import fathom_ex1_s5 from '/img/instruments/videomancer/fathom/fathom_ex1_s5.png';
+import fathom_ex1_s6 from '/img/instruments/videomancer/fathom/fathom_ex1_s6.png';
+import fathom_ex2_s1 from '/img/instruments/videomancer/fathom/fathom_ex2_s1.png';
+import fathom_ex2_s2 from '/img/instruments/videomancer/fathom/fathom_ex2_s2.png';
+import fathom_ex2_s3 from '/img/instruments/videomancer/fathom/fathom_ex2_s3.png';
+import fathom_ex2_s4 from '/img/instruments/videomancer/fathom/fathom_ex2_s4.png';
+import fathom_ex2_s5 from '/img/instruments/videomancer/fathom/fathom_ex2_s5.png';
+import fathom_ex2_s6 from '/img/instruments/videomancer/fathom/fathom_ex2_s6.png';
+import fathom_ex3_s1 from '/img/instruments/videomancer/fathom/fathom_ex3_s1.png';
+import fathom_ex3_s2 from '/img/instruments/videomancer/fathom/fathom_ex3_s2.png';
+import fathom_ex3_s3 from '/img/instruments/videomancer/fathom/fathom_ex3_s3.png';
+import fathom_ex3_s4 from '/img/instruments/videomancer/fathom/fathom_ex3_s4.png';
+import fathom_ex3_s5 from '/img/instruments/videomancer/fathom/fathom_ex3_s5.png';
+import fathom_ex3_s6 from '/img/instruments/videomancer/fathom/fathom_ex3_s6.png';
 
 # Fathom
 
@@ -23,9 +45,12 @@ import fathom_source3_kodim01_bw from '/img/instruments/videomancer/fathom/fatho
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_hero },
-    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_hero },
-    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_hero },
+    { label: "Cat", before: fathom_source1_cat, after: fathom_hero_s1 },
+    { label: "Fruit", before: fathom_source2_fruit, after: fathom_hero_s2 },
+    { label: "Clouds", before: fathom_source3_clouds, after: fathom_hero_s3 },
+    { label: "Pattern", before: fathom_source4_pattern, after: fathom_hero_s4 },
+    { label: "Boy", before: fathom_source5_boy, after: fathom_hero_s5 },
+    { label: "Paint", before: fathom_source6_paint, after: fathom_hero_s6 },
   ]}
 />
 *Fathom rendering luminance contour lines with hypsometric terrain tinting across a landscape feed, mapping brightness to elevation like a topographic survey.*
@@ -108,8 +133,6 @@ The critical interaction is between contour detection and zone colouring. Contou
 
 ## Parameter Reference
 
-<img src={fathom_control_panel} alt="Videomancer front panel with Fathom loaded"/>
-*Videomancer's front panel with Fathom active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from basic contour rendering through palette exploratio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise1_result },
-    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise1_result },
-    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise1_result },
+    { label: "Cat", before: fathom_source1_cat, after: fathom_ex1_s1 },
+    { label: "Fruit", before: fathom_source2_fruit, after: fathom_ex1_s2 },
+    { label: "Clouds", before: fathom_source3_clouds, after: fathom_ex1_s3 },
+    { label: "Pattern", before: fathom_source4_pattern, after: fathom_ex1_s4 },
+    { label: "Boy", before: fathom_source5_boy, after: fathom_ex1_s5 },
+    { label: "Paint", before: fathom_source6_paint, after: fathom_ex1_s6 },
   ]}
 />
 *First Survey — Basic Contour Mapping — simulated result across source images.*
@@ -237,9 +263,12 @@ These exercises progress from basic contour rendering through palette exploratio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise2_result },
-    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise2_result },
-    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise2_result },
+    { label: "Cat", before: fathom_source1_cat, after: fathom_ex2_s1 },
+    { label: "Fruit", before: fathom_source2_fruit, after: fathom_ex2_s2 },
+    { label: "Clouds", before: fathom_source3_clouds, after: fathom_ex2_s3 },
+    { label: "Pattern", before: fathom_source4_pattern, after: fathom_ex2_s4 },
+    { label: "Boy", before: fathom_source5_boy, after: fathom_ex2_s5 },
+    { label: "Paint", before: fathom_source6_paint, after: fathom_ex2_s6 },
   ]}
 />
 *Seafloor to Summit — Palette Exploration — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from basic contour rendering through palette exploratio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: fathom_source1_kodim02, after: fathom_exercise3_result },
-    { label: "Kodim07", before: fathom_source2_kodim07, after: fathom_exercise3_result },
-    { label: "Kodim01 B&W", before: fathom_source3_kodim01_bw, after: fathom_exercise3_result },
+    { label: "Cat", before: fathom_source1_cat, after: fathom_ex3_s1 },
+    { label: "Fruit", before: fathom_source2_fruit, after: fathom_ex3_s2 },
+    { label: "Clouds", before: fathom_source3_clouds, after: fathom_ex3_s3 },
+    { label: "Pattern", before: fathom_source4_pattern, after: fathom_ex3_s4 },
+    { label: "Boy", before: fathom_source5_boy, after: fathom_ex3_s5 },
+    { label: "Paint", before: fathom_source6_paint, after: fathom_ex3_s6 },
   ]}
 />
 *Cartographic Composite — Full Map Rendering — simulated result across source images.*

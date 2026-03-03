@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 75
+sidebar_position: 78
 slug: /instruments/videomancer/delirium
 title: "Delirium"
-image: /img/instruments/videomancer/delirium/delirium_hero.png
+image: /img/instruments/videomancer/delirium/delirium_hero_s1.png
 description: "Every line of a video image is a row of numbers — brightness and color values marching left to right across the screen."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import delirium_hero from '/img/instruments/videomancer/delirium/delirium_hero.png';
-import delirium_control_panel from '/img/instruments/videomancer/delirium/delirium_control_panel.png';
-import delirium_exercise1_result from '/img/instruments/videomancer/delirium/delirium_exercise1_result.png';
-import delirium_exercise2_result from '/img/instruments/videomancer/delirium/delirium_exercise2_result.png';
-import delirium_exercise3_result from '/img/instruments/videomancer/delirium/delirium_exercise3_result.png';
-import delirium_source1_kodim02 from '/img/instruments/videomancer/delirium/delirium_source1_kodim02.png';
-import delirium_source2_kodim07 from '/img/instruments/videomancer/delirium/delirium_source2_kodim07.png';
-import delirium_source3_kodim01_bw from '/img/instruments/videomancer/delirium/delirium_source3_kodim01_bw.png';
+import delirium_source1_fruit from '/img/instruments/videomancer/delirium/delirium_source1_fruit.png';
+import delirium_source2_field from '/img/instruments/videomancer/delirium/delirium_source2_field.png';
+import delirium_source3_collage from '/img/instruments/videomancer/delirium/delirium_source3_collage.png';
+import delirium_source4_pattern from '/img/instruments/videomancer/delirium/delirium_source4_pattern.png';
+import delirium_source5_girl from '/img/instruments/videomancer/delirium/delirium_source5_girl.png';
+import delirium_source6_wood from '/img/instruments/videomancer/delirium/delirium_source6_wood.png';
+import delirium_hero_s1 from '/img/instruments/videomancer/delirium/delirium_hero_s1.png';
+import delirium_hero_s2 from '/img/instruments/videomancer/delirium/delirium_hero_s2.png';
+import delirium_hero_s3 from '/img/instruments/videomancer/delirium/delirium_hero_s3.png';
+import delirium_hero_s4 from '/img/instruments/videomancer/delirium/delirium_hero_s4.png';
+import delirium_hero_s5 from '/img/instruments/videomancer/delirium/delirium_hero_s5.png';
+import delirium_hero_s6 from '/img/instruments/videomancer/delirium/delirium_hero_s6.png';
+import delirium_ex1_s1 from '/img/instruments/videomancer/delirium/delirium_ex1_s1.png';
+import delirium_ex1_s2 from '/img/instruments/videomancer/delirium/delirium_ex1_s2.png';
+import delirium_ex1_s3 from '/img/instruments/videomancer/delirium/delirium_ex1_s3.png';
+import delirium_ex1_s4 from '/img/instruments/videomancer/delirium/delirium_ex1_s4.png';
+import delirium_ex1_s5 from '/img/instruments/videomancer/delirium/delirium_ex1_s5.png';
+import delirium_ex1_s6 from '/img/instruments/videomancer/delirium/delirium_ex1_s6.png';
+import delirium_ex2_s1 from '/img/instruments/videomancer/delirium/delirium_ex2_s1.png';
+import delirium_ex2_s2 from '/img/instruments/videomancer/delirium/delirium_ex2_s2.png';
+import delirium_ex2_s3 from '/img/instruments/videomancer/delirium/delirium_ex2_s3.png';
+import delirium_ex2_s4 from '/img/instruments/videomancer/delirium/delirium_ex2_s4.png';
+import delirium_ex2_s5 from '/img/instruments/videomancer/delirium/delirium_ex2_s5.png';
+import delirium_ex2_s6 from '/img/instruments/videomancer/delirium/delirium_ex2_s6.png';
+import delirium_ex3_s1 from '/img/instruments/videomancer/delirium/delirium_ex3_s1.png';
+import delirium_ex3_s2 from '/img/instruments/videomancer/delirium/delirium_ex3_s2.png';
+import delirium_ex3_s3 from '/img/instruments/videomancer/delirium/delirium_ex3_s3.png';
+import delirium_ex3_s4 from '/img/instruments/videomancer/delirium/delirium_ex3_s4.png';
+import delirium_ex3_s5 from '/img/instruments/videomancer/delirium/delirium_ex3_s5.png';
+import delirium_ex3_s6 from '/img/instruments/videomancer/delirium/delirium_ex3_s6.png';
 
 # Delirium
 
@@ -23,9 +45,12 @@ import delirium_source3_kodim01_bw from '/img/instruments/videomancer/delirium/d
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_hero },
-    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_hero },
-    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_hero },
+    { label: "Fruit", before: delirium_source1_fruit, after: delirium_hero_s1 },
+    { label: "Field", before: delirium_source2_field, after: delirium_hero_s2 },
+    { label: "Collage", before: delirium_source3_collage, after: delirium_hero_s3 },
+    { label: "Pattern", before: delirium_source4_pattern, after: delirium_hero_s4 },
+    { label: "Girl", before: delirium_source5_girl, after: delirium_hero_s5 },
+    { label: "Wood", before: delirium_source6_wood, after: delirium_hero_s6 },
   ]}
 />
 *Delirium applying cascaded sinusoidal distortion to produce psychedelic scanline warping reminiscent of classic 16-bit battle screen effects.*
@@ -146,8 +171,6 @@ The phase accumulators advance once per frame (at vsync), not per scanline. This
 
 ## Parameter Reference
 
-<img src={delirium_control_panel} alt="Videomancer front panel with Delirium loaded"/>
-*Videomancer's front panel with Delirium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -251,9 +274,12 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise1_result },
-    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise1_result },
-    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise1_result },
+    { label: "Fruit", before: delirium_source1_fruit, after: delirium_ex1_s1 },
+    { label: "Field", before: delirium_source2_field, after: delirium_ex1_s2 },
+    { label: "Collage", before: delirium_source3_collage, after: delirium_ex1_s3 },
+    { label: "Pattern", before: delirium_source4_pattern, after: delirium_ex1_s4 },
+    { label: "Girl", before: delirium_source5_girl, after: delirium_ex1_s5 },
+    { label: "Wood", before: delirium_source6_wood, after: delirium_ex1_s6 },
   ]}
 />
 *Single-Layer Waves — simulated result across source images.*
@@ -275,9 +301,12 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise2_result },
-    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise2_result },
-    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise2_result },
+    { label: "Fruit", before: delirium_source1_fruit, after: delirium_ex2_s1 },
+    { label: "Field", before: delirium_source2_field, after: delirium_ex2_s2 },
+    { label: "Collage", before: delirium_source3_collage, after: delirium_ex2_s3 },
+    { label: "Pattern", before: delirium_source4_pattern, after: delirium_ex2_s4 },
+    { label: "Girl", before: delirium_source5_girl, after: delirium_ex2_s5 },
+    { label: "Wood", before: delirium_source6_wood, after: delirium_ex2_s6 },
   ]}
 />
 *Cascaded Distortion — simulated result across source images.*
@@ -300,9 +329,12 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: delirium_source1_kodim02, after: delirium_exercise3_result },
-    { label: "Kodim07", before: delirium_source2_kodim07, after: delirium_exercise3_result },
-    { label: "Kodim01 B&W", before: delirium_source3_kodim01_bw, after: delirium_exercise3_result },
+    { label: "Fruit", before: delirium_source1_fruit, after: delirium_ex3_s1 },
+    { label: "Field", before: delirium_source2_field, after: delirium_ex3_s2 },
+    { label: "Collage", before: delirium_source3_collage, after: delirium_ex3_s3 },
+    { label: "Pattern", before: delirium_source4_pattern, after: delirium_ex3_s4 },
+    { label: "Girl", before: delirium_source5_girl, after: delirium_ex3_s5 },
+    { label: "Wood", before: delirium_source6_wood, after: delirium_ex3_s6 },
   ]}
 />
 *Psychedelic Meltdown — simulated result across source images.*

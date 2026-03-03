@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 179
+sidebar_position: 187
 slug: /instruments/videomancer/massif
 title: "Massif"
-image: /img/instruments/videomancer/massif/massif_hero.png
+image: /img/instruments/videomancer/massif/massif_hero_s1.png
 description: "In 1973, Steve Rutt and Bill Etra built a video instrument that did something no other machine could do: it took a standard television signal and deflected each scan line vertically by an amount proportional to its brightness."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import massif_hero from '/img/instruments/videomancer/massif/massif_hero.png';
-import massif_control_panel from '/img/instruments/videomancer/massif/massif_control_panel.png';
-import massif_exercise1_result from '/img/instruments/videomancer/massif/massif_exercise1_result.png';
-import massif_exercise2_result from '/img/instruments/videomancer/massif/massif_exercise2_result.png';
-import massif_exercise3_result from '/img/instruments/videomancer/massif/massif_exercise3_result.png';
-import massif_source1_kodim15 from '/img/instruments/videomancer/massif/massif_source1_kodim15.png';
-import massif_source2_kodim01 from '/img/instruments/videomancer/massif/massif_source2_kodim01.png';
-import massif_source3_kodim01_bw from '/img/instruments/videomancer/massif/massif_source3_kodim01_bw.png';
+import massif_source1_fruit from '/img/instruments/videomancer/massif/massif_source1_fruit.png';
+import massif_source2_runner from '/img/instruments/videomancer/massif/massif_source2_runner.png';
+import massif_source3_clouds from '/img/instruments/videomancer/massif/massif_source3_clouds.png';
+import massif_source4_pattern from '/img/instruments/videomancer/massif/massif_source4_pattern.png';
+import massif_source5_man from '/img/instruments/videomancer/massif/massif_source5_man.png';
+import massif_source6_knit from '/img/instruments/videomancer/massif/massif_source6_knit.png';
+import massif_hero_s1 from '/img/instruments/videomancer/massif/massif_hero_s1.png';
+import massif_hero_s2 from '/img/instruments/videomancer/massif/massif_hero_s2.png';
+import massif_hero_s3 from '/img/instruments/videomancer/massif/massif_hero_s3.png';
+import massif_hero_s4 from '/img/instruments/videomancer/massif/massif_hero_s4.png';
+import massif_hero_s5 from '/img/instruments/videomancer/massif/massif_hero_s5.png';
+import massif_hero_s6 from '/img/instruments/videomancer/massif/massif_hero_s6.png';
+import massif_ex1_s1 from '/img/instruments/videomancer/massif/massif_ex1_s1.png';
+import massif_ex1_s2 from '/img/instruments/videomancer/massif/massif_ex1_s2.png';
+import massif_ex1_s3 from '/img/instruments/videomancer/massif/massif_ex1_s3.png';
+import massif_ex1_s4 from '/img/instruments/videomancer/massif/massif_ex1_s4.png';
+import massif_ex1_s5 from '/img/instruments/videomancer/massif/massif_ex1_s5.png';
+import massif_ex1_s6 from '/img/instruments/videomancer/massif/massif_ex1_s6.png';
+import massif_ex2_s1 from '/img/instruments/videomancer/massif/massif_ex2_s1.png';
+import massif_ex2_s2 from '/img/instruments/videomancer/massif/massif_ex2_s2.png';
+import massif_ex2_s3 from '/img/instruments/videomancer/massif/massif_ex2_s3.png';
+import massif_ex2_s4 from '/img/instruments/videomancer/massif/massif_ex2_s4.png';
+import massif_ex2_s5 from '/img/instruments/videomancer/massif/massif_ex2_s5.png';
+import massif_ex2_s6 from '/img/instruments/videomancer/massif/massif_ex2_s6.png';
+import massif_ex3_s1 from '/img/instruments/videomancer/massif/massif_ex3_s1.png';
+import massif_ex3_s2 from '/img/instruments/videomancer/massif/massif_ex3_s2.png';
+import massif_ex3_s3 from '/img/instruments/videomancer/massif/massif_ex3_s3.png';
+import massif_ex3_s4 from '/img/instruments/videomancer/massif/massif_ex3_s4.png';
+import massif_ex3_s5 from '/img/instruments/videomancer/massif/massif_ex3_s5.png';
+import massif_ex3_s6 from '/img/instruments/videomancer/massif/massif_ex3_s6.png';
 
 # Massif
 
@@ -23,9 +45,12 @@ import massif_source3_kodim01_bw from '/img/instruments/videomancer/massif/massi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: massif_source1_kodim15, after: massif_hero },
-    { label: "Kodim01", before: massif_source2_kodim01, after: massif_hero },
-    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_hero },
+    { label: "Fruit", before: massif_source1_fruit, after: massif_hero_s1 },
+    { label: "Runner", before: massif_source2_runner, after: massif_hero_s2 },
+    { label: "Clouds", before: massif_source3_clouds, after: massif_hero_s3 },
+    { label: "Pattern", before: massif_source4_pattern, after: massif_hero_s4 },
+    { label: "Man", before: massif_source5_man, after: massif_hero_s5 },
+    { label: "Knit", before: massif_source6_knit, after: massif_hero_s6 },
   ]}
 />
 *Massif displacing video scanlines by luminance to sculpt a phosphor-glow terrain landscape from a camera image, evoking the Rutt/Etra Video Synthesizer.*
@@ -111,8 +136,6 @@ The column buffer is the heart of the program. It operates as a dual-port BRAM: 
 
 ## Parameter Reference
 
-<img src={massif_control_panel} alt="Videomancer front panel with Massif loaded"/>
-*Videomancer's front panel with Massif active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +240,12 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise1_result },
-    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise1_result },
-    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise1_result },
+    { label: "Fruit", before: massif_source1_fruit, after: massif_ex1_s1 },
+    { label: "Runner", before: massif_source2_runner, after: massif_ex1_s2 },
+    { label: "Clouds", before: massif_source3_clouds, after: massif_ex1_s3 },
+    { label: "Pattern", before: massif_source4_pattern, after: massif_ex1_s4 },
+    { label: "Man", before: massif_source5_man, after: massif_ex1_s5 },
+    { label: "Knit", before: massif_source6_knit, after: massif_ex1_s6 },
   ]}
 />
 *Basic Terrain Displacement — simulated result across source images.*
@@ -241,9 +267,12 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise2_result },
-    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise2_result },
-    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise2_result },
+    { label: "Fruit", before: massif_source1_fruit, after: massif_ex2_s1 },
+    { label: "Runner", before: massif_source2_runner, after: massif_ex2_s2 },
+    { label: "Clouds", before: massif_source3_clouds, after: massif_ex2_s3 },
+    { label: "Pattern", before: massif_source4_pattern, after: massif_ex2_s4 },
+    { label: "Man", before: massif_source5_man, after: massif_ex2_s5 },
+    { label: "Knit", before: massif_source6_knit, after: massif_ex2_s6 },
   ]}
 />
 *Phosphor Persistence Display — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: massif_source1_kodim15, after: massif_exercise3_result },
-    { label: "Kodim01", before: massif_source2_kodim01, after: massif_exercise3_result },
-    { label: "Kodim01 B&W", before: massif_source3_kodim01_bw, after: massif_exercise3_result },
+    { label: "Fruit", before: massif_source1_fruit, after: massif_ex3_s1 },
+    { label: "Runner", before: massif_source2_runner, after: massif_ex3_s2 },
+    { label: "Clouds", before: massif_source3_clouds, after: massif_ex3_s3 },
+    { label: "Pattern", before: massif_source4_pattern, after: massif_ex3_s4 },
+    { label: "Man", before: massif_source5_man, after: massif_ex3_s5 },
+    { label: "Knit", before: massif_source6_knit, after: massif_ex3_s6 },
   ]}
 />
 *Perspective Landscape — simulated result across source images.*

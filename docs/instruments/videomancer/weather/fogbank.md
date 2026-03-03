@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 113
+sidebar_position: 118
 slug: /instruments/videomancer/fogbank
 title: "Fogbank"
-image: /img/instruments/videomancer/fogbank/fogbank_hero.png
+image: /img/instruments/videomancer/fogbank/fogbank_hero_s1.png
 description: "Fog is the atmosphere made visible."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import fogbank_hero from '/img/instruments/videomancer/fogbank/fogbank_hero.png';
-import fogbank_control_panel from '/img/instruments/videomancer/fogbank/fogbank_control_panel.png';
-import fogbank_exercise1_result from '/img/instruments/videomancer/fogbank/fogbank_exercise1_result.png';
-import fogbank_exercise2_result from '/img/instruments/videomancer/fogbank/fogbank_exercise2_result.png';
-import fogbank_exercise3_result from '/img/instruments/videomancer/fogbank/fogbank_exercise3_result.png';
-import fogbank_source1_kodim01 from '/img/instruments/videomancer/fogbank/fogbank_source1_kodim01.png';
-import fogbank_source2_kodim02 from '/img/instruments/videomancer/fogbank/fogbank_source2_kodim02.png';
-import fogbank_source3_stream_bridge_512 from '/img/instruments/videomancer/fogbank/fogbank_source3_stream_bridge_512.png';
+import fogbank_source1_skull from '/img/instruments/videomancer/fogbank/fogbank_source1_skull.png';
+import fogbank_source2_dog from '/img/instruments/videomancer/fogbank/fogbank_source2_dog.png';
+import fogbank_source3_collage from '/img/instruments/videomancer/fogbank/fogbank_source3_collage.png';
+import fogbank_source4_pattern from '/img/instruments/videomancer/fogbank/fogbank_source4_pattern.png';
+import fogbank_source5_man from '/img/instruments/videomancer/fogbank/fogbank_source5_man.png';
+import fogbank_source6_knit from '/img/instruments/videomancer/fogbank/fogbank_source6_knit.png';
+import fogbank_hero_s1 from '/img/instruments/videomancer/fogbank/fogbank_hero_s1.png';
+import fogbank_hero_s2 from '/img/instruments/videomancer/fogbank/fogbank_hero_s2.png';
+import fogbank_hero_s3 from '/img/instruments/videomancer/fogbank/fogbank_hero_s3.png';
+import fogbank_hero_s4 from '/img/instruments/videomancer/fogbank/fogbank_hero_s4.png';
+import fogbank_hero_s5 from '/img/instruments/videomancer/fogbank/fogbank_hero_s5.png';
+import fogbank_hero_s6 from '/img/instruments/videomancer/fogbank/fogbank_hero_s6.png';
+import fogbank_ex1_s1 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s1.png';
+import fogbank_ex1_s2 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s2.png';
+import fogbank_ex1_s3 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s3.png';
+import fogbank_ex1_s4 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s4.png';
+import fogbank_ex1_s5 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s5.png';
+import fogbank_ex1_s6 from '/img/instruments/videomancer/fogbank/fogbank_ex1_s6.png';
+import fogbank_ex2_s1 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s1.png';
+import fogbank_ex2_s2 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s2.png';
+import fogbank_ex2_s3 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s3.png';
+import fogbank_ex2_s4 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s4.png';
+import fogbank_ex2_s5 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s5.png';
+import fogbank_ex2_s6 from '/img/instruments/videomancer/fogbank/fogbank_ex2_s6.png';
+import fogbank_ex3_s1 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s1.png';
+import fogbank_ex3_s2 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s2.png';
+import fogbank_ex3_s3 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s3.png';
+import fogbank_ex3_s4 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s4.png';
+import fogbank_ex3_s5 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s5.png';
+import fogbank_ex3_s6 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s6.png';
 
 # Fogbank
 
@@ -23,9 +45,12 @@ import fogbank_source3_stream_bridge_512 from '/img/instruments/videomancer/fogb
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_hero },
-    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_hero },
-    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_hero },
+    { label: "Skull", before: fogbank_source1_skull, after: fogbank_hero_s1 },
+    { label: "Dog", before: fogbank_source2_dog, after: fogbank_hero_s2 },
+    { label: "Collage", before: fogbank_source3_collage, after: fogbank_hero_s3 },
+    { label: "Pattern", before: fogbank_source4_pattern, after: fogbank_hero_s4 },
+    { label: "Man", before: fogbank_source5_man, after: fogbank_hero_s5 },
+    { label: "Knit", before: fogbank_source6_knit, after: fogbank_hero_s6 },
   ]}
 />
 *Dense rolling fog banks drift across a sunlit landscape, swallowing colour and detail into soft luminous white — only the faintest outlines survive beneath the blanket.*
@@ -124,8 +149,6 @@ The fog blend stage pushes luma toward the target brightness while simultaneousl
 
 ## Parameter Reference
 
-<img src={fogbank_control_panel} alt="Videomancer front panel with Fogbank loaded"/>
-*Videomancer's front panel with Fogbank active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -230,9 +253,12 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise1_result },
-    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise1_result },
-    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise1_result },
+    { label: "Skull", before: fogbank_source1_skull, after: fogbank_ex1_s1 },
+    { label: "Dog", before: fogbank_source2_dog, after: fogbank_ex1_s2 },
+    { label: "Collage", before: fogbank_source3_collage, after: fogbank_ex1_s3 },
+    { label: "Pattern", before: fogbank_source4_pattern, after: fogbank_ex1_s4 },
+    { label: "Man", before: fogbank_source5_man, after: fogbank_ex1_s5 },
+    { label: "Knit", before: fogbank_source6_knit, after: fogbank_ex1_s6 },
   ]}
 />
 *Static Fog Blanket — simulated result across source images.*
@@ -255,9 +281,12 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise2_result },
-    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise2_result },
-    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise2_result },
+    { label: "Skull", before: fogbank_source1_skull, after: fogbank_ex2_s1 },
+    { label: "Dog", before: fogbank_source2_dog, after: fogbank_ex2_s2 },
+    { label: "Collage", before: fogbank_source3_collage, after: fogbank_ex2_s3 },
+    { label: "Pattern", before: fogbank_source4_pattern, after: fogbank_ex2_s4 },
+    { label: "Man", before: fogbank_source5_man, after: fogbank_ex2_s5 },
+    { label: "Knit", before: fogbank_source6_knit, after: fogbank_ex2_s6 },
   ]}
 />
 *Rolling Fog Drift — simulated result across source images.*
@@ -281,9 +310,12 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: fogbank_source1_kodim01, after: fogbank_exercise3_result },
-    { label: "Kodim02", before: fogbank_source2_kodim02, after: fogbank_exercise3_result },
-    { label: "Stream Bridge", before: fogbank_source3_stream_bridge_512, after: fogbank_exercise3_result },
+    { label: "Skull", before: fogbank_source1_skull, after: fogbank_ex3_s1 },
+    { label: "Dog", before: fogbank_source2_dog, after: fogbank_ex3_s2 },
+    { label: "Collage", before: fogbank_source3_collage, after: fogbank_ex3_s3 },
+    { label: "Pattern", before: fogbank_source4_pattern, after: fogbank_ex3_s4 },
+    { label: "Man", before: fogbank_source5_man, after: fogbank_ex3_s5 },
+    { label: "Knit", before: fogbank_source6_knit, after: fogbank_ex3_s6 },
   ]}
 />
 *Turbulent Fogbank — simulated result across source images.*

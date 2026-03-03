@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 70
+sidebar_position: 73
 slug: /instruments/videomancer/dashcam
 title: "Dashcam"
-image: /img/instruments/videomancer/dashcam/dashcam_hero.png
+image: /img/instruments/videomancer/dashcam/dashcam_hero_s1.png
 description: "Dashcam emulates the look of footage recorded by a low-cost dashboard-mounted camera."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dashcam_hero from '/img/instruments/videomancer/dashcam/dashcam_hero.png';
-import dashcam_control_panel from '/img/instruments/videomancer/dashcam/dashcam_control_panel.png';
-import dashcam_exercise1_result from '/img/instruments/videomancer/dashcam/dashcam_exercise1_result.png';
-import dashcam_exercise2_result from '/img/instruments/videomancer/dashcam/dashcam_exercise2_result.png';
-import dashcam_exercise3_result from '/img/instruments/videomancer/dashcam/dashcam_exercise3_result.png';
-import dashcam_source1_kodim05 from '/img/instruments/videomancer/dashcam/dashcam_source1_kodim05.png';
-import dashcam_source2_kodim15 from '/img/instruments/videomancer/dashcam/dashcam_source2_kodim15.png';
-import dashcam_source3_kodim15_bw from '/img/instruments/videomancer/dashcam/dashcam_source3_kodim15_bw.png';
+import dashcam_source1_boat from '/img/instruments/videomancer/dashcam/dashcam_source1_boat.png';
+import dashcam_source2_dog from '/img/instruments/videomancer/dashcam/dashcam_source2_dog.png';
+import dashcam_source3_turtle from '/img/instruments/videomancer/dashcam/dashcam_source3_turtle.png';
+import dashcam_source4_pattern from '/img/instruments/videomancer/dashcam/dashcam_source4_pattern.png';
+import dashcam_source5_man from '/img/instruments/videomancer/dashcam/dashcam_source5_man.png';
+import dashcam_source6_paint from '/img/instruments/videomancer/dashcam/dashcam_source6_paint.png';
+import dashcam_hero_s1 from '/img/instruments/videomancer/dashcam/dashcam_hero_s1.png';
+import dashcam_hero_s2 from '/img/instruments/videomancer/dashcam/dashcam_hero_s2.png';
+import dashcam_hero_s3 from '/img/instruments/videomancer/dashcam/dashcam_hero_s3.png';
+import dashcam_hero_s4 from '/img/instruments/videomancer/dashcam/dashcam_hero_s4.png';
+import dashcam_hero_s5 from '/img/instruments/videomancer/dashcam/dashcam_hero_s5.png';
+import dashcam_hero_s6 from '/img/instruments/videomancer/dashcam/dashcam_hero_s6.png';
+import dashcam_ex1_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s1.png';
+import dashcam_ex1_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s2.png';
+import dashcam_ex1_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s3.png';
+import dashcam_ex1_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s4.png';
+import dashcam_ex1_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s5.png';
+import dashcam_ex1_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex1_s6.png';
+import dashcam_ex2_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s1.png';
+import dashcam_ex2_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s2.png';
+import dashcam_ex2_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s3.png';
+import dashcam_ex2_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s4.png';
+import dashcam_ex2_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s5.png';
+import dashcam_ex2_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex2_s6.png';
+import dashcam_ex3_s1 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s1.png';
+import dashcam_ex3_s2 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s2.png';
+import dashcam_ex3_s3 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s3.png';
+import dashcam_ex3_s4 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s4.png';
+import dashcam_ex3_s5 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s5.png';
+import dashcam_ex3_s6 from '/img/instruments/videomancer/dashcam/dashcam_ex3_s6.png';
 
 # Dashcam
 
@@ -23,9 +45,12 @@ import dashcam_source3_kodim15_bw from '/img/instruments/videomancer/dashcam/das
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_hero },
-    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_hero },
-    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_hero },
+    { label: "Boat", before: dashcam_source1_boat, after: dashcam_hero_s1 },
+    { label: "Dog", before: dashcam_source2_dog, after: dashcam_hero_s2 },
+    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_hero_s3 },
+    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_hero_s4 },
+    { label: "Man", before: dashcam_source5_man, after: dashcam_hero_s5 },
+    { label: "Paint", before: dashcam_source6_paint, after: dashcam_hero_s6 },
   ]}
 />
 *Barrel distortion, edge vignette, LFSR noise, and a blinking recording indicator transform clean video into convincing dashboard camera footage.*
@@ -105,8 +130,6 @@ The vignette and noise injection both operate on the Y channel only — chroma p
 
 ## Parameter Reference
 
-<img src={dashcam_control_panel} alt="Videomancer front panel with Dashcam loaded"/>
-*Videomancer's front panel with Dashcam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -211,9 +234,12 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise1_result },
-    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise1_result },
-    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise1_result },
+    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex1_s1 },
+    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex1_s2 },
+    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex1_s3 },
+    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex1_s4 },
+    { label: "Man", before: dashcam_source5_man, after: dashcam_ex1_s5 },
+    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex1_s6 },
   ]}
 />
 *Wide-Angle Lens Look — simulated result across source images.*
@@ -235,9 +261,12 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise2_result },
-    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise2_result },
-    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise2_result },
+    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex2_s1 },
+    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex2_s2 },
+    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex2_s3 },
+    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex2_s4 },
+    { label: "Man", before: dashcam_source5_man, after: dashcam_ex2_s5 },
+    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex2_s6 },
   ]}
 />
 *Night Surveillance — simulated result across source images.*
@@ -260,9 +289,12 @@ These three exercises progress from basic lens emulation to full surveillance-ta
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: dashcam_source1_kodim05, after: dashcam_exercise3_result },
-    { label: "Kodim15", before: dashcam_source2_kodim15, after: dashcam_exercise3_result },
-    { label: "Kodim15 B&W", before: dashcam_source3_kodim15_bw, after: dashcam_exercise3_result },
+    { label: "Boat", before: dashcam_source1_boat, after: dashcam_ex3_s1 },
+    { label: "Dog", before: dashcam_source2_dog, after: dashcam_ex3_s2 },
+    { label: "Turtle", before: dashcam_source3_turtle, after: dashcam_ex3_s3 },
+    { label: "Pattern", before: dashcam_source4_pattern, after: dashcam_ex3_s4 },
+    { label: "Man", before: dashcam_source5_man, after: dashcam_ex3_s5 },
+    { label: "Paint", before: dashcam_source6_paint, after: dashcam_ex3_s6 },
   ]}
 />
 *Full Dashcam Reconstruction — simulated result across source images.*

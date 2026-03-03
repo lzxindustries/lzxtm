@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 92
+sidebar_position: 96
 slug: /instruments/videomancer/elastica
 title: "Elastica"
-image: /img/instruments/videomancer/elastica/elastica_hero.png
+image: /img/instruments/videomancer/elastica/elastica_hero_s1.png
 description: "In the 1970s, a single machine dominated the world of broadcast motion graphics."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import elastica_hero from '/img/instruments/videomancer/elastica/elastica_hero.png';
-import elastica_control_panel from '/img/instruments/videomancer/elastica/elastica_control_panel.png';
-import elastica_exercise1_result from '/img/instruments/videomancer/elastica/elastica_exercise1_result.png';
-import elastica_exercise2_result from '/img/instruments/videomancer/elastica/elastica_exercise2_result.png';
-import elastica_exercise3_result from '/img/instruments/videomancer/elastica/elastica_exercise3_result.png';
-import elastica_source1_kodim02 from '/img/instruments/videomancer/elastica/elastica_source1_kodim02.png';
-import elastica_source2_kodim07 from '/img/instruments/videomancer/elastica/elastica_source2_kodim07.png';
-import elastica_source3_kodim01_bw from '/img/instruments/videomancer/elastica/elastica_source3_kodim01_bw.png';
+import elastica_source1_house from '/img/instruments/videomancer/elastica/elastica_source1_house.png';
+import elastica_source2_boat from '/img/instruments/videomancer/elastica/elastica_source2_boat.png';
+import elastica_source3_collage from '/img/instruments/videomancer/elastica/elastica_source3_collage.png';
+import elastica_source4_pattern from '/img/instruments/videomancer/elastica/elastica_source4_pattern.png';
+import elastica_source5_woman from '/img/instruments/videomancer/elastica/elastica_source5_woman.png';
+import elastica_source6_wood from '/img/instruments/videomancer/elastica/elastica_source6_wood.png';
+import elastica_hero_s1 from '/img/instruments/videomancer/elastica/elastica_hero_s1.png';
+import elastica_hero_s2 from '/img/instruments/videomancer/elastica/elastica_hero_s2.png';
+import elastica_hero_s3 from '/img/instruments/videomancer/elastica/elastica_hero_s3.png';
+import elastica_hero_s4 from '/img/instruments/videomancer/elastica/elastica_hero_s4.png';
+import elastica_hero_s5 from '/img/instruments/videomancer/elastica/elastica_hero_s5.png';
+import elastica_hero_s6 from '/img/instruments/videomancer/elastica/elastica_hero_s6.png';
+import elastica_ex1_s1 from '/img/instruments/videomancer/elastica/elastica_ex1_s1.png';
+import elastica_ex1_s2 from '/img/instruments/videomancer/elastica/elastica_ex1_s2.png';
+import elastica_ex1_s3 from '/img/instruments/videomancer/elastica/elastica_ex1_s3.png';
+import elastica_ex1_s4 from '/img/instruments/videomancer/elastica/elastica_ex1_s4.png';
+import elastica_ex1_s5 from '/img/instruments/videomancer/elastica/elastica_ex1_s5.png';
+import elastica_ex1_s6 from '/img/instruments/videomancer/elastica/elastica_ex1_s6.png';
+import elastica_ex2_s1 from '/img/instruments/videomancer/elastica/elastica_ex2_s1.png';
+import elastica_ex2_s2 from '/img/instruments/videomancer/elastica/elastica_ex2_s2.png';
+import elastica_ex2_s3 from '/img/instruments/videomancer/elastica/elastica_ex2_s3.png';
+import elastica_ex2_s4 from '/img/instruments/videomancer/elastica/elastica_ex2_s4.png';
+import elastica_ex2_s5 from '/img/instruments/videomancer/elastica/elastica_ex2_s5.png';
+import elastica_ex2_s6 from '/img/instruments/videomancer/elastica/elastica_ex2_s6.png';
+import elastica_ex3_s1 from '/img/instruments/videomancer/elastica/elastica_ex3_s1.png';
+import elastica_ex3_s2 from '/img/instruments/videomancer/elastica/elastica_ex3_s2.png';
+import elastica_ex3_s3 from '/img/instruments/videomancer/elastica/elastica_ex3_s3.png';
+import elastica_ex3_s4 from '/img/instruments/videomancer/elastica/elastica_ex3_s4.png';
+import elastica_ex3_s5 from '/img/instruments/videomancer/elastica/elastica_ex3_s5.png';
+import elastica_ex3_s6 from '/img/instruments/videomancer/elastica/elastica_ex3_s6.png';
 
 # Elastica
 
@@ -23,9 +45,12 @@ import elastica_source3_kodim01_bw from '/img/instruments/videomancer/elastica/e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_hero },
-    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_hero },
-    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_hero },
+    { label: "House", before: elastica_source1_house, after: elastica_hero_s1 },
+    { label: "Boat", before: elastica_source2_boat, after: elastica_hero_s2 },
+    { label: "Collage", before: elastica_source3_collage, after: elastica_hero_s3 },
+    { label: "Pattern", before: elastica_source4_pattern, after: elastica_hero_s4 },
+    { label: "Woman", before: elastica_source5_woman, after: elastica_hero_s5 },
+    { label: "Wood", before: elastica_source6_wood, after: elastica_hero_s6 },
   ]}
 />
 *Elastica applying sine-wave horizontal displacement to create Scanimate-style rubber-sheet distortion with animated phase scrolling.*
@@ -110,8 +135,6 @@ The horizontal displacement path and the vertical warp path are largely independ
 
 ## Parameter Reference
 
-<img src={elastica_control_panel} alt="Videomancer front panel with Elastica loaded"/>
-*Videomancer's front panel with Elastica active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -215,9 +238,12 @@ These exercises progress from basic horizontal displacement through vertical war
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise1_result },
-    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise1_result },
-    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise1_result },
+    { label: "House", before: elastica_source1_house, after: elastica_ex1_s1 },
+    { label: "Boat", before: elastica_source2_boat, after: elastica_ex1_s2 },
+    { label: "Collage", before: elastica_source3_collage, after: elastica_ex1_s3 },
+    { label: "Pattern", before: elastica_source4_pattern, after: elastica_ex1_s4 },
+    { label: "Woman", before: elastica_source5_woman, after: elastica_ex1_s5 },
+    { label: "Wood", before: elastica_source6_wood, after: elastica_ex1_s6 },
   ]}
 />
 *Classic Scanimate Ripple — simulated result across source images.*
@@ -240,9 +266,12 @@ These exercises progress from basic horizontal displacement through vertical war
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise2_result },
-    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise2_result },
-    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise2_result },
+    { label: "House", before: elastica_source1_house, after: elastica_ex2_s1 },
+    { label: "Boat", before: elastica_source2_boat, after: elastica_ex2_s2 },
+    { label: "Collage", before: elastica_source3_collage, after: elastica_ex2_s3 },
+    { label: "Pattern", before: elastica_source4_pattern, after: elastica_ex2_s4 },
+    { label: "Woman", before: elastica_source5_woman, after: elastica_ex2_s5 },
+    { label: "Wood", before: elastica_source6_wood, after: elastica_ex2_s6 },
   ]}
 />
 *Vertical Squeeze and Cross-Modulation — simulated result across source images.*
@@ -265,9 +294,12 @@ These exercises progress from basic horizontal displacement through vertical war
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: elastica_source1_kodim02, after: elastica_exercise3_result },
-    { label: "Kodim07", before: elastica_source2_kodim07, after: elastica_exercise3_result },
-    { label: "Kodim01 B&W", before: elastica_source3_kodim01_bw, after: elastica_exercise3_result },
+    { label: "House", before: elastica_source1_house, after: elastica_ex3_s1 },
+    { label: "Boat", before: elastica_source2_boat, after: elastica_ex3_s2 },
+    { label: "Collage", before: elastica_source3_collage, after: elastica_ex3_s3 },
+    { label: "Pattern", before: elastica_source4_pattern, after: elastica_ex3_s4 },
+    { label: "Woman", before: elastica_source5_woman, after: elastica_ex3_s5 },
+    { label: "Wood", before: elastica_source6_wood, after: elastica_ex3_s6 },
   ]}
 />
 *Waveshape Comparison and Extreme Warp — simulated result across source images.*

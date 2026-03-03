@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 227
+sidebar_position: 237
 slug: /instruments/videomancer/radiant
 title: "Radiant"
-image: /img/instruments/videomancer/radiant/radiant_hero.png
+image: /img/instruments/videomancer/radiant/radiant_hero_s1.png
 description: "Radiant generates concentric colored rings that radiate outward from an adjustable center point, creating a tunnel-like wash of color that composites with the incoming video signal."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import radiant_hero from '/img/instruments/videomancer/radiant/radiant_hero.png';
-import radiant_control_panel from '/img/instruments/videomancer/radiant/radiant_control_panel.png';
-import radiant_exercise1_result from '/img/instruments/videomancer/radiant/radiant_exercise1_result.png';
-import radiant_exercise2_result from '/img/instruments/videomancer/radiant/radiant_exercise2_result.png';
-import radiant_exercise3_result from '/img/instruments/videomancer/radiant/radiant_exercise3_result.png';
-import radiant_source1_kodim15 from '/img/instruments/videomancer/radiant/radiant_source1_kodim15.png';
-import radiant_source2_kodim01 from '/img/instruments/videomancer/radiant/radiant_source2_kodim01.png';
-import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/radiant_source3_kodim01_bw.png';
+import radiant_source1_fruit from '/img/instruments/videomancer/radiant/radiant_source1_fruit.png';
+import radiant_source2_field from '/img/instruments/videomancer/radiant/radiant_source2_field.png';
+import radiant_source3_turtle from '/img/instruments/videomancer/radiant/radiant_source3_turtle.png';
+import radiant_source4_pattern from '/img/instruments/videomancer/radiant/radiant_source4_pattern.png';
+import radiant_source5_girl from '/img/instruments/videomancer/radiant/radiant_source5_girl.png';
+import radiant_source6_wood from '/img/instruments/videomancer/radiant/radiant_source6_wood.png';
+import radiant_hero_s1 from '/img/instruments/videomancer/radiant/radiant_hero_s1.png';
+import radiant_hero_s2 from '/img/instruments/videomancer/radiant/radiant_hero_s2.png';
+import radiant_hero_s3 from '/img/instruments/videomancer/radiant/radiant_hero_s3.png';
+import radiant_hero_s4 from '/img/instruments/videomancer/radiant/radiant_hero_s4.png';
+import radiant_hero_s5 from '/img/instruments/videomancer/radiant/radiant_hero_s5.png';
+import radiant_hero_s6 from '/img/instruments/videomancer/radiant/radiant_hero_s6.png';
+import radiant_ex1_s1 from '/img/instruments/videomancer/radiant/radiant_ex1_s1.png';
+import radiant_ex1_s2 from '/img/instruments/videomancer/radiant/radiant_ex1_s2.png';
+import radiant_ex1_s3 from '/img/instruments/videomancer/radiant/radiant_ex1_s3.png';
+import radiant_ex1_s4 from '/img/instruments/videomancer/radiant/radiant_ex1_s4.png';
+import radiant_ex1_s5 from '/img/instruments/videomancer/radiant/radiant_ex1_s5.png';
+import radiant_ex1_s6 from '/img/instruments/videomancer/radiant/radiant_ex1_s6.png';
+import radiant_ex2_s1 from '/img/instruments/videomancer/radiant/radiant_ex2_s1.png';
+import radiant_ex2_s2 from '/img/instruments/videomancer/radiant/radiant_ex2_s2.png';
+import radiant_ex2_s3 from '/img/instruments/videomancer/radiant/radiant_ex2_s3.png';
+import radiant_ex2_s4 from '/img/instruments/videomancer/radiant/radiant_ex2_s4.png';
+import radiant_ex2_s5 from '/img/instruments/videomancer/radiant/radiant_ex2_s5.png';
+import radiant_ex2_s6 from '/img/instruments/videomancer/radiant/radiant_ex2_s6.png';
+import radiant_ex3_s1 from '/img/instruments/videomancer/radiant/radiant_ex3_s1.png';
+import radiant_ex3_s2 from '/img/instruments/videomancer/radiant/radiant_ex3_s2.png';
+import radiant_ex3_s3 from '/img/instruments/videomancer/radiant/radiant_ex3_s3.png';
+import radiant_ex3_s4 from '/img/instruments/videomancer/radiant/radiant_ex3_s4.png';
+import radiant_ex3_s5 from '/img/instruments/videomancer/radiant/radiant_ex3_s5.png';
+import radiant_ex3_s6 from '/img/instruments/videomancer/radiant/radiant_ex3_s6.png';
 
 # Radiant
 
@@ -23,9 +45,12 @@ import radiant_source3_kodim01_bw from '/img/instruments/videomancer/radiant/rad
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_hero },
-    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_hero },
-    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_hero },
+    { label: "Fruit", before: radiant_source1_fruit, after: radiant_hero_s1 },
+    { label: "Field", before: radiant_source2_field, after: radiant_hero_s2 },
+    { label: "Turtle", before: radiant_source3_turtle, after: radiant_hero_s3 },
+    { label: "Pattern", before: radiant_source4_pattern, after: radiant_hero_s4 },
+    { label: "Girl", before: radiant_source5_girl, after: radiant_hero_s5 },
+    { label: "Wood", before: radiant_source6_wood, after: radiant_hero_s6 },
   ]}
 />
 *Radiant projecting concentric expanding color rings from a movable center point, composited over live video via additive blending.*
@@ -119,8 +144,6 @@ The key interaction is the additive ring index construction: `distance + frame_s
 
 ## Parameter Reference
 
-<img src={radiant_control_panel} alt="Videomancer front panel with Radiant loaded"/>
-*Videomancer's front panel with Radiant active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise1_result },
-    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise1_result },
-    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise1_result },
+    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex1_s1 },
+    { label: "Field", before: radiant_source2_field, after: radiant_ex1_s2 },
+    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex1_s3 },
+    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex1_s4 },
+    { label: "Girl", before: radiant_source5_girl, after: radiant_ex1_s5 },
+    { label: "Wood", before: radiant_source6_wood, after: radiant_ex1_s6 },
   ]}
 />
 *Centered Rainbow Spotlight — simulated result across source images.*
@@ -256,9 +282,12 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise2_result },
-    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise2_result },
-    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise2_result },
+    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex2_s1 },
+    { label: "Field", before: radiant_source2_field, after: radiant_ex2_s2 },
+    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex2_s3 },
+    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex2_s4 },
+    { label: "Girl", before: radiant_source5_girl, after: radiant_ex2_s5 },
+    { label: "Wood", before: radiant_source6_wood, after: radiant_ex2_s6 },
   ]}
 />
 *Orbiting Color Tunnel — simulated result across source images.*
@@ -287,9 +316,12 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: radiant_source1_kodim15, after: radiant_exercise3_result },
-    { label: "Kodim01", before: radiant_source2_kodim01, after: radiant_exercise3_result },
-    { label: "Kodim01 B&W", before: radiant_source3_kodim01_bw, after: radiant_exercise3_result },
+    { label: "Fruit", before: radiant_source1_fruit, after: radiant_ex3_s1 },
+    { label: "Field", before: radiant_source2_field, after: radiant_ex3_s2 },
+    { label: "Turtle", before: radiant_source3_turtle, after: radiant_ex3_s3 },
+    { label: "Pattern", before: radiant_source4_pattern, after: radiant_ex3_s4 },
+    { label: "Girl", before: radiant_source5_girl, after: radiant_ex3_s5 },
+    { label: "Wood", before: radiant_source6_wood, after: radiant_ex3_s6 },
   ]}
 />
 *Vignette Gating — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 204
+sidebar_position: 213
 slug: /instruments/videomancer/parade
 title: "Parade"
-image: /img/instruments/videomancer/parade/parade_hero.png
+image: /img/instruments/videomancer/parade/parade_hero_s1.png
 description: "Before digital scopes and vectorscopes, broadcast engineers relied on cathode-ray tube waveform monitors to see inside the video signal."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import parade_hero from '/img/instruments/videomancer/parade/parade_hero.png';
-import parade_control_panel from '/img/instruments/videomancer/parade/parade_control_panel.png';
-import parade_exercise1_result from '/img/instruments/videomancer/parade/parade_exercise1_result.png';
-import parade_exercise2_result from '/img/instruments/videomancer/parade/parade_exercise2_result.png';
-import parade_exercise3_result from '/img/instruments/videomancer/parade/parade_exercise3_result.png';
-import parade_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/parade/parade_source1_grayscale_ramp_h_1920x1080.png';
-import parade_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/parade/parade_source2_grayscale_ramp_v_1920x1080.png';
-import parade_source3_step_wedge_21level_512 from '/img/instruments/videomancer/parade/parade_source3_step_wedge_21level_512.png';
+import parade_source1_dog from '/img/instruments/videomancer/parade/parade_source1_dog.png';
+import parade_source2_parrot from '/img/instruments/videomancer/parade/parade_source2_parrot.png';
+import parade_source3_elephant from '/img/instruments/videomancer/parade/parade_source3_elephant.png';
+import parade_source4_pattern from '/img/instruments/videomancer/parade/parade_source4_pattern.png';
+import parade_source5_girl from '/img/instruments/videomancer/parade/parade_source5_girl.png';
+import parade_source6_knit from '/img/instruments/videomancer/parade/parade_source6_knit.png';
+import parade_hero_s1 from '/img/instruments/videomancer/parade/parade_hero_s1.png';
+import parade_hero_s2 from '/img/instruments/videomancer/parade/parade_hero_s2.png';
+import parade_hero_s3 from '/img/instruments/videomancer/parade/parade_hero_s3.png';
+import parade_hero_s4 from '/img/instruments/videomancer/parade/parade_hero_s4.png';
+import parade_hero_s5 from '/img/instruments/videomancer/parade/parade_hero_s5.png';
+import parade_hero_s6 from '/img/instruments/videomancer/parade/parade_hero_s6.png';
+import parade_ex1_s1 from '/img/instruments/videomancer/parade/parade_ex1_s1.png';
+import parade_ex1_s2 from '/img/instruments/videomancer/parade/parade_ex1_s2.png';
+import parade_ex1_s3 from '/img/instruments/videomancer/parade/parade_ex1_s3.png';
+import parade_ex1_s4 from '/img/instruments/videomancer/parade/parade_ex1_s4.png';
+import parade_ex1_s5 from '/img/instruments/videomancer/parade/parade_ex1_s5.png';
+import parade_ex1_s6 from '/img/instruments/videomancer/parade/parade_ex1_s6.png';
+import parade_ex2_s1 from '/img/instruments/videomancer/parade/parade_ex2_s1.png';
+import parade_ex2_s2 from '/img/instruments/videomancer/parade/parade_ex2_s2.png';
+import parade_ex2_s3 from '/img/instruments/videomancer/parade/parade_ex2_s3.png';
+import parade_ex2_s4 from '/img/instruments/videomancer/parade/parade_ex2_s4.png';
+import parade_ex2_s5 from '/img/instruments/videomancer/parade/parade_ex2_s5.png';
+import parade_ex2_s6 from '/img/instruments/videomancer/parade/parade_ex2_s6.png';
+import parade_ex3_s1 from '/img/instruments/videomancer/parade/parade_ex3_s1.png';
+import parade_ex3_s2 from '/img/instruments/videomancer/parade/parade_ex3_s2.png';
+import parade_ex3_s3 from '/img/instruments/videomancer/parade/parade_ex3_s3.png';
+import parade_ex3_s4 from '/img/instruments/videomancer/parade/parade_ex3_s4.png';
+import parade_ex3_s5 from '/img/instruments/videomancer/parade/parade_ex3_s5.png';
+import parade_ex3_s6 from '/img/instruments/videomancer/parade/parade_ex3_s6.png';
 
 # Parade
 
@@ -23,9 +45,12 @@ import parade_source3_step_wedge_21level_512 from '/img/instruments/videomancer/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_hero },
-    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_hero },
-    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_hero },
+    { label: "Dog", before: parade_source1_dog, after: parade_hero_s1 },
+    { label: "Parrot", before: parade_source2_parrot, after: parade_hero_s2 },
+    { label: "Elephant", before: parade_source3_elephant, after: parade_hero_s3 },
+    { label: "Pattern", before: parade_source4_pattern, after: parade_hero_s4 },
+    { label: "Girl", before: parade_source5_girl, after: parade_hero_s5 },
+    { label: "Knit", before: parade_source6_knit, after: parade_hero_s6 },
   ]}
 />
 *Parade rendering a three-column waveform monitor over live video, with green phosphor traces mapping the Y, U, and V channel levels across every scanline.*
@@ -119,8 +144,6 @@ The critical interaction is between the line buffer write path and the display r
 
 ## Parameter Reference
 
-<img src={parade_control_panel} alt="Videomancer front panel with Parade loaded"/>
-*Videomancer's front panel with Parade active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise1_result },
-    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise1_result },
-    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise1_result },
+    { label: "Dog", before: parade_source1_dog, after: parade_ex1_s1 },
+    { label: "Parrot", before: parade_source2_parrot, after: parade_ex1_s2 },
+    { label: "Elephant", before: parade_source3_elephant, after: parade_ex1_s3 },
+    { label: "Pattern", before: parade_source4_pattern, after: parade_ex1_s4 },
+    { label: "Girl", before: parade_source5_girl, after: parade_ex1_s5 },
+    { label: "Knit", before: parade_source6_knit, after: parade_ex1_s6 },
   ]}
 />
 *Reading a Parade Display — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise2_result },
-    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise2_result },
-    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise2_result },
+    { label: "Dog", before: parade_source1_dog, after: parade_ex2_s1 },
+    { label: "Parrot", before: parade_source2_parrot, after: parade_ex2_s2 },
+    { label: "Elephant", before: parade_source3_elephant, after: parade_ex2_s3 },
+    { label: "Pattern", before: parade_source4_pattern, after: parade_ex2_s4 },
+    { label: "Girl", before: parade_source5_girl, after: parade_ex2_s5 },
+    { label: "Knit", before: parade_source6_knit, after: parade_ex2_s6 },
   ]}
 />
 *Phosphor Aesthetics — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: parade_source1_grayscale_ramp_h_1920x1080, after: parade_exercise3_result },
-    { label: "Grayscale Ramp V", before: parade_source2_grayscale_ramp_v_1920x1080, after: parade_exercise3_result },
-    { label: "Step Wedge 21level", before: parade_source3_step_wedge_21level_512, after: parade_exercise3_result },
+    { label: "Dog", before: parade_source1_dog, after: parade_ex3_s1 },
+    { label: "Parrot", before: parade_source2_parrot, after: parade_ex3_s2 },
+    { label: "Elephant", before: parade_source3_elephant, after: parade_ex3_s3 },
+    { label: "Pattern", before: parade_source4_pattern, after: parade_ex3_s4 },
+    { label: "Girl", before: parade_source5_girl, after: parade_ex3_s5 },
+    { label: "Knit", before: parade_source6_knit, after: parade_ex3_s6 },
   ]}
 />
 *Gain Zoom and Detail Analysis — simulated result across source images.*

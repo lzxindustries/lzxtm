@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 194
+sidebar_position: 202
 slug: /instruments/videomancer/neon
 title: "Neon"
-image: /img/instruments/videomancer/neon/neon_hero.png
+image: /img/instruments/videomancer/neon/neon_hero_s1.png
 description: "Every city at dusk has them — glass tubes bent into letters and shapes, filled with ionized gas, glowing with saturated color against dark storefronts."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import neon_hero from '/img/instruments/videomancer/neon/neon_hero.png';
-import neon_control_panel from '/img/instruments/videomancer/neon/neon_control_panel.png';
-import neon_exercise1_result from '/img/instruments/videomancer/neon/neon_exercise1_result.png';
-import neon_exercise2_result from '/img/instruments/videomancer/neon/neon_exercise2_result.png';
-import neon_exercise3_result from '/img/instruments/videomancer/neon/neon_exercise3_result.png';
-import neon_source1_kodim02 from '/img/instruments/videomancer/neon/neon_source1_kodim02.png';
-import neon_source2_kodim07 from '/img/instruments/videomancer/neon/neon_source2_kodim07.png';
-import neon_source3_kodim01_bw from '/img/instruments/videomancer/neon/neon_source3_kodim01_bw.png';
+import neon_source1_car from '/img/instruments/videomancer/neon/neon_source1_car.png';
+import neon_source2_sunset from '/img/instruments/videomancer/neon/neon_source2_sunset.png';
+import neon_source3_turtle from '/img/instruments/videomancer/neon/neon_source3_turtle.png';
+import neon_source4_pattern from '/img/instruments/videomancer/neon/neon_source4_pattern.png';
+import neon_source5_woman from '/img/instruments/videomancer/neon/neon_source5_woman.png';
+import neon_source6_paint from '/img/instruments/videomancer/neon/neon_source6_paint.png';
+import neon_hero_s1 from '/img/instruments/videomancer/neon/neon_hero_s1.png';
+import neon_hero_s2 from '/img/instruments/videomancer/neon/neon_hero_s2.png';
+import neon_hero_s3 from '/img/instruments/videomancer/neon/neon_hero_s3.png';
+import neon_hero_s4 from '/img/instruments/videomancer/neon/neon_hero_s4.png';
+import neon_hero_s5 from '/img/instruments/videomancer/neon/neon_hero_s5.png';
+import neon_hero_s6 from '/img/instruments/videomancer/neon/neon_hero_s6.png';
+import neon_ex1_s1 from '/img/instruments/videomancer/neon/neon_ex1_s1.png';
+import neon_ex1_s2 from '/img/instruments/videomancer/neon/neon_ex1_s2.png';
+import neon_ex1_s3 from '/img/instruments/videomancer/neon/neon_ex1_s3.png';
+import neon_ex1_s4 from '/img/instruments/videomancer/neon/neon_ex1_s4.png';
+import neon_ex1_s5 from '/img/instruments/videomancer/neon/neon_ex1_s5.png';
+import neon_ex1_s6 from '/img/instruments/videomancer/neon/neon_ex1_s6.png';
+import neon_ex2_s1 from '/img/instruments/videomancer/neon/neon_ex2_s1.png';
+import neon_ex2_s2 from '/img/instruments/videomancer/neon/neon_ex2_s2.png';
+import neon_ex2_s3 from '/img/instruments/videomancer/neon/neon_ex2_s3.png';
+import neon_ex2_s4 from '/img/instruments/videomancer/neon/neon_ex2_s4.png';
+import neon_ex2_s5 from '/img/instruments/videomancer/neon/neon_ex2_s5.png';
+import neon_ex2_s6 from '/img/instruments/videomancer/neon/neon_ex2_s6.png';
+import neon_ex3_s1 from '/img/instruments/videomancer/neon/neon_ex3_s1.png';
+import neon_ex3_s2 from '/img/instruments/videomancer/neon/neon_ex3_s2.png';
+import neon_ex3_s3 from '/img/instruments/videomancer/neon/neon_ex3_s3.png';
+import neon_ex3_s4 from '/img/instruments/videomancer/neon/neon_ex3_s4.png';
+import neon_ex3_s5 from '/img/instruments/videomancer/neon/neon_ex3_s5.png';
+import neon_ex3_s6 from '/img/instruments/videomancer/neon/neon_ex3_s6.png';
 
 # Neon
 
@@ -23,9 +45,12 @@ import neon_source3_kodim01_bw from '/img/instruments/videomancer/neon/neon_sour
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: neon_source1_kodim02, after: neon_hero },
-    { label: "Kodim07", before: neon_source2_kodim07, after: neon_hero },
-    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_hero },
+    { label: "Car", before: neon_source1_car, after: neon_hero_s1 },
+    { label: "Sunset", before: neon_source2_sunset, after: neon_hero_s2 },
+    { label: "Turtle", before: neon_source3_turtle, after: neon_hero_s3 },
+    { label: "Pattern", before: neon_source4_pattern, after: neon_hero_s4 },
+    { label: "Woman", before: neon_source5_woman, after: neon_hero_s5 },
+    { label: "Paint", before: neon_source6_paint, after: neon_hero_s6 },
   ]}
 />
 *Neon rendering luminous colored edge halos over a darkened background, transforming video contours into glowing tube outlines.*
@@ -102,8 +127,6 @@ The chrominance crossover at glow level 64 is an important design detail. Rather
 
 ## Parameter Reference
 
-<img src={neon_control_panel} alt="Videomancer front panel with Neon loaded"/>
-*Videomancer's front panel with Neon active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises build from basic edge glow through color and background styling 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise1_result },
-    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise1_result },
-    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise1_result },
+    { label: "Car", before: neon_source1_car, after: neon_ex1_s1 },
+    { label: "Sunset", before: neon_source2_sunset, after: neon_ex1_s2 },
+    { label: "Turtle", before: neon_source3_turtle, after: neon_ex1_s3 },
+    { label: "Pattern", before: neon_source4_pattern, after: neon_ex1_s4 },
+    { label: "Woman", before: neon_source5_woman, after: neon_ex1_s5 },
+    { label: "Paint", before: neon_source6_paint, after: neon_ex1_s6 },
   ]}
 />
 *Basic Neon Tubes — simulated result across source images.*
@@ -233,9 +259,12 @@ These exercises build from basic edge glow through color and background styling 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise2_result },
-    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise2_result },
-    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise2_result },
+    { label: "Car", before: neon_source1_car, after: neon_ex2_s1 },
+    { label: "Sunset", before: neon_source2_sunset, after: neon_ex2_s2 },
+    { label: "Turtle", before: neon_source3_turtle, after: neon_ex2_s3 },
+    { label: "Pattern", before: neon_source4_pattern, after: neon_ex2_s4 },
+    { label: "Woman", before: neon_source5_woman, after: neon_ex2_s5 },
+    { label: "Paint", before: neon_source6_paint, after: neon_ex2_s6 },
   ]}
 />
 *Neon Sign on a Dark Scene — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises build from basic edge glow through color and background styling 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: neon_source1_kodim02, after: neon_exercise3_result },
-    { label: "Kodim07", before: neon_source2_kodim07, after: neon_exercise3_result },
-    { label: "Kodim01 B&W", before: neon_source3_kodim01_bw, after: neon_exercise3_result },
+    { label: "Car", before: neon_source1_car, after: neon_ex3_s1 },
+    { label: "Sunset", before: neon_source2_sunset, after: neon_ex3_s2 },
+    { label: "Turtle", before: neon_source3_turtle, after: neon_ex3_s3 },
+    { label: "Pattern", before: neon_source4_pattern, after: neon_ex3_s4 },
+    { label: "Woman", before: neon_source5_woman, after: neon_ex3_s5 },
+    { label: "Paint", before: neon_source6_paint, after: neon_ex3_s6 },
   ]}
 />
 *Source-Colored Glow with Invert — simulated result across source images.*

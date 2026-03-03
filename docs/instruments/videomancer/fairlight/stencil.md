@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 270
+sidebar_position: 282
 slug: /instruments/videomancer/stencil
 title: "Stencil"
 image: /img/instruments/videomancer/stencil/stencil_hero.png

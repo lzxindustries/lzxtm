@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 154
+sidebar_position: 162
 slug: /instruments/videomancer/lambert
 title: "Lambert"
 image: /img/instruments/videomancer/lambert/lambert_hero.png

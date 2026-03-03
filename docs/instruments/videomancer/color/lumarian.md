@@ -1,23 +1,43 @@
 ---
 draft: false
-sidebar_position: 171
+sidebar_position: 179
 slug: /instruments/videomancer/lumarian
 title: "Lumarian"
-image: /img/instruments/videomancer/lumarian/lumarian_hero.png
+image: /img/instruments/videomancer/lumarian/lumarian_hero_s1.png
 description: "Every video image is made of three things: how bright each pixel is (luminance), what color it is (chrominance), and where the edges between regions fall."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lumarian_hero from '/img/instruments/videomancer/lumarian/lumarian_hero.png';
-import lumarian_control_panel from '/img/instruments/videomancer/lumarian/lumarian_control_panel.png';
-import lumarian_exercise1_result from '/img/instruments/videomancer/lumarian/lumarian_exercise1_result.png';
-import lumarian_exercise2_result from '/img/instruments/videomancer/lumarian/lumarian_exercise2_result.png';
-import lumarian_exercise3_result from '/img/instruments/videomancer/lumarian/lumarian_exercise3_result.png';
-import lumarian_source1_kodim03 from '/img/instruments/videomancer/lumarian/lumarian_source1_kodim03.png';
-import lumarian_source1_kodim04 from '/img/instruments/videomancer/lumarian/lumarian_source1_kodim04.png';
-import lumarian_source2_kodim15 from '/img/instruments/videomancer/lumarian/lumarian_source2_kodim15.png';
-import lumarian_source2_kodim23 from '/img/instruments/videomancer/lumarian/lumarian_source2_kodim23.png';
-import lumarian_source3_peppers_512 from '/img/instruments/videomancer/lumarian/lumarian_source3_peppers_512.png';
+import lumarian_source1_house from '/img/instruments/videomancer/lumarian/lumarian_source1_house.png';
+import lumarian_source2_ballerina from '/img/instruments/videomancer/lumarian/lumarian_source2_ballerina.png';
+import lumarian_source3_turtle from '/img/instruments/videomancer/lumarian/lumarian_source3_turtle.png';
+import lumarian_source4_pattern from '/img/instruments/videomancer/lumarian/lumarian_source4_pattern.png';
+import lumarian_source5_woman from '/img/instruments/videomancer/lumarian/lumarian_source5_woman.png';
+import lumarian_source6_berries from '/img/instruments/videomancer/lumarian/lumarian_source6_berries.png';
+import lumarian_hero_s1 from '/img/instruments/videomancer/lumarian/lumarian_hero_s1.png';
+import lumarian_hero_s2 from '/img/instruments/videomancer/lumarian/lumarian_hero_s2.png';
+import lumarian_hero_s3 from '/img/instruments/videomancer/lumarian/lumarian_hero_s3.png';
+import lumarian_hero_s4 from '/img/instruments/videomancer/lumarian/lumarian_hero_s4.png';
+import lumarian_hero_s5 from '/img/instruments/videomancer/lumarian/lumarian_hero_s5.png';
+import lumarian_hero_s6 from '/img/instruments/videomancer/lumarian/lumarian_hero_s6.png';
+import lumarian_ex1_s1 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s1.png';
+import lumarian_ex1_s2 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s2.png';
+import lumarian_ex1_s3 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s3.png';
+import lumarian_ex1_s4 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s4.png';
+import lumarian_ex1_s5 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s5.png';
+import lumarian_ex1_s6 from '/img/instruments/videomancer/lumarian/lumarian_ex1_s6.png';
+import lumarian_ex2_s1 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s1.png';
+import lumarian_ex2_s2 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s2.png';
+import lumarian_ex2_s3 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s3.png';
+import lumarian_ex2_s4 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s4.png';
+import lumarian_ex2_s5 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s5.png';
+import lumarian_ex2_s6 from '/img/instruments/videomancer/lumarian/lumarian_ex2_s6.png';
+import lumarian_ex3_s1 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s1.png';
+import lumarian_ex3_s2 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s2.png';
+import lumarian_ex3_s3 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s3.png';
+import lumarian_ex3_s4 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s4.png';
+import lumarian_ex3_s5 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s5.png';
+import lumarian_ex3_s6 from '/img/instruments/videomancer/lumarian/lumarian_ex3_s6.png';
 
 # Lumarian
 
@@ -25,11 +45,12 @@ import lumarian_source3_peppers_512 from '/img/instruments/videomancer/lumarian/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_hero },
-    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_hero },
-    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_hero },
-    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_hero },
-    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_hero },
+    { label: "House", before: lumarian_source1_house, after: lumarian_hero_s1 },
+    { label: "Ballerina", before: lumarian_source2_ballerina, after: lumarian_hero_s2 },
+    { label: "Turtle", before: lumarian_source3_turtle, after: lumarian_hero_s3 },
+    { label: "Pattern", before: lumarian_source4_pattern, after: lumarian_hero_s4 },
+    { label: "Woman", before: lumarian_source5_woman, after: lumarian_hero_s5 },
+    { label: "Berries", before: lumarian_source6_berries, after: lumarian_hero_s6 },
   ]}
 />
 *Lumarian processing a natural scene with subtle edge enhancement and shadow recovery via gamma correction.*
@@ -100,8 +121,6 @@ Notice that the Y channel has more processing stages than U and V. If all three 
 
 ## Parameter Reference
 
-<img src={lumarian_control_panel} alt="Videomancer front panel with Lumarian loaded"/>
-*Videomancer's front panel with Lumarian active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -204,11 +223,12 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise1_result },
-    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise1_result },
-    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise1_result },
-    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise1_result },
-    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise1_result },
+    { label: "House", before: lumarian_source1_house, after: lumarian_ex1_s1 },
+    { label: "Ballerina", before: lumarian_source2_ballerina, after: lumarian_ex1_s2 },
+    { label: "Turtle", before: lumarian_source3_turtle, after: lumarian_ex1_s3 },
+    { label: "Pattern", before: lumarian_source4_pattern, after: lumarian_ex1_s4 },
+    { label: "Woman", before: lumarian_source5_woman, after: lumarian_ex1_s5 },
+    { label: "Berries", before: lumarian_source6_berries, after: lumarian_ex1_s6 },
   ]}
 />
 *Correcting Camera Footage — simulated result across source images.*
@@ -231,11 +251,12 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise2_result },
-    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise2_result },
-    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise2_result },
-    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise2_result },
-    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise2_result },
+    { label: "House", before: lumarian_source1_house, after: lumarian_ex2_s1 },
+    { label: "Ballerina", before: lumarian_source2_ballerina, after: lumarian_ex2_s2 },
+    { label: "Turtle", before: lumarian_source3_turtle, after: lumarian_ex2_s3 },
+    { label: "Pattern", before: lumarian_source4_pattern, after: lumarian_ex2_s4 },
+    { label: "Woman", before: lumarian_source5_woman, after: lumarian_ex2_s5 },
+    { label: "Berries", before: lumarian_source6_berries, after: lumarian_ex2_s6 },
   ]}
 />
 *Graphic Textures from Edges — simulated result across source images.*
@@ -260,11 +281,12 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: lumarian_source1_kodim03, after: lumarian_exercise3_result },
-    { label: "Kodim04", before: lumarian_source1_kodim04, after: lumarian_exercise3_result },
-    { label: "Kodim15", before: lumarian_source2_kodim15, after: lumarian_exercise3_result },
-    { label: "Kodim23", before: lumarian_source2_kodim23, after: lumarian_exercise3_result },
-    { label: "Peppers", before: lumarian_source3_peppers_512, after: lumarian_exercise3_result },
+    { label: "House", before: lumarian_source1_house, after: lumarian_ex3_s1 },
+    { label: "Ballerina", before: lumarian_source2_ballerina, after: lumarian_ex3_s2 },
+    { label: "Turtle", before: lumarian_source3_turtle, after: lumarian_ex3_s3 },
+    { label: "Pattern", before: lumarian_source4_pattern, after: lumarian_ex3_s4 },
+    { label: "Woman", before: lumarian_source5_woman, after: lumarian_ex3_s5 },
+    { label: "Berries", before: lumarian_source6_berries, after: lumarian_ex3_s6 },
   ]}
 />
 *Sculpting a Luminance Key — simulated result across source images.*

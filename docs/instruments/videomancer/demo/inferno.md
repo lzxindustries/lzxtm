@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 137
+sidebar_position: 143
 slug: /instruments/videomancer/inferno
 title: "Inferno"
 image: /img/instruments/videomancer/inferno/inferno_hero.png

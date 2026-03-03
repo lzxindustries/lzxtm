@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 153
+sidebar_position: 161
 slug: /instruments/videomancer/labyrinth
 title: "Labyrinth"
 image: /img/instruments/videomancer/labyrinth/labyrinth_hero.png

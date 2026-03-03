@@ -3,19 +3,42 @@ draft: true
 sidebar_position: 2
 slug: /instruments/videomancer/afterimage
 title: "Afterimage"
-image: /img/instruments/videomancer/afterimage/afterimage_hero.png
+image: /img/instruments/videomancer/afterimage/afterimage_hero_s1.png
 description: "Afterimage recreates the physiological phenomenon where prolonged viewing of a stimulus produces a persistent colour-negative ghost when the stimulus is removed or the gaze shifts."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import afterimage_hero from '/img/instruments/videomancer/afterimage/afterimage_hero.png';
 import afterimage_control_panel from '/img/instruments/videomancer/afterimage/afterimage_control_panel.png';
-import afterimage_exercise1_result from '/img/instruments/videomancer/afterimage/afterimage_exercise1_result.png';
-import afterimage_exercise2_result from '/img/instruments/videomancer/afterimage/afterimage_exercise2_result.png';
-import afterimage_exercise3_result from '/img/instruments/videomancer/afterimage/afterimage_exercise3_result.png';
-import afterimage_source1_kodim15 from '/img/instruments/videomancer/afterimage/afterimage_source1_kodim15.png';
-import afterimage_source2_kodim01 from '/img/instruments/videomancer/afterimage/afterimage_source2_kodim01.png';
-import afterimage_source3_kodim01_bw from '/img/instruments/videomancer/afterimage/afterimage_source3_kodim01_bw.png';
+import afterimage_source1_boat from '/img/instruments/videomancer/afterimage/afterimage_source1_boat.png';
+import afterimage_source2_runner from '/img/instruments/videomancer/afterimage/afterimage_source2_runner.png';
+import afterimage_source3_turtle from '/img/instruments/videomancer/afterimage/afterimage_source3_turtle.png';
+import afterimage_source4_pattern from '/img/instruments/videomancer/afterimage/afterimage_source4_pattern.png';
+import afterimage_source5_man from '/img/instruments/videomancer/afterimage/afterimage_source5_man.png';
+import afterimage_source6_wood from '/img/instruments/videomancer/afterimage/afterimage_source6_wood.png';
+import afterimage_hero_s1 from '/img/instruments/videomancer/afterimage/afterimage_hero_s1.png';
+import afterimage_hero_s2 from '/img/instruments/videomancer/afterimage/afterimage_hero_s2.png';
+import afterimage_hero_s3 from '/img/instruments/videomancer/afterimage/afterimage_hero_s3.png';
+import afterimage_hero_s4 from '/img/instruments/videomancer/afterimage/afterimage_hero_s4.png';
+import afterimage_hero_s5 from '/img/instruments/videomancer/afterimage/afterimage_hero_s5.png';
+import afterimage_hero_s6 from '/img/instruments/videomancer/afterimage/afterimage_hero_s6.png';
+import afterimage_ex1_s1 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s1.png';
+import afterimage_ex1_s2 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s2.png';
+import afterimage_ex1_s3 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s3.png';
+import afterimage_ex1_s4 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s4.png';
+import afterimage_ex1_s5 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s5.png';
+import afterimage_ex1_s6 from '/img/instruments/videomancer/afterimage/afterimage_ex1_s6.png';
+import afterimage_ex2_s1 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s1.png';
+import afterimage_ex2_s2 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s2.png';
+import afterimage_ex2_s3 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s3.png';
+import afterimage_ex2_s4 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s4.png';
+import afterimage_ex2_s5 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s5.png';
+import afterimage_ex2_s6 from '/img/instruments/videomancer/afterimage/afterimage_ex2_s6.png';
+import afterimage_ex3_s1 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s1.png';
+import afterimage_ex3_s2 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s2.png';
+import afterimage_ex3_s3 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s3.png';
+import afterimage_ex3_s4 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s4.png';
+import afterimage_ex3_s5 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s5.png';
+import afterimage_ex3_s6 from '/img/instruments/videomancer/afterimage/afterimage_ex3_s6.png';
 
 # Afterimage
 
@@ -23,9 +46,12 @@ import afterimage_source3_kodim01_bw from '/img/instruments/videomancer/afterima
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_hero },
-    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_hero },
-    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_hero },
+    { label: "Boat", before: afterimage_source1_boat, after: afterimage_hero_s1 },
+    { label: "Runner", before: afterimage_source2_runner, after: afterimage_hero_s2 },
+    { label: "Turtle", before: afterimage_source3_turtle, after: afterimage_hero_s3 },
+    { label: "Pattern", before: afterimage_source4_pattern, after: afterimage_hero_s4 },
+    { label: "Man", before: afterimage_source5_man, after: afterimage_hero_s5 },
+    { label: "Wood", before: afterimage_source6_wood, after: afterimage_hero_s6 },
   ]}
 />
 *Afterimage rendering a color-negative persistence trail over a moving hand — the IIR temporal filter retains a ghostly complementary-color echo of prior motion against the current frame.*
@@ -214,9 +240,12 @@ These exercises progress from basic negative persistence observation through cha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise1_result },
-    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise1_result },
-    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise1_result },
+    { label: "Boat", before: afterimage_source1_boat, after: afterimage_ex1_s1 },
+    { label: "Runner", before: afterimage_source2_runner, after: afterimage_ex1_s2 },
+    { label: "Turtle", before: afterimage_source3_turtle, after: afterimage_ex1_s3 },
+    { label: "Pattern", before: afterimage_source4_pattern, after: afterimage_ex1_s4 },
+    { label: "Man", before: afterimage_source5_man, after: afterimage_ex1_s5 },
+    { label: "Wood", before: afterimage_source6_wood, after: afterimage_ex1_s6 },
   ]}
 />
 *Basic Negative Persistence — simulated result across source images.*
@@ -239,9 +268,12 @@ These exercises progress from basic negative persistence observation through cha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise2_result },
-    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise2_result },
-    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise2_result },
+    { label: "Boat", before: afterimage_source1_boat, after: afterimage_ex2_s1 },
+    { label: "Runner", before: afterimage_source2_runner, after: afterimage_ex2_s2 },
+    { label: "Turtle", before: afterimage_source3_turtle, after: afterimage_ex2_s3 },
+    { label: "Pattern", before: afterimage_source4_pattern, after: afterimage_ex2_s4 },
+    { label: "Man", before: afterimage_source5_man, after: afterimage_ex2_s5 },
+    { label: "Wood", before: afterimage_source6_wood, after: afterimage_ex2_s6 },
   ]}
 />
 *Chroma-Only Afterimage — simulated result across source images.*
@@ -264,9 +296,12 @@ These exercises progress from basic negative persistence observation through cha
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: afterimage_source1_kodim15, after: afterimage_exercise3_result },
-    { label: "Kodim01", before: afterimage_source2_kodim01, after: afterimage_exercise3_result },
-    { label: "Kodim01 B&W", before: afterimage_source3_kodim01_bw, after: afterimage_exercise3_result },
+    { label: "Boat", before: afterimage_source1_boat, after: afterimage_ex3_s1 },
+    { label: "Runner", before: afterimage_source2_runner, after: afterimage_ex3_s2 },
+    { label: "Turtle", before: afterimage_source3_turtle, after: afterimage_ex3_s3 },
+    { label: "Pattern", before: afterimage_source4_pattern, after: afterimage_ex3_s4 },
+    { label: "Man", before: afterimage_source5_man, after: afterimage_ex3_s5 },
+    { label: "Wood", before: afterimage_source6_wood, after: afterimage_ex3_s6 },
   ]}
 />
 *Slow Ghost Mode with Breathing Animation — simulated result across source images.*

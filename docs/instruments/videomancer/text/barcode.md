@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 14
 slug: /instruments/videomancer/barcode
 title: "Barcode"
-image: /img/instruments/videomancer/barcode/barcode_hero.png
+image: /img/instruments/videomancer/barcode/barcode_hero_s1.png
 description: "Barcodes are a visual language designed for machines — parallel lines of varying width that encode numeric data."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import barcode_hero from '/img/instruments/videomancer/barcode/barcode_hero.png';
-import barcode_control_panel from '/img/instruments/videomancer/barcode/barcode_control_panel.png';
-import barcode_exercise1_result from '/img/instruments/videomancer/barcode/barcode_exercise1_result.png';
-import barcode_exercise2_result from '/img/instruments/videomancer/barcode/barcode_exercise2_result.png';
-import barcode_exercise3_result from '/img/instruments/videomancer/barcode/barcode_exercise3_result.png';
-import barcode_source1_kodim15 from '/img/instruments/videomancer/barcode/barcode_source1_kodim15.png';
-import barcode_source2_kodim15_bw from '/img/instruments/videomancer/barcode/barcode_source2_kodim15_bw.png';
-import barcode_source3_male_1024 from '/img/instruments/videomancer/barcode/barcode_source3_male_1024.png';
+import barcode_source1_boat from '/img/instruments/videomancer/barcode/barcode_source1_boat.png';
+import barcode_source2_house from '/img/instruments/videomancer/barcode/barcode_source2_house.png';
+import barcode_source3_clouds from '/img/instruments/videomancer/barcode/barcode_source3_clouds.png';
+import barcode_source4_pattern from '/img/instruments/videomancer/barcode/barcode_source4_pattern.png';
+import barcode_source5_boy from '/img/instruments/videomancer/barcode/barcode_source5_boy.png';
+import barcode_source6_berries from '/img/instruments/videomancer/barcode/barcode_source6_berries.png';
+import barcode_hero_s1 from '/img/instruments/videomancer/barcode/barcode_hero_s1.png';
+import barcode_hero_s2 from '/img/instruments/videomancer/barcode/barcode_hero_s2.png';
+import barcode_hero_s3 from '/img/instruments/videomancer/barcode/barcode_hero_s3.png';
+import barcode_hero_s4 from '/img/instruments/videomancer/barcode/barcode_hero_s4.png';
+import barcode_hero_s5 from '/img/instruments/videomancer/barcode/barcode_hero_s5.png';
+import barcode_hero_s6 from '/img/instruments/videomancer/barcode/barcode_hero_s6.png';
+import barcode_ex1_s1 from '/img/instruments/videomancer/barcode/barcode_ex1_s1.png';
+import barcode_ex1_s2 from '/img/instruments/videomancer/barcode/barcode_ex1_s2.png';
+import barcode_ex1_s3 from '/img/instruments/videomancer/barcode/barcode_ex1_s3.png';
+import barcode_ex1_s4 from '/img/instruments/videomancer/barcode/barcode_ex1_s4.png';
+import barcode_ex1_s5 from '/img/instruments/videomancer/barcode/barcode_ex1_s5.png';
+import barcode_ex1_s6 from '/img/instruments/videomancer/barcode/barcode_ex1_s6.png';
+import barcode_ex2_s1 from '/img/instruments/videomancer/barcode/barcode_ex2_s1.png';
+import barcode_ex2_s2 from '/img/instruments/videomancer/barcode/barcode_ex2_s2.png';
+import barcode_ex2_s3 from '/img/instruments/videomancer/barcode/barcode_ex2_s3.png';
+import barcode_ex2_s4 from '/img/instruments/videomancer/barcode/barcode_ex2_s4.png';
+import barcode_ex2_s5 from '/img/instruments/videomancer/barcode/barcode_ex2_s5.png';
+import barcode_ex2_s6 from '/img/instruments/videomancer/barcode/barcode_ex2_s6.png';
+import barcode_ex3_s1 from '/img/instruments/videomancer/barcode/barcode_ex3_s1.png';
+import barcode_ex3_s2 from '/img/instruments/videomancer/barcode/barcode_ex3_s2.png';
+import barcode_ex3_s3 from '/img/instruments/videomancer/barcode/barcode_ex3_s3.png';
+import barcode_ex3_s4 from '/img/instruments/videomancer/barcode/barcode_ex3_s4.png';
+import barcode_ex3_s5 from '/img/instruments/videomancer/barcode/barcode_ex3_s5.png';
+import barcode_ex3_s6 from '/img/instruments/videomancer/barcode/barcode_ex3_s6.png';
 
 # Barcode
 
@@ -23,9 +45,12 @@ import barcode_source3_male_1024 from '/img/instruments/videomancer/barcode/barc
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_hero },
-    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_hero },
-    { label: "Male", before: barcode_source3_male_1024, after: barcode_hero },
+    { label: "Boat", before: barcode_source1_boat, after: barcode_hero_s1 },
+    { label: "House", before: barcode_source2_house, after: barcode_hero_s2 },
+    { label: "Clouds", before: barcode_source3_clouds, after: barcode_hero_s3 },
+    { label: "Pattern", before: barcode_source4_pattern, after: barcode_hero_s4 },
+    { label: "Boy", before: barcode_source5_boy, after: barcode_hero_s5 },
+    { label: "Berries", before: barcode_source6_berries, after: barcode_hero_s6 },
   ]}
 />
 *Barcode rendering a portrait as variable-width vertical stripes with luminance-driven bar density and guard bar framing.*
@@ -112,9 +137,6 @@ The critical interaction is between the quantization and bar-draw stages. Quanti
 ---
 
 ## Parameter Reference
-
-<img src={barcode_control_panel} alt="Videomancer front panel with Barcode loaded"/>
-*Videomancer's front panel with Barcode active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +240,12 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise1_result },
-    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise1_result },
-    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise1_result },
+    { label: "Boat", before: barcode_source1_boat, after: barcode_ex1_s1 },
+    { label: "House", before: barcode_source2_house, after: barcode_ex1_s2 },
+    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex1_s3 },
+    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex1_s4 },
+    { label: "Boy", before: barcode_source5_boy, after: barcode_ex1_s5 },
+    { label: "Berries", before: barcode_source6_berries, after: barcode_ex1_s6 },
   ]}
 />
 *Classic Barcode — simulated result across source images.*
@@ -242,9 +267,12 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise2_result },
-    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise2_result },
-    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise2_result },
+    { label: "Boat", before: barcode_source1_boat, after: barcode_ex2_s1 },
+    { label: "House", before: barcode_source2_house, after: barcode_ex2_s2 },
+    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex2_s3 },
+    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex2_s4 },
+    { label: "Boy", before: barcode_source5_boy, after: barcode_ex2_s5 },
+    { label: "Berries", before: barcode_source6_berries, after: barcode_ex2_s6 },
   ]}
 />
 *Color Grid Pattern — simulated result across source images.*
@@ -266,9 +294,12 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: barcode_source1_kodim15, after: barcode_exercise3_result },
-    { label: "Kodim15 B&W", before: barcode_source2_kodim15_bw, after: barcode_exercise3_result },
-    { label: "Male", before: barcode_source3_male_1024, after: barcode_exercise3_result },
+    { label: "Boat", before: barcode_source1_boat, after: barcode_ex3_s1 },
+    { label: "House", before: barcode_source2_house, after: barcode_ex3_s2 },
+    { label: "Clouds", before: barcode_source3_clouds, after: barcode_ex3_s3 },
+    { label: "Pattern", before: barcode_source4_pattern, after: barcode_ex3_s4 },
+    { label: "Boy", before: barcode_source5_boy, after: barcode_ex3_s5 },
+    { label: "Berries", before: barcode_source6_berries, after: barcode_ex3_s6 },
   ]}
 />
 *Barcode Overlay — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 308
+sidebar_position: 323
 slug: /instruments/videomancer/voido
 title: "Voido"
 image: /img/instruments/videomancer/voido/voido_hero.png

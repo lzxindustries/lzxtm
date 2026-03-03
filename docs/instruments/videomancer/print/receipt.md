@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 231
+sidebar_position: 241
 slug: /instruments/videomancer/receipt
 title: "Receipt"
-image: /img/instruments/videomancer/receipt/receipt_hero.png
+image: /img/instruments/videomancer/receipt/receipt_hero_s1.png
 description: "Before digital snapshots were instant, video printers were the only way to get a physical copy of a single video frame."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import receipt_hero from '/img/instruments/videomancer/receipt/receipt_hero.png';
-import receipt_control_panel from '/img/instruments/videomancer/receipt/receipt_control_panel.png';
-import receipt_exercise1_result from '/img/instruments/videomancer/receipt/receipt_exercise1_result.png';
-import receipt_exercise2_result from '/img/instruments/videomancer/receipt/receipt_exercise2_result.png';
-import receipt_exercise3_result from '/img/instruments/videomancer/receipt/receipt_exercise3_result.png';
-import receipt_source1_kodim02 from '/img/instruments/videomancer/receipt/receipt_source1_kodim02.png';
-import receipt_source2_kodim07 from '/img/instruments/videomancer/receipt/receipt_source2_kodim07.png';
-import receipt_source3_kodim01_bw from '/img/instruments/videomancer/receipt/receipt_source3_kodim01_bw.png';
+import receipt_source1_cat from '/img/instruments/videomancer/receipt/receipt_source1_cat.png';
+import receipt_source2_fruit from '/img/instruments/videomancer/receipt/receipt_source2_fruit.png';
+import receipt_source3_elephant from '/img/instruments/videomancer/receipt/receipt_source3_elephant.png';
+import receipt_source4_pattern from '/img/instruments/videomancer/receipt/receipt_source4_pattern.png';
+import receipt_source5_man from '/img/instruments/videomancer/receipt/receipt_source5_man.png';
+import receipt_source6_paint from '/img/instruments/videomancer/receipt/receipt_source6_paint.png';
+import receipt_hero_s1 from '/img/instruments/videomancer/receipt/receipt_hero_s1.png';
+import receipt_hero_s2 from '/img/instruments/videomancer/receipt/receipt_hero_s2.png';
+import receipt_hero_s3 from '/img/instruments/videomancer/receipt/receipt_hero_s3.png';
+import receipt_hero_s4 from '/img/instruments/videomancer/receipt/receipt_hero_s4.png';
+import receipt_hero_s5 from '/img/instruments/videomancer/receipt/receipt_hero_s5.png';
+import receipt_hero_s6 from '/img/instruments/videomancer/receipt/receipt_hero_s6.png';
+import receipt_ex1_s1 from '/img/instruments/videomancer/receipt/receipt_ex1_s1.png';
+import receipt_ex1_s2 from '/img/instruments/videomancer/receipt/receipt_ex1_s2.png';
+import receipt_ex1_s3 from '/img/instruments/videomancer/receipt/receipt_ex1_s3.png';
+import receipt_ex1_s4 from '/img/instruments/videomancer/receipt/receipt_ex1_s4.png';
+import receipt_ex1_s5 from '/img/instruments/videomancer/receipt/receipt_ex1_s5.png';
+import receipt_ex1_s6 from '/img/instruments/videomancer/receipt/receipt_ex1_s6.png';
+import receipt_ex2_s1 from '/img/instruments/videomancer/receipt/receipt_ex2_s1.png';
+import receipt_ex2_s2 from '/img/instruments/videomancer/receipt/receipt_ex2_s2.png';
+import receipt_ex2_s3 from '/img/instruments/videomancer/receipt/receipt_ex2_s3.png';
+import receipt_ex2_s4 from '/img/instruments/videomancer/receipt/receipt_ex2_s4.png';
+import receipt_ex2_s5 from '/img/instruments/videomancer/receipt/receipt_ex2_s5.png';
+import receipt_ex2_s6 from '/img/instruments/videomancer/receipt/receipt_ex2_s6.png';
+import receipt_ex3_s1 from '/img/instruments/videomancer/receipt/receipt_ex3_s1.png';
+import receipt_ex3_s2 from '/img/instruments/videomancer/receipt/receipt_ex3_s2.png';
+import receipt_ex3_s3 from '/img/instruments/videomancer/receipt/receipt_ex3_s3.png';
+import receipt_ex3_s4 from '/img/instruments/videomancer/receipt/receipt_ex3_s4.png';
+import receipt_ex3_s5 from '/img/instruments/videomancer/receipt/receipt_ex3_s5.png';
+import receipt_ex3_s6 from '/img/instruments/videomancer/receipt/receipt_ex3_s6.png';
 
 # Receipt
 
@@ -23,9 +45,12 @@ import receipt_source3_kodim01_bw from '/img/instruments/videomancer/receipt/rec
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_hero },
-    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_hero },
-    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_hero },
+    { label: "Cat", before: receipt_source1_cat, after: receipt_hero_s1 },
+    { label: "Fruit", before: receipt_source2_fruit, after: receipt_hero_s2 },
+    { label: "Elephant", before: receipt_source3_elephant, after: receipt_hero_s3 },
+    { label: "Pattern", before: receipt_source4_pattern, after: receipt_hero_s4 },
+    { label: "Man", before: receipt_source5_man, after: receipt_hero_s5 },
+    { label: "Paint", before: receipt_source6_paint, after: receipt_hero_s6 },
   ]}
 />
 *Receipt reducing a live video stream to dithered thermal printer output with visible block structure, head banding, and warm paper tint.*
@@ -104,8 +129,6 @@ The critical ordering is: decimation happens *before* level quantization, so the
 
 ## Parameter Reference
 
-<img src={receipt_control_panel} alt="Videomancer front panel with Receipt loaded"/>
-*Videomancer's front panel with Receipt active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise1_result },
-    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise1_result },
-    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise1_result },
+    { label: "Cat", before: receipt_source1_cat, after: receipt_ex1_s1 },
+    { label: "Fruit", before: receipt_source2_fruit, after: receipt_ex1_s2 },
+    { label: "Elephant", before: receipt_source3_elephant, after: receipt_ex1_s3 },
+    { label: "Pattern", before: receipt_source4_pattern, after: receipt_ex1_s4 },
+    { label: "Man", before: receipt_source5_man, after: receipt_ex1_s5 },
+    { label: "Paint", before: receipt_source6_paint, after: receipt_ex1_s6 },
   ]}
 />
 *Thermal Receipt — simulated result across source images.*
@@ -233,9 +259,12 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise2_result },
-    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise2_result },
-    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise2_result },
+    { label: "Cat", before: receipt_source1_cat, after: receipt_ex2_s1 },
+    { label: "Fruit", before: receipt_source2_fruit, after: receipt_ex2_s2 },
+    { label: "Elephant", before: receipt_source3_elephant, after: receipt_ex2_s3 },
+    { label: "Pattern", before: receipt_source4_pattern, after: receipt_ex2_s4 },
+    { label: "Man", before: receipt_source5_man, after: receipt_ex2_s5 },
+    { label: "Paint", before: receipt_source6_paint, after: receipt_ex2_s6 },
   ]}
 />
 *Dot Matrix Banner — simulated result across source images.*
@@ -259,9 +288,12 @@ These exercises progress from basic resolution reduction to full thermal printer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: receipt_source1_kodim02, after: receipt_exercise3_result },
-    { label: "Kodim07", before: receipt_source2_kodim07, after: receipt_exercise3_result },
-    { label: "Kodim01 B&W", before: receipt_source3_kodim01_bw, after: receipt_exercise3_result },
+    { label: "Cat", before: receipt_source1_cat, after: receipt_ex3_s1 },
+    { label: "Fruit", before: receipt_source2_fruit, after: receipt_ex3_s2 },
+    { label: "Elephant", before: receipt_source3_elephant, after: receipt_ex3_s3 },
+    { label: "Pattern", before: receipt_source4_pattern, after: receipt_ex3_s4 },
+    { label: "Man", before: receipt_source5_man, after: receipt_ex3_s5 },
+    { label: "Paint", before: receipt_source6_paint, after: receipt_ex3_s6 },
   ]}
 />
 *Animated Print Reveal — simulated result across source images.*

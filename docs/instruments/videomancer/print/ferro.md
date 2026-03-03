@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 103
+sidebar_position: 108
 slug: /instruments/videomancer/ferro
 title: "Ferro"
-image: /img/instruments/videomancer/ferro/ferro_hero.png
+image: /img/instruments/videomancer/ferro/ferro_hero_s1.png
 description: "The cyanotype is one of the oldest photographic processes — a UV-sensitive emulsion of ferric ammonium citrate and potassium ferricyanide, coated onto paper, exposed through a negative, and developed in running water."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ferro_hero from '/img/instruments/videomancer/ferro/ferro_hero.png';
-import ferro_control_panel from '/img/instruments/videomancer/ferro/ferro_control_panel.png';
-import ferro_exercise1_result from '/img/instruments/videomancer/ferro/ferro_exercise1_result.png';
-import ferro_exercise2_result from '/img/instruments/videomancer/ferro/ferro_exercise2_result.png';
-import ferro_exercise3_result from '/img/instruments/videomancer/ferro/ferro_exercise3_result.png';
-import ferro_source1_kodim02 from '/img/instruments/videomancer/ferro/ferro_source1_kodim02.png';
-import ferro_source2_kodim07 from '/img/instruments/videomancer/ferro/ferro_source2_kodim07.png';
-import ferro_source3_kodim01_bw from '/img/instruments/videomancer/ferro/ferro_source3_kodim01_bw.png';
+import ferro_source1_house from '/img/instruments/videomancer/ferro/ferro_source1_house.png';
+import ferro_source2_castle from '/img/instruments/videomancer/ferro/ferro_source2_castle.png';
+import ferro_source3_collage from '/img/instruments/videomancer/ferro/ferro_source3_collage.png';
+import ferro_source4_pattern from '/img/instruments/videomancer/ferro/ferro_source4_pattern.png';
+import ferro_source5_woman from '/img/instruments/videomancer/ferro/ferro_source5_woman.png';
+import ferro_source6_wood from '/img/instruments/videomancer/ferro/ferro_source6_wood.png';
+import ferro_hero_s1 from '/img/instruments/videomancer/ferro/ferro_hero_s1.png';
+import ferro_hero_s2 from '/img/instruments/videomancer/ferro/ferro_hero_s2.png';
+import ferro_hero_s3 from '/img/instruments/videomancer/ferro/ferro_hero_s3.png';
+import ferro_hero_s4 from '/img/instruments/videomancer/ferro/ferro_hero_s4.png';
+import ferro_hero_s5 from '/img/instruments/videomancer/ferro/ferro_hero_s5.png';
+import ferro_hero_s6 from '/img/instruments/videomancer/ferro/ferro_hero_s6.png';
+import ferro_ex1_s1 from '/img/instruments/videomancer/ferro/ferro_ex1_s1.png';
+import ferro_ex1_s2 from '/img/instruments/videomancer/ferro/ferro_ex1_s2.png';
+import ferro_ex1_s3 from '/img/instruments/videomancer/ferro/ferro_ex1_s3.png';
+import ferro_ex1_s4 from '/img/instruments/videomancer/ferro/ferro_ex1_s4.png';
+import ferro_ex1_s5 from '/img/instruments/videomancer/ferro/ferro_ex1_s5.png';
+import ferro_ex1_s6 from '/img/instruments/videomancer/ferro/ferro_ex1_s6.png';
+import ferro_ex2_s1 from '/img/instruments/videomancer/ferro/ferro_ex2_s1.png';
+import ferro_ex2_s2 from '/img/instruments/videomancer/ferro/ferro_ex2_s2.png';
+import ferro_ex2_s3 from '/img/instruments/videomancer/ferro/ferro_ex2_s3.png';
+import ferro_ex2_s4 from '/img/instruments/videomancer/ferro/ferro_ex2_s4.png';
+import ferro_ex2_s5 from '/img/instruments/videomancer/ferro/ferro_ex2_s5.png';
+import ferro_ex2_s6 from '/img/instruments/videomancer/ferro/ferro_ex2_s6.png';
+import ferro_ex3_s1 from '/img/instruments/videomancer/ferro/ferro_ex3_s1.png';
+import ferro_ex3_s2 from '/img/instruments/videomancer/ferro/ferro_ex3_s2.png';
+import ferro_ex3_s3 from '/img/instruments/videomancer/ferro/ferro_ex3_s3.png';
+import ferro_ex3_s4 from '/img/instruments/videomancer/ferro/ferro_ex3_s4.png';
+import ferro_ex3_s5 from '/img/instruments/videomancer/ferro/ferro_ex3_s5.png';
+import ferro_ex3_s6 from '/img/instruments/videomancer/ferro/ferro_ex3_s6.png';
 
 # Ferro
 
@@ -23,9 +45,12 @@ import ferro_source3_kodim01_bw from '/img/instruments/videomancer/ferro/ferro_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_hero },
-    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_hero },
-    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_hero },
+    { label: "House", before: ferro_source1_house, after: ferro_hero_s1 },
+    { label: "Castle", before: ferro_source2_castle, after: ferro_hero_s2 },
+    { label: "Collage", before: ferro_source3_collage, after: ferro_hero_s3 },
+    { label: "Pattern", before: ferro_source4_pattern, after: ferro_hero_s4 },
+    { label: "Woman", before: ferro_source5_woman, after: ferro_hero_s5 },
+    { label: "Wood", before: ferro_source6_wood, after: ferro_hero_s6 },
   ]}
 />
 *Ferro rendering a live camera feed as a Prussian blue cyanotype contact print with paper fiber texture and edge diffusion softness.*
@@ -118,8 +143,6 @@ Edge diffusion and paper texture operate only on the Y channel after colorizatio
 
 ## Parameter Reference
 
-<img src={ferro_control_panel} alt="Videomancer front panel with Ferro loaded"/>
-*Videomancer's front panel with Ferro active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +247,12 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise1_result },
-    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise1_result },
-    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise1_result },
+    { label: "House", before: ferro_source1_house, after: ferro_ex1_s1 },
+    { label: "Castle", before: ferro_source2_castle, after: ferro_ex1_s2 },
+    { label: "Collage", before: ferro_source3_collage, after: ferro_ex1_s3 },
+    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex1_s4 },
+    { label: "Woman", before: ferro_source5_woman, after: ferro_ex1_s5 },
+    { label: "Wood", before: ferro_source6_wood, after: ferro_ex1_s6 },
   ]}
 />
 *Classic Prussian Blue Cyanotype — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise2_result },
-    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise2_result },
-    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise2_result },
+    { label: "House", before: ferro_source1_house, after: ferro_ex2_s1 },
+    { label: "Castle", before: ferro_source2_castle, after: ferro_ex2_s2 },
+    { label: "Collage", before: ferro_source3_collage, after: ferro_ex2_s3 },
+    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex2_s4 },
+    { label: "Woman", before: ferro_source5_woman, after: ferro_ex2_s5 },
+    { label: "Wood", before: ferro_source6_wood, after: ferro_ex2_s6 },
   ]}
 />
 *Tea-Toned Sepia Print — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ferro_source1_kodim02, after: ferro_exercise3_result },
-    { label: "Kodim07", before: ferro_source2_kodim07, after: ferro_exercise3_result },
-    { label: "Kodim01 B&W", before: ferro_source3_kodim01_bw, after: ferro_exercise3_result },
+    { label: "House", before: ferro_source1_house, after: ferro_ex3_s1 },
+    { label: "Castle", before: ferro_source2_castle, after: ferro_ex3_s2 },
+    { label: "Collage", before: ferro_source3_collage, after: ferro_ex3_s3 },
+    { label: "Pattern", before: ferro_source4_pattern, after: ferro_ex3_s4 },
+    { label: "Woman", before: ferro_source5_woman, after: ferro_ex3_s5 },
+    { label: "Wood", before: ferro_source6_wood, after: ferro_ex3_s6 },
   ]}
 />
 *Extreme Texture and Diffusion — simulated result across source images.*

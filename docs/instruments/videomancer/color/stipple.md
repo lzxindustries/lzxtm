@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 272
+sidebar_position: 284
 slug: /instruments/videomancer/stipple
 title: "Stipple"
 image: /img/instruments/videomancer/stipple/stipple_hero.png

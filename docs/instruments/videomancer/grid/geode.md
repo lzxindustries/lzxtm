@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 121
+sidebar_position: 126
 slug: /instruments/videomancer/geode
 title: "Geode"
 image: /img/instruments/videomancer/geode/geode_hero.png

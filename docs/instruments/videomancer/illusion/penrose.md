@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 210
+sidebar_position: 219
 slug: /instruments/videomancer/penrose
 title: "Penrose"
-image: /img/instruments/videomancer/penrose/penrose_hero.png
+image: /img/instruments/videomancer/penrose/penrose_hero_s1.png
 description: "The Penrose triangle is perhaps the most famous impossible object — a three-bar figure that appears to represent a solid three-dimensional triangle, yet cannot exist in Euclidean space."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import penrose_hero from '/img/instruments/videomancer/penrose/penrose_hero.png';
-import penrose_control_panel from '/img/instruments/videomancer/penrose/penrose_control_panel.png';
-import penrose_exercise1_result from '/img/instruments/videomancer/penrose/penrose_exercise1_result.png';
-import penrose_exercise2_result from '/img/instruments/videomancer/penrose/penrose_exercise2_result.png';
-import penrose_exercise3_result from '/img/instruments/videomancer/penrose/penrose_exercise3_result.png';
-import penrose_source1_kodim01 from '/img/instruments/videomancer/penrose/penrose_source1_kodim01.png';
-import penrose_source2_kodim02 from '/img/instruments/videomancer/penrose/penrose_source2_kodim02.png';
-import penrose_source3_kodim01_bw from '/img/instruments/videomancer/penrose/penrose_source3_kodim01_bw.png';
+import penrose_source1_house from '/img/instruments/videomancer/penrose/penrose_source1_house.png';
+import penrose_source2_parrot from '/img/instruments/videomancer/penrose/penrose_source2_parrot.png';
+import penrose_source3_collage from '/img/instruments/videomancer/penrose/penrose_source3_collage.png';
+import penrose_source4_pattern from '/img/instruments/videomancer/penrose/penrose_source4_pattern.png';
+import penrose_source5_boy from '/img/instruments/videomancer/penrose/penrose_source5_boy.png';
+import penrose_source6_berries from '/img/instruments/videomancer/penrose/penrose_source6_berries.png';
+import penrose_hero_s1 from '/img/instruments/videomancer/penrose/penrose_hero_s1.png';
+import penrose_hero_s2 from '/img/instruments/videomancer/penrose/penrose_hero_s2.png';
+import penrose_hero_s3 from '/img/instruments/videomancer/penrose/penrose_hero_s3.png';
+import penrose_hero_s4 from '/img/instruments/videomancer/penrose/penrose_hero_s4.png';
+import penrose_hero_s5 from '/img/instruments/videomancer/penrose/penrose_hero_s5.png';
+import penrose_hero_s6 from '/img/instruments/videomancer/penrose/penrose_hero_s6.png';
+import penrose_ex1_s1 from '/img/instruments/videomancer/penrose/penrose_ex1_s1.png';
+import penrose_ex1_s2 from '/img/instruments/videomancer/penrose/penrose_ex1_s2.png';
+import penrose_ex1_s3 from '/img/instruments/videomancer/penrose/penrose_ex1_s3.png';
+import penrose_ex1_s4 from '/img/instruments/videomancer/penrose/penrose_ex1_s4.png';
+import penrose_ex1_s5 from '/img/instruments/videomancer/penrose/penrose_ex1_s5.png';
+import penrose_ex1_s6 from '/img/instruments/videomancer/penrose/penrose_ex1_s6.png';
+import penrose_ex2_s1 from '/img/instruments/videomancer/penrose/penrose_ex2_s1.png';
+import penrose_ex2_s2 from '/img/instruments/videomancer/penrose/penrose_ex2_s2.png';
+import penrose_ex2_s3 from '/img/instruments/videomancer/penrose/penrose_ex2_s3.png';
+import penrose_ex2_s4 from '/img/instruments/videomancer/penrose/penrose_ex2_s4.png';
+import penrose_ex2_s5 from '/img/instruments/videomancer/penrose/penrose_ex2_s5.png';
+import penrose_ex2_s6 from '/img/instruments/videomancer/penrose/penrose_ex2_s6.png';
+import penrose_ex3_s1 from '/img/instruments/videomancer/penrose/penrose_ex3_s1.png';
+import penrose_ex3_s2 from '/img/instruments/videomancer/penrose/penrose_ex3_s2.png';
+import penrose_ex3_s3 from '/img/instruments/videomancer/penrose/penrose_ex3_s3.png';
+import penrose_ex3_s4 from '/img/instruments/videomancer/penrose/penrose_ex3_s4.png';
+import penrose_ex3_s5 from '/img/instruments/videomancer/penrose/penrose_ex3_s5.png';
+import penrose_ex3_s6 from '/img/instruments/videomancer/penrose/penrose_ex3_s6.png';
 
 # Penrose
 
@@ -23,9 +45,12 @@ import penrose_source3_kodim01_bw from '/img/instruments/videomancer/penrose/pen
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_hero },
-    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_hero },
-    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_hero },
+    { label: "House", before: penrose_source1_house, after: penrose_hero_s1 },
+    { label: "Parrot", before: penrose_source2_parrot, after: penrose_hero_s2 },
+    { label: "Collage", before: penrose_source3_collage, after: penrose_hero_s3 },
+    { label: "Pattern", before: penrose_source4_pattern, after: penrose_hero_s4 },
+    { label: "Boy", before: penrose_source5_boy, after: penrose_hero_s5 },
+    { label: "Berries", before: penrose_source6_berries, after: penrose_hero_s6 },
   ]}
 />
 *Penrose overlaying impossible triangle wireframes on live video, depth-cue shading creating spatial contradiction at every junction.*
@@ -121,8 +146,6 @@ The depth-cue junction shading is a critical visual element — it darkens pixel
 
 ## Parameter Reference
 
-<img src={penrose_control_panel} alt="Videomancer front panel with Penrose loaded"/>
-*Videomancer's front panel with Penrose active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -227,9 +250,12 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise1_result },
-    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise1_result },
-    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise1_result },
+    { label: "House", before: penrose_source1_house, after: penrose_ex1_s1 },
+    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex1_s2 },
+    { label: "Collage", before: penrose_source3_collage, after: penrose_ex1_s3 },
+    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex1_s4 },
+    { label: "Boy", before: penrose_source5_boy, after: penrose_ex1_s5 },
+    { label: "Berries", before: penrose_source6_berries, after: penrose_ex1_s6 },
   ]}
 />
 *Classic Penrose Triangle — simulated result across source images.*
@@ -251,9 +277,12 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise2_result },
-    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise2_result },
-    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise2_result },
+    { label: "House", before: penrose_source1_house, after: penrose_ex2_s1 },
+    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex2_s2 },
+    { label: "Collage", before: penrose_source3_collage, after: penrose_ex2_s3 },
+    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex2_s4 },
+    { label: "Boy", before: penrose_source5_boy, after: penrose_ex2_s5 },
+    { label: "Berries", before: penrose_source6_berries, after: penrose_ex2_s6 },
   ]}
 />
 *Tiled Impossible Staircase — simulated result across source images.*
@@ -276,9 +305,12 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: penrose_source1_kodim01, after: penrose_exercise3_result },
-    { label: "Kodim02", before: penrose_source2_kodim02, after: penrose_exercise3_result },
-    { label: "Kodim01 B&W", before: penrose_source3_kodim01_bw, after: penrose_exercise3_result },
+    { label: "House", before: penrose_source1_house, after: penrose_ex3_s1 },
+    { label: "Parrot", before: penrose_source2_parrot, after: penrose_ex3_s2 },
+    { label: "Collage", before: penrose_source3_collage, after: penrose_ex3_s3 },
+    { label: "Pattern", before: penrose_source4_pattern, after: penrose_ex3_s4 },
+    { label: "Boy", before: penrose_source5_boy, after: penrose_ex3_s5 },
+    { label: "Berries", before: penrose_source6_berries, after: penrose_ex3_s6 },
   ]}
 />
 *Glowing Trident Composition — simulated result across source images.*

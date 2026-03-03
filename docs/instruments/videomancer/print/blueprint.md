@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 23
+sidebar_position: 24
 slug: /instruments/videomancer/blueprint
 title: "Blueprint"
-image: /img/instruments/videomancer/blueprint/blueprint_hero.png
+image: /img/instruments/videomancer/blueprint/blueprint_hero_s1.png
 description: "Blueprint transforms a video signal into a cyanotype-style technical drawing."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import blueprint_hero from '/img/instruments/videomancer/blueprint/blueprint_hero.png';
-import blueprint_control_panel from '/img/instruments/videomancer/blueprint/blueprint_control_panel.png';
-import blueprint_exercise1_result from '/img/instruments/videomancer/blueprint/blueprint_exercise1_result.png';
-import blueprint_exercise2_result from '/img/instruments/videomancer/blueprint/blueprint_exercise2_result.png';
-import blueprint_exercise3_result from '/img/instruments/videomancer/blueprint/blueprint_exercise3_result.png';
-import blueprint_source1_kodim02 from '/img/instruments/videomancer/blueprint/blueprint_source1_kodim02.png';
-import blueprint_source2_kodim07 from '/img/instruments/videomancer/blueprint/blueprint_source2_kodim07.png';
-import blueprint_source3_kodim01_bw from '/img/instruments/videomancer/blueprint/blueprint_source3_kodim01_bw.png';
+import blueprint_source1_parrot from '/img/instruments/videomancer/blueprint/blueprint_source1_parrot.png';
+import blueprint_source2_field from '/img/instruments/videomancer/blueprint/blueprint_source2_field.png';
+import blueprint_source3_elephant from '/img/instruments/videomancer/blueprint/blueprint_source3_elephant.png';
+import blueprint_source4_pattern from '/img/instruments/videomancer/blueprint/blueprint_source4_pattern.png';
+import blueprint_source5_girl from '/img/instruments/videomancer/blueprint/blueprint_source5_girl.png';
+import blueprint_source6_knit from '/img/instruments/videomancer/blueprint/blueprint_source6_knit.png';
+import blueprint_hero_s1 from '/img/instruments/videomancer/blueprint/blueprint_hero_s1.png';
+import blueprint_hero_s2 from '/img/instruments/videomancer/blueprint/blueprint_hero_s2.png';
+import blueprint_hero_s3 from '/img/instruments/videomancer/blueprint/blueprint_hero_s3.png';
+import blueprint_hero_s4 from '/img/instruments/videomancer/blueprint/blueprint_hero_s4.png';
+import blueprint_hero_s5 from '/img/instruments/videomancer/blueprint/blueprint_hero_s5.png';
+import blueprint_hero_s6 from '/img/instruments/videomancer/blueprint/blueprint_hero_s6.png';
+import blueprint_ex1_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s1.png';
+import blueprint_ex1_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s2.png';
+import blueprint_ex1_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s3.png';
+import blueprint_ex1_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s4.png';
+import blueprint_ex1_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s5.png';
+import blueprint_ex1_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex1_s6.png';
+import blueprint_ex2_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s1.png';
+import blueprint_ex2_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s2.png';
+import blueprint_ex2_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s3.png';
+import blueprint_ex2_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s4.png';
+import blueprint_ex2_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s5.png';
+import blueprint_ex2_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex2_s6.png';
+import blueprint_ex3_s1 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s1.png';
+import blueprint_ex3_s2 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s2.png';
+import blueprint_ex3_s3 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s3.png';
+import blueprint_ex3_s4 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s4.png';
+import blueprint_ex3_s5 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s5.png';
+import blueprint_ex3_s6 from '/img/instruments/videomancer/blueprint/blueprint_ex3_s6.png';
 
 # Blueprint
 
@@ -23,9 +45,12 @@ import blueprint_source3_kodim01_bw from '/img/instruments/videomancer/blueprint
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_hero },
-    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_hero },
-    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_hero },
+    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_hero_s1 },
+    { label: "Field", before: blueprint_source2_field, after: blueprint_hero_s2 },
+    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_hero_s3 },
+    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_hero_s4 },
+    { label: "Girl", before: blueprint_source5_girl, after: blueprint_hero_s5 },
+    { label: "Knit", before: blueprint_source6_knit, after: blueprint_hero_s6 },
   ]}
 />
 *White contour lines trace every edge in the source against a deep Prussian blue ground, turning living video into an engineering drawing.*
@@ -117,9 +142,6 @@ The composite stage has a clear priority order: edges take highest priority (whi
 
 ## Parameter Reference
 
-<img src={blueprint_control_panel} alt="Videomancer front panel with Blueprint loaded"/>
-*Videomancer's front panel with Blueprint active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
 ### Rotary Potentiometers (Knobs 1–6)
 
 #### Knob 1 — Edge Thr
@@ -183,7 +205,7 @@ Controls the depth of the Prussian blue background. The pot value scales the bac
 | Default | 50% |
 | Suffix | % |
 
-Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (>>2, very faint lines), 205–409 → ×0.5 (>>1, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (<<1, boosted), 819–1023 → ×4.0 (<<2, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
+Controls the edge contrast scaling — how bright the detected contour lines appear. Five shift-based levels are decoded: below 205 → ×0.25 (`>>2`, very faint lines), 205–409 → ×0.5 (`>>1`, dim lines), 410–613 → ×1.0 (edge strength as-is), 614–818 → ×2.0 (`<<1`, boosted), 819–1023 → ×4.0 (`<<2`, maximum boost). Higher values make even weak edges appear as bright white lines; lower values produce subtle, faint outlines.
 
 ---
 
@@ -222,9 +244,12 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise1_result },
-    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise1_result },
-    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise1_result },
+    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex1_s1 },
+    { label: "Field", before: blueprint_source2_field, after: blueprint_ex1_s2 },
+    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex1_s3 },
+    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex1_s4 },
+    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex1_s5 },
+    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex1_s6 },
   ]}
 />
 *Simple Edge Drawing — simulated result across source images.*
@@ -247,9 +272,12 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise2_result },
-    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise2_result },
-    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise2_result },
+    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex2_s1 },
+    { label: "Field", before: blueprint_source2_field, after: blueprint_ex2_s2 },
+    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex2_s3 },
+    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex2_s4 },
+    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex2_s5 },
+    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex2_s6 },
   ]}
 />
 *Engineering Grid Overlay — simulated result across source images.*
@@ -272,9 +300,12 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: blueprint_source1_kodim02, after: blueprint_exercise3_result },
-    { label: "Kodim07", before: blueprint_source2_kodim07, after: blueprint_exercise3_result },
-    { label: "Kodim01 B&W", before: blueprint_source3_kodim01_bw, after: blueprint_exercise3_result },
+    { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_ex3_s1 },
+    { label: "Field", before: blueprint_source2_field, after: blueprint_ex3_s2 },
+    { label: "Elephant", before: blueprint_source3_elephant, after: blueprint_ex3_s3 },
+    { label: "Pattern", before: blueprint_source4_pattern, after: blueprint_ex3_s4 },
+    { label: "Girl", before: blueprint_source5_girl, after: blueprint_ex3_s5 },
+    { label: "Knit", before: blueprint_source6_knit, after: blueprint_ex3_s6 },
   ]}
 />
 *Full Technical Drawing — simulated result across source images.*

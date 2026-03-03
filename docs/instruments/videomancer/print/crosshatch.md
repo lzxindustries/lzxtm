@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 65
+sidebar_position: 68
 slug: /instruments/videomancer/crosshatch
 title: "Crosshatch"
-image: /img/instruments/videomancer/crosshatch/crosshatch_hero.png
+image: /img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png
 description: "Every illustrator and printmaker who has worked without continuous tone knows the challenge: reproduce the full range of light and shadow using only marks and blank surface."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import crosshatch_hero from '/img/instruments/videomancer/crosshatch/crosshatch_hero.png';
-import crosshatch_control_panel from '/img/instruments/videomancer/crosshatch/crosshatch_control_panel.png';
-import crosshatch_exercise1_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise1_result.png';
-import crosshatch_exercise2_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise2_result.png';
-import crosshatch_exercise3_result from '/img/instruments/videomancer/crosshatch/crosshatch_exercise3_result.png';
-import crosshatch_source1_kodim02 from '/img/instruments/videomancer/crosshatch/crosshatch_source1_kodim02.png';
-import crosshatch_source2_kodim07 from '/img/instruments/videomancer/crosshatch/crosshatch_source2_kodim07.png';
-import crosshatch_source3_kodim01_bw from '/img/instruments/videomancer/crosshatch/crosshatch_source3_kodim01_bw.png';
+import crosshatch_source1_castle from '/img/instruments/videomancer/crosshatch/crosshatch_source1_castle.png';
+import crosshatch_source2_ballerina from '/img/instruments/videomancer/crosshatch/crosshatch_source2_ballerina.png';
+import crosshatch_source3_turtle from '/img/instruments/videomancer/crosshatch/crosshatch_source3_turtle.png';
+import crosshatch_source4_pattern from '/img/instruments/videomancer/crosshatch/crosshatch_source4_pattern.png';
+import crosshatch_source5_man from '/img/instruments/videomancer/crosshatch/crosshatch_source5_man.png';
+import crosshatch_source6_paint from '/img/instruments/videomancer/crosshatch/crosshatch_source6_paint.png';
+import crosshatch_hero_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s1.png';
+import crosshatch_hero_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s2.png';
+import crosshatch_hero_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s3.png';
+import crosshatch_hero_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s4.png';
+import crosshatch_hero_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s5.png';
+import crosshatch_hero_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_hero_s6.png';
+import crosshatch_ex1_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s1.png';
+import crosshatch_ex1_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s2.png';
+import crosshatch_ex1_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s3.png';
+import crosshatch_ex1_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s4.png';
+import crosshatch_ex1_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s5.png';
+import crosshatch_ex1_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex1_s6.png';
+import crosshatch_ex2_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s1.png';
+import crosshatch_ex2_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s2.png';
+import crosshatch_ex2_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s3.png';
+import crosshatch_ex2_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s4.png';
+import crosshatch_ex2_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s5.png';
+import crosshatch_ex2_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex2_s6.png';
+import crosshatch_ex3_s1 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s1.png';
+import crosshatch_ex3_s2 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s2.png';
+import crosshatch_ex3_s3 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s3.png';
+import crosshatch_ex3_s4 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s4.png';
+import crosshatch_ex3_s5 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s5.png';
+import crosshatch_ex3_s6 from '/img/instruments/videomancer/crosshatch/crosshatch_ex3_s6.png';
 
 # Crosshatch
 
@@ -23,9 +45,12 @@ import crosshatch_source3_kodim01_bw from '/img/instruments/videomancer/crosshat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_hero },
-    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_hero },
-    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_hero },
+    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_hero_s1 },
+    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_hero_s2 },
+    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_hero_s3 },
+    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_hero_s4 },
+    { label: "Man", before: crosshatch_source5_man, after: crosshatch_hero_s5 },
+    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_hero_s6 },
   ]}
 />
 *Crosshatch rendering diagonal ink strokes at variable density across a luminance-graded portrait, emulating copperplate engraving.*
@@ -108,8 +133,6 @@ The critical design insight is that all line detection happens in a single combi
 
 ## Parameter Reference
 
-<img src={crosshatch_control_panel} alt="Videomancer front panel with Crosshatch loaded"/>
-*Videomancer's front panel with Crosshatch active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise1_result },
-    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise1_result },
-    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise1_result },
+    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex1_s1 },
+    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex1_s2 },
+    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex1_s3 },
+    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex1_s4 },
+    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex1_s5 },
+    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex1_s6 },
   ]}
 />
 *Pen Sketch — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise2_result },
-    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise2_result },
-    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise2_result },
+    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex2_s1 },
+    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex2_s2 },
+    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex2_s3 },
+    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex2_s4 },
+    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex2_s5 },
+    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex2_s6 },
   ]}
 />
 *Copperplate Engraving — simulated result across source images.*
@@ -264,9 +293,12 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: crosshatch_source1_kodim02, after: crosshatch_exercise3_result },
-    { label: "Kodim07", before: crosshatch_source2_kodim07, after: crosshatch_exercise3_result },
-    { label: "Kodim01 B&W", before: crosshatch_source3_kodim01_bw, after: crosshatch_exercise3_result },
+    { label: "Castle", before: crosshatch_source1_castle, after: crosshatch_ex3_s1 },
+    { label: "Ballerina", before: crosshatch_source2_ballerina, after: crosshatch_ex3_s2 },
+    { label: "Turtle", before: crosshatch_source3_turtle, after: crosshatch_ex3_s3 },
+    { label: "Pattern", before: crosshatch_source4_pattern, after: crosshatch_ex3_s4 },
+    { label: "Man", before: crosshatch_source5_man, after: crosshatch_ex3_s5 },
+    { label: "Paint", before: crosshatch_source6_paint, after: crosshatch_ex3_s6 },
   ]}
 />
 *Color-Keyed Etch — simulated result across source images.*

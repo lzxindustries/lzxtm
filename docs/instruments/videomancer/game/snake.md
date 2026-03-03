@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 261
+sidebar_position: 273
 slug: /instruments/videomancer/snake
 title: "Snake"
 image: /img/instruments/videomancer/snake/snake_hero.png

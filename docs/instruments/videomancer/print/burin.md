@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 32
 slug: /instruments/videomancer/burin
 title: "Burin"
-image: /img/instruments/videomancer/burin/burin_hero.png
+image: /img/instruments/videomancer/burin/burin_hero_s1.png
 description: "Every photograph contains continuous tonal gradations — smooth transitions from light to shadow."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import burin_hero from '/img/instruments/videomancer/burin/burin_hero.png';
-import burin_control_panel from '/img/instruments/videomancer/burin/burin_control_panel.png';
-import burin_exercise1_result from '/img/instruments/videomancer/burin/burin_exercise1_result.png';
-import burin_exercise2_result from '/img/instruments/videomancer/burin/burin_exercise2_result.png';
-import burin_exercise3_result from '/img/instruments/videomancer/burin/burin_exercise3_result.png';
-import burin_source1_kodim02 from '/img/instruments/videomancer/burin/burin_source1_kodim02.png';
-import burin_source2_kodim07 from '/img/instruments/videomancer/burin/burin_source2_kodim07.png';
-import burin_source3_kodim01_bw from '/img/instruments/videomancer/burin/burin_source3_kodim01_bw.png';
+import burin_source1_car from '/img/instruments/videomancer/burin/burin_source1_car.png';
+import burin_source2_boat from '/img/instruments/videomancer/burin/burin_source2_boat.png';
+import burin_source3_turtle from '/img/instruments/videomancer/burin/burin_source3_turtle.png';
+import burin_source4_pattern from '/img/instruments/videomancer/burin/burin_source4_pattern.png';
+import burin_source5_girl from '/img/instruments/videomancer/burin/burin_source5_girl.png';
+import burin_source6_knit from '/img/instruments/videomancer/burin/burin_source6_knit.png';
+import burin_hero_s1 from '/img/instruments/videomancer/burin/burin_hero_s1.png';
+import burin_hero_s2 from '/img/instruments/videomancer/burin/burin_hero_s2.png';
+import burin_hero_s3 from '/img/instruments/videomancer/burin/burin_hero_s3.png';
+import burin_hero_s4 from '/img/instruments/videomancer/burin/burin_hero_s4.png';
+import burin_hero_s5 from '/img/instruments/videomancer/burin/burin_hero_s5.png';
+import burin_hero_s6 from '/img/instruments/videomancer/burin/burin_hero_s6.png';
+import burin_ex1_s1 from '/img/instruments/videomancer/burin/burin_ex1_s1.png';
+import burin_ex1_s2 from '/img/instruments/videomancer/burin/burin_ex1_s2.png';
+import burin_ex1_s3 from '/img/instruments/videomancer/burin/burin_ex1_s3.png';
+import burin_ex1_s4 from '/img/instruments/videomancer/burin/burin_ex1_s4.png';
+import burin_ex1_s5 from '/img/instruments/videomancer/burin/burin_ex1_s5.png';
+import burin_ex1_s6 from '/img/instruments/videomancer/burin/burin_ex1_s6.png';
+import burin_ex2_s1 from '/img/instruments/videomancer/burin/burin_ex2_s1.png';
+import burin_ex2_s2 from '/img/instruments/videomancer/burin/burin_ex2_s2.png';
+import burin_ex2_s3 from '/img/instruments/videomancer/burin/burin_ex2_s3.png';
+import burin_ex2_s4 from '/img/instruments/videomancer/burin/burin_ex2_s4.png';
+import burin_ex2_s5 from '/img/instruments/videomancer/burin/burin_ex2_s5.png';
+import burin_ex2_s6 from '/img/instruments/videomancer/burin/burin_ex2_s6.png';
+import burin_ex3_s1 from '/img/instruments/videomancer/burin/burin_ex3_s1.png';
+import burin_ex3_s2 from '/img/instruments/videomancer/burin/burin_ex3_s2.png';
+import burin_ex3_s3 from '/img/instruments/videomancer/burin/burin_ex3_s3.png';
+import burin_ex3_s4 from '/img/instruments/videomancer/burin/burin_ex3_s4.png';
+import burin_ex3_s5 from '/img/instruments/videomancer/burin/burin_ex3_s5.png';
+import burin_ex3_s6 from '/img/instruments/videomancer/burin/burin_ex3_s6.png';
 
 # Burin
 
@@ -23,9 +45,12 @@ import burin_source3_kodim01_bw from '/img/instruments/videomancer/burin/burin_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: burin_source1_kodim02, after: burin_hero },
-    { label: "Kodim07", before: burin_source2_kodim07, after: burin_hero },
-    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_hero },
+    { label: "Car", before: burin_source1_car, after: burin_hero_s1 },
+    { label: "Boat", before: burin_source2_boat, after: burin_hero_s2 },
+    { label: "Turtle", before: burin_source3_turtle, after: burin_hero_s3 },
+    { label: "Pattern", before: burin_source4_pattern, after: burin_hero_s4 },
+    { label: "Girl", before: burin_source5_girl, after: burin_hero_s5 },
+    { label: "Knit", before: burin_source6_knit, after: burin_hero_s6 },
   ]}
 />
 *Burin rendering a video source as copper intaglio crosshatching, with luminance-dependent line density recreating the look of a Dürer engraving.*
@@ -119,8 +144,6 @@ The pipeline is purely combinational on pixel coordinates — no BRAM or framebu
 
 ## Parameter Reference
 
-<img src={burin_control_panel} alt="Videomancer front panel with Burin loaded"/>
-*Videomancer's front panel with Burin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +247,12 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise1_result },
-    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise1_result },
-    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise1_result },
+    { label: "Car", before: burin_source1_car, after: burin_ex1_s1 },
+    { label: "Boat", before: burin_source2_boat, after: burin_ex1_s2 },
+    { label: "Turtle", before: burin_source3_turtle, after: burin_ex1_s3 },
+    { label: "Pattern", before: burin_source4_pattern, after: burin_ex1_s4 },
+    { label: "Girl", before: burin_source5_girl, after: burin_ex1_s5 },
+    { label: "Knit", before: burin_source6_knit, after: burin_ex1_s6 },
   ]}
 />
 *First Lines and Crosshatch — simulated result across source images.*
@@ -248,9 +274,12 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise2_result },
-    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise2_result },
-    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise2_result },
+    { label: "Car", before: burin_source1_car, after: burin_ex2_s1 },
+    { label: "Boat", before: burin_source2_boat, after: burin_ex2_s2 },
+    { label: "Turtle", before: burin_source3_turtle, after: burin_ex2_s3 },
+    { label: "Pattern", before: burin_source4_pattern, after: burin_ex2_s4 },
+    { label: "Girl", before: burin_source5_girl, after: burin_ex2_s5 },
+    { label: "Knit", before: burin_source6_knit, after: burin_ex2_s6 },
   ]}
 />
 *Plate Character and Wear — simulated result across source images.*
@@ -273,9 +302,12 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: burin_source1_kodim02, after: burin_exercise3_result },
-    { label: "Kodim07", before: burin_source2_kodim07, after: burin_exercise3_result },
-    { label: "Kodim01 B&W", before: burin_source3_kodim01_bw, after: burin_exercise3_result },
+    { label: "Car", before: burin_source1_car, after: burin_ex3_s1 },
+    { label: "Boat", before: burin_source2_boat, after: burin_ex3_s2 },
+    { label: "Turtle", before: burin_source3_turtle, after: burin_ex3_s3 },
+    { label: "Pattern", before: burin_source4_pattern, after: burin_ex3_s4 },
+    { label: "Girl", before: burin_source5_girl, after: burin_ex3_s5 },
+    { label: "Knit", before: burin_source6_knit, after: burin_ex3_s6 },
   ]}
 />
 *Duotone and Inversion — simulated result across source images.*

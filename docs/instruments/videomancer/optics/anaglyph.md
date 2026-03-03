@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 6
 slug: /instruments/videomancer/anaglyph
 title: "Anaglyph"
-image: /img/instruments/videomancer/anaglyph/anaglyph_hero.png
+image: /img/instruments/videomancer/anaglyph/anaglyph_hero_s1.png
 description: "Anaglyph creates stereoscopic 3D anaglyphic images from 2D video by using source luminance as a depth map."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import anaglyph_hero from '/img/instruments/videomancer/anaglyph/anaglyph_hero.png';
-import anaglyph_control_panel from '/img/instruments/videomancer/anaglyph/anaglyph_control_panel.png';
-import anaglyph_exercise1_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise1_result.png';
-import anaglyph_exercise2_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise2_result.png';
-import anaglyph_exercise3_result from '/img/instruments/videomancer/anaglyph/anaglyph_exercise3_result.png';
-import anaglyph_source1_kodim15 from '/img/instruments/videomancer/anaglyph/anaglyph_source1_kodim15.png';
-import anaglyph_source2_kodim01 from '/img/instruments/videomancer/anaglyph/anaglyph_source2_kodim01.png';
-import anaglyph_source3_kodim01_bw from '/img/instruments/videomancer/anaglyph/anaglyph_source3_kodim01_bw.png';
+import anaglyph_source1_runner from '/img/instruments/videomancer/anaglyph/anaglyph_source1_runner.png';
+import anaglyph_source2_field from '/img/instruments/videomancer/anaglyph/anaglyph_source2_field.png';
+import anaglyph_source3_clouds from '/img/instruments/videomancer/anaglyph/anaglyph_source3_clouds.png';
+import anaglyph_source4_pattern from '/img/instruments/videomancer/anaglyph/anaglyph_source4_pattern.png';
+import anaglyph_source5_man from '/img/instruments/videomancer/anaglyph/anaglyph_source5_man.png';
+import anaglyph_source6_wood from '/img/instruments/videomancer/anaglyph/anaglyph_source6_wood.png';
+import anaglyph_hero_s1 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s1.png';
+import anaglyph_hero_s2 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s2.png';
+import anaglyph_hero_s3 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s3.png';
+import anaglyph_hero_s4 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s4.png';
+import anaglyph_hero_s5 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s5.png';
+import anaglyph_hero_s6 from '/img/instruments/videomancer/anaglyph/anaglyph_hero_s6.png';
+import anaglyph_ex1_s1 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s1.png';
+import anaglyph_ex1_s2 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s2.png';
+import anaglyph_ex1_s3 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s3.png';
+import anaglyph_ex1_s4 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s4.png';
+import anaglyph_ex1_s5 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s5.png';
+import anaglyph_ex1_s6 from '/img/instruments/videomancer/anaglyph/anaglyph_ex1_s6.png';
+import anaglyph_ex2_s1 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s1.png';
+import anaglyph_ex2_s2 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s2.png';
+import anaglyph_ex2_s3 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s3.png';
+import anaglyph_ex2_s4 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s4.png';
+import anaglyph_ex2_s5 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s5.png';
+import anaglyph_ex2_s6 from '/img/instruments/videomancer/anaglyph/anaglyph_ex2_s6.png';
+import anaglyph_ex3_s1 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s1.png';
+import anaglyph_ex3_s2 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s2.png';
+import anaglyph_ex3_s3 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s3.png';
+import anaglyph_ex3_s4 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s4.png';
+import anaglyph_ex3_s5 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s5.png';
+import anaglyph_ex3_s6 from '/img/instruments/videomancer/anaglyph/anaglyph_ex3_s6.png';
 
 # Anaglyph
 
@@ -23,9 +45,12 @@ import anaglyph_source3_kodim01_bw from '/img/instruments/videomancer/anaglyph/a
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_hero },
-    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_hero },
-    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_hero },
+    { label: "Runner", before: anaglyph_source1_runner, after: anaglyph_hero_s1 },
+    { label: "Field", before: anaglyph_source2_field, after: anaglyph_hero_s2 },
+    { label: "Clouds", before: anaglyph_source3_clouds, after: anaglyph_hero_s3 },
+    { label: "Pattern", before: anaglyph_source4_pattern, after: anaglyph_hero_s4 },
+    { label: "Man", before: anaglyph_source5_man, after: anaglyph_hero_s5 },
+    { label: "Wood", before: anaglyph_source6_wood, after: anaglyph_hero_s6 },
   ]}
 />
 *Anaglyph rendering a landscape as a red/cyan stereoscopic image — bright regions push forward and dark regions recede, creating a convincing 3D depth illusion viewable with classic red/cyan glasses.*
@@ -99,9 +124,6 @@ The colour tints are computed per-pixel in YUV space. In Red/Cyan mode, the left
 ---
 
 ## Parameter Reference
-
-<img src={anaglyph_control_panel} alt="Videomancer front panel with Anaglyph loaded"/>
-*Videomancer's front panel with Anaglyph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -206,9 +228,12 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise1_result },
-    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise1_result },
-    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise1_result },
+    { label: "Runner", before: anaglyph_source1_runner, after: anaglyph_ex1_s1 },
+    { label: "Field", before: anaglyph_source2_field, after: anaglyph_ex1_s2 },
+    { label: "Clouds", before: anaglyph_source3_clouds, after: anaglyph_ex1_s3 },
+    { label: "Pattern", before: anaglyph_source4_pattern, after: anaglyph_ex1_s4 },
+    { label: "Man", before: anaglyph_source5_man, after: anaglyph_ex1_s5 },
+    { label: "Wood", before: anaglyph_source6_wood, after: anaglyph_ex1_s6 },
   ]}
 />
 *Basic Depth Mapping — simulated result across source images.*
@@ -231,9 +256,12 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise2_result },
-    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise2_result },
-    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise2_result },
+    { label: "Runner", before: anaglyph_source1_runner, after: anaglyph_ex2_s1 },
+    { label: "Field", before: anaglyph_source2_field, after: anaglyph_ex2_s2 },
+    { label: "Clouds", before: anaglyph_source3_clouds, after: anaglyph_ex2_s3 },
+    { label: "Pattern", before: anaglyph_source4_pattern, after: anaglyph_ex2_s4 },
+    { label: "Man", before: anaglyph_source5_man, after: anaglyph_ex2_s5 },
+    { label: "Wood", before: anaglyph_source6_wood, after: anaglyph_ex2_s6 },
   ]}
 />
 *Depth Direction and Separation — simulated result across source images.*
@@ -256,9 +284,12 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anaglyph_source1_kodim15, after: anaglyph_exercise3_result },
-    { label: "Kodim01", before: anaglyph_source2_kodim01, after: anaglyph_exercise3_result },
-    { label: "Kodim01 B&W", before: anaglyph_source3_kodim01_bw, after: anaglyph_exercise3_result },
+    { label: "Runner", before: anaglyph_source1_runner, after: anaglyph_ex3_s1 },
+    { label: "Field", before: anaglyph_source2_field, after: anaglyph_ex3_s2 },
+    { label: "Clouds", before: anaglyph_source3_clouds, after: anaglyph_ex3_s3 },
+    { label: "Pattern", before: anaglyph_source4_pattern, after: anaglyph_ex3_s4 },
+    { label: "Man", before: anaglyph_source5_man, after: anaglyph_ex3_s5 },
+    { label: "Wood", before: anaglyph_source6_wood, after: anaglyph_ex3_s6 },
   ]}
 />
 *Green/Magenta Mode and Brightness Compensation — simulated result across source images.*

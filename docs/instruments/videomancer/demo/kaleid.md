@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 149
+sidebar_position: 155
 slug: /instruments/videomancer/kaleid
 title: "Kaleid"
 image: /img/instruments/videomancer/kaleid/kaleid_hero.png

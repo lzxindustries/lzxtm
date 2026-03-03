@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 88
+sidebar_position: 92
 slug: /instruments/videomancer/dropout
 title: "Dropout"
-image: /img/instruments/videomancer/dropout/dropout_hero.png
+image: /img/instruments/videomancer/dropout/dropout_hero_s1.png
 description: "Every VHS cassette is a battlefield between the recording and time itself."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dropout_hero from '/img/instruments/videomancer/dropout/dropout_hero.png';
-import dropout_control_panel from '/img/instruments/videomancer/dropout/dropout_control_panel.png';
-import dropout_exercise1_result from '/img/instruments/videomancer/dropout/dropout_exercise1_result.png';
-import dropout_exercise2_result from '/img/instruments/videomancer/dropout/dropout_exercise2_result.png';
-import dropout_exercise3_result from '/img/instruments/videomancer/dropout/dropout_exercise3_result.png';
-import dropout_source1_kodim15 from '/img/instruments/videomancer/dropout/dropout_source1_kodim15.png';
-import dropout_source2_kodim01 from '/img/instruments/videomancer/dropout/dropout_source2_kodim01.png';
-import dropout_source3_stream_bridge_512 from '/img/instruments/videomancer/dropout/dropout_source3_stream_bridge_512.png';
+import dropout_source1_runner from '/img/instruments/videomancer/dropout/dropout_source1_runner.png';
+import dropout_source2_boat from '/img/instruments/videomancer/dropout/dropout_source2_boat.png';
+import dropout_source3_elephant from '/img/instruments/videomancer/dropout/dropout_source3_elephant.png';
+import dropout_source4_pattern from '/img/instruments/videomancer/dropout/dropout_source4_pattern.png';
+import dropout_source5_girl from '/img/instruments/videomancer/dropout/dropout_source5_girl.png';
+import dropout_source6_wood from '/img/instruments/videomancer/dropout/dropout_source6_wood.png';
+import dropout_hero_s1 from '/img/instruments/videomancer/dropout/dropout_hero_s1.png';
+import dropout_hero_s2 from '/img/instruments/videomancer/dropout/dropout_hero_s2.png';
+import dropout_hero_s3 from '/img/instruments/videomancer/dropout/dropout_hero_s3.png';
+import dropout_hero_s4 from '/img/instruments/videomancer/dropout/dropout_hero_s4.png';
+import dropout_hero_s5 from '/img/instruments/videomancer/dropout/dropout_hero_s5.png';
+import dropout_hero_s6 from '/img/instruments/videomancer/dropout/dropout_hero_s6.png';
+import dropout_ex1_s1 from '/img/instruments/videomancer/dropout/dropout_ex1_s1.png';
+import dropout_ex1_s2 from '/img/instruments/videomancer/dropout/dropout_ex1_s2.png';
+import dropout_ex1_s3 from '/img/instruments/videomancer/dropout/dropout_ex1_s3.png';
+import dropout_ex1_s4 from '/img/instruments/videomancer/dropout/dropout_ex1_s4.png';
+import dropout_ex1_s5 from '/img/instruments/videomancer/dropout/dropout_ex1_s5.png';
+import dropout_ex1_s6 from '/img/instruments/videomancer/dropout/dropout_ex1_s6.png';
+import dropout_ex2_s1 from '/img/instruments/videomancer/dropout/dropout_ex2_s1.png';
+import dropout_ex2_s2 from '/img/instruments/videomancer/dropout/dropout_ex2_s2.png';
+import dropout_ex2_s3 from '/img/instruments/videomancer/dropout/dropout_ex2_s3.png';
+import dropout_ex2_s4 from '/img/instruments/videomancer/dropout/dropout_ex2_s4.png';
+import dropout_ex2_s5 from '/img/instruments/videomancer/dropout/dropout_ex2_s5.png';
+import dropout_ex2_s6 from '/img/instruments/videomancer/dropout/dropout_ex2_s6.png';
+import dropout_ex3_s1 from '/img/instruments/videomancer/dropout/dropout_ex3_s1.png';
+import dropout_ex3_s2 from '/img/instruments/videomancer/dropout/dropout_ex3_s2.png';
+import dropout_ex3_s3 from '/img/instruments/videomancer/dropout/dropout_ex3_s3.png';
+import dropout_ex3_s4 from '/img/instruments/videomancer/dropout/dropout_ex3_s4.png';
+import dropout_ex3_s5 from '/img/instruments/videomancer/dropout/dropout_ex3_s5.png';
+import dropout_ex3_s6 from '/img/instruments/videomancer/dropout/dropout_ex3_s6.png';
 
 # Dropout
 
@@ -23,9 +45,12 @@ import dropout_source3_stream_bridge_512 from '/img/instruments/videomancer/drop
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_hero },
-    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_hero },
-    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_hero },
+    { label: "Runner", before: dropout_source1_runner, after: dropout_hero_s1 },
+    { label: "Boat", before: dropout_source2_boat, after: dropout_hero_s2 },
+    { label: "Elephant", before: dropout_source3_elephant, after: dropout_hero_s3 },
+    { label: "Pattern", before: dropout_source4_pattern, after: dropout_hero_s4 },
+    { label: "Girl", before: dropout_source5_girl, after: dropout_hero_s5 },
+    { label: "Wood", before: dropout_source6_wood, after: dropout_hero_s6 },
   ]}
 />
 *Dropout simulating VHS tape degradation with tracking error bands, dropout streaks, time-base jitter, and chroma-under color bleed.*
@@ -110,8 +135,6 @@ The chroma IIR filter resets its state to mid-scale (512) at each line start. Th
 
 ## Parameter Reference
 
-<img src={dropout_control_panel} alt="Videomancer front panel with Dropout loaded"/>
-*Videomancer's front panel with Dropout active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,9 +239,12 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise1_result },
-    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise1_result },
-    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise1_result },
+    { label: "Runner", before: dropout_source1_runner, after: dropout_ex1_s1 },
+    { label: "Boat", before: dropout_source2_boat, after: dropout_ex1_s2 },
+    { label: "Elephant", before: dropout_source3_elephant, after: dropout_ex1_s3 },
+    { label: "Pattern", before: dropout_source4_pattern, after: dropout_ex1_s4 },
+    { label: "Girl", before: dropout_source5_girl, after: dropout_ex1_s5 },
+    { label: "Wood", before: dropout_source6_wood, after: dropout_ex1_s6 },
   ]}
 />
 *Capstan Wobble and Time-Base Jitter — simulated result across source images.*
@@ -241,9 +267,12 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise2_result },
-    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise2_result },
-    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise2_result },
+    { label: "Runner", before: dropout_source1_runner, after: dropout_ex2_s1 },
+    { label: "Boat", before: dropout_source2_boat, after: dropout_ex2_s2 },
+    { label: "Elephant", before: dropout_source3_elephant, after: dropout_ex2_s3 },
+    { label: "Pattern", before: dropout_source4_pattern, after: dropout_ex2_s4 },
+    { label: "Girl", before: dropout_source5_girl, after: dropout_ex2_s5 },
+    { label: "Wood", before: dropout_source6_wood, after: dropout_ex2_s6 },
   ]}
 />
 *Dropout Streaks and Tracking Bands — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dropout_source1_kodim15, after: dropout_exercise3_result },
-    { label: "Kodim01", before: dropout_source2_kodim01, after: dropout_exercise3_result },
-    { label: "Stream Bridge", before: dropout_source3_stream_bridge_512, after: dropout_exercise3_result },
+    { label: "Runner", before: dropout_source1_runner, after: dropout_ex3_s1 },
+    { label: "Boat", before: dropout_source2_boat, after: dropout_ex3_s2 },
+    { label: "Elephant", before: dropout_source3_elephant, after: dropout_ex3_s3 },
+    { label: "Pattern", before: dropout_source4_pattern, after: dropout_ex3_s4 },
+    { label: "Girl", before: dropout_source5_girl, after: dropout_ex3_s5 },
+    { label: "Wood", before: dropout_source6_wood, after: dropout_ex3_s6 },
   ]}
 />
 *Full Tape Degradation — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 281
+sidebar_position: 294
 slug: /instruments/videomancer/tarmac
 title: "Tarmac"
 image: /img/instruments/videomancer/tarmac/tarmac_hero.png

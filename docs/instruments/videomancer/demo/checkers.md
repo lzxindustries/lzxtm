@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 44
+sidebar_position: 45
 slug: /instruments/videomancer/checkers
 title: "Checkers"
 image: /img/instruments/videomancer/checkers/checkers_hero.png

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 207
+sidebar_position: 216
 slug: /instruments/videomancer/patina
 title: "Patina"
-image: /img/instruments/videomancer/patina/patina_hero.png
+image: /img/instruments/videomancer/patina/patina_hero_s1.png
 description: "Copper starts bright and warm."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import patina_hero from '/img/instruments/videomancer/patina/patina_hero.png';
-import patina_control_panel from '/img/instruments/videomancer/patina/patina_control_panel.png';
-import patina_exercise1_result from '/img/instruments/videomancer/patina/patina_exercise1_result.png';
-import patina_exercise2_result from '/img/instruments/videomancer/patina/patina_exercise2_result.png';
-import patina_exercise3_result from '/img/instruments/videomancer/patina/patina_exercise3_result.png';
-import patina_source1_kodim15 from '/img/instruments/videomancer/patina/patina_source1_kodim15.png';
-import patina_source2_kodim03 from '/img/instruments/videomancer/patina/patina_source2_kodim03.png';
-import patina_source3_kodim13_bw from '/img/instruments/videomancer/patina/patina_source3_kodim13_bw.png';
+import patina_source1_boat from '/img/instruments/videomancer/patina/patina_source1_boat.png';
+import patina_source2_sunset from '/img/instruments/videomancer/patina/patina_source2_sunset.png';
+import patina_source3_clouds from '/img/instruments/videomancer/patina/patina_source3_clouds.png';
+import patina_source4_pattern from '/img/instruments/videomancer/patina/patina_source4_pattern.png';
+import patina_source5_man from '/img/instruments/videomancer/patina/patina_source5_man.png';
+import patina_source6_berries from '/img/instruments/videomancer/patina/patina_source6_berries.png';
+import patina_hero_s1 from '/img/instruments/videomancer/patina/patina_hero_s1.png';
+import patina_hero_s2 from '/img/instruments/videomancer/patina/patina_hero_s2.png';
+import patina_hero_s3 from '/img/instruments/videomancer/patina/patina_hero_s3.png';
+import patina_hero_s4 from '/img/instruments/videomancer/patina/patina_hero_s4.png';
+import patina_hero_s5 from '/img/instruments/videomancer/patina/patina_hero_s5.png';
+import patina_hero_s6 from '/img/instruments/videomancer/patina/patina_hero_s6.png';
+import patina_ex1_s1 from '/img/instruments/videomancer/patina/patina_ex1_s1.png';
+import patina_ex1_s2 from '/img/instruments/videomancer/patina/patina_ex1_s2.png';
+import patina_ex1_s3 from '/img/instruments/videomancer/patina/patina_ex1_s3.png';
+import patina_ex1_s4 from '/img/instruments/videomancer/patina/patina_ex1_s4.png';
+import patina_ex1_s5 from '/img/instruments/videomancer/patina/patina_ex1_s5.png';
+import patina_ex1_s6 from '/img/instruments/videomancer/patina/patina_ex1_s6.png';
+import patina_ex2_s1 from '/img/instruments/videomancer/patina/patina_ex2_s1.png';
+import patina_ex2_s2 from '/img/instruments/videomancer/patina/patina_ex2_s2.png';
+import patina_ex2_s3 from '/img/instruments/videomancer/patina/patina_ex2_s3.png';
+import patina_ex2_s4 from '/img/instruments/videomancer/patina/patina_ex2_s4.png';
+import patina_ex2_s5 from '/img/instruments/videomancer/patina/patina_ex2_s5.png';
+import patina_ex2_s6 from '/img/instruments/videomancer/patina/patina_ex2_s6.png';
+import patina_ex3_s1 from '/img/instruments/videomancer/patina/patina_ex3_s1.png';
+import patina_ex3_s2 from '/img/instruments/videomancer/patina/patina_ex3_s2.png';
+import patina_ex3_s3 from '/img/instruments/videomancer/patina/patina_ex3_s3.png';
+import patina_ex3_s4 from '/img/instruments/videomancer/patina/patina_ex3_s4.png';
+import patina_ex3_s5 from '/img/instruments/videomancer/patina/patina_ex3_s5.png';
+import patina_ex3_s6 from '/img/instruments/videomancer/patina/patina_ex3_s6.png';
 
 # Patina
 
@@ -23,9 +45,12 @@ import patina_source3_kodim13_bw from '/img/instruments/videomancer/patina/patin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: patina_source1_kodim15, after: patina_hero },
-    { label: "Kodim03", before: patina_source2_kodim03, after: patina_hero },
-    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_hero },
+    { label: "Boat", before: patina_source1_boat, after: patina_hero_s1 },
+    { label: "Sunset", before: patina_source2_sunset, after: patina_hero_s2 },
+    { label: "Clouds", before: patina_source3_clouds, after: patina_hero_s3 },
+    { label: "Pattern", before: patina_source4_pattern, after: patina_hero_s4 },
+    { label: "Man", before: patina_source5_man, after: patina_hero_s5 },
+    { label: "Berries", before: patina_source6_berries, after: patina_hero_s6 },
   ]}
 />
 *Patina applying LFSR-seeded oxidation, copper tinting, and verdigris overlay to simulate the progressive aging of metal surfaces.*
@@ -116,8 +141,6 @@ The oxidation threshold combines the static Age control with a time-varying anim
 
 ## Parameter Reference
 
-<img src={patina_control_panel} alt="Videomancer front panel with Patina loaded"/>
-*Videomancer's front panel with Patina active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,9 +245,12 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise1_result },
-    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise1_result },
-    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise1_result },
+    { label: "Boat", before: patina_source1_boat, after: patina_ex1_s1 },
+    { label: "Sunset", before: patina_source2_sunset, after: patina_ex1_s2 },
+    { label: "Clouds", before: patina_source3_clouds, after: patina_ex1_s3 },
+    { label: "Pattern", before: patina_source4_pattern, after: patina_ex1_s4 },
+    { label: "Man", before: patina_source5_man, after: patina_ex1_s5 },
+    { label: "Berries", before: patina_source6_berries, after: patina_ex1_s6 },
   ]}
 />
 *Warm Copper Grade — simulated result across source images.*
@@ -246,9 +272,12 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise2_result },
-    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise2_result },
-    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise2_result },
+    { label: "Boat", before: patina_source1_boat, after: patina_ex2_s1 },
+    { label: "Sunset", before: patina_source2_sunset, after: patina_ex2_s2 },
+    { label: "Clouds", before: patina_source3_clouds, after: patina_ex2_s3 },
+    { label: "Pattern", before: patina_source4_pattern, after: patina_ex2_s4 },
+    { label: "Man", before: patina_source5_man, after: patina_ex2_s5 },
+    { label: "Berries", before: patina_source6_berries, after: patina_ex2_s6 },
   ]}
 />
 *Verdigris Texture — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: patina_source1_kodim15, after: patina_exercise3_result },
-    { label: "Kodim03", before: patina_source2_kodim03, after: patina_exercise3_result },
-    { label: "Kodim13 B&W", before: patina_source3_kodim13_bw, after: patina_exercise3_result },
+    { label: "Boat", before: patina_source1_boat, after: patina_ex3_s1 },
+    { label: "Sunset", before: patina_source2_sunset, after: patina_ex3_s2 },
+    { label: "Clouds", before: patina_source3_clouds, after: patina_ex3_s3 },
+    { label: "Pattern", before: patina_source4_pattern, after: patina_ex3_s4 },
+    { label: "Man", before: patina_source5_man, after: patina_ex3_s5 },
+    { label: "Berries", before: patina_source6_berries, after: patina_ex3_s6 },
   ]}
 />
 *Animated Oxidation — simulated result across source images.*

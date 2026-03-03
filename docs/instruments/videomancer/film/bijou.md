@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 18
 slug: /instruments/videomancer/bijou
 title: "Bijou"
-image: /img/instruments/videomancer/bijou/bijou_hero.png
+image: /img/instruments/videomancer/bijou/bijou_hero_s1.png
 description: "Bijou recreates two foundational visual techniques of silent cinema: the iris mask and the title card frame."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bijou_hero from '/img/instruments/videomancer/bijou/bijou_hero.png';
-import bijou_control_panel from '/img/instruments/videomancer/bijou/bijou_control_panel.png';
-import bijou_exercise1_result from '/img/instruments/videomancer/bijou/bijou_exercise1_result.png';
-import bijou_exercise2_result from '/img/instruments/videomancer/bijou/bijou_exercise2_result.png';
-import bijou_exercise3_result from '/img/instruments/videomancer/bijou/bijou_exercise3_result.png';
-import bijou_source1_kodim03 from '/img/instruments/videomancer/bijou/bijou_source1_kodim03.png';
-import bijou_source2_kodim13 from '/img/instruments/videomancer/bijou/bijou_source2_kodim13.png';
-import bijou_source3_kodim13_bw from '/img/instruments/videomancer/bijou/bijou_source3_kodim13_bw.png';
+import bijou_source1_parrot from '/img/instruments/videomancer/bijou/bijou_source1_parrot.png';
+import bijou_source2_car from '/img/instruments/videomancer/bijou/bijou_source2_car.png';
+import bijou_source3_clouds from '/img/instruments/videomancer/bijou/bijou_source3_clouds.png';
+import bijou_source4_pattern from '/img/instruments/videomancer/bijou/bijou_source4_pattern.png';
+import bijou_source5_girl from '/img/instruments/videomancer/bijou/bijou_source5_girl.png';
+import bijou_source6_berries from '/img/instruments/videomancer/bijou/bijou_source6_berries.png';
+import bijou_hero_s1 from '/img/instruments/videomancer/bijou/bijou_hero_s1.png';
+import bijou_hero_s2 from '/img/instruments/videomancer/bijou/bijou_hero_s2.png';
+import bijou_hero_s3 from '/img/instruments/videomancer/bijou/bijou_hero_s3.png';
+import bijou_hero_s4 from '/img/instruments/videomancer/bijou/bijou_hero_s4.png';
+import bijou_hero_s5 from '/img/instruments/videomancer/bijou/bijou_hero_s5.png';
+import bijou_hero_s6 from '/img/instruments/videomancer/bijou/bijou_hero_s6.png';
+import bijou_ex1_s1 from '/img/instruments/videomancer/bijou/bijou_ex1_s1.png';
+import bijou_ex1_s2 from '/img/instruments/videomancer/bijou/bijou_ex1_s2.png';
+import bijou_ex1_s3 from '/img/instruments/videomancer/bijou/bijou_ex1_s3.png';
+import bijou_ex1_s4 from '/img/instruments/videomancer/bijou/bijou_ex1_s4.png';
+import bijou_ex1_s5 from '/img/instruments/videomancer/bijou/bijou_ex1_s5.png';
+import bijou_ex1_s6 from '/img/instruments/videomancer/bijou/bijou_ex1_s6.png';
+import bijou_ex2_s1 from '/img/instruments/videomancer/bijou/bijou_ex2_s1.png';
+import bijou_ex2_s2 from '/img/instruments/videomancer/bijou/bijou_ex2_s2.png';
+import bijou_ex2_s3 from '/img/instruments/videomancer/bijou/bijou_ex2_s3.png';
+import bijou_ex2_s4 from '/img/instruments/videomancer/bijou/bijou_ex2_s4.png';
+import bijou_ex2_s5 from '/img/instruments/videomancer/bijou/bijou_ex2_s5.png';
+import bijou_ex2_s6 from '/img/instruments/videomancer/bijou/bijou_ex2_s6.png';
+import bijou_ex3_s1 from '/img/instruments/videomancer/bijou/bijou_ex3_s1.png';
+import bijou_ex3_s2 from '/img/instruments/videomancer/bijou/bijou_ex3_s2.png';
+import bijou_ex3_s3 from '/img/instruments/videomancer/bijou/bijou_ex3_s3.png';
+import bijou_ex3_s4 from '/img/instruments/videomancer/bijou/bijou_ex3_s4.png';
+import bijou_ex3_s5 from '/img/instruments/videomancer/bijou/bijou_ex3_s5.png';
+import bijou_ex3_s6 from '/img/instruments/videomancer/bijou/bijou_ex3_s6.png';
 
 # Bijou
 
@@ -23,9 +45,12 @@ import bijou_source3_kodim13_bw from '/img/instruments/videomancer/bijou/bijou_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_hero },
-    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_hero },
-    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_hero },
+    { label: "Parrot", before: bijou_source1_parrot, after: bijou_hero_s1 },
+    { label: "Car", before: bijou_source2_car, after: bijou_hero_s2 },
+    { label: "Clouds", before: bijou_source3_clouds, after: bijou_hero_s3 },
+    { label: "Pattern", before: bijou_source4_pattern, after: bijou_hero_s4 },
+    { label: "Girl", before: bijou_source5_girl, after: bijou_hero_s5 },
+    { label: "Berries", before: bijou_source6_berries, after: bijou_hero_s6 },
   ]}
 />
 *A feathered circular iris carves a silent-cinema spotlight from a portrait, its sepia-tinted surround fading to black at the edges of the frame.*
@@ -116,9 +141,6 @@ The 4-clock interpolator at the output provides a final wet/dry crossfade betwee
 ---
 
 ## Parameter Reference
-
-<img src={bijou_control_panel} alt="Videomancer front panel with Bijou loaded"/>
-*Videomancer's front panel with Bijou active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +245,12 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise1_result },
-    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise1_result },
-    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise1_result },
+    { label: "Parrot", before: bijou_source1_parrot, after: bijou_ex1_s1 },
+    { label: "Car", before: bijou_source2_car, after: bijou_ex1_s2 },
+    { label: "Clouds", before: bijou_source3_clouds, after: bijou_ex1_s3 },
+    { label: "Pattern", before: bijou_source4_pattern, after: bijou_ex1_s4 },
+    { label: "Girl", before: bijou_source5_girl, after: bijou_ex1_s5 },
+    { label: "Berries", before: bijou_source6_berries, after: bijou_ex1_s6 },
   ]}
 />
 *Classic Iris Spotlight — simulated result across source images.*
@@ -248,9 +273,12 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise2_result },
-    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise2_result },
-    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise2_result },
+    { label: "Parrot", before: bijou_source1_parrot, after: bijou_ex2_s1 },
+    { label: "Car", before: bijou_source2_car, after: bijou_ex2_s2 },
+    { label: "Clouds", before: bijou_source3_clouds, after: bijou_ex2_s3 },
+    { label: "Pattern", before: bijou_source4_pattern, after: bijou_ex2_s4 },
+    { label: "Girl", before: bijou_source5_girl, after: bijou_ex2_s5 },
+    { label: "Berries", before: bijou_source6_berries, after: bijou_ex2_s6 },
   ]}
 />
 *Shape Exploration — simulated result across source images.*
@@ -273,9 +301,12 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bijou_source1_kodim03, after: bijou_exercise3_result },
-    { label: "Kodim13", before: bijou_source2_kodim13, after: bijou_exercise3_result },
-    { label: "Kodim13 B&W", before: bijou_source3_kodim13_bw, after: bijou_exercise3_result },
+    { label: "Parrot", before: bijou_source1_parrot, after: bijou_ex3_s1 },
+    { label: "Car", before: bijou_source2_car, after: bijou_ex3_s2 },
+    { label: "Clouds", before: bijou_source3_clouds, after: bijou_ex3_s3 },
+    { label: "Pattern", before: bijou_source4_pattern, after: bijou_ex3_s4 },
+    { label: "Girl", before: bijou_source5_girl, after: bijou_ex3_s5 },
+    { label: "Berries", before: bijou_source6_berries, after: bijou_ex3_s6 },
   ]}
 />
 *Title Card Frame — simulated result across source images.*

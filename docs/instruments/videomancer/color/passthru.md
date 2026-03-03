@@ -1,21 +1,25 @@
 ---
 draft: true
-sidebar_position: 206
+sidebar_position: 215
 slug: /instruments/videomancer/passthru
 title: "Passthru"
-image: /img/instruments/videomancer/passthru/passthru_hero.png
+image: /img/instruments/videomancer/passthru/passthru_hero_s1.png
 description: "Every video processing chain begins with a signal that enters and exits unchanged — a pass-through."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import passthru_hero from '/img/instruments/videomancer/passthru/passthru_hero.png';
-import passthru_control_panel from '/img/instruments/videomancer/passthru/passthru_control_panel.png';
-import passthru_exercise1_result from '/img/instruments/videomancer/passthru/passthru_exercise1_result.png';
-import passthru_exercise2_result from '/img/instruments/videomancer/passthru/passthru_exercise2_result.png';
-import passthru_exercise3_result from '/img/instruments/videomancer/passthru/passthru_exercise3_result.png';
-import passthru_source1_kodim03 from '/img/instruments/videomancer/passthru/passthru_source1_kodim03.png';
-import passthru_source2_kodim15 from '/img/instruments/videomancer/passthru/passthru_source2_kodim15.png';
-import passthru_source3_peppers_512 from '/img/instruments/videomancer/passthru/passthru_source3_peppers_512.png';
+import passthru_source1_cat from '/img/instruments/videomancer/passthru/passthru_source1_cat.png';
+import passthru_source2_dog from '/img/instruments/videomancer/passthru/passthru_source2_dog.png';
+import passthru_source3_collage from '/img/instruments/videomancer/passthru/passthru_source3_collage.png';
+import passthru_source4_pattern from '/img/instruments/videomancer/passthru/passthru_source4_pattern.png';
+import passthru_source5_boy from '/img/instruments/videomancer/passthru/passthru_source5_boy.png';
+import passthru_source6_wood from '/img/instruments/videomancer/passthru/passthru_source6_wood.png';
+import passthru_hero_s1 from '/img/instruments/videomancer/passthru/passthru_hero_s1.png';
+import passthru_hero_s2 from '/img/instruments/videomancer/passthru/passthru_hero_s2.png';
+import passthru_hero_s3 from '/img/instruments/videomancer/passthru/passthru_hero_s3.png';
+import passthru_hero_s4 from '/img/instruments/videomancer/passthru/passthru_hero_s4.png';
+import passthru_hero_s5 from '/img/instruments/videomancer/passthru/passthru_hero_s5.png';
+import passthru_hero_s6 from '/img/instruments/videomancer/passthru/passthru_hero_s6.png';
 
 # Passthru
 
@@ -23,9 +27,12 @@ import passthru_source3_peppers_512 from '/img/instruments/videomancer/passthru/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: passthru_source1_kodim03, after: passthru_hero },
-    { label: "Kodim15", before: passthru_source2_kodim15, after: passthru_hero },
-    { label: "Peppers", before: passthru_source3_peppers_512, after: passthru_hero },
+    { label: "Cat", before: passthru_source1_cat, after: passthru_hero_s1 },
+    { label: "Dog", before: passthru_source2_dog, after: passthru_hero_s2 },
+    { label: "Collage", before: passthru_source3_collage, after: passthru_hero_s3 },
+    { label: "Pattern", before: passthru_source4_pattern, after: passthru_hero_s4 },
+    { label: "Boy", before: passthru_source5_boy, after: passthru_hero_s5 },
+    { label: "Wood", before: passthru_source6_wood, after: passthru_hero_s6 },
   ]}
 />
 *Passthru applying brightness, contrast, and saturation adjustments with per-channel inversion to reveal the fundamental building blocks of video color correction.*
@@ -100,8 +107,6 @@ The proc amp stage runs on all three channels simultaneously through three paral
 
 ## Parameter Reference
 
-<img src={passthru_control_panel} alt="Videomancer front panel with Passthru loaded"/>
-*Videomancer's front panel with Passthru active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 240
+sidebar_position: 252
 slug: /instruments/videomancer/rupture
 title: "Rupture"
-image: /img/instruments/videomancer/rupture/rupture_hero.png
+image: /img/instruments/videomancer/rupture/rupture_hero_s1.png
 description: "Color folding is the video equivalent of bending sheet metal past its elastic limit — push a signal value beyond its maximum and, instead of clipping flat, it reflects back downward, creating a mirror-image contour inside the original gradient."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import rupture_hero from '/img/instruments/videomancer/rupture/rupture_hero.png';
-import rupture_control_panel from '/img/instruments/videomancer/rupture/rupture_control_panel.png';
-import rupture_exercise1_result from '/img/instruments/videomancer/rupture/rupture_exercise1_result.png';
-import rupture_exercise2_result from '/img/instruments/videomancer/rupture/rupture_exercise2_result.png';
-import rupture_exercise3_result from '/img/instruments/videomancer/rupture/rupture_exercise3_result.png';
-import rupture_source1_kodim15 from '/img/instruments/videomancer/rupture/rupture_source1_kodim15.png';
-import rupture_source2_kodim01 from '/img/instruments/videomancer/rupture/rupture_source2_kodim01.png';
-import rupture_source3_kodim01_bw from '/img/instruments/videomancer/rupture/rupture_source3_kodim01_bw.png';
+import rupture_source1_car from '/img/instruments/videomancer/rupture/rupture_source1_car.png';
+import rupture_source2_sunset from '/img/instruments/videomancer/rupture/rupture_source2_sunset.png';
+import rupture_source3_collage from '/img/instruments/videomancer/rupture/rupture_source3_collage.png';
+import rupture_source4_pattern from '/img/instruments/videomancer/rupture/rupture_source4_pattern.png';
+import rupture_source5_man from '/img/instruments/videomancer/rupture/rupture_source5_man.png';
+import rupture_source6_paint from '/img/instruments/videomancer/rupture/rupture_source6_paint.png';
+import rupture_hero_s1 from '/img/instruments/videomancer/rupture/rupture_hero_s1.png';
+import rupture_hero_s2 from '/img/instruments/videomancer/rupture/rupture_hero_s2.png';
+import rupture_hero_s3 from '/img/instruments/videomancer/rupture/rupture_hero_s3.png';
+import rupture_hero_s4 from '/img/instruments/videomancer/rupture/rupture_hero_s4.png';
+import rupture_hero_s5 from '/img/instruments/videomancer/rupture/rupture_hero_s5.png';
+import rupture_hero_s6 from '/img/instruments/videomancer/rupture/rupture_hero_s6.png';
+import rupture_ex1_s1 from '/img/instruments/videomancer/rupture/rupture_ex1_s1.png';
+import rupture_ex1_s2 from '/img/instruments/videomancer/rupture/rupture_ex1_s2.png';
+import rupture_ex1_s3 from '/img/instruments/videomancer/rupture/rupture_ex1_s3.png';
+import rupture_ex1_s4 from '/img/instruments/videomancer/rupture/rupture_ex1_s4.png';
+import rupture_ex1_s5 from '/img/instruments/videomancer/rupture/rupture_ex1_s5.png';
+import rupture_ex1_s6 from '/img/instruments/videomancer/rupture/rupture_ex1_s6.png';
+import rupture_ex2_s1 from '/img/instruments/videomancer/rupture/rupture_ex2_s1.png';
+import rupture_ex2_s2 from '/img/instruments/videomancer/rupture/rupture_ex2_s2.png';
+import rupture_ex2_s3 from '/img/instruments/videomancer/rupture/rupture_ex2_s3.png';
+import rupture_ex2_s4 from '/img/instruments/videomancer/rupture/rupture_ex2_s4.png';
+import rupture_ex2_s5 from '/img/instruments/videomancer/rupture/rupture_ex2_s5.png';
+import rupture_ex2_s6 from '/img/instruments/videomancer/rupture/rupture_ex2_s6.png';
+import rupture_ex3_s1 from '/img/instruments/videomancer/rupture/rupture_ex3_s1.png';
+import rupture_ex3_s2 from '/img/instruments/videomancer/rupture/rupture_ex3_s2.png';
+import rupture_ex3_s3 from '/img/instruments/videomancer/rupture/rupture_ex3_s3.png';
+import rupture_ex3_s4 from '/img/instruments/videomancer/rupture/rupture_ex3_s4.png';
+import rupture_ex3_s5 from '/img/instruments/videomancer/rupture/rupture_ex3_s5.png';
+import rupture_ex3_s6 from '/img/instruments/videomancer/rupture/rupture_ex3_s6.png';
 
 # Rupture
 
@@ -23,9 +45,12 @@ import rupture_source3_kodim01_bw from '/img/instruments/videomancer/rupture/rup
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_hero },
-    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_hero },
-    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_hero },
+    { label: "Car", before: rupture_source1_car, after: rupture_hero_s1 },
+    { label: "Sunset", before: rupture_source2_sunset, after: rupture_hero_s2 },
+    { label: "Collage", before: rupture_source3_collage, after: rupture_hero_s3 },
+    { label: "Pattern", before: rupture_source4_pattern, after: rupture_hero_s4 },
+    { label: "Man", before: rupture_source5_man, after: rupture_hero_s5 },
+    { label: "Paint", before: rupture_source6_paint, after: rupture_hero_s6 },
   ]}
 />
 *Rupture applying cascaded triangle-fold color inversion with hue-distributed offsets to create iridescent contour structures.*
@@ -115,8 +140,6 @@ The fold function is the heart of Rupture. It adds an offset to the channel valu
 
 ## Parameter Reference
 
-<img src={rupture_control_panel} alt="Videomancer front panel with Rupture loaded"/>
-*Videomancer's front panel with Rupture active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise1_result },
-    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise1_result },
-    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise1_result },
+    { label: "Car", before: rupture_source1_car, after: rupture_ex1_s1 },
+    { label: "Sunset", before: rupture_source2_sunset, after: rupture_ex1_s2 },
+    { label: "Collage", before: rupture_source3_collage, after: rupture_ex1_s3 },
+    { label: "Pattern", before: rupture_source4_pattern, after: rupture_ex1_s4 },
+    { label: "Man", before: rupture_source5_man, after: rupture_ex1_s5 },
+    { label: "Paint", before: rupture_source6_paint, after: rupture_ex1_s6 },
   ]}
 />
 *Single-Stage Luminance Fold — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise2_result },
-    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise2_result },
-    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise2_result },
+    { label: "Car", before: rupture_source1_car, after: rupture_ex2_s1 },
+    { label: "Sunset", before: rupture_source2_sunset, after: rupture_ex2_s2 },
+    { label: "Collage", before: rupture_source3_collage, after: rupture_ex2_s3 },
+    { label: "Pattern", before: rupture_source4_pattern, after: rupture_ex2_s4 },
+    { label: "Man", before: rupture_source5_man, after: rupture_ex2_s5 },
+    { label: "Paint", before: rupture_source6_paint, after: rupture_ex2_s6 },
   ]}
 />
 *Cascaded Color Iridescence — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: rupture_source1_kodim15, after: rupture_exercise3_result },
-    { label: "Kodim01", before: rupture_source2_kodim01, after: rupture_exercise3_result },
-    { label: "Kodim01 B&W", before: rupture_source3_kodim01_bw, after: rupture_exercise3_result },
+    { label: "Car", before: rupture_source1_car, after: rupture_ex3_s1 },
+    { label: "Sunset", before: rupture_source2_sunset, after: rupture_ex3_s2 },
+    { label: "Collage", before: rupture_source3_collage, after: rupture_ex3_s3 },
+    { label: "Pattern", before: rupture_source4_pattern, after: rupture_ex3_s4 },
+    { label: "Man", before: rupture_source5_man, after: rupture_ex3_s5 },
+    { label: "Paint", before: rupture_source6_paint, after: rupture_ex3_s6 },
   ]}
 />
 *Animated Auto-Sweep Evolution — simulated result across source images.*

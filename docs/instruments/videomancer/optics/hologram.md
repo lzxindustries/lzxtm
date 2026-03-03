@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 131
+sidebar_position: 137
 slug: /instruments/videomancer/hologram
 title: "Hologram"
-image: /img/instruments/videomancer/hologram/hologram_hero.png
+image: /img/instruments/videomancer/hologram/hologram_hero_s1.png
 description: "Hologram overlays rainbow-colored bands onto a video signal, simulating the iridescent shimmer of holographic foil."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import hologram_hero from '/img/instruments/videomancer/hologram/hologram_hero.png';
-import hologram_control_panel from '/img/instruments/videomancer/hologram/hologram_control_panel.png';
-import hologram_exercise1_result from '/img/instruments/videomancer/hologram/hologram_exercise1_result.png';
-import hologram_exercise2_result from '/img/instruments/videomancer/hologram/hologram_exercise2_result.png';
-import hologram_exercise3_result from '/img/instruments/videomancer/hologram/hologram_exercise3_result.png';
-import hologram_source1_kodim15 from '/img/instruments/videomancer/hologram/hologram_source1_kodim15.png';
-import hologram_source2_kodim01 from '/img/instruments/videomancer/hologram/hologram_source2_kodim01.png';
-import hologram_source3_kodim01_bw from '/img/instruments/videomancer/hologram/hologram_source3_kodim01_bw.png';
+import hologram_source1_cat from '/img/instruments/videomancer/hologram/hologram_source1_cat.png';
+import hologram_source2_castle from '/img/instruments/videomancer/hologram/hologram_source2_castle.png';
+import hologram_source3_collage from '/img/instruments/videomancer/hologram/hologram_source3_collage.png';
+import hologram_source4_pattern from '/img/instruments/videomancer/hologram/hologram_source4_pattern.png';
+import hologram_source5_man from '/img/instruments/videomancer/hologram/hologram_source5_man.png';
+import hologram_source6_wood from '/img/instruments/videomancer/hologram/hologram_source6_wood.png';
+import hologram_hero_s1 from '/img/instruments/videomancer/hologram/hologram_hero_s1.png';
+import hologram_hero_s2 from '/img/instruments/videomancer/hologram/hologram_hero_s2.png';
+import hologram_hero_s3 from '/img/instruments/videomancer/hologram/hologram_hero_s3.png';
+import hologram_hero_s4 from '/img/instruments/videomancer/hologram/hologram_hero_s4.png';
+import hologram_hero_s5 from '/img/instruments/videomancer/hologram/hologram_hero_s5.png';
+import hologram_hero_s6 from '/img/instruments/videomancer/hologram/hologram_hero_s6.png';
+import hologram_ex1_s1 from '/img/instruments/videomancer/hologram/hologram_ex1_s1.png';
+import hologram_ex1_s2 from '/img/instruments/videomancer/hologram/hologram_ex1_s2.png';
+import hologram_ex1_s3 from '/img/instruments/videomancer/hologram/hologram_ex1_s3.png';
+import hologram_ex1_s4 from '/img/instruments/videomancer/hologram/hologram_ex1_s4.png';
+import hologram_ex1_s5 from '/img/instruments/videomancer/hologram/hologram_ex1_s5.png';
+import hologram_ex1_s6 from '/img/instruments/videomancer/hologram/hologram_ex1_s6.png';
+import hologram_ex2_s1 from '/img/instruments/videomancer/hologram/hologram_ex2_s1.png';
+import hologram_ex2_s2 from '/img/instruments/videomancer/hologram/hologram_ex2_s2.png';
+import hologram_ex2_s3 from '/img/instruments/videomancer/hologram/hologram_ex2_s3.png';
+import hologram_ex2_s4 from '/img/instruments/videomancer/hologram/hologram_ex2_s4.png';
+import hologram_ex2_s5 from '/img/instruments/videomancer/hologram/hologram_ex2_s5.png';
+import hologram_ex2_s6 from '/img/instruments/videomancer/hologram/hologram_ex2_s6.png';
+import hologram_ex3_s1 from '/img/instruments/videomancer/hologram/hologram_ex3_s1.png';
+import hologram_ex3_s2 from '/img/instruments/videomancer/hologram/hologram_ex3_s2.png';
+import hologram_ex3_s3 from '/img/instruments/videomancer/hologram/hologram_ex3_s3.png';
+import hologram_ex3_s4 from '/img/instruments/videomancer/hologram/hologram_ex3_s4.png';
+import hologram_ex3_s5 from '/img/instruments/videomancer/hologram/hologram_ex3_s5.png';
+import hologram_ex3_s6 from '/img/instruments/videomancer/hologram/hologram_ex3_s6.png';
 
 # Hologram
 
@@ -23,9 +45,12 @@ import hologram_source3_kodim01_bw from '/img/instruments/videomancer/hologram/h
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_hero },
-    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_hero },
-    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_hero },
+    { label: "Cat", before: hologram_source1_cat, after: hologram_hero_s1 },
+    { label: "Castle", before: hologram_source2_castle, after: hologram_hero_s2 },
+    { label: "Collage", before: hologram_source3_collage, after: hologram_hero_s3 },
+    { label: "Pattern", before: hologram_source4_pattern, after: hologram_hero_s4 },
+    { label: "Man", before: hologram_source5_man, after: hologram_hero_s5 },
+    { label: "Wood", before: hologram_source6_wood, after: hologram_hero_s6 },
   ]}
 />
 *Hologram applying rainbow holographic bands to a video source, with hue-shifting stripes tracing a diamond path through UV color space.*
@@ -103,8 +128,6 @@ Two important discrepancies between the TOML and VHDL: First, the VHDL maps `reg
 
 ## Parameter Reference
 
-<img src={hologram_control_panel} alt="Videomancer front panel with Hologram loaded"/>
-*Videomancer's front panel with Hologram active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -209,9 +232,12 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise1_result },
-    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise1_result },
-    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise1_result },
+    { label: "Cat", before: hologram_source1_cat, after: hologram_ex1_s1 },
+    { label: "Castle", before: hologram_source2_castle, after: hologram_ex1_s2 },
+    { label: "Collage", before: hologram_source3_collage, after: hologram_ex1_s3 },
+    { label: "Pattern", before: hologram_source4_pattern, after: hologram_ex1_s4 },
+    { label: "Man", before: hologram_source5_man, after: hologram_ex1_s5 },
+    { label: "Wood", before: hologram_source6_wood, after: hologram_ex1_s6 },
   ]}
 />
 *Rainbow Bands — simulated result across source images.*
@@ -234,9 +260,12 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise2_result },
-    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise2_result },
-    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise2_result },
+    { label: "Cat", before: hologram_source1_cat, after: hologram_ex2_s1 },
+    { label: "Castle", before: hologram_source2_castle, after: hologram_ex2_s2 },
+    { label: "Collage", before: hologram_source3_collage, after: hologram_ex2_s3 },
+    { label: "Pattern", before: hologram_source4_pattern, after: hologram_ex2_s4 },
+    { label: "Man", before: hologram_source5_man, after: hologram_ex2_s5 },
+    { label: "Wood", before: hologram_source6_wood, after: hologram_ex2_s6 },
   ]}
 />
 *Animation and Orientation — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: hologram_source1_kodim15, after: hologram_exercise3_result },
-    { label: "Kodim01", before: hologram_source2_kodim01, after: hologram_exercise3_result },
-    { label: "Kodim01 B&W", before: hologram_source3_kodim01_bw, after: hologram_exercise3_result },
+    { label: "Cat", before: hologram_source1_cat, after: hologram_ex3_s1 },
+    { label: "Castle", before: hologram_source2_castle, after: hologram_ex3_s2 },
+    { label: "Collage", before: hologram_source3_collage, after: hologram_ex3_s3 },
+    { label: "Pattern", before: hologram_source4_pattern, after: hologram_ex3_s4 },
+    { label: "Man", before: hologram_source5_man, after: hologram_ex3_s5 },
+    { label: "Wood", before: hologram_source6_wood, after: hologram_ex3_s6 },
   ]}
 />
 *Holographic Composition — simulated result across source images.*

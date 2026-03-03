@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 53
+sidebar_position: 55
 slug: /instruments/videomancer/cloudgate
 title: "Cloudgate"
-image: /img/instruments/videomancer/cloudgate/cloudgate_hero.png
+image: /img/instruments/videomancer/cloudgate/cloudgate_hero_s1.png
 description: "In the early 1990s, the NewTek Video Toaster turned commodity hardware into a broadcast studio."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import cloudgate_hero from '/img/instruments/videomancer/cloudgate/cloudgate_hero.png';
-import cloudgate_control_panel from '/img/instruments/videomancer/cloudgate/cloudgate_control_panel.png';
-import cloudgate_exercise1_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise1_result.png';
-import cloudgate_exercise2_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise2_result.png';
-import cloudgate_exercise3_result from '/img/instruments/videomancer/cloudgate/cloudgate_exercise3_result.png';
-import cloudgate_source1_kodim15 from '/img/instruments/videomancer/cloudgate/cloudgate_source1_kodim15.png';
-import cloudgate_source2_kodim03 from '/img/instruments/videomancer/cloudgate/cloudgate_source2_kodim03.png';
-import cloudgate_source3_kodim13_bw from '/img/instruments/videomancer/cloudgate/cloudgate_source3_kodim13_bw.png';
+import cloudgate_source1_house from '/img/instruments/videomancer/cloudgate/cloudgate_source1_house.png';
+import cloudgate_source2_car from '/img/instruments/videomancer/cloudgate/cloudgate_source2_car.png';
+import cloudgate_source3_collage from '/img/instruments/videomancer/cloudgate/cloudgate_source3_collage.png';
+import cloudgate_source4_pattern from '/img/instruments/videomancer/cloudgate/cloudgate_source4_pattern.png';
+import cloudgate_source5_boy from '/img/instruments/videomancer/cloudgate/cloudgate_source5_boy.png';
+import cloudgate_source6_paint from '/img/instruments/videomancer/cloudgate/cloudgate_source6_paint.png';
+import cloudgate_hero_s1 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s1.png';
+import cloudgate_hero_s2 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s2.png';
+import cloudgate_hero_s3 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s3.png';
+import cloudgate_hero_s4 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s4.png';
+import cloudgate_hero_s5 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s5.png';
+import cloudgate_hero_s6 from '/img/instruments/videomancer/cloudgate/cloudgate_hero_s6.png';
+import cloudgate_ex1_s1 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s1.png';
+import cloudgate_ex1_s2 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s2.png';
+import cloudgate_ex1_s3 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s3.png';
+import cloudgate_ex1_s4 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s4.png';
+import cloudgate_ex1_s5 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s5.png';
+import cloudgate_ex1_s6 from '/img/instruments/videomancer/cloudgate/cloudgate_ex1_s6.png';
+import cloudgate_ex2_s1 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s1.png';
+import cloudgate_ex2_s2 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s2.png';
+import cloudgate_ex2_s3 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s3.png';
+import cloudgate_ex2_s4 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s4.png';
+import cloudgate_ex2_s5 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s5.png';
+import cloudgate_ex2_s6 from '/img/instruments/videomancer/cloudgate/cloudgate_ex2_s6.png';
+import cloudgate_ex3_s1 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s1.png';
+import cloudgate_ex3_s2 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s2.png';
+import cloudgate_ex3_s3 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s3.png';
+import cloudgate_ex3_s4 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s4.png';
+import cloudgate_ex3_s5 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s5.png';
+import cloudgate_ex3_s6 from '/img/instruments/videomancer/cloudgate/cloudgate_ex3_s6.png';
 
 # Cloudgate
 
@@ -23,9 +45,12 @@ import cloudgate_source3_kodim13_bw from '/img/instruments/videomancer/cloudgate
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_hero },
-    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_hero },
-    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_hero },
+    { label: "House", before: cloudgate_source1_house, after: cloudgate_hero_s1 },
+    { label: "Car", before: cloudgate_source2_car, after: cloudgate_hero_s2 },
+    { label: "Collage", before: cloudgate_source3_collage, after: cloudgate_hero_s3 },
+    { label: "Pattern", before: cloudgate_source4_pattern, after: cloudgate_hero_s4 },
+    { label: "Boy", before: cloudgate_source5_boy, after: cloudgate_hero_s5 },
+    { label: "Paint", before: cloudgate_source6_paint, after: cloudgate_hero_s6 },
   ]}
 />
 *Cloudgate dissolving a video source through multi-octave procedural cloud noise with radial tunnel masking and warm tint.*
@@ -107,8 +132,6 @@ The density-to-opacity conversion applies a hard threshold followed by a ×4 gai
 
 ## Parameter Reference
 
-<img src={cloudgate_control_panel} alt="Videomancer front panel with Cloudgate loaded"/>
-*Videomancer's front panel with Cloudgate active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise1_result },
-    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise1_result },
-    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise1_result },
+    { label: "House", before: cloudgate_source1_house, after: cloudgate_ex1_s1 },
+    { label: "Car", before: cloudgate_source2_car, after: cloudgate_ex1_s2 },
+    { label: "Collage", before: cloudgate_source3_collage, after: cloudgate_ex1_s3 },
+    { label: "Pattern", before: cloudgate_source4_pattern, after: cloudgate_ex1_s4 },
+    { label: "Boy", before: cloudgate_source5_boy, after: cloudgate_ex1_s5 },
+    { label: "Paint", before: cloudgate_source6_paint, after: cloudgate_ex1_s6 },
   ]}
 />
 *Warm Fog Layer — simulated result across source images.*
@@ -239,9 +265,12 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise2_result },
-    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise2_result },
-    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise2_result },
+    { label: "House", before: cloudgate_source1_house, after: cloudgate_ex2_s1 },
+    { label: "Car", before: cloudgate_source2_car, after: cloudgate_ex2_s2 },
+    { label: "Collage", before: cloudgate_source3_collage, after: cloudgate_ex2_s3 },
+    { label: "Pattern", before: cloudgate_source4_pattern, after: cloudgate_ex2_s4 },
+    { label: "Boy", before: cloudgate_source5_boy, after: cloudgate_ex2_s5 },
+    { label: "Paint", before: cloudgate_source6_paint, after: cloudgate_ex2_s6 },
   ]}
 />
 *Golden Cloud Tunnel Dissolve — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: cloudgate_source1_kodim15, after: cloudgate_exercise3_result },
-    { label: "Kodim03", before: cloudgate_source2_kodim03, after: cloudgate_exercise3_result },
-    { label: "Kodim13 B&W", before: cloudgate_source3_kodim13_bw, after: cloudgate_exercise3_result },
+    { label: "House", before: cloudgate_source1_house, after: cloudgate_ex3_s1 },
+    { label: "Car", before: cloudgate_source2_car, after: cloudgate_ex3_s2 },
+    { label: "Collage", before: cloudgate_source3_collage, after: cloudgate_ex3_s3 },
+    { label: "Pattern", before: cloudgate_source4_pattern, after: cloudgate_ex3_s4 },
+    { label: "Boy", before: cloudgate_source5_boy, after: cloudgate_ex3_s5 },
+    { label: "Paint", before: cloudgate_source6_paint, after: cloudgate_ex3_s6 },
   ]}
 />
 *Dark Smoke Rising — simulated result across source images.*

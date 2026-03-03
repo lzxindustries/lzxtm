@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 52
+sidebar_position: 54
 slug: /instruments/videomancer/cleave
 title: "Cleave"
 image: /img/instruments/videomancer/cleave/cleave_hero.png

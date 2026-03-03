@@ -1,24 +1,43 @@
 ---
 draft: false
-sidebar_position: 218
+sidebar_position: 227
 slug: /instruments/videomancer/pinwheel
 title: "Pinwheel"
-image: /img/instruments/videomancer/pinwheel/pinwheel_hero.png
+image: /img/instruments/videomancer/pinwheel/pinwheel_hero_s1.png
 description: "Color in digital video is encoded as numbers."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import pinwheel_hero from '/img/instruments/videomancer/pinwheel/pinwheel_hero.png';
-import pinwheel_control_panel from '/img/instruments/videomancer/pinwheel/pinwheel_control_panel.png';
-import pinwheel_exercise1_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise1_result.png';
-import pinwheel_exercise2_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise2_result.png';
-import pinwheel_exercise3_result from '/img/instruments/videomancer/pinwheel/pinwheel_exercise3_result.png';
-import pinwheel_source1_kodim02 from '/img/instruments/videomancer/pinwheel/pinwheel_source1_kodim02.png';
-import pinwheel_source1_kodim04 from '/img/instruments/videomancer/pinwheel/pinwheel_source1_kodim04.png';
-import pinwheel_source2_kodim07 from '/img/instruments/videomancer/pinwheel/pinwheel_source2_kodim07.png';
-import pinwheel_source2_peppers_512 from '/img/instruments/videomancer/pinwheel/pinwheel_source2_peppers_512.png';
-import pinwheel_source3_kodim01_bw from '/img/instruments/videomancer/pinwheel/pinwheel_source3_kodim01_bw.png';
-import pinwheel_source3_kodim23 from '/img/instruments/videomancer/pinwheel/pinwheel_source3_kodim23.png';
+import pinwheel_source1_car from '/img/instruments/videomancer/pinwheel/pinwheel_source1_car.png';
+import pinwheel_source2_cat from '/img/instruments/videomancer/pinwheel/pinwheel_source2_cat.png';
+import pinwheel_source3_collage from '/img/instruments/videomancer/pinwheel/pinwheel_source3_collage.png';
+import pinwheel_source4_pattern from '/img/instruments/videomancer/pinwheel/pinwheel_source4_pattern.png';
+import pinwheel_source5_man from '/img/instruments/videomancer/pinwheel/pinwheel_source5_man.png';
+import pinwheel_source6_knit from '/img/instruments/videomancer/pinwheel/pinwheel_source6_knit.png';
+import pinwheel_hero_s1 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s1.png';
+import pinwheel_hero_s2 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s2.png';
+import pinwheel_hero_s3 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s3.png';
+import pinwheel_hero_s4 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s4.png';
+import pinwheel_hero_s5 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s5.png';
+import pinwheel_hero_s6 from '/img/instruments/videomancer/pinwheel/pinwheel_hero_s6.png';
+import pinwheel_ex1_s1 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s1.png';
+import pinwheel_ex1_s2 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s2.png';
+import pinwheel_ex1_s3 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s3.png';
+import pinwheel_ex1_s4 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s4.png';
+import pinwheel_ex1_s5 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s5.png';
+import pinwheel_ex1_s6 from '/img/instruments/videomancer/pinwheel/pinwheel_ex1_s6.png';
+import pinwheel_ex2_s1 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s1.png';
+import pinwheel_ex2_s2 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s2.png';
+import pinwheel_ex2_s3 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s3.png';
+import pinwheel_ex2_s4 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s4.png';
+import pinwheel_ex2_s5 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s5.png';
+import pinwheel_ex2_s6 from '/img/instruments/videomancer/pinwheel/pinwheel_ex2_s6.png';
+import pinwheel_ex3_s1 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s1.png';
+import pinwheel_ex3_s2 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s2.png';
+import pinwheel_ex3_s3 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s3.png';
+import pinwheel_ex3_s4 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s4.png';
+import pinwheel_ex3_s5 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s5.png';
+import pinwheel_ex3_s6 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_s6.png';
 
 # Pinwheel
 
@@ -26,12 +45,12 @@ import pinwheel_source3_kodim23 from '/img/instruments/videomancer/pinwheel/pinw
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_hero },
-    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_hero },
-    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_hero },
-    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_hero },
-    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_hero },
-    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_hero },
+    { label: "Car", before: pinwheel_source1_car, after: pinwheel_hero_s1 },
+    { label: "Cat", before: pinwheel_source2_cat, after: pinwheel_hero_s2 },
+    { label: "Collage", before: pinwheel_source3_collage, after: pinwheel_hero_s3 },
+    { label: "Pattern", before: pinwheel_source4_pattern, after: pinwheel_hero_s4 },
+    { label: "Man", before: pinwheel_source5_man, after: pinwheel_hero_s5 },
+    { label: "Knit", before: pinwheel_source6_knit, after: pinwheel_hero_s6 },
   ]}
 />
 *Pinwheel mapping brightness gradients into a full rainbow spectrum using luminance-to-hue modulation.*
@@ -101,8 +120,6 @@ Two key interactions: (1) **Luminance drives chrominance**: The hue rotation ang
 
 ## Parameter Reference
 
-<img src={pinwheel_control_panel} alt="Videomancer front panel with Pinwheel loaded"/>
-*Videomancer's front panel with Pinwheel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -207,12 +224,12 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise1_result },
-    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise1_result },
-    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise1_result },
-    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise1_result },
-    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise1_result },
-    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise1_result },
+    { label: "Car", before: pinwheel_source1_car, after: pinwheel_ex1_s1 },
+    { label: "Cat", before: pinwheel_source2_cat, after: pinwheel_ex1_s2 },
+    { label: "Collage", before: pinwheel_source3_collage, after: pinwheel_ex1_s3 },
+    { label: "Pattern", before: pinwheel_source4_pattern, after: pinwheel_ex1_s4 },
+    { label: "Man", before: pinwheel_source5_man, after: pinwheel_ex1_s5 },
+    { label: "Knit", before: pinwheel_source6_knit, after: pinwheel_ex1_s6 },
   ]}
 />
 *Luminance Rainbow — simulated result across source images.*
@@ -234,12 +251,12 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise2_result },
-    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise2_result },
-    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise2_result },
-    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise2_result },
-    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise2_result },
-    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise2_result },
+    { label: "Car", before: pinwheel_source1_car, after: pinwheel_ex2_s1 },
+    { label: "Cat", before: pinwheel_source2_cat, after: pinwheel_ex2_s2 },
+    { label: "Collage", before: pinwheel_source3_collage, after: pinwheel_ex2_s3 },
+    { label: "Pattern", before: pinwheel_source4_pattern, after: pinwheel_ex2_s4 },
+    { label: "Man", before: pinwheel_source5_man, after: pinwheel_ex2_s5 },
+    { label: "Knit", before: pinwheel_source6_knit, after: pinwheel_ex2_s6 },
   ]}
 />
 *Color Corrector to Glitch Machine — simulated result across source images.*
@@ -262,12 +279,12 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pinwheel_source1_kodim02, after: pinwheel_exercise3_result },
-    { label: "Kodim04", before: pinwheel_source1_kodim04, after: pinwheel_exercise3_result },
-    { label: "Kodim07", before: pinwheel_source2_kodim07, after: pinwheel_exercise3_result },
-    { label: "Peppers", before: pinwheel_source2_peppers_512, after: pinwheel_exercise3_result },
-    { label: "Kodim01 B&W", before: pinwheel_source3_kodim01_bw, after: pinwheel_exercise3_result },
-    { label: "Kodim23", before: pinwheel_source3_kodim23, after: pinwheel_exercise3_result },
+    { label: "Car", before: pinwheel_source1_car, after: pinwheel_ex3_s1 },
+    { label: "Cat", before: pinwheel_source2_cat, after: pinwheel_ex3_s2 },
+    { label: "Collage", before: pinwheel_source3_collage, after: pinwheel_ex3_s3 },
+    { label: "Pattern", before: pinwheel_source4_pattern, after: pinwheel_ex3_s4 },
+    { label: "Man", before: pinwheel_source5_man, after: pinwheel_ex3_s5 },
+    { label: "Knit", before: pinwheel_source6_knit, after: pinwheel_ex3_s6 },
   ]}
 />
 *Psychedelic Colorizer — simulated result across source images.*

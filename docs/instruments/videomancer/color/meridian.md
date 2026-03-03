@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 181
+sidebar_position: 189
 slug: /instruments/videomancer/meridian
 title: "Meridian"
-image: /img/instruments/videomancer/meridian/meridian_hero.png
+image: /img/instruments/videomancer/meridian/meridian_hero_s1.png
 description: "Meridian is a per-channel colour processor that applies independent gain, offset, and wavefold operations to the Y, U, and V channels of the input video."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import meridian_hero from '/img/instruments/videomancer/meridian/meridian_hero.png';
-import meridian_control_panel from '/img/instruments/videomancer/meridian/meridian_control_panel.png';
-import meridian_exercise1_result from '/img/instruments/videomancer/meridian/meridian_exercise1_result.png';
-import meridian_exercise2_result from '/img/instruments/videomancer/meridian/meridian_exercise2_result.png';
-import meridian_exercise3_result from '/img/instruments/videomancer/meridian/meridian_exercise3_result.png';
-import meridian_source1_kodim03 from '/img/instruments/videomancer/meridian/meridian_source1_kodim03.png';
-import meridian_source2_kodim15 from '/img/instruments/videomancer/meridian/meridian_source2_kodim15.png';
-import meridian_source3_peppers_512 from '/img/instruments/videomancer/meridian/meridian_source3_peppers_512.png';
+import meridian_source1_ballerina from '/img/instruments/videomancer/meridian/meridian_source1_ballerina.png';
+import meridian_source2_fruit from '/img/instruments/videomancer/meridian/meridian_source2_fruit.png';
+import meridian_source3_turtle from '/img/instruments/videomancer/meridian/meridian_source3_turtle.png';
+import meridian_source4_pattern from '/img/instruments/videomancer/meridian/meridian_source4_pattern.png';
+import meridian_source5_girl from '/img/instruments/videomancer/meridian/meridian_source5_girl.png';
+import meridian_source6_berries from '/img/instruments/videomancer/meridian/meridian_source6_berries.png';
+import meridian_hero_s1 from '/img/instruments/videomancer/meridian/meridian_hero_s1.png';
+import meridian_hero_s2 from '/img/instruments/videomancer/meridian/meridian_hero_s2.png';
+import meridian_hero_s3 from '/img/instruments/videomancer/meridian/meridian_hero_s3.png';
+import meridian_hero_s4 from '/img/instruments/videomancer/meridian/meridian_hero_s4.png';
+import meridian_hero_s5 from '/img/instruments/videomancer/meridian/meridian_hero_s5.png';
+import meridian_hero_s6 from '/img/instruments/videomancer/meridian/meridian_hero_s6.png';
+import meridian_ex1_s1 from '/img/instruments/videomancer/meridian/meridian_ex1_s1.png';
+import meridian_ex1_s2 from '/img/instruments/videomancer/meridian/meridian_ex1_s2.png';
+import meridian_ex1_s3 from '/img/instruments/videomancer/meridian/meridian_ex1_s3.png';
+import meridian_ex1_s4 from '/img/instruments/videomancer/meridian/meridian_ex1_s4.png';
+import meridian_ex1_s5 from '/img/instruments/videomancer/meridian/meridian_ex1_s5.png';
+import meridian_ex1_s6 from '/img/instruments/videomancer/meridian/meridian_ex1_s6.png';
+import meridian_ex2_s1 from '/img/instruments/videomancer/meridian/meridian_ex2_s1.png';
+import meridian_ex2_s2 from '/img/instruments/videomancer/meridian/meridian_ex2_s2.png';
+import meridian_ex2_s3 from '/img/instruments/videomancer/meridian/meridian_ex2_s3.png';
+import meridian_ex2_s4 from '/img/instruments/videomancer/meridian/meridian_ex2_s4.png';
+import meridian_ex2_s5 from '/img/instruments/videomancer/meridian/meridian_ex2_s5.png';
+import meridian_ex2_s6 from '/img/instruments/videomancer/meridian/meridian_ex2_s6.png';
+import meridian_ex3_s1 from '/img/instruments/videomancer/meridian/meridian_ex3_s1.png';
+import meridian_ex3_s2 from '/img/instruments/videomancer/meridian/meridian_ex3_s2.png';
+import meridian_ex3_s3 from '/img/instruments/videomancer/meridian/meridian_ex3_s3.png';
+import meridian_ex3_s4 from '/img/instruments/videomancer/meridian/meridian_ex3_s4.png';
+import meridian_ex3_s5 from '/img/instruments/videomancer/meridian/meridian_ex3_s5.png';
+import meridian_ex3_s6 from '/img/instruments/videomancer/meridian/meridian_ex3_s6.png';
 
 # Meridian
 
@@ -23,9 +45,12 @@ import meridian_source3_peppers_512 from '/img/instruments/videomancer/meridian/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: meridian_source1_kodim03, after: meridian_hero },
-    { label: "Kodim15", before: meridian_source2_kodim15, after: meridian_hero },
-    { label: "Peppers", before: meridian_source3_peppers_512, after: meridian_hero },
+    { label: "Ballerina", before: meridian_source1_ballerina, after: meridian_hero_s1 },
+    { label: "Fruit", before: meridian_source2_fruit, after: meridian_hero_s2 },
+    { label: "Turtle", before: meridian_source3_turtle, after: meridian_hero_s3 },
+    { label: "Pattern", before: meridian_source4_pattern, after: meridian_hero_s4 },
+    { label: "Girl", before: meridian_source5_girl, after: meridian_hero_s5 },
+    { label: "Berries", before: meridian_source6_berries, after: meridian_hero_s6 },
   ]}
 />
 *A saturated colour field folds back on itself in mirrored symmetry, each channel's frequency doubled into harmonic overtones that solarize the image into stained glass.*
@@ -111,8 +136,6 @@ The proc_amp stage uses a signed multiplier internally (multiplier_s), which is 
 
 ## Parameter Reference
 
-<img src={meridian_control_panel} alt="Videomancer front panel with Meridian loaded"/>
-*Videomancer's front panel with Meridian active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +240,12 @@ These exercises progress from basic colour correction through targeted channel f
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: meridian_source1_kodim03, after: meridian_exercise1_result },
-    { label: "Kodim15", before: meridian_source2_kodim15, after: meridian_exercise1_result },
-    { label: "Peppers", before: meridian_source3_peppers_512, after: meridian_exercise1_result },
+    { label: "Ballerina", before: meridian_source1_ballerina, after: meridian_ex1_s1 },
+    { label: "Fruit", before: meridian_source2_fruit, after: meridian_ex1_s2 },
+    { label: "Turtle", before: meridian_source3_turtle, after: meridian_ex1_s3 },
+    { label: "Pattern", before: meridian_source4_pattern, after: meridian_ex1_s4 },
+    { label: "Girl", before: meridian_source5_girl, after: meridian_ex1_s5 },
+    { label: "Berries", before: meridian_source6_berries, after: meridian_ex1_s6 },
   ]}
 />
 *Per-Channel Contrast and Brightness — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises progress from basic colour correction through targeted channel f
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: meridian_source1_kodim03, after: meridian_exercise2_result },
-    { label: "Kodim15", before: meridian_source2_kodim15, after: meridian_exercise2_result },
-    { label: "Peppers", before: meridian_source3_peppers_512, after: meridian_exercise2_result },
+    { label: "Ballerina", before: meridian_source1_ballerina, after: meridian_ex2_s1 },
+    { label: "Fruit", before: meridian_source2_fruit, after: meridian_ex2_s2 },
+    { label: "Turtle", before: meridian_source3_turtle, after: meridian_ex2_s3 },
+    { label: "Pattern", before: meridian_source4_pattern, after: meridian_ex2_s4 },
+    { label: "Girl", before: meridian_source5_girl, after: meridian_ex2_s5 },
+    { label: "Berries", before: meridian_source6_berries, after: meridian_ex2_s6 },
   ]}
 />
 *Luma Solarization — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from basic colour correction through targeted channel f
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: meridian_source1_kodim03, after: meridian_exercise3_result },
-    { label: "Kodim15", before: meridian_source2_kodim15, after: meridian_exercise3_result },
-    { label: "Peppers", before: meridian_source3_peppers_512, after: meridian_exercise3_result },
+    { label: "Ballerina", before: meridian_source1_ballerina, after: meridian_ex3_s1 },
+    { label: "Fruit", before: meridian_source2_fruit, after: meridian_ex3_s2 },
+    { label: "Turtle", before: meridian_source3_turtle, after: meridian_ex3_s3 },
+    { label: "Pattern", before: meridian_source4_pattern, after: meridian_ex3_s4 },
+    { label: "Girl", before: meridian_source5_girl, after: meridian_ex3_s5 },
+    { label: "Berries", before: meridian_source6_berries, after: meridian_ex3_s6 },
   ]}
 />
 *Full Chromatic Solarization with Inversion — simulated result across source images.*

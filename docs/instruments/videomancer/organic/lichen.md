@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 161
+sidebar_position: 169
 slug: /instruments/videomancer/lichen
 title: "Lichen"
 image: /img/instruments/videomancer/lichen/lichen_hero.png

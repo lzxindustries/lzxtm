@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 56
+sidebar_position: 58
 slug: /instruments/videomancer/colorizer
 title: "Colorizer"
-image: /img/instruments/videomancer/colorizer/colorizer_hero.png
+image: /img/instruments/videomancer/colorizer/colorizer_hero_s1.png
 description: "Colorizer is a hard-band luminance colorizer inspired by the Paik-Abe Video Synthesizer of 1969."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import colorizer_hero from '/img/instruments/videomancer/colorizer/colorizer_hero.png';
-import colorizer_control_panel from '/img/instruments/videomancer/colorizer/colorizer_control_panel.png';
-import colorizer_exercise1_result from '/img/instruments/videomancer/colorizer/colorizer_exercise1_result.png';
-import colorizer_exercise2_result from '/img/instruments/videomancer/colorizer/colorizer_exercise2_result.png';
-import colorizer_exercise3_result from '/img/instruments/videomancer/colorizer/colorizer_exercise3_result.png';
-import colorizer_source1_kodim03 from '/img/instruments/videomancer/colorizer/colorizer_source1_kodim03.png';
-import colorizer_source2_kodim15 from '/img/instruments/videomancer/colorizer/colorizer_source2_kodim15.png';
-import colorizer_source3_peppers_512 from '/img/instruments/videomancer/colorizer/colorizer_source3_peppers_512.png';
+import colorizer_source1_parrot from '/img/instruments/videomancer/colorizer/colorizer_source1_parrot.png';
+import colorizer_source2_runner from '/img/instruments/videomancer/colorizer/colorizer_source2_runner.png';
+import colorizer_source3_elephant from '/img/instruments/videomancer/colorizer/colorizer_source3_elephant.png';
+import colorizer_source4_pattern from '/img/instruments/videomancer/colorizer/colorizer_source4_pattern.png';
+import colorizer_source5_woman from '/img/instruments/videomancer/colorizer/colorizer_source5_woman.png';
+import colorizer_source6_berries from '/img/instruments/videomancer/colorizer/colorizer_source6_berries.png';
+import colorizer_hero_s1 from '/img/instruments/videomancer/colorizer/colorizer_hero_s1.png';
+import colorizer_hero_s2 from '/img/instruments/videomancer/colorizer/colorizer_hero_s2.png';
+import colorizer_hero_s3 from '/img/instruments/videomancer/colorizer/colorizer_hero_s3.png';
+import colorizer_hero_s4 from '/img/instruments/videomancer/colorizer/colorizer_hero_s4.png';
+import colorizer_hero_s5 from '/img/instruments/videomancer/colorizer/colorizer_hero_s5.png';
+import colorizer_hero_s6 from '/img/instruments/videomancer/colorizer/colorizer_hero_s6.png';
+import colorizer_ex1_s1 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s1.png';
+import colorizer_ex1_s2 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s2.png';
+import colorizer_ex1_s3 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s3.png';
+import colorizer_ex1_s4 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s4.png';
+import colorizer_ex1_s5 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s5.png';
+import colorizer_ex1_s6 from '/img/instruments/videomancer/colorizer/colorizer_ex1_s6.png';
+import colorizer_ex2_s1 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s1.png';
+import colorizer_ex2_s2 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s2.png';
+import colorizer_ex2_s3 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s3.png';
+import colorizer_ex2_s4 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s4.png';
+import colorizer_ex2_s5 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s5.png';
+import colorizer_ex2_s6 from '/img/instruments/videomancer/colorizer/colorizer_ex2_s6.png';
+import colorizer_ex3_s1 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s1.png';
+import colorizer_ex3_s2 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s2.png';
+import colorizer_ex3_s3 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s3.png';
+import colorizer_ex3_s4 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s4.png';
+import colorizer_ex3_s5 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s5.png';
+import colorizer_ex3_s6 from '/img/instruments/videomancer/colorizer/colorizer_ex3_s6.png';
 
 # Colorizer
 
@@ -23,9 +45,12 @@ import colorizer_source3_peppers_512 from '/img/instruments/videomancer/colorize
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_hero },
-    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_hero },
-    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_hero },
+    { label: "Parrot", before: colorizer_source1_parrot, after: colorizer_hero_s1 },
+    { label: "Runner", before: colorizer_source2_runner, after: colorizer_hero_s2 },
+    { label: "Elephant", before: colorizer_source3_elephant, after: colorizer_hero_s3 },
+    { label: "Pattern", before: colorizer_source4_pattern, after: colorizer_hero_s4 },
+    { label: "Woman", before: colorizer_source5_woman, after: colorizer_hero_s5 },
+    { label: "Berries", before: colorizer_source6_berries, after: colorizer_hero_s6 },
   ]}
 />
 *Input luminance is sliced into coloured bands by stacked comparators, painting the image in flat saturated hues.*
@@ -103,8 +128,6 @@ The band index calculation uses integer division of the shifted luminance by the
 
 ## Parameter Reference
 
-<img src={colorizer_control_panel} alt="Videomancer front panel with Colorizer loaded"/>
-*Videomancer's front panel with Colorizer active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise1_result },
-    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise1_result },
-    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise1_result },
+    { label: "Parrot", before: colorizer_source1_parrot, after: colorizer_ex1_s1 },
+    { label: "Runner", before: colorizer_source2_runner, after: colorizer_ex1_s2 },
+    { label: "Elephant", before: colorizer_source3_elephant, after: colorizer_ex1_s3 },
+    { label: "Pattern", before: colorizer_source4_pattern, after: colorizer_ex1_s4 },
+    { label: "Woman", before: colorizer_source5_woman, after: colorizer_ex1_s5 },
+    { label: "Berries", before: colorizer_source6_berries, after: colorizer_ex1_s6 },
   ]}
 />
 *Classic Two-Tone Posterisation — simulated result across source images.*
@@ -233,9 +259,12 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise2_result },
-    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise2_result },
-    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise2_result },
+    { label: "Parrot", before: colorizer_source1_parrot, after: colorizer_ex2_s1 },
+    { label: "Runner", before: colorizer_source2_runner, after: colorizer_ex2_s2 },
+    { label: "Elephant", before: colorizer_source3_elephant, after: colorizer_ex2_s3 },
+    { label: "Pattern", before: colorizer_source4_pattern, after: colorizer_ex2_s4 },
+    { label: "Woman", before: colorizer_source5_woman, after: colorizer_ex2_s5 },
+    { label: "Berries", before: colorizer_source6_berries, after: colorizer_ex2_s6 },
   ]}
 />
 *Crawling Rainbow — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: colorizer_source1_kodim03, after: colorizer_exercise3_result },
-    { label: "Kodim15", before: colorizer_source2_kodim15, after: colorizer_exercise3_result },
-    { label: "Peppers", before: colorizer_source3_peppers_512, after: colorizer_exercise3_result },
+    { label: "Parrot", before: colorizer_source1_parrot, after: colorizer_ex3_s1 },
+    { label: "Runner", before: colorizer_source2_runner, after: colorizer_ex3_s2 },
+    { label: "Elephant", before: colorizer_source3_elephant, after: colorizer_ex3_s3 },
+    { label: "Pattern", before: colorizer_source4_pattern, after: colorizer_ex3_s4 },
+    { label: "Woman", before: colorizer_source5_woman, after: colorizer_ex3_s5 },
+    { label: "Berries", before: colorizer_source6_berries, after: colorizer_ex3_s6 },
   ]}
 />
 *Neon Contour with Edge Glow — simulated result across source images.*

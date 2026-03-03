@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 15
 slug: /instruments/videomancer/batik
 title: "Batik"
-image: /img/instruments/videomancer/batik/batik_hero.png
+image: /img/instruments/videomancer/batik/batik_hero_s1.png
 description: "Batik simulates the centuries-old Indonesian wax-resist textile dyeing technique in the video domain."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import batik_hero from '/img/instruments/videomancer/batik/batik_hero.png';
-import batik_control_panel from '/img/instruments/videomancer/batik/batik_control_panel.png';
-import batik_exercise1_result from '/img/instruments/videomancer/batik/batik_exercise1_result.png';
-import batik_exercise2_result from '/img/instruments/videomancer/batik/batik_exercise2_result.png';
-import batik_exercise3_result from '/img/instruments/videomancer/batik/batik_exercise3_result.png';
-import batik_source1_kodim15 from '/img/instruments/videomancer/batik/batik_source1_kodim15.png';
-import batik_source2_kodim03 from '/img/instruments/videomancer/batik/batik_source2_kodim03.png';
-import batik_source3_kodim13_bw from '/img/instruments/videomancer/batik/batik_source3_kodim13_bw.png';
+import batik_source1_house from '/img/instruments/videomancer/batik/batik_source1_house.png';
+import batik_source2_parrot from '/img/instruments/videomancer/batik/batik_source2_parrot.png';
+import batik_source3_clouds from '/img/instruments/videomancer/batik/batik_source3_clouds.png';
+import batik_source4_pattern from '/img/instruments/videomancer/batik/batik_source4_pattern.png';
+import batik_source5_man from '/img/instruments/videomancer/batik/batik_source5_man.png';
+import batik_source6_berries from '/img/instruments/videomancer/batik/batik_source6_berries.png';
+import batik_hero_s1 from '/img/instruments/videomancer/batik/batik_hero_s1.png';
+import batik_hero_s2 from '/img/instruments/videomancer/batik/batik_hero_s2.png';
+import batik_hero_s3 from '/img/instruments/videomancer/batik/batik_hero_s3.png';
+import batik_hero_s4 from '/img/instruments/videomancer/batik/batik_hero_s4.png';
+import batik_hero_s5 from '/img/instruments/videomancer/batik/batik_hero_s5.png';
+import batik_hero_s6 from '/img/instruments/videomancer/batik/batik_hero_s6.png';
+import batik_ex1_s1 from '/img/instruments/videomancer/batik/batik_ex1_s1.png';
+import batik_ex1_s2 from '/img/instruments/videomancer/batik/batik_ex1_s2.png';
+import batik_ex1_s3 from '/img/instruments/videomancer/batik/batik_ex1_s3.png';
+import batik_ex1_s4 from '/img/instruments/videomancer/batik/batik_ex1_s4.png';
+import batik_ex1_s5 from '/img/instruments/videomancer/batik/batik_ex1_s5.png';
+import batik_ex1_s6 from '/img/instruments/videomancer/batik/batik_ex1_s6.png';
+import batik_ex2_s1 from '/img/instruments/videomancer/batik/batik_ex2_s1.png';
+import batik_ex2_s2 from '/img/instruments/videomancer/batik/batik_ex2_s2.png';
+import batik_ex2_s3 from '/img/instruments/videomancer/batik/batik_ex2_s3.png';
+import batik_ex2_s4 from '/img/instruments/videomancer/batik/batik_ex2_s4.png';
+import batik_ex2_s5 from '/img/instruments/videomancer/batik/batik_ex2_s5.png';
+import batik_ex2_s6 from '/img/instruments/videomancer/batik/batik_ex2_s6.png';
+import batik_ex3_s1 from '/img/instruments/videomancer/batik/batik_ex3_s1.png';
+import batik_ex3_s2 from '/img/instruments/videomancer/batik/batik_ex3_s2.png';
+import batik_ex3_s3 from '/img/instruments/videomancer/batik/batik_ex3_s3.png';
+import batik_ex3_s4 from '/img/instruments/videomancer/batik/batik_ex3_s4.png';
+import batik_ex3_s5 from '/img/instruments/videomancer/batik/batik_ex3_s5.png';
+import batik_ex3_s6 from '/img/instruments/videomancer/batik/batik_ex3_s6.png';
 
 # Batik
 
@@ -23,9 +45,12 @@ import batik_source3_kodim13_bw from '/img/instruments/videomancer/batik/batik_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: batik_source1_kodim15, after: batik_hero },
-    { label: "Kodim03", before: batik_source2_kodim03, after: batik_hero },
-    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_hero },
+    { label: "House", before: batik_source1_house, after: batik_hero_s1 },
+    { label: "Parrot", before: batik_source2_parrot, after: batik_hero_s2 },
+    { label: "Clouds", before: batik_source3_clouds, after: batik_hero_s3 },
+    { label: "Pattern", before: batik_source4_pattern, after: batik_hero_s4 },
+    { label: "Man", before: batik_source5_man, after: batik_hero_s5 },
+    { label: "Berries", before: batik_source6_berries, after: batik_hero_s6 },
   ]}
 />
 *Wax-resist crackle veins fracture a portrait into dye-limited Voronoi cells, echoing the layered resist-and-dye process of Javanese batik cloth.*
@@ -126,9 +151,6 @@ The Mono mode switch bypasses hue rotation entirely, forcing U and V to neutral 
 ---
 
 ## Parameter Reference
-
-<img src={batik_control_panel} alt="Videomancer front panel with Batik loaded"/>
-*Videomancer's front panel with Batik active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -231,9 +253,12 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise1_result },
-    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise1_result },
-    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise1_result },
+    { label: "House", before: batik_source1_house, after: batik_ex1_s1 },
+    { label: "Parrot", before: batik_source2_parrot, after: batik_ex1_s2 },
+    { label: "Clouds", before: batik_source3_clouds, after: batik_ex1_s3 },
+    { label: "Pattern", before: batik_source4_pattern, after: batik_ex1_s4 },
+    { label: "Man", before: batik_source5_man, after: batik_ex1_s5 },
+    { label: "Berries", before: batik_source6_berries, after: batik_ex1_s6 },
   ]}
 />
 *Simple Crackle Overlay — simulated result across source images.*
@@ -256,9 +281,12 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise2_result },
-    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise2_result },
-    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise2_result },
+    { label: "House", before: batik_source1_house, after: batik_ex2_s1 },
+    { label: "Parrot", before: batik_source2_parrot, after: batik_ex2_s2 },
+    { label: "Clouds", before: batik_source3_clouds, after: batik_ex2_s3 },
+    { label: "Pattern", before: batik_source4_pattern, after: batik_ex2_s4 },
+    { label: "Man", before: batik_source5_man, after: batik_ex2_s5 },
+    { label: "Berries", before: batik_source6_berries, after: batik_ex2_s6 },
   ]}
 />
 *Dye Palette Exploration — simulated result across source images.*
@@ -280,9 +308,12 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: batik_source1_kodim15, after: batik_exercise3_result },
-    { label: "Kodim03", before: batik_source2_kodim03, after: batik_exercise3_result },
-    { label: "Kodim13 B&W", before: batik_source3_kodim13_bw, after: batik_exercise3_result },
+    { label: "House", before: batik_source1_house, after: batik_ex3_s1 },
+    { label: "Parrot", before: batik_source2_parrot, after: batik_ex3_s2 },
+    { label: "Clouds", before: batik_source3_clouds, after: batik_ex3_s3 },
+    { label: "Pattern", before: batik_source4_pattern, after: batik_ex3_s4 },
+    { label: "Man", before: batik_source5_man, after: batik_ex3_s5 },
+    { label: "Berries", before: batik_source6_berries, after: batik_ex3_s6 },
   ]}
 />
 *Animated Textile — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 90
+sidebar_position: 94
 slug: /instruments/videomancer/dynaround
 title: "Dynaround"
-image: /img/instruments/videomancer/dynaround/dynaround_hero.png
+image: /img/instruments/videomancer/dynaround/dynaround_hero_s1.png
 description: "Every digital video system must decide how many bits to use for each pixel."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dynaround_hero from '/img/instruments/videomancer/dynaround/dynaround_hero.png';
-import dynaround_control_panel from '/img/instruments/videomancer/dynaround/dynaround_control_panel.png';
-import dynaround_exercise1_result from '/img/instruments/videomancer/dynaround/dynaround_exercise1_result.png';
-import dynaround_exercise2_result from '/img/instruments/videomancer/dynaround/dynaround_exercise2_result.png';
-import dynaround_exercise3_result from '/img/instruments/videomancer/dynaround/dynaround_exercise3_result.png';
-import dynaround_source1_kodim15 from '/img/instruments/videomancer/dynaround/dynaround_source1_kodim15.png';
-import dynaround_source2_kodim01 from '/img/instruments/videomancer/dynaround/dynaround_source2_kodim01.png';
-import dynaround_source3_kodim01_bw from '/img/instruments/videomancer/dynaround/dynaround_source3_kodim01_bw.png';
+import dynaround_source1_car from '/img/instruments/videomancer/dynaround/dynaround_source1_car.png';
+import dynaround_source2_house from '/img/instruments/videomancer/dynaround/dynaround_source2_house.png';
+import dynaround_source3_turtle from '/img/instruments/videomancer/dynaround/dynaround_source3_turtle.png';
+import dynaround_source4_pattern from '/img/instruments/videomancer/dynaround/dynaround_source4_pattern.png';
+import dynaround_source5_woman from '/img/instruments/videomancer/dynaround/dynaround_source5_woman.png';
+import dynaround_source6_berries from '/img/instruments/videomancer/dynaround/dynaround_source6_berries.png';
+import dynaround_hero_s1 from '/img/instruments/videomancer/dynaround/dynaround_hero_s1.png';
+import dynaround_hero_s2 from '/img/instruments/videomancer/dynaround/dynaround_hero_s2.png';
+import dynaround_hero_s3 from '/img/instruments/videomancer/dynaround/dynaround_hero_s3.png';
+import dynaround_hero_s4 from '/img/instruments/videomancer/dynaround/dynaround_hero_s4.png';
+import dynaround_hero_s5 from '/img/instruments/videomancer/dynaround/dynaround_hero_s5.png';
+import dynaround_hero_s6 from '/img/instruments/videomancer/dynaround/dynaround_hero_s6.png';
+import dynaround_ex1_s1 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s1.png';
+import dynaround_ex1_s2 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s2.png';
+import dynaround_ex1_s3 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s3.png';
+import dynaround_ex1_s4 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s4.png';
+import dynaround_ex1_s5 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s5.png';
+import dynaround_ex1_s6 from '/img/instruments/videomancer/dynaround/dynaround_ex1_s6.png';
+import dynaround_ex2_s1 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s1.png';
+import dynaround_ex2_s2 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s2.png';
+import dynaround_ex2_s3 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s3.png';
+import dynaround_ex2_s4 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s4.png';
+import dynaround_ex2_s5 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s5.png';
+import dynaround_ex2_s6 from '/img/instruments/videomancer/dynaround/dynaround_ex2_s6.png';
+import dynaround_ex3_s1 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s1.png';
+import dynaround_ex3_s2 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s2.png';
+import dynaround_ex3_s3 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s3.png';
+import dynaround_ex3_s4 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s4.png';
+import dynaround_ex3_s5 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s5.png';
+import dynaround_ex3_s6 from '/img/instruments/videomancer/dynaround/dynaround_ex3_s6.png';
 
 # Dynaround
 
@@ -23,9 +45,12 @@ import dynaround_source3_kodim01_bw from '/img/instruments/videomancer/dynaround
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_hero },
-    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_hero },
-    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_hero },
+    { label: "Car", before: dynaround_source1_car, after: dynaround_hero_s1 },
+    { label: "House", before: dynaround_source2_house, after: dynaround_hero_s2 },
+    { label: "Turtle", before: dynaround_source3_turtle, after: dynaround_hero_s3 },
+    { label: "Pattern", before: dynaround_source4_pattern, after: dynaround_hero_s4 },
+    { label: "Woman", before: dynaround_source5_woman, after: dynaround_hero_s5 },
+    { label: "Berries", before: dynaround_source6_berries, after: dynaround_hero_s6 },
   ]}
 />
 *Dynaround applying probabilistic dynamic rounding and blue-noise dithering to reduce bit depth while preserving tonal smoothness across luminance and chrominance channels.*
@@ -113,8 +138,6 @@ The three LFSRs operate independently with different initial seeds (0xACE1, 0xBE
 
 ## Parameter Reference
 
-<img src={dynaround_control_panel} alt="Videomancer front panel with Dynaround loaded"/>
-*Videomancer's front panel with Dynaround active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -219,9 +242,12 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise1_result },
-    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise1_result },
-    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise1_result },
+    { label: "Car", before: dynaround_source1_car, after: dynaround_ex1_s1 },
+    { label: "House", before: dynaround_source2_house, after: dynaround_ex1_s2 },
+    { label: "Turtle", before: dynaround_source3_turtle, after: dynaround_ex1_s3 },
+    { label: "Pattern", before: dynaround_source4_pattern, after: dynaround_ex1_s4 },
+    { label: "Woman", before: dynaround_source5_woman, after: dynaround_ex1_s5 },
+    { label: "Berries", before: dynaround_source6_berries, after: dynaround_ex1_s6 },
   ]}
 />
 *Dynamic Round — The Quantel Technique — simulated result across source images.*
@@ -243,9 +269,12 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise2_result },
-    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise2_result },
-    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise2_result },
+    { label: "Car", before: dynaround_source1_car, after: dynaround_ex2_s1 },
+    { label: "House", before: dynaround_source2_house, after: dynaround_ex2_s2 },
+    { label: "Turtle", before: dynaround_source3_turtle, after: dynaround_ex2_s3 },
+    { label: "Pattern", before: dynaround_source4_pattern, after: dynaround_ex2_s4 },
+    { label: "Woman", before: dynaround_source5_woman, after: dynaround_ex2_s5 },
+    { label: "Berries", before: dynaround_source6_berries, after: dynaround_ex2_s6 },
   ]}
 />
 *Ordered vs. Blue Noise Dither — simulated result across source images.*
@@ -267,9 +296,12 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dynaround_source1_kodim15, after: dynaround_exercise3_result },
-    { label: "Kodim01", before: dynaround_source2_kodim01, after: dynaround_exercise3_result },
-    { label: "Kodim01 B&W", before: dynaround_source3_kodim01_bw, after: dynaround_exercise3_result },
+    { label: "Car", before: dynaround_source1_car, after: dynaround_ex3_s1 },
+    { label: "House", before: dynaround_source2_house, after: dynaround_ex3_s2 },
+    { label: "Turtle", before: dynaround_source3_turtle, after: dynaround_ex3_s3 },
+    { label: "Pattern", before: dynaround_source4_pattern, after: dynaround_ex3_s4 },
+    { label: "Woman", before: dynaround_source5_woman, after: dynaround_ex3_s5 },
+    { label: "Berries", before: dynaround_source6_berries, after: dynaround_ex3_s6 },
   ]}
 />
 *Error Diffusion and Temporal Dither — simulated result across source images.*

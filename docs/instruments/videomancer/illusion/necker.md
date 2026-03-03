@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 193
+sidebar_position: 201
 slug: /instruments/videomancer/necker
 title: "Necker"
-image: /img/instruments/videomancer/necker/necker_hero.png
+image: /img/instruments/videomancer/necker/necker_hero_s1.png
 description: "The Necker cube is one of the most iconic figures in visual perception — a wireframe drawing of a cube that appears to spontaneously flip between two valid three-dimensional interpretations."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import necker_hero from '/img/instruments/videomancer/necker/necker_hero.png';
-import necker_control_panel from '/img/instruments/videomancer/necker/necker_control_panel.png';
-import necker_exercise1_result from '/img/instruments/videomancer/necker/necker_exercise1_result.png';
-import necker_exercise2_result from '/img/instruments/videomancer/necker/necker_exercise2_result.png';
-import necker_exercise3_result from '/img/instruments/videomancer/necker/necker_exercise3_result.png';
-import necker_source1_kodim01 from '/img/instruments/videomancer/necker/necker_source1_kodim01.png';
-import necker_source2_kodim02 from '/img/instruments/videomancer/necker/necker_source2_kodim02.png';
-import necker_source3_kodim01_bw from '/img/instruments/videomancer/necker/necker_source3_kodim01_bw.png';
+import necker_source1_parrot from '/img/instruments/videomancer/necker/necker_source1_parrot.png';
+import necker_source2_skull from '/img/instruments/videomancer/necker/necker_source2_skull.png';
+import necker_source3_clouds from '/img/instruments/videomancer/necker/necker_source3_clouds.png';
+import necker_source4_pattern from '/img/instruments/videomancer/necker/necker_source4_pattern.png';
+import necker_source5_man from '/img/instruments/videomancer/necker/necker_source5_man.png';
+import necker_source6_berries from '/img/instruments/videomancer/necker/necker_source6_berries.png';
+import necker_hero_s1 from '/img/instruments/videomancer/necker/necker_hero_s1.png';
+import necker_hero_s2 from '/img/instruments/videomancer/necker/necker_hero_s2.png';
+import necker_hero_s3 from '/img/instruments/videomancer/necker/necker_hero_s3.png';
+import necker_hero_s4 from '/img/instruments/videomancer/necker/necker_hero_s4.png';
+import necker_hero_s5 from '/img/instruments/videomancer/necker/necker_hero_s5.png';
+import necker_hero_s6 from '/img/instruments/videomancer/necker/necker_hero_s6.png';
+import necker_ex1_s1 from '/img/instruments/videomancer/necker/necker_ex1_s1.png';
+import necker_ex1_s2 from '/img/instruments/videomancer/necker/necker_ex1_s2.png';
+import necker_ex1_s3 from '/img/instruments/videomancer/necker/necker_ex1_s3.png';
+import necker_ex1_s4 from '/img/instruments/videomancer/necker/necker_ex1_s4.png';
+import necker_ex1_s5 from '/img/instruments/videomancer/necker/necker_ex1_s5.png';
+import necker_ex1_s6 from '/img/instruments/videomancer/necker/necker_ex1_s6.png';
+import necker_ex2_s1 from '/img/instruments/videomancer/necker/necker_ex2_s1.png';
+import necker_ex2_s2 from '/img/instruments/videomancer/necker/necker_ex2_s2.png';
+import necker_ex2_s3 from '/img/instruments/videomancer/necker/necker_ex2_s3.png';
+import necker_ex2_s4 from '/img/instruments/videomancer/necker/necker_ex2_s4.png';
+import necker_ex2_s5 from '/img/instruments/videomancer/necker/necker_ex2_s5.png';
+import necker_ex2_s6 from '/img/instruments/videomancer/necker/necker_ex2_s6.png';
+import necker_ex3_s1 from '/img/instruments/videomancer/necker/necker_ex3_s1.png';
+import necker_ex3_s2 from '/img/instruments/videomancer/necker/necker_ex3_s2.png';
+import necker_ex3_s3 from '/img/instruments/videomancer/necker/necker_ex3_s3.png';
+import necker_ex3_s4 from '/img/instruments/videomancer/necker/necker_ex3_s4.png';
+import necker_ex3_s5 from '/img/instruments/videomancer/necker/necker_ex3_s5.png';
+import necker_ex3_s6 from '/img/instruments/videomancer/necker/necker_ex3_s6.png';
 
 # Necker
 
@@ -23,9 +45,12 @@ import necker_source3_kodim01_bw from '/img/instruments/videomancer/necker/necke
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: necker_source1_kodim01, after: necker_hero },
-    { label: "Kodim02", before: necker_source2_kodim02, after: necker_hero },
-    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_hero },
+    { label: "Parrot", before: necker_source1_parrot, after: necker_hero_s1 },
+    { label: "Skull", before: necker_source2_skull, after: necker_hero_s2 },
+    { label: "Clouds", before: necker_source3_clouds, after: necker_hero_s3 },
+    { label: "Pattern", before: necker_source4_pattern, after: necker_hero_s4 },
+    { label: "Man", before: necker_source5_man, after: necker_hero_s5 },
+    { label: "Berries", before: necker_source6_berries, after: necker_hero_s6 },
   ]}
 />
 *Necker rendering a perspective-ambiguous wireframe cube with depth-offset back face and overlay compositing onto the video source.*
@@ -108,8 +133,6 @@ Edge thickness is derived from the top 3 bits of the Line Width register plus 1,
 
 ## Parameter Reference
 
-<img src={necker_control_panel} alt="Videomancer front panel with Necker loaded"/>
-*Videomancer's front panel with Necker active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +237,12 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise1_result },
-    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise1_result },
-    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise1_result },
+    { label: "Parrot", before: necker_source1_parrot, after: necker_ex1_s1 },
+    { label: "Skull", before: necker_source2_skull, after: necker_ex1_s2 },
+    { label: "Clouds", before: necker_source3_clouds, after: necker_ex1_s3 },
+    { label: "Pattern", before: necker_source4_pattern, after: necker_ex1_s4 },
+    { label: "Man", before: necker_source5_man, after: necker_ex1_s5 },
+    { label: "Berries", before: necker_source6_berries, after: necker_ex1_s6 },
   ]}
 />
 *Basic Wireframe — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise2_result },
-    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise2_result },
-    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise2_result },
+    { label: "Parrot", before: necker_source1_parrot, after: necker_ex2_s1 },
+    { label: "Skull", before: necker_source2_skull, after: necker_ex2_s2 },
+    { label: "Clouds", before: necker_source3_clouds, after: necker_ex2_s3 },
+    { label: "Pattern", before: necker_source4_pattern, after: necker_ex2_s4 },
+    { label: "Man", before: necker_source5_man, after: necker_ex2_s5 },
+    { label: "Berries", before: necker_source6_berries, after: necker_ex2_s6 },
   ]}
 />
 *Video Overlay Composition — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: necker_source1_kodim01, after: necker_exercise3_result },
-    { label: "Kodim02", before: necker_source2_kodim02, after: necker_exercise3_result },
-    { label: "Kodim01 B&W", before: necker_source3_kodim01_bw, after: necker_exercise3_result },
+    { label: "Parrot", before: necker_source1_parrot, after: necker_ex3_s1 },
+    { label: "Skull", before: necker_source2_skull, after: necker_ex3_s2 },
+    { label: "Clouds", before: necker_source3_clouds, after: necker_ex3_s3 },
+    { label: "Pattern", before: necker_source4_pattern, after: necker_ex3_s4 },
+    { label: "Man", before: necker_source5_man, after: necker_ex3_s5 },
+    { label: "Berries", before: necker_source6_berries, after: necker_ex3_s6 },
   ]}
 />
 *Extreme Geometry — simulated result across source images.*

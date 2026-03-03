@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 142
+sidebar_position: 148
 slug: /instruments/videomancer/isometric
 title: "Isometric"
 image: /img/instruments/videomancer/isometric/isometric_hero.png

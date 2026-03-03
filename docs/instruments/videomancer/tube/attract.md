@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 10
 slug: /instruments/videomancer/attract
 title: "Attract"
-image: /img/instruments/videomancer/attract/attract_hero.png
+image: /img/instruments/videomancer/attract/attract_hero_s1.png
 description: "Attract simulates the cumulative degradation of a CRT (cathode-ray tube) monitor that has been left running with a static image for extended periods — the \"attract mode\" phenomenon from decades-old arcade cabinets where demo loops would permanently etch game logos and score readouts into the phosphor screen."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import attract_hero from '/img/instruments/videomancer/attract/attract_hero.png';
-import attract_control_panel from '/img/instruments/videomancer/attract/attract_control_panel.png';
-import attract_exercise1_result from '/img/instruments/videomancer/attract/attract_exercise1_result.png';
-import attract_exercise2_result from '/img/instruments/videomancer/attract/attract_exercise2_result.png';
-import attract_exercise3_result from '/img/instruments/videomancer/attract/attract_exercise3_result.png';
-import attract_source1_kodim15 from '/img/instruments/videomancer/attract/attract_source1_kodim15.png';
-import attract_source2_kodim01 from '/img/instruments/videomancer/attract/attract_source2_kodim01.png';
-import attract_source3_kodim01_bw from '/img/instruments/videomancer/attract/attract_source3_kodim01_bw.png';
+import attract_source1_boat from '/img/instruments/videomancer/attract/attract_source1_boat.png';
+import attract_source2_cat from '/img/instruments/videomancer/attract/attract_source2_cat.png';
+import attract_source3_turtle from '/img/instruments/videomancer/attract/attract_source3_turtle.png';
+import attract_source4_pattern from '/img/instruments/videomancer/attract/attract_source4_pattern.png';
+import attract_source5_man from '/img/instruments/videomancer/attract/attract_source5_man.png';
+import attract_source6_berries from '/img/instruments/videomancer/attract/attract_source6_berries.png';
+import attract_hero_s1 from '/img/instruments/videomancer/attract/attract_hero_s1.png';
+import attract_hero_s2 from '/img/instruments/videomancer/attract/attract_hero_s2.png';
+import attract_hero_s3 from '/img/instruments/videomancer/attract/attract_hero_s3.png';
+import attract_hero_s4 from '/img/instruments/videomancer/attract/attract_hero_s4.png';
+import attract_hero_s5 from '/img/instruments/videomancer/attract/attract_hero_s5.png';
+import attract_hero_s6 from '/img/instruments/videomancer/attract/attract_hero_s6.png';
+import attract_ex1_s1 from '/img/instruments/videomancer/attract/attract_ex1_s1.png';
+import attract_ex1_s2 from '/img/instruments/videomancer/attract/attract_ex1_s2.png';
+import attract_ex1_s3 from '/img/instruments/videomancer/attract/attract_ex1_s3.png';
+import attract_ex1_s4 from '/img/instruments/videomancer/attract/attract_ex1_s4.png';
+import attract_ex1_s5 from '/img/instruments/videomancer/attract/attract_ex1_s5.png';
+import attract_ex1_s6 from '/img/instruments/videomancer/attract/attract_ex1_s6.png';
+import attract_ex2_s1 from '/img/instruments/videomancer/attract/attract_ex2_s1.png';
+import attract_ex2_s2 from '/img/instruments/videomancer/attract/attract_ex2_s2.png';
+import attract_ex2_s3 from '/img/instruments/videomancer/attract/attract_ex2_s3.png';
+import attract_ex2_s4 from '/img/instruments/videomancer/attract/attract_ex2_s4.png';
+import attract_ex2_s5 from '/img/instruments/videomancer/attract/attract_ex2_s5.png';
+import attract_ex2_s6 from '/img/instruments/videomancer/attract/attract_ex2_s6.png';
+import attract_ex3_s1 from '/img/instruments/videomancer/attract/attract_ex3_s1.png';
+import attract_ex3_s2 from '/img/instruments/videomancer/attract/attract_ex3_s2.png';
+import attract_ex3_s3 from '/img/instruments/videomancer/attract/attract_ex3_s3.png';
+import attract_ex3_s4 from '/img/instruments/videomancer/attract/attract_ex3_s4.png';
+import attract_ex3_s5 from '/img/instruments/videomancer/attract/attract_ex3_s5.png';
+import attract_ex3_s6 from '/img/instruments/videomancer/attract/attract_ex3_s6.png';
 
 # Attract
 
@@ -23,9 +45,12 @@ import attract_source3_kodim01_bw from '/img/instruments/videomancer/attract/att
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: attract_source1_kodim15, after: attract_hero },
-    { label: "Kodim01", before: attract_source2_kodim01, after: attract_hero },
-    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_hero },
+    { label: "Boat", before: attract_source1_boat, after: attract_hero_s1 },
+    { label: "Cat", before: attract_source2_cat, after: attract_hero_s2 },
+    { label: "Turtle", before: attract_source3_turtle, after: attract_hero_s3 },
+    { label: "Pattern", before: attract_source4_pattern, after: attract_hero_s4 },
+    { label: "Man", before: attract_source5_man, after: attract_hero_s5 },
+    { label: "Berries", before: attract_source6_berries, after: attract_hero_s6 },
   ]}
 />
 *Attract rendering a static image as a degraded CRT display — phosphor burn-in ghosting doubles the subject, radial vignette darkens the edges, convergence error shifts the chroma channels horizontally, and alternating scanline dimming adds horizontal structure.*
@@ -104,9 +129,6 @@ The purity modes are selected by the bottom 2 bits of the toggle register. Each 
 ---
 
 ## Parameter Reference
-
-<img src={attract_control_panel} alt="Videomancer front panel with Attract loaded"/>
-*Videomancer's front panel with Attract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -210,9 +232,12 @@ These exercises progress from individual CRT aging effects through combined degr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise1_result },
-    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise1_result },
-    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise1_result },
+    { label: "Boat", before: attract_source1_boat, after: attract_ex1_s1 },
+    { label: "Cat", before: attract_source2_cat, after: attract_ex1_s2 },
+    { label: "Turtle", before: attract_source3_turtle, after: attract_ex1_s3 },
+    { label: "Pattern", before: attract_source4_pattern, after: attract_ex1_s4 },
+    { label: "Man", before: attract_source5_man, after: attract_ex1_s5 },
+    { label: "Berries", before: attract_source6_berries, after: attract_ex1_s6 },
   ]}
 />
 *Vignette and Scanlines — simulated result across source images.*
@@ -235,9 +260,12 @@ These exercises progress from individual CRT aging effects through combined degr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise2_result },
-    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise2_result },
-    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise2_result },
+    { label: "Boat", before: attract_source1_boat, after: attract_ex2_s1 },
+    { label: "Cat", before: attract_source2_cat, after: attract_ex2_s2 },
+    { label: "Turtle", before: attract_source3_turtle, after: attract_ex2_s3 },
+    { label: "Pattern", before: attract_source4_pattern, after: attract_ex2_s4 },
+    { label: "Man", before: attract_source5_man, after: attract_ex2_s5 },
+    { label: "Berries", before: attract_source6_berries, after: attract_ex2_s6 },
   ]}
 />
 *Convergence Error and Purity Drift — simulated result across source images.*
@@ -261,9 +289,12 @@ These exercises progress from individual CRT aging effects through combined degr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: attract_source1_kodim15, after: attract_exercise3_result },
-    { label: "Kodim01", before: attract_source2_kodim01, after: attract_exercise3_result },
-    { label: "Kodim01 B&W", before: attract_source3_kodim01_bw, after: attract_exercise3_result },
+    { label: "Boat", before: attract_source1_boat, after: attract_ex3_s1 },
+    { label: "Cat", before: attract_source2_cat, after: attract_ex3_s2 },
+    { label: "Turtle", before: attract_source3_turtle, after: attract_ex3_s3 },
+    { label: "Pattern", before: attract_source4_pattern, after: attract_ex3_s4 },
+    { label: "Man", before: attract_source5_man, after: attract_ex3_s5 },
+    { label: "Berries", before: attract_source6_berries, after: attract_ex3_s6 },
   ]}
 />
 *Full Attract Mode Simulation — simulated result across source images.*

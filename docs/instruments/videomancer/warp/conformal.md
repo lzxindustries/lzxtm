@@ -1,21 +1,25 @@
 ---
 draft: true
-sidebar_position: 58
+sidebar_position: 61
 slug: /instruments/videomancer/conformal
 title: "Conformal"
-image: /img/instruments/videomancer/conformal/conformal_hero.png
+image: /img/instruments/videomancer/conformal/conformal_hero_s1.png
 description: "Mathematics is full of functions that preserve angles — and in the complex plane, those functions transform images in ways that are surprising, beautiful, and deeply connected to physics and engineering."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import conformal_hero from '/img/instruments/videomancer/conformal/conformal_hero.png';
-import conformal_control_panel from '/img/instruments/videomancer/conformal/conformal_control_panel.png';
-import conformal_exercise1_result from '/img/instruments/videomancer/conformal/conformal_exercise1_result.png';
-import conformal_exercise2_result from '/img/instruments/videomancer/conformal/conformal_exercise2_result.png';
-import conformal_exercise3_result from '/img/instruments/videomancer/conformal/conformal_exercise3_result.png';
-import conformal_source1_kodim02 from '/img/instruments/videomancer/conformal/conformal_source1_kodim02.png';
-import conformal_source2_kodim07 from '/img/instruments/videomancer/conformal/conformal_source2_kodim07.png';
-import conformal_source3_kodim01_bw from '/img/instruments/videomancer/conformal/conformal_source3_kodim01_bw.png';
+import conformal_source1_car from '/img/instruments/videomancer/conformal/conformal_source1_car.png';
+import conformal_source2_parrot from '/img/instruments/videomancer/conformal/conformal_source2_parrot.png';
+import conformal_source3_clouds from '/img/instruments/videomancer/conformal/conformal_source3_clouds.png';
+import conformal_source4_pattern from '/img/instruments/videomancer/conformal/conformal_source4_pattern.png';
+import conformal_source5_boy from '/img/instruments/videomancer/conformal/conformal_source5_boy.png';
+import conformal_source6_paint from '/img/instruments/videomancer/conformal/conformal_source6_paint.png';
+import conformal_hero_s1 from '/img/instruments/videomancer/conformal/conformal_hero_s1.png';
+import conformal_hero_s2 from '/img/instruments/videomancer/conformal/conformal_hero_s2.png';
+import conformal_hero_s3 from '/img/instruments/videomancer/conformal/conformal_hero_s3.png';
+import conformal_hero_s4 from '/img/instruments/videomancer/conformal/conformal_hero_s4.png';
+import conformal_hero_s5 from '/img/instruments/videomancer/conformal/conformal_hero_s5.png';
+import conformal_hero_s6 from '/img/instruments/videomancer/conformal/conformal_hero_s6.png';
 
 # Conformal
 
@@ -23,9 +27,12 @@ import conformal_source3_kodim01_bw from '/img/instruments/videomancer/conformal
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: conformal_source1_kodim02, after: conformal_hero },
-    { label: "Kodim07", before: conformal_source2_kodim07, after: conformal_hero },
-    { label: "Kodim01 B&W", before: conformal_source3_kodim01_bw, after: conformal_hero },
+    { label: "Car", before: conformal_source1_car, after: conformal_hero_s1 },
+    { label: "Parrot", before: conformal_source2_parrot, after: conformal_hero_s2 },
+    { label: "Clouds", before: conformal_source3_clouds, after: conformal_hero_s3 },
+    { label: "Pattern", before: conformal_source4_pattern, after: conformal_hero_s4 },
+    { label: "Boy", before: conformal_source5_boy, after: conformal_hero_s5 },
+    { label: "Paint", before: conformal_source6_paint, after: conformal_hero_s6 },
   ]}
 />
 *Conformal applying complex-plane inversion mapping to warp portrait geometry into spherical distortion patterns with grid overlay.*
@@ -112,8 +119,6 @@ The heart of Conformal is the four-clock coordinate pipeline that transforms pix
 
 ## Parameter Reference
 
-<img src={conformal_control_panel} alt="Videomancer front panel with Conformal loaded"/>
-*Videomancer's front panel with Conformal active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

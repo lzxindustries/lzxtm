@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 162
+sidebar_position: 170
 slug: /instruments/videomancer/lightning
 title: "Lightning"
-image: /img/instruments/videomancer/lightning/lightning_hero.png
+image: /img/instruments/videomancer/lightning/lightning_hero_s1.png
 description: "Lightning is a processing program that renders one or two bright, jagged bolt paths from the top to the bottom of the frame, overlaid additively onto the input video."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lightning_hero from '/img/instruments/videomancer/lightning/lightning_hero.png';
-import lightning_control_panel from '/img/instruments/videomancer/lightning/lightning_control_panel.png';
-import lightning_exercise1_result from '/img/instruments/videomancer/lightning/lightning_exercise1_result.png';
-import lightning_exercise2_result from '/img/instruments/videomancer/lightning/lightning_exercise2_result.png';
-import lightning_exercise3_result from '/img/instruments/videomancer/lightning/lightning_exercise3_result.png';
-import lightning_source1_kodim01 from '/img/instruments/videomancer/lightning/lightning_source1_kodim01.png';
-import lightning_source2_kodim02 from '/img/instruments/videomancer/lightning/lightning_source2_kodim02.png';
-import lightning_source3_stream_bridge_512 from '/img/instruments/videomancer/lightning/lightning_source3_stream_bridge_512.png';
+import lightning_source1_boat from '/img/instruments/videomancer/lightning/lightning_source1_boat.png';
+import lightning_source2_car from '/img/instruments/videomancer/lightning/lightning_source2_car.png';
+import lightning_source3_turtle from '/img/instruments/videomancer/lightning/lightning_source3_turtle.png';
+import lightning_source4_pattern from '/img/instruments/videomancer/lightning/lightning_source4_pattern.png';
+import lightning_source5_man from '/img/instruments/videomancer/lightning/lightning_source5_man.png';
+import lightning_source6_paint from '/img/instruments/videomancer/lightning/lightning_source6_paint.png';
+import lightning_hero_s1 from '/img/instruments/videomancer/lightning/lightning_hero_s1.png';
+import lightning_hero_s2 from '/img/instruments/videomancer/lightning/lightning_hero_s2.png';
+import lightning_hero_s3 from '/img/instruments/videomancer/lightning/lightning_hero_s3.png';
+import lightning_hero_s4 from '/img/instruments/videomancer/lightning/lightning_hero_s4.png';
+import lightning_hero_s5 from '/img/instruments/videomancer/lightning/lightning_hero_s5.png';
+import lightning_hero_s6 from '/img/instruments/videomancer/lightning/lightning_hero_s6.png';
+import lightning_ex1_s1 from '/img/instruments/videomancer/lightning/lightning_ex1_s1.png';
+import lightning_ex1_s2 from '/img/instruments/videomancer/lightning/lightning_ex1_s2.png';
+import lightning_ex1_s3 from '/img/instruments/videomancer/lightning/lightning_ex1_s3.png';
+import lightning_ex1_s4 from '/img/instruments/videomancer/lightning/lightning_ex1_s4.png';
+import lightning_ex1_s5 from '/img/instruments/videomancer/lightning/lightning_ex1_s5.png';
+import lightning_ex1_s6 from '/img/instruments/videomancer/lightning/lightning_ex1_s6.png';
+import lightning_ex2_s1 from '/img/instruments/videomancer/lightning/lightning_ex2_s1.png';
+import lightning_ex2_s2 from '/img/instruments/videomancer/lightning/lightning_ex2_s2.png';
+import lightning_ex2_s3 from '/img/instruments/videomancer/lightning/lightning_ex2_s3.png';
+import lightning_ex2_s4 from '/img/instruments/videomancer/lightning/lightning_ex2_s4.png';
+import lightning_ex2_s5 from '/img/instruments/videomancer/lightning/lightning_ex2_s5.png';
+import lightning_ex2_s6 from '/img/instruments/videomancer/lightning/lightning_ex2_s6.png';
+import lightning_ex3_s1 from '/img/instruments/videomancer/lightning/lightning_ex3_s1.png';
+import lightning_ex3_s2 from '/img/instruments/videomancer/lightning/lightning_ex3_s2.png';
+import lightning_ex3_s3 from '/img/instruments/videomancer/lightning/lightning_ex3_s3.png';
+import lightning_ex3_s4 from '/img/instruments/videomancer/lightning/lightning_ex3_s4.png';
+import lightning_ex3_s5 from '/img/instruments/videomancer/lightning/lightning_ex3_s5.png';
+import lightning_ex3_s6 from '/img/instruments/videomancer/lightning/lightning_ex3_s6.png';
 
 # Lightning
 
@@ -23,9 +45,12 @@ import lightning_source3_stream_bridge_512 from '/img/instruments/videomancer/li
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_hero },
-    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_hero },
-    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_hero },
+    { label: "Boat", before: lightning_source1_boat, after: lightning_hero_s1 },
+    { label: "Car", before: lightning_source2_car, after: lightning_hero_s2 },
+    { label: "Turtle", before: lightning_source3_turtle, after: lightning_hero_s3 },
+    { label: "Pattern", before: lightning_source4_pattern, after: lightning_hero_s4 },
+    { label: "Man", before: lightning_source5_man, after: lightning_hero_s5 },
+    { label: "Paint", before: lightning_source6_paint, after: lightning_hero_s6 },
   ]}
 />
 *Lightning bolt effect overlaid on video, jagged LFSR-driven discharge paths cutting down the screen with distance-based brightness falloff and periodic flash modulation.*
@@ -115,8 +140,6 @@ The key architectural feature is that the bolt path is built *incrementally* via
 
 ## Parameter Reference
 
-<img src={lightning_control_panel} alt="Videomancer front panel with Lightning loaded"/>
-*Videomancer's front panel with Lightning active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise1_result },
-    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise1_result },
-    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise1_result },
+    { label: "Boat", before: lightning_source1_boat, after: lightning_ex1_s1 },
+    { label: "Car", before: lightning_source2_car, after: lightning_ex1_s2 },
+    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex1_s3 },
+    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex1_s4 },
+    { label: "Man", before: lightning_source5_man, after: lightning_ex1_s5 },
+    { label: "Paint", before: lightning_source6_paint, after: lightning_ex1_s6 },
   ]}
 />
 *Simple Bolt — simulated result across source images.*
@@ -247,9 +273,12 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise2_result },
-    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise2_result },
-    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise2_result },
+    { label: "Boat", before: lightning_source1_boat, after: lightning_ex2_s1 },
+    { label: "Car", before: lightning_source2_car, after: lightning_ex2_s2 },
+    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex2_s3 },
+    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex2_s4 },
+    { label: "Man", before: lightning_source5_man, after: lightning_ex2_s5 },
+    { label: "Paint", before: lightning_source6_paint, after: lightning_ex2_s6 },
   ]}
 />
 *Flash and Fork — simulated result across source images.*
@@ -272,9 +301,12 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lightning_source1_kodim01, after: lightning_exercise3_result },
-    { label: "Kodim02", before: lightning_source2_kodim02, after: lightning_exercise3_result },
-    { label: "Stream Bridge", before: lightning_source3_stream_bridge_512, after: lightning_exercise3_result },
+    { label: "Boat", before: lightning_source1_boat, after: lightning_ex3_s1 },
+    { label: "Car", before: lightning_source2_car, after: lightning_ex3_s2 },
+    { label: "Turtle", before: lightning_source3_turtle, after: lightning_ex3_s3 },
+    { label: "Pattern", before: lightning_source4_pattern, after: lightning_ex3_s4 },
+    { label: "Man", before: lightning_source5_man, after: lightning_ex3_s5 },
+    { label: "Paint", before: lightning_source6_paint, after: lightning_ex3_s6 },
   ]}
 />
 *Electric Storm — simulated result across source images.*

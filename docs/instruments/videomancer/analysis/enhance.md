@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 98
+sidebar_position: 102
 slug: /instruments/videomancer/enhance
 title: "Enhance"
-image: /img/instruments/videomancer/enhance/enhance_hero.png
+image: /img/instruments/videomancer/enhance/enhance_hero_s1.png
 description: "Every crime drama fan knows the scene: a detective peers at a grainy security camera still and commands the lab technician to \"enhance.\" The image zooms impossibly close, pixelated detail sharpens into clarity, and the killer's face appears in a reflection on a doorknob."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import enhance_hero from '/img/instruments/videomancer/enhance/enhance_hero.png';
-import enhance_control_panel from '/img/instruments/videomancer/enhance/enhance_control_panel.png';
-import enhance_exercise1_result from '/img/instruments/videomancer/enhance/enhance_exercise1_result.png';
-import enhance_exercise2_result from '/img/instruments/videomancer/enhance/enhance_exercise2_result.png';
-import enhance_exercise3_result from '/img/instruments/videomancer/enhance/enhance_exercise3_result.png';
-import enhance_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/enhance/enhance_source1_grayscale_ramp_h_1920x1080.png';
-import enhance_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/enhance/enhance_source2_grayscale_ramp_v_1920x1080.png';
-import enhance_source3_step_wedge_21level_512 from '/img/instruments/videomancer/enhance/enhance_source3_step_wedge_21level_512.png';
+import enhance_source1_fruit from '/img/instruments/videomancer/enhance/enhance_source1_fruit.png';
+import enhance_source2_runner from '/img/instruments/videomancer/enhance/enhance_source2_runner.png';
+import enhance_source3_elephant from '/img/instruments/videomancer/enhance/enhance_source3_elephant.png';
+import enhance_source4_pattern from '/img/instruments/videomancer/enhance/enhance_source4_pattern.png';
+import enhance_source5_woman from '/img/instruments/videomancer/enhance/enhance_source5_woman.png';
+import enhance_source6_paint from '/img/instruments/videomancer/enhance/enhance_source6_paint.png';
+import enhance_hero_s1 from '/img/instruments/videomancer/enhance/enhance_hero_s1.png';
+import enhance_hero_s2 from '/img/instruments/videomancer/enhance/enhance_hero_s2.png';
+import enhance_hero_s3 from '/img/instruments/videomancer/enhance/enhance_hero_s3.png';
+import enhance_hero_s4 from '/img/instruments/videomancer/enhance/enhance_hero_s4.png';
+import enhance_hero_s5 from '/img/instruments/videomancer/enhance/enhance_hero_s5.png';
+import enhance_hero_s6 from '/img/instruments/videomancer/enhance/enhance_hero_s6.png';
+import enhance_ex1_s1 from '/img/instruments/videomancer/enhance/enhance_ex1_s1.png';
+import enhance_ex1_s2 from '/img/instruments/videomancer/enhance/enhance_ex1_s2.png';
+import enhance_ex1_s3 from '/img/instruments/videomancer/enhance/enhance_ex1_s3.png';
+import enhance_ex1_s4 from '/img/instruments/videomancer/enhance/enhance_ex1_s4.png';
+import enhance_ex1_s5 from '/img/instruments/videomancer/enhance/enhance_ex1_s5.png';
+import enhance_ex1_s6 from '/img/instruments/videomancer/enhance/enhance_ex1_s6.png';
+import enhance_ex2_s1 from '/img/instruments/videomancer/enhance/enhance_ex2_s1.png';
+import enhance_ex2_s2 from '/img/instruments/videomancer/enhance/enhance_ex2_s2.png';
+import enhance_ex2_s3 from '/img/instruments/videomancer/enhance/enhance_ex2_s3.png';
+import enhance_ex2_s4 from '/img/instruments/videomancer/enhance/enhance_ex2_s4.png';
+import enhance_ex2_s5 from '/img/instruments/videomancer/enhance/enhance_ex2_s5.png';
+import enhance_ex2_s6 from '/img/instruments/videomancer/enhance/enhance_ex2_s6.png';
+import enhance_ex3_s1 from '/img/instruments/videomancer/enhance/enhance_ex3_s1.png';
+import enhance_ex3_s2 from '/img/instruments/videomancer/enhance/enhance_ex3_s2.png';
+import enhance_ex3_s3 from '/img/instruments/videomancer/enhance/enhance_ex3_s3.png';
+import enhance_ex3_s4 from '/img/instruments/videomancer/enhance/enhance_ex3_s4.png';
+import enhance_ex3_s5 from '/img/instruments/videomancer/enhance/enhance_ex3_s5.png';
+import enhance_ex3_s6 from '/img/instruments/videomancer/enhance/enhance_ex3_s6.png';
 
 # Enhance
 
@@ -23,9 +45,12 @@ import enhance_source3_step_wedge_21level_512 from '/img/instruments/videomancer
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_hero },
-    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_hero },
-    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_hero },
+    { label: "Fruit", before: enhance_source1_fruit, after: enhance_hero_s1 },
+    { label: "Runner", before: enhance_source2_runner, after: enhance_hero_s2 },
+    { label: "Elephant", before: enhance_source3_elephant, after: enhance_hero_s3 },
+    { label: "Pattern", before: enhance_source4_pattern, after: enhance_hero_s4 },
+    { label: "Woman", before: enhance_source5_woman, after: enhance_hero_s5 },
+    { label: "Paint", before: enhance_source6_paint, after: enhance_hero_s6 },
   ]}
 />
 *Enhance applying 4× pixel replication zoom and false-color thermal palette to a surveillance-style Region of Interest.*
@@ -131,8 +156,6 @@ Two important characteristics define the processing path. First, only the Y (lum
 
 ## Parameter Reference
 
-<img src={enhance_control_panel} alt="Videomancer front panel with Enhance loaded"/>
-*Videomancer's front panel with Enhance active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -236,9 +259,12 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise1_result },
-    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise1_result },
-    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise1_result },
+    { label: "Fruit", before: enhance_source1_fruit, after: enhance_ex1_s1 },
+    { label: "Runner", before: enhance_source2_runner, after: enhance_ex1_s2 },
+    { label: "Elephant", before: enhance_source3_elephant, after: enhance_ex1_s3 },
+    { label: "Pattern", before: enhance_source4_pattern, after: enhance_ex1_s4 },
+    { label: "Woman", before: enhance_source5_woman, after: enhance_ex1_s5 },
+    { label: "Paint", before: enhance_source6_paint, after: enhance_ex1_s6 },
   ]}
 />
 *ROI Navigation and Pixel Zoom — simulated result across source images.*
@@ -261,9 +287,12 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise2_result },
-    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise2_result },
-    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise2_result },
+    { label: "Fruit", before: enhance_source1_fruit, after: enhance_ex2_s1 },
+    { label: "Runner", before: enhance_source2_runner, after: enhance_ex2_s2 },
+    { label: "Elephant", before: enhance_source3_elephant, after: enhance_ex2_s3 },
+    { label: "Pattern", before: enhance_source4_pattern, after: enhance_ex2_s4 },
+    { label: "Woman", before: enhance_source5_woman, after: enhance_ex2_s5 },
+    { label: "Paint", before: enhance_source6_paint, after: enhance_ex2_s6 },
   ]}
 />
 *Contrast Stretch and Detail Enhancement — simulated result across source images.*
@@ -285,9 +314,12 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: enhance_source1_grayscale_ramp_h_1920x1080, after: enhance_exercise3_result },
-    { label: "Grayscale Ramp V", before: enhance_source2_grayscale_ramp_v_1920x1080, after: enhance_exercise3_result },
-    { label: "Step Wedge 21level", before: enhance_source3_step_wedge_21level_512, after: enhance_exercise3_result },
+    { label: "Fruit", before: enhance_source1_fruit, after: enhance_ex3_s1 },
+    { label: "Runner", before: enhance_source2_runner, after: enhance_ex3_s2 },
+    { label: "Elephant", before: enhance_source3_elephant, after: enhance_ex3_s3 },
+    { label: "Pattern", before: enhance_source4_pattern, after: enhance_ex3_s4 },
+    { label: "Woman", before: enhance_source5_woman, after: enhance_ex3_s5 },
+    { label: "Paint", before: enhance_source6_paint, after: enhance_ex3_s6 },
   ]}
 />
 *Full Forensic Display — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 25
+sidebar_position: 26
 slug: /instruments/videomancer/bodycam
 title: "Bodycam"
-image: /img/instruments/videomancer/bodycam/bodycam_hero.png
+image: /img/instruments/videomancer/bodycam/bodycam_hero_s1.png
 description: "Bodycam simulates the look of footage from a low-quality body-worn camera."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bodycam_hero from '/img/instruments/videomancer/bodycam/bodycam_hero.png';
-import bodycam_control_panel from '/img/instruments/videomancer/bodycam/bodycam_control_panel.png';
-import bodycam_exercise1_result from '/img/instruments/videomancer/bodycam/bodycam_exercise1_result.png';
-import bodycam_exercise2_result from '/img/instruments/videomancer/bodycam/bodycam_exercise2_result.png';
-import bodycam_exercise3_result from '/img/instruments/videomancer/bodycam/bodycam_exercise3_result.png';
-import bodycam_source1_kodim05 from '/img/instruments/videomancer/bodycam/bodycam_source1_kodim05.png';
-import bodycam_source2_kodim15 from '/img/instruments/videomancer/bodycam/bodycam_source2_kodim15.png';
-import bodycam_source3_kodim15_bw from '/img/instruments/videomancer/bodycam/bodycam_source3_kodim15_bw.png';
+import bodycam_source1_skull from '/img/instruments/videomancer/bodycam/bodycam_source1_skull.png';
+import bodycam_source2_parrot from '/img/instruments/videomancer/bodycam/bodycam_source2_parrot.png';
+import bodycam_source3_elephant from '/img/instruments/videomancer/bodycam/bodycam_source3_elephant.png';
+import bodycam_source4_pattern from '/img/instruments/videomancer/bodycam/bodycam_source4_pattern.png';
+import bodycam_source5_woman from '/img/instruments/videomancer/bodycam/bodycam_source5_woman.png';
+import bodycam_source6_berries from '/img/instruments/videomancer/bodycam/bodycam_source6_berries.png';
+import bodycam_hero_s1 from '/img/instruments/videomancer/bodycam/bodycam_hero_s1.png';
+import bodycam_hero_s2 from '/img/instruments/videomancer/bodycam/bodycam_hero_s2.png';
+import bodycam_hero_s3 from '/img/instruments/videomancer/bodycam/bodycam_hero_s3.png';
+import bodycam_hero_s4 from '/img/instruments/videomancer/bodycam/bodycam_hero_s4.png';
+import bodycam_hero_s5 from '/img/instruments/videomancer/bodycam/bodycam_hero_s5.png';
+import bodycam_hero_s6 from '/img/instruments/videomancer/bodycam/bodycam_hero_s6.png';
+import bodycam_ex1_s1 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s1.png';
+import bodycam_ex1_s2 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s2.png';
+import bodycam_ex1_s3 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s3.png';
+import bodycam_ex1_s4 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s4.png';
+import bodycam_ex1_s5 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s5.png';
+import bodycam_ex1_s6 from '/img/instruments/videomancer/bodycam/bodycam_ex1_s6.png';
+import bodycam_ex2_s1 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s1.png';
+import bodycam_ex2_s2 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s2.png';
+import bodycam_ex2_s3 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s3.png';
+import bodycam_ex2_s4 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s4.png';
+import bodycam_ex2_s5 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s5.png';
+import bodycam_ex2_s6 from '/img/instruments/videomancer/bodycam/bodycam_ex2_s6.png';
+import bodycam_ex3_s1 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s1.png';
+import bodycam_ex3_s2 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s2.png';
+import bodycam_ex3_s3 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s3.png';
+import bodycam_ex3_s4 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s4.png';
+import bodycam_ex3_s5 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s5.png';
+import bodycam_ex3_s6 from '/img/instruments/videomancer/bodycam/bodycam_ex3_s6.png';
 
 # Bodycam
 
@@ -23,9 +45,12 @@ import bodycam_source3_kodim15_bw from '/img/instruments/videomancer/bodycam/bod
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_hero },
-    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_hero },
-    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_hero },
+    { label: "Skull", before: bodycam_source1_skull, after: bodycam_hero_s1 },
+    { label: "Parrot", before: bodycam_source2_parrot, after: bodycam_hero_s2 },
+    { label: "Elephant", before: bodycam_source3_elephant, after: bodycam_hero_s3 },
+    { label: "Pattern", before: bodycam_source4_pattern, after: bodycam_hero_s4 },
+    { label: "Woman", before: bodycam_source5_woman, after: bodycam_hero_s5 },
+    { label: "Berries", before: bodycam_source6_berries, after: bodycam_hero_s6 },
   ]}
 />
 *Jittery horizontal lines, dropped frames, edge vignetting, and a scrolling timestamp bar transform clean footage into convincing body-camera surveillance.*
@@ -111,9 +136,6 @@ The bounce effect modulates the vertical line counter with a triangle wave, but 
 ---
 
 ## Parameter Reference
-
-<img src={bodycam_control_panel} alt="Videomancer front panel with Bodycam loaded"/>
-*Videomancer's front panel with Bodycam active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +240,12 @@ These exercises progress from individual artefacts through combined degradations
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise1_result },
-    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise1_result },
-    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise1_result },
+    { label: "Skull", before: bodycam_source1_skull, after: bodycam_ex1_s1 },
+    { label: "Parrot", before: bodycam_source2_parrot, after: bodycam_ex1_s2 },
+    { label: "Elephant", before: bodycam_source3_elephant, after: bodycam_ex1_s3 },
+    { label: "Pattern", before: bodycam_source4_pattern, after: bodycam_ex1_s4 },
+    { label: "Woman", before: bodycam_source5_woman, after: bodycam_ex1_s5 },
+    { label: "Berries", before: bodycam_source6_berries, after: bodycam_ex1_s6 },
   ]}
 />
 *Line Jitter and Noise — simulated result across source images.*
@@ -243,9 +268,12 @@ These exercises progress from individual artefacts through combined degradations
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise2_result },
-    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise2_result },
-    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise2_result },
+    { label: "Skull", before: bodycam_source1_skull, after: bodycam_ex2_s1 },
+    { label: "Parrot", before: bodycam_source2_parrot, after: bodycam_ex2_s2 },
+    { label: "Elephant", before: bodycam_source3_elephant, after: bodycam_ex2_s3 },
+    { label: "Pattern", before: bodycam_source4_pattern, after: bodycam_ex2_s4 },
+    { label: "Woman", before: bodycam_source5_woman, after: bodycam_ex2_s5 },
+    { label: "Berries", before: bodycam_source6_berries, after: bodycam_ex2_s6 },
   ]}
 />
 *Frame Drops and Timestamp — simulated result across source images.*
@@ -268,9 +296,12 @@ These exercises progress from individual artefacts through combined degradations
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: bodycam_source1_kodim05, after: bodycam_exercise3_result },
-    { label: "Kodim15", before: bodycam_source2_kodim15, after: bodycam_exercise3_result },
-    { label: "Kodim15 B&W", before: bodycam_source3_kodim15_bw, after: bodycam_exercise3_result },
+    { label: "Skull", before: bodycam_source1_skull, after: bodycam_ex3_s1 },
+    { label: "Parrot", before: bodycam_source2_parrot, after: bodycam_ex3_s2 },
+    { label: "Elephant", before: bodycam_source3_elephant, after: bodycam_ex3_s3 },
+    { label: "Pattern", before: bodycam_source4_pattern, after: bodycam_ex3_s4 },
+    { label: "Woman", before: bodycam_source5_woman, after: bodycam_ex3_s5 },
+    { label: "Berries", before: bodycam_source6_berries, after: bodycam_ex3_s6 },
   ]}
 />
 *Full Body Camera — simulated result across source images.*

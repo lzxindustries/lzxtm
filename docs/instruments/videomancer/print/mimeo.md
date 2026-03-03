@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 183
+sidebar_position: 191
 slug: /instruments/videomancer/mimeo
 title: "Mimeo"
-image: /img/instruments/videomancer/mimeo/mimeo_hero.png
+image: /img/instruments/videomancer/mimeo/mimeo_hero_s1.png
 description: "Before photocopiers, before laser printers, there was the mimeograph."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import mimeo_hero from '/img/instruments/videomancer/mimeo/mimeo_hero.png';
-import mimeo_control_panel from '/img/instruments/videomancer/mimeo/mimeo_control_panel.png';
-import mimeo_exercise1_result from '/img/instruments/videomancer/mimeo/mimeo_exercise1_result.png';
-import mimeo_exercise2_result from '/img/instruments/videomancer/mimeo/mimeo_exercise2_result.png';
-import mimeo_exercise3_result from '/img/instruments/videomancer/mimeo/mimeo_exercise3_result.png';
-import mimeo_source1_kodim02 from '/img/instruments/videomancer/mimeo/mimeo_source1_kodim02.png';
-import mimeo_source2_kodim07 from '/img/instruments/videomancer/mimeo/mimeo_source2_kodim07.png';
-import mimeo_source3_kodim01_bw from '/img/instruments/videomancer/mimeo/mimeo_source3_kodim01_bw.png';
+import mimeo_source1_car from '/img/instruments/videomancer/mimeo/mimeo_source1_car.png';
+import mimeo_source2_ballerina from '/img/instruments/videomancer/mimeo/mimeo_source2_ballerina.png';
+import mimeo_source3_clouds from '/img/instruments/videomancer/mimeo/mimeo_source3_clouds.png';
+import mimeo_source4_pattern from '/img/instruments/videomancer/mimeo/mimeo_source4_pattern.png';
+import mimeo_source5_man from '/img/instruments/videomancer/mimeo/mimeo_source5_man.png';
+import mimeo_source6_paint from '/img/instruments/videomancer/mimeo/mimeo_source6_paint.png';
+import mimeo_hero_s1 from '/img/instruments/videomancer/mimeo/mimeo_hero_s1.png';
+import mimeo_hero_s2 from '/img/instruments/videomancer/mimeo/mimeo_hero_s2.png';
+import mimeo_hero_s3 from '/img/instruments/videomancer/mimeo/mimeo_hero_s3.png';
+import mimeo_hero_s4 from '/img/instruments/videomancer/mimeo/mimeo_hero_s4.png';
+import mimeo_hero_s5 from '/img/instruments/videomancer/mimeo/mimeo_hero_s5.png';
+import mimeo_hero_s6 from '/img/instruments/videomancer/mimeo/mimeo_hero_s6.png';
+import mimeo_ex1_s1 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s1.png';
+import mimeo_ex1_s2 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s2.png';
+import mimeo_ex1_s3 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s3.png';
+import mimeo_ex1_s4 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s4.png';
+import mimeo_ex1_s5 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s5.png';
+import mimeo_ex1_s6 from '/img/instruments/videomancer/mimeo/mimeo_ex1_s6.png';
+import mimeo_ex2_s1 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s1.png';
+import mimeo_ex2_s2 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s2.png';
+import mimeo_ex2_s3 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s3.png';
+import mimeo_ex2_s4 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s4.png';
+import mimeo_ex2_s5 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s5.png';
+import mimeo_ex2_s6 from '/img/instruments/videomancer/mimeo/mimeo_ex2_s6.png';
+import mimeo_ex3_s1 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s1.png';
+import mimeo_ex3_s2 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s2.png';
+import mimeo_ex3_s3 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s3.png';
+import mimeo_ex3_s4 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s4.png';
+import mimeo_ex3_s5 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s5.png';
+import mimeo_ex3_s6 from '/img/instruments/videomancer/mimeo/mimeo_ex3_s6.png';
 
 # Mimeo
 
@@ -23,9 +45,12 @@ import mimeo_source3_kodim01_bw from '/img/instruments/videomancer/mimeo/mimeo_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_hero },
-    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_hero },
-    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_hero },
+    { label: "Car", before: mimeo_source1_car, after: mimeo_hero_s1 },
+    { label: "Ballerina", before: mimeo_source2_ballerina, after: mimeo_hero_s2 },
+    { label: "Clouds", before: mimeo_source3_clouds, after: mimeo_hero_s3 },
+    { label: "Pattern", before: mimeo_source4_pattern, after: mimeo_hero_s4 },
+    { label: "Man", before: mimeo_source5_man, after: mimeo_hero_s5 },
+    { label: "Paint", before: mimeo_source6_paint, after: mimeo_hero_s6 },
   ]}
 />
 *Mimeo rendering a spirit duplicator print with purple ink on cream paper stock, showing letterform fill-in and progressive copy fade.*
@@ -108,8 +133,6 @@ The processing chain is strictly luminance-driven. Chrominance is generated enti
 
 ## Parameter Reference
 
-<img src={mimeo_control_panel} alt="Videomancer front panel with Mimeo loaded"/>
-*Videomancer's front panel with Mimeo active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise1_result },
-    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise1_result },
-    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise1_result },
+    { label: "Car", before: mimeo_source1_car, after: mimeo_ex1_s1 },
+    { label: "Ballerina", before: mimeo_source2_ballerina, after: mimeo_ex1_s2 },
+    { label: "Clouds", before: mimeo_source3_clouds, after: mimeo_ex1_s3 },
+    { label: "Pattern", before: mimeo_source4_pattern, after: mimeo_ex1_s4 },
+    { label: "Man", before: mimeo_source5_man, after: mimeo_ex1_s5 },
+    { label: "Paint", before: mimeo_source6_paint, after: mimeo_ex1_s6 },
   ]}
 />
 *Spirit Duplicator Print — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise2_result },
-    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise2_result },
-    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise2_result },
+    { label: "Car", before: mimeo_source1_car, after: mimeo_ex2_s1 },
+    { label: "Ballerina", before: mimeo_source2_ballerina, after: mimeo_ex2_s2 },
+    { label: "Clouds", before: mimeo_source3_clouds, after: mimeo_ex2_s3 },
+    { label: "Pattern", before: mimeo_source4_pattern, after: mimeo_ex2_s4 },
+    { label: "Man", before: mimeo_source5_man, after: mimeo_ex2_s5 },
+    { label: "Paint", before: mimeo_source6_paint, after: mimeo_ex2_s6 },
   ]}
 />
 *Stencil Mimeograph — simulated result across source images.*
@@ -263,9 +292,12 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mimeo_source1_kodim02, after: mimeo_exercise3_result },
-    { label: "Kodim07", before: mimeo_source2_kodim07, after: mimeo_exercise3_result },
-    { label: "Kodim01 B&W", before: mimeo_source3_kodim01_bw, after: mimeo_exercise3_result },
+    { label: "Car", before: mimeo_source1_car, after: mimeo_ex3_s1 },
+    { label: "Ballerina", before: mimeo_source2_ballerina, after: mimeo_ex3_s2 },
+    { label: "Clouds", before: mimeo_source3_clouds, after: mimeo_ex3_s3 },
+    { label: "Pattern", before: mimeo_source4_pattern, after: mimeo_ex3_s4 },
+    { label: "Man", before: mimeo_source5_man, after: mimeo_ex3_s5 },
+    { label: "Paint", before: mimeo_source6_paint, after: mimeo_ex3_s6 },
   ]}
 />
 *Degraded Multi-Generation Copy — simulated result across source images.*

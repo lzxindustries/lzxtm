@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 20
+sidebar_position: 21
 slug: /instruments/videomancer/bleach
 title: "Bleach"
-image: /img/instruments/videomancer/bleach/bleach_hero.png
+image: /img/instruments/videomancer/bleach/bleach_hero_s1.png
 description: "Bleach simulates the photochemical bleach bypass (also known as skip bleach or ENR) process — a film lab technique where the bleach step in colour negative development is partially or fully omitted, leaving metallic silver in the emulsion alongside the colour dyes."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import bleach_hero from '/img/instruments/videomancer/bleach/bleach_hero.png';
-import bleach_control_panel from '/img/instruments/videomancer/bleach/bleach_control_panel.png';
-import bleach_exercise1_result from '/img/instruments/videomancer/bleach/bleach_exercise1_result.png';
-import bleach_exercise2_result from '/img/instruments/videomancer/bleach/bleach_exercise2_result.png';
-import bleach_exercise3_result from '/img/instruments/videomancer/bleach/bleach_exercise3_result.png';
-import bleach_source1_kodim03 from '/img/instruments/videomancer/bleach/bleach_source1_kodim03.png';
-import bleach_source2_kodim13 from '/img/instruments/videomancer/bleach/bleach_source2_kodim13.png';
-import bleach_source3_kodim13_bw from '/img/instruments/videomancer/bleach/bleach_source3_kodim13_bw.png';
+import bleach_source1_cat from '/img/instruments/videomancer/bleach/bleach_source1_cat.png';
+import bleach_source2_field from '/img/instruments/videomancer/bleach/bleach_source2_field.png';
+import bleach_source3_clouds from '/img/instruments/videomancer/bleach/bleach_source3_clouds.png';
+import bleach_source4_pattern from '/img/instruments/videomancer/bleach/bleach_source4_pattern.png';
+import bleach_source5_woman from '/img/instruments/videomancer/bleach/bleach_source5_woman.png';
+import bleach_source6_knit from '/img/instruments/videomancer/bleach/bleach_source6_knit.png';
+import bleach_hero_s1 from '/img/instruments/videomancer/bleach/bleach_hero_s1.png';
+import bleach_hero_s2 from '/img/instruments/videomancer/bleach/bleach_hero_s2.png';
+import bleach_hero_s3 from '/img/instruments/videomancer/bleach/bleach_hero_s3.png';
+import bleach_hero_s4 from '/img/instruments/videomancer/bleach/bleach_hero_s4.png';
+import bleach_hero_s5 from '/img/instruments/videomancer/bleach/bleach_hero_s5.png';
+import bleach_hero_s6 from '/img/instruments/videomancer/bleach/bleach_hero_s6.png';
+import bleach_ex1_s1 from '/img/instruments/videomancer/bleach/bleach_ex1_s1.png';
+import bleach_ex1_s2 from '/img/instruments/videomancer/bleach/bleach_ex1_s2.png';
+import bleach_ex1_s3 from '/img/instruments/videomancer/bleach/bleach_ex1_s3.png';
+import bleach_ex1_s4 from '/img/instruments/videomancer/bleach/bleach_ex1_s4.png';
+import bleach_ex1_s5 from '/img/instruments/videomancer/bleach/bleach_ex1_s5.png';
+import bleach_ex1_s6 from '/img/instruments/videomancer/bleach/bleach_ex1_s6.png';
+import bleach_ex2_s1 from '/img/instruments/videomancer/bleach/bleach_ex2_s1.png';
+import bleach_ex2_s2 from '/img/instruments/videomancer/bleach/bleach_ex2_s2.png';
+import bleach_ex2_s3 from '/img/instruments/videomancer/bleach/bleach_ex2_s3.png';
+import bleach_ex2_s4 from '/img/instruments/videomancer/bleach/bleach_ex2_s4.png';
+import bleach_ex2_s5 from '/img/instruments/videomancer/bleach/bleach_ex2_s5.png';
+import bleach_ex2_s6 from '/img/instruments/videomancer/bleach/bleach_ex2_s6.png';
+import bleach_ex3_s1 from '/img/instruments/videomancer/bleach/bleach_ex3_s1.png';
+import bleach_ex3_s2 from '/img/instruments/videomancer/bleach/bleach_ex3_s2.png';
+import bleach_ex3_s3 from '/img/instruments/videomancer/bleach/bleach_ex3_s3.png';
+import bleach_ex3_s4 from '/img/instruments/videomancer/bleach/bleach_ex3_s4.png';
+import bleach_ex3_s5 from '/img/instruments/videomancer/bleach/bleach_ex3_s5.png';
+import bleach_ex3_s6 from '/img/instruments/videomancer/bleach/bleach_ex3_s6.png';
 
 # Bleach
 
@@ -23,9 +45,12 @@ import bleach_source3_kodim13_bw from '/img/instruments/videomancer/bleach/bleac
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_hero },
-    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_hero },
-    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_hero },
+    { label: "Cat", before: bleach_source1_cat, after: bleach_hero_s1 },
+    { label: "Field", before: bleach_source2_field, after: bleach_hero_s2 },
+    { label: "Clouds", before: bleach_source3_clouds, after: bleach_hero_s3 },
+    { label: "Pattern", before: bleach_source4_pattern, after: bleach_hero_s4 },
+    { label: "Woman", before: bleach_source5_woman, after: bleach_hero_s5 },
+    { label: "Knit", before: bleach_source6_knit, after: bleach_hero_s6 },
   ]}
 />
 *Desaturated, silver-dense highlights surge through high-contrast shadows, recreating the bleach bypass look of war films and noir thrillers.*
@@ -117,9 +142,6 @@ The signal path for the original Y value is carried through as `s_y_orig` for th
 ---
 
 ## Parameter Reference
-
-<img src={bleach_control_panel} alt="Videomancer front panel with Bleach loaded"/>
-*Videomancer's front panel with Bleach active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +246,12 @@ These exercises progress from basic desaturation through full silver retention t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise1_result },
-    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise1_result },
-    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise1_result },
+    { label: "Cat", before: bleach_source1_cat, after: bleach_ex1_s1 },
+    { label: "Field", before: bleach_source2_field, after: bleach_ex1_s2 },
+    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex1_s3 },
+    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex1_s4 },
+    { label: "Woman", before: bleach_source5_woman, after: bleach_ex1_s5 },
+    { label: "Knit", before: bleach_source6_knit, after: bleach_ex1_s6 },
   ]}
 />
 *Basic Desaturation — simulated result across source images.*
@@ -249,9 +274,12 @@ These exercises progress from basic desaturation through full silver retention t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise2_result },
-    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise2_result },
-    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise2_result },
+    { label: "Cat", before: bleach_source1_cat, after: bleach_ex2_s1 },
+    { label: "Field", before: bleach_source2_field, after: bleach_ex2_s2 },
+    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex2_s3 },
+    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex2_s4 },
+    { label: "Woman", before: bleach_source5_woman, after: bleach_ex2_s5 },
+    { label: "Knit", before: bleach_source6_knit, after: bleach_ex2_s6 },
   ]}
 />
 *Silver Density and Contrast — simulated result across source images.*
@@ -274,9 +302,12 @@ These exercises progress from basic desaturation through full silver retention t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: bleach_source1_kodim03, after: bleach_exercise3_result },
-    { label: "Kodim13", before: bleach_source2_kodim13, after: bleach_exercise3_result },
-    { label: "Kodim13 B&W", before: bleach_source3_kodim13_bw, after: bleach_exercise3_result },
+    { label: "Cat", before: bleach_source1_cat, after: bleach_ex3_s1 },
+    { label: "Field", before: bleach_source2_field, after: bleach_ex3_s2 },
+    { label: "Clouds", before: bleach_source3_clouds, after: bleach_ex3_s3 },
+    { label: "Pattern", before: bleach_source4_pattern, after: bleach_ex3_s4 },
+    { label: "Woman", before: bleach_source5_woman, after: bleach_ex3_s5 },
+    { label: "Knit", before: bleach_source6_knit, after: bleach_ex3_s6 },
   ]}
 />
 *Full Film Look — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 125
+sidebar_position: 130
 slug: /instruments/videomancer/grisaille
 title: "Grisaille"
-image: /img/instruments/videomancer/grisaille/grisaille_hero.png
+image: /img/instruments/videomancer/grisaille/grisaille_hero_s1.png
 description: "Oil painters of the Renaissance did not paint colour directly onto canvas."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import grisaille_hero from '/img/instruments/videomancer/grisaille/grisaille_hero.png';
-import grisaille_control_panel from '/img/instruments/videomancer/grisaille/grisaille_control_panel.png';
-import grisaille_exercise1_result from '/img/instruments/videomancer/grisaille/grisaille_exercise1_result.png';
-import grisaille_exercise2_result from '/img/instruments/videomancer/grisaille/grisaille_exercise2_result.png';
-import grisaille_exercise3_result from '/img/instruments/videomancer/grisaille/grisaille_exercise3_result.png';
-import grisaille_source1_kodim03 from '/img/instruments/videomancer/grisaille/grisaille_source1_kodim03.png';
-import grisaille_source2_kodim13 from '/img/instruments/videomancer/grisaille/grisaille_source2_kodim13.png';
-import grisaille_source3_kodim13_bw from '/img/instruments/videomancer/grisaille/grisaille_source3_kodim13_bw.png';
+import grisaille_source1_castle from '/img/instruments/videomancer/grisaille/grisaille_source1_castle.png';
+import grisaille_source2_dog from '/img/instruments/videomancer/grisaille/grisaille_source2_dog.png';
+import grisaille_source3_turtle from '/img/instruments/videomancer/grisaille/grisaille_source3_turtle.png';
+import grisaille_source4_pattern from '/img/instruments/videomancer/grisaille/grisaille_source4_pattern.png';
+import grisaille_source5_woman from '/img/instruments/videomancer/grisaille/grisaille_source5_woman.png';
+import grisaille_source6_berries from '/img/instruments/videomancer/grisaille/grisaille_source6_berries.png';
+import grisaille_hero_s1 from '/img/instruments/videomancer/grisaille/grisaille_hero_s1.png';
+import grisaille_hero_s2 from '/img/instruments/videomancer/grisaille/grisaille_hero_s2.png';
+import grisaille_hero_s3 from '/img/instruments/videomancer/grisaille/grisaille_hero_s3.png';
+import grisaille_hero_s4 from '/img/instruments/videomancer/grisaille/grisaille_hero_s4.png';
+import grisaille_hero_s5 from '/img/instruments/videomancer/grisaille/grisaille_hero_s5.png';
+import grisaille_hero_s6 from '/img/instruments/videomancer/grisaille/grisaille_hero_s6.png';
+import grisaille_ex1_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s1.png';
+import grisaille_ex1_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s2.png';
+import grisaille_ex1_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s3.png';
+import grisaille_ex1_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s4.png';
+import grisaille_ex1_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s5.png';
+import grisaille_ex1_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex1_s6.png';
+import grisaille_ex2_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s1.png';
+import grisaille_ex2_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s2.png';
+import grisaille_ex2_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s3.png';
+import grisaille_ex2_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s4.png';
+import grisaille_ex2_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s5.png';
+import grisaille_ex2_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex2_s6.png';
+import grisaille_ex3_s1 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s1.png';
+import grisaille_ex3_s2 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s2.png';
+import grisaille_ex3_s3 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s3.png';
+import grisaille_ex3_s4 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s4.png';
+import grisaille_ex3_s5 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s5.png';
+import grisaille_ex3_s6 from '/img/instruments/videomancer/grisaille/grisaille_ex3_s6.png';
 
 # Grisaille
 
@@ -23,9 +45,12 @@ import grisaille_source3_kodim13_bw from '/img/instruments/videomancer/grisaille
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_hero },
-    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_hero },
-    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_hero },
+    { label: "Castle", before: grisaille_source1_castle, after: grisaille_hero_s1 },
+    { label: "Dog", before: grisaille_source2_dog, after: grisaille_hero_s2 },
+    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_hero_s3 },
+    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_hero_s4 },
+    { label: "Woman", before: grisaille_source5_woman, after: grisaille_hero_s5 },
+    { label: "Berries", before: grisaille_source6_berries, after: grisaille_hero_s6 },
   ]}
 />
 *Grisaille applying luminance-dependent oil glaze simulation with craquelure cracks and patina yellowing to a richly textured source.*
@@ -99,8 +124,6 @@ The critical interaction is between the Y tone curve (Stage 1) and the luminance
 
 ## Parameter Reference
 
-<img src={grisaille_control_panel} alt="Videomancer front panel with Grisaille loaded"/>
-*Videomancer's front panel with Grisaille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -204,9 +227,12 @@ These exercises progress from the foundational grisaille underpainting through g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise1_result },
-    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise1_result },
-    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise1_result },
+    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex1_s1 },
+    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex1_s2 },
+    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex1_s3 },
+    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex1_s4 },
+    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex1_s5 },
+    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex1_s6 },
   ]}
 />
 *The Grisaille Underpainting — simulated result across source images.*
@@ -228,9 +254,12 @@ These exercises progress from the foundational grisaille underpainting through g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise2_result },
-    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise2_result },
-    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise2_result },
+    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex2_s1 },
+    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex2_s2 },
+    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex2_s3 },
+    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex2_s4 },
+    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex2_s5 },
+    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex2_s6 },
   ]}
 />
 *Glazing the Underpainting — simulated result across source images.*
@@ -253,9 +282,12 @@ These exercises progress from the foundational grisaille underpainting through g
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: grisaille_source1_kodim03, after: grisaille_exercise3_result },
-    { label: "Kodim13", before: grisaille_source2_kodim13, after: grisaille_exercise3_result },
-    { label: "Kodim13 B&W", before: grisaille_source3_kodim13_bw, after: grisaille_exercise3_result },
+    { label: "Castle", before: grisaille_source1_castle, after: grisaille_ex3_s1 },
+    { label: "Dog", before: grisaille_source2_dog, after: grisaille_ex3_s2 },
+    { label: "Turtle", before: grisaille_source3_turtle, after: grisaille_ex3_s3 },
+    { label: "Pattern", before: grisaille_source4_pattern, after: grisaille_ex3_s4 },
+    { label: "Woman", before: grisaille_source5_woman, after: grisaille_ex3_s5 },
+    { label: "Berries", before: grisaille_source6_berries, after: grisaille_ex3_s6 },
   ]}
 />
 *The Aging Master — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 83
+sidebar_position: 86
 slug: /instruments/videomancer/domino
 title: "Domino"
-image: /img/instruments/videomancer/domino/domino_hero.png
+image: /img/instruments/videomancer/domino/domino_hero_s1.png
 description: "In the world of broadcast television, the most dramatic transitions are the ones that reveal the next image piece by piece — not in a smooth fade but in a cascade of discrete cells, each flicking from one state to another like the tiles on a departures board."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import domino_hero from '/img/instruments/videomancer/domino/domino_hero.png';
-import domino_control_panel from '/img/instruments/videomancer/domino/domino_control_panel.png';
-import domino_exercise1_result from '/img/instruments/videomancer/domino/domino_exercise1_result.png';
-import domino_exercise2_result from '/img/instruments/videomancer/domino/domino_exercise2_result.png';
-import domino_exercise3_result from '/img/instruments/videomancer/domino/domino_exercise3_result.png';
-import domino_source1_kodim15 from '/img/instruments/videomancer/domino/domino_source1_kodim15.png';
-import domino_source2_kodim01 from '/img/instruments/videomancer/domino/domino_source2_kodim01.png';
-import domino_source3_kodim01_bw from '/img/instruments/videomancer/domino/domino_source3_kodim01_bw.png';
+import domino_source1_skull from '/img/instruments/videomancer/domino/domino_source1_skull.png';
+import domino_source2_house from '/img/instruments/videomancer/domino/domino_source2_house.png';
+import domino_source3_turtle from '/img/instruments/videomancer/domino/domino_source3_turtle.png';
+import domino_source4_pattern from '/img/instruments/videomancer/domino/domino_source4_pattern.png';
+import domino_source5_boy from '/img/instruments/videomancer/domino/domino_source5_boy.png';
+import domino_source6_wood from '/img/instruments/videomancer/domino/domino_source6_wood.png';
+import domino_hero_s1 from '/img/instruments/videomancer/domino/domino_hero_s1.png';
+import domino_hero_s2 from '/img/instruments/videomancer/domino/domino_hero_s2.png';
+import domino_hero_s3 from '/img/instruments/videomancer/domino/domino_hero_s3.png';
+import domino_hero_s4 from '/img/instruments/videomancer/domino/domino_hero_s4.png';
+import domino_hero_s5 from '/img/instruments/videomancer/domino/domino_hero_s5.png';
+import domino_hero_s6 from '/img/instruments/videomancer/domino/domino_hero_s6.png';
+import domino_ex1_s1 from '/img/instruments/videomancer/domino/domino_ex1_s1.png';
+import domino_ex1_s2 from '/img/instruments/videomancer/domino/domino_ex1_s2.png';
+import domino_ex1_s3 from '/img/instruments/videomancer/domino/domino_ex1_s3.png';
+import domino_ex1_s4 from '/img/instruments/videomancer/domino/domino_ex1_s4.png';
+import domino_ex1_s5 from '/img/instruments/videomancer/domino/domino_ex1_s5.png';
+import domino_ex1_s6 from '/img/instruments/videomancer/domino/domino_ex1_s6.png';
+import domino_ex2_s1 from '/img/instruments/videomancer/domino/domino_ex2_s1.png';
+import domino_ex2_s2 from '/img/instruments/videomancer/domino/domino_ex2_s2.png';
+import domino_ex2_s3 from '/img/instruments/videomancer/domino/domino_ex2_s3.png';
+import domino_ex2_s4 from '/img/instruments/videomancer/domino/domino_ex2_s4.png';
+import domino_ex2_s5 from '/img/instruments/videomancer/domino/domino_ex2_s5.png';
+import domino_ex2_s6 from '/img/instruments/videomancer/domino/domino_ex2_s6.png';
+import domino_ex3_s1 from '/img/instruments/videomancer/domino/domino_ex3_s1.png';
+import domino_ex3_s2 from '/img/instruments/videomancer/domino/domino_ex3_s2.png';
+import domino_ex3_s3 from '/img/instruments/videomancer/domino/domino_ex3_s3.png';
+import domino_ex3_s4 from '/img/instruments/videomancer/domino/domino_ex3_s4.png';
+import domino_ex3_s5 from '/img/instruments/videomancer/domino/domino_ex3_s5.png';
+import domino_ex3_s6 from '/img/instruments/videomancer/domino/domino_ex3_s6.png';
 
 # Domino
 
@@ -23,9 +45,12 @@ import domino_source3_kodim01_bw from '/img/instruments/videomancer/domino/domin
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: domino_source1_kodim15, after: domino_hero },
-    { label: "Kodim01", before: domino_source2_kodim01, after: domino_hero },
-    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_hero },
+    { label: "Skull", before: domino_source1_skull, after: domino_hero_s1 },
+    { label: "House", before: domino_source2_house, after: domino_hero_s2 },
+    { label: "Turtle", before: domino_source3_turtle, after: domino_hero_s3 },
+    { label: "Pattern", before: domino_source4_pattern, after: domino_hero_s4 },
+    { label: "Boy", before: domino_source5_boy, after: domino_hero_s5 },
+    { label: "Wood", before: domino_source6_wood, after: domino_hero_s6 },
   ]}
 />
 *Domino sweeping a cascade dissolve across a cell grid, progressively flipping tiles in a diagonal wave to reveal inverted and color-filled regions.*
@@ -106,8 +131,6 @@ The cascade effect emerges from a single comparison: cell index versus sweep cou
 
 ## Parameter Reference
 
-<img src={domino_control_panel} alt="Videomancer front panel with Domino loaded"/>
-*Videomancer's front panel with Domino active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,9 +235,12 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise1_result },
-    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise1_result },
-    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise1_result },
+    { label: "Skull", before: domino_source1_skull, after: domino_ex1_s1 },
+    { label: "House", before: domino_source2_house, after: domino_ex1_s2 },
+    { label: "Turtle", before: domino_source3_turtle, after: domino_ex1_s3 },
+    { label: "Pattern", before: domino_source4_pattern, after: domino_ex1_s4 },
+    { label: "Boy", before: domino_source5_boy, after: domino_ex1_s5 },
+    { label: "Wood", before: domino_source6_wood, after: domino_ex1_s6 },
   ]}
 />
 *Vertical Curtain Wipe — simulated result across source images.*
@@ -237,9 +263,12 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise2_result },
-    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise2_result },
-    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise2_result },
+    { label: "Skull", before: domino_source1_skull, after: domino_ex2_s1 },
+    { label: "House", before: domino_source2_house, after: domino_ex2_s2 },
+    { label: "Turtle", before: domino_source3_turtle, after: domino_ex2_s3 },
+    { label: "Pattern", before: domino_source4_pattern, after: domino_ex2_s4 },
+    { label: "Boy", before: domino_source5_boy, after: domino_ex2_s5 },
+    { label: "Wood", before: domino_source6_wood, after: domino_ex2_s6 },
   ]}
 />
 *Diagonal Waterfall — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: domino_source1_kodim15, after: domino_exercise3_result },
-    { label: "Kodim01", before: domino_source2_kodim01, after: domino_exercise3_result },
-    { label: "Kodim01 B&W", before: domino_source3_kodim01_bw, after: domino_exercise3_result },
+    { label: "Skull", before: domino_source1_skull, after: domino_ex3_s1 },
+    { label: "House", before: domino_source2_house, after: domino_ex3_s2 },
+    { label: "Turtle", before: domino_source3_turtle, after: domino_ex3_s3 },
+    { label: "Pattern", before: domino_source4_pattern, after: domino_ex3_s4 },
+    { label: "Boy", before: domino_source5_boy, after: domino_ex3_s5 },
+    { label: "Wood", before: domino_source6_wood, after: domino_ex3_s6 },
   ]}
 />
 *Animated Mosaic Composite — simulated result across source images.*

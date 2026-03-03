@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 229
+sidebar_position: 239
 slug: /instruments/videomancer/ramplogic
 title: "Ramp Logic"
 image: /img/instruments/videomancer/ramplogic/ramplogic_hero.png

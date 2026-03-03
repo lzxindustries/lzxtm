@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 45
+sidebar_position: 46
 slug: /instruments/videomancer/chenille
 title: "Chenille"
-image: /img/instruments/videomancer/chenille/chenille_hero.png
+image: /img/instruments/videomancer/chenille/chenille_hero_s1.png
 description: "Chenille is named for the French word meaning \"caterpillar\" — the same word that gives its name to the soft, tufted fabric whose surface is made of tiny cut threads standing upright in a dense grid."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chenille_hero from '/img/instruments/videomancer/chenille/chenille_hero.png';
-import chenille_control_panel from '/img/instruments/videomancer/chenille/chenille_control_panel.png';
-import chenille_exercise1_result from '/img/instruments/videomancer/chenille/chenille_exercise1_result.png';
-import chenille_exercise2_result from '/img/instruments/videomancer/chenille/chenille_exercise2_result.png';
-import chenille_exercise3_result from '/img/instruments/videomancer/chenille/chenille_exercise3_result.png';
-import chenille_source1_kodim15 from '/img/instruments/videomancer/chenille/chenille_source1_kodim15.png';
-import chenille_source2_kodim03 from '/img/instruments/videomancer/chenille/chenille_source2_kodim03.png';
-import chenille_source3_kodim13_bw from '/img/instruments/videomancer/chenille/chenille_source3_kodim13_bw.png';
+import chenille_source1_cat from '/img/instruments/videomancer/chenille/chenille_source1_cat.png';
+import chenille_source2_car from '/img/instruments/videomancer/chenille/chenille_source2_car.png';
+import chenille_source3_turtle from '/img/instruments/videomancer/chenille/chenille_source3_turtle.png';
+import chenille_source4_pattern from '/img/instruments/videomancer/chenille/chenille_source4_pattern.png';
+import chenille_source5_woman from '/img/instruments/videomancer/chenille/chenille_source5_woman.png';
+import chenille_source6_knit from '/img/instruments/videomancer/chenille/chenille_source6_knit.png';
+import chenille_hero_s1 from '/img/instruments/videomancer/chenille/chenille_hero_s1.png';
+import chenille_hero_s2 from '/img/instruments/videomancer/chenille/chenille_hero_s2.png';
+import chenille_hero_s3 from '/img/instruments/videomancer/chenille/chenille_hero_s3.png';
+import chenille_hero_s4 from '/img/instruments/videomancer/chenille/chenille_hero_s4.png';
+import chenille_hero_s5 from '/img/instruments/videomancer/chenille/chenille_hero_s5.png';
+import chenille_hero_s6 from '/img/instruments/videomancer/chenille/chenille_hero_s6.png';
+import chenille_ex1_s1 from '/img/instruments/videomancer/chenille/chenille_ex1_s1.png';
+import chenille_ex1_s2 from '/img/instruments/videomancer/chenille/chenille_ex1_s2.png';
+import chenille_ex1_s3 from '/img/instruments/videomancer/chenille/chenille_ex1_s3.png';
+import chenille_ex1_s4 from '/img/instruments/videomancer/chenille/chenille_ex1_s4.png';
+import chenille_ex1_s5 from '/img/instruments/videomancer/chenille/chenille_ex1_s5.png';
+import chenille_ex1_s6 from '/img/instruments/videomancer/chenille/chenille_ex1_s6.png';
+import chenille_ex2_s1 from '/img/instruments/videomancer/chenille/chenille_ex2_s1.png';
+import chenille_ex2_s2 from '/img/instruments/videomancer/chenille/chenille_ex2_s2.png';
+import chenille_ex2_s3 from '/img/instruments/videomancer/chenille/chenille_ex2_s3.png';
+import chenille_ex2_s4 from '/img/instruments/videomancer/chenille/chenille_ex2_s4.png';
+import chenille_ex2_s5 from '/img/instruments/videomancer/chenille/chenille_ex2_s5.png';
+import chenille_ex2_s6 from '/img/instruments/videomancer/chenille/chenille_ex2_s6.png';
+import chenille_ex3_s1 from '/img/instruments/videomancer/chenille/chenille_ex3_s1.png';
+import chenille_ex3_s2 from '/img/instruments/videomancer/chenille/chenille_ex3_s2.png';
+import chenille_ex3_s3 from '/img/instruments/videomancer/chenille/chenille_ex3_s3.png';
+import chenille_ex3_s4 from '/img/instruments/videomancer/chenille/chenille_ex3_s4.png';
+import chenille_ex3_s5 from '/img/instruments/videomancer/chenille/chenille_ex3_s5.png';
+import chenille_ex3_s6 from '/img/instruments/videomancer/chenille/chenille_ex3_s6.png';
 
 # Chenille
 
@@ -23,9 +45,12 @@ import chenille_source3_kodim13_bw from '/img/instruments/videomancer/chenille/c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_hero },
-    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_hero },
-    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_hero },
+    { label: "Cat", before: chenille_source1_cat, after: chenille_hero_s1 },
+    { label: "Car", before: chenille_source2_car, after: chenille_hero_s2 },
+    { label: "Turtle", before: chenille_source3_turtle, after: chenille_hero_s3 },
+    { label: "Pattern", before: chenille_source4_pattern, after: chenille_hero_s4 },
+    { label: "Woman", before: chenille_source5_woman, after: chenille_hero_s5 },
+    { label: "Knit", before: chenille_source6_knit, after: chenille_hero_s6 },
   ]}
 />
 *Chenille transforming a still life into a field of luminous tufted dots, each pile cluster carrying the color memory of the pixel it replaced.*
@@ -105,8 +130,6 @@ The pipeline's key decision happens at clock 2: the Manhattan distance test clea
 
 ## Parameter Reference
 
-<img src={chenille_control_panel} alt="Videomancer front panel with Chenille loaded"/>
-*Videomancer's front panel with Chenille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -211,9 +234,12 @@ These three exercises move from basic grid exploration through directional shadi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise1_result },
-    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise1_result },
-    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise1_result },
+    { label: "Cat", before: chenille_source1_cat, after: chenille_ex1_s1 },
+    { label: "Car", before: chenille_source2_car, after: chenille_ex1_s2 },
+    { label: "Turtle", before: chenille_source3_turtle, after: chenille_ex1_s3 },
+    { label: "Pattern", before: chenille_source4_pattern, after: chenille_ex1_s4 },
+    { label: "Woman", before: chenille_source5_woman, after: chenille_ex1_s5 },
+    { label: "Knit", before: chenille_source6_knit, after: chenille_ex1_s6 },
   ]}
 />
 *Dot Grid Fundamentals — simulated result across source images.*
@@ -235,9 +261,12 @@ These three exercises move from basic grid exploration through directional shadi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise2_result },
-    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise2_result },
-    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise2_result },
+    { label: "Cat", before: chenille_source1_cat, after: chenille_ex2_s1 },
+    { label: "Car", before: chenille_source2_car, after: chenille_ex2_s2 },
+    { label: "Turtle", before: chenille_source3_turtle, after: chenille_ex2_s3 },
+    { label: "Pattern", before: chenille_source4_pattern, after: chenille_ex2_s4 },
+    { label: "Woman", before: chenille_source5_woman, after: chenille_ex2_s5 },
+    { label: "Knit", before: chenille_source6_knit, after: chenille_ex2_s6 },
   ]}
 />
 *Directional Shading and Pile Height — simulated result across source images.*
@@ -260,9 +289,12 @@ These three exercises move from basic grid exploration through directional shadi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chenille_source1_kodim15, after: chenille_exercise3_result },
-    { label: "Kodim03", before: chenille_source2_kodim03, after: chenille_exercise3_result },
-    { label: "Kodim13 B&W", before: chenille_source3_kodim13_bw, after: chenille_exercise3_result },
+    { label: "Cat", before: chenille_source1_cat, after: chenille_ex3_s1 },
+    { label: "Car", before: chenille_source2_car, after: chenille_ex3_s2 },
+    { label: "Turtle", before: chenille_source3_turtle, after: chenille_ex3_s3 },
+    { label: "Pattern", before: chenille_source4_pattern, after: chenille_ex3_s4 },
+    { label: "Woman", before: chenille_source5_woman, after: chenille_ex3_s5 },
+    { label: "Knit", before: chenille_source6_knit, after: chenille_ex3_s6 },
   ]}
 />
 *Animated Textile Synthesis — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 114
+sidebar_position: 119
 slug: /instruments/videomancer/folio
 title: "Folio"
-image: /img/instruments/videomancer/folio/folio_hero.png
+image: /img/instruments/videomancer/folio/folio_hero_s1.png
 description: "Folio simulates the page turn transition familiar from presentation software and e-book readers, implemented entirely in scanline-rate FPGA logic."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import folio_hero from '/img/instruments/videomancer/folio/folio_hero.png';
-import folio_control_panel from '/img/instruments/videomancer/folio/folio_control_panel.png';
-import folio_exercise1_result from '/img/instruments/videomancer/folio/folio_exercise1_result.png';
-import folio_exercise2_result from '/img/instruments/videomancer/folio/folio_exercise2_result.png';
-import folio_exercise3_result from '/img/instruments/videomancer/folio/folio_exercise3_result.png';
-import folio_source1_kodim15 from '/img/instruments/videomancer/folio/folio_source1_kodim15.png';
-import folio_source2_kodim15_bw from '/img/instruments/videomancer/folio/folio_source2_kodim15_bw.png';
-import folio_source3_male_1024 from '/img/instruments/videomancer/folio/folio_source3_male_1024.png';
+import folio_source1_sunset from '/img/instruments/videomancer/folio/folio_source1_sunset.png';
+import folio_source2_house from '/img/instruments/videomancer/folio/folio_source2_house.png';
+import folio_source3_elephant from '/img/instruments/videomancer/folio/folio_source3_elephant.png';
+import folio_source4_pattern from '/img/instruments/videomancer/folio/folio_source4_pattern.png';
+import folio_source5_man from '/img/instruments/videomancer/folio/folio_source5_man.png';
+import folio_source6_paint from '/img/instruments/videomancer/folio/folio_source6_paint.png';
+import folio_hero_s1 from '/img/instruments/videomancer/folio/folio_hero_s1.png';
+import folio_hero_s2 from '/img/instruments/videomancer/folio/folio_hero_s2.png';
+import folio_hero_s3 from '/img/instruments/videomancer/folio/folio_hero_s3.png';
+import folio_hero_s4 from '/img/instruments/videomancer/folio/folio_hero_s4.png';
+import folio_hero_s5 from '/img/instruments/videomancer/folio/folio_hero_s5.png';
+import folio_hero_s6 from '/img/instruments/videomancer/folio/folio_hero_s6.png';
+import folio_ex1_s1 from '/img/instruments/videomancer/folio/folio_ex1_s1.png';
+import folio_ex1_s2 from '/img/instruments/videomancer/folio/folio_ex1_s2.png';
+import folio_ex1_s3 from '/img/instruments/videomancer/folio/folio_ex1_s3.png';
+import folio_ex1_s4 from '/img/instruments/videomancer/folio/folio_ex1_s4.png';
+import folio_ex1_s5 from '/img/instruments/videomancer/folio/folio_ex1_s5.png';
+import folio_ex1_s6 from '/img/instruments/videomancer/folio/folio_ex1_s6.png';
+import folio_ex2_s1 from '/img/instruments/videomancer/folio/folio_ex2_s1.png';
+import folio_ex2_s2 from '/img/instruments/videomancer/folio/folio_ex2_s2.png';
+import folio_ex2_s3 from '/img/instruments/videomancer/folio/folio_ex2_s3.png';
+import folio_ex2_s4 from '/img/instruments/videomancer/folio/folio_ex2_s4.png';
+import folio_ex2_s5 from '/img/instruments/videomancer/folio/folio_ex2_s5.png';
+import folio_ex2_s6 from '/img/instruments/videomancer/folio/folio_ex2_s6.png';
+import folio_ex3_s1 from '/img/instruments/videomancer/folio/folio_ex3_s1.png';
+import folio_ex3_s2 from '/img/instruments/videomancer/folio/folio_ex3_s2.png';
+import folio_ex3_s3 from '/img/instruments/videomancer/folio/folio_ex3_s3.png';
+import folio_ex3_s4 from '/img/instruments/videomancer/folio/folio_ex3_s4.png';
+import folio_ex3_s5 from '/img/instruments/videomancer/folio/folio_ex3_s5.png';
+import folio_ex3_s6 from '/img/instruments/videomancer/folio/folio_ex3_s6.png';
 
 # Folio
 
@@ -23,9 +45,12 @@ import folio_source3_male_1024 from '/img/instruments/videomancer/folio/folio_so
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: folio_source1_kodim15, after: folio_hero },
-    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_hero },
-    { label: "Male", before: folio_source3_male_1024, after: folio_hero },
+    { label: "Sunset", before: folio_source1_sunset, after: folio_hero_s1 },
+    { label: "House", before: folio_source2_house, after: folio_hero_s2 },
+    { label: "Elephant", before: folio_source3_elephant, after: folio_hero_s3 },
+    { label: "Pattern", before: folio_source4_pattern, after: folio_hero_s4 },
+    { label: "Man", before: folio_source5_man, after: folio_hero_s5 },
+    { label: "Paint", before: folio_source6_paint, after: folio_hero_s6 },
   ]}
 />
 *A photographic image caught mid-page-turn, its right half compressed into a narrow vertical strip against a saturated teal background — the fold edge darkened, the revealed colour field filling the vacated screen space.*
@@ -137,8 +162,6 @@ The fold zone detection identifies the 8 pixels nearest the fold edge — the bo
 
 ## Parameter Reference
 
-<img src={folio_control_panel} alt="Videomancer front panel with Folio loaded"/>
-*Videomancer's front panel with Folio active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -243,9 +266,12 @@ These exercises progress from a static half-turn through animated oscillation to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise1_result },
-    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise1_result },
-    { label: "Male", before: folio_source3_male_1024, after: folio_exercise1_result },
+    { label: "Sunset", before: folio_source1_sunset, after: folio_ex1_s1 },
+    { label: "House", before: folio_source2_house, after: folio_ex1_s2 },
+    { label: "Elephant", before: folio_source3_elephant, after: folio_ex1_s3 },
+    { label: "Pattern", before: folio_source4_pattern, after: folio_ex1_s4 },
+    { label: "Man", before: folio_source5_man, after: folio_ex1_s5 },
+    { label: "Paint", before: folio_source6_paint, after: folio_ex1_s6 },
   ]}
 />
 *Static Half Turn — simulated result across source images.*
@@ -269,9 +295,12 @@ These exercises progress from a static half-turn through animated oscillation to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise2_result },
-    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise2_result },
-    { label: "Male", before: folio_source3_male_1024, after: folio_exercise2_result },
+    { label: "Sunset", before: folio_source1_sunset, after: folio_ex2_s1 },
+    { label: "House", before: folio_source2_house, after: folio_ex2_s2 },
+    { label: "Elephant", before: folio_source3_elephant, after: folio_ex2_s3 },
+    { label: "Pattern", before: folio_source4_pattern, after: folio_ex2_s4 },
+    { label: "Man", before: folio_source5_man, after: folio_ex2_s5 },
+    { label: "Paint", before: folio_source6_paint, after: folio_ex2_s6 },
   ]}
 />
 *Animated Page Flip — simulated result across source images.*
@@ -295,9 +324,12 @@ These exercises progress from a static half-turn through animated oscillation to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: folio_source1_kodim15, after: folio_exercise3_result },
-    { label: "Kodim15 B&W", before: folio_source2_kodim15_bw, after: folio_exercise3_result },
-    { label: "Male", before: folio_source3_male_1024, after: folio_exercise3_result },
+    { label: "Sunset", before: folio_source1_sunset, after: folio_ex3_s1 },
+    { label: "House", before: folio_source2_house, after: folio_ex3_s2 },
+    { label: "Elephant", before: folio_source3_elephant, after: folio_ex3_s3 },
+    { label: "Pattern", before: folio_source4_pattern, after: folio_ex3_s4 },
+    { label: "Man", before: folio_source5_man, after: folio_ex3_s5 },
+    { label: "Paint", before: folio_source6_paint, after: folio_ex3_s6 },
   ]}
 />
 *Coloured Mask Generation — simulated result across source images.*

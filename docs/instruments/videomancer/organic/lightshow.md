@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 163
+sidebar_position: 171
 slug: /instruments/videomancer/lightshow
 title: "Light Show"
 image: /img/instruments/videomancer/lightshow/lightshow_hero.png

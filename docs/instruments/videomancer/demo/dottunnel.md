@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 85
+sidebar_position: 89
 slug: /instruments/videomancer/dottunnel
 title: "Dottunnel"
 image: /img/instruments/videomancer/dottunnel/dottunnel_hero.png

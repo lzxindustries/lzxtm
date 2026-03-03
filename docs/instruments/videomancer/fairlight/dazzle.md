@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 71
+sidebar_position: 74
 slug: /instruments/videomancer/dazzle
 title: "Dazzle"
-image: /img/instruments/videomancer/dazzle/dazzle_hero.png
+image: /img/instruments/videomancer/dazzle/dazzle_hero_s1.png
 description: "Every broadcast television viewer has seen the sparkle effect — a starburst of light that blooms from specular highlights, stage lights, or reflections off metallic surfaces."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import dazzle_hero from '/img/instruments/videomancer/dazzle/dazzle_hero.png';
-import dazzle_control_panel from '/img/instruments/videomancer/dazzle/dazzle_control_panel.png';
-import dazzle_exercise1_result from '/img/instruments/videomancer/dazzle/dazzle_exercise1_result.png';
-import dazzle_exercise2_result from '/img/instruments/videomancer/dazzle/dazzle_exercise2_result.png';
-import dazzle_exercise3_result from '/img/instruments/videomancer/dazzle/dazzle_exercise3_result.png';
-import dazzle_source1_kodim15 from '/img/instruments/videomancer/dazzle/dazzle_source1_kodim15.png';
-import dazzle_source2_kodim01 from '/img/instruments/videomancer/dazzle/dazzle_source2_kodim01.png';
-import dazzle_source3_kodim01_bw from '/img/instruments/videomancer/dazzle/dazzle_source3_kodim01_bw.png';
+import dazzle_source1_parrot from '/img/instruments/videomancer/dazzle/dazzle_source1_parrot.png';
+import dazzle_source2_boat from '/img/instruments/videomancer/dazzle/dazzle_source2_boat.png';
+import dazzle_source3_collage from '/img/instruments/videomancer/dazzle/dazzle_source3_collage.png';
+import dazzle_source4_pattern from '/img/instruments/videomancer/dazzle/dazzle_source4_pattern.png';
+import dazzle_source5_woman from '/img/instruments/videomancer/dazzle/dazzle_source5_woman.png';
+import dazzle_source6_wood from '/img/instruments/videomancer/dazzle/dazzle_source6_wood.png';
+import dazzle_hero_s1 from '/img/instruments/videomancer/dazzle/dazzle_hero_s1.png';
+import dazzle_hero_s2 from '/img/instruments/videomancer/dazzle/dazzle_hero_s2.png';
+import dazzle_hero_s3 from '/img/instruments/videomancer/dazzle/dazzle_hero_s3.png';
+import dazzle_hero_s4 from '/img/instruments/videomancer/dazzle/dazzle_hero_s4.png';
+import dazzle_hero_s5 from '/img/instruments/videomancer/dazzle/dazzle_hero_s5.png';
+import dazzle_hero_s6 from '/img/instruments/videomancer/dazzle/dazzle_hero_s6.png';
+import dazzle_ex1_s1 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s1.png';
+import dazzle_ex1_s2 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s2.png';
+import dazzle_ex1_s3 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s3.png';
+import dazzle_ex1_s4 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s4.png';
+import dazzle_ex1_s5 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s5.png';
+import dazzle_ex1_s6 from '/img/instruments/videomancer/dazzle/dazzle_ex1_s6.png';
+import dazzle_ex2_s1 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s1.png';
+import dazzle_ex2_s2 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s2.png';
+import dazzle_ex2_s3 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s3.png';
+import dazzle_ex2_s4 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s4.png';
+import dazzle_ex2_s5 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s5.png';
+import dazzle_ex2_s6 from '/img/instruments/videomancer/dazzle/dazzle_ex2_s6.png';
+import dazzle_ex3_s1 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s1.png';
+import dazzle_ex3_s2 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s2.png';
+import dazzle_ex3_s3 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s3.png';
+import dazzle_ex3_s4 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s4.png';
+import dazzle_ex3_s5 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s5.png';
+import dazzle_ex3_s6 from '/img/instruments/videomancer/dazzle/dazzle_ex3_s6.png';
 
 # Dazzle
 
@@ -23,9 +45,12 @@ import dazzle_source3_kodim01_bw from '/img/instruments/videomancer/dazzle/dazzl
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_hero },
-    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_hero },
-    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_hero },
+    { label: "Parrot", before: dazzle_source1_parrot, after: dazzle_hero_s1 },
+    { label: "Boat", before: dazzle_source2_boat, after: dazzle_hero_s2 },
+    { label: "Collage", before: dazzle_source3_collage, after: dazzle_hero_s3 },
+    { label: "Pattern", before: dazzle_source4_pattern, after: dazzle_hero_s4 },
+    { label: "Woman", before: dazzle_source5_woman, after: dazzle_hero_s5 },
+    { label: "Wood", before: dazzle_source6_wood, after: dazzle_hero_s6 },
   ]}
 />
 *Dazzle scattering radial glint bursts across bright highlights with rainbow chroma rotation and pulsing persistence.*
@@ -102,8 +127,6 @@ The critical interaction is between threshold detection and the shape kernel. Th
 
 ## Parameter Reference
 
-<img src={dazzle_control_panel} alt="Videomancer front panel with Dazzle loaded"/>
-*Videomancer's front panel with Dazzle active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise1_result },
-    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise1_result },
-    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise1_result },
+    { label: "Parrot", before: dazzle_source1_parrot, after: dazzle_ex1_s1 },
+    { label: "Boat", before: dazzle_source2_boat, after: dazzle_ex1_s2 },
+    { label: "Collage", before: dazzle_source3_collage, after: dazzle_ex1_s3 },
+    { label: "Pattern", before: dazzle_source4_pattern, after: dazzle_ex1_s4 },
+    { label: "Woman", before: dazzle_source5_woman, after: dazzle_ex1_s5 },
+    { label: "Wood", before: dazzle_source6_wood, after: dazzle_ex1_s6 },
   ]}
 />
 *Threshold Highlight Detection — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise2_result },
-    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise2_result },
-    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise2_result },
+    { label: "Parrot", before: dazzle_source1_parrot, after: dazzle_ex2_s1 },
+    { label: "Boat", before: dazzle_source2_boat, after: dazzle_ex2_s2 },
+    { label: "Collage", before: dazzle_source3_collage, after: dazzle_ex2_s3 },
+    { label: "Pattern", before: dazzle_source4_pattern, after: dazzle_ex2_s4 },
+    { label: "Woman", before: dazzle_source5_woman, after: dazzle_ex2_s5 },
+    { label: "Wood", before: dazzle_source6_wood, after: dazzle_ex2_s6 },
   ]}
 />
 *Rainbow Starbursts — simulated result across source images.*
@@ -257,9 +286,12 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: dazzle_source1_kodim15, after: dazzle_exercise3_result },
-    { label: "Kodim01", before: dazzle_source2_kodim01, after: dazzle_exercise3_result },
-    { label: "Kodim01 B&W", before: dazzle_source3_kodim01_bw, after: dazzle_exercise3_result },
+    { label: "Parrot", before: dazzle_source1_parrot, after: dazzle_ex3_s1 },
+    { label: "Boat", before: dazzle_source2_boat, after: dazzle_ex3_s2 },
+    { label: "Collage", before: dazzle_source3_collage, after: dazzle_ex3_s3 },
+    { label: "Pattern", before: dazzle_source4_pattern, after: dazzle_ex3_s4 },
+    { label: "Woman", before: dazzle_source5_woman, after: dazzle_ex3_s5 },
+    { label: "Wood", before: dazzle_source6_wood, after: dazzle_ex3_s6 },
   ]}
 />
 *Pulsing Persistent Trails — simulated result across source images.*

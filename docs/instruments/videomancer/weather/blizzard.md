@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 22
+sidebar_position: 23
 slug: /instruments/videomancer/blizzard
 title: "Blizzard"
-image: /img/instruments/videomancer/blizzard/blizzard_hero.png
+image: /img/instruments/videomancer/blizzard/blizzard_hero_s1.png
 description: "Snow in real life has depth."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import blizzard_hero from '/img/instruments/videomancer/blizzard/blizzard_hero.png';
-import blizzard_control_panel from '/img/instruments/videomancer/blizzard/blizzard_control_panel.png';
-import blizzard_exercise1_result from '/img/instruments/videomancer/blizzard/blizzard_exercise1_result.png';
-import blizzard_exercise2_result from '/img/instruments/videomancer/blizzard/blizzard_exercise2_result.png';
-import blizzard_exercise3_result from '/img/instruments/videomancer/blizzard/blizzard_exercise3_result.png';
-import blizzard_source1_kodim01 from '/img/instruments/videomancer/blizzard/blizzard_source1_kodim01.png';
-import blizzard_source2_kodim02 from '/img/instruments/videomancer/blizzard/blizzard_source2_kodim02.png';
-import blizzard_source3_stream_bridge_512 from '/img/instruments/videomancer/blizzard/blizzard_source3_stream_bridge_512.png';
+import blizzard_source1_dog from '/img/instruments/videomancer/blizzard/blizzard_source1_dog.png';
+import blizzard_source2_house from '/img/instruments/videomancer/blizzard/blizzard_source2_house.png';
+import blizzard_source3_turtle from '/img/instruments/videomancer/blizzard/blizzard_source3_turtle.png';
+import blizzard_source4_pattern from '/img/instruments/videomancer/blizzard/blizzard_source4_pattern.png';
+import blizzard_source5_boy from '/img/instruments/videomancer/blizzard/blizzard_source5_boy.png';
+import blizzard_source6_wood from '/img/instruments/videomancer/blizzard/blizzard_source6_wood.png';
+import blizzard_hero_s1 from '/img/instruments/videomancer/blizzard/blizzard_hero_s1.png';
+import blizzard_hero_s2 from '/img/instruments/videomancer/blizzard/blizzard_hero_s2.png';
+import blizzard_hero_s3 from '/img/instruments/videomancer/blizzard/blizzard_hero_s3.png';
+import blizzard_hero_s4 from '/img/instruments/videomancer/blizzard/blizzard_hero_s4.png';
+import blizzard_hero_s5 from '/img/instruments/videomancer/blizzard/blizzard_hero_s5.png';
+import blizzard_hero_s6 from '/img/instruments/videomancer/blizzard/blizzard_hero_s6.png';
+import blizzard_ex1_s1 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s1.png';
+import blizzard_ex1_s2 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s2.png';
+import blizzard_ex1_s3 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s3.png';
+import blizzard_ex1_s4 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s4.png';
+import blizzard_ex1_s5 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s5.png';
+import blizzard_ex1_s6 from '/img/instruments/videomancer/blizzard/blizzard_ex1_s6.png';
+import blizzard_ex2_s1 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s1.png';
+import blizzard_ex2_s2 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s2.png';
+import blizzard_ex2_s3 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s3.png';
+import blizzard_ex2_s4 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s4.png';
+import blizzard_ex2_s5 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s5.png';
+import blizzard_ex2_s6 from '/img/instruments/videomancer/blizzard/blizzard_ex2_s6.png';
+import blizzard_ex3_s1 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s1.png';
+import blizzard_ex3_s2 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s2.png';
+import blizzard_ex3_s3 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s3.png';
+import blizzard_ex3_s4 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s4.png';
+import blizzard_ex3_s5 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s5.png';
+import blizzard_ex3_s6 from '/img/instruments/videomancer/blizzard/blizzard_ex3_s6.png';
 
 # Blizzard
 
@@ -23,9 +45,12 @@ import blizzard_source3_stream_bridge_512 from '/img/instruments/videomancer/bli
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_hero },
-    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_hero },
-    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_hero },
+    { label: "Dog", before: blizzard_source1_dog, after: blizzard_hero_s1 },
+    { label: "House", before: blizzard_source2_house, after: blizzard_hero_s2 },
+    { label: "Turtle", before: blizzard_source3_turtle, after: blizzard_hero_s3 },
+    { label: "Pattern", before: blizzard_source4_pattern, after: blizzard_hero_s4 },
+    { label: "Boy", before: blizzard_source5_boy, after: blizzard_hero_s5 },
+    { label: "Wood", before: blizzard_source6_wood, after: blizzard_hero_s6 },
   ]}
 />
 *Blizzard compositing multi-layer parallax snowfall with frost accumulation over a winter landscape source.*
@@ -111,9 +136,6 @@ The key architectural choice is additive compositing: snow brightness is *added*
 ---
 
 ## Parameter Reference
-
-<img src={blizzard_control_panel} alt="Videomancer front panel with Blizzard loaded"/>
-*Videomancer's front panel with Blizzard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +240,12 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise1_result },
-    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise1_result },
-    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise1_result },
+    { label: "Dog", before: blizzard_source1_dog, after: blizzard_ex1_s1 },
+    { label: "House", before: blizzard_source2_house, after: blizzard_ex1_s2 },
+    { label: "Turtle", before: blizzard_source3_turtle, after: blizzard_ex1_s3 },
+    { label: "Pattern", before: blizzard_source4_pattern, after: blizzard_ex1_s4 },
+    { label: "Boy", before: blizzard_source5_boy, after: blizzard_ex1_s5 },
+    { label: "Wood", before: blizzard_source6_wood, after: blizzard_ex1_s6 },
   ]}
 />
 *Gentle Flurries — simulated result across source images.*
@@ -249,9 +274,12 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise2_result },
-    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise2_result },
-    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise2_result },
+    { label: "Dog", before: blizzard_source1_dog, after: blizzard_ex2_s1 },
+    { label: "House", before: blizzard_source2_house, after: blizzard_ex2_s2 },
+    { label: "Turtle", before: blizzard_source3_turtle, after: blizzard_ex2_s3 },
+    { label: "Pattern", before: blizzard_source4_pattern, after: blizzard_ex2_s4 },
+    { label: "Boy", before: blizzard_source5_boy, after: blizzard_ex2_s5 },
+    { label: "Wood", before: blizzard_source6_wood, after: blizzard_ex2_s6 },
   ]}
 />
 *Heavy Snowfall with Wind — simulated result across source images.*
@@ -280,9 +308,12 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: blizzard_source1_kodim01, after: blizzard_exercise3_result },
-    { label: "Kodim02", before: blizzard_source2_kodim02, after: blizzard_exercise3_result },
-    { label: "Stream Bridge", before: blizzard_source3_stream_bridge_512, after: blizzard_exercise3_result },
+    { label: "Dog", before: blizzard_source1_dog, after: blizzard_ex3_s1 },
+    { label: "House", before: blizzard_source2_house, after: blizzard_ex3_s2 },
+    { label: "Turtle", before: blizzard_source3_turtle, after: blizzard_ex3_s3 },
+    { label: "Pattern", before: blizzard_source4_pattern, after: blizzard_ex3_s4 },
+    { label: "Boy", before: blizzard_source5_boy, after: blizzard_ex3_s5 },
+    { label: "Wood", before: blizzard_source6_wood, after: blizzard_ex3_s6 },
   ]}
 />
 *Frost and Snow Combined — simulated result across source images.*

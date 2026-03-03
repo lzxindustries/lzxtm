@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 318
+sidebar_position: 334
 slug: /instruments/videomancer/zollner
 title: "Zollner"
 image: /img/instruments/videomancer/zollner/zollner_hero.png

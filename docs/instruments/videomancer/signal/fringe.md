@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 116
+sidebar_position: 121
 slug: /instruments/videomancer/fringe
 title: "Fringe"
-image: /img/instruments/videomancer/fringe/fringe_hero.png
+image: /img/instruments/videomancer/fringe/fringe_hero_s1.png
 description: "Before the era of component video and digital interfaces, nearly all consumer video passed through a single wire — the composite cable."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import fringe_hero from '/img/instruments/videomancer/fringe/fringe_hero.png';
-import fringe_control_panel from '/img/instruments/videomancer/fringe/fringe_control_panel.png';
-import fringe_exercise1_result from '/img/instruments/videomancer/fringe/fringe_exercise1_result.png';
-import fringe_exercise2_result from '/img/instruments/videomancer/fringe/fringe_exercise2_result.png';
-import fringe_exercise3_result from '/img/instruments/videomancer/fringe/fringe_exercise3_result.png';
-import fringe_source1_kodim15 from '/img/instruments/videomancer/fringe/fringe_source1_kodim15.png';
-import fringe_source2_kodim01 from '/img/instruments/videomancer/fringe/fringe_source2_kodim01.png';
-import fringe_source3_stream_bridge_512 from '/img/instruments/videomancer/fringe/fringe_source3_stream_bridge_512.png';
+import fringe_source1_runner from '/img/instruments/videomancer/fringe/fringe_source1_runner.png';
+import fringe_source2_dog from '/img/instruments/videomancer/fringe/fringe_source2_dog.png';
+import fringe_source3_collage from '/img/instruments/videomancer/fringe/fringe_source3_collage.png';
+import fringe_source4_pattern from '/img/instruments/videomancer/fringe/fringe_source4_pattern.png';
+import fringe_source5_woman from '/img/instruments/videomancer/fringe/fringe_source5_woman.png';
+import fringe_source6_knit from '/img/instruments/videomancer/fringe/fringe_source6_knit.png';
+import fringe_hero_s1 from '/img/instruments/videomancer/fringe/fringe_hero_s1.png';
+import fringe_hero_s2 from '/img/instruments/videomancer/fringe/fringe_hero_s2.png';
+import fringe_hero_s3 from '/img/instruments/videomancer/fringe/fringe_hero_s3.png';
+import fringe_hero_s4 from '/img/instruments/videomancer/fringe/fringe_hero_s4.png';
+import fringe_hero_s5 from '/img/instruments/videomancer/fringe/fringe_hero_s5.png';
+import fringe_hero_s6 from '/img/instruments/videomancer/fringe/fringe_hero_s6.png';
+import fringe_ex1_s1 from '/img/instruments/videomancer/fringe/fringe_ex1_s1.png';
+import fringe_ex1_s2 from '/img/instruments/videomancer/fringe/fringe_ex1_s2.png';
+import fringe_ex1_s3 from '/img/instruments/videomancer/fringe/fringe_ex1_s3.png';
+import fringe_ex1_s4 from '/img/instruments/videomancer/fringe/fringe_ex1_s4.png';
+import fringe_ex1_s5 from '/img/instruments/videomancer/fringe/fringe_ex1_s5.png';
+import fringe_ex1_s6 from '/img/instruments/videomancer/fringe/fringe_ex1_s6.png';
+import fringe_ex2_s1 from '/img/instruments/videomancer/fringe/fringe_ex2_s1.png';
+import fringe_ex2_s2 from '/img/instruments/videomancer/fringe/fringe_ex2_s2.png';
+import fringe_ex2_s3 from '/img/instruments/videomancer/fringe/fringe_ex2_s3.png';
+import fringe_ex2_s4 from '/img/instruments/videomancer/fringe/fringe_ex2_s4.png';
+import fringe_ex2_s5 from '/img/instruments/videomancer/fringe/fringe_ex2_s5.png';
+import fringe_ex2_s6 from '/img/instruments/videomancer/fringe/fringe_ex2_s6.png';
+import fringe_ex3_s1 from '/img/instruments/videomancer/fringe/fringe_ex3_s1.png';
+import fringe_ex3_s2 from '/img/instruments/videomancer/fringe/fringe_ex3_s2.png';
+import fringe_ex3_s3 from '/img/instruments/videomancer/fringe/fringe_ex3_s3.png';
+import fringe_ex3_s4 from '/img/instruments/videomancer/fringe/fringe_ex3_s4.png';
+import fringe_ex3_s5 from '/img/instruments/videomancer/fringe/fringe_ex3_s5.png';
+import fringe_ex3_s6 from '/img/instruments/videomancer/fringe/fringe_ex3_s6.png';
 
 # Fringe
 
@@ -23,9 +45,12 @@ import fringe_source3_stream_bridge_512 from '/img/instruments/videomancer/fring
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_hero },
-    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_hero },
-    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_hero },
+    { label: "Runner", before: fringe_source1_runner, after: fringe_hero_s1 },
+    { label: "Dog", before: fringe_source2_dog, after: fringe_hero_s2 },
+    { label: "Collage", before: fringe_source3_collage, after: fringe_hero_s3 },
+    { label: "Pattern", before: fringe_source4_pattern, after: fringe_hero_s4 },
+    { label: "Woman", before: fringe_source5_woman, after: fringe_hero_s5 },
+    { label: "Knit", before: fringe_source6_knit, after: fringe_hero_s6 },
   ]}
 />
 *Fringe rendering vivid rainbow moire and chroma smear across a colour-bar test pattern, the simulated NTSC composite artifacts blooming false colour from every vertical transition.*
@@ -135,8 +160,6 @@ The composite encoding uses a three-bit shift-add approximation rather than a ha
 
 ## Parameter Reference
 
-<img src={fringe_control_panel} alt="Videomancer front panel with Fringe loaded"/>
-*Videomancer's front panel with Fringe active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -240,9 +263,12 @@ These three exercises progressively explore the composite artifact space — fro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise1_result },
-    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise1_result },
-    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise1_result },
+    { label: "Runner", before: fringe_source1_runner, after: fringe_ex1_s1 },
+    { label: "Dog", before: fringe_source2_dog, after: fringe_ex1_s2 },
+    { label: "Collage", before: fringe_source3_collage, after: fringe_ex1_s3 },
+    { label: "Pattern", before: fringe_source4_pattern, after: fringe_ex1_s4 },
+    { label: "Woman", before: fringe_source5_woman, after: fringe_ex1_s5 },
+    { label: "Knit", before: fringe_source6_knit, after: fringe_ex1_s6 },
   ]}
 />
 *Composite Fringing on Colour Bars — simulated result across source images.*
@@ -266,9 +292,12 @@ These three exercises progressively explore the composite artifact space — fro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise2_result },
-    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise2_result },
-    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise2_result },
+    { label: "Runner", before: fringe_source1_runner, after: fringe_ex2_s1 },
+    { label: "Dog", before: fringe_source2_dog, after: fringe_ex2_s2 },
+    { label: "Collage", before: fringe_source3_collage, after: fringe_ex2_s3 },
+    { label: "Pattern", before: fringe_source4_pattern, after: fringe_ex2_s4 },
+    { label: "Woman", before: fringe_source5_woman, after: fringe_ex2_s5 },
+    { label: "Knit", before: fringe_source6_knit, after: fringe_ex2_s6 },
   ]}
 />
 *Dot Crawl and Comb Filter Exploration — simulated result across source images.*
@@ -291,9 +320,12 @@ These three exercises progressively explore the composite artifact space — fro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: fringe_source1_kodim15, after: fringe_exercise3_result },
-    { label: "Kodim01", before: fringe_source2_kodim01, after: fringe_exercise3_result },
-    { label: "Stream Bridge", before: fringe_source3_stream_bridge_512, after: fringe_exercise3_result },
+    { label: "Runner", before: fringe_source1_runner, after: fringe_ex3_s1 },
+    { label: "Dog", before: fringe_source2_dog, after: fringe_ex3_s2 },
+    { label: "Collage", before: fringe_source3_collage, after: fringe_ex3_s3 },
+    { label: "Pattern", before: fringe_source4_pattern, after: fringe_ex3_s4 },
+    { label: "Woman", before: fringe_source5_woman, after: fringe_ex3_s5 },
+    { label: "Knit", before: fringe_source6_knit, after: fringe_ex3_s6 },
   ]}
 />
 *CGA Artifact Colour Laboratory — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 150
+sidebar_position: 157
 slug: /instruments/videomancer/keystone
 title: "Keystone"
-image: /img/instruments/videomancer/keystone/keystone_hero.png
+image: /img/instruments/videomancer/keystone/keystone_hero_s1.png
 description: "Most video is captured as a rectangle, and most displays reproduce it as a rectangle."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import keystone_hero from '/img/instruments/videomancer/keystone/keystone_hero.png';
-import keystone_control_panel from '/img/instruments/videomancer/keystone/keystone_control_panel.png';
-import keystone_exercise1_result from '/img/instruments/videomancer/keystone/keystone_exercise1_result.png';
-import keystone_exercise2_result from '/img/instruments/videomancer/keystone/keystone_exercise2_result.png';
-import keystone_exercise3_result from '/img/instruments/videomancer/keystone/keystone_exercise3_result.png';
-import keystone_source1_kodim15 from '/img/instruments/videomancer/keystone/keystone_source1_kodim15.png';
-import keystone_source2_kodim15_bw from '/img/instruments/videomancer/keystone/keystone_source2_kodim15_bw.png';
-import keystone_source3_male_1024 from '/img/instruments/videomancer/keystone/keystone_source3_male_1024.png';
+import keystone_source1_field from '/img/instruments/videomancer/keystone/keystone_source1_field.png';
+import keystone_source2_car from '/img/instruments/videomancer/keystone/keystone_source2_car.png';
+import keystone_source3_elephant from '/img/instruments/videomancer/keystone/keystone_source3_elephant.png';
+import keystone_source4_pattern from '/img/instruments/videomancer/keystone/keystone_source4_pattern.png';
+import keystone_source5_woman from '/img/instruments/videomancer/keystone/keystone_source5_woman.png';
+import keystone_source6_knit from '/img/instruments/videomancer/keystone/keystone_source6_knit.png';
+import keystone_hero_s1 from '/img/instruments/videomancer/keystone/keystone_hero_s1.png';
+import keystone_hero_s2 from '/img/instruments/videomancer/keystone/keystone_hero_s2.png';
+import keystone_hero_s3 from '/img/instruments/videomancer/keystone/keystone_hero_s3.png';
+import keystone_hero_s4 from '/img/instruments/videomancer/keystone/keystone_hero_s4.png';
+import keystone_hero_s5 from '/img/instruments/videomancer/keystone/keystone_hero_s5.png';
+import keystone_hero_s6 from '/img/instruments/videomancer/keystone/keystone_hero_s6.png';
+import keystone_ex1_s1 from '/img/instruments/videomancer/keystone/keystone_ex1_s1.png';
+import keystone_ex1_s2 from '/img/instruments/videomancer/keystone/keystone_ex1_s2.png';
+import keystone_ex1_s3 from '/img/instruments/videomancer/keystone/keystone_ex1_s3.png';
+import keystone_ex1_s4 from '/img/instruments/videomancer/keystone/keystone_ex1_s4.png';
+import keystone_ex1_s5 from '/img/instruments/videomancer/keystone/keystone_ex1_s5.png';
+import keystone_ex1_s6 from '/img/instruments/videomancer/keystone/keystone_ex1_s6.png';
+import keystone_ex2_s1 from '/img/instruments/videomancer/keystone/keystone_ex2_s1.png';
+import keystone_ex2_s2 from '/img/instruments/videomancer/keystone/keystone_ex2_s2.png';
+import keystone_ex2_s3 from '/img/instruments/videomancer/keystone/keystone_ex2_s3.png';
+import keystone_ex2_s4 from '/img/instruments/videomancer/keystone/keystone_ex2_s4.png';
+import keystone_ex2_s5 from '/img/instruments/videomancer/keystone/keystone_ex2_s5.png';
+import keystone_ex2_s6 from '/img/instruments/videomancer/keystone/keystone_ex2_s6.png';
+import keystone_ex3_s1 from '/img/instruments/videomancer/keystone/keystone_ex3_s1.png';
+import keystone_ex3_s2 from '/img/instruments/videomancer/keystone/keystone_ex3_s2.png';
+import keystone_ex3_s3 from '/img/instruments/videomancer/keystone/keystone_ex3_s3.png';
+import keystone_ex3_s4 from '/img/instruments/videomancer/keystone/keystone_ex3_s4.png';
+import keystone_ex3_s5 from '/img/instruments/videomancer/keystone/keystone_ex3_s5.png';
+import keystone_ex3_s6 from '/img/instruments/videomancer/keystone/keystone_ex3_s6.png';
 
 # Keystone
 
@@ -23,9 +45,12 @@ import keystone_source3_male_1024 from '/img/instruments/videomancer/keystone/ke
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_hero },
-    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_hero },
-    { label: "Male", before: keystone_source3_male_1024, after: keystone_hero },
+    { label: "Field", before: keystone_source1_field, after: keystone_hero_s1 },
+    { label: "Car", before: keystone_source2_car, after: keystone_hero_s2 },
+    { label: "Elephant", before: keystone_source3_elephant, after: keystone_hero_s3 },
+    { label: "Pattern", before: keystone_source4_pattern, after: keystone_hero_s4 },
+    { label: "Woman", before: keystone_source5_woman, after: keystone_hero_s5 },
+    { label: "Knit", before: keystone_source6_knit, after: keystone_hero_s6 },
   ]}
 />
 *Keystone applying horizontal perspective foreshortening and skew to transform rectangular video into converging trapezoids.*
@@ -98,8 +123,6 @@ The animation oscillator runs independently, advancing its phase accumulator at 
 
 ## Parameter Reference
 
-<img src={keystone_control_panel} alt="Videomancer front panel with Keystone loaded"/>
-*Videomancer's front panel with Keystone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -204,9 +227,12 @@ These exercises progress from simple skew to animated compound transforms, build
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise1_result },
-    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise1_result },
-    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise1_result },
+    { label: "Field", before: keystone_source1_field, after: keystone_ex1_s1 },
+    { label: "Car", before: keystone_source2_car, after: keystone_ex1_s2 },
+    { label: "Elephant", before: keystone_source3_elephant, after: keystone_ex1_s3 },
+    { label: "Pattern", before: keystone_source4_pattern, after: keystone_ex1_s4 },
+    { label: "Woman", before: keystone_source5_woman, after: keystone_ex1_s5 },
+    { label: "Knit", before: keystone_source6_knit, after: keystone_ex1_s6 },
   ]}
 />
 *Parallelogram Tilt — simulated result across source images.*
@@ -228,9 +254,12 @@ These exercises progress from simple skew to animated compound transforms, build
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise2_result },
-    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise2_result },
-    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise2_result },
+    { label: "Field", before: keystone_source1_field, after: keystone_ex2_s1 },
+    { label: "Car", before: keystone_source2_car, after: keystone_ex2_s2 },
+    { label: "Elephant", before: keystone_source3_elephant, after: keystone_ex2_s3 },
+    { label: "Pattern", before: keystone_source4_pattern, after: keystone_ex2_s4 },
+    { label: "Woman", before: keystone_source5_woman, after: keystone_ex2_s5 },
+    { label: "Knit", before: keystone_source6_knit, after: keystone_ex2_s6 },
   ]}
 />
 *Vanishing Point Perspective — simulated result across source images.*
@@ -252,9 +281,12 @@ These exercises progress from simple skew to animated compound transforms, build
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: keystone_source1_kodim15, after: keystone_exercise3_result },
-    { label: "Kodim15 B&W", before: keystone_source2_kodim15_bw, after: keystone_exercise3_result },
-    { label: "Male", before: keystone_source3_male_1024, after: keystone_exercise3_result },
+    { label: "Field", before: keystone_source1_field, after: keystone_ex3_s1 },
+    { label: "Car", before: keystone_source2_car, after: keystone_ex3_s2 },
+    { label: "Elephant", before: keystone_source3_elephant, after: keystone_ex3_s3 },
+    { label: "Pattern", before: keystone_source4_pattern, after: keystone_ex3_s4 },
+    { label: "Woman", before: keystone_source5_woman, after: keystone_ex3_s5 },
+    { label: "Knit", before: keystone_source6_knit, after: keystone_ex3_s6 },
   ]}
 />
 *Animated Rocking — simulated result across source images.*

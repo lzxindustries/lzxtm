@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 31
+sidebar_position: 32
 slug: /instruments/videomancer/brushwork
 title: "Brushwork"
-image: /img/instruments/videomancer/brushwork/brushwork_hero.png
+image: /img/instruments/videomancer/brushwork/brushwork_hero_s1.png
 description: "In 1990, NewTek shipped the NewTek — an Amiga-based video effects system that introduced a generation of video producers to real-time digital transitions."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import brushwork_hero from '/img/instruments/videomancer/brushwork/brushwork_hero.png';
-import brushwork_control_panel from '/img/instruments/videomancer/brushwork/brushwork_control_panel.png';
-import brushwork_exercise1_result from '/img/instruments/videomancer/brushwork/brushwork_exercise1_result.png';
-import brushwork_exercise2_result from '/img/instruments/videomancer/brushwork/brushwork_exercise2_result.png';
-import brushwork_exercise3_result from '/img/instruments/videomancer/brushwork/brushwork_exercise3_result.png';
-import brushwork_source1_kodim15 from '/img/instruments/videomancer/brushwork/brushwork_source1_kodim15.png';
-import brushwork_source2_kodim03 from '/img/instruments/videomancer/brushwork/brushwork_source2_kodim03.png';
-import brushwork_source3_kodim13_bw from '/img/instruments/videomancer/brushwork/brushwork_source3_kodim13_bw.png';
+import brushwork_source1_runner from '/img/instruments/videomancer/brushwork/brushwork_source1_runner.png';
+import brushwork_source2_field from '/img/instruments/videomancer/brushwork/brushwork_source2_field.png';
+import brushwork_source3_turtle from '/img/instruments/videomancer/brushwork/brushwork_source3_turtle.png';
+import brushwork_source4_pattern from '/img/instruments/videomancer/brushwork/brushwork_source4_pattern.png';
+import brushwork_source5_woman from '/img/instruments/videomancer/brushwork/brushwork_source5_woman.png';
+import brushwork_source6_wood from '/img/instruments/videomancer/brushwork/brushwork_source6_wood.png';
+import brushwork_hero_s1 from '/img/instruments/videomancer/brushwork/brushwork_hero_s1.png';
+import brushwork_hero_s2 from '/img/instruments/videomancer/brushwork/brushwork_hero_s2.png';
+import brushwork_hero_s3 from '/img/instruments/videomancer/brushwork/brushwork_hero_s3.png';
+import brushwork_hero_s4 from '/img/instruments/videomancer/brushwork/brushwork_hero_s4.png';
+import brushwork_hero_s5 from '/img/instruments/videomancer/brushwork/brushwork_hero_s5.png';
+import brushwork_hero_s6 from '/img/instruments/videomancer/brushwork/brushwork_hero_s6.png';
+import brushwork_ex1_s1 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s1.png';
+import brushwork_ex1_s2 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s2.png';
+import brushwork_ex1_s3 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s3.png';
+import brushwork_ex1_s4 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s4.png';
+import brushwork_ex1_s5 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s5.png';
+import brushwork_ex1_s6 from '/img/instruments/videomancer/brushwork/brushwork_ex1_s6.png';
+import brushwork_ex2_s1 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s1.png';
+import brushwork_ex2_s2 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s2.png';
+import brushwork_ex2_s3 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s3.png';
+import brushwork_ex2_s4 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s4.png';
+import brushwork_ex2_s5 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s5.png';
+import brushwork_ex2_s6 from '/img/instruments/videomancer/brushwork/brushwork_ex2_s6.png';
+import brushwork_ex3_s1 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s1.png';
+import brushwork_ex3_s2 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s2.png';
+import brushwork_ex3_s3 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s3.png';
+import brushwork_ex3_s4 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s4.png';
+import brushwork_ex3_s5 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s5.png';
+import brushwork_ex3_s6 from '/img/instruments/videomancer/brushwork/brushwork_ex3_s6.png';
 
 # Brushwork
 
@@ -23,9 +45,12 @@ import brushwork_source3_kodim13_bw from '/img/instruments/videomancer/brushwork
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_hero },
-    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_hero },
-    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_hero },
+    { label: "Runner", before: brushwork_source1_runner, after: brushwork_hero_s1 },
+    { label: "Field", before: brushwork_source2_field, after: brushwork_hero_s2 },
+    { label: "Turtle", before: brushwork_source3_turtle, after: brushwork_hero_s3 },
+    { label: "Pattern", before: brushwork_source4_pattern, after: brushwork_hero_s4 },
+    { label: "Woman", before: brushwork_source5_woman, after: brushwork_hero_s5 },
+    { label: "Wood", before: brushwork_source6_wood, after: brushwork_hero_s6 },
   ]}
 />
 *Brushwork applying a bristle-textured paint sweep revealing a source image through a warm-toned fill color.*
@@ -107,9 +132,6 @@ The key insight of Brushwork's pipeline is that all edge modulation happens in a
 ---
 
 ## Parameter Reference
-
-<img src={brushwork_control_panel} alt="Videomancer front panel with Brushwork loaded"/>
-*Videomancer's front panel with Brushwork active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +236,12 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise1_result },
-    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise1_result },
-    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise1_result },
+    { label: "Runner", before: brushwork_source1_runner, after: brushwork_ex1_s1 },
+    { label: "Field", before: brushwork_source2_field, after: brushwork_ex1_s2 },
+    { label: "Turtle", before: brushwork_source3_turtle, after: brushwork_ex1_s3 },
+    { label: "Pattern", before: brushwork_source4_pattern, after: brushwork_ex1_s4 },
+    { label: "Woman", before: brushwork_source5_woman, after: brushwork_ex1_s5 },
+    { label: "Wood", before: brushwork_source6_wood, after: brushwork_ex1_s6 },
   ]}
 />
 *Classic Bristle Brush Stroke — simulated result across source images.*
@@ -245,9 +270,12 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise2_result },
-    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise2_result },
-    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise2_result },
+    { label: "Runner", before: brushwork_source1_runner, after: brushwork_ex2_s1 },
+    { label: "Field", before: brushwork_source2_field, after: brushwork_ex2_s2 },
+    { label: "Turtle", before: brushwork_source3_turtle, after: brushwork_ex2_s3 },
+    { label: "Pattern", before: brushwork_source4_pattern, after: brushwork_ex2_s4 },
+    { label: "Woman", before: brushwork_source5_woman, after: brushwork_ex2_s5 },
+    { label: "Wood", before: brushwork_source6_wood, after: brushwork_ex2_s6 },
   ]}
 />
 *Palette Knife Video Reveal — simulated result across source images.*
@@ -276,9 +304,12 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: brushwork_source1_kodim15, after: brushwork_exercise3_result },
-    { label: "Kodim03", before: brushwork_source2_kodim03, after: brushwork_exercise3_result },
-    { label: "Kodim13 B&W", before: brushwork_source3_kodim13_bw, after: brushwork_exercise3_result },
+    { label: "Runner", before: brushwork_source1_runner, after: brushwork_ex3_s1 },
+    { label: "Field", before: brushwork_source2_field, after: brushwork_ex3_s2 },
+    { label: "Turtle", before: brushwork_source3_turtle, after: brushwork_ex3_s3 },
+    { label: "Pattern", before: brushwork_source4_pattern, after: brushwork_ex3_s4 },
+    { label: "Woman", before: brushwork_source5_woman, after: brushwork_ex3_s5 },
+    { label: "Wood", before: brushwork_source6_wood, after: brushwork_ex3_s6 },
   ]}
 />
 *Vertical Sponge Wash with Soft Edges — simulated result across source images.*

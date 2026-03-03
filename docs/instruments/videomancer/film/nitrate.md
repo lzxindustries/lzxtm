@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 197
+sidebar_position: 205
 slug: /instruments/videomancer/nitrate
 title: "Nitrate"
-image: /img/instruments/videomancer/nitrate/nitrate_hero.png
+image: /img/instruments/videomancer/nitrate/nitrate_hero_s1.png
 description: "Before Technicolor, cinema was colored by hand."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import nitrate_hero from '/img/instruments/videomancer/nitrate/nitrate_hero.png';
-import nitrate_control_panel from '/img/instruments/videomancer/nitrate/nitrate_control_panel.png';
-import nitrate_exercise1_result from '/img/instruments/videomancer/nitrate/nitrate_exercise1_result.png';
-import nitrate_exercise2_result from '/img/instruments/videomancer/nitrate/nitrate_exercise2_result.png';
-import nitrate_exercise3_result from '/img/instruments/videomancer/nitrate/nitrate_exercise3_result.png';
-import nitrate_source1_kodim03 from '/img/instruments/videomancer/nitrate/nitrate_source1_kodim03.png';
-import nitrate_source2_kodim13 from '/img/instruments/videomancer/nitrate/nitrate_source2_kodim13.png';
-import nitrate_source3_kodim13_bw from '/img/instruments/videomancer/nitrate/nitrate_source3_kodim13_bw.png';
+import nitrate_source1_parrot from '/img/instruments/videomancer/nitrate/nitrate_source1_parrot.png';
+import nitrate_source2_field from '/img/instruments/videomancer/nitrate/nitrate_source2_field.png';
+import nitrate_source3_turtle from '/img/instruments/videomancer/nitrate/nitrate_source3_turtle.png';
+import nitrate_source4_pattern from '/img/instruments/videomancer/nitrate/nitrate_source4_pattern.png';
+import nitrate_source5_man from '/img/instruments/videomancer/nitrate/nitrate_source5_man.png';
+import nitrate_source6_berries from '/img/instruments/videomancer/nitrate/nitrate_source6_berries.png';
+import nitrate_hero_s1 from '/img/instruments/videomancer/nitrate/nitrate_hero_s1.png';
+import nitrate_hero_s2 from '/img/instruments/videomancer/nitrate/nitrate_hero_s2.png';
+import nitrate_hero_s3 from '/img/instruments/videomancer/nitrate/nitrate_hero_s3.png';
+import nitrate_hero_s4 from '/img/instruments/videomancer/nitrate/nitrate_hero_s4.png';
+import nitrate_hero_s5 from '/img/instruments/videomancer/nitrate/nitrate_hero_s5.png';
+import nitrate_hero_s6 from '/img/instruments/videomancer/nitrate/nitrate_hero_s6.png';
+import nitrate_ex1_s1 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s1.png';
+import nitrate_ex1_s2 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s2.png';
+import nitrate_ex1_s3 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s3.png';
+import nitrate_ex1_s4 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s4.png';
+import nitrate_ex1_s5 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s5.png';
+import nitrate_ex1_s6 from '/img/instruments/videomancer/nitrate/nitrate_ex1_s6.png';
+import nitrate_ex2_s1 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s1.png';
+import nitrate_ex2_s2 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s2.png';
+import nitrate_ex2_s3 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s3.png';
+import nitrate_ex2_s4 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s4.png';
+import nitrate_ex2_s5 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s5.png';
+import nitrate_ex2_s6 from '/img/instruments/videomancer/nitrate/nitrate_ex2_s6.png';
+import nitrate_ex3_s1 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s1.png';
+import nitrate_ex3_s2 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s2.png';
+import nitrate_ex3_s3 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s3.png';
+import nitrate_ex3_s4 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s4.png';
+import nitrate_ex3_s5 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s5.png';
+import nitrate_ex3_s6 from '/img/instruments/videomancer/nitrate/nitrate_ex3_s6.png';
 
 # Nitrate
 
@@ -23,9 +45,12 @@ import nitrate_source3_kodim13_bw from '/img/instruments/videomancer/nitrate/nit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_hero },
-    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_hero },
-    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_hero },
+    { label: "Parrot", before: nitrate_source1_parrot, after: nitrate_hero_s1 },
+    { label: "Field", before: nitrate_source2_field, after: nitrate_hero_s2 },
+    { label: "Turtle", before: nitrate_source3_turtle, after: nitrate_hero_s3 },
+    { label: "Pattern", before: nitrate_source4_pattern, after: nitrate_hero_s4 },
+    { label: "Man", before: nitrate_source5_man, after: nitrate_hero_s5 },
+    { label: "Berries", before: nitrate_source6_berries, after: nitrate_hero_s6 },
   ]}
 />
 *Nitrate applying sepia-toned tinting and blue-toned toning to create a hand-painted silent cinema colorization effect.*
@@ -117,8 +142,6 @@ The flicker gate operates only on luminance — chrominance UV passes through un
 
 ## Parameter Reference
 
-<img src={nitrate_control_panel} alt="Videomancer front panel with Nitrate loaded"/>
-*Videomancer's front panel with Nitrate active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from basic single-color tinting through duotone process
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise1_result },
-    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise1_result },
-    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise1_result },
+    { label: "Parrot", before: nitrate_source1_parrot, after: nitrate_ex1_s1 },
+    { label: "Field", before: nitrate_source2_field, after: nitrate_ex1_s2 },
+    { label: "Turtle", before: nitrate_source3_turtle, after: nitrate_ex1_s3 },
+    { label: "Pattern", before: nitrate_source4_pattern, after: nitrate_ex1_s4 },
+    { label: "Man", before: nitrate_source5_man, after: nitrate_ex1_s5 },
+    { label: "Berries", before: nitrate_source6_berries, after: nitrate_ex1_s6 },
   ]}
 />
 *Sepia Tinting — simulated result across source images.*
@@ -247,9 +273,12 @@ These exercises progress from basic single-color tinting through duotone process
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise2_result },
-    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise2_result },
-    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise2_result },
+    { label: "Parrot", before: nitrate_source1_parrot, after: nitrate_ex2_s1 },
+    { label: "Field", before: nitrate_source2_field, after: nitrate_ex2_s2 },
+    { label: "Turtle", before: nitrate_source3_turtle, after: nitrate_ex2_s3 },
+    { label: "Pattern", before: nitrate_source4_pattern, after: nitrate_ex2_s4 },
+    { label: "Man", before: nitrate_source5_man, after: nitrate_ex2_s5 },
+    { label: "Berries", before: nitrate_source6_berries, after: nitrate_ex2_s6 },
   ]}
 />
 *Duotone Tint and Tone — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from basic single-color tinting through duotone process
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: nitrate_source1_kodim03, after: nitrate_exercise3_result },
-    { label: "Kodim13", before: nitrate_source2_kodim13, after: nitrate_exercise3_result },
-    { label: "Kodim13 B&W", before: nitrate_source3_kodim13_bw, after: nitrate_exercise3_result },
+    { label: "Parrot", before: nitrate_source1_parrot, after: nitrate_ex3_s1 },
+    { label: "Field", before: nitrate_source2_field, after: nitrate_ex3_s2 },
+    { label: "Turtle", before: nitrate_source3_turtle, after: nitrate_ex3_s3 },
+    { label: "Pattern", before: nitrate_source4_pattern, after: nitrate_ex3_s4 },
+    { label: "Man", before: nitrate_source5_man, after: nitrate_ex3_s5 },
+    { label: "Berries", before: nitrate_source6_berries, after: nitrate_ex3_s6 },
   ]}
 />
 *Stencil Coloring with Flicker — simulated result across source images.*

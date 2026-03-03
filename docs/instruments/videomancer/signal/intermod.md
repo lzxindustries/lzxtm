@@ -1,21 +1,25 @@
 ---
 draft: true
-sidebar_position: 139
+sidebar_position: 145
 slug: /instruments/videomancer/intermod
 title: "Intermod"
-image: /img/instruments/videomancer/intermod/intermod_hero.png
+image: /img/instruments/videomancer/intermod/intermod_hero_s1.png
 description: "Analog amplifiers do not clip gracefully."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import intermod_hero from '/img/instruments/videomancer/intermod/intermod_hero.png';
-import intermod_control_panel from '/img/instruments/videomancer/intermod/intermod_control_panel.png';
-import intermod_exercise1_result from '/img/instruments/videomancer/intermod/intermod_exercise1_result.png';
-import intermod_exercise2_result from '/img/instruments/videomancer/intermod/intermod_exercise2_result.png';
-import intermod_exercise3_result from '/img/instruments/videomancer/intermod/intermod_exercise3_result.png';
-import intermod_source1_kodim15 from '/img/instruments/videomancer/intermod/intermod_source1_kodim15.png';
-import intermod_source2_kodim01 from '/img/instruments/videomancer/intermod/intermod_source2_kodim01.png';
-import intermod_source3_stream_bridge_512 from '/img/instruments/videomancer/intermod/intermod_source3_stream_bridge_512.png';
+import intermod_source1_cat from '/img/instruments/videomancer/intermod/intermod_source1_cat.png';
+import intermod_source2_dog from '/img/instruments/videomancer/intermod/intermod_source2_dog.png';
+import intermod_source3_collage from '/img/instruments/videomancer/intermod/intermod_source3_collage.png';
+import intermod_source4_pattern from '/img/instruments/videomancer/intermod/intermod_source4_pattern.png';
+import intermod_source5_woman from '/img/instruments/videomancer/intermod/intermod_source5_woman.png';
+import intermod_source6_wood from '/img/instruments/videomancer/intermod/intermod_source6_wood.png';
+import intermod_hero_s1 from '/img/instruments/videomancer/intermod/intermod_hero_s1.png';
+import intermod_hero_s2 from '/img/instruments/videomancer/intermod/intermod_hero_s2.png';
+import intermod_hero_s3 from '/img/instruments/videomancer/intermod/intermod_hero_s3.png';
+import intermod_hero_s4 from '/img/instruments/videomancer/intermod/intermod_hero_s4.png';
+import intermod_hero_s5 from '/img/instruments/videomancer/intermod/intermod_hero_s5.png';
+import intermod_hero_s6 from '/img/instruments/videomancer/intermod/intermod_hero_s6.png';
 
 # Intermod
 
@@ -23,9 +27,12 @@ import intermod_source3_stream_bridge_512 from '/img/instruments/videomancer/int
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: intermod_source1_kodim15, after: intermod_hero },
-    { label: "Kodim01", before: intermod_source2_kodim01, after: intermod_hero },
-    { label: "Stream Bridge", before: intermod_source3_stream_bridge_512, after: intermod_hero },
+    { label: "Cat", before: intermod_source1_cat, after: intermod_hero_s1 },
+    { label: "Dog", before: intermod_source2_dog, after: intermod_hero_s2 },
+    { label: "Collage", before: intermod_source3_collage, after: intermod_hero_s3 },
+    { label: "Pattern", before: intermod_source4_pattern, after: intermod_hero_s4 },
+    { label: "Woman", before: intermod_source5_woman, after: intermod_hero_s5 },
+    { label: "Wood", before: intermod_source6_wood, after: intermod_hero_s6 },
   ]}
 />
 *Intermod applying polynomial non-linear distortion with cross-channel coupling to produce overdriven harmonic textures and saturated color artifacts.*
@@ -106,8 +113,6 @@ The pipeline operates in a signed domain: input values are centered around zero 
 
 ## Parameter Reference
 
-<img src={intermod_control_panel} alt="Videomancer front panel with Intermod loaded"/>
-*Videomancer's front panel with Intermod active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

@@ -3,19 +3,42 @@ draft: true
 sidebar_position: 5
 slug: /instruments/videomancer/amphora
 title: "Amphora"
-image: /img/instruments/videomancer/amphora/amphora_hero.png
+image: /img/instruments/videomancer/amphora/amphora_hero_s1.png
 description: "Amphora recreates the visual language of Classical Greek painted pottery, transforming input video into images resembling Attic black-figure and red-figure ceramic vase painting."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import amphora_hero from '/img/instruments/videomancer/amphora/amphora_hero.png';
 import amphora_control_panel from '/img/instruments/videomancer/amphora/amphora_control_panel.png';
-import amphora_exercise1_result from '/img/instruments/videomancer/amphora/amphora_exercise1_result.png';
-import amphora_exercise2_result from '/img/instruments/videomancer/amphora/amphora_exercise2_result.png';
-import amphora_exercise3_result from '/img/instruments/videomancer/amphora/amphora_exercise3_result.png';
-import amphora_source1_kodim03 from '/img/instruments/videomancer/amphora/amphora_source1_kodim03.png';
-import amphora_source2_kodim13 from '/img/instruments/videomancer/amphora/amphora_source2_kodim13.png';
-import amphora_source3_kodim13_bw from '/img/instruments/videomancer/amphora/amphora_source3_kodim13_bw.png';
+import amphora_source1_ballerina from '/img/instruments/videomancer/amphora/amphora_source1_ballerina.png';
+import amphora_source2_boat from '/img/instruments/videomancer/amphora/amphora_source2_boat.png';
+import amphora_source3_clouds from '/img/instruments/videomancer/amphora/amphora_source3_clouds.png';
+import amphora_source4_pattern from '/img/instruments/videomancer/amphora/amphora_source4_pattern.png';
+import amphora_source5_boy from '/img/instruments/videomancer/amphora/amphora_source5_boy.png';
+import amphora_source6_paint from '/img/instruments/videomancer/amphora/amphora_source6_paint.png';
+import amphora_hero_s1 from '/img/instruments/videomancer/amphora/amphora_hero_s1.png';
+import amphora_hero_s2 from '/img/instruments/videomancer/amphora/amphora_hero_s2.png';
+import amphora_hero_s3 from '/img/instruments/videomancer/amphora/amphora_hero_s3.png';
+import amphora_hero_s4 from '/img/instruments/videomancer/amphora/amphora_hero_s4.png';
+import amphora_hero_s5 from '/img/instruments/videomancer/amphora/amphora_hero_s5.png';
+import amphora_hero_s6 from '/img/instruments/videomancer/amphora/amphora_hero_s6.png';
+import amphora_ex1_s1 from '/img/instruments/videomancer/amphora/amphora_ex1_s1.png';
+import amphora_ex1_s2 from '/img/instruments/videomancer/amphora/amphora_ex1_s2.png';
+import amphora_ex1_s3 from '/img/instruments/videomancer/amphora/amphora_ex1_s3.png';
+import amphora_ex1_s4 from '/img/instruments/videomancer/amphora/amphora_ex1_s4.png';
+import amphora_ex1_s5 from '/img/instruments/videomancer/amphora/amphora_ex1_s5.png';
+import amphora_ex1_s6 from '/img/instruments/videomancer/amphora/amphora_ex1_s6.png';
+import amphora_ex2_s1 from '/img/instruments/videomancer/amphora/amphora_ex2_s1.png';
+import amphora_ex2_s2 from '/img/instruments/videomancer/amphora/amphora_ex2_s2.png';
+import amphora_ex2_s3 from '/img/instruments/videomancer/amphora/amphora_ex2_s3.png';
+import amphora_ex2_s4 from '/img/instruments/videomancer/amphora/amphora_ex2_s4.png';
+import amphora_ex2_s5 from '/img/instruments/videomancer/amphora/amphora_ex2_s5.png';
+import amphora_ex2_s6 from '/img/instruments/videomancer/amphora/amphora_ex2_s6.png';
+import amphora_ex3_s1 from '/img/instruments/videomancer/amphora/amphora_ex3_s1.png';
+import amphora_ex3_s2 from '/img/instruments/videomancer/amphora/amphora_ex3_s2.png';
+import amphora_ex3_s3 from '/img/instruments/videomancer/amphora/amphora_ex3_s3.png';
+import amphora_ex3_s4 from '/img/instruments/videomancer/amphora/amphora_ex3_s4.png';
+import amphora_ex3_s5 from '/img/instruments/videomancer/amphora/amphora_ex3_s5.png';
+import amphora_ex3_s6 from '/img/instruments/videomancer/amphora/amphora_ex3_s6.png';
 
 # Amphora
 
@@ -23,9 +46,12 @@ import amphora_source3_kodim13_bw from '/img/instruments/videomancer/amphora/amp
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_hero },
-    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_hero },
-    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_hero },
+    { label: "Ballerina", before: amphora_source1_ballerina, after: amphora_hero_s1 },
+    { label: "Boat", before: amphora_source2_boat, after: amphora_hero_s2 },
+    { label: "Clouds", before: amphora_source3_clouds, after: amphora_hero_s3 },
+    { label: "Pattern", before: amphora_source4_pattern, after: amphora_hero_s4 },
+    { label: "Boy", before: amphora_source5_boy, after: amphora_hero_s5 },
+    { label: "Paint", before: amphora_source6_paint, after: amphora_hero_s6 },
   ]}
 />
 *Amphora rendering a red-figure pottery treatment over a portrait — luminance thresholding splits the image into terra-cotta figures on a black-glazed ground, with horizontal and vertical edge-detected detail lines overlaid in dark brown.*
@@ -208,9 +234,12 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise1_result },
-    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise1_result },
-    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise1_result },
+    { label: "Ballerina", before: amphora_source1_ballerina, after: amphora_ex1_s1 },
+    { label: "Boat", before: amphora_source2_boat, after: amphora_ex1_s2 },
+    { label: "Clouds", before: amphora_source3_clouds, after: amphora_ex1_s3 },
+    { label: "Pattern", before: amphora_source4_pattern, after: amphora_ex1_s4 },
+    { label: "Boy", before: amphora_source5_boy, after: amphora_ex1_s5 },
+    { label: "Paint", before: amphora_source6_paint, after: amphora_ex1_s6 },
   ]}
 />
 *Classic Black-Figure Rendering — simulated result across source images.*
@@ -234,9 +263,12 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise2_result },
-    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise2_result },
-    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise2_result },
+    { label: "Ballerina", before: amphora_source1_ballerina, after: amphora_ex2_s1 },
+    { label: "Boat", before: amphora_source2_boat, after: amphora_ex2_s2 },
+    { label: "Clouds", before: amphora_source3_clouds, after: amphora_ex2_s3 },
+    { label: "Pattern", before: amphora_source4_pattern, after: amphora_ex2_s4 },
+    { label: "Boy", before: amphora_source5_boy, after: amphora_ex2_s5 },
+    { label: "Paint", before: amphora_source6_paint, after: amphora_ex2_s6 },
   ]}
 />
 *Red-Figure with Detail Lines — simulated result across source images.*
@@ -260,9 +292,12 @@ These exercises progress from basic black-figure rendering through red-figure wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: amphora_source1_kodim03, after: amphora_exercise3_result },
-    { label: "Kodim13", before: amphora_source2_kodim13, after: amphora_exercise3_result },
-    { label: "Kodim13 B&W", before: amphora_source3_kodim13_bw, after: amphora_exercise3_result },
+    { label: "Ballerina", before: amphora_source1_ballerina, after: amphora_ex3_s1 },
+    { label: "Boat", before: amphora_source2_boat, after: amphora_ex3_s2 },
+    { label: "Clouds", before: amphora_source3_clouds, after: amphora_ex3_s3 },
+    { label: "Pattern", before: amphora_source4_pattern, after: amphora_ex3_s4 },
+    { label: "Boy", before: amphora_source5_boy, after: amphora_ex3_s5 },
+    { label: "Paint", before: amphora_source6_paint, after: amphora_ex3_s6 },
   ]}
 />
 *Complete Amphora with Meander Border — simulated result across source images.*

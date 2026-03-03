@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 275
+sidebar_position: 287
 slug: /instruments/videomancer/stratum
 title: "Stratum"
 image: /img/instruments/videomancer/stratum/stratum_hero.png

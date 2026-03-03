@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 189
+sidebar_position: 197
 slug: /instruments/videomancer/mosaic
 title: "Mosaic"
-image: /img/instruments/videomancer/mosaic/mosaic_hero.png
+image: /img/instruments/videomancer/mosaic/mosaic_hero_s1.png
 description: "Every digital image is already a mosaic — a grid of discrete samples."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import mosaic_hero from '/img/instruments/videomancer/mosaic/mosaic_hero.png';
-import mosaic_control_panel from '/img/instruments/videomancer/mosaic/mosaic_control_panel.png';
-import mosaic_exercise1_result from '/img/instruments/videomancer/mosaic/mosaic_exercise1_result.png';
-import mosaic_exercise2_result from '/img/instruments/videomancer/mosaic/mosaic_exercise2_result.png';
-import mosaic_exercise3_result from '/img/instruments/videomancer/mosaic/mosaic_exercise3_result.png';
-import mosaic_source1_kodim02 from '/img/instruments/videomancer/mosaic/mosaic_source1_kodim02.png';
-import mosaic_source2_kodim07 from '/img/instruments/videomancer/mosaic/mosaic_source2_kodim07.png';
-import mosaic_source3_kodim01_bw from '/img/instruments/videomancer/mosaic/mosaic_source3_kodim01_bw.png';
+import mosaic_source1_boat from '/img/instruments/videomancer/mosaic/mosaic_source1_boat.png';
+import mosaic_source2_parrot from '/img/instruments/videomancer/mosaic/mosaic_source2_parrot.png';
+import mosaic_source3_clouds from '/img/instruments/videomancer/mosaic/mosaic_source3_clouds.png';
+import mosaic_source4_pattern from '/img/instruments/videomancer/mosaic/mosaic_source4_pattern.png';
+import mosaic_source5_man from '/img/instruments/videomancer/mosaic/mosaic_source5_man.png';
+import mosaic_source6_knit from '/img/instruments/videomancer/mosaic/mosaic_source6_knit.png';
+import mosaic_hero_s1 from '/img/instruments/videomancer/mosaic/mosaic_hero_s1.png';
+import mosaic_hero_s2 from '/img/instruments/videomancer/mosaic/mosaic_hero_s2.png';
+import mosaic_hero_s3 from '/img/instruments/videomancer/mosaic/mosaic_hero_s3.png';
+import mosaic_hero_s4 from '/img/instruments/videomancer/mosaic/mosaic_hero_s4.png';
+import mosaic_hero_s5 from '/img/instruments/videomancer/mosaic/mosaic_hero_s5.png';
+import mosaic_hero_s6 from '/img/instruments/videomancer/mosaic/mosaic_hero_s6.png';
+import mosaic_ex1_s1 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s1.png';
+import mosaic_ex1_s2 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s2.png';
+import mosaic_ex1_s3 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s3.png';
+import mosaic_ex1_s4 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s4.png';
+import mosaic_ex1_s5 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s5.png';
+import mosaic_ex1_s6 from '/img/instruments/videomancer/mosaic/mosaic_ex1_s6.png';
+import mosaic_ex2_s1 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s1.png';
+import mosaic_ex2_s2 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s2.png';
+import mosaic_ex2_s3 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s3.png';
+import mosaic_ex2_s4 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s4.png';
+import mosaic_ex2_s5 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s5.png';
+import mosaic_ex2_s6 from '/img/instruments/videomancer/mosaic/mosaic_ex2_s6.png';
+import mosaic_ex3_s1 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s1.png';
+import mosaic_ex3_s2 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s2.png';
+import mosaic_ex3_s3 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s3.png';
+import mosaic_ex3_s4 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s4.png';
+import mosaic_ex3_s5 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s5.png';
+import mosaic_ex3_s6 from '/img/instruments/videomancer/mosaic/mosaic_ex3_s6.png';
 
 # Mosaic
 
@@ -23,9 +45,12 @@ import mosaic_source3_kodim01_bw from '/img/instruments/videomancer/mosaic/mosai
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_hero },
-    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_hero },
-    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_hero },
+    { label: "Boat", before: mosaic_source1_boat, after: mosaic_hero_s1 },
+    { label: "Parrot", before: mosaic_source2_parrot, after: mosaic_hero_s2 },
+    { label: "Clouds", before: mosaic_source3_clouds, after: mosaic_hero_s3 },
+    { label: "Pattern", before: mosaic_source4_pattern, after: mosaic_hero_s4 },
+    { label: "Man", before: mosaic_source5_man, after: mosaic_hero_s5 },
+    { label: "Knit", before: mosaic_source6_knit, after: mosaic_hero_s6 },
   ]}
 />
 *Mosaic applying luma-modulated sample-and-hold pixelation with edge enhancement to create content-adaptive block structures.*
@@ -108,8 +133,6 @@ The luma inversion happens *before* the luma modulation computation, so it rever
 
 ## Parameter Reference
 
-<img src={mosaic_control_panel} alt="Videomancer front panel with Mosaic loaded"/>
-*Videomancer's front panel with Mosaic active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,9 +235,12 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise1_result },
-    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise1_result },
-    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise1_result },
+    { label: "Boat", before: mosaic_source1_boat, after: mosaic_ex1_s1 },
+    { label: "Parrot", before: mosaic_source2_parrot, after: mosaic_ex1_s2 },
+    { label: "Clouds", before: mosaic_source3_clouds, after: mosaic_ex1_s3 },
+    { label: "Pattern", before: mosaic_source4_pattern, after: mosaic_ex1_s4 },
+    { label: "Man", before: mosaic_source5_man, after: mosaic_ex1_s5 },
+    { label: "Knit", before: mosaic_source6_knit, after: mosaic_ex1_s6 },
   ]}
 />
 *Basic Pixelation — simulated result across source images.*
@@ -236,9 +262,12 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise2_result },
-    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise2_result },
-    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise2_result },
+    { label: "Boat", before: mosaic_source1_boat, after: mosaic_ex2_s1 },
+    { label: "Parrot", before: mosaic_source2_parrot, after: mosaic_ex2_s2 },
+    { label: "Clouds", before: mosaic_source3_clouds, after: mosaic_ex2_s3 },
+    { label: "Pattern", before: mosaic_source4_pattern, after: mosaic_ex2_s4 },
+    { label: "Man", before: mosaic_source5_man, after: mosaic_ex2_s5 },
+    { label: "Knit", before: mosaic_source6_knit, after: mosaic_ex2_s6 },
   ]}
 />
 *Content-Adaptive Modulation — simulated result across source images.*
@@ -260,9 +289,12 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: mosaic_source1_kodim02, after: mosaic_exercise3_result },
-    { label: "Kodim07", before: mosaic_source2_kodim07, after: mosaic_exercise3_result },
-    { label: "Kodim01 B&W", before: mosaic_source3_kodim01_bw, after: mosaic_exercise3_result },
+    { label: "Boat", before: mosaic_source1_boat, after: mosaic_ex3_s1 },
+    { label: "Parrot", before: mosaic_source2_parrot, after: mosaic_ex3_s2 },
+    { label: "Clouds", before: mosaic_source3_clouds, after: mosaic_ex3_s3 },
+    { label: "Pattern", before: mosaic_source4_pattern, after: mosaic_ex3_s4 },
+    { label: "Man", before: mosaic_source5_man, after: mosaic_ex3_s5 },
+    { label: "Knit", before: mosaic_source6_knit, after: mosaic_ex3_s6 },
   ]}
 />
 *Stained Glass Effect — simulated result across source images.*

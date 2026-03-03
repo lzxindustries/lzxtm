@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 63
+sidebar_position: 66
 slug: /instruments/videomancer/corollas
 title: "Corollas"
-image: /img/instruments/videomancer/corollas/corollas_hero.png
+image: /img/instruments/videomancer/corollas/corollas_hero_s1.png
 description: "Corollas is a frequency-doubling harmonic processor that transforms the luminance channel of an incoming video signal into a series of concentric, petal-like interference patterns distributed across the Y, U, and V output channels."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import corollas_hero from '/img/instruments/videomancer/corollas/corollas_hero.png';
-import corollas_control_panel from '/img/instruments/videomancer/corollas/corollas_control_panel.png';
-import corollas_exercise1_result from '/img/instruments/videomancer/corollas/corollas_exercise1_result.png';
-import corollas_exercise2_result from '/img/instruments/videomancer/corollas/corollas_exercise2_result.png';
-import corollas_exercise3_result from '/img/instruments/videomancer/corollas/corollas_exercise3_result.png';
-import corollas_source1_kodim03 from '/img/instruments/videomancer/corollas/corollas_source1_kodim03.png';
-import corollas_source2_kodim15 from '/img/instruments/videomancer/corollas/corollas_source2_kodim15.png';
-import corollas_source3_peppers_512 from '/img/instruments/videomancer/corollas/corollas_source3_peppers_512.png';
+import corollas_source1_boat from '/img/instruments/videomancer/corollas/corollas_source1_boat.png';
+import corollas_source2_dog from '/img/instruments/videomancer/corollas/corollas_source2_dog.png';
+import corollas_source3_turtle from '/img/instruments/videomancer/corollas/corollas_source3_turtle.png';
+import corollas_source4_pattern from '/img/instruments/videomancer/corollas/corollas_source4_pattern.png';
+import corollas_source5_girl from '/img/instruments/videomancer/corollas/corollas_source5_girl.png';
+import corollas_source6_wood from '/img/instruments/videomancer/corollas/corollas_source6_wood.png';
+import corollas_hero_s1 from '/img/instruments/videomancer/corollas/corollas_hero_s1.png';
+import corollas_hero_s2 from '/img/instruments/videomancer/corollas/corollas_hero_s2.png';
+import corollas_hero_s3 from '/img/instruments/videomancer/corollas/corollas_hero_s3.png';
+import corollas_hero_s4 from '/img/instruments/videomancer/corollas/corollas_hero_s4.png';
+import corollas_hero_s5 from '/img/instruments/videomancer/corollas/corollas_hero_s5.png';
+import corollas_hero_s6 from '/img/instruments/videomancer/corollas/corollas_hero_s6.png';
+import corollas_ex1_s1 from '/img/instruments/videomancer/corollas/corollas_ex1_s1.png';
+import corollas_ex1_s2 from '/img/instruments/videomancer/corollas/corollas_ex1_s2.png';
+import corollas_ex1_s3 from '/img/instruments/videomancer/corollas/corollas_ex1_s3.png';
+import corollas_ex1_s4 from '/img/instruments/videomancer/corollas/corollas_ex1_s4.png';
+import corollas_ex1_s5 from '/img/instruments/videomancer/corollas/corollas_ex1_s5.png';
+import corollas_ex1_s6 from '/img/instruments/videomancer/corollas/corollas_ex1_s6.png';
+import corollas_ex2_s1 from '/img/instruments/videomancer/corollas/corollas_ex2_s1.png';
+import corollas_ex2_s2 from '/img/instruments/videomancer/corollas/corollas_ex2_s2.png';
+import corollas_ex2_s3 from '/img/instruments/videomancer/corollas/corollas_ex2_s3.png';
+import corollas_ex2_s4 from '/img/instruments/videomancer/corollas/corollas_ex2_s4.png';
+import corollas_ex2_s5 from '/img/instruments/videomancer/corollas/corollas_ex2_s5.png';
+import corollas_ex2_s6 from '/img/instruments/videomancer/corollas/corollas_ex2_s6.png';
+import corollas_ex3_s1 from '/img/instruments/videomancer/corollas/corollas_ex3_s1.png';
+import corollas_ex3_s2 from '/img/instruments/videomancer/corollas/corollas_ex3_s2.png';
+import corollas_ex3_s3 from '/img/instruments/videomancer/corollas/corollas_ex3_s3.png';
+import corollas_ex3_s4 from '/img/instruments/videomancer/corollas/corollas_ex3_s4.png';
+import corollas_ex3_s5 from '/img/instruments/videomancer/corollas/corollas_ex3_s5.png';
+import corollas_ex3_s6 from '/img/instruments/videomancer/corollas/corollas_ex3_s6.png';
 
 # Corollas
 
@@ -23,9 +45,12 @@ import corollas_source3_peppers_512 from '/img/instruments/videomancer/corollas/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_hero },
-    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_hero },
-    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_hero },
+    { label: "Boat", before: corollas_source1_boat, after: corollas_hero_s1 },
+    { label: "Dog", before: corollas_source2_dog, after: corollas_hero_s2 },
+    { label: "Turtle", before: corollas_source3_turtle, after: corollas_hero_s3 },
+    { label: "Pattern", before: corollas_source4_pattern, after: corollas_hero_s4 },
+    { label: "Girl", before: corollas_source5_girl, after: corollas_hero_s5 },
+    { label: "Wood", before: corollas_source6_wood, after: corollas_hero_s6 },
   ]}
 />
 *Cascading harmonic petals blooming across luma and chroma channels, four frequency-doubled stages folding a live video signal into layered interference geometry.*
@@ -128,8 +153,6 @@ The separation of harmonics across Y, U, and V channels creates the program's ch
 
 ## Parameter Reference
 
-<img src={corollas_control_panel} alt="Videomancer front panel with Corollas loaded"/>
-*Videomancer's front panel with Corollas active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -234,9 +257,12 @@ These three exercises progress from observing the raw harmonic structure through
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise1_result },
-    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise1_result },
-    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise1_result },
+    { label: "Boat", before: corollas_source1_boat, after: corollas_ex1_s1 },
+    { label: "Dog", before: corollas_source2_dog, after: corollas_ex1_s2 },
+    { label: "Turtle", before: corollas_source3_turtle, after: corollas_ex1_s3 },
+    { label: "Pattern", before: corollas_source4_pattern, after: corollas_ex1_s4 },
+    { label: "Girl", before: corollas_source5_girl, after: corollas_ex1_s5 },
+    { label: "Wood", before: corollas_source6_wood, after: corollas_ex1_s6 },
   ]}
 />
 *Harmonic Anatomy — simulated result across source images.*
@@ -259,9 +285,12 @@ These three exercises progress from observing the raw harmonic structure through
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise2_result },
-    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise2_result },
-    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise2_result },
+    { label: "Boat", before: corollas_source1_boat, after: corollas_ex2_s1 },
+    { label: "Dog", before: corollas_source2_dog, after: corollas_ex2_s2 },
+    { label: "Turtle", before: corollas_source3_turtle, after: corollas_ex2_s3 },
+    { label: "Pattern", before: corollas_source4_pattern, after: corollas_ex2_s4 },
+    { label: "Girl", before: corollas_source5_girl, after: corollas_ex2_s5 },
+    { label: "Wood", before: corollas_source6_wood, after: corollas_ex2_s6 },
   ]}
 />
 *Chromatic Interference — simulated result across source images.*
@@ -284,9 +313,12 @@ These three exercises progress from observing the raw harmonic structure through
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: corollas_source1_kodim03, after: corollas_exercise3_result },
-    { label: "Kodim15", before: corollas_source2_kodim15, after: corollas_exercise3_result },
-    { label: "Peppers", before: corollas_source3_peppers_512, after: corollas_exercise3_result },
+    { label: "Boat", before: corollas_source1_boat, after: corollas_ex3_s1 },
+    { label: "Dog", before: corollas_source2_dog, after: corollas_ex3_s2 },
+    { label: "Turtle", before: corollas_source3_turtle, after: corollas_ex3_s3 },
+    { label: "Pattern", before: corollas_source4_pattern, after: corollas_ex3_s4 },
+    { label: "Girl", before: corollas_source5_girl, after: corollas_ex3_s5 },
+    { label: "Wood", before: corollas_source6_wood, after: corollas_ex3_s6 },
   ]}
 />
 *Threshold-Keyed Petals — simulated result across source images.*

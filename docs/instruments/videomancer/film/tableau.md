@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 280
+sidebar_position: 293
 slug: /instruments/videomancer/tableau
 title: "Tableau"
 image: /img/instruments/videomancer/tableau/tableau_hero.png

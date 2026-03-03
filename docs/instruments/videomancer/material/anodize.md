@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 7
 slug: /instruments/videomancer/anodize
 title: "Anodize"
-image: /img/instruments/videomancer/anodize/anodize_hero.png
+image: /img/instruments/videomancer/anodize/anodize_hero_s1.png
 description: "Anodize simulates the appearance of anodized aluminum — the electrochemical surface treatment that gives metal products their vivid, uniform colours while maintaining a distinctive metallic reflective quality."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import anodize_hero from '/img/instruments/videomancer/anodize/anodize_hero.png';
-import anodize_control_panel from '/img/instruments/videomancer/anodize/anodize_control_panel.png';
-import anodize_exercise1_result from '/img/instruments/videomancer/anodize/anodize_exercise1_result.png';
-import anodize_exercise2_result from '/img/instruments/videomancer/anodize/anodize_exercise2_result.png';
-import anodize_exercise3_result from '/img/instruments/videomancer/anodize/anodize_exercise3_result.png';
-import anodize_source1_kodim15 from '/img/instruments/videomancer/anodize/anodize_source1_kodim15.png';
-import anodize_source2_kodim03 from '/img/instruments/videomancer/anodize/anodize_source2_kodim03.png';
-import anodize_source3_kodim13_bw from '/img/instruments/videomancer/anodize/anodize_source3_kodim13_bw.png';
+import anodize_source1_castle from '/img/instruments/videomancer/anodize/anodize_source1_castle.png';
+import anodize_source2_car from '/img/instruments/videomancer/anodize/anodize_source2_car.png';
+import anodize_source3_elephant from '/img/instruments/videomancer/anodize/anodize_source3_elephant.png';
+import anodize_source4_pattern from '/img/instruments/videomancer/anodize/anodize_source4_pattern.png';
+import anodize_source5_man from '/img/instruments/videomancer/anodize/anodize_source5_man.png';
+import anodize_source6_knit from '/img/instruments/videomancer/anodize/anodize_source6_knit.png';
+import anodize_hero_s1 from '/img/instruments/videomancer/anodize/anodize_hero_s1.png';
+import anodize_hero_s2 from '/img/instruments/videomancer/anodize/anodize_hero_s2.png';
+import anodize_hero_s3 from '/img/instruments/videomancer/anodize/anodize_hero_s3.png';
+import anodize_hero_s4 from '/img/instruments/videomancer/anodize/anodize_hero_s4.png';
+import anodize_hero_s5 from '/img/instruments/videomancer/anodize/anodize_hero_s5.png';
+import anodize_hero_s6 from '/img/instruments/videomancer/anodize/anodize_hero_s6.png';
+import anodize_ex1_s1 from '/img/instruments/videomancer/anodize/anodize_ex1_s1.png';
+import anodize_ex1_s2 from '/img/instruments/videomancer/anodize/anodize_ex1_s2.png';
+import anodize_ex1_s3 from '/img/instruments/videomancer/anodize/anodize_ex1_s3.png';
+import anodize_ex1_s4 from '/img/instruments/videomancer/anodize/anodize_ex1_s4.png';
+import anodize_ex1_s5 from '/img/instruments/videomancer/anodize/anodize_ex1_s5.png';
+import anodize_ex1_s6 from '/img/instruments/videomancer/anodize/anodize_ex1_s6.png';
+import anodize_ex2_s1 from '/img/instruments/videomancer/anodize/anodize_ex2_s1.png';
+import anodize_ex2_s2 from '/img/instruments/videomancer/anodize/anodize_ex2_s2.png';
+import anodize_ex2_s3 from '/img/instruments/videomancer/anodize/anodize_ex2_s3.png';
+import anodize_ex2_s4 from '/img/instruments/videomancer/anodize/anodize_ex2_s4.png';
+import anodize_ex2_s5 from '/img/instruments/videomancer/anodize/anodize_ex2_s5.png';
+import anodize_ex2_s6 from '/img/instruments/videomancer/anodize/anodize_ex2_s6.png';
+import anodize_ex3_s1 from '/img/instruments/videomancer/anodize/anodize_ex3_s1.png';
+import anodize_ex3_s2 from '/img/instruments/videomancer/anodize/anodize_ex3_s2.png';
+import anodize_ex3_s3 from '/img/instruments/videomancer/anodize/anodize_ex3_s3.png';
+import anodize_ex3_s4 from '/img/instruments/videomancer/anodize/anodize_ex3_s4.png';
+import anodize_ex3_s5 from '/img/instruments/videomancer/anodize/anodize_ex3_s5.png';
+import anodize_ex3_s6 from '/img/instruments/videomancer/anodize/anodize_ex3_s6.png';
 
 # Anodize
 
@@ -23,9 +45,12 @@ import anodize_source3_kodim13_bw from '/img/instruments/videomancer/anodize/ano
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_hero },
-    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_hero },
-    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_hero },
+    { label: "Castle", before: anodize_source1_castle, after: anodize_hero_s1 },
+    { label: "Car", before: anodize_source2_car, after: anodize_hero_s2 },
+    { label: "Elephant", before: anodize_source3_elephant, after: anodize_hero_s3 },
+    { label: "Pattern", before: anodize_source4_pattern, after: anodize_hero_s4 },
+    { label: "Man", before: anodize_source5_man, after: anodize_hero_s5 },
+    { label: "Knit", before: anodize_source6_knit, after: anodize_hero_s6 },
   ]}
 />
 *Anodize rendering a landscape in vivid red-orange anodized aluminum — the image is uniformly tinted with preserved specular highlights returning to white, metallic sheen coupling luma detail to chroma, and subtle grain texture on the surface.*
@@ -99,9 +124,6 @@ The metallic sheen uses 4 tiers based on the Sheen pot value: above 768 → shif
 ---
 
 ## Parameter Reference
-
-<img src={anodize_control_panel} alt="Videomancer front panel with Anodize loaded"/>
-*Videomancer's front panel with Anodize active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -206,9 +228,12 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise1_result },
-    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise1_result },
-    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise1_result },
+    { label: "Castle", before: anodize_source1_castle, after: anodize_ex1_s1 },
+    { label: "Car", before: anodize_source2_car, after: anodize_ex1_s2 },
+    { label: "Elephant", before: anodize_source3_elephant, after: anodize_ex1_s3 },
+    { label: "Pattern", before: anodize_source4_pattern, after: anodize_ex1_s4 },
+    { label: "Man", before: anodize_source5_man, after: anodize_ex1_s5 },
+    { label: "Knit", before: anodize_source6_knit, after: anodize_ex1_s6 },
   ]}
 />
 *Basic Anodized Surface — simulated result across source images.*
@@ -233,9 +258,12 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise2_result },
-    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise2_result },
-    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise2_result },
+    { label: "Castle", before: anodize_source1_castle, after: anodize_ex2_s1 },
+    { label: "Car", before: anodize_source2_car, after: anodize_ex2_s2 },
+    { label: "Elephant", before: anodize_source3_elephant, after: anodize_ex2_s3 },
+    { label: "Pattern", before: anodize_source4_pattern, after: anodize_ex2_s4 },
+    { label: "Man", before: anodize_source5_man, after: anodize_ex2_s5 },
+    { label: "Knit", before: anodize_source6_knit, after: anodize_ex2_s6 },
   ]}
 />
 *Highlight Preservation and Finish — simulated result across source images.*
@@ -259,9 +287,12 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: anodize_source1_kodim15, after: anodize_exercise3_result },
-    { label: "Kodim03", before: anodize_source2_kodim03, after: anodize_exercise3_result },
-    { label: "Kodim13 B&W", before: anodize_source3_kodim13_bw, after: anodize_exercise3_result },
+    { label: "Castle", before: anodize_source1_castle, after: anodize_ex3_s1 },
+    { label: "Car", before: anodize_source2_car, after: anodize_ex3_s2 },
+    { label: "Elephant", before: anodize_source3_elephant, after: anodize_ex3_s3 },
+    { label: "Pattern", before: anodize_source4_pattern, after: anodize_ex3_s4 },
+    { label: "Man", before: anodize_source5_man, after: anodize_ex3_s5 },
+    { label: "Knit", before: anodize_source6_knit, after: anodize_ex3_s6 },
   ]}
 />
 *Metallic Sheen and Grain — simulated result across source images.*

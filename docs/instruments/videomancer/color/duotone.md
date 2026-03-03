@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 89
+sidebar_position: 93
 slug: /instruments/videomancer/duotone
 title: "Duotone"
-image: /img/instruments/videomancer/duotone/duotone_hero.png
+image: /img/instruments/videomancer/duotone/duotone_hero_s1.png
 description: "Most color video processors adjust the colors that already exist in the source signal."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import duotone_hero from '/img/instruments/videomancer/duotone/duotone_hero.png';
-import duotone_control_panel from '/img/instruments/videomancer/duotone/duotone_control_panel.png';
-import duotone_exercise1_result from '/img/instruments/videomancer/duotone/duotone_exercise1_result.png';
-import duotone_exercise2_result from '/img/instruments/videomancer/duotone/duotone_exercise2_result.png';
-import duotone_exercise3_result from '/img/instruments/videomancer/duotone/duotone_exercise3_result.png';
-import duotone_source1_kodim03 from '/img/instruments/videomancer/duotone/duotone_source1_kodim03.png';
-import duotone_source2_kodim15 from '/img/instruments/videomancer/duotone/duotone_source2_kodim15.png';
-import duotone_source3_peppers_512 from '/img/instruments/videomancer/duotone/duotone_source3_peppers_512.png';
+import duotone_source1_car from '/img/instruments/videomancer/duotone/duotone_source1_car.png';
+import duotone_source2_parrot from '/img/instruments/videomancer/duotone/duotone_source2_parrot.png';
+import duotone_source3_clouds from '/img/instruments/videomancer/duotone/duotone_source3_clouds.png';
+import duotone_source4_pattern from '/img/instruments/videomancer/duotone/duotone_source4_pattern.png';
+import duotone_source5_woman from '/img/instruments/videomancer/duotone/duotone_source5_woman.png';
+import duotone_source6_paint from '/img/instruments/videomancer/duotone/duotone_source6_paint.png';
+import duotone_hero_s1 from '/img/instruments/videomancer/duotone/duotone_hero_s1.png';
+import duotone_hero_s2 from '/img/instruments/videomancer/duotone/duotone_hero_s2.png';
+import duotone_hero_s3 from '/img/instruments/videomancer/duotone/duotone_hero_s3.png';
+import duotone_hero_s4 from '/img/instruments/videomancer/duotone/duotone_hero_s4.png';
+import duotone_hero_s5 from '/img/instruments/videomancer/duotone/duotone_hero_s5.png';
+import duotone_hero_s6 from '/img/instruments/videomancer/duotone/duotone_hero_s6.png';
+import duotone_ex1_s1 from '/img/instruments/videomancer/duotone/duotone_ex1_s1.png';
+import duotone_ex1_s2 from '/img/instruments/videomancer/duotone/duotone_ex1_s2.png';
+import duotone_ex1_s3 from '/img/instruments/videomancer/duotone/duotone_ex1_s3.png';
+import duotone_ex1_s4 from '/img/instruments/videomancer/duotone/duotone_ex1_s4.png';
+import duotone_ex1_s5 from '/img/instruments/videomancer/duotone/duotone_ex1_s5.png';
+import duotone_ex1_s6 from '/img/instruments/videomancer/duotone/duotone_ex1_s6.png';
+import duotone_ex2_s1 from '/img/instruments/videomancer/duotone/duotone_ex2_s1.png';
+import duotone_ex2_s2 from '/img/instruments/videomancer/duotone/duotone_ex2_s2.png';
+import duotone_ex2_s3 from '/img/instruments/videomancer/duotone/duotone_ex2_s3.png';
+import duotone_ex2_s4 from '/img/instruments/videomancer/duotone/duotone_ex2_s4.png';
+import duotone_ex2_s5 from '/img/instruments/videomancer/duotone/duotone_ex2_s5.png';
+import duotone_ex2_s6 from '/img/instruments/videomancer/duotone/duotone_ex2_s6.png';
+import duotone_ex3_s1 from '/img/instruments/videomancer/duotone/duotone_ex3_s1.png';
+import duotone_ex3_s2 from '/img/instruments/videomancer/duotone/duotone_ex3_s2.png';
+import duotone_ex3_s3 from '/img/instruments/videomancer/duotone/duotone_ex3_s3.png';
+import duotone_ex3_s4 from '/img/instruments/videomancer/duotone/duotone_ex3_s4.png';
+import duotone_ex3_s5 from '/img/instruments/videomancer/duotone/duotone_ex3_s5.png';
+import duotone_ex3_s6 from '/img/instruments/videomancer/duotone/duotone_ex3_s6.png';
 
 # Duotone
 
@@ -23,9 +45,12 @@ import duotone_source3_peppers_512 from '/img/instruments/videomancer/duotone/du
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_hero },
-    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_hero },
-    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_hero },
+    { label: "Car", before: duotone_source1_car, after: duotone_hero_s1 },
+    { label: "Parrot", before: duotone_source2_parrot, after: duotone_hero_s2 },
+    { label: "Clouds", before: duotone_source3_clouds, after: duotone_hero_s3 },
+    { label: "Pattern", before: duotone_source4_pattern, after: duotone_hero_s4 },
+    { label: "Woman", before: duotone_source5_woman, after: duotone_hero_s5 },
+    { label: "Paint", before: duotone_source6_paint, after: duotone_hero_s6 },
   ]}
 />
 *Duotone applying luma-driven dual-hue colorization to remap source brightness into cool shadow and warm highlight tones with adjustable threshold and blend.*
@@ -105,8 +130,6 @@ Second, the hue controls map to fixed complementary UV axes rather than arbitrar
 
 ## Parameter Reference
 
-<img src={duotone_control_panel} alt="Videomancer front panel with Duotone loaded"/>
-*Videomancer's front panel with Duotone active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -211,9 +234,12 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise1_result },
-    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise1_result },
-    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise1_result },
+    { label: "Car", before: duotone_source1_car, after: duotone_ex1_s1 },
+    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex1_s2 },
+    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex1_s3 },
+    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex1_s4 },
+    { label: "Woman", before: duotone_source5_woman, after: duotone_ex1_s5 },
+    { label: "Paint", before: duotone_source6_paint, after: duotone_ex1_s6 },
   ]}
 />
 *Classic Split Tone — simulated result across source images.*
@@ -235,9 +261,12 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise2_result },
-    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise2_result },
-    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise2_result },
+    { label: "Car", before: duotone_source1_car, after: duotone_ex2_s1 },
+    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex2_s2 },
+    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex2_s3 },
+    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex2_s4 },
+    { label: "Woman", before: duotone_source5_woman, after: duotone_ex2_s5 },
+    { label: "Paint", before: duotone_source6_paint, after: duotone_ex2_s6 },
   ]}
 />
 *Hard-Edge Two-Color Poster — simulated result across source images.*
@@ -260,9 +289,12 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: duotone_source1_kodim03, after: duotone_exercise3_result },
-    { label: "Kodim15", before: duotone_source2_kodim15, after: duotone_exercise3_result },
-    { label: "Peppers", before: duotone_source3_peppers_512, after: duotone_exercise3_result },
+    { label: "Car", before: duotone_source1_car, after: duotone_ex3_s1 },
+    { label: "Parrot", before: duotone_source2_parrot, after: duotone_ex3_s2 },
+    { label: "Clouds", before: duotone_source3_clouds, after: duotone_ex3_s3 },
+    { label: "Pattern", before: duotone_source4_pattern, after: duotone_ex3_s4 },
+    { label: "Woman", before: duotone_source5_woman, after: duotone_ex3_s5 },
+    { label: "Paint", before: duotone_source6_paint, after: duotone_ex3_s6 },
   ]}
 />
 *Inverted Duotone with Partial Mix — simulated result across source images.*

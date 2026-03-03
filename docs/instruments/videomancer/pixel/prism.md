@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 223
+sidebar_position: 233
 slug: /instruments/videomancer/prism
 title: "Prism"
-image: /img/instruments/videomancer/prism/prism_hero.png
+image: /img/instruments/videomancer/prism/prism_hero_s1.png
 description: "Prism takes the three channels of a YUV video signal and shifts each one independently along the horizontal axis."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import prism_hero from '/img/instruments/videomancer/prism/prism_hero.png';
-import prism_control_panel from '/img/instruments/videomancer/prism/prism_control_panel.png';
-import prism_exercise1_result from '/img/instruments/videomancer/prism/prism_exercise1_result.png';
-import prism_exercise2_result from '/img/instruments/videomancer/prism/prism_exercise2_result.png';
-import prism_exercise3_result from '/img/instruments/videomancer/prism/prism_exercise3_result.png';
-import prism_source1_kodim02 from '/img/instruments/videomancer/prism/prism_source1_kodim02.png';
-import prism_source2_kodim07 from '/img/instruments/videomancer/prism/prism_source2_kodim07.png';
-import prism_source3_kodim01_bw from '/img/instruments/videomancer/prism/prism_source3_kodim01_bw.png';
+import prism_source1_fruit from '/img/instruments/videomancer/prism/prism_source1_fruit.png';
+import prism_source2_boat from '/img/instruments/videomancer/prism/prism_source2_boat.png';
+import prism_source3_elephant from '/img/instruments/videomancer/prism/prism_source3_elephant.png';
+import prism_source4_pattern from '/img/instruments/videomancer/prism/prism_source4_pattern.png';
+import prism_source5_man from '/img/instruments/videomancer/prism/prism_source5_man.png';
+import prism_source6_wood from '/img/instruments/videomancer/prism/prism_source6_wood.png';
+import prism_hero_s1 from '/img/instruments/videomancer/prism/prism_hero_s1.png';
+import prism_hero_s2 from '/img/instruments/videomancer/prism/prism_hero_s2.png';
+import prism_hero_s3 from '/img/instruments/videomancer/prism/prism_hero_s3.png';
+import prism_hero_s4 from '/img/instruments/videomancer/prism/prism_hero_s4.png';
+import prism_hero_s5 from '/img/instruments/videomancer/prism/prism_hero_s5.png';
+import prism_hero_s6 from '/img/instruments/videomancer/prism/prism_hero_s6.png';
+import prism_ex1_s1 from '/img/instruments/videomancer/prism/prism_ex1_s1.png';
+import prism_ex1_s2 from '/img/instruments/videomancer/prism/prism_ex1_s2.png';
+import prism_ex1_s3 from '/img/instruments/videomancer/prism/prism_ex1_s3.png';
+import prism_ex1_s4 from '/img/instruments/videomancer/prism/prism_ex1_s4.png';
+import prism_ex1_s5 from '/img/instruments/videomancer/prism/prism_ex1_s5.png';
+import prism_ex1_s6 from '/img/instruments/videomancer/prism/prism_ex1_s6.png';
+import prism_ex2_s1 from '/img/instruments/videomancer/prism/prism_ex2_s1.png';
+import prism_ex2_s2 from '/img/instruments/videomancer/prism/prism_ex2_s2.png';
+import prism_ex2_s3 from '/img/instruments/videomancer/prism/prism_ex2_s3.png';
+import prism_ex2_s4 from '/img/instruments/videomancer/prism/prism_ex2_s4.png';
+import prism_ex2_s5 from '/img/instruments/videomancer/prism/prism_ex2_s5.png';
+import prism_ex2_s6 from '/img/instruments/videomancer/prism/prism_ex2_s6.png';
+import prism_ex3_s1 from '/img/instruments/videomancer/prism/prism_ex3_s1.png';
+import prism_ex3_s2 from '/img/instruments/videomancer/prism/prism_ex3_s2.png';
+import prism_ex3_s3 from '/img/instruments/videomancer/prism/prism_ex3_s3.png';
+import prism_ex3_s4 from '/img/instruments/videomancer/prism/prism_ex3_s4.png';
+import prism_ex3_s5 from '/img/instruments/videomancer/prism/prism_ex3_s5.png';
+import prism_ex3_s6 from '/img/instruments/videomancer/prism/prism_ex3_s6.png';
 
 # Prism
 
@@ -23,9 +45,12 @@ import prism_source3_kodim01_bw from '/img/instruments/videomancer/prism/prism_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: prism_source1_kodim02, after: prism_hero },
-    { label: "Kodim07", before: prism_source2_kodim07, after: prism_hero },
-    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_hero },
+    { label: "Fruit", before: prism_source1_fruit, after: prism_hero_s1 },
+    { label: "Boat", before: prism_source2_boat, after: prism_hero_s2 },
+    { label: "Elephant", before: prism_source3_elephant, after: prism_hero_s3 },
+    { label: "Pattern", before: prism_source4_pattern, after: prism_hero_s4 },
+    { label: "Man", before: prism_source5_man, after: prism_hero_s5 },
+    { label: "Wood", before: prism_source6_wood, after: prism_hero_s6 },
   ]}
 />
 *Prism applying per-channel horizontal displacement and channel swapping to decompose video into separated colour planes.*
@@ -107,8 +132,6 @@ The delay computation stage packs significant logic into a single clock: luma mo
 
 ## Parameter Reference
 
-<img src={prism_control_panel} alt="Videomancer front panel with Prism loaded"/>
-*Videomancer's front panel with Prism active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise1_result },
-    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise1_result },
-    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise1_result },
+    { label: "Fruit", before: prism_source1_fruit, after: prism_ex1_s1 },
+    { label: "Boat", before: prism_source2_boat, after: prism_ex1_s2 },
+    { label: "Elephant", before: prism_source3_elephant, after: prism_ex1_s3 },
+    { label: "Pattern", before: prism_source4_pattern, after: prism_ex1_s4 },
+    { label: "Man", before: prism_source5_man, after: prism_ex1_s5 },
+    { label: "Wood", before: prism_source6_wood, after: prism_ex1_s6 },
   ]}
 />
 *Classic Chromatic Aberration — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise2_result },
-    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise2_result },
-    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise2_result },
+    { label: "Fruit", before: prism_source1_fruit, after: prism_ex2_s1 },
+    { label: "Boat", before: prism_source2_boat, after: prism_ex2_s2 },
+    { label: "Elephant", before: prism_source3_elephant, after: prism_ex2_s3 },
+    { label: "Pattern", before: prism_source4_pattern, after: prism_ex2_s4 },
+    { label: "Man", before: prism_source5_man, after: prism_ex2_s5 },
+    { label: "Wood", before: prism_source6_wood, after: prism_ex2_s6 },
   ]}
 />
 *Luma-Modulated Warping — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: prism_source1_kodim02, after: prism_exercise3_result },
-    { label: "Kodim07", before: prism_source2_kodim07, after: prism_exercise3_result },
-    { label: "Kodim01 B&W", before: prism_source3_kodim01_bw, after: prism_exercise3_result },
+    { label: "Fruit", before: prism_source1_fruit, after: prism_ex3_s1 },
+    { label: "Boat", before: prism_source2_boat, after: prism_ex3_s2 },
+    { label: "Elephant", before: prism_source3_elephant, after: prism_ex3_s3 },
+    { label: "Pattern", before: prism_source4_pattern, after: prism_ex3_s4 },
+    { label: "Man", before: prism_source5_man, after: prism_ex3_s5 },
+    { label: "Wood", before: prism_source6_wood, after: prism_ex3_s6 },
   ]}
 />
 *False-Colour Channel Remix — simulated result across source images.*

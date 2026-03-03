@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 178
+sidebar_position: 186
 slug: /instruments/videomancer/marquee
 title: "Marquee"
-image: /img/instruments/videomancer/marquee/marquee_hero.png
+image: /img/instruments/videomancer/marquee/marquee_hero_s1.png
 description: "Before desktop publishing and digital titling systems, television stations used dedicated character generators — standalone hardware boxes that composited text and graphics over live programme video."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import marquee_hero from '/img/instruments/videomancer/marquee/marquee_hero.png';
-import marquee_control_panel from '/img/instruments/videomancer/marquee/marquee_control_panel.png';
-import marquee_exercise1_result from '/img/instruments/videomancer/marquee/marquee_exercise1_result.png';
-import marquee_exercise2_result from '/img/instruments/videomancer/marquee/marquee_exercise2_result.png';
-import marquee_exercise3_result from '/img/instruments/videomancer/marquee/marquee_exercise3_result.png';
-import marquee_source1_kodim15 from '/img/instruments/videomancer/marquee/marquee_source1_kodim15.png';
-import marquee_source2_kodim15_bw from '/img/instruments/videomancer/marquee/marquee_source2_kodim15_bw.png';
-import marquee_source3_male_1024 from '/img/instruments/videomancer/marquee/marquee_source3_male_1024.png';
+import marquee_source1_fruit from '/img/instruments/videomancer/marquee/marquee_source1_fruit.png';
+import marquee_source2_ballerina from '/img/instruments/videomancer/marquee/marquee_source2_ballerina.png';
+import marquee_source3_turtle from '/img/instruments/videomancer/marquee/marquee_source3_turtle.png';
+import marquee_source4_pattern from '/img/instruments/videomancer/marquee/marquee_source4_pattern.png';
+import marquee_source5_boy from '/img/instruments/videomancer/marquee/marquee_source5_boy.png';
+import marquee_source6_wood from '/img/instruments/videomancer/marquee/marquee_source6_wood.png';
+import marquee_hero_s1 from '/img/instruments/videomancer/marquee/marquee_hero_s1.png';
+import marquee_hero_s2 from '/img/instruments/videomancer/marquee/marquee_hero_s2.png';
+import marquee_hero_s3 from '/img/instruments/videomancer/marquee/marquee_hero_s3.png';
+import marquee_hero_s4 from '/img/instruments/videomancer/marquee/marquee_hero_s4.png';
+import marquee_hero_s5 from '/img/instruments/videomancer/marquee/marquee_hero_s5.png';
+import marquee_hero_s6 from '/img/instruments/videomancer/marquee/marquee_hero_s6.png';
+import marquee_ex1_s1 from '/img/instruments/videomancer/marquee/marquee_ex1_s1.png';
+import marquee_ex1_s2 from '/img/instruments/videomancer/marquee/marquee_ex1_s2.png';
+import marquee_ex1_s3 from '/img/instruments/videomancer/marquee/marquee_ex1_s3.png';
+import marquee_ex1_s4 from '/img/instruments/videomancer/marquee/marquee_ex1_s4.png';
+import marquee_ex1_s5 from '/img/instruments/videomancer/marquee/marquee_ex1_s5.png';
+import marquee_ex1_s6 from '/img/instruments/videomancer/marquee/marquee_ex1_s6.png';
+import marquee_ex2_s1 from '/img/instruments/videomancer/marquee/marquee_ex2_s1.png';
+import marquee_ex2_s2 from '/img/instruments/videomancer/marquee/marquee_ex2_s2.png';
+import marquee_ex2_s3 from '/img/instruments/videomancer/marquee/marquee_ex2_s3.png';
+import marquee_ex2_s4 from '/img/instruments/videomancer/marquee/marquee_ex2_s4.png';
+import marquee_ex2_s5 from '/img/instruments/videomancer/marquee/marquee_ex2_s5.png';
+import marquee_ex2_s6 from '/img/instruments/videomancer/marquee/marquee_ex2_s6.png';
+import marquee_ex3_s1 from '/img/instruments/videomancer/marquee/marquee_ex3_s1.png';
+import marquee_ex3_s2 from '/img/instruments/videomancer/marquee/marquee_ex3_s2.png';
+import marquee_ex3_s3 from '/img/instruments/videomancer/marquee/marquee_ex3_s3.png';
+import marquee_ex3_s4 from '/img/instruments/videomancer/marquee/marquee_ex3_s4.png';
+import marquee_ex3_s5 from '/img/instruments/videomancer/marquee/marquee_ex3_s5.png';
+import marquee_ex3_s6 from '/img/instruments/videomancer/marquee/marquee_ex3_s6.png';
 
 # Marquee
 
@@ -23,9 +45,12 @@ import marquee_source3_male_1024 from '/img/instruments/videomancer/marquee/marq
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_hero },
-    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_hero },
-    { label: "Male", before: marquee_source3_male_1024, after: marquee_hero },
+    { label: "Fruit", before: marquee_source1_fruit, after: marquee_hero_s1 },
+    { label: "Ballerina", before: marquee_source2_ballerina, after: marquee_hero_s2 },
+    { label: "Turtle", before: marquee_source3_turtle, after: marquee_hero_s3 },
+    { label: "Pattern", before: marquee_source4_pattern, after: marquee_hero_s4 },
+    { label: "Boy", before: marquee_source5_boy, after: marquee_hero_s5 },
+    { label: "Wood", before: marquee_source6_wood, after: marquee_hero_s6 },
   ]}
 />
 *Marquee compositing bold colored titles with outlines and drop shadows over programme video, recreating the broadcast character generator aesthetic of 1970s television.*
@@ -111,8 +136,6 @@ The critical interaction is between the key extraction and the multi-layer compo
 
 ## Parameter Reference
 
-<img src={marquee_control_panel} alt="Videomancer front panel with Marquee loaded"/>
-*Videomancer's front panel with Marquee active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,9 +239,12 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise1_result },
-    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise1_result },
-    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise1_result },
+    { label: "Fruit", before: marquee_source1_fruit, after: marquee_ex1_s1 },
+    { label: "Ballerina", before: marquee_source2_ballerina, after: marquee_ex1_s2 },
+    { label: "Turtle", before: marquee_source3_turtle, after: marquee_ex1_s3 },
+    { label: "Pattern", before: marquee_source4_pattern, after: marquee_ex1_s4 },
+    { label: "Boy", before: marquee_source5_boy, after: marquee_ex1_s5 },
+    { label: "Wood", before: marquee_source6_wood, after: marquee_ex1_s6 },
   ]}
 />
 *Clean Title Key — simulated result across source images.*
@@ -240,9 +266,12 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise2_result },
-    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise2_result },
-    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise2_result },
+    { label: "Fruit", before: marquee_source1_fruit, after: marquee_ex2_s1 },
+    { label: "Ballerina", before: marquee_source2_ballerina, after: marquee_ex2_s2 },
+    { label: "Turtle", before: marquee_source3_turtle, after: marquee_ex2_s3 },
+    { label: "Pattern", before: marquee_source4_pattern, after: marquee_ex2_s4 },
+    { label: "Boy", before: marquee_source5_boy, after: marquee_ex2_s5 },
+    { label: "Wood", before: marquee_source6_wood, after: marquee_ex2_s6 },
   ]}
 />
 *Broadcast Lower-Third — simulated result across source images.*
@@ -264,9 +293,12 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: marquee_source1_kodim15, after: marquee_exercise3_result },
-    { label: "Kodim15 B&W", before: marquee_source2_kodim15_bw, after: marquee_exercise3_result },
-    { label: "Male", before: marquee_source3_male_1024, after: marquee_exercise3_result },
+    { label: "Fruit", before: marquee_source1_fruit, after: marquee_ex3_s1 },
+    { label: "Ballerina", before: marquee_source2_ballerina, after: marquee_ex3_s2 },
+    { label: "Turtle", before: marquee_source3_turtle, after: marquee_ex3_s3 },
+    { label: "Pattern", before: marquee_source4_pattern, after: marquee_ex3_s4 },
+    { label: "Boy", before: marquee_source5_boy, after: marquee_ex3_s5 },
+    { label: "Wood", before: marquee_source6_wood, after: marquee_ex3_s6 },
   ]}
 />
 *Wireframe Edge Graphics — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 195
+sidebar_position: 203
 slug: /instruments/videomancer/nightshot
 title: "Nightshot"
-image: /img/instruments/videomancer/nightshot/nightshot_hero.png
+image: /img/instruments/videomancer/nightshot/nightshot_hero_s1.png
 description: "In 1998, Sony introduced NightShot on the Handycam DCR-TRV103 — a mode that disabled the infrared cut filter and boosted CCD gain, producing the distinctive green-tinted night vision imagery that became a cultural icon of late-90s camcorder footage."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import nightshot_hero from '/img/instruments/videomancer/nightshot/nightshot_hero.png';
-import nightshot_control_panel from '/img/instruments/videomancer/nightshot/nightshot_control_panel.png';
-import nightshot_exercise1_result from '/img/instruments/videomancer/nightshot/nightshot_exercise1_result.png';
-import nightshot_exercise2_result from '/img/instruments/videomancer/nightshot/nightshot_exercise2_result.png';
-import nightshot_exercise3_result from '/img/instruments/videomancer/nightshot/nightshot_exercise3_result.png';
-import nightshot_source1_kodim05 from '/img/instruments/videomancer/nightshot/nightshot_source1_kodim05.png';
-import nightshot_source2_kodim15 from '/img/instruments/videomancer/nightshot/nightshot_source2_kodim15.png';
-import nightshot_source3_kodim15_bw from '/img/instruments/videomancer/nightshot/nightshot_source3_kodim15_bw.png';
+import nightshot_source1_car from '/img/instruments/videomancer/nightshot/nightshot_source1_car.png';
+import nightshot_source2_castle from '/img/instruments/videomancer/nightshot/nightshot_source2_castle.png';
+import nightshot_source3_clouds from '/img/instruments/videomancer/nightshot/nightshot_source3_clouds.png';
+import nightshot_source4_pattern from '/img/instruments/videomancer/nightshot/nightshot_source4_pattern.png';
+import nightshot_source5_boy from '/img/instruments/videomancer/nightshot/nightshot_source5_boy.png';
+import nightshot_source6_wood from '/img/instruments/videomancer/nightshot/nightshot_source6_wood.png';
+import nightshot_hero_s1 from '/img/instruments/videomancer/nightshot/nightshot_hero_s1.png';
+import nightshot_hero_s2 from '/img/instruments/videomancer/nightshot/nightshot_hero_s2.png';
+import nightshot_hero_s3 from '/img/instruments/videomancer/nightshot/nightshot_hero_s3.png';
+import nightshot_hero_s4 from '/img/instruments/videomancer/nightshot/nightshot_hero_s4.png';
+import nightshot_hero_s5 from '/img/instruments/videomancer/nightshot/nightshot_hero_s5.png';
+import nightshot_hero_s6 from '/img/instruments/videomancer/nightshot/nightshot_hero_s6.png';
+import nightshot_ex1_s1 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s1.png';
+import nightshot_ex1_s2 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s2.png';
+import nightshot_ex1_s3 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s3.png';
+import nightshot_ex1_s4 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s4.png';
+import nightshot_ex1_s5 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s5.png';
+import nightshot_ex1_s6 from '/img/instruments/videomancer/nightshot/nightshot_ex1_s6.png';
+import nightshot_ex2_s1 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s1.png';
+import nightshot_ex2_s2 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s2.png';
+import nightshot_ex2_s3 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s3.png';
+import nightshot_ex2_s4 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s4.png';
+import nightshot_ex2_s5 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s5.png';
+import nightshot_ex2_s6 from '/img/instruments/videomancer/nightshot/nightshot_ex2_s6.png';
+import nightshot_ex3_s1 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s1.png';
+import nightshot_ex3_s2 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s2.png';
+import nightshot_ex3_s3 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s3.png';
+import nightshot_ex3_s4 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s4.png';
+import nightshot_ex3_s5 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s5.png';
+import nightshot_ex3_s6 from '/img/instruments/videomancer/nightshot/nightshot_ex3_s6.png';
 
 # Nightshot
 
@@ -23,9 +45,12 @@ import nightshot_source3_kodim15_bw from '/img/instruments/videomancer/nightshot
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_hero },
-    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_hero },
-    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_hero },
+    { label: "Car", before: nightshot_source1_car, after: nightshot_hero_s1 },
+    { label: "Castle", before: nightshot_source2_castle, after: nightshot_hero_s2 },
+    { label: "Clouds", before: nightshot_source3_clouds, after: nightshot_hero_s3 },
+    { label: "Pattern", before: nightshot_source4_pattern, after: nightshot_hero_s4 },
+    { label: "Boy", before: nightshot_source5_boy, after: nightshot_hero_s5 },
+    { label: "Wood", before: nightshot_source6_wood, after: nightshot_hero_s6 },
   ]}
 />
 *Nightshot rendering infrared-style green phosphor night vision with gain boost, noise grain, horizontal bloom, and auto-gain pumping across the video signal.*
@@ -108,8 +133,6 @@ The invert operation is applied after the IR response curve but before noise inj
 
 ## Parameter Reference
 
-<img src={nightshot_control_panel} alt="Videomancer front panel with Nightshot loaded"/>
-*Videomancer's front panel with Nightshot active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +237,12 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise1_result },
-    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise1_result },
-    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise1_result },
+    { label: "Car", before: nightshot_source1_car, after: nightshot_ex1_s1 },
+    { label: "Castle", before: nightshot_source2_castle, after: nightshot_ex1_s2 },
+    { label: "Clouds", before: nightshot_source3_clouds, after: nightshot_ex1_s3 },
+    { label: "Pattern", before: nightshot_source4_pattern, after: nightshot_ex1_s4 },
+    { label: "Boy", before: nightshot_source5_boy, after: nightshot_ex1_s5 },
+    { label: "Wood", before: nightshot_source6_wood, after: nightshot_ex1_s6 },
   ]}
 />
 *Basic Green Night Vision — simulated result across source images.*
@@ -239,9 +265,12 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise2_result },
-    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise2_result },
-    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise2_result },
+    { label: "Car", before: nightshot_source1_car, after: nightshot_ex2_s1 },
+    { label: "Castle", before: nightshot_source2_castle, after: nightshot_ex2_s2 },
+    { label: "Clouds", before: nightshot_source3_clouds, after: nightshot_ex2_s3 },
+    { label: "Pattern", before: nightshot_source4_pattern, after: nightshot_ex2_s4 },
+    { label: "Boy", before: nightshot_source5_boy, after: nightshot_ex2_s5 },
+    { label: "Wood", before: nightshot_source6_wood, after: nightshot_ex2_s6 },
   ]}
 />
 *Noisy Surveillance with Bloom — simulated result across source images.*
@@ -264,9 +293,12 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim05", before: nightshot_source1_kodim05, after: nightshot_exercise3_result },
-    { label: "Kodim15", before: nightshot_source2_kodim15, after: nightshot_exercise3_result },
-    { label: "Kodim15 B&W", before: nightshot_source3_kodim15_bw, after: nightshot_exercise3_result },
+    { label: "Car", before: nightshot_source1_car, after: nightshot_ex3_s1 },
+    { label: "Castle", before: nightshot_source2_castle, after: nightshot_ex3_s2 },
+    { label: "Clouds", before: nightshot_source3_clouds, after: nightshot_ex3_s3 },
+    { label: "Pattern", before: nightshot_source4_pattern, after: nightshot_ex3_s4 },
+    { label: "Boy", before: nightshot_source5_boy, after: nightshot_ex3_s5 },
+    { label: "Wood", before: nightshot_source6_wood, after: nightshot_ex3_s6 },
   ]}
 />
 *Full NightShot with AGC Hunting — simulated result across source images.*

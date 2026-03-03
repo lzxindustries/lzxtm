@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 245
+sidebar_position: 257
 slug: /instruments/videomancer/schufftan
 title: "Schufftan"
-image: /img/instruments/videomancer/schufftan/schufftan_hero.png
+image: /img/instruments/videomancer/schufftan/schufftan_hero_s1.png
 description: "The Schüfftan process was a visual effects technique invented in 1920s German cinema."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import schufftan_hero from '/img/instruments/videomancer/schufftan/schufftan_hero.png';
-import schufftan_control_panel from '/img/instruments/videomancer/schufftan/schufftan_control_panel.png';
-import schufftan_exercise1_result from '/img/instruments/videomancer/schufftan/schufftan_exercise1_result.png';
-import schufftan_exercise2_result from '/img/instruments/videomancer/schufftan/schufftan_exercise2_result.png';
-import schufftan_exercise3_result from '/img/instruments/videomancer/schufftan/schufftan_exercise3_result.png';
-import schufftan_source1_kodim03 from '/img/instruments/videomancer/schufftan/schufftan_source1_kodim03.png';
-import schufftan_source2_kodim13 from '/img/instruments/videomancer/schufftan/schufftan_source2_kodim13.png';
-import schufftan_source3_kodim13_bw from '/img/instruments/videomancer/schufftan/schufftan_source3_kodim13_bw.png';
+import schufftan_source1_parrot from '/img/instruments/videomancer/schufftan/schufftan_source1_parrot.png';
+import schufftan_source2_dog from '/img/instruments/videomancer/schufftan/schufftan_source2_dog.png';
+import schufftan_source3_turtle from '/img/instruments/videomancer/schufftan/schufftan_source3_turtle.png';
+import schufftan_source4_pattern from '/img/instruments/videomancer/schufftan/schufftan_source4_pattern.png';
+import schufftan_source5_woman from '/img/instruments/videomancer/schufftan/schufftan_source5_woman.png';
+import schufftan_source6_berries from '/img/instruments/videomancer/schufftan/schufftan_source6_berries.png';
+import schufftan_hero_s1 from '/img/instruments/videomancer/schufftan/schufftan_hero_s1.png';
+import schufftan_hero_s2 from '/img/instruments/videomancer/schufftan/schufftan_hero_s2.png';
+import schufftan_hero_s3 from '/img/instruments/videomancer/schufftan/schufftan_hero_s3.png';
+import schufftan_hero_s4 from '/img/instruments/videomancer/schufftan/schufftan_hero_s4.png';
+import schufftan_hero_s5 from '/img/instruments/videomancer/schufftan/schufftan_hero_s5.png';
+import schufftan_hero_s6 from '/img/instruments/videomancer/schufftan/schufftan_hero_s6.png';
+import schufftan_ex1_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s1.png';
+import schufftan_ex1_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s2.png';
+import schufftan_ex1_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s3.png';
+import schufftan_ex1_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s4.png';
+import schufftan_ex1_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s5.png';
+import schufftan_ex1_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex1_s6.png';
+import schufftan_ex2_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s1.png';
+import schufftan_ex2_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s2.png';
+import schufftan_ex2_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s3.png';
+import schufftan_ex2_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s4.png';
+import schufftan_ex2_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s5.png';
+import schufftan_ex2_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex2_s6.png';
+import schufftan_ex3_s1 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s1.png';
+import schufftan_ex3_s2 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s2.png';
+import schufftan_ex3_s3 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s3.png';
+import schufftan_ex3_s4 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s4.png';
+import schufftan_ex3_s5 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s5.png';
+import schufftan_ex3_s6 from '/img/instruments/videomancer/schufftan/schufftan_ex3_s6.png';
 
 # Schufftan
 
@@ -23,9 +45,12 @@ import schufftan_source3_kodim13_bw from '/img/instruments/videomancer/schufftan
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_hero },
-    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_hero },
-    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_hero },
+    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_hero_s1 },
+    { label: "Dog", before: schufftan_source2_dog, after: schufftan_hero_s2 },
+    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_hero_s3 },
+    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_hero_s4 },
+    { label: "Woman", before: schufftan_source5_woman, after: schufftan_hero_s5 },
+    { label: "Berries", before: schufftan_source6_berries, after: schufftan_hero_s6 },
   ]}
 />
 *Schufftan applying luminance-keyed mirror compositing with per-scanline wobble and cool tint to simulate the classic miniature-projection technique.*
@@ -119,8 +144,6 @@ The pipeline has two distinct phases: key generation (Stages 0–2) and mirror p
 
 ## Parameter Reference
 
-<img src={schufftan_control_panel} alt="Videomancer front panel with Schufftan loaded"/>
-*Videomancer's front panel with Schufftan active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise1_result },
-    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise1_result },
-    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise1_result },
+    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex1_s1 },
+    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex1_s2 },
+    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex1_s3 },
+    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex1_s4 },
+    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex1_s5 },
+    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex1_s6 },
   ]}
 />
 *Basic Mirror Split — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise2_result },
-    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise2_result },
-    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise2_result },
+    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex2_s1 },
+    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex2_s2 },
+    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex2_s3 },
+    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex2_s4 },
+    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex2_s5 },
+    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex2_s6 },
   ]}
 />
 *Wobble and Distortion — simulated result across source images.*
@@ -273,9 +302,12 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: schufftan_source1_kodim03, after: schufftan_exercise3_result },
-    { label: "Kodim13", before: schufftan_source2_kodim13, after: schufftan_exercise3_result },
-    { label: "Kodim13 B&W", before: schufftan_source3_kodim13_bw, after: schufftan_exercise3_result },
+    { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_ex3_s1 },
+    { label: "Dog", before: schufftan_source2_dog, after: schufftan_ex3_s2 },
+    { label: "Turtle", before: schufftan_source3_turtle, after: schufftan_ex3_s3 },
+    { label: "Pattern", before: schufftan_source4_pattern, after: schufftan_ex3_s4 },
+    { label: "Woman", before: schufftan_source5_woman, after: schufftan_ex3_s5 },
+    { label: "Berries", before: schufftan_source6_berries, after: schufftan_ex3_s6 },
   ]}
 />
 *Edge-Keyed Mirror Composite — simulated result across source images.*

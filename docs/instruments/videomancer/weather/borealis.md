@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 28
+sidebar_position: 29
 slug: /instruments/videomancer/borealis
 title: "Borealis"
-image: /img/instruments/videomancer/borealis/borealis_hero.png
+image: /img/instruments/videomancer/borealis/borealis_hero_s1.png
 description: "In 1860, the explorer Isaac Israel Hayes sailed north of Greenland into the Kane Basin and sketched the arctic aurora from the deck of his schooner."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import borealis_hero from '/img/instruments/videomancer/borealis/borealis_hero.png';
-import borealis_control_panel from '/img/instruments/videomancer/borealis/borealis_control_panel.png';
-import borealis_exercise1_result from '/img/instruments/videomancer/borealis/borealis_exercise1_result.png';
-import borealis_exercise2_result from '/img/instruments/videomancer/borealis/borealis_exercise2_result.png';
-import borealis_exercise3_result from '/img/instruments/videomancer/borealis/borealis_exercise3_result.png';
-import borealis_source1_kodim01 from '/img/instruments/videomancer/borealis/borealis_source1_kodim01.png';
-import borealis_source2_kodim02 from '/img/instruments/videomancer/borealis/borealis_source2_kodim02.png';
-import borealis_source3_stream_bridge_512 from '/img/instruments/videomancer/borealis/borealis_source3_stream_bridge_512.png';
+import borealis_source1_sunset from '/img/instruments/videomancer/borealis/borealis_source1_sunset.png';
+import borealis_source2_field from '/img/instruments/videomancer/borealis/borealis_source2_field.png';
+import borealis_source3_elephant from '/img/instruments/videomancer/borealis/borealis_source3_elephant.png';
+import borealis_source4_pattern from '/img/instruments/videomancer/borealis/borealis_source4_pattern.png';
+import borealis_source5_man from '/img/instruments/videomancer/borealis/borealis_source5_man.png';
+import borealis_source6_knit from '/img/instruments/videomancer/borealis/borealis_source6_knit.png';
+import borealis_hero_s1 from '/img/instruments/videomancer/borealis/borealis_hero_s1.png';
+import borealis_hero_s2 from '/img/instruments/videomancer/borealis/borealis_hero_s2.png';
+import borealis_hero_s3 from '/img/instruments/videomancer/borealis/borealis_hero_s3.png';
+import borealis_hero_s4 from '/img/instruments/videomancer/borealis/borealis_hero_s4.png';
+import borealis_hero_s5 from '/img/instruments/videomancer/borealis/borealis_hero_s5.png';
+import borealis_hero_s6 from '/img/instruments/videomancer/borealis/borealis_hero_s6.png';
+import borealis_ex1_s1 from '/img/instruments/videomancer/borealis/borealis_ex1_s1.png';
+import borealis_ex1_s2 from '/img/instruments/videomancer/borealis/borealis_ex1_s2.png';
+import borealis_ex1_s3 from '/img/instruments/videomancer/borealis/borealis_ex1_s3.png';
+import borealis_ex1_s4 from '/img/instruments/videomancer/borealis/borealis_ex1_s4.png';
+import borealis_ex1_s5 from '/img/instruments/videomancer/borealis/borealis_ex1_s5.png';
+import borealis_ex1_s6 from '/img/instruments/videomancer/borealis/borealis_ex1_s6.png';
+import borealis_ex2_s1 from '/img/instruments/videomancer/borealis/borealis_ex2_s1.png';
+import borealis_ex2_s2 from '/img/instruments/videomancer/borealis/borealis_ex2_s2.png';
+import borealis_ex2_s3 from '/img/instruments/videomancer/borealis/borealis_ex2_s3.png';
+import borealis_ex2_s4 from '/img/instruments/videomancer/borealis/borealis_ex2_s4.png';
+import borealis_ex2_s5 from '/img/instruments/videomancer/borealis/borealis_ex2_s5.png';
+import borealis_ex2_s6 from '/img/instruments/videomancer/borealis/borealis_ex2_s6.png';
+import borealis_ex3_s1 from '/img/instruments/videomancer/borealis/borealis_ex3_s1.png';
+import borealis_ex3_s2 from '/img/instruments/videomancer/borealis/borealis_ex3_s2.png';
+import borealis_ex3_s3 from '/img/instruments/videomancer/borealis/borealis_ex3_s3.png';
+import borealis_ex3_s4 from '/img/instruments/videomancer/borealis/borealis_ex3_s4.png';
+import borealis_ex3_s5 from '/img/instruments/videomancer/borealis/borealis_ex3_s5.png';
+import borealis_ex3_s6 from '/img/instruments/videomancer/borealis/borealis_ex3_s6.png';
 
 # Borealis
 
@@ -23,9 +45,12 @@ import borealis_source3_stream_bridge_512 from '/img/instruments/videomancer/bor
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_hero },
-    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_hero },
-    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_hero },
+    { label: "Sunset", before: borealis_source1_sunset, after: borealis_hero_s1 },
+    { label: "Field", before: borealis_source2_field, after: borealis_hero_s2 },
+    { label: "Elephant", before: borealis_source3_elephant, after: borealis_hero_s3 },
+    { label: "Pattern", before: borealis_source4_pattern, after: borealis_hero_s4 },
+    { label: "Man", before: borealis_source5_man, after: borealis_hero_s5 },
+    { label: "Knit", before: borealis_source6_knit, after: borealis_hero_s6 },
   ]}
 />
 *Borealis generating procedural aurora curtains with dual oxygen emission colors composited additively over a mountain landscape.*
@@ -116,9 +141,6 @@ Two critical design decisions define the aurora's appearance. First, the luma co
 ---
 
 ## Parameter Reference
-
-<img src={borealis_control_panel} alt="Videomancer front panel with Borealis loaded"/>
-*Videomancer's front panel with Borealis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -222,9 +244,12 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise1_result },
-    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise1_result },
-    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise1_result },
+    { label: "Sunset", before: borealis_source1_sunset, after: borealis_ex1_s1 },
+    { label: "Field", before: borealis_source2_field, after: borealis_ex1_s2 },
+    { label: "Elephant", before: borealis_source3_elephant, after: borealis_ex1_s3 },
+    { label: "Pattern", before: borealis_source4_pattern, after: borealis_ex1_s4 },
+    { label: "Man", before: borealis_source5_man, after: borealis_ex1_s5 },
+    { label: "Knit", before: borealis_source6_knit, after: borealis_ex1_s6 },
   ]}
 />
 *Single Curtain Aurora — simulated result across source images.*
@@ -253,9 +278,12 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise2_result },
-    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise2_result },
-    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise2_result },
+    { label: "Sunset", before: borealis_source1_sunset, after: borealis_ex2_s1 },
+    { label: "Field", before: borealis_source2_field, after: borealis_ex2_s2 },
+    { label: "Elephant", before: borealis_source3_elephant, after: borealis_ex2_s3 },
+    { label: "Pattern", before: borealis_source4_pattern, after: borealis_ex2_s4 },
+    { label: "Man", before: borealis_source5_man, after: borealis_ex2_s5 },
+    { label: "Knit", before: borealis_source6_knit, after: borealis_ex2_s6 },
   ]}
 />
 *Multi-Band Northern Lights — simulated result across source images.*
@@ -284,9 +312,12 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: borealis_source1_kodim01, after: borealis_exercise3_result },
-    { label: "Kodim02", before: borealis_source2_kodim02, after: borealis_exercise3_result },
-    { label: "Stream Bridge", before: borealis_source3_stream_bridge_512, after: borealis_exercise3_result },
+    { label: "Sunset", before: borealis_source1_sunset, after: borealis_ex3_s1 },
+    { label: "Field", before: borealis_source2_field, after: borealis_ex3_s2 },
+    { label: "Elephant", before: borealis_source3_elephant, after: borealis_ex3_s3 },
+    { label: "Pattern", before: borealis_source4_pattern, after: borealis_ex3_s4 },
+    { label: "Man", before: borealis_source5_man, after: borealis_ex3_s5 },
+    { label: "Knit", before: borealis_source6_knit, after: borealis_ex3_s6 },
   ]}
 />
 *Full-Sky Substorm — simulated result across source images.*

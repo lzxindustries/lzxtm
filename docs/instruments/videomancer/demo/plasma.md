@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 219
+sidebar_position: 229
 slug: /instruments/videomancer/plasma
 title: "Plasma"
 image: /img/instruments/videomancer/plasma/plasma_hero.png

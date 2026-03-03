@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 115
+sidebar_position: 120
 slug: /instruments/videomancer/fresnel
 title: "Fresnel"
 image: /img/instruments/videomancer/fresnel/fresnel_hero.png

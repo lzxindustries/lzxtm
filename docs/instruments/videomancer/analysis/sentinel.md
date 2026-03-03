@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 249
+sidebar_position: 261
 slug: /instruments/videomancer/sentinel
 title: "Sentinel"
-image: /img/instruments/videomancer/sentinel/sentinel_hero.png
+image: /img/instruments/videomancer/sentinel/sentinel_hero_s1.png
 description: "Surveillance cameras generate vast quantities of footage in which nothing happens."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sentinel_hero from '/img/instruments/videomancer/sentinel/sentinel_hero.png';
-import sentinel_control_panel from '/img/instruments/videomancer/sentinel/sentinel_control_panel.png';
-import sentinel_exercise1_result from '/img/instruments/videomancer/sentinel/sentinel_exercise1_result.png';
-import sentinel_exercise2_result from '/img/instruments/videomancer/sentinel/sentinel_exercise2_result.png';
-import sentinel_exercise3_result from '/img/instruments/videomancer/sentinel/sentinel_exercise3_result.png';
-import sentinel_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source1_grayscale_ramp_h_1920x1080.png';
-import sentinel_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/sentinel/sentinel_source2_grayscale_ramp_v_1920x1080.png';
-import sentinel_source3_step_wedge_21level_512 from '/img/instruments/videomancer/sentinel/sentinel_source3_step_wedge_21level_512.png';
+import sentinel_source1_parrot from '/img/instruments/videomancer/sentinel/sentinel_source1_parrot.png';
+import sentinel_source2_field from '/img/instruments/videomancer/sentinel/sentinel_source2_field.png';
+import sentinel_source3_elephant from '/img/instruments/videomancer/sentinel/sentinel_source3_elephant.png';
+import sentinel_source4_pattern from '/img/instruments/videomancer/sentinel/sentinel_source4_pattern.png';
+import sentinel_source5_woman from '/img/instruments/videomancer/sentinel/sentinel_source5_woman.png';
+import sentinel_source6_berries from '/img/instruments/videomancer/sentinel/sentinel_source6_berries.png';
+import sentinel_hero_s1 from '/img/instruments/videomancer/sentinel/sentinel_hero_s1.png';
+import sentinel_hero_s2 from '/img/instruments/videomancer/sentinel/sentinel_hero_s2.png';
+import sentinel_hero_s3 from '/img/instruments/videomancer/sentinel/sentinel_hero_s3.png';
+import sentinel_hero_s4 from '/img/instruments/videomancer/sentinel/sentinel_hero_s4.png';
+import sentinel_hero_s5 from '/img/instruments/videomancer/sentinel/sentinel_hero_s5.png';
+import sentinel_hero_s6 from '/img/instruments/videomancer/sentinel/sentinel_hero_s6.png';
+import sentinel_ex1_s1 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s1.png';
+import sentinel_ex1_s2 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s2.png';
+import sentinel_ex1_s3 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s3.png';
+import sentinel_ex1_s4 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s4.png';
+import sentinel_ex1_s5 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s5.png';
+import sentinel_ex1_s6 from '/img/instruments/videomancer/sentinel/sentinel_ex1_s6.png';
+import sentinel_ex2_s1 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s1.png';
+import sentinel_ex2_s2 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s2.png';
+import sentinel_ex2_s3 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s3.png';
+import sentinel_ex2_s4 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s4.png';
+import sentinel_ex2_s5 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s5.png';
+import sentinel_ex2_s6 from '/img/instruments/videomancer/sentinel/sentinel_ex2_s6.png';
+import sentinel_ex3_s1 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s1.png';
+import sentinel_ex3_s2 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s2.png';
+import sentinel_ex3_s3 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s3.png';
+import sentinel_ex3_s4 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s4.png';
+import sentinel_ex3_s5 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s5.png';
+import sentinel_ex3_s6 from '/img/instruments/videomancer/sentinel/sentinel_ex3_s6.png';
 
 # Sentinel
 
@@ -23,9 +45,12 @@ import sentinel_source3_step_wedge_21level_512 from '/img/instruments/videomance
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_hero },
-    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_hero },
-    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_hero },
+    { label: "Parrot", before: sentinel_source1_parrot, after: sentinel_hero_s1 },
+    { label: "Field", before: sentinel_source2_field, after: sentinel_hero_s2 },
+    { label: "Elephant", before: sentinel_source3_elephant, after: sentinel_hero_s3 },
+    { label: "Pattern", before: sentinel_source4_pattern, after: sentinel_hero_s4 },
+    { label: "Woman", before: sentinel_source5_woman, after: sentinel_hero_s5 },
+    { label: "Berries", before: sentinel_source6_berries, after: sentinel_hero_s6 },
   ]}
 />
 *Sentinel detecting lateral pixel motion with IIR background subtraction, highlighting moving regions in false colour while dimming the static scene.*
@@ -104,8 +129,6 @@ Two architectural features dominate the signal path. First, the IIR average trac
 
 ## Parameter Reference
 
-<img src={sentinel_control_panel} alt="Videomancer front panel with Sentinel loaded"/>
-*Videomancer's front panel with Sentinel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -210,9 +233,12 @@ These exercises progress from basic motion detection through false-colour tuning
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise1_result },
-    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise1_result },
-    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise1_result },
+    { label: "Parrot", before: sentinel_source1_parrot, after: sentinel_ex1_s1 },
+    { label: "Field", before: sentinel_source2_field, after: sentinel_ex1_s2 },
+    { label: "Elephant", before: sentinel_source3_elephant, after: sentinel_ex1_s3 },
+    { label: "Pattern", before: sentinel_source4_pattern, after: sentinel_ex1_s4 },
+    { label: "Woman", before: sentinel_source5_woman, after: sentinel_ex1_s5 },
+    { label: "Berries", before: sentinel_source6_berries, after: sentinel_ex1_s6 },
   ]}
 />
 *Basic Motion Detection — simulated result across source images.*
@@ -234,9 +260,12 @@ These exercises progress from basic motion detection through false-colour tuning
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise2_result },
-    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise2_result },
-    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise2_result },
+    { label: "Parrot", before: sentinel_source1_parrot, after: sentinel_ex2_s1 },
+    { label: "Field", before: sentinel_source2_field, after: sentinel_ex2_s2 },
+    { label: "Elephant", before: sentinel_source3_elephant, after: sentinel_ex2_s3 },
+    { label: "Pattern", before: sentinel_source4_pattern, after: sentinel_ex2_s4 },
+    { label: "Woman", before: sentinel_source5_woman, after: sentinel_ex2_s5 },
+    { label: "Berries", before: sentinel_source6_berries, after: sentinel_ex2_s6 },
   ]}
 />
 *False-Colour Tuning — simulated result across source images.*
@@ -258,9 +287,12 @@ These exercises progress from basic motion detection through false-colour tuning
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: sentinel_source1_grayscale_ramp_h_1920x1080, after: sentinel_exercise3_result },
-    { label: "Grayscale Ramp V", before: sentinel_source2_grayscale_ramp_v_1920x1080, after: sentinel_exercise3_result },
-    { label: "Step Wedge 21level", before: sentinel_source3_step_wedge_21level_512, after: sentinel_exercise3_result },
+    { label: "Parrot", before: sentinel_source1_parrot, after: sentinel_ex3_s1 },
+    { label: "Field", before: sentinel_source2_field, after: sentinel_ex3_s2 },
+    { label: "Elephant", before: sentinel_source3_elephant, after: sentinel_ex3_s3 },
+    { label: "Pattern", before: sentinel_source4_pattern, after: sentinel_ex3_s4 },
+    { label: "Woman", before: sentinel_source5_woman, after: sentinel_ex3_s5 },
+    { label: "Berries", before: sentinel_source6_berries, after: sentinel_ex3_s6 },
   ]}
 />
 *Persistence Trails — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 96
+sidebar_position: 100
 slug: /instruments/videomancer/encore
 title: "Encore"
-image: /img/instruments/videomancer/encore/encore_hero.png
+image: /img/instruments/videomancer/encore/encore_hero_s1.png
 description: "Broadcast television invented picture-in-picture to show two things at once — a sports score ticker floating over live action, a news anchor inset against a remote feed."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import encore_hero from '/img/instruments/videomancer/encore/encore_hero.png';
-import encore_control_panel from '/img/instruments/videomancer/encore/encore_control_panel.png';
-import encore_exercise1_result from '/img/instruments/videomancer/encore/encore_exercise1_result.png';
-import encore_exercise2_result from '/img/instruments/videomancer/encore/encore_exercise2_result.png';
-import encore_exercise3_result from '/img/instruments/videomancer/encore/encore_exercise3_result.png';
-import encore_source1_kodim15 from '/img/instruments/videomancer/encore/encore_source1_kodim15.png';
-import encore_source2_kodim01 from '/img/instruments/videomancer/encore/encore_source2_kodim01.png';
-import encore_source3_kodim01_bw from '/img/instruments/videomancer/encore/encore_source3_kodim01_bw.png';
+import encore_source1_ballerina from '/img/instruments/videomancer/encore/encore_source1_ballerina.png';
+import encore_source2_boat from '/img/instruments/videomancer/encore/encore_source2_boat.png';
+import encore_source3_turtle from '/img/instruments/videomancer/encore/encore_source3_turtle.png';
+import encore_source4_pattern from '/img/instruments/videomancer/encore/encore_source4_pattern.png';
+import encore_source5_girl from '/img/instruments/videomancer/encore/encore_source5_girl.png';
+import encore_source6_wood from '/img/instruments/videomancer/encore/encore_source6_wood.png';
+import encore_hero_s1 from '/img/instruments/videomancer/encore/encore_hero_s1.png';
+import encore_hero_s2 from '/img/instruments/videomancer/encore/encore_hero_s2.png';
+import encore_hero_s3 from '/img/instruments/videomancer/encore/encore_hero_s3.png';
+import encore_hero_s4 from '/img/instruments/videomancer/encore/encore_hero_s4.png';
+import encore_hero_s5 from '/img/instruments/videomancer/encore/encore_hero_s5.png';
+import encore_hero_s6 from '/img/instruments/videomancer/encore/encore_hero_s6.png';
+import encore_ex1_s1 from '/img/instruments/videomancer/encore/encore_ex1_s1.png';
+import encore_ex1_s2 from '/img/instruments/videomancer/encore/encore_ex1_s2.png';
+import encore_ex1_s3 from '/img/instruments/videomancer/encore/encore_ex1_s3.png';
+import encore_ex1_s4 from '/img/instruments/videomancer/encore/encore_ex1_s4.png';
+import encore_ex1_s5 from '/img/instruments/videomancer/encore/encore_ex1_s5.png';
+import encore_ex1_s6 from '/img/instruments/videomancer/encore/encore_ex1_s6.png';
+import encore_ex2_s1 from '/img/instruments/videomancer/encore/encore_ex2_s1.png';
+import encore_ex2_s2 from '/img/instruments/videomancer/encore/encore_ex2_s2.png';
+import encore_ex2_s3 from '/img/instruments/videomancer/encore/encore_ex2_s3.png';
+import encore_ex2_s4 from '/img/instruments/videomancer/encore/encore_ex2_s4.png';
+import encore_ex2_s5 from '/img/instruments/videomancer/encore/encore_ex2_s5.png';
+import encore_ex2_s6 from '/img/instruments/videomancer/encore/encore_ex2_s6.png';
+import encore_ex3_s1 from '/img/instruments/videomancer/encore/encore_ex3_s1.png';
+import encore_ex3_s2 from '/img/instruments/videomancer/encore/encore_ex3_s2.png';
+import encore_ex3_s3 from '/img/instruments/videomancer/encore/encore_ex3_s3.png';
+import encore_ex3_s4 from '/img/instruments/videomancer/encore/encore_ex3_s4.png';
+import encore_ex3_s5 from '/img/instruments/videomancer/encore/encore_ex3_s5.png';
+import encore_ex3_s6 from '/img/instruments/videomancer/encore/encore_ex3_s6.png';
 
 # Encore
 
@@ -23,9 +45,12 @@ import encore_source3_kodim01_bw from '/img/instruments/videomancer/encore/encor
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: encore_source1_kodim15, after: encore_hero },
-    { label: "Kodim01", before: encore_source2_kodim01, after: encore_hero },
-    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_hero },
+    { label: "Ballerina", before: encore_source1_ballerina, after: encore_hero_s1 },
+    { label: "Boat", before: encore_source2_boat, after: encore_hero_s2 },
+    { label: "Turtle", before: encore_source3_turtle, after: encore_hero_s3 },
+    { label: "Pattern", before: encore_source4_pattern, after: encore_hero_s4 },
+    { label: "Girl", before: encore_source5_girl, after: encore_hero_s5 },
+    { label: "Wood", before: encore_source6_wood, after: encore_hero_s6 },
   ]}
 />
 *Encore compositing a bordered picture-in-picture window with drop shadow over a darkened background.*
@@ -107,8 +132,6 @@ The pipeline has two parallel paths: the processing path computes per-pixel wind
 
 ## Parameter Reference
 
-<img src={encore_control_panel} alt="Videomancer front panel with Encore loaded"/>
-*Videomancer's front panel with Encore active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises progress from basic window positioning to layered compositing wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise1_result },
-    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise1_result },
-    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise1_result },
+    { label: "Ballerina", before: encore_source1_ballerina, after: encore_ex1_s1 },
+    { label: "Boat", before: encore_source2_boat, after: encore_ex1_s2 },
+    { label: "Turtle", before: encore_source3_turtle, after: encore_ex1_s3 },
+    { label: "Pattern", before: encore_source4_pattern, after: encore_ex1_s4 },
+    { label: "Girl", before: encore_source5_girl, after: encore_ex1_s5 },
+    { label: "Wood", before: encore_source6_wood, after: encore_ex1_s6 },
   ]}
 />
 *Centered Inset — simulated result across source images.*
@@ -237,9 +263,12 @@ These exercises progress from basic window positioning to layered compositing wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise2_result },
-    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise2_result },
-    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise2_result },
+    { label: "Ballerina", before: encore_source1_ballerina, after: encore_ex2_s1 },
+    { label: "Boat", before: encore_source2_boat, after: encore_ex2_s2 },
+    { label: "Turtle", before: encore_source3_turtle, after: encore_ex2_s3 },
+    { label: "Pattern", before: encore_source4_pattern, after: encore_ex2_s4 },
+    { label: "Girl", before: encore_source5_girl, after: encore_ex2_s5 },
+    { label: "Wood", before: encore_source6_wood, after: encore_ex2_s6 },
   ]}
 />
 *Framed Window with Shadow — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from basic window positioning to layered compositing wi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: encore_source1_kodim15, after: encore_exercise3_result },
-    { label: "Kodim01", before: encore_source2_kodim01, after: encore_exercise3_result },
-    { label: "Kodim01 B&W", before: encore_source3_kodim01_bw, after: encore_exercise3_result },
+    { label: "Ballerina", before: encore_source1_ballerina, after: encore_ex3_s1 },
+    { label: "Boat", before: encore_source2_boat, after: encore_ex3_s2 },
+    { label: "Turtle", before: encore_source3_turtle, after: encore_ex3_s3 },
+    { label: "Pattern", before: encore_source4_pattern, after: encore_ex3_s4 },
+    { label: "Girl", before: encore_source5_girl, after: encore_ex3_s5 },
+    { label: "Wood", before: encore_source6_wood, after: encore_ex3_s6 },
   ]}
 />
 *Inverted Inset Composite — simulated result across source images.*

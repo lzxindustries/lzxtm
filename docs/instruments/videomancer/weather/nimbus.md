@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 196
+sidebar_position: 204
 slug: /instruments/videomancer/nimbus
 title: "Nimbus"
-image: /img/instruments/videomancer/nimbus/nimbus_hero.png
+image: /img/instruments/videomancer/nimbus/nimbus_hero_s1.png
 description: "In the early 1820s, the English painter John Constable devoted two summers to painting nothing but clouds over Hampstead Heath — small oil sketches that recorded the layered, stratified structure of cumulus and cumulonimbus formations."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import nimbus_hero from '/img/instruments/videomancer/nimbus/nimbus_hero.png';
-import nimbus_control_panel from '/img/instruments/videomancer/nimbus/nimbus_control_panel.png';
-import nimbus_exercise1_result from '/img/instruments/videomancer/nimbus/nimbus_exercise1_result.png';
-import nimbus_exercise2_result from '/img/instruments/videomancer/nimbus/nimbus_exercise2_result.png';
-import nimbus_exercise3_result from '/img/instruments/videomancer/nimbus/nimbus_exercise3_result.png';
-import nimbus_source1_kodim01 from '/img/instruments/videomancer/nimbus/nimbus_source1_kodim01.png';
-import nimbus_source2_kodim02 from '/img/instruments/videomancer/nimbus/nimbus_source2_kodim02.png';
-import nimbus_source3_stream_bridge_512 from '/img/instruments/videomancer/nimbus/nimbus_source3_stream_bridge_512.png';
+import nimbus_source1_cat from '/img/instruments/videomancer/nimbus/nimbus_source1_cat.png';
+import nimbus_source2_castle from '/img/instruments/videomancer/nimbus/nimbus_source2_castle.png';
+import nimbus_source3_elephant from '/img/instruments/videomancer/nimbus/nimbus_source3_elephant.png';
+import nimbus_source4_pattern from '/img/instruments/videomancer/nimbus/nimbus_source4_pattern.png';
+import nimbus_source5_boy from '/img/instruments/videomancer/nimbus/nimbus_source5_boy.png';
+import nimbus_source6_paint from '/img/instruments/videomancer/nimbus/nimbus_source6_paint.png';
+import nimbus_hero_s1 from '/img/instruments/videomancer/nimbus/nimbus_hero_s1.png';
+import nimbus_hero_s2 from '/img/instruments/videomancer/nimbus/nimbus_hero_s2.png';
+import nimbus_hero_s3 from '/img/instruments/videomancer/nimbus/nimbus_hero_s3.png';
+import nimbus_hero_s4 from '/img/instruments/videomancer/nimbus/nimbus_hero_s4.png';
+import nimbus_hero_s5 from '/img/instruments/videomancer/nimbus/nimbus_hero_s5.png';
+import nimbus_hero_s6 from '/img/instruments/videomancer/nimbus/nimbus_hero_s6.png';
+import nimbus_ex1_s1 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s1.png';
+import nimbus_ex1_s2 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s2.png';
+import nimbus_ex1_s3 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s3.png';
+import nimbus_ex1_s4 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s4.png';
+import nimbus_ex1_s5 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s5.png';
+import nimbus_ex1_s6 from '/img/instruments/videomancer/nimbus/nimbus_ex1_s6.png';
+import nimbus_ex2_s1 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s1.png';
+import nimbus_ex2_s2 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s2.png';
+import nimbus_ex2_s3 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s3.png';
+import nimbus_ex2_s4 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s4.png';
+import nimbus_ex2_s5 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s5.png';
+import nimbus_ex2_s6 from '/img/instruments/videomancer/nimbus/nimbus_ex2_s6.png';
+import nimbus_ex3_s1 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s1.png';
+import nimbus_ex3_s2 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s2.png';
+import nimbus_ex3_s3 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s3.png';
+import nimbus_ex3_s4 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s4.png';
+import nimbus_ex3_s5 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s5.png';
+import nimbus_ex3_s6 from '/img/instruments/videomancer/nimbus/nimbus_ex3_s6.png';
 
 # Nimbus
 
@@ -23,9 +45,12 @@ import nimbus_source3_stream_bridge_512 from '/img/instruments/videomancer/nimbu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_hero },
-    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_hero },
-    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_hero },
+    { label: "Cat", before: nimbus_source1_cat, after: nimbus_hero_s1 },
+    { label: "Castle", before: nimbus_source2_castle, after: nimbus_hero_s2 },
+    { label: "Elephant", before: nimbus_source3_elephant, after: nimbus_hero_s3 },
+    { label: "Pattern", before: nimbus_source4_pattern, after: nimbus_hero_s4 },
+    { label: "Boy", before: nimbus_source5_boy, after: nimbus_hero_s5 },
+    { label: "Paint", before: nimbus_source6_paint, after: nimbus_hero_s6 },
   ]}
 />
 *Nimbus dividing a video frame into cloud-like horizontal strata with warm tonal compression and altitude-dependent desaturation.*
@@ -115,8 +140,6 @@ The two palettes (warm and cool) are stored as constant arrays in the VHDL. Each
 
 ## Parameter Reference
 
-<img src={nimbus_control_panel} alt="Videomancer front panel with Nimbus loaded"/>
-*Videomancer's front panel with Nimbus active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from simple stratification to full atmospheric composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise1_result },
-    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise1_result },
-    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise1_result },
+    { label: "Cat", before: nimbus_source1_cat, after: nimbus_ex1_s1 },
+    { label: "Castle", before: nimbus_source2_castle, after: nimbus_ex1_s2 },
+    { label: "Elephant", before: nimbus_source3_elephant, after: nimbus_ex1_s3 },
+    { label: "Pattern", before: nimbus_source4_pattern, after: nimbus_ex1_s4 },
+    { label: "Boy", before: nimbus_source5_boy, after: nimbus_ex1_s5 },
+    { label: "Paint", before: nimbus_source6_paint, after: nimbus_ex1_s6 },
   ]}
 />
 *Basic Cloud Strata — simulated result across source images.*
@@ -244,9 +270,12 @@ These exercises progress from simple stratification to full atmospheric composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise2_result },
-    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise2_result },
-    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise2_result },
+    { label: "Cat", before: nimbus_source1_cat, after: nimbus_ex2_s1 },
+    { label: "Castle", before: nimbus_source2_castle, after: nimbus_ex2_s2 },
+    { label: "Elephant", before: nimbus_source3_elephant, after: nimbus_ex2_s3 },
+    { label: "Pattern", before: nimbus_source4_pattern, after: nimbus_ex2_s4 },
+    { label: "Boy", before: nimbus_source5_boy, after: nimbus_ex2_s5 },
+    { label: "Paint", before: nimbus_source6_paint, after: nimbus_ex2_s6 },
   ]}
 />
 *Drifting Atmosphere — simulated result across source images.*
@@ -269,9 +298,12 @@ These exercises progress from simple stratification to full atmospheric composit
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: nimbus_source1_kodim01, after: nimbus_exercise3_result },
-    { label: "Kodim02", before: nimbus_source2_kodim02, after: nimbus_exercise3_result },
-    { label: "Stream Bridge", before: nimbus_source3_stream_bridge_512, after: nimbus_exercise3_result },
+    { label: "Cat", before: nimbus_source1_cat, after: nimbus_ex3_s1 },
+    { label: "Castle", before: nimbus_source2_castle, after: nimbus_ex3_s2 },
+    { label: "Elephant", before: nimbus_source3_elephant, after: nimbus_ex3_s3 },
+    { label: "Pattern", before: nimbus_source4_pattern, after: nimbus_ex3_s4 },
+    { label: "Boy", before: nimbus_source5_boy, after: nimbus_ex3_s5 },
+    { label: "Paint", before: nimbus_source6_paint, after: nimbus_ex3_s6 },
   ]}
 />
 *Sharp Fronts and Full Atmosphere — simulated result across source images.*

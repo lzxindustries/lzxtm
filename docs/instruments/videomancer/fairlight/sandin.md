@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 242
+sidebar_position: 254
 slug: /instruments/videomancer/sandin
 title: "Sandin"
-image: /img/instruments/videomancer/sandin/sandin_hero.png
+image: /img/instruments/videomancer/sandin/sandin_hero_s1.png
 description: "Sandin is a digital homage to the Sandin Image Processor (IP), the pioneering analogue video instrument built by Dan Sandin at the University of Illinois at Chicago in 1973."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import sandin_hero from '/img/instruments/videomancer/sandin/sandin_hero.png';
-import sandin_control_panel from '/img/instruments/videomancer/sandin/sandin_control_panel.png';
-import sandin_exercise1_result from '/img/instruments/videomancer/sandin/sandin_exercise1_result.png';
-import sandin_exercise2_result from '/img/instruments/videomancer/sandin/sandin_exercise2_result.png';
-import sandin_exercise3_result from '/img/instruments/videomancer/sandin/sandin_exercise3_result.png';
-import sandin_source1_kodim15 from '/img/instruments/videomancer/sandin/sandin_source1_kodim15.png';
-import sandin_source2_kodim01 from '/img/instruments/videomancer/sandin/sandin_source2_kodim01.png';
-import sandin_source3_kodim01_bw from '/img/instruments/videomancer/sandin/sandin_source3_kodim01_bw.png';
+import sandin_source1_house from '/img/instruments/videomancer/sandin/sandin_source1_house.png';
+import sandin_source2_ballerina from '/img/instruments/videomancer/sandin/sandin_source2_ballerina.png';
+import sandin_source3_turtle from '/img/instruments/videomancer/sandin/sandin_source3_turtle.png';
+import sandin_source4_pattern from '/img/instruments/videomancer/sandin/sandin_source4_pattern.png';
+import sandin_source5_man from '/img/instruments/videomancer/sandin/sandin_source5_man.png';
+import sandin_source6_knit from '/img/instruments/videomancer/sandin/sandin_source6_knit.png';
+import sandin_hero_s1 from '/img/instruments/videomancer/sandin/sandin_hero_s1.png';
+import sandin_hero_s2 from '/img/instruments/videomancer/sandin/sandin_hero_s2.png';
+import sandin_hero_s3 from '/img/instruments/videomancer/sandin/sandin_hero_s3.png';
+import sandin_hero_s4 from '/img/instruments/videomancer/sandin/sandin_hero_s4.png';
+import sandin_hero_s5 from '/img/instruments/videomancer/sandin/sandin_hero_s5.png';
+import sandin_hero_s6 from '/img/instruments/videomancer/sandin/sandin_hero_s6.png';
+import sandin_ex1_s1 from '/img/instruments/videomancer/sandin/sandin_ex1_s1.png';
+import sandin_ex1_s2 from '/img/instruments/videomancer/sandin/sandin_ex1_s2.png';
+import sandin_ex1_s3 from '/img/instruments/videomancer/sandin/sandin_ex1_s3.png';
+import sandin_ex1_s4 from '/img/instruments/videomancer/sandin/sandin_ex1_s4.png';
+import sandin_ex1_s5 from '/img/instruments/videomancer/sandin/sandin_ex1_s5.png';
+import sandin_ex1_s6 from '/img/instruments/videomancer/sandin/sandin_ex1_s6.png';
+import sandin_ex2_s1 from '/img/instruments/videomancer/sandin/sandin_ex2_s1.png';
+import sandin_ex2_s2 from '/img/instruments/videomancer/sandin/sandin_ex2_s2.png';
+import sandin_ex2_s3 from '/img/instruments/videomancer/sandin/sandin_ex2_s3.png';
+import sandin_ex2_s4 from '/img/instruments/videomancer/sandin/sandin_ex2_s4.png';
+import sandin_ex2_s5 from '/img/instruments/videomancer/sandin/sandin_ex2_s5.png';
+import sandin_ex2_s6 from '/img/instruments/videomancer/sandin/sandin_ex2_s6.png';
+import sandin_ex3_s1 from '/img/instruments/videomancer/sandin/sandin_ex3_s1.png';
+import sandin_ex3_s2 from '/img/instruments/videomancer/sandin/sandin_ex3_s2.png';
+import sandin_ex3_s3 from '/img/instruments/videomancer/sandin/sandin_ex3_s3.png';
+import sandin_ex3_s4 from '/img/instruments/videomancer/sandin/sandin_ex3_s4.png';
+import sandin_ex3_s5 from '/img/instruments/videomancer/sandin/sandin_ex3_s5.png';
+import sandin_ex3_s6 from '/img/instruments/videomancer/sandin/sandin_ex3_s6.png';
 
 # Sandin
 
@@ -23,9 +45,12 @@ import sandin_source3_kodim01_bw from '/img/instruments/videomancer/sandin/sandi
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_hero },
-    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_hero },
-    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_hero },
+    { label: "House", before: sandin_source1_house, after: sandin_hero_s1 },
+    { label: "Ballerina", before: sandin_source2_ballerina, after: sandin_hero_s2 },
+    { label: "Turtle", before: sandin_source3_turtle, after: sandin_hero_s3 },
+    { label: "Pattern", before: sandin_source4_pattern, after: sandin_hero_s4 },
+    { label: "Man", before: sandin_source5_man, after: sandin_hero_s5 },
+    { label: "Knit", before: sandin_source6_knit, after: sandin_hero_s6 },
   ]}
 />
 *Video-derived edge signals cascade through multiply and add stages, producing a self-referential feedback glow where bright edges reinforce and dark regions fold inward.*
@@ -121,8 +146,6 @@ The Cascade toggle doubles the derivation chain — two successive edge/offset/i
 
 ## Parameter Reference
 
-<img src={sandin_control_panel} alt="Videomancer front panel with Sandin loaded"/>
-*Videomancer's front panel with Sandin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -227,9 +250,12 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise1_result },
-    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise1_result },
-    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise1_result },
+    { label: "House", before: sandin_source1_house, after: sandin_ex1_s1 },
+    { label: "Ballerina", before: sandin_source2_ballerina, after: sandin_ex1_s2 },
+    { label: "Turtle", before: sandin_source3_turtle, after: sandin_ex1_s3 },
+    { label: "Pattern", before: sandin_source4_pattern, after: sandin_ex1_s4 },
+    { label: "Man", before: sandin_source5_man, after: sandin_ex1_s5 },
+    { label: "Knit", before: sandin_source6_knit, after: sandin_ex1_s6 },
   ]}
 />
 *Clean Edge Enhancement — simulated result across source images.*
@@ -254,9 +280,12 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise2_result },
-    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise2_result },
-    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise2_result },
+    { label: "House", before: sandin_source1_house, after: sandin_ex2_s1 },
+    { label: "Ballerina", before: sandin_source2_ballerina, after: sandin_ex2_s2 },
+    { label: "Turtle", before: sandin_source3_turtle, after: sandin_ex2_s3 },
+    { label: "Pattern", before: sandin_source4_pattern, after: sandin_ex2_s4 },
+    { label: "Man", before: sandin_source5_man, after: sandin_ex2_s5 },
+    { label: "Knit", before: sandin_source6_knit, after: sandin_ex2_s6 },
   ]}
 />
 *Feedback Oscillation — simulated result across source images.*
@@ -281,9 +310,12 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: sandin_source1_kodim15, after: sandin_exercise3_result },
-    { label: "Kodim01", before: sandin_source2_kodim01, after: sandin_exercise3_result },
-    { label: "Kodim01 B&W", before: sandin_source3_kodim01_bw, after: sandin_exercise3_result },
+    { label: "House", before: sandin_source1_house, after: sandin_ex3_s1 },
+    { label: "Ballerina", before: sandin_source2_ballerina, after: sandin_ex3_s2 },
+    { label: "Turtle", before: sandin_source3_turtle, after: sandin_ex3_s3 },
+    { label: "Pattern", before: sandin_source4_pattern, after: sandin_ex3_s4 },
+    { label: "Man", before: sandin_source5_man, after: sandin_ex3_s5 },
+    { label: "Knit", before: sandin_source6_knit, after: sandin_ex3_s6 },
   ]}
 />
 *Shadow Glow with Divide — simulated result across source images.*

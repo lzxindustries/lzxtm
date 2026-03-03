@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 27
+sidebar_position: 28
 slug: /instruments/videomancer/borderline
 title: "Borderline"
 image: /img/instruments/videomancer/borderline/borderline_hero.png

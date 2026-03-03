@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 93
+sidebar_position: 97
 slug: /instruments/videomancer/embers
 title: "Embers"
 image: /img/instruments/videomancer/embers/embers_hero.png

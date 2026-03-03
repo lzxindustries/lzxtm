@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 199
+sidebar_position: 207
 slug: /instruments/videomancer/optika
 title: "Optika"
-image: /img/instruments/videomancer/optika/optika_hero.png
+image: /img/instruments/videomancer/optika/optika_hero_s1.png
 description: "Before digital compositing, optical printers were the primary tool for combining multiple film elements into a single image."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import optika_hero from '/img/instruments/videomancer/optika/optika_hero.png';
-import optika_control_panel from '/img/instruments/videomancer/optika/optika_control_panel.png';
-import optika_exercise1_result from '/img/instruments/videomancer/optika/optika_exercise1_result.png';
-import optika_exercise2_result from '/img/instruments/videomancer/optika/optika_exercise2_result.png';
-import optika_exercise3_result from '/img/instruments/videomancer/optika/optika_exercise3_result.png';
-import optika_source1_kodim03 from '/img/instruments/videomancer/optika/optika_source1_kodim03.png';
-import optika_source2_kodim13 from '/img/instruments/videomancer/optika/optika_source2_kodim13.png';
-import optika_source3_kodim13_bw from '/img/instruments/videomancer/optika/optika_source3_kodim13_bw.png';
+import optika_source1_cat from '/img/instruments/videomancer/optika/optika_source1_cat.png';
+import optika_source2_skull from '/img/instruments/videomancer/optika/optika_source2_skull.png';
+import optika_source3_collage from '/img/instruments/videomancer/optika/optika_source3_collage.png';
+import optika_source4_pattern from '/img/instruments/videomancer/optika/optika_source4_pattern.png';
+import optika_source5_girl from '/img/instruments/videomancer/optika/optika_source5_girl.png';
+import optika_source6_paint from '/img/instruments/videomancer/optika/optika_source6_paint.png';
+import optika_hero_s1 from '/img/instruments/videomancer/optika/optika_hero_s1.png';
+import optika_hero_s2 from '/img/instruments/videomancer/optika/optika_hero_s2.png';
+import optika_hero_s3 from '/img/instruments/videomancer/optika/optika_hero_s3.png';
+import optika_hero_s4 from '/img/instruments/videomancer/optika/optika_hero_s4.png';
+import optika_hero_s5 from '/img/instruments/videomancer/optika/optika_hero_s5.png';
+import optika_hero_s6 from '/img/instruments/videomancer/optika/optika_hero_s6.png';
+import optika_ex1_s1 from '/img/instruments/videomancer/optika/optika_ex1_s1.png';
+import optika_ex1_s2 from '/img/instruments/videomancer/optika/optika_ex1_s2.png';
+import optika_ex1_s3 from '/img/instruments/videomancer/optika/optika_ex1_s3.png';
+import optika_ex1_s4 from '/img/instruments/videomancer/optika/optika_ex1_s4.png';
+import optika_ex1_s5 from '/img/instruments/videomancer/optika/optika_ex1_s5.png';
+import optika_ex1_s6 from '/img/instruments/videomancer/optika/optika_ex1_s6.png';
+import optika_ex2_s1 from '/img/instruments/videomancer/optika/optika_ex2_s1.png';
+import optika_ex2_s2 from '/img/instruments/videomancer/optika/optika_ex2_s2.png';
+import optika_ex2_s3 from '/img/instruments/videomancer/optika/optika_ex2_s3.png';
+import optika_ex2_s4 from '/img/instruments/videomancer/optika/optika_ex2_s4.png';
+import optika_ex2_s5 from '/img/instruments/videomancer/optika/optika_ex2_s5.png';
+import optika_ex2_s6 from '/img/instruments/videomancer/optika/optika_ex2_s6.png';
+import optika_ex3_s1 from '/img/instruments/videomancer/optika/optika_ex3_s1.png';
+import optika_ex3_s2 from '/img/instruments/videomancer/optika/optika_ex3_s2.png';
+import optika_ex3_s3 from '/img/instruments/videomancer/optika/optika_ex3_s3.png';
+import optika_ex3_s4 from '/img/instruments/videomancer/optika/optika_ex3_s4.png';
+import optika_ex3_s5 from '/img/instruments/videomancer/optika/optika_ex3_s5.png';
+import optika_ex3_s6 from '/img/instruments/videomancer/optika/optika_ex3_s6.png';
 
 # Optika
 
@@ -23,9 +45,12 @@ import optika_source3_kodim13_bw from '/img/instruments/videomancer/optika/optik
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: optika_source1_kodim03, after: optika_hero },
-    { label: "Kodim13", before: optika_source2_kodim13, after: optika_hero },
-    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_hero },
+    { label: "Cat", before: optika_source1_cat, after: optika_hero_s1 },
+    { label: "Skull", before: optika_source2_skull, after: optika_hero_s2 },
+    { label: "Collage", before: optika_source3_collage, after: optika_hero_s3 },
+    { label: "Pattern", before: optika_source4_pattern, after: optika_hero_s4 },
+    { label: "Girl", before: optika_source5_girl, after: optika_hero_s5 },
+    { label: "Paint", before: optika_source6_paint, after: optika_hero_s6 },
   ]}
 />
 *Optika building up multi-exposure accumulation trails with printer light color balance and film halation bloom over a live video source.*
@@ -109,8 +134,6 @@ A second BRAM stores the previous frame's scanline data for temporal blending. T
 
 ## Parameter Reference
 
-<img src={optika_control_panel} alt="Videomancer front panel with Optika loaded"/>
-*Videomancer's front panel with Optika active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +237,12 @@ These exercises progress from basic temporal accumulation through printer light 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise1_result },
-    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise1_result },
-    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise1_result },
+    { label: "Cat", before: optika_source1_cat, after: optika_ex1_s1 },
+    { label: "Skull", before: optika_source2_skull, after: optika_ex1_s2 },
+    { label: "Collage", before: optika_source3_collage, after: optika_ex1_s3 },
+    { label: "Pattern", before: optika_source4_pattern, after: optika_ex1_s4 },
+    { label: "Girl", before: optika_source5_girl, after: optika_ex1_s5 },
+    { label: "Paint", before: optika_source6_paint, after: optika_ex1_s6 },
   ]}
 />
 *Ghostly Trails — simulated result across source images.*
@@ -239,9 +265,12 @@ These exercises progress from basic temporal accumulation through printer light 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise2_result },
-    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise2_result },
-    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise2_result },
+    { label: "Cat", before: optika_source1_cat, after: optika_ex2_s1 },
+    { label: "Skull", before: optika_source2_skull, after: optika_ex2_s2 },
+    { label: "Collage", before: optika_source3_collage, after: optika_ex2_s3 },
+    { label: "Pattern", before: optika_source4_pattern, after: optika_ex2_s4 },
+    { label: "Girl", before: optika_source5_girl, after: optika_ex2_s5 },
+    { label: "Paint", before: optika_source6_paint, after: optika_ex2_s6 },
   ]}
 />
 *Step-Print Speed Ramp — simulated result across source images.*
@@ -264,9 +293,12 @@ These exercises progress from basic temporal accumulation through printer light 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: optika_source1_kodim03, after: optika_exercise3_result },
-    { label: "Kodim13", before: optika_source2_kodim13, after: optika_exercise3_result },
-    { label: "Kodim13 B&W", before: optika_source3_kodim13_bw, after: optika_exercise3_result },
+    { label: "Cat", before: optika_source1_cat, after: optika_ex3_s1 },
+    { label: "Skull", before: optika_source2_skull, after: optika_ex3_s2 },
+    { label: "Collage", before: optika_source3_collage, after: optika_ex3_s3 },
+    { label: "Pattern", before: optika_source4_pattern, after: optika_ex3_s4 },
+    { label: "Girl", before: optika_source5_girl, after: optika_ex3_s5 },
+    { label: "Paint", before: optika_source6_paint, after: optika_ex3_s6 },
   ]}
 />
 *Film Look Composite — simulated result across source images.*

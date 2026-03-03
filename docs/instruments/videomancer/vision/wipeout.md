@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 313
+sidebar_position: 329
 slug: /instruments/videomancer/wipeout
 title: "Wipeout"
 image: /img/instruments/videomancer/wipeout/wipeout_hero.png

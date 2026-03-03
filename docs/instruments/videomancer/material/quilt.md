@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 226
+sidebar_position: 236
 slug: /instruments/videomancer/quilt
 title: "Quilt"
-image: /img/instruments/videomancer/quilt/quilt_hero.png
+image: /img/instruments/videomancer/quilt/quilt_hero_s1.png
 description: "Every image carries a grid — the rows and columns of pixels that compose it."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import quilt_hero from '/img/instruments/videomancer/quilt/quilt_hero.png';
-import quilt_control_panel from '/img/instruments/videomancer/quilt/quilt_control_panel.png';
-import quilt_exercise1_result from '/img/instruments/videomancer/quilt/quilt_exercise1_result.png';
-import quilt_exercise2_result from '/img/instruments/videomancer/quilt/quilt_exercise2_result.png';
-import quilt_exercise3_result from '/img/instruments/videomancer/quilt/quilt_exercise3_result.png';
-import quilt_source1_kodim15 from '/img/instruments/videomancer/quilt/quilt_source1_kodim15.png';
-import quilt_source2_kodim03 from '/img/instruments/videomancer/quilt/quilt_source2_kodim03.png';
-import quilt_source3_kodim13_bw from '/img/instruments/videomancer/quilt/quilt_source3_kodim13_bw.png';
+import quilt_source1_cat from '/img/instruments/videomancer/quilt/quilt_source1_cat.png';
+import quilt_source2_field from '/img/instruments/videomancer/quilt/quilt_source2_field.png';
+import quilt_source3_clouds from '/img/instruments/videomancer/quilt/quilt_source3_clouds.png';
+import quilt_source4_pattern from '/img/instruments/videomancer/quilt/quilt_source4_pattern.png';
+import quilt_source5_man from '/img/instruments/videomancer/quilt/quilt_source5_man.png';
+import quilt_source6_berries from '/img/instruments/videomancer/quilt/quilt_source6_berries.png';
+import quilt_hero_s1 from '/img/instruments/videomancer/quilt/quilt_hero_s1.png';
+import quilt_hero_s2 from '/img/instruments/videomancer/quilt/quilt_hero_s2.png';
+import quilt_hero_s3 from '/img/instruments/videomancer/quilt/quilt_hero_s3.png';
+import quilt_hero_s4 from '/img/instruments/videomancer/quilt/quilt_hero_s4.png';
+import quilt_hero_s5 from '/img/instruments/videomancer/quilt/quilt_hero_s5.png';
+import quilt_hero_s6 from '/img/instruments/videomancer/quilt/quilt_hero_s6.png';
+import quilt_ex1_s1 from '/img/instruments/videomancer/quilt/quilt_ex1_s1.png';
+import quilt_ex1_s2 from '/img/instruments/videomancer/quilt/quilt_ex1_s2.png';
+import quilt_ex1_s3 from '/img/instruments/videomancer/quilt/quilt_ex1_s3.png';
+import quilt_ex1_s4 from '/img/instruments/videomancer/quilt/quilt_ex1_s4.png';
+import quilt_ex1_s5 from '/img/instruments/videomancer/quilt/quilt_ex1_s5.png';
+import quilt_ex1_s6 from '/img/instruments/videomancer/quilt/quilt_ex1_s6.png';
+import quilt_ex2_s1 from '/img/instruments/videomancer/quilt/quilt_ex2_s1.png';
+import quilt_ex2_s2 from '/img/instruments/videomancer/quilt/quilt_ex2_s2.png';
+import quilt_ex2_s3 from '/img/instruments/videomancer/quilt/quilt_ex2_s3.png';
+import quilt_ex2_s4 from '/img/instruments/videomancer/quilt/quilt_ex2_s4.png';
+import quilt_ex2_s5 from '/img/instruments/videomancer/quilt/quilt_ex2_s5.png';
+import quilt_ex2_s6 from '/img/instruments/videomancer/quilt/quilt_ex2_s6.png';
+import quilt_ex3_s1 from '/img/instruments/videomancer/quilt/quilt_ex3_s1.png';
+import quilt_ex3_s2 from '/img/instruments/videomancer/quilt/quilt_ex3_s2.png';
+import quilt_ex3_s3 from '/img/instruments/videomancer/quilt/quilt_ex3_s3.png';
+import quilt_ex3_s4 from '/img/instruments/videomancer/quilt/quilt_ex3_s4.png';
+import quilt_ex3_s5 from '/img/instruments/videomancer/quilt/quilt_ex3_s5.png';
+import quilt_ex3_s6 from '/img/instruments/videomancer/quilt/quilt_ex3_s6.png';
 
 # Quilt
 
@@ -23,9 +45,12 @@ import quilt_source3_kodim13_bw from '/img/instruments/videomancer/quilt/quilt_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_hero },
-    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_hero },
-    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_hero },
+    { label: "Cat", before: quilt_source1_cat, after: quilt_hero_s1 },
+    { label: "Field", before: quilt_source2_field, after: quilt_hero_s2 },
+    { label: "Clouds", before: quilt_source3_clouds, after: quilt_hero_s3 },
+    { label: "Pattern", before: quilt_source4_pattern, after: quilt_hero_s4 },
+    { label: "Man", before: quilt_source5_man, after: quilt_hero_s5 },
+    { label: "Berries", before: quilt_source6_berries, after: quilt_hero_s6 },
   ]}
 />
 *Quilt dividing a video field into patchwork blocks with per-block pattern overlays, LFSR color jitter, and configurable stitch borders.*
@@ -127,8 +152,6 @@ The critical interaction is between the position hash and the LFSR jitter. The h
 
 ## Parameter Reference
 
-<img src={quilt_control_panel} alt="Videomancer front panel with Quilt loaded"/>
-*Videomancer's front panel with Quilt active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -233,9 +256,12 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise1_result },
-    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise1_result },
-    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise1_result },
+    { label: "Cat", before: quilt_source1_cat, after: quilt_ex1_s1 },
+    { label: "Field", before: quilt_source2_field, after: quilt_ex1_s2 },
+    { label: "Clouds", before: quilt_source3_clouds, after: quilt_ex1_s3 },
+    { label: "Pattern", before: quilt_source4_pattern, after: quilt_ex1_s4 },
+    { label: "Man", before: quilt_source5_man, after: quilt_ex1_s5 },
+    { label: "Berries", before: quilt_source6_berries, after: quilt_ex1_s6 },
   ]}
 />
 *Bold Patchwork Grid — simulated result across source images.*
@@ -264,9 +290,12 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise2_result },
-    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise2_result },
-    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise2_result },
+    { label: "Cat", before: quilt_source1_cat, after: quilt_ex2_s1 },
+    { label: "Field", before: quilt_source2_field, after: quilt_ex2_s2 },
+    { label: "Clouds", before: quilt_source3_clouds, after: quilt_ex2_s3 },
+    { label: "Pattern", before: quilt_source4_pattern, after: quilt_ex2_s4 },
+    { label: "Man", before: quilt_source5_man, after: quilt_ex2_s5 },
+    { label: "Berries", before: quilt_source6_berries, after: quilt_ex2_s6 },
   ]}
 />
 *Fine Mosaic with Color Scatter — simulated result across source images.*
@@ -295,9 +324,12 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: quilt_source1_kodim15, after: quilt_exercise3_result },
-    { label: "Kodim03", before: quilt_source2_kodim03, after: quilt_exercise3_result },
-    { label: "Kodim13 B&W", before: quilt_source3_kodim13_bw, after: quilt_exercise3_result },
+    { label: "Cat", before: quilt_source1_cat, after: quilt_ex3_s1 },
+    { label: "Field", before: quilt_source2_field, after: quilt_ex3_s2 },
+    { label: "Clouds", before: quilt_source3_clouds, after: quilt_ex3_s3 },
+    { label: "Pattern", before: quilt_source4_pattern, after: quilt_ex3_s4 },
+    { label: "Man", before: quilt_source5_man, after: quilt_ex3_s5 },
+    { label: "Berries", before: quilt_source6_berries, after: quilt_ex3_s6 },
   ]}
 />
 *Animated Shimmer Quilt — simulated result across source images.*

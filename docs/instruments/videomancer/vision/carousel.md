@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 36
+sidebar_position: 37
 slug: /instruments/videomancer/carousel
 title: "Carousel"
-image: /img/instruments/videomancer/carousel/carousel_hero.png
+image: /img/instruments/videomancer/carousel/carousel_hero_s1.png
 description: "In the early 1980s, the Ampex ADO 100 introduced real-time digital video manipulation to broadcast television."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import carousel_hero from '/img/instruments/videomancer/carousel/carousel_hero.png';
-import carousel_control_panel from '/img/instruments/videomancer/carousel/carousel_control_panel.png';
-import carousel_exercise1_result from '/img/instruments/videomancer/carousel/carousel_exercise1_result.png';
-import carousel_exercise2_result from '/img/instruments/videomancer/carousel/carousel_exercise2_result.png';
-import carousel_exercise3_result from '/img/instruments/videomancer/carousel/carousel_exercise3_result.png';
-import carousel_source1_kodim15 from '/img/instruments/videomancer/carousel/carousel_source1_kodim15.png';
-import carousel_source2_kodim15_bw from '/img/instruments/videomancer/carousel/carousel_source2_kodim15_bw.png';
-import carousel_source3_male_1024 from '/img/instruments/videomancer/carousel/carousel_source3_male_1024.png';
+import carousel_source1_runner from '/img/instruments/videomancer/carousel/carousel_source1_runner.png';
+import carousel_source2_parrot from '/img/instruments/videomancer/carousel/carousel_source2_parrot.png';
+import carousel_source3_elephant from '/img/instruments/videomancer/carousel/carousel_source3_elephant.png';
+import carousel_source4_pattern from '/img/instruments/videomancer/carousel/carousel_source4_pattern.png';
+import carousel_source5_woman from '/img/instruments/videomancer/carousel/carousel_source5_woman.png';
+import carousel_source6_paint from '/img/instruments/videomancer/carousel/carousel_source6_paint.png';
+import carousel_hero_s1 from '/img/instruments/videomancer/carousel/carousel_hero_s1.png';
+import carousel_hero_s2 from '/img/instruments/videomancer/carousel/carousel_hero_s2.png';
+import carousel_hero_s3 from '/img/instruments/videomancer/carousel/carousel_hero_s3.png';
+import carousel_hero_s4 from '/img/instruments/videomancer/carousel/carousel_hero_s4.png';
+import carousel_hero_s5 from '/img/instruments/videomancer/carousel/carousel_hero_s5.png';
+import carousel_hero_s6 from '/img/instruments/videomancer/carousel/carousel_hero_s6.png';
+import carousel_ex1_s1 from '/img/instruments/videomancer/carousel/carousel_ex1_s1.png';
+import carousel_ex1_s2 from '/img/instruments/videomancer/carousel/carousel_ex1_s2.png';
+import carousel_ex1_s3 from '/img/instruments/videomancer/carousel/carousel_ex1_s3.png';
+import carousel_ex1_s4 from '/img/instruments/videomancer/carousel/carousel_ex1_s4.png';
+import carousel_ex1_s5 from '/img/instruments/videomancer/carousel/carousel_ex1_s5.png';
+import carousel_ex1_s6 from '/img/instruments/videomancer/carousel/carousel_ex1_s6.png';
+import carousel_ex2_s1 from '/img/instruments/videomancer/carousel/carousel_ex2_s1.png';
+import carousel_ex2_s2 from '/img/instruments/videomancer/carousel/carousel_ex2_s2.png';
+import carousel_ex2_s3 from '/img/instruments/videomancer/carousel/carousel_ex2_s3.png';
+import carousel_ex2_s4 from '/img/instruments/videomancer/carousel/carousel_ex2_s4.png';
+import carousel_ex2_s5 from '/img/instruments/videomancer/carousel/carousel_ex2_s5.png';
+import carousel_ex2_s6 from '/img/instruments/videomancer/carousel/carousel_ex2_s6.png';
+import carousel_ex3_s1 from '/img/instruments/videomancer/carousel/carousel_ex3_s1.png';
+import carousel_ex3_s2 from '/img/instruments/videomancer/carousel/carousel_ex3_s2.png';
+import carousel_ex3_s3 from '/img/instruments/videomancer/carousel/carousel_ex3_s3.png';
+import carousel_ex3_s4 from '/img/instruments/videomancer/carousel/carousel_ex3_s4.png';
+import carousel_ex3_s5 from '/img/instruments/videomancer/carousel/carousel_ex3_s5.png';
+import carousel_ex3_s6 from '/img/instruments/videomancer/carousel/carousel_ex3_s6.png';
 
 # Carousel
 
@@ -23,9 +45,12 @@ import carousel_source3_male_1024 from '/img/instruments/videomancer/carousel/ca
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_hero },
-    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_hero },
-    { label: "Male", before: carousel_source3_male_1024, after: carousel_hero },
+    { label: "Runner", before: carousel_source1_runner, after: carousel_hero_s1 },
+    { label: "Parrot", before: carousel_source2_parrot, after: carousel_hero_s2 },
+    { label: "Elephant", before: carousel_source3_elephant, after: carousel_hero_s3 },
+    { label: "Pattern", before: carousel_source4_pattern, after: carousel_hero_s4 },
+    { label: "Woman", before: carousel_source5_woman, after: carousel_hero_s5 },
+    { label: "Paint", before: carousel_source6_paint, after: carousel_hero_s6 },
   ]}
 />
 *Carousel mapping live video onto a rotating cube face with per-scanline perspective foreshortening and directional shading.*
@@ -118,8 +143,6 @@ The critical geometry is computed once per scanline at the start of horizontal a
 
 ## Parameter Reference
 
-<img src={carousel_control_panel} alt="Videomancer front panel with Carousel loaded"/>
-*Videomancer's front panel with Carousel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +247,12 @@ These exercises progress from static angle positioning through continuous rotati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise1_result },
-    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise1_result },
-    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise1_result },
+    { label: "Runner", before: carousel_source1_runner, after: carousel_ex1_s1 },
+    { label: "Parrot", before: carousel_source2_parrot, after: carousel_ex1_s2 },
+    { label: "Elephant", before: carousel_source3_elephant, after: carousel_ex1_s3 },
+    { label: "Pattern", before: carousel_source4_pattern, after: carousel_ex1_s4 },
+    { label: "Woman", before: carousel_source5_woman, after: carousel_ex1_s5 },
+    { label: "Paint", before: carousel_source6_paint, after: carousel_ex1_s6 },
   ]}
 />
 *Static Oblique Projection — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from static angle positioning through continuous rotati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise2_result },
-    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise2_result },
-    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise2_result },
+    { label: "Runner", before: carousel_source1_runner, after: carousel_ex2_s1 },
+    { label: "Parrot", before: carousel_source2_parrot, after: carousel_ex2_s2 },
+    { label: "Elephant", before: carousel_source3_elephant, after: carousel_ex2_s3 },
+    { label: "Pattern", before: carousel_source4_pattern, after: carousel_ex2_s4 },
+    { label: "Woman", before: carousel_source5_woman, after: carousel_ex2_s5 },
+    { label: "Paint", before: carousel_source6_paint, after: carousel_ex2_s6 },
   ]}
 />
 *Continuous Cube Spin — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from static angle positioning through continuous rotati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: carousel_source1_kodim15, after: carousel_exercise3_result },
-    { label: "Kodim15 B&W", before: carousel_source2_kodim15_bw, after: carousel_exercise3_result },
-    { label: "Male", before: carousel_source3_male_1024, after: carousel_exercise3_result },
+    { label: "Runner", before: carousel_source1_runner, after: carousel_ex3_s1 },
+    { label: "Parrot", before: carousel_source2_parrot, after: carousel_ex3_s2 },
+    { label: "Elephant", before: carousel_source3_elephant, after: carousel_ex3_s3 },
+    { label: "Pattern", before: carousel_source4_pattern, after: carousel_ex3_s4 },
+    { label: "Woman", before: carousel_source5_woman, after: carousel_ex3_s5 },
+    { label: "Paint", before: carousel_source6_paint, after: carousel_ex3_s6 },
   ]}
 />
 *Broadcast Cube Ident — simulated result across source images.*

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 123
+sidebar_position: 128
 slug: /instruments/videomancer/gouraud
 title: "Gouraud"
 image: /img/instruments/videomancer/gouraud/gouraud_hero.png

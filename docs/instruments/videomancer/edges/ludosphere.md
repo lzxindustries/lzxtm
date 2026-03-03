@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 170
+sidebar_position: 178
 slug: /instruments/videomancer/ludosphere
 title: "Ludosphere"
-image: /img/instruments/videomancer/ludosphere/ludosphere_hero.png
+image: /img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png
 description: "Take three spinning wheels — one sweeping left to right across the screen, one sweeping top to bottom, and one pulsing forward through time."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ludosphere_hero from '/img/instruments/videomancer/ludosphere/ludosphere_hero.png';
-import ludosphere_control_panel from '/img/instruments/videomancer/ludosphere/ludosphere_control_panel.png';
-import ludosphere_exercise1_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise1_result.png';
-import ludosphere_exercise2_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise2_result.png';
-import ludosphere_exercise3_result from '/img/instruments/videomancer/ludosphere/ludosphere_exercise3_result.png';
-import ludosphere_source1_kodim02 from '/img/instruments/videomancer/ludosphere/ludosphere_source1_kodim02.png';
-import ludosphere_source2_kodim07 from '/img/instruments/videomancer/ludosphere/ludosphere_source2_kodim07.png';
-import ludosphere_source3_kodim01_bw from '/img/instruments/videomancer/ludosphere/ludosphere_source3_kodim01_bw.png';
+import ludosphere_source1_dog from '/img/instruments/videomancer/ludosphere/ludosphere_source1_dog.png';
+import ludosphere_source2_runner from '/img/instruments/videomancer/ludosphere/ludosphere_source2_runner.png';
+import ludosphere_source3_collage from '/img/instruments/videomancer/ludosphere/ludosphere_source3_collage.png';
+import ludosphere_source4_pattern from '/img/instruments/videomancer/ludosphere/ludosphere_source4_pattern.png';
+import ludosphere_source5_girl from '/img/instruments/videomancer/ludosphere/ludosphere_source5_girl.png';
+import ludosphere_source6_wood from '/img/instruments/videomancer/ludosphere/ludosphere_source6_wood.png';
+import ludosphere_hero_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s1.png';
+import ludosphere_hero_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s2.png';
+import ludosphere_hero_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s3.png';
+import ludosphere_hero_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s4.png';
+import ludosphere_hero_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s5.png';
+import ludosphere_hero_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_hero_s6.png';
+import ludosphere_ex1_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s1.png';
+import ludosphere_ex1_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s2.png';
+import ludosphere_ex1_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s3.png';
+import ludosphere_ex1_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s4.png';
+import ludosphere_ex1_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s5.png';
+import ludosphere_ex1_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex1_s6.png';
+import ludosphere_ex2_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s1.png';
+import ludosphere_ex2_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s2.png';
+import ludosphere_ex2_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s3.png';
+import ludosphere_ex2_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s4.png';
+import ludosphere_ex2_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s5.png';
+import ludosphere_ex2_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex2_s6.png';
+import ludosphere_ex3_s1 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s1.png';
+import ludosphere_ex3_s2 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s2.png';
+import ludosphere_ex3_s3 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s3.png';
+import ludosphere_ex3_s4 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s4.png';
+import ludosphere_ex3_s5 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s5.png';
+import ludosphere_ex3_s6 from '/img/instruments/videomancer/ludosphere/ludosphere_ex3_s6.png';
 
 # Ludosphere
 
@@ -23,9 +45,12 @@ import ludosphere_source3_kodim01_bw from '/img/instruments/videomancer/ludosphe
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_hero },
-    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_hero },
-    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_hero },
+    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_hero_s1 },
+    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_hero_s2 },
+    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_hero_s3 },
+    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_hero_s4 },
+    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_hero_s5 },
+    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_hero_s6 },
   ]}
 />
 *Ludosphere applying three-axis oscillator modulation to produce spherical color patterns across the video frame.*
@@ -106,8 +131,6 @@ The three oscillators share no state — each operates on an independent phase a
 
 ## Parameter Reference
 
-<img src={ludosphere_control_panel} alt="Videomancer front panel with Ludosphere loaded"/>
-*Videomancer's front panel with Ludosphere active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,9 +235,12 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise1_result },
-    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise1_result },
-    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise1_result },
+    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex1_s1 },
+    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex1_s2 },
+    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex1_s3 },
+    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex1_s4 },
+    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex1_s5 },
+    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex1_s6 },
   ]}
 />
 *Spatial Interference Grid — simulated result across source images.*
@@ -236,9 +262,12 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise2_result },
-    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise2_result },
-    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise2_result },
+    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex2_s1 },
+    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex2_s2 },
+    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex2_s3 },
+    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex2_s4 },
+    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex2_s5 },
+    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex2_s6 },
   ]}
 />
 *Temporal Pulsation — simulated result across source images.*
@@ -260,9 +289,12 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: ludosphere_source1_kodim02, after: ludosphere_exercise3_result },
-    { label: "Kodim07", before: ludosphere_source2_kodim07, after: ludosphere_exercise3_result },
-    { label: "Kodim01 B&W", before: ludosphere_source3_kodim01_bw, after: ludosphere_exercise3_result },
+    { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_ex3_s1 },
+    { label: "Runner", before: ludosphere_source2_runner, after: ludosphere_ex3_s2 },
+    { label: "Collage", before: ludosphere_source3_collage, after: ludosphere_ex3_s3 },
+    { label: "Pattern", before: ludosphere_source4_pattern, after: ludosphere_ex3_s4 },
+    { label: "Girl", before: ludosphere_source5_girl, after: ludosphere_ex3_s5 },
+    { label: "Wood", before: ludosphere_source6_wood, after: ludosphere_ex3_s6 },
   ]}
 />
 *Pure Oscillator Patterns — simulated result across source images.*

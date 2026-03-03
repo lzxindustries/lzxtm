@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 264
+sidebar_position: 276
 slug: /instruments/videomancer/spectrogram
 title: "Spectrogram"
 image: /img/instruments/videomancer/spectrogram/spectrogram_hero.png

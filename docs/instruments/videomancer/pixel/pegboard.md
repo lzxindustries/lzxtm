@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 209
+sidebar_position: 218
 slug: /instruments/videomancer/pegboard
 title: "Pegboard"
-image: /img/instruments/videomancer/pegboard/pegboard_hero.png
+image: /img/instruments/videomancer/pegboard/pegboard_hero_s1.png
 description: "Before LCD panels and OLED screens, there was Lite-Brite — a toy that turned translucent colored pegs into glowing pictures when backlit."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import pegboard_hero from '/img/instruments/videomancer/pegboard/pegboard_hero.png';
-import pegboard_control_panel from '/img/instruments/videomancer/pegboard/pegboard_control_panel.png';
-import pegboard_exercise1_result from '/img/instruments/videomancer/pegboard/pegboard_exercise1_result.png';
-import pegboard_exercise2_result from '/img/instruments/videomancer/pegboard/pegboard_exercise2_result.png';
-import pegboard_exercise3_result from '/img/instruments/videomancer/pegboard/pegboard_exercise3_result.png';
-import pegboard_source1_kodim02 from '/img/instruments/videomancer/pegboard/pegboard_source1_kodim02.png';
-import pegboard_source2_kodim07 from '/img/instruments/videomancer/pegboard/pegboard_source2_kodim07.png';
-import pegboard_source3_kodim01_bw from '/img/instruments/videomancer/pegboard/pegboard_source3_kodim01_bw.png';
+import pegboard_source1_boat from '/img/instruments/videomancer/pegboard/pegboard_source1_boat.png';
+import pegboard_source2_runner from '/img/instruments/videomancer/pegboard/pegboard_source2_runner.png';
+import pegboard_source3_elephant from '/img/instruments/videomancer/pegboard/pegboard_source3_elephant.png';
+import pegboard_source4_pattern from '/img/instruments/videomancer/pegboard/pegboard_source4_pattern.png';
+import pegboard_source5_woman from '/img/instruments/videomancer/pegboard/pegboard_source5_woman.png';
+import pegboard_source6_knit from '/img/instruments/videomancer/pegboard/pegboard_source6_knit.png';
+import pegboard_hero_s1 from '/img/instruments/videomancer/pegboard/pegboard_hero_s1.png';
+import pegboard_hero_s2 from '/img/instruments/videomancer/pegboard/pegboard_hero_s2.png';
+import pegboard_hero_s3 from '/img/instruments/videomancer/pegboard/pegboard_hero_s3.png';
+import pegboard_hero_s4 from '/img/instruments/videomancer/pegboard/pegboard_hero_s4.png';
+import pegboard_hero_s5 from '/img/instruments/videomancer/pegboard/pegboard_hero_s5.png';
+import pegboard_hero_s6 from '/img/instruments/videomancer/pegboard/pegboard_hero_s6.png';
+import pegboard_ex1_s1 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s1.png';
+import pegboard_ex1_s2 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s2.png';
+import pegboard_ex1_s3 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s3.png';
+import pegboard_ex1_s4 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s4.png';
+import pegboard_ex1_s5 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s5.png';
+import pegboard_ex1_s6 from '/img/instruments/videomancer/pegboard/pegboard_ex1_s6.png';
+import pegboard_ex2_s1 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s1.png';
+import pegboard_ex2_s2 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s2.png';
+import pegboard_ex2_s3 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s3.png';
+import pegboard_ex2_s4 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s4.png';
+import pegboard_ex2_s5 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s5.png';
+import pegboard_ex2_s6 from '/img/instruments/videomancer/pegboard/pegboard_ex2_s6.png';
+import pegboard_ex3_s1 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s1.png';
+import pegboard_ex3_s2 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s2.png';
+import pegboard_ex3_s3 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s3.png';
+import pegboard_ex3_s4 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s4.png';
+import pegboard_ex3_s5 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s5.png';
+import pegboard_ex3_s6 from '/img/instruments/videomancer/pegboard/pegboard_ex3_s6.png';
 
 # Pegboard
 
@@ -23,9 +45,12 @@ import pegboard_source3_kodim01_bw from '/img/instruments/videomancer/pegboard/p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_hero },
-    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_hero },
-    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_hero },
+    { label: "Boat", before: pegboard_source1_boat, after: pegboard_hero_s1 },
+    { label: "Runner", before: pegboard_source2_runner, after: pegboard_hero_s2 },
+    { label: "Elephant", before: pegboard_source3_elephant, after: pegboard_hero_s3 },
+    { label: "Pattern", before: pegboard_source4_pattern, after: pegboard_hero_s4 },
+    { label: "Woman", before: pegboard_source5_woman, after: pegboard_hero_s5 },
+    { label: "Knit", before: pegboard_source6_knit, after: pegboard_hero_s6 },
   ]}
 />
 *Pegboard rendering a live camera feed as glowing Lite-Brite pegs snapped to an eight-color palette on a dark field.*
@@ -119,8 +144,6 @@ The palette snap and the circle/square rendering are independent operations. Pal
 
 ## Parameter Reference
 
-<img src={pegboard_control_panel} alt="Videomancer front panel with Pegboard loaded"/>
-*Videomancer's front panel with Pegboard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -224,9 +247,12 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise1_result },
-    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise1_result },
-    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise1_result },
+    { label: "Boat", before: pegboard_source1_boat, after: pegboard_ex1_s1 },
+    { label: "Runner", before: pegboard_source2_runner, after: pegboard_ex1_s2 },
+    { label: "Elephant", before: pegboard_source3_elephant, after: pegboard_ex1_s3 },
+    { label: "Pattern", before: pegboard_source4_pattern, after: pegboard_ex1_s4 },
+    { label: "Woman", before: pegboard_source5_woman, after: pegboard_ex1_s5 },
+    { label: "Knit", before: pegboard_source6_knit, after: pegboard_ex1_s6 },
   ]}
 />
 *Classic Lite-Brite — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise2_result },
-    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise2_result },
-    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise2_result },
+    { label: "Boat", before: pegboard_source1_boat, after: pegboard_ex2_s1 },
+    { label: "Runner", before: pegboard_source2_runner, after: pegboard_ex2_s2 },
+    { label: "Elephant", before: pegboard_source3_elephant, after: pegboard_ex2_s3 },
+    { label: "Pattern", before: pegboard_source4_pattern, after: pegboard_ex2_s4 },
+    { label: "Woman", before: pegboard_source5_woman, after: pegboard_ex2_s5 },
+    { label: "Knit", before: pegboard_source6_knit, after: pegboard_ex2_s6 },
   ]}
 />
 *Full Color Mosaic with Saturation — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: pegboard_source1_kodim02, after: pegboard_exercise3_result },
-    { label: "Kodim07", before: pegboard_source2_kodim07, after: pegboard_exercise3_result },
-    { label: "Kodim01 B&W", before: pegboard_source3_kodim01_bw, after: pegboard_exercise3_result },
+    { label: "Boat", before: pegboard_source1_boat, after: pegboard_ex3_s1 },
+    { label: "Runner", before: pegboard_source2_runner, after: pegboard_ex3_s2 },
+    { label: "Elephant", before: pegboard_source3_elephant, after: pegboard_ex3_s3 },
+    { label: "Pattern", before: pegboard_source4_pattern, after: pegboard_ex3_s4 },
+    { label: "Woman", before: pegboard_source5_woman, after: pegboard_ex3_s5 },
+    { label: "Knit", before: pegboard_source6_knit, after: pegboard_ex3_s6 },
   ]}
 />
 *Blooming Inverted Pegs — simulated result across source images.*

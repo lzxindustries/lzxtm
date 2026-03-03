@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 217
+sidebar_position: 226
 slug: /instruments/videomancer/picturebox
 title: "Picturebox"
-image: /img/instruments/videomancer/picturebox/picturebox_hero.png
+image: /img/instruments/videomancer/picturebox/picturebox_hero_s1.png
 description: "In the control rooms of 1990s television studios, a wall of small monitors showed multiple camera feeds simultaneously — each screen a window into a different moment or angle."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import picturebox_hero from '/img/instruments/videomancer/picturebox/picturebox_hero.png';
-import picturebox_control_panel from '/img/instruments/videomancer/picturebox/picturebox_control_panel.png';
-import picturebox_exercise1_result from '/img/instruments/videomancer/picturebox/picturebox_exercise1_result.png';
-import picturebox_exercise2_result from '/img/instruments/videomancer/picturebox/picturebox_exercise2_result.png';
-import picturebox_exercise3_result from '/img/instruments/videomancer/picturebox/picturebox_exercise3_result.png';
-import picturebox_source1_kodim15 from '/img/instruments/videomancer/picturebox/picturebox_source1_kodim15.png';
-import picturebox_source2_kodim01 from '/img/instruments/videomancer/picturebox/picturebox_source2_kodim01.png';
-import picturebox_source3_kodim01_bw from '/img/instruments/videomancer/picturebox/picturebox_source3_kodim01_bw.png';
+import picturebox_source1_dog from '/img/instruments/videomancer/picturebox/picturebox_source1_dog.png';
+import picturebox_source2_skull from '/img/instruments/videomancer/picturebox/picturebox_source2_skull.png';
+import picturebox_source3_elephant from '/img/instruments/videomancer/picturebox/picturebox_source3_elephant.png';
+import picturebox_source4_pattern from '/img/instruments/videomancer/picturebox/picturebox_source4_pattern.png';
+import picturebox_source5_boy from '/img/instruments/videomancer/picturebox/picturebox_source5_boy.png';
+import picturebox_source6_berries from '/img/instruments/videomancer/picturebox/picturebox_source6_berries.png';
+import picturebox_hero_s1 from '/img/instruments/videomancer/picturebox/picturebox_hero_s1.png';
+import picturebox_hero_s2 from '/img/instruments/videomancer/picturebox/picturebox_hero_s2.png';
+import picturebox_hero_s3 from '/img/instruments/videomancer/picturebox/picturebox_hero_s3.png';
+import picturebox_hero_s4 from '/img/instruments/videomancer/picturebox/picturebox_hero_s4.png';
+import picturebox_hero_s5 from '/img/instruments/videomancer/picturebox/picturebox_hero_s5.png';
+import picturebox_hero_s6 from '/img/instruments/videomancer/picturebox/picturebox_hero_s6.png';
+import picturebox_ex1_s1 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s1.png';
+import picturebox_ex1_s2 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s2.png';
+import picturebox_ex1_s3 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s3.png';
+import picturebox_ex1_s4 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s4.png';
+import picturebox_ex1_s5 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s5.png';
+import picturebox_ex1_s6 from '/img/instruments/videomancer/picturebox/picturebox_ex1_s6.png';
+import picturebox_ex2_s1 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s1.png';
+import picturebox_ex2_s2 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s2.png';
+import picturebox_ex2_s3 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s3.png';
+import picturebox_ex2_s4 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s4.png';
+import picturebox_ex2_s5 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s5.png';
+import picturebox_ex2_s6 from '/img/instruments/videomancer/picturebox/picturebox_ex2_s6.png';
+import picturebox_ex3_s1 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s1.png';
+import picturebox_ex3_s2 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s2.png';
+import picturebox_ex3_s3 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s3.png';
+import picturebox_ex3_s4 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s4.png';
+import picturebox_ex3_s5 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s5.png';
+import picturebox_ex3_s6 from '/img/instruments/videomancer/picturebox/picturebox_ex3_s6.png';
 
 # Picturebox
 
@@ -23,9 +45,12 @@ import picturebox_source3_kodim01_bw from '/img/instruments/videomancer/pictureb
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_hero },
-    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_hero },
-    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_hero },
+    { label: "Dog", before: picturebox_source1_dog, after: picturebox_hero_s1 },
+    { label: "Skull", before: picturebox_source2_skull, after: picturebox_hero_s2 },
+    { label: "Elephant", before: picturebox_source3_elephant, after: picturebox_hero_s3 },
+    { label: "Pattern", before: picturebox_source4_pattern, after: picturebox_hero_s4 },
+    { label: "Boy", before: picturebox_source5_boy, after: picturebox_hero_s5 },
+    { label: "Berries", before: picturebox_source6_berries, after: picturebox_hero_s6 },
   ]}
 />
 *Picturebox dividing a single video input into a configurable grid of temporally-delayed panels with coloured borders and optional label strips.*
@@ -115,8 +140,6 @@ The temporal delay is computed per-panel, not per-pixel — all pixels within a 
 
 ## Parameter Reference
 
-<img src={picturebox_control_panel} alt="Videomancer front panel with Picturebox loaded"/>
-*Videomancer's front panel with Picturebox active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise1_result },
-    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise1_result },
-    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise1_result },
+    { label: "Dog", before: picturebox_source1_dog, after: picturebox_ex1_s1 },
+    { label: "Skull", before: picturebox_source2_skull, after: picturebox_ex1_s2 },
+    { label: "Elephant", before: picturebox_source3_elephant, after: picturebox_ex1_s3 },
+    { label: "Pattern", before: picturebox_source4_pattern, after: picturebox_ex1_s4 },
+    { label: "Boy", before: picturebox_source5_boy, after: picturebox_ex1_s5 },
+    { label: "Berries", before: picturebox_source6_berries, after: picturebox_ex1_s6 },
   ]}
 />
 *Broadcast Monitor Wall — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise2_result },
-    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise2_result },
-    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise2_result },
+    { label: "Dog", before: picturebox_source1_dog, after: picturebox_ex2_s1 },
+    { label: "Skull", before: picturebox_source2_skull, after: picturebox_ex2_s2 },
+    { label: "Elephant", before: picturebox_source3_elephant, after: picturebox_ex2_s3 },
+    { label: "Pattern", before: picturebox_source4_pattern, after: picturebox_ex2_s4 },
+    { label: "Boy", before: picturebox_source5_boy, after: picturebox_ex2_s5 },
+    { label: "Berries", before: picturebox_source6_berries, after: picturebox_ex2_s6 },
   ]}
 />
 *Temporal Filmstrip — simulated result across source images.*
@@ -270,9 +299,12 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: picturebox_source1_kodim15, after: picturebox_exercise3_result },
-    { label: "Kodim01", before: picturebox_source2_kodim01, after: picturebox_exercise3_result },
-    { label: "Kodim01 B&W", before: picturebox_source3_kodim01_bw, after: picturebox_exercise3_result },
+    { label: "Dog", before: picturebox_source1_dog, after: picturebox_ex3_s1 },
+    { label: "Skull", before: picturebox_source2_skull, after: picturebox_ex3_s2 },
+    { label: "Elephant", before: picturebox_source3_elephant, after: picturebox_ex3_s3 },
+    { label: "Pattern", before: picturebox_source4_pattern, after: picturebox_ex3_s4 },
+    { label: "Boy", before: picturebox_source5_boy, after: picturebox_ex3_s5 },
+    { label: "Berries", before: picturebox_source6_berries, after: picturebox_ex3_s6 },
   ]}
 />
 *Freeze Cascade — simulated result across source images.*

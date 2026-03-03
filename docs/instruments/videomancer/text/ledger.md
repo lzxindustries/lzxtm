@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 159
+sidebar_position: 167
 slug: /instruments/videomancer/ledger
 title: "Ledger"
-image: /img/instruments/videomancer/ledger/ledger_hero.png
+image: /img/instruments/videomancer/ledger/ledger_hero_s1.png
 description: "Before spreadsheets, before screens, accountants lived on paper."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ledger_hero from '/img/instruments/videomancer/ledger/ledger_hero.png';
-import ledger_control_panel from '/img/instruments/videomancer/ledger/ledger_control_panel.png';
-import ledger_exercise1_result from '/img/instruments/videomancer/ledger/ledger_exercise1_result.png';
-import ledger_exercise2_result from '/img/instruments/videomancer/ledger/ledger_exercise2_result.png';
-import ledger_exercise3_result from '/img/instruments/videomancer/ledger/ledger_exercise3_result.png';
-import ledger_source1_kodim15 from '/img/instruments/videomancer/ledger/ledger_source1_kodim15.png';
-import ledger_source2_kodim15_bw from '/img/instruments/videomancer/ledger/ledger_source2_kodim15_bw.png';
-import ledger_source3_male_1024 from '/img/instruments/videomancer/ledger/ledger_source3_male_1024.png';
+import ledger_source1_sunset from '/img/instruments/videomancer/ledger/ledger_source1_sunset.png';
+import ledger_source2_car from '/img/instruments/videomancer/ledger/ledger_source2_car.png';
+import ledger_source3_collage from '/img/instruments/videomancer/ledger/ledger_source3_collage.png';
+import ledger_source4_pattern from '/img/instruments/videomancer/ledger/ledger_source4_pattern.png';
+import ledger_source5_girl from '/img/instruments/videomancer/ledger/ledger_source5_girl.png';
+import ledger_source6_paint from '/img/instruments/videomancer/ledger/ledger_source6_paint.png';
+import ledger_hero_s1 from '/img/instruments/videomancer/ledger/ledger_hero_s1.png';
+import ledger_hero_s2 from '/img/instruments/videomancer/ledger/ledger_hero_s2.png';
+import ledger_hero_s3 from '/img/instruments/videomancer/ledger/ledger_hero_s3.png';
+import ledger_hero_s4 from '/img/instruments/videomancer/ledger/ledger_hero_s4.png';
+import ledger_hero_s5 from '/img/instruments/videomancer/ledger/ledger_hero_s5.png';
+import ledger_hero_s6 from '/img/instruments/videomancer/ledger/ledger_hero_s6.png';
+import ledger_ex1_s1 from '/img/instruments/videomancer/ledger/ledger_ex1_s1.png';
+import ledger_ex1_s2 from '/img/instruments/videomancer/ledger/ledger_ex1_s2.png';
+import ledger_ex1_s3 from '/img/instruments/videomancer/ledger/ledger_ex1_s3.png';
+import ledger_ex1_s4 from '/img/instruments/videomancer/ledger/ledger_ex1_s4.png';
+import ledger_ex1_s5 from '/img/instruments/videomancer/ledger/ledger_ex1_s5.png';
+import ledger_ex1_s6 from '/img/instruments/videomancer/ledger/ledger_ex1_s6.png';
+import ledger_ex2_s1 from '/img/instruments/videomancer/ledger/ledger_ex2_s1.png';
+import ledger_ex2_s2 from '/img/instruments/videomancer/ledger/ledger_ex2_s2.png';
+import ledger_ex2_s3 from '/img/instruments/videomancer/ledger/ledger_ex2_s3.png';
+import ledger_ex2_s4 from '/img/instruments/videomancer/ledger/ledger_ex2_s4.png';
+import ledger_ex2_s5 from '/img/instruments/videomancer/ledger/ledger_ex2_s5.png';
+import ledger_ex2_s6 from '/img/instruments/videomancer/ledger/ledger_ex2_s6.png';
+import ledger_ex3_s1 from '/img/instruments/videomancer/ledger/ledger_ex3_s1.png';
+import ledger_ex3_s2 from '/img/instruments/videomancer/ledger/ledger_ex3_s2.png';
+import ledger_ex3_s3 from '/img/instruments/videomancer/ledger/ledger_ex3_s3.png';
+import ledger_ex3_s4 from '/img/instruments/videomancer/ledger/ledger_ex3_s4.png';
+import ledger_ex3_s5 from '/img/instruments/videomancer/ledger/ledger_ex3_s5.png';
+import ledger_ex3_s6 from '/img/instruments/videomancer/ledger/ledger_ex3_s6.png';
 
 # Ledger
 
@@ -23,9 +45,12 @@ import ledger_source3_male_1024 from '/img/instruments/videomancer/ledger/ledger
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_hero },
-    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_hero },
-    { label: "Male", before: ledger_source3_male_1024, after: ledger_hero },
+    { label: "Sunset", before: ledger_source1_sunset, after: ledger_hero_s1 },
+    { label: "Car", before: ledger_source2_car, after: ledger_hero_s2 },
+    { label: "Collage", before: ledger_source3_collage, after: ledger_hero_s3 },
+    { label: "Pattern", before: ledger_source4_pattern, after: ledger_hero_s4 },
+    { label: "Girl", before: ledger_source5_girl, after: ledger_hero_s5 },
+    { label: "Paint", before: ledger_source6_paint, after: ledger_hero_s6 },
   ]}
 />
 *Ledger overlaying green-bar ruled paper and column grids onto a live video feed, evoking the texture of continuous-form accounting printouts.*
@@ -110,8 +135,6 @@ The pattern is generated purely from position counters — no BRAM is consumed. 
 
 ## Parameter Reference
 
-<img src={ledger_control_panel} alt="Videomancer front panel with Ledger loaded"/>
-*Videomancer's front panel with Ledger active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,9 +239,12 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise1_result },
-    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise1_result },
-    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise1_result },
+    { label: "Sunset", before: ledger_source1_sunset, after: ledger_ex1_s1 },
+    { label: "Car", before: ledger_source2_car, after: ledger_ex1_s2 },
+    { label: "Collage", before: ledger_source3_collage, after: ledger_ex1_s3 },
+    { label: "Pattern", before: ledger_source4_pattern, after: ledger_ex1_s4 },
+    { label: "Girl", before: ledger_source5_girl, after: ledger_ex1_s5 },
+    { label: "Paint", before: ledger_source6_paint, after: ledger_ex1_s6 },
   ]}
 />
 *Classic Green-Bar Paper — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise2_result },
-    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise2_result },
-    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise2_result },
+    { label: "Sunset", before: ledger_source1_sunset, after: ledger_ex2_s1 },
+    { label: "Car", before: ledger_source2_car, after: ledger_ex2_s2 },
+    { label: "Collage", before: ledger_source3_collage, after: ledger_ex2_s3 },
+    { label: "Pattern", before: ledger_source4_pattern, after: ledger_ex2_s4 },
+    { label: "Girl", before: ledger_source5_girl, after: ledger_ex2_s5 },
+    { label: "Paint", before: ledger_source6_paint, after: ledger_ex2_s6 },
   ]}
 />
 *Engineering Grid Paper — simulated result across source images.*
@@ -273,9 +302,12 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ledger_source1_kodim15, after: ledger_exercise3_result },
-    { label: "Kodim15 B&W", before: ledger_source2_kodim15_bw, after: ledger_exercise3_result },
-    { label: "Male", before: ledger_source3_male_1024, after: ledger_exercise3_result },
+    { label: "Sunset", before: ledger_source1_sunset, after: ledger_ex3_s1 },
+    { label: "Car", before: ledger_source2_car, after: ledger_ex3_s2 },
+    { label: "Collage", before: ledger_source3_collage, after: ledger_ex3_s3 },
+    { label: "Pattern", before: ledger_source4_pattern, after: ledger_ex3_s4 },
+    { label: "Girl", before: ledger_source5_girl, after: ledger_ex3_s5 },
+    { label: "Paint", before: ledger_source6_paint, after: ledger_ex3_s6 },
   ]}
 />
 *Inverted Legal Pad — simulated result across source images.*

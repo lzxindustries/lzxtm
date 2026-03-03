@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 233
+sidebar_position: 243
 slug: /instruments/videomancer/refract
 title: "Refract"
-image: /img/instruments/videomancer/refract/refract_hero.png
+image: /img/instruments/videomancer/refract/refract_hero_s1.png
 description: "Light bends when it passes through glass, water, or any boundary between materials of different density."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import refract_hero from '/img/instruments/videomancer/refract/refract_hero.png';
-import refract_control_panel from '/img/instruments/videomancer/refract/refract_control_panel.png';
-import refract_exercise1_result from '/img/instruments/videomancer/refract/refract_exercise1_result.png';
-import refract_exercise2_result from '/img/instruments/videomancer/refract/refract_exercise2_result.png';
-import refract_exercise3_result from '/img/instruments/videomancer/refract/refract_exercise3_result.png';
-import refract_source1_kodim02 from '/img/instruments/videomancer/refract/refract_source1_kodim02.png';
-import refract_source2_kodim07 from '/img/instruments/videomancer/refract/refract_source2_kodim07.png';
-import refract_source3_kodim01_bw from '/img/instruments/videomancer/refract/refract_source3_kodim01_bw.png';
+import refract_source1_sunset from '/img/instruments/videomancer/refract/refract_source1_sunset.png';
+import refract_source2_fruit from '/img/instruments/videomancer/refract/refract_source2_fruit.png';
+import refract_source3_collage from '/img/instruments/videomancer/refract/refract_source3_collage.png';
+import refract_source4_pattern from '/img/instruments/videomancer/refract/refract_source4_pattern.png';
+import refract_source5_woman from '/img/instruments/videomancer/refract/refract_source5_woman.png';
+import refract_source6_paint from '/img/instruments/videomancer/refract/refract_source6_paint.png';
+import refract_hero_s1 from '/img/instruments/videomancer/refract/refract_hero_s1.png';
+import refract_hero_s2 from '/img/instruments/videomancer/refract/refract_hero_s2.png';
+import refract_hero_s3 from '/img/instruments/videomancer/refract/refract_hero_s3.png';
+import refract_hero_s4 from '/img/instruments/videomancer/refract/refract_hero_s4.png';
+import refract_hero_s5 from '/img/instruments/videomancer/refract/refract_hero_s5.png';
+import refract_hero_s6 from '/img/instruments/videomancer/refract/refract_hero_s6.png';
+import refract_ex1_s1 from '/img/instruments/videomancer/refract/refract_ex1_s1.png';
+import refract_ex1_s2 from '/img/instruments/videomancer/refract/refract_ex1_s2.png';
+import refract_ex1_s3 from '/img/instruments/videomancer/refract/refract_ex1_s3.png';
+import refract_ex1_s4 from '/img/instruments/videomancer/refract/refract_ex1_s4.png';
+import refract_ex1_s5 from '/img/instruments/videomancer/refract/refract_ex1_s5.png';
+import refract_ex1_s6 from '/img/instruments/videomancer/refract/refract_ex1_s6.png';
+import refract_ex2_s1 from '/img/instruments/videomancer/refract/refract_ex2_s1.png';
+import refract_ex2_s2 from '/img/instruments/videomancer/refract/refract_ex2_s2.png';
+import refract_ex2_s3 from '/img/instruments/videomancer/refract/refract_ex2_s3.png';
+import refract_ex2_s4 from '/img/instruments/videomancer/refract/refract_ex2_s4.png';
+import refract_ex2_s5 from '/img/instruments/videomancer/refract/refract_ex2_s5.png';
+import refract_ex2_s6 from '/img/instruments/videomancer/refract/refract_ex2_s6.png';
+import refract_ex3_s1 from '/img/instruments/videomancer/refract/refract_ex3_s1.png';
+import refract_ex3_s2 from '/img/instruments/videomancer/refract/refract_ex3_s2.png';
+import refract_ex3_s3 from '/img/instruments/videomancer/refract/refract_ex3_s3.png';
+import refract_ex3_s4 from '/img/instruments/videomancer/refract/refract_ex3_s4.png';
+import refract_ex3_s5 from '/img/instruments/videomancer/refract/refract_ex3_s5.png';
+import refract_ex3_s6 from '/img/instruments/videomancer/refract/refract_ex3_s6.png';
 
 # Refract
 
@@ -23,9 +45,12 @@ import refract_source3_kodim01_bw from '/img/instruments/videomancer/refract/ref
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: refract_source1_kodim02, after: refract_hero },
-    { label: "Kodim07", before: refract_source2_kodim07, after: refract_hero },
-    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_hero },
+    { label: "Sunset", before: refract_source1_sunset, after: refract_hero_s1 },
+    { label: "Fruit", before: refract_source2_fruit, after: refract_hero_s2 },
+    { label: "Collage", before: refract_source3_collage, after: refract_hero_s3 },
+    { label: "Pattern", before: refract_source4_pattern, after: refract_hero_s4 },
+    { label: "Woman", before: refract_source5_woman, after: refract_hero_s5 },
+    { label: "Paint", before: refract_source6_paint, after: refract_hero_s6 },
   ]}
 />
 *Refract applying luma-driven displacement mapping with chromatic aberration and fresnel edge bending to split and distort a live video signal.*
@@ -105,8 +130,6 @@ The core interaction is between luma drive and displacement strength. Luma drive
 
 ## Parameter Reference
 
-<img src={refract_control_panel} alt="Videomancer front panel with Refract loaded"/>
-*Videomancer's front panel with Refract active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises progress from basic displacement through chromatic aberration to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise1_result },
-    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise1_result },
-    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise1_result },
+    { label: "Sunset", before: refract_source1_sunset, after: refract_ex1_s1 },
+    { label: "Fruit", before: refract_source2_fruit, after: refract_ex1_s2 },
+    { label: "Collage", before: refract_source3_collage, after: refract_ex1_s3 },
+    { label: "Pattern", before: refract_source4_pattern, after: refract_ex1_s4 },
+    { label: "Woman", before: refract_source5_woman, after: refract_ex1_s5 },
+    { label: "Paint", before: refract_source6_paint, after: refract_ex1_s6 },
   ]}
 />
 *Basic Lens Warp — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises progress from basic displacement through chromatic aberration to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise2_result },
-    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise2_result },
-    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise2_result },
+    { label: "Sunset", before: refract_source1_sunset, after: refract_ex2_s1 },
+    { label: "Fruit", before: refract_source2_fruit, after: refract_ex2_s2 },
+    { label: "Collage", before: refract_source3_collage, after: refract_ex2_s3 },
+    { label: "Pattern", before: refract_source4_pattern, after: refract_ex2_s4 },
+    { label: "Woman", before: refract_source5_woman, after: refract_ex2_s5 },
+    { label: "Paint", before: refract_source6_paint, after: refract_ex2_s6 },
   ]}
 />
 *Chromatic Prism — simulated result across source images.*
@@ -256,9 +285,12 @@ These exercises progress from basic displacement through chromatic aberration to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: refract_source1_kodim02, after: refract_exercise3_result },
-    { label: "Kodim07", before: refract_source2_kodim07, after: refract_exercise3_result },
-    { label: "Kodim01 B&W", before: refract_source3_kodim01_bw, after: refract_exercise3_result },
+    { label: "Sunset", before: refract_source1_sunset, after: refract_ex3_s1 },
+    { label: "Fruit", before: refract_source2_fruit, after: refract_ex3_s2 },
+    { label: "Collage", before: refract_source3_collage, after: refract_ex3_s3 },
+    { label: "Pattern", before: refract_source4_pattern, after: refract_ex3_s4 },
+    { label: "Woman", before: refract_source5_woman, after: refract_ex3_s5 },
+    { label: "Paint", before: refract_source6_paint, after: refract_ex3_s6 },
   ]}
 />
 *Animated Optical Flow — simulated result across source images.*

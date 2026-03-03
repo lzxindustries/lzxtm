@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 262
+sidebar_position: 274
 slug: /instruments/videomancer/snapshot
 title: "Snapshot"
 image: /img/instruments/videomancer/snapshot/snapshot_hero.png

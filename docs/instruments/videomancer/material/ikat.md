@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 134
+sidebar_position: 140
 slug: /instruments/videomancer/ikat
 title: "Ikat"
-image: /img/instruments/videomancer/ikat/ikat_hero.png
+image: /img/instruments/videomancer/ikat/ikat_hero_s1.png
 description: "Ikat simulates the ancient resist-dyeing technique of the same name by dividing the video frame into vertical (or horizontal) stripe columns and processing each column as if it were a bundle of warp threads dipped into a dye bath."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import ikat_hero from '/img/instruments/videomancer/ikat/ikat_hero.png';
-import ikat_control_panel from '/img/instruments/videomancer/ikat/ikat_control_panel.png';
-import ikat_exercise1_result from '/img/instruments/videomancer/ikat/ikat_exercise1_result.png';
-import ikat_exercise2_result from '/img/instruments/videomancer/ikat/ikat_exercise2_result.png';
-import ikat_exercise3_result from '/img/instruments/videomancer/ikat/ikat_exercise3_result.png';
-import ikat_source1_kodim15 from '/img/instruments/videomancer/ikat/ikat_source1_kodim15.png';
-import ikat_source2_kodim03 from '/img/instruments/videomancer/ikat/ikat_source2_kodim03.png';
-import ikat_source3_kodim13_bw from '/img/instruments/videomancer/ikat/ikat_source3_kodim13_bw.png';
+import ikat_source1_boat from '/img/instruments/videomancer/ikat/ikat_source1_boat.png';
+import ikat_source2_castle from '/img/instruments/videomancer/ikat/ikat_source2_castle.png';
+import ikat_source3_turtle from '/img/instruments/videomancer/ikat/ikat_source3_turtle.png';
+import ikat_source4_pattern from '/img/instruments/videomancer/ikat/ikat_source4_pattern.png';
+import ikat_source5_boy from '/img/instruments/videomancer/ikat/ikat_source5_boy.png';
+import ikat_source6_knit from '/img/instruments/videomancer/ikat/ikat_source6_knit.png';
+import ikat_hero_s1 from '/img/instruments/videomancer/ikat/ikat_hero_s1.png';
+import ikat_hero_s2 from '/img/instruments/videomancer/ikat/ikat_hero_s2.png';
+import ikat_hero_s3 from '/img/instruments/videomancer/ikat/ikat_hero_s3.png';
+import ikat_hero_s4 from '/img/instruments/videomancer/ikat/ikat_hero_s4.png';
+import ikat_hero_s5 from '/img/instruments/videomancer/ikat/ikat_hero_s5.png';
+import ikat_hero_s6 from '/img/instruments/videomancer/ikat/ikat_hero_s6.png';
+import ikat_ex1_s1 from '/img/instruments/videomancer/ikat/ikat_ex1_s1.png';
+import ikat_ex1_s2 from '/img/instruments/videomancer/ikat/ikat_ex1_s2.png';
+import ikat_ex1_s3 from '/img/instruments/videomancer/ikat/ikat_ex1_s3.png';
+import ikat_ex1_s4 from '/img/instruments/videomancer/ikat/ikat_ex1_s4.png';
+import ikat_ex1_s5 from '/img/instruments/videomancer/ikat/ikat_ex1_s5.png';
+import ikat_ex1_s6 from '/img/instruments/videomancer/ikat/ikat_ex1_s6.png';
+import ikat_ex2_s1 from '/img/instruments/videomancer/ikat/ikat_ex2_s1.png';
+import ikat_ex2_s2 from '/img/instruments/videomancer/ikat/ikat_ex2_s2.png';
+import ikat_ex2_s3 from '/img/instruments/videomancer/ikat/ikat_ex2_s3.png';
+import ikat_ex2_s4 from '/img/instruments/videomancer/ikat/ikat_ex2_s4.png';
+import ikat_ex2_s5 from '/img/instruments/videomancer/ikat/ikat_ex2_s5.png';
+import ikat_ex2_s6 from '/img/instruments/videomancer/ikat/ikat_ex2_s6.png';
+import ikat_ex3_s1 from '/img/instruments/videomancer/ikat/ikat_ex3_s1.png';
+import ikat_ex3_s2 from '/img/instruments/videomancer/ikat/ikat_ex3_s2.png';
+import ikat_ex3_s3 from '/img/instruments/videomancer/ikat/ikat_ex3_s3.png';
+import ikat_ex3_s4 from '/img/instruments/videomancer/ikat/ikat_ex3_s4.png';
+import ikat_ex3_s5 from '/img/instruments/videomancer/ikat/ikat_ex3_s5.png';
+import ikat_ex3_s6 from '/img/instruments/videomancer/ikat/ikat_ex3_s6.png';
 
 # Ikat
 
@@ -23,9 +45,12 @@ import ikat_source3_kodim13_bw from '/img/instruments/videomancer/ikat/ikat_sour
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_hero },
-    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_hero },
-    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_hero },
+    { label: "Boat", before: ikat_source1_boat, after: ikat_hero_s1 },
+    { label: "Castle", before: ikat_source2_castle, after: ikat_hero_s2 },
+    { label: "Turtle", before: ikat_source3_turtle, after: ikat_hero_s3 },
+    { label: "Pattern", before: ikat_source4_pattern, after: ikat_hero_s4 },
+    { label: "Boy", before: ikat_source5_boy, after: ikat_hero_s5 },
+    { label: "Knit", before: ikat_source6_knit, after: ikat_hero_s6 },
   ]}
 />
 *Ikat applying column-quantized dye simulation and LFSR-driven bleed to create warp-resist textile textures from live video.*
@@ -100,8 +125,6 @@ The key interaction in the pipeline is between column quantization and edge blee
 
 ## Parameter Reference
 
-<img src={ikat_control_panel} alt="Videomancer front panel with Ikat loaded"/>
-*Videomancer's front panel with Ikat active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -204,9 +227,12 @@ These exercises progress from simple column striping to full textile simulation,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise1_result },
-    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise1_result },
-    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise1_result },
+    { label: "Boat", before: ikat_source1_boat, after: ikat_ex1_s1 },
+    { label: "Castle", before: ikat_source2_castle, after: ikat_ex1_s2 },
+    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex1_s3 },
+    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex1_s4 },
+    { label: "Boy", before: ikat_source5_boy, after: ikat_ex1_s5 },
+    { label: "Knit", before: ikat_source6_knit, after: ikat_ex1_s6 },
   ]}
 />
 *Basic Warp Stripes — simulated result across source images.*
@@ -228,9 +254,12 @@ These exercises progress from simple column striping to full textile simulation,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise2_result },
-    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise2_result },
-    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise2_result },
+    { label: "Boat", before: ikat_source1_boat, after: ikat_ex2_s1 },
+    { label: "Castle", before: ikat_source2_castle, after: ikat_ex2_s2 },
+    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex2_s3 },
+    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex2_s4 },
+    { label: "Boy", before: ikat_source5_boy, after: ikat_ex2_s5 },
+    { label: "Knit", before: ikat_source6_knit, after: ikat_ex2_s6 },
   ]}
 />
 *Dye Bleed and Jitter — simulated result across source images.*
@@ -252,9 +281,12 @@ These exercises progress from simple column striping to full textile simulation,
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: ikat_source1_kodim15, after: ikat_exercise3_result },
-    { label: "Kodim03", before: ikat_source2_kodim03, after: ikat_exercise3_result },
-    { label: "Kodim13 B&W", before: ikat_source3_kodim13_bw, after: ikat_exercise3_result },
+    { label: "Boat", before: ikat_source1_boat, after: ikat_ex3_s1 },
+    { label: "Castle", before: ikat_source2_castle, after: ikat_ex3_s2 },
+    { label: "Turtle", before: ikat_source3_turtle, after: ikat_ex3_s3 },
+    { label: "Pattern", before: ikat_source4_pattern, after: ikat_ex3_s4 },
+    { label: "Boy", before: ikat_source5_boy, after: ikat_ex3_s5 },
+    { label: "Knit", before: ikat_source6_knit, after: ikat_ex3_s6 },
   ]}
 />
 *Double Ikat Textile — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 97
+sidebar_position: 101
 slug: /instruments/videomancer/engraver
 title: "Engraver"
-image: /img/instruments/videomancer/engraver/engraver_hero.png
+image: /img/instruments/videomancer/engraver/engraver_hero_s1.png
 description: "In traditional engraving, a craftsman cuts lines into a metal plate."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import engraver_hero from '/img/instruments/videomancer/engraver/engraver_hero.png';
-import engraver_control_panel from '/img/instruments/videomancer/engraver/engraver_control_panel.png';
-import engraver_exercise1_result from '/img/instruments/videomancer/engraver/engraver_exercise1_result.png';
-import engraver_exercise2_result from '/img/instruments/videomancer/engraver/engraver_exercise2_result.png';
-import engraver_exercise3_result from '/img/instruments/videomancer/engraver/engraver_exercise3_result.png';
-import engraver_source1_kodim02 from '/img/instruments/videomancer/engraver/engraver_source1_kodim02.png';
-import engraver_source2_kodim07 from '/img/instruments/videomancer/engraver/engraver_source2_kodim07.png';
-import engraver_source3_kodim01_bw from '/img/instruments/videomancer/engraver/engraver_source3_kodim01_bw.png';
+import engraver_source1_boat from '/img/instruments/videomancer/engraver/engraver_source1_boat.png';
+import engraver_source2_skull from '/img/instruments/videomancer/engraver/engraver_source2_skull.png';
+import engraver_source3_collage from '/img/instruments/videomancer/engraver/engraver_source3_collage.png';
+import engraver_source4_pattern from '/img/instruments/videomancer/engraver/engraver_source4_pattern.png';
+import engraver_source5_boy from '/img/instruments/videomancer/engraver/engraver_source5_boy.png';
+import engraver_source6_paint from '/img/instruments/videomancer/engraver/engraver_source6_paint.png';
+import engraver_hero_s1 from '/img/instruments/videomancer/engraver/engraver_hero_s1.png';
+import engraver_hero_s2 from '/img/instruments/videomancer/engraver/engraver_hero_s2.png';
+import engraver_hero_s3 from '/img/instruments/videomancer/engraver/engraver_hero_s3.png';
+import engraver_hero_s4 from '/img/instruments/videomancer/engraver/engraver_hero_s4.png';
+import engraver_hero_s5 from '/img/instruments/videomancer/engraver/engraver_hero_s5.png';
+import engraver_hero_s6 from '/img/instruments/videomancer/engraver/engraver_hero_s6.png';
+import engraver_ex1_s1 from '/img/instruments/videomancer/engraver/engraver_ex1_s1.png';
+import engraver_ex1_s2 from '/img/instruments/videomancer/engraver/engraver_ex1_s2.png';
+import engraver_ex1_s3 from '/img/instruments/videomancer/engraver/engraver_ex1_s3.png';
+import engraver_ex1_s4 from '/img/instruments/videomancer/engraver/engraver_ex1_s4.png';
+import engraver_ex1_s5 from '/img/instruments/videomancer/engraver/engraver_ex1_s5.png';
+import engraver_ex1_s6 from '/img/instruments/videomancer/engraver/engraver_ex1_s6.png';
+import engraver_ex2_s1 from '/img/instruments/videomancer/engraver/engraver_ex2_s1.png';
+import engraver_ex2_s2 from '/img/instruments/videomancer/engraver/engraver_ex2_s2.png';
+import engraver_ex2_s3 from '/img/instruments/videomancer/engraver/engraver_ex2_s3.png';
+import engraver_ex2_s4 from '/img/instruments/videomancer/engraver/engraver_ex2_s4.png';
+import engraver_ex2_s5 from '/img/instruments/videomancer/engraver/engraver_ex2_s5.png';
+import engraver_ex2_s6 from '/img/instruments/videomancer/engraver/engraver_ex2_s6.png';
+import engraver_ex3_s1 from '/img/instruments/videomancer/engraver/engraver_ex3_s1.png';
+import engraver_ex3_s2 from '/img/instruments/videomancer/engraver/engraver_ex3_s2.png';
+import engraver_ex3_s3 from '/img/instruments/videomancer/engraver/engraver_ex3_s3.png';
+import engraver_ex3_s4 from '/img/instruments/videomancer/engraver/engraver_ex3_s4.png';
+import engraver_ex3_s5 from '/img/instruments/videomancer/engraver/engraver_ex3_s5.png';
+import engraver_ex3_s6 from '/img/instruments/videomancer/engraver/engraver_ex3_s6.png';
 
 # Engraver
 
@@ -23,9 +45,12 @@ import engraver_source3_kodim01_bw from '/img/instruments/videomancer/engraver/e
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_hero },
-    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_hero },
-    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_hero },
+    { label: "Boat", before: engraver_source1_boat, after: engraver_hero_s1 },
+    { label: "Skull", before: engraver_source2_skull, after: engraver_hero_s2 },
+    { label: "Collage", before: engraver_source3_collage, after: engraver_hero_s3 },
+    { label: "Pattern", before: engraver_source4_pattern, after: engraver_hero_s4 },
+    { label: "Boy", before: engraver_source5_boy, after: engraver_hero_s5 },
+    { label: "Paint", before: engraver_source6_paint, after: engraver_hero_s6 },
   ]}
 />
 *Engraver reducing a video signal to flat posterized regions bounded by crisp edge lines, evoking intaglio printmaking and cartoon cel-shading.*
@@ -125,8 +150,6 @@ The compose stage uses a strict priority: edge pixels always win over fill. This
 
 ## Parameter Reference
 
-<img src={engraver_control_panel} alt="Videomancer front panel with Engraver loaded"/>
-*Videomancer's front panel with Engraver active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -228,9 +251,12 @@ These three exercises progress from basic posterization to full engraved line ar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise1_result },
-    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise1_result },
-    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise1_result },
+    { label: "Boat", before: engraver_source1_boat, after: engraver_ex1_s1 },
+    { label: "Skull", before: engraver_source2_skull, after: engraver_ex1_s2 },
+    { label: "Collage", before: engraver_source3_collage, after: engraver_ex1_s3 },
+    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex1_s4 },
+    { label: "Boy", before: engraver_source5_boy, after: engraver_ex1_s5 },
+    { label: "Paint", before: engraver_source6_paint, after: engraver_ex1_s6 },
   ]}
 />
 *Cartoon Cel-Shading — simulated result across source images.*
@@ -253,9 +279,12 @@ These three exercises progress from basic posterization to full engraved line ar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise2_result },
-    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise2_result },
-    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise2_result },
+    { label: "Boat", before: engraver_source1_boat, after: engraver_ex2_s1 },
+    { label: "Skull", before: engraver_source2_skull, after: engraver_ex2_s2 },
+    { label: "Collage", before: engraver_source3_collage, after: engraver_ex2_s3 },
+    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex2_s4 },
+    { label: "Boy", before: engraver_source5_boy, after: engraver_ex2_s5 },
+    { label: "Paint", before: engraver_source6_paint, after: engraver_ex2_s6 },
   ]}
 />
 *Copper Plate Engraving — simulated result across source images.*
@@ -278,9 +307,12 @@ These three exercises progress from basic posterization to full engraved line ar
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: engraver_source1_kodim02, after: engraver_exercise3_result },
-    { label: "Kodim07", before: engraver_source2_kodim07, after: engraver_exercise3_result },
-    { label: "Kodim01 B&W", before: engraver_source3_kodim01_bw, after: engraver_exercise3_result },
+    { label: "Boat", before: engraver_source1_boat, after: engraver_ex3_s1 },
+    { label: "Skull", before: engraver_source2_skull, after: engraver_ex3_s2 },
+    { label: "Collage", before: engraver_source3_collage, after: engraver_ex3_s3 },
+    { label: "Pattern", before: engraver_source4_pattern, after: engraver_ex3_s4 },
+    { label: "Boy", before: engraver_source5_boy, after: engraver_ex3_s5 },
+    { label: "Paint", before: engraver_source6_paint, after: engraver_ex3_s6 },
   ]}
 />
 *Pure Line Drawing — simulated result across source images.*

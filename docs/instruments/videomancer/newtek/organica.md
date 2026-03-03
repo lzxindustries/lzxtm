@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 200
+sidebar_position: 208
 slug: /instruments/videomancer/organica
 title: "Organica"
-image: /img/instruments/videomancer/organica/organica_hero.png
+image: /img/instruments/videomancer/organica/organica_hero_s1.png
 description: "Organica generates procedural color palettes by sweeping a six-segment hue wheel across the video frame."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import organica_hero from '/img/instruments/videomancer/organica/organica_hero.png';
-import organica_control_panel from '/img/instruments/videomancer/organica/organica_control_panel.png';
-import organica_exercise1_result from '/img/instruments/videomancer/organica/organica_exercise1_result.png';
-import organica_exercise2_result from '/img/instruments/videomancer/organica/organica_exercise2_result.png';
-import organica_exercise3_result from '/img/instruments/videomancer/organica/organica_exercise3_result.png';
-import organica_source1_kodim15 from '/img/instruments/videomancer/organica/organica_source1_kodim15.png';
-import organica_source2_kodim03 from '/img/instruments/videomancer/organica/organica_source2_kodim03.png';
-import organica_source3_kodim13_bw from '/img/instruments/videomancer/organica/organica_source3_kodim13_bw.png';
+import organica_source1_field from '/img/instruments/videomancer/organica/organica_source1_field.png';
+import organica_source2_fruit from '/img/instruments/videomancer/organica/organica_source2_fruit.png';
+import organica_source3_turtle from '/img/instruments/videomancer/organica/organica_source3_turtle.png';
+import organica_source4_pattern from '/img/instruments/videomancer/organica/organica_source4_pattern.png';
+import organica_source5_boy from '/img/instruments/videomancer/organica/organica_source5_boy.png';
+import organica_source6_knit from '/img/instruments/videomancer/organica/organica_source6_knit.png';
+import organica_hero_s1 from '/img/instruments/videomancer/organica/organica_hero_s1.png';
+import organica_hero_s2 from '/img/instruments/videomancer/organica/organica_hero_s2.png';
+import organica_hero_s3 from '/img/instruments/videomancer/organica/organica_hero_s3.png';
+import organica_hero_s4 from '/img/instruments/videomancer/organica/organica_hero_s4.png';
+import organica_hero_s5 from '/img/instruments/videomancer/organica/organica_hero_s5.png';
+import organica_hero_s6 from '/img/instruments/videomancer/organica/organica_hero_s6.png';
+import organica_ex1_s1 from '/img/instruments/videomancer/organica/organica_ex1_s1.png';
+import organica_ex1_s2 from '/img/instruments/videomancer/organica/organica_ex1_s2.png';
+import organica_ex1_s3 from '/img/instruments/videomancer/organica/organica_ex1_s3.png';
+import organica_ex1_s4 from '/img/instruments/videomancer/organica/organica_ex1_s4.png';
+import organica_ex1_s5 from '/img/instruments/videomancer/organica/organica_ex1_s5.png';
+import organica_ex1_s6 from '/img/instruments/videomancer/organica/organica_ex1_s6.png';
+import organica_ex2_s1 from '/img/instruments/videomancer/organica/organica_ex2_s1.png';
+import organica_ex2_s2 from '/img/instruments/videomancer/organica/organica_ex2_s2.png';
+import organica_ex2_s3 from '/img/instruments/videomancer/organica/organica_ex2_s3.png';
+import organica_ex2_s4 from '/img/instruments/videomancer/organica/organica_ex2_s4.png';
+import organica_ex2_s5 from '/img/instruments/videomancer/organica/organica_ex2_s5.png';
+import organica_ex2_s6 from '/img/instruments/videomancer/organica/organica_ex2_s6.png';
+import organica_ex3_s1 from '/img/instruments/videomancer/organica/organica_ex3_s1.png';
+import organica_ex3_s2 from '/img/instruments/videomancer/organica/organica_ex3_s2.png';
+import organica_ex3_s3 from '/img/instruments/videomancer/organica/organica_ex3_s3.png';
+import organica_ex3_s4 from '/img/instruments/videomancer/organica/organica_ex3_s4.png';
+import organica_ex3_s5 from '/img/instruments/videomancer/organica/organica_ex3_s5.png';
+import organica_ex3_s6 from '/img/instruments/videomancer/organica/organica_ex3_s6.png';
 
 # Organica
 
@@ -23,9 +45,12 @@ import organica_source3_kodim13_bw from '/img/instruments/videomancer/organica/o
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: organica_source1_kodim15, after: organica_hero },
-    { label: "Kodim03", before: organica_source2_kodim03, after: organica_hero },
-    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_hero },
+    { label: "Field", before: organica_source1_field, after: organica_hero_s1 },
+    { label: "Fruit", before: organica_source2_fruit, after: organica_hero_s2 },
+    { label: "Turtle", before: organica_source3_turtle, after: organica_hero_s3 },
+    { label: "Pattern", before: organica_source4_pattern, after: organica_hero_s4 },
+    { label: "Boy", before: organica_source5_boy, after: organica_hero_s5 },
+    { label: "Knit", before: organica_source6_knit, after: organica_hero_s6 },
   ]}
 />
 *Organica painting a flowing procedural color palette across the video frame, with hue gradients driven by horizontal position and input luminance.*
@@ -99,8 +124,6 @@ The central interaction is between position-based hue mapping and video-driven m
 
 ## Parameter Reference
 
-<img src={organica_control_panel} alt="Videomancer front panel with Organica loaded"/>
-*Videomancer's front panel with Organica active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -205,9 +228,12 @@ These exercises progress from a static single-color field to animated, video-res
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise1_result },
-    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise1_result },
-    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise1_result },
+    { label: "Field", before: organica_source1_field, after: organica_ex1_s1 },
+    { label: "Fruit", before: organica_source2_fruit, after: organica_ex1_s2 },
+    { label: "Turtle", before: organica_source3_turtle, after: organica_ex1_s3 },
+    { label: "Pattern", before: organica_source4_pattern, after: organica_ex1_s4 },
+    { label: "Boy", before: organica_source5_boy, after: organica_ex1_s5 },
+    { label: "Knit", before: organica_source6_knit, after: organica_ex1_s6 },
   ]}
 />
 *Static Color Wash — simulated result across source images.*
@@ -230,9 +256,12 @@ These exercises progress from a static single-color field to animated, video-res
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise2_result },
-    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise2_result },
-    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise2_result },
+    { label: "Field", before: organica_source1_field, after: organica_ex2_s1 },
+    { label: "Fruit", before: organica_source2_fruit, after: organica_ex2_s2 },
+    { label: "Turtle", before: organica_source3_turtle, after: organica_ex2_s3 },
+    { label: "Pattern", before: organica_source4_pattern, after: organica_ex2_s4 },
+    { label: "Boy", before: organica_source5_boy, after: organica_ex2_s5 },
+    { label: "Knit", before: organica_source6_knit, after: organica_ex2_s6 },
   ]}
 />
 *Rainbow Gradient — simulated result across source images.*
@@ -255,9 +284,12 @@ These exercises progress from a static single-color field to animated, video-res
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: organica_source1_kodim15, after: organica_exercise3_result },
-    { label: "Kodim03", before: organica_source2_kodim03, after: organica_exercise3_result },
-    { label: "Kodim13 B&W", before: organica_source3_kodim13_bw, after: organica_exercise3_result },
+    { label: "Field", before: organica_source1_field, after: organica_ex3_s1 },
+    { label: "Fruit", before: organica_source2_fruit, after: organica_ex3_s2 },
+    { label: "Turtle", before: organica_source3_turtle, after: organica_ex3_s3 },
+    { label: "Pattern", before: organica_source4_pattern, after: organica_ex3_s4 },
+    { label: "Boy", before: organica_source5_boy, after: organica_ex3_s5 },
+    { label: "Knit", before: organica_source6_knit, after: organica_ex3_s6 },
   ]}
 />
 *Animated Video-Responsive Palette — simulated result across source images.*

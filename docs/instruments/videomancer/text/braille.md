@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 29
+sidebar_position: 30
 slug: /instruments/videomancer/braille
 title: "Braille"
-image: /img/instruments/videomancer/braille/braille_hero.png
+image: /img/instruments/videomancer/braille/braille_hero_s1.png
 description: "The Braille cell — six or eight raised dots arranged in a 2×3 or 2×4 matrix — is one of the most elegant encodings ever devised."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import braille_hero from '/img/instruments/videomancer/braille/braille_hero.png';
-import braille_control_panel from '/img/instruments/videomancer/braille/braille_control_panel.png';
-import braille_exercise1_result from '/img/instruments/videomancer/braille/braille_exercise1_result.png';
-import braille_exercise2_result from '/img/instruments/videomancer/braille/braille_exercise2_result.png';
-import braille_exercise3_result from '/img/instruments/videomancer/braille/braille_exercise3_result.png';
-import braille_source1_kodim15 from '/img/instruments/videomancer/braille/braille_source1_kodim15.png';
-import braille_source2_kodim15_bw from '/img/instruments/videomancer/braille/braille_source2_kodim15_bw.png';
-import braille_source3_male_1024 from '/img/instruments/videomancer/braille/braille_source3_male_1024.png';
+import braille_source1_cat from '/img/instruments/videomancer/braille/braille_source1_cat.png';
+import braille_source2_fruit from '/img/instruments/videomancer/braille/braille_source2_fruit.png';
+import braille_source3_elephant from '/img/instruments/videomancer/braille/braille_source3_elephant.png';
+import braille_source4_pattern from '/img/instruments/videomancer/braille/braille_source4_pattern.png';
+import braille_source5_girl from '/img/instruments/videomancer/braille/braille_source5_girl.png';
+import braille_source6_knit from '/img/instruments/videomancer/braille/braille_source6_knit.png';
+import braille_hero_s1 from '/img/instruments/videomancer/braille/braille_hero_s1.png';
+import braille_hero_s2 from '/img/instruments/videomancer/braille/braille_hero_s2.png';
+import braille_hero_s3 from '/img/instruments/videomancer/braille/braille_hero_s3.png';
+import braille_hero_s4 from '/img/instruments/videomancer/braille/braille_hero_s4.png';
+import braille_hero_s5 from '/img/instruments/videomancer/braille/braille_hero_s5.png';
+import braille_hero_s6 from '/img/instruments/videomancer/braille/braille_hero_s6.png';
+import braille_ex1_s1 from '/img/instruments/videomancer/braille/braille_ex1_s1.png';
+import braille_ex1_s2 from '/img/instruments/videomancer/braille/braille_ex1_s2.png';
+import braille_ex1_s3 from '/img/instruments/videomancer/braille/braille_ex1_s3.png';
+import braille_ex1_s4 from '/img/instruments/videomancer/braille/braille_ex1_s4.png';
+import braille_ex1_s5 from '/img/instruments/videomancer/braille/braille_ex1_s5.png';
+import braille_ex1_s6 from '/img/instruments/videomancer/braille/braille_ex1_s6.png';
+import braille_ex2_s1 from '/img/instruments/videomancer/braille/braille_ex2_s1.png';
+import braille_ex2_s2 from '/img/instruments/videomancer/braille/braille_ex2_s2.png';
+import braille_ex2_s3 from '/img/instruments/videomancer/braille/braille_ex2_s3.png';
+import braille_ex2_s4 from '/img/instruments/videomancer/braille/braille_ex2_s4.png';
+import braille_ex2_s5 from '/img/instruments/videomancer/braille/braille_ex2_s5.png';
+import braille_ex2_s6 from '/img/instruments/videomancer/braille/braille_ex2_s6.png';
+import braille_ex3_s1 from '/img/instruments/videomancer/braille/braille_ex3_s1.png';
+import braille_ex3_s2 from '/img/instruments/videomancer/braille/braille_ex3_s2.png';
+import braille_ex3_s3 from '/img/instruments/videomancer/braille/braille_ex3_s3.png';
+import braille_ex3_s4 from '/img/instruments/videomancer/braille/braille_ex3_s4.png';
+import braille_ex3_s5 from '/img/instruments/videomancer/braille/braille_ex3_s5.png';
+import braille_ex3_s6 from '/img/instruments/videomancer/braille/braille_ex3_s6.png';
 
 # Braille
 
@@ -23,9 +45,12 @@ import braille_source3_male_1024 from '/img/instruments/videomancer/braille/brai
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: braille_source1_kodim15, after: braille_hero },
-    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_hero },
-    { label: "Male", before: braille_source3_male_1024, after: braille_hero },
+    { label: "Cat", before: braille_source1_cat, after: braille_hero_s1 },
+    { label: "Fruit", before: braille_source2_fruit, after: braille_hero_s2 },
+    { label: "Elephant", before: braille_source3_elephant, after: braille_hero_s3 },
+    { label: "Pattern", before: braille_source4_pattern, after: braille_hero_s4 },
+    { label: "Girl", before: braille_source5_girl, after: braille_hero_s5 },
+    { label: "Knit", before: braille_source6_knit, after: braille_hero_s6 },
   ]}
 />
 *Braille converting a photographic image into an array of tactile-style embossed dots on a paper-textured surface.*
@@ -114,9 +139,6 @@ The pipeline uses exclusively bit-shift and bit-mask operations for cell divisio
 ---
 
 ## Parameter Reference
-
-<img src={braille_control_panel} alt="Videomancer front panel with Braille loaded"/>
-*Videomancer's front panel with Braille active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +242,12 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise1_result },
-    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise1_result },
-    { label: "Male", before: braille_source3_male_1024, after: braille_exercise1_result },
+    { label: "Cat", before: braille_source1_cat, after: braille_ex1_s1 },
+    { label: "Fruit", before: braille_source2_fruit, after: braille_ex1_s2 },
+    { label: "Elephant", before: braille_source3_elephant, after: braille_ex1_s3 },
+    { label: "Pattern", before: braille_source4_pattern, after: braille_ex1_s4 },
+    { label: "Girl", before: braille_source5_girl, after: braille_ex1_s5 },
+    { label: "Knit", before: braille_source6_knit, after: braille_ex1_s6 },
   ]}
 />
 *Basic Threshold Halftone — simulated result across source images.*
@@ -244,9 +269,12 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise2_result },
-    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise2_result },
-    { label: "Male", before: braille_source3_male_1024, after: braille_exercise2_result },
+    { label: "Cat", before: braille_source1_cat, after: braille_ex2_s1 },
+    { label: "Fruit", before: braille_source2_fruit, after: braille_ex2_s2 },
+    { label: "Elephant", before: braille_source3_elephant, after: braille_ex2_s3 },
+    { label: "Pattern", before: braille_source4_pattern, after: braille_ex2_s4 },
+    { label: "Girl", before: braille_source5_girl, after: braille_ex2_s5 },
+    { label: "Knit", before: braille_source6_knit, after: braille_ex2_s6 },
   ]}
 />
 *Emboss and Style Exploration — simulated result across source images.*
@@ -269,9 +297,12 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: braille_source1_kodim15, after: braille_exercise3_result },
-    { label: "Kodim15 B&W", before: braille_source2_kodim15_bw, after: braille_exercise3_result },
-    { label: "Male", before: braille_source3_male_1024, after: braille_exercise3_result },
+    { label: "Cat", before: braille_source1_cat, after: braille_ex3_s1 },
+    { label: "Fruit", before: braille_source2_fruit, after: braille_ex3_s2 },
+    { label: "Elephant", before: braille_source3_elephant, after: braille_ex3_s3 },
+    { label: "Pattern", before: braille_source4_pattern, after: braille_ex3_s4 },
+    { label: "Girl", before: braille_source5_girl, after: braille_ex3_s5 },
+    { label: "Knit", before: braille_source6_knit, after: braille_ex3_s6 },
   ]}
 />
 *Tinted Pointillist Color — simulated result across source images.*

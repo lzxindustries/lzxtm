@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 49
+sidebar_position: 51
 slug: /instruments/videomancer/chrome
 title: "Chrome"
-image: /img/instruments/videomancer/chrome/chrome_hero.png
+image: /img/instruments/videomancer/chrome/chrome_hero_s1.png
 description: "There is a particular quality to chrome — the way it swallows the world around it and hands it back distorted, compressed, impossibly bright."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chrome_hero from '/img/instruments/videomancer/chrome/chrome_hero.png';
-import chrome_control_panel from '/img/instruments/videomancer/chrome/chrome_control_panel.png';
-import chrome_exercise1_result from '/img/instruments/videomancer/chrome/chrome_exercise1_result.png';
-import chrome_exercise2_result from '/img/instruments/videomancer/chrome/chrome_exercise2_result.png';
-import chrome_exercise3_result from '/img/instruments/videomancer/chrome/chrome_exercise3_result.png';
-import chrome_source1_kodim03 from '/img/instruments/videomancer/chrome/chrome_source1_kodim03.png';
-import chrome_source2_kodim15 from '/img/instruments/videomancer/chrome/chrome_source2_kodim15.png';
-import chrome_source3_peppers_512 from '/img/instruments/videomancer/chrome/chrome_source3_peppers_512.png';
+import chrome_source1_house from '/img/instruments/videomancer/chrome/chrome_source1_house.png';
+import chrome_source2_cat from '/img/instruments/videomancer/chrome/chrome_source2_cat.png';
+import chrome_source3_elephant from '/img/instruments/videomancer/chrome/chrome_source3_elephant.png';
+import chrome_source4_pattern from '/img/instruments/videomancer/chrome/chrome_source4_pattern.png';
+import chrome_source5_man from '/img/instruments/videomancer/chrome/chrome_source5_man.png';
+import chrome_source6_wood from '/img/instruments/videomancer/chrome/chrome_source6_wood.png';
+import chrome_hero_s1 from '/img/instruments/videomancer/chrome/chrome_hero_s1.png';
+import chrome_hero_s2 from '/img/instruments/videomancer/chrome/chrome_hero_s2.png';
+import chrome_hero_s3 from '/img/instruments/videomancer/chrome/chrome_hero_s3.png';
+import chrome_hero_s4 from '/img/instruments/videomancer/chrome/chrome_hero_s4.png';
+import chrome_hero_s5 from '/img/instruments/videomancer/chrome/chrome_hero_s5.png';
+import chrome_hero_s6 from '/img/instruments/videomancer/chrome/chrome_hero_s6.png';
+import chrome_ex1_s1 from '/img/instruments/videomancer/chrome/chrome_ex1_s1.png';
+import chrome_ex1_s2 from '/img/instruments/videomancer/chrome/chrome_ex1_s2.png';
+import chrome_ex1_s3 from '/img/instruments/videomancer/chrome/chrome_ex1_s3.png';
+import chrome_ex1_s4 from '/img/instruments/videomancer/chrome/chrome_ex1_s4.png';
+import chrome_ex1_s5 from '/img/instruments/videomancer/chrome/chrome_ex1_s5.png';
+import chrome_ex1_s6 from '/img/instruments/videomancer/chrome/chrome_ex1_s6.png';
+import chrome_ex2_s1 from '/img/instruments/videomancer/chrome/chrome_ex2_s1.png';
+import chrome_ex2_s2 from '/img/instruments/videomancer/chrome/chrome_ex2_s2.png';
+import chrome_ex2_s3 from '/img/instruments/videomancer/chrome/chrome_ex2_s3.png';
+import chrome_ex2_s4 from '/img/instruments/videomancer/chrome/chrome_ex2_s4.png';
+import chrome_ex2_s5 from '/img/instruments/videomancer/chrome/chrome_ex2_s5.png';
+import chrome_ex2_s6 from '/img/instruments/videomancer/chrome/chrome_ex2_s6.png';
+import chrome_ex3_s1 from '/img/instruments/videomancer/chrome/chrome_ex3_s1.png';
+import chrome_ex3_s2 from '/img/instruments/videomancer/chrome/chrome_ex3_s2.png';
+import chrome_ex3_s3 from '/img/instruments/videomancer/chrome/chrome_ex3_s3.png';
+import chrome_ex3_s4 from '/img/instruments/videomancer/chrome/chrome_ex3_s4.png';
+import chrome_ex3_s5 from '/img/instruments/videomancer/chrome/chrome_ex3_s5.png';
+import chrome_ex3_s6 from '/img/instruments/videomancer/chrome/chrome_ex3_s6.png';
 
 # Chrome
 
@@ -23,9 +45,12 @@ import chrome_source3_peppers_512 from '/img/instruments/videomancer/chrome/chro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_hero },
-    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_hero },
-    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_hero },
+    { label: "House", before: chrome_source1_house, after: chrome_hero_s1 },
+    { label: "Cat", before: chrome_source2_cat, after: chrome_hero_s2 },
+    { label: "Elephant", before: chrome_source3_elephant, after: chrome_hero_s3 },
+    { label: "Pattern", before: chrome_source4_pattern, after: chrome_hero_s4 },
+    { label: "Man", before: chrome_source5_man, after: chrome_hero_s5 },
+    { label: "Wood", before: chrome_source6_wood, after: chrome_hero_s6 },
   ]}
 />
 *Chrome transforming a still life into a liquid-metal relief, sigmoid luminance remapping compressing midtones into mirror-bright highlights and deep shadow pools while a faint gold tint warms the reflected surface.*
@@ -115,8 +140,6 @@ The processing chain is strictly serial: every pixel passes through every stage 
 
 ## Parameter Reference
 
-<img src={chrome_control_panel} alt="Videomancer front panel with Chrome loaded"/>
-*Videomancer's front panel with Chrome active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -223,9 +246,12 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise1_result },
-    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise1_result },
-    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise1_result },
+    { label: "House", before: chrome_source1_house, after: chrome_ex1_s1 },
+    { label: "Cat", before: chrome_source2_cat, after: chrome_ex1_s2 },
+    { label: "Elephant", before: chrome_source3_elephant, after: chrome_ex1_s3 },
+    { label: "Pattern", before: chrome_source4_pattern, after: chrome_ex1_s4 },
+    { label: "Man", before: chrome_source5_man, after: chrome_ex1_s5 },
+    { label: "Wood", before: chrome_source6_wood, after: chrome_ex1_s6 },
   ]}
 />
 *Sculpting the S-Curve — simulated result across source images.*
@@ -248,9 +274,12 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise2_result },
-    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise2_result },
-    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise2_result },
+    { label: "House", before: chrome_source1_house, after: chrome_ex2_s1 },
+    { label: "Cat", before: chrome_source2_cat, after: chrome_ex2_s2 },
+    { label: "Elephant", before: chrome_source3_elephant, after: chrome_ex2_s3 },
+    { label: "Pattern", before: chrome_source4_pattern, after: chrome_ex2_s4 },
+    { label: "Man", before: chrome_source5_man, after: chrome_ex2_s5 },
+    { label: "Wood", before: chrome_source6_wood, after: chrome_ex2_s6 },
   ]}
 />
 *Gold Plate and Bloom — simulated result across source images.*
@@ -272,9 +301,12 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim03", before: chrome_source1_kodim03, after: chrome_exercise3_result },
-    { label: "Kodim15", before: chrome_source2_kodim15, after: chrome_exercise3_result },
-    { label: "Peppers", before: chrome_source3_peppers_512, after: chrome_exercise3_result },
+    { label: "House", before: chrome_source1_house, after: chrome_ex3_s1 },
+    { label: "Cat", before: chrome_source2_cat, after: chrome_ex3_s2 },
+    { label: "Elephant", before: chrome_source3_elephant, after: chrome_ex3_s3 },
+    { label: "Pattern", before: chrome_source4_pattern, after: chrome_ex3_s4 },
+    { label: "Man", before: chrome_source5_man, after: chrome_ex3_s5 },
+    { label: "Wood", before: chrome_source6_wood, after: chrome_ex3_s6 },
   ]}
 />
 *Dark Chrome and Mixed Metals — simulated result across source images.*

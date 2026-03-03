@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 146
+sidebar_position: 152
 slug: /instruments/videomancer/joust
 title: "Joust"
-image: /img/instruments/videomancer/joust/joust_hero.png
+image: /img/instruments/videomancer/joust/joust_hero_s1.png
 description: "Classic arcade and console hardware did not have enough video memory to draw an entire screen at once."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import joust_hero from '/img/instruments/videomancer/joust/joust_hero.png';
-import joust_control_panel from '/img/instruments/videomancer/joust/joust_control_panel.png';
-import joust_exercise1_result from '/img/instruments/videomancer/joust/joust_exercise1_result.png';
-import joust_exercise2_result from '/img/instruments/videomancer/joust/joust_exercise2_result.png';
-import joust_exercise3_result from '/img/instruments/videomancer/joust/joust_exercise3_result.png';
-import joust_source1_kodim15 from '/img/instruments/videomancer/joust/joust_source1_kodim15.png';
-import joust_source2_kodim03 from '/img/instruments/videomancer/joust/joust_source2_kodim03.png';
-import joust_source3_kodim15_bw from '/img/instruments/videomancer/joust/joust_source3_kodim15_bw.png';
+import joust_source1_fruit from '/img/instruments/videomancer/joust/joust_source1_fruit.png';
+import joust_source2_car from '/img/instruments/videomancer/joust/joust_source2_car.png';
+import joust_source3_clouds from '/img/instruments/videomancer/joust/joust_source3_clouds.png';
+import joust_source4_pattern from '/img/instruments/videomancer/joust/joust_source4_pattern.png';
+import joust_source5_woman from '/img/instruments/videomancer/joust/joust_source5_woman.png';
+import joust_source6_berries from '/img/instruments/videomancer/joust/joust_source6_berries.png';
+import joust_hero_s1 from '/img/instruments/videomancer/joust/joust_hero_s1.png';
+import joust_hero_s2 from '/img/instruments/videomancer/joust/joust_hero_s2.png';
+import joust_hero_s3 from '/img/instruments/videomancer/joust/joust_hero_s3.png';
+import joust_hero_s4 from '/img/instruments/videomancer/joust/joust_hero_s4.png';
+import joust_hero_s5 from '/img/instruments/videomancer/joust/joust_hero_s5.png';
+import joust_hero_s6 from '/img/instruments/videomancer/joust/joust_hero_s6.png';
+import joust_ex1_s1 from '/img/instruments/videomancer/joust/joust_ex1_s1.png';
+import joust_ex1_s2 from '/img/instruments/videomancer/joust/joust_ex1_s2.png';
+import joust_ex1_s3 from '/img/instruments/videomancer/joust/joust_ex1_s3.png';
+import joust_ex1_s4 from '/img/instruments/videomancer/joust/joust_ex1_s4.png';
+import joust_ex1_s5 from '/img/instruments/videomancer/joust/joust_ex1_s5.png';
+import joust_ex1_s6 from '/img/instruments/videomancer/joust/joust_ex1_s6.png';
+import joust_ex2_s1 from '/img/instruments/videomancer/joust/joust_ex2_s1.png';
+import joust_ex2_s2 from '/img/instruments/videomancer/joust/joust_ex2_s2.png';
+import joust_ex2_s3 from '/img/instruments/videomancer/joust/joust_ex2_s3.png';
+import joust_ex2_s4 from '/img/instruments/videomancer/joust/joust_ex2_s4.png';
+import joust_ex2_s5 from '/img/instruments/videomancer/joust/joust_ex2_s5.png';
+import joust_ex2_s6 from '/img/instruments/videomancer/joust/joust_ex2_s6.png';
+import joust_ex3_s1 from '/img/instruments/videomancer/joust/joust_ex3_s1.png';
+import joust_ex3_s2 from '/img/instruments/videomancer/joust/joust_ex3_s2.png';
+import joust_ex3_s3 from '/img/instruments/videomancer/joust/joust_ex3_s3.png';
+import joust_ex3_s4 from '/img/instruments/videomancer/joust/joust_ex3_s4.png';
+import joust_ex3_s5 from '/img/instruments/videomancer/joust/joust_ex3_s5.png';
+import joust_ex3_s6 from '/img/instruments/videomancer/joust/joust_ex3_s6.png';
 
 # Joust
 
@@ -23,9 +45,12 @@ import joust_source3_kodim15_bw from '/img/instruments/videomancer/joust/joust_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: joust_source1_kodim15, after: joust_hero },
-    { label: "Kodim03", before: joust_source2_kodim03, after: joust_hero },
-    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_hero },
+    { label: "Fruit", before: joust_source1_fruit, after: joust_hero_s1 },
+    { label: "Car", before: joust_source2_car, after: joust_hero_s2 },
+    { label: "Clouds", before: joust_source3_clouds, after: joust_hero_s3 },
+    { label: "Pattern", before: joust_source4_pattern, after: joust_hero_s4 },
+    { label: "Woman", before: joust_source5_woman, after: joust_hero_s5 },
+    { label: "Berries", before: joust_source6_berries, after: joust_hero_s6 },
   ]}
 />
 *Joust dividing a video source into horizontal strips with luminance-keyed transparency, palette quantization, and NES-style sprite-overflow flicker.*
@@ -113,8 +138,6 @@ Note that the VHDL uses a 32-entry sine LUT for per-strip horizontal offsets, an
 
 ## Parameter Reference
 
-<img src={joust_control_panel} alt="Videomancer front panel with Joust loaded"/>
-*Videomancer's front panel with Joust active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +241,12 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise1_result },
-    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise1_result },
-    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise1_result },
+    { label: "Fruit", before: joust_source1_fruit, after: joust_ex1_s1 },
+    { label: "Car", before: joust_source2_car, after: joust_ex1_s2 },
+    { label: "Clouds", before: joust_source3_clouds, after: joust_ex1_s3 },
+    { label: "Pattern", before: joust_source4_pattern, after: joust_ex1_s4 },
+    { label: "Woman", before: joust_source5_woman, after: joust_ex1_s5 },
+    { label: "Berries", before: joust_source6_berries, after: joust_ex1_s6 },
   ]}
 />
 *Strip Division and Scrolling — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise2_result },
-    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise2_result },
-    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise2_result },
+    { label: "Fruit", before: joust_source1_fruit, after: joust_ex2_s1 },
+    { label: "Car", before: joust_source2_car, after: joust_ex2_s2 },
+    { label: "Clouds", before: joust_source3_clouds, after: joust_ex2_s3 },
+    { label: "Pattern", before: joust_source4_pattern, after: joust_ex2_s4 },
+    { label: "Woman", before: joust_source5_woman, after: joust_ex2_s5 },
+    { label: "Berries", before: joust_source6_berries, after: joust_ex2_s6 },
   ]}
 />
 *Palette Quantization and Keying — simulated result across source images.*
@@ -267,9 +296,12 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: joust_source1_kodim15, after: joust_exercise3_result },
-    { label: "Kodim03", before: joust_source2_kodim03, after: joust_exercise3_result },
-    { label: "Kodim15 B&W", before: joust_source3_kodim15_bw, after: joust_exercise3_result },
+    { label: "Fruit", before: joust_source1_fruit, after: joust_ex3_s1 },
+    { label: "Car", before: joust_source2_car, after: joust_ex3_s2 },
+    { label: "Clouds", before: joust_source3_clouds, after: joust_ex3_s3 },
+    { label: "Pattern", before: joust_source4_pattern, after: joust_ex3_s4 },
+    { label: "Woman", before: joust_source5_woman, after: joust_ex3_s5 },
+    { label: "Berries", before: joust_source6_berries, after: joust_ex3_s6 },
   ]}
 />
 *Sprite Overflow Flicker — simulated result across source images.*

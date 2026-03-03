@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 212
+sidebar_position: 221
 slug: /instruments/videomancer/petrichor
 title: "Petrichor"
-image: /img/instruments/videomancer/petrichor/petrichor_hero.png
+image: /img/instruments/videomancer/petrichor/petrichor_hero_s1.png
 description: "Video monitors show flat images."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import petrichor_hero from '/img/instruments/videomancer/petrichor/petrichor_hero.png';
-import petrichor_control_panel from '/img/instruments/videomancer/petrichor/petrichor_control_panel.png';
-import petrichor_exercise1_result from '/img/instruments/videomancer/petrichor/petrichor_exercise1_result.png';
-import petrichor_exercise2_result from '/img/instruments/videomancer/petrichor/petrichor_exercise2_result.png';
-import petrichor_exercise3_result from '/img/instruments/videomancer/petrichor/petrichor_exercise3_result.png';
-import petrichor_source1_kodim01 from '/img/instruments/videomancer/petrichor/petrichor_source1_kodim01.png';
-import petrichor_source2_kodim02 from '/img/instruments/videomancer/petrichor/petrichor_source2_kodim02.png';
-import petrichor_source3_stream_bridge_512 from '/img/instruments/videomancer/petrichor/petrichor_source3_stream_bridge_512.png';
+import petrichor_source1_field from '/img/instruments/videomancer/petrichor/petrichor_source1_field.png';
+import petrichor_source2_skull from '/img/instruments/videomancer/petrichor/petrichor_source2_skull.png';
+import petrichor_source3_elephant from '/img/instruments/videomancer/petrichor/petrichor_source3_elephant.png';
+import petrichor_source4_pattern from '/img/instruments/videomancer/petrichor/petrichor_source4_pattern.png';
+import petrichor_source5_man from '/img/instruments/videomancer/petrichor/petrichor_source5_man.png';
+import petrichor_source6_berries from '/img/instruments/videomancer/petrichor/petrichor_source6_berries.png';
+import petrichor_hero_s1 from '/img/instruments/videomancer/petrichor/petrichor_hero_s1.png';
+import petrichor_hero_s2 from '/img/instruments/videomancer/petrichor/petrichor_hero_s2.png';
+import petrichor_hero_s3 from '/img/instruments/videomancer/petrichor/petrichor_hero_s3.png';
+import petrichor_hero_s4 from '/img/instruments/videomancer/petrichor/petrichor_hero_s4.png';
+import petrichor_hero_s5 from '/img/instruments/videomancer/petrichor/petrichor_hero_s5.png';
+import petrichor_hero_s6 from '/img/instruments/videomancer/petrichor/petrichor_hero_s6.png';
+import petrichor_ex1_s1 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s1.png';
+import petrichor_ex1_s2 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s2.png';
+import petrichor_ex1_s3 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s3.png';
+import petrichor_ex1_s4 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s4.png';
+import petrichor_ex1_s5 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s5.png';
+import petrichor_ex1_s6 from '/img/instruments/videomancer/petrichor/petrichor_ex1_s6.png';
+import petrichor_ex2_s1 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s1.png';
+import petrichor_ex2_s2 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s2.png';
+import petrichor_ex2_s3 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s3.png';
+import petrichor_ex2_s4 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s4.png';
+import petrichor_ex2_s5 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s5.png';
+import petrichor_ex2_s6 from '/img/instruments/videomancer/petrichor/petrichor_ex2_s6.png';
+import petrichor_ex3_s1 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s1.png';
+import petrichor_ex3_s2 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s2.png';
+import petrichor_ex3_s3 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s3.png';
+import petrichor_ex3_s4 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s4.png';
+import petrichor_ex3_s5 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s5.png';
+import petrichor_ex3_s6 from '/img/instruments/videomancer/petrichor/petrichor_ex3_s6.png';
 
 # Petrichor
 
@@ -23,9 +45,12 @@ import petrichor_source3_stream_bridge_512 from '/img/instruments/videomancer/pe
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_hero },
-    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_hero },
-    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_hero },
+    { label: "Field", before: petrichor_source1_field, after: petrichor_hero_s1 },
+    { label: "Skull", before: petrichor_source2_skull, after: petrichor_hero_s2 },
+    { label: "Elephant", before: petrichor_source3_elephant, after: petrichor_hero_s3 },
+    { label: "Pattern", before: petrichor_source4_pattern, after: petrichor_hero_s4 },
+    { label: "Man", before: petrichor_source5_man, after: petrichor_hero_s5 },
+    { label: "Berries", before: petrichor_source6_berries, after: petrichor_hero_s6 },
   ]}
 />
 *Petrichor splitting the frame at the horizon to produce rain-slicked pavement reflections, atmospheric haze, and animated rain streaks over a cityscape.*
@@ -102,8 +127,6 @@ The pipeline has two major spatial divisions. Above the horizon, pixels receive 
 
 ## Parameter Reference
 
-<img src={petrichor_control_panel} alt="Videomancer front panel with Petrichor loaded"/>
-*Videomancer's front panel with Petrichor active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -208,9 +231,12 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise1_result },
-    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise1_result },
-    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise1_result },
+    { label: "Field", before: petrichor_source1_field, after: petrichor_ex1_s1 },
+    { label: "Skull", before: petrichor_source2_skull, after: petrichor_ex1_s2 },
+    { label: "Elephant", before: petrichor_source3_elephant, after: petrichor_ex1_s3 },
+    { label: "Pattern", before: petrichor_source4_pattern, after: petrichor_ex1_s4 },
+    { label: "Man", before: petrichor_source5_man, after: petrichor_ex1_s5 },
+    { label: "Berries", before: petrichor_source6_berries, after: petrichor_ex1_s6 },
   ]}
 />
 *Pavement Mirrors — simulated result across source images.*
@@ -232,9 +258,12 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise2_result },
-    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise2_result },
-    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise2_result },
+    { label: "Field", before: petrichor_source1_field, after: petrichor_ex2_s1 },
+    { label: "Skull", before: petrichor_source2_skull, after: petrichor_ex2_s2 },
+    { label: "Elephant", before: petrichor_source3_elephant, after: petrichor_ex2_s3 },
+    { label: "Pattern", before: petrichor_source4_pattern, after: petrichor_ex2_s4 },
+    { label: "Man", before: petrichor_source5_man, after: petrichor_ex2_s5 },
+    { label: "Berries", before: petrichor_source6_berries, after: petrichor_ex2_s6 },
   ]}
 />
 *Fog Machine — simulated result across source images.*
@@ -256,9 +285,12 @@ These exercises build from simple horizon reflections through full rainstorm sim
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: petrichor_source1_kodim01, after: petrichor_exercise3_result },
-    { label: "Kodim02", before: petrichor_source2_kodim02, after: petrichor_exercise3_result },
-    { label: "Stream Bridge", before: petrichor_source3_stream_bridge_512, after: petrichor_exercise3_result },
+    { label: "Field", before: petrichor_source1_field, after: petrichor_ex3_s1 },
+    { label: "Skull", before: petrichor_source2_skull, after: petrichor_ex3_s2 },
+    { label: "Elephant", before: petrichor_source3_elephant, after: petrichor_ex3_s3 },
+    { label: "Pattern", before: petrichor_source4_pattern, after: petrichor_ex3_s4 },
+    { label: "Man", before: petrichor_source5_man, after: petrichor_ex3_s5 },
+    { label: "Berries", before: petrichor_source6_berries, after: petrichor_ex3_s6 },
   ]}
 />
 *Full Downpour — simulated result across source images.*

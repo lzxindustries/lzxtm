@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 59
+sidebar_position: 62
 slug: /instruments/videomancer/contour
 title: "Contour"
-image: /img/instruments/videomancer/contour/contour_hero.png
+image: /img/instruments/videomancer/contour/contour_hero_s1.png
 description: "A topographic map turns continuous terrain into a set of discrete elevation lines."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import contour_hero from '/img/instruments/videomancer/contour/contour_hero.png';
-import contour_control_panel from '/img/instruments/videomancer/contour/contour_control_panel.png';
-import contour_exercise1_result from '/img/instruments/videomancer/contour/contour_exercise1_result.png';
-import contour_exercise2_result from '/img/instruments/videomancer/contour/contour_exercise2_result.png';
-import contour_exercise3_result from '/img/instruments/videomancer/contour/contour_exercise3_result.png';
-import contour_source1_kodim02 from '/img/instruments/videomancer/contour/contour_source1_kodim02.png';
-import contour_source2_kodim07 from '/img/instruments/videomancer/contour/contour_source2_kodim07.png';
-import contour_source3_kodim01_bw from '/img/instruments/videomancer/contour/contour_source3_kodim01_bw.png';
+import contour_source1_field from '/img/instruments/videomancer/contour/contour_source1_field.png';
+import contour_source2_ballerina from '/img/instruments/videomancer/contour/contour_source2_ballerina.png';
+import contour_source3_turtle from '/img/instruments/videomancer/contour/contour_source3_turtle.png';
+import contour_source4_pattern from '/img/instruments/videomancer/contour/contour_source4_pattern.png';
+import contour_source5_boy from '/img/instruments/videomancer/contour/contour_source5_boy.png';
+import contour_source6_berries from '/img/instruments/videomancer/contour/contour_source6_berries.png';
+import contour_hero_s1 from '/img/instruments/videomancer/contour/contour_hero_s1.png';
+import contour_hero_s2 from '/img/instruments/videomancer/contour/contour_hero_s2.png';
+import contour_hero_s3 from '/img/instruments/videomancer/contour/contour_hero_s3.png';
+import contour_hero_s4 from '/img/instruments/videomancer/contour/contour_hero_s4.png';
+import contour_hero_s5 from '/img/instruments/videomancer/contour/contour_hero_s5.png';
+import contour_hero_s6 from '/img/instruments/videomancer/contour/contour_hero_s6.png';
+import contour_ex1_s1 from '/img/instruments/videomancer/contour/contour_ex1_s1.png';
+import contour_ex1_s2 from '/img/instruments/videomancer/contour/contour_ex1_s2.png';
+import contour_ex1_s3 from '/img/instruments/videomancer/contour/contour_ex1_s3.png';
+import contour_ex1_s4 from '/img/instruments/videomancer/contour/contour_ex1_s4.png';
+import contour_ex1_s5 from '/img/instruments/videomancer/contour/contour_ex1_s5.png';
+import contour_ex1_s6 from '/img/instruments/videomancer/contour/contour_ex1_s6.png';
+import contour_ex2_s1 from '/img/instruments/videomancer/contour/contour_ex2_s1.png';
+import contour_ex2_s2 from '/img/instruments/videomancer/contour/contour_ex2_s2.png';
+import contour_ex2_s3 from '/img/instruments/videomancer/contour/contour_ex2_s3.png';
+import contour_ex2_s4 from '/img/instruments/videomancer/contour/contour_ex2_s4.png';
+import contour_ex2_s5 from '/img/instruments/videomancer/contour/contour_ex2_s5.png';
+import contour_ex2_s6 from '/img/instruments/videomancer/contour/contour_ex2_s6.png';
+import contour_ex3_s1 from '/img/instruments/videomancer/contour/contour_ex3_s1.png';
+import contour_ex3_s2 from '/img/instruments/videomancer/contour/contour_ex3_s2.png';
+import contour_ex3_s3 from '/img/instruments/videomancer/contour/contour_ex3_s3.png';
+import contour_ex3_s4 from '/img/instruments/videomancer/contour/contour_ex3_s4.png';
+import contour_ex3_s5 from '/img/instruments/videomancer/contour/contour_ex3_s5.png';
+import contour_ex3_s6 from '/img/instruments/videomancer/contour/contour_ex3_s6.png';
 
 # Contour
 
@@ -23,9 +45,12 @@ import contour_source3_kodim01_bw from '/img/instruments/videomancer/contour/con
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: contour_source1_kodim02, after: contour_hero },
-    { label: "Kodim07", before: contour_source2_kodim07, after: contour_hero },
-    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_hero },
+    { label: "Field", before: contour_source1_field, after: contour_hero_s1 },
+    { label: "Ballerina", before: contour_source2_ballerina, after: contour_hero_s2 },
+    { label: "Turtle", before: contour_source3_turtle, after: contour_hero_s3 },
+    { label: "Pattern", before: contour_source4_pattern, after: contour_hero_s4 },
+    { label: "Boy", before: contour_source5_boy, after: contour_hero_s5 },
+    { label: "Berries", before: contour_source6_berries, after: contour_hero_s6 },
   ]}
 />
 *Contour rendering iso-luminance contour lines across a landscape, transforming video into a topographic elevation map.*
@@ -110,8 +135,6 @@ The critical interaction is between quantization and neighbor comparison. The In
 
 ## Parameter Reference
 
-<img src={contour_control_panel} alt="Videomancer front panel with Contour loaded"/>
-*Videomancer's front panel with Contour active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -216,9 +239,12 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise1_result },
-    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise1_result },
-    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise1_result },
+    { label: "Field", before: contour_source1_field, after: contour_ex1_s1 },
+    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex1_s2 },
+    { label: "Turtle", before: contour_source3_turtle, after: contour_ex1_s3 },
+    { label: "Pattern", before: contour_source4_pattern, after: contour_ex1_s4 },
+    { label: "Boy", before: contour_source5_boy, after: contour_ex1_s5 },
+    { label: "Berries", before: contour_source6_berries, after: contour_ex1_s6 },
   ]}
 />
 *Basic Topographic Map — simulated result across source images.*
@@ -242,9 +268,12 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise2_result },
-    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise2_result },
-    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise2_result },
+    { label: "Field", before: contour_source1_field, after: contour_ex2_s1 },
+    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex2_s2 },
+    { label: "Turtle", before: contour_source3_turtle, after: contour_ex2_s3 },
+    { label: "Pattern", before: contour_source4_pattern, after: contour_ex2_s4 },
+    { label: "Boy", before: contour_source5_boy, after: contour_ex2_s5 },
+    { label: "Berries", before: contour_source6_berries, after: contour_ex2_s6 },
   ]}
 />
 *Color Terrain Overlay — simulated result across source images.*
@@ -268,9 +297,12 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim02", before: contour_source1_kodim02, after: contour_exercise3_result },
-    { label: "Kodim07", before: contour_source2_kodim07, after: contour_exercise3_result },
-    { label: "Kodim01 B&W", before: contour_source3_kodim01_bw, after: contour_exercise3_result },
+    { label: "Field", before: contour_source1_field, after: contour_ex3_s1 },
+    { label: "Ballerina", before: contour_source2_ballerina, after: contour_ex3_s2 },
+    { label: "Turtle", before: contour_source3_turtle, after: contour_ex3_s3 },
+    { label: "Pattern", before: contour_source4_pattern, after: contour_ex3_s4 },
+    { label: "Boy", before: contour_source5_boy, after: contour_ex3_s5 },
+    { label: "Berries", before: contour_source6_berries, after: contour_ex3_s6 },
   ]}
 />
 *Dense Contour Texture — simulated result across source images.*

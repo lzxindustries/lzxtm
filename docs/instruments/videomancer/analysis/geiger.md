@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 120
+sidebar_position: 125
 slug: /instruments/videomancer/geiger
 title: "Geiger"
-image: /img/instruments/videomancer/geiger/geiger_hero.png
+image: /img/instruments/videomancer/geiger/geiger_hero_s1.png
 description: "A Geiger counter measures invisible radiation by converting particle impacts into audible clicks and visual needle deflections."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import geiger_hero from '/img/instruments/videomancer/geiger/geiger_hero.png';
-import geiger_control_panel from '/img/instruments/videomancer/geiger/geiger_control_panel.png';
-import geiger_exercise1_result from '/img/instruments/videomancer/geiger/geiger_exercise1_result.png';
-import geiger_exercise2_result from '/img/instruments/videomancer/geiger/geiger_exercise2_result.png';
-import geiger_exercise3_result from '/img/instruments/videomancer/geiger/geiger_exercise3_result.png';
-import geiger_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/geiger/geiger_source1_grayscale_ramp_h_1920x1080.png';
-import geiger_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/geiger/geiger_source2_grayscale_ramp_v_1920x1080.png';
-import geiger_source3_step_wedge_21level_512 from '/img/instruments/videomancer/geiger/geiger_source3_step_wedge_21level_512.png';
+import geiger_source1_dog from '/img/instruments/videomancer/geiger/geiger_source1_dog.png';
+import geiger_source2_boat from '/img/instruments/videomancer/geiger/geiger_source2_boat.png';
+import geiger_source3_elephant from '/img/instruments/videomancer/geiger/geiger_source3_elephant.png';
+import geiger_source4_pattern from '/img/instruments/videomancer/geiger/geiger_source4_pattern.png';
+import geiger_source5_boy from '/img/instruments/videomancer/geiger/geiger_source5_boy.png';
+import geiger_source6_wood from '/img/instruments/videomancer/geiger/geiger_source6_wood.png';
+import geiger_hero_s1 from '/img/instruments/videomancer/geiger/geiger_hero_s1.png';
+import geiger_hero_s2 from '/img/instruments/videomancer/geiger/geiger_hero_s2.png';
+import geiger_hero_s3 from '/img/instruments/videomancer/geiger/geiger_hero_s3.png';
+import geiger_hero_s4 from '/img/instruments/videomancer/geiger/geiger_hero_s4.png';
+import geiger_hero_s5 from '/img/instruments/videomancer/geiger/geiger_hero_s5.png';
+import geiger_hero_s6 from '/img/instruments/videomancer/geiger/geiger_hero_s6.png';
+import geiger_ex1_s1 from '/img/instruments/videomancer/geiger/geiger_ex1_s1.png';
+import geiger_ex1_s2 from '/img/instruments/videomancer/geiger/geiger_ex1_s2.png';
+import geiger_ex1_s3 from '/img/instruments/videomancer/geiger/geiger_ex1_s3.png';
+import geiger_ex1_s4 from '/img/instruments/videomancer/geiger/geiger_ex1_s4.png';
+import geiger_ex1_s5 from '/img/instruments/videomancer/geiger/geiger_ex1_s5.png';
+import geiger_ex1_s6 from '/img/instruments/videomancer/geiger/geiger_ex1_s6.png';
+import geiger_ex2_s1 from '/img/instruments/videomancer/geiger/geiger_ex2_s1.png';
+import geiger_ex2_s2 from '/img/instruments/videomancer/geiger/geiger_ex2_s2.png';
+import geiger_ex2_s3 from '/img/instruments/videomancer/geiger/geiger_ex2_s3.png';
+import geiger_ex2_s4 from '/img/instruments/videomancer/geiger/geiger_ex2_s4.png';
+import geiger_ex2_s5 from '/img/instruments/videomancer/geiger/geiger_ex2_s5.png';
+import geiger_ex2_s6 from '/img/instruments/videomancer/geiger/geiger_ex2_s6.png';
+import geiger_ex3_s1 from '/img/instruments/videomancer/geiger/geiger_ex3_s1.png';
+import geiger_ex3_s2 from '/img/instruments/videomancer/geiger/geiger_ex3_s2.png';
+import geiger_ex3_s3 from '/img/instruments/videomancer/geiger/geiger_ex3_s3.png';
+import geiger_ex3_s4 from '/img/instruments/videomancer/geiger/geiger_ex3_s4.png';
+import geiger_ex3_s5 from '/img/instruments/videomancer/geiger/geiger_ex3_s5.png';
+import geiger_ex3_s6 from '/img/instruments/videomancer/geiger/geiger_ex3_s6.png';
 
 # Geiger
 
@@ -23,9 +45,12 @@ import geiger_source3_step_wedge_21level_512 from '/img/instruments/videomancer/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_hero },
-    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_hero },
-    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_hero },
+    { label: "Dog", before: geiger_source1_dog, after: geiger_hero_s1 },
+    { label: "Boat", before: geiger_source2_boat, after: geiger_hero_s2 },
+    { label: "Elephant", before: geiger_source3_elephant, after: geiger_hero_s3 },
+    { label: "Pattern", before: geiger_source4_pattern, after: geiger_hero_s4 },
+    { label: "Boy", before: geiger_source5_boy, after: geiger_hero_s5 },
+    { label: "Wood", before: geiger_source6_wood, after: geiger_hero_s6 },
   ]}
 />
 *Geiger detecting luminance events across a video signal, scattering stochastic particle flashes over the source with a running activity meter.*
@@ -113,8 +138,6 @@ The IIR decay in Stage 3 operates on a single register (`s_iir_y`) rather than a
 
 ## Parameter Reference
 
-<img src={geiger_control_panel} alt="Videomancer front panel with Geiger loaded"/>
-*Videomancer's front panel with Geiger active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -219,9 +242,12 @@ These exercises progress from basic radiation detection to composite visualizati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise1_result },
-    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise1_result },
-    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise1_result },
+    { label: "Dog", before: geiger_source1_dog, after: geiger_ex1_s1 },
+    { label: "Boat", before: geiger_source2_boat, after: geiger_ex1_s2 },
+    { label: "Elephant", before: geiger_source3_elephant, after: geiger_ex1_s3 },
+    { label: "Pattern", before: geiger_source4_pattern, after: geiger_ex1_s4 },
+    { label: "Boy", before: geiger_source5_boy, after: geiger_ex1_s5 },
+    { label: "Wood", before: geiger_source6_wood, after: geiger_ex1_s6 },
   ]}
 />
 *Radiation Mapping — simulated result across source images.*
@@ -244,9 +270,12 @@ These exercises progress from basic radiation detection to composite visualizati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise2_result },
-    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise2_result },
-    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise2_result },
+    { label: "Dog", before: geiger_source1_dog, after: geiger_ex2_s1 },
+    { label: "Boat", before: geiger_source2_boat, after: geiger_ex2_s2 },
+    { label: "Elephant", before: geiger_source3_elephant, after: geiger_ex2_s3 },
+    { label: "Pattern", before: geiger_source4_pattern, after: geiger_ex2_s4 },
+    { label: "Boy", before: geiger_source5_boy, after: geiger_ex2_s5 },
+    { label: "Wood", before: geiger_source6_wood, after: geiger_ex2_s6 },
   ]}
 />
 *Phosphor Color and Flash Modes — simulated result across source images.*
@@ -269,9 +298,12 @@ These exercises progress from basic radiation detection to composite visualizati
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: geiger_source1_grayscale_ramp_h_1920x1080, after: geiger_exercise3_result },
-    { label: "Grayscale Ramp V", before: geiger_source2_grayscale_ramp_v_1920x1080, after: geiger_exercise3_result },
-    { label: "Step Wedge 21level", before: geiger_source3_step_wedge_21level_512, after: geiger_exercise3_result },
+    { label: "Dog", before: geiger_source1_dog, after: geiger_ex3_s1 },
+    { label: "Boat", before: geiger_source2_boat, after: geiger_ex3_s2 },
+    { label: "Elephant", before: geiger_source3_elephant, after: geiger_ex3_s3 },
+    { label: "Pattern", before: geiger_source4_pattern, after: geiger_ex3_s4 },
+    { label: "Boy", before: geiger_source5_boy, after: geiger_ex3_s5 },
+    { label: "Wood", before: geiger_source6_wood, after: geiger_ex3_s6 },
   ]}
 />
 *Analytical Overlay with Meter — simulated result across source images.*

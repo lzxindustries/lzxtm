@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 271
+sidebar_position: 283
 slug: /instruments/videomancer/stereogram
 title: "Stereogram"
 image: /img/instruments/videomancer/stereogram/stereogram_hero.png

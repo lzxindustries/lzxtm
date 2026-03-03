@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 260
+sidebar_position: 272
 slug: /instruments/videomancer/slitscan
 title: "Slit Scan"
 image: /img/instruments/videomancer/slitscan/slitscan_hero.png

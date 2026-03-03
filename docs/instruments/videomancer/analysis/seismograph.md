@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 248
+sidebar_position: 260
 slug: /instruments/videomancer/seismograph
 title: "Seismograph"
-image: /img/instruments/videomancer/seismograph/seismograph_hero.png
+image: /img/instruments/videomancer/seismograph/seismograph_hero_s1.png
 description: "Before digital oscilloscopes and computer displays, scientific instruments recorded data by dragging an inked pen across a moving strip of paper."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import seismograph_hero from '/img/instruments/videomancer/seismograph/seismograph_hero.png';
-import seismograph_control_panel from '/img/instruments/videomancer/seismograph/seismograph_control_panel.png';
-import seismograph_exercise1_result from '/img/instruments/videomancer/seismograph/seismograph_exercise1_result.png';
-import seismograph_exercise2_result from '/img/instruments/videomancer/seismograph/seismograph_exercise2_result.png';
-import seismograph_exercise3_result from '/img/instruments/videomancer/seismograph/seismograph_exercise3_result.png';
-import seismograph_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source1_grayscale_ramp_h_1920x1080.png';
-import seismograph_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/seismograph/seismograph_source2_grayscale_ramp_v_1920x1080.png';
-import seismograph_source3_step_wedge_21level_512 from '/img/instruments/videomancer/seismograph/seismograph_source3_step_wedge_21level_512.png';
+import seismograph_source1_runner from '/img/instruments/videomancer/seismograph/seismograph_source1_runner.png';
+import seismograph_source2_ballerina from '/img/instruments/videomancer/seismograph/seismograph_source2_ballerina.png';
+import seismograph_source3_elephant from '/img/instruments/videomancer/seismograph/seismograph_source3_elephant.png';
+import seismograph_source4_pattern from '/img/instruments/videomancer/seismograph/seismograph_source4_pattern.png';
+import seismograph_source5_woman from '/img/instruments/videomancer/seismograph/seismograph_source5_woman.png';
+import seismograph_source6_wood from '/img/instruments/videomancer/seismograph/seismograph_source6_wood.png';
+import seismograph_hero_s1 from '/img/instruments/videomancer/seismograph/seismograph_hero_s1.png';
+import seismograph_hero_s2 from '/img/instruments/videomancer/seismograph/seismograph_hero_s2.png';
+import seismograph_hero_s3 from '/img/instruments/videomancer/seismograph/seismograph_hero_s3.png';
+import seismograph_hero_s4 from '/img/instruments/videomancer/seismograph/seismograph_hero_s4.png';
+import seismograph_hero_s5 from '/img/instruments/videomancer/seismograph/seismograph_hero_s5.png';
+import seismograph_hero_s6 from '/img/instruments/videomancer/seismograph/seismograph_hero_s6.png';
+import seismograph_ex1_s1 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s1.png';
+import seismograph_ex1_s2 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s2.png';
+import seismograph_ex1_s3 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s3.png';
+import seismograph_ex1_s4 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s4.png';
+import seismograph_ex1_s5 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s5.png';
+import seismograph_ex1_s6 from '/img/instruments/videomancer/seismograph/seismograph_ex1_s6.png';
+import seismograph_ex2_s1 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s1.png';
+import seismograph_ex2_s2 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s2.png';
+import seismograph_ex2_s3 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s3.png';
+import seismograph_ex2_s4 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s4.png';
+import seismograph_ex2_s5 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s5.png';
+import seismograph_ex2_s6 from '/img/instruments/videomancer/seismograph/seismograph_ex2_s6.png';
+import seismograph_ex3_s1 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s1.png';
+import seismograph_ex3_s2 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s2.png';
+import seismograph_ex3_s3 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s3.png';
+import seismograph_ex3_s4 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s4.png';
+import seismograph_ex3_s5 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s5.png';
+import seismograph_ex3_s6 from '/img/instruments/videomancer/seismograph/seismograph_ex3_s6.png';
 
 # Seismograph
 
@@ -23,9 +45,12 @@ import seismograph_source3_step_wedge_21level_512 from '/img/instruments/videoma
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_hero },
-    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_hero },
-    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_hero },
+    { label: "Runner", before: seismograph_source1_runner, after: seismograph_hero_s1 },
+    { label: "Ballerina", before: seismograph_source2_ballerina, after: seismograph_hero_s2 },
+    { label: "Elephant", before: seismograph_source3_elephant, after: seismograph_hero_s3 },
+    { label: "Pattern", before: seismograph_source4_pattern, after: seismograph_hero_s4 },
+    { label: "Woman", before: seismograph_source5_woman, after: seismograph_hero_s5 },
+    { label: "Wood", before: seismograph_source6_wood, after: seismograph_hero_s6 },
   ]}
 />
 *Seismograph rendering live video luminance as multi-channel pen traces on a scrolling chart recorder with persistence and fill-under.*
@@ -115,8 +140,6 @@ The critical design feature is the **shift-based band computation** in stage 2. 
 
 ## Parameter Reference
 
-<img src={seismograph_control_panel} alt="Videomancer front panel with Seismograph loaded"/>
-*Videomancer's front panel with Seismograph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise1_result },
-    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise1_result },
-    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise1_result },
+    { label: "Runner", before: seismograph_source1_runner, after: seismograph_ex1_s1 },
+    { label: "Ballerina", before: seismograph_source2_ballerina, after: seismograph_ex1_s2 },
+    { label: "Elephant", before: seismograph_source3_elephant, after: seismograph_ex1_s3 },
+    { label: "Pattern", before: seismograph_source4_pattern, after: seismograph_ex1_s4 },
+    { label: "Woman", before: seismograph_source5_woman, after: seismograph_ex1_s5 },
+    { label: "Wood", before: seismograph_source6_wood, after: seismograph_ex1_s6 },
   ]}
 />
 *Two-Channel Waveform — simulated result across source images.*
@@ -245,9 +271,12 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise2_result },
-    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise2_result },
-    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise2_result },
+    { label: "Runner", before: seismograph_source1_runner, after: seismograph_ex2_s1 },
+    { label: "Ballerina", before: seismograph_source2_ballerina, after: seismograph_ex2_s2 },
+    { label: "Elephant", before: seismograph_source3_elephant, after: seismograph_ex2_s3 },
+    { label: "Pattern", before: seismograph_source4_pattern, after: seismograph_ex2_s4 },
+    { label: "Woman", before: seismograph_source5_woman, after: seismograph_ex2_s5 },
+    { label: "Wood", before: seismograph_source6_wood, after: seismograph_ex2_s6 },
   ]}
 />
 *Multi-Channel Area Chart — simulated result across source images.*
@@ -271,9 +300,12 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: seismograph_source1_grayscale_ramp_h_1920x1080, after: seismograph_exercise3_result },
-    { label: "Grayscale Ramp V", before: seismograph_source2_grayscale_ramp_v_1920x1080, after: seismograph_exercise3_result },
-    { label: "Step Wedge 21level", before: seismograph_source3_step_wedge_21level_512, after: seismograph_exercise3_result },
+    { label: "Runner", before: seismograph_source1_runner, after: seismograph_ex3_s1 },
+    { label: "Ballerina", before: seismograph_source2_ballerina, after: seismograph_ex3_s2 },
+    { label: "Elephant", before: seismograph_source3_elephant, after: seismograph_ex3_s3 },
+    { label: "Pattern", before: seismograph_source4_pattern, after: seismograph_ex3_s4 },
+    { label: "Woman", before: seismograph_source5_woman, after: seismograph_ex3_s5 },
+    { label: "Wood", before: seismograph_source6_wood, after: seismograph_ex3_s6 },
   ]}
 />
 *Oscilloscope Display — simulated result across source images.*

@@ -3,19 +3,41 @@ draft: true
 sidebar_position: 8
 slug: /instruments/videomancer/antic
 title: "Antic"
-image: /img/instruments/videomancer/antic/antic_hero.png
+image: /img/instruments/videomancer/antic/antic_hero_s1.png
 description: "Antic recreates the distinctive display modes of the Atari 8-bit computer's GTIA (George's Television Interface Adapter) graphics chip."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import antic_hero from '/img/instruments/videomancer/antic/antic_hero.png';
-import antic_control_panel from '/img/instruments/videomancer/antic/antic_control_panel.png';
-import antic_exercise1_result from '/img/instruments/videomancer/antic/antic_exercise1_result.png';
-import antic_exercise2_result from '/img/instruments/videomancer/antic/antic_exercise2_result.png';
-import antic_exercise3_result from '/img/instruments/videomancer/antic/antic_exercise3_result.png';
-import antic_source1_kodim15 from '/img/instruments/videomancer/antic/antic_source1_kodim15.png';
-import antic_source2_kodim03 from '/img/instruments/videomancer/antic/antic_source2_kodim03.png';
-import antic_source3_kodim15_bw from '/img/instruments/videomancer/antic/antic_source3_kodim15_bw.png';
+import antic_source1_skull from '/img/instruments/videomancer/antic/antic_source1_skull.png';
+import antic_source2_sunset from '/img/instruments/videomancer/antic/antic_source2_sunset.png';
+import antic_source3_collage from '/img/instruments/videomancer/antic/antic_source3_collage.png';
+import antic_source4_pattern from '/img/instruments/videomancer/antic/antic_source4_pattern.png';
+import antic_source5_woman from '/img/instruments/videomancer/antic/antic_source5_woman.png';
+import antic_source6_paint from '/img/instruments/videomancer/antic/antic_source6_paint.png';
+import antic_hero_s1 from '/img/instruments/videomancer/antic/antic_hero_s1.png';
+import antic_hero_s2 from '/img/instruments/videomancer/antic/antic_hero_s2.png';
+import antic_hero_s3 from '/img/instruments/videomancer/antic/antic_hero_s3.png';
+import antic_hero_s4 from '/img/instruments/videomancer/antic/antic_hero_s4.png';
+import antic_hero_s5 from '/img/instruments/videomancer/antic/antic_hero_s5.png';
+import antic_hero_s6 from '/img/instruments/videomancer/antic/antic_hero_s6.png';
+import antic_ex1_s1 from '/img/instruments/videomancer/antic/antic_ex1_s1.png';
+import antic_ex1_s2 from '/img/instruments/videomancer/antic/antic_ex1_s2.png';
+import antic_ex1_s3 from '/img/instruments/videomancer/antic/antic_ex1_s3.png';
+import antic_ex1_s4 from '/img/instruments/videomancer/antic/antic_ex1_s4.png';
+import antic_ex1_s5 from '/img/instruments/videomancer/antic/antic_ex1_s5.png';
+import antic_ex1_s6 from '/img/instruments/videomancer/antic/antic_ex1_s6.png';
+import antic_ex2_s1 from '/img/instruments/videomancer/antic/antic_ex2_s1.png';
+import antic_ex2_s2 from '/img/instruments/videomancer/antic/antic_ex2_s2.png';
+import antic_ex2_s3 from '/img/instruments/videomancer/antic/antic_ex2_s3.png';
+import antic_ex2_s4 from '/img/instruments/videomancer/antic/antic_ex2_s4.png';
+import antic_ex2_s5 from '/img/instruments/videomancer/antic/antic_ex2_s5.png';
+import antic_ex2_s6 from '/img/instruments/videomancer/antic/antic_ex2_s6.png';
+import antic_ex3_s1 from '/img/instruments/videomancer/antic/antic_ex3_s1.png';
+import antic_ex3_s2 from '/img/instruments/videomancer/antic/antic_ex3_s2.png';
+import antic_ex3_s3 from '/img/instruments/videomancer/antic/antic_ex3_s3.png';
+import antic_ex3_s4 from '/img/instruments/videomancer/antic/antic_ex3_s4.png';
+import antic_ex3_s5 from '/img/instruments/videomancer/antic/antic_ex3_s5.png';
+import antic_ex3_s6 from '/img/instruments/videomancer/antic/antic_ex3_s6.png';
 
 # Antic
 
@@ -23,9 +45,12 @@ import antic_source3_kodim15_bw from '/img/instruments/videomancer/antic/antic_s
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: antic_source1_kodim15, after: antic_hero },
-    { label: "Kodim03", before: antic_source2_kodim03, after: antic_hero },
-    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_hero },
+    { label: "Skull", before: antic_source1_skull, after: antic_hero_s1 },
+    { label: "Sunset", before: antic_source2_sunset, after: antic_hero_s2 },
+    { label: "Collage", before: antic_source3_collage, after: antic_hero_s3 },
+    { label: "Pattern", before: antic_source4_pattern, after: antic_hero_s4 },
+    { label: "Woman", before: antic_source5_woman, after: antic_hero_s5 },
+    { label: "Paint", before: antic_source6_paint, after: antic_hero_s6 },
   ]}
 />
 *Antic rendering a DLI rainbow gradient in Mode 9 over a portrait source — the per-scanline hue cycling produces the signature Atari raster-bar effect with 16-level luminance quantization.*
@@ -124,9 +149,6 @@ The saturation stage operates on UV channels after the GTIA mode processing. It 
 ---
 
 ## Parameter Reference
-
-<img src={antic_control_panel} alt="Videomancer front panel with Antic loaded"/>
-*Videomancer's front panel with Antic active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -229,9 +251,12 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise1_result },
-    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise1_result },
-    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise1_result },
+    { label: "Skull", before: antic_source1_skull, after: antic_ex1_s1 },
+    { label: "Sunset", before: antic_source2_sunset, after: antic_ex1_s2 },
+    { label: "Collage", before: antic_source3_collage, after: antic_ex1_s3 },
+    { label: "Pattern", before: antic_source4_pattern, after: antic_ex1_s4 },
+    { label: "Woman", before: antic_source5_woman, after: antic_ex1_s5 },
+    { label: "Paint", before: antic_source6_paint, after: antic_ex1_s6 },
   ]}
 />
 *Mode 9 Monochrome Tinting — simulated result across source images.*
@@ -255,9 +280,12 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise2_result },
-    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise2_result },
-    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise2_result },
+    { label: "Skull", before: antic_source1_skull, after: antic_ex2_s1 },
+    { label: "Sunset", before: antic_source2_sunset, after: antic_ex2_s2 },
+    { label: "Collage", before: antic_source3_collage, after: antic_ex2_s3 },
+    { label: "Pattern", before: antic_source4_pattern, after: antic_ex2_s4 },
+    { label: "Woman", before: antic_source5_woman, after: antic_ex2_s5 },
+    { label: "Paint", before: antic_source6_paint, after: antic_ex2_s6 },
   ]}
 />
 *DLI Rainbow Gradient — simulated result across source images.*
@@ -281,9 +309,12 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: antic_source1_kodim15, after: antic_exercise3_result },
-    { label: "Kodim03", before: antic_source2_kodim03, after: antic_exercise3_result },
-    { label: "Kodim15 B&W", before: antic_source3_kodim15_bw, after: antic_exercise3_result },
+    { label: "Skull", before: antic_source1_skull, after: antic_ex3_s1 },
+    { label: "Sunset", before: antic_source2_sunset, after: antic_ex3_s2 },
+    { label: "Collage", before: antic_source3_collage, after: antic_ex3_s3 },
+    { label: "Pattern", before: antic_source4_pattern, after: antic_ex3_s4 },
+    { label: "Woman", before: antic_source5_woman, after: antic_ex3_s5 },
+    { label: "Paint", before: antic_source6_paint, after: antic_ex3_s6 },
   ]}
 />
 *Mode 10 Illustrated Palette with Artifact Fringe — simulated result across source images.*

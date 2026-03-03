@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 157
+sidebar_position: 165
 slug: /instruments/videomancer/lattice
 title: "Lattice"
 image: /img/instruments/videomancer/lattice/lattice_hero.png

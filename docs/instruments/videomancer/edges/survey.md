@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 277
+sidebar_position: 290
 slug: /instruments/videomancer/survey
 title: "Survey"
 image: /img/instruments/videomancer/survey/survey_hero.png

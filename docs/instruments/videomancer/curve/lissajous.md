@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 165
+sidebar_position: 173
 slug: /instruments/videomancer/lissajous
 title: "Lissajous"
 image: /img/instruments/videomancer/lissajous/lissajous_hero.png

@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 314
+sidebar_position: 330
 slug: /instruments/videomancer/wobbulator
 title: "Wobbulator"
 image: /img/instruments/videomancer/wobbulator/wobbulator_hero.png

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 168
+sidebar_position: 176
 slug: /instruments/videomancer/loadstar
 title: "Loadstar"
-image: /img/instruments/videomancer/loadstar/loadstar_hero.png
+image: /img/instruments/videomancer/loadstar/loadstar_hero_s1.png
 description: "There was a ritual shared by an entire generation of home computer users."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import loadstar_hero from '/img/instruments/videomancer/loadstar/loadstar_hero.png';
-import loadstar_control_panel from '/img/instruments/videomancer/loadstar/loadstar_control_panel.png';
-import loadstar_exercise1_result from '/img/instruments/videomancer/loadstar/loadstar_exercise1_result.png';
-import loadstar_exercise2_result from '/img/instruments/videomancer/loadstar/loadstar_exercise2_result.png';
-import loadstar_exercise3_result from '/img/instruments/videomancer/loadstar/loadstar_exercise3_result.png';
-import loadstar_source1_kodim15 from '/img/instruments/videomancer/loadstar/loadstar_source1_kodim15.png';
-import loadstar_source2_kodim03 from '/img/instruments/videomancer/loadstar/loadstar_source2_kodim03.png';
-import loadstar_source3_kodim15_bw from '/img/instruments/videomancer/loadstar/loadstar_source3_kodim15_bw.png';
+import loadstar_source1_fruit from '/img/instruments/videomancer/loadstar/loadstar_source1_fruit.png';
+import loadstar_source2_boat from '/img/instruments/videomancer/loadstar/loadstar_source2_boat.png';
+import loadstar_source3_clouds from '/img/instruments/videomancer/loadstar/loadstar_source3_clouds.png';
+import loadstar_source4_pattern from '/img/instruments/videomancer/loadstar/loadstar_source4_pattern.png';
+import loadstar_source5_man from '/img/instruments/videomancer/loadstar/loadstar_source5_man.png';
+import loadstar_source6_berries from '/img/instruments/videomancer/loadstar/loadstar_source6_berries.png';
+import loadstar_hero_s1 from '/img/instruments/videomancer/loadstar/loadstar_hero_s1.png';
+import loadstar_hero_s2 from '/img/instruments/videomancer/loadstar/loadstar_hero_s2.png';
+import loadstar_hero_s3 from '/img/instruments/videomancer/loadstar/loadstar_hero_s3.png';
+import loadstar_hero_s4 from '/img/instruments/videomancer/loadstar/loadstar_hero_s4.png';
+import loadstar_hero_s5 from '/img/instruments/videomancer/loadstar/loadstar_hero_s5.png';
+import loadstar_hero_s6 from '/img/instruments/videomancer/loadstar/loadstar_hero_s6.png';
+import loadstar_ex1_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s1.png';
+import loadstar_ex1_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s2.png';
+import loadstar_ex1_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s3.png';
+import loadstar_ex1_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s4.png';
+import loadstar_ex1_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s5.png';
+import loadstar_ex1_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex1_s6.png';
+import loadstar_ex2_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s1.png';
+import loadstar_ex2_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s2.png';
+import loadstar_ex2_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s3.png';
+import loadstar_ex2_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s4.png';
+import loadstar_ex2_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s5.png';
+import loadstar_ex2_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex2_s6.png';
+import loadstar_ex3_s1 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s1.png';
+import loadstar_ex3_s2 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s2.png';
+import loadstar_ex3_s3 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s3.png';
+import loadstar_ex3_s4 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s4.png';
+import loadstar_ex3_s5 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s5.png';
+import loadstar_ex3_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex3_s6.png';
 
 # Loadstar
 
@@ -23,9 +45,12 @@ import loadstar_source3_kodim15_bw from '/img/instruments/videomancer/loadstar/l
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_hero },
-    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_hero },
-    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_hero },
+    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_hero_s1 },
+    { label: "Boat", before: loadstar_source2_boat, after: loadstar_hero_s2 },
+    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_hero_s3 },
+    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_hero_s4 },
+    { label: "Man", before: loadstar_source5_man, after: loadstar_hero_s5 },
+    { label: "Berries", before: loadstar_source6_berries, after: loadstar_hero_s6 },
   ]}
 />
 *Loadstar applying animated border color cycling and attribute clash quantization to recreate the look of an 8-bit home computer loading screen.*
@@ -110,8 +135,6 @@ The pipeline does not instantiate a `video_timing_generator` entity. Instead, it
 
 ## Parameter Reference
 
-<img src={loadstar_control_panel} alt="Videomancer front panel with Loadstar loaded"/>
-*Videomancer's front panel with Loadstar active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -213,9 +236,12 @@ These exercises explore the program's active controls, progressing from simple b
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise1_result },
-    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise1_result },
-    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise1_result },
+    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex1_s1 },
+    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex1_s2 },
+    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex1_s3 },
+    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex1_s4 },
+    { label: "Man", before: loadstar_source5_man, after: loadstar_ex1_s5 },
+    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex1_s6 },
   ]}
 />
 *Tape Loading Border — simulated result across source images.*
@@ -237,9 +263,12 @@ These exercises explore the program's active controls, progressing from simple b
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise2_result },
-    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise2_result },
-    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise2_result },
+    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex2_s1 },
+    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex2_s2 },
+    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex2_s3 },
+    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex2_s4 },
+    { label: "Man", before: loadstar_source5_man, after: loadstar_ex2_s5 },
+    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex2_s6 },
   ]}
 />
 *Character Cell Mosaic — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises explore the program's active controls, progressing from simple b
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: loadstar_source1_kodim15, after: loadstar_exercise3_result },
-    { label: "Kodim03", before: loadstar_source2_kodim03, after: loadstar_exercise3_result },
-    { label: "Kodim15 B&W", before: loadstar_source3_kodim15_bw, after: loadstar_exercise3_result },
+    { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_ex3_s1 },
+    { label: "Boat", before: loadstar_source2_boat, after: loadstar_ex3_s2 },
+    { label: "Clouds", before: loadstar_source3_clouds, after: loadstar_ex3_s3 },
+    { label: "Pattern", before: loadstar_source4_pattern, after: loadstar_ex3_s4 },
+    { label: "Man", before: loadstar_source5_man, after: loadstar_ex3_s5 },
+    { label: "Berries", before: loadstar_source6_berries, after: loadstar_ex3_s6 },
   ]}
 />
 *Full 8-Bit Emulation — simulated result across source images.*

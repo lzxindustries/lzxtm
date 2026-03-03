@@ -1,24 +1,43 @@
 ---
 draft: false
-sidebar_position: 246
+sidebar_position: 258
 slug: /instruments/videomancer/scramble
 title: "Scramble"
-image: /img/instruments/videomancer/scramble/scramble_hero.png
+image: /img/instruments/videomancer/scramble/scramble_hero_s1.png
 description: "Analog pay-TV systems of the late 1980s and early 1990s scrambled their signals to prevent unauthorized viewing."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import scramble_hero from '/img/instruments/videomancer/scramble/scramble_hero.png';
-import scramble_control_panel from '/img/instruments/videomancer/scramble/scramble_control_panel.png';
-import scramble_exercise1_result from '/img/instruments/videomancer/scramble/scramble_exercise1_result.png';
-import scramble_exercise2_result from '/img/instruments/videomancer/scramble/scramble_exercise2_result.png';
-import scramble_exercise3_result from '/img/instruments/videomancer/scramble/scramble_exercise3_result.png';
-import scramble_source1_kodim04 from '/img/instruments/videomancer/scramble/scramble_source1_kodim04.png';
-import scramble_source1_kodim15 from '/img/instruments/videomancer/scramble/scramble_source1_kodim15.png';
-import scramble_source2_kodim01 from '/img/instruments/videomancer/scramble/scramble_source2_kodim01.png';
-import scramble_source2_kodim23 from '/img/instruments/videomancer/scramble/scramble_source2_kodim23.png';
-import scramble_source3_kodim01 from '/img/instruments/videomancer/scramble/scramble_source3_kodim01.png';
-import scramble_source3_stream_bridge_512 from '/img/instruments/videomancer/scramble/scramble_source3_stream_bridge_512.png';
+import scramble_source1_fruit from '/img/instruments/videomancer/scramble/scramble_source1_fruit.png';
+import scramble_source2_skull from '/img/instruments/videomancer/scramble/scramble_source2_skull.png';
+import scramble_source3_turtle from '/img/instruments/videomancer/scramble/scramble_source3_turtle.png';
+import scramble_source4_pattern from '/img/instruments/videomancer/scramble/scramble_source4_pattern.png';
+import scramble_source5_boy from '/img/instruments/videomancer/scramble/scramble_source5_boy.png';
+import scramble_source6_berries from '/img/instruments/videomancer/scramble/scramble_source6_berries.png';
+import scramble_hero_s1 from '/img/instruments/videomancer/scramble/scramble_hero_s1.png';
+import scramble_hero_s2 from '/img/instruments/videomancer/scramble/scramble_hero_s2.png';
+import scramble_hero_s3 from '/img/instruments/videomancer/scramble/scramble_hero_s3.png';
+import scramble_hero_s4 from '/img/instruments/videomancer/scramble/scramble_hero_s4.png';
+import scramble_hero_s5 from '/img/instruments/videomancer/scramble/scramble_hero_s5.png';
+import scramble_hero_s6 from '/img/instruments/videomancer/scramble/scramble_hero_s6.png';
+import scramble_ex1_s1 from '/img/instruments/videomancer/scramble/scramble_ex1_s1.png';
+import scramble_ex1_s2 from '/img/instruments/videomancer/scramble/scramble_ex1_s2.png';
+import scramble_ex1_s3 from '/img/instruments/videomancer/scramble/scramble_ex1_s3.png';
+import scramble_ex1_s4 from '/img/instruments/videomancer/scramble/scramble_ex1_s4.png';
+import scramble_ex1_s5 from '/img/instruments/videomancer/scramble/scramble_ex1_s5.png';
+import scramble_ex1_s6 from '/img/instruments/videomancer/scramble/scramble_ex1_s6.png';
+import scramble_ex2_s1 from '/img/instruments/videomancer/scramble/scramble_ex2_s1.png';
+import scramble_ex2_s2 from '/img/instruments/videomancer/scramble/scramble_ex2_s2.png';
+import scramble_ex2_s3 from '/img/instruments/videomancer/scramble/scramble_ex2_s3.png';
+import scramble_ex2_s4 from '/img/instruments/videomancer/scramble/scramble_ex2_s4.png';
+import scramble_ex2_s5 from '/img/instruments/videomancer/scramble/scramble_ex2_s5.png';
+import scramble_ex2_s6 from '/img/instruments/videomancer/scramble/scramble_ex2_s6.png';
+import scramble_ex3_s1 from '/img/instruments/videomancer/scramble/scramble_ex3_s1.png';
+import scramble_ex3_s2 from '/img/instruments/videomancer/scramble/scramble_ex3_s2.png';
+import scramble_ex3_s3 from '/img/instruments/videomancer/scramble/scramble_ex3_s3.png';
+import scramble_ex3_s4 from '/img/instruments/videomancer/scramble/scramble_ex3_s4.png';
+import scramble_ex3_s5 from '/img/instruments/videomancer/scramble/scramble_ex3_s5.png';
+import scramble_ex3_s6 from '/img/instruments/videomancer/scramble/scramble_ex3_s6.png';
 
 # Scramble
 
@@ -26,12 +45,12 @@ import scramble_source3_stream_bridge_512 from '/img/instruments/videomancer/scr
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_hero },
-    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_hero },
-    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_hero },
-    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_hero },
-    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_hero },
-    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_hero },
+    { label: "Fruit", before: scramble_source1_fruit, after: scramble_hero_s1 },
+    { label: "Skull", before: scramble_source2_skull, after: scramble_hero_s2 },
+    { label: "Turtle", before: scramble_source3_turtle, after: scramble_hero_s3 },
+    { label: "Pattern", before: scramble_source4_pattern, after: scramble_hero_s4 },
+    { label: "Boy", before: scramble_source5_boy, after: scramble_hero_s5 },
+    { label: "Berries", before: scramble_source6_berries, after: scramble_hero_s6 },
   ]}
 />
 *Scramble applying per-line cut-and-rotate shuffling with jitter and inversion zones to a portrait, recreating the look of a failing analog TV descrambler.*
@@ -107,8 +126,6 @@ Video inversion is applied *after* the line buffer read, meaning the inversion z
 
 ## Parameter Reference
 
-<img src={scramble_control_panel} alt="Videomancer front panel with Scramble loaded"/>
-*Videomancer's front panel with Scramble active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -212,12 +229,12 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise1_result },
-    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise1_result },
-    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise1_result },
-    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise1_result },
-    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise1_result },
-    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise1_result },
+    { label: "Fruit", before: scramble_source1_fruit, after: scramble_ex1_s1 },
+    { label: "Skull", before: scramble_source2_skull, after: scramble_ex1_s2 },
+    { label: "Turtle", before: scramble_source3_turtle, after: scramble_ex1_s3 },
+    { label: "Pattern", before: scramble_source4_pattern, after: scramble_ex1_s4 },
+    { label: "Boy", before: scramble_source5_boy, after: scramble_ex1_s5 },
+    { label: "Berries", before: scramble_source6_berries, after: scramble_ex1_s6 },
   ]}
 />
 *Basic Cut-and-Rotate — simulated result across source images.*
@@ -240,12 +257,12 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise2_result },
-    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise2_result },
-    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise2_result },
-    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise2_result },
-    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise2_result },
-    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise2_result },
+    { label: "Fruit", before: scramble_source1_fruit, after: scramble_ex2_s1 },
+    { label: "Skull", before: scramble_source2_skull, after: scramble_ex2_s2 },
+    { label: "Turtle", before: scramble_source3_turtle, after: scramble_ex2_s3 },
+    { label: "Pattern", before: scramble_source4_pattern, after: scramble_ex2_s4 },
+    { label: "Boy", before: scramble_source5_boy, after: scramble_ex2_s5 },
+    { label: "Berries", before: scramble_source6_berries, after: scramble_ex2_s6 },
   ]}
 />
 *Jitter and Inversion Artifacts — simulated result across source images.*
@@ -268,12 +285,12 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim04", before: scramble_source1_kodim04, after: scramble_exercise3_result },
-    { label: "Kodim15", before: scramble_source1_kodim15, after: scramble_exercise3_result },
-    { label: "Kodim01", before: scramble_source2_kodim01, after: scramble_exercise3_result },
-    { label: "Kodim23", before: scramble_source2_kodim23, after: scramble_exercise3_result },
-    { label: "Kodim01", before: scramble_source3_kodim01, after: scramble_exercise3_result },
-    { label: "Stream Bridge", before: scramble_source3_stream_bridge_512, after: scramble_exercise3_result },
+    { label: "Fruit", before: scramble_source1_fruit, after: scramble_ex3_s1 },
+    { label: "Skull", before: scramble_source2_skull, after: scramble_ex3_s2 },
+    { label: "Turtle", before: scramble_source3_turtle, after: scramble_ex3_s3 },
+    { label: "Pattern", before: scramble_source4_pattern, after: scramble_ex3_s4 },
+    { label: "Boy", before: scramble_source5_boy, after: scramble_ex3_s5 },
+    { label: "Berries", before: scramble_source6_berries, after: scramble_ex3_s6 },
   ]}
 />
 *Full Descrambler Failure — simulated result across source images.*

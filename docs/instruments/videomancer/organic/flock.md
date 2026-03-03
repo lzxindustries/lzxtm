@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 109
+sidebar_position: 114
 slug: /instruments/videomancer/flock
 title: "Flock"
 image: /img/instruments/videomancer/flock/flock_hero.png

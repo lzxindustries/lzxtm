@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 102
+sidebar_position: 106
 slug: /instruments/videomancer/fauxtress
 title: "Fauxtress"
 image: /img/instruments/videomancer/fauxtress/fauxtress_hero.png

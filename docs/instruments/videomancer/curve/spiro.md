@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 266
+sidebar_position: 278
 slug: /instruments/videomancer/spiro
 title: "Spiro"
 image: /img/instruments/videomancer/spiro/spiro_hero.png

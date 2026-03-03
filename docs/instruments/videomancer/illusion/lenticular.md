@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 160
+sidebar_position: 168
 slug: /instruments/videomancer/lenticular
 title: "Lenticular"
-image: /img/instruments/videomancer/lenticular/lenticular_hero.png
+image: /img/instruments/videomancer/lenticular/lenticular_hero_s1.png
 description: "Lenticular prints are those plastic-ridged cards that seem to shift or animate when you tilt them."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import lenticular_hero from '/img/instruments/videomancer/lenticular/lenticular_hero.png';
-import lenticular_control_panel from '/img/instruments/videomancer/lenticular/lenticular_control_panel.png';
-import lenticular_exercise1_result from '/img/instruments/videomancer/lenticular/lenticular_exercise1_result.png';
-import lenticular_exercise2_result from '/img/instruments/videomancer/lenticular/lenticular_exercise2_result.png';
-import lenticular_exercise3_result from '/img/instruments/videomancer/lenticular/lenticular_exercise3_result.png';
-import lenticular_source1_kodim01 from '/img/instruments/videomancer/lenticular/lenticular_source1_kodim01.png';
-import lenticular_source2_kodim02 from '/img/instruments/videomancer/lenticular/lenticular_source2_kodim02.png';
-import lenticular_source3_kodim01_bw from '/img/instruments/videomancer/lenticular/lenticular_source3_kodim01_bw.png';
+import lenticular_source1_runner from '/img/instruments/videomancer/lenticular/lenticular_source1_runner.png';
+import lenticular_source2_skull from '/img/instruments/videomancer/lenticular/lenticular_source2_skull.png';
+import lenticular_source3_elephant from '/img/instruments/videomancer/lenticular/lenticular_source3_elephant.png';
+import lenticular_source4_pattern from '/img/instruments/videomancer/lenticular/lenticular_source4_pattern.png';
+import lenticular_source5_boy from '/img/instruments/videomancer/lenticular/lenticular_source5_boy.png';
+import lenticular_source6_berries from '/img/instruments/videomancer/lenticular/lenticular_source6_berries.png';
+import lenticular_hero_s1 from '/img/instruments/videomancer/lenticular/lenticular_hero_s1.png';
+import lenticular_hero_s2 from '/img/instruments/videomancer/lenticular/lenticular_hero_s2.png';
+import lenticular_hero_s3 from '/img/instruments/videomancer/lenticular/lenticular_hero_s3.png';
+import lenticular_hero_s4 from '/img/instruments/videomancer/lenticular/lenticular_hero_s4.png';
+import lenticular_hero_s5 from '/img/instruments/videomancer/lenticular/lenticular_hero_s5.png';
+import lenticular_hero_s6 from '/img/instruments/videomancer/lenticular/lenticular_hero_s6.png';
+import lenticular_ex1_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s1.png';
+import lenticular_ex1_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s2.png';
+import lenticular_ex1_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s3.png';
+import lenticular_ex1_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s4.png';
+import lenticular_ex1_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s5.png';
+import lenticular_ex1_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex1_s6.png';
+import lenticular_ex2_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s1.png';
+import lenticular_ex2_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s2.png';
+import lenticular_ex2_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s3.png';
+import lenticular_ex2_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s4.png';
+import lenticular_ex2_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s5.png';
+import lenticular_ex2_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex2_s6.png';
+import lenticular_ex3_s1 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s1.png';
+import lenticular_ex3_s2 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s2.png';
+import lenticular_ex3_s3 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s3.png';
+import lenticular_ex3_s4 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s4.png';
+import lenticular_ex3_s5 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s5.png';
+import lenticular_ex3_s6 from '/img/instruments/videomancer/lenticular/lenticular_ex3_s6.png';
 
 # Lenticular
 
@@ -23,9 +45,12 @@ import lenticular_source3_kodim01_bw from '/img/instruments/videomancer/lenticul
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_hero },
-    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_hero },
-    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_hero },
+    { label: "Runner", before: lenticular_source1_runner, after: lenticular_hero_s1 },
+    { label: "Skull", before: lenticular_source2_skull, after: lenticular_hero_s2 },
+    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_hero_s3 },
+    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_hero_s4 },
+    { label: "Boy", before: lenticular_source5_boy, after: lenticular_hero_s5 },
+    { label: "Berries", before: lenticular_source6_berries, after: lenticular_hero_s6 },
   ]}
 />
 *Lenticular dividing a portrait into alternating shifted stripes, creating a shimmering parallax depth effect reminiscent of holographic trading cards.*
@@ -114,8 +139,6 @@ The shift register provides zero-latency random access to any of 64 preceding pi
 
 ## Parameter Reference
 
-<img src={lenticular_control_panel} alt="Videomancer front panel with Lenticular loaded"/>
-*Videomancer's front panel with Lenticular active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise1_result },
-    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise1_result },
-    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise1_result },
+    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex1_s1 },
+    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex1_s2 },
+    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex1_s3 },
+    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex1_s4 },
+    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex1_s5 },
+    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex1_s6 },
   ]}
 />
 *Holographic Shimmer — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise2_result },
-    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise2_result },
-    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise2_result },
+    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex2_s1 },
+    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex2_s2 },
+    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex2_s3 },
+    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex2_s4 },
+    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex2_s5 },
+    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex2_s6 },
   ]}
 />
 *Venetian Blind Split — simulated result across source images.*
@@ -275,9 +304,12 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: lenticular_source1_kodim01, after: lenticular_exercise3_result },
-    { label: "Kodim02", before: lenticular_source2_kodim02, after: lenticular_exercise3_result },
-    { label: "Kodim01 B&W", before: lenticular_source3_kodim01_bw, after: lenticular_exercise3_result },
+    { label: "Runner", before: lenticular_source1_runner, after: lenticular_ex3_s1 },
+    { label: "Skull", before: lenticular_source2_skull, after: lenticular_ex3_s2 },
+    { label: "Elephant", before: lenticular_source3_elephant, after: lenticular_ex3_s3 },
+    { label: "Pattern", before: lenticular_source4_pattern, after: lenticular_ex3_s4 },
+    { label: "Boy", before: lenticular_source5_boy, after: lenticular_ex3_s5 },
+    { label: "Berries", before: lenticular_source6_berries, after: lenticular_ex3_s6 },
   ]}
 />
 *Wiggle and Vertical Blur — simulated result across source images.*

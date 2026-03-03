@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 57
+sidebar_position: 60
 slug: /instruments/videomancer/concave
 title: "Concave"
-image: /img/instruments/videomancer/concave/concave_hero.png
+image: /img/instruments/videomancer/concave/concave_hero_s1.png
 description: "A concave mirror curves inward, gathering light toward a focal point."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import concave_hero from '/img/instruments/videomancer/concave/concave_hero.png';
-import concave_control_panel from '/img/instruments/videomancer/concave/concave_control_panel.png';
-import concave_exercise1_result from '/img/instruments/videomancer/concave/concave_exercise1_result.png';
-import concave_exercise2_result from '/img/instruments/videomancer/concave/concave_exercise2_result.png';
-import concave_exercise3_result from '/img/instruments/videomancer/concave/concave_exercise3_result.png';
-import concave_source1_kodim01 from '/img/instruments/videomancer/concave/concave_source1_kodim01.png';
-import concave_source2_kodim02 from '/img/instruments/videomancer/concave/concave_source2_kodim02.png';
-import concave_source3_kodim01_bw from '/img/instruments/videomancer/concave/concave_source3_kodim01_bw.png';
+import concave_source1_castle from '/img/instruments/videomancer/concave/concave_source1_castle.png';
+import concave_source2_field from '/img/instruments/videomancer/concave/concave_source2_field.png';
+import concave_source3_clouds from '/img/instruments/videomancer/concave/concave_source3_clouds.png';
+import concave_source4_pattern from '/img/instruments/videomancer/concave/concave_source4_pattern.png';
+import concave_source5_boy from '/img/instruments/videomancer/concave/concave_source5_boy.png';
+import concave_source6_berries from '/img/instruments/videomancer/concave/concave_source6_berries.png';
+import concave_hero_s1 from '/img/instruments/videomancer/concave/concave_hero_s1.png';
+import concave_hero_s2 from '/img/instruments/videomancer/concave/concave_hero_s2.png';
+import concave_hero_s3 from '/img/instruments/videomancer/concave/concave_hero_s3.png';
+import concave_hero_s4 from '/img/instruments/videomancer/concave/concave_hero_s4.png';
+import concave_hero_s5 from '/img/instruments/videomancer/concave/concave_hero_s5.png';
+import concave_hero_s6 from '/img/instruments/videomancer/concave/concave_hero_s6.png';
+import concave_ex1_s1 from '/img/instruments/videomancer/concave/concave_ex1_s1.png';
+import concave_ex1_s2 from '/img/instruments/videomancer/concave/concave_ex1_s2.png';
+import concave_ex1_s3 from '/img/instruments/videomancer/concave/concave_ex1_s3.png';
+import concave_ex1_s4 from '/img/instruments/videomancer/concave/concave_ex1_s4.png';
+import concave_ex1_s5 from '/img/instruments/videomancer/concave/concave_ex1_s5.png';
+import concave_ex1_s6 from '/img/instruments/videomancer/concave/concave_ex1_s6.png';
+import concave_ex2_s1 from '/img/instruments/videomancer/concave/concave_ex2_s1.png';
+import concave_ex2_s2 from '/img/instruments/videomancer/concave/concave_ex2_s2.png';
+import concave_ex2_s3 from '/img/instruments/videomancer/concave/concave_ex2_s3.png';
+import concave_ex2_s4 from '/img/instruments/videomancer/concave/concave_ex2_s4.png';
+import concave_ex2_s5 from '/img/instruments/videomancer/concave/concave_ex2_s5.png';
+import concave_ex2_s6 from '/img/instruments/videomancer/concave/concave_ex2_s6.png';
+import concave_ex3_s1 from '/img/instruments/videomancer/concave/concave_ex3_s1.png';
+import concave_ex3_s2 from '/img/instruments/videomancer/concave/concave_ex3_s2.png';
+import concave_ex3_s3 from '/img/instruments/videomancer/concave/concave_ex3_s3.png';
+import concave_ex3_s4 from '/img/instruments/videomancer/concave/concave_ex3_s4.png';
+import concave_ex3_s5 from '/img/instruments/videomancer/concave/concave_ex3_s5.png';
+import concave_ex3_s6 from '/img/instruments/videomancer/concave/concave_ex3_s6.png';
 
 # Concave
 
@@ -23,9 +45,12 @@ import concave_source3_kodim01_bw from '/img/instruments/videomancer/concave/con
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: concave_source1_kodim01, after: concave_hero },
-    { label: "Kodim02", before: concave_source2_kodim02, after: concave_hero },
-    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_hero },
+    { label: "Castle", before: concave_source1_castle, after: concave_hero_s1 },
+    { label: "Field", before: concave_source2_field, after: concave_hero_s2 },
+    { label: "Clouds", before: concave_source3_clouds, after: concave_hero_s3 },
+    { label: "Pattern", before: concave_source4_pattern, after: concave_hero_s4 },
+    { label: "Boy", before: concave_source5_boy, after: concave_hero_s5 },
+    { label: "Berries", before: concave_source6_berries, after: concave_hero_s6 },
   ]}
 />
 *Concave applying distance-based brightness modulation to simulate the warped reflections of a curved mirror surface.*
@@ -105,8 +130,6 @@ The U and V channels pass through unmodified to the mix stage, preserving the or
 
 ## Parameter Reference
 
-<img src={concave_control_panel} alt="Videomancer front panel with Concave loaded"/>
-*Videomancer's front panel with Concave active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -211,9 +234,12 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise1_result },
-    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise1_result },
-    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise1_result },
+    { label: "Castle", before: concave_source1_castle, after: concave_ex1_s1 },
+    { label: "Field", before: concave_source2_field, after: concave_ex1_s2 },
+    { label: "Clouds", before: concave_source3_clouds, after: concave_ex1_s3 },
+    { label: "Pattern", before: concave_source4_pattern, after: concave_ex1_s4 },
+    { label: "Boy", before: concave_source5_boy, after: concave_ex1_s5 },
+    { label: "Berries", before: concave_source6_berries, after: concave_ex1_s6 },
   ]}
 />
 *Vertical Vignette — simulated result across source images.*
@@ -235,9 +261,12 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise2_result },
-    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise2_result },
-    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise2_result },
+    { label: "Castle", before: concave_source1_castle, after: concave_ex2_s1 },
+    { label: "Field", before: concave_source2_field, after: concave_ex2_s2 },
+    { label: "Clouds", before: concave_source3_clouds, after: concave_ex2_s3 },
+    { label: "Pattern", before: concave_source4_pattern, after: concave_ex2_s4 },
+    { label: "Boy", before: concave_source5_boy, after: concave_ex2_s5 },
+    { label: "Berries", before: concave_source6_berries, after: concave_ex2_s6 },
   ]}
 />
 *Convex Inversion — simulated result across source images.*
@@ -259,9 +288,12 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: concave_source1_kodim01, after: concave_exercise3_result },
-    { label: "Kodim02", before: concave_source2_kodim02, after: concave_exercise3_result },
-    { label: "Kodim01 B&W", before: concave_source3_kodim01_bw, after: concave_exercise3_result },
+    { label: "Castle", before: concave_source1_castle, after: concave_ex3_s1 },
+    { label: "Field", before: concave_source2_field, after: concave_ex3_s2 },
+    { label: "Clouds", before: concave_source3_clouds, after: concave_ex3_s3 },
+    { label: "Pattern", before: concave_source4_pattern, after: concave_ex3_s4 },
+    { label: "Boy", before: concave_source5_boy, after: concave_ex3_s5 },
+    { label: "Berries", before: concave_source6_berries, after: concave_ex3_s6 },
   ]}
 />
 *Carved Light Band — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 133
+sidebar_position: 139
 slug: /instruments/videomancer/howler
 title: "Howler"
-image: /img/instruments/videomancer/howler/howler_hero.png
+image: /img/instruments/videomancer/howler/howler_hero_s1.png
 description: "Howler implements a video feedback loop entirely within the FPGA — no external routing required."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import howler_hero from '/img/instruments/videomancer/howler/howler_hero.png';
-import howler_control_panel from '/img/instruments/videomancer/howler/howler_control_panel.png';
-import howler_exercise1_result from '/img/instruments/videomancer/howler/howler_exercise1_result.png';
-import howler_exercise2_result from '/img/instruments/videomancer/howler/howler_exercise2_result.png';
-import howler_exercise3_result from '/img/instruments/videomancer/howler/howler_exercise3_result.png';
-import howler_source1_kodim15 from '/img/instruments/videomancer/howler/howler_source1_kodim15.png';
-import howler_source2_kodim01 from '/img/instruments/videomancer/howler/howler_source2_kodim01.png';
-import howler_source3_kodim01_bw from '/img/instruments/videomancer/howler/howler_source3_kodim01_bw.png';
+import howler_source1_skull from '/img/instruments/videomancer/howler/howler_source1_skull.png';
+import howler_source2_fruit from '/img/instruments/videomancer/howler/howler_source2_fruit.png';
+import howler_source3_clouds from '/img/instruments/videomancer/howler/howler_source3_clouds.png';
+import howler_source4_pattern from '/img/instruments/videomancer/howler/howler_source4_pattern.png';
+import howler_source5_man from '/img/instruments/videomancer/howler/howler_source5_man.png';
+import howler_source6_knit from '/img/instruments/videomancer/howler/howler_source6_knit.png';
+import howler_hero_s1 from '/img/instruments/videomancer/howler/howler_hero_s1.png';
+import howler_hero_s2 from '/img/instruments/videomancer/howler/howler_hero_s2.png';
+import howler_hero_s3 from '/img/instruments/videomancer/howler/howler_hero_s3.png';
+import howler_hero_s4 from '/img/instruments/videomancer/howler/howler_hero_s4.png';
+import howler_hero_s5 from '/img/instruments/videomancer/howler/howler_hero_s5.png';
+import howler_hero_s6 from '/img/instruments/videomancer/howler/howler_hero_s6.png';
+import howler_ex1_s1 from '/img/instruments/videomancer/howler/howler_ex1_s1.png';
+import howler_ex1_s2 from '/img/instruments/videomancer/howler/howler_ex1_s2.png';
+import howler_ex1_s3 from '/img/instruments/videomancer/howler/howler_ex1_s3.png';
+import howler_ex1_s4 from '/img/instruments/videomancer/howler/howler_ex1_s4.png';
+import howler_ex1_s5 from '/img/instruments/videomancer/howler/howler_ex1_s5.png';
+import howler_ex1_s6 from '/img/instruments/videomancer/howler/howler_ex1_s6.png';
+import howler_ex2_s1 from '/img/instruments/videomancer/howler/howler_ex2_s1.png';
+import howler_ex2_s2 from '/img/instruments/videomancer/howler/howler_ex2_s2.png';
+import howler_ex2_s3 from '/img/instruments/videomancer/howler/howler_ex2_s3.png';
+import howler_ex2_s4 from '/img/instruments/videomancer/howler/howler_ex2_s4.png';
+import howler_ex2_s5 from '/img/instruments/videomancer/howler/howler_ex2_s5.png';
+import howler_ex2_s6 from '/img/instruments/videomancer/howler/howler_ex2_s6.png';
+import howler_ex3_s1 from '/img/instruments/videomancer/howler/howler_ex3_s1.png';
+import howler_ex3_s2 from '/img/instruments/videomancer/howler/howler_ex3_s2.png';
+import howler_ex3_s3 from '/img/instruments/videomancer/howler/howler_ex3_s3.png';
+import howler_ex3_s4 from '/img/instruments/videomancer/howler/howler_ex3_s4.png';
+import howler_ex3_s5 from '/img/instruments/videomancer/howler/howler_ex3_s5.png';
+import howler_ex3_s6 from '/img/instruments/videomancer/howler/howler_ex3_s6.png';
 
 # Howler
 
@@ -23,9 +45,12 @@ import howler_source3_kodim01_bw from '/img/instruments/videomancer/howler/howle
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: howler_source1_kodim15, after: howler_hero },
-    { label: "Kodim01", before: howler_source2_kodim01, after: howler_hero },
-    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_hero },
+    { label: "Skull", before: howler_source1_skull, after: howler_hero_s1 },
+    { label: "Fruit", before: howler_source2_fruit, after: howler_hero_s2 },
+    { label: "Clouds", before: howler_source3_clouds, after: howler_hero_s3 },
+    { label: "Pattern", before: howler_source4_pattern, after: howler_hero_s4 },
+    { label: "Man", before: howler_source5_man, after: howler_hero_s5 },
+    { label: "Knit", before: howler_source6_knit, after: howler_hero_s6 },
   ]}
 />
 *Howler generating recursive tunnel patterns by feeding zoomed, decayed, and hue-rotated video back through its scanline buffer.*
@@ -108,8 +133,6 @@ The critical detail is what gets written back to BRAM. The write-back data is th
 
 ## Parameter Reference
 
-<img src={howler_control_panel} alt="Videomancer front panel with Howler loaded"/>
-*Videomancer's front panel with Howler active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -214,9 +237,12 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise1_result },
-    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise1_result },
-    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise1_result },
+    { label: "Skull", before: howler_source1_skull, after: howler_ex1_s1 },
+    { label: "Fruit", before: howler_source2_fruit, after: howler_ex1_s2 },
+    { label: "Clouds", before: howler_source3_clouds, after: howler_ex1_s3 },
+    { label: "Pattern", before: howler_source4_pattern, after: howler_ex1_s4 },
+    { label: "Man", before: howler_source5_man, after: howler_ex1_s5 },
+    { label: "Knit", before: howler_source6_knit, after: howler_ex1_s6 },
   ]}
 />
 *Basic Feedback Echo — simulated result across source images.*
@@ -238,9 +264,12 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise2_result },
-    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise2_result },
-    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise2_result },
+    { label: "Skull", before: howler_source1_skull, after: howler_ex2_s1 },
+    { label: "Fruit", before: howler_source2_fruit, after: howler_ex2_s2 },
+    { label: "Clouds", before: howler_source3_clouds, after: howler_ex2_s3 },
+    { label: "Pattern", before: howler_source4_pattern, after: howler_ex2_s4 },
+    { label: "Man", before: howler_source5_man, after: howler_ex2_s5 },
+    { label: "Knit", before: howler_source6_knit, after: howler_ex2_s6 },
   ]}
 />
 *Tunnel and Bloom — simulated result across source images.*
@@ -262,9 +291,12 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: howler_source1_kodim15, after: howler_exercise3_result },
-    { label: "Kodim01", before: howler_source2_kodim01, after: howler_exercise3_result },
-    { label: "Kodim01 B&W", before: howler_source3_kodim01_bw, after: howler_exercise3_result },
+    { label: "Skull", before: howler_source1_skull, after: howler_ex3_s1 },
+    { label: "Fruit", before: howler_source2_fruit, after: howler_ex3_s2 },
+    { label: "Clouds", before: howler_source3_clouds, after: howler_ex3_s3 },
+    { label: "Pattern", before: howler_source4_pattern, after: howler_ex3_s4 },
+    { label: "Man", before: howler_source5_man, after: howler_ex3_s5 },
+    { label: "Knit", before: howler_source6_knit, after: howler_ex3_s6 },
   ]}
 />
 *Self-Exciting Psychedelia — simulated result across source images.*

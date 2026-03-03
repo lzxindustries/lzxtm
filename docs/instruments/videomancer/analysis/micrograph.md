@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 182
+sidebar_position: 190
 slug: /instruments/videomancer/micrograph
 title: "Micrograph"
-image: /img/instruments/videomancer/micrograph/micrograph_hero.png
+image: /img/instruments/videomancer/micrograph/micrograph_hero_s1.png
 description: "Every laboratory microscope presents the world through a particular frame — a circular viewport, a calibrated grid, a stained slice of tissue lit from below."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import micrograph_hero from '/img/instruments/videomancer/micrograph/micrograph_hero.png';
-import micrograph_control_panel from '/img/instruments/videomancer/micrograph/micrograph_control_panel.png';
-import micrograph_exercise1_result from '/img/instruments/videomancer/micrograph/micrograph_exercise1_result.png';
-import micrograph_exercise2_result from '/img/instruments/videomancer/micrograph/micrograph_exercise2_result.png';
-import micrograph_exercise3_result from '/img/instruments/videomancer/micrograph/micrograph_exercise3_result.png';
-import micrograph_source1_grayscale_ramp_h_1920x1080 from '/img/instruments/videomancer/micrograph/micrograph_source1_grayscale_ramp_h_1920x1080.png';
-import micrograph_source2_grayscale_ramp_v_1920x1080 from '/img/instruments/videomancer/micrograph/micrograph_source2_grayscale_ramp_v_1920x1080.png';
-import micrograph_source3_step_wedge_21level_512 from '/img/instruments/videomancer/micrograph/micrograph_source3_step_wedge_21level_512.png';
+import micrograph_source1_boat from '/img/instruments/videomancer/micrograph/micrograph_source1_boat.png';
+import micrograph_source2_skull from '/img/instruments/videomancer/micrograph/micrograph_source2_skull.png';
+import micrograph_source3_turtle from '/img/instruments/videomancer/micrograph/micrograph_source3_turtle.png';
+import micrograph_source4_pattern from '/img/instruments/videomancer/micrograph/micrograph_source4_pattern.png';
+import micrograph_source5_boy from '/img/instruments/videomancer/micrograph/micrograph_source5_boy.png';
+import micrograph_source6_knit from '/img/instruments/videomancer/micrograph/micrograph_source6_knit.png';
+import micrograph_hero_s1 from '/img/instruments/videomancer/micrograph/micrograph_hero_s1.png';
+import micrograph_hero_s2 from '/img/instruments/videomancer/micrograph/micrograph_hero_s2.png';
+import micrograph_hero_s3 from '/img/instruments/videomancer/micrograph/micrograph_hero_s3.png';
+import micrograph_hero_s4 from '/img/instruments/videomancer/micrograph/micrograph_hero_s4.png';
+import micrograph_hero_s5 from '/img/instruments/videomancer/micrograph/micrograph_hero_s5.png';
+import micrograph_hero_s6 from '/img/instruments/videomancer/micrograph/micrograph_hero_s6.png';
+import micrograph_ex1_s1 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s1.png';
+import micrograph_ex1_s2 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s2.png';
+import micrograph_ex1_s3 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s3.png';
+import micrograph_ex1_s4 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s4.png';
+import micrograph_ex1_s5 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s5.png';
+import micrograph_ex1_s6 from '/img/instruments/videomancer/micrograph/micrograph_ex1_s6.png';
+import micrograph_ex2_s1 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s1.png';
+import micrograph_ex2_s2 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s2.png';
+import micrograph_ex2_s3 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s3.png';
+import micrograph_ex2_s4 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s4.png';
+import micrograph_ex2_s5 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s5.png';
+import micrograph_ex2_s6 from '/img/instruments/videomancer/micrograph/micrograph_ex2_s6.png';
+import micrograph_ex3_s1 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s1.png';
+import micrograph_ex3_s2 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s2.png';
+import micrograph_ex3_s3 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s3.png';
+import micrograph_ex3_s4 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s4.png';
+import micrograph_ex3_s5 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s5.png';
+import micrograph_ex3_s6 from '/img/instruments/videomancer/micrograph/micrograph_ex3_s6.png';
 
 # Micrograph
 
@@ -23,9 +45,12 @@ import micrograph_source3_step_wedge_21level_512 from '/img/instruments/videoman
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_hero },
-    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_hero },
-    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_hero },
+    { label: "Boat", before: micrograph_source1_boat, after: micrograph_hero_s1 },
+    { label: "Skull", before: micrograph_source2_skull, after: micrograph_hero_s2 },
+    { label: "Turtle", before: micrograph_source3_turtle, after: micrograph_hero_s3 },
+    { label: "Pattern", before: micrograph_source4_pattern, after: micrograph_hero_s4 },
+    { label: "Boy", before: micrograph_source5_boy, after: micrograph_hero_s5 },
+    { label: "Knit", before: micrograph_source6_knit, after: micrograph_hero_s6 },
   ]}
 />
 *Micrograph applying histological staining and reticle overlay to transform video into a calibrated microscope specimen view.*
@@ -115,8 +140,6 @@ The program's spatial awareness comes from the video_timing_generator, which sup
 
 ## Parameter Reference
 
-<img src={micrograph_control_panel} alt="Videomancer front panel with Micrograph loaded"/>
-*Videomancer's front panel with Micrograph active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -221,9 +244,12 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise1_result },
-    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise1_result },
-    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise1_result },
+    { label: "Boat", before: micrograph_source1_boat, after: micrograph_ex1_s1 },
+    { label: "Skull", before: micrograph_source2_skull, after: micrograph_ex1_s2 },
+    { label: "Turtle", before: micrograph_source3_turtle, after: micrograph_ex1_s3 },
+    { label: "Pattern", before: micrograph_source4_pattern, after: micrograph_ex1_s4 },
+    { label: "Boy", before: micrograph_source5_boy, after: micrograph_ex1_s5 },
+    { label: "Knit", before: micrograph_source6_knit, after: micrograph_ex1_s6 },
   ]}
 />
 *Measurement Grid Overlay — simulated result across source images.*
@@ -245,9 +271,12 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise2_result },
-    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise2_result },
-    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise2_result },
+    { label: "Boat", before: micrograph_source1_boat, after: micrograph_ex2_s1 },
+    { label: "Skull", before: micrograph_source2_skull, after: micrograph_ex2_s2 },
+    { label: "Turtle", before: micrograph_source3_turtle, after: micrograph_ex2_s3 },
+    { label: "Pattern", before: micrograph_source4_pattern, after: micrograph_ex2_s4 },
+    { label: "Boy", before: micrograph_source5_boy, after: micrograph_ex2_s5 },
+    { label: "Knit", before: micrograph_source6_knit, after: micrograph_ex2_s6 },
   ]}
 />
 *Histological Staining — simulated result across source images.*
@@ -270,9 +299,12 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Grayscale Ramp H", before: micrograph_source1_grayscale_ramp_h_1920x1080, after: micrograph_exercise3_result },
-    { label: "Grayscale Ramp V", before: micrograph_source2_grayscale_ramp_v_1920x1080, after: micrograph_exercise3_result },
-    { label: "Step Wedge 21level", before: micrograph_source3_step_wedge_21level_512, after: micrograph_exercise3_result },
+    { label: "Boat", before: micrograph_source1_boat, after: micrograph_ex3_s1 },
+    { label: "Skull", before: micrograph_source2_skull, after: micrograph_ex3_s2 },
+    { label: "Turtle", before: micrograph_source3_turtle, after: micrograph_ex3_s3 },
+    { label: "Pattern", before: micrograph_source4_pattern, after: micrograph_ex3_s4 },
+    { label: "Boy", before: micrograph_source5_boy, after: micrograph_ex3_s5 },
+    { label: "Knit", before: micrograph_source6_knit, after: micrograph_ex3_s6 },
   ]}
 />
 *Full Microscope Simulation — simulated result across source images.*

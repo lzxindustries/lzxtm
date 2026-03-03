@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 213
+sidebar_position: 222
 slug: /instruments/videomancer/phantasma
 title: "Phantasma"
-image: /img/instruments/videomancer/phantasma/phantasma_hero.png
+image: /img/instruments/videomancer/phantasma/phantasma_hero_s1.png
 description: "Phantasma is a pattern generator disguised as a video processor."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import phantasma_hero from '/img/instruments/videomancer/phantasma/phantasma_hero.png';
-import phantasma_control_panel from '/img/instruments/videomancer/phantasma/phantasma_control_panel.png';
-import phantasma_exercise1_result from '/img/instruments/videomancer/phantasma/phantasma_exercise1_result.png';
-import phantasma_exercise2_result from '/img/instruments/videomancer/phantasma/phantasma_exercise2_result.png';
-import phantasma_exercise3_result from '/img/instruments/videomancer/phantasma/phantasma_exercise3_result.png';
-import phantasma_source1_kodim01 from '/img/instruments/videomancer/phantasma/phantasma_source1_kodim01.png';
-import phantasma_source2_kodim02 from '/img/instruments/videomancer/phantasma/phantasma_source2_kodim02.png';
-import phantasma_source3_kodim01_bw from '/img/instruments/videomancer/phantasma/phantasma_source3_kodim01_bw.png';
+import phantasma_source1_dog from '/img/instruments/videomancer/phantasma/phantasma_source1_dog.png';
+import phantasma_source2_fruit from '/img/instruments/videomancer/phantasma/phantasma_source2_fruit.png';
+import phantasma_source3_elephant from '/img/instruments/videomancer/phantasma/phantasma_source3_elephant.png';
+import phantasma_source4_pattern from '/img/instruments/videomancer/phantasma/phantasma_source4_pattern.png';
+import phantasma_source5_woman from '/img/instruments/videomancer/phantasma/phantasma_source5_woman.png';
+import phantasma_source6_paint from '/img/instruments/videomancer/phantasma/phantasma_source6_paint.png';
+import phantasma_hero_s1 from '/img/instruments/videomancer/phantasma/phantasma_hero_s1.png';
+import phantasma_hero_s2 from '/img/instruments/videomancer/phantasma/phantasma_hero_s2.png';
+import phantasma_hero_s3 from '/img/instruments/videomancer/phantasma/phantasma_hero_s3.png';
+import phantasma_hero_s4 from '/img/instruments/videomancer/phantasma/phantasma_hero_s4.png';
+import phantasma_hero_s5 from '/img/instruments/videomancer/phantasma/phantasma_hero_s5.png';
+import phantasma_hero_s6 from '/img/instruments/videomancer/phantasma/phantasma_hero_s6.png';
+import phantasma_ex1_s1 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s1.png';
+import phantasma_ex1_s2 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s2.png';
+import phantasma_ex1_s3 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s3.png';
+import phantasma_ex1_s4 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s4.png';
+import phantasma_ex1_s5 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s5.png';
+import phantasma_ex1_s6 from '/img/instruments/videomancer/phantasma/phantasma_ex1_s6.png';
+import phantasma_ex2_s1 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s1.png';
+import phantasma_ex2_s2 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s2.png';
+import phantasma_ex2_s3 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s3.png';
+import phantasma_ex2_s4 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s4.png';
+import phantasma_ex2_s5 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s5.png';
+import phantasma_ex2_s6 from '/img/instruments/videomancer/phantasma/phantasma_ex2_s6.png';
+import phantasma_ex3_s1 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s1.png';
+import phantasma_ex3_s2 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s2.png';
+import phantasma_ex3_s3 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s3.png';
+import phantasma_ex3_s4 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s4.png';
+import phantasma_ex3_s5 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s5.png';
+import phantasma_ex3_s6 from '/img/instruments/videomancer/phantasma/phantasma_ex3_s6.png';
 
 # Phantasma
 
@@ -23,9 +45,12 @@ import phantasma_source3_kodim01_bw from '/img/instruments/videomancer/phantasma
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_hero },
-    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_hero },
-    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_hero },
+    { label: "Dog", before: phantasma_source1_dog, after: phantasma_hero_s1 },
+    { label: "Fruit", before: phantasma_source2_fruit, after: phantasma_hero_s2 },
+    { label: "Elephant", before: phantasma_source3_elephant, after: phantasma_hero_s3 },
+    { label: "Pattern", before: phantasma_source4_pattern, after: phantasma_hero_s4 },
+    { label: "Woman", before: phantasma_source5_woman, after: phantasma_hero_s5 },
+    { label: "Paint", before: phantasma_source6_paint, after: phantasma_hero_s6 },
   ]}
 />
 *Phantasma generating luma-reactive warped horizontal stripe patterns that blend with the source video via DDS phase accumulation and proc_amp modulation.*
@@ -112,8 +137,6 @@ The key architectural insight is that Phantasma is a *three-oscillator FM synthe
 
 ## Parameter Reference
 
-<img src={phantasma_control_panel} alt="Videomancer front panel with Phantasma loaded"/>
-*Videomancer's front panel with Phantasma active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -218,9 +241,12 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise1_result },
-    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise1_result },
-    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise1_result },
+    { label: "Dog", before: phantasma_source1_dog, after: phantasma_ex1_s1 },
+    { label: "Fruit", before: phantasma_source2_fruit, after: phantasma_ex1_s2 },
+    { label: "Elephant", before: phantasma_source3_elephant, after: phantasma_ex1_s3 },
+    { label: "Pattern", before: phantasma_source4_pattern, after: phantasma_ex1_s4 },
+    { label: "Woman", before: phantasma_source5_woman, after: phantasma_ex1_s5 },
+    { label: "Paint", before: phantasma_source6_paint, after: phantasma_ex1_s6 },
   ]}
 />
 *Basic Stripes — simulated result across source images.*
@@ -243,9 +269,12 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise2_result },
-    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise2_result },
-    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise2_result },
+    { label: "Dog", before: phantasma_source1_dog, after: phantasma_ex2_s1 },
+    { label: "Fruit", before: phantasma_source2_fruit, after: phantasma_ex2_s2 },
+    { label: "Elephant", before: phantasma_source3_elephant, after: phantasma_ex2_s3 },
+    { label: "Pattern", before: phantasma_source4_pattern, after: phantasma_ex2_s4 },
+    { label: "Woman", before: phantasma_source5_woman, after: phantasma_ex2_s5 },
+    { label: "Paint", before: phantasma_source6_paint, after: phantasma_ex2_s6 },
   ]}
 />
 *Luma-Reactive Patterns — simulated result across source images.*
@@ -267,9 +296,12 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: phantasma_source1_kodim01, after: phantasma_exercise3_result },
-    { label: "Kodim02", before: phantasma_source2_kodim02, after: phantasma_exercise3_result },
-    { label: "Kodim01 B&W", before: phantasma_source3_kodim01_bw, after: phantasma_exercise3_result },
+    { label: "Dog", before: phantasma_source1_dog, after: phantasma_ex3_s1 },
+    { label: "Fruit", before: phantasma_source2_fruit, after: phantasma_ex3_s2 },
+    { label: "Elephant", before: phantasma_source3_elephant, after: phantasma_ex3_s3 },
+    { label: "Pattern", before: phantasma_source4_pattern, after: phantasma_ex3_s4 },
+    { label: "Woman", before: phantasma_source5_woman, after: phantasma_ex3_s5 },
+    { label: "Paint", before: phantasma_source6_paint, after: phantasma_ex3_s6 },
   ]}
 />
 *Pattern Overlay — simulated result across source images.*

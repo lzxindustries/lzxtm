@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 215
+sidebar_position: 224
 slug: /instruments/videomancer/phosphor
 title: "Phosphor"
-image: /img/instruments/videomancer/phosphor/phosphor_hero.png
+image: /img/instruments/videomancer/phosphor/phosphor_hero_s1.png
 description: "Phosphor recreates the look of analogue CRT monitors — the faint glow bleeding rightward from bright edges, the dark scanline gaps between rows, and the characteristic colour of a phosphor screen."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import phosphor_hero from '/img/instruments/videomancer/phosphor/phosphor_hero.png';
-import phosphor_control_panel from '/img/instruments/videomancer/phosphor/phosphor_control_panel.png';
-import phosphor_exercise1_result from '/img/instruments/videomancer/phosphor/phosphor_exercise1_result.png';
-import phosphor_exercise2_result from '/img/instruments/videomancer/phosphor/phosphor_exercise2_result.png';
-import phosphor_exercise3_result from '/img/instruments/videomancer/phosphor/phosphor_exercise3_result.png';
-import phosphor_source1_kodim15 from '/img/instruments/videomancer/phosphor/phosphor_source1_kodim15.png';
-import phosphor_source2_kodim01 from '/img/instruments/videomancer/phosphor/phosphor_source2_kodim01.png';
-import phosphor_source3_kodim01_bw from '/img/instruments/videomancer/phosphor/phosphor_source3_kodim01_bw.png';
+import phosphor_source1_runner from '/img/instruments/videomancer/phosphor/phosphor_source1_runner.png';
+import phosphor_source2_car from '/img/instruments/videomancer/phosphor/phosphor_source2_car.png';
+import phosphor_source3_turtle from '/img/instruments/videomancer/phosphor/phosphor_source3_turtle.png';
+import phosphor_source4_pattern from '/img/instruments/videomancer/phosphor/phosphor_source4_pattern.png';
+import phosphor_source5_woman from '/img/instruments/videomancer/phosphor/phosphor_source5_woman.png';
+import phosphor_source6_berries from '/img/instruments/videomancer/phosphor/phosphor_source6_berries.png';
+import phosphor_hero_s1 from '/img/instruments/videomancer/phosphor/phosphor_hero_s1.png';
+import phosphor_hero_s2 from '/img/instruments/videomancer/phosphor/phosphor_hero_s2.png';
+import phosphor_hero_s3 from '/img/instruments/videomancer/phosphor/phosphor_hero_s3.png';
+import phosphor_hero_s4 from '/img/instruments/videomancer/phosphor/phosphor_hero_s4.png';
+import phosphor_hero_s5 from '/img/instruments/videomancer/phosphor/phosphor_hero_s5.png';
+import phosphor_hero_s6 from '/img/instruments/videomancer/phosphor/phosphor_hero_s6.png';
+import phosphor_ex1_s1 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s1.png';
+import phosphor_ex1_s2 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s2.png';
+import phosphor_ex1_s3 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s3.png';
+import phosphor_ex1_s4 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s4.png';
+import phosphor_ex1_s5 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s5.png';
+import phosphor_ex1_s6 from '/img/instruments/videomancer/phosphor/phosphor_ex1_s6.png';
+import phosphor_ex2_s1 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s1.png';
+import phosphor_ex2_s2 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s2.png';
+import phosphor_ex2_s3 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s3.png';
+import phosphor_ex2_s4 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s4.png';
+import phosphor_ex2_s5 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s5.png';
+import phosphor_ex2_s6 from '/img/instruments/videomancer/phosphor/phosphor_ex2_s6.png';
+import phosphor_ex3_s1 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s1.png';
+import phosphor_ex3_s2 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s2.png';
+import phosphor_ex3_s3 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s3.png';
+import phosphor_ex3_s4 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s4.png';
+import phosphor_ex3_s5 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s5.png';
+import phosphor_ex3_s6 from '/img/instruments/videomancer/phosphor/phosphor_ex3_s6.png';
 
 # Phosphor
 
@@ -23,9 +45,12 @@ import phosphor_source3_kodim01_bw from '/img/instruments/videomancer/phosphor/p
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_hero },
-    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_hero },
-    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_hero },
+    { label: "Runner", before: phosphor_source1_runner, after: phosphor_hero_s1 },
+    { label: "Car", before: phosphor_source2_car, after: phosphor_hero_s2 },
+    { label: "Turtle", before: phosphor_source3_turtle, after: phosphor_hero_s3 },
+    { label: "Pattern", before: phosphor_source4_pattern, after: phosphor_hero_s4 },
+    { label: "Woman", before: phosphor_source5_woman, after: phosphor_hero_s5 },
+    { label: "Berries", before: phosphor_source6_berries, after: phosphor_hero_s6 },
   ]}
 />
 *Phosphor simulating a P1 green CRT monitor with visible scanlines, horizontal bloom, and edge vignette applied to a live video input.*
@@ -120,8 +145,6 @@ Contrast and brightness are applied in sequence: contrast scales the dynamic ran
 
 ## Parameter Reference
 
-<img src={phosphor_control_panel} alt="Videomancer front panel with Phosphor loaded"/>
-*Videomancer's front panel with Phosphor active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -225,9 +248,12 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise1_result },
-    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise1_result },
-    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise1_result },
+    { label: "Runner", before: phosphor_source1_runner, after: phosphor_ex1_s1 },
+    { label: "Car", before: phosphor_source2_car, after: phosphor_ex1_s2 },
+    { label: "Turtle", before: phosphor_source3_turtle, after: phosphor_ex1_s3 },
+    { label: "Pattern", before: phosphor_source4_pattern, after: phosphor_ex1_s4 },
+    { label: "Woman", before: phosphor_source5_woman, after: phosphor_ex1_s5 },
+    { label: "Berries", before: phosphor_source6_berries, after: phosphor_ex1_s6 },
   ]}
 />
 *Contrast and Brightness Calibration — simulated result across source images.*
@@ -249,9 +275,12 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise2_result },
-    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise2_result },
-    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise2_result },
+    { label: "Runner", before: phosphor_source1_runner, after: phosphor_ex2_s1 },
+    { label: "Car", before: phosphor_source2_car, after: phosphor_ex2_s2 },
+    { label: "Turtle", before: phosphor_source3_turtle, after: phosphor_ex2_s3 },
+    { label: "Pattern", before: phosphor_source4_pattern, after: phosphor_ex2_s4 },
+    { label: "Woman", before: phosphor_source5_woman, after: phosphor_ex2_s5 },
+    { label: "Berries", before: phosphor_source6_berries, after: phosphor_ex2_s6 },
   ]}
 />
 *Scanline and Phosphor CRT Look — simulated result across source images.*
@@ -274,9 +303,12 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: phosphor_source1_kodim15, after: phosphor_exercise3_result },
-    { label: "Kodim01", before: phosphor_source2_kodim01, after: phosphor_exercise3_result },
-    { label: "Kodim01 B&W", before: phosphor_source3_kodim01_bw, after: phosphor_exercise3_result },
+    { label: "Runner", before: phosphor_source1_runner, after: phosphor_ex3_s1 },
+    { label: "Car", before: phosphor_source2_car, after: phosphor_ex3_s2 },
+    { label: "Turtle", before: phosphor_source3_turtle, after: phosphor_ex3_s3 },
+    { label: "Pattern", before: phosphor_source4_pattern, after: phosphor_ex3_s4 },
+    { label: "Woman", before: phosphor_source5_woman, after: phosphor_ex3_s5 },
+    { label: "Berries", before: phosphor_source6_berries, after: phosphor_ex3_s6 },
   ]}
 />
 *Full Retro CRT Simulation — simulated result across source images.*

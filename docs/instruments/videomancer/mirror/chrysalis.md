@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 50
+sidebar_position: 52
 slug: /instruments/videomancer/chrysalis
 title: "Chrysalis"
-image: /img/instruments/videomancer/chrysalis/chrysalis_hero.png
+image: /img/instruments/videomancer/chrysalis/chrysalis_hero_s1.png
 description: "A chrysalis is the transitional shell between caterpillar and butterfly — ordinary tissue reorganised into something with entirely new symmetry."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chrysalis_hero from '/img/instruments/videomancer/chrysalis/chrysalis_hero.png';
-import chrysalis_control_panel from '/img/instruments/videomancer/chrysalis/chrysalis_control_panel.png';
-import chrysalis_exercise1_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise1_result.png';
-import chrysalis_exercise2_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise2_result.png';
-import chrysalis_exercise3_result from '/img/instruments/videomancer/chrysalis/chrysalis_exercise3_result.png';
-import chrysalis_source1_kodim01 from '/img/instruments/videomancer/chrysalis/chrysalis_source1_kodim01.png';
-import chrysalis_source2_kodim02 from '/img/instruments/videomancer/chrysalis/chrysalis_source2_kodim02.png';
-import chrysalis_source3_kodim01_bw from '/img/instruments/videomancer/chrysalis/chrysalis_source3_kodim01_bw.png';
+import chrysalis_source1_ballerina from '/img/instruments/videomancer/chrysalis/chrysalis_source1_ballerina.png';
+import chrysalis_source2_castle from '/img/instruments/videomancer/chrysalis/chrysalis_source2_castle.png';
+import chrysalis_source3_collage from '/img/instruments/videomancer/chrysalis/chrysalis_source3_collage.png';
+import chrysalis_source4_pattern from '/img/instruments/videomancer/chrysalis/chrysalis_source4_pattern.png';
+import chrysalis_source5_boy from '/img/instruments/videomancer/chrysalis/chrysalis_source5_boy.png';
+import chrysalis_source6_berries from '/img/instruments/videomancer/chrysalis/chrysalis_source6_berries.png';
+import chrysalis_hero_s1 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s1.png';
+import chrysalis_hero_s2 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s2.png';
+import chrysalis_hero_s3 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s3.png';
+import chrysalis_hero_s4 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s4.png';
+import chrysalis_hero_s5 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s5.png';
+import chrysalis_hero_s6 from '/img/instruments/videomancer/chrysalis/chrysalis_hero_s6.png';
+import chrysalis_ex1_s1 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s1.png';
+import chrysalis_ex1_s2 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s2.png';
+import chrysalis_ex1_s3 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s3.png';
+import chrysalis_ex1_s4 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s4.png';
+import chrysalis_ex1_s5 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s5.png';
+import chrysalis_ex1_s6 from '/img/instruments/videomancer/chrysalis/chrysalis_ex1_s6.png';
+import chrysalis_ex2_s1 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s1.png';
+import chrysalis_ex2_s2 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s2.png';
+import chrysalis_ex2_s3 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s3.png';
+import chrysalis_ex2_s4 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s4.png';
+import chrysalis_ex2_s5 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s5.png';
+import chrysalis_ex2_s6 from '/img/instruments/videomancer/chrysalis/chrysalis_ex2_s6.png';
+import chrysalis_ex3_s1 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s1.png';
+import chrysalis_ex3_s2 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s2.png';
+import chrysalis_ex3_s3 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s3.png';
+import chrysalis_ex3_s4 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s4.png';
+import chrysalis_ex3_s5 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s5.png';
+import chrysalis_ex3_s6 from '/img/instruments/videomancer/chrysalis/chrysalis_ex3_s6.png';
 
 # Chrysalis
 
@@ -23,9 +45,12 @@ import chrysalis_source3_kodim01_bw from '/img/instruments/videomancer/chrysalis
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_hero },
-    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_hero },
-    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_hero },
+    { label: "Ballerina", before: chrysalis_source1_ballerina, after: chrysalis_hero_s1 },
+    { label: "Castle", before: chrysalis_source2_castle, after: chrysalis_hero_s2 },
+    { label: "Collage", before: chrysalis_source3_collage, after: chrysalis_hero_s3 },
+    { label: "Pattern", before: chrysalis_source4_pattern, after: chrysalis_hero_s4 },
+    { label: "Boy", before: chrysalis_source5_boy, after: chrysalis_hero_s5 },
+    { label: "Berries", before: chrysalis_source6_berries, after: chrysalis_hero_s6 },
   ]}
 />
 *Chrysalis splitting a portrait into radial kaleidoscope segments, each mirrored fold reflecting the source into symmetrical geometry that spirals diagonally across the frame.*
@@ -112,8 +137,6 @@ The Slant offset is computed once per line (Y × slant coefficient) and added to
 
 ## Parameter Reference
 
-<img src={chrysalis_control_panel} alt="Videomancer front panel with Chrysalis loaded"/>
-*Videomancer's front panel with Chrysalis active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -217,9 +240,12 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise1_result },
-    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise1_result },
-    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise1_result },
+    { label: "Ballerina", before: chrysalis_source1_ballerina, after: chrysalis_ex1_s1 },
+    { label: "Castle", before: chrysalis_source2_castle, after: chrysalis_ex1_s2 },
+    { label: "Collage", before: chrysalis_source3_collage, after: chrysalis_ex1_s3 },
+    { label: "Pattern", before: chrysalis_source4_pattern, after: chrysalis_ex1_s4 },
+    { label: "Boy", before: chrysalis_source5_boy, after: chrysalis_ex1_s5 },
+    { label: "Berries", before: chrysalis_source6_berries, after: chrysalis_ex1_s6 },
   ]}
 />
 *Bilateral Mirror — simulated result across source images.*
@@ -241,9 +267,12 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise2_result },
-    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise2_result },
-    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise2_result },
+    { label: "Ballerina", before: chrysalis_source1_ballerina, after: chrysalis_ex2_s1 },
+    { label: "Castle", before: chrysalis_source2_castle, after: chrysalis_ex2_s2 },
+    { label: "Collage", before: chrysalis_source3_collage, after: chrysalis_ex2_s3 },
+    { label: "Pattern", before: chrysalis_source4_pattern, after: chrysalis_ex2_s4 },
+    { label: "Boy", before: chrysalis_source5_boy, after: chrysalis_ex2_s5 },
+    { label: "Berries", before: chrysalis_source6_berries, after: chrysalis_ex2_s6 },
   ]}
 />
 *Diagonal Slant and Spiral — simulated result across source images.*
@@ -266,9 +295,12 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: chrysalis_source1_kodim01, after: chrysalis_exercise3_result },
-    { label: "Kodim02", before: chrysalis_source2_kodim02, after: chrysalis_exercise3_result },
-    { label: "Kodim01 B&W", before: chrysalis_source3_kodim01_bw, after: chrysalis_exercise3_result },
+    { label: "Ballerina", before: chrysalis_source1_ballerina, after: chrysalis_ex3_s1 },
+    { label: "Castle", before: chrysalis_source2_castle, after: chrysalis_ex3_s2 },
+    { label: "Collage", before: chrysalis_source3_collage, after: chrysalis_ex3_s3 },
+    { label: "Pattern", before: chrysalis_source4_pattern, after: chrysalis_ex3_s4 },
+    { label: "Boy", before: chrysalis_source5_boy, after: chrysalis_ex3_s5 },
+    { label: "Berries", before: chrysalis_source6_berries, after: chrysalis_ex3_s6 },
   ]}
 />
 *Animated Mandala — simulated result across source images.*

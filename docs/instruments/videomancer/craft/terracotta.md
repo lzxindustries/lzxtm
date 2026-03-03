@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 287
+sidebar_position: 300
 slug: /instruments/videomancer/terracotta
 title: "Terracotta"
 image: /img/instruments/videomancer/terracotta/terracotta_hero.png

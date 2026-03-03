@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 316
+sidebar_position: 332
 slug: /instruments/videomancer/xero
 title: "Xero"
 image: /img/instruments/videomancer/xero/xero_hero.png

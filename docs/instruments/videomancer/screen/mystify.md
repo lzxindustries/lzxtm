@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 191
+sidebar_position: 199
 slug: /instruments/videomancer/mystify
 title: "Mystify"
 image: /img/instruments/videomancer/mystify/mystify_hero.png

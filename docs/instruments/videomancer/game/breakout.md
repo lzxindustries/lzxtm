@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 30
+sidebar_position: 31
 slug: /instruments/videomancer/breakout
 title: "Breakout"
 image: /img/instruments/videomancer/breakout/breakout_hero.png

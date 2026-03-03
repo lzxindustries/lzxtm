@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 274
+sidebar_position: 286
 slug: /instruments/videomancer/stochasm
 title: "Stochasm"
 image: /img/instruments/videomancer/stochasm/stochasm_hero.png

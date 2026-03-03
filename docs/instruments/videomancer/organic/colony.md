@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 54
+sidebar_position: 56
 slug: /instruments/videomancer/colony
 title: "Colony"
 image: /img/instruments/videomancer/colony/colony_hero.png

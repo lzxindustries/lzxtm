@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 236
+sidebar_position: 246
 slug: /instruments/videomancer/rime
 title: "Rime"
-image: /img/instruments/videomancer/rime/rime_hero.png
+image: /img/instruments/videomancer/rime/rime_hero_s1.png
 description: "In 1885, a Vermont farmer named Wilson Bentley attached a bellows camera to a compound microscope and captured the first photomicrograph of a snowflake."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import rime_hero from '/img/instruments/videomancer/rime/rime_hero.png';
-import rime_control_panel from '/img/instruments/videomancer/rime/rime_control_panel.png';
-import rime_exercise1_result from '/img/instruments/videomancer/rime/rime_exercise1_result.png';
-import rime_exercise2_result from '/img/instruments/videomancer/rime/rime_exercise2_result.png';
-import rime_exercise3_result from '/img/instruments/videomancer/rime/rime_exercise3_result.png';
-import rime_source1_kodim01 from '/img/instruments/videomancer/rime/rime_source1_kodim01.png';
-import rime_source2_kodim02 from '/img/instruments/videomancer/rime/rime_source2_kodim02.png';
-import rime_source3_stream_bridge_512 from '/img/instruments/videomancer/rime/rime_source3_stream_bridge_512.png';
+import rime_source1_skull from '/img/instruments/videomancer/rime/rime_source1_skull.png';
+import rime_source2_boat from '/img/instruments/videomancer/rime/rime_source2_boat.png';
+import rime_source3_clouds from '/img/instruments/videomancer/rime/rime_source3_clouds.png';
+import rime_source4_pattern from '/img/instruments/videomancer/rime/rime_source4_pattern.png';
+import rime_source5_man from '/img/instruments/videomancer/rime/rime_source5_man.png';
+import rime_source6_knit from '/img/instruments/videomancer/rime/rime_source6_knit.png';
+import rime_hero_s1 from '/img/instruments/videomancer/rime/rime_hero_s1.png';
+import rime_hero_s2 from '/img/instruments/videomancer/rime/rime_hero_s2.png';
+import rime_hero_s3 from '/img/instruments/videomancer/rime/rime_hero_s3.png';
+import rime_hero_s4 from '/img/instruments/videomancer/rime/rime_hero_s4.png';
+import rime_hero_s5 from '/img/instruments/videomancer/rime/rime_hero_s5.png';
+import rime_hero_s6 from '/img/instruments/videomancer/rime/rime_hero_s6.png';
+import rime_ex1_s1 from '/img/instruments/videomancer/rime/rime_ex1_s1.png';
+import rime_ex1_s2 from '/img/instruments/videomancer/rime/rime_ex1_s2.png';
+import rime_ex1_s3 from '/img/instruments/videomancer/rime/rime_ex1_s3.png';
+import rime_ex1_s4 from '/img/instruments/videomancer/rime/rime_ex1_s4.png';
+import rime_ex1_s5 from '/img/instruments/videomancer/rime/rime_ex1_s5.png';
+import rime_ex1_s6 from '/img/instruments/videomancer/rime/rime_ex1_s6.png';
+import rime_ex2_s1 from '/img/instruments/videomancer/rime/rime_ex2_s1.png';
+import rime_ex2_s2 from '/img/instruments/videomancer/rime/rime_ex2_s2.png';
+import rime_ex2_s3 from '/img/instruments/videomancer/rime/rime_ex2_s3.png';
+import rime_ex2_s4 from '/img/instruments/videomancer/rime/rime_ex2_s4.png';
+import rime_ex2_s5 from '/img/instruments/videomancer/rime/rime_ex2_s5.png';
+import rime_ex2_s6 from '/img/instruments/videomancer/rime/rime_ex2_s6.png';
+import rime_ex3_s1 from '/img/instruments/videomancer/rime/rime_ex3_s1.png';
+import rime_ex3_s2 from '/img/instruments/videomancer/rime/rime_ex3_s2.png';
+import rime_ex3_s3 from '/img/instruments/videomancer/rime/rime_ex3_s3.png';
+import rime_ex3_s4 from '/img/instruments/videomancer/rime/rime_ex3_s4.png';
+import rime_ex3_s5 from '/img/instruments/videomancer/rime/rime_ex3_s5.png';
+import rime_ex3_s6 from '/img/instruments/videomancer/rime/rime_ex3_s6.png';
 
 # Rime
 
@@ -23,9 +45,12 @@ import rime_source3_stream_bridge_512 from '/img/instruments/videomancer/rime/ri
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: rime_source1_kodim01, after: rime_hero },
-    { label: "Kodim02", before: rime_source2_kodim02, after: rime_hero },
-    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_hero },
+    { label: "Skull", before: rime_source1_skull, after: rime_hero_s1 },
+    { label: "Boat", before: rime_source2_boat, after: rime_hero_s2 },
+    { label: "Clouds", before: rime_source3_clouds, after: rime_hero_s3 },
+    { label: "Pattern", before: rime_source4_pattern, after: rime_hero_s4 },
+    { label: "Man", before: rime_source5_man, after: rime_hero_s5 },
+    { label: "Knit", before: rime_source6_knit, after: rime_hero_s6 },
   ]}
 />
 *Rime compositing six-fold symmetric ice crystal dendrites over input video, with DLA-grown branching patterns and glacial blue tint.*
@@ -100,8 +125,6 @@ The display pipeline and growth engine operate in different time domains. The gr
 
 ## Parameter Reference
 
-<img src={rime_control_panel} alt="Videomancer front panel with Rime loaded"/>
-*Videomancer's front panel with Rime active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -205,9 +228,12 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise1_result },
-    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise1_result },
-    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise1_result },
+    { label: "Skull", before: rime_source1_skull, after: rime_ex1_s1 },
+    { label: "Boat", before: rime_source2_boat, after: rime_ex1_s2 },
+    { label: "Clouds", before: rime_source3_clouds, after: rime_ex1_s3 },
+    { label: "Pattern", before: rime_source4_pattern, after: rime_ex1_s4 },
+    { label: "Man", before: rime_source5_man, after: rime_ex1_s5 },
+    { label: "Knit", before: rime_source6_knit, after: rime_ex1_s6 },
   ]}
 />
 *Gentle Frost Overlay — simulated result across source images.*
@@ -231,9 +257,12 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise2_result },
-    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise2_result },
-    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise2_result },
+    { label: "Skull", before: rime_source1_skull, after: rime_ex2_s1 },
+    { label: "Boat", before: rime_source2_boat, after: rime_ex2_s2 },
+    { label: "Clouds", before: rime_source3_clouds, after: rime_ex2_s3 },
+    { label: "Pattern", before: rime_source4_pattern, after: rime_ex2_s4 },
+    { label: "Man", before: rime_source5_man, after: rime_ex2_s5 },
+    { label: "Knit", before: rime_source6_knit, after: rime_ex2_s6 },
   ]}
 />
 *Dynamic Equilibrium — simulated result across source images.*
@@ -257,9 +286,12 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim01", before: rime_source1_kodim01, after: rime_exercise3_result },
-    { label: "Kodim02", before: rime_source2_kodim02, after: rime_exercise3_result },
-    { label: "Stream Bridge", before: rime_source3_stream_bridge_512, after: rime_exercise3_result },
+    { label: "Skull", before: rime_source1_skull, after: rime_ex3_s1 },
+    { label: "Boat", before: rime_source2_boat, after: rime_ex3_s2 },
+    { label: "Clouds", before: rime_source3_clouds, after: rime_ex3_s3 },
+    { label: "Pattern", before: rime_source4_pattern, after: rime_ex3_s4 },
+    { label: "Man", before: rime_source5_man, after: rime_ex3_s5 },
+    { label: "Knit", before: rime_source6_knit, after: rime_ex3_s6 },
   ]}
 />
 *Subtractive Shadow Crystal — simulated result across source images.*

@@ -1,21 +1,25 @@
 ---
 draft: true
-sidebar_position: 225
+sidebar_position: 235
 slug: /instruments/videomancer/punchcard
 title: "Punchcard"
-image: /img/instruments/videomancer/punchcard/punchcard_hero.png
+image: /img/instruments/videomancer/punchcard/punchcard_hero_s1.png
 description: "The IBM punched card — 80 columns, 12 rows, one character per column — was the dominant data storage medium from the 1920s through the 1970s."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import punchcard_hero from '/img/instruments/videomancer/punchcard/punchcard_hero.png';
-import punchcard_control_panel from '/img/instruments/videomancer/punchcard/punchcard_control_panel.png';
-import punchcard_exercise1_result from '/img/instruments/videomancer/punchcard/punchcard_exercise1_result.png';
-import punchcard_exercise2_result from '/img/instruments/videomancer/punchcard/punchcard_exercise2_result.png';
-import punchcard_exercise3_result from '/img/instruments/videomancer/punchcard/punchcard_exercise3_result.png';
-import punchcard_source1_kodim15 from '/img/instruments/videomancer/punchcard/punchcard_source1_kodim15.png';
-import punchcard_source2_kodim15_bw from '/img/instruments/videomancer/punchcard/punchcard_source2_kodim15_bw.png';
-import punchcard_source3_male_1024 from '/img/instruments/videomancer/punchcard/punchcard_source3_male_1024.png';
+import punchcard_source1_boat from '/img/instruments/videomancer/punchcard/punchcard_source1_boat.png';
+import punchcard_source2_runner from '/img/instruments/videomancer/punchcard/punchcard_source2_runner.png';
+import punchcard_source3_clouds from '/img/instruments/videomancer/punchcard/punchcard_source3_clouds.png';
+import punchcard_source4_pattern from '/img/instruments/videomancer/punchcard/punchcard_source4_pattern.png';
+import punchcard_source5_girl from '/img/instruments/videomancer/punchcard/punchcard_source5_girl.png';
+import punchcard_source6_wood from '/img/instruments/videomancer/punchcard/punchcard_source6_wood.png';
+import punchcard_hero_s1 from '/img/instruments/videomancer/punchcard/punchcard_hero_s1.png';
+import punchcard_hero_s2 from '/img/instruments/videomancer/punchcard/punchcard_hero_s2.png';
+import punchcard_hero_s3 from '/img/instruments/videomancer/punchcard/punchcard_hero_s3.png';
+import punchcard_hero_s4 from '/img/instruments/videomancer/punchcard/punchcard_hero_s4.png';
+import punchcard_hero_s5 from '/img/instruments/videomancer/punchcard/punchcard_hero_s5.png';
+import punchcard_hero_s6 from '/img/instruments/videomancer/punchcard/punchcard_hero_s6.png';
 
 # Punchcard
 
@@ -23,9 +27,12 @@ import punchcard_source3_male_1024 from '/img/instruments/videomancer/punchcard/
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: punchcard_source1_kodim15, after: punchcard_hero },
-    { label: "Kodim15 B&W", before: punchcard_source2_kodim15_bw, after: punchcard_hero },
-    { label: "Male", before: punchcard_source3_male_1024, after: punchcard_hero },
+    { label: "Boat", before: punchcard_source1_boat, after: punchcard_hero_s1 },
+    { label: "Runner", before: punchcard_source2_runner, after: punchcard_hero_s2 },
+    { label: "Clouds", before: punchcard_source3_clouds, after: punchcard_hero_s3 },
+    { label: "Pattern", before: punchcard_source4_pattern, after: punchcard_hero_s4 },
+    { label: "Girl", before: punchcard_source5_girl, after: punchcard_hero_s5 },
+    { label: "Wood", before: punchcard_source6_wood, after: punchcard_hero_s6 },
   ]}
 />
 *Punchcard rendering a luma-thresholded punch hole grid over source video with adjustable cell geometry and card stock overlay.*
@@ -113,8 +120,6 @@ The critical subtlety is *where* the luma is sampled for the punch decision: at 
 
 ## Parameter Reference
 
-<img src={punchcard_control_panel} alt="Videomancer front panel with Punchcard loaded"/>
-*Videomancer's front panel with Punchcard active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 

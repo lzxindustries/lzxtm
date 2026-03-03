@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 255
+sidebar_position: 267
 slug: /instruments/videomancer/silhouette
 title: "Silhouette"
 image: /img/instruments/videomancer/silhouette/silhouette_hero.png

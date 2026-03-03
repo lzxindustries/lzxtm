@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 307
+sidebar_position: 322
 slug: /instruments/videomancer/vitrage
 title: "Vitrage"
 image: /img/instruments/videomancer/vitrage/vitrage_hero.png

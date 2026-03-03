@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 151
+sidebar_position: 158
 slug: /instruments/videomancer/killscreen
 title: "Killscreen"
 image: /img/instruments/videomancer/killscreen/killscreen_hero.png

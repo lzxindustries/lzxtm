@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 48
+sidebar_position: 50
 slug: /instruments/videomancer/chromasia
 title: "Chromasia"
-image: /img/instruments/videomancer/chromasia/chromasia_hero.png
+image: /img/instruments/videomancer/chromasia/chromasia_hero_s1.png
 description: "Every video effects box from the 1980s and 1990s shipped with a bank of colour transformations — negative, solarise, posterise, sepia — accessible by punching a number on a keypad or scrolling through a menu."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import chromasia_hero from '/img/instruments/videomancer/chromasia/chromasia_hero.png';
-import chromasia_control_panel from '/img/instruments/videomancer/chromasia/chromasia_control_panel.png';
-import chromasia_exercise1_result from '/img/instruments/videomancer/chromasia/chromasia_exercise1_result.png';
-import chromasia_exercise2_result from '/img/instruments/videomancer/chromasia/chromasia_exercise2_result.png';
-import chromasia_exercise3_result from '/img/instruments/videomancer/chromasia/chromasia_exercise3_result.png';
-import chromasia_source1_kodim15 from '/img/instruments/videomancer/chromasia/chromasia_source1_kodim15.png';
-import chromasia_source2_kodim03 from '/img/instruments/videomancer/chromasia/chromasia_source2_kodim03.png';
-import chromasia_source3_kodim13_bw from '/img/instruments/videomancer/chromasia/chromasia_source3_kodim13_bw.png';
+import chromasia_source1_dog from '/img/instruments/videomancer/chromasia/chromasia_source1_dog.png';
+import chromasia_source2_field from '/img/instruments/videomancer/chromasia/chromasia_source2_field.png';
+import chromasia_source3_elephant from '/img/instruments/videomancer/chromasia/chromasia_source3_elephant.png';
+import chromasia_source4_pattern from '/img/instruments/videomancer/chromasia/chromasia_source4_pattern.png';
+import chromasia_source5_man from '/img/instruments/videomancer/chromasia/chromasia_source5_man.png';
+import chromasia_source6_berries from '/img/instruments/videomancer/chromasia/chromasia_source6_berries.png';
+import chromasia_hero_s1 from '/img/instruments/videomancer/chromasia/chromasia_hero_s1.png';
+import chromasia_hero_s2 from '/img/instruments/videomancer/chromasia/chromasia_hero_s2.png';
+import chromasia_hero_s3 from '/img/instruments/videomancer/chromasia/chromasia_hero_s3.png';
+import chromasia_hero_s4 from '/img/instruments/videomancer/chromasia/chromasia_hero_s4.png';
+import chromasia_hero_s5 from '/img/instruments/videomancer/chromasia/chromasia_hero_s5.png';
+import chromasia_hero_s6 from '/img/instruments/videomancer/chromasia/chromasia_hero_s6.png';
+import chromasia_ex1_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s1.png';
+import chromasia_ex1_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s2.png';
+import chromasia_ex1_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s3.png';
+import chromasia_ex1_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s4.png';
+import chromasia_ex1_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s5.png';
+import chromasia_ex1_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex1_s6.png';
+import chromasia_ex2_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s1.png';
+import chromasia_ex2_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s2.png';
+import chromasia_ex2_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s3.png';
+import chromasia_ex2_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s4.png';
+import chromasia_ex2_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s5.png';
+import chromasia_ex2_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex2_s6.png';
+import chromasia_ex3_s1 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s1.png';
+import chromasia_ex3_s2 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s2.png';
+import chromasia_ex3_s3 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s3.png';
+import chromasia_ex3_s4 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s4.png';
+import chromasia_ex3_s5 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s5.png';
+import chromasia_ex3_s6 from '/img/instruments/videomancer/chromasia/chromasia_ex3_s6.png';
 
 # Chromasia
 
@@ -23,9 +45,12 @@ import chromasia_source3_kodim13_bw from '/img/instruments/videomancer/chromasia
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_hero },
-    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_hero },
-    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_hero },
+    { label: "Dog", before: chromasia_source1_dog, after: chromasia_hero_s1 },
+    { label: "Field", before: chromasia_source2_field, after: chromasia_hero_s2 },
+    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_hero_s3 },
+    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_hero_s4 },
+    { label: "Man", before: chromasia_source5_man, after: chromasia_hero_s5 },
+    { label: "Berries", before: chromasia_source6_berries, after: chromasia_hero_s6 },
   ]}
 />
 *Chromasia in Colorize mode painting a single cyan hue across a still life, with the wet/dry mix fader blending the tinted image against the original.*
@@ -110,8 +135,6 @@ The All Channels toggle (Switch 10) is a cross-cutting concern that affects how 
 
 ## Parameter Reference
 
-<img src={chromasia_control_panel} alt="Videomancer front panel with Chromasia loaded"/>
-*Videomancer's front panel with Chromasia active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -220,9 +243,12 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise1_result },
-    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise1_result },
-    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise1_result },
+    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex1_s1 },
+    { label: "Field", before: chromasia_source2_field, after: chromasia_ex1_s2 },
+    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex1_s3 },
+    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex1_s4 },
+    { label: "Man", before: chromasia_source5_man, after: chromasia_ex1_s5 },
+    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex1_s6 },
   ]}
 />
 *Solarize Sweep — simulated result across source images.*
@@ -244,9 +270,12 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise2_result },
-    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise2_result },
-    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise2_result },
+    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex2_s1 },
+    { label: "Field", before: chromasia_source2_field, after: chromasia_ex2_s2 },
+    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex2_s3 },
+    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex2_s4 },
+    { label: "Man", before: chromasia_source5_man, after: chromasia_ex2_s5 },
+    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex2_s6 },
   ]}
 />
 *Colorize a Monochrome Scene — simulated result across source images.*
@@ -268,9 +297,12 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: chromasia_source1_kodim15, after: chromasia_exercise3_result },
-    { label: "Kodim03", before: chromasia_source2_kodim03, after: chromasia_exercise3_result },
-    { label: "Kodim13 B&W", before: chromasia_source3_kodim13_bw, after: chromasia_exercise3_result },
+    { label: "Dog", before: chromasia_source1_dog, after: chromasia_ex3_s1 },
+    { label: "Field", before: chromasia_source2_field, after: chromasia_ex3_s2 },
+    { label: "Elephant", before: chromasia_source3_elephant, after: chromasia_ex3_s3 },
+    { label: "Pattern", before: chromasia_source4_pattern, after: chromasia_ex3_s4 },
+    { label: "Man", before: chromasia_source5_man, after: chromasia_ex3_s5 },
+    { label: "Berries", before: chromasia_source6_berries, after: chromasia_ex3_s6 },
   ]}
 />
 *Sketch to Threshold Composite — simulated result across source images.*

@@ -1,21 +1,43 @@
 ---
 draft: true
-sidebar_position: 95
+sidebar_position: 99
 slug: /instruments/videomancer/enamel
 title: "Enamel"
-image: /img/instruments/videomancer/enamel/enamel_hero.png
+image: /img/instruments/videomancer/enamel/enamel_hero_s1.png
 description: "Enamel transforms live video into a digital simulation of cloisonné enamelwork — the ancient decorative art in which thin metal wires are soldered onto a surface to form cells, each filled with vitreous glass paste and fired to a glossy finish."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import enamel_hero from '/img/instruments/videomancer/enamel/enamel_hero.png';
-import enamel_control_panel from '/img/instruments/videomancer/enamel/enamel_control_panel.png';
-import enamel_exercise1_result from '/img/instruments/videomancer/enamel/enamel_exercise1_result.png';
-import enamel_exercise2_result from '/img/instruments/videomancer/enamel/enamel_exercise2_result.png';
-import enamel_exercise3_result from '/img/instruments/videomancer/enamel/enamel_exercise3_result.png';
-import enamel_source1_kodim15 from '/img/instruments/videomancer/enamel/enamel_source1_kodim15.png';
-import enamel_source2_kodim03 from '/img/instruments/videomancer/enamel/enamel_source2_kodim03.png';
-import enamel_source3_kodim13_bw from '/img/instruments/videomancer/enamel/enamel_source3_kodim13_bw.png';
+import enamel_source1_parrot from '/img/instruments/videomancer/enamel/enamel_source1_parrot.png';
+import enamel_source2_cat from '/img/instruments/videomancer/enamel/enamel_source2_cat.png';
+import enamel_source3_collage from '/img/instruments/videomancer/enamel/enamel_source3_collage.png';
+import enamel_source4_pattern from '/img/instruments/videomancer/enamel/enamel_source4_pattern.png';
+import enamel_source5_woman from '/img/instruments/videomancer/enamel/enamel_source5_woman.png';
+import enamel_source6_paint from '/img/instruments/videomancer/enamel/enamel_source6_paint.png';
+import enamel_hero_s1 from '/img/instruments/videomancer/enamel/enamel_hero_s1.png';
+import enamel_hero_s2 from '/img/instruments/videomancer/enamel/enamel_hero_s2.png';
+import enamel_hero_s3 from '/img/instruments/videomancer/enamel/enamel_hero_s3.png';
+import enamel_hero_s4 from '/img/instruments/videomancer/enamel/enamel_hero_s4.png';
+import enamel_hero_s5 from '/img/instruments/videomancer/enamel/enamel_hero_s5.png';
+import enamel_hero_s6 from '/img/instruments/videomancer/enamel/enamel_hero_s6.png';
+import enamel_ex1_s1 from '/img/instruments/videomancer/enamel/enamel_ex1_s1.png';
+import enamel_ex1_s2 from '/img/instruments/videomancer/enamel/enamel_ex1_s2.png';
+import enamel_ex1_s3 from '/img/instruments/videomancer/enamel/enamel_ex1_s3.png';
+import enamel_ex1_s4 from '/img/instruments/videomancer/enamel/enamel_ex1_s4.png';
+import enamel_ex1_s5 from '/img/instruments/videomancer/enamel/enamel_ex1_s5.png';
+import enamel_ex1_s6 from '/img/instruments/videomancer/enamel/enamel_ex1_s6.png';
+import enamel_ex2_s1 from '/img/instruments/videomancer/enamel/enamel_ex2_s1.png';
+import enamel_ex2_s2 from '/img/instruments/videomancer/enamel/enamel_ex2_s2.png';
+import enamel_ex2_s3 from '/img/instruments/videomancer/enamel/enamel_ex2_s3.png';
+import enamel_ex2_s4 from '/img/instruments/videomancer/enamel/enamel_ex2_s4.png';
+import enamel_ex2_s5 from '/img/instruments/videomancer/enamel/enamel_ex2_s5.png';
+import enamel_ex2_s6 from '/img/instruments/videomancer/enamel/enamel_ex2_s6.png';
+import enamel_ex3_s1 from '/img/instruments/videomancer/enamel/enamel_ex3_s1.png';
+import enamel_ex3_s2 from '/img/instruments/videomancer/enamel/enamel_ex3_s2.png';
+import enamel_ex3_s3 from '/img/instruments/videomancer/enamel/enamel_ex3_s3.png';
+import enamel_ex3_s4 from '/img/instruments/videomancer/enamel/enamel_ex3_s4.png';
+import enamel_ex3_s5 from '/img/instruments/videomancer/enamel/enamel_ex3_s5.png';
+import enamel_ex3_s6 from '/img/instruments/videomancer/enamel/enamel_ex3_s6.png';
 
 # Enamel
 
@@ -23,9 +45,12 @@ import enamel_source3_kodim13_bw from '/img/instruments/videomancer/enamel/ename
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_hero },
-    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_hero },
-    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_hero },
+    { label: "Parrot", before: enamel_source1_parrot, after: enamel_hero_s1 },
+    { label: "Cat", before: enamel_source2_cat, after: enamel_hero_s2 },
+    { label: "Collage", before: enamel_source3_collage, after: enamel_hero_s3 },
+    { label: "Pattern", before: enamel_source4_pattern, after: enamel_hero_s4 },
+    { label: "Woman", before: enamel_source5_woman, after: enamel_hero_s5 },
+    { label: "Paint", before: enamel_source6_paint, after: enamel_hero_s6 },
   ]}
 />
 *Enamel partitioning a portrait into cloisonné cells — gold wire outlines tracing every contour, vivid quantized fill glowing between the boundaries.*
@@ -130,8 +155,6 @@ The critical interaction is between edge detection and quantization. Edge detect
 
 ## Parameter Reference
 
-<img src={enamel_control_panel} alt="Videomancer front panel with Enamel loaded"/>
-*Videomancer's front panel with Enamel active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
 
 ### Rotary Potentiometers (Knobs 1–6)
 
@@ -235,9 +258,12 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise1_result },
-    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise1_result },
-    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise1_result },
+    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex1_s1 },
+    { label: "Cat", before: enamel_source2_cat, after: enamel_ex1_s2 },
+    { label: "Collage", before: enamel_source3_collage, after: enamel_ex1_s3 },
+    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex1_s4 },
+    { label: "Woman", before: enamel_source5_woman, after: enamel_ex1_s5 },
+    { label: "Paint", before: enamel_source6_paint, after: enamel_ex1_s6 },
   ]}
 />
 *Wire Network Discovery — simulated result across source images.*
@@ -259,9 +285,12 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise2_result },
-    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise2_result },
-    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise2_result },
+    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex2_s1 },
+    { label: "Cat", before: enamel_source2_cat, after: enamel_ex2_s2 },
+    { label: "Collage", before: enamel_source3_collage, after: enamel_ex2_s3 },
+    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex2_s4 },
+    { label: "Woman", before: enamel_source5_woman, after: enamel_ex2_s5 },
+    { label: "Paint", before: enamel_source6_paint, after: enamel_ex2_s6 },
   ]}
 />
 *Palette and Saturation — simulated result across source images.*
@@ -284,9 +313,12 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: enamel_source1_kodim15, after: enamel_exercise3_result },
-    { label: "Kodim03", before: enamel_source2_kodim03, after: enamel_exercise3_result },
-    { label: "Kodim13 B&W", before: enamel_source3_kodim13_bw, after: enamel_exercise3_result },
+    { label: "Parrot", before: enamel_source1_parrot, after: enamel_ex3_s1 },
+    { label: "Cat", before: enamel_source2_cat, after: enamel_ex3_s2 },
+    { label: "Collage", before: enamel_source3_collage, after: enamel_ex3_s3 },
+    { label: "Pattern", before: enamel_source4_pattern, after: enamel_ex3_s4 },
+    { label: "Woman", before: enamel_source5_woman, after: enamel_ex3_s5 },
+    { label: "Paint", before: enamel_source6_paint, after: enamel_ex3_s6 },
   ]}
 />
 *Gloss and Animation — simulated result across source images.*

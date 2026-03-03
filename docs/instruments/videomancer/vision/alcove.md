@@ -3,19 +3,42 @@ draft: true
 sidebar_position: 3
 slug: /instruments/videomancer/alcove
 title: "Alcove"
-image: /img/instruments/videomancer/alcove/alcove_hero.png
+image: /img/instruments/videomancer/alcove/alcove_hero_s1.png
 description: "Alcove is a broadcast-style DVE (Digital Video Effects) priority compositor that places a positioned, scaled foreground window showing clean unprocessed video over a processed background."
 ---
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import alcove_hero from '/img/instruments/videomancer/alcove/alcove_hero.png';
 import alcove_control_panel from '/img/instruments/videomancer/alcove/alcove_control_panel.png';
-import alcove_exercise1_result from '/img/instruments/videomancer/alcove/alcove_exercise1_result.png';
-import alcove_exercise2_result from '/img/instruments/videomancer/alcove/alcove_exercise2_result.png';
-import alcove_exercise3_result from '/img/instruments/videomancer/alcove/alcove_exercise3_result.png';
-import alcove_source1_kodim15 from '/img/instruments/videomancer/alcove/alcove_source1_kodim15.png';
-import alcove_source2_kodim15_bw from '/img/instruments/videomancer/alcove/alcove_source2_kodim15_bw.png';
-import alcove_source3_male_1024 from '/img/instruments/videomancer/alcove/alcove_source3_male_1024.png';
+import alcove_source1_dog from '/img/instruments/videomancer/alcove/alcove_source1_dog.png';
+import alcove_source2_car from '/img/instruments/videomancer/alcove/alcove_source2_car.png';
+import alcove_source3_clouds from '/img/instruments/videomancer/alcove/alcove_source3_clouds.png';
+import alcove_source4_pattern from '/img/instruments/videomancer/alcove/alcove_source4_pattern.png';
+import alcove_source5_boy from '/img/instruments/videomancer/alcove/alcove_source5_boy.png';
+import alcove_source6_berries from '/img/instruments/videomancer/alcove/alcove_source6_berries.png';
+import alcove_hero_s1 from '/img/instruments/videomancer/alcove/alcove_hero_s1.png';
+import alcove_hero_s2 from '/img/instruments/videomancer/alcove/alcove_hero_s2.png';
+import alcove_hero_s3 from '/img/instruments/videomancer/alcove/alcove_hero_s3.png';
+import alcove_hero_s4 from '/img/instruments/videomancer/alcove/alcove_hero_s4.png';
+import alcove_hero_s5 from '/img/instruments/videomancer/alcove/alcove_hero_s5.png';
+import alcove_hero_s6 from '/img/instruments/videomancer/alcove/alcove_hero_s6.png';
+import alcove_ex1_s1 from '/img/instruments/videomancer/alcove/alcove_ex1_s1.png';
+import alcove_ex1_s2 from '/img/instruments/videomancer/alcove/alcove_ex1_s2.png';
+import alcove_ex1_s3 from '/img/instruments/videomancer/alcove/alcove_ex1_s3.png';
+import alcove_ex1_s4 from '/img/instruments/videomancer/alcove/alcove_ex1_s4.png';
+import alcove_ex1_s5 from '/img/instruments/videomancer/alcove/alcove_ex1_s5.png';
+import alcove_ex1_s6 from '/img/instruments/videomancer/alcove/alcove_ex1_s6.png';
+import alcove_ex2_s1 from '/img/instruments/videomancer/alcove/alcove_ex2_s1.png';
+import alcove_ex2_s2 from '/img/instruments/videomancer/alcove/alcove_ex2_s2.png';
+import alcove_ex2_s3 from '/img/instruments/videomancer/alcove/alcove_ex2_s3.png';
+import alcove_ex2_s4 from '/img/instruments/videomancer/alcove/alcove_ex2_s4.png';
+import alcove_ex2_s5 from '/img/instruments/videomancer/alcove/alcove_ex2_s5.png';
+import alcove_ex2_s6 from '/img/instruments/videomancer/alcove/alcove_ex2_s6.png';
+import alcove_ex3_s1 from '/img/instruments/videomancer/alcove/alcove_ex3_s1.png';
+import alcove_ex3_s2 from '/img/instruments/videomancer/alcove/alcove_ex3_s2.png';
+import alcove_ex3_s3 from '/img/instruments/videomancer/alcove/alcove_ex3_s3.png';
+import alcove_ex3_s4 from '/img/instruments/videomancer/alcove/alcove_ex3_s4.png';
+import alcove_ex3_s5 from '/img/instruments/videomancer/alcove/alcove_ex3_s5.png';
+import alcove_ex3_s6 from '/img/instruments/videomancer/alcove/alcove_ex3_s6.png';
 
 # Alcove
 
@@ -23,9 +46,12 @@ import alcove_source3_male_1024 from '/img/instruments/videomancer/alcove/alcove
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_hero },
-    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_hero },
-    { label: "Male", before: alcove_source3_male_1024, after: alcove_hero },
+    { label: "Dog", before: alcove_source1_dog, after: alcove_hero_s1 },
+    { label: "Car", before: alcove_source2_car, after: alcove_hero_s2 },
+    { label: "Clouds", before: alcove_source3_clouds, after: alcove_hero_s3 },
+    { label: "Pattern", before: alcove_source4_pattern, after: alcove_hero_s4 },
+    { label: "Boy", before: alcove_source5_boy, after: alcove_hero_s5 },
+    { label: "Berries", before: alcove_source6_berries, after: alcove_hero_s6 },
   ]}
 />
 *Alcove compositing a clean foreground window over a mosaicked background — the DVE priority compositor places an unprocessed video inset with coloured border over a sample-and-hold posterized background scene.*
@@ -224,9 +250,12 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise1_result },
-    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise1_result },
-    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise1_result },
+    { label: "Dog", before: alcove_source1_dog, after: alcove_ex1_s1 },
+    { label: "Car", before: alcove_source2_car, after: alcove_ex1_s2 },
+    { label: "Clouds", before: alcove_source3_clouds, after: alcove_ex1_s3 },
+    { label: "Pattern", before: alcove_source4_pattern, after: alcove_ex1_s4 },
+    { label: "Boy", before: alcove_source5_boy, after: alcove_ex1_s5 },
+    { label: "Berries", before: alcove_source6_berries, after: alcove_ex1_s6 },
   ]}
 />
 *Classic Picture-in-Picture — simulated result across source images.*
@@ -250,9 +279,12 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise2_result },
-    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise2_result },
-    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise2_result },
+    { label: "Dog", before: alcove_source1_dog, after: alcove_ex2_s1 },
+    { label: "Car", before: alcove_source2_car, after: alcove_ex2_s2 },
+    { label: "Clouds", before: alcove_source3_clouds, after: alcove_ex2_s3 },
+    { label: "Pattern", before: alcove_source4_pattern, after: alcove_ex2_s4 },
+    { label: "Boy", before: alcove_source5_boy, after: alcove_ex2_s5 },
+    { label: "Berries", before: alcove_source6_berries, after: alcove_ex2_s6 },
   ]}
 />
 *Mosaic Background with Coloured Border — simulated result across source images.*
@@ -276,9 +308,12 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 <BeforeAfterSlider
   sources={[
-    { label: "Kodim15", before: alcove_source1_kodim15, after: alcove_exercise3_result },
-    { label: "Kodim15 B&W", before: alcove_source2_kodim15_bw, after: alcove_exercise3_result },
-    { label: "Male", before: alcove_source3_male_1024, after: alcove_exercise3_result },
+    { label: "Dog", before: alcove_source1_dog, after: alcove_ex3_s1 },
+    { label: "Car", before: alcove_source2_car, after: alcove_ex3_s2 },
+    { label: "Clouds", before: alcove_source3_clouds, after: alcove_ex3_s3 },
+    { label: "Pattern", before: alcove_source4_pattern, after: alcove_ex3_s4 },
+    { label: "Boy", before: alcove_source5_boy, after: alcove_ex3_s5 },
+    { label: "Berries", before: alcove_source6_berries, after: alcove_ex3_s6 },
   ]}
 />
 *Dim Background Interview Layout — simulated result across source images.*

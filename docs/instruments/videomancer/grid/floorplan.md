@@ -1,6 +1,6 @@
 ---
 draft: true
-sidebar_position: 110
+sidebar_position: 115
 slug: /instruments/videomancer/floorplan
 title: "Floorplan"
 image: /img/instruments/videomancer/floorplan/floorplan_hero.png
