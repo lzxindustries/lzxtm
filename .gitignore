@@ -3,6 +3,7 @@
 
 # Production
 /build
+/.deploy-repo
 
 # Generated files
 .docusaurus
