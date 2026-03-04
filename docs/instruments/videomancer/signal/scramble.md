@@ -344,5 +344,4 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 | **XOR** | Exclusive OR; a binary logic operation that outputs 1 when its two inputs differ, used in LFSR feedback paths and bit-level manipulation. |
 | **YUV** | A color encoding scheme that separates luminance (Y) from two chrominance difference signals (U and V), standard in broadcast and digital video processing. |
 
-
 ---

@@ -55,7 +55,7 @@ The original Pong displayed scores using dedicated digit circuits that decoded a
 
 ### The Dashed Net
 
-The center court dividing line in the original Pong was rendered as a dashed vertical stripe — a sequence of short bright segments separated by gaps. This was implemented by ANDing the horizontal center position with a modular vertical counter. Videomancer uses the same technique: a 4-pixel-wide vertical stripe at the horizontal center, with 24-pixel dashes and 16-pixel gaps controlled by a modulo operation on the vertical scan counter.
+The center court dividing line in the original Pong was rendered as a dashed vertical stripe — a sequence of short bright segments separated by gaps. This was implemented by ANDing the horizontal center position with a modular vertical counter. Videomancer uses the same technique: a 4-pixel-wide vertical stripe at the horizontal center, with 20-pixel dashes and 12-pixel gaps controlled by a modulo operation on the vertical scan counter.
 
 
 ---
@@ -66,8 +66,8 @@ The center court dividing line in the original Pong was rendered as a dashed ver
 Synthesis Engine
 │
 ├── Parameter Mapping ──────────────────────────────────────────
-│   ├─ registers_in(0)  → Ball Speed (2–8 px/frame)
-│   ├─ registers_in(1)  → Paddle Height (40–240 px)
+│   ├─ registers_in(0)  → Ball Speed (2–9 px/frame)
+│   ├─ registers_in(1)  → Paddle Height (40–295 px)
 │   ├─ registers_in(2)  → Player 1 Y Position
 │   ├─ registers_in(3)  → AI Skill (1–8 px/frame tracking)
 │   ├─ registers_in(4)  → Court Hue (chroma offset)
@@ -118,7 +118,7 @@ The physics engine and rasterizer operate on different time scales. The physics 
 | Default | 38% |
 | Suffix | % |
 
-Controls the ball speed. The 10-bit register is divided by 128 and offset by 2 to produce a velocity magnitude of 2 to 8 pixels per frame. At low settings the ball drifts slowly across the court, giving both players time to position. At high settings the ball crosses the court in under a second, demanding fast reflexes. The serve velocity uses this same speed value, so higher settings produce faster serves.
+Controls the ball speed. The 10-bit register is divided by 128 and offset by 2 to produce a velocity magnitude of 2 to 9 pixels per frame. At low settings the ball drifts slowly across the court, giving both players time to position. At high settings the ball crosses the court in under a second, demanding fast reflexes. The serve velocity uses this same speed value, so higher settings produce faster serves.
 
 ---
 
@@ -200,7 +200,7 @@ The five toggles control independent game and rendering features. P2 Mode switch
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix crossfade between the unprocessed input video and the game overlay. Three parallel interpolator_u instances blend Y, U, and V channels independently. At 100% the output is pure game overlay on black. At 50% the game elements are semi-transparent over the input video. At 0% the output is pure dry input. Note: when P2 Mode is set to Manual, this fader controls Player 2's paddle position instead of the mix level.
+Wet/dry mix crossfade between the unprocessed input video and the game overlay. Three parallel interpolator_u instances blend Y, U, and V channels independently. At 100% the output is pure game overlay on black. At 50% the game elements are semi-transparent over the input video. At 0% the output is pure dry input. Note: when P2 Mode is set to Manual, this fader *also* controls Player 2's paddle position — the fader drives both mix and P2 simultaneously (moving P2 down increases mix toward wet; moving P2 up decreases mix toward dry).
 
 ---
 
@@ -256,7 +256,7 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 3. Set Paddle Size to about 40% for moderately challenging paddles.
 4. Player 1 uses Knob 3 (P1 Pos) to control the left paddle.
 5. Player 2 uses the Fader to control the right paddle.
-6. Note that the fader no longer controls mix — output is full wet.
+6. Note that the fader controls both P2 position and the wet/dry mix simultaneously — P2 at the bottom of the screen corresponds to full wet.
 7. Play to 9 and observe the score reset.
 
 **Key concepts**: Manual mode repurposes the fader for P2 control, both paddle controls can map to external CV for automated play, score resets at 9

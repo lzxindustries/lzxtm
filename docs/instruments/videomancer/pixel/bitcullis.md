@@ -175,7 +175,7 @@ Controls how strongly the input luminance modulates the horizontal decimation fr
 | Default | 0.0% |
 | Suffix | % |
 
-Luminance posterization depth. At 0%, the Y channel retains its full 10-bit resolution (1024 levels). As you increase the control, the number of brightness levels decreases. Smooth gradients collapse into staircase-like transitions between flat tonal bands. The posterization boundaries become the dominant visual structure.
+Luminance posterization depth. At 0%, the posterizer reduces the Y channel to just 2 levels (only the most significant bit is preserved), producing extreme banding. As you increase the control, more brightness levels are preserved and gradients become smoother. At 100%, the full 10-bit resolution (1024 levels) passes unchanged.
 
 ---
 
@@ -208,7 +208,7 @@ Luminance modulates chroma saturation. Bright areas of the input can be made mor
 | **7 — Luma Invert** | Off | On |
 | **8 — Bit Order** | Normal | Swapped |
 | **9 — Dithering** | Disabled | Enabled |
-| **10 — Dither Algo** | 2x2 | 4x4 |
+| **10 — Dither Algo** | Ordered | Random |
 | **11 — Bypass** | Off | On |
 
 Switches 7–11 control five independent binary processing options. Unlike Lumarian's edge mode switches, these do not form a combined selector — each switch enables or disables a specific stage in the processing chain.
@@ -221,10 +221,10 @@ Switches 7–11 control five independent binary processing options. Unlike Lumar
 | Property | Value |
 |----------|-------|
 | Range | 0.0% – 100.0% |
-| Default | 100.0% |
+| Default | 0.0% |
 | Suffix | % |
 
-Luminance key at the end of the processing chain. At 100%, everything passes through. As you lower the fader, progressively darker portions of the post-processed image are replaced with black. This interacts powerfully with posterization: because posterized signals have hard boundaries between tonal bands, the threshold cuts cleanly between levels. With bit-order reversal active, the threshold cuts through the chaotic value mapping in unexpected ways.
+Luminance key at the end of the processing chain. At 0%, everything passes through (no keying). As you raise the fader, progressively brighter portions of the post-processed image are replaced with black, because more pixels fall below the rising threshold. At 100%, only the very brightest pixels survive. This interacts powerfully with posterization: because posterized signals have hard boundaries between tonal bands, the threshold cuts cleanly between levels. With bit-order reversal active, the threshold cuts through the chaotic value mapping in unexpected ways.
 
 ---
 
@@ -320,7 +320,7 @@ These exercises progress from simple decimation to full signal deconstruction. E
 ## Tips
 
 - **Order matters**: Inversion → Modulation → Decimation → Dithering → Posterization → Bit Reversal → Threshold. Each stage transforms the signal before the next one sees it.
-- **Dithering needs posterization**: Dithering adds ±8 counts at 10-bit resolution, which is imperceptible without posterization to amplify the effect.
+- **Dithering needs posterization**: Dithering adds −16 to +14 counts at 10-bit resolution, which is imperceptible without posterization to amplify the effect.
 - **Luma modulation is the signature effect**: Luminance-to-horizontal modulation creates *adaptive* mosaics where the block pattern follows the image content. This is what makes Bitcullis unique.
 - **Bit reversal is not inversion**: Luma Invert flips all bits (linear complement). Bit Order Reversal *permutes* bit positions (nonlinear mapping). They produce completely different results.
 - **Feedback loops**: Routing the output back to the input creates recursive decimation and posterization — self-referencing block structures that evolve over time.

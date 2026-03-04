@@ -115,7 +115,7 @@ Input Video (YUV 4:4:4)
     └─ Select original or processed signal
 ```
 
-Two key interactions: (1) **Luminance drives chrominance**: The hue rotation angle is computed from the *processed* Y channel (after Luma Gain and Brightness). This means the Y-channel proc amp controls also change the hue rotation mapping, creating a coupled luminance-chrominance creative space. (2) **AND vs. XOR crushing**: AND is structured and predictable — it produces smooth staircase quantization. XOR is glitchy and surprising — it flips bits in a deterministic but visually chaotic pattern.
+Two key interactions: (1) **Luminance drives chrominance**: The hue rotation angle is computed from the raw Y input via a dedicated proc amp (Luma to Hue as contrast, Hue as brightness offset). This is independent of the Y-channel output proc amp (Luma Gain and Brightness). Changing Brightness or Luma Gain affects the Y output but does *not* change the hue rotation mapping. (2) **AND vs. XOR crushing**: AND is structured and predictable — it produces smooth staircase quantization. XOR is glitchy and surprising — it flips bits in a deterministic but visually chaotic pattern.
 
 ---
 
@@ -155,7 +155,7 @@ Color saturation *after* hue rotation. This scales the rotated U and V values ar
 | Default | 50.0% |
 | Suffix | % |
 
-Brightness offset via the Y-channel proc amp. Because the Y value drives hue rotation (when Luma to Hue is active), changing Brightness also shifts the hue mapping — it acts as a *chromatic offset*. Increasing brightness shifts the entire rainbow palette toward one end; decreasing shifts it toward the other.
+Brightness offset via the Y-channel proc amp. Adjusts the DC level of the output luminance. At center, no offset. Clockwise lifts the entire image uniformly brighter; counter-clockwise pushes it darker. Note that Brightness only affects the Y output — it does *not* influence hue rotation (which is driven by a separate proc amp with its own controls).
 
 ---
 
@@ -177,7 +177,7 @@ Pinwheel's signature parameter. Controls how strongly input luminance modulates 
 | Default | 100.0% |
 | Suffix | % |
 
-Y channel bit-crushing depth. The crushing mode (AND or XOR) is set by Switch 10. In **Clean** (AND) mode: higher values progressively zero the least significant bits, creating a smooth staircase quantization. In **Glitch** (XOR) mode: higher values flip bits, producing chaotic, nonlinear value scrambling. The effect on the Y channel is visible as brightness quantization or brightness scrambling.
+Y channel bit-crushing depth. The crushing mode (AND or XOR) is set by Switch 10. In **Clean** (AND) mode: lower values progressively zero the least significant bits, creating a smooth staircase quantization (at maximum the full value passes unchanged). In **Glitch** (XOR) mode: lower values flip bits, producing chaotic, nonlinear value scrambling. The effect on the Y channel is visible as brightness quantization or brightness scrambling.
 
 ---
 
@@ -188,7 +188,7 @@ Y channel bit-crushing depth. The crushing mode (AND or XOR) is set by Switch 10
 | Default | 50.0% |
 | Suffix | % |
 
-Luminance gain via the Y-channel proc amp. Because Y drives hue rotation, increasing Luma Gain also stretches the brightness range that feeds the rotation angle — the rainbow maps across more of the color spectrum. Reducing gain compresses the Y range, narrowing the rainbow. This is a second-order chromatic control that couples brightness to color.
+Luminance gain via the Y-channel proc amp. Increasing Luma Gain stretches the brightness range of the output Y channel, producing higher contrast. Reducing gain compresses the output Y range. Note that Luma Gain only affects the Y output — it does *not* influence hue rotation (which uses a separate proc amp controlled by Luma to Hue and Hue).
 
 ---
 
@@ -244,9 +244,9 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 2. **Activate modulation**: Slowly increase Luma to Hue (Knob 4) from center toward maximum. Watch the monochrome image develop into a rainbow as different brightness levels map to different hue angles.
 3. **Rotate the palette**: Sweep the Hue knob (Knob 1). The entire rainbow palette rotates — the same brightness gradient maps to a different set of colors.
 4. **Saturation**: Adjust Saturation (Knob 2) to control color intensity. At 0%, the image returns to monochrome regardless of hue rotation.
-5. **Brightness interaction**: Change Brightness (Knob 3). Notice that the rainbow palette shifts — brightness acts as a chromatic offset when Luma to Hue is active.
+5. **Brightness and gain**: Change Brightness (Knob 3) and Luma Gain (Knob 6). These adjust the output luminance level and contrast but do *not* alter the hue rotation mapping — the rainbow remains the same, only the brightness of the result changes.
 
-**Key concepts**: Colorize removes original color allowing pure luminance-to-hue mapping, Luma to Hue controls modulation depth, Hue rotates the palette, Brightness acts as a chromatic offset
+**Key concepts**: Colorize removes original color allowing pure luminance-to-hue mapping, Luma to Hue controls modulation depth, Hue rotates the palette, Brightness and Luma Gain control output Y independently
 
 ---
 
@@ -268,8 +268,8 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 **Objective**: Experience the full range from subtle color correction to extreme glitch texture.
 
 1. **Subtle correction**: Start with a small hue rotation (Knob 1 near center). Observe gentle shifts in the color palette — this is Pinwheel as a color corrector.
-2. **Add gain**: Increase Luma Gain (Knob 6). The brightness range stretches, and if Luma to Hue is active, the rainbow palette expands.
-3. **Clean crushing**: Begin increasing Posterize (Knob 5) in Clean mode (Switch 10 Off/AND). Watch brightness quantize into smooth staircase levels.
+2. **Add gain**: Increase Luma Gain (Knob 6). The brightness range stretches, boosting output contrast.
+3. **Clean crushing**: Begin decreasing Posterize (Knob 5) in Clean mode (Switch 10 Clean/AND). Watch brightness quantize into smooth staircase levels.
 4. **Glitch mode**: Switch Crush Mode (Switch 10) to Glitch (XOR). The same Posterize setting now produces chaotic, scrambled brightness.
 5. **Color crushing**: Lower the Chroma Crush fader (Fader 12). In XOR mode, colors explode into psychedelic fragments.
 6. **Compare**: Toggle Crush Mode back and forth. AND is structured and predictable. XOR is chaotic and surprising. Same controls, fundamentally different character.
@@ -298,8 +298,8 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 1. **Foundation**: Enable Colorize. Set Luma to Hue to ~80%, Hue to ~60%.
 2. **Intensity**: Boost Saturation to ~70–80%. Increase Luma Gain.
 3. **Complement**: Toggle Chroma Invert (Switch 9) for a complementary color palette.
-4. **Total negative**: Toggle Luma Invert (Switch 8) for reversed brightness mapping (which also reverses the hue mapping).
-5. **Crush both channels**: Set Crush Mode to Glitch (XOR). Increase Posterize to ~40%, lower Chroma Crush to ~50%.
+4. **Total negative**: Toggle Luma Invert (Switch 8) for reversed brightness.
+5. **Crush both channels**: Set Crush Mode to Glitch (XOR). Decrease Posterize to ~40%, lower Chroma Crush to ~50%.
 6. **Animate**: Slowly sweep the Hue knob. The entire psychedelic palette rotates through the spectrum — a hallucinatory, ever-shifting chromatic landscape.
 
 **Key concepts**: Colorize + Luma to Hue creates pure brightness-to-color mapping, inversion and crushing compound the effect, sweeping Hue animates the entire palette
@@ -310,7 +310,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 ## Tips
 
 - **Colorize is the key to rainbow mapping**: Without Colorize, Pinwheel rotates existing colors and the output depends on the source chrominance. With Colorize, it maps brightness to color from scratch — the output is entirely determined by the luminance structure and the Hue/Luma to Hue controls.
-- **Brightness and Gain affect color, not just luminance**: Because the Y value drives hue rotation (when Luma to Hue is active), the Y-channel proc amp controls shift and stretch the color mapping. Use this coupling intentionally.
+- **Brightness and Gain control output Y only**: Brightness and Luma Gain adjust the output luminance level and contrast independently of the hue rotation mapping. The hue rotation angle is driven by a separate proc amp (Luma to Hue and Hue knobs).
 - **AND vs. XOR is the biggest toggle**: fundamentally changes the character of all bit-crushing. AND is structured. XOR is chaotic. It's the difference between posterization and glitch art.
 - **Independent Y and UV crushing**: Posterize crushes Y only. Chroma Crush crushes UV only. High Posterize with no Chroma Crush = quantized brightness with smooth color. No Posterize with low Chroma Crush = smooth brightness with quantized color. Both have distinct visual characters.
 - **Chroma Invert complements the palette**: Instantly flip every color to its complement without changing luminance or modulation depth. Useful for quickly exploring palette variations.
@@ -332,7 +332,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 | **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV encoding. |
 | **LUT (Lookup Table)** | A pre-computed array that maps input values to output values for fast evaluation; Pinwheel uses a 10-bit sine/cosine LUT for hue rotation. |
 | **Modulation** | Varying one signal parameter (here, hue angle) in proportion to another signal (luminance), creating a brightness-dependent color mapping. |
-| **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel's Luma Gain and Brightness controls form a Y-channel proc amp whose output also drives hue rotation. |
+| **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel has two Y-channel proc amps: one drives hue rotation (via Luma to Hue and Hue), the other adjusts the output luminance (via Luma Gain and Brightness). |
 | **UV plane** | The two-dimensional chrominance space defined by the U and V axes, where angle represents hue and distance from center represents saturation. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used in Glitch crush mode to flip bits chaotically rather than zero them. |
 | **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |

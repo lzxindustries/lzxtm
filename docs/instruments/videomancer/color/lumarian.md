@@ -201,7 +201,7 @@ Edge Cutoff sets the **bandwidth** of the high-pass filter that extracts edges f
 | **10 — Edge Rectify** | Off | On |
 | **11 — Edge Select** | Single | Both |
 
-Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge processing modes. The raw edge signal is *bipolar* — a bright-to-dark transition produces a positive pulse on one side and a negative pulse on the other. Edge Invert clips one polarity. Edge Rectify applies full-wave rectification (absolute value), folding both polarities to the same sign, which produces symmetrical contour outlines. Edge Select applies half-wave rectification, clipping one polarity to zero. Together, these three switches give you 2³ = 8 distinct edge shapes from the same filter output.
+Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge processing modes. The raw edge signal is *bipolar* — a bright-to-dark transition produces a positive pulse on one side and a negative pulse on the other. Edge Invert (bit 0) adds half-wave rectification, clipping the negative polarity to zero so only positive edges pass. Edge Rectify (bit 1) inverts (negates) the signal, flipping positive and negative polarities. Edge Select (bit 2) applies full-wave rectification (absolute value), folding both polarities to the same sign, which produces symmetrical contour outlines. Together, these three switches give you 2³ = 8 distinct edge shapes from the same filter output.
 
 ---
 
@@ -299,7 +299,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 1. **Monochrome**: Start with Saturation at 0%. Working in monochrome makes it easier to see what the luminance key is doing.
 2. **Separate subject and background**: Use Contrast and Brightness to push your subject's brightness away from the background. Increase Contrast to widen the gap; shift Brightness to move the boundary.
-3. **Gamma shape**: Turn Gamma clockwise to darken midtones, making the boundary between "subject" and "background" sharper.
+3. **Gamma shape**: Turn Gamma counter-clockwise to darken midtones, making the boundary between "subject" and "background" sharper.
 4. **Threshold**: Raise the Luma Blank fader. As the threshold rises, darker parts of the image snap to black. Adjust until the background disappears and only the subject remains.
 5. **Refine**: Go back to Contrast and Brightness to clean up the key edge. Small adjustments here can eliminate fringing.
 6. **Invert**: Enable Luma Invert (Switch 7). The key flips — what was visible becomes black, and what was black becomes visible.
