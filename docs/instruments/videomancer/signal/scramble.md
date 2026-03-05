@@ -15,6 +15,11 @@ import scramble_source3_turtle from '/img/instruments/videomancer/scramble/scram
 import scramble_source4_pattern from '/img/instruments/videomancer/scramble/scramble_source4_pattern.png';
 import scramble_source5_boy from '/img/instruments/videomancer/scramble/scramble_source5_boy.png';
 import scramble_source6_berries from '/img/instruments/videomancer/scramble/scramble_source6_berries.png';
+import scramble_cut_and_rotate from '/img/instruments/videomancer/scramble/scramble_cut_and_rotate.png';
+import scramble_lfsr_diagram from '/img/instruments/videomancer/scramble/scramble_lfsr_diagram.png';
+import scramble_inversion_zones from '/img/instruments/videomancer/scramble/scramble_inversion_zones.png';
+import scramble_historical_comstar from '/img/instruments/videomancer/scramble/scramble_historical_comstar_satellite.jpg';
+import scramble_historical_satellite_tv from '/img/instruments/videomancer/scramble/scramble_historical_satellite_tv_1982.jpg';
 import scramble_hero_s1 from '/img/instruments/videomancer/scramble/scramble_hero_s1.png';
 import scramble_hero_s2 from '/img/instruments/videomancer/scramble/scramble_hero_s2.png';
 import scramble_hero_s3 from '/img/instruments/videomancer/scramble/scramble_hero_s3.png';
@@ -62,6 +67,17 @@ import scramble_ex3_s6 from '/img/instruments/videomancer/scramble/scramble_ex3_
 
 Analog pay-TV systems of the late 1980s and early 1990s scrambled their signals to prevent unauthorized viewing. The most common technique was **per-line cut-and-rotate**: each scanline was split at a secret cut point and the two halves were swapped. Without the matching decoder key, the viewer saw a picture sliced into horizontal strips, each shifted to a different horizontal position — recognizable in outline but impossible to watch. Scramble recreates this effect digitally, simulating not just the scrambling itself but the full spectrum of decoder failure artifacts: sync suppression jitter, video inversion zones, and the mesmerizing drift of a descrambler that almost — but never quite — locks on.
 
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
+<div style={{flex: '1 1 280px'}}>
+<img src={scramble_historical_comstar} alt="COMSTAR I communications satellite, 1976" style={{width: '100%'}} />
+</div>
+<div style={{flex: '1 1 350px'}}>
+<img src={scramble_historical_satellite_tv} alt="Early satellite television broadcast photographed from a TV screen, 1982" style={{width: '100%'}} />
+</div>
+</div>
+
+*Left: The COMSTAR I communications satellite (1976), one of the early spacecraft used to relay television signals across the United States. Photo: NASA / NARA. Public domain. Right: An early satellite TV broadcast photographed from a television screen, 1982. The arrival of satellite pay-TV created the need for signal scrambling systems — and the culture of unauthorized descrambling that Scramble recreates. Photo: Anefo / Dutch National Archives. CC0.*
+
 The program chains four processing stages: a line buffer with per-line cut-and-rotate addressing, video inversion zones that negate alternating groups of lines, horizontal jitter simulating sync suppression, and a wet/dry crossfade mix. The name comes directly from the broadcast industry term — a "scrambled" signal is one whose line order or line content has been deliberately disrupted to deny intelligibility. The "Decode" control sweeps the descrambler alignment, and when it cancels the LFSR sequence the image momentarily snaps into clarity like adjusting a pirate decoder box.
 
 At conservative settings, Scramble produces a mild horizontal displacement that gently slides portions of the image apart. At extreme settings with all features enabled — double scramble, luma modulation, heavy jitter, and fast drift — the image dissolves into an aggressively disrupted field of shuffled, inverted, trembling video fragments that evokes the experience of trying to watch a premium cable channel through a malfunctioning black-market decoder.
@@ -82,6 +98,10 @@ At conservative settings, Scramble produces a mild horizontal displacement that 
 
 The **VideoCrypt** system, deployed by British Sky Broadcasting in 1989, scrambled each scanline by splitting it at a pseudo-random cut point and swapping the two halves. The cut point changed every line according to a sequence stored on a smart card. Without the card, the viewer saw a picture in which every line was horizontally displaced by a different amount — the classic "shuffled blinds" look. **Nagravision** and other European pay-TV systems used similar line-delay techniques. Scramble implements this by writing each scanline into a 1024-pixel line buffer and reading it back with a per-line offset derived from a 16-bit LFSR, producing a new pseudo-random displacement for every line.
 
+<img src={scramble_cut_and_rotate} alt="Diagram showing a scanline split at a cut point with halves swapped" style={{maxWidth: '800px', width: '100%'}} />
+
+*Per-line cut-and-rotate: each scanline is split at a pseudo-random cut point and the two halves are swapped, wrapping around the 1024-pixel line buffer.*
+
 ### Sync Suppression and Horizontal Jitter
 
 Pay-TV systems like **SSAVI** (Sync Suppression And Video Inversion) went further than line shuffling: they attenuated or replaced the horizontal sync pulses in the analog signal. A TV receiver that lost horizontal sync would display lines that drifted and wobbled horizontally — the picture "swam" left and right. Scramble simulates this with a second LFSR that generates a per-line horizontal displacement scaled by the Jitter control. The result is the characteristic trembling instability of a signal whose sync has been partially suppressed.
@@ -90,9 +110,17 @@ Pay-TV systems like **SSAVI** (Sync Suppression And Video Inversion) went furthe
 
 **ON TV** and **SelecTV**, two over-the-air pay-TV services in the United States during the early 1980s, scrambled their signals by inverting the video — replacing each brightness value with its complement so that bright became dark and dark became bright. More sophisticated systems inverted only portions of each frame, creating alternating bands of normal and inverted video. Scramble implements this by selecting a bit of the line counter as an inversion toggle, producing groups of 2, 4, 8, 16, 32, 64, or 128 consecutive lines that alternate between normal and inverted. In "Full YUV" mode, the chroma channels are also inverted, producing complementary-color zebra stripes.
 
+<img src={scramble_inversion_zones} alt="Video inversion zones at different period settings" style={{maxWidth: '800px', width: '100%'}} />
+
+*Video inversion zones at each Invert Period setting. Period 0 leaves the image untouched; higher periods produce increasingly broad alternating bands of normal and inverted video. Green bars indicate normal lines; red bars indicate inverted lines.*
+
 ### LFSR Pseudo-Random Sequences
 
 A **Linear Feedback Shift Register** (LFSR) generates a sequence of pseudo-random numbers by shifting a register and feeding back the XOR of specific bit positions (called taps). The sequence is deterministic — given the same seed, the same sequence always results. Scramble uses a 16-bit LFSR (taps 16, 15, 13, 4 for maximal length) to generate the per-line cut point, and a 10-bit LFSR (taps 10, 7) for the jitter displacement. The cut LFSR is reseeded every frame from the Seed control plus the current drift offset, ensuring repeatable scramble patterns that evolve predictably when drift is active.
+
+<img src={scramble_lfsr_diagram} alt="16-bit LFSR diagram with feedback taps and per-line output sequence" style={{maxWidth: '800px', width: '100%'}} />
+
+*Top: the 16-bit LFSR register with feedback taps at bits 16, 15, 13, and 4 (highlighted in orange). The XOR of these taps feeds back to the input. Bottom: per-line cut point sequences from two different seeds, showing how different seeds produce completely different scramble patterns.*
 
 ### Descrambler Lock and Drift
 
@@ -222,14 +250,6 @@ The five toggles control independent binary options that can be combined freely.
 ---
 
 ### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
 
 #### Fader 12 — Mix
 | Property | Value |

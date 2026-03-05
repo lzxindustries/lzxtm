@@ -15,6 +15,10 @@ import lumarian_source3_turtle from '/img/instruments/videomancer/lumarian/lumar
 import lumarian_source4_pattern from '/img/instruments/videomancer/lumarian/lumarian_source4_pattern.png';
 import lumarian_source5_woman from '/img/instruments/videomancer/lumarian/lumarian_source5_woman.png';
 import lumarian_source6_berries from '/img/instruments/videomancer/lumarian/lumarian_source6_berries.png';
+import lumarian_gamma_curves from '/img/instruments/videomancer/lumarian/lumarian_gamma_curves.png';
+import lumarian_edge_modes from '/img/instruments/videomancer/lumarian/lumarian_edge_modes.png';
+import lumarian_historical_crt_coating from '/img/instruments/videomancer/lumarian/lumarian_historical_crt_coating.jpg';
+import lumarian_historical_crt_testing from '/img/instruments/videomancer/lumarian/lumarian_historical_crt_testing.jpg';
 import lumarian_hero_s1 from '/img/instruments/videomancer/lumarian/lumarian_hero_s1.png';
 import lumarian_hero_s2 from '/img/instruments/videomancer/lumarian/lumarian_hero_s2.png';
 import lumarian_hero_s3 from '/img/instruments/videomancer/lumarian/lumarian_hero_s3.png';
@@ -82,9 +86,24 @@ At one end of the spectrum, Lumarian can do straightforward image correction: fi
 
 Before a television signal left a broadcast station, it passed through a piece of equipment called a **processing amplifier** (or "proc amp"). The proc amp's job was to standardize the signal — adjusting contrast, brightness, and color saturation so that every camera, tape deck, and satellite feed looked consistent on air. Lumarian's Contrast, Brightness, and Saturation controls do exactly what a proc amp did, except digitally, operating in the YUV color space at 10-bit precision with no signal degradation.
 
+<img src={lumarian_historical_crt_testing} alt="Workers testing CRT lifetimes at Research Enterprises, Toronto, 1942" style={{maxWidth: '600px', width: '100%'}} />
+
+*Testing cathode ray tubes at Research Enterprises Limited, Toronto, 1942. Workers evaluated CRT lifetime for use in radar and navigation displays — the same tube technology that would later define television's nonlinear brightness response and give rise to gamma correction. Photo: Nicholas Morant / National Film Board of Canada. Public domain.*
+
 ### What Is Gamma Correction?
 
 The Gamma control reshapes the *transfer curve* that maps input brightness values to output brightness values. Think of it this way: if you graphed "input brightness" on the x-axis and "output brightness" on the y-axis, a straight diagonal line would mean no change. Gamma bends that line into a curve — exponential (which crushes shadows and stretches highlights) or logarithmic (which lifts shadows and compresses highlights). This technique originates from the physics of CRT displays, which had a naturally nonlinear response to voltage. Lumarian lets you crossfade between both curve shapes in real time.
+
+<div style={{display: 'flex', gap: '16px', flexWrap: 'wrap', alignItems: 'flex-start'}}>
+<div style={{flex: '1 1 300px'}}>
+<img src={lumarian_historical_crt_coating} alt="Workers coating CRT phosphor screens at Research Enterprises, Toronto, 1942" style={{width: '100%'}} />
+</div>
+<div style={{flex: '1 1 300px'}}>
+<img src={lumarian_gamma_curves} alt="Gamma transfer curves showing logarithmic, linear, and exponential shapes" style={{width: '100%'}} />
+</div>
+</div>
+
+*Left: Coating cathode ray tubes with phosphor paint at Research Enterprises Limited, Toronto, 1942. The nonlinear relationship between voltage and phosphor brightness in these tubes is the historical origin of gamma correction. Photo: Nicholas Morant / National Film Board of Canada. Public domain. Right: Gamma transfer curves — counter-clockwise (logarithmic) lifts shadow values; clockwise (exponential) crushes them.*
 
 ### What Is Edge Enhancement?
 
@@ -212,6 +231,10 @@ Edge Cutoff sets the **bandwidth** of the high-pass filter that extracts edges f
 | **11 — Edge Select** | Single | Both |
 
 Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge processing modes. The raw edge signal is *bipolar* — a bright-to-dark transition produces a positive pulse on one side and a negative pulse on the other. Edge Invert (bit 0) adds half-wave rectification, clipping the negative polarity to zero so only positive edges pass. Edge Rectify (bit 1) inverts (negates) the signal, flipping positive and negative polarities. Edge Select (bit 2) applies full-wave rectification (absolute value), folding both polarities to the same sign, which produces symmetrical contour outlines. Together, these three switches give you 2³ = 8 distinct edge shapes from the same filter output.
+
+<img src={lumarian_edge_modes} alt="8 edge mode waveforms from switches 9, 10, 11" style={{maxWidth: '800px', width: '100%'}} />
+
+*All eight edge mode waveforms. Each subplot shows the output shape of a single brightness transition processed through a different combination of the three edge switches.*
 
 ---
 
