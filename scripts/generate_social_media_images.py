@@ -1,374 +1,332 @@
 """
-Generate Instagram/Facebook social media post images for the Chromagnon Production Plan blog post.
-Uses the same visual style as the timeline graphic and docs site (dark bg, orange accent).
-Composites existing Chromagnon images with branded typography.
+Generate social media images for the Chromagnon Production Plan blog post.
+Visual style: dark, cinematic, minimal text. Let the product images speak.
+Matches docs.lzxindustries.net dark theme with orange accent.
 
 Outputs:
-  - chromagnon-social-instagram.png (1080x1080) — Instagram feed post
-  - chromagnon-social-facebook.png  (1200x630)  — Facebook/Open Graph share
-  - chromagnon-social-story.png     (1080x1920) — Instagram/Facebook story
+  - chromagnon-social-instagram.png (1080x1080) — Instagram feed
+  - chromagnon-social-facebook.png  (1200x630)  — Facebook / Open Graph
+  - chromagnon-social-story.png     (1080x1920) — Instagram / Facebook story
 
-Requires: matplotlib, Pillow
+Requires: Pillow
 """
 
-import matplotlib
-matplotlib.use('Agg')
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-from PIL import Image, ImageDraw, ImageFilter, ImageEnhance
-import numpy as np
+import random
+from PIL import Image, ImageDraw, ImageEnhance, ImageFont, ImageFilter
 from pathlib import Path
 
 # === Paths ===
 ROOT = Path(__file__).parent.parent
-BLOG_DIR = ROOT / "blog" / "2026-03-05-chromagnon-production-plan"
+BLOG_DIR = ROOT / "blog" / "2026-03-05-chromagnon-building-it-right"
 FONT_DIR = ROOT / "static" / "font"
-LOGO_DIR = ROOT / "static" / "img"
 
 # Source images
 FRONT_PANEL = BLOG_DIR / "chromagnon-front-panel.png"
 CORE_BOARD = BLOG_DIR / "chromagnon-revI-core-board.jpg"
 ENCLOSURE = BLOG_DIR / "chromagnon-sheet-metal-enclosure.png"
-TIMELINE = BLOG_DIR / "chromagnon-timeline-graphic.png"
+WORKBENCH = BLOG_DIR / "chromagnon-workbench.jpg"
+LOGO_PNG = ROOT / "static" / "img" / "logo-dark-512.png"
 
 # Fonts
 FONT_DIN = str(FONT_DIR / "DIN1451-36breit.ttf")
-FONT_RELIEF = str(FONT_DIR / "ReliefSingleLine-Regular.ttf")
 
-# === Color scheme (matches docs site + timeline graphic) ===
-BG_COLOR = (27, 27, 29)           # #1b1b1d
-ACCENT = (214, 119, 10)           # #d6770a
-ACCENT_LIGHT = (245, 152, 46)     # #f5982e
-TEXT_WHITE = (227, 227, 227)      # #e3e3e3
-TEXT_MUTED = (153, 153, 153)      # #999999
-DARK_OVERLAY = (15, 15, 17)       # Slightly darker for overlays
-
-
-def load_and_register_fonts():
-    """Register custom fonts with matplotlib."""
-    for font_path in [FONT_DIN, FONT_RELIEF]:
-        if Path(font_path).exists():
-            fm.fontManager.addfont(font_path)
+# === Colors ===
+BG = (27, 27, 29)
+ACCENT = (214, 119, 10)
+ACCENT_LIGHT = (245, 152, 46)
+WHITE = (227, 227, 227)
+MUTED = (100, 100, 100)
+BODY_TEXT = (155, 155, 155)
 
 
-def crop_center(img, target_w, target_h):
-    """Crop image from center to target aspect ratio, then resize."""
+def _font(path, size):
+    try:
+        return ImageFont.truetype(path, size)
+    except (OSError, IOError):
+        return ImageFont.load_default()
+
+
+def place_logo(canvas, x, y, height):
+    """Place the LZX logo at (x, y) with given height in pixels."""
+    if not LOGO_PNG.exists():
+        draw = ImageDraw.Draw(canvas)
+        draw.text((x, y), "LZX", fill=ACCENT_LIGHT, font=_font(FONT_DIN, height))
+        return canvas
+    logo = Image.open(LOGO_PNG).convert('RGBA')
+    lw, lh = logo.size
+    target_h = height
+    target_w = int(lw * (target_h / lh))
+    logo = logo.resize((target_w, target_h), Image.LANCZOS)
+    # Tint the logo to ACCENT_LIGHT color
+    r, g, b = ACCENT_LIGHT
+    pixels = logo.load()
+    for py in range(target_h):
+        for px in range(target_w):
+            _, _, _, a = pixels[px, py]
+            pixels[px, py] = (r, g, b, a)
+    canvas.paste(logo, (x, y), logo)
+    return canvas
+
+
+def add_film_grain(img, intensity=0.03, seed=42):
+    """Add subtle monochromatic film grain for depth on flat backgrounds."""
     w, h = img.size
-    target_ratio = target_w / target_h
-    current_ratio = w / h
-
-    if current_ratio > target_ratio:
-        # Too wide — crop sides
-        new_w = int(h * target_ratio)
-        left = (w - new_w) // 2
-        img = img.crop((left, 0, left + new_w, h))
-    else:
-        # Too tall — crop top/bottom
-        new_h = int(w / target_ratio)
-        top = (h - new_h) // 2
-        img = img.crop((0, top, w, top + new_h))
-
-    return img.resize((target_w, target_h), Image.LANCZOS)
-
-
-def darken_image(img, factor=0.35):
-    """Darken an image for use as background."""
-    enhancer = ImageEnhance.Brightness(img)
-    return enhancer.enhance(factor)
-
-
-def add_gradient_overlay(img, direction='bottom', intensity=0.85):
-    """Add a gradient overlay fading to dark from the specified direction."""
-    w, h = img.size
-    gradient = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-    draw = ImageDraw.Draw(gradient)
-
+    rng = random.Random(seed)
+    grain = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+    pixels = grain.load()
     for y in range(h):
-        if direction == 'bottom':
-            alpha = int(255 * intensity * (y / h) ** 1.5)
-        elif direction == 'top':
-            alpha = int(255 * intensity * ((h - y) / h) ** 1.5)
-        else:
-            alpha = int(255 * intensity * (y / h))
-        draw.rectangle([(0, y), (w, y + 1)], fill=(BG_COLOR[0], BG_COLOR[1], BG_COLOR[2], alpha))
-
-    return Image.alpha_composite(img.convert('RGBA'), gradient)
+        for x in range(w):
+            v = rng.randint(0, 255)
+            a = int(255 * intensity)
+            pixels[x, y] = (v, v, v, a)
+    return Image.alpha_composite(img.convert('RGBA'), grain)
 
 
-def draw_accent_line(draw, x, y, width, thickness=4):
-    """Draw a horizontal orange accent line."""
-    draw.rectangle([(x, y), (x + width, y + thickness)], fill=ACCENT)
+def place_front_panel(canvas, panel_img, y_center, scale=0.9, glow=True):
+    """Place the front panel image (with transparency) centered on the canvas."""
+    cw, ch = canvas.size
+    bbox = panel_img.getbbox()
+    panel_content = panel_img.crop(bbox) if bbox else panel_img
 
+    pw, ph = panel_content.size
+    target_w = int(cw * scale)
+    target_h = int(ph * (target_w / pw))
+    panel_content = panel_content.resize((target_w, target_h), Image.LANCZOS)
 
-def draw_text_with_font(draw, position, text, font_path, size, color, anchor='la'):
-    """Draw text using a PIL ImageFont (with fallback)."""
-    from PIL import ImageFont
-    try:
-        font = ImageFont.truetype(font_path, size)
-    except (OSError, IOError):
-        font = ImageFont.load_default()
-    draw.text(position, text, fill=color, font=font, anchor=anchor)
-    return font
+    px = (cw - target_w) // 2
+    py = y_center - target_h // 2
 
+    if glow:
+        glow_layer = Image.new('RGBA', canvas.size, (0, 0, 0, 0))
+        glow_draw = ImageDraw.Draw(glow_layer)
+        pad = 30
+        glow_draw.ellipse(
+            [(px - pad, py - pad), (px + target_w + pad, py + target_h + pad)],
+            fill=(ACCENT[0], ACCENT[1], ACCENT[2], 25)
+        )
+        glow_layer = glow_layer.filter(ImageFilter.GaussianBlur(radius=35))
+        canvas = Image.alpha_composite(canvas, glow_layer)
 
-def get_text_bbox(draw, text, font_path, size):
-    """Get text bounding box dimensions."""
-    from PIL import ImageFont
-    try:
-        font = ImageFont.truetype(font_path, size)
-    except (OSError, IOError):
-        font = ImageFont.load_default()
-    bbox = draw.textbbox((0, 0), text, font=font)
-    return bbox[2] - bbox[0], bbox[3] - bbox[1]
+    canvas.paste(panel_content, (px, py), panel_content)
+    return canvas
 
 
 # ============================================================================
 # INSTAGRAM POST (1080x1080)
+# Front panel floating on dark textured background, minimal text below.
 # ============================================================================
 def generate_instagram_post():
+    M = 50  # consistent margin
     W, H = 1080, 1080
-    canvas = Image.new('RGBA', (W, H), BG_COLOR + (255,))
+    canvas = Image.new('RGBA', (W, H), BG + (255,))
+
+    # Front panel hero — upper area with clearance for text below
+    if FRONT_PANEL.exists():
+        panel = Image.open(FRONT_PANEL)
+        canvas = place_front_panel(canvas, panel, y_center=290, scale=0.88, glow=True)
+
+    # Subtle grain
+    canvas = add_film_grain(canvas, intensity=0.03)
     draw = ImageDraw.Draw(canvas)
 
-    # -- Background: front panel image, darkened, with gradient --
-    if FRONT_PANEL.exists():
-        bg = Image.open(FRONT_PANEL).convert('RGB')
-        bg = crop_center(bg, W, H)
-        bg = darken_image(bg, factor=0.25)
-        bg_rgba = bg.convert('RGBA')
-        # Add strong bottom gradient for text readability
-        bg_rgba = add_gradient_overlay(bg_rgba, 'bottom', intensity=0.95)
-        canvas = Image.alpha_composite(canvas, bg_rgba)
-        draw = ImageDraw.Draw(canvas)
+    # Thin accent lines top and bottom
+    draw.rectangle([(0, 0), (W, 3)], fill=ACCENT)
+    draw.rectangle([(0, H - 3), (W, H)], fill=ACCENT)
 
-    # -- Top accent bar --
-    draw.rectangle([(0, 0), (W, 5)], fill=ACCENT)
+    # LZX logo — top left
+    canvas = place_logo(canvas, M, 20, 44)
+    draw = ImageDraw.Draw(canvas)
+    # Date — top right
+    draw.text((W - M, 36), "MARCH 5, 2026", fill=MUTED, font=_font(FONT_DIN, 26), anchor='ra')
 
-    # -- LZX text mark (top left area) --
-    draw_text_with_font(draw, (60, 40), "LZX", FONT_DIN, 28, ACCENT_LIGHT)
+    # Product name + tagline
+    name_y = 570
+    draw.rectangle([(M, name_y), (M + 160, name_y + 4)], fill=ACCENT)
+    draw.text((M, name_y + 16), "CHROMAGNON", fill=WHITE, font=_font(FONT_DIN, 96))
+    draw.text((M, name_y + 128), "Building it right.",
+              fill=ACCENT_LIGHT, font=_font(FONT_DIN, 46))
 
-    # -- Date badge (top right) --
-    draw_text_with_font(draw, (W - 60, 40), "MARCH 2026", FONT_DIN, 22, TEXT_MUTED, anchor='ra')
+    # Body text
+    body_lines = ["Production update with the full schedule,",
+                  "upcoming milestones, and planned monthly",
+                  "progress reports through fulfillment."]
+    for i, ln in enumerate(body_lines):
+        draw.text((M, name_y + 194 + i * 32), ln,
+                  fill=BODY_TEXT, font=_font(FONT_DIN, 26))
 
-    # -- Main title block (lower portion) --
-    title_y = 680
+    # Divider
+    draw.line([(M, H - 110), (M + 200, H - 110)], fill=(50, 50, 52), width=1)
 
-    # Accent line above title
-    draw_accent_line(draw, 60, title_y, 120, thickness=4)
+    # CTA
+    draw.text((M, H - 90), "New post on the LZX development blog",
+              fill=ACCENT_LIGHT, font=_font(FONT_DIN, 34))
+    draw.text((M, H - 44), "docs.lzxindustries.net/blog",
+              fill=MUTED, font=_font(FONT_DIN, 28))
 
-    # "CHROMAGNON" in large type
-    draw_text_with_font(draw, (60, title_y + 20), "CHROMAGNON", FONT_DIN, 72, TEXT_WHITE)
-
-    # Subtitle
-    draw_text_with_font(draw, (60, title_y + 105), "THE PRODUCTION PLAN", FONT_DIN, 36, ACCENT_LIGHT)
-
-    # Accent line below subtitle
-    draw_accent_line(draw, 60, title_y + 160, 80, thickness=3)
-
-    # Key details
-    details = [
-        "First unit ships August 2026",
-        "FPGA-based DSP • Field-proven platform",
-        "All pre-orders honored at original price",
-    ]
-    for i, detail in enumerate(details):
-        draw_text_with_font(draw, (60, title_y + 185 + i * 36), detail,
-                          FONT_DIN, 22, TEXT_MUTED if i > 0 else TEXT_WHITE)
-
-    # -- Bottom accent bar --
-    draw.rectangle([(0, H - 5), (W, H)], fill=ACCENT)
-
-    # -- URL bottom right --
-    draw_text_with_font(draw, (W - 60, H - 35), "docs.lzxindustries.net", FONT_DIN, 18, TEXT_MUTED, anchor='ra')
-
-    # Save
     out = BLOG_DIR / "chromagnon-social-instagram.png"
-    canvas.convert('RGB').save(out, dpi=(150, 150), quality=95)
-    print(f"  Instagram post: {out} ({out.stat().st_size:,} bytes)")
+    canvas.convert('RGB').save(out, quality=95)
+    print(f"  Instagram:  {out.name} ({out.stat().st_size:,} bytes)")
 
 
 # ============================================================================
 # FACEBOOK / OPEN GRAPH (1200x630)
+# Front panel on right, text on left, workbench texture behind.
 # ============================================================================
 def generate_facebook_post():
     W, H = 1200, 630
-    canvas = Image.new('RGBA', (W, H), BG_COLOR + (255,))
+    canvas = Image.new('RGBA', (W, H), BG + (255,))
+
+    # Faint workbench texture
+    if WORKBENCH.exists():
+        tex = Image.open(WORKBENCH).convert('RGB')
+        tw, th = tex.size
+        ratio = W / H
+        cur = tw / th
+        if cur > ratio:
+            nw = int(th * ratio)
+            tex = tex.crop(((tw - nw) // 2, 0, (tw + nw) // 2, th))
+        tex = tex.resize((W, H), Image.LANCZOS)
+        tex = ImageEnhance.Brightness(tex).enhance(0.06)
+        canvas.paste(tex, (0, 0))
+        canvas = canvas.convert('RGBA')
+
+    # Front panel on right side
+    if FRONT_PANEL.exists():
+        panel = Image.open(FRONT_PANEL)
+        bbox = panel.getbbox()
+        pc = panel.crop(bbox) if bbox else panel
+        pw, ph = pc.size
+        target_h = int(H * 0.55)
+        target_w = int(pw * (target_h / ph))
+        pc = pc.resize((target_w, target_h), Image.LANCZOS)
+
+        px = W - target_w - 40
+        py = (H - target_h) // 2
+
+        # Glow — elliptical for softer look
+        glow = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        ImageDraw.Draw(glow).ellipse(
+            [(px - 20, py - 20), (px + target_w + 20, py + target_h + 20)],
+            fill=(ACCENT[0], ACCENT[1], ACCENT[2], 20))
+        canvas = Image.alpha_composite(canvas, glow.filter(ImageFilter.GaussianBlur(25)))
+        canvas.paste(pc, (px, py), pc)
+
+        # Left fade for text readability
+        fade = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        fd = ImageDraw.Draw(fade)
+        for x in range(W):
+            if x < W * 0.42:
+                a = int(255 * 0.85)
+            elif x < W * 0.58:
+                a = int(255 * 0.85 * (1 - (x - W * 0.42) / (W * 0.16)))
+            else:
+                a = 0
+            fd.rectangle([(x, 0), (x + 1, H)], fill=(BG[0], BG[1], BG[2], a))
+        canvas = Image.alpha_composite(canvas, fade)
+
     draw = ImageDraw.Draw(canvas)
 
-    # -- Right side: front panel image as background element --
-    if FRONT_PANEL.exists():
-        panel = Image.open(FRONT_PANEL).convert('RGBA')
-        # Scale to fit right side
-        panel_h = H
-        panel_w = int(panel.width * (panel_h / panel.height))
-        panel = panel.resize((panel_w, panel_h), Image.LANCZOS)
-        # Darken
-        panel_rgb = panel.convert('RGB')
-        panel_rgb = darken_image(panel_rgb, factor=0.3)
-        # Place on right side
-        x_offset = W - panel_w + panel_w // 4
-        canvas.paste(panel_rgb, (x_offset, 0))
-        draw = ImageDraw.Draw(canvas)
+    # Top/bottom accent
+    M = 50  # consistent margin
+    draw.rectangle([(0, 0), (W, 3)], fill=ACCENT)
+    draw.rectangle([(0, H - 3), (W, H)], fill=ACCENT)
 
-        # Add left gradient to blend with text area
-        gradient = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        grad_draw = ImageDraw.Draw(gradient)
-        for x in range(W):
-            if x < W * 0.5:
-                alpha = int(255 * 0.95)
-            elif x < W * 0.75:
-                progress = (x - W * 0.5) / (W * 0.25)
-                alpha = int(255 * (0.95 - 0.75 * progress))
-            else:
-                alpha = int(255 * 0.2)
-            grad_draw.rectangle([(x, 0), (x + 1, H)], fill=(BG_COLOR[0], BG_COLOR[1], BG_COLOR[2], alpha))
-        canvas = Image.alpha_composite(canvas, gradient)
-        draw = ImageDraw.Draw(canvas)
+    # LZX logo
+    canvas = place_logo(canvas, M, 16, 36)
+    draw = ImageDraw.Draw(canvas)
+    # Date
+    draw.text((W - M, 28), "MARCH 5, 2026", fill=MUTED, font=_font(FONT_DIN, 20), anchor='ra')
 
-    # -- Top accent bar --
-    draw.rectangle([(0, 0), (W, 4)], fill=ACCENT)
+    # Text — left, vertically centered
+    ty = 110
+    draw.rectangle([(M, ty), (M + 160, ty + 4)], fill=ACCENT)
+    draw.text((M, ty + 16), "CHROMAGNON", fill=WHITE, font=_font(FONT_DIN, 72))
+    draw.text((M, ty + 100), "Building it right.", fill=ACCENT_LIGHT, font=_font(FONT_DIN, 36))
 
-    # -- LZX brand --
-    draw_text_with_font(draw, (50, 35), "LZX", FONT_DIN, 24, ACCENT_LIGHT)
+    # Body text
+    body_lines = ["Production update with the full schedule,",
+                  "upcoming milestones, and planned monthly",
+                  "progress reports through fulfillment."]
+    for i, ln in enumerate(body_lines):
+        draw.text((M, ty + 154 + i * 28), ln,
+                  fill=BODY_TEXT, font=_font(FONT_DIN, 20))
 
-    # -- Main content (left side) --
-    content_y = 140
+    # Divider
+    draw.line([(M, H - 96), (M + 140, H - 96)], fill=(50, 50, 52), width=1)
 
-    # Accent line
-    draw_accent_line(draw, 50, content_y, 100, thickness=4)
+    # CTA
+    draw.text((M, H - 76), "New post on the LZX development blog",
+              fill=ACCENT_LIGHT, font=_font(FONT_DIN, 26))
+    draw.text((M, H - 38), "docs.lzxindustries.net/blog",
+              fill=MUTED, font=_font(FONT_DIN, 22))
 
-    # Title
-    draw_text_with_font(draw, (50, content_y + 18), "CHROMAGNON", FONT_DIN, 64, TEXT_WHITE)
-    draw_text_with_font(draw, (50, content_y + 92), "THE PRODUCTION PLAN", FONT_DIN, 30, ACCENT_LIGHT)
-
-    # Accent line
-    draw_accent_line(draw, 50, content_y + 140, 70, thickness=3)
-
-    # Key points
-    points = [
-        "Ship Unit #1: August 2026",
-        "FPGA-based DSP on field-proven platform",
-        "All pre-orders honored at original price",
-    ]
-    for i, point in enumerate(points):
-        bullet_color = ACCENT if i == 0 else TEXT_MUTED
-        draw_text_with_font(draw, (50, content_y + 165 + i * 34), point,
-                          FONT_DIN, 20, bullet_color if i == 0 else TEXT_MUTED)
-
-    # -- Bottom accent bar --
-    draw.rectangle([(0, H - 4), (W, H)], fill=ACCENT)
-
-    # -- URL --
-    draw_text_with_font(draw, (50, H - 35), "docs.lzxindustries.net", FONT_DIN, 16, TEXT_MUTED)
-
-    # -- Date --
-    draw_text_with_font(draw, (W - 50, H - 35), "MARCH 5, 2026", FONT_DIN, 16, TEXT_MUTED, anchor='ra')
-
-    # Save
     out = BLOG_DIR / "chromagnon-social-facebook.png"
-    canvas.convert('RGB').save(out, dpi=(150, 150), quality=95)
-    print(f"  Facebook/OG:    {out} ({out.stat().st_size:,} bytes)")
+    canvas.convert('RGB').save(out, quality=95)
+    print(f"  Facebook:   {out.name} ({out.stat().st_size:,} bytes)")
 
 
 # ============================================================================
 # INSTAGRAM STORY (1080x1920)
+# Front panel hero, title, tagline, CTA. Clean and simple.
 # ============================================================================
 def generate_instagram_story():
+    M = 50  # consistent margin
     W, H = 1080, 1920
-    canvas = Image.new('RGBA', (W, H), BG_COLOR + (255,))
+    canvas = Image.new('RGBA', (W, H), BG + (255,))
+
+    # Top accent
+    draw = ImageDraw.Draw(canvas)
+    draw.rectangle([(0, 0), (W, 4)], fill=ACCENT)
+    canvas = place_logo(canvas, M, 40, 50)
+    draw = ImageDraw.Draw(canvas)
+    draw.text((W - M, 54), "MARCH 5, 2026", fill=MUTED, font=_font(FONT_DIN, 26), anchor='ra')
+
+    # Front panel hero — vertically centered in upper portion
+    if FRONT_PANEL.exists():
+        panel = Image.open(FRONT_PANEL)
+        canvas = place_front_panel(canvas, panel, y_center=500, scale=0.92, glow=True)
+        draw = ImageDraw.Draw(canvas)
+
+    # Subtle grain
+    canvas = add_film_grain(canvas, intensity=0.03)
     draw = ImageDraw.Draw(canvas)
 
-    # -- Top accent bar --
-    draw.rectangle([(0, 0), (W, 5)], fill=ACCENT)
+    # Title + tagline — positioned with even breathing room
+    title_y = 880
+    draw.rectangle([(M, title_y), (M + 180, title_y + 4)], fill=ACCENT)
+    draw.text((M, title_y + 20), "CHROMAGNON", fill=WHITE, font=_font(FONT_DIN, 110))
+    draw.text((M, title_y + 152), "Building it right.",
+              fill=ACCENT_LIGHT, font=_font(FONT_DIN, 54))
 
-    # -- LZX brand top --
-    draw_text_with_font(draw, (60, 50), "LZX", FONT_DIN, 32, ACCENT_LIGHT)
-    draw_text_with_font(draw, (W - 60, 55), "MARCH 2026", FONT_DIN, 22, TEXT_MUTED, anchor='ra')
+    # Body text
+    body_lines = ["Production update with the full schedule,",
+                  "upcoming milestones, and planned monthly",
+                  "progress reports through fulfillment."]
+    for i, ln in enumerate(body_lines):
+        draw.text((M, title_y + 228 + i * 44), ln,
+                  fill=BODY_TEXT, font=_font(FONT_DIN, 32))
 
-    # -- Front panel image (top section) --
-    panel_y = 120
-    if FRONT_PANEL.exists():
-        panel = Image.open(FRONT_PANEL).convert('RGB')
-        # Fit to width with some padding
-        panel_w = W - 120
-        panel_h = int(panel.height * (panel_w / panel.width))
-        if panel_h > 550:
-            panel_h = 550
-            panel_w = int(panel.width * (panel_h / panel.height))
-        panel = panel.resize((panel_w, panel_h), Image.LANCZOS)
-        # Center horizontally
-        px = (W - panel_w) // 2
-        canvas.paste(panel, (px, panel_y))
-        draw = ImageDraw.Draw(canvas)
-        panel_bottom = panel_y + panel_h + 30
-    else:
-        panel_bottom = panel_y + 50
+    # Divider
+    draw.line([(M, H - 180), (M + 220, H - 180)], fill=(50, 50, 52), width=1)
 
-    # -- Title section --
-    title_y = panel_bottom + 10
-    draw_accent_line(draw, 60, title_y, 120, thickness=4)
+    # CTA — bottom
+    draw.text((M, H - 155), "New post on the LZX development blog",
+              fill=ACCENT_LIGHT, font=_font(FONT_DIN, 38))
+    draw.text((M, H - 95), "docs.lzxindustries.net/blog",
+              fill=MUTED, font=_font(FONT_DIN, 32))
 
-    draw_text_with_font(draw, (60, title_y + 20), "CHROMAGNON", FONT_DIN, 64, TEXT_WHITE)
-    draw_text_with_font(draw, (60, title_y + 95), "THE PRODUCTION PLAN", FONT_DIN, 32, ACCENT_LIGHT)
+    # Bottom accent
+    draw.rectangle([(0, H - 4), (W, H)], fill=ACCENT)
 
-    draw_accent_line(draw, 60, title_y + 145, 80, thickness=3)
-
-    # -- Key milestones as a vertical list --
-    milestones_y = title_y + 180
-    milestones = [
-        ("MAR 12", "Videomancer Firmware Update", True),
-        ("APR", "RevI Board Design Complete", False),
-        ("MAY", "Prototype in Hand", False),
-        ("JUN", "Production-Ready", False),
-        ("AUG", "Ship Unit #1", False),
-        ("SEP+", "Fulfillment at Scale", False),
-    ]
-
-    for i, (date, desc, done) in enumerate(milestones):
-        y = milestones_y + i * 52
-        # Date column
-        date_color = ACCENT if not done else (58, 138, 58)  # green if done
-        draw_text_with_font(draw, (60, y), date, FONT_DIN, 22, date_color)
-        # Description
-        desc_color = TEXT_WHITE if done or i <= 1 else TEXT_MUTED
-        draw_text_with_font(draw, (260, y), desc, FONT_DIN, 22, desc_color)
-        # Status dot
-        dot_color = (58, 138, 58) if done else (ACCENT if i <= 1 else (85, 85, 85))
-        dot_x, dot_y_center = 230, y + 12
-        draw.ellipse([(dot_x - 6, dot_y_center - 6), (dot_x + 6, dot_y_center + 6)], fill=dot_color)
-
-    # -- Timeline graphic (if exists) --
-    timeline_y = milestones_y + len(milestones) * 52 + 40
-    if TIMELINE.exists():
-        tl = Image.open(TIMELINE).convert('RGB')
-        tl_w = W - 80
-        tl_h = int(tl.height * (tl_w / tl.width))
-        tl = tl.resize((tl_w, tl_h), Image.LANCZOS)
-        canvas.paste(tl, (40, timeline_y))
-        draw = ImageDraw.Draw(canvas)
-
-    # -- Bottom section --
-    draw_text_with_font(draw, (60, H - 100), "All pre-orders honored at original price", FONT_DIN, 22, TEXT_WHITE)
-    draw_text_with_font(draw, (60, H - 60), "docs.lzxindustries.net", FONT_DIN, 18, TEXT_MUTED)
-
-    # -- Bottom accent bar --
-    draw.rectangle([(0, H - 5), (W, H)], fill=ACCENT)
-
-    # Save
     out = BLOG_DIR / "chromagnon-social-story.png"
-    canvas.convert('RGB').save(out, dpi=(150, 150), quality=95)
-    print(f"  Instagram story: {out} ({out.stat().st_size:,} bytes)")
+    canvas.convert('RGB').save(out, quality=95)
+    print(f"  Story:      {out.name} ({out.stat().st_size:,} bytes)")
 
 
-# ============================================================================
-# MAIN
 # ============================================================================
 if __name__ == '__main__':
-    load_and_register_fonts()
     print("Generating social media images...")
-    print()
     generate_instagram_post()
     generate_facebook_post()
     generate_instagram_story()
-    print()
-    print("Done. All images saved to blog post folder.")
+    print("Done.")

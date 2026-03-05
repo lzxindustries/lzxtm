@@ -1,6 +1,6 @@
 ---
-slug: chromagnon-production-plan
-title: "Chromagnon: The Production Plan"
+slug: chromagnon-building-it-right
+title: "Chromagnon: Building It Right"
 authors: [lars]
 tags: [chromagnon, manufacturing, business]
 draft: true
@@ -240,14 +240,3 @@ Lars
 ---
 
 *Questions about your order? Email **sales@lzxindustries.net**. For general discussion, join us on [Discord](https://discord.gg/lzx).*
-
----
-
-## Remaining Media (Internal — Remove Before Publishing)
-
-The following photos still need to be captured:
-
-1. **chromagnon-control-boards-700.jpg** — Wide shot of the 700 completed control board assemblies. Critical photo — tangible proof that pre-order investment is in the project. (No existing image available.)
-2. **videomancer-chromagnon-side-by-side.jpg** — Both instruments side by side. (Optional — no existing photo.)
-
-Images already placed: core board, sheet metal enclosure (render + prototypes), workbench, subassemblies, simulator screenshot, front panel, timeline graphic.

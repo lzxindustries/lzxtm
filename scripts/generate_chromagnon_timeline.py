@@ -12,7 +12,7 @@ import numpy as np
 from pathlib import Path
 
 # Output path
-OUTPUT = Path(__file__).parent.parent / "blog" / "2026-03-05-chromagnon-production-plan" / "chromagnon-timeline-graphic.png"
+OUTPUT = Path(__file__).parent.parent / "blog" / "2026-03-05-chromagnon-building-it-right" / "chromagnon-timeline-graphic.png"
 
 # === Color scheme matching docs.lzxindustries.net dark theme ===
 BG_COLOR = '#1b1b1d'         # Docusaurus dark bg (--ifm-color-gray-900 approx)
@@ -41,7 +41,7 @@ milestones = [
 ]
 
 # === Figure setup ===
-fig_width = 14
+fig_width = 10
 fig_height = 4.5
 fig, ax = plt.subplots(figsize=(fig_width, fig_height), facecolor=BG_COLOR)
 ax.set_facecolor(BG_COLOR)
