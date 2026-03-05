@@ -70,6 +70,14 @@ At default settings Swizzle passes the signal unmodified. As you engage the swap
 
 ---
 
+## Quick Start
+
+1. **Offsets are centered at 50%**: The Y, U, and V Offset knobs have zero effect at their midpoint. Turn clockwise for positive shift, counter-clockwise for negative. This bipolar behavior is key to navigating the color space.
+2. **Swap UV for quick complementary colors**: A single toggle flip mirrors the entire color wheel — an instant way to see what the complementary palette of your source looks like.
+3. **Rotate Ch for false color**: Channel rotation is the most dramatic transformation. It maps brightness into color and color into brightness, creating imagery that is structurally related to the source but chromatically unrecognizable.
+
+---
+
 ## Background
 
 ### What Is Channel Swizzling?
@@ -96,6 +104,8 @@ Because Swizzle's output is a valid video signal with the same format as its inp
 ---
 
 ## Signal Flow
+
+Y Channel → U Channel → V Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -232,7 +242,29 @@ Three of the five toggles control the processing pipeline: Swap UV mirrors the c
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry crossfade between the original signal and the processed result. At 100%, the output is fully processed. At 0%, the output is the unmodified input. Intermediate positions blend the two, allowing subtle color shifts without fully committing to the swizzled result.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Swizzle processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Swizzle-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +287,7 @@ These exercises progress from simple DC color shifts to full channel reordering,
 *Chroma Offset Color Wash — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with natural colors (skin tones, foliage, sky).
 
-**Objective**: Learn how U and V offsets shift the overall color palette without affecting image structure.
+**What You'll Create**: Learn how U and V offsets shift the overall color palette without affecting image structure.
 
 1. **Baseline**: Confirm all controls at default (offsets centered, toggles off, mix 100%).
 2. **Blue shift**: Slowly turn U Offset clockwise past center. Watch the entire image shift toward blue.
@@ -282,7 +314,7 @@ These exercises progress from simple DC color shifts to full channel reordering,
 *Channel Swap and Inversion — simulated result across source images.*
 **Source**: Footage with strong color contrast — flowers, neon signs, or color bars.
 
-**Objective**: Explore channel reordering and luminance inversion as compositional tools.
+**What You'll Create**: Explore channel reordering and luminance inversion as compositional tools.
 
 1. **Swap UV**: Enable Swap UV (Switch 7). Observe how warm and cool colors trade places.
 2. **Add inversion**: Enable Invert Y (Switch 8) while keeping Swap UV on. The brightness inverts while the color swap remains, creating a complementary negative.
@@ -309,7 +341,7 @@ These exercises progress from simple DC color shifts to full channel reordering,
 *Subtle Color Grading with Mix — simulated result across source images.*
 **Source**: Cinematic footage or any material where subtle color grading is appropriate.
 
-**Objective**: Use Swizzle as a color grading tool by blending processed and original signals.
+**What You'll Create**: Use Swizzle as a color grading tool by blending processed and original signals.
 
 1. **Set a hue shift**: Enable Swap UV. Set U Offset to ~55%, V Offset to ~45%.
 2. **Reduce mix**: Lower the Mix fader to ~30%. The output blends 30% of the swizzled signal with 70% of the original.
@@ -324,9 +356,6 @@ These exercises progress from simple DC color shifts to full channel reordering,
 
 ## Tips
 
-- **Offsets are centered at 50%**: The Y, U, and V Offset knobs have zero effect at their midpoint. Turn clockwise for positive shift, counter-clockwise for negative. This bipolar behavior is key to navigating the color space.
-- **Swap UV for quick complementary colors**: A single toggle flip mirrors the entire color wheel — an instant way to see what the complementary palette of your source looks like.
-- **Rotate Ch for false color**: Channel rotation is the most dramatic transformation. It maps brightness into color and color into brightness, creating imagery that is structurally related to the source but chromatically unrecognizable.
 - **Low mix for color grading**: Even extreme swizzle settings become usable color grades when the Mix fader is set to 10–30%. This is a powerful, fast color correction tool.
 - **Feedback creates drift**: Route the output back to the input with a tiny chroma offset. The color palette will slowly drift through the hue wheel as the offset accumulates frame over frame.
 - **Reserved knobs**: Rotation (Knob 4), Scale (Knob 5), Spread (Knob 6), and Border (Switch 10) are reserved for a future update. Leave them at their defaults — they currently have no effect.
@@ -343,10 +372,9 @@ These exercises progress from simple DC color shifts to full channel reordering,
 | **Channel Rotation** | A cyclic permutation of three components (Y→U→V→Y), moving each channel's data to the next position in the cycle. |
 | **Chrominance** | The color information in a video signal, encoded as U and V components centered at 512 in 10-bit representation. |
 | **DC Offset** | A constant value added to a signal, shifting its entire range up or down without changing its shape. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly blends two input values based on a mix parameter (lerp). |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Swizzle** | In GPU programming, a reordering of vector components; in this program, a reordering of YUV channels. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

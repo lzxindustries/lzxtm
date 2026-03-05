@@ -8,6 +8,7 @@ description: "The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature 
 ---
 
 import undulate_hero from '/img/instruments/videomancer/undulate/undulate_hero.png';
+import undulate_animation from '/img/instruments/videomancer/undulate/undulate_animation.gif';
 import undulate_control_panel from '/img/instruments/videomancer/undulate/undulate_control_panel.png';
 import undulate_exercise1_result from '/img/instruments/videomancer/undulate/undulate_exercise1_result.gif';
 import undulate_exercise2_result from '/img/instruments/videomancer/undulate/undulate_exercise2_result.gif';
@@ -19,6 +20,9 @@ import undulate_exercise3_result from '/img/instruments/videomancer/undulate/und
 
 <img src={undulate_hero} alt="Undulate hero image"/>
 *Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, colour-shifting dreamscape.*
+<img src={undulate_animation} alt="Undulate animated output"/>
+*Undulate output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ The Super Nintendo's Horizontal DMA (HDMA) was a hardware feature that could rep
 Each channel generates a waveform that varies from one horizontal line to the next. The brightness channel modulates the luminance of every pixel on a given scanline by a single value, creating bands of light and dark that ripple vertically through the frame. The hue channel applies a UV rotation per scanline, shifting colours in bands. The displacement channel horizontally shifts entire scanlines left or right, physically moving pixels to create the wobble effect. When all three channels are active at different frequencies, the image appears to undulate like fabric in water — hence the name.
 
 At subtle settings, Undulate adds gentle luminance striping and a barely perceptible swim to the image. At extreme settings, the three modulation channels interact to produce violently distorted, colour-shifted, horizontally torn video that recalls broken CRT displays and corrupted video RAM — an effect that is equally useful for music video aesthetics and glitch art performances.
+
+---
+
+## Quick Start
+
+1. **Start with one channel**: The three-channel interaction can be overwhelming. Master brightness modulation alone first, then add hue, then displacement.
+2. **Displacement makes it physical**: Brightness and hue feel like light effects; displacement physically moves the image, adding a sense of weight and substance to the modulation.
+3. **Mismatched frequencies create complexity**: Setting all three channels to the same frequency creates orderly, periodic bands. Setting them to different frequencies creates evolving interference patterns that never exactly repeat.
 
 ---
 
@@ -62,6 +74,8 @@ Horizontal displacement shifts an entire scanline left or right by a number of p
 ---
 
 ## Signal Flow
+
+Timing → Waveform Generation → Brightness Modulation → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -116,7 +130,7 @@ The three modulation channels operate independently but share the same global an
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the spatial frequency of the brightness modulation waveform. At zero, the waveform completes no cycles within the frame and produces a uniform brightness shift. As Brt Freq increases, more complete wave cycles fit within the frame height, creating narrower brightness bands. At maximum, the bands are fine enough to produce a scanline-like striping effect reminiscent of CRT phosphor glow patterns.
+At zero, the waveform completes no cycles within the frame and produces a uniform brightness shift. As Brt Freq increases, more complete wave cycles fit within the frame height, creating narrower brightness bands. At maximum, the bands are fine enough to produce a scanline-like striping effect reminiscent of CRT phosphor glow patterns. Internally, controls the spatial frequency of the brightness modulation waveform.
 
 ---
 
@@ -127,7 +141,7 @@ Controls the spatial frequency of the brightness modulation waveform. At zero, t
 | Default | 39.1% |
 | Suffix | % |
 
-Controls the amplitude of the brightness modulation. At zero, no brightness variation occurs regardless of frequency. As Brt Depth increases, the brightness bands become more pronounced — light areas become brighter and dark areas become darker in the wave trough. At maximum, the modulation can drive luminance from near-black to near-white, creating dramatic pulsing bands of light and shadow across the frame.
+At zero, no brightness variation occurs regardless of frequency. As Brt Depth increases, the brightness bands become more pronounced — light areas become brighter and dark areas become darker in the wave trough. At maximum, the modulation can drive luminance from near-black to near-white, creating dramatic pulsing bands of light and shadow across the frame. Internally, controls the amplitude of the brightness modulation.
 
 ---
 
@@ -138,7 +152,7 @@ Controls the amplitude of the brightness modulation. At zero, no brightness vari
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the spatial frequency of the hue rotation waveform. At zero, a single uniform hue shift applies to the entire frame. As Hue Freq increases, more rotation cycles fit within the frame, creating narrower bands of hue variation — rainbow striping when depth is high enough. The frequency relationship between the hue and brightness channels determines whether the colour bands align with or cut across the brightness bands.
+At zero, a single uniform hue shift applies to the entire frame. As Hue Freq increases, more rotation cycles fit within the frame, creating narrower bands of hue variation — rainbow striping when depth is high enough. The frequency relationship between the hue and brightness channels determines whether the colour bands align with or cut across the brightness bands. Internally, controls the spatial frequency of the hue rotation waveform.
 
 ---
 
@@ -149,7 +163,7 @@ Controls the spatial frequency of the hue rotation waveform. At zero, a single u
 | Default | 106° |
 | Suffix | ° |
 
-Controls the maximum angle of per-scanline hue rotation. At 0°, no hue shift occurs. As Hue Depth increases, the angle of UV rotation grows, sweeping through more of the colour wheel per cycle. At 360°, a full revolution maps all hues within a single wave cycle, creating complete rainbow bands. The polar degree scale maps directly to the rotation matrix angle.
+At 0°, no hue shift occurs. As Hue Depth increases, the angle of UV rotation grows, sweeping through more of the colour wheel per cycle. At 360°, a full revolution maps all hues within a single wave cycle, creating complete rainbow bands. The polar degree scale maps directly to the rotation matrix angle. Internally, controls the maximum angle of per-scanline hue rotation.
 
 ---
 
@@ -160,7 +174,7 @@ Controls the maximum angle of per-scanline hue rotation. At 0°, no hue shift oc
 | Default | 19.6% |
 | Suffix | % |
 
-Controls the spatial frequency of the horizontal displacement waveform. At zero, the displacement is uniform across the frame (no wobble). As Disp Freq increases, the displacement varies more rapidly from line to line, creating tighter wobble patterns. At maximum, every few scanlines shift in opposing directions, producing a fine tearing effect.
+At zero, the displacement is uniform across the frame (no wobble). As Disp Freq increases, the displacement varies more rapidly from line to line, creating tighter wobble patterns. At maximum, every few scanlines shift in opposing directions, producing a fine tearing effect. Internally, controls the spatial frequency of the horizontal displacement waveform.
 
 ---
 
@@ -171,7 +185,7 @@ Controls the spatial frequency of the horizontal displacement waveform. At zero,
 | Default | 29.3% |
 | Suffix | % |
 
-Controls the amplitude of the horizontal displacement — how many pixels each scanline shifts. At zero, no displacement occurs. As Disp Depth increases, scanlines shift by progressively more pixels, creating wider wobble. At maximum, scanlines can shift by a substantial fraction of the frame width, tearing the image into jagged horizontal strips. The interaction between displacement frequency and depth determines whether the distortion looks like gentle underwater wobble or violent horizontal glitching.
+At zero, no displacement occurs. As Disp Depth increases, scanlines shift by progressively more pixels, creating wider wobble. At maximum, scanlines can shift by a substantial fraction of the frame width, tearing the image into jagged horizontal strips. The interaction between displacement frequency and depth determines whether the distortion looks like gentle underwater wobble or violent horizontal glitching. Internally, controls the amplitude of the horizontal displacement — how many pixels each scanline shifts.
 
 ---
 
@@ -200,6 +214,21 @@ The five toggles control the waveform shapes and animation speed of the three mo
 
 Crossfade between the dry (original) and wet (modulated) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full per-scanline modulation with brightness, hue, and displacement effects. Intermediate values produce a proportional blend that can soften the intensity of the modulation without changing the waveform characteristics.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Undulate processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -210,9 +239,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 <img src={undulate_exercise1_result} alt="Brightness Bands result"/>
 *Brightness Bands — simulated result across source images.*
-**Source**: A still image or camera feed with moderate contrast — a face, a landscape, or any subject with detail across the brightness range.
-
-**Objective**: Create smooth horizontal brightness bands and understand frequency/depth interaction.
+**What You'll Create**: Create smooth horizontal brightness bands and understand frequency/depth interaction.
 
 1. **Isolate brightness**: Set Brt Freq to ~25% and Brt Depth to ~50%. Leave Hue Depth and Disp Depth at 0%.
 2. **Observe the bands**: Gentle bands of light and dark ripple across the image vertically.
@@ -228,9 +255,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 <img src={undulate_exercise2_result} alt="Rainbow Striping result"/>
 *Rainbow Striping — simulated result across source images.*
-**Source**: A monochrome or desaturated scene — black-and-white photography, a grey wall, or a dim room.
-
-**Objective**: Apply per-scanline hue rotation to paint rainbow bands across a neutral source, then combine with brightness modulation.
+**What You'll Create**: Apply per-scanline hue rotation to paint rainbow bands across a neutral source, then combine with brightness modulation.
 
 1. **Set up hue rotation**: Hue Freq ~30%, Hue Depth ~180°. Rainbow bands appear across the frame.
 2. **Try Triangle wave**: Toggle Hue Wave to Tri. The smooth rainbow gradients sharpen into linear ramps.
@@ -246,9 +271,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 <img src={undulate_exercise3_result} alt="Full Undulation result"/>
 *Full Undulation — simulated result across source images.*
-**Source**: A high-detail scene with strong vertical lines — architecture, text, barcodes, or patterns with geometric regularity.
-
-**Objective**: Engage all three modulation channels simultaneously to create the full per-scanline undulation effect.
+**What You'll Create**: Engage all three modulation channels simultaneously to create the full per-scanline undulation effect.
 
 1. **Start with displacement**: Set Disp Freq to ~40%, Disp Depth to ~30%. Watch the vertical lines wobble sinusoidally.
 2. **Try Sawtooth**: Toggle Disp Wave to Saw. The smooth wobble becomes an asymmetric shear.
@@ -265,9 +288,6 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 ## Tips
 
-- **Start with one channel**: The three-channel interaction can be overwhelming. Master brightness modulation alone first, then add hue, then displacement.
-- **Displacement makes it physical**: Brightness and hue feel like light effects; displacement physically moves the image, adding a sense of weight and substance to the modulation.
-- **Mismatched frequencies create complexity**: Setting all three channels to the same frequency creates orderly, periodic bands. Setting them to different frequencies creates evolving interference patterns that never exactly repeat.
 - **Square brightness for scanlines**: Setting Brt Wave to Square with high frequency and moderate depth produces a convincing CRT scanline effect — hard-edged horizontal stripes of alternating brightness.
 - **Low displacement for underwater**: Disp Freq ~20%, Disp Depth ~10% with Sine wave produces the gentle wobble associated with viewing objects through moving water.
 - **Sawtooth for glitch art**: Sawtooth displacement combined with fast speed and high depth tears the image apart with an aggressive, digital corruption aesthetic.
@@ -279,7 +299,6 @@ These exercises build from single-channel modulation to complex multi-channel wa
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated FPGA memory used for the quarter-wave sine LUT and scanline line buffers. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator method for generating periodic waveforms from a fixed-rate clock. |
 | **HDMA** | Horizontal DMA; a Super Nintendo hardware feature that updates video registers at the start of each scanline. |
 | **Hue Rotation** | A 2D rotation applied to the U and V chrominance channels, shifting all colours around the colour wheel. |
@@ -290,6 +309,7 @@ These exercises build from single-channel modulation to complex multi-channel wa
 | **Sawtooth Wave** | A waveform that ramps linearly from minimum to maximum then resets, producing asymmetric modulation. |
 | **Triangle Wave** | A waveform that ramps linearly up then linearly down, creating angular modulation with sharper peaks than sine. |
 | **UV Rotation** | Synonymous with hue rotation; rotating the chrominance vector in the UV colour plane. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

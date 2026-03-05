@@ -68,6 +68,14 @@ Every rain drop exists only in register fabric — zero BRAM is consumed. The LF
 
 ---
 
+## Quick Start
+
+1. **Dark backgrounds reveal rain best**: Rain brightness is additive, so drops are most visible against dark source material. Combine with fog overlay to darken bright footage.
+2. **Heavy mode for drama**: The heavy/light toggle (Splash) doubles the effective density, transforming a gentle drizzle into a torrential curtain. This stacks with the Density knob for extreme coverage.
+3. **Wind angle creates drama**: Even a small wind angle transforms monotonous vertical rain into dynamic diagonal streaks. Match the angle to the scene's implied wind direction for realism.
+
+---
+
 ## Background
 
 ### Rain Simulation in Computer Graphics
@@ -94,6 +102,8 @@ Television weather graphics have used synthetic rain and snow overlays since the
 ---
 
 ## Signal Flow
+
+Position Counters → LFSR Noise → Rain Pipeline → Sync Delay Pipeline → Interpolator → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -227,7 +237,7 @@ Controls the horizontal extent of splash highlights. When a splash is triggered 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Type** | Rain | Snow |
+| **7 — Type** | Rain | Mist |
 | **8 — Splash** | Off | On |
 | **9 — Tint** | Off | On |
 | **10 — Accumulate** | Off | On |
@@ -247,6 +257,21 @@ Toggles 7–11 control five independent binary options. Toggle 7 sets the wind d
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original (delayed) source and the rain-composited result. At 0%, only the unmodified source is output. At 100%, the full rain effect is applied. Intermediate values produce a proportional blend. This uses the same interpolator_u hardware as other Videomancer programs — a linear interpolation across all three YUV channels simultaneously. The mix operates on the final composited signal (including fog, rain, and splash).
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Downpour processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -269,7 +294,7 @@ These exercises progress from a simple rain overlay to complex weather scene con
 *Gentle Drizzle — simulated result across source images.*
 **Source**: A recorded outdoor scene — a park, street, or garden — with moderate contrast and varied textures.
 
-**Objective**: Learn how density, streak length, and brightness interact to create a convincing light rain effect.
+**What You'll Create**: Learn how density, streak length, and brightness interact to create a convincing light rain effect.
 
 1. **Sparse drops**: Set Density to about 20%. A few scattered bright streaks appear over the source.
 2. **Streak length**: Increase Wind Ang (streak length control) to about 40%. Drops stretch into short vertical lines.
@@ -297,7 +322,7 @@ These exercises progress from a simple rain overlay to complex weather scene con
 *Thunderstorm — simulated result across source images.*
 **Source**: Dark, moody footage with strong contrast — night scenes, dramatic lighting, or high-contrast architecture.
 
-**Objective**: Build a heavy rain scene with splash highlights and fog overlay.
+**What You'll Create**: Build a heavy rain scene with splash highlights and fog overlay.
 
 1. **Heavy density**: Set Density to about 60% and enable Splash (heavy mode) for dense rain.
 2. **Long streaks**: Set Wind Ang to about 70% for dramatic long streaks.
@@ -327,7 +352,7 @@ These exercises progress from a simple rain overlay to complex weather scene con
 *Abstract Rain Texture — simulated result across source images.*
 **Source**: Any high-contrast video — graphics, text overlays, or footage with strong edges.
 
-**Objective**: Use the rain engine as an abstract texture generator rather than a realistic weather effect.
+**What You'll Create**: Use the rain engine as an abstract texture generator rather than a realistic weather effect.
 
 1. **Maximum density**: Set Density to 100% and enable Splash (heavy mode) for near-total coverage.
 2. **Short streaks**: Set Wind Ang to about 15% for dot-like drops instead of streaks.
@@ -344,9 +369,6 @@ These exercises progress from a simple rain overlay to complex weather scene con
 
 ## Tips
 
-- **Dark backgrounds reveal rain best**: Rain brightness is additive, so drops are most visible against dark source material. Combine with fog overlay to darken bright footage.
-- **Heavy mode for drama**: The heavy/light toggle (Splash) doubles the effective density, transforming a gentle drizzle into a torrential curtain. This stacks with the Density knob for extreme coverage.
-- **Wind angle creates drama**: Even a small wind angle transforms monotonous vertical rain into dynamic diagonal streaks. Match the angle to the scene's implied wind direction for realism.
 - **Splash needs edges**: The splash system responds to horizontal luma edges in the source — it is content-aware. High-contrast footage with sharp details produces the most dramatic splash effects.
 - **Fog sets the mood**: Enabling fog (Accumulate) darkens the background by 25% and shifts chrominance toward blue. This single toggle changes the entire atmosphere from "rain on a sunny day" to "overcast downpour."
 - **Short streaks for snow/mist**: Setting streak length very low (Wind Ang ~10%) creates dot-like particles that read as snowflakes or mist droplets rather than rain streaks.
@@ -361,15 +383,14 @@ These exercises progress from a simple rain overlay to complex weather scene con
 |------|------------|
 | **Additive Compositing** | A blending operation that adds pixel values together, clamping at maximum (1023). Rain brightness is composited additively onto the source luma. |
 | **Edge Detection** | Measuring the difference between adjacent pixel values to identify sharp transitions. Downpour uses horizontal luma edge detection to trigger splash highlights. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Frame Counter** | A register that increments once per vertical sync, used to animate the vertical position of rain drops across successive frames. |
 | **LFSR** | Linear Feedback Shift Register; a simple pseudo-random number generator that cycles through a sequence of states determined by its tap configuration and seed value. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Saturating Arithmetic** | Addition or subtraction that clamps the result to the valid range (0–1023) instead of wrapping around on overflow or underflow. |
 | **Splash** | A short horizontal burst of bright pixels triggered at luma edges coinciding with rain drops, simulating the visual effect of a raindrop striking a surface. |
 | **Streak** | A vertical run of bright pixels representing a single rain drop's motion-blurred trail across the camera sensor. |
 | **XOR Hash** | A bitwise exclusive-OR operation used to combine the horizontal pixel counter with LFSR noise, producing a deterministic but pseudo-random per-pixel value. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

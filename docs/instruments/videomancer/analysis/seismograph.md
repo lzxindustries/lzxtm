@@ -68,6 +68,14 @@ The name references both the scientific instrument and the Greek *seismos* (shak
 
 ---
 
+## Quick Start
+
+1. **Trace count sets the analysis granularity**: 2 traces give a broad overview of top-half vs. bottom-half luminance; 16 traces give a fine-grained spatial luminance profile.
+2. **Deflection sensitivity is your gain knob**: Low deflection for subtle modulation, high deflection for dramatic waveform swings. Clipping at band edges is normal and expected at high sensitivity.
+3. **Black paper + colored ink = oscilloscope**: The combination of dark background with bright, thin traces and high persistence recreates the phosphor-glow aesthetic of analog test instruments.
+
+---
+
 ## Background
 
 ### Strip Chart Recorders
@@ -94,6 +102,8 @@ Area charts — traces with the region between the curve and a baseline filled w
 ---
 
 ## Signal Flow
+
+Input Register + Counters → Band Compute → Deflection → Pen Compare + Grid + Fill → Color Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -163,7 +173,7 @@ Selects the number of horizontal trace bands: 2, 4, 8, or 16. With 2 traces, eac
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical deflection amplitude via 8 shift-based sensitivity levels, ranging from 0.125× to 4× gain. At low deflection, the pen traces stay near their band centers — small, subtle wiggles. At high deflection, the pen swings far from center and can even clip against the band edges, producing waveforms that fold over themselves. The deflection scale directly controls how dramatically the video luminance is visualized.
+At low deflection, the pen traces stay near their band centers — small, subtle wiggles. At high deflection, the pen swings far from center and can even clip against the band edges, producing waveforms that fold over themselves. The deflection scale directly controls how dramatically the video luminance is visualized. Internally, controls the vertical deflection amplitude via 8 shift-based sensitivity levels, ranging from 0.125× to 4× gain.
 
 ---
 
@@ -174,7 +184,7 @@ Controls the vertical deflection amplitude via 8 shift-based sensitivity levels,
 | Default | 50% |
 | Suffix | % |
 
-Sets the pen thickness by controlling the Manhattan distance threshold for pen-hit detection. At minimum, the pen is a single-pixel hairline trace. As pen width increases, the trace becomes a thicker line with a diamond-shaped cross-section. Very wide pen settings create bold, graphic traces that dominate the visual field and begin to overlap between adjacent bands.
+At minimum, the pen is a single-pixel hairline trace. As pen width increases, the trace becomes a thicker line with a diamond-shaped cross-section. Very wide pen settings create bold, graphic traces that dominate the visual field and begin to overlap between adjacent bands. Internally, sets the pen thickness by controlling the Manhattan distance threshold for pen-hit detection.
 
 ---
 
@@ -185,7 +195,7 @@ Sets the pen thickness by controlling the Manhattan distance threshold for pen-h
 | Default | 50% |
 | Suffix | % |
 
-Controls the horizontal scroll speed by setting the per-frame increment of the scroll offset accumulator. At zero, the chart does not scroll — the traces are static waveforms. As speed increases, the chart scrolls leftward like advancing paper, and the luminance sampling position shifts horizontally across the source image. Higher speeds produce faster apparent motion and more compressed waveforms in the time axis.
+At zero, the chart does not scroll — the traces are static waveforms. As speed increases, the chart scrolls leftward like advancing paper, and the luminance sampling position shifts horizontally across the source image. Higher speeds produce faster apparent motion and more compressed waveforms in the time axis. Internally, controls the horizontal scroll speed by setting the per-frame increment of the scroll offset accumulator.
 
 ---
 
@@ -196,7 +206,7 @@ Controls the horizontal scroll speed by setting the per-frame increment of the s
 | Default | 50% |
 | Suffix | % |
 
-Sets the persistence / trail length by controlling the IIR feedback through the line buffer. At zero persistence, only the current frame's pen position is visible — a sharp, instantaneous trace. As persistence increases, previous pen positions remain visible as ghostly afterimages, creating trailing tails behind the moving pen. At maximum, traces accumulate into dense overlapping bands showing the full history of pen motion.
+At zero persistence, only the current frame's pen position is visible — a sharp, instantaneous trace. As persistence increases, previous pen positions remain visible as ghostly afterimages, creating trailing tails behind the moving pen. At maximum, traces accumulate into dense overlapping bands showing the full history of pen motion. Internally, sets the persistence / trail length by controlling the IIR feedback through the line buffer.
 
 ---
 
@@ -215,8 +225,8 @@ Controls the ink color by selecting hue-based presets. The parameter is divided 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Multi | Single |
-| **8 — Paper** | White | Grid |
+| **7 — Mode** | Multi | Envelope |
+| **8 — Paper** | White | Black |
 | **9 — Fill Under** | Off | On |
 | **10 — Freeze** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -235,6 +245,21 @@ Toggles 7 and 8 are each 2-bit selectors (using adjacent register bits) that sel
 | Suffix | % |
 
 Crossfades between the dry (original) and wet (processed) signal via three interpolator_u instances. At 100% the full chart recorder effect is visible. At 0% the original video passes through unaltered. Intermediate values create a ghostly overlay of chart traces on top of recognizable video content, which can produce interesting composite visualizations where the source image is partially visible behind the traces.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Seismograph processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +282,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 *Two-Channel Waveform — simulated result across source images.*
 **Source**: A high-contrast video feed with distinct bright and dark regions — black-and-white patterns, silhouettes, or text on a bright background.
 
-**Objective**: Learn how luminance drives pen deflection across two wide trace bands, and how deflection sensitivity controls the visual drama.
+**What You'll Create**: Learn how luminance drives pen deflection across two wide trace bands, and how deflection sensitivity controls the visual drama.
 
 1. **Set up 2 traces**: Set Traces to the first step (2 bands). The screen splits into two wide horizontal bands.
 2. **Low deflection**: Set Deflect to about 20%. The pen traces show subtle wiggles near the band centers.
@@ -285,7 +310,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 *Multi-Channel Area Chart — simulated result across source images.*
 **Source**: Slowly moving footage with gradual luminance variations — landscapes, cloud formations, or abstract gradients.
 
-**Objective**: Explore fill-under mode and how it transforms line traces into area charts across 8 or 16 bands.
+**What You'll Create**: Explore fill-under mode and how it transforms line traces into area charts across 8 or 16 bands.
 
 1. **Set 8 traces**: Increase Traces to step 3 (8 bands). The screen divides into 8 narrow bands.
 2. **Moderate deflection**: Set Deflect to about 50%.
@@ -314,7 +339,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 *Oscilloscope Display — simulated result across source images.*
 **Source**: Any active video input — waveform generators, live camera, or recorded footage with motion.
 
-**Objective**: Create an oscilloscope-style display using black paper, green ink, and high persistence.
+**What You'll Create**: Create an oscilloscope-style display using black paper, green ink, and high persistence.
 
 1. **Black paper**: Switch Paper to Black. The background goes dark.
 2. **Green ink**: Set Pen Hue to approximately 270° (green ink zone).
@@ -332,9 +357,6 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 
 ## Tips
 
-- **Trace count sets the analysis granularity**: 2 traces give a broad overview of top-half vs. bottom-half luminance; 16 traces give a fine-grained spatial luminance profile.
-- **Deflection sensitivity is your gain knob**: Low deflection for subtle modulation, high deflection for dramatic waveform swings. Clipping at band edges is normal and expected at high sensitivity.
-- **Black paper + colored ink = oscilloscope**: The combination of dark background with bright, thin traces and high persistence recreates the phosphor-glow aesthetic of analog test instruments.
 - **Fill-under reveals amplitude**: Line traces show instantaneous position; fill-under shows *magnitude* by coloring the area between trace and baseline. Use it to make quiet vs. loud luminance regions visually obvious.
 - **Freeze is your capture button**: Stop the chart to examine a particular moment. Resume to continue recording. This mimics single-shot triggering on a real oscilloscope.
 - **Pen Width and Traces interact**: Wide pens with many narrow bands can cause traces to overlap, creating a dense, textured field rather than distinct individual channels.
@@ -348,7 +370,6 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | Term | Definition |
 |------|------------|
 | **Band** | One horizontal subdivision of the screen, containing a single trace channel; height = screen height / trace count. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the line buffer that stores pen positions for persistence. |
 | **Chart Recorder** | An analog instrument that records measured values as continuous pen traces on advancing paper. |
 | **Deflection** | The vertical displacement of the pen from the band center, proportional to the sampled luminance value. |
 | **Fill-Under** | Coloring the area between a trace curve and its baseline (band center), creating an area chart visualization. |
@@ -361,6 +382,7 @@ These exercises progress from a simple two-channel trace to a dense multi-band v
 | **Persistence** | The visual trail left by a trace as it moves, created by blending current and previous pen positions — analogous to phosphor afterglow. |
 | **Scroll** | The continuous horizontal advancement of the chart, simulating paper advancing past a stationary pen. |
 | **Trace** | A continuous line drawn by the pen, representing the sampled luminance value over the horizontal extent of each band. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

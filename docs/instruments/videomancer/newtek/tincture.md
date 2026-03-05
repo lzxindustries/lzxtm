@@ -68,6 +68,14 @@ The processing chain includes input gain and bias (to stretch and shift the lumi
 
 ---
 
+## Quick Start
+
+1. **Gain and bias are the zoom controls**: Think of Input Gain as a zoom on the luminance range and Input Bias as a pan. Together they let you precisely target which portion of the brightness spectrum gets the most palette variation.
+2. **Smoothing defines the era**: Zero smoothing = Fairlight CVI's hard 1980s digital look. Full smoothing = NewTek Video Toaster's fluid 1990s ChromaFX aesthetic. The midpoint blends both.
+3. **Tint mode for subtlety**: When Replace mode feels too aggressive, Tint mode layers the palette's luminance structure over the original chrominance, creating a translucent false-color wash.
+
+---
+
 ## Background
 
 ### False-Color Exposure Mapping
@@ -94,6 +102,8 @@ The choice of palette profoundly affects how the viewer reads the image. The The
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix → Sync
 
 ```
 Input Video (YUV 4:4:4)
@@ -140,7 +150,7 @@ The Tint versus Replace mode at stage 9 determines whether the palette contribut
 #### Knob 1 — Palette
 | Property | Value |
 |----------|-------|
-| Range | 0 – 7 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects one of eight false-color palettes. Each palette contains eight YUV color entries ordered from shadow to highlight. Thermal follows infrared camera conventions — deep blue shadows through cyan and green midtones to yellow and red highlights with a white peak. Hot Metal burns from black through dark red, red, orange, and yellow to white. X-Ray inverts the mapping, running from white highlights down through blue-green tones to near-black. Pop Art uses saturated primaries in a Warhol-inspired arrangement. Night Vision maps through green phosphor shades. Psychedelic sweeps the full rainbow spectrum. Duotone creates a two-color gradient between blue-teal and orange-red. Ice runs through cold blue-white tones.
@@ -150,8 +160,8 @@ Selects one of eight false-color palettes. Each palette contains eight YUV color
 #### Knob 2 — Band Count
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
-| Default | 2 |
+| Range | 0 – 1023 |
+| Default | 0 |
 
 Selects how many distinct color bands divide the luminance range. Four options are available: 4, 5, 6, or 8 bands. Fewer bands create bolder, more graphic results with wider stretches of uniform color. More bands produce finer tonal discrimination, approaching a continuous gradient when combined with high smoothing. The band count interacts directly with the palette: with 4 bands only every other palette entry is used, while 8 bands uses all entries.
 
@@ -197,7 +207,7 @@ Controls inter-band smoothing — the interpolation between adjacent palette col
 | Default | 75.1% |
 | Suffix | % |
 
-Scales the chrominance intensity of the palette output. At 0%, the palette output is monochrome — only the luminance component of each palette entry is used, regardless of Tint/Replace mode. At the default position the palette colors appear at their designed intensity. Higher values push saturation beyond the palette's natural levels, exaggerating the color differences between bands. This control only affects the U and V channels of the palette lookup output.
+At 0%, the palette output is monochrome — only the luminance component of each palette entry is used, regardless of Tint/Replace mode. At the default position the palette colors appear at their designed intensity. Higher values push saturation beyond the palette's natural levels, exaggerating the color differences between bands. This control only affects the U and V channels of the palette lookup output. Internally, scales the chrominance intensity of the palette output.
 
 ---
 
@@ -223,7 +233,18 @@ The five toggles control independent binary processing stages. Tint/Replace (Tog
 | Range | 0 – 100 |
 | Default | 100 |
 
-Controls the wet/dry mix crossfade between the original input signal and the false-color processed output. At 0%, the output is the unprocessed input. At 100%, the output is fully processed. Intermediate positions blend the two signals through the interpolator, allowing subtle palette tinting when blended at low levels.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 100 |
+
+Wet/dry crossfade between the original (dry) signal and the Tincture-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +267,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 *Thermal Camera Emulation — simulated result across source images.*
 **Source**: A live camera feed with a person standing in front of a moderately lit background — skin tones and varying brightness areas provide clear palette mapping targets.
 
-**Objective**: Learn how palette selection, band count, and smoothing interact to produce false-color exposure maps.
+**What You'll Create**: Learn how palette selection, band count, and smoothing interact to produce false-color exposure maps.
 
 1. **Default thermal**: With Palette on Thermal and all other controls at default, observe how the source luminance maps to the blue-to-white color spectrum. Shadows appear blue, midtones green-yellow, highlights orange-red-white.
 2. **Increase bands**: Sweep Band Count through all four positions. Notice how 4 bands creates bold flat zones while 8 bands reveals finer luminance detail.
@@ -273,7 +294,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 *Topographic Contour Map — simulated result across source images.*
 **Source**: Footage with soft gradients — clouds, landscapes, or slowly moving abstract patterns work well to reveal the contour lines.
 
-**Objective**: Combine false-color banding with edge overlay to create topographic map visualizations.
+**What You'll Create**: Combine false-color banding with edge overlay to create topographic map visualizations.
 
 1. **Set up false-color**: Choose the Elevation-like palette (Hot Metal) with 8 bands and Smoothing at 0% for hard band edges.
 2. **Enable edge overlay**: Turn on Edge Mix (Toggle 9). Bright contour lines appear at the boundaries between color bands.
@@ -300,7 +321,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 *Psychedelic Poster Art — simulated result across source images.*
 **Source**: High-contrast footage with bold shapes — silhouettes, architectural subjects, or graphics with strong tonal separation.
 
-**Objective**: Use posterize, invert, and saturated palettes together for bold graphic poster effects.
+**What You'll Create**: Use posterize, invert, and saturated palettes together for bold graphic poster effects.
 
 1. **Enable posterize**: Turn on Posterize (Toggle 11) to coarsen the luminance into 16 hard steps before band indexing.
 2. **Select Pop Art palette**: Switch to the Pop Art palette for vivid primary colors.
@@ -317,9 +338,6 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 
 ## Tips
 
-- **Gain and bias are the zoom controls**: Think of Input Gain as a zoom on the luminance range and Input Bias as a pan. Together they let you precisely target which portion of the brightness spectrum gets the most palette variation.
-- **Smoothing defines the era**: Zero smoothing = Fairlight CVI's hard 1980s digital look. Full smoothing = NewTek Video Toaster's fluid 1990s ChromaFX aesthetic. The midpoint blends both.
-- **Tint mode for subtlety**: When Replace mode feels too aggressive, Tint mode layers the palette's luminance structure over the original chrominance, creating a translucent false-color wash.
 - **Edge overlay is additive**: The edge contour lines add brightness to the palette output. On dark palette bands the contours are clearly visible; on bright bands they can push to clipping. Reduce Saturation to make contours more prominent.
 - **Posterize amplifies banding**: Enabling Posterize before the palette lookup creates wider flat zones that coarsen the false-color effect. Combined with 4 bands and no smoothing, this produces the boldest possible graphic separations.
 - **Feedback loops**: Route the output back into the input to create recursive palette lookups — the false-color mapping is re-applied to its own output, producing layered banding patterns.
@@ -345,6 +363,7 @@ These exercises explore Tincture's palette lookup, smoothing, and edge overlay �
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for contrast and brightness adjustment. |
 | **Smoothing** | Interpolation between adjacent palette entries to soften band boundaries. |
 | **Tint Mode** | A blending mode where only the palette's luminance component is used, preserving the source's original chrominance. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

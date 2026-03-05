@@ -68,6 +68,14 @@ The program pairs palette quantization with brightness, contrast, and saturation
 
 ---
 
+## Quick Start
+
+1. **Start with the palette**: Choose your target aesthetic first — the palette defines the color universe. Everything else is refinement.
+2. **Dither Size 3 for realism**: The full 8×8 Bayer matrix produces the most convincing tonal gradations. Use smaller sizes for deliberately crude, lo-fi effects.
+3. **Macintosh mode for graphic design**: Palette 2 (pure B&W) with high-contrast settings produces bold, posterized black-and-white imagery ideal for graphic overlays.
+
+---
+
 ## Background
 
 ### Ordered Dithering and the Bayer Matrix
@@ -94,6 +102,8 @@ The FPGA has no hardware multiplier for arbitrary values. Stipple implements con
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -162,7 +172,7 @@ Controls the spatial resolution of the dither pattern. At position 0, dithering 
 | Default | 50.0% |
 | Suffix | % |
 
-Scales the dither threshold offset amplitude. At zero, even with a dither matrix selected, the offset is suppressed and quantization is hard. As the amount increases, the Bayer thresholds push more aggressively, creating wider transition zones between palette colors. Very high values can cause the dither pattern to dominate, producing a noisy, stippled texture across the entire image.
+At zero, even with a dither matrix selected, the offset is suppressed and quantization is hard. As the amount increases, the Bayer thresholds push more aggressively, creating wider transition zones between palette colors. Very high values can cause the dither pattern to dominate, producing a noisy, stippled texture across the entire image. Internally, scales the dither threshold offset amplitude.
 
 ---
 
@@ -222,7 +232,29 @@ Switches 7–11 control five independent binary options. Pixel Dbl and Scanlines
 | Default | 100.0% |
 | Suffix | % |
 
-Crossfades between the dry (unprocessed) and wet (palette-quantized) signal via the interpolator. At 0%, the output is the original input. At 100%, the output is fully processed. Intermediate values blend the two, which can produce interesting translucent overlay effects where the retro palette sits ghosted over the original image.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stipple processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Stipple-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -245,7 +277,7 @@ These exercises progress from basic palette selection through dither exploration
 *Platform Showcase — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a range of colors and brightness — faces, landscapes, or colorful objects work well.
 
-**Objective**: Explore the eight palettes and understand how each platform's color limitations shape the image.
+**What You'll Create**: Explore the eight palettes and understand how each platform's color limitations shape the image.
 
 1. **Game Boy**: Set Palette to position 0. The image collapses to four shades of olive green. Note how all color information is lost.
 2. **CGA**: Turn to position 1. Four colors — black, magenta, cyan, white. Stark and graphic.
@@ -272,7 +304,7 @@ These exercises progress from basic palette selection through dither exploration
 *Dither Textures — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
-**Objective**: Explore how dither matrix size and amount control the stipple pattern.
+**What You'll Create**: Explore how dither matrix size and amount control the stipple pattern.
 
 1. **No dithering**: Set Dither Size to 0 and observe the hard palette boundaries — flat bands of uniform color with harsh edges.
 2. **2×2 dither**: Set Dither Size to 1. A coarse checkerboard pattern appears in transition zones.
@@ -300,7 +332,7 @@ These exercises progress from basic palette selection through dither exploration
 *CRT Emulation — simulated result across source images.*
 **Source**: Any footage, especially retro game footage or graphics.
 
-**Objective**: Combine pixel doubling, scanlines, and dithering for authentic retro display emulation.
+**What You'll Create**: Combine pixel doubling, scanlines, and dithering for authentic retro display emulation.
 
 1. **Select C64 palette**: Set Palette to 5.
 2. **Enable pixel doubling**: Toggle Pixel Dbl on. The image becomes blocky with doubled horizontal pixels.
@@ -317,9 +349,6 @@ These exercises progress from basic palette selection through dither exploration
 
 ## Tips
 
-- **Start with the palette**: Choose your target aesthetic first — the palette defines the color universe. Everything else is refinement.
-- **Dither Size 3 for realism**: The full 8×8 Bayer matrix produces the most convincing tonal gradations. Use smaller sizes for deliberately crude, lo-fi effects.
-- **Macintosh mode for graphic design**: Palette 2 (pure B&W) with high-contrast settings produces bold, posterized black-and-white imagery ideal for graphic overlays.
 - **Scanlines need Pixel Dbl**: Scanline darkening alone can look like horizontal banding. Combined with pixel doubling, it becomes an authentic CRT emulation.
 - **Invert changes the story**: Inverting before palette mapping flips the tonal assignment — light subjects become dark palette entries. This can dramatically change the character of the palette.
 - **Mix for overlay effects**: At 30–60% Mix, the palette-quantized image sits as a translucent color wash over the original — useful for subtle retro tinting without full commitment.
@@ -338,7 +367,6 @@ These exercises progress from basic palette selection through dither exploration
 | **CRT** | Cathode Ray Tube; the display technology used by classic computers and televisions, characterized by visible scan lines and phosphor glow. |
 | **Dithering** | Adding a small noise or threshold pattern before quantization to break up banding and simulate additional tonal levels with a limited palette. |
 | **EGA** | Enhanced Graphics Adapter (1984); IBM's second-generation color display standard, offering 16 colors from a 64-color space. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a circuit that generates a pseudo-random bit sequence, used here for noise-mode dithering. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Palette** | A fixed set of colors from which all pixel values must be drawn; the defining constraint of classic computing displays. |
@@ -346,6 +374,7 @@ These exercises progress from basic palette selection through dither exploration
 | **RGB9** | A compact color representation using 3 bits per channel (red, green, blue), encoding 512 possible colors. Used internally to store palette definitions. |
 | **Shift-Add Multiplication** | Approximating multiplication using bit shifts and additions, avoiding the need for a hardware multiplier. |
 | **Stippling** | A drawing technique that creates tonal gradation using patterns of small dots rather than continuous shading. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

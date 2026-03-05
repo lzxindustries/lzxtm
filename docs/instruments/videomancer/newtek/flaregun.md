@@ -68,6 +68,14 @@ At low intensity, Flaregun adds a subtle luminous glow to a specific region of t
 
 ---
 
+## Quick Start
+
+1. **Warmth sets the mood**: Cool blue-white flares suggest modern coated optics (sci-fi, thriller). Warm gold flares invoke vintage lenses and 1990s broadcast nostalgia. Deep amber pushes into sunset-dramatic territory.
+2. **Streak without bloom**: Set Intensity very low and Streak very high for a pure horizontal (or vertical) line of light through the frame — useful as a compositional element independent of the bloom.
+3. **Animate for transitions**: Enable animation and sweep Intensity from low to high to simulate a lens flare burst transition. The triangle wave creates a natural build-and-fade cycle.
+
+---
+
 ## Background
 
 ### Lens Flare in Cinema
@@ -94,6 +102,8 @@ In a real camera, starburst rays are **diffraction spikes** caused by the straig
 ---
 
 ## Signal Flow
+
+Position Counters → Animation Counter → Coordinate Transform → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Controls both the bloom radius and the overall brightness of the flare. At minim
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the length of the anamorphic streak. At zero, no streak is generated and only the core bloom and rays are visible. As the control increases, a line of light extends outward from the origin along the primary axis — horizontal by default, vertical when the Streak Dir toggle is engaged. The streak uses a tight Gaussian envelope in the perpendicular direction (approximately 8 pixels wide) and a linear falloff along the primary direction, producing the characteristic flat, elongated highlight associated with anamorphic cinema lenses.
+At zero, no streak is generated and only the core bloom and rays are visible. As the control increases, a line of light extends outward from the origin along the primary axis — horizontal by default, vertical when the Streak Dir toggle is engaged. The streak uses a tight Gaussian envelope in the perpendicular direction (approximately 8 pixels wide) and a linear falloff along the primary direction, producing the characteristic flat, elongated highlight associated with anamorphic cinema lenses. Internally, sets the length of the anamorphic streak.
 
 ---
 
@@ -237,7 +247,19 @@ Switches 7–11 control five independent aspects of the flare generation. Animat
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the wet/dry mix ratio between the original input video and the flare-composited output. At 0%, the output is the unprocessed input regardless of other settings. At 100%, the full additive composite is output. Intermediate positions blend between the two via the interpolator_u pipeline, which provides a smooth crossfade. This allows dialing in a subtle flare overlay without full-intensity additive blow-out.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Flaregun-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -260,7 +282,7 @@ These exercises progress from a simple centered bloom to complex multi-component
 *Classic Toaster Bloom — simulated result across source images.*
 **Source**: A mid-brightness camera feed or recorded footage with visible content and moderate contrast.
 
-**Objective**: Recreate the warm, centered lens flare of the NewTek Video Toaster's Flare Center effect using only the core bloom and anamorphic streak.
+**What You'll Create**: Recreate the warm, centered lens flare of the NewTek Video Toaster's Flare Center effect using only the core bloom and anamorphic streak.
 
 1. **Center the origin**: Set Origin X and Origin Y both to ~50%. The flare origin sits at the center of the frame.
 2. **Moderate bloom**: Set Intensity to ~40%. A soft Gaussian glow appears around the center, brightening the underlying video.
@@ -288,7 +310,7 @@ These exercises progress from a simple centered bloom to complex multi-component
 *Starburst Highlight — simulated result across source images.*
 **Source**: Dark footage with isolated bright elements — stage lighting, candles, or specular reflections.
 
-**Objective**: Create dramatic starburst diffraction spikes with 8-ray configuration over dark source material.
+**What You'll Create**: Create dramatic starburst diffraction spikes with 8-ray configuration over dark source material.
 
 1. **Off-center origin**: Set Origin X to ~30% and Origin Y to ~25% to position the flare away from center, as if a light source were entering from the upper left.
 2. **Low bloom**: Set Intensity to ~25% for a compact core that does not overwhelm the dark source.
@@ -317,7 +339,7 @@ These exercises progress from a simple centered bloom to complex multi-component
 *Cinematic Anamorphic Sweep — simulated result across source images.*
 **Source**: Any footage — the flare will dominate the composition at these settings.
 
-**Objective**: Use the anamorphic streak at high intensity with origin movement to simulate a cinematic lens flare sweep across the frame.
+**What You'll Create**: Use the anamorphic streak at high intensity with origin movement to simulate a cinematic lens flare sweep across the frame.
 
 1. **Strong streak**: Set Streak to ~90%. The anamorphic line extends nearly across the full frame width.
 2. **Moderate bloom**: Set Intensity to ~50%. The core bloom is prominent but does not completely white-out the frame.
@@ -335,9 +357,6 @@ These exercises progress from a simple centered bloom to complex multi-component
 
 ## Tips
 
-- **Warmth sets the mood**: Cool blue-white flares suggest modern coated optics (sci-fi, thriller). Warm gold flares invoke vintage lenses and 1990s broadcast nostalgia. Deep amber pushes into sunset-dramatic territory.
-- **Streak without bloom**: Set Intensity very low and Streak very high for a pure horizontal (or vertical) line of light through the frame — useful as a compositional element independent of the bloom.
-- **Animate for transitions**: Enable animation and sweep Intensity from low to high to simulate a lens flare burst transition. The triangle wave creates a natural build-and-fade cycle.
 - **Origin at the edge**: Positioning the origin at the frame edge creates an asymmetric flare with half the bloom clipped — the look of a light source just entering the lens's field of view.
 - **Rays need distance**: The starburst pattern only activates beyond 8 pixels from the origin, creating a dark core zone where only the bloom is visible. This matches real diffraction behavior where rays emerge from the aperture edge, not the center.
 - **Feedback routing**: Sending Flaregun's output back to its input creates recursive bloom — each pass adds another layer of glow, rapidly building to white. Use low Mix and Intensity settings to control the feedback intensity.
@@ -352,16 +371,14 @@ These exercises progress from a simple centered bloom to complex multi-component
 |------|------------|
 | **Additive Composite** | A blending method where the flare and input pixel values are summed, naturally producing blown-out highlights. Brighter areas saturate toward white. |
 | **Anamorphic** | Relating to cylindrical lens optics that compress the image horizontally, producing characteristic horizontal streaks through bright light sources. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the 64-entry Gaussian falloff lookup table. |
 | **BT.601** | ITU-R Recommendation BT.601; the color encoding standard used for the YUV pipeline, defining the matrix coefficients for luminance and chrominance separation. |
 | **Diffraction Spike** | A streak of light extending radially from a bright point, caused by diffraction around straight-edged aperture blades in a camera lens. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gaussian Falloff** | An intensity profile that follows the bell curve $e^{-(r/\sigma)^2}$, producing a smooth, optically natural radial brightness gradient. |
 | **Lens Flare** | Optical artifacts caused by non-image-forming light scattering within a compound lens system, manifesting as blooms, streaks, and ghost reflections. |
 | **Octagon Approximation** | A computationally efficient distance estimate: $d \approx \max(|dx|,|dy|) + \frac{3}{8}\min(|dx|,|dy|)$, avoiding square root operations. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Saturating Arithmetic** | Addition that clamps at the maximum representable value (1023 for 10-bit) instead of wrapping around, preventing overflow glitches. |
 | **Starburst** | A radial pattern of light rays emanating from a bright point source, simulating aperture-blade diffraction. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

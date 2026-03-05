@@ -68,6 +68,14 @@ At moderate settings, Fisheye adds a subtle focus-pulling vignette that draws th
 
 ---
 
+## Quick Start
+
+1. **Start with the vignette**: Set Distortion to ~50% with all toggles off and Mix at 100%. This gives a clean radial darkening baseline before adding complexity.
+2. **Border creates compositing mattes**: With Border on, Fisheye becomes a circular key generator. Route the output to a downstream mixer's key input for shaped compositing.
+3. **Chromatic aberration is subtle at center**: Because the offset is distance-based, the center always stays clean. Move Center X/Y off-frame to push strong chromatic fringing across the entire visible area.
+
+---
+
 ## Background
 
 ### Barrel and Pincushion Distortion
@@ -94,6 +102,8 @@ The core computation in Fisheye is the squared Euclidean distance from each pixe
 ---
 
 ## Signal Flow
+
+Timing Detection → Distance Computation → Y Channel → ... → Sync Delay Pipeline → Output / Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -154,7 +164,7 @@ The border fill stage overwrites the darkening result when active, replacing out
 | Default | 50% |
 | Suffix | % |
 
-Sets the distance-squared threshold that defines the boundary between the smoothly attenuated center zone and the hard-limited outer zone. At low values, only a small region near the center receives gradual falloff — most of the frame hits the floor. At high values, the gradual zone extends nearly to the edges. This control defines the effective "lens radius" of the simulated distortion. Combined with Border, it sets the edge of a circular mask.
+At low values, only a small region near the center receives gradual falloff — most of the frame hits the floor. At high values, the gradual zone extends nearly to the edges. This control defines the effective "lens radius" of the simulated distortion. Combined with Border, it sets the edge of a circular mask. Internally, sets the distance-squared threshold that defines the boundary between the smoothly attenuated center zone and the hard-limited outer zone.
 
 ---
 
@@ -238,6 +248,10 @@ Switches 7–11 control five independent binary processing options. Convex rever
 
 Wet/dry mix between the processed and original signal. At maximum (100%), the output is fully processed. At minimum (0%), the output is the original delayed signal. Intermediate values blend linearly between the two via three parallel interpolator instances (one each for Y, U, and V). This allows subtle vignetting to be dialed in without committing to the full effect intensity.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -259,7 +273,7 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 *Classic Vignette — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a centered subject and visible detail in the corners.
 
-**Objective**: Learn how the Distortion threshold and center position controls create a traditional photographic vignette.
+**What You'll Create**: Learn how the Distortion threshold and center position controls create a traditional photographic vignette.
 
 1. **Default vignette**: With Distortion at midpoint, observe the radial darkening from center to edges.
 2. **Tighten the circle**: Reduce Distortion. Watch the bright center zone shrink and the edges darken further.
@@ -286,7 +300,7 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 *Barrel vs. Pincushion — simulated result across source images.*
 **Source**: Footage with visible detail across the full frame — a wide shot or geometric test pattern.
 
-**Objective**: Compare the barrel (concave) and pincushion (convex) falloff modes and explore the border fill function.
+**What You'll Create**: Compare the barrel (concave) and pincushion (convex) falloff modes and explore the border fill function.
 
 1. **Barrel mode**: With Convex off, set Distortion to ~40%. Observe the dark edges and bright center.
 2. **Pincushion mode**: Enable Convex (Toggle 7). The brightness distribution inverts — edges brighten, center dims.
@@ -314,7 +328,7 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 *Chromatic Fringing — simulated result across source images.*
 **Source**: High-contrast footage — sharp edges, bright highlights against dark backgrounds.
 
-**Objective**: Explore chromatic aberration and its interaction with vignetting and border fill.
+**What You'll Create**: Explore chromatic aberration and its interaction with vignetting and border fill.
 
 1. **Enable chromatic**: Turn on Chromatic toggle (Toggle 9).
 2. **Increase intensity**: Slowly raise the Chromatic knob (Pot 5) from 0%. Watch color fringes appear at the edges of the frame.
@@ -331,9 +345,6 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 
 ## Tips
 
-- **Start with the vignette**: Set Distortion to ~50% with all toggles off and Mix at 100%. This gives a clean radial darkening baseline before adding complexity.
-- **Border creates compositing mattes**: With Border on, Fisheye becomes a circular key generator. Route the output to a downstream mixer's key input for shaped compositing.
-- **Chromatic aberration is subtle at center**: Because the offset is distance-based, the center always stays clean. Move Center X/Y off-frame to push strong chromatic fringing across the entire visible area.
 - **Convex for spotlight effects**: Pincushion mode (Convex on) brightens the edges — useful for creating an inverted spotlight or halo effect when combined with border fill.
 - **Unused controls are future-ready**: Zoom, Curvature, and Circular are reserved for potential spatial remapping if a future hardware revision adds frame buffer memory.
 - **Mix for film-quality vignetting**: Real camera vignettes are subtle — 20–40% mix with a wide Distortion setting produces a filmic edge darkening that integrates naturally with live footage.
@@ -349,12 +360,10 @@ These exercises progress from simple vignetting to complex chromatic effects. Ea
 | **Barrel Distortion** | A lens aberration where straight lines bow outward from the center, giving the image a convex, bulging appearance. |
 | **Chromatic Aberration** | Colored fringing caused by a lens focusing different wavelengths at slightly different points, most visible at image edges. |
 | **Distance-Squared** | The sum of squared horizontal and vertical offsets from a reference point; used as a computationally efficient proxy for radial distance. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (lerp) between two values, used here for wet/dry mixing. |
 | **Pincushion Distortion** | A lens aberration where straight lines bow inward toward the center, giving the image a concave, pinched appearance. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Radial Falloff** | A brightness attenuation that increases with distance from a central point, simulating optical vignetting. |
 | **Vignetting** | The gradual darkening of an image toward its edges and corners, caused by optical or mechanical properties of a lens system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

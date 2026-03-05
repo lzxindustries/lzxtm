@@ -68,6 +68,14 @@ At moderate settings, the program produces a subtle but convincing stereoscopic 
 
 ---
 
+## Quick Start
+
+1. **With glasses, start conservative**: Begin with Depth Amt ~35% and Separation ~30% for comfortable viewing. Increase gradually.
+2. **Convergence matters for comfort**: Set convergence so the most important subject has minimal colour fringe — that puts it on the screen plane. Objects behind and in front will pop.
+3. **Red/Cyan is more available, Green/Magenta is more accurate**: Red/Cyan glasses are cheap and ubiquitous but desaturate reds. Green/Magenta preserves more colour but the glasses are less common.
+
+---
+
 ## Background
 
 ### What Is Anaglyphic 3D?

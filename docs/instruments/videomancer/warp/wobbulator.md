@@ -68,6 +68,14 @@ Because the warp is computed per pixel in real time, the distortion responds ins
 
 ---
 
+## Quick Start
+
+1. **Start subtle:** Begin with Field Str around 20–30 % to get a gentle CRT-era wobble before dialling up to extreme values.
+2. **Use a grid source:** A grid or test pattern reveals the warp geometry most clearly — you can see exactly which pixels are displaced and by how much.
+3. **Move the focus live:** The most expressive use of Wobbulator is manual focus point sweeping — slowly dragging Center X and Center Y during a performance creates the feeling of holding a magnet against the screen.
+
+---
+
 ## Background
 
 ### Nam June Paik and Magnet TV
@@ -233,6 +241,10 @@ The five toggles divide into character controls and utility.  Polarity is the si
 
 Mix crossfades between the dry input and the warped wet output.  At zero the output is the unmodified source; at maximum it is the fully warped signal.  Intermediate values blend the two, creating a ghost effect where the original image appears faintly beneath the distorted version.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +266,7 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 *Magnet On Glass — simulated result across source images.*
 **Source**: A high-contrast graphic — text, a test pattern, or a grid — works best to reveal warping geometry.
 
-**Objective**: Create a classic magnet-on-CRT effect with a single attraction point at the screen centre.
+**What You'll Create**: Create a classic magnet-on-CRT effect with a single attraction point at the screen centre.
 
 1. Set Center X and Center Y both to 50 % to place the focus at the centre.
 2. Set Field Str to 50 % and Radius to 70 %.
@@ -284,7 +296,7 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 *Dual Field Interference — simulated result across source images.*
 **Source**: A camera or any spatially detailed source with large regions of mid-brightness.
 
-**Objective**: Create symmetrical warp fields with two focal points and observe the interference between them.
+**What You'll Create**: Create symmetrical warp fields with two focal points and observe the interference between them.
 
 1. Set Field Str to 40 % and Sources to Dual.
 2. Set Center X and Center Y to 50 % — the two fields are symmetric about centre.
@@ -314,7 +326,7 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 *Animated Chromatic Wobble — simulated result across source images.*
 **Source**: A medium-contrast camera feed or colour bars.
 
-**Objective**: Produce a slow, rhythmic wobble with prismatic colour fringing.
+**What You'll Create**: Produce a slow, rhythmic wobble with prismatic colour fringing.
 
 1. Set Field Str to 30 %, Radius to 60 %, Drift Spd to 40 %.
 2. Enable Animate and Chroma Warp.
@@ -331,9 +343,6 @@ These exercises explore the core behaviours of magnetic warping, from simple sin
 
 ## Tips
 
-- **Start subtle:** Begin with Field Str around 20–30 % to get a gentle CRT-era wobble before dialling up to extreme values.
-- **Use a grid source:** A grid or test pattern reveals the warp geometry most clearly — you can see exactly which pixels are displaced and by how much.
-- **Move the focus live:** The most expressive use of Wobbulator is manual focus point sweeping — slowly dragging Center X and Center Y during a performance creates the feeling of holding a magnet against the screen.
 - **Dual for symmetry:** Switch to Dual Sources whenever you want bilateral symmetry — useful for Rorschach-like effects or for centring an abstract composition.
 - **Chroma Warp sparingly:** A little chromatic fringing adds realism to the CRT simulation; too much starts to look like a calibration error rather than an artistic choice.
 - **Chain with feedback:** Routing Wobbulator's output back through a feedback delay creates ever-deepening recursive distortion, mimicking the cascading deflection of real multi-magnet setups.

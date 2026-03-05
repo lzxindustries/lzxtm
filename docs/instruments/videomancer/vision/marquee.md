@@ -68,6 +68,14 @@ The name references the marquee signs of theaters and cinemas — illuminated le
 
 ---
 
+## Quick Start
+
+1. **No bypass toggle**: Unlike most programs, Marquee uses Toggle 11 for Outline Only instead of bypass. Set the Mix fader to 0% for instant A/B comparison with the unprocessed source.
+2. **Key Gain before threshold**: If your source is low-contrast, boost Key Gain rather than lowering Key Level. Gain amplifies before thresholding, producing a cleaner binary key with less noise.
+3. **Contrasting colors**: Choose Fill Hue and Outline Hue from opposite sides of the color wheel for maximum readability — yellow fill with blue outline, or white fill with red outline.
+
+---
+
 ## Background
 
 ### Luminance Keying
@@ -94,6 +102,8 @@ Rather than a continuous color space, Marquee maps hue controls to six saturated
 ---
 
 ## Signal Flow
+
+Key Gain Multiply → Threshold + BRAM → Edge Detection + Dilation → Layer Priority Compositor
 
 ```
 Input Video (YUV 4:4:4)
@@ -232,6 +242,10 @@ The five toggles each control a distinct compositing behavior. Fill Mode and Sha
 
 Crossfades between the original dry input and the wet composited output. At 0%, the output is 100% dry — effectively bypassing all processing. At 100%, the output is fully wet — the complete five-layer composite. Intermediate values blend the two, creating a semi-transparent overlay effect where the title compositing fades over the original video. Since there is no dedicated bypass toggle, this fader is the primary bypass control.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -253,7 +267,7 @@ These exercises progress from basic key extraction to full broadcast-style title
 *Clean Title Key — simulated result across source images.*
 **Source**: High-contrast text or graphics on a dark background — a title card, text overlay, or white lettering on black.
 
-**Objective**: Learn to extract a clean binary key and apply a solid colored fill with an outline.
+**What You'll Create**: Learn to extract a clean binary key and apply a solid colored fill with an outline.
 
 1. **Set key threshold**: With the source displayed, slowly increase Key Level until the text is cleanly keyed — foreground white, background removed.
 2. **Adjust gain**: If the key is noisy, increase Key Gain slightly above center to boost the contrast before thresholding.
@@ -280,7 +294,7 @@ These exercises progress from basic key extraction to full broadcast-style title
 *Broadcast Lower-Third — simulated result across source images.*
 **Source**: A title card or graphic overlaid on live camera footage — any high-contrast text over a scene.
 
-**Objective**: Build a complete broadcast lower-third with fill, outline, shadow, and background box.
+**What You'll Create**: Build a complete broadcast lower-third with fill, outline, shadow, and background box.
 
 1. **Start from Exercise 1**: Use the clean key settings from Exercise 1 as a starting point.
 2. **Enable shadow**: Toggle Shadow to On. Set Shadow Offset to about 5 pixels (30%). Watch the dark shadow appear offset from the title.
@@ -307,7 +321,7 @@ These exercises progress from basic key extraction to full broadcast-style title
 *Wireframe Edge Graphics — simulated result across source images.*
 **Source**: Camera footage of physical objects or people — anything with strong brightness contrast and recognizable contours.
 
-**Objective**: Use Outline Only mode and inverted keying to create abstract edge-contour graphics from camera footage.
+**What You'll Create**: Use Outline Only mode and inverted keying to create abstract edge-contour graphics from camera footage.
 
 1. **Enable outline only**: Toggle Outline Only to Outl. The fill, shadow, and box layers disappear — only the outline contour remains.
 2. **Set wide outline**: Increase Outline Width to 6–7 for bold contour lines.
@@ -323,9 +337,6 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 ## Tips
 
-- **No bypass toggle**: Unlike most programs, Marquee uses Toggle 11 for Outline Only instead of bypass. Set the Mix fader to 0% for instant A/B comparison with the unprocessed source.
-- **Key Gain before threshold**: If your source is low-contrast, boost Key Gain rather than lowering Key Level. Gain amplifies before thresholding, producing a cleaner binary key with less noise.
-- **Contrasting colors**: Choose Fill Hue and Outline Hue from opposite sides of the color wheel for maximum readability — yellow fill with blue outline, or white fill with red outline.
 - **Shadow direction**: The shadow always displaces to the right (positive horizontal offset) and one line down. For a different shadow position, pre-process the input with a flip or rotation program upstream.
 - **Outline Only as a key source**: Use Outline Only mode to generate clean edge contour graphics, then feed the output to a downstream keyer or compositor as a matte source.
 - **Box for readability**: The background box is invaluable when compositing titles over busy or unpredictable live footage — it creates a consistent dark band behind the text regardless of the background content.
@@ -338,19 +349,17 @@ These exercises progress from basic key extraction to full broadcast-style title
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA used to store one scan line of key data for vertical edge detection and shadow displacement. |
 | **Character Generator** | Dedicated broadcast hardware for compositing text and graphics over live video, widely used in television from the 1970s onward. |
 | **Compositor** | A priority-based layer system that combines multiple visual elements (fill, outline, shadow, box, video) into a single output frame. |
 | **Dilation** | Expanding a binary mask by OR-ing adjacent samples, used here to thicken the outline edge from a single pixel to multiple pixels. |
 | **Drop Shadow** | A displaced dark copy of a foreground element, creating the illusion of depth by simulating a shadow cast onto the background. |
 | **Edge Detection** | Identifying boundaries in a binary signal by comparing adjacent samples (XOR); transitions between 0 and 1 produce an edge flag. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Key Signal** | A binary mask (0 or 1 per pixel) that separates foreground from background for compositing. |
 | **Lower-Third** | A title or graphic overlay positioned in the lower portion of the screen, commonly used for name identifications in broadcast television. |
 | **Luminance** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Priority Compositing** | A compositing method where layers are evaluated top-to-bottom and the first active layer determines the output pixel color. |
 | **Shift Register** | A chain of flip-flops that delays a signal by a programmable number of clock cycles, used for horizontal displacement and edge detection. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

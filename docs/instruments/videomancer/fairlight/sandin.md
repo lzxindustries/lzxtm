@@ -68,6 +68,14 @@ The result ranges from subtle edge-enhanced video to intensely abstract, glowing
 
 ---
 
+## Quick Start
+
+1. **Start with zero Feedback:** Learn the derivation modes before adding feedback — each mode has a distinct character that is clearest without recursion.
+2. **Divide for ethereal glow:** The Divide mode is Sandin's secret weapon — it reveals structure in shadows, creating an X-ray transparency effect.
+3. **Double cascade for texture:** When the source has fine detail (fabrics, foliage, hair), Double cascade extracts textures that Single cascade misses.
+
+---
+
 ## Background
 
 ### The Sandin Image Processor
@@ -222,7 +230,7 @@ Color Tint rotates the hue of the chrominance output.  This shifts the colour ca
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Derive** | Edge | Offset |
+| **7 — Derive** | Edge | Color |
 | **8 — Math** | Multiply | Divide |
 | **9 — Cascade** | Single | Double |
 | **10 — Clamp** | Wrap | Saturate |
@@ -242,6 +250,10 @@ Derive selects the derivation type (edge, offset, invert, or colour).  Math sele
 | Suffix | % |
 
 Mix crossfades between the dry input and the wet derived/modulated output.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -264,7 +276,7 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 *Clean Edge Enhancement — simulated result across source images.*
 **Source**: A camera source with well-defined subjects — faces, text, or architecture.
 
-**Objective**: Enhance edges while preserving recognisable image structure.
+**What You'll Create**: Enhance edges while preserving recognisable image structure.
 
 1. Set Derive to Edge mode, Derive Amt to 40 %.
 2. Set Offset H to 10 %, Offset V to 5 % for a slight spatial derivative.
@@ -294,7 +306,7 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 *Feedback Oscillation — simulated result across source images.*
 **Source**: A high-contrast graphic or colour bars.
 
-**Objective**: Push the derivation chain into self-reinforcing feedback oscillation.
+**What You'll Create**: Push the derivation chain into self-reinforcing feedback oscillation.
 
 1. Set Derive Amt to 70 %, Feedback to 60 %.
 2. Set Cascade to Double for second-order derivation.
@@ -324,7 +336,7 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 *Shadow Glow with Divide — simulated result across source images.*
 **Source**: A dimly lit scene with strong shadows and some bright highlights.
 
-**Objective**: Create an ethereal glow in shadow regions using Divide cross-modulation.
+**What You'll Create**: Create an ethereal glow in shadow regions using Divide cross-modulation.
 
 1. Set Math to Divide and Derive to Invert.
 2. Set Derive Amt to 50 %, Feedback to 20 %.
@@ -341,9 +353,6 @@ These exercises explore the Sandin IP's signal derivation chain, from clean edge
 
 ## Tips
 
-- **Start with zero Feedback:** Learn the derivation modes before adding feedback — each mode has a distinct character that is clearest without recursion.
-- **Divide for ethereal glow:** The Divide mode is Sandin's secret weapon — it reveals structure in shadows, creating an X-ray transparency effect.
-- **Double cascade for texture:** When the source has fine detail (fabrics, foliage, hair), Double cascade extracts textures that Single cascade misses.
 - **Wrap for controlled chaos:** Wrap overflow mode produces the wild false-colour ringing that is characteristic of pushed analogue circuits — use it deliberately, not accidentally.
 - **Color Tint for drama:** A strong hue rotation on edge-enhanced video creates chromatic contours that pop against the neutral source.
 - **Low Feedback + high Derive:** This combination produces clean, poster-like edge maps with no oscillation risk — ideal for graphic design or VJ work.

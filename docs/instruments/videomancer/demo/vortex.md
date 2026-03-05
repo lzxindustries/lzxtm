@@ -35,6 +35,14 @@ Vortex can operate as a pure synthesis engine generating its own imagery, or it 
 
 ---
 
+## Quick Start
+
+1. **Start with depth only** — set Rotation Speed to zero first to understand the depth perspective, then gradually add rotation for spiral effects.
+2. **Diamond shape reveals structure** — the angular Diamond distance metric makes the underlying coordinate grid visible, useful for understanding how the polar transform works.
+3. **Texture Scale is a multiplier** — going above 50% doubles the pattern frequency in one step; use this as a discrete texture detail control rather than a smooth frequency sweep.
+
+---
+
 ## Background
 
 ### Demoscene Tunnel Effects
@@ -61,6 +69,8 @@ In a real tunnel, distant surfaces receive less light. Vortex simulates this by 
 ---
 
 ## Signal Flow
+
+Polar Transform → Texture Mapping → Pattern + Shading → Colorize → Mix → Sync Signals
 
 ```
 Vanishing Point (Center X, Y)
@@ -201,6 +211,10 @@ The toggles divide into three functional pairs plus bypass. Texture and Shape co
 
 Mix crossfades between the dry input and the wet tunnel output. At 0% the output is pure input video with no tunnel visible. At 100% the output is the full tunnel synthesis. Intermediate values create a layered effect where the tunnel overlay sits on top of the video at partial opacity. The crossfade operates independently on Y, U, and V channels via three interpolator_u instances.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +225,7 @@ These exercises explore Vortex's tunnel synthesis from basic configuration throu
 
 <img src={vortex_exercise1_result} alt="Classic Tunnel Fly-Through result"/>
 *Classic Tunnel Fly-Through — simulated result across source images.*
-**Objective**: Create a basic centered tunnel with moderate fly-through speed to experience the fundamental demoscene tunnel illusion.
+**What You'll Create**: Create a basic centered tunnel with moderate fly-through speed to experience the fundamental demoscene tunnel illusion.
 
 1. Set Depth Speed to 40% for moderate fly-through
 2. Set Rotation Speed to 0% for pure depth scrolling
@@ -228,7 +242,7 @@ These exercises explore Vortex's tunnel synthesis from basic configuration throu
 
 <img src={vortex_exercise2_result} alt="Diamond Spiral with Color Gradient result"/>
 *Diamond Spiral with Color Gradient — simulated result across source images.*
-**Objective**: Combine the diamond distance metric with gradient colorization and simultaneous depth/rotation animation for a vivid spiral vortex.
+**What You'll Create**: Combine the diamond distance metric with gradient colorization and simultaneous depth/rotation animation for a vivid spiral vortex.
 
 1. Start from Exercise 1 settings
 2. Switch Shape to Diamond
@@ -246,7 +260,7 @@ These exercises explore Vortex's tunnel synthesis from basic configuration throu
 
 <img src={vortex_exercise3_result} alt="Off-Axis Video-Modulated Tunnel result"/>
 *Off-Axis Video-Modulated Tunnel — simulated result across source images.*
-**Objective**: Move the vanishing point off-center and use the input video to modulate the tunnel brightness, blending synthesis with live imagery.
+**What You'll Create**: Move the vanishing point off-center and use the input video to modulate the tunnel brightness, blending synthesis with live imagery.
 
 1. Feed a video source with good contrast (a face, geometric pattern, or landscape)
 2. Move Center X to 30% and Center Y to 35% for an off-axis perspective
@@ -264,9 +278,6 @@ These exercises explore Vortex's tunnel synthesis from basic configuration throu
 
 ## Tips
 
-- **Start with depth only** — set Rotation Speed to zero first to understand the depth perspective, then gradually add rotation for spiral effects.
-- **Diamond shape reveals structure** — the angular Diamond distance metric makes the underlying coordinate grid visible, useful for understanding how the polar transform works.
-- **Texture Scale is a multiplier** — going above 50% doubles the pattern frequency in one step; use this as a discrete texture detail control rather than a smooth frequency sweep.
 - **Wall Hue is zoned** — the parameter range has four distinct color zones rather than a smooth hue sweep, so significant jumps in color occur at the 25%, 50%, and 75% positions.
 - **Video Bright mode for layering** — when using Mix at intermediate values, Bright video modulation creates a more natural blend between the tunnel and input video.
 - **Off-center tunnels for perspective** — moving the vanishing point to one side creates dramatic asymmetric perspectives, ideal for paired or split-screen setups.

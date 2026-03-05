@@ -68,6 +68,14 @@ This is a ported program that predates the Videomancer ABI standard. Several tog
 
 ---
 
+## Quick Start
+
+1. **Start with one axis**: Ludosphere is most intuitive when you build the pattern one axis at a time — set H Clock and H Mod first, then add vertical, then temporal.
+2. **Zero Mod for pure geometry**: Setting all Mod knobs to zero removes source video entirely, turning Ludosphere into a pure geometric pattern generator ideal for texture backgrounds.
+3. **Frequency ratios create structure**: Integer ratios between H Clock and V Clock (1:1, 2:1, 3:2) produce regular grid and diamond tilings; irrational ratios produce more organic, continuously varying patterns.
+
+---
+
 ## Background
 
 ### Direct Digital Synthesis
@@ -94,6 +102,8 @@ Each DDS accumulator operates on a different timing domain. The horizontal accum
 ---
 
 ## Signal Flow
+
+Video Timing Generator → Phase Accumulators → Waveshapers → Luma Modulation → Shift Offset → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -228,6 +238,10 @@ The five toggles have split responsibilities. H Flip and V Flip control waveshap
 
 Chroma shift offset. Adds a signed value (register value minus 512) to both U and V channels when Colorize is active. Sweeping the fader rotates the generated chroma through the YUV color wheel — a full sweep covers approximately one complete hue rotation. Reads from register 11 (out of bounds) so the physical fader does not control this parameter in the current ABI.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +263,7 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 *Spatial Interference Grid — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-**Objective**: Learn how horizontal and vertical oscillators create a spatial modulation grid that interacts with the source video.
+**What You'll Create**: Learn how horizontal and vertical oscillators create a spatial modulation grid that interacts with the source video.
 
 1. **Single horizontal ramp**: Set H Clock to about 20%. A single wide gradient sweeps across the frame from left to right.
 2. **Add vertical**: Set V Clock to about 20%. A second gradient sweeps top to bottom. The two multiply together, creating a diagonal pattern.
@@ -276,7 +290,7 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 *Temporal Pulsation — simulated result across source images.*
 **Source**: A static image or slow-moving footage so the temporal effect is clearly visible.
 
-**Objective**: Explore how the frame-rate oscillator adds temporal animation to the spatial modulation pattern.
+**What You'll Create**: Explore how the frame-rate oscillator adds temporal animation to the spatial modulation pattern.
 
 1. **Spatial base**: Set H Clock ~40%, V Clock ~40%, both Mod controls at ~50%. Establish a visible spatial grid modulating the source.
 2. **Slow pulse**: Set F Clock to about 10%. The entire frame slowly brightens and dims over several seconds as the frame accumulator sweeps.
@@ -303,7 +317,7 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 *Pure Oscillator Patterns — simulated result across source images.*
 **Source**: Any footage — the source video will be overwhelmed by the oscillator output.
 
-**Objective**: Explore the raw geometric patterns produced when modulation depth is at zero, removing source video contribution entirely.
+**What You'll Create**: Explore the raw geometric patterns produced when modulation depth is at zero, removing source video contribution entirely.
 
 1. **Zero modulation**: Set H Mod, V Mod, and F Mod all to 0%. The proc_amp now outputs pure oscillator waveform with no source video content.
 2. **Horizontal ramp**: Set H Clock to about 30%, V Clock and F Clock to 0%. A single horizontal gradient fills the frame.
@@ -318,9 +332,6 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 
 ## Tips
 
-- **Start with one axis**: Ludosphere is most intuitive when you build the pattern one axis at a time — set H Clock and H Mod first, then add vertical, then temporal.
-- **Zero Mod for pure geometry**: Setting all Mod knobs to zero removes source video entirely, turning Ludosphere into a pure geometric pattern generator ideal for texture backgrounds.
-- **Frequency ratios create structure**: Integer ratios between H Clock and V Clock (1:1, 2:1, 3:2) produce regular grid and diamond tilings; irrational ratios produce more organic, continuously varying patterns.
 - **Triangle smooths, sawtooth edges**: Use H Flip to choose between smooth undulations (triangle) and hard gradient edges (sawtooth). Triangle mode is gentler on the eye; sawtooth creates sharper geometric edges.
 - **Temporal animation is free-running**: The frame oscillator never resets, so it drifts continuously. This is ideal for slowly evolving texture but means the pattern never returns to exactly the same state.
 - **Working controls only**: In the current ABI, only pots 1–6 and toggle 7 (H Flip) respond predictably. Plan your patches around these controls.
@@ -341,6 +352,7 @@ These exercises focus on the working controls (H Clock, V Clock, F Clock, H Mod,
 | **Phase Accumulator** | An integer register that adds a fixed increment on each event, sweeping through its range to produce a ramp waveform. |
 | **Proc Amp** | Processing Amplifier; a brightness/contrast stage. In Ludosphere, repurposed as a modulator blending oscillator and source. |
 | **Triangle Wave** | A symmetric waveform that ramps linearly up then linearly down, with no discontinuity at the peaks. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

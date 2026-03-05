@@ -35,6 +35,14 @@ The visual palette ranges from warm amber oil tones to full psychedelic rainbow,
 
 ---
 
+## Quick Start
+
+1. **Start with 2 blobs**: Begin with Blob Count at 2 to clearly see the fringe boundary between a single pair of fields. Add more blobs as you become comfortable.
+2. **Oil + Rainbow is the classic look**: The Oil palette with Rainbow fringe mode most closely approximates the liquid light show aesthetic from 1960s concerts.
+3. **Spread sets the mood**: Large Spread values fill the screen with colour, creating an immersive environment. Small values create isolated floating shapes in darkness.
+
+---
+
 ## Background
 
 ### The Liquid Light Show Tradition
@@ -155,7 +163,7 @@ Rotates the base hue applied to both the fringe colour mapping and the psychedel
 | Default | 75% |
 | Suffix | % |
 
-Multiplies the output luminance of the blob fields. At centre (512), brightness is approximately unity — the original distance-to-luminance mapping is preserved. Below centre, the blobs are dimmed. Above centre, they are amplified, potentially producing bright white-hot centres with saturated colour fringes.
+At centre (512), brightness is approximately unity — the original distance-to-luminance mapping is preserved. Below centre, the blobs are dimmed. Above centre, they are amplified, potentially producing bright white-hot centres with saturated colour fringes. Internally, multiplies the output luminance of the blob fields.
 
 ---
 
@@ -184,6 +192,10 @@ The five toggles shape the palette, geometry, fringe style, video interaction, a
 
 Crossfades between the dry input signal and the synthesised light show output. At 0%, only the input video is visible. At 100%, only the synthesis output is visible. Intermediate positions blend the two, creating a ghostly overlay of drifting colour pools on top of the live video feed.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -194,7 +206,7 @@ These exercises progress from observing basic blob drift through fringe colour e
 
 <img src={lightshow_exercise1_result} alt="Basic Liquid Drift result"/>
 *Basic Liquid Drift — simulated result across source images.*
-**Objective**: Understand how the blob centers orbit and create soft-edged colour pools with the default Oil palette.
+**What You'll Create**: Understand how the blob centers orbit and create soft-edged colour pools with the default Oil palette.
 
 1. **Start simple**: Set Speed to ~20%, Blob Count to 2, Spread to ~60%, Fringe to ~40%, Mix to 100%.
 2. **Watch the drift**: Two warm amber blobs appear and drift slowly across the screen on their Lissajous orbits.
@@ -210,7 +222,7 @@ These exercises progress from observing basic blob drift through fringe colour e
 
 <img src={lightshow_exercise2_result} alt="Psychedelic Fringe Exploration result"/>
 *Psychedelic Fringe Exploration — simulated result across source images.*
-**Objective**: Explore the full colour range by switching to the Psychedelic palette and sweeping hue offset through the spectrum.
+**What You'll Create**: Explore the full colour range by switching to the Psychedelic palette and sweeping hue offset through the spectrum.
 
 1. **Switch palette**: Toggle Palette to Psychedelic. The blob interiors now show position-dependent colour swirls.
 2. **Widen fringe**: Increase Fringe to ~80%. The interference bands at blob boundaries become wide, colourful ribbons.
@@ -227,7 +239,7 @@ These exercises progress from observing basic blob drift through fringe colour e
 
 <img src={lightshow_exercise3_result} alt="Reactive Video Light Show result"/>
 *Reactive Video Light Show — simulated result across source images.*
-**Objective**: Create a live-reactive light show by enabling Video Seed and blending the synthesis with the input signal.
+**What You'll Create**: Create a live-reactive light show by enabling Video Seed and blending the synthesis with the input signal.
 
 1. **Set base**: Speed ~25%, Blob Count 4, Spread ~50%, Fringe ~50%, Palette Oil, Mix ~70%.
 2. **Enable video seed**: Toggle Video Seed to On. The blob fields now react to the brightness of the input video.
@@ -243,9 +255,6 @@ These exercises progress from observing basic blob drift through fringe colour e
 
 ## Tips
 
-- **Start with 2 blobs**: Begin with Blob Count at 2 to clearly see the fringe boundary between a single pair of fields. Add more blobs as you become comfortable.
-- **Oil + Rainbow is the classic look**: The Oil palette with Rainbow fringe mode most closely approximates the liquid light show aesthetic from 1960s concerts.
-- **Spread sets the mood**: Large Spread values fill the screen with colour, creating an immersive environment. Small values create isolated floating shapes in darkness.
 - **Fringe width is subtle**: The Fringe control has a large effect on visual character. Wide fringes create broad spectral bands; narrow fringes produce precise contour lines.
 - **Slow speed is mesmerising**: Very low Speed values create glacial, almost imperceptible motion that holds attention over long periods.
 - **Flat shape mimics real oil**: Real dyed oil on glass tends to flatten horizontally. Use Flat mode for a more physically authentic look.
@@ -267,5 +276,7 @@ These exercises progress from observing basic blob drift through fringe colour e
 | **Metaball** | A computer graphics technique for rendering organic blobs by summing inverse-distance fields and extracting an isosurface; closely related to Light Show's rendering. |
 | **Phase accumulator** | A digital counter that wraps at its maximum value, used in DDS to track the current position within a periodic waveform cycle. |
 | **Quarter-wave LUT** | A lookup table storing only the first quadrant (0°–90°) of a sine wave; full 360° coverage is achieved through symmetry (reflection and negation). |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

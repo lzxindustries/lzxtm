@@ -35,6 +35,14 @@ The mask is the key to visual variety. It determines which bits of the shifted c
 
 ---
 
+## Quick Start
+
+1. **Start with Auto Mask**: The auto-incrementing mask is the heart of the classic Kaleidoscope experience. Let it sweep through all 256 values before switching to manual exploration.
+2. **Low masks for structure**: Mask values below about 15 produce the most visually distinctive, recognizable geometric patterns — radial spokes, concentric rings, and symmetric tilings.
+3. **High masks for chaos**: Mask values above 200 produce dense, space-filling trajectories that look more like noise. The visually interesting range is typically in the middle.
+
+---
+
 ## Background
 
 ### The Cromemco Dazzler
@@ -211,6 +219,10 @@ The five toggles divide into three functional groups. Run and Reset control the 
 
 Mix controls the wet/dry blend between the Kaleidoscope synthesis output and the input video signal. At full mix, only the Kaleidoscope pattern is visible against the default input background. Reducing mix fades the input video into view behind the pattern, creating a colored overlay effect. At zero mix, the Kaleidoscope is invisible and only the input signal passes through. The mix engages three interpolator_u instances for independent Y, U, and V channel blending.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -221,7 +233,7 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 
 <img src={kaleidoscope_exercise1_result} alt="Classic Dazzler Experience result"/>
 *Classic Dazzler Experience — simulated result across source images.*
-**Objective**: Reproduce the authentic 1976 Cromemco Dazzler Kaleidoscope experience with auto-incrementing mask and default palette.
+**What You'll Create**: Reproduce the authentic 1976 Cromemco Dazzler Kaleidoscope experience with auto-incrementing mask and default palette.
 
 1. Set Auto Mask to Auto for the original mask sweep behavior.
 2. Set Speed to about 50% for historically authentic evolution rate.
@@ -241,7 +253,7 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 
 <img src={kaleidoscope_exercise2_result} alt="Manual Mask Exploration result"/>
 *Manual Mask Exploration — simulated result across source images.*
-**Objective**: Manually explore specific mask values to understand how each bit position affects pattern geometry.
+**What You'll Create**: Manually explore specific mask values to understand how each bit position affects pattern geometry.
 
 1. Set Auto Mask to Manual.
 2. Set Speed to about 30% for detailed observation.
@@ -260,7 +272,7 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 
 <img src={kaleidoscope_exercise3_result} alt="Palette Cycling and Overlay result"/>
 *Palette Cycling and Overlay — simulated result across source images.*
-**Objective**: Use Hue Shift to recolor the Kaleidoscope pattern and blend it as a textured overlay at partial mix.
+**What You'll Create**: Use Hue Shift to recolor the Kaleidoscope pattern and blend it as a textured overlay at partial mix.
 
 1. Set Auto Mask to Auto for continuous evolution.
 2. Set Speed to about 60% for lively animation.
@@ -278,9 +290,6 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 
 ## Tips
 
-- **Start with Auto Mask**: The auto-incrementing mask is the heart of the classic Kaleidoscope experience. Let it sweep through all 256 values before switching to manual exploration.
-- **Low masks for structure**: Mask values below about 15 produce the most visually distinctive, recognizable geometric patterns — radial spokes, concentric rings, and symmetric tilings.
-- **High masks for chaos**: Mask values above 200 produce dense, space-filling trajectories that look more like noise. The visually interesting range is typically in the middle.
 - **Reset doesn't clear**: The framebuffer retains old pixel data when Reset re-seeds the coordinates. This creates visual transitions where new patterns overwrite old ones layer by layer — an artistically interesting effect.
 - **Seed position matters**: Different Seed X and Seed Y values produce different initial trajectories. Even small seed changes can dramatically alter the resulting pattern at the same mask value.
 - **Hue Shift for variety**: The Dazzler palette has strong personality — cycling through Hue Shift values radically changes the mood from warm earth tones to cool blues to vivid primaries.
@@ -294,7 +303,6 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 | Term | Definition |
 |------|------------|
 | **8080** | Intel 8080 microprocessor, the CPU used in the IMSAI 8080 and Altair 8800 computers that hosted the Cromemco Dazzler. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the 64x64x4-bit framebuffer. |
 | **Coordinate Feedback** | The iterative update rule where X and Y modify each other through masked shift-and-add, producing the Kaleidoscope's characteristic trajectories. |
 | **Cromemco Dazzler** | One of the first consumer video graphics boards (1976), producing 64x64 color or 512x512 monochrome display via the S-100 bus. |
 | **LFSR** | Linear Feedback Shift Register; used here only for LFSR-like coordinate evolution via the masked feedback equation. |
@@ -303,6 +311,7 @@ These exercises explore the Kaleidoscope's sensitivity to mask values, the effec
 | **Palette** | The 16-entry color lookup table mapping 4-bit indices to YUV video values, based on the Dazzler's RGBI color scheme. |
 | **RGBI** | Red-Green-Blue-Intensity; the 4-bit color encoding used by the Cromemco Dazzler, with 3 base color bits and 1 intensity/brightness bit. |
 | **S-100 Bus** | The 100-pin bus standard used by early microcomputers including the Altair 8800 and IMSAI 8080; the Dazzler connected via this bus. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

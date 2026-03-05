@@ -35,6 +35,14 @@ The combination of continuous beam tracing during active video and per-frame dec
 
 ---
 
+## Quick Start
+
+1. **Pattern 1 is iconic**: The rosette is the single most recognisable laser show pattern. Start here to calibrate your visual expectations.
+2. **High Persist for ambient**: Persist above 80% causes patterns to accumulate into dense luminous fields suitable for ambient background projection.
+3. **Low Speed reveals structure**: At very low speed you can watch the beam trace individual points, revealing the mathematical structure of each pattern.
+
+---
+
 ## Background
 
 ### Ivan Dryer and Laserium
@@ -215,6 +223,10 @@ The five toggles configure beam splitting, line thickness, colour mode, strobe b
 
 Mix crossfades between the input video (dry) and the laser synthesis (wet). At minimum the original video passes; at maximum only the laser pattern is visible. Intermediate positions overlay the laser traces on the video, creating a laser-over-image composite.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -225,7 +237,7 @@ These exercises demonstrate the range of laser deflection patterns, from gentle 
 
 <img src={laserium_exercise1_result} alt="Classic Rosette result"/>
 *Classic Rosette — simulated result across source images.*
-**Objective**: Create the iconic Laserium rosette — the most recognisable laser light show pattern.
+**What You'll Create**: Create the iconic Laserium rosette — the most recognisable laser light show pattern.
 
 1. Set Pattern to position 1 (Rosette).
 2. Set Speed to 25%, Spread to 50%.
@@ -242,7 +254,7 @@ These exercises demonstrate the range of laser deflection patterns, from gentle 
 
 <img src={laserium_exercise2_result} alt="Split Beam Spiral result"/>
 *Split Beam Spiral — simulated result across source images.*
-**Objective**: Create an expanding spiral with beam splitting and multi-colour trails.
+**What You'll Create**: Create an expanding spiral with beam splitting and multi-colour trails.
 
 1. Set Pattern to position 2 (Spiral).
 2. Set Speed to 35%, Spread to 60%.
@@ -259,7 +271,7 @@ These exercises demonstrate the range of laser deflection patterns, from gentle 
 
 <img src={laserium_exercise3_result} alt="Chaos Storm result"/>
 *Chaos Storm — simulated result across source images.*
-**Objective**: Create a dense, unpredictable field of laser traces using the chaos pattern with thick beams and blanking.
+**What You'll Create**: Create a dense, unpredictable field of laser traces using the chaos pattern with thick beams and blanking.
 
 1. Set Pattern to position 8 (Chaos).
 2. Set Speed to 55%, Spread to 70%.
@@ -276,9 +288,6 @@ These exercises demonstrate the range of laser deflection patterns, from gentle 
 
 ## Tips
 
-- **Pattern 1 is iconic**: The rosette is the single most recognisable laser show pattern. Start here to calibrate your visual expectations.
-- **High Persist for ambient**: Persist above 80% causes patterns to accumulate into dense luminous fields suitable for ambient background projection.
-- **Low Speed reveals structure**: At very low speed you can watch the beam trace individual points, revealing the mathematical structure of each pattern.
 - **Split + Multi for maximum complexity**: Two beams with intensity-mapped colour produces the richest visual output.
 - **Blanking at high Persist**: Blanking is most interesting at high persistence, where the flickering creates a subtle pulsing glow rather than an abrupt strobe.
 - **Chaos is unpredictable**: Pattern 8 uses phase XOR, which produces non-repeating trajectories — every frame is unique.

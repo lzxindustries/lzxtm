@@ -8,6 +8,7 @@ description: "The Super Nintendo's Mode 7 background layer was a hardware trick 
 ---
 
 import tarmac_hero from '/img/instruments/videomancer/tarmac/tarmac_hero.png';
+import tarmac_animation from '/img/instruments/videomancer/tarmac/tarmac_animation.gif';
 import tarmac_control_panel from '/img/instruments/videomancer/tarmac/tarmac_control_panel.png';
 import tarmac_exercise1_result from '/img/instruments/videomancer/tarmac/tarmac_exercise1_result.gif';
 import tarmac_exercise2_result from '/img/instruments/videomancer/tarmac/tarmac_exercise2_result.gif';
@@ -19,6 +20,9 @@ import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_
 
 <img src={tarmac_hero} alt="Tarmac hero image"/>
 *Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
+<img src={tarmac_animation} alt="Tarmac animated output"/>
+*Tarmac output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ The Super Nintendo's Mode 7 background layer was a hardware trick that changed e
 Tarmac captures a 64×64 downsampled tile from the input video and replays it through an affine matrix with per-scanline perspective scaling. Below the horizon line, the tile stretches toward the viewer with foreshortening that increases with distance. Above the horizon, an optional sky gradient fills the frame. The name evokes both the road surface seen in racing games and the tarmac runway stretching to the vanishing point — the quintessential Mode 7 image.
 
 At conservative settings, Tarmac creates gentle perspective warps and subtle texture scrolling. At extreme settings, the ground plane spins, zooms, and scrolls simultaneously while the tile repeats in a dizzying infinite floor. Combining rotation with scroll offset and scale produces hypnotic, ever-changing geometric kaleidoscopes that transform any source material into a retro-futuristic landscape.
+
+---
+
+## Quick Start
+
+1. **Start with Repeat mode**: Infinite tiling is the classic Mode 7 look and reveals the affine transform's full character. Switch to Clamp only when you want the single-tile flyover aesthetic with stretched borders.
+2. **Use Grid for calibration**: The grid overlay shows exactly how the affine transform distorts space. It is invaluable for setting up perspective depth and understanding how rotation warps the coordinate system before committing to a final texture.
+3. **Combine Scroll X and Scroll Y for navigation**: Sweeping both scroll controls simultaneously simulates flying over the ground plane. Add slight rotation for cornering and you have the basic F-Zero control scheme.
 
 ---
 
@@ -62,6 +74,8 @@ After computing the starting texture coordinates for the left edge of each scanl
 ---
 
 ## Signal Flow
+
+Tile Capture → Mode 7 Render Engine → Invert → Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -114,7 +128,7 @@ Two important interactions define Tarmac's character. First, the **tile capture 
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the vertical position of the horizon line. At 0%, the horizon sits at the top of the frame and the entire output is ground plane. As the control increases, the horizon drops, allocating more of the upper frame to sky (if enabled) and compressing the ground plane into fewer scanlines at the bottom. The horizon position also defines the vanishing point where the converging perspective lines meet.
+At 0%, the horizon sits at the top of the frame and the entire output is ground plane. As the control increases, the horizon drops, allocating more of the upper frame to sky (if enabled) and compressing the ground plane into fewer scanlines at the bottom. The horizon position also defines the vanishing point where the converging perspective lines meet. Internally, controls the vertical position of the horizon line.
 
 ---
 
@@ -125,7 +139,7 @@ Controls the vertical position of the horizon line. At 0%, the horizon sits at t
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of the perspective foreshortening. At low values, the ground plane appears relatively flat with minimal depth illusion — the tile texture maintains roughly uniform scale across the frame. As you increase tilt, the scale differential between near and far scanlines increases dramatically, creating steeper perspective. At maximum, the ground rushes from near at the bottom of the frame to a tight vanishing point at the horizon.
+At low values, the ground plane appears relatively flat with minimal depth illusion — the tile texture maintains roughly uniform scale across the frame. As you increase tilt, the scale differential between near and far scanlines increases dramatically, creating steeper perspective. At maximum, the ground rushes from near at the bottom of the frame to a tight vanishing point at the horizon. Internally, controls the intensity of the perspective foreshortening.
 
 ---
 
@@ -197,6 +211,21 @@ The five toggle switches control rendering modes that change the visual characte
 
 Crossfade between the dry (original) and wet (Mode 7 rendered) signals. At 0%, the output is pure input video. At 100%, the output is pure Mode 7 ground plane with optional sky. Intermediate values blend the two proportionally, which can create ghostly overlay effects where the original video shows through the perspective-transformed texture.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tarmac processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -207,9 +236,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 <img src={tarmac_exercise1_result} alt="First Ground Plane result"/>
 *First Ground Plane — simulated result across source images.*
-**Source**: A still image or camera feed with strong texture — brickwork, fabric pattern, tile floor, or printed text.
-
-**Objective**: Create the basic Mode 7 perspective ground plane and understand the horizon, tilt, and scale interaction.
+**What You'll Create**: Create the basic Mode 7 perspective ground plane and understand the horizon, tilt, and scale interaction.
 
 1. **Set the horizon**: Turn Horizon to ~25%. The ground plane fills the lower three-quarters of the frame.
 2. **Add perspective**: Increase Tilt to ~60%. Watch the perspective deepen — the texture now recedes convincingly from near to far.
@@ -225,9 +252,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 <img src={tarmac_exercise2_result} alt="Spinning Floor result"/>
 *Spinning Floor — simulated result across source images.*
-**Source**: A colorful pattern, logo, or high-contrast graphic with recognizable orientation.
-
-**Objective**: Add rotation to the ground plane for the classic Mode 7 spinning effect.
+**What You'll Create**: Add rotation to the ground plane for the classic Mode 7 spinning effect.
 
 1. **Start with the ground plane** from Exercise 1 (Horizon ~25%, Tilt ~60%, Repeat mode).
 2. **Engage rotation**: Slowly sweep Rotation through its full range. Watch the ground plane rotate around the center point.
@@ -243,9 +268,7 @@ These exercises build from basic perspective rendering to complex animated groun
 
 <img src={tarmac_exercise3_result} alt="Racing Game Composite result"/>
 *Racing Game Composite — simulated result across source images.*
-**Source**: A camera feed of a road, floor tiles, or any directional texture.
-
-**Objective**: Combine scrolling and rotation to simulate forward movement across the ground plane, then overlay it on the original video.
+**What You'll Create**: Combine scrolling and rotation to simulate forward movement across the ground plane, then overlay it on the original video.
 
 1. **Set up the ground plane**: Horizon ~30%, Tilt ~70%, Repeat, Sky On.
 2. **Scroll forward**: Slowly increase Scroll Y while Rotation is at 0°. The texture appears to scroll toward you — forward movement over the ground.
@@ -261,9 +284,6 @@ These exercises build from basic perspective rendering to complex animated groun
 
 ## Tips
 
-- **Start with Repeat mode**: Infinite tiling is the classic Mode 7 look and reveals the affine transform's full character. Switch to Clamp only when you want the single-tile flyover aesthetic with stretched borders.
-- **Use Grid for calibration**: The grid overlay shows exactly how the affine transform distorts space. It is invaluable for setting up perspective depth and understanding how rotation warps the coordinate system before committing to a final texture.
-- **Combine Scroll X and Scroll Y for navigation**: Sweeping both scroll controls simultaneously simulates flying over the ground plane. Add slight rotation for cornering and you have the basic F-Zero control scheme.
 - **Low tilt for planimetric views**: Near-zero tilt produces a flat top-down view of the tile, similar to a 2D rotation without perspective. This is useful for kaleidoscope-like effects with repeated tiles.
 - **High tilt + low horizon for drama**: Pushing tilt toward maximum while setting the horizon low creates extreme foreshortening — the texture rushes from the bottom of the frame to a tight vanishing point.
 - **Mix for overlay compositing**: Setting Mix to 50% blends the Mode 7 ground plane transparently over the original video, creating surreal double-exposure effects where the source shows through the perspective-mapped floor.
@@ -277,15 +297,13 @@ These exercises build from basic perspective rendering to complex animated groun
 | Term | Definition |
 |------|------------|
 | **Affine Transform** | A geometric transformation preserving parallel lines, defined by a 2×2 matrix plus translation; encompasses rotation, scaling, shearing, and translation. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 64×64×30-bit tile buffer. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating continuous rotation and oscillation from a fixed-rate increment counter. |
 | **Foreshortening** | Perspective compression where objects farther from the viewer appear shorter, narrower, and closer together. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the Mode 7 video processing pipeline in real time. |
 | **Mode 7** | A background rendering mode in the Super Nintendo PPU that applies per-scanline affine transformations to a tiled texture for pseudo-3D ground plane effects. |
 | **Per-Scanline Perspective** | Varying the affine matrix scaling coefficient for each horizontal line to simulate depth — the central technique behind Mode 7's 3D illusion. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave Sine LUT** | A lookup table storing one quarter of a sine wave; full 360° sine and cosine coverage is achieved through quadrant mirroring and sign flipping. |
 | **Tile Buffer** | A small (64×64 pixels, 30-bit packed YUV) memory region storing a downsampled snapshot of the input video, used as the texture source for Mode 7 rendering. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings — gentle curve, moderate desaturation, a whisper of b
 
 ---
 
+## Quick Start
+
+1. **Start with the curve**: The S-curve is the foundation of every chrome look. Dial it in first, then add desaturation, blur, bloom, and tint as refinements. A good curve makes the rest of the chain sing.
+2. **Desaturation before tinting**: For convincing metallics, desaturate heavily (80%+) before applying tint. Residual source colour fights with the metallic hue and breaks the illusion.
+3. **Bloom follows Curve**: The bloom intensity is coupled to the S-curve steepness because a steeper curve pushes more pixels above the bloom threshold. Use them as a pair — if you want more bloom, sometimes increasing Curve is more natural than increasing Bloom directly.
+
+---
+
 ## Background
 
 ### Chrome and Metallic Surfaces in Video Art
@@ -216,8 +224,8 @@ The Tint V knob adds a signed offset to the V chroma channel. At centre (512), n
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Metal** | Chrome | Gold |
-| **8 — Curve** | S-Curve | Hard |
+| **7 — Metal** | Chrome | Steel |
+| **8 — Curve** | S-Curve | Clip |
 | **9 — Tint** | Off | On |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -237,7 +245,19 @@ Toggle 9 (Smooth) adds a secondary low-pass filter after the main processing cha
 | Default | 100.0% |
 | Suffix | % |
 
-The Mix fader controls the wet/dry crossfade via a 4-clock interpolator. At 100% (fader fully up), the output is entirely the processed chrome signal. At 0%, the output is the unprocessed original. Intermediate positions blend the two, which is particularly effective for subtle metallic grading — a 20–30% mix of chrome over the original adds a high-gloss editorial sheen without obliterating the source detail. The crossfade operates on all three channels simultaneously, so the desaturation and tint effects are also blended proportionally.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Chrome-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -260,7 +280,7 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 *Sculpting the S-Curve — simulated result across source images.*
 **Source**: Footage or stills with a wide tonal range — landscapes, portraits, or gradient test patterns.
 
-**Objective**: Understand how the sigmoid S-curve remaps luminance to create the fundamental chrome contrast signature.
+**What You'll Create**: Understand how the sigmoid S-curve remaps luminance to create the fundamental chrome contrast signature.
 
 1. **Isolate the curve**: Set Desat, Blur, Bloom, and Tint U/V to neutral (50% / centre). Set Metal to Chrome, Preset to Copper (neutral silver). Smooth and Invert off.
 2. **Identity baseline**: Set Curve to 0%. The output matches the input — the LUT is a straight ramp.
@@ -288,7 +308,7 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 *Gold Plate and Bloom — simulated result across source images.*
 **Source**: Close-up footage of objects with specular highlights — glass, water, metallic surfaces, or well-lit portraits.
 
-**Objective**: Combine desaturation, gold tinting, and bloom to create a convincing liquid-gold surface treatment.
+**What You'll Create**: Combine desaturation, gold tinting, and bloom to create a convincing liquid-gold surface treatment.
 
 1. **Chrome base**: Set Curve ~65%, Desat ~85%, Blur ~25%. The image should look like polished silver — high contrast, mostly monochrome, slightly soft.
 2. **Gold tint**: Set Metal to Gold, Preset to Steel. The output shifts to a warm yellow-gold. Compare with Preset=Copper for a warmer orange-gold.
@@ -315,7 +335,7 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 *Dark Chrome and Mixed Metals — simulated result across source images.*
 **Source**: High-contrast footage with strong silhouettes — architecture against sky, backlit figures, or stark graphic patterns.
 
-**Objective**: Use the Invert toggle and manual tinting to create negative-chrome and custom metallic colour effects.
+**What You'll Create**: Use the Invert toggle and manual tinting to create negative-chrome and custom metallic colour effects.
 
 1. **Standard chrome**: Set Curve ~70%, Desat ~90%, Blur ~20%, Bloom ~30%. Metal=Chrome, Preset=Copper (neutral silver). Confirm a solid chrome look.
 2. **Invert for dark chrome**: Toggle Invert on. The tonal polarity reverses — dark areas become bright chrome, bright areas become shadow. The metallic character is preserved but the mood changes completely.
@@ -330,9 +350,6 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 
 ## Tips
 
-- **Start with the curve**: The S-curve is the foundation of every chrome look. Dial it in first, then add desaturation, blur, bloom, and tint as refinements. A good curve makes the rest of the chain sing.
-- **Desaturation before tinting**: For convincing metallics, desaturate heavily (80%+) before applying tint. Residual source colour fights with the metallic hue and breaks the illusion.
-- **Bloom follows Curve**: The bloom intensity is coupled to the S-curve steepness because a steeper curve pushes more pixels above the bloom threshold. Use them as a pair — if you want more bloom, sometimes increasing Curve is more natural than increasing Bloom directly.
 - **Smooth for liquid, off for brushed**: The Smooth toggle is the difference between liquid mercury and brushed aluminium. Engage it for flowing, organic chrome; leave it off for harder, more industrial textures.
 - **Invert for dark chrome**: The Invert toggle before the S-curve creates an entirely different mood — dark regions become mirror-bright, producing black-mirror and shadow-chrome effects that pair well with Steel or custom cool tints.
 - **Custom metals via Tint U/V**: The four Metal/Preset combinations cover the most common metals, but the Tint U and Tint V knobs unlock any colour on the UV plane. Try turquoise chrome (high U, low V) or rose gold (moderate U decrease, high V) for metallic colours that don't exist in nature.
@@ -347,16 +364,14 @@ These exercises progress from basic S-curve contrast shaping to full liquid-chro
 |------|------------|
 | **Bloom** | An optical phenomenon where bright regions of an image bleed light into adjacent pixels, simulating camera halation from specular highlights. |
 | **Box filter** | A spatial averaging filter that replaces each pixel with the mean of its neighbors within a rectangular kernel, used for Chrome's blur stage. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
 | **Desaturation** | Reduction of color intensity by interpolating chroma values toward the neutral midpoint, removing the source's original color identity. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Halation** | The spreading of light beyond its proper boundary in a camera or film, producing a soft glow around bright highlights. |
-| **Interpolator** | A hardware module that performs linear blending between two signals, used for wet/dry mix crossfading. |
 | **LUT** | Look-Up Table; a pre-computed array stored in BRAM that maps each 10-bit input luminance value to its sigmoid-remapped output. |
 | **Matcap** | Material capture; a real-time rendering technique that applies a pre-photographed material appearance to arbitrary geometry, conceptually related to Chrome's approach of applying metallic tonal characteristics to video. |
 | **Sigmoid** | An S-shaped mathematical curve that maps input values through steep transitions at the extremes and a compressed plateau in the middle, the core transfer function of the chrome effect. |
 | **Specular highlight** | A bright, mirror-like reflection from a smooth surface, the dominant visual cue that Chrome's pipeline reproduces. |
 | **UV plane** | The two-dimensional chroma space defined by the U and V components of the YUV color model, where hue and saturation are represented as angular position and radial distance. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

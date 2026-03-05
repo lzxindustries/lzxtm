@@ -68,6 +68,14 @@ Subphase is in the **Signal** category — a family of effects that simulate ana
 
 ---
 
+## Quick Start
+
+1. **Subtle phase for "tape" look**: Phase Shift at 5–10% with slight wobble produces the characteristic slightly-off color of VHS playback.
+2. **NTSC vs PAL for character**: NTSC crawl is tighter and more aggressive; PAL crawl is broader and subtler. Choose based on the era and region you want to evoke.
+3. **Combine with Kinescope**: Subphase for color degradation + Kinescope for scan lines creates a complete vintage TV simulation.
+
+---
+
 ## Background
 
 ### What Is a Color Subcarrier?
@@ -90,6 +98,8 @@ In weak reception conditions, random noise contaminates the color signal more th
 ---
 
 ## Signal Flow
+
+Position Counters → Phase Rotation Engine → Dot Crawl Generator → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -150,7 +160,7 @@ The UV rotation is the core of the effect — it applies a 2×2 matrix rotation 
 | Default | 0° |
 | Suffix | ° |
 
-Controls the color subcarrier phase offset in degrees (0–360° mapped across the full knob range). At 0% (0°), no hue rotation — colors are unaffected. At 50% (~180°), all colors are rotated to their complement. Intermediate values produce the characteristic color drift of mistuned analog reception. Phase Shift interacts strongly with Phase Wobble — applying base rotation while wobble modulates around it.
+At 0% (0°), no hue rotation — colors are unaffected. At 50% (~180°), all colors are rotated to their complement. Intermediate values produce the characteristic color drift of mistuned analog reception. Phase Shift interacts strongly with Phase Wobble — applying base rotation while wobble modulates around it. Internally, controls the color subcarrier phase offset in degrees (0–360° mapped across the full knob range).
 
 ---
 
@@ -161,7 +171,7 @@ Controls the color subcarrier phase offset in degrees (0–360° mapped across t
 | Default | 0% |
 | Suffix | % |
 
-Controls the amplitude of the sinusoidal phase wobble — a slow frame-rate oscillation of the base phase. At zero, the phase is static. As wobble increases, the hue drifts back and forth sinusoidally over time, simulating an unstable color oscillator. At maximum, the wobble range is large enough to sweep through significant hue changes each second.
+At zero, the phase is static. As wobble increases, the hue drifts back and forth sinusoidally over time, simulating an unstable color oscillator. At maximum, the wobble range is large enough to sweep through significant hue changes each second. Internally, controls the amplitude of the sinusoidal phase wobble — a slow frame-rate oscillation of the base phase.
 
 ---
 
@@ -172,7 +182,7 @@ Controls the amplitude of the sinusoidal phase wobble — a slow frame-rate osci
 | Default | 0% |
 | Suffix | % |
 
-Controls the intensity of the dot-crawl pattern. At zero, no dot crawl is visible. As the value increases, a pixel-level periodic pattern of colored dots becomes visible along high-contrast edges. The pattern period depends on the Standard toggle (Switch 7): 4 pixels for NTSC, 8 pixels for PAL. Maximum dot crawl produces an aggressive, visually dominant artifact.
+At zero, no dot crawl is visible. As the value increases, a pixel-level periodic pattern of colored dots becomes visible along high-contrast edges. The pattern period depends on the Standard toggle (Switch 7): 4 pixels for NTSC, 8 pixels for PAL. Maximum dot crawl produces an aggressive, visually dominant artifact. Internally, controls the intensity of the dot-crawl pattern.
 
 ---
 
@@ -194,7 +204,7 @@ Controls the color burst amplitude scaling. This acts as a saturation control on
 | Default | 0% |
 | Suffix | % |
 
-Controls the amplitude of the LFSR-based chroma noise added to U and V. At zero, no noise. Increasing the value adds progressively more random color fluctuation, simulating weak-signal reception. At maximum, the chroma noise dominates the color signal, producing a heavily degraded, noisy image.
+At zero, no noise. Increasing the value adds progressively more random color fluctuation, simulating weak-signal reception. At maximum, the chroma noise dominates the color signal, producing a heavily degraded, noisy image. Internally, controls the amplitude of the LFSR-based chroma noise added to U and V.
 
 ---
 
@@ -234,6 +244,21 @@ Switches 7–11 select the broadcast standard, control crawl animation, lock tin
 
 Controls the wet/dry mix between the processed (phase-rotated, crawl, noise) signal and the original input via the hardware interpolator. At 100%, the full analog degradation is applied. Lowering the fader smoothly blends back toward the clean original.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sub Phase processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +280,7 @@ These exercises explore hue rotation, the NTSC/PAL dot-crawl artifact, and chrom
 *Color Phase Drift — simulated result across source images.*
 **Source**: Camera feed of a color chart, face, or scene with known natural colors (skin tones, foliage, sky).
 
-**Objective**: Demonstrate the effect of subcarrier phase error on perceived hue.
+**What You'll Create**: Demonstrate the effect of subcarrier phase error on perceived hue.
 
 1. **Base phase rotation**: Slowly sweep Phase Shift from 0% to 100%. Watch all colors rotate through the spectrum — skin tones shift from natural to greenish to purple and back.
 2. **90° offset**: Set Phase Shift to ~25% (≈90°). All colors are rotated by one quadrant — reds become blue-green, blues become orange.
@@ -283,7 +308,7 @@ These exercises explore hue rotation, the NTSC/PAL dot-crawl artifact, and chrom
 *NTSC Dot Crawl — simulated result across source images.*
 **Source**: High-contrast graphic content with sharp horizontal edges (text, horizontal bars, checkerboard) — dot crawl is most visible along these boundaries.
 
-**Objective**: Reproduce the characteristic NTSC dot-crawl artifact along high-contrast edges.
+**What You'll Create**: Reproduce the characteristic NTSC dot-crawl artifact along high-contrast edges.
 
 1. **Enable crawl**: Set Dot Crawl to ~60%. A periodic pattern of colored dots appears along sharp edges.
 2. **Animate**: Set Crawl Anim to Animate (Switch 8). The dots begin to move along the edges, producing the classic crawling artifact.
@@ -311,7 +336,7 @@ These exercises explore hue rotation, the NTSC/PAL dot-crawl artifact, and chrom
 *Weak Signal Reception — simulated result across source images.*
 **Source**: Any video content — the noise effect applies uniformly.
 
-**Objective**: Simulate the look of a weak analog broadcast signal with phase drift, crawl, and chroma noise combined.
+**What You'll Create**: Simulate the look of a weak analog broadcast signal with phase drift, crawl, and chroma noise combined.
 
 1. **Phase wobble**: Set Phase Wobble to ~40%. Colors drift slowly.
 2. **Dot crawl**: Set Dot Crawl to ~30%. Subtle edge crawl appears.
@@ -328,9 +353,6 @@ These exercises explore hue rotation, the NTSC/PAL dot-crawl artifact, and chrom
 
 ## Tips
 
-- **Subtle phase for "tape" look**: Phase Shift at 5–10% with slight wobble produces the characteristic slightly-off color of VHS playback.
-- **NTSC vs PAL for character**: NTSC crawl is tighter and more aggressive; PAL crawl is broader and subtler. Choose based on the era and region you want to evoke.
-- **Combine with Kinescope**: Subphase for color degradation + Kinescope for scan lines creates a complete vintage TV simulation.
 - **Chroma noise for atmosphere**: Even a small amount of chroma noise (~10–20%) adds organic analog texture without overwhelming the image.
 - **Tint Lock for consistency**: Use Tint Lock when you want consistent color across a performance while still using Dot Crawl and Noise.
 - **Chroma Kill for B&W**: Chroma Kill is a clean way to produce monochrome output while leaving all other processing intact.
@@ -346,12 +368,12 @@ These exercises explore hue rotation, the NTSC/PAL dot-crawl artifact, and chrom
 | **Color Burst** | A short sinusoidal reference signal at the beginning of each video line, used by receivers to lock their color demodulation oscillator. |
 | **Color Subcarrier** | The high-frequency sinusoidal carrier (~3.58 MHz NTSC, ~4.43 MHz PAL) that carries encoded color information within the composite video signal. |
 | **Dot Crawl** | A visible artifact of composite video where luminance/chrominance crosstalk creates a moving pattern of colored dots along high-contrast edges. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a pseudorandom number generator used to produce the chroma noise. |
 | **NTSC** | National Television System Committee; the analog color TV standard used in North America and Japan, with a 4-pixel subcarrier period. |
 | **PAL** | Phase Alternating Line; the analog color TV standard used in Europe and elsewhere, with line-by-line phase alternation to reduce hue sensitivity. |
 | **Phase Error** | The angular offset between the transmitted color burst and the receiver's local oscillator, causing systematic hue rotation. |
 | **UV Rotation** | A 2×2 matrix operation that rotates the chrominance vector (U, V) by a given angle, changing the perceived hue of all colors simultaneously. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

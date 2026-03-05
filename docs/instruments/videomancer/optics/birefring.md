@@ -68,6 +68,14 @@ A virtual polarizer adds the final optical element. Real petrographic microscope
 
 ---
 
+## Quick Start
+
+1. **Thickness sets the starting color**: Think of Thickness as choosing which mineral you're simulating — different starting positions in the chart produce completely different color palettes.
+2. **Stress is the key creative control**: Low stress creates subtle tinting; high stress creates vivid spectral banding that reveals the image's tonal structure.
+3. **Polarizer adds drama**: Even a slight polarizer offset creates contrast between spectral colors at different extinction angles. Sweep slowly for the best effect.
+
+---
+
 ## Background
 
 ### What Is Birefringence?
@@ -90,6 +98,8 @@ In real birefringent materials, the amount of retardation varies slightly with w
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -135,7 +145,7 @@ The critical interaction is between the spectral LUT and the polarizer. The LUT 
 | Default | 50% |
 | Suffix | % |
 
-Sets the base position in the spectral lookup table — the equivalent of crystal thickness in a real petrographic setup. At 0%, the LUT starts at the beginning of the interference sequence (first-order black/gray). Higher values move deeper into the chart, cycling through the characteristic color orders. Because the Stress control adds input luminance to this base, Thickness sets the "zero brightness" color while Stress determines how far across the chart the brightest pixels reach.
+At 0%, the LUT starts at the beginning of the interference sequence (first-order black/gray). Higher values move deeper into the chart, cycling through the characteristic color orders. Because the Stress control adds input luminance to this base, Thickness sets the "zero brightness" color while Stress determines how far across the chart the brightest pixels reach. Internally, sets the base position in the spectral lookup table — the equivalent of crystal thickness in a real petrographic setup.
 
 ---
 
@@ -179,7 +189,7 @@ Offsets the UV channel LUT indices relative to the Y channel index. At 0%, Y, U,
 | Default | 75% |
 | Suffix | % |
 
-Scales the U and V values read from the spectral lookup table. At 0%, the output is monochrome (interference grays only). At mid-position, the spectral colors appear at their natural saturation. Higher values exaggerate the chrominance, producing hyper-saturated interference colors. This control determines whether the output looks like a subtle geological thin-section photograph or a vivid psychedelic color field.
+At 0%, the output is monochrome (interference grays only). At mid-position, the spectral colors appear at their natural saturation. Higher values exaggerate the chrominance, producing hyper-saturated interference colors. This control determines whether the output looks like a subtle geological thin-section photograph or a vivid psychedelic color field. Internally, scales the U and V values read from the spectral lookup table.
 
 ---
 
@@ -217,7 +227,29 @@ Switches 7–11 control five independent aspects of the simulation. The Spectrum
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed birefringence output and the original input signal. At 100%, the output is fully processed. As you lower the fader, the original signal blends back in, creating a subtle overlay of interference colors on top of the source video. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Birefring processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Birefring-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -240,7 +272,7 @@ These exercises progress from basic spectral false-coloring to full petrographic
 *Mineral Color Mapping — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — skin tones, landscapes, or gradient test patterns work well.
 
-**Objective**: Learn how Thickness and Stress map input luminance to the Michel-Lévy interference color chart.
+**What You'll Create**: Learn how Thickness and Stress map input luminance to the Michel-Lévy interference color chart.
 
 1. **Flat color**: Set Stress to 0%. The entire image receives a single interference color determined by Thickness. Sweep Thickness slowly and watch the color cycle through the Michel-Lévy chart — black, gray, white, yellow, orange, red, violet, blue, green, yellow, pink.
 2. **Luminance mapping**: Increase Stress to ~50%. Now bright and dark areas receive different interference colors. The spectral distribution follows the image's tonal structure.
@@ -267,7 +299,7 @@ These exercises progress from basic spectral false-coloring to full petrographic
 *Polarizer Extinction — simulated result across source images.*
 **Source**: High-contrast footage with distinct bright and dark regions — text on white background, silhouettes, or architectural subjects.
 
-**Objective**: Explore how the polarizer creates angular extinction patterns through the spectral colors.
+**What You'll Create**: Explore how the polarizer creates angular extinction patterns through the spectral colors.
 
 1. **Setup**: Set Thickness ~30%, Stress ~60%, Saturation ~80%. Establish a clear spectral color mapping.
 2. **Sweep polarizer**: Slowly rotate the Polarizer knob through its full 360° range. Watch the image darken at two extinction angles (0° and 180°) and brighten at two transmission maxima (90° and 270°).
@@ -294,7 +326,7 @@ These exercises progress from basic spectral false-coloring to full petrographic
 *Chromatic Dispersion and Full Simulation — simulated result across source images.*
 **Source**: Footage with fine detail and strong tonal edges — foliage, fabric textures, or patterned surfaces.
 
-**Objective**: Combine all optical elements for a complete petrographic simulation with dispersion fringing.
+**What You'll Create**: Combine all optical elements for a complete petrographic simulation with dispersion fringing.
 
 1. **Base setup**: Thickness ~20%, Stress ~70%, Saturation ~90%, Polarizer ~45° (partial extinction).
 2. **Add dispersion**: Slowly increase Dispersion from 0%. Watch color fringing appear at tonal edges — U and V shift in opposite directions, producing complementary color halos.
@@ -310,9 +342,6 @@ These exercises progress from basic spectral false-coloring to full petrographic
 
 ## Tips
 
-- **Thickness sets the starting color**: Think of Thickness as choosing which mineral you're simulating — different starting positions in the chart produce completely different color palettes.
-- **Stress is the key creative control**: Low stress creates subtle tinting; high stress creates vivid spectral banding that reveals the image's tonal structure.
-- **Polarizer adds drama**: Even a slight polarizer offset creates contrast between spectral colors at different extinction angles. Sweep slowly for the best effect.
 - **Dispersion is subtle at low values**: Start with Dispersion at 0 and increase gradually. The effect is most visible at strong tonal transitions.
 - **Y Couple for recognizability**: When the spectral colors flatten the image too much, enable Y Couple to bring back the source's spatial structure.
 - **Michel-Lévy vs. Newton**: Try both spectrum modes with the same settings. The choice of LUT fundamentally changes the color palette.
@@ -329,13 +358,12 @@ These exercises progress from basic spectral false-coloring to full petrographic
 | **Cos²** | The squared cosine function; in optics, describes the transmitted intensity through a polarizer as a function of angle (Malus's Law). |
 | **Dispersion** | The variation of refractive index with wavelength, causing different colors to travel at different speeds through a material. |
 | **Extinction** | In polarized-light microscopy, the condition where a crystal appears dark because its optical axis is aligned with the polarizer. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interference Color** | The color produced by constructive and destructive interference of light waves that have traveled different paths through a birefringent material. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values for fast, deterministic signal transformation. |
 | **Malus's Law** | The relationship I = I₀ cos²θ describing how polarized light intensity depends on the angle between polarizer and analyzer. |
 | **Michel-Lévy Chart** | A standard reference chart in optical mineralogy mapping retardation, thickness, and birefringence to interference colors. |
 | **Newton's Rings** | Circular interference fringes produced by thin air gaps between two glass surfaces, displaying a sequence of spectral colors. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

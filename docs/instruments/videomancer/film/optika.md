@@ -68,6 +68,14 @@ The program can operate in additive mode (each frame adds to the accumulator) or
 
 ---
 
+## Quick Start
+
+1. **Bypass is broken — use the fader**: The Bypass toggle (Toggle 11) has no effect. Set the Mix fader to 0% for instant A/B comparison with the dry signal.
+2. **Clear before scene changes**: Use the momentary Clear Buffer toggle to reset accumulated content when switching input sources, otherwise the old scene will persist as ghost overlay.
+3. **Fade rate is the persistence knob**: Low fade = short trails (recent only). High fade = long trails (history accumulates). At 100%, nothing fades and the buffer accumulates indefinitely toward saturation.
+
+---
+
 ## Background
 
 ### The Optical Printer
@@ -94,6 +102,8 @@ Real step-printing involved advancing the raw stock while holding the source at 
 ---
 
 ## Signal Flow
+
+Y Channel → UV Channels → Wet/Dry Mix → Exposure Gate → Sync
 
 ```
 Input Video (YUV 4:4:4, 10-bit)
@@ -230,6 +240,10 @@ Five toggles (7–11) control accumulation mode, buffer management, temporal beh
 
 Wet/dry crossfade. This register drives the interpolation parameter of all three interpolator_u instances. At 0 the output is pure dry (original input signal). At 1023 the output is pure wet (the accumulated, printer-light-graded, bloom-enhanced result). Intermediate values blend between the two. Because the bypass toggle is non-functional, this fader is the only control for comparing the processed signal to the original.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -251,7 +265,7 @@ These exercises progress from basic temporal accumulation through printer light 
 *Ghostly Trails — simulated result across source images.*
 **Source**: A live camera with slow hand movements, or recorded footage of a person walking across the frame.
 
-**Objective**: Understand how exposure and fade interact to create temporal persistence trails.
+**What You'll Create**: Understand how exposure and fade interact to create temporal persistence trails.
 
 1. **Set exposure**: Turn Exposure to ~40%. A moderate amount of each frame is deposited into the buffer.
 2. **Set fade**: Turn Fade Rate to ~80%. Previous accumulation decays slowly, leaving visible trails behind moving objects.
@@ -279,7 +293,7 @@ These exercises progress from basic temporal accumulation through printer light 
 *Step-Print Speed Ramp — simulated result across source images.*
 **Source**: A moving subject — spinning record, pendulum, or a hand waving rhythmically.
 
-**Objective**: Explore frame-skip capture rate and replace mode for step-print effects.
+**What You'll Create**: Explore frame-skip capture rate and replace mode for step-print effects.
 
 1. **Enable replace mode**: Set Accum Mode to Replace (Toggle 7 on). Each captured frame overwrites instead of accumulating.
 2. **Set capture rate**: Turn Capture Rate to ~30% (~20 frame skip). The buffer updates every 20 frames, creating a choppy slow-motion effect.
@@ -307,7 +321,7 @@ These exercises progress from basic temporal accumulation through printer light 
 *Film Look Composite — simulated result across source images.*
 **Source**: High-contrast footage with bright highlights — candle flames, spotlights, or bright windows in dark rooms.
 
-**Objective**: Combine accumulation, printer light grading, and halation bloom for a classic film optical-print look.
+**What You'll Create**: Combine accumulation, printer light grading, and halation bloom for a classic film optical-print look.
 
 1. **Moderate accumulation**: Set Exposure ~30%, Fade Rate ~85%. Subtle temporal persistence without heavy ghosting.
 2. **Warm printer light**: Shift Color Balance below center (~35%). The image warms to a golden-amber tone, simulating tungsten printer lights.
@@ -323,9 +337,6 @@ These exercises progress from basic temporal accumulation through printer light 
 
 ## Tips
 
-- **Bypass is broken — use the fader**: The Bypass toggle (Toggle 11) has no effect. Set the Mix fader to 0% for instant A/B comparison with the dry signal.
-- **Clear before scene changes**: Use the momentary Clear Buffer toggle to reset accumulated content when switching input sources, otherwise the old scene will persist as ghost overlay.
-- **Fade rate is the persistence knob**: Low fade = short trails (recent only). High fade = long trails (history accumulates). At 100%, nothing fades and the buffer accumulates indefinitely toward saturation.
 - **Bloom requires bright accumulation**: The halation bloom only activates above a brightness threshold. Low exposure or rapid fade prevents the accumulator from reaching bloom territory.
 - **Freeze + grade**: Use freeze to lock a multi-exposure composite, then adjust printer light brightness and color balance to grade the frozen image at leisure.
 - **Step-print with additive**: Combining frame skip (high capture rate) with additive mode creates evenly-spaced temporal echoes — multiple exposures of a moving object at discrete time steps.
@@ -340,15 +351,14 @@ These exercises progress from basic temporal accumulation through printer light 
 | **Accumulation Buffer** | A BRAM-based per-pixel storage array that retains and blends luminance values across multiple video frames. |
 | **Additive Exposure** | A blending mode where new input is summed with the existing buffer content, building up density with each frame. |
 | **Bloom** | A glow effect around bright areas simulating optical halation, implemented as a gated moving-average filter. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline and frame accumulation storage. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator. |
 | **Emulsion** | The light-sensitive chemical layer on photographic film that records exposure through density changes. |
 | **Fade Rate** | The decay factor applied to the accumulation buffer per frame, controlling temporal persistence. |
 | **Halation** | Light scattering within photographic film causing a soft glow around bright areas; simulated by the bloom stage. |
-| **Interpolator** | A linear blending circuit that crossfades between two input values based on a mix parameter. |
 | **Optical Printer** | A mechanical device for re-photographing film elements to create composites, dissolves, and effects. |
 | **Printer Light** | The illumination source in an optical printer; adjusting its color temperature and intensity is the original form of film color grading. |
 | **Step-Print** | A printing technique where frames are skipped during exposure to create speed changes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

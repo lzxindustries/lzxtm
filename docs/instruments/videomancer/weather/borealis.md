@@ -68,6 +68,14 @@ The program operates with zero BRAM tiles — all computation is per-pixel proce
 
 ---
 
+## Quick Start
+
+1. **Start with one curtain**: A single curtain clearly shows the bottom-heavy brightness, scallop edge, and dual emission colors. Add more curtains once you understand the individual curtain's visual properties.
+2. **Dark sources favor aurora**: The additive composite means aurora colors read most clearly over dark source regions. A night sky or dark landscape will show the green/magenta emission vividly.
+3. **Scallop frequency for mood**: Low scallop (20-30%) creates gentle, flowing curtain hems; high scallop (70%+) creates energetic, sharply serrated edges. Match scallop frequency to the emotional energy of the composition.
+
+---
+
 ## Background
 
 ### Auroral Curtain Physics
@@ -94,6 +102,8 @@ Auroral substorms are periods of rapid intensification caused by sudden releases
 ---
 
 ## Signal Flow
+
+Frame Update → Pipeline Stage 0-1: → Pipeline Stage 2: → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -155,7 +165,7 @@ Two critical design decisions define the aurora's appearance. First, the luma co
 | Default | 29.3% |
 | Suffix | % |
 
-Controls the drift speed of all curtain horizontal positions. At 0%, curtains are nearly stationary. At higher values, curtains sweep visibly across the frame. Each curtain uses a different rate multiplier (prime-like values from 2 to 9), so increasing drift speed amplifies the relative motion differences between curtains. The curtain positions are derived from sine functions of the DDS phases, producing smooth oscillatory drift rather than linear translation.
+At 0%, curtains are nearly stationary. At higher values, curtains sweep visibly across the frame. Each curtain uses a different rate multiplier (prime-like values from 2 to 9), so increasing drift speed amplifies the relative motion differences between curtains. The curtain positions are derived from sine functions of the DDS phases, producing smooth oscillatory drift rather than linear translation. Internally, controls the drift speed of all curtain horizontal positions.
 
 ---
 
@@ -176,7 +186,7 @@ Selects how many curtains are active, from 1 to 8 in discrete steps. A single cu
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the horizontal width of each curtain band. At narrow settings, curtains appear as thin vertical streaks. At wide settings, each curtain spans a significant portion of the frame and adjacent curtains overlap extensively. The width parameter defines a linear falloff zone: within the inner half-width, brightness is maximum; between half-width and full-width, brightness falls linearly to zero. This creates soft-edged bands rather than hard-cut columns.
+At narrow settings, curtains appear as thin vertical streaks. At wide settings, each curtain spans a significant portion of the frame and adjacent curtains overlap extensively. The width parameter defines a linear falloff zone: within the inner half-width, brightness is maximum; between half-width and full-width, brightness falls linearly to zero. This creates soft-edged bands rather than hard-cut columns. Internally, controls the horizontal width of each curtain band.
 
 ---
 
@@ -187,7 +197,7 @@ Controls the horizontal width of each curtain band. At narrow settings, curtains
 | Default | 39.1% |
 | Suffix | % |
 
-Controls the frequency of the scalloped lower edge undulation. At low values, the scallop is a gentle, long-wavelength ripple producing smoothly flowing hemlines. At high values, the scallop becomes a rapid oscillation creating a finely serrated lower edge. Each curtain has an independent scallop phase offset, so even at high frequency the scallops do not synchronize across curtains — each curtain ripples independently. The scallop amplitude is fixed at approximately 60 pixels, so the frequency parameter controls fineness rather than depth of the undulation.
+At low values, the scallop is a gentle, long-wavelength ripple producing smoothly flowing hemlines. At high values, the scallop becomes a rapid oscillation creating a finely serrated lower edge. Each curtain has an independent scallop phase offset, so even at high frequency the scallops do not synchronize across curtains — each curtain ripples independently. The scallop amplitude is fixed at approximately 60 pixels, so the frequency parameter controls fineness rather than depth of the undulation. Internally, controls the frequency of the scalloped lower edge undulation.
 
 ---
 
@@ -236,7 +246,19 @@ The five toggles shape the aurora's atmospheric behavior and spatial arrangement
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the dry/wet mix between the original input video and the aurora-composited output. At 0% (fully dry), the output is the unprocessed input. At 100% (fully wet), the output is the full aurora composite. Intermediate values crossfade between the two, allowing the aurora to be subtly blended over the source content.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Borealis-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -259,7 +281,7 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 *Single Curtain Aurora — simulated result across source images.*
 **Source**: Feed a landscape with a visible sky region (Kodak #13 — the mountain/water scene has a natural horizon that contextualizes the aurora above).
 
-**Objective**: Create a classic single aurora curtain with green/magenta emission and visible scalloped lower edge.
+**What You'll Create**: Create a classic single aurora curtain with green/magenta emission and visible scalloped lower edge.
 
 1. Set Drift Speed to 20% for gentle horizontal drift.
 2. Set Curtains to 1 (step 1) for a single focused band.
@@ -293,7 +315,7 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 *Multi-Band Northern Lights — simulated result across source images.*
 **Source**: Feed a scene with a prominent vertical element (Kodak #21 — the lighthouse provides a vertical anchor against which the horizontal curtain drift is clearly visible).
 
-**Objective**: Create a classic multi-band aurora display with 5 curtains, color cycling, and moderate scallop frequency.
+**What You'll Create**: Create a classic multi-band aurora display with 5 curtains, color cycling, and moderate scallop frequency.
 
 1. Set Drift Speed to 40% for visible curtain motion.
 2. Set Curtains to 5 (step 5) for a multi-band display.
@@ -327,7 +349,7 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 *Full-Sky Substorm — simulated result across source images.*
 **Source**: Feed a vibrant, colorful image (Kodak #16 — the warm tropical tones create a dramatic contrast with the cool green/magenta aurora filling the sky).
 
-**Objective**: Create an intense, full-sky aurora substorm with maximum curtains, brightness pulsation, and dramatic color contrast.
+**What You'll Create**: Create an intense, full-sky aurora substorm with maximum curtains, brightness pulsation, and dramatic color contrast.
 
 1. Set Drift Speed to 65% for fast curtain motion.
 2. Set Curtains to 8 (step 8) for maximum curtain density.
@@ -349,9 +371,6 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 
 ## Tips
 
-- **Start with one curtain**: A single curtain clearly shows the bottom-heavy brightness, scallop edge, and dual emission colors. Add more curtains once you understand the individual curtain's visual properties.
-- **Dark sources favor aurora**: The additive composite means aurora colors read most clearly over dark source regions. A night sky or dark landscape will show the green/magenta emission vividly.
-- **Scallop frequency for mood**: Low scallop (20-30%) creates gentle, flowing curtain hems; high scallop (70%+) creates energetic, sharply serrated edges. Match scallop frequency to the emotional energy of the composition.
 - **Substorm for drama**: Reserve substorm pulsation for high-energy moments. The rapid brightness fluctuation is visually intense and works best at high brightness settings where the contrast is dramatic.
 - **Full Sky for immersion**: In Normal mode, the aurora is a distant atmospheric phenomenon. In Full Sky mode, it fills the scene, creating the feeling of standing directly beneath the curtains.
 - **Color balance tells time**: In real aurora viewing, green-dominant displays are common; magenta-dominant displays indicate higher-altitude activity typically seen during intense storms. Set Green/Red accordingly to suggest different conditions.
@@ -375,6 +394,7 @@ These exercises progress from a simple single-curtain aurora to a full-sky subst
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value instead of wrapping around on overflow. |
 | **Scallop** | A repeating wave-shaped undulation modulating the lower edge of each aurora curtain, simulating plasma instabilities at the precipitation boundary. |
 | **Substorm** | A sudden intensification of auroral activity caused by rapid energy release from the magnetotail, characterised by pulsating brightness and arc breakup. |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

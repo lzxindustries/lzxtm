@@ -35,6 +35,14 @@ The Manhattan distance metric gives the rings a distinctive diamond-shaped geome
 
 ---
 
+## Quick Start
+
+1. **Manhattan geometry is the signature**: The diamond-shaped ring contours are the distinctive visual hallmark of Spore. Embrace the angular aesthetic rather than expecting circular rings.
+2. **Density for atmosphere**: Low density (10–25%) creates a dusty, atmospheric particle texture that works beautifully over dark footage. High density (80–100%) produces solid geometric bands suited to graphic compositions.
+3. **Speed and drift work together**: Slow speed with drift enabled creates a meditation — rings creep outward while the sources wander, producing constantly shifting geometry over minutes rather than seconds.
+
+---
+
 ## Background
 
 ### Manhattan Distance and Diamond Rings
@@ -61,6 +69,8 @@ Rather than replacing the source video, Spore adds brightness to it — each spo
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → Clock 1: Input Register → Clock 2: Manhattan → ... → Clocks 5–8: Interpolator → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -117,7 +127,7 @@ The key architectural feature is the parallel minimum-distance computation acros
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial separation between source emission points. At 0% the sources collapse onto the screen center, producing a single expanding ring set. As Spread increases, the sources migrate toward the corners: source 0 moves upper-left, source 1 upper-right, source 2 lower-left, source 3 lower-right (sources 2 and 3 are only active when 4 Sources mode is enabled). At maximum spread, the sources are widely separated and the Manhattan-distance diamonds from each source fill distinct quadrants of the screen with minimal overlap.
+At 0% the sources collapse onto the screen center, producing a single expanding ring set. As Spread increases, the sources migrate toward the corners: source 0 moves upper-left, source 1 upper-right, source 2 lower-left, source 3 lower-right (sources 2 and 3 are only active when 4 Sources mode is enabled). At maximum spread, the sources are widely separated and the Manhattan-distance diamonds from each source fill distinct quadrants of the screen with minimal overlap. Internally, controls the spatial separation between source emission points.
 
 ---
 
@@ -150,7 +160,7 @@ Sets the ring band width and period. The Width parameter controls two linked qua
 | Default | 50% |
 | Suffix | % |
 
-Controls the LFSR density gate threshold. At maximum (100%), all ring pixels pass the noise gate and the rings appear as solid bands. As density decreases, more pixels are filtered out by the pseudo-random noise, and the rings dissolve into a scattered particle texture. At very low density, only occasional specks survive within the ring zones, simulating the sparse outer edge of a dispersing spore cloud. The LFSR pattern is deterministic, so the speckle texture is stable from frame to frame.
+At maximum (100%), all ring pixels pass the noise gate and the rings appear as solid bands. As density decreases, more pixels are filtered out by the pseudo-random noise, and the rings dissolve into a scattered particle texture. At very low density, only occasional specks survive within the ring zones, simulating the sparse outer edge of a dispersing spore cloud. The LFSR pattern is deterministic, so the speckle texture is stable from frame to frame. Internally, controls the LFSR density gate threshold.
 
 ---
 
@@ -161,7 +171,7 @@ Controls the LFSR density gate threshold. At maximum (100%), all ring pixels pas
 | Default | 50% |
 | Suffix | % |
 
-Sets the spore overlay brightness — the amount of luminance added to the source video where spore hits are detected. At 0% no visible overlay appears. At maximum, spore hits saturate to white (Y=1023). Moderate values create a translucent, glowing ring overlay that reveals the source video beneath. The brightness is applied additively, so dark source regions show the rings more prominently than bright regions.
+At 0% no visible overlay appears. At maximum, spore hits saturate to white (Y=1023). Moderate values create a translucent, glowing ring overlay that reveals the source video beneath. The brightness is applied additively, so dark source regions show the rings more prominently than bright regions. Internally, sets the spore overlay brightness — the amount of luminance added to the source video where spore hits are detected.
 
 ---
 
@@ -180,8 +190,8 @@ Controls the wet/dry crossfade via the effect intensity blend. This register fee
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Burst | Stream |
-| **8 — Spore** | Round | Oval |
+| **7 — Pattern** | Burst | Plume |
+| **8 — Spore** | Round | Fiber |
 | **9 — React** | Off | Luma |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -201,6 +211,21 @@ The three active toggles control independent binary options: source count (2 vs 
 
 Controls the final wet/dry mix via the interpolator. At 100%, the full spore composite replaces the delayed input. At 0%, the original input passes through unmodified. Intermediate values blend the spore overlay with the source at proportional intensity. This fader provides the primary mixing control and interacts multiplicatively with the Brightness knob's additive overlay.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Spore processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +236,7 @@ These exercises progress from understanding the basic ring geometry through dens
 
 <img src={spore_exercise1_result} alt="Two-Source Diamond Rings result"/>
 *Two-Source Diamond Rings — simulated result across source images.*
-**Objective**: Understand the Manhattan-distance ring geometry and how Speed and Width interact to control the expanding wavefront pattern.
+**What You'll Create**: Understand the Manhattan-distance ring geometry and how Speed and Width interact to control the expanding wavefront pattern.
 
 1. **Set 2 sources**: Ensure the Count toggle is set to 2 sources (default).
 2. **Maximum spread**: Set Spread to ~80% so the two sources are well separated.
@@ -229,7 +254,7 @@ These exercises progress from understanding the basic ring geometry through dens
 
 <img src={spore_exercise2_result} alt="Four-Source Interference result"/>
 *Four-Source Interference — simulated result across source images.*
-**Objective**: Activate all four source points and explore the spatial interference patterns created by overlapping Manhattan-distance ring fields.
+**What You'll Create**: Activate all four source points and explore the spatial interference patterns created by overlapping Manhattan-distance ring fields.
 
 1. **Enable 4 sources**: Toggle Count to 4 sources. Two additional emission points appear in the lower half of the frame.
 2. **Moderate spread**: Set Spread to ~50%. The four sources form a rectangle around the screen center.
@@ -246,7 +271,7 @@ These exercises progress from understanding the basic ring geometry through dens
 
 <img src={spore_exercise3_result} alt="Dissolving Spore Cloud result"/>
 *Dissolving Spore Cloud — simulated result across source images.*
-**Objective**: Create a sparse, dissolving particle atmosphere by combining low density with high brightness, simulating a drifting spore cloud.
+**What You'll Create**: Create a sparse, dissolving particle atmosphere by combining low density with high brightness, simulating a drifting spore cloud.
 
 1. **Minimal density**: Set Density to ~15%. Only scattered particles survive the LFSR gate, producing a sparse, dust-like overlay.
 2. **Slow speed**: Set Speed to ~20%. The rings expand very slowly, creating a gradual, hypnotic propagation.
@@ -263,9 +288,6 @@ These exercises progress from understanding the basic ring geometry through dens
 
 ## Tips
 
-- **Manhattan geometry is the signature**: The diamond-shaped ring contours are the distinctive visual hallmark of Spore. Embrace the angular aesthetic rather than expecting circular rings.
-- **Density for atmosphere**: Low density (10–25%) creates a dusty, atmospheric particle texture that works beautifully over dark footage. High density (80–100%) produces solid geometric bands suited to graphic compositions.
-- **Speed and drift work together**: Slow speed with drift enabled creates a meditation — rings creep outward while the sources wander, producing constantly shifting geometry over minutes rather than seconds.
 - **Brightness is additive**: Unlike multiplicative overlays, Spore adds brightness to the source. This means it works best over mid-to-dark images. On already-bright footage, the overlay saturates at white and loses definition.
 - **Ring width controls visual density**: Narrow rings with high LFSR density create fine lattice textures. Wide rings with low density create broad cloudy bands of scattered particles.
 - **4 sources for complexity**: The Voronoi boundaries between four sources add geometric structure that isn't present with just two sources. The boundaries create additional straight-line features that divide the diamond rings.
@@ -286,6 +308,7 @@ These exercises progress from understanding the basic ring geometry through dens
 | **Ring Period** | The distance between successive ring band centers, quantised to powers of two (128, 256, 512, 1024). |
 | **Voronoi Diagram** | A partitioning of space into regions, each containing all points nearest to a given source; in Manhattan metric these boundaries are straight-line segments. |
 | **Wet/Dry Mix** | The interpolation factor between the processed (wet) and unprocessed (dry) signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

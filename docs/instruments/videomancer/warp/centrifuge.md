@@ -68,6 +68,14 @@ At gentle settings the effect is a subtle tonal rosette overlaid on the source �
 
 ---
 
+## Quick Start
+
+1. **Start with zero spin**: Set Spin Spd to 0% when learning the controls. A static colour rosette is much easier to read than a spinning one. Add rotation once you understand the sector geometry.
+2. **Contrast before colour**: Increase Sep Dist (luma contrast) before Band W (colour intensity). The luma structure of the effect is more visible and easier to evaluate than the chroma shift alone.
+3. **Centre is composition**: The angular origin is the most powerful compositional control. Moving it off-centre or anchoring it to a subject transforms the effect from a decorative overlay to a directed focal element.
+
+---
+
 ## Background
 
 ### Angular Partitioning Without Trigonometry
@@ -94,6 +102,8 @@ The centre of the angular partition is not fixed at the screen centre. Pots 1 an
 ---
 
 ## Signal Flow
+
+Parameter → Pixel Counters → Stage 1 — Delta + Abs → ... → Stage 4 — Clamp 0..1023 → Interpolator Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -173,7 +183,7 @@ Sets the vertical centre position of the angular partition. All sector boundarie
 | Default | 50% |
 | Suffix | % |
 
-Controls the strength of the luma offset applied to each sector. At 0% no brightness modification occurs — all sectors share the input luminance. As the value increases, opposing sectors receive progressively larger positive and negative luma offsets, brightening one half of the colour wheel while darkening the other. At full strength, the contrast between adjacent sectors is dramatic: some wedges are pushed toward white clipping while their opposites are driven toward black. The upper six bits of the 10-bit register value scale the offset magnitude, providing 64 discrete contrast levels. Intermediate sectors receive half the offset of their neighbours, creating a smooth brightness gradient around the angular wheel.
+At 0% no brightness modification occurs — all sectors share the input luminance. As the value increases, opposing sectors receive progressively larger positive and negative luma offsets, brightening one half of the colour wheel while darkening the other. At full strength, the contrast between adjacent sectors is dramatic: some wedges are pushed toward white clipping while their opposites are driven toward black. The upper six bits of the 10-bit register value scale the offset magnitude, providing 64 discrete contrast levels. Intermediate sectors receive half the offset of their neighbours, creating a smooth brightness gradient around the angular wheel. Internally, controls the strength of the luma offset applied to each sector.
 
 ---
 
@@ -184,7 +194,7 @@ Controls the strength of the luma offset applied to each sector. At 0% no bright
 | Default | 50% |
 | Suffix | % |
 
-Sets the magnitude of the chroma offset applied per sector. At 0% the sectors differ only in brightness — no colour tinting occurs. As the value increases, each sector acquires a progressively stronger UV shift, pushing it toward a distinct hue in the colour circle. The warm/cool palette mode (Toggle 9) determines which axis receives the primary offset. At full intensity the colour separation is vivid: opposing sectors carry complementary hues, and the spinning wheel becomes a rotating chromatic filter laid over the source image. Like the contrast control, the upper six bits are used, giving 64 steps of colour intensity.
+At 0% the sectors differ only in brightness — no colour tinting occurs. As the value increases, each sector acquires a progressively stronger UV shift, pushing it toward a distinct hue in the colour circle. The warm/cool palette mode (Toggle 9) determines which axis receives the primary offset. At full intensity the colour separation is vivid: opposing sectors carry complementary hues, and the spinning wheel becomes a rotating chromatic filter laid over the source image. Like the contrast control, the upper six bits are used, giving 64 steps of colour intensity. Internally, sets the magnitude of the chroma offset applied per sector.
 
 ---
 
@@ -214,8 +224,8 @@ This parameter is reserved in the current firmware revision and has no effect on
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Radial | Spiral |
-| **8 — Dir** | CW | CCW |
+| **7 — Mode** | Radial | Vortex |
+| **8 — Dir** | CW | Osc |
 | **9 — Color** | Source | Tinted |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -234,6 +244,21 @@ The five toggles control independent aspects of the processing: Mode (7) sets th
 | Suffix | % |
 
 Crossfades between the dry input signal and the sector-tinted processed signal. At 0% (fader down), the output is the unmodified source — no sector colouring is visible. At 100% (fader up), the output is the fully tinted sector image. Intermediate positions blend the two, allowing you to dial in a subtle angular colour cast over the source without completely replacing its natural palette. This is the master intensity control for the effect: keeping it at 30–50% adds a gentle directional colour toning, while pushing toward 100% commits fully to the colour-wheel aesthetic.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Centrifuge processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -256,7 +281,7 @@ These exercises progress from a static sector overlay through animated colour-wh
 *Static Colour Rosette — simulated result across source images.*
 **Source**: A high-contrast photograph with clear geometry — architectural lines or a centred portrait work well.
 
-**Objective**: Understand how the angular sector classification divides the frame into coloured wedges and how contrast and colour intensity create the tonal separation between sectors.
+**What You'll Create**: Understand how the angular sector classification divides the frame into coloured wedges and how contrast and colour intensity create the tonal separation between sectors.
 
 1. **Freeze the wheel**: Set Spin Spd to 0% so the sector assignment does not move.
 2. **Centre the origin**: Set Sectors and Tilt both to ~50%, placing the angular origin near the frame centre.
@@ -284,7 +309,7 @@ These exercises progress from a static sector overlay through animated colour-wh
 *Spinning Colour Wheel — simulated result across source images.*
 **Source**: A slowly moving video source — panning landscape footage or a gently moving subject against a neutral background.
 
-**Objective**: Explore the rotation animation and the interplay between spin speed, direction, and colour palette.
+**What You'll Create**: Explore the rotation animation and the interplay between spin speed, direction, and colour palette.
 
 1. **Set the full effect**: Sep Dist ~50%, Band W ~60%, Mix ~80%.
 2. **Start slow rotation**: Set Spin Spd to ~20%. The colour wheel begins to advance in discrete 45-degree steps — slow enough to see each sector position individually.
@@ -312,7 +337,7 @@ These exercises progress from a static sector overlay through animated colour-wh
 *Off-Centre Composition — simulated result across source images.*
 **Source**: A portrait or any image with an identifiable focal point that is not centred in the frame.
 
-**Objective**: Use the centre-point controls to anchor the angular partition to a compositional feature, creating asymmetric sector patterns.
+**What You'll Create**: Use the centre-point controls to anchor the angular partition to a compositional feature, creating asymmetric sector patterns.
 
 1. **Prepare the base**: Sep Dist ~45%, Band W ~40%, Spin Spd ~15%, Mix ~70%.
 2. **Default centre**: With Feather and Sectors both at ~50%, the origin is near the screen centre. Observe the symmetric colour rosette.
@@ -328,9 +353,6 @@ These exercises progress from a static sector overlay through animated colour-wh
 
 ## Tips
 
-- **Start with zero spin**: Set Spin Spd to 0% when learning the controls. A static colour rosette is much easier to read than a spinning one. Add rotation once you understand the sector geometry.
-- **Contrast before colour**: Increase Sep Dist (luma contrast) before Band W (colour intensity). The luma structure of the effect is more visible and easier to evaluate than the chroma shift alone.
-- **Centre is composition**: The angular origin is the most powerful compositional control. Moving it off-centre or anchoring it to a subject transforms the effect from a decorative overlay to a directed focal element.
 - **Quad mode for bold looks**: Use Spiral (quadrant) mode when you want large, graphic colour blocks. Use Radial (octant) mode for finer, more intricate colour pinwheels.
 - **Mix for subtlety**: The Mix fader at 20–40% blends the sector colouring into the source as a gentle directional tint — far more usable in live performance than 100% wet.
 - **Direction for variety**: Swap the Dir toggle during a performance to reverse the colour wheel's spin. The sudden reversal creates a visual accent that draws attention.
@@ -352,6 +374,7 @@ These exercises progress from a static sector overlay through animated colour-wh
 | **Quadrant** | One of four 90-degree angular sectors; in Centrifuge, quadrant mode merges adjacent octant pairs into broader colour bands. |
 | **UV colour plane** | The two-dimensional space defined by the U and V chrominance axes, in which any hue and saturation can be represented as a point. |
 | **Vsync (Vertical Sync)** | A timing pulse marking the start of each new video frame, used as the trigger for per-frame parameter updates and counter increments. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

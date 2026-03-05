@@ -68,6 +68,14 @@ At zero rotation and no XOR, the output is identical to the input. Small rotatio
 
 ---
 
+## Quick Start
+
+1. **Multiples of 10 for clean swaps**: Rotating by exactly 0, 10, or 20 positions produces clean channel rotations with no inter-channel bit leakage. Use these as starting points, then add fine rotation for controlled artefacts.
+2. **Self XOR for edges**: Self-XOR mode acts as a bitwise edge detector — it highlights transitions between adjacent bit planes. Useful for extracting textural detail from the bit-manipulated signal.
+3. **Crush after rotation**: Because bit crush operates after rotation, it posterises the *rearranged* planes. Crushing after a 15-position rotation quantises a hybrid of Y and UV data, creating colour-banded posterisation that no standard posteriser can produce.
+
+---
+
 ## Background
 
 ### Bit-Plane Decomposition
@@ -94,6 +102,8 @@ Zeroing the lowest bit planes of each channel is equivalent to reducing the bit 
 ---
 
 ## Signal Flow
+
+Decompose to 30-bit → XOR Operations → Bit Crush + Recompose
 
 ```
 Input Video (YUV 4:4:4)
@@ -166,7 +176,7 @@ Controls the XOR mask intensity. Below a minimum threshold (~6% of range), XOR p
 | Range | 0 – 10 |
 | Default | 0 |
 
-Controls the MSB swap depth between the Y and U channels. At 0, no swap occurs. At maximum (10), all 10 bits of Y and U are exchanged — luminance and blue-difference chrominance switch places entirely. Intermediate values swap only the most significant *N* bits, creating partial channel blending where the coarse structure of Y appears in U and vice versa, while the fine detail remains in its original channel.
+At 0, no swap occurs. At maximum (10), all 10 bits of Y and U are exchanged — luminance and blue-difference chrominance switch places entirely. Intermediate values swap only the most significant *N* bits, creating partial channel blending where the coarse structure of Y appears in U and vice versa, while the fine detail remains in its original channel. Internally, controls the MSB swap depth between the Y and U channels.
 
 ---
 
@@ -187,7 +197,7 @@ Controls the temporal animation depth. When the Animate toggle is active and thi
 | Range | 0 – 9 |
 | Default | 0 |
 
-Sets the crush floor — the bit position below which all planes in every channel are zeroed. At 0, all 10 bits are preserved (full resolution). At 9, only the MSB survives (the image is reduced to a binary silhouette). Intermediate values produce posterisation: the fewer the surviving bits, the coarser the quantisation steps. Because crush operates *after* rotation and XOR, it quantises the already-rearranged bit planes, creating banded versions of the digital artefacts.
+At 0, all 10 bits are preserved (full resolution). At 9, only the MSB survives (the image is reduced to a binary silhouette). Intermediate values produce posterisation: the fewer the surviving bits, the coarser the quantisation steps. Because crush operates *after* rotation and XOR, it quantises the already-rearranged bit planes, creating banded versions of the digital artefacts. Internally, sets the crush floor — the bit position below which all planes in every channel are zeroed.
 
 ---
 
@@ -227,6 +237,21 @@ The five toggles control the rotation direction, XOR algorithm, temporal animati
 
 Controls the wet/dry crossfade between the original input signal and the processed output. At 0%, only the original signal is present. At 100%, only the processed signal is output. Intermediate values blend the two, allowing subtle bit-plane artefacts to be layered over the original image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stratum processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -248,7 +273,7 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 *Channel Rotation — simulated result across source images.*
 **Source**: A colourful live camera feed or recorded footage with distinct red, green, and blue elements.
 
-**Objective**: Understand how barrel rotation moves bit planes between colour channels.
+**What You'll Create**: Understand how barrel rotation moves bit planes between colour channels.
 
 1. **Identity**: Confirm the output matches the input with all controls at zero.
 2. **Rotate by 10**: Turn Bit Rotate to approximately one-third of its range. The entire U channel now occupies the Y position — the image takes on a bluish monochrome cast with the original Y appearing in UV positions.
@@ -275,7 +300,7 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 *XOR Texture Generation — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text on screen, silhouettes, or geometric patterns.
 
-**Objective**: Explore the two XOR modes and how they interact with barrel rotation.
+**What You'll Create**: Explore the two XOR modes and how they interact with barrel rotation.
 
 1. **Self XOR without rotation**: Set XOR Mask above 10%, Bit Rotate at 0. The self-XOR highlights transitions between adjacent bits — the output shows fine edge detail, like a spatial derivative applied per-bit.
 2. **Cross-channel XOR**: Toggle XOR Mode (Switch 8). The channels fold into each other — strong colour artefacts appear as Y information leaks into UV.
@@ -302,7 +327,7 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 *Temporal Bit-Plane Animation — simulated result across source images.*
 **Source**: Any footage — the temporal animation creates its own visual rhythm regardless of source content.
 
-**Objective**: Combine all processing stages with temporal animation for evolving digital textures.
+**What You'll Create**: Combine all processing stages with temporal animation for evolving digital textures.
 
 1. **Base effect**: Set Bit Rotate ~10, XOR Mask ~20%, Cross-Channel mode, Crush Floor 2.
 2. **Enable animation**: Toggle Animate (Switch 9) to On. Increase Time XOR above ~10%. The frame counter XOR'd into the planes creates a rhythmic visual pulse.
@@ -318,9 +343,6 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 
 ## Tips
 
-- **Multiples of 10 for clean swaps**: Rotating by exactly 0, 10, or 20 positions produces clean channel rotations with no inter-channel bit leakage. Use these as starting points, then add fine rotation for controlled artefacts.
-- **Self XOR for edges**: Self-XOR mode acts as a bitwise edge detector — it highlights transitions between adjacent bit planes. Useful for extracting textural detail from the bit-manipulated signal.
-- **Crush after rotation**: Because bit crush operates after rotation, it posterises the *rearranged* planes. Crushing after a 15-position rotation quantises a hybrid of Y and UV data, creating colour-banded posterisation that no standard posteriser can produce.
 - **Temporal animation is cyclic**: The 1024-frame cycle means the animation repeats every ~17 seconds at 60 fps. Use Time XOR to control the density of the temporal pattern.
 - **Mirror for nonlinear distortion**: Mirror mode reverses the significance hierarchy — the MSB becomes the LSB. This is a nonlinear permutation that produces chaotic brightness and colour mappings, similar to bit-order reversal in Bitcullis.
 - **Swap for partial blending**: The Swap Depth control provides a gradual way to blend Y and U content. Low swap depths create subtle colour tinting; high swap depths produce full channel exchange.
@@ -337,12 +359,11 @@ These exercises progress from simple channel rotation to full bit-plane deconstr
 | **Bit Crush** | Zeroing the least significant bit planes of a signal, reducing its effective bit depth and creating visible quantisation steps. |
 | **Bit Plane** | A single binary layer within a multi-bit pixel value; the MSB plane carries half the dynamic range, the LSB plane carries ±1 count. |
 | **DDS** | Direct Digital Synthesis; a technique for generating time-varying signals using a phase accumulator and lookup table. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Frame Counter** | A register that increments on each vertical sync pulse, providing a temporal index for animation effects. |
 | **LSB** | Least Significant Bit; the binary digit with the smallest weight in a multi-bit number. |
 | **MSB** | Most Significant Bit; the binary digit with the largest weight in a multi-bit number. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **XOR** | Exclusive OR; a logic operation that outputs 1 when its inputs differ and 0 when they match. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

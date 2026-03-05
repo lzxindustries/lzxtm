@@ -35,6 +35,14 @@ In Videomancer's implementation the grid cells map to 40 × 40 pixel blocks on s
 
 ---
 
+## Quick Start
+
+1. **Start with Diamond**: The compact Diamond stamp (Pattern 1) is the clearest way to understand the stamp-and-decay cycle before moving to denser shapes.
+2. **Use Reset for transitions**: During live performance, toggling Reset provides an instant clean slate — more dramatic than waiting for decay to clear the grid.
+3. **Match Decay to Speed**: Faster emitter speeds fill the grid more quickly, so higher Decay values prevent the grid from saturating into a uniform colour field.
+
+---
+
 ## Background
 
 ### The Llamasoft Light Synthesisers
@@ -198,6 +206,10 @@ The five toggles configure the emitter count, symmetry mode, and output routing.
 
 Mix crossfades between the dry input signal and the synthesised mandala output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate positions blend the two, allowing the mandala to emerge gradually over the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -208,7 +220,7 @@ These three exercises build from a minimal single-emitter configuration to a ful
 
 <img src={colrspace_exercise1_result} alt="Single Emitter Diamond Pulse result"/>
 *Single Emitter Diamond Pulse — simulated result across source images.*
-**Objective**: Produce a minimal expanding diamond pattern from a single slow-moving emitter to understand the stamp-and-decay cycle.
+**What You'll Create**: Produce a minimal expanding diamond pattern from a single slow-moving emitter to understand the stamp-and-decay cycle.
 
 1. Set Emitters to Single and Symmetry to 4-Way.
 2. Set Pattern to 1 (Diamond).
@@ -228,7 +240,7 @@ These three exercises build from a minimal single-emitter configuration to a ful
 
 <img src={colrspace_exercise2_result} alt="Dual Emitter Rainbow Mandala result"/>
 *Dual Emitter Rainbow Mandala — simulated result across source images.*
-**Objective**: Create a dense, continuously shifting mandala by combining dual emitters with fast hue cycling and a complex stamp shape.
+**What You'll Create**: Create a dense, continuously shifting mandala by combining dual emitters with fast hue cycling and a complex stamp shape.
 
 1. Switch Emitters to Dual.
 2. Set Pattern to 7 (Asterisk) for wide stamp coverage.
@@ -247,7 +259,7 @@ These three exercises build from a minimal single-emitter configuration to a ful
 
 <img src={colrspace_exercise3_result} alt="Video-Modulated Mandala Overlay result"/>
 *Video-Modulated Mandala Overlay — simulated result across source images.*
-**Objective**: Use the Mod Video toggle to mask the mandala pattern with live video input, creating a real-time video-shaped window into the colour field.
+**What You'll Create**: Use the Mod Video toggle to mask the mandala pattern with live video input, creating a real-time video-shaped window into the colour field.
 
 1. Keep the Exercise 2 dual emitter mandala running.
 2. Toggle Mod Video to On.
@@ -265,9 +277,6 @@ These three exercises build from a minimal single-emitter configuration to a ful
 
 ## Tips
 
-- **Start with Diamond**: The compact Diamond stamp (Pattern 1) is the clearest way to understand the stamp-and-decay cycle before moving to denser shapes.
-- **Use Reset for transitions**: During live performance, toggling Reset provides an instant clean slate — more dramatic than waiting for decay to clear the grid.
-- **Match Decay to Speed**: Faster emitter speeds fill the grid more quickly, so higher Decay values prevent the grid from saturating into a uniform colour field.
 - **Hue Speed as rhythm**: Map the Hue Speed knob to an LFO synchronised with music to create colour pulsing that follows the beat.
 - **Mod Video for masking**: The Mod Video toggle is most effective with high-contrast input — text, silhouettes, or oscilloscope patterns create dramatic windows into the mandala.
 - **Dual emitters need wide Spread**: With two emitters and 4-way symmetry, eight stamps per frame can saturate a small area quickly. Increase Spread to distribute stamps across the full grid.

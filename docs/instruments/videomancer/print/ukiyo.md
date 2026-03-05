@@ -68,6 +68,14 @@ At subtle settings, Ukiyo applies a gentle posterisation with faint outlines tha
 
 ---
 
+## Quick Start
+
+1. **Start with Monochrome palette**: Removing colour lets you focus on the edge detect and grain interaction. Once the line quality is right, switch palettes to add colour.
+2. **Registration error sells the effect**: Even a small Misalign value (10–20%) adds immense authenticity. Real woodblock prints almost always have slight registration errors — perfect alignment looks artificial.
+3. **Bokashi direction follows composition**: Use Vert for landscapes (sky-to-ground gradation) and Horiz for portraits or architectural shots (side lighting).
+
+---
+
 ## Background
 
 ### Woodblock Printing and Colour Separation
@@ -94,6 +102,8 @@ Handmade washi paper has a distinctly visible fibre structure — long mulberry 
 ---
 
 ## Signal Flow
+
+Edge Detection → Palette Match → Bokashi Gradient → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -152,7 +162,7 @@ The pipeline order matters for Ukiyo's visual authenticity. Edge detection opera
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the sensitivity of the edge detector. At zero, no outlines are produced and the output consists only of flat palette colours. As Edge Detect increases, progressively finer edges emerge — first major object boundaries, then secondary contours, and finally subtle texture variations. At maximum, even gentle gradients produce visible outlines, creating a dense network of carved lines reminiscent of the most detailed ukiyo-e key blocks. The threshold is applied after the Sobel gradient computation, so this control effectively sets the minimum contrast that produces a visible line.
+At zero, no outlines are produced and the output consists only of flat palette colours. As Edge Detect increases, progressively finer edges emerge — first major object boundaries, then secondary contours, and finally subtle texture variations. At maximum, even gentle gradients produce visible outlines, creating a dense network of carved lines reminiscent of the most detailed ukiyo-e key blocks. The threshold is applied after the Sobel gradient computation, so this control effectively sets the minimum contrast that produces a visible line. Internally, controls the sensitivity of the edge detector.
 
 ---
 
@@ -173,7 +183,7 @@ Selects one of eight colour palettes inspired by historical ukiyo-e pigment comb
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of colour flattening. At low values, the palette matching is gentle — colours remain close to their original hue with subtle quantisation. As Flat Amount increases, the colour snapping becomes more aggressive, producing the bold, uniform colour fields characteristic of multi-block printing. At maximum, every pixel is mapped firmly to its nearest palette entry with no residual original colour, creating large regions of absolutely flat colour separated only by the edge outlines.
+At low values, the palette matching is gentle — colours remain close to their original hue with subtle quantisation. As Flat Amount increases, the colour snapping becomes more aggressive, producing the bold, uniform colour fields characteristic of multi-block printing. At maximum, every pixel is mapped firmly to its nearest palette entry with no residual original colour, creating large regions of absolutely flat colour separated only by the edge outlines. Internally, controls the intensity of colour flattening.
 
 ---
 
@@ -184,7 +194,7 @@ Controls the intensity of colour flattening. At low values, the palette matching
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of the bokashi gradient overlay. At zero, no gradient is applied and the palette colours remain uniform across the frame. As Bokashi increases, a smooth positional ramp blends across the image, modulating the luminance of the palette-matched output. This simulates the inking gradient where the printer varies pressure or ink density across the block surface. At high values, one side of the frame brightens toward bare paper white while the other side deepens toward full ink saturation.
+At zero, no gradient is applied and the palette colours remain uniform across the frame. As Bokashi increases, a smooth positional ramp blends across the image, modulating the luminance of the palette-matched output. This simulates the inking gradient where the printer varies pressure or ink density across the block surface. At high values, one side of the frame brightens toward bare paper white while the other side deepens toward full ink saturation. Internally, controls the intensity of the bokashi gradient overlay.
 
 ---
 
@@ -195,7 +205,7 @@ Controls the intensity of the bokashi gradient overlay. At zero, no gradient is 
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the magnitude of chroma channel misalignment. At zero, U and V channels are perfectly aligned — the colour blocks register precisely. As Misalign increases, U and V shift by progressively larger and different pixel offsets, producing the colour fringing seen in hand-printed woodblocks where each colour block was positioned by eye against the kento registration marks. The effect is most visible at sharp colour boundaries, where a thin fringe of incorrect colour appears at the edge.
+At zero, U and V channels are perfectly aligned — the colour blocks register precisely. As Misalign increases, U and V shift by progressively larger and different pixel offsets, producing the colour fringing seen in hand-printed woodblocks where each colour block was positioned by eye against the kento registration marks. The effect is most visible at sharp colour boundaries, where a thin fringe of incorrect colour appears at the edge. Internally, controls the magnitude of chroma channel misalignment.
 
 ---
 
@@ -206,7 +216,7 @@ Controls the magnitude of chroma channel misalignment. At zero, U and V channels
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the amount of LFSR noise added to the luminance channel. At zero, the surface is perfectly smooth. As Paper Grain increases, pseudo-random brightness variations appear across the image, simulating the irregular fibre texture of handmade washi paper. The grain is multiplicative against the ink layers, meaning darker areas show less visible grain than lighter areas — matching how ink saturation masks paper texture in real printing.
+At zero, the surface is perfectly smooth. As Paper Grain increases, pseudo-random brightness variations appear across the image, simulating the irregular fibre texture of handmade washi paper. The grain is multiplicative against the ink layers, meaning darker areas show less visible grain than lighter areas — matching how ink saturation masks paper texture in real printing. Internally, controls the amount of LFSR noise added to the luminance channel.
 
 ---
 
@@ -235,6 +245,10 @@ The five toggles fine-tune the visual texture and registration of the woodblock 
 
 Crossfade between the dry (original) and wet (woodblock print) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full ukiyo-e effect with edge outlines, palette mapping, bokashi, grain, and misalignment. Intermediate values create a translucent overlay where the original video shows through the printed effect, evoking a partially inked impression where the paper is not fully covered.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -256,7 +270,7 @@ These exercises progress from basic palette mapping to complex multi-layer print
 *First Impression — simulated result across source images.*
 **Source**: A landscape photograph or camera feed with clear foreground and background separation — trees against sky, buildings against horizon, or similar.
 
-**Objective**: Create a basic ukiyo-e colour print with palette mapping and edge outlines, understanding how the key block and colour blocks work together.
+**What You'll Create**: Create a basic ukiyo-e colour print with palette mapping and edge outlines, understanding how the key block and colour blocks work together.
 
 1. **Select a palette**: Turn Palette Sel to Classic Edo. The image immediately snaps to the four-colour Edo palette.
 2. **Flatten the colours**: Increase Flat Amount to ~75%. Watch the continuous tones resolve into bold, uniform colour fields.
@@ -283,7 +297,7 @@ These exercises progress from basic palette mapping to complex multi-layer print
 *Weathered Print — simulated result across source images.*
 **Source**: A portrait or figure study with skin tones and clothing detail.
 
-**Objective**: Layer bokashi gradient, paper grain, and registration error to create a print that looks aged and hand-produced.
+**What You'll Create**: Layer bokashi gradient, paper grain, and registration error to create a print that looks aged and hand-produced.
 
 1. **Start with the base print**: Edge Detect ~40%, Palette Sel Sepia, Flat Amount ~80%.
 2. **Add bokashi**: Increase Bokashi to ~50%. Switch Bokashi Dir to Vert — watch how a top-to-bottom luminance gradient sweeps across the flat colours.
@@ -310,7 +324,7 @@ These exercises progress from basic palette mapping to complex multi-layer print
 *Prussian Wave — simulated result across source images.*
 **Source**: A high-contrast scene with strong lines — ocean waves, mountain ridges, architectural details, or flowing fabric.
 
-**Objective**: Create a bold, Hokusai-inspired composition emphasising the dramatic interplay of Prussian blue palette, heavy outlines, and bokashi atmospheric gradients.
+**What You'll Create**: Create a bold, Hokusai-inspired composition emphasising the dramatic interplay of Prussian blue palette, heavy outlines, and bokashi atmospheric gradients.
 
 1. **Set the palette**: Select Prussian. The frame floods with deep indigo and complementary tones.
 2. **Maximise flattening**: Push Flat Amount to ~90%. Colours snap to bold, poster-like fields.
@@ -327,9 +341,6 @@ These exercises progress from basic palette mapping to complex multi-layer print
 
 ## Tips
 
-- **Start with Monochrome palette**: Removing colour lets you focus on the edge detect and grain interaction. Once the line quality is right, switch palettes to add colour.
-- **Registration error sells the effect**: Even a small Misalign value (10–20%) adds immense authenticity. Real woodblock prints almost always have slight registration errors — perfect alignment looks artificial.
-- **Bokashi direction follows composition**: Use Vert for landscapes (sky-to-ground gradation) and Horiz for portraits or architectural shots (side lighting).
 - **Thick outlines at low resolution**: If your source is low-resolution or the output will be viewed at a distance, use Thick outlines — they read better than thin lines at small sizes.
 - **Layer grain last mentally**: Paper grain sits on top of everything visually. When designing your print, set grain to zero first, dial in palette and edges, then add grain as the final textural polish.
 - **Feedback loops create moire prints**: Routing the output back through Ukiyo creates recursive quantisation — the palette snaps to itself through successive passes, eventually converging to a fixed-point image with increasingly graphic edge patterns.
@@ -343,7 +354,6 @@ These exercises progress from basic palette mapping to complex multi-layer print
 | Term | Definition |
 |------|------------|
 | **Bokashi** | A Japanese printing technique where ink is applied in a gradient across the block surface, creating smooth transitions from full colour to bare paper. |
-| **BRAM** | Block RAM; dedicated FPGA memory used for the scanline buffer enabling 2D edge detection. |
 | **Kento** | Registration marks carved into each woodblock to ensure precise alignment when printing multiple colour layers. |
 | **LFSR** | Linear-Feedback Shift Register; a simple digital circuit generating pseudo-random bit sequences, used here for paper grain texture. |
 | **Manhattan Distance** | The sum of absolute differences across dimensions (|Y₁ − Y₂| + |U₁ − U₂| + |V₁ − V₂|), cheaper than Euclidean distance on FPGA fabric. |
@@ -352,6 +362,7 @@ These exercises progress from basic palette mapping to complex multi-layer print
 | **Sobel Operator** | A discrete differentiation operator computing horizontal and vertical intensity gradients from a 3×3 pixel neighbourhood. |
 | **Ukiyo-e** | "Pictures of the floating world"; Japanese woodblock prints and paintings produced between the 17th and 19th centuries. |
 | **Washi** | Traditional Japanese paper made from plant fibres (kozo, gampi, mitsumata), characterised by visible fibre texture and high durability. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

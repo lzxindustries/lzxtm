@@ -68,6 +68,14 @@ At low Cord Spacing values the lattice is dense, almost like a mesh screen overl
 
 ---
 
+## Quick Start
+
+1. **Cell size jumps**: Cord Spacing steps through six discrete sizes. If you need a specific density, remember that the transitions happen at roughly 15%, 29%, 43%, 57%, 71% of the pot range.
+2. **Knot visibility**: Knots are brightest at the center and draw at 75% of the Brightness setting. If knots are too subtle, increase both Knot Size and Brightness together.
+3. **Dark backgrounds for additive**: Additive overlay is most visible against dark source material. Bright sources wash out the lattice. Use replace mode for consistent visibility.
+
+---
+
 ## Background
 
 ### Diagonal Lattice Geometry
@@ -94,6 +102,8 @@ The program offers two compositing modes for combining the cord pattern with the
 ---
 
 ## Signal Flow
+
+Input Register → Cord Test → Cord → Overlay Blend + Clamp
 
 ```
 Input Video (YUV 4:4:4)
@@ -204,7 +214,7 @@ Tilts the lattice by adding a vertical offset derived from the bottom 8 bits of 
 | Default | 50% |
 | Suffix | % |
 
-Sets the luminance level of the cord and knot pixels. At zero, the pattern is completely dark — invisible in additive mode, black lines in replace mode. At maximum, the cords are full brightness. Knots receive 75% of this brightness level plus noise; cord lines receive a slightly lower fraction. This control directly sets the visual weight of the textile overlay against the source video.
+At zero, the pattern is completely dark — invisible in additive mode, black lines in replace mode. At maximum, the cords are full brightness. Knots receive 75% of this brightness level plus noise; cord lines receive a slightly lower fraction. This control directly sets the visual weight of the textile overlay against the source video. Internally, sets the luminance level of the cord and knot pixels.
 
 ---
 
@@ -223,8 +233,8 @@ Declared and mapped to the register but not referenced in the processing pipelin
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Diamond | Square |
-| **8 — Color** | Cream | Natural |
+| **7 — Pattern** | Diamond | Chevron |
+| **8 — Color** | Cream | Source |
 | **9 — Overlay** | Add | Multiply |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -242,7 +252,19 @@ Toggles 7 and 8 each use a single VHDL bit despite having four TOML labels. In p
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade. At 0% the output is the unprocessed source (dry). At 100% the output is the fully processed signal (wet). Intermediate positions blend between the two via the interpolator, allowing you to dial in a subtle lattice overlay without committing to the full effect intensity.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Macrame-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -265,7 +287,7 @@ These exercises build from basic lattice construction to full textile overlay co
 *Diamond Lattice Construction — simulated result across source images.*
 **Source**: A medium-contrast camera feed or recorded footage with recognizable subjects and some dark regions.
 
-**Objective**: Understand how cord spacing, thickness, and knot size combine to form the basic lattice.
+**What You'll Create**: Understand how cord spacing, thickness, and knot size combine to form the basic lattice.
 
 1. **Open grid**: Set Cord Spacing to about 70% to select the 128-pixel cell size. The lattice will have widely spaced diagonals.
 2. **Thin cords**: Set Cord Thickness to about 20%. Hairline diagonal lines appear over the video.
@@ -293,7 +315,7 @@ These exercises build from basic lattice construction to full textile overlay co
 *Colored Textile Overlay — simulated result across source images.*
 **Source**: High-contrast footage with dark backgrounds — stage performance, night scenes, or silhouettes.
 
-**Objective**: Explore color modes and overlay compositing against varied source brightness.
+**What You'll Create**: Explore color modes and overlay compositing against varied source brightness.
 
 1. **Set medium lattice**: Cord Spacing ~50%, Knot Size ~50%, Cord Thickness ~40%, Brightness ~70%.
 2. **Additive over dark**: With Overlay set to Add, observe how the lattice glows brightly against dark areas of the source and washes out against bright areas.
@@ -321,7 +343,7 @@ These exercises build from basic lattice construction to full textile overlay co
 *Animated Lattice Drift — simulated result across source images.*
 **Source**: Slow-moving or static footage — landscapes, architecture, or a fixed camera feed.
 
-**Objective**: Combine animation, fine lattice density, and strong overlay for an evolving textile texture.
+**What You'll Create**: Combine animation, fine lattice density, and strong overlay for an evolving textile texture.
 
 1. **Fine lattice**: Set Cord Spacing to about 15% for the densest cell size. Cord Thickness ~30%, Knot Size ~30%.
 2. **Enable animation**: Switch Animate to On. The lattice begins drifting diagonally.
@@ -338,9 +360,6 @@ These exercises build from basic lattice construction to full textile overlay co
 
 ## Tips
 
-- **Cell size jumps**: Cord Spacing steps through six discrete sizes. If you need a specific density, remember that the transitions happen at roughly 15%, 29%, 43%, 57%, 71% of the pot range.
-- **Knot visibility**: Knots are brightest at the center and draw at 75% of the Brightness setting. If knots are too subtle, increase both Knot Size and Brightness together.
-- **Dark backgrounds for additive**: Additive overlay is most visible against dark source material. Bright sources wash out the lattice. Use replace mode for consistent visibility.
 - **Angle for asymmetry**: A small Angle offset breaks the rotational symmetry of the diamond lattice, creating parallelogram cells that feel more hand-crafted.
 - **Color tint is subtle**: The warm tint shifts chroma by only 20–40 counts on a 1024-count scale. It is most visible against neutral or cool-toned source material.
 - **Animation speed is fixed**: The drift is one pixel per frame regardless of any control setting. For slower drift, use the Mix control to blend less of the animated signal.
@@ -352,16 +371,14 @@ These exercises build from basic lattice construction to full textile overlay co
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Macrame uses no BRAM — all pattern generation is combinational. |
 | **Chroma** | Color information in a video signal, encoded as U and V offsets from neutral gray in YUV color space. |
 | **Diagonal Sum / Difference** | h+v and |h−v| coordinate transforms that create ±45° line families across the pixel grid. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a simple pseudo-random number generator used here for cord texture noise. |
 | **Luma** | Brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of absolute coordinate differences (|dx|+|dy|), producing diamond-shaped distance contours instead of circles. |
-| **Pipeline** | A chain of processing stages that each operate on one pixel per clock cycle, with eight stages total. |
 | **Power-of-Two** | Values like 8, 16, 32, 64, 128, 256 that allow modular arithmetic via bitwise AND instead of division. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

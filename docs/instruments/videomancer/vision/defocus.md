@@ -68,6 +68,14 @@ The engine operates in YUV space, treating luminance and chrominance independent
 
 ---
 
+## Quick Start
+
+1. **Diffusion filter trick**: Set a high Blur Amt (step 20+) and pull Mix back to 30–40%. The sharp original shows through a soft overlay — exactly how a physical diffusion filter works on a camera lens.
+2. **Anamorphic streaks**: Turn V-Blur Off and set H/V Bal to 0% for pure horizontal smearing. Combined with moderate Glow, this produces the characteristic streak flares of anamorphic cinema lenses.
+3. **Glow threshold is key**: The difference between subtle highlight bloom and a washed-out white image is entirely in GlowThr. Start high (60%+) and lower cautiously.
+
+---
+
 ## Background
 
 ### Optical Defocus vs. Digital Blur
@@ -104,6 +112,8 @@ The animation counter increments once per field. At the Slow speed, the phase ad
 ---
 
 ## Signal Flow
+
+Y / U / V Channels → Sync Signals → Animation Oscillator → Bypass
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -194,7 +204,7 @@ Applies additional blur exclusively to the U and V chrominance channels, leaving
 | Default | 0% |
 | Suffix | % |
 
-Controls the intensity of the glow engine's additive overlay. At 0% the glow stage is disabled and the blurred signal passes through unchanged. As you increase the level, pixels whose blurred luminance exceeds the Glow Threshold receive an additive brightness boost proportional to both their luminance and this control's value. At high settings, bright highlights bloom dramatically — white areas clamp to maximum and expand into surrounding mid-tones. The glow operates on the already-blurred signal, so higher Blur Amount settings produce wider and softer halos.
+At 0% the glow stage is disabled and the blurred signal passes through unchanged. As you increase the level, pixels whose blurred luminance exceeds the Glow Threshold receive an additive brightness boost proportional to both their luminance and this control's value. At high settings, bright highlights bloom dramatically — white areas clamp to maximum and expand into surrounding mid-tones. The glow operates on the already-blurred signal, so higher Blur Amount settings produce wider and softer halos. Internally, controls the intensity of the glow engine's additive overlay.
 
 ---
 
@@ -234,6 +244,10 @@ The five toggles control three independent subsystems: vertical blur configurati
 
 Wet/dry crossfade at the output. At 0% (fader fully down), the output is entirely the original dry signal — equivalent to bypass but via the interpolator rather than the mux. At 100% (fader fully up, default), the output is entirely the processed wet signal including all blur and glow. Intermediate positions blend the two, which is useful for dialing in subtle diffusion: you can set a strong blur amount and then pull the fader back to mix in just a hint of softness over the sharp original.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +269,7 @@ These three exercises progress from basic soft focus through vertical blur and g
 *Soft Focus Diffusion — simulated result across source images.*
 **Source**: A live camera feed with a well-lit subject — portraits or detailed textures work best.
 
-**Objective**: Learn how horizontal blur amount and blur shape interact to create classic diffusion-filter effects.
+**What You'll Create**: Learn how horizontal blur amount and blur shape interact to create classic diffusion-filter effects.
 
 1. **Minimal softening**: Set Blur Amt to step 4 (first detectable blur — window width 2). The image softens almost imperceptibly.
 2. **Moderate diffusion**: Increase to step 12 (window width 8). Fine detail dissolves while large shapes remain recognizable.
@@ -282,7 +296,7 @@ These three exercises progress from basic soft focus through vertical blur and g
 *Directional Blur with Glow — simulated result across source images.*
 **Source**: Footage with bright highlights against a darker background — candles, stage lighting, or reflections on water.
 
-**Objective**: Explore vertical blur, H/V balance for directional effects, and glow extraction from highlights.
+**What You'll Create**: Explore vertical blur, H/V balance for directional effects, and glow extraction from highlights.
 
 1. **Prepare**: Set Blur Amt to step 16 (window width 16) with BlrShpe at 0%.
 2. **Enable vertical**: Turn V-Blur On. The image softens vertically as well as horizontally.
@@ -311,7 +325,7 @@ These three exercises progress from basic soft focus through vertical blur and g
 *Animated Focus Rack — simulated result across source images.*
 **Source**: A scene with multiple subjects at different visual distances — a foreground object and a background environment.
 
-**Objective**: Use auto-animation to create a continuous rack-focus effect and combine it with glow for cinematic atmosphere.
+**What You'll Create**: Use auto-animation to create a continuous rack-focus effect and combine it with glow for cinematic atmosphere.
 
 1. **Prepare**: Set Blur Amt to any position (it will be overridden). Enable V-Blur On, V Cascde Single. Set H/V Bal to 50% for uniform defocus.
 2. **Engage animation**: Turn AutoAnim On. The blur amount begins sweeping from sharp to maximum and back.
@@ -328,9 +342,6 @@ These three exercises progress from basic soft focus through vertical blur and g
 
 ## Tips
 
-- **Diffusion filter trick**: Set a high Blur Amt (step 20+) and pull Mix back to 30–40%. The sharp original shows through a soft overlay — exactly how a physical diffusion filter works on a camera lens.
-- **Anamorphic streaks**: Turn V-Blur Off and set H/V Bal to 0% for pure horizontal smearing. Combined with moderate Glow, this produces the characteristic streak flares of anamorphic cinema lenses.
-- **Glow threshold is key**: The difference between subtle highlight bloom and a washed-out white image is entirely in GlowThr. Start high (60%+) and lower cautiously.
 - **Cascade for depth**: Double cascade nearly doubles the vertical blur radius. Use it when vertical softening looks too subtle in single mode.
 - **Chroma blur for vintage look**: Increasing ChrBlur while leaving Y blur moderate simulates the behavior of older lens systems where color registration was less precise than luminance resolution.
 - **Animation as performance tool**: AutoAnim creates a rhythmic focus cycle that can be synchronized to music or other visual rhythms. Slow mode suits ambient material; Fast mode suits percussive content.
@@ -344,17 +355,16 @@ These three exercises progress from basic soft focus through vertical blur and g
 |------|------------|
 | **Bokeh** | The aesthetic quality of the blur produced by a lens in out-of-focus areas, often characterized by the shape of highlights. |
 | **Box Filter** | A spatial averaging kernel where every pixel within the window contributes equally; also called a moving-average filter. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA used for line buffer storage. |
 | **Cascade** | Applying the same filter operation multiple times in series to increase its effective width or order. |
 | **Circle of Confusion** | The disc-shaped blur pattern produced by a single point of light when a lens is defocused. |
 | **Glow** | An additive brightness effect applied to pixels above a luminance threshold, simulating optical bloom. |
-| **Interpolator** | A crossfade circuit that blends two signals by a fractional amount, used here for wet/dry mixing. |
 | **LFO** | Low-Frequency Oscillator; a periodic signal used for animation or modulation, here a triangle wave driving blur amount. |
 | **Line Buffer** | A scanline-length memory that stores pixel data from a previous line for vertical processing. |
 | **Rack Focus** | A cinematographic technique of smoothly shifting the focal plane during a shot to redirect viewer attention. |
 | **Running Sum** | An accumulator that adds entering pixels and subtracts exiting pixels to maintain a sliding-window total. |
 | **Shift Register** | A chain of flip-flops that delays a signal by a fixed number of clock cycles; here used as a 64-deep pixel delay. |
 | **Triangle Filter** | A spatial kernel with linearly decaying weights; equivalent to two successive box filter passes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

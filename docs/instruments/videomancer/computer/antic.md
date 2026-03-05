@@ -68,6 +68,14 @@ At conservative settings — Mode 9 with DLI disabled and moderate saturation �
 
 ---
 
+## Quick Start
+
+1. **Processing order matters**: Input gain and brightness are applied *before* GTIA mode processing. Adjust gain and brightness to control how the input maps into the GTIA quantization — this is the primary creative control for shaping the final look.
+2. **Mode 9 is the signature Atari effect**: The 16-level monochrome tint is the most instantly recognizable Atari visual. Use Gold (step 2) or Green (step 13) for the most nostalgic Atari feel.
+3. **DLI Rate and Offset are the rainbow controls**: Rate compresses or expands the rainbow gradient. Offset slides it. Together they position any colour at any vertical position on screen.
+
+---
+
 ## Background
 
 ### What Is the Atari GTIA?
@@ -102,6 +110,8 @@ The Atari 8-bit computers used different colour encoding depending on the televi
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Interpolator → Output
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -173,7 +183,7 @@ Selects the base hue from the Atari colour wheel. The 16 hue positions match the
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the speed of the per-scanline DLI hue cycling effect. At 0%, the hue does not change between scanlines — the base hue applies uniformly across the entire frame. As the rate increases, the hue register advances faster per scanline, compressing more of the colour wheel into the vertical height of the frame. At moderate values, a gentle rainbow gradient appears from top to bottom. At maximum, the hue cycles through the entire colour wheel multiple times per frame, producing dense horizontal colour banding. This control only has a visible effect when DLI Enable (Toggle 9) is on. The DLI phase accumulator uses a 32-bit register, so the rate-to-visual-speed mapping is extremely smooth.
+At 0%, the hue does not change between scanlines — the base hue applies uniformly across the entire frame. As the rate increases, the hue register advances faster per scanline, compressing more of the colour wheel into the vertical height of the frame. At moderate values, a gentle rainbow gradient appears from top to bottom. At maximum, the hue cycles through the entire colour wheel multiple times per frame, producing dense horizontal colour banding. This control only has a visible effect when DLI Enable (Toggle 9) is on. The DLI phase accumulator uses a 32-bit register, so the rate-to-visual-speed mapping is extremely smooth. Internally, controls the speed of the per-scanline DLI hue cycling effect.
 
 ---
 
@@ -206,7 +216,7 @@ Controls the chroma intensity of the processed output. The saturation stage scal
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the starting phase of the DLI rainbow gradient. At 0%, the rainbow begins at the base hue (Knob 1) and cycles upward through the colour wheel. Increasing the offset rotates the starting point of the gradient, shifting which colour appears at the top of the frame. This allows the user to position specific colours at specific vertical positions on screen. The offset and rate together define the complete gradient: the rate sets how many cycles per frame, and the offset sets where each cycle begins. Like DLI Rate, this control only has a visible effect when DLI Enable (Toggle 9) is on.
+At 0%, the rainbow begins at the base hue (Knob 1) and cycles upward through the colour wheel. Increasing the offset rotates the starting point of the gradient, shifting which colour appears at the top of the frame. This allows the user to position specific colours at specific vertical positions on screen. The offset and rate together define the complete gradient: the rate sets how many cycles per frame, and the offset sets where each cycle begins. Like DLI Rate, this control only has a visible effect when DLI Enable (Toggle 9) is on. Internally, controls the starting phase of the DLI rainbow gradient.
 
 ---
 
@@ -243,7 +253,18 @@ Switches 7 and 8 form a **combined 2-bit mode selector** controlling which GTIA 
 | Range | 0 – 100 |
 | Default | 100 |
 
-Wet/dry crossfade between the original input video (delayed to match the 22-clock processing pipeline) and the GTIA-processed output. At 0%, the output is pure unprocessed input. At 100%, the output is fully processed through the selected GTIA mode. Intermediate positions blend the two, allowing the Atari colour constraints to be superimposed over the original footage at any opacity.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 100 |
+
+Wet/dry crossfade between the original (dry) signal and the Antic-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -266,7 +287,7 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 *Mode 9 Monochrome Tinting — simulated result across source images.*
 **Source**: Camera feed or recorded footage with varied brightness — portraits work well to show luminance quantization.
 
-**Objective**: Understand how Mode 9 reduces the image to a single hue with 16 luminance levels and how the Base Hue selector changes the colour character.
+**What You'll Create**: Understand how Mode 9 reduces the image to a single hue with 16 luminance levels and how the Base Hue selector changes the colour character.
 
 1. **Set Mode 9**: Ensure both GTIA Sel A (Toggle 7) and GTIA Sel B (Toggle 8) are off. DLI Enable (Toggle 9) off.
 2. **Unity settings**: Set Luma Gain and Brightness to ~50%, Saturation to ~75%, Mix to 100%.
@@ -295,7 +316,7 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 *DLI Rainbow Gradient — simulated result across source images.*
 **Source**: Any video source — the DLI rainbow is most visible on dark or moderately exposed content.
 
-**Objective**: Learn how the DLI per-scanline hue cycling creates a rainbow gradient and how Rate and Offset control its appearance.
+**What You'll Create**: Learn how the DLI per-scanline hue cycling creates a rainbow gradient and how Rate and Offset control its appearance.
 
 1. **Start from Mode 9**: Both mode toggles off, Mix at 100%, moderate Saturation (~75%).
 2. **Enable DLI**: Switch DLI Enable (Toggle 9) to On. A rainbow gradient appears from top to bottom.
@@ -324,7 +345,7 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 *Mode 10 Illustrated Palette with Artifact Fringe — simulated result across source images.*
 **Source**: Camera feed or recorded footage with saturated colours — subjects wearing colourful clothing or outdoor scenes with sky and vegetation.
 
-**Objective**: Explore Mode 10 nearest-match palette mapping and combine it with DLI cycling and artifact colour fringing for the most complex Atari emulation.
+**What You'll Create**: Explore Mode 10 nearest-match palette mapping and combine it with DLI cycling and artifact colour fringing for the most complex Atari emulation.
 
 1. **Select Mode 10**: Set GTIA Sel A (Toggle 7) to On, GTIA Sel B (Toggle 8) to Off. The image snaps into a 9-colour illustrated look — each pixel mapped to the nearest palette colour.
 2. **Observe palette**: The 9 fixed colours (black, orange, blue, green, pink, turquoise, gold, yellow-green, white) create a distinctive paint-by-numbers appearance.
@@ -341,9 +362,6 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 
 ## Tips
 
-- **Processing order matters**: Input gain and brightness are applied *before* GTIA mode processing. Adjust gain and brightness to control how the input maps into the GTIA quantization — this is the primary creative control for shaping the final look.
-- **Mode 9 is the signature Atari effect**: The 16-level monochrome tint is the most instantly recognizable Atari visual. Use Gold (step 2) or Green (step 13) for the most nostalgic Atari feel.
-- **DLI Rate and Offset are the rainbow controls**: Rate compresses or expands the rainbow gradient. Offset slides it. Together they position any colour at any vertical position on screen.
 - **Mode 10 is computationally expensive**: The 9-colour palette matcher uses an 8-stage pipelined reduction tree. Mode 9 and 11 produce results faster but are delay-aligned. There is no visual difference in output timing — the alignment is handled internally.
 - **Saturation scales the GTIA output**: The saturation control operates after GTIA mode processing, not on the original input. Desaturating to 0% makes all modes monochrome. Boosting saturation intensifies the palette colours.
 - **Artifact mode needs DLI**: Artifact fringing simulates NTSC colour encoding artefacts at hue transitions. Without DLI or rapid hue changes, there are no transitions to fringe. Enable DLI for the most visible artifact effect.
@@ -368,6 +386,7 @@ These exercises progress from basic single-mode rendering to full DLI rainbow co
 | **PAL** | Phase Alternating Line; the analog colour television standard used in Europe and Australia, with slightly shifted hue points compared to NTSC. |
 | **Phase accumulator** | A digital counter that increments by a fixed step each cycle and wraps at overflow, generating a repeating ramp waveform used for DLI hue cycling. |
 | **Quantization** | The process of mapping a continuous range of values to a finite set of discrete levels; in Mode 9, input luminance is quantized to 16 levels. |
-| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

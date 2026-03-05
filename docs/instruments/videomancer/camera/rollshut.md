@@ -68,6 +68,14 @@ Rollshut is in the **Camera** category — a family of effects that recreate len
 
 ---
 
+## Quick Start
+
+1. **Subtle is realistic**: Roll Depth 20–35% with moderate Wobble produces convincingly natural CMOS rolling-shutter artifacts.
+2. **Vertical lines reveal skew**: Feed content with strong verticals to make the effect clearly visible.
+3. **Blur for realism**: Enable Blur to soften displacement edges — real rolling shutters produce motion blur, not hard cuts.
+
+---
+
 ## Background
 
 ### What Is Rolling Shutter?
@@ -90,6 +98,8 @@ When Blur mode is enabled, each output pixel is the average of the current (undi
 ---
 
 ## Signal Flow
+
+Position Counters → Offset Computation → Line Buffer → Post-Processing → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -145,7 +155,7 @@ The offset computation is the heart of the effect. The vertical position is norm
 | Default | 50% |
 | Suffix | % |
 
-Controls the maximum displacement depth across the frame. At minimum, no scanlines are displaced — the image appears normal. At maximum, the bottom (or top) of the frame is displaced by 63 pixels horizontally, producing extreme skewing. This is the primary "intensity" control for the rolling-shutter effect. Moderate settings (25–50%) produce the natural-looking wobble typical of smartphone video.
+At minimum, no scanlines are displaced — the image appears normal. At maximum, the bottom (or top) of the frame is displaced by 63 pixels horizontally, producing extreme skewing. This is the primary "intensity" control for the rolling-shutter effect. Moderate settings (25–50%) produce the natural-looking wobble typical of smartphone video. Internally, controls the maximum displacement depth across the frame.
 
 ---
 
@@ -156,7 +166,7 @@ Controls the maximum displacement depth across the frame. At minimum, no scanlin
 | Default | 50% |
 | Suffix | % |
 
-Controls the skew rate — the slope of the displacement gradient from top to bottom (or bottom to top). At minimum, all scanlines share the same offset (uniform horizontal shift). At maximum, the displacement changes steeply with vertical position, producing extreme diagonal lean. Combined with the Direction toggle, this shapes whether the skew appears as a forward or backward lean.
+At minimum, all scanlines share the same offset (uniform horizontal shift). At maximum, the displacement changes steeply with vertical position, producing extreme diagonal lean. Combined with the Direction toggle, this shapes whether the skew appears as a forward or backward lean. Internally, controls the skew rate — the slope of the displacement gradient from top to bottom (or bottom to top).
 
 ---
 
@@ -167,7 +177,7 @@ Controls the skew rate — the slope of the displacement gradient from top to bo
 | Default | 0% |
 | Suffix | % |
 
-Controls the amplitude of the sinusoidal wobble modulation. At zero, the skew is steady (no temporal variation). Increasing Wobble adds progressively more frame-to-frame oscillation to the offset, producing the trembling, vibrating quality of real handheld rolling-shutter footage. At maximum, the wobble can swing the displacement through its full range.
+At zero, the skew is steady (no temporal variation). Increasing Wobble adds progressively more frame-to-frame oscillation to the offset, producing the trembling, vibrating quality of real handheld rolling-shutter footage. At maximum, the wobble can swing the displacement through its full range. Internally, controls the amplitude of the sinusoidal wobble modulation.
 
 ---
 
@@ -200,7 +210,7 @@ Adds a DC brightness offset to the output signal. At 50%, no shift. Above center
 | Default | 100% |
 | Suffix | % |
 
-Controls the fade amount — an interpolator blend between the displaced (processed) signal and the original input. At maximum, the full displaced signal is output. At minimum, the original input is output unmodified. This functions as a wet/dry mix applied via the hardware interpolator.
+At maximum, the full displaced signal is output. At minimum, the original input is output unmodified. This functions as a wet/dry mix applied via the hardware interpolator. Internally, controls the fade amount — an interpolator blend between the displaced (processed) signal and the original input.
 
 ---
 
@@ -229,6 +239,21 @@ Switches 7–11 control skew direction, motion blur, frame freeze, luminance inv
 
 The fader serves as the primary wet/dry mix. At 100%, the full rolling-shutter processed output is delivered. Lowering the fader smoothly blends back toward the unprocessed input via the hardware interpolator.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Roll Shutter processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +275,7 @@ These exercises explore linear skew, wobble animation, and the blur setting for 
 *Linear Skew (Static) — simulated result across source images.*
 **Source**: Camera input with strong vertical lines (window blinds, columns, bookshelves) — verticals make skew clearly visible.
 
-**Objective**: Produce a clean, static rolling-shutter lean without wobble.
+**What You'll Create**: Produce a clean, static rolling-shutter lean without wobble.
 
 1. **No wobble**: Set Wobble to 0%. The displacement will be purely linear.
 2. **Roll Depth**: Increase Roll Depth to ~50%. Vertical edges begin to lean diagonally.
@@ -278,7 +303,7 @@ These exercises explore linear skew, wobble animation, and the blur setting for 
 *Jello Wobble — simulated result across source images.*
 **Source**: Handheld or slightly shaky camera feed — imperfect motion enhances the realism.
 
-**Objective**: Recreate the characteristic "jello" wobble of handheld CMOS footage.
+**What You'll Create**: Recreate the characteristic "jello" wobble of handheld CMOS footage.
 
 1. **Enable wobble**: Set Wobble to ~40%. The frame begins to oscillate.
 2. **Roll Depth**: Set Roll Depth to ~35%. Moderate displacement keeps the effect believable.
@@ -306,7 +331,7 @@ These exercises explore linear skew, wobble animation, and the blur setting for 
 *Extreme Distortion — simulated result across source images.*
 **Source**: High-contrast graphic content or text — makes distortion clearly visible.
 
-**Objective**: Push the rolling-shutter simulation to its limits for creative distortion effects.
+**What You'll Create**: Push the rolling-shutter simulation to its limits for creative distortion effects.
 
 1. **Maximum depth**: Set Roll Depth to 100%. Scanlines at the edge of the frame are displaced by the full 63-pixel buffer depth.
 2. **Maximum skew**: Set Skew Rate to 100%. The displacement gradient is at its steepest.
@@ -322,9 +347,6 @@ These exercises explore linear skew, wobble animation, and the blur setting for 
 
 ## Tips
 
-- **Subtle is realistic**: Roll Depth 20–35% with moderate Wobble produces convincingly natural CMOS rolling-shutter artifacts.
-- **Vertical lines reveal skew**: Feed content with strong verticals to make the effect clearly visible.
-- **Blur for realism**: Enable Blur to soften displacement edges — real rolling shutters produce motion blur, not hard cuts.
 - **Freeze for static composition**: Freeze locks the wobble phase, allowing you to dial in a specific tilt angle.
 - **Chain with kinescope**: Rollshut followed by Kinescope creates a convincing lo-fi camera simulation.
 - **Direction matters**: Down mode simulates top-to-bottom readout (most common in real cameras); Up mode simulates bottom-to-top.
@@ -339,12 +361,12 @@ These exercises explore linear skew, wobble animation, and the blur setting for 
 | **Circular Buffer** | A fixed-size memory region where the write pointer wraps around to the beginning when it reaches the end, providing a sliding window of recent samples. |
 | **CMOS** | Complementary Metal-Oxide-Semiconductor; the sensor technology that produces rolling-shutter artifacts through row-sequential readout. |
 | **Distributed RAM** | Small RAM blocks implemented using FPGA logic cells rather than dedicated Block RAM, efficient for shallow buffers like the 64-entry line store. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Global Shutter** | A sensor readout mode where all rows are captured simultaneously, eliminating rolling-shutter skew and wobble. |
 | **Manhattan Distance** | Absolute-difference distance metric; not used in Rollshut but related to the general family of scanline-offset techniques. |
 | **Rolling Shutter** | A sensor readout mode where each row is captured at a slightly different time, causing motion-dependent skew and wobble. |
 | **Scanline Displacement** | Shifting a horizontal row of pixels left or right by a computed offset, the core mechanism of the rolling-shutter simulation. |
 | **Sine Wobble** | A sinusoidal modulation applied to the displacement offset over time, simulating camera vibration. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

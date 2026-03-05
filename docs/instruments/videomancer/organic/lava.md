@@ -35,6 +35,14 @@ Eight curated palettes provide distinct visual identities, from the warm reds an
 
 ---
 
+## Quick Start
+
+1. **Threshold and Blob Size are complementary**: Increasing Blob Size makes the field stronger (blobs appear larger). Increasing Threshold makes the cutoff higher (blobs appear smaller). Find the balance where blobs are large enough to merge but small enough to separate.
+2. **Edge Glow creates depth**: Even a small amount of edge glow dramatically improves the three-dimensional appearance of the blobs. The bright rim mimics the translucent wax edge in real lava lamps.
+3. **Teardrop mode for realism**: Real lava lamp wax elongates as it rises due to drag and thermal gradients. Teardrop mode recreates this by halving the vertical distance in the field calculation.
+
+---
+
 ## Background
 
 ### What Are Metaballs?
@@ -229,6 +237,21 @@ The five toggles provide independent binary controls. Background selects between
 
 Wet/dry crossfade between the delayed input video and the rendered metaball output. At 0% (fully down), the output is pure input video. At 100% (fully up), the output is pure Lava synthesis. Intermediate positions blend the metaball animation over the input at variable opacity, useful for superimposing organic blob shapes over live footage as a visual overlay.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Lava processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -239,7 +262,7 @@ These exercises progress from basic blob observation through palette exploration
 
 <img src={lava_exercise1_result} alt="Classic Lava Lamp result"/>
 *Classic Lava Lamp — simulated result across source images.*
-**Objective**: Recreate the classic lava lamp aesthetic with warm colors, slow motion, and organic merging.
+**What You'll Create**: Recreate the classic lava lamp aesthetic with warm colors, slow motion, and organic merging.
 
 1. **Classic Red palette**: Set Palette to position 0 (Classic Red). Deep red blobs with orange edges.
 2. **Moderate blob size**: Set Blob Size to ~55%. Large enough to merge occasionally.
@@ -258,7 +281,7 @@ These exercises progress from basic blob observation through palette exploration
 
 <img src={lava_exercise2_result} alt="Psychedelic Rainbow Blobs result"/>
 *Psychedelic Rainbow Blobs — simulated result across source images.*
-**Objective**: Explore the psychedelic palette with rainbow cycling and teardrop shapes.
+**What You'll Create**: Explore the psychedelic palette with rainbow cycling and teardrop shapes.
 
 1. **Psychedelic palette**: Set Palette to position 7 (maximum). Chrominance cycles through the hue wheel.
 2. **Teardrop shape**: Switch Blob Shape to Tear. Blobs elongate vertically.
@@ -277,7 +300,7 @@ These exercises progress from basic blob observation through palette exploration
 
 <img src={lava_exercise3_result} alt="Video Fill Windows result"/>
 *Video Fill Windows — simulated result across source images.*
-**Objective**: Use metaball shapes as animated windows into the input video signal.
+**What You'll Create**: Use metaball shapes as animated windows into the input video signal.
 
 1. **Enable video fill**: Switch Video Fill to On. Blob interiors now show input video.
 2. **Cosmic Blue palette**: Set Palette to position 1. Blue edge glow frames the video windows.
@@ -295,9 +318,6 @@ These exercises progress from basic blob observation through palette exploration
 
 ## Tips
 
-- **Threshold and Blob Size are complementary**: Increasing Blob Size makes the field stronger (blobs appear larger). Increasing Threshold makes the cutoff higher (blobs appear smaller). Find the balance where blobs are large enough to merge but small enough to separate.
-- **Edge Glow creates depth**: Even a small amount of edge glow dramatically improves the three-dimensional appearance of the blobs. The bright rim mimics the translucent wax edge in real lava lamps.
-- **Teardrop mode for realism**: Real lava lamp wax elongates as it rises due to drag and thermal gradients. Teardrop mode recreates this by halving the vertical distance in the field calculation.
 - **Psychedelic palette evolves over time**: Palette 7 continuously cycles its hue phase — the rainbow pattern will never repeat at exactly the same point. Allow at least 60 seconds to observe the full chromatic evolution.
 - **Freeze for composition**: Use Freeze to lock an interesting blob arrangement, then adjust Threshold, Edge Glow, or Palette to refine the static composition.
 - **Video Fill creates organic mattes**: With Video Fill active, the metaball shapes become animated transparency windows into the input signal — useful for compositing applications.
@@ -319,6 +339,7 @@ These exercises progress from basic blob observation through palette exploration
 | **Scalar field** | A function that assigns a single numerical value to every point in space; in Lava, the sum of 1/distance² contributions from all active blobs. |
 | **Sine LUT** | A lookup table storing quarter-wave sine values; the full sine function is reconstructed via quadrant logic, providing smooth oscillation for blob motion. |
 | **Thermal convection** | The physical process where heated fluid rises and cooled fluid sinks, creating circulation patterns; the motion model that Lava's blob animation simulates. |
-| **YUV** | A color model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

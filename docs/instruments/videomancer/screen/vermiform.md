@@ -35,6 +35,14 @@ At subtle settings with high canvas dim and a single worm, Vermiform produces a 
 
 ---
 
+## Quick Start
+
+1. **Start with one worm**: A single worm reveals the composition of the effect most clearly. Add more worms only after dialling in speed, turn rate, and dim settings.
+2. **Seed for composition**: Different seeds produce radically different trail patterns. Audition several seeds with low speed and high turn rate to find aesthetically interesting paths before performing live.
+3. **Reset % shapes the rhythm**: Low reset values create rapid, staccato reveal-reset cycles. High values produce slow, sweeping reveals with dramatic reset moments. Match the cycle length to the tempo of your content.
+
+---
+
 ## Background
 
 ### Screensaver Culture and Generative Art
@@ -61,6 +69,8 @@ The canvas is a 1-bit-per-cell BRAM array, where each bit records whether a worm
 ---
 
 ## Signal Flow
+
+Worm Update → Canvas Read → Invert → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -117,7 +127,7 @@ The cell size toggle directly affects the visual granularity of the reveal. Fine
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the forward movement speed of each worm in pixels per frame. At zero, worms are nearly stationary, creeping forward at one pixel per frame. As Speed increases, worms cover more ground each frame, reaching up to eight pixels per step at maximum. Higher speeds mean the canvas fills more quickly and the reveal cycle is shorter. The visual character changes too — slow worms leave tightly packed, detailed trails with visible curvature, while fast worms create broader, more sweeping arcs that skip over intermediate cells.
+At zero, worms are nearly stationary, creeping forward at one pixel per frame. As Speed increases, worms cover more ground each frame, reaching up to eight pixels per step at maximum. Higher speeds mean the canvas fills more quickly and the reveal cycle is shorter. The visual character changes too — slow worms leave tightly packed, detailed trails with visible curvature, while fast worms create broader, more sweeping arcs that skip over intermediate cells. Internally, controls the forward movement speed of each worm in pixels per frame.
 
 ---
 
@@ -128,7 +138,7 @@ Controls the forward movement speed of each worm in pixels per frame. At zero, w
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the maximum steering perturbation applied to each worm's heading per frame. At zero, worms travel in nearly straight lines with minimal deviation — the LFSR steering signal is scaled to near-zero amplitude. As Turn Rate increases, the heading change per frame grows, producing tighter curves and more erratic paths. At maximum, worms can reverse direction within a few frames, creating dense, tangled trail patterns. The steering is always smooth because it modifies the heading angle incrementally rather than choosing random directions.
+At zero, worms travel in nearly straight lines with minimal deviation — the LFSR steering signal is scaled to near-zero amplitude. As Turn Rate increases, the heading change per frame grows, producing tighter curves and more erratic paths. At maximum, worms can reverse direction within a few frames, creating dense, tangled trail patterns. The steering is always smooth because it modifies the heading angle incrementally rather than choosing random directions. Internally, controls the maximum steering perturbation applied to each worm's heading per frame.
 
 ---
 
@@ -159,7 +169,7 @@ Loads a different initial state into the 16-bit LFSR, producing an entirely diff
 | Default | 92.9% |
 | Suffix | % |
 
-Controls the brightness of unpainted canvas areas. At zero, unpainted regions pass the input video at full brightness — there is no dimming distinction between painted and unpainted cells, effectively making the canvas invisible. As Cvs Dim increases, unpainted areas become progressively darker. At maximum, unpainted regions are completely black, creating the classic screensaver look where only worm trails reveal the underlying video. At high dim values, the chroma channels of unpainted regions are also forced to neutral gray, preventing colour bleeding from fully dimmed areas.
+At zero, unpainted regions pass the input video at full brightness — there is no dimming distinction between painted and unpainted cells, effectively making the canvas invisible. As Cvs Dim increases, unpainted areas become progressively darker. At maximum, unpainted regions are completely black, creating the classic screensaver look where only worm trails reveal the underlying video. At high dim values, the chroma channels of unpainted regions are also forced to neutral gray, preventing colour bleeding from fully dimmed areas. Internally, controls the brightness of unpainted canvas areas.
 
 ---
 
@@ -199,6 +209,10 @@ The five toggles configure worm behaviour, visual presentation, and rendering op
 
 Crossfade between the dry (original) and wet (worm reveal) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full canvas reveal effect with dimming, worm heads, and inversion. Intermediate values blend the reveal effect over the original video, creating a translucent overlay where dimmed regions are partially visible rather than fully dark.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -209,7 +223,7 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 
 <img src={vermiform_exercise1_result} alt="Solitary Explorer result"/>
 *Solitary Explorer — simulated result across source images.*
-**Objective**: Create a meditative single-worm reveal that gradually exposes the source image through a wandering trail.
+**What You'll Create**: Create a meditative single-worm reveal that gradually exposes the source image through a wandering trail.
 
 1. **Single slow worm**: Set Worms to 1, Speed to ~25%. A single worm begins its slow crawl across the frame.
 2. **Full dimming**: Push Cvs Dim to ~95%. Unpainted areas go nearly black — the video is only visible where the worm has passed.
@@ -225,7 +239,7 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 
 <img src={vermiform_exercise2_result} alt="Chaotic Swarm result"/>
 *Chaotic Swarm — simulated result across source images.*
-**Objective**: Use four fast worms with high turn rate to create a rapidly cycling reveal with dense, tangled trails.
+**What You'll Create**: Use four fast worms with high turn rate to create a rapidly cycling reveal with dense, tangled trails.
 
 1. **Maximum worms**: Set Worms to 4. Four worms begin exploring from different quadrants.
 2. **High speed and turn**: Speed to ~80%, Turn Rate to ~85%. Worms move quickly with tight, erratic curves.
@@ -242,7 +256,7 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 
 <img src={vermiform_exercise3_result} alt="Negative Reveal result"/>
 *Negative Reveal — simulated result across source images.*
-**Objective**: Use inverted canvas mode to create a reverse reveal where worm trails darken the image rather than exposing it.
+**What You'll Create**: Use inverted canvas mode to create a reverse reveal where worm trails darken the image rather than exposing it.
 
 1. **Enable invert**: Toggle Invert to Invert. Now painted cells are dimmed and unpainted cells show the video.
 2. **Two worms**: Set Worms to 2 for a balanced composition.
@@ -259,9 +273,6 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 
 ## Tips
 
-- **Start with one worm**: A single worm reveals the composition of the effect most clearly. Add more worms only after dialling in speed, turn rate, and dim settings.
-- **Seed for composition**: Different seeds produce radically different trail patterns. Audition several seeds with low speed and high turn rate to find aesthetically interesting paths before performing live.
-- **Reset % shapes the rhythm**: Low reset values create rapid, staccato reveal-reset cycles. High values produce slow, sweeping reveals with dramatic reset moments. Match the cycle length to the tempo of your content.
 - **Coarse cells for abstraction**: Coarse cell size turns the reveal into a mosaic-like grid pattern. Combined with moderate dim, this creates a digital tile-reveal aesthetic that works well with geometric source material.
 - **Invert for erasure performances**: Use Invert mode with a bright source to create a "drawing with darkness" effect — the worms erase the image rather than revealing it.
 - **Turn Rate defines personality**: Low turn rate creates long, sweeping arcs like a gliding bird. High turn rate creates tight, tangled knots like an insect. Mid-range values produce the most organic, lifelike worm trails.
@@ -275,7 +286,6 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 | Term | Definition |
 |------|------------|
 | **After Dark** | A popular Macintosh/Windows screensaver program (1989) by Berkeley Systems, featuring modules like "Worms" and "Flying Toasters" that became cultural icons of early personal computing. |
-| **BRAM** | Block RAM; dedicated FPGA memory used here as the 1-bit canvas storing trail coverage. |
 | **Canvas** | The persistent 1-bit-per-cell array recording which cells have been visited by worm agents. |
 | **Coverage Counter** | A 14-bit accumulator tracking the number of painted canvas cells, used to trigger canvas reset. |
 | **Heading** | An 8-bit angle (0–255 mapping to 0°–360°) defining each worm's current direction of travel. |
@@ -283,6 +293,7 @@ These exercises progress from a single-worm minimal reveal to a complex multi-wo
 | **Quarter-Wave LUT** | A lookup table storing only 0°–90° of a sine wave, deriving the remaining quadrants through symmetry to save BRAM. |
 | **Random Walk** | A mathematical path consisting of successive random steps; Vermiform uses a persistent variant with correlated heading changes. |
 | **VBlank** | Vertical blanking interval; the non-visible portion of each video frame during which worm positions are updated. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

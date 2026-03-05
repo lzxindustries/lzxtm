@@ -68,6 +68,14 @@ At moderate settings, Pinwheel acts as a precise hue rotator and color corrector
 
 ---
 
+## Quick Start
+
+1. **Colorize is the key to rainbow mapping**: Without Colorize, Pinwheel rotates existing colors and the output depends on the source chrominance. With Colorize, it maps brightness to color from scratch — the output is entirely determined by the luminance structure and the Hue/Luma to Hue controls.
+2. **Brightness and Gain control output Y only**: Brightness and Luma Gain adjust the output luminance level and contrast independently of the hue rotation mapping. The hue rotation angle is driven by a separate proc amp (Luma to Hue and Hue knobs).
+3. **AND vs. XOR is the biggest toggle**: fundamentally changes the character of all bit-crushing. AND is structured. XOR is chaotic. It's the difference between posterization and glitch art.
+
+---
+
 ## Background
 
 ### What Is Hue Rotation?
@@ -94,6 +102,8 @@ Bit-crushing applies a binary mask to the output values using AND or XOR operati
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -217,6 +227,10 @@ The five toggle switches control independent binary processing options. Colorize
 
 UV channel bit-crushing depth. Independent of Posterize (Knob 5), which crushes the Y channel. The crushing mode (AND or XOR) follows Switch 10. At 100%, no crushing — full color resolution. As you lower the fader, color values are progressively masked. In AND mode, this produces smooth color quantization. In XOR mode, this produces psychedelic color scrambling. You can crush color while leaving brightness intact (high Posterize, low Chroma Crush) or vice versa.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -238,7 +252,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 *Luminance Rainbow — simulated result across source images.*
 **Source**: Footage with a wide range of brightness — landscapes, portraits, or gradient test patterns.
 
-**Objective**: Learn luminance-to-color mapping and understand how brightness becomes color.
+**What You'll Create**: Learn luminance-to-color mapping and understand how brightness becomes color.
 
 1. **Colorize**: Enable the Colorize toggle (Switch 7). The input chrominance is replaced with neutral — the image is now effectively grayscale.
 2. **Activate modulation**: Slowly increase Luma to Hue (Knob 4) from center toward maximum. Watch the monochrome image develop into a rainbow as different brightness levels map to different hue angles.
@@ -265,7 +279,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 *Color Corrector to Glitch Machine — simulated result across source images.*
 **Source**: Colorful footage — flowers, fruit, painted surfaces, or video art.
 
-**Objective**: Experience the full range from subtle color correction to extreme glitch texture.
+**What You'll Create**: Experience the full range from subtle color correction to extreme glitch texture.
 
 1. **Subtle correction**: Start with a small hue rotation (Knob 1 near center). Observe gentle shifts in the color palette — this is Pinwheel as a color corrector.
 2. **Add gain**: Increase Luma Gain (Knob 6). The brightness range stretches, boosting output contrast.
@@ -293,7 +307,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 *Psychedelic Colorizer — simulated result across source images.*
 **Source**: Any footage — the more varied, the more interesting.
 
-**Objective**: Combine all capabilities into a maximally expressive color processor.
+**What You'll Create**: Combine all capabilities into a maximally expressive color processor.
 
 1. **Foundation**: Enable Colorize. Set Luma to Hue to ~80%, Hue to ~60%.
 2. **Intensity**: Boost Saturation to ~70–80%. Increase Luma Gain.
@@ -309,9 +323,6 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 
 ## Tips
 
-- **Colorize is the key to rainbow mapping**: Without Colorize, Pinwheel rotates existing colors and the output depends on the source chrominance. With Colorize, it maps brightness to color from scratch — the output is entirely determined by the luminance structure and the Hue/Luma to Hue controls.
-- **Brightness and Gain control output Y only**: Brightness and Luma Gain adjust the output luminance level and contrast independently of the hue rotation mapping. The hue rotation angle is driven by a separate proc amp (Luma to Hue and Hue knobs).
-- **AND vs. XOR is the biggest toggle**: fundamentally changes the character of all bit-crushing. AND is structured. XOR is chaotic. It's the difference between posterization and glitch art.
 - **Independent Y and UV crushing**: Posterize crushes Y only. Chroma Crush crushes UV only. High Posterize with no Chroma Crush = quantized brightness with smooth color. No Posterize with low Chroma Crush = smooth brightness with quantized color. Both have distinct visual characters.
 - **Chroma Invert complements the palette**: Instantly flip every color to its complement without changing luminance or modulation depth. Useful for quickly exploring palette variations.
 - **Feedback loops with hue rotation**: Each feedback pass rotates hue further, creating cycling chromatic cascades that evolve over time.
@@ -335,6 +346,7 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 | **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel has two Y-channel proc amps: one drives hue rotation (via Luma to Hue and Hue), the other adjusts the output luminance (via Luma Gain and Brightness). |
 | **UV plane** | The two-dimensional chrominance space defined by the U and V axes, where angle represents hue and distance from center represents saturation. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used in Glitch crush mode to flip bits chaotically rather than zero them. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

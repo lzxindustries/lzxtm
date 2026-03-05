@@ -68,6 +68,14 @@ At subtle settings with high ink density and full mix, Dotmatrix produces a conv
 
 ---
 
+## Quick Start
+
+1. **Head type is the coarsest control**: Before adjusting anything else, choose the grid resolution. 24-Pin for detail, 9-Pin/Inkjet for balanced, Thermal for bold graphic impact.
+2. **Ink and ribbon stack**: Both controls affect dot darkness independently. Maximum contrast requires high Ink Density *and* high Ribbon. Use Ribbon alone to simulate wear without changing base ink color.
+3. **Draft mode halves density**: Draft skips every other column, creating a lighter, faster-looking print. Combine with high Dot Size to maintain tonal range despite the gaps.
+
+---
+
 ## Background
 
 ### Impact Printing and the Epson MX-80
@@ -94,6 +102,8 @@ Impact printers used a continuous loop of inked fabric ribbon. As the ribbon cyc
 ---
 
 ## Signal Flow
+
+Input Register → Grid Position → Dot Threshold Compare → Colour Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -159,7 +169,7 @@ The sweep reveal mechanism operates independently from the dot rendering pipelin
 | Default | 50% |
 | Suffix | % |
 
-Controls the speed of the horizontal print head sweep when Feed mode is active. At 0%, the sweep advances very slowly, revealing the image one narrow column at a time. At 100%, the sweep races across the frame in a few fields, producing rapid progressive disclosure. When Feed is off, the entire image is printed instantly regardless of this setting. The sweep is a DDS accumulator that advances by a scaled version of this register every frame, wrapping back to column zero and advancing one grid row each time it reaches the right edge of the screen.
+At 0%, the sweep advances very slowly, revealing the image one narrow column at a time. At 100%, the sweep races across the frame in a few fields, producing rapid progressive disclosure. When Feed is off, the entire image is printed instantly regardless of this setting. The sweep is a DDS accumulator that advances by a scaled version of this register every frame, wrapping back to column zero and advancing one grid row each time it reaches the right edge of the screen. Internally, controls the speed of the horizontal print head sweep when Feed mode is active.
 
 ---
 
@@ -170,7 +180,7 @@ Controls the speed of the horizontal print head sweep when Feed mode is active. 
 | Default | 50% |
 | Suffix | % |
 
-Sets the maximum dot radius within each grid cell. At 0%, dots are vanishingly small — the output is essentially blank paper. At 100%, dots can fill their entire cell, producing solid ink coverage in dark source areas. The actual dot size at any pixel is the minimum of this maximum and the inverse-luma-derived radius, so this control acts as a ceiling on dot density. Moderate settings (40–60%) produce the most visually interesting halftone textures where tonal variation is clearly visible as dot size variation.
+At 0%, dots are vanishingly small — the output is essentially blank paper. At 100%, dots can fill their entire cell, producing solid ink coverage in dark source areas. The actual dot size at any pixel is the minimum of this maximum and the inverse-luma-derived radius, so this control acts as a ceiling on dot density. Moderate settings (40–60%) produce the most visually interesting halftone textures where tonal variation is clearly visible as dot size variation. Internally, sets the maximum dot radius within each grid cell.
 
 ---
 
@@ -181,7 +191,7 @@ Sets the maximum dot radius within each grid cell. At 0%, dots are vanishingly s
 | Default | 50% |
 | Suffix | % |
 
-Controls the darkness of the ink. At 0%, ink is nearly transparent — dots are barely visible against the paper background. At 100%, ink is solid black. The VHDL computes ink luma as `(1023 - ink_dens) >> 1`, so this is a direct brightness control for the dot color. High ink density with low ribbon fade produces the dense, saturated marks of a fresh ribbon; low ink density simulates faded or diluted ink.
+At 0%, ink is nearly transparent — dots are barely visible against the paper background. At 100%, ink is solid black. The VHDL computes ink luma as `(1023 - ink_dens) >> 1`, so this is a direct brightness control for the dot color. High ink density with low ribbon fade produces the dense, saturated marks of a fresh ribbon; low ink density simulates faded or diluted ink. Internally, controls the darkness of the ink.
 
 ---
 
@@ -214,7 +224,7 @@ Adds pseudo-random perturbation to the dot radius on a per-pixel basis. The LFSR
 | Default | 0° |
 | Suffix | ° |
 
-Selects the paper background color by cycling through four tint zones. At 0° (register 0), paper is pure white (Y=940, neutral chroma). From 90° to 180°, paper takes on a green tint simulating recycled or colored stock. Above 180° to 270°, paper shifts to a cool blue-white tone. Above 270°, paper becomes warm cream-yellow, simulating aged or thermal paper. The tinting is applied to all three YUV channels of the paper color, so the background has both brightness and chroma variation.
+At 0° (register 0), paper is pure white (Y=940, neutral chroma). From 90° to 180°, paper takes on a green tint simulating recycled or colored stock. Above 180° to 270°, paper shifts to a cool blue-white tone. Above 270°, paper becomes warm cream-yellow, simulating aged or thermal paper. The tinting is applied to all three YUV channels of the paper color, so the background has both brightness and chroma variation. Internally, selects the paper background color by cycling through four tint zones.
 
 ---
 
@@ -222,7 +232,7 @@ Selects the paper background color by cycling through four tint zones. At 0° (r
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Head** | 9-Pin | 24-Pin |
+| **7 — Head** | 9-Pin | Inkjet |
 | **8 — Dir** | Uni | Bidi |
 | **9 — Draft** | Off | On |
 | **10 — Feed** | Off | On |
@@ -241,7 +251,19 @@ The five toggle switches form a mixed-function group. Toggle 7 selects the print
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the original video (dry) and the dot-matrix processed output (wet). At 0%, the output is pure unprocessed video. At 100%, the output is fully processed halftone. Intermediate values blend the two, which can produce interesting semi-transparent overlay effects where the halftone pattern is visible but the original image shows through — similar to printing on translucent vellum or acetate.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Dotmatrix-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -264,7 +286,7 @@ These exercises progress from basic halftone rendering to animated print simulat
 *Classic Halftone — simulated result across source images.*
 **Source**: A portrait or still image with a wide range of tones from deep shadows to bright highlights.
 
-**Objective**: Learn how inverse-luma dot sizing creates a halftone rendering and how grid resolution affects the result.
+**What You'll Create**: Learn how inverse-luma dot sizing creates a halftone rendering and how grid resolution affects the result.
 
 1. **Initialize**: Set all controls to default positions. Feed off, bypass off, mix at 100%.
 2. **Basic halftone**: Increase Dot Size to about 60%. Dark areas fill with large dots, bright areas remain mostly paper. This is the fundamental halftone effect.
@@ -291,7 +313,7 @@ These exercises progress from basic halftone rendering to animated print simulat
 *Bidirectional Sweep Animation — simulated result across source images.*
 **Source**: A slowly moving video feed or a static image with strong horizontal structure.
 
-**Objective**: Explore the sweep reveal and bidirectional printing animation.
+**What You'll Create**: Explore the sweep reveal and bidirectional printing animation.
 
 1. **Enable feed**: Turn Feed on. Set Print Speed to about 30%. The image begins to reveal from the top-left, one column at a time as the virtual head sweeps across.
 2. **Watch the sweep**: The head sweeps left-to-right, then jumps back to start a new row. The image builds up progressively like a real printer scanning across paper.
@@ -318,7 +340,7 @@ These exercises progress from basic halftone rendering to animated print simulat
 *Textured Print Artifacts — simulated result across source images.*
 **Source**: High-contrast footage with sharp edges — text overlays, graphic patterns, or architectural subjects.
 
-**Objective**: Combine jitter, draft mode, and ribbon fade to create rich print-like textures.
+**What You'll Create**: Combine jitter, draft mode, and ribbon fade to create rich print-like textures.
 
 1. **High jitter**: Set Jitter to about 70%. Dot edges become ragged and irregular, breaking up the clean diamond shapes into rough, organic marks.
 2. **Draft gaps**: Enable Draft mode. The combination of jitter and draft skipping creates a loose, stippled texture.
@@ -334,9 +356,6 @@ These exercises progress from basic halftone rendering to animated print simulat
 
 ## Tips
 
-- **Head type is the coarsest control**: Before adjusting anything else, choose the grid resolution. 24-Pin for detail, 9-Pin/Inkjet for balanced, Thermal for bold graphic impact.
-- **Ink and ribbon stack**: Both controls affect dot darkness independently. Maximum contrast requires high Ink Density *and* high Ribbon. Use Ribbon alone to simulate wear without changing base ink color.
-- **Draft mode halves density**: Draft skips every other column, creating a lighter, faster-looking print. Combine with high Dot Size to maintain tonal range despite the gaps.
 - **Feed creates animation**: The sweep reveal is the program's most distinctive temporal effect. Slow print speeds create dramatic progressive disclosure; fast speeds quickly fill the frame.
 - **Jitter has a threshold**: The jitter effect activates abruptly when the control exceeds 25%. Below that, dots are geometrically perfect. Use zero jitter for clean halftone, moderate jitter for organic texture.
 - **Paper Hue for era styling**: White paper = modern laser print. Warm cream = continuous-feed tractor paper. Green tint = vintage greenbar paper. Cool blue = blueprint stock.
@@ -354,8 +373,8 @@ These exercises progress from basic halftone rendering to animated print simulat
 | **Halftone** | A reprographic technique that simulates continuous tone through dots of varying size arranged on a regular grid. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that produces deterministic noise sequences used for dot jitter. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|dx| + |dy|), producing diamond-shaped distance contours rather than circles. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Ribbon Fade** | The gradual depletion of ink from a printer ribbon with use, producing progressively lighter dot impacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

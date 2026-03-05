@@ -70,6 +70,14 @@ The name refers to cellulose nitrate, the highly flammable film stock used in th
 
 ---
 
+## Quick Start
+
+1. **Set Desat In to Mono for authentic results**: Real film tinting and toning worked on black-and-white prints. Desaturating the input first gives the most historically accurate colorization.
+2. **Use Tone Amt at 0% for isolated tinting**: Since Mode A "Tint" actually yields the combined blend, zero out the tone intensity to hear only the tint color.
+3. **Flicker at low values for subtlety**: Even 10–15% flicker adds barely-perceptible frame-to-frame brightness variation that reads as "aged" without being distracting.
+
+---
+
 ## Background
 
 ### Film Tinting
@@ -96,6 +104,8 @@ Early projection equipment used carbon arc lamps that produced slightly differen
 ---
 
 ## Signal Flow
+
+Desaturation → Tint + Tone Colorize → Mode Blend → Flicker Gate
 
 ```
 Input Video (YUV 4:4:4)
@@ -239,6 +249,10 @@ Toggles 7 and 8 form a mode selector with three reachable states: combined duoto
 
 Wet/dry crossfade between the original input (delayed to match the 8-clock pipeline latency) and the colorized output. At 0% (value 0), the output is the dry, unprocessed signal. At 100% (value 1023), the output is fully colorized. This is the only means of bypassing the effect, since the Bypass toggle is non-functional.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -260,7 +274,7 @@ These exercises progress from basic single-color tinting through duotone process
 *Sepia Tinting — simulated result across source images.*
 **Source**: A black-and-white or desaturated video source — monochrome camera feed, or any footage with the Desat In toggle set to Mono.
 
-**Objective**: Learn how tinting adds color proportional to luminance, coloring highlights while leaving shadows dark.
+**What You'll Create**: Learn how tinting adds color proportional to luminance, coloring highlights while leaving shadows dark.
 
 1. Set Desat In to Mono to work with a black-and-white base. Set Mode A to Tint, Mode B to Combined.
 2. Set Tint Hue to 0% (sepia/amber sector). Set Tint Amt to ~75%.
@@ -287,7 +301,7 @@ These exercises progress from basic single-color tinting through duotone process
 *Duotone Tint and Tone — simulated result across source images.*
 **Source**: Video with a full tonal range — portraits, architectural interiors, or dramatic lighting.
 
-**Objective**: Combine tint (highlight color) and tone (shadow color) to create a duotone colorization.
+**What You'll Create**: Combine tint (highlight color) and tone (shadow color) to create a duotone colorization.
 
 1. Set Desat In to Mono. Mode A to Tint, Mode B to Combined.
 2. Set Tint Hue to ~0% (sepia) and Tone Hue to ~33% (blue sector). Set both Tint Amt and Tone Amt to ~75%.
@@ -314,7 +328,7 @@ These exercises progress from basic single-color tinting through duotone process
 *Stencil Coloring with Flicker — simulated result across source images.*
 **Source**: High-contrast footage with distinct shadow and highlight regions — stage lighting, candle-lit scenes, or strong backlight.
 
-**Objective**: Use stencil mode to assign different colors to luminance zones, then add per-frame flicker for a vintage projection effect.
+**What You'll Create**: Use stencil mode to assign different colors to luminance zones, then add per-frame flicker for a vintage projection effect.
 
 1. Set Mode B to Stencil. Set Tint Hue to ~0% (sepia) and Tone Hue to ~50% (cyan). Both amounts to ~75%.
 2. Adjust Stencil to ~50%. Observe four distinct color zones: deep shadows (cyan tone), lighter shadows (attenuated cyan), midtones (attenuated sepia), highlights (sepia).
@@ -330,9 +344,6 @@ These exercises progress from basic single-color tinting through duotone process
 
 ## Tips
 
-- **Set Desat In to Mono for authentic results**: Real film tinting and toning worked on black-and-white prints. Desaturating the input first gives the most historically accurate colorization.
-- **Use Tone Amt at 0% for isolated tinting**: Since Mode A "Tint" actually yields the combined blend, zero out the tone intensity to hear only the tint color.
-- **Flicker at low values for subtlety**: Even 10–15% flicker adds barely-perceptible frame-to-frame brightness variation that reads as "aged" without being distracting.
 - **Stencil mode for multi-zone coloring**: The stencil classifier divides luminance into four zones. Pair contrasting tint and tone hues for the most dramatic zone separation.
 - **Bypass is non-functional**: Use the Mix fader (set to 0%) to bypass the effect. The Bypass toggle does nothing.
 - **Hue sectors are hard-edged**: There is no interpolation between the eight hue sectors. If you need a smooth color sweep, animate the pot value and accept the sector snaps.
@@ -353,6 +364,7 @@ These exercises progress from basic single-color tinting through duotone process
 | **Pathé Stencil** | A hand-cut stencil process developed by Pathé Frères for applying multiple colors to different zones within a single film frame. |
 | **Tinting** | Coloring the bright areas of a film print by dyeing the film base. Color is proportional to luminance. |
 | **Toning** | Coloring the dark areas of a film print by replacing silver with a metallic salt. Color is proportional to inverse luminance. |
-| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

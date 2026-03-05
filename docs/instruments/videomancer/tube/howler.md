@@ -68,6 +68,14 @@ At conservative settings — low zoom offset, moderate decay, gentle hue drift �
 
 ---
 
+## Quick Start
+
+1. **Decay is the master control**: Decay determines whether Howler adds a subtle trail or becomes a full recursive feedback engine. Start with Decay and adjust everything else relative to it.
+2. **Brightness is display-only**: Because brightness is applied after the BRAM write-back, it does not affect feedback behavior. You can push brightness to maximum for vivid output without changing the feedback loop dynamics.
+3. **Freeze is not bypass**: Toggle 11 stops BRAM writes but the read path and entire processing pipeline remain active. The frozen pattern continues to decay and hue-shift. There is no bypass mux in Howler.
+
+---
+
 ## Background
 
 ### The Howl-Round Technique
@@ -94,6 +102,8 @@ When the Self-Excite toggle is enabled, the input injection source switches from
 ---
 
 ## Signal Flow
+
+Input Selection → BRAM Feedback Loop → Interpolator Mix → Sync / Data Delay → Output Assignment
 
 ```
 Input Video (YUV 4:4:4)
@@ -230,6 +240,10 @@ The five toggles control independent binary options with no combined mode select
 
 Controls the wet/dry crossfade between the delayed input signal and the feedback pipeline output via three `interpolator_u` instances (one per Y/U/V channel). At 0% the output matches the delayed input and no feedback is visible. At 100% the output is fully the feedback pipeline signal. Note that there is no bypass mux in Howler — even when Mix is at 0%, the feedback loop continues running internally; only the output blend changes.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -251,7 +265,7 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 *Basic Feedback Echo — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with slow, deliberate motion — a hand moving across frame, or a slowly rotating object.
 
-**Objective**: Understand the basic feedback loop: how decay and inject control the persistence and intensity of the trailing echo.
+**What You'll Create**: Understand the basic feedback loop: how decay and inject control the persistence and intensity of the trailing echo.
 
 1. **Visible trail**: With default settings, observe the subtle trailing behind moving objects. The feedback creates a fading echo of the input.
 2. **Increase decay**: Slowly turn Decay from 75% toward 100%. The trailing becomes longer and more persistent — old frames linger visibly behind the current input.
@@ -278,7 +292,7 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 *Tunnel and Bloom — simulated result across source images.*
 **Source**: High-contrast footage — bright shapes on a dark background, or a graphic pattern from another Videomancer program (e.g., Honeycomb or Checkers).
 
-**Objective**: Explore how zoom polarity creates tunneling and blooming effects, and how hue drift adds color evolution to the recursive structure.
+**What You'll Create**: Explore how zoom polarity creates tunneling and blooming effects, and how hue drift adds color evolution to the recursive structure.
 
 1. **Tunnel inward**: Set Zoom Polarity to Contract and Zoom to ~40%. With high Decay (~90%), the feedback pulls inward from the edges, creating a tunneling spiral that converges at the center of the screen.
 2. **Bloom outward**: Switch Zoom Polarity to Expand. The same settings now push the feedback outward — the image blooms from the center toward the edges.
@@ -305,7 +319,7 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 *Self-Exciting Psychedelia — simulated result across source images.*
 **Source**: No external source needed — Self-Excite provides the input.
 
-**Objective**: Generate fully autonomous feedback patterns using LFSR noise as the injection source, combining all parameters for maximum visual complexity.
+**What You'll Create**: Generate fully autonomous feedback patterns using LFSR noise as the injection source, combining all parameters for maximum visual complexity.
 
 1. **Enable Self-Excite**: Toggle Self-Excite On. The input switches from video to LFSR noise. With high Decay and moderate Inject, noise seeds begin accumulating into structured patterns.
 2. **Strong zoom**: Set Zoom to ~70% in Expand mode. The noise structures bloom outward, creating radial patterns that emerge from the center.
@@ -321,9 +335,6 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 ## Tips
 
-- **Decay is the master control**: Decay determines whether Howler adds a subtle trail or becomes a full recursive feedback engine. Start with Decay and adjust everything else relative to it.
-- **Brightness is display-only**: Because brightness is applied after the BRAM write-back, it does not affect feedback behavior. You can push brightness to maximum for vivid output without changing the feedback loop dynamics.
-- **Freeze is not bypass**: Toggle 11 stops BRAM writes but the read path and entire processing pipeline remain active. The frozen pattern continues to decay and hue-shift. There is no bypass mux in Howler.
 - **Self-Excite for autonomous patterns**: LFSR noise with high decay creates self-organizing structures without any external input. Pair with strong zoom and hue drift for maximum visual complexity.
 - **H Shift adds lateral motion**: Even modest H Shift values create continuous horizontal scrolling in the feedback. Combined with zoom, this produces spiral or helical motion paths.
 - **Feedback routing**: Connect Howler's output back to its own input externally for a double feedback loop. The internal loop provides spatial zoom; the external loop adds frame-scale recursion.
@@ -336,18 +347,15 @@ These exercises progress from gentle trailing effects to full self-exciting feed
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Howler uses three BRAMs (one per Y/U/V) as the persistent feedback canvas. |
 | **BT.601** | ITU-R Recommendation BT.601; the standard color matrix for YUV-to-RGB conversion in standard-definition video. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Decay** | The feedback persistence coefficient. Multiplies the BRAM readback by a factor between 0 (no persistence) and ~1.0 (indefinite persistence). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the feedback pipeline. |
 | **Givens rotation** | A 2D rotation applied to two components (here U and V) by a small-angle approximation: U' = U − Vk/512, V' = V + Uk/512. |
 | **Howl-round** | A visual feedback technique where a camera films its own output, first used by the BBC Radiophonic Workshop. |
 | **IIR** | Infinite Impulse Response; a feedback system where each output depends on both current input and previous outputs. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) used for the wet/dry output mix. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to seed the feedback loop in Self-Excite mode. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. Howler has a 7-clock pipeline plus 4-clock interpolators. |
 | **Soft clip** | Saturating arithmetic that clamps values to the valid range (0–1023) rather than wrapping on overflow. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At a fixed angle the program produces a static oblique projection — a picture-
 
 ---
 
+## Quick Start
+
+1. **Manual first, auto second**: Start in Manual mode to understand how the face geometry responds to angle before enabling continuous rotation. Once you see the geometry, auto mode makes sense.
+2. **Shade Depth is the lighting knob**: The most convincing 3D illusion comes from moderate shading — around 40–60%. Too little looks flat; too much makes the face vanish into darkness at oblique angles.
+3. **Background luminance matters**: A dark, saturated background (BKG Lum ~20–30%, strong hue) reads as a professional broadcast color field. Bright backgrounds wash out the effect.
+
+---
+
 ## Background
 
 ### What Is DVE?
@@ -94,6 +102,8 @@ A rotating plane has two sides. The front face is the side the viewer sees when 
 ---
 
 ## Signal Flow
+
+Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -178,7 +188,7 @@ Sets the hue of the background color visible in the regions outside the mapped f
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the auto-rotation speed when Auto Rotate is enabled. At minimum the face is stationary. As speed increases, the DDS phase accumulator advances more per frame, producing faster continuous rotation. Very high speeds create a rapid strobing effect as the face whips through front/back/edge transitions on every few frames. For smooth cinematic rotation, keep speed in the lower quarter of its range.
+At minimum the face is stationary. As speed increases, the DDS phase accumulator advances more per frame, producing faster continuous rotation. Very high speeds create a rapid strobing effect as the face whips through front/back/edge transitions on every few frames. For smooth cinematic rotation, keep speed in the lower quarter of its range. Internally, controls the auto-rotation speed when Auto Rotate is enabled.
 
 ---
 
@@ -200,7 +210,7 @@ Labeled Perspective in the TOML configuration. In the current VHDL implementatio
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the minimum brightness of the face shading. At maximum, the face is unshaded — full brightness at all angles. At minimum, the face darkens dramatically as it rotates away from center, reaching near-black at edge-on. The shade factor is derived from the cosine of the rotation angle scaled between this minimum floor and full brightness. A mid-range setting produces the most naturalistic lighting — noticeable darkening at oblique angles without total blackout.
+At maximum, the face is unshaded — full brightness at all angles. At minimum, the face darkens dramatically as it rotates away from center, reaching near-black at edge-on. The shade factor is derived from the cosine of the rotation angle scaled between this minimum floor and full brightness. A mid-range setting produces the most naturalistic lighting — noticeable darkening at oblique angles without total blackout. Internally, controls the minimum brightness of the face shading.
 
 ---
 
@@ -211,7 +221,7 @@ Controls the minimum brightness of the face shading. At maximum, the face is uns
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the luminance of the background independently of its hue. At minimum, the background is black regardless of the BKG Hue setting. At maximum, the background reaches peak white, with the hue LUT providing only the U/V chrominance. For the classic broadcast look — a deep saturated color field — keep luminance in the 20–40% range. Higher values produce pastels; lower values produce rich, dark backgrounds.
+At minimum, the background is black regardless of the BKG Hue setting. At maximum, the background reaches peak white, with the hue LUT providing only the U/V chrominance. For the classic broadcast look — a deep saturated color field — keep luminance in the 20–40% range. Higher values produce pastels; lower values produce rich, dark backgrounds. Internally, sets the luminance of the background independently of its hue.
 
 ---
 
@@ -240,6 +250,10 @@ The five toggles configure the rotation behavior and appearance mode. Back Face 
 
 Crossfades between the original (dry) video and the rotated/composited (wet) output. At 100% the full cube-face effect is visible. At 0% the original video passes through unmodified. Intermediate positions blend the two — useful for ghostly superimposition effects where the rotating face is semi-transparent over the source. The interpolator operates on all three YUV channels simultaneously.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +275,7 @@ These exercises progress from static angle positioning through continuous rotati
 *Static Oblique Projection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Understand the relationship between rotation angle, face width, and shading by positioning the face manually.
+**What You'll Create**: Understand the relationship between rotation angle, face width, and shading by positioning the face manually.
 
 1. **Center position**: With Angle at 0°, confirm the face fills the entire screen — the image appears unmodified except for the background visible at mix transitions.
 2. **Quarter turn**: Slowly rotate the Angle knob toward 90°. Watch the face narrow symmetrically, revealing background on both sides.
@@ -289,7 +303,7 @@ These exercises progress from static angle positioning through continuous rotati
 *Continuous Cube Spin — simulated result across source images.*
 **Source**: Bold, high-contrast footage — animated graphics, text overlays, or a face.
 
-**Objective**: Configure continuous auto-rotation and explore speed, direction, and axis behavior.
+**What You'll Create**: Configure continuous auto-rotation and explore speed, direction, and axis behavior.
 
 1. **Enable auto**: Switch Auto Rotate to Auto. The Angle knob is now overridden.
 2. **Slow rotation**: Set Speed to about 10%. Watch the face smoothly rotate — narrowing, disappearing at edge, returning as the back face, then reappearing front-on.
@@ -317,7 +331,7 @@ These exercises progress from static angle positioning through continuous rotati
 *Broadcast Cube Ident — simulated result across source images.*
 **Source**: A logo, station ident graphic, or bold text on a contrasting background.
 
-**Objective**: Recreate the classic 1980s broadcast cube spin — a logo rotating over a saturated color field with dramatic shading and smooth motion.
+**What You'll Create**: Recreate the classic 1980s broadcast cube spin — a logo rotating over a saturated color field with dramatic shading and smooth motion.
 
 1. **Color field**: Set BKG Hue to a deep blue (~240°) and BKG Lum to about 20%. This creates the saturated background typical of 1980s network idents.
 2. **Shading**: Set Shade Depth to about 40% for dramatic face darkening as it rotates away.
@@ -334,9 +348,6 @@ These exercises progress from static angle positioning through continuous rotati
 
 ## Tips
 
-- **Manual first, auto second**: Start in Manual mode to understand how the face geometry responds to angle before enabling continuous rotation. Once you see the geometry, auto mode makes sense.
-- **Shade Depth is the lighting knob**: The most convincing 3D illusion comes from moderate shading — around 40–60%. Too little looks flat; too much makes the face vanish into darkness at oblique angles.
-- **Background luminance matters**: A dark, saturated background (BKG Lum ~20–30%, strong hue) reads as a professional broadcast color field. Bright backgrounds wash out the effect.
 - **Perspective does nothing (yet)**: The Perspective knob is reserved for a future update. Don't spend time troubleshooting why it has no effect — it is intentionally unconnected.
 - **Mirror makes it legible**: If your source contains text or logos, use Mirror mode for the back face so the content remains readable from both sides of the rotation.
 - **Feedback loops amplify the spin**: Routing the output back to the input creates recursive cube faces — a face within a face within a face, each at a different rotation angle.
@@ -359,6 +370,7 @@ These exercises progress from static angle positioning through continuous rotati
 | **LUT** | Lookup Table; a pre-computed array of values indexed by an input parameter, used here for cosine and background hue-to-chroma conversions. |
 | **Phase accumulator** | A counter that wraps around at a fixed modulus, producing a continuously cycling value used to drive the rotation angle in auto mode. |
 | **Scanline** | A single horizontal row of pixels in a video frame; Carousel computes face geometry independently for each scanline. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

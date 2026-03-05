@@ -68,6 +68,14 @@ The name references *batik tulis*, the hand-drawn Javanese method where artisans
 
 ---
 
+## Quick Start
+
+1. **Dense for close-ups, Sparse for wide shots**: Fine crackle works best when the subject fills the frame; large cells suit wide compositions where the vein pattern reads as architectural structure.
+2. **Dye Depth and Palette together set the aesthetic**: Low Dye Depth with a warm Palette creates a two-tone sepia batik; high Dye Depth with a cool Palette gives detailed indigo cloth.
+3. **Use Crackle as a presence control**: Set Wax Amt for the desired vein darkness, then use Crackle to fade the overlay in and out without changing the vein geometry.
+
+---
+
 ## Background
 
 ### What Is Batik?
@@ -226,7 +234,7 @@ Scales the vein darkening effect via an opacity multiplication stage. The comput
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Dye Mode** | Natural | Bright |
+| **7 — Dye Mode** | Natural | Dark |
 | **8 — Wax Show** | Off | On |
 | **9 — Video Dye** | Off | On |
 | **10 — Animate** | Off | On |
@@ -246,6 +254,21 @@ The five toggles control independent aspects of the batik simulation. Toggle 7 s
 | Suffix | % |
 
 Crossfades between the dry (original) and wet (processed) signal at the output stage using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is fully processed batik. Intermediate values blend the crackle overlay with the source, useful for creating subtle textile texture overlays on live video.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Batik processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -268,7 +291,7 @@ These exercises progress from basic crackle generation to full batik simulation 
 *Simple Crackle Overlay — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Understand how Voronoi cell geometry creates a crackle vein pattern and how vein parameters control its appearance.
+**What You'll Create**: Understand how Voronoi cell geometry creates a crackle vein pattern and how vein parameters control its appearance.
 
 1. **Base crackle**: Set Cell Size to the middle position, Vein Width to about 40%, and Crackle to 80%. A visible crackle network should appear over the source video.
 2. **Cell size**: Sweep Cell Size from minimum to maximum. Watch the veins go from a dense mesh to a wide geometric grid.
@@ -296,7 +319,7 @@ These exercises progress from basic crackle generation to full batik simulation 
 *Dye Palette Exploration — simulated result across source images.*
 **Source**: Footage with varied colours — flowers, fabrics, or colourful scenery.
 
-**Objective**: Explore palette quantisation and hue rotation for traditional dye effects.
+**What You'll Create**: Explore palette quantisation and hue rotation for traditional dye effects.
 
 1. **Reduce dye levels**: Set Dye Depth low (around 20%). Watch the image snap to just a few brightness levels, like a two-colour dye bath.
 2. **Increase gradually**: Sweep Dye Depth upward. More tonal steps appear, from stark two-tone through 4, 8, 16, 32, to nearly full-range at 64 levels.
@@ -323,7 +346,7 @@ These exercises progress from basic crackle generation to full batik simulation 
 *Animated Textile — simulated result across source images.*
 **Source**: Slow-moving footage or a static scene.
 
-**Objective**: Create a living textile effect using crackle animation and full batik processing.
+**What You'll Create**: Create a living textile effect using crackle animation and full batik processing.
 
 1. **Set base look**: Cell Size ~50%, Vein Width ~30%, Dye Depth ~50%, Palette ~25%, Wax Amt ~70%, Crackle ~80%.
 2. **Enable animation**: Toggle Animate on. The crackle pattern shifts every frame, creating a shimmering organic texture.
@@ -339,9 +362,6 @@ These exercises progress from basic crackle generation to full batik simulation 
 
 ## Tips
 
-- **Dense for close-ups, Sparse for wide shots**: Fine crackle works best when the subject fills the frame; large cells suit wide compositions where the vein pattern reads as architectural structure.
-- **Dye Depth and Palette together set the aesthetic**: Low Dye Depth with a warm Palette creates a two-tone sepia batik; high Dye Depth with a cool Palette gives detailed indigo cloth.
-- **Use Crackle as a presence control**: Set Wax Amt for the desired vein darkness, then use Crackle to fade the overlay in and out without changing the vein geometry.
 - **Animation + feedback loops**: Route the output back to the input while Animate is on for evolving, self-referencing batik patterns.
 - **Monochrome + low Dye Depth = woodblock print**: Enabling Mono with only 2–4 quantisation levels produces a stark black-and-white graphic reminiscent of Japanese woodblock prints.
 - **Mix for overlay compositing**: Set Mix to 30–50% to blend the batik texture gently over source video, creating a translucent textile filter effect.
@@ -355,15 +375,14 @@ These exercises progress from basic crackle generation to full batik simulation 
 | **Chebyshev distance** | A distance metric where the distance between two points is the greater of their horizontal and vertical separations; used here for cell boundary detection. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
 | **Crackle** | The network of fine lines in traditional batik cloth caused by dye seeping through cracks in the wax resist layer. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Hue rotation** | Shifting U and V chroma values by a signed offset to change perceived color without altering brightness or saturation. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random bit sequence. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
 | **Palette quantisation** | Reducing a full-range luminance signal to a small number of discrete levels, simulating the limited dye colours of textile printing. |
 | **Voronoi diagram** | A spatial partition where each region contains all points closer to one seed than to any other, producing a network of cell boundaries. |
 | **Wax resist** | A dyeing technique where areas coated with wax repel dye, preserving the original fabric colour beneath. |
 | **XOR** | Exclusive OR; a bitwise logic operation that outputs 1 when its two inputs differ, used here to mix the frame counter into the hash seed. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

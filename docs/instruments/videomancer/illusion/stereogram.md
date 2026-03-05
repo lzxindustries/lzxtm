@@ -68,6 +68,14 @@ The name directly references the stereogram — any flat image that encodes thre
 
 ---
 
+## Quick Start
+
+1. **Start with guides**: Always enable Guide dots when first learning to view stereograms. They provide the vergence reference needed to "lock on" to the 3D image.
+2. **Narrow repeat width for beginners**: A repeat width of 30–40% is easiest to fuse. Widen only after you can comfortably perceive the depth.
+3. **High-contrast sources encode best**: Stereograms need clear luminance variation to create perceivable depth. Feed high-contrast, slowly-moving sources for the most dramatic 3D effect.
+
+---
+
 ## Background
 
 ### Random-Dot Stereograms
@@ -181,7 +189,7 @@ Controls the density of the random dot pattern. Higher values produce more visib
 | Default | 50% |
 | Suffix | % |
 
-Scales the depth displacement amount — how much the input luminance shifts the horizontal repeat boundary. At low values, depth variation is subtle and the stereogram appears nearly flat, requiring careful viewing to detect any 3D effect. At high values, the depth excursion is dramatic, creating strongly-layered surfaces that pop out or recede significantly. Excessive depth can cause the pattern to break down, as the horizontal shift exceeds the brain's ability to fuse the binocular disparity.
+At low values, depth variation is subtle and the stereogram appears nearly flat, requiring careful viewing to detect any 3D effect. At high values, the depth excursion is dramatic, creating strongly-layered surfaces that pop out or recede significantly. Excessive depth can cause the pattern to break down, as the horizontal shift exceeds the brain's ability to fuse the binocular disparity. Internally, scales the depth displacement amount — how much the input luminance shifts the horizontal repeat boundary.
 
 ---
 
@@ -233,8 +241,8 @@ Shifts the output brightness after contrast scaling. At the midpoint, no offset 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Dots | Chars |
-| **8 — Depth** | Source | Invert |
+| **7 — Pattern** | Dots | Lines |
+| **8 — Depth** | Source | Flat |
 | **9 — Color** | Mono | Color |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -253,6 +261,21 @@ The five toggles control the visual character and accessibility of the stereogra
 | Suffix | % |
 
 Crossfades between the dry (original) and wet (stereogram) signal using interpolators. At 0% the output is the unmodified input; at 100% the output is the full stereogram. Intermediate values overlay the dot pattern onto the original image, creating a ghosted effect where the source video shows through the stereogram texture — useful for confirming the depth map correspondence.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stereogram processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -275,7 +298,7 @@ These exercises progress from basic stereogram generation through depth control 
 *First Stereogram — simulated result across source images.*
 **Source**: Simple high-contrast geometric shapes — a white circle on a black background, or bold text.
 
-**Objective**: Generate a basic random-dot stereogram and learn to perceive the hidden depth.
+**What You'll Create**: Generate a basic random-dot stereogram and learn to perceive the hidden depth.
 
 1. **Default settings**: Start with all controls at their initial values.
 2. **Enable guides**: Toggle Guide On. Two reference dots appear at the top of the frame.
@@ -303,7 +326,7 @@ These exercises progress from basic stereogram generation through depth control 
 *Depth Control with Video — simulated result across source images.*
 **Source**: A slowly-moving face or hand — something with natural depth variation and luminance contrast.
 
-**Objective**: Explore how real-world luminance maps to perceived stereogram depth in real time.
+**What You'll Create**: Explore how real-world luminance maps to perceived stereogram depth in real time.
 
 1. **Set repeat width**: Start with Repeat Width at about 40% for comfortable viewing.
 2. **Moderate depth**: Set Depth to about 50%.
@@ -331,7 +354,7 @@ These exercises progress from basic stereogram generation through depth control 
 *Colour Stereogram with Full Processing — simulated result across source images.*
 **Source**: Any colourful, dynamic footage — music visuals, abstract patterns, or natural scenes.
 
-**Objective**: Create a richly textured colour stereogram with optimised contrast and dot density.
+**What You'll Create**: Create a richly textured colour stereogram with optimised contrast and dot density.
 
 1. **Enable colour**: Toggle Color to Color. The dots gain random hues.
 2. **High density**: Set Dot Density to about 75%. The field becomes a dense colour mosaic.
@@ -349,9 +372,6 @@ These exercises progress from basic stereogram generation through depth control 
 
 ## Tips
 
-- **Start with guides**: Always enable Guide dots when first learning to view stereograms. They provide the vergence reference needed to "lock on" to the 3D image.
-- **Narrow repeat width for beginners**: A repeat width of 30–40% is easiest to fuse. Widen only after you can comfortably perceive the depth.
-- **High-contrast sources encode best**: Stereograms need clear luminance variation to create perceivable depth. Feed high-contrast, slowly-moving sources for the most dramatic 3D effect.
 - **Mono for depth, Color for show**: Monochrome dot fields are easier to perceive in 3D. Switch to colour for visual interest once you've confirmed the depth structure.
 - **Moderate depth prevents breakdown**: Depth values above 70% can cause pattern tearing where the horizontal shift exceeds the repeat width. Stay at 40–60% for reliable fusion.
 - **Round dots + high density = organic texture**: Round dots at 70%+ density create a rich, stippled look reminiscent of pointillist painting.
@@ -370,12 +390,11 @@ These exercises progress from basic stereogram generation through depth control 
 | **Depth map** | A grayscale image where pixel brightness represents distance from the viewer, used here to drive the stereogram displacement. |
 | **Divergence** | The outward rotation of the eyes beyond parallel (looking "through" the image). The standard technique for viewing Magic Eye stereograms. |
 | **Free-viewing** | Perceiving stereoscopic depth without optical aids, using either divergent or convergent eye techniques. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used for dry/wet blending. |
 | **LFSR** | Linear Feedback Shift Register; a shift register producing a pseudo-random bit sequence used for dot pattern generation. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical differences from a point, used here to approximate circular dot shapes from square pixels. |
-| **Proc amp** | Processing amplifier; a standard video circuit for adjusting contrast (gain) and brightness (offset) of the luminance channel. |
 | **SIRDS** | Single Image Random Dot Stereogram; a flat image encoding binocular depth information through periodic horizontal repetition of random-dot patterns. |
 | **Vergence** | The simultaneous movement of both eyes to obtain or maintain binocular vision. The angle between the eyes' lines of sight. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

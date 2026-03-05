@@ -68,6 +68,14 @@ Colour tinting lets the stripes take on the warm amber of silver-nitrate stock o
 
 ---
 
+## Quick Start
+
+1. **Sample point as scanner**: Sweeping Exposure while scrolling converts the display into a slow spatial scan of the source image.
+2. **Unilateral for waveform display**: Unilateral profile produces a classic single-sided waveform trace, more legible than bilateral for amplitude analysis.
+3. **Amber tinting**: Film Tint around 30–60° recreates the warm amber of vintage nitrate film stock.
+
+---
+
 ## Background
 
 ### Optical Sound Tracks
@@ -231,6 +239,10 @@ The toggles define the optical-soundtrack aesthetic: Mode picks the encoding met
 
 **Mix** crossfades between the dry input and the film-track output. At zero the input is passed through; at maximum the output is fully the scrolling sound-track pattern.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -252,7 +264,7 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 *Classic Mono Variable-Area — simulated result across source images.*
 **Source**: A talking head with moderate contrast, or any source with clear brightness changes.
 
-**Objective**: Create a single-track variable-area display with a slow scroll.
+**What You'll Create**: Create a single-track variable-area display with a slow scroll.
 
 1. Set Scroll Spd to 25 %, Amplitude to 50 %, Band Width to 40 %.
 2. Set Exposure to 50 % (sample from image centre).
@@ -280,7 +292,7 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 *Tinted Film Strip — simulated result across source images.*
 **Source**: Music video or animated source with rhythmic brightness variation.
 
-**Objective**: Create a multi-track amber-tinted film strip with border sprockets.
+**What You'll Create**: Create a multi-track amber-tinted film strip with border sprockets.
 
 1. Set Scroll Spd to 40 %, Amplitude to 60 %, Band Width to 50 %.
 2. Set Exposure to 50 %, Film Tint to 45° (warm amber), Track Count to 4.
@@ -307,7 +319,7 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 *Dynamic Scan Sweep — simulated result across source images.*
 **Source**: Any source with horizontal variation (panorama, landscape, scrolling text).
 
-**Objective**: Sweep the sample point across the image while the track scrolls, producing a spatial scan of the source.
+**What You'll Create**: Sweep the sample point across the image while the track scrolls, producing a spatial scan of the source.
 
 1. Set Scroll Spd to 50 %, Amplitude to 70 %, Band Width to 40 %.
 2. Set Film Tint to 200° (cyan), Track Count to 2.
@@ -322,9 +334,6 @@ These exercises explore Film Track's visual vocabulary from minimal mono traces 
 
 ## Tips
 
-- **Sample point as scanner**: Sweeping Exposure while scrolling converts the display into a slow spatial scan of the source image.
-- **Unilateral for waveform display**: Unilateral profile produces a classic single-sided waveform trace, more legible than bilateral for amplitude analysis.
-- **Amber tinting**: Film Tint around 30–60° recreates the warm amber of vintage nitrate film stock.
 - **Cyan for night**: Film Tint around 180–210° gives a cool blue-grey evocative of night-scene tinting.
 - **Sprockets for framing**: Enabling sprocket borders helps visually anchor the display and sells the "film strip" illusion.
 - **Mix for overlay**: At 50 % mix the film-track scrolls on top of the source, creating a diegetic soundtrack effect.

@@ -68,6 +68,14 @@ The proc_amp chain (brightness, contrast, saturation) operates before quantizati
 
 ---
 
+## Quick Start
+
+1. **Start with 4 levels**: Four tonal zones produce the most dramatic, recognizable posterization. Increase levels for subtlety.
+2. **Contrast is the secret weapon**: High contrast before posterizing creates bold, graphic separation between zones. Low contrast creates uniform, muted output.
+3. **Desaturate before palette mapping**: Reducing Saturation to 25–40% before activating a palette lets the palette's colors dominate rather than competing with the source video's native colors.
+
+---
+
 ## Background
 
 ### Posterization in Photography and Print
@@ -94,6 +102,8 @@ The 16-bit Linear Feedback Shift Register provides a deterministic pseudo-random
 ---
 
 ## Signal Flow
+
+proc_amp → Invert → Dither → Posterize → Palette Nearest-Match LUT → Mono
 
 ```
 data_in ──────────────────────────────────────────────────────
@@ -237,6 +247,21 @@ The five toggles modify quantization behavior and output routing. Y Only limits 
 
 Mix crossfades between the dry (original) and wet (processed) signal using three parallel interpolators. At 0% the output is unmodified input. At 100% the output is fully posterized and palette-mapped. Intermediate values blend the processed look with the original — a 30–50% mix can suggest a poster-art quality without fully committing to flat color zones.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Paintbox processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -258,7 +283,7 @@ These exercises progress from basic posterization through palette mapping to com
 *Pop-Art Posterization — simulated result across source images.*
 **Source**: High-contrast portrait or face close-up with varied skin tones and a simple background.
 
-**Objective**: Create a bold, screen-printed pop-art look using minimal quantization levels and high contrast.
+**What You'll Create**: Create a bold, screen-printed pop-art look using minimal quantization levels and high contrast.
 
 1. **Set levels**: Levels to 4 levels (~30%). The image snaps to four tonal zones.
 2. **Boost contrast**: Contrast to ~75%. Midtones are pushed toward extremes.
@@ -286,7 +311,7 @@ These exercises progress from basic posterization through palette mapping to com
 *Sepia Palette with Ordered Dither — simulated result across source images.*
 **Source**: Landscape or architectural scene with smooth gradients — sky, water, distant hills.
 
-**Objective**: Apply the sepia palette with ordered dither to create a vintage photographic look.
+**What You'll Create**: Apply the sepia palette with ordered dither to create a vintage photographic look.
 
 1. **Select sepia**: Palette to position 5 (~65%). The sepia palette activates.
 2. **Moderate levels**: Levels to 8 levels (~40%). Enough steps for a smooth result.
@@ -314,7 +339,7 @@ These exercises progress from basic posterization through palette mapping to com
 *Night Vision with Random Noise — simulated result across source images.*
 **Source**: Any footage — indoor scene, outdoor, or abstract video.
 
-**Objective**: Create a night-vision-style monochrome image with random dither grain and the green palette.
+**What You'll Create**: Create a night-vision-style monochrome image with random dither grain and the green palette.
 
 1. **Night vision palette**: Palette to position 6 (~80%). Green palette activates.
 2. **High levels**: Levels to 32 levels (~65%). Smooth enough to look realistic.
@@ -330,9 +355,6 @@ These exercises progress from basic posterization through palette mapping to com
 
 ## Tips
 
-- **Start with 4 levels**: Four tonal zones produce the most dramatic, recognizable posterization. Increase levels for subtlety.
-- **Contrast is the secret weapon**: High contrast before posterizing creates bold, graphic separation between zones. Low contrast creates uniform, muted output.
-- **Desaturate before palette mapping**: Reducing Saturation to 25–40% before activating a palette lets the palette's colors dominate rather than competing with the source video's native colors.
 - **Ordered dither for print looks**: The 2×2 Bayer pattern produces a halftone-like texture similar to newspaper photo reproduction.
 - **Random dither for film looks**: LFSR dither at moderate amplitude creates a photographic grain quality that softens contours organically.
 - **Y Only for animation-cel style**: Posterized brightness with smooth color produces the flat-shaded look of traditional animation cels.
@@ -348,12 +370,12 @@ These exercises progress from basic posterization through palette mapping to com
 | **Bayer matrix** | A repeating threshold matrix used in ordered dithering to distribute quantization error in a structured, deterministic pattern. Named after Bryce Bayer of Kodak. |
 | **Dithering** | The deliberate addition of noise to a signal before quantization to reduce visible contouring artifacts by dispersing error across neighboring pixels. |
 | **Euclidean distance** | The straight-line distance between two points in a multi-dimensional space, used here to find the nearest palette color in YUV space. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals, used for dry/wet blending. |
 | **LFSR** | Linear Feedback Shift Register; used here as a pseudo-random noise source for random dithering. |
 | **Nearest-match** | A color reduction technique that maps each pixel to the closest available color in a predefined palette by minimizing distance in color space. |
 | **Posterization** | The reduction of continuous tonal gradations to a limited number of discrete levels, producing flat color zones with hard boundary edges. |
 | **proc_amp** | Processing amplifier; a standard video signal conditioning stage providing brightness, contrast, and saturation adjustments. |
 | **Quantization** | The process of mapping a continuous or high-resolution signal to a smaller set of discrete values. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

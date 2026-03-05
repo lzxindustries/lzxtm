@@ -68,6 +68,14 @@ At gentle settings, Chinook adds the barely perceptible wavering of a hot road s
 
 ---
 
+## Quick Start
+
+1. **Turner's secret was restraint**: The most convincing heat shimmer uses low Depth (15–35%), small Scale (4–12 px), and Smooth interpolation. Real thermal distortion is subtle — only a pixel or two of apparent displacement at human viewing distances.
+2. **Speed controls perceived temperature**: Slow animation (~10–20%) feels like warm stone or a sun-heated highway. Fast animation (~60–80%) feels like an open flame or industrial exhaust vent.
+3. **Gradient is the most naturalistic mode**: Real heat shimmer rises from below. The bottom-up gradient envelope is physically correct for ground-plane heat haze. Use Band or Radial for more stylized or fantastical effects.
+
+---
+
 ## Background
 
 ### The Atmospheric Paintings of Turner
@@ -94,6 +102,8 @@ Distant objects appear lighter, lower in contrast, and less saturated than near 
 ---
 
 ## Signal Flow
+
+Block Coordinate → Hash Mixing Function → Thermal Envelope → Displacement × Envelope → Horizontal Shift → Atmospheric Haze
 
 ```
 Input Video (YUV 4:4:4)
@@ -160,7 +170,7 @@ The pipeline is purely combinatorial per pixel — zero BRAM — which means eve
 | Default | 29.3% |
 | Suffix | % |
 
-Controls the temporal evolution rate of the turbulence field. At zero, the displacement pattern is frozen — a static texture of thermal warping. As Speed increases, the frame seed DDS accumulator advances more rapidly at each vertical sync, causing the hash field to evolve. Low values produce a slow, drifting shimmer like heat rising from warm stone; high values create a rapid, flickering distortion like the air above an open flame.
+At zero, the displacement pattern is frozen — a static texture of thermal warping. As Speed increases, the frame seed DDS accumulator advances more rapidly at each vertical sync, causing the hash field to evolve. Low values produce a slow, drifting shimmer like heat rising from warm stone; high values create a rapid, flickering distortion like the air above an open flame. Internally, controls the temporal evolution rate of the turbulence field.
 
 ---
 
@@ -215,7 +225,7 @@ Sets the maximum displacement amplitude. This is the master intensity control fo
 | Default | 19.6% |
 | Suffix | % |
 
-Controls the atmospheric haze intensity. At zero, the processed signal retains its full contrast and saturation — only the shimmer displacement is active. As Haze increases, luminance compresses toward mid-gray and chrominance desaturates toward neutral, simulating the scattered-light wash of aerial perspective. At maximum, the output approaches a uniform gray fog punctuated only by the strongest displacement perturbations. Haze operates *after* shimmer and displacement, so it softens the shimmer artifacts as well as the source material.
+At zero, the processed signal retains its full contrast and saturation — only the shimmer displacement is active. As Haze increases, luminance compresses toward mid-gray and chrominance desaturates toward neutral, simulating the scattered-light wash of aerial perspective. At maximum, the output approaches a uniform gray fog punctuated only by the strongest displacement perturbations. Haze operates *after* shimmer and displacement, so it softens the shimmer artifacts as well as the source material. Internally, controls the atmospheric haze intensity.
 
 ---
 
@@ -242,7 +252,29 @@ Switches 7–10 configure four independent aspects of the turbulence engine. Swi
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix at the end of the processing chain. At 100%, the output is fully processed — shimmer, chromatic displacement, and haze are at their set intensities. At 0%, the output is the unprocessed input. Intermediate values blend between the two. Because the mix operates on all three channels simultaneously via three parallel interpolator instances, the crossfade is perceptually smooth with no color artifacts.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chinook processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Chinook-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -265,7 +297,7 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 *Ground-Level Heat Haze — simulated result across source images.*
 **Source**: Footage with a visible horizon or ground plane — outdoor landscapes, cityscapes, or a static camera pointed down a road.
 
-**Objective**: Create a naturalistic bottom-up heat shimmer that affects the lower portion of the frame while leaving the sky undisturbed.
+**What You'll Create**: Create a naturalistic bottom-up heat shimmer that affects the lower portion of the frame while leaving the sky undisturbed.
 
 1. **Set the envelope**: Leave Env Shape on Gradient (default). Adjust Env Pos to place the onset of shimmer near the bottom third of the frame. Set Env Size to about 50% so the distortion fades gradually upward.
 2. **Introduce turbulence**: Slowly increase Depth from zero. Watch the lower portion of the image begin to waver while the upper sky remains stable.
@@ -292,7 +324,7 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 *Thermal Band with Radial Focus — simulated result across source images.*
 **Source**: Footage with a central subject and visible background — a portrait, a performer on stage, or an object against a landscape.
 
-**Objective**: Create a concentrated thermal distortion band that radiates from the center, leaving the subject partially visible through the turbulence.
+**What You'll Create**: Create a concentrated thermal distortion band that radiates from the center, leaving the subject partially visible through the turbulence.
 
 1. **Switch to Band + Radial**: Set Env Shape to Band and Env Type to Radial. This creates a diamond-shaped distortion zone at frame center.
 2. **Position and size**: Set Env Pos to ~50% (center) and Env Size to ~40%. The distortion should form a focused zone around the subject.
@@ -319,7 +351,7 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 *Full Atmospheric Dissolution — simulated result across source images.*
 **Source**: Any footage — especially high-contrast or richly colored material where the loss of structure is most dramatic.
 
-**Objective**: Push Chinook to its extreme: full-frame turbulence with maximum haze, dissolving the image into a Turner-esque atmospheric abstraction.
+**What You'll Create**: Push Chinook to its extreme: full-frame turbulence with maximum haze, dissolving the image into a Turner-esque atmospheric abstraction.
 
 1. **Maximum envelope**: Set Env Shape to Gradient, Env Pos to 100% (bottom), Env Size to 100% so the entire frame is in the thermal zone.
 2. **Maximum displacement**: Set Depth to ~80%. The image should fracture into visibly blocky perturbation cells.
@@ -336,9 +368,6 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 
 ## Tips
 
-- **Turner's secret was restraint**: The most convincing heat shimmer uses low Depth (15–35%), small Scale (4–12 px), and Smooth interpolation. Real thermal distortion is subtle — only a pixel or two of apparent displacement at human viewing distances.
-- **Speed controls perceived temperature**: Slow animation (~10–20%) feels like warm stone or a sun-heated highway. Fast animation (~60–80%) feels like an open flame or industrial exhaust vent.
-- **Gradient is the most naturalistic mode**: Real heat shimmer rises from below. The bottom-up gradient envelope is physically correct for ground-plane heat haze. Use Band or Radial for more stylized or fantastical effects.
 - **Haze and Depth are complementary**: Depth controls the violence of displacement; Haze controls how much of the resulting image you can see. Maximum Depth with maximum Haze produces ghostly abstraction — violent movement barely visible through fog.
 - **Bypass + Mix for A/B evaluation**: Toggle Bypass for an instant comparison, or use the Mix fader for a progressive crossfade that reveals exactly how much each percentage of processing adds.
 - **Smooth mode at large Scale values**: With 32–64 px blocks, Smooth interpolation is essential to avoid obvious grid artifacts. At small block sizes (4–8 px), Hard mode is acceptable because the blocks are already near pixel scale.
@@ -352,15 +381,14 @@ These exercises progress from gentle atmospheric haze through targeted thermal s
 | Term | Definition |
 |------|------------|
 | **Aerial perspective** | The visual phenomenon where distant objects appear lighter, less saturated, and lower in contrast due to atmospheric light scattering. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that increments by a fixed frequency word each clock cycle. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Hash function** | A deterministic function that maps input data to a fixed-size pseudo-random output, used here to generate a turbulence displacement field from block coordinates. |
 | **Jenkins hash** | A family of non-cryptographic hash functions using XOR and bit-shift cascades, employed by Chinook for fast pseudo-random displacement generation. |
 | **Manhattan distance** | A distance metric computed as |dx| + |dy|, used in the radial envelope mode to create diamond-shaped falloff from the frame center. |
 | **Navier–Stokes equations** | The fundamental partial differential equations governing fluid dynamics, whose full solution is computationally prohibitive for real-time processing. |
 | **Refractive index** | A measure of how much a medium bends light passing through it; variations in air temperature create the refractive-index gradients that produce thermal shimmer. |
 | **Thermal envelope** | A spatial mask that modulates displacement strength across the frame, confining turbulence to a specific region such as a ground-level gradient or radial plume. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

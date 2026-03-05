@@ -68,6 +68,14 @@ At conservative settings, Cascade adds subtle ghost trails behind moving objects
 
 ---
 
+## Quick Start
+
+1. **Start with one tap**: Set Echo 2 Delay to 0% while learning the controls. The interlaced dual-tap behaviour can be confusing — start with a clean single echo.
+2. **Mix controls feedback intensity**: The Echo Mix fader doubles as a feedback gain control. Lower mix values create gentle decay trails; 100% mix creates sustained, non-decaying feedback loops.
+3. **Tint after delay, before mix**: The tint is applied to the echo only — the dry signal passes through untouched. This means you can colour the trail without affecting the live image.
+
+---
+
 ## Background
 
 ### Phosphor Persistence and CRT Afterimage
@@ -94,6 +102,8 @@ The echo signal passes through a per-channel tint stage before mixing. Luma tint
 ---
 
 ## Signal Flow
+
+Input Register → Feedback Mux → Luma Modulation → ... → Tint Stage 2 — Saturate → Interpolator Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -154,7 +164,7 @@ The two echo taps (A and B) are not blended in parallel — the delay line selec
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the read offset for echo tap A — the primary delay distance measured in scanline samples. At 0% the echo reads from the current write position, producing no visible displacement. At 100% the echo reads from the maximum offset (2048 samples back), creating the longest possible trail. Because the delay line operates on packed scanlines, the displacement appears as a horizontal shift of the echoed image. The luma modulation offset is added on top of this base value, so the actual read position varies pixel-by-pixel when Luma Mod is active.
+At 0% the echo reads from the current write position, producing no visible displacement. At 100% the echo reads from the maximum offset (2048 samples back), creating the longest possible trail. Because the delay line operates on packed scanlines, the displacement appears as a horizontal shift of the echoed image. The luma modulation offset is added on top of this base value, so the actual read position varies pixel-by-pixel when Luma Mod is active. Internally, sets the read offset for echo tap A — the primary delay distance measured in scanline samples.
 
 ---
 
@@ -238,6 +248,21 @@ The five toggle switches control independent binary features that can be combine
 
 Crossfades between the dry input signal and the tinted echo signal. At 0% (fader down), the output is pure dry — no echo is audible. At 100% (fader up), the output is pure wet — only the tinted echo signal passes through. Intermediate positions blend the two. This is the master control for echo intensity and, when feedback is enabled, also controls the feedback gain — lower mix values attenuate each feedback iteration, creating a natural decay envelope for the echo trail.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Cascade processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -259,7 +284,7 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 *Basic Echo Trail — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with moving subjects and clear edges.
 
-**Objective**: Understand how the two delay taps create displaced echo images and how the mix fader controls echo visibility.
+**What You'll Create**: Understand how the two delay taps create displaced echo images and how the mix fader controls echo visibility.
 
 1. **Single echo**: Set Echo Delay to ~40%. Leave Echo 2 Delay at 0%. Push Echo Mix fader to ~60%. A ghost copy of the image appears horizontally displaced.
 2. **Dual echo**: Increase Echo 2 Delay to ~70%. Alternate lines now show two different echo distances, creating a vertically interlaced double-echo.
@@ -286,7 +311,7 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 *Phosphor Tint Trails — simulated result across source images.*
 **Source**: Footage with strong subject outlines — a person walking, a hand waving, or scrolling text.
 
-**Objective**: Use the tint controls to colour the echo trail and create phosphor-inspired afterimages.
+**What You'll Create**: Use the tint controls to colour the echo trail and create phosphor-inspired afterimages.
 
 1. **Prepare echo**: Set Echo Delay ~50%, Echo Mix ~70%, Feedback off.
 2. **Darken echo**: Turn Echo Y Tint below centre (~30%). The echo becomes a dim shadow trailing the source.
@@ -314,7 +339,7 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 *Feedback Stutter and Freeze — simulated result across source images.*
 **Source**: High-contrast footage — strong outlines against a plain background work best.
 
-**Objective**: Explore feedback accumulation and freeze to create dense recursive echo structures.
+**What You'll Create**: Explore feedback accumulation and freeze to create dense recursive echo structures.
 
 1. **Prepare feedback loop**: Set Echo Delay ~60%, Echo Mix ~85%, Feedback on.
 2. **Watch accumulation**: With live video, observe how the echo builds over time — each frame adds another displaced, tinted layer.
@@ -331,9 +356,6 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 
 ## Tips
 
-- **Start with one tap**: Set Echo 2 Delay to 0% while learning the controls. The interlaced dual-tap behaviour can be confusing — start with a clean single echo.
-- **Mix controls feedback intensity**: The Echo Mix fader doubles as a feedback gain control. Lower mix values create gentle decay trails; 100% mix creates sustained, non-decaying feedback loops.
-- **Tint after delay, before mix**: The tint is applied to the echo only — the dry signal passes through untouched. This means you can colour the trail without affecting the live image.
 - **Freeze captures the moment**: Freeze the buffer when an interesting feedback pattern appears. The frozen echo becomes a persistent overlay that you can composite against new live footage.
 - **Luma Mod follows brightness**: Luma modulation makes the echo displacement content-dependent — bright areas get longer trails. This creates organic, image-aware displacement patterns.
 - **Mirror for symmetry**: Mirror Read reverses the echo on tap A only, creating partial symmetry effects that are more interesting than full-frame mirroring.
@@ -351,12 +373,12 @@ These exercises build from a simple single-tap echo through tinted delay trails 
 | **CRT (Cathode Ray Tube)** | A vacuum tube display technology in which an electron beam excites phosphor dots on a coated screen to produce an image. |
 | **Echo tap** | A read point in a delay line that retrieves stored data from a configurable offset, producing a time-displaced copy of the signal. |
 | **Feedback topology** | A signal routing configuration in which the processed output is fed back to the input, creating iterative accumulation with each pass through the loop. |
-| **Interpolator** | A hardware crossfade unit that blends two signals by a configurable ratio, used here for wet/dry mixing between the dry input and tinted echo. |
 | **Luma** | Short for luminance; the brightness component (Y channel) of a YUV video signal. |
 | **Phosphor persistence** | The duration a CRT phosphor dot continues to glow after the electron beam moves on, producing visible afterimage trails behind moving objects. |
 | **Ping-pong buffer** | A dual-bank memory architecture in which one bank is written while the other is read, swapping roles each cycle to provide continuous access without stalling. |
 | **Saturation clamping** | Limiting a signal value to a valid range (0–1023) to prevent arithmetic overflow or wraparound artefacts. |
 | **Scanline** | A single horizontal line of video data, scanned left to right by the display system. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Four operating modes extend the grid concept beyond simple temporal mosaic. Spat
 
 ---
 
+## Quick Start
+
+1. **Grid size sets the mood**: 2×2 is intimate — each panel is large and detailed. 4×4 is surveillance — many small tiles create visual density. 1×4 is cinematic — a horizontal panorama strip.
+2. **Time Spread with movement**: The temporal mosaic is most effective with smooth, predictable motion. Fast cuts or scene changes produce discontinuities between panels that can be jarring or creative.
+3. **Freeze cascade as still store**: In freeze cascade mode, each panel captures a unique moment. Use with slowly changing content to build a contact sheet of distinct frames.
+
+---
+
 ## Background
 
 ### The Quantel Picturebox Legacy
@@ -94,6 +102,8 @@ In freeze cascade mode (mode 2), a single "live panel" counter advances each fie
 ---
 
 ## Signal Flow
+
+Grid Geometry → Address Mapping → BRAM Read → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -207,7 +217,7 @@ Controls an optional label strip at the bottom of each panel. The upper 8 bits s
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness of the label strip (Y channel). At 0, the label is black. At 1023, the label is white. The U and V channels are fixed at 512 (neutral), so the label is always achromatic grey regardless of this setting. This control has no effect when Label Height is set to 0.
+At 0, the label is black. At 1023, the label is white. The U and V channels are fixed at 512 (neutral), so the label is always achromatic grey regardless of this setting. This control has no effect when Label Height is set to 0. Internally, controls the brightness of the label strip (Y channel).
 
 ---
 
@@ -236,6 +246,21 @@ Toggles 7 and 8 form a 2-bit mode selector (4 modes). Toggle 9 affects border re
 
 Controls the wet/dry crossfade via the interpolator. At 0 the output is 100% dry (unprocessed source). At 1023 the output is 100% wet (full grid mosaic). Intermediate values produce a ghostly double-exposure where the grid panels are partially transparent against the full-frame source.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Picturebox processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -257,7 +282,7 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 *Broadcast Monitor Wall — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and movement.
 
-**Objective**: Learn how grid size and border controls create a multi-monitor display from a single input.
+**What You'll Create**: Learn how grid size and border controls create a multi-monitor display from a single input.
 
 1. **2×2 grid**: Set Grid Size to minimum. Four large panels divide the screen.
 2. **Add borders**: Increase Border Width. Coloured bars appear between panels.
@@ -285,7 +310,7 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 *Temporal Filmstrip — simulated result across source images.*
 **Source**: Footage with smooth, steady horizontal motion — a subject walking across frame.
 
-**Objective**: Explore temporal mosaic mode where each panel shows a different moment in time.
+**What You'll Create**: Explore temporal mosaic mode where each panel shows a different moment in time.
 
 1. **Set 4×4 grid**: Maximum Grid Size for 16 panels.
 2. **Add time spread**: Slowly increase Time Spread. Adjacent panels begin showing the subject at different positions.
@@ -313,7 +338,7 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 *Freeze Cascade — simulated result across source images.*
 **Source**: Any moving footage — the effect is most visible with continuous motion.
 
-**Objective**: Use freeze cascade mode to build a sequential still store where panels freeze one at a time.
+**What You'll Create**: Use freeze cascade mode to build a sequential still store where panels freeze one at a time.
 
 1. **Set 3×3 grid**: 9 panels for a moderate cascade.
 2. **Activate freeze mode**: Set Mode A = Off, Mode B = On (mode 10 = freeze cascade).
@@ -329,9 +354,6 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 ## Tips
 
-- **Grid size sets the mood**: 2×2 is intimate — each panel is large and detailed. 4×4 is surveillance — many small tiles create visual density. 1×4 is cinematic — a horizontal panorama strip.
-- **Time Spread with movement**: The temporal mosaic is most effective with smooth, predictable motion. Fast cuts or scene changes produce discontinuities between panels that can be jarring or creative.
-- **Freeze cascade as still store**: In freeze cascade mode, each panel captures a unique moment. Use with slowly changing content to build a contact sheet of distinct frames.
 - **Borders as framing**: At very large Border Width, the border structure dominates the image and the panels become small windows in a coloured frame.
 - **Hybrid mode pop art**: The alternating inversion in hybrid mode creates a Warhol-like grid where neighboring panels show complementary colours.
 - **Label strips as overlays**: The label strip replaces content, not overlays — at large Label Height, the actual video content area within each panel shrinks significantly.
@@ -343,7 +365,6 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here as circular scanline delay buffers. |
 | **Circular Buffer** | A fixed-size memory region with wrapping read/write pointers; enables temporal delay without boundary checks. |
 | **Freeze Cascade** | A mode where panels sequentially stop updating from the live buffer, accumulating frozen snapshots. |
 | **Grid Geometry** | The subdivision of video frame coordinates into panel column, row, and local position. |
@@ -351,8 +372,8 @@ These exercises progress from basic grid layout to temporal effects and freeze c
 | **LFSR** | Linear Feedback Shift Register; produces a pseudo-random sequence used for scrambled freeze panel order. |
 | **Manhattan Distance** | Sum of absolute coordinate differences; used in grid geometry calculations. |
 | **Panel ID** | A 4-bit index derived from panel row and column, used to compute temporal delay offset. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Temporal Mosaic** | Displaying multiple time-delayed versions of a single video source in a grid arrangement. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ The Turbulence parameter (Knob 5, `registers_in(4)`) is declared in the VHDL reg
 
 ---
 
+## Quick Start
+
+1. **Start with flat mode**: Turn Gradient off and explore Hue Start alone before engaging the gradient. This builds intuition for the hue wheel before adding spatial mapping.
+2. **Saturation and Brightness are independent**: Saturation scales chroma (UV), Brightness scales luma (Y). You can have vivid dark colors or pale bright pastels.
+3. **Video Mod is the key creative control**: It transforms the palette from a generic color overlay to a content-responsive effect. The source video becomes visible through color variation rather than brightness.
+
+---
+
 ## Background
 
 ### The Six-Segment Hue Wheel
@@ -90,6 +98,8 @@ When the Gradient toggle is off, every pixel in the frame receives the same hue 
 ---
 
 ## Signal Flow
+
+Y Channel → Palette Generation → Dry/Wet Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -137,7 +147,7 @@ The central interaction is between position-based hue mapping and video-driven m
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the starting position on the hue wheel. At 0%, the gradient begins at red. Sweeping the control rotates the starting hue through the full spectrum. This is a pure offset — it shifts the entire palette without changing its width or shape. In flat mode (Gradient off), this control alone determines the single color applied to the entire frame.
+At 0%, the gradient begins at red. Sweeping the control rotates the starting hue through the full spectrum. This is a pure offset — it shifts the entire palette without changing its width or shape. In flat mode (Gradient off), this control alone determines the single color applied to the entire frame. Internally, sets the starting position on the hue wheel.
 
 ---
 
@@ -192,7 +202,7 @@ Turbulence — **this parameter is declared in the register mapping but is not c
 | Default | 0° |
 | Suffix | ° |
 
-Sets the DDS accumulator step size for hue animation. At 0%, no animation — the palette is static. As Speed increases, the entire hue field rotates continuously, cycling through the color wheel. The animation is smooth and seamless because the phase accumulator wraps at word boundaries. Higher values produce faster rotation. This control has no effect when Animate is off.
+At 0%, no animation — the palette is static. As Speed increases, the entire hue field rotates continuously, cycling through the color wheel. The animation is smooth and seamless because the phase accumulator wraps at word boundaries. Higher values produce faster rotation. This control has no effect when Animate is off. Internally, sets the DDS accumulator step size for hue animation.
 
 ---
 
@@ -221,6 +231,21 @@ The five toggles configure the palette's spatial structure and modulation behavi
 
 Wet/dry crossfade between the original input signal and the generated palette. At 0%, the output is the unmodified input. At 100%, the output is the pure palette. Intermediate values blend the palette over the source, allowing subtle color washes or transparent overlays.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Organica processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -242,7 +267,7 @@ These exercises progress from a static single-color field to animated, video-res
 *Static Color Wash — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied brightness.
 
-**Objective**: Learn how Hue Start and Saturation/Brightness interact to produce flat color overlays.
+**What You'll Create**: Learn how Hue Start and Saturation/Brightness interact to produce flat color overlays.
 
 1. **Single color**: With Gradient off, set Hue Start to mid-range. The entire frame fills with a single hue.
 2. **Rotate hue**: Sweep Hue Start slowly. Watch the color cycle through the full wheel — red, yellow, green, cyan, blue, magenta.
@@ -270,7 +295,7 @@ These exercises progress from a static single-color field to animated, video-res
 *Rainbow Gradient — simulated result across source images.*
 **Source**: Simple footage with a clear horizon or strong horizontal structure — landscapes, skylines.
 
-**Objective**: Explore position-based hue gradients and their interaction with Hue Range.
+**What You'll Create**: Explore position-based hue gradients and their interaction with Hue Range.
 
 1. **Enable gradient**: Turn on Gradient (Switch 7). A horizontal rainbow appears across the frame.
 2. **Narrow sweep**: Set Hue Range low (~20%). Only a small portion of the wheel is visible — a gentle two-color gradient.
@@ -298,7 +323,7 @@ These exercises progress from a static single-color field to animated, video-res
 *Animated Video-Responsive Palette — simulated result across source images.*
 **Source**: High-contrast footage with movement — dancers, traffic, flowing water, or abstract video feedback.
 
-**Objective**: Combine all palette features for fully animated, video-driven color fields.
+**What You'll Create**: Combine all palette features for fully animated, video-driven color fields.
 
 1. **Full gradient**: Enable Gradient, set Hue Range ~70%, Saturation ~80%, Brightness ~90%.
 2. **Video modulation**: Enable Video Mod. Watch the rainbow contort around bright and dark regions of the source.
@@ -315,9 +340,6 @@ These exercises progress from a static single-color field to animated, video-res
 
 ## Tips
 
-- **Start with flat mode**: Turn Gradient off and explore Hue Start alone before engaging the gradient. This builds intuition for the hue wheel before adding spatial mapping.
-- **Saturation and Brightness are independent**: Saturation scales chroma (UV), Brightness scales luma (Y). You can have vivid dark colors or pale bright pastels.
-- **Video Mod is the key creative control**: It transforms the palette from a generic color overlay to a content-responsive effect. The source video becomes visible through color variation rather than brightness.
 - **Turbulence does nothing**: Do not expect Knob 5 to affect the output. The noise modulation stage is unimplemented.
 - **Mix for transparency**: Partial mix values overlay the palette as a transparent wash, preserving source detail while adding color — useful for tinting.
 - **Feedback loops**: Route the output back to the input for recursive color mapping. The palette re-maps its own output, creating evolving fractal-like color fields.
@@ -333,12 +355,11 @@ These exercises progress from a static single-color field to animated, video-res
 | **BT.601** | ITU-R BT.601 color space standard defining the YUV encoding used throughout the Videomancer video pipeline. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **DDS** | Direct Digital Synthesis; a technique using a phase accumulator and lookup table to generate periodic waveforms. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue Wheel** | A circular arrangement of spectral hues divided into six sectors (red, yellow, green, cyan, blue, magenta). |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Phase Accumulator** | A register that increments by a fixed step each clock; its overflow creates a periodic ramp waveform. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

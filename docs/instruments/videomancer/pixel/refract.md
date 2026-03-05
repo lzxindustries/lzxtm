@@ -68,6 +68,14 @@ At subtle settings, Refract produces gentle lens-like warping that follows the t
 
 ---
 
+## Quick Start
+
+1. **Luma Drive is the signature control**: Without it, Refract applies uniform geometric displacement. With it, the displacement follows the image content — this is what makes Refract feel like a real optical effect rather than a simple image shift.
+2. **Chromatic aberration adds realism**: Even small amounts of chromatic split make the displacement feel like genuine lens distortion. Start with low values and increase gradually.
+3. **Fresnel creates lens curvature**: Combined with luma drive, fresnel produces a convincing simulation of looking through a curved glass surface. Circular mode enhances the lens illusion.
+
+---
+
 ## Background
 
 ### Displacement Mapping
@@ -94,6 +102,8 @@ Anamorphic lenses compress one axis relative to the other — traditionally used
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync / Control → Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -142,7 +152,7 @@ The core interaction is between luma drive and displacement strength. Luma drive
 | Range | 0.0 – 1023.0 |
 | Default | 0.0 |
 
-Controls the global displacement magnitude. At zero, no displacement occurs regardless of other settings. As the value increases, the spatial offset applied to each pixel grows, creating more dramatic warping. At extreme values, the image can tear apart along luminance boundaries where adjacent pixels receive very different offset amounts. This control acts as a master intensity for the entire refraction effect.
+At zero, no displacement occurs regardless of other settings. As the value increases, the spatial offset applied to each pixel grows, creating more dramatic warping. At extreme values, the image can tear apart along luminance boundaries where adjacent pixels receive very different offset amounts. This control acts as a master intensity for the entire refraction effect. Internally, controls the global displacement magnitude.
 
 ---
 
@@ -224,6 +234,21 @@ The five toggles control geometric mode, motion animation, and signal routing. S
 
 Controls the wet/dry mix between the displaced and original signal. At 100%, the fully refracted signal passes through. At 0%, the original signal is output unmodified. Intermediate values create a semi-transparent overlay effect where the displaced and undisplaced images blend, producing ghost-like double exposures along displacement contours.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Refract processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -245,7 +270,7 @@ These exercises progress from basic displacement through chromatic aberration to
 *Basic Lens Warp — simulated result across source images.*
 **Source**: A high-contrast image with sharp edges — text, geometric patterns, or architectural subjects.
 
-**Objective**: Understand the relationship between displacement strength, angle, and luma drive.
+**What You'll Create**: Understand the relationship between displacement strength, angle, and luma drive.
 
 1. **Global displacement**: Slowly increase Y Phase from zero. Watch the image begin to shift spatially. The displacement is uniform across the frame because Luma Drive is at zero.
 2. **Set direction**: Adjust U Phase to rotate the displacement direction. Notice the image sliding in different directions as you sweep through the angle LUT.
@@ -272,7 +297,7 @@ These exercises progress from basic displacement through chromatic aberration to
 *Chromatic Prism — simulated result across source images.*
 **Source**: Footage with smooth tonal gradients — sunsets, skin tones, or color bars.
 
-**Objective**: Explore chromatic aberration and fresnel edge bending.
+**What You'll Create**: Explore chromatic aberration and fresnel edge bending.
 
 1. **Set base displacement**: Y Phase ~30%, V Phase (Luma Drive) ~40%.
 2. **Add chromatic split**: Increase U Displace (Chromatic) slowly. Watch color fringing appear at luminance boundaries. U and V channels separate from Y, creating rainbow edges.
@@ -299,7 +324,7 @@ These exercises progress from basic displacement through chromatic aberration to
 *Animated Optical Flow — simulated result across source images.*
 **Source**: Any video with moderate tonal variation.
 
-**Objective**: Combine animation with full refraction for dynamic optical effects.
+**What You'll Create**: Combine animation with full refraction for dynamic optical effects.
 
 1. **Enable animation**: Toggle V Flip (Animate) to activate the DDS angle sweep. The displacement direction begins rotating automatically.
 2. **Set moderate strength**: Y Phase ~35%, V Phase ~50%.
@@ -315,9 +340,6 @@ These exercises progress from basic displacement through chromatic aberration to
 
 ## Tips
 
-- **Luma Drive is the signature control**: Without it, Refract applies uniform geometric displacement. With it, the displacement follows the image content — this is what makes Refract feel like a real optical effect rather than a simple image shift.
-- **Chromatic aberration adds realism**: Even small amounts of chromatic split make the displacement feel like genuine lens distortion. Start with low values and increase gradually.
-- **Fresnel creates lens curvature**: Combined with luma drive, fresnel produces a convincing simulation of looking through a curved glass surface. Circular mode enhances the lens illusion.
 - **Anamorphic for cinematic effects**: Horizontal-only displacement creates the widescreen stretching associated with anamorphic cinematography. Combine with animation for oscillating horizontal flow.
 - **Mix for heat shimmer**: Setting the wet/dry mix to ~30–50% blends displaced and original images, creating a translucent heat-haze effect that's less aggressive than full refraction.
 - **Animation + chromatic = rotating prism**: With both animate and chromatic active, the color separation rotates around the frame, creating a kaleidoscopic prismatic effect.
@@ -329,15 +351,13 @@ These exercises progress from basic displacement through chromatic aberration to
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated on-chip memory in the FPGA used as line buffers for displaced pixel readback. |
 | **BT.601** | ITU-R BT.601 color standard defining the YUV encoding used in the Videomancer pipeline. |
 | **Chromatic Aberration** | Wavelength-dependent refraction causing different colors to focus at different points, creating color fringing at edges. |
 | **DDS** | Direct Digital Synthesis; a numerically-controlled oscillator that generates a continuous sweep of the angle parameter for animation. |
 | **Displacement Mapping** | A spatial transformation where pixel positions are shifted by an amount determined by a control signal, here the input luminance. |
 | **Fresnel** | In optics, the increase in reflectance and refraction at glancing incidence angles; here approximated as radial distance-based displacement scaling. |
-| **Interpolator** | A sub-pixel smoothing module (`interpolator_u`) that blends between adjacent displaced samples for artifact-free warping. |
 | **LUT** | Lookup Table; the 32-entry sin/cos table that converts the angle register into horizontal and vertical displacement components. |
-| **Pipeline** | Sequential processing stages, each operating on the previous stage's output every clock cycle; Refract uses 10 pipeline stages. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

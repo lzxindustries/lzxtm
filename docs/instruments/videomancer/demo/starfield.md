@@ -35,6 +35,14 @@ Beyond the nostalgic recreation, Starfield offers creative controls that extend 
 
 ---
 
+## Quick Start
+
+1. **Start with low speed**: Warp Speed ~20–30% gives a gentle drift that lets you appreciate the perspective projection. High speeds produce a rushing tunnel effect.
+2. **Offset the vanishing point**: Moving Center X/Y away from the centre creates dramatic asymmetric perspectives — stars appear to stream from a corner or edge of the frame.
+3. **Trails for motion**: Enable Trails when speed is moderate or high for a convincing motion-blur effect. They are less useful at very low speeds where stars move slowly.
+
+---
+
 ## Background
 
 ### Perspective Projection and the Z-Divide
@@ -226,6 +234,21 @@ The five toggles control independent binary features with no interaction between
 
 Crossfades between the delayed input video (dry) and the composited starfield output (wet). At 0% (fader down), the output is the unprocessed input — no stars are visible. At 100% (fader up), the output is the full starfield composited over the dimmed background. Intermediate values create a semi-transparent overlay where stars appear ghosted over the original video. The crossfade operates independently on Y, U, and V channels via three interpolator_u instances.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Starfield processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -236,7 +259,7 @@ These exercises build from a static understanding of the perspective field throu
 
 <img src={starfield_exercise1_result} alt="Classic Screensaver result"/>
 *Classic Screensaver — simulated result across source images.*
-**Objective**: Recreate the Windows 3.1 Starfield screensaver: white dots streaming outward from center against a black background.
+**What You'll Create**: Recreate the Windows 3.1 Starfield screensaver: white dots streaming outward from center against a black background.
 
 1. **Set centre origin**: Center X at ~50%, Center Y at ~50%. The vanishing point should be near frame center.
 2. **Maximum density**: Set Density to maximum (32 stars active).
@@ -255,7 +278,7 @@ These exercises build from a static understanding of the perspective field throu
 
 <img src={starfield_exercise2_result} alt="Coloured Reverse Warp with Trails result"/>
 *Coloured Reverse Warp with Trails — simulated result across source images.*
-**Objective**: Explore reverse direction, colour tinting, and trail effects for a hyperspace-like visual.
+**What You'll Create**: Explore reverse direction, colour tinting, and trail effects for a hyperspace-like visual.
 
 1. **Reverse direction**: Toggle Direction to Inward. Stars now spawn at the edges and converge toward the center.
 2. **Enable trails**: Toggle Trails On. Each star gains a short horizontal streak.
@@ -274,7 +297,7 @@ These exercises build from a static understanding of the perspective field throu
 
 <img src={starfield_exercise3_result} alt="PIP Starfield over Live Video result"/>
 *PIP Starfield over Live Video — simulated result across source images.*
-**Objective**: Composite the starfield over live video using additive and replace modes, with the vanishing point offset for dramatic asymmetric perspective.
+**What You'll Create**: Composite the starfield over live video using additive and replace modes, with the vanishing point offset for dramatic asymmetric perspective.
 
 1. **Connect video**: Feed a live camera or recorded footage.
 2. **Dim background lightly**: Set Bg Dim to ~50%. The input video is visible at half brightness.
@@ -292,9 +315,6 @@ These exercises build from a static understanding of the perspective field throu
 
 ## Tips
 
-- **Start with low speed**: Warp Speed ~20–30% gives a gentle drift that lets you appreciate the perspective projection. High speeds produce a rushing tunnel effect.
-- **Offset the vanishing point**: Moving Center X/Y away from the centre creates dramatic asymmetric perspectives — stars appear to stream from a corner or edge of the frame.
-- **Trails for motion**: Enable Trails when speed is moderate or high for a convincing motion-blur effect. They are less useful at very low speeds where stars move slowly.
 - **Additive for layering**: Additive compositing over a dimmed video source is the most visually rich mode — stars appear as luminous objects floating in front of the scene.
 - **Bg Dim for mood**: Low Bg Dim (~30%) lets the video show through clearly; high Bg Dim (~90%) isolates the stars against near-blackness. Match to your composition needs.
 - **2×2 for visibility**: On large displays or when viewed from a distance, switch to 2×2 mode — single-pixel stars can be hard to see at normal viewing distances.
@@ -311,11 +331,11 @@ These exercises build from a static understanding of the perspective field throu
 | **Barrel shifter** | A digital circuit that shifts a binary value by a variable number of positions in a single clock cycle, used here to approximate perspective division. |
 | **Compositing** | The process of combining multiple visual elements into a single output frame. |
 | **DVE** | Digital Video Effects; historically, a dedicated hardware unit for video transforms. Starfield is not a DVE effect per se but uses similar compositing techniques. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the starfield rendering pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator that produces a maximal-length sequence by XORing selected bits and feeding the result back to the input. |
 | **Perspective projection** | The geometric transformation that maps 3D world coordinates to 2D screen coordinates by dividing X and Y by Z depth, causing distant objects to appear smaller and closer to the vanishing point. |
 | **Rasterization** | The process of converting geometric primitives (here, star positions) into discrete pixel values for display. |
 | **Vanishing point** | The screen-space position toward which all depth lines converge in a perspective projection — the point from which stars appear to emanate. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

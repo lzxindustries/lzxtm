@@ -68,6 +68,14 @@ At gentle settings — low amplitude, moderate frequency — Delirium produces s
 
 ---
 
+## Quick Start
+
+1. **Start with one layer**: Delirium defaults to single-layer operation (Layer 2 amplitude at zero). Master the amplitude/frequency/speed relationship on Layer 1 before engaging Layer 2.
+2. **Detune for complexity**: The most visually interesting compound distortion comes from mismatched frequencies between the two layers. Try ratios like 1:3 or 2:5 for complex interference without total chaos.
+3. **Mix as intensity control**: Rather than reducing amplitude, use the Mix fader to dial back intensity. This preserves the distortion character while blending in the stable reference image.
+
+---
+
 ## Background
 
 ### EarthBound Battle Backgrounds
@@ -104,6 +112,8 @@ Single-layer sinusoidal distortion produces smooth, predictable waves. Delirium'
 ---
 
 ## Signal Flow
+
+Parameter Latch → Timing → Phase Accumulators → ... → Wet/Dry Mix → Sync Delay Pipeline
 
 ```
 Input Video (YUV 4:4:4)
@@ -184,7 +194,7 @@ The phase accumulators advance once per frame (at vsync), not per scanline. This
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the peak pixel displacement of Layer 1's sinusoidal warp. At 0%, Layer 1 produces no distortion regardless of its mode setting. As Amplitude 1 increases, each scanline shifts further from its original position, creating deeper and more pronounced wave curves. At maximum, individual scanlines can shift by nearly the full frame width, wrapping around to the opposite edge of the image. The visual effect progresses from gentle ripples to violent tearing as the amplitude increases. Because Layer 2 operates on Layer 1's output, increasing Amplitude 1 feeds more pre-distorted material into the second warp stage, amplifying the cascaded complexity.
+At 0%, Layer 1 produces no distortion regardless of its mode setting. As Amplitude 1 increases, each scanline shifts further from its original position, creating deeper and more pronounced wave curves. At maximum, individual scanlines can shift by nearly the full frame width, wrapping around to the opposite edge of the image. The visual effect progresses from gentle ripples to violent tearing as the amplitude increases. Because Layer 2 operates on Layer 1's output, increasing Amplitude 1 feeds more pre-distorted material into the second warp stage, amplifying the cascaded complexity. Internally, controls the peak pixel displacement of Layer 1's sinusoidal warp.
 
 ---
 
@@ -195,7 +205,7 @@ Controls the peak pixel displacement of Layer 1's sinusoidal warp. At 0%, Layer 
 | Default | 12.5% |
 | Suffix | % |
 
-Sets the spatial frequency of Layer 1's sine wave — how many complete wave cycles fit within the visible frame height. At low values, the sine wave completes fewer cycles across the image, creating broad, sweeping curves. At high values, the wave oscillates rapidly from scanline to scanline, producing tight, closely-spaced ripples. The spatial frequency interacts with amplitude to determine the wave's visual character: low frequency with high amplitude creates large rolling undulations, while high frequency with high amplitude creates a dense, shredded texture.
+At low values, the sine wave completes fewer cycles across the image, creating broad, sweeping curves. At high values, the wave oscillates rapidly from scanline to scanline, producing tight, closely-spaced ripples. The spatial frequency interacts with amplitude to determine the wave's visual character: low frequency with high amplitude creates large rolling undulations, while high frequency with high amplitude creates a dense, shredded texture. Internally, sets the spatial frequency of Layer 1's sine wave — how many complete wave cycles fit within the visible frame height.
 
 ---
 
@@ -206,7 +216,7 @@ Sets the spatial frequency of Layer 1's sine wave — how many complete wave cyc
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the animation speed of Layer 1's phase accumulator. At 0%, the distortion pattern is frozen — the wave shape is fixed in position from frame to frame. As Speed 1 increases, the sine wave pattern scrolls vertically through the image, creating the illusion of flowing liquid or moving heat shimmer. Higher speeds produce faster scrolling. The speed value is added to a 16-bit phase accumulator once per frame, so the animation rate is linear with the control setting.
+At 0%, the distortion pattern is frozen — the wave shape is fixed in position from frame to frame. As Speed 1 increases, the sine wave pattern scrolls vertically through the image, creating the illusion of flowing liquid or moving heat shimmer. Higher speeds produce faster scrolling. The speed value is added to a 16-bit phase accumulator once per frame, so the animation rate is linear with the control setting. Internally, controls the animation speed of Layer 1's phase accumulator.
 
 ---
 
@@ -267,6 +277,21 @@ Toggles 7 and 8 activate their respective distortion layers. When a layer's togg
 
 Crossfades between the dry (unprocessed) and wet (distorted) signal. At 0%, the output is the original input regardless of distortion settings. At 100% (default), the output is fully distorted. Intermediate values blend the two, creating a ghostly overlay where the undistorted image shows through the warped version. This is particularly effective at 30–60% with high-amplitude distortion — the stable reference image anchors perception while the warp field ripples around it.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Delirium processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -288,7 +313,7 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 *Single-Layer Waves — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong vertical lines, architectural elements, or text — content where horizontal displacement is immediately visible.
 
-**Objective**: Understand the relationship between amplitude, frequency, and the resulting warp pattern using a single distortion layer.
+**What You'll Create**: Understand the relationship between amplitude, frequency, and the resulting warp pattern using a single distortion layer.
 
 1. **Gentle curves**: With Amplitude 1 at 25% and Frequency 1 at 12%, observe the broad, sweeping curves that ripple through the image. Vertical lines bend into smooth S-shapes.
 2. **Tight ripples**: Increase Frequency 1 to 80%. The same amplitude now produces dense, closely-spaced oscillations — the image appears to shimmer rather than wave.
@@ -315,7 +340,7 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 *Cascaded Distortion — simulated result across source images.*
 **Source**: Abstract or colorful footage — kaleidoscopic patterns, color bars, or footage with saturated colors and varied spatial content.
 
-**Objective**: Explore how two distortion layers cascade to produce compound warp fields.
+**What You'll Create**: Explore how two distortion layers cascade to produce compound warp fields.
 
 1. **Prepare Layer 1**: Set Amplitude 1 to 30%, Frequency 1 to 20%, Speed 1 to 15%.
 2. **Activate Layer 2**: Turn Layer 2 Mode On. Increase Amplitude 2 from 0% to 30%.
@@ -343,7 +368,7 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 *Psychedelic Meltdown — simulated result across source images.*
 **Source**: Any visually rich footage — faces, landscapes, or music videos work well. Content with recognizable subjects makes the distortion more dramatic.
 
-**Objective**: Push both layers to extreme settings for full psychedelic distortion, then use Mix to dial back the intensity.
+**What You'll Create**: Push both layers to extreme settings for full psychedelic distortion, then use Mix to dial back the intensity.
 
 1. **Maximum chaos**: Set both amplitudes to 80%, Frequency 1 to 15%, Frequency 2 to 45%, both speeds to 25–30%.
 2. **Observe**: The image should be almost unrecognizable — a churning, liquid warp field. Glimpses of the source appear between wave peaks.
@@ -359,9 +384,6 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 ## Tips
 
-- **Start with one layer**: Delirium defaults to single-layer operation (Layer 2 amplitude at zero). Master the amplitude/frequency/speed relationship on Layer 1 before engaging Layer 2.
-- **Detune for complexity**: The most visually interesting compound distortion comes from mismatched frequencies between the two layers. Try ratios like 1:3 or 2:5 for complex interference without total chaos.
-- **Mix as intensity control**: Rather than reducing amplitude, use the Mix fader to dial back intensity. This preserves the distortion character while blending in the stable reference image.
 - **Phase Link for regularity**: When the dual-layer animation is too chaotic, Phase Link forces both layers to animate together, creating a more predictable compound pattern.
 - **Speed zero for stills**: Setting both speeds to 0% freezes the distortion pattern, turning Delirium into a static spatial transform useful for graphic design and fixed-frame compositions.
 - **Feedback loops**: Routing the output back to the input creates recursive sinusoidal distortion that evolves over time, producing organic spiral and tunnel effects.
@@ -374,19 +396,16 @@ These exercises build from single-layer displacement to full dual-layer cascaded
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Cascade** | Serial composition of two distortion layers where the output of one feeds the input of the other, producing compound effects. |
 | **Displacement** | Shifting a pixel's read position by an offset, causing the image to appear moved at that location. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interlaced Displacement** | A distortion mode where even and odd scanlines receive opposite horizontal offsets, creating a zigzag tearing effect. |
-| **Interpolator** | A hardware module that computes weighted averages between two values, used here for wet/dry crossfading. |
 | **Line Buffer** | A memory buffer storing one full scanline of video data, enabling displaced reads at arbitrary horizontal positions. |
 | **LUT** | Lookup Table; a memory array storing precomputed function values, used here for the quarter-wave sine function. |
 | **Phase Accumulator** | A counter that advances by a speed value each frame, providing the time-varying phase offset for wave animation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quadrant Folding** | A technique for computing a full-cycle sine function from a quarter-wave lookup table by mirroring and negating values based on the phase quadrant. |
 | **Scanline** | A single horizontal line of video data; Delirium computes one displacement offset per scanline. |
 | **Sinusoidal Distortion** | Applying a sine-wave-shaped offset to pixel positions, creating smooth, periodic undulation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

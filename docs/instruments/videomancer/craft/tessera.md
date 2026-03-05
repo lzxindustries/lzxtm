@@ -68,6 +68,14 @@ Four historically inspired palettes are available: Ravenna (golds, blues, vermil
 
 ---
 
+## Quick Start
+
+1. **Gold Threshold is the composition tool**: Finding the right threshold splits the image into foreground (smalti) and background (gold) — the fundamental Byzantine visual structure.
+2. **Scintillation makes it alive**: Even modest scintillation (20–30%) adds the characteristic mosaic shimmer. Without it, the result looks like a flat color quantization.
+3. **Raking Light for conservation aesthetic**: Double jitter creates the dramatic texture seen in museum photography of ancient mosaics under oblique side-lighting.
+
+---
+
 ## Background
 
 ### What Are Tesserae?
@@ -94,6 +102,8 @@ Over centuries, exposed mosaics lose brightness and saturation as grout absorbs 
 ---
 
 ## Signal Flow
+
+Cell Grid → Gold Ground → Scintillation Jitter → Saturation
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ Controls the tessera cell dimensions using a steps_4 decode: the pot maps to cel
 | Default | 75.1% |
 | Suffix | % |
 
-Sets the luminance threshold above which cells are assigned the gold tessera color instead of being palette-quantized. At 0%, essentially no pixels are bright enough to trigger gold — the entire image is quantized to smalti colors. At 100%, only the very brightest highlights become gold. A mid-range setting (around 75%) creates the classic Byzantine composition where gold fills the background sky and haloes while figures and architecture remain in colored smalti. This threshold operates on the sample-and-held cell luminance, so each cell is either entirely gold or entirely smalti.
+At 0%, essentially no pixels are bright enough to trigger gold — the entire image is quantized to smalti colors. At 100%, only the very brightest highlights become gold. A mid-range setting (around 75%) creates the classic Byzantine composition where gold fills the background sky and haloes while figures and architecture remain in colored smalti. This threshold operates on the sample-and-held cell luminance, so each cell is either entirely gold or entirely smalti. Internally, sets the luminance threshold above which cells are assigned the gold tessera color instead of being palette-quantized.
 
 ---
 
@@ -178,7 +188,7 @@ Selects one of four smalti palettes, each derived from a different Byzantine mon
 | Default | 1px |
 | Suffix | px |
 
-Controls the grout line width between cells using a steps_4 decode: 0, 1, 2, or 3 pixel widths. At 0, tesserae abut seamlessly. At 1 pixel, thin grout lines define the grid without dominating. At 2–3 pixels, the grout becomes a prominent visual element — the warm gray color (Y=180, U=505, V=530) creates a visible lattice that structures the mosaic composition. Grout is rendered by detecting pixels within the grout width of the cell boundary and overriding their color with the grout constant.
+At 0, tesserae abut seamlessly. At 1 pixel, thin grout lines define the grid without dominating. At 2–3 pixels, the grout becomes a prominent visual element — the warm gray color (Y=180, U=505, V=530) creates a visible lattice that structures the mosaic composition. Grout is rendered by detecting pixels within the grout width of the cell boundary and overriding their color with the grout constant. Internally, controls the grout line width between cells using a steps_4 decode: 0, 1, 2, or 3 pixel widths.
 
 ---
 
@@ -189,7 +199,7 @@ Controls the grout line width between cells using a steps_4 decode: 0, 1, 2, or 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the amplitude of per-tessera luminance jitter that simulates the scintillation of irregularly set glass cubes. At 0%, all tesserae of the same palette color appear identical. As you increase Scintillation, individual tesserae brighten or darken relative to their neighbors based on their XOR-hashed coordinate signature. The effect simulates candlelight catching each cube at a different angle. At high values, the jitter becomes dramatic — some tesserae appear nearly washed out while adjacent ones are deeply shaded.
+At 0%, all tesserae of the same palette color appear identical. As you increase Scintillation, individual tesserae brighten or darken relative to their neighbors based on their XOR-hashed coordinate signature. The effect simulates candlelight catching each cube at a different angle. At high values, the jitter becomes dramatic — some tesserae appear nearly washed out while adjacent ones are deeply shaded. Internally, controls the amplitude of per-tessera luminance jitter that simulates the scintillation of irregularly set glass cubes.
 
 ---
 
@@ -200,7 +210,7 @@ Controls the amplitude of per-tessera luminance jitter that simulates the scinti
 | Default | 75.1% |
 | Suffix | % |
 
-Scales the saturation of the palette colors around the neutral chroma midpoint (U=512, V=512). At 0%, all tesserae become grayscale — the mosaic loses its color. At 50% (midpoint), the palette colors display at their designed saturation. At 100%, colors are pushed toward full saturation, creating the vivid, almost gaudy chromatic intensity of freshly made smalti before centuries of weathering. This control interacts with the Weathered toggle, which further halves saturation when enabled.
+At 0%, all tesserae become grayscale — the mosaic loses its color. At 50% (midpoint), the palette colors display at their designed saturation. At 100%, colors are pushed toward full saturation, creating the vivid, almost gaudy chromatic intensity of freshly made smalti before centuries of weathering. This control interacts with the Weathered toggle, which further halves saturation when enabled. Internally, scales the saturation of the palette colors around the neutral chroma midpoint (U=512, V=512).
 
 ---
 
@@ -229,6 +239,21 @@ The five toggles control distinct aspects of the mosaic rendering. Gold Ground i
 
 Crossfades between the dry (original) signal and the wet (mosaic) signal using three parallel interpolator instances. At 0%, the output is the unprocessed source. At 100%, the output is the fully rendered mosaic. Intermediate values create a translucent overlay where the mosaic pattern ghosts over the source video — an effect that recalls the practice of laying out tesserae on a preparatory cartoon drawing before setting them in plaster.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tessera processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +275,7 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 *Smalti Quantization — simulated result across source images.*
 **Source**: A camera feed or footage with a range of colors and good tonal variety — faces, flowers, or painted surfaces work well.
 
-**Objective**: Learn how palette quantization reduces continuous video to discrete smalti colors, and how cell size affects detail retention.
+**What You'll Create**: Learn how palette quantization reduces continuous video to discrete smalti colors, and how cell size affects detail retention.
 
 1. **Coarse cells**: Set Cell Size to its maximum (16 px). The image breaks into large mosaic tiles, each a single palette color. Watch how the source content is abstracted.
 2. **Fine cells**: Reduce Cell Size to minimum (4 px). The mosaic becomes much finer — you can still recognize subjects, but they're composed entirely from 12 colors.
@@ -277,7 +302,7 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 *Gold Ground Composition — simulated result across source images.*
 **Source**: Footage with strong luminance contrast — a figure against a bright sky, a candle flame, or a spotlight on a dark background.
 
-**Objective**: Explore the gold ground feature and learn how the luminance threshold creates a Byzantine figure-ground separation.
+**What You'll Create**: Explore the gold ground feature and learn how the luminance threshold creates a Byzantine figure-ground separation.
 
 1. **Enable gold**: Toggle Gold Ground to On. Set Gold Threshold to about 75%. Bright areas of the source become gold tesserae; darker areas are quantized to the smalti palette.
 2. **Threshold sweep**: Slowly lower the Gold Threshold from 100% toward 0%. Watch as more of the image converts to gold: first just highlights, then mid-tones, then nearly everything.
@@ -304,7 +329,7 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 *Ancient Mosaic Restoration — simulated result across source images.*
 **Source**: Any footage — architectural details, portraits, or abstract textures.
 
-**Objective**: Combine all features to produce the appearance of a weathered Byzantine mosaic under raking conservation light.
+**What You'll Create**: Combine all features to produce the appearance of a weathered Byzantine mosaic under raking conservation light.
 
 1. **Set the mosaic**: Cell Size 12 px, Grout Width 2 px, Palette Ravenna, Gold Ground On, Gold Threshold ~60%.
 2. **Scintillation**: Increase Scintillation to about 70%. Each tessera now has a clearly different brightness.
@@ -321,9 +346,6 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 ## Tips
 
-- **Gold Threshold is the composition tool**: Finding the right threshold splits the image into foreground (smalti) and background (gold) — the fundamental Byzantine visual structure.
-- **Scintillation makes it alive**: Even modest scintillation (20–30%) adds the characteristic mosaic shimmer. Without it, the result looks like a flat color quantization.
-- **Raking Light for conservation aesthetic**: Double jitter creates the dramatic texture seen in museum photography of ancient mosaics under oblique side-lighting.
 - **Weathered + Ravenna = Ravenna in situ**: The combination of the Ravenna palette with Weathered mode closely approximates the current appearance of the mosaics of San Vitale.
 - **Cell Size 8 is the sweet spot**: Large enough for visible individual tesserae, small enough to retain recognizable subjects — the scale of real Byzantine mosaic work.
 - **Feedback creates recursive mosaic**: Route the output back to the input to create tesserae within tesserae — a mosaic of mosaics, each level further quantized.
@@ -336,14 +358,11 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here for the video line buffer that retains held cell colors across scanlines. |
 | **Byzantine** | Relating to the Eastern Roman Empire (330–1453 CE) and its distinctive artistic traditions, especially gold-ground mosaic. |
 | **Gold Ground** | The background of gold-leaf glass tesserae that defines Byzantine mosaic composition. |
 | **Grout** | The morite or cement filling gaps between tesserae, rendered as dark gray lines between cells. |
-| **Interpolator** | A linear interpolation module used for wet/dry crossfade mixing. |
 | **Manhattan Distance** | The sum of absolute differences across dimensions: $|ΔY| + |ΔU| + |ΔV|$. Used for palette color matching. |
 | **Palette** | A fixed set of colors (12 entries) to which continuous input values are quantized. |
-| **Pipeline** | Sequential processing stages executing on consecutive clock cycles. |
 | **Raking Light** | Oblique side-lighting used in conservation to reveal surface texture of mosaics and reliefs. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific moment and holds it constant until the next sample. |
 | **Scintillation** | The shimmering effect produced by mosaic tesserae set at irregular angles, catching light differently. |
@@ -351,6 +370,7 @@ These exercises progress from simple palette quantization to full Byzantine mosa
 | **Tessera** | A single cube of glass, stone, or ceramic used to construct a mosaic (plural: tesserae). |
 | **Weathering** | Simulated aging that reduces brightness and saturation to approximate centuries of patina. |
 | **XOR Hash** | A bitwise exclusive-OR function producing a deterministic per-cell variation key from cell coordinates. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

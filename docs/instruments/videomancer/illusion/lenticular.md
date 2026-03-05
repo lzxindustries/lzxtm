@@ -68,6 +68,14 @@ The effect ranges from subtle — narrow stripes with a small shift produce a ge
 
 ---
 
+## Quick Start
+
+1. **Stripe width controls the illusion**: Narrow stripes (4–8 pixels) produce the most convincing depth effect because the eye cannot resolve individual bands. Wide stripes (32–64 pixels) create an obvious split-image look.
+2. **Shift distance is in pixels, not percentage**: The Shift pot maps directly to the shift register tap index (0–63 pixels). Small values like 3–5 pixels create subtle parallax; above 20 it becomes an obvious displacement.
+3. **Views and Depth pots have limited effect**: Views (pot 3) is registered but unused — the stripe boundary is always hard. Depth (pot 6) is unconnected. Future firmware may activate these controls.
+
+---
+
 ## Background
 
 ### Lenticular Printing
@@ -94,6 +102,8 @@ Real lenticular cards animate when you tilt them — the image flips back and fo
 ---
 
 ## Signal Flow
+
+Input Register → Stripe Selection → Shift Register Tap → Source Select → Depth Scaling → Output Compose + Clamp
 
 ```
 Input Video (YUV 4:4:4)
@@ -215,8 +225,8 @@ Not connected in the VHDL implementation. The register value is received but not
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Flip | Morph |
-| **8 — Direction** | Vert | Horiz |
+| **7 — Mode** | Flip | Anim |
+| **8 — Direction** | Vert | Radial |
 | **9 — Source** | Luma | Edge |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -235,6 +245,21 @@ Toggles 7, 8, and 9 each occupy a single bit in the toggle register despite havi
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original input and the processed output. At 0% the output is entirely dry (unprocessed video). At 100% the output is entirely wet (the lenticular-processed image). Intermediate values blend the two, allowing the stripe interleaving to be subtly mixed in rather than applied at full strength.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Lenticular processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +282,7 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 *Holographic Shimmer — simulated result across source images.*
 **Source**: A portrait or close-up with a clear foreground subject and blurred background.
 
-**Objective**: Create a subtle holographic shimmer that suggests depth without obvious stripe artifacts.
+**What You'll Create**: Create a subtle holographic shimmer that suggests depth without obvious stripe artifacts.
 
 1. **Fine stripes**: Set Stripe W to about 15% (8-pixel stripes).
 2. **Small shift**: Set Shift to about 10% (a few pixels of displacement).
@@ -289,7 +314,7 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 *Venetian Blind Split — simulated result across source images.*
 **Source**: Any high-contrast footage with horizontal and vertical detail.
 
-**Objective**: Create an obvious stripe-based image split with large displacement.
+**What You'll Create**: Create an obvious stripe-based image split with large displacement.
 
 1. **Wide stripes**: Set Stripe W to about 85% (64-pixel stripes).
 2. **Large shift**: Set Shift to about 60% (roughly 40 pixels).
@@ -318,7 +343,7 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 *Wiggle and Vertical Blur — simulated result across source images.*
 **Source**: Animated content or a slowly moving camera feed.
 
-**Objective**: Explore temporal wiggle mode and the vertical line-buffer blend.
+**What You'll Create**: Explore temporal wiggle mode and the vertical line-buffer blend.
 
 1. **Medium stripes**: Set Stripe W to about 50% (16-pixel stripes).
 2. **Moderate shift**: Set Shift to about 30%.
@@ -335,9 +360,6 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 ## Tips
 
-- **Stripe width controls the illusion**: Narrow stripes (4–8 pixels) produce the most convincing depth effect because the eye cannot resolve individual bands. Wide stripes (32–64 pixels) create an obvious split-image look.
-- **Shift distance is in pixels, not percentage**: The Shift pot maps directly to the shift register tap index (0–63 pixels). Small values like 3–5 pixels create subtle parallax; above 20 it becomes an obvious displacement.
-- **Views and Depth pots have limited effect**: Views (pot 3) is registered but unused — the stripe boundary is always hard. Depth (pot 6) is unconnected. Future firmware may activate these controls.
 - **Wiggle mode needs live video**: On a still image, wiggle mode shows only one view (frame 0 is always even). Feed live or animated content to see the temporal flicker.
 - **Vertical blend is an on/off threshold**: The Angle pot acts as a gate — above ~1.5% it enables a 50/50 average with the previous line on alt stripes. The pot value beyond the threshold does not change the blend ratio.
 - **Direction swap mirrors depth**: Toggling Source on inverts which stripes show original vs. shifted views, effectively flipping the perceived depth direction — objects that popped out now recede.
@@ -350,18 +372,16 @@ These exercises explore the lenticular effect from subtle depth shimmer to aggre
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated FPGA memory tiles used for line buffers and large delay structures. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interleave** | Spatially alternating between two views stripe-by-stripe within a single frame. |
 | **Lenticular** | A printing technology using cylindrical lens arrays to create images with depth or animation effects. |
 | **Line Buffer** | A memory that stores one complete scan line for comparison or mixing with adjacent lines. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Parallax** | The apparent displacement of an object when viewed from different positions; the basis of stereoscopic depth perception. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Shift Register** | A chain of storage elements that passes data from one stage to the next on each clock cycle, providing selectable time delay. |
 | **Stereopsis** | The brain's ability to perceive depth by comparing the slightly different images received by each eye. |
 | **Wiggle** | Temporal alternation between views on successive frames, mimicking the effect of tilting a lenticular card. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At default settings, Encore presents a centered inset window at roughly 40% fram
 
 ---
 
+## Quick Start
+
+1. **Minimum window is 64×64**: Even with Width and Height at zero, the window is never smaller than 64 pixels in each dimension, ensuring it is always visible.
+2. **Border eats into the window**: The border is drawn inward from the window edges. A very thick border on a small window can consume most of the video area inside.
+3. **Border width is coarse**: Only the top 4 bits of the pot register are used, giving 16 discrete steps (0–15 pixels). Fine pot movements near the bottom of the range may not produce visible changes.
+
+---
+
 ## Background
 
 ### Picture-in-Picture in Broadcast History
@@ -94,6 +102,8 @@ The Mirror toggle applies a bitwise NOT to the luminance channel inside the wind
 ---
 
 ## Signal Flow
+
+Timing Detection → Window Region Test → Shadow Region Test → ... → Mix Stage → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -145,7 +155,7 @@ The pipeline has two parallel paths: the processing path computes per-pixel wind
 | Default | 63% |
 | Suffix | % |
 
-Sets the horizontal starting position of the picture-in-picture window. At 0% the window's left edge is at the left margin of the frame. At 100% the window's left edge is at pixel 1023, which may push the right edge off-screen depending on the Width setting. This register value maps directly to the x_counter comparison, so each increment moves the window one pixel to the right.
+At 0% the window's left edge is at the left margin of the frame. At 100% the window's left edge is at pixel 1023, which may push the right edge off-screen depending on the Width setting. This register value maps directly to the x_counter comparison, so each increment moves the window one pixel to the right. Internally, sets the horizontal starting position of the picture-in-picture window.
 
 ---
 
@@ -156,7 +166,7 @@ Sets the horizontal starting position of the picture-in-picture window. At 0% th
 | Default | 63% |
 | Suffix | % |
 
-Sets the vertical starting position of the window. At 0% the top edge of the window sits at the top of the frame. Increasing this value moves the window downward. Combined with Window X, the two position knobs give full control over where the inset appears on screen. The default value of 640 places the window roughly in the lower third of a standard-definition frame.
+At 0% the top edge of the window sits at the top of the frame. Increasing this value moves the window downward. Combined with Window X, the two position knobs give full control over where the inset appears on screen. The default value of 640 places the window roughly in the lower third of a standard-definition frame. Internally, sets the vertical starting position of the window.
 
 ---
 
@@ -227,7 +237,19 @@ Toggles 7–11 control five independent binary features. Border (7) and Shadow (
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry crossfade for the entire effect. At 100% (default, register 1023), the output is fully the processed picture-in-picture composite. At 0%, the output is the unprocessed input — equivalent to Bypass but with a smooth fade rather than a hard switch. Intermediate values blend the windowed composite with the original, creating a ghostly overlay where the window and border are partially transparent against the full-frame input.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Encore-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +272,7 @@ These exercises progress from basic window positioning to layered compositing wi
 *Centered Inset — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a clearly recognizable subject.
 
-**Objective**: Learn the four spatial controls and position a clean picture-in-picture window.
+**What You'll Create**: Learn the four spatial controls and position a clean picture-in-picture window.
 
 1. **Default view**: Load Encore with default settings. Observe the window with its white border floating over the darkened background.
 2. **Move horizontally**: Sweep Window X from 0% to 100%. Watch the window slide across the frame.
@@ -277,7 +299,7 @@ These exercises progress from basic window positioning to layered compositing wi
 *Framed Window with Shadow — simulated result across source images.*
 **Source**: Any video footage with moderate brightness and color variation.
 
-**Objective**: Explore border thickness and shadow placement to create a broadcast-style floating window.
+**What You'll Create**: Explore border thickness and shadow placement to create a broadcast-style floating window.
 
 1. **Position the window**: Set Window X ~40%, Window Y ~30%, Width ~35%, Height ~35% for a centered medium inset.
 2. **Thick border**: Increase Border to ~75%. The white outline becomes prominently visible (approximately 12 pixels wide).
@@ -305,7 +327,7 @@ These exercises progress from basic window positioning to layered compositing wi
 *Inverted Inset Composite — simulated result across source images.*
 **Source**: High-contrast footage — strong lighting, distinct bright and dark regions.
 
-**Objective**: Combine window compositing with the Mirror luma inversion to create a negative-within-positive frame.
+**What You'll Create**: Combine window compositing with the Mirror luma inversion to create a negative-within-positive frame.
 
 1. **Set up window**: Position a medium window — Window X ~30%, Window Y ~25%, Width ~40%, Height ~40%.
 2. **Enable border**: Turn Border On with Border pot at ~50% for a visible white frame.
@@ -321,9 +343,6 @@ These exercises progress from basic window positioning to layered compositing wi
 
 ## Tips
 
-- **Minimum window is 64×64**: Even with Width and Height at zero, the window is never smaller than 64 pixels in each dimension, ensuring it is always visible.
-- **Border eats into the window**: The border is drawn inward from the window edges. A very thick border on a small window can consume most of the video area inside.
-- **Border width is coarse**: Only the top 4 bits of the pot register are used, giving 16 discrete steps (0–15 pixels). Fine pot movements near the bottom of the range may not produce visible changes.
 - **Mirror is tonal, not spatial**: The Mirror toggle inverts luminance values (bitwise NOT), not the spatial arrangement of pixels. It creates a photographic-negative effect, not a horizontal or vertical flip.
 - **Shadow pot is reserved**: The Shadow knob (Pot 6) is mapped in the register file but does not modulate the shadow effect. Shadow is controlled solely by the Shadow toggle (Toggle 8).
 - **Feedback routing**: Connect the Encore output back to its input for recursive window-in-window effects. Each feedback pass creates a smaller, darker copy of the window nested inside itself.
@@ -339,11 +358,10 @@ These exercises progress from basic window positioning to layered compositing wi
 | **Bypass** | A signal routing mode that sends the input directly to the output, skipping all processing stages. |
 | **Compositing** | Combining multiple visual elements into a single output frame, typically by layering one image over another. |
 | **Drop Shadow** | A darkened duplicate of a foreground element offset in position to create the illusion of depth or floating. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values, used for wet/dry mixing. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **PIP** | Picture-in-Picture; a compositing technique that displays one video source inside a window overlaid on another. |
 | **Quantel** | A pioneering British digital video effects company whose hardware defined broadcast compositing from the 1970s onward. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

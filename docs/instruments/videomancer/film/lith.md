@@ -68,6 +68,14 @@ At moderate settings, Lith produces the subtle warmth and gentle grain of a care
 
 ---
 
+## Quick Start
+
+1. **Start with Paper at maximum**: The Paper control scales the entire transfer curve. Set it high first, then adjust Exposure and Spread to place the threshold where you want it.
+2. **Dilute developer for subtlety**: Dilute mode gives you four gradual steepness levels via the Infection knob. Strong mode is dramatic but leaves little room for nuance.
+3. **Grain follows the transition zone**: The grain noise only appears in the mid-tone band between the low and high threshold edges. Widening the Spread widens the grain band.
+
+---
+
 ## Background
 
 ### Infectious Development
@@ -94,6 +102,8 @@ Lith prints exhibit pronounced grain, but it is not uniformly distributed. The g
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -222,6 +232,10 @@ The five toggles control independent binary options that modify different stages
 
 Controls the wet/dry crossfade between the original input and the processed lith output. At 0%, the output is entirely the original (dry) signal. At 100%, the output is entirely the processed (wet) signal. Intermediate values blend the two, which can create a subtle lith-tinted overlay on the original — a gentler version of the effect that preserves some of the source's tonal range while adding warmth and grain.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -243,7 +257,7 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 *Basic Lith Threshold — simulated result across source images.*
 **Source**: A portrait or figure with a full tonal range — both deep shadows and bright highlights.
 
-**Objective**: Learn the fundamental lith threshold behavior: Exposure, Spread, and their interaction with Paper white.
+**What You'll Create**: Learn the fundamental lith threshold behavior: Exposure, Spread, and their interaction with Paper white.
 
 1. **Set Paper to maximum**: Turn Paper fully clockwise to set the brightest possible highlight.
 2. **Center the threshold**: Set Exposure to about 50%. The image should show a clear division between black and white regions.
@@ -270,7 +284,7 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 *Infectious Development and Toning — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — overcast skies, fog, or soft lighting.
 
-**Objective**: Explore the infectious development curve and warm brown toning.
+**What You'll Create**: Explore the infectious development curve and warm brown toning.
 
 1. **Set a moderate threshold**: Exposure ~50%, Spread ~40%, Paper ~90%.
 2. **Sweep Infection**: Slowly increase Infection from zero. Watch the mid-tone transition steepen — smooth gradients collapse into sharper divisions.
@@ -298,7 +312,7 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 *Full Lith Darkroom — simulated result across source images.*
 **Source**: High-contrast material — backlit silhouettes, stage lighting, or architectural shadows.
 
-**Objective**: Combine all controls for a complete lith darkroom print with grain, toning, and split-tone.
+**What You'll Create**: Combine all controls for a complete lith darkroom print with grain, toning, and split-tone.
 
 1. **Establish the print**: Exposure ~60%, Spread ~30%, Infection ~80%, Paper ~85%.
 2. **Strong developer**: Toggle Developer to Strong for maximum infectious contrast.
@@ -315,9 +329,6 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 
 ## Tips
 
-- **Start with Paper at maximum**: The Paper control scales the entire transfer curve. Set it high first, then adjust Exposure and Spread to place the threshold where you want it.
-- **Dilute developer for subtlety**: Dilute mode gives you four gradual steepness levels via the Infection knob. Strong mode is dramatic but leaves little room for nuance.
-- **Grain follows the transition zone**: The grain noise only appears in the mid-tone band between the low and high threshold edges. Widening the Spread widens the grain band.
 - **Warmth is fixed at Y=400**: The warm brown toning always activates below lith Y=400 regardless of the Exposure setting. This means the color boundary is independent of the contrast boundary.
 - **Split tone adds depth**: Enabling Split creates a warm-shadow / cool-highlight contrast that prevents the image from looking monotone even at extreme settings.
 - **Mix for tinted overlay**: Pulling Mix back from 100% blends the lith processing with the original, creating a color-tinted version of the source rather than a full replacement.
@@ -338,9 +349,9 @@ These exercises progress from basic threshold printing to full lith darkroom emu
 | **Lith Printing** | A photographic darkroom process using dilute lith developer and overexposure to produce extreme contrast with warm-toned shadows. |
 | **Mid-tone Flag** | A per-pixel boolean indicating that the input luminance falls within the transition zone between the low and high threshold edges. |
 | **Paper White** | The maximum brightness of the unexposed paper surface in a photographic print; in Lith, the ceiling of the transfer curve. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Tone** | A toning technique where shadows and highlights receive different color casts — typically warm shadows and cool highlights. |
 | **Transfer Curve** | The mathematical function mapping input luminance to output luminance, here shaped by infectious development dynamics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

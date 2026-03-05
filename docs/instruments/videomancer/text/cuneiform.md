@@ -68,6 +68,14 @@ At small cell sizes the effect is subtle, producing a textured overlay that hint
 
 ---
 
+## Quick Start
+
+1. **Start with 8×8 cells**: The default 4×4 grid is dense enough that marks are hard to see individually. Step up to 8×8 or 12×12 for clearly visible wedge impressions before fine-tuning.
+2. **Grain sells the surface**: Even a small amount of surface grain (20–30%) dramatically increases the realism of the clay surface effect. The contrast between rough clay and smooth impressions is key.
+3. **Fixed mode for texture**: When you want a uniform graphic texture rather than a gradient-responsive rendering, switch to Fixed direction. All marks align the same way, emphasizing tonal variation over spatial structure.
+
+---
+
 ## Background
 
 ### Cuneiform Writing
@@ -90,6 +98,8 @@ The warm, matte background on which marks appear is modeled after unfired river 
 ---
 
 ## Signal Flow
+
+Cell Sampling → Gradient + Wedge Size → Triangle Inside Test → Clay Surface Render
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Selects the cell grid resolution from four sizes: 4×4, 8×8, 12×12, or 16×16 
 | Default | 50% |
 | Suffix | % |
 
-Controls the depth of each wedge impression by scaling the wedge's half-width within its cell. At zero, all marks vanish — the entire frame becomes unmarked clay surface. At maximum, wedge marks fill their cells completely, leaving almost no clay visible. The impression depth interacts with cell luminance: the per-cell brightness sets the baseline wedge size, and this control scales that baseline. Increasing depth on a high-contrast source produces a dramatic range from hairline strokes in bright areas to solid filled cells in shadows.
+At zero, all marks vanish — the entire frame becomes unmarked clay surface. At maximum, wedge marks fill their cells completely, leaving almost no clay visible. The impression depth interacts with cell luminance: the per-cell brightness sets the baseline wedge size, and this control scales that baseline. Increasing depth on a high-contrast source produces a dramatic range from hairline strokes in bright areas to solid filled cells in shadows. Internally, controls the depth of each wedge impression by scaling the wedge's half-width within its cell.
 
 ---
 
@@ -178,7 +188,7 @@ Controls the depth of each wedge impression by scaling the wedge's half-width wi
 | Default | 50% |
 | Suffix | % |
 
-Adjusts the overall contrast of the rendered output by modulating the luminance range used for wedge size calculation. At lower values, the difference between light and dark cells is compressed — all wedges appear similar in size. At higher values, the full dynamic range of the source is exploited, producing a wider variation between thin bright-area marks and heavy dark-area impressions.
+At lower values, the difference between light and dark cells is compressed — all wedges appear similar in size. At higher values, the full dynamic range of the source is exploited, producing a wider variation between thin bright-area marks and heavy dark-area impressions. Internally, adjusts the overall contrast of the rendered output by modulating the luminance range used for wedge size calculation.
 
 ---
 
@@ -189,7 +199,7 @@ Adjusts the overall contrast of the rendered output by modulating the luminance 
 | Default | 25% |
 | Suffix | % |
 
-Controls the intensity of the LFSR pseudo-random grain texture applied to the clay surface. At zero, the clay is perfectly smooth and uniform. As you increase the control, the surface develops an increasingly rough, granular texture that simulates the natural irregularities of hand-shaped clay. The grain is applied only to non-impression pixels — the wedge marks themselves remain smooth, creating a visual contrast between the polished impression and the rough surrounding surface.
+At zero, the clay is perfectly smooth and uniform. As you increase the control, the surface develops an increasingly rough, granular texture that simulates the natural irregularities of hand-shaped clay. The grain is applied only to non-impression pixels — the wedge marks themselves remain smooth, creating a visual contrast between the polished impression and the rough surrounding surface. Internally, controls the intensity of the LFSR pseudo-random grain texture applied to the clay surface.
 
 ---
 
@@ -239,6 +249,21 @@ The five toggles configure the rendering mode and output routing. Direction and 
 
 Crossfades between the original (dry) video signal and the cuneiform-rendered (wet) signal. At 0% the output is pure dry — the original video. At 100% the output is pure wet — fully rendered clay tablet. Intermediate values blend the two, allowing the cuneiform texture to float as a semi-transparent overlay on the source. This is particularly effective at low mix values where the wedge marks appear as subtle textural annotations on an otherwise normal image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Cuneiform processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -260,7 +285,7 @@ These exercises progress from basic grid rendering to full tablet composition. E
 *Reed Impressions — simulated result across source images.*
 **Source**: A portrait or figure with strong tonal contrast — face, hands, or a figure against a background.
 
-**Objective**: Learn how cell size and impression depth interact to create wedge-mark density and weight.
+**What You'll Create**: Learn how cell size and impression depth interact to create wedge-mark density and weight.
 
 1. **Large grid**: Set Cell Size to step 3 (16×16). The image dissolves into a sparse field of large wedge marks.
 2. **Impression depth**: Sweep Impress Dep from 0 to 100%. Watch marks grow from invisible to cell-filling.
@@ -287,7 +312,7 @@ These exercises progress from basic grid rendering to full tablet composition. E
 *Gradient Tracing — simulated result across source images.*
 **Source**: Footage with strong directional edges — architecture, geometric patterns, or diagonal lines.
 
-**Objective**: Explore how gradient-driven wedge orientation traces edge structure in the source.
+**What You'll Create**: Explore how gradient-driven wedge orientation traces edge structure in the source.
 
 1. **Prepare**: Set Cell Size to step 1 (8×8), Impress Dep to ~60%, Contrast to ~50%.
 2. **Observe orientations**: Look at how wedge marks point in different directions across the frame. Near vertical edges, marks point horizontally. In uniform areas, marks follow diagonal patterns based on cell position.
@@ -314,7 +339,7 @@ These exercises progress from basic grid rendering to full tablet composition. E
 *Ancient Artifact — simulated result across source images.*
 **Source**: A slowly moving camera feed or nature footage with organic textures — water, foliage, or clouds.
 
-**Objective**: Combine all parameters to create a convincing clay tablet artifact from live video.
+**What You'll Create**: Combine all parameters to create a convincing clay tablet artifact from live video.
 
 1. **Base**: Cell Size step 2 (12×12), Impress Dep ~80%, Contrast ~60%.
 2. **Surface**: Set Surf Grain to ~70% for heavy clay texture. Rotate Clay Tint to ~45° for a warm amber tone.
@@ -330,9 +355,6 @@ These exercises progress from basic grid rendering to full tablet composition. E
 
 ## Tips
 
-- **Start with 8×8 cells**: The default 4×4 grid is dense enough that marks are hard to see individually. Step up to 8×8 or 12×12 for clearly visible wedge impressions before fine-tuning.
-- **Grain sells the surface**: Even a small amount of surface grain (20–30%) dramatically increases the realism of the clay surface effect. The contrast between rough clay and smooth impressions is key.
-- **Fixed mode for texture**: When you want a uniform graphic texture rather than a gradient-responsive rendering, switch to Fixed direction. All marks align the same way, emphasizing tonal variation over spatial structure.
 - **Mix for overlay**: At 30–50% mix, the cuneiform marks appear as a translucent annotation layer over the original video — useful for creating a palimpsest or archaeological overlay aesthetic.
 - **Register lines for composition**: The horizontal dividers create natural reading bands. Use 3 or 4 for a classic Sumerian tablet layout.
 - **Feedback loops**: Route the output back to the input for recursive inscription — wedge marks are re-tessellated and re-impressed, creating increasingly abstract geometric structures.
@@ -350,12 +372,12 @@ These exercises progress from basic grid rendering to full tablet composition. E
 | **Gradient** | The rate of change of luminance between adjacent cells; used to determine wedge orientation. |
 | **Impression** | The wedge or bar mark rendered within each cell, simulating a stylus pressed into clay. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to produce surface grain noise. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Register** | In cuneiform scholarship, a horizontal band or section of a clay tablet containing a row of text; replicated here as separator lines. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific moment and holds it constant until the next sample trigger. |
 | **Stylus** | The reed writing implement used to make cuneiform impressions; the tip was typically triangular in cross-section. |
 | **Tablet** | The clay slab on which cuneiform was inscribed; simulated here by the warm-toned background surface. |
 | **Tessellation** | Dividing a plane into non-overlapping regular shapes (here, rectangles) that cover the entire surface. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At subtle settings, Diorama adds a gentle atmospheric perspective — distant ob
 
 ---
 
+## Quick Start
+
+1. **Use zone visualization for setup**: Enable Show Zones (Toggle 9) to see exactly how pixels are being classified before dialing in fog and contrast. This saves time when fine-tuning the Parallax threshold.
+2. **Start with Fog Depth, then add contrast**: Set your fog blend level first with contrast at unity (50%). Then sweep contrast to amplify or soften the depth separation. Working in this order avoids confusion about which parameter is doing what.
+3. **Invert Depth for dark-subject footage**: If your subject is darker than the background, enable Invert Depth so the subject is classified as near (foreground) and retains full color and contrast.
+
+---
+
 ## Background
 
 ### Atmospheric Perspective in Painting
@@ -94,6 +102,8 @@ Rather than treating depth as a continuous gradient, Diorama can quantize the lu
 ---
 
 ## Signal Flow
+
+Input Registration → Zone Classification → Fog Blending → Contrast → Output Saturation Clamp → Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -156,7 +166,7 @@ The contrast stage sits *after* fog blending, meaning it amplifies or compresses
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the sensitivity of the depth zone classifier. At minimum, the near and far thresholds collapse to the midpoint — nearly all pixels fall into the mid zone, receiving moderate fog treatment. As you increase Parallax, the thresholds spread apart: bright pixels are classified as near (receiving no fog), dark pixels as far (receiving maximum fog), and the mid zone widens. At maximum, the full brightness range is divided into clearly separated zones with distinct visual treatment.
+At minimum, the near and far thresholds collapse to the midpoint — nearly all pixels fall into the mid zone, receiving moderate fog treatment. As you increase Parallax, the thresholds spread apart: bright pixels are classified as near (receiving no fog), dark pixels as far (receiving maximum fog), and the mid zone widens. At maximum, the full brightness range is divided into clearly separated zones with distinct visual treatment. Internally, controls the sensitivity of the depth zone classifier.
 
 ---
 
@@ -167,7 +177,7 @@ Controls the sensitivity of the depth zone classifier. At minimum, the near and 
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the maximum fog intensity applied to the far zone. At zero, no fog is applied regardless of depth classification — the depth zones are computed but have no visible effect. As you increase Fog Depth, far-zone pixels are progressively blended toward the fog color while their chroma is desaturated. At maximum, far-zone pixels are nearly replaced by the fog color. The mid zone always receives a proportionally reduced fog treatment.
+At zero, no fog is applied regardless of depth classification — the depth zones are computed but have no visible effect. As you increase Fog Depth, far-zone pixels are progressively blended toward the fog color while their chroma is desaturated. At maximum, far-zone pixels are nearly replaced by the fog color. The mid zone always receives a proportionally reduced fog treatment. Internally, sets the maximum fog intensity applied to the far zone.
 
 ---
 
@@ -188,7 +198,7 @@ Determines the number of discrete depth steps between near and far. With fewer l
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the speed of the DDS-based lateral drift oscillator. At zero, the fog is static. As you increase Drift Speed, a slow animation modulates the fog brightness via a 16-bit phase accumulator that advances on each vertical sync. The effect is a subtle pulsing or breathing of the fog layer. At high speeds, the modulation becomes a rapid shimmer. The drift animation is only active when the Animate Fog toggle is enabled.
+At zero, the fog is static. As you increase Drift Speed, a slow animation modulates the fog brightness via a 16-bit phase accumulator that advances on each vertical sync. The effect is a subtle pulsing or breathing of the fog layer. At high speeds, the modulation becomes a rapid shimmer. The drift animation is only active when the Animate Fog toggle is enabled. Internally, controls the speed of the DDS-based lateral drift oscillator.
 
 ---
 
@@ -218,7 +228,7 @@ Adjusts the contrast of the fogged image. At the midpoint (50%), contrast is uni
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Layer Mode** | Luma | Edge |
+| **7 — Layer Mode** | Luma | Zone |
 | **8 — Fog Type** | Linear | Exp |
 | **9 — Drift Dir** | Left | Right |
 | **10 — Freeze** | Off | On |
@@ -237,7 +247,29 @@ The five toggles control independent binary options that modify different stages
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the balance between the original (dry) signal and the processed (wet) depth-layered result via the interpolator crossfade. At 0%, the output is the unprocessed input. At 100%, the output is fully processed. Intermediate positions blend the two, allowing subtle atmospheric effects by mixing a small amount of the fog-blended signal back into the original. This is the final stage before the bypass mux.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Diorama processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Diorama-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -260,7 +292,7 @@ These exercises progress from basic depth classification through atmospheric fog
 *Depth Zone Mapping — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear tonal separation — bright foreground subjects against a dark background, or a landscape with distinct highlights and shadows.
 
-**Objective**: Learn how the zone classifier divides the image by luminance and how the Parallax parameter controls zone boundaries.
+**What You'll Create**: Learn how the zone classifier divides the image by luminance and how the Parallax parameter controls zone boundaries.
 
 1. **Enable zone visualization**: Turn on Show Zones (Toggle 9). The image becomes a false-color map: green (near), yellow (mid), blue (far).
 2. **Sweep Parallax**: Slowly increase from 0% to 100%. At low values, most pixels are mid-zone (yellow). As you increase, green and blue regions grow as near and far thresholds separate.
@@ -287,7 +319,7 @@ These exercises progress from basic depth classification through atmospheric fog
 *Atmospheric Fog Grading — simulated result across source images.*
 **Source**: Landscape footage, cityscape, or any scene with natural depth variation — a park with trees at different distances works well.
 
-**Objective**: Explore fog blending and chroma desaturation to create atmospheric perspective.
+**What You'll Create**: Explore fog blending and chroma desaturation to create atmospheric perspective.
 
 1. **Set moderate Parallax**: About 50% to establish clear zone separation.
 2. **Sweep Fog Depth**: Slowly increase from 0% to 100%. Watch far-zone areas progressively fade into blue-gray haze while near-zone areas remain vivid.
@@ -314,7 +346,7 @@ These exercises progress from basic depth classification through atmospheric fog
 *Animated Paper Theater — simulated result across source images.*
 **Source**: High-contrast footage with moving subjects — dancers, performers, or any scene with figure-ground separation.
 
-**Objective**: Combine depth layering with animated fog drift and reduced layers for a theatrical paper-cutout aesthetic.
+**What You'll Create**: Combine depth layering with animated fog drift and reduced layers for a theatrical paper-cutout aesthetic.
 
 1. **Bold zones**: Set Parallax to about 70% for wide zone separation.
 2. **Heavy fog**: Increase Fog Depth to about 80%.
@@ -331,9 +363,6 @@ These exercises progress from basic depth classification through atmospheric fog
 
 ## Tips
 
-- **Use zone visualization for setup**: Enable Show Zones (Toggle 9) to see exactly how pixels are being classified before dialing in fog and contrast. This saves time when fine-tuning the Parallax threshold.
-- **Start with Fog Depth, then add contrast**: Set your fog blend level first with contrast at unity (50%). Then sweep contrast to amplify or soften the depth separation. Working in this order avoids confusion about which parameter is doing what.
-- **Invert Depth for dark-subject footage**: If your subject is darker than the background, enable Invert Depth so the subject is classified as near (foreground) and retains full color and contrast.
 - **Subtle mix for grading**: Set Mix to 30–50% for a gentle atmospheric grading effect that adds depth cues without overwhelming the source material.
 - **Custom fog for mood**: Use the Fog Color knob with Fog Custom enabled to dramatically shift the emotional tone — warm amber for nostalgia, deep blue for cold solitude, green for an eerie underwater feeling.
 - **Animate for organic feel**: Enable Animate Fog at low Drift Speed (10–20%) for a subtle fog breathing effect that prevents the depth layering from looking static and artificial.
@@ -352,14 +381,12 @@ These exercises progress from basic depth classification through atmospheric fog
 | **Depth Factor** | A per-pixel value (0–1023) computed from luminance, representing relative distance from the viewer; 0 = near, 1023 = far. |
 | **Desaturation** | Reducing the intensity of color components toward the neutral midpoint, making the image appear more gray. |
 | **Fog Blending** | Linear interpolation between the pixel color and a fog color, controlled by a depth-dependent blend factor. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two input values based on a third control value. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Phase Accumulator** | A register that increments by a fixed step each clock cycle, wrapping around to create a periodic ramp; the core of DDS. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone Classification** | The process of assigning each pixel to a depth zone (near, mid, or far) based on its luminance value relative to threshold parameters. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

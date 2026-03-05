@@ -68,6 +68,14 @@ The Clip Limit control allows clipping the tracked min/max inward, ignoring extr
 
 ---
 
+## Quick Start
+
+1. **Strength for subtlety**: Keep Strength at 40–60% for natural-looking contrast enhancement. Full strength creates visible per-line variation.
+2. **Clip Limit prevents anchor pixels**: A single hot pixel can dominate the auto-contrast. Clip Limit at 20–30% ignores these outliers.
+3. **Show Hist for diagnostics**: Use Show Hist mode to understand how your source material's dynamic range varies across scanlines before committing to settings.
+
+---
+
 ## Background
 
 ### What Is Histogram Equalization?
@@ -86,6 +94,8 @@ Without clipping, a single very bright or very dark pixel on a scanline can anch
 ---
 
 ## Signal Flow
+
+Y Channel → UV Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -133,7 +143,7 @@ Two key design choices shape the effect: (1) The ping-pong buffer — min/max ar
 | Default | 100% |
 | Suffix | % |
 
-Controls the blend between the equalized and original luminance. At 100%, the output is fully equalized — each scanline's dynamic range is maximally stretched. At 0%, the output is the original signal with no equalization. Intermediate values mix the two, providing a subtle contrast enhancement rather than a full equalization. This is the primary control for the intensity of the auto-contrast effect.
+At 100%, the output is fully equalized — each scanline's dynamic range is maximally stretched. At 0%, the output is the original signal with no equalization. Intermediate values mix the two, providing a subtle contrast enhancement rather than a full equalization. This is the primary control for the intensity of the auto-contrast effect. Internally, controls the blend between the equalized and original luminance.
 
 ---
 
@@ -144,7 +154,7 @@ Controls the blend between the equalized and original luminance. At 100%, the ou
 | Default | 100% |
 | Suffix | % |
 
-Sets the clip boundary as a fraction of the tracked min/max range. At 0%, no clipping — the full min-to-max range is used for the stretch. At higher values, the tracked range is narrowed by clipping inward from both extremes, ignoring outlier pixels and producing a more aggressive stretch of the midtone values. High clip limit combined with high strength creates extreme per-line auto-contrast that can dramatically reshape the image.
+At 0%, no clipping — the full min-to-max range is used for the stretch. At higher values, the tracked range is narrowed by clipping inward from both extremes, ignoring outlier pixels and producing a more aggressive stretch of the midtone values. High clip limit combined with high strength creates extreme per-line auto-contrast that can dramatically reshape the image. Internally, sets the clip boundary as a fraction of the tracked min/max range.
 
 ---
 
@@ -155,7 +165,7 @@ Sets the clip boundary as a fraction of the tracked min/max range. At 0%, no cli
 | Default | 50% |
 | Suffix | % |
 
-Adjusts the saturation of the UV channels relative to their equalized luminance. At center, chrominance passes unchanged. Above center, saturation is boosted to compensate for the contrast increase in the Y channel. Below center, saturation is reduced. This control prevents the equalized image from looking under- or over-saturated relative to the enhanced luminance contrast.
+At center, chrominance passes unchanged. Above center, saturation is boosted to compensate for the contrast increase in the Y channel. Below center, saturation is reduced. This control prevents the equalized image from looking under- or over-saturated relative to the enhanced luminance contrast. Internally, adjusts the saturation of the UV channels relative to their equalized luminance.
 
 ---
 
@@ -196,7 +206,7 @@ Lifts the floor of the equalized range. At 0%, the darkest equalized pixels map 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Bins** | 64 | 128 |
+| **7 — Bins** | 64 | 256 |
 | **8 — Show Hist** | Off | On |
 | **9 — Y Invert** | Off | On |
 | **10 — Sat Comp** | Off | On |
@@ -215,7 +225,29 @@ Switches 7–11 control the equalization resolution, display modes, and processi
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the equalized output and the original input signal. At 100%, the full equalized signal passes. Lowering the fader blends the original back in. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Histogram EQ processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Histogram EQ-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -238,7 +270,7 @@ These exercises progress from gentle contrast enhancement to aggressive per-line
 *Gentle Auto-Contrast — simulated result across source images.*
 **Source**: Low-contrast footage — indoor scenes, overcast day, or a flat color profile recording.
 
-**Objective**: Apply subtle auto-contrast to expand the available dynamic range without obvious artifacts.
+**What You'll Create**: Apply subtle auto-contrast to expand the available dynamic range without obvious artifacts.
 
 1. **Assess the input**: Enable Bypass and observe the low-contrast source. Note the washed-out shadows and dull highlights.
 2. **Full equalization**: Disable Bypass. Set Strength to ~80%, Clip Limit to ~20%. The image immediately snaps to higher contrast as the per-scanline stretch expands shadows and highlights.
@@ -265,7 +297,7 @@ These exercises progress from gentle contrast enhancement to aggressive per-line
 *Aggressive Line-by-Line Equalization — simulated result across source images.*
 **Source**: Footage with varying dynamic range across different parts of the frame — a scene with bright sky and dark foreground, or a mixed-lighting environment.
 
-**Objective**: Push the per-scanline equalization to create visible line-by-line tonal variation.
+**What You'll Create**: Push the per-scanline equalization to create visible line-by-line tonal variation.
 
 1. **Maximum equalization**: Set Strength to 100%, Clip Limit to ~60%. Each scanline independently maxes out its contrast, creating visible line-to-line brightness variation.
 2. **Observe the scanning effect**: Look at areas where the dynamic range changes vertically — the auto-contrast creates a visible banding effect as each scanline operates independently.
@@ -292,7 +324,7 @@ These exercises progress from gentle contrast enhancement to aggressive per-line
 *Creative Tonal Manipulation — simulated result across source images.*
 **Source**: Any footage — the effect is independent of content.
 
-**Objective**: Combine equalization with inversion and saturation manipulation for creative tonal effects.
+**What You'll Create**: Combine equalization with inversion and saturation manipulation for creative tonal effects.
 
 1. **Strong equalization**: Strength ~80%, Clip Limit ~40%.
 2. **Invert**: Enable Y Invert (Switch 9). The equalized image inverts — the auto-contrast now stretches the inverted tonal range.
@@ -308,9 +340,6 @@ These exercises progress from gentle contrast enhancement to aggressive per-line
 
 ## Tips
 
-- **Strength for subtlety**: Keep Strength at 40–60% for natural-looking contrast enhancement. Full strength creates visible per-line variation.
-- **Clip Limit prevents anchor pixels**: A single hot pixel can dominate the auto-contrast. Clip Limit at 20–30% ignores these outliers.
-- **Show Hist for diagnostics**: Use Show Hist mode to understand how your source material's dynamic range varies across scanlines before committing to settings.
 - **Black Level for mood**: Lifted blacks create a filmic, low-contrast-shadow look even with aggressive equalization on the highlights.
 - **Sat Comp is your friend**: Enable Sat Comp whenever using high Strength — it prevents the equalized image from looking unnaturally saturated or desaturated.
 - **Per-line variation as aesthetic**: The visible line-by-line tonal bandwidth of aggressive equalization is itself a distinctive visual texture — embrace it as a design element.
@@ -325,10 +354,9 @@ These exercises progress from gentle contrast enhancement to aggressive per-line
 | **CDF** | Cumulative Distribution Function; in histogram equalization, used as a transfer function to remap pixel values for uniform distribution. |
 | **Clip Limit** | A threshold that narrows the tracked dynamic range by ignoring extreme outlier values at both ends. |
 | **Dynamic Range** | The ratio between the brightest and darkest values in a signal; wider range means more tonal levels are utilized. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Histogram** | A graph showing the distribution of pixel values in an image; bunched histograms indicate low contrast. |
 | **Ping-Pong** | A double-buffering technique where tracking occurs on one scanline while processing uses the previous scanline's results. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -70,6 +70,14 @@ At conservative settings — small radius, low gravity, two particles — Hailst
 
 ---
 
+## Quick Start
+
+1. **Diamond shapes, not circles**: Hailstone uses Manhattan distance for efficiency — this produces diamond (rotated-square) particles. If you want rounder shapes, other Videomancer programs use Euclidean distance masks.
+2. **TOML names are aspirational**: The TOML labels (Count, Part Sz, Wind, Animate, etc.) describe a planned feature set. The VHDL implements a simpler system. Trust the knob labels on the panel but understand that some controls do not match their descriptions.
+3. **Pot 6 and Toggle 10 are inert**: Impact Brightness (Pot 6) and Animate (Toggle 10) are mapped to registers but unused in the VHDL. Turning them has no visible effect.
+
+---
+
 ## Background
 
 ### What Is Manhattan Distance?
@@ -92,6 +100,8 @@ In video compositing, an **additive overlay** adds the brightness of a foregroun
 ---
 
 ## Signal Flow
+
+Particle Physics → Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -201,8 +211,8 @@ Controls the horizontal radius of the splash bars that appear when a particle bo
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Size** | Small | Medium |
-| **8 — Surface** | Bounce | Shatter |
+| **7 — Size** | Small | Mixed |
+| **8 — Surface** | Bounce | Stick |
 | **9 — Wind** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -221,6 +231,21 @@ Switches 7–11 are independent binary options, though their TOML descriptions s
 | Suffix | % |
 
 Controls the wet/dry crossfade via three interpolator_u instances (one per YUV channel). At maximum (default), the output is the full particle composite over the source. At minimum, the output is the unprocessed input (delayed by 8 clocks). Intermediate values blend the particle overlay proportionally — useful for making the particles more subtle or ghostly against the source video.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Hailstone processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +268,7 @@ These exercises progress from simple falling particles through splash effects to
 *Falling Diamonds — simulated result across source images.*
 **Source**: Any video source with moderate brightness — a camera feed of a scene with visible midtones works well.
 
-**Objective**: Learn how particle radius, gravity, and bounce interact to create the basic hailstone animation.
+**What You'll Create**: Learn how particle radius, gravity, and bounce interact to create the basic hailstone animation.
 
 1. **Two particles**: Ensure Switch 7 is in its first position (two particles active).
 2. **Set moderate radius**: Turn Pot 1 to about 40%. Watch two bright diamond shapes fall across the screen.
@@ -271,7 +296,7 @@ These exercises progress from simple falling particles through splash effects to
 *Splash and Trail — simulated result across source images.*
 **Source**: A dark or low-contrast source that lets bright overlays stand out clearly.
 
-**Objective**: Explore splash bar compositing and the trail mode glow effect.
+**What You'll Create**: Explore splash bar compositing and the trail mode glow effect.
 
 1. **Prepare particles**: Set moderate radius (~30%), moderate gravity (~40%), strong bounce (~70%).
 2. **Increase splash width**: Turn Pot 4 to about 70%. When particles hit the bottom, bright horizontal bars flash across the lower portion of the screen.
@@ -299,7 +324,7 @@ These exercises progress from simple falling particles through splash effects to
 *Blue Ice Storm — simulated result across source images.*
 **Source**: Any source — the blue tint and large particles will dominate the image.
 
-**Objective**: Combine all active features for the most dramatic hailstone effect.
+**What You'll Create**: Combine all active features for the most dramatic hailstone effect.
 
 1. **Four particles**: Set Switch 7 to its second position.
 2. **Large particles**: Turn Pot 1 to about 80%.
@@ -317,9 +342,6 @@ These exercises progress from simple falling particles through splash effects to
 
 ## Tips
 
-- **Diamond shapes, not circles**: Hailstone uses Manhattan distance for efficiency — this produces diamond (rotated-square) particles. If you want rounder shapes, other Videomancer programs use Euclidean distance masks.
-- **TOML names are aspirational**: The TOML labels (Count, Part Sz, Wind, Animate, etc.) describe a planned feature set. The VHDL implements a simpler system. Trust the knob labels on the panel but understand that some controls do not match their descriptions.
-- **Pot 6 and Toggle 10 are inert**: Impact Brightness (Pot 6) and Animate (Toggle 10) are mapped to registers but unused in the VHDL. Turning them has no visible effect.
 - **Splash bars are brief**: Each splash lasts only 8 frames (~130 ms). With low gravity, bounces are infrequent and splashes rare. Increase gravity for more frequent impacts and more visible splash activity.
 - **Trail mode is not persistence**: Trail mode does not accumulate across frames — it is a per-pixel-clock computation that draws a glow halo around each particle's current position. The halo disappears instantly when the particle moves to a new position.
 - **Blue tint is selective**: The colour tint only applies to pixels that pass the hit or splash test. Background pixels are completely unaffected, so the tint acts as a colour key for the particle overlay.
@@ -334,15 +356,13 @@ These exercises progress from simple falling particles through splash effects to
 |------|------------|
 | **Additive Overlay** | A compositing method that adds foreground brightness to the background, never darkening it; values exceeding the maximum (1023) are clamped. |
 | **Bounce Restitution** | The proportion of velocity retained after a bounce; in Hailstone, the bounce velocity is a fixed value rather than a proportion of impact velocity. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gravity** | In a discrete-time particle system, a constant per-frame increment to vertical velocity that simulates downward acceleration. |
-| **Interpolator** | A hardware module that performs linear crossfading between two input values based on a mix parameter. |
 | **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator that produces a deterministic but random-looking bit sequence. |
 | **LUT** | Look-Up Table; a fundamental FPGA logic resource used to implement combinational functions. |
 | **Manhattan Distance** | The sum of absolute differences along each axis: |Δx| + |Δy|. Produces diamond-shaped distance contours rather than circular ones. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Splash Bar** | A bright horizontal stripe composited near the bottom boundary when a particle bounces, simulating the visual effect of impact. |
 | **SPSC Queue** | Single-Producer Single-Consumer lock-free queue used for cross-core communication in the Videomancer kernel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

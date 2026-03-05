@@ -68,6 +68,14 @@ At conservative settings — high threshold, thin lines, moderate brightness —
 
 ---
 
+## Quick Start
+
+1. **Start with Sensitivity**: This is the master density control. Begin at a moderate setting and listen to the source — high-contrast footage needs less sensitivity than flat, low-contrast material.
+2. **Gold vs. silver sets the mood**: Gold creates warmth and a sense of precious repair. Silver creates a cooler, more clinical or futuristic feeling. Toggle between them to find the right aesthetic.
+3. **Fill mode transforms the effect**: Without fill, Kintsugi produces delicate hairline traces. With fill, it produces broad metallic bands. The character of the effect changes dramatically.
+
+---
+
 ## Background
 
 ### The Art of Kintsugi
@@ -94,6 +102,8 @@ Rather than treating all edges equally, Kintsugi computes an **edge strength** �
 ---
 
 ## Signal Flow
+
+Input Register → Delta Compute → Threshold Compare → Gold/Silver Color Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -164,7 +174,7 @@ Controls the sensitivity of horizontal edge detection. The register value is inv
 | Default | 50% |
 | Suffix | % |
 
-Sets the peak brightness of the metallic line color. At full, edges glow with near-white gold or silver. At zero, the metallic overlay is dark and subtle — edges are tinted but not luminous. This control interacts with edge strength: the VHDL blends the source pixel toward the brightness value based on how large the detected delta was, so stronger edges always appear brighter than weaker ones even at moderate brightness settings.
+At full, edges glow with near-white gold or silver. At zero, the metallic overlay is dark and subtle — edges are tinted but not luminous. This control interacts with edge strength: the VHDL blends the source pixel toward the brightness value based on how large the detected delta was, so stronger edges always appear brighter than weaker ones even at moderate brightness settings. Internally, sets the peak brightness of the metallic line color.
 
 ---
 
@@ -216,8 +226,8 @@ Labeled "Fill Ctr" in the TOML configuration. This register is latched from `reg
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Metal** | Gold | Silver |
-| **8 — Cracks** | Fine | Bold |
+| **7 — Metal** | Gold | Pltnm |
+| **8 — Cracks** | Fine | Shatter |
 | **9 — Glow** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -236,6 +246,10 @@ The five toggle bits are decoded independently from `registers_in(6)`. Two contr
 | Suffix | % |
 
 Controls the wet/dry crossfade between the delayed original signal and the gold-traced output via three `interpolator_u` instances (one per Y/U/V channel). At 0% (register 0), the output is the delayed input — no metallic traces visible. At 100% (register 1023), the output is fully the composed gold/silver signal. Intermediate values create a semi-transparent metallic overlay where the gold lines are partially blended with the original source, useful for subtle edge enhancement without overwhelming the image.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +272,7 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 *Thin Gold Traces — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subjects and moderate contrast — faces, architecture, or natural scenes with defined contours.
 
-**Objective**: Learn how edge threshold and brightness create subtle metallic edge highlights.
+**What You'll Create**: Learn how edge threshold and brightness create subtle metallic edge highlights.
 
 1. **Start clean**: Set Sensitivity to ~40%. Only the strongest edges in the source are detected — major contours and object boundaries.
 2. **Add gold**: Increase Gold Brightness to ~70%. The detected edges glow with a golden hue.
@@ -285,7 +299,7 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 *Wide Metallic Bands — simulated result across source images.*
 **Source**: Footage with strong tonal regions — high-contrast scenes, silhouettes, or graphic patterns.
 
-**Objective**: Explore fill mode and line width to create broad metallic contours.
+**What You'll Create**: Explore fill mode and line width to create broad metallic contours.
 
 1. **Enable fill mode**: Set Cracks (Toggle 8) beyond the first position to activate gap filling. The metallic traces immediately widen.
 2. **Line width**: Increase Line Thickness to ~80%. Each detected edge now extends for many pixels, creating broad metallic bands.
@@ -312,7 +326,7 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 *Golden Web Overlay — simulated result across source images.*
 **Source**: Any footage, especially material with varied textures and tonal ranges.
 
-**Objective**: Combine all active parameters to create a dense golden web overlay, then use Mix for partial transparency.
+**What You'll Create**: Combine all active parameters to create a dense golden web overlay, then use Mix for partial transparency.
 
 1. **Maximum detection**: Set Sensitivity and Crack Density both to ~90%. Both horizontal and lookback detectors fire on subtle transitions.
 2. **Enable both modes**: Set Metal toggle to combined detection, Cracks toggle to fill mode.
@@ -329,9 +343,6 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 
 ## Tips
 
-- **Start with Sensitivity**: This is the master density control. Begin at a moderate setting and listen to the source — high-contrast footage needs less sensitivity than flat, low-contrast material.
-- **Gold vs. silver sets the mood**: Gold creates warmth and a sense of precious repair. Silver creates a cooler, more clinical or futuristic feeling. Toggle between them to find the right aesthetic.
-- **Fill mode transforms the effect**: Without fill, Kintsugi produces delicate hairline traces. With fill, it produces broad metallic bands. The character of the effect changes dramatically.
 - **Warmth at zero = platinum**: With the Warmth knob fully counter-clockwise, gold mode produces near-neutral chroma — effectively a bright platinum rather than warm gold.
 - **Mix for subtlety**: At 100% mix, the metallic lines dominate. Drop to 40–60% for a subtle golden edge enhancement that preserves the source material's character.
 - **Combined detection for texture**: Enable the lookback path (Metal toggle) to catch diagonal and textural edges that horizontal-only detection misses. This is especially effective on organic material like foliage, fabric, and skin.
@@ -349,13 +360,11 @@ These exercises progress from basic edge tracing to complex metallic texturing, 
 | **Edge detection** | The process of identifying pixel locations where luminance changes abruptly, indicating boundaries between distinct regions. |
 | **Fill counter** | A countdown register that holds the edge-active flag for a configurable number of pixels after an edge trigger, widening detected edges into bands. |
 | **Finite difference** | A discrete approximation of a derivative, computed as the difference between adjacent sample values. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. |
 | **Kintsugi** | Japanese art of repairing broken pottery with gold-dusted lacquer, celebrating the repair as part of the object's history. |
 | **Lookback** | A delayed comparison where the current pixel is compared to a pixel several clocks earlier in the scan line, catching broader transitions. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages on each clock cycle; Kintsugi uses an 8-clock pipeline. |
 | **Wabi-sabi** | Japanese aesthetic rooted in the acceptance of transience and imperfection. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

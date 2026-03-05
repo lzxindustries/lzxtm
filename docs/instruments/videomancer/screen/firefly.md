@@ -35,6 +35,14 @@ Two color palettes offer distinct aesthetic starting points. Warm mode tints all
 
 ---
 
+## Quick Start
+
+1. **Start with Pulse On for the firefly effect**: The rhythmic brightness modulation is what gives Firefly its biological character. Without pulse, the particles are steady glowing dots — pleasant, but less evocative of their namesake.
+2. **Size and Brightness together control visual weight**: Large size with low brightness produces soft, barely-there halos. Small size with high brightness produces intense, crisp points. Matching both to moderate levels gives the most naturalistic glow.
+3. **Manhattan distance means diamonds, not circles**: The diamond-shaped glow is a feature, not a limitation. At small sizes it is barely noticeable; at large sizes it becomes a distinctive geometric signature that recalls pixel-art traditions.
+
+---
+
 ## Background
 
 ### Bioluminescence
@@ -61,6 +69,8 @@ True Euclidean distance — $\sqrt{dx^2 + dy^2}$ — requires multiplication and
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → Internal LFSR16 → 8 Particle Position → ... → Sync Pipeline → Bypass Mux
 
 ```
 Synthesis Engine (no input video required)
@@ -167,7 +177,7 @@ Controls the notional speed of particle drift. Although this parameter is mapped
 | Default | 38% |
 | Suffix | % |
 
-Sets the rendering radius of each particle by extracting the upper 8 bits of the 10-bit register value. At minimum, particles render as tiny points with almost no visible extent — single-pixel diamonds barely distinguishable from noise. At maximum, each particle projects a large diamond-shaped glow field where brightness falls off linearly from center to edge via Manhattan distance. Larger radii dramatically increase the chance of particle overlap, causing additive brightness accumulation that can saturate to full white where multiple glow fields intersect. The interaction between Size and Brightness determines the visual weight of each particle: large size with moderate brightness produces soft, diffuse halos, while small size with high brightness produces intense pinpoints.
+At minimum, particles render as tiny points with almost no visible extent — single-pixel diamonds barely distinguishable from noise. At maximum, each particle projects a large diamond-shaped glow field where brightness falls off linearly from center to edge via Manhattan distance. Larger radii dramatically increase the chance of particle overlap, causing additive brightness accumulation that can saturate to full white where multiple glow fields intersect. The interaction between Size and Brightness determines the visual weight of each particle: large size with moderate brightness produces soft, diffuse halos, while small size with high brightness produces intense pinpoints. Internally, sets the rendering radius of each particle by extracting the upper 8 bits of the 10-bit register value.
 
 ---
 
@@ -239,6 +249,10 @@ Toggles 7–11 configure five independent binary aspects of the particle system.
 
 Controls the wet/dry mix ratio between the delayed input video and the synthesized particle field. At maximum (1023), the output is fully wet — the synthesized particles at full intensity mixed over the input. At minimum (0), the output is fully dry — only the delayed input passes through with no particle contribution. Intermediate values create a translucent overlay where particles appear as soft ghosts superimposed on the source. For pure synthesis without any input signal, set Mix to maximum to display only the particle field. When using Firefly as an overlay effect on external video, reduce Mix to blend particles at lower opacity for a subtle ambient glow layer.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +263,7 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 
 <img src={firefly_exercise1_result} alt="Warm Drift result"/>
 *Warm Drift — simulated result across source images.*
-**Objective**: Create a gentle field of warm amber fireflies drifting across a dark background, observing the Brownian path characteristics and Manhattan distance glow geometry.
+**What You'll Create**: Create a gentle field of warm amber fireflies drifting across a dark background, observing the Brownian path characteristics and Manhattan distance glow geometry.
 
 1. **Verify synthesis mode**: Ensure no external video is connected, or set Mix to maximum for pure synthesis output.
 2. **Set warm tones**: Color toggle to Warm. Eight amber particles should be visible.
@@ -267,7 +281,7 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 
 <img src={firefly_exercise2_result} alt="Bioluminescent Pulse result"/>
 *Bioluminescent Pulse — simulated result across source images.*
-**Objective**: Add rhythmic pulse modulation to the particle field, creating a breathing, organic bioluminescent display that alternates between bright and dim states.
+**What You'll Create**: Add rhythmic pulse modulation to the particle field, creating a breathing, organic bioluminescent display that alternates between bright and dim states.
 
 1. **Start from Exercise 1 settings**: Warm color, moderate size and brightness.
 2. **Enable pulse**: Toggle Pulse to On. The entire field should begin a slow ~3.75 Hz blink.
@@ -284,7 +298,7 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 
 <img src={firefly_exercise3_result} alt="Dense Cool Constellation result"/>
 *Dense Cool Constellation — simulated result across source images.*
-**Objective**: Maximize particle visibility by pushing size and brightness to their extremes, creating a dense field of overlapping cool-toned glows that fill the screen with luminous geometry.
+**What You'll Create**: Maximize particle visibility by pushing size and brightness to their extremes, creating a dense field of overlapping cool-toned glows that fill the screen with luminous geometry.
 
 1. **Switch to cool palette**: Set Color to Cool for blue-cyan tones.
 2. **Maximize size**: Set Size to ~100%. Each particle now projects a very large diamond glow covering substantial screen area.
@@ -301,9 +315,6 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 
 ## Tips
 
-- **Start with Pulse On for the firefly effect**: The rhythmic brightness modulation is what gives Firefly its biological character. Without pulse, the particles are steady glowing dots — pleasant, but less evocative of their namesake.
-- **Size and Brightness together control visual weight**: Large size with low brightness produces soft, barely-there halos. Small size with high brightness produces intense, crisp points. Matching both to moderate levels gives the most naturalistic glow.
-- **Manhattan distance means diamonds, not circles**: The diamond-shaped glow is a feature, not a limitation. At small sizes it is barely noticeable; at large sizes it becomes a distinctive geometric signature that recalls pixel-art traditions.
 - **Use Cool palette for underwater scenes**: The blue-cyan tones combine beautifully with dark or blue-tinted input video to evoke deep-sea bioluminescence — anglerfish lures, jellyfish bells, dinoflagellate blooms.
 - **Mix fader enables overlay compositing**: feeding a video source and reducing Mix to 30–50% creates a delicate particle overlay that adds depth and atmosphere without overwhelming the source content.
 - **Extended observation reveals Brownian character**: The true beauty of Brownian motion emerges over minutes, not seconds. Let the program run and watch particles gradually explore the full screen area — occasionally clustering, occasionally dispersing, always drifting.
@@ -324,6 +335,7 @@ These exercises explore Firefly's ambient synthesis capabilities, progressing fr
 | **Particle system** | A computer graphics technique representing phenomena as collections of independent point masses, each with position and visual attributes. Firefly maintains 8 particles in register fabric with no frame buffer. |
 | **Pulse modulation** | Periodic variation of signal amplitude. Firefly's pulse halves brightness every 8 frames at 60 Hz, producing a ~3.75 Hz on/off rhythm that mimics natural firefly flash patterns. |
 | **Wrap-around** | Position arithmetic where values exceeding the screen boundary (1280×720) are reset to zero, causing particles to reappear at the opposite edge. A simple form of periodic boundary condition. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer video processing pipeline. U and V are centered at 512 (neutral gray). |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

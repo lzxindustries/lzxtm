@@ -68,6 +68,14 @@ Because the modulation is purely address-based rather than amplitude-based, Sync
 
 ---
 
+## Quick Start
+
+1. **Start with H only**: Set V Mod Amt to zero when learning the program to isolate horizontal displacement before adding vertical complexity.
+2. **Low Freq, High Amt for drama**: A single large-amplitude arch across the frame creates the most cinematic Vasulka-style compression effect.
+3. **Tear sparingly**: The tear effect is powerful —  a thin tear band (10–20%) adds punctuation without overwhelming the image.
+
+---
+
 ## Background
 
 ### Vasulka Sync Manipulation
@@ -227,6 +235,10 @@ The five toggles configure waveform shape, special effects, and bypass. H Wave a
 
 Mix crossfades between the unprocessed input (dry) and the sync-modulated output (wet). At minimum the original image passes through; at maximum the full distortion is visible. Intermediate positions blend the two, which can produce a ghostly double-image effect as the displaced and undisplaced versions overlay.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -248,7 +260,7 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 *Gentle Horizontal Waves — simulated result across source images.*
 **Source**: A high-contrast graphic with strong horizontal and vertical edges (e.g., a title card or grid pattern).
 
-**Objective**: Create slow, smooth sinusoidal displacement that makes the image breathe without tearing.
+**What You'll Create**: Create slow, smooth sinusoidal displacement that makes the image breathe without tearing.
 
 1. Set H Mod Amt to 30% for moderate displacement.
 2. Set H Mod Freq to 15% for a single gentle arch across the frame.
@@ -276,7 +288,7 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 *Ramp Shear with Vertical Blend — simulated result across source images.*
 **Source**: A face or recognisable form — the shearing effect is most dramatic when the viewer can detect the spatial disruption.
 
-**Objective**: Combine ramp H waveform with vertical modulation to create diagonal shearing.
+**What You'll Create**: Combine ramp H waveform with vertical modulation to create diagonal shearing.
 
 1. Set H Wave to Ramp, V Wave to Ramp.
 2. Set H Mod Amt to 50%, H Mod Freq to 40%.
@@ -304,7 +316,7 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 *Vasulka Tear Storm — simulated result across source images.*
 **Source**: Any video signal — the tear effect is visually compelling regardless of content.
 
-**Objective**: Create the violent horizontal tearing that characterises the Vasulka aesthetic.
+**What You'll Create**: Create the violent horizontal tearing that characterises the Vasulka aesthetic.
 
 1. Set H Mod Amt to 80%, H Mod Freq to 25%.
 2. Enable Tear and set Tear Width to 50%.
@@ -320,9 +332,6 @@ These exercises demonstrate the range of geometric distortion achievable with Sy
 
 ## Tips
 
-- **Start with H only**: Set V Mod Amt to zero when learning the program to isolate horizontal displacement before adding vertical complexity.
-- **Low Freq, High Amt for drama**: A single large-amplitude arch across the frame creates the most cinematic Vasulka-style compression effect.
-- **Tear sparingly**: The tear effect is powerful —  a thin tear band (10–20%) adds punctuation without overwhelming the image.
 - **Phase Link + Sine for organic motion**: Linked sine waveforms create complex Lissajous-like diagonal paths that feel natural.
 - **Mix for layering**: At 50% mix, the displaced and original images overlay, creating ghostly doubled geometry.
 - **Speed 0 for stills**: With Speed at zero the displacement is static — useful for controlled photographic distortion.

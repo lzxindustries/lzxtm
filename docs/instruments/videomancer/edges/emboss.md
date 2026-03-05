@@ -68,6 +68,14 @@ At moderate depth settings, Emboss creates convincing three-dimensional textures
 
 ---
 
+## Quick Start
+
+1. **Light Angle is the key creative control**: Rotating through the eight positions transforms the character of the emboss. Diagonal angles (SE, NW) produce the strongest sense of three-dimensionality. Cardinal angles (E, S, W, N) emphasize edges aligned perpendicular to the light.
+2. **Bias sets the canvas**: Think of Bias as the color of the surface the emboss is stamped into. Mid-gray is the classic emboss look. Black bias creates a lithographic plate effect. White bias creates a watermark appearance.
+3. **Subtle mix for texture overlay**: Setting Mix to 10–30% overlays a gentle relief texture onto the original video without overwhelming the source content — excellent for adding tactile "weight" to flat graphics.
+
+---
+
 ## Background
 
 ### Bas-Relief Sculpture
@@ -94,6 +102,8 @@ The Metal Tint control adds a luminance-dependent color shift to the source chro
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Wet/Dry Mix → Sync Delay → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ After direction selection, the combined gradient passes through depth scaling (m
 | Default | 50% |
 | Suffix | % |
 
-Controls the amplitude of the emboss effect by scaling the combined directional gradient before it is added to the bias level. At 0%, the gradient is fully attenuated and the output is determined entirely by the bias and contrast settings — effectively a flat gray field. As Depth increases, edges in the source image produce progressively stronger highlights and shadows in the output. At maximum, even subtle gradients in the source are amplified into strong relief, and the effect transitions from a gentle surface texture to a high-contrast edge detector.
+At 0%, the gradient is fully attenuated and the output is determined entirely by the bias and contrast settings — effectively a flat gray field. As Depth increases, edges in the source image produce progressively stronger highlights and shadows in the output. At maximum, even subtle gradients in the source are amplified into strong relief, and the effect transitions from a gentle surface texture to a high-contrast edge detector. Internally, controls the amplitude of the emboss effect by scaling the combined directional gradient before it is added to the bias level.
 
 ---
 
@@ -171,7 +181,7 @@ Selects the virtual light source direction from eight compass points. The pot's 
 | Default | 50% |
 | Suffix | % |
 
-Sets the DC offset added to the emboss gradient before output. At 0%, the bias is zero and the emboss output is centered around black — only positive gradients are visible. At the default 50% (register value 512), the bias places the neutral surface at mid-gray, allowing both highlights (above mid-gray) and shadows (below mid-gray) to be visible. At 100%, the neutral surface is near white and only negative gradients (shadows) appear as darker-than-white regions. The bias acts as a virtual surface color for the embossed relief.
+At 0%, the bias is zero and the emboss output is centered around black — only positive gradients are visible. At the default 50% (register value 512), the bias places the neutral surface at mid-gray, allowing both highlights (above mid-gray) and shadows (below mid-gray) to be visible. At 100%, the neutral surface is near white and only negative gradients (shadows) appear as darker-than-white regions. The bias acts as a virtual surface color for the embossed relief. Internally, sets the DC offset added to the emboss gradient before output.
 
 ---
 
@@ -233,6 +243,21 @@ Switches 7–11 configure independent qualitative aspects of the emboss effect. 
 
 Crossfades between the original (dry) signal and the embossed (wet) signal using three parallel interpolators — one each for Y, U, and V. At 0% (register 0), the output is entirely the original input. At 100% (register 1023, the default), the output is entirely the embossed result. Intermediate values produce a blend where the emboss texture is partially visible over the original image. This is particularly useful for subtle surface texturing: a low mix value overlays a gentle relief onto the source video without losing the original detail.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Emboss processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +279,7 @@ These exercises progress from basic directional emboss to complex metallic surfa
 *Sculptural Relief — simulated result across source images.*
 **Source**: A portrait or face with strong contours and varied skin tones.
 
-**Objective**: Learn how Depth, Light Angle, and Bias interact to create a convincing bas-relief.
+**What You'll Create**: Learn how Depth, Light Angle, and Bias interact to create a convincing bas-relief.
 
 1. **Basic relief**: Set Depth to ~50%. A subtle emboss appears — edges gain highlight/shadow pairs.
 2. **Rotate the light**: Slowly sweep Light Angle through all eight positions. Watch how the virtual illumination orbits the subject, revealing different contours at each angle.
@@ -281,7 +306,7 @@ These exercises progress from basic directional emboss to complex metallic surfa
 *Metallic Color Emboss — simulated result across source images.*
 **Source**: A brightly colored scene — flowers, painted surfaces, or color bars.
 
-**Objective**: Explore Source color mode and Metallic Tint for iridescent surfaces.
+**What You'll Create**: Explore Source color mode and Metallic Tint for iridescent surfaces.
 
 1. **Color relief**: Set Color to Source. The embossed relief now carries the original video's hue and saturation — edges are colored rather than monochrome.
 2. **Metal surface**: Increase Metal Tint from 0% toward ~60%. Watch the color shift — bright areas and dark areas take on complementary hues, mimicking anodized metal.
@@ -308,7 +333,7 @@ These exercises progress from basic directional emboss to complex metallic surfa
 *Edge Map Key Source — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, text overlays, or architectural elements with strong edges.
 
-**Objective**: Push Emboss into a high-contrast edge detector suitable as a key or mask source.
+**What You'll Create**: Push Emboss into a high-contrast edge detector suitable as a key or mask source.
 
 1. **Maximum depth**: Set Depth to 100%. Only the strongest gradients in the source should produce visible output.
 2. **Maximum contrast**: Set Contrast to 100%. The mid-range values collapse, leaving predominantly black and white.
@@ -325,9 +350,6 @@ These exercises progress from basic directional emboss to complex metallic surfa
 
 ## Tips
 
-- **Light Angle is the key creative control**: Rotating through the eight positions transforms the character of the emboss. Diagonal angles (SE, NW) produce the strongest sense of three-dimensionality. Cardinal angles (E, S, W, N) emphasize edges aligned perpendicular to the light.
-- **Bias sets the canvas**: Think of Bias as the color of the surface the emboss is stamped into. Mid-gray is the classic emboss look. Black bias creates a lithographic plate effect. White bias creates a watermark appearance.
-- **Subtle mix for texture overlay**: Setting Mix to 10–30% overlays a gentle relief texture onto the original video without overwhelming the source content — excellent for adding tactile "weight" to flat graphics.
 - **Sharpen fills in fine detail**: The base emboss can miss fine textures because the 1-pixel and 1-line gradient kernels are small. Sharpen boosts these fine edges back into visibility within the relief.
 - **Contrast as a threshold**: At extreme Contrast settings, the emboss becomes a binary edge map. Route this to another module as a key source for selective processing.
 - **Metal Tint for warmth**: Even a small Metal Tint value (10–20%) adds warmth and visual interest to Source color mode, breaking the monotony of a uniform emboss tint.
@@ -341,18 +363,16 @@ These exercises progress from basic directional emboss to complex metallic surfa
 |------|------------|
 | **Bas-Relief** | A sculptural technique where figures project slightly from a flat background, creating the illusion of depth through light and shadow. |
 | **Bias** | A DC offset added to a signal to shift its operating point; in Emboss, the neutral surface brightness level. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
 | **Deboss** | The opposite of emboss; pressing a design into a surface rather than raising it above the surface. |
 | **Dot Product** | A mathematical operation that projects one vector onto another; used in lighting calculations to determine surface brightness. |
 | **Gradient** | The rate of change of a value across space; in image processing, the difference between adjacent pixel values. |
 | **Heightfield** | A 2D representation of a 3D surface where pixel brightness represents height above a base plane. |
 | **Intaglio** | A printmaking technique where the image is incised into a surface and ink is held in the grooves. |
-| **Interpolator** | An FPGA IP block that computes weighted average (crossfade) between two input values based on a control parameter. |
 | **Line Buffer** | A BRAM-based memory storing one complete scanline of pixel data, enabling vertical comparisons between adjacent lines. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Sobel Operator** | A 3×3 convolution kernel used in image processing to compute horizontal and vertical gradient approximations for edge detection. |
 | **Surface Normal** | A vector perpendicular to a surface at a given point, used in lighting calculations to determine the angle of incidence. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

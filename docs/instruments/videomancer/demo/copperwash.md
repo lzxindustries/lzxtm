@@ -35,6 +35,14 @@ Four gradient modes are available — Rainbow, Warm, Cool, and Mono — each bia
 
 ---
 
+## Quick Start
+
+1. **Scroll Speed exactly at centre** (512) stops all motion, useful for static colour grading effects.
+2. **Low frequency + Warm/Cool mode** produces subtle colour temperature grading across the frame, ideal for tinting landscape footage.
+3. **Wobble + H Spread** together create the most complex plasma-like patterns as bands wave both horizontally and vertically.
+
+---
+
 ## Background
 
 ### The Amiga Copper Coprocessor
@@ -188,7 +196,7 @@ Brightness scales the luminance of the generated gradient from black to full int
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Gradient** | Rainbow | Warm |
+| **7 — Gradient** | Rainbow | Mono |
 | **8 — Blend** | Multiply | Add |
 | **9 — H Spread** | Off | On |
 | **10 — Smooth** | Steps | Smooth |
@@ -209,6 +217,10 @@ The five toggles configure gradient colour mode, blend behaviour, spatial spread
 
 Mix crossfades between the dry (unprocessed) input and the wet (gradient-blended) output. At 0% the output matches the input. At 100% the full gradient effect is visible.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -219,7 +231,7 @@ These exercises demonstrate copper wash effects from classic rainbow scrolling t
 
 <img src={copperwash_exercise1_result} alt="Classic Copper Rainbow Scroll result"/>
 *Classic Copper Rainbow Scroll — simulated result across source images.*
-**Objective**: Achieve the classic Amiga copper rainbow gradient scrolling over video.
+**What You'll Create**: Achieve the classic Amiga copper rainbow gradient scrolling over video.
 
 1. Set Gradient to Rainbow and Blend to Multiply.
 2. Scroll Speed to a gentle forward pace (~580).
@@ -239,7 +251,7 @@ These exercises demonstrate copper wash effects from classic rainbow scrolling t
 
 <img src={copperwash_exercise2_result} alt="Warm Sunset Tint result"/>
 *Warm Sunset Tint — simulated result across source images.*
-**Objective**: Apply a warm sunset colour wash using the warm gradient mode.
+**What You'll Create**: Apply a warm sunset colour wash using the warm gradient mode.
 
 1. Set Gradient to Warm, Blend to Multiply.
 2. Scroll Speed to 0 (stationary gradient).
@@ -259,7 +271,7 @@ These exercises demonstrate copper wash effects from classic rainbow scrolling t
 
 <img src={copperwash_exercise3_result} alt="Liquid Plasma Wash result"/>
 *Liquid Plasma Wash — simulated result across source images.*
-**Objective**: Create a psychedelic liquid plasma effect using wobble and additive blending.
+**What You'll Create**: Create a psychedelic liquid plasma effect using wobble and additive blending.
 
 1. Set Gradient to Rainbow, Blend to Add.
 2. Scroll Speed to 560 (gentle scroll).
@@ -280,9 +292,6 @@ These exercises demonstrate copper wash effects from classic rainbow scrolling t
 
 ## Tips
 
-- **Scroll Speed exactly at centre** (512) stops all motion, useful for static colour grading effects.
-- **Low frequency + Warm/Cool mode** produces subtle colour temperature grading across the frame, ideal for tinting landscape footage.
-- **Wobble + H Spread** together create the most complex plasma-like patterns as bands wave both horizontally and vertically.
 - **Stepped mode** at low frequency gives a classic Amiga copper bar look with clearly defined colour regions.
 - **Multiply blend** preserves input video contrast and detail better than additive, making it the preferred mode for subtle tinting.
 - **High frequency + smooth** produces a dense, seamless rainbow that blends into a soft pastel wash when viewed at normal distance.

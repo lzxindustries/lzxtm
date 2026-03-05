@@ -35,6 +35,14 @@ Block sizes are configurable from 8×8 up to 64×64 pixels, covering the range f
 
 ---
 
+## Quick Start
+
+1. **8×8 blocks with Grid Lines** produces the most authentic Spectrum screenshot look, especially with a pixelated or low-resolution source.
+2. **Speed at zero with Palette Offset** allows manual colour theme selection — sweep the offset to find pleasing ink/paper combinations.
+3. **Density is the content control** — it determines how much of the source's tonal structure is preserved in the ink/paper separation.
+
+---
+
 ## Background
 
 ### The ZX Spectrum Colour Model
@@ -185,7 +193,7 @@ Brightness scales the output luminance from black to full intensity. At zero the
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Spectrum | Pastel |
+| **7 — Palette** | Spectrum | Mono |
 | **8 — Pattern** | Checker | Stripe |
 | **9 — Flash** | Off | On |
 | **10 — Grid Lines** | Off | On |
@@ -206,6 +214,10 @@ The five toggles control palette variant, block pattern, flash emulation, grid v
 
 Mix crossfades between the dry (unprocessed) input and the wet (attribute-coloured) output. At 0% the output is the original video. At 100% the full block-colour effect is visible. Intermediate positions blend smoothly, overlaying the attribute grid semi-transparently over the source.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -216,7 +228,7 @@ These exercises demonstrate the classic Spectrum attribute aesthetic, from faith
 
 <img src={attrcycle_exercise1_result} alt="Authentic Spectrum Attribute Clash result"/>
 *Authentic Spectrum Attribute Clash — simulated result across source images.*
-**Objective**: Recreate the authentic ZX Spectrum attribute clash look with 8×8 blocks and static colours.
+**What You'll Create**: Recreate the authentic ZX Spectrum attribute clash look with 8×8 blocks and static colours.
 
 1. Set Block Size to step 1 (8×8 — smallest blocks).
 2. Set Speed to 0 (no cycling) and Palette Offset to 50%.
@@ -236,7 +248,7 @@ These exercises demonstrate the classic Spectrum attribute aesthetic, from faith
 
 <img src={attrcycle_exercise2_result} alt="Rainbow Cascade with Grid result"/>
 *Rainbow Cascade with Grid — simulated result across source images.*
-**Objective**: Create a rainbow cycling effect with visible grid lines, similar to Spectrum demo loading screens.
+**What You'll Create**: Create a rainbow cycling effect with visible grid lines, similar to Spectrum demo loading screens.
 
 1. Set Block Size to step 2 (16×16) for visible mosaic.
 2. Set Speed to 75% for smooth cycling.
@@ -255,7 +267,7 @@ These exercises demonstrate the classic Spectrum attribute aesthetic, from faith
 
 <img src={attrcycle_exercise3_result} alt="Flash and Mosaic Abstraction result"/>
 *Flash and Mosaic Abstraction — simulated result across source images.*
-**Objective**: Create an abstract blinking mosaic using large blocks, fast cycling, and flash.
+**What You'll Create**: Create an abstract blinking mosaic using large blocks, fast cycling, and flash.
 
 1. Set Block Size to step 4 (64×64) for extreme mosaic.
 2. Set Speed to 50% for moderate cycling.
@@ -274,9 +286,6 @@ These exercises demonstrate the classic Spectrum attribute aesthetic, from faith
 
 ## Tips
 
-- **8×8 blocks with Grid Lines** produces the most authentic Spectrum screenshot look, especially with a pixelated or low-resolution source.
-- **Speed at zero with Palette Offset** allows manual colour theme selection — sweep the offset to find pleasing ink/paper combinations.
-- **Density is the content control** — it determines how much of the source's tonal structure is preserved in the ink/paper separation.
 - **Checker vs Stripe** produces dramatically different spatial feel: checker creates quilt-like tessellation, stripe creates horizontal bands.
 - **Flash at slow speed** creates a hypnotic breathing effect where the entire screen periodically shifts between complementary colour schemes.
 - **Large blocks with high saturation** turn any video into an abstract colour field painting, retaining only the coarsest compositional structure.

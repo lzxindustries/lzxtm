@@ -35,6 +35,14 @@ When Video Mod is engaged the first oscillator's output is amplitude-modulated b
 
 ---
 
+## Quick Start
+
+1. **Near-unison beating**: Set two oscillators within 1–2 % of each other for slow, wide moire bands.
+2. **Harmonic ratios**: Set oscillators at 1:2:3 ratio (e.g., 25 %, 50 %, 75 %) for stable standing-wave geometric patterns.
+3. **Square + ring**: This combination produces the highest contrast; use Coupling below 50 % to keep it from clipping harshly.
+
+---
+
 ## Background
 
 ### The Spectron Heritage
@@ -193,6 +201,10 @@ The five toggles define the synthesis character: Routing chooses between smooth 
 
 **Mix** crossfades between the dry input and the synthesized interference pattern. At zero the output is the unaltered input; at maximum it is entirely the Spectron synthesis.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -203,7 +215,7 @@ These exercises explore Spectron's range from gentle drifting colour fields to a
 
 <img src={spectron_exercise1_result} alt="Slow Colour Drift result"/>
 *Slow Colour Drift — simulated result across source images.*
-**Objective**: Create a slowly evolving pastel colour field with gentle moire beating.
+**What You'll Create**: Create a slowly evolving pastel colour field with gentle moire beating.
 
 1. Set Osc 1 Freq to 25 % and Osc 2 Freq to 26 % — the 1 % difference creates a wide, slowly drifting beat.
 2. Set Osc 3 Freq to 50 % for a secondary spatial structure.
@@ -222,7 +234,7 @@ These exercises explore Spectron's range from gentle drifting colour fields to a
 
 <img src={spectron_exercise2_result} alt="Hard Moire Grid result"/>
 *Hard Moire Grid — simulated result across source images.*
-**Objective**: Produce a high-contrast diagonal moire grid using ring modulation and square waves.
+**What You'll Create**: Produce a high-contrast diagonal moire grid using ring modulation and square waves.
 
 1. Set Osc 1 Freq and Osc 2 Freq to 50 % each.
 2. Set Osc 3 Freq to 75 %.
@@ -240,7 +252,7 @@ These exercises explore Spectron's range from gentle drifting colour fields to a
 
 <img src={spectron_exercise3_result} alt="Video-Modulated Interference result"/>
 *Video-Modulated Interference — simulated result across source images.*
-**Objective**: Use the input image's luminance to carve the interference pattern, revealing the subject as a shimmering outline.
+**What You'll Create**: Use the input image's luminance to carve the interference pattern, revealing the subject as a shimmering outline.
 
 1. Set Osc 1 Freq to 40 %, Osc 2 Freq to 42 %, Osc 3 Freq to 60 %.
 2. Set Coupling to 50 %, Saturation to 80 %, Brightness to 50 %.
@@ -256,9 +268,6 @@ These exercises explore Spectron's range from gentle drifting colour fields to a
 
 ## Tips
 
-- **Near-unison beating**: Set two oscillators within 1–2 % of each other for slow, wide moire bands.
-- **Harmonic ratios**: Set oscillators at 1:2:3 ratio (e.g., 25 %, 50 %, 75 %) for stable standing-wave geometric patterns.
-- **Square + ring**: This combination produces the highest contrast; use Coupling below 50 % to keep it from clipping harshly.
 - **Saturation zoning**: Back off saturation to zero for monochrome interference, then add colour gradually.
 - **Video Mod as masking**: Feed a graphic with clear silhouettes — the oscillator pattern appears only inside bright regions.
 - **Mix for layering**: At 30–50 % mix the interference pattern acts as a subtle texture overlay on the source.

@@ -68,6 +68,14 @@ At conservative settings — slow rate, coarse checkerboard, subtle processing �
 
 ---
 
+## Quick Start
+
+1. **Freeze the toggle to study patterns**: Set Rate to 0% to see the static spatial pattern without temporal alternation. This makes it much easier to understand what each pattern mode does.
+2. **Use Posterize for graphic overlays**: The 4-level quantization creates hard-edged graphics that read clearly even at fine pattern densities. Combine with ChromaKill for bold black-and-white pattern effects.
+3. **Solarize creates edge contours**: The V-shaped fold generates dark lines wherever the input crosses the midpoint brightness. These contours outline tonal transitions in the source material.
+
+---
+
 ## Background
 
 ### The Fairlight CVI Legacy
@@ -94,6 +102,8 @@ The two-region architecture is fundamental to Shatter's visual identity. Region 
 ---
 
 ## Signal Flow
+
+Input Capture → Pattern + Toggle → Processing → Composite Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ The key architectural feature is the separation of spatial pattern generation (S
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the toggle DDS frequency — how fast the spatial mask alternates between normal and inverted states. At 0%, the toggle is frozen and the pattern remains static. As you increase the rate, the pattern begins to strobe at progressively higher frequencies. At higher values the toggling becomes fast enough to produce visual beating and flicker fusion. The DDS accumulator adds rate×64 per frame, so small rate values produce slow gentle alternation while moderate values create aggressive stroboscopic flicker.
+At 0%, the toggle is frozen and the pattern remains static. As you increase the rate, the pattern begins to strobe at progressively higher frequencies. At higher values the toggling becomes fast enough to produce visual beating and flicker fusion. The DDS accumulator adds rate×64 per frame, so small rate values produce slow gentle alternation while moderate values create aggressive stroboscopic flicker. Internally, controls the toggle DDS frequency — how fast the spatial mask alternates between normal and inverted states.
 
 ---
 
@@ -167,7 +177,7 @@ Sets the spatial density of the pattern cells. The top 3 bits of this register s
 #### Knob 3 — Pattern
 | Property | Value |
 |----------|-------|
-| Range | 0 – 7 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects one of eight binary spatial patterns. The patterns are all computed from cell coordinates using simple bit operations: Checkerboard (XOR of cell X and Y LSBs), Horizontal Bars (cell Y LSB), Vertical Bars (cell X LSB), Diagonal (XOR of combined X+Y coordinate LSB), Halves (screen left/right split from pixel counter MSB), Sparse (AND of X and Y — only regions where both coordinates are odd), Wide Checkerboard (wider cell X bit XOR cell Y LSB), and Wide Diagonal (wider combined coordinate bit).
@@ -177,7 +187,7 @@ Selects one of eight binary spatial patterns. The patterns are all computed from
 #### Knob 4 — Process
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the processing effect applied to Region A. Solarize folds the luminance at the midpoint by doubling the value and conditionally inverting, creating a V-shaped transfer curve. MonoTint preserves Y but replaces U/V with the Tint Hue color, creating a duotone effect. Negative inverts all three channels (1023−Y, 1023−U, 1023−V). Posterize quantizes Y to exactly four levels (0, 341, 682, 1023) using the top 2 bits, creating a hard graphic poster effect. All four modes preserve sync and timing.
@@ -229,7 +239,19 @@ The five toggles control independent binary options that modify different stages
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade via the interpolator. At 0%, the output is the original dry signal. At 100%, the output is the full processed composite. Intermediate values blend between the two, which can create interesting semi-transparent overlay effects where the pattern structure is visible but the original signal shows through. Because the interpolator operates on all three channels simultaneously, the blend is perceptually smooth.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Shatter-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -252,7 +274,7 @@ These exercises progress from static pattern exploration through processing mode
 *Pattern Gallery — simulated result across source images.*
 **Source**: A camera feed with clear subject separation — a face against a contrasting background, or geometric objects on a flat surface.
 
-**Objective**: Explore the eight spatial patterns at various densities to understand how cell geometry maps to screen space.
+**What You'll Create**: Explore the eight spatial patterns at various densities to understand how cell geometry maps to screen space.
 
 1. Set Rate to 0% to freeze the toggle and see a static pattern.
 2. Start with Checkerboard (Pattern = "Check") and sweep Density from minimum to maximum. Watch cell sizes change from screen-spanning blocks to fine pixel grids.
@@ -280,7 +302,7 @@ These exercises progress from static pattern exploration through processing mode
 *Processing Mode Comparison — simulated result across source images.*
 **Source**: Footage with a wide tonal range — scenes with both bright and dark areas, gradients, and saturated color.
 
-**Objective**: Compare the four processing effects applied to Region A to build intuition for each mode's tonal transformation.
+**What You'll Create**: Compare the four processing effects applied to Region A to build intuition for each mode's tonal transformation.
 
 1. Set a medium Checkerboard pattern (Density ~64 px, Rate 0%) so both regions are clearly visible.
 2. Start with Solarize: observe the V-shaped fold — dark areas brighten, bright areas stay bright, mid-tones collapse. Look for the characteristic dark contour at the fold point.
@@ -309,7 +331,7 @@ These exercises progress from static pattern exploration through processing mode
 *Stroboscopic Performance — simulated result across source images.*
 **Source**: Music video, rhythmic footage, or any source with visual motion to complement the temporal strobing.
 
-**Objective**: Use the toggle DDS and auto-phase to create dynamic, animated pattern effects suitable for live performance.
+**What You'll Create**: Use the toggle DDS and auto-phase to create dynamic, animated pattern effects suitable for live performance.
 
 1. Set a Checkerboard pattern at moderate density (~32 px).
 2. Slowly increase Rate from 0%. Watch the pattern begin to alternate between normal and inverted states. At low rates the alternation is a slow pulse; at higher rates it becomes a rapid strobe.
@@ -326,9 +348,6 @@ These exercises progress from static pattern exploration through processing mode
 
 ## Tips
 
-- **Freeze the toggle to study patterns**: Set Rate to 0% to see the static spatial pattern without temporal alternation. This makes it much easier to understand what each pattern mode does.
-- **Use Posterize for graphic overlays**: The 4-level quantization creates hard-edged graphics that read clearly even at fine pattern densities. Combine with ChromaKill for bold black-and-white pattern effects.
-- **Solarize creates edge contours**: The V-shaped fold generates dark lines wherever the input crosses the midpoint brightness. These contours outline tonal transitions in the source material.
 - **MonoTint is a duotone machine**: Keep the processed region in MonoTint mode and sweep Tint Hue slowly for a color-cycling overlay effect that follows the pattern geometry.
 - **Stack feedback for recursion**: Route the output back to the input. The pattern compositing becomes recursive — each frame applies the pattern to the previous frame's pattern, creating nested fractal-like structures.
 - **AutoPhase adds life**: Even a frozen toggle (Rate 0%) becomes dynamic when AutoPhase is enabled. The slow drift creates a hypnotic sliding motion through the pattern.
@@ -345,11 +364,11 @@ These exercises progress from static pattern exploration through processing mode
 | **Composite Mask** | A single-bit signal that determines whether each pixel belongs to Region A (processed) or Region B (passthrough/inverted). |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic signals using a phase accumulator, used here for the toggle oscillator and auto-phase sweep. |
 | **Fairlight CVI** | Computer Video Instrument by Fairlight (1984); an early digital video effects processor that inspired Shatter's binary pattern strobe architecture. |
-| **Interpolator** | A hardware crossfade module (interpolator_u) that blends between the dry input and wet processed output based on the Mix parameter. |
 | **LUT** | Look-Up Table; the fundamental logic element in an FPGA, used here for pattern generation and processing logic. |
 | **Posterization** | Reducing continuous tonal values to a small number of discrete levels, creating flat graphic areas. |
 | **Solarization** | A tonal curve that folds brightness at the midpoint, named after the Sabattier effect in analog photography. |
 | **Toggle State** | The current binary state of the DDS oscillator, XOR'd with the spatial pattern to create the composite mask. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

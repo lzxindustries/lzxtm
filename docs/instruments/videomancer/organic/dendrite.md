@@ -35,6 +35,14 @@ The name comes from the Greek *dendron* (tree), the same root that gives us the 
 
 ---
 
+## Quick Start
+
+1. **Reset is your rhythm tool**: Toggling Reset on and off in time with music creates pulsing crystal bursts that grow outward, vanish, and regrow. Each cycle produces a unique pattern because the LFSR is in a different state.
+2. **Branch spread is the organic control**: At zero, Dendrite produces geometric starbursts. Even a small amount of spread (10–20%) introduces enough randomness to create natural-looking frost. Above 60%, branches become chaotic.
+3. **Background dim creates depth**: Use moderate background dimming (40–60%) to push the source video into shadow, making the crystal overlay feel like it's on a separate layer in front of the image.
+
+---
+
 ## Background
 
 ### Diffusion-Limited Aggregation
@@ -61,6 +69,8 @@ Dendrite belongs to a tradition of generative overlay effects where algorithmica
 ---
 
 ## Signal Flow
+
+Branch Growth Engine → Per-Pixel Pipeline → Wet/Dry Mix → Sync Delay Pipeline → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -178,8 +188,8 @@ Controls the range of direction jitter applied to each branch on every growth st
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Seed Mode** | Center | Edge |
-| **8 — Growth** | Tree | Frost |
+| **7 — Seed Mode** | Center | Multi |
+| **8 — Growth** | Tree | Light |
 | **9 — Video Mod** | Off | On |
 | **10 — Reset** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -197,7 +207,19 @@ The TOML labels for toggles 7 and 8 suggest four-position selectors (Center/Edge
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry blend between the processed (crystal overlay + background dim) and the original delayed signal. At 0%, the output is pure original — no crystal overlay visible. At 100%, the output is fully processed. Intermediate values create a transparent overlay effect where the crystal glow is partially blended with the unmodified source. Three independent interpolator instances handle Y, U, and V channels with matched timing.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Dendrite-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -209,7 +231,7 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 <img src={dendrite_exercise1_result} alt="Radial Starburst result"/>
 *Radial Starburst — simulated result across source images.*
-**Objective**: Observe the basic branch growth pattern and understand how speed and spread interact.
+**What You'll Create**: Observe the basic branch growth pattern and understand how speed and spread interact.
 
 1. **Reset**: Toggle Reset (Switch 10) on and off to seed the branches at center.
 2. **Enable animation**: Ensure Video Mod (Switch 9) is on.
@@ -227,7 +249,7 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 <img src={dendrite_exercise2_result} alt="Frost on Glass result"/>
 *Frost on Glass — simulated result across source images.*
-**Objective**: Create a convincing frost-on-glass effect using glow size, crystal brightness, and background dimming.
+**What You'll Create**: Create a convincing frost-on-glass effect using glow size, crystal brightness, and background dimming.
 
 1. **Reset and grow**: Start fresh with a Reset toggle. Set Growth Sp to ~40% and let branches grow for several seconds.
 2. **Expand glow**: Increase Crystal Hue (Glow Size) to ~60%. The diamond-shaped glow regions around each branch tip expand, creating broad frost patches.
@@ -244,7 +266,7 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 <img src={dendrite_exercise3_result} alt="Lightning Convergence result"/>
 *Lightning Convergence — simulated result across source images.*
-**Objective**: Use inward growth mode with fast speed to create converging lightning-like patterns.
+**What You'll Create**: Use inward growth mode with fast speed to create converging lightning-like patterns.
 
 1. **Inward mode**: Set Growth (Toggle 8) to Frost position for inward growth.
 2. **Fast growth**: Set Growth Sp to ~80%.
@@ -262,9 +284,6 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 ## Tips
 
-- **Reset is your rhythm tool**: Toggling Reset on and off in time with music creates pulsing crystal bursts that grow outward, vanish, and regrow. Each cycle produces a unique pattern because the LFSR is in a different state.
-- **Branch spread is the organic control**: At zero, Dendrite produces geometric starbursts. Even a small amount of spread (10–20%) introduces enough randomness to create natural-looking frost. Above 60%, branches become chaotic.
-- **Background dim creates depth**: Use moderate background dimming (40–60%) to push the source video into shadow, making the crystal overlay feel like it's on a separate layer in front of the image.
 - **Blue frost on warm sources**: The blue tint (Toggle 7, Edge position) is most effective over warm-toned source material — skin tones, fire, sunset colors — where the cool blue creates strong color contrast.
 - **Freeze for compositing**: Disable animation (Toggle 9 off) once the crystal pattern reaches a shape you like. The frozen overlay can then be used as a static graphic element, blended with live video via the Mix fader.
 - **Inward mode for implosion**: Inward growth (Toggle 8, Frost position) creates patterns that feel like energy converging rather than radiating. Combined with fast growth and rapid reset cycling, this produces a rhythmic breathing effect.
@@ -276,18 +295,15 @@ These exercises explore Dendrite's crystal growth from simple radial patterns th
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Dendrite uses register storage only, no BRAM. |
 | **Compass Direction LUT** | A lookup table mapping 8 integer indices (0–7) to unit vectors in the cardinal and ordinal directions (E, NE, N, NW, W, SW, S, SE). |
 | **Dendritic** | Tree-like; branching structures that subdivide recursively, named from the Greek *dendron* (tree). |
 | **DLA** | Diffusion-Limited Aggregation; a model of particle growth where random-walking particles stick to a growing cluster on contact, producing fractal branching. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Glow Threshold** | The maximum Manhattan distance from a branch tip at which a pixel receives crystal brightening; pixels beyond this distance are treated as background. |
-| **Interpolator** | A linear blending unit that computes `a + (b - a) * t` in fixed-point arithmetic, used for wet/dry mix. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a function of its previous state, generating a deterministic pseudo-random sequence. |
 | **Lichtenberg Figure** | A branching electrical discharge pattern captured in an insulating material; visually similar to DLA structures. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical offsets between two points; produces diamond-shaped equidistant contours rather than the circles of Euclidean distance. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Vsync** | Vertical synchronization pulse marking the boundary between video frames; Dendrite updates branch positions on the vsync rising edge. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

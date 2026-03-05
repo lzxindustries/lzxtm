@@ -68,6 +68,14 @@ At conservative settings, Degauss produces subtle color fringing at the edges of
 
 ---
 
+## Quick Start
+
+1. **Intensity is a mask, not a gain**: Because the VHDL uses bitwise AND, low Intensity values produce stepped, quantized offsets rather than smoothly scaled small offsets. This gives the fringing a distinctly digital character at low settings.
+2. **Y is always clean**: The luminance channel passes through completely unprocessed. You can push Intensity to maximum and the brightness structure of the image remains perfectly intact — only the color shifts.
+3. **Complementary colors**: The opposite U/V offsets always produce complementary color fringing. You cannot get same-direction shifts on both channels — the rainbow bands always contain the full hue spectrum.
+
+---
+
 ## Background
 
 ### CRT Degaussing and the Degaussing Coil
@@ -94,6 +102,8 @@ CRT artifacts — misconvergence, color purity errors, phosphor bloom, raster ge
 ---
 
 ## Signal Flow
+
+Timing Detection → Triangle Wave Generation → Chroma Offset Calculation → ... → Sync Delay Pipeline → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -164,7 +174,7 @@ Controls the amplitude of the chroma offset applied to U and V channels. The VHD
 | Default | 38% |
 | Suffix | % |
 
-Controls the spatial frequency of the triangle wave pattern along the vertical axis. At low values, the color fringing varies slowly from top to bottom of the screen — broad, gentle bands of hue shift. At high values, the pattern oscillates rapidly, producing many narrow rainbow stripes. This parameter modifies the effective wavelength of the vertical modulation, changing how many complete cycles of the triangle wave fit within the visible raster.
+At low values, the color fringing varies slowly from top to bottom of the screen — broad, gentle bands of hue shift. At high values, the pattern oscillates rapidly, producing many narrow rainbow stripes. This parameter modifies the effective wavelength of the vertical modulation, changing how many complete cycles of the triangle wave fit within the visible raster. Internally, controls the spatial frequency of the triangle wave pattern along the vertical axis.
 
 ---
 
@@ -175,7 +185,7 @@ Controls the spatial frequency of the triangle wave pattern along the vertical a
 | Default | 25% |
 | Suffix | % |
 
-Controls the rate at which the animation phase accumulator advances per frame. At 0%, the rainbow pattern is stationary even when Animate is enabled (the accumulator increments by zero). At higher values, the pattern scrolls more rapidly, creating a smooth vertical drift of the color fringing bands. The visual effect resembles a degaussing coil being slowly swept past the screen — the rainbow interference pattern migrates from top to bottom in a hypnotic, continuous motion.
+At 0%, the rainbow pattern is stationary even when Animate is enabled (the accumulator increments by zero). At higher values, the pattern scrolls more rapidly, creating a smooth vertical drift of the color fringing bands. The visual effect resembles a degaussing coil being slowly swept past the screen — the rainbow interference pattern migrates from top to bottom in a hypnotic, continuous motion. Internally, controls the rate at which the animation phase accumulator advances per frame.
 
 ---
 
@@ -235,7 +245,29 @@ Switches 7–11 control five independent binary options. Animate (7) enables or 
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed signal and the unprocessed (delayed) input. Three parallel interpolator_u instances perform the blend — one for Y, one for U, one for V. At 0%, the output is the unprocessed input (no color fringing). At 100%, the output is the fully processed signal. Intermediate values produce a proportional blend, which is useful for dialing in subtle touches of color fringing without committing to the full effect. Because the Y channel passes through unmodified, the mix primarily affects the chroma — blending between original and offset U/V values.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Degauss processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Degauss-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +290,7 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 *Static Rainbow Fringing — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with high-contrast edges — text on a dark background, architectural lines, or faces against a plain backdrop.
 
-**Objective**: Learn how Intensity and Frequency interact to create position-dependent color fringing, and observe the characteristic rainbow banding of CRT misconvergence.
+**What You'll Create**: Learn how Intensity and Frequency interact to create position-dependent color fringing, and observe the characteristic rainbow banding of CRT misconvergence.
 
 1. **Initial setup**: Set Intensity to about 40%. Observe the subtle color halos appearing on horizontal edges — blue-cyan on one side, red-yellow on the other.
 2. **Increase Intensity**: Sweep Intensity from 40% up to 80%. Watch the rainbow bands widen and intensify. Note the stepped, digital quality of the offset at lower values versus the smooth triangle wave at higher values.
@@ -285,7 +317,7 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 *Animated Degauss Sweep — simulated result across source images.*
 **Source**: Slow-moving or static footage — a still life, a landscape, or a color bar test pattern.
 
-**Objective**: Explore the animation system and observe how the rainbow bands scroll through the image, recreating the visual experience of a degaussing coil sweep.
+**What You'll Create**: Explore the animation system and observe how the rainbow bands scroll through the image, recreating the visual experience of a degaussing coil sweep.
 
 1. **Enable animation**: Turn Animate On. Set Speed to about 25% for a slow, gentle scroll.
 2. **Observe the sweep**: The rainbow bands drift vertically through the image. With a color bar input, you can clearly see each band of color shift as it passes through.
@@ -313,7 +345,7 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 *Chromatic Dissolution — simulated result across source images.*
 **Source**: Any footage with recognizable content — faces, objects, or scenes with a range of saturated and neutral areas.
 
-**Objective**: Push all controls to extreme settings to dissolve the image into pure chromatic abstraction, then use Mix and Convergence to pull it back toward a usable artistic effect.
+**What You'll Create**: Push all controls to extreme settings to dissolve the image into pure chromatic abstraction, then use Mix and Convergence to pull it back toward a usable artistic effect.
 
 1. **Maximum fringing**: Set Intensity to 100%, Frequency to about 60%. The image should show strong, vivid rainbow bands.
 2. **Boost Saturation**: Push Saturation above 70%. The rainbow bands intensify into solid, poster-like color stripes.
@@ -329,9 +361,6 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 
 ## Tips
 
-- **Intensity is a mask, not a gain**: Because the VHDL uses bitwise AND, low Intensity values produce stepped, quantized offsets rather than smoothly scaled small offsets. This gives the fringing a distinctly digital character at low settings.
-- **Y is always clean**: The luminance channel passes through completely unprocessed. You can push Intensity to maximum and the brightness structure of the image remains perfectly intact — only the color shifts.
-- **Complementary colors**: The opposite U/V offsets always produce complementary color fringing. You cannot get same-direction shifts on both channels — the rainbow bands always contain the full hue spectrum.
 - **Mix for subtlety**: At 100% Mix and high Intensity, the effect is dramatic. Use Mix at 20-40% to layer subtle chromatic aberration over the original image for a "vintage monitor" look.
 - **Animate for live performance**: With Speed at moderate values, the scrolling rainbow pattern is mesmerizing for live visuals. The pattern repeats every 1024 frames, but the slow drift makes each cycle feel organic.
 - **Feedback loops**: Routing the output back to the input compounds the chroma offset on each pass, producing increasingly extreme rainbow banding that eventually saturates into solid color stripes.
@@ -351,13 +380,11 @@ These exercises progress from static rainbow fringing to animated chromatic diss
 | **Clamp** | A limiting operation that constrains a value to a defined range (0–1023 in the 10-bit domain). |
 | **Convergence** | The condition where all three electron beams in a CRT meet at the same point on the phosphor screen. |
 | **Degaussing** | The process of demagnetizing a CRT shadow mask using an alternating magnetic field to restore color purity. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation between two input values based on a mix parameter. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Misconvergence** | A CRT defect where the three electron beams fail to meet at the same phosphor dot, causing color fringing. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Shadow Mask** | A perforated metal sheet inside a CRT that ensures each electron beam strikes only its designated phosphor color. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and then linearly down, generated here by XOR-folding a binary counter. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

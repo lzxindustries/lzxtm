@@ -68,6 +68,14 @@ At conservative settings, the effect is subtle — a gentle separation of tonal 
 
 ---
 
+## Quick Start
+
+1. **Luma is depth**: Cardboard treats bright pixels as foreground and dark pixels as background. Light your scene with this assumption in mind — key light on the subject, dark background — for the most convincing parallax.
+2. **Edge Ctr acts as a contour pen**: Low values produce dense, fine contour lines across the entire image. High values limit contours to only the boldest layer boundaries. Start high and reduce gradually.
+3. **Shadow creates atmosphere**: Darkening the background layer (low Shadow values) dramatically increases the perceived depth. The effect is reminiscent of theatrical lighting that dims the upstage flats.
+
+---
+
 ## Background
 
 ### What Is a Paper Theater?
@@ -90,6 +98,8 @@ Where two layers meet, the luminance changes abruptly — just as a real paper c
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Sync Signals → Interpolator → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -146,7 +156,7 @@ Edge detection also operates on the original (unshifted) luminance, comparing th
 | Default | 50% |
 | Suffix | % |
 
-Controls the spacing between the three luma thresholds that divide the image into four depth layers. At 0%, the thresholds are tightly clustered near the low end of the luminance range, pushing most pixels into Layer 3 (foreground) and collapsing the parallax separation. As the control increases, the thresholds spread apart across the full 10-bit range, producing a more even distribution of pixels across all four layers. The three thresholds are computed as 128 + spacing/4, 256 + spacing/2, and 384 + spacing/2 (clamped to 1023). At maximum, the layers carve the luminance range into well-separated zones with distinct parallax offsets.
+At 0%, the thresholds are tightly clustered near the low end of the luminance range, pushing most pixels into Layer 3 (foreground) and collapsing the parallax separation. As the control increases, the thresholds spread apart across the full 10-bit range, producing a more even distribution of pixels across all four layers. The three thresholds are computed as 128 + spacing/4, 256 + spacing/2, and 384 + spacing/2 (clamped to 1023). At maximum, the layers carve the luminance range into well-separated zones with distinct parallax offsets. Internally, controls the spacing between the three luma thresholds that divide the image into four depth layers.
 
 ---
 
@@ -209,8 +219,8 @@ Mapped in the TOML configuration as "Depth Rng" but the corresponding register (
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Theater | Popup |
-| **8 — Edges** | Hard | Torn |
+| **7 — Mode** | Theater | Relief |
+| **8 — Edges** | Hard | Fold |
 | **9 — Palette** | Paper | Color |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -228,7 +238,19 @@ Switches 7–11 each contribute a single bit to the packed toggle register (regi
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade controlling the blend between the original (delayed) input and the fully processed output. At 0%, the output is the unmodified input signal. At 100%, the output is the fully processed parallax-layered result. Intermediate positions produce a transparent overlay where the depth layers ghost over the original image. This control uses three interpolator_u instances (one per Y/U/V channel) with 4-clock latency for smooth, alias-free blending.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Cardboard-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -251,7 +273,7 @@ These exercises progress from basic layer separation to full paper theater paral
 *Layer Separation — simulated result across source images.*
 **Source**: A portrait or landscape with a clear foreground subject and a darker background — strong tonal separation between near and far elements.
 
-**Objective**: Learn how the luma thresholds divide the image into four flat depth planes, and how the Shadow control creates brightness-based depth cues.
+**What You'll Create**: Learn how the luma thresholds divide the image into four flat depth planes, and how the Shadow control creates brightness-based depth cues.
 
 1. **Default state**: Set all controls to 50%. The image should show four tonal bands with moderate parallax.
 2. **Threshold spread**: Slowly increase Layers from 0% to 100%. Watch the threshold boundaries migrate across the luminance range, redistributing pixels among the four layers.
@@ -279,7 +301,7 @@ These exercises progress from basic layer separation to full paper theater paral
 *Parallax Depth — simulated result across source images.*
 **Source**: High-contrast material with distinct bright and dark regions — a lit face against a dark background, or neon signage against a night sky.
 
-**Objective**: Explore horizontal parallax displacement and direction reversal.
+**What You'll Create**: Explore horizontal parallax displacement and direction reversal.
 
 1. **Start flat**: Set Offset to 0% and Layers to ~50%. Four tonal layers are visible but share the same horizontal position.
 2. **Add parallax**: Slowly increase Offset. The foreground layer slides sideways relative to the background. Note the hard edges where layers meet — the paper cutout effect.
@@ -307,7 +329,7 @@ These exercises progress from basic layer separation to full paper theater paral
 *Cardboard Diorama — simulated result across source images.*
 **Source**: Any footage with a range of tonal values — landscapes, cityscapes, or abstract video synthesis patches.
 
-**Objective**: Combine all parameters to create a full paper theater diorama look with parallax, contours, layer contrast, and optional monochrome.
+**What You'll Create**: Combine all parameters to create a full paper theater diorama look with parallax, contours, layer contrast, and optional monochrome.
 
 1. **Layer spread**: Set Layers to ~70% for well-separated depth zones.
 2. **Strong parallax**: Set Offset to ~60% for visible but not extreme displacement.
@@ -324,9 +346,6 @@ These exercises progress from basic layer separation to full paper theater paral
 
 ## Tips
 
-- **Luma is depth**: Cardboard treats bright pixels as foreground and dark pixels as background. Light your scene with this assumption in mind — key light on the subject, dark background — for the most convincing parallax.
-- **Edge Ctr acts as a contour pen**: Low values produce dense, fine contour lines across the entire image. High values limit contours to only the boldest layer boundaries. Start high and reduce gradually.
-- **Shadow creates atmosphere**: Darkening the background layer (low Shadow values) dramatically increases the perceived depth. The effect is reminiscent of theatrical lighting that dims the upstage flats.
 - **Flat mode for tonal posters**: Switching Edges to "Cut" or "Fold" disables parallax but keeps the four-layer contrast separation, producing a flat posterized look with edge contours — useful as a standalone effect.
 - **Feedback loops**: Routing the processed output back to the input creates recursive layer separation — the parallax shifts compound across iterations, producing increasingly abstract stacked-plane landscapes.
 - **Pot 3 and Pot 6 are inactive**: The Threshold and Depth Rng knobs are physically present but not read by the current VHDL pipeline. Leave them at default or use them as scratch controls in your patch without affecting the image.
@@ -341,13 +360,13 @@ These exercises progress from basic layer separation to full paper theater paral
 |------|------------|
 | **Chrominance** | The color information (U and V channels) in a video signal, independent of brightness. |
 | **Depth segmentation** | The process of classifying pixels into discrete layers based on a visual property (here, luminance) as a proxy for distance from the viewer. |
-| **Interpolator** | A hardware module that computes weighted blends between two values, used here for wet/dry crossfading of Y, U, and V channels. |
 | **Line buffer** | A memory element storing one complete scan line of video data, enabling vertical comparisons between adjacent lines for edge detection. |
 | **Luminance** | The brightness component (Y channel) of a YUV video signal, measured on a 0–1023 scale in 10-bit video. |
 | **Parallax** | The apparent displacement of objects at different distances when the viewpoint shifts, simulated here by applying different horizontal offsets to each depth layer. |
 | **Proscenium** | The architectural frame surrounding the front of a stage, through which the audience views the performance; used here by analogy for the video frame edge. |
 | **Scan line** | A single horizontal row of pixels in a video frame, traced left to right during display. |
 | **Shift register** | A chain of storage elements that passes data forward one position per clock cycle, used here to provide variable horizontal pixel delay for parallax offsets. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

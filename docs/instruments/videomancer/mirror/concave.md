@@ -68,6 +68,14 @@ The Distortion control sets the threshold at which the distance effect saturates
 
 ---
 
+## Quick Start
+
+1. **Center Y is compositional**: Think of it as placing a spotlight — wherever the center is, that horizontal band receives the most (concave) or least (convex) brightness.
+2. **Low Distortion = tight band**: The Distortion parameter is a distance threshold. Lower values mean the squared-distance clamp kicks in sooner, creating a narrower region of full brightness.
+3. **Convex for edge glow**: Switch to convex mode when you want the frame edges to brighten rather than darken — useful for creating a halo or border glow effect.
+
+---
+
 ## Background
 
 ### Concave and Convex Optics
@@ -94,6 +102,8 @@ In film and photography, vignetting — the darkening of image corners relative 
 ---
 
 ## Signal Flow
+
+Sync Detection → Y Channel → U/V Channels → Sync/Data Delay → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -143,7 +153,7 @@ The U and V channels pass through unmodified to the mix stage, preserving the or
 | Default | 50% |
 | Suffix | % |
 
-Sets the distance threshold at which the brightness modulation saturates. At low values, even scanlines close to the center experience significant darkening (concave) or brightening (convex), producing a tight band of effect. At high values, the modulation extends across more of the frame before clamping, creating a gentle gradient that covers a wider vertical range. This control defines how pronounced the mirror curvature appears — low values simulate a deeply curved mirror, high values simulate a shallow curve.
+At low values, even scanlines close to the center experience significant darkening (concave) or brightening (convex), producing a tight band of effect. At high values, the modulation extends across more of the frame before clamping, creating a gentle gradient that covers a wider vertical range. This control defines how pronounced the mirror curvature appears — low values simulate a deeply curved mirror, high values simulate a shallow curve. Internally, sets the distance threshold at which the brightness modulation saturates.
 
 ---
 
@@ -227,6 +237,10 @@ Toggle 7 selects between concave and convex mirror modes, fundamentally changing
 
 Controls the wet/dry mix between the processed and original signal via three interpolator_u instances. At 0%, the output is entirely the original (delayed) signal — no brightness modulation is visible. At 100%, the output is entirely the processed signal with full distance-based modulation. Intermediate values blend the two, allowing subtle brightness shaping to be layered over the source without completely replacing it.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -248,7 +262,7 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 *Vertical Vignette — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a centered subject — a face, a still life, or a graphic pattern.
 
-**Objective**: Learn how Center Y and Distortion interact to create a controlled vertical brightness gradient.
+**What You'll Create**: Learn how Center Y and Distortion interact to create a controlled vertical brightness gradient.
 
 1. **Center the gradient**: Set Center Y to 50% so the bright region sits at the vertical midpoint of the frame.
 2. **Apply distortion**: Slowly decrease Distortion from 100% toward 0%. Watch as the edges of the frame darken, creating a vertical vignette that narrows around the center.
@@ -275,7 +289,7 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 *Convex Inversion — simulated result across source images.*
 **Source**: High-contrast footage — strong geometric shapes, text overlays, or architectural subjects.
 
-**Objective**: Explore how convex mode inverts the brightness gradient and changes the visual character.
+**What You'll Create**: Explore how convex mode inverts the brightness gradient and changes the visual character.
 
 1. **Start concave**: Set Distortion to ~40%, Center Y to 50%, Mix to 100%. Observe the darkened edges and bright center strip.
 2. **Switch to convex**: Enable the Convex toggle. The gradient inverts — the center darkens while edges brighten. The image appears to glow from the periphery.
@@ -302,7 +316,7 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 *Carved Light Band — simulated result across source images.*
 **Source**: Any active video — motion footage works particularly well as the moving content passes through the brightness band.
 
-**Objective**: Use extreme settings to isolate a narrow horizontal stripe of brightness from a dark surround.
+**What You'll Create**: Use extreme settings to isolate a narrow horizontal stripe of brightness from a dark surround.
 
 1. **Extreme distortion**: Set Distortion to ~10% — this creates a very tight brightness band.
 2. **Center placement**: Set Center Y to 50% to place the band at the vertical midpoint.
@@ -318,9 +332,6 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 
 ## Tips
 
-- **Center Y is compositional**: Think of it as placing a spotlight — wherever the center is, that horizontal band receives the most (concave) or least (convex) brightness.
-- **Low Distortion = tight band**: The Distortion parameter is a distance threshold. Lower values mean the squared-distance clamp kicks in sooner, creating a narrower region of full brightness.
-- **Convex for edge glow**: Switch to convex mode when you want the frame edges to brighten rather than darken — useful for creating a halo or border glow effect.
 - **Mix for subtlety**: Use partial Mix values (30–60%) to add gentle brightness shaping without overpowering the source. Full mix at extreme Distortion settings can crush most of the image to half-brightness.
 - **Feedback loops**: Routing the output back to the input compounds the brightness modulation — each pass darkens the edges further (concave) or brightens them further (convex), creating self-reinforcing gradients.
 - **Pair with color programs**: Since Concave only modulates luminance (U/V pass through), chain it with a chroma-processing program to independently shape brightness and color.
@@ -336,11 +347,9 @@ These exercises explore Concave's brightness modulation from gentle vignettes to
 | **Concave Mirror** | A mirror with an inward-curving reflective surface that converges light toward a focal point, producing brighter center and darker edges. |
 | **Convex Mirror** | A mirror with an outward-curving reflective surface that diverges light, producing darker center and brighter edges. |
 | **Distance-Squared Falloff** | A parabolic brightness profile where modulation increases with the square of the distance from center, matching natural optical behavior. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A circuit that blends between two input values based on a mix coefficient, used here for wet/dry crossfading. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Squeeze Factor** | The multiplicative scaling value applied to each pixel's luminance, derived from the squared vertical distance to the center scanline. |
 | **Vignette** | Darkening of image edges relative to the center, here applied along the vertical axis to simulate curved-mirror optics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

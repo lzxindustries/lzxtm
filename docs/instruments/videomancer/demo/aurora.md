@@ -35,6 +35,14 @@ The name *Aurora* refers to the aurora borealis — curtains of light that shimm
 
 ---
 
+## Quick Start
+
+1. **Aurora is a painting program**: Unlike most Videomancer programs that transform each frame independently, Aurora accumulates over time. Be patient — allow 30–60 seconds after each control change to see the full effect evolve.
+2. **Fade Rate is the memory control**: Zero fade = permanent long-exposure painting. Maximum fade = short comets. The middle range creates the most visually interesting dynamic equilibrium.
+3. **Pattern + Speed + Orbit Size define the drawing**: These three controls determine *what* is drawn. Intensity and Fade Rate determine *how* it looks. Color mode determines *what color* it is. Separate these mental models.
+
+---
+
 ## Background
 
 ### What Are Shadebobs?
@@ -155,7 +163,7 @@ Aurora is fundamentally different from Videomancer's signal-processing programs.
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the orbital velocity of the bobs. At 0%, the bobs are frozen in place — they stamp the same position every frame, burning a bright static dot into the framebuffer. As you increase speed, the bobs trace their Lissajous paths faster. Very high speeds make the bobs race around their orbits so quickly that the trails blur together into continuous luminous bands. The speed pot scales phase increment per frame, so the relationship between Speed and visual velocity depends on the Pattern preset — complex presets with high frequency ratios produce faster apparent motion for the same Speed setting.
+At 0%, the bobs are frozen in place — they stamp the same position every frame, burning a bright static dot into the framebuffer. As you increase speed, the bobs trace their Lissajous paths faster. Very high speeds make the bobs race around their orbits so quickly that the trails blur together into continuous luminous bands. The speed pot scales phase increment per frame, so the relationship between Speed and visual velocity depends on the Pattern preset — complex presets with high frequency ratios produce faster apparent motion for the same Speed setting. Internally, controls the orbital velocity of the bobs.
 
 ---
 
@@ -189,7 +197,7 @@ Each preset produces a fundamentally different painting pattern. Simple ratios (
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the global fade rate — how quickly the framebuffer dims between frames. At 0%, no fade occurs and the canvas accumulates indefinitely until every pixel saturates at maximum brightness. This produces a permanent luminous record of every orbit the bobs have traced. At maximum, the fade is so aggressive that trails disappear almost immediately, leaving only the bright bob positions visible as moving dots.
+At 0%, no fade occurs and the canvas accumulates indefinitely until every pixel saturates at maximum brightness. This produces a permanent luminous record of every orbit the bobs have traced. At maximum, the fade is so aggressive that trails disappear almost immediately, leaving only the bright bob positions visible as moving dots. Internally, controls the global fade rate — how quickly the framebuffer dims between frames.
 
 The artistic sweet spot is in the middle range, where trails persist long enough to show the Lissajous curve structure but fade before the canvas saturates. The fade rate interacts strongly with Speed: fast bobs with slow fade create long flowing trails; slow bobs with fast fade create short bright arcs.
 
@@ -241,7 +249,7 @@ Small orbit sizes create tight, dim patterns concentrated in the center of the s
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Color** | Mono | Heat |
+| **7 — Color** | Mono | Duo |
 | **8 — Bobs** | 2 Bobs | 4 Bobs |
 | **9 — Clear** | Off | On |
 | **10 — Video Seed** | Off | On |
@@ -262,6 +270,21 @@ The five toggle switches control four independent binary options plus a combined
 
 Wet/dry crossfade between the input video (delayed to match pipeline latency) and the Aurora output. At 0% (fully down), the output is pure input video — Aurora is inaudible. At 100% (fully up), the output is pure Aurora. Intermediate positions blend the two, allowing the aurora pattern to be superimposed over live video at any opacity. This is the primary creative control for compositing the generative pattern with external footage.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Aurora processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -272,7 +295,7 @@ These exercises progress from basic trail painting to complex multi-bob composit
 
 <img src={aurora_exercise1_result} alt="Classic Shadebob Trails result"/>
 *Classic Shadebob Trails — simulated result across source images.*
-**Objective**: Learn how speed, fade, and intensity interact to control trail character.
+**What You'll Create**: Learn how speed, fade, and intensity interact to control trail character.
 
 1. **Start clean**: Toggle Clear (Switch 9) to reset the framebuffer.
 2. **Set the orbit**: Choose Pattern preset 4 (rosette). Set Orbit Size to ~80%.
@@ -289,7 +312,7 @@ These exercises progress from basic trail painting to complex multi-bob composit
 
 <img src={aurora_exercise2_result} alt="Rainbow Aurora result"/>
 *Rainbow Aurora — simulated result across source images.*
-**Objective**: Explore colorization modes and the interaction between pattern complexity and color mixing.
+**What You'll Create**: Explore colorization modes and the interaction between pattern complexity and color mixing.
 
 1. **Clear and prepare**: Toggle Clear. Set Pattern to 5 (five-petal flower), Orbit Size to ~80%, Speed to ~60%.
 2. **Enable Rainbow**: Switch Color (Toggle 7) to Rainbow. The trails immediately display colored bands — the 4-quadrant colorizer maps luminance regions to distinct hues.
@@ -307,7 +330,7 @@ These exercises progress from basic trail painting to complex multi-bob composit
 
 <img src={aurora_exercise3_result} alt="Video Seed Composition result"/>
 *Video Seed Composition — simulated result across source images.*
-**Objective**: Combine live video seeding with generative bob painting.
+**What You'll Create**: Combine live video seeding with generative bob painting.
 
 1. **Setup**: Set Mix to ~70% to blend Aurora over the input.
 2. **Enable Video Seed**: Switch Video Seed (Toggle 10) to On. The input video luminance now feeds into the framebuffer.
@@ -324,9 +347,6 @@ These exercises progress from basic trail painting to complex multi-bob composit
 
 ## Tips
 
-- **Aurora is a painting program**: Unlike most Videomancer programs that transform each frame independently, Aurora accumulates over time. Be patient — allow 30–60 seconds after each control change to see the full effect evolve.
-- **Fade Rate is the memory control**: Zero fade = permanent long-exposure painting. Maximum fade = short comets. The middle range creates the most visually interesting dynamic equilibrium.
-- **Pattern + Speed + Orbit Size define the drawing**: These three controls determine *what* is drawn. Intensity and Fade Rate determine *how* it looks. Color mode determines *what color* it is. Separate these mental models.
 - **Clear is your eraser**: When you change Pattern or Orbit Size, toggle Clear to start fresh. Old trails from the previous pattern will otherwise persist until they fade naturally.
 - **Rainbow intersections create unique colors**: In Rainbow mode, overlapping trails shift luminance upward, which shifts the 2-bit quadrant index. Intersection points that cross luminance band boundaries display different color quadrants than surrounding trail segments.
 - **Video Seed creates hybrid compositions**: Enable Video Seed and set moderate Mix to superimpose luminous trails over live footage. The video image becomes a canvas that the bobs paint over.
@@ -340,7 +360,6 @@ These exercises progress from basic trail painting to complex multi-bob composit
 | Term | Definition |
 |------|------------|
 | **Additive compositing** | A blending mode where pixel brightness values are summed rather than overwritten, causing overlapping elements to appear brighter at intersection points. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the persistent 40×32 framebuffer that stores accumulated bob trail data. |
 | **Demo** | A computer art subculture focused on producing real-time audio-visual programs (demos) that showcase creative programming within hardware constraints. |
 | **Framebuffer** | A block of memory storing a complete image; Aurora's framebuffer persists across frames, accumulating luminance from bob stamps over time. |
 | **FSM** | Finite State Machine; the sequential control logic that coordinates bob position computation, global fade, and stamp operations during vertical blanking. |
@@ -351,6 +370,7 @@ These exercises progress from basic trail painting to complex multi-bob composit
 | **Saturation** | The condition where a pixel value reaches its maximum (255 for 8-bit) and cannot increase further despite additional additive stamps. |
 | **Shadebobs** | An Amiga demoscene effect where small sprites are additively stamped into a persistent framebuffer without clearing, painting luminous trail patterns. |
 | **Vsync** | Vertical synchronisation; the timing pulse marking the start of each video frame, during which Aurora executes its frame update FSM. |
-| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

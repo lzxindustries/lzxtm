@@ -68,6 +68,14 @@ The program is named after the Lascaux cave complex in the Dordogne region of so
 
 ---
 
+## Quick Start
+
+1. **Torch Color is a stub**: The Fat Lamp / Pine Resin toggle is wired but unused. Don't waste time tweaking it — it has no visible effect.
+2. **Start with uniform lighting**: Set Torch Radius to 100%, Flicker to 0%, Torch Lock to Center to see the palette and contour stages clearly before adding torch effects.
+3. **2-pigment mode for maximum drama**: Reducing to 2 pigments (charcoal + ochre) creates the most prehistoric-looking result — stark, high-contrast, and unmistakably ancient.
+
+---
+
 ## Background
 
 ### Paleolithic Pigments and Color Science
@@ -94,6 +102,8 @@ Lascaux offers two cave wall types: Limestone (warm yellowish, matching the Dord
 ---
 
 ## Signal Flow
+
+Clock 1: Palette → Clock 2: Contour → Clock 3: Stone Surface → ... → Torch Position → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -240,7 +250,19 @@ Five toggles provide binary mode selections. Cave Type selects the wall material
 | Default | 100% |
 | Suffix | % |
 
-Standard wet/dry crossfade between the delayed input (dry) and the processed cave-painting output (wet). At 0%, the output is pure passthrough of the original video. At 100%, the output is the fully processed cave painting with torch lighting. Intermediate values blend the two, which can produce an ethereal effect of cave pigments ghosting over modern video — as if the ancient paintings were emerging from the surface of the footage.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Lascaux-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -263,7 +285,7 @@ These exercises progress from minimal palette restriction through full cave-pain
 *Earth-Tone Palette — simulated result across source images.*
 **Source**: A portrait or landscape with a range of skin tones, foliage, and sky — material with varied hue and luminance.
 
-**Objective**: Explore how the palette quantizer reduces modern video to Paleolithic pigments, and how the pigment count changes the character of the image.
+**What You'll Create**: Explore how the palette quantizer reduces modern video to Paleolithic pigments, and how the pigment count changes the character of the image.
 
 1. **Disable torch and grain**: Set Torch Radius to 100% and Flicker to 0% for uniform lighting. Set Stone Grain to 0%, Contour Wt to 0%.
 2. **Full palette**: Set Pigments to maximum (~100%, all 4 pigments). The image reduces to four earth tones. Notice how faces become patches of ochre and sienna.
@@ -290,7 +312,7 @@ These exercises progress from minimal palette restriction through full cave-pain
 *Stone Surface and Torch — simulated result across source images.*
 **Source**: Same portrait or landscape from Exercise 1.
 
-**Objective**: Add stone texture and torch lighting to complete the cave-painting simulation.
+**What You'll Create**: Add stone texture and torch lighting to complete the cave-painting simulation.
 
 1. **Start from Exercise 1**: Pigments ~100%, Contour Wt ~40%, uniform lighting.
 2. **Stone Grain**: Increase Stone Grain to ~40%. A speckled texture appears within each pigment region, breaking the flat color into rough stone.
@@ -318,7 +340,7 @@ These exercises progress from minimal palette restriction through full cave-pain
 *Charcoal Study — simulated result across source images.*
 **Source**: High-contrast footage — strong directional lighting, clear silhouettes, or figure-ground separation.
 
-**Objective**: Use Edges Only mode with stone grain and torch lighting to create an animated charcoal drawing on stone.
+**What You'll Create**: Use Edges Only mode with stone grain and torch lighting to create an animated charcoal drawing on stone.
 
 1. **Edges Only**: Toggle Edges Only On. The image reduces to charcoal contour lines on stone.
 2. **Contour Wt**: Sweep Contour Wt through its range. Low values produce only the strongest edges. High values fill in finer detail, producing a denser drawing.
@@ -334,9 +356,6 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 ## Tips
 
-- **Torch Color is a stub**: The Fat Lamp / Pine Resin toggle is wired but unused. Don't waste time tweaking it — it has no visible effect.
-- **Start with uniform lighting**: Set Torch Radius to 100%, Flicker to 0%, Torch Lock to Center to see the palette and contour stages clearly before adding torch effects.
-- **2-pigment mode for maximum drama**: Reducing to 2 pigments (charcoal + ochre) creates the most prehistoric-looking result — stark, high-contrast, and unmistakably ancient.
 - **Stone Grain interacts with palette quantization**: Since the palette has already reduced colors to a few discrete values, grain appears as speckle *within* each color region rather than as smooth noise — this is what makes it look like stone texture rather than film grain.
 - **Torch drift speed vs. radius**: Large radius + slow speed = gentle, contemplative exploration. Small radius + fast speed = dramatic, flickering searchlight effect. Match the drift speed to the content's emotional tone.
 - **Edges Only for overlay compositing**: Use Edges Only mode with the Mix fader at 50–70% to overlay charcoal contours on the original video — a subtle "pencil sketch" effect without the full cave-painting treatment.
@@ -349,17 +368,15 @@ These exercises progress from minimal palette restriction through full cave-pain
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric, used here for the one-scanline vertical edge detection buffer. |
 | **Contour extraction** | Detection of edges in an image by computing gradient magnitudes between adjacent pixels, used to simulate charcoal outlines. |
 | **DDS** | Direct Digital Synthesis; a technique using phase accumulators to generate periodic waveforms, used here to animate the torch position along a Lissajous path. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Goethite** | An iron oxyhydroxide mineral (FeOOH) that produces yellow-ochre pigment, one of the primary colorants used at Lascaux. |
 | **Haematite** | An iron oxide mineral (Fe₂O₃) that produces red-ochre pigment, widely used in Paleolithic cave art. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for both stone surface grain and torch flicker. |
 | **Lissajous figure** | A parametric curve traced when two perpendicular sinusoidal oscillations are combined, used to describe the torch drift path. |
 | **Manhattan distance** | The sum of absolute differences along each axis, used as a computationally cheap alternative to Euclidean distance for palette matching and torch falloff. |
 | **Palette quantization** | Reducing a continuous-color image to a limited set of discrete colors by mapping each pixel to the nearest palette entry. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage for video signals. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

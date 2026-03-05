@@ -68,6 +68,14 @@ At full scroll speed with moderate decay, a busy scene produces dense psychedeli
 
 ---
 
+## Quick Start
+
+1. **Start with no decay**: Set Decay to 0% when learning the controls. This lets you see the full accumulated buffer without fading, making it easier to understand the relationship between slit position and streak output.
+2. **Slow scroll for detail**: Low Scroll Spd values produce higher temporal resolution — each strip occupies the buffer for many frames, capturing fine motion details.
+3. **Hue follows brightness**: The hue tinting is proportional to luminance, so dark areas stay neutral. Feed bright, high-contrast content for the most vivid color trails.
+
+---
+
 ## Background
 
 ### The Slit-Scan Camera
@@ -139,7 +147,7 @@ Sets the horizontal pixel position of the capture slit. Sweeping this control ac
 | Default | 25% |
 | Suffix | % |
 
-Controls the rate at which the write column advances frame-by-frame. At zero, the write position is frozen and the same column is continuously overwritten. At maximum, the write column advances every frame, scrolling rapidly. Intermediate values use a fractional accumulator so the scroll rate can be sub-frame — advancing one column every several frames for slow, smooth scrolling.
+At zero, the write position is frozen and the same column is continuously overwritten. At maximum, the write column advances every frame, scrolling rapidly. Intermediate values use a fractional accumulator so the scroll rate can be sub-frame — advancing one column every several frames for slow, smooth scrolling. Internally, controls the rate at which the write column advances frame-by-frame.
 
 ---
 
@@ -161,7 +169,7 @@ Adjusts the width of the capture strip in pixels. At the minimum setting, only a
 | Default | 75% |
 | Suffix | % |
 
-Sets the per-frame decay rate applied to all pixels in the framebuffer during vertical blanking. At zero, old data never fades and the buffer fills with an additive collage. At maximum, old data fades almost instantly, showing only the most recent few strips. Moderate values create a phosphor-persistence effect where trails gradually dim over several frames.
+At zero, old data never fades and the buffer fills with an additive collage. At maximum, old data fades almost instantly, showing only the most recent few strips. Moderate values create a phosphor-persistence effect where trails gradually dim over several frames. Internally, sets the per-frame decay rate applied to all pixels in the framebuffer during vertical blanking.
 
 ---
 
@@ -172,7 +180,7 @@ Sets the per-frame decay rate applied to all pixels in the framebuffer during ve
 | Default | 50% |
 | Suffix | % |
 
-Multiplies the luminance of the framebuffer readout. At centre (512), the brightness is approximately unity — what was captured is what is displayed. Below centre, the streaks are dimmed. Above centre, the streaks are amplified, potentially clipping bright areas. This control is applied after the decay pass, so it does not affect how fast old data fades — only how bright the streaks appear at output.
+At centre (512), the brightness is approximately unity — what was captured is what is displayed. Below centre, the streaks are dimmed. Above centre, the streaks are amplified, potentially clipping bright areas. This control is applied after the decay pass, so it does not affect how fast old data fades — only how bright the streaks appear at output. Internally, multiplies the luminance of the framebuffer readout.
 
 ---
 
@@ -212,6 +220,10 @@ The five toggles control orientation, scroll direction, trail mode, freeze, and 
 
 Crossfades between the dry input signal and the processed slit-scan output. At 0% (fader down), the output is pure dry — the original video passes through unchanged. At 100% (fader up), the output is the full slit-scan streak image. Intermediate positions blend the two, allowing the live input to be ghosted behind or in front of the streak layer.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -233,7 +245,7 @@ These exercises progress from a simple temporal streak through colored time-laps
 *Basic Time Streak — simulated result across source images.*
 **Source**: A live camera feed with a slowly moving subject — a walking person, swaying plant, or rotating object works well.
 
-**Objective**: Understand how the capture slit samples a column of the input each frame and scrolls it into a temporal panorama.
+**What You'll Create**: Understand how the capture slit samples a column of the input each frame and scrolls it into a temporal panorama.
 
 1. **Single-strip streak**: Set Strip Pos to ~50%, Scroll Spd to ~30%, Strip Width to minimum. Push Mix fader to 100%. A thin vertical slice of the scene is captured and scrolled across the display, building a ribbon of time.
 2. **Observe motion encoding**: Move the camera slowly. Notice how horizontal motion in the scene appears as diagonal streaks in the output — faster motion creates steeper diagonals.
@@ -260,7 +272,7 @@ These exercises progress from a simple temporal streak through colored time-laps
 *Hue-Tinted Temporal Ribbons — simulated result across source images.*
 **Source**: A source with varied brightness — a lit candle, neon sign, or high-contrast scene with both bright and dark areas.
 
-**Objective**: Apply hue tinting and brightness to create colored temporal ribbons that shift with the luminance of the captured content.
+**What You'll Create**: Apply hue tinting and brightness to create colored temporal ribbons that shift with the luminance of the captured content.
 
 1. **Prepare streak**: Set Strip Pos ~50%, Scroll Spd ~25%, Strip Width ~10%, Mix 100%.
 2. **Set warm hue**: Turn Hue Shift to ~45° (warm red-orange). Bright streaks glow with an amber tint while dark areas stay neutral grey.
@@ -288,7 +300,7 @@ These exercises progress from a simple temporal streak through colored time-laps
 *Frozen Panoramic Snapshot — simulated result across source images.*
 **Source**: A slowly rotating scene or panning camera — a turntable with an object or a long slow pan across a landscape.
 
-**Objective**: Use the freeze function to capture a complete slit-scan panorama and hold it as a static image for compositing.
+**What You'll Create**: Use the freeze function to capture a complete slit-scan panorama and hold it as a static image for compositing.
 
 1. **Prepare slow scan**: Set Strip Pos to ~50%, Scroll Spd to ~15%, Decay to 0% (no fade), Mix 100%.
 2. **Observe accumulation**: With Decay at zero, every captured strip persists indefinitely. Watch as the buffer fills with a complete panoramic record of the rotating subject.
@@ -304,9 +316,6 @@ These exercises progress from a simple temporal streak through colored time-laps
 
 ## Tips
 
-- **Start with no decay**: Set Decay to 0% when learning the controls. This lets you see the full accumulated buffer without fading, making it easier to understand the relationship between slit position and streak output.
-- **Slow scroll for detail**: Low Scroll Spd values produce higher temporal resolution — each strip occupies the buffer for many frames, capturing fine motion details.
-- **Hue follows brightness**: The hue tinting is proportional to luminance, so dark areas stay neutral. Feed bright, high-contrast content for the most vivid color trails.
 - **Freeze for compositing**: Use Freeze to capture a panoramic snapshot, then adjust Mix to overlay it against live video for double-exposure effects.
 - **Mirror for symmetry**: Mirror mode creates bilateral time-symmetric patterns that are particularly effective with rhythmic or periodic source motion.
 - **Wide strips smooth aliasing**: Increase Strip Width to average multiple adjacent pixel columns into each captured strip, reducing aliasing in the temporal direction.
@@ -322,10 +331,11 @@ These exercises progress from a simple temporal streak through colored time-laps
 | **BRAM (Block RAM)** | Dedicated memory blocks in the FPGA fabric, used here for the 160×68 pixel framebuffer that stores the streak image. |
 | **Decay** | A per-frame subtraction applied to every pixel in the framebuffer during vertical blanking, simulating phosphor persistence by gradually fading old data. |
 | **Framebuffer** | A two-dimensional pixel array stored in BRAM that holds the accumulated streak image and is read out each frame for display. |
-| **Interpolator** | A hardware crossfade unit that blends two signals by a configurable ratio, used here for the wet/dry mix between the slit-scan output and the dry input. |
 | **Slit-scan** | A photographic/video technique in which a narrow aperture (slit) exposes successive strips of an image over time, converting temporal change into spatial displacement. |
 | **Spatio-temporal** | Relating to both space and time; in slit-scan, one spatial axis is replaced by a time axis, creating a hybrid space-time image. |
 | **Streak** | The continuous trail left by the slit-scan process as the captured strip scrolls across the framebuffer, encoding temporal movement as horizontal displacement. |
 | **Vertical blanking** | The interval between video frames when no active pixels are displayed, used by the program to perform framebuffer maintenance (decay pass, scroll advancement). |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

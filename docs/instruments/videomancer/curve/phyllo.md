@@ -35,6 +35,14 @@ At conservative settings, Phyllo produces a sparse arrangement of dots radiating
 
 ---
 
+## Quick Start
+
+1. **Manhattan distance matters**: The polar conversion uses Manhattan distance (|Δx| + |Δy|) rather than Euclidean, so the spiral pattern has a slightly diamond-shaped geometry rather than perfectly circular. This is most visible at large Scale values where the concentric rings are widely spaced.
+2. **Arm count controls density**: The arm mask is the single most powerful control for overall pattern density. At 1 arm, the pattern is sparse. At 8 arms, the pattern fills the angular space nearly uniformly.
+3. **Scale shift is logarithmic**: The four-step shift-based spacing produces a logarithmic tightness curve — most of the useful range for tight spirals is in the lowest quarter of knob travel.
+
+---
+
 ## Background
 
 ### Phyllotaxis and the Golden Angle
@@ -61,6 +69,8 @@ When color mode is active, each dot or arm segment is tinted using an 8-entry ta
 ---
 
 ## Signal Flow
+
+Delta from Center → Polar Conversion → Spiral Arm Test → Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -183,8 +193,8 @@ Controls dot brightness — how much the Y channel is boosted for pixels on a sp
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Sunflwr | Pinecon |
-| **8 — Fill** | Video | Tint |
+| **7 — Pattern** | Sunflwr | Cactus |
+| **8 — Fill** | Video | Solid |
 | **9 — Animate** | Off | On |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -204,6 +214,21 @@ The five toggles control independent binary options. Mode selects between dot re
 
 Controls the wet/dry crossfade via the interpolator. At 0 the output is 100% dry (source only). At 1023 the output is 100% wet (fully processed spiral overlay). Intermediate values produce a transparent blend where the spiral pattern is partially visible over the source. The interpolator uses 10-bit fractional multiplication, providing 1024 blend steps.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Phyllo processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -214,7 +239,7 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 <img src={phyllo_exercise1_result} alt="Sunflower Seed Pattern result"/>
 *Sunflower Seed Pattern — simulated result across source images.*
-**Objective**: Learn how the arm count and dot size controls shape the basic phyllotactic arrangement.
+**What You'll Create**: Learn how the arm count and dot size controls shape the basic phyllotactic arrangement.
 
 1. **Single arm**: Set Arm Count to minimum. Observe a single spiral arm sweeping outward from the center.
 2. **Add arms**: Slowly increase Arm Count. Watch as 2, 3, 4, then 8 arms appear, each interleaved at the golden angle.
@@ -230,7 +255,7 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 <img src={phyllo_exercise2_result} alt="Rainbow Spiral Animation result"/>
 *Rainbow Spiral Animation — simulated result across source images.*
-**Objective**: Combine colour cycling with rotation animation to create evolving psychedelic spirals.
+**What You'll Create**: Combine colour cycling with rotation animation to create evolving psychedelic spirals.
 
 1. **Enable animation**: Toggle Animate on. Watch the pattern slowly rotate.
 2. **Enable colour**: Toggle Color on. Dots acquire rainbow tint from the hue LUT.
@@ -247,7 +272,7 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 <img src={phyllo_exercise3_result} alt="Video-Reactive Overlay result"/>
 *Video-Reactive Overlay — simulated result across source images.*
-**Objective**: Use the video-reactive mode to map the spiral pattern onto bright regions of a source image.
+**What You'll Create**: Use the video-reactive mode to map the spiral pattern onto bright regions of a source image.
 
 1. **Prepare source**: Feed a high-contrast source with distinct bright and dark regions.
 2. **Enable video reactive**: Toggle Video React on. Dots disappear from dark areas.
@@ -263,9 +288,6 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 
 ## Tips
 
-- **Manhattan distance matters**: The polar conversion uses Manhattan distance (|Δx| + |Δy|) rather than Euclidean, so the spiral pattern has a slightly diamond-shaped geometry rather than perfectly circular. This is most visible at large Scale values where the concentric rings are widely spaced.
-- **Arm count controls density**: The arm mask is the single most powerful control for overall pattern density. At 1 arm, the pattern is sparse. At 8 arms, the pattern fills the angular space nearly uniformly.
-- **Scale shift is logarithmic**: The four-step shift-based spacing produces a logarithmic tightness curve — most of the useful range for tight spirals is in the lowest quarter of knob travel.
 - **Video reactive is a hard gate**: The Y < 256 threshold is not proportional — it is all-or-nothing. For softer interaction with the source, use the Mix fader to blend instead.
 - **Animate speed is fixed**: The rotation rate is always 1 step per field (~6 RPM at 60 Hz). There is no speed control — use external modulation or animation of the Rotation pot for faster effects.
 - **Hue cycling follows arm position**: The colour pattern repeats every 8 arm test values. With 8 arms visible, each arm gets a distinct hue. With fewer arms, a single arm cycles through all 8 colours along its length.
@@ -283,9 +305,9 @@ These exercises explore the phyllotactic spiral from simple dot patterns to anim
 | **Octant** | One eighth of a full circle; the VHDL angle approximation divides the plane into 8 octants and interpolates linearly within each. |
 | **Phase Accumulator** | A counter that wraps at a fixed modulus; its overflow rate sets the output frequency in DDS systems. |
 | **Phyllotaxis** | The arrangement of leaves, seeds, or other lateral organs around a plant stem, typically governed by the golden angle. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Polar Coordinates** | A 2D coordinate system using radius and angle rather than x and y; the natural domain for spiral patterns. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

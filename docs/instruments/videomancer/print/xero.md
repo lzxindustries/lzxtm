@@ -68,6 +68,14 @@ The name is a play on "Xerox" — the company whose machines defined the xerogra
 
 ---
 
+## Quick Start
+
+1. **Layer artifacts gradually**: Start with just Edge Enhance, then add Generations, then Grain. Each layer adds character — the effect is most convincing when artifacts are balanced rather than all at maximum.
+2. **Brightness compensates generation loss**: Heavy generation loss clips highlights. Reducing Brightness shifts the tonal center downward, preserving more detail in the compressed range.
+3. **Copy Art for graphics**: Copy Art mode is most effective with high-contrast source material. Portraits become stark graphic prints; text becomes bold woodcut-style lettering.
+
+---
+
 ## Background
 
 ### Xerographic Edge Enhancement
@@ -94,6 +102,8 @@ While most office copiers used black toner on white paper, specialized machines 
 ---
 
 ## Signal Flow
+
+Input Register → Laplacian Edge → Generation Loss → Drum Banding
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -150,7 +160,7 @@ The processing chain is intentionally ordered to match the physics of xerographi
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the intensity of the horizontal Laplacian edge enhancement. At 0% there is no edge effect. Increasing the control amplifies the overshoot at brightness transitions, creating the characteristic bright-fringe / dark-fringe halos around edges. In Copy Art mode, the effective gain is doubled — strong settings produce extreme high-frequency ringing.
+At 0% there is no edge effect. Increasing the control amplifies the overshoot at brightness transitions, creating the characteristic bright-fringe / dark-fringe halos around edges. In Copy Art mode, the effective gain is doubled — strong settings produce extreme high-frequency ringing. Internally, controls the intensity of the horizontal Laplacian edge enhancement.
 
 ---
 
@@ -161,7 +171,7 @@ Controls the intensity of the horizontal Laplacian edge enhancement. At 0% there
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the steepness of the generation-loss contrast S-curve. At 0% the curve is linear (no tonal compression). Increasing the control steepens the midtone slope, progressively crushing shadows and clipping highlights. This simulates the cumulative degradation of copying a copy repeatedly. Maximum settings produce a near-binary, soot-and-flash graphic.
+At 0% the curve is linear (no tonal compression). Increasing the control steepens the midtone slope, progressively crushing shadows and clipping highlights. This simulates the cumulative degradation of copying a copy repeatedly. Maximum settings produce a near-binary, soot-and-flash graphic. Internally, controls the steepness of the generation-loss contrast S-curve.
 
 ---
 
@@ -234,6 +244,21 @@ Toggles 7 and 8 form a 2-bit toner color selector (Hi and Lo bits). Toggle 9 sel
 
 Crossfades between the dry input signal and the processed xerographic output. At 0% the output is the unprocessed input. At 100% the output is the full copy simulation. Intermediate positions blend the effect at varying intensity, useful for subtle vintage texture overlays.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Xero processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +280,7 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 *First-Generation Copy — simulated result across source images.*
 **Source**: A photograph or video feed with smooth gradients and fine detail — a portrait or landscape works well.
 
-**Objective**: Create a clean, first-generation photocopy look using edge enhancement and minimal generation loss.
+**What You'll Create**: Create a clean, first-generation photocopy look using edge enhancement and minimal generation loss.
 
 1. **Edge enhancement**: Set Edge Enhance to ~50%. Observe the bright/dark halos appearing around edges.
 2. **Gentle generation loss**: Set Generations to ~25%. Smooth gradients begin to flatten slightly.
@@ -282,7 +307,7 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 *Fifth-Generation Degradation — simulated result across source images.*
 **Source**: Same source as Exercise 1, to compare degradation against the cleaner version.
 
-**Objective**: Simulate extreme multi-generational copying with mechanical artifacts.
+**What You'll Create**: Simulate extreme multi-generational copying with mechanical artifacts.
 
 1. **Heavy generation loss**: Set Generations to ~80%. The image becomes stark and high-contrast.
 2. **Strong edges**: Increase Edge Enhance to ~80%. Edge halos become prominent.
@@ -310,7 +335,7 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 *Copy Art Extreme — simulated result across source images.*
 **Source**: High-contrast footage — faces, hands on a copier glass, text pages, or object silhouettes.
 
-**Objective**: Push the Copy Art mode to maximum for zine-aesthetic abstract graphics.
+**What You'll Create**: Push the Copy Art mode to maximum for zine-aesthetic abstract graphics.
 
 1. **Copy Art mode**: Toggle Mode to Copy Art. Edge and contrast effects are immediately doubled.
 2. **Maximum edges**: Set Edge Enhance to ~90%. Extreme ringing creates graphic outlines.
@@ -326,9 +351,6 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 
 ## Tips
 
-- **Layer artifacts gradually**: Start with just Edge Enhance, then add Generations, then Grain. Each layer adds character — the effect is most convincing when artifacts are balanced rather than all at maximum.
-- **Brightness compensates generation loss**: Heavy generation loss clips highlights. Reducing Brightness shifts the tonal center downward, preserving more detail in the compressed range.
-- **Copy Art for graphics**: Copy Art mode is most effective with high-contrast source material. Portraits become stark graphic prints; text becomes bold woodcut-style lettering.
 - **Grain reveals midtones**: Toner grain is most visible in the 30–70% gray range, where it mimics the sparse, uneven toner coverage of a running-low cartridge.
 - **Warm paper + brown toner = archive look**: This combination produces the appearance of an aged document found in a storage box — yellowish paper with sepia-toned text.
 - **Fuser streak for authenticity**: A tiny amount of Fuser Streak (10–15%) adds a subtle mechanical imperfection that makes the simulation more convincing than a clean copy effect.
@@ -351,5 +373,7 @@ These exercises progress from basic copy simulation to extreme copy-art deconstr
 | **S-Curve** | A sigmoidal contrast function that compresses shadows and highlights while steepening midtone contrast. |
 | **Toner** | Dry powder (polymer particles with carbon black) fused to paper by heat in xerographic copying. |
 | **Xerography** | The dry electrostatic copying process invented by Chester Carlson in 1938, commercialized by Haloid/Xerox. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

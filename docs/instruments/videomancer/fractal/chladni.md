@@ -35,6 +35,14 @@ The frequency controls are continuous — not quantized to integer multiples —
 
 ---
 
+## Quick Start
+
+1. **Rational frequency ratios are musical**: When Freq X and Freq Y are in simple integer ratios (1:1, 1:2, 2:3), the Chladni pattern locks into a perfectly repeating lattice. Irrational ratios produce quasi-periodic patterns that drift without repeating — visually richer but less stable.
+2. **Width is your graphic weight control**: Thin Width values produce delicate filigree; thick values produce bold, graphic masks. In sculpt mode, Width determines how much of the source video survives through each nodal window.
+3. **Draw mode is a pattern generator**: With Draw On, Chladni becomes a standalone synthesis program producing geometric overlays. Route its output into another Videomancer module for compositing, keying, or modulation.
+
+---
+
 ## Background
 
 ### Ernst Chladni and the Vibrating Plate
@@ -61,6 +69,8 @@ The Chladni mask — a binary or graded field of nodal lines — can be applied 
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → Clock 1: Frequency → Clock 2: Triangle Wave → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -128,7 +138,7 @@ The heart of the algorithm is the pair of frequency accumulators in Clock 1 and 
 | Range | 1 – 8 |
 | Default | 3 |
 
-Controls the horizontal spatial frequency of the standing-wave pattern. At zero the horizontal oscillator is frozen — no variation across the X axis, producing only horizontal bands driven by the Y oscillator. As Freq X increases, vertical nodal lines appear, spaced more closely together at higher values. The interaction with Freq Y determines the overall pattern geometry: equal frequencies produce diamond lattices, integer ratios produce regular tilings, and irrational ratios produce quasi-periodic patterns that never exactly repeat. Sweeping this knob slowly reveals the pattern locking and unlocking as it passes through harmonic ratios — a visual analog of musical intervals.
+At zero the horizontal oscillator is frozen — no variation across the X axis, producing only horizontal bands driven by the Y oscillator. As Freq X increases, vertical nodal lines appear, spaced more closely together at higher values. The interaction with Freq Y determines the overall pattern geometry: equal frequencies produce diamond lattices, integer ratios produce regular tilings, and irrational ratios produce quasi-periodic patterns that never exactly repeat. Sweeping this knob slowly reveals the pattern locking and unlocking as it passes through harmonic ratios — a visual analog of musical intervals. Internally, controls the horizontal spatial frequency of the standing-wave pattern.
 
 ---
 
@@ -209,7 +219,29 @@ Switches 7–10 configure four orthogonal aspects of the Chladni engine. Draw (7
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix at the end of the processing chain. At 100%, the output is fully processed — the Chladni pattern is at maximum strength. At 0%, the output is the unprocessed input. Intermediate values blend between the two via a 4-clock interpolator operating on all three channels simultaneously, producing a smooth crossfade with no color artifacts. This control is essential for dialing in subtle sculpting effects where the standing-wave pattern should texture the video without dominating it.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chladni processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Chladni-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -221,7 +253,7 @@ These exercises progress from pure mathematical visualization through subtle vid
 
 <img src={chladni_exercise1_result} alt="Static Chladni Plate result"/>
 *Static Chladni Plate — simulated result across source images.*
-**Objective**: Visualize the Chladni figure as a white-on-black pattern, exploring how frequency ratios and phase determine the geometry of nodal lines.
+**What You'll Create**: Visualize the Chladni figure as a white-on-black pattern, exploring how frequency ratios and phase determine the geometry of nodal lines.
 
 1. **Enable Draw mode**: Toggle Draw On. The input video disappears, replaced by the standing-wave pattern rendered as white curves on black.
 2. **Set baseline frequencies**: Set Freq X and Freq Y to ~50%. A diamond-grid lattice should appear.
@@ -238,7 +270,7 @@ These exercises progress from pure mathematical visualization through subtle vid
 
 <img src={chladni_exercise2_result} alt="Video Sculpting with Nodal Lines result"/>
 *Video Sculpting with Nodal Lines — simulated result across source images.*
-**Objective**: Use the Chladni mask to sculpt the input video, allowing it to pass only through the nodal lines — creating a lattice window into the source material.
+**What You'll Create**: Use the Chladni mask to sculpt the input video, allowing it to pass only through the nodal lines — creating a lattice window into the source material.
 
 1. **Disable Draw mode**: Toggle Draw Off. The Chladni mask now multiplies the input video — the image is visible only where the standing wave has a node.
 2. **Set a medium pattern**: Freq X ~40%, Freq Y ~60% for a slightly asymmetric lattice. Width ~35% for moderate line thickness.
@@ -255,7 +287,7 @@ These exercises progress from pure mathematical visualization through subtle vid
 
 <img src={chladni_exercise3_result} alt="Animated Resonance result"/>
 *Animated Resonance — simulated result across source images.*
-**Objective**: Activate phase animation and explore how the Chladni pattern behaves as a living resonance field sweeping across the video.
+**What You'll Create**: Activate phase animation and explore how the Chladni pattern behaves as a living resonance field sweeping across the video.
 
 1. **Start from Exercise 2 settings**: Sculpt mode, moderate frequencies, Width ~35%.
 2. **Enable Animate**: Toggle Animate On. The nodal lines begin drifting steadily across the frame, as if the virtual plate were being continuously excited at a changing frequency.
@@ -271,9 +303,6 @@ These exercises progress from pure mathematical visualization through subtle vid
 
 ## Tips
 
-- **Rational frequency ratios are musical**: When Freq X and Freq Y are in simple integer ratios (1:1, 1:2, 2:3), the Chladni pattern locks into a perfectly repeating lattice. Irrational ratios produce quasi-periodic patterns that drift without repeating — visually richer but less stable.
-- **Width is your graphic weight control**: Thin Width values produce delicate filigree; thick values produce bold, graphic masks. In sculpt mode, Width determines how much of the source video survives through each nodal window.
-- **Draw mode is a pattern generator**: With Draw On, Chladni becomes a standalone synthesis program producing geometric overlays. Route its output into another Videomancer module for compositing, keying, or modulation.
 - **XY Link for simplicity**: When you want clean, symmetric patterns without fussing over two frequency knobs, engage XY Link. The resulting diagonal lattices are the simplest Chladni figures — good starting points for sculpting.
 - **Phase + Animate for choreography**: Set Animate On for continuous motion, then adjust Phase to choose the starting position. For rhythmic effects, momentarily toggle Animate On and Off to advance the pattern in controlled bursts.
 - **Contrast and Brightness are post-mask**: These controls operate after the Chladni sculpting stage. Use Contrast to sharpen or soften the sculpted edges. Use Y Bright to lift the dark regions of the mask for a more translucent overlay effect.
@@ -289,14 +318,12 @@ These exercises progress from pure mathematical visualization through subtle vid
 | **Amplitude modulation** | A technique where one signal (the carrier) is multiplied by another (the modulator), used in Sculpt mode to shape video brightness with the standing-wave field. |
 | **Antinode** | A point on a standing wave where the oscillation amplitude is at its maximum, the complement of a node. |
 | **Bessel function** | A family of mathematical functions that describe standing-wave patterns on circular plates; rectangular plates use trigonometric products instead. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here to animate the Chladni pattern over time. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Moire** | An interference pattern produced when two periodic structures overlap at slightly different frequencies or angles. |
 | **Node** | A point on a standing wave where the oscillation amplitude is always zero; nodal lines on a Chladni plate are where sand collects. |
-| **Proc amp** | Processing amplifier; a standard video circuit that adjusts contrast and brightness by scaling and offsetting the luminance signal. |
 | **Standing wave** | A wave pattern formed by the superposition of two waves traveling in opposite directions, producing fixed nodes and antinodes. |
 | **Triangle wave** | A periodic waveform that rises and falls linearly, used as a computationally cheap approximation to a sine wave in hardware. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

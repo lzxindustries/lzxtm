@@ -68,6 +68,14 @@ At low amplitudes and frequencies, Elastica produces gentle undulations and subt
 
 ---
 
+## Quick Start
+
+1. **Start with sine**: Sine waveshape gives the most natural, Scanimate-authentic results. Dial in frequency and amplitude before exploring other waveshapes.
+2. **Low Anim Speed for elegance**: The classic ripple crawl is a slow, hypnotic drift. Anim Speed around 10–15% captures the vintage feel; higher speeds are useful for frenetic effects.
+3. **Cross-mod creates 2D patterns**: Even without V-Warp enabled, Cross-Mod routes the V-DDS triangle into the horizontal amplitude path, creating spatial amplitude modulation. V-Warp adds the separate scanline-repetition effect on top.
+
+---
+
 ## Background
 
 ### The Scanimate Legacy
@@ -94,6 +102,8 @@ Video synthesis — the creation and manipulation of imagery using electronic ci
 ---
 
 ## Signal Flow
+
+Video Timing Generator → DDS Oscillators → Waveshape Select → ... → Vertical Warp → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -148,7 +158,7 @@ The horizontal displacement path and the vertical warp path are largely independ
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the spatial frequency of the horizontal displacement waveform. At zero, the DDS tuning word is zero and no phase advancement occurs — the displacement is constant across all scanlines. As the knob increases, the waveform completes more cycles across the vertical extent of the frame. Low values produce broad, gentle bowing; mid-range values produce several visible undulations; high values create dense corrugation that can alias and beat against the scanline structure. The relationship between knob position and visible cycles is linear in the DDS tuning domain.
+At zero, the DDS tuning word is zero and no phase advancement occurs — the displacement is constant across all scanlines. As the knob increases, the waveform completes more cycles across the vertical extent of the frame. Low values produce broad, gentle bowing; mid-range values produce several visible undulations; high values create dense corrugation that can alias and beat against the scanline structure. The relationship between knob position and visible cycles is linear in the DDS tuning domain. Internally, controls the spatial frequency of the horizontal displacement waveform.
 
 ---
 
@@ -159,7 +169,7 @@ Controls the spatial frequency of the horizontal displacement waveform. At zero,
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the peak horizontal displacement in pixels. At zero, the waveshape has no effect regardless of its frequency — the image passes through undistorted. Small values produce subtle shimmer and wobble. Moderate values create clearly visible bowing and shear. At maximum, pixels can be displaced by hundreds of positions, folding the image dramatically or pushing large portions off-screen (clamped) or wrapping them around (wrap mode). This is the primary "intensity" control for the horizontal warp effect.
+At zero, the waveshape has no effect regardless of its frequency — the image passes through undistorted. Small values produce subtle shimmer and wobble. Moderate values create clearly visible bowing and shear. At maximum, pixels can be displaced by hundreds of positions, folding the image dramatically or pushing large portions off-screen (clamped) or wrapping them around (wrap mode). This is the primary "intensity" control for the horizontal warp effect. Internally, sets the peak horizontal displacement in pixels.
 
 ---
 
@@ -203,7 +213,7 @@ Controls how strongly the vertical warp oscillator's triangle output modulates t
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the intensity of the vertical warp effect — the degree of scanline repetition and skipping. At zero, all scanlines pass through normally. As the knob increases, regions where the V-wave triangle output is large cause scanlines to be repeated (the previous line is held and re-output), compressing the image vertically in those zones. The affected regions alternate with unaffected regions at a rate determined by V Frequency, creating bands of vertical squeeze separated by bands of normal resolution.
+At zero, all scanlines pass through normally. As the knob increases, regions where the V-wave triangle output is large cause scanlines to be repeated (the previous line is held and re-output), compressing the image vertically in those zones. The affected regions alternate with unaffected regions at a rate determined by V Frequency, creating bands of vertical squeeze separated by bands of normal resolution. Internally, sets the intensity of the vertical warp effect — the degree of scanline repetition and skipping.
 
 ---
 
@@ -231,6 +241,10 @@ Toggles 7 and 8 form a 2-bit waveshape selector (4 shapes) that determines the c
 
 Wet/dry crossfade between the original (delayed) input and the warped output. At maximum (1023), the output is fully warped. At zero, the output is the unprocessed input — effectively a bypass. Intermediate positions blend the two, which can produce ghosting or double-exposure effects as the displaced and undisplaced images superimpose. Because the delayed dry signal is time-aligned with the wet output (both pass through the same pipeline depth), there is no temporal smearing at intermediate mix positions.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -252,7 +266,7 @@ These exercises progress from basic horizontal displacement through vertical war
 *Classic Scanimate Ripple — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong vertical lines — architecture, text, or geometric patterns.
 
-**Objective**: Recreate the signature Scanimate horizontal ripple crawl using sine waveshape and animated phase scrolling.
+**What You'll Create**: Recreate the signature Scanimate horizontal ripple crawl using sine waveshape and animated phase scrolling.
 
 1. **Set the waveshape**: Ensure Wave Sel A and Wave Sel B are both Off (sine waveshape).
 2. **Base warp**: Set H Frequency to about 25% for two or three visible undulations across the frame height.
@@ -280,7 +294,7 @@ These exercises progress from basic horizontal displacement through vertical war
 *Vertical Squeeze and Cross-Modulation — simulated result across source images.*
 **Source**: Footage with horizontal features — landscape horizons, striped patterns, or text crawls.
 
-**Objective**: Explore vertical warp and cross-modulation to create 2D distortion patterns.
+**What You'll Create**: Explore vertical warp and cross-modulation to create 2D distortion patterns.
 
 1. **Start with H-warp**: Set H Frequency ~15%, H Amplitude ~30%, sine waveshape, Animate Off.
 2. **Enable V-Warp**: Toggle V-Warp On. Set V Frequency to about 15% and V Amplitude to about 40%.
@@ -308,7 +322,7 @@ These exercises progress from basic horizontal displacement through vertical war
 *Waveshape Comparison and Extreme Warp — simulated result across source images.*
 **Source**: Any footage with recognizable content — faces, text, or graphic patterns.
 
-**Objective**: Compare all four waveshapes at high amplitude and explore wrap-mode folding for abstract textures.
+**What You'll Create**: Compare all four waveshapes at high amplitude and explore wrap-mode folding for abstract textures.
 
 1. **High amplitude setup**: Set H Frequency ~20%, H Amplitude ~80%, Animate On, Anim Speed ~15%.
 2. **Sine**: Wave Sel A Off, Wave Sel B Off. Observe smooth S-curve distortion.
@@ -325,9 +339,6 @@ These exercises progress from basic horizontal displacement through vertical war
 
 ## Tips
 
-- **Start with sine**: Sine waveshape gives the most natural, Scanimate-authentic results. Dial in frequency and amplitude before exploring other waveshapes.
-- **Low Anim Speed for elegance**: The classic ripple crawl is a slow, hypnotic drift. Anim Speed around 10–15% captures the vintage feel; higher speeds are useful for frenetic effects.
-- **Cross-mod creates 2D patterns**: Even without V-Warp enabled, Cross-Mod routes the V-DDS triangle into the horizontal amplitude path, creating spatial amplitude modulation. V-Warp adds the separate scanline-repetition effect on top.
 - **Wrap mode for feedback**: When routing the output back to the input, Wrap mode prevents edge-clamped color from accumulating and instead creates seamless tileable feedback patterns.
 - **Mix for double exposure**: Intermediate mix positions superimpose the warped and unwarped images, useful for creating ghostly layering effects or motion-blur-like smears.
 - **Square wave for rhythmic displacement**: Square waveshape splits the image into two hard-displaced halves — excellent for glitch aesthetics and blocky displacement keyed to a beat.
@@ -340,7 +351,6 @@ These exercises progress from basic horizontal displacement through vertical war
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used to store one full scanline for displaced readback. |
 | **Cross-Modulation** | Using the output of one oscillator to control a parameter of another; here the V-wave triangle modulates the H-warp amplitude. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table or arithmetic. |
 | **Displacement** | Shifting pixel read positions horizontally by an offset derived from the warp waveform, causing spatial distortion. |
@@ -351,6 +361,7 @@ These exercises progress from basic horizontal displacement through vertical war
 | **Rubber-Sheet Transform** | A continuous spatial distortion where output pixel positions are displaced versions of input positions, as if the image were printed on elastic material. |
 | **Scanimate** | An analog video computer built by Computer Image Corporation in the 1970s, capable of real-time per-scanline video distortion. |
 | **Tuning Word** | The increment value added to a DDS phase accumulator on each clock event; determines the output frequency. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

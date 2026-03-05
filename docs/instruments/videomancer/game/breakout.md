@@ -35,6 +35,14 @@ Six knobs control the gameplay variables — ball speed, paddle size, paddle pos
 
 ---
 
+## Quick Start
+
+1. **Start slow, speed up gradually**: Begin with Ball Spd at ~30% to learn the paddle angle zones and court geometry. Increase speed only once you are comfortable guiding the ball into brick clusters.
+2. **Wide paddle for compositing, narrow for gameplay**: When using Breakout as a visual overlay in a performance context, a wide paddle keeps the game running passively with minimal intervention. For a genuine challenge, narrow the paddle and focus on precision.
+3. **Use the wrap for trick shots**: With Walls Off, the ball can wrap from one side to the other, hitting bricks from unexpected angles. This is harder to control but clears edge columns more efficiently than wall bounces.
+
+---
+
 ## Background
 
 ### The Atari Breakout Legacy
@@ -61,6 +69,8 @@ The rendering pipeline evaluates five hit-test conditions for every pixel: ball,
 ---
 
 ## Signal Flow
+
+Register Decode → Derived Parameters → Video Timing Generator → ... → Interpolator Mix → Output
 
 ```
 Registers (10-bit pots, toggle bits, fader)
@@ -149,7 +159,7 @@ The physics engine and rendering pipeline are decoupled by time domain. Ball pos
 | Default | 38% |
 | Suffix | % |
 
-Controls the base speed at which the ball travels per frame. At low settings, the ball drifts lazily across the court, giving the player ample time to position the paddle but making each round slow. At high settings, the ball crosses the court in just a few frames, demanding fast reflexes and precise paddle placement. The speed value also determines the magnitude of the upward velocity component on serve, so faster speeds produce a more aggressive initial launch angle. Finding the right speed is a balance between challenge and playability — the sweet spot depends on how rapidly the player can manipulate the Pad Pos knob.
+At low settings, the ball drifts lazily across the court, giving the player ample time to position the paddle but making each round slow. At high settings, the ball crosses the court in just a few frames, demanding fast reflexes and precise paddle placement. The speed value also determines the magnitude of the upward velocity component on serve, so faster speeds produce a more aggressive initial launch angle. Finding the right speed is a balance between challenge and playability — the sweet spot depends on how rapidly the player can manipulate the Pad Pos knob. Internally, controls the base speed at which the ball travels per frame.
 
 ---
 
@@ -233,6 +243,10 @@ The five toggles divide into gameplay and aesthetic functions. Serve is the prim
 
 Controls the wet/dry mix between the synthesized game output and the delayed input video. At full wet, only the game graphics are visible — bricks, ball, paddle, and score on a black background. At full dry, the input video passes through unmodified. Intermediate positions composite the game over the source using linear interpolation, allowing the brick-breaker to be overlaid on live video footage. The mix operates independently on Y, U, and V channels through three parallel interpolator instances. This control is essential for live performance contexts where the game should appear as a translucent overlay rather than a full-screen replacement.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -243,7 +257,7 @@ These three exercises explore Breakout's gameplay mechanics and visual presentat
 
 <img src={breakout_exercise1_result} alt="Classic Arcade Setup result"/>
 *Classic Arcade Setup — simulated result across source images.*
-**Objective**: Configure a faithful recreation of the original Breakout arcade experience — moderate speed, full brick rows, colored bands, walls on, and score visible.
+**What You'll Create**: Configure a faithful recreation of the original Breakout arcade experience — moderate speed, full brick rows, colored bands, walls on, and score visible.
 
 1. **Set moderate ball speed**: Turn Ball Spd to roughly 40% for a manageable but engaging pace.
 2. **Medium paddle width**: Set Pad Size to around 50% — not too forgiving, not punishing.
@@ -262,7 +276,7 @@ These three exercises explore Breakout's gameplay mechanics and visual presentat
 
 <img src={breakout_exercise2_result} alt="Speed Challenge with Narrow Paddle result"/>
 *Speed Challenge with Narrow Paddle — simulated result across source images.*
-**Objective**: Create a high-difficulty configuration with fast ball movement, a narrow paddle, and no side walls — testing reflexes and pot-turning precision.
+**What You'll Create**: Create a high-difficulty configuration with fast ball movement, a narrow paddle, and no side walls — testing reflexes and pot-turning precision.
 
 1. **Maximum ball speed**: Turn Ball Spd to ~90% for rapid traversal.
 2. **Narrow paddle**: Set Pad Size to ~10% — a slim target that demands accuracy.
@@ -280,7 +294,7 @@ These three exercises explore Breakout's gameplay mechanics and visual presentat
 
 <img src={breakout_exercise3_result} alt="Game as Video Overlay result"/>
 *Game as Video Overlay — simulated result across source images.*
-**Objective**: Composite the Breakout game over a live video input, using the mix fader to create a translucent game overlay suitable for live performance or broadcast.
+**What You'll Create**: Composite the Breakout game over a live video input, using the mix fader to create a translucent game overlay suitable for live performance or broadcast.
 
 1. **Feed a video source**: Connect a camera or video player to the input. The source will show through behind the game.
 2. **Set mix to ~60%**: Pull the Mix fader to roughly 60% so the game graphics are prominent but the source video remains visible.
@@ -297,9 +311,6 @@ These three exercises explore Breakout's gameplay mechanics and visual presentat
 
 ## Tips
 
-- **Start slow, speed up gradually**: Begin with Ball Spd at ~30% to learn the paddle angle zones and court geometry. Increase speed only once you are comfortable guiding the ball into brick clusters.
-- **Wide paddle for compositing, narrow for gameplay**: When using Breakout as a visual overlay in a performance context, a wide paddle keeps the game running passively with minimal intervention. For a genuine challenge, narrow the paddle and focus on precision.
-- **Use the wrap for trick shots**: With Walls Off, the ball can wrap from one side to the other, hitting bricks from unexpected angles. This is harder to control but clears edge columns more efficiently than wall bounces.
 - **Court Hue at ~25% mimics the original**: A warm red-orange base hue with the row gradient produces the closest match to the classic Atari Breakout color scheme of red, orange, yellow, and green rows.
 - **Score Off for cleaner overlays**: When compositing over video, the score digits can be visually distracting. Turn Score Off for a purely geometric game layer — the score remains tracked internally and reappears when toggled back On.
 - **Mix at ~40% creates ghost bricks**: A low mix setting renders the brick field as a faint grid pattern over the input video, creating an interesting lattice effect even when the game is not actively being played.
@@ -319,12 +330,13 @@ These three exercises explore Breakout's gameplay mechanics and visual presentat
 | **Chebyshev distance** | A distance metric using the maximum of absolute coordinate differences: max(|dx|, |dy|). Not used in Breakout's rectangular hit tests, which use independent axis-aligned range checks. |
 | **Dot-matrix font** | A character representation where each glyph is defined as a grid of on/off pixels. Breakout uses a 5×7 font ROM for the digits 0–9, scaled 4× to 20×28 pixels. |
 | **Hit test** | A per-pixel comparison that determines whether the current scan position falls within a game object's bounding rectangle (ball, paddle, brick, border, or score digit). |
-| **Interpolator** | A hardware module that computes the linear interpolation between two 10-bit values using a 10-bit fractional mix parameter: result = a + (b − a) × t / 1024. Used for wet/dry compositing. |
 | **Level reset** | The event triggered when all alive bits in the active rows are cleared. All 112 bits are set back to 1, repopulating the entire brick grid for a new level while the score continues. |
 | **Score flash** | A 4-frame brightness pulse applied to the background color immediately after a brick is destroyed, providing visual feedback for successful hits. |
 | **Serve timer** | A 6-bit countdown (30 frames at 60 fps = 0.5 seconds) that delays the ball's return to the paddle after it exits the bottom of the court, preventing instantaneous re-serve. |
 | **Sync pipeline** | A 6-stage shift register that delays the hsync, vsync, avid, and field signals to match the rendering pipeline latency, ensuring the output video timing is correctly aligned. |
 | **Vblank** | The vertical blanking interval: the period between the last visible scan line of one frame and the first visible scan line of the next. All physics and game state updates occur during vblank. |
 | **Wrap mode** | The horizontal boundary behavior when Walls is Off. The ball's X position wraps modulo 1920, teleporting from one side of the court to the other without velocity change. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

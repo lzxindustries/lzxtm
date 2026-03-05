@@ -68,6 +68,14 @@ One parameter — Mod Bias — is declared in the register map but has no effect
 
 ---
 
+## Quick Start
+
+1. **Spread is the quick-start knob**: For instant chromatic aberration, leave the individual delay knobs at zero and just turn Spread. It pushes U and V apart symmetrically while keeping Y centred.
+2. **Luma Mod creates organic warping**: Without modulation, displacement is uniform across the image. With modulation, the displacement follows the scene content, creating effects that feel more like refraction than mechanical offset.
+3. **Mirror for bilateral fringes**: Real optical chromatic aberration produces fringes on both sides of edges. Enable Mirror to approximate this symmetric look.
+
+---
+
 ## Background
 
 ### Chromatic Aberration
@@ -94,6 +102,8 @@ The Mirror toggle subtracts each computed delay from the maximum value (2047), e
 ---
 
 ## Signal Flow
+
+Input Registration → BRAM Delay Lines → Channel Swap → Interpolator → Sync Delay Pipeline → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -229,6 +239,21 @@ The five toggles divide into four active controls and one standard bypass. U-V S
 
 Mix crossfades between the dry (original) signal and the wet (displaced) signal via the interpolator stage. At 100% (default, register 1023), only the processed signal is output. At 0%, the original signal passes through unchanged. Intermediate values create a semi-transparent overlay of the displaced channels over the original, which can produce subtle ghosting or halo effects.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Prism processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +275,7 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 *Classic Chromatic Aberration — simulated result across source images.*
 **Source**: A high-contrast image with sharp edges — text overlays, geometric shapes, or architectural footage.
 
-**Objective**: Create prismatic colour fringes that mimic optical chromatic aberration.
+**What You'll Create**: Create prismatic colour fringes that mimic optical chromatic aberration.
 
 1. Set Y Delay to 0% so the luminance channel stays centred.
 2. Increase U Delay to ~20% to shift the blue-difference channel rightward.
@@ -278,7 +303,7 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 *Luma-Modulated Warping — simulated result across source images.*
 **Source**: Footage with a wide tonal range — faces, landscapes, or imagery with strong light/dark contrast.
 
-**Objective**: Use input brightness to dynamically control displacement for content-adaptive chromatic effects.
+**What You'll Create**: Use input brightness to dynamically control displacement for content-adaptive chromatic effects.
 
 1. Set all three delay knobs (Y, U, V) to 0%.
 2. Increase Spread to ~70% to create a base chromatic separation.
@@ -305,7 +330,7 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 *False-Colour Channel Remix — simulated result across source images.*
 **Source**: Any video — the channel swaps create dramatic recolouring of any content.
 
-**Objective**: Explore the six channel permutations created by the two swap toggles.
+**What You'll Create**: Explore the six channel permutations created by the two swap toggles.
 
 1. Set moderate delays: Y Delay ~10%, U Delay ~30%, V Delay ~50%.
 2. Enable U-V Swap (Switch 7). Observe the hue rotation — reds become blues.
@@ -321,9 +346,6 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 ## Tips
 
-- **Spread is the quick-start knob**: For instant chromatic aberration, leave the individual delay knobs at zero and just turn Spread. It pushes U and V apart symmetrically while keeping Y centred.
-- **Luma Mod creates organic warping**: Without modulation, displacement is uniform across the image. With modulation, the displacement follows the scene content, creating effects that feel more like refraction than mechanical offset.
-- **Mirror for bilateral fringes**: Real optical chromatic aberration produces fringes on both sides of edges. Enable Mirror to approximate this symmetric look.
 - **Channel swaps are post-delay**: Swapping happens after displacement, so you can set up a specific delay pattern and then remap it to different colour channels without changing the delay values.
 - **Luma Invert affects two paths**: It inverts both the Y channel data going into the delay line and the modulation source. The dual effect is intentional — it reverses the entire displacement polarity.
 - **Mod Bias has no effect**: The knob is reserved for future development. Don't spend time adjusting it.
@@ -335,16 +357,14 @@ These exercises progress from simple chromatic separation to dynamic luma-modula
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the variable delay lines. |
 | **Channel Swap** | Rerouting the Y, U, and V signal paths to different output channels after processing. |
 | **Chromatic Aberration** | Colour fringing caused by different colour channels being displaced relative to each other. |
 | **Delay Line** | A FIFO buffer that stores incoming pixel values and reads them back after a configurable number of clock cycles, implementing horizontal displacement. |
-| **Interpolator** | A linear crossfade module that blends two signals based on a mix parameter, used for wet/dry control. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Luma Modulation** | Multiplying input brightness by a control parameter to dynamically vary a processing parameter (here, delay amount). |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Spread** | A symmetric offset added equally to U and V delay values to create uniform chromatic separation. |
 | **Variable Delay** | A delay line whose read-back position can be changed per pixel, enabling dynamic horizontal displacement. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings Micrograph simply overlays a fine measurement grid on t
 
 ---
 
+## Quick Start
+
+1. **Grid size is discrete**: Unlike most knobs, Grid Sz selects between four fixed spacings (8/16/32/64 pixels). There are no intermediate values — the transitions are abrupt.
+2. **Focus does nothing**: Pot 4 is reserved for a future feature. Do not expect any visible change when adjusting it.
+3. **Dark field + stain is the signature look**: Combining dark-field illumination with a stain type produces the most dramatic microscope aesthetic — glowing colored structures on black.
+
+---
+
 ## Background
 
 ### What Is a Reticle?
@@ -94,6 +102,8 @@ Microscope substage condensers and illumination adjustments are used to enhance 
 ---
 
 ## Signal Flow
+
+Input + Position → Grid + Reticle → Stain + Contrast → Vignette + Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,8 +226,8 @@ Controls a brightness offset applied after vignetting. The register is centered 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Stain** | None | H&E |
-| **8 — Reticle** | Grid | Cross |
+| **7 — Stain** | None | Gram |
+| **8 — Reticle** | Grid | Off |
 | **9 — Field** | Bright | Dark |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -236,6 +246,10 @@ The five toggle switches use a non-standard packing arrangement in register 6. S
 | Suffix | % |
 
 Controls the wet/dry crossfade between the processed microscope output and the original delayed input. At 100% the full microscope effect is applied. At 0% the original signal passes through unchanged. Intermediate values blend the two, which can create a ghostly overlay where the reticle grid and stain color are partially visible over the original image — useful for subtle scientific annotation without overwhelming the source material.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +272,7 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 *Measurement Grid Overlay — simulated result across source images.*
 **Source**: A camera feed of detailed subject matter — macro photography of textures, circuits, or natural patterns.
 
-**Objective**: Learn how the reticle modes and grid spacing interact to create calibrated overlays.
+**What You'll Create**: Learn how the reticle modes and grid spacing interact to create calibrated overlays.
 
 1. **Basic grid**: Set Grid Sz to 50% (32-pixel cells). Select Grid reticle. A regular measurement grid appears over the video.
 2. **Fine grid**: Lower Grid Sz below 25%. The grid becomes very fine — 8-pixel cells create a dense mesh like a hemocytometer counting chamber.
@@ -285,7 +299,7 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 *Histological Staining — simulated result across source images.*
 **Source**: Footage of organic textures — leaves, skin, food surfaces, or any material with fine tonal detail.
 
-**Objective**: Explore the false-color staining modes and their interaction with contrast enhancement.
+**What You'll Create**: Explore the false-color staining modes and their interaction with contrast enhancement.
 
 1. **Prepare**: Set Vignette to ~50% for a classic circular viewport. Select Grid reticle with 32-pixel spacing.
 2. **H&E stain**: Switch Stain type to H&E. Slowly increase the Stain knob. Watch the image take on a pink-purple histological tint.
@@ -313,7 +327,7 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 *Full Microscope Simulation — simulated result across source images.*
 **Source**: Any footage — abstract patterns, camera input, or feedback loops.
 
-**Objective**: Combine all optical systems for a complete microscope aesthetic.
+**What You'll Create**: Combine all optical systems for a complete microscope aesthetic.
 
 1. **Tight vignette**: Set Vignette to ~25% for a narrow circular viewport.
 2. **Dense grid**: Set Grid Sz below 25% for fine 8-pixel cells. Select Scale reticle.
@@ -330,9 +344,6 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 
 ## Tips
 
-- **Grid size is discrete**: Unlike most knobs, Grid Sz selects between four fixed spacings (8/16/32/64 pixels). There are no intermediate values — the transitions are abrupt.
-- **Focus does nothing**: Pot 4 is reserved for a future feature. Do not expect any visible change when adjusting it.
-- **Dark field + stain is the signature look**: Combining dark-field illumination with a stain type produces the most dramatic microscope aesthetic — glowing colored structures on black.
 - **Vignette creates the eyepiece**: Even a mild vignette adds significant realism to the microscope simulation. It frames the specimen and draws attention to the center.
 - **Reticle adapts to field mode**: Grid lines are automatically dark on bright field and bright on dark field, maintaining visibility in both illumination modes.
 - **Mix for annotation**: Use partial Mix values to overlay the reticle grid transparently on the original image — useful for measurement without altering the base footage.
@@ -354,9 +365,9 @@ These three exercises explore Micrograph's capabilities from basic grid overlay 
 | **Histology** | The study of the microscopic structure of tissues, typically involving thin-sectioned and chemically stained specimens. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical distances; used here as a computationally efficient approximation of radial distance for vignette calculation. |
 | **PAS** | Periodic Acid–Schiff stain; produces magenta coloration in carbohydrate-rich tissue structures. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Reticle** | A pattern of lines inscribed in a microscope eyepiece used for measurement and spatial reference. |
 | **Vignette** | Darkening of the image periphery, here simulating the circular aperture of a microscope optical system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

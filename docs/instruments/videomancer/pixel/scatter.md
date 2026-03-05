@@ -68,6 +68,14 @@ At low Amount settings, Scatter introduces a faint digital grain — a crunch of
 
 ---
 
+## Quick Start
+
+1. **Amount is the primary control**: Radius, Direction, and Grain are registered but minimally active in the current XOR implementation. Focus on Amount and Color Mod for intensity.
+2. **ChromaOnly for subtle textures**: Corrupting only chroma produces dramatic color disruption while keeping the image recognizable — a useful halfway point between clean and destroyed.
+3. **Structured mode for repeatable patterns**: When you find a corruption pattern you like, Structured mode ensures it stays consistent frame to frame (with Animate off).
+
+---
+
 ## Background
 
 ### XOR as a Corruption Tool
@@ -94,6 +102,8 @@ The ChromaOnly toggle routes corruption exclusively to the U and V channels, lea
 ---
 
 ## Signal Flow
+
+Input Register → Hash Computation → Corruption Mask Scaling → ... → Invert Toggle → Mix + Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ The critical distinction is that Scatter performs *bitwise* corruption, not spat
 | Default | 38% |
 | Suffix | % |
 
-Controls the intensity of XOR corruption applied to the luminance channel (and to all channels when ChromaOnly is off). At 0%, the corruption mask is zeroed — no bits are flipped. As the value increases, more bits of the mask are allowed through, producing progressively more severe corruption. The relationship between the control position and the visual result is highly non-linear because XOR operations interact unpredictably with the source material's bit patterns.
+At 0%, the corruption mask is zeroed — no bits are flipped. As the value increases, more bits of the mask are allowed through, producing progressively more severe corruption. The relationship between the control position and the visual result is highly non-linear because XOR operations interact unpredictably with the source material's bit patterns. Internally, controls the intensity of XOR corruption applied to the luminance channel (and to all channels when ChromaOnly is off).
 
 ---
 
@@ -204,7 +214,7 @@ Controls the XOR corruption intensity applied independently to the U and V chrom
 | Default | 25% |
 | Suffix | % |
 
-Controls the edge fade distance — how far from the frame boundary the corruption attenuates. At 0%, the entire frame is uniformly corrupted. As you increase the control, a progressively wider border of clean signal appears at the frame edges while the center remains fully corrupted. This creates a vignette effect where noise blooms from the center outward but fades before reaching the periphery.
+At 0%, the entire frame is uniformly corrupted. As you increase the control, a progressively wider border of clean signal appears at the frame edges while the center remains fully corrupted. This creates a vignette effect where noise blooms from the center outward but fades before reaching the periphery. Internally, controls the edge fade distance — how far from the frame boundary the corruption attenuates.
 
 ---
 
@@ -233,6 +243,21 @@ The five toggles configure independent binary processing options. Pattern select
 
 Crossfades between the original input signal and the fully processed output. At 0%, the output is identical to the input regardless of other control settings. At 100%, the full corruption chain is applied. Intermediate values produce a weighted blend — useful for dialing in subtle textures without overwhelming the source material. The mix is applied via the standard interpolator after all corruption and edge-fade processing.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Scatter processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +279,7 @@ These exercises progress from subtle digital grain to full signal deconstruction
 *Digital Grain Texture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — skin tones, skies, or soft lighting.
 
-**Objective**: Learn how the Amount control introduces XOR-based noise as a digital grain texture.
+**What You'll Create**: Learn how the Amount control introduces XOR-based noise as a digital grain texture.
 
 1. **Subtle grain**: Set Amount to approximately 15%. A faint static appears over the image — individual pixel values are being flipped by one or two low-order bits.
 2. **Increasing corruption**: Slowly increase Amount to 40%. The grain becomes coarser and more aggressive as higher-order bits are included in the XOR mask.
@@ -281,7 +306,7 @@ These exercises progress from subtle digital grain to full signal deconstruction
 *Chroma Destruction — simulated result across source images.*
 **Source**: Footage with strong, saturated colors — flowers, neon signs, colored fabrics.
 
-**Objective**: Use ChromaOnly mode and Color Mod to destroy color information while preserving luminance.
+**What You'll Create**: Use ChromaOnly mode and Color Mod to destroy color information while preserving luminance.
 
 1. **Enable ChromaOnly**: Set Switch 8 to Chroma. The Y channel is now protected from corruption.
 2. **Color Mod sweep**: Slowly increase Color Mod from 0% to 80%. Watch colors fragment into rainbow noise while the underlying image structure remains recognizable.
@@ -308,7 +333,7 @@ These exercises progress from subtle digital grain to full signal deconstruction
 *Full Signal Disintegration — simulated result across source images.*
 **Source**: Any footage — high-contrast material works well.
 
-**Objective**: Combine all corruption tools for maximum signal destruction.
+**What You'll Create**: Combine all corruption tools for maximum signal destruction.
 
 1. **Heavy corruption**: Set Amount to 80% and Color Mod to 70%.
 2. **Structured hash**: Enable Structured mode (Switch 7) for deterministic spatial patterns.
@@ -324,9 +349,6 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 ## Tips
 
-- **Amount is the primary control**: Radius, Direction, and Grain are registered but minimally active in the current XOR implementation. Focus on Amount and Color Mod for intensity.
-- **ChromaOnly for subtle textures**: Corrupting only chroma produces dramatic color disruption while keeping the image recognizable — a useful halfway point between clean and destroyed.
-- **Structured mode for repeatable patterns**: When you find a corruption pattern you like, Structured mode ensures it stays consistent frame to frame (with Animate off).
 - **Edge Fade as a compositing tool**: Use Edge Fade to contain corruption in the center of frame, creating a natural focal point surrounded by clean signal.
 - **Mix for partial application**: Extreme corruption settings become usable at low Mix values — dial in just a touch of digital grain without overwhelming the source.
 - **Invert changes everything**: Because Invert is downstream of XOR corruption, it interacts with the corrupted values in non-obvious ways. Always try toggling it.
@@ -339,15 +361,13 @@ These exercises progress from subtle digital grain to full signal deconstruction
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Scatter uses no BRAMs. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Edge Fade** | Spatial attenuation of an effect based on distance from the frame boundary, producing a vignette pattern. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hash** | A deterministic function that maps input coordinates to a pseudo-random output value for structured patterns. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a deterministic pseudo-random sequence. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **XOR** | Exclusive-or; a bitwise operation that outputs 1 when inputs differ and 0 when inputs agree. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

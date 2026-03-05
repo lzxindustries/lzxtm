@@ -68,6 +68,14 @@ The panel labels are severely mismatched with the VHDL implementation. Pots 1–
 
 ---
 
+## Quick Start
+
+1. **"Fold" pots are contrast, "Gain" pots are brightness**: The panel labels are swapped. Pots 1–3 control proc_amp gain (contrast), and pots 4–6 control proc_amp offset (brightness). Mental model: "Fold" → scale, "Gain" → shift.
+2. **"Link UV" is luma invert**: Toggle 10 does not link the chrominance channels. It inverts the Y channel at the very start of the pipeline, before contrast and brightness are applied.
+3. **Start with folds bypassed**: Set all three fold toggles to 2x (bypass) and use Meridian as a pure proc_amp colour corrector. This is the easiest way to learn what each pot actually does.
+
+---
+
 ## Background
 
 ### The Sabattier Effect and Solarization
@@ -94,6 +102,8 @@ The luma inversion stage (mislabelled "Link UV" on the panel) performs a bitwise
 ---
 
 ## Signal Flow
+
+Clock 0: Luma Inversion → Clocks 1–9: Proc Amp → Clocks 10–11: Frequency → Clocks 12–15: → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -231,7 +241,29 @@ Toggles 7–9 independently bypass the frequency doubler for each channel, provi
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix at the end of the processing chain. At 100%, the output is the fully processed signal (proc_amp + fold). At 0%, the output is the unprocessed input. The interpolator operates on all three channels in parallel using 4-clock pipelines. The dry reference for the mix is the original input delayed by 16 clocks to match the processing latency — so the mix blends between the delayed original and the processed version at the same temporal position. This control is essential for dialing in subtle fold effects: at 30–50%, the solarization becomes a translucent colour overlay rather than a total replacement of the image's tonal structure.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Meridian processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Meridian-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -254,7 +286,7 @@ These exercises progress from basic colour correction through targeted channel f
 *Per-Channel Contrast and Brightness — simulated result across source images.*
 **Source**: Colourful, high-saturation footage — flowers, painted surfaces, or colour bars.
 
-**Objective**: Understand that "Y Fold" / "U Fold" / "V Fold" actually control contrast, and "Y Gain" / "U Gain" / "V Gain" actually control brightness, by adjusting each channel independently with folds bypassed.
+**What You'll Create**: Understand that "Y Fold" / "U Fold" / "V Fold" actually control contrast, and "Y Gain" / "U Gain" / "V Gain" actually control brightness, by adjusting each channel independently with folds bypassed.
 
 1. **Bypass all folds**: Set Y Folds, U Folds, and V Folds to 2x (bypass position). This leaves only the proc_amp stages active.
 2. **Unity settings**: Set all six pots to ~50%. The image passes through unchanged.
@@ -282,7 +314,7 @@ These exercises progress from basic colour correction through targeted channel f
 *Luma Solarization — simulated result across source images.*
 **Source**: A portrait or landscape with smooth tonal gradients and visible highlights.
 
-**Objective**: Enable the Y fold to produce brightness solarization — the Sabattier effect — while keeping chrominance folds bypassed for clean colour.
+**What You'll Create**: Enable the Y fold to produce brightness solarization — the Sabattier effect — while keeping chrominance folds bypassed for clean colour.
 
 1. **Enable Y fold**: Set Y Folds to 1x (fold active). The luminance immediately develops the characteristic solarized look — highlights fold back down, creating double-exposure-like tonal mirroring.
 2. **Increase Y contrast**: Push Y Fold (pot 1) above ~60%. More of the Y signal exceeds the midpoint, increasing the proportion of folded pixels. The highlights reflect more aggressively.
@@ -309,7 +341,7 @@ These exercises progress from basic colour correction through targeted channel f
 *Full Chromatic Solarization with Inversion — simulated result across source images.*
 **Source**: Any footage — abstract or representational. Bold, saturated footage produces the most dramatic results.
 
-**Objective**: Activate all three folds with luma inversion to produce the most extreme Meridian effect — a fully solarized, inverted, stained-glass colour transformation.
+**What You'll Create**: Activate all three folds with luma inversion to produce the most extreme Meridian effect — a fully solarized, inverted, stained-glass colour transformation.
 
 1. **Enable all folds**: Set Y Folds, U Folds, and V Folds to 1x (fold active).
 2. **Enable luma inversion**: Set Link UV to On (which actually activates luma inversion despite the label).
@@ -325,9 +357,6 @@ These exercises progress from basic colour correction through targeted channel f
 
 ## Tips
 
-- **"Fold" pots are contrast, "Gain" pots are brightness**: The panel labels are swapped. Pots 1–3 control proc_amp gain (contrast), and pots 4–6 control proc_amp offset (brightness). Mental model: "Fold" → scale, "Gain" → shift.
-- **"Link UV" is luma invert**: Toggle 10 does not link the chrominance channels. It inverts the Y channel at the very start of the pipeline, before contrast and brightness are applied.
-- **Start with folds bypassed**: Set all three fold toggles to 2x (bypass) and use Meridian as a pure proc_amp colour corrector. This is the easiest way to learn what each pot actually does.
 - **Fold one channel at a time**: Enable folds individually to isolate their effect. Y fold alone creates brightness solarization; U or V fold alone creates single-axis chrominance solarization; all three together creates maximum complexity.
 - **Contrast drives fold intensity**: Higher contrast pushes more of the signal past the fold midpoint. At low contrast, very little of the signal crosses 512, so the fold has minimal visible effect. At high contrast, most of the signal folds, creating dramatic tonal inversion.
 - **Brightness shifts the fold boundary**: Think of brightness as sliding the image up and down relative to a fixed fold point at 512. Low brightness = mostly unfolded; high brightness = mostly folded.
@@ -343,14 +372,13 @@ These exercises progress from basic colour correction through targeted channel f
 | **Brightness** | In a proc_amp, the DC offset added after contrast scaling. Shifts the entire signal lighter or darker. |
 | **BT.601** | The ITU-R standard defining the colour matrix used to convert between RGB and YUV in standard-definition video. Used throughout the Videomancer pipeline. |
 | **Contrast** | In a proc_amp, the scaling factor applied to the input deviation from midpoint. Controls dynamic range expansion or compression. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that implements Meridian's pixel pipeline in parallel hardware. |
 | **Frequency doubler** | A nonlinear transfer function that folds a signal at its midpoint, effectively doubling its spatial frequency. Values below midpoint are scaled by 2×; values above are reflected and scaled by 2×. |
 | **Luma** | The luminance (brightness) component of a YUV video signal, carrying the greyscale information. |
-| **Proc amp** | Processing amplifier; a standard video circuit that adjusts contrast and brightness via scaling and offset: $(input - 512) \times contrast / 512 + brightness$. |
 | **Sabattier effect** | A darkroom phenomenon where brief re-exposure during development creates partial tonal inversion. The inspiration for Meridian's wavefold solarization. |
 | **Solarization** | The visual effect of tonal folding — highlights inverting toward shadows, or the reverse — producing false-colour or negative-like imagery. Technically a misnomer (true solarization requires extreme overexposure), but the term is widely used for the Sabattier effect. |
 | **Triangle wave** | A periodic waveform that rises and falls linearly. The frequency doubler's output is a triangle-shaped transfer function that peaks at the midpoint. |
 | **Wavefold** | A signal processing technique where a signal that exceeds a threshold is reflected back, rather than clipping. Creates harmonic overtones analogous to wavefolding in analogue synthesizers. |
-| **YUV** | A colour space separating luminance (Y) from chrominance (U = blue-difference, V = red-difference). The native pixel format of the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

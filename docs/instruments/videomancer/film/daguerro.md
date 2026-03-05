@@ -68,6 +68,14 @@ At conservative settings Daguerro produces a restrained monochrome-tinted image 
 
 ---
 
+## Quick Start
+
+1. **Exposure is your starting point**: Daguerreotypes have a narrow latitude. Start by setting Exposure to place your subject in the sweet spot of the compression curve before adjusting other controls.
+2. **Silver only works in Mercury mode**: The Silver knob has no effect when Process is set to Becquerel. Switch to Mercury to use it.
+3. **Tarnish needs Tint to show**: The tarnish overlay modulates the chrominance tint. If Tint is at zero, tarnish has nothing to modulate and will not be visible.
+
+---
+
 ## Background
 
 ### Daguerre and Niépce
@@ -94,6 +102,8 @@ The reflective quality of a daguerreotype depends on how thoroughly the silver w
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix Stage → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -225,6 +235,10 @@ The five toggles configure the photographic process and plate characteristics. P
 
 Mix crossfades between the original (dry) input and the fully processed (wet) daguerreotype signal. At zero the output is entirely dry — the original video passes through. At maximum the output is entirely wet — the full daguerreotype simulation. Intermediate values blend the two, which is useful for producing a partially processed look where the original color and dynamic range show through the silver-mirror overlay. The interpolator operates independently on Y, U, and V channels with 10-bit fractional precision.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -246,7 +260,7 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 *Classic Mercury Daguerreotype — simulated result across source images.*
 **Source**: Portrait footage or a detailed still image with a wide tonal range — faces, fabric folds, or architectural detail work well.
 
-**Objective**: Reproduce the look of a well-preserved mercury-process daguerreotype with compressed tonal range and cold silver tinting.
+**What You'll Create**: Reproduce the look of a well-preserved mercury-process daguerreotype with compressed tonal range and cold silver tinting.
 
 1. **Initial setup**: Set all pots to center, Process to Mercury, Plate to Polished, Tone to Cold, Invert off, Bypass off, Mix to 100%.
 2. **Exposure**: Adjust Exposure slightly above center to brighten the image — daguerreotypes are characteristically luminous.
@@ -274,7 +288,7 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 *Aged and Tarnished Plate — simulated result across source images.*
 **Source**: Landscape or still-life footage with mid-tone detail — foliage, textiles, or tabletop subjects that show tarnish patterns clearly.
 
-**Objective**: Create the appearance of a daguerreotype that has aged for over a century, developing iridescent tarnish and surface degradation.
+**What You'll Create**: Create the appearance of a daguerreotype that has aged for over a century, developing iridescent tarnish and surface degradation.
 
 1. **Start from Exercise 1**: Use the classic mercury settings as a baseline.
 2. **Add tarnish**: Increase Tarnish to about 40%. Watch iridescent blue-green patches appear in spatially random zones.
@@ -302,7 +316,7 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 *Becquerel Negative — simulated result across source images.*
 **Source**: High-contrast footage — architecture, silhouettes, or video with strong backlighting.
 
-**Objective**: Use the Becquerel solarization curve and luminance inversion to produce an abstract photographic negative with tarnish overlay.
+**What You'll Create**: Use the Becquerel solarization curve and luminance inversion to produce an abstract photographic negative with tarnish overlay.
 
 1. **Switch to Becquerel**: Set Process to Becquerel. The highlight boost disappears, replaced by a solarization shoulder.
 2. **Moderate compression**: Set Compress to about 50% to preserve some tonal range for the solarization to work with.
@@ -319,9 +333,6 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 
 ## Tips
 
-- **Exposure is your starting point**: Daguerreotypes have a narrow latitude. Start by setting Exposure to place your subject in the sweet spot of the compression curve before adjusting other controls.
-- **Silver only works in Mercury mode**: The Silver knob has no effect when Process is set to Becquerel. Switch to Mercury to use it.
-- **Tarnish needs Tint to show**: The tarnish overlay modulates the chrominance tint. If Tint is at zero, tarnish has nothing to modulate and will not be visible.
 - **Gold toning for warm aging**: Switch Tone to Warm and increase Tint for the gold-chloride-toned look found in well-preserved museum daguerreotypes.
 - **Rough plate for texture**: The Polished setting is very subtle. Switch to Rough for visible surface grain — useful for compositing with other effects.
 - **Mix for blending**: Use the Mix fader at 50–70% to let original color bleed through the monochrome daguerreotype — a hybrid look that preserves some source identity.
@@ -346,6 +357,7 @@ These exercises explore the daguerreotype simulation from basic silver plate rep
 | **Silver Sulfide** | The dark, iridescent compound formed when atmospheric sulfur reacts with silver; the primary component of daguerreotype tarnish. |
 | **Solarization** | A tonal reversal in overexposed highlights where the image curve bends back toward mid-tones, characteristic of the Becquerel process. |
 | **Tonal Compression** | Narrowing the range of brightness values in an image by raising the floor and lowering the ceiling of the output range. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

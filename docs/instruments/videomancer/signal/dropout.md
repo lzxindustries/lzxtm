@@ -68,6 +68,14 @@ The name is borrowed directly from the language of magnetic recording engineers,
 
 ---
 
+## Quick Start
+
+1. **Start with TBC Error and Chroma BW**: These two controls establish the fundamental VHS character — horizontal wobble and soft color. Everything else is secondary damage on top of this base.
+2. **Hold mode is more subtle than White**: Hold-previous dropout streaks blend into the image and can be almost invisible on static scenes. White streaks are more dramatic and visible.
+3. **Low Tracking = slow roll**: The tracking-band scroll speed and speed-error roll rate are both proportional to the Tracking knob. Very low values create an almost-imperceptible creep that builds atmosphere without obvious motion.
+
+---
+
 ## Background
 
 ### Helical Scan and the VHS Format
@@ -98,6 +106,8 @@ Physical damage to the tape's magnetic oxide coating causes momentary signal los
 ---
 
 ## Signal Flow
+
+Y/U/V Write → Jitter Compute → Chroma Processing → Artifact Overlay → Sync Delay → Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -148,7 +158,7 @@ The chroma IIR filter resets its state to mid-scale (512) at each line start. Th
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the scroll speed of the tracking error noise band. At minimum, the band is nearly stationary — a fixed horizontal stripe of noise parked at one vertical position. As you increase the control, the band sweeps faster through the frame, producing the classic "rolling bar" of a misaligned VCR. The tracking value also feeds the speed-error accumulator when Speed Error is enabled, coupling the tracking scroll rate to a slow vertical roll of the entire image.
+At minimum, the band is nearly stationary — a fixed horizontal stripe of noise parked at one vertical position. As you increase the control, the band sweeps faster through the frame, producing the classic "rolling bar" of a misaligned VCR. The tracking value also feeds the speed-error accumulator when Speed Error is enabled, coupling the tracking scroll rate to a slow vertical roll of the entire image. Internally, controls the scroll speed of the tracking error noise band.
 
 ---
 
@@ -181,7 +191,7 @@ Controls the amplitude of horizontal time-base jitter. The jitter source is a 16
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the chroma bandwidth — the cutoff frequency of the IIR low-pass filter applied to U and V channels. At maximum (fully clockwise), the filter alpha is high and the chroma passes through with minimal blurring. As you decrease the control, the alpha drops and colors smear horizontally, replicating the ~400 kHz bandwidth limitation of VHS color-under recording. At minimum, the chroma is so heavily filtered that only the broadest color regions survive, with fine color detail replaced by a uniform average.
+At maximum (fully clockwise), the filter alpha is high and the chroma passes through with minimal blurring. As you decrease the control, the alpha drops and colors smear horizontally, replicating the ~400 kHz bandwidth limitation of VHS color-under recording. At minimum, the chroma is so heavily filtered that only the broadest color regions survive, with fine color detail replaced by a uniform average. Internally, controls the chroma bandwidth — the cutoff frequency of the IIR low-pass filter applied to U and V channels.
 
 ---
 
@@ -203,7 +213,7 @@ Controls the amplitude of per-line chroma phase noise. On real VHS, the azimuth 
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the height of the head-switching noise bar at the bottom of the active picture. At minimum, the bar is absent (zero lines). As you increase the control, the noise bar extends upward from the bottom of the frame, filling the head-switch region with LFSR-generated noise. The noise replaces the Y channel entirely (with U/V forced to mid-scale), replicating the achromatic, high-amplitude noise burst that appears during the head transition.
+At minimum, the bar is absent (zero lines). As you increase the control, the noise bar extends upward from the bottom of the frame, filling the head-switch region with LFSR-generated noise. The noise replaces the Y channel entirely (with U/V forced to mid-scale), replicating the achromatic, high-amplitude noise burst that appears during the head transition. Internally, controls the height of the head-switching noise bar at the bottom of the active picture.
 
 ---
 
@@ -232,6 +242,10 @@ The five toggles control independent artifact mechanisms. Track Band enables the
 
 Wet/dry crossfade between the processed (degraded) signal and the original clean input. At 100%, the output is fully degraded. At 0%, the output is the clean input with no artifacts. Intermediate positions blend the two, which can be used to dial in a subtle tape coloration without committing to full degradation. Because there is no bypass toggle on this program, the Mix fader is the only way to reduce the effect to zero.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -253,7 +267,7 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 *Capstan Wobble and Time-Base Jitter — simulated result across source images.*
 **Source**: Footage with strong vertical lines — architecture, text overlays, or a vertical stripe test pattern.
 
-**Objective**: Understand how the TBC Error control creates horizontal jitter that simulates capstan instability.
+**What You'll Create**: Understand how the TBC Error control creates horizontal jitter that simulates capstan instability.
 
 1. **Isolate jitter**: Set TBC Error to ~40%. Leave all other knobs at minimum and all toggles off.
 2. **Observe edges**: Watch vertical lines in the source shimmer horizontally. The displacement changes slowly from line to line because of the IIR smoothing.
@@ -281,7 +295,7 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 *Dropout Streaks and Tracking Bands — simulated result across source images.*
 **Source**: A slowly moving camera shot or static scene with moderate detail.
 
-**Objective**: Explore the two horizontal-bar artifacts — random dropout streaks and the periodic tracking error band.
+**What You'll Create**: Explore the two horizontal-bar artifacts — random dropout streaks and the periodic tracking error band.
 
 1. **Dropout streaks**: Set Wear to ~30%. Set Drop Mode to White. Watch brief white streaks flash across random horizontal positions. Note how burst lengths vary.
 2. **Hold mode**: Switch Drop Mode to Hold. The streaks now show frozen copies of earlier pixel values — less visually aggressive but still clearly damaged.
@@ -309,7 +323,7 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 *Full Tape Degradation — simulated result across source images.*
 **Source**: Any video footage — the more recognizable the subject, the more dramatic the degradation.
 
-**Objective**: Combine all degradation mechanisms into a convincing worn-tape composite.
+**What You'll Create**: Combine all degradation mechanisms into a convincing worn-tape composite.
 
 1. **Base degradation**: Set TBC Error ~30%, Chroma BW ~40%, Phase Noise ~20%. This establishes the fundamental VHS character — jittery, soft color, slight hue wobble.
 2. **Tracking**: Enable Track Band, set Tracking to ~15%. A slow-rolling noise bar sweeps through the image.
@@ -326,9 +340,6 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 
 ## Tips
 
-- **Start with TBC Error and Chroma BW**: These two controls establish the fundamental VHS character — horizontal wobble and soft color. Everything else is secondary damage on top of this base.
-- **Hold mode is more subtle than White**: Hold-previous dropout streaks blend into the image and can be almost invisible on static scenes. White streaks are more dramatic and visible.
-- **Low Tracking = slow roll**: The tracking-band scroll speed and speed-error roll rate are both proportional to the Tracking knob. Very low values create an almost-imperceptible creep that builds atmosphere without obvious motion.
 - **Head Switch is overscan**: Most displays overscan the bottom few lines, so the head-switch bar may not be visible at low settings. Increase the control to push the noise into the visible area.
 - **Chroma BW at maximum is nearly transparent**: At full clockwise, the IIR alpha is high enough that chroma passes through with minimal filtering. This is useful for isolating other artifacts without the color softening.
 - **Mix is your only bypass**: Unlike most programs, Dropout has no bypass toggle. The Mix fader at 0% gives you clean output; at 100%, full degradation. Use intermediate positions for subtle vintage warmth.
@@ -342,7 +353,6 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 | Term | Definition |
 |------|------------|
 | **Azimuth** | The angle between the recording head gap and the tape track. Misalignment causes phase errors in the recovered chroma signal. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here for line buffers that enable per-line horizontal displacement. |
 | **Capstan** | The motorized spindle that pulls tape past the head drum at a controlled speed. Wobble or slip produces time-base jitter. |
 | **Chroma-Under** | VHS color recording technique that downconverts chrominance to a low carrier frequency (~629 kHz), severely limiting color bandwidth. |
 | **Dropout** | A momentary loss of signal caused by a physical defect (scratch, oxide flake, debris) on the tape's magnetic coating. |
@@ -354,6 +364,7 @@ These exercises progress from individual artifact mechanisms to full tape degrad
 | **LFSR** | Linear Feedback Shift Register; a shift register with XOR feedback that generates a deterministic pseudo-random bit sequence. |
 | **TBC** | Time-Base Corrector; a device that locks each scan line to a stable reference clock, removing horizontal jitter from tape playback. |
 | **Tracking** | The alignment between the playback head's scanning path and the recorded diagonal stripes on the tape. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

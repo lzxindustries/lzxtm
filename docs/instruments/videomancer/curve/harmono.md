@@ -35,6 +35,14 @@ Damping simulates friction.  On each horizontal sync the trace step count decrem
 
 ---
 
+## Quick Start
+
+1. **Simple ratios first:** Start with 1:1 (circle/ellipse) and progress to 2:3, 3:4, etc. — learn the visual vocabulary of frequency ratios before exploring complex ones.
+2. **Detune for life:** Even a tiny Detune value transforms a static figure into a living, breathing animation — essential for performance use.
+3. **Fade for oscilloscope feel:** Fade mode with a moderate decay rate recreates the green-phosphor look of a vintage oscilloscope, especially in Mono green.
+
+---
+
 ## Background
 
 ### Harmonographs and Lissajous Figures
@@ -203,6 +211,10 @@ Mode switches between Lateral and Rotary oscillator coupling.  Trace controls th
 
 Mix crossfades between the dry input and the wet harmonograph output.  At zero, pure input; at maximum, pure harmonograph canvas.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -213,7 +225,7 @@ These exercises demonstrate the progression from simple Lissajous loops to compl
 
 <img src={harmono_exercise1_result} alt="Classic Lissajous result"/>
 *Classic Lissajous — simulated result across source images.*
-**Objective**: Draw a clean 2:3 Lissajous figure with no damping or drift.
+**What You'll Create**: Draw a clean 2:3 Lissajous figure with no damping or drift.
 
 1. Set Freq X to step 3 and Freq Y to step 5 (approximately 2:3 ratio).
 2. Set Damping to 0 % and Detune to 0 % for a static, repeating figure.
@@ -231,7 +243,7 @@ These exercises demonstrate the progression from simple Lissajous loops to compl
 
 <img src={harmono_exercise2_result} alt="Damped Spiral result"/>
 *Damped Spiral — simulated result across source images.*
-**Objective**: Create a spiralling harmonograph that decays inward and refreshes periodically.
+**What You'll Create**: Create a spiralling harmonograph that decays inward and refreshes periodically.
 
 1. Set Freq X to step 4, Freq Y to step 7 for a 4:7 ratio.
 2. Set Damping to 60 % for moderate decay.
@@ -250,7 +262,7 @@ These exercises demonstrate the progression from simple Lissajous loops to compl
 
 <img src={harmono_exercise3_result} alt="Rainbow Rotary Rosette result"/>
 *Rainbow Rotary Rosette — simulated result across source images.*
-**Objective**: Produce a continuously rotating rainbow rosette with rotary coupling.
+**What You'll Create**: Produce a continuously rotating rainbow rosette with rotary coupling.
 
 1. Set Freq X to step 3, Freq Y to step 8 for a complex ratio.
 2. Set Damping to 30 %, Detune to 5 %.
@@ -267,9 +279,6 @@ These exercises demonstrate the progression from simple Lissajous loops to compl
 
 ## Tips
 
-- **Simple ratios first:** Start with 1:1 (circle/ellipse) and progress to 2:3, 3:4, etc. — learn the visual vocabulary of frequency ratios before exploring complex ones.
-- **Detune for life:** Even a tiny Detune value transforms a static figure into a living, breathing animation — essential for performance use.
-- **Fade for oscilloscope feel:** Fade mode with a moderate decay rate recreates the green-phosphor look of a vintage oscilloscope, especially in Mono green.
 - **Thick beam for glow:** High Beam Width combined with Fade mode produces soft, glowing trails reminiscent of long-exposure photography of pendulum light paintings.
 - **Rotary for motion graphics:** Rotary mode produces continuously spinning figures that work well as backgrounds or transitions in live video mixing.
 - **Phase lock for precision:** When you need exact geometric figures for educational or demonstration purposes, lock the phase to prevent drift.

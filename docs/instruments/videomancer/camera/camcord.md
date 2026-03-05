@@ -68,6 +68,14 @@ At subtle settings, Camcord adds a gentle mosaic texture or a faint persistence 
 
 ---
 
+## Quick Start
+
+1. **Chain order is the effect**: The specific order Still/Flash → Slim → Trail → Mosaic → Key is what gives Camcord its authentic camcorder character. Experiment with which stages are active to discover the compound interactions.
+2. **Mix is your bypass**: Since there is no dedicated bypass toggle, the Mix fader serves that role. Keep it at 100% during normal use and pull it to 0% for instant A/B comparison.
+3. **Trail needs bright-on-dark**: Max-compositing means persistence trails only appear where bright objects move against darker backgrounds. Dark objects on bright backgrounds leave no visible trail.
+
+---
+
 ## Background
 
 ### The Consumer Camcorder DSP Era
@@ -94,6 +102,8 @@ Camcord's five stages are not interchangeable. The specific order — Still/Flas
 ---
 
 ## Signal Flow
+
+Sync Signals → Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -180,7 +190,7 @@ Controls the persistence decay rate for the Trail effect. The decayed trail valu
 #### Knob 4 — Mosaic Size
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the mosaic block size from four fixed options: 4×4, 8×8, 16×16, or 32×32 pixels. The block size is determined by the upper 2 bits of the pot value, mapped to shift amounts of 2, 3, 4, or 5 bits. At 4×4, the pixelation is subtle — a gentle softening of fine detail. At 32×32, the image is reduced to a coarse grid of large uniform blocks, instantly recognizable as the classic camcorder mosaic effect.
@@ -233,6 +243,10 @@ Switches 7–11 each enable one stage of the five-stage effects chain. Unlike mo
 
 Wet/dry crossfade between the unprocessed input and the fully processed effects chain output. At 100% (fully clockwise), the output is entirely the wet processed signal. At 0% (fully counter-clockwise), the output is entirely the dry unprocessed input, effectively bypassing the entire effects chain. Intermediate positions blend the two, which can create semi-transparent overlay effects where the processed image is ghosted over the original.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +268,7 @@ These exercises progress through the five effects in chain order, starting with 
 *Mosaic Freeze Frame — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subjects and moderate motion.
 
-**Objective**: Learn how Still/Flash and Mosaic interact to produce the classic camcorder freeze-and-pixelate effect.
+**What You'll Create**: Learn how Still/Flash and Mosaic interact to produce the classic camcorder freeze-and-pixelate effect.
 
 1. **Enable Mosaic**: Turn on the Mosaic toggle (Switch 10). Set Mosaic Size to 8×8. The live image is now pixelated.
 2. **Enable Still/Flash**: Turn on the Still/Flash toggle (Switch 7). Set Flash Rate to about 50%. The image freezes and updates periodically.
@@ -281,7 +295,7 @@ These exercises progress through the five effects in chain order, starting with 
 *Persistence Trail with Compression — simulated result across source images.*
 **Source**: Footage with bright moving objects against a dark background — a flashlight beam, moving headlights, or a performer under a spotlight.
 
-**Objective**: Explore how Trail persistence and Slim/Stretch compression interact to produce trailing compressed imagery.
+**What You'll Create**: Explore how Trail persistence and Slim/Stretch compression interact to produce trailing compressed imagery.
 
 1. **Enable Trail**: Turn on the Trail toggle (Switch 9). Set Trail Decay to about 75%.
 2. **Observe persistence**: Moving bright objects leave smeared ghosts that fade over time. The brighter the object, the longer the trail.
@@ -309,7 +323,7 @@ These exercises progress through the five effects in chain order, starting with 
 *Full Camcorder Effects Chain — simulated result across source images.*
 **Source**: Any live camera feed or recorded footage — the more varied the content, the more dramatic the compound effects.
 
-**Objective**: Combine all five stages to recreate the full CXD DSP effects chain experience.
+**What You'll Create**: Combine all five stages to recreate the full CXD DSP effects chain experience.
 
 1. **Enable all stages**: Turn on Still/Flash, Trail, Mosaic, and Key toggles. Set Slim/Strch to Slim.
 2. **Set baseline**: Flash Rate ~25%, Slim/Stretch ~30%, Trail Decay ~60%, Mosaic Size 16×16, Key Level ~60%, Border Col ~50%.
@@ -325,9 +339,6 @@ These exercises progress through the five effects in chain order, starting with 
 
 ## Tips
 
-- **Chain order is the effect**: The specific order Still/Flash → Slim → Trail → Mosaic → Key is what gives Camcord its authentic camcorder character. Experiment with which stages are active to discover the compound interactions.
-- **Mix is your bypass**: Since there is no dedicated bypass toggle, the Mix fader serves that role. Keep it at 100% during normal use and pull it to 0% for instant A/B comparison.
-- **Trail needs bright-on-dark**: Max-compositing means persistence trails only appear where bright objects move against darker backgrounds. Dark objects on bright backgrounds leave no visible trail.
 - **Mosaic after Trail = blocky ghosts**: This is the signature compound effect. Enable both Trail and Mosaic to see persistence ghosts decompose into pixelated blocks as they decay.
 - **Border Col is shared**: The same pot controls both the Slim border fill and the Luma Key matte brightness. Adjust it once and both effects use the same shade.
 - **Flash Rate at minimum is near-live**: A flash period of 1 field means the image captures almost every field, producing only subtle freeze artifacts. Increase the rate for more dramatic strobe effects.
@@ -339,7 +350,6 @@ These exercises progress through the five effects in chain order, starting with 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for frame and field storage. |
 | **CCD** | Charge-Coupled Device; an image sensor technology used in early consumer camcorders to convert light into electronic signals. |
 | **DSP** | Digital Signal Processor; a specialized chip or processing block optimized for real-time mathematical operations on signal data. |
 | **Field** | One half of an interlaced video frame, containing either the odd or even scan lines; NTSC fields occur at 59.94 Hz. |
@@ -350,6 +360,7 @@ These exercises progress through the five effects in chain order, starting with 
 | **NTSC** | National Television System Committee; the analog broadcast standard used in North America, operating at 525 lines and 59.94 Hz. |
 | **Sample-and-hold** | A technique that captures a pixel value and holds it constant across a block of pixels, producing mosaic-style pixelation. |
 | **SRAM** | Static Random-Access Memory; fast volatile memory used in camcorder DSPs for field storage during real-time effects processing. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), the native format for video processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

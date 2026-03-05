@@ -68,6 +68,14 @@ At subtle settings, Cartouche applies a warm mineral wash over live video with f
 
 ---
 
+## Quick Start
+
+1. **Start with registers alone**: Set Palette Depth to 0% and enable ground lines first. Understand the spatial structure before adding color.
+2. **Full palette at 100% is the signature look**: Pushing Palette Depth to maximum with all six pigments creates the most dramatic tomb wall effect — flat mineral colors with no trace of the original video's continuous tones.
+3. **Mono mode for charcoal sketches**: Color Mode step 1 reduces the palette to black and white only, producing a stark high-contrast rendering that works beautifully with thick ground lines.
+
+---
+
 ## Background
 
 ### What Is the Egyptian Register System?
@@ -90,6 +98,8 @@ Palette quantization is the process of reducing a continuous-tone image to a sma
 ---
 
 ## Signal Flow
+
+Stage 1 — Register Zone → Stage 2 — Palette Blend → Stage 3 — Nearest → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -169,7 +179,7 @@ Controls the scroll speed — the rate at which the DDS phase accumulators advan
 | Default | 50% |
 | Suffix | % |
 
-Sets the depth of palette quantization — how strongly pixel colors are pulled toward the nearest Egyptian mineral pigment. At minimum, the original video passes through with no color change. At maximum, every pixel snaps fully to one of the six palette entries, producing flat expanses of carbon black, Egyptian blue, red ochre, yellow ochre, malachite green, or calcium white. Intermediate values blend between the original color and the nearest pigment, creating a watercolor wash effect.
+At minimum, the original video passes through with no color change. At maximum, every pixel snaps fully to one of the six palette entries, producing flat expanses of carbon black, Egyptian blue, red ochre, yellow ochre, malachite green, or calcium white. Intermediate values blend between the original color and the nearest pigment, creating a watercolor wash effect. Internally, sets the depth of palette quantization — how strongly pixel colors are pulled toward the nearest Egyptian mineral pigment.
 
 ---
 
@@ -190,7 +200,7 @@ Selects one of four color sub-palettes. Full mode uses all six pigments. Mono mo
 | Default | 38% |
 | Suffix | % |
 
-Controls the thickness of the painted ground line separators between registers. At minimum the lines are invisible — zero pixels wide. As the control increases, the ground lines thicken from hairline dividers to broad dark bands that consume a significant fraction of each register. The ground lines are only drawn when the Separator toggle is enabled. The ground line color is a fixed dark brown (Y=120, U=490, V=540), matching the earth-toned outlines used in Egyptian tomb painting.
+At minimum the lines are invisible — zero pixels wide. As the control increases, the ground lines thicken from hairline dividers to broad dark bands that consume a significant fraction of each register. The ground lines are only drawn when the Separator toggle is enabled. The ground line color is a fixed dark brown (Y=120, U=490, V=540), matching the earth-toned outlines used in Egyptian tomb painting. Internally, controls the thickness of the painted ground line separators between registers.
 
 ---
 
@@ -230,6 +240,21 @@ Toggles 7–11 configure scrolling direction, palette variation, ground line dis
 
 Wet/dry mix at the end of the processing chain. At maximum, the full Egyptian register effect is applied. Lowering the fader blends the processed signal with the original, fading the palette quantization and ground lines back toward the unprocessed video. At minimum, the output matches the input regardless of all other control settings.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Cartouche processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -251,7 +276,7 @@ These exercises explore the register system, mineral palette, and ground line se
 *Register Division and Ground Lines — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with horizontally distributed content — landscapes, cityscapes, or scenes with distinct upper and lower regions.
 
-**Objective**: Learn how the register count and ground lines divide the frame into independent horizontal bands.
+**What You'll Create**: Learn how the register count and ground lines divide the frame into independent horizontal bands.
 
 1. **Two registers**: Set Registers to its minimum. The frame splits into two equal halves with a single boundary.
 2. **Add ground lines**: Enable the Separator toggle and increase Ground Line to about 40%. A dark brown line appears at the register boundary.
@@ -278,7 +303,7 @@ These exercises explore the register system, mineral palette, and ground line se
 *Mineral Pigment Palette — simulated result across source images.*
 **Source**: Footage with a wide range of colors — the macaw image or colorful market scenes.
 
-**Objective**: Explore palette quantization across the four color modes.
+**What You'll Create**: Explore palette quantization across the four color modes.
 
 1. **Prepare**: Set 3 registers, disable ground lines (Separator off), and push Palette Depth to about 80%.
 2. **Full palette**: Leave Color Mode at Full (step 0). The image snaps to six mineral pigment colors — observe how saturated colors map to Egyptian blue, red ochre, malachite green, and yellow ochre.
@@ -306,7 +331,7 @@ These exercises explore the register system, mineral palette, and ground line se
 *Complete Tomb Wall Composition — simulated result across source images.*
 **Source**: Any footage, especially scenes with figures, animals, or objects that evoke narrative content.
 
-**Objective**: Combine all active controls to create a full Egyptian register composition with palette, ground lines, and accent hue.
+**What You'll Create**: Combine all active controls to create a full Egyptian register composition with palette, ground lines, and accent hue.
 
 1. **Frame structure**: Set 4 registers with thick ground lines (Ground Line ~50%, Separator enabled).
 2. **Full palette**: Push Palette Depth to ~90% with Full color mode for the classic six-pigment look.
@@ -322,9 +347,6 @@ These exercises explore the register system, mineral palette, and ground line se
 
 ## Tips
 
-- **Start with registers alone**: Set Palette Depth to 0% and enable ground lines first. Understand the spatial structure before adding color.
-- **Full palette at 100% is the signature look**: Pushing Palette Depth to maximum with all six pigments creates the most dramatic tomb wall effect — flat mineral colors with no trace of the original video's continuous tones.
-- **Mono mode for charcoal sketches**: Color Mode step 1 reduces the palette to black and white only, producing a stark high-contrast rendering that works beautifully with thick ground lines.
 - **Warm mode is the most historically accurate**: Warm mode concentrates the palette in earth tones (ochres, black, white) — the dominant colors in most surviving Egyptian tomb paintings.
 - **Ground lines frame the composition**: Even thin ground lines (5–10%) dramatically change the perception of the image by imposing the register structure. Thick lines make the registers feel like separate panels.
 - **Accent Hue is subtle**: The hue shift divides the offset by four, so changes are gentle. Use it to simulate different lighting conditions on the painted wall surface.
@@ -346,6 +368,7 @@ These exercises explore the register system, mineral palette, and ground line se
 | **Register (compositional)** | A horizontal band in ancient Egyptian wall painting, functioning as an independent pictorial zone separated by ground lines. |
 | **Squared luminance distance** | A colour-matching metric that compares pixel brightness to palette entries by squaring the difference, avoiding the computational cost of a square-root operation. |
 | **VHDL** | VHSIC Hardware Description Language, used to define digital logic circuits for FPGA implementation. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

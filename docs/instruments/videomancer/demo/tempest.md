@@ -35,6 +35,14 @@ The program processes input video through a proc_amp stage where the combined os
 
 ---
 
+## Quick Start
+
+1. **Start with zero noise**: Set Noise to Phase and Noise to Luma both to 0% to understand the clean oscillator lattice before adding turbulence.
+2. **H and V Cutoff set the geometry**: Equal values create diagonal diamond patterns; unequal values create elongated horizontal or vertical structures.
+3. **LFSR vs. Pattern are fundamentally different**: LFSR turbulence is organic and grain-like. Pattern turbulence is self-referencing and geometric. Choose based on the visual texture you want.
+
+---
+
 ## Background
 
 ### Direct Digital Synthesis and Spatial Oscillators
@@ -227,6 +235,10 @@ The five toggles control binary processing options at different points in the si
 
 Fade Amount controls the crossfade between the processed output and the solid target colour (black or white, set by Fade Color). At maximum (1023), the full processed signal passes through — oscillator pattern, noise, gain, inversion, and all. At zero, the output is solid black or white. At intermediate values, the processed pattern is partially transparent over the target, creating washed-out or silhouette effects. The interpolation is linear via the interpolator_u entity.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -237,7 +249,7 @@ These exercises build from static spatial patterns through animated turbulence t
 
 <img src={tempest_exercise1_result} alt="Standing Wave Interference result"/>
 *Standing Wave Interference — simulated result across source images.*
-**Objective**: Understand how the three DDS oscillators combine to produce 2D spatial patterns, and how the H, V, and F Cutoff controls shape the interference field.
+**What You'll Create**: Understand how the three DDS oscillators combine to produce 2D spatial patterns, and how the H, V, and F Cutoff controls shape the interference field.
 
 1. **Freeze animation**: Set F Cutoff to 0%. The pattern should be static.
 2. **Zero noise**: Set Noise to Phase and Noise to Luma both to 0%. The oscillators should produce clean geometric patterns.
@@ -254,7 +266,7 @@ These exercises build from static spatial patterns through animated turbulence t
 
 <img src={tempest_exercise2_result} alt="FM Turbulence result"/>
 *FM Turbulence — simulated result across source images.*
-**Objective**: Explore how noise-to-phase modulation transforms orderly interference into turbulent storm-like textures.
+**What You'll Create**: Explore how noise-to-phase modulation transforms orderly interference into turbulent storm-like textures.
 
 1. **Start clean**: Use the standing wave pattern from Exercise 1 (H and V Cutoff ~50%, no noise).
 2. **LFSR turbulence**: Slowly increase Noise to Phase from 0%. Watch the clean lattice begin to shimmer and distort as noise jitters the oscillator frequencies.
@@ -271,7 +283,7 @@ These exercises build from static spatial patterns through animated turbulence t
 
 <img src={tempest_exercise3_result} alt="Fade and Inversion Sculpting result"/>
 *Fade and Inversion Sculpting — simulated result across source images.*
-**Objective**: Use the fade-to-colour crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
+**What You'll Create**: Use the fade-to-colour crossfade and luma inversion to shape the turbulent output into contrasting visual treatments.
 
 1. **Establish turbulence**: Set H Cutoff ~40%, V Cutoff ~30%, Noise to Phase ~60%, F Cutoff ~15%.
 2. **Fade to black**: Lower Fade Amount to ~50%. The pattern becomes semi-transparent over black, creating a dark atmospheric effect.
@@ -287,9 +299,6 @@ These exercises build from static spatial patterns through animated turbulence t
 
 ## Tips
 
-- **Start with zero noise**: Set Noise to Phase and Noise to Luma both to 0% to understand the clean oscillator lattice before adding turbulence.
-- **H and V Cutoff set the geometry**: Equal values create diagonal diamond patterns; unequal values create elongated horizontal or vertical structures.
-- **LFSR vs. Pattern are fundamentally different**: LFSR turbulence is organic and grain-like. Pattern turbulence is self-referencing and geometric. Choose based on the visual texture you want.
 - **Fade Amount is a density control**: Rather than thinking of it as a volume knob, use Fade Amount to control how much of the turbulent pattern is visible against the solid background.
 - **F Cutoff animates slowly**: Because the frame oscillator accumulates once per frame (not per pixel), even high F Cutoff values produce relatively slow temporal evolution. This is intentional — the animation should breathe, not strobe.
 - **Luma Gain with live video**: When processing input video, Luma Gain controls how much the source modulates the turbulence. Low gain = pure synthesis; high gain = video shows through the pattern.
@@ -312,6 +321,7 @@ These exercises build from static spatial patterns through animated turbulence t
 | **Triangle Wave** | A periodic waveform that rises and falls linearly, creating smooth spatial gradients without the abrupt discontinuity of a sawtooth. |
 | **Turbulence** | In this context, spatial frequency distortion caused by noise-modulating the oscillator DDS — analogous to atmospheric turbulence distorting light. |
 | **XOR** | Exclusive OR; a bitwise operation where corresponding bits differ produces 1, creating structured spatial interference patterns when applied to ramp waves. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

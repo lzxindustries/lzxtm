@@ -35,6 +35,14 @@ Within the border zone, stripes always appear. Inside the border (the "window" a
 
 ---
 
+## Quick Start
+
+1. **Small border width with Replace** creates a subtle colour accent frame that enhances the video without overwhelming it.
+2. **Maximum border width** turns the entire screen into scrolling stripes, useful as a standalone colour generator or backdrop.
+3. **Two-speed animation** — use Stripe Speed for spatial scrolling and Colour Speed for palette rotation to create complex evolving patterns.
+
+---
+
 ## Background
 
 ### Border Effects on the ZX Spectrum
@@ -181,7 +189,7 @@ Brightness scales the luminance of the stripe colours from black to full intensi
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Spectrum | C64 |
+| **7 — Palette** | Spectrum | Neon |
 | **8 — Direction** | Horizontal | Vertical |
 | **9 — Mirror** | Off | On |
 | **10 — Overlay** | Replace | Add |
@@ -202,6 +210,10 @@ The five toggles configure palette selection, stripe orientation, mirror symmetr
 
 Mix crossfades between the dry (unprocessed) input and the wet (border-striped) output. At 0% the output matches the input. At 100% the full border effect is visible.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -212,7 +224,7 @@ These exercises demonstrate border stripe effects from classic framing to full-s
 
 <img src={borderline_exercise1_result} alt="Classic Border Frame result"/>
 *Classic Border Frame — simulated result across source images.*
-**Objective**: Create a colourful Spectrum-palette border frame around the video.
+**What You'll Create**: Create a colourful Spectrum-palette border frame around the video.
 
 1. Set Palette to Spectrum, Direction to Horizontal.
 2. Border Width to 60% for a visible border frame.
@@ -232,7 +244,7 @@ These exercises demonstrate border stripe effects from classic framing to full-s
 
 <img src={borderline_exercise2_result} alt="Neon Candy Overlay result"/>
 *Neon Candy Overlay — simulated result across source images.*
-**Objective**: Layer scrolling neon stripes across the entire frame.
+**What You'll Create**: Layer scrolling neon stripes across the entire frame.
 
 1. Set Palette to Neon, Direction to Vertical.
 2. Border Width to maximum so the entire frame is the border zone.
@@ -252,7 +264,7 @@ These exercises demonstrate border stripe effects from classic framing to full-s
 
 <img src={borderline_exercise3_result} alt="Symmetric Mirror Frame result"/>
 *Symmetric Mirror Frame — simulated result across source images.*
-**Objective**: Create a symmetric, kaleidoscopic border frame using mirror mode.
+**What You'll Create**: Create a symmetric, kaleidoscopic border frame using mirror mode.
 
 1. Set Palette to CPC, Direction to Horizontal.
 2. Enable Mirror for symmetric stripes.
@@ -271,9 +283,6 @@ These exercises demonstrate border stripe effects from classic framing to full-s
 
 ## Tips
 
-- **Small border width with Replace** creates a subtle colour accent frame that enhances the video without overwhelming it.
-- **Maximum border width** turns the entire screen into scrolling stripes, useful as a standalone colour generator or backdrop.
-- **Two-speed animation** — use Stripe Speed for spatial scrolling and Colour Speed for palette rotation to create complex evolving patterns.
 - **C64 palette at low brightness** produces a warm, nostalgic colour wash that complements vintage footage.
 - **Neon palette with Add overlay** on dark video creates a vivid light-show effect perfect for music visualisation.
 - **Mirror + thin stripes** creates dense symmetric patterns reminiscent of tapestry or weaving designs.

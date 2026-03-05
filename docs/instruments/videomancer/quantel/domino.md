@@ -68,6 +68,14 @@ At gentle settings with large tiles and slow speed, Domino produces stately broa
 
 ---
 
+## Quick Start
+
+1. **Freeze to compose**: Disengage Animate to freeze the cascade at a specific pattern, then adjust Tile Size and Threshold to design a static mosaic composition.
+2. **Diagonal creates depth**: Diagonal mode sweeps from corner to corner, giving the cascade a three-dimensional quality that works well with perspective shots.
+3. **Color Fill for graphic overlays**: Engage Color Fill with a high Color value to create bright tile patterns that function as a graphic overlay on the original video.
+
+---
+
 ## Background
 
 ### Quantel and Digital Video Effects
@@ -94,6 +102,8 @@ Bitwise inversion of a video signal — replacing each sample with its ones-comp
 ---
 
 ## Signal Flow
+
+Cell Grid Subdivision → Sweep Threshold → Tile Processing → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -228,6 +238,10 @@ The five toggles configure independent aspects of the cascade behavior. Diagonal
 
 Mix crossfades between the delayed dry input and the processed wet output. At 100% (default) the full cascade effect is visible. At 0% the output is the unprocessed input. Intermediate positions blend the processed and unprocessed signals, producing a ghostly overlay where flipped tiles appear semi-transparent against the original image.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +263,7 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 *Vertical Curtain Wipe — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject matter and moderate contrast.
 
-**Objective**: Understand the basic cell grid and sweep mechanism by creating a left-to-right curtain wipe.
+**What You'll Create**: Understand the basic cell grid and sweep mechanism by creating a left-to-right curtain wipe.
 
 1. **Large tiles**: Set Tile Size to about 70%. The grid should show clearly defined blocks.
 2. **Slow sweep**: Set Speed to about 25%. The animation should advance slowly enough to observe individual tiles flipping.
@@ -277,7 +291,7 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 *Diagonal Waterfall — simulated result across source images.*
 **Source**: Footage with strong geometric elements — architecture, grids, or patterned surfaces.
 
-**Objective**: Explore diagonal sweep mode and the interaction between tile geometry and image content.
+**What You'll Create**: Explore diagonal sweep mode and the interaction between tile geometry and image content.
 
 1. **Enable diagonal**: Engage Diagonal (Toggle 7). The sweep direction changes to a diagonal wavefront.
 2. **Medium tiles**: Set Tile Size to about 40% for a visible grid that isn't too coarse.
@@ -305,7 +319,7 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 *Animated Mosaic Composite — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, stage lighting, or graphic overlays.
 
-**Objective**: Combine all controls for a continuously evolving tile mosaic with semi-transparent blending.
+**What You'll Create**: Combine all controls for a continuously evolving tile mosaic with semi-transparent blending.
 
 1. **Small tiles**: Set Tile Size to about 15%. The grid becomes a dense mosaic.
 2. **Fast cascade**: Set Speed to about 75%. The sweep races across the grid.
@@ -322,9 +336,6 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 
 ## Tips
 
-- **Freeze to compose**: Disengage Animate to freeze the cascade at a specific pattern, then adjust Tile Size and Threshold to design a static mosaic composition.
-- **Diagonal creates depth**: Diagonal mode sweeps from corner to corner, giving the cascade a three-dimensional quality that works well with perspective shots.
-- **Color Fill for graphic overlays**: Engage Color Fill with a high Color value to create bright tile patterns that function as a graphic overlay on the original video.
 - **Mix for ghosting**: Reduce Mix to 50–70% to make flipped tiles semi-transparent — the inversion becomes a subtle tonal shift rather than a hard flip.
 - **Speed for tempo**: Match Speed to the tempo of music or performance. At 1 step per vsync (~2 seconds per full sweep at 30 fps), the cascade syncs naturally with slow musical passages.
 - **Feedback loops**: Routing the output back to the input creates recursive cascade patterns — tiles that have been inverted once get inverted again on subsequent sweeps, producing evolving interference patterns.
@@ -337,17 +348,14 @@ These exercises progress from a simple vertical wipe to a fully animated diagona
 | Term | Definition |
 |------|------------|
 | **Bitwise Complement** | Inverting every bit in a binary value; maps 0→1023 and 1023→0 in the 10-bit domain. Also called ones-complement or NOT. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Domino uses zero BRAMs. |
 | **Cascade Dissolve** | A transition effect where tiles in a grid sequentially change state, creating a sweeping reveal pattern. |
 | **Cell Index** | The grid coordinate of a tile, used as the comparison value against the sweep threshold. In diagonal mode, the sum of X and Y cell coordinates. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **DVE** | Digital Video Effects; hardware or software that performs real-time spatial transformations on video signals. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly blends two values based on a mix parameter, used for the wet/dry crossfade. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sweep** | The advancing threshold that determines which tiles are in the flipped state; driven by the frame counter. |
 | **Vsync** | Vertical sync pulse marking the start of each video frame; triggers the frame counter increment. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ At integer ratios, the curves close into perfect rosettes. At near-integer or ir
 
 ---
 
+## Quick Start
+
+1. **Start simple**: Begin with Ratio N = 3 or 4, Closed mode, Mono color, Overlay compose. Learn the basic curve geometry before adding complexity.
+2. **Decay is memory**: Think of decay as the depth of the curve's visual memory. Zero decay = infinite memory (full trail). Maximum decay = no memory (beam only).
+3. **Offset transforms shape**: Small offsets smooth the cusps. Large offsets create loops. The transition is continuous and dramatic.
+
+---
+
 ## Background
 
 ### Roulette Curves and the Spirograph
@@ -61,6 +69,8 @@ When the ratio R/r is a rational number (an integer, in Involute's quantized dom
 ---
 
 ## Signal Flow
+
+DDS Phase Accumulators → Trig Lookups → Roulette Equations → ... → Clock 4: Compose → Clocks 5–8: Interpolator
 
 ```
 Vertical Blanking Phase (sequential, not pipelined):
@@ -154,7 +164,7 @@ Shifts the tracing point away from the circumference of the rolling circle. At 0
 | Default | 25% |
 | Suffix | % |
 
-Controls the DDS phase increment — how fast the curve is drawn. At minimum, the curve advances very slowly, with individual points appearing one at a time. At higher speeds, the curve sweeps rapidly through its trajectory, filling in the pattern within a few frames. The visual character changes dramatically with speed: slow animation reveals the sequential construction of the curve, while fast animation shows the complete figure as a continuous glow.
+At minimum, the curve advances very slowly, with individual points appearing one at a time. At higher speeds, the curve sweeps rapidly through its trajectory, filling in the pattern within a few frames. The visual character changes dramatically with speed: slow animation reveals the sequential construction of the curve, while fast animation shows the complete figure as a continuous glow. Internally, controls the DDS phase increment — how fast the curve is drawn.
 
 ---
 
@@ -165,7 +175,7 @@ Controls the DDS phase increment — how fast the curve is drawn. At minimum, th
 | Default | 29% |
 | Suffix | % |
 
-Controls the phosphor decay rate — how quickly previously drawn points fade. At 0%, there is no decay, and the canvas accumulates indefinitely, eventually saturating to a uniform glow. At low values, old traces persist for many frames, building up layered history. At high values, only the most recent few frames remain visible, producing a sharp, transient trace that sweeps across the canvas like an oscilloscope beam.
+At 0%, there is no decay, and the canvas accumulates indefinitely, eventually saturating to a uniform glow. At low values, old traces persist for many frames, building up layered history. At high values, only the most recent few frames remain visible, producing a sharp, transient trace that sweeps across the canvas like an oscilloscope beam. Internally, controls the phosphor decay rate — how quickly previously drawn points fade.
 
 ---
 
@@ -186,7 +196,7 @@ Sets the beam width for canvas plotting, from 1 pixel (fine hairline) to 4 pixel
 | Default | 50% |
 | Suffix | % |
 
-Controls the display zoom — how much of the screen the curve occupies. At low values, the curve is rendered small in the center of the frame. At high values, it fills the entire raster. Because the canvas resolution is fixed at 64×64, extreme scaling produces a visibly blocky, pixelated rendering — each canvas cell becomes a large rectangular block on screen.
+At low values, the curve is rendered small in the center of the frame. At high values, it fills the entire raster. Because the canvas resolution is fixed at 64×64, extreme scaling produces a visibly blocky, pixelated rendering — each canvas cell becomes a large rectangular block on screen. Internally, controls the display zoom — how much of the screen the curve occupies.
 
 ---
 
@@ -215,6 +225,10 @@ The five toggles select independent binary options across the curve engine and c
 
 Controls the wet/dry crossfade between the processed (curve-composited) signal and the delayed original input. At 0%, only the original signal passes through. At 100%, only the curve composite is visible. Intermediate positions blend the two, allowing partial overlay of the curve pattern onto the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -225,7 +239,7 @@ These exercises explore the mathematical and visual range of the roulette engine
 
 <img src={involute_exercise1_result} alt="Classic Spirograph Rosettes result"/>
 *Classic Spirograph Rosettes — simulated result across source images.*
-**Objective**: Explore how the ratio N control determines curve geometry, comparing epicycloids and hypocycloids at several integer ratios.
+**What You'll Create**: Explore how the ratio N control determines curve geometry, comparing epicycloids and hypocycloids at several integer ratios.
 
 1. Set Ratio N to 3 (three petals). Set Decay to ~50% for moderate persistence. Set AnimSpd to ~30%.
 2. Watch the three-petaled epicycloid trace itself onto the canvas.
@@ -242,7 +256,7 @@ These exercises explore the mathematical and visual range of the roulette engine
 
 <img src={involute_exercise2_result} alt="Phosphor Persistence and Animation result"/>
 *Phosphor Persistence and Animation — simulated result across source images.*
-**Objective**: Learn how animation speed and decay rate interact to control the density and character of the phosphor trail.
+**What You'll Create**: Learn how animation speed and decay rate interact to control the density and character of the phosphor trail.
 
 1. Set Ratio N to 5. Set AnimSpd to minimum (~5%). Set Decay to maximum (100%). Observe a sharp, slowly-sweeping trace.
 2. Gradually reduce Decay toward 0%. The trail lengthens, revealing the curve's history.
@@ -259,7 +273,7 @@ These exercises explore the mathematical and visual range of the roulette engine
 
 <img src={involute_exercise3_result} alt="Mask Mode Compositions result"/>
 *Mask Mode Compositions — simulated result across source images.*
-**Objective**: Use the curve as a dynamic window into the input video, creating evolving geometric keys.
+**What You'll Create**: Use the curve as a dynamic window into the input video, creating evolving geometric keys.
 
 1. Set Compose to Mask. Set Ratio N to 4 (four-lobed figure). Set Decay to ~30% for wide persistence.
 2. Feed any video source. The curve acts as a window — only regions where the trace has been drawn reveal the source.
@@ -276,9 +290,6 @@ These exercises explore the mathematical and visual range of the roulette engine
 
 ## Tips
 
-- **Start simple**: Begin with Ratio N = 3 or 4, Closed mode, Mono color, Overlay compose. Learn the basic curve geometry before adding complexity.
-- **Decay is memory**: Think of decay as the depth of the curve's visual memory. Zero decay = infinite memory (full trail). Maximum decay = no memory (beam only).
-- **Offset transforms shape**: Small offsets smooth the cusps. Large offsets create loops. The transition is continuous and dramatic.
 - **Open mode for density**: When you want the curve to fill space rather than trace a clean rosette, enable Open. The fractional offset prevents repetition.
 - **Rainbow reads time**: In Rainbow mode, the hue encodes time — you can see the chronological order in which regions of the curve were drawn.
 - **Mask mode for keying**: Use the evolving curve as a dynamic key over another video source. The shape of the window changes with every parameter.
@@ -292,20 +303,18 @@ These exercises explore the mathematical and visual range of the roulette engine
 | Term | Definition |
 |------|------------|
 | **Astroid** | A four-cusped hypocycloid traced when the radius ratio is 4:1; shaped like a four-pointed star. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the sine lookup table and the 64×64 canvas. |
 | **Canvas** | The 64×64 pixel framebuffer with 4-bit intensity per pixel, used to store the curve trace and its phosphor history. |
 | **Cardioid** | A single-cusped epicycloid traced when the radius ratio is 1:1; heart-shaped. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic waveforms in digital hardware. |
 | **Decay** | The per-frame subtraction applied to all canvas pixels, simulating phosphor fade-out. |
 | **Deltoid** | A three-cusped hypocycloid traced when the radius ratio is 3:1. |
 | **Epicycloid** | The curve traced by a point on a circle rolling around the outside of a fixed circle. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hypocycloid** | The curve traced by a point on a circle rolling around the inside of a fixed circle. |
-| **Interpolator** | A linear interpolation module that blends two values using a mix parameter; used for wet/dry crossfade. |
 | **Nephroid** | A two-cusped epicycloid traced when the radius ratio is 2:1; kidney-shaped. |
 | **Phosphor** | A material that emits light after excitation; here used metaphorically for the canvas persistence mechanism. |
 | **Quarter-wave LUT** | A sine lookup table storing only one quarter-cycle, reconstructing the full waveform via quadrant mirroring. |
 | **Roulette** | The family of curves traced by a point on a circle rolling along another circle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

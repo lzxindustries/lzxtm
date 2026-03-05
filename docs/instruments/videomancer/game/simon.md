@@ -35,6 +35,14 @@ At full mix, Simon renders as a bold four-color pattern on black. Reducing the m
 
 ---
 
+## Quick Start
+
+1. **Watch the whole sequence**: During playback, focus on memorizing the order of all quadrant flashes. Trying to input before the sequence finishes is not possible — the game enforces playback completion before accepting input.
+2. **Use landmarks for Select**: The four quadrant zones on the Select knob are evenly spaced. Learn the physical positions for each quadrant to make input faster and more reliable.
+3. **Seed for practice**: Return to the same Seed position to practice the same sequence repeatedly. Once you can reliably complete 5+ steps at one seed, change the seed for a new challenge.
+
+---
+
 ## Background
 
 ### The Original Simon
@@ -205,6 +213,10 @@ The five toggles divide into gameplay interaction (Confirm), display options (Bo
 
 Mix controls the wet/dry blend between the game overlay and the input video. At full mix, only the Simon quadrant display is visible. Reducing mix fades in the input video behind the game elements, creating a memory game overlay on live video. At zero mix, the game is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -215,7 +227,7 @@ These exercises explore Simon's sequence playback mechanics, the quadrant select
 
 <img src={simon_exercise1_result} alt="Watch and Learn result"/>
 *Watch and Learn — simulated result across source images.*
-**Objective**: Observe a full playback sequence and understand the flash and pause timing controls.
+**What You'll Create**: Observe a full playback sequence and understand the flash and pause timing controls.
 
 1. Set Tempo to about 50% for comfortable pause duration between flashes.
 2. Set Flash to about 60% for clearly visible quadrant lighting.
@@ -234,7 +246,7 @@ These exercises explore Simon's sequence playback mechanics, the quadrant select
 
 <img src={simon_exercise2_result} alt="Play a Round result"/>
 *Play a Round — simulated result across source images.*
-**Objective**: Successfully reproduce a sequence of 3+ steps using the Select knob and Confirm toggle.
+**What You'll Create**: Successfully reproduce a sequence of 3+ steps using the Select knob and Confirm toggle.
 
 1. Set Tempo to about 50% and Flash to about 60% for clear playback.
 2. Set Seed to a specific position (e.g., ~25%) to get a reproducible sequence.
@@ -253,7 +265,7 @@ These exercises explore Simon's sequence playback mechanics, the quadrant select
 
 <img src={simon_exercise3_result} alt="Memory Game Video Overlay result"/>
 *Memory Game Video Overlay — simulated result across source images.*
-**Objective**: Blend the Simon game at partial mix over live video input for a performance overlay composition.
+**What You'll Create**: Blend the Simon game at partial mix over live video input for a performance overlay composition.
 
 1. Set Mix to about 55% to blend game and input video.
 2. Set Bright to about 95% for vivid quadrant flashes visible through the mix.
@@ -269,9 +281,6 @@ These exercises explore Simon's sequence playback mechanics, the quadrant select
 
 ## Tips
 
-- **Watch the whole sequence**: During playback, focus on memorizing the order of all quadrant flashes. Trying to input before the sequence finishes is not possible — the game enforces playback completion before accepting input.
-- **Use landmarks for Select**: The four quadrant zones on the Select knob are evenly spaced. Learn the physical positions for each quadrant to make input faster and more reliable.
-- **Seed for practice**: Return to the same Seed position to practice the same sequence repeatedly. Once you can reliably complete 5+ steps at one seed, change the seed for a new challenge.
 - **Fast Tempo as animation**: Setting Tempo very low (fast) makes the playback sequence a rapid visual pattern, useful as a rhythmic video overlay even without player interaction.
 - **Border frames the composition**: Enable Border when mixing with input video to give the quadrant display a clean visual boundary separate from the underlying footage.
 - **Score as performance metric**: The Score display shows exactly how far the player has progressed. In performance settings, it serves as a visual counter element that audiences can follow.
@@ -295,6 +304,7 @@ These exercises explore Simon's sequence playback mechanics, the quadrant select
 | **Sequence Store** | A 128-bit register holding up to 64 two-bit entries, each encoding a quadrant selection (0-3). |
 | **SUCCESS** | Transient game state entered after the player correctly reproduces the entire sequence. Adds a new step and increments the score. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used as the game tick clock. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

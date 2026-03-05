@@ -35,6 +35,14 @@ At full mix, Pong renders as a clean overlay on black. Reducing the mix fader bl
 
 ---
 
+## Quick Start
+
+1. **Edge hits are the key to winning**: Hit the ball with the top or bottom edge of your paddle to send steep angled returns that the AI (or your opponent) cannot reach.
+2. **AI Skill is the difficulty knob**: Low skill produces a beatable AI; high skill produces an almost unbeatable opponent. Find the sweet spot for your reflexes.
+3. **Manual mode for two players**: Switch P2 Mode to Manual and hand the fader to a friend for head-to-head play.
+
+---
+
 ## Background
 
 ### The Birth of Pong
@@ -61,6 +69,8 @@ The center court dividing line in the original Pong was rendered as a dashed ver
 ---
 
 ## Signal Flow
+
+Parameter Mapping → Physics Engine → Rasterizer → Output Stage → Sync Pipeline → Bypass
 
 ```
 Synthesis Engine
@@ -202,6 +212,10 @@ The five toggles control independent game and rendering features. P2 Mode switch
 
 Wet/dry mix crossfade between the unprocessed input video and the game overlay. Three parallel interpolator_u instances blend Y, U, and V channels independently. At 100% the output is pure game overlay on black. At 50% the game elements are semi-transparent over the input video. At 0% the output is pure dry input. Note: when P2 Mode is set to Manual, this fader *also* controls Player 2's paddle position — the fader drives both mix and P2 simultaneously (moving P2 down increases mix toward wet; moving P2 up decreases mix toward dry).
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -212,7 +226,7 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 <img src={pong_exercise1_result} alt="Classic Pong Match result"/>
 *Classic Pong Match — simulated result across source images.*
-**Objective**: Play a round of Pong against the AI with default court rendering.
+**What You'll Create**: Play a round of Pong against the AI with default court rendering.
 
 1. Set Ball Speed to about 40% for a moderate ball pace.
 2. Set Paddle Size to about 50% for medium paddles.
@@ -231,7 +245,7 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 <img src={pong_exercise2_result} alt="Neon Court Overlay result"/>
 *Neon Court Overlay — simulated result across source images.*
-**Objective**: Blend the Pong court semi-transparently over live video with colored game elements.
+**What You'll Create**: Blend the Pong court semi-transparently over live video with colored game elements.
 
 1. Set Mix to about 60% to let the source video show through.
 2. Enable Color mode (Hue) for tinted game elements.
@@ -249,7 +263,7 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 <img src={pong_exercise3_result} alt="Two-Player Head-to-Head result"/>
 *Two-Player Head-to-Head — simulated result across source images.*
-**Objective**: Play a two-player match using the pot and fader as separate paddle controllers.
+**What You'll Create**: Play a two-player match using the pot and fader as separate paddle controllers.
 
 1. Switch P2 Mode to Manual — the fader now controls the right paddle.
 2. Set Ball Speed to about 35% for a fair match.
@@ -266,9 +280,6 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 ## Tips
 
-- **Edge hits are the key to winning**: Hit the ball with the top or bottom edge of your paddle to send steep angled returns that the AI (or your opponent) cannot reach.
-- **AI Skill is the difficulty knob**: Low skill produces a beatable AI; high skill produces an almost unbeatable opponent. Find the sweet spot for your reflexes.
-- **Manual mode for two players**: Switch P2 Mode to Manual and hand the fader to a friend for head-to-head play.
 - **Mix for overlay compositing**: Lower the mix fader to blend the Pong court semi-transparently over live video, creating a playable overlay.
 - **Color mode for style**: Enable Hue mode and sweep the Court Hue knob for neon-colored game elements that complement your source video.
 - **Feedback routing**: Send Pong's output back into the input for recursive game-within-game visual feedback loops.
@@ -283,14 +294,12 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 | **AI Tracking** | A simple proportional pursuit algorithm where the AI paddle moves toward the ball at a fixed pixel-per-frame speed each vsync. |
 | **Bitmap Font** | A typeface stored as a grid of on/off pixel values rather than vector outlines; Pong uses a 5x7 bitmap for each digit. |
 | **BT.601** | ITU-R BT.601 color space standard defining the YUV encoding used throughout the Videomancer video pipeline. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hit Zone** | One of seven vertical segments of the paddle used to determine the ball's return angle after a collision. |
-| **Interpolator** | A hardware mixing stage that blends two values by a fractional amount; used for the wet/dry mix fader. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Raster Scan** | The process of drawing a video frame line by line from top to bottom, left to right, at a fixed pixel clock rate. |
 | **Serve** | The act of launching the ball from the center of the court after a point is scored, directed toward the scoring player's side. |
 | **TTL Logic** | Transistor-Transistor Logic; the discrete integrated circuit technology used to build the original Pong hardware without a CPU. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame; used as the game physics update clock. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

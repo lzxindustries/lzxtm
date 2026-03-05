@@ -68,6 +68,14 @@ At its simplest, Pegboard is a spatial quantizer with artistic output — it red
 
 ---
 
+## Quick Start
+
+1. **Cell size is the master control**: Peg Size determines the spatial resolution of the entire effect. Start here, then adjust radius and glow to taste.
+2. **Full radius square pegs = mosaic**: Square pegs at 100% radius fill their cells completely, producing a gap-free color mosaic. This is useful as a spatial quantizer without the peg aesthetic.
+3. **Palette mode for graphic impact**: The eight-color palette creates bold, poster-like imagery. Full Color mode is subtler and more photographic. Switch between them for dramatically different results from the same source.
+
+---
+
 ## Background
 
 ### Lite-Brite and Peg Art Tradition
@@ -92,6 +100,8 @@ The frame is divided into a regular square grid. Cell size is selectable from ei
 ---
 
 ## Signal Flow
+
+Palette Snap → Circle → Color Compose → Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Selects the peg grid cell size from eight presets: 4, 6, 8, 12, 16, 20, 24, or 3
 | Default | 62.6% |
 | Suffix | % |
 
-Controls the peg radius within each cell, expressed as a fraction of the cell half-size. At 0%, the peg shrinks to a single pixel at the center. At 100%, the peg extends to the cell boundary, filling the entire cell with no gap between adjacent pegs. The radius is clamped to a minimum of 1 pixel. For circle mode, the test is Euclidean (dx² + dy² ≤ r²); for square mode, it checks each axis independently (|dx| ≤ r AND |dy| ≤ r).
+At 0%, the peg shrinks to a single pixel at the center. At 100%, the peg extends to the cell boundary, filling the entire cell with no gap between adjacent pegs. The radius is clamped to a minimum of 1 pixel. For circle mode, the test is Euclidean (dx² + dy² ≤ r²); for square mode, it checks each axis independently (|dx| ≤ r AND |dy| ≤ r). Internally, controls the peg radius within each cell, expressed as a fraction of the cell half-size.
 
 ---
 
@@ -211,7 +221,7 @@ Controls chroma intensity in Full Color mode. When Full Color is active, the inp
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the brightness of the background gaps between pegs. At 0%, the background is fully black — the classic Lite-Brite look. Increasing this value raises the background luma, reducing contrast between pegs and gaps. Background chroma is always neutral (U = V = 512). In invert mode, the background becomes bright (fixed at 900) regardless of this setting.
+At 0%, the background is fully black — the classic Lite-Brite look. Increasing this value raises the background luma, reducing contrast between pegs and gaps. Background chroma is always neutral (U = V = 512). In invert mode, the background becomes bright (fixed at 900) regardless of this setting. Internally, sets the brightness of the background gaps between pegs.
 
 ---
 
@@ -238,7 +248,19 @@ The five toggle switches control independent rendering options. Full Color and P
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix between the original input video and the peg-rendered output. At 0%, the output is the unprocessed input. At 100%, the output is fully processed. Intermediate values blend the two via linear interpolation across all three YUV channels. This allows subtle integration of the peg effect into the source image.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Pegboard-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +283,7 @@ These exercises progress from basic peg rendering through color manipulation to 
 *Classic Lite-Brite — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong, varied colors — fruit bowls, flower arrangements, or color bar patterns work well.
 
-**Objective**: Create the classic Lite-Brite look: bright colored pegs on a black background with palette-quantized color.
+**What You'll Create**: Create the classic Lite-Brite look: bright colored pegs on a black background with palette-quantized color.
 
 1. **Set grid size**: Start with Peg Size at step 4 (16-pixel cells) for clearly visible individual pegs.
 2. **Adjust radius**: Set Peg Radius to about 60%. The pegs should have visible black gaps between them.
@@ -289,7 +311,7 @@ These exercises progress from basic peg rendering through color manipulation to 
 *Full Color Mosaic with Saturation — simulated result across source images.*
 **Source**: Footage with subtle color variation — landscapes, skin tones, or gradients.
 
-**Objective**: Explore Full Color mode and saturation control for a photographic peg mosaic.
+**What You'll Create**: Explore Full Color mode and saturation control for a photographic peg mosaic.
 
 1. **Enable Full Color**: Toggle Full Color to "Full". The pegs now show the actual sampled input color instead of snapping to the eight-color palette.
 2. **Reduce saturation**: Lower Saturation to about 50%. The pegs desaturate, retaining tonal variation but losing color intensity.
@@ -317,7 +339,7 @@ These exercises progress from basic peg rendering through color manipulation to 
 *Blooming Inverted Pegs — simulated result across source images.*
 **Source**: High-contrast material — spotlit subjects, neon signs, or black-and-white graphics.
 
-**Objective**: Combine bloom and invert modes for stylized negative-space peg effects.
+**What You'll Create**: Combine bloom and invert modes for stylized negative-space peg effects.
 
 1. **Set up basic pegs**: Medium grid (Peg Size step 5, 20px), moderate radius (~50%), Palette mode.
 2. **Enable Bloom**: Toggle Bloom on. Observe the dim halo around each peg — a colored fringe extending just past the peg edge.
@@ -333,9 +355,6 @@ These exercises progress from basic peg rendering through color manipulation to 
 
 ## Tips
 
-- **Cell size is the master control**: Peg Size determines the spatial resolution of the entire effect. Start here, then adjust radius and glow to taste.
-- **Full radius square pegs = mosaic**: Square pegs at 100% radius fill their cells completely, producing a gap-free color mosaic. This is useful as a spatial quantizer without the peg aesthetic.
-- **Palette mode for graphic impact**: The eight-color palette creates bold, poster-like imagery. Full Color mode is subtler and more photographic. Switch between them for dramatically different results from the same source.
 - **Bloom adds depth**: The bloom halo is subtle (÷8 brightness) but adds a sense of light emission around each peg. Most visible with dark backgrounds and moderate peg radius.
 - **Invert for negative space**: Inverted pegs create dark holes in a bright field — the opposite of Lite-Brite. This looks especially striking with Bloom, where the halo becomes a dark fringe around each hole.
 - **Mix for ghost overlay**: Partial mix values overlay the peg pattern on the source video, creating a grid texture over the original image. This is useful for subtle spatial quantization effects.
@@ -353,14 +372,13 @@ These exercises progress from basic peg rendering through color manipulation to 
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Euclidean Distance** | Distance measured as the square root of dx² + dy²; Pegboard uses distance-squared to avoid the square root. |
 | **Falloff** | The radial decrease in brightness from the peg center to its edge, simulating translucent glow. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Lite-Brite** | A 1967 Hasbro toy that creates glowing images by placing translucent colored pegs into a backlit perforated board. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Manhattan Distance** | The sum of absolute differences along each axis (|ΔY| + |ΔU| + |ΔV|); used for palette color matching. |
 | **Mosaic** | A visual pattern composed of small uniform-color blocks arranged in a grid. |
 | **Palette Quantization** | Reducing a continuous color space to a fixed set of representative colors by nearest-neighbor matching. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sample and Hold** | Capturing a signal value at one instant (the cell center) and maintaining it for a duration (the entire cell). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ The FPGA implementation renders 1 to 4 independent attractors on a 64×64 frameb
 
 ---
 
+## Quick Start
+
+1. **Start with one attractor**: Understanding a single orbit's character makes it easier to interpret the multi-attractor composite. Add attractors incrementally.
+2. **Complex mode for organic motion**: Complex orbits create non-repeating, chaotic trajectories that look more natural and less mechanical than Simple circular orbits.
+3. **Pulsed waveform for rhythm**: Use Pulsed mode to add visual rhythm to the orbital trails. The strobed effect works especially well when synchronised with musical tempo.
+
+---
+
 ## Background
 
 ### The Virtual Light Machine Legacy
@@ -201,6 +209,10 @@ The five toggles configure the orbital dynamics and rendering. Orbit selects sim
 
 Mix crossfades between the dry input and the synthesised VLM output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values blend the orbital trails over the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +223,7 @@ These exercises progress from understanding single-attractor dynamics to creatin
 
 <img src={vlm_exercise1_result} alt="Single Smooth Orbit result"/>
 *Single Smooth Orbit — simulated result across source images.*
-**Objective**: Study the fundamental orbital mechanics and trail persistence with a single attractor.
+**What You'll Create**: Study the fundamental orbital mechanics and trail persistence with a single attractor.
 
 1. Set Attractors to 1.
 2. Set Orbit to Simple.
@@ -232,7 +244,7 @@ These exercises progress from understanding single-attractor dynamics to creatin
 
 <img src={vlm_exercise2_result} alt="Multi-Attractor Chaos result"/>
 *Multi-Attractor Chaos — simulated result across source images.*
-**Objective**: Create a complex chaotic light pattern using multiple attractors in Complex orbit mode.
+**What You'll Create**: Create a complex chaotic light pattern using multiple attractors in Complex orbit mode.
 
 1. Set Attractors to 4.
 2. Set Orbit to Complex.
@@ -253,7 +265,7 @@ These exercises progress from understanding single-attractor dynamics to creatin
 
 <img src={vlm_exercise3_result} alt="Orbital Video Overlay result"/>
 *Orbital Video Overlay — simulated result across source images.*
-**Objective**: Layer the multi-attractor orbital animation over live video for a performance-ready composition.
+**What You'll Create**: Layer the multi-attractor orbital animation over live video for a performance-ready composition.
 
 1. Continue from Exercise 2 with 4 attractors.
 2. Enable Mod Video.
@@ -271,9 +283,6 @@ These exercises progress from understanding single-attractor dynamics to creatin
 
 ## Tips
 
-- **Start with one attractor**: Understanding a single orbit's character makes it easier to interpret the multi-attractor composite. Add attractors incrementally.
-- **Complex mode for organic motion**: Complex orbits create non-repeating, chaotic trajectories that look more natural and less mechanical than Simple circular orbits.
-- **Pulsed waveform for rhythm**: Use Pulsed mode to add visual rhythm to the orbital trails. The strobed effect works especially well when synchronised with musical tempo.
 - **Balance Intensity and Decay**: High intensity with low decay creates saturated, persistent trails. Low intensity with fast decay creates brief, subtle impressions. Find the sweet spot for your composition.
 - **Hue Speed for colour evolution**: Animate the palette slowly for gradual colour drift, or quickly for psychedelic rainbow cycling along the trails.
 - **Reset for performance**: During live performance, Reset provides a clean canvas on demand — use it between musical sections or for dramatic visual cuts.

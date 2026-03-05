@@ -35,6 +35,14 @@ At small tile sizes, the pattern appears as a dense, organic texture. At large t
 
 ---
 
+## Quick Start
+
+1. **Seed is your creative palette**: Each seed value produces a completely unique global pattern. Spend time exploring — some seeds produce mesmerizing connected loops, others produce fragmented islands.
+2. **Small tiles for texture, large tiles for structure**: At 8 pixels, the pattern looks like a woven fabric. At 64 pixels, you can trace individual arcs and their connections. Choose the scale that matches your compositional intent.
+3. **Fill mode is a dramatic toggle**: Switching from outline to filled rendering changes the pattern from delicate linework to bold graphic blocks. Use fill for high-impact visual compositions.
+
+---
+
 ## Background
 
 ### Truchet Tiles and Combinatorial Geometry
@@ -61,6 +69,8 @@ The four selectable tile types produce distinct visual textures: **Arc** draws q
 ---
 
 ## Signal Flow
+
+Generated Pattern → Mix Stage → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -163,7 +173,7 @@ Controls the speed of animation when the Animate toggle is active. The animation
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the amount of chrominance colorization applied to the pattern. At 0%, the output is monochrome (U=512, V=512). As the value increases, tiles with orientation 0 receive a warm tint (U shifted up, V shifted down) and tiles with orientation 1 receive a cool tint (U shifted down, V shifted up). This creates a two-tone color map that visually distinguishes the two orientation populations and their emergent connected structures.
+At 0%, the output is monochrome (U=512, V=512). As the value increases, tiles with orientation 0 receive a warm tint (U shifted up, V shifted down) and tiles with orientation 1 receive a cool tint (U shifted down, V shifted up). This creates a two-tone color map that visually distinguishes the two orientation populations and their emergent connected structures. Internally, controls the amount of chrominance colorization applied to the pattern.
 
 ---
 
@@ -182,7 +192,7 @@ Sets the base LFSR seed offset. Different seed values produce completely differe
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Tile Type** | Arc | Diag |
+| **7 — Tile Type** | Arc | Smith |
 | **8 — Fill Mode** | Lines | Filled |
 | **9 — Invert** | Off | On |
 | **10 — Animate** | Off | On |
@@ -203,6 +213,21 @@ The five toggles control the tile rendering mode (4 types via 2-bit selector), f
 
 Controls the wet/dry crossfade between the original input video and the generated Truchet pattern. At 100%, the output is fully the generated pattern. At 0%, the input video passes through. Intermediate values blend the pattern over the source, creating a textured overlay effect — the Truchet grid modulates the underlying video.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Truchet processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -213,7 +238,7 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 <img src={truchet_exercise1_result} alt="Classic Truchet Arcs result"/>
 *Classic Truchet Arcs — simulated result across source images.*
-**Objective**: Explore how tile size, line width, and seed interact to create emergent arc structures.
+**What You'll Create**: Explore how tile size, line width, and seed interact to create emergent arc structures.
 
 1. **Set Arc mode**: Ensure Tile Type is set to Arc. Set Fill Mode to Lines.
 2. **Medium tiles**: Set Cell Size to position 3 (16 pixels). Observe the quarter-circle arcs connecting across tile boundaries.
@@ -230,7 +255,7 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 <img src={truchet_exercise2_result} alt="Animated Diagonal Grid result"/>
 *Animated Diagonal Grid — simulated result across source images.*
-**Objective**: Use animation and diagonal tiles to create a dynamic crystalline texture overlay.
+**What You'll Create**: Use animation and diagonal tiles to create a dynamic crystalline texture overlay.
 
 1. **Switch to Diagonal**: Set Tile Type to Diag. The arcs become straight lines connecting opposite corners.
 2. **Enable animation**: Toggle Animate to On. Set Anim Speed to about 30%.
@@ -247,7 +272,7 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 <img src={truchet_exercise3_result} alt="Filled Smith Mosaic result"/>
 *Filled Smith Mosaic — simulated result across source images.*
-**Objective**: Create a bold, graphic mosaic using filled Smith tiles with inversion and contrast control.
+**What You'll Create**: Create a bold, graphic mosaic using filled Smith tiles with inversion and contrast control.
 
 1. **Smith mode**: Set Tile Type to Smith. Set Fill Mode to Filled.
 2. **Large tiles**: Set Cell Size to position 6 (48 pixels) for clearly visible partitioned blocks.
@@ -264,9 +289,6 @@ These exercises progress from basic tile exploration to animated, colorized patt
 
 ## Tips
 
-- **Seed is your creative palette**: Each seed value produces a completely unique global pattern. Spend time exploring — some seeds produce mesmerizing connected loops, others produce fragmented islands.
-- **Small tiles for texture, large tiles for structure**: At 8 pixels, the pattern looks like a woven fabric. At 64 pixels, you can trace individual arcs and their connections. Choose the scale that matches your compositional intent.
-- **Fill mode is a dramatic toggle**: Switching from outline to filled rendering changes the pattern from delicate linework to bold graphic blocks. Use fill for high-impact visual compositions.
 - **Animation creates organic movement**: Even low animation speeds produce a slowly shifting, breathing pattern. High speeds create frenetic visual noise — useful as a modulation source.
 - **Color separates orientation populations**: When colorization is applied, the two-tone tinting makes the emergent connectivity structures visually obvious. Connected arcs share the same color, revealing the large-scale topology.
 - **Mix for pattern overlay**: At 30–50% mix, the Truchet grid serves as a textured screen over live video — a geometric veil that adds structure without obscuring the source.
@@ -280,12 +302,12 @@ These exercises progress from basic tile exploration to animated, colorized patt
 |------|------------|
 | **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms, used here to cycle the animation seed. |
 | **Emergent Connectivity** | Global structures (loops, paths, mazes) that arise from local random tile orientations connecting across boundaries. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the tile pattern pipeline in real time. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to assign tile orientations. |
 | **LUT** | Look-Up Table; the basic logic element of the FPGA fabric, used for combinational logic. |
 | **Octagonal Approximation** | A computationally cheap distance estimate: max(|dx|, |dy|) + 3/8 × min(|dx|, |dy|), producing an octagon instead of a circle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for contrast and brightness adjustment. |
 | **Truchet Tiling** | A tiling pattern where identical square tiles with asymmetric decoration are placed in random orientations to create emergent global patterns. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

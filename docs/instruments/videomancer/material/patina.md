@@ -68,6 +68,14 @@ At conservative settings, Patina adds a subtle warm-metallic grade to the image.
 
 ---
 
+## Quick Start
+
+1. **Low Age for color grading**: Age below 20% with Copper mode creates a warm photographic grade without any visible oxidation texture. Use this as a subtle color correction tool.
+2. **Spot Size controls texture scale**: The four discrete coarseness levels produce very different looks. Spend time sweeping this control slowly to understand the transitions.
+3. **Roughness is the realism control**: Real verdigris is never smooth. Even a small amount of roughness (10–20%) makes the effect look more natural and less like a tint overlay.
+
+---
+
 ## Background
 
 ### What Is Verdigris?
@@ -94,6 +102,8 @@ Toggle 7 selects between copper and bronze as the base metal interpretation. In 
 ---
 
 ## Signal Flow
+
+Input Register → Spatial Noise Hash → Oxidation Mask → Darken Y → Teal/Green Tinting → Compose Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -217,8 +227,8 @@ Base Tone. Adjusts the brightness of non-oxidized (clean metal) pixels. The regi
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Metal** | Copper | Bronze |
-| **8 — Stage** | Fresh | Tarnish |
+| **7 — Metal** | Copper | Iron |
+| **8 — Stage** | Fresh | Full |
 | **9 — Animate** | Off | On |
 | **10 — Reveal** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -236,7 +246,29 @@ The five toggles control the metal type, patina intensity, animation, reversal, 
 | Default | 100.0% |
 | Suffix | % |
 
-Mix. Wet/dry crossfade between the processed oxidation output and the delayed original input. At 100% (fully clockwise), the output is entirely the patina effect. At 0%, the output is the unprocessed source — functionally identical to Bypass but with a smooth transition. Intermediate values blend, useful for dialing back the oxidation effect to a subtle overlay rather than a full surface replacement.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Patina processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Patina-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -259,7 +291,7 @@ These exercises progress from basic copper toning through animated oxidation seq
 *Warm Copper Grade — simulated result across source images.*
 **Source**: Portrait or still-life footage with skin tones and neutral backgrounds.
 
-**Objective**: Use minimal oxidation to apply a warm copper color grade, understanding the base metal tinting path.
+**What You'll Create**: Use minimal oxidation to apply a warm copper color grade, understanding the base metal tinting path.
 
 1. **Copper warmth**: Set Age to ~15%. Only scattered pixels oxidize. With Copper/Bronze off (Copper mode), notice the subtle warm shift on non-oxidized pixels from the Base Tone V-channel tint.
 2. **Base Tone brightness**: Increase Base Tone to ~70%. Non-oxidized areas brighten, enhancing the metallic sheen.
@@ -286,7 +318,7 @@ These exercises progress from basic copper toning through animated oxidation seq
 *Verdigris Texture — simulated result across source images.*
 **Source**: Architectural footage — building facades, metalwork, or stone surfaces.
 
-**Objective**: Create a heavy verdigris patina with visible texture, exploring the interaction between oxidation depth, roughness, and color intensity.
+**What You'll Create**: Create a heavy verdigris patina with visible texture, exploring the interaction between oxidation depth, roughness, and color intensity.
 
 1. **Coverage**: Set Age to ~60%. Roughly half the image should be oxidized.
 2. **Large patches**: Increase Spot Size to ~80%. The oxidation forms broad, irregular regions.
@@ -314,7 +346,7 @@ These exercises progress from basic copper toning through animated oxidation seq
 *Animated Oxidation — simulated result across source images.*
 **Source**: Any video with slow or moderate motion — landscapes, time-lapse, or abstract patterns.
 
-**Objective**: Enable animation to watch the oxidation frontier advance across the image in real time, then reverse it.
+**What You'll Create**: Enable animation to watch the oxidation frontier advance across the image in real time, then reverse it.
 
 1. **Prepare**: Set Age to ~30%, Spot Size ~50%, Color Intensity ~60%, Roughness ~40%.
 2. **Start animation**: Toggle Animate on. The verdigris patches begin to grow frame by frame.
@@ -330,9 +362,6 @@ These exercises progress from basic copper toning through animated oxidation seq
 
 ## Tips
 
-- **Low Age for color grading**: Age below 20% with Copper mode creates a warm photographic grade without any visible oxidation texture. Use this as a subtle color correction tool.
-- **Spot Size controls texture scale**: The four discrete coarseness levels produce very different looks. Spend time sweeping this control slowly to understand the transitions.
-- **Roughness is the realism control**: Real verdigris is never smooth. Even a small amount of roughness (10–20%) makes the effect look more natural and less like a tint overlay.
 - **Heavy patina for drama**: The Heavy/Light toggle doubles the darkening intensity. Use Heavy for dramatic, high-contrast oxidation. Use Light for a weathered, lived-in patina.
 - **Animation is geological**: At low Front Speed, the oxidation frontier advances very slowly — let it run for 30+ seconds to see the full progression.
 - **Bronze for cooler results**: Bronze mode removes the warm copper tint from clean metal and adds extra green to oxidized areas, producing a colder, more industrial look.
@@ -346,16 +375,15 @@ These exercises progress from basic copper toning through animated oxidation seq
 | Term | Definition |
 |------|------------|
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, encoding hue and saturation information. |
-| **Interpolator** | A hardware module that performs linear crossfading between two input values, used here for wet/dry mix. |
 | **LFSR** | Linear-Feedback Shift Register; a simple digital circuit that generates a long pseudo-random bit sequence. Used as a spatial noise source. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Oxidation** | A chemical reaction where metal combines with oxygen, forming an oxide layer. In Patina, this refers to pixels that have been darkened and tinted. |
 | **Patina** | The colored surface layer that forms on metals through long-term oxidation, especially the green-blue verdigris on copper. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage used in video processing. Patina's base tone adjustment is a simplified form. |
 | **Spatial Hash** | An XOR combination of pixel coordinates and LFSR output that produces a pseudo-random value unique to each screen position. |
 | **Verdigris** | The green-blue patina (copper carbonate/chloride) that forms on copper surfaces exposed to air and moisture over time. |
 | **XOR** | Exclusive OR; a bitwise operation where the output is 1 when the inputs differ. Used to combine position and noise values. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

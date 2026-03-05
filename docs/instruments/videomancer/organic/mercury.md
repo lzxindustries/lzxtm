@@ -35,6 +35,14 @@ The name references the element mercury (quicksilver) — the only metal that is
 
 ---
 
+## Quick Start
+
+1. **Blob Cnt is radius, not count**: Despite the panel label, this knob controls the size of each blob via a left-shift by 2. For blob count, use the Shape toggle (2 or 4 blobs).
+2. **Blob Sz is speed, not size**: This knob controls DDS orbit speed via a left-shift by 3. For blob size, use the Blob Cnt knob.
+3. **Ripple does nothing**: Register 5 is declared but unreferenced in the VHDL. Adjusting this knob has zero effect on the output.
+
+---
+
 ## Background
 
 ### Liquid Metal Surface Tension
@@ -210,8 +218,8 @@ Labelled "Ripple" on the panel, this register is mapped to `s_mix_pot` in the VH
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Shape** | Organic | Geomtrc |
-| **8 — Metal** | Silver | Gold |
+| **7 — Shape** | Organic | Puddle |
+| **8 — Metal** | Silver | Chrome |
 | **9 — Merge** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -229,7 +237,29 @@ Toggles 7 and 8 each present four labels on the panel but are wired to single bi
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix at the end of the processing chain. At 100%, the output is the fully composited blob rendering. At 0%, the output is the unprocessed source video. Intermediate values blend between the two via three 4-clock interpolators operating on Y, U, and V simultaneously. This control is the primary tool for dialing in subtle metallic overlay effects — at 30–50%, the chrome blobs become translucent ghosts hovering over the video.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Mercury processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Mercury-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -241,7 +271,7 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 <img src={mercury_exercise1_result} alt="Static Chrome Droplets result"/>
 *Static Chrome Droplets — simulated result across source images.*
-**Objective**: Visualize the basic blob geometry and understand how radius and surface tension shape the metallic rendering.
+**What You'll Create**: Visualize the basic blob geometry and understand how radius and surface tension shape the metallic rendering.
 
 1. **Freeze animation**: Set Animate to On (which freezes the DDS accumulators, halting blob motion).
 2. **Two blobs**: Set Shape to Organic (2-blob mode). Two metallic discs appear on the screen.
@@ -258,7 +288,7 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 <img src={mercury_exercise2_result} alt="Merge Behaviour and Compositing result"/>
 *Merge Behaviour and Compositing — simulated result across source images.*
-**Objective**: Explore how blobs merge when their distance fields overlap, and compare additive versus replace compositing.
+**What You'll Create**: Explore how blobs merge when their distance fields overlap, and compare additive versus replace compositing.
 
 1. **Enable animation**: Set Animate to Off (animation runs — inverted label). Set Blob Sz to ~30% for slow orbits.
 2. **Four blobs**: Set Shape to Geomtrc (4-blob mode). Four metallic discs orbit the screen.
@@ -275,7 +305,7 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 <img src={mercury_exercise3_result} alt="Rainbow Voronoi with Jitter result"/>
 *Rainbow Voronoi with Jitter — simulated result across source images.*
-**Objective**: Activate rainbow mode and jitter to create an animated, colour-partitioned Voronoi field with organic wobble.
+**What You'll Create**: Activate rainbow mode and jitter to create an animated, colour-partitioned Voronoi field with organic wobble.
 
 1. **Enable rainbow**: Toggle Merge On. Each blob's territory is now painted a different colour.
 2. **Four blobs**: Set Shape to Geomtrc (4 blobs) for a full four-colour partition.
@@ -291,9 +321,6 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 ## Tips
 
-- **Blob Cnt is radius, not count**: Despite the panel label, this knob controls the size of each blob via a left-shift by 2. For blob count, use the Shape toggle (2 or 4 blobs).
-- **Blob Sz is speed, not size**: This knob controls DDS orbit speed via a left-shift by 3. For blob size, use the Blob Cnt knob.
-- **Ripple does nothing**: Register 5 is declared but unreferenced in the VHDL. Adjusting this knob has zero effect on the output.
 - **Animate is inverted**: Toggle On = freeze, Toggle Off = run. The VHDL signal `s_freeze` is active-high, opposite to what the label suggests.
 - **Shape and Metal are binary**: Despite having four labels each, these toggles are single-bit — only two states exist. Shape: 2 blobs / 4 blobs. Metal: additive / replace.
 - **Large radius + high tension = full merge**: Pushing Blob Cnt and Tension to high values causes the blobs to fill the screen as a continuous chrome field — useful as a metallic overlay texture.
@@ -306,17 +333,16 @@ These exercises progress from basic blob visualization through merge behaviour e
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA. Mercury uses zero BRAMs — all computation is combinatorial and register-based. |
 | **Coprime** | Two integers whose greatest common divisor is 1. Mercury uses coprime frequency multipliers for each blob's DDS to ensure their orbits never synchronize exactly. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that wraps at overflow, producing a sawtooth phase ramp whose top bits represent position. |
 | **Distance field** | A scalar field that assigns to each pixel the distance to the nearest feature point. Mercury uses Manhattan distance to the nearest blob centre. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that implements Mercury's pixel pipeline in parallel hardware. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state. Produces a pseudo-random sequence that repeats after $2^n - 1$ cycles. |
 | **Lissajous figure** | The path traced by a point whose X and Y coordinates are independent sinusoidal (or periodic) functions of time. Mercury's blob orbits are Lissajous-like curves driven by DDS accumulators. |
 | **Manhattan distance** | The L1 or taxicab distance metric: $d = |x_1 - x_2| + |y_1 - y_2|$. Produces diamond-shaped equidistant contours instead of circles. |
 | **Specular highlight** | A bright reflection on a curved surface where the viewing angle equals the reflection angle. Mercury simulates this as a bright edge ring at the blob boundary. |
 | **Surface tension** | The cohesive force at a liquid's surface that minimizes its area. In Mercury, this parameter controls the width of the edge highlight ring that simulates specular reflection. |
 | **Voronoi diagram** | A partition of a plane into regions based on proximity to a set of seed points, where each region contains all points closer to its seed than to any other. Mercury's rainbow mode visualizes this partition. |
-| **YUV** | A colour space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

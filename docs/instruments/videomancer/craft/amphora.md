@@ -68,6 +68,14 @@ At conservative settings — moderate threshold with detail lines enabled and th
 
 ---
 
+## Quick Start
+
+1. **Threshold is the primary creative control**: The threshold level determines the figure/ground split point and is the most impactful parameter. Adjust it first, then refine with other controls.
+2. **Detail lines add authenticity**: Real Attic pottery has extensive internal line work — drapery folds, muscle definition, facial features. Enable detail lines for the most authentic look.
+3. **Red-Figure is more versatile**: Red-Figure mode preserves more visual detail because the warm terra-cotta figures show the line work more clearly than black silhouettes.
+
+---
+
 ## Background
 
 ### What Are Black-Figure and Red-Figure Pottery?

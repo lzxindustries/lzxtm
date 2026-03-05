@@ -68,6 +68,14 @@ The signal path is compact: a single video line buffer stores the previous line 
 
 ---
 
+## Quick Start
+
+1. **Wire before fill**: Edge detection operates on the raw input luminance, so wire boundaries always trace the source image's natural contours regardless of how aggressively the fill is posterized. Adjust wire first, then tune the palette.
+2. **Two-knob threshold**: Wire W and Edge Thr combine to set the effective detection threshold. Think of Wire W as the coarse control and Edge Thr as the fine-tune — together they give more range than either alone.
+3. **Coarse palette for authenticity**: Real cloisonné cells contain a single opaque color. Palette steps 1–3 produce the most convincing enamel look; higher steps add tonal nuance at the cost of realism.
+
+---
+
 ## Background
 
 ### The Art of Cloisonné
@@ -104,6 +112,8 @@ The gloss intensity is controlled by AND-ing the coordinate-derived pattern with
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix → Bypass → Sync
 
 ```
 Input Video (YUV 4:4:4)
@@ -168,7 +178,7 @@ The critical interaction is between edge detection and quantization. Edge detect
 | Default | 50% |
 | Suffix | % |
 
-Sets the baseline threshold for edge detection. At low values, even gentle gradients in the source are classified as wire, producing dense, wide-coverage boundary networks that can dominate the image. At high values, only the sharpest transitions — strong object edges and high-contrast boundaries — generate wire, leaving most of the image as smooth enamel fill. The default midpoint provides a balanced coverage suitable for most video sources. Use this as the primary control for overall wire density before fine-tuning with Edge Thr.
+At low values, even gentle gradients in the source are classified as wire, producing dense, wide-coverage boundary networks that can dominate the image. At high values, only the sharpest transitions — strong object edges and high-contrast boundaries — generate wire, leaving most of the image as smooth enamel fill. The default midpoint provides a balanced coverage suitable for most video sources. Use this as the primary control for overall wire density before fine-tuning with Edge Thr. Internally, sets the baseline threshold for edge detection.
 
 ---
 
@@ -230,8 +240,8 @@ Scales the intensity of the gloss overlay applied to fill cells when gloss is en
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Cloisnne | Champve |
-| **8 — Wire Color** | Gold | Silver |
+| **7 — Style** | Cloisnne | Basel |
+| **8 — Wire Color** | Gold | Black |
 | **9 — Gloss** | Off | On |
 | **10 — Video Pal** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -250,6 +260,21 @@ The five toggles divide into two groups. Toggles 7 and 8 are four-position switc
 | Suffix | % |
 
 Cross-fades between the dry (original) and wet (processed) signal for each of the three YUV channels independently through matched interpolators. At 0%, the output is pure dry — identical to the source. At 100%, the output is fully processed enamel. Intermediate positions produce a transparency blend where the wire and fill are layered over the original image at reduced opacity, which can create a subtle illustrative overlay effect.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Enamel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -272,7 +297,7 @@ These exercises progress from basic edge detection to full cloisonné simulation
 *Wire Network Discovery — simulated result across source images.*
 **Source**: A portrait or face close-up with clear contours — eyes, nose, mouth, hairline — and a range of soft and hard edges.
 
-**Objective**: Learn how Wire W and Edge Thr interact to control wire density and coverage.
+**What You'll Create**: Learn how Wire W and Edge Thr interact to control wire density and coverage.
 
 1. **Set baseline**: Turn Wire W to ~50% and Edge Thr to 0%. Observe the wire boundaries tracing only the strongest edges in the source.
 2. **Lower threshold**: Slowly reduce Wire W toward 0%. Watch as progressively softer transitions become wire — texture, shadows, gradual shading all sprout outlines.
@@ -299,7 +324,7 @@ These exercises progress from basic edge detection to full cloisonné simulation
 *Palette and Saturation — simulated result across source images.*
 **Source**: A colorful still life — fruit, flowers, or painted objects — with a wide range of hues and smooth tonal gradients.
 
-**Objective**: Explore luminance quantization and chroma saturation boost to achieve the flat, vivid look of fired enamel.
+**What You'll Create**: Explore luminance quantization and chroma saturation boost to achieve the flat, vivid look of fired enamel.
 
 1. **Coarse palette**: Set Palette to step 1 (8 levels). The image collapses into broad flat regions — each cell is a single uniform tone.
 2. **Fine palette**: Step through positions 2–8 and observe how the tonal staircase becomes finer. At step 4 (64 levels), the quantization is subtle but still visible in smooth gradients.
@@ -327,7 +352,7 @@ These exercises progress from basic edge detection to full cloisonné simulation
 *Gloss and Animation — simulated result across source images.*
 **Source**: High-contrast footage with large uniform areas — architecture, signage, or geometric patterns — where surface effects will be clearly visible.
 
-**Objective**: Enable gloss and animation to simulate the reflective surface of polished enamelwork.
+**What You'll Create**: Enable gloss and animation to simulate the reflective surface of polished enamelwork.
 
 1. **Prepare**: Set a moderate wire network (Wire W ~50%, Edge Thr ~30%) and coarse palette (step 2, 16 levels).
 2. **Enable gloss**: Switch the Gloss toggle (toggle 9) to On. Observe the subtle brightness ripple across fill regions.
@@ -344,9 +369,6 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 ## Tips
 
-- **Wire before fill**: Edge detection operates on the raw input luminance, so wire boundaries always trace the source image's natural contours regardless of how aggressively the fill is posterized. Adjust wire first, then tune the palette.
-- **Two-knob threshold**: Wire W and Edge Thr combine to set the effective detection threshold. Think of Wire W as the coarse control and Edge Thr as the fine-tune — together they give more range than either alone.
-- **Coarse palette for authenticity**: Real cloisonné cells contain a single opaque color. Palette steps 1–3 produce the most convincing enamel look; higher steps add tonal nuance at the cost of realism.
 - **Saturation is your glaze**: The Gloss knob (pot 4) boosts chroma saturation, not surface gloss. Increasing it mimics the vivid color of fired vitreous enamel — the higher the boost, the more jewel-toned the fill.
 - **Style presets are combinatorial**: The four Style positions permute two independent binary choices (gold/dark wire × warm/cool palette). Experiment with all four to find the aesthetic temperature that suits your source material.
 - **Gloss needs coarse fill**: The position-based gloss shimmer is most visible on large, uniform fill regions created by low Palette steps. With fine quantization (step 7–8), the gloss pattern is masked by the surviving tonal detail.
@@ -359,20 +381,18 @@ These exercises progress from basic edge detection to full cloisonné simulation
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the video line buffer that stores one line of Y data for vertical edge detection. |
 | **Chroma** | The color information in a video signal, encoded as U and V components centered on midpoint 512 in 10-bit YUV color space. |
 | **Cloisonné** | A decorative enamel technique using thin metal wire to form enclosed cells (cloisons) filled with vitreous glass paste. |
 | **Edge Detection** | Identification of sharp luminance transitions in an image by computing the gradient (rate of change) between neighboring pixels. |
 | **Gradient** | The magnitude of brightness change between adjacent pixels; the basis for wire/fill classification in Enamel's processing pipeline. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values based on a blend factor; used for wet/dry mix. |
 | **Line Buffer** | A single-line delay implemented in BRAM that stores one horizontal line of video data, enabling vertical pixel comparisons. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle; Enamel uses a 10-stage pipeline. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image by masking lower bits, creating flat bands of uniform brightness. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels; Enamel quantizes Y via bit-shift masking. |
 | **Saturation** | The intensity or purity of a color; Enamel boosts saturation by pushing U and V values away from neutral midpoint. |
 | **Vitreous Enamel** | A glassy coating made from powdered glass fused to a metal surface by firing; characterized by vivid, opaque color and a glossy finish. |
 | **XOR** | Exclusive OR; a bitwise operation used in Enamel to generate quasi-periodic patterns for gloss shimmer and wire animation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

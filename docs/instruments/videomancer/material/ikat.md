@@ -68,6 +68,14 @@ At conservative settings — wide columns, moderate quantization, low bleed — 
 
 ---
 
+## Quick Start
+
+1. **Unused controls**: Pot 6 (Warmth) and Toggle 8 (Palette Src) are registered but have no effect in the current VHDL. Don't spend time searching for their influence.
+2. **Column width sets the fundamental scale**: Everything else — bleed, quantization, jitter — operates within the column structure defined by Pot 1. Start by choosing a column width that matches the visual density you want, then tune the other controls.
+3. **Bleed is chroma-only**: The edge bleed feathers color (U/V) at column boundaries but does not affect luminance. This means the brightness structure remains column-quantized even at maximum bleed.
+
+---
+
 ## Background
 
 ### What Is Ikat Dyeing?
@@ -90,6 +98,8 @@ Traditional *double ikat* — where both warp and weft threads are pre-dyed — 
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Interpolator → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -218,7 +228,29 @@ The five toggles control a mix of independent binary options and reserved contro
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the dry/wet crossfade between the original input (delayed to match the 8-clock processing pipeline) and the processed textile signal. At 100%, the output is fully processed. At 0%, the output is the unmodified input. Intermediate values blend the two, allowing subtle textile textures to be layered over the source video.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Ikat processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Ikat-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -241,7 +273,7 @@ These exercises progress from simple column striping to full textile simulation,
 *Basic Warp Stripes — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clearly defined subjects and moderate contrast.
 
-**Objective**: Learn how column width and palette quantization create the fundamental ikat stripe pattern.
+**What You'll Create**: Learn how column width and palette quantization create the fundamental ikat stripe pattern.
 
 1. **Set column width**: Turn Col Width to about 40%. Watch as the image divides into vertical stripes of uniform width.
 2. **Quantize luminance**: Slowly increase Palette from minimum. Watch smooth gradients within each stripe collapse into flat tonal bands — like threads dipped in progressively fewer dye colors.
@@ -268,7 +300,7 @@ These exercises progress from simple column striping to full textile simulation,
 *Dye Bleed and Jitter — simulated result across source images.*
 **Source**: Footage with broad tonal gradients — skies, skin tones, or slowly-moving abstract video.
 
-**Objective**: Explore how edge bleed and LFSR jitter create the characteristic soft, hand-dyed ikat look.
+**What You'll Create**: Explore how edge bleed and LFSR jitter create the characteristic soft, hand-dyed ikat look.
 
 1. **Establish stripes**: Set Col Width ~40%, Palette ~40% for visible column quantization.
 2. **Add bleed**: Slowly increase Bleed Amt. Watch the hard edges between columns soften — chroma fades toward neutral at stripe boundaries, simulating dye seeping under the resist ties.
@@ -295,7 +327,7 @@ These exercises progress from simple column striping to full textile simulation,
 *Double Ikat Textile — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric content — architecture, text, or patterned surfaces.
 
-**Objective**: Combine all processing stages to create a full double-ikat textile simulation.
+**What You'll Create**: Combine all processing stages to create a full double-ikat textile simulation.
 
 1. **Start with fine stripes**: Set Col Width ~25%, Palette ~60% for a dense vertical stripe pattern.
 2. **Heavy bleed and jitter**: Set Bleed Amt ~70%, Dye Depth ~80%. The stripe edges are now thoroughly feathered.
@@ -311,9 +343,6 @@ These exercises progress from simple column striping to full textile simulation,
 
 ## Tips
 
-- **Unused controls**: Pot 6 (Warmth) and Toggle 8 (Palette Src) are registered but have no effect in the current VHDL. Don't spend time searching for their influence.
-- **Column width sets the fundamental scale**: Everything else — bleed, quantization, jitter — operates within the column structure defined by Pot 1. Start by choosing a column width that matches the visual density you want, then tune the other controls.
-- **Bleed is chroma-only**: The edge bleed feathers color (U/V) at column boundaries but does not affect luminance. This means the brightness structure remains column-quantized even at maximum bleed.
 - **Jitter creates the hand-dyed look**: The LFSR displacement is Ikat's signature effect. Without jitter, the quantized columns look mechanical and digital. With moderate jitter, they look like hand-dyed yarn.
 - **Double ikat is computationally cheap but visually dramatic**: Enabling the double ikat toggle re-applies the same quantization mask on the perpendicular axis, creating a woven grid from what was previously a simple stripe pattern.
 - **Feedback loops**: Routing the output back to the input creates recursive column quantization — each pass further reduces the tonal palette, simulating the visual effect of over-dyeing on already-dyed fabric.
@@ -329,13 +358,11 @@ These exercises progress from simple column striping to full textile simulation,
 | **Bleed** | The soft transition zone at column boundaries where chroma fades toward neutral, simulating dye seeping under resist ties. |
 | **Column Quantization** | Dividing the video frame into fixed-width vertical or horizontal stripes, within which pixel values are processed as a group. |
 | **Double Ikat** | A textile technique (and this program's mode) where both warp and weft threads are pre-dyed, creating patterns on two axes simultaneously. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Ikat** | A Malay-Indonesian dyeing technique where yarn is bound with resist material before dyeing, creating patterns with characteristically soft edges. |
-| **Interpolator** | A linear crossfade module that blends between the dry (unprocessed) and wet (processed) signal paths based on the Mix fader position. |
 | **LFSR** | Linear-Feedback Shift Register; a shift register whose input is a linear function of its previous state, producing a pseudo-random sequence used for jitter generation. |
 | **LUT** | Look-Up Table; FPGA logic resources used for combinational logic. Ikat uses approximately 700 LUTs. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Resist** | A material (wax, string, rubber) that prevents dye from reaching covered portions of yarn, creating the pattern boundaries in ikat textiles. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

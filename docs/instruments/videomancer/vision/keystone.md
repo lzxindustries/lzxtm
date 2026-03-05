@@ -68,6 +68,14 @@ An internal oscillator can animate either the skew or perspective parameter auto
 
 ---
 
+## Quick Start
+
+1. **Start at center**: Both Skew and Perspctv have their neutral position at center. The image is undistorted only when both are at 50%.
+2. **VP Y is powerful**: Moving the vanishing point while perspective is active dramatically reshapes the distortion. Try VP Y at 0% for "looking down at the floor" and 100% for "looking up at a ceiling."
+3. **Smear vs Black**: Black border creates clean mattes suitable for compositing. Smear border creates abstract edge-stretch effects useful for visual texture.
+
+---
+
 ## Background
 
 ### Perspective Projection in Two Dimensions
@@ -94,6 +102,8 @@ Automatic parameter animation is a staple of analog and digital video synthesize
 ---
 
 ## Signal Flow
+
+Y / U / V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -136,7 +146,7 @@ The animation oscillator runs independently, advancing its phase accumulator at 
 | Default | 0% |
 | Suffix | % |
 
-Sets the base horizontal skew angle. At center position the image is undistorted. Turning clockwise tilts the top of the image to the right and the bottom to the left, creating a right-leaning parallelogram. Turning counter-clockwise reverses the lean. The skew displacement is proportional to vertical distance from the image center, so extreme settings push the top and bottom edges well outside the frame while the center line remains stationary.
+At center position the image is undistorted. Turning clockwise tilts the top of the image to the right and the bottom to the left, creating a right-leaning parallelogram. Turning counter-clockwise reverses the lean. The skew displacement is proportional to vertical distance from the image center, so extreme settings push the top and bottom edges well outside the frame while the center line remains stationary. Internally, sets the base horizontal skew angle.
 
 ---
 
@@ -147,7 +157,7 @@ Sets the base horizontal skew angle. At center position the image is undistorted
 | Default | 0% |
 | Suffix | % |
 
-Sets the base perspective convergence amount. At center position there is no foreshortening. Turning clockwise compresses the top of the image and stretches the bottom, creating a trapezoid that narrows toward the top. Counter-clockwise reverses the convergence direction. The vanishing point — where the trapezoid would converge to zero width — is set by the VP Y knob.
+At center position there is no foreshortening. Turning clockwise compresses the top of the image and stretches the bottom, creating a trapezoid that narrows toward the top. Counter-clockwise reverses the convergence direction. The vanishing point — where the trapezoid would converge to zero width — is set by the VP Y knob. Internally, sets the base perspective convergence amount.
 
 ---
 
@@ -158,7 +168,7 @@ Sets the base perspective convergence amount. At center position there is no for
 | Default | 0% |
 | Suffix | % |
 
-Controls the rate of automatic animation oscillation. At minimum the oscillator is effectively frozen. As you increase the value, the animation cycles faster — the skew or perspective parameter rocks back and forth at an increasing tempo. The oscillator advances its phase accumulator once per vertical sync, so the animation rate is tied to the frame rate. Maximum speed produces rapid oscillation.
+At minimum the oscillator is effectively frozen. As you increase the value, the animation cycles faster — the skew or perspective parameter rocks back and forth at an increasing tempo. The oscillator advances its phase accumulator once per vertical sync, so the animation rate is tied to the frame rate. Maximum speed produces rapid oscillation. Internally, controls the rate of automatic animation oscillation.
 
 ---
 
@@ -220,6 +230,21 @@ The five toggle switches configure the animation system behavior and the border 
 
 Controls the dry/wet crossfade between the original input and the geometrically transformed output. At 0% the output is entirely dry (original). At 100% the output is entirely wet (transformed). Intermediate values blend the two, which creates a ghostly double-exposure effect where the original and skewed images are overlaid. This is more useful as a transition or compositing tool than as a permanent setting.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Keystone processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -241,7 +266,7 @@ These exercises progress from simple skew to animated compound transforms, build
 *Parallelogram Tilt — simulated result across source images.*
 **Source**: A camera feed aimed at a rectangular subject — bookshelf, window, or grid pattern.
 
-**Objective**: Learn how skew creates horizontal shear and how the border mode affects the result.
+**What You'll Create**: Learn how skew creates horizontal shear and how the border mode affects the result.
 
 1. **Center skew**: Confirm the image is undistorted at center (default).
 2. **Right lean**: Turn Skew clockwise to about 75%. The image tilts into a right-leaning parallelogram. Note the black triangular regions at the corners.
@@ -268,7 +293,7 @@ These exercises progress from simple skew to animated compound transforms, build
 *Vanishing Point Perspective — simulated result across source images.*
 **Source**: Footage with strong horizontal lines — architecture, hallways, roads.
 
-**Objective**: Explore perspective convergence and vanishing point positioning.
+**What You'll Create**: Explore perspective convergence and vanishing point positioning.
 
 1. **Reset skew**: Return Skew to center (0%).
 2. **Converge top**: Turn Perspctv clockwise to about 70%. The image narrows at the top and widens at the bottom — the floor recedes.
@@ -295,7 +320,7 @@ These exercises progress from simple skew to animated compound transforms, build
 *Animated Rocking — simulated result across source images.*
 **Source**: Any video feed — the animation works with any content.
 
-**Objective**: Configure automatic perspective animation with different wave shapes.
+**What You'll Create**: Configure automatic perspective animation with different wave shapes.
 
 1. **Set perspective**: Perspctv to center (0%), Skew to center (0%).
 2. **Enable animation**: Toggle Animate to Auto.
@@ -312,9 +337,6 @@ These exercises progress from simple skew to animated compound transforms, build
 
 ## Tips
 
-- **Start at center**: Both Skew and Perspctv have their neutral position at center. The image is undistorted only when both are at 50%.
-- **VP Y is powerful**: Moving the vanishing point while perspective is active dramatically reshapes the distortion. Try VP Y at 0% for "looking down at the floor" and 100% for "looking up at a ceiling."
-- **Smear vs Black**: Black border creates clean mattes suitable for compositing. Smear border creates abstract edge-stretch effects useful for visual texture.
 - **Animate one at a time**: When learning, set only one depth control above zero to isolate skew animation from perspective animation before combining them.
 - **Mix for compositing**: Setting Mix to about 50% creates double-exposure overlays of the distorted and undistorted images, useful for disorientation or dream-sequence effects.
 - **Feedback loops**: Routing the output back to the input creates recursive geometric distortion — the parallelogram or trapezoid is applied to itself each frame, producing increasingly extreme warping.
@@ -326,18 +348,17 @@ These exercises progress from simple skew to animated compound transforms, build
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **DDA** | Digital Differential Analyzer; an incremental algorithm for stepping through coordinates at a variable sampling rate. |
 | **Foreshortening** | The apparent compression of an object's dimension when viewed at an angle; perspective convergence. |
 | **Line Buffer** | A single-scanline memory that stores one row of pixel data for non-sequential readout. |
 | **LUT** | Look-Up Table; a pre-computed array of values indexed by an input to avoid runtime calculation (used here for sine wave). |
 | **Parallelogram** | A quadrilateral with two pairs of parallel sides; the result of a purely-shear (skew) transform applied to a rectangle. |
 | **Ping-Pong** | A dual-buffer scheme where one buffer is written while the other is read, alternating each scanline. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Shear** | A geometric transformation that displaces each point by an amount proportional to its distance from a reference axis. |
 | **Trapezoid** | A quadrilateral with one pair of parallel sides; the result of a perspective distortion applied to a rectangle. |
 | **Vanishing Point** | The point in a perspective projection where parallel lines appear to converge; configured by the VP Y control. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

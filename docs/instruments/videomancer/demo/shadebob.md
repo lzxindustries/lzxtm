@@ -35,6 +35,14 @@ Videomancer's implementation uses a 64×64 framebuffer with 4-bit-per-pixel inde
 
 ---
 
+## Quick Start
+
+1. **Balance Decay and Speed**: The trail length is the ratio of blob speed to decay rate. Fast speed with slow decay creates long sweeping trails; slow speed with fast decay creates short, crisp stamps.
+2. **Dual Bob for symmetry**: Enable Dual Bob to double the visual complexity without changing the trajectory — the mirrored second blob creates symmetric patterns automatically.
+3. **Diamond for geometry**: Diamond stamps create sharper, more angular trail patterns than circles. Use them for crystalline or pixelated aesthetics.
+
+---
+
 ## Background
 
 ### Amiga Demoscene Shade Blobs
@@ -202,6 +210,10 @@ The five toggles configure blob rendering and trajectory. Dual Bob adds a second
 
 Mix crossfades between the dry input and the synthesised shadebob output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values blend the blob trails over the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -212,7 +224,7 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 <img src={shadebob_exercise1_result} alt="Single Slow Trail result"/>
 *Single Slow Trail — simulated result across source images.*
-**Objective**: Study the core additive blending and decay mechanics with a single slow-moving blob.
+**What You'll Create**: Study the core additive blending and decay mechanics with a single slow-moving blob.
 
 1. Disable Dual Bob.
 2. Set Shape to Circle.
@@ -233,7 +245,7 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 <img src={shadebob_exercise2_result} alt="Dual Diamond Spirograph result"/>
 *Dual Diamond Spirograph — simulated result across source images.*
-**Objective**: Create a complex dual-bob spirograph pattern using diamond stamps and a higher frequency ratio.
+**What You'll Create**: Create a complex dual-bob spirograph pattern using diamond stamps and a higher frequency ratio.
 
 1. Enable Dual Bob.
 2. Set Shape to Diamond.
@@ -254,7 +266,7 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 <img src={shadebob_exercise3_result} alt="Video-Modulated Plasma result"/>
 *Video-Modulated Plasma — simulated result across source images.*
-**Objective**: Layer the dual-blob effect over live video as a performance-ready composite.
+**What You'll Create**: Layer the dual-blob effect over live video as a performance-ready composite.
 
 1. Continue from Exercise 2 with Dual Bob and Diamond.
 2. Enable Mod Video.
@@ -272,9 +284,6 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 ## Tips
 
-- **Balance Decay and Speed**: The trail length is the ratio of blob speed to decay rate. Fast speed with slow decay creates long sweeping trails; slow speed with fast decay creates short, crisp stamps.
-- **Dual Bob for symmetry**: Enable Dual Bob to double the visual complexity without changing the trajectory — the mirrored second blob creates symmetric patterns automatically.
-- **Diamond for geometry**: Diamond stamps create sharper, more angular trail patterns than circles. Use them for crystalline or pixelated aesthetics.
 - **Hue Speed as colour animation**: Animate Hue Speed for trails that shift colour over time, independent of the spatial pattern. Slow cycling produces gradual palette shifts; fast cycling creates rainbow strobe effects.
 - **Large Bob Size for plasma**: A very large blob with moderate speed and low decay creates a plasma-like glow that fills the screen with soft colour fields.
 - **Reset for composition**: Use Reset liberally during performance to clear accumulated clutter and start fresh compositions on demand.

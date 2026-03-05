@@ -68,6 +68,14 @@ The entire pipeline is purely combinational and register-based — zero BRAM. A 
 
 ---
 
+## Quick Start
+
+1. **Sensitiv and Alert Hue combine**: Both contribute to the effective threshold. Use Sensitiv for coarse adjustment and Alert Hue for fine-tuning against a specific scene's noise floor.
+2. **Noise floor prevents chatter**: Increase BG Alpha when the motion mask flickers on flat or compressed source material. A small amount of threshold dithering eliminates binary oscillation.
+3. **Persistence creates trails**: Enable Freeze BG to add comet-like decay behind moving objects. The trail length is fixed at −4 counts/clk, so brighter highlights produce longer trails.
+
+---
+
 ## Background
 
 ### IIR Background Modelling
@@ -94,6 +102,8 @@ Pixels classified as non-motion are suppressed with a two-stage treatment. First
 ---
 
 ## Signal Flow
+
+Input Register → IIR Difference → Classify → Composite Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -205,8 +215,8 @@ Maps to `registers_in(5)`, the LFSR noise-floor amplitude. The noise value is fo
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Outline | Fill |
-| **8 — Channel** | Luma | Chroma |
+| **7 — Mode** | Outline | Heat |
+| **8 — Channel** | Luma | Diff |
 | **9 — Invert** | Off | On |
 | **10 — Freeze BG** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -225,6 +235,21 @@ Toggles 7–10 configure independent binary processing options. Toggle 7 selects
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original delayed signal and the composite output. At 100% (fully wet), the motion overlay replaces the original. At 0% (fully dry), the original signal passes through unaltered. Intermediate values blend the two, creating a subtle motion-tinted overlay on top of the source — useful for monitoring applications where you want to see the original scene with motion indicated transparently.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sentinel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -247,7 +272,7 @@ These exercises progress from basic motion detection through false-colour tuning
 *Basic Motion Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a slow-moving subject against a mostly static background.
 
-**Objective**: Learn how the threshold and adaptation rate interact to isolate motion.
+**What You'll Create**: Learn how the threshold and adaptation rate interact to isolate motion.
 
 1. Start with all pots at their defaults and all toggles off.
 2. Slowly lower Sensitiv (Pot 1) from 50% toward 0%. Watch as more pixels cross the motion threshold and light up green.
@@ -274,7 +299,7 @@ These exercises progress from basic motion detection through false-colour tuning
 *False-Colour Tuning — simulated result across source images.*
 **Source**: Footage with multiple moving elements at different speeds — a busy street, dancers, or waving hands.
 
-**Objective**: Explore highlight colour modes and background dimming to create a surveillance-camera aesthetic.
+**What You'll Create**: Explore highlight colour modes and background dimming to create a surveillance-camera aesthetic.
 
 1. Use settings from Exercise 1 as a baseline.
 2. Toggle Mode (Switch 7) to switch between green and red/white highlights. Note how the colour palette changes the emotional tone of the image.
@@ -301,7 +326,7 @@ These exercises progress from basic motion detection through false-colour tuning
 *Persistence Trails — simulated result across source images.*
 **Source**: A single moving object against a clean background — a swinging pendulum, a hand, or a slow pan across a contrasting edge.
 
-**Objective**: Use persistence mode to create motion trails and explore the wet/dry mix for transparent overlay.
+**What You'll Create**: Use persistence mode to create motion trails and explore the wet/dry mix for transparent overlay.
 
 1. Enable Freeze BG (Toggle 10) to activate persistence.
 2. Set Threshold (Pot 3) high (~80%) so that motion highlights start bright.
@@ -317,9 +342,6 @@ These exercises progress from basic motion detection through false-colour tuning
 
 ## Tips
 
-- **Sensitiv and Alert Hue combine**: Both contribute to the effective threshold. Use Sensitiv for coarse adjustment and Alert Hue for fine-tuning against a specific scene's noise floor.
-- **Noise floor prevents chatter**: Increase BG Alpha when the motion mask flickers on flat or compressed source material. A small amount of threshold dithering eliminates binary oscillation.
-- **Persistence creates trails**: Enable Freeze BG to add comet-like decay behind moving objects. The trail length is fixed at −4 counts/clk, so brighter highlights produce longer trails.
 - **Motion-only for keying**: Switch Channel to Chroma (motion-only) to output pure motion highlights against black — perfect for downstream compositing or keying in the signal chain.
 - **Invert for negative-space compositions**: Switch 9 reveals the *static* world and hides the moving parts, creating an eerie inverted surveillance view.
 - **Mix for transparent overlay**: Lower the Mix fader to blend the motion overlay transparently on top of the original signal, creating a heads-up-display monitoring effect.
@@ -332,7 +354,6 @@ These exercises progress from basic motion detection through false-colour tuning
 | Term | Definition |
 |------|------------|
 | **Background Subtraction** | An image analysis technique that separates foreground (motion) from background (static) by maintaining and comparing against a reference model. |
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric. Sentinel uses zero BRAM; all state is register-based. |
 | **Chroma** | The colour components (U, V) of a YUV signal, representing hue and saturation. |
 | **Desaturation** | Reducing chrominance toward neutral (U=512, V=512), making the image appear greyscale. |
 | **False Colour** | A visualisation technique that maps data values to an arbitrary colour palette for enhanced visibility. |
@@ -340,8 +361,8 @@ These exercises progress from basic motion detection through false-colour tuning
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for noise-floor dithering. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Persistence** | Temporal smearing created by decaying a highlight value gradually rather than snapping it off. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Threshold** | The minimum absolute difference required to classify a pixel as "motion." |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

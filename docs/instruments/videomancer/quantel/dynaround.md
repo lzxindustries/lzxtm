@@ -68,6 +68,14 @@ The Y and UV channels can be reduced independently from 10 bits down to 1 bit, w
 
 ---
 
+## Quick Start
+
+1. **Dynamic Round is the default for a reason**: Mode 000 produces the most perceptually transparent bit-depth reduction. Start here and switch to other modes only when you want visible dither texture.
+2. **Ordered Bayer for retro aesthetics**: The 4×4 stipple pattern at 3–4 bits closely resembles early computer graphics and newspaper halftone printing.
+3. **Error Diffusion for organic halftones**: At 1-bit depth, error diffusion produces halftone-like textures reminiscent of early Macintosh screen graphics or laser-printed dithering.
+
+---
+
 ## Background
 
 ### Dynamic Rounding: The Quantel Innovation
@@ -147,20 +155,20 @@ The three LFSRs operate independently with different initial seeds (0xACE1, 0xBE
 #### Knob 1 — Y Depth
 | Property | Value |
 |----------|-------|
-| Range | 1 bit – 10 bit |
-| Default | 6 bit |
-| Suffix |  bit |
+| Range | 1bit – 10bit |
+| Default | 6bit |
+| Suffix | bit |
 
-Controls the luminance channel bit depth, ranging from 1-bit (two levels: black and white) through 10-bit (full resolution, 1024 levels). At low bit depths, the Y channel collapses into stark bands with hard contour edges — the severity of these contours depends on which dither mode is active. Dynamic Round smooths them probabilistically; Truncate leaves them razor-sharp; Ordered Bayer replaces them with stipple patterns. This control has the most dramatic visual impact because luminance carries the majority of perceived image detail.
+At low bit depths, the Y channel collapses into stark bands with hard contour edges — the severity of these contours depends on which dither mode is active. Dynamic Round smooths them probabilistically; Truncate leaves them razor-sharp; Ordered Bayer replaces them with stipple patterns. This control has the most dramatic visual impact because luminance carries the majority of perceived image detail. Internally, controls the luminance channel bit depth, ranging from 1-bit (two levels: black and white) through 10-bit (full resolution, 1024 levels).
 
 ---
 
 #### Knob 2 — UV Depth
 | Property | Value |
 |----------|-------|
-| Range | 1 bit – 10 bit |
-| Default | 6 bit |
-| Suffix |  bit |
+| Range | 1bit – 10bit |
+| Default | 6bit |
+| Suffix | bit |
 
 Controls the chrominance bit depth for both U and V channels simultaneously. Reducing chroma depth independently of luma creates a distinctive painterly look — smooth brightness gradients paired with coarsely quantized color that snaps between hues. When UV Lock is engaged, this control is overridden and both channels follow the Y Depth setting. The independent mode is most useful for artistic effects where you want to selectively degrade color fidelity while preserving luminance structure.
 
@@ -173,7 +181,7 @@ Controls the chrominance bit depth for both U and V channels simultaneously. Red
 | Default | 50% |
 | Suffix | % |
 
-Scales the dither amplitude for Ordered Bayer and Blue Noise modes. At 0%, these modes add no threshold offset, behaving identically to Truncate. As intensity increases, the threshold signal grows stronger, pushing more pixels across quantization boundaries. At extreme intensity, the dither pattern becomes visible as texture even at high bit depths. This control has no effect on Dynamic Round (which derives its threshold internally), Truncate (which uses no threshold), Temporal (which uses field parity), or Error Diffusion (which uses error carry).
+At 0%, these modes add no threshold offset, behaving identically to Truncate. As intensity increases, the threshold signal grows stronger, pushing more pixels across quantization boundaries. At extreme intensity, the dither pattern becomes visible as texture even at high bit depths. This control has no effect on Dynamic Round (which derives its threshold internally), Truncate (which uses no threshold), Temporal (which uses field parity), or Error Diffusion (which uses error carry). Internally, scales the dither amplitude for Ordered Bayer and Blue Noise modes.
 
 ---
 
@@ -235,6 +243,10 @@ Toggles 7, 8, and 9 form a 3-bit binary selector that chooses one of six ditheri
 
 Wet/dry crossfade between the delayed original signal and the fully processed signal. At 0% (fader down), the output is entirely dry — the original signal passes through unchanged. At 100% (fader up), the output is entirely wet — the full dithered and quantized result. Intermediate positions blend between the two using three `interpolator_u` instances (one per channel). This is particularly effective for dialing in subtle dither textures: process aggressively with low bit depth, then blend back toward the original to taste.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -256,7 +268,7 @@ These exercises explore each dithering strategy and its interaction with bit dep
 *Dynamic Round — The Quantel Technique — simulated result across source images.*
 **Source**: A color gradient test pattern or footage with smooth sky/skin tones that reveal quantization artifacts.
 
-**Objective**: Understand how Dynamic Rounding uses discarded bits for probabilistic rounding, and compare its visual quality against simple truncation at several bit depths.
+**What You'll Create**: Understand how Dynamic Rounding uses discarded bits for probabilistic rounding, and compare its visual quality against simple truncation at several bit depths.
 
 1. **Baseline truncation**: Set all toggles off (mode 000 = Dynamic Round). Set Y Depth to 4 bits. Note the smooth contouring.
 2. **Switch to truncate**: Turn on Dither A only (mode 001 = Truncate). At 4 bits, hard posterization bands become visible.
@@ -283,7 +295,7 @@ These exercises explore each dithering strategy and its interaction with bit dep
 *Ordered vs. Blue Noise Dither — simulated result across source images.*
 **Source**: A photographic image with gradual tonal transitions — portraits, landscapes, or test gradients.
 
-**Objective**: Compare the visual texture of Bayer ordered dithering against LFSR blue noise dithering, and explore how Dith Intns modulates each.
+**What You'll Create**: Compare the visual texture of Bayer ordered dithering against LFSR blue noise dithering, and explore how Dith Intns modulates each.
 
 1. **Ordered Bayer**: Set Dither B on, all others off (mode 010). Set Y Depth to 3 bits, UV Lock on. A regular stipple grid appears in the gradient regions.
 2. **Sweep intensity**: Turn Dith Intns from 0% to 100%. At zero, the mode behaves like truncation. As intensity rises, the Bayer pattern breaks up the quantization contours with increasing visibility.
@@ -310,7 +322,7 @@ These exercises explore each dithering strategy and its interaction with bit dep
 *Error Diffusion and Temporal Dither — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or text patterns that expose error propagation and temporal flicker.
 
-**Objective**: Explore the two modes that use context beyond the current pixel: error diffusion (spatial context) and temporal dither (temporal context).
+**What You'll Create**: Explore the two modes that use context beyond the current pixel: error diffusion (spatial context) and temporal dither (temporal context).
 
 1. **Temporal dither**: Set Dither C on, all others off (mode 100). Set Y Depth to 2 bits, UV Lock on. On interlaced or progressive-scan displays, the alternating round directions create an inter-field shimmer that perceptually increases the apparent bit depth.
 2. **Error diffusion**: Switch to mode 101 (Dither A on, Dither C on). The banding dissolves into a directional texture — horizontal streaking as error propagates left to right along each scanline.
@@ -325,9 +337,6 @@ These exercises explore each dithering strategy and its interaction with bit dep
 
 ## Tips
 
-- **Dynamic Round is the default for a reason**: Mode 000 produces the most perceptually transparent bit-depth reduction. Start here and switch to other modes only when you want visible dither texture.
-- **Ordered Bayer for retro aesthetics**: The 4×4 stipple pattern at 3–4 bits closely resembles early computer graphics and newspaper halftone printing.
-- **Error Diffusion for organic halftones**: At 1-bit depth, error diffusion produces halftone-like textures reminiscent of early Macintosh screen graphics or laser-printed dithering.
 - **Contrast is your gain stage**: Pre-dither contrast expansion is the most powerful way to control how aggressive the quantization appears — more effective than bit depth alone.
 - **UV Lock simplifies exploration**: Lock UV to Y when learning the modes, then unlock for independent channel experiments.
 - **Grain adds analog character**: A small amount of post-dither grain (10–20%) softens digital quantization edges without undoing the dither mode's texture.
@@ -349,10 +358,10 @@ These exercises explore each dithering strategy and its interaction with bit dep
 | **Floyd-Steinberg** | A 1976 error diffusion algorithm distributing quantization error to four neighboring pixels with fixed fractional weights. |
 | **Galois LFSR** | A Linear Feedback Shift Register using XOR taps on the output bit; produces a maximal-length pseudo-random sequence. |
 | **Grain** | Additive pseudo-random noise overlaid on the signal to simulate analog film texture. |
-| **Interpolator** | A hardware module performing linear interpolation (crossfade) between two input signals based on a mix parameter. |
 | **Posterization** | Visible banding artifacts caused by reducing the number of quantization levels in an image. |
 | **Quantization** | The process of mapping a continuous or fine-grained signal to a smaller set of discrete levels. |
 | **Truncation** | Discarding least-significant bits without rounding, always biasing toward zero. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V); used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

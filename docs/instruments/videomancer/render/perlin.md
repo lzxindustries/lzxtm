@@ -35,6 +35,14 @@ A DDS (direct digital synthesis) scroll engine animates the noise field by addin
 
 ---
 
+## Quick Start
+
+1. **Scale is the most important control**: Cell size sets the fundamental character of the noise — 8px cells look like static grain, 128px cells look like clouds or lava. Start here when designing a texture.
+2. **Absolute mode for organic textures**: Folding the noise at zero creates ridge patterns that resemble marble veins, lightning, or cracked earth. Combine with the Terrain palette for topographic effects.
+3. **Fire palette needs upward scroll**: The Fire palette looks most flame-like when scrolling upward (Direction ~90%) at moderate speed. Add domain warp for turbulent flickering.
+
+---
+
 ## Background
 
 ### Gradient Noise
@@ -61,6 +69,8 @@ Four palettes map the noise value through different YUV color schemes. **Marble*
 ---
 
 ## Signal Flow
+
+Processing Pipeline → Mix: Interpolator → Sync Delay → Bypass
 
 ```
 Parameter Registers
@@ -131,7 +141,7 @@ The palette stage maps the 8-bit noise index (plus per-frame cycling offset) thr
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the scroll animation speed via a DDS phase accumulator. At zero, the noise field is static. As the value increases, the noise scrolls faster in the direction selected by the Direction knob. The raw pot value is used directly as the 16-bit increment, so the scroll rate is linearly proportional to the knob position. At maximum, the noise rushes past rapidly, creating a streaming fluid-like texture.
+At zero, the noise field is static. As the value increases, the noise scrolls faster in the direction selected by the Direction knob. The raw pot value is used directly as the 16-bit increment, so the scroll rate is linearly proportional to the knob position. At maximum, the noise rushes past rapidly, creating a streaming fluid-like texture. Internally, controls the scroll animation speed via a DDS phase accumulator.
 
 ---
 
@@ -193,7 +203,7 @@ Controls the speed of palette color cycling. Each frame, the palette offset is i
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Marble | Cloud |
+| **7 — Palette** | Marble | Fire |
 | **8 — Video Mod** | Off | On |
 | **9 — Absolute** | Signed | Abs |
 | **10 — Domain Warp** | Off | On |
@@ -214,6 +224,21 @@ The five toggles control palette selection (2-bit), video modulation, absolute/s
 
 Wet/dry crossfade between the delayed input video (dry) and the noise-generated output (wet). At 0%, only the input passes through. At 100%, the full noise texture is output. Intermediate values superimpose the noise over the video with adjustable opacity, useful for creating textured overlays.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Perlin processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -224,7 +249,7 @@ These exercises explore the noise generator's controls from basic static texture
 
 <img src={perlin_exercise1_result} alt="Classic Marble Texture result"/>
 *Classic Marble Texture — simulated result across source images.*
-**Objective**: Generate a static grayscale Perlin noise texture resembling polished marble, exploring scale and contrast.
+**What You'll Create**: Generate a static grayscale Perlin noise texture resembling polished marble, exploring scale and contrast.
 
 1. **Default state**: Confirm Palette is Marble, Scroll Speed at 0%, and Absolute mode is Signed. A smooth grayscale noise pattern fills the screen.
 2. **Scale sweep**: Rotate Scale through all positions. Watch the noise transition from fine grain (8px cells) through medium texture (32px) to broad smooth gradients (128px).
@@ -240,7 +265,7 @@ These exercises explore the noise generator's controls from basic static texture
 
 <img src={perlin_exercise2_result} alt="Flowing Fire result"/>
 *Flowing Fire — simulated result across source images.*
-**Objective**: Create an animated fire texture using the Fire palette, upward scrolling, and absolute mode for flickering flame shapes.
+**What You'll Create**: Create an animated fire texture using the Fire palette, upward scrolling, and absolute mode for flickering flame shapes.
 
 1. **Fire palette**: Select the Fire palette (position 4 on the Palette toggle).
 2. **Upward scroll**: Set Direction to about 90% (upward). Increase Scroll Speed to about 40%. The fire palette scrolls upward.
@@ -258,7 +283,7 @@ These exercises explore the noise generator's controls from basic static texture
 
 <img src={perlin_exercise3_result} alt="Video-Modulated Cloud Overlay result"/>
 *Video-Modulated Cloud Overlay — simulated result across source images.*
-**Objective**: Superimpose cloud-palette noise over a live video source using video modulation and partial mix.
+**What You'll Create**: Superimpose cloud-palette noise over a live video source using video modulation and partial mix.
 
 1. **Cloud palette**: Select the Cloud palette (position 2).
 2. **Large scale**: Set Scale to 7 (64px cells) for broad, cloud-like formations.
@@ -275,9 +300,6 @@ These exercises explore the noise generator's controls from basic static texture
 
 ## Tips
 
-- **Scale is the most important control**: Cell size sets the fundamental character of the noise — 8px cells look like static grain, 128px cells look like clouds or lava. Start here when designing a texture.
-- **Absolute mode for organic textures**: Folding the noise at zero creates ridge patterns that resemble marble veins, lightning, or cracked earth. Combine with the Terrain palette for topographic effects.
-- **Fire palette needs upward scroll**: The Fire palette looks most flame-like when scrolling upward (Direction ~90%) at moderate speed. Add domain warp for turbulent flickering.
 - **Domain warp accumulates**: The warp feedback doesn't decay between frames, so the distortion grows over time. Toggle Domain Warp off and back on to reset the accumulated distortion.
 - **Video Mod creates content-dependent noise**: The noise intensity follows the input video's brightness, making luminous textures that respond to live camera feeds.
 - **Palette bit overlap is documented**: Selecting Cloud or Fire palette also enables Video Mod due to shared bit 1. If you want pure noise without video modulation, use Marble or Terrain.
@@ -294,14 +316,13 @@ These exercises explore the noise generator's controls from basic static texture
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a fixed rate each clock cycle. |
 | **Domain Warp** | Feeding the output of a noise function back into its coordinate inputs, creating self-referential distortion that produces turbulent, swirling patterns. |
 | **fBm** | Fractional Brownian motion; summing multiple octaves of noise at increasing frequency and decreasing amplitude to create fractal textures with detail at multiple scales. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gradient Noise** | A noise algorithm that assigns random gradient vectors to grid vertices and computes dot products with displacement vectors, producing smoother results than value noise. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing pseudo-random sequences. |
 | **Octave** | In noise synthesis, one layer of noise at a specific frequency. Multiple octaves are summed to create fractal detail. |
 | **Palette** | A lookup table mapping noise index values to YUV color triplets. |
 | **Perlin Noise** | The gradient noise algorithm invented by Ken Perlin in 1983 for procedural texturing in computer graphics. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Smoothstep** | An S-shaped interpolation function that has zero first derivative at both endpoints, eliminating visible grid artifacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

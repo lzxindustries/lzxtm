@@ -68,6 +68,14 @@ The result is a temporal scroll effect that builds an image progressively from l
 
 ---
 
+## Quick Start
+
+1. **Speed × Line Height = scroll velocity**: These two controls are multiplicative. For ultra-slow reveals, combine minimum line height with maximum speed delay. For rapid scanning, use fast speed with large line height.
+2. **Ink darkness is stepped, not smooth**: The four attenuation levels (1×, ½×, ¼×, ⅛×) create visible brightness bands in the composed region. Use this intentionally by setting ink to a value near a threshold boundary for a specific target attenuation.
+3. **Leading creates rhythm**: Even a small amount of leading transforms the composition from a continuous scroll into a stacked-strip structure with visual breathing room between captured bands.
+
+---
+
 ## Background
 
 ### Hot-Metal Typesetting
@@ -94,6 +102,8 @@ In typography, *leading* (rhymes with "heading") is the vertical space between l
 ---
 
 ## Signal Flow
+
+Clock 1: Input Register → Cursor Management → Clock 2: Region → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -220,8 +230,8 @@ Controls the wet/dry mix amount for the final interpolator stage. Despite the TO
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Roman | Gothic |
-| **8 — Paper** | White | News |
+| **7 — Style** | Roman | Script |
+| **8 — Paper** | White | Blue |
 | **9 — Feed** | Down | Up |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -240,6 +250,10 @@ Switches 7–10 configure four aspects of the scroll mechanism. Despite the TOML
 | Suffix | % |
 
 Listed in the TOML as "Mix" but the fader register (registers_in(7)) is never read by the VHDL implementation. The wet/dry mix function is instead performed by Knob 6 (registers_in(5)), which feeds the interpolator's blend factor. Moving this fader has no effect on the output.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -262,7 +276,7 @@ These exercises progress from a basic slow scroll through speed and direction va
 *Slow Reveal — simulated result across source images.*
 **Source**: A static scene with rich detail — a bookshelf, a garden, or a cityscape.
 
-**Objective**: Experience the basic line-by-line composition at slow speed, observing how the cursor captures and freezes content.
+**What You'll Create**: Experience the basic line-by-line composition at slow speed, observing how the cursor captures and freezes content.
 
 1. **Set slow speed**: Turn Comp Spd to ~80% for a very slow cursor advance.
 2. **Medium line height**: Set Line H to ~25% for fine capture strips.
@@ -294,7 +308,7 @@ These exercises progress from a basic slow scroll through speed and direction va
 *Ink Fade and Leading — simulated result across source images.*
 **Source**: A moving subject — a person walking, traffic, or flowing water.
 
-**Objective**: Explore how ink darkness and leading create temporal layering and visual rhythm in the composed image.
+**What You'll Create**: Explore how ink darkness and leading create temporal layering and visual rhythm in the composed image.
 
 1. **Start from Exercise 1 settings** but with faster speed: Comp Spd ~40%.
 2. **Moderate line height**: Line H ~30%.
@@ -323,7 +337,7 @@ These exercises progress from a basic slow scroll through speed and direction va
 *Rapid Composition Loop — simulated result across source images.*
 **Source**: Fast-moving footage — dance performance, sports, or rapid camera movement.
 
-**Objective**: Use rapid scrolling with coarse line height to create abstract temporal smearing effects.
+**What You'll Create**: Use rapid scrolling with coarse line height to create abstract temporal smearing effects.
 
 1. **Maximum speed**: Set Comp Spd to 0% (1 frame per advance — fastest possible).
 2. **Large line height**: Set Line H to ~80% for thick 50+ line strips.
@@ -341,9 +355,6 @@ These exercises progress from a basic slow scroll through speed and direction va
 
 ## Tips
 
-- **Speed × Line Height = scroll velocity**: These two controls are multiplicative. For ultra-slow reveals, combine minimum line height with maximum speed delay. For rapid scanning, use fast speed with large line height.
-- **Ink darkness is stepped, not smooth**: The four attenuation levels (1×, ½×, ¼×, ⅛×) create visible brightness bands in the composed region. Use this intentionally by setting ink to a value near a threshold boundary for a specific target attenuation.
-- **Leading creates rhythm**: Even a small amount of leading transforms the composition from a continuous scroll into a stacked-strip structure with visual breathing room between captured bands.
 - **Source passthrough for preview**: Enable Paper's second position to see live video below the cursor — useful for anticipating what the next captured line will contain.
 - **Wrap mode for live looping**: In continuous wrap mode, the program becomes a perpetual temporal scanner, endlessly cycling through the frame and replacing old captures with new ones. The ink darkening makes older captures fade before they're overwritten.
 - **Bypass is on Switch 10, not Switch 11**: The VHDL maps bypass to bit 3 (Switch 10 "Animate"), not bit 4 (Switch 11 "Bypass"). The TOML labels are misleading — trust the hardware behavior.
@@ -357,17 +368,14 @@ These exercises progress from a basic slow scroll through speed and direction va
 | Term | Definition |
 |------|------------|
 | **Bank swap** | Alternating between two memory banks so one can be written while the other is read, preventing read-write conflicts in the line buffer. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used here as a dual-bank video line buffer for capturing and replaying horizontal strips. |
 | **Cursor** | The active composition edge that marks where new video content is being captured into the line buffer. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic signals, used here for frame counting. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware that implements the video processing pipeline. |
 | **Galley** | In typesetting, a tray that holds composed lines of type; analogously, the region above the cursor where captured content is displayed. |
 | **Ink darkness** | Luminance attenuation applied to captured content, simulating the darkening of cast metal type as it ages. |
 | **Leading** | The vertical space between lines of composed text (or captured video strips), named for the lead spacer strips used in metal typesetting. |
 | **Linotype** | A hot-metal typesetting machine (1886) that cast entire lines of text as single metal slugs; the namesake and conceptual model for this program. |
-| **Pipeline** | A sequence of processing stages where each stage's output feeds the next on each clock cycle. |
-| **Proc amp** | Processing amplifier; a gain-and-offset video circuit used here within the interpolator stage for wet/dry mixing. |
 | **Scan line** | A single horizontal row of pixels in a video frame; the fundamental unit of capture in this program. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

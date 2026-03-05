@@ -68,6 +68,14 @@ Because the iCE40 FPGA has no line buffer, Squeeze does not perform true spatial
 
 ---
 
+## Quick Start
+
+1. **Classic PIP position**: Upper-right (Pos X ~80%, Pos Y ~20%) or lower-right (Pos X ~80%, Pos Y ~80%) are the broadcast standard positions for picture-in-picture.
+2. **Border makes the difference**: A thin white border (Border W ~10%, Border Br ~100%) is the most effective way to separate the inset from the background, especially in Dim Vid mode.
+3. **Drop shadow for depth**: Enable Shadow for a subtle 3D floating effect. It works best with Border also enabled and a dark background.
+
+---
+
 ## Background
 
 ### What Is a DVE Squeeze-Back?
@@ -94,6 +102,8 @@ The three interpolator_u instances at the end of the pipeline perform a per-chan
 ---
 
 ## Signal Flow
+
+Region Classification → Compose Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ The inset rectangle dimensions are derived from the Scale parameter by multiplyi
 | Default | 75% |
 | Suffix | % |
 
-Controls the size of the inset rectangle as a proportion of the full frame. At 100% (register 1023), the inset fills the entire frame and no border or background is visible. At 0% (register 0), the inset shrinks to zero size. The default value of 768 produces an inset roughly 75% of the frame dimensions — large enough to show detail but small enough that the border and background are clearly visible. The scaling is linear: doubling the register value doubles the inset dimensions. At very small values (below 10%), the inset becomes a tiny stamp where individual pixels of the source content are discernible.
+At 100% (register 1023), the inset fills the entire frame and no border or background is visible. At 0% (register 0), the inset shrinks to zero size. The default value of 768 produces an inset roughly 75% of the frame dimensions — large enough to show detail but small enough that the border and background are clearly visible. The scaling is linear: doubling the register value doubles the inset dimensions. At very small values (below 10%), the inset becomes a tiny stamp where individual pixels of the source content are discernible. Internally, controls the size of the inset rectangle as a proportion of the full frame.
 
 ---
 
@@ -178,7 +188,7 @@ Controls the size of the inset rectangle as a proportion of the full frame. At 1
 | Default | 50% |
 | Suffix | % |
 
-Controls the horizontal position of the inset within the frame. At 0%, the inset is flush against the left edge. At 100%, the inset is flush against the right edge. At 50% (register 512, the default), the inset is horizontally centered. The positioning is proportional to the available space, so the visual travel range depends on the Scale setting — a smaller inset has more room to move. Combined with Pos Y, this control allows the inset to be placed in any of the traditional broadcast PIP positions: upper-right, lower-left, center, or anywhere between.
+At 0%, the inset is flush against the left edge. At 100%, the inset is flush against the right edge. At 50% (register 512, the default), the inset is horizontally centered. The positioning is proportional to the available space, so the visual travel range depends on the Scale setting — a smaller inset has more room to move. Combined with Pos Y, this control allows the inset to be placed in any of the traditional broadcast PIP positions: upper-right, lower-left, center, or anywhere between. Internally, controls the horizontal position of the inset within the frame.
 
 ---
 
@@ -189,7 +199,7 @@ Controls the horizontal position of the inset within the frame. At 0%, the inset
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical position of the inset within the frame. At 0%, the inset is flush against the top edge. At 100%, the inset is flush against the bottom edge. At 50% (register 512, the default), the inset is vertically centered. This control works identically to Pos X but on the vertical axis. The classic broadcast convention places PIP windows in the upper-right or lower-right corner — approximately 80% on both axes.
+At 0%, the inset is flush against the top edge. At 100%, the inset is flush against the bottom edge. At 50% (register 512, the default), the inset is vertically centered. This control works identically to Pos X but on the vertical axis. The classic broadcast convention places PIP windows in the upper-right or lower-right corner — approximately 80% on both axes. Internally, controls the vertical position of the inset within the frame.
 
 ---
 
@@ -200,7 +210,7 @@ Controls the vertical position of the inset within the frame. At 0%, the inset i
 | Default | 13% |
 | Suffix | % |
 
-Controls the width of the bright border surrounding the inset rectangle. At 0%, no border is drawn (even if the Border toggle is enabled, zero width produces no visible border). At 100%, the border extends approximately 32 pixels outward from the inset edges. The border width is derived by right-shifting the register value by 5, producing a 0–32 pixel range. The border must be enabled via toggle 9 to be visible. The border is drawn as a solid ring at the brightness set by Border Br, with neutral (gray) chroma.
+At 0%, no border is drawn (even if the Border toggle is enabled, zero width produces no visible border). At 100%, the border extends approximately 32 pixels outward from the inset edges. The border width is derived by right-shifting the register value by 5, producing a 0–32 pixel range. The border must be enabled via toggle 9 to be visible. The border is drawn as a solid ring at the brightness set by Border Br, with neutral (gray) chroma. Internally, controls the width of the bright border surrounding the inset rectangle.
 
 ---
 
@@ -211,7 +221,7 @@ Controls the width of the bright border surrounding the inset rectangle. At 0%, 
 | Default | 100% |
 | Suffix | % |
 
-Controls the luminance of the border ring. At 0%, the border is black — visually invisible against a black background but still present as a region that blocks the background content. At 100%, the border is maximum white. The border colour is always neutral gray (U=512, V=512) regardless of this setting — only the brightness varies. A bright white border against a dark background is the classic broadcast PIP look. Lower values produce a subtler frame that separates the inset from the background without drawing attention to itself.
+At 0%, the border is black — visually invisible against a black background but still present as a region that blocks the background content. At 100%, the border is maximum white. The border colour is always neutral gray (U=512, V=512) regardless of this setting — only the brightness varies. A bright white border against a dark background is the classic broadcast PIP look. Lower values produce a subtler frame that separates the inset from the background without drawing attention to itself. Internally, controls the luminance of the border ring.
 
 ---
 
@@ -251,6 +261,10 @@ The five toggles control independent binary options. Aspect (toggle 7) is reserv
 
 Crossfades between the delayed input video (dry) and the composed PIP output (wet). At 0% (fader down), the output is the unprocessed input — no inset, border, or background is visible. At 100% (fader up), the output is the fully composed PIP with all region rendering active. Intermediate values produce a semi-transparent overlay where the inset and border appear ghosted over the original video. The crossfade operates independently on Y, U, and V channels via three interpolator_u instances.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -272,7 +286,7 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 *Centered Picture-in-Picture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied brightness.
 
-**Objective**: Learn how Scale, Pos X, and Pos Y interact to create a basic PIP window, and how the border provides visual framing.
+**What You'll Create**: Learn how Scale, Pos X, and Pos Y interact to create a basic PIP window, and how the border provides visual framing.
 
 1. **Default PIP**: With Scale at ~75%, Pos X at ~50%, and Pos Y at ~50%, observe the centered inset with a border.
 2. **Scale down**: Reduce Scale to ~30%. The inset shrinks, revealing more background.
@@ -300,7 +314,7 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 *Drop Shadow and Background Modes — simulated result across source images.*
 **Source**: Footage with clear foreground subjects and varied background colours.
 
-**Objective**: Explore the drop shadow and background mode interactions for broadcast-style composition.
+**What You'll Create**: Explore the drop shadow and background mode interactions for broadcast-style composition.
 
 1. **Enable shadow**: Toggle Shadow to On. A dark offset rectangle appears behind the border, creating a floating 3D effect.
 2. **Move inset**: Slide Pos X and Pos Y to various positions. Notice how the shadow is always offset down-right from the border.
@@ -328,7 +342,7 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 *Animated PIP Composition — simulated result across source images.*
 **Source**: Dynamic footage — sports, music, or fast-moving content.
 
-**Objective**: Combine all Squeeze features for a full broadcast-style multi-layer composition using the Mix fader.
+**What You'll Create**: Combine all Squeeze features for a full broadcast-style multi-layer composition using the Mix fader.
 
 1. **Set up PIP**: Scale ~40%, Pos X ~75%, Pos Y ~75% (lower-right corner).
 2. **Full framing**: Border On, Border W ~20%, Border Br ~100%, Shadow On.
@@ -345,9 +359,6 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 
 ## Tips
 
-- **Classic PIP position**: Upper-right (Pos X ~80%, Pos Y ~20%) or lower-right (Pos X ~80%, Pos Y ~80%) are the broadcast standard positions for picture-in-picture.
-- **Border makes the difference**: A thin white border (Border W ~10%, Border Br ~100%) is the most effective way to separate the inset from the background, especially in Dim Vid mode.
-- **Drop shadow for depth**: Enable Shadow for a subtle 3D floating effect. It works best with Border also enabled and a dark background.
 - **Dim Vid for context**: Bg Mode = Dim Vid keeps the main programme visible behind the PIP window. Keep Bg Level around 15–25% for the classic broadcast look.
 - **Mix for transitions**: Use the Mix fader to fade the PIP in and out smoothly. Sweep from 0% to 100% for a professional-looking PIP reveal.
 - **Scale for emphasis**: A larger inset (Scale ~70–80%) makes the PIP content the focus; a smaller inset (Scale ~25–35%) subordinates it to the background.
@@ -365,11 +376,10 @@ These exercises progress from basic PIP framing to full broadcast-style composit
 | **Compositing** | The process of combining multiple visual elements (inset, border, shadow, background) into a single output frame. |
 | **Drop Shadow** | A dark offset rectangle drawn behind the inset border to create the illusion of the window floating above the background plane. |
 | **DVE** | Digital Video Effects; a dedicated hardware unit for real-time video scaling, positioning, and compositing, used extensively in broadcast television from the late 1970s onward. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that computes the linear interpolation (crossfade) between two values based on a fractional parameter, used for the wet/dry mix stage. |
 | **PIP** | Picture-in-Picture; a video composition technique where one source appears as a reduced inset within another. |
 | **Region Classification** | The per-pixel process of determining whether a pixel falls inside the inset, border, shadow, or background region based on its screen coordinates. |
 | **Squeeze-Back** | The broadcast term for compressing a full-frame video source into a smaller inset rectangle, named for the visual impression of the image being squeezed down. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

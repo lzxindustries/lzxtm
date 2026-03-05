@@ -68,6 +68,14 @@ Unlike a simple crossfade, a wipe creates spatial structure — the boundary bet
 
 ---
 
+## Quick Start
+
+1. **T-bar equivalent**: The Transition knob is the primary animation control — sweep it slowly for classic broadcast-style transitions, or modulate it externally for rhythmic wipe effects.
+2. **Softness transforms the character**: The same pattern can feel industrial (hard edge) or dreamy (maximum softness). Try maximum softness on the clock wipe for a radial gradient spotlight effect.
+3. **Border as grid lines**: On Checkerboard with high Band Count and moderate Border Width, the borders form a visible grid overlaying the video — useful as a compositional tool.
+
+---
+
 ## Background
 
 ### The Production Switcher Wipe
@@ -94,6 +102,8 @@ Some patterns subdivide the screen into repeating cells. Venetian blinds create 
 ---
 
 ## Signal Flow
+
+Position Counters → Pattern Generator → Luma Modulation → ... → Compositor → Mix
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -154,7 +164,7 @@ The critical interaction is between the pattern generator and the threshold stag
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the wipe transition position. At 0% the key is fully closed — every pixel shows the matte color. At 100% the key is fully open — every pixel shows the input video. This is the primary animation control, equivalent to the T-bar on a production switcher. The midpoint at 50% places the wipe boundary at the geometric center for symmetric patterns.
+At 0% the key is fully closed — every pixel shows the matte color. At 100% the key is fully open — every pixel shows the input video. This is the primary animation control, equivalent to the T-bar on a production switcher. The midpoint at 50% places the wipe boundary at the geometric center for symmetric patterns. Internally, controls the wipe transition position.
 
 ---
 
@@ -165,7 +175,7 @@ Controls the wipe transition position. At 0% the key is fully closed — every p
 | Default | 6.3% |
 | Suffix | % |
 
-Controls the width of the soft transition zone at the wipe boundary. At 0% the edge is a hard binary cut between video and matte. Increasing Softness widens the alpha ramp, creating a gradual blend zone. High softness values produce a wide, dreamy crossfade region that can occupy a significant portion of the screen.
+At 0% the edge is a hard binary cut between video and matte. Increasing Softness widens the alpha ramp, creating a gradual blend zone. High softness values produce a wide, dreamy crossfade region that can occupy a significant portion of the screen. Internally, controls the width of the soft transition zone at the wipe boundary.
 
 ---
 
@@ -176,7 +186,7 @@ Controls the width of the soft transition zone at the wipe boundary. At 0% the e
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the width of the colored border stripe at the wipe edge. At 0% there is no border — the transition goes directly from video to matte. Increasing Border Width inserts a band of solid color centered on the transition point. The border is visible regardless of the softness setting, providing a distinct visual edge marker.
+At 0% there is no border — the transition goes directly from video to matte. Increasing Border Width inserts a band of solid color centered on the transition point. The border is visible regardless of the softness setting, providing a distinct visual edge marker. Internally, controls the width of the colored border stripe at the wipe edge.
 
 ---
 
@@ -198,7 +208,7 @@ Sets the hue of the border stripe. The 0–359 degree range maps to six color se
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the luminance of the matte background that is revealed where the wipe key is closed. At 0% the matte is black; at 100% it is near-white. The matte chroma is always neutral (U=V=512), producing a grayscale background. This control determines the contrast between the matte and the input video at the wipe boundary.
+At 0% the matte is black; at 100% it is near-white. The matte chroma is always neutral (U=V=512), producing a grayscale background. This control determines the contrast between the matte and the input video at the wipe boundary. Internally, sets the luminance of the matte background that is revealed where the wipe key is closed.
 
 ---
 
@@ -237,6 +247,10 @@ Toggles 7–9 form a 3-bit pattern selector choosing among eight wipe geometries
 
 Crossfades between the dry input signal and the processed wipe output. At 0% the output is the unprocessed input. At 100% the output is the full wipe composite. Since Wipeout has no dedicated bypass toggle, setting Mix to 0% is the way to hear the original signal unmodified.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -258,7 +272,7 @@ These exercises progress from basic wipe transitions to complex content-reactive
 *Classic Barn Door Transition — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject and background.
 
-**Objective**: Learn the basic transition controls using the simplest wipe pattern.
+**What You'll Create**: Learn the basic transition controls using the simplest wipe pattern.
 
 1. **Open the barn door**: Slowly sweep Transition from 0% to 100%. Watch the vertical split wipe reveal the video from center outward.
 2. **Soften the edge**: Increase Softness to ~50%. The hard edge becomes a smooth gradient blend zone.
@@ -285,7 +299,7 @@ These exercises progress from basic wipe transitions to complex content-reactive
 *Venetian Blinds and Checkerboard — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric elements — architecture, signage, or test patterns.
 
-**Objective**: Explore tiling wipe patterns and the Band Count control.
+**What You'll Create**: Explore tiling wipe patterns and the Band Count control.
 
 1. **Venetian blinds**: Set pattern to 001 (B0=1, B1=0, B2=0). Sweep Transition to see horizontal bands reveal the video.
 2. **Band count**: Rotate Band Count through its 8 steps. Watch the number of visible bands increase.
@@ -312,7 +326,7 @@ These exercises progress from basic wipe transitions to complex content-reactive
 *Luma-Reactive Iris — simulated result across source images.*
 **Source**: Footage with strong tonal variation — a face against a dark background, or high-contrast still life.
 
-**Objective**: Combine the iris circle pattern with luma modulation for content-reactive compositing.
+**What You'll Create**: Combine the iris circle pattern with luma modulation for content-reactive compositing.
 
 1. **Iris circle**: Set pattern to 011 (B0=1, B1=1, B2=0). Set Transition to ~50% for a mid-screen iris.
 2. **Enable Luma Mod**: Toggle Luma Mod on. The iris boundary now follows the brightness contours of the source image.
@@ -327,9 +341,6 @@ These exercises progress from basic wipe transitions to complex content-reactive
 
 ## Tips
 
-- **T-bar equivalent**: The Transition knob is the primary animation control — sweep it slowly for classic broadcast-style transitions, or modulate it externally for rhythmic wipe effects.
-- **Softness transforms the character**: The same pattern can feel industrial (hard edge) or dreamy (maximum softness). Try maximum softness on the clock wipe for a radial gradient spotlight effect.
-- **Border as grid lines**: On Checkerboard with high Band Count and moderate Border Width, the borders form a visible grid overlaying the video — useful as a compositional tool.
 - **Luma Mod for organic edges**: Enable Luma Mod to break the geometric regularity of wipe patterns, creating transitions that follow the image content rather than pure geometry.
 - **Mix as bypass**: Since Wipeout has no dedicated bypass toggle, use the Mix fader at 0% to pass the original signal unmodified.
 - **Matte as background**: Set Matte Y to match your composition's background level. Black matte creates silhouette effects; white matte creates high-key reveals.
@@ -353,5 +364,7 @@ These exercises progress from basic wipe transitions to complex content-reactive
 | **Production Switcher** | A broadcast video mixing console used for live television production, featuring wipe pattern generators. |
 | **Soft Edge** | A gradual transition zone at a wipe boundary, replacing a hard cut with a smooth alpha ramp. |
 | **T-Bar** | The physical fader on a production switcher that controls the wipe transition position. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

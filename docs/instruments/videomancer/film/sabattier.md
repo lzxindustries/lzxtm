@@ -68,6 +68,14 @@ At subtle settings, Sabattier adds gentle edge luminosity and tonal compression 
 
 ---
 
+## Quick Start
+
+1. **Start with Y Inversion alone**: Before engaging Mackie or Tint, explore the solarization curve by itself. The curve shape is the foundation of the entire effect.
+2. **Threshold cleans up noise**: If the image looks too busy with Mackie lines everywhere, increase Threshold to suppress weak edges and keep only the major contours.
+3. **Mackie Width vs Mackie Gain**: Gain controls *brightness* of the edge glow; Width controls *spread*. High Gain + low Width creates sharp bright lines. Low Gain + high Width creates soft diffuse halos.
+
+---
+
 ## Background
 
 ### The Sabattier Effect in Photography
@@ -94,6 +102,8 @@ Traditional solarized prints often exhibit a characteristic metallic sheen — a
 ---
 
 ## Signal Flow
+
+Input → UV Solarization → Mackie Line Spread → Metallic Tint
 
 ```
 Input Video (YUV 4:4:4)
@@ -147,7 +157,7 @@ Two key interactions define the character of the output. First, the Mackie line 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the depth of the Sabattier solarization curve applied to the Y (luminance) channel. At 0%, no midtone reversal occurs and the signal passes through with a linear transfer. As you increase the control, midtone values are progressively pulled downward — pulled toward black — while shadows and highlights remain stable. At maximum, the midtone dip is at its deepest, producing strong tonal reversal with pronounced contour boundaries. The shape of the dip is selected by the Curve Shape toggle (S-curve or W-curve).
+At 0%, no midtone reversal occurs and the signal passes through with a linear transfer. As you increase the control, midtone values are progressively pulled downward — pulled toward black — while shadows and highlights remain stable. At maximum, the midtone dip is at its deepest, producing strong tonal reversal with pronounced contour boundaries. The shape of the dip is selected by the Curve Shape toggle (S-curve or W-curve). Internally, controls the depth of the Sabattier solarization curve applied to the Y (luminance) channel.
 
 ---
 
@@ -191,7 +201,7 @@ Controls the spatial spread of Mackie lines via a horizontal IIR low-pass filter
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the magnitude of luminance-dependent chrominance shift that simulates the metallic appearance of solarized prints. At 0%, no tinting occurs. As you increase the control, bright regions shift toward blue-silver (U increases, V decreases) and dark regions shift in the opposite direction. The shift magnitude is proportional to both the tint setting and the pixel luminance, creating a smooth gradient of metallic coloration across the tonal range.
+At 0%, no tinting occurs. As you increase the control, bright regions shift toward blue-silver (U increases, V decreases) and dark regions shift in the opposite direction. The shift magnitude is proportional to both the tint setting and the pixel luminance, creating a smooth gradient of metallic coloration across the tonal range. Internally, controls the magnitude of luminance-dependent chrominance shift that simulates the metallic appearance of solarized prints.
 
 ---
 
@@ -231,6 +241,21 @@ The five toggles independently control the solarization character. Equidensity a
 
 Controls the dry/wet crossfade between the original unprocessed signal and the fully solarized output. At 0%, the output is entirely dry (original). At 100%, the output is entirely wet (processed). Intermediate values blend the two, which can create subtle solarization effects where the Mackie lines and tonal reversals are partially transparent over the source.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sabattier processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -252,7 +277,7 @@ These exercises progress from basic solarization curves to complex multi-paramet
 *Basic Solarization — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a wide tonal range — faces, landscapes, or test charts with smooth gradients.
 
-**Objective**: Understand how the Sabattier curve creates midtone reversal and generates Mackie lines.
+**What You'll Create**: Understand how the Sabattier curve creates midtone reversal and generates Mackie lines.
 
 1. **Initialize**: Set all knobs to defaults. Verify bypass is Off and the image passes through unchanged.
 2. **Engage Y solarization**: Slowly increase Y Inversion from 0% to about 50%. Watch midtones darken while shadows and highlights remain stable.
@@ -279,7 +304,7 @@ These exercises progress from basic solarization curves to complex multi-paramet
 *Metallic Portraiture — simulated result across source images.*
 **Source**: Close-up portrait footage or footage with strong facial features and varied skin tones.
 
-**Objective**: Create the characteristic metallic, mercury-like appearance of classic solarized prints.
+**What You'll Create**: Create the characteristic metallic, mercury-like appearance of classic solarized prints.
 
 1. **Set moderate solarization**: Y Inversion at about 50%, Mackie Gain at about 40%.
 2. **Add Mackie width**: Increase Mackie Width to about 50% to create soft, broad halos around facial features.
@@ -306,7 +331,7 @@ These exercises progress from basic solarization curves to complex multi-paramet
 *Equidensity Contour Map — simulated result across source images.*
 **Source**: Footage with broad smooth gradients — skies, studio lighting sweeps, or gradient test patterns.
 
-**Objective**: Use equidensity mode with W-curve to produce topographic contour-like banding with full YUV processing.
+**What You'll Create**: Use equidensity mode with W-curve to produce topographic contour-like banding with full YUV processing.
 
 1. **Enable equidensity**: Toggle Equidensity On.
 2. **Select W-Curve**: Toggle Curve Shape to W-Curve for double-fold banding.
@@ -322,9 +347,6 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 ## Tips
 
-- **Start with Y Inversion alone**: Before engaging Mackie or Tint, explore the solarization curve by itself. The curve shape is the foundation of the entire effect.
-- **Threshold cleans up noise**: If the image looks too busy with Mackie lines everywhere, increase Threshold to suppress weak edges and keep only the major contours.
-- **Mackie Width vs Mackie Gain**: Gain controls *brightness* of the edge glow; Width controls *spread*. High Gain + low Width creates sharp bright lines. Low Gain + high Width creates soft diffuse halos.
 - **Polarity is not just inversion**: Polarity inverts *before* the solarization curve, which changes which tonal regions get reversed — it is fundamentally different from applying the curve and then inverting the result.
 - **Equidensity + W-Curve is the most complex mode**: The doubled double-fold produces the highest density of tonal bands and Mackie contour lines. Start with S-Curve and Equidensity Off, then build up.
 - **Feedback creates evolution**: Routing the output back to the input creates evolving solarization — the Mackie lines generate new tonal boundaries which in turn create new Mackie lines on the next pass.
@@ -337,17 +359,16 @@ These exercises progress from basic solarization curves to complex multi-paramet
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory in the FPGA. Sabattier uses zero BRAM — the solarization curve is computed piecewise, not stored in a lookup table. |
 | **Equidensity** | A photographic technique that produces narrow tonal bands by exaggerating brightness differences; in Sabattier, it doubles the solarization dip. |
 | **IIR** | Infinite Impulse Response; a feedback filter where each output depends on previous outputs. Used for Mackie line width spread. |
 | **Mackie Line** | A luminous border at tonal boundaries in solarized prints, caused by bromide ion migration during development. Simulated here via horizontal gradient detection. |
 | **Midtone Reversal** | The defining characteristic of solarization: brightness values near the midpoint are pulled downward while extremes remain stable. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. Sabattier uses 4 processing clocks + 4 interpolator clocks = 8 total. |
 | **Polarity** | The sign of the input signal. Negative polarity inverts Y before the solarization curve is applied. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage. Used internally for metallic tinting. |
 | **Sabattier Effect** | Partial tonal reversal caused by re-exposing a developing photographic print to light, described by Armand Sabattier in 1862. |
 | **Solarization** | Broadly, any tonal reversal in photography. In Videomancer, specifically the Sabattier pseudo-solarization curve. |
 | **W-Curve** | A double-fold solarization curve with two midtone dips at the quarter and three-quarter points, producing more complex banding than the single-fold S-curve. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings — large window with defocused background and thin whi
 
 ---
 
+## Quick Start
+
+1. **Window size drives the DDA**: The foreground scaling quality depends on the ratio between the input resolution and the window pixel width. Larger windows produce near-unity scaling (minimal resampling). Very small windows produce heavy downsampling with nearest-neighbour stairstepping.
+2. **Mosaic is the most graphic mode**: High BG Inten in Mosaic mode produces large blocks that turn the background into an abstract colour field. Combined with a coloured border, this creates a graphic design aesthetic.
+3. **Defocus suggests depth**: Low-to-moderate Defocus with a thin white border creates the most naturalistic picture-in-picture, suggesting physical depth separation between foreground and background.
+
+---
+
 ## Background
 
 ### What Is a DVE Compositor?

@@ -68,6 +68,14 @@ At one extreme, Blinds is a hard geometric mask — solid bars of video separate
 
 ---
 
+## Quick Start
+
+1. **Start with Cascade at zero**: Learn the basic open/close geometry first, then add cascade to stagger the slats. Cascade without understanding the base opening can be confusing.
+2. **Edge Soft transforms the effect**: At zero softness, Blinds is a hard geometric mask. At high softness, it becomes an organic luminance modulator. These are almost two different programs controlled by one knob.
+3. **Dim Vid for layered compositions**: Black background gives clean graphic bars. Dim Vid background maintains the source at reduced brightness, creating dual-exposure layered effects.
+
+---
+
 ## Background
 
 ### Venetian Blind Transitions in Broadcast
@@ -94,6 +102,8 @@ Hard-edged slat boundaries look clean and graphic but can alias harshly on inter
 ---
 
 ## Signal Flow
+
+Coordinate Selection & → Cascade Phase Offset → Opening & Edge Softness → Composition
 
 ```
 Input Video (YUV 4:4:4)
@@ -182,7 +192,7 @@ Adds a progressive phase offset to each slat's opening value. At 0% all slats op
 | Default | 6% |
 | Suffix | % |
 
-Controls the width of the linear fade ramp at the edge of each slat's opening. At 0% the boundary is a hard pixel-level cut — fully visible on one side, fully hidden on the other. As edge softness increases, the transition zone widens into a smooth gradient. This softens the geometric harshness of the slat edges and creates translucent overlap zones when combined with high cascade values.
+At 0% the boundary is a hard pixel-level cut — fully visible on one side, fully hidden on the other. As edge softness increases, the transition zone widens into a smooth gradient. This softens the geometric harshness of the slat edges and creates translucent overlap zones when combined with high cascade values. Internally, controls the width of the linear fade ramp at the edge of each slat's opening.
 
 ---
 
@@ -233,6 +243,10 @@ The five toggles control orientation, animation source, background behavior, mas
 
 Dry/wet mix between the processed blind effect and the original source video. At 100% the full blind effect is visible. At 0% the original video passes through unchanged. Intermediate positions blend the two, which can create interesting semi-transparent overlay effects where the slat structure is ghosted over the source.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +268,7 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 *Manual Venetian Blind Wipe — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and clear mid-frame structure.
 
-**Objective**: Learn the core slat geometry and opening mechanics by performing a manual blind wipe.
+**What You'll Create**: Learn the core slat geometry and opening mechanics by performing a manual blind wipe.
 
 1. **Set up slats**: Set Slats to about 50% to get 8 horizontal bars across the frame.
 2. **Close the blinds**: Set Open to 0%. The entire frame should be replaced by the background (black by default).
@@ -282,7 +296,7 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 *Cascading Wipe with Soft Edges — simulated result across source images.*
 **Source**: Footage with a mix of detail and open areas — landscape or studio content.
 
-**Objective**: Explore cascade phase offset and edge softness to create flowing, organic wipe motions.
+**What You'll Create**: Explore cascade phase offset and edge softness to create flowing, organic wipe motions.
 
 1. **Prepare**: Set 6 slats (Slats ~35%), Open ~40%, Cascade 0%, Edge Soft 0%.
 2. **Add cascade**: Slowly increase Cascade. Each slat now opens at a different time — slat 0 is widest, and each subsequent slat narrows progressively. The frame shows a gradient from open to closed.
@@ -310,7 +324,7 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 *Dimmed Video Background Composition — simulated result across source images.*
 **Source**: High-contrast footage — strong subjects against distinct backgrounds.
 
-**Objective**: Use Dim Vid background mode with moderate opening to create layered compositions where the source is visible at two brightness levels simultaneously.
+**What You'll Create**: Use Dim Vid background mode with moderate opening to create layered compositions where the source is visible at two brightness levels simultaneously.
 
 1. **Set up**: 10 slats (Slats ~60%), Open ~50%, Cascade ~30%.
 2. **Switch to Dim Vid**: Toggle Bg Mode to Dim Vid.
@@ -327,9 +341,6 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 
 ## Tips
 
-- **Start with Cascade at zero**: Learn the basic open/close geometry first, then add cascade to stagger the slats. Cascade without understanding the base opening can be confusing.
-- **Edge Soft transforms the effect**: At zero softness, Blinds is a hard geometric mask. At high softness, it becomes an organic luminance modulator. These are almost two different programs controlled by one knob.
-- **Dim Vid for layered compositions**: Black background gives clean graphic bars. Dim Vid background maintains the source at reduced brightness, creating dual-exposure layered effects.
 - **Auto-animation is hands-free**: Set Animate to Auto, dial in a Speed, and let the triangle wave drive continuous motion. Free up your hands for other controls.
 - **Cascade + auto-animation = ripple**: When both cascade and auto-animation are active, the staggered phase offset creates a ripple wave that rolls across the frame continuously.
 - **Low slat count for drama**: Two or four slats create bold, cinematic bars. Sixteen slats create a fine venetian-blind texture. Match the count to the scale of your composition.
@@ -345,13 +356,13 @@ These exercises progress from a basic manual wipe to animated cascade effects to
 | **Cascade** | A progressive phase offset applied to each successive slat so they open or close in sequence rather than simultaneously, producing a wave-like reveal. |
 | **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle. |
 | **DVE** | Digital Video Effects; a hardware processor for real-time video transformations such as wipes, squeezes, and rotations, common in broadcast production. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet and foreground/background blending. |
 | **Phase accumulator** | A register that increments by a fixed step each vertical sync pulse; its value drives the triangle wave oscillator for auto-animation. |
 | **Reciprocal multiply** | A division approximation that replaces expensive hardware division with multiplication by a pre-computed reciprocal constant followed by a right shift. |
 | **Reveal mask** | A per-pixel value (0–1023) indicating the proportion of source video visible versus background at that pixel location. |
 | **Slat** | One horizontal or vertical band in a venetian blind division of the frame, analogous to a single louver in a physical window blind. |
 | **SMPTE** | Society of Motion Picture and Television Engineers; the standards body that defines broadcast wipe patterns, timecode, and video signal formats. |
 | **Triangle wave** | A periodic waveform that ramps linearly up then linearly down, used by the auto-animation oscillator to sweep slat opening back and forth. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

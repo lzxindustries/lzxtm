@@ -8,6 +8,7 @@ description: "The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, an
 ---
 
 import scanjet_hero from '/img/instruments/videomancer/scanjet/scanjet_hero.png';
+import scanjet_animation from '/img/instruments/videomancer/scanjet/scanjet_animation.gif';
 import scanjet_control_panel from '/img/instruments/videomancer/scanjet/scanjet_control_panel.png';
 import scanjet_exercise1_result from '/img/instruments/videomancer/scanjet/scanjet_exercise1_result.gif';
 import scanjet_exercise2_result from '/img/instruments/videomancer/scanjet/scanjet_exercise2_result.gif';
@@ -19,6 +20,9 @@ import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanj
 
 <img src={scanjet_hero} alt="Scanjet hero image"/>
 *Scanjet transforming live video into a pseudo-3D ground plane with perspective-scaled scanlines, sinusoidal road curvature, and retro sky rendering.*
+<img src={scanjet_animation} alt="Scanjet animated output"/>
+*Scanjet output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ The arcade boards of the mid-1980s — Sega's Hang-On, Out Run, and After Burner
 Scanjet implements this entire Super Scaler pipeline in real-time FPGA hardware. Any input video becomes the texture of a pseudo-3D ground plane, stretched and compressed scanline-by-scanline according to a perspective-correct scaling function. A 64-entry sine lookup table generates smooth road curvature that oscillates with configurable amplitude and frequency. Above the configurable horizon line, four sky rendering modes provide different treatments for the upper portion of the frame. The result transforms any flat video source — camera feeds, color bars, graphic patterns — into a convincing arcade-style ground plane racing toward the viewer.
 
 At subtle settings with the horizon near the top of frame and gentle curvature, Scanjet adds a mild perspective tilt to the source. At extreme settings with a low horizon, heavy depth exaggeration, and strong curvature, it produces the full Out Run driving experience — the ground plane warps and bends beneath a configurable sky.
+
+---
+
+## Quick Start
+
+1. **Start with Curve Amp at 0%**: Learn the perspective scaling behavior with a straight road before adding curvature. This isolates the DDA pipeline.
+2. **Grid patterns reveal scaling clearly**: Feed a regular grid or stripe pattern to visualize exactly how each scanline is being zoomed. Organic video can obscure the perspective math.
+3. **Curve Freq × Curve Amp interact**: High frequency with high amplitude creates rapid, dramatic serpentine bends. High frequency with low amplitude creates subtle shimmer. Low frequency with high amplitude creates broad sweeping curves.
 
 ---
 
@@ -57,6 +69,8 @@ Above the horizon, Scanjet provides four distinct sky treatments selectable via 
 ---
 
 ## Signal Flow
+
+Line Buffer Write → Perspective → DDA Source Address → Sky
 
 ```
 Input Video (YUV 4:4:4)
@@ -114,7 +128,7 @@ The critical aspect of the pipeline is that the DDA operates on the *previous* s
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the vertical position of the horizon line. At 0%, the horizon is at the top of the frame and nearly the entire screen is ground plane. At 100%, the horizon is at the bottom and nearly the entire screen is sky. The horizon value maps directly to a scanline number (0–1079 in HD). Below the horizon, perspective scaling is applied; above it, the selected sky mode determines the output. Moving the horizon dramatically changes the composition — a low horizon creates an expansive sky with a thin strip of ground; a high horizon creates a vast ground plane stretching toward a distant vanishing point.
+At 0%, the horizon is at the top of the frame and nearly the entire screen is ground plane. At 100%, the horizon is at the bottom and nearly the entire screen is sky. The horizon value maps directly to a scanline number (0–1079 in HD). Below the horizon, perspective scaling is applied; above it, the selected sky mode determines the output. Moving the horizon dramatically changes the composition — a low horizon creates an expansive sky with a thin strip of ground; a high horizon creates a vast ground plane stretching toward a distant vanishing point. Internally, sets the vertical position of the horizon line.
 
 ---
 
@@ -136,7 +150,7 @@ Controls the perspective depth exaggeration factor. This parameter scales the DD
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the amplitude of the sinusoidal road curvature. At 0%, the road is perfectly straight — no horizontal offset is applied. As you increase the amplitude, each scanline below the horizon receives a horizontal pixel shift derived from the sine LUT. The shift is modulated by distance from the horizon, so curves appear tighter in the distance and wider near the viewer, matching perspective geometry. At maximum, the road bends dramatically from side to side.
+At 0%, the road is perfectly straight — no horizontal offset is applied. As you increase the amplitude, each scanline below the horizon receives a horizontal pixel shift derived from the sine LUT. The shift is modulated by distance from the horizon, so curves appear tighter in the distance and wider near the viewer, matching perspective geometry. At maximum, the road bends dramatically from side to side. Internally, controls the amplitude of the sinusoidal road curvature.
 
 ---
 
@@ -147,7 +161,7 @@ Controls the amplitude of the sinusoidal road curvature. At 0%, the road is perf
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the forward-motion scroll speed by setting the phase increment added to the sine oscillator's global phase at each vertical sync pulse. At 0%, the road curvature pattern is static — bends remain frozen in place. As you increase the speed, the sine pattern shifts forward each frame, creating the illusion that the ground is scrolling toward the viewer. Higher values produce faster apparent forward motion. The effect is most convincing when combined with moderate Curve Amp settings.
+At 0%, the road curvature pattern is static — bends remain frozen in place. As you increase the speed, the sine pattern shifts forward each frame, creating the illusion that the ground is scrolling toward the viewer. Higher values produce faster apparent forward motion. The effect is most convincing when combined with moderate Curve Amp settings. Internally, controls the forward-motion scroll speed by setting the phase increment added to the sine oscillator's global phase at each vertical sync pulse.
 
 ---
 
@@ -158,7 +172,7 @@ Controls the forward-motion scroll speed by setting the phase increment added to
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the frequency (tightness) of road bends by scaling the sine LUT index per scanline. At low values, bends are gentle and extend across many scanlines — the road curves lazily. At high values, the sine function cycles more rapidly, creating tighter, more frequent bends. The upper 6 bits of the register scale the distance-to-LUT-index mapping, giving a range from very gradual curves to rapid serpentine bends.
+At low values, bends are gentle and extend across many scanlines — the road curves lazily. At high values, the sine function cycles more rapidly, creating tighter, more frequent bends. The upper 6 bits of the register scale the distance-to-LUT-index mapping, giving a range from very gradual curves to rapid serpentine bends. Internally, controls the frequency (tightness) of road bends by scaling the sine LUT index per scanline.
 
 ---
 
@@ -177,7 +191,7 @@ Controls the brightness of the sky region (above the horizon). In Solid sky mode
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Sky Mode** | Pass In | Solid |
+| **7 — Sky Mode** | Pass In | Fade Blk |
 | **8 — Scale Mode** | Smooth | Nearest |
 | **9 — Stereo** | Off | On |
 | **10 — Gnd Stripe** | Off | On |
@@ -198,6 +212,21 @@ The toggles control sky rendering mode (a 2-bit selector), interpolation quality
 
 Controls the dry/wet crossfade between the original unprocessed signal and the fully perspective-scaled output. At 0%, the output is entirely dry (original). At 100%, the output is entirely wet (processed). Intermediate values blend the two linearly. Partial mix values can create a translucent overlay effect where the perspective ground plane is partially visible over the source.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Scanjet processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -208,9 +237,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 <img src={scanjet_exercise1_result} alt="Static Ground Plane result"/>
 *Static Ground Plane — simulated result across source images.*
-**Source**: A repeating geometric pattern — color bars, a grid test pattern, or tiled graphics.
-
-**Objective**: Understand basic perspective scaling and the relationship between horizon position and depth.
+**What You'll Create**: Understand basic perspective scaling and the relationship between horizon position and depth.
 
 1. **Set horizon**: Turn Horizon to about 40% to place the vanishing point in the upper-middle of the frame.
 2. **Observe scaling**: The source image stretches below the horizon — scanlines at the bottom are wider (zoomed in), and scanlines near the horizon are compressed (zoomed out).
@@ -226,9 +253,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 <img src={scanjet_exercise2_result} alt="Road Curvature result"/>
 *Road Curvature — simulated result across source images.*
-**Source**: A simple repeating pattern such as horizontal stripes or a single-color gradient so the curvature is clearly visible.
-
-**Objective**: Explore the sine LUT road curvature system and forward-motion scrolling.
+**What You'll Create**: Explore the sine LUT road curvature system and forward-motion scrolling.
 
 1. **Start with a straight road**: Set Horizon to about 35%, Depth to about 50%, and Curve Amp to 0%.
 2. **Add curvature**: Slowly increase Curve Amp from 0% to about 50%. The road begins to bend left and right with a sinusoidal pattern.
@@ -245,9 +270,7 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 <img src={scanjet_exercise3_result} alt="Full Arcade Scene result"/>
 *Full Arcade Scene — simulated result across source images.*
-**Source**: Live camera footage or richly textured video — the more detail, the more convincing the ground plane texture appears.
-
-**Objective**: Combine all parameters to create a complete arcade-style driving scene with sky, ground, and animated curvature.
+**What You'll Create**: Combine all parameters to create a complete arcade-style driving scene with sky, ground, and animated curvature.
 
 1. **Set the scene**: Horizon at about 38%, Depth at about 60%.
 2. **Select sky**: Set Sky Mode to Fade Blk. Set Sky Bright to about 40%. The sky fades from black at the top to moderate brightness at the horizon.
@@ -263,9 +286,6 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 ## Tips
 
-- **Start with Curve Amp at 0%**: Learn the perspective scaling behavior with a straight road before adding curvature. This isolates the DDA pipeline.
-- **Grid patterns reveal scaling clearly**: Feed a regular grid or stripe pattern to visualize exactly how each scanline is being zoomed. Organic video can obscure the perspective math.
-- **Curve Freq × Curve Amp interact**: High frequency with high amplitude creates rapid, dramatic serpentine bends. High frequency with low amplitude creates subtle shimmer. Low frequency with high amplitude creates broad sweeping curves.
 - **Ground Stripe enhances speed**: The alternating-scanline dimming dramatically increases the perception of forward motion, even at low Curve Speed settings. Always try toggling it for comparison.
 - **Mirror mode creates surreal reflections**: Sky Mode Mirror can produce striking water-reflection effects, especially with live camera footage as the ground texture.
 - **Nearest mode for authenticity**: Scale Mode Nearest produces the chunky, aliased look of original arcade hardware. Switch to Smooth for cleaner video art applications.
@@ -278,16 +298,14 @@ These exercises progress from basic perspective scaling to full arcade-style for
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources in the FPGA fabric. Scanjet uses 2 BRAMs for ping-pong line buffers storing packed 30-bit YUV scanline data. |
 | **DDA** | Digital Differential Analyzer; an iterative algorithm that computes source pixel addresses by accumulating a step value per output pixel. Used for per-scanline perspective zoom. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter where output feeds back into input. Not used directly in Scanjet but referenced for comparison with Sabattier's Mackie line spread. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator. Referenced in the VHDL but not actively used in Scanjet's main pipeline. |
 | **Line Buffer** | A memory storing one complete scanline of video (2048 × 30-bit words). Scanjet uses two in a ping-pong arrangement. |
 | **Ping-Pong** | A double-buffering technique where two buffers alternate roles: one receives new data while the other provides data for reading. |
-| **Pipeline** | Sequential processing stages. Scanjet uses 4 processing clocks + 4 interpolator clocks = 8 total. |
 | **Sine LUT** | A 64-entry lookup table of signed 8-bit sine values used to generate smooth road curvature offsets. |
 | **Super Scaler** | Sega's per-scanline horizontal scaling technology (1985–1992) that simulated 3D perspective using 2D sprite/background hardware. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

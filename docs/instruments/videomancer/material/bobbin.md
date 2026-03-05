@@ -68,6 +68,14 @@ At gentle settings — wide thread spacing, low opacity, no tint — Bobbin prod
 
 ---
 
+## Quick Start
+
+1. **Thread W is quantized**: Unlike the other knobs, Thread W clicks through 8 discrete widths (2–16 pixels). Each step produces a distinctly different mesh density. There are no in-between values.
+2. **Void Size and Curve Freq interact**: Both affect the spacing between threads, but in different ways — Void Size shifts the curves apart, while Curve Freq changes how often they oscillate. Experiment with both to find the exact lattice geometry you want.
+3. **Solid fill for fabric look**: Switching to Solid fill and increasing Thread W creates the appearance of a woven textile draped over the screen, with the source visible only as a dim pattern through the weave.
+
+---
+
 ## Background
 
 ### Pillow Lace and Bobbin Lace
@@ -94,6 +102,8 @@ Bobbin can animate the mesh by advancing a DDS (Direct Digital Synthesis) phase 
 ---
 
 ## Signal Flow
+
+Curve Generation → Compositing → Output Compose → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ Selects the thread width from eight discrete steps: 2, 3, 4, 5, 6, 8, 12, or 16 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the size of the voids — the open spaces between thread curves. At 0% the curves are packed tightly together with minimal gaps. At 100% the curves are widely spaced, leaving large regions of unobstructed source video visible through the mesh. This control interacts strongly with Thread Width: wide threads plus small voids produce an almost opaque fabric, while narrow threads plus large voids produce a sparse, airy lattice.
+At 0% the curves are packed tightly together with minimal gaps. At 100% the curves are widely spaced, leaving large regions of unobstructed source video visible through the mesh. This control interacts strongly with Thread Width: wide threads plus small voids produce an almost opaque fabric, while narrow threads plus large voids produce a sparse, airy lattice. Internally, controls the size of the voids — the open spaces between thread curves.
 
 ---
 
@@ -182,7 +192,7 @@ Controls thread opacity — how much the thread darkens the underlying video. At
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the animation speed of the mesh drift. At 0% the lattice is static. As the value increases, the mesh translates across the image at an increasing rate, driven by the DDS phase accumulator. The drift direction is diagonal (both families shift simultaneously), so the mesh appears to slide smoothly at roughly 45 degrees. The default is 25%, producing a slow, meditative drift.
+At 0% the lattice is static. As the value increases, the mesh translates across the image at an increasing rate, driven by the DDS phase accumulator. The drift direction is diagonal (both families shift simultaneously), so the mesh appears to slide smoothly at roughly 45 degrees. The default is 25%, producing a slow, meditative drift. Internally, sets the animation speed of the mesh drift.
 
 ---
 
@@ -220,7 +230,29 @@ Switches 7–11 configure the mesh geometry, void rendering, thread coloring, an
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the dry/wet crossfade between the unprocessed source and the lace-composited output. At 0% the output is the original source with no mesh visible. At 100% the output is the fully processed lace overlay. Intermediate values blend the two, which can produce a ghostly, semi-transparent mesh effect distinct from simply reducing thread opacity.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bobbin processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Bobbin-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +275,7 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 *Static Diamond Mesh — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-**Objective**: Learn how thread width, void size, and opacity interact to define the basic mesh structure.
+**What You'll Create**: Learn how thread width, void size, and opacity interact to define the basic mesh structure.
 
 1. **Baseline mesh**: Set Thread W to step 4 (width = 5 pixels), Void Size to 50%, Curve Freq to 50%. A diamond lattice should be clearly visible over the source.
 2. **Thread weight**: Rotate Thread W through its 8 steps. Watch the mesh transition from delicate hairlines (step 1, width 2) to heavy bands (step 8, width 16).
@@ -270,7 +302,7 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 *Hex Mesh with Solid Fill — simulated result across source images.*
 **Source**: Footage with strong horizontal and vertical elements — architecture, window frames, bookshelves.
 
-**Objective**: Explore hexagonal geometry and the Solid fill mode, which adds a dimmed background behind the mesh.
+**What You'll Create**: Explore hexagonal geometry and the Solid fill mode, which adds a dimmed background behind the mesh.
 
 1. **Switch geometry**: Set Mesh Type to Hex. The regular diamond lattice shifts into a honeycomb-like arrangement. Compare by toggling back and forth.
 2. **Solid fill**: Switch Fill Mode to Solid. The void regions dim to half brightness, creating the appearance of a dense fabric backing.
@@ -297,7 +329,7 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 *Animated Colored Lace — simulated result across source images.*
 **Source**: Slow-moving or static footage — landscapes, still lifes, or a fixed camera shot.
 
-**Objective**: Combine animation and thread tinting for a fully realized lace effect with colored, drifting threads.
+**What You'll Create**: Combine animation and thread tinting for a fully realized lace effect with colored, drifting threads.
 
 1. **Enable tint**: Switch Thread Tint to On. Rotate Tint Hue slowly through 360°. Watch the thread color cycle through red → yellow → green → cyan → blue → magenta.
 2. **Pick a hue**: Choose a tint that complements the source content — warm orange (~45°) for cool-toned footage, cyan (~180°) for warm footage.
@@ -313,9 +345,6 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 
 ## Tips
 
-- **Thread W is quantized**: Unlike the other knobs, Thread W clicks through 8 discrete widths (2–16 pixels). Each step produces a distinctly different mesh density. There are no in-between values.
-- **Void Size and Curve Freq interact**: Both affect the spacing between threads, but in different ways — Void Size shifts the curves apart, while Curve Freq changes how often they oscillate. Experiment with both to find the exact lattice geometry you want.
-- **Solid fill for fabric look**: Switching to Solid fill and increasing Thread W creates the appearance of a woven textile draped over the screen, with the source visible only as a dim pattern through the weave.
 - **Mix and Opacity are different**: Opacity controls how dark the threads are. Mix crossfades the entire processed image with the dry source. Use Opacity for thread transparency; use Mix for overall effect intensity.
 - **Tint complements the source**: Choose a Tint Hue that contrasts with the dominant colors in the source for maximum visual impact — warm threads on cool footage, cool threads on warm footage.
 - **Animation for texture**: Even a very slow Anim Speed (5–10%) adds subtle life to the mesh, preventing it from locking to the display raster and looking static.
@@ -330,7 +359,6 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 | **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
 | **DDS** | Direct Digital Synthesis; a technique that generates periodic waveforms by advancing a phase accumulator by a fixed increment each cycle, used here to animate mesh drift. |
 | **Hue LUT** | A look-up table that maps a control value to U and V chroma offsets corresponding to a specific colour around the colour wheel. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for thread darkening and dry/wet blending. |
 | **Luma** | The brightness component (Y) of a YUV video signal, darkened proportionally at thread pixel locations. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical distances between two points, used here to measure pixel proximity to a curve without computing a square root. |
 | **Moire** | An interference pattern produced when two periodic structures (such as the thread mesh and the display pixel grid) overlap at similar spatial frequencies. |
@@ -338,6 +366,7 @@ These exercises build from a basic static overlay to a fully animated, tinted la
 | **Rhombic lattice** | A repeating grid of diamond-shaped cells formed by the intersection of two sinusoidal curve families oscillating at the same frequency. |
 | **Sine LUT** | A look-up table containing 32 pre-computed signed sine values, used to generate smooth wave curves without real-time trigonometric calculation. |
 | **Torchon** | A traditional style of bobbin lace characterized by its regular diamond-mesh ground pattern, the real-world counterpart to Bobbin's Diamond mode. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -32,6 +32,14 @@ The name *sigil* — a symbol believed to carry inherent meaning or power — re
 
 ---
 
+## Quick Start
+
+1. **Use as a reference**: Sigil is useful as a "wire" program for measuring latency introduced by other programs in the chain — compare their output timing against Sigil's single-clock delay.
+2. **Verify signal integrity**: Route through Sigil to confirm that the Videomancer I/O path is clean before loading a complex processing program.
+3. **No controls are active**: All knobs, toggles, and faders are reserved for the future implementation. Do not expect any parameter to produce a visible effect.
+
+---
+
 ## Background
 
 ### What Is a Passthrough Program?
@@ -84,6 +92,20 @@ The entire architecture is a single synchronous process. All seven port signals 
 ### Linear Potentiometer (Fader 12)
 
 
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sigil processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -92,7 +114,7 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 1: Passthrough Verification
 
-**Objective**: Confirm that Sigil passes the input signal through without any modification to luminance, chrominance, or sync timing.
+**What You'll Create**: Confirm that Sigil passes the input signal through without any modification to luminance, chrominance, or sync timing.
 
 1. **Load Sigil**: Select the Sigil program on the Videomancer.
 2. **Feed reference**: Route a color bar test pattern to the input.
@@ -106,7 +128,7 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 2: Latency Measurement
 
-**Objective**: Measure the single-clock pipeline delay introduced by Sigil's register stage.
+**What You'll Create**: Measure the single-clock pipeline delay introduced by Sigil's register stage.
 
 1. **Split input**: Route the same source to both the Videomancer input and a reference monitor.
 2. **Load Sigil**: Select the Sigil program.
@@ -119,7 +141,7 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ### Exercise 3: Control Inactivity Sweep
 
-**Objective**: Systematically verify that every control is inactive in the current firmware.
+**What You'll Create**: Systematically verify that every control is inactive in the current firmware.
 
 1. **Load Sigil**: Select the Sigil program with a known video input.
 2. **Knob sweep**: One at a time, sweep each of the six rotary potentiometers through their full range. Confirm no change in the output.
@@ -134,9 +156,6 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 
 ## Tips
 
-- **Use as a reference**: Sigil is useful as a "wire" program for measuring latency introduced by other programs in the chain — compare their output timing against Sigil's single-clock delay.
-- **Verify signal integrity**: Route through Sigil to confirm that the Videomancer I/O path is clean before loading a complex processing program.
-- **No controls are active**: All knobs, toggles, and faders are reserved for the future implementation. Do not expect any parameter to produce a visible effect.
 - **Minimal resource usage**: Sigil consumes approximately 7 flip-flops and zero BRAMs, making it the lightest program in the library.
 - **Placeholder status**: This program is in active development. Future firmware updates will replace the passthrough with grid-based processing.
 - **Category intent**: Sigil is categorized as Grid, indicating that its eventual implementation will involve geometric grid patterns, spatial subdivision, or coordinate-based visual structures.
@@ -151,6 +170,7 @@ Because Sigil is a passthrough program, these exercises focus on verifying trans
 | **Flip-Flop** | A basic FPGA storage element that captures and holds a single bit of data on each clock edge. |
 | **Passthrough** | A program that copies input to output without modification, adding only pipeline delay. |
 | **Placeholder** | A program slot reserved in the registry with minimal or no processing, to be replaced by a full implementation in a future firmware release. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

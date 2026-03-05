@@ -35,6 +35,14 @@ A critical ABI boundary bug limits the program's full potential. The VHDL attemp
 
 ---
 
+## Quick Start
+
+1. **Fractal and Glow toggles are non-functional**: Due to the ABI register boundary bug, Fractal and Glow have no visible effect. Focus on the six working potentiometers, Rainbow, and Mirror for creative control.
+2. **Full tail = ouroboros**: Set Tail Len above 90% to create a complete ring where the tail meets the head — the iconic self-consuming form.
+3. **Curl creates organic motion**: Even small amounts (15–25%) transform the rigid circular orbit into a living, breathing path.
+
+---
+
 ## Background
 
 ### The Ouroboros in Art and Mathematics
@@ -61,6 +69,8 @@ A 16-bit Linear Feedback Shift Register free-runs at pixel rate, producing a pse
 ---
 
 ## Signal Flow
+
+Position Computation → Tail Segment Chain → Fractal Recursion → ... → Glow → Output Mux
 
 ```
 Frame Clock (per vsync)
@@ -210,6 +220,10 @@ The five toggles control fractal recursion, rainbow coloring, glow bloom, bilate
 
 Mix crossfades between black (dry) and the fully rendered serpent pattern (wet). At 0% the output is solid black. At 100% the full serpent pattern is output at maximum brightness. Intermediate values produce a proportionally dimmed serpent — useful for subtle overlay when chaining with other programs. Chrominance scales proportionally: at 50% mix, U and V are halfway between neutral 512 and their computed hue values.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -220,7 +234,7 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 
 <img src={ouroboros_exercise1_result} alt="The Simple Orbit result"/>
 *The Simple Orbit — simulated result across source images.*
-**Objective**: Create a single glowing circle orbiting the center of the frame to understand the DDS animation engine.
+**What You'll Create**: Create a single glowing circle orbiting the center of the frame to understand the DDS animation engine.
 
 1. **Single head**: Set Tail Len to 0%. Only the head circle is visible.
 2. **Moderate size**: Set Head Size to ~50%. A clearly visible circle.
@@ -238,7 +252,7 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 
 <img src={ouroboros_exercise2_result} alt="The Complete Ouroboros result"/>
 *The Complete Ouroboros — simulated result across source images.*
-**Objective**: Build a full serpent ring that visually consumes its own tail.
+**What You'll Create**: Build a full serpent ring that visually consumes its own tail.
 
 1. **Full tail**: Set Tail Len to ~95%. Maximum segments.
 2. **Medium head**: Head Size at ~40%.
@@ -256,7 +270,7 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 
 <img src={ouroboros_exercise3_result} alt="Mirror Mandala result"/>
 *Mirror Mandala — simulated result across source images.*
-**Objective**: Use bilateral mirror with high curl to create symmetrical serpentine mandala patterns.
+**What You'll Create**: Use bilateral mirror with high curl to create symmetrical serpentine mandala patterns.
 
 1. **Enable mirror**: Toggle Mirror on.
 2. **High curl**: Set Curl to ~80%. Complex curved trajectories.
@@ -274,9 +288,6 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 
 ## Tips
 
-- **Fractal and Glow toggles are non-functional**: Due to the ABI register boundary bug, Fractal and Glow have no visible effect. Focus on the six working potentiometers, Rainbow, and Mirror for creative control.
-- **Full tail = ouroboros**: Set Tail Len above 90% to create a complete ring where the tail meets the head — the iconic self-consuming form.
-- **Curl creates organic motion**: Even small amounts (15–25%) transform the rigid circular orbit into a living, breathing path.
 - **Rainbow + full tail = stained glass**: The 6-segment hue wheel's abrupt transitions produce banded color along the body, reminiscent of stained glass or film leader countdown strips.
 - **Mirror for mandalas**: The Mirror toggle with centered, curled orbits produces symmetrical mandala patterns that evolve continuously.
 - **Speed and Curl interact nonlinearly**: High Curl at low Speed produces slow, graceful undulations. High Curl at high Speed produces rapid, chaotic movement.
@@ -296,6 +307,7 @@ These exercises explore the ouroboros from a simple orbiting circle through comp
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for sparkle noise injection across the frame. |
 | **Ouroboros** | An ancient symbol depicting a serpent or dragon consuming its own tail, representing cyclical renewal, eternity, and self-reference. |
 | **Phase accumulator** | A register that increments by a fixed step each clock cycle and wraps at overflow, producing a sawtooth waveform whose frequency is proportional to the step size. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At low settings, Derez introduces subtle geometric doubling and faint ruled line
 
 ---
 
+## Quick Start
+
+1. **Start with one stage**: Isolate each corruption mode before combining. Address corruption alone produces dramatic geometric effects — add data bus and plane shift one at a time.
+2. **Seed is your recall**: In Static mode, the Glitch Seed pot fully determines the dead line pattern. Note your seed values for repeatable compositions.
+3. **MSB vs LSB corruption**: Address or data bus corruption of the most significant bits creates dramatic, large-scale visual changes. Corruption of the least significant bits is subtle and textural. Bit Select and Stuck Mask let you target either end.
+
+---
+
 ## Background
 
 ### VRAM Corruption and the Kill Screen
@@ -94,6 +102,8 @@ Hex editors and ROM dump viewers display raw memory as grids of values. When vie
 ---
 
 ## Signal Flow
+
+Line Buffer Write → Address Corruption → Line Buffer Read → ... → Dead Line Injection → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -185,7 +195,7 @@ Sets the data bus stuck-bit mask. Each bit in the 10-bit register value correspo
 | Default | 0% |
 | Suffix | % |
 
-Controls the magnitude of bit-plane spatial displacement. At zero, all 10 luminance bit planes are aligned and the image appears normal. As the value increases, lower-order bit planes are progressively delayed relative to higher-order planes — the MSB (bit 9) always has zero delay, while the LSB (bit 0) receives the maximum delay. This creates rainbow-like banding along horizontal edges where the bit weights separate spatially, producing the distinctive visual signature of planar memory corruption.
+At zero, all 10 luminance bit planes are aligned and the image appears normal. As the value increases, lower-order bit planes are progressively delayed relative to higher-order planes — the MSB (bit 9) always has zero delay, while the LSB (bit 0) receives the maximum delay. This creates rainbow-like banding along horizontal edges where the bit weights separate spatially, producing the distinctive visual signature of planar memory corruption. Internally, controls the magnitude of bit-plane spatial displacement.
 
 ---
 
@@ -235,6 +245,10 @@ Toggles 7–11 configure the corruption modes. Toggles 7 and 8 interact as a pai
 
 Wet/dry crossfade between the delayed original signal and the fully processed output. At maximum (100%), the output is entirely the corrupted signal. At zero, the original signal passes through unmodified. Intermediate values blend the two, which can create ghostly double-exposure effects where the original image is visible beneath the corrupted version. The dry signal is delayed by 8 clock cycles to align with the processing pipeline latency.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -256,7 +270,7 @@ These exercises progress from single-stage corruption to full multi-stage failur
 *Address Line Failure — simulated result across source images.*
 **Source**: A test pattern or graphic with strong geometric structure — grid patterns, text, or architectural footage.
 
-**Objective**: Learn how XOR and Stuck address corruption modes create different spatial distortion patterns.
+**What You'll Create**: Learn how XOR and Stuck address corruption modes create different spatial distortion patterns.
 
 1. **Single bit XOR**: Set Corrupt Bits to ~15% (1 bit) and Bit Select to ~85% (high offset targeting MSB). Observe the image folding at the horizontal midpoint — the right half mirrors onto the left.
 2. **Multiple bit XOR**: Increase Corrupt Bits to ~30% (2 bits). The folding becomes more complex, with nested mirror zones.
@@ -283,7 +297,7 @@ These exercises progress from single-stage corruption to full multi-stage failur
 *Data Bus Failure and Bit-Plane Separation — simulated result across source images.*
 **Source**: A camera feed or footage with smooth gradients and recognizable subjects.
 
-**Objective**: Explore data bus stuck bits, animation, and bit-plane spatial shift.
+**What You'll Create**: Explore data bus stuck bits, animation, and bit-plane spatial shift.
 
 1. **Stuck MSB high**: Set Stuck Mask to ~50% (setting bit 9). All dark values jump to mid-range. The image looks washed out with hard clipping.
 2. **Stuck LSB low**: Switch Stuck Polarity to Low and reduce Stuck Mask to ~5% (affecting only the lowest bits). Subtle banding appears in smooth gradients.
@@ -310,7 +324,7 @@ These exercises progress from single-stage corruption to full multi-stage failur
 *Full Memory Failure — simulated result across source images.*
 **Source**: Any active video — the more visually complex, the more interesting the corruption patterns.
 
-**Objective**: Combine all corruption stages for comprehensive memory failure simulation.
+**What You'll Create**: Combine all corruption stages for comprehensive memory failure simulation.
 
 1. **Address corruption**: Set Corrupt Bits ~25%, Bit Select ~50%, Addr Mode to XOR. The image folds and mirrors.
 2. **Data bus faults**: Add Stuck Mask ~30% with Stuck Polarity High. Value clamping bands appear over the mirrored image.
@@ -328,9 +342,6 @@ These exercises progress from single-stage corruption to full multi-stage failur
 
 ## Tips
 
-- **Start with one stage**: Isolate each corruption mode before combining. Address corruption alone produces dramatic geometric effects — add data bus and plane shift one at a time.
-- **Seed is your recall**: In Static mode, the Glitch Seed pot fully determines the dead line pattern. Note your seed values for repeatable compositions.
-- **MSB vs LSB corruption**: Address or data bus corruption of the most significant bits creates dramatic, large-scale visual changes. Corruption of the least significant bits is subtle and textural. Bit Select and Stuck Mask let you target either end.
 - **Y Only for color preservation**: Set Channel to Y Only to corrupt brightness while preserving the original color palette — a useful constraint for keeping the output recognizable.
 - **Animate for evolving textures**: The rotating stuck mask creates a 10-frame cycle of scanning corruption. Combined with static address corruption, this produces a structured evolution rather than random noise.
 - **Low Mix for ghosting**: Pulling the Mix fader to 40–60% ghosts the original image beneath the corruption, creating a double-exposure effect that preserves spatial context.
@@ -346,7 +357,6 @@ These exercises progress from single-stage corruption to full multi-stage failur
 | **Address Corruption** | Modifying the read address of a memory buffer so that pixels are read from incorrect locations, producing spatial mirroring, folding, tiling, or decimation. |
 | **AND-NOT Mask** | A bitwise operation that clears specified bits to zero; used for stuck-low address and data bus simulation. |
 | **Bit Plane** | A single binary layer of a multi-bit pixel value; in a 10-bit signal, there are 10 bit planes from MSB (weight 512) to LSB (weight 1). |
-| **BRAM** | Block RAM; dedicated memory on the FPGA used for line buffer storage. |
 | **Data Bus** | The parallel conductors carrying pixel values; a stuck data bus pin permanently forces one bit to a fixed state. |
 | **Kill Screen** | A game-breaking display corruption caused by counter overflow or address bus failure, most famously in Pac-Man level 256. |
 | **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator using XOR feedback taps, producing a deterministic sequence from a given seed. |
@@ -354,6 +364,7 @@ These exercises progress from single-stage corruption to full multi-stage failur
 | **Shift Register** | A chain of flip-flops that delays a signal by a fixed number of clock cycles; Derez uses 10 independent 64-deep shift registers for bit-plane delay. |
 | **Stuck-At Fault** | A hardware failure mode where a signal line is permanently fixed to logic 0 or logic 1, regardless of the intended value. |
 | **XOR** | Exclusive OR; a bitwise operation that flips bits where the mask is 1, used for address mirroring and folding. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

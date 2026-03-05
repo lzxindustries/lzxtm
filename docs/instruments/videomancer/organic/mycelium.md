@@ -35,6 +35,14 @@ The name references mycelium, the branching underground network of fungal thread
 
 ---
 
+## Quick Start
+
+1. **Feed and Kill are everything**: The Diffusion, Sim Speed, and Pattern controls have no effect in the current VHDL. Focus on Feed Rate and Kill Rate — they define the pattern morphology entirely.
+2. **The sweet spot is narrow**: Interesting Gray-Scott patterns occupy a small region of feed/kill parameter space. Start with Feed ~40%, Kill ~55% and make small adjustments. Large changes tend to produce either uniform fields or total decay.
+3. **One-shot for generative art**: Set Seed Mode to One-Shot, feed an interesting image, and watch it dissolve into pure reaction-diffusion patterns over time. The transition from recognizable image to organic abstraction is the most compelling visual evolution.
+
+---
+
 ## Background
 
 ### Gray-Scott Reaction-Diffusion
@@ -66,6 +74,8 @@ After the reaction-diffusion computation, the inhibitor concentration (0–1023)
 ---
 
 ## Signal Flow
+
+Input Registration → BRAM Read + Laplacian → Color Mapping
 
 ```
 INPUT VIDEO
@@ -210,7 +220,19 @@ The five toggles configure independent aspects of the simulation. Freeze halts e
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix crossfade. At 0% (register = 0), the output is the unprocessed delayed input video. At 100% (register = 1023), the output is the fully color-mapped reaction-diffusion rendering. Intermediate values blend the two proportionally via the three interpolator_u instances. This allows subtle integration of the reaction-diffusion texture with the input video.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Mycelium-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -222,7 +244,7 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 <img src={mycelium_exercise1_result} alt="Autonomous Coral Growth result"/>
 *Autonomous Coral Growth — simulated result across source images.*
-**Objective**: Observe self-organizing reaction-diffusion patterns emerging from minimal seeding.
+**What You'll Create**: Observe self-organizing reaction-diffusion patterns emerging from minimal seeding.
 
 1. **Set feed and kill rates for spots**: Feed Rate ~40%, Kill Rate ~55%. This puts the system in the spot-formation regime.
 2. **Low seed threshold**: Set Seed Thresh to ~20%. Even dim video features will seed the system.
@@ -240,7 +262,7 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 <img src={mycelium_exercise2_result} alt="Video Imprint with Freeze result"/>
 *Video Imprint with Freeze — simulated result across source images.*
-**Objective**: Capture a moment of the reaction-diffusion system interacting with video, then freeze it.
+**What You'll Create**: Capture a moment of the reaction-diffusion system interacting with video, then freeze it.
 
 1. **Feed a detailed video source**: Camera feed with faces or text works well.
 2. **High seed threshold**: Set Seed Thresh to ~60%. Only the brightest features seed the pattern.
@@ -258,7 +280,7 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 <img src={mycelium_exercise3_result} alt="One-Shot Dissolution result"/>
 *One-Shot Dissolution — simulated result across source images.*
-**Objective**: Observe how a video-seeded pattern evolves autonomously after seeding stops.
+**What You'll Create**: Observe how a video-seeded pattern evolves autonomously after seeding stops.
 
 1. **Set one-shot mode**: Toggle Seed Mode to One-Shot.
 2. **Strong feed**: Feed Rate ~45%. Patterns grow aggressively.
@@ -275,9 +297,6 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 ## Tips
 
-- **Feed and Kill are everything**: The Diffusion, Sim Speed, and Pattern controls have no effect in the current VHDL. Focus on Feed Rate and Kill Rate — they define the pattern morphology entirely.
-- **The sweet spot is narrow**: Interesting Gray-Scott patterns occupy a small region of feed/kill parameter space. Start with Feed ~40%, Kill ~55% and make small adjustments. Large changes tend to produce either uniform fields or total decay.
-- **One-shot for generative art**: Set Seed Mode to One-Shot, feed an interesting image, and watch it dissolve into pure reaction-diffusion patterns over time. The transition from recognizable image to organic abstraction is the most compelling visual evolution.
 - **Asymmetric diffusion is a feature**: The 2-neighbor Laplacian produces patterns that drift slightly upper-left. This hardware artifact gives Mycelium a distinctive look compared to standard Gray-Scott simulations.
 - **Freeze for color exploration**: Use Freeze to lock a complex pattern, then sweep Color Map through mono/warm/cool to find the best palette. Unfreeze to continue.
 - **Invert for negative prints**: The Invert toggle produces striking results when the color map is in warm or cool mode — dark organic veins against a tinted bright field.
@@ -290,7 +309,6 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 | Term | Definition |
 |------|------------|
 | **Activator** | The chemical species U in the Gray-Scott model, which is consumed by the autocatalytic reaction and replenished by the feed term. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Mycelium uses 4 BRAM tiles for activator and inhibitor line buffers (2 banks each for ping-pong access). |
 | **Diffusion** | The spatial spreading of chemical species through the Laplacian operator; drives pattern formation by creating local concentration gradients. |
 | **Feed rate** | The parameter $f$ controlling how fast activator species is injected into the reactor. Higher values replenish activator faster. |
 | **Gray-Scott** | A two-species reaction-diffusion model producing self-organizing patterns through the autocatalytic reaction U + 2V → 3V. |
@@ -300,6 +318,7 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 | **Ping-pong** | A double-buffering technique where two BRAM banks alternate between read and write roles on successive scan lines. |
 | **Reaction-diffusion** | A class of partial differential equations where local nonlinear reactions interact with spatial diffusion to produce emergent patterns. |
 | **Shift-and-add** | A multiplication approximation using bit shifts and additions instead of hardware multipliers; captures the top 2 bits of precision. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

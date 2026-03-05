@@ -66,6 +66,14 @@ Kinescope recreates these artifacts as a multi-stage video processing chain. The
 
 ---
 
+## Quick Start
+
+1. **Slow bar, low depth for subtlety**: A barely visible, slowly drifting bar with 15–20% depth creates a subliminal kinescope feel.
+2. **Grain scale matters**: 10–20% grain provides texture without dominating. Above 40%, the grain becomes the primary visual element.
+3. **Bloom needs highlights**: Bloom is only visible on bright content. On already-dark footage, it does nothing.
+
+---
+
 ## Background
 
 ### What Is a Kinescope Recording?
@@ -88,6 +96,8 @@ All photographic film has a granular structure caused by the random distribution
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -129,7 +139,7 @@ The effects chain is strictly serial — each stage modifies the luminance befor
 | Default | 39% |
 | Suffix | % |
 
-Controls the width of the rolling bar as a fraction of the frame height. At 0%, the bar is extremely narrow — a thin dark line rolling through the frame. At higher values, the bar widens to cover a larger vertical portion of the image. Very wide bars (70%+) can darken most of the frame, with only a narrow bright strip visible as the bar passes. The bar edges are soft, transitioning gradually between full brightness and full attenuation.
+At 0%, the bar is extremely narrow — a thin dark line rolling through the frame. At higher values, the bar widens to cover a larger vertical portion of the image. Very wide bars (70%+) can darken most of the frame, with only a narrow bright strip visible as the bar passes. The bar edges are soft, transitioning gradually between full brightness and full attenuation. Internally, controls the width of the rolling bar as a fraction of the frame height.
 
 ---
 
@@ -140,7 +150,7 @@ Controls the width of the rolling bar as a fraction of the frame height. At 0%, 
 | Default | 29% |
 | Suffix | % |
 
-Sets the speed at which the bar position advances per frame. At 0%, the bar is stationary. At low values, the bar drifts slowly through the frame, mimicking a nearly-synchronized kinescope camera. At higher values, the bar races through the frame multiple times per second, creating rapid flickering characteristic of badly mismatched camera/CRT timing. The most realistic kinescope look uses a slow-to-moderate speed.
+At 0%, the bar is stationary. At low values, the bar drifts slowly through the frame, mimicking a nearly-synchronized kinescope camera. At higher values, the bar races through the frame multiple times per second, creating rapid flickering characteristic of badly mismatched camera/CRT timing. The most realistic kinescope look uses a slow-to-moderate speed. Internally, sets the speed at which the bar position advances per frame.
 
 ---
 
@@ -151,7 +161,7 @@ Sets the speed at which the bar position advances per frame. At 0%, the bar is s
 | Default | 50% |
 | Suffix | % |
 
-Controls the depth of the bar's attenuation — how much the bar darkens the image. At 0%, the bar is invisible. At moderate values, the bar creates a subtle brightness variation. At high values, the bar creates deep darkening, nearly blacking out the affected region. This control determines the severity of the kinescope artifact — higher values suggest a greater synchronization mismatch.
+At 0%, the bar is invisible. At moderate values, the bar creates a subtle brightness variation. At high values, the bar creates deep darkening, nearly blacking out the affected region. This control determines the severity of the kinescope artifact — higher values suggest a greater synchronization mismatch. Internally, controls the depth of the bar's attenuation — how much the bar darkens the image.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the depth of the bar's attenuation — how much the bar darkens the ima
 | Default | 20% |
 | Suffix | % |
 
-Sets the intensity of the film grain noise. At 0%, no grain is added. At moderate values, a subtle texture appears across the image, mimicking medium-speed film stock. At maximum, the grain becomes coarse and dominant, suggesting high-speed push-processed film. The grain pattern changes every pixel (LFSR16 pseudo-random) and varies from frame to frame with seed advancement.
+At 0%, no grain is added. At moderate values, a subtle texture appears across the image, mimicking medium-speed film stock. At maximum, the grain becomes coarse and dominant, suggesting high-speed push-processed film. The grain pattern changes every pixel (LFSR16 pseudo-random) and varies from frame to frame with seed advancement. Internally, sets the intensity of the film grain noise.
 
 ---
 
@@ -173,7 +183,7 @@ Sets the intensity of the film grain noise. At 0%, no grain is added. At moderat
 | Default | 29% |
 | Suffix | % |
 
-Controls the intensity of the phosphor bloom effect. At 0%, no bloom. At moderate values, highlights above mid-gray receive a soft additive glow. At high values, the bloom significantly expands, pushing highlights toward clipping and creating a soft, glowing quality characteristic of direct-view CRT monitors. Bloom is purely additive — it can only brighten, never darken.
+At 0%, no bloom. At moderate values, highlights above mid-gray receive a soft additive glow. At high values, the bloom significantly expands, pushing highlights toward clipping and creating a soft, glowing quality characteristic of direct-view CRT monitors. Bloom is purely additive — it can only brighten, never darken. Internally, controls the intensity of the phosphor bloom effect.
 
 ---
 
@@ -211,7 +221,29 @@ Switches 7–11 enable or configure independent elements of the kinescope simula
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the kinescope-processed output and the original input signal. At 100%, the full kinescope effect is visible. Lowering the fader blends the original back in. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Kinescope processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Kinescope-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -234,7 +266,7 @@ These exercises progress from the fundamental rolling bar to a complete kinescop
 *The Rolling Bar — simulated result across source images.*
 **Source**: Any footage — the rolling bar is clearly visible against any content.
 
-**Objective**: Understand how the rolling bar width, speed, and depth interact to create the fundamental kinescope artifact.
+**What You'll Create**: Understand how the rolling bar width, speed, and depth interact to create the fundamental kinescope artifact.
 
 1. **Basic bar**: Set Bar Width ~50%, Bar Speed ~30%, Bar Depth ~80%. A dark band rolls slowly down the frame.
 2. **Width**: Sweep Bar Width from narrow (10%) to wide (90%). Narrow bars look like scanning lines; wide bars dominate the frame.
@@ -261,7 +293,7 @@ These exercises progress from the fundamental rolling bar to a complete kinescop
 *Film Texture and Bloom — simulated result across source images.*
 **Source**: Footage with a mix of highlights and shadows — talking head against a bright background, or a window scene.
 
-**Objective**: Layer film grain and phosphor bloom onto the rolling bar for a more complete kinescope look.
+**What You'll Create**: Layer film grain and phosphor bloom onto the rolling bar for a more complete kinescope look.
 
 1. **Base bar**: Set a moderate rolling bar (Width ~40%, Speed ~25%, Depth ~60%).
 2. **Add grain**: Enable Grain (Switch 8). Set Grain intensity to ~30%. A fine noise texture appears across the image.
@@ -288,7 +320,7 @@ These exercises progress from the fundamental rolling bar to a complete kinescop
 *Full Kinescope Simulation — simulated result across source images.*
 **Source**: Black-and-white or low-saturation footage for the most authentic kinescope look.
 
-**Objective**: Combine all five kinescope elements for a convincing telerecording simulation.
+**What You'll Create**: Combine all five kinescope elements for a convincing telerecording simulation.
 
 1. **All layers**: Set moderate Rolling Bar (Width ~45%, Speed ~20%, Depth ~50%), Grain ~25%, Bloom ~35%.
 2. **Enable vignette**: Switch on Vignette (Switch 9). The corners darken, framing the image the way a real kinescope camera lens would.
@@ -304,9 +336,6 @@ These exercises progress from the fundamental rolling bar to a complete kinescop
 
 ## Tips
 
-- **Slow bar, low depth for subtlety**: A barely visible, slowly drifting bar with 15–20% depth creates a subliminal kinescope feel.
-- **Grain scale matters**: 10–20% grain provides texture without dominating. Above 40%, the grain becomes the primary visual element.
-- **Bloom needs highlights**: Bloom is only visible on bright content. On already-dark footage, it does nothing.
 - **Vignette frames the image**: Even without other effects, the vignette alone adds a cinematic lens quality.
 - **Flicker is subtle by design**: The per-frame brightness variation is intentionally small. It's most visible on dark scenes.
 - **Black-and-white sells the effect**: For the most convincing kinescope look, feed desaturated or monochrome input. Kinescopes of color broadcasts existed but were rare.
@@ -322,12 +351,11 @@ These exercises progress from the fundamental rolling bar to a complete kinescop
 | **Chebyshev Distance** | The maximum of horizontal and vertical distance; used here for the vignette falloff function. |
 | **CRT** | Cathode Ray Tube; a display technology using an electron beam to excite phosphors on a glass screen. |
 | **Film Grain** | The random texture in photographic film caused by the distribution of silver halide crystals in the emulsion. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Kinescope** | A film recording made by pointing a movie camera at a television monitor, the primary preservation method for live TV before videotape. |
 | **LFSR** | Linear Feedback Shift Register; a digital circuit that generates a pseudo-random bit sequence for noise generation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Rolling Bar** | A dark horizontal band that appears to drift through the image when a film camera is not synchronized with a CRT's refresh rate. |
 | **Vignette** | Darkening of the image corners and edges caused by lens light falloff, characteristic of camera optics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

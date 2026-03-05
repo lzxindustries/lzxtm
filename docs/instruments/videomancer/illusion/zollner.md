@@ -68,6 +68,14 @@ The name directly references Johann Zöllner, whose 1860 paper "Über eine neue 
 
 ---
 
+## Quick Start
+
+1. **Illusion strength is angle-dependent**: The Zöllner illusion is strongest when hatch angles are 10°–30° from the band direction. Extreme angles (near 0° or 90°) weaken the effect.
+2. **Animation intensifies illusion**: Moving hatches create stronger perceptual distortion than static ones. Even slow animation (10–20%) noticeably enhances the Zöllner and Hering effects.
+3. **Band width sets illusion scale**: Narrow bands (8–16px) create fine illusions that work best at close viewing distance. Wide bands (48–64px) create bold patterns visible at any distance.
+
+---
+
 ## Background
 
 ### The Zöllner Illusion
@@ -94,6 +102,8 @@ The underlying structure is a set of horizontal bands whose width is selectable 
 ---
 
 ## Signal Flow
+
+Input Register → Band Detection → Hatch Angle Computation → Hatch Pattern Generation → Opacity Composite
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -213,7 +223,7 @@ Controls the length of individual hatch marks. Short hatches (low values) create
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Zöllner | Hering |
+| **7 — Pattern** | Zöllner | Café |
 | **8 — Hatch Style** | Thin | Thick |
 | **9 — Animate** | Off | On |
 | **10 — Invert** | Off | On |
@@ -233,6 +243,10 @@ Toggles 7 and 8 form a 2-bit pattern mode selector. Toggle 9 enables or disables
 | Suffix | % |
 
 Crossfades between the dry input signal and the pattern-composited output. At 0% the output is the unprocessed input. At 100% the output is the full illusion overlay. Intermediate positions allow subtle pattern underlays that create subliminal perceptual interference.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +269,7 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 *Classic Zöllner — simulated result across source images.*
 **Source**: A video feed with strong horizontal or vertical elements — architecture, bookshelves, or ruled paper.
 
-**Objective**: Create the classic Zöllner illusion of converging parallel lines.
+**What You'll Create**: Create the classic Zöllner illusion of converging parallel lines.
 
 1. **Set Zöllner mode**: Ensure both Pattern toggles are Off (00).
 2. **Band width**: Set Band W to ~30% for 16-pixel bands.
@@ -283,7 +297,7 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 *Animated Hering Curves — simulated result across source images.*
 **Source**: Video with straight lines — roads, building edges, or a calibration grid.
 
-**Objective**: Demonstrate the Hering illusion with animated hatching.
+**What You'll Create**: Demonstrate the Hering illusion with animated hatching.
 
 1. **Hering mode**: Set Pattern high bit On, low bit Off (10 → Hering? Actually toggle_switch_7 On = high bit). With the 2-bit selector: 01 = Hering. Set Toggle 7 Off, Toggle 8 on... No — per the VHDL, pattern bits are from toggle 7 (high) and toggle 8 is hatch style. Let me re-check... Actually Toggle 7 is the pattern selector in a multi-toggle sense. Per the TOML, Toggle 7 has value_labels ["Zöllner", "Hering", "Wundt", "Café Wall"]. This is a 4-option parameter, likely using the same register with thresholds. Set it to position 2 (Hering).
 2. **Enable animation**: Toggle Animate On and set Anim Speed to ~40%.
@@ -311,7 +325,7 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 *Café Wall with Thick Lines — simulated result across source images.*
 **Source**: Any video — the Café Wall pattern is effective regardless of source content.
 
-**Objective**: Create the Café Wall illusion with bold, visible tiles.
+**What You'll Create**: Create the Café Wall illusion with bold, visible tiles.
 
 1. **Café Wall mode**: Set Pattern to Café Wall (position 4).
 2. **Thick style**: Toggle Hatch Style to Thick for bold tile boundaries.
@@ -328,9 +342,6 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 
 ## Tips
 
-- **Illusion strength is angle-dependent**: The Zöllner illusion is strongest when hatch angles are 10°–30° from the band direction. Extreme angles (near 0° or 90°) weaken the effect.
-- **Animation intensifies illusion**: Moving hatches create stronger perceptual distortion than static ones. Even slow animation (10–20%) noticeably enhances the Zöllner and Hering effects.
-- **Band width sets illusion scale**: Narrow bands (8–16px) create fine illusions that work best at close viewing distance. Wide bands (48–64px) create bold patterns visible at any distance.
 - **Café Wall needs wide bands**: The Café Wall illusion requires bands wide enough for the shifted checkerboard tiles to be individually visible. Use 32px or wider.
 - **Invert for dark sources**: When processing dark video, switch to inverted (bright) hatches to maintain pattern visibility.
 - **Opacity controls subtlety**: Low opacity (15–25%) creates subliminal pattern interference — viewers sense something is "off" without identifying the overlay. High opacity (70–100%) makes the illusion explicit and dramatic.
@@ -353,5 +364,7 @@ These exercises demonstrate the four illusion pattern modes and show how hatch g
 | **Opacity** | The blending weight between the illusion pattern and the underlying video (0 = transparent, 1023 = opaque). |
 | **Wundt Illusion** | The inverse of the Hering illusion; parallel lines appear to bow inward when crossed by converging radial lines. |
 | **Zöllner Illusion** | The foundational optical illusion (1860) where parallel lines appear non-parallel due to crossing diagonal hatch marks. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

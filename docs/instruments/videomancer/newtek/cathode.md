@@ -68,6 +68,14 @@ At moderate settings, Cathode produces convincing electrical arcs that track acr
 
 ---
 
+## Quick Start
+
+1. **Dark backgrounds show bolts best**: Additive compositing means the bolt can only brighten pixels. Dark scenes show the full glow dynamic range; bright scenes compress it.
+2. **Static mode for still captures**: Turn Animate off to get a persistent bolt that changes path every frame — useful for photographing or freeze-framing a specific bolt shape.
+3. **Roughness and Fork interact**: Roughness controls the baseline displacement magnitude, Fork controls how often that magnitude is doubled. Use moderate roughness with high fork for realistic branching, or high roughness with low fork for sweeping arcs.
+
+---
+
 ## Background
 
 ### What Is Midpoint Displacement?
@@ -94,6 +102,8 @@ Real lightning appears as a sudden flash that lingers briefly then decays. Catho
 ---
 
 ## Signal Flow
+
+Bolt Path Generation → Flash Timer → Pipeline Stage 1: Input → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -154,7 +164,7 @@ The bolt path is generated entirely during the vertical blanking interval, filli
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the magnitude of the random displacement applied at each step of the bolt path walk. At zero, the bolt traces a perfectly straight vertical line from its starting position. As Roughness increases, each step adds a larger horizontal displacement scaled by the LFSR's random output, producing increasingly jagged, erratic paths. Very high values cause the bolt to wander wildly across the full frame width.
+At zero, the bolt traces a perfectly straight vertical line from its starting position. As Roughness increases, each step adds a larger horizontal displacement scaled by the LFSR's random output, producing increasingly jagged, erratic paths. Very high values cause the bolt to wander wildly across the full frame width. Internally, controls the magnitude of the random displacement applied at each step of the bolt path walk.
 
 ---
 
@@ -238,6 +248,10 @@ Toggles 7 and 8 form a 2-bit color palette selector (00 = Electric Blue, 01 = Pu
 
 Wet/dry mix between the original input video and the bolt-composited output. At 0%, the output is pure input — no bolt visible. At 100%, the full additive composite is applied. Intermediate values blend linearly via the interpolator, allowing subtle bolt overlays that feel like background atmospheric events rather than dominant foreground effects.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -259,7 +273,7 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 *Static Bolt Anatomy — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a dark upper region (night sky, dark background).
 
-**Objective**: Understand the bolt path generation, glow profile, and additive compositing fundamentals.
+**What You'll Create**: Understand the bolt path generation, glow profile, and additive compositing fundamentals.
 
 1. **Disable animation**: Set Animate (Toggle 9) to Off so the bolt is continuously visible.
 2. **Center the bolt**: Set Target X to 50%. A bolt appears in the center of the frame.
@@ -287,7 +301,7 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 *Flash-Hold-Fade Animation — simulated result across source images.*
 **Source**: Dark or moderately lit footage where the flash will be clearly visible.
 
-**Objective**: Explore the temporal envelope and how Flash Rate interacts with the fade curve.
+**What You'll Create**: Explore the temporal envelope and how Flash Rate interacts with the fade curve.
 
 1. **Enable animation**: Set Animate (Toggle 9) to On.
 2. **Slow flash**: Set Flash Rate low (~15%). Watch the bolt flash, hold briefly, then fade out slowly before the next strike.
@@ -315,7 +329,7 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 *Palette Exploration — simulated result across source images.*
 **Source**: Footage with visible color — skin tones, foliage, or color bars.
 
-**Objective**: Compare all four color palettes and observe how chroma tinting interacts with saturated source material.
+**What You'll Create**: Compare all four color palettes and observe how chroma tinting interacts with saturated source material.
 
 1. **Electric Blue (00)**: Both Palette toggles Off. Note the cool blue-white discharge typical of electrical arcs.
 2. **Purple (01)**: Toggle Palette A On. The bolt shifts to a purple/violet tint — both U and V shift positive.
@@ -331,9 +345,6 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 
 ## Tips
 
-- **Dark backgrounds show bolts best**: Additive compositing means the bolt can only brighten pixels. Dark scenes show the full glow dynamic range; bright scenes compress it.
-- **Static mode for still captures**: Turn Animate off to get a persistent bolt that changes path every frame — useful for photographing or freeze-framing a specific bolt shape.
-- **Roughness and Fork interact**: Roughness controls the baseline displacement magnitude, Fork controls how often that magnitude is doubled. Use moderate roughness with high fork for realistic branching, or high roughness with low fork for sweeping arcs.
 - **Glow Width and Brightness are complementary**: Wide glow with low brightness creates a diffuse atmospheric effect. Narrow glow with high brightness creates a hot, intense discharge. Adjust both together to control the bolt's visual weight.
 - **Palette tinting is glow-proportional**: The chroma shift only affects pixels within the glow radius, and it scales with glow intensity. This means the bolt core is heavily tinted while the fringes fade to neutral — a natural-looking color gradient.
 - **Feedback routing**: Routing Cathode's output back to its input creates accumulating glow fields — each frame adds to the previous discharge, building up dense lightning networks.
@@ -355,8 +366,8 @@ These exercises progress from a basic vertical bolt to animated multi-palette di
 | **Luminance** | The brightness component of a video signal, represented by the Y channel in YUV colour space. |
 | **LUT (Lookup Table)** | A pre-computed array of values indexed by an input, used here for the 64-entry Gaussian glow intensity profile. |
 | **Midpoint displacement** | A fractal subdivision technique that recursively displaces the midpoint of a line segment by a random amount, producing jagged natural-looking paths. |
-| **Pipeline** | A series of sequential processing stages in hardware, each completing one clock cycle of work and passing results to the next stage. |
 | **XOR (Exclusive-OR)** | A logic operation that returns true when exactly one of two inputs is true, used here for LFSR feedback taps and fork probability tests. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

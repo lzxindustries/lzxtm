@@ -68,6 +68,14 @@ At conservative settings — slow persistence with low negative strength — the
 
 ---
 
+## Quick Start
+
+1. **Processing is columnar**: The IIR accumulator operates per-column, not per-pixel. Horizontal motion produces slightly different trails than vertical motion. This is a feature, not a bug — it creates an organic quality reminiscent of CRT phosphor persistence.
+2. **Negative mode is the signature effect**: Like the physiological afterimage, the Negative mode produces complementary-colour ghosts. Use it with moderate settings for the most naturalistic result.
+3. **Ghost mode for time-averaging**: Ghost mode passes the raw temporal average without inversion — useful for creating soft temporal blurs and motion smears without colour inversion.
+
+---
+
 ## Background
 
 ### What Is a Negative Afterimage?

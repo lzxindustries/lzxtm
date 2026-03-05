@@ -68,6 +68,14 @@ At low Damage settings, Discrot adds subtle ring-shaped interference that sugges
 
 ---
 
+## Quick Start
+
+1. **Mix is your bypass**: Since there is no bypass toggle, use the Mix fader (Pot 12) for A/B comparison. Full counter-clockwise = clean signal; full clockwise = full effect.
+2. **Color dies first**: Increase Desat before cranking Damage for the most realistic disc rot look — real oxidation degrades the chroma FM carrier before the luma carrier.
+3. **Hold mode for subtlety**: Hold dropout (Toggle 8) produces more naturalistic artifacts than black dropout because real disc players attempted to conceal errors by repeating previous samples.
+
+---
+
 ## Background
 
 ### LaserDisc Technology
@@ -101,6 +109,8 @@ The disc rot aesthetic has become a visual shorthand for technological obsolesce
 ---
 
 ## Signal Flow
+
+Position Counters → Radial Distance → Rotation Accumulator → ... → Sync Delay Pipeline → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -164,7 +174,7 @@ The processing chain applies damage effects only to pixels that fall within the 
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the probability that any pixel within a damage ring is actually corrupted. At zero, no damage occurs regardless of ring position. As Damage increases, the LFSR comparison threshold rises and more pixels within each ring band fail the noise check, producing denser dropout patterns. With Heavy Rot enabled (Toggle 11), the effective threshold is doubled, making even moderate Damage settings produce severe corruption. This is the primary intensity control for the entire effect.
+At zero, no damage occurs regardless of ring position. As Damage increases, the LFSR comparison threshold rises and more pixels within each ring band fail the noise check, producing denser dropout patterns. With Heavy Rot enabled (Toggle 11), the effective threshold is doubled, making even moderate Damage settings produce severe corruption. This is the primary intensity control for the entire effect. Internally, controls the probability that any pixel within a damage ring is actually corrupted.
 
 ---
 
@@ -248,6 +258,10 @@ Toggles 7–11 select between paired damage modes and enable secondary effects. 
 
 Wet/dry crossfade between the original input signal and the processed (damaged) output. At 100% (fully clockwise, default), the full disc rot effect is applied. At 0%, the original signal passes through untouched. Because Discrot has no bypass toggle, the Mix fader is the only way to reduce the effect to zero. Intermediate positions blend the damaged and clean signals, which can produce a translucent overlay effect where damage regions appear as semi-transparent disturbance over the original image.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -269,7 +283,7 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 *Gentle Disc Wear — simulated result across source images.*
 **Source**: Footage with smooth tonal gradients — sky, water, or skin tones work well.
 
-**Objective**: Learn how ring width, damage density, and desaturation interact to produce subtle disc rot artifacts.
+**What You'll Create**: Learn how ring width, damage density, and desaturation interact to produce subtle disc rot artifacts.
 
 1. **First damage**: Set Damage to about 25%. Faint concentric rings of black dropout appear over the image.
 2. **Ring width**: Sweep Ring Width from narrow to wide. Narrow settings produce many thin bands; wide settings produce fewer, broader damaged zones.
@@ -296,7 +310,7 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 *Specular Speckle and Snow — simulated result across source images.*
 **Source**: High-contrast footage — black and white graphics, text, or high-contrast live video.
 
-**Objective**: Explore the speckle and snow effects that fill damaged regions with noise artifacts.
+**What You'll Create**: Explore the speckle and snow effects that fill damaged regions with noise artifacts.
 
 1. **Base damage**: Set Damage to about 40% with moderate Ring Width (about 50%).
 2. **Speckle injection**: Slowly increase Speckle. Bright white dots begin appearing within the damaged rings — laser read errors scattering off corroded pits.
@@ -324,7 +338,7 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 *Catastrophic Media Failure — simulated result across source images.*
 **Source**: Any footage — the source will be largely destroyed.
 
-**Objective**: Combine all effects at extreme settings to simulate unrecoverable disc rot.
+**What You'll Create**: Combine all effects at extreme settings to simulate unrecoverable disc rot.
 
 1. **Maximum damage**: Set Damage to about 80% with Heavy Rot enabled.
 2. **All noise**: Speckle to about 70%, Snow to about 80%.
@@ -341,9 +355,6 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 
 ## Tips
 
-- **Mix is your bypass**: Since there is no bypass toggle, use the Mix fader (Pot 12) for A/B comparison. Full counter-clockwise = clean signal; full clockwise = full effect.
-- **Color dies first**: Increase Desat before cranking Damage for the most realistic disc rot look — real oxidation degrades the chroma FM carrier before the luma carrier.
-- **Hold mode for subtlety**: Hold dropout (Toggle 8) produces more naturalistic artifacts than black dropout because real disc players attempted to conceal errors by repeating previous samples.
 - **Ring Width shapes the character**: Narrow rings = many fine bands (early-stage rot along individual grooves). Wide rings = broad damaged zones (late-stage delamination).
 - **Heavy Rot is exponential**: Because Heavy Rot doubles the threshold, combining it with even moderate Damage settings produces catastrophic corruption. Use it as a late-stage intensifier, not a starting point.
 - **Rotation completes the illusion**: Enable Animate with low Rotation speed for the most convincing physical disc simulation — the damage pattern should drift, not spin.
@@ -362,14 +373,13 @@ These exercises progress from mild disc wear to catastrophic media failure, expl
 | **Disc Rot** | Progressive oxidation of the aluminum reflective layer in LaserDiscs, causing read errors and visible video artifacts. |
 | **Dropout** | A region of missing or corrupted video caused by physical damage to the storage medium. |
 | **FM Carrier** | Frequency-modulated radio signal used to encode analog video on optical disc formats. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hold-Previous** | Dropout concealment technique where the last good sample is repeated through the damaged region. |
 | **LaserDisc** | Optical disc format (1978–2001) encoding analog video as frequency-modulated pit patterns read by laser. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used for noise generation in FPGA designs. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Snow** | Random noise pattern resembling television static, characteristic of a completely lost analog signal. |
 | **Speckle** | Bright noise dots caused by laser scattering off partially corroded or irregularly shaped pits. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

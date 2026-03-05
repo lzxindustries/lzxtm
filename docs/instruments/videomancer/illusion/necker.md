@@ -68,6 +68,14 @@ Note that several controls declared in the parameter interface are reserved for 
 
 ---
 
+## Quick Start
+
+1. **Depth offset controls the illusion**: The Necker flip is strongest when the depth offset is 20–40% of the face size. Too large and the two squares separate into obviously distinct shapes; too small and they merge.
+2. **Dark background for pure geometry**: Disable Overlay for a clean wireframe rendering suitable for title cards, overlays, or abstract composition.
+3. **Overlay for augmented reality**: Enable Overlay to composite the wireframe onto live video — the cube becomes a spatial reference frame overlaid on the real world.
+
+---
+
 ## Background
 
 ### The Necker Cube Illusion
@@ -90,6 +98,8 @@ When the Overlay toggle is enabled, pixels that are not on any edge pass the inc
 ---
 
 ## Signal Flow
+
+Pixel Position → Front Face Edges → Back Face Edges → ... → Sync Delay → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -230,6 +240,10 @@ Of the five toggles, only Overlay and Bypass produce visible results. Animate en
 
 Mix controls the interpolator crossfade between the dry (delayed original) and wet (processed) signals. At 0 the output is entirely dry; at 1023 entirely wet. The crossfade operates on all three channels (Y, U, V) with 4-clock interpolator latency.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -251,7 +265,7 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 *Basic Wireframe — simulated result across source images.*
 **Source**: Any stable video source or black/blank input.
 
-**Objective**: Render a visible wireframe cube and learn how Size, Line Width, and Depth interact.
+**What You'll Create**: Render a visible wireframe cube and learn how Size, Line Width, and Depth interact.
 
 1. Disable Overlay (dark background). Set Brightness to ~75% for visible white edges.
 2. Set Size to ~50%. A medium-sized square pair should appear centered on screen.
@@ -278,7 +292,7 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 *Video Overlay Composition — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Composite the wireframe over live video and observe how the illusion interacts with real-world depth cues.
+**What You'll Create**: Composite the wireframe over live video and observe how the illusion interacts with real-world depth cues.
 
 1. Enable Overlay. The wireframe now overlays the video source.
 2. Set Size and Depth so the cube frames the subject.
@@ -305,7 +319,7 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 *Extreme Geometry — simulated result across source images.*
 **Source**: High-contrast footage or a pattern generator with geometric shapes.
 
-**Objective**: Explore the range of cube geometries from paper-thin to frame-filling, and compare overlay vs. isolated wireframe.
+**What You'll Create**: Explore the range of cube geometries from paper-thin to frame-filling, and compare overlay vs. isolated wireframe.
 
 1. Set Size to maximum — the cube edges extend beyond the frame. Only partial edges are visible.
 2. Reduce Size to minimum (~5%) — a tiny wireframe appears at screen center.
@@ -321,9 +335,6 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 
 ## Tips
 
-- **Depth offset controls the illusion**: The Necker flip is strongest when the depth offset is 20–40% of the face size. Too large and the two squares separate into obviously distinct shapes; too small and they merge.
-- **Dark background for pure geometry**: Disable Overlay for a clean wireframe rendering suitable for title cards, overlays, or abstract composition.
-- **Overlay for augmented reality**: Enable Overlay to composite the wireframe onto live video — the cube becomes a spatial reference frame overlaid on the real world.
 - **Brightness as opacity proxy**: Since edges are achromatic, lowering Brightness against a dark background simulates transparency; against a bright video source, raising it ensures visibility.
 - **Use Mix for soft overlay**: At 50% Mix with Overlay enabled, the wireframe blends subtly with the video source rather than hard-cutting over it.
 - **Unused controls are harmless**: Rotation, Perspective, Fill, and Animate can be set to any value without affecting output. Avoid Color toggle as it references a broken signal path.
@@ -338,12 +349,10 @@ These exercises progress from a simple wireframe to an overlay-composited Necker
 | **Axonometric Projection** | A method of representing 3D objects in 2D where parallel lines remain parallel, as opposed to perspective projection where they converge. |
 | **Bistable Perception** | A visual phenomenon where a single image supports two mutually exclusive interpretations that alternate spontaneously. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
-| **Interpolator** | A linear crossfade module blending two 10-bit values based on a mix parameter. |
 | **Luminance** | The brightness component (Y) of a YUV signal. |
 | **Necker Cube** | A wireframe cube drawing first described by Louis Albert Necker in 1832, exhibiting spontaneous depth reversal. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Wireframe** | A 3D object representation showing only edge lines, with no filled surfaces. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

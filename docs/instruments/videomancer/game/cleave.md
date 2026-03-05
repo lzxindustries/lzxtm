@@ -8,6 +8,7 @@ description: "The Nintendo Entertainment System's Picture Processing Unit had a 
 ---
 
 import cleave_hero from '/img/instruments/videomancer/cleave/cleave_hero.png';
+import cleave_animation from '/img/instruments/videomancer/cleave/cleave_animation.gif';
 import cleave_control_panel from '/img/instruments/videomancer/cleave/cleave_control_panel.png';
 import cleave_exercise1_result from '/img/instruments/videomancer/cleave/cleave_exercise1_result.gif';
 import cleave_exercise2_result from '/img/instruments/videomancer/cleave/cleave_exercise2_result.gif';
@@ -19,6 +20,9 @@ import cleave_exercise3_result from '/img/instruments/videomancer/cleave/cleave_
 
 <img src={cleave_hero} alt="Cleave hero image"/>
 *Cleave splitting a live video feed at a PPU-jittered raster boundary, applying distinct brightness and hue rotation to each region with a visible glitch artifact bar at the seam.*
+<img src={cleave_animation} alt="Cleave animated output"/>
+*Cleave output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ The Nintendo Entertainment System's Picture Processing Unit had a peculiar timin
 Cleave divides each output frame into two (or three) horizontal regions at a configurable scanline boundary. Each region receives its own independent brightness scaling and hue rotation, allowing radically different color treatments above and below the split. An LFSR provides per-frame pseudo-random jitter on the split point, authentically replicating the imprecise timing of the NES CPU's polling loop — where DMA transfers, NMI handlers, or instruction alignment could delay detection by several scanlines - creating a wobbling, organic boundary.
 
 At the split boundary itself, an optional glitch bar artifact injects a bright horizontal line — replicating the visible register-rewrite artifact familiar from games like Battletoads and Castlevania III, where the brief period of invalid register state produced a visible horizontal stripe. The double-split mode mirrors the boundary to create three regions (edge/center/edge), enabling symmetric color zoning. Combined with the wet/dry mix fader, Cleave can range from subtle split-toning to aggressive retro raster destruction.
+
+---
+
+## Quick Start
+
+1. **Split position is direct scanline mapping**: The 10-bit register maps to 0–1023 scanlines. On 1080p content, values above ~1080 are equivalent to placing the split below the visible frame.
+2. **Jitter authenticity**: The LFSR-driven wobble is frame-coherent (constant within a frame) but changes every frame — exactly matching the per-frame timing variation of NES sprite-zero polling. Disable jitter for clean, stable split-toning work.
+3. **Double split for symmetric framing**: Double-split mode creates a center window flanked by identically-processed edges — useful for vignette-like tonal framing or centering a subject in a clean color zone surrounded by processed borders.
 
 ---
 
@@ -62,6 +74,8 @@ In real NES hardware, the brief period between detecting sprite-zero hit and com
 ---
 
 ## Signal Flow
+
+Brightness & Hue → Glitch Bar
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -121,7 +135,7 @@ The pipeline is structured around a per-scanline region detection that drives a 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the vertical position of the raster split boundary. At 0% the split is at the very top of the frame (all pixels in the lower region); at 100% the split is at the bottom (all pixels in the upper region). At 50% the screen is divided evenly in half. The split position maps directly to scanline count (0–1023 of active video). When Jitter is enabled, the LFSR applies ±8 lines of random offset to this base position each frame, so the boundary wobbles organically like a real NES sprite-zero split.
+At 0% the split is at the very top of the frame (all pixels in the lower region); at 100% the split is at the bottom (all pixels in the upper region). At 50% the screen is divided evenly in half. The split position maps directly to scanline count (0–1023 of active video). When Jitter is enabled, the LFSR applies ±8 lines of random offset to this base position each frame, so the boundary wobbles organically like a real NES sprite-zero split. Internally, controls the vertical position of the raster split boundary.
 
 ---
 
@@ -176,7 +190,7 @@ Controls hue rotation for the lower region, identical in range and behavior to U
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the intensity of the glitch artifact bar that appears at the split boundary scanline(s). At 0% no artifact is visible. As the control increases, a progressively brighter horizontal bar appears at the split point — the Y channel is additively boosted, clamped at full white. At maximum, the split boundary becomes a blindingly bright stripe. In double-split mode, a glitch bar appears at both the upper and lower split boundaries.
+At 0% no artifact is visible. As the control increases, a progressively brighter horizontal bar appears at the split point — the Y channel is additively boosted, clamped at full white. At maximum, the split boundary becomes a blindingly bright stripe. In double-split mode, a glitch bar appears at both the upper and lower split boundaries. Internally, controls the intensity of the glitch artifact bar that appears at the split boundary scanline(s).
 
 ---
 
@@ -205,6 +219,21 @@ The five toggles control independent binary features: per-frame raster jitter (r
 
 Controls the wet/dry crossfade between the processed and original signal. At 0% the output is fully dry (unprocessed input). At 100% the output is fully wet (processed). Intermediate values blend the two using three independent interpolator_u instances (one per Y, U, V channel). This allows subtle integration of the raster split effect into a mix chain — a partially-mixed split is less jarring and more suitable for layered compositions.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Cleave processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -215,9 +244,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 <img src={cleave_exercise1_result} alt="Retro Status Bar Split result"/>
 *Retro Status Bar Split — simulated result across source images.*
-**Source**: A live camera feed or recorded footage of a scene with clear vertical structure (sky and ground, ceiling and floor).
-
-**Objective**: Create a classic NES-style raster split with a bright status bar region and a darker game world region, complete with jitter wobble.
+**What You'll Create**: Create a classic NES-style raster split with a bright status bar region and a darker game world region, complete with jitter wobble.
 
 1. **Set the split position**: Turn Split Pos to about 25%, placing the boundary near the top quarter of the frame.
 2. **Brighten the upper region**: Set Upper Brt to about 75%, creating a brighter top strip.
@@ -234,9 +261,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 <img src={cleave_exercise2_result} alt="Complementary Color Split result"/>
 *Complementary Color Split — simulated result across source images.*
-**Source**: Footage with rich color content — flowers, graffiti, or colorful fabrics.
-
-**Objective**: Apply complementary hue rotations to the upper and lower halves of the frame, creating a split-tone color grading effect.
+**What You'll Create**: Apply complementary hue rotations to the upper and lower halves of the frame, creating a split-tone color grading effect.
 
 1. **Center the split**: Set Split Pos to 50% for an even division.
 2. **Unity brightness**: Set both Upper Brt and Lower Brt to 50% (unity gain).
@@ -254,9 +279,7 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 <img src={cleave_exercise3_result} alt="Three-Zone Vignette result"/>
 *Three-Zone Vignette — simulated result across source images.*
-**Source**: Any footage — talking head, landscape, or abstract pattern.
-
-**Objective**: Use double-split mode to create a three-zone symmetric color composition with posterized edges and a clean center.
+**What You'll Create**: Use double-split mode to create a three-zone symmetric color composition with posterized edges and a clean center.
 
 1. **Enable double split**: Turn on the Dbl Split toggle.
 2. **Position the split**: Set Split Pos to about 30%. The upper split will be at ~30%, the mirrored lower split at ~70%, creating a center region occupying roughly the middle 40% of the frame.
@@ -273,9 +296,6 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 ## Tips
 
-- **Split position is direct scanline mapping**: The 10-bit register maps to 0–1023 scanlines. On 1080p content, values above ~1080 are equivalent to placing the split below the visible frame.
-- **Jitter authenticity**: The LFSR-driven wobble is frame-coherent (constant within a frame) but changes every frame — exactly matching the per-frame timing variation of NES sprite-zero polling. Disable jitter for clean, stable split-toning work.
-- **Double split for symmetric framing**: Double-split mode creates a center window flanked by identically-processed edges — useful for vignette-like tonal framing or centering a subject in a clean color zone surrounded by processed borders.
 - **Posterization is channel-wide**: The 4-bit truncation applies equally to Y, U, and V, so both brightness and chrominance are quantized. This matches the NES PPU's limited color depth.
 - **Glitch bar scales with intensity**: At low Glitch values, the bar is a subtle horizontal shimmer. At maximum, it saturates to full white — useful as a deliberate compositional element or horizontal rule.
 - **Mix for subtlety**: Rather than committing fully to the split effect, use the Mix fader at 30–50% to blend the split-toned version with the original. This creates a more photographic split-grading look.
@@ -288,21 +308,18 @@ These exercises explore Cleave's raster-split processing from basic split-toning
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the quarter-wave sine lookup table. |
 | **Chroma** | The color information in a video signal, encoded as U and V components offset around 512 in the 10-bit domain. |
 | **Glitch Bar** | A bright horizontal artifact at the raster split boundary, replicating the register-rewrite artifact from NES hardware. |
 | **Hue Rotation** | A 2×2 matrix transformation applied to the U/V chrominance pair, rotating colors around the color wheel by a specified angle. |
-| **Interpolator** | A pipelined hardware module that computes linear interpolation between two values, used for the wet/dry mix. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator that produces a deterministic but seemingly random sequence of bits, used for split-line jitter. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **NES** | Nintendo Entertainment System; the 8-bit console whose PPU inspired the raster-split concept. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle; Cleave uses a 6-clock pipeline. |
 | **Posterization** | Reducing the number of distinct tonal levels by truncating least significant bits, producing flat color bands. |
 | **PPU** | Picture Processing Unit; the NES's dedicated video rendering chip (Ricoh 2C02). |
 | **Quarter-Wave LUT** | A lookup table storing only 0°–90° of the sine function; the remaining quadrants are derived by symmetry, saving 75% of storage. |
 | **Raster Split** | A mid-frame change of rendering parameters at a specific scanline, dividing the display into independently-controlled horizontal regions. |
 | **Sprite Zero Hit** | A hardware flag in the NES PPU that signals when sprite zero's opaque pixel overlaps an opaque background pixel, used for scanline-precise split detection. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

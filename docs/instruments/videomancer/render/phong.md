@@ -35,6 +35,14 @@ Phong synthesises its own imagery: sphere centers drift in Lissajous orbits driv
 
 ---
 
+## Quick Start
+
+1. **Ambient is your fill light**: Keep it between 5–20% for dramatic shading. Above 50% the sphere becomes a flat disc.
+2. **Shininess jumps in powers of two**: Steps 1–3 look matte; steps 5–7 look mirror-glossy. There is no smooth continuum — plan your look around the specific exponent values.
+3. **Blinn changes sphere count**: Because of the bit-1 overlap, toggling Lighting always changes the number of visible spheres. Use this as a creative surprise rather than fighting it.
+
+---
+
 ## Background
 
 ### The Phong Reflection Model
@@ -175,7 +183,7 @@ Sphere Hue uses a 360° polar mode to set the chrominance of the sphere surface.
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Spheres** | 1 | 2 |
+| **7 — Spheres** | 1 | 4 |
 | **8 — Lighting** | Phong | Blinn |
 | **9 — Rim Light** | Off | On |
 | **10 — Video Sphere** | Off | On |
@@ -196,6 +204,21 @@ The five toggles share a packed register. Toggle 7 uses bits 1:0 as a two-bit sp
 
 Wet/dry crossfade between the delayed input signal and the rendered sphere output. At 0% the output is pure input (dry). At 100% the output is the full sphere rendering (wet). Intermediate values blend the two via the 4-clock interpolator, allowing the spheres to float as a translucent overlay on top of upstream video.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Phong processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -206,7 +229,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 
 <img src={phong_exercise1_result} alt="Single Lit Sphere result"/>
 *Single Lit Sphere — simulated result across source images.*
-**Objective**: Understand the three components of the Phong illumination model: ambient, diffuse, and specular.
+**What You'll Create**: Understand the three components of the Phong illumination model: ambient, diffuse, and specular.
 
 1. **Isolate ambient**: Set Ambient to ~50%, Shininess to 1, Orbit Speed and Light Speed to 0%. The sphere appears as a uniform grey disc — no shading variation because the light is static and diffuse is minimal at low exponent.
 2. **Add diffuse**: Observe the sphere. One side is brighter than the other because the static light direction creates a nonzero N·L gradient. Increasing Ambient washes this out; decreasing it makes the gradient more dramatic.
@@ -222,7 +245,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 
 <img src={phong_exercise2_result} alt="Multi-Sphere Lissajous Ballet result"/>
 *Multi-Sphere Lissajous Ballet — simulated result across source images.*
-**Objective**: Explore sphere count, orbit speed, and the interaction between overlapping spheres.
+**What You'll Create**: Explore sphere count, orbit speed, and the interaction between overlapping spheres.
 
 1. **Two spheres**: Set Spheres to 2 and Orbit Speed to ~25%. Two spheres drift across the screen in distinct Lissajous paths. Notice they never share the same orbit — the prime offsets guarantee different frequencies.
 2. **Four spheres**: Set Spheres to 4. The screen becomes busier. When spheres overlap, only the nearest one is shaded — no transparency or blending. Observe how highlights wink in and out as spheres occlude each other.
@@ -238,7 +261,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 
 <img src={phong_exercise3_result} alt="Video-Textured Spheres result"/>
 *Video-Textured Spheres — simulated result across source images.*
-**Objective**: Use Video Sphere mode to project live camera or upstream video onto the sphere surface using Phong lighting as a modulator.
+**What You'll Create**: Use Video Sphere mode to project live camera or upstream video onto the sphere surface using Phong lighting as a modulator.
 
 1. **Enable Video Sphere**: Toggle Video Sphere on. The sphere surface now shows the input video, with brightness modulated by the Phong illumination. Dark areas of the sphere show dark video; the specular highlight creates a bright window.
 2. **Adjust lighting**: Set Light Speed to ~30% so the highlight sweeps across the video texture. Observe how the video appears to rotate under a fixed light — this is the illusion of a 3D surface.
@@ -253,9 +276,6 @@ These exercises progress from a single static sphere through multi-sphere animat
 
 ## Tips
 
-- **Ambient is your fill light**: Keep it between 5–20% for dramatic shading. Above 50% the sphere becomes a flat disc.
-- **Shininess jumps in powers of two**: Steps 1–3 look matte; steps 5–7 look mirror-glossy. There is no smooth continuum — plan your look around the specific exponent values.
-- **Blinn changes sphere count**: Because of the bit-1 overlap, toggling Lighting always changes the number of visible spheres. Use this as a creative surprise rather than fighting it.
 - **Video Sphere needs input**: In a standalone configuration with no upstream video, Video Sphere mode shows a black sphere. Route a camera or pattern generator upstream for the effect to work.
 - **Feedback loops**: Routing Phong's output back to its input creates recursive illumination — the specular highlight feeds back on itself, creating cascading bright rings.
 - **Rim Light for silhouettes**: Combine Rim Light with low Ambient and zero Shininess for a clean silhouette outline — the sphere appears as a backlit disc.
@@ -277,6 +297,7 @@ These exercises progress from a single static sphere through multi-sphere animat
 | **Rim Light** | A bright halo at the silhouette edge of a surface, approximating backlighting. |
 | **Specular Exponent** | The power $n$ in $(\mathbf{R} \cdot \mathbf{V})^n$ that controls the sharpness of the specular highlight. |
 | **Triangle Wave** | A piecewise-linear approximation of a sine wave, rising and falling in straight ramps; used as a zero-BRAM sine substitute. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

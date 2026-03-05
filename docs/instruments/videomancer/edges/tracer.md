@@ -68,6 +68,14 @@ At low edge thresholds, subtle gradients and textures produce dense, painterly c
 
 ---
 
+## Quick Start
+
+1. **Threshold is the primary creative control**: It determines what counts as an "edge." Low thresholds create dense, noisy contour maps; high thresholds produce clean, sparse line drawings.
+2. **Decay creates animation**: Without decay, the canvas eventually saturates to solid scraped. Use decay to create a living drawing that builds up and fades in real time.
+3. **Continuous mode for live edge visualization**: Stream mode bypasses the canvas entirely, turning Tracer into a simple real-time edge detector — useful for previewing what the threshold captures before committing to canvas mode.
+
+---
+
 ## Background
 
 ### The Etch A Sketch as Signal Processor
@@ -94,6 +102,8 @@ Rather than fading the canvas smoothly (which would require multi-bit storage pe
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -185,7 +195,7 @@ Controls how frequently the entire canvas is erased. At 0%, the canvas never dec
 | Default | 75.1% |
 | Suffix | % |
 
-Sets the brightness of the unscraped aluminum powder — the background tone of the canvas. At maximum, the powder regions are near-white, giving the classic silver-screen look. Reducing this control darkens the powder layer, making the overall image dimmer but increasing the relative contrast with the dark scraped lines. The LFSR grain texture is added on top of this base brightness.
+At maximum, the powder regions are near-white, giving the classic silver-screen look. Reducing this control darkens the powder layer, making the overall image dimmer but increasing the relative contrast with the dark scraped lines. The LFSR grain texture is added on top of this base brightness. Internally, sets the brightness of the unscraped aluminum powder — the background tone of the canvas.
 
 ---
 
@@ -196,7 +206,7 @@ Sets the brightness of the unscraped aluminum powder — the background tone of 
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the amplitude of the LFSR-derived grain noise added to both powder and scraped regions. At 0%, the canvas renders with smooth, uniform brightness. As the control increases, the characteristic shimmering aluminum texture becomes visible — a spatially random noise pattern that changes every pixel. High grain amounts create a heavily textured, almost stippled surface that evokes the tactile quality of real aluminum powder.
+At 0%, the canvas renders with smooth, uniform brightness. As the control increases, the characteristic shimmering aluminum texture becomes visible — a spatially random noise pattern that changes every pixel. High grain amounts create a heavily textured, almost stippled surface that evokes the tactile quality of real aluminum powder. Internally, controls the amplitude of the LFSR-derived grain noise added to both powder and scraped regions.
 
 ---
 
@@ -207,7 +217,7 @@ Controls the amplitude of the LFSR-derived grain noise added to both powder and 
 | Default | 62.6% |
 | Suffix | % |
 
-Adjusts the brightness of the scraped (dark line) regions. At low values, scraped areas are near-black, producing maximum contrast against the bright powder. Higher values brighten the scraped lines, reducing the visual separation between drawn and undrawn areas. A subtle amount of grain texture is also added to the scraped regions (at one-quarter the amplitude of the powder grain) to maintain surface coherence.
+At low values, scraped areas are near-black, producing maximum contrast against the bright powder. Higher values brighten the scraped lines, reducing the visual separation between drawn and undrawn areas. A subtle amount of grain texture is also added to the scraped regions (at one-quarter the amplitude of the powder grain) to maintain surface coherence. Internally, adjusts the brightness of the scraped (dark line) regions.
 
 ---
 
@@ -236,6 +246,21 @@ The five toggles control binary rendering options that shape the overall charact
 
 Controls the wet/dry crossfade between the original input video and the Tracer-rendered output. At 100%, the output is fully Tracer. At 0%, the original video passes through unaffected. Intermediate values blend the two, which can produce an interesting semi-transparent overlay of contour lines on top of the source video — an augmented-reality drawing effect.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tracer processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -257,7 +282,7 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 *Live Contour Drawing — simulated result across source images.*
 **Source**: A live camera feed pointed at objects with clear edges — books, hands, geometric shapes.
 
-**Objective**: Learn how the edge detector and persistent canvas interact to build up a contour drawing over time.
+**What You'll Create**: Learn how the edge detector and persistent canvas interact to build up a contour drawing over time.
 
 1. **Set moderate threshold**: Turn Edge Thresh to about 40%. Move objects in front of the camera and watch contour lines appear on the canvas.
 2. **Vary sensitivity**: Lower the threshold to 20%. Subtle textures and soft shadows now register as edges, filling the canvas more densely.
@@ -284,7 +309,7 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 *Classic Etch A Sketch Aesthetic — simulated result across source images.*
 **Source**: Footage with strong geometric edges — architecture, signage, or a test pattern.
 
-**Objective**: Recreate the characteristic silver-screen appearance of the iconic drawing toy.
+**What You'll Create**: Recreate the characteristic silver-screen appearance of the iconic drawing toy.
 
 1. **Powder brightness**: Set Powder Brt to about 80% for a silver-white background.
 2. **Line darkness**: Set Contrast to about 30% for dark scraped lines.
@@ -312,7 +337,7 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 *Inverted Trace with Motion Trails — simulated result across source images.*
 **Source**: Footage with significant motion — dancers, traffic, or hands gesturing.
 
-**Objective**: Use negative mode and moderate decay to create glowing motion trails on a dark background.
+**What You'll Create**: Use negative mode and moderate decay to create glowing motion trails on a dark background.
 
 1. **Enable negative**: Toggle Negative to Invert. The background becomes dark and scraped lines become bright — like phosphor traces on a CRT.
 2. **Low decay**: Set Decay Rate to about 30%. Motion trails persist for a few seconds before fading.
@@ -329,9 +354,6 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 ## Tips
 
-- **Threshold is the primary creative control**: It determines what counts as an "edge." Low thresholds create dense, noisy contour maps; high thresholds produce clean, sparse line drawings.
-- **Decay creates animation**: Without decay, the canvas eventually saturates to solid scraped. Use decay to create a living drawing that builds up and fades in real time.
-- **Continuous mode for live edge visualization**: Stream mode bypasses the canvas entirely, turning Tracer into a simple real-time edge detector — useful for previewing what the threshold captures before committing to canvas mode.
 - **Frame overlay sells the aesthetic**: The red border and white knobs instantly evoke the classic toy. Combine with moderate powder brightness and grain for maximum nostalgia.
 - **Negative mode for phosphor traces**: Inverted rendering on a dark background creates a CRT-like oscilloscope trace effect, especially effective with moving subjects and moderate decay.
 - **Low-resolution charm**: The 128×96 canvas is intentionally chunky. Embrace the blocky pixel aesthetic rather than fighting it — it is the source of Tracer's unique visual character.
@@ -343,17 +365,16 @@ These exercises progress from simple contour detection to full Etch A Sketch sim
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here to store the persistent 128×96 1-bit canvas. |
 | **Canvas** | The 128×96 1-bit bitmap that accumulates detected edge contours over time. |
 | **Contour** | A line or curve tracing a boundary of equal luminance in the image, detected by the gradient operator. |
 | **Decay** | Probabilistic erasure of the canvas contents over time, simulating the shake-to-erase behavior of the physical toy. |
 | **Edge Detection** | The process of identifying pixels where luminance changes sharply, implemented here as a Manhattan gradient with threshold comparison. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the real-time video processing pipeline. |
 | **Gradient** | The rate of luminance change between adjacent pixels; computed separately for horizontal and vertical axes. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here for the aluminum grain texture. |
 | **Line Buffer** | A one-line RAM delay used to access the previous scanline's Y values for vertical gradient computation. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical differences, |∆H| + |∆V|, used as the gradient magnitude. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

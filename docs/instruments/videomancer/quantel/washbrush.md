@@ -68,6 +68,14 @@ Four media textures — airbrush, wash, chalk, and pastel — each produce a dis
 
 ---
 
+## Quick Start
+
+1. **Match frequencies for clean shapes** — 1:1 gives circles, 2:1 gives figure-eights; start with simple ratios before exploring complex ones.
+2. **Permanence is your paint thickness** — low values create watercolor effects that fade within seconds; high values build up like oil paint with lasting marks.
+3. **Chalk mode adds realism** — the LFSR noise breaks up the smooth radial falloff, producing strokes that look like actual dry media on textured paper.
+
+---
+
 ## Background
 
 ### The Quantel Paintbox
@@ -94,6 +102,8 @@ When the Color Source is set to Hue mode, the brush color is selected from an ei
 ---
 
 ## Signal Flow
+
+Brush Position → Distance + Falloff → Media Texture → ... → Mix → Sync Signals
 
 ```
 DDS Phase Accumulators (X Freq, Y Freq)
@@ -237,6 +247,10 @@ The toggles divide into a media selection pair (Media A + Media B, forming a 2-b
 
 Mix crossfades between the dry input signal and the wet canvas-composited output. At 0% the output is pure input video. At 100% the output shows the canvas fully composited over the input. This fader is particularly useful for controlling the canvas intensity in live performance — blending the painting in and out over the underlying video without affecting the ongoing DDS animation or canvas accumulation.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -256,7 +270,7 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
   ]}
 />
 *Simple Airbrush Circle — simulated result across source images.*
-**Objective**: Create a basic circular Lissajous path with the airbrush media, observing how the persistent canvas accumulates paint over time.
+**What You'll Create**: Create a basic circular Lissajous path with the airbrush media, observing how the persistent canvas accumulates paint over time.
 
 1. Set X Freq and Y Freq both to position 1 (matching frequencies = circle)
 2. Set Brush Size to 50% for a medium daub
@@ -283,7 +297,7 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
   ]}
 />
 *Chalk Calligraphy — simulated result across source images.*
-**Objective**: Use complex Lissajous ratios with the chalk texture to create intricate, textured calligraphic patterns.
+**What You'll Create**: Use complex Lissajous ratios with the chalk texture to create intricate, textured calligraphic patterns.
 
 1. Set X Freq to 5 and Y Freq to 3 for a 5:3 Lissajous ratio
 2. Switch to Chalk mode (Media A = Off, Media B = On)
@@ -310,7 +324,7 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
   ]}
 />
 *Video-Sampled Wash Sweep — simulated result across source images.*
-**Objective**: Use Sweep path mode with Video color sampling and the Wash media to create a painterly impression of the input video across the entire canvas.
+**What You'll Create**: Use Sweep path mode with Video color sampling and the Wash media to create a painterly impression of the input video across the entire canvas.
 
 1. Feed a colorful video source (nature footage, art, or color bars)
 2. Switch Path Mode to Sweep for linear scanning
@@ -329,9 +343,6 @@ These exercises explore Washbrush's paint engine from basic brush strokes throug
 
 ## Tips
 
-- **Match frequencies for clean shapes** — 1:1 gives circles, 2:1 gives figure-eights; start with simple ratios before exploring complex ones.
-- **Permanence is your paint thickness** — low values create watercolor effects that fade within seconds; high values build up like oil paint with lasting marks.
-- **Chalk mode adds realism** — the LFSR noise breaks up the smooth radial falloff, producing strokes that look like actual dry media on textured paper.
 - **Sweep mode for full coverage** — when you need the brush to visit every part of the canvas, switch to Sweep mode for systematic left-to-right scanning.
 - **Video sampling creates portraits** — feeding a face or landscape into Video color mode while tracing a space-filling Lissajous creates an impressionistic color reproduction of the source.
 - **Low Intensity + High Permanence = glazing** — many translucent layers building up slowly mimics the glazing technique used in oil painting.

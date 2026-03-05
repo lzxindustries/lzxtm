@@ -68,6 +68,14 @@ The name directly references the bleach chemistry step. In standard C-41 film pr
 
 ---
 
+## Quick Start
+
+1. **Start with desaturation**: The bleach bypass look is primarily about *reduced colour*, not about contrast. Set Bypass Amt first, then add Silver and Contrast to taste.
+2. **ENR for subtlety, Skip for impact**: ENR mode produces a more controlled lift suitable for narrative filmmaking; Skip mode is more aggressive, better for music videos and stylised work.
+3. **Highlight protection saves detail**: If Silver and Contrast push highlights too hard, Hi Prot at 40–60% brings them back without reducing the impact in midtones and shadows.
+
+---
+
 ## Background
 
 ### The Bleach Bypass Process
@@ -240,6 +248,21 @@ The five toggles control the chemical variant, grain character, colour tone, inv
 
 Crossfades between the dry (original) and wet (processed) signal at the output stage using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is fully processed with bleach bypass effects. Intermediate values blend the processed look with the original, useful for dialing in a subtle desaturated, contrasty look without fully committing to the bleach bypass aesthetic.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bleach processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +284,7 @@ These exercises progress from basic desaturation through full silver retention t
 *Basic Desaturation — simulated result across source images.*
 **Source**: Colourful footage — flowers, clothing, or colourful scenery.
 
-**Objective**: Understand how the Bypass Amt control desaturates chroma in stepped thresholds.
+**What You'll Create**: Understand how the Bypass Amt control desaturates chroma in stepped thresholds.
 
 1. **Full colour**: Start with Bypass Amt at 0%. The image passes through with no desaturation.
 2. **Light desat**: Increase Bypass Amt past 25%. A subtle reduction in saturation appears.
@@ -289,7 +312,7 @@ These exercises progress from basic desaturation through full silver retention t
 *Silver Density and Contrast — simulated result across source images.*
 **Source**: A high-dynamic-range scene — a window looking outdoors, or a face lit from one side.
 
-**Objective**: Explore how Silver and Contrast controls interact to create the signature bleach bypass look.
+**What You'll Create**: Explore how Silver and Contrast controls interact to create the signature bleach bypass look.
 
 1. **Set desaturation**: Bypass Amt at about 70%.
 2. **Add silver**: Increase Silver from 0% to 80%. Watch the highlights surge brighter as retained silver adds density.
@@ -317,7 +340,7 @@ These exercises progress from basic desaturation through full silver retention t
 *Full Film Look — simulated result across source images.*
 **Source**: Any footage — this exercise creates the complete bleach bypass film look.
 
-**Objective**: Combine all processing stages for a war-film or noir aesthetic.
+**What You'll Create**: Combine all processing stages for a war-film or noir aesthetic.
 
 1. **Base look**: Bypass Amt ~75%, Silver ~60%, Contrast ~55%.
 2. **Add grain**: Set Grain to about 40%. Fine grain appears as a subtle photographic noise.
@@ -334,9 +357,6 @@ These exercises progress from basic desaturation through full silver retention t
 
 ## Tips
 
-- **Start with desaturation**: The bleach bypass look is primarily about *reduced colour*, not about contrast. Set Bypass Amt first, then add Silver and Contrast to taste.
-- **ENR for subtlety, Skip for impact**: ENR mode produces a more controlled lift suitable for narrative filmmaking; Skip mode is more aggressive, better for music videos and stylised work.
-- **Highlight protection saves detail**: If Silver and Contrast push highlights too hard, Hi Prot at 40–60% brings them back without reducing the impact in midtones and shadows.
 - **Black Pt as "film fog"**: A small Black Pt lift (5–15%) adds the look of under-developed print stock — shadows never reach true black.
 - **Fine grain + Mix = photographic subtlety**: Fine grain at 25–35% with Mix at 70–80% creates a naturalistic film look that integrates seamlessly with video.
 - **Cold + desaturated = war film**: The *Saving Private Ryan* look is primarily high desaturation + moderate silver + cold tone.
@@ -353,12 +373,12 @@ These exercises progress from basic desaturation through full silver retention t
 | **Chroma** | The colour-difference components (U and V) of a YUV video signal, representing hue and saturation independently of brightness. |
 | **Clamping** | Limiting a signal value to a fixed range (typically 0–1023 in 10-bit video) to prevent overflow or underflow artifacts. |
 | **ENR** | Ernesto Novelli Rizzoli process; a controlled secondary silver development technique invented at Technicolor Rome that adds metallic silver proportionally to exposure. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence used for film grain noise. |
 | **Luma** | The brightness component (Y) of a YUV video signal, independent of colour information. |
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value rather than wrapping around on overflow. |
 | **Silver halide** | Light-sensitive crystalline compound (such as silver bromide) embedded in photographic film emulsion that forms the latent image upon exposure. |
 | **Skip bleach** | A variant of bleach bypass that omits the bleach bath entirely rather than shortening it, producing a more aggressive high-contrast effect than ENR. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

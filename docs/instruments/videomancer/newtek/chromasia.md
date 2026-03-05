@@ -68,6 +68,14 @@ At conservative settings — a gentle solarise fold or a light sepia wash — Ch
 
 ---
 
+## Quick Start
+
+1. **Binary mode addressing**: Memorise the three-toggle patterns — 000 Negative, 001 Solarize, 010 Posterize, 011 Colorize, 100 Sepia, 101 Threshold, 110 Color Swap, 111 Sketch. Once internalised, switching modes becomes a physical gesture rather than a menu hunt.
+2. **All Channels is the hidden dimension**: Negative, Solarize, and Posterize behave like entirely different effects depending on whether All Channels is set to Y Only or YUV. Explore both states for every mode.
+3. **Mix fader as a colourist's tool**: Rather than using modes at full strength, blend them at 20–40% via the Mix fader. A subtle Sepia wash or a faint Solarize shimmer can add warmth or texture without overwhelming the source.
+
+---
+
 ## Background
 
 ### Analog Video Effects Heritage
@@ -236,6 +244,10 @@ Toggle 11 (Bypass) routes the delayed original signal directly to the output, by
 
 The Mix fader controls the wet/dry crossfade between the processed signal and the delayed original via a 4-clock interpolator. At 100% (fader fully up), the output is entirely the processed signal. At 0%, the output is entirely the original. Intermediate positions blend the two, which is particularly effective for subtle colour grading — a 30% mix of Sepia over the original adds warmth without obliterating the source colours. The crossfade operates on all three channels simultaneously.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -257,7 +269,7 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 *Solarize Sweep — simulated result across source images.*
 **Source**: Footage or stills with broad tonal range — landscapes, portraits, or gradient test patterns.
 
-**Objective**: Understand the solarize fold curve and the effect of the Intensity threshold on tonal reflection.
+**What You'll Create**: Understand the solarize fold curve and the effect of the Intensity threshold on tonal reflection.
 
 1. **Select Solarize**: Set Mode A On, Mode B Off, Mode C Off (toggle pattern 001).
 2. **Threshold sweep**: Start with Intensity at 0%. Slowly increase — watch as highlights begin to fold back toward black. At 50%, the fold point is at mid-gray. At 100%, only the brightest pixels are reflected.
@@ -284,7 +296,7 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 *Colorize a Monochrome Scene — simulated result across source images.*
 **Source**: Black-and-white footage or a desaturated feed — old film clips, surveillance cameras, or any source with strong tonal contrast.
 
-**Objective**: Learn how the Hue and Saturation knobs paint a single tint across the luminance structure of the image.
+**What You'll Create**: Learn how the Hue and Saturation knobs paint a single tint across the luminance structure of the image.
 
 1. **Select Colorize**: Set Mode A On, Mode B On, Mode C Off (toggle pattern 011).
 2. **Full saturation**: Turn Saturation to maximum. The image is painted in a vivid single hue.
@@ -311,7 +323,7 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 *Sketch to Threshold Composite — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — architecture, typography, silhouettes, or hand-drawn graphics on camera.
 
-**Objective**: Combine Sketch edge detection with Threshold binary conversion to create bold graphic outputs.
+**What You'll Create**: Combine Sketch edge detection with Threshold binary conversion to create bold graphic outputs.
 
 1. **Select Sketch**: Set all three mode toggles On (111).
 2. **Edge Gain sweep**: Start with Edge Gain at 0% — the output is nearly white. Slowly increase until strong edges appear as dark strokes on the bright background.
@@ -327,9 +339,6 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 
 ## Tips
 
-- **Binary mode addressing**: Memorise the three-toggle patterns — 000 Negative, 001 Solarize, 010 Posterize, 011 Colorize, 100 Sepia, 101 Threshold, 110 Color Swap, 111 Sketch. Once internalised, switching modes becomes a physical gesture rather than a menu hunt.
-- **All Channels is the hidden dimension**: Negative, Solarize, and Posterize behave like entirely different effects depending on whether All Channels is set to Y Only or YUV. Explore both states for every mode.
-- **Mix fader as a colourist's tool**: Rather than using modes at full strength, blend them at 20–40% via the Mix fader. A subtle Sepia wash or a faint Solarize shimmer can add warmth or texture without overwhelming the source.
 - **Color Swap sub-modes**: The Secondary knob in Color Swap mode (110) selects among eight different channel routings. Sweep it to discover unexpected false-colour palettes — some swap U and V, others replace chroma with luminance, creating monochrome variants.
 - **Sketch plus feedback**: Route Chromasia's Sketch output back to its input through an external feedback path. The edge detector re-edges its own edges, creating increasingly abstract line patterns that evolve over time.
 - **Sepia vs. Colorize**: Sepia is a convenience preset — a fixed warm brown tint scaled by Intensity. Colorize offers full hue control. If you want a custom-coloured tint (cyan, violet, gold), use Colorize mode and set the Hue knob to taste.
@@ -345,7 +354,6 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 | **Chroma** | The color information in a video signal, encoded as U and V components in the YUV color space, distinct from luminance. |
 | **DIP switch** | Dual In-line Package switch; a miniature toggle switch array on a circuit board used for hardware configuration, referenced as inspiration for Chromasia's binary mode selection. |
 | **Edge detection** | A signal processing technique that identifies boundaries between regions of different brightness by computing pixel-to-pixel differences. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Luminance** | The brightness component (Y) of a video signal, independent of color information. |
 | **LUT** | Look-Up Table; a pre-computed array mapping input values to output values, used here for sine/cosine hue conversion in Colorize mode. |
 | **Posterization** | Reduction of a continuous-tone image to a limited number of discrete brightness levels, producing flat color bands separated by hard edges. |
@@ -353,6 +361,7 @@ These exercises progress from single-mode exploration to multi-mode comparison a
 | **Sabattier effect** | A photographic darkroom technique where partial re-exposure during development causes tonal reversal, producing the characteristic solarized look. |
 | **Solarization** | Partial inversion of tones in an image by reflecting values above a threshold, creating a V-shaped transfer curve and metallic appearance. |
 | **Transfer curve** | A graph mapping input pixel values to output pixel values, defining how a processing stage remaps brightness or color. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

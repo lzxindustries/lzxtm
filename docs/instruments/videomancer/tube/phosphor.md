@@ -68,6 +68,14 @@ At subtle settings Phosphor adds a gentle CRT warmth — faint scanlines, a touc
 
 ---
 
+## Quick Start
+
+1. **Contrast is the master control**: At 0% everything is black regardless of other settings. Start with Contrast around 50% and adjust from there.
+2. **Bloom is directional**: The glow only spreads rightward because the IIR processes pixels left to right. Bright features on the left edge of the screen create long tails; features on the right have nowhere to bloom.
+3. **Scanlines need sufficient contrast**: If the image is too dim (low Contrast × low Brightness), the scanline darkening is not visible because the dark and light lines are both near black.
+
+---
+
 ## Background
 
 ### CRT Phosphor Persistence
@@ -94,6 +102,8 @@ Early arcade games and oscilloscope displays used CRT tubes driven in "vector" m
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -239,7 +249,29 @@ The five toggles control independent binary features. Scan Mode and Bloom Axis a
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the delayed input signal and the processed CRT output. At 0% the output is the unprocessed input (dry). At 100% the output is the full phosphor simulation (wet). Intermediate values blend the two linearly via the 4-clock interpolator, allowing a partial CRT tint to be mixed into the signal.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Phosphor processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Phosphor-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -262,7 +294,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 *Contrast and Brightness Calibration — simulated result across source images.*
 **Source**: A greyscale gradient or colour bar test pattern.
 
-**Objective**: Learn how contrast and brightness interact as a gain-and-offset pair, and observe the shift-add contrast approximation.
+**What You'll Create**: Learn how contrast and brightness interact as a gain-and-offset pair, and observe the shift-add contrast approximation.
 
 1. **Unity setup**: Set Contrast to ~50% and Brightness to ~50%. The test pattern should pass through with minimal change — this is the unity gain/offset point.
 2. **Swept contrast**: Slowly reduce Contrast to 0%. The image fades to black as gain drops. Now sweep from 0% to 100% and watch the signal expand. Notice that the gain does not increase perfectly smoothly — the shift-add approximation produces 8 discrete steps.
@@ -289,7 +321,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 *Scanline and Phosphor CRT Look — simulated result across source images.*
 **Source**: Live camera footage or full-colour video content.
 
-**Objective**: Build the classic CRT monitor aesthetic by combining scanlines and phosphor tinting.
+**What You'll Create**: Build the classic CRT monitor aesthetic by combining scanlines and phosphor tinting.
 
 1. **Green terminal**: Set Phosphor to 0 (P1 green). The image turns monochrome green. This is the look of a 1970s terminal or early Apple II monitor.
 2. **Add scanlines**: Increase Scanlines to ~50%. Dark gaps appear between alternate lines — the characteristic CRT raster. At ~80% the effect becomes quite pronounced.
@@ -317,7 +349,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 *Full Retro CRT Simulation — simulated result across source images.*
 **Source**: High-contrast video — text on a dark background, arcade game footage, or bold graphic content.
 
-**Objective**: Combine all processing stages for a full retro CRT simulation: gain, scanlines, bloom, vignette, and phosphor tint.
+**What You'll Create**: Combine all processing stages for a full retro CRT simulation: gain, scanlines, bloom, vignette, and phosphor tint.
 
 1. **Start from Exercise 2**: Begin with P1 green and moderate scanlines.
 2. **Add bloom**: Increase Bloom to ~60%. Bright areas develop a rightward glow trail — this is the IIR horizontal bloom. Notice the glow only spreads to the right, not evenly in both directions.
@@ -334,9 +366,6 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 
 ## Tips
 
-- **Contrast is the master control**: At 0% everything is black regardless of other settings. Start with Contrast around 50% and adjust from there.
-- **Bloom is directional**: The glow only spreads rightward because the IIR processes pixels left to right. Bright features on the left edge of the screen create long tails; features on the right have nowhere to bloom.
-- **Scanlines need sufficient contrast**: If the image is too dim (low Contrast × low Brightness), the scanline darkening is not visible because the dark and light lines are both near black.
 - **Hi Contrast transforms the signal**: It is not a post-process — it replaces the analogue signal with a 1-bit digital version. Use it deliberately, not as a subtle effect.
 - **Vignette frames the image**: Enable Vignette as the final touch to complete the CRT illusion. It works best with green or amber phosphor tint.
 - **Custom presets via MIDI**: Automate the Phosphor selector via MIDI CC to cycle through CRT types in a performance.
@@ -360,6 +389,7 @@ These exercises progress from basic gain adjustment through CRT scanline structu
 | **Shift-Add** | A multiplication approximation technique that replaces hardware multipliers with combinations of bit-shifts and additions. |
 | **Vector Display** | A CRT display mode where the electron beam traces lines directly rather than raster-scanning, producing bright lines on a dark background. |
 | **Vignette** | Darkening at the edges of the frame, simulating the optical falloff of CRT displays. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

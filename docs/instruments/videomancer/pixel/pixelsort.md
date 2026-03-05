@@ -68,6 +68,14 @@ The combination of sort direction (ascending vs descending), threshold gating, w
 
 ---
 
+## Quick Start
+
+1. **Threshold is the composition tool**: The threshold boundary between sorted and unsorted is where the magic happens — place it at the edge of highlights for subtle melt, at midtones for dramatic dissolution.
+2. **Window as morphology**: With continuous sorting, position 0 is erosion and position 7 is dilation — use this as a fast morphological operator.
+3. **Median filtering**: Window at ~50% in Sort mode acts as an effective noise reducer (median of 8).
+
+---
+
 ## Background
 
 ### What Is Pixel Sorting?
@@ -86,6 +94,8 @@ The **odd-even transposition sort** (also known as brick sort) is a parallel sor
 ---
 
 ## Signal Flow
+
+Y, U, V → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -125,7 +135,7 @@ The 8-pixel shift register captures consecutive horizontal pixels and feeds them
 | Default | 50% |
 | Suffix | % |
 
-Sets the luminance threshold below which pixels pass through the sort network unchanged. At 0%, all pixels participate in sorting regardless of brightness. As Threshold increases, only pixels brighter than the threshold enter the sort window — darker pixels pass through untouched. This creates the signature pixel-sort boundary between intact image and dissolved streaks. At maximum, only the very brightest highlights are sorted.
+At 0%, all pixels participate in sorting regardless of brightness. As Threshold increases, only pixels brighter than the threshold enter the sort window — darker pixels pass through untouched. This creates the signature pixel-sort boundary between intact image and dissolved streaks. At maximum, only the very brightest highlights are sorted. Internally, sets the luminance threshold below which pixels pass through the sort network unchanged.
 
 ---
 
@@ -147,7 +157,7 @@ Controls which position in the sorted 8-pixel window is output. The knob maps to
 | Default | 100% |
 | Suffix | % |
 
-Controls the overall intensity of the sorting effect. At maximum (default), the sorted output is used at full strength. As Intensity decreases, the sorted result is blended with the original pixel, reducing the visual impact of the reordering. This provides a more gradual control than the wet/dry mix fader, allowing subtle sorting artifacts to be introduced.
+At maximum (default), the sorted output is used at full strength. As Intensity decreases, the sorted result is blended with the original pixel, reducing the visual impact of the reordering. This provides a more gradual control than the wet/dry mix fader, allowing subtle sorting artifacts to be introduced. Internally, controls the overall intensity of the sorting effect.
 
 ---
 
@@ -209,6 +219,21 @@ Switches 7–11 control sort direction, sorting key, gating mode, luminance inve
 
 Controls the wet/dry mix between the sorted output and the original input. At 100%, the full sorting effect is visible. Lowering the fader blends the original back in, allowing subtle sorting artifacts to be overlaid on the intact image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Pixel Sort processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -230,7 +255,7 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 *Classic Pixel Sort with Threshold — simulated result across source images.*
 **Source**: High-contrast portrait or landscape with distinct bright and dark regions — faces, skylines, or architectural shots.
 
-**Objective**: Create the classic pixel-sort look where bright areas dissolve into horizontal streaks while dark areas remain intact.
+**What You'll Create**: Create the classic pixel-sort look where bright areas dissolve into horizontal streaks while dark areas remain intact.
 
 1. **Enable threshold**: Set Mode to Threshold (Switch 9). Set Threshold to ~40%.
 2. **Full window**: Set Window to maximum (position 7, output brightest pixel).
@@ -258,7 +283,7 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 *Window Position Exploration — simulated result across source images.*
 **Source**: Geometric or graphic content with clear edges and varied brightness — text, patterns, or UI elements.
 
-**Objective**: Understand how the Window knob selects different positions in the sorted pixel array, from erosion to dilation effects.
+**What You'll Create**: Understand how the Window knob selects different positions in the sorted pixel array, from erosion to dilation effects.
 
 1. **Continuous sort**: Set Mode to Sort (Switch 9). All pixels participate.
 2. **Minimum window** (position 0): The output is the darkest pixel in each 8-pixel neighborhood. This is morphological erosion — bright features shrink.
@@ -286,7 +311,7 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 *Chroma Sorting and Creative Glitch — simulated result across source images.*
 **Source**: Colorful footage with saturated hues — flowers, graffiti, color bars, or abstract video art.
 
-**Objective**: Explore chroma-key sorting and combine with inversion and sort direction for creative glitch effects.
+**What You'll Create**: Explore chroma-key sorting and combine with inversion and sort direction for creative glitch effects.
 
 1. **Chroma sort**: Set Channel to Chroma (Switch 8). Pixels are now sorted by U (blue-yellow) instead of brightness.
 2. **Observe color banding**: Colors group into horizontal bands — blues cluster together, yellows cluster separately. Very different from luma sorting.
@@ -302,9 +327,6 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 
 ## Tips
 
-- **Threshold is the composition tool**: The threshold boundary between sorted and unsorted is where the magic happens — place it at the edge of highlights for subtle melt, at midtones for dramatic dissolution.
-- **Window as morphology**: With continuous sorting, position 0 is erosion and position 7 is dilation — use this as a fast morphological operator.
-- **Median filtering**: Window at ~50% in Sort mode acts as an effective noise reducer (median of 8).
 - **Chroma creates color banding**: Chroma sorting produces effects impossible with brightness sorting — use on colorful sources.
 - **Mix for subtlety**: Heavy sorting at 20-30% mix adds a subtle digital texture without destroying the image.
 - **Bias fine-tunes threshold**: When the Threshold knob position is right but the boundary isn't quite where you want it, adjust Bias instead.
@@ -320,7 +342,6 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 | **Compare-and-Swap** | The fundamental sorting operation: compare two elements and exchange them if they're out of order. |
 | **Dilation** | Morphological operation that outputs the local maximum, expanding bright features. |
 | **Erosion** | Morphological operation that outputs the local minimum, shrinking bright features. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Glitch Art** | An art form that exploits digital or analog errors for aesthetic effect. |
 | **Median** | The middle value in a sorted set; outputs moderate values that reject outliers. |
 | **Odd-Even Transposition Sort** | A parallel sorting algorithm that alternates between comparing even-indexed and odd-indexed adjacent pairs. |
@@ -328,6 +349,7 @@ These exercises progress from basic pixel sorting with threshold gating to creat
 | **Shift Register** | A chain of flip-flops that creates a sliding window over consecutive data values. |
 | **Sort Key** | The value used to determine ordering; either luminance (Y) or chrominance (U) in Pixel Sort. |
 | **Threshold** | A brightness value below which pixels bypass sorting, creating the boundary between intact and dissolved regions. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

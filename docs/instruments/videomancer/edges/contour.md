@@ -68,6 +68,14 @@ Every Nth contour can be promoted to an *index contour* — drawn brighter and m
 
 ---
 
+## Quick Start
+
+1. **Start coarse, refine fine**: Begin with Interval low (16 levels) to see the broad contour structure, then increase to add detail. Dense contours on a busy source can be hard to read.
+2. **Index hierarchy is essential**: Enable the Color toggle and set Major Frq to create bold/fine line weight distinction. Without index hierarchy, dense contour fields become an undifferentiated mesh.
+3. **Source fill for overlay**: Use source fill mode (Style) when you want contour lines drawn on top of the original video, like a topographic overlay on a satellite photo.
+
+---
+
 ## Background
 
 ### Topographic Maps and Iso-Lines
@@ -90,6 +98,8 @@ Cartographic contour rendering has been used as a creative tool since the earlie
 ---
 
 ## Signal Flow
+
+Input Register → Contour Detection → Classify + Color → Composite Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -148,7 +158,7 @@ The critical interaction is between quantization and neighbor comparison. The In
 | Default | 50% |
 | Suffix | % |
 
-Controls the quantization interval — the spacing between adjacent contour levels. At low values (counter-clockwise), the luma channel is quantized coarsely into as few as 16 levels, producing bold, widely-spaced contour lines like a large-scale topographic map. As the control increases, the number of levels grows — 32, 64, 128, 256, up to 512 — and the contour lines pack closer together, revealing finer tonal detail in the source. At maximum, the contour density approaches the source resolution and nearly every pixel boundary becomes a contour, creating a dense texture of lines.
+At low values (counter-clockwise), the luma channel is quantized coarsely into as few as 16 levels, producing bold, widely-spaced contour lines like a large-scale topographic map. As the control increases, the number of levels grows — 32, 64, 128, 256, up to 512 — and the contour lines pack closer together, revealing finer tonal detail in the source. At maximum, the contour density approaches the source resolution and nearly every pixel boundary becomes a contour, creating a dense texture of lines. Internally, controls the quantization interval — the spacing between adjacent contour levels.
 
 ---
 
@@ -159,7 +169,7 @@ Controls the quantization interval — the spacing between adjacent contour leve
 | Default | 50% |
 | Suffix | % |
 
-Sets the brightness of the contour lines themselves. At maximum, contour lines are drawn at full white; at minimum, they are nearly invisible. Index contours always appear at the full brightness set by this control, while regular contours are drawn at half that brightness. This creates the visual hierarchy of bold and fine lines that makes the topographic structure readable. Setting this control low while keeping Fill Xpar high creates a subtle ghost-line effect where contours are barely visible against the fill.
+At maximum, contour lines are drawn at full white; at minimum, they are nearly invisible. Index contours always appear at the full brightness set by this control, while regular contours are drawn at half that brightness. This creates the visual hierarchy of bold and fine lines that makes the topographic structure readable. Setting this control low while keeping Fill Xpar high creates a subtle ghost-line effect where contours are barely visible against the fill. Internally, sets the brightness of the contour lines themselves.
 
 ---
 
@@ -211,8 +221,8 @@ Reserved for future use. Adjusting this control has no effect on the current pro
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Topo | Bathy |
-| **8 — Color** | Brown | Green |
+| **7 — Style** | Topo | Terrain |
+| **8 — Color** | Brown | Source |
 | **9 — Fill** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -230,7 +240,29 @@ The five toggles control independent aspects of the contour rendering. Style sel
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the contour-processed signal and the original video. At 0% the output is the unprocessed source. At 100% the output is the full contour rendering. Intermediate positions create a transparent overlay effect where contour lines are blended over the source image at partial opacity. Three independent interpolator instances handle Y, U, and V channels in parallel, each adding 4 clocks of latency to the pipeline.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Contour processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Contour-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -253,7 +285,7 @@ These exercises introduce contour rendering from basic topographic line work thr
 *Basic Topographic Map — simulated result across source images.*
 **Source**: A close-up of a face or portrait with smooth tonal gradients — skin tones produce well-spaced, readable contour lines.
 
-**Objective**: Create a clean topographic contour rendering with bold index lines and fine intermediate contours.
+**What You'll Create**: Create a clean topographic contour rendering with bold index lines and fine intermediate contours.
 
 1. **Set the contour interval**: Turn Interval to about 40% to create ~64 quantization levels — a moderate contour density.
 2. **Enable flat fill**: Set Style to flat fill mode. Set Fill Xpar to about 10% for a dark background.
@@ -282,7 +314,7 @@ These exercises introduce contour rendering from basic topographic line work thr
 *Color Terrain Overlay — simulated result across source images.*
 **Source**: A landscape or nature scene with broad tonal variation — hills, sky gradients, foliage.
 
-**Objective**: Create a colored contour overlay on top of the original source video, like a terrain map printed on a satellite photograph.
+**What You'll Create**: Create a colored contour overlay on top of the original source video, like a terrain map printed on a satellite photograph.
 
 1. **Source fill**: Set Style to source fill mode so the original video shows between contour lines.
 2. **Moderate density**: Set Interval to about 55% for a comfortable contour spacing.
@@ -311,7 +343,7 @@ These exercises introduce contour rendering from basic topographic line work thr
 *Dense Contour Texture — simulated result across source images.*
 **Source**: Abstract video patterns, feedback loops, or color bars — high-contrast material with many brightness transitions.
 
-**Objective**: Push the contouring into extreme density to create texture effects rather than readable maps.
+**What You'll Create**: Push the contouring into extreme density to create texture effects rather than readable maps.
 
 1. **Maximum density**: Turn Interval fully clockwise for 512 quantization levels. The contour lines become so dense they form a texture.
 2. **Flat dark fill**: Set Style to flat fill. Set Fill Xpar to about 5% for near-black background.
@@ -328,9 +360,6 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 ## Tips
 
-- **Start coarse, refine fine**: Begin with Interval low (16 levels) to see the broad contour structure, then increase to add detail. Dense contours on a busy source can be hard to read.
-- **Index hierarchy is essential**: Enable the Color toggle and set Major Frq to create bold/fine line weight distinction. Without index hierarchy, dense contour fields become an undifferentiated mesh.
-- **Source fill for overlay**: Use source fill mode (Style) when you want contour lines drawn on top of the original video, like a topographic overlay on a satellite photo.
 - **Flat fill for isolation**: Use flat fill mode with a dark Fill Xpar to isolate the contour structure against a clean background — ideal for pure cartographic rendering.
 - **Color coding**: Enable Fill toggle and use Smooth to tint contour lines brown (terrain), blue-green (bathymetric), or any intermediate hue for thematic cartographic effects.
 - **Feedback creates nested contours**: Routing the contoured output back into the input creates contour lines *of* contour lines — recursive topographic structures that build up into intricate patterns.
@@ -343,17 +372,14 @@ These exercises introduce contour rendering from basic topographic line work thr
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; a dedicated memory resource on the FPGA used here for the video line buffer that stores quantized luma from the previous scan line. |
 | **Contour Line** | A curve connecting points of equal value; in this program, points of equal quantized luminance. |
 | **Index Contour** | A bold contour line marking a major interval, drawn at full brightness versus the half brightness of regular contour lines. |
-| **Interpolator** | A hardware module that computes a weighted average between two values; used here for the wet/dry mix stage. |
 | **Iso-Luminance** | A surface or line of constant brightness, analogous to an iso-altitude line on a topographic map. |
 | **Line Buffer** | A BRAM-based delay that stores one full scan line of data, enabling vertical neighbor comparison between consecutive lines. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage operates on one clock cycle; this program uses an 8-clock pipeline. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by discarding low-order bits. |
 | **Topographic Map** | A map that uses contour lines to represent the shape and elevation of terrain; the visual metaphor for this program. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

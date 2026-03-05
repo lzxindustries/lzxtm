@@ -68,6 +68,14 @@ At full tint with contrasting warp and weft hues, Jacquard transforms video into
 
 ---
 
+## Quick Start
+
+1. **Start with shadow**: Shadow is the control that most clearly reveals the weave pattern. Set it to 40–60% before adjusting other parameters.
+2. **Plain for texture, Twill for stripes**: Plain creates uniform background texture; Twill creates more directional, fabric-like diagonal ridges.
+3. **Herringbone is the showstopper**: The V-zigzag pattern is the most visually distinctive and immediately reads as "woven fabric."
+
+---
+
 ## Background
 
 ### Weave Patterns and Binary Matrices
@@ -94,6 +102,8 @@ Real textiles are never perfectly uniform. Thread thickness varies, dye absorpti
 ---
 
 ## Signal Flow
+
+Grid Coordinate → Tint + Shadow → Composite → Output Registration
 
 ```
 Input Video (YUV 4:4:4)
@@ -189,7 +199,7 @@ Selects the hue for weft (horizontal) threads, using the same 8-entry hue lookup
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the strength of the hue tint applied to both warp and weft threads. At zero, no colour shifting occurs — the original video chrominance is preserved (equivalent to Color Src = Video). At maximum, the UV channels are shifted fully toward the selected hue values. Intermediate values produce a partial blend between the original colours and the thread hues.
+At zero, no colour shifting occurs — the original video chrominance is preserved (equivalent to Color Src = Video). At maximum, the UV channels are shifted fully toward the selected hue values. Intermediate values produce a partial blend between the original colours and the thread hues. Internally, controls the strength of the hue tint applied to both warp and weft threads.
 
 ---
 
@@ -200,7 +210,7 @@ Controls the strength of the hue tint applied to both warp and weft threads. At 
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the depth of shadow applied to under-threads. At zero, all threads (over and under) have equal brightness — the weave pattern is visible only through colour differences. As shadow increases, under-threads become progressively darker, creating the illusion of three-dimensional interlacing. At maximum, under-threads are rendered as deep shadows, producing high-contrast weave structures that look almost embossed.
+At zero, all threads (over and under) have equal brightness — the weave pattern is visible only through colour differences. As shadow increases, under-threads become progressively darker, creating the illusion of three-dimensional interlacing. At maximum, under-threads are rendered as deep shadows, producing high-contrast weave structures that look almost embossed. Internally, controls the depth of shadow applied to under-threads.
 
 ---
 
@@ -208,7 +218,7 @@ Controls the depth of shadow applied to under-threads. At zero, all threads (ove
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Plain | Twill |
+| **7 — Pattern** | Plain | Herring |
 | **8 — Noise** | Off | On |
 | **9 — Color Src** | Tint | Video |
 | **10 — Grid Show** | Off | On |
@@ -227,7 +237,19 @@ The five toggle switches control qualitatively different aspects of the program.
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the processed (woven) signal and the delayed dry input signal. At 100%, the output shows the full textile effect. At 0%, the output is the original input. Intermediate values blend the weave texture with the source, creating a semi-transparent overlay that lets the original image show through the fabric pattern. This is particularly useful at 30–50% mix, where the weave adds subtle canvas texture to an otherwise normal image.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Jacquard-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +272,7 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 *Basic Weave Patterns — simulated result across source images.*
 **Source**: A static image or live camera feed with varied colour and contrast — a face, landscape, or still life.
 
-**Objective**: Compare the four weave patterns and understand thread width scaling.
+**What You'll Create**: Compare the four weave patterns and understand thread width scaling.
 
 1. **Plain weave**: Set Pattern to Plain. Set Thread Width to step 4 (width = 5 pixels). The image breaks into a checkerboard of lighter and darker squares.
 2. **Increase shadow**: Sweep Shadow to ~60%. The under-thread squares darken, making the weave structure clearly visible.
@@ -279,7 +301,7 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 *Tartan Colourisation — simulated result across source images.*
 **Source**: A well-lit face or portrait — skin tones provide a good neutral base for colour tinting.
 
-**Objective**: Use contrasting warp and weft hues to create tartan-like two-tone fabric.
+**What You'll Create**: Use contrasting warp and weft hues to create tartan-like two-tone fabric.
 
 1. **Contrasting hues**: Set Warp Hue to ~60° (red) and Weft Hue to ~240° (cyan-blue). Set Tint Amount to ~70%.
 2. **Increase shadow**: Shadow to ~50%. The under-thread darkening creates clear depth between the two coloured thread sets.
@@ -307,7 +329,7 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 *Canvas Texture Overlay — simulated result across source images.*
 **Source**: Any footage where you want to add a subtle fabric texture — landscapes, abstract video, or recorded material.
 
-**Objective**: Create a subtle canvas or linen overlay that preserves the original video colours.
+**What You'll Create**: Create a subtle canvas or linen overlay that preserves the original video colours.
 
 1. **Video colour mode**: Set Color Src to Video. The original colours are now preserved — only luma is affected.
 2. **Fine weave**: Set Thread Width to step 2 (width = 3). The texture is fine and dense.
@@ -323,9 +345,6 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 
 ## Tips
 
-- **Start with shadow**: Shadow is the control that most clearly reveals the weave pattern. Set it to 40–60% before adjusting other parameters.
-- **Plain for texture, Twill for stripes**: Plain creates uniform background texture; Twill creates more directional, fabric-like diagonal ridges.
-- **Herringbone is the showstopper**: The V-zigzag pattern is the most visually distinctive and immediately reads as "woven fabric."
 - **Video mode for subtlety**: Set Color Src to Video and use shadow only for a subtle canvas-grain overlay that preserves the original colour.
 - **Small widths disappear at low res**: At SD resolution (720 pixels wide), thread width 2 is essentially invisible. Use width 4+ for visible texture at SD.
 - **Noise adds realism**: The LFSR noise is very subtle (±8 levels on a 1024 scale) but adds perceptible organic quality, especially at larger thread widths.
@@ -349,6 +368,7 @@ These exercises explore Jacquard's textile simulation from basic weave patterns 
 | **UV Offset** | A signed displacement applied to the chrominance channels (U, V) to shift the pixel's hue. |
 | **Warp** | Threads running vertically in a weave; in Jacquard, associated with the Warp Hue control. |
 | **Weft** | Threads running horizontally in a weave; in Jacquard, associated with the Weft Hue control. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

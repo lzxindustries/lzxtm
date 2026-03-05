@@ -35,6 +35,14 @@ Grid spacing is continuously variable across three power-of-two steps, with a de
 
 ---
 
+## Quick Start
+
+1. **Power-of-two spacing**: Grid spacing snaps to 8, 16, 32, 64, or 128 pixels — there are no intermediate sizes. The knob selects among three values within the coarse or fine range.
+2. **Threshold as gate**: The Axis Vis and Scroll Sp knobs act as on/off gates for their respective line directions. Values below ~6% disable the direction entirely.
+3. **Diagonals-only for diamond lattice**: Disable horizontal lines to get a pure diamond/rhombus pattern that reads as a different geometric texture.
+
+---
+
 ## Background
 
 ### Isometric Projection in Technical Drawing
@@ -61,6 +69,8 @@ The vertical scroll mechanism adds a per-frame offset to the vertical counter be
 ---
 
 ## Signal Flow
+
+Clock 1: Input Register → Clock 2: Line Test → Clock 3: Combine Hits → Clock 4: Composite Output → Clocks 5–8: Interpolator
 
 ```
 Input Video (YUV 4:4:4)
@@ -122,7 +132,7 @@ Controls the grid cell size by selecting among three power-of-two spacings. In c
 | Default | 50% |
 | Suffix | % |
 
-Sets the luminance of the grid lines. At 0%, the grid lines are invisible (zero brightness added). At 100%, each grid line adds maximum luma to the source, pushing affected pixels toward peak white. Because the compositing is additive, the effective visual contrast of the grid depends on the source brightness — dark source material shows the grid most clearly, while bright source material may clip to white.
+At 0%, the grid lines are invisible (zero brightness added). At 100%, each grid line adds maximum luma to the source, pushing affected pixels toward peak white. Because the compositing is additive, the effective visual contrast of the grid depends on the source brightness — dark source material shows the grid most clearly, while bright source material may clip to white. Internally, sets the luminance of the grid lines.
 
 ---
 
@@ -174,8 +184,8 @@ This control is reserved and currently has no effect on the output. The correspo
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Grid** | Iso | Axono |
-| **8 — Axes** | All | XY |
+| **7 — Grid** | Iso | Cavalier |
+| **8 — Axes** | All | YZ |
 | **9 — Style** | Thin | Heavy |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -195,6 +205,21 @@ The three active toggles control grid density range, scroll animation enable, an
 
 Controls the wet/dry crossfade between the grid-composited signal and the delayed original input. At 0%, only the original signal passes through. At 100%, the full grid overlay is visible. Intermediate positions blend the two proportionally, allowing subtle grid underlays.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Isometric processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -205,7 +230,7 @@ These exercises explore the grid engine's range from architectural overlays to a
 
 <img src={isometric_exercise1_result} alt="Architectural Grid Overlay result"/>
 *Architectural Grid Overlay — simulated result across source images.*
-**Objective**: Create a clean isometric drafting grid over a video source and explore how spacing and brightness interact.
+**What You'll Create**: Create a clean isometric drafting grid over a video source and explore how spacing and brightness interact.
 
 1. Set Grid Sp to ~50% (64-pixel spacing in coarse mode). Set Line Br to ~60%.
 2. Observe the three-axis isometric grid overlaying the source video.
@@ -223,7 +248,7 @@ These exercises explore the grid engine's range from architectural overlays to a
 
 <img src={isometric_exercise2_result} alt="Animated Scrolling Lattice result"/>
 *Animated Scrolling Lattice — simulated result across source images.*
-**Objective**: Explore the scroll mechanism and dashed line rendering for dynamic pattern generation.
+**What You'll Create**: Explore the scroll mechanism and dashed line rendering for dynamic pattern generation.
 
 1. Enable scrolling by toggling Axes to its alternate position (scroll enable).
 2. Set Rotation (scroll speed) to ~30%. The grid begins to slide vertically.
@@ -240,7 +265,7 @@ These exercises explore the grid engine's range from architectural overlays to a
 
 <img src={isometric_exercise3_result} alt="Selective Axis Patterns result"/>
 *Selective Axis Patterns — simulated result across source images.*
-**Objective**: Use the threshold controls to isolate individual line directions, creating varied geometric textures.
+**What You'll Create**: Use the threshold controls to isolate individual line directions, creating varied geometric textures.
 
 1. Set both Axis Vis and Scroll Sp to ~50% — full three-axis grid visible.
 2. Lower Axis Vis below ~6% — horizontal lines disappear, leaving only diagonals. The pattern becomes a diamond lattice.
@@ -256,9 +281,6 @@ These exercises explore the grid engine's range from architectural overlays to a
 
 ## Tips
 
-- **Power-of-two spacing**: Grid spacing snaps to 8, 16, 32, 64, or 128 pixels — there are no intermediate sizes. The knob selects among three values within the coarse or fine range.
-- **Threshold as gate**: The Axis Vis and Scroll Sp knobs act as on/off gates for their respective line directions. Values below ~6% disable the direction entirely.
-- **Diagonals-only for diamond lattice**: Disable horizontal lines to get a pure diamond/rhombus pattern that reads as a different geometric texture.
 - **Dashing for drafting look**: Enable dashed mode for a technical-drawing aesthetic. The 8-pixel dash period is fixed, so it interacts visually with grid spacing.
 - **Scroll for animation**: Even low scroll speeds create a sense of depth and motion. Fast scroll with fine grid spacing produces moire-like optical textures.
 - **Additive blend**: The grid is always additive — it never subtracts from the source. Consider this when choosing Line Brightness for bright vs. dark source material.
@@ -274,15 +296,13 @@ These exercises explore the grid engine's range from architectural overlays to a
 | **Additive Compositing** | A blending mode where the overlay value is added to the source, clamping at maximum; always brightens. |
 | **Axonometric** | A family of parallel projections that preserve parallelism, of which isometric is a special case with equal foreshortening on all axes. |
 | **Bitmask** | A binary AND operation used to test whether a counter falls on a power-of-two grid boundary; replaces the modulo operator. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Isometric uses zero BRAM — all computation is combinational and registered logic. |
 | **Dashing** | Breaking a continuous line into alternating drawn and undrawn segments using a higher bit of the position counter. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator technique used here for the scroll offset accumulation. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Grid Mask** | The (spacing − 1) bitmask applied to position counters to detect grid line intersections. |
-| **Interpolator** | A linear interpolation module that blends two values using a mix parameter; used for wet/dry crossfade. |
 | **Isometric** | A projection where the three coordinate axes are equally spaced at 120°, preserving parallel lines and equal foreshortening. |
 | **Moire** | An interference pattern created when two regular patterns of similar frequency overlap; can occur with fast scroll and fine grid spacing. |
 | **Raster** | The horizontal scan-line pattern used to render video; the grid is computed per-pixel as the raster sweeps the frame. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

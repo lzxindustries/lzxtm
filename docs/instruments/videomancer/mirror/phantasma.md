@@ -70,6 +70,14 @@ At low Luma Depth settings, Phantasma adds subtle stripe textures to the source.
 
 ---
 
+## Quick Start
+
+1. **Luma Depth is the master blend**: At zero, Phantasma does nothing visible. Start at 100% to design the pattern, then pull back to find the ideal overlay strength.
+2. **Center = neutral for modulation knobs**: All three Luma-to-* knobs cancel their modulation at the 50% mark. Sweep them symmetrically above and below center to see opposite modulation polarities.
+3. **Flip for symmetry**: Ramp stripes have a hard edge; triangle (Flip on) stripes are smooth and symmetric. Triangle mode is usually more visually pleasing for overlays.
+
+---
+
 ## Background
 
 ### Direct Digital Synthesis (DDS)
@@ -92,6 +100,8 @@ The final stripe pattern is the sum of three phase components: the luma-modulate
 ---
 
 ## Signal Flow
+
+Timing Extraction → DDS Phase Accumulators → Luma Modulation → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -234,6 +244,21 @@ The five toggles control waveshaping and output polarity options. Flip and Mirro
 
 Controls the depth of the pattern blend (Luma Depth). At 0% (register = 0), the output is pure input video — the stripes are invisible. At 100% (register = 1023), the output is fully replaced by the generated stripe pattern (Y channel) and neutral gray (UV channels = 512). At intermediate values, the stripes appear as a semi-transparent overlay that progressively desaturates the source image as depth increases.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Phantasma processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +280,7 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 *Basic Stripes — simulated result across source images.*
 **Source**: Any colour video footage — a face, landscape, or colourful test pattern.
 
-**Objective**: Understand the DDS stripe generator and waveshaping controls.
+**What You'll Create**: Understand the DDS stripe generator and waveshaping controls.
 
 1. **Full pattern**: Set Luma Depth to 100% to see the raw pattern with no video blend.
 2. **Stripe frequency**: Sweep Width from low to high. Watch the stripe count increase from a single broad gradient to dozens of thin stripes.
@@ -283,7 +308,7 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 *Luma-Reactive Patterns — simulated result across source images.*
 **Source**: High-contrast footage with clear tonal regions — a face with highlights and shadows, or a black-and-white graphic.
 
-**Objective**: Explore how input video brightness modulates the stripe pattern via the three proc_amp paths.
+**What You'll Create**: Explore how input video brightness modulates the stripe pattern via the three proc_amp paths.
 
 1. **Prepare**: Set Width ~30%, Warp ~30%, Phase ~50%, Flip on, Luma Depth 100%.
 2. **Width modulation**: Sweep Luma to Width away from center. Watch the stripe spacing change according to the video brightness — bright areas get different stripe density than dark areas.
@@ -310,7 +335,7 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 *Pattern Overlay — simulated result across source images.*
 **Source**: Colourful video footage — performance footage, animation, or nature scenes with saturated colours.
 
-**Objective**: Blend the generated pattern with the source video at various depths, exploring the desaturation behaviour.
+**What You'll Create**: Blend the generated pattern with the source video at various depths, exploring the desaturation behaviour.
 
 1. **Set a pattern**: Width ~40%, Warp ~40%, Flip on, Mirror on.
 2. **Reduce depth**: Lower Luma Depth to ~50%. The stripes become a translucent overlay on the source video.
@@ -326,9 +351,6 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 
 ## Tips
 
-- **Luma Depth is the master blend**: At zero, Phantasma does nothing visible. Start at 100% to design the pattern, then pull back to find the ideal overlay strength.
-- **Center = neutral for modulation knobs**: All three Luma-to-* knobs cancel their modulation at the 50% mark. Sweep them symmetrically above and below center to see opposite modulation polarities.
-- **Flip for symmetry**: Ramp stripes have a hard edge; triangle (Flip on) stripes are smooth and symmetric. Triangle mode is usually more visually pleasing for overlays.
 - **Mirror for kaleidoscopes**: Mirror creates symmetric warp patterns that evoke lens or mirror effects, which is why the program sits in the Mirror category.
 - **Feedback loops**: Routing the output back to the input creates recursive luma modulation — the stripes react to themselves, producing complex self-organising patterns.
 - **Monochrome at full depth**: At 100% Luma Depth, the UV channels are fully desaturated. Use this for intentional monochrome pattern replacement.
@@ -350,6 +372,7 @@ These exercises progress from simple stripe generation to complex luma-reactive 
 | **Triangle** | A waveform that rises linearly from 0 to maximum, then falls linearly back to 0, producing symmetric peaks. |
 | **Unpacked Toggle ABI** | A non-standard register layout where each toggle switch uses its own full register, rather than sharing bit positions within a single packed register. |
 | **Warp** | Vertical displacement applied to the horizontal stripe pattern, causing straight lines to undulate. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

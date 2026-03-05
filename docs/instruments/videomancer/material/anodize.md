@@ -68,6 +68,14 @@ At moderate settings, the program produces a convincing metallic tinted surface 
 
 ---
 
+## Quick Start
+
+1. **Moderate saturation is most realistic**: Real anodized aluminum has vivid but not neon-level colour. Saturate at 40-60% looks most authentic.
+2. **Highlight threshold matches the lighting**: Bright studio lighting needs a higher threshold; dim scenes need a lower threshold. Match the threshold to where specular reflections actually are in your source.
+3. **Sheen at ~50% is the sweet spot**: Enough metallic variation to read as metal, not so much that it overwhelms the colour.
+
+---
+
 ## Background
 
 ### What Is Anodizing?

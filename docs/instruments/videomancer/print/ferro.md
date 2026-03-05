@@ -68,6 +68,14 @@ At default settings, Ferro produces a convincing Prussian blue cyanotype with su
 
 ---
 
+## Quick Start
+
+1. **Exposure before contrast**: Set Exposure first to place the tonal range in the H-D curve's sweet spot, then shape the curve with Contrast. Adjusting them in the opposite order requires re-tuning Exposure every time Contrast changes.
+2. **Bleach for vintage fading**: A small amount of Bleach (10–20%) simulates the look of an aged cyanotype that has faded over decades of UV exposure — paler overall with warmer shadows.
+3. **Sepia + warm paper**: The Tea-Toned Sepia preset paired with Warm paper and gentle Bleach produces a convincingly vintage look that resembles a 19th-century albumen print.
+
+---
+
 ## Background
 
 ### Anna Atkins and the Birth of the Cyanotype
@@ -94,6 +102,8 @@ Fine-art photographic prints are made on paper with visible fiber texture — co
 ---
 
 ## Signal Flow
+
+Y Channel → U Channel → V Channel → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Controls the steepness of the Hurter–Driffield sensitometric contrast curve. A
 | Default | 25.0% |
 | Suffix | % |
 
-Scales the amplitude of the LFSR paper fiber noise applied to the luminance channel after colorization and diffusion. At zero the print surface is perfectly smooth. As you increase this control, fine-grained bipolar noise modulates the density, simulating the visible fiber structure of cotton rag paper. At moderate values the texture is subtle and organic, adding the visual warmth of a real handmade print. At high values the noise becomes the dominant signal, breaking the image into a field of luminance speckle that obscures the underlying content.
+At zero the print surface is perfectly smooth. As you increase this control, fine-grained bipolar noise modulates the density, simulating the visible fiber structure of cotton rag paper. At moderate values the texture is subtle and organic, adding the visual warmth of a real handmade print. At high values the noise becomes the dominant signal, breaking the image into a field of luminance speckle that obscures the underlying content. Internally, scales the amplitude of the LFSR paper fiber noise applied to the luminance channel after colorization and diffusion.
 
 ---
 
@@ -178,7 +188,7 @@ Scales the amplitude of the LFSR paper fiber noise applied to the luminance chan
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the IIR lowpass filter coefficient for horizontal edge diffusion, simulating imperfect contact between negative and paper during UV exposure. At zero the filter coefficient (alpha) is zero — no blending with the previous pixel, yielding a sharp image. As you increase the control, alpha grows from 0 toward 15/16, causing each output pixel to blend more heavily with its horizontal predecessor. The effect is a directional smear that softens edges and bleeds detail in the scan direction, closely mimicking the lateral light scatter seen in real contact prints with poor negative-to-paper registration.
+At zero the filter coefficient (alpha) is zero — no blending with the previous pixel, yielding a sharp image. As you increase the control, alpha grows from 0 toward 15/16, causing each output pixel to blend more heavily with its horizontal predecessor. The effect is a directional smear that softens edges and bleeds detail in the scan direction, closely mimicking the lateral light scatter seen in real contact prints with poor negative-to-paper registration. Internally, controls the IIR lowpass filter coefficient for horizontal edge diffusion, simulating imperfect contact between negative and paper during UV exposure.
 
 ---
 
@@ -238,7 +248,29 @@ Toggles 7 and 8 form a 2-bit tone preset selector (4 combinations), controlling 
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input and the processed cyanotype output. At 100% (default, register 1023), the output is fully processed — the complete cyanotype simulation is visible. At 0%, the output is the original unprocessed input. Intermediate positions blend the two using three parallel instances of the unsigned interpolator (one per YUV channel), allowing you to dial in a subtle cyanotype tint over a mostly-clean signal or fade between the raw feed and the full print simulation.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Ferro processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Ferro-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +293,7 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 *Classic Prussian Blue Cyanotype — simulated result across source images.*
 **Source**: A well-lit portrait or still life with recognizable subjects and a wide tonal range — skin tones, fabric, and shadow areas work well.
 
-**Objective**: Create a convincing traditional cyanotype contact print with natural tonality and subtle paper texture.
+**What You'll Create**: Create a convincing traditional cyanotype contact print with natural tonality and subtle paper texture.
 
 1. **Default tone**: With Tone A and Tone B both off, the Classic Prussian Blue preset is active. Observe the Prussian blue rendering of the source.
 2. **Exposure**: Sweep Exposure from minimum to maximum. Watch the print darken (under-exposure) and lighten (over-exposure). Return to the midpoint for balanced density.
@@ -289,7 +321,7 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 *Tea-Toned Sepia Print — simulated result across source images.*
 **Source**: Landscape footage with trees, water, or architecture — subjects that suit warm-toned vintage aesthetics.
 
-**Objective**: Explore toning presets and bleach to create a sepia-toned alternative-process print.
+**What You'll Create**: Explore toning presets and bleach to create a sepia-toned alternative-process print.
 
 1. **Select sepia tone**: Set Tone B on and Tone A off to activate the Tea-Toned Sepia preset. The blue shifts to a warm brown.
 2. **Reduce contrast**: Set Contrast to about 40%. Tea-toned prints historically have a softer, lower-contrast look than Prussian blue cyanotypes.
@@ -317,7 +349,7 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 *Extreme Texture and Diffusion — simulated result across source images.*
 **Source**: High-contrast graphic material — text overlays, geometric patterns, or footage with strong edges.
 
-**Objective**: Push the diffusion and grain controls to their limits to deconstruct the image into abstract texture.
+**What You'll Create**: Push the diffusion and grain controls to their limits to deconstruct the image into abstract texture.
 
 1. **Maximum diffusion**: Set Diffusion to about 80%. The image smears heavily in the horizontal direction — fine detail dissolves into broad tonal washes.
 2. **Heavy grain**: Set Paper Grain to about 75%. The noise dominates — the image becomes a dense field of fiber-like texture with only broad tonal shapes recognizable from the source.
@@ -333,9 +365,6 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 
 ## Tips
 
-- **Exposure before contrast**: Set Exposure first to place the tonal range in the H-D curve's sweet spot, then shape the curve with Contrast. Adjusting them in the opposite order requires re-tuning Exposure every time Contrast changes.
-- **Bleach for vintage fading**: A small amount of Bleach (10–20%) simulates the look of an aged cyanotype that has faded over decades of UV exposure — paler overall with warmer shadows.
-- **Sepia + warm paper**: The Tea-Toned Sepia preset paired with Warm paper and gentle Bleach produces a convincingly vintage look that resembles a 19th-century albumen print.
 - **Grain reveals paper**: Paper Grain is most visible in midtone regions. In deep shadows and pure highlights the noise is clipped, so it disappears at the extremes of the tonal range.
 - **Diffusion is directional**: The IIR filter smears left-to-right only (following the scan direction). Vertical detail is not affected. For a more uniform softness, combine Diffusion with moderate Paper Grain.
 - **Positive polarity for solarization**: Switching to Positive polarity while keeping all other settings at cyanotype defaults produces a solarized-negative appearance — an eerie reversal where bright sky becomes deep blue and dark shadows become paper-white.
@@ -358,6 +387,7 @@ These exercises progress from a basic Prussian blue cyanotype to toned and textu
 | **Prussian Blue** | Iron(III) hexacyanoferrate(II); the deep blue pigment formed during cyanotype development. |
 | **Sensitometry** | The science of measuring photographic materials' response to light exposure; the basis of the H-D curve. |
 | **Toning** | A post-processing step that chemically alters the color of a photographic print, converting the image substance to a different compound (e.g., sepia, selenium, gold). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

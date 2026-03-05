@@ -68,6 +68,14 @@ At low Block Size values the patches are large (64 pixels), giving each tile vis
 
 ---
 
+## Quick Start
+
+1. **Block size is discrete**: Unlike most controls, Block Sz jumps between three sizes (16/32/64) at fixed thresholds rather than sweeping continuously.
+2. **Pot 6 does nothing**: The Padding knob is wired in the TOML but unconnected in hardware. Save it for live-performance misdirection.
+3. **Toggle labels differ from VHDL**: Pattern (Tog 7) controls grid style, Palette (Tog 8) controls pattern count, and Stitch (Tog 9) controls animation — not what the labels suggest.
+
+---
+
 ## Background
 
 ### Sample-and-Hold Grid Division
@@ -94,6 +102,8 @@ When the Animate toggle is active, the LFSR seed is reloaded at each vertical sy
 ---
 
 ## Signal Flow
+
+Grid Position Compute → Pattern Select → Pattern Apply → Compose + Color Jitter
 
 ```
 Input Video (YUV 4:4:4)
@@ -228,8 +238,8 @@ This control is declared in the TOML configuration as "Padding" but is not conne
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Log Cab | Star |
-| **8 — Palette** | Warm | Cool |
+| **7 — Pattern** | Log Cab | Random |
+| **8 — Palette** | Warm | Source |
 | **9 — Stitch** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -248,6 +258,10 @@ The five toggles control structural and behavioral options. Grid Style selects b
 | Suffix | % |
 
 Controls the wet/dry crossfade between the processed and original signals. At 0 the output is entirely dry (original input); at 1023 it is entirely wet (full quilt effect). The crossfade is handled by three parallel `interpolator_u` instances operating on Y, U, and V independently, each taking 4 clock cycles. Intermediate positions create a transparent overlay where the patchwork pattern is blended over the source.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -270,7 +284,7 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 *Bold Patchwork Grid — simulated result across source images.*
 **Source**: A scene with large areas of varied brightness and moderate color — a landscape or portrait with distinct light and dark regions works well.
 
-**Objective**: Create a coarse patchwork with clearly visible block patterns, bold stitch lines, and minimal color variation — a digital quilt with strong graphic structure.
+**What You'll Create**: Create a coarse patchwork with clearly visible block patterns, bold stitch lines, and minimal color variation — a digital quilt with strong graphic structure.
 
 1. Set Block Sz to 0% for 64-pixel blocks
 2. Turn Variety to 50% for moderate pattern contrast
@@ -304,7 +318,7 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 *Fine Mosaic with Color Scatter — simulated result across source images.*
 **Source**: A colorful, high-contrast image — abstract graphics, multicolored patterns, or a brightly lit scene with saturated objects.
 
-**Objective**: Create a dense, jewel-like mosaic with small blocks and strong per-block color variation. Each tile should appear as a distinct hue swatch.
+**What You'll Create**: Create a dense, jewel-like mosaic with small blocks and strong per-block color variation. Each tile should appear as a distinct hue swatch.
 
 1. Set Block Sz to 100% for 16-pixel blocks
 2. Turn Variety to 30% for subtle pattern overlays
@@ -338,7 +352,7 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 *Animated Shimmer Quilt — simulated result across source images.*
 **Source**: A slowly moving video source — a gently shifting abstract pattern, a slow camera pan, or a face with subtle expression changes.
 
-**Objective**: Combine coarse patchwork structure with the Animate mode to create a quilt whose per-block coloring shifts and shimmers over time.
+**What You'll Create**: Combine coarse patchwork structure with the Animate mode to create a quilt whose per-block coloring shifts and shimmers over time.
 
 1. Set Block Sz to 40% for 32-pixel blocks
 2. Turn Variety to 60% for visible but not dominant patterns
@@ -360,9 +374,6 @@ These exercises explore three distinct aspects of the Quilt effect — from coar
 
 ## Tips
 
-- **Block size is discrete**: Unlike most controls, Block Sz jumps between three sizes (16/32/64) at fixed thresholds rather than sweeping continuously.
-- **Pot 6 does nothing**: The Padding knob is wired in the TOML but unconnected in hardware. Save it for live-performance misdirection.
-- **Toggle labels differ from VHDL**: Pattern (Tog 7) controls grid style, Palette (Tog 8) controls pattern count, and Stitch (Tog 9) controls animation — not what the labels suggest.
 - **Color scatter is complementary**: The LFSR jitter is added to U and subtracted from V simultaneously, so blocks shift along the blue-yellow/red-cyan axis rather than becoming arbitrarily colored.
 - **Hash tinting is per-block**: The warm/cool offset is determined by hash bit 3, so it's consistent within each block — neighboring blocks may have opposite tint directions.
 - **Borders override everything**: A pixel on a stitch border loses all source content and pattern overlay — it becomes a flat monochrome line at the stitch brightness value.

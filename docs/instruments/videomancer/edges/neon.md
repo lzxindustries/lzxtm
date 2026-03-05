@@ -68,6 +68,14 @@ The hue wheel divides the 360° color circle into six piecewise sectors, each ma
 
 ---
 
+## Quick Start
+
+1. **Start with high-contrast sources**: The first-order gradient detector responds to horizontal brightness transitions. Sharp vertical edges in the source produce the brightest glow; soft gradients and horizontal structures produce little or nothing.
+2. **Use Hard edge mode for the classic neon look**: Hard threshold creates uniform-intensity tubes that closely mimic real neon signage. Soft mode is better for revealing textural detail.
+3. **Glow Size shift is coarse**: There are only 4 settings (shift 1–4), each doubling or halving the bloom width. Fine-tune the apparent glow width by adjusting Bright and Threshold instead.
+
+---
+
 ## Background
 
 ### First-Order Horizontal Gradient
@@ -94,6 +102,8 @@ The background path offers two modes. In black mode, the background is simply th
 ---
 
 ## Signal Flow
+
+Y Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -224,6 +234,10 @@ The five toggles control independent aspects of the neon rendering. Color select
 
 Mix controls the interpolator crossfade between the dry (original) and wet (processed) signals. At 0, the output is entirely the original video. At 1023, the output is entirely the neon-processed signal. The interpolator operates independently on all three YUV channels with 4-clock latency.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -245,7 +259,7 @@ These exercises build from basic edge glow through color and background styling 
 *Basic Neon Tubes — simulated result across source images.*
 **Source**: A high-contrast graphic or text overlay — sharp black-on-white lettering, geometric shapes, or a title card with clean vertical edges.
 
-**Objective**: Produce clean, bright neon tube outlines from hard-edged source material, learning how Threshold and Glow Size interact to shape the halo.
+**What You'll Create**: Produce clean, bright neon tube outlines from hard-edged source material, learning how Threshold and Glow Size interact to shape the halo.
 
 1. Start with default settings. Observe faint glow on edges of the source.
 2. Lower Threshold to ~20% to detect more edges. Glow becomes more pervasive.
@@ -273,7 +287,7 @@ These exercises build from basic edge glow through color and background styling 
 *Neon Sign on a Dark Scene — simulated result across source images.*
 **Source**: A moderately detailed camera feed — a face, a room interior, or an outdoor scene with varied luminance.
 
-**Objective**: Create the classic neon-sign-over-dark-wall look by combining dim video background with colored edge glow.
+**What You'll Create**: Create the classic neon-sign-over-dark-wall look by combining dim video background with colored edge glow.
 
 1. Set Bg Style to Dim Vid. The source video appears behind the glow.
 2. Lower Bg Level to ~10%. The background dims to barely visible.
@@ -301,7 +315,7 @@ These exercises build from basic edge glow through color and background styling 
 *Source-Colored Glow with Invert — simulated result across source images.*
 **Source**: A colorful, high-contrast feed — flowers, graffiti, a colorful textile, or a saturated video clip.
 
-**Objective**: Use source-colored glow and invert to create an x-ray or blueprint negative of the scene's color edges.
+**What You'll Create**: Use source-colored glow and invert to create an x-ray or blueprint negative of the scene's color edges.
 
 1. Set Color to Source. The glow now inherits the chrominance of the source pixel at each edge.
 2. Set Threshold low (~15%) and Edge to Soft for maximum edge detail.
@@ -317,9 +331,6 @@ These exercises build from basic edge glow through color and background styling 
 
 ## Tips
 
-- **Start with high-contrast sources**: The first-order gradient detector responds to horizontal brightness transitions. Sharp vertical edges in the source produce the brightest glow; soft gradients and horizontal structures produce little or nothing.
-- **Use Hard edge mode for the classic neon look**: Hard threshold creates uniform-intensity tubes that closely mimic real neon signage. Soft mode is better for revealing textural detail.
-- **Glow Size shift is coarse**: There are only 4 settings (shift 1–4), each doubling or halving the bloom width. Fine-tune the apparent glow width by adjusting Bright and Threshold instead.
 - **Bg Level in black mode stays dim**: The pot value is divided by 8 in black mode, so even at full the background only reaches ~127 counts. For a brighter background, switch to Dim Vid mode.
 - **Source color mode ignores Hue and Saturate**: When Color is set to Source, the tube U/V come directly from the input — the Hue and Saturate pots do nothing. Adjust them only in Fixed mode.
 - **IIR glow resets at line boundaries**: The glow accumulator is per-scan-line with no vertical carry, so the glow effect is purely horizontal. This creates scan-line-independent results with no frame-to-frame memory.
@@ -336,12 +347,10 @@ These exercises build from basic edge glow through color and background styling 
 | **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation around the (512, 512) neutral midpoint. |
 | **First-Order Difference** | Edge detection by computing |pixel[x] − pixel[x−1]|, the simplest discrete derivative. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both the current input and its own previous output, creating exponentially decaying response. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
 | **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
 | **Piecewise Hue Mapping** | Dividing the 360° color circle into discrete sectors, each with fixed U/V offset directions, rather than computing continuous trigonometric functions. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

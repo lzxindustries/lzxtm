@@ -68,6 +68,14 @@ At mild settings the effect is a subtle cel-shaded look — flat-shaded regions 
 
 ---
 
+## Quick Start
+
+1. **Fewer levels = bolder lines**: Reducing the quantization depth creates wider tonal bands with edges at each boundary. Two or four levels produce dramatic bold outlines; 32 or more levels produce fine, hair-like lines.
+2. **Edge brightness is your line weight**: Edge Y (Pot 4) controls perceived line weight. Low values give thin, subtle lines that blend into dark fills. High values create bold, high-contrast outlines.
+3. **Colored edges emulate ink tints**: Setting Edge U and Edge V away from center tints the edge lines — sepia for warm, cyan for cool — while the fill can remain monochrome (with Desaturate on) for an authentic printed-engraving look.
+
+---
+
 ## Background
 
 ### The Intaglio Family
@@ -94,6 +102,8 @@ Contour rendering in computer graphics refers to drawing lines only at the silho
 ---
 
 ## Signal Flow
+
+Input Register → Quantization → Edge Detection → Compose Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -193,7 +203,7 @@ Controls the quantization depth for the V (red-difference) chrominance channel. 
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the luminance brightness of edge pixels. At zero, edge lines are black — dark grooves against lighter fill, like an etched copper plate. At maximum, edge lines are bright white — light lines against darker fill, resembling chalk on a blackboard or a photographic negative of an engraving. The edge brightness applies uniformly to all detected edge pixels regardless of which channel triggered the detection.
+At zero, edge lines are black — dark grooves against lighter fill, like an etched copper plate. At maximum, edge lines are bright white — light lines against darker fill, resembling chalk on a blackboard or a photographic negative of an engraving. The edge brightness applies uniformly to all detected edge pixels regardless of which channel triggered the detection. Internally, sets the luminance brightness of edge pixels.
 
 ---
 
@@ -244,6 +254,21 @@ The five toggles partition into three functional groups. Toggles 7 and 8 control
 
 Wet/dry crossfade between the original (dry) signal and the fully processed (wet) output. At 0% the original signal passes through unchanged. At 100% the full engraving effect is applied. Intermediate values blend the two, which can produce a subtle embossed or relief look where the original image shows through the quantized regions with faint edge lines overlaid.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Engraver processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -265,7 +290,7 @@ These three exercises progress from basic posterization to full engraved line ar
 *Cartoon Cel-Shading — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a human face or recognizable subject against a medium-contrast background.
 
-**Objective**: Create a classic cel-shaded animation look with flat-colored regions bounded by dark outlines.
+**What You'll Create**: Create a classic cel-shaded animation look with flat-colored regions bounded by dark outlines.
 
 1. **Set quantization**: Turn Y Levels (Pot 1) to roughly 25% — about 8 visible tonal bands. The image should look like a poster with distinct flat regions.
 2. **Dark edges**: Set Edge Y (Pot 4) to about 10% for thin dark outlines at every level boundary.
@@ -293,7 +318,7 @@ These three exercises progress from basic posterization to full engraved line ar
 *Copper Plate Engraving — simulated result across source images.*
 **Source**: A still photograph or slow-moving footage with fine detail — architecture, foliage, or textured fabrics.
 
-**Objective**: Simulate the look of an intaglio copper plate print using desaturated fill with warm-tinted edge lines.
+**What You'll Create**: Simulate the look of an intaglio copper plate print using desaturated fill with warm-tinted edge lines.
 
 1. **Moderate quantization**: Set Y Levels to about 40% for 16–32 visible tonal bands — enough to preserve some modeling in the fill.
 2. **Bright edges**: Increase Edge Y (Pot 4) to about 70% for prominent white-on-dark edge lines.
@@ -321,7 +346,7 @@ These three exercises progress from basic posterization to full engraved line ar
 *Pure Line Drawing — simulated result across source images.*
 **Source**: High-contrast footage — text on a screen, geometric objects, or a high-contrast face lit from the side.
 
-**Objective**: Extract only edge lines with no fill, producing a contour line drawing.
+**What You'll Create**: Extract only edge lines with no fill, producing a contour line drawing.
 
 1. **Coarse quantization**: Set Y Levels to about 15% for very few levels — bold, widely-spaced level transitions produce thick line clusters.
 2. **Edge Only mode**: Switch Edge Mode (Toggle 7) to Edge Only. The fill disappears, replaced by black.
@@ -337,9 +362,6 @@ These three exercises progress from basic posterization to full engraved line ar
 
 ## Tips
 
-- **Fewer levels = bolder lines**: Reducing the quantization depth creates wider tonal bands with edges at each boundary. Two or four levels produce dramatic bold outlines; 32 or more levels produce fine, hair-like lines.
-- **Edge brightness is your line weight**: Edge Y (Pot 4) controls perceived line weight. Low values give thin, subtle lines that blend into dark fills. High values create bold, high-contrast outlines.
-- **Colored edges emulate ink tints**: Setting Edge U and Edge V away from center tints the edge lines — sepia for warm, cyan for cool — while the fill can remain monochrome (with Desaturate on) for an authentic printed-engraving look.
 - **Horizontal-only edges give vertical lines**: The edge detector compares each pixel with its left neighbor. This means it detects *horizontal transitions*, which produce *vertical edge lines*. Diagonal and horizontal structures in the source create the densest line patterns.
 - **Edge Only for contour extraction**: Edge Only mode (Toggle 7) discards the fill entirely, leaving a pure line drawing on black. This is useful as a key source or overlay layer in a multi-program video chain.
 - **Invert before quantizing**: Edge Invert flips luminance *before* the quantizer sees it, so the set of pixels assigned to each level changes. This repositions every edge in the image — a fast way to explore alternative line compositions from the same source.
@@ -357,12 +379,11 @@ These three exercises progress from basic posterization to full engraved line ar
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Contour** | A line drawn at the boundary of a region; in NPR rendering, contour lines mark silhouettes and creases. |
 | **Edge Detection** | A signal processing technique that identifies abrupt transitions in value between adjacent samples. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Intaglio** | A family of printmaking techniques where the image is incised into a surface (engraving, etching, mezzotint). |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

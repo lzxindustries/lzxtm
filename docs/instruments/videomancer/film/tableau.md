@@ -68,6 +68,14 @@ All processing is per-pixel with zero BRAM usage. The desaturation and contrast 
 
 ---
 
+## Quick Start
+
+1. **Start with geometry before processing**: Set Split Pos, Axis, and Angle first to position the matte boundary where you want it. Then engage desaturation and tint to process the matte region.
+2. **Wide feather hides the boundary**: A feather width of 30–50% makes the matte line nearly invisible. This is the key to a convincing composite — the viewer shouldn't see where the split is.
+3. **Sepia tint for vintage look**: A Tint Color of ~10% produces a warm sepia cast that closely resembles aged oil paint and early Technicolor matte paintings.
+
+---
+
 ## Background
 
 ### Glass Painting in Cinema
@@ -94,6 +102,8 @@ Real glass paintings were photographed alongside the live action, so they acquir
 ---
 
 ## Signal Flow
+
+Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ The alpha composite uses only the top 4 bits of the 10-bit alpha value, giving 1
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the position of the matte boundary along the primary axis. At 0%, the boundary sits at one edge of the frame and the entire image is the matte region. At 100%, the boundary moves to the opposite edge and the entire image is the live plate. At 50%, the frame is split roughly in half. The exact pixel position depends on the frame dimensions and the current angle setting.
+At 0%, the boundary sits at one edge of the frame and the entire image is the matte region. At 100%, the boundary moves to the opposite edge and the entire image is the live plate. At 50%, the frame is split roughly in half. The exact pixel position depends on the frame dimensions and the current angle setting. Internally, controls the position of the matte boundary along the primary axis.
 
 ---
 
@@ -178,7 +188,7 @@ Controls the angle or tilt of the matte boundary. The pot is mapped to eight dis
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the width of the feather zone at the matte boundary. At 0%, the transition is a hard step — pixels are either fully live or fully matte. As the control increases, the alpha ramp widens, creating a gradual blend zone between the two regions. Wide feather settings make the matte line nearly invisible; narrow settings produce a visible hard edge suitable for split-screen effects.
+At 0%, the transition is a hard step — pixels are either fully live or fully matte. As the control increases, the alpha ramp widens, creating a gradual blend zone between the two regions. Wide feather settings make the matte line nearly invisible; narrow settings produce a visible hard edge suitable for split-screen effects. Internally, controls the width of the feather zone at the matte boundary.
 
 ---
 
@@ -189,7 +199,7 @@ Controls the width of the feather zone at the matte boundary. At 0%, the transit
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the amount of desaturation applied to the matte region. At 0%, the matte region retains its original color saturation. As the control increases, U and V channels are blended toward neutral (512) using shift-based arithmetic quantized to eight levels. At maximum the matte region is nearly monochrome, simulating the muted palette of oil paint on glass.
+At 0%, the matte region retains its original color saturation. As the control increases, U and V channels are blended toward neutral (512) using shift-based arithmetic quantized to eight levels. At maximum the matte region is nearly monochrome, simulating the muted palette of oil paint on glass. Internally, controls the amount of desaturation applied to the matte region.
 
 ---
 
@@ -211,7 +221,7 @@ Selects the tint hue applied to the desaturated matte region. The 10-bit registe
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of the matte crawl artifact. At 0%, no crawl is visible. As the control increases, a brightness pulse appears along the matte boundary that shifts phase once per frame. Higher values produce a more prominent crawl — a bright flash where the matte line sits. The crawl is only visible near the boundary (within ±3 pixels of the matte distance zero-crossing) and only during half of the DDS cycle, creating an intermittent flicker.
+At 0%, no crawl is visible. As the control increases, a brightness pulse appears along the matte boundary that shifts phase once per frame. Higher values produce a more prominent crawl — a bright flash where the matte line sits. The crawl is only visible near the boundary (within ±3 pixels of the matte distance zero-crossing) and only during half of the DDS cycle, creating an intermittent flicker. Internally, controls the intensity of the matte crawl artifact.
 
 ---
 
@@ -238,7 +248,29 @@ The five toggles configure the composite's geometry, region assignment, texture,
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original signal and the composited result. At 100%, the output is fully processed. At 0%, the output is the unmodified input. This provides a final control over the composite opacity — useful for blending subtle matte effects into the live signal.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tableau processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Tableau-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +293,7 @@ These exercises progress from a basic split-screen composite to a full cinematic
 *Simple Split Screen — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear horizontal features (horizon line, architectural divisions).
 
-**Objective**: Learn how the split position, axis, and feather controls define the matte boundary geometry.
+**What You'll Create**: Learn how the split position, axis, and feather controls define the matte boundary geometry.
 
 1. **Horizontal split**: Confirm Split Axis is set to Horiz. Set Split Pos to 50%. The frame divides into upper and lower halves.
 2. **Move the boundary**: Sweep Split Pos from 0% to 100%. Watch the matte line travel vertically across the frame.
@@ -289,7 +321,7 @@ These exercises progress from a basic split-screen composite to a full cinematic
 *Painted Region Processing — simulated result across source images.*
 **Source**: Footage with a visible sky or background area suitable for matte painting simulation.
 
-**Objective**: Explore desaturation, contrast compression, and tinting to create a painterly matte region.
+**What You'll Create**: Explore desaturation, contrast compression, and tinting to create a painterly matte region.
 
 1. **Set the split**: Position the matte boundary so the sky or background area falls in the matte region (adjust Split Pos and Invert Side as needed).
 2. **Desaturate**: Increase Desaturate from 0% to ~75%. Watch the matte region lose color, shifting toward monochrome.
@@ -316,7 +348,7 @@ These exercises progress from a basic split-screen composite to a full cinematic
 *Full Cinematic Composite — simulated result across source images.*
 **Source**: Any footage — especially material with an interesting horizon, skyline, or background/foreground division.
 
-**Objective**: Combine all Tableau features for a complete glass painting composite with crawl and grain artifacts.
+**What You'll Create**: Combine all Tableau features for a complete glass painting composite with crawl and grain artifacts.
 
 1. **Set geometry**: Position the split and angle to place the boundary along a natural feature in the frame.
 2. **Process the matte**: Set Desaturate ~60%, Tint Color ~10% (sepia), Feather ~35%.
@@ -332,9 +364,6 @@ These exercises progress from a basic split-screen composite to a full cinematic
 
 ## Tips
 
-- **Start with geometry before processing**: Set Split Pos, Axis, and Angle first to position the matte boundary where you want it. Then engage desaturation and tint to process the matte region.
-- **Wide feather hides the boundary**: A feather width of 30–50% makes the matte line nearly invisible. This is the key to a convincing composite — the viewer shouldn't see where the split is.
-- **Sepia tint for vintage look**: A Tint Color of ~10% produces a warm sepia cast that closely resembles aged oil paint and early Technicolor matte paintings.
 - **Crawl adds authenticity**: A subtle crawl (Crawl Int ~20–30%) adds the telltale artifact that signals "optical composite" to the viewer. Too much crawl breaks the illusion; too little looks too clean.
 - **Grain matches textures**: Enabling grain in the matte region prevents it from looking "too digital" compared to a noisy input. The grain amplitude is small and adds photographic texture without overwhelming the image.
 - **Combine with other programs**: Tableau is most powerful when the painted region is replaced with output from another program in a feedback chain, rather than just desaturation of the same input.
@@ -353,13 +382,12 @@ These exercises progress from a basic split-screen composite to a full cinematic
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator that increments each clock cycle. |
 | **Desaturation** | Reducing color saturation by blending chrominance channels toward their neutral value (512), shifting the image toward monochrome. |
 | **Feather** | A gradual blend zone at the boundary between two composited regions, softening the transition to hide the matte line. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Glass Painting** | A traditional visual effects technique where scenery is painted onto glass placed between the camera and the live-action set. |
 | **LFSR** | Linear Feedback Shift Register; a digital circuit that generates pseudo-random bit sequences, used here for film grain simulation. |
 | **Matte** | A mask that defines which regions of a frame are replaced during compositing; the term also refers to the replacement region itself. |
 | **Matte Crawl** | A flickering brightness artifact along the matte boundary, caused by mechanical instability in optical compositing systems. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Tint** | A uniform color cast applied to a region by adding fixed UV offsets, simulating colored paint or lacquer. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Of the six rotary potentiometers, only the Cell Size knob (Pot 1) is wired into 
 
 ---
 
+## Quick Start
+
+1. **Only one knob and one fader matter**: In the current implementation, Cell Size (Pot 1) and Mix (Fader) are the only continuous controls. The creative variation comes from the toggles.
+2. **Toggle 10 is mislabeled**: Despite the "Blink" label, this toggle controls scanline darkening — a spatial stripe pattern, not a temporal blink. Ignore the label and think of it as "Scanlines."
+3. **Mono mode for classic terminal look**: Switching to Mono and enabling scanlines creates a convincing vintage CRT terminal aesthetic.
+
+---
+
 ## Background
 
 ### The French Minitel System
@@ -90,6 +98,8 @@ CRT displays draw the image as a series of horizontal lines separated by thin ga
 ---
 
 ## Signal Flow
+
+Position Counters → Sample-and-Hold → 3-Bit Quantization → ... → Wet/Dry Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -223,7 +233,29 @@ Of the five toggles, three are actively wired in the VHDL: Color/Mono (Toggle 7)
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the original video signal and the mosaic-quantized result. At 0%, the output is the unprocessed input. At 100%, the output is the fully quantized mosaic. Intermediate values blend the two, which can create a ghostly overlay where the original image detail is faintly visible through the mosaic blocks. Because the blend operates independently on Y, U, and V, you can get interesting color artifacts at mid-mix positions where the quantized palette partially shows through.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Minitel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Minitel-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +278,7 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 *Basic Mosaic Grid — simulated result across source images.*
 **Source**: A colorful, detailed scene — a garden, a bookshelf, or a busy street.
 
-**Objective**: Learn how cell size and color mode affect the mosaic quantization.
+**What You'll Create**: Learn how cell size and color mode affect the mosaic quantization.
 
 1. Start with Cell Size at minimum. The image shows recognizable content with visible quantization banding.
 2. Slowly increase Cell Size. Watch the image dissolve into larger and larger uniform blocks.
@@ -272,7 +304,7 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 *Inverted Scanline Terminal — simulated result across source images.*
 **Source**: High-contrast text, graphics, or a face against a dark background.
 
-**Objective**: Combine inverse video and scanline darkening for a CRT terminal look.
+**What You'll Create**: Combine inverse video and scanline darkening for a CRT terminal look.
 
 1. Set Cell Size to a medium value (around step 5).
 2. Enable Inverse (Switch 8). The tonal structure flips — what was dark becomes bright.
@@ -299,7 +331,7 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 *Teletext Color Blocks — simulated result across source images.*
 **Source**: A slowly moving abstract video or colorful geometries.
 
-**Objective**: Push the 8-color palette to maximum abstraction for a teletext broadcast look.
+**What You'll Create**: Push the 8-color palette to maximum abstraction for a teletext broadcast look.
 
 1. Set Cell Size to maximum (step 8) for the coarsest possible blocks.
 2. Set Color mode to Color (Switch 7) for the full 8-color palette.
@@ -316,9 +348,6 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 
 ## Tips
 
-- **Only one knob and one fader matter**: In the current implementation, Cell Size (Pot 1) and Mix (Fader) are the only continuous controls. The creative variation comes from the toggles.
-- **Toggle 10 is mislabeled**: Despite the "Blink" label, this toggle controls scanline darkening — a spatial stripe pattern, not a temporal blink. Ignore the label and think of it as "Scanlines."
-- **Mono mode for classic terminal look**: Switching to Mono and enabling scanlines creates a convincing vintage CRT terminal aesthetic.
 - **Large cells for abstraction**: Maximum Cell Size reduces the image to roughly 100×60 blocks — coarse enough that only broad shapes are recognizable.
 - **Inverse + scanlines for phosphor glow**: Combining inverse with scanline darkening creates a look where bright mosaic cells have visible scan gaps — similar to a close-up of an old TV screen.
 - **Mid-mix for ghosting**: Setting Mix around 40–60% lets the original image show through the mosaic quantization, creating a double-exposure effect between the clean and quantized signals.
@@ -333,7 +362,6 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 | **Cell** | A rectangular region of pixels that are all assigned the same color value through sample-and-hold quantization. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Minitel** | A French videotex online service and terminal system operated from 1982 to 2012 by France Télécom. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
@@ -341,6 +369,7 @@ These exercises explore the Minitel effect from basic mosaic quantization to cre
 | **Scanline** | A single horizontal line of pixels in a video frame; scanline darkening simulates the visible gaps between lines on a CRT display. |
 | **Sixel** | A block-mosaic graphics encoding used by videotex and early terminal systems, subdividing character cells into a 2×3 grid. |
 | **Videotex** | A family of pre-internet interactive information systems using telephone lines and dedicated terminals, including France's Minitel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

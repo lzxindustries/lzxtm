@@ -68,6 +68,14 @@ This is an early prototype with four of six potentiometers and one toggle unused
 
 ---
 
+## Quick Start
+
+1. **Border Flash is the signature**: The animated border color cycling is the program's most distinctive effect. It creates an instant nostalgia trigger for anyone who grew up with 8-bit computers.
+2. **Attr Clash creates the retro look**: Without attribute clash, the cell quantization is subtle. With it enabled, the eight-color palette restriction dominates the image and creates the authentic ZX Spectrum aesthetic.
+3. **Cell Size matters**: Smaller cells (4–5 px) produce a subtle texture overlay. Larger cells (9–11 px) produce a dramatic mosaic. Match the cell size to the viewing distance — larger displays benefit from larger cells.
+
+---
+
 ## Background
 
 ### The Tape Loading Border Effect
@@ -94,6 +102,8 @@ In the VHDL implementation, the held luma sample at the start of each cell is us
 ---
 
 ## Signal Flow
+
+Clock 1: Sync Edge → Clock 2: Cell Tracking → Clock 3: Border Detection → ... → Sync Delay → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -229,6 +239,10 @@ Switches 7–11 control five binary options. Only three are actively wired into 
 
 Wet/dry mix crossfade. At 0%, only the delayed dry input is passed through. At 100%, the fully processed signal (border animation, cell quantization, attribute clash, interlace) is output. Intermediate values blend the two proportionally, allowing subtle application of the retro effect over the clean source.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +264,7 @@ These exercises explore the program's active controls, progressing from simple b
 *Tape Loading Border — simulated result across source images.*
 **Source**: Any video source — the border effect is independent of the content area.
 
-**Objective**: Recreate the classic tape-loading border strobe from 8-bit home computers.
+**What You'll Create**: Recreate the classic tape-loading border strobe from 8-bit home computers.
 
 1. **Enable Border Flash**: Turn on Switch 7. The border region immediately begins cycling through colors.
 2. **Slow strobe**: Set Border Spd to minimum. The border color changes once per frame — a slow, deliberate pulse.
@@ -277,7 +291,7 @@ These exercises explore the program's active controls, progressing from simple b
 *Character Cell Mosaic — simulated result across source images.*
 **Source**: Live camera or footage with recognizable subjects — faces, text, or geometric patterns.
 
-**Objective**: Explore the cell-based sample-and-hold quantization and attribute clash.
+**What You'll Create**: Explore the cell-based sample-and-hold quantization and attribute clash.
 
 1. **Enable Attr Clash**: Turn on Switch 9. The content area is immediately quantized to eight brightness levels with no color.
 2. **Small cells**: Set Cell Size to step 1 (minimum). The quantization is subtle — narrow 4-pixel cells retain much spatial detail.
@@ -305,7 +319,7 @@ These exercises explore the program's active controls, progressing from simple b
 *Full 8-Bit Emulation — simulated result across source images.*
 **Source**: High-contrast footage — retro games, pixel art, or text-heavy material for maximum authenticity.
 
-**Objective**: Combine all active effects for a complete 8-bit home computer display simulation.
+**What You'll Create**: Combine all active effects for a complete 8-bit home computer display simulation.
 
 1. **Set up cell grid**: Cell Size to step 5–6 (moderate blocks). Enable Attr Clash.
 2. **Add scan lines**: Enable Interlace for CRT texture.
@@ -321,9 +335,6 @@ These exercises explore the program's active controls, progressing from simple b
 
 ## Tips
 
-- **Border Flash is the signature**: The animated border color cycling is the program's most distinctive effect. It creates an instant nostalgia trigger for anyone who grew up with 8-bit computers.
-- **Attr Clash creates the retro look**: Without attribute clash, the cell quantization is subtle. With it enabled, the eight-color palette restriction dominates the image and creates the authentic ZX Spectrum aesthetic.
-- **Cell Size matters**: Smaller cells (4–5 px) produce a subtle texture overlay. Larger cells (9–11 px) produce a dramatic mosaic. Match the cell size to the viewing distance — larger displays benefit from larger cells.
 - **Interlace adds depth**: The scan line dimming is subtle but essential for CRT authenticity. It works best in combination with attribute clash, where the alternating bright/dim lines break up the flat cell blocks.
 - **Unused controls are safe to ignore**: Four potentiometers and one toggle are wired but inert. Move them freely — they have no effect on the output.
 - **Mix for subtlety**: At 100% mix, the retro effect is total. At 50–70%, the original image shows through the cell grid, creating a ghostly overlay effect that suggests a computer display composited over live video.
@@ -336,16 +347,14 @@ These exercises explore the program's active controls, progressing from simple b
 | Term | Definition |
 |------|------------|
 | **Attribute Clash** | A display limitation of the ZX Spectrum where each 8×8 character cell could contain only two colors (foreground and background), causing color bleeding at cell boundaries when objects moved across them. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Loadstar uses no BRAM — all processing is combinational and register-based. |
 | **Cell** | A rectangular block of pixels that shares a single brightness and color value, emulating the character cells of 8-bit text mode displays. |
 | **Chroma** | The color information in a video signal, encoded as U and V components. Loadstar forces chroma to neutral (512, 512) in attribute clash mode. |
 | **CRT** | Cathode Ray Tube; the display technology used by 8-bit home computers. Loadstar's interlace mode simulates the visible scan line structure of CRT displays. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware that executes the video processing pipeline. |
 | **Interlace** | A scanning technique where alternate lines are drawn on successive fields. Loadstar approximates this by dimming odd-numbered lines. |
 | **LFSR** | Linear Feedback Shift Register; a hardware pseudo-random number generator. Referenced in the VHDL header but not used in the current implementation. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | A series of sequential processing stages clocked on each cycle. |
 | **Sample-and-Hold** | A technique where a signal value is captured (sampled) at a specific moment and held constant until the next sample point. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

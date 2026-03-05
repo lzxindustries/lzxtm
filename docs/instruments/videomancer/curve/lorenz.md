@@ -35,6 +35,14 @@ The program offers direct control over all three Lorenz parameters, integration 
 
 ---
 
+## Quick Start
+
+1. **Start canonical**: Begin with σ=10, ρ=28, β=8/3. These values produce the classic attractor and serve as a known-good baseline for exploration.
+2. **Rho is the drama knob**: Sweeping Rho through the bifurcation point (≈24.74) produces the most visually dramatic effect — a transition from convergent order to bounded chaos.
+3. **Decay shapes the aesthetic**: Zero decay accumulates everything, eventually saturating to a solid bright blob. Maximum decay shows only the instantaneous trajectory. The sweet spot (rate 1–2) reveals the attractor's shape through persistent trails.
+
+---
+
 ## Background
 
 ### The Lorenz System
@@ -67,6 +75,8 @@ The hallmark of chaos is that two trajectories starting from nearly identical in
 ---
 
 ## Signal Flow
+
+Canvas Address Compute → Canvas Read → Brightness Scaling → Compose
 
 ```
 HORIZONTAL BLANKING (integration phase)
@@ -222,7 +232,19 @@ Switches 7–10 configure four independent aspects of the visualization: project
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix crossfade. At 0%, the output is the unprocessed input video. At 100%, the output is the fully composed Lorenz rendering (overlay or replace). Intermediate values blend the two proportionally.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Lorenz-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -234,7 +256,7 @@ These exercises explore the Lorenz system from first principles — starting wit
 
 <img src={lorenz_exercise1_result} alt="The Canonical Butterfly result"/>
 *The Canonical Butterfly — simulated result across source images.*
-**Objective**: Observe the classic Lorenz strange attractor at its canonical parameter values.
+**What You'll Create**: Observe the classic Lorenz strange attractor at its canonical parameter values.
 
 1. **Set canonical parameters**: Sigma ≈ 10 (register ~256), Rho ≈ 28 (register ~573), Beta ≈ 2.67 (register ~273).
 2. **Moderate speed**: Set StepSpd to ~50%. The trajectory traces the attractor at a visible pace.
@@ -252,7 +274,7 @@ These exercises explore the Lorenz system from first principles — starting wit
 
 <img src={lorenz_exercise2_result} alt="Edge of Chaos result"/>
 *Edge of Chaos — simulated result across source images.*
-**Objective**: Sweep the Rho parameter through the bifurcation point to observe the transition from order to chaos.
+**What You'll Create**: Sweep the Rho parameter through the bifurcation point to observe the transition from order to chaos.
 
 1. **Start below critical threshold**: Set Rho to ~20 (register ~410). The trajectory spirals inward and settles to a fixed point.
 2. **Increase Decay**: Set Decay to ~50% so old traces fade quickly, showing current behavior clearly.
@@ -269,7 +291,7 @@ These exercises explore the Lorenz system from first principles — starting wit
 
 <img src={lorenz_exercise3_result} alt="Chaos in Color result"/>
 *Chaos in Color — simulated result across source images.*
-**Objective**: Combine perturbation, rainbow color, and video overlay for a dynamic composite visualization.
+**What You'll Create**: Combine perturbation, rainbow color, and video overlay for a dynamic composite visualization.
 
 1. **Canonical parameters**: Sigma ≈ 10, Rho ≈ 28, Beta ≈ 2.67.
 2. **Enable Perturb**: Turn on Switch 9. Every 128 frames (~2 seconds), the trajectory receives a kick.
@@ -287,9 +309,6 @@ These exercises explore the Lorenz system from first principles — starting wit
 
 ## Tips
 
-- **Start canonical**: Begin with σ=10, ρ=28, β=8/3. These values produce the classic attractor and serve as a known-good baseline for exploration.
-- **Rho is the drama knob**: Sweeping Rho through the bifurcation point (≈24.74) produces the most visually dramatic effect — a transition from convergent order to bounded chaos.
-- **Decay shapes the aesthetic**: Zero decay accumulates everything, eventually saturating to a solid bright blob. Maximum decay shows only the instantaneous trajectory. The sweet spot (rate 1–2) reveals the attractor's shape through persistent trails.
 - **Replace for math, Overlay for art**: Replace mode isolates the attractor for pure mathematical visualization. Overlay mode integrates it with video, creating a composite where chaos theory meets lived imagery.
 - **Perturb reveals chaos**: The perturbation toggle is the clearest demonstration of sensitive dependence. Enable it and watch the trajectory change unpredictably after each kick — same equations, same parameters, different evolution.
 - **Low resolution is the point**: The 64×64 canvas intentionally produces a low-resolution, blocky rendering. This is not a limitation — it evokes the resolution constraints of early computer graphics and vector oscilloscopes, where scientists first visualized dynamical systems.
@@ -303,16 +322,15 @@ These exercises explore the Lorenz system from first principles — starting wit
 |------|------------|
 | **Attractor** | A set of states toward which a dynamical system evolves over time; the Lorenz attractor is "strange" because it has fractal structure and supports chaotic trajectories. |
 | **Bifurcation** | A qualitative change in a system's behavior as a parameter crosses a critical threshold; the Lorenz system bifurcates from stable to chaotic near ρ≈24.74. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Lorenz uses 2 BRAM tiles for the 64×64×4-bit canvas (16384 bits). |
 | **Canvas** | The 64×64 pixel buffer stored in BRAM that accumulates trajectory points and is read out during active video. |
 | **Chaos** | Deterministic but unpredictable behavior arising from nonlinear dynamics and sensitive dependence on initial conditions. |
 | **Euler method** | The simplest numerical integration technique: $x_{n+1} = x_n + \Delta t \cdot f(x_n)$. Fast but accumulates error, especially at large time steps. |
 | **Fixed-point** | A representation of fractional numbers using integer arithmetic with a fixed binary point; the Lorenz integrator uses 6.10 format (6 integer bits, 10 fractional bits). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
 | **Lorenz equations** | Three coupled ODEs ($\dot{x}=\sigma(y-x)$, $\dot{y}=x(\rho-z)-y$, $\dot{z}=xy-\beta z$) that model simplified atmospheric convection and exhibit deterministic chaos. |
 | **Phase portrait** | A visualization of a dynamical system's trajectory through its state space. |
 | **Phosphor decay** | The gradual fading of a display phosphor after excitation, simulated by decrementing canvas pixel values each frame. |
 | **Strange attractor** | An attractor with fractal dimension, supporting chaotic trajectories that never repeat. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

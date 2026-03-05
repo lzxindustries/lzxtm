@@ -35,6 +35,14 @@ At gentle settings, Sine Scroll produces a subtle liquid ripple across the image
 
 ---
 
+## Quick Start
+
+1. **Start with amplitude**: The displacement depth is the most dramatic control. Get the ripple depth you want before adjusting frequency.
+2. **Speed creates life**: Even a tiny H Speed offset makes a static image feel alive. Use very small values for subtle ambient motion.
+3. **Phase twist breaks patterns**: Adding twist prevents the displacement from looking like a simple perspective transform. It introduces the spatial complexity that makes the effect feel organic.
+
+---
+
 ## Background
 
 ### What Is Raster Displacement?
@@ -61,6 +69,8 @@ The displacement waveform doesn't have to be a pure sine. By post-processing the
 ---
 
 ## Signal Flow
+
+Line Buffer Write → Wave Phase Computation → Wave Shape + LUT Lookup → ... → Wet/Dry Mix → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -117,7 +127,7 @@ The colour bar tinting path is independent of the displacement — it adds chrom
 | Default | 50.0% |
 | Suffix | % |
 
-Scales the sine wave displacement depth. At zero, the image passes through undistorted. As you increase amplitude, each scanline shifts further from its original position, creating progressively deeper ripples. At maximum, lines can shift by hundreds of pixels, causing the image to wrap around through the line buffer.
+At zero, the image passes through undistorted. As you increase amplitude, each scanline shifts further from its original position, creating progressively deeper ripples. At maximum, lines can shift by hundreds of pixels, causing the image to wrap around through the line buffer. Internally, scales the sine wave displacement depth.
 
 ---
 
@@ -180,7 +190,7 @@ Output brightness scaling. The displaced luminance channel is multiplied by this
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Wave Shape** | Sine | Triangle |
+| **7 — Wave Shape** | Sine | Sawtooth |
 | **8 — Axis** | Horizontal | Vertical |
 | **9 — Mirror** | Off | On |
 | **10 — Color Bars** | Off | On |
@@ -201,6 +211,21 @@ Switches 7–11 control waveform shape, displacement axis, spatial symmetry, col
 
 Crossfade between the unprocessed input (dry) and the displaced output (wet). At 0%, the output is identical to the input. At 100%, the fully processed signal appears. Intermediate positions blend the two, which can create a ghostly double-image effect as the displaced and original images overlap.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sinescroll processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +236,7 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 
 <img src={sinescroll_exercise1_result} alt="Classic Sine Ripple result"/>
 *Classic Sine Ripple — simulated result across source images.*
-**Objective**: Learn how amplitude and frequency shape the basic sine displacement effect.
+**What You'll Create**: Learn how amplitude and frequency shape the basic sine displacement effect.
 
 1. **Gentle ripple**: Set Amplitude to ~25% and Frequency to ~20%. The image should show a subtle undulation.
 2. **Deeper wave**: Increase Amplitude to ~60%. The displacement becomes clearly visible as a sinusoidal deformation.
@@ -227,7 +252,7 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 
 <img src={sinescroll_exercise2_result} alt="Waveshaping Comparison result"/>
 *Waveshaping Comparison — simulated result across source images.*
-**Objective**: Compare the visual character of each waveform shape at identical displacement settings.
+**What You'll Create**: Compare the visual character of each waveform shape at identical displacement settings.
 
 1. **Setup**: Set Amplitude ~50%, Frequency ~40%, H Speed slightly clockwise.
 2. **Sine**: Select Wave Shape = Sine. Observe the smooth, organic ripple.
@@ -244,7 +269,7 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 
 <img src={sinescroll_exercise3_result} alt="Copper Bar Tinting result"/>
 *Copper Bar Tinting — simulated result across source images.*
-**Objective**: Add Amiga-style colour bar tinting to the displacement effect for a full demoscene aesthetic.
+**What You'll Create**: Add Amiga-style colour bar tinting to the displacement effect for a full demoscene aesthetic.
 
 1. **Displacement**: Set moderate Amplitude (~40%), Frequency (~30%), and H Speed.
 2. **Colour bars**: Enable Color Bars. A rainbow wash appears on each scanline.
@@ -260,9 +285,6 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 
 ## Tips
 
-- **Start with amplitude**: The displacement depth is the most dramatic control. Get the ripple depth you want before adjusting frequency.
-- **Speed creates life**: Even a tiny H Speed offset makes a static image feel alive. Use very small values for subtle ambient motion.
-- **Phase twist breaks patterns**: Adding twist prevents the displacement from looking like a simple perspective transform. It introduces the spatial complexity that makes the effect feel organic.
 - **Colour bars on monochrome**: The colour bar mode is most impactful on desaturated or monochrome sources, where it adds all the colour.
 - **Square wave for glitch**: The Square waveshape creates a hard-switching effect that reads as a digital glitch rather than a smooth ripple.
 - **Feedback**: Route the output back to the input for recursive displacement. The ripples compound into increasingly complex patterns.
@@ -274,7 +296,6 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA used to store the scanline buffer for pixel displacement. |
 | **Copper** | The coprocessor in the Amiga's custom chipset that could modify display registers on a per-scanline basis, enabling colour bars and raster effects. |
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator and a lookup table. |
 | **Demoscene** | A computer art subculture focused on creating real-time audiovisual productions (demos) that push hardware to its limits. |
@@ -284,6 +305,7 @@ These exercises explore raster displacement from subtle ripple to full waveform 
 | **Raster** | The horizontal scanning pattern used by CRT and video displays to draw an image line by line. |
 | **Sample-and-Hold** | Reading a signal value and holding it constant until the next sample, used here to capture scanline pixels into the buffer. |
 | **Waveshaping** | Post-processing a base waveform (sine) to produce alternative shapes (triangle, square, sawtooth). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

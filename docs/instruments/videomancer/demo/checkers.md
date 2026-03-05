@@ -35,6 +35,14 @@ At conservative settings, Checkers produces a clean geometric pattern suitable f
 
 ---
 
+## Quick Start
+
+1. **Start with Replace mode**: Replace mode generates a complete frame, making it easier to understand the perspective engine before adding video overlay complexity.
+2. **Use fog to taste**: Zero fog reveals the raw perspective approximation and its banding. A moderate fog setting (60–80%) smooths the transition while keeping foreground tiles crisp. Very high fog fades most of the floor to gray.
+3. **Pan X for composition**: Pan X lets you offset the vanishing point laterally. Use it to position the floor pattern relative to other elements in a video chain.
+
+---
+
 ## Background
 
 ### The Demo Infinite Floor
@@ -132,7 +140,7 @@ The fog computation is deliberately linear rather than exponential. When the sca
 | Default | 25% |
 | Suffix | % |
 
-Controls the rate at which the Z-scroll accumulator advances each frame. At 0%, the accumulator does not increment and the floor is stationary. At 100%, each frame adds the maximum step to the V texture origin, producing fast forward-rushing motion. The speed is linear — doubling the knob value doubles the apparent floor velocity. When scroll is disabled via Toggle 7, this parameter has no effect regardless of its value. Intermediate values around 25% produce a gentle drift suitable for ambient backdrops; values above 75% create a rapid tunnel-rush effect where individual tiles are barely visible as they streak past.
+At 0%, the accumulator does not increment and the floor is stationary. At 100%, each frame adds the maximum step to the V texture origin, producing fast forward-rushing motion. The speed is linear — doubling the knob value doubles the apparent floor velocity. When scroll is disabled via Toggle 7, this parameter has no effect regardless of its value. Intermediate values around 25% produce a gentle drift suitable for ambient backdrops; values above 75% create a rapid tunnel-rush effect where individual tiles are barely visible as they streak past. Internally, controls the rate at which the Z-scroll accumulator advances each frame.
 
 ---
 
@@ -154,7 +162,7 @@ Controls the spatial frequency of the checkerboard tiles by scaling the base per
 | Default | 38% |
 | Suffix | % |
 
-Sets the vertical position of the horizon line, mapped from the 10-bit register to the 0–719 scanline range. At 0%, the horizon sits at the top of the frame, and the entire screen is filled with checkerboard floor. At 100%, the horizon drops to the bottom of the frame, and the entire screen shows sky or input video. The default position (~38%) places the horizon roughly a third of the way down — a natural composition with two-thirds floor and one-third sky, consistent with Renaissance perspective conventions. Extreme positions allow using the checker floor as a narrow strip or filling the entire frame for maximal geometric immersion.
+At 0%, the horizon sits at the top of the frame, and the entire screen is filled with checkerboard floor. At 100%, the horizon drops to the bottom of the frame, and the entire screen shows sky or input video. The default position (~38%) places the horizon roughly a third of the way down — a natural composition with two-thirds floor and one-third sky, consistent with Renaissance perspective conventions. Extreme positions allow using the checker floor as a narrow strip or filling the entire frame for maximal geometric immersion. Internally, sets the vertical position of the horizon line, mapped from the 10-bit register to the 0–719 scanline range.
 
 ---
 
@@ -216,6 +224,10 @@ The five toggles partition cleanly into three functional groups. Scroll (7) cont
 
 Crossfades between the delayed input video and the composed checkerboard output. At 0% (fader down), the output is pure dry input — no checkerboard is visible. At 100% (fader up), the output is the fully composed checkerboard (either replaced or overlaid, depending on Render mode). Intermediate positions blend the two, allowing the checkerboard to appear as a semi-transparent overlay. In Replace mode at 50% mix, the checkerboard floor is ghosted over the input video — useful for aligning the generated pattern with live elements.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -226,7 +238,7 @@ These exercises build from a static floor through animated scroll to complex ove
 
 <img src={checkers_exercise1_result} alt="Static Infinite Floor result"/>
 *Static Infinite Floor — simulated result across source images.*
-**Objective**: Understand how the perspective projection, horizon position, and tile size interact to form the basic infinite floor.
+**What You'll Create**: Understand how the perspective projection, horizon position, and tile size interact to form the basic infinite floor.
 
 1. **Disable scroll**: Set Scroll (Toggle 7) to Off. The floor will be static.
 2. **Set the horizon**: Turn Horizon to ~38%. The division between floor and sky should sit about one-third down from the top of the frame.
@@ -244,7 +256,7 @@ These exercises build from a static floor through animated scroll to complex ove
 
 <img src={checkers_exercise2_result} alt="Tunnel Rush with Colour result"/>
 *Tunnel Rush with Colour — simulated result across source images.*
-**Objective**: Explore Z-scroll animation and RGB colourization to create a dynamic forward-rushing floor.
+**What You'll Create**: Explore Z-scroll animation and RGB colourization to create a dynamic forward-rushing floor.
 
 1. **Enable scroll**: Set Scroll (Toggle 7) to On.
 2. **Moderate speed**: Set Speed to ~50%. The floor begins scrolling forward — tiles emerge from the horizon fog and rush toward the viewer.
@@ -262,7 +274,7 @@ These exercises build from a static floor through animated scroll to complex ove
 
 <img src={checkers_exercise3_result} alt="Overlay Composition result"/>
 *Overlay Composition — simulated result across source images.*
-**Objective**: Composite the checkerboard floor over an input video signal using Overlay mode and the Mix fader.
+**What You'll Create**: Composite the checkerboard floor over an input video signal using Overlay mode and the Mix fader.
 
 1. **Switch to Overlay**: Set Render (Toggle 9) to Overlay.
 2. **Feed video**: Ensure a video source is connected to the input.
@@ -279,9 +291,6 @@ These exercises build from a static floor through animated scroll to complex ove
 
 ## Tips
 
-- **Start with Replace mode**: Replace mode generates a complete frame, making it easier to understand the perspective engine before adding video overlay complexity.
-- **Use fog to taste**: Zero fog reveals the raw perspective approximation and its banding. A moderate fog setting (60–80%) smooths the transition while keeping foreground tiles crisp. Very high fog fades most of the floor to gray.
-- **Pan X for composition**: Pan X lets you offset the vanishing point laterally. Use it to position the floor pattern relative to other elements in a video chain.
 - **Speed zero is valid**: Disabling scroll and setting Speed to 0% creates a perfectly static floor — useful as a geometric overlay or key pattern.
 - **RGB mode for psychedelia**: RGB colour with high-speed scroll creates a hypnotic rush of alternating red and blue tiles. Add Invert for a negative-image variant.
 - **Overlay for texture**: In Overlay mode with low Mix, the checkerboard becomes a subtle geometric texture over the video — effective as a compositional grid or spatial reference.
@@ -303,7 +312,8 @@ These exercises build from a static floor through animated scroll to complex ove
 | **Perspective projection** | The geometric transformation that maps three-dimensional scene coordinates to two-dimensional screen coordinates, causing distant objects to appear smaller. |
 | **Texel** | A single element of a texture map; the texture-space analogue of a pixel in screen space. |
 | **XOR (Exclusive-OR)** | A logic operation that returns true when exactly one of two inputs is true, used here to generate the alternating checker pattern from texture coordinate bits. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
 | **Z-scroll** | A per-frame offset added to the depth texture coordinate, creating the illusion of forward motion through the tile field. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At subtle settings — low density, gentle drift, minimal tunnel masking — Clo
 
 ---
 
+## Quick Start
+
+1. **Density is subtractive**: Lower Density values produce *more* visible clouds because the threshold is lower. Think of it as "how much noise must accumulate before clouds appear" — less threshold means more clouds.
+2. **Tunnel only works in tunnel modes**: The Tunnel knob controls the radial aperture, but Smoke Up and Uniform Clouds ignore it entirely. If adjusting Tunnel has no effect, check which mode is active.
+3. **Scale and Detail interact**: At very large scales (low Scale value), the second octave adds visible high-frequency texture on top of smooth blobs. At very small scales (high Scale value), both octaves are already fine-grained and the Detail control has a subtler effect.
+
+---
+
 ## Background
 
 ### Procedural Noise and Lattice Hashing
@@ -94,6 +102,8 @@ The tunnel modes use a radial distance calculation to restrict cloud coverage to
 ---
 
 ## Signal Flow
+
+Cloud Generation Engine → Interpolator → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -145,7 +155,7 @@ The density-to-opacity conversion applies a hard threshold followed by a ×4 gai
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the opacity threshold for the cloud layer. At 0%, even the faintest noise values produce visible clouds, resulting in near-total coverage. At 100%, only the very peak noise values break through, leaving just thin wisps of cloud. This is the primary control for how much of the frame is obscured — think of it as the atmospheric visibility dial. The threshold applies after the tunnel mask, so in tunnel modes only the masked region is affected.
+At 0%, even the faintest noise values produce visible clouds, resulting in near-total coverage. At 100%, only the very peak noise values break through, leaving just thin wisps of cloud. This is the primary control for how much of the frame is obscured — think of it as the atmospheric visibility dial. The threshold applies after the tunnel mask, so in tunnel modes only the masked region is affected. Internally, controls the opacity threshold for the cloud layer.
 
 ---
 
@@ -167,7 +177,7 @@ Sets the spatial frequency of the noise field by selecting which bits of the pix
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the amplitude of the second noise octave in the fBM summation. At 0%, the cloud texture is a single smooth octave — soft, blobby shapes with gentle gradients. Increasing Detail mixes in the second octave at half amplitude, adding fine-grained structure on top of the base shapes. At 100%, the second octave contributes at full strength, producing clouds with clearly visible turbulent detail within each larger formation.
+At 0%, the cloud texture is a single smooth octave — soft, blobby shapes with gentle gradients. Increasing Detail mixes in the second octave at half amplitude, adding fine-grained structure on top of the base shapes. At 100%, the second octave contributes at full strength, producing clouds with clearly visible turbulent detail within each larger formation. Internally, controls the amplitude of the second noise octave in the fBM summation.
 
 ---
 
@@ -178,7 +188,7 @@ Controls the amplitude of the second noise octave in the fBM summation. At 0%, t
 | Default | 25.0% |
 | Suffix | % |
 
-Sets the speed of the drift accumulator that animates the cloud field. At 0%, the clouds are frozen in place. As you increase the speed, the noise coordinates shift each frame, creating the illusion of cloud movement. The drift direction depends on the mode: Cloud Tunnel modes drift radially outward, Smoke Up drifts strongly upward with slight horizontal turbulence, and Uniform Clouds drift diagonally. At maximum speed, the clouds rush across the frame rapidly.
+At 0%, the clouds are frozen in place. As you increase the speed, the noise coordinates shift each frame, creating the illusion of cloud movement. The drift direction depends on the mode: Cloud Tunnel modes drift radially outward, Smoke Up drifts strongly upward with slight horizontal turbulence, and Uniform Clouds drift diagonally. At maximum speed, the clouds rush across the frame rapidly. Internally, sets the speed of the drift accumulator that animates the cloud field.
 
 ---
 
@@ -189,7 +199,7 @@ Sets the speed of the drift accumulator that animates the cloud field. At 0%, th
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the radius of the radial tunnel mask in Cloud Tunnel In and Cloud Tunnel Out modes. At 0%, the tunnel is fully closed — in Tunnel In mode, the entire frame is clouded; in Tunnel Out mode, the entire frame is clear. At 100%, the tunnel opens to approximately 640 pixels radius, covering most of the frame. In Smoke Up and Uniform Clouds modes, this control has no visible effect because those modes apply a full-frame mask regardless of the tunnel radius.
+At 0%, the tunnel is fully closed — in Tunnel In mode, the entire frame is clouded; in Tunnel Out mode, the entire frame is clear. At 100%, the tunnel opens to approximately 640 pixels radius, covering most of the frame. In Smoke Up and Uniform Clouds modes, this control has no visible effect because those modes apply a full-frame mask regardless of the tunnel radius. Internally, controls the radius of the radial tunnel mask in Cloud Tunnel In and Cloud Tunnel Out modes.
 
 ---
 
@@ -200,7 +210,7 @@ Controls the radius of the radial tunnel mask in Cloud Tunnel In and Cloud Tunne
 | Default | 50.0% |
 | Suffix | % |
 
-Scales the final cloud alpha value after density thresholding. At 0%, the cloud alpha is zero everywhere — no clouds are visible regardless of other settings. At 50%, even fully dense clouds are semi-transparent, allowing the input video to show through. At 100%, clouds above the density threshold are fully opaque. This control acts as a global opacity multiplier, softening the cloud effect without changing its spatial structure.
+At 0%, the cloud alpha is zero everywhere — no clouds are visible regardless of other settings. At 50%, even fully dense clouds are semi-transparent, allowing the input video to show through. At 100%, clouds above the density threshold are fully opaque. This control acts as a global opacity multiplier, softening the cloud effect without changing its spatial structure. Internally, scales the final cloud alpha value after density thresholding.
 
 ---
 
@@ -227,7 +237,29 @@ Toggles 7 and 8 (Mode A and Mode B) form a 2-bit mode selector that determines b
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix via three parallel interpolator instances (one per YUV channel). At 0%, the output is the original input signal — no clouds visible. At 100%, the output is the fully cloud-composited result. Intermediate positions blend the two linearly. This provides a smooth fade-in for the cloud effect without changing the cloud structure itself. The interpolator adds 4 clocks of latency per channel, contributing to the total 9-clock pipeline.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Cloudgate processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Cloudgate-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +282,7 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 *Warm Fog Layer — simulated result across source images.*
 **Source**: A landscape or outdoor scene with visible depth — trees, buildings, and sky.
 
-**Objective**: Create a gentle fog overlay that partially obscures distant elements while preserving foreground detail.
+**What You'll Create**: Create a gentle fog overlay that partially obscures distant elements while preserving foreground detail.
 
 1. **Initialize**: Set all controls to defaults. Ensure Bypass is Off, Mode A and B are both Off (Cloud Tunnel In mode).
 2. **Reveal clouds**: Slowly decrease Density from 50% toward 30%. Watch as cloud formations begin to appear over the image.
@@ -279,7 +311,7 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 *Golden Cloud Tunnel Dissolve — simulated result across source images.*
 **Source**: Two video sources if available, or a single source with strong visual content — a performer, dancer, or graphic animation.
 
-**Objective**: Recreate the classic Video Toaster Cloud Tunnel Out dissolve where golden clouds expand from the center outward.
+**What You'll Create**: Recreate the classic Video Toaster Cloud Tunnel Out dissolve where golden clouds expand from the center outward.
 
 1. **Set mode**: Enable Mode A (Toggle 7 On) for Cloud Tunnel Out. Leave Mode B Off.
 2. **Set tint**: Enable Tint A (Toggle 9 On) for Golden Glow.
@@ -309,7 +341,7 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 *Dark Smoke Rising — simulated result across source images.*
 **Source**: A dark, moody scene — nighttime footage, candlelit subjects, or dark abstract patterns.
 
-**Objective**: Create a rising dark smoke effect that drifts upward across the frame, partially obscuring the source.
+**What You'll Create**: Create a rising dark smoke effect that drifts upward across the frame, partially obscuring the source.
 
 1. **Set mode**: Enable Mode B (Toggle 8 On), leave Mode A Off — this selects Smoke Up mode.
 2. **Set tint**: Enable both Tint A and Tint B (Toggles 9+10 On) for Dark Smoke.
@@ -327,9 +359,6 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 
 ## Tips
 
-- **Density is subtractive**: Lower Density values produce *more* visible clouds because the threshold is lower. Think of it as "how much noise must accumulate before clouds appear" — less threshold means more clouds.
-- **Tunnel only works in tunnel modes**: The Tunnel knob controls the radial aperture, but Smoke Up and Uniform Clouds ignore it entirely. If adjusting Tunnel has no effect, check which mode is active.
-- **Scale and Detail interact**: At very large scales (low Scale value), the second octave adds visible high-frequency texture on top of smooth blobs. At very small scales (high Scale value), both octaves are already fine-grained and the Detail control has a subtler effect.
 - **Drift accumulates forever**: The drift offset wraps at 16-bit boundaries, so the cloud pattern eventually repeats — but the period is long enough that repetition is not noticeable during normal use.
 - **Tint colors affect compositing**: Dark Smoke (Y=300) creates dim overlay clouds, while Warm White Mist (Y=900) creates bright overlay clouds. The same Density and Brightness settings produce visually different opacity when combined with different tints because the tint luminance affects the perceived contrast against the source.
 - **Mix for smooth transitions**: Use the Mix fader rather than Bypass for gradual fade-in/fade-out of the cloud effect during live performance.
@@ -347,13 +376,12 @@ These exercises progress from basic cloud overlay through tunnel dissolves to an
 | **BT.601** | ITU-R standard defining the YUV color space used in standard-definition video; Videomancer uses 10-bit BT.601. |
 | **Drift Accumulator** | A counter that increments each frame, shifting the noise coordinate space to animate the cloud pattern. |
 | **fBM** | Fractional Brownian Motion; summing multiple octaves of noise at increasing frequency and decreasing amplitude to create natural-looking fractal textures. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hash Function** | A deterministic function that maps grid coordinates to pseudo-random values via a permutation table. |
 | **Octagon Distance** | An approximation of Euclidean distance using only additions and shifts: `max(|dx|,|dy|) + min(|dx|,|dy|)/2 − min(|dx|,|dy|)/8`. |
 | **Octave** | In noise terminology, a single layer of the noise function at a specific spatial frequency; fBM sums multiple octaves. |
 | **Permutation Table** | A fixed array of pseudo-random values indexed by hashed coordinates to generate repeatable noise patterns. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Value Noise** | A type of procedural noise where random values are assigned to lattice points and interpolated between them. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

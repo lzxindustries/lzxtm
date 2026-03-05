@@ -35,6 +35,14 @@ At conservative settings — a single blob, slow speed, wide skin — the screen
 
 ---
 
+## Quick Start
+
+1. **Blob Size and Threshold are the primary shape controls**: Blob Size determines the field radius, Threshold determines where the boundary is drawn. A large blob size with a low threshold produces well-separated circles. A large blob size with a high threshold produces merged amorphous shapes.
+2. **Speed = 0 freezes the animation**: Set Speed to 0% to stop all blob motion and use the static metaball pattern as a fixed overlay.
+3. **Outline + Hollow = vector graphics**: This combination strips the metaballs down to pure contour lines on black — clean line art that traces the isosurface boundary.
+
+---
+
 ## Background
 
 ### What Are Metaballs?

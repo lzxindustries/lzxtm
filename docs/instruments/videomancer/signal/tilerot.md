@@ -68,6 +68,14 @@ Tilerot is in the **Signal** category — here simulating a digital signal impai
 
 ---
 
+## Quick Start
+
+1. **Low error for ambiance**: Error Rate at 5–10% produces occasional glitches that feel like a slightly unstable stream.
+2. **Tile mode for realism**: Real codec artifacts are rectangular — use Tile mode for authentic H.264/HEVC looks.
+3. **Freeze Blend for ghosting**: At ~50%, corrupted regions show a ghostly blend of old and fill content — evocative of temporal layering.
+
+---
+
 ## Background
 
 ### What Is Packet Loss in Video Streaming?
@@ -90,6 +98,8 @@ When a decoder detects a lost packet, it applies an **error concealment** strate
 ---
 
 ## Signal Flow
+
+Position Counters → Slice / Tile Division → Error Decision Engine → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ The error decision runs once per slice boundary (when `v_count` crosses a slice 
 | Default | 20% |
 | Suffix | % |
 
-Controls the probability of corruption per slice (or tile). At minimum, no slices fail the LFSR check — the image is clean. As Error Rate increases, more slices per frame enter the corrupted state. At maximum, nearly every slice is corrupted every frame, producing a heavily degraded image. The error decision uses a simple threshold comparison: `LFSR_output < error_rate × scale`.
+At minimum, no slices fail the LFSR check — the image is clean. As Error Rate increases, more slices per frame enter the corrupted state. At maximum, nearly every slice is corrupted every frame, producing a heavily degraded image. The error decision uses a simple threshold comparison: `LFSR_output < error_rate × scale`. Internally, controls the probability of corruption per slice (or tile).
 
 ---
 
@@ -181,7 +191,7 @@ Selects the fill color hue from an 8-entry lookup table of UV values. The hue cy
 | Default | 50% |
 | Suffix | % |
 
-Controls the mix between frozen (previous-line) content and fill content within corrupted regions. At 0%, corrupted pixels show only frozen content — the region appears stuck on an old frame. At 100%, corrupted pixels show only fill (solid color or noise). Intermediate values produce a ghost-like blend of frozen video with colored overlay, closely mimicking the temporal blending of real decoder error concealment.
+At 0%, corrupted pixels show only frozen content — the region appears stuck on an old frame. At 100%, corrupted pixels show only fill (solid color or noise). Intermediate values produce a ghost-like blend of frozen video with colored overlay, closely mimicking the temporal blending of real decoder error concealment. Internally, controls the mix between frozen (previous-line) content and fill content within corrupted regions.
 
 ---
 
@@ -192,7 +202,7 @@ Controls the mix between frozen (previous-line) content and fill content within 
 | Default | 20% |
 | Suffix | % |
 
-Controls the amplitude of quantization noise added to corrupted regions. At zero, corrupted blocks are clean (frozen or solid fill). Increasing Quant Noise adds random per-pixel perturbation to the corrupted content, simulating the halo of DCT coefficient errors around lost blocks. The noise is only applied where persistence > 0 — clean regions are unaffected.
+At zero, corrupted blocks are clean (frozen or solid fill). Increasing Quant Noise adds random per-pixel perturbation to the corrupted content, simulating the halo of DCT coefficient errors around lost blocks. The noise is only applied where persistence > 0 — clean regions are unaffected. Internally, controls the amplitude of quantization noise added to corrupted regions.
 
 ---
 
@@ -231,6 +241,21 @@ Switches 7–11 control the corruption geometry (slices vs tiles), fill type (so
 
 Controls the wet/dry mix between the corrupted output and the original input via the hardware interpolator. At 100%, the full tilerot processing is applied. Lowering the fader blends clean video back in.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tile Rot processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -252,7 +277,7 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 *Horizontal Slice Corruption — simulated result across source images.*
 **Source**: Camera feed with recognizable content (faces, text, landmarks) where corruption is easily identified.
 
-**Objective**: Produce classic horizontal-slice dropout artifacts with frozen content.
+**What You'll Create**: Produce classic horizontal-slice dropout artifacts with frozen content.
 
 1. **Enable corruption**: Set Error Rate to ~30%. Several horizontal slices begin to freeze.
 2. **Slice height**: Set Slice Height to ~40%. Medium-width bands — clearly visible individual slices.
@@ -280,7 +305,7 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 *Macro-Block Tile Grid — simulated result across source images.*
 **Source**: Graphic content or video with clear spatial detail — the tile grid is most visible against structured imagery.
 
-**Objective**: Create the rectangular macro-block corruption pattern characteristic of H.264 streaming dropouts.
+**What You'll Create**: Create the rectangular macro-block corruption pattern characteristic of H.264 streaming dropouts.
 
 1. **Tile mode**: Set Mode to Tiles (Switch 7). Corruption now occurs in a grid pattern.
 2. **Error Rate**: Set Error Rate to ~40%. Multiple tiles across the frame become corrupted.
@@ -308,7 +333,7 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 *Glitch Art Aesthetic — simulated result across source images.*
 **Source**: Any visually rich source — portraits, landscapes, or graphic patterns work well.
 
-**Objective**: Push Tilerot into extreme territory for intentional glitch art effects.
+**What You'll Create**: Push Tilerot into extreme territory for intentional glitch art effects.
 
 1. **High error**: Set Error Rate to ~80%. Nearly the entire frame is corrupted.
 2. **Large tiles**: Set Slice Height to ~70%. Wide horizontal bands in Slice mode.
@@ -325,9 +350,6 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 
 ## Tips
 
-- **Low error for ambiance**: Error Rate at 5–10% produces occasional glitches that feel like a slightly unstable stream.
-- **Tile mode for realism**: Real codec artifacts are rectangular — use Tile mode for authentic H.264/HEVC looks.
-- **Freeze Blend for ghosting**: At ~50%, corrupted regions show a ghostly blend of old and fill content — evocative of temporal layering.
 - **Seed for variety**: Changing the Seed knob shifts which spatial pattern of slices corrupts, useful for finding aesthetically pleasing compositions.
 - **Chain with Subphase**: Tilerot for digital corruption + Subphase for analog degradation creates a "transcoded" look — digital artifacts on analog signal impairments.
 - **Static for composition**: Animate=Static freezes the corruption pattern, allowing careful framing of the glitch aesthetic.
@@ -339,10 +361,8 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory cells in the FPGA used for the 1024×10-bit per-channel line buffers that store frozen content. |
 | **DCT** | Discrete Cosine Transform; the basis of JPEG and early H.264 compression. Quantization errors in DCT coefficients produce the characteristic noise halos around corrupted blocks. |
 | **Error Concealment** | The strategy a decoder uses to minimize visible artifacts when data is lost: freeze, fill, interpolate, or skip. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **H.264/HEVC** | Modern video compression codecs (H.264/AVC and H.265/HEVC) that divide frames into macro-blocks and slices. |
 | **LFSR** | Linear Feedback Shift Register; a pseudorandom number generator used for corruption decisions and noise generation. |
 | **Macro-Block** | A fixed-size rectangular region (e.g., 16×16 or 64×64 pixels) that is independently coded in block-based video codecs. |
@@ -350,6 +370,7 @@ These exercises explore slice-mode corruption, tile-mode macro-block artifacts, 
 | **Persistence** | A per-slice/tile counter that tracks how long a corrupted region has been affected, controlling recovery timing. |
 | **Quantization Noise** | The noise-like artifacts produced by aggressive quantization of transform coefficients, visible as blocky distortion. |
 | **Slice** | A horizontal strip of the video frame that is independently decodable in H.264 and similar codecs. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

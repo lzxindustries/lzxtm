@@ -68,6 +68,14 @@ At subtle settings — wide interval spacing, thin lines, gentle tinting — Sur
 
 ---
 
+## Quick Start
+
+1. **Interval is geometric, not linear**: Each step doubles the contour spacing because the mask values are powers of two. Moving one step changes the map density dramatically.
+2. **Line width scales with interval**: The width threshold is derived from the contour mask, so the same Line W setting produces visually different thicknesses at different intervals. Adjust both together.
+3. **Relief needs Palette enabled**: The Color Ramp knob has no effect unless the Palette toggle is set to Terrain (relief enabled). Check the toggle first if relief isn't visible.
+
+---
+
 ## Background
 
 ### Contour Lines and Isohypses
@@ -94,6 +102,8 @@ The BRAM line buffer stores one complete scanline of luma values (up to 2048 pix
 ---
 
 ## Signal Flow
+
+Input Register → Contour Detection → Multiply Products → Composite Mux → Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -145,7 +155,7 @@ The contour detection uses pure bitwise logic — AND-masking followed by a thre
 | Range | 4 – 64 |
 | Default | 34 |
 
-Controls the contour line spacing by selecting the power-of-two bitmask used for boundary detection. At low values, the mask is small (15 = every 16 luma levels), producing dense, closely-spaced contour lines that reveal fine tonal variations. At high values, the mask is large (511 = every 512 levels), producing widely-separated contour lines that show only major tonal boundaries. The stepped control provides six discrete mask values, each doubling the contour interval. Dense contours turn smooth gradients into richly-layered topographic textures; sparse contours extract only the boldest tonal edges.
+At low values, the mask is small (15 = every 16 luma levels), producing dense, closely-spaced contour lines that reveal fine tonal variations. At high values, the mask is large (511 = every 512 levels), producing widely-separated contour lines that show only major tonal boundaries. The stepped control provides six discrete mask values, each doubling the contour interval. Dense contours turn smooth gradients into richly-layered topographic textures; sparse contours extract only the boldest tonal edges. Internally, controls the contour line spacing by selecting the power-of-two bitmask used for boundary detection.
 
 ---
 
@@ -156,7 +166,7 @@ Controls the contour line spacing by selecting the power-of-two bitmask used for
 | Default | 50% |
 | Suffix | % |
 
-Sets the thickness of contour lines by controlling the width threshold for the edge detection comparison. At low values, only pixels very close to the exact bitmask boundary are marked as contour lines, producing hair-thin lines. At higher values, a wider tolerance region is used, and the contour lines become thicker bands. The width mask is derived from the contour mask by right-shifting, so thicker lines scale proportionally with the contour interval. Combined with the Index Bold toggle, this control can produce anything from delicate cartographic linework to bold topographic bands.
+At low values, only pixels very close to the exact bitmask boundary are marked as contour lines, producing hair-thin lines. At higher values, a wider tolerance region is used, and the contour lines become thicker bands. The width mask is derived from the contour mask by right-shifting, so thicker lines scale proportionally with the contour interval. Combined with the Index Bold toggle, this control can produce anything from delicate cartographic linework to bold topographic bands. Internally, sets the thickness of contour lines by controlling the width threshold for the edge detection comparison.
 
 ---
 
@@ -166,7 +176,7 @@ Sets the thickness of contour lines by controlling the width threshold for the e
 | Range | 2 – 8 |
 | Default | 5 |
 
-Controls the saturation of the altitude colour tinting applied between contour lines. At zero, the fill regions are monochrome (controlled only by the Smooth brightness). As the value increases, the altitude bands receive progressively stronger U and V offsets, creating a colour spectrum across the elevation range. The U channel offset follows the altitude band index directly; the V channel uses the bitwise complement, so high and low elevations receive complementary colours. At maximum, the colour banding is vivid and clearly delineates each altitude zone.
+At zero, the fill regions are monochrome (controlled only by the Smooth brightness). As the value increases, the altitude bands receive progressively stronger U and V offsets, creating a colour spectrum across the elevation range. The U channel offset follows the altitude band index directly; the V channel uses the bitwise complement, so high and low elevations receive complementary colours. At maximum, the colour banding is vivid and clearly delineates each altitude zone. Internally, controls the saturation of the altitude colour tinting applied between contour lines.
 
 ---
 
@@ -177,7 +187,7 @@ Controls the saturation of the altitude colour tinting applied between contour l
 | Default | 50% |
 | Suffix | % |
 
-Sets the strength of relief shading — the directional gradient lighting applied to the background fill. At zero, no relief is applied and all non-contour pixels share the same flat brightness. As the value increases, the vertical luma gradient (computed from the BRAM line buffer) is amplified and added to the background luma, creating an embossed, three-dimensional appearance. Positive gradients (brightening downward) are boosted; negative gradients are dimmed. The result simulates a light source above the image illuminating the luminance "terrain" from above.
+At zero, no relief is applied and all non-contour pixels share the same flat brightness. As the value increases, the vertical luma gradient (computed from the BRAM line buffer) is amplified and added to the background luma, creating an embossed, three-dimensional appearance. Positive gradients (brightening downward) are boosted; negative gradients are dimmed. The result simulates a light source above the image illuminating the luminance "terrain" from above. Internally, sets the strength of relief shading — the directional gradient lighting applied to the background fill.
 
 ---
 
@@ -207,7 +217,7 @@ Sets the brightness of contour line pixels directly. When a pixel is classified 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Terrain | Ocean |
+| **7 — Palette** | Terrain | Mono |
 | **8 — Index Bold** | Off | On |
 | **9 — Fill Mode** | Color | Flat |
 | **10 — Labels** | Off | On |
@@ -227,6 +237,21 @@ The five toggles control independent binary features. Palette enables or disable
 | Suffix | % |
 
 Crossfades between the dry (unprocessed) input and the wet (contour-mapped) output. At 100%, only the processed contour rendering is visible. At 0%, the original input passes through unchanged. Intermediate values create a transparent contour overlay on the source — useful for augmenting footage with topographic annotations while preserving recognisability. The interpolation is linear per-channel.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Survey processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -249,7 +274,7 @@ These exercises progress from basic contour extraction through relief shading to
 *Basic Contour Lines — simulated result across source images.*
 **Source**: A scene with smooth tonal gradients — a landscape, a face lit from one side, or a gradient test pattern.
 
-**Objective**: Understand how bitmask-based contour detection extracts elevation lines from the luminance channel.
+**What You'll Create**: Understand how bitmask-based contour detection extracts elevation lines from the luminance channel.
 
 1. **Dense contours**: Set Interval to its lowest setting. Dense contour lines appear, tracing every fine tonal transition in the image.
 2. **Sparse contours**: Increase Interval toward maximum. Only the boldest tonal boundaries remain as contour lines.
@@ -277,7 +302,7 @@ These exercises progress from basic contour extraction through relief shading to
 *Relief Shading — simulated result across source images.*
 **Source**: A scene with strong vertical brightness variations — a sunset sky, a face with directional lighting, or a landscape with horizon gradient.
 
-**Objective**: Learn how the BRAM line buffer enables vertical gradient-based relief shading.
+**What You'll Create**: Learn how the BRAM line buffer enables vertical gradient-based relief shading.
 
 1. **Enable relief**: Set Palette to Terrain (relief enabled) and increase Color Ramp to ~50%.
 2. **Observe shading**: Notice how regions with downward brightness transitions appear lighter, and upward transitions appear darker — simulating top-down lighting.
@@ -305,7 +330,7 @@ These exercises progress from basic contour extraction through relief shading to
 *Full Cartographic Rendering — simulated result across source images.*
 **Source**: Any footage with a range of brightness levels — a landscape, a still life, or abstract video synthesis.
 
-**Objective**: Combine contour lines, relief shading, and altitude colour tinting for a complete terrain map aesthetic.
+**What You'll Create**: Combine contour lines, relief shading, and altitude colour tinting for a complete terrain map aesthetic.
 
 1. **Colour tinting**: Set Fill Mode to Color and increase Index Sp (altitude tint) to ~60%. Colour bands appear between contour lines.
 2. **Relief + colour**: Enable Palette (relief) and set Color Ramp to ~50%. The colour bands now have three-dimensional shading.
@@ -321,9 +346,6 @@ These exercises progress from basic contour extraction through relief shading to
 
 ## Tips
 
-- **Interval is geometric, not linear**: Each step doubles the contour spacing because the mask values are powers of two. Moving one step changes the map density dramatically.
-- **Line width scales with interval**: The width threshold is derived from the contour mask, so the same Line W setting produces visually different thicknesses at different intervals. Adjust both together.
-- **Relief needs Palette enabled**: The Color Ramp knob has no effect unless the Palette toggle is set to Terrain (relief enabled). Check the toggle first if relief isn't visible.
 - **Dark background for drama**: Set Smooth low and Contrast high for bright contour lines on a dark relief-shaded terrain — the classic cartographic look.
 - **Invert for negative maps**: The Labels toggle creates a negative-image effect that turns contour lines into filled bands. Combined with altitude colour, this produces broad elevation colour chips.
 - **Mix for overlay**: Use the Mix fader at 50–70% to overlay the contour map transparently on the source footage — a topographic annotation layer that preserves the original image.
@@ -338,13 +360,13 @@ These exercises progress from basic contour extraction through relief shading to
 |------|------------|
 | **Altitude Band** | A quantised elevation zone defined by the upper bits of the luma value, used to assign hypsometric colour tints. |
 | **Bitmask** | A binary pattern used to isolate specific bits of a value; Survey uses bitmask AND for division-free contour detection. |
-| **BRAM** | Block RAM; dedicated on-chip memory used for the scanline delay buffer that stores previous-line luma for relief calculation. |
 | **Contour Interval** | The vertical distance (in luma levels) between adjacent contour lines; always a power of two in Survey. |
 | **Contour Line** | A line connecting points of equal luminance, analogous to an isohypse on a topographic map. |
 | **Hypsometric Tint** | A colour assigned to an elevation band on a topographic map, encoding altitude as hue. |
 | **LFSR** | Linear Feedback Shift Register (not used in Survey but referenced in glossary for completeness). |
 | **Line Buffer** | A BRAM-based FIFO that delays one scanline of pixel data, providing vertical neighbor access for gradient calculation. |
 | **Relief Shading** | A cartographic technique that simulates directional lighting on terrain to create a three-dimensional appearance. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

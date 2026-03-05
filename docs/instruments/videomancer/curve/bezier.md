@@ -35,6 +35,14 @@ At gentle settings, Bezier produces a single softly glowing arc drifting across 
 
 ---
 
+## Quick Start
+
+1. **Freeze and study**: Set Anim Spd to 0% to hold curves in place. This makes it easy to understand how Stroke W, Glow, and Amplitude affect a single configuration before adding motion.
+2. **Mono for structure, Rainbow for spectacle**: Mono mode reveals the pure geometry of the curves. Switch to Rainbow only after you understand the spatial structure — the color can mask the underlying motion patterns.
+3. **Amplitude vs. Anim Spd**: Amplitude controls *where* the curves go; Anim Spd controls *how fast* they get there. Low amplitude with high speed produces tightly vibrating patterns. High amplitude with low speed produces sweeping arcs.
+
+---
+
 ## Background
 
 ### Bézier Curves in History
@@ -61,6 +69,8 @@ Rather than rendering curves as hard-edged one-pixel lines, Bezier computes a di
 ---
 
 ## Signal Flow
+
+Phase Accumulators → Triangle Wave Folding → De Casteljau Evaluation → BRAM Scan → Stroke / Glow Rendering → Color Mapping
 
 ```
 VERTICAL BLANKING INTERVAL
@@ -185,7 +195,7 @@ Overall brightness. Scales the final luminance of all rendered curve pixels befo
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Curves** | 1 | 2 |
+| **7 — Curves** | 1 | 4 |
 | **8 — Color Mode** | Rainbow | Mono |
 | **9 — Calligraphic** | Off | On |
 | **10 — Video Mod** | Off | On |
@@ -206,6 +216,21 @@ Switches 7 and 8 configure curve count and color mode as two independent selecto
 
 Mix crossfade between the unprocessed input video and the rendered curve output. At 0%, only the input is visible. At 100%, only the curve rendering is visible. Intermediate values blend the two proportionally. When Video Mod is active, this fader controls how much of the curve-brightened composite is mixed with the dry input.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bezier processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -216,7 +241,7 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 <img src={bezier_exercise1_result} alt="A Single Glowing Arc result"/>
 *A Single Glowing Arc — simulated result across source images.*
-**Objective**: Understand the basic curve rendering: one curve, glow, and brightness controls.
+**What You'll Create**: Understand the basic curve rendering: one curve, glow, and brightness controls.
 
 1. **Single curve**: Set Curves to 1 (Switch 7 position 1). One cubic Bézier is drawn on screen.
 2. **Freeze animation**: Turn Anim Spd to 0%. The curve holds its current shape.
@@ -233,7 +258,7 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 <img src={bezier_exercise2_result} alt="Rainbow Weave result"/>
 *Rainbow Weave — simulated result across source images.*
-**Objective**: Explore multi-curve rendering with rainbow color cycling and calligraphic strokes.
+**What You'll Create**: Explore multi-curve rendering with rainbow color cycling and calligraphic strokes.
 
 1. **Four curves**: Set Curves to 4 (Switch 7 position 4). Four independent Bézier curves interleave on screen.
 2. **Rainbow**: Switch Color Mode to Rainbow (Switch 8). Each curve displays a spectrum of colors that varies along its length.
@@ -250,7 +275,7 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 <img src={bezier_exercise3_result} alt="Video Overlay Composition result"/>
 *Video Overlay Composition — simulated result across source images.*
-**Objective**: Use Video Mod to composit animated curves over live video and balance brightness.
+**What You'll Create**: Use Video Mod to composit animated curves over live video and balance brightness.
 
 1. **Prepare curves**: Set Curves to 3, Anim Spd ~40%, Amplitude ~50%, Stroke W ~20%.
 2. **Enable Video Mod**: Turn on Video Mod (Switch 10 On). The curve luminance now adds to the input video — bright areas of the video become brighter where curves pass.
@@ -266,9 +291,6 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 ## Tips
 
-- **Freeze and study**: Set Anim Spd to 0% to hold curves in place. This makes it easy to understand how Stroke W, Glow, and Amplitude affect a single configuration before adding motion.
-- **Mono for structure, Rainbow for spectacle**: Mono mode reveals the pure geometry of the curves. Switch to Rainbow only after you understand the spatial structure — the color can mask the underlying motion patterns.
-- **Amplitude vs. Anim Spd**: Amplitude controls *where* the curves go; Anim Spd controls *how fast* they get there. Low amplitude with high speed produces tightly vibrating patterns. High amplitude with low speed produces sweeping arcs.
 - **Video Mod balance**: When using Video Mod, reduce Bright to 30–40% to prevent the curves from washing out the source. The Mix fader gives an additional intensity control for the composite.
 - **Calligraphic subtlety**: The endpoint thickening is most visible with moderate Stroke W (30–50%). Too thin and the variation is invisible; too thick and the entire curve appears uniformly wide.
 - **Glow as atmosphere**: Even with Stroke W at 0%, the Glow parameter alone can render soft, nebula-like shapes. No hard edges — just luminous clouds following the curve paths.
@@ -280,19 +302,17 @@ These exercises progress from a single static curve to a full multi-curve animat
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; a dedicated memory block within the FPGA used to store the 256 evaluated curve sample points. |
 | **Calligraphic stroke** | A rendering style where line width varies along the curve, thickening at endpoints to simulate pressure from a broad-nib pen. |
 | **Coprime** | Two integers sharing no common factor greater than 1; used for DDS frequency multipliers to prevent control point synchronization. |
 | **DDS** | Direct Digital Synthesis; a technique that generates a waveform by incrementing a phase accumulator at a fixed rate, here driving control point animation. |
 | **De Casteljau algorithm** | A recursive sequence of linear interpolations that evaluates a point on a Bézier curve without computing the polynomial directly. |
 | **Distance field** | A scalar field where each pixel stores the distance to the nearest curve sample, used to render soft-edged glow and stroke thickness. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Lerp** | Linear interpolation; computing a weighted blend between two values based on a parameter t in the range [0, 1]. |
 | **Lissajous pattern** | A complex curve formed by two perpendicular sinusoidal oscillations at different frequencies, here approximated by the multi-DDS animation system. |
 | **Manhattan distance** | The sum of the absolute horizontal and vertical differences between two points (|Δx| + |Δy|); cheaper than Euclidean distance to compute in hardware. |
 | **Phase accumulator** | A register that increments by a fixed step each cycle, wrapping at overflow to produce a continuous ramp for animation timing. |
 | **Triangle wave** | A periodic waveform that ramps linearly up and down, used to fold phase into smooth oscillating position coordinates. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
 
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

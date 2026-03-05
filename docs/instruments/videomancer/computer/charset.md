@@ -68,6 +68,14 @@ At conservative settings, Charset is a stylized mosaic effect — a grid of tile
 
 ---
 
+## Quick Start
+
+1. **Start with Mono + Grid Lines**: This combination immediately reveals the character grid structure and makes density patterns easy to read without color distraction. It is the fastest way to understand the effect.
+2. **Brightness controls the ink**: Think of Brightness as the ink density on a dot-matrix printer. Higher values produce bolder, more visible characters; lower values create a faded printout look.
+3. **Cell Size is your resolution control**: Smaller cells preserve more of the source image's spatial detail but reduce the visibility of individual patterns. Larger cells abstract the image further into coarse typography.
+
+---
+
 ## Background
 
 ### ASCII Art and Character Density
@@ -94,6 +102,8 @@ The original character generator chips of the 1970s and 1980s — the Motorola M
 ---
 
 ## Signal Flow
+
+Sync Detection → Cell Grid Tracking → Density Classification → ... → Sync Delay → Output Assignment
 
 ```
 Input Video (YUV 4:4:4)
@@ -237,7 +247,19 @@ The five toggle switches control independent binary processing options. Invert a
 | Default | 100% |
 | Suffix | % |
 
-Mix controls the wet/dry blend between the processed character display and the original video signal. At 100% (full clockwise), the output is entirely the character-rendered version. At 0%, the output is the unprocessed input. Intermediate positions create a translucent overlay where the character patterns float above or blend into the source imagery. Three parallel interpolator instances handle Y, U, and V independently, maintaining correct color blending through the crossfade. A subtle mix setting around 50–70% can produce a ghostly overlay of typographic texture on live video.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Charset-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -260,7 +282,7 @@ These exercises explore Charset's character density rendering from basic grid vi
 *Terminal Display — simulated result across source images.*
 **Source**: A talking-head interview or portrait footage with clear tonal separation between subject and background.
 
-**Objective**: Create a classic terminal-style character display where the subject is rendered in visible density patterns on a monochrome grid.
+**What You'll Create**: Create a classic terminal-style character display where the subject is rendered in visible density patterns on a monochrome grid.
 
 1. **Establish the grid**: Start with all controls at default positions. The video should appear as a grid of brightness-mapped tiles.
 2. **Go monochrome**: Enable Mono (Toggle 8) to strip color, creating a phosphor-terminal aesthetic.
@@ -287,7 +309,7 @@ These exercises explore Charset's character density rendering from basic grid vi
 *Inverted Dot Matrix — simulated result across source images.*
 **Source**: High-contrast footage with strong shapes — stage lighting, silhouettes, or graphic title cards.
 
-**Objective**: Explore inverted density mapping with spacing to create a dot-matrix printer effect where dark source areas appear as dense clusters.
+**What You'll Create**: Explore inverted density mapping with spacing to create a dot-matrix printer effect where dark source areas appear as dense clusters.
 
 1. **Invert the density**: Enable Invert (Toggle 7). Bright areas now appear empty and dark areas appear filled — the density map is reversed.
 2. **Add spacing**: Increase Spacing (Knob 6) to about 50%. Each cell's pattern shrinks away from the borders, creating visible gaps between character glyphs.
@@ -314,7 +336,7 @@ These exercises explore Charset's character density rendering from basic grid vi
 *Color Character Mosaic — simulated result across source images.*
 **Source**: Colorful footage — flowers, graffiti, abstract art, or a color bar test pattern.
 
-**Objective**: Create a colored character mosaic where density patterns carry the source's original chrominance, producing stained-glass-like tiles.
+**What You'll Create**: Create a colored character mosaic where density patterns carry the source's original chrominance, producing stained-glass-like tiles.
 
 1. **Disable mono**: Ensure Mono (Toggle 8) is Off so chrominance passes through the pattern pipeline.
 2. **Enable grid lines**: Turn on Grid Lines (Toggle 9) for a structured grid look that separates each chromatic tile.
@@ -329,9 +351,6 @@ These exercises explore Charset's character density rendering from basic grid vi
 
 ## Tips
 
-- **Start with Mono + Grid Lines**: This combination immediately reveals the character grid structure and makes density patterns easy to read without color distraction. It is the fastest way to understand the effect.
-- **Brightness controls the ink**: Think of Brightness as the ink density on a dot-matrix printer. Higher values produce bolder, more visible characters; lower values create a faded printout look.
-- **Cell Size is your resolution control**: Smaller cells preserve more of the source image's spatial detail but reduce the visibility of individual patterns. Larger cells abstract the image further into coarse typography.
 - **Use Mix for overlays**: A Mix setting around 50–70% lets the source video show through the character grid, creating the look of text or a heads-up display overlaid on live footage.
 - **Invert for negative prints**: Enabling Invert produces the look of a photographic negative rendered in characters — bright objects appear as voids in a dense field. This is especially effective with high-contrast sources.
 - **Grid Lines + Spacing together**: Combining these two controls creates strongly delineated cells with visible gaps, evoking the aesthetic of LED matrix displays, tiled mosaic art, or retro grid-based games.
@@ -345,18 +364,16 @@ These exercises explore Charset's character density rendering from basic grid vi
 | Term | Definition |
 |------|------------|
 | **ASCII Art** | A graphic design technique using printable characters from the ASCII character set, arranged on a monospaced text grid to approximate images through varying character density. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Charset uses zero BRAMs — all patterns are generated combinatorially. |
 | **Cell** | A fixed-size rectangular region of pixels (8×8 by default) within the character grid. Each cell receives a single density classification and renders the corresponding fill pattern. |
 | **Character Generator** | A hardware subsystem that converts character codes to pixel bitmaps, historically implemented as a ROM chip (e.g., Motorola MC6847, Signetics 2513). |
 | **Chroma** | The color difference components (U and V) of a YUV video signal, representing hue and saturation. |
 | **Density** | The proportion of lit pixels within a cell pattern. Higher density means more filled area and a brighter apparent cell when viewed from a distance. |
 | **Density Ramp** | A sequence of fill patterns with increasing visual weight, used to represent continuous brightness values as binary on/off spatial patterns. |
 | **Dot Matrix** | A display or printing technology that forms characters and images from a rectangular grid of individual dots, with visible spacing between elements. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the video processing pipeline in real time. |
 | **Halftone** | A reprographic technique simulating continuous tones through varying dot sizes or spacing; the printing-press equivalent of density-based character rendering. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages, each producing one output per clock cycle with fixed total latency. |
 | **Sample and Hold** | A technique that captures an input value at a specific moment and maintains that value at the output until the next sampling event. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

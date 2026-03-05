@@ -68,6 +68,14 @@ At minimum settings, Litmus adds a gentle tint that follows the tonal structure 
 
 ---
 
+## Quick Start
+
+1. **Start with 8 zones**: Eight zones is the sweet spot for most source material — enough color bands to read the tonal structure, few enough for clear visual separation.
+2. **Offset is your palette rotator**: Offset doesn't change the colors — it shifts which luminance range each color lands on. Use it to position a specific palette color on the area of interest.
+3. **Chroma mode for colorful sources**: When the source has strong colors, switching to Chroma mode maps the palette along the blue-yellow axis, creating color-space-aware false coloring.
+
+---
+
 ## Background
 
 ### Chemical Indicator Color Science
@@ -90,6 +98,8 @@ Real chemical test strips are porous — the reagent-soaked paper has a fibrous 
 ---
 
 ## Signal Flow
+
+Source Selection → Zone Quantization → Palette Lookup → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -205,7 +215,7 @@ Bright applies a global brightness offset to the palette output. At the center p
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Reagent** | pH | Redox |
+| **7 — Reagent** | pH | Iodine |
 | **8 — Paper** | Smooth | Rough |
 | **9 — Source** | Luma | Chroma |
 | **10 — Invert** | Off | On |
@@ -225,6 +235,10 @@ The toggle switches control non-standard packed bit fields. Reagent (Switch 7) i
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original input and the processed palette output. At 0%, the output is entirely the original signal. At 100%, the output is entirely the false-color palette mapping. Intermediate values create a semi-transparent overlay of palette colors on the source — useful for maintaining recognizable imagery while adding chemical color accents.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -247,7 +261,7 @@ These exercises introduce the four reagent palettes and progressively engage the
 *pH Strip Colorization — simulated result across source images.*
 **Source**: A high-contrast scene with a full tonal range — architectural interiors, landscapes with sky and ground.
 
-**Objective**: Learn zone quantization and the pH palette mapping.
+**What You'll Create**: Learn zone quantization and the pH palette mapping.
 
 1. **Start simple**: Set Zones to the middle position (~8 zones). The image should break into distinct color bands following the pH palette rainbow.
 2. **Reduce zones**: Pull Zones to minimum (2 zones). The image becomes a two-color split — red and violet, the extremes of the pH scale.
@@ -274,7 +288,7 @@ These exercises introduce the four reagent palettes and progressively engage the
 *Paper Texture and Zone Bleed — simulated result across source images.*
 **Source**: Footage with smooth gradients — soft lighting, fog, or water surfaces.
 
-**Objective**: Explore how paper texture and zone bleed add analog character to the digital palette mapping.
+**What You'll Create**: Explore how paper texture and zone bleed add analog character to the digital palette mapping.
 
 1. **Clean palette**: Set Zones ~50%, Saturate ~75%, Reagent pH, Bleed 0%, Texture 0%.
 2. **Add texture**: Cycle the Paper toggle through its positions. Watch paper fiber noise appear in the luminance channel — subtle at Light, pronounced at Heavy.
@@ -301,7 +315,7 @@ These exercises introduce the four reagent palettes and progressively engage the
 *Chroma Source and Reagent Comparison — simulated result across source images.*
 **Source**: Colorful footage — flowers, neon signs, painted surfaces, or color test patterns.
 
-**Objective**: Compare Luma and Chroma source modes across all four reagent palettes.
+**What You'll Create**: Compare Luma and Chroma source modes across all four reagent palettes.
 
 1. **Luma baseline**: Set Source to Luma, Reagent to pH, Zones ~50%. The color palette maps to brightness.
 2. **Switch to Chroma**: Toggle Source to Chroma. Now the U channel drives the zone mapping — blue-shifted areas and yellow-shifted areas get different palette colors.
@@ -316,9 +330,6 @@ These exercises introduce the four reagent palettes and progressively engage the
 
 ## Tips
 
-- **Start with 8 zones**: Eight zones is the sweet spot for most source material — enough color bands to read the tonal structure, few enough for clear visual separation.
-- **Offset is your palette rotator**: Offset doesn't change the colors — it shifts which luminance range each color lands on. Use it to position a specific palette color on the area of interest.
-- **Chroma mode for colorful sources**: When the source has strong colors, switching to Chroma mode maps the palette along the blue-yellow axis, creating color-space-aware false coloring.
 - **Paper + Bleed for analog feel**: Smooth paper with no bleed produces a clinical, digital look. Adding paper texture and zone bleed transforms the output into something that looks like it came out of a chemistry lab.
 - **Iodine is the warmest palette**: The Iodine reagent produces warm amber-brown tones that work well as a sepia-like treatment, especially with texture enabled.
 - **Mix for tinted overlay**: Pulling Mix to 50% blends palette colors with the original source — subtle false-color accents without losing the source image.
@@ -338,10 +349,10 @@ These exercises introduce the four reagent palettes and progressively engage the
 | **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for texture noise. |
 | **Litmus** | A pH indicator derived from lichens that turns red in acid and blue in base — the most familiar chemical indicator. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Redox** | Reduction-oxidation potential; a measure of a substance's tendency to gain or lose electrons, visualized by indicator color changes. |
 | **Universal Indicator** | A blend of pH indicators chosen to produce a distinct color at each pH unit, creating a continuous rainbow spectrum. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone Quantization** | Dividing a continuous signal range into a fixed number of discrete bands, each mapped to a single output value. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -61,6 +61,14 @@ At subtle settings Vigil adds a gentle surveillance-camera patina to any footage
 
 ---
 
+## Quick Start
+
+1. **No bypass toggle**: Vigil uses all five toggles for features. Use the Glitch Mix fader at 0% for a clean passthrough.
+2. **Subtle sells it**: The most convincing surveillance look uses low values — 15% noise, 5% H-tear, 80% desaturate. Heavy settings look like glitch art rather than CCTV.
+3. **Pattern mode for texture**: Switch Noise Mode to Pattern for structured horizontal bands that resemble analog interference rather than random digital noise.
+
+---
+
 ## Background
 
 ### CCTV Image Degradation
@@ -87,6 +95,8 @@ Security cameras with wide-angle lenses exhibit significant light falloff at the
 ---
 
 ## Signal Flow
+
+Roll Offset → Horizontal Tear → Scanline Noise → ... → Glitch Mix → Freeze
 
 ```
 Input Video (YUV 4:4:4)
@@ -123,7 +133,7 @@ The roll offset is accumulated per-field based on the Roll Speed parameter, affe
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity and probability of scanline noise bands. At zero, no noise is added. As the value increases, broader and stronger noise bands appear across the image, drifting vertically when Roll Speed is active. The noise hits hardest on luma, creating horizontal brightness streaks that are characteristic of analog signal degradation. The Noise Mode toggle (Toggle 10) selects between LFSR-driven random flickering bands and a fixed periodic stripe pattern.
+At zero, no noise is added. As the value increases, broader and stronger noise bands appear across the image, drifting vertically when Roll Speed is active. The noise hits hardest on luma, creating horizontal brightness streaks that are characteristic of analog signal degradation. The Noise Mode toggle (Toggle 10) selects between LFSR-driven random flickering bands and a fixed periodic stripe pattern. Internally, controls the intensity and probability of scanline noise bands.
 
 ---
 
@@ -145,7 +155,7 @@ Controls horizontal line displacement — random per-frame offsets that shift en
 | Default | 6.3% |
 | Suffix | % |
 
-Controls the speed of vertical rolling. At zero the image is stationary. As the value increases, the frame boundary scrolls upward through the image at increasing speed, simulating loss of vertical sync. The roll affects the position of noise bands, vignette, and the timestamp overlay — everything that depends on the vertical position counter.
+At zero the image is stationary. As the value increases, the frame boundary scrolls upward through the image at increasing speed, simulating loss of vertical sync. The roll affects the position of noise bands, vignette, and the timestamp overlay — everything that depends on the vertical position counter. Internally, controls the speed of vertical rolling.
 
 ---
 
@@ -156,7 +166,7 @@ Controls the speed of vertical rolling. At zero the image is stationary. As the 
 | Default | 6.3% |
 | Suffix | % |
 
-Controls the probability of line dropout — complete blanking of random scanlines to black. At zero no lines drop out. As you increase the value, more lines per frame are replaced with black, creating horizontal black streaks that flash randomly across the image. The dropout decision is made per-line at the start of each line using LFSR B, so dropout patterns change every frame.
+At zero no lines drop out. As you increase the value, more lines per frame are replaced with black, creating horizontal black streaks that flash randomly across the image. The dropout decision is made per-line at the start of each line using LFSR B, so dropout patterns change every frame. Internally, controls the probability of line dropout — complete blanking of random scanlines to black.
 
 ---
 
@@ -178,7 +188,7 @@ Blends the chrominance channels toward neutral (U=512, V=512), progressively rem
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of radial darkening from the frame edges. At zero there is no vignette. As the value increases, the edges and corners of the frame darken progressively, concentrating visual attention on the center. The vignette is computed using Chebyshev distance (max of horizontal and vertical distance from center), producing a slightly rectangular falloff pattern.
+At zero there is no vignette. As the value increases, the edges and corners of the frame darken progressively, concentrating visual attention on the center. The vignette is computed using Chebyshev distance (max of horizontal and vertical distance from center), producing a slightly rectangular falloff pattern. Internally, controls the intensity of radial darkening from the frame edges.
 
 ---
 
@@ -207,6 +217,10 @@ The five toggles control independent processing features. Toggles 7–10 enable 
 
 Crossfades between the original clean input and the fully processed surveillance-degraded output. At 0% the output is the unmodified source; at 100% the full glitch processing is applied. This fader is labeled "Glitch Mix" rather than "Mix" to emphasize that it controls the balance between clean and degraded signal paths.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -228,7 +242,7 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 *Basic Surveillance Look — simulated result across source images.*
 **Source**: Indoor footage with mixed lighting — office scenes, hallways, or room interiors work well.
 
-**Objective**: Create a convincing CCTV surveillance camera aesthetic with desaturation, vignette, and timestamp.
+**What You'll Create**: Create a convincing CCTV surveillance camera aesthetic with desaturation, vignette, and timestamp.
 
 1. Set Desaturate to about 80% to wash out most of the color.
 2. Set Vignette to about 40% for subtle corner darkening.
@@ -256,7 +270,7 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 *Signal Degradation — simulated result across source images.*
 **Source**: Outdoor footage with movement — traffic, pedestrians, or nature scenes with motion.
 
-**Objective**: Add horizontal tearing and line dropout to simulate a failing analog video connection.
+**What You'll Create**: Add horizontal tearing and line dropout to simulate a failing analog video connection.
 
 1. Start from the Exercise 1 surveillance base (Desaturate ~80%, Vignette ~40%, Timestamp on).
 2. Increase H-Tear to about 15%. Watch lines begin to shift horizontally.
@@ -274,7 +288,7 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 **Source**: Any footage — the heavy processing will obscure most content.
 
-**Objective**: Push all degradation controls to their extremes for abstract glitch video.
+**What You'll Create**: Push all degradation controls to their extremes for abstract glitch video.
 
 1. Set Scan Noise to about 70% for heavy noise band coverage.
 2. Set H-Tear to about 50% for dramatic horizontal displacement.
@@ -294,9 +308,6 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 
 ## Tips
 
-- **No bypass toggle**: Vigil uses all five toggles for features. Use the Glitch Mix fader at 0% for a clean passthrough.
-- **Subtle sells it**: The most convincing surveillance look uses low values — 15% noise, 5% H-tear, 80% desaturate. Heavy settings look like glitch art rather than CCTV.
-- **Pattern mode for texture**: Switch Noise Mode to Pattern for structured horizontal bands that resemble analog interference rather than random digital noise.
 - **Roll Speed for unease**: Even a tiny amount of Roll Speed (5%) creates a subtle drift that signals "something is wrong with this signal" without being overtly glitchy.
 - **Freeze for stills**: Use Freeze to capture a single degraded frame, creating a "surveillance still capture" look for compositions or overlays.
 - **Luma Invert surprise**: Inverting luma on top of a desaturated, vignetted image creates a distinctive negative-CCTV look that reads as "infrared camera" to most viewers.
@@ -315,11 +326,11 @@ These exercises progress from subtle surveillance aesthetic to full analog signa
 | **Interlace** | A scanning method where odd and even lines are drawn in alternating fields, used by analog video standards (NTSC, PAL). |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, generating pseudo-random sequences. |
 | **Multiplexer** | A device that switches between multiple camera inputs on a single monitor or recording channel. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Scanline** | A single horizontal line of video; analog video is transmitted and displayed one scanline at a time. |
 | **Sync** | Synchronization signals (horizontal and vertical) that tell the display where each line and frame begins. |
 | **Tearing** | Horizontal displacement of scanlines caused by sync timing errors, creating a jagged vertical edge in the image. |
 | **Vignette** | Gradual darkening at the edges and corners of an image, caused by lens light falloff or sensor geometry. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ Two modes are available. In Julia mode, c is a user-controlled constant and z₀
 
 ---
 
+## Quick Start
+
+1. **C parameter space is the map**: The Mandelbrot set is a catalog of all Julia sets. Points inside the Mandelbrot set produce connected Julia sets; points outside produce disconnected "dust." The most interesting shapes lie near the Mandelbrot boundary.
+2. **Palette cycling is free animation**: Once the fractal is computed, cycling the palette offset creates vivid color flow without any additional computation. Combine with a static Julia shape for performance-ready visuals.
+3. **MaxIter trades detail for speed**: Higher iteration counts reveal finer boundary structure but require more computation time per frame. At 32 iterations maximum, the engine comfortably fits within one frame period.
+
+---
+
 ## Background
 
 ### The Julia Set
@@ -61,6 +69,8 @@ Once the iteration grid is computed, the visual appearance can be changed instan
 ---
 
 ## Signal Flow
+
+C Real / C Imag → Mandelbrot toggle → AnimC toggle → Display Pipeline → Interpolator
 
 ```
 Parameter Registers
@@ -190,7 +200,29 @@ The five toggles control mode selection, animation, and visual style. Mandel and
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the fractal output and the delayed input signal. At 100% (fully clockwise), the output is pure fractal. At 0%, the output is the unprocessed input. Intermediate positions blend the two, allowing the fractal pattern to be superimposed as a translucent overlay on the source video. This is particularly effective when mixing a colorful Julia set over a live camera feed.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Julia processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Julia-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -202,7 +234,7 @@ These exercises progress from static fractal exploration through palette animati
 
 <img src={julia_exercise1_result} alt="Exploring Julia Sets result"/>
 *Exploring Julia Sets — simulated result across source images.*
-**Objective**: Navigate the c-parameter space to discover different Julia set shapes, learning how C Real and C Imag determine fractal geometry.
+**What You'll Create**: Navigate the c-parameter space to discover different Julia set shapes, learning how C Real and C Imag determine fractal geometry.
 
 1. **Default view**: Start with default settings. A Julia set should appear in blue-gold coloring.
 2. **Sweep C Real**: Slowly rotate knob 1 from center to the right. Watch the fractal morph — connected regions break apart, tendrils form and dissolve.
@@ -219,7 +251,7 @@ These exercises progress from static fractal exploration through palette animati
 
 <img src={julia_exercise2_result} alt="Palette Cycling Animation result"/>
 *Palette Cycling Animation — simulated result across source images.*
-**Objective**: Create vivid color animation by cycling the palette offset while the fractal shape remains static.
+**What You'll Create**: Create vivid color animation by cycling the palette offset while the fractal shape remains static.
 
 1. **Set an interesting Julia set**: Use the "rabbit" coordinates from Exercise 1 or find another connected shape you like.
 2. **Freeze the shape**: Ensure AnimC is Manual so the fractal stays fixed.
@@ -236,7 +268,7 @@ These exercises progress from static fractal exploration through palette animati
 
 <img src={julia_exercise3_result} alt="AnimC Auto-Orbit result"/>
 *AnimC Auto-Orbit — simulated result across source images.*
-**Objective**: Engage the automatic c-parameter orbit to produce continuously evolving fractal shapes without manual input.
+**What You'll Create**: Engage the automatic c-parameter orbit to produce continuously evolving fractal shapes without manual input.
 
 1. **Enable AnimC**: Toggle AnimC to Auto. The Julia set begins to morph on its own as c orbits in the complex plane.
 2. **Observe transitions**: Watch the fractal pass through connected and disconnected phases. Some frames show intricate lace; others show scattered points.
@@ -252,9 +284,6 @@ These exercises progress from static fractal exploration through palette animati
 
 ## Tips
 
-- **C parameter space is the map**: The Mandelbrot set is a catalog of all Julia sets. Points inside the Mandelbrot set produce connected Julia sets; points outside produce disconnected "dust." The most interesting shapes lie near the Mandelbrot boundary.
-- **Palette cycling is free animation**: Once the fractal is computed, cycling the palette offset creates vivid color flow without any additional computation. Combine with a static Julia shape for performance-ready visuals.
-- **MaxIter trades detail for speed**: Higher iteration counts reveal finer boundary structure but require more computation time per frame. At 32 iterations maximum, the engine comfortably fits within one frame period.
 - **AnimC for hands-free morphing**: The auto-orbit continuously transforms the Julia set shape, crossing between connected and disconnected phases. Ideal for installations or live performance backgrounds.
 - **Unused controls are harmless**: Zoom, VidBlnd, and VidSeed are declared but unconnected in the current firmware. Turning these knobs will not cause any visual change or instability.
 - **Mix for overlay compositing**: At intermediate Mix values, the fractal is superimposed over the input video as a translucent layer. This is effective for blending mathematical graphics with live camera feeds.
@@ -266,17 +295,15 @@ These exercises progress from static fractal exploration through palette animati
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used to store the iteration result grid. |
 | **Complex Plane** | A two-dimensional number system where horizontal position represents the real part and vertical position represents the imaginary part of a complex number. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
 | **Escape Radius** | The magnitude threshold (|z|² > 4.0) beyond which a sequence is declared divergent. Choosing 4.0 is sufficient because once |z| > 2, the sequence is guaranteed to escape for the z² + c formula. |
 | **Fixed-Point** | A number representation where the binary point is at a fixed position (here, signed 4.12 — 4 integer bits, 12 fractional bits). Provides predictable precision without the hardware cost of floating-point. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Iteration Count** | The number of z² + c steps required for a point to exceed the escape radius. Determines the color assigned to that point. |
 | **Julia Set** | The fractal boundary in the complex plane between points whose iteration sequences remain bounded and those that escape, for a fixed constant c. |
 | **Mandelbrot Set** | The set of complex constants c for which the iteration z² + c starting from z₀ = 0 remains bounded. Acts as a catalog of all Julia sets. |
 | **Palette** | A lookup table mapping iteration counts to YUV color values. Julia uses a 32-entry palette with color and monochrome variants. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ Color can be fixed from the Color knob, producing a static chrominance across th
 
 ---
 
+## Quick Start
+
+1. **Start with moderate Orbit Radius and slow Speed**: A wide, slow orbit reveals the elliptical path geometry most clearly. Very high speeds cause the particle to jump between positions, obscuring the smooth orbital character.
+2. **Size and Brightness interact as a minimum**: The visible glow extent is limited by whichever is smaller. For maximum visible area, both must be high. For an intense pinpoint, use high brightness with low size.
+3. **Color Cycle overrides the Color knob**: When cycling is enabled, adjusting Color has no effect — disable cycling first to dial in a specific fixed hue.
+
+---
+
 ## Background
 
 ### macOS Flurry Screensaver
@@ -61,6 +69,8 @@ The screensaver genre — born from the practical necessity of preventing CRT ph
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → Quarter-Wave Sine LUT → Phase Accumulator → ... → Sync Pipeline → Bypass Mux
 
 ```
 Synthesis Engine (no input video required)
@@ -232,6 +242,10 @@ Toggles 7–11 configure five binary aspects of the particle system, though only
 
 Controls the wet/dry mix ratio between the delayed input video and the synthesized particle field via the interpolator stage. At maximum (1023), the output is fully wet — the particle field at full intensity. At minimum (0), the output is fully dry — only the delayed input passes through. In pure synthesis mode (no external input), the "dry" signal is black (Y=0, U=V=512), so reducing Mix fades the particle toward darkness. Intermediate values create translucent particle rendering when overlaid on external video. For standalone screensaver use, keep Mix at maximum for full particle brightness.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -242,7 +256,7 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 
 <img src={flurry_exercise1_result} alt="Gentle Orbit result"/>
 *Gentle Orbit — simulated result across source images.*
-**Objective**: Establish a slow, wide elliptical orbit with warm fixed color, observing the relationship between orbit radius, speed, and glow geometry.
+**What You'll Create**: Establish a slow, wide elliptical orbit with warm fixed color, observing the relationship between orbit radius, speed, and glow geometry.
 
 1. **Set orbit radius to ~60%**: The particle should trace a moderately wide ellipse around screen center.
 2. **Set speed to ~25%**: Slow, contemplative orbital motion — the particle takes several seconds to complete a full revolution.
@@ -261,7 +275,7 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 
 <img src={flurry_exercise2_result} alt="Chromatic Sweep result"/>
 *Chromatic Sweep — simulated result across source images.*
-**Objective**: Enable color cycling and observe the frame-counter-driven chrominance modulation as the particle orbits, noting the asymmetric U and V evolution rates.
+**What You'll Create**: Enable color cycling and observe the frame-counter-driven chrominance modulation as the particle orbits, noting the asymmetric U and V evolution rates.
 
 1. **Start from Exercise 1 settings** with moderate orbit and brightness.
 2. **Enable Color Cycle**: Toggle Color Cycle to On. The particle should begin shifting hue frame by frame.
@@ -279,7 +293,7 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 
 <img src={flurry_exercise3_result} alt="Maximum Glow result"/>
 *Maximum Glow — simulated result across source images.*
-**Objective**: Push Size and Brightness to their extremes to explore the glow rendering limits, observing how the Manhattan distance diamond scales and how the single particle can fill a large portion of the screen.
+**What You'll Create**: Push Size and Brightness to their extremes to explore the glow rendering limits, observing how the Manhattan distance diamond scales and how the single particle can fill a large portion of the screen.
 
 1. **Set orbit radius to ~30%**: Keep the orbit compact near center so the glow field stays on screen.
 2. **Set speed to ~10%**: Very slow orbit for steady observation.
@@ -297,9 +311,6 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 
 ## Tips
 
-- **Start with moderate Orbit Radius and slow Speed**: A wide, slow orbit reveals the elliptical path geometry most clearly. Very high speeds cause the particle to jump between positions, obscuring the smooth orbital character.
-- **Size and Brightness interact as a minimum**: The visible glow extent is limited by whichever is smaller. For maximum visible area, both must be high. For an intense pinpoint, use high brightness with low size.
-- **Color Cycle overrides the Color knob**: When cycling is enabled, adjusting Color has no effect — disable cycling first to dial in a specific fixed hue.
 - **Manhattan diamonds are a feature**: The diamond-shaped glow is an intentional consequence of the hardware-efficient distance metric. At small sizes it resembles a point source; at large sizes it becomes a distinctive geometric signature.
 - **Use Orbit Radius at zero for a stationary light**: Setting orbit radius to minimum parks the particle at screen center, turning Flurry into a static glow field — useful for testing brightness, size, and color parameters without the complication of orbital motion.
 - **Mix fader doubles as a brightness control**: In pure synthesis mode with no input video, reducing Mix fades the particle toward black. Use this for subtle ambient effects at low mix levels.
@@ -318,6 +329,7 @@ These exercises explore Flurry's orbital synthesis capabilities, progressing fro
 | **Phase accumulator** | A counter that wraps at its maximum value, used to generate a continuously advancing angle for periodic motion. Flurry's 16-bit accumulator wraps at 65536, with the upper 5 bits indexing the 32-entry sine LUT. |
 | **Quarter-wave sine LUT** | A lookup table storing one quarter of a sine cycle (0 to peak), from which the full sine wave can be reconstructed through symmetry. Flurry's 32-entry table stores a half-wave (ascending and descending) used directly as both sine and cosine via phase offset. |
 | **Screensaver** | A class of autonomous generative animation programs originally designed to prevent CRT phosphor burn-in, now valued as ambient visual art. Flurry belongs to this tradition alongside classics like macOS Flurry and After Dark. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), the native pixel format in the Videomancer video pipeline. U and V are centered at 512 in the 10-bit domain; values above and below midpoint represent opposite color directions. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

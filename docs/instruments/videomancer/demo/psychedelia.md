@@ -35,6 +35,14 @@ Videomancer's FPGA implementation faithfully reproduces the core mechanics: a 64
 
 ---
 
+## Quick Start
+
+1. **Reset is your friend**: The framebuffer accumulates indefinitely — use Reset to start fresh compositions rather than waiting for decay to clear old content.
+2. **Pulse Rate and Speed interact**: High pulse rate with low speed fills the framebuffer quickly. Low pulse rate with high speed creates dotted spirograph-like lines.
+3. **8-Way for mandalas**: 8-Way symmetry with auto cursor produces the most complex radial patterns — the Lissajous curve creates 8 simultaneous traces.
+
+---
+
 ## Background
 
 ### Llamasoft Light Synthesisers
@@ -200,6 +208,10 @@ The five toggles configure the emitter behaviour and rendering mode. Cursor swit
 
 Mix crossfades between the dry input and the synthesised psychedelia output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values overlay the colour trails onto the source video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -210,7 +222,7 @@ These exercises progress from understanding the basic stamp mechanics to creatin
 
 <img src={psychedelia_exercise1_result} alt="Manual Single-Point Trail result"/>
 *Manual Single-Point Trail — simulated result across source images.*
-**Objective**: Learn the stamp, palette, and decay mechanics by manually painting a trail across the framebuffer.
+**What You'll Create**: Learn the stamp, palette, and decay mechanics by manually painting a trail across the framebuffer.
 
 1. Set Cursor to Manual.
 2. Set Pattern to 0 (single pixel stamp).
@@ -231,7 +243,7 @@ These exercises progress from understanding the basic stamp mechanics to creatin
 
 <img src={psychedelia_exercise2_result} alt="Automatic Lissajous Mandala result"/>
 *Automatic Lissajous Mandala — simulated result across source images.*
-**Objective**: Create an evolving symmetric mandala using automatic Lissajous cursor motion.
+**What You'll Create**: Create an evolving symmetric mandala using automatic Lissajous cursor motion.
 
 1. Set Cursor to Auto.
 2. Set Symmetry to 8-Way for maximum radial symmetry.
@@ -252,7 +264,7 @@ These exercises progress from understanding the basic stamp mechanics to creatin
 
 <img src={psychedelia_exercise3_result} alt="Video-Modulated Mandala Overlay result"/>
 *Video-Modulated Mandala Overlay — simulated result across source images.*
-**Objective**: Layer a Lissajous mandala over live video for a performance-ready composite.
+**What You'll Create**: Layer a Lissajous mandala over live video for a performance-ready composite.
 
 1. Continue from Exercise 2 with Auto cursor and 8-Way symmetry.
 2. Enable Mod Video.
@@ -270,9 +282,6 @@ These exercises progress from understanding the basic stamp mechanics to creatin
 
 ## Tips
 
-- **Reset is your friend**: The framebuffer accumulates indefinitely — use Reset to start fresh compositions rather than waiting for decay to clear old content.
-- **Pulse Rate and Speed interact**: High pulse rate with low speed fills the framebuffer quickly. Low pulse rate with high speed creates dotted spirograph-like lines.
-- **8-Way for mandalas**: 8-Way symmetry with auto cursor produces the most complex radial patterns — the Lissajous curve creates 8 simultaneous traces.
 - **Manual for drawing**: Switch to Manual mode to hand-draw patterns. Sweep both X and Y slowly for curved lines, or move one axis quickly for horizontal/vertical stripes.
 - **Larger stamps fill faster**: Pattern 7 covers many cells per write, filling the framebuffer and creating broad colour washes. Pattern 0 produces fine pointillistic detail.
 - **Bright extends trail visibility**: Higher brightness makes older (lower palette index) stamps visible longer, effectively lengthening the apparent trail without changing the actual decay rate.

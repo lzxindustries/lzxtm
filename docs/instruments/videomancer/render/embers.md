@@ -35,6 +35,14 @@ Two emission modes offer fundamentally different creative starting points. Fount
 
 ---
 
+## Quick Start
+
+1. **Start with drag enabled**: The default drag-on setting keeps particles clustered near the emission source, making the fountain visible and controllable. Disable drag only when you want long-range scatter across the full frame.
+2. **Gravity direction sets the mood**: Downward gravity produces melancholy, descending ash. Upward gravity produces energetic, ascending sparks. Try zero gravity for drifting, nebula-like particle clouds.
+3. **Size 1 for precision, Size 8 for atmosphere**: Single-pixel particles reveal the pure physics — every trajectory is a clean arc. Large particles create a soft, glowing haze where individual trajectories blur into a luminous field.
+
+---
+
 ## Background
 
 ### Particle Systems in Computer Graphics
@@ -61,6 +69,8 @@ The Video emission mode bridges the gap between autonomous synthesis and input-d
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → LFSR16 Instance → Position Counters → ... → Sync Pipeline → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -166,7 +176,7 @@ Controls how frequently new particles are emitted. At minimum, no new particles 
 | Default | 25.0% |
 | Suffix | % |
 
-Sets the magnitude of gravitational acceleration applied to each particle's vertical velocity on every frame. At zero, particles drift in straight lines determined solely by their initial velocity and drag. As gravity increases, trajectories curve into parabolic arcs — the classic shape of a projectile under constant acceleration. The gravity direction toggle determines whether particles are pulled downward (simulating falling embers) or upward (simulating rising sparks and hot gas). At maximum gravity, particles accelerate rapidly and exit the frame within a few frames of emission, producing short, sharp streaks rather than graceful arcs.
+At zero, particles drift in straight lines determined solely by their initial velocity and drag. As gravity increases, trajectories curve into parabolic arcs — the classic shape of a projectile under constant acceleration. The gravity direction toggle determines whether particles are pulled downward (simulating falling embers) or upward (simulating rising sparks and hot gas). At maximum gravity, particles accelerate rapidly and exit the frame within a few frames of emission, producing short, sharp streaks rather than graceful arcs. Internally, sets the magnitude of gravitational acceleration applied to each particle's vertical velocity on every frame.
 
 ---
 
@@ -177,7 +187,7 @@ Sets the magnitude of gravitational acceleration applied to each particle's vert
 | Default | 50.0% |
 | Suffix | % |
 
-Determines the magnitude of the initial upward velocity given to each newly emitted particle. At zero, particles are born stationary and immediately begin falling under gravity (if enabled) — a dripping or pooling effect. At maximum, particles launch with a strong upward impulse, reaching considerable height before gravity curves them back down. The interaction between Velocity and Gravity defines the apex height of the parabolic trajectory: high velocity with low gravity produces tall, lazy arcs, while matched velocity and gravity produces tight, energetic bounces. The initial vertical velocity is always directed upward (negative in screen coordinates); horizontal velocity comes from the LFSR-driven random component scaled by Spread.
+At zero, particles are born stationary and immediately begin falling under gravity (if enabled) — a dripping or pooling effect. At maximum, particles launch with a strong upward impulse, reaching considerable height before gravity curves them back down. The interaction between Velocity and Gravity defines the apex height of the parabolic trajectory: high velocity with low gravity produces tall, lazy arcs, while matched velocity and gravity produces tight, energetic bounces. The initial vertical velocity is always directed upward (negative in screen coordinates); horizontal velocity comes from the LFSR-driven random component scaled by Spread. Internally, determines the magnitude of the initial upward velocity given to each newly emitted particle.
 
 ---
 
@@ -209,7 +219,7 @@ Controls the rendering radius of each particle in pixels, ranging from 1 (single
 | Default | 50.0% |
 | Suffix | % |
 
-Scales the horizontal component of the random initial velocity assigned to each new particle. At zero, all particles are emitted straight up (or straight down, depending on gravity direction) with no lateral dispersion — a narrow column of sparks. At maximum, the LFSR-derived horizontal velocity is amplified to its full range, producing a wide cone of emission that sprays particles across the full width of the frame. The Spread parameter directly maps to the visual cone angle of the particle fountain: narrow spread mimics a candle flame, while wide spread resembles a Roman candle or burst firework. In Video mode, spread determines how far particles wander from their emission point on the source image.
+At zero, all particles are emitted straight up (or straight down, depending on gravity direction) with no lateral dispersion — a narrow column of sparks. At maximum, the LFSR-derived horizontal velocity is amplified to its full range, producing a wide cone of emission that sprays particles across the full width of the frame. The Spread parameter directly maps to the visual cone angle of the particle fountain: narrow spread mimics a candle flame, while wide spread resembles a Roman candle or burst firework. In Video mode, spread determines how far particles wander from their emission point on the source image. Internally, scales the horizontal component of the random initial velocity assigned to each new particle.
 
 ---
 
@@ -238,6 +248,10 @@ Toggles 7–10 configure four independent binary aspects of the particle system.
 
 Global brightness multiplier applied to the final particle brightness before color mapping and compositing. At maximum, particles render at full intensity — the brightest cores saturate to white in Hot mode. At zero, all particle contribution is suppressed and only the input video passes through. Intermediate values scale the overall luminosity of the particle field, useful for matching the intensity of the ember overlay to the brightness range of the source video. This control acts as the master intensity for the entire particle system, distinct from the per-particle lifetime-based fade.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -248,7 +262,7 @@ These exercises progress from a basic centered fountain through physics-driven t
 
 <img src={embers_exercise1_result} alt="Classic Fountain result"/>
 *Classic Fountain — simulated result across source images.*
-**Objective**: Create a steady upward fountain of white-hot sparks from the screen center, exploring how gravity and velocity shape the parabolic trajectory envelope.
+**What You'll Create**: Create a steady upward fountain of white-hot sparks from the screen center, exploring how gravity and velocity shape the parabolic trajectory envelope.
 
 1. **Set Fountain mode**: Ensure Emit Mode is Fountain. Particles spawn from screen center.
 2. **Establish baseline**: Set Emit Rate to ~50%, Velocity to ~50%, Gravity to ~25%, Lifetime to ~75%. A steady stream of sparks should arc upward and fall back.
@@ -265,7 +279,7 @@ These exercises progress from a basic centered fountain through physics-driven t
 
 <img src={embers_exercise2_result} alt="Slow Ember Drift result"/>
 *Slow Ember Drift — simulated result across source images.*
-**Objective**: Create large, slowly fading embers with minimal physics, emphasizing the lifetime-brightness relationship and the white-hot color gradient.
+**What You'll Create**: Create large, slowly fading embers with minimal physics, emphasizing the lifetime-brightness relationship and the white-hot color gradient.
 
 1. **Reduce emission**: Set Emit Rate to ~20% for sparse, well-separated particles.
 2. **Maximize lifetime**: Set Lifetime to ~100%. Particles will persist for several seconds.
@@ -283,7 +297,7 @@ These exercises progress from a basic centered fountain through physics-driven t
 
 <img src={embers_exercise3_result} alt="Video-Reactive Sparks result"/>
 *Video-Reactive Sparks — simulated result across source images.*
-**Objective**: Use Video emission mode to generate sparks at bright regions of the input signal, creating a luminance-reactive particle overlay that responds to the source content.
+**What You'll Create**: Use Video emission mode to generate sparks at bright regions of the input signal, creating a luminance-reactive particle overlay that responds to the source content.
 
 1. **Switch to Video mode**: Toggle Emit Mode to Video. Particles now spawn at bright pixels in the source.
 2. **Feed a high-contrast source**: Use footage with distinct bright highlights — candle flames, spotlights, bright text on dark backgrounds.
@@ -300,9 +314,6 @@ These exercises progress from a basic centered fountain through physics-driven t
 
 ## Tips
 
-- **Start with drag enabled**: The default drag-on setting keeps particles clustered near the emission source, making the fountain visible and controllable. Disable drag only when you want long-range scatter across the full frame.
-- **Gravity direction sets the mood**: Downward gravity produces melancholy, descending ash. Upward gravity produces energetic, ascending sparks. Try zero gravity for drifting, nebula-like particle clouds.
-- **Size 1 for precision, Size 8 for atmosphere**: Single-pixel particles reveal the pure physics — every trajectory is a clean arc. Large particles create a soft, glowing haze where individual trajectories blur into a luminous field.
 - **Video mode loves high contrast**: For the strongest video-reactive effect, feed Embers a source with distinct bright highlights on a dark background. The luma threshold at Y=512 means mid-gray and darker regions produce no particles.
 - **Lifetime and emission rate define density**: Short lifetime with high emission gives rapid sparkle. Long lifetime with low emission gives a sparse, slowly evolving constellation. Balance the two for the desired visual density.
 - **Hot palette at low brightness reveals the red end**: Pull the Brightness fader to 50–70% to expose the full orange-to-red gradient of the incandescence curve. At full brightness the white core dominates.
@@ -325,6 +336,7 @@ These exercises progress from a basic centered fountain through physics-driven t
 | **Particle system** | A computer graphics technique representing complex phenomena as collections of independent point masses, each with position, velocity, lifetime, and visual attributes. |
 | **Register file** | A set of flip-flop registers (as opposed to BRAM) used to store particle state. Embers maintains all 8 particles in registers, consuming zero block RAM. |
 | **Saturating arithmetic** | Integer arithmetic that clamps at the minimum and maximum representable values rather than wrapping around. Used for position updates to prevent particles from teleporting across frame boundaries. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer video processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Isotherm lines — bright white contours drawn at zone boundaries — can be ena
 
 ---
 
+## Quick Start
+
+1. **Start with ironbow:** The ironbow palette provides the most intuitive thermal camera aesthetic. Switch to arctic once you have a feel for the zone structure.
+2. **Window your range:** Narrowing the temperature range (low Pot 2) dramatically increases contrast within the visible zones — useful for revealing subtle brightness differences in flat-lit scenes.
+3. **Use cold floor to hide noise:** Raising the cold floor suppresses the coolest zone, which often contains dark noise or letterbox bars.
+
+---
+
 ## Background
 
 ### False-Color Palette Mapping
@@ -94,6 +102,8 @@ The ironbow palette — dark blue → red → orange → yellow → white — is
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -149,7 +159,7 @@ Controls the saturation intensity of the thermal palette colors. Above 50%, the 
 | Default | 50% |
 | Suffix | % |
 
-Sets the temperature range scaling applied to the input luminance before zone detection. At maximum (100%), the mapping operates near unity — the full 0–1023 luminance range maps linearly across all four zones. At minimum (0%), the luminance is expanded by shifting left two bits, which compresses the entire image into fewer zones and pushes mid-brightness content into the hot and white-hot regions. This control works like the temperature span adjustment on a FLIR camera: narrowing the range increases thermal contrast but clips the extremes.
+At maximum (100%), the mapping operates near unity — the full 0–1023 luminance range maps linearly across all four zones. At minimum (0%), the luminance is expanded by shifting left two bits, which compresses the entire image into fewer zones and pushes mid-brightness content into the hot and white-hot regions. This control works like the temperature span adjustment on a FLIR camera: narrowing the range increases thermal contrast but clips the extremes. Internally, sets the temperature range scaling applied to the input luminance before zone detection.
 
 ---
 
@@ -201,8 +211,8 @@ Mapped to internal signal `s_mix_knob` but currently unused in the VHDL processi
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Iron | Rainbow |
-| **8 — Scale** | Linear | Log |
+| **7 — Palette** | Iron | Lava |
+| **8 — Scale** | Linear | Step |
 | **9 — Overlay** | Full | Blend |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -221,6 +231,10 @@ The five toggles span palette selection, isotherm overlay, mapping inversion, a 
 | Suffix | % |
 
 Controls the wet/dry mix between the original video signal and the thermal-mapped output. At 0% the output is entirely the dry (original) signal; at 100% the output is entirely the wet (thermal-mapped) signal. Intermediate positions create a crossfade that blends the false-color palette over the original image. This is implemented via three parallel `interpolator_u` instances (one per Y/U/V channel) using the fader register value as the interpolation parameter `t`.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +257,7 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 *Classic Thermal Camera — simulated result across source images.*
 **Source**: A portrait or figure against a mid-tone background. Face and hands provide natural "hot spots" against a cooler backdrop.
 
-**Objective**: Reproduce the look of a standard FLIR thermal camera with ironbow palette, emphasizing skin-tone heat signatures against a cool background.
+**What You'll Create**: Reproduce the look of a standard FLIR thermal camera with ironbow palette, emphasizing skin-tone heat signatures against a cool background.
 
 1. Set the palette to ironbow (Toggle 7 = Iron).
 2. Set Range (Pot 1) to 50% for moderate palette saturation.
@@ -272,7 +286,7 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 *Inverted Arctic Scan — simulated result across source images.*
 **Source**: High-contrast geometric shapes — a checkerboard, barcode, or architectural scene with strong shadows and bright highlights.
 
-**Objective**: Create a cold-toned inverted thermal scan where bright areas appear cool and dark areas appear hot, using the arctic palette.
+**What You'll Create**: Create a cold-toned inverted thermal scan where bright areas appear cool and dark areas appear hot, using the arctic palette.
 
 1. Switch to arctic palette (Toggle 7 = Rainbow/arctic position).
 2. Enable invert (Toggle 9 = Blend/invert position) to flip hot and cold.
@@ -301,7 +315,7 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 *Pastel Thermal Overlay — simulated result across source images.*
 **Source**: A slowly moving organic texture — clouds, water, or foliage with gentle brightness gradients.
 
-**Objective**: Blend a desaturated, soft thermal palette over the original video to create a subtle heat-map overlay effect rather than a full false-color replacement.
+**What You'll Create**: Blend a desaturated, soft thermal palette over the original video to create a subtle heat-map overlay effect rather than a full false-color replacement.
 
 1. Set palette to ironbow (Toggle 7 = Iron).
 2. Reduce Range (Pot 1) to 20% — pull chroma toward neutral for pastel tones.
@@ -317,9 +331,6 @@ The following exercises demonstrate how Infrared's controls interact to produce 
 
 ## Tips
 
-- **Start with ironbow:** The ironbow palette provides the most intuitive thermal camera aesthetic. Switch to arctic once you have a feel for the zone structure.
-- **Window your range:** Narrowing the temperature range (low Pot 2) dramatically increases contrast within the visible zones — useful for revealing subtle brightness differences in flat-lit scenes.
-- **Use cold floor to hide noise:** Raising the cold floor suppresses the coolest zone, which often contains dark noise or letterbox bars.
 - **Isotherm lines as composition guides:** Enable isotherm lines temporarily to visualize where zone boundaries fall, then disable them for a cleaner final output.
 - **Combine with upstream keyers:** Feed Infrared a pre-keyed signal (e.g., luminance key isolating a performer) to apply thermal coloring only to the keyed region.
 - **Mix for subtlety:** A 30–50% wet/dry mix blends the thermal palette as a color overlay on top of the original image, creating a heads-up-display thermal scanner effect.

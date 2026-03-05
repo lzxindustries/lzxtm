@@ -68,6 +68,14 @@ At subtle settings, Jammer adds a faint herringbone texture and barely-visible g
 
 ---
 
+## Quick Start
+
+1. **No bypass**: Unlike most programs, Jammer has no bypass toggle. Use the Mix fader to blend between clean and jammed signals — this is intentional, because real RF interference always blends.
+2. **Interference is the master amplitude**: The Interference knob scales herringbone, rolling bar, and impulse density simultaneously. Start here to set the overall severity.
+3. **Ghost before pattern**: The ghost is blended before the herringbone pattern, so the interference covers both the live and ghost images. To see the ghost clearly, reduce Beat Freq and Interference briefly.
+
+---
+
 ## Background
 
 ### What Is Herringbone Interference?
@@ -94,6 +102,8 @@ The horizontal sync pulse at the beginning of each scan line tells the receiver 
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Interpolator → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -164,7 +174,7 @@ Controls the spatial frequency of the herringbone (or moire) interference patter
 | Default | 25% |
 | Suffix | % |
 
-Sets the diagonal angle of the herringbone pattern by controlling the per-line phase offset added to the beat accumulator at each horizontal sync. At zero, the interference lines are purely vertical. As Angle increases, the lines tilt diagonally, creating the characteristic V-shaped herringbone weave. At maximum, the lines are nearly horizontal. In moire mode, Angle has no effect since the pattern is radially symmetric.
+At zero, the interference lines are purely vertical. As Angle increases, the lines tilt diagonally, creating the characteristic V-shaped herringbone weave. At maximum, the lines are nearly horizontal. In moire mode, Angle has no effect since the pattern is radially symmetric. Internally, sets the diagonal angle of the herringbone pattern by controlling the per-line phase offset added to the beat accumulator at each horizontal sync.
 
 ---
 
@@ -175,7 +185,7 @@ Sets the diagonal angle of the herringbone pattern by controlling the per-line p
 | Default | 0% |
 | Suffix | % |
 
-Controls the vertical roll rate of the horizontal bar pattern. At zero, the bars are stationary (a fixed brightness modulation across the screen). As Roll Rate increases, the bars sweep vertically at increasing speed, creating the classic rolling-bar artifact of off-frequency interference. The roll direction depends on the polarity of the frequency offset. At high values, the bars scroll so fast they blur into a uniform brightness shift.
+At zero, the bars are stationary (a fixed brightness modulation across the screen). As Roll Rate increases, the bars sweep vertically at increasing speed, creating the classic rolling-bar artifact of off-frequency interference. The roll direction depends on the polarity of the frequency offset. At high values, the bars scroll so fast they blur into a uniform brightness shift. Internally, controls the vertical roll rate of the horizontal bar pattern.
 
 ---
 
@@ -196,7 +206,7 @@ Master amplitude control for the interference effects. This parameter scales the
 | Range | 0 – 256 |
 | Default | 0 |
 
-Sets the horizontal displacement of the ghost image in samples. At zero, the ghost overlaps the original (no visible effect). As Ghost Delay increases, the ghost copy moves further to the right, creating a progressively more displaced duplicate. The maximum delay uses the full 1024-sample depth of the line buffer BRAMs, offsetting the ghost by roughly half the active picture width. In real television, ghost delay corresponds to the extra propagation distance of the reflected signal path.
+At zero, the ghost overlaps the original (no visible effect). As Ghost Delay increases, the ghost copy moves further to the right, creating a progressively more displaced duplicate. The maximum delay uses the full 1024-sample depth of the line buffer BRAMs, offsetting the ghost by roughly half the active picture width. In real television, ghost delay corresponds to the extra propagation distance of the reflected signal path. Internally, sets the horizontal displacement of the ghost image in samples.
 
 ---
 
@@ -207,7 +217,7 @@ Sets the horizontal displacement of the ghost image in samples. At zero, the gho
 | Default | 0% |
 | Suffix | % |
 
-Controls the brightness of the ghost image. At zero, the ghost is invisible even if Ghost Delay is active. As Ghost Level increases, the delayed copy becomes more prominent. The ghost is added to the live signal via saturating addition, so at high levels the combination of live and ghost can clip to white in bright areas. When Chroma Int is set to Full YUV, the ghost's color channels are also added, producing color fringing on the displaced copy.
+At zero, the ghost is invisible even if Ghost Delay is active. As Ghost Level increases, the delayed copy becomes more prominent. The ghost is added to the live signal via saturating addition, so at high levels the combination of live and ghost can clip to white in bright areas. When Chroma Int is set to Full YUV, the ghost's color channels are also added, producing color fringing on the displaced copy. Internally, controls the brightness of the ghost image.
 
 ---
 
@@ -234,7 +244,19 @@ Switches 7–11 control five independent binary processing options. There is int
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry crossfade. At 0%, the output is the unprocessed input signal — no interference visible. At 100%, the output is the fully-processed signal with all enabled interference effects at full amplitude. Because there is no bypass toggle, this fader is the only way to attenuate the effect. Intermediate positions blend the clean and jammed signals, which can simulate the behavior of a receiver's automatic gain control as it partially suppresses an interfering signal.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Jammer-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +279,7 @@ These exercises progress from a single interference artifact to the full signal-
 *Herringbone and Rolling Bars — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with well-defined horizontal and vertical structures — architecture, grids, or text.
 
-**Objective**: Learn how Beat Freq, Angle, and Roll Rate create the two primary interference patterns.
+**What You'll Create**: Learn how Beat Freq, Angle, and Roll Rate create the two primary interference patterns.
 
 1. **Herringbone**: Set Beat Freq to ~25% and Angle to ~25%. A diagonal line pattern appears over the image.
 2. **Frequency**: Sweep Beat Freq from 0% to 100%. Watch the pattern transition from coarse bands to fine texture.
@@ -285,7 +307,7 @@ These exercises progress from a single interference artifact to the full signal-
 *Multipath Ghosting — simulated result across source images.*
 **Source**: Footage with bright subjects against dark backgrounds — text on black, or a person against a dark wall.
 
-**Objective**: Explore the ghost delay line and its interaction with the interference pattern.
+**What You'll Create**: Explore the ghost delay line and its interaction with the interference pattern.
 
 1. **Prepare**: Set Interference to ~30%. Set Beat Freq and Roll Rate to low values for a visible but subtle pattern.
 2. **Ghost delay**: Slowly increase Ghost Delay from 0 to ~50%. A displaced copy of the image appears to the right of the original.
@@ -312,7 +334,7 @@ These exercises progress from a single interference artifact to the full signal-
 *Total Signal Jamming — simulated result across source images.*
 **Source**: Any footage — the source will be almost completely obscured by interference.
 
-**Objective**: Layer all interference artifacts together for full signal disruption.
+**What You'll Create**: Layer all interference artifacts together for full signal disruption.
 
 1. **Strong pattern**: Set Beat Freq ~40%, Angle ~30%, Roll Rate ~35%, Interference ~80%.
 2. **Ghost**: Set Ghost Delay ~80, Ghost Level ~50%.
@@ -329,9 +351,6 @@ These exercises progress from a single interference artifact to the full signal-
 
 ## Tips
 
-- **No bypass**: Unlike most programs, Jammer has no bypass toggle. Use the Mix fader to blend between clean and jammed signals — this is intentional, because real RF interference always blends.
-- **Interference is the master amplitude**: The Interference knob scales herringbone, rolling bar, and impulse density simultaneously. Start here to set the overall severity.
-- **Ghost before pattern**: The ghost is blended before the herringbone pattern, so the interference covers both the live and ghost images. To see the ghost clearly, reduce Beat Freq and Interference briefly.
 - **Sync Jam is destructive**: Sync jitter affects the BRAM write address, which means it corrupts the ghost buffer as well. High jitter with large ghost delay produces severe tearing.
 - **Multiply bars for realism**: Multiplicative rolling bars are closer to real AGC modulation, where interference suppresses gain rather than adding brightness. Additive bars are more dramatic visually.
 - **Moire for circular patterns**: When subject matter has strong circular or radial features, switching to Moire mode creates concentric interference rings that interact with the content structure.
@@ -345,7 +364,6 @@ These exercises progress from a single interference artifact to the full signal-
 |------|------------|
 | **AGC** | Automatic Gain Control; a receiver circuit that adjusts amplification to maintain constant signal level. Strong interference can overload AGC, causing brightness modulation. |
 | **Beat Frequency** | The difference frequency produced when two signals close in frequency are mixed together. Appears as a visible pattern on screen. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the 1024×10-bit line buffers that produce ghost delay. |
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator and lookup, used here for herringbone pattern generation. |
 | **Ghost** | A displaced, attenuated copy of the television image caused by multipath signal reception (reflections off buildings, terrain, or aircraft). |
 | **Herringbone** | A diagonal striped interference pattern caused by near-frequency beat interaction between desired and interfering RF carriers. |
@@ -353,8 +371,8 @@ These exercises progress from a single interference artifact to the full signal-
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to produce impulse noise and sync jitter patterns. |
 | **Moire** | Circular concentric interference rings produced by radial distance modulation, alternative to diagonal herringbone geometry. |
 | **Multipath** | Signal reception via multiple propagation paths (direct + reflected), causing ghost images due to differential propagation delay. |
-| **Pipeline** | A series of sequential processing stages; Jammer uses 8 clock cycles (4 processing + 4 interpolator). |
 | **Sync Separator** | A receiver circuit that extracts horizontal and vertical sync pulses from the composite signal. Interference can corrupt separation and cause horizontal jitter. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

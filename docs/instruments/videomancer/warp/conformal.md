@@ -50,6 +50,14 @@ At conservative Strength settings, Conformal produces gentle lens-like warps —
 
 ---
 
+## Quick Start
+
+1. **Start centered:** Place CenterX and CenterY at 50% when exploring a new map function, so the distortion is symmetrical and predictable. Move the center off-screen only after you understand the map's behavior.
+2. **Use Grid to learn:** Enable the Grid overlay when switching between map functions. The grid reveals the mathematical structure of each mapping far more clearly than processed video alone.
+3. **Tile for recursion:** Enable Tile mode with Inversion or Power maps to create fractal-like repeating patterns. The wrapping fills the entire frame with transformed copies of the source.
+
+---
+
 ## Background
 
 ### Complex Plane Mapping
@@ -78,6 +86,8 @@ The **power map** w = z^n multiplies all angles around the origin by n. For n = 
 ---
 
 ## Signal Flow
+
+Coordinate Pipeline → Scanline Buffer → Compose → Mix → Sync Delay → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -132,7 +142,7 @@ The heart of Conformal is the four-clock coordinate pipeline that transforms pix
 | Default | 50% |
 | Suffix | % |
 
-Sets the horizontal position of the mapping center — the complex-plane origin. At 0% the origin is at the left edge of the frame; at 50% it is centered; at 100% it is at the right edge. Moving the center shifts the entire distortion pattern, because all four conformal functions are defined relative to this point. For inversion (1/z), the center becomes the singularity where the image collapses to a point.
+At 0% the origin is at the left edge of the frame; at 50% it is centered; at 100% it is at the right edge. Moving the center shifts the entire distortion pattern, because all four conformal functions are defined relative to this point. For inversion (1/z), the center becomes the singularity where the image collapses to a point. Internally, sets the horizontal position of the mapping center — the complex-plane origin.
 
 ---
 
@@ -154,7 +164,7 @@ Sets the vertical position of the mapping center. Together with CenterX, this pl
 | Default | 50% |
 | Suffix | % |
 
-Controls the scale (magnification) of the coordinate system before the conformal function is evaluated. At low values the effective zoom is tight, concentrating the entire warp into a small region around the center. At high values the zoom is wide, spreading the transformation across the full frame. Scale interacts strongly with each mapping function: in inversion mode, low scale creates a tight vortex; in Joukowski mode, it controls how far the airfoil stretching extends.
+At low values the effective zoom is tight, concentrating the entire warp into a small region around the center. At high values the zoom is wide, spreading the transformation across the full frame. Scale interacts strongly with each mapping function: in inversion mode, low scale creates a tight vortex; in Joukowski mode, it controls how far the airfoil stretching extends. Internally, controls the scale (magnification) of the coordinate system before the conformal function is evaluated.
 
 ---
 
@@ -215,6 +225,10 @@ Toggles 7 and 8 form a 2-bit map selector: MapSelA is bit 0, MapSelB is bit 1. T
 
 Dry/wet crossfade between the original input video and the conformally warped output. At 0% the output is entirely the original (dry) signal. At 100% the output is entirely the warped (wet) signal. Intermediate positions blend the two, which creates a ghostly double-exposure effect where the warped image is superimposed on the original — useful for subtle distortion effects or for previewing the warp intensity before committing to full wet.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -225,7 +239,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 **Source**: Feed a high-contrast graphic or text source — white text on a black background works well because straight edges make the inversion visible.
 
-**Objective**: Demonstrate the 1/z inversion map, which turns the plane inside-out through the center point.
+**What You'll Create**: Demonstrate the 1/z inversion map, which turns the plane inside-out through the center point.
 
 1. Set both map toggles to 0 (MapSelA = 0, MapSelB = 0) to select Inversion mode.
 2. Set CenterX and CenterY to 50% to place the singularity at the center of the frame.
@@ -242,7 +256,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 **Source**: Feed a live camera or a colorful, organic video source with curves and gradients.
 
-**Objective**: Explore the Joukowski map, which creates a distinctive pinch-and-stretch distortion resembling fluid dynamics.
+**What You'll Create**: Explore the Joukowski map, which creates a distinctive pinch-and-stretch distortion resembling fluid dynamics.
 
 1. Set MapSelA = 1, MapSelB = 0 (toggle 7 On, toggle 8 Off) for Joukowski mode.
 2. Center the origin (CenterX = 50%, CenterY = 50%).
@@ -259,7 +273,7 @@ These exercises explore the four conformal mapping functions and their interacti
 
 **Source**: Feed a symmetrical pattern or mandala-like video source — or any video with strong central features.
 
-**Objective**: Use the Power map (z²) with Tile mode to create a kaleidoscopic, fractal-like tiling pattern.
+**What You'll Create**: Use the Power map (z²) with Tile mode to create a kaleidoscopic, fractal-like tiling pattern.
 
 1. Set both map toggles to 1 (MapSelA = 1, MapSelB = 1) for Power mode.
 2. Center the origin.
@@ -276,9 +290,6 @@ These exercises explore the four conformal mapping functions and their interacti
 
 ## Tips
 
-- **Start centered:** Place CenterX and CenterY at 50% when exploring a new map function, so the distortion is symmetrical and predictable. Move the center off-screen only after you understand the map's behavior.
-- **Use Grid to learn:** Enable the Grid overlay when switching between map functions. The grid reveals the mathematical structure of each mapping far more clearly than processed video alone.
-- **Tile for recursion:** Enable Tile mode with Inversion or Power maps to create fractal-like repeating patterns. The wrapping fills the entire frame with transformed copies of the source.
 - **Strength for subtlety:** Low Strength values (10–30%) applied to the Joukowski map produce gentle lens-like barrel distortions that can simulate curved glass or underwater refraction.
 - **Animate CenterX/CenterY:** Patching slow LFOs to Center X and Center Y with the Inversion map creates a wandering singularity that sweeps across the frame, pulling the image into continuously shifting vortex patterns.
 - **Combine with feedback:** Routing the output of Conformal back into its own input (via an external mixer or feedback loop) amplifies the nonlinear distortion, creating increasingly complex and chaotic warp patterns with each pass.

@@ -68,6 +68,14 @@ At conservative settings, Bitcullis can create subtle mosaic textures or gentle 
 
 ---
 
+## Quick Start
+
+1. **Order matters**: Inversion → Modulation → Decimation → Dithering → Posterization → Bit Reversal → Threshold. Each stage transforms the signal before the next one sees it.
+2. **Dithering needs posterization**: Dithering adds −16 to +14 counts at 10-bit resolution, which is imperceptible without posterization to amplify the effect.
+3. **Luma modulation is the signature effect**: Luminance-to-horizontal modulation creates *adaptive* mosaics where the block pattern follows the image content. This is what makes Bitcullis unique.
+
+---
+
 ## Background
 
 ### What Is Spatial Decimation?
@@ -92,6 +100,8 @@ Every pixel value is stored as a 10-bit binary number. The **bit-order reversal*
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -142,7 +152,7 @@ Two key interactions: (1) **Luminance-driven modulation**: The Y channel drives 
 | Default | 100.1% |
 | Suffix | % |
 
-Controls the horizontal decimation frequency. At 0%, maximum pixelation — the image is reduced to wide bands of uniform color. At 200%, the decimation rate is so high that each pixel retains its original value (near full resolution). The Luma to Hori control (Knob 3) can further modulate this frequency on a per-pixel basis, making the block size dependent on the image content.
+At 0%, maximum pixelation — the image is reduced to wide bands of uniform color. At 200%, the decimation rate is so high that each pixel retains its original value (near full resolution). The Luma to Hori control (Knob 3) can further modulate this frequency on a per-pixel basis, making the block size dependent on the image content. Internally, controls the horizontal decimation frequency.
 
 ---
 
@@ -226,6 +236,21 @@ Switches 7–11 control five independent binary processing options. Unlike Lumar
 
 Luminance key at the end of the processing chain. At 0%, everything passes through (no keying). As you raise the fader, progressively brighter portions of the post-processed image are replaced with black, because more pixels fall below the rising threshold. At 100%, only the very brightest pixels survive. This interacts powerfully with posterization: because posterized signals have hard boundaries between tonal bands, the threshold cuts cleanly between levels. With bit-order reversal active, the threshold cuts through the chaotic value mapping in unexpected ways.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bitcullis processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -247,7 +272,7 @@ These exercises progress from simple decimation to full signal deconstruction. E
 *Mosaic Pixelation — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Learn how decimation and luminance modulation interact to create adaptive mosaic textures.
+**What You'll Create**: Learn how decimation and luminance modulation interact to create adaptive mosaic textures.
 
 1. **Horizontal bands**: Turn Hori Decimate slowly counter-clockwise. Watch as the image breaks into wide vertical bands of uniform color.
 2. **Vertical bands**: Now sweep Vert Decimate. The image breaks into horizontal bands.
@@ -274,7 +299,7 @@ These exercises progress from simple decimation to full signal deconstruction. E
 *Posterized Graphics — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions — skies, skin tones, or gradient test patterns.
 
-**Objective**: Explore posterization and dithering interactions.
+**What You'll Create**: Explore posterization and dithering interactions.
 
 1. **Prepare**: Set moderate decimation (Hori and Vert ~50%) to create a visible mosaic.
 2. **Luma posterization**: Slowly increase Luma Poster. Watch smooth gradients collapse into staircase bands.
@@ -302,7 +327,7 @@ These exercises progress from simple decimation to full signal deconstruction. E
 *Digital Texture Synthesis — simulated result across source images.*
 **Source**: Any footage, especially high-contrast material.
 
-**Objective**: Combine all stages for abstract digital textures.
+**What You'll Create**: Combine all stages for abstract digital textures.
 
 1. **Strong modulation**: Set Hori Decimate ~30%, Vert Decimate ~25%, Luma to Hori ~80%.
 2. **Heavy processing**: Increase both Luma and Chroma Poster to high values.
@@ -319,9 +344,6 @@ These exercises progress from simple decimation to full signal deconstruction. E
 
 ## Tips
 
-- **Order matters**: Inversion → Modulation → Decimation → Dithering → Posterization → Bit Reversal → Threshold. Each stage transforms the signal before the next one sees it.
-- **Dithering needs posterization**: Dithering adds −16 to +14 counts at 10-bit resolution, which is imperceptible without posterization to amplify the effect.
-- **Luma modulation is the signature effect**: Luminance-to-horizontal modulation creates *adaptive* mosaics where the block pattern follows the image content. This is what makes Bitcullis unique.
 - **Bit reversal is not inversion**: Luma Invert flips all bits (linear complement). Bit Order Reversal *permutes* bit positions (nonlinear mapping). They produce completely different results.
 - **Feedback loops**: Routing the output back to the input creates recursive decimation and posterization — self-referencing block structures that evolve over time.
 - **Bypass for A/B comparison**: Switch 11 instantly shows the unprocessed signal for before/after comparison.
@@ -333,16 +355,14 @@ These exercises progress from simple decimation to full signal deconstruction. E
 | Term | Definition |
 |------|------------|
 | **Bit Depth** | The number of discrete levels available to represent a signal; higher bit depth means finer gradations. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Decimation** | Reducing spatial resolution by discarding samples at regular intervals, creating a blocky mosaic effect. |
 | **Dithering** | Adding a small noise pattern before quantization to break up banding artifacts and simulate additional tonal levels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

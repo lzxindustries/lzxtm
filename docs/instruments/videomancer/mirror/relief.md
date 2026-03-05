@@ -68,6 +68,14 @@ At subtle settings, Relief adds a gentle textural emboss that gives video a chis
 
 ---
 
+## Quick Start
+
+1. **Upper-left lighting is classic**: Setting Light Angle to ~135° produces the traditional emboss look used in graphic design. This angle feels natural because we expect illumination from above-left.
+2. **Smoothing controls the sculpting grain**: Low smoothing captures every pixel-level edge (fine sandstone). High smoothing captures only major features (smooth marble). Choose based on the source material.
+3. **Emboss mode for edge extraction**: Output Mode B in Emboss produces a clean centered-derivative signal useful as input to other programs in a processing chain.
+
+---
+
 ## Background
 
 ### Directional Edge Detection
@@ -94,6 +102,8 @@ The surface color of a relief can be uniform (stone, plaster) or can inherit the
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -151,7 +161,7 @@ Sets the virtual light direction via a 32-entry sine/cosine lookup table. The re
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the relief depth — the magnitude of the directional derivative scaling. At zero, the derivative has no effect and the output is a flat mid-gray surface. As the value increases, edge contrast grows, making the relief appear deeper and more strongly carved. High values produce dramatic chiaroscuro lighting with deep shadows and bright highlights on opposite sides of each edge.
+At zero, the derivative has no effect and the output is a flat mid-gray surface. As the value increases, edge contrast grows, making the relief appear deeper and more strongly carved. High values produce dramatic chiaroscuro lighting with deep shadows and bright highlights on opposite sides of each edge. Internally, controls the relief depth — the magnitude of the directional derivative scaling.
 
 ---
 
@@ -223,6 +233,21 @@ The five toggles control output mode, shading model, and signal path. Output Mod
 
 Controls the wet/dry mix between the relief-processed and original signal. At 100%, the full relief output is shown. At 0%, the original video passes through unmodified. Intermediate values blend the relief over the source, creating a subtle textural overlay that adds dimensionality without fully replacing the original image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Relief processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -244,7 +269,7 @@ These exercises progress from basic directional emboss through surface lighting 
 *Stone Carving — simulated result across source images.*
 **Source**: A portrait or face close-up with strong tonal variation.
 
-**Objective**: Create a classic bas-relief sculpture effect with directional lighting.
+**What You'll Create**: Create a classic bas-relief sculpture effect with directional lighting.
 
 1. **Set light direction**: Adjust Light Angle to about 135° (upper-left illumination). This is the classic emboss lighting angle.
 2. **Add depth**: Increase Elevation (Depth) to about 50%. Edges become visible as lit/shadowed pairs.
@@ -272,7 +297,7 @@ These exercises progress from basic directional emboss through surface lighting 
 *Metallic Surface — simulated result across source images.*
 **Source**: Colorful footage — flowers, painted surfaces, or abstract color fields.
 
-**Objective**: Create a metallic relief with color-tinted specular highlights.
+**What You'll Create**: Create a metallic relief with color-tinted specular highlights.
 
 1. **Base relief**: Light Angle ~90° (top-lit), Elevation ~40%.
 2. **Add specular gloss**: Increase Specular to about 60%. Bright highlight points appear along the sharpest edges.
@@ -300,7 +325,7 @@ These exercises progress from basic directional emboss through surface lighting 
 *Emboss Edge Map — simulated result across source images.*
 **Source**: High-contrast graphics, text, or geometric patterns.
 
-**Objective**: Use Relief as an edge extractor by isolating the raw directional derivative.
+**What You'll Create**: Use Relief as an edge extractor by isolating the raw directional derivative.
 
 1. **Emboss-only output**: Toggle Output Mode B to Emboss. The output becomes the raw centered derivative — mid-gray with bright/dark edge pairs.
 2. **Set direction**: Light Angle ~0° (horizontal edges emphasized).
@@ -317,9 +342,6 @@ These exercises progress from basic directional emboss through surface lighting 
 
 ## Tips
 
-- **Upper-left lighting is classic**: Setting Light Angle to ~135° produces the traditional emboss look used in graphic design. This angle feels natural because we expect illumination from above-left.
-- **Smoothing controls the sculpting grain**: Low smoothing captures every pixel-level edge (fine sandstone). High smoothing captures only major features (smooth marble). Choose based on the source material.
-- **Emboss mode for edge extraction**: Output Mode B in Emboss produces a clean centered-derivative signal useful as input to other programs in a processing chain.
 - **Metallic needs color**: The Metallic toggle has no visible effect unless the Color toggle is also active, because monochrome relief has no chrominance to tint the highlights with.
 - **Specular adds sparkle at edges**: Start with specular at zero to dial in the basic relief look, then add specular last to introduce shiny contact points along the sharpest edges.
 - **Mix for subtle texture**: Setting mix to 30–50% blends the relief over the original video, adding a subtle carved texture without fully replacing the source image.
@@ -337,12 +359,11 @@ These exercises progress from basic directional emboss through surface lighting 
 | **Derivative** | The rate of change of a signal; the directional derivative measures brightness change along a specific angle. |
 | **Emboss** | A visual effect that makes features appear to protrude from a surface, created by adding the directional derivative to a base brightness. |
 | **Engrave** | The opposite of emboss; makes features appear recessed by subtracting the directional derivative. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
 | **Height Field** | A 2D map of elevation values; here, the input luminance treated as a surface height for lighting calculations. |
-| **Interpolator** | A smoothing module (`interpolator_u`) used here for pre-detection blur of the input luminance. |
 | **Lambertian** | A shading model where surface brightness depends on the cosine of the angle between the surface normal and light direction. |
 | **LUT** | Lookup Table; the 32-entry sin/cos table that converts the direction register into neighbor-sampling offsets. |
 | **Specular** | Bright highlight reflections that occur when viewing angle aligns with reflected light direction; approximated here by thresholding the derivative magnitude. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

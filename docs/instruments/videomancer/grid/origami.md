@@ -35,6 +35,14 @@ The Scale parameter (Knob 6, `registers_in(5)`) is declared in the VHDL register
 
 ---
 
+## Quick Start
+
+1. **Start simple**: Begin with one axis of folding and no shading. Add complexity incrementally — mirror, then gap, then shadow and crease.
+2. **Mirror is the signature effect**: Without mirroring, Origami is a simple tiler. With mirroring, fold boundaries become symmetry axes that create kaleidoscope-like patterns.
+3. **Gap width defines visual rhythm**: Small gaps create subtle panel separation; large gaps create a window-pane grid where the tiles appear as framed pictures.
+
+---
+
 ## Background
 
 ### Modular Address Wrapping
@@ -61,6 +69,8 @@ The Diagonal toggle rotates the fold grid by 45 degrees, computing fold cells al
 ---
 
 ## Signal Flow
+
+Address Generation → Shading → Dry/Wet Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -171,8 +181,8 @@ Scale — **this parameter is declared in the register mapping but is not connec
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Crane | Star |
-| **8 — Paper** | White | Washi |
+| **7 — Pattern** | Crane | Random |
+| **8 — Paper** | White | Source |
 | **9 — Folds** | Valley | Mountain |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -190,7 +200,29 @@ The five toggles configure the fold geometry and rendering style. Mirror H and M
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input signal and the folded output. At 0%, the output is the unmodified input. At 100%, the output is the fully processed fold + shading result. Intermediate values blend the fold pattern over the source, useful for subtle texture overlay effects.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Origami processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Origami-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -202,7 +234,7 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 
 <img src={origami_exercise1_result} alt="Basic Fold Grid result"/>
 *Basic Fold Grid — simulated result across source images.*
-**Objective**: Learn how H Folds and V Folds divide the frame into a grid of repeated tiles.
+**What You'll Create**: Learn how H Folds and V Folds divide the frame into a grid of repeated tiles.
 
 1. **Single fold**: Set H Folds to ~25%. The frame splits into two side-by-side copies of the left half.
 2. **More folds**: Increase H Folds to ~50%. Four copies appear. Continue to ~75% for eight copies.
@@ -219,7 +251,7 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 
 <img src={origami_exercise2_result} alt="Paper Fold Illusion result"/>
 *Paper Fold Illusion — simulated result across source images.*
-**Objective**: Explore gap, shadow, and crease shading to create a 3D paper-fold appearance.
+**What You'll Create**: Explore gap, shadow, and crease shading to create a 3D paper-fold appearance.
 
 1. **Set grid**: H Folds ~50%, V Folds ~50%, Mirror H on, Mirror V on.
 2. **Add gaps**: Increase Gap Width to ~30%. Dark strips appear between panels.
@@ -236,7 +268,7 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 
 <img src={origami_exercise3_result} alt="Diamond Lattice result"/>
 *Diamond Lattice — simulated result across source images.*
-**Objective**: Combine diagonal folding with mirroring for complex diamond kaleidoscope patterns.
+**What You'll Create**: Combine diagonal folding with mirroring for complex diamond kaleidoscope patterns.
 
 1. **Diagonal mode**: Set H Folds ~60%, V Folds ~60%, enable Diagonal (Switch 9).
 2. **Enable mirrors**: Turn on both Mirror H and Mirror V. Diamond-shaped reflections appear.
@@ -252,9 +284,6 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 
 ## Tips
 
-- **Start simple**: Begin with one axis of folding and no shading. Add complexity incrementally — mirror, then gap, then shadow and crease.
-- **Mirror is the signature effect**: Without mirroring, Origami is a simple tiler. With mirroring, fold boundaries become symmetry axes that create kaleidoscope-like patterns.
-- **Gap width defines visual rhythm**: Small gaps create subtle panel separation; large gaps create a window-pane grid where the tiles appear as framed pictures.
 - **Scale does nothing**: Do not expect Knob 6 to affect the output. The scale feature is unimplemented.
 - **Diagonal + mirror = mandala**: Diagonal folding combined with both mirrors produces 8-way symmetric diamond patterns that resemble mandala or Islamic geometric art.
 - **Shadow and crease sell the illusion**: Even a small amount of shadow and crease transforms flat tiling into a convincing paper-fold appearance.
@@ -268,16 +297,14 @@ These exercises progress from simple tiling to complex mirrored diamond lattices
 | Term | Definition |
 |------|------------|
 | **Address Wrapping** | Computing source pixel coordinates using modular arithmetic so that the fold pattern repeats seamlessly across the frame. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Fold Cell** | A single rectangular (or diamond) region of the fold grid, containing one copy of the source tile. |
 | **Fold Period** | The width (or height) of a single fold cell in pixels, equal to the frame dimension divided by the fold count. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Kaleidoscope** | An optical instrument using mirrors to create symmetric patterns; Origami's mirror mode produces similar bilateral symmetry. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Mirror Reflection** | Reversing the sampling direction in alternate fold cells to create bilateral symmetry at fold boundaries. |
 | **Modular Arithmetic** | Division with remainder, used to wrap pixel coordinates into repeating fold cells. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

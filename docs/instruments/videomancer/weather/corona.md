@@ -68,6 +68,14 @@ The full dynamic range spans from a tight, symmetric two-lobe dipole resembling 
 
 ---
 
+## Quick Start
+
+1. **Low Streamers for elegance**: A 2- or 3-lobe setting produces broad, sweeping fans that read clearly even at small screen sizes. Reserve high lobe counts for dense, textural patterns.
+2. **Asymmetry for realism**: Real solar coronas are never perfectly symmetric. Even a small amount of Asymmetry (20–30%) introduces the angular irregularity that makes the pattern feel natural rather than geometric.
+3. **Butler mode for astronomy**: When simulating a realistic eclipse, use Butler color mode with Prominences enabled and a disk size that matches the apparent lunar diameter — the result closely matches photographic references of totality.
+
+---
+
 ## Background
 
 ### Solar Physics and Coronal Structure
@@ -94,6 +102,8 @@ The optional center drift uses a Lissajous figure — the trajectory produced by
 ---
 
 ## Signal Flow
+
+Register Decode → Position Counters → Phase Drift → ... → Sync Delay Pipeline → Bypass Mux
 
 ```
 Video Input (YUV 4:4:4)
@@ -183,7 +193,7 @@ The computational core of Corona is the per-pixel angular lobe evaluation in Clo
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the rate at which the three phase accumulators advance per frame, determining how quickly the corona's streamer pattern rotates and evolves. At zero, the corona is completely frozen — a static radial pattern with no animation. At low values, the streamers drift almost imperceptibly, shifting over tens of seconds in the slow, majestic rotation of a real coronal structure. At high values the pattern spins rapidly, the three harmonics visibly sliding past each other and creating dynamic moire-like interference as the lobe function reshapes itself frame by frame.
+At zero, the corona is completely frozen — a static radial pattern with no animation. At low values, the streamers drift almost imperceptibly, shifting over tens of seconds in the slow, majestic rotation of a real coronal structure. At high values the pattern spins rapidly, the three harmonics visibly sliding past each other and creating dynamic moire-like interference as the lobe function reshapes itself frame by frame. Internally, controls the rate at which the three phase accumulators advance per frame, determining how quickly the corona's streamer pattern rotates and evolves.
 
 ---
 
@@ -266,6 +276,10 @@ The five toggles partition into four functional groups. Eclipse (7) and Prominen
 
 Wet/dry crossfade at the final pipeline stage. At maximum (default), the output is the fully processed corona composite. At minimum, the output is the unprocessed input video delayed by the 9-clock pipeline. Since Corona is a synthesis program, the dry signal is typically black — pulling Mix to zero fades the corona to darkness. Intermediate values produce a dimmed corona useful for subtle background glow effects behind other video content.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -285,7 +299,7 @@ These exercises progress from basic corona construction through eclipse composit
   ]}
 />
 *Symmetric Dipole Corona — simulated result across source images.*
-**Objective**: Create a simple two-lobed coronal structure resembling a solar-minimum dipole, with a central dark disk and prominence ring.
+**What You'll Create**: Create a simple two-lobed coronal structure resembling a solar-minimum dipole, with a central dark disk and prominence ring.
 
 1. Set Streamers to the lowest position (2 lobes) for a simple dipole.
 2. Set Asymmetry to 0% — only the first two harmonics contribute, producing a smooth bilateral pattern.
@@ -311,7 +325,7 @@ These exercises progress from basic corona construction through eclipse composit
   ]}
 />
 *Complex Multi-Streamer with Butler Palette — simulated result across source images.*
-**Objective**: Build a complex, asymmetric corona with many radial streamers and the historically accurate Butler color gradient.
+**What You'll Create**: Build a complex, asymmetric corona with many radial streamers and the historically accurate Butler color gradient.
 
 1. Set Streamers to about 75% (10 or 12 lobes) for a dense radial pattern.
 2. Increase Asymmetry to about 70% — the third harmonic creates sharp angular peaks and deep notches.
@@ -337,7 +351,7 @@ These exercises progress from basic corona construction through eclipse composit
   ]}
 />
 *Drifting Starburst without Disk — simulated result across source images.*
-**Objective**: Use center drift and NoDisk mode to create an animated starburst that wanders across the screen.
+**What You'll Create**: Use center drift and NoDisk mode to create an animated starburst that wanders across the screen.
 
 1. Set Eclipse to NoDisk to remove the occluding disk entirely.
 2. Set CtrLock to Drift — the corona's center begins a slow Lissajous orbit.
@@ -353,9 +367,6 @@ These exercises progress from basic corona construction through eclipse composit
 
 ## Tips
 
-- **Low Streamers for elegance**: A 2- or 3-lobe setting produces broad, sweeping fans that read clearly even at small screen sizes. Reserve high lobe counts for dense, textural patterns.
-- **Asymmetry for realism**: Real solar coronas are never perfectly symmetric. Even a small amount of Asymmetry (20–30%) introduces the angular irregularity that makes the pattern feel natural rather than geometric.
-- **Butler mode for astronomy**: When simulating a realistic eclipse, use Butler color mode with Prominences enabled and a disk size that matches the apparent lunar diameter — the result closely matches photographic references of totality.
 - **Rotation near zero for prints**: Set Rotation to 0% to freeze the corona in a static state suitable for still image capture or slow-scanning video synthesis where frame-to-frame coherence matters.
 - **Brightness and radial falloff interact**: High Brightness compresses the dynamic range of the radial falloff — the difference between inner and outer corona diminishes. For maximum depth, use moderate Brightness (50–70%) to preserve the natural 1/r luminance gradient.
 - **Mix for layered compositions**: Pull Mix to 40–60% to use the corona as a translucent glow layer behind other video content, creating a celestial backdrop effect.
@@ -378,6 +389,7 @@ These exercises progress from basic corona construction through eclipse composit
 | **Octant** | One of eight 45° sectors used to classify pixel positions for the integer atan2 approximation; the 3-bit octant combined with an 8-bit fraction yields an 11-bit angle. |
 | **Prominence** | A loop of ionized gas arcing above the solar chromosphere, visible as a bright feature at the limb during totality; simulated by a narrow bright ring at the disk boundary. |
 | **Radial falloff** | The inverse-distance attenuation that dims the corona with increasing distance from the center, approximating the 1/r intensity profile of the real K-corona. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

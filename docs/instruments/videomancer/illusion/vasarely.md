@@ -68,6 +68,14 @@ At subtle settings, Vasarely adds a gentle geometric overlay that hints at hidde
 
 ---
 
+## Quick Start
+
+1. **Start with Sphere and Check**: This is the canonical Vasarely combination and the easiest way to understand the deformation controls before exploring other shapes and patterns.
+2. **Fine grids for subtlety**: Small grid cells create a dense texture where the deformation reads as gentle curvature. Coarse grids make the deformation obvious and graphic.
+3. **Off-centre for composition**: Placing the bulge centre at a rule-of-thirds intersection creates more dynamically balanced compositions than dead-centre placement.
+
+---
+
 ## Background
 
 ### Victor Vasarely and Op Art
@@ -94,6 +102,8 @@ Vasarely's original works used carefully chosen colour pairs — often complemen
 ---
 
 ## Signal Flow
+
+Position and Distance → Bulge Offset → Grid Pattern → ... → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -151,7 +161,7 @@ The pipeline is purely combinational — no BRAM, no line buffers, no state. Eve
 | Default | 50% |
 | Suffix | % |
 
-Controls the intensity of the grid deformation. At zero, the grid remains perfectly regular and flat — no bulge is visible. As Bulge Int increases, the grid cells near the centre compress and curve, creating a progressively stronger illusion of a three-dimensional surface. At maximum, the distortion is extreme, with grid cells near the centre becoming tiny and densely packed while peripheral cells remain at normal size. The contrast between centre and edge cell sizes is what the brain reads as curvature.
+At zero, the grid remains perfectly regular and flat — no bulge is visible. As Bulge Int increases, the grid cells near the centre compress and curve, creating a progressively stronger illusion of a three-dimensional surface. At maximum, the distortion is extreme, with grid cells near the centre becoming tiny and densely packed while peripheral cells remain at normal size. The contrast between centre and edge cell sizes is what the brain reads as curvature. Internally, controls the intensity of the grid deformation.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the intensity of the grid deformation. At zero, the grid remains perfec
 | Default | 50% |
 | Suffix | % |
 
-Controls the size of the grid cells. At low values, the grid is fine — many small cells fill the frame, producing a dense geometric texture. At high values, the grid is coarse — fewer, larger cells create a bolder, more graphic pattern. Grid size also affects the bulge illusion: finer grids produce subtler depth cues, while coarser grids create more dramatic, poster-like deformations. The optimal grid size depends on viewing distance and source resolution.
+At low values, the grid is fine — many small cells fill the frame, producing a dense geometric texture. At high values, the grid is coarse — fewer, larger cells create a bolder, more graphic pattern. Grid size also affects the bulge illusion: finer grids produce subtler depth cues, while coarser grids create more dramatic, poster-like deformations. The optimal grid size depends on viewing distance and source resolution. Internally, controls the size of the grid cells.
 
 ---
 
@@ -195,7 +205,7 @@ Controls the vertical position of the bulge centre point. At 50%, the centre is 
 | Default | 50% |
 | Suffix | % |
 
-Controls the black/white intensity range of the grid pattern. At low contrast, the grid cells transition between dark grey and light grey — a subtle overlay that hints at geometry without dominating. As Contrast increases, the dark cells approach black and the light cells approach white, creating maximum visual impact. High contrast strengthens the Op Art illusion because the visual system responds more strongly to sharp luminance boundaries.
+At low contrast, the grid cells transition between dark grey and light grey — a subtle overlay that hints at geometry without dominating. As Contrast increases, the dark cells approach black and the light cells approach white, creating maximum visual impact. High contrast strengthens the Op Art illusion because the visual system responds more strongly to sharp luminance boundaries. Internally, controls the black/white intensity range of the grid pattern.
 
 ---
 
@@ -206,7 +216,7 @@ Controls the black/white intensity range of the grid pattern. At low contrast, t
 | Default | 50% |
 | Suffix | % |
 
-Controls the width of the anti-aliasing transition zone at grid cell boundaries. At zero, grid edges are perfectly sharp — binary on/off at the pixel level, which creates aliased, jagged boundaries that shimmer under motion. As Smooth increases, a progressively wider transition band softens the grid edges, reducing aliasing and creating more elegant, visually stable patterns. At maximum, the grid transitions are very gradual, producing a soft, painterly quality that contrasts with the mathematical precision of the underlying geometry.
+At zero, grid edges are perfectly sharp — binary on/off at the pixel level, which creates aliased, jagged boundaries that shimmer under motion. As Smooth increases, a progressively wider transition band softens the grid edges, reducing aliasing and creating more elegant, visually stable patterns. At maximum, the grid transitions are very gradual, producing a soft, painterly quality that contrasts with the mathematical precision of the underlying geometry. Internally, controls the width of the anti-aliasing transition zone at grid cell boundaries.
 
 ---
 
@@ -214,8 +224,8 @@ Controls the width of the anti-aliasing transition zone at grid cell boundaries.
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Shape** | Sphere | Cylinder |
-| **8 — Grid** | Check | Dots |
+| **7 — Shape** | Sphere | Ripple |
+| **8 — Grid** | Check | Hex |
 | **9 — Color** | Mono | Color |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -234,6 +244,21 @@ The toggle switches select the shape function and grid pattern from multiple opt
 | Suffix | % |
 
 Crossfade between the dry (original) and wet (grid-overlaid) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full Vasarely grid effect with deformation, contrast, and smoothing. Intermediate values create a semi-transparent grid overlay that blends with the source video — useful for creating subtle geometric textures without overwhelming the underlying content.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Vasarely processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -256,7 +281,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 *The Classic Orb — simulated result across source images.*
 **Source**: Any video source — the grid pattern is largely independent of content. A plain or slowly-moving source works well for appreciating the pure geometry.
 
-**Objective**: Create a classic Vasarely spherical bulge in a checkerboard grid and understand the deformation controls.
+**What You'll Create**: Create a classic Vasarely spherical bulge in a checkerboard grid and understand the deformation controls.
 
 1. **Set up the grid**: Grid to Check, Grid Size to ~50%, Contrast to ~75%.
 2. **Centre the bulge**: Center X and Center Y both at 50%.
@@ -284,7 +309,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 *Ripple Field — simulated result across source images.*
 **Source**: A colourful, high-detail scene — camera feed, nature footage, or a busy graphic.
 
-**Objective**: Create concentric rings of grid distortion using the Ripple shape mode, combined with Color mode to let the video content show through.
+**What You'll Create**: Create concentric rings of grid distortion using the Ripple shape mode, combined with Color mode to let the video content show through.
 
 1. **Select Ripple**: Set Shape to Ripple. Set Bulge Int to ~60%.
 2. **Fine grid**: Grid Size to ~30%, Grid to Dots.
@@ -312,7 +337,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 *Asymmetric Saddle Composition — simulated result across source images.*
 **Source**: A high-contrast scene with strong vertical and horizontal elements — architecture, text, or geometric patterns.
 
-**Objective**: Create a dynamic, asymmetric composition using saddle deformation, off-centre positioning, and hexagonal grid.
+**What You'll Create**: Create a dynamic, asymmetric composition using saddle deformation, off-centre positioning, and hexagonal grid.
 
 1. **Saddle shape**: Set Shape to Saddle. The grid expands on one axis while compressing on the other.
 2. **Hex grid**: Set Grid to Hex. The honeycomb pattern adds organic complexity to the mathematical deformation.
@@ -329,9 +354,6 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 
 ## Tips
 
-- **Start with Sphere and Check**: This is the canonical Vasarely combination and the easiest way to understand the deformation controls before exploring other shapes and patterns.
-- **Fine grids for subtlety**: Small grid cells create a dense texture where the deformation reads as gentle curvature. Coarse grids make the deformation obvious and graphic.
-- **Off-centre for composition**: Placing the bulge centre at a rule-of-thirds intersection creates more dynamically balanced compositions than dead-centre placement.
 - **Ripple for psychedelia**: The Ripple shape mode creates concentric ring distortions that, combined with animation, produce a hypnotic pulsing effect ideal for live visuals.
 - **Color mode with saturated sources**: When your input has strong colours, Color mode preserves them within the grid geometry, creating Op Art that is also colourful — something Vasarely rarely achieved in his monochrome works.
 - **Contrast as mood control**: Low contrast produces meditative, soft-geometry overlays. High contrast produces aggressive, attention-demanding patterns — adjust to match the energy of your performance.
@@ -354,6 +376,7 @@ These exercises progress from basic grid patterns to complex animated Op Art com
 | **Smoothstep** | A sigmoid-like interpolation function used for anti-aliasing: smoothstep(t) = 3t² − 2t³. |
 | **Victor Vasarely** | Hungarian-French artist (1906–1997), founder of the Op Art movement and pioneer of geometric abstraction. |
 | **XOR** | Exclusive OR; a boolean operation that returns true when its inputs differ, used to generate the checkerboard pattern from cell coordinates. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

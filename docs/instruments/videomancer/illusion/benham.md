@@ -68,6 +68,14 @@ The entire pattern is computed per-pixel using only shifts, compares, and a smal
 
 ---
 
+## Quick Start
+
+1. **Interlaced displays are essential for the color illusion**: The Fechner color effect depends on field-rate flicker. On progressive scan monitors that de-interlace or double the frame rate, the alternation may be too fast or too well-blended to produce visible subjective colors. CRT displays or professional monitors with true interlaced output give the strongest effect.
+2. **Fewer sectors = stronger colors**: With 2 or 3 sectors, the half-sector field offset is a large angular displacement, creating bold flicker. With 12 or 16 sectors, the offset is small, and the effect becomes subtle.
+3. **Speed matters**: The subjective color effect peaks at moderate rotation speeds — roughly 5–10 full rotations per second. Too slow and the eye adapts; too fast and the sectors blur into gray.
+
+---
+
 ## Background
 
 ### Benham's Top and the Discovery of Subjective Colors
@@ -94,6 +102,8 @@ The four pattern modes create fundamentally different spatial structures from th
 ---
 
 ## Signal Flow
+
+Delta from Center → Angle → Sector Test → Contrast
 
 ```
 Screen Coordinates (h_count, v_count)
@@ -185,7 +195,7 @@ Sets the angular duty cycle of the white arcs within each sector. At 50%, the pa
 | Default | 75.1% |
 | Suffix | % |
 
-Scales the generated luminance pattern before the mix stage. At 100% the pattern swings between full black (0) and full white (1023). Reducing contrast compresses the luminance range — the bright arcs become gray rather than white while black remains black, since the scaling is a simple multiply. This attenuates the subjective color effect because weaker flicker produces weaker cone response differences. Use moderate contrast (60–80%) for subtle pastel illusions.
+At 100% the pattern swings between full black (0) and full white (1023). Reducing contrast compresses the luminance range — the bright arcs become gray rather than white while black remains black, since the scaling is a simple multiply. This attenuates the subjective color effect because weaker flicker produces weaker cone response differences. Use moderate contrast (60–80%) for subtle pastel illusions. Internally, scales the generated luminance pattern before the mix stage.
 
 ---
 
@@ -215,7 +225,7 @@ Modulates the computed angle by the input video's luminance on a per-pixel basis
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Arcs | Rings |
+| **7 — Pattern** | Arcs | Radial |
 | **8 — Field Mode** | Alt | Strobe |
 | **9 — Invert** | Off | On |
 | **10 — Over Video** | Off | On |
@@ -235,6 +245,21 @@ Switches 7–10 configure the pattern geometry and compositing. Switch 7 (two bi
 | Suffix | % |
 
 Controls the wet/dry crossfade between the delayed input signal and the generated pattern via three interpolator instances (Y, U, V). At 0% the output is pure input video. At 100% the output is the full generated pattern (or pattern overlaid on video color, if Over Video is active). Intermediate values produce a transparent overlay where the pattern floats over a dimmed version of the source.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Benham processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +282,7 @@ These exercises progress from static pattern observation to animated field-alter
 *Static Disc Observation — simulated result across source images.*
 **Source**: Any stable video source (color bars, camera feed, or test pattern).
 
-**Objective**: Understand the basic radial pattern geometry and how sector count and arc width shape the disc.
+**What You'll Create**: Understand the basic radial pattern geometry and how sector count and arc width shape the disc.
 
 1. **Static disc**: Set Speed to 0%. Observe the black-and-white pattern centered on screen.
 2. **Sector count**: Slowly turn Sectors through its 8 positions. Watch the disc change from 2 wide sectors to 16 narrow ones.
@@ -284,7 +309,7 @@ These exercises progress from static pattern observation to animated field-alter
 *Fechner Color Illusion — simulated result across source images.*
 **Source**: Black video input (or any — the pattern is self-generated).
 
-**Objective**: Experience the subjective color illusion produced by field-alternating sectors.
+**What You'll Create**: Experience the subjective color illusion produced by field-alternating sectors.
 
 1. **Start spinning**: Set Speed to about 30%. The disc begins rotating smoothly.
 2. **Field alternation**: Ensure Field Mode is set to Alt. On an interlaced display, you should begin to perceive faint colors — typically amber, green, or blue bands — even though the signal is pure monochrome.
@@ -312,7 +337,7 @@ These exercises progress from static pattern observation to animated field-alter
 *Video-Modulated Pattern — simulated result across source images.*
 **Source**: A camera feed or recorded footage with varied luminance — faces, landscapes, or architectural subjects work well.
 
-**Objective**: Explore how the input video's luminance warps the geometric pattern through Video Mod.
+**What You'll Create**: Explore how the input video's luminance warps the geometric pattern through Video Mod.
 
 1. **Baseline pattern**: Set Speed ~20%, Sectors at 8, Arc Width ~50%, Contrast 100%. Observe the clean geometric disc.
 2. **Enable Video Mod**: Slowly increase Video Mod from 0% to ~60%. Watch the radial pattern warp — bright areas of the source shift the pattern's angle, creating content-dependent distortion.
@@ -328,9 +353,6 @@ These exercises progress from static pattern observation to animated field-alter
 
 ## Tips
 
-- **Interlaced displays are essential for the color illusion**: The Fechner color effect depends on field-rate flicker. On progressive scan monitors that de-interlace or double the frame rate, the alternation may be too fast or too well-blended to produce visible subjective colors. CRT displays or professional monitors with true interlaced output give the strongest effect.
-- **Fewer sectors = stronger colors**: With 2 or 3 sectors, the half-sector field offset is a large angular displacement, creating bold flicker. With 12 or 16 sectors, the offset is small, and the effect becomes subtle.
-- **Speed matters**: The subjective color effect peaks at moderate rotation speeds — roughly 5–10 full rotations per second. Too slow and the eye adapts; too fast and the sectors blur into gray.
 - **Video Mod creates hybrid patterns**: Even a small amount of video modulation (10–20%) breaks the geometric perfection of the disc, creating subtle organic distortions that follow the source image.
 - **Spiral mode with Video Mod**: This combination produces the most complex visual effects, as the spiral arms warp along luminance contours in the source.
 - **Contrast controls illusion strength**: Lower contrast produces subtler, more pastel Fechner colors. Maximum contrast gives the strongest flicker but can also cause visual fatigue.
@@ -348,14 +370,12 @@ These exercises progress from static pattern observation to animated field-alter
 | **DDS** | Direct Digital Synthesis; a technique that generates a waveform by incrementing a phase accumulator at a fixed rate, here used for continuous rotation. |
 | **Duty cycle** | The fraction of one period during which a signal is in the active (white) state; controls the width of white arcs relative to black gaps. |
 | **Fechner colors** | Subjective color sensations perceived when viewing flickering black-and-white patterns, caused by differing temporal responses of the retinal cone types. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Interlaced fields** | A video scanning method where each frame is split into two fields (odd and even lines) displayed sequentially, producing temporal flicker at the field rate. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
 | **LUT** | Look-Up Table; a small ROM that maps an input index to a pre-computed output value, here used for the sector count table. |
 | **Octant** | One of eight 45-degree sectors dividing a full circle, used to simplify angle computation with shift-and-compare logic. |
 | **Phase accumulator** | A register that increments by a fixed step each cycle, wrapping at overflow to produce a sawtooth ramp representing angular position. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
 
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

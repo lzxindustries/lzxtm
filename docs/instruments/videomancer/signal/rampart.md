@@ -68,6 +68,14 @@ A critical ABI boundary bug limits the program's hardware interface. The VHDL at
 
 ---
 
+## Quick Start
+
+1. **Start with mortar**: The mortar lines are the strongest visual element of the grid. Set Mortar width and brightness first, then adjust brick dimensions around it.
+2. **Running bond is more natural**: Real walls almost always use running bond. Stack bond creates a rigid, digital-looking grid; running bond adds visual rhythm and authenticity.
+3. **Video fill as mosaic**: With video fill active and moderate brick sizes, Rampart acts as a mosaic filter — the source image is visible but fractured into rectangular tiles.
+
+---
+
 ## Background
 
 ### Brick Bonding in Architecture
@@ -94,6 +102,8 @@ Mortar lines in real masonry are typically recessed below the brick face, creati
 ---
 
 ## Signal Flow
+
+Position Analysis → Crenellation → Surface Rendering → Compositing → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -139,7 +149,7 @@ The grid is computed entirely from pixel coordinates — no BRAMs or line buffer
 | Range | 0 – 1023 |
 | Default | 170 |
 
-Sets the horizontal repeat period of the brick grid. At minimum, bricks are very narrow — a dense column of vertical mortar lines. At maximum, each brick spans a significant fraction of the screen width. Combined with Block H, this control defines the brick's aspect ratio. Real masonry bricks are roughly 2:1 width-to-height; Rampart allows any ratio from extreme verticals to extreme horizontals.
+At minimum, bricks are very narrow — a dense column of vertical mortar lines. At maximum, each brick spans a significant fraction of the screen width. Combined with Block H, this control defines the brick's aspect ratio. Real masonry bricks are roughly 2:1 width-to-height; Rampart allows any ratio from extreme verticals to extreme horizontals. Internally, sets the horizontal repeat period of the brick grid.
 
 ---
 
@@ -159,7 +169,7 @@ Sets the vertical repeat period — the course height in masonry terms. Small va
 | Range | 0 – 1023 |
 | Default | 682 |
 
-Controls the mortar line width. At zero, bricks tile edge-to-edge with no visible joint. As the value increases, the gap between bricks widens, and the mortar becomes a prominent visual element. At very high values, the mortar dominates the pattern and the bricks shrink to thin islands. The mortar color is set by Mortar Bright (Pot 4).
+At zero, bricks tile edge-to-edge with no visible joint. As the value increases, the gap between bricks widens, and the mortar becomes a prominent visual element. At very high values, the mortar dominates the pattern and the bricks shrink to thin islands. The mortar color is set by Mortar Bright (Pot 4). Internally, controls the mortar line width.
 
 ---
 
@@ -169,7 +179,7 @@ Controls the mortar line width. At zero, bricks tile edge-to-edge with no visibl
 | Range | 0 – 1023 |
 | Default | 675 |
 
-Sets the brightness of the mortar lines. At zero, mortar is black — creating a dark grid of deep joints. At mid-range, mortar takes on a neutral gray. At maximum, mortar is white, producing a bright grid overlay. When Shadow is active, the mortar brightness value is further multiplied by a darkening factor, simulating recessed joints.
+At zero, mortar is black — creating a dark grid of deep joints. At mid-range, mortar takes on a neutral gray. At maximum, mortar is white, producing a bright grid overlay. When Shadow is active, the mortar brightness value is further multiplied by a darkening factor, simulating recessed joints. Internally, sets the brightness of the mortar lines.
 
 ---
 
@@ -179,7 +189,7 @@ Sets the brightness of the mortar lines. At zero, mortar is black — creating a
 | Range | 0 – 1023 |
 | Default | 675 |
 
-Controls the height of the crenellation zone at the top of the screen. At zero, no crenellations are visible. As the value increases, the battlement row extends further down from the top edge. The crenellation pattern only appears when the Crenel toggle (Toggle 8) is also enabled.
+At zero, no crenellations are visible. As the value increases, the battlement row extends further down from the top edge. The crenellation pattern only appears when the Crenel toggle (Toggle 8) is also enabled. Internally, controls the height of the crenellation zone at the top of the screen.
 
 ---
 
@@ -218,13 +228,28 @@ The five toggles control independent brick-wall rendering options. Bond selects 
 
 Crossfades between the dry input video (0%) and the fully processed brick-wall composite (100%). At intermediate values, the grid pattern is superimposed as a semi-transparent overlay on the source video, allowing subtle architectural textures without completely obscuring the underlying content.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Rampart processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
 
-These exercises build from a simple tiled grid to a full fortress-wall composite with video-filled bricks and crenellations.
+These exercises explore the LFSR noise generator's parameter space, from simple static noise to structured colour patterns.
 
-### Exercise 1: Basic Brick Grid
+### Exercise 1: Basic Noise Pattern
 
 <BeforeAfterSlider
   sources={[
@@ -236,22 +261,22 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
     { label: "Wood", before: rampart_source6_wood, after: rampart_ex1_s6 },
   ]}
 />
-*Basic Brick Grid — simulated result across source images.*
+*Basic Noise Pattern — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-**Objective**: Learn how Block W, Block H, and Mortar interact to define the grid geometry.
+**What You'll Create**: Learn how seed values and polynomial feedback taps shape the noise output.
 
-1. **Start flat**: Set Video Fill off, Mortar to about 5%, and both Block W and Block H to about 30%. You should see a uniform gray grid with thin dark mortar lines.
-2. **Adjust aspect ratio**: Sweep Block W while keeping Block H fixed. Watch the bricks stretch horizontally. Then sweep Block H — the bricks stretch vertically.
-3. **Widen mortar**: Slowly increase Mortar. The joints between bricks grow wider, and the bricks shrink. At high mortar values, the pattern inverts — thin brick islands in a sea of mortar.
-4. **Mortar brightness**: Sweep Mortar Bright from 0 to 100%. The mortar changes from black to white, dramatically altering the visual contrast of the grid.
-5. **Running bond**: Toggle Bond on (Toggle 7). Every other row shifts, breaking the vertical mortar columns into a staggered pattern.
+1. **Start with defaults**: With all Polynomials at mid-range and seeds at low values, observe the noise pattern on screen.
+2. **Sweep Y Seed**: Slowly turn Y Seed from 0 to 100%. Watch how the luminance noise texture shifts — different seeds initialize the LFSR to different starting states.
+3. **Change Y Polynomial**: Sweep Y Polynomial. Different feedback tap configurations produce radically different spatial patterns — some tightly structured, some chaotic.
+4. **Add colour**: Toggle Chroma on (Toggle 8). U and V channels now generate independent noise, adding colour to the pattern.
+5. **Half speed**: Toggle Half Speed on (Toggle 10). The noise pattern doubles in horizontal pixel width, producing a blockier texture.
 
-**Key concepts**: Modular arithmetic creates infinite tiling, mortar width and brick dimensions are independent, running bond offsets odd rows by half a brick width
+**Key concepts**: Seed values set the LFSR starting state, polynomial feedback taps determine the sequence structure, chroma toggle enables colour noise
 
 ---
 
-### Exercise 2: Video Fill and Shadow
+### Exercise 2: Structured Colour Noise
 
 <BeforeAfterSlider
   sources={[
@@ -263,22 +288,22 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
     { label: "Wood", before: rampart_source6_wood, after: rampart_ex2_s6 },
   ]}
 />
-*Video Fill and Shadow — simulated result across source images.*
+*Structured Colour Noise — simulated result across source images.*
 **Source**: Colorful footage with strong shapes — flowers, faces, or abstract graphics work well.
 
-**Objective**: Explore how video fill and shadow interact to create mosaic and stained-glass effects.
+**What You'll Create**: Explore how different polynomial and seed combinations create distinct colour textures.
 
-1. **Prepare grid**: Set moderate brick size (Block W ~25%, Block H ~15%), Mortar ~8%, Mortar Bright ~30%.
-2. **Enable video fill**: Toggle Video Fill on (Toggle 9). Each brick now shows the live video underneath, framed by mortar lines.
-3. **Shadow depth**: Toggle Shadow on (Toggle 10). The mortar lines darken, creating a sense of depth — the bricks appear to sit above recessed joints.
-4. **Running bond**: Toggle Bond on. The staggered mortar pattern with video fill creates a rich mosaic effect.
-5. **Mix overlay**: Lower Mix to about 70%. The brick grid becomes a semi-transparent overlay, blending with the source.
+1. **Colour separation**: With Chroma on, set different Polynomial values for Y, U, and V — for example Y ~800, U ~400, V ~600. Each channel now cycles through a different LFSR sequence.
+2. **Seed offsets**: Adjust U Seed and V Seed independently. The colour palette shifts as each channel's LFSR starts from a different point in its sequence.
+3. **Invert luma**: Toggle Luma Invert on (Toggle 9). The luminance channel inverts, creating a photographic-negative noise effect while chroma remains unchanged.
+4. **Frame sync**: Toggle Frame Sync between Free Run and Sync (Toggle 7). In Free Run, the noise evolves continuously. In Sync, it locks to the video frame.
+5. **Mix overlay**: Lower Mix to about 50%. The noise becomes a semi-transparent overlay on the source video.
 
-**Key concepts**: Video fill maps source content into brick tiles, shadow darkens mortar for depth, mix creates overlay blending
+**Key concepts**: Independent polynomials per channel create colour separation, luma inversion produces negative noise, frame sync controls temporal behaviour
 
 ---
 
-### Exercise 3: Full Fortress Wall
+### Exercise 3: Animated Texture Overlay
 
 <BeforeAfterSlider
   sources={[
@@ -290,27 +315,24 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
     { label: "Wood", before: rampart_source6_wood, after: rampart_ex3_s6 },
   ]}
 />
-*Full Fortress Wall — simulated result across source images.*
-**Source**: Landscape or architectural footage — an outdoor scene with sky at the top works especially well for the battlement silhouette.
+*Animated Texture Overlay — simulated result across source images.*
+**Source**: Landscape or architectural footage — an outdoor scene with sky at the top works especially well for the noise overlay effect.
 
-**Objective**: Combine all features: brick grid, running bond, video fill, shadow, and crenellations for a complete fortress-wall composite.
+**What You'll Create**: Combine noise generation with half-speed mode and mix to create animated texture overlays.
 
-1. **Build the wall**: Set Block W ~20%, Block H ~12%, Mortar ~6%, Mortar Bright ~15%, Bond on, Video Fill on, Shadow on.
-2. **Add battlements**: Toggle Crenel on (Toggle 8). Set Crenel H to about 15% and Crenel W to about 10%. A row of rectangular crenels appears along the top edge of the screen.
-3. **Adjust crenel proportions**: Sweep Crenel W to vary the tooth width. Sweep Crenel H to control how far down the battlement extends.
-4. **Mortar contrast**: Adjust Mortar Bright and Mortar together. The wall reads best with narrow, dark mortar lines — like real stone.
-5. **Final mix**: Set Mix to 100% for a solid wall overlay. Then reduce to about 85% to let some source video bleed through the entire structure.
+1. **Set up base noise**: Use moderate seed and polynomial values across all channels with Chroma on.
+2. **Half speed**: Enable Half Speed (Toggle 10). The noise pattern becomes coarser and more visually distinct.
+3. **Free running animation**: Set Frame Sync to Free Run (Toggle 7). The noise now evolves frame-to-frame, creating a shimmering animated texture.
+4. **Overlay blend**: Set Mix to about 30%. The noise becomes a subtle animated film-grain effect over the source.
+5. **Vary polynomials**: Sweep V Polynomial while watching the output. Some polynomial values produce smooth rolling patterns while others create sharp static.
 
-**Key concepts**: Crenellation adds a second periodic pattern at the top edge, crenel width and height are independent of brick dimensions, the full wall composite layers brick grid, mortar, shadow, video fill, and battlements
+**Key concepts**: Half-speed mode doubles pixel width for coarser patterns, free-run frame sync enables animation, low mix creates subtle film-grain overlays
 
 ---
 
 
 ## Tips
 
-- **Start with mortar**: The mortar lines are the strongest visual element of the grid. Set Mortar width and brightness first, then adjust brick dimensions around it.
-- **Running bond is more natural**: Real walls almost always use running bond. Stack bond creates a rigid, digital-looking grid; running bond adds visual rhythm and authenticity.
-- **Video fill as mosaic**: With video fill active and moderate brick sizes, Rampart acts as a mosaic filter — the source image is visible but fractured into rectangular tiles.
 - **Crenellation as a top border**: The battlement row works as a decorative top border. Set a small Crenel H for a subtle effect or a large value for a dramatic battlement silhouette.
 - **Shadow needs mortar**: Shadow only affects mortar pixels. If Mortar is set to zero, enabling Shadow has no visible effect.
 - **Mix for overlay**: Use Mix at 50–80% to overlay the brick grid on source video — useful for creating architectural textures without losing the underlying image.
@@ -324,15 +346,14 @@ These exercises build from a simple tiled grid to a full fortress-wall composite
 |------|------------|
 | **ABI** | Application Binary Interface; the fixed register layout through which the Videomancer firmware communicates parameter values to FPGA programs. Limited to 8 registers (indices 0–7). |
 | **Bond** | The pattern in which bricks are laid in a wall. Running bond offsets alternating rows; stack bond aligns all rows vertically. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Rampart uses zero BRAMs — all computation is combinational. |
 | **Crenel** | The gap (open section) in a crenellated battlement wall. The raised solid sections between crenels are called merlons. |
 | **Crenellation** | The alternating tooth-shaped parapet profile along the top of a fortress wall, consisting of merlons and crenels. |
-| **Interpolator** | A hardware component that linearly blends between two values based on a mix parameter. Rampart uses three interpolators for wet/dry crossfade on Y, U, and V channels. |
 | **Merlon** | The raised solid portion between two crenels in a battlement wall. |
 | **Modular Arithmetic** | Division remainder operation (mod) that creates infinite repetition: `h mod w` produces a periodic pattern with period `w`. |
 | **Mortar** | The material (or in Rampart's case, the pixel region) between adjacent bricks, rendered as lines of configurable width and brightness. |
 | **Running Bond** | A brick bonding pattern where each course is offset by half a brick width, staggering vertical joints. |
 | **Stack Bond** | A brick bonding pattern where all courses align vertically, creating continuous vertical mortar lines. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

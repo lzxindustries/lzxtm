@@ -8,6 +8,7 @@ description: "Chemistry has a beautiful color language."
 ---
 
 import reagent_hero from '/img/instruments/videomancer/reagent/reagent_hero.png';
+import reagent_animation from '/img/instruments/videomancer/reagent/reagent_animation.gif';
 import reagent_control_panel from '/img/instruments/videomancer/reagent/reagent_control_panel.png';
 import reagent_exercise1_result from '/img/instruments/videomancer/reagent/reagent_exercise1_result.gif';
 import reagent_exercise2_result from '/img/instruments/videomancer/reagent/reagent_exercise2_result.gif';
@@ -19,6 +20,9 @@ import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reage
 
 <img src={reagent_hero} alt="Reagent hero image"/>
 *Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
+<img src={reagent_animation} alt="Reagent animated output"/>
+*Reagent output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ Chemistry has a beautiful color language. Litmus paper turns red in acid, blue i
 The name references the chemical substances — reagents — that reveal the nature of a solution through color change. In Reagent's signal chain, the input video's luminance is the unknown solution, and the program's hue mapping is the indicator paper. Dark pixels map to the acid end of the scale, bright pixels map to the base end, and a configurable neutral zone in the middle can preserve the original color or show a distinct buffer-zone highlight.
 
 A minor implementation note: the Bypass toggle's condition is never met in the VHDL logic, so it does not function as a true bypass. Use the Mix fader at 0% to achieve a fully dry signal instead.
+
+---
+
+## Quick Start
+
+1. **Bypass is broken — use Mix**: The Bypass toggle has no effect due to a dead code path. Use the Mix fader at 0% to see unprocessed input.
+2. **Complementary hues for maximum range**: Setting Acid Hue and Base Hue to opposite sides of the color wheel (e.g., red/cyan, blue/yellow) creates the widest visual gradient.
+3. **Buffer reveals contours**: The Buffer toggle turns Reagent into a tonal contour detector. Narrow the gap between pH Low and pH High, then enable Buffer to trace brightness boundaries.
 
 ---
 
@@ -59,6 +71,8 @@ The Gradient toggle controls whether color assignment changes smoothly or abrupt
 ---
 
 ## Signal Flow
+
+Luma Extraction → Zone Classification → Hue Assignment → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -117,9 +131,9 @@ Sets the low pH threshold — the luminance level below which pixels are classif
 #### Knob 2 — Delay
 | Property | Value |
 |----------|-------|
-| Range | 0 frm – 3 frm |
-| Default | 1 frm |
-| Suffix |  frm |
+| Range | 0frm – 3frm |
+| Default | 1frm |
+| Suffix | frm |
 
 Sets the high pH threshold — the luminance level above which pixels are classified as "base." Bright pixels above this threshold receive the Base Hue color. Lowering this control expands the base zone downward. The gap between pH Low and pH High defines the neutral zone width. When pH Low exceeds pH High, the zones invert — there is no neutral zone, and the acid and base regions overlap, creating a hard binary split.
 
@@ -154,7 +168,7 @@ Selects the color assigned to the base zone (high-brightness pixels). Same 6-seg
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the width of the neutral zone between the acid and base boundaries. At minimum, the transition between acid and base colors is abrupt — pixels snap directly from one zone to the other. At maximum, a wide band of neutral-zone pixels sits between the two colored regions, either interpolating smoothly (gradient mode) or preserving original colors. The Neutral control interacts with the Buffer toggle to determine how the boundary region is visualized.
+At minimum, the transition between acid and base colors is abrupt — pixels snap directly from one zone to the other. At maximum, a wide band of neutral-zone pixels sits between the two colored regions, either interpolating smoothly (gradient mode) or preserving original colors. The Neutral control interacts with the Buffer toggle to determine how the boundary region is visualized. Internally, controls the width of the neutral zone between the acid and base boundaries.
 
 ---
 
@@ -165,7 +179,7 @@ Controls the width of the neutral zone between the acid and base boundaries. At 
 | Default | 50.0% |
 | Suffix | % |
 
-Scales the chroma saturation of the output. At maximum, the acid and base hues are rendered at full saturation — vivid, pure colors. At minimum, the output is desaturated — the color mapping is still present but muted toward gray. Intermediate values produce pastel-like tints. This control affects only the U and V components; luminance is preserved.
+At maximum, the acid and base hues are rendered at full saturation — vivid, pure colors. At minimum, the output is desaturated — the color mapping is still present but muted toward gray. Intermediate values produce pastel-like tints. This control affects only the U and V components; luminance is preserved. Internally, scales the chroma saturation of the output.
 
 ---
 
@@ -194,6 +208,10 @@ The five toggles control four processing modes and a non-functional bypass. Grad
 
 Crossfades between the dry input video (0%) and the fully processed pH-color-mapped result (100%). Because the bypass toggle is non-functional, the Mix fader is the only way to preview the unprocessed input. At intermediate values, the color mapping appears as a tinted overlay on the source video. This also serves as a saturation-like control in practice — low mix values produce subtle tinting, high values produce full false-color.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -204,9 +222,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 <img src={reagent_exercise1_result} alt="Litmus Paper result"/>
 *Litmus Paper — simulated result across source images.*
-**Source**: High-contrast footage with clear shadows and highlights — a face lit from one side, or text on a light background.
-
-**Objective**: Learn the basic acid-base mapping: assign two colors to dark and bright regions of the image.
+**What You'll Create**: Learn the basic acid-base mapping: assign two colors to dark and bright regions of the image.
 
 1. **Set acid red**: Turn Acid Hue to about 0% (red zone on the hue wheel).
 2. **Set base blue**: Turn Base Hue to about 67% (blue zone on the hue wheel).
@@ -223,9 +239,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 <img src={reagent_exercise2_result} alt="Universal Indicator result"/>
 *Universal Indicator — simulated result across source images.*
-**Source**: Footage with a wide tonal range — outdoor scenes with sky, midtones, and deep shadows.
-
-**Objective**: Create a smooth multi-color gradient that maps the full brightness range to a rainbow of indicator colors.
+**What You'll Create**: Create a smooth multi-color gradient that maps the full brightness range to a rainbow of indicator colors.
 
 1. **Enable gradient**: Toggle Gradient on (Toggle 7).
 2. **Enable indicator**: Toggle Indicator on (Toggle 8). The transition between acid and base now passes through intermediate hues.
@@ -242,9 +256,7 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 <img src={reagent_exercise3_result} alt="Contour Map result"/>
 *Contour Map — simulated result across source images.*
-**Source**: Footage with gradual tonal gradients — skin tones, gradient backgrounds, or landscape horizons.
-
-**Objective**: Use buffer zone highlighting to reveal tonal contour lines, like elevation contours on a topographic map.
+**What You'll Create**: Use buffer zone highlighting to reveal tonal contour lines, like elevation contours on a topographic map.
 
 1. **Set narrow boundaries**: pH Low ~35%, pH High ~65%. Keep Neutral at about 30%.
 2. **Enable gradient**: Toggle Gradient on.
@@ -260,9 +272,6 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 
 ## Tips
 
-- **Bypass is broken — use Mix**: The Bypass toggle has no effect due to a dead code path. Use the Mix fader at 0% to see unprocessed input.
-- **Complementary hues for maximum range**: Setting Acid Hue and Base Hue to opposite sides of the color wheel (e.g., red/cyan, blue/yellow) creates the widest visual gradient.
-- **Buffer reveals contours**: The Buffer toggle turns Reagent into a tonal contour detector. Narrow the gap between pH Low and pH High, then enable Buffer to trace brightness boundaries.
 - **Indicator mode adds hue variety**: With Indicator on, the gradient passes through multiple intermediate hues instead of blending directly between two colors. This creates richer, more analytic-looking color maps.
 - **Saturation as a subtlety control**: Lower Saturation to create pastel tints instead of vivid false colors. This makes the pH mapping more tasteful as a creative overlay.
 - **Invert for creative reversal**: Toggle Invert to swap which tonal range gets which color without re-dialing the Acid and Base Hue knobs.
@@ -279,10 +288,10 @@ These exercises progress from simple two-tone litmus coloring to complex multi-i
 | **Buffer Zone** | A transition region near the acid-base boundary where pixels receive distinct emphasis or highlighting, similar to a chemical buffer that resists pH change. |
 | **Hue Wheel** | A circular arrangement of colors divided into six segments (red, yellow, green, cyan, blue, magenta). The Acid Hue and Base Hue controls each select a position on this wheel. |
 | **Indicator** | A substance (or in Reagent's case, a color-mapping mode) that produces a multi-color response across a range of pH values, as opposed to a binary litmus-style response. |
-| **Interpolator** | A hardware component that linearly blends between two values. Reagent uses three interpolators for wet/dry crossfade on Y, U, and V channels. |
 | **Litmus** | A simple binary indicator that turns red in acid and blue in base. Reagent's non-gradient mode approximates this behavior. |
 | **Neutral Zone** | The luminance range between pH Low and pH High where pixels are classified as neither acid nor base. |
 | **Pseudocolor** | False-color mapping that assigns colors to a grayscale signal based on intensity, used in thermal imaging, medical scans, and scientific visualization. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

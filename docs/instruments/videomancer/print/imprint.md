@@ -68,6 +68,14 @@ At conservative settings — large dot pitch, moderate ink density, separated CM
 
 ---
 
+## Quick Start
+
+1. **Screen angle prevents moire**: Without rotation, the dot grid aligns with the video raster and produces distracting interference. Even a small rotation angle (5–15°) eliminates raster moire.
+2. **Angle spread creates color**: In CMY mode, the spread between screen angles is what makes the print colorful. At zero spread, the output is nearly monochrome. The traditional print industry uses carefully chosen angles to minimize moire between the color screens.
+3. **Large pitch for clarity, small pitch for detail**: The four pitch options (4/8/16/32 pixels) span from fine photographic halftone to coarse poster-print scale. Start with pitch 4 (32px) to understand the dot mechanics, then reduce pitch for production results.
+
+---
+
 ## Background
 
 ### What Is Halftone Printing?
@@ -94,6 +102,8 @@ Commercial printing rarely uses pure white paper or pure black ink. Newsprint ha
 ---
 
 ## Signal Flow
+
+Input Register → Rotated Grid Coordinates → Distance + Threshold → Subtractive Ink Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -170,7 +180,7 @@ Selects the halftone dot pitch — the spacing of the screen grid in pixels. The
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the ink density — how large the halftone dots grow within each grid cell. At 0%, dots are at their minimum size relative to the channel intensity, producing a very light print. At 100%, dots are at their maximum, filling more of each cell and producing denser, darker areas. Ink Density interacts with the source brightness: a bright area of the source creates high channel values, which combined with high ink density produce large dots. Dark areas always produce small dots regardless of density. This mirrors the physical relationship between tonal value and dot size in real halftone printing.
+At 0%, dots are at their minimum size relative to the channel intensity, producing a very light print. At 100%, dots are at their maximum, filling more of each cell and producing denser, darker areas. Ink Density interacts with the source brightness: a bright area of the source creates high channel values, which combined with high ink density produce large dots. Dark areas always produce small dots regardless of density. This mirrors the physical relationship between tonal value and dot size in real halftone printing. Internally, controls the ink density — how large the halftone dots grow within each grid cell.
 
 ---
 
@@ -181,7 +191,7 @@ Controls the ink density — how large the halftone dots grow within each grid c
 | Default | 0° |
 | Suffix | ° |
 
-Sets the base rotation angle for the halftone screen grid. At 0°, the dot pattern is axis-aligned with the video raster. As the angle increases, the entire grid rotates. In CMY mode, this angle applies to the cyan screen; the magenta and yellow screens are offset from it by the Angle Spread value. Rotation is essential for avoiding moire between the dot pattern and the video raster, and for creating the traditional rosette pattern between color separations.
+At 0°, the dot pattern is axis-aligned with the video raster. As the angle increases, the entire grid rotates. In CMY mode, this angle applies to the cyan screen; the magenta and yellow screens are offset from it by the Angle Spread value. Rotation is essential for avoiding moire between the dot pattern and the video raster, and for creating the traditional rosette pattern between color separations. Internally, sets the base rotation angle for the halftone screen grid.
 
 ---
 
@@ -243,6 +253,21 @@ Switches 7–11 control five independent binary processing options. Toggle 7 (Co
 
 Controls the dry/wet crossfade between the original input (delayed to match the 8-clock processing pipeline) and the halftone output. At 100%, the output is fully halftone-rendered. At 0%, the output is the unmodified input. Intermediate values blend the two, allowing the halftone dot texture to be layered over the source video at any strength.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Imprint processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -264,7 +289,7 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 *Newspaper Halftone — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable faces and moderate contrast.
 
-**Objective**: Learn how dot pitch and ink density control the fundamental halftone pattern, using mono mode for simplicity.
+**What You'll Create**: Learn how dot pitch and ink density control the fundamental halftone pattern, using mono mode for simplicity.
 
 1. **Enable mono mode**: Set Color Mode to Mono. The output is now a single-screen halftone.
 2. **Set coarse pitch**: Set Dot Pitch to step 3 (16-pixel dots). Large, individually visible dots appear.
@@ -292,7 +317,7 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 *Color Separation Rosettes — simulated result across source images.*
 **Source**: Colorful footage — flowers, fruit, painted surfaces, or color bars.
 
-**Objective**: Explore how CMY color separations interact through screen angle spread to create rosette patterns.
+**What You'll Create**: Explore how CMY color separations interact through screen angle spread to create rosette patterns.
 
 1. **Enable CMY**: Set Color Mode to CMY. Three ink screens are now active.
 2. **Zero spread**: Set Angle Spread to 0%. All three screens are at the same angle — the output looks like a mono print because the dots overlap perfectly.
@@ -320,7 +345,7 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 *Engraved Line Print — simulated result across source images.*
 **Source**: High-contrast footage — architectural details, text overlays, or strong geometric content.
 
-**Objective**: Combine line screen mode with colored ink and paper for an engraved illustration effect.
+**What You'll Create**: Combine line screen mode with colored ink and paper for an engraved illustration effect.
 
 1. **Enable line screen**: Set Line Screen to Lines. The dots are replaced by parallel ruled lines.
 2. **Fine pitch**: Set Dot Pitch to step 1 (4-pixel lines) for dense, engraved-looking lines.
@@ -337,9 +362,6 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 
 ## Tips
 
-- **Screen angle prevents moire**: Without rotation, the dot grid aligns with the video raster and produces distracting interference. Even a small rotation angle (5–15°) eliminates raster moire.
-- **Angle spread creates color**: In CMY mode, the spread between screen angles is what makes the print colorful. At zero spread, the output is nearly monochrome. The traditional print industry uses carefully chosen angles to minimize moire between the color screens.
-- **Large pitch for clarity, small pitch for detail**: The four pitch options (4/8/16/32 pixels) span from fine photographic halftone to coarse poster-print scale. Start with pitch 4 (32px) to understand the dot mechanics, then reduce pitch for production results.
 - **Line screen for engravings**: Switching to line mode and rotating the screen creates ruled-line patterns that mimic copper-plate or steel-plate engraving — a highly distinctive look, especially in mono mode with sepia ink.
 - **Paper and ink tints set the mood**: The 8×8 combination of paper and ink colors covers classic (sepia on cream), modern (black on white), and experimental (crimson on sky) print aesthetics without touching the halftone geometry itself.
 - **Feedback loops**: Routing the output back to the input creates progressive halftone re-screening — the dot pattern is itself halftoned, producing a decreasing-scale fractal dot structure.
@@ -355,16 +377,14 @@ These exercises progress from a simple monochrome halftone to full CMYK color se
 | **CMYK** | Cyan, Magenta, Yellow, and Key (black); the four inks used in process color printing. Imprint implements CMY without explicit black (K). |
 | **Distance Function** | A mathematical formula that computes the distance from a point to a reference location; used here to determine whether a pixel falls inside or outside a halftone dot. |
 | **Dot Pitch** | The spacing between adjacent dot centres in the halftone grid, measured in pixels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Halftone** | A reprographic technique that simulates continuous tones using dots of varying size, spacing, or density. |
-| **Interpolator** | A linear crossfade module that blends between the dry (unprocessed) and wet (processed) signal paths based on the Mix fader position. |
 | **LUT** | Look-Up Table; used here for both the sin/cos rotation coefficients and the paper/ink color palettes. |
 | **Manhattan Distance** | The sum of absolute differences along each axis: |dx| + |dy|. Produces diamond-shaped equidistant contours. |
 | **Moire** | An interference pattern that appears when two regular grids are overlaid at slightly different angles or frequencies. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Rosette Pattern** | The characteristic flower-like pattern visible under magnification in color halftone prints, created by the interaction of differently-angled dot screens. |
 | **Screen Angle** | The rotation angle of a halftone dot grid relative to the horizontal axis, measured in degrees. |
 | **Subtractive Color** | A color model where pigments or inks absorb (subtract) portions of the light spectrum; mixing C, M, and Y inks produces darker colors. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

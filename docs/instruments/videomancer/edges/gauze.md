@@ -68,6 +68,14 @@ At default settings (all cutoffs centered, low-pass mode, no fade), Gauze passes
 
 ---
 
+## Quick Start
+
+1. **Center is zero**: The three vertical cutoff knobs are bipolar — center position means no vertical filtering. Think of them as a "dead zone" in the middle with LP on one side and HP on the other.
+2. **Cascade for steeper rolloff**: A single LP filter gives a gentle rolloff. Cascading two LP stages (LP horizontal + LP vertical) gives a much steeper, more dramatic blur. The same applies to HP — cascading two HP stages gives sharper edge extraction.
+3. **Chroma blur is your friend**: Blurring U and V while keeping Y sharp is one of the most universally useful processing patches. It reduces color noise and creates a painterly softness without sacrificing luminance detail.
+
+---
+
 ## Background
 
 ### IIR Digital Filters: Low-Pass and High-Pass
@@ -94,6 +102,8 @@ After filtering, Gauze offers a crossfade stage that interpolates between the pr
 ---
 
 ## Signal Flow
+
+Input Capture → Horizontal IIR Filter → Vertical IIR Filter → V Mux → Fade Interpolator
 
 ```
 Input Video (YUV 4:4:4, 10-bit unsigned)
@@ -234,6 +244,10 @@ Toggles 7–9 control the horizontal filter mode for each YUV channel independen
 
 Controls the crossfade amount between the filtered signal and the fade color target. At maximum, the output is the fully filtered signal with no fade applied. At minimum, the output is the constant fade color (black or white for Y, neutral for U/V). Intermediate positions blend the two, creating a partially transparent overlay of the filtered image on a solid background. This is particularly effective with edge-extracted signals — a partial fade lets edges float as translucent traces over a colored field.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +269,7 @@ These exercises build from simple single-channel blur to complex multi-topology 
 *Soft Focus Portrait — simulated result across source images.*
 **Source**: A talking-head or portrait shot with skin tones and fine texture detail (hair, fabric).
 
-**Objective**: Create a soft-focus diffusion effect by selectively blurring chrominance while preserving luminance edges.
+**What You'll Create**: Create a soft-focus diffusion effect by selectively blurring chrominance while preserving luminance edges.
 
 1. Start with all controls at default (cutoffs centered, LP mode, no fade).
 2. Lower UH Cutoff and VH Cutoff to approximately one-quarter. Watch the color information blur while luminance stays sharp.
@@ -282,7 +296,7 @@ These exercises build from simple single-channel blur to complex multi-topology 
 *Luminance Edge Extraction — simulated result across source images.*
 **Source**: High-contrast footage with strong geometric shapes — architecture, signage, or test patterns.
 
-**Objective**: Extract luminance edges and fade them against a dark background to create a wireframe-like image.
+**What You'll Create**: Extract luminance edges and fade them against a dark background to create a wireframe-like image.
 
 1. Set Y Mode to High Pass. The image immediately shows only horizontal Y edges.
 2. Lower YH Cutoff to approximately one-third. The edge lines become bolder as the filter removes more low-frequency content.
@@ -310,7 +324,7 @@ These exercises build from simple single-channel blur to complex multi-topology 
 *Bandpass Color Isolation — simulated result across source images.*
 **Source**: Colorful footage with both broad gradients and fine texture — nature scenes, paintings, or color bars.
 
-**Objective**: Use cascaded LP→HP filtering to create a bandpass response that isolates mid-frequency color structure while rejecting both broad gradients and fine noise.
+**What You'll Create**: Use cascaded LP→HP filtering to create a bandpass response that isolates mid-frequency color structure while rejecting both broad gradients and fine noise.
 
 1. Set all three Mode toggles to Low Pass.
 2. Lower all three horizontal cutoffs (YH, UH, VH) to approximately the first quarter. This smooths the signal broadly.
@@ -326,9 +340,6 @@ These exercises build from simple single-channel blur to complex multi-topology 
 
 ## Tips
 
-- **Center is zero**: The three vertical cutoff knobs are bipolar — center position means no vertical filtering. Think of them as a "dead zone" in the middle with LP on one side and HP on the other.
-- **Cascade for steeper rolloff**: A single LP filter gives a gentle rolloff. Cascading two LP stages (LP horizontal + LP vertical) gives a much steeper, more dramatic blur. The same applies to HP — cascading two HP stages gives sharper edge extraction.
-- **Chroma blur is your friend**: Blurring U and V while keeping Y sharp is one of the most universally useful processing patches. It reduces color noise and creates a painterly softness without sacrificing luminance detail.
 - **High-pass + fade = wireframe**: Extracting edges with HP mode and then fading toward black creates a wireframe aesthetic. Fade toward white for an etched or embossed look.
 - **Bandpass with LP→HP**: Set the horizontal stage to low-pass (smooth) and the vertical stage to high-pass (extract edges). The vertical stage extracts edges from the *smoothed* signal, isolating mid-frequency structure. Adjust the ratio of cutoffs to shift the center frequency.
 - **Per-channel topology mixing**: You can run Y in HP→HP (edge extraction) while running U and V in LP→LP (heavy blur). The result is sharp luminance edges with soft, diffused color halos.
@@ -350,6 +361,7 @@ These exercises build from simple single-channel blur to complex multi-topology 
 | **Low-Pass Filter (LPF)** | A filter that passes low-frequency (smooth) content and attenuates high-frequency (edge/texture) content. |
 | **Sigma-Delta Dithering** | A technique that averages between adjacent quantization levels over time by accumulating a fractional error, producing smoother parameter control without visible stepping. |
 | **Spatial Filtering** | Processing that operates on the spatial dimensions (horizontal and vertical) of an image rather than on time or color space. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), allowing independent processing of brightness and color. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

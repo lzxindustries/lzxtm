@@ -35,6 +35,14 @@ Video input serves as a seed source: the input luminance is thresholded against 
 
 ---
 
+## Quick Start
+
+1. **Rule selection is the most powerful control**: The four rules produce completely different visual worlds from the same seed. Cycle through them first to find the character you want, then refine with the other parameters.
+2. **Evolve Rate is essential for observation**: At full speed, most rules produce patterns that change faster than the eye can follow. Slow the rate to study individual generation transitions.
+3. **Continuous seeding links to video content**: Keep Seed Mode off to anchor the automaton pattern to the input video structure — the CA becomes a living texture overlay that follows the source.
+
+---
+
 ## Background
 
 ### What Is a Cellular Automaton?
@@ -70,6 +78,8 @@ Evolving the automaton every video frame (60 Hz) can be too fast to observe indi
 ---
 
 ## Signal Flow
+
+Seed Extraction → Cellular Automaton Engine → Color Mapping → Output Mixing → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -130,7 +140,7 @@ The critical interaction is between the seed path and the evolution engine. In C
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the luminance threshold applied to the input video for cell seeding. At low values, only the brightest input pixels inject alive cells — the automaton seeds from highlights. At high values, most of the input frame qualifies as a seed source, flooding the grid with alive cells. The optimal setting depends on the input material: high-contrast sources work well at moderate threshold; low-contrast sources need the threshold lowered to generate any seeds.
+At low values, only the brightest input pixels inject alive cells — the automaton seeds from highlights. At high values, most of the input frame qualifies as a seed source, flooding the grid with alive cells. The optimal setting depends on the input material: high-contrast sources work well at moderate threshold; low-contrast sources need the threshold lowered to generate any seeds. Internally, controls the luminance threshold applied to the input video for cell seeding.
 
 ---
 
@@ -140,7 +150,7 @@ Controls the luminance threshold applied to the input video for cell seeding. At
 | Range | 1 – 60 |
 | Default | 31 |
 
-Controls the evolution frame-skip count. At minimum, the automaton advances one generation every video frame (60 generations per second). As the value increases, more frames are skipped between generations, slowing evolution. At maximum, the automaton may advance only once every several seconds, allowing individual generation transitions to be observed clearly. This is the primary control for matching the CA's temporal behavior to the viewer's perceptual speed.
+At minimum, the automaton advances one generation every video frame (60 generations per second). As the value increases, more frames are skipped between generations, slowing evolution. At maximum, the automaton may advance only once every several seconds, allowing individual generation transitions to be observed clearly. This is the primary control for matching the CA's temporal behavior to the viewer's perceptual speed. Internally, controls the evolution frame-skip count.
 
 ---
 
@@ -162,7 +172,7 @@ Selects which chroma palette is applied to the four cell states. The Color Map r
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the transparency of dead cells. At minimum, dead cells are fully opaque black — the automaton pattern sits on a solid black background. As the value increases, dead cell regions become increasingly transparent, allowing the input video to show through the gaps in the CA pattern. At maximum, the automaton overlays the input with alive and dying cells while the background is fully transparent.
+At minimum, dead cells are fully opaque black — the automaton pattern sits on a solid black background. As the value increases, dead cell regions become increasingly transparent, allowing the input video to show through the gaps in the CA pattern. At maximum, the automaton overlays the input with alive and dying cells while the background is fully transparent. Internally, controls the transparency of dead cells.
 
 ---
 
@@ -213,6 +223,21 @@ Toggles 7 and 8 form a 2-bit rule selector (4 combinations), while toggles 9–1
 
 Controls the wet/dry mix between the processed automaton output and the original input signal. At 100%, the full automaton output is visible. At 0%, the original input passes through unmodified. Intermediate positions blend the two, allowing the automaton pattern to be superimposed on the source at reduced intensity — useful for creating subtle texture overlays rather than full replacement.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Mitosis processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -223,7 +248,7 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 <img src={mitosis_exercise1_result} alt="Growth Rule — Dendrite Forests result"/>
 *Growth Rule — Dendrite Forests — simulated result across source images.*
-**Objective**: Observe how the Growth rule produces aggressive branching structures that fill available space, and how the seed threshold controls initial density.
+**What You'll Create**: Observe how the Growth rule produces aggressive branching structures that fill available space, and how the seed threshold controls initial density.
 
 1. **Start sparse**: Set Birth Thresh to ~80% so only the brightest input pixels seed cells. Set Evolve Rate to ~40% for moderate speed. Enable Continuous seeding (Seed Mode off).
 2. **Watch expansion**: Bright regions of the input generate seed clusters that rapidly branch outward, forming dendrite-like trees.
@@ -240,7 +265,7 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 <img src={mitosis_exercise2_result} alt="Seeds Rule — Ephemeral Sparkle result"/>
 *Seeds Rule — Ephemeral Sparkle — simulated result across source images.*
-**Objective**: Experience the Seeds rule where alive cells always die the next generation, producing sparkling, firework-like patterns that never settle into stable structures.
+**What You'll Create**: Experience the Seeds rule where alive cells always die the next generation, producing sparkling, firework-like patterns that never settle into stable structures.
 
 1. **Select Seeds rule**: Toggle Rule Bit 0 on, Rule Bit 1 off (rule 01).
 2. **Continuous seeding**: Keep Seed Mode off (continuous). Set Birth Thresh to ~50%.
@@ -257,7 +282,7 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 <img src={mitosis_exercise3_result} alt="Brain Rule — Autonomous Evolution result"/>
 *Brain Rule — Autonomous Evolution — simulated result across source images.*
-**Objective**: Use the Brain rule in Evolve-Only mode to create self-sustaining automaton patterns that are completely independent of the input video after the initial seeding.
+**What You'll Create**: Use the Brain rule in Evolve-Only mode to create self-sustaining automaton patterns that are completely independent of the input video after the initial seeding.
 
 1. **Select Brain rule**: Toggle Rule Bit 0 off, Rule Bit 1 on (rule 10).
 2. **Evolve-Only mode**: Toggle Seed Mode on. The automaton will seed once from the current video frame and then run autonomously.
@@ -274,9 +299,6 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 ## Tips
 
-- **Rule selection is the most powerful control**: The four rules produce completely different visual worlds from the same seed. Cycle through them first to find the character you want, then refine with the other parameters.
-- **Evolve Rate is essential for observation**: At full speed, most rules produce patterns that change faster than the eye can follow. Slow the rate to study individual generation transitions.
-- **Continuous seeding links to video content**: Keep Seed Mode off to anchor the automaton pattern to the input video structure — the CA becomes a living texture overlay that follows the source.
 - **Evolve-Only creates autonomous life**: Toggle Seed Mode on to let the automaton run free. The initial video frame determines the starting conditions, but all subsequent behavior is purely emergent.
 - **Decay Rate reveals motion history**: High decay rates create trailing afterimages behind moving CA structures — useful for showing directionality and flow in the pattern.
 - **Dead Opacity for compositing**: At high Dead Opacity, the CA pattern floats over the input video. At zero, it sits on solid black. Use this to control whether the program produces standalone visuals or textured overlays.
@@ -289,19 +311,17 @@ These exercises explore the four rule sets and their interactions with seeding, 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the ping-pong cell state buffers. |
 | **Cardinal Neighbors** | The four cells directly up, down, left, and right of a given cell. |
 | **Cellular Automaton (CA)** | A grid of cells evolving in discrete steps according to local rules examining neighbor states. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic waveforms. |
 | **Decay** | The gradual transition from alive through intermediate dying states to dead, creating visual trails. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video pipeline. |
 | **Frame Skip** | Holding the automaton state unchanged for multiple video frames to slow visible evolution rate. |
 | **Generation** | One complete update cycle of the cellular automaton, where every cell evaluates its neighborhood and transitions. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Moore Neighborhood** | The eight cells surrounding a given cell in a 2D grid (four cardinal + four diagonal). |
 | **Ping-Pong Buffer** | Two memory banks alternating between read and write roles each frame to avoid conflicts. |
-| **Pipeline** | A chain of processing stages executing one operation per clock cycle with fixed total latency. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V); used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

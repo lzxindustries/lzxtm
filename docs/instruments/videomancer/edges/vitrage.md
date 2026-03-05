@@ -68,6 +68,14 @@ At subtle settings Vitrage adds a gentle faceted quality to the image, like look
 
 ---
 
+## Quick Start
+
+1. **Edge Threshold is the most important control**: It determines the number and size of glass panes. Start here when dialing in a look — find the right cell density first, then adjust came width and color processing.
+2. **Flat Amt and Sunlight work together**: Flattening removes intra-cell variation; Sunlight adds it back as a controlled gradient. Use both to shape the lighting within each pane.
+3. **Glass Type presets are starting points**: Clear preserves source colors, Tint shifts everything toward one hue, Opal washes out to pastels, Antique adds organic texture. Layer these with Saturate and Sunlight for nuanced results.
+
+---
+
 ## Background
 
 ### The Art of Stained Glass
@@ -94,6 +102,8 @@ The Glass Type toggle selects one of four color-treatment presets inspired by gl
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -143,7 +153,7 @@ The sunlight gradient computation runs in parallel with quantization. A Manhatta
 | Default | 50% |
 | Suffix | % |
 
-Controls the width of the lead came strips between glass panes. At low settings the came lines are thin hairlines that merely outline the cell boundaries. As the control increases, the dark lead borders grow wider, consuming more of the image and leaving smaller visible glass regions. Very wide came settings create a bold graphic look where the dark grid dominates and only narrow slivers of color show through. The effective cell size is determined jointly by this control and the Edge Threshold — wider came combined with a sensitive threshold produces dense, small cells.
+At low settings the came lines are thin hairlines that merely outline the cell boundaries. As the control increases, the dark lead borders grow wider, consuming more of the image and leaving smaller visible glass regions. Very wide came settings create a bold graphic look where the dark grid dominates and only narrow slivers of color show through. The effective cell size is determined jointly by this control and the Edge Threshold — wider came combined with a sensitive threshold produces dense, small cells. Internally, controls the width of the lead came strips between glass panes.
 
 ---
 
@@ -176,7 +186,7 @@ Boosts the saturation of the U and V chroma channels by stretching them away fro
 | Default | 50% |
 | Suffix | % |
 
-Controls the intensity of the simulated sunlight gradient within each glass pane. At 0% the cell interior has uniform brightness (after quantization). As you increase the control, pixels near the centre of each cell are brightened while pixels near the edges remain at their quantized level. This creates the illusion of light streaming through the glass — each pane appears to glow from within. At extreme settings the gradient dominates and each cell becomes a bright disc surrounded by a dim border, regardless of the source content.
+At 0% the cell interior has uniform brightness (after quantization). As you increase the control, pixels near the centre of each cell are brightened while pixels near the edges remain at their quantized level. This creates the illusion of light streaming through the glass — each pane appears to glow from within. At extreme settings the gradient dominates and each cell becomes a bright disc surrounded by a dim border, regardless of the source content. Internally, controls the intensity of the simulated sunlight gradient within each glass pane.
 
 ---
 
@@ -187,7 +197,7 @@ Controls the intensity of the simulated sunlight gradient within each glass pane
 | Default | 50% |
 | Suffix | % |
 
-Sets the sensitivity of the edge detector that identifies cell boundaries. At low settings, only the strongest edges in the source image trigger came lines — large, well-defined contours in the video. At high settings, even subtle gradients and textures are classified as boundaries, producing a dense mesh of small cells. This control determines the overall "granularity" of the stained glass pattern: low threshold creates large, open panes; high threshold creates intricate, finely divided panels. The threshold interacts with Came Width — a high threshold with wide came can fill the entire image with dark leading.
+At low settings, only the strongest edges in the source image trigger came lines — large, well-defined contours in the video. At high settings, even subtle gradients and textures are classified as boundaries, producing a dense mesh of small cells. This control determines the overall "granularity" of the stained glass pattern: low threshold creates large, open panes; high threshold creates intricate, finely divided panels. The threshold interacts with Came Width — a high threshold with wide came can fill the entire image with dark leading. Internally, sets the sensitivity of the edge detector that identifies cell boundaries.
 
 ---
 
@@ -206,7 +216,7 @@ Sets the hue angle of the lead came strips. In Lead came mode (default), this sh
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Glass Type** | Clear | Tint |
+| **7 — Glass Type** | Clear | Antiq |
 | **8 — Came Color** | Lead | Gold |
 | **9 — Sun Anim** | Off | On |
 | **10 — Invert** | Off | On |
@@ -226,6 +236,21 @@ Toggles 7 and 8 control the visual character of the glass and came respectively 
 | Suffix | % |
 
 Controls the wet/dry crossfade between the processed stained glass output and the original unprocessed input. At 100% (fully clockwise, default) the effect is at full intensity. At 0% (fully counter-clockwise) the original signal passes through unaffected. Intermediate positions blend between the two — useful for dialing in a subtle hint of the stained glass effect without committing to the full transformation. The crossfade operates per-channel through three interpolator instances (Y, U, V).
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Vitrage processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -248,7 +273,7 @@ These exercises progress from simple edge highlighting through full stained glas
 *Lead Came Skeleton — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong geometric content — architecture, window frames, or objects with clear edges.
 
-**Objective**: Understand how the edge detector and Came Width interact to create the structural skeleton of a stained glass window.
+**What You'll Create**: Understand how the edge detector and Came Width interact to create the structural skeleton of a stained glass window.
 
 1. **Reveal the came**: Start with Came Width at about 30% and Edge Threshold at 50%. Dark lines appear at the strongest edges in the source image.
 2. **Widen the lead**: Slowly increase Came Width. The dark borders grow thicker, progressively consuming the image. Notice how wide came with few cells creates bold, graphic outlines.
@@ -275,7 +300,7 @@ These exercises progress from simple edge highlighting through full stained glas
 *Colored Glass Panels — simulated result across source images.*
 **Source**: Footage with varied, saturated colors — flowers, street art, colorful textiles, or a test pattern with gradients.
 
-**Objective**: Explore how flattening and saturation boost transform the source into vivid stained glass panes.
+**What You'll Create**: Explore how flattening and saturation boost transform the source into vivid stained glass panes.
 
 1. **Prepare skeleton**: Set Came Width ~25%, Edge Threshold ~50% to establish a visible cell grid.
 2. **Flatten the color**: Increase Flat Amt from 0% to about 70%. Watch intra-cell gradients collapse into flat uniform regions — each pane becomes a single color.
@@ -302,7 +327,7 @@ These exercises progress from simple edge highlighting through full stained glas
 *Animated Cathedral Window — simulated result across source images.*
 **Source**: Slowly moving footage — clouds, water reflections, or a slow camera pan across a landscape.
 
-**Objective**: Combine all processing stages to create a fully realized animated stained glass window effect.
+**What You'll Create**: Combine all processing stages to create a fully realized animated stained glass window effect.
 
 1. **Full setup**: Came Width ~30%, Flat Amt ~80%, Saturate ~70%, Sunlight ~50%, Edge Thr ~60%.
 2. **Gold leading**: Toggle Came Color to Gold. Tint the came to a warm amber at about 30° on the Came Tint knob.
@@ -318,9 +343,6 @@ These exercises progress from simple edge highlighting through full stained glas
 
 ## Tips
 
-- **Edge Threshold is the most important control**: It determines the number and size of glass panes. Start here when dialing in a look — find the right cell density first, then adjust came width and color processing.
-- **Flat Amt and Sunlight work together**: Flattening removes intra-cell variation; Sunlight adds it back as a controlled gradient. Use both to shape the lighting within each pane.
-- **Glass Type presets are starting points**: Clear preserves source colors, Tint shifts everything toward one hue, Opal washes out to pastels, Antique adds organic texture. Layer these with Saturate and Sunlight for nuanced results.
 - **Came Tint is subtle by default**: The effect is most visible with Came Color set to Gold, which provides a warmer base for the hue shift.
 - **Animation is gentle**: Sun Anim creates a slow shimmer, not dramatic motion. It works best with moderate Sunlight and a slowly changing source.
 - **Mix for overlay effects**: At 50% Mix, the stained glass effect becomes a semi-transparent overlay on the source — useful for creating a window-like compositing effect.
@@ -333,19 +355,17 @@ These exercises progress from simple edge highlighting through full stained glas
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated FPGA memory used for the video line buffer that sample-holds Y values at cell boundaries. |
 | **Came** | The lead or zinc strips that hold glass pieces together in a stained glass window; rendered as dark borders at cell boundaries. |
 | **Cell** | A rectangular or hexagonal region in the image bounded by came lines; each cell represents one pane of stained glass. |
 | **Chroma** | The color information in YUV video, represented by U and V channels centered at midpoint (512 in 10-bit). |
 | **Edge Detection** | Comparing adjacent pixel values to identify sharp transitions; used to determine where came boundaries are drawn. |
 | **Flattening** | Quantizing the Y channel to a small number of discrete levels, producing uniform color within each glass pane. |
-| **Interpolator** | A hardware crossfade unit that blends between two signals by a fractional amount; used for the wet/dry Mix control. |
 | **Line Buffer** | A one-line BRAM delay used to compare pixels across scan lines for cell boundary detection. |
 | **Opal** | A glass type characterized by milky translucence and pastel colors, simulated by reducing contrast and desaturating. |
-| **Pipeline** | The sequence of processing stages from input to output; Vitrage uses a 10-clock pipeline. |
 | **Quantization** | Reducing the number of discrete levels in a signal; creates the flat, uniform color regions within glass panes. |
 | **Saturate** | Boosting chroma by stretching U/V values away from the neutral midpoint, intensifying colors. |
 | **Vitrage** | French term for stained glass or glazing; the art of creating pictures and patterns from pieces of colored glass joined by lead strips. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V); the native format of the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

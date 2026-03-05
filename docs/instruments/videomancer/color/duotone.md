@@ -68,6 +68,14 @@ At subtle settings the program produces the warm-shadow, cool-highlight aestheti
 
 ---
 
+## Quick Start
+
+1. **Soft edge for photography, hard edge for graphics**: Soft-edge mode creates the continuous gradient blend of darkroom split toning. Hard-edge mode creates the flat color zones of screen printing and pop art.
+2. **Hues are complementary**: Shadow and highlight tints sit on opposing UV axes (blue-cyan vs. red-amber). This guarantees a pleasing complementary palette regardless of pot positions.
+3. **Invert flips everything**: Because inversion happens before the blend calculation, it reverses the color assignment *and* the brightness in one toggle — useful for quickly exploring the opposite palette.
+
+---
+
 ## Background
 
 ### Duotone Printing
@@ -94,6 +102,8 @@ Before the invention of color film, filmmakers applied tints and tones to black-
 ---
 
 ## Signal Flow
+
+Optional Inversion → Brightness Scale → Shadow Hue → UV → Highlight Hue → UV → Blend Factor from Luma → UV Crossfade
 
 ```
 Input Video (YUV 4:4:4)
@@ -143,7 +153,7 @@ Second, the hue controls map to fixed complementary UV axes rather than arbitrar
 | Default | 13% |
 | Suffix | % |
 
-Controls the chrominance offset applied to the shadow (dark) regions of the image. At 0%, the shadow tint is neutral gray — no color is added to dark areas. As the pot increases, the shadow color shifts along the blue-cyan axis (U increases, V decreases relative to mid). At maximum, dark areas of the image carry a strong cool tint. The offset is computed as the pot value divided by four, giving a maximum chroma displacement of 255 out of 512 from the center — enough for vivid color without wrapping.
+At 0%, the shadow tint is neutral gray — no color is added to dark areas. As the pot increases, the shadow color shifts along the blue-cyan axis (U increases, V decreases relative to mid). At maximum, dark areas of the image carry a strong cool tint. The offset is computed as the pot value divided by four, giving a maximum chroma displacement of 255 out of 512 from the center — enough for vivid color without wrapping. Internally, controls the chrominance offset applied to the shadow (dark) regions of the image.
 
 ---
 
@@ -227,6 +237,10 @@ The five toggles control three active features and two reserved parameters. Hard
 
 Wet/dry crossfade between the original input and the fully processed output, implemented by three parallel interpolator instances (one per YUV channel). At 100% (fully clockwise), the output is entirely the colorized duotone signal. At 0%, the output is the unmodified original. Intermediate positions blend the two, allowing subtle tinting effects where the original color partially shows through the duotone colorization.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -248,7 +262,7 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 *Classic Split Tone — simulated result across source images.*
 **Source**: A portrait or landscape with a wide tonal range — skin tones, sky, and shadow detail.
 
-**Objective**: Create a warm-highlight, cool-shadow split-tone look matching traditional photographic toning.
+**What You'll Create**: Create a warm-highlight, cool-shadow split-tone look matching traditional photographic toning.
 
 1. **Neutral start**: Set Shadow Hue and Highlight Hue to 0%. Observe that the image retains its original colors through the mix.
 2. **Add shadow tint**: Slowly increase Shadow Hue to ~25%. Dark areas take on a subtle blue-cyan cast.
@@ -275,7 +289,7 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 *Hard-Edge Two-Color Poster — simulated result across source images.*
 **Source**: High-contrast footage — strong backlit silhouettes or graphic shapes against a bright background.
 
-**Objective**: Create a stark two-color graphic using hard-edge threshold mode.
+**What You'll Create**: Create a stark two-color graphic using hard-edge threshold mode.
 
 1. **Enable hard edge**: Turn on Hard Edge (Toggle 9). The blend snaps to binary.
 2. **Set threshold**: Adjust Threshold to ~50%. The image splits into two flat color zones.
@@ -303,7 +317,7 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 *Inverted Duotone with Partial Mix — simulated result across source images.*
 **Source**: Any footage with moderate contrast and visible color detail.
 
-**Objective**: Combine luma inversion with partial wet/dry mix to create an unusual tinted negative effect.
+**What You'll Create**: Combine luma inversion with partial wet/dry mix to create an unusual tinted negative effect.
 
 1. **Enable invert**: Turn on Invert (Toggle 10). The image brightness reverses.
 2. **Set moderate hues**: Shadow Hue ~40%, Highlight Hue ~60%. The inverted tonal map now assigns warm tones to originally dark areas and cool tones to originally bright areas.
@@ -318,9 +332,6 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 
 ## Tips
 
-- **Soft edge for photography, hard edge for graphics**: Soft-edge mode creates the continuous gradient blend of darkroom split toning. Hard-edge mode creates the flat color zones of screen printing and pop art.
-- **Hues are complementary**: Shadow and highlight tints sit on opposing UV axes (blue-cyan vs. red-amber). This guarantees a pleasing complementary palette regardless of pot positions.
-- **Invert flips everything**: Because inversion happens before the blend calculation, it reverses the color assignment *and* the brightness in one toggle — useful for quickly exploring the opposite palette.
 - **Brightness controls exposure**: The brightness scaler is a simple multiply, not a proc amp. At 50% (default), output brightness is halved. Push toward 100% for full-level output.
 - **Mix for subtlety**: Reducing the Mix fader lets original chrominance bleed through the duotone tint, creating a less aggressive effect than full wet.
 - **Feedback loops**: Routing the output back to the input creates recursive colorization — the duotone effect deepens with each pass, converging toward the two endpoint hues.
@@ -336,12 +347,10 @@ These exercises progress from gentle split toning to aggressive two-color graphi
 | **Chroma** | The color information in a video signal, encoded as U and V components offset from a midpoint of 512 in the 10-bit domain. |
 | **Colorization** | The process of adding color to a monochrome or desaturated signal based on a mapping rule (here, luma-to-hue). |
 | **Duotone** | A printing technique using two ink colors to reproduce a photographic image; by extension, any two-color tonal mapping. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A pipelined hardware module that performs linear blending between two values (dry and wet) controlled by a mix parameter. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Toning** | A photographic technique that applies different color tints to the shadow and highlight regions of an image. |
 | **Threshold** | A brightness cutoff value that divides the image into two tonal zones in hard-edge mode. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

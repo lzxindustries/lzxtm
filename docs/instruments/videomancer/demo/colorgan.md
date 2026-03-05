@@ -35,6 +35,14 @@ When no video is present the organ falls silent — a dark screen.  Feed it a fl
 
 ---
 
+## Quick Start
+
+1. **Start with one band:** Solo each frequency band by setting the other two sensitivities to zero — this reveals what each IIR filter is actually tracking.
+2. **Match decay to tempo:** For rhythmic sources, lower Decay values keep the colour organ tight and punchy; for ambient footage, higher values produce a slow, meditative glow.
+3. **Concentric for projection:** The radial geometry works particularly well when projected onto a wall or screen, where the expanding rings create a stadium-spotlight effect.
+
+---
+
 ## Background
 
 ### Colour Organs and Lumia
@@ -209,6 +217,10 @@ The five toggles divide into functional pairs: Layout and Palette control geomet
 
 Mix crossfades between the dry input signal and the wet colour organ output.  At zero the output is pure dry video; at maximum it is entirely the generated colour zones.  Intermediate positions blend the two, allowing the colour organ to function as a translucent overlay.  When Video Mod is active, the mix fader provides an additional layer of control over how much source structure bleeds into the colour zones.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -219,7 +231,7 @@ These exercises demonstrate Colorgan's three-band spectral separation, zone geom
 
 <img src={colorgan_exercise1_result} alt="Warm Concentric Rings result"/>
 *Warm Concentric Rings — simulated result across source images.*
-**Objective**: Produce nested concentric colour rings that pulse gently with broad luminance changes.
+**What You'll Create**: Produce nested concentric colour rings that pulse gently with broad luminance changes.
 
 1. Set Bass Zone to 70 %, Mid Zone to 50 %, and Treble Zone to 30 % to emphasise low-frequency response.
 2. Set Zone Width to 60 % to give the rings generous spacing.
@@ -238,7 +250,7 @@ These exercises demonstrate Colorgan's three-band spectral separation, zone geom
 
 <img src={colorgan_exercise2_result} alt="Layered Stroboscope result"/>
 *Layered Stroboscope — simulated result across source images.*
-**Objective**: Create horizontal colour bands that respond percussively to rapid flicker.
+**What You'll Create**: Create horizontal colour bands that respond percussively to rapid flicker.
 
 1. Set all three band sensitivities to 80 % for uniform response.
 2. Set Zone Width to 50 % and Decay to 20 % for tight, fast zones.
@@ -257,7 +269,7 @@ These exercises demonstrate Colorgan's three-band spectral separation, zone geom
 
 <img src={colorgan_exercise3_result} alt="Video Mod Overlay result"/>
 *Video Mod Overlay — simulated result across source images.*
-**Objective**: Blend colour organ zones with recognisable source video to create a tinted composite.
+**What You'll Create**: Blend colour organ zones with recognisable source video to create a tinted composite.
 
 1. Set Bass Zone to 60 %, Mid Zone to 40 %, Treble Zone to 50 %.
 2. Set Zone Width to 80 % for broad coverage.
@@ -275,9 +287,6 @@ These exercises demonstrate Colorgan's three-band spectral separation, zone geom
 
 ## Tips
 
-- **Start with one band:** Solo each frequency band by setting the other two sensitivities to zero — this reveals what each IIR filter is actually tracking.
-- **Match decay to tempo:** For rhythmic sources, lower Decay values keep the colour organ tight and punchy; for ambient footage, higher values produce a slow, meditative glow.
-- **Concentric for projection:** The radial geometry works particularly well when projected onto a wall or screen, where the expanding rings create a stadium-spotlight effect.
 - **Layered for installations:** Horizontal bands pair naturally with wide-format displays and multi-screen setups where each band occupies a distinct physical zone.
 - **Video Mod for narrative:** When you want the audience to still see what is happening in the source material, Video Mod overlays the colour organ as a tinted filter rather than replacing the image entirely.
 - **Hue Offset for variety:** Even small rotations of 30–60° shift the perceived warmth/coolness dramatically, providing palette variety without switching the Warm/Cool toggle.

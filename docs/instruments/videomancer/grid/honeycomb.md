@@ -35,6 +35,14 @@ At conservative settings — small cells, thin lines, moderate brightness — Ho
 
 ---
 
+## Quick Start
+
+1. **Row offset is the key**: The hexagonal appearance comes entirely from shifting every other row by half a cell width. Without this offset, Honeycomb would produce a rectangular grid.
+2. **Line Width is quantized**: Only 3 bits control line thickness (8 discrete steps). Fine adjustments to the knob may produce no visible change until the next step boundary.
+3. **Fill toggle changes the role**: With Fill Off, Honeycomb is a pattern generator. With Fill On, it becomes an overlay tool. This makes it useful in two fundamentally different positions within a video chain.
+
+---
+
 ## Background
 
 ### Hexagonal Tessellations
@@ -59,6 +67,8 @@ Although Honeycomb is classified as a synthesis program (Grid category), it has 
 ---
 
 ## Signal Flow
+
+Timing Detection → Hex Grid Computation → Pixel Assignment → Interpolator Mix → Sync / Data Delay → Bypass Mux
 
 ```
 Video Input (YUV 4:4:4)
@@ -134,7 +144,7 @@ Controls the thickness of the grid lines that define cell boundaries. Only the u
 | Default | 75% |
 | Suffix | % |
 
-Sets the luminance of edge pixels — the brightness of the grid lines themselves. At 0% the lines are black and invisible against a dark background, useful only when Fill mode passes video through the cell interiors. At 100% the lines are maximum white. This control has no effect on non-edge pixels; cell interiors are always either video pass-through or near-black depending on the Fill toggle.
+At 0% the lines are black and invisible against a dark background, useful only when Fill mode passes video through the cell interiors. At 100% the lines are maximum white. This control has no effect on non-edge pixels; cell interiors are always either video pass-through or near-black depending on the Fill toggle. Internally, sets the luminance of edge pixels — the brightness of the grid lines themselves.
 
 ---
 
@@ -196,6 +206,10 @@ The five toggles control independent binary options, but two of them (Animate an
 
 Controls the wet/dry crossfade between the delayed input signal and the processed grid output via three `interpolator_u` instances (one per Y/U/V channel). At 0% (register 0), the output is the delayed input — no grid visible. At 100% (register 1023), the output is fully the processed grid signal. Intermediate values create a transparent overlay effect where the grid lines are semi-visible over the input video, regardless of the Fill toggle setting.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -206,7 +220,7 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 
 <img src={honeycomb_exercise1_result} alt="Basic Hex Grid result"/>
 *Basic Hex Grid — simulated result across source images.*
-**Objective**: Learn how cell size and line width define the hexagonal lattice structure.
+**What You'll Create**: Learn how cell size and line width define the hexagonal lattice structure.
 
 1. **Default grid**: With all controls at default, observe the hexagonal grid pattern on a dark background. Note how odd-numbered scanline rows are offset to create the hex appearance.
 2. **Cell size sweep**: Slowly turn Cell Size from minimum to maximum. Watch the grid transition from a fine mesh to large bold partitions. Count the approximate number of cells visible at each extreme.
@@ -222,7 +236,7 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 
 <img src={honeycomb_exercise2_result} alt="Colored Overlay Grid result"/>
 *Colored Overlay Grid — simulated result across source images.*
-**Objective**: Explore color assignment and video fill to create a colored hex overlay on live video.
+**What You'll Create**: Explore color assignment and video fill to create a colored hex overlay on live video.
 
 1. **Enable color**: Set Color toggle to RGB. The grid lines change from white to a hue determined by the Color knob.
 2. **Hue sweep**: Slowly turn the Color knob from 0% to 100%. Watch the grid lines cycle through cyan, green, magenta, and yellow — the four quadrants of the YUV color space.
@@ -238,7 +252,7 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 
 <img src={honeycomb_exercise3_result} alt="Bold Graphic Lattice result"/>
 *Bold Graphic Lattice — simulated result across source images.*
-**Objective**: Push the grid to maximum visual impact with large cells, thick lines, full brightness, and saturated color.
+**What You'll Create**: Push the grid to maximum visual impact with large cells, thick lines, full brightness, and saturated color.
 
 1. **Large cells**: Set Cell Size to ~90%. Only a few cells span the screen, creating bold geometric partitions.
 2. **Thick lines**: Set Line Width to 100%. The lines dominate, leaving small island-like cell interiors.
@@ -254,9 +268,6 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 
 ## Tips
 
-- **Row offset is the key**: The hexagonal appearance comes entirely from shifting every other row by half a cell width. Without this offset, Honeycomb would produce a rectangular grid.
-- **Line Width is quantized**: Only 3 bits control line thickness (8 discrete steps). Fine adjustments to the knob may produce no visible change until the next step boundary.
-- **Fill toggle changes the role**: With Fill Off, Honeycomb is a pattern generator. With Fill On, it becomes an overlay tool. This makes it useful in two fundamentally different positions within a video chain.
 - **Color knob at 50% = neutral**: The midpoint of the Color knob produces U=512, V=512, which is achromatic. Move away from center in either direction to introduce color.
 - **Four parameters are non-functional**: Fill amount (Knob 5), Speed (Knob 6), Animate (Toggle 9), and 3D Effect (Toggle 10) are registered but produce no output change. They appear to be reserved for future development.
 - **Mix as transparency**: The Mix fader controls the interpolator crossfade. At intermediate values, the grid becomes a semi-transparent overlay regardless of Fill mode, which can be useful for subtle reference grids.
@@ -271,12 +282,10 @@ These exercises progress from a basic monochrome grid to colored overlays and hy
 |------|------------|
 | **BT.601** | ITU-R Recommendation BT.601; the standard color matrix used for converting between RGB and YUV in standard-definition video. Videomancer uses BT.601 coefficients throughout. |
 | **Edge pixel** | A pixel whose local coordinates within a grid cell fall within the line width boundary, classified as part of the grid line structure. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that executes the grid generation and video processing pipeline. |
 | **Hue** | The attribute of color that distinguishes red from blue, green from yellow, etc. In YUV, hue is determined by the angle formed by the U and V components. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. Used here for the wet/dry output mix. |
 | **Modular arithmetic** | Arithmetic where values wrap around upon reaching a fixed modulus. Used here for computing local pixel position within a cell (6-bit wraparound). |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. Honeycomb uses an 8-clock pipeline. |
 | **Tessellation** | A pattern that tiles a plane without gaps or overlaps. Regular hexagons form one of three regular tessellations (along with squares and equilateral triangles). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V). Honeycomb generates patterns directly in YUV and applies color by manipulating U and V values. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

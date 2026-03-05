@@ -68,6 +68,14 @@ Two independent parameter sets — **Top** and **Bottom** — control the displa
 
 ---
 
+## Quick Start
+
+1. **Start simple**: Set Horiz Freq to 0% to work with horizontal bands only. Master the vertical accumulator before adding the second axis.
+2. **Displacement is relative**: The visual effect depends on the *difference* between Top and Bottom delays. Equal delays = invisible boundaries. Different delays = fault-like displacement.
+3. **Mirror creates symmetry**: Enable one flip for asymmetric mirror effects, both for full bilateral symmetry at every zone boundary.
+
+---
+
 ## Background
 
 ### Delay Lines and Spatial Displacement
@@ -96,6 +104,8 @@ Each accumulator's output is fed through a **proc_amp**: **Delay** = brightness 
 ---
 
 ## Signal Flow
+
+Timing → Mirror Delay Line → Zone Blanking
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -221,6 +231,10 @@ The five toggle switches control independent binary options — mirroring, inver
 
 Threshold for zone blanking. Compared against both accumulator outputs (acc_a AND acc_b). When both values are below the threshold, the output is blanked to black (or visible if Blank Invert is on). At 0%, no blanking occurs. As you raise the fader, periodic regions of black appear, aligned with the zone grid defined by Vert Freq and Horiz Freq. At 100%, most of the output is blanked.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -242,7 +256,7 @@ These exercises progress from simple displacement bands to complex fracture grid
 *Horizontal Displacement Bands — simulated result across source images.*
 **Source**: Camera feed with recognizable horizontal features — architecture, text, or landscapes.
 
-**Objective**: Learn how the vertical accumulator creates horizontal bands of displaced image content.
+**What You'll Create**: Learn how the vertical accumulator creates horizontal bands of displaced image content.
 
 1. **Isolate vertical bands**: Set Horiz Freq (Knob 6) fully counter-clockwise to eliminate vertical columns.
 2. **Set band frequency**: Set Vert Freq (Knob 3) to about 30%. You should see several horizontal bands.
@@ -271,7 +285,7 @@ These exercises progress from simple displacement bands to complex fracture grid
 *Mirror and Invert Zones — simulated result across source images.*
 **Source**: Camera feed with strong directional features — faces, text, or architecture.
 
-**Objective**: Explore how mirror and invert create visual discontinuities at zone boundaries.
+**What You'll Create**: Explore how mirror and invert create visual discontinuities at zone boundaries.
 
 1. **Set up grid**: Set Vert Freq to ~40%, Horiz Freq to ~25%.
 2. **Top Flip**: Enable Top Flip (Switch 7). Top zones now show a mirrored reflection of their content. Zone boundaries become axes of symmetry.
@@ -299,7 +313,7 @@ These exercises progress from simple displacement bands to complex fracture grid
 *Checkerboard Grid with Blanking — simulated result across source images.*
 **Source**: Any footage, especially geometric or high-contrast material.
 
-**Objective**: Create a fine-grid fracture pattern with selective blanking.
+**What You'll Create**: Create a fine-grid fracture pattern with selective blanking.
 
 1. **Fine grid**: Set Vert Freq to ~60%, Horiz Freq to ~50%. Many small zones appear.
 2. **Differentiate zones**: Set Top Delay ~25%, Bot Delay ~75%. The displacement difference makes zone boundaries clearly visible.
@@ -316,9 +330,6 @@ These exercises progress from simple displacement bands to complex fracture grid
 
 ## Tips
 
-- **Start simple**: Set Horiz Freq to 0% to work with horizontal bands only. Master the vertical accumulator before adding the second axis.
-- **Displacement is relative**: The visual effect depends on the *difference* between Top and Bottom delays. Equal delays = invisible boundaries. Different delays = fault-like displacement.
-- **Mirror creates symmetry**: Enable one flip for asymmetric mirror effects, both for full bilateral symmetry at every zone boundary.
 - **Invert is per-channel**: All 30 bits of YUV data are inverted simultaneously — luminance and chrominance together. One inverted zone next to one normal zone creates maximum visual contrast.
 - **Blanking tracks the grid**: The blanking pattern inherits the grid geometry defined by Vert Freq and Horiz Freq.
 - **Blank Invert for negative space**: The "negative space" of a blanking pattern is often more visually interesting than the pattern itself.
@@ -332,11 +343,9 @@ These exercises progress from simple displacement bands to complex fracture grid
 | Term | Definition |
 |------|------------|
 | **Bitwise NOT** | A logic operation that flips every bit of a value (0→1, 1→0); applied to all 30 bits of YUV data simultaneously when inversion is enabled. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used here as dual-port line buffers for scanline storage and displaced readback. |
 | **Clock divider** | A circuit that reduces a clock frequency by toggling its output every N input cycles; the MSB of each timing accumulator acts as a divide-by-two clock divider. |
 | **DC offset** | A constant value added to a signal, shifting it up or down without changing its shape; the Delay controls set the DC offset of the displacement address. |
 | **Dual-port RAM** | Memory with independent read and write ports, allowing simultaneous writing of new data and reading of previously stored data on alternating scanlines. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip (Lattice iCE40 HX4K) that executes the video processing pipeline in real time. |
 | **Line rate** | The frequency at which horizontal scanlines are produced; Accumulator A increments once per line, creating horizontal band patterns. |
 | **MSB (Most Significant Bit)** | The highest-order bit of a binary value; the MSBs of the two timing accumulators are XOR'd to produce the zone selection signal. |
 | **Pixel rate** | The frequency at which individual pixels are clocked; Accumulator B increments every pixel clock cycle, creating vertical column patterns. |
@@ -344,6 +353,7 @@ These exercises progress from simple displacement bands to complex fracture grid
 | **Scanline** | One horizontal row of pixels in a video frame; Faultplane's delay line operates on a per-scanline basis. |
 | **Timing accumulator** | A register that increments by a programmable amount on each clock or line event, producing an oscillating signal whose frequency determines the zone pattern. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used here to combine the two accumulator MSBs into the alternating zone selection signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); Faultplane processes all three channels as a 30-bit composite. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

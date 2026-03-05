@@ -35,6 +35,14 @@ The name *Flotilla* evokes a small fleet of vessels moving in formation across o
 
 ---
 
+## Quick Start
+
+1. **Start with one sprite**: Set Count to 1 to understand DDS motion and wrapping before adding formation complexity. A single sprite at 4× magnification is easy to track.
+2. **Wave Amp before Wave Freq**: Set a non-zero Wave Amp first — Wave Freq has no visible effect when Wave Amp is zero, since it modulates the amplitude of the formation spread.
+3. **Multi-colour for debugging**: Switch to Multi colour mode to distinguish individual sprites by index. This is invaluable when studying priority compositing at overlap points.
+
+---
+
 ## Background
 
 ### Demoscene Sprite Programming
@@ -133,7 +141,7 @@ Hit detection operates in a single clock cycle despite checking all eight sprite
 | Default | 29% |
 | Suffix | % |
 
-Controls the base increment added to each sprite's DDS position accumulator per frame. At minimum, the sprites are nearly stationary — their only motion comes from the small per-index offset (i×7 or i×5), which slowly spreads the formation across the screen. At maximum, sprites race across the frame, wrapping around screen edges in rapid succession. The relationship between the knob and apparent velocity is linear: doubling the register value doubles the screen-space speed. Because each sprite adds a unique per-index contribution on top of the base speed, increasing Speed also increases the rate at which the formation stretches — at very high speeds, the fleet fans out across the full screen width before the slowest sprite completes a single traversal.
+At minimum, the sprites are nearly stationary — their only motion comes from the small per-index offset (i×7 or i×5), which slowly spreads the formation across the screen. At maximum, sprites race across the frame, wrapping around screen edges in rapid succession. The relationship between the knob and apparent velocity is linear: doubling the register value doubles the screen-space speed. Because each sprite adds a unique per-index contribution on top of the base speed, increasing Speed also increases the rate at which the formation stretches — at very high speeds, the fleet fans out across the full screen width before the slowest sprite completes a single traversal. Internally, controls the base increment added to each sprite's DDS position accumulator per frame.
 
 ---
 
@@ -144,7 +152,7 @@ Controls the base increment added to each sprite's DDS position accumulator per 
 | Default | 39% |
 | Suffix | % |
 
-Sets the amplitude of the wave formation spread. At zero, the formation spacing comes only from the fixed Y-offset constants, producing a static staggered arrangement. As Wave Amp increases, the perpendicular offset for each sprite grows proportionally to its index — sprite 0 stays centred while sprite 7 swings the widest. The effective offset is computed as the register value right-shifted by 3 bits and multiplied by the sprite index, yielding a maximum spread of approximately ±896 pixels for the outermost sprite. Moderate values create a gentle undulation visible as a wave pattern; extreme values scatter the formation across the full screen height or width.
+At zero, the formation spacing comes only from the fixed Y-offset constants, producing a static staggered arrangement. As Wave Amp increases, the perpendicular offset for each sprite grows proportionally to its index — sprite 0 stays centred while sprite 7 swings the widest. The effective offset is computed as the register value right-shifted by 3 bits and multiplied by the sprite index, yielding a maximum spread of approximately ±896 pixels for the outermost sprite. Moderate values create a gentle undulation visible as a wave pattern; extreme values scatter the formation across the full screen height or width. Internally, sets the amplitude of the wave formation spread.
 
 ---
 
@@ -216,6 +224,10 @@ The five toggles divide into three functional clusters. Shape (7) and Direction 
 
 Crossfades between the delayed input video and the composed sprite output. At 0% (fader down), the output is pure dry input — no sprites are visible. At 100% (fader up), the output is the fully composed sprite scene (either over black or over video, depending on Background). Intermediate positions blend the two, allowing the sprites to appear as semi-transparent overlays. In Black background mode at 50% mix, the sprites ghost over the input as luminous phantoms; in Video background mode, the mix blends two copies of the input — one with sprites, one without.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -226,7 +238,7 @@ These exercises progress from a single sprite through full-fleet formation flyin
 
 <img src={flotilla_exercise1_result} alt="Single Arrow Traversal result"/>
 *Single Arrow Traversal — simulated result across source images.*
-**Objective**: Observe a single sprite moving across the screen to understand DDS animation, screen wrapping, and magnification.
+**What You'll Create**: Observe a single sprite moving across the screen to understand DDS animation, screen wrapping, and magnification.
 
 1. **Solo sprite**: Set Count to 1. Only sprite 0 is active.
 2. **Moderate speed**: Set Speed to ~30%. The arrow moves rightward at a steady pace.
@@ -243,7 +255,7 @@ These exercises progress from a single sprite through full-fleet formation flyin
 
 <img src={flotilla_exercise2_result} alt="Wave Formation result"/>
 *Wave Formation — simulated result across source images.*
-**Objective**: Deploy the full fleet and explore wave formation parameters to create undulating sprite patterns.
+**What You'll Create**: Deploy the full fleet and explore wave formation parameters to create undulating sprite patterns.
 
 1. **Full fleet**: Set Count to 8. All sprites are active.
 2. **Moderate speed**: Set Speed to ~30%. The fleet moves rightward, staggered by the per-index speed offsets.
@@ -261,7 +273,7 @@ These exercises progress from a single sprite through full-fleet formation flyin
 
 <img src={flotilla_exercise3_result} alt="Fleet Over Video result"/>
 *Fleet Over Video — simulated result across source images.*
-**Objective**: Composite the sprite flotilla over a live video input using Video background mode and the Mix fader to create a layered composition.
+**What You'll Create**: Composite the sprite flotilla over a live video input using Video background mode and the Mix fader to create a layered composition.
 
 1. **Enable video background**: Set Background to Video. Ensure a video source is connected.
 2. **Full fleet, diamond shape**: Set Count to 8, Shape to Diamond. The diamond shape is more symmetric and reads well as an overlay.
@@ -279,9 +291,6 @@ These exercises progress from a single sprite through full-fleet formation flyin
 
 ## Tips
 
-- **Start with one sprite**: Set Count to 1 to understand DDS motion and wrapping before adding formation complexity. A single sprite at 4× magnification is easy to track.
-- **Wave Amp before Wave Freq**: Set a non-zero Wave Amp first — Wave Freq has no visible effect when Wave Amp is zero, since it modulates the amplitude of the formation spread.
-- **Multi-colour for debugging**: Switch to Multi colour mode to distinguish individual sprites by index. This is invaluable when studying priority compositing at overlap points.
 - **Video background for compositing**: Video mode layers the sprites over live input, turning Flotilla into a sprite overlay program. Combine with low Mix for subtle animated decorations.
 - **Large sprites overlap more**: At 4× magnification and high Count, sprites frequently overlap. Use this to study the priority chain — sprite 0 always wins.
 - **Direction changes are non-destructive**: Toggling Direction swaps the axis but does not reset the DDS accumulators. The formation reorganises smoothly from whatever state it was in.
@@ -306,6 +315,7 @@ These exercises progress from a single sprite through full-fleet formation flyin
 | **Priority chain** | A compositing rule where the lowest-numbered overlapping element wins, common in hardware sprite systems. |
 | **Screen wrapping** | When an object exits one edge of the screen it re-enters from the opposite edge, implemented here via modular arithmetic on position coordinates. |
 | **Tuning word** | The increment value added to a DDS accumulator each cycle; larger values produce faster motion or higher frequency. |
-| **YUV** | A colour model separating luminance (Y) from two chrominance components (U and V), used throughout Videomancer's video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

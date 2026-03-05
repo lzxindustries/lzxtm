@@ -68,6 +68,14 @@ A separate luma shimmer path adds subtle brightness modulation to complete the p
 
 ---
 
+## Quick Start
+
+1. **Start with monochrome sources**: Nacre's iridescence is most visible on desaturated or gray material where the rainbow overlay is the only color present.
+2. **Match frequency axes for 45° bands**: Equal H and V Frequency values produce classic diagonal bands; unequal values tilt the bands toward horizontal or vertical.
+3. **Use Saturation to control the competition**: Low Saturation lets the rainbow dominate; high Saturation forces the source color to compete with the overlay, creating mixed hues.
+
+---
+
 ## Background
 
 ### Thin-Film Interference
@@ -94,6 +102,8 @@ In real nacre, the iridescent shimmer is more visible on the highlights and fade
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,8 +226,8 @@ Saturation scales the source chrominance around the 512 midpoint before the irid
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Surface** | Nacre | Oil |
-| **8 — Direction** | Horiz | Vert |
+| **7 — Surface** | Nacre | Beetle |
+| **8 — Direction** | Horiz | Diag |
 | **9 — Anim** | Off | On |
 | **10 — Video Mod** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -236,6 +246,10 @@ The five toggles configure independent binary options. Direction and Pastel affe
 | Suffix | % |
 
 Mix controls the interpolator crossfade between the dry (original) and wet (processed) signals. At 0 the output is entirely dry; at 1023 entirely wet. The interpolator operates on all three channels (Y, U, V) independently with 4-clock latency.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +272,7 @@ These exercises explore iridescence from broad color washes to intricate animate
 *Diagonal Rainbow Bands — simulated result across source images.*
 **Source**: A monochrome or desaturated camera feed — gray surfaces, concrete, skin, or fabric with subtle tonal variation.
 
-**Objective**: Create classic diagonal rainbow bands and learn how H Frequency and V Frequency interact to set band angle and spacing.
+**What You'll Create**: Create classic diagonal rainbow bands and learn how H Frequency and V Frequency interact to set band angle and spacing.
 
 1. Start with both H Frequency and V Frequency at mid-position. Observe the diagonal band pattern crossing the image.
 2. Turn H Frequency fully clockwise (high frequency). The horizontal band density increases — bands become narrow columns.
@@ -285,7 +299,7 @@ These exercises explore iridescence from broad color washes to intricate animate
 *Animated Pearlescent Shimmer — simulated result across source images.*
 **Source**: Smooth-toned footage with broad tonal gradations — clouds, water surfaces, flowing fabric.
 
-**Objective**: Combine animation, pastel mode, and luma-linked shimmer to simulate a mother-of-pearl surface.
+**What You'll Create**: Combine animation, pastel mode, and luma-linked shimmer to simulate a mother-of-pearl surface.
 
 1. Set moderate H and V Frequency for visible bands.
 2. Enable Pastel — the rainbow softens to gentle tints with more visible brightness undulation.
@@ -313,7 +327,7 @@ These exercises explore iridescence from broad color washes to intricate animate
 *Radial Diamond Iridescence — simulated result across source images.*
 **Source**: A centered, high-contrast subject — a face, a flower, a circular object against a dark background.
 
-**Objective**: Use radial mode to create a non-linear iridescent pattern that wraps around the subject.
+**What You'll Create**: Use radial mode to create a non-linear iridescent pattern that wraps around the subject.
 
 1. Enable Direction (radial mode). Observe how the parallel diagonal bands transform into intersecting diamond or checkerboard patterns.
 2. Set H Frequency and V Frequency to different values. The diamond aspect ratio changes.
@@ -329,9 +343,6 @@ These exercises explore iridescence from broad color washes to intricate animate
 
 ## Tips
 
-- **Start with monochrome sources**: Nacre's iridescence is most visible on desaturated or gray material where the rainbow overlay is the only color present.
-- **Match frequency axes for 45° bands**: Equal H and V Frequency values produce classic diagonal bands; unequal values tilt the bands toward horizontal or vertical.
-- **Use Saturation to control the competition**: Low Saturation lets the rainbow dominate; high Saturation forces the source color to compete with the overlay, creating mixed hues.
 - **Pastel mode for realism**: Real nacre has soft, shifting tints — not vivid spectral bands. Pastel mode plus Video Mod produces the most naturalistic pearlescent look.
 - **Animation speed is exponential**: Because the DDS accumulator adds the pot value every frame, the perceived animation rate grows linearly with the knob but wraps at 16-bit boundaries — keep speeds moderate for smooth scrolling.
 - **Radial mode for complex patterns**: Direction mode switches from parallel bands to intersecting diamonds, doubling the visual complexity with a single toggle.
@@ -346,15 +357,13 @@ These exercises explore iridescence from broad color washes to intricate animate
 | **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **Chrominance** | The color difference components (U and V) of a YUV signal, encoding hue and saturation. |
 | **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating periodic waveforms by adding a tuning word each cycle. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **Hue** | The angular position of the chrominance vector in the UV plane, determining the perceived color (red, green, blue, etc.). |
 | **iCE40** | Lattice iCE40 HX4K FPGA used in Videomancer hardware. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter. |
 | **Luminance** | The brightness component (Y) of a YUV signal. |
 | **LUT** | Lookup Table; pre-computed values stored in FPGA fabric, accessed by index for single-cycle retrieval. |
 | **Nacre** | Mother-of-pearl; the iridescent inner lining of mollusc shells composed of layered aragonite crystals. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Thin-Film Interference** | Optical phenomenon where light reflecting from two surfaces of a thin transparent layer produces position-dependent color. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

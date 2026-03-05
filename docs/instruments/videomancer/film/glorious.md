@@ -68,6 +68,14 @@ At conservative settings — balanced exposure, moderate contrast, zero fringe �
 
 ---
 
+## Quick Start
+
+1. **Processing order matters**: YUV→RGB → exposure → H&D curve → fringe → bleed → RGB→YUV → saturation → mix. Exposure happens before the curve, so heavy exposure pushes values into the toe and shoulder regions of the H&D curve.
+2. **Green is automatic**: The green channel's exposure is always the average of red and blue. To independently control green, adjust both red and blue equally and use the Saturation control to fine-tune color intensity.
+3. **Fringe creates period-accurate imperfection**: Even 1–2 pixels of fringe adds a subtle organic quality that instantly separates digital video from its Technicolor-era inspiration. Maximum fringe is intentionally extreme — dial it back for realism.
+
+---
+
 ## Background
 
 ### The Three-Strip Technicolor Process
@@ -94,6 +102,8 @@ Technicolor prints stored in non-ideal conditions undergo differential dye fadin
 ---
 
 ## Signal Flow
+
+All Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -218,6 +228,21 @@ The five toggles control independent aspects of the Technicolor simulation. Era 
 
 Controls the dry/wet blend between the Technicolor-processed signal and the original input. The mix uses an inline 4-bit alpha implementation (16 steps of blending precision) rather than the interpolator_u entities used by most programs. At maximum (default), the output is fully the Technicolor-graded signal. At zero, the output is the unprocessed input. Intermediate positions blend between the two, useful for dialing in subtle film-look enhancements without committing to the full effect.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Glorious processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -239,7 +264,7 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 *Strip Exposure Color Grading — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable skin tones and a mix of warm and cool colors.
 
-**Objective**: Learn how the independent red and blue exposure controls affect overall color balance, and observe the automatic green tracking.
+**What You'll Create**: Learn how the independent red and blue exposure controls affect overall color balance, and observe the automatic green tracking.
 
 1. **Default balance**: Leave both Red Exp and Blue Exp at their default midpoint. The image should appear neutral with moderate film-like warmth.
 2. **Warm shift**: Increase Red Exp to about 75%. Skin tones warm visibly, reds intensify, and the overall image takes on an amber cast.
@@ -266,7 +291,7 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 *H&D Curve and Fringe — simulated result across source images.*
 **Source**: Footage with strong contrast — backlit subjects, bright windows, or text on dark backgrounds.
 
-**Objective**: Explore how the H&D tonal response and fringe misregistration interact to create the characteristic Technicolor look.
+**What You'll Create**: Explore how the H&D tonal response and fringe misregistration interact to create the characteristic Technicolor look.
 
 1. **Flat response**: Set Contrast to about 20%. The image appears flat with compressed shadows and highlights — everything sits in the midtones.
 2. **Steep S-curve**: Increase Contrast to about 80%. Shadows crush deeper, highlights clip earlier, and the straight section steepens. High-contrast edges become more defined.
@@ -294,7 +319,7 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 *Vintage Aged Print — simulated result across source images.*
 **Source**: Any footage — the aging effect transforms the entire tonal palette.
 
-**Objective**: Combine all processing stages to create the look of a deteriorating vintage Technicolor print.
+**What You'll Create**: Combine all processing stages to create the look of a deteriorating vintage Technicolor print.
 
 1. **Base grade**: Set Red Exp ~60%, Blue Exp ~50%, Contrast ~65%.
 2. **Add fringe**: Set Fringe to about 3 for moderate misregistration.
@@ -311,9 +336,6 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 
 ## Tips
 
-- **Processing order matters**: YUV→RGB → exposure → H&D curve → fringe → bleed → RGB→YUV → saturation → mix. Exposure happens before the curve, so heavy exposure pushes values into the toe and shoulder regions of the H&D curve.
-- **Green is automatic**: The green channel's exposure is always the average of red and blue. To independently control green, adjust both red and blue equally and use the Saturation control to fine-tune color intensity.
-- **Fringe creates period-accurate imperfection**: Even 1–2 pixels of fringe adds a subtle organic quality that instantly separates digital video from its Technicolor-era inspiration. Maximum fringe is intentionally extreme — dial it back for realism.
 - **Bleed and saturation compensate each other**: Increasing Matrix Bleed desaturates because crosstalk pushes all channels toward the same average value. Increasing Saturation after bleed restores color intensity while keeping the soft, dye-like quality.
 - **Film Fade for vintage looks**: Combining Film Fade (Aged) with Toe Lift (Lifted) and moderate bleed produces the look of a faded 1950s release print — cyan-shifted, low contrast, with milky shadows.
 - **Mono Sep for B&W reference**: Switching to Mono shows the green separation record, which was the sharpest and most detailed. Use it to evaluate the tonal quality of the H&D curve without color distractions.
@@ -328,18 +350,17 @@ These exercises progress from basic exposure grading to full vintage Technicolor
 |------|------------|
 | **BT.601** | ITU-R Recommendation BT.601; the standard defining the YUV-to-RGB matrix coefficients used in standard-definition video, also used here for HD. |
 | **Dye Transfer** | The imbibition printing process in which dye from a relief matrix is transferred onto a receiving film strip. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Fringe** | Horizontal color offset caused by misalignment of separate dye layers during printing; produces colored halos at high-contrast edges. |
 | **H&D Curve** | Hurter–Driffield curve; the S-shaped relationship between photographic exposure and resulting optical density, with toe, straight, and shoulder regions. |
 | **Imbibition** | A printing technique where dye soaks from a gelatin relief matrix into a receiving layer; the method used in Technicolor Process 4. |
 | **Matrix Bleed** | Inter-channel dye contamination where one color layer's dye migrates into adjacent layers, producing color crosstalk. |
 | **Mono Separation** | Isolating a single color record (here, the green channel) to produce a monochrome image representing one strip of the three-strip process. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Printer Light** | In photochemical film timing, the intensity of light used to expose each color record during printing; higher intensity increases that channel's density. |
 | **Saturation** | The intensity of color in an image; higher saturation produces more vivid colors, lower saturation tends toward gray. |
 | **Shoulder** | The high-exposure region of the H&D curve where density increase diminishes — represents highlight compression. |
 | **Technicolor Process 4** | The three-strip camera and dye-transfer printing system used from 1932–1955, defining the "Technicolor look." |
 | **Toe** | The low-exposure region of the H&D curve where density increase is minimal — represents shadow compression. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

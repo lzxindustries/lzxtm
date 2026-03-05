@@ -68,6 +68,14 @@ At default settings (all knobs at noon, fader fully up), the signal passes throu
 
 ---
 
+## Quick Start
+
+1. **Defaults are transparent**: At noon on all knobs and fader fully up, the signal passes through bit-identical. Procamp is safe to leave in the chain as a calibration point.
+2. **Gain before offset**: The proc amp applies gain *then* offset internally. To achieve a specific target level, set gain first for the desired contrast, then fine-tune offset.
+3. **Fade is not mix**: The fader does not crossfade between processed and original — it fades toward a *fixed color*. For a true dry/wet blend, use a downstream mixer program.
+
+---
+
 ## Background
 
 ### The Processing Amplifier in Broadcast Video
@@ -90,6 +98,8 @@ The output stage uses three `interpolator_u` instances to crossfade between the 
 ---
 
 ## Signal Flow
+
+Y Channel → U Channel → V Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,7 +226,19 @@ The five toggles control three per-channel inversions plus the fade color select
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the fade-to-color amount. This is **not** a wet/dry mix — it crossfades between the processed signal and a *fixed color* (black or white for Y, neutral 512 for U/V). At 100% (fully up, default), the output is the fully processed signal. As you lower the fader, the image progressively converges on the target color. At 0%, the output is a flat monochrome field. The fade simultaneously affects brightness and saturation because all three channels converge on their respective targets.
+
+#### Fader 12 — Fade Amount
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Procamp-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -239,7 +261,7 @@ These exercises progress from basic level correction to creative color manipulat
 *Luminance Calibration — simulated result across source images.*
 **Source**: A grayscale ramp or test pattern with known black and white reference levels.
 
-**Objective**: Learn how Y gain and Y offset interact to set correct brightness and contrast.
+**What You'll Create**: Learn how Y gain and Y offset interact to set correct brightness and contrast.
 
 1. **Verify defaults**: Confirm all knobs at noon, fader fully up. Output should match input exactly.
 2. **Offset adjustment**: Slowly turn Y Offset counter-clockwise. Watch the entire image darken uniformly — this is a DC shift.
@@ -266,7 +288,7 @@ These exercises progress from basic level correction to creative color manipulat
 *Creative Color Tinting — simulated result across source images.*
 **Source**: A well-exposed video source with a range of natural colors — outdoor scenes or skin tones work well.
 
-**Objective**: Explore per-channel offset and gain for deliberate color grading.
+**What You'll Create**: Explore per-channel offset and gain for deliberate color grading.
 
 1. **Warm tint**: Increase V Offset slightly (clockwise) to add red warmth. Decrease U Offset slightly (counter-clockwise) to reduce blue. The image takes on a warm, golden tone.
 2. **Cool tint**: Reverse — increase U Offset, decrease V Offset. The image shifts toward blue-cyan.
@@ -293,7 +315,7 @@ These exercises progress from basic level correction to creative color manipulat
 *Fade-to-Color Drama — simulated result across source images.*
 **Source**: Any dynamic footage — live camera, animations, or abstract video synthesis.
 
-**Objective**: Use the fade-to-color stage for dramatic transitions and monochrome washes.
+**What You'll Create**: Use the fade-to-color stage for dramatic transitions and monochrome washes.
 
 1. **Fade to black**: Set Fade Color to Black. Slowly lower the Fade Amount fader. Watch the image darken and desaturate simultaneously, converging on black.
 2. **Fade to white**: Toggle Fade Color to White. Repeat the fade. Now the image brightens and desaturates, converging on a white field. Note that the *rate* of desaturation matches the brightness change because U and V always fade toward neutral.
@@ -308,9 +330,6 @@ These exercises progress from basic level correction to creative color manipulat
 
 ## Tips
 
-- **Defaults are transparent**: At noon on all knobs and fader fully up, the signal passes through bit-identical. Procamp is safe to leave in the chain as a calibration point.
-- **Gain before offset**: The proc amp applies gain *then* offset internally. To achieve a specific target level, set gain first for the desired contrast, then fine-tune offset.
-- **Fade is not mix**: The fader does not crossfade between processed and original — it fades toward a *fixed color*. For a true dry/wet blend, use a downstream mixer program.
 - **Per-channel desaturation**: Setting U Gain and V Gain to zero while leaving Y at unity produces a clean monochrome conversion without needing the Mono toggle found in other programs.
 - **Color tinting shortcut**: For a quick warm or cool tint, offset U and V in opposite directions while leaving gains at unity.
 - **Inversion as creative tool**: Y Invert before high gain creates extreme solarization effects that are different from simple post-gain inversion.
@@ -326,8 +345,8 @@ These exercises progress from basic level correction to creative color manipulat
 | **DC Offset** | A constant value added to every sample in a channel, shifting the entire signal up or down. |
 | **Fade-to-Color** | Interpolation between the processed signal and a fixed target color (black, white, or neutral chroma); distinct from a wet/dry mix. |
 | **Gain** | Multiplicative scaling of a signal centered around a reference point (512 in 10-bit YUV); equivalent to "contrast" in broadcast terminology. |
-| **Interpolator** | A pipelined hardware unit that computes a + (b − a) × t for crossfading between two values. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies contrast and brightness correction to a video signal channel. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U = blue-yellow, V = red-cyan), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

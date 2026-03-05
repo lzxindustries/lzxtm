@@ -68,6 +68,14 @@ The name references the physical stencil — a sheet with cut-out shapes through
 
 ---
 
+## Quick Start
+
+1. **Start with contrast**: Feed Stencil a high-contrast source for the cleanest mask edges. Low-contrast material produces indistinct, noisy masks.
+2. **Cut for graphics, Stamp for compositing**: Cut mode creates bold flat-colour graphics; Stamp mode retains video detail for overlay-style compositions.
+3. **Edge adds dimension**: Even a thin edge outline (10–15%) adds visual definition to the stencil boundary, separating fill from image.
+
+---
+
 ## Background
 
 ### Luminance Keying
@@ -168,14 +176,14 @@ The Fill Color and Edge Color pots generate UV pairs from hue angles (0–360°)
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the luminance threshold that divides the image into masked and unmasked regions. At low values, only the darkest pixels fall below the threshold, so most of the image is masked. At high values, only the brightest pixels exceed the threshold, revealing only the highlights. The midpoint at 50% provides a balanced split for typical video content. The threshold operates on the raw Y channel before any contrast or offset processing, making it independent of the output tonal adjustments.
+At low values, only the darkest pixels fall below the threshold, so most of the image is masked. At high values, only the brightest pixels exceed the threshold, revealing only the highlights. The midpoint at 50% provides a balanced split for typical video content. The threshold operates on the raw Y channel before any contrast or offset processing, making it independent of the output tonal adjustments. Internally, sets the luminance threshold that divides the image into masked and unmasked regions.
 
 ---
 
 #### Knob 2 — Mask Mode
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Controls the width of the edge detection zone around the mask boundary. At the minimum, edges are one pixel wide — a single-sample transition. Increasing the width broadens the detection region, producing thicker outlines that trace the stencil boundary. In Soft Edge mode, this parameter also influences the feathering gradient distance: wider edges produce a broader transition zone between fully masked and fully unmasked regions. At maximum, the edge can consume a significant portion of the image, creating bold graphic outlines.
@@ -185,7 +193,7 @@ Controls the width of the edge detection zone around the mask boundary. At the m
 #### Knob 3 — Process
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the hue angle for the fill colour applied to masked regions. The pot sweeps through 360° of hue, converting the angle to U and V chrominance values at full saturation. At 0° the fill is red, 120° is green, and 240° is blue, with all intermediate hues available. The fill colour appears wherever the mask dictates — in Cut mode, this is where the source luminance exceeds the threshold; in Stamp mode, it fills the areas where luminance is below threshold.
@@ -250,6 +258,21 @@ The five toggles define the stencil's fundamental character. Mode (Cut/Stamp) de
 
 Crossfades between the dry (original) and wet (processed) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the fully processed stencil effect. Intermediate values blend the stencil result with the original, useful for reducing the intensity of the effect or for creating semi-transparent overlay compositions where the stencil colour is visible but the original image shows through.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stencil processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -271,7 +294,7 @@ These exercises progress from basic threshold masking through coloured stencil c
 *Basic Threshold Mask — simulated result across source images.*
 **Source**: High-contrast footage — a face lit from one side, or text on a white background.
 
-**Objective**: Understand how the Threshold control divides the image into masked and unmasked regions in Cut mode.
+**What You'll Create**: Understand how the Threshold control divides the image into masked and unmasked regions in Cut mode.
 
 1. **Set to Cut mode**: Ensure Mode is set to Cut.
 2. **Sweep threshold**: Slowly increase Threshold from 0% to 100%. Watch the mask boundary move across the luminance range, progressively revealing more fill colour.
@@ -298,7 +321,7 @@ These exercises progress from basic threshold masking through coloured stencil c
 *Coloured Stencil with Edge — simulated result across source images.*
 **Source**: Colourful scenery or abstract video — anything with a broad luminance range.
 
-**Objective**: Create a three-colour composition using fill, edge, and original image.
+**What You'll Create**: Create a three-colour composition using fill, edge, and original image.
 
 1. **Set threshold**: Threshold at about 45% to capture a broad stencil.
 2. **Choose fill hue**: Set Fill Color to about 60° (yellow-green).
@@ -327,7 +350,7 @@ These exercises progress from basic threshold masking through coloured stencil c
 *Soft Stencil with Offset — simulated result across source images.*
 **Source**: A slowly-moving abstract video or camera feedback loop.
 
-**Objective**: Combine Soft edge mode with contrast and offset for a smooth, painterly stencil composition.
+**What You'll Create**: Combine Soft edge mode with contrast and offset for a smooth, painterly stencil composition.
 
 1. **Enable soft mode**: Toggle Soft to Soft. The stencil transitions become feathered gradients.
 2. **Set threshold**: Around 55%.
@@ -344,9 +367,6 @@ These exercises progress from basic threshold masking through coloured stencil c
 
 ## Tips
 
-- **Start with contrast**: Feed Stencil a high-contrast source for the cleanest mask edges. Low-contrast material produces indistinct, noisy masks.
-- **Cut for graphics, Stamp for compositing**: Cut mode creates bold flat-colour graphics; Stamp mode retains video detail for overlay-style compositions.
-- **Edge adds dimension**: Even a thin edge outline (10–15%) adds visual definition to the stencil boundary, separating fill from image.
 - **Complementary hues**: Set Fill and Edge colours 180° apart on the colour wheel for maximum visual contrast in the contour.
 - **Soft mode for organic looks**: Feathered transitions suit organic footage (faces, nature) better than hard binary masks.
 - **Use Offset to lighten fills**: Increasing Offset brightens the fill region, creating pastel tones instead of deep saturated colours.
@@ -364,12 +384,11 @@ These exercises progress from basic threshold masking through coloured stencil c
 | **BT.601** | The ITU-R standard defining the YUV colour encoding used in standard-definition video and as the native colour space in Videomancer. |
 | **Feathering** | Gradually blending the edge of a mask from fully opaque to fully transparent, creating a smooth transition rather than a hard step. |
 | **Hue** | The attribute of colour that determines its position on the colour wheel, measured in degrees from 0° (red) through 120° (green) to 240° (blue). |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used for dry/wet blending. |
 | **Luma keying** | A compositing technique that generates a matte (mask) from the brightness of the source signal rather than its colour. |
 | **Pochoir** | An Art Deco illustration technique using hand-cut metal stencils to apply flat areas of colour through the openings. |
-| **Proc amp** | Processing amplifier; a standard video circuit for adjusting contrast (gain) and brightness (offset) of the luminance channel. |
 | **Screen printing** | A printing technique where ink is forced through a mesh stencil onto the substrate, producing flat areas of solid colour. |
 | **Serigraphy** | The fine-art term for screen printing, especially when used for artistic rather than commercial reproduction. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

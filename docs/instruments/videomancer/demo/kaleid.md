@@ -35,6 +35,14 @@ The Overlay mode bridges synthesis and processing: rather than replacing the vid
 
 ---
 
+## Quick Start
+
+1. **XOR is the classic screensaver pattern**: Mode 1 produces the signature Sierpinski-like fractal tiling that defined an entire genre of VGA-era generative art. Combine with octagonal fold for mandala geometry.
+2. **Zoom is stepwise, not continuous**: The four zoom levels double the coordinate scale each step. For fine spatial frequency tuning, combine Zoom with different pattern modes — Diamond at ×1 has similar density to Rings at ×2.
+3. **Rainbow spacing creates color complements**: Because the three triangle waves are spaced at 120° (one-third of a cycle), adjacent color bands are approximate complements. This naturally produces high color contrast across the pattern.
+
+---
+
 ## Background
 
 ### VGA Palette Cycling and the Illusion of Motion
@@ -61,6 +69,8 @@ The screensaver genre of the early 1990s occupied a unique cultural moment: pers
 ---
 
 ## Signal Flow
+
+Coord Fold + Zoom → Pattern + Phase → Triangle Wave Evaluation → Scale + Compose
 
 ```
 Video Timing (from data_in sync signals)
@@ -174,7 +184,7 @@ Adds a fixed phase offset to the color cycling, effectively rotating the startin
 | Default | 75% |
 | Suffix | % |
 
-Scales the amplitude of the U and V chrominance channels in Rainbow mode. At maximum (1023), the triangle-wave outputs map to the full ±512 chroma range, producing vivid, saturated rainbow bands. At zero, U and V contributions are zero — the output collapses to monochrome regardless of the Color toggle. At intermediate values, the chroma amplitude is proportionally reduced, producing pastel or muted color cycling. In Mono mode, this control has no visible effect because the U and V channels are already held at neutral 512. Saturation interacts with Brightness to determine the overall visual intensity: high saturation with low brightness produces dark jewel tones, while high saturation with high brightness produces neon-vivid bands.
+At maximum (1023), the triangle-wave outputs map to the full ±512 chroma range, producing vivid, saturated rainbow bands. At zero, U and V contributions are zero — the output collapses to monochrome regardless of the Color toggle. At intermediate values, the chroma amplitude is proportionally reduced, producing pastel or muted color cycling. In Mono mode, this control has no visible effect because the U and V channels are already held at neutral 512. Saturation interacts with Brightness to determine the overall visual intensity: high saturation with low brightness produces dark jewel tones, while high saturation with high brightness produces neon-vivid bands. Internally, scales the amplitude of the U and V chrominance channels in Rainbow mode.
 
 ---
 
@@ -214,6 +224,10 @@ The five toggles configure the pattern engine along orthogonal axes. Color (7) s
 
 Wet/dry mix at the end of the processing chain. At maximum (100%), the output is the fully processed Kaleid signal — synthesized pattern at full intensity. At minimum (0%), the output is the unprocessed input passed through the delay pipeline. Intermediate values blend between the two via a 4-clock interpolator operating on all three YUV channels simultaneously. For pure synthesis, leave Mix at maximum. For subtle video texturing in Overlay mode, reduce Mix to 30–50% so the kaleidoscopic pattern appears as a translucent geometric overlay rather than a dominant effect.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -224,7 +238,7 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 
 <img src={kaleid_exercise1_result} alt="Fractal Kaleidoscope result"/>
 *Fractal Kaleidoscope — simulated result across source images.*
-**Objective**: Generate a static XOR fractal pattern with octagonal symmetry and rainbow color cycling, exploring the Sierpinski-like self-similarity across zoom levels.
+**What You'll Create**: Generate a static XOR fractal pattern with octagonal symmetry and rainbow color cycling, exploring the Sierpinski-like self-similarity across zoom levels.
 
 1. **Select XOR pattern**: Set Pattern to Mode 1 (fully counter-clockwise). The screen fills with a fractal tiling of nested triangular shapes.
 2. **Enable octagonal fold**: Toggle Fold to Octagonal. The fractal gains diagonal symmetry, transforming into an 8-fold mandala.
@@ -241,7 +255,7 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 
 <img src={kaleid_exercise2_result} alt="Diamond Pulse result"/>
 *Diamond Pulse — simulated result across source images.*
-**Objective**: Create concentric diamond patterns with rapid color cycling, then explore how Invert and Mono mode alter the visual character.
+**What You'll Create**: Create concentric diamond patterns with rapid color cycling, then explore how Invert and Mono mode alter the visual character.
 
 1. **Select Diamond pattern**: Set Pattern to Mode 2. Concentric diamond-shaped contours radiate from the center.
 2. **Set quad fold**: Toggle Fold to Quad for clean bilateral symmetry.
@@ -259,7 +273,7 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 
 <img src={kaleid_exercise3_result} alt="Moire Video Sculpt result"/>
 *Moire Video Sculpt — simulated result across source images.*
-**Objective**: Use the Moire pattern in Overlay mode to sculpt incoming video, creating an interference texture that modulates the source signal's luminance.
+**What You'll Create**: Use the Moire pattern in Overlay mode to sculpt incoming video, creating an interference texture that modulates the source signal's luminance.
 
 1. **Connect video source**: Feed any recognizable video — portraits, landscapes, or abstract footage all work well.
 2. **Select Moire pattern**: Set Pattern to Mode 4. Interference fringes appear based on the XOR-carry interaction.
@@ -277,9 +291,6 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 
 ## Tips
 
-- **XOR is the classic screensaver pattern**: Mode 1 produces the signature Sierpinski-like fractal tiling that defined an entire genre of VGA-era generative art. Combine with octagonal fold for mandala geometry.
-- **Zoom is stepwise, not continuous**: The four zoom levels double the coordinate scale each step. For fine spatial frequency tuning, combine Zoom with different pattern modes — Diamond at ×1 has similar density to Rings at ×2.
-- **Rainbow spacing creates color complements**: Because the three triangle waves are spaced at 120° (one-third of a cycle), adjacent color bands are approximate complements. This naturally produces high color contrast across the pattern.
 - **Overlay mode turns Kaleid into a video texture**: Switch from Replace to Overlay and feed any video source. The kaleidoscopic pattern modulates the input luminance, creating a geometric texture that follows the source brightness. Reduce Mix for subtlety.
 - **Hue is your palette tuner**: The animation phase sets color position over time, but Hue lets you choose the starting palette. Sweep Hue slowly to find the most pleasing color alignment for a given pattern.
 - **Mono + high brightness for graphic masks**: In Mono mode with Brightness near maximum, Kaleid produces stark black-and-white geometric patterns ideal for downstream keying, masking, or compositing with other Videomancer programs.
@@ -295,7 +306,6 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 | **Chebyshev distance** | A distance metric defined as max(|Δx|, |Δy|), which produces square-shaped iso-distance contours; used by the Rings pattern mode. |
 | **Color cycling** | An animation technique from VGA-era graphics where rotating a color palette's index-to-color mapping creates the illusion of motion in a static image. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator incremented at a fixed rate. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Manhattan distance** | A distance metric defined as |Δx| + |Δy|, which produces diamond-shaped iso-distance contours; used by the Diamond pattern mode. |
 | **Moire** | An interference pattern produced when two regular structures with similar spatial frequencies overlap, producing beating patterns at their difference frequency. |
 | **Palette rotation** | See *color cycling*; specifically the act of cyclically shifting all color entries in a lookup table. |
@@ -304,6 +314,7 @@ These exercises explore Kaleid's synthesis and compositing capabilities, progres
 | **Triangle wave** | A periodic piecewise-linear waveform that rises and falls at constant slope, used as a hardware-efficient approximation to a cosine function. |
 | **VGA** | Video Graphics Array; the IBM display standard introduced in 1987, featuring 256-color indexed mode at 320×200 resolution, widely used by screensaver and demo programs. |
 | **XOR** | Exclusive OR; a bitwise logical operation that outputs 1 when its inputs differ, producing fractal-like patterns when applied to screen coordinates. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

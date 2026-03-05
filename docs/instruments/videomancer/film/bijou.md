@@ -68,6 +68,14 @@ The name *bijou* refers to the ornate neighborhood cinemas of the silent era —
 
 ---
 
+## Quick Start
+
+1. **Iris for transitions**: Animate the Size pot from 100% to 0% for a classic iris-out. The reverse creates an iris-in reveal.
+2. **Off-centre for drama**: Move Centre X/Y away from 50% to spotlight a specific subject — the D.W. Griffith technique.
+3. **Soft vignette for portraits**: Circle shape at large size with high Softness creates a subtle portrait vignette that darkens the frame edges.
+
+---
+
 ## Background
 
 ### The Iris in Early Cinema
@@ -188,7 +196,7 @@ Positions the iris centre vertically. Identical scaling to Center X. At the cent
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the feather width of the iris edge. At 0%, the edge is a hard binary mask — inside or outside with no transition, matching the sharp mechanical edge of a real brass camera iris. As the value increases, the transition zone widens into a smooth gradient, eventually producing the gradual darkening of a photographic vignette. The softness is implemented as a linear ramp across the SDF distance band `[-softness, +softness]`, so larger values create wider transition zones.
+At 0%, the edge is a hard binary mask — inside or outside with no transition, matching the sharp mechanical edge of a real brass camera iris. As the value increases, the transition zone widens into a smooth gradient, eventually producing the gradual darkening of a photographic vignette. The softness is implemented as a linear ramp across the SDF distance band `[-softness, +softness]`, so larger values create wider transition zones. Internally, controls the feather width of the iris edge.
 
 ---
 
@@ -199,7 +207,7 @@ Controls the feather width of the iris edge. At 0%, the edge is a hard binary ma
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the brightness of the fill region — the area outside the iris (or between the borders in title card mode). At 0%, the fill is completely black, matching the traditional silent-cinema iris look. At 100%, the fill region shows the original video at full brightness. Intermediate values create a dimmed surround, useful for spotlight effects where the context remains visible but de-emphasised. The brightness is applied as a multiplication: `fill_y = source_y × fill_bright / 1024`.
+At 0%, the fill is completely black, matching the traditional silent-cinema iris look. At 100%, the fill region shows the original video at full brightness. Intermediate values create a dimmed surround, useful for spotlight effects where the context remains visible but de-emphasised. The brightness is applied as a multiplication: `fill_y = source_y × fill_bright / 1024`. Internally, sets the brightness of the fill region — the area outside the iris (or between the borders in title card mode).
 
 ---
 
@@ -239,6 +247,21 @@ The five toggles configure the iris geometry and mode. Toggle 7 selects between 
 
 Crossfades between the dry (original) and wet (processed) signal at the output stage using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is fully processed with iris or title card overlay. Intermediate values blend the effect, useful for creating subtle vignette overlays.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bijou processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -260,7 +283,7 @@ These exercises progress from simple iris masks through shape exploration to tit
 *Classic Iris Spotlight — simulated result across source images.*
 **Source**: A portrait or scene with a clear subject.
 
-**Objective**: Create the classic silent-cinema iris-out spotlight effect.
+**What You'll Create**: Create the classic silent-cinema iris-out spotlight effect.
 
 1. **Open iris**: Set Size to about 50%, Centre X and Y both at 50%. A circular iris reveals the centre of the frame.
 2. **Hard edge**: Set Softness to 0%. The edge is sharp — a mechanical iris diaphragm.
@@ -288,7 +311,7 @@ These exercises progress from simple iris masks through shape exploration to tit
 *Shape Exploration — simulated result across source images.*
 **Source**: A colourful scene with strong composition.
 
-**Objective**: Compare the four iris shapes and understand their geometric properties.
+**What You'll Create**: Compare the four iris shapes and understand their geometric properties.
 
 1. **Circle**: Start with default Circle shape. Note the rounded aperture.
 2. **Diamond**: Toggle Shape to Diamond. The aperture becomes a 45-degree rotated square.
@@ -316,7 +339,7 @@ These exercises progress from simple iris masks through shape exploration to tit
 *Title Card Frame — simulated result across source images.*
 **Source**: Any video — the border frame works as an overlay on any content.
 
-**Objective**: Create a decorative silent-film intertitle frame with tinted fill.
+**What You'll Create**: Create a decorative silent-film intertitle frame with tinted fill.
 
 1. **Switch to Title Card**: Toggle Mode to Title. The iris disappears, replaced by a double-rectangle border.
 2. **Set margin**: Adjust Size to about 60%. The border moves inward, creating a wide decorative frame.
@@ -332,9 +355,6 @@ These exercises progress from simple iris masks through shape exploration to tit
 
 ## Tips
 
-- **Iris for transitions**: Animate the Size pot from 100% to 0% for a classic iris-out. The reverse creates an iris-in reveal.
-- **Off-centre for drama**: Move Centre X/Y away from 50% to spotlight a specific subject — the D.W. Griffith technique.
-- **Soft vignette for portraits**: Circle shape at large size with high Softness creates a subtle portrait vignette that darkens the frame edges.
 - **Keyhole for POV shots**: The keyhole shape at small size with hard edges creates the classic "looking through a keyhole" point-of-view effect.
 - **Fill Brightness for context**: Instead of pure black surround, set Fill Brt to 20–30% so the audience can see the broader scene context while attention is drawn to the spotlight.
 - **Title card + external text**: Use Title Card mode as a border frame, then composite text from another source into the revealed centre area.
@@ -351,13 +371,12 @@ These exercises progress from simple iris masks through shape exploration to tit
 | **Art Deco** | An early 20th-century decorative style characterized by bold geometric forms, influencing the ornamental borders of silent-film title cards. |
 | **Chebyshev distance** | A distance metric returning the greater of the horizontal and vertical separations between two points; used here for the rectangle iris shape. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
 | **Iris diaphragm** | A mechanical aperture in a camera lens made of overlapping blades that can be opened or closed to control the exposed area of the frame. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical differences between two points (L1 norm); used here for the diamond iris shape. |
 | **SDF** | Signed Distance Field; a representation where each pixel stores its signed distance from a shape boundary, enabling smooth feathered-edge rendering. |
 | **Vignette** | A gradual darkening or fading toward the edges of an image, often used to draw attention to the centre of the frame. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

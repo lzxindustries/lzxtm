@@ -68,6 +68,14 @@ The dynamic range of Corollas spans from near-transparent parametric tinting —
 
 ---
 
+## Quick Start
+
+1. **Span is the master control**: Before adjusting any Hue offset or inversion, use Span to set the overall harmonic density. Low Span = gentle folds with coarse petals. High Span = dense, fine-grained interference.
+2. **Start with Offset at center**: The 0% Offset position centers the proc amp output. Sweep Offset after setting Span to shift the pattern without changing its density — small moves cascade dramatically through four doubler stages.
+3. **Hue offsets for color animation**: Slowly sweeping a single Hue knob animates the interference pattern. Sweeping Hue 3 or Hue 4 produces the most vivid chromatic animation since they drive chroma channels directly.
+
+---
+
 ## Background
 
 ### Signal Harmonics and Overtone Series
@@ -94,6 +102,8 @@ The final output stage maps the four harmonic signals to the YUV color channels:
 ---
 
 ## Signal Flow
+
+proc_amp_u → Base Inversion → Cascaded Frequency → Per-Harmonic Offset → Output Mapping
 
 ```
 Video Input (YUV 4:4:4)
@@ -177,7 +187,7 @@ Controls the brightness offset applied to the input luma before the frequency do
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the wrapping brightness offset for harmonic 1, the 2× frequency-doubled signal. At zero, the first doubler's output passes directly to the Y averaging stage without modification. Increasing the offset shifts the entire 2× waveform upward in the unsigned domain, wrapping around at 1023 to create a rotational sweep through the interference pattern. Because harmonic 1 contributes directly to Y output (averaged with harmonic 2), sweeping Hue 1 visibly rotates the coarsest luminance structure of the petal pattern. The offset is applied after the optional inversion toggle, so the combination of inversion plus swept offset produces a continuously evolving mirror-image pattern.
+At zero, the first doubler's output passes directly to the Y averaging stage without modification. Increasing the offset shifts the entire 2× waveform upward in the unsigned domain, wrapping around at 1023 to create a rotational sweep through the interference pattern. Because harmonic 1 contributes directly to Y output (averaged with harmonic 2), sweeping Hue 1 visibly rotates the coarsest luminance structure of the petal pattern. The offset is applied after the optional inversion toggle, so the combination of inversion plus swept offset produces a continuously evolving mirror-image pattern. Internally, sets the wrapping brightness offset for harmonic 1, the 2× frequency-doubled signal.
 
 ---
 
@@ -250,6 +260,10 @@ The five toggles form a binary inversion matrix across the harmonic chain. Toggl
 
 Controls the threshold level for the output key effect. At zero, no keying occurs and all computed pixels reach the output regardless of their Y value. As the threshold increases, pixels whose averaged harmonic Y value falls below the threshold are forced to black with neutral chroma (Y=0, U=512, V=512). At moderate thresholds, this carves out the darker valleys of the petal pattern, leaving only the bright ridges as floating color structures against a black background. At maximum threshold, nearly all output is keyed to black except the very brightest harmonic peaks. The key operates purely on the computed Y channel — the chroma values of keyed pixels are neutralized to prevent color fringing at the key edge.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -271,7 +285,7 @@ These three exercises progress from observing the raw harmonic structure through
 *Harmonic Anatomy — simulated result across source images.*
 **Source**: A smooth horizontal or diagonal gradient — a ramp test pattern or a gently lit face works well. The smoother the input, the cleaner the individual harmonics will be.
 
-**Objective**: Observe the four frequency-doubled harmonics individually and understand how Span controls harmonic complexity.
+**What You'll Create**: Observe the four frequency-doubled harmonics individually and understand how Span controls harmonic complexity.
 
 1. Set Span to about 50% and Offset to 0%. Observe the basic folded pattern in the output.
 2. Set all Hue controls to 0% and all Invert toggles to Off. Set Threshold to 0%.
@@ -299,7 +313,7 @@ These three exercises progress from observing the raw harmonic structure through
 *Chromatic Interference — simulated result across source images.*
 **Source**: A portrait or scene with a range of skin tones and midtones — the frequency doublers will fragment these tones into colored petal structures.
 
-**Objective**: Create rich chromatic interference by offsetting and inverting individual harmonics against each other.
+**What You'll Create**: Create rich chromatic interference by offsetting and inverting individual harmonics against each other.
 
 1. Set Span to ~120% and Offset to 0% for full harmonic excitation.
 2. Sweep Hue 3 to ~60% to shift the U chroma pattern.
@@ -327,7 +341,7 @@ These three exercises progress from observing the raw harmonic structure through
 *Threshold-Keyed Petals — simulated result across source images.*
 **Source**: A high-contrast image or text card — strong edges will produce well-defined fold boundaries that survive the threshold key.
 
-**Objective**: Use the threshold keyer to sculpt the harmonic output into floating neon-like petal structures on a black background.
+**What You'll Create**: Use the threshold keyer to sculpt the harmonic output into floating neon-like petal structures on a black background.
 
 1. Set Span to ~150% for aggressive folding and Offset to about 10%.
 2. Set Hue 1 to ~20%, Hue 2 to ~40%, Hue 3 to ~50%, Hue 4 to ~70% to distribute offsets across all harmonics.
@@ -343,9 +357,6 @@ These three exercises progress from observing the raw harmonic structure through
 
 ## Tips
 
-- **Span is the master control**: Before adjusting any Hue offset or inversion, use Span to set the overall harmonic density. Low Span = gentle folds with coarse petals. High Span = dense, fine-grained interference.
-- **Start with Offset at center**: The 0% Offset position centers the proc amp output. Sweep Offset after setting Span to shift the pattern without changing its density — small moves cascade dramatically through four doubler stages.
-- **Hue offsets for color animation**: Slowly sweeping a single Hue knob animates the interference pattern. Sweeping Hue 3 or Hue 4 produces the most vivid chromatic animation since they drive chroma channels directly.
 - **Inversion pairs for destructive interference**: Inverting one Y-channel harmonic but not the other creates narrow contour lines where the two averaged harmonics cancel. This is especially effective for isolating boundary structures.
 - **Threshold as a carving tool**: Use Threshold at 30–50% to remove dark valleys and leave bright harmonic ridges floating on black. This converts the smooth interference pattern into hard-edged abstract geometry.
 - **Combine Invert Span with high Threshold**: Toggling Invert Span at moderate-to-high Threshold completely reshapes the surviving petal geometry — a performance technique for instant visual transformation.
@@ -364,9 +375,9 @@ These three exercises progress from observing the raw harmonic structure through
 | **Frequency doubler** | A module that folds a signal at its midpoint, converting a ramp to a triangle wave and doubling the spatial frequency. Cascading four doublers produces 2×, 4×, 8×, and 16× harmonics. |
 | **Harmonic** | An integer multiple of a fundamental frequency. In Corollas, the fundamental is the input luma after proc amp conditioning, and the harmonics are successive frequency-doubled versions at 2×, 4×, 8×, and 16×. |
 | **Phase offset** | A shift in the alignment of a periodic waveform, controlled here by the Hue brightness offset parameters. Wrapping addition rotates the waveform's phase without changing its frequency. |
-| **Proc amp** | Processing amplifier; applies contrast (gain around midpoint) and brightness (DC offset) to condition the input signal before harmonic generation. |
 | **Threshold key** | A gating function that forces pixels to black when their luminance falls below a configurable level, creating hard-edged cutouts from the smooth harmonic pattern. |
 | **Wrapping offset** | An unsigned addition that overflows at the 10-bit boundary (1024), creating a circular shift rather than a clamped shift. Sweeping a wrapping offset through its full range returns the pattern to its starting position. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. Corollas maps independent harmonics to each channel. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

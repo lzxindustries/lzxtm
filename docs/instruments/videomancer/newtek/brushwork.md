@@ -68,6 +68,14 @@ The program stores all four profiles in a single 128-entry BRAM tile (4 profiles
 
 ---
 
+## Quick Start
+
+1. **Animate the Transition knob**: Brushwork is designed as a transition effect. Slowly sweeping Transition from 0% to 100% executes a complete brush-stroke wipe across the frame.
+2. **Match brush to content**: Bristle works well for rough, energetic transitions; Roller for smooth, professional wipes; Palette Knife for dramatic reveals; Sponge for organic, textured washes.
+3. **Softness defines character**: A hard-edged bristle stroke looks like encaustic or oil; a soft-edged one looks like watercolor or airbrush. Adjust softness to match the intended medium.
+
+---
+
 ## Background
 
 ### The NewTek Legacy
@@ -94,6 +102,8 @@ The Softness parameter controls the width of the transition gradient at the brus
 ---
 
 ## Signal Flow
+
+Parameter Decode → BRAM Read → Matte Alpha Computation → Alpha Compositor
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ Controls the position of the sweep edge across the frame, from fully closed (0%)
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the amplitude of the brush texture displacement. At 0%, the brush texture has no effect and the sweep edge is a straight line. As Tex Width increases, the brush displacement values increasingly modulate the edge position, creating a wider and more pronounced brush-shaped contour. At maximum, the brush profile exerts its full displacement — bristle gaps become deep notches, roller undulations become broad waves, palette knife ridges become prominent shoulders, and sponge holes create irregular channels through the edge.
+At 0%, the brush texture has no effect and the sweep edge is a straight line. As Tex Width increases, the brush displacement values increasingly modulate the edge position, creating a wider and more pronounced brush-shaped contour. At maximum, the brush profile exerts its full displacement — bristle gaps become deep notches, roller undulations become broad waves, palette knife ridges become prominent shoulders, and sponge holes create irregular channels through the edge. Internally, controls the amplitude of the brush texture displacement.
 
 ---
 
@@ -168,7 +178,7 @@ Controls the amplitude of the brush texture displacement. At 0%, the brush textu
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the width of the soft gradient zone at the brush edge. At 0%, the edge is a hard binary cut. As softness increases, the transition zone widens, creating a feathered gradient from fully painted to fully transparent. The gradient is linear within the softness zone. High softness values create broad, airbrushed transitions; low values create crisp, pen-like edges. Softness interacts visually with the brush texture — a soft bristle brush creates diffuse bristle-shaped gradients, while a hard sponge creates sharply defined holes.
+At 0%, the edge is a hard binary cut. As softness increases, the transition zone widens, creating a feathered gradient from fully painted to fully transparent. The gradient is linear within the softness zone. High softness values create broad, airbrushed transitions; low values create crisp, pen-like edges. Softness interacts visually with the brush texture — a soft bristle brush creates diffuse bristle-shaped gradients, while a hard sponge creates sharply defined holes. Internally, controls the width of the soft gradient zone at the brush edge.
 
 ---
 
@@ -190,7 +200,7 @@ Controls the hue of the fill color via a 6-sector color wheel. The VHDL implemen
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the luminance (brightness) of the fill color. At 0%, the fill is black regardless of the hue setting. At 50%, the fill matches typical broadcast levels. At 100%, the fill is at maximum brightness. This parameter directly sets the Y channel of the fill color — the chrominance is determined by Fill Hue independently. At very low brightness, the painted region becomes a dark wash; at high brightness with saturated hues, it becomes a vivid color field.
+At 0%, the fill is black regardless of the hue setting. At 50%, the fill matches typical broadcast levels. At 100%, the fill is at maximum brightness. This parameter directly sets the Y channel of the fill color — the chrominance is determined by Fill Hue independently. At very low brightness, the painted region becomes a dark wash; at high brightness with saturated hues, it becomes a vivid color field. Internally, controls the luminance (brightness) of the fill color.
 
 ---
 
@@ -201,7 +211,7 @@ Controls the luminance (brightness) of the fill color. At 0%, the fill is black 
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the offset into the brush texture table, effectively scrolling the texture pattern. At 0%, the texture starts at entry 0 of the selected profile. Increasing the offset shifts which portion of the 32-entry pattern aligns with which screen position. This allows fine-tuning of the brush edge appearance — shifting a bristle brush texture can move a gap to a different vertical position, or align a palette knife ridge with a specific feature in the source video. The offset wraps naturally due to the 5-bit address calculation.
+At 0%, the texture starts at entry 0 of the selected profile. Increasing the offset shifts which portion of the 32-entry pattern aligns with which screen position. This allows fine-tuning of the brush edge appearance — shifting a bristle brush texture can move a gap to a different vertical position, or align a palette knife ridge with a specific feature in the source video. The offset wraps naturally due to the 5-bit address calculation. Internally, controls the offset into the brush texture table, effectively scrolling the texture pattern.
 
 ---
 
@@ -228,7 +238,19 @@ The five toggles configure the brush selection, sweep geometry, and compositing 
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the dry/wet mix between the original input video and the brush-composited output. At 0% (fully dry), the output is the unprocessed input regardless of all other settings. At 100% (fully wet), the full brush effect is visible. Intermediate values crossfade between the two, allowing the brush effect to be partially blended with the source.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Brushwork-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -251,7 +273,7 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 *Classic Bristle Brush Stroke — simulated result across source images.*
 **Source**: Feed a high-contrast image (Kodak #4 — the portrait provides clear definition of the brush boundary against facial features).
 
-**Objective**: Create a classic paint-brush-across effect using the bristle profile with moderate softness and a warm fill color.
+**What You'll Create**: Create a classic paint-brush-across effect using the bristle profile with moderate softness and a warm fill color.
 
 1. Set Transition to 50% to position the sweep edge at mid-frame.
 2. Set Tex Width to 60% for pronounced but not extreme bristle displacement.
@@ -285,7 +307,7 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 *Palette Knife Video Reveal — simulated result across source images.*
 **Source**: Feed a colorful, detailed image (Mandrill — the dense facial texture and vivid colors make the video reveal boundary clearly visible).
 
-**Objective**: Use the palette knife profile with hard edges and video reveal mode to create a sharp-edged transition that reveals the source through a blue fill.
+**What You'll Create**: Use the palette knife profile with hard edges and video reveal mode to create a sharp-edged transition that reveals the source through a blue fill.
 
 1. Set Transition to 40% for a partially revealed frame.
 2. Set Tex Width to 75% for dramatic palette knife ridges.
@@ -319,7 +341,7 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 *Vertical Sponge Wash with Soft Edges — simulated result across source images.*
 **Source**: Feed a scene with varied horizontal content (Kodak #23 — the outdoor scene provides horizontal variation that interacts interestingly with vertical sweep).
 
-**Objective**: Create a broad, diffuse vertical wash using the sponge profile with maximum softness and vertical sweep direction.
+**What You'll Create**: Create a broad, diffuse vertical wash using the sponge profile with maximum softness and vertical sweep direction.
 
 1. Set Transition to 55% for a sweep slightly past center.
 2. Set Tex Width to 85% for maximum sponge texture displacement.
@@ -341,9 +363,6 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 
 ## Tips
 
-- **Animate the Transition knob**: Brushwork is designed as a transition effect. Slowly sweeping Transition from 0% to 100% executes a complete brush-stroke wipe across the frame.
-- **Match brush to content**: Bristle works well for rough, energetic transitions; Roller for smooth, professional wipes; Palette Knife for dramatic reveals; Sponge for organic, textured washes.
-- **Softness defines character**: A hard-edged bristle stroke looks like encaustic or oil; a soft-edged one looks like watercolor or airbrush. Adjust softness to match the intended medium.
 - **Tex Offset for variety**: Different offset values produce visually different edge contours from the same profile. Use this to avoid repetitive-looking brush transitions.
 - **Invert for reverse strokes**: After performing a forward brush stroke (Transition 0→100%), toggle Invert and sweep back (100→0%) to create a complementary reverse stroke.
 - **Video reveal for transitions**: In Video mode, use a fill color matching your downstream content's palette, then sweep to reveal the source — this creates production-ready transitions between scenes.
@@ -361,11 +380,11 @@ These exercises progress from a basic bristle stroke to a complex multi-mode tra
 | **Feathering** | Gradually blending the edge of a selection or transition from fully opaque to fully transparent, producing a soft rather than hard boundary. |
 | **Fill color** | A solid color generated from a hue/brightness lookup used to paint the brush-stroked region or as the background in video reveal mode. |
 | **Hue** | The attribute of a color that distinguishes it on the color wheel (red, yellow, green, etc.), specified here as an angle in degrees. |
-| **Interpolator** | A hardware block that linearly blends between two input values based on a mix coefficient, used here for dry/wet crossfading. |
 | **Matte** | A mask defining which regions of a frame are opaque and which are transparent, used to composite the painted and unpainted areas. |
 | **SMPTE** | Society of Motion Picture and Television Engineers, the standards body that defines broadcast video wipe patterns and transition specifications. |
 | **Sweep edge** | The primary boundary that advances across the frame during a transition, modulated by the brush texture to create an organic contour. |
 | **Texture profile** | A stored one-dimensional displacement pattern (32 entries) that modulates the sweep edge, creating the characteristic shape of each brush type. |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

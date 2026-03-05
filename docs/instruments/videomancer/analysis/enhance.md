@@ -68,6 +68,14 @@ Outside the ROI, the original video passes through unmodified. The result is a p
 
 ---
 
+## Quick Start
+
+1. **Y-only zoom**: Pixel replication applies to the Y channel only. Without false color, the zoomed ROI shows magnified brightness at original chroma resolution — a deliberately forensic look that emphasizes tonal structure over color.
+2. **Mix as overlay**: At 50% mix, the ROI effect becomes a translucent overlay. This is useful for seeing both the enhanced detail and the original context simultaneously, similar to heads-up display compositing.
+3. **Stretch as edge finder**: At 8× contrast shift, only the strongest tonal transitions survive the clipping. The ROI becomes a crude edge detector, highlighting boundaries while crushing everything else to black or white.
+
+---
+
 ## Background
 
 ### The CSI "Enhance" Trope
@@ -94,6 +102,8 @@ ROI-based processing is fundamental to machine vision, medical imaging, and vide
 ---
 
 ## Signal Flow
+
+Input Register → Zoom Address Compute → Contrast Stretch → Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -231,8 +241,8 @@ Controls the brightness of the ROI border and the animated scan line. Both overl
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Zoom | Stretch |
-| **8 — Palette** | Normal | Thermal |
+| **7 — Mode** | Zoom | Edge |
+| **8 — Palette** | Normal | Invert |
 | **9 — Grid** | Off | On |
 | **10 — PIP** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -251,6 +261,10 @@ The five toggles control independent binary options in the processing pipeline. 
 | Suffix | % |
 
 Controls the wet/dry crossfade between the processed output (zoomed, stretched, false-colored) and the delayed original signal. At 0%, only the unprocessed original is visible — the ROI, border, and all effects are suppressed. At 100%, the full processing chain output is displayed. Intermediate settings blend the two, creating a translucent overlay effect where the ROI zoom appears semi-transparent against the source. The crossfade operates per-channel on all three YUV components simultaneously via three parallel interpolator instances.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -273,7 +287,7 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 *ROI Navigation and Pixel Zoom — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with readable text and fine details — signs, printed pages, circuit boards, or textured fabrics.
 
-**Objective**: Learn how the ROI window navigates the frame and how pixel replication zoom produces blocky magnification.
+**What You'll Create**: Learn how the ROI window navigates the frame and how pixel replication zoom produces blocky magnification.
 
 1. **Find the ROI**: With default settings and Grid enabled, locate the bordered rectangle in the frame.
 2. **Move horizontally**: Sweep the Zoom knob left and right to slide the ROI across the frame.
@@ -301,7 +315,7 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 *Contrast Stretch and Detail Enhancement — simulated result across source images.*
 **Source**: Under-exposed or low-contrast footage — dimly lit interiors, foggy scenes, or washed-out exteriors with subtle tonal variation.
 
-**Objective**: Explore how histogram stretching brings out hidden tonal detail within the zoomed ROI.
+**What You'll Create**: Explore how histogram stretching brings out hidden tonal detail within the zoomed ROI.
 
 1. **Position the ROI** over an area with subtle tonal variation (shadows, fabric texture, foliage).
 2. **Enable 2× zoom** (Mode in first position) for moderate magnification.
@@ -328,7 +342,7 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 *Full Forensic Display — simulated result across source images.*
 **Source**: Any video content — the more mundane the better, as the forensic aesthetic transforms ordinary footage into dramatic surveillance-style analysis imagery.
 
-**Objective**: Combine all features for the complete CSI "enhance" experience: zoom, stretch, false color, border, and animated scan line.
+**What You'll Create**: Combine all features for the complete CSI "enhance" experience: zoom, stretch, false color, border, and animated scan line.
 
 1. **Position and size the ROI** over a region of interest in the incoming video.
 2. **Set 4× zoom**: Toggle Mode to the second position for maximum blockiness.
@@ -346,9 +360,6 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 ## Tips
 
-- **Y-only zoom**: Pixel replication applies to the Y channel only. Without false color, the zoomed ROI shows magnified brightness at original chroma resolution — a deliberately forensic look that emphasizes tonal structure over color.
-- **Mix as overlay**: At 50% mix, the ROI effect becomes a translucent overlay. This is useful for seeing both the enhanced detail and the original context simultaneously, similar to heads-up display compositing.
-- **Stretch as edge finder**: At 8× contrast shift, only the strongest tonal transitions survive the clipping. The ROI becomes a crude edge detector, highlighting boundaries while crushing everything else to black or white.
 - **False color for exposure checking**: The four-zone thermal palette instantly reveals the tonal distribution of the source — if the ROI is mostly blue, the area is underexposed; if mostly red, it is clipping.
 - **Border before navigating**: Enable Grid before moving the ROI so you can see exactly where the magnification window sits against the full frame.
 - **Scan speed varies with ROI height**: The animation advances one line per video field, so it sweeps a small ROI in under a second but takes several seconds for a large one.
@@ -360,17 +371,15 @@ Three exercises build from basic ROI navigation through contrast stretching to t
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory inside the FPGA used for the video line buffer that stores luma for zoom readback. |
 | **Chroma** | The color information (U and V components) in a YUV video signal, encoding hue and saturation. |
 | **Contrast Stretch** | Expanding a narrow range of pixel values to the full output range by multiplying deviation from a center point, increasing tonal separation. |
 | **False Color** | Mapping monochrome intensity values to a multi-hue palette for visual analysis, borrowed from thermal imaging. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in dedicated hardware. |
 | **Histogram** | A distribution showing how many pixels occupy each brightness level; contrast stretching reshapes this distribution. |
 | **Line Buffer** | A BRAM-based memory that stores one horizontal line of pixel data for delayed readback at modified addresses. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Pixel Replication** | Duplicating each source pixel multiple times to create blocky magnification without interpolation or blurring. |
 | **ROI** | Region of Interest; a user-defined rectangular sub-area of the frame where enhanced processing is applied. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

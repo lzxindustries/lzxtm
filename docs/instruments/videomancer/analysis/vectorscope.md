@@ -68,6 +68,14 @@ Vectorscope is in the **Analysis** category — a measurement and visualization 
 
 ---
 
+## Quick Start
+
+1. **Green for broadcast**: Green phosphor is the standard for professional vectorscope monitoring. Use it for technical accuracy checks.
+2. **Persistence for music**: High persistence creates a glowing trace that builds up during a performance — excellent for visual art.
+3. **Over Video for grading**: Overlay the scope on your video to simultaneously evaluate composition and color balance.
+
+---
+
 ## Background
 
 ### What Is a Vectorscope?
@@ -90,6 +98,8 @@ In broadcast monitoring, vectorscopes typically occupy their own dedicated displ
 ---
 
 ## Signal Flow
+
+Accumulator Engine → Renderer → Output → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -141,7 +151,7 @@ The dual-port BRAM is the key architectural element. Port A handles both accumul
 | Default | 50% |
 | Suffix | % |
 
-Controls the display brightness scaling — the multiplier applied to each cell's accumulated value before rendering as luminance. At minimum, even heavily populated cells appear dim. At maximum, a single hit is bright. Higher intensity makes sparse signals visible but can over-expose dense color clusters. This is analogous to the beam intensity control on a CRT vectorscope.
+At minimum, even heavily populated cells appear dim. At maximum, a single hit is bright. Higher intensity makes sparse signals visible but can over-expose dense color clusters. This is analogous to the beam intensity control on a CRT vectorscope. Internally, controls the display brightness scaling — the multiplier applied to each cell's accumulated value before rendering as luminance.
 
 ---
 
@@ -152,7 +162,7 @@ Controls the display brightness scaling — the multiplier applied to each cell'
 | Default | 75% |
 | Suffix | % |
 
-Controls the phosphor persistence — how slowly accumulated dots decay. At minimum, dots fade almost instantly (only the current frame's data is visible). At maximum, dots persist for many frames, building up a bright, slowly evolving trace. Higher persistence reveals the full color range of time-varying content but can obscure transient color events. The decay amount is subtracted from all 4096 cells during each vertical blanking interval.
+At minimum, dots fade almost instantly (only the current frame's data is visible). At maximum, dots persist for many frames, building up a bright, slowly evolving trace. Higher persistence reveals the full color range of time-varying content but can obscure transient color events. The decay amount is subtracted from all 4096 cells during each vertical blanking interval. Internally, controls the phosphor persistence — how slowly accumulated dots decay.
 
 ---
 
@@ -174,7 +184,7 @@ Reserved for future use (Gain). Currently has no effect on the output. May be co
 | Default | 25% |
 | Suffix | % |
 
-Controls the graticule overlay opacity. At minimum, the crosshair is invisible. At maximum, the crosshair lines are drawn at full brightness. The graticule is rendered only within the scope region and overlays the dot display.
+At minimum, the crosshair is invisible. At maximum, the crosshair lines are drawn at full brightness. The graticule is rendered only within the scope region and overlays the dot display. Internally, controls the graticule overlay opacity.
 
 ---
 
@@ -204,7 +214,7 @@ Adds a DC brightness offset to the rendered scope display. At center (50%), no s
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Phosphor** | Green | Amber |
+| **7 — Phosphor** | Green | White |
 | **8 — Graticule** | Off | On |
 | **9 — Over Video** | Off | On |
 | **10 — I/Q Mode** | Off | On |
@@ -224,6 +234,21 @@ Switches 7–8 select the phosphor color and graticule visibility. Switch 9 cont
 | Suffix | % |
 
 Controls the wet/dry mix between the vectorscope display and the original input via the hardware interpolator. At 100%, the full vectorscope rendering is shown. Lowering the fader blends the vectorscope display with the input.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Vectorscope processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +271,7 @@ These exercises demonstrate the vectorscope as a color analysis instrument and e
 *Color Bar Analysis — simulated result across source images.*
 **Source**: Color bar test pattern (SMPTE or EBU bars) — the standard calibration signal for vectorscope setup.
 
-**Objective**: Verify that the vectorscope correctly displays the 6 primary/secondary color positions.
+**What You'll Create**: Verify that the vectorscope correctly displays the 6 primary/secondary color positions.
 
 1. **Feed bars**: Connect a color bar test pattern generator.
 2. **Persistence**: Set Persist to ~40%. Dots accumulate clearly without excessive smearing.
@@ -274,7 +299,7 @@ These exercises demonstrate the vectorscope as a color analysis instrument and e
 *Live Video Color Monitor — simulated result across source images.*
 **Source**: Camera feed of a colorful scene (flowers, fabrics, art — saturated colors).
 
-**Objective**: Use the vectorscope as a real-time color balance monitor overlaid on the live picture.
+**What You'll Create**: Use the vectorscope as a real-time color balance monitor overlaid on the live picture.
 
 1. **Over Video**: Enable Over Video (Switch 9). The scope appears as an overlay window.
 2. **Persistence**: Set Persist to ~60%. The trace shows the overall color distribution across several frames.
@@ -302,7 +327,7 @@ These exercises demonstrate the vectorscope as a color analysis instrument and e
 *Phosphor Art (Creative Use) — simulated result across source images.*
 **Source**: Any dynamic video — music performance, abstract visuals, or oscillating patterns.
 
-**Objective**: Use the vectorscope display itself as a creative visual element rather than a technical instrument.
+**What You'll Create**: Use the vectorscope display itself as a creative visual element rather than a technical instrument.
 
 1. **High persistence**: Set Persist to ~90%. Dots accumulate heavily, creating bright persistent trails.
 2. **Maximum intensity**: Set Intensity to 100%. Every dot is bright.
@@ -319,9 +344,6 @@ These exercises demonstrate the vectorscope as a color analysis instrument and e
 
 ## Tips
 
-- **Green for broadcast**: Green phosphor is the standard for professional vectorscope monitoring. Use it for technical accuracy checks.
-- **Persistence for music**: High persistence creates a glowing trace that builds up during a performance — excellent for visual art.
-- **Over Video for grading**: Overlay the scope on your video to simultaneously evaluate composition and color balance.
 - **Graticule identifies shifts**: The crosshair marks neutral — if your dot cloud is consistently off-center, your white balance needs correction.
 - **Chain with Whitebal**: Use Vectorscope to monitor color corrections applied by Whitebal — watch the dot cloud shift as you adjust Color Temp and Tint.
 - **Low intensity for reading**: When using the scope as a technical tool, moderate intensity prevents over-saturation of the display.
@@ -338,11 +360,11 @@ These exercises demonstrate the vectorscope as a color analysis instrument and e
 | **CRT** | Cathode Ray Tube; the display technology used in classic analog vectorscopes, where an electron beam traces dots on a phosphor screen. |
 | **Decay Sweep** | A per-frame operation during vertical blanking that subtracts a persistence-derived amount from all accumulator cells, simulating phosphor fade. |
 | **Dual-Port BRAM** | Block RAM with two independent access ports, allowing simultaneous read/write operations. Vectorscope uses port A for accumulation and port B for display readout. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Graticule** | The calibration overlay (crosshair) drawn on the vectorscope display to mark the neutral chrominance point and other reference positions. |
 | **Phosphor** | The luminescent coating on a CRT screen that glows when struck by an electron beam. Different phosphor compounds produce different colors (P1=green, P43=yellow-green, etc.). |
 | **Scatter Plot** | A display showing individual data points as dots in a two-dimensional coordinate space, here U vs V. |
 | **Vectorscope** | A specialized oscilloscope display for visualizing the chrominance content of a video signal as a UV scatter plot. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ Two rendering styles are available: a classic black-on-white drafting style (dar
 
 ---
 
+## Quick Start
+
+1. **Start with Wall Thk and Bg Bright at center**: The dual-threshold system works best when both thresholds are active. Extreme settings on either knob can make the other ineffective.
+2. **Door Gap is the detail control**: When you want fine surface textures to appear as architectural line work, increase Door Gap rather than lowering the thresholds — amplification preserves the threshold hierarchy while boosting weak gradients.
+3. **Dim Sp has three discrete levels**: Rather than a smooth gradient, the contrast control jumps between heavy, medium, and light line weights. Sweep it slowly to find each level.
+
+---
+
 ## Background
 
 ### Architectural Drafting and Blueprint History
@@ -61,6 +69,8 @@ In hand drafting, line weight communicates hierarchy: thick lines mark primary w
 ---
 
 ## Signal Flow
+
+Y Channel → UV Channels → Interpolator → Sync Delay → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -120,7 +130,7 @@ The pipeline is a straightforward four-stage detect-and-composite chain followed
 | Default | 50% |
 | Suffix | % |
 
-Sets the primary edge detection threshold via a scaled comparison level. At low settings, the detector responds to subtle brightness gradients throughout the image, drawing wall lines around nearly every tonal boundary — the result looks like an over-inked pen saturating the paper. As you turn Wall Thk higher, only the strongest gradient transitions qualify as walls, revealing just the dominant structural boundaries. This is the primary control for how many wall lines appear in the output.
+At low settings, the detector responds to subtle brightness gradients throughout the image, drawing wall lines around nearly every tonal boundary — the result looks like an over-inked pen saturating the paper. As you turn Wall Thk higher, only the strongest gradient transitions qualify as walls, revealing just the dominant structural boundaries. This is the primary control for how many wall lines appear in the output. Internally, sets the primary edge detection threshold via a scaled comparison level.
 
 ---
 
@@ -142,7 +152,7 @@ Controls a secondary detection threshold that fills in additional edge pixels ar
 | Default | 50% |
 | Suffix | % |
 
-Sets the brightness of the background paper that fills all non-edge, non-grid areas. At maximum, the paper is bright white (in the default style) or a luminous blue (in the blue style). Lower settings create a dimmer background, reducing the overall contrast between wall lines and paper — useful for blending the floorplan rendering into a darker color palette or for creating an aged-paper look. Because wall darkness is computed relative to this value, changing the background brightness also subtly affects how dark the wall lines appear.
+At maximum, the paper is bright white (in the default style) or a luminous blue (in the blue style). Lower settings create a dimmer background, reducing the overall contrast between wall lines and paper — useful for blending the floorplan rendering into a darker color palette or for creating an aged-paper look. Because wall darkness is computed relative to this value, changing the background brightness also subtly affects how dark the wall lines appear. Internally, sets the brightness of the background paper that fills all non-edge, non-grid areas.
 
 ---
 
@@ -153,7 +163,7 @@ Sets the brightness of the background paper that fills all non-edge, non-grid ar
 | Default | 50% |
 | Suffix | % |
 
-Controls the line weight of the wall rendering through three discrete scaling levels. At low settings, wall lines receive maximum darkening, producing the heaviest pen-stroke appearance — bold structural walls suitable for primary floor plans. At mid-range settings, the darkening reduces by half, creating medium-weight lines. At high settings, wall darkness follows the raw edge strength without additional scaling, producing the lightest line weight with the most tonal variation. These three levels correspond to the traditional drafting hierarchy of thick, medium, and thin pen strokes.
+At low settings, wall lines receive maximum darkening, producing the heaviest pen-stroke appearance — bold structural walls suitable for primary floor plans. At mid-range settings, the darkening reduces by half, creating medium-weight lines. At high settings, wall darkness follows the raw edge strength without additional scaling, producing the lightest line weight with the most tonal variation. These three levels correspond to the traditional drafting hierarchy of thick, medium, and thin pen strokes. Internally, controls the line weight of the wall rendering through three discrete scaling levels.
 
 ---
 
@@ -183,8 +193,8 @@ Reserved for future functionality. In the current firmware implementation, this 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Modern | Classic |
-| **8 — Lines** | Black | Blue |
+| **7 — Style** | Modern | Sketch |
+| **8 — Lines** | Black | Source |
 | **9 — Dims** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -204,6 +214,10 @@ The five toggle switches control rendering style, visual mode, grid overlay, and
 
 Controls the wet/dry crossfade between the processed floorplan rendering and the original source signal. At 100%, the output is purely the architectural rendering. As you lower the fader, the original video progressively blends through, creating a semi-transparent overlay effect where wall outlines appear superimposed on the live image. At 0%, the output is the unmodified source.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -214,7 +228,7 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 
 <img src={floorplan_exercise1_result} alt="Wall Extraction result"/>
 *Wall Extraction — simulated result across source images.*
-**Objective**: Learn how the dual-threshold edge detection extracts wall lines from a video source.
+**What You'll Create**: Learn how the dual-threshold edge detection extracts wall lines from a video source.
 
 1. **Default detection**: With all controls at default, observe the initial wall rendering. Edges from the source appear as dark lines on a bright background.
 2. **Primary threshold**: Slowly increase Wall Thk from center. Watch as weaker edges disappear and only the strongest boundaries remain — major walls and high-contrast edges.
@@ -231,7 +245,7 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 
 <img src={floorplan_exercise2_result} alt="Blueprint Rendering result"/>
 *Blueprint Rendering — simulated result across source images.*
-**Objective**: Explore the blue rendering style and grid overlay to create a classic blueprint look.
+**What You'll Create**: Explore the blue rendering style and grid overlay to create a classic blueprint look.
 
 1. **Switch to blue**: Set Lines to Blue. The rendering inverts: bright white wall lines on a dark blue background.
 2. **Enable grid**: Set Dims to On. Faint ruled lines appear at 32-pixel intervals, creating an engineering grid behind the wall outlines.
@@ -248,7 +262,7 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 
 <img src={floorplan_exercise3_result} alt="Detail Enhancement result"/>
 *Detail Enhancement — simulated result across source images.*
-**Objective**: Push the sensitivity and threshold controls to render fine surface detail as architectural line work.
+**What You'll Create**: Push the sensitivity and threshold controls to render fine surface detail as architectural line work.
 
 1. **Maximum sensitivity**: Set Door Gap to ~90%. The ×8 amplification boosts even minor brightness variations into the detection range.
 2. **Low threshold**: Lower Wall Thk to ~20%. Combined with high sensitivity, nearly every gradient in the image produces a wall line. The result is a dense, ink-saturated rendering.
@@ -264,9 +278,6 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 
 ## Tips
 
-- **Start with Wall Thk and Bg Bright at center**: The dual-threshold system works best when both thresholds are active. Extreme settings on either knob can make the other ineffective.
-- **Door Gap is the detail control**: When you want fine surface textures to appear as architectural line work, increase Door Gap rather than lowering the thresholds — amplification preserves the threshold hierarchy while boosting weak gradients.
-- **Dim Sp has three discrete levels**: Rather than a smooth gradient, the contrast control jumps between heavy, medium, and light line weights. Sweep it slowly to find each level.
 - **Blue mode inverts the brightness logic**: In Black mode, strong edges are dark lines on bright paper. In Blue mode, strong edges are bright white lines on dark blue paper. All other controls behave identically, but the visual hierarchy reverses.
 - **Grid spacing is fixed at 32 pixels**: The grid cannot be rescaled. Use Sensitiv (background brightness) to control how visibly the grid stands out against the paper.
 - **Mix for overlay compositing**: At 50%, the floorplan rendering acts as a semi-transparent overlay on the source video — useful for creating annotated live video effects where wall outlines trace the original scene.
@@ -279,15 +290,12 @@ These exercises progress from basic wall extraction to full blueprint styling. E
 | Term | Definition |
 |------|------------|
 | **Blueprint** | A cyanotype reproduction of a technical drawing, producing white lines on a blue background; the color scheme replicated by Floorplan's Blue rendering style. |
-| **BRAM** | Block RAM; a dedicated memory resource on the FPGA used here to store one full scan line of luminance data for vertical edge detection. |
 | **Edge Detection** | The process of identifying sharp brightness transitions in an image by computing pixel-to-pixel gradient differences. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in real time. |
 | **Gradient** | The rate of change of pixel brightness across a spatial distance; stronger gradients correspond to sharper image edges. |
-| **Interpolator** | A linear crossfade circuit that blends two signals according to a configurable mix parameter; Floorplan uses three for Y, U, and V channel mixing. |
 | **Line Buffer** | A single-BRAM memory that stores one horizontal line of video data, enabling vertical comparisons between consecutive scan lines. |
 | **Luma** | The brightness component (Y) of a YUV video signal; the only channel analyzed for edge detection in Floorplan. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Threshold** | A comparison level that divides edge strengths into "wall" and "not wall" categories; Floorplan uses two thresholds for variable wall thickness. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At default settings (Size at 0%, Position X and Y centered, Aspect centered), th
 
 ---
 
+## Quick Start
+
+1. **Corner inserts**: For a standard broadcast PiP, set Size to about 40%, then push Position X and Y toward a corner (e.g., 80%/20% for upper-right). Add a thin white border for separation.
+2. **Aspect for anamorphic looks**: Aspect values below center create a pillarbox-style vertical squeeze; values above center create a letterbox-style horizontal stretch. Use with edge clamp set to Black for clean cutoffs.
+3. **Background as a canvas**: The background is visible everywhere the image and border are not. With a large Size value (small image), the background becomes the dominant visual element. Sweep BKG Hue for animated color fields.
+
+---
+
 ## Background
 
 ### Digital Video Effects and the DVE
@@ -94,6 +102,8 @@ The background color is specified by a single hue angle. Converting a hue angle 
 ---
 
 ## Signal Flow
+
+Write Path → Geometry Engine → Region Classifier → ... → Sync Delay → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ The critical path runs vertically through time: geometry is computed once per fr
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the image scale factor. At minimum, the image fills the entire output raster — no border or background is visible. As you increase the control, the image shrinks symmetrically toward a point defined by Position X and Y. The scaling is applied to both horizontal and vertical dimensions simultaneously, maintaining the image's proportions (before Aspect modification). At maximum, the image is reduced to a sliver. The relationship between the control position and the scale factor is linear: the image area decreases proportionally with the control value.
+At minimum, the image fills the entire output raster — no border or background is visible. As you increase the control, the image shrinks symmetrically toward a point defined by Position X and Y. The scaling is applied to both horizontal and vertical dimensions simultaneously, maintaining the image's proportions (before Aspect modification). At maximum, the image is reduced to a sliver. The relationship between the control position and the scale factor is linear: the image area decreases proportionally with the control value. Internally, controls the image scale factor.
 
 ---
 
@@ -201,7 +211,7 @@ Positions the image vertically within the output frame. At minimum, the image si
 | Default | 50.0% |
 | Suffix | % |
 
-Adjusts the horizontal aspect ratio of the scaled image. At center, the image maintains its original proportions. Turning below center compresses the image horizontally (tall and narrow). Turning above center stretches the image horizontally (short and wide). The vertical dimension is unaffected — only the horizontal scale is multiplied by the aspect factor. This is useful for creating anamorphic squeeze effects or compensating for non-square pixel sources.
+At center, the image maintains its original proportions. Turning below center compresses the image horizontally (tall and narrow). Turning above center stretches the image horizontally (short and wide). The vertical dimension is unaffected — only the horizontal scale is multiplied by the aspect factor. This is useful for creating anamorphic squeeze effects or compensating for non-square pixel sources. Internally, adjusts the horizontal aspect ratio of the scaled image.
 
 ---
 
@@ -212,7 +222,7 @@ Adjusts the horizontal aspect ratio of the scaled image. At center, the image ma
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the width of the border frame drawn around the image rectangle. At minimum, no border is visible. As you increase the control, a solid-color border grows outward from the image edges. The border color is selected by the Border Color toggle (white or black). The border pixels are always achromatic (U=V=512). Maximum border width is 64 pixels, which creates a bold frame around even small inset images. Border width is independent of image size — a thin border stays thin regardless of how large or small the image is.
+At minimum, no border is visible. As you increase the control, a solid-color border grows outward from the image edges. The border color is selected by the Border Color toggle (white or black). The border pixels are always achromatic (U=V=512). Maximum border width is 64 pixels, which creates a bold frame around even small inset images. Border width is independent of image size — a thin border stays thin regardless of how large or small the image is. Internally, sets the width of the border frame drawn around the image rectangle.
 
 ---
 
@@ -241,6 +251,21 @@ Switches 7 through 11 control five independent binary options. Border Color and 
 
 Controls the wet/dry crossfade between the DVE compositor output and the original input signal. At maximum (default), only the processed DVE output is visible. At minimum, only the original input is visible. Intermediate positions create a dissolve blend between the two. This is implemented by three `interpolator_u` instances (one per YUV channel) that linearly interpolate between the delayed input and the compositor output. The mix operates on every pixel, including border and background regions — so at partial mix, the border and background partially overlay the original image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Dolly processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -262,7 +287,7 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 *Classic Picture-in-Picture — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Create a standard broadcast picture-in-picture insert positioned in a corner of the frame.
+**What You'll Create**: Create a standard broadcast picture-in-picture insert positioned in a corner of the frame.
 
 1. **Shrink the image**: Slowly increase Size from 0%. Watch the image shrink toward the center of the frame, revealing the background color behind it.
 2. **Position the inset**: Set Position X to about 80% and Position Y to about 20%. The image slides to the upper-right corner.
@@ -289,7 +314,7 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 *Anamorphic Squeeze and Stretch — simulated result across source images.*
 **Source**: Footage with strong geometric features — architecture, grids, or text.
 
-**Objective**: Explore horizontal aspect distortion for creative anamorphic effects.
+**What You'll Create**: Explore horizontal aspect distortion for creative anamorphic effects.
 
 1. **Start centered**: Set Size to about 30% so the image is clearly smaller than the frame.
 2. **Squeeze narrow**: Turn Aspect below center. The image compresses horizontally into a tall, narrow column.
@@ -317,7 +342,7 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 *Animated DVE Dissolve — simulated result across source images.*
 **Source**: Any footage, especially high-contrast material with bold colors.
 
-**Objective**: Use the Mix fader and background hue together to create layered dissolve compositions.
+**What You'll Create**: Use the Mix fader and background hue together to create layered dissolve compositions.
 
 1. **Set up the inset**: Size at about 50%, centered position, moderate border (about 10% width, white).
 2. **Background color**: Sweep BKG Hue slowly while watching the background color change. Choose a complementary color to the source material.
@@ -333,9 +358,6 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 ## Tips
 
-- **Corner inserts**: For a standard broadcast PiP, set Size to about 40%, then push Position X and Y toward a corner (e.g., 80%/20% for upper-right). Add a thin white border for separation.
-- **Aspect for anamorphic looks**: Aspect values below center create a pillarbox-style vertical squeeze; values above center create a letterbox-style horizontal stretch. Use with edge clamp set to Black for clean cutoffs.
-- **Background as a canvas**: The background is visible everywhere the image and border are not. With a large Size value (small image), the background becomes the dominant visual element. Sweep BKG Hue for animated color fields.
 - **Border as a graphic element**: At large Border Width values, the border becomes a substantial graphic frame. Black borders disappear into dark backgrounds; white borders pop against any hue.
 - **Mix for transitions**: The Mix fader is not just for A/B comparison — at intermediate positions, the DVE output overlays the original signal, creating double-exposure compositions where the inset and the full-frame image coexist.
 - **Mirror for symmetry**: Enable Mirror to create left-right reflected versions of the source. Combined with a centered position, this creates a bilateral symmetry effect.
@@ -348,16 +370,15 @@ These exercises progress from basic picture-in-picture setups through broadcast 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line buffer storage. |
 | **Compositor** | The output stage that selects between image, border, and background pixels based on region classification. |
 | **DDA** | Digital Differential Analyzer; a fixed-point accumulator-based technique for computing evenly spaced sample addresses, used here for horizontal scaling. |
 | **DVE** | Digital Video Effect; a broadcast industry term for real-time geometric manipulation (scale, position, rotation) of a video signal. |
 | **Hue** | The attribute of a color that distinguishes it from other colors on the color wheel (red, green, blue, etc.), independent of brightness or saturation. |
-| **Interpolator** | A component that computes weighted averages between two values; used here for the wet/dry mix crossfade. |
 | **Line Buffer** | A dual-port BRAM that stores one scanline of pixel data, allowing linear write and random-access read for scaling operations. |
 | **Ping-Pong** | A double-buffering technique where two memory regions alternate roles (read/write) to allow simultaneous input capture and output generation. |
 | **PiP** | Picture-in-Picture; a composition technique where a smaller image is displayed within a larger frame. |
 | **Region Classifier** | Logic that determines whether each output pixel belongs to the image, border, or background region based on coordinate comparisons. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

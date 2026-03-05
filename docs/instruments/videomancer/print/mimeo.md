@@ -68,6 +68,14 @@ The name is the informal term for a mimeographed copy. At gentle settings Mimeo 
 
 ---
 
+## Quick Start
+
+1. **Purple is the classic look**: Spirit duplicator purple (Ink Color 00) is the most iconic and recognizable mimeograph aesthetic. Start there for authentic results.
+2. **Stencil mode is dramatic**: Binary mode produces the starkest print look — pure ink or pure paper. Combine with fill-in for bold, heavy stencil prints.
+3. **Copy Fade tells a story**: Animate Copy Fade from 0% to maximum over time to simulate watching an entire print run degrade copy by copy.
+
+---
+
 ## Background
 
 ### What Is a Mimeograph?
@@ -94,6 +102,8 @@ Real paper has a visible fiber texture — a random micro-pattern of lighter and
 ---
 
 ## Signal Flow
+
+Input Register → Posterization + Fill-In → Ink Tint + Copy Fade → Edge Bleed
 
 ```
 Input Video (YUV 4:4:4)
@@ -229,6 +239,10 @@ Toggles 7–10 configure the duplicator technology simulation: ink color, paper 
 
 Controls the wet/dry crossfade between the processed duplicator output and the original delayed input. At 100% the full print simulation is applied. At 0% the original signal passes through unchanged. Intermediate values overlay the print effect onto the original — useful for a translucent print-over-video look where the ink tint and posterization are partially visible over the source.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +264,7 @@ These exercises progress from basic posterized prints through fully degraded mul
 *Spirit Duplicator Print — simulated result across source images.*
 **Source**: A camera feed of text, signage, or high-contrast graphic material.
 
-**Objective**: Create a classic spirit duplicator output — purple ink on cream paper with gentle copy fade.
+**What You'll Create**: Create a classic spirit duplicator output — purple ink on cream paper with gentle copy fade.
 
 1. **Purple ink**: Set Ink Color A and B both to Off (00 = purple). Set Paper Tint to Warm for cream paper.
 2. **Moderate tone levels**: Set Tone Levels to ~50% (4 levels). The image posterizes into four discrete ink densities.
@@ -278,7 +292,7 @@ These exercises progress from basic posterized prints through fully degraded mul
 *Stencil Mimeograph — simulated result across source images.*
 **Source**: High-contrast footage — text overlays, sharp graphic patterns, or architectural details.
 
-**Objective**: Create a binary stencil mimeograph print with heavy ink artifacts.
+**What You'll Create**: Create a binary stencil mimeograph print with heavy ink artifacts.
 
 1. **Black ink**: Set Ink Color A to On, B to Off (01 = black). Paper Tint to Cool.
 2. **Stencil mode**: Enable the Stencil toggle. Output is forced to binary (2-level) regardless of Tone Levels.
@@ -306,7 +320,7 @@ These exercises progress from basic posterized prints through fully degraded mul
 *Degraded Multi-Generation Copy — simulated result across source images.*
 **Source**: Any footage — the more detailed the source, the more dramatic the degradation.
 
-**Objective**: Simulate a severely degraded nth-generation duplicate at the end of a long print run.
+**What You'll Create**: Simulate a severely degraded nth-generation duplicate at the end of a long print run.
 
 1. **Red ink on cream**: Set Ink Color A and B both to On (11 = red). Paper Tint to Warm.
 2. **Few levels**: Set Tone Levels to ~25% (3 levels). The image simplifies to ink, midtone, and paper.
@@ -324,9 +338,6 @@ These exercises progress from basic posterized prints through fully degraded mul
 
 ## Tips
 
-- **Purple is the classic look**: Spirit duplicator purple (Ink Color 00) is the most iconic and recognizable mimeograph aesthetic. Start there for authentic results.
-- **Stencil mode is dramatic**: Binary mode produces the starkest print look — pure ink or pure paper. Combine with fill-in for bold, heavy stencil prints.
-- **Copy Fade tells a story**: Animate Copy Fade from 0% to maximum over time to simulate watching an entire print run degrade copy by copy.
 - **Fill-in eats fine detail**: High fill-in values destroy small features. This is historically accurate — real stencils lose fine detail as ink fills narrow gaps.
 - **Edge Bleed is directional**: The IIR smear runs left to right, simulating a clockwise print drum. Dark edges trail to the right.
 - **Noise + Grain layer naturally**: Ink noise affects the inked areas most visibly while paper grain affects the background. Together they create a realistic paper-and-ink texture stack.
@@ -347,9 +358,9 @@ These exercises progress from basic posterized prints through fully degraded mul
 | **LFSR** | Linear Feedback Shift Register; a digital circuit that generates pseudo-random binary sequences, used here for ink noise and paper grain. |
 | **Mimeograph** | A stencil duplicator that forces ink through a perforated wax stencil onto paper, widely used from the 1880s through the 1970s. |
 | **Paper Grain** | The visible fiber texture of paper caused by variations in pulp density, especially noticeable on cheap duplicator stock. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform brightness. |
 | **Spirit Duplicator** | A duplicating machine (e.g., Ditto machine) that transfers aniline dye from a wax master to paper using a volatile solvent. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

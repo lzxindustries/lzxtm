@@ -68,6 +68,14 @@ A heads-up display overlay adds crosshair and corner bracket reticles, completin
 
 ---
 
+## Quick Start
+
+1. **Ironbow for realism**: The Ironbow palette closely matches FLIR thermal camera colour schemes. Combined with auto-range and HUD, it produces the most convincing thermal simulation.
+2. **Auto-range is your friend**: Leave it on unless you need precise manual control. It ensures the full palette range is always used, regardless of input levels.
+3. **Contours reveal structure**: Even at minimum width, a few contour lines add significant perceptual depth to the false-colour rendering. Try step 5 or 6 for subtle topographic detail.
+
+---
+
 ## Background
 
 ### False Colour in Scientific Imaging
@@ -94,6 +102,8 @@ HUD overlays originated in military aviation, where critical flight data was pro
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → 4-Clock Interpolator → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -143,7 +153,7 @@ The auto-range normalisation stage sits between input smoothing and palette look
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the speed of the auto-range IIR envelope follower. At low values, the envelope adapts slowly — it takes many frames for the tracked minimum and maximum to settle after a scene change. At high values, the envelope responds almost instantly to new extremes. Faster sensitivity produces more responsive contrast stretching but can cause visible pumping on rapidly changing material. Slower sensitivity produces stable mapping but may clip highlights or crush shadows during transitions. This control has no effect when Auto Range is switched off.
+At low values, the envelope adapts slowly — it takes many frames for the tracked minimum and maximum to settle after a scene change. At high values, the envelope responds almost instantly to new extremes. Faster sensitivity produces more responsive contrast stretching but can cause visible pumping on rapidly changing material. Slower sensitivity produces stable mapping but may clip highlights or crush shadows during transitions. This control has no effect when Auto Range is switched off. Internally, controls the speed of the auto-range IIR envelope follower.
 
 ---
 
@@ -223,7 +233,19 @@ The five toggle switches divide into three functional groups. Palette A and Pale
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the processed (palette-mapped, contour, HUD) signal and the delayed dry input signal. At 100% (fully clockwise), the output is entirely the false-colour rendering. At 0% (fully counter-clockwise), the output is the original input (equivalent to full bypass). Intermediate positions blend the two, creating a semi-transparent false-colour overlay that allows the original image structure to show through the thermal palette. This is particularly effective with the Ironbow or Rainbow palette at 40–60% mix, producing a colour-wash effect that tints the original image according to its brightness.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Isotherm-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +268,7 @@ These exercises progress from basic palette exploration to advanced contour mapp
 *Thermal Camera Simulation — simulated result across source images.*
 **Source**: A live camera feed of a person or scene with varied brightness — skin, clothing, background surfaces.
 
-**Objective**: Create a convincing thermal camera simulation using auto-range and the Ironbow palette.
+**What You'll Create**: Create a convincing thermal camera simulation using auto-range and the Ironbow palette.
 
 1. **Start with defaults**: Ensure Auto Range is On, HUD is Off, Bypass is Off, and Mix is at 100%.
 2. **Ironbow palette**: Set Palette A and B both to Lo (Ironbow). The image immediately maps to the classic thermal gradient — dark blues for cool (dark) areas, reds and oranges for warm (bright) areas, and white for the hottest (brightest) regions.
@@ -273,7 +295,7 @@ These exercises progress from basic palette exploration to advanced contour mapp
 *Contour Mapping — simulated result across source images.*
 **Source**: Footage with smooth gradients — skies, light falloff on walls, or a gradient test pattern.
 
-**Objective**: Explore contour line behaviour across different intervals and palettes.
+**What You'll Create**: Explore contour line behaviour across different intervals and palettes.
 
 1. **Dense contours**: Set Contour Int to step 1 (interval = 16 levels). Dense white lines carve the palette into narrow bands.
 2. **Sparse contours**: Increase Contour Int to step 8 (interval = 192). Only a few bold contour strokes remain.
@@ -300,7 +322,7 @@ These exercises progress from basic palette exploration to advanced contour mapp
 *False-Colour Overlay — simulated result across source images.*
 **Source**: Any recognisable footage — faces, landscapes, architecture.
 
-**Objective**: Blend the false-colour palette with the original image for a colour-wash overlay effect.
+**What You'll Create**: Blend the false-colour palette with the original image for a colour-wash overlay effect.
 
 1. **Half mix**: Set Mix to ~50%. The original image structure shows through the false colour.
 2. **Ironbow tint**: With the Ironbow palette, the image gains a warm-to-cool tint that follows brightness — shadow areas turn blue, highlights turn amber.
@@ -315,9 +337,6 @@ These exercises progress from basic palette exploration to advanced contour mapp
 
 ## Tips
 
-- **Ironbow for realism**: The Ironbow palette closely matches FLIR thermal camera colour schemes. Combined with auto-range and HUD, it produces the most convincing thermal simulation.
-- **Auto-range is your friend**: Leave it on unless you need precise manual control. It ensures the full palette range is always used, regardless of input levels.
-- **Contours reveal structure**: Even at minimum width, a few contour lines add significant perceptual depth to the false-colour rendering. Try step 5 or 6 for subtle topographic detail.
 - **Partial mix for colour wash**: At 40–60% mix, the false colour overlays the original image like a luminance-dependent colour filter — useful for artistic grading.
 - **WhiteHot for analysis**: The WhiteHot palette is a simple greyscale ramp — use it to verify auto-range behaviour or check input signal levels without the distraction of colour.
 - **Smoothing tames noise**: If contour lines are jittery on noisy sources, increase Smoothing to step 3 or 4 before reaching for sensitivity.
@@ -340,7 +359,7 @@ These exercises progress from basic palette exploration to advanced contour mapp
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Normalisation** | Scaling a signal so that its minimum maps to 0 and its maximum maps to full scale. |
 | **Piecewise-Linear** | An interpolation method that connects key-points with straight line segments, producing smooth gradients with minimal data. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

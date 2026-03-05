@@ -68,6 +68,14 @@ Two toggles give Facet its character. **Outlines** draws black borders at cell b
 
 ---
 
+## Quick Start
+
+1. **Cell Size sweet spot**: Around 30–50% produces cells large enough to read as flat color panes while preserving enough of the source composition to remain recognizable — the ideal range for stained-glass effects.
+2. **Edge width scales with cell size**: A 3-pixel edge is barely visible in a 35-pixel cell but consumes 75% of a 4-pixel cell. Increase cell size before increasing edge width to maintain visible cell interiors.
+3. **Outlines without flat shade**: Disabling Flat Shade while keeping Outlines on creates a grid overlay on full-resolution video — useful as a compositional guide or graphic design element.
+
+---
+
 ## Background
 
 ### The Fairlight CVI and Early Video Mosaics
@@ -96,6 +104,8 @@ Combined with black outlines, flat shading creates a look reminiscent of **cel a
 ---
 
 ## Signal Flow
+
+Sync Detection → Cell Grid → Processing → Mix → Sync Delay → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -229,7 +239,19 @@ Toggles 8 through 10 control the three active rendering modes — outlines, flat
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed signal and the delayed original. At 100%, the output is fully processed (faceted). At 0%, the output is the original signal. The mix is implemented as three parallel interpolators (one per Y/U/V channel) running for 4 clock cycles each. Intermediate values blend between the mosaic and the source, creating a semi-transparent overlay effect where cell boundaries and flat shading are partially visible over the original image.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Facet-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -252,7 +274,7 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 *Crystal Mosaic — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects — faces, text, or geometric objects work well.
 
-**Objective**: Learn how Cell Size and Flat Shade interact to create mosaic effects at different resolutions.
+**What You'll Create**: Learn how Cell Size and Flat Shade interact to create mosaic effects at different resolutions.
 
 1. **Enable flat shading**: Confirm Flat Shade (Toggle 9) is On and Outlines (Toggle 8) is Off.
 2. **Minimum cells**: Turn Cell Size fully counter-clockwise. At 4-pixel cells, the image is slightly softened but recognizable.
@@ -279,7 +301,7 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 *Stained Glass — simulated result across source images.*
 **Source**: Brightly colored footage — flowers, neon signs, colorful fabrics, or abstract video feedback.
 
-**Objective**: Combine flat shading with edge outlines to create a stained-glass window effect.
+**What You'll Create**: Combine flat shading with edge outlines to create a stained-glass window effect.
 
 1. **Set moderate cell size**: Cell Size around 50–60% to create visible color panes.
 2. **Enable outlines**: Turn on Outlines (Toggle 8). Black borders appear at cell boundaries.
@@ -307,7 +329,7 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 *Monochrome Grid Overlay — simulated result across source images.*
 **Source**: High-contrast footage — silhouettes, architectural details, or stark black-and-white material.
 
-**Objective**: Use Mono and Outlines together to create a graphic pencil-sketch or architectural wireframe effect.
+**What You'll Create**: Use Mono and Outlines together to create a graphic pencil-sketch or architectural wireframe effect.
 
 1. **Enable mono**: Turn on Mono (Toggle 10). The image becomes grayscale.
 2. **Enable outlines and flat shade**: Both toggles On.
@@ -324,9 +346,6 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 
 ## Tips
 
-- **Cell Size sweet spot**: Around 30–50% produces cells large enough to read as flat color panes while preserving enough of the source composition to remain recognizable — the ideal range for stained-glass effects.
-- **Edge width scales with cell size**: A 3-pixel edge is barely visible in a 35-pixel cell but consumes 75% of a 4-pixel cell. Increase cell size before increasing edge width to maintain visible cell interiors.
-- **Outlines without flat shade**: Disabling Flat Shade while keeping Outlines on creates a grid overlay on full-resolution video — useful as a compositional guide or graphic design element.
 - **Mono for emphasis**: The Mono toggle removes color distraction, making the geometric structure of the grid more prominent. Try it with high-contrast source material for bold graphic results.
 - **Mix for subtlety**: At 100%, Facet fully replaces the source. Pulling Mix back to 60–80% lets the original detail show through the mosaic — a frosted-glass look.
 - **Feedback loops**: Routing Facet's output back to its input creates recursive mosaics — each pass samples the already-flat-shaded cells, progressively reducing the image to fewer and fewer unique color values.
@@ -341,14 +360,12 @@ These exercises progress from simple mosaic effects to graphic stained-glass com
 | **BT.601** | ITU-R BT.601; the color encoding standard used by Videomancer's YUV pipeline for standard-definition video. |
 | **Cell** | A rectangular region of the frame defined by the cell grid; each cell displays either a flat-shaded sample or the live input depending on mode. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A linear blending unit (lerp) used for the wet/dry mix stage; three instances blend Y, U, and V independently. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Mosaic** | A spatial effect that replaces groups of pixels with uniform blocks, reducing spatial resolution. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sample-and-Hold** | A technique that captures a signal value at a specific moment and holds it constant until the next capture event. |
 | **Tessellation** | The division of a surface into tiles (cells) that cover it without gaps or overlaps. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zero-Order Hold** | A signal reconstruction method that holds each sample constant until the next sample arrives, producing a staircase waveform. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

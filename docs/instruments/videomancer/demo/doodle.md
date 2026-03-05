@@ -35,6 +35,14 @@ The Auto Freq mode adds a fourth oscillator layer: two slow background accumulat
 
 ---
 
+## Quick Start
+
+1. **Try coprime ratios**: Set Freq X and Freq Y to values with no common factors (e.g., 3 and 7, 5 and 9, 4 and 11) for the most complex and slowly-repeating Lissajous figures. These take the longest to close and fill the most of the framebuffer.
+2. **The 90-degree offset matters**: The initial phase_y offset of 16384 (one quarter of the 16-bit range) seeds a 90-degree phase difference at startup. This produces clean ellipses and figure-eights from the first draw step rather than degenerate diagonal lines. Toggle Reset to start fresh from this seeded state.
+3. **Match Wipe Rate to Speed**: For a stable, rolling display where the framebuffer stays roughly half-full, set Wipe Rate to about half the Speed value. When Wipe Rate significantly exceeds Speed, marks disappear faster than they form and the display stays sparse.
+
+---
+
 ## Background
 
 ### DAZZLER-DOODLE and the Birth of the Paint Program
@@ -221,6 +229,10 @@ The five toggles divide into two operational groups and one display group. Run a
 
 Mix controls the wet/dry blend between the Doodle synthesis output and the input video signal, interpolated independently across Y, U, and V channels via three `interpolator_u` instances. At full mix (fader up), only the Doodle framebuffer is visible against a black background. Pulling the fader toward zero fades the input video up behind and through the Doodle marks, creating an effect where Lissajous trails appear to be drawn on top of source footage. At moderate mix positions, the Doodle appears as a semi-transparent colored overlay — the chunky RGBI colors wash across the underlying video in a way that aesthetically echoes hand-painted animation cel overlays.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -231,7 +243,7 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 
 <img src={doodle_exercise1_result} alt="Geometric Figure-Eight result"/>
 *Geometric Figure-Eight — simulated result across source images.*
-**Objective**: Produce a clean, slowly traced figure-eight curve in multiple colors using a 1:2 Lissajous ratio, letting the curve complete several color cycles before the wipe erases it.
+**What You'll Create**: Produce a clean, slowly traced figure-eight curve in multiple colors using a 1:2 Lissajous ratio, letting the curve complete several color cycles before the wipe erases it.
 
 1. Set Auto Freq to Manual.
 2. Set Freq X to step 3 (approximately 28%) and Freq Y to step 6 (approximately 59%) — ratio 1:2 traces a figure-eight.
@@ -252,7 +264,7 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 
 <img src={doodle_exercise2_result} alt="Dense Fill and Fast Wipe result"/>
 *Dense Fill and Fast Wipe — simulated result across source images.*
-**Objective**: Use a high-speed draw with an irrational-like frequency ratio and aggressive wipe rate to produce a space-filling, continuously dissolving doodle that never settles into a static composition.
+**What You'll Create**: Use a high-speed draw with an irrational-like frequency ratio and aggressive wipe rate to produce a space-filling, continuously dissolving doodle that never settles into a static composition.
 
 1. Set Auto Freq to Manual.
 2. Set Freq X to step 5 (approximately 40%) and Freq Y to step 8 (approximately 75%) — ratio 5:8 produces a complex Lissajous with many loops.
@@ -272,7 +284,7 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 
 <img src={doodle_exercise3_result} alt="Auto Freq Slow Evolution result"/>
 *Auto Freq Slow Evolution — simulated result across source images.*
-**Objective**: Use Auto Freq mode for an unattended, continuously evolving Lissajous sequence — observe the full progression from simple figures through complex ones and back, with slow color cycling and moderate wipe for a meditative rolling display.
+**What You'll Create**: Use Auto Freq mode for an unattended, continuously evolving Lissajous sequence — observe the full progression from simple figures through complex ones and back, with slow color cycling and moderate wipe for a meditative rolling display.
 
 1. Set Auto Freq to Auto.
 2. Set Speed to about 40% for a moderate trace pace.
@@ -292,9 +304,6 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 
 ## Tips
 
-- **Try coprime ratios**: Set Freq X and Freq Y to values with no common factors (e.g., 3 and 7, 5 and 9, 4 and 11) for the most complex and slowly-repeating Lissajous figures. These take the longest to close and fill the most of the framebuffer.
-- **The 90-degree offset matters**: The initial phase_y offset of 16384 (one quarter of the 16-bit range) seeds a 90-degree phase difference at startup. This produces clean ellipses and figure-eights from the first draw step rather than degenerate diagonal lines. Toggle Reset to start fresh from this seeded state.
-- **Match Wipe Rate to Speed**: For a stable, rolling display where the framebuffer stays roughly half-full, set Wipe Rate to about half the Speed value. When Wipe Rate significantly exceeds Speed, marks disappear faster than they form and the display stays sparse.
 - **Low Color Rate for rainbow trails**: Set Color Rate below 15% for multi-color trails that change hue many times along each Lissajous curve. This produces the most visually festive and DAZZLER-DOODLE-authentic appearance.
 - **Auto Freq for installation**: Auto Freq mode produces a continuously evolving, 30+ minute cycle of figure variations without any user interaction. It is ideal for projection environments where the program must run unattended for hours.
 - **Grid reveals the pixel structure**: Enable the Grid overlay to make the 64×64 framebuffer grid visible. At close viewing distances or on large screens, this recreates the tactile, pixelated character of actually looking at a Dazzler-connected CRT.
@@ -308,7 +317,6 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 | Term | Definition |
 |------|------------|
 | **Accumulator** | A register that is repeatedly added to; the 16-bit phase accumulators in Doodle wrap freely, producing continuous cycling motion without boundary checks. |
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric used for the 64x64x4-bit framebuffer (4x BRAM at 4 Kbits each = 16 Kbits total). |
 | **Cromemco Dazzler** | The 1976 S-100 bus graphics card that gave personal computers their first color framebuffer, displayed at 64×64 pixels in 16-color RGBI mode. |
 | **CRT** | Cathode-ray tube; the display technology used with the original Cromemco Dazzler, whose phosphor glow and slight overscan characterize the aesthetic Doodle references. |
 | **DAZZLER-DOODLE** | The freehand drawing program sold by Cromemco for the Dazzler, allowing joystick-driven cursor painting across the 64×64 RGBI framebuffer. |
@@ -319,6 +327,7 @@ These exercises explore the Doodle's Lissajous figure vocabulary, the relationsh
 | **RGBI** | Red-Green-Blue-Intensity; the 4-bit color encoding of the Cromemco Dazzler, producing two intensity levels of eight base RGB hues. |
 | **Triangle wave** | A periodic waveform that rises linearly from minimum to maximum and then falls linearly back — computationally generated here by folding the MSB of a phase accumulator. |
 | **Wipe** | The sequential clearing operation that writes black to framebuffer cells row-by-row, erasing old doodle marks at a rate set by the Wipe Rate parameter. |
-| **YUV** | Luminance-chrominance color encoding used throughout the Videomancer video pipeline; Y = luminance, U and V = color difference components. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

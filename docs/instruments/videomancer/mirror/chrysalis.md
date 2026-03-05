@@ -68,6 +68,14 @@ At conservative settings — two or four segments with gentle slant — Chrysali
 
 ---
 
+## Quick Start
+
+1. **Start with 2 segments**: The bilateral mirror at 2 segments is the most legible starting point. Once you understand the fold, increase the segment count gradually.
+2. **Fold at 50% for clean symmetry**: Off-centre fold values produce asymmetric reflections that can be interesting, but 50% gives the cleanest kaleidoscope geometry.
+3. **Slant creates diagonals**: Even a small amount of slant (10–20%) adds dramatic diagonal structure. Use it to break the rigidity of purely vertical segment boundaries.
+
+---
+
 ## Background
 
 ### Kaleidoscopes and Optical Symmetry
@@ -94,6 +102,8 @@ The entire address transformation — DDS accumulation, segment division, triang
 ---
 
 ## Signal Flow
+
+Input Register → Pixel Counter → DDS Phase Accumulator → ... → Scanline Lookup → Interpolator Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -233,6 +243,21 @@ The five toggles control independent binary features whose combinations produce 
 
 Crossfades between the dry input signal and the kaleidoscope-processed signal. At 0% (fader down), the output is pure dry — the original, unmodified video. At 100% (fader up), the output is pure wet — the full kaleidoscope transformation. Intermediate positions blend the two, creating a ghostly overlay where the original image shows through the symmetric pattern. This is useful for performance — you can bring the kaleidoscope effect in and out smoothly, or hold it at a partial blend where the source remains recognisable inside the symmetry structure.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chrysalis processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +279,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 *Bilateral Mirror — simulated result across source images.*
 **Source**: A portrait or face — the bilateral symmetry of human features makes the mirror effect immediately legible.
 
-**Objective**: Understand how segment count and the fold/mirror controls create basic kaleidoscope symmetry.
+**What You'll Create**: Understand how segment count and the fold/mirror controls create basic kaleidoscope symmetry.
 
 1. **Two-segment mirror**: Set Segments to the lowest step (2 segments). Enable Mirror (Toggle 7). Set Mix fader to 100%. The image splits into two mirrored halves — a Rorschach-like bilateral symmetry.
 2. **Adjust fold point**: Sweep the Fold knob from 0% to 100%. Watch how the mirror axis shifts within each segment — at 50%, perfect symmetry; off-centre, one half dominates.
@@ -281,7 +306,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 *Diagonal Slant and Spiral — simulated result across source images.*
 **Source**: Footage with strong horizontal or vertical lines — architecture, fences, window blinds.
 
-**Objective**: Explore how the per-line slant control tilts the symmetry axis and creates spiral patterns.
+**What You'll Create**: Explore how the per-line slant control tilts the symmetry axis and creates spiral patterns.
 
 1. **Prepare**: Set 8 segments, Mirror on, Mix 100%, Fold 50%, Zoom 50%.
 2. **Introduce slant**: Slowly increase Slant from 0%. Watch the vertical segment boundaries tilt diagonally. Horizontal lines in the source begin to curve.
@@ -309,7 +334,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 *Animated Mandala — simulated result across source images.*
 **Source**: Colourful, textured footage — nature scenes, fabrics, or abstract video feedback.
 
-**Objective**: Combine animation, slant, and high segment counts to create a continuously rotating mandala.
+**What You'll Create**: Combine animation, slant, and high segment counts to create a continuously rotating mandala.
 
 1. **High segments**: Set Segments to 12 or 16. Mirror on. Mix 100%.
 2. **Moderate slant**: Set Slant ~40% to establish diagonal symmetry.
@@ -327,9 +352,6 @@ These exercises progress from simple bilateral symmetry through animated mandala
 
 ## Tips
 
-- **Start with 2 segments**: The bilateral mirror at 2 segments is the most legible starting point. Once you understand the fold, increase the segment count gradually.
-- **Fold at 50% for clean symmetry**: Off-centre fold values produce asymmetric reflections that can be interesting, but 50% gives the cleanest kaleidoscope geometry.
-- **Slant creates diagonals**: Even a small amount of slant (10–20%) adds dramatic diagonal structure. Use it to break the rigidity of purely vertical segment boundaries.
 - **Zoom and Segments interact**: Doubling segments at fixed zoom is equivalent to halving zoom at fixed segments. Use Segments for coarse control and Zoom for fine adjustment.
 - **Wrap for seamless patterns**: Always enable Wrap unless you specifically want the clamped-edge glitch effect. Wrap ensures clean tiling at all segment boundaries.
 - **Animate for performance**: The Animate + Speed combination turns Chrysalis into a self-running visual instrument. Set a speed and let the mandala evolve — no hands required.
@@ -343,11 +365,9 @@ These exercises progress from simple bilateral symmetry through animated mandala
 | Term | Definition |
 |------|------------|
 | **Bilateral symmetry** | Symmetry across a single axis, producing two mirror-image halves; the simplest kaleidoscope mode with two segments. |
-| **BRAM** | Block RAM; dedicated memory blocks within the iCE40 FPGA used here as scanline buffers for address-remapped pixel lookup. |
 | **Crossfade** | A gradual blend between two signals (dry and wet) controlled by the Mix fader, allowing partial transparency between the original and processed images. |
 | **DDS (Direct Digital Synthesis)** | A technique using a phase accumulator with a tunable frequency word to generate precise waveforms; repurposed here to produce scanline read addresses instead of RF carriers. |
 | **Dry/wet** | Signal routing terminology where "dry" is the unprocessed original and "wet" is the effect-processed output. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware chip (Lattice iCE40 HX4K) that executes the video processing pipeline in real time. |
 | **Frequency word** | The fixed increment added to a DDS phase accumulator on each clock cycle, determining the output waveform's spatial frequency and thus the number of segments. |
 | **iCE40** | The Lattice Semiconductor FPGA family used in Videomancer; provides the logic fabric, BRAM, and DSP resources for real-time video processing. |
 | **N-fold symmetry** | Rotational symmetry of order N, where a pattern repeats N times around a central point; set by the Segments control. |
@@ -355,6 +375,7 @@ These exercises progress from simple bilateral symmetry through animated mandala
 | **Pixel clock** | The clock signal that drives one pixel per cycle; 74.25 MHz for HD video, defining the time budget for all per-pixel arithmetic. |
 | **Scanline** | One horizontal row of pixels in a video frame; Chrysalis operates on a per-scanline basis using a BRAM line buffer. |
 | **Triangle wave** | A waveform that ramps linearly up then linearly down, used here as the fold function that converts a sawtooth address sweep into a mirror-symmetric sweep within each segment. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

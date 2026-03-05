@@ -35,6 +35,14 @@ At conservative settings — large blocks, full reveal position, no color shift 
 
 ---
 
+## Quick Start
+
+1. **Order × Block Size = visual density**: Order determines how many cells the Hilbert curve visits; block size determines how many pixels each cell covers. The combination controls the overall grid density. Order 4 with 8px blocks is the finest; order 1 with 64px blocks is the coarsest.
+2. **The reveal is the signature effect**: The Hilbert curve's recursive traversal order is what makes this program unique. Use manual reveal (Animate off, sweep Knob 4) to study the curve's structure before enabling animation.
+3. **Toggle 9 does nothing**: The Map switch is registered in hardware but has no effect on the output. This is a known vestigial control — do not expect Shuffle/Inverse behavior differences.
+
+---
+
 ## Background
 
 ### What Is a Space-Filling Curve?
@@ -61,6 +69,8 @@ When the color shift control is active, revealed blocks receive a chrominance of
 ---
 
 ## Signal Flow
+
+YUV Channels → Sync Signals → Bypass
 
 ```
 Generated Output (YUV 4:4:4)
@@ -142,7 +152,7 @@ Sets the manual reveal position. When the Animate toggle is off, this control di
 | Default | 0% |
 | Suffix | % |
 
-Controls the luminance of unrevealed (background) blocks. At minimum, hidden blocks are black. As you increase the control, the background brightens to a uniform gray. The chrominance of background blocks is always neutral (U=512, V=512). When outlines are enabled, background block edges are drawn at a dim level (approximately 300/1023), providing a faint grid structure even before blocks are revealed.
+At minimum, hidden blocks are black. As you increase the control, the background brightens to a uniform gray. The chrominance of background blocks is always neutral (U=512, V=512). When outlines are enabled, background block edges are drawn at a dim level (approximately 300/1023), providing a faint grid structure even before blocks are revealed. Internally, controls the luminance of unrevealed (background) blocks.
 
 ---
 
@@ -153,7 +163,7 @@ Controls the luminance of unrevealed (background) blocks. At minimum, hidden blo
 | Default | 0% |
 | Suffix | % |
 
-Controls the magnitude of the color shift applied to revealed blocks. At zero, all revealed blocks show the source video with its original chrominance. As you increase the control, each block's U channel is increased and its V channel decreased by an amount proportional to the product of the block's Hilbert distance and this register value. The result is a rainbow gradient that follows the curve's topology — blocks close together in Hilbert order share similar hues, while blocks far apart along the curve diverge in color even if they are spatially adjacent.
+At zero, all revealed blocks show the source video with its original chrominance. As you increase the control, each block's U channel is increased and its V channel decreased by an amount proportional to the product of the block's Hilbert distance and this register value. The result is a rainbow gradient that follows the curve's topology — blocks close together in Hilbert order share similar hues, while blocks far apart along the curve diverge in color even if they are spatially adjacent. Internally, controls the magnitude of the color shift applied to revealed blocks.
 
 ---
 
@@ -182,6 +192,10 @@ The five toggles control mostly independent options, though Animate and Directio
 
 Controls the wet/dry mix crossfade between the original (delayed) input and the processed output. The three interpolator instances (one per Y, U, V channel) blend linearly between input `a` (delayed original) and input `b` (processed) using this register as the interpolation parameter `t`. At minimum, the output is entirely the original signal; at maximum, the output is entirely the Hilbert-processed result. Intermediate values produce a transparent overlay of the fractal grid pattern on the source video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -192,7 +206,7 @@ These exercises progress from exploring the grid structure to animating the Hilb
 
 <img src={hilbert_exercise1_result} alt="Grid Structure and Reveal result"/>
 *Grid Structure and Reveal — simulated result across source images.*
-**Objective**: Understand how order, block size, and reveal position interact to create the Hilbert grid pattern.
+**What You'll Create**: Understand how order, block size, and reveal position interact to create the Hilbert grid pattern.
 
 1. **Start with a visible grid**: Set Order to position 3 (order 3 = 8×8 grid) and Block Size to position 2 (16×16 pixels). Enable Outline.
 2. **Manual reveal**: With Animate off, slowly sweep the Reveal Pos knob from minimum to maximum. Watch blocks appear one by one in the recursive spiral pattern of the Hilbert curve — not in a linear sweep.
@@ -208,7 +222,7 @@ These exercises progress from exploring the grid structure to animating the Hilb
 
 <img src={hilbert_exercise2_result} alt="Animated Reveal result"/>
 *Animated Reveal — simulated result across source images.*
-**Objective**: Explore the reveal animation and direction controls to create dynamic Hilbert curve tracing.
+**What You'll Create**: Explore the reveal animation and direction controls to create dynamic Hilbert curve tracing.
 
 1. **Set up the grid**: Order at position 3, Block Size at position 2 (16px), Outline on, BgLuma at about 10% so the background is dark gray rather than black.
 2. **Start animation**: Enable the Animate toggle. The reveal counter begins advancing, and blocks appear in Hilbert order.
@@ -224,7 +238,7 @@ These exercises progress from exploring the grid structure to animating the Hilb
 
 <img src={hilbert_exercise3_result} alt="Color Curve Composition result"/>
 *Color Curve Composition — simulated result across source images.*
-**Objective**: Combine color shift, reveal animation, and the mix fader for a full fractal color composition.
+**What You'll Create**: Combine color shift, reveal animation, and the mix fader for a full fractal color composition.
 
 1. **Enable color shift**: With the grid from Exercise 2 active, slowly increase the ClrShft knob. Watch each revealed block take on a hue proportional to its Hilbert distance — creating a rainbow that follows the curve's recursive path rather than spatial position.
 2. **Full reveal with color**: Set RevlPos to maximum (or let animation fill the grid). The entire frame becomes a color-mapped mosaic where the Hilbert topology is visible as a continuous gradient.
@@ -239,9 +253,6 @@ These exercises progress from exploring the grid structure to animating the Hilb
 
 ## Tips
 
-- **Order × Block Size = visual density**: Order determines how many cells the Hilbert curve visits; block size determines how many pixels each cell covers. The combination controls the overall grid density. Order 4 with 8px blocks is the finest; order 1 with 64px blocks is the coarsest.
-- **The reveal is the signature effect**: The Hilbert curve's recursive traversal order is what makes this program unique. Use manual reveal (Animate off, sweep Knob 4) to study the curve's structure before enabling animation.
-- **Toggle 9 does nothing**: The Map switch is registered in hardware but has no effect on the output. This is a known vestigial control — do not expect Shuffle/Inverse behavior differences.
 - **Color shift visualizes topology**: The rainbow gradient follows Hilbert distance, not screen position. Two blocks that are next to each other on screen may have very different hues if they are far apart along the curve. This is a direct visualization of the space-filling curve's locality properties.
 - **Mix for overlay**: At intermediate Mix values, the Hilbert grid becomes semi-transparent over the source video. Combined with color shift, this creates a fractal color overlay — useful for visualizing the curve structure on recognizable content.
 - **Background brightness for context**: Setting BgLuma above zero lets you see the full grid structure (with outlines) even before blocks are revealed. The dim outlines on unrevealed blocks provide spatial context for the reveal animation.
@@ -255,15 +266,13 @@ These exercises progress from exploring the grid structure to animating the Hilb
 |------|------------|
 | **Block** | A square group of pixels (8×8, 16×16, 32×32, or 64×64) that shares a single Hilbert distance value and is processed as a unit. |
 | **Combinational** | Logic that produces an output immediately from its inputs without waiting for a clock edge, as opposed to registered (clocked) logic. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hilbert Curve** | A continuous, self-similar space-filling curve that visits every cell of a 2D grid exactly once, preserving spatial locality. |
 | **Hilbert Distance** | The one-dimensional index of a cell along the Hilbert curve; used for reveal ordering and color shift computation. |
-| **Interpolator** | A linear crossfade module that blends between two input signals based on a mix parameter. |
 | **LUT** | Look-Up Table; a basic logic element in FPGA fabric used to implement combinational functions. |
 | **Order** | The number of recursive subdivisions of the Hilbert curve; order *n* produces a 2ⁿ × 2ⁿ grid of cells. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Reveal** | The progressive display of blocks in Hilbert curve order, controlled by a threshold counter compared against each block's curve distance. |
 | **Space-Filling Curve** | A continuous path that passes through every point in a multi-dimensional region; the Hilbert curve is the most common example. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

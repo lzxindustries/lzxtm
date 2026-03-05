@@ -68,6 +68,14 @@ Two knobs (Color and Falloff) and one toggle (Soft Edge) are registered in the V
 
 ---
 
+## Quick Start
+
+1. **Diamond, not circle**: The glow shape is a diamond due to Manhattan distance. Embrace it — the angular shape is distinctive and gives Luminaire its geometric character.
+2. **Intensity vs Radius**: Intensity sets the peak brightness; Radius sets how far the glow extends. Setting Intensity higher than Radius creates a saturated white core. Setting them equal creates a gradient that just reaches zero at the edge.
+3. **Position X is offset**: The horizontal position has a +128 pixel offset in hardware. If the light seems shifted rightward from where you expect, this is why.
+
+---
+
 ## Background
 
 ### Manhattan Distance and Diamond Shapes
@@ -94,6 +102,8 @@ A 16-bit frame counter increments on each vsync when the Animate toggle is activ
 ---
 
 ## Signal Flow
+
+Sync Edge Detection → Position Counters → Manhattan Distance → ... → Sync Delay Pipeline → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -240,6 +250,10 @@ The five toggles occupy register 6, each reading a single bit. Animate (bit 0) e
 
 Wet/dry mix fader. Controls the interpolation between the delayed dry signal and the processed (lit) signal via three instances of the 4-clock interpolator. At 0%, output equals the dry input — no glow visible. At 100%, output equals the fully processed signal. Intermediate values create a partial glow effect, which is useful for subtly warming a scene without overwhelming the source video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +275,7 @@ These exercises progress from basic spotlight placement to animated lighting eff
 *Spotlight Placement — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a clearly identifiable subject — a person, an object, or a defined scene.
 
-**Objective**: Learn to position the spotlight and control its size and brightness to illuminate a specific area of the frame.
+**What You'll Create**: Learn to position the spotlight and control its size and brightness to illuminate a specific area of the frame.
 
 1. **Center the light**: Set Position X and Position Y to approximately 50%. A bright region should appear near the center of the frame.
 2. **Adjust radius**: Start with Radius at about 30%. A small diamond-shaped glow appears. Slowly increase to 60% — the glow expands outward.
@@ -288,7 +302,7 @@ These exercises progress from basic spotlight placement to animated lighting eff
 *Warm and Cool Stage Lighting — simulated result across source images.*
 **Source**: A scene with neutral or mixed colors — skin tones, fabric, or architecture work well to show the color tint.
 
-**Objective**: Explore the warm and cool color tinting and how it interacts with the glow region.
+**What You'll Create**: Explore the warm and cool color tinting and how it interacts with the glow region.
 
 1. **Establish spotlight**: Position X ~50%, Position Y ~50%, Radius ~50%, Intensity ~70%, Mix ~100%.
 2. **Warm tint**: Set Color toggle to Warm. Observe the amber-orange tint within the glow area. Outside the glow, the source colors remain unchanged.
@@ -315,7 +329,7 @@ These exercises progress from basic spotlight placement to animated lighting eff
 *Flickering Light Source — simulated result across source images.*
 **Source**: Dark or moody footage — a dimly lit scene accentuates the flicker effect.
 
-**Objective**: Create a flickering candle or torch-like lighting effect using the frame counter and flicker modulation.
+**What You'll Create**: Create a flickering candle or torch-like lighting effect using the frame counter and flicker modulation.
 
 1. **Establish spotlight**: Position the light with moderate radius and intensity (Radius ~40%, Intensity ~60%).
 2. **Enable animation**: Turn on Animate (toggle 7) to start the frame counter.
@@ -331,9 +345,6 @@ These exercises progress from basic spotlight placement to animated lighting eff
 
 ## Tips
 
-- **Diamond, not circle**: The glow shape is a diamond due to Manhattan distance. Embrace it — the angular shape is distinctive and gives Luminaire its geometric character.
-- **Intensity vs Radius**: Intensity sets the peak brightness; Radius sets how far the glow extends. Setting Intensity higher than Radius creates a saturated white core. Setting them equal creates a gradient that just reaches zero at the edge.
-- **Position X is offset**: The horizontal position has a +128 pixel offset in hardware. If the light seems shifted rightward from where you expect, this is why.
 - **Unused controls take up slots**: Color (pot 5), Falloff (pot 6), and Soft Edge (toggle 10) are wired but inert. Don't be confused when they do nothing — they are placeholders for a future revision.
 - **Flicker needs Animate**: The flicker effect reads the frame counter, which only advances when Animate is on. Enable Animate before Flicker.
 - **Warm tint for drama**: Warm mode (U=448, V=640) adds an amber-orange cast reminiscent of theatrical stage lighting. Use it to draw focus to a subject.
@@ -349,12 +360,10 @@ These exercises progress from basic spotlight placement to animated lighting eff
 | **Additive Compositing** | Blending two signals by addition, where the result is always brighter than either input alone. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Falloff** | The rate at which glow brightness decreases with distance from the light center. Luminaire uses linear falloff. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
-| **Interpolator** | A linear crossfade module that blends between two signals based on a mix parameter. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | Distance measured as the sum of absolute differences along each axis: $d = |x_1 - x_2| + |y_1 - y_2|$. Equidistant contours form diamonds. |
-| **Pipeline** | A series of sequential processing stages where each stage operates on data from the previous stage every clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

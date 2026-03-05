@@ -35,6 +35,14 @@ At conservative settings, Plasma produces gently undulating colour fields suitab
 
 ---
 
+## Quick Start
+
+1. **Start with Speed 0%**: Freezing the pattern helps understand the spatial interference structure before adding temporal animation.
+2. **Use Pal Speed for colour flow**: Palette cycling adds a second layer of animation independent of the spatial pattern motion — it makes the plasma look more liquid.
+3. **Radial for depth**: The radial component adds a 3D quality. Keep it around 40–60% for subtle curvature without overwhelming the planar terms.
+
+---
+
 ## Background
 
 ### The Demoscene Plasma Effect
@@ -211,7 +219,7 @@ Controls the rate of palette cycling — the continuous rotation of the colour l
 | Default | 75.1% |
 | Suffix | % |
 
-Scales the final output luminance by multiplying the composed Y channel by this register value. At 0%, the output is black regardless of the palette colours. At 100%, the palette colours appear at full intensity. The multiplication is a 10×10-bit product with the upper 10 bits taken as the result, providing smooth analogue-style dimming. This control affects only luminance — chroma (U, V) passes through unscaled, so reducing brightness desaturates the visual appearance slightly as the colour signal remains relative to a dimming luma carrier. Default is 75%, leaving headroom for video modulation.
+At 0%, the output is black regardless of the palette colours. At 100%, the palette colours appear at full intensity. The multiplication is a 10×10-bit product with the upper 10 bits taken as the result, providing smooth analogue-style dimming. This control affects only luminance — chroma (U, V) passes through unscaled, so reducing brightness desaturates the visual appearance slightly as the colour signal remains relative to a dimming luma carrier. Default is 75%, leaving headroom for video modulation. Internally, scales the final output luminance by multiplying the composed Y channel by this register value.
 
 ---
 
@@ -219,7 +227,7 @@ Scales the final output luminance by multiplying the composed Y channel by this 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Classic | Fire |
+| **7 — Palette** | Classic | Ice |
 | **8 — Video Mod** | Off | On |
 | **9 — Waveshape** | Sine | Square |
 | **10 — Lo-Res** | Off | On |
@@ -253,6 +261,10 @@ Lo-Res (toggle 10) operates independently, quantizing pixel coordinates to 4×4 
 
 Crossfades between the delayed input video and the brightness-scaled plasma output. At 0% (fader down), the output is pure dry input — no plasma is visible. At 100% (fader up), the output is the fully composed plasma pattern. Intermediate positions blend the two, allowing the plasma to appear as a semi-transparent colour overlay. In Video Mod mode at 50% mix, the input video shows through with a ghosted plasma texture — useful for subtle chromatic effects.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -263,7 +275,7 @@ These exercises build from a static colour field through animated streaming to c
 
 <img src={plasma_exercise1_result} alt="Static Interference Pattern result"/>
 *Static Interference Pattern — simulated result across source images.*
-**Objective**: Understand how the four sine terms combine to produce the plasma pattern, and how Frequency and Distortion shape the interference field.
+**What You'll Create**: Understand how the four sine terms combine to produce the plasma pattern, and how Frequency and Distortion shape the interference field.
 
 1. **Freeze motion**: Set Speed to 0% and Pal Speed to 0%. The pattern should be completely static.
 2. **Default palette**: Set Palette toggle to the leftmost position (Classic). Leave Video Mod Off and Waveshape at Sine.
@@ -281,7 +293,7 @@ These exercises build from a static colour field through animated streaming to c
 
 <img src={plasma_exercise2_result} alt="Streaming Fire Plasma result"/>
 *Streaming Fire Plasma — simulated result across source images.*
-**Objective**: Explore animation controls and palette cycling to produce the classic flowing plasma effect with the Fire palette.
+**What You'll Create**: Explore animation controls and palette cycling to produce the classic flowing plasma effect with the Fire palette.
 
 1. **Select Fire palette**: Toggle Palette to position 2 (with Video Mod Off and Waveshape Sine, this selects "Fire").
 2. **Enable animation**: Set Speed to ~40%. The interference pattern begins flowing.
@@ -299,7 +311,7 @@ These exercises build from a static colour field through animated streaming to c
 
 <img src={plasma_exercise3_result} alt="Video-Modulated Lo-Res Plasma result"/>
 *Video-Modulated Lo-Res Plasma — simulated result across source images.*
-**Objective**: Combine video modulation with low-resolution mode to texture a live video source with a chunky plasma overlay.
+**What You'll Create**: Combine video modulation with low-resolution mode to texture a live video source with a chunky plasma overlay.
 
 1. **Enable Video Mod**: Flip Video Mod toggle to On. Note: this changes the active palette to an Ocean-family variant.
 2. **Enable Lo-Res**: Flip Lo-Res to On. The plasma pixelates into 4×4 blocks.
@@ -316,9 +328,6 @@ These exercises build from a static colour field through animated streaming to c
 
 ## Tips
 
-- **Start with Speed 0%**: Freezing the pattern helps understand the spatial interference structure before adding temporal animation.
-- **Use Pal Speed for colour flow**: Palette cycling adds a second layer of animation independent of the spatial pattern motion — it makes the plasma look more liquid.
-- **Radial for depth**: The radial component adds a 3D quality. Keep it around 40–60% for subtle curvature without overwhelming the planar terms.
 - **Distortion for directionality**: Push Distortion away from centre to create banded patterns oriented along one axis — useful for horizontal or vertical streaming effects.
 - **Lo-Res for retro aesthetic**: Low-resolution mode with Fire or Neon palette faithfully recreates the chunky 320×200 plasma from DOS demos.
 - **Square mode for contours**: Square waveshape turns the plasma into a topographic map with hard boundaries — effective for creating high-contrast key signals.
@@ -338,6 +347,7 @@ These exercises build from a static colour field through animated streaming to c
 | **Palette cycling** | A technique from indexed-colour display systems where the colour lookup table entries are rotated over time, creating the illusion of motion or colour flow without changing pixel values. |
 | **Quarter-wave LUT** | A lookup table storing only the first quadrant ($0$ to $\pi/2$) of a sine wave. The full waveform is reconstructed via index mirroring and output negation based on the quadrant of the input phase. |
 | **TDM (Time-Division Multiplexing)** | A technique where a single hardware resource is shared among multiple operations by processing them sequentially across different clock cycles. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

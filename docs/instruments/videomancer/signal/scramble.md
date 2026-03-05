@@ -68,6 +68,14 @@ At conservative settings, Scramble produces a mild horizontal displacement that 
 
 ---
 
+## Quick Start
+
+1. **Decode is the signature control**: Sweeping Decode while scrambling is active produces the quintessential descrambler effect — the image snapping in and out of clarity. Start every session with Cut Depth up and Decode sweeping.
+2. **Seed controls the vocabulary**: Different seeds produce completely different scramble patterns. If you find a particularly interesting partial-lock position, that specific seed/decode combination defines it — try several seeds to find the pattern you want.
+3. **Drift creates temporal evolution**: Enable Drift and set a low Drift Rate for slow, meditative cycling between locked and scrambled states. Higher rates produce rapid strobing between clarity and chaos.
+
+---
+
 ## Background
 
 ### Per-Line Cut-and-Rotate Scrambling
@@ -94,6 +102,8 @@ Real descramblers worked by applying the inverse of the scrambling sequence — 
 ---
 
 ## Signal Flow
+
+All Channels → Mix Stage → Sync Signals → Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -220,7 +230,19 @@ The five toggles control independent binary options that can be combined freely.
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the processed (scrambled) signal and the original unprocessed input. At 0% (fully counterclockwise), the output is the clean, unscrambled input signal. At 100% (fully clockwise), the output is the fully processed scrambled signal. Intermediate positions blend the two, which can produce a ghostly overlay of the scrambled and unscrambled images — useful for subtle displacement effects or for monitoring the degree of scrambling while adjusting other controls.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Scramble-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +265,7 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 *Basic Cut-and-Rotate — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects — faces, text, or geometric patterns work well because the scrambling effect is most obvious when you can tell the image *should* be coherent.
 
-**Objective**: Learn how the cut-and-rotate mechanism works and how the Decode control interacts with the LFSR sequence to produce momentary locks.
+**What You'll Create**: Learn how the cut-and-rotate mechanism works and how the Decode control interacts with the LFSR sequence to produce momentary locks.
 
 1. **Set Mix to full wet**: Push the Mix fader to 100% so you see only the scrambled output.
 2. **Engage scrambling**: Slowly increase Cut Depth from zero. Watch as horizontal slices of the image begin to shift apart — the classic "shuffled blinds" effect appears.
@@ -271,7 +293,7 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 *Jitter and Inversion Artifacts — simulated result across source images.*
 **Source**: Any footage, preferably with a mix of bright and dark regions to make inversion zones clearly visible.
 
-**Objective**: Layer sync-suppression jitter and video inversion onto the basic scrambling to create a more complete descrambler failure simulation.
+**What You'll Create**: Layer sync-suppression jitter and video inversion onto the basic scrambling to create a more complete descrambler failure simulation.
 
 1. **Prepare base scramble**: Set Cut Depth to ~60%, Decode to ~30%, Seed to ~25%.
 2. **Add jitter**: Slowly increase the Jitter knob. Watch as lines begin to tremble horizontally — this is the simulated sync suppression. At moderate levels the image swims gently; at high levels it shakes violently.
@@ -299,7 +321,7 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 *Full Descrambler Failure — simulated result across source images.*
 **Source**: Any dynamic video source — movement helps reveal the drift and luma modulation effects.
 
-**Objective**: Combine all features to create the complete descrambler failure experience with auto-drifting lock, content-responsive scrambling, and maximum disruption.
+**What You'll Create**: Combine all features to create the complete descrambler failure experience with auto-drifting lock, content-responsive scrambling, and maximum disruption.
 
 1. **Full scramble**: Set Cut Depth to ~80%, Jitter to ~40%, Invert Period to step 4 (16-line groups), Invert Mode to Full YUV.
 2. **Enable drift**: Flip Drift (Toggle 9) to On. Set Drift Rate to ~30%. Watch as the image begins to cycle between clarity and chaos — the decode offset is wandering automatically.
@@ -316,9 +338,6 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 
 ## Tips
 
-- **Decode is the signature control**: Sweeping Decode while scrambling is active produces the quintessential descrambler effect — the image snapping in and out of clarity. Start every session with Cut Depth up and Decode sweeping.
-- **Seed controls the vocabulary**: Different seeds produce completely different scramble patterns. If you find a particularly interesting partial-lock position, that specific seed/decode combination defines it — try several seeds to find the pattern you want.
-- **Drift creates temporal evolution**: Enable Drift and set a low Drift Rate for slow, meditative cycling between locked and scrambled states. Higher rates produce rapid strobing between clarity and chaos.
 - **Jitter adds realism**: Real descrambler failures always included horizontal instability. Even a small amount of Jitter (10–20%) adds convincing sync-suppression wobble to the scrambled image.
 - **Inversion deepens the disruption**: The inversion zones are most dramatic at medium group sizes (steps 3–5) where you get visible bands without the effect becoming too fine or too coarse. Full YUV inversion is more visually striking than luma-only.
 - **Feedback loops**: Routing Scramble's output back to its input creates recursive scrambling — each feedback pass applies a new layer of cut-and-rotate, rapidly dissolving the image into horizontal noise.
@@ -342,6 +361,7 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 | **Sync suppression** | Deliberate removal or attenuation of horizontal synchronization pulses in an analog video signal, causing the receiving display to lose horizontal timing. |
 | **Wet/dry** | Audio and video processing convention where "wet" refers to the fully processed signal and "dry" refers to the original unprocessed signal. |
 | **XOR** | Exclusive OR; a binary logic operation that outputs 1 when its two inputs differ, used in LFSR feedback paths and bit-level manipulation. |
-| **YUV** | A color encoding scheme that separates luminance (Y) from two chrominance difference signals (U and V), standard in broadcast and digital video processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

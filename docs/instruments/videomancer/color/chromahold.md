@@ -68,6 +68,14 @@ A saturation gate adds intelligence to the selection — low-saturation pixels (
 
 ---
 
+## Quick Start
+
+1. **Use Show Mask first**: Always tune your hue selection in mask mode before switching to the color output. The mask reveals exactly what the algorithm is selecting.
+2. **Sat Gate prevents noise**: Enable Sat Gate whenever working with real camera footage. Gray and near-gray regions produce unreliable hue angles that cause speckle artifacts without gating.
+3. **Edge Soft for realism**: A hard color boundary looks artificial. Even 20–30% edge softness creates a much more natural-looking isolation.
+
+---
+
 ## Background
 
 ### What Is Hue Angle?
@@ -86,6 +94,8 @@ A **saturation gate** is a threshold applied to the chrominance magnitude — th
 ---
 
 ## Signal Flow
+
+UV Channels → Y Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -142,7 +152,7 @@ Selects the target hue angle on the color wheel. The full rotation of the knob c
 | Default | 25% |
 | Suffix | % |
 
-Sets the angular width of the hue window in degrees. At 0%, only pixels exactly matching the target hue are held — an impossibly narrow selection. At higher values, the window widens to accept a broader range of hues around the target. A width of ~30–40% typically captures a single perceptual color family (e.g., "red" or "green"). At 100%, the window is wide enough to accept nearly all hues, effectively disabling the color isolation.
+At 0%, only pixels exactly matching the target hue are held — an impossibly narrow selection. At higher values, the window widens to accept a broader range of hues around the target. A width of ~30–40% typically captures a single perceptual color family (e.g., "red" or "green"). At 100%, the window is wide enough to accept nearly all hues, effectively disabling the color isolation. Internally, sets the angular width of the hue window in degrees.
 
 ---
 
@@ -153,7 +163,7 @@ Sets the angular width of the hue window in degrees. At 0%, only pixels exactly 
 | Default | 25% |
 | Suffix | % |
 
-Controls the softness of the transition between held (colored) and unheld (desaturated) regions. At 0%, the boundary is a hard step — pixels are either fully colored or fully desaturated. As Edge Soft increases, the transition zone widens, creating a gradual feathering where pixels near the window boundary receive partial desaturation. This prevents harsh, aliased edges in the color selection, producing a more natural-looking isolation.
+At 0%, the boundary is a hard step — pixels are either fully colored or fully desaturated. As Edge Soft increases, the transition zone widens, creating a gradual feathering where pixels near the window boundary receive partial desaturation. This prevents harsh, aliased edges in the color selection, producing a more natural-looking isolation. Internally, controls the softness of the transition between held (colored) and unheld (desaturated) regions.
 
 ---
 
@@ -175,7 +185,7 @@ Boosts or cuts the saturation of pixels that pass the hue selection. At mid-posi
 | Default | 0% |
 | Suffix | % |
 
-Sets the desaturation level for pixels outside the hue window. At 0%, unselected pixels are fully desaturated — converted to pure grayscale. At mid-position, they retain roughly half their original saturation. At 100%, no desaturation occurs (the effect is disabled). This control determines the visual contrast between the held color accent and its surrounding context.
+At 0%, unselected pixels are fully desaturated — converted to pure grayscale. At mid-position, they retain roughly half their original saturation. At 100%, no desaturation occurs (the effect is disabled). This control determines the visual contrast between the held color accent and its surrounding context. Internally, sets the desaturation level for pixels outside the hue window.
 
 ---
 
@@ -213,7 +223,29 @@ Switches 7–11 provide selection modifiers and display modes. Invert Sel swaps 
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed chromahold output and the original input signal. At 100%, the output is fully processed. Lowering the fader blends the original color back in, reducing the intensity of the selective desaturation effect. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chroma Hold processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Chroma Hold-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -236,7 +268,7 @@ These exercises progress from basic single-hue isolation to advanced compositing
 *Single Hue Isolation — simulated result across source images.*
 **Source**: A scene with one dominant color and varied background — a red object against a neutral or mixed-color background works well.
 
-**Objective**: Isolate a single color while desaturating the rest of the image.
+**What You'll Create**: Isolate a single color while desaturating the rest of the image.
 
 1. **Find the hue**: Slowly sweep Hue Select through the full range. Watch for the target object to retain color while everything else goes gray.
 2. **Narrow the window**: Reduce Hue Width until only the target hue is held. Too narrow and the selection becomes patchy; too wide and adjacent hues leak through.
@@ -263,7 +295,7 @@ These exercises progress from basic single-hue isolation to advanced compositing
 *Selection Matte Tuning — simulated result across source images.*
 **Source**: Complex scene with multiple similar colors — a market stall, garden, or patterned fabric.
 
-**Objective**: Use Show Mask mode to precisely tune hue selection parameters.
+**What You'll Create**: Use Show Mask mode to precisely tune hue selection parameters.
 
 1. **Enable mask**: Turn on Show Mask (Switch 8). The output becomes a brightness map of the selection.
 2. **Coarse target**: Sweep Hue Select to find the target hue — it appears as white regions in the mask.
@@ -291,7 +323,7 @@ These exercises progress from basic single-hue isolation to advanced compositing
 *Inverted Selection and Creative Color — simulated result across source images.*
 **Source**: Multi-color footage with distinct color zones — video art, abstract animation, or painted surfaces.
 
-**Objective**: Combine inverted selection, saturation boost, and luminance inversion for creative compositing.
+**What You'll Create**: Combine inverted selection, saturation boost, and luminance inversion for creative compositing.
 
 1. **Invert selection**: Select a dominant hue, then enable Invert Sel (Switch 7). The dominant color becomes desaturated while everything else stays colored.
 2. **Partial desaturation**: Set Desat Level to ~40% so the "removed" color retains some pastel saturation.
@@ -306,9 +338,6 @@ These exercises progress from basic single-hue isolation to advanced compositing
 
 ## Tips
 
-- **Use Show Mask first**: Always tune your hue selection in mask mode before switching to the color output. The mask reveals exactly what the algorithm is selecting.
-- **Sat Gate prevents noise**: Enable Sat Gate whenever working with real camera footage. Gray and near-gray regions produce unreliable hue angles that cause speckle artifacts without gating.
-- **Edge Soft for realism**: A hard color boundary looks artificial. Even 20–30% edge softness creates a much more natural-looking isolation.
 - **Invert for removal**: Use Invert Sel to remove a specific color rather than isolate it — useful for "everything except green" or "everything except skin tones."
 - **Partial desat for subtlety**: Setting Desat Level to 30–50% instead of 0% creates a subtle color emphasis rather than the dramatic "one color in a gray world" effect.
 - **Hue Select sweep for discovery**: Slowly sweeping the Hue Select knob across its full range reveals which hues are present in the source material.
@@ -322,12 +351,11 @@ These exercises progress from basic single-hue isolation to advanced compositing
 |------|------------|
 | **Chrominance** | The color information in a video signal, encoded as U (blue-yellow) and V (red-cyan) components in YUV color space. |
 | **Desaturation** | Reducing the color intensity of a pixel toward neutral gray by moving the UV values toward (512, 512). |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hold Factor** | A per-pixel value between 0 and 1 that determines how much of the original color is retained (1 = full color, 0 = fully desaturated). |
 | **Hue Angle** | The angular position of a pixel's color on the UV color wheel, measured in degrees from 0° to 360°. |
 | **Octant** | One of eight 45° sectors dividing the UV chrominance plane, used for efficient hue angle approximation without trigonometry. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Saturation** | The chrominance magnitude — the distance of a pixel's (U, V) from the neutral point (512, 512). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

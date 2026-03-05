@@ -68,6 +68,14 @@ At moderate settings, its effects are subtle — a cream-toned frame with gentle
 
 ---
 
+## Quick Start
+
+1. **Only three knobs matter**: In this version, the active controls are Exposure, Warmth, and Border. The remaining pots and toggles are reserved stubs — ignore them for creative work.
+2. **Frame width scales with the top 8 bits**: The Border knob uses `register >> 2`, so the first quarter-turn of the knob has the finest resolution for thin frames.
+3. **Warm tint is additive**: The Warmth offset affects all pixels equally — it shifts the entire UV gamut, not just specific hues. Strong warmth can push already-warm source material into clipping.
+
+---
+
 ## Background
 
 ### Instant Film and the Polaroid Aesthetic
@@ -90,6 +98,8 @@ Multiplying the luminance channel by a register value implements a brightness ga
 ---
 
 ## Signal Flow
+
+Timing Detection → Border Region Test → IMAGE AREA → Interpolator → Sync Delay Pipeline → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -220,6 +230,21 @@ Of the five toggle switches, only Bypass (Switch 11) produces a visible effect. 
 
 Mix crossfades between the dry (original) signal and the wet (processed) signal via the interpolator stage. At 100% (default, register 1023), only the processed signal is output. At 0%, the original signal passes through unchanged. Intermediate values create a transparent overlay where the border and warm tint are partially visible — useful for subtle framing effects.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Polaroid processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -241,7 +266,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 *Classic Instant Print — simulated result across source images.*
 **Source**: A portrait or still-life shot with warm skin tones and moderate contrast.
 
-**Objective**: Create a convincing Polaroid-style framing with warm tone shift.
+**What You'll Create**: Create a convincing Polaroid-style framing with warm tone shift.
 
 1. Set Border to ~60% to create a visible white frame around the image.
 2. Increase Warmth to ~70% for a noticeable amber cast.
@@ -268,7 +293,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 *Bold Frame Graphic — simulated result across source images.*
 **Source**: High-contrast material — geometric patterns, text overlays, or architectural footage.
 
-**Objective**: Use a thick border and extreme warmth to create a graphic poster effect.
+**What You'll Create**: Use a thick border and extreme warmth to create a graphic poster effect.
 
 1. Push Border to ~90% for a massive frame that nearly envelops the image.
 2. Set Warmth to maximum (100%) for deep amber colour.
@@ -295,7 +320,7 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 *Neutral Frame with Full Brightness — simulated result across source images.*
 **Source**: Any video source — the focus is on the border framing without colour alteration.
 
-**Objective**: Isolate the border effect from the tinting to understand each component independently.
+**What You'll Create**: Isolate the border effect from the tinting to understand each component independently.
 
 1. Set Exposure to 100% (fully clockwise) so brightness is unmodified.
 2. Set Warmth to 0% for neutral chroma.
@@ -311,9 +336,6 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 
 ## Tips
 
-- **Only three knobs matter**: In this version, the active controls are Exposure, Warmth, and Border. The remaining pots and toggles are reserved stubs — ignore them for creative work.
-- **Frame width scales with the top 8 bits**: The Border knob uses `register >> 2`, so the first quarter-turn of the knob has the finest resolution for thin frames.
-- **Warm tint is additive**: The Warmth offset affects all pixels equally — it shifts the entire UV gamut, not just specific hues. Strong warmth can push already-warm source material into clipping.
 - **Exposure is a linear gain**: Unlike a camera exposure which affects noise and dynamic range, this is a simple multiply. Turning Exposure above midpoint recovers full brightness; there is no overexposure bloom.
 - **Mix for transparent borders**: Lowering the Mix fader blends the white frame with the original image, creating a semi-transparent border effect.
 - **White border value**: The border fill is Y=960, not 1023. This is slightly below full white, matching the off-white appearance of aged instant-film prints.
@@ -327,11 +349,10 @@ These exercises explore the three active parameters — Border, Exposure, and Wa
 | **Border Detection** | Comparing pixel coordinates against threshold values to determine whether a pixel falls inside a frame margin. |
 | **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
 | **Chrominance Offset** | Adding or subtracting a constant from the U and V channels to shift the overall hue. |
-| **Interpolator** | A linear crossfade module that blends two signals based on a mix parameter, used for wet/dry control. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Manhattan Distance** | The sum of absolute differences along each axis; used (but not applied) for the vignette calculation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Saturating Arithmetic** | Arithmetic that clamps results to a valid range instead of wrapping around on overflow or underflow. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

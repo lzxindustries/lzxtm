@@ -68,6 +68,14 @@ Crumble draws inspiration from the dissolve and posterization effects found in t
 
 ---
 
+## Quick Start
+
+1. **Seed as composition tool**: Different seeds produce radically different spatial patterns at the same density. Audition several seeds to find a pattern that complements your source material.
+2. **Block size for texture vs. structure**: 1 Pixel creates a fine digital grain. 8×8 creates bold mosaic tiles. Choose based on whether you want subtle texture or architectural fragmentation.
+3. **Depth for selective dissolve**: Low depth values make the effect shadow-sensitive — only dark areas crumble. This is powerful for creating the illusion of decay starting in the recesses of an image.
+
+---
+
 ## Background
 
 ### The Fairlight CVI and Stochastic Dissolves
@@ -96,6 +104,8 @@ A Linear Feedback Shift Register is a shift register whose input bit is a functi
 ---
 
 ## Signal Flow
+
+Input Capture + Counters → Hash + Mask → Processing Chain → Composite Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -163,7 +173,7 @@ Controls the threshold that determines what proportion of the image is affected 
 #### Knob 2 — Process
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects one of four processing modes applied to crumbled pixels. Solarize folds the luminance curve at the midpoint, creating a characteristic brightness reversal where mid-tones become bright and highlights wrap back toward dark. Mono Tint preserves the original luminance but replaces the chrominance with a user-selected hue from the Tint Hue knob. Negative inverts all three channels — luma and both chroma components — producing a photographic negative of the original. Pointillist posterizes brightness into four flat bands (black, one-third, two-thirds, full white) and applies the tint color, creating a hard-edged, screen-print-like texture in the crumbled regions.
@@ -184,7 +194,7 @@ Sets the chrominance color used by the Mono Tint and Pointillist processing mode
 #### Knob 4 — Block Sz
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the spatial scale of the dissolve mask. At 1 Pixel, each individual pixel gets its own hash value — the dissolve pattern is fine-grained, resembling static or grain. At 2×2, adjacent groups of four pixels share a hash, creating small square patches. At 4×4 and 8×8, the patches grow larger, transforming the effect from pixel-level dissolution into a visible mosaic of processed and unprocessed tiles. Larger blocks make the spatial pattern more obvious and give the effect a coarser, more architectural character.
@@ -237,6 +247,21 @@ The five toggles control independent binary modifiers that interact with the mai
 
 Controls the wet/dry crossfade between the delayed original input and the composite crumbled output. At 0%, the output is entirely the unprocessed (delayed) input — no crumble effect is visible. At 100%, the output is entirely the composite signal with the full dissolve mask applied. Intermediate positions blend the crumbled result with the original proportionally, creating a softer version of the effect where processed pixels are partially transparent against the underlying original.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Crumble processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -258,7 +283,7 @@ These exercises progress from understanding the basic dissolve mask to combining
 *Basic Spatial Dissolve — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a mix of bright and dark regions.
 
-**Objective**: Learn how the density control and hash seed create a stable stochastic dissolve mask.
+**What You'll Create**: Learn how the density control and hash seed create a stable stochastic dissolve mask.
 
 1. **Sparse dissolve**: Set Density to about 25%. Observe scattered processed pixels appearing across the image.
 2. **Increase density**: Slowly sweep Density from 25% toward 75%. Watch as the dissolved regions grow and merge.
@@ -285,7 +310,7 @@ These exercises progress from understanding the basic dissolve mask to combining
 *Processing Mode Comparison — simulated result across source images.*
 **Source**: Footage with moderate color saturation — skin tones, foliage, or painted surfaces.
 
-**Objective**: Compare the four processing modes and learn how Tint Hue changes the color in tint-based modes.
+**What You'll Create**: Compare the four processing modes and learn how Tint Hue changes the color in tint-based modes.
 
 1. **Solarize**: Set Process to Solarize, Density to 60%. Observe the characteristic brightness fold in the crumbled regions.
 2. **Mono Tint**: Switch Process to MonoTint. The crumbled pixels retain their brightness but take on the hue set by Tint Hue. Sweep Tint Hue across 0–360° to explore the color range.
@@ -312,7 +337,7 @@ These exercises progress from understanding the basic dissolve mask to combining
 *Animated Dissolve with Auto-Sweep — simulated result across source images.*
 **Source**: Any video footage — motion enhances the breathing animation.
 
-**Objective**: Combine auto-sweep, depth gating, and chroma kill for an animated, shadow-sensitive dissolve.
+**What You'll Create**: Combine auto-sweep, depth gating, and chroma kill for an animated, shadow-sensitive dissolve.
 
 1. **Auto-sweep**: Enable AutoSwep with Density at about 40%. Watch the dissolve breathe — crumbled regions expand and contract rhythmically.
 2. **Depth gate**: Lower Depth to about 25%. Now only dark regions of the image are processed; bright areas remain untouched. The dissolve eats into the shadows first.
@@ -327,9 +352,6 @@ These exercises progress from understanding the basic dissolve mask to combining
 
 ## Tips
 
-- **Seed as composition tool**: Different seeds produce radically different spatial patterns at the same density. Audition several seeds to find a pattern that complements your source material.
-- **Block size for texture vs. structure**: 1 Pixel creates a fine digital grain. 8×8 creates bold mosaic tiles. Choose based on whether you want subtle texture or architectural fragmentation.
-- **Depth for selective dissolve**: Low depth values make the effect shadow-sensitive — only dark areas crumble. This is powerful for creating the illusion of decay starting in the recesses of an image.
 - **Mix for layering**: Intermediate Mix values make the crumbled regions semi-transparent, creating a ghostly double-exposure effect where processed and original pixels blend together.
 - **Auto-sweep + low density**: With density centered low and auto-sweep active, the dissolve breathes gently in and out — a handful of scattered pixels pulse with each sweep cycle.
 - **Pointillist + large blocks**: Combining the Pointillist mode with 4×4 or 8×8 blocks creates a mosaic of flat colored tiles, strongly evoking Neo-Impressionist painting.
@@ -349,15 +371,14 @@ These exercises progress from understanding the basic dissolve mask to combining
 | **Deterministic Hash** | A function that always produces the same output for the same input, enabling stable spatial patterns without frame-buffer storage. |
 | **Dissolve** | A transition effect where pixels from two sources are mixed together; in Crumble, the two "sources" are the processed and unprocessed versions of the same signal. |
 | **Fairlight CVI** | The Fairlight Computer Video Instrument (1984), a pioneering digital video effects processor known for stochastic dissolves and posterization. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Galois LFSR** | A linear feedback shift register with feedback taps distributed along the register, providing efficient pseudo-random scrambling. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is an XOR of selected positions, producing a pseudo-random sequence. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Pointillism** | A painting technique using individual dots of color that blend optically at a distance, referenced by the Pointillist processing mode. |
 | **Posterization** | Reducing continuous tonal values to a small number of discrete levels, creating flat bands of uniform brightness or color. |
 | **Solarization** | A photographic effect where tones are partially reversed, originally caused by extreme overexposure; simulated by folding the brightness curve at the midpoint. |
 | **Stochastic** | Involving randomness or probability; in Crumble, the pseudo-random spatial mask is stochastic in appearance but deterministic in computation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ The name is literal — a *viewfinder* is the optical or electronic device throu
 
 ---
 
+## Quick Start
+
+1. **No bypass toggle**: Viewfinder uses all five toggles for features. Use the Mix fader at 0% for an unprocessed signal, or reduce it for a subtle overlay blend.
+2. **Zebra + peaking together**: Both overlays paint directly onto the image. Peaking overrides zebra in regions where both conditions are met (edge above threshold AND luma above zebra level), because peaking is processed after zebra in the pipeline.
+3. **Desaturate first**: For the most authentic EVF look, set Desat to 100% before enabling overlays. The monochrome base makes colored peaking highlights pop dramatically.
+
+---
+
 ## Background
 
 ### Electronic Viewfinder History
@@ -90,6 +98,8 @@ Television sets of the CRT era overscanned the image — the edges of the transm
 ---
 
 ## Signal Flow
+
+Desaturation → Brightness → Zebra Overlay → ... → REC Indicator → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -124,7 +134,7 @@ The desaturation and brightness stages modify the underlying image before any ov
 | Default | 75.1% |
 | Suffix | % |
 
-Sets the luminance threshold above which zebra stripes appear. At low values zebra stripes appear on most of the image; at high values only the brightest highlights trigger the pattern. Professional cameras typically offer 70% and 100% IRE presets — this continuous control lets you sweep through the entire range. The stripes become most useful when set just below the clipping point of your source, where they highlight exactly which regions are approaching overexposure.
+At low values zebra stripes appear on most of the image; at high values only the brightest highlights trigger the pattern. Professional cameras typically offer 70% and 100% IRE presets — this continuous control lets you sweep through the entire range. The stripes become most useful when set just below the clipping point of your source, where they highlight exactly which regions are approaching overexposure. Internally, sets the luminance threshold above which zebra stripes appear.
 
 ---
 
@@ -135,14 +145,14 @@ Sets the luminance threshold above which zebra stripes appear. At low values zeb
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the sensitivity threshold for focus peaking. At zero, no edges are highlighted. As you increase the value, progressively weaker edges trigger the colored overlay. At maximum sensitivity even gentle gradients produce peaking highlights, flooding the image with color. The sweet spot depends on the source material — high-contrast footage needs less sensitivity than soft, low-contrast scenes.
+At zero, no edges are highlighted. As you increase the value, progressively weaker edges trigger the colored overlay. At maximum sensitivity even gentle gradients produce peaking highlights, flooding the image with color. The sweet spot depends on the source material — high-contrast footage needs less sensitivity than soft, low-contrast scenes. Internally, controls the sensitivity threshold for focus peaking.
 
 ---
 
 #### Knob 3 — Peak Color
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the color of the focus peaking highlight from four options: Red, Green, Blue, and Yellow. Each color is defined as a fixed YUV constant — Red uses high V (warm), Green uses low U and low V, Blue uses high U, and Yellow uses low U and high V. Choose a peaking color that contrasts well with the dominant colors in your source material so the highlights remain visible.
@@ -167,7 +177,7 @@ Scales the overall brightness of the processed image. At the midpoint the image 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the opacity of overlay guide graphics — specifically the safe-area rectangle border and the center crosshair lines. At zero the guides are invisible even when enabled; at maximum they are drawn at full white. This lets you keep guides enabled but subtly visible, or push them to high contrast for precise framing.
+At zero the guides are invisible even when enabled; at maximum they are drawn at full white. This lets you keep guides enabled but subtly visible, or push them to high contrast for precise framing. Internally, controls the opacity of overlay guide graphics — specifically the safe-area rectangle border and the center crosshair lines.
 
 ---
 
@@ -207,6 +217,10 @@ The five toggles independently enable or disable overlay features. Unlike progra
 
 Crossfades between the original dry signal and the fully processed wet signal. At 0% the output is the unmodified input; at 100% the output is the complete EVF simulation with all active overlays. Intermediate positions blend the two, allowing subtle viewfinder aesthetics over the original image.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -228,7 +242,7 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 *Exposure Monitoring with Zebras — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with a mix of highlights and shadows — outdoor scenes with sky and foreground work well.
 
-**Objective**: Learn how zebra stripes reveal exposure levels in the source material.
+**What You'll Create**: Learn how zebra stripes reveal exposure levels in the source material.
 
 1. Enable the Zebra toggle and set Zebra Level to about 75%.
 2. Observe which parts of the image show diagonal stripes — these are areas above the threshold.
@@ -255,7 +269,7 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 *Focus Peaking and Desaturation — simulated result across source images.*
 **Source**: Close-up footage with a shallow depth of field — partially focused subjects with soft backgrounds.
 
-**Objective**: Explore focus peaking as an edge-detection overlay and combine it with desaturation for the classic B&W EVF look.
+**What You'll Create**: Explore focus peaking as an edge-detection overlay and combine it with desaturation for the classic B&W EVF look.
 
 1. Enable the Peaking toggle and set sensitivity to about 40%.
 2. Observe colored highlights appearing on in-focus edges. Out-of-focus areas remain clean.
@@ -283,7 +297,7 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 *Full EVF Simulation — simulated result across source images.*
 **Source**: Any footage — documentary, narrative, or abstract. The complete EVF look transforms everything.
 
-**Objective**: Combine all overlay features with desaturation and brightness to create a convincing 1990s camcorder viewfinder aesthetic.
+**What You'll Create**: Combine all overlay features with desaturation and brightness to create a convincing 1990s camcorder viewfinder aesthetic.
 
 1. Set Desat to 100% for full monochrome.
 2. Set Brightness to about 60% for a slightly bright, contrasty EVF look.
@@ -300,9 +314,6 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 
 ## Tips
 
-- **No bypass toggle**: Viewfinder uses all five toggles for features. Use the Mix fader at 0% for an unprocessed signal, or reduce it for a subtle overlay blend.
-- **Zebra + peaking together**: Both overlays paint directly onto the image. Peaking overrides zebra in regions where both conditions are met (edge above threshold AND luma above zebra level), because peaking is processed after zebra in the pipeline.
-- **Desaturate first**: For the most authentic EVF look, set Desat to 100% before enabling overlays. The monochrome base makes colored peaking highlights pop dramatically.
 - **Guide Opac for subtlety**: Keep guide opacity low (20–30%) for functional monitoring overlays that don't dominate the image. Push to 100% for a graphic, on-screen-display aesthetic.
 - **Brightness as contrast**: Pushing Brightness above 50% while desaturated creates the blown-highlight, crushed-black look of a worn CRT phosphor.
 - **Peaking sensitivity**: Start low and increase slowly. Too much sensitivity floods the image with color, obscuring the actual focus information.
@@ -315,16 +326,15 @@ These exercises progress from basic exposure monitoring to full EVF aesthetic si
 | Term | Definition |
 |------|------------|
 | **Action-Safe Area** | The inner 90% of a television frame within which all significant action should be visible on overscanning CRT displays. |
-| **BRAM** | Block RAM; dedicated FPGA memory resources. Viewfinder uses zero BRAMs. |
 | **CRT** | Cathode Ray Tube; the display technology used in camcorder viewfinders before LCD panels. |
 | **EVF** | Electronic Viewfinder; a miniature display in a camera eyepiece showing the live camera output. |
 | **Focus Peaking** | A camera monitoring technique that highlights in-focus edges with a colored overlay. |
 | **IRE** | Institute of Radio Engineers unit; a scale for measuring video signal amplitude where 100 IRE is peak white. |
 | **LUT** | Look-Up Table; the basic FPGA logic element. Viewfinder uses approximately 350. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Sobel** | A gradient-based edge detection operator; Viewfinder uses a simplified 3-pixel horizontal variant. |
 | **Title-Safe Area** | The inner 80% of a television frame within which all on-screen text must remain visible. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
 | **Zebra Stripes** | Diagonal hatching patterns overlaid on overexposed regions of a camera viewfinder display. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

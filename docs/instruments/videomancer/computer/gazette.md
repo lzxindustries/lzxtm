@@ -68,6 +68,14 @@ At default settings Gazette produces clean retro-computing aesthetics with sharp
 
 ---
 
+## Quick Start
+
+1. **8px cells for authenticity**: The ZX Spectrum used 8 × 8 character cells. Setting Cell Size to 8px in Square mode produces the most historically accurate attribute clash pattern.
+2. **Black Paper for clarity**: Enable Black Paper when you want the palette colors to stand out against a clean background. This avoids the muddy look that comes from mismatched paper colors in adjacent cells.
+3. **Color Bleed transforms aesthetics**: Even a small amount of color bleed softens the harsh cell boundaries and adds an analog warmth. High bleed at large cell sizes produces wide rainbow streaks reminiscent of badly tuned PAL decoders.
+
+---
+
 ## Background
 
 ### The ZX Spectrum Attribute Cell
@@ -94,6 +102,8 @@ The ZX Spectrum's attribute byte included a single FLASH bit. When set, the hard
 ---
 
 ## Signal Flow
+
+Input Registration → Palette Index + Threshold → Output Registration
 
 ```
 Input Video (YUV 4:4:4)
@@ -242,6 +252,10 @@ The five toggles provide independent control over palette brightness, cell geome
 
 Controls the wet/dry mix between the original input and the palette-restricted output. At 100% (fully up), the output is entirely the cell-colored signal. Pulling the fader down crossfades toward the original video, with 0% reproducing the input exactly. Intermediate positions create a translucent overlay effect where the cell grid is visible but the original image shows through. Three parallel `interpolator_u` instances handle Y, U, and V channels independently with 10-bit fractional precision.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -263,7 +277,7 @@ These exercises progress from exploring basic palette restriction to combining c
 *ZX Spectrum Text Screen — simulated result across source images.*
 **Source**: A camera pointed at printed text, a title card, or any high-contrast monochrome source.
 
-**Objective**: Recreate the ZX Spectrum's characteristic BASIC screen appearance — white text on a black background with sharp 8-pixel cells.
+**What You'll Create**: Recreate the ZX Spectrum's characteristic BASIC screen appearance — white text on a black background with sharp 8-pixel cells.
 
 1. **Set the palette**: Turn Palette (Knob 5) to "ZX" (fully counter-clockwise).
 2. **8-pixel cells**: Set Cell Size (Knob 1) to "8px" (one step from minimum).
@@ -293,7 +307,7 @@ These exercises progress from exploring basic palette restriction to combining c
 *Commodore Color Clash — simulated result across source images.*
 **Source**: Footage with varied colors and moderate contrast — flowers, market scenes, or colorful patterns.
 
-**Objective**: Explore how different palettes and cell sizes generate "attribute clash" — the visible seams between adjacent cells that use different color pairs.
+**What You'll Create**: Explore how different palettes and cell sizes generate "attribute clash" — the visible seams between adjacent cells that use different color pairs.
 
 1. **C64 palette**: Turn Palette (Knob 5) to "C64" (two steps from minimum).
 2. **Large cells**: Set Cell Size (Knob 1) to "32px" for dramatic cell boundaries.
@@ -323,7 +337,7 @@ These exercises progress from exploring basic palette restriction to combining c
 *Composite Artifact Machine — simulated result across source images.*
 **Source**: Any dynamic footage with motion — panning cameras, moving subjects, or scrolling graphics.
 
-**Objective**: Combine color bleed, palette bias, and flash to replicate the full experience of 8-bit computer graphics on a composite video connection.
+**What You'll Create**: Combine color bleed, palette bias, and flash to replicate the full experience of 8-bit computer graphics on a composite video connection.
 
 1. **CGA palette**: Set Palette to "CGA" — its browns and magentas are especially prone to composite artifacts.
 2. **8-pixel cells**: Set Cell Size to "8px" and enable Square mode for a character-cell grid.
@@ -340,9 +354,6 @@ These exercises progress from exploring basic palette restriction to combining c
 
 ## Tips
 
-- **8px cells for authenticity**: The ZX Spectrum used 8 × 8 character cells. Setting Cell Size to 8px in Square mode produces the most historically accurate attribute clash pattern.
-- **Black Paper for clarity**: Enable Black Paper when you want the palette colors to stand out against a clean background. This avoids the muddy look that comes from mismatched paper colors in adjacent cells.
-- **Color Bleed transforms aesthetics**: Even a small amount of color bleed softens the harsh cell boundaries and adds an analog warmth. High bleed at large cell sizes produces wide rainbow streaks reminiscent of badly tuned PAL decoders.
 - **Threshold tracks contrast**: High-contrast source material works best at the default 50% threshold. For low-contrast footage, lower the threshold to ensure enough pixels qualify as ink to produce visible detail.
 - **Flash as performance tool**: Flash creates a rhythmic visual pulse that works well synchronized to music or other temporal events. The ~0.5-second cycle is slow enough to read but fast enough to feel energetic.
 - **Mix for layering**: Use the fader at 40–60% to overlay the cell grid on the original video. The retro-computing aesthetic bleeds through the live image, creating a palimpsest effect.
@@ -357,22 +368,20 @@ These exercises progress from exploring basic palette restriction to combining c
 |------|------------|
 | **Attribute Cell** | A rectangular region of the screen that shares a single foreground (ink) and background (paper) color pair, as used by 1980s home computers. |
 | **Attribute Clash** | The visible discontinuity at the boundary between adjacent attribute cells that use different color pairs, producing hard color seams in the image. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric, used here for the 256-entry column luma sample buffer. |
 | **BT.601** | ITU-R standard defining the YUV color matrix used for standard-definition video encoding and decoding. |
 | **C64** | Commodore 64; a home computer (1982) whose VIC-II video chip produced a distinctive 16-color palette. |
 | **CGA** | Color Graphics Adapter; IBM's first color display standard (1981) with a fixed 16-color palette. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Composite Video** | An analog video format that encodes luminance and chrominance on a single wire, causing chroma bandwidth limitations and color bleeding. |
 | **FLASH** | An attribute flag on the ZX Spectrum that caused the ink and paper colors of a cell to swap at approximately 1 Hz. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter structure where the output feeds back into the computation, creating exponential decay. |
 | **Ink** | The foreground color assigned to bright pixels within an attribute cell. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **MSX** | A standardized home computer architecture (1983) using the TMS9918A video processor with a 15+1 color palette. |
 | **Paper** | The background color assigned to dark pixels within an attribute cell. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **ROM** | Read-Only Memory; here, a lookup table of pre-computed palette values synthesized into FPGA logic at build time. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **ZX Spectrum** | A home computer by Sinclair Research (1982) famous for its attribute cell color system and resulting attribute clash. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Three potentiometer registers (4, 5, 6) are declared in the VHDL but not connect
 
 ---
 
+## Quick Start
+
+1. **H and V are independent**: Mosaic's most expressive textures come from deliberately mismatched horizontal and vertical block sizes — try wide columns or flat bars before settling on squares.
+2. **Luma Mod is the signature control**: Content-adaptive pixelation distinguishes Mosaic from a simple downsampler. Even small amounts (10–20%) create visible tonal mapping in the grid geometry.
+3. **Invert before modulate**: Because Luma Invert precedes the modulation computation, it completely reverses which image regions get coarser blocks. Use it as a creative tool, not just a preprocessing step.
+
+---
+
 ## Background
 
 ### Sample-and-Hold Pixelation
@@ -96,6 +104,8 @@ When engaged, the chroma kill toggle forces U and V to the neutral midpoint (512
 ---
 
 ## Signal Flow
+
+Input Register → Horizontal → Vertical Hold → Edge Enhance
 
 ```
 Input Video (YUV 4:4:4)
@@ -228,6 +238,21 @@ The five toggles control independent binary processing options. Luma Invert and 
 
 Controls the wet/dry crossfade between the original input and the mosaic output. At 0%, the output is the unmodified input. At 100%, the output is the full mosaic effect. Intermediate values blend the two, creating a semi-transparent pixelated overlay on the source.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Mosaic processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +274,7 @@ These exercises progress from basic pixelation through content-adaptive modulati
 *Basic Pixelation — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied color.
 
-**Objective**: Learn how horizontal and vertical block size controls interact to create rectangular mosaic blocks.
+**What You'll Create**: Learn how horizontal and vertical block size controls interact to create rectangular mosaic blocks.
 
 1. **Horizontal blocks**: Set H Block Size to ~50%. The image breaks into wide vertical bands of held color. V Block Size remains at 0, so each scanline is independent.
 2. **Vertical blocks**: Reset H Block Size to 0, set V Block Size to ~50%. Horizontal bands appear — each block row repeats the same scanline.
@@ -276,7 +301,7 @@ These exercises progress from basic pixelation through content-adaptive modulati
 *Content-Adaptive Modulation — simulated result across source images.*
 **Source**: Footage with strong luminance contrast — a face against a dark background, or a brightly lit subject with shadows.
 
-**Objective**: Explore how luma modulation creates non-uniform, content-aware pixelation.
+**What You'll Create**: Explore how luma modulation creates non-uniform, content-aware pixelation.
 
 1. **Base mosaic**: Set H Block Size to ~20%, V Block Size to ~20%, Square Mode off.
 2. **Introduce modulation**: Slowly increase Luma Mod from 0. Bright areas of the image begin to develop wider blocks while dark areas retain finer resolution.
@@ -303,7 +328,7 @@ These exercises progress from basic pixelation through content-adaptive modulati
 *Stained Glass Effect — simulated result across source images.*
 **Source**: Footage with varied color and moderate contrast — nature scenes, architectural subjects, or abstract patterns.
 
-**Objective**: Combine edge enhancement and chroma kill with modulated pixelation for a faceted, monochrome stained-glass texture.
+**What You'll Create**: Combine edge enhancement and chroma kill with modulated pixelation for a faceted, monochrome stained-glass texture.
 
 1. **Moderate mosaic**: Set H Block Size to ~25%, V Block Size to ~25%.
 2. **Enable edges**: Toggle Edge Enhance. Bright outlines appear at every block boundary, giving the mosaic a beveled, faceted quality.
@@ -319,9 +344,6 @@ These exercises progress from basic pixelation through content-adaptive modulati
 
 ## Tips
 
-- **H and V are independent**: Mosaic's most expressive textures come from deliberately mismatched horizontal and vertical block sizes — try wide columns or flat bars before settling on squares.
-- **Luma Mod is the signature control**: Content-adaptive pixelation distinguishes Mosaic from a simple downsampler. Even small amounts (10–20%) create visible tonal mapping in the grid geometry.
-- **Invert before modulate**: Because Luma Invert precedes the modulation computation, it completely reverses which image regions get coarser blocks. Use it as a creative tool, not just a preprocessing step.
 - **Edge Enhance for structure**: The 4× amplification of block-boundary differences creates strong visual outlines. Combine with Chroma Kill for a pure geometry display.
 - **Square Mode for simplicity**: When exploring Luma Mod, enable Square Mode so both axes respond to a single control. Disable it later for asymmetric textures.
 - **Partial Mix for overlay**: At 30–60% Mix, the mosaic acts as a semi-transparent texture layer over the original. Edge-enhanced monochrome mosaics make especially effective overlays.
@@ -337,13 +359,12 @@ These exercises progress from basic pixelation through content-adaptive modulati
 | **Chebyshev Distance** | An approximation of distance using $\max(|x|, |y|)$; not used in Mosaic but referenced in related programs. |
 | **Chroma Kill** | Forcing the color components (U, V) to the neutral midpoint (512), producing monochrome output. |
 | **Edge Enhancement** | Amplifying the luminance difference between adjacent blocks to create visible boundary highlights. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hold Period** | The number of pixel clocks or scanlines that a sampled value is maintained before a new sample is taken. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Luma Modulation** | Varying a processing parameter (here, block size) based on the input luminance, creating content-adaptive effects. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sample-and-Hold** | A circuit that captures an input value at a specific instant and maintains that value as its output until the next sampling event. |
 | **Saturation Clamping** | Limiting a computed value to a maximum (here, 1023) to prevent overflow or wraparound artifacts. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

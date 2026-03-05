@@ -50,6 +50,14 @@ At large cell sizes and high contrast, the effect is a coarse binary interpretat
 
 ---
 
+## Quick Start
+
+1. **TOML label cheat sheet**: Pot 6 ("Threshold" label) = Mix. Toggle 10 ("Animate" label) = Bypass. Toggle 11 ("Bypass" label) = not connected. Fader ("Mix" label) = not connected.
+2. **Bypass workaround**: If you expect Bypass on toggle 11, set pot 6 to fully counter-clockwise instead to get a 100% dry signal.
+3. **Cell size steps**: Cell sizes snap between powers of two (8/16/32/64/128), so sweep the pot slowly to find each transition point.
+
+---
+
 ## Background
 
 ### The Hollerith Punch Card
@@ -72,6 +80,8 @@ Physical punch cards have a visible border of card stock around each hole — th
 ---
 
 ## Signal Flow
+
+Input Register → Threshold → Source vs Card Stock → Final Output Register   
 
 ```
 Input Video (YUV 4:4:4)
@@ -196,8 +206,8 @@ The critical subtlety is *where* the luma is sampled for the punch decision: at 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Card** | IBM | Hollerth |
-| **8 — Holes** | Round | Rect |
+| **7 — Card** | IBM | Metal |
+| **8 — Holes** | Round | Diamond |
 | **9 — Fill** | Source | Solid |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -217,6 +227,10 @@ The four active toggles control cell density, hole border style, punch logic inv
 
 **Not connected in VHDL.** Despite being labeled "Mix" in the TOML, the linear fader (register 7) is not used in the Punchcard architecture. The actual wet/dry mix control is potentiometer 6 (register 5, labeled "Threshold" in the TOML). Moving this fader has no effect.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -227,7 +241,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 **Source**: A well-lit face or scene with clear bright and dark regions — high contrast footage works best.
 
-**Objective**: Create a classic punch card readout and learn how cell size and threshold interact.
+**What You'll Create**: Create a classic punch card readout and learn how cell size and threshold interact.
 
 1. **Large cells**: Set Hole Sz (Cell Width) and Rows (Cell Height) to ~60% for 32-pixel cells. Feed the source and observe the coarse grid.
 2. **Threshold sweep**: Slowly turn Columns (Threshold) from fully counter-clockwise to fully clockwise. Watch as more cells flip from punched to card stock. Find the threshold that best separates the subject from the background.
@@ -243,7 +257,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 **Source**: Abstract video synthesis output or colorful patterns — something with varied colors and brightness.
 
-**Objective**: Create a borderless binary mosaic that uses the source color in punched regions.
+**What You'll Create**: Create a borderless binary mosaic that uses the source color in punched regions.
 
 1. **Small cells**: Set Hole Sz (Cell Width) and Rows (Cell Height) to ~20% for 8–16 pixel cells.
 2. **Borderless**: Toggle Holes (Style) on to remove hole borders. Each cell is now entirely source or entirely card stock.
@@ -260,7 +274,7 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 **Source**: Slowly moving or evolving footage — a camera pan, time-lapse, or modulated synthesis.
 
-**Objective**: Create a data-stream visualization that responds to the source content in real time.
+**What You'll Create**: Create a data-stream visualization that responds to the source content in real time.
 
 1. **Dense grid**: Set Hole Sz and Rows to ~10% (8-pixel cells) and toggle Card (Density) on for maximum grid density.
 2. **Moderate threshold**: Set Columns (Threshold) to ~40% so the punch pattern is responsive to the source content.
@@ -276,9 +290,6 @@ These exercises explore the punch card grid from basic binary quantization throu
 
 ## Tips
 
-- **TOML label cheat sheet**: Pot 6 ("Threshold" label) = Mix. Toggle 10 ("Animate" label) = Bypass. Toggle 11 ("Bypass" label) = not connected. Fader ("Mix" label) = not connected.
-- **Bypass workaround**: If you expect Bypass on toggle 11, set pot 6 to fully counter-clockwise instead to get a 100% dry signal.
-- **Cell size steps**: Cell sizes snap between powers of two (8/16/32/64/128), so sweep the pot slowly to find each transition point.
 - **Density for quick compare**: The Density toggle is a one-switch preview of a finer grid — useful for quickly evaluating whether smaller cells improve the look.
 - **Card stock always has color**: Even at Y=0 or Y=1023, the card stock retains its U=500/V=520 warm tint. For pure neutral card stock, chain with a downstream desaturation program.
 - **Threshold at edges**: The luma threshold is very sensitive at high contrast boundaries. Small threshold changes produce large visual shifts at content edges.
@@ -294,12 +305,12 @@ These exercises explore the punch card grid from basic binary quantization throu
 | **Cell** | A rectangular grid element defined by the cell width and height parameters; each cell is independently classified as punched or unpunched. |
 | **Edge Inset** | The number of pixels of card stock border around each punched hole, creating the visible border between adjacent holes. |
 | **Hollerith** | Herman Hollerith, inventor of the punch card tabulating system used in the 1890 US Census; the format was later standardized by IBM. |
-| **Interpolator** | A pipelined hardware unit computing a + (b − a) × t for crossfading between two signals. |
 | **Intra-Cell Position** | The pixel's coordinates within its containing cell, computed via bit masking from the global pixel counters. |
 | **Luma Threshold** | The Y value above which a cell is classified as "punched"; sampled at the left edge of each cell column. |
 | **Power-of-Two** | Cell sizes restricted to 2^n (8, 16, 32, 64, 128) for efficient bit-mask computation in FPGA logic. |
 | **Punch** | A transparent opening in the card stock that reveals the source video underneath; determined by the luma threshold comparison. |
 | **Shift Amount** | The bit-shift exponent (3–7) used to derive cell size; pot value is mapped through five thresholds to select the exponent. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings — slow strobe rate, long flash duration, moderate per
 
 ---
 
+## Quick Start
+
+1. **Strobe Rate and Exposures are independent**: Rate sets how often the strobe fires; Exposures sets how long each flash lasts. Adjust both to find the rhythm.
+2. **Persistence is the key to multi-exposure**: Turn up Brightness (pot 4) to build up ghost trails. Low values give crisp double-exposures; high values give long luminous smears.
+3. **Dark level shapes the contrast**: Decay controls how deep the darkness goes between flashes. For dramatic results, keep it low; for subtle flickering, keep it high.
+
+---
+
 ## Background
 
 ### Direct Digital Synthesis (DDS)
@@ -94,6 +102,8 @@ Stroboscopic effects in the analog darkroom are inherently monochrome — the ph
 ---
 
 ## Signal Flow
+
+Input Register → Flash → Persistence Diff + Shift → IIR Update → Blend + Noise + Mono
 
 ```
 Input Video (YUV 4:4:4)
@@ -151,7 +161,7 @@ The critical interaction is between the DDS flash gate and the IIR persistence. 
 | Default | 50% |
 | Suffix | % |
 
-Controls the strobe flash frequency by setting the DDS phase increment. At low values, the DDS advances slowly and the strobe cycle is long — many frames between flashes. At high values, the DDS increment is large and the strobe fires rapidly, approaching a continuous flash at maximum. The frequency relationship is linear: doubling the register value doubles the strobe rate. At very low settings, individual flash events become visible as distinct brightening pulses. At very high settings, the strobe frequency exceeds the persistence decay rate and the output appears continuously lit with subtle pulsation.
+At low values, the DDS advances slowly and the strobe cycle is long — many frames between flashes. At high values, the DDS increment is large and the strobe fires rapidly, approaching a continuous flash at maximum. The frequency relationship is linear: doubling the register value doubles the strobe rate. At very low settings, individual flash events become visible as distinct brightening pulses. At very high settings, the strobe frequency exceeds the persistence decay rate and the output appears continuously lit with subtle pulsation. Internally, controls the strobe flash frequency by setting the DDS phase increment.
 
 ---
 
@@ -161,7 +171,7 @@ Controls the strobe flash frequency by setting the DDS phase increment. At low v
 | Range | 2 – 8 |
 | Default | 5 |
 
-Sets the flash duration — the proportion of each strobe cycle spent in the bright "flash" phase. At low values, the flash is a narrow pulse: the image flickers on for a brief instant then goes dark. At high values, the flash occupies most of the cycle, and the dark phase becomes a brief dip. This control directly shapes the duty cycle of the stroboscopic pattern. Narrow flashes produce crisp, staccato multi-exposure freezes; wide flashes produce a gentler brightness modulation closer to a flicker effect.
+At low values, the flash is a narrow pulse: the image flickers on for a brief instant then goes dark. At high values, the flash occupies most of the cycle, and the dark phase becomes a brief dip. This control directly shapes the duty cycle of the stroboscopic pattern. Narrow flashes produce crisp, staccato multi-exposure freezes; wide flashes produce a gentler brightness modulation closer to a flicker effect. Internally, sets the flash duration — the proportion of each strobe cycle spent in the bright "flash" phase.
 
 ---
 
@@ -172,7 +182,7 @@ Sets the flash duration — the proportion of each strobe cycle spent in the bri
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness floor during the dark phase between strobe flashes. At minimum, the dark phase is nearly black — only the persistence trail provides any light. At higher values, the source video remains partially visible even during dark phases, producing a softer contrast between flash and dark. This parameter determines how much of the original image "leaks through" between exposures. Setting it high reduces the strobe contrast to a gentle flickering overlay; setting it low creates dramatic black gaps between flashes.
+At minimum, the dark phase is nearly black — only the persistence trail provides any light. At higher values, the source video remains partially visible even during dark phases, producing a softer contrast between flash and dark. This parameter determines how much of the original image "leaks through" between exposures. Setting it high reduces the strobe contrast to a gentle flickering overlay; setting it low creates dramatic black gaps between flashes. Internally, controls the brightness floor during the dark phase between strobe flashes.
 
 ---
 
@@ -194,7 +204,7 @@ Governs the IIR persistence decay speed. This control selects a bit-shift value 
 | Default | 50% |
 | Suffix | % |
 
-Controls the amplitude of LFSR noise injected during dark phases. At minimum, the dark phase is a clean attenuation — smooth and silent. As the value increases, progressively stronger film-grain noise fills the darkness between strobe flashes. The noise is AND-masked with this parameter's top bits, so the amplitude scales in powers of two. At maximum, the noise is clearly visible as a coarse grain pattern. This control has no effect during flash phases — noise is gated by the flash detector.
+At minimum, the dark phase is a clean attenuation — smooth and silent. As the value increases, progressively stronger film-grain noise fills the darkness between strobe flashes. The noise is AND-masked with this parameter's top bits, so the amplitude scales in powers of two. At maximum, the noise is clearly visible as a coarse grain pattern. This control has no effect during flash phases — noise is gated by the flash detector. Internally, controls the amplitude of LFSR noise injected during dark phases.
 
 ---
 
@@ -213,8 +223,8 @@ Sets the brightness boost applied to the source video during flash phases. At th
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Add | Blend |
-| **8 — Sync** | Free | Frame |
+| **7 — Mode** | Add | Diff |
+| **8 — Sync** | Free | Ext |
 | **9 — Color Trail** | Off | On |
 | **10 — Freeze** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -233,6 +243,21 @@ The five toggles control independent processing modes. Mode selects between norm
 | Suffix | % |
 
 Crossfades between the dry (unprocessed) input and the wet (strobed) output. At 100%, only the processed strobe signal is output. At 0%, the original input passes through unchanged. Intermediate positions create a transparent overlay of the strobe effect on top of the source, useful for subtle ghost-trail additions without full stroboscopic darkness. The interpolation is linear per-channel (Y, U, V independently).
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Strobe processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +280,7 @@ These exercises build from basic single-flash freeze effects through multi-expos
 *Basic Strobe Freeze — simulated result across source images.*
 **Source**: A slowly moving subject — a hand waving, a pendulum, or scrolling text.
 
-**Objective**: Understand the relationship between strobe rate, flash duration, and the resulting freeze effect.
+**What You'll Create**: Understand the relationship between strobe rate, flash duration, and the resulting freeze effect.
 
 1. **Single slow flash**: Set Strobe Rate to ~15%. The strobe fires infrequently. Watch the source alternate between bright flash moments and dark gaps.
 2. **Narrow pulse**: Reduce Exposures to ~10%. The flash becomes a brief burst — crisp snapshots separated by long darkness.
@@ -282,7 +307,7 @@ These exercises build from basic single-flash freeze effects through multi-expos
 *Persistence Trails — simulated result across source images.*
 **Source**: A subject with clear motion trails — a dancer, a bouncing ball, or a slow camera pan across a high-contrast scene.
 
-**Objective**: Learn how IIR persistence creates multi-exposure ghost echoes.
+**What You'll Create**: Learn how IIR persistence creates multi-exposure ghost echoes.
 
 1. **Enable persistence**: Set Brightness (persistence control) to ~60%. Previous flash frames now leave decaying afterimages.
 2. **Fast strobe**: Increase Strobe Rate to ~40%. Multiple flash frames accumulate in the persistence buffer, creating overlapping echoes.
@@ -310,7 +335,7 @@ These exercises build from basic single-flash freeze effects through multi-expos
 *Stroboscopic Abstraction — simulated result across source images.*
 **Source**: Any high-contrast, moving footage — concert visuals, feedback loops, or oscilloscope patterns.
 
-**Objective**: Combine all parameters for full stroboscopic deconstruction.
+**What You'll Create**: Combine all parameters for full stroboscopic deconstruction.
 
 1. **Double flash**: Enable Freeze (double-flash mode). The strobe fires twice per cycle for denser layering.
 2. **Fast rate**: Set Strobe Rate to ~60% and Exposures to ~15% for rapid narrow pulses.
@@ -327,9 +352,6 @@ These exercises build from basic single-flash freeze effects through multi-expos
 
 ## Tips
 
-- **Strobe Rate and Exposures are independent**: Rate sets how often the strobe fires; Exposures sets how long each flash lasts. Adjust both to find the rhythm.
-- **Persistence is the key to multi-exposure**: Turn up Brightness (pot 4) to build up ghost trails. Low values give crisp double-exposures; high values give long luminous smears.
-- **Dark level shapes the contrast**: Decay controls how deep the darkness goes between flashes. For dramatic results, keep it low; for subtle flickering, keep it high.
 - **Noise adds texture to darkness**: Enable Color Trail and increase Persist (pot 5) to fill the dark gaps with film grain. The grain sits on top of persistence trails for an organic feel.
 - **Double flash for density**: Enable Freeze (toggle 10) to fire two pulses per cycle, creating tighter multi-exposure layering.
 - **Mono for clarity**: Enable Sync (mono) to strip color and focus on the temporal structure of the strobe pattern.
@@ -350,6 +372,7 @@ These exercises build from basic single-flash freeze effects through multi-expos
 | **Phase Accumulator** | A counter that wraps at a fixed bit width, with the increment determining the output frequency of the DDS oscillator. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage applying brightness and contrast adjustment to a signal. |
 | **Stroboscope** | A device that produces brief periodic flashes of light, used to freeze apparent motion at the flash rate. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

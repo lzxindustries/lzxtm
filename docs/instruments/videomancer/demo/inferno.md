@@ -35,6 +35,14 @@ At conservative settings — moderate intensity, low turbulence, no wind — Inf
 
 ---
 
+## Quick Start
+
+1. **Intensity is the master valve**: Below ~50%, the fire is sparse and dim. Above ~75%, the screen fills with flame. Start at ~75% and adjust Cooling to shape the flame height.
+2. **Cooling controls flame height**: Think of Cooling as the atmosphere above the fire — high cooling = cold air that quenches flames quickly, giving short fire. Low cooling = still, warm air that lets flames rise.
+3. **Turbulence needs Cooling to be visible**: At zero Cooling, everything is max heat regardless of turbulence noise. Set moderate Cooling first, then add Turbulence for the jagged, flickering quality.
+
+---
+
 ## Background
 
 ### The Demoscene Fire Algorithm
@@ -61,6 +69,8 @@ In Video Burn mode, the input video's luminance channel is added (at half intens
 ---
 
 ## Signal Flow
+
+Interpolator → Bypass
 
 ```
 Fire Simulation Engine (per-frame, during blanking)
@@ -104,7 +114,7 @@ The fire simulation and the video readout pipeline operate in different phases o
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the heat injected into the seed row at the bottom of the fire grid (or top, when inverted). At low values, the LFSR-generated random heat is clamped to a low ceiling, producing sparse, cool flames that barely register. Above 50%, the seed saturates at maximum heat (63), filling the base with white-hot values that propagate upward as tall, bright flames. This is the primary control for flame height and overall visual energy.
+At low values, the LFSR-generated random heat is clamped to a low ceiling, producing sparse, cool flames that barely register. Above 50%, the seed saturates at maximum heat (63), filling the base with white-hot values that propagate upward as tall, bright flames. This is the primary control for flame height and overall visual energy. Internally, controls the heat injected into the seed row at the bottom of the fire grid (or top, when inverted).
 
 ---
 
@@ -115,7 +125,7 @@ Controls the heat injected into the seed row at the bottom of the fire grid (or 
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the base cooling factor subtracted from each cell during upward propagation. At zero, flames rise unattenuated to the top of the screen — the entire display fills with hot colors. At high values, each row of propagation strips away more heat, producing short flames confined to the lower portion of the screen. Cooling interacts multiplicatively with Turbulence: when both are high, the flames become chaotic and very short.
+At zero, flames rise unattenuated to the top of the screen — the entire display fills with hot colors. At high values, each row of propagation strips away more heat, producing short flames confined to the lower portion of the screen. Cooling interacts multiplicatively with Turbulence: when both are high, the flames become chaotic and very short. Internally, sets the base cooling factor subtracted from each cell during upward propagation.
 
 ---
 
@@ -167,7 +177,7 @@ Scales the luminance component of the palette-mapped output. The palette lookup 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Classic | Blue |
+| **7 — Palette** | Classic | Purple |
 | **8 — Direction** | Up | Down |
 | **9 — Video Burn** | Off | On |
 | **10 — Resolution** | Coarse | Fine |
@@ -188,6 +198,21 @@ Switches 7–11 are not all independent binary options. Switch 7 (Palette) is a 
 
 Crossfade between the dry (input) signal and the wet (fire) signal. At 0% the output is entirely the unprocessed input. At 100% the output is entirely the fire synthesis. Intermediate values blend the two, creating a translucent fire overlay on the input video — distinct from Video Burn mode, which adds luma rather than crossfading.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Inferno processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -198,7 +223,7 @@ These exercises progress from a basic fire to full creative control with palette
 
 <img src={inferno_exercise1_result} alt="Classic Campfire result"/>
 *Classic Campfire — simulated result across source images.*
-**Objective**: Learn how Intensity, Cooling, and Brightness interact to shape the basic fire.
+**What You'll Create**: Learn how Intensity, Cooling, and Brightness interact to shape the basic fire.
 
 1. **Ignite**: With Intensity at ~75% and Cooling at ~35%, observe the fire rising from the bottom of the screen — tongues of flame in the Classic palette.
 2. **Cooling sweep**: Slowly increase Cooling. Watch the flames shorten as more heat is stripped per row. At very high cooling, only a thin band of embers remains at the base.
@@ -214,7 +239,7 @@ These exercises progress from a basic fire to full creative control with palette
 
 <img src={inferno_exercise2_result} alt="Turbulent Wind Fire result"/>
 *Turbulent Wind Fire — simulated result across source images.*
-**Objective**: Explore turbulence and wind for dynamic, asymmetric flames.
+**What You'll Create**: Explore turbulence and wind for dynamic, asymmetric flames.
 
 1. **Prepare**: Start from the Exercise 1 campfire (Intensity ~75%, Cooling ~35%).
 2. **Add turbulence**: Slowly increase Turbulence. The smooth flame edges become jagged and flickering — random LFSR noise disrupts the regular decay pattern.
@@ -231,7 +256,7 @@ These exercises progress from a basic fire to full creative control with palette
 
 <img src={inferno_exercise3_result} alt="Inverted Video Burn result"/>
 *Inverted Video Burn — simulated result across source images.*
-**Objective**: Combine inverted fire direction with video burn compositing for a dramatic layered effect.
+**What You'll Create**: Combine inverted fire direction with video burn compositing for a dramatic layered effect.
 
 1. **Invert**: Switch Direction to Down (Switch 8). The fire now falls from the top of the screen, like molten material dripping downward.
 2. **Adjust**: Set Intensity to ~80% and Cooling to ~30% to ensure the inverted fire has enough height to reach mid-screen.
@@ -247,9 +272,6 @@ These exercises progress from a basic fire to full creative control with palette
 
 ## Tips
 
-- **Intensity is the master valve**: Below ~50%, the fire is sparse and dim. Above ~75%, the screen fills with flame. Start at ~75% and adjust Cooling to shape the flame height.
-- **Cooling controls flame height**: Think of Cooling as the atmosphere above the fire — high cooling = cold air that quenches flames quickly, giving short fire. Low cooling = still, warm air that lets flames rise.
-- **Turbulence needs Cooling to be visible**: At zero Cooling, everything is max heat regardless of turbulence noise. Set moderate Cooling first, then add Turbulence for the jagged, flickering quality.
 - **Video Burn vs. Mix**: These are different operations. Mix crossfades between input and fire (linear blend). Video Burn *adds* input luma to fire output (additive composite). They can be used simultaneously — Video Burn composites the video into the fire, then Mix controls how much of that composite appears in the output.
 - **Spread and Resolution are placeholders**: Knob 5 and Switch 10 are registered but have no effect. The fire resolution is fixed at 4×68.
 - **Palette is post-simulation**: Switching palettes changes colors without affecting the simulation — you can switch mid-performance with no discontinuity in flame behavior.
@@ -266,15 +288,13 @@ These exercises progress from a basic fire to full creative control with palette
 | **Compositing** | Combining two image layers into one; Video Burn mode uses additive compositing. |
 | **Demoscene** | A computer art subculture originating in the 1980s, focused on creating real-time audiovisual demonstrations. |
 | **Elaboration** | The FPGA synthesis stage where constant values (like palette tables) are computed and embedded as fixed logic. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
-| **Interpolator** | A crossfade module that linearly blends between two signals based on a mix coefficient. |
 | **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator using XOR feedback taps. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Palette** | A lookup table mapping temperature index values to specific Y, U, V color constants. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Propagation** | The per-frame process of updating each fire grid cell from its neighbors, simulating heat transfer. |
 | **Quantization** | Here, reducing screen coordinates to the coarse fire grid resolution (1920×1080 → 120×68 equivalent). |
 | **Temperature** | A 6-bit unsigned value (0–63) stored per fire grid cell, representing heat intensity. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

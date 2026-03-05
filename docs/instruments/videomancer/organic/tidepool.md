@@ -35,6 +35,14 @@ In Overlay mode, the ripple amplitude modulates the input video brightness, embe
 
 ---
 
+## Quick Start
+
+1. **Start with Overlay mode**: Overlay embeds the interference pattern into the source video, making it easier to see how the rings interact with real content.
+2. **Single source first**: Begin with one source to understand the basic ring structure before adding more sources and complexity.
+3. **Low Drift Sp for contemplative patterns**: Speed around 10–20% creates slowly evolving interference that is mesmerizing without being frantic.
+
+---
+
 ## Background
 
 ### Wave Interference and Superposition
@@ -63,6 +71,8 @@ When two sets of concentric rings overlap with slightly different spatial freque
 ---
 
 ## Signal Flow
+
+dx/dy for sources 0, 1 → dist(0,1) → dist(2,3) → triangle_wave for → Scale + Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -202,6 +212,10 @@ Switches 7–11 control animation enable, color mode, render mode, luma inversio
 
 Crossfade between the unprocessed input (dry) and the fully processed ripple output (wet). At 0% the output is pure dry signal. At 100% the output is fully processed. Intermediate values blend the interference pattern transparently over the source video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -212,7 +226,7 @@ These exercises progress from simple single-source rings to complex four-source 
 
 <img src={tidepool_exercise1_result} alt="Concentric Rings result"/>
 *Concentric Rings — simulated result across source images.*
-**Objective**: Understand how a single wave source produces concentric rings and how Wavelength and Depth control their appearance.
+**What You'll Create**: Understand how a single wave source produces concentric rings and how Wavelength and Depth control their appearance.
 
 1. **Single source**: Set Sources to 1 (fully counter-clockwise). A single set of concentric diamond-shaped rings appears centered on the frame.
 2. **Wavelength sweep**: Slowly increase Wavelength from minimum. Watch the rings compress — more cycles appear per unit distance.
@@ -228,7 +242,7 @@ These exercises progress from simple single-source rings to complex four-source 
 
 <img src={tidepool_exercise2_result} alt="Two-Source Interference result"/>
 *Two-Source Interference — simulated result across source images.*
-**Objective**: Observe constructive and destructive interference between two wave sources.
+**What You'll Create**: Observe constructive and destructive interference between two wave sources.
 
 1. **Start from Exercise 1 settings** with Wavelength at ~50% and Depth at ~60%.
 2. **Add second source**: Increase Sources to 2. A second set of rings appears, centered at a different position.
@@ -245,7 +259,7 @@ These exercises progress from simple single-source rings to complex four-source 
 
 <img src={tidepool_exercise3_result} alt="Full Four-Source Lattice result"/>
 *Full Four-Source Lattice — simulated result across source images.*
-**Objective**: Explore the rich interference lattice produced by four animated sources with color and mode variations.
+**What You'll Create**: Explore the rich interference lattice produced by four animated sources with color and mode variations.
 
 1. **Four sources**: Set Sources to 4 (fully clockwise). Four independent ring patterns overlap, creating a complex lattice.
 2. **Moderate wavelength**: Set Wavelength to ~40%. This produces enough ring density for visible Moire patterns between source pairs.
@@ -262,9 +276,6 @@ These exercises progress from simple single-source rings to complex four-source 
 
 ## Tips
 
-- **Start with Overlay mode**: Overlay embeds the interference pattern into the source video, making it easier to see how the rings interact with real content.
-- **Single source first**: Begin with one source to understand the basic ring structure before adding more sources and complexity.
-- **Low Drift Sp for contemplative patterns**: Speed around 10–20% creates slowly evolving interference that is mesmerizing without being frantic.
 - **Spread controls interference complexity**: At Spread = 0, all sources overlap at the center, producing simple reinforced rings. Increasing Spread separates the sources and creates richer interference zones.
 - **Wavelength and Sources compound**: More sources with tighter wavelength produce the most complex lattice structures.
 - **Replace + Rainbow for standalone pattern generation**: This combination produces a self-illuminated chromatic interference pattern suitable for direct output or downstream compositing.
@@ -281,14 +292,13 @@ These exercises progress from simple single-source rings to complex four-source 
 | **Constructive Interference** | The reinforcement that occurs when two or more wave crests coincide, producing a combined amplitude greater than either wave alone. |
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented by a fixed frequency constant each clock cycle. |
 | **Destructive Interference** | The cancellation that occurs when a wave crest coincides with a wave trough, reducing the combined amplitude. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Tidepool processing pipeline. |
 | **Interference Pattern** | The spatial distribution of constructive and destructive wave interactions, producing alternating bright and dark fringes. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|dx| + |dy|); produces diamond-shaped contours instead of circular. |
 | **Moire Pattern** | A secondary large-scale pattern that emerges when two sets of fine periodic structures overlap with slightly different frequencies. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Superposition** | The principle that the combined amplitude of overlapping waves equals the sum of their individual amplitudes at each point. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used as an approximation to a sine wave for distance-to-amplitude mapping. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

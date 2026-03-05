@@ -68,6 +68,14 @@ At default settings (split at center, no gap), Diptych produces a clean bilatera
 
 ---
 
+## Quick Start
+
+1. **Color complements are automatic**: The UV inversion produces mathematically exact color complements — every hue maps to its opposite on the color wheel. No parameter tuning needed.
+2. **Gap as framing device**: A wide gap turns the effect from a split-screen into a framed diptych. Use it to create deliberate two-panel compositions.
+3. **Vertical for maximum contrast**: The Vertical toggle extends inversion to luminance, producing a full negative. This is the most dramatic setting — use it for high-impact visual contrast.
+
+---
+
 ## Background
 
 ### The Diptych Art Form
@@ -94,6 +102,8 @@ Nam June Paik's early video sculptures frequently employed electronic mirrors �
 ---
 
 ## Signal Flow
+
+Timing Detection → Split Computation → Channel Processing → Wet/Dry Mix → Sync Delay Pipeline → Output Assignment
 
 ```
 Input Video (YUV 4:4:4)
@@ -150,7 +160,7 @@ The Offset, Zoom, Tilt, Tint, Double, and Color Tint controls are declared as re
 | Default | 50% |
 | Suffix | % |
 
-Sets the horizontal position of the fold line. At 0% the split sits near the left edge of the active picture; at 100% it sits near the right edge. The VHDL maps the 10-bit register to screen coordinates as `split = register + 128`, placing the default 50% (register 512) at pixel 640 — approximately mid-frame in a 1280-pixel HD line. Sweeping this control slides the boundary between the normal and color-inverted halves of the image.
+At 0% the split sits near the left edge of the active picture; at 100% it sits near the right edge. The VHDL maps the 10-bit register to screen coordinates as `split = register + 128`, placing the default 50% (register 512) at pixel 640 — approximately mid-frame in a 1280-pixel HD line. Sweeping this control slides the boundary between the normal and color-inverted halves of the image. Internally, sets the horizontal position of the fold line.
 
 ---
 
@@ -161,7 +171,7 @@ Sets the horizontal position of the fold line. At 0% the split sits near the lef
 | Default | 0% |
 | Suffix | % |
 
-Controls the width of the black gap inserted at the fold line. At 0% (register 0) there is no gap — the normal and inverted halves meet directly. As the value increases, a symmetrical band of black pixels appears centered on the split point. The gap half-width is computed as `register >> 3`, giving a maximum gap of approximately 128 pixels on each side of the split. The gap region outputs Y = 0 with neutral chroma (U = V = 512).
+At 0% (register 0) there is no gap — the normal and inverted halves meet directly. As the value increases, a symmetrical band of black pixels appears centered on the split point. The gap half-width is computed as `register >> 3`, giving a maximum gap of approximately 128 pixels on each side of the split. The gap region outputs Y = 0 with neutral chroma (U = V = 512). Internally, controls the width of the black gap inserted at the fold line.
 
 ---
 
@@ -232,7 +242,29 @@ Toggles 7–11 control five binary options. Vertical extends the mirror inversio
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry mix between the processed and original signal. At 100% (register 1023), the output is fully processed — the split, gap, and inversion are fully visible. At 0% (register 0), the output is the original unprocessed signal. Intermediate values blend between the two, creating a ghost-like overlay of the inverted half over the original. This is implemented by three parallel interpolator instances (one per YUV channel) that linearly crossfade between the delayed dry input and the processed output.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Diptych processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Diptych-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +287,7 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 *Bilateral Color Fold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong, varied colors — flowers, painted surfaces, or colorful clothing work well.
 
-**Objective**: Understand how the split point divides the frame and how UV inversion creates complementary color opposition.
+**What You'll Create**: Understand how the split point divides the frame and how UV inversion creates complementary color opposition.
 
 1. **Center split**: Confirm Split Point is at 50% (default). The frame divides into two halves — left with original colors, right with complementary colors.
 2. **Sweep the split**: Slowly rotate Split Point from 0% to 100%. Watch the fold line slide across the frame. Notice how the inverted region grows or shrinks.
@@ -282,7 +314,7 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 *Full Negative Mirror — simulated result across source images.*
 **Source**: High-contrast footage with clear tonal structure — backlit subjects, architecture, or black-and-white patterns.
 
-**Objective**: Explore the Vertical toggle to create a full negative on the mirrored side, and use Reverse to choose which half retains the original image.
+**What You'll Create**: Explore the Vertical toggle to create a full negative on the mirrored side, and use Reverse to choose which half retains the original image.
 
 1. **Set center split**: Split Point at 50%, Gap Width at 0%.
 2. **Enable vertical**: Toggle Vertical on. Now the right half shows a full photographic negative — both brightness and color are inverted.
@@ -309,7 +341,7 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 *Framed Diptych Composition — simulated result across source images.*
 **Source**: A slowly panning camera or a static scene with a clear subject in the center.
 
-**Objective**: Combine split positioning, gap width, and mix to create a composed diptych with a visible frame between the panels.
+**What You'll Create**: Combine split positioning, gap width, and mix to create a composed diptych with a visible frame between the panels.
 
 1. **Off-center split**: Set Split Point to ~35% so the original panel is narrower than the inverted panel, creating an asymmetric composition.
 2. **Wide gap**: Increase Gap Width to ~50%. The black gap becomes a prominent visual frame between the two panels.
@@ -325,9 +357,6 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 
 ## Tips
 
-- **Color complements are automatic**: The UV inversion produces mathematically exact color complements — every hue maps to its opposite on the color wheel. No parameter tuning needed.
-- **Gap as framing device**: A wide gap turns the effect from a split-screen into a framed diptych. Use it to create deliberate two-panel compositions.
-- **Vertical for maximum contrast**: The Vertical toggle extends inversion to luminance, producing a full negative. This is the most dramatic setting — use it for high-impact visual contrast.
 - **Reverse for composition control**: Reverse lets you choose which side of the frame retains the original image. Useful when the subject is not centered.
 - **Mix for blending**: Partial mix values (40–60%) create ghostly overlays where complementary colors partially cancel, producing desaturated, low-contrast textures.
 - **Neutral gray is invariant**: Mid-gray (Y=512, U=512, V=512) is unchanged by the inversion — the complement of neutral is neutral. Use this as a visual anchor.
@@ -345,11 +374,9 @@ These exercises explore split positioning, gap insertion, and chroma/luma invers
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Complementary Colors** | Color pairs that sit opposite each other on the color wheel; in YUV, swapping a chroma channel via NOT maps every hue to its complement. |
 | **Diptych** | A two-panel artwork, historically hinged along a central fold; the namesake of this program. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly blends between two values based on a mix parameter; used here for wet/dry crossfading. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Split Point** | The horizontal pixel position at which the frame is divided into normal and inverted halves. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

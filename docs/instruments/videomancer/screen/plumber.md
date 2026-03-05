@@ -35,6 +35,14 @@ At slow growth rates, Plumber produces a deliberate, architectural construction 
 
 ---
 
+## Quick Start
+
+1. **Start slow, watch the growth**: Setting Growth Rate below 20% lets you see each individual cell extension, understanding how the cursor navigates the grid.
+2. **High Straight for highways**: A Straight bias above 80% produces long parallel runs that fill the grid in an orderly, architectural manner — satisfying to watch and producing clean geometric results.
+3. **Outline + thick for blueprints**: Outline mode with maximum pipe thickness creates a technical drawing aesthetic — hollow rectangular tubes with visible wall structure.
+
+---
+
 ## Background
 
 ### The Windows 3D Pipes Screensaver
@@ -244,6 +252,10 @@ The five toggles divide into two functional groups plus bypass. Fill Mode (toggl
 
 Crossfades between the delayed input video and the rendered pipe network output. At 0%, the output is pure input — no pipes visible. At 100%, the output is the fully rendered pipe network with dimmed background. Intermediate positions blend the two, allowing the pipe network to appear as a semi-transparent overlay. At 50% with a live video source, the pipe network is ghosted over the video — useful for compositing the procedural pattern as a decorative layer.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +266,7 @@ These exercises build from a slowly growing network through dense fills to video
 
 <img src={plumber_exercise1_result} alt="Slow Architectural Growth result"/>
 *Slow Architectural Growth — simulated result across source images.*
-**Objective**: Watch the growth FSM build a pipe network one cell at a time, understanding how Straight bias and pipe thickness affect the network structure.
+**What You'll Create**: Watch the growth FSM build a pipe network one cell at a time, understanding how Straight bias and pipe thickness affect the network structure.
 
 1. **Slow growth**: Set Growth Rate to ~10% (divider 64). Growth ticks occur approximately once per second.
 2. **Medium thickness**: Set Pipe Thk to step 2 (~40%). Pipes are visible but not overwhelming.
@@ -272,7 +284,7 @@ These exercises build from a slowly growing network through dense fills to video
 
 <img src={plumber_exercise2_result} alt="Dense Outline Network with Glow result"/>
 *Dense Outline Network with Glow — simulated result across source images.*
-**Objective**: Fill the grid rapidly and explore outline rendering with centre glow to produce a detailed technical drawing effect.
+**What You'll Create**: Fill the grid rapidly and explore outline rendering with centre glow to produce a detailed technical drawing effect.
 
 1. **Fast growth**: Set Growth Rate to ~90% (divider 1–2). The grid fills in seconds.
 2. **Thick pipes**: Set Pipe Thk to step 4 (~90%). Maximum thickness shows the most detail in outline mode.
@@ -290,7 +302,7 @@ These exercises build from a slowly growing network through dense fills to video
 
 <img src={plumber_exercise3_result} alt="Video-Filled Stained Glass result"/>
 *Video-Filled Stained Glass — simulated result across source images.*
-**Objective**: Use the pipe network as a video stencil, filling each pipe segment with the live input signal to create a stained-glass window effect.
+**What You'll Create**: Use the pipe network as a video stencil, filling each pipe segment with the live input signal to create a stained-glass window effect.
 
 1. **Feed video**: Connect a video source with colourful, high-contrast content.
 2. **Enable Video Fill**: Set Video Fill to Video. Pipe pixels now show the input video.
@@ -308,9 +320,6 @@ These exercises build from a slowly growing network through dense fills to video
 
 ## Tips
 
-- **Start slow, watch the growth**: Setting Growth Rate below 20% lets you see each individual cell extension, understanding how the cursor navigates the grid.
-- **High Straight for highways**: A Straight bias above 80% produces long parallel runs that fill the grid in an orderly, architectural manner — satisfying to watch and producing clean geometric results.
-- **Outline + thick for blueprints**: Outline mode with maximum pipe thickness creates a technical drawing aesthetic — hollow rectangular tubes with visible wall structure.
 - **Seed for reproducibility**: Each Seed value generates a unique but deterministic network. Bookmark seeds that produce interesting compositions.
 - **Darken the background**: Bg Dim at 80%+ makes the pipe network the visual focus. At 100%, pipes float on pure black.
 - **Video Fill for stained glass**: Switching to Video Fill mode turns the network into a stencil — each pipe segment shows a window of live video, framed by the dimmed background.
@@ -330,6 +339,7 @@ These exercises build from a slowly growing network through dense fills to video
 | **Manhattan distance** | A distance metric defined as the sum of absolute differences along each axis: $d = |x_1 - x_2| + |y_1 - y_2|$. Used for the glow centre brightening test. |
 | **Occupancy threshold** | The fraction of grid cells that are non-empty. Plumber clears and restarts when occupancy reaches 75%, preventing the growth FSM from spending excessive time searching for empty cells. |
 | **Teleport** | The growth cursor's fallback behaviour when all four cardinal neighbours are occupied or out of bounds. The cursor jumps to a randomly selected empty cell and continues in a new direction with an incremented colour. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

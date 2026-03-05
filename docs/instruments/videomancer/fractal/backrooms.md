@@ -35,6 +35,14 @@ At small cell sizes, the maze reads as an intricate grid texture overlaid on the
 
 ---
 
+## Quick Start
+
+1. **Start with large cells**: Begin at 64 px cell size to understand the maze structure before reducing to denser configurations. The maze is easier to read when corridors are wide.
+2. **Use Seed as a creative tool**: Different seeds produce radically different mazes. When you find a good combination of source content and parameter settings, scroll through seeds to find the best spatial arrangement.
+3. **Organic mode pairs with scrolling**: The rough, textured corridors of Organic mode look most effective when the maze is continuously scrolling — the irregular wall surfaces create a dynamic, living quality.
+
+---
+
 ## Background
 
 ### Binary Space Partitioning and Maze Generation
@@ -61,6 +69,8 @@ The compositing model is spatially binary: each pixel is either a corridor (show
 ---
 
 ## Signal Flow
+
+Pixel Position → Maze Computation → Color Output → Mix → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -156,7 +166,7 @@ Sets the vertical scroll position or speed, operating identically to Scroll X bu
 | Default | 12.5% |
 | Suffix | % |
 
-Controls the brightness of wall surfaces when in Color mode (Wall Luma toggle set to Color). At 0%, walls are black — the maze reads as a dark grid over bright video. At 100%, walls are maximum brightness — the maze reads as a bright grid. The wall color includes a subtle warm tint (slightly shifted U and V) that prevents walls from looking purely neutral, giving the maze surfaces a faintly architectural quality.
+At 0%, walls are black — the maze reads as a dark grid over bright video. At 100%, walls are maximum brightness — the maze reads as a bright grid. The wall color includes a subtle warm tint (slightly shifted U and V) that prevents walls from looking purely neutral, giving the maze surfaces a faintly architectural quality. Internally, controls the brightness of wall surfaces when in Color mode (Wall Luma toggle set to Color).
 
 ---
 
@@ -192,7 +202,18 @@ The five toggle switches control independent binary features that shape the maze
 | Range | 0.0 – 100.0 |
 | Default | 100.0 |
 
-Controls the dry/wet mix between the original input video and the maze-processed output. At 0% (fully dry), the output is the unprocessed input. At 100% (fully wet), the output is the full maze composite. Intermediate values crossfade between the two, allowing the maze to be blended subtly over the source as a semi-transparent overlay.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0 – 100.0 |
+| Default | 100.0 |
+
+Wet/dry crossfade between the original (dry) signal and the Backrooms-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -204,7 +225,7 @@ These exercises progress from a simple static overlay to an animated infinite la
 
 <img src={backrooms_exercise1_result} alt="Architectural Grid result"/>
 *Architectural Grid — simulated result across source images.*
-**Objective**: Create a clean geometric grid overlay that frames the source architecture through maze corridors.
+**What You'll Create**: Create a clean geometric grid overlay that frames the source architecture through maze corridors.
 
 1. Set Cell Size to step 5 (64 px) for architecturally scaled corridors.
 2. Set Wall Width to 25% for thin but visible walls.
@@ -225,7 +246,7 @@ These exercises progress from a simple static overlay to an animated infinite la
 
 <img src={backrooms_exercise2_result} alt="Infinite Scrolling Labyrinth result"/>
 *Infinite Scrolling Labyrinth — simulated result across source images.*
-**Objective**: Create a continuously scrolling infinite maze with organic topology, demonstrating the procedural nature of the generation.
+**What You'll Create**: Create a continuously scrolling infinite maze with organic topology, demonstrating the procedural nature of the generation.
 
 1. Set Cell Size to step 4 (32 px) for medium-density corridors.
 2. Set Wall Width to 40% for balanced wall/corridor ratio.
@@ -246,7 +267,7 @@ These exercises progress from a simple static overlay to an animated infinite la
 
 <img src={backrooms_exercise3_result} alt="Video-Modulated Maze Inversion result"/>
 *Video-Modulated Maze Inversion — simulated result across source images.*
-**Objective**: Explore the Invert and Wall Luma Video modes to create a dual-layer effect where the source content is visible in both wall and corridor regions with different color treatment.
+**What You'll Create**: Explore the Invert and Wall Luma Video modes to create a dual-layer effect where the source content is visible in both wall and corridor regions with different color treatment.
 
 1. Set Cell Size to step 3 (16 px) for dense, fine corridors.
 2. Set Wall Width to 50% to equalize wall and corridor area.
@@ -266,9 +287,6 @@ These exercises progress from a simple static overlay to an animated infinite la
 
 ## Tips
 
-- **Start with large cells**: Begin at 64 px cell size to understand the maze structure before reducing to denser configurations. The maze is easier to read when corridors are wide.
-- **Use Seed as a creative tool**: Different seeds produce radically different mazes. When you find a good combination of source content and parameter settings, scroll through seeds to find the best spatial arrangement.
-- **Organic mode pairs with scrolling**: The rough, textured corridors of Organic mode look most effective when the maze is continuously scrolling — the irregular wall surfaces create a dynamic, living quality.
 - **Invert changes everything**: The visual character switches dramatically between normal and inverted modes. Try both for every composition — sometimes the "negative space" version is more compelling.
 - **Wall Color for mood**: Dark walls (10-20%) create receding, shadowy corridors; bright walls (80-100%) create glowing grids; mid-gray walls (40-60%) create neutral architectural overlays.
 - **Video walls for texture**: Switching Wall Luma to Video mode makes walls show a monochromatic ghost of the source — useful for maintaining image readability across both wall and corridor regions.
@@ -292,6 +310,7 @@ These exercises progress from a simple static overlay to an animated infinite la
 | **Procedural generation** | The algorithmic creation of content from mathematical rules rather than stored data; the maze is generated per-pixel from cascaded hash computations. |
 | **Topology** | The spatial arrangement and connectivity of corridors and walls within the maze; each seed value produces a unique topology. |
 | **XOR-rotate** | A fast integer mixing operation combining bitwise exclusive-OR with bit rotation, used in cascade to build the maze's deterministic hash function. |
-| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

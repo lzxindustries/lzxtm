@@ -68,6 +68,14 @@ At conservative settings, Terracotta produces clean mosaic walls with faint tile
 
 ---
 
+## Quick Start
+
+1. **Grid Size is the master control**: Changing the grid count reshuffles all per-tile variations, changes tile resolution, and redefines grid line positions — it is the single most impactful parameter.
+2. **Style must be Aged for variation**: The Clean/Aged toggle is the master enable for the XOR hash variation engine. Leave it on Clean for uniform tiling grids, switch to Aged for individuated terracotta tiles.
+3. **Earth color works best with variation**: The Mono (Earth) color mode creates a unified warm palette that makes per-tile hue and luma offsets read as natural clay pigment differences.
+
+---
+
 ## Background
 
 ### Grid Replication and Modular Arithmetic
@@ -94,6 +102,8 @@ The Color toggle blends the source video toward a fixed earth-tone YUV value —
 ---
 
 ## Signal Flow
+
+Tile Coordinate → XOR Hash → Per-Tile Variation → Grid Lines
 
 ```
 Input Video (YUV 4:4:4)
@@ -156,7 +166,7 @@ Controls the number of tile columns across the frame. The steps_8 decode maps th
 | Default | 0% |
 | Suffix | % |
 
-Sets the crop margin within each tile. At 0%, the entire tile area displays the replicated source. As you increase Tile Crop, the outer edges of each tile are replaced with a dark fill, creating a visible gap between the source content and the grid lines. This gives the tiles a recessed, inset appearance — like ceramic tiles set behind a frame. The crop margin is applied symmetrically on all four sides of each tile.
+At 0%, the entire tile area displays the replicated source. As you increase Tile Crop, the outer edges of each tile are replaced with a dark fill, creating a visible gap between the source content and the grid lines. This gives the tiles a recessed, inset appearance — like ceramic tiles set behind a frame. The crop margin is applied symmetrically on all four sides of each tile. Internally, sets the crop margin within each tile.
 
 ---
 
@@ -189,7 +199,7 @@ Controls the strength of per-tile hue variation. The upper 4 bits of the XOR has
 | Default | 25% |
 | Suffix | % |
 
-Sets the width of the grid lines rendered at tile boundaries. At 0%, no grid lines appear and tiles merge seamlessly. As you increase Grid Lines, visible dark bars (Y=180, neutral chroma) appear at the edges of each tile, defining the grid structure. The grid line width is derived from the upper bits of the pot value, giving a range from 0 to approximately 16 pixels. Grid lines render on top of the tile content, so they always appear regardless of variation or crop settings.
+At 0%, no grid lines appear and tiles merge seamlessly. As you increase Grid Lines, visible dark bars (Y=180, neutral chroma) appear at the edges of each tile, defining the grid structure. The grid line width is derived from the upper bits of the pot value, giving a range from 0 to approximately 16 pixels. Grid lines render on top of the tile content, so they always appear regardless of variation or crop settings. Internally, sets the width of the grid lines rendered at tile boundaries.
 
 ---
 
@@ -200,7 +210,7 @@ Sets the width of the grid lines rendered at tile boundaries. At 0%, no grid lin
 | Default | 0% |
 | Suffix | % |
 
-Controls the depth shading gradient applied across tile rows. At 0%, all rows are equally bright. As you increase Depth Shade, tiles in lower rows become progressively darker, simulating the top-lit appearance of a physical tile wall. The attenuation is computed as `depth_pot × tile_row_index / 64`, so the bottom tiles of a 10-row grid receive significantly more darkening than the bottom tiles of a 3-row grid. This interacts with luma variation: individual tile brightness offsets combine with the row-based gradient.
+At 0%, all rows are equally bright. As you increase Depth Shade, tiles in lower rows become progressively darker, simulating the top-lit appearance of a physical tile wall. The attenuation is computed as `depth_pot × tile_row_index / 64`, so the bottom tiles of a 10-row grid receive significantly more darkening than the bottom tiles of a 3-row grid. This interacts with luma variation: individual tile brightness offsets combine with the row-based gradient. Internally, controls the depth shading gradient applied across tile rows.
 
 ---
 
@@ -229,6 +239,21 @@ The five toggles each enable an independent processing mode. Stagger and Style i
 
 Crossfades between the dry (original) signal and the wet (tiled) signal using three parallel interpolator instances. At 0%, the output is entirely dry — identical to the source. At 100%, the output is the fully processed tiled image. Intermediate values blend the two, creating a ghost-overlay effect where the grid structure fades in over the source. This is applied after all processing stages, so the grid lines and variation are included in the wet signal.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Terracotta processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +275,7 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 *Basic Grid Tiling — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and good contrast.
 
-**Objective**: Learn how the grid size control works and how stagger alters the tile geometry.
+**What You'll Create**: Learn how the grid size control works and how stagger alters the tile geometry.
 
 1. **Start simple**: Set Grid Size to its minimum (2 columns). The frame splits into two large square tiles, each showing a compressed copy of the full source.
 2. **Increase grid**: Slowly increase Grid Size through the 8 steps. Watch the frame subdivide into progressively finer grids. At 10 columns, the tiles are small and highly pixelated.
@@ -277,7 +302,7 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 *Terracotta Variation — simulated result across source images.*
 **Source**: Footage with varied tonal content — faces, landscapes, or architectural subjects.
 
-**Objective**: Explore the per-tile variation engine and earth tone color mode.
+**What You'll Create**: Explore the per-tile variation engine and earth tone color mode.
 
 1. **Enable variation**: Set Style to Aged. Slowly increase Luma Var from 0 to about 50%. Watch individual tiles brighten and darken relative to their neighbors.
 2. **Add hue variation**: Increase Hue Var to about 50%. Each tile shifts toward a slightly different hue — some warmer, some cooler.
@@ -304,7 +329,7 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 *Architectural Relief — simulated result across source images.*
 **Source**: A static camera shot or slow-moving footage — architectural details, textures, or still life.
 
-**Objective**: Combine all controls to create a dramatic tile wall with full depth and variation.
+**What You'll Create**: Combine all controls to create a dramatic tile wall with full depth and variation.
 
 1. **Set grid**: Grid Size at about 6 columns. Enable Stagger for a brick layout.
 2. **Maximum variation**: Set both Luma Var and Hue Var to about 80%.
@@ -321,9 +346,6 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 ## Tips
 
-- **Grid Size is the master control**: Changing the grid count reshuffles all per-tile variations, changes tile resolution, and redefines grid line positions — it is the single most impactful parameter.
-- **Style must be Aged for variation**: The Clean/Aged toggle is the master enable for the XOR hash variation engine. Leave it on Clean for uniform tiling grids, switch to Aged for individuated terracotta tiles.
-- **Earth color works best with variation**: The Mono (Earth) color mode creates a unified warm palette that makes per-tile hue and luma offsets read as natural clay pigment differences.
 - **Stagger changes everything**: The brick offset doesn't just shift rows — it changes the XOR hash inputs, so enabling Stagger reshuffles the entire variation pattern.
 - **Depth Shade simulates lighting**: Use moderate depth values (20–40%) to create a subtle top-lit relief effect. High values can push bottom tiles to near-black.
 - **Feedback routing**: Send the output back to the input for recursive tiling — tiles within tiles within tiles. The variation compounds with each recursion level.
@@ -336,18 +358,15 @@ These exercises explore Terracotta's grid replication from simple tiling to comp
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA. Terracotta uses zero BRAM — all operations are combinational. |
 | **Combinational** | Logic that produces output purely from current inputs, without memory elements or clock-dependent state. |
 | **Earth Tone** | A warm, desaturated YUV color (Y=560, U=460, V=580) resembling fired clay. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video pipeline. |
 | **Grid Line** | A rendered dark bar at tile boundaries with fixed color (Y=180, U=500, V=520). |
-| **Interpolator** | A linear interpolation module used for wet/dry crossfade mixing. |
 | **LUT** | Look-Up Table; the basic logic element of an FPGA, used here for division, modulo, and XOR. |
 | **Modular Arithmetic** | Division and modulo operations that remap pixel coordinates into repeating tile coordinates. |
-| **Pipeline** | Sequential processing stages executing on consecutive clock cycles. |
 | **Running Bond** | A brick laying pattern where alternating courses are offset by half a brick width. |
 | **Stagger** | Horizontal offset of odd rows by half a tile width, producing a brick layout. |
 | **XOR Hash** | A bitwise exclusive-OR function used to generate deterministic per-tile variation signatures. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

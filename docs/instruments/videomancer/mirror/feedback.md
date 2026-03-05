@@ -68,6 +68,14 @@ Color Shift rotates the chroma toward its complement during each feedback pass, 
 
 ---
 
+## Quick Start
+
+1. **Decay is the memory knob**: Think of Decay as how long the system "remembers." Low decay = short memory (quick trails). High decay = long memory (deep tunnels).
+2. **Gain excites the system**: Gain above center causes self-amplification. Start with moderate gain and increase slowly — the system can quickly bloom into saturation.
+3. **Color Shift for psychedelia**: Even small amounts of Color Shift create rainbow trails. Maximum shift produces a full spectrum cycle every ~8 feedback generations.
+
+---
+
 ## Background
 
 ### What Is Video Feedback?
@@ -86,6 +94,8 @@ In Feedback's architecture, the value written to the buffer is not simply the cu
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Y Post-Processing → Control → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -133,7 +143,7 @@ The recursive loop is the defining feature: each pixel written into the buffer i
 | Default | 20% |
 | Suffix | % |
 
-Controls the zoom factor — how quickly the read offset grows across the scanline. At 0%, no offset growth occurs and the feedback reads from the same relative position at every pixel (no spatial zoom). As Zoom increases, the offset grows faster, creating a stronger perspective convergence. At high values, the image is dramatically pulled toward the vanishing point, with each recursive pass producing increasingly compressed copies of the original.
+At 0%, no offset growth occurs and the feedback reads from the same relative position at every pixel (no spatial zoom). As Zoom increases, the offset grows faster, creating a stronger perspective convergence. At high values, the image is dramatically pulled toward the vanishing point, with each recursive pass producing increasingly compressed copies of the original. Internally, controls the zoom factor — how quickly the read offset grows across the scanline.
 
 ---
 
@@ -166,7 +176,7 @@ Rotates the chrominance of the feedback signal toward its complement. At 0%, the
 | Default | 68% |
 | Suffix | % |
 
-Controls the mixing ratio between the current input and the feedback buffer. At 0%, the output is entirely the live input — no feedback accumulation occurs. At 100%, the output is dominated by the buffer contents — new input barely registers, and old information persists indefinitely. Moderate values create a balance where new input gradually replaces old information, producing ghostly trails of adjustable length. Decay is the primary control for the visual "memory" of the feedback system.
+At 0%, the output is entirely the live input — no feedback accumulation occurs. At 100%, the output is dominated by the buffer contents — new input barely registers, and old information persists indefinitely. Moderate values create a balance where new input gradually replaces old information, producing ghostly trails of adjustable length. Decay is the primary control for the visual "memory" of the feedback system. Internally, controls the mixing ratio between the current input and the feedback buffer.
 
 ---
 
@@ -215,7 +225,29 @@ Switches 7–11 control five independent parameters. Direction sets the zoom con
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the feedback-processed output and the original input. At 100%, the output is fully processed. Lowering the fader blends the original input back in, reducing the visibility of the recursive feedback. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Feedback processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Feedback-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -238,7 +270,7 @@ These exercises progress from basic spatial displacement to full recursive feedb
 *Ghost Trails — simulated result across source images.*
 **Source**: A slowly moving subject — a hand, a swinging pendulum, or slowly panning footage.
 
-**Objective**: Learn how Decay creates persistence trails from moving objects.
+**What You'll Create**: Learn how Decay creates persistence trails from moving objects.
 
 1. **Basic trails**: Set Zoom to 0% (no zoom), Gain to center, Color Shift to 0%, Decay to ~70%. Moving elements leave ghostly trails that fade over ~1 second.
 2. **Trail length**: Increase Decay toward 100%. Trails persist longer. Decrease Decay toward 0%. Trails shorten until they disappear entirely.
@@ -265,7 +297,7 @@ These exercises progress from basic spatial displacement to full recursive feedb
 *Zoom Tunnel — simulated result across source images.*
 **Source**: Any footage with clear visual elements — faces, geometric shapes, or high-contrast scenes.
 
-**Objective**: Create the classic video feedback zoom tunnel effect.
+**What You'll Create**: Create the classic video feedback zoom tunnel effect.
 
 1. **Enable zoom**: Set Zoom to ~40%, Decay to ~80%, Gain to ~55%. A converging zoom effect appears as the feedback recursion creates smaller copies of the image nested inside each other.
 2. **Direction**: Toggle Direction (Switch 7) to switch which side of the screen the tunnel converges toward.
@@ -292,7 +324,7 @@ These exercises progress from basic spatial displacement to full recursive feedb
 *Self-Exciting Feedback — simulated result across source images.*
 **Source**: High-contrast footage or even a blank/black input — the feedback system can generate its own content.
 
-**Objective**: Push the feedback system into self-exciting oscillation where internal noise and gain produce emergent visual structures.
+**What You'll Create**: Push the feedback system into self-exciting oscillation where internal noise and gain produce emergent visual structures.
 
 1. **High gain**: Set Gain to ~80%. Set Decay to ~90%. Set Zoom to ~30%.
 2. **Seed it**: Feed a brief flash of bright input (or move a light across the camera). The bright pixels amplify through the recursive loop.
@@ -308,9 +340,6 @@ These exercises progress from basic spatial displacement to full recursive feedb
 
 ## Tips
 
-- **Decay is the memory knob**: Think of Decay as how long the system "remembers." Low decay = short memory (quick trails). High decay = long memory (deep tunnels).
-- **Gain excites the system**: Gain above center causes self-amplification. Start with moderate gain and increase slowly — the system can quickly bloom into saturation.
-- **Color Shift for psychedelia**: Even small amounts of Color Shift create rainbow trails. Maximum shift produces a full spectrum cycle every ~8 feedback generations.
 - **Mirror for symmetry**: Mirror mode turns asymmetric footage into kaleidoscopic patterns, doubling the visual complexity of the feedback structure.
 - **Freeze for composition**: Use Freeze to capture a moment, then unfreeze to let new content interact with the frozen pattern.
 - **X Offset as composition tool**: Moving the vanishing point creates dramatic asymmetric compositions — the tunnel doesn't have to be centered.
@@ -322,15 +351,13 @@ These exercises progress from basic spatial displacement to full recursive feedb
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the circular pixel buffers. |
 | **Circular Buffer** | A fixed-size memory that wraps around: when the write pointer reaches the end, it returns to the beginning. |
 | **Decay** | The rate at which old information fades in a recursive system; governs trail length and feedback depth. |
 | **Feedback** | A signal processing configuration where the output is routed back to the input, creating recursive self-referencing. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gain** | Amplification of the feedback signal's luminance; values above unity cause self-excitation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Recursive Accumulation** | A process where each new value is mixed with the result of previous iterations, building up information over time. |
 | **Ring Buffer** | Another name for a circular buffer. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ The Crosstalk stage bleeds the processed Y channel into U and V, creating color 
 
 ---
 
+## Quick Start
+
+1. **Start with Drive**: Drive is the master distortion control — set it first, then shape with other stages.
+2. **Hard vs Soft clip**: Hard clip for aggressive, digital distortion; soft clip for warmer, more analog-feeling overdrive.
+3. **Bit crush for posterization**: Even 1–2 crushed bits create visible banding in gradients — use for intentional posterization.
+
+---
+
 ## Background
 
 ### What Is Clipping?
@@ -90,6 +98,8 @@ The Crosstalk stage bleeds the processed Y channel into U and V, creating color 
 ---
 
 ## Signal Flow
+
+Y, U, V → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -130,7 +140,7 @@ The signed-domain operation is central to the design — centering on zero allow
 | Default | 50% |
 | Suffix | % |
 
-Controls the signal gain from 1× (no overdrive) to 5× (extreme overdrive). At minimum, the signal passes through the gain stage cleanly. As Drive increases, the signal amplitude grows and progressively exceeds the clipping threshold, driving more and more of the waveform into the clipped region. The relationship between Drive and the clip mode determines the overall distortion character — high drive with hard clip produces aggressive flat-topped distortion, while high drive with soft clip creates smoother, more complex textures.
+At minimum, the signal passes through the gain stage cleanly. As Drive increases, the signal amplitude grows and progressively exceeds the clipping threshold, driving more and more of the waveform into the clipped region. The relationship between Drive and the clip mode determines the overall distortion character — high drive with hard clip produces aggressive flat-topped distortion, while high drive with soft clip creates smoother, more complex textures. Internally, controls the signal gain from 1× (no overdrive) to 5× (extreme overdrive).
 
 ---
 
@@ -140,7 +150,7 @@ Controls the signal gain from 1× (no overdrive) to 5× (extreme overdrive). At 
 | Range | 1 – 10 |
 | Default | 1 |
 
-Controls the bit depth of the bit crushing stage. At minimum (0 bits crushed), the full 10-bit resolution is preserved. Each step masks out an additional LSB, reducing the effective resolution: 10 → 9 → 8 → 7 → 6 → 5 → 4 → 3 → 2 bits. At maximum, only 2 bits remain (4 levels), creating extreme posterization. The quantization artifacts create staircase patterns in gradients and reduce smooth transitions to hard-edged color bands.
+At minimum (0 bits crushed), the full 10-bit resolution is preserved. Each step masks out an additional LSB, reducing the effective resolution: 10 → 9 → 8 → 7 → 6 → 5 → 4 → 3 → 2 bits. At maximum, only 2 bits remain (4 levels), creating extreme posterization. The quantization artifacts create staircase patterns in gradients and reduce smooth transitions to hard-edged color bands. Internally, controls the bit depth of the bit crushing stage.
 
 ---
 
@@ -151,7 +161,7 @@ Controls the bit depth of the bit crushing stage. At minimum (0 bits crushed), t
 | Default | 0% |
 | Suffix | % |
 
-Controls the amount of Y→UV channel crosstalk. At minimum, no crosstalk — the chrominance channels are unaffected by the luminance distortion. As Crosstalk increases, more of the processed luminance signal bleeds into U and V, creating color artifacts that follow the distorted brightness contours. At maximum, the chrominance channels are dominated by the distorted luminance, producing vivid false-color effects.
+At minimum, no crosstalk — the chrominance channels are unaffected by the luminance distortion. As Crosstalk increases, more of the processed luminance signal bleeds into U and V, creating color artifacts that follow the distorted brightness contours. At maximum, the chrominance channels are dominated by the distorted luminance, producing vivid false-color effects. Internally, controls the amount of Y→UV channel crosstalk.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the amount of Y→UV channel crosstalk. At minimum, no crosstalk — th
 | Default | 0% |
 | Suffix | % |
 
-Controls the blend between the original signed signal and its absolute value (full-wave rectification). At minimum, no rectification — the signed signal passes unchanged. At 50%, a partial rectification creates asymmetric waveform folding. At maximum, full rectification — all negative excursions are folded to positive, creating a signal that is always above the midpoint. This effectively doubles the apparent frequency of oscillations crossing zero.
+At minimum, no rectification — the signed signal passes unchanged. At 50%, a partial rectification creates asymmetric waveform folding. At maximum, full rectification — all negative excursions are folded to positive, creating a signal that is always above the midpoint. This effectively doubles the apparent frequency of oscillations crossing zero. Internally, controls the blend between the original signed signal and its absolute value (full-wave rectification).
 
 ---
 
@@ -213,6 +223,21 @@ Switches 7–11 select the clipping mode, enable/disable rectification and inver
 
 Controls the wet/dry mix between the distorted output and the original input. At 100%, the full distortion chain is heard. Lowering the fader blends the original signal back in, allowing subtle amounts of distortion texture to be layered over the clean image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Overdrive processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -234,7 +259,7 @@ These exercises progress from basic gain staging through clipping modes to full 
 *Clean Drive and Hard Clip — simulated result across source images.*
 **Source**: High-contrast footage with clear tonal variation — faces, text, or graphic elements.
 
-**Objective**: Understand the Drive and hard clipping interaction by progressively overdriving the signal.
+**What You'll Create**: Understand the Drive and hard clipping interaction by progressively overdriving the signal.
 
 1. **Unity drive**: Set Drive to minimum (1×). Observe the signal passing cleanly with no distortion.
 2. **Moderate drive**: Increase Drive to ~60%. Highlights begin to flatten as they hit the hard clip ceiling.
@@ -261,7 +286,7 @@ These exercises progress from basic gain staging through clipping modes to full 
 *Soft Clip and Rectification — simulated result across source images.*
 **Source**: Smooth, flowing footage — water, clouds, slow camera movements with broad tonal gradients.
 
-**Objective**: Compare soft clipping to hard clipping and explore the rectification effect.
+**What You'll Create**: Compare soft clipping to hard clipping and explore the rectification effect.
 
 1. **Soft clip**: Set Clip Mode to Soft (Switch 7), Drive to ~70%. Notice how the highlights are smoother than hard clip — the fold-back creates a rounded plateau instead of a flat one.
 2. **Compare modes**: Toggle Switch 7 between Hard and Soft while watching the highlights. Soft clipping preserves more detail in the overdriven areas.
@@ -288,7 +313,7 @@ These exercises progress from basic gain staging through clipping modes to full 
 *Full Destruction Chain — simulated result across source images.*
 **Source**: Any active video source — the more complex the input, the more interesting the distortion artifacts.
 
-**Objective**: Use all six distortion stages simultaneously for maximum creative impact.
+**What You'll Create**: Use all six distortion stages simultaneously for maximum creative impact.
 
 1. **Drive and clip**: Set Drive to ~80%, Clip Mode to Hard. Signal is heavily clipped.
 2. **Bit crush**: Set Crush Bits to ~50% (~5 bits). The clipped signal is now quantized to 32 levels.
@@ -305,9 +330,6 @@ These exercises progress from basic gain staging through clipping modes to full 
 
 ## Tips
 
-- **Start with Drive**: Drive is the master distortion control — set it first, then shape with other stages.
-- **Hard vs Soft clip**: Hard clip for aggressive, digital distortion; soft clip for warmer, more analog-feeling overdrive.
-- **Bit crush for posterization**: Even 1–2 crushed bits create visible banding in gradients — use for intentional posterization.
 - **Crosstalk for color**: Y→UV crosstalk is the primary source of color artifacts in Overdrive — even small amounts add vivid hue shifts.
 - **Bias for asymmetry**: Bias shifts the clipping point, creating different harmonic content than symmetric clipping.
 - **AC Couple to recenter**: After heavy distortion, the signal may drift toward all-bright or all-dark — AC coupling brings it back to center.
@@ -324,12 +346,12 @@ These exercises progress from basic gain staging through clipping modes to full 
 | **Clipping** | Truncating a signal at a maximum value when it exceeds the representable range. |
 | **Crosstalk** | Unintended (or intentional) leakage of signal energy from one channel into another. |
 | **Fold-back** | A soft clipping technique where excess signal energy is reflected back, creating a rounded waveform peak. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hard Clip** | Signal truncation at a fixed ceiling, producing flat plateaus and generating odd harmonics. |
 | **Overdrive** | Pushing a signal's gain beyond the clean headroom of a processing stage, causing intentional distortion. |
 | **Rectification** | Converting a bipolar (positive and negative) signal to unipolar by taking the absolute value. |
 | **Signed Domain** | Processing where the signal is centered on zero (±512) rather than offset (0–1023). |
 | **Soft Clip** | Signal limiting where excess energy folds back rather than being hard-truncated, producing smoother harmonics. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ At subtle settings, Afterdark produces clean geometric shapes drifting smoothly 
 
 ---
 
+## Quick Start
+
+1. **Trail is the composition tool**: Low trail values give clean geometric motion; high values build dense layered paintings over time.
+2. **Speed and Size trade off**: Fast small sprites create fine-grained trail textures; slow large sprites create bold overlapping blocks.
+3. **Gravity creates natural arcs**: Even subtle gravity values add organic curvature to otherwise linear bounce paths.
+
+---
+
 ## Background
 
 ### The Screensaver Era

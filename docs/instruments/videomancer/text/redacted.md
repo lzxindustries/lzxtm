@@ -68,6 +68,14 @@ The name is a direct reference to redacted documents — classified text covered
 
 ---
 
+## Quick Start
+
+1. **Threshold and Sensitivity together**: Use Threshold for coarse detection range and Sensitivity for fine adjustment. Together they define the exact luma gate boundary.
+2. **Bar Width prevents false triggers**: If you see bars flickering on noise, increase Bar Width to require longer runs before detection activates.
+3. **Margin is conservative**: Add margin to ensure bars cover a bit beyond the bright region — this mirrors real broadcast censorship practice where bars intentionally overshoot.
+
+---
+
 ## Background
 
 ### What Is Luma Thresholding?
@@ -90,6 +98,8 @@ The Border toggle adds a thin bright-white edge (Y=940) at the transitions of ba
 ---
 
 ## Signal Flow
+
+Input Register → Luma Accumulator → Bar Region Detect → Bar Draw + Output Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -144,7 +154,7 @@ The detection pipeline is purely one-dimensional — horizontal bars track pixel
 | Default | 50% |
 | Suffix | % |
 
-Sets the luma threshold for detection. At low values, only very bright pixels trigger redaction. At high values, even moderate brightness is flagged. The threshold combines additively with the Sensitivity offset (Pot 4) — the effective detection boundary is `threshold + sensitivity/4`, clamped to 1023. With the Invert toggle active, the sense reverses: the threshold defines the darkness level below which pixels are flagged.
+At low values, only very bright pixels trigger redaction. At high values, even moderate brightness is flagged. The threshold combines additively with the Sensitivity offset (Pot 4) — the effective detection boundary is `threshold + sensitivity/4`, clamped to 1023. With the Invert toggle active, the sense reverses: the threshold defines the darkness level below which pixels are flagged. Internally, sets the luma threshold for detection.
 
 ---
 
@@ -207,8 +217,8 @@ Reserved — not connected to any signal in the current VHDL implementation. Tur
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Bars | Blocks |
-| **8 — Class** | Secret | Top Sec |
+| **7 — Style** | Bars | Blur |
+| **8 — Class** | Secret | Draft |
 | **9 — Color** | Black | White |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -227,6 +237,10 @@ Three of the five toggles are active in the current implementation. Toggle 7 sel
 | Suffix | % |
 
 Wet/dry crossfade between the original input and the processed (censored) output. At 0, the original signal passes through unmodified. At 1023, the full censorship effect is applied. Intermediate values blend proportionally via the interpolator. The bypass toggle (Toggle 11) overrides this fader when active.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -249,7 +263,7 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 *Classic Censorship Bars — simulated result across source images.*
 **Source**: A live camera feed of a person's face or a document with text, ensuring strong brightness contrast.
 
-**Objective**: Set up basic horizontal censorship bars that track bright regions of the source.
+**What You'll Create**: Set up basic horizontal censorship bars that track bright regions of the source.
 
 1. **Set threshold**: Start Threshold at about 50%. Bright areas of the face or text should start triggering bars.
 2. **Adjust bar width**: Set Bar Width to about 40% so that short bright stretches are enough to trigger.
@@ -277,7 +291,7 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 *Vertical Redaction Columns — simulated result across source images.*
 **Source**: Footage with vertical bright regions — windows, doorways, monitors, or vertical stripes.
 
-**Objective**: Use vertical bar mode to create full-height censorship columns that track line brightness.
+**What You'll Create**: Use vertical bar mode to create full-height censorship columns that track line brightness.
 
 1. **Switch to vertical**: Set H/V Bars to Vertical (Toggle 7).
 2. **Set threshold**: Threshold at about 40% to detect moderately bright lines.
@@ -305,7 +319,7 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 *Abstract Threshold Patterns — simulated result across source images.*
 **Source**: High-contrast footage, pattern generators, or feedback loops.
 
-**Objective**: Push the detection engine to extremes for abstract pattern generation rather than practical censorship.
+**What You'll Create**: Push the detection engine to extremes for abstract pattern generation rather than practical censorship.
 
 1. **Low threshold**: Set Threshold to about 20% so nearly everything triggers detection.
 2. **Minimum bar width**: Set Bar Width low so even brief bright flashes produce bars.
@@ -322,9 +336,6 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 
 ## Tips
 
-- **Threshold and Sensitivity together**: Use Threshold for coarse detection range and Sensitivity for fine adjustment. Together they define the exact luma gate boundary.
-- **Bar Width prevents false triggers**: If you see bars flickering on noise, increase Bar Width to require longer runs before detection activates.
-- **Margin is conservative**: Add margin to ensure bars cover a bit beyond the bright region — this mirrors real broadcast censorship practice where bars intentionally overshoot.
 - **Vertical mode is line-based**: Vertical bars don't detect vertical edges — they detect bright *scan lines*. A horizontal bright stripe triggers vertical bars; a vertical bright stripe triggers horizontal bars.
 - **Border adds legibility**: The white border makes bars visible against dark backgrounds where a plain black bar would be invisible.
 - **Feedback for recursion**: Routing the output back to the input creates recursive censorship — bars cover bars, producing evolving stripe patterns.
@@ -337,14 +348,12 @@ These exercises demonstrate the detection engine, bar styling, and creative appl
 | Term | Definition |
 |------|------------|
 | **Bar** | A solid rectangular region drawn over detected content, typically near-black (Y=64), simulating broadcast censorship or document redaction. |
-| **BRAM** | Block RAM; dedicated FPGA memory, not used by this program (zero BRAM, register-based design). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a digital filter whose output depends on both current input and previous output, used here for line brightness accumulation. |
-| **Interpolator** | A hardware multiply-accumulate unit for linear crossfading between two signals. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Margin** | Extra pixels of bar coverage extending past the end of a detected bright run, preventing partial exposure. |
 | **Run-Length** | The number of consecutive pixels meeting a condition; used here to require sustained brightness before triggering redaction. |
 | **Threshold** | A brightness cutoff value; pixels above (or below, when inverted) this level are flagged for redaction. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

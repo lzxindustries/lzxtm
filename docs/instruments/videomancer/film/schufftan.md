@@ -68,6 +68,14 @@ The key softness ramp controls the transition width between mirror and direct re
 
 ---
 
+## Quick Start
+
+1. **Key Level is scene-dependent**: The optimal threshold depends entirely on the tonal structure of your source material. Start at 50% and sweep until the key boundary lands where you want it.
+2. **Softness for naturalism**: Hard keys look digital; soft keys look optical. For a convincing Schüfftan look, use Softness of at least 20–30%.
+3. **Wobble amplitude goes a long way**: Even small Wobble values (10–20%) create a noticeable ripple. Reserve high values for deliberate funhouse-mirror effects.
+
+---
+
 ## Background
 
 ### The Schüfftan Process in Cinema
@@ -96,6 +104,8 @@ Metallic mirrors impart a colour cast to reflected light. Silver mirrors produce
 ---
 
 ## Signal Flow
+
+Input Register → Key Computation → Key Softness Ramp → ... → Composite → Mix + Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -168,7 +178,7 @@ Controls the luminance threshold that defines the boundary between mirror and di
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the softness of the key transition ramp. At 0%, the boundary between mirror and direct regions is a hard binary cut — pixels are either fully mirrored or fully direct. As you increase the control, the transition zone widens into a smooth gradient blend. High softness values create a dreamy, diffused boundary where the mirror effect fades gradually into the direct image, matching the optical behaviour of a partially-transparent reflective coating.
+At 0%, the boundary between mirror and direct regions is a hard binary cut — pixels are either fully mirrored or fully direct. As you increase the control, the transition zone widens into a smooth gradient blend. High softness values create a dreamy, diffused boundary where the mirror effect fades gradually into the direct image, matching the optical behaviour of a partially-transparent reflective coating. Internally, controls the softness of the key transition ramp.
 
 ---
 
@@ -179,7 +189,7 @@ Controls the softness of the key transition ramp. At 0%, the boundary between mi
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the amplitude of the per-scanline sinusoidal wobble applied to the mirror region. At 0%, the mirror region is spatially undistorted. Increasing the control introduces a sine-wave displacement that shifts each scanline horizontally (or vertically, depending on Switch 9), producing a watery, rippling distortion. High values create dramatic funhouse-mirror warping; low values produce a subtle shimmer that suggests an imperfect reflecting surface.
+At 0%, the mirror region is spatially undistorted. Increasing the control introduces a sine-wave displacement that shifts each scanline horizontally (or vertically, depending on Switch 9), producing a watery, rippling distortion. High values create dramatic funhouse-mirror warping; low values produce a subtle shimmer that suggests an imperfect reflecting surface. Internally, controls the amplitude of the per-scanline sinusoidal wobble applied to the mirror region.
 
 ---
 
@@ -241,6 +251,21 @@ The five toggles configure the keying mode, mirror polarity, wobble direction, d
 
 Crossfades between the original input signal and the fully composited mirror output. At 0%, the output is identical to the input. At 100%, the full mirror composite is applied. Intermediate values produce a weighted blend — useful for subtle mirror-tint washes that suggest a reflective surface without fully committing to the effect.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Schufftan processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -262,7 +287,7 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 *Basic Mirror Split — simulated result across source images.*
 **Source**: Footage with a clear tonal separation — a brightly-lit subject against a dark background, or a window with daylight and an interior shadow.
 
-**Objective**: Learn to use the luminance key to split the frame into mirror and direct regions.
+**What You'll Create**: Learn to use the luminance key to split the frame into mirror and direct regions.
 
 1. **Set the threshold**: Adjust Key Level to place the boundary between the bright and dark areas of your source.
 2. **Hard key**: Set Softness to 0%. The boundary is a sharp cut between mirror and direct.
@@ -289,7 +314,7 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 *Wobble and Distortion — simulated result across source images.*
 **Source**: A scene with strong geometric lines — architecture, grids, or tile patterns.
 
-**Objective**: Explore how per-scanline wobble distorts the mirror region while leaving the direct region clean.
+**What You'll Create**: Explore how per-scanline wobble distorts the mirror region while leaving the direct region clean.
 
 1. **Establish key**: Set Key Level to ~50%, Softness to ~30%, Contrast to ~30%.
 2. **Introduce wobble**: Slowly increase Wobble from 0% to ~60%. Watch the mirror region begin to ripple.
@@ -316,7 +341,7 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 *Edge-Keyed Mirror Composite — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text, graphic patterns, or architectural details with sharp lines.
 
-**Objective**: Use Edge key mode to apply mirror processing at transitions rather than brightness levels.
+**What You'll Create**: Use Edge key mode to apply mirror processing at transitions rather than brightness levels.
 
 1. **Switch to Edge mode**: Set Key Source (Switch 7) to Edge. The key is now driven by horizontal gradient magnitude, not absolute luminance.
 2. **Calibrate threshold**: Adjust Key Level to capture the major edges in your source without flooding the frame.
@@ -332,9 +357,6 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 
 ## Tips
 
-- **Key Level is scene-dependent**: The optimal threshold depends entirely on the tonal structure of your source material. Start at 50% and sweep until the key boundary lands where you want it.
-- **Softness for naturalism**: Hard keys look digital; soft keys look optical. For a convincing Schüfftan look, use Softness of at least 20–30%.
-- **Wobble amplitude goes a long way**: Even small Wobble values (10–20%) create a noticeable ripple. Reserve high values for deliberate funhouse-mirror effects.
 - **Combine Contrast and Detail for mirror realism**: Real reflections are both lower-contrast and softer than direct views. Use both controls together for the most convincing mirror zone.
 - **Mirror Tint as colour grade**: At low Key Level with soft key, the mirror tint becomes a gentle cool colour wash over most of the frame — usable as a cinematic colour grade tool.
 - **Edge mode for contour effects**: Edge keying applies the mirror treatment to spatial transitions rather than brightness levels, creating haloed contours with the mirror's soft, tinted character.
@@ -351,13 +373,12 @@ These exercises progress from basic luminance keying to full Schüfftan-style mi
 | **Chroma** | The colour information in a video signal, encoded as U and V components in YUV colour space. |
 | **Composite** | The process of combining two or more image layers into a single output using alpha blending or keying. |
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms (here, a sine wave for wobble) using a phase accumulator and lookup table. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both current input and previous output, creating exponential smoothing. |
 | **Keying** | Separating an image into foreground and background regions based on a signal characteristic (luminance, colour, or edge). |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage applying brightness and contrast adjustment. |
 | **Schüfftan Process** | A 1920s visual effects technique using a partially-scraped mirror to composite live actors with miniature sets. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

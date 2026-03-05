@@ -35,6 +35,14 @@ Despite its apparent simplicity, Lattice occupies a sweet spot between utility a
 
 ---
 
+## Quick Start
+
+1. **TOML labels are misleading**: The knob labels on the control panel do not match VHDL behavior. "Bar Width" is actually animation speed, "Fill Y" through "Fill V" are actually line width, fill brightness, and fill hue respectively. Refer to this guide for accurate control descriptions.
+2. **Equal H and V frequencies produce square grids**: For pixel-perfect test patterns, match both frequency knobs. Unequal values create rectangular cells.
+3. **XOR creates more pattern density than AND**: If the output looks too sparse, switch from AND to XOR. XOR fills approximately twice the area for the same threshold setting.
+
+---
+
 ## Background
 
 ### Direct Digital Synthesis and Phase Accumulators
@@ -209,6 +217,21 @@ The five toggles each map to a single bit in register 6, but their TOML labels a
 
 Wet/dry crossfade between the delayed input video and the keyed grid output. Despite the TOML label "Anim Rate," this register controls the interpolator mix amount. At 0% (fully down), the output is pure input video. At 100% (fully up), the output is pure Lattice grid. Intermediate positions blend the grid pattern over the input at variable opacity, useful for creating subtle overlay effects.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Lattice processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -219,7 +242,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 <img src={lattice_exercise1_result} alt="Perfect Cross-Hatch Grid result"/>
 *Perfect Cross-Hatch Grid — simulated result across source images.*
-**Objective**: Create a clean, high-contrast grid pattern using AND combination and triangle wave folding.
+**What You'll Create**: Create a clean, high-contrast grid pattern using AND combination and triangle wave folding.
 
 1. **Set equal frequencies**: Set H Freq and V Freq to ~25%, creating a moderate grid density with equal horizontal and vertical spacing.
 2. **Triangle mode**: Ensure both fold bypasses are off (H Shape = Ramp position means doubler active, creating triangles). The waveforms fold smoothly.
@@ -236,7 +259,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 <img src={lattice_exercise2_result} alt="XOR Moire Interference result"/>
 *XOR Moire Interference — simulated result across source images.*
-**Objective**: Generate complex moire beat patterns by combining incommensurate frequencies with XOR logic.
+**What You'll Create**: Generate complex moire beat patterns by combining incommensurate frequencies with XOR logic.
 
 1. **Mismatched frequencies**: Set H Freq to ~35% and V Freq to ~42%. The non-integer ratio creates spatial beat frequencies.
 2. **XOR combine**: Switch Combine to XOR. The alternating pattern fills more area than AND, making the moire fringes visible.
@@ -253,7 +276,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 <img src={lattice_exercise3_result} alt="Scrolling Colored Bars result"/>
 *Scrolling Colored Bars — simulated result across source images.*
-**Objective**: Use animation and key inversion to create a continuously scrolling colored bar pattern.
+**What You'll Create**: Use animation and key inversion to create a continuously scrolling colored bar pattern.
 
 1. **Horizontal only**: Set H Freq to ~30%, V Freq to 0%. With no vertical frequency, only horizontal bars appear.
 2. **Triangle fold**: Ensure H fold bypass is off. The triangle waveform creates smooth symmetric bars.
@@ -270,9 +293,6 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 
 ## Tips
 
-- **TOML labels are misleading**: The knob labels on the control panel do not match VHDL behavior. "Bar Width" is actually animation speed, "Fill Y" through "Fill V" are actually line width, fill brightness, and fill hue respectively. Refer to this guide for accurate control descriptions.
-- **Equal H and V frequencies produce square grids**: For pixel-perfect test patterns, match both frequency knobs. Unequal values create rectangular cells.
-- **XOR creates more pattern density than AND**: If the output looks too sparse, switch from AND to XOR. XOR fills approximately twice the area for the same threshold setting.
 - **Animation only affects horizontal**: The scrolling offset adds to the horizontal ramp only, so vertical bars are always stationary. Use this to create directional motion effects.
 - **Triangle vs sawtooth changes the character**: Triangle mode (fold active) produces smooth, symmetric gradients with soft edges. Sawtooth mode (fold bypassed) produces hard wrap edges with aliased transitions. Triangle generally looks cleaner at low frequencies.
 - **Key invert is the fastest way to swap density**: Rather than adjusting the threshold, toggle key invert to instantly swap filled and empty regions.
@@ -293,6 +313,7 @@ These exercises explore Lattice's geometric capabilities, from basic grid genera
 | **Sawtooth** | A waveform that ramps linearly from zero to maximum and then wraps sharply back to zero, produced by the raw phase accumulator output. |
 | **Triangle wave** | A waveform that ramps linearly from zero to maximum and then ramps linearly back to zero, produced by folding a sawtooth through the frequency doubler. |
 | **XOR** | Exclusive OR; a boolean operation that is true when exactly one of two inputs is true, producing an alternating checkerboard pattern when applied to two periodic binary masks. |
-| **YUV** | A color model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

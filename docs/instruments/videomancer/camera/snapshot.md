@@ -68,6 +68,14 @@ At subtle settings, Snapshot adds gentle warmth and a slight vignette to clean v
 
 ---
 
+## Quick Start
+
+1. **No bypass toggle**: This program uses the Cross Proc switch where bypass would normally be. Use the Mix fader at 0% for instant A/B comparison with the unprocessed signal.
+2. **Saturation first**: The saturation boost is the first processing stage, so it affects everything downstream — cross processing, vignette, warmth, and flash all operate on the already-saturated signal.
+3. **Vignette + flash**: These two effects complement each other naturally. Vignette darkens edges; flash brightens the center. Together they create a strong radial focus effect.
+
+---
+
 ## Background
 
 ### Disposable Camera Optics
@@ -94,6 +102,8 @@ The tiny flash units in disposable cameras produce a harsh, direct light with ra
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Sync Signals → Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -220,7 +230,19 @@ The five toggle switches control independent binary processing features. Film St
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed and original signals via three parallel interpolator units (one per YUV channel). At 100%, the output is fully processed. At 0%, the original input passes through unaltered. Intermediate positions blend the two signals linearly, allowing subtle application of the camera effects. This is the only bypass mechanism — there is no dedicated bypass toggle in this program.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Snapshot-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +265,7 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 *Warm Film Portrait — simulated result across source images.*
 **Source**: A portrait or figure against a simple background, ideally with skin tones and some depth.
 
-**Objective**: Build a warm, nostalgic film look with gentle vignette and fine grain — the classic disposable camera aesthetic.
+**What You'll Create**: Build a warm, nostalgic film look with gentle vignette and fine grain — the classic disposable camera aesthetic.
 
 1. **Warm base**: Set Film Stock to Warm and bring Warmth up to about 60%. The image takes on a golden tone.
 2. **Saturate**: Increase Saturation to about 75%. Colors become vivid but not garish.
@@ -271,7 +293,7 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 *Flash Party Photo — simulated result across source images.*
 **Source**: A scene with objects at varying distances from the camera — foreground, midground, and background.
 
-**Objective**: Simulate the harsh flash and deep vignette of indoor disposable camera photography.
+**What You'll Create**: Simulate the harsh flash and deep vignette of indoor disposable camera photography.
 
 1. **Start from Exercise 1 settings** but reduce Warmth to about 40%.
 2. **Enable Flash**: Toggle Flash On. The center of the frame brightens while edges remain dark.
@@ -300,7 +322,7 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 *Cross-Processed Experimental — simulated result across source images.*
 **Source**: High-contrast footage with strong color content — street scenes, neon signs, or nature with saturated greens and reds.
 
-**Objective**: Explore the dramatic color transformations of cross processing combined with film effects.
+**What You'll Create**: Explore the dramatic color transformations of cross processing combined with film effects.
 
 1. **Clean start**: Set all knobs to center (50%) and all toggles to Off.
 2. **Enable Cross Proc**: Toggle Cross Proc On. Watch the colors shift dramatically — greens and reds swap relationships.
@@ -318,9 +340,6 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 
 ## Tips
 
-- **No bypass toggle**: This program uses the Cross Proc switch where bypass would normally be. Use the Mix fader at 0% for instant A/B comparison with the unprocessed signal.
-- **Saturation first**: The saturation boost is the first processing stage, so it affects everything downstream — cross processing, vignette, warmth, and flash all operate on the already-saturated signal.
-- **Vignette + flash**: These two effects complement each other naturally. Vignette darkens edges; flash brightens the center. Together they create a strong radial focus effect.
 - **Cross processing is dramatic**: The V inversion and 1.5× U stretch produce extreme color shifts. Start with low Saturation and Warmth, then build up — cross processing amplifies everything.
 - **Grain for texture**: Even small amounts of grain add organic texture that softens the digital feel. At very high values, grain becomes a visible effect in its own right.
 - **Soft focus is directional**: The IIR blur runs horizontally only, resetting at each scan line. For uniform softness, combine with a feedback loop or downstream processing.
@@ -344,6 +363,7 @@ These exercises walk through the Snapshot processing chain from gentle film emul
 | **Luminance** | The brightness component (Y) of a YUV video signal. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Vignette** | Darkening of image corners and edges caused by optical limitations of the lens, or applied intentionally for artistic effect. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

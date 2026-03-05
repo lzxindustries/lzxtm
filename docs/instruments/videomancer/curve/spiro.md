@@ -35,6 +35,14 @@ The canvas read-out maps each lit cell to a color from a 16-entry hue palette th
 
 ---
 
+## Quick Start
+
+1. **Clear for fresh starts**: Momentarily toggle Clear On/Off to wipe the canvas and begin a new composition from scratch. The DDS phase continues uninterrupted, so the new drawing picks up where the old phase left off.
+2. **Gear ratio exploration**: Each of the 8 presets produces a distinct figure. Try drawing one ratio, clearing, and switching to another to compare the petal counts and symmetries side by side (or layer them without clearing).
+3. **Morph for evolution**: Even a small Morph Rate creates subtle, beautiful variations over time. Set Trail Decay to ~60–70% to see the morphing history as ghostly overlapping traces.
+
+---
+
 ## Background
 
 ### The Mathematics of Roulette Curves
@@ -66,6 +74,8 @@ The morph oscillator is a second, much slower DDS accumulator whose sine output 
 ---
 
 ## Signal Flow
+
+1. DDS Phase Accumulators → 2. Curve Equation → 3. Canvas Stamp → ... → 7. Interpolator → 8. Bypass Mux
 
 ```
 Per-Frame (during vertical blanking):
@@ -134,7 +144,7 @@ Selects one of eight gear ratio presets that define the mathematical relationshi
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the pen position — the distance *d* from the rolling wheel's center to the pen point. At 0% the pen sits at the center, producing a simple circle (the wheel's center traces a circle regardless of gear ratio). As the pen moves outward, the curve develops pronounced cusps or loops. At 100% the pen extends to the rim, producing the maximum cusp depth. The morph oscillator adds a sinusoidal sweep to this value, so the actual pen position is always the sum of the knob setting and the morph signal. This parameter defines the baseline around which the morph oscillates.
+At 0% the pen sits at the center, producing a simple circle (the wheel's center traces a circle regardless of gear ratio). As the pen moves outward, the curve develops pronounced cusps or loops. At 100% the pen extends to the rim, producing the maximum cusp depth. The morph oscillator adds a sinusoidal sweep to this value, so the actual pen position is always the sum of the knob setting and the morph signal. This parameter defines the baseline around which the morph oscillates. Internally, sets the pen position — the distance *d* from the rolling wheel's center to the pen point.
 
 ---
 
@@ -156,7 +166,7 @@ Controls the DDS draw speed — the angular velocity of the virtual Spirograph w
 | Default | 25.0% |
 | Suffix | % |
 
-Sets the morph rate — how quickly the pen position sweeps up and down via the morph DDS oscillator. At 0% the morph is frozen and the curve shape is determined solely by the Pen Position knob. As the morph rate increases, the pen distance sweeps through its range faster, causing the curve to cycle through families of related shapes. Very high morph rates create rapidly morphing, pulsating figures where the curve visibly breathes between tight and loose forms.
+At 0% the morph is frozen and the curve shape is determined solely by the Pen Position knob. As the morph rate increases, the pen distance sweeps through its range faster, causing the curve to cycle through families of related shapes. Very high morph rates create rapidly morphing, pulsating figures where the curve visibly breathes between tight and loose forms. Internally, sets the morph rate — how quickly the pen position sweeps up and down via the morph DDS oscillator.
 
 ---
 
@@ -207,6 +217,21 @@ The five toggles select mutually independent modes: curve type (hypotrochoid vs 
 
 Controls the wet/dry mix between the Spiro synthesis output and the delayed input signal. At 100% the synthesized curve completely replaces the input. At 0% the input passes through unaltered. Intermediate values create a translucent overlay where the geometric curve floats above the source video, combining mathematical precision with the texture and color of the input material.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Spiro processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -217,7 +242,7 @@ These exercises progress from simple static figures through evolving morphing cu
 
 <img src={spiro_exercise1_result} alt="Classic Spirograph Rosette result"/>
 *Classic Spirograph Rosette — simulated result across source images.*
-**Objective**: Draw a clean, closed Spirograph figure and understand how gear ratio and pen position determine the shape.
+**What You'll Create**: Draw a clean, closed Spirograph figure and understand how gear ratio and pen position determine the shape.
 
 1. **Clear the canvas**: Toggle Clear On momentarily, then back to Off to start with a blank canvas.
 2. **Set 3/8 ratio**: Turn Gear Ratio to the first preset position (~0%). This selects the 3/8 ratio, which produces a classic five-petal flower.
@@ -235,7 +260,7 @@ These exercises progress from simple static figures through evolving morphing cu
 
 <img src={spiro_exercise2_result} alt="Morphing Impossible Curves result"/>
 *Morphing Impossible Curves — simulated result across source images.*
-**Objective**: Engage the morph oscillator to create continuously evolving curves that pass through shapes no fixed-ratio Spirograph can produce.
+**What You'll Create**: Engage the morph oscillator to create continuously evolving curves that pass through shapes no fixed-ratio Spirograph can produce.
 
 1. **Start with a clean canvas**: Clear, then disable Clear.
 2. **Select a complex ratio**: Set Gear Ratio to preset 7 (~100%, the 11/16 complex figure).
@@ -252,7 +277,7 @@ These exercises progress from simple static figures through evolving morphing cu
 
 <img src={spiro_exercise3_result} alt="Video-Modulated Organic Curves result"/>
 *Video-Modulated Organic Curves — simulated result across source images.*
-**Objective**: Enable video modulation to inject organic distortion into the mathematical curves, producing unique content-responsive forms.
+**What You'll Create**: Enable video modulation to inject organic distortion into the mathematical curves, producing unique content-responsive forms.
 
 1. **Feed an input signal**: Connect a camera or video source with dynamic brightness variation.
 2. **Set a steady curve**: Gear Ratio preset 2 (~25%, the 1/4 three-petal figure), medium pen position, moderate speed.
@@ -268,9 +293,6 @@ These exercises progress from simple static figures through evolving morphing cu
 
 ## Tips
 
-- **Clear for fresh starts**: Momentarily toggle Clear On/Off to wipe the canvas and begin a new composition from scratch. The DDS phase continues uninterrupted, so the new drawing picks up where the old phase left off.
-- **Gear ratio exploration**: Each of the 8 presets produces a distinct figure. Try drawing one ratio, clearing, and switching to another to compare the petal counts and symmetries side by side (or layer them without clearing).
-- **Morph for evolution**: Even a small Morph Rate creates subtle, beautiful variations over time. Set Trail Decay to ~60–70% to see the morphing history as ghostly overlapping traces.
 - **Speed affects density**: Low Draw Speed values stamp fewer points per frame, making the curve appear as a dotted line. High values provide smooth, dense curves but trace the full figure faster.
 - **Epitrochoid for lobes**: Epitrochoid mode tends to produce outward-looping, flower-like curves compared to the inward-cusping stars of hypotrochoid mode. The visual difference is most dramatic with gear ratios where the numerator and denominator are close in value.
 - **Video Mod for organic flavour**: Even subtle video modulation — especially from slowly moving footage — adds a gentle wobble that makes the mathematical curves feel alive and hand-drawn.
@@ -283,7 +305,6 @@ These exercises progress from simple static figures through evolving morphing cu
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the persistent 128×96 one-bit canvas. |
 | **Canvas** | The 128×96 one-bit bitmap stored in BRAM where trail points are accumulated. |
 | **Cusp** | A pointed feature on a hypotrochoid curve where the pen direction reverses sharply. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator at a fixed rate. |
@@ -296,5 +317,7 @@ These exercises progress from simple static figures through evolving morphing cu
 | **Quarter-Wave LUT** | A 256-entry lookup table storing the first quarter of a sine wave; the remaining three quarters are reconstructed by symmetry. |
 | **Roulette** | The general mathematical term for curves traced by a point on a circle rolling along another circle. |
 | **Trail Decay** | The rate at which the canvas fade mechanism erases older marks. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

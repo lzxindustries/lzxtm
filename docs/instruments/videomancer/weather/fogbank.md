@@ -68,6 +68,14 @@ The name *Fogbank* refers to the dense, wall-like formations of fog that roll in
 
 ---
 
+## Quick Start
+
+1. **Start with static fog**: Set Drift Spd to 0% to study the fog pattern without motion. This makes it easy to observe how Density, Band Width, and Opacity interact before adding animation.
+2. **Wide bands for atmosphere**: Band W above 70% produces broad, cinematic fog blankets. Narrow bands create fine horizontal striations that feel more artificial — useful for a digital aesthetic but less atmospheric.
+3. **Grey fog for subtlety**: The Grey colour target (768) is noticeably less aggressive than White (1023). Use it when you want fog atmosphere without completely bleaching the image.
+
+---
+
 ## Background
 
 ### Atmospheric Fog in Cinematography
@@ -94,6 +102,8 @@ In computer graphics, fog compositing blends each pixel toward a fog colour base
 ---
 
 ## Signal Flow
+
+Input Register → Wave Function → Fog Intensity Compute → Fog Blend
 
 ```
 Input Video (YUV 4:4:4)
@@ -162,7 +172,7 @@ The fog blend stage pushes luma toward the target brightness while simultaneousl
 | Default | 50% |
 | Suffix | % |
 
-Controls the peak intensity of the fog effect by scaling the combined wave-plus-turbulence value. At minimum, the fog intensity is attenuated by a right-shift of 3 — barely visible brightening even in the densest fog bands. As the knob increases through four discrete threshold steps, the scaling increases to full amplitude at maximum, where the fog can push luma close to the white or grey target. This control determines how opaque the fog appears at its densest — think of it as the thickness of the fog layer. At low values, the fog is a thin haze that slightly washes out the image; at high values, it is an impenetrable blanket.
+At minimum, the fog intensity is attenuated by a right-shift of 3 — barely visible brightening even in the densest fog bands. As the knob increases through four discrete threshold steps, the scaling increases to full amplitude at maximum, where the fog can push luma close to the white or grey target. This control determines how opaque the fog appears at its densest — think of it as the thickness of the fog layer. At low values, the fog is a thin haze that slightly washes out the image; at high values, it is an impenetrable blanket. Internally, controls the peak intensity of the fog effect by scaling the combined wave-plus-turbulence value.
 
 ---
 
@@ -225,8 +235,8 @@ This control is reserved and has no effect on the VHDL processing pipeline. The 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Rolling | Rising |
-| **8 — Color** | White | Grey |
+| **7 — Pattern** | Rolling | Patchy |
+| **8 — Color** | White | Blue |
 | **9 — Edge** | Soft | Sharp |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -245,6 +255,10 @@ The toggle switches divide into two functional clusters. Pattern (7) and Color (
 | Suffix | % |
 
 Crossfades between the delayed dry input and the fog-composited output. At 0% (fader down), the output is pure dry — no fog is visible. At 100% (fader up), the output is the fully fog-blended image. Intermediate positions provide proportional blending, allowing the fog to appear as a semi-transparent overlay. This control operates after the fog composition stage, so it uniformly scales the fog effect across the entire frame regardless of the fog density pattern.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -267,7 +281,7 @@ These exercises progress from a static fog overlay through animated rolling fog 
 *Static Fog Blanket — simulated result across source images.*
 **Source**: A landscape photograph or footage with good tonal range — mountains, city skyline, or outdoor scene with clear detail.
 
-**Objective**: Understand how Density, Band Width, and Opacity interact to create a static fog overlay without animation.
+**What You'll Create**: Understand how Density, Band Width, and Opacity interact to create a static fog overlay without animation.
 
 1. **Broad fog bands**: Set Band W to ~75% for wide fog bands that span large vertical regions.
 2. **Moderate density**: Set Density to ~50%. Fog bands become visible as brightened horizontal zones across the image.
@@ -295,7 +309,7 @@ These exercises progress from a static fog overlay through animated rolling fog 
 *Rolling Fog Drift — simulated result across source images.*
 **Source**: A static or slow-moving video scene — architectural footage, landscape, or a still frame.
 
-**Objective**: Add DDS-driven animation to the fog bands and explore direction, speed mode, and drift rate.
+**What You'll Create**: Add DDS-driven animation to the fog bands and explore direction, speed mode, and drift rate.
 
 1. **From Exercise 1**: Keep Density ~50%, Band W ~60%, Opacity ~70%.
 2. **Add drift**: Increase Drift Spd to ~30%. The fog bands begin scrolling vertically through the image — rolling fog.
@@ -324,7 +338,7 @@ These exercises progress from a static fog overlay through animated rolling fog 
 *Turbulent Fogbank — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — faces, text, or geometric patterns.
 
-**Objective**: Add LFSR turbulence to break the fog band edges into organic, billowing shapes and explore the interplay between turbulence and density.
+**What You'll Create**: Add LFSR turbulence to break the fog band edges into organic, billowing shapes and explore the interplay between turbulence and density.
 
 1. **From Exercise 2**: Keep Density ~60%, Band W ~50%, Drift Spd ~20%, Opacity ~65%.
 2. **Add turbulence**: Increase Coverage to ~40%. The fog band edges begin to break apart — irregular noise creates billowing, organic boundaries.
@@ -341,9 +355,6 @@ These exercises progress from a static fog overlay through animated rolling fog 
 
 ## Tips
 
-- **Start with static fog**: Set Drift Spd to 0% to study the fog pattern without motion. This makes it easy to observe how Density, Band Width, and Opacity interact before adding animation.
-- **Wide bands for atmosphere**: Band W above 70% produces broad, cinematic fog blankets. Narrow bands create fine horizontal striations that feel more artificial — useful for a digital aesthetic but less atmospheric.
-- **Grey fog for subtlety**: The Grey colour target (768) is noticeably less aggressive than White (1023). Use it when you want fog atmosphere without completely bleaching the image.
 - **Turbulence transforms the character**: Even a small amount of Coverage (20–30%) breaks the mathematical perfection of the triangle wave and makes the fog look organic. Maximum turbulence creates chaotic noise textures.
 - **Opacity and Density are independent**: Density sets how much fog intensity the wave generates; Opacity sets how much of that intensity reaches the luma blend. High Density with low Opacity creates a fog pattern that is defined but subtle.
 - **Speed mode via Edge toggle**: The Edge Soft/Sharp toggle actually controls the DDS speed mode in the VHDL — Sharp doubles the scroll rate. Use it for fast fog animation.
@@ -360,13 +371,13 @@ These exercises progress from a static fog overlay through animated rolling fog 
 | **Airlight** | The luminance contributed to a pixel by light scattered from atmospheric particles between the camera and the scene object, causing distant objects to appear brighter and lower in contrast. |
 | **DDS (Direct Digital Synthesis)** | A technique for generating cyclical waveforms or smooth scrolling using a fixed-width accumulator incremented by a tuning word; the accumulator wraps naturally at its bit width. |
 | **Desaturation** | Reducing the chroma (colour intensity) of a signal toward the neutral axis, making colours appear washed out or grey. |
-| **Interpolator** | A hardware crossfade unit that blends two signals by a configurable ratio, used here for wet/dry mixing between the dry input and fog-composited output. |
 | **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a linear function of its previous state, producing a maximal-length pseudo-random binary sequence used for turbulence noise. |
 | **Luma** | Short for luminance; the brightness component (Y channel) of a YUV video signal. |
 | **Mie scattering** | Light scattering by particles comparable in size to the wavelength of light, responsible for the white appearance of fog and clouds (as opposed to the blue of Rayleigh scattering). |
 | **Opacity** | The degree to which the fog blend attenuates or obscures the source image; higher opacity means more fog influence on the output. |
 | **Triangle wave** | A periodic waveform that rises linearly to a peak and then falls linearly, producing smooth ramp-up and ramp-down patterns; used here to define the fog density profile. |
 | **Turbulence** | Randomised perturbation added to the fog density function to break smooth mathematical edges into organic, irregular boundaries. |
-| **YUV** | A colour model separating luminance (Y) from two chrominance components (U and V), used throughout Videomancer's video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

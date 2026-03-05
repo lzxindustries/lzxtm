@@ -68,6 +68,14 @@ The name references the **Teletext** broadcast data service that transmitted pag
 
 ---
 
+## Quick Start
+
+1. **Start with high contrast**: Set Contrast to ~70% or higher to see the full range of sixteen glyph densities. Low contrast compresses everything into a few similar characters.
+2. **Cell size vs. detail trade-off**: Smaller cells (4×4, 6×6) reproduce more image detail but individual glyphs become illegible. Larger cells (16×16, 20×20) produce bold, readable characters but lose fine spatial information.
+3. **Font personality**: Teletext sixels produce geometric mosaics. PETSCII creates diagonal-heavy compositions. CP437 gives the classic DOS ANSI art look. Braille produces delicate pointillist textures. Choose the font that matches your aesthetic intent.
+
+---
+
 ## Background
 
 ### Character Cell Graphics
@@ -94,6 +102,8 @@ Most classic character-cell systems used a single foreground color (green phosph
 ---
 
 ## Signal Flow
+
+Glyph Index → ROM Lookup → Color Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -155,7 +165,7 @@ Selects one of eight character cell sizes: 4×4, 6×6, 8×8, 10×10, 12×12, 14�
 | Default | 100.0% |
 | Suffix | % |
 
-Sets the luminance of the foreground — the brightness of the glyph pixels themselves. At 100%, glyphs are rendered at full white. At 0%, glyph pixels are black, making the characters invisible against a dark background. The foreground luma interacts with the source color toggle: in fixed mode, this pot directly controls character brightness. In video mode, the source luma is used instead, and this pot has no visible effect on the foreground channel.
+At 100%, glyphs are rendered at full white. At 0%, glyph pixels are black, making the characters invisible against a dark background. The foreground luma interacts with the source color toggle: in fixed mode, this pot directly controls character brightness. In video mode, the source luma is used instead, and this pot has no visible effect on the foreground channel. Internally, sets the luminance of the foreground — the brightness of the glyph pixels themselves.
 
 ---
 
@@ -177,7 +187,7 @@ Controls the foreground chroma hue angle. The 10-bit register is mapped through 
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the luminance of the background — the brightness of the space between and behind glyphs. At 0%, the background is pure black, creating high-contrast white-on-black text. At 100%, the background is full white, creating black-on-white text (when combined with a dark foreground). Setting foreground and background luma to similar values reduces contrast and makes the character structure subtle.
+At 0%, the background is pure black, creating high-contrast white-on-black text. At 100%, the background is full white, creating black-on-white text (when combined with a dark foreground). Setting foreground and background luma to similar values reduces contrast and makes the character structure subtle. Internally, sets the luminance of the background — the brightness of the space between and behind glyphs.
 
 ---
 
@@ -228,6 +238,21 @@ Toggles 7 and 8 form a 2-bit charset selector (bit 0 and bit 1 respectively), ch
 
 Wet/dry crossfade between the original input video and the processed character-art output. At 100%, the output is entirely the rendered character grid. At 0%, the original video passes through unchanged. Intermediate values blend the two, creating a ghostly overlay of text characters on top of the source image — useful for subtle texturing effects where the character structure is visible but the source content dominates.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Teletext processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +274,7 @@ These exercises progress from basic character rendering to advanced color and co
 *Classic Terminal Text — simulated result across source images.*
 **Source**: A well-lit portrait or still life with clear tonal separation.
 
-**Objective**: Learn the basics of cell size, font selection, and foreground/background color to create a classic green-screen terminal look.
+**What You'll Create**: Learn the basics of cell size, font selection, and foreground/background color to create a classic green-screen terminal look.
 
 1. **Set cell size**: Start at size index 2 (8×8 cells) for a balance of detail and readability.
 2. **Green terminal**: Set Fg Luma to ~80%, Fg Hue to ~120° (green), Bg Luma to ~5%, Bg Hue to ~120° (dark green).
@@ -276,7 +301,7 @@ These exercises progress from basic character rendering to advanced color and co
 *ANSI Art Color Mode — simulated result across source images.*
 **Source**: Brightly colored footage — flowers, graffiti, or animated graphics with saturated hues.
 
-**Objective**: Explore the Source Color mode to create full-color character-art renderings that inherit the hues of the source video.
+**What You'll Create**: Explore the Source Color mode to create full-color character-art renderings that inherit the hues of the source video.
 
 1. **Base setup**: Cell Size index 3 (10×10), Contrast ~60%.
 2. **Enable source color**: Flip Source Color toggle to Video. Each character cell now inherits the hue of the source video.
@@ -303,7 +328,7 @@ These exercises progress from basic character rendering to advanced color and co
 *Braille Pointillism — simulated result across source images.*
 **Source**: A high-contrast black-and-white image or footage with strong graphic shapes.
 
-**Objective**: Use the Braille character set with small cell sizes to create a fine-grained pointillist rendering.
+**What You'll Create**: Use the Braille character set with small cell sizes to create a fine-grained pointillist rendering.
 
 1. **Braille mode**: Set Charset Lo=1, Charset Hi=1 to select the Braille dot pattern font.
 2. **Fine grid**: Set Cell Size to index 0 (4×4). The screen fills with thousands of tiny dot clusters.
@@ -319,9 +344,6 @@ These exercises progress from basic character rendering to advanced color and co
 
 ## Tips
 
-- **Start with high contrast**: Set Contrast to ~70% or higher to see the full range of sixteen glyph densities. Low contrast compresses everything into a few similar characters.
-- **Cell size vs. detail trade-off**: Smaller cells (4×4, 6×6) reproduce more image detail but individual glyphs become illegible. Larger cells (16×16, 20×20) produce bold, readable characters but lose fine spatial information.
-- **Font personality**: Teletext sixels produce geometric mosaics. PETSCII creates diagonal-heavy compositions. CP437 gives the classic DOS ANSI art look. Braille produces delicate pointillist textures. Choose the font that matches your aesthetic intent.
 - **Source color for live performance**: Video mode inherits the hue of whatever is on camera, making the character-art output respond to colored lighting changes in real time.
 - **Feedback loops**: Route the output back to the input for recursive character rendering — characters made of characters. Use moderate Mix values to prevent the image from collapsing to a uniform field.
 - **Background hue for atmosphere**: Colored backgrounds create the feel of vintage terminals — green phosphor, amber CRT, or blue mainframe screens.
@@ -334,7 +356,6 @@ These exercises progress from basic character rendering to advanced color and co
 | Term | Definition |
 |------|------------|
 | **Braille** | A tactile writing system using raised dot patterns in a 2×4 matrix, repurposed here as a fine-grained display font. |
-| **BRAM** | Block RAM; dedicated FPGA memory used here for the per-column luma sample buffer. |
 | **Cell** | A rectangular region of the screen grid mapped to a single character glyph. |
 | **CP437** | Code Page 437; the original IBM PC character set including block-shading characters (░▒▓█). |
 | **Density sorting** | Ordering glyphs from fewest lit pixels (sparse) to most lit pixels (dense) for luminance mapping. |
@@ -342,6 +363,7 @@ These exercises progress from basic character rendering to advanced color and co
 | **PETSCII** | The Commodore 64 character set, including geometric shapes and semigraphic blocks. |
 | **Sixel** | A 2×3 grid of sub-blocks within a character cell; the fundamental building block of Teletext mosaic graphics. |
 | **Source Color** | A rendering mode that inherits the hue of the input video per cell, rather than using a fixed foreground color. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

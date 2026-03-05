@@ -68,6 +68,14 @@ The name *Dazzle* refers both to the optical sensation of being overwhelmed by b
 
 ---
 
+## Quick Start
+
+1. **Threshold is sensitivity**: Low threshold = many sparkles (floods the image). High threshold = few sparkles (only the hottest highlights). Start high and lower gradually until you get the desired density.
+2. **Intensity saturates**: The boost is additive and clamped to peak white (1023). High intensity on a high-luminance source will clip — the sparkle becomes a flat white patch. Use moderate intensity to preserve the shape of the glint arms.
+3. **Radius and star interact**: Star mode with high radius creates dramatic eight-pointed rays that can dominate the frame. Cross mode with moderate radius is more subtle and broadcast-friendly.
+
+---
+
 ## Background
 
 ### Video Sparkle Generators
@@ -94,6 +102,8 @@ The Fairlight CVI (1984) was one of the first affordable real-time video synthes
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix Stage → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -140,7 +150,7 @@ The critical interaction is between threshold detection and the shape kernel. Th
 | Default | 63% |
 | Suffix | % |
 
-Sets the luminance threshold for sparkle detection. At 0%, every pixel fires the sparkle overlay — the entire image is boosted. As the threshold increases, only progressively brighter pixels trigger sparkles, until at 100% only the absolute brightest specular highlights produce glints. This is the primary sensitivity control: low values create a diffuse glow across the image; high values produce sparse, precise highlight bursts.
+At 0%, every pixel fires the sparkle overlay — the entire image is boosted. As the threshold increases, only progressively brighter pixels trigger sparkles, until at 100% only the absolute brightest specular highlights produce glints. This is the primary sensitivity control: low values create a diffuse glow across the image; high values produce sparse, precise highlight bursts. Internally, sets the luminance threshold for sparkle detection.
 
 ---
 
@@ -151,7 +161,7 @@ Sets the luminance threshold for sparkle detection. At 0%, every pixel fires the
 | Default | 50% |
 | Suffix | % |
 
-Controls the additive luminance boost applied to pixels within the sparkle kernel. At 0%, detected bright pixels receive no additional brightness — the sparkle is invisible. As intensity increases, the sparkle overlay becomes brighter, eventually saturating the luminance channel to peak white. Because the boost is additive (Y + Intensity, clamped to 1023), the original image detail beneath the sparkle is preserved at moderate settings.
+At 0%, detected bright pixels receive no additional brightness — the sparkle is invisible. As intensity increases, the sparkle overlay becomes brighter, eventually saturating the luminance channel to peak white. Because the boost is additive (Y + Intensity, clamped to 1023), the original image detail beneath the sparkle is preserved at moderate settings. Internally, controls the additive luminance boost applied to pixels within the sparkle kernel.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the additive luminance boost applied to pixels within the sparkle kerne
 | Default | 38% |
 | Suffix | % |
 
-Determines the spatial extent of the sparkle arms. At 0%, the sparkle is a single-pixel highlight at the detected bright spot. As radius increases, the cross or star arms extend farther from the center, creating larger glint patterns. Very high radius values produce long, dramatic rays that can span a significant portion of the frame. The shape of these arms is controlled by Toggle 9 (Cross vs. Star).
+At 0%, the sparkle is a single-pixel highlight at the detected bright spot. As radius increases, the cross or star arms extend farther from the center, creating larger glint patterns. Very high radius values produce long, dramatic rays that can span a significant portion of the frame. The shape of these arms is controlled by Toggle 9 (Cross vs. Star). Internally, determines the spatial extent of the sparkle arms.
 
 ---
 
@@ -195,7 +205,7 @@ Modulates the depth of the rainbow chroma overlay when Rainbow (Toggle 7) is act
 | Default | 25% |
 | Suffix | % |
 
-Sets the rate of the LFSR-driven pulse modulation when Pulse (Toggle 8) is active. At 0%, the pulse rate is very slow — sparkles breathe in and out over several seconds. As speed increases, the pulsation becomes more rapid, creating a flickering, strobe-like sparkle effect. At maximum, the modulation is fast enough to appear as a shimmer rather than a distinct pulse. Has no visible effect when Pulse is toggled off.
+At 0%, the pulse rate is very slow — sparkles breathe in and out over several seconds. As speed increases, the pulsation becomes more rapid, creating a flickering, strobe-like sparkle effect. At maximum, the modulation is fast enough to appear as a shimmer rather than a distinct pulse. Has no visible effect when Pulse is toggled off. Internally, sets the rate of the LFSR-driven pulse modulation when Pulse (Toggle 8) is active.
 
 ---
 
@@ -222,7 +232,29 @@ Toggles 7–11 control five independent binary options. Rainbow (7) and Pulse (8
 | Default | 100% |
 | Suffix | % |
 
-Wet/dry crossfade between the original (dry) signal and the sparkle-processed (wet) signal. At 0%, the output is the unprocessed source. At 100%, the output is the fully processed sparkle overlay. Intermediate values blend the two, allowing subtle sparkle enhancement to be mixed into the source at any desired strength.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Dazzle processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Dazzle-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -245,7 +277,7 @@ These exercises progress from basic highlight detection to full sparkle animatio
 *Threshold Highlight Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with visible specular highlights — metallic objects, glass reflections, or stage lighting.
 
-**Objective**: Learn how the threshold and intensity controls interact to create basic luminance-driven highlight bursts.
+**What You'll Create**: Learn how the threshold and intensity controls interact to create basic luminance-driven highlight bursts.
 
 1. **Set threshold high**: Turn Threshold to about 80%. Only the brightest highlights should trigger sparkles.
 2. **Add intensity**: Increase Intensity to about 50%. Bright spots bloom into white highlights.
@@ -272,7 +304,7 @@ These exercises progress from basic highlight detection to full sparkle animatio
 *Rainbow Starbursts — simulated result across source images.*
 **Source**: High-contrast footage with scattered bright points — city lights at night, candle flames, or sequined fabric.
 
-**Objective**: Explore rainbow chroma overlay and star kernel geometry.
+**What You'll Create**: Explore rainbow chroma overlay and star kernel geometry.
 
 1. **Base sparkle**: Set Threshold ~60%, Intensity ~60%, Radius ~50%.
 2. **Enable rainbow**: Toggle Rainbow (Switch 7) on. Sparkle points gain a colorful XOR pattern.
@@ -300,7 +332,7 @@ These exercises progress from basic highlight detection to full sparkle animatio
 *Pulsing Persistent Trails — simulated result across source images.*
 **Source**: Slowly moving footage with bright highlights — a hand-held flashlight, a rotating disco ball, or a sparkler.
 
-**Objective**: Combine pulse modulation and persistence decay to create animated sparkle trails.
+**What You'll Create**: Combine pulse modulation and persistence decay to create animated sparkle trails.
 
 1. **Base sparkle**: Set Threshold ~50%, Intensity ~70%, Radius ~40%.
 2. **Enable persistence**: Toggle Persistent (Switch 10) on. Sparkles linger after the bright source moves away.
@@ -317,9 +349,6 @@ These exercises progress from basic highlight detection to full sparkle animatio
 
 ## Tips
 
-- **Threshold is sensitivity**: Low threshold = many sparkles (floods the image). High threshold = few sparkles (only the hottest highlights). Start high and lower gradually until you get the desired density.
-- **Intensity saturates**: The boost is additive and clamped to peak white (1023). High intensity on a high-luminance source will clip — the sparkle becomes a flat white patch. Use moderate intensity to preserve the shape of the glint arms.
-- **Radius and star interact**: Star mode with high radius creates dramatic eight-pointed rays that can dominate the frame. Cross mode with moderate radius is more subtle and broadcast-friendly.
 - **Rainbow needs sparkle pixels**: The Rainbow toggle only colors pixels within the sparkle kernel. If Threshold is set too high and no pixels trigger, Rainbow has no visible effect.
 - **Persistence builds up**: With Persistent on and high Decay, static highlights accumulate to peak white over several frames. Use for deliberate bloom effects or lower Decay for balanced trails.
 - **Feedback loops**: Routing the Dazzle output back to the input creates recursive sparkle — each frame's sparkles become triggers for the next frame's threshold detection, producing cascading highlight explosions.
@@ -336,15 +365,14 @@ These exercises progress from basic highlight detection to full sparkle animatio
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Cross Kernel** | A four-pointed sparkle shape extending along the horizontal and vertical axes from a center pixel. |
 | **Decay** | The rate at which accumulated sparkle brightness fades over successive frames when persistence is active. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue Rotation** | Shifting the color angle of a pixel around the color wheel; here implemented via XOR with spatial coordinates. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used to drive the pulse modulation timing. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Specular Highlight** | A bright reflection from a shiny surface — the primary target for sparkle detection. |
 | **Star Kernel** | An eight-pointed sparkle shape adding diagonal arms to the cross kernel pattern. |
 | **Threshold** | A luminance cutoff value; pixels above the threshold are flagged as bright and receive sparkle overlay. |
 | **XOR** | Exclusive OR; a bitwise logic operation that flips bits where the two operands differ, producing structured interference patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At moderate settings, the program adds authentic CRT aging character — darkene
 
 ---
 
+## Quick Start
+
+1. **Wear is the master**: Set Wear first — it scales burn, vignette, and purity together. Start at ~50% and adjust individual effects from there.
+2. **Subtle convergence is most realistic**: Real CRT convergence error is typically 1-3 pixels at most. Values above 4 are exaggerated for creative effect.
+3. **Warm/Cool purity is the most common**: Most real CRT purity drift creates warm/cool corners. Green Drift and Rainbow are more extreme and artistic.
+
+---
+
 ## Background
 
 ### What Is Phosphor Burn-In?
@@ -92,6 +100,8 @@ CRT displays naturally darken at the edges because the electron beam must travel
 ---
 
 ## Signal Flow
+
+Y Channel → Sync Signals → Interpolator → Output
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -143,7 +153,7 @@ The purity modes are selected by the bottom 2 bits of the toggle register. Each 
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the speed at which the burn-in accumulator absorbs new content. At low values, the IIR shift is large (12) — the burn builds very slowly over many frames, creating a delayed ghost that takes a long time to form. At high values, the shift is small (4) — the burn accumulates quickly, with the ghost following the input closely. Moderate values (25-50%) create a realistic slow burn where static elements gradually imprint.
+At low values, the IIR shift is large (12) — the burn builds very slowly over many frames, creating a delayed ghost that takes a long time to form. At high values, the shift is small (4) — the burn accumulates quickly, with the ghost following the input closely. Moderate values (25-50%) create a realistic slow burn where static elements gradually imprint. Internally, controls the speed at which the burn-in accumulator absorbs new content.
 
 ---
 
@@ -154,7 +164,7 @@ Controls the speed at which the burn-in accumulator absorbs new content. At low 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the visibility of the burn-in ghost in the output image. At 0%, the burn accumulator runs internally but does not affect the output — no ghost is visible. At higher values, the accumulated burn pattern is multiplied by the intensity and added to the luma, making the ghost brighter. At maximum, the ghost is very prominent and adds significant brightness to the image.
+At 0%, the burn accumulator runs internally but does not affect the output — no ghost is visible. At higher values, the accumulated burn pattern is multiplied by the intensity and added to the luma, making the ghost brighter. At maximum, the ghost is very prominent and adds significant brightness to the image. Internally, controls the visibility of the burn-in ghost in the output image.
 
 ---
 
@@ -164,7 +174,7 @@ Controls the visibility of the burn-in ghost in the output image. At 0%, the bur
 | Range | 0 – 8 |
 | Default | 2 |
 
-Controls the convergence error — the horizontal pixel offset between the Y (luma) and U/V (chroma) channels. At 0, there is no offset and all channels are perfectly aligned. At maximum, the U channel is delayed by up to 8 pixels relative to Y, creating visible colour fringing on vertical edges. The V channel remains aligned with Y, so the shift is asymmetric — this simulates how CRT convergence error typically affects one gun more than the others.
+At 0, there is no offset and all channels are perfectly aligned. At maximum, the U channel is delayed by up to 8 pixels relative to Y, creating visible colour fringing on vertical edges. The V channel remains aligned with Y, so the shift is asymmetric — this simulates how CRT convergence error typically affects one gun more than the others. Internally, controls the convergence error — the horizontal pixel offset between the Y (luma) and U/V (chroma) channels.
 
 ---
 
@@ -175,7 +185,7 @@ Controls the convergence error — the horizontal pixel offset between the Y (lu
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of the radial vignette effect — the brightness falloff from centre to edge. At 0%, there is no falloff and brightness is uniform. At moderate values, the edges and corners darken, creating a natural CRT-like circular viewing area. At maximum, the vignette is very strong and only the central area retains significant brightness.
+At 0%, there is no falloff and brightness is uniform. At moderate values, the edges and corners darken, creating a natural CRT-like circular viewing area. At maximum, the vignette is very strong and only the central area retains significant brightness. Internally, controls the intensity of the radial vignette effect — the brightness falloff from centre to edge.
 
 ---
 
@@ -205,7 +215,7 @@ Controls the master aging wear level. This scales multiple effects simultaneousl
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Purity** | None | Warm/Cool |
+| **7 — Purity** | None | Rainbow |
 | **8 — Distort** | Barrel | Pincushon |
 | **9 — Burn Reset** | Off | On |
 | **10 — Scanlines** | Off | On |
@@ -225,6 +235,10 @@ Toggle 7 is a **4-position purity mode selector** using the bottom 2 bits of the
 | Suffix | % |
 
 Wet/dry crossfade between the original input video (delayed to match the 12-clock processing pipeline plus 4-clock interpolator) and the CRT aging output. At 0%, pure unprocessed input. At 100%, fully processed CRT degradation.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -247,7 +261,7 @@ These exercises progress from individual CRT aging effects through combined degr
 *Vignette and Scanlines — simulated result across source images.*
 **Source**: Any well-exposed image — uniform brightness distribution is ideal for vignette observation.
 
-**Objective**: Understand the radial vignette and scanline effects that define the basic CRT viewing experience.
+**What You'll Create**: Understand the radial vignette and scanline effects that define the basic CRT viewing experience.
 
 1. **Isolate vignette**: Set Vignette to ~50%, all other effects to 0 (Burn Rate 0, Burn Intns 0, Convergence 0, Wear at 100% to allow effects through).
 2. **Observe falloff**: The image darkens toward all four edges and corners. The centre remains at full brightness.
@@ -275,7 +289,7 @@ These exercises progress from individual CRT aging effects through combined degr
 *Convergence Error and Purity Drift — simulated result across source images.*
 **Source**: Image with high-contrast vertical edges and varied colours — architecture, text overlays, or graphic patterns.
 
-**Objective**: Explore how convergence error and purity drift introduce colour artefacts typical of aging CRT monitors.
+**What You'll Create**: Explore how convergence error and purity drift introduce colour artefacts typical of aging CRT monitors.
 
 1. **Add convergence**: Set Convergence to ~50% (about 4 pixels). Look at vertical edges — you should see colour fringing.
 2. **Maximum convergence**: Push to 100% (8 pixel delay). Very obvious colour separation.
@@ -304,7 +318,7 @@ These exercises progress from individual CRT aging effects through combined degr
 *Full Attract Mode Simulation — simulated result across source images.*
 **Source**: Static image with high-contrast elements — game screenshot, text overlay, or graphic with bright logos on dark background.
 
-**Objective**: Create the complete attract mode effect by combining burn-in with all other CRT aging artefacts.
+**What You'll Create**: Create the complete attract mode effect by combining burn-in with all other CRT aging artefacts.
 
 1. **Enable burn-in**: Set Burn Rate to ~40%, Burn Intns to ~50%.
 2. **Add aging**: Convergence ~25%, Vignette ~35%, Wear ~70%.
@@ -321,9 +335,6 @@ These exercises progress from individual CRT aging effects through combined degr
 
 ## Tips
 
-- **Wear is the master**: Set Wear first — it scales burn, vignette, and purity together. Start at ~50% and adjust individual effects from there.
-- **Subtle convergence is most realistic**: Real CRT convergence error is typically 1-3 pixels at most. Values above 4 are exaggerated for creative effect.
-- **Warm/Cool purity is the most common**: Most real CRT purity drift creates warm/cool corners. Green Drift and Rainbow are more extreme and artistic.
 - **Slow burn for realism**: Real phosphor burn-in takes hours or days. A burn rate of 10-25% creates a slow, gradual ghost that feels authentic.
 - **Burn Reset for fresh starts**: If the burn ghost becomes too strong or undesirable, toggle Burn Reset to clear it and start accumulating anew.
 - **Scanlines sell the CRT look**: Even without other effects, scanline dimming immediately reads as "CRT monitor" to most viewers.
@@ -338,7 +349,6 @@ These exercises progress from individual CRT aging effects through combined degr
 | Term | Definition |
 |------|------------|
 | **Alpha-max beta-min** | A fast approximation algorithm for computing distance from the origin without square roots, used here for radial vignette distance calculation. |
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the per-scanline burn-in accumulator. |
 | **Burn-in** | Permanent degradation of CRT phosphor coating where a static image reduces phosphor efficiency, leaving a visible ghost of the displayed content. |
 | **Colour purity** | The accuracy with which each CRT electron gun excites only its assigned phosphor dots; degraded purity causes position-dependent colour casts across the screen. |
 | **Convergence** | The alignment of the three colour electron gun beams in a CRT; convergence error produces visible colour fringing when beams strike misaligned phosphor dots. |
@@ -348,6 +358,7 @@ These exercises progress from individual CRT aging effects through combined degr
 | **Phosphor** | The luminescent coating on the inside of a CRT faceplate that glows when struck by an electron beam and degrades with prolonged use. |
 | **Scanline** | A single horizontal line traced by the electron beam during one pass across the CRT screen; alternating-line dimming simulates the visible gaps between scan lines. |
 | **Vignette** | A gradual darkening of the image from centre to edges, caused on CRT displays by electron beam spread and glass attenuation at the screen periphery. |
-| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

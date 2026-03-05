@@ -35,6 +35,14 @@ The name *Roulette* is the formal mathematical term for the family of curves pro
 
 ---
 
+## Quick Start
+
+1. **Start with Trail on**: Without persistence, Roulette shows only a single moving dot — interesting for probing geometry, but the classic spirograph look requires trail accumulation.
+2. **Rational ratios produce closed figures**: When the outer and inner radius controls are set to values whose ratio is a simple fraction (e.g., 2:1, 3:2), the curve closes on itself after a finite number of lobes. Irrational ratios produce figures that never exactly repeat.
+3. **Speed affects density**: Faster tracing fills the figure more quickly but can skip positions if the increment is too large relative to the line width, producing dotted rather than continuous lines.
+
+---
+
 ## Background
 
 ### Roulette Geometry
@@ -111,7 +119,7 @@ The simplified single-point orbital approach in the current VHDL does not comput
 | Default | 50% |
 | Suffix | % |
 
-Controls the outer radius of the roulette curve — the radius of the fixed circle in the geometric model. At 0% the curve collapses to a point at the center of the screen. At 100% the curve's lobes extend to the edges of the active picture. This parameter scales the amplitude of the sine component that drives the horizontal position of the curve point. Combined with Radius r, it determines the ratio R/r which controls lobe count and symmetry.
+At 0% the curve collapses to a point at the center of the screen. At 100% the curve's lobes extend to the edges of the active picture. This parameter scales the amplitude of the sine component that drives the horizontal position of the curve point. Combined with Radius r, it determines the ratio R/r which controls lobe count and symmetry. Internally, controls the outer radius of the roulette curve — the radius of the fixed circle in the geometric model.
 
 ---
 
@@ -144,7 +152,7 @@ Sets the pen distance — the offset of the drawing point from the center of the
 | Default | 25% |
 | Suffix | % |
 
-Controls the speed of curve tracing — the DDS phase accumulator increment applied once per vertical sync pulse. At 0% the curve point is stationary. At moderate settings the dot traces the figure slowly enough to follow. At high settings the dot races around the curve, and with persistence the figure fills in rapidly. The upper 8 bits of the 10-bit register value are used as the increment to the 16-bit accumulator.
+At 0% the curve point is stationary. At moderate settings the dot traces the figure slowly enough to follow. At high settings the dot races around the curve, and with persistence the figure fills in rapidly. The upper 8 bits of the 10-bit register value are used as the increment to the 16-bit accumulator. Internally, controls the speed of curve tracing — the DDS phase accumulator increment applied once per vertical sync pulse.
 
 ---
 
@@ -194,6 +202,21 @@ The five toggle switches configure the curve type, colorization mode, trail pers
 
 Controls the overall brightness of the synthesized output via the interpolator mix stage. At 100% the curve is drawn at full intensity against the dark background. At 0% the output is fully attenuated. Intermediate values dim both the curve and the background proportionally, which can be used to blend the synthesis output with external video when the Bypass is off.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Roulette processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -204,7 +227,7 @@ These exercises explore Roulette's curve geometry from simple circles through co
 
 <img src={roulette_exercise1_result} alt="Simple Orbit result"/>
 *Simple Orbit — simulated result across source images.*
-**Objective**: Produce a basic circular orbit to understand the DDS phase accumulator and Manhattan distance rendering.
+**What You'll Create**: Produce a basic circular orbit to understand the DDS phase accumulator and Manhattan distance rendering.
 
 1. Set Radius R to about 50% for moderate horizontal amplitude.
 2. Set Radius r to about 50% to match, producing a circular path.
@@ -222,7 +245,7 @@ These exercises explore Roulette's curve geometry from simple circles through co
 
 <img src={roulette_exercise2_result} alt="Multi-Lobed Spirograph result"/>
 *Multi-Lobed Spirograph — simulated result across source images.*
-**Objective**: Create a classic spirograph figure by adjusting the radius ratio for multiple lobes.
+**What You'll Create**: Create a classic spirograph figure by adjusting the radius ratio for multiple lobes.
 
 1. Set Radius R to about 70% for a large fixed circle.
 2. Set Radius r to about 25% for a small rolling circle — this ratio produces a multi-lobed figure.
@@ -240,7 +263,7 @@ These exercises explore Roulette's curve geometry from simple circles through co
 
 <img src={roulette_exercise3_result} alt="Animated Color Trace result"/>
 *Animated Color Trace — simulated result across source images.*
-**Objective**: Use high speed, color mode, and trail fade to create an evolving luminous trace that builds and decays.
+**What You'll Create**: Use high speed, color mode, and trail fade to create an evolving luminous trace that builds and decays.
 
 1. Set Radius R to about 60% and Radius r to about 40% for an asymmetric figure.
 2. Set Pen Dist to about 80% for large self-intersecting loops.
@@ -258,9 +281,6 @@ These exercises explore Roulette's curve geometry from simple circles through co
 
 ## Tips
 
-- **Start with Trail on**: Without persistence, Roulette shows only a single moving dot — interesting for probing geometry, but the classic spirograph look requires trail accumulation.
-- **Rational ratios produce closed figures**: When the outer and inner radius controls are set to values whose ratio is a simple fraction (e.g., 2:1, 3:2), the curve closes on itself after a finite number of lobes. Irrational ratios produce figures that never exactly repeat.
-- **Speed affects density**: Faster tracing fills the figure more quickly but can skip positions if the increment is too large relative to the line width, producing dotted rather than continuous lines.
 - **Wide lines reveal Manhattan geometry**: The diamond shape of the Manhattan distance test is visible at line widths above 4. This can be a desirable aesthetic — or you can keep widths narrow for a Euclidean approximation.
 - **Color sweep during animation**: Slowly rotating the Color knob while the curve traces in RGB mode paints the figure in a gradient of hues, creating a rainbow spirograph effect.
 - **Combine with external video**: Turn Bypass off and set Brightness below 100% to overlay the curve on external video input via the interpolator mix.
@@ -279,6 +299,7 @@ These exercises explore Roulette's curve geometry from simple circles through co
 | **Phase Accumulator** | A register that adds a fixed increment on every clock cycle, wrapping at its maximum value to produce a repeating sawtooth phase ramp. |
 | **Quarter-Wave Sine LUT** | A lookup table storing only the first quarter (0 to π/2) of the sine function; the remaining three quarters are reconstructed by quadrant mirroring and sign inversion. |
 | **Roulette** | The mathematical family of curves generated by rolling one circle on another, including epitrochoids, hypotrochoids, epicycloids, and hypocycloids. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

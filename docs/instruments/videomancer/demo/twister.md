@@ -35,6 +35,14 @@ At conservative settings, Twister produces a gently undulating bar with smooth c
 
 ---
 
+## Quick Start
+
+1. **Slow rotation reveals geometry**: Start with Rot Speed ~10–20% to clearly see the face transitions and understand the column classification before increasing speed.
+2. **Twist Rate is the signature control**: The twist is what distinguishes this from a simple rotating bar. Start gentle (~20%) and increase to discover the sweet spot where the helix is visible but not overwhelming.
+3. **Four faces for maximum drama**: 2-face mode is simpler, but 4-face mode produces a more dynamic color sequence during rotation — four distinct phases per revolution instead of two.
+
+---
+
 ## Background
 
 ### The Demoscene Twister
@@ -61,6 +69,8 @@ In dual-bar mode, a second bar is rendered at a fixed horizontal offset (400 pix
 ---
 
 ## Signal Flow
+
+Column Classification → Face Pattern + Shading → Brightness + Composite
 
 ```
 Per-Frame State ──────────────────────────────────────
@@ -123,7 +133,7 @@ The face color lookup uses a hardcoded 4-entry palette with fixed YUV values. Th
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the rotation speed — the angular velocity increment applied to the global phase accumulator each frame. At 0%, the bar is stationary. As the value increases, the bar rotates faster. The speed register's top 8 bits are used as the DDS increment, so the rotation rate is approximately proportional to the pot position. Very high speeds create a spinning blur effect where individual faces are no longer distinguishable.
+At 0%, the bar is stationary. As the value increases, the bar rotates faster. The speed register's top 8 bits are used as the DDS increment, so the rotation rate is approximately proportional to the pot position. Very high speeds create a spinning blur effect where individual faces are no longer distinguishable. Internally, controls the rotation speed — the angular velocity increment applied to the global phase accumulator each frame.
 
 ---
 
@@ -134,7 +144,7 @@ Controls the rotation speed — the angular velocity increment applied to the gl
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the twist rate — the per-scanline phase increment that creates the helical deformation. At 0%, every scanline sees the same rotation angle and the bar appears as a straight vertical column. As twist increases, the angular difference between the top and bottom of the screen grows. High twist values create a tightly wound helix where the bar completes multiple full rotations across the screen height. The twist increment is scaled by `vcount * twist_rate >> 8`.
+At 0%, every scanline sees the same rotation angle and the bar appears as a straight vertical column. As twist increases, the angular difference between the top and bottom of the screen grows. High twist values create a tightly wound helix where the bar completes multiple full rotations across the screen height. The twist increment is scaled by `vcount * twist_rate >> 8`. Internally, sets the twist rate — the per-scanline phase increment that creates the helical deformation.
 
 ---
 
@@ -205,7 +215,29 @@ Toggles 7–10 each control a single rendering option that changes the visual ch
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade mix. At 100%, the output is the fully synthesized twister bar. At 0%, the output is the unprocessed input video. Intermediate values blend the bar over the source via three parallel interpolator_u instances. This allows the twister to be composited as a semi-transparent overlay on existing video content.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Twister processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Twister-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -217,7 +249,7 @@ These exercises explore the twister from simple rotation through helical twist t
 
 <img src={twister_exercise1_result} alt="Basic Rotation result"/>
 *Basic Rotation — simulated result across source images.*
-**Objective**: Observe a single vertical bar rotating smoothly with no twist, understanding how face widths change with the cosine/sine of the rotation angle.
+**What You'll Create**: Observe a single vertical bar rotating smoothly with no twist, understanding how face widths change with the cosine/sine of the rotation angle.
 
 1. **Single wide bar**: Set Bar Width to ~60%, Twist Rate to 0%, Rot Speed to ~30%.
 2. **Observe face transitions**: Watch the front face expand and contract as the bar rotates. The side face width changes inversely.
@@ -233,7 +265,7 @@ These exercises explore the twister from simple rotation through helical twist t
 
 <img src={twister_exercise2_result} alt="Helical Twist result"/>
 *Helical Twist — simulated result across source images.*
-**Objective**: Add per-scanline twist to create the classic helical deformation and explore how twist rate affects the visual complexity.
+**What You'll Create**: Add per-scanline twist to create the classic helical deformation and explore how twist rate affects the visual complexity.
 
 1. **Start with basic rotation**: Rot Speed ~30%, Bar Width ~50%.
 2. **Add gentle twist**: Set Twist Rate to ~20%. The bar begins to curve — the top and bottom face different directions.
@@ -250,7 +282,7 @@ These exercises explore the twister from simple rotation through helical twist t
 
 <img src={twister_exercise3_result} alt="Dual Bar Composition result"/>
 *Dual Bar Composition — simulated result across source images.*
-**Objective**: Create a multi-bar arrangement with video compositing, exploring the overlay and transparency capabilities.
+**What You'll Create**: Create a multi-bar arrangement with video compositing, exploring the overlay and transparency capabilities.
 
 1. **Enable dual bars**: Toggle Double to Dual. A second bar appears 400 pixels from center.
 2. **Set moderate parameters**: Rot Speed ~25%, Twist Rate ~40%, Bar Width ~40%.
@@ -266,9 +298,6 @@ These exercises explore the twister from simple rotation through helical twist t
 
 ## Tips
 
-- **Slow rotation reveals geometry**: Start with Rot Speed ~10–20% to clearly see the face transitions and understand the column classification before increasing speed.
-- **Twist Rate is the signature control**: The twist is what distinguishes this from a simple rotating bar. Start gentle (~20%) and increase to discover the sweet spot where the helix is visible but not overwhelming.
-- **Four faces for maximum drama**: 2-face mode is simpler, but 4-face mode produces a more dynamic color sequence during rotation — four distinct phases per revolution instead of two.
 - **Video face for compositing**: Enable Video Face to use the twister bar as a shaped viewport into the source video. The rotating bar reveals and conceals the video in a rhythmic pattern.
 - **Stripe + twist = barber pole**: The combination of horizontal stripes and helical twist creates a classic barber-pole illusion, especially effective with moderate twist rates around 30–40%.
 - **Dual bars for symmetry**: The second bar at +400 pixels creates a symmetrical frame-like composition. Use with reduced bar width to avoid overlap.
@@ -285,10 +314,10 @@ These exercises explore the twister from simple rotation through helical twist t
 | **Demoscene** | A computer art subculture focused on creating real-time audiovisual demonstrations within hardware constraints; originated in the 1980s on Amiga and Atari ST platforms. |
 | **Face ID** | An integer (0–3) identifying which of the four faces of the virtual square bar is visible at a given pixel; determines color from the palette. |
 | **Helical Twist** | A deformation that rotates a shape progressively along its vertical axis, creating a coiling or corkscrew appearance. |
-| **Interpolator** | A linear crossfade unit that blends between two values based on a mix parameter, used for wet/dry blending. |
 | **Lambert Shading** | A lighting model where surface brightness is proportional to the cosine of the angle between the surface normal and the light direction; produces convincing matte surface illumination. |
 | **LUT** | Lookup Table; a precomputed array of values used to replace runtime computation, here a quarter-wave sine table with 256 entries. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave** | A sine table optimization that stores only 0°–90° and reconstructs the remaining three quadrants using symmetry (mirror and negate). |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

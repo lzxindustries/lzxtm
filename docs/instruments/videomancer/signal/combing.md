@@ -68,6 +68,14 @@ The Blend control crossfades between the live and delayed signals, allowing the 
 
 ---
 
+## Quick Start
+
+1. **Subtle shimmer**: Low Comb Depth (~20%) with Blend at ~50% creates a barely perceptible interlace shimmer that adds analog broadcast character without obvious artifacts.
+2. **Checkerboard for texture**: Checkerboard mode at moderate depth creates a fine mesh overlay that interacts beautifully with source detail.
+3. **Animation for life**: Enable Animate to prevent the comb pattern from looking static and digital. The continuous drift adds natural temporal variation.
+
+---
+
 ## Background
 
 ### What Is Interlace Combing?
@@ -86,6 +94,8 @@ A **line buffer** is a block of memory that stores one complete scanline of vide
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Y Post-Processing → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -130,7 +140,7 @@ The key interaction is between the phase computation and the pattern mode. In Li
 | Default | 100% |
 | Suffix | % |
 
-Controls the strength of the comb pattern. At 0%, the live and delayed signals contribute equally to every pixel — no visible combing. As Comb Depth increases, the alternation between live and delayed becomes more pronounced. At 100%, the full delayed signal replaces the live signal on alternate lines (or pixels in checkerboard mode), creating the maximum comb artifact. This control determines the visibility and intensity of the interlace simulation.
+At 0%, the live and delayed signals contribute equally to every pixel — no visible combing. As Comb Depth increases, the alternation between live and delayed becomes more pronounced. At 100%, the full delayed signal replaces the live signal on alternate lines (or pixels in checkerboard mode), creating the maximum comb artifact. This control determines the visibility and intensity of the interlace simulation. Internally, controls the strength of the comb pattern.
 
 ---
 
@@ -185,7 +195,7 @@ Adds a DC offset to the luminance channel after contrast processing. Controls th
 | Default | 100% |
 | Suffix | % |
 
-Controls the final output amplitude. At 100%, the processed signal passes at full level. At 0%, the output fades to black. Acts as a master output level control applied after all comb processing, contrast, and brightness adjustments.
+At 100%, the processed signal passes at full level. At 0%, the output fades to black. Acts as a master output level control applied after all comb processing, contrast, and brightness adjustments. Internally, controls the final output amplitude.
 
 ---
 
@@ -212,7 +222,29 @@ Switches 7–11 control five independent parameters. Field selects the starting 
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed combing output and the original input signal. At 100%, the output is fully processed. Lowering the fader blends the unprocessed input back in. At 0%, the output is the original input with no combing artifacts.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Combing processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Combing-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -235,7 +267,7 @@ These exercises progress from basic interlace simulation to creative pattern-bas
 *Broadcast Interlace Simulation — simulated result across source images.*
 **Source**: Video footage with moderate motion — a person walking, traffic, or a slowly panning camera.
 
-**Objective**: Recreate the characteristic comb artifacts of improperly deinterlaced broadcast video.
+**What You'll Create**: Recreate the characteristic comb artifacts of improperly deinterlaced broadcast video.
 
 1. **Basic combing**: Set Comb Depth to ~80% and Blend to ~100%. The output shows alternating scanlines from the current and previous field — the classic comb pattern is visible along motion boundaries.
 2. **Field polarity**: Toggle the Field switch. Notice the comb pattern shifts by one line — odd vs. even field dominance.
@@ -262,7 +294,7 @@ These exercises progress from basic interlace simulation to creative pattern-bas
 *Checkerboard Decomposition — simulated result across source images.*
 **Source**: A still image or slow-moving footage with fine detail — text, geometric patterns, or fabric textures.
 
-**Objective**: Explore the two-dimensional checkerboard pattern and its visual effects.
+**What You'll Create**: Explore the two-dimensional checkerboard pattern and its visual effects.
 
 1. **Switch to checkerboard**: Enable Checkerboard mode (Switch 8). The alternation pattern changes from horizontal stripes to a fine grid.
 2. **Full depth**: Set Comb Depth to 100%. Every other pixel on every other line shows the delayed signal, creating a checkerboard mosaic.
@@ -289,7 +321,7 @@ These exercises progress from basic interlace simulation to creative pattern-bas
 *Animated Drift and Pattern Blending — simulated result across source images.*
 **Source**: Any footage — the effect is primarily pattern-driven rather than content-dependent.
 
-**Objective**: Combine animation, blending, and contrast for evolving pattern-based video textures.
+**What You'll Create**: Combine animation, blending, and contrast for evolving pattern-based video textures.
 
 1. **Moderate combing**: Set Comb Depth ~60%, Blend ~70%.
 2. **Animate**: Enable Animation (Switch 9). The comb pattern scrolls vertically, creating a rolling shutter-like drift.
@@ -305,9 +337,6 @@ These exercises progress from basic interlace simulation to creative pattern-bas
 
 ## Tips
 
-- **Subtle shimmer**: Low Comb Depth (~20%) with Blend at ~50% creates a barely perceptible interlace shimmer that adds analog broadcast character without obvious artifacts.
-- **Checkerboard for texture**: Checkerboard mode at moderate depth creates a fine mesh overlay that interacts beautifully with source detail.
-- **Animation for life**: Enable Animate to prevent the comb pattern from looking static and digital. The continuous drift adds natural temporal variation.
 - **Contrast shapes teeth**: Increasing contrast after combing amplifies the tonal difference between live and delayed lines, making the comb teeth sharper and more visible.
 - **Fade for vignette**: Use the Fade control to darken the combed output, creating a processed-looking signal that sits well in a mix.
 - **Feedback loops**: Route the output back to the input. The one-line delay creates recursive vertical shifting that builds complex stripe patterns over successive passes.
@@ -318,14 +347,12 @@ These exercises progress from basic interlace simulation to creative pattern-bas
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for line delay storage. |
 | **Comb Artifact** | A visual defect in interlaced video where alternating scanlines show temporal offset, creating tooth-like edges along motion boundaries. |
 | **Field** | One half of an interlaced video frame, containing either all odd-numbered or all even-numbered scanlines. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interlace** | A scanning method where each frame is divided into two fields (odd and even lines), transmitted in alternation. |
 | **Line Buffer** | A memory block storing one complete scanline, creating a one-line delay for vertical filtering operations. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Progressive** | A scanning method where all lines of a frame are captured and displayed in sequential order, without field splitting. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

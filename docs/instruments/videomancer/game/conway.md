@@ -35,6 +35,14 @@ The Run/Pause toggle freezes the simulation while continuing to display the curr
 
 ---
 
+## Quick Start
+
+1. **Medium density is most interesting**: Initial densities between 25-35% produce the most complex emergent behavior. Too sparse and everything dies; too dense and everything quickly stabilizes into a dense grid of blocks.
+2. **Pause for study**: Use the Run/Pause toggle to freeze the simulation at interesting moments. Study the structures — blocks (2x2), blinkers (3 in a row), beehives (6-cell hexagons), and more complex oscillators.
+3. **Seed repeatability**: Note your Seed X, Seed Y, and Density positions to reproduce favorite initial conditions. The same seeds always produce the same evolution path.
+
+---
+
 ## Background
 
 ### Conway's Original Rules
@@ -207,6 +215,10 @@ The five toggles divide into simulation control (Run, Reset), display options (G
 
 Mix controls the wet/dry blend between the Game of Life display and the input video. At full mix, only the cellular automaton is visible against black. Reducing mix fades in the input video behind the cell pattern, creating a living, evolving overlay on live footage. At zero mix, the simulation is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -217,7 +229,7 @@ These exercises explore the Game of Life's sensitivity to initial conditions, th
 
 <img src={conway_exercise1_result} alt="Sparse Genesis result"/>
 *Sparse Genesis — simulated result across source images.*
-**Objective**: Seed a low-density initial field and observe the emergence of stable structures from isolated cells.
+**What You'll Create**: Seed a low-density initial field and observe the emergence of stable structures from isolated cells.
 
 1. Set Speed to about 40% for observable evolution pace.
 2. Set Density to about 15% for a sparse initial field.
@@ -236,7 +248,7 @@ These exercises explore the Game of Life's sensitivity to initial conditions, th
 
 <img src={conway_exercise2_result} alt="Dense Chaos result"/>
 *Dense Chaos — simulated result across source images.*
-**Objective**: Seed a high-density initial field and observe the rapid die-off and stabilization into a complex pattern.
+**What You'll Create**: Seed a high-density initial field and observe the rapid die-off and stabilization into a complex pattern.
 
 1. Set Density to about 80% for a nearly full starting grid.
 2. Set Speed to about 50% — the initial evolution is dramatic and benefits from moderate speed.
@@ -254,7 +266,7 @@ These exercises explore the Game of Life's sensitivity to initial conditions, th
 
 <img src={conway_exercise3_result} alt="Living Texture Overlay result"/>
 *Living Texture Overlay — simulated result across source images.*
-**Objective**: Use the evolving Game of Life as a dynamic texture overlay blended with input video.
+**What You'll Create**: Use the evolving Game of Life as a dynamic texture overlay blended with input video.
 
 1. Set Density to about 30% for a moderately complex evolving field.
 2. Set Speed to about 25% for rapid, continuous evolution.
@@ -272,9 +284,6 @@ These exercises explore the Game of Life's sensitivity to initial conditions, th
 
 ## Tips
 
-- **Medium density is most interesting**: Initial densities between 25-35% produce the most complex emergent behavior. Too sparse and everything dies; too dense and everything quickly stabilizes into a dense grid of blocks.
-- **Pause for study**: Use the Run/Pause toggle to freeze the simulation at interesting moments. Study the structures — blocks (2x2), blinkers (3 in a row), beehives (6-cell hexagons), and more complex oscillators.
-- **Seed repeatability**: Note your Seed X, Seed Y, and Density positions to reproduce favorite initial conditions. The same seeds always produce the same evolution path.
 - **Grid lines reveal structure**: Enable Grid when studying patterns to see individual cell boundaries. Disable Grid for cleaner visual output during performances.
 - **Speed as visual rhythm**: Fast speeds create a flickering, organic visual texture. Slow speeds reveal the deliberate, logical progression of each generation.
 - **Overlay for organic visuals**: At partial mix, the evolving cellular pattern creates a living, breathing texture over input video — ideal for abstract visual performances.
@@ -299,6 +308,7 @@ These exercises explore the Game of Life's sensitivity to initial conditions, th
 | **Still Life** | A stable pattern where every live cell has 2 or 3 neighbors and no dead cell has exactly 3 live neighbors. |
 | **Toroidal Grid** | A grid topology where opposite edges are connected, creating a continuous surface without boundaries. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used to trigger generation computation. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ The name is a direct homage to the original screensaver. Unlike its software anc
 
 ---
 
+## Quick Start
+
+1. **Speed and Hue Spread do nothing**: The Speed and Hue Spread knobs are mapped but unused. Focus on Trail Len, Hue Speed, Thickness, and Bg Dim for visual control.
+2. **Fill is not implemented**: The Fill toggle has no effect. All rendering is wireframe regardless of the switch position.
+3. **Avoid bypass for clean comparisons**: Due to the non-standard bypass (output uses undelayed data while sync is delayed), use Mix at 0% instead of Bypass for A/B comparison of processed vs. unprocessed video.
+
+---
+
 ## Background
 
 ### The Windows Screensaver as Art Form
@@ -61,6 +69,8 @@ Color cycling is implemented as a 6-segment hue wheel indexed by a frame counter
 ---
 
 ## Signal Flow
+
+Position Counters → Line Distance Test → Background Dimming → Hue-to-YUV + Compositing
 
 ```
 VSYNC (vertex update phase)
@@ -222,6 +232,10 @@ The five toggles configure polygon geometry, rendering mode, and output routing.
 
 Wet/dry mix crossfade. At 0% (register = 0), the output is the 7-clock-delayed input video. At 100% (register = 1023), the output is the fully composited polygon rendering with dimmed background. Intermediate values blend the two proportionally via three interpolator_u instances.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -232,7 +246,7 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 
 <img src={mystify_exercise1_result} alt="Classic Screensaver result"/>
 *Classic Screensaver — simulated result across source images.*
-**Objective**: Recreate the iconic Windows 3.1 Mystify look with colored quadrilaterals and trailing ribbons.
+**What You'll Create**: Recreate the iconic Windows 3.1 Mystify look with colored quadrilaterals and trailing ribbons.
 
 1. **Full quad mode**: Set Vertices to 4 Quad, enable Poly 2.
 2. **3–4 trails**: Set Trail Len to step 3 or 4 for flowing ribbons.
@@ -250,7 +264,7 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 
 <img src={mystify_exercise2_result} alt="Minimal Geometry over Video result"/>
 *Minimal Geometry over Video — simulated result across source images.*
-**Objective**: Use thin line segments over live video for a subtle geometric overlay.
+**What You'll Create**: Use thin line segments over live video for a subtle geometric overlay.
 
 1. **Line mode**: Set Vertices to 2 Line. Single polygon only (Poly 2 off).
 2. **Thin lines**: Set Thickness to step 1 (~1px).
@@ -268,7 +282,7 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 
 <img src={mystify_exercise3_result} alt="Stroboscopic Key Geometry result"/>
 *Stroboscopic Key Geometry — simulated result across source images.*
-**Objective**: Create hard-edged polygon cutouts with bright color jumps and dense trails.
+**What You'll Create**: Create hard-edged polygon cutouts with bright color jumps and dense trails.
 
 1. **Dense trails**: Trail Len at maximum (step 6). Six trailing copies.
 2. **Fast hue**: Hue Speed at ~80%. Colors shift rapidly.
@@ -285,9 +299,6 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 
 ## Tips
 
-- **Speed and Hue Spread do nothing**: The Speed and Hue Spread knobs are mapped but unused. Focus on Trail Len, Hue Speed, Thickness, and Bg Dim for visual control.
-- **Fill is not implemented**: The Fill toggle has no effect. All rendering is wireframe regardless of the switch position.
-- **Avoid bypass for clean comparisons**: Due to the non-standard bypass (output uses undelayed data while sync is delayed), use Mix at 0% instead of Bypass for A/B comparison of processed vs. unprocessed video.
 - **Thick lines + max trails = visual density**: Combining step 4 thickness with 6 trails and dual polygons produces the densest geometric patterns, approaching solid fills where ribbons overlap.
 - **Bg Dim shapes the context**: At 0% dimming, the polygons overlay full-brightness video. At 100%, they render against black. The 900-threshold desaturation prevents color bleed in very dark backgrounds.
 - **Key blend for hard geometry**: Additive blend produces glowing luminous lines. Key blend produces opaque geometric shapes that punch through the background. Key is closer to the original screensaver look.
@@ -306,6 +317,7 @@ These exercises explore the screensaver geometry from simple lines to complex mu
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator using XOR-based feedback. Mystify uses a 16-bit LFSR with seed 0xD1CE for vertex initialization. |
 | **Screensaver** | A program originally designed to prevent CRT phosphor burn-in by displaying moving images when the computer was idle; became one of the earliest forms of mainstream generative art. |
 | **Trail buffer** | A register-based ring buffer storing previous vertex positions. Unlike framebuffer-based trails, this approach re-rasterizes all trail copies every frame. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

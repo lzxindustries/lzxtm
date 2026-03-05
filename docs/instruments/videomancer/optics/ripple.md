@@ -68,6 +68,14 @@ Ripple supports single-source and dual-source modes. In dual-source mode, the se
 
 ---
 
+## Quick Start
+
+1. **Manhattan diamonds**: The diamond-shaped wavefronts (from Manhattan distance) give Ripple a unique geometric character — embrace them rather than expecting circles.
+2. **Separate sources for fringes**: The interference pattern only appears when sources are separated. Use Src2 X Ofs to spread them.
+3. **Static for composition**: Set Speed to 0 for a frozen wave pattern useful as a compositing element or texture.
+
+---
+
 ## Background
 
 ### What Is Wave Interference?
@@ -86,6 +94,8 @@ Computing the sine function in real-time FPGA hardware is expensive. A **sine lo
 ---
 
 ## Signal Flow
+
+Position Counters → Wave Engine → Wet/Dry Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ Controls the animation speed. The frame counter is multiplied by the Speed value
 | Default | 75% |
 | Suffix | % |
 
-Controls the wave amplitude — the peak-to-trough brightness range of the wave pattern. At minimum, the waves are flat (invisible — all pixels at midpoint). At maximum, the waves swing the full 0–1023 range from black to white. This control is a simple multiplier applied after the sine lookup.
+At minimum, the waves are flat (invisible — all pixels at midpoint). At maximum, the waves swing the full 0–1023 range from black to white. This control is a simple multiplier applied after the sine lookup. Internally, controls the wave amplitude — the peak-to-trough brightness range of the wave pattern.
 
 ---
 
@@ -168,7 +178,7 @@ Controls the wave amplitude — the peak-to-trough brightness range of the wave 
 | Default | 75% |
 | Suffix | % |
 
-Controls the horizontal offset of the second wave source from the screen center. At center (512), source 2 is co-located with source 1 (producing concentric rings identical to single-source mode). Moving the knob away from center moves source 2 left or right, spreading the interference pattern. The farther the sources are separated, the more distinct hyperbolic interference fringes appear between them.
+At center (512), source 2 is co-located with source 1 (producing concentric rings identical to single-source mode). Moving the knob away from center moves source 2 left or right, spreading the interference pattern. The farther the sources are separated, the more distinct hyperbolic interference fringes appear between them. Internally, controls the horizontal offset of the second wave source from the screen center.
 
 ---
 
@@ -219,6 +229,21 @@ Switches 7–11 control color mode, video overlay, inversion, source count, and 
 
 Controls the wet/dry mix between the wave pattern and the original input. At 100%, the full wave pattern (or Over Video composite) is output. Lowering the fader blends the original input back in.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Ripple processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -240,7 +265,7 @@ These exercises explore single-source concentric waves, dual-source interference
 *Concentric Rings (Single Source) — simulated result across source images.*
 **Source**: Any input (ripple generates its own pattern; input is used for sync only unless Over Video is enabled).
 
-**Objective**: Explore the basic concentric wave pattern from a single source and understand wavelength and speed controls.
+**What You'll Create**: Explore the basic concentric wave pattern from a single source and understand wavelength and speed controls.
 
 1. **Single source**: Set Single Src to Single (Switch 10). Simple concentric rings appear centered on screen.
 2. **Wavelength**: Sweep Wavelength from minimum to maximum. Observe the spacing of rings — 32-pixel (tight) to 256-pixel (wide).
@@ -268,7 +293,7 @@ These exercises explore single-source concentric waves, dual-source interference
 *Dual-Source Interference — simulated result across source images.*
 **Source**: Any input (sync reference only).
 
-**Objective**: Create and explore the classic two-source interference pattern.
+**What You'll Create**: Create and explore the classic two-source interference pattern.
 
 1. **Enable dual**: Set Single Src to Dual (Switch 10). A second set of rings appears.
 2. **Separate sources**: Move Src2 X Ofs to ~75%. The two sources separate horizontally and hyperbolic interference fringes appear between them.
@@ -296,7 +321,7 @@ These exercises explore single-source concentric waves, dual-source interference
 *Rainbow Interference over Video — simulated result across source images.*
 **Source**: Live camera feed or graphic content with clear shapes and colors.
 
-**Objective**: Combine rainbow color mode with video overlay for psychedelic compositing effects.
+**What You'll Create**: Combine rainbow color mode with video overlay for psychedelic compositing effects.
 
 1. **Rainbow mode**: Set Color to Rainbow (Switch 7). The interference pattern now displays in vivid colors derived from wave phase.
 2. **Over Video**: Enable Over Video (Switch 8). The wave luminance pattern modulates the input video while the rainbow UV replaces source chroma.
@@ -312,9 +337,6 @@ These exercises explore single-source concentric waves, dual-source interference
 
 ## Tips
 
-- **Manhattan diamonds**: The diamond-shaped wavefronts (from Manhattan distance) give Ripple a unique geometric character — embrace them rather than expecting circles.
-- **Separate sources for fringes**: The interference pattern only appears when sources are separated. Use Src2 X Ofs to spread them.
-- **Static for composition**: Set Speed to 0 for a frozen wave pattern useful as a compositing element or texture.
 - **Rainbow for psychedelia**: Rainbow mode maps phase to hue, creating vivid color interference that evolves with animation.
 - **Over Video for texturing**: Use Over Video at moderate amplitude and mix to add a ripple texture to any live video source.
 - **Wavelength and source spacing interact**: Shorter wavelengths with wide source separation produce more fringes; longer wavelengths with close sources produce broad patterns.
@@ -328,13 +350,13 @@ These exercises explore single-source concentric waves, dual-source interference
 |------|------------|
 | **Constructive Interference** | Two waves arriving in phase, reinforcing each other to produce a brighter combined amplitude. |
 | **Destructive Interference** | Two waves arriving out of phase, canceling each other to produce a darker combined amplitude. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Interference Pattern** | The spatial pattern of bright and dark fringes created by the superposition of two or more waves. |
 | **Manhattan Distance** | Distance measured as the sum of absolute differences of coordinates: |Δx| + |Δy|. Produces diamond-shaped wavefronts. |
 | **Phase** | The position within a wave's cycle, determining its instantaneous amplitude (crest, trough, or in between). |
 | **Ripple Tank** | A physics demonstration apparatus using shallow water to visualize wave phenomena: reflection, refraction, diffraction, and interference. |
 | **Sine LUT** | A lookup table containing precomputed sine values, used instead of real-time trigonometric computation. |
 | **Wavelength** | The distance between successive wave crests; determines the spatial frequency of the wave pattern. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

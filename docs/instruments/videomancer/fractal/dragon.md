@@ -35,6 +35,14 @@ Color cycling derives hue directly from the hash bits themselves, so regions at 
 
 ---
 
+## Quick Start
+
+1. **Start with low iteration, then climb**: Begin at Iteration step 1 to understand the base diagonal grid, then increase one step at a time. Each step adds one level of fractal folding — watching the progression builds intuition for how XOR hashing generates self-similar structure.
+2. **Color Cycle reveals spatial structure**: The hash-derived chrominance is not decorative — it encodes the spatial position within the fractal tiling. Regions with similar color share similar hash-bit configurations, making Color Cycle a diagnostic tool for understanding the pattern's topology.
+3. **Rotation at 45° is a sweet spot**: Because the XOR fold creates primary structure along the diagonal, rotating by 45° aligns this structure with the horizontal, producing a dramatically different visual texture from the same parameters. Try comparing 0° and 45° at each iteration depth.
+
+---
+
 ## Background
 
 ### The Heighway Dragon Curve
@@ -61,6 +69,8 @@ Fractal imagery has been central to computational art since Benoit Mandelbrot's 
 ---
 
 ## Signal Flow
+
+Clock 0: Register Decode → Clock 1: Timing Detection → Clock 2: Centered → ... → Sync Signals → Bypass
 
 ```
 Synthesis Output (YUV 4:4:4)
@@ -212,6 +222,21 @@ The five toggles configure distinct aspects of the fractal engine's output. Fill
 
 Controls the luminance intensity of foreground (pattern=1) pixels. At 100%, foreground pixels are rendered at full white (Y=1023); at 0%, they dim to black, effectively erasing the pattern. The background (pattern=0) is always rendered at a fixed dark level (Y=64). At the default 75% setting, the contrast between foreground and background is strong but not clipped — suitable for both standalone display and downstream processing. Reducing Brightness below 50% produces a subtler pattern that can be overlaid on other video signals without overwhelming them. When Color Cycle is active, Brightness affects only the Y channel — the chromatic content from the hash bits is independent, so reducing Brightness desaturates the pattern toward dark color rather than gray.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Dragon processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -222,7 +247,7 @@ These exercises explore the dragon fractal from simple static geometry through c
 
 <img src={dragon_exercise1_result} alt="Fractal Depth Discovery result"/>
 *Fractal Depth Discovery — simulated result across source images.*
-**Objective**: Explore how the Iteration parameter transforms a simple checkerboard into the classic dragon curve silhouette, understanding the relationship between XOR fold depth and fractal complexity.
+**What You'll Create**: Explore how the Iteration parameter transforms a simple checkerboard into the classic dragon curve silhouette, understanding the relationship between XOR fold depth and fractal complexity.
 
 1. **Start minimal**: Set Iteration to its lowest step (1). The screen shows a simple diagonal checkerboard — the result of a single-bit XOR fold with minimal spatial mixing.
 2. **Increase iteration depth**: Slowly advance Iteration through each step. Watch the checkerboard edges begin to fracture and fold — the diagonal lines develop recursive zigzag indentations at each new depth level.
@@ -239,7 +264,7 @@ These exercises explore the dragon fractal from simple static geometry through c
 
 <img src={dragon_exercise2_result} alt="Chromatic Dragon Flight result"/>
 *Chromatic Dragon Flight — simulated result across source images.*
-**Objective**: Combine color cycling with animation to produce a continuously evolving, spectrally rich fractal landscape that reveals the spatial structure of the hash function through color.
+**What You'll Create**: Combine color cycling with animation to produce a continuously evolving, spectrally rich fractal landscape that reveals the spatial structure of the hash function through color.
 
 1. **Enable color**: Toggle Color Cycle On. The monochrome dragon pattern blooms into bands of hue — each region of the fractal field receives its color from the local hash bits.
 2. **Start animation**: Toggle Animate On. The pattern begins crawling and morphing, the colors shifting as the frame counter modifies the hash seed.
@@ -256,7 +281,7 @@ These exercises explore the dragon fractal from simple static geometry through c
 
 <img src={dragon_exercise3_result} alt="Mirrored Kaleidoscope result"/>
 *Mirrored Kaleidoscope — simulated result across source images.*
-**Objective**: Use Mirror mode with animation and color cycling to produce a densely textured, asymmetric fractal field that evokes kaleidoscopic glass patterns.
+**What You'll Create**: Use Mirror mode with animation and color cycling to produce a densely textured, asymmetric fractal field that evokes kaleidoscopic glass patterns.
 
 1. **Enable Mirror**: Toggle Mirror On. The pattern immediately becomes denser and more chaotic as the third hash bit disrupts the bilateral symmetry of the standard dragon fold.
 2. **Maximum iteration**: Set Iteration to step 14–16. At this depth, the mirrored pattern is extremely fine-grained, approaching a noise-like texture with fractal micro-structure.
@@ -272,9 +297,6 @@ These exercises explore the dragon fractal from simple static geometry through c
 
 ## Tips
 
-- **Start with low iteration, then climb**: Begin at Iteration step 1 to understand the base diagonal grid, then increase one step at a time. Each step adds one level of fractal folding — watching the progression builds intuition for how XOR hashing generates self-similar structure.
-- **Color Cycle reveals spatial structure**: The hash-derived chrominance is not decorative — it encodes the spatial position within the fractal tiling. Regions with similar color share similar hash-bit configurations, making Color Cycle a diagnostic tool for understanding the pattern's topology.
-- **Rotation at 45° is a sweet spot**: Because the XOR fold creates primary structure along the diagonal, rotating by 45° aligns this structure with the horizontal, producing a dramatically different visual texture from the same parameters. Try comparing 0° and 45° at each iteration depth.
 - **Mirror mode for density**: When the basic dragon pattern feels too sparse or regular, engage Mirror to add a third spatial frequency. The resulting pattern is always denser and more turbulent than the non-mirrored version, useful for textured backgrounds or noise-like overlays.
 - **Brightness controls contrast ratio**: The foreground-to-background contrast is determined by the ratio between Brightness (foreground Y) and the fixed background level (Y=64). At Brightness=75%, the ratio is about 12:1. Reducing Brightness to 25% drops the ratio to about 4:1, producing a subtler pattern suitable for layering.
 - **Animate + slow parameter sweeps**: With Animate On, slowly sweeping Iteration or Scale produces compound motion — the pattern morphs due to animation while simultaneously reconfiguring due to the parameter change. This creates organic, unpredictable visual evolution.
@@ -288,7 +310,6 @@ These exercises explore the dragon fractal from simple static geometry through c
 | Term | Definition |
 |------|------------|
 | **Affine contraction** | A geometric transformation that combines scaling, rotation, and translation, used to define the self-similar pieces of an IFS fractal. |
-| **BRAM** | Block RAM; dedicated memory within an FPGA. Dragon uses zero BRAMs — its entire fractal computation is combinational. |
 | **DDS** | Direct Digital Synthesis; the technique of generating periodic signals using a phase accumulator, used here to advance the animation frame counter. |
 | **Dragon curve** | A space-filling fractal discovered by John Heighway, constructed by repeated paper folding or equivalently by bit manipulation of integer step indices. |
 | **Fractal dimension** | A measure of geometric complexity; the Heighway dragon has a boundary dimension of 2, meaning its edge is as complex as a filled region. |
@@ -298,6 +319,7 @@ These exercises explore the dragon fractal from simple static geometry through c
 | **Self-similarity** | The property of looking identical at every scale of magnification, the defining characteristic of fractal geometry. |
 | **Space-filling curve** | A continuous curve that passes through every point in a 2D region; the Heighway dragon fills a compact region of the plane. |
 | **XOR fold** | The operation `hash ^= hash >> k`, which mixes bits separated by k positions to create self-similar interference patterns in the hash output. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

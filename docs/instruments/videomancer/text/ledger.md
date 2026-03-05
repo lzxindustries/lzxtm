@@ -68,6 +68,14 @@ The program is entirely combinatorial; it uses no BRAM. The pattern is generated
 
 ---
 
+## Quick Start
+
+1. **Row height snaps to powers of two**: Don't expect continuous row spacing — the pot is quantized into four steps (8, 16, 32, 64 pixels). Sweep slowly and watch the snap points.
+2. **Opacity has four levels, not a gradient**: The shift-based blend creates discrete steps. If you need finer control over paper intensity, use the Mix fader in combination with Opacity.
+3. **Margin is always 2 pixels**: Unlike grid rules (which respond to Line W), the margin line is always exactly 2 pixels wide and drawn in the same dark rule color.
+
+---
+
 ## Background
 
 ### Green-Bar Paper
@@ -90,6 +98,8 @@ Overlaying the paper pattern on video uses a simple shift-based opacity blend. T
 ---
 
 ## Signal Flow
+
+Input + Grid Position → Pattern Generation → Compose Paper + Video → Invert + Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -181,7 +191,7 @@ Controls how much the paper pattern shows over the video. The pot is divided int
 | Default | 50% |
 | Suffix | % |
 
-Controls the strength of the color tint on alternating stripes. At 0%, stripes are the same brightness as the paper base (no visible tint). As the value increases, the tinted stripes darken — the pot value is right-shifted by 2 and subtracted from the paper base Y value, so higher settings push the stripe luminance down. The chroma components are set by the Style toggle, not by this control.
+At 0%, stripes are the same brightness as the paper base (no visible tint). As the value increases, the tinted stripes darken — the pot value is right-shifted by 2 and subtracted from the paper base Y value, so higher settings push the stripe luminance down. The chroma components are set by the Style toggle, not by this control. Internally, controls the strength of the color tint on alternating stripes.
 
 ---
 
@@ -211,8 +221,8 @@ Sets the horizontal position of the left margin line. The pot value is right-shi
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Green | Blue |
-| **8 — Grid** | Rows | Cols |
+| **7 — Style** | Green | Red |
+| **8 — Grid** | Rows | None |
 | **9 — Stripes** | Off | On |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -231,6 +241,10 @@ Toggles 7 and 8 each consume two bits of the toggle register because they have f
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original input and the processed output. At 0% the output is entirely dry (unprocessed video). At 100% the output is entirely wet (the ledger overlay). Intermediate values blend the two, allowing the paper texture to be dialed in as a subtle tint or a dominant overlay. The crossfade is performed by the 4-clock interpolator stage after all processing.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -253,7 +267,7 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 *Classic Green-Bar Paper — simulated result across source images.*
 **Source**: A live camera feed or talking-head video with moderate detail.
 
-**Objective**: Recreate the look of classic continuous-form accounting paper.
+**What You'll Create**: Recreate the look of classic continuous-form accounting paper.
 
 1. **Set style**: Select Green (Toggle 7 to Green).
 2. **Enable stripes**: Set Stripes to On.
@@ -285,7 +299,7 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 *Engineering Grid Paper — simulated result across source images.*
 **Source**: Geometric patterns, architecture footage, or oscilloscope traces.
 
-**Objective**: Create a blue-grid overlay suitable for technical or engineering aesthetics.
+**What You'll Create**: Create a blue-grid overlay suitable for technical or engineering aesthetics.
 
 1. **Set style**: Switch to Blue.
 2. **Grid mode**: Set Grid to Both for full horizontal and vertical rules.
@@ -316,7 +330,7 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 *Inverted Legal Pad — simulated result across source images.*
 **Source**: Text, documents, or footage with high contrast.
 
-**Objective**: Combine yellow legal-pad tinting with inversion for a dramatic negative overlay.
+**What You'll Create**: Combine yellow legal-pad tinting with inversion for a dramatic negative overlay.
 
 1. **Set style**: Switch to Yellow.
 2. **Enable stripes and rows**: Stripes On, Grid to Rows.
@@ -336,9 +350,6 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 
 ## Tips
 
-- **Row height snaps to powers of two**: Don't expect continuous row spacing — the pot is quantized into four steps (8, 16, 32, 64 pixels). Sweep slowly and watch the snap points.
-- **Opacity has four levels, not a gradient**: The shift-based blend creates discrete steps. If you need finer control over paper intensity, use the Mix fader in combination with Opacity.
-- **Margin is always 2 pixels**: Unlike grid rules (which respond to Line W), the margin line is always exactly 2 pixels wide and drawn in the same dark rule color.
 - **Grid None + Stripes Off = flat paper**: Setting both grid and stripes off leaves only the paper base color and the margin line. This can serve as a simple brightness overlay.
 - **Invert reverses everything**: Because inversion is the last processing step before the interpolator, it flips the entire composited result — paper, rules, and video together.
 - **Style only affects tinted stripes**: Rule lines and the margin line always use the same fixed dark color regardless of the style setting.
@@ -351,15 +362,13 @@ These exercises explore Ledger's grid and tinting modes progressively, starting 
 | Term | Definition |
 |------|------------|
 | **Bit Masking** | Using bitwise AND to extract a subset of bits from a counter, implementing efficient modular arithmetic (position within row/column). |
-| **BRAM** | Block RAM; dedicated FPGA memory tiles. Ledger uses zero BRAMs because the pattern is generated from counters, not stored in memory. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Compositing** | Blending two image layers (paper pattern and video) together at a specified opacity. |
 | **Continuous-Form Paper** | Fan-fold paper with tractor-feed perforations used by line printers. Green-bar paper is the most recognized variant. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Power-of-Two** | Values like 8, 16, 32, 64 that can be computed by bit shifting, avoiding expensive division or modulo operations. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

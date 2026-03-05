@@ -68,6 +68,14 @@ The name *Folio* refers to a single leaf of a book or manuscript — a page that
 
 ---
 
+## Quick Start
+
+1. **Start in Manual mode**: Set Animate to Manual and explore different turn angles with the Turn Pos knob before enabling auto-animation. This builds intuition for the cosine compression curve.
+2. **Shadow depth sets the mood**: Low Shadow values create dramatic contrast between open and closed states — the page darkens significantly as it turns. High values keep the page bright throughout, producing a flatter, more graphic look.
+3. **Fold shadow adds depth**: The 8-pixel crease shadow is subtle but effective. Enable it for realistic page turn simulations; disable it for a cleaner, more abstract wipe effect.
+
+---
+
 ## Background
 
 ### Page Turn Transitions in Presentation Software
@@ -175,7 +183,7 @@ The fold zone detection identifies the 8 pixels nearest the fold edge — the bo
 | Default | 0° |
 | Suffix | ° |
 
-Sets the page turn angle in manual mode. At minimum the page is fully open and fills the entire screen width — no compression or shading is applied. As the knob advances, the visible width narrows according to the cosine curve, reaching approximately half width at $60°$ and collapsing to a thin strip near $90°$. The luminance also dims progressively as the shade factor tracks the same cosine value. This control has no effect when Animate is set to Auto, since the DDS phase accumulator overrides the manual position. The relationship between knob position and visual width is non-linear — the first $45°$ of rotation removes relatively little width, while the final $45°$ compresses the page dramatically. This matches the geometric reality of a cosine curve and produces a natural-feeling turn.
+At minimum the page is fully open and fills the entire screen width — no compression or shading is applied. As the knob advances, the visible width narrows according to the cosine curve, reaching approximately half width at $60°$ and collapsing to a thin strip near $90°$. The luminance also dims progressively as the shade factor tracks the same cosine value. This control has no effect when Animate is set to Auto, since the DDS phase accumulator overrides the manual position. The relationship between knob position and visual width is non-linear — the first $45°$ of rotation removes relatively little width, while the final $45°$ compresses the page dramatically. This matches the geometric reality of a cosine curve and produces a natural-feeling turn. Internally, sets the page turn angle in manual mode.
 
 ---
 
@@ -219,7 +227,7 @@ Reserved for fold curvature control. In the current VHDL implementation, this re
 | Default | 50% |
 | Suffix | % |
 
-Sets the shadow depth — the minimum luminance the page retains at its most edge-on orientation. At minimum ($0$%), the shade factor allows the page to dim all the way to black at $90°$, creating dramatic contrast between the fully open and fully closed states. At the default midpoint ($50$%), the page retains moderate brightness even when nearly edge-on. At maximum ($100$%), no luminance attenuation occurs regardless of turn angle — the page stays at full brightness throughout the turn. The shade factor is computed as $\text{shadow\_depth} + (1023 - \text{shadow\_depth}) \times \cos(\theta) / 1024$, so higher values raise the floor without affecting the fully-open brightness. This control interacts with Fold Shadow: when both are active, the fold zone receives the shade factor's attenuation plus an additional $50$% cut, which can produce very dark crease lines at low shadow depth settings.
+At minimum ($0$%), the shade factor allows the page to dim all the way to black at $90°$, creating dramatic contrast between the fully open and fully closed states. At the default midpoint ($50$%), the page retains moderate brightness even when nearly edge-on. At maximum ($100$%), no luminance attenuation occurs regardless of turn angle — the page stays at full brightness throughout the turn. The shade factor is computed as $\text{shadow\_depth} + (1023 - \text{shadow\_depth}) \times \cos(\theta) / 1024$, so higher values raise the floor without affecting the fully-open brightness. This control interacts with Fold Shadow: when both are active, the fold zone receives the shade factor's attenuation plus an additional $50$% cut, which can produce very dark crease lines at low shadow depth settings. Internally, sets the shadow depth — the minimum luminance the page retains at its most edge-on orientation.
 
 ---
 
@@ -259,6 +267,10 @@ The five toggles divide into three functional groups. Hinge (7) and Axis (8) def
 
 Crossfades between the delayed dry input and the processed page turn composite. At $0$% (fader down), the output is the unprocessed input — no page turn is visible. At $100$% (fader up), the output is the full composite with the page turn effect, fold shading, and background colour. Intermediate positions blend the two, allowing the page turn to appear as a semi-transparent overlay. This is useful for softening the transition or for creating ghostly page-fold effects where the background shows through a dimmed, partially visible page. The interpolator operates independently on Y, U, and V channels.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -280,7 +292,7 @@ These exercises progress from a static half-turn through animated oscillation to
 *Static Half Turn — simulated result across source images.*
 **Source**: A high-contrast image with readable text or geometric patterns — something where horizontal compression is immediately obvious.
 
-**Objective**: Observe the cosine-based width compression and fold shading at a fixed turn angle to understand the geometric relationship between angle and visible width.
+**What You'll Create**: Observe the cosine-based width compression and fold shading at a fixed turn angle to understand the geometric relationship between angle and visible width.
 
 1. **Set manual mode**: Ensure Animate is set to Manual.
 2. **Half turn**: Set Turn Pos to approximately 60° (~66%). The page should compress to roughly half its original width.
@@ -309,7 +321,7 @@ These exercises progress from a static half-turn through animated oscillation to
 *Animated Page Flip — simulated result across source images.*
 **Source**: A video source with moderate motion — camera footage or a slowly changing pattern. The motion helps distinguish the compressed page content from the static background.
 
-**Objective**: Explore automatic page turn animation, observing the oscillating open-close cycle and the interaction between animation speed and shade factor.
+**What You'll Create**: Explore automatic page turn animation, observing the oscillating open-close cycle and the interaction between animation speed and shade factor.
 
 1. **Enable auto animation**: Set Animate to Auto.
 2. **Slow speed**: Set Anim Spd to approximately 20%. The page turns slowly, taking several seconds for a full cycle.
@@ -338,7 +350,7 @@ These exercises progress from a static half-turn through animated oscillation to
 *Coloured Mask Generation — simulated result across source images.*
 **Source**: Any video source — the source content is secondary to the background colour field in this exercise.
 
-**Objective**: Use the page turn as a shaped vertical wipe to create a coloured mask region, exploring the background hue and luminance controls for downstream keying applications.
+**What You'll Create**: Use the page turn as a shaped vertical wipe to create a coloured mask region, exploring the background hue and luminance controls for downstream keying applications.
 
 1. **Set a vivid background**: Set BKG Hue to approximately 120° (green region) and BKG Lum to approximately 70%.
 2. **Half turn**: Set Turn Pos to approximately 45° in Manual mode. The background fills roughly 30% of the screen.
@@ -355,9 +367,6 @@ These exercises progress from a static half-turn through animated oscillation to
 
 ## Tips
 
-- **Start in Manual mode**: Set Animate to Manual and explore different turn angles with the Turn Pos knob before enabling auto-animation. This builds intuition for the cosine compression curve.
-- **Shadow depth sets the mood**: Low Shadow values create dramatic contrast between open and closed states — the page darkens significantly as it turns. High values keep the page bright throughout, producing a flatter, more graphic look.
-- **Fold shadow adds depth**: The 8-pixel crease shadow is subtle but effective. Enable it for realistic page turn simulations; disable it for a cleaner, more abstract wipe effect.
 - **Background as chromakey**: Use a vivid, saturated background colour (BKG Hue at a primary, BKG Lum at 50–70%) to create a colour field that downstream keying programs can isolate. The sharp edge between page and background makes an effective key boundary.
 - **Mix fader for overlays**: At 50% Mix, the page turn composite blends with the dry input, creating a ghost-fold effect where both the original and the compressed page are visible simultaneously.
 - **Hinge for directionality**: Left hinge creates a right-to-left reveal (page folds away rightward); right hinge creates a left-to-right reveal. Choose based on the visual flow of your composition.
@@ -379,6 +388,7 @@ These exercises progress from a static half-turn through animated oscillation to
 | **Hinge** | The fixed edge around which the page rotates; determines whether the page folds away from the left or right side of the screen. |
 | **Line buffer** | A dual-port BRAM that stores one scanline of video data, allowing the previous line to be read while the current line is being written. |
 | **Shade factor** | A per-frame luminance multiplier derived from the cosine of the turn angle and the shadow depth parameter, attenuating the page brightness as it rotates away. |
-| **YUV** | A colour model separating luminance (Y) from two chrominance components (U and V), used throughout Videomancer's video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

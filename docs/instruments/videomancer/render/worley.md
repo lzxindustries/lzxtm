@@ -35,6 +35,14 @@ Animation is driven by a time counter that modulates the hash function's seed, c
 
 ---
 
+## Quick Start
+
+1. **F2−F1 for veins**: The F2−F1 output mode isolates cell boundaries as bright ridges on black — perfect for blood vessel, lightning, or crack textures.
+2. **Manhattan for crystals, Chebyshev for tiles**: The distance metric fundamentally changes the visual character. Manhattan creates diamond-faceted cells; Chebyshev creates boxy, tile-like cells.
+3. **Jitter is the key to organic**: Zero jitter produces a perfectly regular grid. Maximum jitter creates fully organic, irregular cells. The sweet spot around 70–80% looks most natural.
+
+---
+
 ## Background
 
 ### Voronoi Diagrams and Feature Points
@@ -145,7 +153,7 @@ Selects the grid cell size via a 4-step selector. The steps map to cell shift va
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the amount of pseudo-random displacement applied to each feature point within its grid cell. At 0% feature points sit exactly on grid intersections, producing a perfectly regular tiled pattern. At 100% feature points are maximally displaced, creating irregular, organic cell boundaries. Mid-range values produce a visually appealing balance between order and randomness.
+At 0% feature points sit exactly on grid intersections, producing a perfectly regular tiled pattern. At 100% feature points are maximally displaced, creating irregular, organic cell boundaries. Mid-range values produce a visually appealing balance between order and randomness. Internally, controls the amount of pseudo-random displacement applied to each feature point within its grid cell.
 
 ---
 
@@ -186,9 +194,9 @@ Adds a brightness offset to the computed luminance. The value is halved and adde
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Output Mode** | F1 | F2 |
+| **7 — Output Mode** | F1 | Colored |
 | **8 — Distance** | Manhattan | Chebyshev |
-| **9 — Palette** | Organic | Stone |
+| **9 — Palette** | Organic | Thermal |
 | **10 — Video Mod** | Off | On |
 | **11 — Bypass** | Off | On |
 
@@ -207,6 +215,21 @@ Toggle 7 selects among four output modes using two bits (F1, F2, F2−F1, Colore
 
 Crossfades between the dry input signal and the synthesized cellular texture. At 0% the output is the unprocessed input. At 100% the output is the full Worley synthesis. Intermediate positions blend the cellular texture with the source at varying opacity.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Worley processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -217,7 +240,7 @@ These exercises progress from static cellular patterns to animated, content-reac
 
 <img src={worley_exercise1_result} alt="Classic Voronoi Cells result"/>
 *Classic Voronoi Cells — simulated result across source images.*
-**Objective**: Create a static cellular texture and understand how F1/F2 outputs differ.
+**What You'll Create**: Create a static cellular texture and understand how F1/F2 outputs differ.
 
 1. **Static F1**: Set Animation Speed to 0%. Observe the F1 pattern — dark cell centres surrounded by bright edges.
 2. **Switch to F2**: Change Output Mode to F2. Notice the more complex, overlapping distance field.
@@ -233,7 +256,7 @@ These exercises progress from static cellular patterns to animated, content-reac
 
 <img src={worley_exercise2_result} alt="Animated Lava Flow result"/>
 *Animated Lava Flow — simulated result across source images.*
-**Objective**: Create a slowly evolving thermal texture using animation, scroll, and the Thermal palette.
+**What You'll Create**: Create a slowly evolving thermal texture using animation, scroll, and the Thermal palette.
 
 1. **Set Thermal palette**: Select Palette = Thermal for blue-to-red heat-map coloring.
 2. **Enable animation**: Set Animation Speed to ~25%. Feature points begin drifting, creating flowing cell boundaries.
@@ -250,7 +273,7 @@ These exercises progress from static cellular patterns to animated, content-reac
 
 <img src={worley_exercise3_result} alt="Video Overlay Texture result"/>
 *Video Overlay Texture — simulated result across source images.*
-**Objective**: Use Video Mod to overlay cellular noise onto live source footage.
+**What You'll Create**: Use Video Mod to overlay cellular noise onto live source footage.
 
 1. **Enable Video Mod**: Toggle Video Mod On. The cellular noise now brightens the source video's luminance.
 2. **Set small cells**: Choose Cell Scale = Small for a fine, detailed overlay.
@@ -266,9 +289,6 @@ These exercises progress from static cellular patterns to animated, content-reac
 
 ## Tips
 
-- **F2−F1 for veins**: The F2−F1 output mode isolates cell boundaries as bright ridges on black — perfect for blood vessel, lightning, or crack textures.
-- **Manhattan for crystals, Chebyshev for tiles**: The distance metric fundamentally changes the visual character. Manhattan creates diamond-faceted cells; Chebyshev creates boxy, tile-like cells.
-- **Jitter is the key to organic**: Zero jitter produces a perfectly regular grid. Maximum jitter creates fully organic, irregular cells. The sweet spot around 70–80% looks most natural.
 - **Large cells + slow animation**: Big cells with gentle animation produce a meditative, slowly evolving landscape. Small cells with fast animation produce frantic, buzzing textures.
 - **Scroll for continuous backgrounds**: Use Scroll Speed without Animation Speed for a continuously scrolling tile pattern — useful as a moving background or texture source.
 - **Video Mod for texture overlay**: Enabling Video Mod turns Worley from a standalone synthesizer into a texture overlay processor that adds cellular structure to live footage.
@@ -291,5 +311,7 @@ These exercises progress from static cellular patterns to animated, content-reac
 | **Manhattan Distance** | A distance metric computed as |dx| + |dy|, producing diamond-shaped iso-distance contours. |
 | **Voronoi Diagram** | A partition of a plane into regions, each containing all points closer to a particular seed than to any other seed. |
 | **Worley Noise** | Another name for cellular noise, after Steven Worley who published the technique in 1996. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

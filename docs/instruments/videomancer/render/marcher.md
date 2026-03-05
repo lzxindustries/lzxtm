@@ -35,6 +35,14 @@ At conservative settings — moderate smoothness, low animation speed — Marche
 
 ---
 
+## Quick Start
+
+1. **Palette and toggles are linked**: Because palette bits overlap with Render Mode and Primitive Mix, some palette colors are only available in specific render/mix configurations. Explore all 8 positions to find the combinations you want.
+2. **Smooth-min at moderate k is most interesting**: Very low smoothness gives hard unions; very high creates a featureless blob. The sweet spot is where shapes visibly stretch toward each other before merging.
+3. **Light rotation adds depth**: Even slow light rotation (10–20%) dramatically changes the perception of dimensionality. Stationary light makes the output look flat.
+
+---
+
 ## Background
 
 ### Signed Distance Fields
@@ -65,6 +73,8 @@ The palette selector, render mode, and primitive mix share bits within `register
 ---
 
 ## Signal Flow
+
+SDF Evaluation → Smooth Union Cascade → Normal Estimation → Palette + Output Compose
 
 ```
 Timing Detection ───────────────────────────────────────────────
@@ -140,7 +150,7 @@ Controls the orbital velocity of all six SDF primitives. The register value is u
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the blend radius ($k$) of the smooth-union operator that merges primitive distance fields. At low values, primitives merge only when they overlap directly — the boundary between touching shapes is a sharp crease. As Smoothness increases, the blend zone widens: shapes begin to stretch toward each other before contact, creating blobby, organic connections. At maximum, the entire field becomes a single soft mass. The register's upper bits become $k$ (minimum 4), so very low settings still produce some blending.
+At low values, primitives merge only when they overlap directly — the boundary between touching shapes is a sharp crease. As Smoothness increases, the blend zone widens: shapes begin to stretch toward each other before contact, creating blobby, organic connections. At maximum, the entire field becomes a single soft mass. The register's upper bits become $k$ (minimum 4), so very low settings still produce some blending. Internally, controls the blend radius ($k$) of the smooth-union operator that merges primitive distance fields.
 
 ---
 
@@ -192,7 +202,7 @@ Controls the intensity of the boundary edge glow. When the SDF value is near zer
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Neon | Thermal |
+| **7 — Palette** | Neon | Mono |
 | **8 — Render Mode** | Surface | Contour |
 | **9 — Primitive Mix** | Circles | Mixed |
 | **10 — Video Mask** | Off | On |
@@ -213,6 +223,10 @@ The first three toggles (Palette, Render Mode, Primitive Mix) share bits in `reg
 
 Controls the wet/dry crossfade between the delayed input and the SDF rendered output via three `interpolator_u` instances. At 0% (register 0), the output is the delayed input — no SDF visible. At 100% (register 1023), the output is fully the rendered distance field. Intermediate values superimpose the SDF rendering over the input video with controllable opacity, useful for subtle overlay effects or for layering the SDF pattern on a live camera feed.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -223,7 +237,7 @@ These exercises progress from observing the raw distance field to exploring smoo
 
 <img src={marcher_exercise1_result} alt="Basic SDF Shapes result"/>
 *Basic SDF Shapes — simulated result across source images.*
-**Objective**: Understand the fundamental SDF rendering — interior shading, edge glow, and exterior contour rings.
+**What You'll Create**: Understand the fundamental SDF rendering — interior shading, edge glow, and exterior contour rings.
 
 1. **Slow down**: Set Animation Speed to ~10%. The primitives nearly freeze, allowing careful observation.
 2. **Observe three zones**: Note the three visually distinct regions: bright edge glow at surface boundaries, darker shading inside shapes, and contour rings in the exterior.
@@ -240,7 +254,7 @@ These exercises progress from observing the raw distance field to exploring smoo
 
 <img src={marcher_exercise2_result} alt="Smooth Merging result"/>
 *Smooth Merging — simulated result across source images.*
-**Objective**: Explore how the smooth-union operator creates organic shape blending.
+**What You'll Create**: Explore how the smooth-union operator creates organic shape blending.
 
 1. **Hard union**: Set Smoothness to minimum. Shapes that overlap show creased boundaries — hard unions with no blending.
 2. **Gradual blend**: Slowly increase Smoothness. Watch the creases soften. Shapes begin to stretch toward each other before making contact.
@@ -257,7 +271,7 @@ These exercises progress from observing the raw distance field to exploring smoo
 
 <img src={marcher_exercise3_result} alt="Dynamic Lighting and Video Mask result"/>
 *Dynamic Lighting and Video Mask — simulated result across source images.*
-**Objective**: Explore the orbiting light source and the video mask feature that uses SDF boundaries as a dynamic stencil.
+**What You'll Create**: Explore the orbiting light source and the video mask feature that uses SDF boundaries as a dynamic stencil.
 
 1. **Light in motion**: Set Light Rotation to ~50%. Watch the diffuse shading sweep across the SDF surfaces as the light orbits.
 2. **Fast light**: Increase to ~80%. The rapid light rotation creates a strobing effect across the interior surfaces.
@@ -273,9 +287,6 @@ These exercises progress from observing the raw distance field to exploring smoo
 
 ## Tips
 
-- **Palette and toggles are linked**: Because palette bits overlap with Render Mode and Primitive Mix, some palette colors are only available in specific render/mix configurations. Explore all 8 positions to find the combinations you want.
-- **Smooth-min at moderate k is most interesting**: Very low smoothness gives hard unions; very high creates a featureless blob. The sweet spot is where shapes visibly stretch toward each other before merging.
-- **Light rotation adds depth**: Even slow light rotation (10–20%) dramatically changes the perception of dimensionality. Stationary light makes the output look flat.
 - **Video mask for compositing**: Video Mask turns the SDF into a dynamic matte or stencil. Feed interesting footage through the input while the SDF boundaries reveal it — useful for live performance.
 - **Edge Brightness and Contour Density define the exterior**: The interior is depth-shaded automatically, but the exterior appearance depends almost entirely on these two controls.
 - **Six coprime velocities**: The primitives never repeat the same arrangement because their DDS increments are pairwise coprime. The pattern is effectively infinite in variation.
@@ -291,15 +302,13 @@ These exercises progress from observing the raw distance field to exploring smoo
 | **Central differences** | A finite-difference method for estimating gradients by comparing a function's value at adjacent sample points. |
 | **Chebyshev distance** | The maximum of the absolute axis differences; produces square-shaped SDF contours for box primitives. |
 | **DDS** | Direct Digital Synthesis; generates periodic waveforms from a phase accumulator and lookup/approximation function. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the real-time SDF evaluation and rendering pipeline. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) blending two signals based on the Mix parameter. |
 | **Lambertian** | A shading model where surface brightness equals the dot product of the surface normal and light direction, clamped to non-negative values. |
 | **Manhattan distance** | The sum of absolute differences along each axis; used in Marcher's circle SDF length approximation. |
 | **Metaball** | A graphics technique where implicit surfaces merge smoothly, producing organic blob-like shapes. Marcher's smooth union achieves the same visual effect. |
-| **Pipeline** | Sequential processing stages, each completing one clock cycle of work. Marcher uses an 8-clock pipeline. |
 | **SDF** | Signed Distance Field; a scalar field where each point holds the signed distance to the nearest surface (negative inside, positive outside). |
 | **Smooth-min** | An operator that blends two distance values smoothly instead of taking a hard minimum, parameterised by blend radius $k$. |
 | **Triangle wave** | A piecewise-linear approximation of a sine wave used for DDS position computation — cheaper than a LUT on iCE40. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used at 10-bit precision throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

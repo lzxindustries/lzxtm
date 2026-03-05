@@ -68,6 +68,14 @@ The program composites flash events over either the original video (Over Video o
 
 ---
 
+## Quick Start
+
+1. **Start with Over Video on**: Seeing flashes in context with the source image makes it much easier to calibrate Sensitivity and Threshold. Switch to black background once you have the detection density you want.
+2. **Use the Meter for calibration**: Set Display to Meter and adjust Sensitivity until the bar responds proportionally to scene brightness changes. This gives you a quantitative readout of detection activity.
+3. **Green phosphor is classic**: Flash Hue at 0° with Point flash type on a black background perfectly recreates the look of a scintillation counter or classic radar display.
+
+---
+
 ## Background
 
 ### The Geiger-Müller Counter and Particle Detection
@@ -94,6 +102,8 @@ Real phosphor screens and scintillation detectors exhibit persistence — a flas
 ---
 
 ## Signal Flow
+
+Input Register + Counters → LFSR Compare + Detection → Flash Compose → Composite Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -214,8 +224,8 @@ Sets the peak brightness of detection flashes. In Point mode, this is the litera
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Display** | Clicks | Count |
-| **8 — Flash Type** | Point | Ring |
+| **7 — Display** | Clicks | Meter |
+| **8 — Flash Type** | Point | Invert |
 | **9 — Sound Vis** | Off | On |
 | **10 — Over Video** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -233,7 +243,19 @@ Toggles 7 and 8 are packed as 2-bit fields in `registers_in(6)`, each selecting 
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed composite and the delayed original signal via three interpolator instances (Y, U, V). At 0%, the output is the unprocessed source. At 100%, the output is the full Geiger composite. Intermediate values blend the two, allowing detection flashes to appear as a subtle translucent overlay rather than a full replacement of the source.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Geiger-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -256,7 +278,7 @@ These exercises progress from basic radiation detection to composite visualizati
 *Radiation Mapping — simulated result across source images.*
 **Source**: A live camera feed with a mix of bright highlights and dark shadows — a window scene, a desk lamp, or high-contrast subject lighting.
 
-**Objective**: Learn how Sensitivity and Threshold interact to control detection density, and observe how brightness drives event probability.
+**What You'll Create**: Learn how Sensitivity and Threshold interact to control detection density, and observe how brightness drives event probability.
 
 1. **Baseline detection**: Set Sensitivity and Threshold to mid-range (~50%). Watch for flashes appearing primarily in the bright regions of the image.
 2. **Increase sensitivity**: Sweep Sensitivity upward. Gradually, mid-tones and eventually shadows begin producing events.
@@ -284,7 +306,7 @@ These exercises progress from basic radiation detection to composite visualizati
 *Phosphor Color and Flash Modes — simulated result across source images.*
 **Source**: Black-and-white or desaturated footage with strong tonal variation — surveillance camera footage, infrared, or a grayscale test pattern.
 
-**Objective**: Explore the four flash types and the hue color wheel to create different detector aesthetics.
+**What You'll Create**: Explore the four flash types and the hue color wheel to create different detector aesthetics.
 
 1. **Green phosphor**: Set Flash Hue to 0° (green). With Point flash type, the result resembles a classic oscilloscope or radar display.
 2. **Blue Cherenkov**: Rotate Flash Hue to ~180° (cyan-blue sector). The flashes take on the blue glow of Cherenkov radiation.
@@ -312,7 +334,7 @@ These exercises progress from basic radiation detection to composite visualizati
 *Analytical Overlay with Meter — simulated result across source images.*
 **Source**: Moving video with varying brightness — a performer under stage lights, a cityscape with headlights, or fireworks footage.
 
-**Objective**: Use Geiger as an analytical tool to visualize brightness activity in real time, with the meter bar quantifying detection density.
+**What You'll Create**: Use Geiger as an analytical tool to visualize brightness activity in real time, with the meter bar quantifying detection density.
 
 1. **Over video**: Enable Over Video to see flashes composited on the source. Set Display to Meter.
 2. **Calibrate**: Adjust Sensitivity and Threshold until the flash density visually tracks the brightest moving elements. The meter bar at the bottom should fluctuate as bright objects enter and leave the frame.
@@ -328,9 +350,6 @@ These exercises progress from basic radiation detection to composite visualizati
 
 ## Tips
 
-- **Start with Over Video on**: Seeing flashes in context with the source image makes it much easier to calibrate Sensitivity and Threshold. Switch to black background once you have the detection density you want.
-- **Use the Meter for calibration**: Set Display to Meter and adjust Sensitivity until the bar responds proportionally to scene brightness changes. This gives you a quantitative readout of detection activity.
-- **Green phosphor is classic**: Flash Hue at 0° with Point flash type on a black background perfectly recreates the look of a scintillation counter or classic radar display.
 - **Invert mode for X-ray**: Flash Type Invert with Over Video off creates a negative-image particle detector where dark source regions glow brightly — an X-ray or autoradiography aesthetic.
 - **Flash Dur for atmosphere**: Long persistence (high Flash Dur) creates a smoky, phosphorescent glow that accumulates in bright areas. Short persistence keeps the display crisp and snappy.
 - **Click Rate vs Sensitivity**: Both control density, but differently. Sensitivity changes *which* brightness levels trigger events (brightness-dependent). Click Rate changes *how many* pixels are eligible (brightness-independent spatial sub-sampling).
@@ -343,18 +362,16 @@ These exercises progress from basic radiation detection to composite visualizati
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Geiger uses zero BRAM. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Flash Type** | One of four rendering modes (Point, Ring, Bloom, Invert) controlling the brightness and character of detection event visualization. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter topology where the output feeds back into the computation, creating exponential decay or persistence. |
 | **LFSR** | Linear Feedback Shift Register; a shift register with XOR taps that generates a pseudo-random binary sequence. Geiger uses a 16-bit LFSR for threshold generation and spatial gating. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Meter** | A horizontal brightness bar rendered at the bottom 32 rows of the screen, showing detection count from the previous frame. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Scintillation** | A brief flash of light produced when a particle strikes a phosphor or crystal; the visual metaphor behind Geiger's flash rendering. |
 | **Spatial Gate** | A secondary LFSR-based filter that randomly sub-samples which pixels are eligible for detection, controlled by Click Rate. |
 | **Stochastic** | Involving randomness; Geiger's detection is stochastic because a pseudo-random threshold is compared against luminance each pixel clock. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

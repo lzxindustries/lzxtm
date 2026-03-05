@@ -68,6 +68,14 @@ At low damping settings the needle responds rapidly, jumping with every scene ch
 
 ---
 
+## Quick Start
+
+1. **Use low damping for live monitoring** — settings around 20-30% give responsive needle motion that tracks scene changes without excessive jitter.
+2. **Peak hold reveals transients** — enable peak mode when looking for unexpected brightness spikes that the average-tracking needle might miss.
+3. **Center position for HUD effects** — placing the gauge mid-screen creates a compelling heads-up display aesthetic for live performance visuals.
+
+---
+
 ## Background
 
 ### VU Meters and Analog Instrumentation
@@ -94,6 +102,8 @@ The gauge graphics are rendered additively — the overlay brightness is added t
 ---
 
 ## Signal Flow
+
+Luma Accumulation → Gauge Geometry → Overlay Composite → Mix → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -205,8 +215,8 @@ Needle Brightness provides a secondary brightness control. In the VHDL implement
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | VU | Ampmeter |
-| **8 — Needle** | Thin | Wide |
+| **7 — Style** | VU | RPM |
+| **8 — Needle** | Thin | Shadow |
 | **9 — Peak** | Off | Hold |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -225,6 +235,10 @@ The five toggles divide into three functional groups: gauge appearance (Style an
 | Suffix | % |
 
 Mix crossfades between the dry input signal and the wet gauge-overlaid output. At 0% the output is pure dry input with no gauge visible. At 100% the output shows the full gauge overlay at the brightness set by the Needle Brightness control. Intermediate settings produce a subtle, partially-transparent gauge overlay. The crossfade is implemented by three interpolator_u instances operating independently on Y, U, and V channels with 4-clock latency each.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -247,7 +261,7 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 *Studio Brightness Monitor — simulated result across source images.*
 **Source**: Feed a camera signal or dynamic video clip with varying scene brightness — ideally content with distinct bright and dark scenes.
 
-**Objective**: Set up Voltmeter as a functional brightness monitor with natural needle motion and clear scale markings.
+**What You'll Create**: Set up Voltmeter as a functional brightness monitor with natural needle motion and clear scale markings.
 
 1. Set Position to 50% for a medium-sized gauge
 2. Set Damping to 40% for responsive but smooth needle motion
@@ -275,7 +289,7 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 *Peak Detection Display — simulated result across source images.*
 **Source**: Feed a music video or content with dramatic flash cuts and sudden brightness changes — ideal for triggering peak holds.
 
-**Objective**: Configure peak hold metering to capture brightness transients and observe the slow decay behavior.
+**What You'll Create**: Configure peak hold metering to capture brightness transients and observe the slow decay behavior.
 
 1. Start from Exercise 1 settings
 2. Flip Style to Peak Hold mode (toggle position 2)
@@ -304,7 +318,7 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 *Full-Screen Overlay Art — simulated result across source images.*
 **Source**: Feed abstract or geometric video content — color bars, gradients, or generative patterns work well.
 
-**Objective**: Use Voltmeter as a creative overlay element, making the gauge itself a dominant visual component rather than just an indicator.
+**What You'll Create**: Use Voltmeter as a creative overlay element, making the gauge itself a dominant visual component rather than just an indicator.
 
 1. Set Position to 100% for maximum gauge size
 2. Set Scale Range to maximum for full sweep
@@ -322,9 +336,6 @@ These exercises explore Voltmeter's metering capabilities, from basic brightness
 
 ## Tips
 
-- **Use low damping for live monitoring** — settings around 20-30% give responsive needle motion that tracks scene changes without excessive jitter.
-- **Peak hold reveals transients** — enable peak mode when looking for unexpected brightness spikes that the average-tracking needle might miss.
-- **Center position for HUD effects** — placing the gauge mid-screen creates a compelling heads-up display aesthetic for live performance visuals.
 - **Amber coloring adds warmth** — the red/amber tint option gives the gauge a classic VU meter look that blends well with warm-toned video content.
 - **Maximum tick density for precision** — dense graduations help identify small brightness differences when using Voltmeter as a serious analysis tool.
 - **Mix as fade control** — rather than using bypass, gradually reducing the Mix fader lets you preview the gauge at various opacity levels.

@@ -68,6 +68,14 @@ The spatial frequency of the color pattern is independently controllable for hor
 
 ---
 
+## Quick Start
+
+1. **Pot 6 is the mix**: The wet/dry crossfade is on Pot 6 (not the fader). The fader has no effect in this program.
+2. **Toggles 10 and 11 are unused**: Only three toggles (7–9) are connected in the VHDL. The remaining two toggle positions and the fader have no function.
+3. **Phase separation is the color key**: At Thickness Var = 0, the effect produces single-hue tinting. Increase it to unlock the full spectral rainbow.
+
+---
+
 ## Background
 
 ### Thin-Film Interference
@@ -94,6 +102,8 @@ The optional XOR pattern mode takes the computed thickness value and XOR-combine
 ---
 
 ## Signal Flow
+
+Y Channel → UV Channels → Animation → Wet/Dry Mix → Sync
 
 ```
 Input Video (YUV 4:4:4, 10-bit)
@@ -156,7 +166,7 @@ Controls the horizontal spatial frequency of the interference pattern. The 10-bi
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical spatial frequency using the same shift-amount quantization as Wave Freq H, but applied to the vertical position counter. At low values, color bands are tall horizontal stripes spanning many scan lines. At high values, the bands compress to single-line fringes. Combined with Wave Freq H, the two axes define the angle and density of the interference pattern: equal settings produce diagonal bands; unequal settings produce horizontal or vertical dominance.
+At low values, color bands are tall horizontal stripes spanning many scan lines. At high values, the bands compress to single-line fringes. Combined with Wave Freq H, the two axes define the angle and density of the interference pattern: equal settings produce diagonal bands; unequal settings produce horizontal or vertical dominance. Internally, controls the vertical spatial frequency using the same shift-amount quantization as Wave Freq H, but applied to the vertical position counter.
 
 ---
 
@@ -208,8 +218,8 @@ Wet/dry crossfade amount. This register directly drives the interpolation parame
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Shape** | Radial | Linear |
-| **8 — Palette** | Rainbow | Pastel |
+| **7 — Shape** | Radial | Random |
+| **8 — Palette** | Rainbow | Subtle |
 | **9 — React** | Off | Luma |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -228,6 +238,10 @@ Three toggle bits (7–9) control independent aspects of the color composition: 
 | Suffix | % |
 
 Not connected in the current VHDL implementation. The fader register (register 7) is not read by the processing pipeline. All wet/dry mix control is through Pot 6. Moving the fader has no effect on the output.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +264,7 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 *Static Rainbow Wash — simulated result across source images.*
 **Source**: A grayscale gradient ramp or neutral gray card — any low-chroma source that lets the interference colors stand out clearly.
 
-**Objective**: Understand how horizontal and vertical frequencies define the interference band geometry, and how phase separation creates spectral color.
+**What You'll Create**: Understand how horizontal and vertical frequencies define the interference band geometry, and how phase separation creates spectral color.
 
 1. **Single axis**: Set Wave Freq H to ~60% (shift 4). Leave Wave Freq V at 0. A series of vertical color bands appears — the color changes with horizontal position.
 2. **Add vertical**: Increase Wave Freq V to ~60%. The bands tilt diagonally as both axes contribute to the thickness sum.
@@ -276,7 +290,7 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 *Animated Oil Shimmer — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with varied brightness — faces, landscapes, or abstract shapes work well.
 
-**Objective**: Explore animation, source blending, and color swap to create evolving chromatic overlays over live video.
+**What You'll Create**: Explore animation, source blending, and color swap to create evolving chromatic overlays over live video.
 
 1. **Animate**: From the Exercise 1 pattern, increase Anim Speed to ~30%. The rainbow drifts gently across the image.
 2. **Source blend**: Enable Source Blend (Toggle 9). The interference colors now tint the source rather than replacing its chroma. The original colors show through beneath the rainbow.
@@ -302,7 +316,7 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 *Crystalline XOR Textures — simulated result across source images.*
 **Source**: High-contrast footage — sharp edges, text, or geometric patterns that interact visually with the XOR lattice.
 
-**Objective**: Combine XOR pattern mode with high frequencies to create stained-glass and crystalline interference patterns.
+**What You'll Create**: Combine XOR pattern mode with high frequencies to create stained-glass and crystalline interference patterns.
 
 1. **XOR mode**: Enable Pattern Mode (Toggle 7). The smooth gradient bands shatter into angular, cellular structures.
 2. **High frequency**: Increase Wave Freq H to maximum (~100%). The XOR pattern becomes a fine mosaic of colored cells.
@@ -317,9 +331,6 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 
 ## Tips
 
-- **Pot 6 is the mix**: The wet/dry crossfade is on Pot 6 (not the fader). The fader has no effect in this program.
-- **Toggles 10 and 11 are unused**: Only three toggles (7–9) are connected in the VHDL. The remaining two toggle positions and the fader have no function.
-- **Phase separation is the color key**: At Thickness Var = 0, the effect produces single-hue tinting. Increase it to unlock the full spectral rainbow.
 - **Frequency is octave-quantized**: The spatial frequency controls jump between 8 discrete octave levels rather than sweeping smoothly. Use this to dial in specific pattern densities.
 - **Source Blend for subtle chromatic overlay**: Enable Source Blend (Toggle 9) to add iridescent color on top of existing video chroma rather than replacing it.
 - **XOR for texture**: Pattern Mode transforms smooth washes into crystalline cellular patterns. Combine with high frequency for fine stained-glass effects.
@@ -335,13 +346,13 @@ These exercises explore Oilslick's spatial interference patterns from simple col
 | **BT.601** | ITU-R Recommendation BT.601; the color space standard used by Videomancer's YUV pipeline, defining the matrix for converting between RGB and YUV. |
 | **Chrominance** | The color-difference components (U and V) of a YUV signal, encoding hue and saturation relative to the neutral axis. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator and mapping the result to an output function. |
-| **Interpolator** | A linear blending circuit that crossfades between two input values based on a mix parameter; used here for wet/dry mixing. |
 | **Iridescence** | The phenomenon where apparent color changes with viewing angle or surface geometry, caused by thin-film interference or diffraction. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values, used in FPGA for function evaluation. |
 | **Phase Accumulator** | A register that increments by a configurable step on each cycle, wrapping at its maximum value to create a repeating ramp. |
 | **Thin-Film Interference** | Constructive and destructive interference of light waves reflecting off the top and bottom surfaces of a thin transparent layer. |
 | **Triangle Wave** | A periodic waveform with linear ascending and descending ramps, produced by folding a sawtooth ramp at its midpoint. |
 | **XOR** | Exclusive OR; a bitwise operation that outputs 1 when inputs differ, used here to create fractal-like spatial modulation patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

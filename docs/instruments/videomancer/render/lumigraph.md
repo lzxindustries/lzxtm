@@ -35,6 +35,14 @@ The entire rendering pipeline runs per-pixel with no memory dependency, making L
 
 ---
 
+## Quick Start
+
+1. **Slow is good**: Wilfred's compositions evolved over minutes. Set Drift Speed below 15% for the most meditative experience.
+2. **Softness over Size**: Increasing Softness has a more dramatic effect on the diffuse quality than increasing Pool Size. Try high Softness with moderate Size.
+3. **Warm for ambience**: The Warm palette is specifically tuned for ambient background compositions — all hues produce pleasant overlaps.
+
+---
+
 ## Background
 
 ### Thomas Wilfred and the Clavilux
@@ -200,6 +208,10 @@ The five toggles configure the pool count, animation speed multiplier, colour pa
 
 Mix crossfades between the input video (dry) and the Lumigraph synthesis (wet). At minimum the original video passes through; at maximum only the colour pools are visible. Intermediate positions overlay the pools on top of the video, creating a tinted wash effect.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -210,7 +222,7 @@ These exercises explore the meditative range of Lumigraph, from minimal ambient 
 
 <img src={lumigraph_exercise1_result} alt="Wilfred Meditation result"/>
 *Wilfred Meditation — simulated result across source images.*
-**Objective**: Create a slow, warm-toned Lumia composition with minimal pools and maximal softness.
+**What You'll Create**: Create a slow, warm-toned Lumia composition with minimal pools and maximal softness.
 
 1. Set Pools to 3, Motion to Slow.
 2. Set Pool Size to 70% for large, room-filling fields.
@@ -227,7 +239,7 @@ These exercises explore the meditative range of Lumigraph, from minimal ambient 
 
 <img src={lumigraph_exercise2_result} alt="Full Spectrum Dense result"/>
 *Full Spectrum Dense — simulated result across source images.*
-**Objective**: Create a richly coloured field with 5 pools using the Full palette for maximum additive mixing.
+**What You'll Create**: Create a richly coloured field with 5 pools using the Full palette for maximum additive mixing.
 
 1. Set Pools to 5, Palette to Full.
 2. Set Pool Size to 50%, Softness to 60%.
@@ -244,7 +256,7 @@ These exercises explore the meditative range of Lumigraph, from minimal ambient 
 
 <img src={lumigraph_exercise3_result} alt="Stained Glass Overlay result"/>
 *Stained Glass Overlay — simulated result across source images.*
-**Objective**: Use Video Seed to mask the Lumigraph synthesis with incoming video content.
+**What You'll Create**: Use Video Seed to mask the Lumigraph synthesis with incoming video content.
 
 1. Feed a contrasty image or video into Videomancer.
 2. Set Pools to 5, Palette to Full, Saturation to 100%.
@@ -260,9 +272,6 @@ These exercises explore the meditative range of Lumigraph, from minimal ambient 
 
 ## Tips
 
-- **Slow is good**: Wilfred's compositions evolved over minutes. Set Drift Speed below 15% for the most meditative experience.
-- **Softness over Size**: Increasing Softness has a more dramatic effect on the diffuse quality than increasing Pool Size. Try high Softness with moderate Size.
-- **Warm for ambience**: The Warm palette is specifically tuned for ambient background compositions — all hues produce pleasant overlaps.
 - **Full for education**: The Full palette demonstrates additive colour mixing clearly — use it to show how primaries combine.
 - **Video Seed at half mix**: Video Seed is most effective at 40–60% Mix, where the colour pools tint the original image rather than replacing it.
 - **3 pools for projection**: When using Lumigraph for projected installations, 3 pools with Warm palette and low drift create the most Wilfred-authentic experience.

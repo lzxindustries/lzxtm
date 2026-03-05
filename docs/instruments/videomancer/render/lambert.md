@@ -35,6 +35,14 @@ At its defaults, Lambert produces a smooth monochrome sphere — a luminous orb 
 
 ---
 
+## Quick Start
+
+1. **Light Angle, Elevation, Specular pot, Animate, and Specular toggle are stubs**: These controls are wired to registers but not used in the current pipeline. Save yourself troubleshooting time by knowing they have no effect.
+2. **Brightness is actually Mix**: Despite the TOML label, the fader controls wet/dry blend, not additive brightness. Use it for compositing the sphere over incoming video.
+3. **Ambient controls shadow visibility**: Low ambient gives dramatic chiaroscuro lighting. High ambient produces a flatter, more uniformly lit sphere — useful when using the sphere as a mask or compositing element.
+
+---
+
 ## Background
 
 ### The Lambertian Reflection Model
@@ -61,6 +69,8 @@ Lambert generates imagery from nothing — no input video is required. This make
 ---
 
 ## Signal Flow
+
+Clock 1: Sync Detection → Clock 2: Center → Clock 3: Distance² and → ... → Sync Signals → Bypass
 
 ```
 Pixel Clock
@@ -144,7 +154,7 @@ Labeled "Elevation" and read into the s_elevation signal, but the pipeline never
 | Default | 50% |
 | Suffix | % |
 
-Controls the sphere radius. At zero, the sphere vanishes entirely — every pixel fails the inside test and falls to the dark background. At maximum, the sphere fills much of the frame, its edges extending nearly to the screen boundaries. The radius enters the pipeline as a squared comparison (Size × Size vs. distance²), so the visual scaling is roughly linear in screen area rather than linear in radius. Mid-range values around 50% produce a sphere that fills approximately one quarter of the frame — a good starting point for seeing the full shading gradient from highlight to shadow.
+At zero, the sphere vanishes entirely — every pixel fails the inside test and falls to the dark background. At maximum, the sphere fills much of the frame, its edges extending nearly to the screen boundaries. The radius enters the pipeline as a squared comparison (Size × Size vs. distance²), so the visual scaling is roughly linear in screen area rather than linear in radius. Mid-range values around 50% produce a sphere that fills approximately one quarter of the frame — a good starting point for seeing the full shading gradient from highlight to shadow. Internally, controls the sphere radius.
 
 ---
 
@@ -206,6 +216,10 @@ Of the five toggles, only three produce visible changes: Color (Toggle 8) switch
 
 Labeled "Brightness" in the TOML but wired to the interpolator's mix input — it functions as a wet/dry crossfade, not an additive brightness control. At 0%, the output is 100% dry (passthrough of delayed input video). At 100%, the output is 100% wet (pure synthetic sphere). Intermediate values blend the sphere over the input, creating a superimposition effect. This is the standard Videomancer mix architecture shared across all programs.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -216,7 +230,7 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 
 <img src={lambert_exercise1_result} alt="The Lambertian Sphere result"/>
 *The Lambertian Sphere — simulated result across source images.*
-**Objective**: Understand the relationship between sphere size, ambient light, and the Lambertian shading gradient.
+**What You'll Create**: Understand the relationship between sphere size, ambient light, and the Lambertian shading gradient.
 
 1. **Default sphere**: Set Size to ~50%, Ambient to ~25%, Brightness (fader) to 100%. A monochrome sphere appears, illuminated from the upper left.
 2. **Shadow depth**: Sweep Ambient from 0% to 100%. At 0%, the unlit hemisphere is pure black. At 100%, the entire sphere glows uniformly — the directional shading vanishes.
@@ -232,7 +246,7 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 
 <img src={lambert_exercise2_result} alt="Toon Shading Bands result"/>
 *Toon Shading Bands — simulated result across source images.*
-**Objective**: Explore how toon quantization transforms the smooth Lambertian gradient into discrete cel-shaded bands.
+**What You'll Create**: Explore how toon quantization transforms the smooth Lambertian gradient into discrete cel-shaded bands.
 
 1. **Start smooth**: Size ~60%, Ambient ~20%, Toon Off. Observe the continuous shading gradient.
 2. **Enable Toon**: Toggle Toon On. The smooth gradient snaps into flat bands — hard-edged concentric arcs separating brightness levels. Count the visible bands (typically 3–5 depending on Ambient).
@@ -248,7 +262,7 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 
 <img src={lambert_exercise3_result} alt="Color Sphere Compositing result"/>
 *Color Sphere Compositing — simulated result across source images.*
-**Objective**: Use RGB color mode and the mix fader to composite a colored sphere over incoming video.
+**What You'll Create**: Use RGB color mode and the mix fader to composite a colored sphere over incoming video.
 
 1. **Enable RGB**: Toggle Color to RGB. The sphere acquires a visible hue.
 2. **Sweep Color**: Turn the Color knob through its full range. The sphere's hue shifts from one saturated extreme through neutral to the complementary extreme. At midpoint (~50%), the chroma is minimal.
@@ -264,9 +278,6 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 
 ## Tips
 
-- **Light Angle, Elevation, Specular pot, Animate, and Specular toggle are stubs**: These controls are wired to registers but not used in the current pipeline. Save yourself troubleshooting time by knowing they have no effect.
-- **Brightness is actually Mix**: Despite the TOML label, the fader controls wet/dry blend, not additive brightness. Use it for compositing the sphere over incoming video.
-- **Ambient controls shadow visibility**: Low ambient gives dramatic chiaroscuro lighting. High ambient produces a flatter, more uniformly lit sphere — useful when using the sphere as a mask or compositing element.
 - **Toon mode works best with low Ambient**: Higher ambient compresses the toon bands toward the top of the brightness range, reducing visible contrast between bands. Low ambient (10–20%) maximizes the number of visible discrete bands.
 - **RGB mode complementary chroma**: U is set to the Color value and V to its complement (1023 − Color). At Color = 512, both are near-neutral. Offset from center for saturated hues.
 - **Use as a compositing element**: Route Lambert into a downstream keyer or mixer. The clean sphere-on-black output makes an excellent luminance mask or shape source.
@@ -283,11 +294,10 @@ These exercises explore Lambert's shading model from basic sphere rendering thro
 | **Cosine law** | Lambert's law: the intensity of reflected light from a diffuse surface is proportional to the cosine of the angle between the surface normal and the light direction. |
 | **Diffuse reflection** | Light scattered equally in all directions from a matte surface, as described by Lambert's law. Distinguished from specular (mirror-like) reflection. |
 | **Dot product** | The scalar product of two vectors, equal to the product of their magnitudes times the cosine of the angle between them. Used here to compute shading intensity. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Lambertian surface** | An idealized perfectly matte surface that reflects light equally in all directions, obeying Lambert's cosine law. |
-| **Proc amp** | Processing amplifier; a gain-and-offset stage applied to a video signal. The interpolator in Lambert functions as a wet/dry mix rather than a traditional proc amp. |
 | **Surface normal** | A unit vector perpendicular to a surface at a given point, used to compute the angle of incoming light for shading calculations. |
 | **Toon shading** | See cel shading. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Spectrogram borrows the visual language of scientific instrumentation — sonar 
 
 ---
 
+## Quick Start
+
+1. **Gain calibration:** Set Gain so that the brightest source regions just reach the top of the colour ramp — this maximises dynamic range without clipping.
+2. **Slow scroll for installations:** A low Scroll Spd produces a meditative, slowly evolving tapestry of colour bands — ideal for gallery or ambient use.
+3. **Log for night scenes:** Logarithmic scale reveals detail in shadows that would be invisible on the linear Heat display.
+
+---
+
 ## Background
 
 ### Waterfall Displays
@@ -239,6 +247,10 @@ Palette and Scale define the visual character of the waterfall.  Axis selects wh
 
 Mix crossfades between the dry input and the wet spectrogram output.  At zero, pure source video; at maximum, pure spectrogram.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -260,7 +272,7 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 *Classic Thermal Waterfall — simulated result across source images.*
 **Source**: A camera source with a mix of slowly changing and rapidly flickering elements — a person moving against a static background works well.
 
-**Objective**: Produce a classic infrared-style waterfall showing temporal brightness changes as colour bands.
+**What You'll Create**: Produce a classic infrared-style waterfall showing temporal brightness changes as colour bands.
 
 1. Set Scroll Spd to 40 %, Gain to 60 %, Bandwidth to 30 %.
 2. Set Brightness to 20 % and Persist to 30 %.
@@ -289,7 +301,7 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 *Spectral Logarithmic Analysis — simulated result across source images.*
 **Source**: A high-dynamic-range source — window with daylight behind a dimly lit interior, or a candle in a dark room.
 
-**Objective**: Use log scale and spectral palette to reveal low-level luminance detail.
+**What You'll Create**: Use log scale and spectral palette to reveal low-level luminance detail.
 
 1. Set Gain to 50 %, Bandwidth to 10 % for detailed spatial resolution.
 2. Switch Scale to Log and Palette to Spectral.
@@ -318,7 +330,7 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 *Heads-Up Overlay — simulated result across source images.*
 **Source**: A live camera feed with moderate motion.
 
-**Objective**: Overlay the spectrogram on the source video for a heads-up-display effect.
+**What You'll Create**: Overlay the spectrogram on the source video for a heads-up-display effect.
 
 1. Enable Over Video and set Mix to 70 %.
 2. Set Gain to 40 %, Persist to 50 %, Palette to Heat.
@@ -335,9 +347,6 @@ These exercises demonstrate Spectrogram's waterfall display in different configu
 
 ## Tips
 
-- **Gain calibration:** Set Gain so that the brightest source regions just reach the top of the colour ramp — this maximises dynamic range without clipping.
-- **Slow scroll for installations:** A low Scroll Spd produces a meditative, slowly evolving tapestry of colour bands — ideal for gallery or ambient use.
-- **Log for night scenes:** Logarithmic scale reveals detail in shadows that would be invisible on the linear Heat display.
 - **Bandwidth for abstraction:** At maximum Bandwidth the entire scanline averages into a single column, transforming the waterfall into an abstract vertical colour stripe — a form of temporal colour coding.
 - **Hue for mood:** Rotating Hue 180° on the Heat palette turns it into a cool cyan-blue gradient, completely changing the emotional tone without altering the data.
 - **Over Video for analysis:** Use the overlay mode to spot brightness patterns in a live camera feed — motion trails, flickering lights, and gradual exposure changes all become visible.

@@ -68,6 +68,14 @@ The entire program operates without BRAM — all particle positions are computed
 
 ---
 
+## Quick Start
+
+1. **Start gentle**: Begin with low density (20-30%) and moderate opacity to establish the parallax depth before increasing to blizzard intensity. The depth effect is most apparent when individual flakes are distinguishable.
+2. **Wind creates mood**: No wind produces peaceful, straight-down snowfall. Light wind (10-25%) creates gentle drifting. Heavy wind (60%+) produces driven, dramatic blizzard trajectories.
+3. **Frost is cumulative**: The frost line only advances while enabled — use it as a slow reveal effect that gradually transforms the top of the frame. Timing the frost advance to musical cues creates dramatic building tension.
+
+---
+
 ## Background
 
 ### Parallax Particle Systems
@@ -94,6 +102,8 @@ Snow flakes are composited additively — their brightness is added to the input
 ---
 
 ## Signal Flow
+
+Hash + Grid → Hit Test → Brightness
 
 ```
 Input Video (YUV 4:4:4)
@@ -150,7 +160,7 @@ The key architectural choice is additive compositing: snow brightness is *added*
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the density of flakes in both layers. At low values, snow is sparse — individual flake positions are widely spaced and the source video dominates. At high values, flakes fill the frame densely. The density threshold is applied independently to each layer, with the far layer using half the threshold of the near layer, so low density settings produce mostly near-layer flakes while high density settings activate both layers fully.
+At low values, snow is sparse — individual flake positions are widely spaced and the source video dominates. At high values, flakes fill the frame densely. The density threshold is applied independently to each layer, with the far layer using half the threshold of the near layer, so low density settings produce mostly near-layer flakes while high density settings activate both layers fully. Internally, controls the density of flakes in both layers.
 
 ---
 
@@ -183,7 +193,7 @@ Controls the flake size by adjusting the hit-test grid spacing. Small values pro
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the rate at which the frost line descends from the top of the frame. At 0%, frost does not advance (remains at the top edge). At higher values, the frost line descends faster, more quickly engulfing the frame in the blue-tinted, darkened frost overlay. The frost line only advances when the Frost toggle is enabled. Once the frost line reaches the bottom of the frame, additional frost rate has no further effect.
+At 0%, frost does not advance (remains at the top edge). At higher values, the frost line descends faster, more quickly engulfing the frame in the blue-tinted, darkened frost overlay. The frost line only advances when the Frost toggle is enabled. Once the frost line reaches the bottom of the frame, additional frost rate has no further effect. Internally, controls the rate at which the frost line descends from the top of the frame.
 
 ---
 
@@ -213,7 +223,7 @@ Controls the overall brightness (opacity) of snow flakes when they appear. Since
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Layers** | 1 | 2 |
+| **7 — Layers** | 1 | All |
 | **8 — Drift Mode** | Sine | Random |
 | **9 — Frost** | Off | On |
 | **10 — Whiteout** | Off | On |
@@ -232,7 +242,19 @@ The five toggles control wind direction, snowfall intensity, frost accumulation,
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the dry/wet mix between the original input video and the snow-processed output. At 0% (fully dry), the output is the unprocessed input. At 100% (fully wet), the output is the full snowfall composite. Intermediate values blend between the two — at 50%, the snow effect is at half intensity, useful for subtle seasonal overlays.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Blizzard-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +277,7 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 *Gentle Flurries — simulated result across source images.*
 **Source**: Feed a landscape or outdoor scene (Kodak #24 — the mountain chalet provides natural winter context).
 
-**Objective**: Create a gentle, sparse snowfall with visible depth parallax between near and far layers.
+**What You'll Create**: Create a gentle, sparse snowfall with visible depth parallax between near and far layers.
 
 1. Set Density to 30% for sparse flake distribution.
 2. Set Wind to 25% for gentle rightward drift.
@@ -289,7 +311,7 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 *Heavy Snowfall with Wind — simulated result across source images.*
 **Source**: Feed a scene with mixed bright and dark regions (Kodak #13 — the mountain/water scene shows flakes clearly against both the bright sky and dark water).
 
-**Objective**: Create a heavy blizzard with strong diagonal wind and maximum flake intensity.
+**What You'll Create**: Create a heavy blizzard with strong diagonal wind and maximum flake intensity.
 
 1. Set Density to 80% for dense flake coverage.
 2. Set Wind to 75% for strong lateral drift.
@@ -323,7 +345,7 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 *Frost and Snow Combined — simulated result across source images.*
 **Source**: Feed a rural or architectural scene (Kodak #22 — the barn scene with its horizontal roof lines makes the frost line descent visually clear).
 
-**Objective**: Combine progressive frost accumulation with moderate snowfall to create a full winter weather scene.
+**What You'll Create**: Combine progressive frost accumulation with moderate snowfall to create a full winter weather scene.
 
 1. Set Density to 50% for moderate flake density.
 2. Set Wind to 15% for light drift.
@@ -345,9 +367,6 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 
 ## Tips
 
-- **Start gentle**: Begin with low density (20-30%) and moderate opacity to establish the parallax depth before increasing to blizzard intensity. The depth effect is most apparent when individual flakes are distinguishable.
-- **Wind creates mood**: No wind produces peaceful, straight-down snowfall. Light wind (10-25%) creates gentle drifting. Heavy wind (60%+) produces driven, dramatic blizzard trajectories.
-- **Frost is cumulative**: The frost line only advances while enabled — use it as a slow reveal effect that gradually transforms the top of the frame. Timing the frost advance to musical cues creates dramatic building tension.
 - **Depth Blur for atmosphere**: Enabling Depth Blur makes the far layer significantly dimmer, increasing the sense of atmospheric depth but reducing overall snow density visually. Disable it for uniform blizzard intensity.
 - **Dark sources look best**: Snow flakes are additive (white), so they read most clearly against dark or mid-tone source material. Very bright sources can make flakes hard to see at lower opacity settings.
 - **Mix for subtlety**: At 30-50% mix, the snow effect becomes a subtle seasonal overlay — enough to suggest winter atmosphere without obscuring the source content.
@@ -363,13 +382,13 @@ These exercises progress from gentle flurries to a full blizzard whiteout, explo
 | **Chromatic shift** | A fixed offset applied to the U and V colour channels of a video signal, producing an overall colour cast such as the blue tint of the frost overlay. |
 | **Depth blur** | Additional brightness attenuation applied to the far snow layer to increase the perceived distance between near and far particles. |
 | **Grid masking** | A technique using a bitwise AND operation to test whether a pixel coordinate falls on a regularly spaced grid, used here to determine potential flake positions. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
 | **LFSR** | Linear Feedback Shift Register; a shift register that produces a deterministic pseudo-random bit sequence, used here to generate spatially varying flake positions without memory storage. |
 | **Luma** | The brightness component (Y) of a YUV video signal, independent of colour information. |
 | **MSB** | Most Significant Bit; the highest-value bit in a binary number, forced high in Heavy mode to approximately double flake density. |
 | **Parallax** | The apparent difference in speed or position of objects at different depths; Blizzard uses a 2:1 speed ratio between near and far layers to simulate volumetric depth. |
 | **Saturating add** | An addition operation that clamps the result at the maximum representable value (1023) rather than wrapping around on overflow. |
 | **XOR** | Exclusive-OR; a bitwise operation that outputs 1 when its two input bits differ, used here to combine pixel coordinates with LFSR output for pseudo-random spatial distribution. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

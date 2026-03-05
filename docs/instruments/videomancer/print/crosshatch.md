@@ -68,6 +68,14 @@ After compositing, the hatch pattern is blended with the original video through 
 
 ---
 
+## Quick Start
+
+1. **Start with Pen + Single**: The simplest configuration — one family of diagonal strokes. Add complexity (Cross, Engrave, Etch) only after you understand the base spacing and density controls.
+2. **Spacing before width**: Adjust Stroke W first to set the overall line pitch, then use Density to darken or lighten the strokes. These two controls together determine the perceived gray level.
+3. **Sepia ink recipe**: Ink Tint ≈ 30°, Paper Tint ≈ 50°, Density ≈ 20%. This combination closely resembles aged copperplate prints.
+
+---
+
 ## Background
 
 ### A Brief History of Cross-Hatching
@@ -94,6 +102,8 @@ Three parallel instances of `interpolator_u` perform the wet/dry crossfade. Each
 ---
 
 ## Signal Flow
+
+Counter Sums → Hatch Detection → Colour Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -146,7 +156,7 @@ The critical design insight is that all line detection happens in a single combi
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial period of all hatch lines. At low values the mask is narrow (period of 8 pixels) — lines are densely packed, producing dark fields of closely spaced strokes. As the knob increases, the mask widens through 16, 32, 64, 128, and 256 pixel periods, spreading the lines further apart and letting more of the background wash show through. This is the primary "density" control in the traditional hatching sense: tight spacing for shadow, wide spacing for highlight.
+At low values the mask is narrow (period of 8 pixels) — lines are densely packed, producing dark fields of closely spaced strokes. As the knob increases, the mask widens through 16, 32, 64, 128, and 256 pixel periods, spreading the lines further apart and letting more of the background wash show through. This is the primary "density" control in the traditional hatching sense: tight spacing for shadow, wide spacing for highlight. Internally, controls the spatial period of all hatch lines.
 
 ---
 
@@ -157,7 +167,7 @@ Controls the spatial period of all hatch lines. At low values the mask is narrow
 | Default | 50% |
 | Suffix | % |
 
-Sets the overall density of the line pattern by adjusting the brightness of the hatch strokes relative to the wash background. At 0% the stroke luma is black, creating maximum contrast against a bright wash. At 100% the stroke luma matches full white, which against a dark wash creates bright lines on a dark field — an inversion of the traditional ink-on-paper relationship. Mid values produce soft gray strokes useful for pencil-like effects.
+At 0% the stroke luma is black, creating maximum contrast against a bright wash. At 100% the stroke luma matches full white, which against a dark wash creates bright lines on a dark field — an inversion of the traditional ink-on-paper relationship. Mid values produce soft gray strokes useful for pencil-like effects. Internally, sets the overall density of the line pattern by adjusting the brightness of the hatch strokes relative to the wash background.
 
 ---
 
@@ -208,7 +218,7 @@ Applies a hue rotation to the paper (wash background) color, independently of th
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Pen | Pencil |
+| **7 — Style** | Pen | Etch |
 | **8 — Cross** | Single | Cross |
 | **9 — Color Ink** | Off | On |
 | **10 — Invert** | Off | On |
@@ -228,6 +238,10 @@ Toggles 7 and 8 control the stroke geometry (line direction selection and crossi
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original video and the crosshatch composite. At 0% the output is pure source video with no hatching visible. At 100% the output is entirely the ink-and-paper composite. Intermediate positions superimpose the hatch pattern over the source with adjustable opacity, allowing subtle textured overlays where the original image remains recognizable beneath the strokes.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +264,7 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 *Pen Sketch — simulated result across source images.*
 **Source**: A head-and-shoulders portrait or bust shot with directional lighting creating clear highlight and shadow regions.
 
-**Objective**: Create a clean pen-and-ink sketch with a single family of diagonal strokes varying in density from highlight to shadow.
+**What You'll Create**: Create a clean pen-and-ink sketch with a single family of diagonal strokes varying in density from highlight to shadow.
 
 1. **Set stroke direction**: Select Style → Pen (Toggle 7). Confirm Cross → Single (Toggle 8).
 2. **Adjust spacing**: Turn Stroke W to approximately 40%. Lines should be clearly separated.
@@ -278,7 +292,7 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 *Copperplate Engraving — simulated result across source images.*
 **Source**: Architectural footage or a still life with clear geometric forms and strong contrast.
 
-**Objective**: Build a multi-layer crosshatched rendering that emulates copperplate engraving with warm sepia ink on ivory paper.
+**What You'll Create**: Build a multi-layer crosshatched rendering that emulates copperplate engraving with warm sepia ink on ivory paper.
 
 1. **Set style**: Select Style → Engrave (Toggle 7). Set Cross → Cross (Toggle 8).
 2. **Tighten spacing**: Turn Stroke W to approximately 25% for closer line pitch.
@@ -307,7 +321,7 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 *Color-Keyed Etch — simulated result across source images.*
 **Source**: Colorful footage — flowers, painted walls, neon signage, or a color bar test pattern.
 
-**Objective**: Create a color etching where the stroke color is derived from the source video's chrominance, producing hand-tinted crosshatch artwork.
+**What You'll Create**: Create a color etching where the stroke color is derived from the source video's chrominance, producing hand-tinted crosshatch artwork.
 
 1. **Set style**: Select Style → Etch (Toggle 7). Set Cross → Cross (Toggle 8).
 2. **Medium spacing**: Turn Stroke W to approximately 35%.
@@ -324,9 +338,6 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 
 ## Tips
 
-- **Start with Pen + Single**: The simplest configuration — one family of diagonal strokes. Add complexity (Cross, Engrave, Etch) only after you understand the base spacing and density controls.
-- **Spacing before width**: Adjust Stroke W first to set the overall line pitch, then use Density to darken or lighten the strokes. These two controls together determine the perceived gray level.
-- **Sepia ink recipe**: Ink Tint ≈ 30°, Paper Tint ≈ 50°, Density ≈ 20%. This combination closely resembles aged copperplate prints.
 - **Color Ink for watercolor effect**: Toggle Color Ink On and set Mix to 60–80%. The source's color bleeds through the hatching, creating a hand-tinted illustration look.
 - **Feedback loops**: Route the crosshatched output back to the input for recursive hatching — strokes on strokes, building up layered graphic textures.
 - **Invert for white ink**: Toggle Invert On with a dark wash to simulate white ink or chalk on dark paper.
@@ -340,17 +351,15 @@ These exercises progress from simple parallel strokes to full multi-layer crossh
 | Term | Definition |
 |------|------------|
 | **Bitmask** | A binary pattern used with AND logic to test specific bit positions in a counter; in Crosshatch, determines whether a pixel lies on a hatch line. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Crosshatch uses zero BRAM because all line detection is combinational. |
 | **Chroma** | The color information in a video signal, encoded as U (Cb) and V (Cr) in YUV color space. |
 | **Copperplate** | An engraving technique where lines are incised into a copper plate; Crosshatch's Engrave style emulates this multi-directional line pattern. |
 | **Cross-Hatching** | A shading technique using two or more sets of intersecting parallel lines to build tone. Denser overlap produces darker values. |
 | **Hatching** | A shading technique using parallel lines at regular spacing; a single family of strokes without crossing. |
-| **Interpolator** | A pipelined arithmetic unit that computes `a + (b − a) × t`; used here for the wet/dry mix between source and hatch composite. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **LUT** | Look-Up Table; the fundamental logic element in an FPGA, used for combinational functions. |
-| **Pipeline** | A series of clocked processing stages where each stage's output feeds the next stage's input. |
 | **Power-of-Two** | A spacing value that is a power of 2 (8, 16, 32, …), enabling detection via bitmask AND rather than division. |
 | **Wash** | The background color that appears between hatch strokes; analogous to paper color in printmaking. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

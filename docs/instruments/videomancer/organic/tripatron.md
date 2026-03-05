@@ -35,6 +35,14 @@ Each layer can be individually enabled or disabled: Rings produces concentric ci
 
 ---
 
+## Quick Start
+
+1. **Start with one layer**: Isolate each layer to understand its individual character before combining. Rings → Bursts → Spirals builds complexity incrementally.
+2. **Odd spiral counts**: 3 or 5 spiral arms create asymmetric visual interest. Even counts (2, 4, 6, 8) produce more symmetric patterns.
+3. **Frequency ratio matters**: When Ring Freq and Burst Freq are near-integer ratios, stable moiré patterns emerge. Non-integer ratios create more organic, drifting interference.
+
+---
+
 ## Background
 
 ### Multi-Layer Light Synthesis
@@ -207,6 +215,10 @@ The five toggles enable or disable each pattern layer and control video composit
 
 Mix crossfades between the dry input and the synthesised tripatron output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values blend the organic patterns over the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -217,7 +229,7 @@ These exercises build from a single-layer pattern to the full three-layer compos
 
 <img src={tripatron_exercise1_result} alt="Isolated Ring Pulse result"/>
 *Isolated Ring Pulse — simulated result across source images.*
-**Objective**: Study the concentric ring pattern in isolation to understand radial frequency and animation.
+**What You'll Create**: Study the concentric ring pattern in isolation to understand radial frequency and animation.
 
 1. Enable Rings only (disable Bursts and Spirals).
 2. Set Ring Freq to approximately 30%.
@@ -237,7 +249,7 @@ These exercises build from a single-layer pattern to the full three-layer compos
 
 <img src={tripatron_exercise2_result} alt="Two-Layer Interference result"/>
 *Two-Layer Interference — simulated result across source images.*
-**Objective**: Combine rings and bursts to observe the moiré-like interference at their intersection.
+**What You'll Create**: Combine rings and bursts to observe the moiré-like interference at their intersection.
 
 1. Enable both Rings and Bursts (keep Spirals off).
 2. Set Ring Freq to approximately 40%.
@@ -257,7 +269,7 @@ These exercises build from a single-layer pattern to the full three-layer compos
 
 <img src={tripatron_exercise3_result} alt="Full Composite with Video Overlay result"/>
 *Full Composite with Video Overlay — simulated result across source images.*
-**Objective**: Create the full three-layer organic synthesis and blend it over live video.
+**What You'll Create**: Create the full three-layer organic synthesis and blend it over live video.
 
 1. Enable all three layers: Rings, Bursts, and Spirals.
 2. Set Ring Freq to approximately 35%.
@@ -278,9 +290,6 @@ These exercises build from a single-layer pattern to the full three-layer compos
 
 ## Tips
 
-- **Start with one layer**: Isolate each layer to understand its individual character before combining. Rings → Bursts → Spirals builds complexity incrementally.
-- **Odd spiral counts**: 3 or 5 spiral arms create asymmetric visual interest. Even counts (2, 4, 6, 8) produce more symmetric patterns.
-- **Frequency ratio matters**: When Ring Freq and Burst Freq are near-integer ratios, stable moiré patterns emerge. Non-integer ratios create more organic, drifting interference.
 - **Low speed for ambient**: Very slow layer speeds create meditative, slowly breathing patterns suitable for installations — the eye perceives smooth evolution rather than motion.
 - **All layers off = black**: Use the three layer toggles as performance instruments — toggling layers on and off creates dramatic compositional shifts.
 - **Hue Shift for colour composition**: Automate Hue Shift to cycle through warm/cool palettes during performance. This changes the emotional quality without affecting the geometric pattern.

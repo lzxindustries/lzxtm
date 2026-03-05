@@ -68,6 +68,14 @@ At extreme settings the key becomes a hard binary mask, producing clean silhouet
 
 ---
 
+## Quick Start
+
+1. **Span is your softness control**: Think of Span as "feather radius." Higher span = softer edge. Use it before reaching for gain to shape the key transition.
+2. **Key Gain is your strength control**: Once you have the right softness via Span, use Key Gain to set how strongly the key replaces the source with matte.
+3. **Luma Invert ≠ Key Invert**: Luma Invert flips the Y channel *before* the distance computation (changes *what* gets keyed). Key Invert flips the alpha *after* gain (changes *how* the key composites). They produce different results and can be combined.
+
+---
+
 ## Background
 
 ### What Is a Luma Key?
@@ -96,6 +104,8 @@ The final compositing stage uses three `interpolator_u` instances (one per YUV c
 ---
 
 ## Signal Flow
+
+Input Conditioning → Absolute Difference → Key Type Selection + Span → Gain Multiply → Scale + Clamp + Invert
 
 ```
 Input Video (YUV 4:4:4)
@@ -156,7 +166,7 @@ The key alpha generation pipeline (stages 1–5) and the video delay pipeline ru
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the span (softness) of the key edge. At 0%, the clip level is at maximum and virtually no key signal passes through — the output is almost entirely the original source. As you increase Span toward 100%, the clip level drops and more of the distance signal contributes to the key alpha, widening the soft transition zone between keyed and non-keyed regions. This is the primary control for adjusting how gradually the matte colour blends into the source.
+At 0%, the clip level is at maximum and virtually no key signal passes through — the output is almost entirely the original source. As you increase Span toward 100%, the clip level drops and more of the distance signal contributes to the key alpha, widening the soft transition zone between keyed and non-keyed regions. This is the primary control for adjusting how gradually the matte colour blends into the source. Internally, controls the span (softness) of the key edge.
 
 ---
 
@@ -240,6 +250,21 @@ The five toggles control the key generation mode and pipeline options. Key Type 
 
 Controls the key gain multiplier applied after span clipping. Higher values produce more opaque key regions for a given distance — effectively tightening the key boundary. At maximum (100%), the raw key signal is scaled at full strength. At 0%, no key signal passes through and the output is entirely the original source regardless of other settings. This is the primary "amount" control for the overall keying effect.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Silhouette processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +286,7 @@ These exercises progress from basic luma keying through chroma keying to advance
 *Basic Luma Silhouette — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or a test pattern with strong brightness differences (e.g., white text on black background).
 
-**Objective**: Learn luma keying fundamentals — threshold placement, span softness, and gain control.
+**What You'll Create**: Learn luma keying fundamentals — threshold placement, span softness, and gain control.
 
 1. **Set the threshold**: Adjust Threshold Y/U to approximately 50% — the midpoint of the brightness range.
 2. **Open the span**: Increase Span to about 70%. You should see mid-grey regions begin to show the matte colour (default mid-grey).
@@ -289,7 +314,7 @@ These exercises progress from basic luma keying through chroma keying to advance
 *Chroma Key Compositing — simulated result across source images.*
 **Source**: Footage with a strong, saturated colour (e.g., a red object on a neutral background, or footage shot against a coloured backdrop).
 
-**Objective**: Explore chroma keying — removing a specific colour from the image and replacing it with a custom matte colour.
+**What You'll Create**: Explore chroma keying — removing a specific colour from the image and replacing it with a custom matte colour.
 
 1. **Switch to chroma mode**: Set Key Type to Chroma.
 2. **Target the colour**: Adjust Threshold Y/U and Threshold V to match the U and V values of the colour you want to key. For a saturated red: Threshold Y/U ~50% (neutral U), Threshold V ~80% (high V).
@@ -317,7 +342,7 @@ These exercises progress from basic luma keying through chroma keying to advance
 *Soft Compositing with Luma Invert — simulated result across source images.*
 **Source**: A video scene with a range of brightness values (landscape, portrait, or abstract footage).
 
-**Objective**: Combine luma inversion with soft key compositing to create painterly overlay effects.
+**What You'll Create**: Combine luma inversion with soft key compositing to create painterly overlay effects.
 
 1. **Enable Luma Invert**: Toggle Luma Invert On. The key now sees an inverted brightness map — dark areas register as bright for keying purposes.
 2. **Set moderate span**: Span ~50% for a soft blend.
@@ -333,9 +358,6 @@ These exercises progress from basic luma keying through chroma keying to advance
 
 ## Tips
 
-- **Span is your softness control**: Think of Span as "feather radius." Higher span = softer edge. Use it before reaching for gain to shape the key transition.
-- **Key Gain is your strength control**: Once you have the right softness via Span, use Key Gain to set how strongly the key replaces the source with matte.
-- **Luma Invert ≠ Key Invert**: Luma Invert flips the Y channel *before* the distance computation (changes *what* gets keyed). Key Invert flips the alpha *after* gain (changes *how* the key composites). They produce different results and can be combined.
 - **16× gain for tight keys**: When you need a narrow key band — keying on a specific brightness or colour without affecting nearby values — use 16× Gain Range with a low Key Gain setting.
 - **Matte colour as creative tool**: The YUV matte controls can produce any colour, not just neutral tones. Use saturated matte colours for graphic design and compositing effects.
 - **Feedback loops**: Route the output back to the input to create recursive keying — the key operates on its own output, producing evolving silhouette patterns.
@@ -351,14 +373,12 @@ These exercises progress from basic luma keying through chroma keying to advance
 | **Chroma** | The colour information in a video signal, encoded as U (blue-difference) and V (red-difference) components in YUV colour space. |
 | **Chroma Key** | A keying method that derives the transparency signal from colour-channel distances rather than brightness. |
 | **Compositing** | Combining two video signals into one by blending them according to an alpha (transparency) map. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly crossfades between two input values based on a third value (the alpha or mix control). |
 | **Key** | A signal derived from the input video that determines which regions are transparent and which are opaque. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Luma Key** | A keying method that derives the transparency signal from the absolute luminance distance from a threshold. |
 | **Matte** | A flat replacement colour that fills the keyed (transparent) regions of the output image. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Span** | The soft-clip deadband below which key distance is forced to zero, controlling key edge softness. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

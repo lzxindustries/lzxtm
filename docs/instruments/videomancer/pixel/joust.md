@@ -68,6 +68,14 @@ At mild settings, Joust adds subtle horizontal scrolling and gentle palette quan
 
 ---
 
+## Quick Start
+
+1. **Flicker needs low Vis Limit**: Sprite-overflow flicker is only visible when Vis Limit is lower than the strip count. Set Vis Limit to half the strip count or less for dramatic flicker.
+2. **Toggle overlap is a feature**: The shared register bits between Strips, Colors, and Scroll create unexpected combinations. Explore them — they often produce happy accidents.
+3. **Key Level creates sprite layers**: Higher Key Level makes dark pixels transparent, revealing the background. Use Bkgnd Luma to set the "game screen" background color behind the content.
+
+---
+
 ## Background
 
 ### What Is a Sprite Engine?
@@ -94,6 +102,8 @@ Due to the way the five toggle switches are packed into a single 10-bit register
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Interpolator → Bypass → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -205,7 +215,7 @@ Shifts the quantization rounding threshold for palette reduction. At midpoint (5
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the luminance of the background fill that shows through transparent and overflow-dropped pixels. At 0%, the background is black. At 100%, the background is peak white. The background is always neutral chroma (U=512, V=512), so it appears as a shade of gray. Combined with the Key Level threshold, this controls the visual separation between the "sprite" content and the "background stage."
+At 0%, the background is black. At 100%, the background is peak white. The background is always neutral chroma (U=512, V=512), so it appears as a shade of gray. Combined with the Key Level threshold, this controls the visual separation between the "sprite" content and the "background stage." Internally, sets the luminance of the background fill that shows through transparent and overflow-dropped pixels.
 
 ---
 
@@ -213,8 +223,8 @@ Sets the luminance of the background fill that shows through transparent and ove
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Strips** | 4 | 8 |
-| **8 — Colors** | 4 Color | 8 Color |
+| **7 — Strips** | 4 | 16 |
+| **8 — Colors** | 4 Color | Full |
 | **9 — Scroll** | Independ | Parallax |
 | **10 — Flicker** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -232,7 +242,29 @@ Switches 7–11 control strip count, color depth, scroll mode, flicker, and bypa
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input and the processed output. At 0%, the output is the unprocessed input regardless of other settings. At 100%, the output is fully processed. Intermediate positions blend the two, which can produce semi-transparent layering where the flat-color quantized strips partially reveal the original source underneath. When Bypass (toggle 11) is active, this fader has no effect.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Joust processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Joust-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +287,7 @@ These exercises progress from basic strip division to full sprite-engine simulat
 *Strip Division and Scrolling — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong horizontal structure — landscapes, cityscapes, or text.
 
-**Objective**: Learn how the screen is divided into strips and how scroll offset and speed create horizontal animation.
+**What You'll Create**: Learn how the screen is divided into strips and how scroll offset and speed create horizontal animation.
 
 1. **Strip division**: Set Strips to 8. The screen divides into 8 horizontal bands. With all other effects neutral, this is barely visible — set Bkgnd Luma to ~30% and Key Level to ~20% to see strip boundaries where dark areas become transparent.
 2. **Scroll offset**: Slowly increase Offset Amt. Each strip begins to shift horizontally, creating a wavy distortion. The sinusoidal LUT produces smooth, oscillating displacement.
@@ -282,7 +314,7 @@ These exercises progress from basic strip division to full sprite-engine simulat
 *Palette Quantization and Keying — simulated result across source images.*
 **Source**: Footage with gradual tonal transitions and varied colors — skin tones, painted surfaces, or gradient test patterns.
 
-**Objective**: Explore how palette quantization and luminance keying create the flat-color, transparent-background look of retro game graphics.
+**What You'll Create**: Explore how palette quantization and luminance keying create the flat-color, transparent-background look of retro game graphics.
 
 1. **Prepare**: Set Strips to 8, Scroll Spd and Offset Amt to 0% for a static view.
 2. **4-color mode**: Set Colors to 4. The image snaps to a dramatically reduced palette — only 4 brightness levels and 4 chroma levels per channel. Large flat-color regions dominate.
@@ -310,7 +342,7 @@ These exercises progress from basic strip division to full sprite-engine simulat
 *Sprite Overflow Flicker — simulated result across source images.*
 **Source**: Any footage — the flicker effect is independent of content.
 
-**Objective**: Recreate the characteristic NES-style sprite-overflow flicker and explore the toggle bit overlap quirk.
+**What You'll Create**: Recreate the characteristic NES-style sprite-overflow flicker and explore the toggle bit overlap quirk.
 
 1. **Prepare**: Set Strips to 16, Colors to 8 Color, Key Level ~25%, Bkgnd Luma ~5%.
 2. **Vis Limit**: Set Vis Limit to ~8 (half the strip count). Half the strips are now hidden each frame.
@@ -326,9 +358,6 @@ These exercises progress from basic strip division to full sprite-engine simulat
 
 ## Tips
 
-- **Flicker needs low Vis Limit**: Sprite-overflow flicker is only visible when Vis Limit is lower than the strip count. Set Vis Limit to half the strip count or less for dramatic flicker.
-- **Toggle overlap is a feature**: The shared register bits between Strips, Colors, and Scroll create unexpected combinations. Explore them — they often produce happy accidents.
-- **Key Level creates sprite layers**: Higher Key Level makes dark pixels transparent, revealing the background. Use Bkgnd Luma to set the "game screen" background color behind the content.
 - **4-color mode for NES aesthetic**: Combined with flicker and a dark background, 4-color quantization closely replicates the visual feel of 8-bit game consoles.
 - **Scroll Spd at zero for static effects**: Turn off scrolling when you want to focus on quantization, keying, and flicker without the distraction of horizontal movement.
 - **Feedback loops**: Routing Joust's output back to the input creates recursive quantization and keying — each pass reduces the palette further and the scrolling compounds into increasingly wild displacement.
@@ -346,13 +375,13 @@ These exercises progress from basic strip division to full sprite-engine simulat
 | **Luminance Key** | Transparency determined by brightness: pixels darker than the key threshold are treated as transparent. |
 | **NES** | Nintendo Entertainment System; an 8-bit game console whose sprite engine could display a maximum of 8 sprites per scan line, producing characteristic overflow flicker. |
 | **Palette Quantization** | Reducing the number of distinct colors by truncating the lower bits of each color channel. |
-| **Pipeline** | A series of sequential processing stages; Joust uses 8 clock cycles (4 processing + 4 interpolator). |
 | **Priority Rotation** | A round-robin scheme that changes which sprites are dropped each frame, ensuring all sprites are visible at least part of the time. |
 | **Sine LUT** | A 32-entry lookup table of signed 8-bit sine values used to compute per-strip horizontal scroll offsets. |
 | **Sprite** | A small, independently movable graphic object composited onto the display by dedicated hardware in classic game systems. |
 | **Sprite Engine** | The hardware subsystem in classic game consoles responsible for positioning, prioritizing, and compositing sprites during video scan-out. |
 | **Sprite Overflow** | The condition where more sprites appear on a scan line than the hardware can render, causing excess sprites to be dropped. |
 | **Strip** | In Joust, one of N horizontal bands into which the screen is divided, each treated as an independent sprite layer. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

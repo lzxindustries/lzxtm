@@ -35,6 +35,14 @@ At full mix, Snake renders as a clean game overlay on black. Reducing the mix fa
 
 ---
 
+## Quick Start
+
+1. **Center the pots to hold course**: Keeping both Dir pots in the center dead zone maintains the current heading, letting the snake auto-pilot in a straight line until you deliberately steer.
+2. **One axis at a time**: Move only one pot at a time for clean direction changes. Deflecting both pots simultaneously relies on the dominant-axis logic, which can produce unexpected turns.
+3. **Wrap mode is your friend**: Start with Wrap mode to learn the controls without the pressure of wall death. Switch to Solid once you're comfortable with the dual-pot interface.
+
+---
+
 ## Background
 
 ### Nokia and the Mobile Snake Explosion
@@ -207,6 +215,10 @@ The five toggles partition into gameplay (Walls), display options (Grid, Score, 
 
 Mix controls the wet/dry blend between the game overlay and the input video. At full mix, only the Snake game is visible on a black background. Reducing mix fades in the input video behind the game elements, creating a transparent overlay effect. At zero mix, the game is completely hidden and only the input signal passes through. The mix engages the three interpolator_u instances for Y, U, and V channels independently.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -217,7 +229,7 @@ These exercises explore Snake's dual-pot direction system, the contrast between 
 
 <img src={snake_exercise1_result} alt="First Hunt result"/>
 *First Hunt — simulated result across source images.*
-**Objective**: Play a complete game of Snake using the dual-pot direction interface to eat five food pellets.
+**What You'll Create**: Play a complete game of Snake using the dual-pot direction interface to eat five food pellets.
 
 1. Set Speed to about 25% for a comfortable pace.
 2. Set Dir X and Dir Y both to center (50%) — the snake maintains its initial rightward heading.
@@ -236,7 +248,7 @@ These exercises explore Snake's dual-pot direction system, the contrast between 
 
 <img src={snake_exercise2_result} alt="Solid Walls Challenge result"/>
 *Solid Walls Challenge — simulated result across source images.*
-**Objective**: Increase difficulty by enabling solid walls and higher speed, aiming for a score of 10+.
+**What You'll Create**: Increase difficulty by enabling solid walls and higher speed, aiming for a score of 10+.
 
 1. Set Speed to about 45% for moderate challenge.
 2. Switch Walls to Solid — boundary contact is now lethal.
@@ -254,7 +266,7 @@ These exercises explore Snake's dual-pot direction system, the contrast between 
 
 <img src={snake_exercise3_result} alt="Neon Serpent Overlay result"/>
 *Neon Serpent Overlay — simulated result across source images.*
-**Objective**: Blend a colorized snake game over input video at partial mix for a composited overlay look.
+**What You'll Create**: Blend a colorized snake game over input video at partial mix for a composited overlay look.
 
 1. Set Speed to about 30% for smooth visual motion.
 2. Switch Color to Hue and sweep Body Hue to find a complementary color for your source video.
@@ -270,9 +282,6 @@ These exercises explore Snake's dual-pot direction system, the contrast between 
 
 ## Tips
 
-- **Center the pots to hold course**: Keeping both Dir pots in the center dead zone maintains the current heading, letting the snake auto-pilot in a straight line until you deliberately steer.
-- **One axis at a time**: Move only one pot at a time for clean direction changes. Deflecting both pots simultaneously relies on the dominant-axis logic, which can produce unexpected turns.
-- **Wrap mode is your friend**: Start with Wrap mode to learn the controls without the pressure of wall death. Switch to Solid once you're comfortable with the dual-pot interface.
 - **Watch the grid lines**: Enable Grid to see exactly where cell boundaries are — this helps time turns to avoid self-collision by one cell.
 - **Speed is the difficulty knob**: Low speed gives time to plan; high speed demands reflexive control. Scale speed as you gain proficiency.
 - **Mix for video art**: Reduce Mix to blend the snake game over live video input. The snake body becomes a moving, growing graphic overlay.
@@ -294,6 +303,7 @@ These exercises explore Snake's dual-pot direction system, the contrast between 
 | **Reversal Guard** | Logic that prevents the snake from reversing 180 degrees, which would cause instant self-collision on the next move tick. |
 | **Toroidal Grid** | A grid topology where the top edge connects to the bottom and the left edge connects to the right, used in Wrap mode. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used as the game tick clock. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

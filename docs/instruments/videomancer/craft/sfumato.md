@@ -68,6 +68,14 @@ Three additional layers deepen the atmospheric effect: *depth modulation* applie
 
 ---
 
+## Quick Start
+
+1. **Edge Threshold is the selectivity control**: Low threshold = everything softens. High threshold = only the hardest tonal edges are treated. Start high and lower until you find the boundary between "selective sfumato" and "uniform blur."
+2. **Depth creates foreground/background separation**: Raising Depth makes shadows dissolve while highlights stay sharp. This is the core of atmospheric perspective — use it to push dark regions into the background.
+3. **Chroma Diffusion unlocked is the watercolour mode**: When Chroma Lock is set to Indep with high Chroma Diffusion, colours bleed beyond their luminance boundaries like wet pigment.
+
+---
+
 ## Background
 
 ### Leonardo's Sfumato Technique
@@ -94,6 +102,8 @@ The haze stage lifts shadow luminance toward mid-gray and desaturates the entire
 ---
 
 ## Signal Flow
+
+Input Register → Alpha Modulation → IIR Filter + Haze → Varnish Warmth
 
 ```
 Input Video (YUV 4:4:4)
@@ -228,6 +238,21 @@ Toggles 7–10 control four independent modal options. Toggle 7 selects unidirec
 
 Controls the wet/dry crossfade between the original delayed signal and the processed output. At 100% the full sfumato effect is applied. At 0% the original signal passes through. Intermediate values blend the two — useful for dialling in a subtle atmospheric enhancement without fully committing to the softened look.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sfumato processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +274,7 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 *Edge-Adaptive Softening — simulated result across source images.*
 **Source**: Portrait footage or any source with a mix of sharp edges and smooth gradients — faces, still-life objects, or architectural details.
 
-**Objective**: Learn how the base diffusion and edge threshold interact to create selective tonal smoothing.
+**What You'll Create**: Learn how the base diffusion and edge threshold interact to create selective tonal smoothing.
 
 1. Start with all pots at defaults and all toggles off (unidirectional, linear depth, independent chroma, no varnish).
 2. Slowly raise Diffusion (Pot 1) from 0%. Watch as horizontal tonal edges soften while flat regions remain crisp.
@@ -276,7 +301,7 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 *Atmospheric Perspective — simulated result across source images.*
 **Source**: Landscape footage or any image with a bright foreground and dark background — a window looking out, a lit figure against shadows, or a sunset sky.
 
-**Objective**: Use depth modulation and haze to simulate the effect of viewing a scene through atmosphere.
+**What You'll Create**: Use depth modulation and haze to simulate the effect of viewing a scene through atmosphere.
 
 1. Use settings from Exercise 1 as a starting point, with Diffusion ~50% and Edge Threshold ~40%.
 2. Raise Depth (Pot 3) to ~60%. Shadows soften dramatically while highlights remain crisp — the dark background dissolves.
@@ -303,7 +328,7 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 *Venetian Varnish — simulated result across source images.*
 **Source**: Portrait or still-life footage in warm lighting — ideal for simulating an Old Master painting.
 
-**Objective**: Combine all four layers (diffusion, depth, haze, varnish) for a full Renaissance-painting treatment.
+**What You'll Create**: Combine all four layers (diffusion, depth, haze, varnish) for a full Renaissance-painting treatment.
 
 1. Set Diffusion ~60%, Edge Threshold ~50%, Depth ~40%.
 2. Add Chroma Diffusion ~70% and unlock Chroma Lock (Switch 9 = Indep). Colour boundaries dissolve more than luminance — a watercolour softness.
@@ -319,9 +344,6 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 
 ## Tips
 
-- **Edge Threshold is the selectivity control**: Low threshold = everything softens. High threshold = only the hardest tonal edges are treated. Start high and lower until you find the boundary between "selective sfumato" and "uniform blur."
-- **Depth creates foreground/background separation**: Raising Depth makes shadows dissolve while highlights stay sharp. This is the core of atmospheric perspective — use it to push dark regions into the background.
-- **Chroma Diffusion unlocked is the watercolour mode**: When Chroma Lock is set to Indep with high Chroma Diffusion, colours bleed beyond their luminance boundaries like wet pigment.
 - **Haze and Varnish stack**: Haze lifts and desaturates; Varnish warms. Together they create the complete Old Master palette: soft edges, atmospheric lift, amber warmth.
 - **Bidirectional mode costs one BRAM but eliminates directionality**: Uni mode is lighter on resources but produces a characteristic rightward smear. Switch to Bidi for symmetrical diffusion.
 - **Mix for subtlety**: The full sfumato treatment can overwhelm detail. Blend at 60–80% to retain some of the source's crispness while still softening tonal boundaries.
@@ -335,7 +357,6 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 |------|------------|
 | **Alpha** | The IIR filter coefficient (0–1023); higher alpha weights the previous output more heavily, creating stronger blur. |
 | **Atmospheric Perspective** | The visual phenomenon where distant objects appear softer, lighter, and less colourful due to intervening atmosphere. |
-| **BRAM** | Block RAM; dedicated memory in the FPGA fabric, used here for the bidirectional line buffer. |
 | **Chrominance** | The colour components (U, V) of a YUV signal. |
 | **Depth Modulation** | Varying the blur strength based on pixel luminance to simulate distance-dependent softening. |
 | **Edge-Adaptive** | A filtering strategy that changes its strength based on the local image gradient, preserving structure while smoothing transitions. |
@@ -343,9 +364,9 @@ These exercises progress from basic edge-adaptive diffusion through depth modula
 | **Haze** | A post-filter stage that lifts shadow luminance and desaturates chrominance, simulating atmospheric scattering. |
 | **IIR** | Infinite Impulse Response; a recursive filter whose output depends on its own previous values. |
 | **Luminance** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | Sequential processing stages where each stage operates on every clock cycle. |
 | **Sfumato** | Italian for "vanished like smoke"; Leonardo da Vinci's painting technique of eliminating visible tonal boundaries. |
 | **Varnish** | A colour temperature shift toward amber, simulating the aged appearance of oil painting varnish. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V). |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

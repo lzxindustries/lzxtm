@@ -68,6 +68,14 @@ At subtle settings — low growth rate, moderate opacity, gentle ice tint — Ri
 
 ---
 
+## Quick Start
+
+1. **Growth Rate is temporal resolution**: Low growth lets you watch individual branches form. High growth fills the frame between vblanks.
+2. **Melt creates living crystals**: Non-zero melt rate produces perpetually evolving patterns. Pair with auto-reset for guaranteed cyclical behavior.
+3. **Subtractive mode for dark scenes**: Sub mode creates frost shadows on bright sources — useful when you want darkening rather than brightening.
+
+---
+
 ## Background
 
 ### Diffusion-Limited Aggregation
@@ -90,6 +98,8 @@ The Melt Rate control enables a background erosion process: during the growth sc
 ---
 
 ## Signal Flow
+
+Display Pipeline → Growth Engine → Mix Stage → Sync Delay → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -170,7 +180,7 @@ Controls the neighbor threshold for the DLA freeze decision. Higher branch densi
 | Default | 68.4% |
 | Suffix | % |
 
-Sets the alpha opacity of the crystal overlay when compositing over the input video. At zero opacity, crystals are invisible. At maximum, frozen regions completely replace the input with the ice color. The Growth Vis toggle overrides this to full opacity, highlighting the active growth front for diagnostic observation.
+At zero opacity, crystals are invisible. At maximum, frozen regions completely replace the input with the ice color. The Growth Vis toggle overrides this to full opacity, highlighting the active growth front for diagnostic observation. Internally, sets the alpha opacity of the crystal overlay when compositing over the input video.
 
 ---
 
@@ -221,6 +231,10 @@ The five toggles control independent aspects of the crystal rendering. Frost Mod
 
 Wet/dry mix crossfade between the unprocessed input video and the crystal-composited output. Three parallel `interpolator_u` instances blend Y, U, and V channels independently using 10-bit fractional precision. At 0% the output is pure dry (original input); at 100% the output is the fully frosted composite.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -242,7 +256,7 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 *Gentle Frost Overlay — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with warm colors and mid-range tonal variation.
 
-**Objective**: Create a subtle frost effect that adds delicate ice tracery over the input video.
+**What You'll Create**: Create a subtle frost effect that adds delicate ice tracery over the input video.
 
 1. Set Growth to about 30% for slow crystal expansion.
 2. Set Seeds to 1 for a single point of origin.
@@ -271,7 +285,7 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 *Dynamic Equilibrium — simulated result across source images.*
 **Source**: High-contrast footage — strong text, graphics, or architectural video.
 
-**Objective**: Establish a perpetual growth-melt cycle where the crystal front continuously evolves.
+**What You'll Create**: Establish a perpetual growth-melt cycle where the crystal front continuously evolves.
 
 1. Set Growth to about 60% for rapid expansion.
 2. Set Seeds to 6 for full hexagonal nucleation.
@@ -300,7 +314,7 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 *Subtractive Shadow Crystal — simulated result across source images.*
 **Source**: Bright, well-lit footage — outdoor scenes, stage lighting, or white backgrounds.
 
-**Objective**: Use subtractive frost mode to create shadowed crystal patterns that darken the input.
+**What You'll Create**: Use subtractive frost mode to create shadowed crystal patterns that darken the input.
 
 1. Set Growth to about 50%.
 2. Set Seeds to 3 for moderate nucleation.
@@ -318,9 +332,6 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 
 ## Tips
 
-- **Growth Rate is temporal resolution**: Low growth lets you watch individual branches form. High growth fills the frame between vblanks.
-- **Melt creates living crystals**: Non-zero melt rate produces perpetually evolving patterns. Pair with auto-reset for guaranteed cyclical behavior.
-- **Subtractive mode for dark scenes**: Sub mode creates frost shadows on bright sources — useful when you want darkening rather than brightening.
 - **6-fold symmetry is natural ice**: Real ice crystals have hexagonal symmetry. Use 4-fold for unnatural, geometric compositions.
 - **Growth Vis is diagnostic**: Toggle it on briefly to see exactly what the crystal field holds, then turn it off for the compositional result.
 - **Seeds control early density**: More seeds mean faster initial coverage but also mean the crystal reaches auto-reset sooner.
@@ -334,16 +345,14 @@ These exercises explore the crystal growth dynamics, opacity compositing, and sy
 | Term | Definition |
 |------|------------|
 | **Alpha Compositing** | Blending two image layers using a transparency value (alpha) to control the contribution of each layer. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the crystal field storage. |
 | **Dendrite** | A branching, tree-like crystal growth pattern produced by diffusion-limited aggregation. |
 | **DLA** | Diffusion-Limited Aggregation; a growth model where particles aggregate on contact with an existing cluster, producing branching dendritic structures. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing pseudo-random sequences. |
 | **Nucleation** | The initial formation of a crystal seed point from which further growth propagates. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Sector Mapping** | Folding screen coordinates into a canonical wedge region to enforce rotational symmetry in the rendered pattern. |
 | **Six-Fold Symmetry** | The rotational symmetry of ice crystals, where the pattern repeats every 60 degrees around the central axis. |
 | **Vblank** | Vertical blanking interval; the period between video frames when no active pixels are displayed, used here for the growth engine scan. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

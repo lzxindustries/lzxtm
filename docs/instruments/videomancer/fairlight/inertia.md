@@ -68,6 +68,14 @@ At conservative settings — low force, moderate friction — the mosaic shifts 
 
 ---
 
+## Quick Start
+
+1. **Forces, not positions**: The fundamental paradigm shift. If you turn a force knob and nothing seems to happen, wait — momentum is building. Release and watch the drift continue.
+2. **Friction is your brake**: At low friction, every input accumulates indefinitely. Start with moderate friction (~50%) until you develop an intuition for the momentum dynamics.
+3. **Dead zone prevents noise drift**: The ±32 dead zone ensures that centered knobs produce true zero force. If your grid is drifting with all knobs centered, one knob may be slightly miscalibrated — use Reset to clear accumulated state.
+
+---
+
 ## Background
 
 ### What Is Momentum-Based Control?
@@ -90,6 +98,8 @@ When the internal position accumulator reaches a boundary, two behaviors are pos
 ---
 
 ## Signal Flow
+
+All Channels → Sync Signals → Interpolator → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -168,7 +178,7 @@ Applies zoom force — momentum that changes the block size over time. At center
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the rate at which velocity decays toward zero. At low values, friction is minimal — once the grid is set in motion, it drifts for a long time before stopping. At high values, velocity is aggressively damped, making the grid respond more directly to force inputs and stop quickly when force is removed. The friction is implemented as a right-shift subtraction of the current velocity: higher pot values reduce the shift amount, producing stronger decay.
+At low values, friction is minimal — once the grid is set in motion, it drifts for a long time before stopping. At high values, velocity is aggressively damped, making the grid respond more directly to force inputs and stop quickly when force is removed. The friction is implemented as a right-shift subtraction of the current velocity: higher pot values reduce the shift amount, producing stronger decay. Internally, controls the rate at which velocity decays toward zero.
 
 ---
 
@@ -179,7 +189,7 @@ Controls the rate at which velocity decays toward zero. At low values, friction 
 | Default | 25.0% |
 | Suffix | % |
 
-Scales the force before it is added to velocity. At low values, the same knob movement produces a gentle push; at high values, a small force input creates rapid acceleration. The acceleration is implemented as a left-shift of the force value, with the upper 3 bits of the pot selecting the shift amount (0–7). Combined with Friction, this control determines the overall responsiveness: high acceleration with low friction creates wild, fast-moving drift; low acceleration with high friction creates sluggish, controlled movement.
+At low values, the same knob movement produces a gentle push; at high values, a small force input creates rapid acceleration. The acceleration is implemented as a left-shift of the force value, with the upper 3 bits of the pot selecting the shift amount (0–7). Combined with Friction, this control determines the overall responsiveness: high acceleration with low friction creates wild, fast-moving drift; low acceleration with high friction creates sluggish, controlled movement. Internally, scales the force before it is added to velocity.
 
 ---
 
@@ -219,6 +229,21 @@ Switches 7–11 control five independent binary options. Bounce and ZoomLink alt
 
 Crossfade between the dry (unprocessed) signal and the wet (momentum-pixelated) signal. At 0% the output is entirely dry. At 100% the output is entirely the processed mosaic. Intermediate values blend the two, which can create a translucent overlay of the blocky mosaic over the clean source.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Inertia processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -240,7 +265,7 @@ These exercises progress from simple directional drift to full multi-axis moment
 *Horizontal Drift — simulated result across source images.*
 **Source**: A camera feed with strong vertical features — columns, doorways, or vertical stripes.
 
-**Objective**: Learn how force, velocity, and friction interact to create inertial image movement.
+**What You'll Create**: Learn how force, velocity, and friction interact to create inertial image movement.
 
 1. **Initial push**: Gently turn H Force clockwise past center. Watch the mosaic grid begin to drift rightward — slowly at first, then accelerating.
 2. **Release to center**: Return H Force to center. The grid continues drifting, gradually slowing under friction.
@@ -267,7 +292,7 @@ These exercises progress from simple directional drift to full multi-axis moment
 *Bounce and Zoom — simulated result across source images.*
 **Source**: A static test pattern or graphic with both fine and coarse detail.
 
-**Objective**: Explore zoom momentum and bounce behavior.
+**What You'll Create**: Explore zoom momentum and bounce behavior.
 
 1. **Zoom up**: With Friction at ~50%, push Zoom away from center. Watch the block size grow as the position accumulator builds up. The image pixelates into larger and larger blocks.
 2. **Release**: Return Zoom to center. The block size continues growing (momentum), then gradually shrinks back as friction pulls the position toward zero.
@@ -294,7 +319,7 @@ These exercises progress from simple directional drift to full multi-axis moment
 *Full Momentum Chaos — simulated result across source images.*
 **Source**: Any dynamic video footage, especially with movement and color variation.
 
-**Objective**: Combine all axes, trail mode, and bounce for maximum inertial complexity.
+**What You'll Create**: Combine all axes, trail mode, and bounce for maximum inertial complexity.
 
 1. **Multi-axis push**: Set H Force and V Force both off-center. The grid drifts diagonally across the image, mosaic blocks sliding in two dimensions simultaneously.
 2. **Add zoom**: Push Zoom away from center. Now the mosaic is simultaneously sliding and scaling — blocks grow as they drift.
@@ -311,9 +336,6 @@ These exercises progress from simple directional drift to full multi-axis moment
 
 ## Tips
 
-- **Forces, not positions**: The fundamental paradigm shift. If you turn a force knob and nothing seems to happen, wait — momentum is building. Release and watch the drift continue.
-- **Friction is your brake**: At low friction, every input accumulates indefinitely. Start with moderate friction (~50%) until you develop an intuition for the momentum dynamics.
-- **Dead zone prevents noise drift**: The ±32 dead zone ensures that centered knobs produce true zero force. If your grid is drifting with all knobs centered, one knob may be slightly miscalibrated — use Reset to clear accumulated state.
 - **Bounce vs. Wrap controls containment**: Bounce keeps the effect within bounds, creating oscillatory patterns. Wrap creates unbounded scrolling — useful for continuously drifting mosaics over backgrounds.
 - **ZoomLink ties speed to scale**: When enabled, fast horizontal motion automatically increases block size, mimicking the visual effect of motion blur at high speed.
 - **Reset is your safety net**: When the accumulated state becomes too chaotic, a quick toggle of Reset (Switch 10) zeros everything instantly. New forces applied afterward start from a clean slate.
@@ -331,13 +353,11 @@ These exercises progress from simple directional drift to full multi-axis moment
 | **Dead Zone** | A range of input values around center that the program treats as exactly zero, preventing noise-induced drift. |
 | **Fairlight CVI** | Computer Video Instrument (1984); an early digital video processor that pioneered inertial control for image effects. |
 | **Fixed-Point** | A number representation using a fixed number of integer and fractional bits (here, 16.8 signed: 16 integer bits, 8 fractional). |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **Friction** | A velocity decay mechanism that subtracts a fraction of the current velocity each frame, simulating physical drag. |
-| **Interpolator** | A crossfade module that linearly blends between two signals based on a mix coefficient. |
 | **Momentum** | The tendency of the internal state to continue moving after force is removed, arising from velocity integration. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle. |
 | **Sample-and-Hold** | A technique that captures a signal value at one instant and holds it constant until the next capture, creating uniform blocks. |
 | **Wrap** | Boundary behavior where position overflows continuously to the opposite extreme, creating seamless scrolling. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

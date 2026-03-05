@@ -35,6 +35,14 @@ The program bridges generative synthesis and video processing. In Warp mode, the
 
 ---
 
+## Quick Start
+
+1. **Start with monochrome**: Set Color Map to 0% when exploring fractal geometry. Color adds visual complexity that can make it harder to understand the underlying structure. Add color after you understand the spatial pattern.
+2. **Bit Slice is your zoom control**: Sweeping bit slice is the fastest way to explore the fractal. Each level is a magnified copy of the finest structure — a visual demonstration of self-similarity.
+3. **Layer 2 Ratio at small offsets creates the richest textures**: Large offsets create coarse interference; small offsets (5–15%) produce intricate moire patterns between the two fractal grids.
+
+---
+
 ## Background
 
 ### Sierpinski's Triangle and Binary XOR
@@ -61,6 +69,8 @@ The relationship between input video and generated fractal is controlled by two 
 ---
 
 ## Signal Flow
+
+Coordinate XOR → Layer Combination → Color Mapping → Interpolator Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -208,6 +218,21 @@ Switches 7–11 control five independent binary options: the boolean operation f
 
 Controls the wet/dry crossfade between the delayed input video and the fractal output via three interpolator instances (one each for Y, U, V). At 0%, output is pure input video — the fractal is invisible. At 100%, output is pure fractal. Intermediate values overlay the fractal onto the source at partial opacity. This enables subtle fractal textures to be layered over existing video content rather than replacing it entirely.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sierpinski processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -218,7 +243,7 @@ These exercises progress from basic fractal generation through multi-layer inter
 
 <img src={sierpinski_exercise1_result} alt="Basic Fractal Exploration result"/>
 *Basic Fractal Exploration — simulated result across source images.*
-**Objective**: Learn how H Freq, V Freq, and Bit Slice interact to generate and navigate Sierpinski fractal patterns at different scales.
+**What You'll Create**: Learn how H Freq, V Freq, and Bit Slice interact to generate and navigate Sierpinski fractal patterns at different scales.
 
 1. **Default fractal**: With default settings (H Freq 50%, V Freq 50%, Bit Slice ~5), observe the characteristic nested-triangle pattern filling the frame.
 2. **Frequency sweep**: Slowly decrease H Freq toward 0%. Watch the triangles stretch horizontally until they collapse into vertical stripes. Return to 50%.
@@ -235,7 +260,7 @@ These exercises progress from basic fractal generation through multi-layer inter
 
 <img src={sierpinski_exercise2_result} alt="Dual-Layer Interference result"/>
 *Dual-Layer Interference — simulated result across source images.*
-**Objective**: Explore how Layer 2 Ratio and Layer Mode create interference patterns between two fractal grids.
+**What You'll Create**: Explore how Layer 2 Ratio and Layer Mode create interference patterns between two fractal grids.
 
 1. **Single layer**: Set Layer 2 Ratio to 0%. Both layers are identical — AND shows the original pattern, XOR shows black (identical layers cancel).
 2. **Small offset**: Slowly increase Layer 2 Ratio from 0% toward ~25%. In XOR mode, watch moire-like interference patterns emerge as the two grids begin to diverge.
@@ -252,7 +277,7 @@ These exercises progress from basic fractal generation through multi-layer inter
 
 <img src={sierpinski_exercise3_result} alt="Video-Fractal Compositing result"/>
 *Video-Fractal Compositing — simulated result across source images.*
-**Objective**: Use both Video Mode settings to composite the fractal with the input video signal in different ways.
+**What You'll Create**: Use both Video Mode settings to composite the fractal with the input video signal in different ways.
 
 1. **Threshold mode**: Set Video Mode to Threshold. Set Video Mod to ~40%. Observe how the fractal appears only where the input luminance exceeds the threshold. Dark areas of the image show through directly.
 2. **Threshold sweep**: Slowly increase Video Mod. More of the image is revealed through the fractal. At 100%, nearly everything is fractal.
@@ -268,9 +293,6 @@ These exercises progress from basic fractal generation through multi-layer inter
 
 ## Tips
 
-- **Start with monochrome**: Set Color Map to 0% when exploring fractal geometry. Color adds visual complexity that can make it harder to understand the underlying structure. Add color after you understand the spatial pattern.
-- **Bit Slice is your zoom control**: Sweeping bit slice is the fastest way to explore the fractal. Each level is a magnified copy of the finest structure — a visual demonstration of self-similarity.
-- **Layer 2 Ratio at small offsets creates the richest textures**: Large offsets create coarse interference; small offsets (5–15%) produce intricate moire patterns between the two fractal grids.
 - **Warp mode with moving video creates organic motion**: Static fractals feel rigid. Route a slowly moving camera through Warp mode to give the self-similar geometry organic, flowing motion.
 - **Use Key Mix for subtle textures**: At 100%, the fractal dominates. At 20–40%, it becomes a translucent overlay — a fractal texture laid over the source video, useful for adding geometric structure without obliterating the image.
 - **Feedback routing amplifies structure**: Route the output back to the input. The fractal modulates its own coordinate space, creating recursive self-similar patterns that evolve and cascade with each feedback pass.
@@ -286,12 +308,12 @@ These exercises progress from basic fractal generation through multi-layer inter
 | **Bit Slice** | Selecting a single binary digit from a multi-bit value. Different bit positions correspond to different spatial scales. |
 | **DDS** | Direct Digital Synthesis; a technique using a phase accumulator with a fixed increment to generate repeating waveforms at precise frequencies. |
 | **Fractal** | A geometric structure that exhibits self-similarity at different scales; smaller portions resemble the whole. |
-| **Interpolator** | A hardware module that performs linear interpolation (crossfade) between two values based on a mixing coefficient. |
 | **Moire** | An interference pattern created when two similar periodic structures overlap at slightly different scales or orientations. |
 | **Phase Accumulator** | A counter that wraps around at its maximum value, producing a sawtooth progression proportional to its increment rate. |
 | **Self-Similar** | A property where a structure contains smaller copies of itself at every scale of magnification. |
 | **Sierpinski Triangle** | The specific fractal pattern produced by XOR of spatial coordinates, named after mathematician Wacław Sierpiński. |
 | **XOR** | Bitwise exclusive-or; output is 1 when inputs differ. The core operation generating Sierpinski fractal patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ The number of active colonies, the width of the boundary exclusion zone, the col
 
 ---
 
+## Quick Start
+
+1. **Reset for synchronized starts**: Toggle Reset before a performance segment to guarantee all colonies begin expanding from their seed points simultaneously. This makes the growth animation predictable and repeatable.
+2. **Low Colony count for simplicity**: With only 2 colonies active, the boundary reduces to a single dividing line — a clean, graphic bisection of the frame that works well as a compositional element.
+3. **Border Width controls visual weight**: Thin borders (10–20%) produce delicate Voronoi filigree; thick borders (60–80%) create bold stained-glass partitions where the boundaries dominate the image.
+
+---
+
 ## Background
 
 ### Cellular Automata and Growth Simulation
@@ -61,6 +69,8 @@ Euclidean distance requires squaring and square roots — expensive operations i
 ---
 
 ## Signal Flow
+
+Register Decode → Timing Generator → LFSR Noise → ... → Sync Delay Pipeline → Bypass Mux
 
 ```
 Video Input (YUV 4:4:4)
@@ -132,7 +142,7 @@ The computational core of Colony is the four-way Manhattan distance computation 
 | Default | 50% |
 | Suffix | % |
 
-Controls the rate at which all colony radii increase, setting the DDS accumulator step size applied on each vertical sync edge. At 0% the colonies are frozen at their current size and the territorial map is static. At moderate values the growth fronts creep outward over several seconds, giving you time to observe the Voronoi boundaries forming as colonies approach each other. At 100% the colonies race across the frame almost instantly, snapping the boundary structure into its final equilibrium configuration within a few frames. When the Animate toggle is engaged, this parameter governs the overall tempo of the expansion animation — the fundamental clock speed of the biological simulation.
+At 0% the colonies are frozen at their current size and the territorial map is static. At moderate values the growth fronts creep outward over several seconds, giving you time to observe the Voronoi boundaries forming as colonies approach each other. At 100% the colonies race across the frame almost instantly, snapping the boundary structure into its final equilibrium configuration within a few frames. When the Animate toggle is engaged, this parameter governs the overall tempo of the expansion animation — the fundamental clock speed of the biological simulation. Internally, controls the rate at which all colony radii increase, setting the DDS accumulator step size applied on each vertical sync edge.
 
 ---
 
@@ -186,7 +196,7 @@ Controls the color saturation and spread of the colony UV offsets. The four colo
 | Default | 50% |
 | Suffix | % |
 
-Sets the overall opacity of the synthesized colony pattern relative to the source video, controlling how much of the generated imagery is blended into the video stream. At 0% the colony visualization is fully transparent — only the source video passes through. At 100% the colony pattern completely replaces the video content. Intermediate values create a composite where the Voronoi tessellation overlays the video as a translucent stained-glass window, allowing the video content to be visible through the colored territorial cells. This is distinct from the Mix fader, which interpolates between processed and unprocessed outputs at the final stage.
+At 0% the colony visualization is fully transparent — only the source video passes through. At 100% the colony pattern completely replaces the video content. Intermediate values create a composite where the Voronoi tessellation overlays the video as a translucent stained-glass window, allowing the video content to be visible through the colored territorial cells. This is distinct from the Mix fader, which interpolates between processed and unprocessed outputs at the final stage. Internally, sets the overall opacity of the synthesized colony pattern relative to the source video, controlling how much of the generated imagery is blended into the video stream.
 
 ---
 
@@ -194,8 +204,8 @@ Sets the overall opacity of the synthesized colony pattern relative to the sourc
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Colony | Lichen |
-| **8 — Border** | Dark | Bright |
+| **7 — Pattern** | Colony | Moss |
+| **8 — Border** | Dark | None |
 | **9 — Video Mod** | Off | On |
 | **10 — Reset** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -213,7 +223,29 @@ The five toggles configure orthogonal aspects of the simulation. Pattern (7) sel
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix at the final stage of the pipeline. At 100% (default), the output is the fully processed colony visualization. At 0%, the output is the unprocessed input video (delayed by the 8-clock pipeline). Intermediate values crossfade smoothly via the three-channel interpolator, blending the territorial map with the original video. Use moderate mix levels to overlay the Voronoi structure as a subtle texture on the video, or pull to zero for a clean pass-through that preserves the colony state for later recall.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Colony processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Colony-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -225,7 +257,7 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 
 <img src={colony_exercise1_result} alt="Static Voronoi Map result"/>
 *Static Voronoi Map — simulated result across source images.*
-**Objective**: Create a static four-colony territorial partition and explore how colony count and boundary width determine the tessellation geometry.
+**What You'll Create**: Create a static four-colony territorial partition and explore how colony count and boundary width determine the tessellation geometry.
 
 1. Set Growth Speed to about 60% and wait for colonies to expand and fill the frame.
 2. Set Colonies to maximum (4 active). Four colored regions should be visible with boundaries between them.
@@ -242,7 +274,7 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 
 <img src={colony_exercise2_result} alt="Animated Growth from Seeds result"/>
 *Animated Growth from Seeds — simulated result across source images.*
-**Objective**: Watch colonies expand from seed points in real time and observe the moment when growth fronts collide and boundaries crystallize.
+**What You'll Create**: Watch colonies expand from seed points in real time and observe the moment when growth fronts collide and boundaries crystallize.
 
 1. Toggle Reset to On and then Off to clear all growth.
 2. Set Growth Speed to about 25% for slow, visible expansion.
@@ -259,7 +291,7 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 
 <img src={colony_exercise3_result} alt="Pulsing Organism result"/>
 *Pulsing Organism — simulated result across source images.*
-**Objective**: Create a rhythmic, breathing organism effect using pulse mode with high edge noise and maximum colony interaction.
+**What You'll Create**: Create a rhythmic, breathing organism effect using pulse mode with high edge noise and maximum colony interaction.
 
 1. Set Pattern to Lichen for maximum edge irregularity.
 2. Set Growth Speed to about 70% for rapid pulsation.
@@ -275,9 +307,6 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 
 ## Tips
 
-- **Reset for synchronized starts**: Toggle Reset before a performance segment to guarantee all colonies begin expanding from their seed points simultaneously. This makes the growth animation predictable and repeatable.
-- **Low Colony count for simplicity**: With only 2 colonies active, the boundary reduces to a single dividing line — a clean, graphic bisection of the frame that works well as a compositional element.
-- **Border Width controls visual weight**: Thin borders (10–20%) produce delicate Voronoi filigree; thick borders (60–80%) create bold stained-glass partitions where the boundaries dominate the image.
 - **Color Spread at zero for monochrome maps**: Turn Color Spread to 0% for a purely luminance-based visualization where colonies differ only in brightness, not hue. This is useful for downstream keying or compositing.
 - **Pulse mode for rhythmic textures**: Switch Pattern to Crystal or Lichen in combination with moderate Growth Speed for oscillating colony sizes that produce hypnotic breathing patterns. The DDS triangle fold guarantees smooth, glitch-free oscillation.
 - **Mix for overlay compositing**: Pull Mix to 40–60% to overlay the colony tessellation transparently onto live video, creating a living Voronoi grid that colors and partitions the video content.
@@ -291,7 +320,6 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 | Term | Definition |
 |------|------------|
 | **Agar** | A gelatinous growth medium used in microbiology to culture bacterial colonies; Colony simulates expansion on a flat agar surface. |
-| **BRAM** | Block RAM; dedicated FPGA memory used for line buffers and look-up tables. Colony uses zero BRAMs. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here to drive colony radius expansion. |
 | **Growth front** | The expanding edge of a colony's territory; modulated by LFSR noise for organic irregularity. |
 | **L1 metric** | Manhattan distance: |Δx| + |Δy|; the distance metric used for nearest-colony assignment, producing diamond-shaped iso-distance contours. |
@@ -300,6 +328,7 @@ These exercises explore Colony's synthesis capabilities from basic territorial v
 | **Mutual exclusion boundary** | The zone between two adjacent colonies where neither territory has clear dominance; detected when the gap between nearest and second-nearest distances falls below a threshold. |
 | **Seed point** | The fixed center position from which a colony expands; placed at quadrant centers in Colony's configuration. |
 | **Voronoi diagram** | A partition of a plane into cells, each containing all points closer to a given seed than to any other seed. Colony's territorial map is a Manhattan-metric Voronoi diagram. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

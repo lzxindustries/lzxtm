@@ -35,6 +35,14 @@ At gentle settings, Vertigo produces a meditative, slowly rotating pattern with 
 
 ---
 
+## Quick Start
+
+1. **XOR is king**: The XOR texture produces the most visually complex and hypnotic pattern under rotation. Start with XOR to explore the parameter space, then switch textures for variety.
+2. **Zoom Depth and Base Scale are partners**: Base Scale sets the centre of the zoom range, Zoom Depth sets the amplitude. A high Base Scale with moderate Depth produces gentle, close-up breathing. A low Base Scale with high Depth creates dramatic wide-to-close zoom swings.
+3. **Scroll for asymmetry**: Pure rotation and zoom are symmetric — the texture spins around the centre. Adding Scroll breaks this symmetry, making the motion path more unpredictable and less repetitive.
+
+---
+
 ## Background
 
 ### The Demoscene and Real-Time Synthesis
@@ -66,6 +74,8 @@ Mode 13h (320×200, 256 colours) was the standard VGA graphics mode used by DOS 
 ---
 
 ## Signal Flow
+
+Frame Tick → Per-Line Init → Per-Pixel Accumulator → ... → Mix → Bypass
 
 ```
 Synthesis (no input video required)
@@ -129,7 +139,7 @@ The zero-multiply-per-pixel property is what makes this effect practical on the 
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the angular velocity of the texture rotation. At zero, the texture is stationary — no rotation occurs. As Rot Speed increases, the texture rotates faster, spinning the infinite plane around the screen centre. At moderate values, the rotation is smooth and hypnotic; at maximum, the texture spins rapidly, creating a stroboscopic blur effect. The Direction toggle determines whether rotation proceeds clockwise or counter-clockwise.
+At zero, the texture is stationary — no rotation occurs. As Rot Speed increases, the texture rotates faster, spinning the infinite plane around the screen centre. At moderate values, the rotation is smooth and hypnotic; at maximum, the texture spins rapidly, creating a stroboscopic blur effect. The Direction toggle determines whether rotation proceeds clockwise or counter-clockwise. Internally, controls the angular velocity of the texture rotation.
 
 ---
 
@@ -140,7 +150,7 @@ Controls the angular velocity of the texture rotation. At zero, the texture is s
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the rate of sinusoidal zoom oscillation. At zero, the zoom factor is static — set entirely by Base Scale. As Zoom Speed increases, the texture alternately zooms in and out at a faster rate, creating the characteristic "breathing" pulsation of demoscene rotozoomer effects. The oscillation is sinusoidal, producing smooth acceleration and deceleration at the zoom extremes.
+At zero, the zoom factor is static — set entirely by Base Scale. As Zoom Speed increases, the texture alternately zooms in and out at a faster rate, creating the characteristic "breathing" pulsation of demoscene rotozoomer effects. The oscillation is sinusoidal, producing smooth acceleration and deceleration at the zoom extremes. Internally, controls the rate of sinusoidal zoom oscillation.
 
 ---
 
@@ -151,7 +161,7 @@ Controls the rate of sinusoidal zoom oscillation. At zero, the zoom factor is st
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the amplitude of zoom oscillation. At zero, no zoom pulsation occurs regardless of Zoom Speed — the texture remains at the scale set by Base Scale. As Zoom Depth increases, the zoom oscillation swings between progressively larger and smaller scales, creating deeper breathing cycles. At maximum, the texture zooms from a very wide view (small pattern elements) to a very close view (large pattern elements) each cycle.
+At zero, no zoom pulsation occurs regardless of Zoom Speed — the texture remains at the scale set by Base Scale. As Zoom Depth increases, the zoom oscillation swings between progressively larger and smaller scales, creating deeper breathing cycles. At maximum, the texture zooms from a very wide view (small pattern elements) to a very close view (large pattern elements) each cycle. Internally, controls the amplitude of zoom oscillation.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the amplitude of zoom oscillation. At zero, no zoom pulsation occurs re
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the static zoom level around which the sinusoidal zoom oscillation centres. At low values, the texture is zoomed far out with small, densely packed pattern elements. At high values, the texture is zoomed far in with large, coarse pattern elements. This control and Zoom Depth together define the zoom range: the texture oscillates between Base Scale − Zoom Depth and Base Scale + Zoom Depth.
+At low values, the texture is zoomed far out with small, densely packed pattern elements. At high values, the texture is zoomed far in with large, coarse pattern elements. This control and Zoom Depth together define the zoom range: the texture oscillates between Base Scale − Zoom Depth and Base Scale + Zoom Depth. Internally, sets the static zoom level around which the sinusoidal zoom oscillation centres.
 
 ---
 
@@ -192,7 +202,7 @@ Controls the speed of a persistent vertical and horizontal texture offset drift.
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Texture** | XOR | AND |
+| **7 — Texture** | XOR | Woven |
 | **8 — Direction** | CW | CCW |
 | **9 — Blocky** | Off | On |
 | **10 — Video Tint** | Off | On |
@@ -213,6 +223,21 @@ The toggles configure the visual character and motion parameters of the rotozoom
 
 Crossfade between the dry (input video) and wet (synthesised texture) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full rotozoomer synthesis. Intermediate values blend the procedural texture over the input video, creating a superimposition effect where the rotating pattern overlays the source at partial opacity.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Vertigo processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -223,7 +248,7 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 
 <img src={vertigo_exercise1_result} alt="Classic XOR Spin result"/>
 *Classic XOR Spin — simulated result across source images.*
-**Objective**: Create the iconic demoscene XOR rotozoomer with smooth rotation and gentle zoom breathing.
+**What You'll Create**: Create the iconic demoscene XOR rotozoomer with smooth rotation and gentle zoom breathing.
 
 1. **Select XOR texture**: Set Texture to XOR. The characteristic fractal interference pattern appears.
 2. **Start rotation**: Increase Rot Speed to ~40%. The texture begins spinning smoothly.
@@ -240,7 +265,7 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 
 <img src={vertigo_exercise2_result} alt="Mode 13h Nostalgia result"/>
 *Mode 13h Nostalgia — simulated result across source images.*
-**Objective**: Recreate the chunky, pixelated rotozoomer aesthetic of DOS VGA demos with blocky quantisation and fast rotation.
+**What You'll Create**: Recreate the chunky, pixelated rotozoomer aesthetic of DOS VGA demos with blocky quantisation and fast rotation.
 
 1. **Enable blocky mode**: Toggle Blocky to On. The texture immediately coarsens into visible pixel blocks.
 2. **High rotation speed**: Push Rot Speed to ~75%. The blocky pattern spins rapidly.
@@ -257,7 +282,7 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 
 <img src={vertigo_exercise3_result} alt="Video-Modulated Woven result"/>
 *Video-Modulated Woven — simulated result across source images.*
-**Objective**: Use Video Tint mode to project a woven mesh texture through the input video, creating a composite where the pattern is visible only in bright areas.
+**What You'll Create**: Use Video Tint mode to project a woven mesh texture through the input video, creating a composite where the pattern is visible only in bright areas.
 
 1. **Select woven texture**: Set Texture to Woven. The interlocking stripe pattern appears.
 2. **Enable Video Tint**: Toggle Video Tint to On. The pattern is now modulated by the input video's luminance.
@@ -274,9 +299,6 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 
 ## Tips
 
-- **XOR is king**: The XOR texture produces the most visually complex and hypnotic pattern under rotation. Start with XOR to explore the parameter space, then switch textures for variety.
-- **Zoom Depth and Base Scale are partners**: Base Scale sets the centre of the zoom range, Zoom Depth sets the amplitude. A high Base Scale with moderate Depth produces gentle, close-up breathing. A low Base Scale with high Depth creates dramatic wide-to-close zoom swings.
-- **Scroll for asymmetry**: Pure rotation and zoom are symmetric — the texture spins around the centre. Adding Scroll breaks this symmetry, making the motion path more unpredictable and less repetitive.
 - **Blocky for retro**: Blocky mode is the single most effective control for evoking the DOS demo aesthetic. Combined with fast rotation and deep zoom, it creates an aggressively nostalgic visual.
 - **Video Tint for compositing**: Use Video Tint to project the procedural texture through a camera feed, creating live video-modulated patterns. Best with high-contrast sources where brightness varies across the frame.
 - **CCW for freshness**: Most viewers unconsciously expect clockwise rotation. Counter-clockwise adds a subtle unfamiliarity that can enhance the disorienting vertigo effect.
@@ -299,6 +321,7 @@ These exercises explore the rotozoomer from basic spinning textures through comp
 | **Rotozoomer** | A real-time effect combining rotation and zoom of a 2D texture, a staple of 1990s demoscene productions. |
 | **Sierpinski Triangle** | A fractal pattern produced by the AND operation on coordinates; one of Vertigo's six procedural textures. |
 | **XOR Texture** | A procedural pattern generated by bitwise XOR of horizontal and vertical coordinates, producing a self-similar fractal interference pattern. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

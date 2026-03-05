@@ -35,6 +35,14 @@ The Freq H and Freq V knobs set the spatial frequency of the ramps — effective
 
 ---
 
+## Quick Start
+
+1. **XOR for fractals:** The XOR operator is uniquely powerful — it produces self-similar fractal patterns from simple ramp counters, a property of binary arithmetic that was a foundational discovery in early digital art.
+2. **Equal frequencies for symmetry:** Setting Freq H = Freq V produces axis-symmetric patterns; any asymmetry tilts or stretches the geometry.
+3. **Threshold as sculptor:** Think of Threshold as sculpting a 3D landscape — the operator output is a height map, and Threshold sets the water level.
+
+---
+
 ## Background
 
 ### Ramp Generators in Analogue Synthesis
@@ -203,6 +211,10 @@ Combine and Polarity alter the mathematical pipeline.  Animate enables kinetic s
 
 Mix crossfades between the dry input and the wet ramp-logic output.  At zero, pure source; at maximum, pure ramp-logic patterns.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -213,7 +225,7 @@ These exercises demonstrate the eight operator modes and the visual vocabulary o
 
 <img src={ramplogic_exercise1_result} alt="Diagonal Stripes via Sum result"/>
 *Diagonal Stripes via Sum — simulated result across source images.*
-**Objective**: Generate clean 45° diagonal stripes using the sum operator.
+**What You'll Create**: Generate clean 45° diagonal stripes using the sum operator.
 
 1. Set Func Select to the first position (Sum).
 2. Set Freq H and Freq V to 40 % for moderate stripe density.
@@ -232,7 +244,7 @@ These exercises demonstrate the eight operator modes and the visual vocabulary o
 
 <img src={ramplogic_exercise2_result} alt="XOR Fractal Checkerboard result"/>
 *XOR Fractal Checkerboard — simulated result across source images.*
-**Objective**: Produce a Sierpinski-triangle-like fractal pattern using XOR.
+**What You'll Create**: Produce a Sierpinski-triangle-like fractal pattern using XOR.
 
 1. Set Func Select to step 4 (XOR).
 2. Set Freq H and Freq V to 50 % for dense grid.
@@ -251,7 +263,7 @@ These exercises demonstrate the eight operator modes and the visual vocabulary o
 
 <img src={ramplogic_exercise3_result} alt="Animated Moire with Video Mod result"/>
 *Animated Moire with Video Mod — simulated result across source images.*
-**Objective**: Create a scrolling moire pattern modulated by the input video.
+**What You'll Create**: Create a scrolling moire pattern modulated by the input video.
 
 1. Set Func Select to step 3 (Product).
 2. Set Freq H to 60 %, Freq V to 45 % for asymmetric moire.
@@ -269,9 +281,6 @@ These exercises demonstrate the eight operator modes and the visual vocabulary o
 
 ## Tips
 
-- **XOR for fractals:** The XOR operator is uniquely powerful — it produces self-similar fractal patterns from simple ramp counters, a property of binary arithmetic that was a foundational discovery in early digital art.
-- **Equal frequencies for symmetry:** Setting Freq H = Freq V produces axis-symmetric patterns; any asymmetry tilts or stretches the geometry.
-- **Threshold as sculptor:** Think of Threshold as sculpting a 3D landscape — the operator output is a height map, and Threshold sets the water level.
 - **Animate for kinetics:** Even slow animation transforms static patterns into hypnotic, scrolling visual music — pair with a slow Threshold sweep for maximum evolution.
 - **Video Mod for compositing:** Video Mod effectively "stamps" the ramp pattern onto the source video, creating a graphic overlay effect without needing a separate keyer.
 - **Product for moire:** The product operator is the fastest route to moire interference patterns — the hyperbolic curves create beating frequencies as Freq H and Freq V approach each other.

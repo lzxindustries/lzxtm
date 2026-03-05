@@ -35,6 +35,14 @@ At the rendering stage, every pixel in the frame computes its Manhattan distance
 
 ---
 
+## Quick Start
+
+1. **Start with one particle**: Understanding a single Lissajous orbit makes the full swarm intuitive. Add particles incrementally to see how each agent's unique frequencies create distinct paths.
+2. **Coupling is the signature control**: Small amounts of coupling produce the most visually interesting intermediate states — particles loosely coordinating without fully synchronizing.
+3. **Size and Scatter interact**: Wide scatter with small size creates sparse firefly pinpoints. Wide scatter with large size creates overlapping luminous clouds. Match them to your desired density.
+
+---
+
 ## Background
 
 ### Flocking Algorithms and Boids
@@ -61,6 +69,8 @@ Flock's visual richness comes not from complex rules but from the interaction of
 ---
 
 ## Signal Flow
+
+Particle Engine → Rendering Pipeline → Wet/Dry Mix → Sync Delay Pipeline → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -119,7 +129,7 @@ Controls how fast all eight particle orbits evolve. At zero, the particles freez
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial extent of the particle orbits. At zero, all particles collapse to the screen center (640, 360). As Scatter increases, the triangle-wave position mapping scales outward, spreading orbits across more of the frame. At maximum, particle paths can extend to the edges and beyond the visible area. Scatter interacts directly with Size — wider scatter means particles spend less time near any given pixel, so you may need to increase Size to maintain visible contact with the swarm.
+At zero, all particles collapse to the screen center (640, 360). As Scatter increases, the triangle-wave position mapping scales outward, spreading orbits across more of the frame. At maximum, particle paths can extend to the edges and beyond the visible area. Scatter interacts directly with Size — wider scatter means particles spend less time near any given pixel, so you may need to increase Size to maintain visible contact with the swarm. Internally, controls the spatial extent of the particle orbits.
 
 ---
 
@@ -151,7 +161,7 @@ Selects how many of the eight particles are active, from 1 to 8. At minimum, onl
 | Default | 50% |
 | Suffix | % |
 
-Controls the strength of inter-particle phase perturbation. At zero, all eight particles orbit independently on their Lissajous curves, ignoring each other. As Coupling increases, each particle's phase accumulator is pulled toward its predecessor's phase, causing trajectories to converge and the swarm to tighten. At maximum coupling, the particles cluster into a dense group that moves as a near-singular body. The transition from scattered to cohesive motion is gradual and can produce chaotic intermediate states where particles oscillate between following and breaking free.
+At zero, all eight particles orbit independently on their Lissajous curves, ignoring each other. As Coupling increases, each particle's phase accumulator is pulled toward its predecessor's phase, causing trajectories to converge and the swarm to tighten. At maximum coupling, the particles cluster into a dense group that moves as a near-singular body. The transition from scattered to cohesive motion is gradual and can produce chaotic intermediate states where particles oscillate between following and breaking free. Internally, controls the strength of inter-particle phase perturbation.
 
 ---
 
@@ -189,7 +199,29 @@ The five toggles configure the rendering character of the particle overlay. Shap
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix between the delayed input video and the composited particle output. At 0%, the output is the unprocessed input (identical to bypass, but with the processing delay preserved). At 100%, the output is fully the composed result. Intermediate values blend the two, allowing subtle particle overlays that sit behind the source or ghostly particle hints layered over full-strength video.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Flock processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Flock-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -201,7 +233,7 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 <img src={flock_exercise1_result} alt="Single Lissajous Tracer result"/>
 *Single Lissajous Tracer — simulated result across source images.*
-**Objective**: Understand the basic Lissajous orbit, speed, and scatter relationship with a single particle.
+**What You'll Create**: Understand the basic Lissajous orbit, speed, and scatter relationship with a single particle.
 
 1. **One particle**: Set Particles to minimum (1). A single bright dot appears.
 2. **Observe the orbit**: With Speed at ~25% and Scatter at ~50%, watch the particle trace a figure-eight or elliptical path.
@@ -218,7 +250,7 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 <img src={flock_exercise2_result} alt="Coupled Flock result"/>
 *Coupled Flock — simulated result across source images.*
-**Objective**: Explore how coupling strength transforms independent particles into a coordinated swarm.
+**What You'll Create**: Explore how coupling strength transforms independent particles into a coordinated swarm.
 
 1. **Add particles**: Set Particles to 8. Eight independent dots orbit across the video.
 2. **Introduce coupling**: Slowly increase Coupling from 0%. Watch the particles begin to influence each other's trajectories. Around 30%, they start forming loose groupings.
@@ -235,7 +267,7 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 <img src={flock_exercise3_result} alt="Luminous Swarm Overlay result"/>
 *Luminous Swarm Overlay — simulated result across source images.*
-**Objective**: Combine all controls for a rich particle-over-video composite with depth and color.
+**What You'll Create**: Combine all controls for a rich particle-over-video composite with depth and color.
 
 1. **Set the swarm**: 6 particles, Speed ~35%, Scatter ~60%, Coupling ~50%.
 2. **Large halos**: Increase Size to ~60%. Particles become broad glowing clouds that overlap and blend.
@@ -252,9 +284,6 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 
 ## Tips
 
-- **Start with one particle**: Understanding a single Lissajous orbit makes the full swarm intuitive. Add particles incrementally to see how each agent's unique frequencies create distinct paths.
-- **Coupling is the signature control**: Small amounts of coupling produce the most visually interesting intermediate states — particles loosely coordinating without fully synchronizing.
-- **Size and Scatter interact**: Wide scatter with small size creates sparse firefly pinpoints. Wide scatter with large size creates overlapping luminous clouds. Match them to your desired density.
 - **Ring mode reveals geometry**: Dots show glow; rings show structure. Switch to Ring mode to see the orbital paths traced out as skeletal arcs.
 - **Hue mode for tracking**: Per-particle color makes it possible to follow individual agents through the swarm. Essential when experimenting with coupling strength.
 - **Invert for voids**: Invert flips the particle layer before compositing. In Overlay mode, particles become dimming regions instead of brightening ones — a useful effect for cutting dark windows into bright source material.
@@ -277,6 +306,7 @@ These exercises progress from a single orbiting dot to a full eight-particle cou
 | **Manhattan Distance** | The sum of absolute differences in X and Y coordinates (|Δx|+|Δy|), producing diamond-shaped equidistant contours. |
 | **Phase Accumulator** | A register that increments by a frequency word each clock cycle, whose overflow produces periodic waveforms. |
 | **Triangle Wave** | A periodic waveform that ramps linearly up and down, used here to convert phase to position. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

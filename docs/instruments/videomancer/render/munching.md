@@ -35,6 +35,14 @@ Videomancer's FPGA implementation extends the original monochrome display hack w
 
 ---
 
+## Quick Start
+
+1. **Scale for composition**: Lower Scale values create bold geometric blocks suitable for background textures; higher values add noise-like fine detail.
+2. **Mask as preset**: In Static mode, specific Mask values produce distinct patterns — 0, 85, 170, and 255 are good starting points for exploration.
+3. **Op Blend for morphing**: Automate Op Blend via CV to smoothly morph between square and triangular tessellations during performance.
+
+---
+
 ## Background
 
 ### HAKMEM and the PDP-1
@@ -194,6 +202,10 @@ The five toggles control the pattern generation and rendering mode. Op selects t
 
 Mix crossfades between the dry input and the processed munching output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values blend the geometric pattern over the source material.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -204,7 +216,7 @@ These three exercises move from a static single-operation exploration to a fully
 
 <img src={munching_exercise1_result} alt="Classic XOR Squares result"/>
 *Classic XOR Squares — simulated result across source images.*
-**Objective**: Reproduce the original HAKMEM #146 monochrome munching squares pattern at full resolution.
+**What You'll Create**: Reproduce the original HAKMEM #146 monochrome munching squares pattern at full resolution.
 
 1. Set Op to XOR.
 2. Set Time to Static.
@@ -225,7 +237,7 @@ These three exercises move from a static single-operation exploration to a fully
 
 <img src={munching_exercise2_result} alt="Animated AND Sierpiński result"/>
 *Animated AND Sierpiński — simulated result across source images.*
-**Objective**: Create an animated Sierpiński-triangle pattern using the AND operation with time cycling.
+**What You'll Create**: Create an animated Sierpiński-triangle pattern using the AND operation with time cycling.
 
 1. Set Op to AND.
 2. Set Time to Anim.
@@ -245,7 +257,7 @@ These three exercises move from a static single-operation exploration to a fully
 
 <img src={munching_exercise3_result} alt="XOR/AND Morph with Video result"/>
 *XOR/AND Morph with Video — simulated result across source images.*
-**Objective**: Blend between XOR and AND patterns over live video to create an evolving geometric overlay.
+**What You'll Create**: Blend between XOR and AND patterns over live video to create an evolving geometric overlay.
 
 1. Set Time to Anim.
 2. Set Speed to approximately 20%.
@@ -265,9 +277,6 @@ These three exercises move from a static single-operation exploration to a fully
 
 ## Tips
 
-- **Scale for composition**: Lower Scale values create bold geometric blocks suitable for background textures; higher values add noise-like fine detail.
-- **Mask as preset**: In Static mode, specific Mask values produce distinct patterns — 0, 85, 170, and 255 are good starting points for exploration.
-- **Op Blend for morphing**: Automate Op Blend via CV to smoothly morph between square and triangular tessellations during performance.
 - **Hue Shift decouples colour**: Animate Hue Shift independently of the time parameter to create two layers of visual motion — geometry and colour.
 - **Invert for contrast**: Toggle Invert to swap foreground and background when the default colour mapping doesn't contrast well with your video source.
 - **Low Speed for meditation**: Very slow animation rates (5–10%) create gradually evolving wallpaper-like textures suitable for ambient installations.

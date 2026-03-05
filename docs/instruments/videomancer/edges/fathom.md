@@ -68,6 +68,14 @@ A single BRAM line buffer stores the previous scanline's luminance, enabling ver
 
 ---
 
+## Quick Start
+
+1. **Brown contours on terrain palette**: The default contour colour (brown) with the terrain palette produces the most naturalistic topographic map effect. This is the cartographic standard.
+2. **Blue contours on bathymetric palette**: Switch to blue contour colour when using the bathymetric palette for an authentic nautical chart appearance.
+3. **Elevation offset as animation**: Slowly sweeping the Elev Offset control creates a rising-water or shifting-terrain animation as contour lines migrate across the image.
+
+---
+
 ## Background
 
 ### Contour Lines and Isolines
@@ -94,6 +102,8 @@ Modern GIS software renders elevation data using colour ramps defined in lookup 
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -229,6 +239,10 @@ Toggles 7 through 10 configure the programme's visual character in four independ
 
 Crossfades between the delayed original signal (dry) and the fully processed contour-mapped signal (wet) using three parallel interpolator instances — one per YUV channel. At full, the output is entirely the processed contour map. At zero, the original video passes through unchanged. Intermediate values blend the contour overlay with the source, producing a transparent map effect where contour lines and zone tinting are visible but the underlying video remains clearly readable.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +264,7 @@ These exercises progress from basic contour rendering through palette exploratio
 *First Survey — Basic Contour Mapping — simulated result across source images.*
 **Source**: A slowly panning landscape or face with smooth tonal gradients.
 
-**Objective**: Learn how contour interval and elevation offset work together to reveal tonal structure in the source.
+**What You'll Create**: Learn how contour interval and elevation offset work together to reveal tonal structure in the source.
 
 1. **Narrow contours**: Set Contour Int to its lowest step (16). Dense contour lines appear wherever luminance changes, creating a fine topographic mesh.
 2. **Widen intervals**: Sweep Contour Int upward through the eight steps. Watch contour lines thin out and the elevation zones grow wider with each step.
@@ -277,7 +291,7 @@ These exercises progress from basic contour rendering through palette exploratio
 *Seafloor to Summit — Palette Exploration — simulated result across source images.*
 **Source**: Footage with wide tonal range — skylines, underwater scenes, or gradient test patterns.
 
-**Objective**: Explore both palettes and the interaction between saturation, opacity, and fill mode.
+**What You'll Create**: Explore both palettes and the interaction between saturation, opacity, and fill mode.
 
 1. **Terrain survey**: Start with Palette A = Terrain, Palette B = Tinted, Fill Mode = HypsoFill. The image appears as a colour relief map with green lowlands and white peaks.
 2. **Dive deep**: Switch Palette A to Bathy. The same footage now reads as an ocean depth chart — deep blues in the shadows, white in the highlights.
@@ -305,7 +319,7 @@ These exercises progress from basic contour rendering through palette exploratio
 *Cartographic Composite — Full Map Rendering — simulated result across source images.*
 **Source**: A live camera feed of a face, hand, or textured object with clear tonal variation.
 
-**Objective**: Combine all parameters to produce a full-featured topographic map overlay.
+**What You'll Create**: Combine all parameters to produce a full-featured topographic map overlay.
 
 1. **Base map**: Set Contour Int to step 5 (96), Line Weight to 2 px, Contour Clr to brown, Palette A to Terrain.
 2. **Major contours**: Set Major/Minor to Styled. Every fifth contour level receives the major classification.
@@ -322,9 +336,6 @@ These exercises progress from basic contour rendering through palette exploratio
 
 ## Tips
 
-- **Brown contours on terrain palette**: The default contour colour (brown) with the terrain palette produces the most naturalistic topographic map effect. This is the cartographic standard.
-- **Blue contours on bathymetric palette**: Switch to blue contour colour when using the bathymetric palette for an authentic nautical chart appearance.
-- **Elevation offset as animation**: Slowly sweeping the Elev Offset control creates a rising-water or shifting-terrain animation as contour lines migrate across the image.
 - **Video fill for analysis**: Use VideoFill mode with high-contrast contour colours (white or black) to overlay a luminance contour grid on the original video — useful for technical monitoring or as a visual effect that preserves the source.
 - **Opacity for layering**: Zone Opac at 20–40% produces a subtle tinted overlay that adds colour depth without obscuring the original video texture.
 - **Feedback loops**: Routing the output back to the input creates recursive contour mapping — contour lines themselves become elevation features, generating secondary contours at their edges.
@@ -338,16 +349,14 @@ These exercises progress from basic contour rendering through palette exploratio
 | Term | Definition |
 |------|------------|
 | **Bathymetric** | Relating to the measurement and mapping of underwater depth; bathymetric charts use blue colour ramps to represent ocean floor elevation. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA used here as a single-line buffer for vertical contour detection. |
 | **Contour Line** | A curve connecting all points of equal value (here, equal luminance), also called an isoline. |
 | **Hypsometric Tinting** | The cartographic technique of colouring elevation zones on a map using a graduated colour palette. |
 | **Index Contour** | A major contour line (every 5th level) drawn heavier for visual hierarchy, matching the convention on printed topographic maps. |
-| **Interpolator** | A hardware module that performs linear interpolation between two values by a fractional amount, used for the wet/dry mix. |
 | **Isoline** | A line of constant value on a map or image; synonym for contour line. |
 | **Line Buffer** | A BRAM-based single-scanline delay that stores the previous line's luminance for vertical neighbour comparison. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next on each clock cycle; Fathom uses 8 pipeline stages. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for signal scaling, used internally by the saturation control. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone** | One of eight elevation bands defined by the top 3 bits of the offset luminance, each assigned a colour from the selected palette. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

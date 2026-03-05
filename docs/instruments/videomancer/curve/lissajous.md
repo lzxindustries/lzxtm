@@ -35,6 +35,14 @@ The result is a living mathematical drawing — a parametric curve rendered in r
 
 ---
 
+## Quick Start
+
+1. **Rational ratios lock, irrational ratios drift**: When Freq X and Freq Y are in a simple ratio (1:1, 2:1, 3:2), the figure closes into a stable pattern. Slightly detuning produces slow precession — a visual beating effect that creates mesmerizing orbital motion.
+2. **Phase offset is the shape morpher**: At any fixed frequency ratio, the phase offset determines whether the curve is collapsed (line), partially open (ellipse), or fully open. The most dramatic shape changes happen near 0 and π.
+3. **Trace width controls visual weight**: Small trace widths produce delicate points; large widths produce overlapping diamonds that merge into continuous bands. In glow mode, large widths create luminous halos.
+
+---
+
 ## Background
 
 ### Jules Antoine Lissajous and Parametric Curves
@@ -61,6 +69,8 @@ Unlike most DDS implementations that accumulate phase at a fixed sample rate, th
 ---
 
 ## Signal Flow
+
+Manhattan Distance → Minimum Distance → Threshold → Output Valid
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Controls the trace width — the Manhattan distance threshold below which a pixe
 | Default | 50% |
 | Suffix | % |
 
-Controls the overlay brightness — the luminance value added to pixels on the trace. At zero, the dots are invisible (no brightness added). At 512, the dots add a moderate highlight that lets the underlying video show through. At 1023, the dots are at maximum brightness, clipping to white on anything but the darkest backgrounds. The brightness is additive — it stacks on top of the input video's luminance rather than replacing it. In glow mode, this value represents the peak brightness at the center of each dot, with the glow falling off toward zero at the trace width boundary.
+At zero, the dots are invisible (no brightness added). At 512, the dots add a moderate highlight that lets the underlying video show through. At 1023, the dots are at maximum brightness, clipping to white on anything but the darkest backgrounds. The brightness is additive — it stacks on top of the input video's luminance rather than replacing it. In glow mode, this value represents the peak brightness at the center of each dot, with the glow falling off toward zero at the trace width boundary. Internally, controls the overlay brightness — the luminance value added to pixels on the trace.
 
 ---
 
@@ -197,8 +207,8 @@ Listed in the TOML as "Fig Size" but never read by the VHDL. The register value 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Ratio** | 1:1 | 1:2 |
-| **8 — Style** | Dot | Line |
+| **7 — Ratio** | 1:1 | 3:4 |
+| **8 — Style** | Dot | Fade |
 | **9 — Input** | Free | Luma |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -218,6 +228,10 @@ The five toggles control dot count, color mode, glow mode, and bypass. Switches 
 
 Controls the wet/dry mix via `registers_in(7)`. At 0, the output is entirely the unprocessed input (dry). At 1023, the output is entirely the Lissajous-processed result (wet). Intermediate values linearly interpolate between the two across all three YUV channels simultaneously. This control is functional and correctly mapped — unlike some other programs, the fader register is read and used by this program's VHDL.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -228,7 +242,7 @@ These exercises progress from simple frequency-ratio exploration through phase m
 
 <img src={lissajous_exercise1_result} alt="Frequency Ratio Exploration result"/>
 *Frequency Ratio Exploration — simulated result across source images.*
-**Objective**: Discover how the X:Y frequency ratio determines the Lissajous figure's topology.
+**What You'll Create**: Discover how the X:Y frequency ratio determines the Lissajous figure's topology.
 
 1. **Set equal frequencies**: Turn both Freq X and Freq Y to ~50%. An ellipse (or circle, depending on phase) should appear.
 2. **Moderate trace width**: Set Phase (trace width) to ~30% for visible dots.
@@ -249,7 +263,7 @@ These exercises progress from simple frequency-ratio exploration through phase m
 
 <img src={lissajous_exercise2_result} alt="Phase Morphing result"/>
 *Phase Morphing — simulated result across source images.*
-**Objective**: Explore how the Y phase offset morphs the Lissajous figure between degenerate (line) and fully open (circle/ellipse) forms.
+**What You'll Create**: Explore how the Y phase offset morphs the Lissajous figure between degenerate (line) and fully open (circle/ellipse) forms.
 
 1. **Lock frequencies**: Set both Freq X and Freq Y to ~50% for a 1:1 ratio.
 2. **Start at zero phase**: Set Line Thk (phase offset) to 0%. The figure should appear as a diagonal line.
@@ -265,7 +279,7 @@ These exercises progress from simple frequency-ratio exploration through phase m
 
 <img src={lissajous_exercise3_result} alt="Oscilloscope Emulation result"/>
 *Oscilloscope Emulation — simulated result across source images.*
-**Objective**: Configure the full oscilloscope aesthetic — green phosphor glow on a dark background with soft-edged dots.
+**What You'll Create**: Configure the full oscilloscope aesthetic — green phosphor glow on a dark background with soft-edged dots.
 
 1. **Green phosphor**: Set Style to the second position.
 2. **Soft glow**: Set Input to the second position.
@@ -284,9 +298,6 @@ These exercises progress from simple frequency-ratio exploration through phase m
 
 ## Tips
 
-- **Rational ratios lock, irrational ratios drift**: When Freq X and Freq Y are in a simple ratio (1:1, 2:1, 3:2), the figure closes into a stable pattern. Slightly detuning produces slow precession — a visual beating effect that creates mesmerizing orbital motion.
-- **Phase offset is the shape morpher**: At any fixed frequency ratio, the phase offset determines whether the curve is collapsed (line), partially open (ellipse), or fully open. The most dramatic shape changes happen near 0 and π.
-- **Trace width controls visual weight**: Small trace widths produce delicate points; large widths produce overlapping diamonds that merge into continuous bands. In glow mode, large widths create luminous halos.
 - **Green phosphor for oscilloscope aesthetics**: Combine green phosphor mode with glow mode for the closest approximation of a real analog oscilloscope's CRT display. Reduce the input video brightness or use a dark source to let the phosphor glow dominate.
 - **2-dot mode for clarity**: When the curve is complex (high frequency ratios), four dots can create visual clutter. Switch to 2-dot mode for cleaner traces where individual dot motion is easier to follow.
 - **The figure size is fixed**: Despite the "Fig Size" knob label, the Lissajous figure's size cannot be changed — it is determined by the hardcoded shift factors in the VHDL (>>1 for X, >>2 for Y). The figure spans approximately ±480 pixels horizontally and ±255 pixels vertically, centered at (960, 540).
@@ -299,15 +310,13 @@ These exercises progress from simple frequency-ratio exploration through phase m
 | Term | Definition |
 |------|------------|
 | **Bezier** | A parametric curve type distinct from Lissajous; both are evaluated from parameter equations but Bezier curves use polynomial blending rather than trigonometric oscillation. |
-| **BRAM** | Block RAM; dedicated FPGA memory. This program uses zero BRAMs, computing everything combinationally. |
 | **DDS** | Direct Digital Synthesis; a phase-accumulator technique for generating periodic waveforms, used here to drive the X and Y oscillators at pixel rate. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the real-time dot computation and distance thresholding. |
 | **Lissajous figure** | A parametric curve produced by two perpendicular sinusoidal (or triangle-wave) oscillations: $x = A\sin(at + \delta)$, $y = B\sin(bt)$. |
 | **Manhattan distance** | The L1 or taxicab distance metric: $d = |x_1 - x_2| + |y_1 - y_2|$, producing diamond-shaped equidistant contours rather than circular ones. |
 | **P1 phosphor** | The green phosphor used in classic oscilloscope CRTs, with medium persistence and a characteristic green-yellow glow. |
 | **Phase accumulator** | A register that increments by a fixed value each clock cycle, wrapping at its maximum. Its upper bits represent the instantaneous phase of a periodic waveform. |
-| **Pipeline** | A sequence of processing stages where each stage's output feeds the next on each clock cycle, enabling high throughput at the cost of latency. |
 | **Triangle wave** | A periodic waveform with linear rise and fall, used as a zero-BRAM approximation of a sine wave in this program's oscillator. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used as the native pixel format throughout the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

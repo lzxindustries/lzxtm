@@ -68,6 +68,14 @@ At gentle settings with large cells and moderate threshold, Braille produces a c
 
 ---
 
+## Quick Start
+
+1. **Threshold is the primary image control**: Sweep it slowly across a photographic source. The image emerges gradually from the dot field as you find the sweet spot where midtone detail resolves.
+2. **Cell size and dot size are a pair**: Large cells with small dots create airy, open patterns. Small cells with large dots create dense, block-like halftones. Experiment with the ratio, not just the absolute values.
+3. **Emboss needs headroom**: The emboss effect adds or subtracts brightness from the paper level. Set Paper to a moderate value (60–80%) so there is room in both directions for the offset to be visible without clipping.
+
+---
+
 ## Background
 
 ### Louis Braille and Tactile Encoding
@@ -94,6 +102,8 @@ The connection between dot patterns and image perception is a matter of spatial 
 ---
 
 ## Signal Flow
+
+Cell Position Calculation → Threshold Test & Dot → Emboss Shading & Paper → Color Mode, Invert, Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -215,7 +225,7 @@ Adds a brightness boost to dots beyond the base emboss level. This is additive w
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Raised | Pressed |
+| **7 — Style** | Raised | Filled |
 | **8 — Grid** | Off | On |
 | **9 — Color** | Mono | Tinted |
 | **10 — Invert** | Off | On |
@@ -235,6 +245,21 @@ Toggle switches 7–11 control five independent aspects of the rendering. Switch
 | Suffix | % |
 
 Crossfades between the processed Braille output and the original source signal. At 100% (fully up), the output is entirely processed. At 0% (fully down), the output is the unmodified source. Intermediate positions blend the two, creating a semi-transparent overlay where the dot pattern is visible over the original image. The mix uses three parallel interpolators — one each for Y, U, and V — maintaining correct color handling throughout the blend.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Braille processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +282,7 @@ These exercises build from basic threshold halftoning through emboss rendering t
 *Basic Threshold Halftone — simulated result across source images.*
 **Source**: A portrait or landscape with a wide tonal range — faces, sky, foliage.
 
-**Objective**: Learn how the threshold and cell size controls convert continuous tone into a binary dot pattern.
+**What You'll Create**: Learn how the threshold and cell size controls convert continuous tone into a binary dot pattern.
 
 1. **Default view**: With all controls at initial values, observe the dot pattern. The image should be recognizable as a field of dots on a mid-brightness paper.
 2. **Sweep threshold**: Slowly turn Thresh from 0% to 100%. Watch dots appear and disappear in order of brightness — highlights first, then midtones, then shadows.
@@ -284,7 +309,7 @@ These exercises build from basic threshold halftoning through emboss rendering t
 *Emboss and Style Exploration — simulated result across source images.*
 **Source**: A high-contrast black-and-white image or graphic with strong shapes.
 
-**Objective**: Explore the four rendering styles and the emboss depth control.
+**What You'll Create**: Explore the four rendering styles and the emboss depth control.
 
 1. **Raised dots**: Set Emboss to ~60%, Cell Sz to 5 (16×32), Dot Sz to ~50%. The dots appear to protrude from the paper surface.
 2. **Pressed dots**: Switch Style to Pressed. The dots now appear as concave depressions — dark wells in the paper. Increase Paper brightness to see the effect more clearly.
@@ -312,7 +337,7 @@ These exercises build from basic threshold halftoning through emboss rendering t
 *Tinted Pointillist Color — simulated result across source images.*
 **Source**: Saturated, multicolored footage — flowers, costumes, painted surfaces, or the macaw image.
 
-**Objective**: Combine tinted color mode with emboss rendering for a pointillist effect.
+**What You'll Create**: Combine tinted color mode with emboss rendering for a pointillist effect.
 
 1. **Enable tinted mode**: Switch Color to Tinted. Dots now carry the source chrominance — each dot is colored according to the original image hue at that cell position.
 2. **Adjust threshold**: Set Thresh to ~45% so most midtone and highlight cells produce dots. The image should be recognizable through the colored dots alone.
@@ -328,9 +353,6 @@ These exercises build from basic threshold halftoning through emboss rendering t
 
 ## Tips
 
-- **Threshold is the primary image control**: Sweep it slowly across a photographic source. The image emerges gradually from the dot field as you find the sweet spot where midtone detail resolves.
-- **Cell size and dot size are a pair**: Large cells with small dots create airy, open patterns. Small cells with large dots create dense, block-like halftones. Experiment with the ratio, not just the absolute values.
-- **Emboss needs headroom**: The emboss effect adds or subtracts brightness from the paper level. Set Paper to a moderate value (60–80%) so there is room in both directions for the offset to be visible without clipping.
 - **Tinted mode is pointillism**: Colored dots on a neutral background is the literal technique of Seurat and Signac. Use moderate cell sizes (steps 3–5) for the most painterly results.
 - **Grid reveals structure**: The grid overlay is subtle but useful for understanding cell boundaries, especially when troubleshooting threshold or dot size interactions.
 - **Invert for dark-field**: Toggle Invert for a "bright dots on dark background" aesthetic, which reads very differently from the default "dots on paper" look.
@@ -349,11 +371,11 @@ These exercises build from basic threshold halftoning through emboss rendering t
 | **Emboss** | A shading technique that applies directional brightness offsets to simulate raised or depressed surfaces, creating a pseudo-three-dimensional appearance. |
 | **Fill factor** | The ratio of dot area to total cell area; higher fill factors produce denser patterns where dots approach the boundaries of their cells. |
 | **Halftone** | A reprographic technique that simulates continuous tonal gradation using discrete dots of varying size or spacing. |
-| **Interpolator** | A hardware block that linearly blends between two input values based on a mix coefficient, used here for dry/wet crossfading of Y, U, and V channels. |
 | **Luma** | The luminance (Y) component of a YUV video signal, representing perceived brightness. |
 | **Pointillism** | A painting technique using small, distinct dots of color that blend optically at viewing distance; Braille's tinted mode produces a digital analogue of this technique. |
 | **Spatial frequency** | The rate of brightness or pattern variation per unit distance in an image; at sufficiently high spatial frequency, discrete dots merge into perceived continuous tone. |
 | **Threshold** | A fixed decision boundary against which each cell's luminance is compared to determine whether a dot is rendered (above) or omitted (below). |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems to exploit the eye's greater sensitivity to brightness than to color. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

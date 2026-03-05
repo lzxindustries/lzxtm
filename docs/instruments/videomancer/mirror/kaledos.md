@@ -68,6 +68,14 @@ Three decorative features extend the basic mirror. Per-sector hue rotation shift
 
 ---
 
+## Quick Start
+
+1. **Low folds for recognition**: At 2- or 3-fold symmetry, the source video is still recognizable — faces become Rorschach-like symmetric masks. Use this for portraiture effects.
+2. **High folds for abstraction**: At 16 or 24 folds, even simple source material becomes an abstract geometric lattice. Feed in slow-moving footage for hypnotic textures.
+3. **Hue Rotate needs color input**: Hue rotation permutes the UV channels, so it only produces visible results with saturated source material. Monochrome or desaturated input shows no change when Hue Rotate is toggled.
+
+---
+
 ## Background
 
 ### The Kaleidoscope
@@ -94,6 +102,8 @@ Two masking features recreate the physical experience of viewing through a kalei
 ---
 
 ## Signal Flow
+
+Configuration → Strip Counters → BRAM Write → ... → Pipeline Stage 4: → Interpolator
 
 ```
 Input Video (YUV 4:4:4)
@@ -237,7 +247,29 @@ The five toggles control decorative features and mode selection. Hue Rotate, Vig
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the kaleidoscope output and the delayed input signal. At 100% (fully clockwise), the output is the full kaleidoscope effect. At 0%, the output is the unprocessed input. Intermediate positions blend the two, allowing the kaleidoscope pattern to be superimposed as a translucent overlay on the original video. This is useful for creating subtle symmetry textures over a recognizable source.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Kaledos processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Kaledos-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -260,7 +292,7 @@ These exercises progress from simple mirroring through decorative features to co
 *Basic Mirror Symmetry — simulated result across source images.*
 **Source**: A live camera pointed at a face, hand, or detailed object. High-contrast subjects work best.
 
-**Objective**: Explore how fold count and mirror mode transform a video source into symmetric patterns.
+**What You'll Create**: Explore how fold count and mirror mode transform a video source into symmetric patterns.
 
 1. **Two-fold mirror**: Set Fold Count to the first step (2-fold). The screen splits into two halves — the right half is a mirror image of the left. Recognize the source content flipped along the center line.
 2. **Increase folds**: Step through fold presets: 4, 6, 8. Watch the source fragment into progressively more reflections. At 8-fold, the original content becomes abstract.
@@ -288,7 +320,7 @@ These exercises progress from simple mirroring through decorative features to co
 *Colored Glass Kaleidoscope — simulated result across source images.*
 **Source**: Footage with moderate color saturation — flowers, stained glass, or colored fabric. Color variety in the source makes the hue rotation more dramatic.
 
-**Objective**: Combine hue rotation, vignette, and circular mask to recreate the full kaleidoscope-tube experience.
+**What You'll Create**: Combine hue rotation, vignette, and circular mask to recreate the full kaleidoscope-tube experience.
 
 1. **Set 6- or 8-fold symmetry**: Choose a fold count that creates a clear, recognizable pattern.
 2. **Enable Hue Rotate**: Toggle Hue Rotate On. Each sector takes on a different color cast — the kaleidoscope now shows rainbow-tinted reflections.
@@ -316,7 +348,7 @@ These exercises progress from simple mirroring through decorative features to co
 *Spinning Kaleidoscope — simulated result across source images.*
 **Source**: Any dynamic video — camera footage, animation, or generative video from another Videomancer program chained upstream.
 
-**Objective**: Engage continuous rotation to create a spinning kaleidoscope effect, then combine with all decorative features for a complete kinetic composition.
+**What You'll Create**: Engage continuous rotation to create a spinning kaleidoscope effect, then combine with all decorative features for a complete kinetic composition.
 
 1. **Start rotation**: Increase Rot Speed from 0%. The kaleidoscope pattern begins to spin slowly as the sector offset auto-advances.
 2. **Find a pleasing speed**: Adjust Rot Speed until the rotation is smooth and hypnotic — not so fast that the pattern blurs, not so slow that it appears static.
@@ -332,9 +364,6 @@ These exercises progress from simple mirroring through decorative features to co
 
 ## Tips
 
-- **Low folds for recognition**: At 2- or 3-fold symmetry, the source video is still recognizable — faces become Rorschach-like symmetric masks. Use this for portraiture effects.
-- **High folds for abstraction**: At 16 or 24 folds, even simple source material becomes an abstract geometric lattice. Feed in slow-moving footage for hypnotic textures.
-- **Hue Rotate needs color input**: Hue rotation permutes the UV channels, so it only produces visible results with saturated source material. Monochrome or desaturated input shows no change when Hue Rotate is toggled.
 - **Zoom magnifies noise**: At 4× or 8× zoom, small details and noise in the source become large, prominent features in the kaleidoscope. Use clean, high-quality source material for high zoom levels.
 - **Combine vignette and mask**: Vignette alone provides gentle darkening. Circle Mask alone provides a hard disc cutoff. Together they create the most convincing kaleidoscope-tube look — gradual falloff into a defined circular aperture.
 - **Rotation speed and fold count interact**: Higher fold counts make the same DDS speed produce visually faster rotation because each strip is narrower. Reduce Rot Speed when increasing fold count to maintain the same apparent rotation rate.
@@ -347,16 +376,14 @@ These exercises progress from simple mirroring through decorative features to co
 | Term | Definition |
 |------|------------|
 | **Bilateral Symmetry** | Mirror symmetry across an axis; each side is a reversed copy of the other. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the Y/U/V line buffer RAMs. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms by incrementing a phase accumulator, here used to drive continuous rotation. |
 | **Fold Count** | The number of symmetry axes in the kaleidoscope pattern; higher counts produce denser, more abstract reflections. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue Rotation** | Shifting color angle by permuting the U and V chroma channels; 90° rotation cycles through complementary colors. |
 | **Manhattan Distance** | The sum of absolute horizontal and vertical differences: |Δx| + |Δy|. Cheaper to compute than Euclidean distance; used for the vignette falloff. |
 | **Octagonal Distance** | An approximation to Euclidean distance using max(|Δx|, |Δy|) + min(|Δx|, |Δy|)/2; used for the circular mask. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Strip** | A rectangular subdivision of the screen; the fundamental repeating unit of the kaleidoscope tiling pattern. |
 | **Vignette** | Gradual brightness reduction from center to edges, simulating the peripheral light falloff of an optical system. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

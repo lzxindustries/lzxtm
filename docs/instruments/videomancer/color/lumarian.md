@@ -68,6 +68,14 @@ At one end of the spectrum, Lumarian can do straightforward image correction: fi
 
 ---
 
+## Quick Start
+
+1. **Order matters**: The signal flows through Contrast/Brightness → Gamma → Edge → Invert → Key. Each stage transforms the signal before the next one sees it.
+2. **Gamma before edges**: Because Gamma reshapes the luminance curve *before* the edge filter runs, you can use it to emphasize different parts of the image selectively. Counter-clockwise (logarithmic) lifts shadows into the filter's sensitive range, emphasizing shadow-region edges. Clockwise (exponential) does the opposite, emphasizing highlight edges.
+3. **Eight edge modes from three switches**: The three edge toggles (Switches 9, 10, 11) form a binary selector with 2³ = 8 combinations. Rather than memorizing which combination does what, sweep through all eight with Edge Gain at ~300% and a clear input — each combination produces a visibly distinct contour shape.
+
+---
+
 ## Background
 
 ### What Is a Processing Amplifier?
@@ -90,6 +98,8 @@ The Luma Blank fader implements one of the oldest techniques in video: the **lum
 ---
 
 ## Signal Flow
+
+Y Channel → U Channel → V Channel → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,6 +226,10 @@ Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge 
 
 Sets a luminance threshold. Any pixel whose Y value falls below the threshold is replaced with pure black (Y = 0) and neutral chroma (U = V = midpoint). Pixels above the threshold pass through unmodified. At 0%, everything passes. As you raise the fader, progressively darker portions of the image snap to black. At 100%, only the very brightest pixels survive. Because Luma Blank sits at the end of the Y processing chain, everything upstream affects what it "sees."
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -237,7 +251,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 *Correcting Camera Footage — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with natural scenes.
 
-**Objective**: Learn what each of the four tonal controls does to a video signal and how they interact.
+**What You'll Create**: Learn what each of the four tonal controls does to a video signal and how they interact.
 
 1. **Initialize**: Load Lumarian with all defaults — Contrast, Brightness, Saturation, and Gamma at center, Edge Gain and Cutoff at zero, all toggles off, Luma Blank at zero.
 2. **Black level**: Look at the darkest parts of the image. If areas that should be black appear gray, they have a brightness offset. Turn **Brightness** counter-clockwise until blacks are solid. If too much shadow detail disappears, ease it back slightly.
@@ -265,7 +279,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 *Graphic Textures from Edges — simulated result across source images.*
 **Source**: Footage with strong visual structure — architecture, typography, plants, fabric, or synthesized patterns.
 
-**Objective**: Explore what happens when the edge enhancer is pushed beyond its "correct" operating range.
+**What You'll Create**: Explore what happens when the edge enhancer is pushed beyond its "correct" operating range.
 
 1. **Prepare**: Set Contrast to about 130% and Saturation to 0% (monochrome). This gives the edge filter a strong signal to work with.
 2. **First edges**: Set Edge Cutoff to about 40%, then slowly increase Edge Gain. Below 100%, you will see sharpening; above 100%, edges start to compete with the source material.
@@ -295,7 +309,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 *Sculpting a Luminance Key — simulated result across source images.*
 **Source**: High-contrast footage — candle flames, theatrical lighting, silhouettes, or text on a plain background.
 
-**Objective**: Use the full processing chain (tonal shaping → edge enhancement → inversion → threshold keying) together.
+**What You'll Create**: Use the full processing chain (tonal shaping → edge enhancement → inversion → threshold keying) together.
 
 1. **Monochrome**: Start with Saturation at 0%. Working in monochrome makes it easier to see what the luminance key is doing.
 2. **Separate subject and background**: Use Contrast and Brightness to push your subject's brightness away from the background. Increase Contrast to widen the gap; shift Brightness to move the boundary.
@@ -313,9 +327,6 @@ These exercises progress from corrective to creative, gradually exploring more o
 
 ## Tips
 
-- **Order matters**: The signal flows through Contrast/Brightness → Gamma → Edge → Invert → Key. Each stage transforms the signal before the next one sees it.
-- **Gamma before edges**: Because Gamma reshapes the luminance curve *before* the edge filter runs, you can use it to emphasize different parts of the image selectively. Counter-clockwise (logarithmic) lifts shadows into the filter's sensitive range, emphasizing shadow-region edges. Clockwise (exponential) does the opposite, emphasizing highlight edges.
-- **Eight edge modes from three switches**: The three edge toggles (Switches 9, 10, 11) form a binary selector with 2³ = 8 combinations. Rather than memorizing which combination does what, sweep through all eight with Edge Gain at ~300% and a clear input — each combination produces a visibly distinct contour shape.
 - **Feedback loops**: If Videomancer's output is routed back to its input, Lumarian becomes a feedback processor. Edge enhancement and gamma correction in a feedback loop tend to produce self-reinforcing, evolving textures.
 - **Work in monochrome first**: When building a complex effect, start with Saturation at 0%. Remove the color variable until your tonal chain is set, then reintroduce it.
 - **Stacking programs**: Lumarian works well as either the first or last program in a multi-program chain. As the first program, it shapes the signal for downstream effects. As the last, it corrects or stylizes the final output.
@@ -339,6 +350,7 @@ These exercises progress from corrective to creative, gradually exploring more o
 | **Luminance key** | A compositing technique that uses a brightness threshold to separate foreground from background; pixels below the threshold are replaced with black. |
 | **Proc amp (Processing Amplifier)** | Broadcast equipment that standardizes video signals by adjusting contrast (gain) and brightness (offset); Lumarian's tonal controls implement a digital proc amp. |
 | **Transfer curve** | A graph mapping input values to output values; gamma correction bends the linear transfer curve into an exponential or logarithmic shape. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

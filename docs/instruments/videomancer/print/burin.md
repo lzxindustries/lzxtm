@@ -68,6 +68,14 @@ At conservative settings — wide spacing, a single primary angle, clean plate �
 
 ---
 
+## Quick Start
+
+1. **Spacing and width are the master controls**: Together they determine the overall density of the engraving. Set these first, then adjust angles and tints to taste.
+2. **45° primary with 45° cross is the classic look**: This combination produces the most recognizable copperplate crosshatch pattern — the one you see in Dürer prints and on currency.
+3. **Plate wear adds realism at any spacing**: Even subtle wear — a few broken strokes per line — makes the output look like a physical print rather than a computer rendering.
+
+---
+
 ## Background
 
 ### Intaglio Engraving and the Burin
@@ -94,6 +102,8 @@ Burin's computational approach mirrors the engraver's physical process. The pixe
 ---
 
 ## Signal Flow
+
+Y Channel → Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Controls the spacing between parallel lines in all four hatching sets simultaneo
 | Default | 4px |
 | Suffix | px |
 
-Sets the width of each engraved stroke. At minimum, lines are a single pixel wide — thin, precise, and reminiscent of fine-point burin work. At maximum, lines swell to fill most of the inter-line gap, producing heavy, saturated strokes. Line width is constant across all four sets and all five luminance zones, mirroring the physical constraint of a burin cut at fixed depth.
+At minimum, lines are a single pixel wide — thin, precise, and reminiscent of fine-point burin work. At maximum, lines swell to fill most of the inter-line gap, producing heavy, saturated strokes. Line width is constant across all four sets and all five luminance zones, mirroring the physical constraint of a burin cut at fixed depth. Internally, sets the width of each engraved stroke.
 
 ---
 
@@ -240,6 +250,21 @@ Switches 7–11 control five independent binary processing options. Line Style a
 
 Controls the dry/wet mix between the processed engraving output and the original input video, via three parallel interpolators (Y, U, V). At 100%, only the engraved rendering is visible. At 0%, the original signal passes through unchanged. Intermediate values overlay the hatching texture onto the source at reduced opacity, which can produce a subtle sketch-over-video effect.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Burin processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +286,7 @@ These exercises build from basic line hatching through the full crosshatching vo
 *First Lines and Crosshatch — simulated result across source images.*
 **Source**: A portrait or figure with clear tonal transitions — skin highlights through deep shadows.
 
-**Objective**: Learn how the primary angle, spacing, and luminance zones produce the basic hatching vocabulary.
+**What You'll Create**: Learn how the primary angle, spacing, and luminance zones produce the basic hatching vocabulary.
 
 1. **Prepare**: Set Spacing to step 5 (~10px), Line Width to ~25%, Primary Angle to 45°, all toggles off, Mix at 100%.
 2. **Observe zones**: Look at the image. The brightest areas should be clean paper (zone 0). Mid-highlights show a single set of diagonal lines (zone 1). Midtones show crosshatching (zone 2). Shadows show dense triple-cross (zone 3) and lozenges (zone 4).
@@ -288,7 +313,7 @@ These exercises build from basic line hatching through the full crosshatching vo
 *Plate Character and Wear — simulated result across source images.*
 **Source**: A scene with a full tonal range — outdoor landscape or still life with highlights and deep shadows.
 
-**Objective**: Explore how line style, plate wear, and paper/ink tint create the character of a printed impression.
+**What You'll Create**: Explore how line style, plate wear, and paper/ink tint create the character of a printed impression.
 
 1. **Baseline**: Set Spacing to step 4 (~8px), Line Width to ~35%, Primary Angle to 135°, Cross Angle to 45°.
 2. **Feathered lines**: Toggle Line Style to Feathered. The strokes soften, becoming lighter and less harsh. Compare against Sharp.
@@ -316,7 +341,7 @@ These exercises build from basic line hatching through the full crosshatching vo
 *Duotone and Inversion — simulated result across source images.*
 **Source**: High-contrast material — a face lit from one side, or any source with both saturated colour and strong shadows.
 
-**Objective**: Use duotone and invert to push the engraving beyond monochrome reproduction into colour and negative territory.
+**What You'll Create**: Use duotone and invert to push the engraving beyond monochrome reproduction into colour and negative territory.
 
 1. **Prepare**: Set Spacing to step 3 (~6px), Line Width to ~30%, Primary Angle to 45°, Cross Angle to 60°, clean plate, sharp lines.
 2. **Enable duotone**: Toggle Color to Duotone. The hatched lines now carry the source video's chrominance — colour bleeds through the engraving texture. Reds, blues, and greens appear within the hatched strokes.
@@ -331,9 +356,6 @@ These exercises build from basic line hatching through the full crosshatching vo
 
 ## Tips
 
-- **Spacing and width are the master controls**: Together they determine the overall density of the engraving. Set these first, then adjust angles and tints to taste.
-- **45° primary with 45° cross is the classic look**: This combination produces the most recognizable copperplate crosshatch pattern — the one you see in Dürer prints and on currency.
-- **Plate wear adds realism at any spacing**: Even subtle wear — a few broken strokes per line — makes the output look like a physical print rather than a computer rendering.
 - **Duotone preserves source identity**: When you want the subject to remain recognizable through the hatching, duotone lets the source colour information survive the engraving process.
 - **Invert for mezzotint aesthetics**: Inverting produces bright lines on dark ground — the opposite of normal engraving, closer to mezzotint or white-line woodcut. Especially dramatic with tight spacing and warm ink tint.
 - **Mix for sketch overlay**: Pulling the fader back to 50–70% overlays the hatching texture onto the source video, creating a drawing-over-footage effect.
@@ -356,6 +378,7 @@ These exercises build from basic line hatching through the full crosshatching vo
 | **Lozenge** | A small diamond-shaped area of unprinted paper visible in the densest crosshatch zones where four line sets overlap. |
 | **Luminance** | The brightness component (Y channel) of a YUV video signal, measured on a 0–1023 scale in 10-bit video. |
 | **Mezzotint** | An intaglio printmaking technique that produces tonal images by working from dark to light, creating white lines on a dark ground. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), used as the native format in video processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

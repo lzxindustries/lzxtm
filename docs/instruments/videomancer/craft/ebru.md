@@ -68,6 +68,14 @@ The concentric rings modulate the source video's luminance — bright rings lift
 
 ---
 
+## Quick Start
+
+1. **Start with rings alone**: Set Ink Density to zero and explore Ring Space and Rake Pitch before engaging the comb. Understanding the concentric ring pattern in isolation makes it easier to predict how the comb will reshape it.
+2. **Centre position is compositional**: Rake Depth and Anim Speed position the virtual ink drop. Placing it on a face, a highlight, or an edge creates different compositional effects — the rings radiate from whatever the centre touches.
+3. **Comb direction dictates flow**: Horizontal combing creates vertical flow; vertical combing creates horizontal flow. Think of it as dragging a physical comb through the image — the pattern stretches in the direction of the drag.
+
+---
+
 ## Background
 
 ### Turkish Marbling (Ebru)
@@ -94,6 +102,8 @@ The physics of Ebru depend on a delicate balance of forces. The thickened water 
 ---
 
 ## Signal Flow
+
+Input Register → Distance Computation → Sine Phase Index → Sine LUT → Amplitude Multiply → Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -220,8 +230,8 @@ Ink Density controls the depth (strength) of the comb rake displacement. At zero
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Rake Dir** | Horiz | Vert |
-| **8 — Seeds** | 2 | 4 |
+| **7 — Rake Dir** | Horiz | Spiral |
+| **8 — Seeds** | 2 | 8 |
 | **9 — Color Mode** | Video | Palette |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -239,7 +249,29 @@ The five toggles control binary processing options that partition the effect int
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the processed marbled signal and the original source video. At 100% (maximum, default), the output is fully processed. At 0%, the output is the unmodified source. Intermediate positions blend the two signals linearly via the interpolator, allowing subtle marbling textures to be layered gently over the source. This is particularly useful when the ring amplitude is set high — reducing the mix tames the intensity without changing the pattern geometry.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Ebru processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Ebru-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -262,7 +294,7 @@ These three exercises build from basic ring patterning through comb rake shaping
 *Concentric Rings — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with mid-range brightness and visible detail — faces, landscapes, or architectural subjects work well.
 
-**Objective**: Understand how the concentric ring generator interacts with the source video and how centre position and ring spacing shape the pattern.
+**What You'll Create**: Understand how the concentric ring generator interacts with the source video and how centre position and ring spacing shape the pattern.
 
 1. **Centre the drop**: Set Rake Depth and Anim Speed to 50% each, placing the ring centre in the middle of the frame.
 2. **Open the rings**: Set Ring Space to about 25% for wide, gentle ring bands. Observe how brightness modulation radiates outward from the centre.
@@ -289,7 +321,7 @@ These three exercises build from basic ring patterning through comb rake shaping
 *Comb Rake Shaping — simulated result across source images.*
 **Source**: A high-contrast source — black and white patterns, bold graphics, or a colour-bar test signal.
 
-**Objective**: Learn how the comb rake displaces ring patterns into flowing marbled S-curves.
+**What You'll Create**: Learn how the comb rake displaces ring patterns into flowing marbled S-curves.
 
 1. **Establish rings**: Set Ring Space ~40%, Rake Pitch ~50%, centre at 50%/50%.
 2. **Introduce the comb**: With a horizontal comb (Rake Dir = Horiz), slowly increase Ink Density from zero. Watch the concentric rings begin to wobble and stretch into sinusoidal curves.
@@ -316,7 +348,7 @@ These three exercises build from basic ring patterning through comb rake shaping
 *Multi-Drop Chromatic Marbling — simulated result across source images.*
 **Source**: Footage with rich colour content — botanical close-ups, textiles, or painted surfaces.
 
-**Objective**: Combine multi-drop interference and chromatic colour bands to create polychromatic Ebru textures.
+**What You'll Create**: Combine multi-drop interference and chromatic colour bands to create polychromatic Ebru textures.
 
 1. **Base pattern**: Set Ring Space ~35%, Rake Pitch ~50%, Ink Density ~40%, Color Spread ~50%.
 2. **Enable multi-drop**: Toggle Seeds to engage the second ring centre. Observe how overlapping ring patterns create interference — bright where both peaks align, neutral where they cancel.
@@ -331,9 +363,6 @@ These three exercises build from basic ring patterning through comb rake shaping
 
 ## Tips
 
-- **Start with rings alone**: Set Ink Density to zero and explore Ring Space and Rake Pitch before engaging the comb. Understanding the concentric ring pattern in isolation makes it easier to predict how the comb will reshape it.
-- **Centre position is compositional**: Rake Depth and Anim Speed position the virtual ink drop. Placing it on a face, a highlight, or an edge creates different compositional effects — the rings radiate from whatever the centre touches.
-- **Comb direction dictates flow**: Horizontal combing creates vertical flow; vertical combing creates horizontal flow. Think of it as dragging a physical comb through the image — the pattern stretches in the direction of the drag.
 - **Multi-drop adds complexity quickly**: Enabling the second ring centre doubles the pattern density and creates interference. Use lower Ring Space and Rake Pitch values when multi-drop is active to keep the texture legible.
 - **Colour bands transform the palette**: The opposing U/V shifts create warm-cool gradients that follow the ring contours. This works especially well with desaturated source material, where the chromatic rings become the dominant colour information.
 - **Use Mix for subtlety**: The wet/dry fader is the easiest way to tame an intense marbling effect. Blending at 30–40% creates a gentle watercolour overlay without losing source detail.
@@ -350,14 +379,12 @@ These three exercises build from basic ring patterning through comb rake shaping
 | **Comb Rake** | A row of evenly spaced pins dragged through floating ink to create sinusoidal displacement patterns in water marbling. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and waveform lookup table. |
 | **Ebru** | Turkish art of paper marbling, from Persian *ab-rū* ("water surface"); inscribed in UNESCO's Intangible Cultural Heritage list in 2014. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in real time. |
-| **Interpolator** | A linear crossfade unit used for wet/dry mixing, blending two inputs based on a 10-bit mix parameter. |
 | **LUT** | Look-Up Table; a pre-computed array used to evaluate functions (here, the quarter-wave sine) efficiently in hardware. |
 | **Manhattan Distance** | The sum of absolute coordinate differences (|dx| + |dy|), approximating Euclidean distance without square root computation. |
 | **Multi-drop** | A mode that computes ring patterns from two virtual centre points and averages their outputs, simulating overlapping ink drops. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave Sine** | A 32-entry table storing one quarter of a sine cycle; full-wave values are reconstructed via quadrant mirroring and sign inversion. |
 | **Suminagashi** | Japanese floating-ink marbling technique, a parallel tradition to Ebru using *sumi* ink on plain water. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

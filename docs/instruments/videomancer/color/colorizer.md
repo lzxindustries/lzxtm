@@ -68,6 +68,14 @@ Two luminance output modes are provided: Hard mode quantises the output brightne
 
 ---
 
+## Quick Start
+
+1. **Two-band split**: Zone Count = 2 plus maximum saturation creates the iconic Paik-Abe pop-art look with a single hard boundary.
+2. **Bias as key level**: Treat the Bias knob like a key threshold — it determines where the first colour transition falls on the brightness scale.
+3. **Cycling speed**: The animation rate is fixed at 4 phase units per frame; the visible speed depends on Zone Count (fewer bands make cycling more apparent).
+
+---
+
 ## Background
 
 ### The Paik-Abe Colorizer
@@ -224,6 +232,10 @@ The five toggles shape the artistic character: Spacing selects equal band widths
 
 **Mix** crossfades between the dry input and the colourised output. At zero the output is unaltered; at maximum it is fully colourised.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -245,7 +257,7 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 *Classic Two-Tone Posterisation — simulated result across source images.*
 **Source**: A talking-head interview or portrait with a smooth background gradient.
 
-**Objective**: Divide the image into two stark colour zones for a pop-art look.
+**What You'll Create**: Divide the image into two stark colour zones for a pop-art look.
 
 1. Set Zone Count to 2.
 2. Set Hue Base to 0° (red/blue split).
@@ -273,7 +285,7 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 *Crawling Rainbow — simulated result across source images.*
 **Source**: A slowly moving subject with a wide tonal range (landscape, dancer).
 
-**Objective**: Create a full-spectrum rainbow posterisation that slowly cycles through the image.
+**What You'll Create**: Create a full-spectrum rainbow posterisation that slowly cycles through the image.
 
 1. Set Zone Count to 8 for maximum bands.
 2. Set Hue Base to 0°, Hue Spread to 100 %.
@@ -301,7 +313,7 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 *Neon Contour with Edge Glow — simulated result across source images.*
 **Source**: An architectural scene with strong geometric lines and moderate contrast.
 
-**Objective**: Combine posterised colour bands with glowing edges to emphasise structural contours.
+**What You'll Create**: Combine posterised colour bands with glowing edges to emphasise structural contours.
 
 1. Set Zone Count to 5, Hue Base to 180° (blue-green starting point).
 2. Set Hue Spread to 60 %, Saturation to 80 %.
@@ -316,9 +328,6 @@ These exercises explore Colorizer's range from subtle two-tone tinting to full p
 
 ## Tips
 
-- **Two-band split**: Zone Count = 2 plus maximum saturation creates the iconic Paik-Abe pop-art look with a single hard boundary.
-- **Bias as key level**: Treat the Bias knob like a key threshold — it determines where the first colour transition falls on the brightness scale.
-- **Cycling speed**: The animation rate is fixed at 4 phase units per frame; the visible speed depends on Zone Count (fewer bands make cycling more apparent).
 - **Mix for blending**: At 30–50 % mix the colour overlay tints the image without completely flattening it.
 - **Invert for negative palette**: Reversing the palette order can dramatically change the mood — bright regions get dark-associated hues and vice versa.
 - **Hard vs Stepped luma**: Hard mode gives the classic flat-colour look; Stepped mode preserves tonal detail while adding false colour.

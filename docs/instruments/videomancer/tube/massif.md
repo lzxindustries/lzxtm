@@ -68,6 +68,14 @@ The name *Massif* refers to a compact group of mountains — a geological term f
 
 ---
 
+## Quick Start
+
+1. **No bypass toggle**: Like Marquee, Massif uses Toggle 11 for Invert rather than bypass. Set the Mix fader to 0% for instant A/B comparison.
+2. **Start with moderate deflection**: High deflection values create extreme terrain that can be hard to read. Start at 30–50% and increase gradually.
+3. **Green phosphor for authenticity**: Set Tint Hue to ~0° and Color to Mono for a classic P1 CRT phosphor look. Amber (~90°) evokes warm vintage monitors.
+
+---
+
 ## Background
 
 ### The Rutt/Etra Video Synthesizer
@@ -94,6 +102,8 @@ When multiple input scan lines displace to the same target position in the colum
 ---
 
 ## Signal Flow
+
+Input Register → Displacement Calculation → Perspective + Target Line → Column Buffer → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -171,7 +181,7 @@ Controls the perspective foreshortening amount. When Perspective is enabled (Tog
 | Default | 75% |
 | Suffix | % |
 
-Controls the phosphor decay rate — how quickly the column buffer attenuates between frames. At 0%, the buffer clears completely every frame, showing only the current frame's terrain with no persistence. At 100%, the buffer barely decays, creating long glowing trails where bright features persist across many frames. At moderate values (50–70%), the terrain shows smooth phosphor-like persistence where peaks glow brightly and fade gradually, closely matching the look of a long-persistence CRT phosphor.
+At 0%, the buffer clears completely every frame, showing only the current frame's terrain with no persistence. At 100%, the buffer barely decays, creating long glowing trails where bright features persist across many frames. At moderate values (50–70%), the terrain shows smooth phosphor-like persistence where peaks glow brightly and fade gradually, closely matching the look of a long-persistence CRT phosphor. Internally, controls the phosphor decay rate — how quickly the column buffer attenuates between frames.
 
 ---
 
@@ -233,6 +243,10 @@ The five toggles control fundamental display characteristics rather than composi
 
 Crossfades between the original dry input and the wet terrain output. At 0%, the output is 100% dry — effectively bypassing all processing. At 100%, the output is fully wet — the complete terrain visualization. Intermediate values blend the flat video with the displaced terrain, creating a ghostly overlay where the original image is visible beneath the terrain peaks. Since there is no dedicated bypass toggle, this fader is the primary bypass control.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -254,7 +268,7 @@ These exercises progress from basic luminance displacement to full terrain visua
 *Basic Terrain Displacement — simulated result across source images.*
 **Source**: A portrait or face — any image with clear luminance structure and recognizable features.
 
-**Objective**: Learn how luminance displacement transforms flat video into a terrain surface.
+**What You'll Create**: Learn how luminance displacement transforms flat video into a terrain surface.
 
 1. **Initial setup**: Set Deflection to about 40%. The face should visibly distort — bright areas push upward.
 2. **Observe displacement**: Bright cheeks, forehead, and highlights become peaks. Dark eye sockets and shadows become valleys.
@@ -281,7 +295,7 @@ These exercises progress from basic luminance displacement to full terrain visua
 *Phosphor Persistence Display — simulated result across source images.*
 **Source**: Slow-moving or static footage — a slowly rotating object, a dimly lit scene, or a slow pan across a landscape.
 
-**Objective**: Explore the decay and persistence behavior of the column buffer, creating CRT phosphor glow effects.
+**What You'll Create**: Explore the decay and persistence behavior of the column buffer, creating CRT phosphor glow effects.
 
 1. **Set moderate deflection**: Deflection ~50% to create a clear terrain.
 2. **Enable phosphor tint**: Set Color to Mono. Choose a green tint (~0°) for classic P1 phosphor or amber (~90°) for P3.
@@ -309,7 +323,7 @@ These exercises progress from basic luminance displacement to full terrain visua
 *Perspective Landscape — simulated result across source images.*
 **Source**: Wide-angle footage — a cityscape, landscape, or any image with content distributed across the full frame height.
 
-**Objective**: Build a full perspective terrain with foreshortening, creating a vanishing-point 3D landscape from flat video.
+**What You'll Create**: Build a full perspective terrain with foreshortening, creating a vanishing-point 3D landscape from flat video.
 
 1. **Start with Exercise 2 settings**: Moderate deflection, green phosphor tint, some decay.
 2. **Enable perspective**: Toggle Perspect to On. Immediately the bottom of the frame shows more displacement than the top.
@@ -325,9 +339,6 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 ## Tips
 
-- **No bypass toggle**: Like Marquee, Massif uses Toggle 11 for Invert rather than bypass. Set the Mix fader to 0% for instant A/B comparison.
-- **Start with moderate deflection**: High deflection values create extreme terrain that can be hard to read. Start at 30–50% and increase gradually.
-- **Green phosphor for authenticity**: Set Tint Hue to ~0° and Color to Mono for a classic P1 CRT phosphor look. Amber (~90°) evokes warm vintage monitors.
 - **Decay shapes the persistence**: Low decay clears the buffer quickly, showing each frame in isolation. High decay builds up cumulative terrain over many frames — ideal for slow-moving material.
 - **Perspective needs Perspect toggle**: The Perspective knob only takes effect when the Perspect toggle is On. Without the toggle, displacement is uniform across all scan lines.
 - **Fill Hold for solid surfaces**: Toggle Fill Mode to Hold to eliminate the raster-line gaps, creating a solid terrain surface instead of individual scan lines floating in black space.
@@ -340,19 +351,17 @@ These exercises progress from basic luminance displacement to full terrain visua
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated FPGA memory used for the 1024-entry column buffers that store the terrain data. |
 | **Column Buffer** | A vertical memory array (1024 × 10-bit) storing one pixel-column of the displaced terrain. Three buffers store Y, U, and V independently. |
 | **CRT** | Cathode Ray Tube; the display technology whose electron-beam deflection and phosphor persistence Massif emulates digitally. |
 | **Decay** | Inter-frame attenuation of the column buffer, simulating the gradual fading of CRT phosphor after excitation. |
 | **Deflection** | Vertical displacement of a scan line based on its luminance value, the core operation of the Rutt/Etra technique. |
 | **Foreshortening** | Perspective scaling where objects closer to the viewer appear larger and more displaced, creating depth illusion. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Luminance** | The brightness component (Y) of a YUV video signal; in Massif, the primary driver of vertical displacement. |
 | **Max-Brightness Compositing** | A write policy where only the brightest pixel value is retained when multiple sources target the same buffer address. |
 | **Persistence** | The visual afterglow of CRT phosphor, simulated by high Decay values that slow the buffer attenuation. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Raster** | The pattern of horizontal scan lines that compose a video frame; Line Gap controls the spacing of these lines in the terrain display. |
 | **Rutt/Etra** | A 1973 analog video synthesizer by Steve Rutt and Bill Etra that deflected CRT scan lines by luminance, creating terrain-like video displays. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

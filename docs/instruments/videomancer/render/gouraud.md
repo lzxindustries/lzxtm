@@ -35,6 +35,14 @@ At conservative settings — two triangles, slow morph, moderate spread — Gour
 
 ---
 
+## Quick Start
+
+1. **Bit overlap matters**: Switching to flat shading also changes the triangle count to 4. This is a hardware design choice, not a bug — plan compositions knowing that flat mode always uses 4 triangles.
+2. **Prime offsets create uniqueness**: Each vertex's DDS uses a different prime-number frequency offset, so even at uniform morph speed, no two vertices trace the same path. This is why the patterns never exactly repeat.
+3. **Wireframe as overlay**: Combining wireframe mode with video modulation turns Gouraud into a geometric overlay generator — thin colored lines that track and deform over the video signal.
+
+---
+
 ## Background
 
 ### What Is Gouraud Shading?
@@ -57,6 +65,8 @@ Gouraud arranges its triangles in a **fan** topology. Vertex 0 sits at screen ce
 ---
 
 ## Signal Flow
+
+Per-Frame → Per-Pixel Pipeline → Sync Signals → Bypass
 
 ```
 Synthesis Engine (no video input required)
@@ -124,7 +134,7 @@ Controls the rate at which vertex colors cycle. Each vertex's color phase accumu
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the radius of the Lissajous orbits that the eight outer vertices trace around screen center. At zero, all vertices collapse to the center point and the triangles degenerate. As spread increases, the vertices swing farther from center, creating larger triangles that can extend beyond the screen edges. The X and Y axes are scaled differently — X spread is divided by 1024, Y spread by 2048 — producing slightly wider-than-tall orbits that compensate for the 16:9 aspect ratio.
+At zero, all vertices collapse to the center point and the triangles degenerate. As spread increases, the vertices swing farther from center, creating larger triangles that can extend beyond the screen edges. The X and Y axes are scaled differently — X spread is divided by 1024, Y spread by 2048 — producing slightly wider-than-tall orbits that compensate for the 16:9 aspect ratio. Internally, controls the radius of the Lissajous orbits that the eight outer vertices trace around screen center.
 
 ---
 
@@ -165,7 +175,7 @@ Scales the luminance of the rendered triangles. After color interpolation (or fl
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Triangles** | 2 | 4 |
+| **7 — Triangles** | 2 | 8 |
 | **8 — Shading** | Smooth | Flat |
 | **9 — Wireframe** | Off | On |
 | **10 — Video Mod** | Off | On |
@@ -186,6 +196,10 @@ Switches 7 through 11 control a mixture of independent options and one notable h
 
 Controls the wet/dry mix between the synthesized triangle output and the delayed input video. Three interpolator instances crossfade Y, U, and V independently. At zero, only the delayed input passes through. At maximum, only the synthesized output is visible. Intermediate positions blend the two, useful for layering the triangle geometry over an existing video signal at reduced opacity.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -196,7 +210,7 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 
 <img src={gouraud_exercise1_result} alt="Static Triangle Fan result"/>
 *Static Triangle Fan — simulated result across source images.*
-**Objective**: Understand the basic triangle fan topology and Gouraud smooth shading.
+**What You'll Create**: Understand the basic triangle fan topology and Gouraud smooth shading.
 
 1. **Freeze motion**: Set Morph Speed and Color Speed to 0%. The triangle field should be completely static.
 2. **Observe the fan**: With Spread at ~75%, you should see two large triangles radiating from screen center, filled with smooth color gradients.
@@ -213,7 +227,7 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 
 <img src={gouraud_exercise2_result} alt="Animated Wireframe result"/>
 *Animated Wireframe — simulated result across source images.*
-**Objective**: Explore vertex animation dynamics and the wireframe rendering mode.
+**What You'll Create**: Explore vertex animation dynamics and the wireframe rendering mode.
 
 1. **Start motion**: Set Morph Speed to ~30%. The triangles begin to drift and deform as vertices trace their Lissajous orbits.
 2. **Enable wireframe**: Turn Wireframe on. The solid fills disappear, leaving only thin colored lines at the triangle edges.
@@ -230,7 +244,7 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 
 <img src={gouraud_exercise3_result} alt="Video-Modulated Kaleidoscope result"/>
 *Video-Modulated Kaleidoscope — simulated result across source images.*
-**Objective**: Combine all synthesis features with video modulation for a fully layered composition.
+**What You'll Create**: Combine all synthesis features with video modulation for a fully layered composition.
 
 1. **Feed video**: Connect a video source. Enable Video Mod. The triangles now act as colored windows into the video — inside each triangle, the video is tinted by the interpolated vertex color.
 2. **Fast animation**: Set Morph Speed to ~70% and Color Speed to ~60%. The geometric windows morph and recolor rapidly.
@@ -246,9 +260,6 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 
 ## Tips
 
-- **Bit overlap matters**: Switching to flat shading also changes the triangle count to 4. This is a hardware design choice, not a bug — plan compositions knowing that flat mode always uses 4 triangles.
-- **Prime offsets create uniqueness**: Each vertex's DDS uses a different prime-number frequency offset, so even at uniform morph speed, no two vertices trace the same path. This is why the patterns never exactly repeat.
-- **Wireframe as overlay**: Combining wireframe mode with video modulation turns Gouraud into a geometric overlay generator — thin colored lines that track and deform over the video signal.
 - **Grayscale geometry**: Setting Chroma to 0% produces grayscale triangle fills that work well as luminance masks for downstream keying programs.
 - **Feedback loops**: Routing Gouraud's output back to its own input (via Video Mod) creates recursive self-modulated geometry — triangles that texture themselves with their own rendered output.
 - **Bypass for level check**: Switch 11 instantly shows the unprocessed input for verifying signal levels and sync integrity.
@@ -264,13 +275,12 @@ These exercises explore Gouraud's synthesis capabilities from simple static geom
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator incremented by a fixed value each cycle. |
 | **Edge Function** | A signed area computation that determines whether a point lies on the inside or outside of a triangle edge; all three must agree for the point to be inside. |
 | **Fan Topology** | A triangle arrangement where all triangles share a common vertex (here, screen center), radiating outward like blades of a fan. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gouraud Shading** | A shading technique that interpolates vertex colors across a polygon face, producing smooth gradients; introduced by Henri Gouraud in 1971. |
 | **Lissajous Figure** | A parametric curve traced by combining two sinusoidal oscillations along perpendicular axes; each vertex follows a unique Lissajous path. |
 | **LUT** | Lookup Table; a pre-computed array of values indexed by an input, used here implicitly by the triangle wave function. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Rasterization** | The process of determining which pixels are covered by a geometric primitive (triangle) and computing their colors. |
 | **Triangle Wave** | A piecewise linear waveform that approximates a sine wave using four linear ramp segments; used for vertex position and color oscillation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

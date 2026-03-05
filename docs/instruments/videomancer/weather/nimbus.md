@@ -68,6 +68,14 @@ At conservative settings — few strata, low turbulence, warm palette — Nimbus
 
 ---
 
+## Quick Start
+
+1. **Fewer strata, wider bands**: Three strata produce dramatic, wide tonal divisions. Seven strata produce fine atmospheric layering. Start with 5 and adjust.
+2. **Turbulence needs Hard Edge Off**: The IIR smoothing is disabled when Hard Edge is On, so Turbulence has no visible effect in that mode — boundaries stay straight.
+3. **Summit Glow is altitude-dependent**: It only affects upper strata. With Invert On, the "summit" moves to the top of the frame, changing which part of the image glows.
+
+---
+
 ## Background
 
 ### Horizontal Stratification
@@ -94,6 +102,8 @@ At the final processing stage, the stratum index itself drives a desaturation fr
 ---
 
 ## Signal Flow
+
+Stratum Classification → Tonal Mapping → Altitude Desaturation
 
 ```
 Input Video (YUV 4:4:4)
@@ -174,7 +184,7 @@ Selects the number of horizontal strata dividing the frame. The pot is decoded a
 | Default | 39.1% |
 | Suffix | % |
 
-Controls the amplitude of LFSR noise added to the stratum boundaries. At 0%, boundaries are straight horizontal lines (or zero, if Hard Edge is enabled). As the value increases, the IIR-smoothed noise drives larger excursions in the boundary positions, creating billowing, cloud-like undulations. The noise is multiplied by this pot value before being added to each boundary, so the perturbation scales linearly with the control.
+At 0%, boundaries are straight horizontal lines (or zero, if Hard Edge is enabled). As the value increases, the IIR-smoothed noise drives larger excursions in the boundary positions, creating billowing, cloud-like undulations. The noise is multiplied by this pot value before being added to each boundary, so the perturbation scales linearly with the control. Internally, controls the amplitude of LFSR noise added to the stratum boundaries.
 
 ---
 
@@ -236,6 +246,21 @@ The five toggles control independent binary options. Palette and Drift Dir selec
 
 Wet/dry crossfade between the original input (delayed to match pipeline latency) and the processed output. At 0% (value 0), the output is fully dry — unprocessed video. At 100% (value 1023), the output is fully wet — stratified and tinted. The interpolator performs linear interpolation: `output = dry + (wet - dry) × mix / 1023`.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Nimbus processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -257,7 +282,7 @@ These exercises progress from simple stratification to full atmospheric composit
 *Basic Cloud Strata — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied tonal range.
 
-**Objective**: Understand how horizontal strata divide the frame and apply distinct tonal treatments.
+**What You'll Create**: Understand how horizontal strata divide the frame and apply distinct tonal treatments.
 
 1. Set Mix to 100% to hear only the wet signal. Set Strata to the center position (5 strata).
 2. Start with Turbulence at 0, Contrast at ~50%, Warmth at ~30%. Observe five distinct horizontal bands with different brightness ranges.
@@ -284,7 +309,7 @@ These exercises progress from simple stratification to full atmospheric composit
 *Drifting Atmosphere — simulated result across source images.*
 **Source**: Static or slow-moving footage — landscapes, skylines, or abstract color fields.
 
-**Objective**: Explore vertical drift animation and altitude desaturation effects.
+**What You'll Create**: Explore vertical drift animation and altitude desaturation effects.
 
 1. Begin from Exercise 1 settings. Turn on Summit Glow to ~60%.
 2. Observe the upper strata becoming brighter and more desaturated — the summit glow effect.
@@ -312,7 +337,7 @@ These exercises progress from simple stratification to full atmospheric composit
 *Sharp Fronts and Full Atmosphere — simulated result across source images.*
 **Source**: High-contrast footage — performers against a dark background, architectural details, or video feedback.
 
-**Objective**: Combine all parameters to create a complex atmospheric effect with hard-edged strata and full tonal treatment.
+**What You'll Create**: Combine all parameters to create a complex atmospheric effect with hard-edged strata and full tonal treatment.
 
 1. Set Strata to maximum (7 strata) for fine layering. Set Hard Edge On for sharp boundaries.
 2. Switch to Cool palette and set Warmth to ~80%. The frame divides into sharp blue-gray bands.
@@ -329,9 +354,6 @@ These exercises progress from simple stratification to full atmospheric composit
 
 ## Tips
 
-- **Fewer strata, wider bands**: Three strata produce dramatic, wide tonal divisions. Seven strata produce fine atmospheric layering. Start with 5 and adjust.
-- **Turbulence needs Hard Edge Off**: The IIR smoothing is disabled when Hard Edge is On, so Turbulence has no visible effect in that mode — boundaries stay straight.
-- **Summit Glow is altitude-dependent**: It only affects upper strata. With Invert On, the "summit" moves to the top of the frame, changing which part of the image glows.
 - **Drift Spd at zero for static compositing**: Disable drift for a fixed stratification that you can tune precisely with turbulence and contrast.
 - **Mix as final creative control**: Blend the atmospheric effect with the original at 40–60% for subtle cloud layering over recognizable video content.
 - **Warm palette for portraiture**: The warm palette's lower strata have gentle amber tints well-suited to skin tones and warm-lit scenes.
@@ -344,13 +366,13 @@ These exercises progress from simple stratification to full atmospheric composit
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory within the FPGA. Nimbus uses zero BRAM tiles. |
 | **Chrominance** | The color information (U and V channels) in a YUV video signal. |
 | **DDS** | Direct Digital Synthesis; a phase accumulator technique for generating smooth, frequency-controlled periodic signals. |
 | **IIR** | Infinite Impulse Response; a recursive digital filter. Nimbus uses a first-order IIR to smooth LFSR noise. |
 | **LFSR** | Linear Feedback Shift Register; a hardware-efficient pseudo-random number generator. |
 | **Luminance** | The brightness component (Y) of a YUV video signal. |
 | **Stratum** | A single horizontal band in the stratification. Each stratum has its own tonal range and chrominance tint. |
-| **YUV** | A color encoding separating brightness (Y) from color (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ Whitebal is in the **Color** category — a fundamental color correction tool de
 
 ---
 
+## Quick Start
+
+1. **Color Temp + Vectorscope**: Use Vectorscope to monitor the UV shift as you adjust Color Temp — the dot cloud moves along the blue-amber axis.
+2. **Normal Range for correction**: Normal Range halves the offset for precise correction — use it when matching to a reference white point.
+3. **Wide Range for creative**: Wide Range enables extreme shifts — deep blue moonlight or scorching amber sunset.
+
+---
+
 ## Background
 
 ### What Is Color Temperature?
@@ -90,6 +98,8 @@ The **tint** axis is perpendicular to the color temperature axis on the chromina
 ---
 
 ## Signal Flow
+
+Color Temperature Shift → Tint Shift → Saturation → ... → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -234,6 +244,21 @@ Switches 7–11 control the color temperature range, automatic saturation compen
 
 Controls the wet/dry mix between the corrected output and the original input via the hardware interpolator. At 100%, the full correction is applied. Lowering the fader blends back toward the uncorrected original — useful for dialing in partial corrections.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all White Balance processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -255,7 +280,7 @@ These exercises demonstrate corrective white balance, creative color grading, an
 *Corrective White Balance — simulated result across source images.*
 **Source**: Camera feed under tungsten (warm) or fluorescent (cool/green) lighting, showing skin tones or a white reference surface.
 
-**Objective**: Correct the color temperature to achieve neutral white balance.
+**What You'll Create**: Correct the color temperature to achieve neutral white balance.
 
 1. **Identify cast**: Under tungsten lighting, the image has a warm amber cast (excess V, deficit U). Under fluorescent, it has a cool greenish cast.
 2. **Color Temp**: For tungsten, turn Color Temp below center (cool shift) to compensate. For fluorescent, turn above center slightly.
@@ -283,7 +308,7 @@ These exercises demonstrate corrective white balance, creative color grading, an
 *Creative Color Grading (Warm/Cool Look) — simulated result across source images.*
 **Source**: Landscape, portrait, or narrative video — content where mood-setting color shifts enhance the visual story.
 
-**Objective**: Apply intentional creative color shifts for cinematic color grading.
+**What You'll Create**: Apply intentional creative color shifts for cinematic color grading.
 
 1. **Wide Range**: Enable Wide Range (Switch 7). The full offset range becomes available.
 2. **Warm look**: Turn Color Temp to ~65%. The image takes on a warm, golden-hour amber cast.
@@ -312,7 +337,7 @@ These exercises demonstrate corrective white balance, creative color grading, an
 *Luminance Processing Chain — simulated result across source images.*
 **Source**: Any input — high-contrast content makes the effects most visible.
 
-**Objective**: Explore the Y Gain, Contrast, and Brightness controls independently, then combine with inversion.
+**What You'll Create**: Explore the Y Gain, Contrast, and Brightness controls independently, then combine with inversion.
 
 1. **Neutral color**: Set Color Temp and Tint to center (50%). Only luminance processing is active.
 2. **Contrast**: Sweep Contrast from 0% to 100%. At minimum, the image compresses to flat gray. At maximum, stark black-and-white contrast with hard clipping.
@@ -329,9 +354,6 @@ These exercises demonstrate corrective white balance, creative color grading, an
 
 ## Tips
 
-- **Color Temp + Vectorscope**: Use Vectorscope to monitor the UV shift as you adjust Color Temp — the dot cloud moves along the blue-amber axis.
-- **Normal Range for correction**: Normal Range halves the offset for precise correction — use it when matching to a reference white point.
-- **Wide Range for creative**: Wide Range enables extreme shifts — deep blue moonlight or scorching amber sunset.
 - **Tint for fluorescent**: Fluorescent lighting typically needs a magenta tint push (~55–60%) after temperature correction.
 - **Saturation below 50% is beautiful**: Subtle desaturation (40–45%) creates a pleasing, film-like muted palette.
 - **Chain order matters**: Place Whitebal early in the processing chain (before effects) for corrective use, or late (after effects) for creative grading.
@@ -347,12 +369,12 @@ These exercises demonstrate corrective white balance, creative color grading, an
 | **Color Temperature** | A measurement (in Kelvin) of the hue of a light source, ranging from warm amber (~2700K) through neutral daylight (~5600K) to cool blue (~10000K). |
 | **Complement** | The opposite color on the color wheel; computed by subtracting U and V from their maximum value (1023). |
 | **Contrast** | The tonal range of an image; high contrast means wide separation between brightest and darkest regions. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Planckian Locus** | The curve traced by blackbody radiation on a chrominance diagram as temperature varies, passing through amber, white, and blue. |
 | **Saturation** | The colorfulness or chromatic intensity of a signal; desaturated signals are gray, fully saturated signals have vivid color. |
 | **Tint** | The green-magenta axis of color correction, perpendicular to the blue-amber color temperature axis. |
 | **White Balance** | The process of adjusting color temperature and tint so that neutral objects appear truly neutral (gray/white) under a given illuminant. |
 | **Y Gain** | A multiplicative luminance scaling factor applied after contrast and brightness, controlling overall signal amplitude. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

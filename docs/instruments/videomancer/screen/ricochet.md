@@ -35,6 +35,14 @@ At low speeds and large shapes, Ricochet works as a gentle spotlight that slowly
 
 ---
 
+## Quick Start
+
+1. **Out Dim is the spotlight control**: High Out Dim values create a classic spotlight-on-dark effect; low values create a subtle inside/outside processing difference.
+2. **Trail builds compositions**: Enable Trail to progressively reveal processed video across the frame. The auto-clear at 75% creates a recurring build-up rhythm.
+3. **Corner hits are rare**: With most velocity/size combinations, corner hits occur infrequently. Small shapes and faster speeds make them slightly more common.
+
+---
+
 ## Background
 
 ### The DVD Bounce
@@ -57,6 +65,8 @@ When the Trail toggle is active, a 120×68-cell grid (one bit per 16×16-pixel c
 ---
 
 ## Signal Flow
+
+Position Engine → Shape Rasterizer → Video Processor → Output Stage → Bypass
 
 ```
 Synthesis Engine
@@ -145,7 +155,7 @@ Selects one of eight video processing effects applied inside the bouncing shape,
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the dimming level applied to video outside the bouncing shape. At 0%, no dimming — outside video is full brightness. As the control increases, the exterior darkens toward black. Above ~88% (register > 900), the chroma is also neutralized so the exterior becomes monochrome gray fading to black. This creates the classic "spotlight" effect where only the bouncing shape reveals full-color video.
+At 0%, no dimming — outside video is full brightness. As the control increases, the exterior darkens toward black. Above ~88% (register > 900), the chroma is also neutralized so the exterior becomes monochrome gray fading to black. This creates the classic "spotlight" effect where only the bouncing shape reveals full-color video. Internally, controls the dimming level applied to video outside the bouncing shape.
 
 ---
 
@@ -184,6 +194,10 @@ The five toggles control independent rendering features. Shape selects between r
 
 Wet/dry mix crossfade between the unprocessed input video and the fully processed bounce output. Three parallel `interpolator_u` instances blend Y, U, and V channels independently using 10-bit fractional precision. At 0% the output is pure dry (original input); at 100% the output is pure wet (bounce-processed).
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -194,7 +208,7 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 <img src={ricochet_exercise1_result} alt="Classic DVD Bounce result"/>
 *Classic DVD Bounce — simulated result across source images.*
-**Objective**: Recreate the iconic screen-saver bounce with a rectangular spotlight revealing the input video.
+**What You'll Create**: Recreate the iconic screen-saver bounce with a rectangular spotlight revealing the input video.
 
 1. Set Speed to about 30% for a leisurely diagonal drift.
 2. Set Width and Height to about 40% each for a medium rectangle.
@@ -211,7 +225,7 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 <img src={ricochet_exercise2_result} alt="Trail Mosaic result"/>
 *Trail Mosaic — simulated result across source images.*
-**Objective**: Use the trail BRAM to progressively reveal processed video across the entire frame.
+**What You'll Create**: Use the trail BRAM to progressively reveal processed video across the entire frame.
 
 1. Set Speed to about 50% for moderate coverage rate.
 2. Set Width and Height to about 25% for a compact spotlight.
@@ -229,7 +243,7 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 <img src={ricochet_exercise3_result} alt="Effect Showcase result"/>
 *Effect Showcase — simulated result across source images.*
-**Objective**: Explore the eight inside effects while the spotlight bounces with border glow active.
+**What You'll Create**: Explore the eight inside effects while the spotlight bounces with border glow active.
 
 1. Set Speed to about 20% for slow movement to observe effects clearly.
 2. Set Width and Height to about 50% for a large viewing window.
@@ -246,9 +260,6 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 ## Tips
 
-- **Out Dim is the spotlight control**: High Out Dim values create a classic spotlight-on-dark effect; low values create a subtle inside/outside processing difference.
-- **Trail builds compositions**: Enable Trail to progressively reveal processed video across the frame. The auto-clear at 75% creates a recurring build-up rhythm.
-- **Corner hits are rare**: With most velocity/size combinations, corner hits occur infrequently. Small shapes and faster speeds make them slightly more common.
 - **Effect 3 ties to the palette**: The Colorize effect replaces chroma with the current corner-hit palette entry, so the tint changes each time the spotlight hits a corner.
 - **Circle mode simplifies shape**: Circle mode uses only the Width control for radius and an octagonal distance approximation — the result has subtle faceting visible at large radii.
 - **Feedback routing**: Send Ricochet's output back into itself for recursive spotlight-within-spotlight compositions.
@@ -260,17 +271,14 @@ These exercises progress from a simple bouncing spotlight to complex trail-based
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for trail cell storage. |
 | **Color Palette** | An 8-entry table of YUV values indexed by the corner-hit counter, cycling through preset colors. |
 | **Corner Hit** | A rare event where the bouncing shape collides with two screen edges simultaneously, triggering a color cycle and optional flash. |
 | **Edge Reflection** | Reversing a velocity component when a moving object reaches a boundary, simulating an elastic collision. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hit Test** | Per-pixel computation determining whether the current screen position is inside, on the border of, or outside the bouncing shape. |
-| **Interpolator** | A hardware mixing stage that blends two values by a fractional amount; used for the wet/dry mix fader. |
 | **Octagonal Approximation** | A fast distance metric `max(|dx|,|dy|) + min(|dx|,|dy|)/2` that approximates circular distance using only adds and shifts. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Solarize** | A photographic effect that folds brightness values above a threshold back toward black, creating a partial-negative appearance. |
 | **Trail BRAM** | A 120×68-cell binary grid recording which screen regions the spotlight has visited. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

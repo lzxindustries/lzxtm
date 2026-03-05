@@ -68,6 +68,14 @@ The interplay between the six continuous controls and five mode switches gives C
 
 ---
 
+## Quick Start
+
+1. **XOR is reversible**: If you can recreate the same LFSR sequence (same Key, same frame position), XOR'ing the scrambled output a second time recovers the original image exactly. Route the output back through a second Cipher instance with identical settings as a visual proof.
+2. **Depth before Scramble**: Set Depth first to choose which bits participate, then use Scramble to fine-tune intensity. Depth is the coarse control (eight steps), Scramble is the fine attenuator.
+3. **Block mode for structure**: Stream mode creates noise; Block mode creates mosaics. When compositing Cipher's output with other programs, Block mode tends to produce more visually coherent results because adjacent pixels share the same transformation.
+
+---
+
 ## Background
 
 ### Cryptography and Visual Art
@@ -94,6 +102,8 @@ Most video effects apply uniformly across every pixel. Cipher breaks this conven
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Interpolator → Sync Signals → Bypass Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,8 +226,8 @@ Feedback controls a recirculation path that mixes a portion of the scrambled out
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | XOR | Permute |
-| **8 — Channels** | Y only | UV only |
+| **7 — Mode** | XOR | Invert |
+| **8 — Channels** | Y only | Swap |
 | **9 — Pattern** | Stream | Block |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -235,7 +245,19 @@ The five toggles divide into three functional groups. Toggles 7 and 8 together d
 | Default | 100.0% |
 | Suffix | % |
 
-The Mix fader controls the wet/dry blend between the scrambled (wet) signal and the delayed original (dry) signal via a 4-clock linear interpolator. At 0%, the output is pure source — no scrambling visible. At 100%, the output is fully processed. Intermediate positions produce a translucent overlay effect where the scrambled texture blends with the original image, useful for creating subtle encryption veils or partial-depth glitch effects that retain the readability of the source content.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Cipher-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +280,7 @@ These exercises progress from basic XOR noise through channel permutation to com
 *XOR Keystream Noise — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with clear subject matter and moderate contrast.
 
-**Objective**: Understand how Key, Depth, and Scramble interact to produce XOR-based pseudo-random noise overlays of varying intensity.
+**What You'll Create**: Understand how Key, Depth, and Scramble interact to produce XOR-based pseudo-random noise overlays of varying intensity.
 
 1. **Baseline**: Confirm Mode is set to XOR, Channels to All, and Pattern to Stream. Set Depth to 50%. The image should show visible noise — bits of the source flipped by the LFSR keystream.
 2. **Depth sweep**: Slowly reduce Depth towards 0%. The noise retreats into the least significant bits, becoming a barely perceptible shimmer. Now sweep Depth up to 100%. The noise engulfs the image as all ten bits participate.
@@ -285,7 +307,7 @@ These exercises progress from basic XOR noise through channel permutation to com
 *Channel Permutation Mosaics — simulated result across source images.*
 **Source**: Footage with strong color contrast — the macaw image or similar with distinct saturated regions.
 
-**Objective**: Explore Permute mode with block processing to create mosaic-cipher textures where tiles of the image have their color channels rearranged.
+**What You'll Create**: Explore Permute mode with block processing to create mosaic-cipher textures where tiles of the image have their color channels rearranged.
 
 1. **Switch to Permute**: Set Mode to Permute and Pattern to Block. Set Block Size to about position 5 (medium tiles). The image fragments into rectangular tiles, each with its luma and chroma channels swapped according to the LFSR state.
 2. **Block size sweep**: Reduce Block Size to minimum — tiles shrink to a fine mosaic. Increase to maximum — large regions share a single channel permutation, creating broad color-shifted zones.
@@ -312,7 +334,7 @@ These exercises progress from basic XOR noise through channel permutation to com
 *Compound Rotation and Feedback — simulated result across source images.*
 **Source**: High-contrast footage or graphic patterns — test bars, geometric shapes, or text.
 
-**Objective**: Combine Rotate mode with Feedback and Invert for evolving, self-referencing bit-rotation textures.
+**What You'll Create**: Combine Rotate mode with Feedback and Invert for evolving, self-referencing bit-rotation textures.
 
 1. **Rotate baseline**: Set Mode to Rotate, Channels to All, Pattern to Stream. Set Shift to about 50%. The image's binary representation is cyclically rotated — brightness values remap nonlinearly, producing a distinctive digital texture unlike simple scaling or inversion.
 2. **Shift sweep**: Move Shift from 0% to 100%. At zero, no rotation occurs. Each step introduces a new rotation amount, and the visual output changes dramatically at each binary step — the mapping is highly nonlinear.
@@ -328,9 +350,6 @@ These exercises progress from basic XOR noise through channel permutation to com
 
 ## Tips
 
-- **XOR is reversible**: If you can recreate the same LFSR sequence (same Key, same frame position), XOR'ing the scrambled output a second time recovers the original image exactly. Route the output back through a second Cipher instance with identical settings as a visual proof.
-- **Depth before Scramble**: Set Depth first to choose which bits participate, then use Scramble to fine-tune intensity. Depth is the coarse control (eight steps), Scramble is the fine attenuator.
-- **Block mode for structure**: Stream mode creates noise; Block mode creates mosaics. When compositing Cipher's output with other programs, Block mode tends to produce more visually coherent results because adjacent pixels share the same transformation.
 - **Permute preserves energy**: Unlike XOR, Permute mode doesn't add or remove information — it rearranges it. This makes Permute-mode output excellent for feedback loops, as the signal energy doesn't grow or decay.
 - **Invert doubles your palette**: Every Mode × Channels combination produces a different visual texture. Toggling Invert effectively doubles the number of available textures to 32 distinct configurations (4 modes × 4 channel selections × 2 invert states).
 - **Feedback drift**: Low feedback (10–30%) creates slow textural evolution. High feedback (>60%) rapidly pushes toward noise saturation. The sweet spot for interesting temporal patterns is usually 20–40%.
@@ -355,6 +374,7 @@ These exercises progress from basic XOR noise through channel permutation to com
 | **Seed** | The initial state loaded into the LFSR before sequence generation begins; different seeds produce different pseudo-random sequences. |
 | **Stream cipher** | A cryptographic algorithm that encrypts data one element at a time using a keystream; Cipher's stream mode applies this principle per-pixel. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ and 0 when they match; the fundamental reversible operation underlying all of Cipher's scrambling modes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At low density with large tuft sizes, Chenille produces bold polka-dot fields th
 
 ---
 
+## Quick Start
+
+1. **Hex for realism**: The hexagonal tiling mode produces the most fabric-like result because it eliminates the rigid horizontal and vertical seams of the square grid. Use it as the default starting point.
+2. **Softness shapes the character**: Even small adjustments to Softness dramatically change the feel — hard edges read as mechanical dots, soft edges read as plush pile. Start around 40% and adjust to taste.
+3. **Pile Height and Shading are partners**: Pile Height has minimal visual impact in Flat mode. Switch to Lit mode before adjusting it, so the brightness boost is shaped into a convincing directional gradient.
+
+---
+
 ## Background
 
 ### Chenille Fabric and Pile Texture
@@ -143,7 +151,7 @@ The pipeline's key decision happens at clock 2: the Manhattan distance test clea
 | Default | 50% |
 | Suffix | % |
 
-Controls the radius threshold that determines how large each tuft dot appears within its grid cell. At minimum, tufts shrink to single-pixel points barely visible against the dimmed backing. At maximum, tufts expand to fill nearly the entire cell, leaving only thin dark seams between adjacent dots. The sweet spot for a convincing chenille texture is around 40–60%, where the tufts are large enough to carry shading detail but small enough to show the grid structure.
+At minimum, tufts shrink to single-pixel points barely visible against the dimmed backing. At maximum, tufts expand to fill nearly the entire cell, leaving only thin dark seams between adjacent dots. The sweet spot for a convincing chenille texture is around 40–60%, where the tufts are large enough to carry shading detail but small enough to show the grid structure. Internally, controls the radius threshold that determines how large each tuft dot appears within its grid cell.
 
 ---
 
@@ -206,8 +214,8 @@ Controls how sharply the tuft brightness falls off toward its edges. At minimum 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Pattern** | Grid | Hex |
-| **8 — Color** | Mono | Warm |
+| **7 — Pattern** | Grid | Offset |
+| **8 — Color** | Mono | Source |
 | **9 — Shading** | Flat | Lit |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -225,7 +233,29 @@ The five toggles divide into three functional groups: visual style (Pattern and 
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed chenille texture and the original video signal. At 100%, the output is fully processed — tufts, shading, and color tinting are all visible. As the fader descends toward 0%, the original video increasingly shows through, blending with the textured version. Intermediate positions create a ghostly overlay effect where the grid of tufts is visible but the original image detail is still readable beneath.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chenille processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Chenille-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -248,7 +278,7 @@ These three exercises move from basic grid exploration through directional shadi
 *Dot Grid Fundamentals — simulated result across source images.*
 **Source**: A live camera feed or any footage with recognizable mid-tone content — avoid very dark or very bright material.
 
-**Objective**: Understand how Tuft Size, Density, and Softness interact to define the basic chenille texture grid.
+**What You'll Create**: Understand how Tuft Size, Density, and Softness interact to define the basic chenille texture grid.
 
 1. **Reveal the grid**: Set Density to ~40% and Tuft Size to ~50%. A regular grid of dots should appear over the source video.
 2. **Size vs. density**: Sweep Tuft Size from minimum to maximum while watching how the dots grow and shrink within their cells. Then sweep Density to change the cell size itself.
@@ -275,7 +305,7 @@ These three exercises move from basic grid exploration through directional shadi
 *Directional Shading and Pile Height — simulated result across source images.*
 **Source**: Portrait or still life with smooth tonal gradients and soft lighting.
 
-**Objective**: Explore the directional shading model and how Pile Height controls the three-dimensional illusion.
+**What You'll Create**: Explore the directional shading model and how Pile Height controls the three-dimensional illusion.
 
 1. **Enable lighting**: Set Shading to Lit. With Pile Height low, the effect is subtle.
 2. **Raise the pile**: Slowly increase Pile Hght from 0% to ~70%. Watch each dot develop a highlight-to-shadow gradient.
@@ -303,7 +333,7 @@ These three exercises move from basic grid exploration through directional shadi
 *Animated Textile Synthesis — simulated result across source images.*
 **Source**: Saturated, high-contrast footage — color bars, graphics, or the macaw image.
 
-**Objective**: Combine color tinting, animation, and all shading parameters to create a living textile surface.
+**What You'll Create**: Combine color tinting, animation, and all shading parameters to create a living textile surface.
 
 1. **Warm palette**: Set Color to Warm and observe how tufts take on an amber glow regardless of source color.
 2. **Cool contrast**: Switch to Cool for a cyan-blue tint. Compare the emotional quality of warm vs. cool.
@@ -319,9 +349,6 @@ These three exercises move from basic grid exploration through directional shadi
 
 ## Tips
 
-- **Hex for realism**: The hexagonal tiling mode produces the most fabric-like result because it eliminates the rigid horizontal and vertical seams of the square grid. Use it as the default starting point.
-- **Softness shapes the character**: Even small adjustments to Softness dramatically change the feel — hard edges read as mechanical dots, soft edges read as plush pile. Start around 40% and adjust to taste.
-- **Pile Height and Shading are partners**: Pile Height has minimal visual impact in Flat mode. Switch to Lit mode before adjusting it, so the brightness boost is shaped into a convincing directional gradient.
 - **Color Variance for textile realism**: Real dyed fabrics never have perfectly uniform color. Even a small amount of Color Variance (10–20%) adds the subtle dye-lot variation that makes the texture feel handmade.
 - **Low density for bold dots**: Setting Density below 30% creates large, isolated dots that work well as a graphic overlay — almost like a Ben-Day dot screen from comic book printing.
 - **Animate for living fabric**: The animation drift is subtle by design. It works best in combination with Lit shading, where the moving grid creates shimmering highlight patterns as tufts pass under the virtual light source.
@@ -334,9 +361,7 @@ These three exercises move from basic grid exploration through directional shadi
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA used for look-up tables, line buffers, and data storage. |
 | **Dot product** | A mathematical operation that multiplies corresponding components of two vectors and sums the results, used here to compute directional shading across each tuft. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that implements the video processing pipeline in hardware. |
 | **Halftone** | A printing technique that simulates continuous tone using a grid of variably-sized dots, visually related to Chenille's dot-grid texture. |
 | **LUT** | Look-Up Table; a pre-computed array that maps input values to output values, enabling fast function evaluation in hardware. |
 | **Manhattan distance** | A distance metric computed as |dx| + |dy|, producing diamond-shaped contours rather than circles; used to determine tuft boundaries. |
@@ -344,6 +369,7 @@ These three exercises move from basic grid exploration through directional shadi
 | **Pile** | In textiles, the raised surface of cut or looped fibers standing upright from a backing fabric; the physical phenomenon Chenille's shading model simulates. |
 | **Spatial quantization** | The process of dividing a continuous coordinate space into discrete cells, each treated as an independent unit for processing. |
 | **Voronoi tessellation** | A partition of a plane into regions based on proximity to a set of seed points, related to Chenille's cell-based grid decomposition. |
-| **YUV** | A color space that separates luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

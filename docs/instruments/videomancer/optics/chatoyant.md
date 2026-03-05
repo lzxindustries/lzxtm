@@ -68,6 +68,14 @@ At subtle settings, Chatoyant adds a delicate specular sheen — a luminous stri
 
 ---
 
+## Quick Start
+
+1. **Start with Star mode**: Horizontal streaks are the easiest to understand. Place the band across a face or landscape horizon, then experiment with width and intensity before moving to free mode.
+2. **Source brightness matters**: The highlight is multiplicative with source luma — it boosts what is already bright. Feed high-contrast material for the most dramatic results; low-contrast sources produce subtler, more diffuse highlights.
+3. **Falloff shapes the character**: A sharp falloff with narrow width creates a laser-thin specular line. A gradual falloff with wide width creates a soft bloom. The combination of these two knobs determines whether the effect reads as a sharp reflection or a glowing aura.
+
+---
+
 ## Background
 
 ### Chatoyancy and Asterism in Gemology
@@ -94,6 +102,8 @@ Real chatoyant highlights are rarely pure white. Tiger's eye produces warm golde
 ---
 
 ## Signal Flow
+
+Input Register → Address Compute → Gradient → Highlight Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -168,7 +178,7 @@ The colour tinting in stage 6 only activates when the boost exceeds 16 (out of 1
 | Default | 50% |
 | Suffix | % |
 
-Controls the width of the specular streak band — the spatial extent of the highlight region measured perpendicular to the streak axis. At minimum the band is just a few pixels wide, producing a razor-thin line of light. As the knob is advanced, the band widens into a broad luminous swathe that covers a significant portion of the frame. The width is applied symmetrically around the streak centre, with the Falloff parameter controlling how the highlight intensity tapers toward the edges. A wide streak with soft falloff produces a diffuse glow; a narrow streak with sharp falloff produces a hard specular line. The width value also determines the position of the centre-to-edge transition zone — pixels within the inner half receive full highlight, while those in the outer half are attenuated.
+At minimum the band is just a few pixels wide, producing a razor-thin line of light. As the knob is advanced, the band widens into a broad luminous swathe that covers a significant portion of the frame. The width is applied symmetrically around the streak centre, with the Falloff parameter controlling how the highlight intensity tapers toward the edges. A wide streak with soft falloff produces a diffuse glow; a narrow streak with sharp falloff produces a hard specular line. The width value also determines the position of the centre-to-edge transition zone — pixels within the inner half receive full highlight, while those in the outer half are attenuated. Internally, controls the width of the specular streak band — the spatial extent of the highlight region measured perpendicular to the streak axis.
 
 ---
 
@@ -179,7 +189,7 @@ Controls the width of the specular streak band — the spatial extent of the hig
 | Default | 90° |
 | Suffix | ° |
 
-Sets the angular orientation of the streak axis across the frame. At 0° the streak aligns with one edge; at 180° it has swept to the opposite orientation. In the free Gem Type mode (Tigers), this knob continuously varies the slope of the streak line by controlling how much horizontal pixel position contributes to the streak's effective vertical coordinate. The angle is discretized into eight slope levels internally — enough for a visually smooth sweep but implemented via shift operations rather than a full trigonometric computation. In the locked Gem Type modes (Star, Moon, Opal), this control influences the streak position along the locked axis, allowing placement adjustment within the constrained orientation.
+At 0° the streak aligns with one edge; at 180° it has swept to the opposite orientation. In the free Gem Type mode (Tigers), this knob continuously varies the slope of the streak line by controlling how much horizontal pixel position contributes to the streak's effective vertical coordinate. The angle is discretized into eight slope levels internally — enough for a visually smooth sweep but implemented via shift operations rather than a full trigonometric computation. In the locked Gem Type modes (Star, Moon, Opal), this control influences the streak position along the locked axis, allowing placement adjustment within the constrained orientation. Internally, sets the angular orientation of the streak axis across the frame.
 
 ---
 
@@ -201,7 +211,7 @@ Sets the brightness threshold that determines how much luma boost the highlight 
 | Default | 50% |
 | Suffix | % |
 
-Controls the highlight edge softness — how rapidly the specular boost attenuates as pixel distance increases from the streak centre toward the band edge. At low values the falloff is sharp: the highlight drops off steeply, producing a hard-bordered stripe with a distinct boundary against the unaffected background. At high values the falloff is gradual: the highlight feathers gently outward, creating a soft luminous glow that blends smoothly into the surrounding image. The falloff is implemented as a shift-based attenuation — four discrete softness levels that progressively halve the highlight contribution in the outer half of the streak band. Combined with the streak width, this control shapes the perceived sharpness of the chatoyant band.
+At low values the falloff is sharp: the highlight drops off steeply, producing a hard-bordered stripe with a distinct boundary against the unaffected background. At high values the falloff is gradual: the highlight feathers gently outward, creating a soft luminous glow that blends smoothly into the surrounding image. The falloff is implemented as a shift-based attenuation — four discrete softness levels that progressively halve the highlight contribution in the outer half of the streak band. Combined with the streak width, this control shapes the perceived sharpness of the chatoyant band. Internally, controls the highlight edge softness — how rapidly the specular boost attenuates as pixel distance increases from the streak centre toward the band edge.
 
 ---
 
@@ -231,8 +241,8 @@ Shifts the colour temperature of the specular highlight by controlling how much 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Gem Type** | Tigers | Star |
-| **8 — Streaks** | 1 | 2 |
+| **7 — Gem Type** | Tigers | Opal |
+| **8 — Streaks** | 1 | 6 |
 | **9 — Color Hlt** | Off | On |
 | **10 — Anim** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -251,6 +261,21 @@ The five toggle switches address independent aspects of the streak's character. 
 | Suffix | % |
 
 Crossfades between the dry input signal and the specular-highlighted signal. At 0% (fader down), the output is pure dry — no streak is visible. At 100% (fader up), the output is fully processed — the highlight band appears at full intensity. Intermediate positions blend the two, letting you dial in the desired prominence of the chatoyant effect. This is the master intensity control: even with strong highlight settings, a low mix value keeps the effect subtle. At full mix, the streak dominates the image and the dry signal disappears entirely into the specular composition.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Chatoyant processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -273,7 +298,7 @@ These exercises build from a simple single-streak highlight through multi-mode e
 *Single Specular Band — simulated result across source images.*
 **Source**: A portrait or still life with clear tonal gradients — smooth skin, fabric folds, or polished surfaces.
 
-**Objective**: Understand how the streak width, position, intensity, and mix controls shape a basic specular highlight.
+**What You'll Create**: Understand how the streak width, position, intensity, and mix controls shape a basic specular highlight.
 
 1. **Position the streak**: Set Gem Type to Star (horizontal). Turn Streak L (Position) to ~50% to place the streak near the centre of the frame. Push Mix to ~70%.
 2. **Set width**: Turn Streak W to ~40%. A luminous horizontal band appears across the image, brightest where the source is bright.
@@ -300,7 +325,7 @@ These exercises build from a simple single-streak highlight through multi-mode e
 *Gem Modes and Colour Tinting — simulated result across source images.*
 **Source**: Colourful footage with strong edges — a garden scene, textured fabrics, or stained glass.
 
-**Objective**: Explore the four Gem Type orientations and add warm or cool chromatic tinting to the specular band.
+**What You'll Create**: Explore the four Gem Type orientations and add warm or cool chromatic tinting to the specular band.
 
 1. **Prepare baseline**: Set Streak W ~50%, Threshold ~60%, Mix ~75%. Start with Gem Type = Tigers (free mode).
 2. **Sweep the angle**: Turn Axis Ang slowly from 0° to 180°. The streak tilts across the frame, pivoting through various diagonals.
@@ -329,7 +354,7 @@ These exercises build from a simple single-streak highlight through multi-mode e
 *Animated Asterism — simulated result across source images.*
 **Source**: A high-contrast scene with mixed bright and dark areas — city lights at night, a sunlit landscape, or stage lighting.
 
-**Objective**: Combine double-streak mirroring with animated sweep to create a shimmering asterism effect reminiscent of a star sapphire.
+**What You'll Create**: Combine double-streak mirroring with animated sweep to create a shimmering asterism effect reminiscent of a star sapphire.
 
 1. **Prepare twin streaks**: Set Streak W ~35%, Threshold ~70%, Mix ~80%. Enable Streaks = 2 (double streak). A mirrored pair of bands appears, symmetric about the frame centre.
 2. **Start animation**: Toggle Anim on. The streak pair begins a slow bounce sweep, drifting from the centre toward the edges and back.
@@ -345,9 +370,6 @@ These exercises build from a simple single-streak highlight through multi-mode e
 
 ## Tips
 
-- **Start with Star mode**: Horizontal streaks are the easiest to understand. Place the band across a face or landscape horizon, then experiment with width and intensity before moving to free mode.
-- **Source brightness matters**: The highlight is multiplicative with source luma — it boosts what is already bright. Feed high-contrast material for the most dramatic results; low-contrast sources produce subtler, more diffuse highlights.
-- **Falloff shapes the character**: A sharp falloff with narrow width creates a laser-thin specular line. A gradual falloff with wide width creates a soft bloom. The combination of these two knobs determines whether the effect reads as a sharp reflection or a glowing aura.
 - **Gradient for texture**: Turn Hue Tint past centre to fold vertical edge energy into the highlight. This makes the streak respond to surface detail — fabric weave, hair strands, architectural lines — rather than raw brightness alone.
 - **Double for symmetry**: Double streak creates instant symmetry without needing to duplicate any processing. The two bands share the same width, intensity, and colour settings, so the look remains balanced.
 - **Animate for life**: Even a slow sweep transforms a static highlight into a living shimmer. Combine animation with colour tinting for the full chatoyant experience — a warm band drifting across the frame like light across a polished cabochon.
@@ -371,6 +393,7 @@ These exercises build from a simple single-streak highlight through multi-mode e
 | **Specular highlight** | A bright reflection of a light source on a surface, appearing as a localised region of increased brightness. |
 | **UV colour plane** | The two-dimensional space defined by the U and V chrominance axes, in which hue and saturation are represented independently of brightness. |
 | **Vertical gradient** | The absolute difference in luminance between a pixel and the pixel directly above it, used to detect horizontal edges and surface transitions. |
-| **YUV** | A colour model that separates luminance (Y) from two chrominance components (U and V), widely used in video signal processing. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

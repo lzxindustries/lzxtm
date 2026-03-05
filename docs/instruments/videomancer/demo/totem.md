@@ -35,6 +35,14 @@ The name *Totem* refers to a carved totem pole — a vertical structure made of 
 
 ---
 
+## Quick Start
+
+1. **Start with Minimal**: Begin with the Minimal preset (single bar) to understand the basic per-scanline displacement before adding complexity with multi-bar presets.
+2. **Presets are the core creative tool**: Each preset's frequency and phase array produces a fundamentally different visual geometry. Explore all eight before tweaking other parameters.
+3. **Amplitude and frequency are complementary**: Low frequency + high amplitude = wide, gentle sine curves. High frequency + low amplitude = tight, dense oscillations. Both moderate = balanced complexity.
+
+---
+
 ## Background
 
 ### The Amiga Copper and Raster Effects
@@ -61,6 +69,8 @@ Totem uses a Direct Digital Synthesis (DDS) approach for animation: each bar mai
 ---
 
 ## Signal Flow
+
+Phase Update → Bar Position → Distance + Gradient → ... → Mix → Bypass
 
 ```
 Per Frame:
@@ -142,7 +152,7 @@ Controls the animation speed of the bar pattern. The value sets the DDS phase in
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the horizontal sweep amplitude — how far the bars travel from center. At zero, all bars sit at the center of the screen regardless of their sine position. As amplitude increases, the bars sweep wider, eventually reaching the edges of the frame. At maximum, the bars can travel well beyond the visible area, appearing only briefly as they cross the screen. The amplitude is applied as a multiplier on the sine lookup result.
+At zero, all bars sit at the center of the screen regardless of their sine position. As amplitude increases, the bars sweep wider, eventually reaching the edges of the frame. At maximum, the bars can travel well beyond the visible area, appearing only briefly as they cross the screen. The amplitude is applied as a multiplier on the sine lookup result. Internally, controls the horizontal sweep amplitude — how far the bars travel from center.
 
 ---
 
@@ -153,7 +163,7 @@ Controls the horizontal sweep amplitude — how far the bars travel from center.
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the sine oscillation frequency — how many complete sine cycles fit within the vertical extent of the screen. At low values, each bar traces a gentle, wide curve across the full screen height. At high values, each bar oscillates rapidly, creating many tight undulations within the frame. Combined with the preset's per-bar frequency multipliers, this control determines the spatial density of the bar pattern.
+At low values, each bar traces a gentle, wide curve across the full screen height. At high values, each bar oscillates rapidly, creating many tight undulations within the frame. Combined with the preset's per-bar frequency multipliers, this control determines the spatial density of the bar pattern. Internally, controls the sine oscillation frequency — how many complete sine cycles fit within the vertical extent of the screen.
 
 ---
 
@@ -164,7 +174,7 @@ Controls the sine oscillation frequency — how many complete sine cycles fit wi
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the width of each bar's gradient profile. At zero, bars are vanishingly thin and barely visible. As width increases, bars become broader with wider gradient falloff zones. At maximum, bars are very wide and their gradients overlap significantly even when their centers are far apart. The width is computed as `register >> 2`, giving a half-width in pixels. The gradient is linear: maximum brightness at center, falling to zero at the edges.
+At zero, bars are vanishingly thin and barely visible. As width increases, bars become broader with wider gradient falloff zones. At maximum, bars are very wide and their gradients overlap significantly even when their centers are far apart. The width is computed as `register >> 2`, giving a half-width in pixels. The gradient is linear: maximum brightness at center, falling to zero at the edges. Internally, controls the width of each bar's gradient profile.
 
 ---
 
@@ -194,9 +204,7 @@ Scales the overall brightness of the bar composite. Applied as a multiplier `(Y 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Preset** | Column | Braid |
-| **8 — Bar Count** | 4 Bars | 8 Bars |
-| **9 — Gradient** | Smooth | Hard |
+| **7 — Preset** | Column | Minimal |
 | **10 — Over Video** | Black | Add |
 | **11 — Bypass** | Off | On |
 
@@ -213,7 +221,29 @@ Toggle 7 selects from 8 motion presets that define frequency and phase relations
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix crossfade between the processed bar output and the delayed input signal. At 0%, the output is the unprocessed input. At 100%, the output is the full bar composite. Intermediate positions blend the bar pattern with the input at proportional intensity, allowing subtle overlays or faint bar textures without full replacement of the source signal.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Totem processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Totem-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -225,7 +255,7 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 
 <img src={totem_exercise1_result} alt="Single Oscillating Column result"/>
 *Single Oscillating Column — simulated result across source images.*
-**Objective**: Understand the basic per-scanline bar displacement mechanism and how speed, amplitude, and frequency shape the bar's path.
+**What You'll Create**: Understand the basic per-scanline bar displacement mechanism and how speed, amplitude, and frequency shape the bar's path.
 
 1. **Minimal preset**: Set Preset to Minimal (single bar only). Observe a single bright bar tracing a sine wave path.
 2. **Adjust amplitude**: Sweep Amplitude from 0% to maximum. Watch the bar path widen from a straight vertical line to a wide sinusoidal sweep.
@@ -242,7 +272,7 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 
 <img src={totem_exercise2_result} alt="Braided DNA Helix result"/>
 *Braided DNA Helix — simulated result across source images.*
-**Objective**: Explore phase relationships between bars and how they create the illusion of intertwining three-dimensional structure.
+**What You'll Create**: Explore phase relationships between bars and how they create the illusion of intertwining three-dimensional structure.
 
 1. **DNA preset**: Set Preset to DNA. Two groups of bars trace offset sine paths, creating a double-helix pattern.
 2. **Observe intersections**: Watch where the two groups cross — additive compositing creates bright white seams at the intersection points.
@@ -259,7 +289,7 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 
 <img src={totem_exercise3_result} alt="Chaos Over Video result"/>
 *Chaos Over Video — simulated result across source images.*
-**Objective**: Use the Chaos preset with Over Video mode to overlay complex non-repeating bar patterns on a live signal.
+**What You'll Create**: Use the Chaos preset with Over Video mode to overlay complex non-repeating bar patterns on a live signal.
 
 1. **Chaos preset**: Set Preset to Chaos. Incommensurate frequencies produce a non-repeating, constantly evolving pattern.
 2. **Over Video mode**: Switch Over Video to Add. The bars now overlay the incoming video (or a flat gray if no input).
@@ -275,9 +305,6 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 
 ## Tips
 
-- **Start with Minimal**: Begin with the Minimal preset (single bar) to understand the basic per-scanline displacement before adding complexity with multi-bar presets.
-- **Presets are the core creative tool**: Each preset's frequency and phase array produces a fundamentally different visual geometry. Explore all eight before tweaking other parameters.
-- **Amplitude and frequency are complementary**: Low frequency + high amplitude = wide, gentle sine curves. High frequency + low amplitude = tight, dense oscillations. Both moderate = balanced complexity.
 - **Bar width controls depth illusion**: Narrow bars with smooth gradients look like thin glowing wires. Wide bars look like translucent ribbons. The gradient profile is critical for the 3D cylinder illusion.
 - **Hue shift rotates without restructuring**: Hue Shift changes *which* colors appear on *which* bars, but never changes the spatial pattern. Use it to find color combinations that highlight the preset geometry.
 - **Over Video for augmented reality**: Add mode composites bars over live video, halving the input to prevent clipping. Reduce Brightness for subtle overlays.
@@ -302,6 +329,7 @@ These exercises explore Totem's Kefrens bar geometry, from a single oscillating 
 | **Preset** | A predefined set of frequency multipliers and phase offsets for all 8 bar layers, defining the visual geometry. |
 | **Raster Bars** | Horizontal color bars created by modifying palette registers per scanline; the predecessor to Kefrens bars. |
 | **Sine LUT** | A lookup table storing precomputed sine values, used to evaluate trigonometric functions efficiently in FPGA logic. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ The name *Fringe* refers both to the colour fringing that appears at luminance t
 
 ---
 
+## Quick Start
+
+1. **Start with Mono Source for artifact colour**: The most dramatic effect is CGA-style false colour from a monochrome source. Toggle Mono Source on, push Artifact and Cross Color high, and sweep Subcarrier to find the sweet spot where the pixel grid locks to the subcarrier.
+2. **Subcarrier rate is the key frequency control**: The Subcarrier knob determines the spatial frequency of all fringing patterns. Low rates produce broad colour washes; high rates produce fine moire. At certain rates, the subcarrier aligns with the source pixel grid to create stable false-colour patterns.
+3. **Narrow Chroma BW for vintage smear**: Push Chroma BW above 75% for the characteristic horizontal colour bleeding of cheap composite decoders. Combined with high Artifact, this produces the heavy chroma smear seen on worn VHS tapes and budget televisions.
+
+---
+
 ## Background
 
 ### NTSC Composite Video Encoding
@@ -173,7 +181,7 @@ The composite encoding uses a three-bit shift-add approximation rather than a ha
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the modulation depth of the simulated composite encoding — how much quadrature-modulated chroma is mixed into the luminance channel. At zero, no chroma modulation is added and the composite signal is pure luma, producing a clean output with no artifacts regardless of other settings. As Artifact increases, the chroma component grows stronger in the composite, producing progressively more visible fringing, rainbow moire, and cross-colour effects in the decoded output. At maximum, the chroma modulation is nearly full-scale, and the imperfect Y/C separation creates dramatic colour artifacts on every luminance transition. This is the master intensity control for the composite simulation — set it low for a subtle vintage wash, or push it high for aggressive CGA-era artifact colour.
+At zero, no chroma modulation is added and the composite signal is pure luma, producing a clean output with no artifacts regardless of other settings. As Artifact increases, the chroma component grows stronger in the composite, producing progressively more visible fringing, rainbow moire, and cross-colour effects in the decoded output. At maximum, the chroma modulation is nearly full-scale, and the imperfect Y/C separation creates dramatic colour artifacts on every luminance transition. This is the master intensity control for the composite simulation — set it low for a subtle vintage wash, or push it high for aggressive CGA-era artifact colour. Internally, controls the modulation depth of the simulated composite encoding — how much quadrature-modulated chroma is mixed into the luminance channel.
 
 ---
 
@@ -254,7 +262,19 @@ The five toggle switches split into two functional groups. Standard and Comb Fil
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the unprocessed input and the composite-artefacted output via three parallel interpolator units (one per YUV channel). At 0%, the output is pure dry input — no artifacts visible. At 100%, the output is fully processed through the composite simulation. Intermediate positions blend proportionally, allowing the artifact effect to be dialled in at any strength. The interpolator operates in the unsigned 10-bit domain with 4-clock pipelined multiply-accumulate, producing glitch-free crossfading at any position.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Fringe-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -277,7 +297,7 @@ These three exercises progressively explore the composite artifact space — fro
 *Composite Fringing on Colour Bars — simulated result across source images.*
 **Source**: Colour bar test pattern or any source with sharp vertical colour transitions — SMPTE bars, vertical stripes, or high-contrast graphics.
 
-**Objective**: Observe how the composite encode/decode cycle produces colour fringing at luminance transitions and understand the relationship between Artifact depth and Subcarrier rate.
+**What You'll Create**: Observe how the composite encode/decode cycle produces colour fringing at luminance transitions and understand the relationship between Artifact depth and Subcarrier rate.
 
 1. **Initialise**: Set all controls to default (Artifact 50%, Subcarrier 50%, Chroma BW 50%, Dot Crawl 2, Luma Notch 50%, Cross Color 25%, Standard NTSC, Comb Off, Mono Off, Edge Boost Off, Bypass Off, Mix 100%).
 2. **Observe fringing**: Look at sharp colour transitions — vertical edges should show rainbow fringing where the composite encode leaves residual chroma in the luma separation.
@@ -306,7 +326,7 @@ These three exercises progressively explore the composite artifact space — fro
 *Dot Crawl and Comb Filter Exploration — simulated result across source images.*
 **Source**: Graphic with large areas of flat colour separated by clean horizontal or diagonal edges — cartoon or anime footage works well, as does a simple two-colour split-screen.
 
-**Objective**: Understand how dot crawl shifts the fringing pattern and how the comb filter changes the artifact signature on different edge orientations.
+**What You'll Create**: Understand how dot crawl shifts the fringing pattern and how the comb filter changes the artifact signature on different edge orientations.
 
 1. **From Exercise 1 settings**: Artifact ~60%, Subcarrier ~50%, Mix 100%.
 2. **Enable comb filter**: Toggle Comb Filter on. Observe that vertical edges show less fringing (the comb cancels subcarrier well), but horizontal colour boundaries may show hanging-dot artifacts.
@@ -334,7 +354,7 @@ These three exercises progressively explore the composite artifact space — fro
 *CGA Artifact Colour Laboratory — simulated result across source images.*
 **Source**: High-contrast monochrome source — black and white text, geometric line patterns, dithered pixel art, or checkerboard test pattern.
 
-**Objective**: Reproduce the CGA/NES artifact colour effect where false colour emerges from pure luminance detail through the composite encode/decode process.
+**What You'll Create**: Reproduce the CGA/NES artifact colour effect where false colour emerges from pure luminance detail through the composite encode/decode process.
 
 1. **Enable Mono Source**: Toggle Mono Source on. All incoming colour is stripped — the composite encodes only luminance.
 2. **Set high Artifact**: Push Artifact to ~90%. Maximum modulation depth creates the strongest composite signal.
@@ -352,9 +372,6 @@ These three exercises progressively explore the composite artifact space — fro
 
 ## Tips
 
-- **Start with Mono Source for artifact colour**: The most dramatic effect is CGA-style false colour from a monochrome source. Toggle Mono Source on, push Artifact and Cross Color high, and sweep Subcarrier to find the sweet spot where the pixel grid locks to the subcarrier.
-- **Subcarrier rate is the key frequency control**: The Subcarrier knob determines the spatial frequency of all fringing patterns. Low rates produce broad colour washes; high rates produce fine moire. At certain rates, the subcarrier aligns with the source pixel grid to create stable false-colour patterns.
-- **Narrow Chroma BW for vintage smear**: Push Chroma BW above 75% for the characteristic horizontal colour bleeding of cheap composite decoders. Combined with high Artifact, this produces the heavy chroma smear seen on worn VHS tapes and budget televisions.
 - **Cross Color amplifies everything**: Even modest Cross Color settings (×1.25) noticeably boost artifact visibility. At ×2, every luminance transition becomes a vivid colour event. Use with restraint for subtle vintage effects, or push maximum for aggressive false colour.
 - **Comb filter for cleaner luma**: When you want composite artifacts on the chroma side but relatively sharp luma, enable the Comb Filter. It preserves luma detail better than the notch filter at the cost of occasional hanging-dot artifacts on horizontal colour boundaries.
 - **Edge Boost before Mono Source**: Enable Edge Boost before Mono Source to maximise the high-frequency content entering the composite encoder. The sharpened luma edges produce stronger false-colour patterns than a standard monochrome input.
@@ -376,11 +393,12 @@ These three exercises progressively explore the composite artifact space — fro
 | **DDS (Direct Digital Synthesis)** | A frequency generation technique using a fixed-width accumulator incremented by a tuning word, producing seamless cyclical phase progression. |
 | **Dot crawl** | A visible pattern of shimmering coloured dots along colour boundaries in composite video, caused by frame-to-frame subcarrier phase shifts. |
 | **IIR (Infinite Impulse Response)** | A filter topology where the output depends on both current input and previous filter state, producing exponential convergence with minimal hardware. |
-| **Interpolator** | A pipelined hardware crossfade unit that blends two signals by a configurable ratio, used for wet/dry mixing. |
 | **Notch filter** | A Y/C separation technique that averages adjacent samples to attenuate the subcarrier, simpler than a comb filter but with greater luma softening. |
 | **NTSC (National Television System Committee)** | The analogue colour television standard used in North America and Japan, characterised by a 3.58 MHz colour subcarrier using I/Q quadrature modulation. |
 | **PAL (Phase Alternating Line)** | The analogue colour television standard used in Europe and Australasia, characterised by V-axis phase inversion on alternate lines to reduce colour phase errors. |
 | **Quadrature modulation** | Encoding two signals on a single carrier by multiplying one by the carrier's cosine and the other by its sine, exploiting the 90° phase orthogonality for independent recovery. |
 | **Rainbow moire** | A characteristic diagonal rainbow pattern in composite video caused by interaction between fine horizontal luma detail and the colour subcarrier frequency. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

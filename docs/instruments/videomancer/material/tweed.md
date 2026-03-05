@@ -68,6 +68,14 @@ At conservative settings Tweed adds a subtle woven texture to any video source, 
 
 ---
 
+## Quick Start
+
+1. **Zigzag W and Band Hght ratio**: The visual proportion of the chevron pattern is determined by the ratio between stripe width and band height. Equal values produce 45-degree chevrons. Increasing band height relative to stripe width flattens the zigzag.
+2. **Subtle overlay**: Use Mix at ~50–60% to overlay the tweed texture on source video without completely obscuring the content. This creates a convincing "viewed through fabric" effect.
+3. **Fleck density sweet spot**: Around 30–40% fleck density produces the most realistic tweed simulation. Higher densities overwhelm the weave structure with noise.
+
+---
+
 ## Background
 
 ### Herringbone Geometry
@@ -94,6 +102,8 @@ Tweed offers two palette modes for the weave color. The warm palette applies a b
 ---
 
 ## Signal Flow
+
+Input Register → Herringbone Stripe Test → Weave Color Compose → Contrast Adjust + Clamp
 
 ```
 Input Video (YUV 4:4:4)
@@ -212,8 +222,8 @@ Contrast boost for the final processed output. Expands luma values around the 51
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Weave** | Herring | Twill |
-| **8 — Palette** | Harris | Donegal |
+| **7 — Weave** | Herring | Plain |
+| **8 — Palette** | Harris | Source |
 | **9 — Flecks** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -231,7 +241,29 @@ Toggles 7–10 each control a single bit in the toggle register. Despite the TOM
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade mix. At 100%, the output is the fully processed tweed-textured signal. At 0%, the output is the unprocessed input. Intermediate values blend via three parallel interpolator_u instances (one per YUV channel) running over 4 clock cycles. This allows the tweed texture to be subtly overlaid on the source video rather than replacing it entirely.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Tweed processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Tweed-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -254,7 +286,7 @@ These exercises progress from basic herringbone geometry through color palette e
 *Herringbone Geometry — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with moderate brightness variation and recognizable subjects.
 
-**Objective**: Understand how stripe width and band height interact to define the herringbone chevron pattern.
+**What You'll Create**: Understand how stripe width and band height interact to define the herringbone chevron pattern.
 
 1. **Disable flecks**: Toggle Flecks Off to see the pure weave geometry.
 2. **Set mid-range weave visibility**: Weave Vis ~50% for balanced warp/weft.
@@ -282,7 +314,7 @@ These exercises progress from basic herringbone geometry through color palette e
 *Color Palettes and Tinting — simulated result across source images.*
 **Source**: Footage with varied color content — nature scenes, graphics, or multi-colored subjects.
 
-**Objective**: Compare warm and cool palette tints and explore how the warp/weft brightness modulation interacts with source video color.
+**What You'll Create**: Compare warm and cool palette tints and explore how the warp/weft brightness modulation interacts with source video color.
 
 1. **Set moderate weave**: Zigzag W ~50%, Band Hght ~50%, Weave Vis ~60%.
 2. **Warm palette**: Set Palette to Harris (warm brown tint). Notice the U/V shift adding earthy warmth.
@@ -310,7 +342,7 @@ These exercises progress from basic herringbone geometry through color palette e
 *Full Tweed Simulation — simulated result across source images.*
 **Source**: Footage with recognizable content — the fleck effect is most visible against identifiable subjects where scattered color spots contrast with the underlying image.
 
-**Objective**: Combine all stages — herringbone geometry, palette tinting, and color fleck scattering — to simulate a full tweed fabric overlay.
+**What You'll Create**: Combine all stages — herringbone geometry, palette tinting, and color fleck scattering — to simulate a full tweed fabric overlay.
 
 1. **Set the weave**: Zigzag W ~40%, Band Hght ~40%, Weave Vis ~50% for a medium-density herringbone.
 2. **Enable flecks**: Toggle Flecks On. Set Fleck Den ~40% for moderate density.
@@ -327,9 +359,6 @@ These exercises progress from basic herringbone geometry through color palette e
 
 ## Tips
 
-- **Zigzag W and Band Hght ratio**: The visual proportion of the chevron pattern is determined by the ratio between stripe width and band height. Equal values produce 45-degree chevrons. Increasing band height relative to stripe width flattens the zigzag.
-- **Subtle overlay**: Use Mix at ~50–60% to overlay the tweed texture on source video without completely obscuring the content. This creates a convincing "viewed through fabric" effect.
-- **Fleck density sweet spot**: Around 30–40% fleck density produces the most realistic tweed simulation. Higher densities overwhelm the weave structure with noise.
 - **Contrast for definition**: Moderate contrast (~50–70%) makes the weave visible without crushing the luma range. Lower contrast produces a softer, more muted textile feel.
 - **Cool palette for monochrome**: The cool grey palette combined with reduced fleck scatter creates a clean, modern herringbone pattern suitable for graphic compositions.
 - **Animation for motion graphics**: Enable Animate to scroll the weave pattern. Combined with a static source, this creates a fabric-pulling effect suitable for transitions or background textures.
@@ -344,12 +373,12 @@ These exercises progress from basic herringbone geometry through color palette e
 | **BT.601** | ITU-R BT.601, the standard defining the YUV color encoding used throughout the Videomancer video pipeline. |
 | **Fleck** | A small inclusion of contrasting-colored fiber in tweed fabric; simulated by LFSR-driven random chrominance scatter. |
 | **Herringbone** | A zigzag weave pattern created by reversing the diagonal direction in alternating horizontal bands; named after the skeletal structure of herring fish. |
-| **Interpolator** | A linear crossfade unit that blends between two values based on a mix parameter, used for wet/dry blending. |
 | **LFSR** | Linear Feedback Shift Register; a digital circuit that produces a pseudo-random binary sequence used for noise generation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Twill** | A weave pattern with uniform diagonal lines running in one direction without reversal; the non-zigzag counterpart to herringbone. |
 | **Warp** | The set of lengthwise threads on a loom; in Tweed, pixels classified as warp receive a slight brightness boost. |
 | **Weft** | The crosswise threads that interlace with the warp; in Tweed, weft pixels receive a slight brightness reduction. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

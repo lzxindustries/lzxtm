@@ -35,6 +35,14 @@ In Videomancer's FPGA implementation, up to 8 independent bars are rendered per 
 
 ---
 
+## Quick Start
+
+1. **Start with Gradient**: The tube-like shading makes individual bars much easier to distinguish, especially with multiple overlapping bars.
+2. **Rainbow needs multiple bars**: A single bar with rainbow enabled still only shows one hue — use 4+ bars to see the full spectral effect.
+3. **Mirror doubles density cheaply**: Enable Mirror to double the visual bar count without consuming additional processing resources.
+
+---
+
 ## Background
 
 ### Copper Bars and the Amiga
@@ -196,6 +204,10 @@ The five toggles configure the bar appearance and rendering mode. Gradient switc
 
 Mix crossfades between the dry input and the processed bar output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate positions blend the bars over the source material for overlay effects.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -206,7 +218,7 @@ These exercises progress from a single monochrome bar to a full rainbow copper-b
 
 <img src={kefrens_exercise1_result} alt="Single Gradient Bar result"/>
 *Single Gradient Bar — simulated result across source images.*
-**Objective**: Produce a single smoothly oscillating gradient bar to study the core shading and animation mechanics.
+**What You'll Create**: Produce a single smoothly oscillating gradient bar to study the core shading and animation mechanics.
 
 1. Set Bars to 1.
 2. Set Gradient to Grad for tube-like shading.
@@ -227,7 +239,7 @@ These exercises progress from a single monochrome bar to a full rainbow copper-b
 
 <img src={kefrens_exercise2_result} alt="Full Rainbow Stack result"/>
 *Full Rainbow Stack — simulated result across source images.*
-**Objective**: Create the iconic multi-bar rainbow copper bar effect with maximum visual density.
+**What You'll Create**: Create the iconic multi-bar rainbow copper bar effect with maximum visual density.
 
 1. Set Bars to 8 for maximum bar count.
 2. Enable Rainbow for spectral colour cycling.
@@ -247,7 +259,7 @@ These exercises progress from a single monochrome bar to a full rainbow copper-b
 
 <img src={kefrens_exercise3_result} alt="Mirrored Video Overlay result"/>
 *Mirrored Video Overlay — simulated result across source images.*
-**Objective**: Layer mirrored rainbow bars over live video input for a performance-ready composite.
+**What You'll Create**: Layer mirrored rainbow bars over live video input for a performance-ready composite.
 
 1. Keep the Exercise 2 rainbow stack running.
 2. Enable Mirror for vertical symmetry.
@@ -265,9 +277,6 @@ These exercises progress from a single monochrome bar to a full rainbow copper-b
 
 ## Tips
 
-- **Start with Gradient**: The tube-like shading makes individual bars much easier to distinguish, especially with multiple overlapping bars.
-- **Rainbow needs multiple bars**: A single bar with rainbow enabled still only shows one hue — use 4+ bars to see the full spectral effect.
-- **Mirror doubles density cheaply**: Enable Mirror to double the visual bar count without consuming additional processing resources.
 - **Width vs Amplitude**: Wide bars with small amplitude create a screen-filling colour wash; thin bars with large amplitude create dynamic weaving patterns.
 - **Use Mod Video with faces**: High-contrast faces or silhouettes create dramatic video-shaped windows into the bar animation.
 - **Frequency as texture**: High frequency values create a textured, almost static-looking pattern as quick oscillations blend into standing waves.

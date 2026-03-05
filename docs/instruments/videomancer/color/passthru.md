@@ -50,6 +50,14 @@ With all controls at center and all toggles off, the output is identical to the 
 
 ---
 
+## Quick Start
+
+1. **Start here**: Passthru is the simplest program in the Videomancer library. Use it to learn the control surface and understand YUV signal structure before exploring more complex programs.
+2. **Proc amp calibration**: Use Brightness and Contrast with a known test pattern to calibrate your output levels before recording or patching into downstream equipment.
+3. **Per-channel inversion is not hue rotation**: Inverting U or V mirrors one chroma axis. The Hue knob cross-blends both axes. These are geometrically different operations in color space.
+
+---
+
 ## Background
 
 ### What Is a Proc Amp?
@@ -72,6 +80,8 @@ Setting both chroma channels to the midpoint value (512) removes all color infor
 ---
 
 ## Signal Flow
+
+Y Channel → U Channel → V Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -202,7 +212,29 @@ The five toggles provide binary processing options. Toggles 7–9 invert individ
 | Default | 100.0% |
 | Suffix | % |
 
-Mix. Wet/dry crossfade between the processed signal and the original input. At 100% (fully clockwise), the output is entirely the processed signal. At 0% (fully counter-clockwise), the output is the unprocessed input — functionally identical to Bypass but with a smooth transition. Intermediate positions blend the two, useful for dialing back aggressive contrast or saturation settings without reconfiguring individual knobs.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Passthru processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Null 12
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Passthru-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -214,7 +246,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 **Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
-**Objective**: Learn how brightness and contrast interact in the proc amp formula and observe clipping behavior at extremes.
+**What You'll Create**: Learn how brightness and contrast interact in the proc amp formula and observe clipping behavior at extremes.
 
 1. **Baseline**: Confirm all knobs are centered and all toggles are off. The output should match the input.
 2. **Brightness sweep**: Slowly turn Brightness clockwise. Watch shadows lift toward gray. Now sweep counter-clockwise past center — highlights crush toward black.
@@ -230,7 +262,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 **Source**: Footage with strong, varied colors — flowers, painted surfaces, or color bars.
 
-**Objective**: Explore saturation, per-channel inversion, and monochrome mode to understand YUV color space.
+**What You'll Create**: Explore saturation, per-channel inversion, and monochrome mode to understand YUV color space.
 
 1. **Saturate**: Sweep Saturation clockwise past center. Colors become more vivid. Note how luminance is unaffected — brightness doesn't change, only color intensity.
 2. **Desaturate**: Sweep Saturation counter-clockwise. Colors fade. Compare with Mono toggle.
@@ -247,7 +279,7 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 **Source**: Any live or recorded video with moderate contrast and color.
 
-**Objective**: Use Mix, Bypass, and combined settings to understand the full signal chain and gain confidence with A/B comparison.
+**What You'll Create**: Use Mix, Bypass, and combined settings to understand the full signal chain and gain confidence with A/B comparison.
 
 1. **Aggressive processing**: Set Brightness ~70%, Contrast ~80%, Saturation ~30%. Enable Invert Y.
 2. **Mix blend**: Slowly lower Mix from 100% toward 0%. Watch the processed signal fade into the original input.
@@ -263,9 +295,6 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ## Tips
 
-- **Start here**: Passthru is the simplest program in the Videomancer library. Use it to learn the control surface and understand YUV signal structure before exploring more complex programs.
-- **Proc amp calibration**: Use Brightness and Contrast with a known test pattern to calibrate your output levels before recording or patching into downstream equipment.
-- **Per-channel inversion is not hue rotation**: Inverting U or V mirrors one chroma axis. The Hue knob cross-blends both axes. These are geometrically different operations in color space.
 - **Mono is absolute**: The Mono toggle hard-clamps chroma to 512. It is not the same as setting Saturation to zero (which approaches but may not reach exactly 512 due to rounding).
 - **Mix for subtle correction**: Instead of dialing back Contrast or Saturation, make aggressive settings and use the Mix fader to blend the result against the original. This often produces more natural-looking corrections.
 - **Bypass for live performance**: Switch 11 gives instant, glitch-free A/B comparison. Assign it to a convenient position on your control surface for rapid toggling during live sets.
@@ -282,13 +311,12 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 | **Chroma** | The color-difference components (U and V) of a YUV video signal, encoding hue and saturation information. |
 | **Clipping** | When a signal value exceeds the representable range (0–1023), it is clamped to the boundary value, losing detail. |
 | **Contrast** | A gain factor applied around the midpoint (512), expanding or compressing the luminance range. |
-| **Interpolator** | A hardware module that performs linear crossfading between two input values, used here for wet/dry mix. |
 | **Inversion** | Computing the complement of a signal value: `1023 − value`. Flips bright to dark (Y) or shifts colors to their complements (U, V). |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Mono** | Monochrome mode, achieved by clamping both chroma channels to the midpoint (512). |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness, contrast, and saturation adjustment to a video signal. |
 | **Saturation** | The intensity of color in a video signal, controlled by applying gain to the U and V chroma channels around their midpoint. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

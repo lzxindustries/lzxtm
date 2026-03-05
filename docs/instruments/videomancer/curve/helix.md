@@ -35,6 +35,14 @@ At conservative settings — low frequencies, wide beam, high afterglow — Heli
 
 ---
 
+## Quick Start
+
+1. **Frequency ratios are the key**: The visual complexity of a Lissajous figure is entirely determined by the ratio of Freq X to Freq Y. Start with simple ratios (1:1, 2:1, 3:2) and gradually increase complexity.
+2. **Afterglow is accumulative**: High afterglow values cause the screen to fill over time. If the image becomes too dense, briefly set Afterglow to zero to clear the buffer, then raise it again.
+3. **Phase Link creates coupled animation**: With Phase Link enabled, Hue Shift simultaneously rotates the color palette and the curve's spatial orientation — one knob drives two visual transformations.
+
+---
+
 ## Background
 
 ### What Are Lissajous Figures?
@@ -57,6 +65,8 @@ Helix animates its curves using a **phase accumulator** — a register that incr
 ---
 
 ## Signal Flow
+
+Phase Accumulator Update → Parametric Sample Loop → Coordinate Setup → ... → Output Compose → Interpolator × 3
 
 ```
 Vertical Blanking ──────────────────────────────────────────────
@@ -125,7 +135,7 @@ Sets the Y-axis frequency from 1 to 16, the coefficient $b$ in $Y(t) = \sin(b \c
 | Default | 20% |
 | Suffix | % |
 
-Controls the phase accumulator increment. At zero the curve is frozen in place — useful for studying a static Lissajous pattern. As Speed increases, the phase offset $\varphi$ advances faster each frame, causing the curve to rotate, breathe, and evolve. The visual effect depends strongly on the frequency ratio: integer ratios produce periodic rotations while non-integer ratios produce aperiodic drift. High Speed values combined with high afterglow create dense, glowing traces that fill the screen.
+At zero the curve is frozen in place — useful for studying a static Lissajous pattern. As Speed increases, the phase offset $\varphi$ advances faster each frame, causing the curve to rotate, breathe, and evolve. The visual effect depends strongly on the frequency ratio: integer ratios produce periodic rotations while non-integer ratios produce aperiodic drift. High Speed values combined with high afterglow create dense, glowing traces that fill the screen. Internally, controls the phase accumulator increment.
 
 ---
 
@@ -147,7 +157,7 @@ Sets the beam width — the distance from the curve within which pixels are illu
 | Default | 59% |
 | Suffix | % |
 
-Controls the IIR afterglow decay factor. At zero, only the current frame's beam is visible — no persistence. As afterglow increases, previous frames' beam positions fade more slowly, leaving glowing trails behind the moving curve. At maximum, the trails barely fade at all, and the screen fills with accumulated brightness over time. The IIR computation multiplies the previous glow value by the afterglow register and shifts right by 10 bits — at the maximum value of 1023, the decay is nearly unity and trails persist indefinitely.
+At zero, only the current frame's beam is visible — no persistence. As afterglow increases, previous frames' beam positions fade more slowly, leaving glowing trails behind the moving curve. At maximum, the trails barely fade at all, and the screen fills with accumulated brightness over time. The IIR computation multiplies the previous glow value by the afterglow register and shifts right by 10 bits — at the maximum value of 1023, the decay is nearly unity and trails persist indefinitely. Internally, controls the IIR afterglow decay factor.
 
 ---
 
@@ -187,6 +197,21 @@ Switches 7–10 control four independent aspects of the curve synthesis. Switch 
 
 Crossfades between the pass-through video input (dry) and the generated Lissajous/spiral output (wet) via three interpolator instances. At maximum the generated curve is at full strength on a black background. At minimum the output is the unmodified input video. Intermediate values superimpose the curve as a translucent overlay on the input signal — useful for compositing Lissajous graphics over live video.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Helix processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -197,7 +222,7 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 
 <img src={helix_exercise1_result} alt="Classic Lissajous Figures result"/>
 *Classic Lissajous Figures — simulated result across source images.*
-**Objective**: Explore how Freq X and Freq Y ratios determine the shape of Lissajous figures.
+**What You'll Create**: Explore how Freq X and Freq Y ratios determine the shape of Lissajous figures.
 
 1. **Circle**: Set Freq X to 1 and Freq Y to 1 with Speed at 0%. A stationary circle (or ellipse) appears at the center of the screen.
 2. **Figure-eight**: Change Freq X to 2 while keeping Freq Y at 1. The circle transforms into a figure-eight pattern.
@@ -214,7 +239,7 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 
 <img src={helix_exercise2_result} alt="Phosphor Afterglow and Beam Modes result"/>
 *Phosphor Afterglow and Beam Modes — simulated result across source images.*
-**Objective**: Understand how the IIR afterglow system creates persistence trails and how beam mode affects their appearance.
+**What You'll Create**: Understand how the IIR afterglow system creates persistence trails and how beam mode affects their appearance.
 
 1. **No afterglow**: Set Afterglow to 0%. Only the current frame's curve is visible — a sharp, flickering trace with no trail.
 2. **Short persistence**: Increase Afterglow to ~30%. A short tail appears behind the moving curve, like a P1 phosphor.
@@ -230,7 +255,7 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 
 <img src={helix_exercise3_result} alt="Rainbow Spirograph result"/>
 *Rainbow Spirograph — simulated result across source images.*
-**Objective**: Combine Spiral mode, Rainbow color, Phase Link, and high afterglow for maximum visual complexity.
+**What You'll Create**: Combine Spiral mode, Rainbow color, Phase Link, and high afterglow for maximum visual complexity.
 
 1. **Enable Spiral mode**: Switch Curve to Spiral. The fixed-radius Lissajous transforms into a spirograph rosette with oscillating amplitude.
 2. **Rainbow color**: Switch Color to Rainbow. The monochromatic green trace becomes a spectrum sweep from left to right.
@@ -247,9 +272,6 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 
 ## Tips
 
-- **Frequency ratios are the key**: The visual complexity of a Lissajous figure is entirely determined by the ratio of Freq X to Freq Y. Start with simple ratios (1:1, 2:1, 3:2) and gradually increase complexity.
-- **Afterglow is accumulative**: High afterglow values cause the screen to fill over time. If the image becomes too dense, briefly set Afterglow to zero to clear the buffer, then raise it again.
-- **Phase Link creates coupled animation**: With Phase Link enabled, Hue Shift simultaneously rotates the color palette and the curve's spatial orientation — one knob drives two visual transformations.
 - **Spiral mode breaks Lissajous symmetry**: Where Lissajous figures have uniform radii, Spiral mode creates rosettes with petals of varying size. This produces more organic, less geometric patterns.
 - **Beam width vs afterglow tradeoff**: Wide beams with high afterglow quickly saturate the screen to white. Use narrow beams when afterglow is high, or wide beams when afterglow is low.
 - **Feedback loops**: Routing Helix's output back to its input adds video-reactive brightness to the generated curves — the afterglow trails interact with themselves, creating evolving recursive patterns.
@@ -263,17 +285,15 @@ These exercises progress from a simple static Lissajous figure to a complex, col
 | Term | Definition |
 |------|------------|
 | **Afterglow** | The visible persistence of phosphor excitation after the electron beam has passed, simulated here via IIR feedback on a per-column brightness buffer. |
-| **BRAM** | Block RAM; dedicated memory within the FPGA fabric. Helix uses 5 BRAMs (2 for afterglow line buffers, 1 for curve sample storage, and sin/cos ROM). |
 | **DDS** | Direct Digital Synthesis; generating a periodic waveform by incrementing a phase accumulator and indexing a lookup table. |
 | **Falloff** | The rate at which beam brightness decreases with distance from the curve center; linear in Soft mode, step function in Hard mode. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on both current input and its own previous output. |
 | **Lissajous figure** | A parametric curve produced by combining two perpendicular sinusoidal motions at different frequencies; named after Jules Antoine Lissajous (1857). |
 | **LUT** | Lookup Table; a precomputed array of function values. Helix uses a 1024-entry sin/cos LUT for parametric curve evaluation. |
 | **Phase accumulator** | A register that increments by a fixed value per frame; its running total provides the continuously advancing phase for curve animation. |
 | **Phosphor persistence** | The duration a CRT phosphor continues to glow after excitation; Helix simulates this with IIR decay. |
-| **Pipeline** | Sequential processing stages where each completes in one clock cycle. Helix uses a 10-clock pipeline (6 stages + 4 interpolator). |
 | **Spirograph** | A geometric drawing toy that produces hypotrochoid and epitrochoid curves; Helix's Spiral mode produces similar rosette patterns. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

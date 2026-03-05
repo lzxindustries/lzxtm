@@ -35,6 +35,14 @@ Unlike traditional software implementations that run a game loop on a CPU, this 
 
 ---
 
+## Quick Start
+
+1. **Speed as difficulty**: The Drop Spd pot is the most direct difficulty control. Start slow to learn piece placement, then increase speed for challenge. The drop interval scales from approximately 60 frames at minimum to 4 frames at maximum.
+2. **Hard drop for precision**: Use the Drop toggle's rising edge for instant placement once you have positioned and rotated the piece. This avoids waiting for the auto-drop timer and allows rapid stacking.
+3. **Seed for repeatability**: In a performance context, setting Next Seed to a known position produces a repeatable piece sequence. Two Videomancers with identical seed settings will play the same game, enabling synchronized dual-screen compositions.
+
+---
+
 ## Background
 
 ### The Tetromino as Combinatorial Object
@@ -201,6 +209,10 @@ Toggle 7 provides a hard-drop trigger activated on its rising edge, instantly ad
 
 Crossfades between the dry input signal and the synthesized game output using three parallel interpolators (Y, U, V). At minimum, the output is pure input video with no game visible. At maximum, the output is the full Tetris rendering. Intermediate positions superimpose the game at partial opacity over the source footage, allowing the playfield to float transparently over live video — useful for picture-in-picture style compositions.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +223,7 @@ These exercises explore Tetris as a voltage-controlled visual instrument, progre
 
 <img src={tetris_exercise1_result} alt="First Lines result"/>
 *First Lines — simulated result across source images.*
-**Objective**: Clear three lines and observe the gravity mechanic and score counter.
+**What You'll Create**: Clear three lines and observe the gravity mechanic and score counter.
 
 1. **Set moderate speed**: Adjust Drop Spd to roughly one-third so pieces fall slowly enough to place deliberately.
 2. **Enable display aids**: Turn on Grid and Score so you can see cell boundaries and track progress.
@@ -228,7 +240,7 @@ These exercises explore Tetris as a voltage-controlled visual instrument, progre
 
 <img src={tetris_exercise2_result} alt="Rainbow Playfield result"/>
 *Rainbow Playfield — simulated result across source images.*
-**Objective**: Build a tall stack of partial rows to showcase the row-based hue gradient across the full playfield height.
+**What You'll Create**: Build a tall stack of partial rows to showcase the row-based hue gradient across the full playfield height.
 
 1. **Enable hue mode**: Set Color to Hue and adjust Field Hue to a starting offset you find visually appealing.
 2. **Slow the game down**: Set Drop Spd to minimum so pieces descend as slowly as possible.
@@ -245,7 +257,7 @@ These exercises explore Tetris as a voltage-controlled visual instrument, progre
 
 <img src={tetris_exercise3_result} alt="Transparent Overlay result"/>
 *Transparent Overlay — simulated result across source images.*
-**Objective**: Superimpose the Tetris playfield over a live video source using the Mix fader.
+**What You'll Create**: Superimpose the Tetris playfield over a live video source using the Mix fader.
 
 1. **Connect a video source**: Feed a camera or playback signal into the Videomancer input.
 2. **Set full game**: Ensure Bypass is Off and Mix is at 100%. The game renders at full opacity over black.
@@ -261,9 +273,6 @@ These exercises explore Tetris as a voltage-controlled visual instrument, progre
 
 ## Tips
 
-- **Speed as difficulty**: The Drop Spd pot is the most direct difficulty control. Start slow to learn piece placement, then increase speed for challenge. The drop interval scales from approximately 60 frames at minimum to 4 frames at maximum.
-- **Hard drop for precision**: Use the Drop toggle's rising edge for instant placement once you have positioned and rotated the piece. This avoids waiting for the auto-drop timer and allows rapid stacking.
-- **Seed for repeatability**: In a performance context, setting Next Seed to a known position produces a repeatable piece sequence. Two Videomancers with identical seed settings will play the same game, enabling synchronized dual-screen compositions.
 - **Hue as visual score**: Enable Color mode and leave rows partially filled. As the stack grows, the expanding rainbow gradient functions as a visual progress indicator — taller stacks reveal more of the color wheel.
 - **Grid lines for alignment**: Enable Grid when learning the game to see cell boundaries clearly. Disable it for a cleaner abstract composition where only the filled cells and piece are visible.
 - **Mix for compositing**: The fader allows Tetris to function as a video overlay. Set Mix to 50–70% to superimpose the game over live footage, creating an interactive picture-in-picture effect.
@@ -284,9 +293,10 @@ These exercises explore Tetris as a voltage-controlled visual instrument, progre
 | **Galois LFSR** | A linear feedback shift register using XOR taps on the output bit, producing a maximal-length pseudo-random sequence with compact logic. |
 | **Gravity** | The row-shifting mechanic that moves all rows above a cleared line down by one position, implemented as a sequential copy of the `std_logic_vector` array. |
 | **Hard Drop** | An edge-triggered action that immediately advances the active piece one row downward, bypassing the auto-drop timer. |
-| **Interpolator** | The `interpolator_u` entity that computes a linear interpolation between two 10-bit values, used for the wet/dry mix crossfade. |
 | **Playfield** | The 480×960 pixel region (10×20 cells of 48×48 pixels each) centered on screen where the game is rendered. |
 | **Tetromino** | A geometric shape composed of four unit squares connected edge-to-edge. Seven distinct tetrominoes (I, O, T, S, Z, L, J) comprise the standard piece set. |
 | **Tetromino ROM** | A constant array storing 7 pieces × 4 rotations × 4 rows × 4 bits of bitmap data, encoding all possible piece shapes. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

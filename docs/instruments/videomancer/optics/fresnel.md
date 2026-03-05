@@ -68,6 +68,14 @@ The name references Augustin-Jean Fresnel, the French physicist whose work on wa
 
 ---
 
+## Quick Start
+
+1. **Ring Scale is logarithmic in effect**: Each step doubles the ring count. Mid-range settings (bits 14–16) give the most recognizable zone plate patterns.
+2. **Dual Source is center-sensitive**: Even tiny offsets from center produce large moire fringes. Use Dual Source with Center X/Y near 50% for the most dramatic fringe effects.
+3. **Color mask technique**: Enable Fill with partial Mix to overlay colored zone rings on source video — the rings act as a structured chroma key.
+
+---
+
 ## Background
 
 ### Fresnel Zone Plates in Optics
@@ -94,6 +102,8 @@ The VHDL implementation produces a strictly binary zone plate — each pixel is 
 ---
 
 ## Signal Flow
+
+Input Register → Distance Computation → Squared Distance → Bit Selection + Animation → Pattern Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -167,7 +177,7 @@ Selects which bit of the squared radial distance determines ring polarity. Low v
 | Default | 50% |
 | Suffix | % |
 
-Sets the horizontal position of the zone plate center. At midpoint the pattern is centered horizontally on screen. Sweeping left or right moves the concentric rings off-center, revealing the asymmetric ring spacing that is characteristic of off-axis zone plates. When Dual Source is active, this also moves the mirrored secondary center in the opposite direction, causing the moire fringe pattern to shift and rotate.
+At midpoint the pattern is centered horizontally on screen. Sweeping left or right moves the concentric rings off-center, revealing the asymmetric ring spacing that is characteristic of off-axis zone plates. When Dual Source is active, this also moves the mirrored secondary center in the opposite direction, causing the moire fringe pattern to shift and rotate. Internally, sets the horizontal position of the zone plate center.
 
 ---
 
@@ -189,7 +199,7 @@ Sets the vertical position of the zone plate center. Combined with Center X, thi
 | Default | 50% |
 | Suffix | % |
 
-Controls the rate of ring expansion when Anim is enabled. At zero, rings are static even with Anim on. Higher values increase the accumulation rate of the phase offset added to r², making rings expand outward more quickly. At maximum, the rings scroll outward so fast they create a strobing, pulsating texture. This control has no effect when Anim is off.
+At zero, rings are static even with Anim on. Higher values increase the accumulation rate of the phase offset added to r², making rings expand outward more quickly. At maximum, the rings scroll outward so fast they create a strobing, pulsating texture. This control has no effect when Anim is off. Internally, controls the rate of ring expansion when Anim is enabled.
 
 ---
 
@@ -200,7 +210,7 @@ Controls the rate of ring expansion when Anim is enabled. At zero, rings are sta
 | Default | 50% |
 | Suffix | % |
 
-Sets the contrast range between bright ring zones and dark ring zones. At zero, the bright and dark levels converge to the Brightness value and the rings vanish. Increasing this control spreads the bright level upward and the dark level downward, creating progressively higher contrast rings. At maximum, bright zones reach full white (or clip at 1023) while dark zones drop near black, producing a stark binary pattern. This interacts with Brightness — the contrast range is symmetric around the Brightness level.
+At zero, the bright and dark levels converge to the Brightness value and the rings vanish. Increasing this control spreads the bright level upward and the dark level downward, creating progressively higher contrast rings. At maximum, bright zones reach full white (or clip at 1023) while dark zones drop near black, producing a stark binary pattern. This interacts with Brightness — the contrast range is symmetric around the Brightness level. Internally, sets the contrast range between bright ring zones and dark ring zones.
 
 ---
 
@@ -219,8 +229,8 @@ Sets the overall brightness of the zone plate pattern. The bright ring level equ
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Binary | Sine |
-| **8 — Fill** | Invert | Tint |
+| **7 — Mode** | Binary | Gabor |
+| **8 — Fill** | Invert | Add |
 | **9 — Anim** | Off | On |
 | **10 — Dual Source** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -239,6 +249,21 @@ Toggles 7–11 control five independent binary options. Toggle 7 (Mode) inverts 
 | Suffix | % |
 
 Controls the wet/dry crossfade between the original input video and the processed zone plate output. At 0% the output is the unmodified source. At 100% the output is the full zone plate effect. Intermediate positions blend the two, which is especially useful with color rings enabled — partial mix overlays transparent zone plate bands on the source video.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Fresnel processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +286,7 @@ These exercises build from a basic zone plate through dual-source moire to video
 *Basic Zone Plate — simulated result across source images.*
 **Source**: A static test pattern or color bars — any clean signal that lets you see the ring structure clearly.
 
-**Objective**: Understand how Ring Scale, Center X/Y, and Brightness/Video Mod interact to create and control a Fresnel zone plate pattern.
+**What You'll Create**: Understand how Ring Scale, Center X/Y, and Brightness/Video Mod interact to create and control a Fresnel zone plate pattern.
 
 1. **Default rings**: With all controls at default, observe the concentric ring pattern centered on screen. Note how rings bunch together toward the edges.
 2. **Scale sweep**: Slowly turn Ring Scale from minimum to maximum. Watch the ring count multiply at each step — there are 14 discrete density levels.
@@ -289,7 +314,7 @@ These exercises build from a basic zone plate through dual-source moire to video
 *Dual-Source Moire — simulated result across source images.*
 **Source**: A solid color field or gentle gradient — minimal source detail lets the moire structure stand out.
 
-**Objective**: Explore the interference patterns created by XORing two zone plates with different centers.
+**What You'll Create**: Explore the interference patterns created by XORing two zone plates with different centers.
 
 1. **Enable dual**: Turn on Dual Source (Toggle 10). A second set of rings appears, XORed with the first.
 2. **Offset center**: Move Center X slightly off-center. Watch large-scale moire fringes sweep across the screen.
@@ -317,7 +342,7 @@ These exercises build from a basic zone plate through dual-source moire to video
 *Color Zone Mask — simulated result across source images.*
 **Source**: Live camera feed or richly colored footage — scenes with varied hues make the color masking most visible.
 
-**Objective**: Use the zone plate as a selective color mask that reveals and hides the source video's chrominance in concentric bands.
+**What You'll Create**: Use the zone plate as a selective color mask that reveals and hides the source video's chrominance in concentric bands.
 
 1. **Enable color**: Turn on Fill (Toggle 8). Bright ring zones now carry the source video's color; dark zones are desaturated.
 2. **Partial mix**: Lower Mix to about 60%. The zone plate overlays transparently on the source, creating colored ring bands over the original image.
@@ -333,9 +358,6 @@ These exercises build from a basic zone plate through dual-source moire to video
 
 ## Tips
 
-- **Ring Scale is logarithmic in effect**: Each step doubles the ring count. Mid-range settings (bits 14–16) give the most recognizable zone plate patterns.
-- **Dual Source is center-sensitive**: Even tiny offsets from center produce large moire fringes. Use Dual Source with Center X/Y near 50% for the most dramatic fringe effects.
-- **Color mask technique**: Enable Fill with partial Mix to overlay colored zone rings on source video — the rings act as a structured chroma key.
 - **Animation speed matters**: Very high Anim Speed creates a strobing effect. For smooth expansion, keep Anim Speed below 30%.
 - **Combine with feedback**: Routing the output back to the input creates recursive zone plate rings that interact with themselves, forming fractal-like nested interference patterns.
 - **Zero contrast for flat fields**: Set Video Mod to 0% but leave Mix at 100% to generate a flat field at the Brightness level — useful as a reference or setup tool.
@@ -349,17 +371,15 @@ These exercises build from a basic zone plate through dual-source moire to video
 | Term | Definition |
 |------|------------|
 | **Bit Selection** | Extracting a single bit from a binary value to determine a binary outcome; in Fresnel, the bit position within r² determines ring polarity. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Fresnel uses 0 BRAMs — the pattern is computed combinatorially. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Desaturation** | Reducing the color intensity of a pixel by blending its chroma values toward the neutral midpoint (512 in 10-bit YUV). |
 | **Fresnel Zone Plate** | An optical element with concentric rings whose spacing follows a square-root law, focusing light by diffraction. |
-| **Interpolator** | A pipelined linear-interpolation module that crossfades between two values based on a fractional parameter. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Moire** | A large-scale interference pattern produced when two periodic patterns are overlaid with a slight offset. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **r²** | The squared radial distance from the zone plate center; computed as dx² + dy² without taking the square root. |
 | **XOR** | Exclusive OR; a binary operation that returns 1 when its two inputs differ. Used here to combine two zone plate patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 | **Zone Plate** | Synonym for Fresnel zone plate; a pattern of concentric rings used in optics, photography, and video test signals. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

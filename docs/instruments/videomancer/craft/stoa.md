@@ -68,6 +68,14 @@ The effect ranges from a subtle sculptural overlay that gives video the appearan
 
 ---
 
+## Quick Start
+
+1. **Start with column width**: The column width defines the spatial rhythm of the entire effect. Choose it first based on how many columns you want visible in frame.
+2. **Moderate flute depth for realism**: Real stone fluting is subtle — keep Flute Depth around 30–50% for a naturalistic carved-stone look. Higher values produce dramatic but abstracted results.
+3. **Light Angle at 45° for drama**: Direct front-lighting (0°) is flat and symmetrical. Raking light at 30–60° creates the strongest sense of depth across the flutes.
+
+---
+
 ## Background
 
 ### Classical Column Orders
@@ -94,6 +102,8 @@ Architectural projection mapping — projecting video onto buildings — has bec
 ---
 
 ## Signal Flow
+
+Strip Coordinates → Flute Shading → Compositing → Depth Fade + Stone Color
 
 ```
 Input Video (YUV 4:4:4)
@@ -155,7 +165,7 @@ Selects one of eight column widths ranging from 40 to 240 pixels. Narrow columns
 | Default | 50% |
 | Suffix | % |
 
-Controls the depth of the fluting concavity — the amplitude of the cosine-based brightness modulation. At zero, the columns appear smooth and unfluted (like pilasters). As depth increases, the brightness contrast between flute peaks (ridges) and troughs (valleys) grows, creating more dramatic light-and-shadow interplay. At maximum, the troughs are nearly black and the ridges are bright highlights.
+At zero, the columns appear smooth and unfluted (like pilasters). As depth increases, the brightness contrast between flute peaks (ridges) and troughs (valleys) grows, creating more dramatic light-and-shadow interplay. At maximum, the troughs are nearly black and the ridges are bright highlights. Internally, controls the depth of the fluting concavity — the amplitude of the cosine-based brightness modulation.
 
 ---
 
@@ -166,7 +176,7 @@ Controls the depth of the fluting concavity — the amplitude of the cosine-base
 | Default | 0° |
 | Suffix | ° |
 
-Sets the directional light angle by offsetting the cosine lookup phase. At 0°, light appears to come from directly in front of the column (symmetric highlighting). Rotating the angle shifts the highlight toward one side of each flute, simulating raking sunlight from the left or right. The full 360° range cycles through all lighting directions. Combined with Light Anim, this becomes the starting phase of the animated rotation.
+At 0°, light appears to come from directly in front of the column (symmetric highlighting). Rotating the angle shifts the highlight toward one side of each flute, simulating raking sunlight from the left or right. The full 360° range cycles through all lighting directions. Combined with Light Anim, this becomes the starting phase of the animated rotation. Internally, sets the directional light angle by offsetting the cosine lookup phase.
 
 ---
 
@@ -187,7 +197,7 @@ Selects the arris line width from 1 to 4 pixels. Arrises are the sharp ridges be
 | Default | 0% |
 | Suffix | % |
 
-Controls the height of the entablature region at the top of the frame. At zero, no entablature is drawn. As the height increases, a horizontal zone of alternating triglyph (dark grooved) and metope (light smooth) blocks appears, sized to match the column width. This transforms the top of the video into an architectural frieze structure. The entablature height is specified directly in scanlines.
+At zero, no entablature is drawn. As the height increases, a horizontal zone of alternating triglyph (dark grooved) and metope (light smooth) blocks appears, sized to match the column width. This transforms the top of the video into an architectural frieze structure. The entablature height is specified directly in scanlines. Internally, controls the height of the entablature region at the top of the frame.
 
 ---
 
@@ -225,7 +235,29 @@ Switches 7–11 control five independent options affecting the column geometry, 
 | Default | 100% |
 | Suffix | % |
 
-Crossfades between the dry (unprocessed) and wet (column-processed) signal via the interpolator. At 0%, the output is the original input. At 100%, the output is fully processed. Intermediate values blend the columnar shading with the original video, producing a translucent stone overlay effect where the columns appear to float on top of the source material.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stoa processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Stoa-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -248,7 +280,7 @@ These exercises progress from basic column shading through architectural composi
 *Columnar Light Study — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and moderate contrast.
 
-**Objective**: Explore how column width and flute depth shape the image, and how the light angle creates the illusion of three-dimensional stone.
+**What You'll Create**: Explore how column width and flute depth shape the image, and how the light angle creates the illusion of three-dimensional stone.
 
 1. **Basic columns**: Set Column W to position 4 (~100 px wide). You should see the image divided into vertical strips with cosine-based brightness modulation.
 2. **Flute depth**: Sweep Flute Depth from 0% to 100%. Watch the columns transform from smooth pillars to deeply carved flutes with dramatic highlight/shadow contrast.
@@ -275,7 +307,7 @@ These exercises progress from basic column shading through architectural composi
 *Architectural Composition — simulated result across source images.*
 **Source**: Wide-angle footage of interiors or urban scenes with strong vertical lines.
 
-**Objective**: Build a complete classical architectural scene using entablature, capitals, and depth fade.
+**What You'll Create**: Build a complete classical architectural scene using entablature, capitals, and depth fade.
 
 1. **Set columns**: Column W at position 3 (~80 px), Flute Depth ~60%.
 2. **Add entablature**: Slowly increase Entablatur from 0%. A triglyph/metope pattern appears at the top of the frame, alternating dark and light blocks.
@@ -303,7 +335,7 @@ These exercises progress from basic column shading through architectural composi
 *Animated Light Sweep — simulated result across source images.*
 **Source**: Any footage — abstract or representational. Static footage works well to isolate the light animation.
 
-**Objective**: Experience the animated light rotation and explore how mix blending creates a sculptural overlay.
+**What You'll Create**: Experience the animated light rotation and explore how mix blending creates a sculptural overlay.
 
 1. **Set up columns**: Column W at position 5 (~120 px), Flute Depth ~70%, Arris W at 1 (fine ridges).
 2. **Enable animation**: Toggle Light Anim to Animated. The highlight begins slowly sweeping across each flute in a continuous rotation.
@@ -319,9 +351,6 @@ These exercises progress from basic column shading through architectural composi
 
 ## Tips
 
-- **Start with column width**: The column width defines the spatial rhythm of the entire effect. Choose it first based on how many columns you want visible in frame.
-- **Moderate flute depth for realism**: Real stone fluting is subtle — keep Flute Depth around 30–50% for a naturalistic carved-stone look. Higher values produce dramatic but abstracted results.
-- **Light Angle at 45° for drama**: Direct front-lighting (0°) is flat and symmetrical. Raking light at 30–60° creates the strongest sense of depth across the flutes.
 - **Entablature needs headroom**: The entablature renders in absolute scanlines from the top of frame. Leave enough column shaft below it for the fluting to be visible.
 - **Depth Fade with wide view**: Depth fade works best when the frame shows many columns — at least 4–6 — so the edge-to-center gradient is visible as a perspective cue.
 - **Mix at 40–60% for overlay**: Blend the architectural structure with the source video for a projection-mapping effect where the original content appears through the stone texture.
@@ -343,11 +372,11 @@ These exercises progress from basic column shading through architectural composi
 | **Doric** | The oldest and simplest of the three Greek column orders, characterized by 20 flutes with sharp arrises and no base. |
 | **Entablature** | The horizontal structure above the columns, consisting of architrave, frieze (with triglyphs and metopes), and cornice. |
 | **Flute** | A concave vertical channel carved into a column shaft; Stoa simulates flutes using a cosine brightness curve. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Ionic** | The second Greek column order, characterized by 24 flutes with flat fillets and scroll-shaped volute capitals. |
 | **Metope** | The smooth or sculpted panel between triglyphs in a Doric frieze. |
 | **Stoa** | A covered walkway or portico with a row of columns along its front, common in ancient Greek public architecture. |
 | **Triglyph** | A vertically grooved rectangular block in a Doric frieze, alternating with metopes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At default settings Radiant produces gently colored concentric rings centered on
 
 ---
 
+## Quick Start
+
+1. **Octagonal, not circular**: The rings are slightly octagonal due to the `max + 3*min/8` distance approximation — look for the faceting when rings are large and static.
+2. **Speed drives orbit too**: The orbit rate is linked to the Speed pot, so faster expansion also means faster center movement when Orbit is enabled.
+3. **Saturation has four levels**: The sat_shift is derived from 2 bits, so saturation changes in discrete steps rather than continuously — there are effectively four saturation positions.
+
+---
+
 ## Background
 
 ### Octagonal Distance Approximation
@@ -94,6 +102,8 @@ Radiant offers two compositing strategies. **Additive** mode adds the ring Y to 
 ---
 
 ## Signal Flow
+
+Input Register → Distance Computation → Ring Color Generation → Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -241,6 +251,10 @@ The five toggles control animation, color behavior, compositing style, and ring 
 
 Controls the wet/dry crossfade between the composited ring signal and the original input. At 0 the output is entirely dry (original video); at 1023 it is entirely wet (full ring overlay). Three parallel `interpolator_u` instances handle the crossfade on Y, U, and V independently. Intermediate positions create semi-transparent ring overlays.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -262,7 +276,7 @@ These exercises explore Radiant's core capabilities — from static centered gra
 *Centered Rainbow Spotlight — simulated result across source images.*
 **Source**: A moderately bright video source with recognizable content — a face, an object, or a graphic with visible structure.
 
-**Objective**: Create a static bulls-eye of concentric rainbow rings centered on the frame, additively overlaid on the source video.
+**What You'll Create**: Create a static bulls-eye of concentric rainbow rings centered on the frame, additively overlaid on the source video.
 
 1. Set Speed to 0% for static rings
 2. Set Hue to 0° for default palette starting point
@@ -296,7 +310,7 @@ These exercises explore Radiant's core capabilities — from static centered gra
 *Orbiting Color Tunnel — simulated result across source images.*
 **Source**: A dark or low-contrast video source — a dimly lit scene or abstract dark texture that will serve as a backdrop for the vivid ring overlay.
 
-**Objective**: Create an animated color tunnel with the ring center orbiting across the frame and the palette slowly rotating through the spectrum.
+**What You'll Create**: Create an animated color tunnel with the ring center orbiting across the frame and the palette slowly rotating through the spectrum.
 
 1. Set Speed to 40% for moderate expansion rate
 2. Set Hue to 180° for starting midway through palette
@@ -330,7 +344,7 @@ These exercises explore Radiant's core capabilities — from static centered gra
 *Vignette Gating — simulated result across source images.*
 **Source**: A well-lit, colorful video source with good dynamic range — the multiply mode will selectively darken regions, so the source needs visible brightness variation.
 
-**Objective**: Use multiply compositing mode to create a spotlight/vignette effect where the ring pattern selectively attenuates the source video.
+**What You'll Create**: Use multiply compositing mode to create a spotlight/vignette effect where the ring pattern selectively attenuates the source video.
 
 1. Set Speed to 10% for slow, subtle ring expansion
 2. Set Hue to 90° for a warm color bias
@@ -352,9 +366,6 @@ These exercises explore Radiant's core capabilities — from static centered gra
 
 ## Tips
 
-- **Octagonal, not circular**: The rings are slightly octagonal due to the `max + 3*min/8` distance approximation — look for the faceting when rings are large and static.
-- **Speed drives orbit too**: The orbit rate is linked to the Speed pot, so faster expansion also means faster center movement when Orbit is enabled.
-- **Saturation has four levels**: The sat_shift is derived from 2 bits, so saturation changes in discrete steps rather than continuously — there are effectively four saturation positions.
 - **Multiply darkens**: In multiply mode, the ring attenuates the source rather than adding to it — low Value settings crush the image to black at the ring center.
 - **Auto Hue is slow**: The fixed increment of 2 per frame means full palette rotation takes many seconds — be patient when evaluating color cycling.
 - **Orbit is quasi-random**: The X and Y orbit rates differ by design (offsets of 32 vs 48), so the center path never repeats exactly within a typical viewing session.

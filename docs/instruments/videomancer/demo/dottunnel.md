@@ -35,6 +35,14 @@ In Videomancer's implementation, the tunnel overlays live video using either add
 
 ---
 
+## Quick Start
+
+1. **Start sparse**: Begin with 8 dots per ring and Low ring count to understand the geometry before adding density.
+2. **Use Replace first**: Replace compositing makes dots easier to see against any source material while dialling in tunnel parameters.
+3. **Modulate Center X/Y**: Connecting CV to Center X and Center Y produces a compelling orbital wobble that makes the tunnel feel alive.
+
+---
+
 ## Background
 
 ### The Demoscene Dot Tunnel
@@ -177,7 +185,7 @@ Brightness is a global intensity multiplier applied after the depth fog calculat
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Dots/Ring** | 8 | 12 |
+| **7 — Dots/Ring** | 8 | 24 |
 | **8 — Ring Count** | Low | High |
 | **9 — Colour** | Depth | Rainbow |
 | **10 — Composite** | Add | Replace |
@@ -198,6 +206,10 @@ The five toggles control the tunnel's fundamental geometry and presentation. Dot
 
 Mix crossfades between the dry input signal and the processed dot tunnel output. At minimum the output is entirely dry (input only); at maximum the output is entirely wet (full tunnel effect). Intermediate positions blend the two, letting you fade the tunnel in and out smoothly.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -208,7 +220,7 @@ These three exercises explore the dot tunnel's geometry, colour, and compositing
 
 <img src={dottunnel_exercise1_result} alt="Classic Demo Tunnel result"/>
 *Classic Demo Tunnel — simulated result across source images.*
-**Objective**: Recreate the iconic 8-bit demo look: sparse white dots spiralling toward the centre of the screen over a dark background.
+**What You'll Create**: Recreate the iconic 8-bit demo look: sparse white dots spiralling toward the centre of the screen over a dark background.
 
 1. Start with all pots centred and Bypass off.
 2. Set Dots/Ring to 8 and Ring Count to High.
@@ -227,7 +239,7 @@ These three exercises explore the dot tunnel's geometry, colour, and compositing
 
 <img src={dottunnel_exercise2_result} alt="Rainbow Particle Overlay result"/>
 *Rainbow Particle Overlay — simulated result across source images.*
-**Objective**: Layer a dense rainbow dot tunnel additively over live video, so the dots glow on top of the source material.
+**What You'll Create**: Layer a dense rainbow dot tunnel additively over live video, so the dots glow on top of the source material.
 
 1. Switch Colour to Rainbow.
 2. Set Composite to Add.
@@ -246,7 +258,7 @@ These three exercises explore the dot tunnel's geometry, colour, and compositing
 
 <img src={dottunnel_exercise3_result} alt="Off-Centre Wormhole result"/>
 *Off-Centre Wormhole — simulated result across source images.*
-**Objective**: Push the vanishing point to one corner and use large dots to create a wormhole-like vortex effect blended with the input.
+**What You'll Create**: Push the vanishing point to one corner and use large dots to create a wormhole-like vortex effect blended with the input.
 
 1. Set Center X to approximately 256 (left quarter).
 2. Set Center Y to approximately 768 (lower quarter).
@@ -266,9 +278,6 @@ These three exercises explore the dot tunnel's geometry, colour, and compositing
 
 ## Tips
 
-- **Start sparse**: Begin with 8 dots per ring and Low ring count to understand the geometry before adding density.
-- **Use Replace first**: Replace compositing makes dots easier to see against any source material while dialling in tunnel parameters.
-- **Modulate Center X/Y**: Connecting CV to Center X and Center Y produces a compelling orbital wobble that makes the tunnel feel alive.
 - **Depth fog is free**: The natural brightness falloff from depth fog means you rarely need to adjust Brightness beyond 75% — let the fog do the work.
 - **Combine with feedback**: Patching the output back into the input with a slight delay creates a recursive tunnel-within-tunnel effect.
 - **Match Dot Size to content**: Larger dots work well over busy video to ensure visibility; smaller dots suit clean or dark backgrounds.

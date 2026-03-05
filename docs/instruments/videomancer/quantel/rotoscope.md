@@ -68,6 +68,14 @@ At conservative settings, Rotoscope adds a subtle motion echo — a ghost of mov
 
 ---
 
+## Quick Start
+
+1. **Start with Clean treatment**: Before exploring tinted or edge modes, get comfortable with the basic trail behavior — layer count, delay spread, and opacity curve. These three controls define the temporal structure.
+2. **Screen blend for glow**: When using Tinted treatment, Screen blend mode produces luminous, glowing trails that pop against dark backgrounds. Over mode is more natural but less dramatic.
+3. **Edge Trace needs contrast**: The horizontal gradient detector works best with high-contrast edges. Low-contrast footage produces sparse, weak contour lines. Feed strong edges for the best results.
+
+---
+
 ## Background
 
 ### The Quantel Legacy
@@ -99,6 +107,8 @@ In addition to the temporal delay between layers, Rotoscope can apply a horizont
 ---
 
 ## Signal Flow
+
+BRAM Write → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -161,7 +171,7 @@ Selects the number of active trail layers from 1 to 4. The register is divided i
 | Default | 39% |
 | Suffix | % |
 
-Controls the temporal offset between successive trail layers by setting the address spacing between BRAM read taps. At low values, all layers read from nearly the same buffer position — the trail is short and the echoes are closely stacked. At high values, each layer is separated by many scanlines, producing a long, drawn-out temporal smear. The delay spread is proportional to the register value's upper bits divided across the buffer depth.
+At low values, all layers read from nearly the same buffer position — the trail is short and the echoes are closely stacked. At high values, each layer is separated by many scanlines, producing a long, drawn-out temporal smear. The delay spread is proportional to the register value's upper bits divided across the buffer depth. Internally, controls the temporal offset between successive trail layers by setting the address spacing between BRAM read taps.
 
 ---
 
@@ -232,7 +242,29 @@ Toggles 7–8 form a 2-bit treatment mode selector. Toggle 9 selects the alpha c
 | Default | 50% |
 | Suffix | % |
 
-Wet/dry mix crossfade between the original input video and the processed trail composite. At 0%, the output is the unprocessed input. At 100%, the output is the fully composited trail. Intermediate values blend the trail over the original, which can produce a ghostly overlay effect where the live image remains visible beneath the trailing echoes.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Rotoscope processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Rotoscope-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +287,7 @@ These exercises progress from simple motion trails to complex multi-treatment co
 *Simple Motion Echo — simulated result across source images.*
 **Source**: A slowly moving subject — a hand waving, a pendulum, or a dancer — against a contrasting background.
 
-**Objective**: Learn how layer count and delay spread create temporal trails.
+**What You'll Create**: Learn how layer count and delay spread create temporal trails.
 
 1. **Two layers**: Set Layer Cnt to 2. A single echo appears behind the moving subject.
 2. **Increase delay**: Sweep Delay Sprd from low to high. Watch the echo separate from the live image — at low values it's a tight shadow, at high values it's a long trailing ghost.
@@ -282,7 +314,7 @@ These exercises progress from simple motion trails to complex multi-treatment co
 *Tinted Trail Composition — simulated result across source images.*
 **Source**: A live camera feed with moderate to high motion — a performer, moving traffic, or abstract gestures.
 
-**Objective**: Explore tinted treatment and screen blending for colorized trail effects.
+**What You'll Create**: Explore tinted treatment and screen blending for colorized trail effects.
 
 1. **Enable tinting**: Set treatment to Tinted (Treat A = On, Treat B = Off). The trail layers gain a color wash.
 2. **Select tint hue**: Sweep Tint Hue through the 8 palette positions. Watch the trail change from neutral to warm to cool hues.
@@ -309,7 +341,7 @@ These exercises progress from simple motion trails to complex multi-treatment co
 *Edge Trace Contours — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — silhouetted figures, architectural features, or text overlays.
 
-**Objective**: Use edge trace treatment to create animated contour drawings from the trail layers.
+**What You'll Create**: Use edge trace treatment to create animated contour drawings from the trail layers.
 
 1. **Set edge trace mode**: Treat A = On, Treat B = On (treatment = 11 = Edge Trace).
 2. **Adjust edge threshold**: Sweep Edge Thr from low to high. At low values, dense contour lines appear everywhere. At high values, only the strongest edges survive.
@@ -325,9 +357,6 @@ These exercises progress from simple motion trails to complex multi-treatment co
 
 ## Tips
 
-- **Start with Clean treatment**: Before exploring tinted or edge modes, get comfortable with the basic trail behavior — layer count, delay spread, and opacity curve. These three controls define the temporal structure.
-- **Screen blend for glow**: When using Tinted treatment, Screen blend mode produces luminous, glowing trails that pop against dark backgrounds. Over mode is more natural but less dramatic.
-- **Edge Trace needs contrast**: The horizontal gradient detector works best with high-contrast edges. Low-contrast footage produces sparse, weak contour lines. Feed strong edges for the best results.
 - **Silhouette for graphic art**: Silhouette mode reduces video to flat colored cutouts — use it with high layer count and wide delay spread for an animated paper-doll effect reminiscent of early digital compositing.
 - **Horizontal offset reveals layers**: When layers are temporally coincident (low Delay Sprd), increasing H Offset makes each copy visible as a spatially displaced echo. Alternating direction creates symmetry.
 - **Tint Hue is modal**: The tint color only affects Tinted and Silhouette treatment modes. In Clean and Edge Trace modes, the hue selector has no visible effect.
@@ -340,7 +369,6 @@ These exercises progress from simple motion trails to complex multi-treatment co
 | Term | Definition |
 |------|------------|
 | **Alpha Compositing** | A technique for combining images using per-pixel opacity (alpha) values, where each pixel's contribution is weighted by its transparency. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline delay storage. |
 | **Delay Buffer** | A FIFO memory that stores video data for later retrieval, enabling temporal displacement between layers. |
 | **Edge Trace** | A treatment mode that converts video to contour lines by computing the horizontal gradient magnitude between adjacent pixels. |
 | **Layer** | One of up to four time-delayed copies of the input video, each with independent alpha and processing treatment. |
@@ -351,6 +379,7 @@ These exercises progress from simple motion trails to complex multi-treatment co
 | **Silhouette** | A treatment mode that converts video to binary threshold shapes — pixels above threshold become solid color, below become transparent. |
 | **Tint** | A chrominance shift applied to trail layers, blending the original U/V toward a selected palette hue. |
 | **Trail** | A series of temporally delayed copies of the input video composited to create a motion echo effect. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

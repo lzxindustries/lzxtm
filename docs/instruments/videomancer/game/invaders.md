@@ -35,6 +35,14 @@ Each destroyed alien increments the score and clears its bit in a 55-bit alive r
 
 ---
 
+## Quick Start
+
+1. **Lead your shots**: Since only one bullet can be active at a time, position the ship under target aliens before firing. Missed shots waste time while the bullet travels off-screen.
+2. **Work the edges**: Destroy aliens on the formation edges first to slow the descent rate — fewer edge aliens means more horizontal travel before reversal and descent.
+3. **Shield strategy**: Shields protect from alien bullets but block your own shots too. Position your ship offset from shields to maintain a clear firing lane while keeping shields between you and alien fire.
+
+---
+
 ## Background
 
 ### The 1978 Revolution
@@ -208,6 +216,10 @@ The five toggles partition into gameplay action (Fire), display options (Border,
 
 Mix controls the wet/dry blend between the game overlay and the input video. At full mix, only the Invaders game is visible against black. Reducing mix fades in the input video behind the game elements, creating an arcade overlay on live footage. At zero mix, the game is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -218,7 +230,7 @@ These exercises explore the core shoot-em-up mechanics, the interaction between 
 
 <img src={invaders_exercise1_result} alt="First Defence result"/>
 *First Defence — simulated result across source images.*
-**Objective**: Destroy a complete wave of 55 aliens using the ship position knob and fire toggle.
+**What You'll Create**: Destroy a complete wave of 55 aliens using the ship position knob and fire toggle.
 
 1. Set Ship Pos to center (~50%).
 2. Set Alien Spd to about 20% for slow alien march.
@@ -238,7 +250,7 @@ These exercises explore the core shoot-em-up mechanics, the interaction between 
 
 <img src={invaders_exercise2_result} alt="Speed Run result"/>
 *Speed Run — simulated result across source images.*
-**Objective**: Survive a fast alien formation with high return fire and no shields.
+**What You'll Create**: Survive a fast alien formation with high return fire and no shields.
 
 1. Set Alien Spd to about 65% for an aggressive march speed.
 2. Set Fire Rate to about 60% for frequent alien bullets.
@@ -256,7 +268,7 @@ These exercises explore the core shoot-em-up mechanics, the interaction between 
 
 <img src={invaders_exercise3_result} alt="Arcade Overlay result"/>
 *Arcade Overlay — simulated result across source images.*
-**Objective**: Blend the Invaders game over input video at partial mix for a retro arcade overlay composition.
+**What You'll Create**: Blend the Invaders game over input video at partial mix for a retro arcade overlay composition.
 
 1. Set Mix to about 55% to blend game and input video.
 2. Switch Color to Hue and sweep Court Hue to find a retro-styled color (try greenish ~30% for classic CRT look).
@@ -273,9 +285,6 @@ These exercises explore the core shoot-em-up mechanics, the interaction between 
 
 ## Tips
 
-- **Lead your shots**: Since only one bullet can be active at a time, position the ship under target aliens before firing. Missed shots waste time while the bullet travels off-screen.
-- **Work the edges**: Destroy aliens on the formation edges first to slow the descent rate — fewer edge aliens means more horizontal travel before reversal and descent.
-- **Shield strategy**: Shields protect from alien bullets but block your own shots too. Position your ship offset from shields to maintain a clear firing lane while keeping shields between you and alien fire.
 - **Speed is the threat**: Alien speed determines how quickly the formation descends. At high speeds, you have very few rounds to thin the formation before it reaches you.
 - **Fire rate awareness**: High alien fire rate creates a dense curtain of descending bullets. Keep the ship moving laterally to dodge between alien shots.
 - **Mix for retro aesthetics**: Reduce Mix to blend the game over CRT-scanned video input for an authentic retro arcade-on-TV look.
@@ -298,6 +307,7 @@ These exercises explore the core shoot-em-up mechanics, the interaction between 
 | **Sprite** | A small bitmap image (8x8 for aliens, 16x8 for the ship) rendered at a specific screen position by pixel comparison. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used as the game tick clock. |
 | **Wave** | A complete set of 55 aliens. When all are destroyed, a new wave spawns at the top of the screen. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

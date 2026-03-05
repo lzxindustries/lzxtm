@@ -35,6 +35,14 @@ At full mix, Sketch displays the canvas drawing on a black background. Reducing 
 
 ---
 
+## Quick Start
+
+1. **Slow sweeps for clean lines**: Move the cursor knobs slowly to draw continuous lines without gaps. Rapid knob turns may skip cells, producing dotted or broken strokes.
+2. **Grid for precision**: Enable Grid when precision matters — the cell boundaries show exactly where each mark will be placed.
+3. **Erase selectively**: Unlike the original Etch A Sketch, you can selectively erase portions of your drawing without clearing the entire canvas.
+
+---
+
 ## Background
 
 ### The Original Etch A Sketch
@@ -201,6 +209,10 @@ The five toggles divide into drawing control (Pen mode), display options (Grid, 
 
 Mix controls the wet/dry blend between the canvas drawing and the input video. At full mix, only the Sketch canvas is visible against black. Reducing mix fades in the input video behind the drawing, creating a transparent annotation overlay on live footage. At zero mix, the drawing is invisible and only the input signal passes through. The mix engages three interpolator_u instances for Y, U, and V channels independently.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -211,7 +223,7 @@ These exercises explore Sketch's drawing and erasing mechanics, the fade trail e
 
 <img src={sketch_exercise1_result} alt="First Lines result"/>
 *First Lines — simulated result across source images.*
-**Objective**: Draw simple shapes on the canvas using the dual-knob cursor interface.
+**What You'll Create**: Draw simple shapes on the canvas using the dual-knob cursor interface.
 
 1. Enable Cursor visibility to see where you are drawing.
 2. Enable Grid to see cell boundaries.
@@ -230,7 +242,7 @@ These exercises explore Sketch's drawing and erasing mechanics, the fade trail e
 
 <img src={sketch_exercise2_result} alt="Fade Trails result"/>
 *Fade Trails — simulated result across source images.*
-**Objective**: Use the Fade control to create a dynamic motion trail effect where strokes dissolve over time.
+**What You'll Create**: Use the Fade control to create a dynamic motion trail effect where strokes dissolve over time.
 
 1. Set Pen mode to Draw and Pen Size to about 25% (2-cell brush).
 2. Set Fade to about 50% for a moderate decay rate.
@@ -247,7 +259,7 @@ These exercises explore Sketch's drawing and erasing mechanics, the fade trail e
 
 <img src={sketch_exercise3_result} alt="Video Annotation Overlay result"/>
 *Video Annotation Overlay — simulated result across source images.*
-**Objective**: Draw annotations over live input video using the canvas as a transparent overlay.
+**What You'll Create**: Draw annotations over live input video using the canvas as a transparent overlay.
 
 1. Reduce Mix to about 55% to blend the canvas with input video.
 2. Set Pen mode to Draw with a large Pen Size (~75%) for bold annotations.
@@ -264,9 +276,6 @@ These exercises explore Sketch's drawing and erasing mechanics, the fade trail e
 
 ## Tips
 
-- **Slow sweeps for clean lines**: Move the cursor knobs slowly to draw continuous lines without gaps. Rapid knob turns may skip cells, producing dotted or broken strokes.
-- **Grid for precision**: Enable Grid when precision matters — the cell boundaries show exactly where each mark will be placed.
-- **Erase selectively**: Unlike the original Etch A Sketch, you can selectively erase portions of your drawing without clearing the entire canvas.
 - **Fade for animation**: Set Fade to a moderate value and draw continuously — the fading trail creates a dynamic, animated effect from static knob movements.
 - **Large pen for fills**: Use maximum Pen Size to fill large areas quickly. Switch to minimum Pen Size for outlines and details.
 - **Color for emphasis**: Use Hue mode with a bright, saturated hue when overlaying drawings on video — the colored strokes visually separate from the underlying footage.
@@ -288,6 +297,7 @@ These exercises explore Sketch's drawing and erasing mechanics, the fade trail e
 | **Pen Size** | The brush width in cells (1-4), determining how many cells are affected per cursor position. |
 | **Trail** | The visible mark left by cursor movement in Draw mode; decays over time when Fade is active. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame, used to clock drawing operations. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

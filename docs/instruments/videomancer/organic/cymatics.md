@@ -35,6 +35,14 @@ Two surface modes change the visual character: Water shows both positive and neg
 
 ---
 
+## Quick Start
+
+1. **Single source for meditation**: One source with low frequency and high damping produces a gentle pulsing mandala.
+2. **Near-equal frequencies**: Set two sources with slightly different drift speeds for slowly evolving moiré.
+3. **Mercury for density**: Mercury mode's absolute value doubles the apparent ring density.
+
+---
+
 ## Background
 
 ### Hans Jenny and Cymatics
@@ -191,6 +199,10 @@ The five toggles set the physical analogy and visual style: Surface chooses betw
 
 **Mix** crossfades between the dry input and the cymatics synthesis. At zero the input passes through; at maximum the output is entirely the interference pattern.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -201,7 +213,7 @@ These exercises explore Cymatics from simple single-source ripples to complex mu
 
 <img src={cymatics_exercise1_result} alt="Single-Source Ripple Ring result"/>
 *Single-Source Ripple Ring — simulated result across source images.*
-**Objective**: Generate a clean set of concentric rings from a single source and observe wavelength control.
+**What You'll Create**: Generate a clean set of concentric rings from a single source and observe wavelength control.
 
 1. Set Frequency to 30 %, Amplitude to 60 %, Damping to 30 %.
 2. Set Sources to 1.
@@ -219,7 +231,7 @@ These exercises explore Cymatics from simple single-source ripples to complex mu
 
 <img src={cymatics_exercise2_result} alt="Two-Source Interference Fringes result"/>
 *Two-Source Interference Fringes — simulated result across source images.*
-**Objective**: Create a classic two-slit interference pattern with visible nodal lines.
+**What You'll Create**: Create a classic two-slit interference pattern with visible nodal lines.
 
 1. Set Frequency to 40 %, Amplitude to 70 %, Damping to 50 %.
 2. Set Sources to 2.
@@ -236,7 +248,7 @@ These exercises explore Cymatics from simple single-source ripples to complex mu
 
 <img src={cymatics_exercise3_result} alt="Caustic Field with Video Seed result"/>
 *Caustic Field with Video Seed — simulated result across source images.*
-**Objective**: Overlay a dense four-source interference field onto source video, using Video Seed to mask the pattern.
+**What You'll Create**: Overlay a dense four-source interference field onto source video, using Video Seed to mask the pattern.
 
 1. Set Frequency to 50 %, Amplitude to 80 %, Damping to 40 %.
 2. Set Sources to 4.
@@ -252,9 +264,6 @@ These exercises explore Cymatics from simple single-source ripples to complex mu
 
 ## Tips
 
-- **Single source for meditation**: One source with low frequency and high damping produces a gentle pulsing mandala.
-- **Near-equal frequencies**: Set two sources with slightly different drift speeds for slowly evolving moiré.
-- **Mercury for density**: Mercury mode's absolute value doubles the apparent ring density.
 - **Caustic as bloom**: Use Caustic at 30–50 % for subtle glowing peaks without overwhelming the pattern.
 - **Video Seed transparency**: At Mix 50 % with Video Seed, the interference field acts as a luminance-dependent overlay.
 - **Hue XOR palette**: Because the chroma is derived via XOR, sweeping Hue creates dramatic palette jumps rather than smooth gradients.

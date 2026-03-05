@@ -68,6 +68,14 @@ At subtle settings — a faint ghost, a hint of hum, high signal strength — Si
 
 ---
 
+## Quick Start
+
+1. **Isolate each artifact separately first**: Set Ghost Gain to 0, Interference to 0, Hum Level to 0, and Signal Strength to 100 to create a clean baseline. Then introduce one artifact at a time to understand its contribution.
+2. **Negative ghosts for edge enhancement**: A subtle negative ghost at small delay creates a dark outline along vertical edges, similar to a sharpening effect. This can add visual detail rather than degradation.
+3. **Dual ghost for depth**: The cascading echo pattern of dual ghost mode creates a sense of spatial depth — the image appears to recede into layered reflections.
+
+---
+
 ## Background
 
 ### Multipath Ghost Images
@@ -94,6 +102,8 @@ In analog NTSC and PAL broadcasting, the chrominance subcarrier sits on top of t
 ---
 
 ## Signal Flow
+
+Input + BRAM Write → Ghost Summation → Herringbone Interference → Hum Bar → Snow Noise Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -164,7 +174,7 @@ Controls the horizontal displacement of the ghost image in pixels. The top 8 bit
 | Default | 37.5% |
 | Suffix | % |
 
-Sets the amplitude of the ghost echo. At 0%, the ghost is invisible regardless of delay. At moderate values, the ghost appears as a faint overlay — a semi-transparent displaced copy typical of mild multipath interference. At high values, the ghost becomes as bright as the original signal, creating a strong double-image effect. In Dual Ghost mode, the second ghost receives half this gain, producing a realistic cascading reflection pattern where each successive reflection is weaker than the previous one.
+At 0%, the ghost is invisible regardless of delay. At moderate values, the ghost appears as a faint overlay — a semi-transparent displaced copy typical of mild multipath interference. At high values, the ghost becomes as bright as the original signal, creating a strong double-image effect. In Dual Ghost mode, the second ghost receives half this gain, producing a realistic cascading reflection pattern where each successive reflection is weaker than the previous one. Internally, sets the amplitude of the ghost echo.
 
 ---
 
@@ -175,7 +185,7 @@ Sets the amplitude of the ghost echo. At 0%, the ghost is invisible regardless o
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the amplitude of the herringbone interference pattern. At 0%, no interference is visible. As you increase the control, a fine stripe pattern appears across the image. The pattern frequency is determined by the DDS accumulator's increment rate (which is also scaled by this parameter), so higher Interference values produce both a stronger and finer pattern. With Interference Tilt set to Diagonal, the stripes angle across the screen, closely matching real adjacent-channel interference.
+At 0%, no interference is visible. As you increase the control, a fine stripe pattern appears across the image. The pattern frequency is determined by the DDS accumulator's increment rate (which is also scaled by this parameter), so higher Interference values produce both a stronger and finer pattern. With Interference Tilt set to Diagonal, the stripes angle across the screen, closely matching real adjacent-channel interference. Internally, controls the amplitude of the herringbone interference pattern.
 
 ---
 
@@ -186,7 +196,7 @@ Controls the amplitude of the herringbone interference pattern. At 0%, no interf
 | Default | 0.0% |
 | Suffix | % |
 
-Sets the depth of the hum bar brightness modulation. At 0%, no hum bars are visible. Increasing the control makes slowly rolling horizontal bands of brighter and darker video appear across the frame. The bars come from a triangle wave with approximately 5 cycles per frame (from the v_count × 32 term), creating the characteristic wide horizontal bands of a badly filtered power supply. The hum affects all channels equally through the luminance path.
+At 0%, no hum bars are visible. Increasing the control makes slowly rolling horizontal bands of brighter and darker video appear across the frame. The bars come from a triangle wave with approximately 5 cycles per frame (from the v_count × 32 term), creating the characteristic wide horizontal bands of a badly filtered power supply. The hum affects all channels equally through the luminance path. Internally, sets the depth of the hum bar brightness modulation.
 
 ---
 
@@ -235,7 +245,19 @@ The five toggles modify different aspects of the degradation chain. Ghost Pol (t
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade via the output interpolator. At 0%, the output is the original clean signal with no degradation artifacts. At 100%, the output is the fully processed signal with all active artifacts. This serves as both a mix control and an effective bypass — setting Mix to 0% completely removes all artifacts. Intermediate values create a partial blend that can suggest a signal that is degraded but not fully compromised.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Sideband-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +280,7 @@ These exercises progress from individual artifact exploration through combined d
 *Ghost Delay and Polarity — simulated result across source images.*
 **Source**: A high-contrast test pattern or graphics-heavy footage with sharp vertical edges — text, geometric shapes, or architectural details.
 
-**Objective**: Understand how ghost delay, gain, polarity, and dual mode interact to create multipath echo effects.
+**What You'll Create**: Understand how ghost delay, gain, polarity, and dual mode interact to create multipath echo effects.
 
 1. Set all controls to neutral: Interference 0%, Hum Level 0%, Signal Strength 100%. This isolates the ghost stage.
 2. Set Ghost Gain to ~50% and slowly increase Ghost Delay from 0. A faint displaced copy of the image appears, shifting rightward.
@@ -286,7 +308,7 @@ These exercises progress from individual artifact exploration through combined d
 *Interference and Hum Bars — simulated result across source images.*
 **Source**: A flat or slowly varying image — a solid color field, a gentle gradient, or a static scene with minimal detail to make the interference pattern clearly visible.
 
-**Objective**: Explore herringbone interference patterns and hum bar modulation as independent artifacts.
+**What You'll Create**: Explore herringbone interference patterns and hum bar modulation as independent artifacts.
 
 1. Set Ghost Gain to 0% and Signal Strength to 100% to isolate the interference and hum stages.
 2. Slowly increase Interference from 0%. A fine horizontal stripe pattern appears on the image.
@@ -314,7 +336,7 @@ These exercises progress from individual artifact exploration through combined d
 *Weak Signal Simulation — simulated result across source images.*
 **Source**: Any video — this exercise works best with recognizable content so you can judge the degradation level.
 
-**Objective**: Simulate the progressive degradation of a weak analog TV signal, from mild noise through color loss to total snow.
+**What You'll Create**: Simulate the progressive degradation of a weak analog TV signal, from mild noise through color loss to total snow.
 
 1. Set moderate ghost (Delay ~64 px, Gain ~30%), light interference (~20%), light hum (~20%). This creates a baseline of mild reception artifacts.
 2. Slowly lower Signal Strength from 100% toward 0%. Snow noise begins mixing into the picture.
@@ -331,9 +353,6 @@ These exercises progress from individual artifact exploration through combined d
 
 ## Tips
 
-- **Isolate each artifact separately first**: Set Ghost Gain to 0, Interference to 0, Hum Level to 0, and Signal Strength to 100 to create a clean baseline. Then introduce one artifact at a time to understand its contribution.
-- **Negative ghosts for edge enhancement**: A subtle negative ghost at small delay creates a dark outline along vertical edges, similar to a sharpening effect. This can add visual detail rather than degradation.
-- **Dual ghost for depth**: The cascading echo pattern of dual ghost mode creates a sense of spatial depth — the image appears to recede into layered reflections.
 - **Color Loss sells the illusion**: Enabling Color Loss makes weak signal simulation dramatically more convincing. Real analog TV always lost color before luminance, and viewers instinctively recognize this degradation pattern.
 - **Coarse noise for vintage character**: Fine noise looks like modern digital sensor noise. Coarse noise, with its blocked sample-and-hold texture, more closely resembles the bandwidth-limited noise of a real analog tuner.
 - **Hum Roll for animation**: Even a static image comes alive when hum bars are rolling. The slow vertical drift creates constant motion that suggests a live, unstable signal.
@@ -346,7 +365,6 @@ These exercises progress from individual artifact exploration through combined d
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used here for the ghost delay line (1024×10-bit per channel). |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator, used here for herringbone interference generation. |
 | **Ghost** | A displaced, attenuated copy of the video image caused by multipath signal propagation, where the RF signal arrives via both direct and reflected paths. |
 | **Herringbone** | A fine diagonal or horizontal stripe pattern caused by adjacent-channel interference beating against the desired signal's carrier frequency. |
@@ -357,6 +375,7 @@ These exercises progress from individual artifact exploration through combined d
 | **Sample-and-Hold** | A circuit technique that captures a value and holds it for multiple clock cycles, used in coarse noise mode. |
 | **Sideband** | The frequency components above and below a modulated carrier that contain the signal information; the source of adjacent-channel interference. |
 | **Snow** | Random white-and-black noise visible on an analog TV screen when signal strength is insufficient, caused by thermal noise in the receiver. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

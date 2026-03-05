@@ -68,6 +68,14 @@ At low noise amplitudes with few stages, Stochasm applies gentle threshold-based
 
 ---
 
+## Quick Start
+
+1. **Match noise to spacing**: The stochastic resonance sweet spot occurs when the noise amplitude is roughly equal to the spacing between adjacent thresholds. Start with both at ~30% and fine-tune from there.
+2. **Signed noise for symmetry**: Signed mode produces zero-mean dither that preserves the average brightness of the source. Unsigned mode adds a positive bias — useful for intentionally shifting the threshold response upward.
+3. **Temporal correlation for texture**: Without correlation, the noise flickers every pixel — energetic but visually busy. Enabling correlation creates a stable stipple pattern that reads as a textured surface rather than random grain.
+
+---
+
 ## Background
 
 ### Stochastic Resonance
@@ -94,6 +102,8 @@ When Correlation is above midpoint, Stochasm blends each noise sample 50/50 with
 ---
 
 ## Signal Flow
+
+Input Register → Noise Scaling → Threshold Computation → ... → Final Weighted Sum → Invert + Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -235,6 +245,21 @@ The five toggle switches control independent binary options that shape the chara
 
 Controls the wet/dry crossfade between the original input signal and the processed output. At 0%, only the original signal is present. At 100%, only the processed signal is output. Intermediate values blend the two, allowing subtle noise texturing over the original image.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Stochasm processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -256,7 +281,7 @@ These exercises progress from basic threshold quantisation to full stochastic re
 *Single-Stage Threshold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — sky, skin tones, or gradient test patterns.
 
-**Objective**: Understand the basic threshold comparator mechanism and how noise modifies its behaviour.
+**What You'll Create**: Understand the basic threshold comparator mechanism and how noise modifies its behaviour.
 
 1. **Clean threshold**: Set Stages to 1, Noise Amp to 0%. The output is a hard 1-bit black/white threshold controlled by the Threshold knob. Sweep Threshold across the range and watch sections of the image snap between black and white.
 2. **Add noise**: Slowly increase Noise Amp. Watch the hard threshold edge become probabilistic — pixels near the boundary begin flickering between black and white. This is stochastic resonance at its simplest.
@@ -282,7 +307,7 @@ These exercises progress from basic threshold quantisation to full stochastic re
 *Multi-Stage Quantisation — simulated result across source images.*
 **Source**: Footage with a wide dynamic range — outdoor scenes with highlights and shadows, or a greyscale ramp test pattern.
 
-**Objective**: Explore how cascaded thresholds reconstruct a quantised signal and how noise affects multi-level quantisation.
+**What You'll Create**: Explore how cascaded thresholds reconstruct a quantised signal and how noise affects multi-level quantisation.
 
 1. **Four stages**: Set Stages to 4, Spacing to ~50%. The output now has four brightness levels. Adjust Threshold to centre the quantisation range on the image content.
 2. **Resonance tuning**: Increase Noise Amp slowly from 0%. Watch the hard quantisation boundaries soften — intermediate values appear as noise pushes pixels across adjacent thresholds.
@@ -309,7 +334,7 @@ These exercises progress from basic threshold quantisation to full stochastic re
 *Stochastic Texture Synthesis — simulated result across source images.*
 **Source**: Any footage, especially material with subtle tonal variations — underwater footage, cloud formations, or fabric textures.
 
-**Objective**: Combine all parameters to create controlled stochastic textures that reveal sub-threshold structures in the source material.
+**What You'll Create**: Combine all parameters to create controlled stochastic textures that reveal sub-threshold structures in the source material.
 
 1. **Full cascade**: Set Stages to 8, Spacing ~40%, Threshold ~20%.
 2. **Resonance sweep**: Increase Noise Amp to ~40%. The output should show a granular reconstruction of the source with visible stochastic texture.
@@ -325,9 +350,6 @@ These exercises progress from basic threshold quantisation to full stochastic re
 
 ## Tips
 
-- **Match noise to spacing**: The stochastic resonance sweet spot occurs when the noise amplitude is roughly equal to the spacing between adjacent thresholds. Start with both at ~30% and fine-tune from there.
-- **Signed noise for symmetry**: Signed mode produces zero-mean dither that preserves the average brightness of the source. Unsigned mode adds a positive bias — useful for intentionally shifting the threshold response upward.
-- **Temporal correlation for texture**: Without correlation, the noise flickers every pixel — energetic but visually busy. Enabling correlation creates a stable stipple pattern that reads as a textured surface rather than random grain.
 - **Luma-only for subtlety**: Applying stochastic resonance only to the Y channel preserves the original colour information while adding monochromatic texture — a useful mode for overlaying grain on clean footage.
 - **Weight curve for tone**: The exponentially decaying weight mode creates a nonlinear brightness response — useful for producing dark, moody images where only the brightest features survive.
 - **Feedback loops**: Route Stochasm's output back to its input for recursive stochastic resonance. The cascade progressively re-quantises its own output, creating evolving textures that settle into periodic attractors.
@@ -343,13 +365,12 @@ These exercises progress from basic threshold quantisation to full stochastic re
 | **Cascade** | A series of identical processing stages connected in sequence, where each stage's decision contributes to the final output. |
 | **Comparator** | A circuit that produces a binary (1-bit) output: high if the input exceeds a threshold, low otherwise. |
 | **Dither** | Small noise added to a signal before quantisation to break up banding and create the appearance of additional tonal levels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Galois LFSR** | A type of linear feedback shift register where XOR gates are placed in the data path between register stages, producing pseudo-random sequences. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state, generating a pseudo-random binary sequence. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage for brightness and contrast adjustment. |
 | **Quantisation** | Mapping a continuous range of values to a smaller set of discrete levels. |
 | **Stochastic Resonance** | A phenomenon where adding noise to a sub-threshold signal improves its detection by a nonlinear system (threshold comparator). |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

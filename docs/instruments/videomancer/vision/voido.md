@@ -68,6 +68,14 @@ At clean settings Voido is a functional chromakey — usable for real compositin
 
 ---
 
+## Quick Start
+
+1. **Start with Spill Show**: Toggle it On to visualize the key before worrying about fill colors or artifacts. Tune Key Hue, Tolerance, and Sat Floor until the key map is clean, then switch back to normal compositing.
+2. **Sat Floor prevents gray-area flicker**: Desaturated pixels have unreliable hue angles. Set Sat Floor to 10–20% to prevent them from sporadically entering the key.
+3. **Despill overshoots are creative**: At extreme Despill settings, foreground colors shift toward the complement of the key hue. Red key with high despill creates a cyan-tinted foreground — useful for deliberate color effects.
+
+---
+
 ## Background
 
 ### BBC Colour Separation Overlay
@@ -94,6 +102,8 @@ In a real compositing scenario, the fill behind keyed regions comes from a secon
 ---
 
 ## Signal Flow
+
+Hue Extraction → Key Generation → Foreground Path → ... → Mix → Sync Signals
 
 ```
 Input Video (YUV 4:4:4)
@@ -158,7 +168,7 @@ Sets the target hue angle for chromakey extraction. The control spans the full 3
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the angular width of the keying acceptance window. At 0% only pixels with an exact hue match are keyed — in practice this produces a very noisy, unstable key because even minor color variations fall outside the window. As Tolerance increases, the acceptance angle widens, keying a broader range of hues around the target. At high settings, even moderately off-hue pixels are captured, which can cause foreground elements with similar hues to be incorrectly keyed. A good starting point is 25–35% for typical green-screen footage.
+At 0% only pixels with an exact hue match are keyed — in practice this produces a very noisy, unstable key because even minor color variations fall outside the window. As Tolerance increases, the acceptance angle widens, keying a broader range of hues around the target. At high settings, even moderately off-hue pixels are captured, which can cause foreground elements with similar hues to be incorrectly keyed. A good starting point is 25–35% for typical green-screen footage. Internally, controls the angular width of the keying acceptance window.
 
 ---
 
@@ -180,7 +190,7 @@ Controls the strength of spill suppression on foreground pixels. The despill cir
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the intensity of deliberate edge artifacts on the key signal. At 0% the key is clean — edges are smooth (soft mode) or sharp (hard mode) with no noise or tearing. As the control increases, two artifact mechanisms engage: LFSR noise modulates the key value at a pixel level, and a slew-rate limiter restricts how fast the key can transition between foreground and background. The result is edge fringing, tearing, and semi-transparent blending zones that replicate the look of vintage BBC CSO. At maximum, the key becomes highly unstable with visible color bleeding at all boundaries.
+At 0% the key is clean — edges are smooth (soft mode) or sharp (hard mode) with no noise or tearing. As the control increases, two artifact mechanisms engage: LFSR noise modulates the key value at a pixel level, and a slew-rate limiter restricts how fast the key can transition between foreground and background. The result is edge fringing, tearing, and semi-transparent blending zones that replicate the look of vintage BBC CSO. At maximum, the key becomes highly unstable with visible color bleeding at all boundaries. Internally, controls the intensity of deliberate edge artifacts on the key signal.
 
 ---
 
@@ -231,6 +241,10 @@ Toggles 7 and 8 form a two-bit fill mode selector (4 patterns). Toggle 9 inverts
 
 Controls the wet/dry crossfade between the composited output and the original unprocessed input. At 100% (default, fully clockwise) the full chromakey effect is visible. At 0% the original signal passes through unchanged. Intermediate positions blend between the two. Since Voido has no bypass toggle, use this fader at 0% to pass the unprocessed signal. The crossfade operates per-channel through three interpolator instances.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -252,7 +266,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 *Clean Green Screen Key — simulated result across source images.*
 **Source**: Video of a subject in front of a green backdrop, or any footage with a large area of saturated green.
 
-**Objective**: Set up a clean chromakey with proper despill and tolerance, using solid matte fill.
+**What You'll Create**: Set up a clean chromakey with proper despill and tolerance, using solid matte fill.
 
 1. **Set key hue**: Turn Key Hue to approximately 120° (green). With Tolerance at about 25%, the green background should begin to disappear.
 2. **Widen tolerance**: Increase Tolerance until the entire green area is cleanly keyed with no residual green patches. Around 30-40% is typical.
@@ -279,7 +293,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 *Vintage BBC CSO Artifacts — simulated result across source images.*
 **Source**: Same green-screen footage as Exercise 1, or any keyed material.
 
-**Objective**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Colour Separation Overlay.
+**What You'll Create**: Introduce deliberate edge artifacts to replicate the look of 1970s BBC Colour Separation Overlay.
 
 1. **Start clean**: Begin with the clean key from Exercise 1.
 2. **Add artifacts**: Slowly increase Artifact from 0% to about 50%. Watch the key edges begin to tear and flicker with noise.
@@ -307,7 +321,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 *Creative Color Extraction — simulated result across source images.*
 **Source**: Any colorful footage — street scenes, nature, abstract patterns — without a dedicated green screen.
 
-**Objective**: Use Voido as a creative color extraction tool to isolate and replace arbitrary hue ranges within the image.
+**What You'll Create**: Use Voido as a creative color extraction tool to isolate and replace arbitrary hue ranges within the image.
 
 1. **Pick a hue**: Sweep Key Hue through 360° while watching the image. Find a hue that isolates an interesting region — a blue sky, red clothing, warm skin tones.
 2. **Set tolerance**: Adjust Tolerance to capture the desired area. Use Spill Show to visualize exactly which pixels are selected.
@@ -323,9 +337,6 @@ These exercises progress from basic chromakeying through creative artifact gener
 
 ## Tips
 
-- **Start with Spill Show**: Toggle it On to visualize the key before worrying about fill colors or artifacts. Tune Key Hue, Tolerance, and Sat Floor until the key map is clean, then switch back to normal compositing.
-- **Sat Floor prevents gray-area flicker**: Desaturated pixels have unreliable hue angles. Set Sat Floor to 10–20% to prevent them from sporadically entering the key.
-- **Despill overshoots are creative**: At extreme Despill settings, foreground colors shift toward the complement of the key hue. Red key with high despill creates a cyan-tinted foreground — useful for deliberate color effects.
 - **Artifact intensity maps to era**: Low artifact = modern digital keyer. Medium artifact = 1980s analog keyer. High artifact = 1970s BBC CSO. Maximum artifact = broken equipment.
 - **Hard Key + High Artifact = maximum vintage**: This combination produces the most dramatic edge tearing and binary switching artifacts.
 - **Fill patterns behind real content**: The grid and ramp fills create strong graphic effects. Use them with a moderate key and soft edges for pattern textures that follow the scene's color structure.
@@ -353,5 +364,7 @@ These exercises progress from basic chromakeying through creative artifact gener
 | **Soft Key** | A key mode with linear ramp transitions at edges, producing smooth, anti-aliased boundaries between foreground and fill. |
 | **Spill** | Reflected light from the backdrop that contaminates the foreground subject's colors with the key hue. |
 | **Tolerance** | The angular width of the hue acceptance window; larger tolerance captures a wider range of hues around the key target. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ The three toggle switches labeled "Surface A," "Surface B," and "Surface C" in t
 
 ---
 
+## Quick Start
+
+1. **Surface selector is binary**: The three Surface toggles form a 3-bit number (0–7), not three independent controls. Learn the binary mapping to quickly select any of the six surface types.
+2. **Curvature at zero is flat**: Setting Curvature to 0 on any surface type produces a nearly undistorted image — useful as a starting point before dialing in the effect.
+3. **Shading only works on curves**: The perspective shading effect only engages on Cylinder and Sphere. On Flag, Cone, and Shatter, the Shading knob does nothing.
+
+---
+
 ## Background
 
 ### The Quantel Mirage DVM8000
@@ -94,6 +102,8 @@ When the surface equation computes a source address that falls outside the valid
 ---
 
 ## Signal Flow
+
+Surface Parameter Decode → Address Computation → Sample Fetch → Shading + Edge Mask
 
 ```
 Input Video (YUV 4:4:4)
@@ -166,7 +176,7 @@ Controls the curvature or bend intensity of the selected surface type. On cylind
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the speed of the DDS phase accumulator, which drives continuous animation. At zero, the surface is static — no rotation, no wave motion. As the value increases, the animation speed increases: cylinders and spheres rotate faster, the flag ripples more rapidly, and the page peel advances its fold position. The relationship is linear: doubling the register value doubles the animation speed. Very high values create rapid spinning or flickering that can produce stroboscopic effects.
+At zero, the surface is static — no rotation, no wave motion. As the value increases, the animation speed increases: cylinders and spheres rotate faster, the flag ripples more rapidly, and the page peel advances its fold position. The relationship is linear: doubling the register value doubles the animation speed. Very high values create rapid spinning or flickering that can produce stroboscopic effects. Internally, controls the speed of the DDS phase accumulator, which drives continuous animation.
 
 ---
 
@@ -236,7 +246,29 @@ Toggles 7, 8, and 9 are not independent on/off switches — the VHDL combines th
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the original video signal and the surface-mapped result. At 0%, the output is the unprocessed input. At 100%, the output is the fully distorted and shaded surface. Intermediate values create a blend where the original image ghosts through the 3D effect — this can create interesting double-exposure looks where the flat and curved versions of the image are superimposed.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Mirage processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Mirage-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -259,7 +291,7 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 *Spinning Cylinder — simulated result across source images.*
 **Source**: A video with recognizable text or graphics — a title card, a news crawl, or a logo.
 
-**Objective**: Learn how the cylinder wrap, rotation animation, and perspective shading interact.
+**What You'll Create**: Learn how the cylinder wrap, rotation animation, and perspective shading interact.
 
 1. Set Surface to Cylinder (all three surface toggles Off).
 2. Set Curvature to about 50%. The image wraps into a visible curve.
@@ -287,7 +319,7 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 *Flag Wave — simulated result across source images.*
 **Source**: A full-frame image or graphic — a flag, a poster, or a painting.
 
-**Objective**: Explore the sinusoidal ripple effect and how curvature controls wave amplitude.
+**What You'll Create**: Explore the sinusoidal ripple effect and how curvature controls wave amplitude.
 
 1. Set Surface to Flag (Toggle 7 On, Toggle 8 On, Toggle 9 Off — value 3).
 2. Set Curvature low (~20%) for gentle ripples.
@@ -315,7 +347,7 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 *Shatter and Explode — simulated result across source images.*
 **Source**: Any video with strong visual structure — faces, architecture, or color bars.
 
-**Objective**: Use the shatter surface to break the image into displaced horizontal strips.
+**What You'll Create**: Use the shatter surface to break the image into displaced horizontal strips.
 
 1. Set Surface to Shatter (Toggle 7 On, Toggle 9 On, Toggle 8 Off — value 5).
 2. Set Curvature to 0% — the strips are aligned and the image looks normal.
@@ -331,9 +363,6 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 ## Tips
 
-- **Surface selector is binary**: The three Surface toggles form a 3-bit number (0–7), not three independent controls. Learn the binary mapping to quickly select any of the six surface types.
-- **Curvature at zero is flat**: Setting Curvature to 0 on any surface type produces a nearly undistorted image — useful as a starting point before dialing in the effect.
-- **Shading only works on curves**: The perspective shading effect only engages on Cylinder and Sphere. On Flag, Cone, and Shatter, the Shading knob does nothing.
 - **Background color sets the mood**: Black background creates a floating-object look; white creates a bright studio feel; blue approximates broadcast chroma key.
 - **Rotation speed is frame-locked**: The DDS increments once per frame, so animation smoothness depends on the video frame rate. At very high Rotation values, the surface appears to jump rather than rotate smoothly.
 - **Mix for compositing**: At mid-Mix values, the flat and distorted images overlap, creating a ghostly double-exposure of the original and warped video.
@@ -346,12 +375,10 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for scanline buffer storage. |
 | **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
 | **Coordinate Remapping** | Computing a displaced source address for each output pixel, creating the illusion of geometric transformation. |
 | **DDS** | Direct Digital Synthesis; a phase accumulator technique used here to drive continuous animation of the surface transformation. |
 | **Edge Masking** | Replacing pixels that fall outside valid source bounds with a background fill color. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **LUT** | Look-Up Table; a pre-computed array of values (here, sine and cosine) indexed by angle for fast trigonometric evaluation. |
 | **Perspective Shading** | Darkening surface regions that face away from the viewer, based on the cosine of the surface normal angle. |
@@ -359,6 +386,7 @@ These exercises progress from simple cylinder wrapping to complex multi-surface 
 | **Quantel** | A British company that pioneered real-time digital video effects hardware in the 1980s. |
 | **Scanline Buffer** | BRAM storage holding one or more complete video lines, enabling random-access reads for coordinate remapping. |
 | **Surface Equation** | The mathematical function that maps output pixel coordinates to displaced source coordinates for a given 3D surface type. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

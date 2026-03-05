@@ -8,6 +8,7 @@ description: "On September 21, 1982, Billy Mitchell became the first person to r
 ---
 
 import killscreen_hero from '/img/instruments/videomancer/killscreen/killscreen_hero.png';
+import killscreen_animation from '/img/instruments/videomancer/killscreen/killscreen_animation.gif';
 import killscreen_control_panel from '/img/instruments/videomancer/killscreen/killscreen_control_panel.png';
 import killscreen_exercise1_result from '/img/instruments/videomancer/killscreen/killscreen_exercise1_result.gif';
 import killscreen_exercise2_result from '/img/instruments/videomancer/killscreen/killscreen_exercise2_result.gif';
@@ -19,6 +20,9 @@ import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen
 
 <img src={killscreen_hero} alt="Killscreen hero image"/>
 *Killscreen corrupting a video feed into tile-mapped glitch patterns inspired by the Pac-Man level 256 overflow bug.*
+<img src={killscreen_animation} alt="Killscreen animated output"/>
+*Killscreen output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+
 ---
 
 ## Overview
@@ -28,6 +32,14 @@ On September 21, 1982, Billy Mitchell became the first person to reach screen 25
 The program divides the input video into a configurable grid of rectangular tiles and selectively corrupts them. A position-seeded hash function derived from a master LFSR determines which tiles are corrupted and how. Corruption spreads progressively across the screen from one side to the other, controlled by the Corrupt Amt knob — just as the Pac-Man kill screen's corruption spread from the right side of the maze. Six corruption modes simulate different kinds of tile map failure: clean passthrough, address offset (reading from the wrong tile), palette/channel swap, horizontal bit shift, luminance inversion, and solid color fill.
 
 The result ranges from subtle glitch accents — a few corrupted tiles scattered across an otherwise clean image — to total visual breakdown where the entire frame is a mosaic of mangled tile data. The corruption pattern changes over time as the master LFSR evolves, so the glitch is alive rather than static.
+
+---
+
+## Quick Start
+
+1. **Start subtle**: Begin with Corrupt Amt around 20–30% to create a gentle glitch accent on one side of the screen, then increase for more destruction.
+2. **Pac-Man mode is authentic**: The Mode Bias "Pac-Man" setting recreates the original kill screen's visual character — predominantly displaced tiles with occasional color errors. Use it for retro authenticity.
+3. **Unused knobs are safe**: Offset Range and Color Intns have no effect. You can use them as visual placeholders or ignore them.
 
 ---
 
@@ -63,6 +75,8 @@ Killscreen can overlay visible grid lines at tile boundaries. In real arcade har
 ---
 
 ## Signal Flow
+
+Y / U / V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -105,7 +119,7 @@ One notable hardware detail: the Tile Size toggle and Mode Bias toggle share bit
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the corruption threshold — how far across the screen the corruption extends. At 0% no tiles are corrupted. As you increase the value, corruption spreads progressively from one side of the screen to the other (direction depends on the Direction toggle). At 100% the entire screen is within the corruption zone. Tiles within the corruption zone are not all corrupted — the hash function determines which specific tiles are affected — but the probability increases with the threshold.
+At 0% no tiles are corrupted. As you increase the value, corruption spreads progressively from one side of the screen to the other (direction depends on the Direction toggle). At 100% the entire screen is within the corruption zone. Tiles within the corruption zone are not all corrupted — the hash function determines which specific tiles are affected — but the probability increases with the threshold. Internally, controls the corruption threshold — how far across the screen the corruption extends.
 
 ---
 
@@ -116,7 +130,7 @@ Controls the corruption threshold — how far across the screen the corruption e
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the rate at which the master LFSR evolves. At 0% the LFSR changes very slowly — the corruption pattern is nearly static, changing only once every many frames. At higher values the LFSR cycles faster, causing the corruption pattern to shift and shimmer rapidly. The LFSR advances once per frame at a rate modulated by this control, so the speed is tied to the video frame rate.
+At 0% the LFSR changes very slowly — the corruption pattern is nearly static, changing only once every many frames. At higher values the LFSR cycles faster, causing the corruption pattern to shift and shimmer rapidly. The LFSR advances once per frame at a rate modulated by this control, so the speed is tied to the video frame rate. Internally, controls the rate at which the master LFSR evolves.
 
 ---
 
@@ -149,7 +163,7 @@ Labeled "Color Intns" on the panel. Like Offset Range, this register is read but
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the brightness of the tile grid lines when Grid Lines is enabled. At 0% the grid lines are invisible (the overlay has no additive brightness). At higher values the grid lines become progressively brighter. The grid line rendering dims the underlying pixel by half and adds the border brightness, so even at maximum the incoming image content remains partially visible through the grid.
+At 0% the grid lines are invisible (the overlay has no additive brightness). At higher values the grid lines become progressively brighter. The grid line rendering dims the underlying pixel by half and adds the border brightness, so even at maximum the incoming image content remains partially visible through the grid. Internally, controls the brightness of the tile grid lines when Grid Lines is enabled.
 
 ---
 
@@ -168,7 +182,7 @@ Controls the hue of solid-fill corrupted tiles (mode 5). The fill color is deriv
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Tile Size** | 8x8 | 16x16 |
+| **7 — Tile Size** | 8x8 | 32x32 |
 | **8 — Mode Bias** | All Equal | Pac-Man |
 | **9 — Direction** | L-to-R | R-to-L |
 | **10 — Grid Lines** | Off | On |
@@ -189,6 +203,21 @@ The five toggles configure the tile grid geometry, corruption behavior, and disp
 
 Controls the dry/wet crossfade between the original input and the corrupted output. At 0% the output is entirely clean (original). At 100% the output is entirely corrupted. Intermediate values blend the two, which can create a ghostly effect where corruption patterns are overlaid semi-transparently on the clean image. This is especially effective with the grid lines enabled — the grid appears as a subtle overlay even at low mix values.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Killscreen processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -199,9 +228,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 <img src={killscreen_exercise1_result} alt="Split-Screen Corruption result"/>
 *Split-Screen Corruption — simulated result across source images.*
-**Source**: A camera feed or recorded footage with recognizable subjects and saturated color.
-
-**Objective**: Learn how Corrupt Amt and Direction create a progressive split-screen corruption effect.
+**What You'll Create**: Learn how Corrupt Amt and Direction create a progressive split-screen corruption effect.
 
 1. **Minimal corruption**: Set Corrupt Amt to about 20%. Only a few columns of tiles near the edge of the screen are corrupted.
 2. **Spread**: Slowly increase Corrupt Amt toward 50%. Watch the corruption front advance across the screen, tile column by tile column.
@@ -217,9 +244,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 <img src={killscreen_exercise2_result} alt="Pac-Man Mode result"/>
 *Pac-Man Mode — simulated result across source images.*
-**Source**: Footage with geometric patterns or text — anything where tile displacement is clearly visible.
-
-**Objective**: Experience the Pac-Man kill screen's characteristic address-offset corruption pattern.
+**What You'll Create**: Experience the Pac-Man kill screen's characteristic address-offset corruption pattern.
 
 1. **Set tile size**: Choose 16×16 tiles for a classic arcade feel.
 2. **Enable Pac-Man bias**: Toggle Mode Bias to Pac-Man. This heavily favors the address-offset corruption mode.
@@ -235,9 +260,7 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 <img src={killscreen_exercise3_result} alt="8-Bit Breakdown result"/>
 *8-Bit Breakdown — simulated result across source images.*
-**Source**: Any dynamic video — music performance, abstract patterns, or live camera.
-
-**Objective**: Combine all corruption controls for maximum visual destruction.
+**What You'll Create**: Combine all corruption controls for maximum visual destruction.
 
 1. **Small tiles**: Set Tile Size to 8×8 for fine-grained corruption.
 2. **Full corruption**: Corrupt Amt to 100%.
@@ -254,9 +277,6 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 
 ## Tips
 
-- **Start subtle**: Begin with Corrupt Amt around 20–30% to create a gentle glitch accent on one side of the screen, then increase for more destruction.
-- **Pac-Man mode is authentic**: The Mode Bias "Pac-Man" setting recreates the original kill screen's visual character — predominantly displaced tiles with occasional color errors. Use it for retro authenticity.
-- **Unused knobs are safe**: Offset Range and Color Intns have no effect. You can use them as visual placeholders or ignore them.
 - **Grid lines reveal structure**: Enable Grid Lines at low brightness to subtly reveal the tile map underlying the corruption, adding an extra layer of retro-game aesthetic.
 - **Speed controls drama**: Very low Speed creates a slow, menacing corruption that shifts every few seconds. Very high Speed creates frenetic, animated chaos. Match the speed to your performance tempo.
 - **Mix for layering**: At 40–60% Mix, the corruption becomes a semi-transparent overlay on the clean image — effective for creating data-corruption atmospherics without obliterating the source.
@@ -274,10 +294,10 @@ These exercises progress from gentle glitch accents to full kill-screen breakdow
 | **Hash** | A deterministic function that maps tile coordinates to a pseudo-random value, ensuring repeatable per-tile corruption decisions. |
 | **Kill Screen** | A level in an arcade game where a software bug causes the display to become unplayable due to memory corruption; most famously, Pac-Man level 256. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state, producing a repeating pseudo-random sequence. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Tile** | A fixed-size rectangular block of pixels (e.g., 8×8 or 16×16) treated as a single unit in a tile-based graphics system. |
 | **Tile Map** | A data structure mapping screen grid positions to pattern indices in a character ROM; the addressing scheme corrupted by kill-screen bugs. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

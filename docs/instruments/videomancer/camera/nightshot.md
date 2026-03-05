@@ -68,6 +68,14 @@ All processing is purely per-pixel with zero BRAM usage. The LFSR16 generates ps
 
 ---
 
+## Quick Start
+
+1. **Start with IR Gain before adding noise**: Noise visibility scales with gain — adding noise before finding the right gain level makes it hard to judge the base sensitivity.
+2. **Use IR Curve to recover shadow detail**: The curve lifts shadows without further boosting already-bright areas. Combine moderate gain with high curve for the most natural NightShot look.
+3. **Bloom is directional**: The IIR accumulator runs left-to-right only, so bloom trails always extend to the right. Position light sources on the left side of frame for the most visible charge smear.
+
+---
+
 ## Background
 
 ### CCD Gain and Infrared Response
@@ -94,6 +102,8 @@ Classic night vision devices display their amplified image on a phosphor screen 
 ---
 
 ## Signal Flow
+
+State → Processing Pipeline → Sync Signals → Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -230,6 +240,10 @@ The five toggles control independent rendering options. Color Mode selects betwe
 
 Mix controls the interpolator crossfade between the dry (original) and wet (processed) signals. At 0, the output is entirely the original video. At 1023, the output is the full night vision effect. Because Nightshot has no bypass toggle, setting Mix to 0 is the only way to pass the original signal through cleanly. The interpolator operates independently on Y, U, and V with 4-clock latency.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -251,7 +265,7 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 *Basic Green Night Vision — simulated result across source images.*
 **Source**: A moderately lit camera feed — indoor scene, face, or room with visible shadow areas.
 
-**Objective**: Create the classic green phosphor NightShot look with moderate gain boost and minimal noise.
+**What You'll Create**: Create the classic green phosphor NightShot look with moderate gain boost and minimal noise.
 
 1. Start with defaults. Observe the green-tinted monochrome image.
 2. Increase IR Gain to ~60%. Shadow areas brighten significantly.
@@ -279,7 +293,7 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 *Noisy Surveillance with Bloom — simulated result across source images.*
 **Source**: A dark scene — dimly lit hallway, nighttime exterior, or underexposed footage.
 
-**Objective**: Push the gain hard to reveal detail in a dark source, adding noise and bloom for authentic low-light camcorder artifacts.
+**What You'll Create**: Push the gain hard to reveal detail in a dark source, adding noise and bloom for authentic low-light camcorder artifacts.
 
 1. Set IR Gain to ~85% to dramatically boost the dark scene.
 2. Increase Noise to ~60%. Heavy grain appears, simulating high-ISO CCD noise.
@@ -307,7 +321,7 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 *Full NightShot with AGC Hunting — simulated result across source images.*
 **Source**: A moving subject in mixed lighting — hand-held camera footage, a person walking through light and shadow.
 
-**Objective**: Engage the auto-gain pump to create the distinctive AGC hunting visible in real late-90s NightShot footage.
+**What You'll Create**: Engage the auto-gain pump to create the distinctive AGC hunting visible in real late-90s NightShot footage.
 
 1. Set IR Gain to ~50% as a baseline.
 2. Enable Auto Gain. Set Pump Rate to ~25% for slow oscillation.
@@ -324,9 +338,6 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 
 ## Tips
 
-- **Start with IR Gain before adding noise**: Noise visibility scales with gain — adding noise before finding the right gain level makes it hard to judge the base sensitivity.
-- **Use IR Curve to recover shadow detail**: The curve lifts shadows without further boosting already-bright areas. Combine moderate gain with high curve for the most natural NightShot look.
-- **Bloom is directional**: The IIR accumulator runs left-to-right only, so bloom trails always extend to the right. Position light sources on the left side of frame for the most visible charge smear.
 - **Pump Rate and Depth work together**: Rate controls speed, depth controls amplitude. Fast rate with low depth creates subtle flickering; slow rate with high depth creates dramatic breathing.
 - **Hot Spots emphasize skin and eyes**: In real NightShot footage, skin and eyes appear as bright hotspots due to IR reflectivity. The hot spot boost above 768 recreates this effect on any bright feature.
 - **Green mode tint scales with brightness**: Dark pixels remain nearly neutral, so the green tint is most visible on mid-tones and highlights. For uniform green across all levels, boost IR Gain to push everything brighter.
@@ -343,16 +354,14 @@ These exercises build the NightShot aesthetic from basic green monochrome throug
 | **Bloom** | Horizontal brightness smear caused by CCD charge well overflow bleeding along the readout register. |
 | **BT.601** | ITU-R BT.601 standard defining the YUV color encoding used in the Videomancer video pipeline. |
 | **CCD** | Charge-Coupled Device; the image sensor technology used in late-1990s camcorders. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline at 74.25 MHz. |
 | **IIR** | Infinite Impulse Response; a feedback filter whose output depends on its own previous output. |
-| **Interpolator** | A linear crossfade module that blends two 10-bit values based on a mix parameter over 4 clock cycles. |
 | **IR** | Infrared; electromagnetic radiation with wavelength longer than visible red light (~700 nm+). |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input is a linear function (XOR) of selected bit positions, producing a pseudo-random sequence. |
 | **Luminance** | The brightness component (Y) of a YUV signal, range 0–1023 in 10-bit representation. |
 | **NightShot** | Sony Handycam feature (1998+) that disabled the IR cut filter and boosted CCD gain for night recording. |
 | **P43** | Green phosphor compound used in image intensifier tubes and night vision devices. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next on every clock cycle. |
 | **Triangle Wave** | A periodic waveform that linearly ramps up and down between bounds, used here for the AGC pump oscillator. |
-| **YUV** | Color encoding separating luminance (Y) from chrominance (U, V), the native format of the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

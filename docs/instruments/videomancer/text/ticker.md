@@ -68,6 +68,14 @@ The Tape Spd control advances a horizontal scroll offset each frame, shifting th
 
 ---
 
+## Quick Start
+
+1. **Start with Contrast**: The quantization depth is the single most impactful control. Begin with moderate quantization and adjust band size around it.
+2. **Border lines anchor the eye**: Enable Edge Show whenever the band overlays a bright source — without borders, the band edges can be hard to perceive.
+3. **News mode is a transparent overlay**: Style = News keeps the outside source at full brightness, making the band read as a semi-opaque crawl over live video.
+
+---
+
 ## Background
 
 ### The Ticker Tape Machine
@@ -94,6 +102,8 @@ When Edge Show is enabled, bright horizontal lines are drawn at the top and bott
 ---
 
 ## Signal Flow
+
+Input Register + Invert → Band Detection + Border → Content Compose → Output Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -208,7 +218,7 @@ Tints the border lines (Ink Hue). The register is divided into four hue regions.
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Ticker | Telex |
+| **7 — Style** | Ticker | News |
 | **8 — Edge Show** | Off | On |
 | **9 — Animate** | Off | On |
 | **10 — Invert** | Off | On |
@@ -228,6 +238,10 @@ Switches 7–11 control the style mode, border visibility, scroll animation, lum
 | Suffix | % |
 
 Crossfade between the unprocessed input (dry) and the fully processed ticker output (wet). At 0% the output is pure dry signal. At 100% the output is fully processed. Intermediate values create a ghost-overlay effect where the quantized band is partially transparent against the original video.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -250,7 +264,7 @@ These exercises progress from a simple static band to a fully animated scrolling
 *Static Ticker Band — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable faces and varying brightness.
 
-**Objective**: Learn how band positioning, height, and quantization interact to create the basic ticker-tape look.
+**What You'll Create**: Learn how band positioning, height, and quantization interact to create the basic ticker-tape look.
 
 1. **Position the band**: Set Tape Pos to ~50% to center the band vertically on screen.
 2. **Set band height**: Choose a moderate height (step 3 or 4, ~50%) for a visible strip.
@@ -277,7 +291,7 @@ These exercises progress from a simple static band to a fully animated scrolling
 *Scrolling News Crawl — simulated result across source images.*
 **Source**: A studio camera shot or talking-head video with consistent framing.
 
-**Objective**: Combine scroll animation, border lines, and style modes to create a live news-crawl effect.
+**What You'll Create**: Combine scroll animation, border lines, and style modes to create a live news-crawl effect.
 
 1. **Start from Exercise 1 settings** with moderate height and strong quantization.
 2. **Enable borders**: Turn Edge Show on. Bright lines frame the band top and bottom.
@@ -305,7 +319,7 @@ These exercises progress from a simple static band to a fully animated scrolling
 *Vintage Telegraph Tape — simulated result across source images.*
 **Source**: High-contrast black-and-white footage or a graphic test pattern with strong edges.
 
-**Objective**: Use Paper Hue, Ink Hue, Invert, and heavy quantization to evoke a vintage teleprinter aesthetic.
+**What You'll Create**: Use Paper Hue, Ink Hue, Invert, and heavy quantization to evoke a vintage teleprinter aesthetic.
 
 1. **Narrow the band**: Set Tape H to ~25% for a thin strip. Position near center.
 2. **Maximum quantization**: Set Contrast to 100% for pure binary output.
@@ -322,9 +336,6 @@ These exercises progress from a simple static band to a fully animated scrolling
 
 ## Tips
 
-- **Start with Contrast**: The quantization depth is the single most impactful control. Begin with moderate quantization and adjust band size around it.
-- **Border lines anchor the eye**: Enable Edge Show whenever the band overlays a bright source — without borders, the band edges can be hard to perceive.
-- **News mode is a transparent overlay**: Style = News keeps the outside source at full brightness, making the band read as a semi-opaque crawl over live video.
 - **Invert flips the "ink"**: Invert changes which brightness values read as foreground text and which read as background paper. Dark sources become light "characters" and vice versa.
 - **Slow scroll for readability**: Very high Tape Spd values blur the quantized content into horizontal streaks. For the most legible ticker look, keep speed below 30%.
 - **Paper Hue upper region for vintage look**: Values above 768 give a warm sepia paper tone that pairs well with amber Ink Hue borders.
@@ -341,13 +352,12 @@ These exercises progress from a simple static band to a fully animated scrolling
 | **BT.601** | ITU-R Recommendation BT.601, defining standard-definition color encoding with separate luminance (Y) and chrominance (U, V) components. |
 | **DDS** | Direct Digital Synthesis; a technique for generating waveforms using a phase accumulator incremented at a fixed rate. |
 | **Dimming** | Right-shifting (dividing by powers of 2) the luma value of pixels outside the band to darken them. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable IC executing the Ticker processing pipeline. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds into the next on each clock cycle. |
 | **Posterization** | Reducing the number of distinct brightness levels, collapsing smooth gradients into flat steps. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels by truncating lower-order bits. |
 | **Sample-and-Hold** | A decimation technique where a single sample value is held constant across multiple pixel positions, creating uniform blocks. |
 | **Scroll Offset** | A per-frame horizontal pixel counter that shifts the composite position of the band content to create scrolling animation. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

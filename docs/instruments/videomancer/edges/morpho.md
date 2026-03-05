@@ -68,6 +68,14 @@ Because Morpho operates on a 1D (horizontal) kernel without vertical line buffer
 
 ---
 
+## Quick Start
+
+1. **Gradient for edge detection**: Morphological gradient is one of the cleanest edge detectors — non-negative, bounded, and noise-resistant.
+2. **Threshold cleans noise**: In gradient mode, threshold removes weak micro-edges caused by noise, leaving only meaningful boundaries.
+3. **Edge Gain amplifies subtlety**: Low-contrast edges can be brought out by increasing Edge Gain without affecting flat regions.
+
+---
+
 ## Background
 
 ### What Are Erosion and Dilation?
@@ -86,6 +94,8 @@ The **structuring element** defines the shape and size of the neighborhood used 
 ---
 
 ## Signal Flow
+
+Y Channel → UV Channels → UV Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -131,7 +141,7 @@ The 3-pixel shift register is the core of the operation — it maintains three c
 | Default | 50% |
 | Suffix | % |
 
-Controls the erosion amount — how strongly the min3 result influences the output when the Erode operation is selected. At center, the erosion passes at unity (full local minimum replacement). Below center, the erosion effect is blended with the original signal. Above center, the erosion is exaggerated, further darkening eroded regions. In gradient mode, this control modulates the erosion component of the difference.
+At center, the erosion passes at unity (full local minimum replacement). Below center, the erosion effect is blended with the original signal. Above center, the erosion is exaggerated, further darkening eroded regions. In gradient mode, this control modulates the erosion component of the difference. Internally, controls the erosion amount — how strongly the min3 result influences the output when the Erode operation is selected.
 
 ---
 
@@ -186,7 +196,7 @@ Adds a DC offset to the output luminance after all morphological processing. At 
 | Default | 50% |
 | Suffix | % |
 
-Scales the morphological gradient output. At center, the gradient (max − min) passes at unity. Above center, the edge signal is amplified, making edges brighter and more prominent. Below center, the edge signal is attenuated. This control is most relevant when the Gradient operation is selected and has minimal effect in pure erode/dilate modes.
+At center, the gradient (max − min) passes at unity. Above center, the edge signal is amplified, making edges brighter and more prominent. Below center, the edge signal is attenuated. This control is most relevant when the Gradient operation is selected and has minimal effect in pure erode/dilate modes. Internally, scales the morphological gradient output.
 
 ---
 
@@ -194,7 +204,7 @@ Scales the morphological gradient output. At center, the gradient (max − min) 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Operation** | Erode | Dilate |
+| **7 — Operation** | Erode | Open |
 | **8 — Channel** | Luma | All |
 | **9 — Struct Elm** | Cross | Square |
 | **10 — Invert** | Off | On |
@@ -213,7 +223,29 @@ Switches 7–11 control the morphological operation and processing scope. Operat
 | Default | 100% |
 | Suffix | % |
 
-Controls the wet/dry mix between the morphologically processed output and the original input. At 100%, the full morphological result passes. Lowering the fader blends the original back in. At 0%, the output is the unprocessed input.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Morpho processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Morpho-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -236,7 +268,7 @@ These exercises progress from basic erosion/dilation to morphological gradient e
 *Erosion and Dilation — simulated result across source images.*
 **Source**: High-contrast footage with clear edges — text, graphic elements, or architectural subjects.
 
-**Objective**: Understand the fundamental erosion and dilation operations and how they reshape image features.
+**What You'll Create**: Understand the fundamental erosion and dilation operations and how they reshape image features.
 
 1. **Erode**: Set Operation to Erode (Switch 7). Observe how bright features shrink horizontally — text becomes thinner, bright lines narrow. Dark regions expand.
 2. **Dilate**: Switch Operation to Dilate. Observe the opposite effect — bright features expand, dark lines fill, and small dark details disappear.
@@ -263,7 +295,7 @@ These exercises progress from basic erosion/dilation to morphological gradient e
 *Morphological Gradient (Edge Detection) — simulated result across source images.*
 **Source**: Footage with distinct objects and clear boundaries — outdoor scenes, product shots, or geometric patterns.
 
-**Objective**: Use the morphological gradient to extract edge information from the image.
+**What You'll Create**: Use the morphological gradient to extract edge information from the image.
 
 1. **Select gradient**: Set Operation to Gradient (Switch 7). The output shows edges as bright lines on a dark background.
 2. **Edge gain**: Increase Edge Gain to amplify the edge signal. The edges become brighter and more visible.
@@ -291,7 +323,7 @@ These exercises progress from basic erosion/dilation to morphological gradient e
 *Creative Structural Effects — simulated result across source images.*
 **Source**: Abstract or textured footage — flowing water, smoke, foliage, or video feedback.
 
-**Objective**: Combine morphological operations with contrast and inversion for creative visual effects.
+**What You'll Create**: Combine morphological operations with contrast and inversion for creative visual effects.
 
 1. **Strong erosion**: Set Operation to Erode, Erode Amt to ~80%, Contrast to ~80%. The image reduces to its darkest structures.
 2. **All channels**: Switch to All mode. Color channels erode independently, creating color fringing.
@@ -307,9 +339,6 @@ These exercises progress from basic erosion/dilation to morphological gradient e
 
 ## Tips
 
-- **Gradient for edge detection**: Morphological gradient is one of the cleanest edge detectors — non-negative, bounded, and noise-resistant.
-- **Threshold cleans noise**: In gradient mode, threshold removes weak micro-edges caused by noise, leaving only meaningful boundaries.
-- **Edge Gain amplifies subtlety**: Low-contrast edges can be brought out by increasing Edge Gain without affecting flat regions.
 - **All-channel mode for color**: Applying morphology to UV channels creates color bleeding and fringing effects that can be striking on graphic input.
 - **Erosion for dark structures**: Erosion reveals the dark skeleton of an image — the network of dark lines and shadows.
 - **Dilation for glow**: Dilation spreads bright regions, creating a blooming glow effect on highlights.
@@ -323,13 +352,12 @@ These exercises progress from basic erosion/dilation to morphological gradient e
 |------|------------|
 | **Dilation** | A morphological operation that replaces each pixel with the local maximum, expanding bright regions. |
 | **Erosion** | A morphological operation that replaces each pixel with the local minimum, shrinking bright regions. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gradient** | The morphological gradient: dilation minus erosion, producing an edge-detection map. |
 | **Morphology** | Mathematical morphology; a branch of image processing based on set-theoretic operations on image shapes. |
 | **Opening** | Erosion followed by dilation; smooths features smaller than the structuring element without expanding larger ones. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Shift Register** | A chain of flip-flops that delays data by one clock per stage, forming a sliding window over consecutive pixels. |
 | **Structuring Element** | The shape and size of the neighborhood used for morphological operations (cross, square, etc.). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

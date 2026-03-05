@@ -68,6 +68,14 @@ At conservative settings Sirocco produces a subtle atmospheric warmth and gentle
 
 ---
 
+## Quick Start
+
+1. **Start with one effect**: Enable ripple, sand, warmth, or contrast individually before combining. Each has its own character and it's easier to understand the interaction when you build up layer by layer.
+2. **Mix is your master intensity**: Rather than reducing each individual parameter, use the Mix fader to dial back the entire sandstorm effect proportionally. This maintains the relative balance between effects.
+3. **Turbulence at 0% for still photography**: Setting Turbulence to 0% freezes the ripple bands in place, creating static horizontal brightness banding useful for texture overlays and still image processing.
+
+---
+
 ## Background
 
 ### What Is Atmospheric Shimmer?
@@ -94,6 +102,8 @@ A full sine wave repeats every 360°, but its shape is symmetrical — the first
 ---
 
 ## Signal Flow
+
+Input + Counters → Sine LUT + Sand Hash → Sand Hit Test → Apply Ripple + Sand → Contrast + Warmth → Output Register
 
 ```
 Input Video (YUV 4:4:4)
@@ -219,7 +229,7 @@ Controls the Y contrast boost intensity. Despite the TOML label "Warmth," this m
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Storm** | Sand | Dust |
+| **7 — Storm** | Sand | Fog |
 | **8 — Shimmer** | Off | On |
 | **9 — Direction** | Horiz | Vert |
 | **10 — Animate** | Off | On |
@@ -238,7 +248,29 @@ The four effect toggles (Switches 7–10) independently enable or disable the fo
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix crossfade via three `interpolator_u` instances. At 0% (register 0) the output is the original unprocessed signal. At 100% (register 1023) the output is fully processed. Intermediate values blend the processed signal with the original, allowing subtle atmospheric effects to be introduced without overwhelming the source image.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Sirocco processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Sirocco-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +293,7 @@ These exercises build from individual effects to the full sandstorm simulation. 
 *Heat Shimmer Ripple — simulated result across source images.*
 **Source**: Footage of a static scene (landscape, architectural shot) where the ripple bands will be clearly visible against straight horizontal lines.
 
-**Objective**: Learn how the sine ripple creates atmospheric shimmer by modulating brightness vertically.
+**What You'll Create**: Learn how the sine ripple creates atmospheric shimmer by modulating brightness vertically.
 
 1. **Isolate ripple**: Enable Shimmer (Switch 8 On), disable Storm (Switch 7 low), disable Direction (Switch 9 low), disable Animate (Switch 10 Off).
 2. **Set moderate amplitude**: Turn Intensity to about 50%.
@@ -289,7 +321,7 @@ These exercises build from individual effects to the full sandstorm simulation. 
 *Sand Particle Storm — simulated result across source images.*
 **Source**: Dark or mid-toned footage where bright particles will stand out clearly.
 
-**Objective**: Explore the LFSR-based sand particle system and understand density vs. brightness.
+**What You'll Create**: Explore the LFSR-based sand particle system and understand density vs. brightness.
 
 1. **Isolate sand**: Enable Storm (Switch 7 high), disable Shimmer (Switch 8 Off), disable Direction (Switch 9 low).
 2. **Start sparse**: Set Haze Amt to about 20%. Bright specks should appear scattered across the frame.
@@ -317,7 +349,7 @@ These exercises build from individual effects to the full sandstorm simulation. 
 *Full Desert Sandstorm — simulated result across source images.*
 **Source**: Any footage — the effect works on all content, but outdoor landscapes and portraits are particularly evocative.
 
-**Objective**: Combine all four processing stages to create a complete sandstorm simulation.
+**What You'll Create**: Combine all four processing stages to create a complete sandstorm simulation.
 
 1. **Enable everything**: Storm high, Shimmer On, Direction high, Animate On.
 2. **Set base levels**: Intensity ~50%, Turbulence ~30%, Haze Amt ~35%, Shimmer ~50%.
@@ -333,9 +365,6 @@ These exercises build from individual effects to the full sandstorm simulation. 
 
 ## Tips
 
-- **Start with one effect**: Enable ripple, sand, warmth, or contrast individually before combining. Each has its own character and it's easier to understand the interaction when you build up layer by layer.
-- **Mix is your master intensity**: Rather than reducing each individual parameter, use the Mix fader to dial back the entire sandstorm effect proportionally. This maintains the relative balance between effects.
-- **Turbulence at 0% for still photography**: Setting Turbulence to 0% freezes the ripple bands in place, creating static horizontal brightness banding useful for texture overlays and still image processing.
 - **Sand density vs. brightness tradeoff**: Dense, dim particles (high Haze Amt, low Shimmer) create a hazy dust cloud. Sparse, bright particles (low Haze Amt, high Shimmer) create occasional intense flashes — more like embers or fireflies than sand.
 - **Warmth stacks with sand V tint**: The per-particle V+8 tint adds to the global warmth shift, so sand-heavy areas appear even warmer than the background. This creates a natural depth effect where particulate-rich regions look more sun-baked.
 - **Feedback for storms**: Route the output back to the input to create compounding sand and ripple. Each pass adds more particles and deepens the ripple, simulating an intensifying storm.
@@ -349,14 +378,12 @@ These exercises build from individual effects to the full sandstorm simulation. 
 |------|------------|
 | **BT.601** | ITU-R Recommendation BT.601; the colour encoding standard used for standard-definition video, defining YUV coefficients used throughout Videomancer. |
 | **Colour Temperature** | A measure of how warm (amber) or cool (blue) light appears, expressed in Kelvin. Sirocco shifts colour temperature by modifying U and V channels. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A hardware module that linearly crossfades between two input values based on a third value (the mix control). |
 | **LFSR** | Linear Feedback Shift Register; a deterministic pseudo-random number generator used for sand particle placement. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Phase Accumulator** | A counter that increments by a controllable amount each frame, used to animate the sine wave ripple over time. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quarter-Wave LUT** | A lookup table storing only 0°–90° of a sine wave, reconstructing the full wave via symmetry and sign inversion. |
 | **Saturating Arithmetic** | Addition or subtraction that clamps the result to the valid range (0–1023) instead of wrapping around on overflow or underflow. |
-| **YUV** | A colour encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

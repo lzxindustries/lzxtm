@@ -68,6 +68,14 @@ An asymmetry offset shifts the DC operating point before the non-linearity, affe
 
 ---
 
+## Quick Start
+
+1. **Start with Drive:** Distortion intensity is primarily controlled by drive. Set 2nd and 3rd Order first, then adjust drive to taste — small drive changes have large effects on distortion visibility.
+2. **Use luma-only for texture:** When you want harmonic grit without color mutation, enable Y Only mode. This preserves the original color palette while adding edge emphasis and tonal compression.
+3. **Soft clip for analog feel:** Soft saturation is more forgiving and less prone to banding artifacts. Use hard clip when you specifically want sharp digital edges.
+
+---
+
 ## Background
 
 ### Intermodulation Distortion in Electronics
@@ -94,6 +102,8 @@ Feedback in audio creates echo, reverb, and oscillation. In single-sample video 
 ---
 
 ## Signal Flow
+
+Y/U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -177,7 +187,7 @@ Sets the weighting of the third-order (cube-law) distortion product. The cubed s
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the cross-channel coupling strength. At zero, Y, U, and V are processed independently. As the knob increases, the luma channel is multiplied into U and V before the weighted accumulation, creating intermodulation products that shift color based on brightness. Low settings produce subtle iridescent color shifts on edges; high settings create dramatic hue rotations and metallic chromatic artifacts. Cross-coupling is applied only in stage 3 and only affects the chrominance channels — luma receives only its own distortion products.
+At zero, Y, U, and V are processed independently. As the knob increases, the luma channel is multiplied into U and V before the weighted accumulation, creating intermodulation products that shift color based on brightness. Low settings produce subtle iridescent color shifts on edges; high settings create dramatic hue rotations and metallic chromatic artifacts. Cross-coupling is applied only in stage 3 and only affects the chrominance channels — luma receives only its own distortion products. Internally, controls the cross-channel coupling strength.
 
 ---
 
@@ -228,6 +238,10 @@ The five toggles provide signal routing and post-processing options. Luma Only r
 
 Controls the wet/dry mix between the original video signal and the distorted output. At 0% the output is entirely the dry (original) signal; at 100% the output is entirely the wet (distorted) signal. Intermediate positions blend the distorted signal over the original, which is useful for adding subtle harmonic texture without fully replacing the source. The mix is implemented via three parallel `interpolator_u` instances — one per Y/U/V channel.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -249,7 +263,7 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 *Warm Tube Overdrive — simulated result across source images.*
 **Source**: A portrait or talking-head shot with smooth skin tones and moderate contrast.
 
-**Objective**: Add subtle second-order harmonic warmth to the luminance channel without disturbing color, simulating a gently overdriven tube amplifier stage.
+**What You'll Create**: Add subtle second-order harmonic warmth to the luminance channel without disturbing color, simulating a gently overdriven tube amplifier stage.
 
 1. Enable luma-only mode (Toggle 7 = Y Only) to protect color.
 2. Set Drive (Pot 1) to 55% for slight gain above unity.
@@ -279,7 +293,7 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 *Metallic Color Shred — simulated result across source images.*
 **Source**: A high-contrast scene with saturated colors — neon signs, painted surfaces, or colorful textiles.
 
-**Objective**: Create aggressive intermodulation artifacts with metallic, iridescent color shifts using cross-channel coupling and cube-law distortion.
+**What You'll Create**: Create aggressive intermodulation artifacts with metallic, iridescent color shifts using cross-channel coupling and cube-law distortion.
 
 1. Process all channels (Toggle 7 = All Ch.).
 2. Set Drive (Pot 1) to 80% for aggressive 2× gain.
@@ -309,7 +323,7 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 *Self-Oscillating Chaos — simulated result across source images.*
 **Source**: Any source — at high feedback the input material is largely destroyed by self-oscillation. A static graphic or test pattern helps visualize the feedback propagation direction.
 
-**Objective**: Push the processor into chaotic self-oscillation using maximum feedback, creating horizontal interference patterns that evolve across the scan line.
+**What You'll Create**: Push the processor into chaotic self-oscillation using maximum feedback, creating horizontal interference patterns that evolve across the scan line.
 
 1. Process all channels (Toggle 7 = All Ch.).
 2. Set Drive (Pot 1) to 70%.
@@ -328,9 +342,6 @@ These exercises demonstrate the range of Intermod's distortion character, from s
 
 ## Tips
 
-- **Start with Drive:** Distortion intensity is primarily controlled by drive. Set 2nd and 3rd Order first, then adjust drive to taste — small drive changes have large effects on distortion visibility.
-- **Use luma-only for texture:** When you want harmonic grit without color mutation, enable Y Only mode. This preserves the original color palette while adding edge emphasis and tonal compression.
-- **Soft clip for analog feel:** Soft saturation is more forgiving and less prone to banding artifacts. Use hard clip when you specifically want sharp digital edges.
 - **Cross-coupling needs saturated source:** The Y×U and Y×V products are most visible with colorful source material. Monochrome sources have near-zero U/V so cross-coupling has little effect.
 - **Feedback accumulates horizontally:** Remember that single-sample feedback creates a left-to-right propagation effect because of the scan-line order. Vertical structures in the image create horizontal smearing.
 - **Asymmetry biases clipping:** Shifting asymmetry off-center determines which polarity clips first. Use this to create intentionally bright-biased or dark-biased distortion.

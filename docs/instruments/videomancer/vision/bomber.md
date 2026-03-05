@@ -68,6 +68,14 @@ At conservative settings — slow speed, narrow ring, flash effect — Bomber pr
 
 ---
 
+## Quick Start
+
+1. **Speed and frame count**: At maximum speed, a wave crosses a 1080p screen in about 6 frames — blink and you miss it. Start below 10% to see the ring structure clearly, then increase for dramatic fast-wipes.
+2. **Ring width sets the mood**: A narrow ring (under 10%) creates a sharp, precise shockwave edge. A wide ring (over 40%) creates a gradual, sweeping transformation zone. Match ring width to the effect — Flash looks best narrow, Dissolve and Ripple look best wide.
+3. **Latch mode for reveals**: Set Post Intns to 100% (black aftermath) with a slow Flash ring. As the ring expands, it erases the image to black behind a wall of white light — a dramatic reveal-to-black transition.
+
+---
+
 ## Background
 
 ### Arcade Explosions and the Radial Shockwave
@@ -100,6 +108,8 @@ The Lissajous path is generated from a 32-entry sine lookup table with coprime p
 ---
 
 ## Signal Flow
+
+Input Register → Distance Calculation → Zone Classification → Composite Output
 
 ```
 Wave Generator (per frame, at vsync)
@@ -174,7 +184,7 @@ The LFSR (Linear Feedback Shift Register) is a 16-bit pseudo-random generator se
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the wave expansion rate — how many pixels the ring radius grows per video frame. At 0%, the ring is frozen in place. At higher values, the ring expands faster, sweeping across the image in fewer frames. The expansion rate is the register value right-shifted by 2 (divided by 4), so at maximum setting the ring advances approximately 255 pixels per frame — fast enough to clear a 1080p screen in about six frames. At very low settings (under 5%), the expansion is slow enough to study the ring structure in detail.
+At 0%, the ring is frozen in place. At higher values, the ring expands faster, sweeping across the image in fewer frames. The expansion rate is the register value right-shifted by 2 (divided by 4), so at maximum setting the ring advances approximately 255 pixels per frame — fast enough to clear a 1080p screen in about six frames. At very low settings (under 5%), the expansion is slow enough to study the ring structure in detail. Internally, controls the wave expansion rate — how many pixels the ring radius grows per video frame.
 
 ---
 
@@ -207,7 +217,7 @@ Sets the interval between auto-triggered waves when Trigger mode is set to Auto.
 | Default | 0.0% |
 | Suffix | % |
 
-Controls the amplitude of the Lissajous center drift — how far the blast center wanders from the default screen center between successive auto-triggered waves. At 0% (default), all waves originate from the exact center of the image. As you increase this control, the center follows a two-dimensional Lissajous path with coprime frequency ratios (3:5), creating a smoothly wandering, non-repeating trajectory. At maximum, the center can drift well beyond the visible image area, producing off-center blasts whose rings enter from the edges.
+At 0% (default), all waves originate from the exact center of the image. As you increase this control, the center follows a two-dimensional Lissajous path with coprime frequency ratios (3:5), creating a smoothly wandering, non-repeating trajectory. At maximum, the center can drift well beyond the visible image area, producing off-center blasts whose rings enter from the edges. Internally, controls the amplitude of the Lissajous center drift — how far the blast center wanders from the default screen center between successive auto-triggered waves.
 
 ---
 
@@ -237,7 +247,7 @@ Sets the brightness level used by the Flash, Color, and Reveal wavefront effects
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Effect** | Flash | Invert |
+| **7 — Effect** | Flash | Ripple |
 | **8 — Post Mode** | Pass | Latch |
 | **9 — Trigger** | Manual | Auto |
 | **10 — Multi Wave** | Single | Multi |
@@ -256,7 +266,29 @@ Toggle 7 is a 3-bit selector (steps_8 mode) choosing one of eight wavefront effe
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the processed and unprocessed signal via the interpolator. At 0%, the output is the original input regardless of effect settings. At 100% (default), the full processed signal is output. Intermediate values blend the effect with the clean signal, useful for softening aggressive effects like Dissolve or reducing the visual impact of the wavefront flash.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bomber processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Bomber-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -279,7 +311,7 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 *The Expanding Ring — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and saturated color.
 
-**Objective**: Observe the basic shockwave mechanic — an expanding ring of white flash sweeping outward from the image center.
+**What You'll Create**: Observe the basic shockwave mechanic — an expanding ring of white flash sweeping outward from the image center.
 
 1. **Set a slow speed**: Turn Speed to approximately 5%. The ring should expand slowly enough to study its geometry.
 2. **Widen the ring**: Set Ring Width to approximately 15%. A wider ring makes the wavefront clearly visible.
@@ -306,7 +338,7 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 *Aftermath and Latch — simulated result across source images.*
 **Source**: High-contrast footage with a mix of bright and dark regions — shows dimming effect clearly.
 
-**Objective**: Explore post-wave latch mode, where the expanding ring leaves a darkened aftermath across the image.
+**What You'll Create**: Explore post-wave latch mode, where the expanding ring leaves a darkened aftermath across the image.
 
 1. **Enable latch**: Set Post Mode to Latch and Post Intns to approximately 50%. Now the area behind the ring will be visibly darkened.
 2. **Slow expansion**: Keep Speed at approximately 5% to watch the aftermath grow behind the ring.
@@ -333,7 +365,7 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 *Bombardment — simulated result across source images.*
 **Source**: Any footage — the source will be largely consumed by overlapping shockwaves.
 
-**Objective**: Combine auto-trigger, multi-wave, Lissajous center drift, and the Dissolve effect for maximal visual chaos.
+**What You'll Create**: Combine auto-trigger, multi-wave, Lissajous center drift, and the Dissolve effect for maximal visual chaos.
 
 1. **Enable multi-wave**: Set Multi Wave to Multi. New triggers no longer reset the existing wave — rings accumulate.
 2. **Enable auto-trigger with rapid rate**: Set Trigger to Auto and Auto Rate to approximately 15%. Waves fire frequently.
@@ -350,9 +382,6 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 
 ## Tips
 
-- **Speed and frame count**: At maximum speed, a wave crosses a 1080p screen in about 6 frames — blink and you miss it. Start below 10% to see the ring structure clearly, then increase for dramatic fast-wipes.
-- **Ring width sets the mood**: A narrow ring (under 10%) creates a sharp, precise shockwave edge. A wide ring (over 40%) creates a gradual, sweeping transformation zone. Match ring width to the effect — Flash looks best narrow, Dissolve and Ripple look best wide.
-- **Latch mode for reveals**: Set Post Intns to 100% (black aftermath) with a slow Flash ring. As the ring expands, it erases the image to black behind a wall of white light — a dramatic reveal-to-black transition.
 - **Color Blast for prismatic rings**: The Color effect divides the wavefront into four angular quadrants, each with a different saturated hue. Combined with a narrow ring and slow speed, this creates a rainbow halo that sweeps outward — delicate and geometric.
 - **Feedback loops**: Route the output back to the input with Latch enabled. Each wave compounds the dimming of the previous wave's aftermath, progressively darkening the image with each blast. After several cycles, only the wavefront rings remain visible against black.
 - **Mix for subtlety**: Reduce Mix to 30–50% to blend the shockwave with the clean signal. The wavefront becomes a translucent overlay rather than a hard replacement — useful for layering Bomber's effect over other video without fully obscuring the source.
@@ -375,6 +404,7 @@ These exercises progress from a single clean shockwave to overlapping multi-wave
 | **SMPTE** | Society of Motion Picture and Television Engineers, the standards body that defines broadcast video wipe patterns and transition types. |
 | **Vsync (Vertical Sync)** | A timing pulse that marks the beginning of each new video frame, used here to trigger per-frame wave expansion. |
 | **Wavefront zone** | The annular region between the inner and outer ring boundaries where the active visual effect is applied to each pixel. |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

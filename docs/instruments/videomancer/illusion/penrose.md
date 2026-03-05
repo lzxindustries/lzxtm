@@ -68,6 +68,14 @@ Four shape modes are available: the classic Penrose triangle, a staircase (horiz
 
 ---
 
+## Quick Start
+
+1. **Depth Cue is the key to the illusion**: Without junction shading, the wireframe is just a geometric overlay. With moderate Depth Cue (40–60%), the darkened junctions create the perception of bars passing behind each other — the essence of the impossible object.
+2. **Thick lines make strong shapes**: Line Thk above 30% creates bold architectural bars rather than thin wireframe lines. Combined with Solid style, this produces clean geometric graphics.
+3. **Tiling fills the screen**: Count at 75%+ creates a dense repeating pattern of impossible objects. Reduce Size proportionally so each copy fits within its tile cell.
+
+---
+
 ## Background
 
 ### Impossible Objects and Visual Paradox
@@ -94,6 +102,8 @@ Four compositing styles determine how the wireframe interacts with the source vi
 ---
 
 ## Signal Flow
+
+Coordinate Offset → Line Distance → Threshold + Depth Cue → Wireframe Compose
 
 ```
 Input Video (YUV 4:4:4)
@@ -159,7 +169,7 @@ The depth-cue junction shading is a critical visual element — it darkens pixel
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial extent of the shape by setting the half-size parameter, which determines how far each bar centreline sits from the screen centre. At minimum, the shape is a tiny figure in the centre of the screen. At maximum, the bars extend nearly to the screen edges. The half-size is computed as `(pot >> 1) + 64`, giving a range of 64 to 576 pixels. This control interacts strongly with Count — larger shapes may overlap when tiled.
+At minimum, the shape is a tiny figure in the centre of the screen. At maximum, the bars extend nearly to the screen edges. The half-size is computed as `(pot >> 1) + 64`, giving a range of 64 to 576 pixels. This control interacts strongly with Count — larger shapes may overlap when tiled. Internally, controls the spatial extent of the shape by setting the half-size parameter, which determines how far each bar centreline sits from the screen centre.
 
 ---
 
@@ -222,8 +232,8 @@ Controls the strength of depth-cue shading at bar junctions. The pot value is qu
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Shape** | Triangle | Stairs |
-| **8 — Style** | Wire | Solid |
+| **7 — Shape** | Triangle | Trident |
+| **8 — Style** | Wire | Glow |
 | **9 — Spin** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -242,6 +252,21 @@ The five toggles control shape selection (2-bit), rendering style (2-bit with bi
 | Suffix | % |
 
 Wet/dry crossfade between the source video (dry) and the wireframe-composited output (wet). At 0%, only the original source is visible. At 100%, the full wireframe effect is applied. Intermediate values blend the two, creating a translucent wireframe overlay. The crossfade uses three interpolator instances (one per Y/U/V channel) with 4-clock latency.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Penrose processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -264,7 +289,7 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 *Classic Penrose Triangle — simulated result across source images.*
 **Source**: A static or slowly moving camera feed with a medium-brightness, low-contrast background (e.g., a plain wall or sky gradient).
 
-**Objective**: Draw a centered Penrose triangle wireframe and explore depth-cue shading to create the impossible-object illusion.
+**What You'll Create**: Draw a centered Penrose triangle wireframe and explore depth-cue shading to create the impossible-object illusion.
 
 1. **Basic triangle**: Confirm Shape is set to Triangle and Style to Wire. A wireframe triangle should appear centred on the screen.
 2. **Adjust size**: Sweep Size from minimum to maximum. Watch the triangle grow from a small figure to a screen-filling shape.
@@ -291,7 +316,7 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 *Tiled Impossible Staircase — simulated result across source images.*
 **Source**: A brightly lit scene with varied content — a cityscape, bookshelf, or garden.
 
-**Objective**: Explore the staircase shape mode and repetition tiling.
+**What You'll Create**: Explore the staircase shape mode and repetition tiling.
 
 1. **Switch to staircase**: Set Shape to Stairs. The wireframe changes to horizontal, vertical, and diagonal bars.
 2. **Enable tiling**: Increase Count to about 60%. Four copies of the staircase appear across the screen.
@@ -319,7 +344,7 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 *Glowing Trident Composition — simulated result across source images.*
 **Source**: Dark or low-key footage — night scenes, dimly lit interiors, or abstract dark textures.
 
-**Objective**: Use the Glow compositing style with the Trident shape to create luminous impossible objects over dark video.
+**What You'll Create**: Use the Glow compositing style with the Trident shape to create luminous impossible objects over dark video.
 
 1. **Trident shape**: Set Shape to Trident. Three parallel vertical bars with a connecting structure appear.
 2. **Glow style**: Switch Style to Glow. The wireframe adds brightness and pushes chroma warm.
@@ -336,9 +361,6 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 
 ## Tips
 
-- **Depth Cue is the key to the illusion**: Without junction shading, the wireframe is just a geometric overlay. With moderate Depth Cue (40–60%), the darkened junctions create the perception of bars passing behind each other — the essence of the impossible object.
-- **Thick lines make strong shapes**: Line Thk above 30% creates bold architectural bars rather than thin wireframe lines. Combined with Solid style, this produces clean geometric graphics.
-- **Tiling fills the screen**: Count at 75%+ creates a dense repeating pattern of impossible objects. Reduce Size proportionally so each copy fits within its tile cell.
 - **Style bit overlap is a feature**: The shared bits between Shape, Style, and Animate create unexpected style changes when toggling other controls. Explore these interactions for happy accidents.
 - **Glow for dark backgrounds**: The Glow style shines brightest against dark or black video sources. Pair with the Trident shape for science-fiction-style luminous wireframes.
 - **Spin + Rotation for compound motion**: Spin provides continuous translation while Rotation offsets the starting position. Together they create orbiting or scanning wireframe patterns.
@@ -354,12 +376,11 @@ These exercises explore the four shape modes, depth-cue shading, tiling, and com
 | **Blivet** | An impossible object consisting of three cylindrical prongs that appear to merge into two rectangular bars; also known as the Devil's Fork or impossible trident. |
 | **Depth Cue** | A visual signal (shading, occlusion, size) that suggests relative distance. In Penrose, junction shading simulates bar overlap. |
 | **Distance Field** | A function that returns the perpendicular distance from each pixel to a geometric primitive. Used for wireframe rendering without explicit line drawing. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Impossible Object** | A two-dimensional drawing that appears to depict a three-dimensional structure but contains contradictory depth cues, making it physically unrealizable. |
 | **Necker Cube** | An ambiguous wireframe cube drawing that can be perceived from two different orientations, named after crystallographer Louis Albert Necker. |
 | **Penrose Triangle** | An impossible object consisting of three bars joined at right angles in a closed triangular loop; also known as the tribar. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **SDF** | Signed Distance Field; a rendering technique where each pixel stores its signed perpendicular distance to the nearest surface boundary. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

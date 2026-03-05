@@ -68,6 +68,14 @@ At conservative settings — moderate grain, warm sepia ink, plate mark enabled 
 
 ---
 
+## Quick Start
+
+1. **Sepia for warmth, iron gall for drama**: The four ink presets serve different aesthetic purposes. Warm Sepia and Neutral Brown evoke fine-art portraiture; Cool Black suits documentary or newspaper aesthetics; Iron Gall adds an antique, archival quality.
+2. **Grain reveals midtone content**: Because aquatint grain is strongest in the midtones and absent at extremes, it naturally draws the eye to the tonal regions where photographic detail is richest.
+3. **Paper warmth interacts with ink colour**: Warm paper with warm ink (sepia) produces a harmonious golden tone. Warm paper with cool ink (iron gall) creates a tension between the blue-black ink and the golden paper — historically authentic and visually striking.
+
+---
+
 ## Background
 
 ### What Is Photogravure?
@@ -94,6 +102,8 @@ The color of the paper stock affects the overall appearance of a print. Photogra
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -140,7 +150,7 @@ The processing chain converts the input luminance into an ink density value and 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the depth of the concave tone curve applied to the input luminance. At zero, the tone curve is a straight passthrough — no shadow extension. As the control increases, the shadow region (below midpoint 512) is progressively darkened by subtracting a scaled offset proportional to the distance from midgray. Highlights above midpoint receive a gentler compression. The net effect models the etch-depth response of a copper plate: shadows gain richness and density while the overall tonal range compresses in a way characteristic of intaglio printing.
+At zero, the tone curve is a straight passthrough — no shadow extension. As the control increases, the shadow region (below midpoint 512) is progressively darkened by subtracting a scaled offset proportional to the distance from midgray. Highlights above midpoint receive a gentler compression. The net effect models the etch-depth response of a copper plate: shadows gain richness and density while the overall tonal range compresses in a way characteristic of intaglio printing. Internally, controls the depth of the concave tone curve applied to the input luminance.
 
 ---
 
@@ -224,6 +234,21 @@ Switches 7 and 8 form a **combined 2-bit ink color selector** — the combinatio
 
 Controls the wet/dry mix between the gravure-processed output and the delayed original input. Three interpolator instances crossfade Y, U, and V independently. At zero, only the original input passes through. At maximum, only the gravure effect is visible. Intermediate positions create a ghostly overlay where the original video shows through the print texture — useful for partially grounding the print effect in photographic reality.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Gravure processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -245,7 +270,7 @@ These exercises build from basic tone curve exploration to full print simulation
 *Shadow Tone Curve — simulated result across source images.*
 **Source**: A portrait or still life with a full tonal range — deep shadows, smooth midtones, and clean highlights.
 
-**Objective**: Understand how the concave tone curve reshapes shadow density to emulate the copper etch-depth response.
+**What You'll Create**: Understand how the concave tone curve reshapes shadow density to emulate the copper etch-depth response.
 
 1. **Neutral baseline**: Set all toggles off, Grain to 0%, and Mix to 100%. Set Ink Density to ~75%. You should see a monochromatic version of the input in warm sepia (the default ink preset).
 2. **Sweep shadow depth**: Slowly increase Shadow Depth from 0% to 100%. Watch the shadow regions darken and gain richness while highlights compress gently. This is the gravure etch-depth response.
@@ -272,7 +297,7 @@ These exercises build from basic tone curve exploration to full print simulation
 *Aquatint Grain and Ink Pooling — simulated result across source images.*
 **Source**: A landscape or architectural image with broad midtone areas (sky, walls, foliage) and some deep shadows.
 
-**Objective**: Explore the density-dependent aquatint grain texture and the ink pooling effect in deep shadow regions.
+**What You'll Create**: Explore the density-dependent aquatint grain texture and the ink pooling effect in deep shadow regions.
 
 1. **Add grain**: Starting from Exercise 1's settings, increase Grain to ~40%. A fine stochastic texture appears in the midtone areas. Notice that highlights and deep shadows remain relatively smooth — the grain is concentrated where the physical aquatint process also produces the most visible texture.
 2. **Increase grain**: Push Grain to ~80%. The stipple becomes coarser and more visible, dominating the midtones.
@@ -300,7 +325,7 @@ These exercises build from basic tone curve exploration to full print simulation
 *Full Photogravure Emulation — simulated result across source images.*
 **Source**: A high-contrast portrait (studio lighting, dark background) — the kind of subject that showcases intaglio printing at its finest.
 
-**Objective**: Combine all processing stages to create a complete photogravure print emulation with plate mark, grain, ink color, and paper warmth.
+**What You'll Create**: Combine all processing stages to create a complete photogravure print emulation with plate mark, grain, ink color, and paper warmth.
 
 1. **Set shadow depth**: Shadow Depth to ~60%. Rich, extended shadows.
 2. **Add grain**: Grain to ~40%. Fine midtone texture.
@@ -318,9 +343,6 @@ These exercises build from basic tone curve exploration to full print simulation
 
 ## Tips
 
-- **Sepia for warmth, iron gall for drama**: The four ink presets serve different aesthetic purposes. Warm Sepia and Neutral Brown evoke fine-art portraiture; Cool Black suits documentary or newspaper aesthetics; Iron Gall adds an antique, archival quality.
-- **Grain reveals midtone content**: Because aquatint grain is strongest in the midtones and absent at extremes, it naturally draws the eye to the tonal regions where photographic detail is richest.
-- **Paper warmth interacts with ink colour**: Warm paper with warm ink (sepia) produces a harmonious golden tone. Warm paper with cool ink (iron gall) creates a tension between the blue-black ink and the golden paper — historically authentic and visually striking.
 - **Pooling prevents crushed blacks**: A small amount of ink pooling (10–20%) prevents deep shadows from going to solid black, maintaining the sense of physical depth that distinguishes gravure prints from digital reproductions.
 - **Plate mark as framing**: Enable Plate Mark whenever using Gravure for still image presentation — the rectangular border provides compositional grounding and immediately signals "print" to the viewer.
 - **Feedback loops**: Routing the gravure output back to the input creates a progressively more stylized print effect — each pass deepens the shadow curve and reapplies the grain, producing a woodcut-like quality after several iterations.
@@ -333,18 +355,16 @@ These exercises build from basic tone curve exploration to full print simulation
 | Term | Definition |
 |------|------------|
 | **Aquatint** | A printmaking technique using granular resin to create tonal areas; in Gravure, the stochastic grain texture derived from LFSR noise. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric (Gravure uses zero BRAMs). |
 | **Concave Curve** | A tone curve where the output falls below the identity line, deepening shadows relative to a linear mapping. |
 | **Density** | In printmaking, the amount of ink deposited; higher density = darker areas. The VHDL inverts luminance to create density. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Intaglio** | A family of printing techniques where ink is held in recessed areas of a plate, including photogravure, etching, and engraving. |
 | **Iron Gall** | A historical ink made from iron salts and tannic acid, producing a blue-black color that deepens with age. |
 | **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to produce the aquatint grain pattern (seed 0x7E5D). |
 | **Photogravure** | An intaglio printing process using acid-etched copper plates to transfer photographic images onto paper with continuous-tone fidelity. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Plate Mark** | The rectangular impression left in the paper by the edge of a copper printing plate; a hallmark of intaglio prints. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Rotogravure** | The industrial cylinder-based variant of gravure used for high-volume printing (newspapers, magazines, packaging). |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

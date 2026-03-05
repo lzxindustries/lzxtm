@@ -68,6 +68,14 @@ At minimum settings, Lightning produces a thin, barely visible line with subtle 
 
 ---
 
+## Quick Start
+
+1. **Labels are scrambled**: The TOML labels for Knobs 2–5 do not match the VHDL signal assignments. Use the hardware behaviour (described above) rather than the panel labels when adjusting controls.
+2. **Dark sources work best**: Lightning uses additive compositing, so the bolt is most visible against dark backgrounds. Against bright sources, the bolt may clip to white and lose definition.
+3. **Jitter accumulates**: Even small per-scanline jitter produces significant wandering over 1080 lines. Start with low Jitter values to understand the accumulation before going extreme.
+
+---
+
 ## Background
 
 ### What Is a Bolt Distance Falloff?
@@ -94,6 +102,8 @@ Lightning uses additive compositing: the bolt brightness is *added* to the sourc
 ---
 
 ## Signal Flow
+
+Input Register + Distance → Distance Falloff → Flash Modulation → Brightness Add
 
 ```
 Input Video (YUV 4:4:4)
@@ -216,8 +226,8 @@ This register is mapped to `registers_in(5)` in the TOML as "Tint," but the VHDL
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Bolt | Sheet |
-| **8 — Color** | White | Blue |
+| **7 — Style** | Bolt | Arc |
+| **8 — Color** | White | Gold |
 | **9 — Flash** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -235,7 +245,29 @@ Toggles 7 and 8 each use only the lowest bit of their respective 10-bit register
 | Default | 100.0% |
 | Suffix | % |
 
-Master wet/dry crossfade. At 0%, the output is the original source video with no bolt overlay. At 100%, the output is the fully composed lightning effect over the source. Intermediate values blend between the two, allowing the bolt to be mixed in at any intensity. The interpolation is linear across all three YUV channels simultaneously.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Lightning processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Lightning-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -258,7 +290,7 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 *Simple Bolt — simulated result across source images.*
 **Source**: A dark background — either black or low-contrast footage.
 
-**Objective**: Understand basic bolt rendering, width control, and jitter.
+**What You'll Create**: Understand basic bolt rendering, width control, and jitter.
 
 1. Set Width (Knob 1) to ~50% for a clearly visible glow band.
 2. Set Jitter (Knob 2 — labelled "Branch P") to ~30% for moderate wandering.
@@ -287,7 +319,7 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 *Flash and Fork — simulated result across source images.*
 **Source**: Mid-brightness footage — cityscapes, landscapes, or abstract video.
 
-**Objective**: Explore flash timing, branching, and the difference between regular and random flash.
+**What You'll Create**: Explore flash timing, branching, and the difference between regular and random flash.
 
 1. Set Width to ~40%, Jitter to ~50%, Brightness to ~80%.
 2. Set Flash Rate (Knob 3 — labelled "Bright") to ~50%. Observe periodic flashing.
@@ -315,7 +347,7 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 *Electric Storm — simulated result across source images.*
 **Source**: Any footage — the effect will be dramatic regardless of source content.
 
-**Objective**: Combine double bolts, colour tint, heavy jitter, and random flash for a full storm effect.
+**What You'll Create**: Combine double bolts, colour tint, heavy jitter, and random flash for a full storm effect.
 
 1. Enable double bolt (Switch 7 on). Two bolts appear, wandering in opposite directions.
 2. Enable colour tint (Switch 8 on). Bolts shift from white to purple-blue.
@@ -332,9 +364,6 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 
 ## Tips
 
-- **Labels are scrambled**: The TOML labels for Knobs 2–5 do not match the VHDL signal assignments. Use the hardware behaviour (described above) rather than the panel labels when adjusting controls.
-- **Dark sources work best**: Lightning uses additive compositing, so the bolt is most visible against dark backgrounds. Against bright sources, the bolt may clip to white and lose definition.
-- **Jitter accumulates**: Even small per-scanline jitter produces significant wandering over 1080 lines. Start with low Jitter values to understand the accumulation before going extreme.
 - **Flash Rate is tempo**: Think of the Flash Rate control as a tempo knob — it sets the rhythm of the lightning flashes. Random flash mode adds syncopation.
 - **Branch = 2× jitter**: The branch forks from the main bolt with doubled jitter amplitude, so it diverges rapidly. Use low Branch Density values (fork near top) for maximum branching drama.
 - **Colour tint is brightness-proportional**: The purple-blue shift only appears where the bolt is bright. Dim inter-flash areas retain their source colour, creating a natural colour gradient along the bolt's falloff.
@@ -348,15 +377,13 @@ These exercises progress from a simple static bolt to complex multi-bolt flashin
 | Term | Definition |
 |------|------------|
 | **Additive Compositing** | Combining two signals by adding their values, clamping at the maximum. The bolt brightness is added to the source luma. |
-| **BRAM** | Block RAM; dedicated FPGA memory resources. Lightning uses zero BRAM. |
 | **DDS** | Direct Digital Synthesis; a technique using a phase accumulator to generate periodic signals at arbitrary frequencies. |
 | **Distance Falloff** | The decrease in brightness with increasing distance from the bolt centre, creating a glow effect. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; produces pseudo-random bit sequences used for bolt jitter and flash randomisation. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of absolute coordinate differences, $|x_1-x_2|+|y_1-y_2|$. |
 | **Phase Accumulator** | A register that increments by a fixed amount each clock cycle, wrapping at its maximum value, used in DDS to control frequency. |
-| **Pipeline** | A series of sequential processing stages, each operating in one clock cycle. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

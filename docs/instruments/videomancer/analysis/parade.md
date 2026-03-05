@@ -68,6 +68,14 @@ The name *Parade* references the broadcast engineering term for the side-by-side
 
 ---
 
+## Quick Start
+
+1. **Green phosphor for authenticity**: The P31 green preset matches the classic Tektronix waveform monitor look. Combine with high persistence for maximum CRT nostalgia.
+2. **Low persistence for precision**: When reading exact signal levels, reduce Persist to near-zero for thin, precise traces. Each pixel corresponds to a single signal value.
+3. **Gain zoom for noise analysis**: At 4× gain, sensor noise and quantization artifacts in the source become clearly visible as jittering dot clusters — useful for evaluating camera quality.
+
+---
+
 ## Background
 
 ### Waveform Monitors in Broadcast Engineering
@@ -94,6 +102,8 @@ The core of the display engine is a set of three dual-port BRAM line buffers (Y,
 ---
 
 ## Signal Flow
+
+Clock 1: Input Register → Clock 2: Address Compute → Clocks 3–4: BRAM Read → ... → Sync Signals → Output Mux
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ The critical interaction is between the line buffer write path and the display r
 | Default | 50% |
 | Suffix | % |
 
-Controls the brightness of the phosphor trace dots. At 0%, the dots are invisible — the display shows only the background and graticule. At 100%, the dots are drawn at maximum luminance in the selected phosphor color. This directly sets the Y value of dot pixels; the U and V components are determined by the phosphor color selection toggle.
+At 0%, the dots are invisible — the display shows only the background and graticule. At 100%, the dots are drawn at maximum luminance in the selected phosphor color. This directly sets the Y value of dot pixels; the U and V components are determined by the phosphor color selection toggle. Internally, controls the brightness of the phosphor trace dots.
 
 ---
 
@@ -168,7 +178,7 @@ Controls the brightness of the phosphor trace dots. At 0%, the dots are invisibl
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical thickness of each waveform dot, simulating the persistence of a CRT phosphor. At 0%, each dot is a single-pixel-high hairline. As you increase the control, the match threshold widens and each dot becomes a vertical smear — the trace thickens into a luminous band. At maximum, the smear reaches ±31 pixels, creating a soft, glowing curtain. This is the primary control for achieving the classic CRT waveform monitor aesthetic.
+At 0%, each dot is a single-pixel-high hairline. As you increase the control, the match threshold widens and each dot becomes a vertical smear — the trace thickens into a luminous band. At maximum, the smear reaches ±31 pixels, creating a soft, glowing curtain. This is the primary control for achieving the classic CRT waveform monitor aesthetic. Internally, controls the vertical thickness of each waveform dot, simulating the persistence of a CRT phosphor.
 
 ---
 
@@ -220,8 +230,8 @@ Sets the background brightness behind the waveform traces. The background Y valu
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Parade | Overlay |
-| **8 — Phosphor** | Green | Amber |
+| **7 — Mode** | Parade | Luma |
+| **8 — Phosphor** | Green | White |
 | **9 — Graticule** | Off | On |
 | **10 — Over Video** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -240,6 +250,21 @@ Toggles 7 and 8 form two related 2-bit selectors controlling display mode and ph
 | Suffix | % |
 
 Crossfades between the dry (original) input signal and the wet (waveform monitor) output. At 0%, the output is pure source video. At 100%, the output is the full waveform display. Intermediate values blend the two, which can create a semi-transparent scope overlay effect useful for monitoring during live performance.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Parade processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -262,7 +287,7 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 *Reading a Parade Display — simulated result across source images.*
 **Source**: A color bar test pattern or footage with known brightness levels (skin tones, pure white, pure black regions).
 
-**Objective**: Learn to read the three-column parade display and identify signal levels by their vertical position.
+**What You'll Create**: Learn to read the three-column parade display and identify signal levels by their vertical position.
 
 1. **Default parade view**: Ensure Mode is set to Parade. Feed color bars or a known-level source.
 2. **Read the Y column**: The left column shows luminance. White bars should trace near the top of the display; black bars trace near the bottom. Mid-gray sits at the 50% graticule line.
@@ -289,7 +314,7 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 *Phosphor Aesthetics — simulated result across source images.*
 **Source**: Any dynamic footage — camera feed, music video, or abstract patterns.
 
-**Objective**: Explore the CRT aesthetic controls — phosphor color, persistence, and intensity — to create visually evocative waveform displays.
+**What You'll Create**: Explore the CRT aesthetic controls — phosphor color, persistence, and intensity — to create visually evocative waveform displays.
 
 1. **Set high persistence**: Turn Persist to ~80%. The waveform traces become thick, glowing bands — the signature CRT look.
 2. **Cycle phosphors**: Switch through Green, Amber, Blue, and White. Each gives a distinctly different mood — clinical green, warm amber, cold blue, stark white.
@@ -317,7 +342,7 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 *Gain Zoom and Detail Analysis — simulated result across source images.*
 **Source**: Footage with subtle tonal detail — skin tones, fabric textures, or gradient test patterns.
 
-**Objective**: Use high gain magnification to examine fine signal structure that is invisible at unity scale.
+**What You'll Create**: Use high gain magnification to examine fine signal structure that is invisible at unity scale.
 
 1. **Feed subtle content**: Use a camera aimed at skin or fabric — signals with narrow dynamic range.
 2. **Set gain to 1×**: The waveform occupies only a narrow band in the center of the display. Fine tonal gradations are invisible at this scale.
@@ -333,9 +358,6 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 ## Tips
 
-- **Green phosphor for authenticity**: The P31 green preset matches the classic Tektronix waveform monitor look. Combine with high persistence for maximum CRT nostalgia.
-- **Low persistence for precision**: When reading exact signal levels, reduce Persist to near-zero for thin, precise traces. Each pixel corresponds to a single signal value.
-- **Gain zoom for noise analysis**: At 4× gain, sensor noise and quantization artifacts in the source become clearly visible as jittering dot clusters — useful for evaluating camera quality.
 - **Over Video for live monitoring**: Toggle Over Video On during live performance to get a heads-up signal level display without leaving the picture view.
 - **Graticule for quick level checks**: Enable the graticule and look for Y traces touching the 10% or 90% lines — this indicates the signal is approaching the legal limits for broadcast.
 - **Mix for overlay compositing**: At 30–50% Mix with Over Video Off, the waveform display becomes a semi-transparent overlay that can be composited into the final output for video art applications.
@@ -347,9 +369,7 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric used for the three channel line buffers. |
 | **DDS** | Direct Digital Synthesis; a digital technique for generating periodic waveforms using a phase accumulator. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Gain** | Vertical magnification of the waveform display, analogous to V/div on an oscilloscope. |
 | **Graticule** | Calibrated reference grid lines overlaid on the waveform display at known signal levels. |
 | **Line Buffer** | A BRAM-based memory that stores one complete scanline of pixel values for subsequent readout and display. |
@@ -357,8 +377,8 @@ These exercises progress from basic waveform reading to advanced monitoring tech
 | **Parade** | A waveform display layout where Y, U, and V channels are shown in three side-by-side columns. |
 | **Persistence** | The duration a CRT phosphor dot remains visible after excitation; simulated by widening the vertical dot match threshold. |
 | **Phosphor** | The luminescent coating inside a CRT that glows when struck by an electron beam; different phosphor types emit different colors. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

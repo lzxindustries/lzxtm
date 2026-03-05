@@ -68,6 +68,14 @@ At moderate settings, the source image remains legible through the stripe patter
 
 ---
 
+## Quick Start
+
+1. **Bar width sets the character**: Values around 4–12 produce the most recognizable barcode patterns. Wider bars become abstract stripes; width 1 is just luminance quantization.
+2. **Quantization is the vocabulary**: Fewer levels create a more dramatic, graphic-poster barcode. More levels create subtle density variations that read almost like halftone printing.
+3. **Guard bars complete the illusion**: Enable Guard to add the start/stop markers that make the output look like a real barcode format. Combined with Quiet Zone, the result is compositionally framed.
+
+---
+
 ## Background
 
 ### What Is a Barcode?
@@ -94,6 +102,8 @@ While traditional barcodes are one-dimensional (vertical stripes), modern data e
 ---
 
 ## Signal Flow
+
+Input Register → Luminance Quantization → Bar Draw → Guard Bars
 
 ```
 Input Video (YUV 4:4:4)
@@ -213,8 +223,8 @@ Applies a signed brightness offset to the entire processed signal. The offset is
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Type** | 1D Vert | 1D Horiz |
-| **8 — Color** | B/W | Red |
+| **7 — Type** | 1D Vert | Matrix |
+| **8 — Color** | B/W | Green |
 | **9 — Guard** | Off | On |
 | **10 — Invert** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -232,7 +242,19 @@ Switches 7 and 8 each use two bits to select among four options — they are mul
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix between the processed barcode signal and the delay-compensated original. Three interpolator_u instances (one each for Y, U, V) crossfade between the two. At 100% (pot = 1023), the output is fully processed barcode. At 0%, the output is the original signal. Intermediate values blend the barcode pattern over the source, creating a ghostly overlay where the stripe structure is visible but the original image shows through.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Barcode-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +277,7 @@ These exercises progress from basic vertical barcode rendering through spatial m
 *Classic Barcode — simulated result across source images.*
 **Source**: A portrait or image with a broad range of tones — skin, hair, background.
 
-**Objective**: Learn how bar width and quantization interact to produce recognizable vertical barcode patterns.
+**What You'll Create**: Learn how bar width and quantization interact to produce recognizable vertical barcode patterns.
 
 1. **Start simple**: Set Bar W to ~30%, Levels to mid-position, all toggles off except Guard on. You should see vertical stripes of varying density corresponding to the brightness regions of the source.
 2. **Adjust bar width**: Sweep Bar W from minimum to maximum. At minimum, the image is almost its normal self (just quantized). At maximum, thick stripes dominate and fine detail disappears.
@@ -282,7 +304,7 @@ These exercises progress from basic vertical barcode rendering through spatial m
 *Color Grid Pattern — simulated result across source images.*
 **Source**: An image with strong color variation — macaws, fruit, or geometric patterns.
 
-**Objective**: Explore 2D grid mode and color tinting to create crosshatch barcode patterns.
+**What You'll Create**: Explore 2D grid mode and color tinting to create crosshatch barcode patterns.
 
 1. **2D Grid mode**: Set Type to 2D Grid. Bars appear on both horizontal and vertical axes, creating a crosshatch pattern.
 2. **Color tint**: Switch Color from B/W to Red. The bars take on a warm tint. Try Blue and Green as well — each creates a different mood.
@@ -309,7 +331,7 @@ These exercises progress from basic vertical barcode rendering through spatial m
 *Barcode Overlay — simulated result across source images.*
 **Source**: Any footage with movement — performers, nature, or abstract video feedback.
 
-**Objective**: Use the wet/dry mix to blend barcode patterns over the source as a compositional overlay.
+**What You'll Create**: Use the wet/dry mix to blend barcode patterns over the source as a compositional overlay.
 
 1. **Set up barcode**: Configure a strong 1D Vertical barcode with moderate bar width (~20%), high contrast, guard bars on, B/W color.
 2. **Reduce mix**: Lower the Mix fader to ~50%. The barcode pattern becomes translucent over the original image. The source subjects are visible beneath the stripe pattern.
@@ -324,9 +346,6 @@ These exercises progress from basic vertical barcode rendering through spatial m
 
 ## Tips
 
-- **Bar width sets the character**: Values around 4–12 produce the most recognizable barcode patterns. Wider bars become abstract stripes; width 1 is just luminance quantization.
-- **Quantization is the vocabulary**: Fewer levels create a more dramatic, graphic-poster barcode. More levels create subtle density variations that read almost like halftone printing.
-- **Guard bars complete the illusion**: Enable Guard to add the start/stop markers that make the output look like a real barcode format. Combined with Quiet Zone, the result is compositionally framed.
 - **Color tinting is instant drama**: Switching from B/W to Red or Blue creates an immediate visual transformation with no luminance change — useful for live performance transitions.
 - **Mix for layering**: At 40–60% mix, the barcode becomes a transparent texture overlay. This is particularly effective when the source has strong motion — the bars shimmer with the movement.
 - **Invert for negative barcodes**: White bars on dark backgrounds have a completely different visual weight. Combined with color tinting, invert produces rich color-negative barcode patterns.
@@ -341,14 +360,13 @@ These exercises progress from basic vertical barcode rendering through spatial m
 |------|------------|
 | **Bypass mux** | A multiplexer that routes the original signal past all processing stages for instant A/B comparison. |
 | **Chrominance** | The color-difference components (U and V) of a YUV video signal, separate from luminance. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware. |
 | **Guard bar** | A fixed-width reference bar at the edge of a barcode that marks where the data region begins or ends. |
-| **Interpolator** | A hardware module that performs linear crossfading between two signals (wet and dry) based on a mix parameter. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color. |
 | **Quantization** | Reducing a continuous range of values to a finite set of discrete levels, here applied to luminance before bar rendering. |
 | **Quiet zone** | A mandatory blank margin adjacent to a barcode that prevents nearby visual elements from being misread as data. |
 | **UPC** | Universal Product Code; the most common one-dimensional barcode symbology, printed on retail packaging worldwide. |
 | **Wet/dry mix** | A crossfade between the processed (wet) and original (dry) signals, controlling effect intensity. |
-| **YUV** | A color encoding that separates luminance (Y) from two chrominance components (U and V), used in broadcast video. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings — low drop rate, moderate refraction, no caustic boos
 
 ---
 
+## Quick Start
+
+1. **Drop Rate controls activity level**: Zero drop rate = calm water. Maximum drop rate = continuous rain. The simulation naturally decays to stillness when no new drops fall.
+2. **Damping and Drop Rate are the primary equilibrium controls**: High drop rate with low damping creates a chaotically active surface. Low drop rate with high damping creates brief, isolated disturbances. Find the balance that suits the content.
+3. **Refraction and Caustic are independent**: You can have strong displacement with no caustic boost (pure wobble), or strong caustic with no displacement (pure brightness patterns on an undistorted image). The most natural water look uses moderate amounts of both.
+
+---
+
 ## Background
 
 ### What Is the 2D Wave Equation?
@@ -199,7 +207,7 @@ Controls how frequently new raindrops are injected into the wave simulation. At 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the rate at which ripple energy decays. At 0% (heavy damping), ripples attenuate rapidly — each wave crest loses about 25% of its amplitude per frame, producing short-lived, localized disturbances. At maximum (light damping), ripples persist for many seconds, traveling across the entire grid and creating extensive interference patterns. The damping value selects between four exponential decay rates by controlling the bit-shift amount applied to the wave equation output.
+At 0% (heavy damping), ripples attenuate rapidly — each wave crest loses about 25% of its amplitude per frame, producing short-lived, localized disturbances. At maximum (light damping), ripples persist for many seconds, traveling across the entire grid and creating extensive interference patterns. The damping value selects between four exponential decay rates by controlling the bit-shift amount applied to the wave equation output. Internally, controls the rate at which ripple energy decays.
 
 ---
 
@@ -210,7 +218,7 @@ Controls the rate at which ripple energy decays. At 0% (heavy damping), ripples 
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the magnitude of horizontal displacement applied to the video read address. At 0%, no displacement occurs — the video passes through the line buffer undistorted, though caustic brightness may still be applied. As refraction increases, the displacement becomes more dramatic: ripple crests push the image sideways, and the amount of visual distortion grows. At maximum, the displacement is strong enough to create obvious horizontal smearing and fragmentation of the image along wave fronts. The upper 4 bits of the pot register set the displacement multiplier applied to the horizontal gradient.
+At 0%, no displacement occurs — the video passes through the line buffer undistorted, though caustic brightness may still be applied. As refraction increases, the displacement becomes more dramatic: ripple crests push the image sideways, and the amount of visual distortion grows. At maximum, the displacement is strong enough to create obvious horizontal smearing and fragmentation of the image along wave fronts. The upper 4 bits of the pot register set the displacement multiplier applied to the horizontal gradient. Internally, controls the magnitude of horizontal displacement applied to the video read address.
 
 ---
 
@@ -221,7 +229,7 @@ Controls the magnitude of horizontal displacement applied to the video read addr
 | Default | 37.5% |
 | Suffix | % |
 
-Controls the intensity of the caustic brightness boost applied at wave gradients. At 0%, no brightness enhancement occurs — the displaced video passes through at its original luminance. As the caustic amount increases, areas of steep gradient (wave crests and troughs) receive a proportional brightness boost, creating the characteristic bright dancing lines of underwater caustic patterns. At maximum, the boost is strong enough to push gradient areas to peak white, creating vivid white filaments tracing every ripple front. The caustic is applied to the Y channel only by default, with optional chroma tinting via Toggle 9.
+At 0%, no brightness enhancement occurs — the displaced video passes through at its original luminance. As the caustic amount increases, areas of steep gradient (wave crests and troughs) receive a proportional brightness boost, creating the characteristic bright dancing lines of underwater caustic patterns. At maximum, the boost is strong enough to push gradient areas to peak white, creating vivid white filaments tracing every ripple front. The caustic is applied to the Y channel only by default, with optional chroma tinting via Toggle 9. Internally, controls the intensity of the caustic brightness boost applied at wave gradients.
 
 ---
 
@@ -242,7 +250,7 @@ Selects the wave propagation speed from four discrete settings. In the VHDL, the
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the spatial range over which raindrop positions vary. At 0%, drops always land near the center of the grid, creating concentric ring patterns radiating from a single point. As spread increases, the DDS oscillators move the drop position across a wider area of the grid, producing ripple sources distributed across the surface. At maximum, drops can land anywhere on the grid, creating a spatially varied disturbance pattern. The spread parameter scales the LFSR-modulated phase oscillator amplitude that determines drop position.
+At 0%, drops always land near the center of the grid, creating concentric ring patterns radiating from a single point. As spread increases, the DDS oscillators move the drop position across a wider area of the grid, producing ripple sources distributed across the surface. At maximum, drops can land anywhere on the grid, creating a spatially varied disturbance pattern. The spread parameter scales the LFSR-modulated phase oscillator amplitude that determines drop position. Internally, controls the spatial range over which raindrop positions vary.
 
 ---
 
@@ -269,7 +277,19 @@ The five toggle switches control **independent binary options** with no combined
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input video (delayed to match the 10-clock processing pipeline) and the water-refracted output. At 0%, the output is pure unprocessed input — no ripple displacement or caustic boost is visible. At 100%, the output is fully processed through the water simulation. Intermediate positions blend the two, allowing the ripple effect to be superimposed over the original footage at any opacity.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Aquifer-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -292,7 +312,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 *Single Raindrop Pool — simulated result across source images.*
 **Source**: Camera feed or recorded footage with recognizable subjects — portraits or architectural scenes show displacement clearly.
 
-**Objective**: Observe basic ripple propagation from a single drop source and understand how damping controls ripple persistence.
+**What You'll Create**: Observe basic ripple propagation from a single drop source and understand how damping controls ripple persistence.
 
 1. **Clean start**: Set Freeze (Toggle 10) off, Bypass off, Mix at 100%.
 2. **Slow drops**: Set Drop Rate (Knob 1) to ~30%. A single raindrop falls every few frames, producing clean concentric rings.
@@ -321,7 +341,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 *Caustic Light Patterns — simulated result across source images.*
 **Source**: Moderately bright footage with areas of uniform colour — sky, walls, or fabric show caustic lines most clearly.
 
-**Objective**: Understand how caustic brightness enhancement creates the characteristic underwater light patterns and how it interacts with displacement.
+**What You'll Create**: Understand how caustic brightness enhancement creates the characteristic underwater light patterns and how it interacts with displacement.
 
 1. **Setup ripples**: Set Drop Rate to ~50%, Damping to ~60%, Refraction to ~40%, Wave Speed to step 2.
 2. **Enable caustic**: Turn Caustic (Knob 4) to ~60%. Bright lines appear along every ripple front — the gradient magnitude drives a brightness boost on the Y channel.
@@ -349,7 +369,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 *Rainstorm Interference — simulated result across source images.*
 **Source**: Any video source — the extreme distortion creates abstract results regardless of content.
 
-**Objective**: Combine dual raindrop sources, maximum rate, and full caustic with reflected edges for the most complex water simulation.
+**What You'll Create**: Combine dual raindrop sources, maximum rate, and full caustic with reflected edges for the most complex water simulation.
 
 1. **Dual sources**: Switch Dual Source (Toggle 7) to Dual. Two independent drop positions now inject ripples.
 2. **Maximum rate**: Set Drop Rate to ~90%. Drops fall almost every frame from both sources.
@@ -367,9 +387,6 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 ## Tips
 
-- **Drop Rate controls activity level**: Zero drop rate = calm water. Maximum drop rate = continuous rain. The simulation naturally decays to stillness when no new drops fall.
-- **Damping and Drop Rate are the primary equilibrium controls**: High drop rate with low damping creates a chaotically active surface. Low drop rate with high damping creates brief, isolated disturbances. Find the balance that suits the content.
-- **Refraction and Caustic are independent**: You can have strong displacement with no caustic boost (pure wobble), or strong caustic with no displacement (pure brightness patterns on an undistorted image). The most natural water look uses moderate amounts of both.
 - **Tint Depth sells the underwater look**: Enabling the blue-shift tint gives displaced areas a convincing aquatic colour cast that significantly enhances the water illusion.
 - **Freeze captures a moment**: Use Freeze to lock an interesting ripple pattern in place. The frozen pattern continues to displacement-process every incoming frame, creating a consistent spatial distortion.
 - **Reflect mode creates standing waves**: With reflected edges and persistent ripples, energy bounces back and forth across the grid, eventually creating standing wave patterns — stable nodal lines where the surface is permanently still and anti-nodes where it oscillates strongly.
@@ -382,7 +399,6 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA used for the scanline delay buffer that enables horizontal refraction displacement. |
 | **Caustic** | Bright curved lines formed when light rays converge after refracting through a curved transparent surface such as water. |
 | **Damping** | The gradual reduction of wave amplitude over time, simulating energy loss due to viscosity and surface tension in the water model. |
 | **DDS** | Direct Digital Synthesis; a technique using phase accumulators and lookup tables to generate periodic waveforms, used here to animate raindrop positions. |
@@ -393,6 +409,7 @@ These exercises progress from gentle single-drop ripples to complex multi-source
 | **Snell's law** | The physical law relating the angle of incidence to the angle of refraction when light crosses a boundary between two media of different refractive index. |
 | **Standing wave** | A stable wave pattern formed when reflected waves interfere with incoming waves, producing fixed nodes where the surface is still and anti-nodes where it oscillates. |
 | **Wave equation** | A partial differential equation describing how disturbances propagate through a medium; discretised here as a 4-neighbour average minus the previous height value. |
-| **YUV** | A colour model separating luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

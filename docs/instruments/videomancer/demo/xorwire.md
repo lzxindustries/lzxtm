@@ -35,6 +35,14 @@ Four polyhedra are available — Cube, Pyramid, Octahedron, and Diamond — each
 
 ---
 
+## Quick Start
+
+1. **Slow single-axis rotation** reveals the geometric structure of each polyhedron most clearly. Freeze two axes and rotate one at a time to understand each shape.
+2. **XOR on grey** produces the most visible interference because the midpoint luminance has maximum dynamic range for both brightening and darkening.
+3. **Rainbow + slow rotation** creates the most visually striking colour display as individual edge hues become distinguishable.
+
+---
+
 ## Background
 
 ### Vector Graphics on 8-Bit Hardware
@@ -177,7 +185,7 @@ Brightness scales the luminance of the wireframe lines from black to full white.
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Shape** | Cube | Pyramid |
+| **7 — Shape** | Cube | Diamond |
 | **8 — Fill** | Wire | Solid |
 | **9 — Composite** | XOR | Add |
 | **10 — Color** | White | Rainbow |
@@ -198,6 +206,10 @@ The five toggles configure shape geometry, rendering style, compositing mode, co
 
 Mix crossfades between the dry (unprocessed) input and the wet (wireframe-composited) output. At 0% the output matches the input. At 100% the full wireframe composite is visible. Intermediate positions blend the two, useful for ghosting the wireframe subtly over live video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -208,7 +220,7 @@ These three exercises demonstrate the core wireframe interactions, from classic 
 
 <img src={xorwire_exercise1_result} alt="Classic Tumbling Cube result"/>
 *Classic Tumbling Cube — simulated result across source images.*
-**Objective**: Achieve the classic ZX Spectrum wireframe cube tumbling over live video with XOR interference.
+**What You'll Create**: Achieve the classic ZX Spectrum wireframe cube tumbling over live video with XOR interference.
 
 1. Set all three rotation axes to gentle forward speeds (X=580, Y=600, Z=540).
 2. Scale to 50% so the cube is well-framed within the image.
@@ -228,7 +240,7 @@ These three exercises demonstrate the core wireframe interactions, from classic 
 
 <img src={xorwire_exercise2_result} alt="Rainbow Octahedron Overlay result"/>
 *Rainbow Octahedron Overlay — simulated result across source images.*
-**Objective**: Create a rainbow-coloured wireframe floating over saturated video using additive blending.
+**What You'll Create**: Create a rainbow-coloured wireframe floating over saturated video using additive blending.
 
 1. Switch Shape to Octahedron and Color to Rainbow.
 2. Set Composite to Add for a glowing overlay.
@@ -247,7 +259,7 @@ These three exercises demonstrate the core wireframe interactions, from classic 
 
 <img src={xorwire_exercise3_result} alt="Dense Geometric Texture result"/>
 *Dense Geometric Texture — simulated result across source images.*
-**Objective**: Create a dense, overlapping wireframe texture by maximising line width and rotation speed.
+**What You'll Create**: Create a dense, overlapping wireframe texture by maximising line width and rotation speed.
 
 1. Set all rotation speeds to maximum in different directions (X=1023, Y=0, Z=1023).
 2. Scale to 90% to fill the screen.
@@ -266,9 +278,6 @@ These three exercises demonstrate the core wireframe interactions, from classic 
 
 ## Tips
 
-- **Slow single-axis rotation** reveals the geometric structure of each polyhedron most clearly. Freeze two axes and rotate one at a time to understand each shape.
-- **XOR on grey** produces the most visible interference because the midpoint luminance has maximum dynamic range for both brightening and darkening.
-- **Rainbow + slow rotation** creates the most visually striking colour display as individual edge hues become distinguishable.
 - **Additive on dark backgrounds** makes the wireframe glow like a neon sign, which pairs well with dark or high-contrast source video.
 - **Maximum line width** at high rotation speed creates dense moire textures that evolve continuously, useful as abstract background overlays.
 - **Mix at 30–50%** produces a ghostly wireframe suggestion that works well as a subtle geometric overlay on narrative video content.

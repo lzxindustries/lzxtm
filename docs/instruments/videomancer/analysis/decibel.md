@@ -68,6 +68,14 @@ The name *Decibel* — the logarithmic unit of signal level — places this prog
 
 ---
 
+## Quick Start
+
+1. **Sensitivity is your gain stage**: Set it so typical source material lights about two-thirds of the meter. If the bar is always at full scale, lower sensitivity; if the bar barely moves, raise it.
+2. **VU vs. PPM response**: For VU-like behavior, set Attack to ~30% and Decay to ~30%. For PPM-like behavior, set Attack to ~90% and Decay to ~10%. The difference in how the meter "feels" is dramatic.
+3. **Fill mode is the most informative**: It shows both the smoothed envelope (bar) and the transient peak (dot), giving you two readings in one display — just like a professional meter bridge.
+
+---
+
 ## Background
 
 ### VU and PPM Meter Standards
@@ -94,6 +102,8 @@ Professional meter bridges use a universal color language: green for safe operat
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Wet/Dry Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -204,7 +214,7 @@ Applies an additive brightness offset to the meter display. The offset is center
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Bar | Dot |
+| **7 — Style** | Bar | Fill |
 | **8 — Orient** | Horiz | Vert |
 | **9 — Color** | Green | Rainbow |
 | **10 — Invert** | Off | On |
@@ -224,6 +234,10 @@ The five toggle switches control display style, orientation, color mode, polarit
 | Suffix | % |
 
 Controls the wet/dry mix ratio via three interpolator instances (one per YUV channel). At 0%, the output is entirely the delayed original video — no meter visible. At 100%, the output is entirely the rendered meter — the source video is replaced. Intermediate values composite the meter over the source, allowing you to overlay a semi-transparent level display on the live video. The default is 100% (full wet) for standalone meter display.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +260,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 *Classic Bar Meter — simulated result across source images.*
 **Source**: A live camera feed or test pattern with varying brightness regions — color bars or a gradient ramp are ideal.
 
-**Objective**: Set up a basic horizontal bar meter and understand sensitivity, segment count, and attack/decay ballistics.
+**What You'll Create**: Set up a basic horizontal bar meter and understand sensitivity, segment count, and attack/decay ballistics.
 
 1. **Initialize**: Start with default settings. The meter renders as a horizontal bar.
 2. **Sensitivity**: Slowly turn Sensitiv clockwise. Watch the bar extend further across the screen as the gain increases. Find the point where your source material lights roughly two-thirds of the display.
@@ -273,7 +287,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 *Peak Hold and Rainbow Color — simulated result across source images.*
 **Source**: Dynamic footage with bright transients — strobes, flashing lights, or a performer moving between bright and dark areas.
 
-**Objective**: Explore the peak tracking system and color grading, and compare display styles.
+**What You'll Create**: Explore the peak tracking system and color grading, and compare display styles.
 
 1. **Enable peak**: Switch Style to Fill (bar + peak). Set Peak Hld to about 50% so the peak marker is clearly visible.
 2. **Observe transients**: Feed dynamic video. Watch the solid bar bounce with the envelope while the peak dot sticks at the highest transient, then slowly decays.
@@ -301,7 +315,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 *Composited Meter Overlay — simulated result across source images.*
 **Source**: Visually interesting footage — a live performance, nature scene, or abstract video source.
 
-**Objective**: Composite the meter display over the source video using wet/dry mix, creating a heads-up display (HUD) aesthetic.
+**What You'll Create**: Composite the meter display over the source video using wet/dry mix, creating a heads-up display (HUD) aesthetic.
 
 1. **Set up meter**: Choose Fill style, Rainbow color, 16 segments, vertical orientation for a tower-style meter.
 2. **Lower mix**: Bring the Mix fader down to about 50%. The source video becomes visible beneath the meter overlay, creating a composite.
@@ -317,9 +331,6 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 
 ## Tips
 
-- **Sensitivity is your gain stage**: Set it so typical source material lights about two-thirds of the meter. If the bar is always at full scale, lower sensitivity; if the bar barely moves, raise it.
-- **VU vs. PPM response**: For VU-like behavior, set Attack to ~30% and Decay to ~30%. For PPM-like behavior, set Attack to ~90% and Decay to ~10%. The difference in how the meter "feels" is dramatic.
-- **Fill mode is the most informative**: It shows both the smoothed envelope (bar) and the transient peak (dot), giving you two readings in one display — just like a professional meter bridge.
 - **Rainbow color is a level indicator**: Green means low, red means high. You can read the approximate level from across the room just by looking at the color of the topmost lit segment.
 - **Overlay with low mix**: Setting Mix to 30–60% composites the meter over the source video, creating a heads-up display effect. Use Bright to balance the overlay against the source.
 - **Vertical meters for tall compositions**: Switch Orient to Vert for a tower-style meter that complements portrait-oriented or vertically structured source material.
@@ -337,9 +348,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 | **Bypass** | A signal routing option that sends the original input directly to the output, skipping all processing stages. |
 | **Decay** | The rate at which a filter's output falls when the input drops below the current level; slow decay holds readings, fast decay tracks closely. |
 | **Envelope Follower** | A filter that tracks the amplitude contour of a signal, smoothing out rapid fluctuations to produce a slowly varying level estimate. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter type whose output depends on both the current input and previous outputs, creating memory-like behavior. |
-| **Interpolator** | A hardware module that blends two values (wet and dry) according to a mix parameter, used for crossfading processed and original signals. |
 | **Luma / Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Peak Hold** | A metering feature that latches the highest observed level and holds it visible for a configurable duration. |
 | **PPM** | Peak Programme Meter; a broadcast metering standard with fast attack and slow decay designed to catch transient peaks. |
@@ -347,7 +356,7 @@ These exercises walk through Decibel's metering pipeline from basic bar displays
 | **Segment** | One discrete step of the bar-graph meter display; the number of segments determines the visual resolution of the level reading. |
 | **VU** | Volume Unit; a broadcast metering standard with 300 ms integration time, measuring average signal level rather than peaks. |
 | **Wet/Dry Mix** | The ratio between processed (wet) and original (dry) signals at the output; 0% = all original, 100% = all processed. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
 
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

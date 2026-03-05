@@ -68,6 +68,14 @@ The name *Rupture* evokes the moment a continuous surface tears open to reveal l
 
 ---
 
+## Quick Start
+
+1. **Start with one cascade**: A single fold stage is the easiest to understand — contour lines appear where the signal exceeds (1023 − offset). Add cascades only after you understand where the fold boundaries sit.
+2. **ColDepth and Cascades compound**: A moderate ColDepth with 4 cascades can produce denser contours than maximum ColDepth with 1 cascade. Use Cascades for complexity, ColDepth for threshold position.
+3. **Hue at 270° for monochromatic folds**: All three channels receive equal offset, producing contour-rich luminance banding without color shifting — useful as a foundation before experimenting with color.
+
+---
+
 ## Background
 
 ### What Is Wavefolding?
@@ -94,6 +102,8 @@ Rather than applying the same offset to all three channels, Rupture distributes 
 ---
 
 ## Signal Flow
+
+Input Register → Per-Channel Offset → Cascaded Fold → ... → fold → Brightness Offset
 
 ```
 Input Video (YUV 4:4:4)
@@ -186,14 +196,14 @@ Controls the intensity scaling of the fold offset via the value parameter. The t
 | Default | 50.0% |
 | Suffix | % |
 
-Sets the primary fold offset magnitude — the amount added to each channel value before the fold test. At 0% no offset is added and the signal passes through unchanged (no folding occurs). As the offset increases, the fold boundary moves lower into the tonal range: first only the brightest pixels fold, then progressively darker values are caught. At maximum offset, even mid-tones are folded multiple times per cascade stage, producing dense contour patterns.
+At 0% no offset is added and the signal passes through unchanged (no folding occurs). As the offset increases, the fold boundary moves lower into the tonal range: first only the brightest pixels fold, then progressively darker values are caught. At maximum offset, even mid-tones are folded multiple times per cascade stage, producing dense contour patterns. Internally, sets the primary fold offset magnitude — the amount added to each channel value before the fold test.
 
 ---
 
 #### Knob 5 — Cascades
 | Property | Value |
 |----------|-------|
-| Range | 0 – 3 |
+| Range | 0 – 1023 |
 | Default | 0 |
 
 Selects the number of fold cascade stages (1–4) using the top 2 bits of the register. At 1× cascade, each channel undergoes a single fold — smooth gradients develop one set of contour lines. At 2× cascade, the folded output is folded again, doubling the contour density. At 4× cascade, the signal is folded four times in series, producing complex interference-like banding. Higher cascade counts amplify the visual impact of even small offsets.
@@ -234,7 +244,29 @@ The five toggle switches control fold behavior, channel routing, temporal modula
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry mix ratio via the interpolator. At 100% the output is fully processed (folded). At 0% the output is the dry input signal. Intermediate values blend between the two, softening the fold effect. This is particularly useful for managing extreme fold settings — dialing back the mix can tame 4× cascade results into subtle tonal texturing.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Rupture processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Rupture-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -257,7 +289,7 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 *Single-Stage Luminance Fold — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with smooth tonal gradients — skies, skin tones, or gradient test patterns.
 
-**Objective**: Understand the basic triangle fold operation and how the ColDepth parameter controls contour placement.
+**What You'll Create**: Understand the basic triangle fold operation and how the ColDepth parameter controls contour placement.
 
 1. Set Cascades to 1× (single fold stage).
 2. Set Hue to 0° so that Y receives the primary offset.
@@ -285,7 +317,7 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 *Cascaded Color Iridescence — simulated result across source images.*
 **Source**: High-contrast footage with varied colors — flowers, painted surfaces, or colorful graphics.
 
-**Objective**: Explore how cascading fold stages and hue distribution create complex iridescent color patterns.
+**What You'll Create**: Explore how cascading fold stages and hue distribution create complex iridescent color patterns.
 
 1. Set Cascades to 3× for dense contour nesting.
 2. Set Hue to about 90° so that U (blue-yellow axis) receives the primary fold.
@@ -314,7 +346,7 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 *Animated Auto-Sweep Evolution — simulated result across source images.*
 **Source**: Slow-moving or static footage with broad tonal areas — landscapes, architectural footage, or abstract color fields.
 
-**Objective**: Use Auto Sweep to create slowly-evolving iridescent surfaces that shift through the color spectrum over time.
+**What You'll Create**: Use Auto Sweep to create slowly-evolving iridescent surfaces that shift through the color spectrum over time.
 
 1. Set Cascades to 2× for moderate contour complexity.
 2. Set ColDepth to about 55% for well-defined fold boundaries.
@@ -332,9 +364,6 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 
 ## Tips
 
-- **Start with one cascade**: A single fold stage is the easiest to understand — contour lines appear where the signal exceeds (1023 − offset). Add cascades only after you understand where the fold boundaries sit.
-- **ColDepth and Cascades compound**: A moderate ColDepth with 4 cascades can produce denser contours than maximum ColDepth with 1 cascade. Use Cascades for complexity, ColDepth for threshold position.
-- **Hue at 270° for monochromatic folds**: All three channels receive equal offset, producing contour-rich luminance banding without color shifting — useful as a foundation before experimenting with color.
 - **Auto Sweep for evolving textures**: Enable Auto Sweep and let the hue rotate slowly through the quadrants for continuously-changing iridescent surfaces — particularly effective with video feedback loops.
 - **Clip mode for graphic posterization**: When you want hard-edged tonal bands rather than smooth contours, switch to Clip fold type. Combined with low cascade count, this produces clean posterized graphics.
 - **Mix for subtlety**: Heavy fold settings can overwhelm the source. Pull the Mix fader down to 40–60% to blend the fold pattern with the original, creating subtle tonal texturing rather than aggressive color inversion.
@@ -353,10 +382,9 @@ These exercises progress from a single gentle fold through multi-stage cascades 
 | **DDS** | Direct Digital Synthesis; a technique for generating continuously-variable waveforms from a fixed-rate accumulator and lookup table. |
 | **Fold** | A nonlinear operation that reflects signal values exceeding a threshold back into range, creating contour boundaries in smooth gradients. |
 | **Hue Distribution** | A 4-quadrant scheme that assigns different fold offsets to Y, U, and V channels based on the Hue parameter angle. |
-| **Interpolator** | A linear crossfade between dry (unprocessed) and wet (processed) signals, controlled by the Mix fader. |
 | **Iridescence** | The appearance of shifting spectral colors, as seen in oil films, soap bubbles, or beetle shells — an apt visual metaphor for cascaded fold color patterns. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Triangle Fold** | Fold mode where overflow is reflected by bitwise inversion, creating smooth V-shaped contour reversals. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

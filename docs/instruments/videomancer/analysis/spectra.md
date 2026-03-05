@@ -68,6 +68,14 @@ At low band counts, Spectra reduces an image to bold, poster-like color zones �
 
 ---
 
+## Quick Start
+
+1. **Start with Heat + 16 bands**: This combination most closely resembles a thermal camera and is the most immediately recognizable false-color visualization.
+2. **Spread is essential for low-contrast sources**: Without spread enhancement, a flat or low-contrast input may fall entirely within one or two bands, producing a nearly uniform color output.
+3. **Contour lines need space**: Contour mode is most legible with 2–4 bands, where the lines are widely spaced. At 16 bands, contour lines become a dense texture.
+
+---
+
 ## Background
 
 ### False Color Imaging
@@ -94,6 +102,8 @@ Before quantization, the spread control pushes luminance values away from the mi
 ---
 
 ## Signal Flow
+
+Source Selection → Processing Chain → Sync Signals → Bypass → Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -150,7 +160,7 @@ Selects the number of spectral bands: 2, 4, 8, or 16. With 2 bands, the image sp
 | Default | 75% |
 | Suffix | % |
 
-Controls the chroma saturation of the false-color output at four discrete levels. At full saturation, the palette colors are vivid and fully chromatic. Reducing saturation progressively desaturates the output, ultimately producing a grayscale banded image that resembles a simple posterization. The four levels are derived from the top two bits of the register, creating coarse but predictable saturation steps.
+At full saturation, the palette colors are vivid and fully chromatic. Reducing saturation progressively desaturates the output, ultimately producing a grayscale banded image that resembles a simple posterization. The four levels are derived from the top two bits of the register, creating coarse but predictable saturation steps. Internally, controls the chroma saturation of the false-color output at four discrete levels.
 
 ---
 
@@ -172,7 +182,7 @@ Rotates the palette color assignment by adding an offset to the band index befor
 | Default | 100% |
 | Suffix | % |
 
-Controls the spread (contrast) enhancement applied before band quantization. At 0%, no enhancement — the input maps directly to bands based on its raw luminance. At 100%, values are pushed away from the midpoint, stretching the input to fill the full 0–1023 range. This is essential for low-contrast sources that might otherwise fall within only one or two bands. High spread values ensure all bands are populated, producing a full-spectrum false-color output.
+At 0%, no enhancement — the input maps directly to bands based on its raw luminance. At 100%, values are pushed away from the midpoint, stretching the input to fill the full 0–1023 range. This is essential for low-contrast sources that might otherwise fall within only one or two bands. High spread values ensure all bands are populated, producing a full-spectrum false-color output. Internally, controls the spread (contrast) enhancement applied before band quantization.
 
 ---
 
@@ -202,7 +212,7 @@ Reserved for gamma correction in the register mapping, but not actively used in 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Palette** | Rainbow | Heat |
+| **7 — Palette** | Rainbow | Earth |
 | **8 — Contour** | Off | On |
 | **9 — Source** | Luma | Chroma |
 | **10 — Invert** | Off | On |
@@ -222,6 +232,21 @@ The five toggles control palette selection (4 palettes via 2 bits), contour over
 | Suffix | % |
 
 Controls the wet/dry mix between the false-color processed output and the original input signal via three parallel interpolator units. At 100%, the output is fully false-colored. At 0%, the original input passes through unaltered. Intermediate positions blend the false-color overlay with the source video, creating a semi-transparent analysis overlay — useful for seeing the false-color bands superimposed on the original image content.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Spectra processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -244,7 +269,7 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 *Thermal Camera — simulated result across source images.*
 **Source**: A scene with a wide range of brightness — a person against a bright window, or outdoor footage with sky, foliage, and shadows.
 
-**Objective**: Create a convincing thermal camera visualization that maps brightness to the Heat palette.
+**What You'll Create**: Create a convincing thermal camera visualization that maps brightness to the Heat palette.
 
 1. **Heat palette**: Set Palette to Heat. The default band count may already show color zones.
 2. **Band count**: Set Bands to 16 for the finest thermal-like gradation.
@@ -272,7 +297,7 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 *Topographic Map — simulated result across source images.*
 **Source**: A slowly moving camera across a textured surface — landscape, architecture, or a face.
 
-**Objective**: Create a contour-line topographic map visualization of the brightness surface.
+**What You'll Create**: Create a contour-line topographic map visualization of the brightness surface.
 
 1. **Earth palette**: Set Palette to Earth for a natural cartographic look.
 2. **Few bands**: Set Bands to 4 for widely-spaced contour zones.
@@ -301,7 +326,7 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 *Chroma Analysis with Overlay — simulated result across source images.*
 **Source**: Footage with strong, varied colors — a color chart, fruit market, or painted mural.
 
-**Objective**: Analyze the chrominance structure of the source using false color, blended as a semi-transparent overlay on the original video.
+**What You'll Create**: Analyze the chrominance structure of the source using false color, blended as a semi-transparent overlay on the original video.
 
 1. **Rainbow palette**: Set Palette to Rainbow for maximum color differentiation.
 2. **Source to Chroma**: Switch Source to Chroma. The analysis now responds to color saturation rather than brightness.
@@ -318,9 +343,6 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 
 ## Tips
 
-- **Start with Heat + 16 bands**: This combination most closely resembles a thermal camera and is the most immediately recognizable false-color visualization.
-- **Spread is essential for low-contrast sources**: Without spread enhancement, a flat or low-contrast input may fall entirely within one or two bands, producing a nearly uniform color output.
-- **Contour lines need space**: Contour mode is most legible with 2–4 bands, where the lines are widely spaced. At 16 bands, contour lines become a dense texture.
 - **Hue offset is palette rotation**: It does not add new colors — it shifts which existing palette entry maps to which band. Use it to align the most visually important palette colors with the brightness zones you want to highlight.
 - **Chroma mode reveals color structure**: Switching Source to Chroma analyzes saturation rather than brightness, making color patterns visible that are invisible in luminance-only analysis.
 - **Mix for overlay analysis**: Reducing the Mix fader below 100% superimposes the false-color analysis on the original video, creating a transparent overlay useful for alignment and study.
@@ -336,13 +358,12 @@ These exercises progress from simple two-band analysis to complex multi-palette 
 | **BT.601** | ITU-R Recommendation 601; the color matrix standard used for YUV conversions in standard-definition video. |
 | **Contour** | A line marking the boundary between two adjacent bands, rendered as black pixels at band transitions. |
 | **False Color** | A visualization technique that maps non-visual data values to arbitrary colors for analysis and display. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable hardware executing the video processing pipeline. |
 | **Luminance** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **LUT** | Lookup Table; a fixed array of pre-computed values (here, palette YUV triplets) addressed by an index. |
 | **Palette** | An ordered set of colors used to visualize quantized data; Spectra offers Rainbow, Heat, Cool, and Earth. |
-| **Pipeline** | Sequential processing stages where each stage operates on every pixel every clock cycle. |
 | **Quantization** | Reducing a continuous range to discrete levels; here, mapping 1024 brightness values to 2–16 bands. |
 | **Spread** | Contrast enhancement applied before quantization, pushing values away from the midpoint to populate more bands. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

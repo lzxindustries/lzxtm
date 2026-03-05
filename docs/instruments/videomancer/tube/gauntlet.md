@@ -68,6 +68,14 @@ At conservative settings, Gauntlet produces subtle edge highlights that follow t
 
 ---
 
+## Quick Start
+
+1. **Processing order**: Input → Invert → Gradient → Edge Detect → Glow → Persistence → Colorize → Overlay → Mix → Bypass. Each stage transforms the signal before the next one sees it. Glow happens *after* edge detection, so Beam Width doesn't affect which edges are found — only how far the glow spreads.
+2. **Gradient mode is the subtler option**: Binary mode produces uniform wireframe traces. Gradient mode preserves edge strength information, producing traces whose brightness varies with the sharpness of the boundary. For organic-looking CRT emulation, use Gradient mode.
+3. **Persistence writes to a line buffer, not a frame buffer**: Because the persistence RAM is only 2048 pixels wide (one scanline), the "memory" resets at each line start. Vertical persistence accumulates because successive scanlines write to the same horizontal positions, not because the FPGA stores an entire frame.
+
+---
+
 ## Background
 
 ### What Is Edge Detection?
@@ -94,6 +102,8 @@ When displaying vector beam traces, you have two choices: **replace** the input 
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Mix → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -148,7 +158,7 @@ Two key interactions define the program's character: (1) the 16-tap sliding wind
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the edge detection threshold. At low values, even subtle brightness changes trigger edges — the display fills with traces from noise and gentle gradients. At high values, only sharp, high-contrast boundaries register, producing sparse, clean line graphics. The threshold acts as a gate: in Binary mode, any gradient above it fires at full brightness; in Gradient mode, it sets the floor below which edges are suppressed while passing through the magnitude of stronger edges proportionally.
+At low values, even subtle brightness changes trigger edges — the display fills with traces from noise and gentle gradients. At high values, only sharp, high-contrast boundaries register, producing sparse, clean line graphics. The threshold acts as a gate: in Binary mode, any gradient above it fires at full brightness; in Gradient mode, it sets the floor below which edges are suppressed while passing through the magnitude of stronger edges proportionally. Internally, controls the edge detection threshold.
 
 ---
 
@@ -211,7 +221,7 @@ Labeled "Focus" in the TOML metadata, this parameter is mapped to `registers_in(
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Phosphor** | Green | Blu-Grn |
+| **7 — Phosphor** | Green | Rainbow |
 | **8 — Edge Mode** | Binary | Gradient |
 | **9 — Invert** | Off | On |
 | **10 — Over Video** | Replace | Overlay |
@@ -231,6 +241,21 @@ Switches 7–11 are packed into a single register (`registers_in(6)`) using the 
 | Suffix | % |
 
 Controls the wet/dry mix between the processed beam output and the delayed original input via three `interpolator_u` instances (one per YUV channel). At maximum, the output is fully processed beam traces. As the fader decreases, the original input is progressively blended in, eventually reaching the unprocessed source. This is distinct from Bypass (which is an instant switch) — the Mix fader creates a continuous crossfade between the two signals.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Gauntlet processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -253,7 +278,7 @@ These exercises progress from basic edge detection to full CRT vector display em
 *Basic Edge Detection — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with high-contrast edges — architectural details, text on screen, or a geometric test pattern.
 
-**Objective**: Learn how the edge detector and glow renderer interact to produce beam traces.
+**What You'll Create**: Learn how the edge detector and glow renderer interact to produce beam traces.
 
 1. **See the edges**: With default settings, observe the green beam traces outlining high-contrast boundaries in the source.
 2. **Adjust threshold**: Turn Sensitivity counter-clockwise to increase the threshold. Watch as fainter edges disappear, leaving only the strongest boundaries.
@@ -280,7 +305,7 @@ These exercises progress from basic edge detection to full CRT vector display em
 *Phosphor Persistence and Color — simulated result across source images.*
 **Source**: Footage with moderate motion — a slowly panning camera, waving hand, or scrolling graphics.
 
-**Objective**: Explore how vertical persistence and phosphor color create the CRT display aesthetic.
+**What You'll Create**: Explore how vertical persistence and phosphor color create the CRT display aesthetic.
 
 1. **Set up traces**: Establish visible edge traces with Sensitivity ~50%, Beam Width ~50%, Intensity ~75%.
 2. **Increase persistence**: Turn Persistence clockwise past the midpoint. Watch edges leave glowing vertical trails as successive scanlines accumulate decayed glow.
@@ -308,7 +333,7 @@ These exercises progress from basic edge detection to full CRT vector display em
 *Full Vector Display — simulated result across source images.*
 **Source**: Any high-contrast footage — music videos, motion graphics, or documentary footage with strong visual compositions.
 
-**Objective**: Combine all processing stages to create a complete CRT vector display emulation.
+**What You'll Create**: Combine all processing stages to create a complete CRT vector display emulation.
 
 1. **Low threshold, wide glow**: Set Sensitivity ~30%, Beam Width to maximum. This produces broad, luminous beam traces that capture most edges.
 2. **High persistence**: Set Persistence above 75%. Moving edges leave long phosphor trails.
@@ -325,9 +350,6 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 ## Tips
 
-- **Processing order**: Input → Invert → Gradient → Edge Detect → Glow → Persistence → Colorize → Overlay → Mix → Bypass. Each stage transforms the signal before the next one sees it. Glow happens *after* edge detection, so Beam Width doesn't affect which edges are found — only how far the glow spreads.
-- **Gradient mode is the subtler option**: Binary mode produces uniform wireframe traces. Gradient mode preserves edge strength information, producing traces whose brightness varies with the sharpness of the boundary. For organic-looking CRT emulation, use Gradient mode.
-- **Persistence writes to a line buffer, not a frame buffer**: Because the persistence RAM is only 2048 pixels wide (one scanline), the "memory" resets at each line start. Vertical persistence accumulates because successive scanlines write to the same horizontal positions, not because the FPGA stores an entire frame.
 - **Toggle bit overlap is by design**: Edge Mode and Invert share register bits with the Phosphor selector. Changing either toggle also changes the effective phosphor color. Treat all three as a combined control — the program has 32 effective color/mode combinations from those three switches.
 - **Two unused knobs**: Hue Offset (Knob 5) and Focus (Knob 6) are declared in the VHDL but not referenced in the processing pipeline. They are placeholders for future firmware features.
 - **Feedback loops**: Routing Gauntlet's output back to its input creates recursive edge detection — the program detects edges in its own beam traces, producing fractal-like line structures that evolve with each pass.
@@ -339,17 +361,15 @@ These exercises progress from basic edge detection to full CRT vector display em
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks in the FPGA fabric. Gauntlet uses zero BRAMs — all storage is distributed RAM and registers. |
 | **CRT** | Cathode Ray Tube; a vacuum tube display that produces images by scanning an electron beam across a phosphor-coated screen. |
 | **Distributed RAM** | Small RAM blocks synthesized from the FPGA's lookup tables, used here for the 2048×10-bit persistence line buffer. |
 | **Edge Detection** | The process of identifying pixels where signal values change abruptly, implemented here as a horizontal absolute difference weighted across Y, U, and V channels. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip executing the video processing pipeline. |
 | **Glow LUT** | A lookup table mapping distance-from-edge to brightness using exponential decay curves. Three LUTs provide narrow, medium, and wide beam profiles. |
 | **IIR** | Infinite Impulse Response; a filter topology where the output depends on both the current input and previous outputs. Used in the persistence stage as `max(new, decayed_old)`. |
 | **Phosphor** | The luminescent coating on a CRT screen that glows when struck by the electron beam. Different phosphor types (P1, P22, P31) have different colors and decay rates. |
-| **Pipeline** | Sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. Gauntlet has 11 pipeline stages. |
 | **Priority Encoder** | A circuit that scans a set of bits and returns the position of the first (nearest) active bit. Used here to find the closest edge in the 16-tap shift register. |
 | **Shift Register** | A chain of flip-flops where data shifts one position per clock cycle. The 16-tap edge shift register provides spatial memory of recent edge positions. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

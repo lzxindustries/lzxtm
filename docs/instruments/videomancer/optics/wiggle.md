@@ -68,6 +68,14 @@ The name "Wiggle" references the convergence micro-oscillations the brain perfor
 
 ---
 
+## Quick Start
+
+1. **Start subtle**: 20–30 % Depth Amt with moderate Threshold creates convincing naturalistic depth on camera footage without obvious warping.
+2. **CRT viewing**: The autostereoscopic illusion is strongest on CRT displays where field alternation is a true temporal split; on LCDs with sample-and-hold the effect reads more as a shimmer.
+3. **Combine with Cascade**: Feed Wiggle's output into Cascade's echo chain to build recursive depth layers that compound the parallax.
+
+---
+
 ## Background
 
 ### Autostereoscopy and Lenticular Imaging
@@ -198,7 +206,7 @@ Brightness scales the luma of displaced pixels after the line-buffer read and be
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Axis** | Horiz | Vert |
+| **7 — Axis** | Horiz | Rotate |
 | **8 — Depth Src** | Luma | Chroma |
 | **9 — Invert Depth** | Off | On |
 | **10 — Strobe** | Off | On |
@@ -218,6 +226,10 @@ The five toggles configure the displacement engine's operating mode. Axis select
 | Suffix | % |
 
 Mix crossfades between the unprocessed dry input and the fully displaced wet output. At minimum only the dry signal passes; at maximum only the displaced, brightness-adjusted signal is heard. Intermediate positions blend the two, which can produce a ghostly double-exposure look as the displaced copy overlaps the undisplaced original. The mix is applied per-channel via three parallel interpolator_u instances.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -240,7 +252,7 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 *Gentle Portrait Depth — simulated result across source images.*
 **Source**: Feed a talking-head camera shot or portrait with a well-lit face against a darker background.
 
-**Objective**: Create a subtle 3D pop that makes the face appear to float in front of the background.
+**What You'll Create**: Create a subtle 3D pop that makes the face appear to float in front of the background.
 
 1. Set Depth Amt to 30 % and Threshold to 25 % so only skin-tone highlights displace.
 2. Push Depth Curve to 70 % for exponential roll-off that concentrates depth on the brightest facial highlights.
@@ -268,7 +280,7 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 *Abstract Warp Field — simulated result across source images.*
 **Source**: Use a high-contrast graphic pattern—black-and-white stripes, a checkerboard, or bold typography.
 
-**Objective**: Push displacement to extremes to create a liquid warp field where the pattern stretches and compresses rhythmically.
+**What You'll Create**: Push displacement to extremes to create a liquid warp field where the pattern stretches and compresses rhythmically.
 
 1. Max out Depth Amt to 100 %.
 2. Set Threshold to 0 % so the entire tonal range participates.
@@ -297,7 +309,7 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 *Frozen Parallax Layer — simulated result across source images.*
 **Source**: A landscape or cityscape with distinct foreground and background planes.
 
-**Objective**: Create a static parallax offset—a fixed spatial shift between bright and dark regions—rather than a temporal wobble.
+**What You'll Create**: Create a static parallax offset—a fixed spatial shift between bright and dark regions—rather than a temporal wobble.
 
 1. Set Depth Amt to 45 % for a moderate offset.
 2. Enable Invert Depth (Freeze) to halt the oscillation phase.
@@ -314,9 +326,6 @@ These exercises explore Wiggle's depth illusion from subtle naturalism to extrem
 
 ## Tips
 
-- **Start subtle**: 20–30 % Depth Amt with moderate Threshold creates convincing naturalistic depth on camera footage without obvious warping.
-- **CRT viewing**: The autostereoscopic illusion is strongest on CRT displays where field alternation is a true temporal split; on LCDs with sample-and-hold the effect reads more as a shimmer.
-- **Combine with Cascade**: Feed Wiggle's output into Cascade's echo chain to build recursive depth layers that compound the parallax.
 - **Use Smooth for clean text**: High Smooth values prevent text edges from shattering into jagged displacement steps, keeping legibility while adding gentle undulation.
 - **Threshold isolates performers**: On stage or studio footage, setting Threshold above the background brightness level restricts depth wobble to lit subjects.
 - **Brightness for emphasis**: Push Brightness above 50 % to intentionally blow out displaced highlights—this creates a glowing halo effect on bright objects.

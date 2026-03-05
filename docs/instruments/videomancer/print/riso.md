@@ -68,6 +68,14 @@ At subtle settings, Riso adds a gentle duotone warmth with barely perceptible gr
 
 ---
 
+## Quick Start
+
+1. **Threshold is the master control**: Finding the right shadow/highlight split for your source material is the single most important adjustment. Start there before touching anything else.
+2. **Grain needs contrast**: Stencil grain is most visible in areas of moderate ink density. Fully saturated shadows and fully exposed highlights mask the grain texture because they're at the extremes.
+3. **Classic duotone combinations**: Fluorescent Pink + Teal is the quintessential risograph pairing. Blue + Black produces a stark, cold print. Pink + Black is bold and graphic.
+
+---
+
 ## Background
 
 ### What Is Risograph Printing?
@@ -94,6 +102,8 @@ Risograph machines are known for their vivid, unconventional ink palette. Riso p
 ---
 
 ## Signal Flow
+
+Y Channel → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -146,7 +156,7 @@ The key architectural insight is that Riso is a *luminance-only* separation engi
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the luminance threshold that divides the input into shadow and highlight zones. At low values, almost the entire image falls into the highlight zone and receives ink B. At high values, almost everything falls into the shadow zone and receives ink A. At the midpoint (~50%), the tonal split is roughly even, and both inks contribute equally. In three-color mode, the threshold also defines the lower boundary of the midtone band. Finding the right threshold for a given source image is the essential first step — it determines the "plate separation" that defines the entire risograph character.
+At low values, almost the entire image falls into the highlight zone and receives ink B. At high values, almost everything falls into the shadow zone and receives ink A. At the midpoint (~50%), the tonal split is roughly even, and both inks contribute equally. In three-color mode, the threshold also defines the lower boundary of the midtone band. Finding the right threshold for a given source image is the essential first step — it determines the "plate separation" that defines the entire risograph character. Internally, controls the luminance threshold that divides the input into shadow and highlight zones.
 
 ---
 
@@ -157,7 +167,7 @@ Controls the luminance threshold that divides the input into shadow and highligh
 | Default | 25.0% |
 | Suffix | % |
 
-Controls the intensity of the LFSR stencil grain texture applied to both layer masks before compositing. At 0%, the masks are smooth and the ink coverage is perfectly uniform — a clinical separation without any of the organic risograph texture. As you increase grain, the LFSR noise increasingly randomizes ink coverage pixel-by-pixel, producing the characteristic porous, stippled texture of ink pressed through a wax stencil. High grain values create heavy texturization where the ink appears to have been applied with a sponge.
+At 0%, the masks are smooth and the ink coverage is perfectly uniform — a clinical separation without any of the organic risograph texture. As you increase grain, the LFSR noise increasingly randomizes ink coverage pixel-by-pixel, producing the characteristic porous, stippled texture of ink pressed through a wax stencil. High grain values create heavy texturization where the ink appears to have been applied with a sponge. Internally, controls the intensity of the LFSR stencil grain texture applied to both layer masks before compositing.
 
 ---
 
@@ -228,7 +238,19 @@ The five toggles form two independent 2-bit color selectors (one for ink A and o
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry mix crossfade between the original input video (dry) and the risograph-processed output (wet). At 0%, the output is the unprocessed input. At 100%, the output is the fully processed riso print simulation. Intermediate values blend between the two, which can be used for a subtle duotone wash effect where the spot colors tint the original image without fully replacing it.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Riso-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -251,7 +273,7 @@ These exercises progress from simple duotone separation to full multi-layer misr
 *Classic Duotone — simulated result across source images.*
 **Source**: A portrait or still life with clear tonal range — visible shadows, midtones, and highlights.
 
-**Objective**: Learn how threshold separation and ink color selection interact to create a classic risograph duotone.
+**What You'll Create**: Learn how threshold separation and ink color selection interact to create a classic risograph duotone.
 
 1. **Set ink colors**: Set Color A to Fluorescent Pink (Tog 7 Off, Tog 8 Off). Set Color B to Teal (Tog 9 Off, Tog 10 On).
 2. **Find the threshold**: Slowly sweep Threshold from left to right. Watch the image split into pink shadows and teal highlights. Find the point where the subject reads clearly.
@@ -277,7 +299,7 @@ These exercises progress from simple duotone separation to full multi-layer misr
 *Misregistered Print — simulated result across source images.*
 **Source**: High-contrast footage with strong edges — text overlays, architectural details, or graphic patterns.
 
-**Objective**: Explore horizontal misregistration and its effect on edge fringing.
+**What You'll Create**: Explore horizontal misregistration and its effect on edge fringing.
 
 1. **Start with a clean duotone**: Use the settings from Exercise 1 (Pink + Teal, Threshold ~50%).
 2. **Add B offset**: Slowly increase B H-Offset. Watch the teal highlight layer slide rightward, creating a colored fringe at every tonal edge.
@@ -304,7 +326,7 @@ These exercises progress from simple duotone separation to full multi-layer misr
 *Overinked Poster — simulated result across source images.*
 **Source**: Any footage — works especially well with bold graphic content or live camera feeds.
 
-**Objective**: Push the risograph simulation to its extremes for a heavily textured, overinked poster aesthetic.
+**What You'll Create**: Push the risograph simulation to its extremes for a heavily textured, overinked poster aesthetic.
 
 1. **Choose dark inks**: Set Color A to Blue (Tog 7 On, Tog 8 Off). Set Color B to Black (Tog 9 On, Tog 10 On).
 2. **Low threshold**: Set Threshold to ~25% so most of the image receives ink A (Blue), creating a heavily inked dark print.
@@ -320,9 +342,6 @@ These exercises progress from simple duotone separation to full multi-layer misr
 
 ## Tips
 
-- **Threshold is the master control**: Finding the right shadow/highlight split for your source material is the single most important adjustment. Start there before touching anything else.
-- **Grain needs contrast**: Stencil grain is most visible in areas of moderate ink density. Fully saturated shadows and fully exposed highlights mask the grain texture because they're at the extremes.
-- **Classic duotone combinations**: Fluorescent Pink + Teal is the quintessential risograph pairing. Blue + Black produces a stark, cold print. Pink + Black is bold and graphic.
 - **Misregistration tells a story**: Even a 1–2 pixel offset produces a subtle but visible color fringe that immediately reads as "printed." Larger offsets create an increasingly exaggerated, poster-like misalignment.
 - **3-Color fills the middle**: If your duotone looks too contrasty — too much hard switching between shadow and highlight — enable 3-Color mode. The midtone band adds tonal richness.
 - **Mix for subtlety**: At 50–70% Mix, the risograph colors tint the original image rather than replacing it. This produces a warm, printed-overlay look that's more subtle than the full simulation.
@@ -343,6 +362,7 @@ These exercises progress from simple duotone separation to full multi-layer misr
 | **Stencil** | A perforated master sheet through which ink is pressed; in risograph printing, a wax thermal master with variable porosity. |
 | **Subtractive Mixing** | Color mixing where layered pigments or inks absorb light, producing darker results as more layers are added. |
 | **Tonal Separation** | Dividing a continuous-tone image into discrete brightness zones, each assigned a specific treatment or ink color. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

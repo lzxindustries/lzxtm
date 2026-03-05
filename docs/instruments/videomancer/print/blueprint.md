@@ -68,6 +68,14 @@ The name references the cyanotype contact-printing process invented by Sir John 
 
 ---
 
+## Quick Start
+
+1. **Start with Contrast before Threshold**: Boost Contrast (Pot 6) first. This makes faint edges visible without lowering the threshold, reducing noise.
+2. **32-pixel grid for general use**: Grid Space at ~60% (32px period) provides a good balance between density and readability.
+3. **Negative mode for projections**: The blue-on-white "whiteprint" mode is easier to read when projected or overlaid on bright backgrounds.
+
+---
+
 ## Background
 
 ### What Is a Cyanotype?
@@ -217,7 +225,7 @@ Controls the edge contrast scaling — how bright the detected contour lines app
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Style** | Blueprint | Whitepr |
+| **7 — Style** | Blueprint | Green |
 | **8 — Grid** | Off | On |
 | **9 — Ticks** | Off | On |
 | **10 — Invert** | Off | On |
@@ -237,6 +245,21 @@ The five toggles control the grid overlay, the cyanotype polarity, line thicknes
 | Suffix | % |
 
 Crossfades between the dry (original) and wet (blueprint) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the full cyanotype drawing. Intermediate values superimpose the contour lines over the original video, creating a translucent overlay effect.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Blueprint processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -259,7 +282,7 @@ These exercises progress from basic edge extraction through grid overlay to the 
 *Simple Edge Drawing — simulated result across source images.*
 **Source**: Architectural footage or any scene with clear geometric shapes.
 
-**Objective**: Understand the edge detection pipeline and threshold control.
+**What You'll Create**: Understand the edge detection pipeline and threshold control.
 
 1. **Reveal all edges**: Set Edge Thr to 0%. Every pixel transition appears as a contour line.
 2. **Raise threshold**: Increase Edge Thr to about 50%. Weak textures disappear, leaving only strong contours.
@@ -287,7 +310,7 @@ These exercises progress from basic edge extraction through grid overlay to the 
 *Engineering Grid Overlay — simulated result across source images.*
 **Source**: Any footage — the grid is independent of video content.
 
-**Objective**: Explore the grid overlay system, spacing, brightness, and dimension marks.
+**What You'll Create**: Explore the grid overlay system, spacing, brightness, and dimension marks.
 
 1. **Enable grid**: Set Grid (Toggle 8) to On. Dotted grid lines appear.
 2. **Adjust spacing**: Turn Grid Space through its 8 steps. Watch the grid period change from 8px to 128px.
@@ -315,7 +338,7 @@ These exercises progress from basic edge extraction through grid overlay to the 
 *Full Technical Drawing — simulated result across source images.*
 **Source**: Mechanical parts, circuit boards, or architectural subjects.
 
-**Objective**: Create a complete engineering drawing aesthetic with all features active.
+**What You'll Create**: Create a complete engineering drawing aesthetic with all features active.
 
 1. **Moderate edge threshold**: Edge Thr at about 35% — enough detail without clutter.
 2. **Strong contrast**: Brightness (Pot 6) at about 75%. Edges appear as bright, confident lines.
@@ -333,9 +356,6 @@ These exercises progress from basic edge extraction through grid overlay to the 
 
 ## Tips
 
-- **Start with Contrast before Threshold**: Boost Contrast (Pot 6) first. This makes faint edges visible without lowering the threshold, reducing noise.
-- **32-pixel grid for general use**: Grid Space at ~60% (32px period) provides a good balance between density and readability.
-- **Negative mode for projections**: The blue-on-white "whiteprint" mode is easier to read when projected or overlaid on bright backgrounds.
 - **Use Mix for ghost overlay**: Mix at 40–60% superimposes the blueprint contours over the original video, creating a technical drawing analysis view.
 - **Blue Depth sets the mood**: Low Blue Depth (dark background) creates a more dramatic, high-contrast drawing; high Blue Depth is more faithful to real cyanotype prints.
 - **Dimension marks for precision**: Enable Ticks when using the grid as a measurement reference — the intersection dots make counting grid squares easier.
@@ -348,17 +368,16 @@ These exercises progress from basic edge extraction through grid overlay to the 
 | Term | Definition |
 |------|------------|
 | **Bitmask** | A binary pattern used with a bitwise AND operation to test whether a pixel coordinate falls on a power-of-two grid line, replacing expensive modulo division. |
-| **BRAM** | Block RAM; dedicated memory blocks within an FPGA, used here to store one full line of luminance data for vertical edge detection. |
 | **Cyanotype** | A photographic contact-printing process using iron salts that produces white imagery on a deep Prussian blue background, invented by Sir John Herschel in 1842. |
 | **Diazo** | A reprographic printing process that produces dark lines on a white or off-white background, the tonal inverse of a cyanotype; also called a whiteprint. |
 | **DSP** | Digital Signal Processor; a dedicated hardware multiplication block within an FPGA, avoided by Blueprint's shift-based contrast scaling. |
 | **Finite difference** | A numerical method that approximates a derivative by computing the difference between adjacent sample values, used here for edge detection. |
 | **Gradient** | The rate of brightness change between adjacent pixels, used as a measure of edge strength in the horizontal or vertical direction. |
-| **Interpolator** | A hardware mixing block that crossfades between two input signals using a weighted average, used here for dry/wet blending. |
 | **Luma** | The brightness component (Y) of a YUV video signal, the only channel used for edge detection in Blueprint. |
 | **LUT** | Look-Up Table; a small memory or combinational logic structure that maps an input index to a pre-computed output value. |
 | **Prussian blue** | Iron hexacyanoferrate; the deep blue pigment produced by the cyanotype chemical reaction, used as the background colour (Y≈180, U=650, V=350). |
 | **Sobel operator** | A standard image processing edge detection kernel that combines horizontal and vertical gradient estimates with smoothing; Blueprint uses a simplified variant without the smoothing kernels. |
-| **YUV** | A colour encoding system that separates brightness (Y) from two colour-difference components (U and V), used as the native signal format in Videomancer. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

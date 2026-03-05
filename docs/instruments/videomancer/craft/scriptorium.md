@@ -68,6 +68,14 @@ Four ornament algorithms are available — Insular knotwork, acanthus scroll, ge
 
 ---
 
+## Quick Start
+
+1. **Border Width is your page layout**: Small borders create a picture-frame effect; large borders fill the screen with ornament and reduce the miniature to a small window.
+2. **Gold Threshold shapes the gilding**: Use high thresholds for subtle highlight-only gilding; use low thresholds for lavish all-over gold leafing.
+3. **Ornament Scale interacts with Border Width**: Narrow borders may not have enough pixels to show the ornament pattern clearly — use smaller ornament scales with narrow borders.
+
+---
+
 ## Background
 
 ### The Illuminated Manuscript Tradition
@@ -94,6 +102,8 @@ Medieval manuscripts follow strict page layout conventions. The *mise en page* d
 ---
 
 ## Signal Flow
+
+Zone Classification → Ornament + Palette → Gold Leaf → Vellum + Aging
 
 ```
 Input Video (YUV 4:4:4)
@@ -147,7 +157,7 @@ The pipeline is purely feedforward with no feedback paths. Two key design decisi
 | Default | 39.1% |
 | Suffix | % |
 
-Controls the width of the ornamental border in pixels, mapped from the 10-bit register to a 0–128 pixel range. At zero, the entire frame is miniature — no border or frame line is visible. As the border widens, the central pictorial field shrinks and the ornamental margin grows. The frame line always sits at the inner edge of the border, so widening the border pushes the gold or tinted frame line inward as well.
+At zero, the entire frame is miniature — no border or frame line is visible. As the border widens, the central pictorial field shrinks and the ornamental margin grows. The frame line always sits at the inner edge of the border, so widening the border pushes the gold or tinted frame line inward as well. Internally, controls the width of the ornamental border in pixels, mapped from the 10-bit register to a 0–128 pixel range.
 
 ---
 
@@ -179,7 +189,7 @@ Controls how many entries from the medieval mineral palette are used for miniatu
 | Default | 68.4% |
 | Suffix | % |
 
-Sets the luminance threshold above which pixels in the miniature zone are replaced with gold leaf color. At low values, only the very brightest highlights receive gold treatment. At high values, mid-tones and even darker regions are gilded, pushing more of the miniature toward a golden monochrome. When gold leaf is disabled (toggle 9), this parameter has no visible effect.
+At low values, only the very brightest highlights receive gold treatment. At high values, mid-tones and even darker regions are gilded, pushing more of the miniature toward a golden monochrome. When gold leaf is disabled (toggle 9), this parameter has no visible effect. Internally, sets the luminance threshold above which pixels in the miniature zone are replaced with gold leaf color.
 
 ---
 
@@ -190,7 +200,7 @@ Sets the luminance threshold above which pixels in the miniature zone are replac
 | Default | 29.3% |
 | Suffix | % |
 
-Controls the intensity of the LFSR-driven parchment grain texture overlaid on the Y channel. At zero, the output is perfectly smooth. As vellum increases, a subtle noise modulates brightness across the entire frame — border, frame line, and miniature alike — simulating the fibrous surface texture of prepared calfskin or goatskin. The noise is broadband and uniform, unlike the structured patterns of the ornament zone.
+At zero, the output is perfectly smooth. As vellum increases, a subtle noise modulates brightness across the entire frame — border, frame line, and miniature alike — simulating the fibrous surface texture of prepared calfskin or goatskin. The noise is broadband and uniform, unlike the structured patterns of the ornament zone. Internally, controls the intensity of the LFSR-driven parchment grain texture overlaid on the Y channel.
 
 ---
 
@@ -229,6 +239,21 @@ Toggles 7 and 8 combine as a 2-bit selector to choose one of four ornament algor
 
 Crossfades between the dry (original) and wet (processed) signal via three interpolator_u instances. At 100% the full manuscript effect is visible. At 0% the original video passes through unaltered. Intermediate values blend the two, which can produce a ghostly overlay of the manuscript structure on top of recognizable video content.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Scriptorium processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -250,7 +275,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 *Knotwork Page — simulated result across source images.*
 **Source**: A slowly moving camera feed with moderate contrast — portraits or architectural subjects work well.
 
-**Objective**: Learn how border width, ornament scale, and basic palette quantization interact to create a framed manuscript page.
+**What You'll Create**: Learn how border width, ornament scale, and basic palette quantization interact to create a framed manuscript page.
 
 1. **Set the border**: Turn Border Width to about 40%. A wide ornamental margin appears around the central video.
 2. **Select knotwork**: Ensure Pattern A is set to Knot and Pattern B to Geo. The border fills with interlaced ribbon bands.
@@ -277,7 +302,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 *Gilded Miniature — simulated result across source images.*
 **Source**: High-contrast footage with bright highlights — candle flames, sunlit surfaces, or specular reflections.
 
-**Objective**: Explore gold leaf substitution and how the threshold control sculpts which parts of the image become gold.
+**What You'll Create**: Explore gold leaf substitution and how the threshold control sculpts which parts of the image become gold.
 
 1. **Start with a knotwork border**: Keep Border Width at ~30% with Knotwork pattern.
 2. **Enable gold leaf**: Confirm Gold Leaf toggle is On. Notice the frame line is now gold.
@@ -305,7 +330,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 *Four Ornament Comparison — simulated result across source images.*
 **Source**: Any slowly changing video — abstract patterns, landscapes, or color bars.
 
-**Objective**: Compare all four ornament algorithms and understand how their visual character changes with scale.
+**What You'll Create**: Compare all four ornament algorithms and understand how their visual character changes with scale.
 
 1. **Wide border**: Set Border Width to ~60% so the ornament dominates the frame.
 2. **Knotwork** (Knot + Geo): Observe the over-under interlaced bands. Note the two alternating colors at crossings.
@@ -322,9 +347,6 @@ These exercises progress from basic page layout to full illuminated manuscript c
 
 ## Tips
 
-- **Border Width is your page layout**: Small borders create a picture-frame effect; large borders fill the screen with ornament and reduce the miniature to a small window.
-- **Gold Threshold shapes the gilding**: Use high thresholds for subtle highlight-only gilding; use low thresholds for lavish all-over gold leafing.
-- **Ornament Scale interacts with Border Width**: Narrow borders may not have enough pixels to show the ornament pattern clearly — use smaller ornament scales with narrow borders.
 - **Color Depth controls the historical period**: Fewer pigments evoke early medieval manuscripts (6th–9th century); more pigments suggest the later Gothic and Renaissance styles.
 - **Aging works best with gold**: The desaturation of aging makes gold areas stand out dramatically against muted pigment backgrounds, just as real gold on aged parchment catches the eye.
 - **Vellum unifies the composition**: Even a small amount of vellum texture ties the procedural border ornaments to the quantized miniature, making the whole frame feel like a single material surface.
@@ -354,6 +376,7 @@ These exercises progress from basic page layout to full illuminated manuscript c
 | **Ultramarine** | A deep blue pigment historically made from ground lapis lazuli; the most expensive pigment in the medieval palette. |
 | **Vellum** | Fine-quality parchment made from calfskin, valued for its smooth writing surface and durability. |
 | **Vermillion** | A brilliant red pigment made from ground cinnabar (mercury sulfide), widely used in medieval illumination. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

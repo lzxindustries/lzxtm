@@ -68,6 +68,14 @@ The name directly references the body-worn video cameras used by law enforcement
 
 ---
 
+## Quick Start
+
+1. **Jitter + Noise = instant surveillance**: A moderate amount of both (25–40%) immediately sells the body camera look without needing other effects.
+2. **Night mode last**: Night mode tints everything green — apply it after setting up the other artefacts, as it changes the visual weight of noise and vignette.
+3. **Subtle drops are most convincing**: Drop Frq at 10–20% creates occasional, unexpected blackouts that feel authentic. Higher rates look more like a broken signal.
+
+---
+
 ## Background
 
 ### Body-Worn Camera Artefacts
@@ -213,8 +221,8 @@ Controls vignette intensity. When Vignette (Toggle 8) is enabled, this pot's val
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Quality** | 720p | 480p |
-| **8 — Codec** | Clean | MPEG |
+| **7 — Quality** | 720p | Night |
+| **8 — Codec** | Clean | Analog |
 | **9 — Stamp** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -233,6 +241,21 @@ The five toggles control night vision mode, vignette enable, timestamp enable, a
 | Suffix | % |
 
 Crossfades between the dry (original) and wet (processed) signal using three parallel interpolators. At 0% the output is the unmodified input; at 100% the output is the full body camera effect. Intermediate values blend the degraded look with the original, useful for subtle surveillance-aesthetic applications.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Bodycam processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -255,7 +278,7 @@ These exercises progress from individual artefacts through combined degradations
 *Line Jitter and Noise — simulated result across source images.*
 **Source**: Any moving footage — faces, walking, street scenes.
 
-**Objective**: Understand the LFSR-driven jitter and noise injection.
+**What You'll Create**: Understand the LFSR-driven jitter and noise injection.
 
 1. **Add jitter**: Set Distort to about 30%. Subtle horizontal line displacement appears.
 2. **Increase jitter**: Push to 70%. Lines shift dramatically — severe shearing visible.
@@ -283,7 +306,7 @@ These exercises progress from individual artefacts through combined degradations
 *Frame Drops and Timestamp — simulated result across source images.*
 **Source**: Any footage with continuous motion.
 
-**Objective**: Explore frame drop simulation and timestamp overlay.
+**What You'll Create**: Explore frame drop simulation and timestamp overlay.
 
 1. **Enable timestamp**: Set Stamp to On. A bright bar appears.
 2. **Position the bar**: Adjust Bar Pos to place the timestamp at the bottom of frame (~80%).
@@ -311,7 +334,7 @@ These exercises progress from individual artefacts through combined degradations
 *Full Body Camera — simulated result across source images.*
 **Source**: Any handheld or moving footage.
 
-**Objective**: Create a complete body camera surveillance aesthetic.
+**What You'll Create**: Create a complete body camera surveillance aesthetic.
 
 1. **Base degradation**: Distort ~35%, Noise ~30%, Drop Frq ~20%.
 2. **Enable vignette**: Set Codec to MPEG (Toggle 8 = vignette on). Edge darkening appears.
@@ -327,9 +350,6 @@ These exercises progress from individual artefacts through combined degradations
 
 ## Tips
 
-- **Jitter + Noise = instant surveillance**: A moderate amount of both (25–40%) immediately sells the body camera look without needing other effects.
-- **Night mode last**: Night mode tints everything green — apply it after setting up the other artefacts, as it changes the visual weight of noise and vignette.
-- **Subtle drops are most convincing**: Drop Frq at 10–20% creates occasional, unexpected blackouts that feel authentic. Higher rates look more like a broken signal.
 - **Timestamp at the bottom**: Real body cameras universally place their timestamps at the bottom of frame. Set Bar Pos to 80–90% for realism.
 - **Vignette for framing**: Even without other artefacts, vignette adds a cinematic edge-darkening effect useful for directing attention to the frame centre.
 - **Mix for documentary look**: Mix at 50–60% blends the degradation subtly with the original, creating a "reconstructed footage" aesthetic popular in documentaries.
@@ -346,12 +366,12 @@ These exercises progress from individual artefacts through combined degradations
 | **Codec** | A compression/decompression algorithm used to encode and decode digital video; common examples include MPEG and H.264. |
 | **Frame counter** | A hardware register that increments once per video frame, used here to determine frame drop timing. |
 | **Galois LFSR** | A variant of the linear feedback shift register where feedback taps are applied via XOR at multiple internal bit positions, producing an efficient pseudo-random bit sequence. |
-| **Interpolator** | A hardware block that performs linear blending (lerp) between two input values based on a mix coefficient, used here for dry/wet crossfading. |
 | **LFSR (Linear Feedback Shift Register)** | A shift register whose input bit is a linear function of its previous state, producing a deterministic but pseudo-random bit sequence. |
 | **Luma** | The luminance (Y) component of a YUV video signal, representing perceived brightness. |
 | **Shift-select** | A hardware technique that approximates multiplication by selecting among bit-shifted versions of a value, avoiding the cost of a dedicated multiplier. |
 | **Triangle wave** | A periodic waveform that rises and falls linearly, producing a smooth back-and-forth oscillation used here for the vertical bounce effect. |
 | **Vignetting** | Darkening of the image periphery relative to the center, typically caused by lens geometry or sensor limitations in real cameras. |
-| **YUV** | A color encoding scheme that separates luminance (Y) from chrominance (U, V), widely used in video systems to exploit the human eye's greater sensitivity to brightness than to color. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

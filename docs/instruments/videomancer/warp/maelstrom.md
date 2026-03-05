@@ -68,6 +68,14 @@ At conservative settings — low Depth, moderate Frequency — Maelstrom produce
 
 ---
 
+## Quick Start
+
+1. **Horizontal only**: Displacement moves pixels left and right along the scanline — the vertical structure of the rings comes from the radius computation, not from vertical pixel shift. This keeps BRAM usage to a single scanline buffer.
+2. **No bypass**: The Bypass toggle in the TOML is not connected in VHDL. Use Mix at 0% for a fully dry signal.
+3. **Band Width is exponential**: Each step selects the next higher bit of the radius, effectively doubling the band width. The control feels nonlinear because it *is* nonlinear — it's a bit selector, not a continuous width.
+
+---
+
 ## Background
 
 ### Radial Coordinate Transforms
@@ -94,6 +102,8 @@ All animation in Maelstrom is driven by Direct Digital Synthesis (DDS) phase acc
 ---
 
 ## Signal Flow
+
+Radius Approximation → Radial Distortion → Displaced Read
 
 ```
 Input Video (YUV 4:4:4)
@@ -151,7 +161,7 @@ The displacement operates only in the horizontal direction — each pixel's read
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the amplitude of the radial displacement wave. At 0%, no distortion — the scanline buffer read address equals the write address and the image passes through unchanged (before mixing). As Depth increases, pixels are displaced farther from their original positions, creating wider ripples. At maximum, the displacement can exceed hundreds of pixels, producing dramatic warping where features stretch and compress across the frame. Depth scales the sine value linearly: `dist_offset = depth × sin_val >> 9`.
+At 0%, no distortion — the scanline buffer read address equals the write address and the image passes through unchanged (before mixing). As Depth increases, pixels are displaced farther from their original positions, creating wider ripples. At maximum, the displacement can exceed hundreds of pixels, producing dramatic warping where features stretch and compress across the frame. Depth scales the sine value linearly: `dist_offset = depth × sin_val >> 9`. Internally, controls the amplitude of the radial displacement wave.
 
 ---
 
@@ -162,7 +172,7 @@ Controls the amplitude of the radial displacement wave. At 0%, no distortion —
 | Default | 29.3% |
 | Suffix | % |
 
-Controls the spatial frequency of the displacement sine wave — how many concentric rings appear between the center and the edge of the frame. At low settings, the entire frame may contain only one or two broad undulations. At high settings, many tightly spaced concentric rings pack into the visible area, creating a fine ripple pattern. Frequency multiplies the radius in the sine argument: higher frequency means more cycles per unit of radial distance.
+At low settings, the entire frame may contain only one or two broad undulations. At high settings, many tightly spaced concentric rings pack into the visible area, creating a fine ripple pattern. Frequency multiplies the radius in the sine argument: higher frequency means more cycles per unit of radial distance. Internally, controls the spatial frequency of the displacement sine wave — how many concentric rings appear between the center and the edge of the frame.
 
 ---
 
@@ -233,7 +243,19 @@ The five toggles control independent binary options. Inv Mode and Wave shape the
 | Default | 100.0% |
 | Suffix | % |
 
-Controls the wet/dry crossfade between the delayed original input and the distorted, optionally inverted wet signal. At 0% (register 0), the output is the original delayed input — no visible effect. At 100% (register 1023), the output is fully the processed signal. Because no bypass toggle is implemented, the Mix fader is the only way to control the effect intensity. Intermediate values blend the distorted and undistorted signals, creating a ghost-like overlay where the original image shows through the warped version.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Maelstrom-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -256,7 +278,7 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 *Concentric Ripples — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with strong horizontal detail — architecture, text, or geometric patterns work well.
 
-**Objective**: Learn how Depth and Frequency interact to create concentric displacement rings.
+**What You'll Create**: Learn how Depth and Frequency interact to create concentric displacement rings.
 
 1. **Gentle ripple**: Starting from defaults, slowly increase Depth. Watch as the image begins to shimmer with faint concentric rings.
 2. **Add frequency**: Increase Frequency to pack more rings into the visible area. The ripples become tighter and more densely spaced.
@@ -283,7 +305,7 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 *Inversion Bands — simulated result across source images.*
 **Source**: Color bars or footage with a wide range of brightness values and saturated colors — the inversion effect is most visible on varied content.
 
-**Objective**: Explore band inversion and understand how Band Width selects inversion zone spacing.
+**What You'll Create**: Explore band inversion and understand how Band Width selects inversion zone spacing.
 
 1. **Enable inversion**: Turn Inv Mode On. Immediately, alternating rings of the image appear in negative.
 2. **Band Width sweep**: Slowly turn Band W from minimum to maximum. Watch the inversion bands grow from very narrow stripes to broad zones. Notice the stepped transitions — the band width changes discretely as different bits of the radius are selected.
@@ -310,7 +332,7 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 *Animated Vortex — simulated result across source images.*
 **Source**: Any active video — faces, nature, or abstract patterns all work well at maximum effect intensity.
 
-**Objective**: Combine all motion controls for a fully animated whirlpool effect.
+**What You'll Create**: Combine all motion controls for a fully animated whirlpool effect.
 
 1. **Full distortion**: Set Depth ~70%, Frequency ~50%. The image should be heavily warped with visible concentric rings.
 2. **Animate**: Set Speed to ~40%. The rings begin pulsating outward.
@@ -326,9 +348,6 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 
 ## Tips
 
-- **Horizontal only**: Displacement moves pixels left and right along the scanline — the vertical structure of the rings comes from the radius computation, not from vertical pixel shift. This keeps BRAM usage to a single scanline buffer.
-- **No bypass**: The Bypass toggle in the TOML is not connected in VHDL. Use Mix at 0% for a fully dry signal.
-- **Band Width is exponential**: Each step selects the next higher bit of the radius, effectively doubling the band width. The control feels nonlinear because it *is* nonlinear — it's a bit selector, not a continuous width.
 - **Depth at zero is useful**: With Depth at 0%, no displacement occurs, but inversion bands still appear as perfectly concentric rings. This is a distinct visual mode — clean radial inversion without any warping.
 - **Drift adds life**: Even subtle Drift (center wandering ±100 px) prevents the pattern from looking static and mechanical. The Lissajous path has a long repeat period due to coprime DDS increments.
 - **Expand vs. Speed**: Speed animates the wave envelope outward. Expand modulates the wave argument itself, creating a breathing effect where rings appear to grow from the center. Together they create complex layered motion.
@@ -341,15 +360,12 @@ These exercises progress from gentle radial ripples to full vortex animation, ex
 | Term | Definition |
 |------|------------|
 | **Alpha-max-plus-beta-min** | A fast approximation for Euclidean distance using only comparisons, additions, and bit shifts. Error is typically under 4%. |
-| **BRAM** | Block RAM; dedicated memory tiles on the FPGA used here for 2048×10 scanline buffers. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms using a phase accumulator and lookup table. |
 | **Displacement** | Shifting a pixel's read address relative to its write address, causing spatial warping of the image. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline in real time. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends dry and wet signals based on the Mix parameter. |
 | **Lissajous** | A family of curves traced by combining sinusoidal motions at different frequencies on perpendicular axes. Used here for center drift. |
-| **Pipeline** | A series of sequential processing stages, each completing one clock cycle of work before passing results to the next stage. |
 | **Quarter-wave LUT** | A lookup table storing one quarter of a sine wave (0° to 90°); the full waveform is reconstructed by quadrant folding and sign inversion. |
 | **Scanline buffer** | A memory that stores one horizontal line of video, enabling displaced horizontal reads for spatial warping. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline at 10-bit precision. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

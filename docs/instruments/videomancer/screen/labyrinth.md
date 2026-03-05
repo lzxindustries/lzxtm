@@ -35,6 +35,14 @@ At conservative settings — small cells, thin walls, moderate luminance — Lab
 
 ---
 
+## Quick Start
+
+1. **Seed is your starting point**: Each seed value produces a unique maze. Sweep the Seed knob slowly to browse maze topologies and find one that fits your composition.
+2. **Evolve at low values for subtlety**: Even very low Evolve settings create gradual maze mutation — walls shift over seconds or minutes, adding organic temporal variation without disorienting rapid change.
+3. **Cell Size defines the scale**: Small cells create fine texture; large cells create bold architecture. The 8 discrete steps provide a good range from dense mesh to wide-open corridors.
+
+---
+
 ## Background
 
 ### Binary-Tree Mazes
@@ -61,6 +69,8 @@ Although classified as a synthesis program, Labyrinth's Mix fader and corridor d
 ---
 
 ## Signal Flow
+
+Cell Coordinate → Hash + Wall Decision → Wall Rasterisation → Explorer Overlay → Color Mux
 
 ```
 Video Input (YUV 4:4:4) — used for corridor fill and bypass
@@ -179,7 +189,7 @@ Controls the speed of maze evolution. When set above zero, an accumulator adds t
 | Default | 100.0% |
 | Suffix | % |
 
-Sets the luminance of wall pixels when Wall Mode is set to Solid (normal). At 0%, walls are black — invisible against a dark corridor background but visible when corridors pass video. At 100%, walls are maximum white. This control has no effect when Wall Mode is set to Invert, because inverted walls derive their brightness from the input video signal rather than this parameter.
+At 0%, walls are black — invisible against a dark corridor background but visible when corridors pass video. At 100%, walls are maximum white. This control has no effect when Wall Mode is set to Invert, because inverted walls derive their brightness from the input video signal rather than this parameter. Internally, sets the luminance of wall pixels when Wall Mode is set to Solid (normal).
 
 ---
 
@@ -219,6 +229,10 @@ The five toggles control independent binary options. Wall Mode and Corridor mode
 
 Controls the wet/dry crossfade between the delayed input signal and the maze output via three `interpolator_u` instances (one per Y/U/V channel). At 0% (register 0), the output is the delayed input — no maze visible. At 100% (register 1023), the output is fully the maze signal. Intermediate values create a semi-transparent maze overlay where the wall structure is partially blended with the input video.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -229,7 +243,7 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 
 <img src={labyrinth_exercise1_result} alt="Static Maze Grid result"/>
 *Static Maze Grid — simulated result across source images.*
-**Objective**: Learn how cell size, wall thickness, and seed define the maze structure.
+**What You'll Create**: Learn how cell size, wall thickness, and seed define the maze structure.
 
 1. **Default maze**: With all controls at default, observe the maze pattern. Note the square cells with walls connecting in a tree-like pattern.
 2. **Cell size sweep**: Turn Cell Size from minimum to maximum. Watch the maze transition from a dense fine mesh to a few large corridors. Count the approximate number of cells at each extreme.
@@ -245,7 +259,7 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 
 <img src={labyrinth_exercise2_result} alt="Evolving Corridors result"/>
 *Evolving Corridors — simulated result across source images.*
-**Objective**: Explore seed evolution to create a maze that morphs over time, and use the explorer to navigate it.
+**What You'll Create**: Explore seed evolution to create a maze that morphs over time, and use the explorer to navigate it.
 
 1. **Start evolution**: Set Evolve to ~20%. The maze begins to slowly mutate — walls dissolve and new ones form. Watch for several seconds to see the transformation.
 2. **Speed up**: Increase Evolve to ~60%. The mutation accelerates — the maze becomes a continuously shifting structure.
@@ -262,7 +276,7 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 
 <img src={labyrinth_exercise3_result} alt="Inverted Maze Compositing result"/>
 *Inverted Maze Compositing — simulated result across source images.*
-**Objective**: Use Wall Mode invert and Corridor dimming to create a complex compositing effect where the maze segments the video into complementary regions.
+**What You'll Create**: Use Wall Mode invert and Corridor dimming to create a complex compositing effect where the maze segments the video into complementary regions.
 
 1. **Feed live video**: Ensure an active video source is connected for corridor pass-through.
 2. **Enable invert**: Set Wall Mode to Invert. Walls now display the inverted video signal — wherever the corridor shows normal video, the adjacent wall shows its negative.
@@ -278,9 +292,6 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 
 ## Tips
 
-- **Seed is your starting point**: Each seed value produces a unique maze. Sweep the Seed knob slowly to browse maze topologies and find one that fits your composition.
-- **Evolve at low values for subtlety**: Even very low Evolve settings create gradual maze mutation — walls shift over seconds or minutes, adding organic temporal variation without disorienting rapid change.
-- **Cell Size defines the scale**: Small cells create fine texture; large cells create bold architecture. The 8 discrete steps provide a good range from dense mesh to wide-open corridors.
 - **Wall Mode Invert for compositing**: Inverted walls turn the maze into a video segmentation tool — corridors and walls show complementary views of the source, creating a split-reality effect.
 - **Explorer proves navigability**: The green explorer dot is more than decoration — it visually demonstrates that the generated structure is a valid, navigable maze with connected corridors.
 - **Corridor dim enhances contrast**: When corridors pass video through unchanged, they can overpower the wall structure. Dimming the corridors makes the maze pattern more visible without completely hiding the video content.
@@ -294,17 +305,14 @@ These exercises progress from a basic static maze to an evolving labyrinth with 
 | Term | Definition |
 |------|------------|
 | **Binary-tree maze** | A maze generation algorithm where each cell opens exactly one passage (east or south), producing a perfect maze with a single path between any two cells. |
-| **BRAM** | Block RAM; dedicated memory resources within the FPGA fabric. Labyrinth uses zero BRAM — the maze is computed procedurally. |
 | **Cell** | One unit of the maze grid. Each cell has four potential walls (north, south, east, west) and an interior corridor. |
 | **Deterministic** | A process that always produces the same output for the same input. Labyrinth's hash function is deterministic — the same seed always produces the same maze. |
 | **Explorer** | An animated dot that navigates the maze corridors, changing direction upon encountering walls. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable integrated circuit that generates the maze pattern at pixel clock speed. |
 | **Hash function** | A mathematical function that maps input values to pseudo-random output values. Used here to determine wall placement from cell coordinates and seed. |
-| **Interpolator** | A linear crossfade module (`interpolator_u`) that blends two signals based on a mix parameter. |
 | **Perfect maze** | A maze with exactly one path between any two cells — no loops and no isolated regions. |
-| **Pipeline** | A series of sequential processing stages on each clock cycle; Labyrinth uses a 6-clock pipeline. |
 | **Procedural generation** | Creating content algorithmically rather than storing it in memory. Labyrinth generates the entire maze from a hash function with zero storage. |
 | **Seed** | An initial value fed to the hash function that determines the maze topology. Different seeds produce different mazes. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -35,6 +35,14 @@ Growth speed, branch thickness, column spacing, split probability, overlay inten
 
 ---
 
+## Quick Start
+
+1. **Reset for synchronized starts**: Toggle Current before a performance segment to guarantee all branches begin growing from zero simultaneously. This produces a clean, repeatable growth animation.
+2. **Low Split Rate for architectural regularity**: With Split Rate near zero, all eight columns grow uniformly, creating a symmetric colonnade. This clean geometry works well as a compositional grid element.
+3. **High Split Rate for organic chaos**: At maximum split probability, the canopy becomes wildly uneven — some columns saturate at full screen height while others remain stunted. This turbulent growth pattern most closely resembles real coral reef morphology.
+
+---
+
 ## Background
 
 ### Coral Biology and Reef Formation
@@ -61,6 +69,8 @@ The 16-bit maximal-length LFSR (taps at bits 16, 15, 13, 4) provides the randomn
 ---
 
 ## Signal Flow
+
+Register Decode → Timing Generator → LFSR Noise → ... → Sync Delay Pipeline → Bypass Mux
 
 ```
 Video Input (YUV 4:4:4)
@@ -202,8 +212,8 @@ Controls the opacity of the coral overlay relative to the incoming source video,
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Species** | Staghorn | Brain |
-| **8 — Palette** | Reef | Deep |
+| **7 — Species** | Staghorn | Pillar |
+| **8 — Palette** | Reef | Neon |
 | **9 — Current** | Off | On |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -223,6 +233,21 @@ The five toggles configure independent aspects of the coral rendering. Species (
 
 Wet/dry crossfade at the final stage of the pipeline. At maximum (default), the output is the fully processed coral composite. At minimum, the output is the unprocessed input video delayed by the 8-clock pipeline. Intermediate values produce a smooth blend via the three-channel interpolator. Use moderate mix levels to overlay the coral structure as a translucent texture on live video, or pull to minimum for a clean pass-through that preserves the coral growth state for later recall.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Coral processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -233,7 +258,7 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 
 <img src={coral_exercise1_result} alt="Static Reef Foundation result"/>
 *Static Reef Foundation — simulated result across source images.*
-**Objective**: Build a basic coral reef from the bottom of the screen and observe how thickness and spacing control the visual density of the structure.
+**What You'll Create**: Build a basic coral reef from the bottom of the screen and observe how thickness and spacing control the visual density of the structure.
 
 1. Set Growth Speed to about 40% and wait for columns to grow halfway up the screen.
 2. Sweep Branch Thickness from minimum to maximum — watch columns expand from hairlines to fat pillars.
@@ -250,7 +275,7 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 
 <img src={coral_exercise2_result} alt="LFSR-Driven Branching result"/>
 *LFSR-Driven Branching — simulated result across source images.*
-**Objective**: Enable split events and observe how the LFSR creates organic asymmetry in the coral canopy.
+**What You'll Create**: Enable split events and observe how the LFSR creates organic asymmetry in the coral canopy.
 
 1. Toggle Current On then Off to reset all branch heights.
 2. Set Growth Speed to about 30% for slow, visible growth.
@@ -267,7 +292,7 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 
 <img src={coral_exercise3_result} alt="Inverted Stalactite Formation result"/>
 *Inverted Stalactite Formation — simulated result across source images.*
-**Objective**: Create a downward-growing cave formation using reversed direction, cool blue palette, and high-intensity overlay.
+**What You'll Create**: Create a downward-growing cave formation using reversed direction, cool blue palette, and high-intensity overlay.
 
 1. Toggle Species to the third or fourth position (Fan or Pillar) to reverse growth direction.
 2. Switch Palette to the third or fourth position (Blchd or Neon) for cool blue rendering.
@@ -283,9 +308,6 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 
 ## Tips
 
-- **Reset for synchronized starts**: Toggle Current before a performance segment to guarantee all branches begin growing from zero simultaneously. This produces a clean, repeatable growth animation.
-- **Low Split Rate for architectural regularity**: With Split Rate near zero, all eight columns grow uniformly, creating a symmetric colonnade. This clean geometry works well as a compositional grid element.
-- **High Split Rate for organic chaos**: At maximum split probability, the canopy becomes wildly uneven — some columns saturate at full screen height while others remain stunted. This turbulent growth pattern most closely resembles real coral reef morphology.
 - **Thickness and spacing interact**: Wide branches at tight spacing merge into a solid wall; narrow branches at wide spacing create an open lattice. Find the balance point where individual columns are distinct but the overall reef reads as a connected structure.
 - **Gradient at maximum for depth**: Strong color gradient makes the flat column rendering feel three-dimensional. The darkened roots imply distance and underwater light absorption.
 - **Mix for overlay compositing**: Pull Mix to 40–60% to overlay the coral structure transparently onto live video, creating a reef that appears to grow through the video content.
@@ -299,7 +321,6 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 | Term | Definition |
 |------|------------|
 | **Accumulator** | A register that sums an increment on each clock cycle; used here for branch height growth, adding a fixed value per frame until clamped at the screen edge. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Coral uses zero BRAMs — all state is held in distributed register logic. |
 | **Branch column** | One of eight vertical growth fronts, each defined by an X position, a height accumulator, and a computed tip position. |
 | **Depth gradient** | A vertical luminance attenuation that darkens pixels near the branch root, simulating underwater light absorption with increasing depth. |
 | **Hit detection** | The per-pixel comparison that determines whether a pixel falls within any branch's horizontal thickness and vertical extent. |
@@ -308,6 +329,7 @@ These exercises explore Coral's synthesis capabilities from basic reef construct
 | **Scleractinia** | The order of hard corals that build calcium carbonate skeletons, forming the biological reef structures that the program simulates. |
 | **Split event** | A frame-level transfer of growth energy from one branch column to a neighbor, triggered when the LFSR output falls below the Split Rate threshold. |
 | **Tip** | The growing end of a branch column; computed as the screen bottom minus accumulated height (for upward growth) or the accumulated height itself (for downward growth). |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V); the native pixel format of the Videomancer processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

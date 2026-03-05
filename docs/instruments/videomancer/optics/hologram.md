@@ -68,6 +68,14 @@ At subtle settings — narrow spread, moderate brightness — Hologram adds a ge
 
 ---
 
+## Quick Start
+
+1. **Pot 6 is the real mix control**: Despite its TOML label "Diffract," Pot 6 controls the wet/dry crossfade in the VHDL. Set it to 0% for a clean bypass, or use intermediate values for transparent rainbow overlays. The TOML Fader 12 (Mix) has no effect.
+2. **Only three toggles work**: Switches 7, 8, and 9 are functional. Switch 10 and 11 are not mapped in the VHDL. Switch 7 is H/V orientation (not a color palette), and Switch 8 is additive/replace (not a line direction selector).
+3. **Spread controls saturation intensity**: This is the key "how much rainbow" control. Use low spread values for subtle holographic tints that preserve the source character; use maximum for saturated spectral dominance.
+
+---
+
 ## Background
 
 ### What Is Holographic Diffraction?
@@ -90,6 +98,8 @@ The program offers two modes for applying the computed UV deltas to the source v
 ---
 
 ## Signal Flow
+
+Y Channel → U/V Channels → Phase Engine → Interpolator Stage → Sync Signals → Output
 
 ```
 Input Video (YUV 4:4:4)
@@ -204,8 +214,8 @@ Labeled "Diffract" in the TOML, but in the VHDL this register (`registers_in(5)`
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Type** | Rainbow | Silver |
-| **8 — Lines** | Horiz | Vert |
+| **7 — Type** | Rainbow | Green |
+| **8 — Lines** | Horiz | Radial |
 | **9 — Motion** | Off | Scan |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -224,6 +234,10 @@ Only three of the five toggle bits are read from `registers_in(6)` in the VHDL. 
 | Suffix | % |
 
 Labeled "Mix" in the TOML, but `registers_in(7)` is not read by the VHDL. This fader has no effect on the output. The actual wet/dry mix is controlled by Pot 6 (mapped to `s_mix_amount` in the VHDL). Adjusting this fader produces no visible change.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -246,7 +260,7 @@ These exercises explore the rainbow holographic effect from simple band generati
 *Rainbow Bands — simulated result across source images.*
 **Source**: A camera feed or recorded footage with recognizable subjects and moderate color content.
 
-**Objective**: Understand how line spacing, spread, and hue offset create the basic holographic band pattern.
+**What You'll Create**: Understand how line spacing, spread, and hue offset create the basic holographic band pattern.
 
 1. **Set up the effect**: Turn Pot 6 (Diffract/mix) to maximum to see the full holographic processing. Set Spread to about 75%.
 2. **Wide bands**: Set Line Spacing high (~80%). The frame shows broad, slowly varying color regions that shift gradually from warm to cool and back.
@@ -274,7 +288,7 @@ These exercises explore the rainbow holographic effect from simple band generati
 *Animation and Orientation — simulated result across source images.*
 **Source**: Static or slow-moving footage so the scrolling rainbow effect is clearly visible.
 
-**Objective**: Explore the animation system and horizontal/vertical band orientation.
+**What You'll Create**: Explore the animation system and horizontal/vertical band orientation.
 
 1. **Enable animation**: Activate the Motion toggle (Switch 9). Set Scan Dir (Knob 5) to about 40%. The rainbow bands begin scrolling vertically across the frame.
 2. **Speed control**: Sweep Scan Dir from minimum to maximum. At zero the pattern is frozen even with Motion on. At maximum the rainbow races.
@@ -301,7 +315,7 @@ These exercises explore the rainbow holographic effect from simple band generati
 *Holographic Composition — simulated result across source images.*
 **Source**: A video source with strong visual structure — high contrast, recognizable geometry.
 
-**Objective**: Combine all functional controls for a full holographic composition, understanding the mix and composition interactions.
+**What You'll Create**: Combine all functional controls for a full holographic composition, understanding the mix and composition interactions.
 
 1. **Full rainbow**: Spread at maximum, Line Spacing at about 50%, Hue Offset at default, Bright at about 60%.
 2. **Animated scroll**: Motion on, Scan Dir at about 30% for a gentle scroll.
@@ -317,9 +331,6 @@ These exercises explore the rainbow holographic effect from simple band generati
 
 ## Tips
 
-- **Pot 6 is the real mix control**: Despite its TOML label "Diffract," Pot 6 controls the wet/dry crossfade in the VHDL. Set it to 0% for a clean bypass, or use intermediate values for transparent rainbow overlays. The TOML Fader 12 (Mix) has no effect.
-- **Only three toggles work**: Switches 7, 8, and 9 are functional. Switch 10 and 11 are not mapped in the VHDL. Switch 7 is H/V orientation (not a color palette), and Switch 8 is additive/replace (not a line direction selector).
-- **Spread controls saturation intensity**: This is the key "how much rainbow" control. Use low spread values for subtle holographic tints that preserve the source character; use maximum for saturated spectral dominance.
 - **Hue Offset for color positioning**: Sweeping Knob 3 rotates the entire rainbow through all hues without changing the spatial pattern. Use this to place a specific color at a desired screen position.
 - **Replace mode for strongest effect**: Toggle 8 in replace mode discards the source chrominance entirely, creating pure rainbow bands over the source luminance. This produces the most convincing holographic foil appearance.
 - **Brightness shimmer follows hue**: The luma modulation is derived from the U delta, not computed independently. This means the brightness pattern is always coupled to the chrominance pattern — you cannot have shimmer without color shift.
@@ -334,14 +345,12 @@ These exercises explore the rainbow holographic effect from simple band generati
 | **Additive Mode** | Chrominance composition where the rainbow UV deltas are added to the source video's existing U and V values, tinting the original colors. |
 | **Diamond Approximation** | A piecewise-linear path through UV color space that approximates circular hue rotation using four linear ramp segments, one per quadrant. |
 | **Diffraction Grating** | A periodic structure that separates white light into spectral components; the physical phenomenon that holographic foils exploit for rainbow reflections. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
-| **Interpolator** | A linear crossfade module that blends between two input signals based on a mix parameter. |
 | **LUT** | Look-Up Table; a basic logic element in FPGA fabric used to implement combinational functions. |
 | **Phase Accumulator** | A register that increments by a fixed amount each frame, producing a sawtooth ramp that wraps at 16-bit overflow to drive cyclic animation. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Quadrant** | One of four 90-degree sectors of the UV color plane, each with a distinct sign combination for the U and V linear ramps. |
 | **Replace Mode** | Chrominance composition where the source U and V are discarded and replaced with the rainbow pattern centered on neutral (512, 512). |
 | **Spread** | The magnitude of UV deviation from neutral, controlling how saturated the rainbow bands appear. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

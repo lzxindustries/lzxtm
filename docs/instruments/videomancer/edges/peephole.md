@@ -68,6 +68,14 @@ At wide-open settings, Peephole passes the full frame. As you narrow the thresho
 
 ---
 
+## Quick Start
+
+1. **Four-corner framing**: The four thresholds are independent — each edge can be placed anywhere. This allows off-center windows, narrow slits, and L-shaped masks (when combined with key inversion).
+2. **Gain controls edge hardness**: Low gain produces soft vignettes; high gain produces sharp-edged masks. Unity gain (100%) gives a linear ramp from boundary to center.
+3. **Diamond for organic shapes**: Diamond mode adds the horizontal and vertical keys, producing rounded corners that feel more organic than the axis-aligned rectangle. Combined with luma modulation, diamond keys produce flowing, content-responsive boundaries.
+
+---
+
 ## Background
 
 ### Position-Based Keying
@@ -96,6 +104,8 @@ Border extraction is a separate feature that computes the horizontal gradient of
 ---
 
 ## Signal Flow
+
+Position Ramps → Key Generation → Video Delay Pipeline → Output Mix → Bypass → Sync
 
 ```
 Input Video (YUV 4:4:4)
@@ -161,7 +171,7 @@ The output mix scales luma directly (zero key = black) but applies chroma relati
 | Default | 100.1% |
 | Suffix | % |
 
-Sets the vertical position of the top key boundary. At 0%, the top edge cuts into the frame from above. At 200%, the boundary moves below the visible area, opening the top fully. As you increase this control, the visible region expands downward from the top edge. The interaction with Bot Thresh defines the vertical span of the key window — when top exceeds bottom, the vertical key collapses to zero.
+At 0%, the top edge cuts into the frame from above. At 200%, the boundary moves below the visible area, opening the top fully. As you increase this control, the visible region expands downward from the top edge. The interaction with Bot Thresh defines the vertical span of the key window — when top exceeds bottom, the vertical key collapses to zero. Internally, sets the vertical position of the top key boundary.
 
 ---
 
@@ -172,7 +182,7 @@ Sets the vertical position of the top key boundary. At 0%, the top edge cuts int
 | Default | 100.1% |
 | Suffix | % |
 
-Sets the horizontal position of the left key boundary. At 0%, the left edge sits at the frame boundary. As you increase the value, the boundary moves rightward into the frame, cutting off the left side. Combined with Right Thresh, this defines the horizontal span of the key window. The edge softness is inherent — pixels near the boundary have small key values that ramp up with distance.
+At 0%, the left edge sits at the frame boundary. As you increase the value, the boundary moves rightward into the frame, cutting off the left side. Combined with Right Thresh, this defines the horizontal span of the key window. The edge softness is inherent — pixels near the boundary have small key values that ramp up with distance. Internally, sets the horizontal position of the left key boundary.
 
 ---
 
@@ -247,6 +257,21 @@ Note: This program uses an unpacked toggle ABI — each toggle switch occupies i
 
 Master key level controlling the overall strength of the key effect. At 100% (initial value), the full computed key passes through. As you lower the fader, progressively more of the key is subtracted via an inverted threshold: the effective threshold is 1023 minus the fader value. At 0%, the effective threshold equals 1023 and virtually nothing survives. This provides a smooth global fade of the keying effect without affecting the geometric shape.
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Peephole processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -268,7 +293,7 @@ These exercises progress from simple rectangular masking to content-responsive k
 *Rectangular Window Framing — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects.
 
-**Objective**: Learn how the four edge thresholds define the key window and how gain controls edge softness.
+**What You'll Create**: Learn how the four edge thresholds define the key window and how gain controls edge softness.
 
 1. **Open window**: Start with all thresholds at default (Top and Left at 100%, Bot and Right at 0%). The key window should span the full frame.
 2. **Narrow horizontally**: Increase Left Thresh and decrease Right Thresh. Watch the visible region shrink from both sides.
@@ -296,7 +321,7 @@ These exercises progress from simple rectangular masking to content-responsive k
 *Diamond Keys and Luma Modulation — simulated result across source images.*
 **Source**: Footage with strong brightness contrast — spotlit subjects against dark backgrounds.
 
-**Objective**: Explore diamond shape mode and how luma modulation deforms the key boundary.
+**What You'll Create**: Explore diamond shape mode and how luma modulation deforms the key boundary.
 
 1. **Set up window**: Create a centered rectangular window (Top ~60%, Left ~60%, Bot ~40%, Right ~40%).
 2. **Switch to Diamond**: Toggle Key Shape to Diamond. The rectangle's corners cut away, forming a rhombus.
@@ -324,7 +349,7 @@ These exercises progress from simple rectangular masking to content-responsive k
 *Border Extraction and Key Sculpting — simulated result across source images.*
 **Source**: Any footage — high-contrast material works well for visible borders.
 
-**Objective**: Combine border extraction, key inversion, and global threshold for abstract edge effects.
+**What You'll Create**: Combine border extraction, key inversion, and global threshold for abstract edge effects.
 
 1. **Set up a key window**: Create a moderately sized centered window with medium gain.
 2. **Enable Key Border**: Toggle Key Border on. The filled rectangle becomes two luminous vertical lines at the left and right boundaries.
@@ -341,9 +366,6 @@ These exercises progress from simple rectangular masking to content-responsive k
 
 ## Tips
 
-- **Four-corner framing**: The four thresholds are independent — each edge can be placed anywhere. This allows off-center windows, narrow slits, and L-shaped masks (when combined with key inversion).
-- **Gain controls edge hardness**: Low gain produces soft vignettes; high gain produces sharp-edged masks. Unity gain (100%) gives a linear ramp from boundary to center.
-- **Diamond for organic shapes**: Diamond mode adds the horizontal and vertical keys, producing rounded corners that feel more organic than the axis-aligned rectangle. Combined with luma modulation, diamond keys produce flowing, content-responsive boundaries.
 - **Luma mod is bipolar**: The modulation is centered at 512. Clockwise modulates one way, counter-clockwise the other. Luma Invert flips which brightness values drive the modulation, not the depth.
 - **Border extraction is horizontal only**: The border mode computes horizontal differences, so it traces vertical edges of the key window. Horizontal edges (top/bottom boundaries) are not extracted — use this asymmetry creatively.
 - **Global Thresh as fade control**: Use the fader to smoothly bring the key effect in and out during performance without changing the window geometry.
@@ -362,13 +384,12 @@ These exercises progress from simple rectangular masking to content-responsive k
 | **Clamp** | Constraining a value to remain within a fixed range, preventing overflow or underflow. |
 | **Diamond Key** | A key shape formed by summing horizontal and vertical edge distances, producing a rhombus boundary following Manhattan distance. |
 | **Edge Threshold** | A position value defining one side of the key window boundary; pixels beyond the threshold contribute zero key. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Key** | A control signal (0–1023) that determines the opacity of each pixel; 0 = fully transparent (black), 1023 = fully opaque. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **Manhattan Distance** | The sum of horizontal and vertical distances, producing diamond-shaped iso-distance contours. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Position Ramp** | A linearly increasing signal that sweeps from 0 to 1023 across the horizontal or vertical extent of the frame. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

@@ -68,6 +68,14 @@ At conservative settings with a single tile and solid fill, Harlequin produces a
 
 ---
 
+## Quick Start
+
+1. **Dual-purpose fader**: The Mix fader simultaneously controls wet/dry balance and ring thickness. If you want wide rings at partial mix, there is no way to decouple these — plan compositions with this constraint in mind.
+2. **Upper/lower split**: The luminance analysis divides the frame at scanline 360 (mid-screen). If your source has uniform brightness across both halves, the outer and inner diamonds will be the same size. Use sources with contrast between top and bottom for the most dynamic response.
+3. **Contour is temporal smoothing**: The Contour knob does not sharpen diamond edges spatially — it controls how quickly the IIR filter tracks brightness changes over time. Low = percussive, high = slow breathing.
+
+---
+
 ## Background
 
 ### What Is Manhattan Distance?
@@ -94,6 +102,8 @@ The original Atari Video Music had push buttons to select different display mode
 ---
 
 ## Signal Flow
+
+Luminance Analysis → Diamond Rendering → Auto Cycle → Mix Stage → Sync Signals → Bypass
 
 ```
 Input Video (YUV 4:4:4)
@@ -142,7 +152,7 @@ Two signal paths feed into the diamond rendering. First, the **IIR luminance ana
 | Default | 62.6% |
 | Suffix | % |
 
-Controls the gain applied to the upper-half IIR average before it becomes the outer diamond's radius. At low values the outer diamond stays small even when the upper portion of the source video is bright. At high values the outer diamond responds aggressively to luminance changes, filling a large portion of each tile when the upper half of the image is bright. This control and Inner Gain (Knob 2) together determine the balance between the two nested diamond fields.
+At low values the outer diamond stays small even when the upper portion of the source video is bright. At high values the outer diamond responds aggressively to luminance changes, filling a large portion of each tile when the upper half of the image is bright. This control and Inner Gain (Knob 2) together determine the balance between the two nested diamond fields. Internally, controls the gain applied to the upper-half IIR average before it becomes the outer diamond's radius.
 
 ---
 
@@ -164,7 +174,7 @@ Controls the gain applied to the lower-half IIR average, which drives the inner 
 | Default | 25.0% |
 | Suffix | % |
 
-Sets the increment of the DDS phase accumulator that drives hue cycling. At zero the hue is frozen at whatever phase the accumulator has reached. As the value increases the diamond color cycles through the full spectrum faster, producing a rainbow sweep effect. The hue generation is computed from a quarter-wave sine lookup table — 256 entries covering one quadrant, mirrored and negated to cover the full 360 degrees — which is indexed by the upper bits of the 32-bit phase accumulator.
+At zero the hue is frozen at whatever phase the accumulator has reached. As the value increases the diamond color cycles through the full spectrum faster, producing a rainbow sweep effect. The hue generation is computed from a quarter-wave sine lookup table — 256 entries covering one quadrant, mirrored and negated to cover the full 360 degrees — which is indexed by the upper bits of the 32-bit phase accumulator. Internally, sets the increment of the DDS phase accumulator that drives hue cycling.
 
 ---
 
@@ -224,6 +234,21 @@ Switches 7–10 control four independent aspects of the diamond rendering. Switc
 
 This control serves a dual purpose in the VHDL implementation. As the wet/dry mix parameter, it crossfades between the original input video and the diamond-rendered output via three interpolator instances (Y, U, V). Simultaneously, the same register value is used to compute the ring thickness in Ring mode — the upper bits of the fader value set the pixel-width of the diamond outline. Pulling the fader down therefore narrows the ring *and* fades toward the dry signal. At maximum the diamond output is at full strength and rings are at their widest; at minimum the output approaches the original video and rings are at their thinnest (clamped to a minimum of 2 pixels).
 
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Harlequin processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -245,7 +270,7 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 *Single Breathing Diamond — simulated result across source images.*
 **Source**: A camera feed or recorded footage with distinct bright and dark regions — faces against dark backgrounds or sky/ground compositions work well.
 
-**Objective**: Learn how the IIR luminance analysis drives diamond size and how Outer Gain and Contour interact.
+**What You'll Create**: Learn how the IIR luminance analysis drives diamond size and how Outer Gain and Contour interact.
 
 1. **Single diamond**: Confirm H Tiles and V Tiles are at their minimum position (1 tile each). A single large diamond should appear centered on screen.
 2. **Outer Gain sweep**: Slowly increase Outer Gain from zero. Watch the diamond grow as the video's upper-half brightness is amplified. With a bright source the diamond can fill most of the screen.
@@ -272,7 +297,7 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 *Hole and Ring Modes — simulated result across source images.*
 **Source**: Footage with a strong brightness gradient between the upper and lower halves of the frame — a horizon line, or a subject lit from above.
 
-**Objective**: Explore the three shape modes and see how Inner Gain creates the hole cutout.
+**What You'll Create**: Explore the three shape modes and see how Inner Gain creates the hole cutout.
 
 1. **Prepare**: Set H Tiles to 1, V Tiles to 1, Outer Gain ~60%, Inner Gain ~40%, Color Speed ~20%.
 2. **Solid mode**: With Shape set to Solid and Ring set to Fill, observe the single filled diamond.
@@ -300,7 +325,7 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 *Full Atari Video Music Recreation — simulated result across source images.*
 **Source**: Any active video footage — music videos, live camera feeds, or high-contrast abstract footage.
 
-**Objective**: Combine maximum tiling, fast hue cycling, and auto cycle to recreate the Atari Video Music experience.
+**What You'll Create**: Combine maximum tiling, fast hue cycling, and auto cycle to recreate the Atari Video Music experience.
 
 1. **Maximum tiling**: Set H Tiles to the highest step (5) and V Tiles to the highest step (8). The screen fills with a 5×8 grid of 40 small diamonds.
 2. **Fast color cycling**: Turn Color Speed to ~80%. The diamonds cycle rapidly through the hue spectrum.
@@ -316,9 +341,6 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 ## Tips
 
-- **Dual-purpose fader**: The Mix fader simultaneously controls wet/dry balance and ring thickness. If you want wide rings at partial mix, there is no way to decouple these — plan compositions with this constraint in mind.
-- **Upper/lower split**: The luminance analysis divides the frame at scanline 360 (mid-screen). If your source has uniform brightness across both halves, the outer and inner diamonds will be the same size. Use sources with contrast between top and bottom for the most dynamic response.
-- **Contour is temporal smoothing**: The Contour knob does not sharpen diamond edges spatially — it controls how quickly the IIR filter tracks brightness changes over time. Low = percussive, high = slow breathing.
 - **Auto Cycle is deterministic**: The LFSR sequence repeats exactly from the same seed every power cycle. If you need a specific shape mode at a specific time, Auto Cycle is predictable — but the cycle is long enough that it appears random in practice.
 - **Tile counts are not powers of two**: The horizontal presets include 3 and 5, which evenly divide the 1280-pixel width. This is faithful to the original Atari Video Music, which offered non-power-of-two tile options.
 - **Feedback loops**: Routing Harlequin's output back to its input creates a recursive feedback loop where the diamond shapes respond to their own brightness — producing self-reinforcing or oscillating diamond fields.
@@ -331,16 +353,14 @@ These exercises progress from a single static diamond to a full tiled, color-cyc
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA fabric. Harlequin uses 0 BRAMs — all state fits in LUT-based registers. |
 | **DDS** | Direct Digital Synthesis; a technique for generating a periodic waveform by incrementing a phase accumulator and using it to index a lookup table. |
-| **FPGA** | Field-Programmable Gate Array; the reconfigurable chip that executes the video processing pipeline. |
 | **IIR** | Infinite Impulse Response; a filter whose output depends on both the current input and the filter's own previous output, creating exponential smoothing. |
 | **LFSR** | Linear-Feedback Shift Register; a pseudo-random number generator using a shift register with XOR-combined feedback taps. |
 | **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
 | **LUT** | Lookup Table; (1) in DSP context, a precomputed table of function values indexed by input; (2) in FPGA context, the basic logic element. |
 | **Manhattan distance** | The sum of absolute horizontal and vertical displacements between two points; produces diamond-shaped equidistant contours. |
-| **Pipeline** | A series of sequential processing stages where each stage completes in one clock cycle, passing results to the next stage. |
 | **Quarter-wave sine** | A lookup table storing only 0°–90° of a sine wave; the remaining quadrants are reconstructed by mirroring and negation. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

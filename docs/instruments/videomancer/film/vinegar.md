@@ -60,6 +60,14 @@ The name *Vinegar* is a direct reference to vinegar syndrome, the archival commu
 
 ---
 
+## Quick Start
+
+1. **Start subtle**: The most convincing film aging uses low values — 15% Instability, 25% Decay, 20% Grain. Heavy settings read as "damaged print" rather than "old film."
+2. **Warm for Eastmancolor**: Choose Warm fade to recreate the iconic pink shift of 1960s–1980s theatrical prints. Cold is for archival simulation of cold-stored prints with yellow dye loss.
+3. **Dark blobs for mold**: Set Blob Mode to Dark for the organic staining look of mold and water damage. Bright blobs simulate projector burn marks and chemical bleaching.
+
+---
+
 ## Background
 
 ### Vinegar Syndrome and Cellulose Acetate
@@ -86,6 +94,8 @@ When film breaks during projection — or when multiple reels are assembled into
 ---
 
 ## Signal Flow
+
+Line Buffer Write → Gate Weave Read → Dye Fade → ... → Desaturate → Wet/Dry Mix
 
 ```
 Input Video (YUV 4:4:4)
@@ -155,7 +165,7 @@ Controls the probability and intensity of damage blobs — circular or organic r
 | Default | 50% |
 | Suffix | % |
 
-Controls the spatial frequency and extent of damage blobs. At low values blobs are small and sparse; at high values they grow larger, covering more of the frame. This parameter works in conjunction with the Damage control — Damage sets the threshold for blob activation, while Blob Size influences the spatial scale of the blob field (via the damage register's division applied to the blob threshold).
+At low values blobs are small and sparse; at high values they grow larger, covering more of the frame. This parameter works in conjunction with the Damage control — Damage sets the threshold for blob activation, while Blob Size influences the spatial scale of the blob field (via the damage register's division applied to the blob threshold). Internally, controls the spatial frequency and extent of damage blobs.
 
 ---
 
@@ -177,7 +187,7 @@ Adds per-pixel luma noise simulating photographic film grain. The noise source i
 | Default | 0% |
 | Suffix | % |
 
-Controls the frequency of splice flash events — periodic full-frame brightness bursts simulating the clear or fogged leader between spliced film reels. At zero, no flashes occur. As the value increases, flashes become more frequent. Each flash lasts 1–2 frames and adds a large brightness offset to the entire frame, simulating the sudden white flash of a splice passing through the projector gate.
+At zero, no flashes occur. As the value increases, flashes become more frequent. Each flash lasts 1–2 frames and adds a large brightness offset to the entire frame, simulating the sudden white flash of a splice passing through the projector gate. Internally, controls the frequency of splice flash events — periodic full-frame brightness bursts simulating the clear or fogged leader between spliced film reels.
 
 ---
 
@@ -206,6 +216,10 @@ The five toggles configure the character of the deterioration rather than enabli
 
 Crossfades between the original dry signal and the fully deteriorated wet signal. At 0% the output is the unmodified input; at 100% the full film deterioration processing is applied. This allows precise control over the apparent age of the simulated film stock.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -227,7 +241,7 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 *Gentle Aging — simulated result across source images.*
 **Source**: Well-exposed footage with natural colour — portraits, landscapes, or documentary material.
 
-**Objective**: Add a subtle aged-film patina with gentle gate weave, mild dye fading, and light grain.
+**What You'll Create**: Add a subtle aged-film patina with gentle gate weave, mild dye fading, and light grain.
 
 1. Set Instability to about 15% for barely perceptible horizontal wobble.
 2. Set Decay to about 25% with Fade Curve on Warm. Observe the slight pink/warm colour shift.
@@ -256,7 +270,7 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 *Damaged Print — simulated result across source images.*
 **Source**: Any footage — the damage effects are content-independent.
 
-**Objective**: Add physical damage artifacts: blobs, flicker, splice flashes, and sprocket slip.
+**What You'll Create**: Add physical damage artifacts: blobs, flicker, splice flashes, and sprocket slip.
 
 1. Start from Exercise 1 settings (Instability ~15%, Decay ~25%, Grain ~20%).
 2. Set Damage to about 20% and Blob Size to about 40%. Watch organic blob shapes appear.
@@ -274,7 +288,7 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 **Source**: Any footage — heavy processing creates abstract results regardless of source.
 
-**Objective**: Simulate film in the final stages of vinegar syndrome — extreme colour shift, heavy grain, frequent damage, and instability.
+**What You'll Create**: Simulate film in the final stages of vinegar syndrome — extreme colour shift, heavy grain, frequent damage, and instability.
 
 1. Set Instability to about 70% for heavy gate weave.
 2. Set Decay to about 80% with Warm fade. Observe extreme pink/magenta colour shift.
@@ -293,9 +307,6 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 
 ## Tips
 
-- **Start subtle**: The most convincing film aging uses low values — 15% Instability, 25% Decay, 20% Grain. Heavy settings read as "damaged print" rather than "old film."
-- **Warm for Eastmancolor**: Choose Warm fade to recreate the iconic pink shift of 1960s–1980s theatrical prints. Cold is for archival simulation of cold-stored prints with yellow dye loss.
-- **Dark blobs for mold**: Set Blob Mode to Dark for the organic staining look of mold and water damage. Bright blobs simulate projector burn marks and chemical bleaching.
 - **Layer grain and flicker**: Grain (per-pixel) and Flicker (per-frame) are independent noise sources. Using both creates a more organic look than either alone.
 - **Splice Rate for rhythm**: Even at low settings, occasional splice flashes create a rhythmic punctuation that signals "projected film" to the viewer.
 - **Sprocket for subtlety**: Enable Sprocket for occasional vertical jumps that most viewers won't consciously notice but that contribute to the overall feeling of mechanical instability.
@@ -309,17 +320,16 @@ These exercises progress from subtle aging to severe deterioration. Each builds 
 | Term | Definition |
 |------|------------|
 | **Autocatalytic** | A chemical reaction that accelerates its own rate; in vinegar syndrome the acetic acid released by degradation accelerates further decomposition. |
-| **BRAM** | Block RAM; dedicated FPGA memory. Vinegar uses 3 BRAMs for Y/U/V line buffers enabling gate weave. |
 | **Cellulose Acetate** | The plastic base material of motion picture film manufactured from the 1950s onward; susceptible to vinegar syndrome. |
 | **Cyan Dye** | The dye layer in colour film that controls the red channel; the least stable dye in Eastmancolor stocks. |
 | **Eastmancolor** | Kodak's monopack colour film process used for most theatrical motion pictures from 1952 onward. |
 | **Gate Weave** | Horizontal displacement of the film image caused by mechanical play in the projector gate mechanism. |
 | **IIR Filter** | Infinite Impulse Response filter; a digital filter whose output depends on both current input and previous output, used here to smooth LFSR noise into organic wobble. |
 | **LFSR** | Linear Feedback Shift Register; generates maximal-length pseudo-random sequences. Vinegar uses three independent LFSRs. |
-| **Pipeline** | Sequential processing stages; Vinegar has an 11-clock pipeline plus 5-clock interpolator mix. |
 | **Splice** | A physical join between two pieces of film, visible as a bright flash or frame disruption during projection. |
 | **Sprocket** | Tooth on a projector mechanism that engages with holes along the film edge to advance it; worn sprockets cause position errors. |
 | **Vinegar Syndrome** | The chemical decomposition of cellulose acetate film base through acid hydrolysis, causing warping, shrinkage, and dye fading. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

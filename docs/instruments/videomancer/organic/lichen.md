@@ -35,6 +35,14 @@ At low growth rates and small spreads, Lichen produces compact, slowly evolving 
 
 ---
 
+## Quick Start
+
+1. **Reset is your friend**: When patches grow stale or the composition feels crowded, toggling the Reset switch (labelled "Merge") restarts all patches from new random positions instantly.
+2. **Start slow**: Growth Rate at 10–20% lets you watch the boundary evolve pixel by pixel — essential for understanding how edge noise interacts with the expanding radius.
+3. **Boundary width shapes the texture**: A narrow boundary width produces crisp, well-defined patch edges. A wide boundary produces diffuse, moss-like transitions. The visual difference is dramatic.
+
+---
+
 ## Background
 
 ### What Is Manhattan Distance?
@@ -61,6 +69,8 @@ The tinting stage shifts the U and V chroma channels toward a target colour — 
 ---
 
 ## Signal Flow
+
+Input Register → Manhattan Distance → Edge Noise → Colour Tinting
 
 ```
 Video Timing Generator
@@ -176,8 +186,8 @@ Despite its TOML label "Texture," this register is mapped to `s_mix_pot` in the 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Species** | Crust | Foliose |
-| **8 — Surface** | Rock | Bark |
+| **7 — Species** | Crust | Map |
+| **8 — Surface** | Rock | Glass |
 | **9 — Merge** | Border | Blend |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -197,6 +207,10 @@ Toggles 7 and 8 each use only the lowest bit of their respective 10-bit register
 
 Master wet/dry crossfade. At 0%, the output is entirely the delayed dry input (typically black for a synthesis program). At 100%, the output is the fully synthesized lichen texture. Intermediate values blend the two, allowing the lichen patches to be subtly composited atop any incoming video signal. The interpolation is linear across all three YUV channels simultaneously.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -207,7 +221,7 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 <img src={lichen_exercise1_result} alt="First Colonies result"/>
 *First Colonies — simulated result across source images.*
-**Objective**: Observe basic patch growth, understand growth rate and spread limits.
+**What You'll Create**: Observe basic patch growth, understand growth rate and spread limits.
 
 1. Set Growth Rate (Knob 1) to about 30% for slow, observable expansion.
 2. Set Spread (Knob 2) to about 40% so patches stop at a moderate size.
@@ -225,7 +239,7 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 <img src={lichen_exercise2_result} alt="Organic Boundaries result"/>
 *Organic Boundaries — simulated result across source images.*
-**Objective**: Use LFSR noise to break diamond patches into organic, lichen-like shapes.
+**What You'll Create**: Use LFSR noise to break diamond patches into organic, lichen-like shapes.
 
 1. Start with the Exercise 1 settings, but set Growth Rate to ~20% for slow observation.
 2. Slowly increase Edge Irregularity (Knob 3) from 0% to 100%. Watch the clean diamond edges dissolve into ragged, crusty contours.
@@ -242,7 +256,7 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 <img src={lichen_exercise3_result} alt="Overlapping Colonies result"/>
 *Overlapping Colonies — simulated result across source images.*
-**Objective**: Explore tinting, overlap darkening, and colour modes with maximum patch count.
+**What You'll Create**: Explore tinting, overlap darkening, and colour modes with maximum patch count.
 
 1. Enable all 4 patches (Switch 7 on).
 2. Set Spread (Knob 2) to ~80% so patches grow large enough to overlap.
@@ -260,9 +274,6 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 ## Tips
 
-- **Reset is your friend**: When patches grow stale or the composition feels crowded, toggling the Reset switch (labelled "Merge") restarts all patches from new random positions instantly.
-- **Start slow**: Growth Rate at 10–20% lets you watch the boundary evolve pixel by pixel — essential for understanding how edge noise interacts with the expanding radius.
-- **Boundary width shapes the texture**: A narrow boundary width produces crisp, well-defined patch edges. A wide boundary produces diffuse, moss-like transitions. The visual difference is dramatic.
 - **Overlap creates depth**: With 4 patches and high spread, the darkened overlap regions create a sense of layered density. Adjust Tint Strength to control how extreme the darkening is.
 - **Green vs amber**: The two colour modes are not simply palette swaps — they target different U/V coordinates, producing distinct colour relationships against various backgrounds.
 - **Mix for compositing**: Because Lichen is a synthesis source, the Mix fader controls how much of the generated texture appears in the final output. At partial mix values, lichen patches float over whatever video is passing through the input.
@@ -274,15 +285,13 @@ These exercises explore Lichen as a slowly evolving synthesis source, progressin
 
 | Term | Definition |
 |------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks within the FPGA. Lichen uses zero BRAM. |
 | **Chroma** | The colour component of a video signal, encoded as U (Cb) and V (Cr) in YUV colour space. |
 | **DDS** | Direct Digital Synthesis; a technique for generating periodic waveforms from a phase accumulator. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit executing the video processing pipeline. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing a pseudo-random bit sequence. |
 | **Luma** | The brightness component (Y) of a YUV video signal. |
 | **Manhattan Distance** | The sum of horizontal and vertical distances between two points, $|x_1-x_2|+|y_1-y_2|$, producing diamond-shaped contours. |
-| **Pipeline** | A series of sequential processing stages, each operating in one clock cycle. |
 | **Synthesis** | Generation of video imagery from internal state and parameters, without requiring an input video source. |
-| **YUV** | A colour encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

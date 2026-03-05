@@ -68,6 +68,14 @@ At full fringe strength with HAM6 and the lowest resolution setting, the output 
 
 ---
 
+## Quick Start
+
+1. **Palette choice shapes fringe pattern**: Choose a palette whose colors are well-distributed relative to your source material. A palette with colors close to the source produces more SET operations and fewer fringes; a distant palette forces more MODIFY operations and wider fringes.
+2. **Resolution amplifies fringe width**: Lower resolution means fewer pixels per scanline for the HAM encoder to work with, so color transitions take proportionally more of the visible image. 80px mode turns fringes into broad color bands.
+3. **HAM6 for drama, HAM8 for subtlety**: HAM6's 4-bit precision produces the characteristic 1987 Amiga look with bold, visible fringes. HAM8's 6-bit precision is cleaner — visually interesting but less immediately recognizable as HAM.
+
+---
+
 ## Background
 
 ### The Amiga's Color Problem
@@ -96,6 +104,8 @@ Before the HAM encoder quantizes each pixel to 4-bit or 6-bit precision, an opti
 ---
 
 ## Signal Flow
+
+YUV → RGB Conversion → Resolution → HAM Encode → RGB → YUV Back-Conversion → Genlock Key → Output Register
 
 ```
 Input Video (YUV 4:4:4 30-bit)
@@ -174,7 +184,7 @@ Selects one of four 16-color base palettes used for SET operations in the HAM en
 | Default | 75% |
 | Suffix | % |
 
-Controls the intensity of the HAM encoding constraint — how strongly the characteristic color fringing is applied. At 0%, the encoder bypasses the hold-and-modify logic and performs direct palette quantization only, producing a clean but limited-palette image. As fringe strength increases, the HAM constraint becomes more active, and the encoder increasingly relies on MODIFY operations that change only one channel at a time. At 100%, the full HAM encoding algorithm runs with maximum fidelity to the original Amiga behavior, including maximum-width color fringes at every sharp color transition.
+At 0%, the encoder bypasses the hold-and-modify logic and performs direct palette quantization only, producing a clean but limited-palette image. As fringe strength increases, the HAM constraint becomes more active, and the encoder increasingly relies on MODIFY operations that change only one channel at a time. At 100%, the full HAM encoding algorithm runs with maximum fidelity to the original Amiga behavior, including maximum-width color fringes at every sharp color transition. Internally, controls the intensity of the HAM encoding constraint — how strongly the characteristic color fringing is applied.
 
 ---
 
@@ -217,7 +227,7 @@ Controls the saturation of all 16 colors in the active base palette. At 50%, the
 | Default | 2bit |
 | Suffix | bit |
 
-Controls the luminance quantization depth applied to the Y channel of the output. At minimum, luminance is quantized to 2-bit precision (4 levels), creating dramatic posterization of brightness values. At maximum, luminance is quantized to 6-bit precision (64 levels), which produces smooth tonal gradation nearly indistinguishable from the full 10-bit range. This parameter compounds with the HAM encoder's inherent color quantization to create a layered retro aesthetic — coarse luma quantization plus HAM fringing replicates the look of heavily dithered Amiga screenshots.
+At minimum, luminance is quantized to 2-bit precision (4 levels), creating dramatic posterization of brightness values. At maximum, luminance is quantized to 6-bit precision (64 levels), which produces smooth tonal gradation nearly indistinguishable from the full 10-bit range. This parameter compounds with the HAM encoder's inherent color quantization to create a layered retro aesthetic — coarse luma quantization plus HAM fringing replicates the look of heavily dithered Amiga screenshots. Internally, controls the luminance quantization depth applied to the Y channel of the output.
 
 ---
 
@@ -246,6 +256,10 @@ Switches 7–11 control five independent display options. HAM Mode sets the colo
 
 Wet/dry crossfade between the original input video and the HAM-processed output. At 0%, the output is the unmodified input signal — functionally equivalent to bypass. At 100%, the output is fully HAM-encoded. Intermediate values blend the HAM fringing and palette quantization with the clean original, creating a partial retro overlay effect. Because Calico has no dedicated Bypass toggle, this fader is the primary mechanism for A/B comparison.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -267,7 +281,7 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 *Palette Character — simulated result across source images.*
 **Source**: A live camera feed or recorded footage with recognizable subjects and varied colors — faces, clothing, backgrounds.
 
-**Objective**: Explore how the four base palettes change the balance between SET and MODIFY operations, reshaping the fringe pattern.
+**What You'll Create**: Explore how the four base palettes change the balance between SET and MODIFY operations, reshaping the fringe pattern.
 
 1. **Workbench primaries**: Set Palette to Workbench. Note the stark blue, orange, and white blocks where the encoder uses SET — these correspond to the iconic Amiga desktop colors.
 2. **DigiView photo mode**: Switch to DigiView. The gray ramp in this palette produces smoother tonal transitions — this was the palette optimized for digitized photographs.
@@ -294,7 +308,7 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 *Fringing and Direction — simulated result across source images.*
 **Source**: High-contrast footage with strong vertical edges — text overlays, architectural details, or graphic patterns.
 
-**Objective**: Demonstrate the HAM fringe artifact and explore how direction and strength controls shape it.
+**What You'll Create**: Demonstrate the HAM fringe artifact and explore how direction and strength controls shape it.
 
 1. **Maximum fringe**: Set Fringe Str to 100% with HAM6 and 160px resolution. Notice the horizontal color smear trailing to the right of every vertical edge.
 2. **Reverse direction**: Toggle Fringe Dir to R-to-L. The fringes now trail to the left — the visual weight of edges shifts.
@@ -321,7 +335,7 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 *Genlock Compositing — simulated result across source images.*
 **Source**: Footage with a solid-colored background region — a person against a dark backdrop, or any scene with a prominent area of near-black or near-solid color.
 
-**Objective**: Recreate the classic Amiga genlock overlay effect — HAM graphics floating over live video.
+**What You'll Create**: Recreate the classic Amiga genlock overlay effect — HAM graphics floating over live video.
 
 1. **Prepare the HAM image**: Set Palette to Workbench, Resolution to 320px, Fringe Str to ~75%, HAM6 mode. Observe the fully processed HAM output.
 2. **Enable genlock**: Toggle Genlock to On. Areas of the image that match palette[0] (black in the Workbench palette) become transparent — the original unprocessed video shows through.
@@ -337,9 +351,6 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 
 ## Tips
 
-- **Palette choice shapes fringe pattern**: Choose a palette whose colors are well-distributed relative to your source material. A palette with colors close to the source produces more SET operations and fewer fringes; a distant palette forces more MODIFY operations and wider fringes.
-- **Resolution amplifies fringe width**: Lower resolution means fewer pixels per scanline for the HAM encoder to work with, so color transitions take proportionally more of the visible image. 80px mode turns fringes into broad color bands.
-- **HAM6 for drama, HAM8 for subtlety**: HAM6's 4-bit precision produces the characteristic 1987 Amiga look with bold, visible fringes. HAM8's 6-bit precision is cleaner — visually interesting but less immediately recognizable as HAM.
 - **Dithering before encoding**: The Bayer dither adds texture that survives the HAM encoding, softening what would otherwise be hard quantization steps. Most effective at 160px and lower resolutions.
 - **Genlock for compositing**: Enable Genlock to create transparent overlays — the HAM-processed image floats over the original video where the background color appears. This was the Amiga's killer app for video production.
 - **Fringe direction for creative control**: Reversing the scan direction shifts the visual weight of every edge in the image. On text or graphic sources, this can dramatically change readability and perceived motion.
@@ -364,6 +375,7 @@ These exercises introduce the HAM encoding constraint progressively, starting wi
 | **Quantization** | The process of reducing a continuous or high-precision value to a discrete set of levels, introducing rounding error. |
 | **RGB** | Red, Green, Blue; a color model representing colors as combinations of three additive primary components. |
 | **Sample-and-hold** | A technique that captures a signal value at a specific instant and holds it constant for a defined period, used here for resolution downsampling. |
-| **YUV** | A color encoding system separating luminance (Y) from two chrominance components (U, V), used as the native video processing format. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

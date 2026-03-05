@@ -35,6 +35,14 @@ The name "Fauxtress" — a portmanteau of "faux" and "Fortress" — acknowledges
 
 ---
 
+## Quick Start
+
+1. **Start with Direct + XOR for instant patterns**: Program 00 with the XOR operation produces the widest variety of classic Fortress geometric grids. It's the fastest path to a recognizable signal from which to explore other program modes.
+2. **Anim Rate is diagonal tilt**: Think of the animation rate as a "tilt" control for the pattern. Zero produces purely orthogonal (horizontal/vertical) structures. Small values tilt the pattern slightly diagonal. Large values produce rapidly sweeping moire interference.
+3. **Triangle smooths, Ramp sharpens**: Triangle waveforms produce mirrored, smooth patterns with no wrap-around discontinuity. Ramp waveforms produce sawtooth patterns with a sharp edge at the wrap boundary. Mix and match for asymmetric textures.
+
+---
+
 ## Background
 
 ### The LZX Fortress Module
@@ -61,6 +69,8 @@ In conventional computing, the ALU performs arithmetic and logic on data. In vid
 ---
 
 ## Signal Flow
+
+Waveform Shaping → Pattern Programs → ALU → ... → Sync Delay Pipeline → Bypass Mux
 
 ```
 Phase Accumulators
@@ -130,7 +140,7 @@ The cross-modulation between the animation and horizontal accumulators is the mo
 | Range | 0 – 1023 |
 | Default | 256 |
 
-Controls the frequency of the horizontal phase accumulator. At zero, the horizontal accumulator does not advance — every pixel on each scanline sees the same phase value, producing uniform horizontal bands (or a solid field if V Rate is also zero). As H Rate increases, vertical stripes of increasing spatial frequency appear. The value directly sets the 10-bit increment added to the 20-bit accumulator per pixel, so the spatial frequency scales linearly with the knob position. At maximum, the pattern cycles roughly once per two pixels, producing the highest-frequency spatial grid. The horizontal waveform feeds directly into the Direct and Shift Register programs, and indirectly into the Cellular Automata program as the spatial readout index.
+At zero, the horizontal accumulator does not advance — every pixel on each scanline sees the same phase value, producing uniform horizontal bands (or a solid field if V Rate is also zero). As H Rate increases, vertical stripes of increasing spatial frequency appear. The value directly sets the 10-bit increment added to the 20-bit accumulator per pixel, so the spatial frequency scales linearly with the knob position. At maximum, the pattern cycles roughly once per two pixels, producing the highest-frequency spatial grid. The horizontal waveform feeds directly into the Direct and Shift Register programs, and indirectly into the Cellular Automata program as the spatial readout index. Internally, controls the frequency of the horizontal phase accumulator.
 
 ---
 
@@ -140,7 +150,7 @@ Controls the frequency of the horizontal phase accumulator. At zero, the horizon
 | Range | 0 – 1023 |
 | Default | 256 |
 
-Controls the frequency of the vertical phase accumulator. At zero, the vertical accumulator remains at its reset value (zero) on every scanline, producing uniform vertical bars. As V Rate increases, horizontal stripes appear and become more closely spaced. Because the vertical accumulator increments once per scanline (at hsync) rather than once per pixel, a given V Rate value produces a coarser spatial frequency than the same H Rate value — there are only 1080 lines versus 1920 pixels. The vertical waveform serves as ALU operand B in the Direct, Shift Register, and LFSR programs.
+At zero, the vertical accumulator remains at its reset value (zero) on every scanline, producing uniform vertical bars. As V Rate increases, horizontal stripes appear and become more closely spaced. Because the vertical accumulator increments once per scanline (at hsync) rather than once per pixel, a given V Rate value produces a coarser spatial frequency than the same H Rate value — there are only 1080 lines versus 1920 pixels. The vertical waveform serves as ALU operand B in the Direct, Shift Register, and LFSR programs. Internally, controls the frequency of the vertical phase accumulator.
 
 ---
 
@@ -207,7 +217,29 @@ Toggles 7 and 8 independently select between ramp and triangle waveform shapes f
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the input video and the generated pattern. At 100% (fully clockwise, default), the output is the pure Fauxtress pattern — the input video is entirely replaced. At 0%, the output is the unprocessed input signal with no generated content visible. Intermediate values blend the generated pattern over the input via a 4-clock interpolator operating on all three YUV channels simultaneously. For synthesis use, this control is typically left at 100% since there is often no meaningful input to mix with.
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Fauxtress processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Fauxtress-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -219,7 +251,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 <img src={fauxtress_exercise1_result} alt="Geometric Moire Grid result"/>
 *Geometric Moire Grid — simulated result across source images.*
-**Objective**: Generate a classic Fortress-style geometric grid using the Direct program, exploring how waveform shapes, ALU operations, and the animation accumulator produce diagonal interference patterns.
+**What You'll Create**: Generate a classic Fortress-style geometric grid using the Direct program, exploring how waveform shapes, ALU operations, and the animation accumulator produce diagonal interference patterns.
 
 1. **Set Direct mode**: Both Shift Reg and CA/LFSR toggles **Off** (program 00).
 2. **Set moderate rates**: H Rate ~256, V Rate ~256 for a medium-density grid.
@@ -237,7 +269,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 <img src={fauxtress_exercise2_result} alt="Cellular Automata Spacetime result"/>
 *Cellular Automata Spacetime — simulated result across source images.*
-**Objective**: Activate the cellular automata engine and explore the eight Wolfram rules, observing how rule selection and seed position produce dramatically different spacetime diagrams.
+**What You'll Create**: Activate the cellular automata engine and explore the eight Wolfram rules, observing how rule selection and seed position produce dramatically different spacetime diagrams.
 
 1. **Select CA program**: Toggle Shift Reg **Off**, CA/LFSR **On** (program 10).
 2. **Set spatial frequencies**: H Rate ~300 for moderate horizontal resolution of the CA readout, V Rate ~200.
@@ -255,7 +287,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 <img src={fauxtress_exercise3_result} alt="LFSR Noise Textures result"/>
 *LFSR Noise Textures — simulated result across source images.*
-**Objective**: Use the LFSR noise generator to produce a variety of pseudo-random textures, exploring how the polynomial, ALU operation, and palette interact to create structured noise.
+**What You'll Create**: Use the LFSR noise generator to produce a variety of pseudo-random textures, exploring how the polynomial, ALU operation, and palette interact to create structured noise.
 
 1. **Select LFSR program**: Toggle both Shift Reg and CA/LFSR **On** (program 11).
 2. **Set baseline rates**: H Rate ~512, V Rate ~256. The noise pattern is combined with the vertical waveform through the ALU.
@@ -273,9 +305,6 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 ## Tips
 
-- **Start with Direct + XOR for instant patterns**: Program 00 with the XOR operation produces the widest variety of classic Fortress geometric grids. It's the fastest path to a recognizable signal from which to explore other program modes.
-- **Anim Rate is diagonal tilt**: Think of the animation rate as a "tilt" control for the pattern. Zero produces purely orthogonal (horizontal/vertical) structures. Small values tilt the pattern slightly diagonal. Large values produce rapidly sweeping moire interference.
-- **Triangle smooths, Ramp sharpens**: Triangle waveforms produce mirrored, smooth patterns with no wrap-around discontinuity. Ramp waveforms produce sawtooth patterns with a sharp edge at the wrap boundary. Mix and match for asymmetric textures.
 - **CA rules have distinct personalities**: Rule 110 is complex and non-repeating (Turing-complete). Rule 30 is chaotic. Rule 57 produces clean stripes. Rule 9 is sparse and crystalline. Cycle through rules slowly to find the texture you need.
 - **LFSR polynomial shapes the noise**: Not all LFSR polynomials produce long sequences. Some produce very short, highly structured patterns that act more like geometric textures than noise. Sweep Seed slowly in LFSR mode to find the sweet spots.
 - **Palette quantization is deliberate**: The 8-color-per-palette quantization is not a limitation — it's the Fortress aesthetic. The hard color boundaries create graphic, poster-like compositions that are distinctly different from smooth gradient video processing.
@@ -298,6 +327,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 | **Polynomial (LFSR)** | A binary mask that selects which bit positions of the LFSR contribute XOR feedback. Different polynomials produce different pseudo-random sequences with different periods and statistical properties. |
 | **Spacetime diagram** | A visualization of a 1D cellular automaton's evolution, where the horizontal axis represents cell position and the vertical axis represents successive generations (time). Each row is one generation of the CA. |
 | **Wolfram number** | A decimal integer (0–255) that uniquely identifies an elementary cellular automaton rule by encoding the 8-bit output pattern for all possible 3-cell neighborhoods. |
-| **YUV** | A color space separating luminance (Y) from chrominance (U, V), used as the native pixel format in the Videomancer processing pipeline. BT.601 defines the conversion coefficients from RGB. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

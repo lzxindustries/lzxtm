@@ -68,6 +68,14 @@ The name **Telex** references the international teleprinter exchange network tha
 
 ---
 
+## Quick Start
+
+1. **Baud rate sets the mood**: Very low baud rates create dramatic, cinematic character-by-character reveals. High baud rates produce rapid page fills useful for live performance.
+2. **Paper mode is the fastest aesthetic change**: Switching between White, Yellow, Green, and Blue paper instantly transforms the entire visual character — from antique document to sci-fi terminal.
+3. **Cell size determines readability**: 8×8 cells create dense text that reads as texture from a distance. 32×32 and 64×64 cells create bold, individually distinguishable character blocks.
+
+---
+
 ## Background
 
 ### The Baudot Code
@@ -94,6 +102,8 @@ The four paper modes and two hue controls allow Telex to emulate a wide range of
 ---
 
 ## Signal Flow
+
+Input Register → Grid Position → Glyph ROM Lookup → Colour Composite
 
 ```
 Input Video (YUV 4:4:4)
@@ -157,7 +167,7 @@ The reveal cursor and the glyph rendering operate independently. The glyph index
 | Default | 50% |
 | Suffix | % |
 
-Controls the reveal animation speed via the DDS accumulator increment. At 0%, the cursor is nearly frozen — characters appear imperceptibly slowly. At higher values, the cursor advances faster, filling the page in seconds or less. The reveal advances left-to-right within each row, then wraps to the next row below — mimicking the carriage return and line feed of a physical teleprinter. At maximum, the page fills almost instantly and the sequential nature of the animation becomes barely perceptible.
+At 0%, the cursor is nearly frozen — characters appear imperceptibly slowly. At higher values, the cursor advances faster, filling the page in seconds or less. The reveal advances left-to-right within each row, then wraps to the next row below — mimicking the carriage return and line feed of a physical teleprinter. At maximum, the page fills almost instantly and the sequential nature of the animation becomes barely perceptible. Internally, controls the reveal animation speed via the DDS accumulator increment.
 
 ---
 
@@ -178,7 +188,7 @@ Selects one of four character cell sizes: 8×8, 16×16, 32×32, or 64×64 pixels
 | Default | 50% |
 | Suffix | % |
 
-Sets the ink darkness — the luminance of glyph pixels. At 100%, ink is full white (bright characters on paper). At 0%, ink is black (invisible on dark paper, visible as dark marks on light paper). The ink density works with the Paper mode to create the desired contrast relationship: high ink on white paper creates light-on-light (low contrast), while high ink on dark paper (green or blue mode) creates the classic bright-on-dark terminal look.
+At 100%, ink is full white (bright characters on paper). At 0%, ink is black (invisible on dark paper, visible as dark marks on light paper). The ink density works with the Paper mode to create the desired contrast relationship: high ink on white paper creates light-on-light (low contrast), while high ink on dark paper (green or blue mode) creates the classic bright-on-dark terminal look. Internally, sets the ink darkness — the luminance of glyph pixels.
 
 ---
 
@@ -219,8 +229,8 @@ Pre-quantization contrast scaling applied to the source luminance before glyph i
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Charset** | Baudot | ASCII |
-| **8 — Paper** | White | Yellow |
+| **7 — Charset** | Baudot | Morse |
+| **8 — Paper** | White | Blue |
 | **9 — Animate** | Off | On |
 | **10 — Roll** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -239,6 +249,21 @@ Toggles 7 and 8 are each 2-bit multi-value selectors packed into register bits �
 | Suffix | % |
 
 Wet/dry crossfade between the original input and the processed teleprinter output. At 100%, the output is entirely the rendered character page. At 0%, the original video passes through unchanged. Intermediate values create a translucent overlay of the character grid on the source — the typing appears superimposed on the underlying video.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Telex processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.
+
+---
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -261,7 +286,7 @@ These exercises progress from basic teleprinter output to animated reveals and v
 *White Paper Teleprinter — simulated result across source images.*
 **Source**: A high-contrast portrait or document scan with clear tonal separation.
 
-**Objective**: Create a clean teleprinter printout on white paper with dark ink, resembling a physical teletype output.
+**What You'll Create**: Create a clean teleprinter printout on white paper with dark ink, resembling a physical teletype output.
 
 1. **White paper**: Set Paper to White, Contrast to ~60%.
 2. **Dark ink**: Set Ink Dens to ~20%, Ink Hue to neutral (center position).
@@ -289,7 +314,7 @@ These exercises progress from basic teleprinter output to animated reveals and v
 *Green Screen Terminal — simulated result across source images.*
 **Source**: Abstract or geometric footage with strong graphic shapes.
 
-**Objective**: Recreate the look of an early CRT terminal with bright green characters on a dark green background.
+**What You'll Create**: Recreate the look of an early CRT terminal with bright green characters on a dark green background.
 
 1. **Green paper**: Set Paper to Green.
 2. **Bright green ink**: Set Ink Dens to ~90%, Ink Hue slightly green.
@@ -317,7 +342,7 @@ These exercises progress from basic teleprinter output to animated reveals and v
 *Animated Typewriter Page Fill — simulated result across source images.*
 **Source**: Slowly moving footage with evolving content — clouds, water, or time-lapse.
 
-**Objective**: Use the reveal animation at a medium baud rate to create a typewriter effect where the page fills gradually, revealing the video content as characters.
+**What You'll Create**: Use the reveal animation at a medium baud rate to create a typewriter effect where the page fills gradually, revealing the video content as characters.
 
 1. **Yellow paper**: Set Paper to Yellow for an aged-document aesthetic.
 2. **Dark ink**: Ink Dens ~30%, Ink Hue slightly warm.
@@ -334,9 +359,6 @@ These exercises progress from basic teleprinter output to animated reveals and v
 
 ## Tips
 
-- **Baud rate sets the mood**: Very low baud rates create dramatic, cinematic character-by-character reveals. High baud rates produce rapid page fills useful for live performance.
-- **Paper mode is the fastest aesthetic change**: Switching between White, Yellow, Green, and Blue paper instantly transforms the entire visual character — from antique document to sci-fi terminal.
-- **Cell size determines readability**: 8×8 cells create dense text that reads as texture from a distance. 32×32 and 64×64 cells create bold, individually distinguishable character blocks.
 - **Contrast is the key to glyph variety**: If the output looks too uniform (all cells showing similar characters), increase Contrast to spread the luma range across more glyph density levels.
 - **Live content updates through reveal**: Already-revealed characters update their glyph in real time as the source video changes. The reveal animation only controls visibility, not content.
 - **Ink Hue + Paper mode for terminal aesthetics**: Green ink on Green paper = VT100. White ink on Blue paper = IBM mainframe. Dark ink on White paper = printed page. Amber ink on dark background = vintage Wyse terminal.
@@ -358,6 +380,7 @@ These exercises progress from basic teleprinter output to animated reveals and v
 | **Paper** | The background colour applied behind and between glyphs. |
 | **Reveal cursor** | A DDS-driven position tracker that determines which character cells have been "printed" and are therefore visible. |
 | **Teletype** | A teleprinter or teletypewriter; an electromechanical device that transmitted and received typed text over telegraph lines. |
-| **YUV** | A color encoding separating luminance (Y) from chrominance (U, V), used throughout the Videomancer pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---
