@@ -231,10 +231,6 @@ The five toggle switches control independent binary options — mirroring, inver
 
 Threshold for zone blanking. Compared against both accumulator outputs (acc_a AND acc_b). When both values are below the threshold, the output is blanked to black (or visible if Blank Invert is on). At 0%, no blanking occurs. As you raise the fader, periodic regions of black appear, aligned with the zone grid defined by Vert Freq and Horiz Freq. At 100%, most of the output is blanked.
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -353,7 +349,5 @@ These exercises progress from simple displacement bands to complex fracture grid
 | **Scanline** | One horizontal row of pixels in a video frame; Faultplane's delay line operates on a per-scanline basis. |
 | **Timing accumulator** | A register that increments by a programmable amount on each clock or line event, producing an oscillating signal whose frequency determines the zone pattern. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used here to combine the two accumulator MSBs into the alternating zone selection signal. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

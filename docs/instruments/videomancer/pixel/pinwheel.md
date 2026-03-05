@@ -227,10 +227,6 @@ The five toggle switches control independent binary processing options. Colorize
 
 UV channel bit-crushing depth. Independent of Posterize (Knob 5), which crushes the Y channel. The crushing mode (AND or XOR) follows Switch 10. At 100%, no crushing — full color resolution. As you lower the fader, color values are progressively masked. In AND mode, this produces smooth color quantization. In XOR mode, this produces psychedelic color scrambling. You can crush color while leaving brightness intact (high Posterize, low Chroma Crush) or vice versa.
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -346,7 +342,5 @@ These exercises progress from subtle color correction to extreme psychedelic pro
 | **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain and DC offset; Pinwheel has two Y-channel proc amps: one drives hue rotation (via Luma to Hue and Hue), the other adjusts the output luminance (via Luma Gain and Brightness). |
 | **UV plane** | The two-dimensional chrominance space defined by the U and V axes, where angle represents hue and distance from center represents saturation. |
 | **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used in Glitch crush mode to flip bits chaotically rather than zero them. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

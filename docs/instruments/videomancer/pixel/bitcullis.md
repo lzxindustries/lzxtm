@@ -247,10 +247,6 @@ Routes the unprocessed input signal directly to the output, bypassing all Bitcul
 
 ---
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -362,7 +358,5 @@ These exercises progress from simple decimation to full signal deconstruction. E
 | **Posterization** | Reducing the number of distinct tonal levels in an image, creating flat areas of uniform color or brightness. |
 | **Proc Amp** | Processing Amplifier; a gain-and-offset stage that applies brightness and contrast adjustment to a signal. |
 | **Quantization** | Mapping a continuous range of values to a smaller set of discrete levels, producing visible steps in gradients. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

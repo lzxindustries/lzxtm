@@ -226,10 +226,6 @@ Switches 9, 10, and 11 form a three-bit selector that chooses one of eight edge 
 
 Sets a luminance threshold. Any pixel whose Y value falls below the threshold is replaced with pure black (Y = 0) and neutral chroma (U = V = midpoint). Pixels above the threshold pass through unmodified. At 0%, everything passes. As you raise the fader, progressively darker portions of the image snap to black. At 100%, only the very brightest pixels survive. Because Luma Blank sits at the end of the Y processing chain, everything upstream affects what it "sees."
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -350,7 +346,5 @@ These exercises progress from corrective to creative, gradually exploring more o
 | **Luminance key** | A compositing technique that uses a brightness threshold to separate foreground from background; pixels below the threshold are replaced with black. |
 | **Proc amp (Processing Amplifier)** | Broadcast equipment that standardizes video signals by adjusting contrast (gain) and brightness (offset); Lumarian's tonal controls implement a digital proc amp. |
 | **Transfer curve** | A graph mapping input values to output values; gamma correction bends the linear transfer curve into an exponential or logarithmic shape. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

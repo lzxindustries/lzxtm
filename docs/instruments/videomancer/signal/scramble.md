@@ -240,10 +240,6 @@ The five toggles control independent binary options that can be combined freely.
 
 Wet/dry crossfade between the original (dry) signal and the Scramble-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -361,7 +357,5 @@ These exercises progress from basic cut-and-rotate scrambling to full descramble
 | **Sync suppression** | Deliberate removal or attenuation of horizontal synchronization pulses in an analog video signal, causing the receiving display to lose horizontal timing. |
 | **Wet/dry** | Audio and video processing convention where "wet" refers to the fully processed signal and "dry" refers to the original unprocessed signal. |
 | **XOR** | Exclusive OR; a binary logic operation that outputs 1 when its two inputs differ, used in LFSR feedback paths and bit-level manipulation. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

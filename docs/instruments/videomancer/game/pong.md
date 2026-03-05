@@ -212,10 +212,6 @@ The five toggles control independent game and rendering features. P2 Mode switch
 
 Wet/dry mix crossfade between the unprocessed input video and the game overlay. Three parallel interpolator_u instances blend Y, U, and V channels independently. At 100% the output is pure game overlay on black. At 50% the game elements are semi-transparent over the input video. At 0% the output is pure dry input. Note: when P2 Mode is set to Manual, this fader *also* controls Player 2's paddle position — the fader drives both mix and P2 simultaneously (moving P2 down increases mix toward wet; moving P2 up decreases mix toward dry).
 
-
-
-> See [Common Controls & Glossary Reference](../common_reference.md) for details.
-
 ---
 
 ## Guided Exercises
@@ -299,7 +295,5 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 | **Serve** | The act of launching the ball from the center of the court after a point is scored, directed toward the scoring player's side. |
 | **TTL Logic** | Transistor-Transistor Logic; the discrete integrated circuit technology used to build the original Pong hardware without a CPU. |
 | **Vsync** | Vertical synchronization pulse marking the start of a new video frame; used as the game physics update clock. |
-
-For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---
