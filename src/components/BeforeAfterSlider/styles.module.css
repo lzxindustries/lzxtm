@@ -5,11 +5,15 @@
 /* ── Tabs ── */
 .tabs {
   display: flex;
+  flex-wrap: wrap;
   gap: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .tab {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   padding: 0.4rem 0.75rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-bottom: none;
@@ -23,6 +27,16 @@
   text-transform: uppercase;
   transition: background 0.15s, color 0.15s;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 480px) {
+  .tab {
+    font-size: 0.65rem;
+    padding: 0.35rem 0.35rem;
+    letter-spacing: 0;
+  }
 }
 
 .tab:first-child {
