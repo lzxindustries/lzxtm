@@ -91,6 +91,8 @@ Real metal surfaces have a unique optical property: their reflected colour varie
 
 ## Signal Flow
 
+Y Channel → Sync Signals → Interpolator → Output
+
 ```
 Input Video (YUV 4:4:4 30-bit)
 │
@@ -149,7 +151,7 @@ Selects the anodize colour hue. In quadrant mode (Color toggle), the pot selects
 | Default | 50% |
 | Suffix | % |
 
-Controls the saturation (colour intensity) of the anodized tint. At 0%, the U and V channels stay at the neutral midpoint (512) — no colour tint is applied. As saturation increases, the U and V values push further from midpoint toward the target hue. At maximum, the colour is fully saturated — vivid and intense. Moderate values (40-60%) are most realistic for actual anodized aluminum.
+At 0%, the U and V channels stay at the neutral midpoint (512) — no colour tint is applied. As saturation increases, the U and V values push further from midpoint toward the target hue. At maximum, the colour is fully saturated — vivid and intense. Moderate values (40-60%) are most realistic for actual anodized aluminum. Internally, controls the saturation (colour intensity) of the anodized tint.
 
 ---
 
@@ -171,7 +173,7 @@ Sets the luminance threshold above which specular highlight desaturation begins.
 | Default | 50% |
 | Suffix | % |
 
-Controls the metallic sheen intensity — the degree to which luma variations modulate chroma. At low values (below 25%), there is no luma-to-chroma coupling and the colour is perfectly uniform. At moderate values, the colour subtly shifts with brightness, creating a realistic metallic appearance. At maximum, the coupling is very strong — dark areas push the chroma in one direction and bright areas in the other, creating an exaggerated metallic shimmer.
+At low values (below 25%), there is no luma-to-chroma coupling and the colour is perfectly uniform. At moderate values, the colour subtly shifts with brightness, creating a realistic metallic appearance. At maximum, the coupling is very strong — dark areas push the chroma in one direction and bright areas in the other, creating an exaggerated metallic shimmer. Internally, controls the metallic sheen intensity — the degree to which luma variations modulate chroma.
 
 ---
 
@@ -182,7 +184,7 @@ Controls the metallic sheen intensity — the degree to which luma variations mo
 | Default | 50% |
 | Suffix | % |
 
-Controls the amplitude of the surface grain texture. At 0%, the surface is perfectly smooth. At higher values, a spatial noise pattern (derived from XOR of horizontal and vertical pixel coordinates) adds brightness variation, simulating the fine crystalline texture visible on real anodized surfaces under close inspection. The pattern is deterministic and repeating but appears random at normal viewing distances.
+At 0%, the surface is perfectly smooth. At higher values, a spatial noise pattern (derived from XOR of horizontal and vertical pixel coordinates) adds brightness variation, simulating the fine crystalline texture visible on real anodized surfaces under close inspection. The pattern is deterministic and repeating but appears random at normal viewing distances. Internally, controls the amplitude of the surface grain texture.
 
 ---
 
@@ -201,8 +203,8 @@ Controls the uniformity of the anodize application. This parameter modifies how 
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Color** | Red | Blue |
-| **8 — Finish** | Matte | Satin |
+| **7 — Color** | Red | Gold |
+| **8 — Finish** | Matte | Mirror |
 | **9 — Hi Light** | Soft | Sharp |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -221,6 +223,10 @@ Toggle 7 maps to the VHD's hue_mode bit — the TOML labels "Red/Blue/Green/Gold
 | Suffix | % |
 
 Wet/dry crossfade between the original input video (delayed to match the 10-clock processing pipeline plus 4-clock interpolator) and the anodized output. At 0%, pure unprocessed input. At 100%, fully processed anodize rendering.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +249,7 @@ These exercises progress from basic colour tinting through highlight preservatio
 *Basic Anodized Surface — simulated result across source images.*
 **Source**: Image with even brightness distribution and clear subject — portrait or product photography.
 
-**Objective**: Understand how the hue quadrant and saturation controls create the basic anodized colour tint.
+**What You'll Create**: Understand how the hue quadrant and saturation controls create the basic anodized colour tint.
 
 1. **Select Red**: Set Hue to ~12% (Red-Orange quadrant). Saturate at ~50%.
 2. **High threshold**: Hi Thrsh at ~80% so highlights are only on the very brightest areas.
@@ -273,7 +279,7 @@ These exercises progress from basic colour tinting through highlight preservatio
 *Highlight Preservation and Finish — simulated result across source images.*
 **Source**: Image with bright specular reflections — chrome objects, wet surfaces, or strong directional lighting.
 
-**Objective**: Explore how the highlight threshold and finish settings control specular highlight behaviour on the anodized surface.
+**What You'll Create**: Explore how the highlight threshold and finish settings control specular highlight behaviour on the anodized surface.
 
 1. **Blue anodize**: Hue at ~37%, Saturate at ~60%.
 2. **Low threshold**: Set Hi Thrsh to ~40%. Many areas lose their tint and return to white — like a very reflective surface.
@@ -302,7 +308,7 @@ These exercises progress from basic colour tinting through highlight preservatio
 *Metallic Sheen and Grain — simulated result across source images.*
 **Source**: Image with gradual brightness variations — curved surfaces, light gradients, or natural textures.
 
-**Objective**: Create the full metallic surface effect by adding luma-to-chroma coupling (sheen) and surface grain texture.
+**What You'll Create**: Create the full metallic surface effect by adding luma-to-chroma coupling (sheen) and surface grain texture.
 
 1. **Gold anodize**: Hue at ~87%, Saturate at ~55%.
 2. **Moderate highlight**: Hi Thrsh at ~65%.
@@ -319,9 +325,6 @@ These exercises progress from basic colour tinting through highlight preservatio
 
 ## Tips
 
-- **Moderate saturation is most realistic**: Real anodized aluminum has vivid but not neon-level colour. Saturate at 40-60% looks most authentic.
-- **Highlight threshold matches the lighting**: Bright studio lighting needs a higher threshold; dim scenes need a lower threshold. Match the threshold to where specular reflections actually are in your source.
-- **Sheen at ~50% is the sweet spot**: Enough metallic variation to read as metal, not so much that it overwhelms the colour.
 - **Grain should be subtle**: Real anodized surfaces have very fine grain visible only at close range. Keep Grain below 25% for realism.
 - **Red and Gold are the most common**: These are the colours most people associate with anodized aluminum from consumer products.
 - **Blue anodize for sci-fi**: Blue-purple anodized aluminum is a staple of science-fiction production design.
@@ -337,13 +340,13 @@ These exercises progress from basic colour tinting through highlight preservatio
 | **Anodizing** | An electrochemical process that converts aluminum's surface into a durable, porous oxide layer capable of absorbing dye colour; the program simulates this uniform tinted-metal appearance. |
 | **Chroma** | The colour-difference components (U and V) of a YUV signal, encoding hue and saturation independently of brightness. |
 | **Desaturation** | Reducing a pixel's colour intensity by pulling its U and V values toward the neutral midpoint (512), making it appear more grey or white. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes Anodize's processing pipeline in hardware at pixel-clock speed. |
 | **Luminance (Luma)** | The brightness component (Y channel) of a YUV video signal. |
 | **Metallic Sheen** | A brightness-dependent colour shift that emulates how real metal surfaces vary in colour with viewing angle; implemented by coupling luma deviations to chroma offsets. |
 | **Quadrant Mode** | A hue-selection scheme where the 10-bit pot range is divided into four zones, each producing a distinct colour family (Red-Orange, Blue-Purple, Green-Teal, Gold-Yellow). |
 | **Specular Highlight** | A direct surface reflection of a light source that retains the light's colour (white) rather than the surface tint, because the light reflects before penetrating the dyed oxide layer. |
 | **UV Space** | The two-dimensional chrominance plane of the YUV colour model, where angle from centre encodes hue and distance from centre encodes saturation. |
 | **XOR Pattern** | A deterministic spatial noise texture generated by applying a bitwise exclusive-or operation to the horizontal and vertical pixel coordinates, used for surface grain. |
-| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); Videomancer's native 30-bit processing colour space. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

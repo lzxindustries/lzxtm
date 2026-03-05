@@ -91,6 +91,8 @@ In YUV colour space, the complement of a colour is formed by inverting the chrom
 
 ## Signal Flow
 
+Y/U/V Channels → Sync Signals → Interpolator → Output
+
 ```
 Input Video (YUV 4:4:4 30-bit)
 │
@@ -146,7 +148,7 @@ The Speed toggle selects between two shift-amount ranges for the IIR: Fast mode 
 | Default | 50% |
 | Suffix | % |
 
-Controls the time constant of the IIR temporal filter. At minimum, the accumulator adapts almost instantly — persistence is barely visible. At maximum, the accumulator changes extremely slowly, retaining ghosts of previously displayed content for many seconds. The persist value maps to a bit-shift amount that divides the difference between the current input and the running average: higher persist = larger shift = slower adaptation. Combined with the Speed toggle, this provides a wide range from sub-frame response to multi-second persistence.
+At minimum, the accumulator adapts almost instantly — persistence is barely visible. At maximum, the accumulator changes extremely slowly, retaining ghosts of previously displayed content for many seconds. The persist value maps to a bit-shift amount that divides the difference between the current input and the running average: higher persist = larger shift = slower adaptation. Combined with the Speed toggle, this provides a wide range from sub-frame response to multi-second persistence. Internally, controls the time constant of the IIR temporal filter.
 
 ---
 
@@ -157,7 +159,7 @@ Controls the time constant of the IIR temporal filter. At minimum, the accumulat
 | Default | 50% |
 | Suffix | % |
 
-Controls the intensity of the negative colour computation blended into the output. At 0%, no negative component is added and the output matches the input (the IIR runs but its result is not visible). At maximum, the full computed negative replaces the input. Intermediate values blend between the input pixel and the negative pixel, allowing the afterimage ghost to appear at any opacity from a faint whisper to a full colour inversion.
+At 0%, no negative component is added and the output matches the input (the IIR runs but its result is not visible). At maximum, the full computed negative replaces the input. Intermediate values blend between the input pixel and the negative pixel, allowing the afterimage ghost to appear at any opacity from a faint whisper to a full colour inversion. Internally, controls the intensity of the negative colour computation blended into the output.
 
 ---
 
@@ -168,7 +170,7 @@ Controls the intensity of the negative colour computation blended into the outpu
 | Default | 50% |
 | Suffix | % |
 
-Controls the rate at which the IIR accumulator decays toward the neutral midpoint (512) during vertical blanking. At minimum, there is no decay — ghosts persist indefinitely until overwritten by new input. At maximum, the accumulator is aggressively pulled toward neutral every frame, causing ghosts to fade rapidly. This interacts with Persist: high persist with low decay creates long-lived afterimages, while high persist with high decay creates a constantly shifting, breathing ghost field.
+At minimum, there is no decay — ghosts persist indefinitely until overwritten by new input. At maximum, the accumulator is aggressively pulled toward neutral every frame, causing ghosts to fade rapidly. This interacts with Persist: high persist with low decay creates long-lived afterimages, while high persist with high decay creates a constantly shifting, breathing ghost field. Internally, controls the rate at which the IIR accumulator decays toward the neutral midpoint (512) during vertical blanking.
 
 ---
 
@@ -179,7 +181,7 @@ Controls the rate at which the IIR accumulator decays toward the neutral midpoin
 | Default | 50% |
 | Suffix | % |
 
-Controls the crossfade between the original input and the negative-processed signal. At 0%, the output is pure input with no afterimage effect. At 100%, the output is purely the negative of the temporal average. This differs from Neg Str in that Blend controls the final mix ratio while Neg Str controls the intensity of the negative computation itself — using both at moderate levels produces subtler, more layered results than either at maximum.
+At 0%, the output is pure input with no afterimage effect. At 100%, the output is purely the negative of the temporal average. This differs from Neg Str in that Blend controls the final mix ratio while Neg Str controls the intensity of the negative computation itself — using both at moderate levels produces subtler, more layered results than either at maximum. Internally, controls the crossfade between the original input and the negative-processed signal.
 
 ---
 
@@ -209,8 +211,8 @@ Adds a constant brightness offset to the processed output. At 50% (512), brightn
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Negative | Complmnt |
-| **8 — Channel** | All | Luma |
+| **7 — Mode** | Negative | Ghost |
+| **8 — Channel** | All | Hue |
 | **9 — Speed** | Slow | Fast |
 | **10 — Animate** | Off | On |
 | **11 — Bypass** | Off | On |
@@ -228,7 +230,19 @@ Toggle 7 provides a **4-position mode selector** controlling how the temporal av
 | Default | 100.0% |
 | Suffix | % |
 
-Wet/dry crossfade between the original input video (delayed to match the 9-clock processing pipeline plus 4-clock interpolator) and the afterimage-processed output. At 0%, the output is pure unprocessed input. At 100%, the output is fully processed. Intermediate positions blend the two, allowing the afterimage effect to be superimposed at any opacity.
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Wet/dry crossfade between the original (dry) signal and the Afterimage-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -251,7 +265,7 @@ These exercises progress from basic negative persistence observation through cha
 *Basic Negative Persistence — simulated result across source images.*
 **Source**: Camera feed with a moving subject against a static background — a hand waving slowly works well.
 
-**Objective**: Observe how the IIR temporal filter creates colour-negative ghosts of moving subjects and how Persist and Neg Str control the trail intensity and duration.
+**What You'll Create**: Observe how the IIR temporal filter creates colour-negative ghosts of moving subjects and how Persist and Neg Str control the trail intensity and duration.
 
 1. **Default mode**: Set Mode to Negative, Channel to All, Speed to Fast, Animate off. Mix at 100%.
 2. **Moderate persistence**: Set Persist to ~60%, Neg Str to ~50%, Decay to ~30%, Blend to ~70%.
@@ -279,7 +293,7 @@ These exercises progress from basic negative persistence observation through cha
 *Chroma-Only Afterimage — simulated result across source images.*
 **Source**: Footage with saturated primary colours — a colourful painting, fruit, or clothing.
 
-**Objective**: Use the channel selector to isolate afterimage processing to chrominance only, preserving luminance detail while producing colour-shift ghosts.
+**What You'll Create**: Use the channel selector to isolate afterimage processing to chrominance only, preserving luminance detail while producing colour-shift ghosts.
 
 1. **Set Chroma mode**: Toggle Channel to Chroma (position 3). Mode stays at Negative.
 2. **Moderate settings**: Persist ~50%, Neg Str ~70%, Decay ~20%, Blend ~80%, Mix 100%.
@@ -307,7 +321,7 @@ These exercises progress from basic negative persistence observation through cha
 *Slow Ghost Mode with Breathing Animation — simulated result across source images.*
 **Source**: Any video source — slow-moving content like landscapes or abstract video works best.
 
-**Objective**: Combine Ghost mode (raw temporal average passthrough) with Slow speed and animation to create an ethereal, breathing echo layer.
+**What You'll Create**: Combine Ghost mode (raw temporal average passthrough) with Slow speed and animation to create an ethereal, breathing echo layer.
 
 1. **Set Ghost mode**: Toggle Mode to Ghost (position 4). Channel to All. Speed to Slow. Animate On.
 2. **Long persistence**: Persist at ~80%, Blend at ~60%, Decay at ~15%.
@@ -323,9 +337,6 @@ These exercises progress from basic negative persistence observation through cha
 
 ## Tips
 
-- **Processing is columnar**: The IIR accumulator operates per-column, not per-pixel. Horizontal motion produces slightly different trails than vertical motion. This is a feature, not a bug — it creates an organic quality reminiscent of CRT phosphor persistence.
-- **Negative mode is the signature effect**: Like the physiological afterimage, the Negative mode produces complementary-colour ghosts. Use it with moderate settings for the most naturalistic result.
-- **Ghost mode for time-averaging**: Ghost mode passes the raw temporal average without inversion — useful for creating soft temporal blurs and motion smears without colour inversion.
 - **Speed and Persist interact**: Fast+high persist ≈ Slow+medium persist in trail duration, but with different character. Fast mode produces stuttery, frame-stepping trails while Slow mode produces smooth, flowing ghosts.
 - **Feedback routing amplifies afterimage**: Routing the output back through the input creates recursive afterimage processing that rapidly builds intense colour inversion fields. Start with low Neg Str and Blend when using feedback.
 - **Chroma-only is subtle but powerful**: Channel set to Chroma produces colour shifts without luminance inversion — useful for augmenting live performance footage without destroying the visual clarity.
@@ -342,13 +353,12 @@ These exercises progress from basic negative persistence observation through cha
 | **Chrominance (Chroma)** | The colour-difference components of a video signal (U and V channels), encoding hue and saturation independently of brightness. |
 | **Complementary Colour** | The colour produced by inverting a given colour around the neutral midpoint; red's complement is cyan, yellow's complement is blue. |
 | **Exponential Moving Average (EMA)** | A weighted running average where each new sample adjusts the average by a fraction controlled by a bit-shift amount. Recent samples have more influence than older ones. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline in hardware at pixel-clock speed. |
 | **IIR (Infinite Impulse Response)** | A filter type whose output depends on both the current input and its own previous output, producing persistent memory of past values. |
 | **Luminance (Luma)** | The brightness component (Y channel) of a YUV video signal, representing perceived light intensity independent of colour. |
 | **Midpoint** | The centre value of the 10-bit range (512); in YUV processing, U and V at 512 represent zero colour difference (neutral grey). |
-| **Pipeline** | A chain of processing stages where each stage performs one operation per clock cycle; data flows through all stages sequentially with fixed latency. |
 | **Vsync (Vertical Sync)** | The blanking interval at the end of each video frame, used here as the timing reference for the decay mechanism that pulls accumulators toward neutral. |
 | **Wet/Dry** | A mixing convention where "wet" is the fully processed signal and "dry" is the unprocessed original; the fader crossfades between them. |
-| **YUV** | A colour encoding that separates brightness (Y) from colour information (U and V), used as the native colour space in Videomancer's 30-bit processing pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

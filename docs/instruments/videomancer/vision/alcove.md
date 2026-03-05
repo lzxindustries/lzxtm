@@ -96,6 +96,8 @@ The four background modes each produce a different degradation of the source vid
 
 ## Signal Flow
 
+Line Buffer Write → Background Processing → Foreground Scaling → ... → Interpolator → Output
+
 ```
 Input Video (YUV 4:4:4 30-bit)
 │
@@ -156,7 +158,7 @@ The region classifier evaluates each pixel's position against the pre-computed w
 | Default | 50% |
 | Suffix | % |
 
-Controls the size of the foreground window as a proportion of the full frame. At minimum, the window is very small — a tiny inset in the background. At maximum, the window fills nearly the entire frame, leaving only a thin border of processed background visible around the edges. The window dimensions are recomputed at each vsync from this pot value combined with the aspect ratio toggle.
+At minimum, the window is very small — a tiny inset in the background. At maximum, the window fills nearly the entire frame, leaving only a thin border of processed background visible around the edges. The window dimensions are recomputed at each vsync from this pot value combined with the aspect ratio toggle. Internally, controls the size of the foreground window as a proportion of the full frame.
 
 ---
 
@@ -167,7 +169,7 @@ Controls the size of the foreground window as a proportion of the full frame. At
 | Default | 50% |
 | Suffix | % |
 
-Controls the horizontal position of the foreground window within the frame. At 0%, the window is positioned at the left edge. At 50%, it is centred horizontally. At 100%, it is positioned at the right edge. The position is computed relative to the window size, so the window always remains within the frame bounds. The position is recomputed per frame at vsync.
+At 0%, the window is positioned at the left edge. At 50%, it is centred horizontally. At 100%, it is positioned at the right edge. The position is computed relative to the window size, so the window always remains within the frame bounds. The position is recomputed per frame at vsync. Internally, controls the horizontal position of the foreground window within the frame.
 
 ---
 
@@ -178,7 +180,7 @@ Controls the horizontal position of the foreground window within the frame. At 0
 | Default | 50% |
 | Suffix | % |
 
-Controls the vertical position of the foreground window within the frame. At 0%, the window is at the top. At 50%, centred vertically. At 100%, at the bottom. Like horizontal position, the vertical position keeps the window within frame bounds and is updated per frame.
+At 0%, the window is at the top. At 50%, centred vertically. At 100%, at the bottom. Like horizontal position, the vertical position keeps the window within frame bounds and is updated per frame. Internally, controls the vertical position of the foreground window within the frame.
 
 ---
 
@@ -189,7 +191,7 @@ Controls the vertical position of the foreground window within the frame. At 0%,
 | Default | 0% |
 | Suffix | % |
 
-Controls the width of the border around the foreground window in pixels. At minimum, there is no visible border — the foreground window transitions directly into the background. At maximum, a wide coloured or white frame surrounds the window. The border is rendered inside the region between the window edge and the background, consuming background space as it widens.
+At minimum, there is no visible border — the foreground window transitions directly into the background. At maximum, a wide coloured or white frame surrounds the window. The border is rendered inside the region between the window edge and the background, consuming background space as it widens. Internally, controls the width of the border around the foreground window in pixels.
 
 ---
 
@@ -240,6 +242,10 @@ Toggles 7 and 8 form a **combined 2-bit background mode selector**: 00 = Defocus
 
 Wet/dry crossfade between the original input video (delayed to match the 10-clock processing pipeline plus 4-clock interpolator) and the composited output. At 0%, the output is pure unprocessed input. At 100%, the output is the full DVE composite. Intermediate positions blend between the two.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -261,7 +267,7 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 *Classic Picture-in-Picture — simulated result across source images.*
 **Source**: Any video source — a camera feed or pre-recorded footage with visible subject matter.
 
-**Objective**: Create a standard broadcast picture-in-picture layout with a clean foreground inset over a defocused background.
+**What You'll Create**: Create a standard broadcast picture-in-picture layout with a clean foreground inset over a defocused background.
 
 1. **Set Defocus background**: BG Md A and BG Md B both off (mode 00).
 2. **Size the window**: Set Win Size to ~40%. A medium-sized window appears.
@@ -290,7 +296,7 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 *Mosaic Background with Coloured Border — simulated result across source images.*
 **Source**: Footage with saturated colours and visible detail.
 
-**Objective**: Combine the mosaic background mode with a hue-selected coloured border to create an abstract graphic composition.
+**What You'll Create**: Combine the mosaic background mode with a hue-selected coloured border to create an abstract graphic composition.
 
 1. **Set Mosaic mode**: Toggle BG Md A to On, BG Md B off (mode 01).
 2. **Large blocks**: Set BG Inten to ~80%. The background becomes a coarse mosaic of large colour blocks.
@@ -319,7 +325,7 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 *Dim Background Interview Layout — simulated result across source images.*
 **Source**: Camera feed of a person speaking — ideal for demonstrating broadcast interview framing.
 
-**Objective**: Create a professional-looking interview overlay where the background is dimmed to draw focus to the foreground subject.
+**What You'll Create**: Create a professional-looking interview overlay where the background is dimmed to draw focus to the foreground subject.
 
 1. **Set Dim mode**: Toggle BG Md A to On, BG Md B to On (mode 11).
 2. **Strong dimming**: Set BG Inten to ~70%. The background darkens significantly while the foreground window remains at full brightness.
@@ -335,9 +341,6 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 
 ## Tips
 
-- **Window size drives the DDA**: The foreground scaling quality depends on the ratio between the input resolution and the window pixel width. Larger windows produce near-unity scaling (minimal resampling). Very small windows produce heavy downsampling with nearest-neighbour stairstepping.
-- **Mosaic is the most graphic mode**: High BG Inten in Mosaic mode produces large blocks that turn the background into an abstract colour field. Combined with a coloured border, this creates a graphic design aesthetic.
-- **Defocus suggests depth**: Low-to-moderate Defocus with a thin white border creates the most naturalistic picture-in-picture, suggesting physical depth separation between foreground and background.
 - **Border hue as accent colour**: Use BrdrHue to match or contrast the predominant colour in the video. A complementary-colour border (opposite on the wheel) draws maximum attention to the window.
 - **Square windows for social media**: The Square aspect toggle produces 1:1 frames suitable for social media crop ratios. Position the window in a lower-third or corner for a professional overlay look.
 - **Dim mode for focus**: Dim is the subtlest background mode — it reduces background brightness without altering colour or spatial detail. Best for drawing the viewer's eye to the foreground window.
@@ -361,6 +364,7 @@ These exercises progress from basic picture-in-picture to complex multi-mode com
 | **Restoring Divider** | A multi-cycle binary division circuit that computes one quotient bit per clock cycle; Alcove uses a 21-clock restoring divider for DDA step calculation. |
 | **Sample-and-Hold** | A technique that captures a signal value at one moment and holds it constant until the next sample; used in Mosaic mode to produce block quantization. |
 | **Scanline** | A single horizontal row of pixels in a video frame, scanned left-to-right by the raster. |
-| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); Videomancer processes video natively in YUV 4:4:4 at 30-bit depth. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

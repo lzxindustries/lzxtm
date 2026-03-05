@@ -89,6 +89,8 @@ In stereoscopic imaging, the **convergence point** is the distance at which the 
 
 ## Signal Flow
 
+Y Channel → Sync Signals → 6× Line Buffers → Interpolator → Output
+
 ```
 Input Video (YUV 4:4:4 30-bit)
 │
@@ -138,7 +140,7 @@ The colour tints are computed per-pixel in YUV space. In Red/Cyan mode, the left
 | Default | 50.0% |
 | Suffix | % |
 
-Controls the overall depth effect strength by scaling how much each pixel's luminance contributes to its horizontal displacement. At 0%, there is no displacement and both eyes see the same image (flat, no 3D). At 50%, moderate depth mapping creates a subtle stereoscopic effect. At 100%, extreme displacement produces very strong parallax shifts — bright pixels are displaced far from their original position, potentially creating visible ghosting and tearing artefacts.
+At 0%, there is no displacement and both eyes see the same image (flat, no 3D). At 50%, moderate depth mapping creates a subtle stereoscopic effect. At 100%, extreme displacement produces very strong parallax shifts — bright pixels are displaced far from their original position, potentially creating visible ghosting and tearing artefacts. Internally, controls the overall depth effect strength by scaling how much each pixel's luminance contributes to its horizontal displacement.
 
 ---
 
@@ -171,7 +173,7 @@ Controls the inter-eye separation as a secondary multiplier on the displacement.
 | Default | 75.1% |
 | Suffix | % |
 
-Controls the strength of the colour tint applied to each eye's view. At 0%, the output luma carries the stereo information but no colour separation — the effect is primarily a brightness shift between left and right. At moderate values, a clear red/cyan (or green/magenta) colour separation is visible. At 100%, the tint dominates the output colour, producing vivid red and cyan hues.
+At 0%, the output luma carries the stereo information but no colour separation — the effect is primarily a brightness shift between left and right. At moderate values, a clear red/cyan (or green/magenta) colour separation is visible. At 100%, the tint dominates the output colour, producing vivid red and cyan hues. Internally, controls the strength of the colour tint applied to each eye's view.
 
 ---
 
@@ -201,7 +203,7 @@ Controls output brightness gain. At 50% (value 512), the brightness is unity (un
 
 | Switch | Off | On |
 |--------|-----|-----|
-| **7 — Mode** | Red/Cyan | Grn/Mag |
+| **7 — Mode** | Red/Cyan | Mono |
 | **8 — Depth Dir** | Bright Near | Bright Far |
 | **9 — Edge Key** | Off | On |
 | **10 — Crosseye** | Off | On |
@@ -221,6 +223,10 @@ Toggle 7 is a **mode selector** controlling the colour pair used for stereoscopi
 | Suffix | % |
 
 Wet/dry crossfade between the original input video (delayed to match the 12-clock processing pipeline plus 4-clock interpolator) and the anaglyphic stereoscopic output. At 0%, pure unprocessed input. At 100%, fully processed anaglyph rendering.
+
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
 
 ---
 
@@ -243,7 +249,7 @@ These exercises progress from basic depth mapping through stereo configuration t
 *Basic Depth Mapping — simulated result across source images.*
 **Source**: Landscape or scene with clear brightness gradients (bright foreground, dark background or vice versa).
 
-**Objective**: Understand how luminance-as-depth creates horizontal displacement and how the basic stereo parameters interact.
+**What You'll Create**: Understand how luminance-as-depth creates horizontal displacement and how the basic stereo parameters interact.
 
 1. **Start moderate**: Set Depth Amt to ~50%, Separation to ~40%, Converge to ~50%. Tint Str at ~75%.
 2. **Observe displacement**: Look at the image — you should see a slight red/cyan fringe around bright objects. This fringe IS the stereo separation.
@@ -271,7 +277,7 @@ These exercises progress from basic depth mapping through stereo configuration t
 *Depth Direction and Separation — simulated result across source images.*
 **Source**: High-contrast image with both bright and dark areas.
 
-**Objective**: Explore how swapping the depth direction changes the 3D perception and how separation controls the stereo intensity.
+**What You'll Create**: Explore how swapping the depth direction changes the 3D perception and how separation controls the stereo intensity.
 
 1. **Set moderate depth**: Depth Amt ~60%, Separation ~50%, Converge ~50%.
 2. **Bright Near mode**: Depth Dir set to Bright Near. Bright areas separate outward (closer).
@@ -299,7 +305,7 @@ These exercises progress from basic depth mapping through stereo configuration t
 *Green/Magenta Mode and Brightness Compensation — simulated result across source images.*
 **Source**: Colourful subject with varied hues — flowers, artwork, or coloured fabrics.
 
-**Objective**: Compare Red/Cyan vs Green/Magenta colour separation and understand brightness compensation for glasses viewing.
+**What You'll Create**: Compare Red/Cyan vs Green/Magenta colour separation and understand brightness compensation for glasses viewing.
 
 1. **Red/Cyan baseline**: Mode set to Red/Cyan. Moderate all depth parameters.
 2. **Observe colour loss**: Note how the red/cyan tint desaturates some original colours. Red objects look especially affected.
@@ -316,9 +322,6 @@ These exercises progress from basic depth mapping through stereo configuration t
 
 ## Tips
 
-- **With glasses, start conservative**: Begin with Depth Amt ~35% and Separation ~30% for comfortable viewing. Increase gradually.
-- **Convergence matters for comfort**: Set convergence so the most important subject has minimal colour fringe — that puts it on the screen plane. Objects behind and in front will pop.
-- **Red/Cyan is more available, Green/Magenta is more accurate**: Red/Cyan glasses are cheap and ubiquitous but desaturate reds. Green/Magenta preserves more colour but the glasses are less common.
 - **Dark subjects need Bright Far**: If your subject is dark against a bright background, toggle Depth Dir to Bright Far for a more natural depth relationship.
 - **Brightness compensation**: Colour filter glasses typically reduce brightness by 40-60%. Increase the Brightness pot above 50% to compensate.
 - **Tint strength is creative**: At moderate tint (50-75%), the effect is functional for 3D. At extreme tint, the red/cyan colour separation becomes an artistic aesthetic even without glasses.
@@ -341,7 +344,8 @@ These exercises progress from basic depth mapping through stereo configuration t
 | **Ping-Pong Buffer** | A double-buffering scheme where one buffer is written while the other is read, then the roles swap each line, preventing read/write conflicts. |
 | **Stereoscopic** | A technique that creates the illusion of three-dimensional depth by presenting slightly different images to each eye. |
 | **Wet/Dry** | A mixing convention where "wet" is the fully processed signal and "dry" is the unprocessed original; the fader crossfades between them. |
-| **YUV** | A colour encoding separating brightness (Y) from colour (U, V); each channel is processed at 10-bit precision in Videomancer. |
 | **Zero-Parallax Plane** | The virtual depth at which left and right eye views align exactly; objects here appear to sit on the screen surface, while nearer objects pop forward and farther objects recede. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---

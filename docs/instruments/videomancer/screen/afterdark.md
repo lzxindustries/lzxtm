@@ -54,6 +54,8 @@ Color cycling — smoothly rotating through the color spectrum over time — was
 
 ## Signal Flow
 
+Position Engine → Shape Rasterizer → Trail Compositor → Output Stage → Bypass
+
 ```
 Synthesis Generator
 │
@@ -140,7 +142,7 @@ Selects from eight shape variants that modify the basic rectangle. Different ste
 | Default | 25% |
 | Suffix | % |
 
-Controls the persistence of sprite trails. At zero, no trail is left — only the current sprite position is visible. As the control increases, previous positions fade more slowly, building up layered compositions of overlapping colored shapes. At maximum, trails persist almost indefinitely, eventually filling the entire frame with accumulated color.
+At zero, no trail is left — only the current sprite position is visible. As the control increases, previous positions fade more slowly, building up layered compositions of overlapping colored shapes. At maximum, trails persist almost indefinitely, eventually filling the entire frame with accumulated color. Internally, controls the persistence of sprite trails.
 
 ---
 
@@ -151,7 +153,7 @@ Controls the persistence of sprite trails. At zero, no trail is left — only th
 | Default | 0% |
 | Suffix | % |
 
-Sets the gravitational acceleration applied to the vertical velocity component when the Gravity toggle is enabled. At zero, there is no gravity even when the toggle is on. As the value increases the sprite arcs in parabolic trajectories, bouncing with increasing energy at the bottom of the screen. High gravity values produce rapid oscillatory bouncing.
+At zero, there is no gravity even when the toggle is on. As the value increases the sprite arcs in parabolic trajectories, bouncing with increasing energy at the bottom of the screen. High gravity values produce rapid oscillatory bouncing. Internally, sets the gravitational acceleration applied to the vertical velocity component when the Gravity toggle is enabled.
 
 ---
 
@@ -180,6 +182,10 @@ The five toggles control independent behavioral modes. Bounce enables edge refle
 
 Master brightness control for the entire synthesized output. Scales the final Y channel value before output. At minimum the output is black; at maximum the sprites and trails are at full brightness. This does not affect the color saturation, only the luminance level.
 
+
+
+> See [Common Controls & Glossary Reference](../common_reference.md) for details.
+
 ---
 
 ## Guided Exercises
@@ -190,7 +196,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 
 <img src={afterdark_exercise1_result} alt="Classic Bouncing Square result"/>
 *Classic Bouncing Square — simulated result across source images.*
-**Objective**: Recreate the iconic bouncing-square screensaver with rainbow trails.
+**What You'll Create**: Recreate the iconic bouncing-square screensaver with rainbow trails.
 
 1. Set Speed to about 40% for a leisurely drift.
 2. Set Size to about 30% for a medium square.
@@ -207,7 +213,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 
 <img src={afterdark_exercise2_result} alt="Gravitational Bounce result"/>
 *Gravitational Bounce — simulated result across source images.*
-**Objective**: Add gravity for parabolic sprite trajectories.
+**What You'll Create**: Add gravity for parabolic sprite trajectories.
 
 1. Start from Exercise 1 settings.
 2. Enable Gravity toggle (Switch 10).
@@ -224,7 +230,7 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 
 <img src={afterdark_exercise3_result} alt="Abstract Composition result"/>
 *Abstract Composition — simulated result across source images.*
-**Objective**: Use all features simultaneously to generate dense abstract textures.
+**What You'll Create**: Use all features simultaneously to generate dense abstract textures.
 
 1. Set Speed to about 70% for rapid movement.
 2. Set Size to about 20% for compact shapes.
@@ -241,9 +247,6 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 
 ## Tips
 
-- **Trail is the composition tool**: Low trail values give clean geometric motion; high values build dense layered paintings over time.
-- **Speed and Size trade off**: Fast small sprites create fine-grained trail textures; slow large sprites create bold overlapping blocks.
-- **Gravity creates natural arcs**: Even subtle gravity values add organic curvature to otherwise linear bounce paths.
 - **Color Cycle off for monochrome**: Disable cycling and set Color to your desired hue for single-color compositions.
 - **Rotate adds tumble**: The rotation toggle makes the rectangle spin as it moves, creating diamond and angled patterns in the trail.
 - **Feedback routing**: Send Afterdark's output through another Videomancer program and back for recursive generative compositions.
@@ -257,13 +260,12 @@ These exercises explore the range of Afterdark's generative capabilities, from c
 | **Color Cycling** | Continuously incrementing a hue angle to produce a smooth rainbow progression over time. |
 | **DDS** | Direct Digital Synthesis; an accumulator-based technique for generating waveforms at precise frequencies. |
 | **Edge Reflection** | Reversing a velocity component when a moving object reaches a boundary, simulating an elastic collision. |
-| **FPGA** | Field-Programmable Gate Array; a reconfigurable integrated circuit that executes the video processing pipeline. |
 | **Hue** | The attribute of color perception described as red, green, blue, etc.; the angular position on the color wheel. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state. |
-| **Pipeline** | A series of sequential processing stages where each stage's output feeds the next stage's input on each clock cycle. |
 | **Screensaver** | Software that displays moving graphics to prevent CRT phosphor burn-in during idle periods. |
 | **Sprite** | A two-dimensional graphical object that can be moved independently across a display. |
 | **Velocity Accumulator** | A register that adds a step value each frame to compute position, implementing constant-velocity motion. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V), used throughout the Videomancer video pipeline. |
+
+For common terms (YUV, FPGA, BRAM, Pipeline, etc.) see the [Common Glossary](../common_reference.md#common-glossary).
 
 ---
