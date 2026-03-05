@@ -17,7 +17,7 @@ I've said "we're close" too many times. I'm not going to say it again. Instead, 
 
 ## Where We Are Today
 
-As of this week, my primary focus is the Videomancer V2.0 firmware release, launching **March 12th** with 17 new programs. This is directly relevant to Chromagnon — the two instruments share the same embedded platform, video I/O architecture, and core firmware library. Most of the time spent on Videomancer's firmware is time invested in Chromagnon's codebase.
+As of this week, my primary focus is a major Videomancer firmware update, launching **March 12th** — 17 new programs plus a round of bug fixes and feature refinements that finalize the platform. This is directly relevant to Chromagnon — the two instruments share the same embedded platform, video I/O architecture, and core firmware library. Most of the time spent on Videomancer's firmware is time invested in Chromagnon's codebase.
 
 The day after that launch, Chromagnon has my full attention. Here's where things stand:
 
@@ -119,7 +119,7 @@ Here is the milestone schedule for Chromagnon production. I'm erring on the caut
 
 | Milestone | Target | Status |
 |---|---|---|
-| Videomancer V2.0 firmware launch (17 new programs) | March 12, 2026 | Final testing |
+| Videomancer major firmware update (17 new programs, bug fixes, feature refinements) | March 12, 2026 | Final testing |
 | Full transition to Chromagnon engineering | Mid-March 2026 | Ready |
 | RevI core board design revision complete | Early April 2026 | Not started |
 | Firmware integration begins (on existing dev hardware) | April 2026 | — |
@@ -137,7 +137,7 @@ Here is the milestone schedule for Chromagnon production. I'm erring on the caut
 **Fulfillment order:** Strictly by the sequence your pre-order was received. No exceptions for dealers vs. direct customers.
 
 ![Chromagnon production timeline](./chromagnon-timeline-graphic.png)
-*Visual overview of the production timeline — milestones from the V2.0 launch through fulfillment at scale.*
+*Visual overview of the production timeline — milestones from the Videomancer firmware update through fulfillment at scale.*
 
 ### What Could Move These Dates
 
@@ -230,7 +230,7 @@ I know the updates slowed down last year. After the team downsized last summer, 
 
 I started this blog in December 2023 with a promise to be transparent about Chromagnon's development. Some of you have been waiting since pre-orders opened — years before this blog even existed. The project has been through more upheaval than I ever anticipated, and I'm not going to pretend the path here was graceful. But the goal has never wavered: build and ship the most powerful video synthesis instrument we've ever made, and get it into the hands of every artist who trusted us with their order.
 
-Videomancer proved we can design, build, and ship a complex instrument. It's real. The platform is proven. What's left for Chromagnon is the final integration sprint — and that begins after the V2.0 firmware launch on March 12.
+Videomancer proved we can design, build, and ship a complex instrument. It's real. The platform is proven. What's left for Chromagnon is the final integration sprint — and that begins after the Videomancer firmware update launches on March 12.
 
 Thank you for your patience, and for sticking with us through all of this. I'll see you in April with board designs to show and firmware integration underway.
 

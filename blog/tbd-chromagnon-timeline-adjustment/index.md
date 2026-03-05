@@ -4,7 +4,7 @@ title: "Chromagnon: Schedule Update"
 authors: [lars]
 tags: [chromagnon, manufacturing, business]
 draft: true
-image: ./chromagnon-timeline.jpg
+# image: ./chromagnon-timeline.jpg
 ---
 
 <!-- 

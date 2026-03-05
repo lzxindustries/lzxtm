@@ -4,7 +4,7 @@ title: "Chromagnon: Hardware Revision Update"
 authors: [lars]
 tags: [chromagnon, manufacturing]
 draft: true
-image: ./chromagnon-revision.jpg
+# image: ./chromagnon-revision.jpg
 ---
 
 <!-- 

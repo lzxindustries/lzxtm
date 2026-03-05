@@ -4,7 +4,7 @@ title: "Chromagnon Update: April 2026"
 authors: [lars]
 tags: [chromagnon, manufacturing]
 draft: true
-image: ./chromagnon-revI-board.jpg
+# image: ./chromagnon-revI-board.jpg
 ---
 
 Monthly Chromagnon update for April 2026.
@@ -15,11 +15,11 @@ Monthly Chromagnon update for April 2026.
 CONTEXT: This is the first monthly update after the March 5 production plan post.
 By this date, the RevI core board DESIGN revision should be complete. The board has been
 submitted for fabrication but the physical prototype has NOT arrived yet.
-The Videomancer V2.0 firmware launched March 12 and full Chromagnon focus began mid-March.
+The Videomancer firmware update launched March 12 and full Chromagnon focus began mid-March.
 Firmware integration work is underway on existing development hardware (Videomancer/EVS39 boards).
 
 KEY MESSAGING TO REINFORCE:
-- Videomancer V2.0 launch happened on schedule → demonstrates execution capability
+- Videomancer firmware update launched on schedule → demonstrates execution capability
 - Full-time Chromagnon focus since mid-March → show what 2-3 weeks of focused work produced
 - RevI board design is DONE and submitted → show board layout renders/previews
 - Firmware integration has STARTED on existing dev hardware — don't need to wait for prototype
@@ -75,7 +75,7 @@ is happening in parallel. This is a key narrative point.
 
 <!--
 Report on:
-- Videomancer V2.0 post-launch status (any issues? adoption?)
+- Videomancer firmware update post-launch status (any issues? adoption?)
 - Chromagnon firmware porting progress
 - Desktop configuration app status
 - Any new features or capabilities discovered during integration

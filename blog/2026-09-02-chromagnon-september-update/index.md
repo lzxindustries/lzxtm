@@ -4,7 +4,7 @@ title: "Chromagnon Fulfillment: September 2026"
 authors: [lars]
 tags: [chromagnon, manufacturing]
 draft: true
-image: ./chromagnon-shipping.jpg
+# image: ./chromagnon-shipping.jpg
 ---
 
 Monthly Chromagnon fulfillment update for September 2026.

@@ -4,7 +4,7 @@ title: "Chromagnon Update: July 2026"
 authors: [lars]
 tags: [chromagnon, manufacturing]
 draft: true
-image: ./chromagnon-first-batch.jpg
+# image: ./chromagnon-first-batch.jpg
 ---
 
 Monthly Chromagnon update for July 2026.

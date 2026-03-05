@@ -4,7 +4,7 @@ title: "Chromagnon Update: May 2026"
 authors: [lars]
 tags: [chromagnon, manufacturing]
 draft: true
-image: ./chromagnon-validation.jpg
+# image: ./chromagnon-validation.jpg
 ---
 
 Monthly Chromagnon update for May 2026.

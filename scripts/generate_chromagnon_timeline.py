@@ -28,7 +28,7 @@ MILESTONE_BG = '#2a2a2d'      # Slightly lighter bg for milestone boxes
 
 # === Milestones ===
 milestones = [
-    ("MAR 12", "V2.0 Firmware\nLaunch", "done"),
+    ("MAR 12", "Videomancer\nFirmware Update", "done"),
     ("MID-MAR", "Full Chromagnon\nFocus", "done"),
     ("EARLY APR", "RevI Board\nDesign Complete", "progress"),
     ("APR", "Firmware\nIntegration", "future"),
