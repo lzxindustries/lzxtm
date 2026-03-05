@@ -38,8 +38,8 @@ The day after that launch, Chromagnon has my full attention. Here's where things
 - Hardware validation — verifying all functions on the new board (2–4 weeks)
 - Production ordering and manufacturing lead time (4–6 weeks)
 
-<!-- MEDIA PLACEHOLDER: Photo of current Chromagnon prototype on workbench with test equipment -->
-<!-- SHOT LIST ITEM: chromagnon-revI-core-board.jpg — overhead shot of RevI core board layout on screen or physical prototype board -->
+![Chromagnon core board](./chromagnon-revI-core-board.jpg)
+*Chromagnon core board — the foundation of the instrument. The RevI revision will integrate the validated EVS39 platform into this layout.*
 
 ## What Changed — and Why It's Better
 
@@ -88,8 +88,14 @@ The instrument you ordered is the instrument you're getting. Same 35 jacks — I
 
 And yes — every pre-order will be fulfilled at the price you paid.
 
-<!-- MEDIA PLACEHOLDER: Front panel render or photo showing all controls and jacks labeled -->
-<!-- SHOT LIST ITEM: chromagnon-front-panel.jpg — annotated front panel photo or render  -->
+![Chromagnon front panel](./chromagnon-front-panel.png)
+*Chromagnon's front panel — 35 jacks, 19 pots, 17 switches. Same layout, same controls, same instrument.*
+
+![Chromagnon sheet metal enclosure rendering](./chromagnon-sheet-metal-enclosure.png)
+*Rendering of Chromagnon's sheet metal enclosure — the "boat" design, manufactured domestically in Oregon.*
+
+![Sheet metal prototypes](./sheet-metal-prototypes.jpg)
+*Sheet metal parts for Chromagnon — prototype parts in hand.*
 
 ## Where Your Pre-Order Investment Stands
 
@@ -101,8 +107,11 @@ The money is in the project. It has been for a long time. Projects other than Ch
 
 The good news is that we're past the phase where money goes in and nothing visible comes out. The platform R&D is done — it's proven in production on Videomancer. What remains is the Chromagnon-specific integration, validation, and production — and we have both the setup and the sales to execute it.
 
-<!-- MEDIA PLACEHOLDER: Photo of the 700 completed Chromagnon control board assemblies in storage -->
-<!-- SHOT LIST ITEM: chromagnon-control-boards-700.jpg — wide shot of the completed control board assemblies, emphasizing quantity -->
+![Chromagnon on the workbench](./chromagnon-workbench.jpg)
+*Chromagnon RevH prototype on the workbench.*
+
+![Chromagnon subassembly boards](./chromagnon-subassemblies.jpg)
+*Validated subassembly boards from earlier in development — FQM, DEC, FWR, FQA, HGA. These circuits are now integrated into the EVS39 platform.*
 
 ## The Schedule
 
@@ -127,6 +136,9 @@ Here is the milestone schedule for Chromagnon production. I'm erring on the caut
 
 **Fulfillment order:** Strictly by the sequence your pre-order was received. No exceptions for dealers vs. direct customers.
 
+![Chromagnon production timeline](./chromagnon-timeline-graphic.png)
+*Visual overview of the production timeline — milestones from the V2.0 launch through fulfillment at scale.*
+
 ### What Could Move These Dates
 
 I want to be honest about risk, because I've learned the hard way that pretending risks don't exist just makes the eventual news worse.
@@ -146,8 +158,7 @@ Once we hit the Ship Unit #1 milestone:
 3. **Customer portal.** We're building a new system at lzxindustries.net where you'll be able to check your queue position, update your shipping address, and opt into notifications. More details on this soon.
 4. **Address verification.** Before each batch ships, we'll reach out to confirm your shipping address is current. If you've moved since placing your order, you don't need to do anything right now — we'll contact you before your unit ships. If you'd like to update proactively, email **sales@lzxindustries.net**.
 
-<!-- MEDIA PLACEHOLDER: Screenshot or mockup of customer portal queue position page -->
-<!-- SHOT LIST ITEM: chromagnon-customer-portal-mockup.png — wireframe or screenshot of order tracking interface -->
+<!-- Customer portal mockup — will be added when the portal is closer to launch -->
 
 ## The Videomancer Connection
 
@@ -197,8 +208,8 @@ No. While they share the same underlying platform, the instruments are architect
 **What if I want to try Chromagnon's functionality now?**
 Download the [Chromagnon Simulator](/blog/chromagnon-simulator-downloads) for Windows or macOS. It's a desktop application built during development that previews the instrument's signal processing capabilities.
 
-<!-- MEDIA PLACEHOLDER: Screenshot of Chromagnon Simulator application -->
-<!-- SHOT LIST ITEM: chromagnon-simulator-screenshot.png — Chromagnon Simulator app showing pattern output -->
+![Chromagnon Simulator](./chromagnon-simulator-screenshot.png)
+*The Chromagnon Simulator desktop app — download it [here](/blog/chromagnon-simulator-downloads) to preview the instrument's signal processing.*
 
 ## Update Schedule
 
@@ -232,17 +243,11 @@ Lars
 
 ---
 
-## Media Shot List (Internal — Remove Before Publishing)
+## Remaining Media (Internal — Remove Before Publishing)
 
-The following photos/media should be captured and added before this post goes live:
+The following photos still need to be captured:
 
-1. **chromagnon-revI-core-board.jpg** — Overhead photo of the RevI core board (layout on screen or physical board). Used as post header image.
-2. **chromagnon-front-panel.jpg** — Annotated front panel photo or high-quality render showing controls, jacks, and labels.
-3. **chromagnon-sheet-metal-enclosure.jpg** — Photo of the sheet metal enclosure prototype (the "boat" design).
-4. **chromagnon-workbench.jpg** — Current prototype on workbench with test equipment, showing active development.
-5. **chromagnon-simulator-screenshot.png** — Screenshot of the Chromagnon Simulator desktop app showing output.
-6. **chromagnon-customer-portal-mockup.png** — Wireframe or screenshot of the planned order tracking portal (optional — can be added to a later post).
-7. **videomancer-chromagnon-side-by-side.jpg** — Both instruments side by side, showing the family resemblance and differences.
-8. **chromagnon-subassemblies.jpg** — Photo of the validated subassembly boards (FQM, DEC, etc.) even though they're deprecated — shows the R&D investment.
-9. **chromagnon-timeline-graphic.png** — Optional: a clean visual timeline/roadmap graphic for social media sharing.
-10. **chromagnon-control-boards-700.jpg** — Wide shot of the 700 completed control board assemblies. Critical photo — this is tangible proof that pre-order investment is in the project.
+1. **chromagnon-control-boards-700.jpg** — Wide shot of the 700 completed control board assemblies. Critical photo — tangible proof that pre-order investment is in the project. (No existing image available.)
+2. **videomancer-chromagnon-side-by-side.jpg** — Both instruments side by side. (Optional — no existing photo.)
+
+Images already placed: core board, sheet metal enclosure (render + prototypes), workbench, subassemblies, simulator screenshot, front panel, timeline graphic.
