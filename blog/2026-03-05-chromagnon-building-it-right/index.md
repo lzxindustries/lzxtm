@@ -11,9 +11,7 @@ Hello video friends. It's a Thursday here in Portland — spring is creeping in,
 
 <!--truncate-->
 
-In December, I said a realistic timeline for Chromagnon production was toward the end of Q1 2026. That target is not going to be met. I owe you an honest explanation and a new plan — one built on what we've actually accomplished, not what I hope will happen.
-
-I've said "we're close" too many times. I'm not going to say it again. Instead, I'm going to lay out every remaining milestone, when I expect to hit it, and what could move those dates. Then I'm going to commit to a regular update schedule so you can hold me to it.
+In December, I said a potential timeline for Chromagnon production was toward the end of Q1 2026. While we may not be reaching the fulfillment milestone within this quarter, we are making progress.  I owe you a look into a comprehensive plan — one built on what we've recently accomplished, and what our next steps are.
 
 ## Where We Are Today
 
@@ -41,36 +39,22 @@ The day after that launch, Chromagnon has my full attention. Here's where things
 ![Chromagnon core board](./chromagnon-revI-core-board.jpg)
 *Chromagnon core board — the foundation of the instrument. The RevI revision will integrate the validated EVS39 platform into this layout.*
 
-## What Changed — and Why It's Better
+## What Changed
 
 Some of you have followed every revision of this project. Others placed a pre-order years ago and just want to know when it ships. Either way, you should understand the major decision we made in 2025, because it's the reason Chromagnon will be a better instrument than what we originally planned.
 
 ### The Short Version
 
-In April 2025, tariffs on Chinese PCB assembly surged from baseline rates to 175% overnight. A $284 assembly order got a $498 tariff added at checkout. Our entire production plan — which relied on Chinese contract assembly for Chromagnon's massive, 1300+ component circuit board — became financially impossible.
+In April 2025, tariffs on Chinese PCB assembly surged from baseline rates to 175% overnight. A $284 assembly order became a $782 assembly order. Our entire production plan — which relied on Chinese contract assembly for Chromagnon's massive, 1300+ component circuit board — became financially impossible.
 
 We had three options:
 1. **Push through and raise the price** to $3,200+ — breaking our commitment to pre-order customers
 2. **Cancel the project** — unthinkable
-3. **Redesign for domestic manufacturing** — the only real choice
+3. **Redesign with an alternate approach** — the only real choice
 
-We chose door number three. It cost us ~$77,000 in sunk tooling and prototypes (injection molds, custom knobs, previous board revisions), and it cost us time. But the redesigned Chromagnon is genuinely better than the original plan.
+We chose door number three. It cost us money and it cost us time. But the redesigned Chromagnon is genuinely better than the original plan.
 
 I also want to address something directly: some of you are frustrated that we developed Videomancer during this period. I understand, and I go into the full reasoning [below](#the-videomancer-connection). The short version is that when tariffs killed our production plan, we needed a new platform, new manufacturing processes, and revenue to fund it all. Videomancer was the answer to those problems. We took out business loans to fund its development — it was not funded by Chromagnon pre-order money.
-
-### What We Changed
-
-| | Original Plan | New Design |
-|---|---|---|
-| **Enclosure** | Injection-molded plastic ($45K tooling, China) | Sheet metal (domestic vendor, Oregon) |
-| **Knobs** | Custom molded ($12K tooling) | Gen3 standard knobs (zero tooling cost) |
-| **Signal Processing** | High-density analog with 20+ discrete multiplier circuits | FPGA-based DSP with analog I/O buffers |
-| **Platform** | Custom Zynq SoC implementation | EVS39 — shared with Videomancer, field-proven |
-| **Button Caps** | Injection-molded ($8K tooling) | Resin 3D-printed in-house |
-| **Cooling** | Active fan required | Passive (no fan, silent operation) |
-| **Manufacturing** | China SMT assembly | In-house + domestic contract assembly |
-
-The net result: **lower per-unit cost than the original design**, dramatically reduced tariff exposure, and a manufacturing process we've already proven works — we've shipped over 300 Videomancers through the same production setup since October.
 
 ### What the FPGA Architecture Means for You
 
@@ -80,11 +64,9 @@ Moving the high-speed signal processing to FPGA is an upgrade, not a compromise.
 - **Firmware update path** — potential for new processing modes and features over time, delivered via SD card
 - **Better signal quality** — the analog I/O buffers and CV input circuits are still high-quality analog hardware, but the processing core operates without the noise and calibration drift inherent in 20+ discrete multiplier stages
 
-The ILDA/laser outputs remain fully analog. The front panel controls, jacks, and physical interface are identical to what's been shown and described since day one.
-
 ## What Has Not Changed
 
-The instrument you ordered is the instrument you're getting. Same 35 jacks — ILDA, composite, component, XY, CV inputs for position, rotation, size, skew, edge, curve, modulation. Same 19 pots and 17 switches for hands-on control. Same complex cartesian vector processor at the core, performing real-time 2D coordinate transforms on video and laser signals (now FPGA-implemented, which actually improves bandwidth and signal quality). Same quad waveform generators, same video sync generation and genlock, same frame-synchronized video input, same ILDA laser I/O with adjustable DIP switch cutoff filters, same HD support up to 1080i60. Same 52HP width, works in EuroRack or standalone with the included 12V adapter.
+The instrument you ordered is the instrument you're getting. Same 35 jacks — ILDA, composite, component, XY, CV inputs for position, rotation, size, skew, edge, curve, modulation. Same 19 pots and 17 switches for hands-on control. Same complex cartesian vector processor at the core, performing real-time 2D coordinate transforms on video and laser signals (now FPGA-implemented, which actually improves bandwidth and signal quality). Same waveform generators, same video sync generation and genlock, same video input, same ILDA laser I/O with adjustable cutoff filters, same HD support up to 1080i60. Same 52HP width, works in EuroRack or standalone with the included 12V adapter.
 
 And yes — every pre-order will be fulfilled at the price you paid.
 
@@ -101,11 +83,9 @@ And yes — every pre-order will be fulfilled at the price you paid.
 
 You trusted us with your money, and here's where it is.
 
-Your pre-order funds were invested directly into Chromagnon development and production preparation. **All 700 Chromagnon control board assemblies are already built** and sitting in our workshop, ready for integration into finished units. These boards will go through final functional testing as part of the assembly and QC process. The pre-order investment is also absorbed into years of engineering — PCB prototyping, component purchasing, firmware development, and the $77,000 in sunk tooling costs from the original design that had to be abandoned.
+Your pre-order funds were invested directly into Chromagnon development and production preparation. **All 700 Chromagnon control board assemblies are already built** and sitting in our workshop, ready for integration into finished units. These boards will go through final functional testing as part of the assembly and QC process. The pre-order investment is also absorbed into years of engineering — PCB prototyping, component purchasing, firmware development, and sunk tooling costs from the portions of the design that had to be abandoned.
 
 The money is in the project. It has been for a long time. Projects other than Chromagnon — our modular catalog, and now Videomancer — have been subsidizing Chromagnon's continued development for years. Videomancer development was funded separately through business loans, not from Chromagnon pre-orders. Chromagnon fulfillment has been and remains the company's #1 priority.
-
-The good news is that we're past the phase where money goes in and nothing visible comes out. The platform R&D is done — it's proven in production on Videomancer. What remains is the Chromagnon-specific integration, validation, and production — and we have both the setup and the sales to execute it.
 
 ![Chromagnon on the workbench](./chromagnon-workbench.jpg)
 *Chromagnon RevH prototype on the workbench.*
@@ -170,11 +150,11 @@ I know some of you see it differently: **why did we build a new product when Chr
 
 Videomancer took real time and attention in 2025 — I said as much in December, and I'm not going to pretend otherwise. But it wasn't a choice between Videomancer and Chromagnon. It was a choice between Videomancer-then-Chromagnon and neither.
 
-When tariffs hit in April 2025, Chromagnon's production plan was dead. We needed a new platform and domestic manufacturing. We took out business loans to fund Videomancer — Chromagnon pre-order funds were not used, they were already invested in Chromagnon's control boards and engineering. Videomancer proved out the EVS39 platform, the domestic assembly process, and the contract assembly relationship that Chromagnon now inherits. Trying to prove all of that out on a $1,600 instrument with 700 pre-orders at risk would have been reckless. And now, Videomancer sales are directly funding Chromagnon production purchases. The two codebases share roughly 80% of their infrastructure — Chromagnon firmware work continued alongside Videomancer throughout 2025.
+When tariffs hit in April 2025, Chromagnon's production plan was dead. We needed a new platform and manufacturing options. We took out business loans to fund Videomancer — Chromagnon pre-order funds were not used, they were already invested in Chromagnon's control boards and engineering. Videomancer proved out the FPGA video platform, a new assembly process, and the contract assembly relationship that Chromagnon now inherits. Trying to proof all of that out on a $1,600 instrument with 700 pre-orders at risk would have been reckless. And now, Videomancer sales are directly funding Chromagnon production purchases. The two codebases share roughly 80% of their infrastructure — Chromagnon firmware work continued alongside Videomancer throughout 2025.
 
 Without Videomancer, we'd have no tested platform for Chromagnon's redesign, no proven production process, no assembly partner, and no revenue to fund production.
 
-Over 300 Videomancers have shipped since October 2025. Before Videomancer went on public sale on October 31st, over 150 units shipped exclusively to Chromagnon pre-order customers who received early access. The platform works. The production process works. What remains is the Chromagnon-specific integration and validation.
+Over 300 Videomancers have shipped since October 2025. Before Videomancer went on public sale on October 31st, over 150 units were sold exclusively to Chromagnon pre-order customers who received early access. The platform works. The production process works. What remains is the Chromagnon-specific integration and validation.
 
 ## Frequently Asked Questions
 
@@ -224,13 +204,13 @@ Starting now, I'm committing to **monthly Chromagnon-focused updates** posted in
 | **August 2026** | Ship Unit #1 announcement, fulfillment begins |
 | **September onward** | Monthly batch shipping updates until all pre-orders fulfilled |
 
-I know the updates slowed down last year. After the team downsized last summer, I picked up a lot of roles — technical support, sales emails, shipping, production coordination — on top of the engineering work. That's not an excuse, but it's the reason. I'm done going quiet. You'll hear from me every month with specifics — not promises, not "we're close," but measurable progress against the schedule above.
+I know the updates slowed down last year. After the team downsized last summer, I picked up a lot of roles — technical support, sales emails, shipping, production coordination — on top of the engineering work. That's not an excuse, but it's the reason. You'll hear from me every month with specifics.
 
 ## Looking Forward
 
 I started this blog in December 2023 with a promise to be transparent about Chromagnon's development. Some of you have been waiting since pre-orders opened — years before this blog even existed. The project has been through more upheaval than I ever anticipated, and I'm not going to pretend the path here was graceful. But the goal has never wavered: build and ship the most powerful video synthesis instrument we've ever made, and get it into the hands of every artist who trusted us with their order.
 
-Videomancer proved we can design, build, and ship a complex instrument. It's real. The platform is proven. What's left for Chromagnon is the final integration sprint — and that begins after the Videomancer firmware update launches on March 12.
+Videomancer proved we can design, build, and ship a complex instrument. What's left for Chromagnon is the final integration sprint — and that begins after the Videomancer firmware update launches on March 12.
 
 Thank you for your patience, and for sticking with us through all of this. I'll see you in April with board designs to show and firmware integration underway.
 
