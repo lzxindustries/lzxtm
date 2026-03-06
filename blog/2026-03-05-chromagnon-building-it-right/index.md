@@ -3,7 +3,7 @@ slug: chromagnon-building-it-right
 title: "Chromagnon: Building It Right"
 authors: [lars]
 tags: [chromagnon, manufacturing, business]
-draft: true
+draft: false
 image: ./chromagnon-revI-core-board.jpg
 ---
 
