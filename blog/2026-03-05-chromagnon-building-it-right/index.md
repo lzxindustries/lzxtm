@@ -37,7 +37,7 @@ The day after that launch, Chromagnon has my full attention. Here's where things
 - Production ordering and manufacturing lead time (4–6 weeks)
 
 ![Chromagnon core board](./chromagnon-revI-core-board.jpg)
-*Chromagnon core board — the foundation of the instrument. The RevI revision will integrate the validated EVS39 platform into this layout.*
+*Chromagnon core board — the foundation of the instrument. The RevI revision will integrate the validated Videomancer platform into this layout.*
 
 ## What Changed
 
@@ -91,7 +91,7 @@ The money is in the project. It has been for a long time. Projects other than Ch
 *Chromagnon RevH prototype on the workbench.*
 
 ![Chromagnon subassembly boards](./chromagnon-subassemblies.jpg)
-*Validated subassembly boards from earlier in development — FQM, DEC, FWR, FQA, HGA. These circuits are now integrated into the EVS39 platform.*
+*Validated subassembly boards from earlier in development — FQM, DEC, FWR, FQA, HGA.*
 
 ## The Schedule
 
