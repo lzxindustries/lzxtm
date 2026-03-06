@@ -121,7 +121,7 @@ Here is the milestone schedule for Chromagnon production. I'm erring on the caut
 
 ### What Could Move These Dates
 
-I want to be honest about risk, because I've learned the hard way that pretending risks don't exist just makes the eventual news worse.
+I want to be honest about risk, because even though some things are not to plan -- it only makes bad news worse, if you don't know where things may get off track.
 
 **Medium risk:** The RevI core board requiring more than one revision cycle. Almost every circuit on this board has already been validated in Videomancer's production hardware, which reduces — but doesn't eliminate — the chance of needing a second spin. This is integration work, not new design work, but integration on a board this complex can still surface issues.
 
