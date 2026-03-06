@@ -171,13 +171,13 @@ Yes. The front panel, controls, jacks, feature set, and user experience are the 
 Yes. Every pre-order will be fulfilled at the price you paid, regardless of when you ordered. Chromagnon's current list price is $1,599. Many pre-orders were placed at $799 or $1,199. We are honoring every one of them.
 
 **Can I cancel or change my pre-order?**
-Email **sales@lzxindustries.net** and we'll work with you. We understand if the wait has been too long.
+Email **sales@lzxindustries.net** and we'll work with you.
 
 **How will I know when my unit is about to ship?**
 We'll contact you to verify your shipping address before your batch enters assembly. You'll receive a shipping notification with tracking information when your unit ships. The upcoming customer portal will also provide queue position visibility.
 
 **What modules pair well with Chromagnon?**
-DWO3 and DSG3 for complex waveform generation, Scrolls for linear animation (complementing Chromagnon's rotary internal generators), and any Gen3 module that outputs control voltage. Chromagnon can operate standalone or as the centerpiece of a modular system — it includes its own sync generator, video input with frame synchronizer, and video output encoder.
+DWO3 and DSG3 for complex waveform generation, Scrolls for linear animation (complementing Chromagnon's rotary internal generators), and any Gen3 module that outputs control voltage. Chromagnon can operate standalone or as the centerpiece of a modular system — it includes its own sync generator, video input, and video output encoder.
 
 **Do pre-orders include the standalone enclosure?**
 Yes. Every pre-order includes the complete instrument — the module installed in its standalone sheet metal enclosure with the included 12V DC power adapter. When Chromagnon becomes a catalog product, we'll offer separate SKUs for the module alone and the standalone version, but all pre-orders receive the full standalone unit.
