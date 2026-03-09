@@ -44,6 +44,10 @@ Due to its extraordinary versatility, Videomancer can perform many functions, in
 
 Each of Videomancer's 12 Parameters can be driven by any modulation input, or by a unique low frequency oscillator per each Parameter.
 
+:::note
+Videomancer does not convert between resolution formats or frame rates. It cannot upscale or downscale a video signal, or change the number of frames per second.
+:::
+
 ### Architecture
 
 Under the hood, Videomancer is an *embedded system*, a special-purpose computer driven by a Field-Programmable Gate Array (FPGA). This is a type of processor that can be configured &ldquo;in the field&rdquo; to implement different circuits via firmware. That means Videomancer can perform many different functions with a level of efficiency that would otherwise require custom-designed hardware for each function. Instead of a different physical circuit, the FPGA simply loads a different firmware program. This approach diverges radically from conventional digital graphics that rely on parallel processing on a GPU. Videomancer's architecture imparts extraordinary versatility and power, while remaining affordable, portable, and power-efficient.
