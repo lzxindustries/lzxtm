@@ -1,8 +1,0 @@
-{
-  "label": "Render",
-  "position": 24,
-  "link": {
-    "type": "generated-index",
-    "description": "Rasterization, noise fields and illumination."
-  }
-}

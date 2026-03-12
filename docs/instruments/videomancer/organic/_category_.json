@@ -1,8 +1,0 @@
-{
-  "label": "Organic",
-  "position": 20,
-  "link": {
-    "type": "generated-index",
-    "description": "Biological simulations, cellular automata, flocking, metaballs."
-  }
-}

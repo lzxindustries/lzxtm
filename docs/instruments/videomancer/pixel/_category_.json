@@ -1,8 +1,0 @@
-{
-  "label": "Pixel",
-  "position": 21,
-  "link": {
-    "type": "generated-index",
-    "description": "Spatial resampling, pixelation and displacement."
-  }
-}

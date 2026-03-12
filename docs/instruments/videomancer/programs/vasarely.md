@@ -1,0 +1,371 @@
+---
+draft: true
+sidebar_position: 318
+slug: /instruments/videomancer/vasarely
+title: "Vasarely"
+image: /img/instruments/videomancer/vasarely/vasarely_hero_s1.png
+description: "Victor Vasarely (1906–1997) was the father of Op Art — a movement that used precise geometric patterns and optical illusions to create the sensation of depth, motion, and vibration on a flat surface."
+---
+
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
+import vasarely_control_panel from '/img/instruments/videomancer/vasarely/vasarely_control_panel.png';
+import vasarely_source1_ballerina from '/img/instruments/videomancer/vasarely/vasarely_source1_ballerina.png';
+import vasarely_source2_fruit from '/img/instruments/videomancer/vasarely/vasarely_source2_fruit.png';
+import vasarely_source3_elephant from '/img/instruments/videomancer/vasarely/vasarely_source3_elephant.png';
+import vasarely_source4_pattern from '/img/instruments/videomancer/vasarely/vasarely_source4_pattern.png';
+import vasarely_source5_woman from '/img/instruments/videomancer/vasarely/vasarely_source5_woman.png';
+import vasarely_source6_wood from '/img/instruments/videomancer/vasarely/vasarely_source6_wood.png';
+import vasarely_hero_s1 from '/img/instruments/videomancer/vasarely/vasarely_hero_s1.png';
+import vasarely_hero_s2 from '/img/instruments/videomancer/vasarely/vasarely_hero_s2.png';
+import vasarely_hero_s3 from '/img/instruments/videomancer/vasarely/vasarely_hero_s3.png';
+import vasarely_hero_s4 from '/img/instruments/videomancer/vasarely/vasarely_hero_s4.png';
+import vasarely_hero_s5 from '/img/instruments/videomancer/vasarely/vasarely_hero_s5.png';
+import vasarely_hero_s6 from '/img/instruments/videomancer/vasarely/vasarely_hero_s6.png';
+import vasarely_ex1_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s1.png';
+import vasarely_ex1_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s2.png';
+import vasarely_ex1_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s3.png';
+import vasarely_ex1_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s4.png';
+import vasarely_ex1_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s5.png';
+import vasarely_ex1_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex1_s6.png';
+import vasarely_ex2_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s1.png';
+import vasarely_ex2_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s2.png';
+import vasarely_ex2_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s3.png';
+import vasarely_ex2_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s4.png';
+import vasarely_ex2_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s5.png';
+import vasarely_ex2_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex2_s6.png';
+import vasarely_ex3_s1 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s1.png';
+import vasarely_ex3_s2 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s2.png';
+import vasarely_ex3_s3 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s3.png';
+import vasarely_ex3_s4 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s4.png';
+import vasarely_ex3_s5 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s5.png';
+import vasarely_ex3_s6 from '/img/instruments/videomancer/vasarely/vasarely_ex3_s6.png';
+
+# Vasarely
+
+<span class="head2_nolink">Videomancer Program Guide</span>
+
+<BeforeAfterSlider
+  sources={[
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_hero_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_hero_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_hero_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_hero_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_hero_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_hero_s6 },
+  ]}
+/>
+*Vasarely applying spherical grid bulge deformation to live video, producing an Op Art composition where a checkerboard pattern warps around an invisible sphere as if painted on its surface.*
+
+---
+
+## Overview
+
+Victor Vasarely (1906–1997) was the father of Op Art — a movement that used precise geometric patterns and optical illusions to create the sensation of depth, motion, and vibration on a flat surface. His most iconic works feature regular grids of shapes that swell and distort around invisible spherical forms, suggesting three-dimensional volumes emerging from two-dimensional surfaces. Vasarely brings this technique to live video, computing a mathematical bulge deformation that warps grid patterns in real time based on distance from a configurable centre point.
+
+The program generates a grid pattern over the input video — checkerboard, dots, lines, or hexagonal — then deforms the grid coordinates through a distance-based offset function that simulates the appearance of the grid being stretched over a curved surface. Near the centre, the grid cells compress and curve as if draped over a sphere. Further from the centre, the grid gradually returns to its regular spacing. The deformation function can produce four different shapes: a smooth sphere, a one-dimensional cylinder, a saddle with opposing curvatures, and a periodic ripple that creates concentric rings of distortion.
+
+At subtle settings, Vasarely adds a gentle geometric overlay that hints at hidden depth. At extreme settings, the grid dominates the frame with violently warped cells that pulse and breathe when animation is engaged — pure optical illusion rendered in real time from live video.
+
+---
+
+## Quick Start
+
+1. **Start with Sphere and Check**: This is the canonical Vasarely combination and the easiest way to understand the deformation controls before exploring other shapes and patterns.
+2. **Fine grids for subtlety**: Small grid cells create a dense texture where the deformation reads as gentle curvature. Coarse grids make the deformation obvious and graphic.
+3. **Off-centre for composition**: Placing the bulge centre at a rule-of-thirds intersection creates more dynamically balanced compositions than dead-centre placement.
+
+---
+
+## Background
+
+### Victor Vasarely and Op Art
+
+Victor Vasarely began his career as a graphic designer in Budapest before moving to Paris in 1930, where he spent decades developing the geometric abstract style that would become Op Art. His key insight was that precise mathematical relationships between shapes could trick the human visual system into perceiving depth, motion, and volume where none existed. Works like "Vega" (1957) and "Zebra" (1937) demonstrated that a flat array of shapes, when systematically distorted, could appear to bulge outward or recede inward. The effect is entirely optical — the surface is flat, but the brain interprets the varying cell sizes and angles as perspective cues for a three-dimensional form. Vasarely's grid deformation technique translates directly into the distance-based coordinate offset at the core of this program.
+
+### Grid Deformation and Implicit Surfaces
+
+The mathematical heart of Vasarely's technique is coordinate displacement. Consider a regular grid of cells defined by integer coordinates (Cx, Cy) = (floor(x / cell_size), floor(y / cell_size)). To create the illusion of a sphere bulging out of the grid, we compute each pixel's distance r from the centre point, then offset its grid coordinates by a function f(r) that is large near the centre (maximum bulge) and decays to zero at the edges (undistorted grid). For a sphere, f(r) follows a smooth Gaussian-like decay. For a cylinder, only one axis is offset. For a saddle, the two axes receive opposite offsets. For a ripple, f(r) = A·sin(ω·r), creating concentric rings of alternating compression and expansion.
+
+### Grid Pattern Generation
+
+Each grid pattern is computed from the deformed cell coordinates. A checkerboard is simply the XOR of the integer cell coordinates: (Cx + Cy) % 2. Dots are generated by computing the distance from each pixel to its cell centre and thresholding: pixels closer than a radius are "dot" and the rest are "background." Lines use only the vertical cell coordinate modulo 2, creating horizontal stripes. Hexagonal grids offset even-numbered rows by half a cell width before computing the cell coordinates, producing the characteristic honeycomb tessellation. All patterns reduce to a single binary or scalar value per pixel that determines whether it renders as foreground or background.
+
+### Anti-Aliasing and Smoothing
+
+Hard-edged grid transitions — pixel is either on or off — create jagged, aliased boundaries that shimmer distractingly under motion. Vasarely's Smooth control applies a soft transition zone at the grid cell boundaries, replacing the hard threshold with a gradual ramp. This anti-aliasing is computed by measuring how close the fractional cell coordinate is to the threshold and applying a smoothstep function that transitions from 0 to 1 over a narrow band. The result is visually smoother grid lines that remain stable under animation and video motion.
+
+### Colour and Contrast in Op Art
+
+Vasarely's original works used carefully chosen colour pairs — often complementary colours like orange and blue, or black and white — to maximise the optical illusion. Higher contrast between the grid foreground and background strengthens the depth illusion because the visual system relies on contrast boundaries to estimate surface curvature. The Contrast control in this program adjusts the intensity difference between the grid's black and white states, while the Color mode toggle switches between pure monochrome (replacing the input) and a mode that preserves the input's chrominance within the grid cells, allowing the video content to show through the geometric framework.
+
+
+---
+
+## Signal Flow
+
+Position and Distance → Bulge Offset → Grid Pattern → ... → Mix → Bypass
+
+```
+Input Video (YUV 4:4:4)
+│
+├── Position and Distance ────────────────────────────────────
+│   │
+│   ├─ 1. Compute pixel position relative to configurable centre
+│   └─ 2. Compute Manhattan distance from centre
+│
+├── Bulge Offset ─────────────────────────────────────────────
+│   │
+│   ├─ 3. Apply shape function (Sphere / Cylinder / Saddle / Ripple)
+│   └─ 4. Scale by Bulge Intensity → coordinate offset
+│
+├── Grid Pattern ─────────────────────────────────────────────
+│   │
+│   ├─ 5. Compute deformed grid cell coordinates
+│   └─ 6. Evaluate pattern (Check / Dots / Lines / Hex)
+│
+├── Contrast ─────────────────────────────────────────────────
+│   │
+│   └─ 7. Map pattern value to B/W intensity range
+│
+├── Smooth ───────────────────────────────────────────────────
+│   │
+│   └─ 8. Anti-alias grid edges via smoothstep
+│
+├── Color Mode ───────────────────────────────────────────────
+│   │
+│   └─ 9. Mono: replace input with grid pattern
+│          Color: modulate input luminance with grid pattern
+│
+├── Mix ──────────────────────────────────────────────────────
+│   └─ Interpolator: dry (original) ↔ wet (grid overlay)
+│
+└── Bypass ───────────────────────────────────────────────────
+    └─ Select original or processed signal
+```
+
+The pipeline is purely combinational — no BRAM, no line buffers, no state. Every output pixel is computed from its own position coordinates, the centre point, and the register parameters. This makes Vasarely extremely lightweight (~650 LUTs) and naturally parallel. The deformation is applied to the grid coordinate system rather than to the video pixels themselves — the input video passes through unmodified, and only the grid overlay is warped. This is computationally efficient and visually correct: the grid appears to float in front of (or be printed onto) the video, with the bulge distortion affecting only the grid's geometry. The animation mode slowly rotates the centre point in a circular orbit, causing the bulge to drift across the frame and creating a mesmerising pulsing effect.
+
+---
+
+## Parameter Reference
+
+<img src={vasarely_control_panel} alt="Videomancer front panel with Vasarely loaded"/>
+*Videomancer's front panel with Vasarely active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Rotary Potentiometers (Knobs 1–6)
+
+#### Knob 1 — Bulge Int
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+At zero, the grid remains perfectly regular and flat — no bulge is visible. As Bulge Int increases, the grid cells near the centre compress and curve, creating a progressively stronger illusion of a three-dimensional surface. At maximum, the distortion is extreme, with grid cells near the centre becoming tiny and densely packed while peripheral cells remain at normal size. The contrast between centre and edge cell sizes is what the brain reads as curvature. Internally, controls the intensity of the grid deformation.
+
+---
+
+#### Knob 2 — Grid Size
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+At low values, the grid is fine — many small cells fill the frame, producing a dense geometric texture. At high values, the grid is coarse — fewer, larger cells create a bolder, more graphic pattern. Grid size also affects the bulge illusion: finer grids produce subtler depth cues, while coarser grids create more dramatic, poster-like deformations. The optimal grid size depends on viewing distance and source resolution. Internally, controls the size of the grid cells.
+
+---
+
+#### Knob 3 — Center X
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+Controls the horizontal position of the bulge centre point. At 50%, the centre is at the horizontal midpoint of the frame. Sweeping left or right moves the point of maximum deformation, allowing the bulge to be positioned over any region of the video. Combined with Center Y, this provides full 2D control over the sphere's apparent position within the frame.
+
+---
+
+#### Knob 4 — Center Y
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+Controls the vertical position of the bulge centre point. At 50%, the centre is at the vertical midpoint. Sweeping up or down repositions the deformation vertically. When both Center X and Center Y are at 50%, the bulge is centred in the frame — the classic Vasarely composition. Moving the centre off-axis creates asymmetric compositions where the grid distortion radiates from a corner or edge.
+
+---
+
+#### Knob 5 — Contrast
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+At low contrast, the grid cells transition between dark grey and light grey — a subtle overlay that hints at geometry without dominating. As Contrast increases, the dark cells approach black and the light cells approach white, creating maximum visual impact. High contrast strengthens the Op Art illusion because the visual system responds more strongly to sharp luminance boundaries. Internally, controls the black/white intensity range of the grid pattern.
+
+---
+
+#### Knob 6 — Smooth
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+| Suffix | % |
+
+At zero, grid edges are perfectly sharp — binary on/off at the pixel level, which creates aliased, jagged boundaries that shimmer under motion. As Smooth increases, a progressively wider transition band softens the grid edges, reducing aliasing and creating more elegant, visually stable patterns. At maximum, the grid transitions are very gradual, producing a soft, painterly quality that contrasts with the mathematical precision of the underlying geometry. Internally, controls the width of the anti-aliasing transition zone at grid cell boundaries.
+
+---
+
+### Toggle Switches (Switches 7–11)
+
+| Switch | Off | On |
+|--------|-----|-----|
+| **7 — Shape** | Sphere | Ripple |
+| **8 — Grid** | Check | Hex |
+| **9 — Color** | Mono | Color |
+| **10 — Animate** | Off | On |
+| **11 — Bypass** | Off | On |
+
+The toggle switches select the shape function and grid pattern from multiple options, control whether the grid preserves input colour, and enable animation. Shape and Grid are conceptually multi-option selectors (4 modes each), implemented through toggle combinations. Color and Animate are simple on/off switches. Bypass provides instant comparison.
+
+---
+
+### Linear Potentiometer (Fader 12)
+
+#### Fader 12 — Mix
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+| Suffix | % |
+
+Crossfade between the dry (original) and wet (grid-overlaid) signals. At 0%, the output is pure unprocessed video. At 100%, the output is the full Vasarely grid effect with deformation, contrast, and smoothing. Intermediate values create a semi-transparent grid overlay that blends with the source video — useful for creating subtle geometric textures without overwhelming the underlying content.
+
+
+#### Switch 11 — Bypass
+| Property | Value |
+|----------|-------|
+| Off | Processing active |
+| On | Bypass engaged |
+
+Routes the unprocessed input signal directly to the output, bypassing all Vasarely processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
+## Guided Exercises
+
+These exercises progress from basic grid patterns to complex animated Op Art compositions, exploring how mathematical deformation creates the illusion of three-dimensional form from two-dimensional geometry.
+
+### Exercise 1: The Classic Orb
+
+<BeforeAfterSlider
+  sources={[
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex1_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex1_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex1_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex1_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex1_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex1_s6 },
+  ]}
+/>
+*The Classic Orb — simulated result across source images.*
+**Source**: Any video source — the grid pattern is largely independent of content. A plain or slowly-moving source works well for appreciating the pure geometry.
+
+**What You'll Create**: Create a classic Vasarely spherical bulge in a checkerboard grid and understand the deformation controls.
+
+1. **Set up the grid**: Grid to Check, Grid Size to ~50%, Contrast to ~75%.
+2. **Centre the bulge**: Center X and Center Y both at 50%.
+3. **Add deformation**: Increase Bulge Int from 0% to ~50%. Watch the checkerboard warp as if draped over an invisible sphere.
+4. **Adjust grid size**: Sweep Grid Size. Fine grids create subtle curvature; coarse grids create bold deformation.
+5. **Smooth the edges**: Increase Smooth to ~40%. The jagged grid edges soften to elegant curves.
+6. **Try Mono mode**: Set Color to Mono for pure black-and-white Op Art.
+
+**Key concepts**: Bulge intensity controls deformation magnitude, grid size affects the scale of the illusion, smoothing removes aliasing, checkerboard is the canonical Op Art pattern
+
+---
+
+### Exercise 2: Ripple Field
+
+<BeforeAfterSlider
+  sources={[
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex2_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex2_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex2_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex2_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex2_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex2_s6 },
+  ]}
+/>
+*Ripple Field — simulated result across source images.*
+**Source**: A colourful, high-detail scene — camera feed, nature footage, or a busy graphic.
+
+**What You'll Create**: Create concentric rings of grid distortion using the Ripple shape mode, combined with Color mode to let the video content show through.
+
+1. **Select Ripple**: Set Shape to Ripple. Set Bulge Int to ~60%.
+2. **Fine grid**: Grid Size to ~30%, Grid to Dots.
+3. **Observe the rings**: Concentric bands of compressed and expanded dots radiate from the centre.
+4. **Enable Color mode**: Toggle Color to Color. The video content is now visible within each dot.
+5. **Animate**: Turn Animate On. Watch the concentric rings pulse outward as the center orbits.
+6. **Adjust smoothing**: Smooth to ~50% for elegant dot edges.
+
+**Key concepts**: Ripple mode creates concentric wave-like distortion, dot grid creates a halftone effect, colour mode preserves video content, animation adds hypnotic motion
+
+---
+
+### Exercise 3: Asymmetric Saddle Composition
+
+<BeforeAfterSlider
+  sources={[
+    { label: "Ballerina", before: vasarely_source1_ballerina, after: vasarely_ex3_s1 },
+    { label: "Fruit", before: vasarely_source2_fruit, after: vasarely_ex3_s2 },
+    { label: "Elephant", before: vasarely_source3_elephant, after: vasarely_ex3_s3 },
+    { label: "Pattern", before: vasarely_source4_pattern, after: vasarely_ex3_s4 },
+    { label: "Woman", before: vasarely_source5_woman, after: vasarely_ex3_s5 },
+    { label: "Wood", before: vasarely_source6_wood, after: vasarely_ex3_s6 },
+  ]}
+/>
+*Asymmetric Saddle Composition — simulated result across source images.*
+**Source**: A high-contrast scene with strong vertical and horizontal elements — architecture, text, or geometric patterns.
+
+**What You'll Create**: Create a dynamic, asymmetric composition using saddle deformation, off-centre positioning, and hexagonal grid.
+
+1. **Saddle shape**: Set Shape to Saddle. The grid expands on one axis while compressing on the other.
+2. **Hex grid**: Set Grid to Hex. The honeycomb pattern adds organic complexity to the mathematical deformation.
+3. **Off-centre**: Move Center X to ~30% and Center Y to ~40%, creating an asymmetric composition.
+4. **Strong deformation**: Bulge Int to ~70%.
+5. **High contrast**: Contrast to ~90% for maximum visual impact.
+6. **Light smoothing**: Smooth to ~25% — just enough to clean up the edges without losing sharpness.
+7. **Semi-transparent overlay**: Lower Mix to ~70% to let the architecture show through the hexagonal grid.
+
+**Key concepts**: Saddle deformation creates opposing curvatures, off-centre placement breaks symmetry for dynamic compositions, hexagonal grid adds organic tessellation, mix controls overlay transparency
+
+---
+
+
+## Tips
+
+- **Ripple for psychedelia**: The Ripple shape mode creates concentric ring distortions that, combined with animation, produce a hypnotic pulsing effect ideal for live visuals.
+- **Color mode with saturated sources**: When your input has strong colours, Color mode preserves them within the grid geometry, creating Op Art that is also colourful — something Vasarely rarely achieved in his monochrome works.
+- **Contrast as mood control**: Low contrast produces meditative, soft-geometry overlays. High contrast produces aggressive, attention-demanding patterns — adjust to match the energy of your performance.
+- **Layer with other programs**: Vasarely's purely geometric grid pairs well with upstream video effects — feeding distorted, colour-shifted, or feedback-processed video through the grid creates complex layered compositions.
+- **Animate for live visuals**: The orbiting centre creates continuous visual interest without any manual control input — ideal for installations or VJ sets where hands-off operation is needed.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|------------|
+| **Anti-Aliasing** | Techniques that smooth the visual appearance of edges that would otherwise appear jagged due to pixel quantisation. |
+| **Bulge Deformation** | A coordinate displacement function that compresses grid cells near a centre point to simulate the appearance of a curved surface. |
+| **Checkerboard** | A grid pattern where alternating cells are filled, computed as (Cx + Cy) % 2. |
+| **Hexagonal Grid** | A tessellation pattern produced by offsetting alternating rows by half a cell width. |
+| **Manhattan Distance** | The sum of absolute coordinate differences |Δx| + |Δy|, used here for computing distance from the centre point. |
+| **Op Art** | Short for Optical Art; an art movement using geometric patterns and precise mathematical relationships to create optical illusions. |
+| **Saddle** | A deformation where one axis bulges outward while the perpendicular axis curves inward (hyperbolic paraboloid). |
+| **Smoothstep** | A sigmoid-like interpolation function used for anti-aliasing: smoothstep(t) = 3t² − 2t³. |
+| **Victor Vasarely** | Hungarian-French artist (1906–1997), founder of the Op Art movement and pioneer of geometric abstraction. |
+| **XOR** | Exclusive OR; a boolean operation that returns true when its inputs differ, used to generate the checkerboard pattern from cell coordinates. |
+
+---
