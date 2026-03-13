@@ -18,6 +18,10 @@ import helix_exercise3_result from '/img/instruments/videomancer/helix/helix_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={helix_hero} alt="Helix hero image"/>
 *Helix tracing a Lissajous curve with phosphor-decay afterglow and rainbow hue mapping.*
 <img src={helix_animation} alt="Helix animated output"/>

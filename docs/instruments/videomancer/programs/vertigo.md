@@ -18,6 +18,10 @@ import vertigo_exercise3_result from '/img/instruments/videomancer/vertigo/verti
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={vertigo_hero} alt="Vertigo hero image"/>
 *Vertigo rendering a continuously rotating and zooming XOR fractal texture plane with sinusoidal scale oscillation, procedural tinting, and blocky Mode 13h quantisation — pure synthesis, no input video required.*
 <img src={vertigo_animation} alt="Vertigo animated output"/>

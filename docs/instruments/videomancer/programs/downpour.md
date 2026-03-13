@@ -44,6 +44,10 @@ import downpour_ex3_s6 from '/img/instruments/videomancer/downpour/downpour_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Runner", before: downpour_source1_runner, after: downpour_hero_s1 },

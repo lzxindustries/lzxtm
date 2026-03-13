@@ -18,6 +18,10 @@ import spore_exercise3_result from '/img/instruments/videomancer/spore/spore_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={spore_hero} alt="Spore hero image"/>
 *Spore dispersing concentric particle rings from four source points, Manhattan-distance ripples dissolving into a noisy spore cloud overlay on the input video.*
 <img src={spore_animation} alt="Spore animated output"/>

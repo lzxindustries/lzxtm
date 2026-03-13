@@ -18,6 +18,10 @@ import perlin_exercise3_result from '/img/instruments/videomancer/perlin/perlin_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={perlin_hero} alt="Perlin hero image"/>
 *Perlin generating animated gradient noise fields with fire palette and turbulent absolute-value folding, a fractal texture born from integer arithmetic alone.*
 <img src={perlin_animation} alt="Perlin animated output"/>

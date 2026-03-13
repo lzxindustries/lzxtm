@@ -18,6 +18,10 @@ import cleave_exercise3_result from '/img/instruments/videomancer/cleave/cleave_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={cleave_hero} alt="Cleave hero image"/>
 *Cleave splitting a live video feed at a PPU-jittered raster boundary, applying distinct brightness and hue rotation to each region with a visible glitch artifact bar at the seam.*
 <img src={cleave_animation} alt="Cleave animated output"/>

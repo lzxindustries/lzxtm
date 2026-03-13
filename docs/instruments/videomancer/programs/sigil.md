@@ -15,6 +15,10 @@ import sigil_control_panel from '/img/instruments/videomancer/sigil/sigil_contro
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={sigil_hero} alt="Sigil hero image"/>
 *Sigil passing video through unchanged — a placeholder program reserving a slot for future grid-based processing.*
 <img src={sigil_animation} alt="Sigil animated output"/>

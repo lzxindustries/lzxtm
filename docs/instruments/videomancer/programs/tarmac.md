@@ -18,6 +18,10 @@ import tarmac_exercise3_result from '/img/instruments/videomancer/tarmac/tarmac_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={tarmac_hero} alt="Tarmac hero image"/>
 *Tarmac applying SNES Mode 7 affine transformation with per-scanline perspective to create a pseudo-3D ground plane from a tiled video texture.*
 <img src={tarmac_animation} alt="Tarmac animated output"/>

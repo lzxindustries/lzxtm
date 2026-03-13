@@ -44,6 +44,10 @@ import stratum_ex3_s6 from '/img/instruments/videomancer/stratum/stratum_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: stratum_source1_cat, after: stratum_hero_s1 },

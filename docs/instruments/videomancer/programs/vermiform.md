@@ -18,6 +18,10 @@ import vermiform_exercise3_result from '/img/instruments/videomancer/vermiform/v
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={vermiform_hero} alt="Vermiform hero image"/>
 *Vermiform transforming a live video feed into a gradually revealed image as four coloured worm agents crawl across a persistent 1-bit canvas, painting sinusoidal trails that expose the source through an After Dark–inspired screensaver mechanic.*
 <img src={vermiform_animation} alt="Vermiform animated output"/>

@@ -18,6 +18,10 @@ import mycelium_exercise3_result from '/img/instruments/videomancer/mycelium/myc
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={mycelium_hero} alt="Mycelium hero image"/>
 *Mycelium rendering a field of reaction-diffusion patterns — branching coral-like structures emerging from input video luminance, mapped through a warm color palette.*
 <img src={mycelium_animation} alt="Mycelium animated output"/>

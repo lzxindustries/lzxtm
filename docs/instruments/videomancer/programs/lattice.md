@@ -18,6 +18,10 @@ import lattice_exercise3_result from '/img/instruments/videomancer/lattice/latti
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={lattice_hero} alt="Lattice hero image"/>
 *Lattice projecting a luminous XOR checkerboard grid — animated phase offsets ripple through interlocking horizontal and vertical bar patterns at high contrast.*
 <img src={lattice_animation} alt="Lattice animated output"/>

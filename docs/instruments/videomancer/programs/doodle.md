@@ -18,6 +18,10 @@ import doodle_exercise3_result from '/img/instruments/videomancer/doodle/doodle_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={doodle_hero} alt="Doodle hero image"/>
 *Doodle tracing Lissajous curves across the 64x64 Cromemco RGBI framebuffer, leaving trails of bright cyan, yellow, and red that slowly dissolve as the wipe sweeps new space for the next figure.*
 <img src={doodle_animation} alt="Doodle animated output"/>

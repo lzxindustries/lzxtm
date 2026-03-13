@@ -18,6 +18,10 @@ import reagent_exercise3_result from '/img/instruments/videomancer/reagent/reage
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={reagent_hero} alt="Reagent hero image"/>
 *Reagent mapping input luminance to a pH-scale color gradient, tinting shadows in acid hues and highlights in base hues with smooth indicator transitions.*
 <img src={reagent_animation} alt="Reagent animated output"/>

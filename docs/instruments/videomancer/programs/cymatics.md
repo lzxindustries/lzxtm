@@ -18,6 +18,10 @@ import cymatics_exercise3_result from '/img/instruments/videomancer/cymatics/cym
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={cymatics_hero} alt="Cymatics hero image"/>
 *Concentric ripples from drifting wave sources collide and focus, tracing the nodal geometries of vibrating liquid surfaces.*
 <img src={cymatics_animation} alt="Cymatics animated output"/>

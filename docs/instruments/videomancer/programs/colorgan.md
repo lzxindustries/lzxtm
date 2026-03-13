@@ -18,6 +18,10 @@ import colorgan_exercise3_result from '/img/instruments/videomancer/colorgan/col
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={colorgan_hero} alt="Colorgan hero image"/>
 *Three pulsing colour zones — red bass wash, green mid glow, and blue treble flash — merge additively in concentric rings driven by video luminance.*
 <img src={colorgan_animation} alt="Colorgan animated output"/>

@@ -44,6 +44,10 @@ import micrograph_ex3_s6 from '/img/instruments/videomancer/micrograph/micrograp
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: micrograph_source1_boat, after: micrograph_hero_s1 },

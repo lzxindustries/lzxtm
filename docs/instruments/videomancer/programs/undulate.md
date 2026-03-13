@@ -18,6 +18,10 @@ import undulate_exercise3_result from '/img/instruments/videomancer/undulate/und
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={undulate_hero} alt="Undulate hero image"/>
 *Undulate applying SNES HDMA-style per-scanline brightness waves, hue rotation, and horizontal displacement to transform a static camera feed into a rippling, colour-shifting dreamscape.*
 <img src={undulate_animation} alt="Undulate animated output"/>

@@ -44,6 +44,10 @@ import kinescope_ex3_s6 from '/img/instruments/videomancer/kinescope/kinescope_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: kinescope_source1_sunset, after: kinescope_hero_s1 },

@@ -18,6 +18,10 @@ import snake_exercise3_result from '/img/instruments/videomancer/snake/snake_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={snake_hero} alt="Snake hero image"/>
 *Snake rendering a growing serpent navigating a 48x27 grid, chasing a food pellet with two-digit score display over processed video.*
 <img src={snake_animation} alt="Snake animated output"/>

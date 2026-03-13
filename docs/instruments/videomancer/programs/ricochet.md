@@ -18,6 +18,10 @@ import ricochet_exercise3_result from '/img/instruments/videomancer/ricochet/ric
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={ricochet_hero} alt="Ricochet hero image"/>
 *Ricochet generating a bouncing spotlight revealing processed video over a dimmed background, with color-cycling border glow and trail persistence.*
 <img src={ricochet_animation} alt="Ricochet animated output"/>

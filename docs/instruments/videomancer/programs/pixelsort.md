@@ -44,6 +44,10 @@ import pixelsort_ex3_s6 from '/img/instruments/videomancer/pixelsort/pixelsort_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: pixelsort_source1_sunset, after: pixelsort_hero_s1 },

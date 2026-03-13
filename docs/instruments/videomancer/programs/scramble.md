@@ -44,6 +44,10 @@ import scramble_ex3_s6 from '/img/instruments/videomancer/scramble/scramble_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: scramble_source1_fruit, after: scramble_hero_s1 },

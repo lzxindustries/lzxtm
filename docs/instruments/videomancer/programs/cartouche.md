@@ -44,6 +44,10 @@ import cartouche_ex3_s6 from '/img/instruments/videomancer/cartouche/cartouche_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: cartouche_source1_skull, after: cartouche_hero_s1 },

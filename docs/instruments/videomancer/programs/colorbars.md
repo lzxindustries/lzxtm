@@ -14,6 +14,10 @@ import colorbars_control_panel from '/img/instruments/videomancer/colorbars/colo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={colorbars_hero} alt="Colorbars hero image"/>
 *Colorbars generating a full-amplitude SMPTE 7-bar test pattern — seven clean vertical stripes spanning the full YUV gamut from white through blue.*
 ---

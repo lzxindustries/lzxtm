@@ -18,6 +18,10 @@ import labyrinth_exercise3_result from '/img/instruments/videomancer/labyrinth/l
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={labyrinth_hero} alt="Labyrinth hero image"/>
 *Labyrinth generating a procedural binary-tree maze with luminous corridors and an explorer dot traversing the passages.*
 <img src={labyrinth_animation} alt="Labyrinth animated output"/>

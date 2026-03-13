@@ -18,6 +18,10 @@ import twister_exercise3_result from '/img/instruments/videomancer/twister/twist
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={twister_hero} alt="Twister hero image"/>
 *Twister rendering a helically twisted vertical bar with four-face shading, evoking the classic Amiga demoscene rotating column effect.*
 <img src={twister_animation} alt="Twister animated output"/>

@@ -9,6 +9,10 @@ description: "Complete reference guide for Videomancer's 39 modulation operator 
 
 # Modulation Guide
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 :::info
 **System**: Videomancer Modulation Engine
 **Channels**: 12 modulators (P1–P12)

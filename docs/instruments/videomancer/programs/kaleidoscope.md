@@ -18,6 +18,10 @@ import kaleidoscope_exercise3_result from '/img/instruments/videomancer/kaleidos
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={kaleidoscope_hero} alt="Kaleidoscope hero image"/>
 *Kaleidoscope generating a 4-way symmetric color pattern on a 64x64 grid, with the Cromemco Dazzler 16-color palette painting concentric shapes across the display.*
 <img src={kaleidoscope_animation} alt="Kaleidoscope animated output"/>

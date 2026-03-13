@@ -18,6 +18,10 @@ import fauxtress_exercise3_result from '/img/instruments/videomancer/fauxtress/f
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={fauxtress_hero} alt="Fauxtress hero image"/>
 *Fauxtress generating a Neon-palette cellular automata pattern, its diagonal interference bands revealing the cross-modulation between horizontal and animation phase accumulators.*
 <img src={fauxtress_animation} alt="Fauxtress animated output"/>

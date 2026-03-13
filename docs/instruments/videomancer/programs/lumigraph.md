@@ -18,6 +18,10 @@ import lumigraph_exercise3_result from '/img/instruments/videomancer/lumigraph/l
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={lumigraph_hero} alt="Lumigraph hero image"/>
 *Vast pools of luminous colour drift glacially across the screen, overlapping in soft additive clouds of light.*
 <img src={lumigraph_animation} alt="Lumigraph animated output"/>

@@ -44,6 +44,10 @@ import concave_ex3_s6 from '/img/instruments/videomancer/concave/concave_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Castle", before: concave_source1_castle, after: concave_hero_s1 },

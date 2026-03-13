@@ -18,6 +18,10 @@ import spiro_exercise3_result from '/img/instruments/videomancer/spiro/spiro_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={spiro_hero} alt="Spiro hero image"/>
 *Spiro tracing rainbow-hued hypotrochoid curves onto a persistent canvas, each gear ratio preset producing a distinct geometric rosette.*
 <img src={spiro_animation} alt="Spiro animated output"/>

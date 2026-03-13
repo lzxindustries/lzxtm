@@ -18,6 +18,10 @@ import plasma_exercise3_result from '/img/instruments/videomancer/plasma/plasma_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={plasma_hero} alt="Plasma hero image"/>
 *A flowing psychedelic colour field — four sine terms collide to produce rippling plasma bands streaming through a Fire palette, the radial oscillator pulling concentrically toward a drifting center point.*
 <img src={plasma_animation} alt="Plasma animated output"/>

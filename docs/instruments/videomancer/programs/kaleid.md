@@ -18,6 +18,10 @@ import kaleid_exercise3_result from '/img/instruments/videomancer/kaleid/kaleid_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={kaleid_hero} alt="Kaleid hero image"/>
 *Kaleid rendering a folded XOR fractal pattern with rainbow color cycling, evoking the hypnotic geometry of 1990s VGA screensavers.*
 <img src={kaleid_animation} alt="Kaleid animated output"/>

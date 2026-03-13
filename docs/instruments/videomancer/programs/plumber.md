@@ -18,6 +18,10 @@ import plumber_exercise3_result from '/img/instruments/videomancer/plumber/plumb
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={plumber_hero} alt="Plumber hero image"/>
 *A growing pipe network fills a dark grid — copper, teal, and salmon segments extend through intersections and elbows, the growth cursor just visible at the frontier where a new elbow piece connects two runs.*
 <img src={plumber_animation} alt="Plumber animated output"/>

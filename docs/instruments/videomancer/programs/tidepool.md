@@ -18,6 +18,10 @@ import tidepool_exercise3_result from '/img/instruments/videomancer/tidepool/tid
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={tidepool_hero} alt="Tidepool hero image"/>
 *Tidepool generating four-source concentric ripple interference with constructive and destructive wave patterns overlaid on a live video feed.*
 <img src={tidepool_animation} alt="Tidepool animated output"/>

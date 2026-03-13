@@ -18,6 +18,10 @@ import geode_exercise3_result from '/img/instruments/videomancer/geode/geode_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={geode_hero} alt="Geode hero image"/>
 *Geode rendering a morphing hexagonal polygon with edge glow and dual counter-rotating interference.*
 <img src={geode_animation} alt="Geode animated output"/>

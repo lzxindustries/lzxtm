@@ -44,6 +44,10 @@ import parade_ex3_s6 from '/img/instruments/videomancer/parade/parade_ex3_s6.png
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: parade_source1_dog, after: parade_hero_s1 },

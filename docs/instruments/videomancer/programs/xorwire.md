@@ -18,6 +18,10 @@ import xorwire_exercise3_result from '/img/instruments/videomancer/xorwire/xorwi
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={xorwire_hero} alt="Xorwire hero image"/>
 *A luminous wireframe cube rotates through live video, its edges etched in XOR interference patterns that invert the underlying image.*
 <img src={xorwire_animation} alt="Xorwire animated output"/>

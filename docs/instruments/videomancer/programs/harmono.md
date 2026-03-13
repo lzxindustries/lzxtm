@@ -18,6 +18,10 @@ import harmono_exercise3_result from '/img/instruments/videomancer/harmono/harmo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={harmono_hero} alt="Harmono hero image"/>
 *A pair of DDS oscillators trace a damped Lissajous curve on a phosphor-green canvas, the figure spiralling inward as harmonics slowly drift against each other.*
 <img src={harmono_animation} alt="Harmono animated output"/>

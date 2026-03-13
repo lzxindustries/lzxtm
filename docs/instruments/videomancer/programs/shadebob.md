@@ -18,6 +18,10 @@ import shadebob_exercise3_result from '/img/instruments/videomancer/shadebob/sha
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={shadebob_hero} alt="Shadebob hero image"/>
 *A luminous blob traces spiralling paths across a dark framebuffer, leaving colour trails that fade through the spectrum — an Amiga demoscene shadebob effect realised in FPGA hardware.*
 <img src={shadebob_animation} alt="Shadebob animated output"/>

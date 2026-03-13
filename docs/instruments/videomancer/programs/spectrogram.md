@@ -44,6 +44,10 @@ import spectrogram_ex3_s6 from '/img/instruments/videomancer/spectrogram/spectro
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: spectrogram_source1_dog, after: spectrogram_hero_s1 },

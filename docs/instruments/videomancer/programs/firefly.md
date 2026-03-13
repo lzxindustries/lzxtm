@@ -18,6 +18,10 @@ import firefly_exercise3_result from '/img/instruments/videomancer/firefly/firef
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={firefly_hero} alt="Firefly hero image"/>
 *Eight luminous particles drifting across a dark void — soft warm glows tracing Brownian paths through the silence of the screen.*
 <img src={firefly_animation} alt="Firefly animated output"/>

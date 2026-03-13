@@ -18,6 +18,10 @@ import chladni_exercise3_result from '/img/instruments/videomancer/chladni/chlad
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={chladni_hero} alt="Chladni hero image"/>
 *Chladni projecting standing-wave nodal patterns onto a cathedral interior, revealing the hidden resonant geometry of the architecture.*
 <img src={chladni_animation} alt="Chladni animated output"/>

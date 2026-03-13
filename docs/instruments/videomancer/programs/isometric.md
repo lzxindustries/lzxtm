@@ -18,6 +18,10 @@ import isometric_exercise3_result from '/img/instruments/videomancer/isometric/i
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={isometric_hero} alt="Isometric hero image"/>
 *Isometric projecting a three-axis engineering grid over a video source, the 60-degree diagonal lines transforming the frame into a drafting table.*
 <img src={isometric_animation} alt="Isometric animated output"/>

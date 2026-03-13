@@ -18,6 +18,10 @@ import psychedelia_exercise3_result from '/img/instruments/videomancer/psychedel
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={psychedelia_hero} alt="Psychedelia hero image"/>
 *Luminous stamp shapes radiate outward from multiple emitter points, painting trails of cycling colour across a persistently decaying framebuffer — a faithful recreation of Jeff Minter's 1984 Psychedelia light synthesiser.*
 <img src={psychedelia_animation} alt="Psychedelia animated output"/>

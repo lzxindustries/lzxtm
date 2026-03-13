@@ -44,6 +44,10 @@ import schufftan_ex3_s6 from '/img/instruments/videomancer/schufftan/schufftan_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Parrot", before: schufftan_source1_parrot, after: schufftan_hero_s1 },

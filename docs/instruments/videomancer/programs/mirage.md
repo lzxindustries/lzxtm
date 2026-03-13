@@ -44,6 +44,10 @@ import mirage_ex3_s6 from '/img/instruments/videomancer/mirage/mirage_ex3_s6.png
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: mirage_source1_dog, after: mirage_hero_s1 },

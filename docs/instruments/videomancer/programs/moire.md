@@ -21,6 +21,10 @@ import moir__source3_kodim01_bw from '/img/instruments/videomancer/moire/moire_s
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 
 ---
 

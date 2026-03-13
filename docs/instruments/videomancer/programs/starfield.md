@@ -18,6 +18,10 @@ import starfield_exercise3_result from '/img/instruments/videomancer/starfield/s
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={starfield_hero} alt="Starfield hero image"/>
 *A perspective starfield streaming outward from a central vanishing point, with 32 register-based stars rendered at varying depths and brightnesses against a dimmed video background.*
 <img src={starfield_animation} alt="Starfield animated output"/>

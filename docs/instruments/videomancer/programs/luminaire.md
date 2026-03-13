@@ -44,6 +44,10 @@ import luminaire_ex3_s6 from '/img/instruments/videomancer/luminaire/luminaire_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Field", before: luminaire_source1_field, after: luminaire_hero_s1 },

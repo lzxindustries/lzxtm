@@ -18,6 +18,10 @@ import afterdark_exercise3_result from '/img/instruments/videomancer/afterdark/a
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={afterdark_hero} alt="Afterdark hero image"/>
 *Afterdark generating bouncing rectangular sprites with color cycling trails across a black field.*
 <img src={afterdark_animation} alt="Afterdark animated output"/>

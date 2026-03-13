@@ -44,6 +44,10 @@ import quilt_ex3_s6 from '/img/instruments/videomancer/quilt/quilt_ex3_s6.png';
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: quilt_source1_cat, after: quilt_hero_s1 },

@@ -18,6 +18,10 @@ import scanjet_exercise3_result from '/img/instruments/videomancer/scanjet/scanj
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={scanjet_hero} alt="Scanjet hero image"/>
 *Scanjet transforming live video into a pseudo-3D ground plane with perspective-scaled scanlines, sinusoidal road curvature, and retro sky rendering.*
 <img src={scanjet_animation} alt="Scanjet animated output"/>

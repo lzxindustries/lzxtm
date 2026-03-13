@@ -18,6 +18,10 @@ import conway_exercise3_result from '/img/instruments/videomancer/conway/conway_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={conway_hero} alt="Conway hero image"/>
 *Conway rendering a cellular automaton evolving across a 64x36 toroidal grid, with live cells rendered in vivid hue against a dark field.*
 <img src={conway_animation} alt="Conway animated output"/>

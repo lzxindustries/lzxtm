@@ -18,6 +18,10 @@ import flock_exercise3_result from '/img/instruments/videomancer/flock/flock_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={flock_hero} alt="Flock hero image"/>
 *Flock scattering eight luminous Lissajous-orbit particles across a video landscape, coupling their paths into coordinated swarm motion.*
 <img src={flock_animation} alt="Flock animated output"/>

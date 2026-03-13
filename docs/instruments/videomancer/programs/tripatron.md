@@ -18,6 +18,10 @@ import tripatron_exercise3_result from '/img/instruments/videomancer/tripatron/t
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={tripatron_hero} alt="Tripatron hero image"/>
 *Concentric rings, radial bursts, and spiralling arms overlap in three independent layers, creating an infinitely evolving organic light sculpture reminiscent of deep-sea bioluminescence.*
 <img src={tripatron_animation} alt="Tripatron animated output"/>

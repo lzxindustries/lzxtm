@@ -18,6 +18,10 @@ import vortex_exercise3_result from '/img/instruments/videomancer/vortex/vortex_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={vortex_hero} alt="Vortex hero image"/>
 *Vortex generating a classic demoscene tunnel with checkerboard textures spiralling into infinite depth, animated by DDS-driven scrolling.*
 <img src={vortex_animation} alt="Vortex animated output"/>

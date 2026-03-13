@@ -26,6 +26,10 @@ import conformal_hero_s6 from '/img/instruments/videomancer/conformal/conformal_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Car", before: conformal_source1_car, after: conformal_hero_s1 },

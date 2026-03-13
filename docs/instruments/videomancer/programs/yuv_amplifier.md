@@ -49,6 +49,10 @@ import yuv_amplifier_ex3_s6 from '/img/instruments/videomancer/yuv_amplifier/yuv
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Castle", before: yuv_amplifier_source1_castle, after: yuv_amplifier_hero_s1 },

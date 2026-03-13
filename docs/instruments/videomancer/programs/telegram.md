@@ -40,6 +40,10 @@ import telegram_ex3_s2 from '/img/instruments/videomancer/telegram/telegram_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: telegram_source1_fruit, after: telegram_hero_s1 },

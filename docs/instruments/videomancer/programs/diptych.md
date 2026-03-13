@@ -44,6 +44,10 @@ import diptych_ex3_s6 from '/img/instruments/videomancer/diptych/diptych_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: diptych_source1_cat, after: diptych_hero_s1 },

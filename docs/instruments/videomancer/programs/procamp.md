@@ -44,6 +44,10 @@ import procamp_ex3_s6 from '/img/instruments/videomancer/procamp/procamp_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Castle", before: procamp_source1_castle, after: procamp_hero_s1 },

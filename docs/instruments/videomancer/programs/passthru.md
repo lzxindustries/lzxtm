@@ -26,6 +26,10 @@ import passthru_hero_s6 from '/img/instruments/videomancer/passthru/passthru_her
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: passthru_source1_cat, after: passthru_hero_s1 },

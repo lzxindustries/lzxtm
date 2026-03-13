@@ -18,6 +18,10 @@ import phong_exercise3_result from '/img/instruments/videomancer/phong/phong_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={phong_hero} alt="Phong hero image"/>
 *Phong rendering animated spheres with Blinn-Phong specular highlights, rim lighting, and user-defined chrominance orbiting against a dark background.*
 <img src={phong_animation} alt="Phong animated output"/>

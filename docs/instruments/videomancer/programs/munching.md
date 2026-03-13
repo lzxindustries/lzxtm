@@ -18,6 +18,10 @@ import munching_exercise3_result from '/img/instruments/videomancer/munching/mun
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={munching_hero} alt="Munching hero image"/>
 *Geometric bitwise patterns tessellate the screen in 16-colour grids, recreating the legendary PDP-1 HAKMEM #146 munching squares display.*
 <img src={munching_animation} alt="Munching animated output"/>

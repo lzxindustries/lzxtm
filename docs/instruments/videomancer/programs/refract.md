@@ -44,6 +44,10 @@ import refract_ex3_s6 from '/img/instruments/videomancer/refract/refract_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: refract_source1_sunset, after: refract_hero_s1 },

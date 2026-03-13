@@ -44,6 +44,10 @@ import terminal_ex3_s6 from '/img/instruments/videomancer/terminal/terminal_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: terminal_source1_fruit, after: terminal_hero_s1 },

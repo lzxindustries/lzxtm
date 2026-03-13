@@ -44,6 +44,10 @@ import phosphor_ex3_s6 from '/img/instruments/videomancer/phosphor/phosphor_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Runner", before: phosphor_source1_runner, after: phosphor_hero_s1 },

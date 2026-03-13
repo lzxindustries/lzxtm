@@ -18,6 +18,10 @@ import aurora_exercise3_result from '/img/instruments/videomancer/aurora/aurora_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={aurora_hero} alt="Aurora hero image"/>
 *Aurora painting luminous Lissajous trails in rainbow mode — overlapping orbits create prismatic interference patterns on a persistent framebuffer.*
 <img src={aurora_animation} alt="Aurora animated output"/>

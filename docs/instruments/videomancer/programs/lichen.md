@@ -18,6 +18,10 @@ import lichen_exercise3_result from '/img/instruments/videomancer/lichen/lichen_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={lichen_hero} alt="Lichen hero image"/>
 *Lichen growing irregular organic patches across a black field, their crusty edges and overlapping tints recalling colonies spreading across stone.*
 <img src={lichen_animation} alt="Lichen animated output"/>

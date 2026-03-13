@@ -18,6 +18,10 @@ import pong_exercise3_result from '/img/instruments/videomancer/pong/pong_exerci
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={pong_hero} alt="Pong hero image"/>
 *Pong rendering a classic two-player court with paddles, bouncing ball, dashed center net, and 5x7 dot-matrix score display over processed video.*
 <img src={pong_animation} alt="Pong animated output"/>

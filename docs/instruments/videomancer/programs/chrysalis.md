@@ -44,6 +44,10 @@ import chrysalis_ex3_s6 from '/img/instruments/videomancer/chrysalis/chrysalis_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Ballerina", before: chrysalis_source1_ballerina, after: chrysalis_hero_s1 },

@@ -44,6 +44,10 @@ import ludosphere_ex3_s6 from '/img/instruments/videomancer/ludosphere/ludospher
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: ludosphere_source1_dog, after: ludosphere_hero_s1 },

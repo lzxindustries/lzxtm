@@ -18,6 +18,10 @@ import laserium_exercise3_result from '/img/instruments/videomancer/laserium/las
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={laserium_hero} alt="Laserium hero image"/>
 *Razor-thin beams of saturated laser light trace rosettes and spirals across a darkened canvas, leaving persistent phosphor trails that glow and decay.*
 <img src={laserium_animation} alt="Laserium animated output"/>

@@ -18,6 +18,10 @@ import ramplogic_exercise3_result from '/img/instruments/videomancer/ramplogic/r
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={ramplogic_hero} alt="Ramp Logic hero image"/>
 *Eight ramp-logic operators tile the screen with saw-tooth and triangle waveform patterns — crisp geometric testcard geometry built from horizontal and vertical pixel counters alone.*
 <img src={ramplogic_animation} alt="Ramp Logic animated output"/>

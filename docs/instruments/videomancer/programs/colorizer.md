@@ -44,6 +44,10 @@ import colorizer_ex3_s6 from '/img/instruments/videomancer/colorizer/colorizer_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Parrot", before: colorizer_source1_parrot, after: colorizer_hero_s1 },

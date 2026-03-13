@@ -44,6 +44,10 @@ import cloudgate_ex3_s6 from '/img/instruments/videomancer/cloudgate/cloudgate_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "House", before: cloudgate_source1_house, after: cloudgate_hero_s1 },

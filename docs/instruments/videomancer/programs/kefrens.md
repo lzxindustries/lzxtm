@@ -18,6 +18,10 @@ import kefrens_exercise3_result from '/img/instruments/videomancer/kefrens/kefre
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={kefrens_hero} alt="Kefrens hero image"/>
 *Brightly coloured horizontal bars undulate across the screen in smooth sinusoidal waves, recreating the iconic Amiga demoscene copper bar effect.*
 <img src={kefrens_animation} alt="Kefrens animated output"/>

@@ -44,6 +44,10 @@ import voltmeter_ex3_s6 from '/img/instruments/videomancer/voltmeter/voltmeter_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: voltmeter_source1_boat, after: voltmeter_hero_s1 },

@@ -44,6 +44,10 @@ import birefring_ex3_s6 from '/img/instruments/videomancer/birefring/birefring_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Ballerina", before: birefring_source1_ballerina, after: birefring_hero_s1 },

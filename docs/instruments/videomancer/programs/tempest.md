@@ -18,6 +18,10 @@ import tempest_exercise3_result from '/img/instruments/videomancer/tempest/tempe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={tempest_hero} alt="Tempest hero image"/>
 *Tempest generating storm-like spatial turbulence from three noise-modulated DDS oscillators folded through triangle waveshaping.*
 <img src={tempest_animation} alt="Tempest animated output"/>

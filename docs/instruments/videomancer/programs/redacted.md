@@ -44,6 +44,10 @@ import redacted_ex3_s6 from '/img/instruments/videomancer/redacted/redacted_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Castle", before: redacted_source1_castle, after: redacted_hero_s1 },

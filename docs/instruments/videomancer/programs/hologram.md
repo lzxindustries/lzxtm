@@ -44,6 +44,10 @@ import hologram_ex3_s6 from '/img/instruments/videomancer/hologram/hologram_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: hologram_source1_cat, after: hologram_hero_s1 },

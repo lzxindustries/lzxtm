@@ -44,6 +44,10 @@ import discrot_ex3_s6 from '/img/instruments/videomancer/discrot/discrot_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: discrot_source1_skull, after: discrot_hero_s1 },

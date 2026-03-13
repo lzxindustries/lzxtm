@@ -44,6 +44,10 @@ import afterimage_ex3_s6 from '/img/instruments/videomancer/afterimage/afterimag
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: afterimage_source1_boat, after: afterimage_hero_s1 },

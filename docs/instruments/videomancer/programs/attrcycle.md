@@ -18,6 +18,10 @@ import attrcycle_exercise3_result from '/img/instruments/videomancer/attrcycle/a
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={attrcycle_hero} alt="Attrcycle hero image"/>
 *A photographic image shattered into coarse 8-bit colour blocks where bright regions reveal cycling ZX Spectrum ink colours and shadows show paper — a living attribute clash.*
 <img src={attrcycle_animation} alt="Attrcycle animated output"/>

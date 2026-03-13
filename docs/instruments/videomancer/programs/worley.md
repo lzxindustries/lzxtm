@@ -18,6 +18,10 @@ import worley_exercise3_result from '/img/instruments/videomancer/worley/worley_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={worley_hero} alt="Worley hero image"/>
 *Worley generating animated Voronoi cellular textures with Manhattan distance and the Thermal palette, producing volcanic heat-map terrain.*
 <img src={worley_animation} alt="Worley animated output"/>

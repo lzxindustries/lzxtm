@@ -18,6 +18,10 @@ import vlm_exercise3_result from '/img/instruments/videomancer/vlm/vlm_exercise3
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={vlm_hero} alt="VLM hero image"/>
 *Luminous points orbit multiple invisible attractors, painting persistent colour trails across the screen in a recreation of Jeff Minter's Virtual Light Machine concept — pure light motion driven by gravitational choreography.*
 <img src={vlm_animation} alt="VLM animated output"/>

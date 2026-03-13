@@ -44,6 +44,10 @@ import gauntlet_ex3_s6 from '/img/instruments/videomancer/gauntlet/gauntlet_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Parrot", before: gauntlet_source1_parrot, after: gauntlet_hero_s1 },

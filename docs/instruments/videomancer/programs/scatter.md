@@ -44,6 +44,10 @@ import scatter_ex3_s6 from '/img/instruments/videomancer/scatter/scatter_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <BeforeAfterSlider
   sources={[
     { label: "Castle", before: scatter_source1_castle, after: scatter_hero_s1 },

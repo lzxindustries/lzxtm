@@ -18,6 +18,10 @@ import sketch_exercise3_result from '/img/instruments/videomancer/sketch/sketch_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
+
 <img src={sketch_hero} alt="Sketch hero image"/>
 *Sketch rendering a freehand drawing traced across a 96x54 canvas grid, with a cursor marker and luminous strokes over dark background.*
 <img src={sketch_animation} alt="Sketch animated output"/>
