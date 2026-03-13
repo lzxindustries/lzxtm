@@ -37,11 +37,7 @@ Scrolls is a high precision motion controlled dual waveform generator for SD and
 
 Basic generative synthesis patches begin with horizontal and vertical ramps. These define 2D Cartesian coordinates in screen space. With *motion controlled* ramps, the coordinate system itself is shifted, repositioning or animating the entire resulting pattern.
 
-Scrolls also outputs four dedicated low frequency control voltages. These CVs are synchronized to the movement of the video waveforms. Use them to animate the patch in other ways, dancing in time with Scrolls.
-
-<!--
-AFR note: throughout, I've changed the name of the low frequency outputs from 'LFO' to 'CV'. I did this because I assume that the Random modes aren't periodic, so not really 'oscillators' in the sense that users are likely to understand the term. Technically, everything is an oscillator, but in this context, users expect 'oscillation' to be synonymous with regular periodicity.
--->
+Scrolls also outputs four dedicated low frequency control voltages. These LFOs control the movement of the video waveforms. Use them to animate the patch in other ways, dancing in time with Scrolls.
 
 Random and Journey modes conjure autonomous entities moving in screen space. Let your figure or pattern wander through the video world, or teleport in strobing patterns of random phases. In any mode, you always set the tempo. Even chaos can to step to the beat.
 
@@ -89,7 +85,7 @@ Two three-position toggle switches choose other global options. The top switch s
 
 As the primary driver of a generative video patch, Scrolls features numerous outputs. The two bottom rows of jacks are the video waveform generators. Each Ramp submodule provides the following outputs: **Ramp** (rising), **Pulse**, **Sawtooth** (falling), and **Sine**.
 
-Above the video outputs is a row of low frequency control voltage outputs. Each Ramp submodule features two CV outputs, labeled **A** and **B**.
+Above the video outputs is a row of low frequency control voltage outputs. Each Ramp submodule features two **LFO** outputs, labeled **A** and **B**.
 
 Per each Ramp Submodule, a bipolar **Phase** potentiometer shifts the position of the generator, or controls the motion in some other way. The Phase value can be driven by a control voltage supplied to the **CV** jack. The incoming phase CV is multiplied by the value set with the **Phase CV Depth** attenuverter potentiometer.
 
@@ -99,19 +95,45 @@ Per each Ramp Submodule, a bipolar **Phase** potentiometer shifts the position o
 
 <img src={scrolls_ramp_outputs} alt="Scrolls: video waveforms" />
 
-<img src={scrolls_synchronous_lfos} alt="Scrolls: CV outputs" />
+<img src={scrolls_synchronous_lfos} alt="Scrolls: LFO outputs" />
 
 ---
 
-### Speed
+## Speed
 
-Choose from three ranges of motion speeds. The toggle switch selects one of three modes, from left to right: **Motion Disabled**, **Slow Range**, and **Fast Range**.
+Choose from three ranges of motion speeds. The top toggle switch selects one of three modes, from left to right: **Motion Disabled**, **Slow Range**, and **Fast Range**.
 
 <img src={scrolls_hv_blank_three_speeds} alt="Scrolls: Speed range" />
 
+&nbsp;<br />
+
+### Motion Control Disabled
+
+When **Speed** is set to **Motion Disabled**, the **Phase1** and **Phase2** knobs directly control the phase of the video waveforms. They also set the speed of the LFOs. In this mode, the LFOs run at the same frequencies as in **Slow Range**. However, the LFOs do not affect the video waveforms.
+
+In **Motion Disabled** mode, the effect of turning **Phase1** and **Phase2** knobs is to offset the video waveforms. Horizontal ramps are shifted side-to-side, vertical ramps are shifted up and down.
+
+The relationship between the knob position and the ramp position is linear in all cases except **Journey** Motion Control mode. In **Journey** mode, **Phase1** sets an angular value, which is the two-dimensional direction of an offset to both sets of video waveforms. **Phase2** sets the amount of offset to both sets of video ramps, in the direction set by **Phase1**.
+
+### Motion Control Enabled
+
+When **Speed** is set to **Slow Range** or **Fast Range**, the phase of the video waveforms is controlled by the LFOs. **Phase1** and **Phase2** knobs adjust the speed of the LFOs.
+
+### Phase CV inputs
+
+A low frequency signal supplied to **Phase1 CV** or **Phase2 CV** allows automation of the phase of the video waveforms and/or the LFO frequencies. The value of the incoming voltage is multiplied by the associated **Phase CV Depth** attenuverter, and added to the value of the associated Phase knob.
+
+The same rules apply whether or not Phase receives a control voltage. In **Motion Disabled** mode, the LFOs don't affect the video waveforms. In **Slow Range** or **Fast Range** modes, the video waveforms are modulated by the LFOs.
+
+:::note
+The **Phase CV** inputs can technically accept any LZX-compatible voltage, but the Scrolls engine is not designed for video-rate modulation, or even for instantaneous transitions. There's always a split-second slew applied to any change in Phase.
+
+For example, if you plug a video signal into a **Phase CV** input, you'll probably get chaotic results. This may be interesting and useful as an effect, but you can't modulate with a video image like you can with an analog oscillator such as DWO3. Or if you plug a low frequency square wave into **Phase CV**, you won't get video waveforms instantly jumping from one position to another, you'll get snappy movements between two positions.
+:::
+
 ---
 
-### Waveform
+## Waveform
 
 Choose from three waveform modes. The toggle switch selects one of three modes, from left to right: **Wrap**, **Blank**, and **Mirror**. 
 
@@ -141,37 +163,63 @@ In HD timing formats, a 20ns black line is visible when the ramp reflects from p
 
 ---
 
-### Motion Control Modes
+## Motion Control Modes
 
 ### HH: Double Horizontal
 
-Both Ramp 1 and Ramp 2 are horizontal, with separate Phase controls.
+Both **Ramp 1** and **Ramp 2** video waveforms are horizontal, with separate **Phase** controls.
+
+**LFO A** is a sine wave. **LFO B** is a rising ramp in phase with LFO A, such that the lowest values of the two oscillators happen at the same time.
+
+---
 
 ### VV: Double Vertical
 
-Both Ramp 1 and Ramp 2 are vertical, with separate Phase controls.
+Both **Ramp 1** and **Ramp 2** video waveforms are vertical, with separate **Phase** controls.
+
+**LFO A** is a sine wave. **LFO B** is a rising ramp in phase with LFO A, such that the lowest values of the two oscillators happen at the same time.
+
+---
 
 ### HV: Horizontal & Vertical
 
-Ramp 1 is horizontal, Ramp 2 is vertical.
+**Ramp 1** video waveforms are horizontal, **Ramp 2** video waveforms are vertical.
+
+**LFO A** is a sine wave. **LFO B** is a rising ramp in phase with LFO A, such that the lowest values of the two oscillators happen at the same time.
 
 <img src={scrolls_hv_scroll} alt="Scrolls: HV mode" />
 
+---
+
 ### PP: Ping Pong
 
-Ramp 1 is horizontal, Ramp 2 is vertical. Motion uses triangle waveforms, for the bouncing DVD player logo effect.
+**Ramp 1** video waveforms are horizontal, **Ramp 2** is vertical. Motion uses triangle waves, for the bouncing DVD player logo effect.
+
+**LFO A** is a triangle wave. **LFO B** is a sine wave, in phase with LFO A.
 
 <img src={scrolls_ping_pong} alt="Scrolls: Ping-pong mode" />
 
+---
+
 ### O: Orbital
 
-Ramp 1 is horizontal, Ramp 2 is vertical. Motion uses a quadrature sine wave generator to animate the ramps in an elliptical orbit matching the aspect ratio of the video frame. Phase 1 controls speed, Phase 2 controls depth.
+**Ramp 1** video waveforms are horizontal, **Ramp 2** video waveforms are vertical. Motion uses a quadrature sine wave generator to animate the video waveforms in an elliptical orbit matching the aspect ratio of the video frame. **Phase 1** controls speed, **Phase 2** controls depth.
+
+**LFO A** and **LFO B** are sine waves. **LFO B** is 90 degrees out of phase relative to LFO A.
 
 <img src={scrolls_orbit} alt="Scrolls: Orbital mode" />
 
+---
+
 ### J: Journey
 
-Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to HV mode, but speed and direction are based on polar instead of cartesian coordinates. Phase 1 controls angle, Phase 2 controls velocity.
+**Ramp 1** video waveforms are horizontal, Ramp 2 video waveforms are vertical. Motion is similar to HV mode, but speed and direction are based on polar coordinates instead of a Cartesian XY grid. **Phase 1** controls the angular direction of motion, **Phase 2** controls speed.
+
+**LFO A** and **LFO B** are sine waves. **LFO B** is 90 degrees out of phase relative to LFO A. The frequency of both LFOs is affected by both Phase parameters, in a complex nonlinear relationship resulting from the polar coordinates.
+
+:::note
+In journey mode, increasing the Phase may have the counterintuitive result of decreasing the frequency of LFOs.
+:::
 
 <img src={scrolls_journey_phase_1} alt="Scrolls: Journey mode Phase 1" />
 
@@ -179,23 +227,30 @@ Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to HV mode, but spee
 
 <img src={scrolls_journey_phase_2} alt="Scrolls: Journey mode Phase 2" />
 
+---
+
 ### C: Corner
 
-Ramp 1 is horizontal, Ramp 2 is vertical. Motion is similar to Orbital mode, but utilizes trapezoidal rather than sinusoidal waveforms. Phase 1 controls speed, Phase 2 controls depth.
+**Ramp 1** video waveform is horizontal, **Ramp 2** is vertical. **Phase 1** controls speed, **Phase 2** controls depth. Motion is similar to Orbital mode, but uses slewed trapezoid waveforms rather than sines. This gives pleasing &ldquo;slow-out, slow-in&rdquo; changes in speed.
+
+**LFO A** and **LFO B** are &ldquo;s-curve&rdquo; slewed trapezoid waves. **LFO B** is 90 degrees out of phase relative to LFO A.
+
 
 <img src={scrolls_corner} alt="Scrolls: Corner mode" />
 
+---
+
 ### R?: Random
 
-Ramp 1 is horizontal, Ramp 2 is vertical. Phase 1 controls speed, Phase 2 controls depth. 
+**Ramp 1** video waveform is horizontal, **Ramp 2** is vertical. **Phase 1** controls speed. **Phase 2** controls depth, which is the amplitude of the chaotic waveforms.
 
-One of two random modes is selected by the rotation of Phase 2. Speed and position are random when Phase 2 is turned clockwise, to the right of 12 o'clock. 
+Two chaotic modes are available, determined by the position of the **Phase 2** knob. In the counterclockwise range to the left of 12 o'clock, the random values are punctuated by sudden movements and periods of momentary stillness. In the clockwise range to the right of 12 o'clock, the random values are smoothly interpolated, similar to the fluctuating random voltages found in audio modules such as the Buchla 266 Source of Uncertainty.
+
+**LFO A** and **LFO B** are independent chaotic waveforms.
 
 <img src={scrolls_random_cw} alt="Scrolls: Random mode, Phase 2 clockwise" />
 
 &nbsp;<br />
-
-Angle of movement is random when Phase 2 is turned counter-clockwise, to the left of 12 o'clock. 
 
 <img src={scrolls_random_ccw} alt="Scrolls: Random mode, Phase 2 counter-clockwise" />
 
@@ -255,10 +310,10 @@ Angle of movement is random when Phase 2 is turned counter-clockwise, to the lef
 |------|------------------|
 | J1   | Phase 1 CV in    |
 | J2   | Phase 2 CV in    |
-| J3   | CV 1A out        |
-| J4   | CV 1B out        |
-| J5   | CV 2A out        |
-| J6   | CV 2B out        |
+| J3   | LFO 1A out       |
+| J4   | LFO 1B out       |
+| J5   | LFO 2A out       |
+| J6   | LFO 2B out       |
 | J7   | Ramp 1 out       |
 | J8   | Pulse 1 out      |
 | J9   | Ramp 2 out       |
@@ -369,11 +424,7 @@ If your serial number is below #50, you should update your firmware to the lates
 
 ### Downloading the Firmware
 
-* Download the firmware package.
-
-Scrolls Firmware 1.0.1
-&nbsp;<br />
-[Download ZIP](https://docs.lzxindustries.net/firmware/scrolls_1.0.1/scrolls_1.0.1.zip)
+* Download the current firmware package: [Scrolls Firmware 1.0.3](/firmware/scrolls_1.0.3/scrolls-1.0.3.zip)
 
 * Extract the downloaded archive and verify that you have a file with the .BIN file extension.
 
@@ -401,6 +452,8 @@ For future updates, this step will be unnecessary when using the same PC.
 
 ## Downloads
 
-Scrolls Firmware 1.0.1
-&nbsp;<br />
-[Download ZIP](https://docs.lzxindustries.net/firmware/scrolls_1.0.1/scrolls_1.0.1.zip)
+[Scrolls Firmware 1.0.3](/firmware/scrolls_1.0.3/scrolls-1.0.3.zip)
+
+[Scrolls Firmware 1.0.2](/firmware/scrolls_1.0.2/scrolls-1.0.2.zip)
+
+[Scrolls Firmware 1.0.1](/firmware/scrolls_1.0.1/scrolls-1.0.1.zip)
