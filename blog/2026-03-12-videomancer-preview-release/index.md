@@ -12,7 +12,7 @@ As promised, here's the March 12th Videomancer update. This is a **preview relea
 
 ## What's New
 
-This release includes 17 new programs and a round of bug fixes. Some new draft documentation is available:
+This release includes 17 new programs, an entire rewrite of the firmware engine  and a round of bug fixes. Some new draft documentation is available:
 
 - [Program Guides](/docs/category/programs)
 - [Modulation Operators](/docs/instruments/videomancer/modulation-operators) 
@@ -27,4 +27,6 @@ This release includes 17 new programs and a round of bug fixes. Some new draft d
 This version **will overwrite your existing save states**. There is no migration path yet. If you want to preserve your current saves, do not install this firmware.
 :::
 
-This is a release candidate for experimenters and daring users only. We are **not soliciting feedback** on this version — we're posting it because we committed to an update on this date and wanted to deliver something tangible.  
+This is a release candidate for experimenters and daring users only. We are **not soliciting feedback** on this version — we're posting it because we committed to an update on this date and wanted to deliver something tangible.  We recommend you use HDMI in/out in HD resolutions, other IO modes have some issues to resolve.
+
+We'd love to hear about which programs you're having fun experimenting with, but do not need any issue or functionality reports for this version. 
