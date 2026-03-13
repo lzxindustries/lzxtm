@@ -2,12 +2,16 @@
 draft: false
 sidebar_position: 2
 slug: /instruments/videomancer/modulation-operators
-title: "Videomancer: Modulation Guide"
+title: "Modulation Guide"
 image: /img/instruments/videomancer/videomancer_frontpanel.png
 description: "Complete reference guide for Videomancer's 39 modulation operator types across 12 channels, including oscillators, envelope followers, random generators, sequencers, spatial modulators, physics simulations, and USB HID input devices."
 ---
 
 # Modulation Guide
+
+:::warning
+This document is still in progress, may contain errors, and is for preview only.
+:::
 
 :::info
 **System**: Videomancer Modulation Engine
@@ -38,29 +42,19 @@ description: "Complete reference guide for Videomancer's 39 modulation operator 
    - [Signal Conditioning](#signal-conditioning)
    - [Per-Line Spatial Modulation](#per-line-spatial-modulation)
    - [Frequency Analysis (FFT Bands)](#frequency-analysis-fft-bands)
-6. [USB MIDI](#usb-midi)
-   - [USB MIDI Host (Controller Input)](#usb-midi-host-controller-input)
-   - [USB MIDI Device (Computer Connection)](#usb-midi-device-computer-connection)
+6. [MIDI](#midi)
+   - [MIDI Ports](#midi-ports)
+     - [TRS MIDI (DIN)](#trs-midi-din)
+     - [USB MIDI Host (Controller Input)](#usb-midi-host-controller-input)
+     - [USB MIDI Device (Computer Connection)](#usb-midi-device-computer-connection)
+   - [Supported Messages](#supported-messages)
    - [MIDI CC Mapping](#midi-cc-mapping)
    - [MIDI Learn](#midi-learn)
-     - [Entering Learn Mode](#entering-learn-mode)
-     - [Assigning a CC](#assigning-a-cc)
-     - [14-Bit Auto-Pairing](#14-bit-auto-pairing)
-     - [Canceling Learn Mode](#canceling-learn-mode)
-     - [Clearing an Assignment](#clearing-an-assignment)
-     - [CC Conflicts](#cc-conflicts)
-     - [Channel Filtering](#channel-filtering)
-     - [Viewing Existing Assignments](#viewing-existing-assignments)
-     - [Persistence and Presets](#persistence-and-presets)
    - [MIDI Notes](#midi-notes)
    - [MIDI Program Change](#midi-program-change)
    - [MIDI Clock & Transport](#midi-clock--transport)
    - [MIDI Channel Filtering](#midi-channel-filtering)
-7. [TRS MIDI](#trs-midi)
-   - [Connection](#connection)
-   - [Supported Messages](#supported-messages)
-   - [MIDI Thru Behavior](#midi-thru-behavior)
-8. [USB HID Devices](#usb-hid-devices)
+7. [USB HID Devices](#usb-hid-devices)
    - [Supported Device Types](#supported-device-types)
    - [Connecting Devices](#connecting-devices)
    - [Mouse](#mouse)
@@ -69,8 +63,8 @@ description: "Complete reference guide for Videomancer's 39 modulation operator 
    - [Drawing Tablet](#drawing-tablet)
    - [Joystick](#joystick)
    - [Sensor](#sensor)
-9. [Guided Exercises](#guided-exercises)
-10. [Tips](#tips)
+8. [Guided Exercises](#guided-exercises)
+9. [Tips](#tips)
 
 ---
 
@@ -107,12 +101,20 @@ Manual Knob Position
                     └──────┬──────┘
                            │
                            ▼
+                    ┌─────────────┐
+                    │  Velocity   │ ← MIDI note velocity (if active)
+                    │  Gate       │
+                    └──────┬──────┘
+                           │
+                           ▼
                     Parameter Output
 ```
 
 ![Modulation Signal Path](/img/instruments/videomancer/modulation/signal_path.png)
 
 Each modulator updates once per video field (approximately 50 or 60 times per second depending on the video standard). Some operators also produce **per-line** output — a different value for every scanline within the field — which allows modulation to vary spatially across the frame.
+
+The **velocity gate** is an optional final stage that applies MIDI note velocity to the output. When a MIDI note-on targeting that modulator is active (note 0 for P1, note 1 for P2, etc.), the note's velocity value is added to the output. This allows MIDI keyboards and sequencers to influence modulation intensity dynamically — harder key strikes produce larger offsets. When no note is active, the velocity gate has no effect.
 
 ### The Three Parameters
 
@@ -131,13 +133,57 @@ The exact meaning of each parameter depends on the active operator. The display 
 Modulators operate in one of two output modes:
 
 - **Linear**: Outputs a continuous value across the full range. Used for knobs and faders.
-- **Boolean**: Outputs 0 or 1. Used for toggle switches. If the operator's output is above the midpoint, the toggle is "on." At or below the midpoint, it is "off."
+- **Boolean**: Outputs 0 or 1. Used for toggle switches. If the combined manual + operator output is at or above the midpoint (512), the toggle is "on." Below the midpoint, it is "off."
 
 ![Linear vs. Boolean Output](/img/instruments/videomancer/modulation/linear_vs_boolean.png)
 
 ---
 
 ## Operator Reference
+
+The 39 operators are grouped by category below. Use this index to find an operator by its numeric ID:
+
+| ID | Operator | Category | Per-line |
+|----|----------|----------|----------|
+| 0 | Disabled | — | — |
+| 1 | Free LFO | Oscillators | No |
+| 2 | Sync LFO | Oscillators | No |
+| 3 | CV Input | External Input | Yes |
+| 4 | Audio Input | External Input | Yes |
+| 5 | Random | Random & Chaos | No |
+| 6 | Envelope | Envelopes & Followers | No |
+| 7 | Sample & Hold | Envelopes & Followers | No |
+| 8 | Trigger Env | Envelopes & Followers | No |
+| 9 | Step Seq | Sequencing & Rhythm | No |
+| 10 | FFT Band | Envelopes & Followers | No |
+| 11 | H Displace | Spatial | Yes |
+| 12 | Turing Machine | Random & Chaos | No |
+| 13 | Bouncing Ball | Physics | No |
+| 14 | Logistic Map | Random & Chaos | No |
+| 15 | Euclidean Rhythm | Sequencing & Rhythm | No |
+| 16 | Motion LFO | Oscillators | No |
+| 17 | V Gradient | Spatial | Yes |
+| 18 | Comparator | Envelopes & Followers | Yes |
+| 19 | Pendulum | Physics | No |
+| 20 | Drift | Random & Chaos | No |
+| 21 | Ring Mod | External Input | Yes |
+| 22 | Cellular | Random & Chaos | No |
+| 23 | Pulse Width | Oscillators | No |
+| 24 | Peak Hold | Envelopes & Followers | Yes |
+| 25 | Field Accum | Envelopes & Followers | No |
+| 26 | Slew Limiter | Envelopes & Followers | No |
+| 27 | Perlin Noise | Random & Chaos | No |
+| 28 | Wavefolder | Oscillators | No |
+| 29 | Clock Div | Sequencing & Rhythm | No |
+| 30 | Prob Gate | Sequencing & Rhythm | No |
+| 31 | Quantizer | Envelopes & Followers | Yes |
+| 32 | Mouse | USB HID Input | No |
+| 33 | Keyboard | USB HID Input | No |
+| 34 | Gamepad | USB HID Input | No |
+| 35 | Tablet | USB HID Input | No |
+| 36 | Joystick | USB HID Input | No |
+| 37 | Sensor | USB HID Input | No |
+| 38 | MIDI Turing | Random & Chaos | No |
 
 ### Oscillators
 
@@ -277,7 +323,7 @@ In per-line mode, each scanline reads its own input sample, so the modulation va
 
 | Parameter | Label | Function |
 |-----------|-------|----------|
-| Time | Slew | *(Minimal effect — this operator bypasses slew filtering)* |
+| Time | Slew | *(Unused — this operator does not apply slew filtering. The knob has no effect.)* |
 | Space | Gain | Output amplitude, 4× range. |
 | Slope | Channel | Input channel select (same six options as CV Input). |
 
@@ -415,6 +461,10 @@ In per-line mode, the comparison happens independently at each scanline, so the 
 
 A rate-limited follower of an analog input signal. The output tracks the input, but the maximum speed at which it can move upward (rise) and downward (fall) is independently limited. If the input jumps instantly from low to high, the output ramps up at the rise rate. If the input drops, the output ramps down at the fall rate.
 
+:::note
+The Slope (Fall) knob also selects which analog input channel is read. Low settings read channel 1 with a slow fall rate; high settings read channels 3+4 with an instant fall rate. Channel selection and fall rate are coupled on the same control.
+:::
+
 Asymmetric slew rates produce distinctive motion profiles. Fast rise and slow fall creates a signal that snaps to peaks and gently decays — useful for making parameters respond quickly to transients but recover slowly. Slow rise and fast fall creates the opposite: sluggish response to increasing input but instant response to decreasing input.
 
 ![Slew Limiter — Asymmetric Rates](/img/instruments/videomancer/modulation/slew_limiter.png)
@@ -445,11 +495,15 @@ The per-line variant outputs the *maximum* of the held peak and the current scan
 |-----------|-------|----------|
 | Time | Rate | Integration rate. Controls how much of the input signal is added per field (1/64 at minimum, 1/1 at maximum). |
 | Space | Gain | Output amplitude. |
-| Slope | Leak | Drain rate. Fully counter-clockwise = no leak (pure integrator, value latches). Fully clockwise = fast drain (output returns to center quickly). |
+| Slope | Leak | Drain rate and input channel select. Fully counter-clockwise = no leak (pure integrator, value latches). Fully clockwise = fast drain (output returns to center quickly). |
 
 **Per-line**: No
 
-An integrator — it continuously adds the input signal (minus the midpoint) to a running total. Over time, the total drifts upward if the input is above center, or downward if below. The Leak parameter applies a constant drain that pulls the total back toward center, preventing it from railing at the extremes.
+Field Accum operates as an integrator: it continuously adds the input signal (minus the midpoint) to a running total. Over time, the total drifts upward if the input is above center, or downward if below. The Leak parameter applies a constant drain that pulls the total back toward center, preventing it from railing at the extremes.
+
+:::note
+The Slope (Leak) knob also selects which analog input channel is read, using the same six-option mapping as CV Input. Low settings read channel 1 with no leak; high settings read channels 3+4 with fast leak. Channel selection and leak rate are coupled on the same control.
+:::
 
 With no leak and a steady input, Field Accum ramps steadily in one direction until it hits the rail — useful for generating slow ramps locked to an input signal. With moderate leak, it produces a smoothed, sluggishly-responding version of the input. With high leak, the output tracks the input loosely, acting as a weighted running average.
 
@@ -565,13 +619,11 @@ At zero mutation, the sequence cycles through a fixed 255-step pattern that repe
 
 **Per-line**: No
 
-A variant of the Turing Machine that advances on MIDI note events instead of a free-running clock. The 8-bit shift register only shifts when a new MIDI note-on message is received on the modulator's channel — holding a note produces a steady output, and each new note triggers a single step of the sequence.
+A variant of the Turing Machine that advances on MIDI note events instead of a free-running clock. The 8-bit shift register only shifts when a new MIDI note-on message is received targeting that modulator — holding a note produces a steady output, and each new note triggers a single step of the sequence.
 
 This makes the modulation rhythmically synchronized to your MIDI performance. Playing a fast arpeggio produces rapid value changes; holding a sustained note keeps the output steady. The Mutate parameter controls the same order-to-chaos spectrum as the standard Turing Machine.
 
-The Slew parameter replaces Rate (since timing is now determined by MIDI input). It controls how quickly the output moves toward each new value — at zero, transitions are instantaneous; at higher values, the output glides smoothly between steps, creating portamento-like modulation contours.
-
-**Typical use**: Assign to a video effect parameter and play MIDI notes to step through a pseudo-random sequence. With low mutation, the sequence repeats exactly with each pass through the same note pattern. With moderate mutation, the sequence gradually evolves across performances.
+The Slew parameter replaces Rate (since timing is now determined by MIDI input). It controls how quickly the output moves toward each new value — at zero, transitions are instantaneous; at higher values, the output glides smoothly between steps, creating portamento-like modulation contours. Assign MIDI Turing to a video effect parameter and play MIDI notes to step through a pseudo-random sequence. With low mutation, the sequence repeats exactly with each pass through the same note pattern. With moderate mutation, the sequence gradually evolves across performances.
 
 ---
 
@@ -767,7 +819,7 @@ A MIDI note-on resets the ball to the ceiling, triggering a fresh drop. This mak
 
 Simulates a damped pendulum — a weight on a string swinging back and forth. A restoring force proportional to displacement from center pulls the pendulum back when it swings to one side. Damping gradually reduces the swing amplitude. The result is a decaying sinusoidal oscillation that feels natural and organic — the kind of motion you see when you push a swing and let it settle.
 
-A MIDI note-on displaces the pendulum to its maximum angle, triggering a new decay. Without MIDI, the pendulum swings from its initial displacement and either oscillates indefinitely (no damping) or settles to center (with damping).
+A MIDI note-on displaces the pendulum to its maximum angle, triggering a new decay — but only when the pendulum has come to rest. Note-on messages received while the pendulum is still swinging are ignored. Without MIDI, the pendulum swings from its initial displacement and either oscillates indefinitely (no damping) or settles to center (with damping).
 
 The difference between Pendulum and a damped Free LFO is in how the motion decays. Pendulum applies a restoring force proportional to displacement and friction proportional to velocity, so the output naturally settles to center. A damped Free LFO fades the waveform in place without pulling toward a rest point.
 
@@ -777,7 +829,7 @@ The difference between Pendulum and a damped Free LFO is in how the motion decay
 
 ### USB HID Input
 
-These operators use USB-connected human interface devices (mouse, keyboard, gamepad, tablet, joystick, sensor) as modulation sources. Connect a device to the USB host port to use these operators. HID state persists across source changes — the mouse position is maintained even when other modulators are selected.
+These operators use USB-connected human interface devices as modulation sources. Connect a device to the USB Host port to use these operators. See [USB HID Devices](#usb-hid-devices) for connection details, device compatibility, and persistence behavior.
 
 ---
 
@@ -795,7 +847,7 @@ Tracks USB mouse movement as an accumulated position. Moving the mouse left/righ
 
 The Wheel axis accumulates scroll wheel deltas. The Buttons axis provides a gate output — any mouse button press drives the output to maximum.
 
-Approximately two full mouse sweeps cover the entire modulation range. For finer control, increase Slew or reduce Gain.
+Approximately two full mouse sweeps cover the entire modulation range. For finer control, increase Slew or reduce Gain. See [Mouse](#mouse) in USB HID Devices for connection details and persistence behavior.
 
 ![Mouse — Position Accumulation](/img/instruments/videomancer/modulation/mouse_accumulation.png)
 
@@ -815,7 +867,7 @@ Provides an attack/release envelope triggered by USB keyboard input. Any key pre
 
 With fast Attack and slow Release, a brief keypress produces a percussive burst. With slow Attack and fast Release, keys create a gradual swell that snaps off. The Curve parameter shapes the envelope contour using the same three curves as Trigger Env.
 
-Particularly useful in performance when a MIDI controller is not available. Any USB keyboard becomes a modulation trigger surface.
+Particularly useful in performance when a MIDI controller is not available — any USB keyboard becomes a modulation trigger surface. See [Keyboard](#keyboard) in USB HID Devices for key handling details.
 
 ![Keyboard — Gate Envelope](/img/instruments/videomancer/modulation/keyboard_gate.png)
 
@@ -831,21 +883,9 @@ Particularly useful in performance when a MIDI controller is not available. Any 
 
 **Per-line**: No
 
-Reads USB gamepad analog stick axes, triggers, and buttons. The Axis parameter selects from seven inputs:
+Reads USB gamepad analog stick axes, triggers, and buttons. The Axis parameter selects from seven inputs: Left Stick X/Y, Right Stick X/Y, Left/Right Trigger, and Buttons (any button gate). Stick axes are spring-centered, returning to the midpoint when released — ideal for temporary parameter offsets. Triggers provide one-directional ramps.
 
-| Input | Behavior |
-|-------|----------|
-| Left Stick X | Horizontal axis, spring-centered |
-| Left Stick Y | Vertical axis, spring-centered |
-| Right Stick X | Horizontal axis, spring-centered |
-| Right Stick Y | Vertical axis, spring-centered |
-| Left Trigger | Linear pull, rests at zero |
-| Right Trigger | Linear pull, rests at zero |
-| Buttons | Gate: any button pressed |
-
-Stick axes are spring-centered, naturally returning to the midpoint when released. This makes them ideal for temporary parameter offsets — push the stick to modulate, release to return to the base value. Triggers provide one-directional ramps from zero to maximum. The Buttons gate goes high when any button is pressed.
-
-Gamepad input is particularly effective for live performance, providing intuitive two-axis control that musicians already understand from gaming.
+See [Gamepad](#gamepad) in USB HID Devices for axis details, spring-return behavior, and performance tips.
 
 ![Gamepad — Axis Layout](/img/instruments/videomancer/modulation/gamepad_layout.png)
 
@@ -861,20 +901,11 @@ Gamepad input is particularly effective for live performance, providing intuitiv
 
 **Per-line**: No
 
-Reads absolute position, pressure, and button state from USB digitizer devices — drawing tablets, touchscreens, and touchpads. Unlike Mouse (which accumulates relative movement), Tablet maps directly from the device's absolute coordinate space to the full modulation range. Moving to the left edge of the tablet always produces the minimum value; the right edge always produces the maximum.
+Reads absolute position, pressure, and button state from USB digitizer devices — drawing tablets, touchscreens, and touchpads. Unlike Mouse (which accumulates relative movement), Tablet maps the device's absolute coordinate space directly to the modulation range. The Axis parameter selects X Position, Y Position, Pressure, or Buttons (tip switch, barrel button, or eraser gate).
 
-| Input | Description |
-|-------|-------------|
-| X Position | Absolute horizontal position (left edge to right edge) |
-| Y Position | Absolute vertical position (top edge to bottom edge) |
-| Pressure | Pen or finger pressure (no contact to maximum force) |
-| Buttons | Gate: tip switch, barrel button, or eraser (any contact drives the output high) |
+Pressure is the key differentiator — pressure-sensitive tablets report continuous pen force, enabling expressive modulation that responds to how hard the performer presses. Coordinates persist when the pen is lifted, freezing the last known position until the pen touches down again.
 
-The Pressure axis is the key differentiator from Mouse. Pressure-sensitive tablets (Wacom, Huion, XP-Pen) report continuous pen pressure, enabling expressive modulation that responds to how hard the performer presses. Light touches produce subtle modulation; pressing firmly drives the output to maximum.
-
-The Buttons axis provides a gate output. The tip switch (pen touching the surface), barrel button (pen side button), and eraser (pen flip) all activate the gate — any contact drives the output high. This works well for triggering envelopes or gating effects.
-
-Tablet coordinates are absolute and persistent — lifting the pen freezes the last known position until the pen touches down again. Combined with Slew smoothing, this creates gestural modulation with natural decay.
+See [Drawing Tablet](#drawing-tablet) in USB HID Devices for device compatibility, axis behavior, and touchscreen notes.
 
 ![Tablet — Surface Mapping](/img/instruments/videomancer/modulation/tablet_layout.png)
 
@@ -890,22 +921,11 @@ Tablet coordinates are absolute and persistent — lifting the pen freezes the l
 
 **Per-line**: No
 
-Reads USB joystick axes, hat switch, and buttons. Designed for flight sticks, HOTAS setups, and other multi-axis joystick controllers. Joysticks often provide more axes than gamepads — up to six (X, Y, Z, Rx, Ry, Rz) plus a hat switch.
+Reads USB joystick axes, hat switch, and buttons. The Axis parameter selects from eight inputs: X, Y, Z, Rx, Ry, Rz, Hat, and Buttons. Joysticks typically provide more axes than gamepads — up to six plus a hat switch — suitable for flight sticks, HOTAS setups, throttle quadrants, and rudder pedals.
 
-| Input | Typical Physical Control |
-|-------|-------------------------|
-| X Axis | Stick left/right |
-| Y Axis | Stick forward/back |
-| Z Axis | Throttle lever or stick twist |
-| Rx Axis | Secondary rotation X or pedals |
-| Ry Axis | Secondary rotation Y |
-| Rz Axis | Rudder pedals or twist |
-| Hat Switch | 8-directional POV switch (center = midpoint) |
-| Buttons | Gate: any button pressed |
+Unlike Gamepad, axes are often not spring-centered — throttle levers and rudder pedals stay where you set them. The Hat switch maps its eight directional positions across the output range, with the center (released) position producing the midpoint.
 
-Unlike Gamepad, which assumes spring-centered dual sticks, Joystick exposes six independent axes — suitable for throttle quadrants, rudder pedals, and multi-axis controllers where each axis has its own physical range and centering behavior. The Hat switch maps its eight directional positions across the output range, with the center (released) position producing the midpoint.
-
-The Slew parameter smooths axis movements. This is particularly useful for throttle axes (Z) that may not have physical detents — smoothing prevents the output from jumping when the device reports quantized values.
+See [Joystick](#joystick) in USB HID Devices for axis mapping, compatibility notes, and HOTAS tips.
 
 ![Joystick — Axis Layout](/img/instruments/videomancer/modulation/joystick_layout.png)
 
@@ -921,23 +941,11 @@ The Slew parameter smooths axis movements. This is particularly useful for throt
 
 **Per-line**: No
 
-Reads USB sensor devices providing accelerometer and gyroscope data. Enables motion-controlled modulation from USB motion sensor dongles and similar devices.
+Reads USB sensor devices providing accelerometer and gyroscope data. The Axis parameter selects from seven inputs: Accel X/Y/Z, Gyro X/Y/Z, and Magnitude. Accelerometer axes respond to both static tilt (gravity) and dynamic acceleration (shaking). Gyroscope axes measure rotation rate, returning to the midpoint when rotation stops. Magnitude captures total acceleration regardless of direction.
 
-| Input | Measures |
-|-------|----------|
-| Accel X | Tilt left/right (responds to gravity and movement) |
-| Accel Y | Tilt forward/back (responds to gravity and movement) |
-| Accel Z | Vertical acceleration (offset by gravity) |
-| Gyro X | Roll rotation rate (returns to center when rotation stops) |
-| Gyro Y | Pitch rotation rate (returns to center when rotation stops) |
-| Gyro Z | Yaw rotation rate (returns to center when rotation stops) |
-| Magnitude | Combined acceleration from all axes (responds to shaking and impacts) |
+Sensor data tends to be noisy — increase Slew for smooth modulation, or decrease it for responsive gesture detection.
 
-Accelerometer axes measure static tilt and dynamic acceleration. Tilting the sensor to one side produces a proportional modulation value — holding it level yields the midpoint, and tilting fully produces the minimum or maximum value. Gyroscope axes measure rotation rate — spinning the sensor around an axis produces proportional output that returns to the midpoint when rotation stops.
-
-The Magnitude axis provides an approximation of total acceleration — useful for detecting shaking or striking gestures regardless of orientation.
-
-Sensor data tends to be noisy. Higher Slew values are recommended for smooth, musical modulation. Lower Slew values are better for percussive, gesture-triggered effects where rapid response matters more than smoothness.
+See [Sensor](#sensor) in USB HID Devices for axis orientation, rest positions, and usage tips.
 
 ![Sensor — Axis Orientation](/img/instruments/videomancer/modulation/sensor_orientation.png)
 
@@ -1051,11 +1059,26 @@ FFT Band always reads Input 1. The eight bands roughly correspond to musical oct
 
 ---
 
-## USB MIDI
+## MIDI
 
-Videomancer supports MIDI input and output over two USB connections and one TRS connection. MIDI messages control modulation parameters, recall presets, synchronize tempo, and trigger one-shot events. All three MIDI ports share the same message handling — any CC, note, clock, or program change message is processed identically regardless of which port it arrives on.
+Videomancer receives and processes MIDI over three independent ports: a rear-panel TRS jack, a rear-panel USB Host connector, and a front-panel USB Device connector. All three ports feed the same message-handling pipeline — any CC, note, clock, or program change message is processed identically regardless of which port it arrives on. There is no need to configure which port is "active"; all three are always listening.
 
-### USB MIDI Host (Controller Input)
+### MIDI Ports
+
+#### TRS MIDI (DIN)
+
+The rear panel has a **TRS MIDI In** jack (3.5mm) using the **Type A** pinout (MIDI Manufacturers Association standard). This is the connection to use with hardware MIDI gear — Eurorack MIDI-to-CV modules, drum machines, hardware sequencers, and any device with a 5-pin DIN MIDI output.
+
+**How to use it**:
+
+1. Connect a MIDI source to the TRS MIDI In jack on the rear panel using a TRS-A cable or a TRS-A to 5-pin DIN adapter.
+2. MIDI messages are received immediately — no configuration required.
+
+**TRS-A pinout**: Videomancer uses the MIDI Manufacturers Association standard (TRS-A). If your source device uses TRS-B (used by some Korg and Arturia products), you need a TRS-A-to-B adapter cable.
+
+**TRS MIDI Out**: The rear panel also has a TRS MIDI Out jack. This output is reserved for future use — no MIDI data is currently transmitted from this jack.
+
+#### USB MIDI Host (Controller Input)
 
 The rear-panel **USB Host** port (USB-C connector) accepts USB MIDI controllers — keyboards, knob boxes, pad controllers, and any other class-compliant USB MIDI device. Videomancer acts as the USB host, providing power and recognizing the connected device automatically.
 
@@ -1067,9 +1090,9 @@ The rear-panel **USB Host** port (USB-C connector) accepts USB MIDI controllers 
 
 Any class-compliant USB MIDI device works. Common examples include Novation Launch Control, Korg nanoKONTROL, Arturia MiniLab, Akai MPK Mini, and generic USB MIDI keyboards. Devices that require vendor-specific drivers (non-class-compliant) are not supported.
 
-The USB Host port can also accept USB HID devices (mice, keyboards, gamepads) — see [USB HID Devices](#usb-hid-devices). If a device provides both MIDI and HID interfaces (uncommon), both are active simultaneously. A USB hub can be used to connect multiple devices to the single host port.
+The USB Host port also accepts USB HID devices (mice, keyboards, gamepads) — see [USB HID Devices](#usb-hid-devices). If a device provides both MIDI and HID interfaces (uncommon), both are active simultaneously. A USB hub can be used to connect multiple devices to the single host port.
 
-### USB MIDI Device (Computer Connection)
+#### USB MIDI Device (Computer Connection)
 
 The front-panel **USB Device** port (USB-C connector, also used for firmware updates) allows a computer to send MIDI to Videomancer. When connected to a computer via USB, Videomancer appears as a class-compliant USB MIDI device — no driver installation is needed on macOS, Windows, or Linux. The device name appears in your DAW or MIDI software's device list.
 
@@ -1079,7 +1102,18 @@ The front-panel **USB Device** port (USB-C connector, also used for firmware upd
 2. Videomancer appears as a MIDI device in your DAW, Max/MSP, TouchDesigner, or other MIDI software.
 3. Send MIDI CC, notes, clock, or program change messages from the software.
 
-This connection is bidirectional — Videomancer also sends MIDI data back to the computer. MIDI messages received on the USB Host port are echoed to the USB Device output, allowing the computer to monitor incoming controller traffic. Messages originating from the computer are not echoed back.
+### Supported Messages
+
+All three MIDI ports support the same set of standard MIDI messages:
+
+| Category | Messages |
+|----------|----------|
+| **Channel Voice** | Note On, Note Off, Control Change, Program Change, Pitch Bend, Polyphonic Aftertouch, Channel Pressure |
+| **System Common** | MTC Quarter Frame, Song Position Pointer, Song Select, Tune Request |
+| **System Real-Time** | Clock, Start, Continue, Stop, Active Sensing, System Reset |
+| **System Exclusive** | SysEx (up to 64 bytes) |
+
+All standard MIDI behaviors are supported, including interpreting **Note On with velocity 0** as Note Off.
 
 ### MIDI CC Mapping
 
@@ -1120,7 +1154,7 @@ CC assignments are saved to flash memory and restored on power-up. They are also
 
 ### MIDI Learn
 
-MIDI Learn provides an intuitive way to assign CC numbers without memorizing CC tables. Instead of manually configuring which CC controls which parameter, you point at a modulator and wiggle a knob on your MIDI controller. The assignment is saved immediately and restored on power-up.
+MIDI Learn provides an intuitive way to assign CC numbers without memorizing CC tables. Instead of manually configuring which CC controls which parameter, you point at a modulator and wiggle a knob on your MIDI controller — on any MIDI port (TRS, USB Host, or USB Device). The assignment is saved immediately and restored on power-up.
 
 #### Entering Learn Mode
 
@@ -1158,7 +1192,6 @@ CCs in the range 32–63 are already defined as LSB positions by the MIDI specif
 #### Canceling Learn Mode
 
 - **Press the encoder** at any time during learn mode to cancel without making a change. The display returns to the normal modulator view and the existing CC assignment (if any) is left untouched.
-- Learn mode also **auto-cancels after 30 seconds** of inactivity. If no CC arrives and you do not press the encoder within 30 seconds, learn mode quietly exits. This prevents the system from getting stuck in learn mode if you walk away.
 
 #### Clearing an Assignment
 
@@ -1187,7 +1220,7 @@ This lets you check which CC is mapped without entering learn mode.
 
 Learned CC assignments follow the same persistence rules as manual assignments — saved to flash and stored per-preset. Loading a different preset via the front panel or via MIDI Program Change restores that preset's CC layout.
 
-A power cycle during learn mode is harmless — learn mode is temporary. If power is lost while learn mode is active, the unit simply boots normally with the last saved CC map intact.
+A power cycle during learn mode is harmless — learn mode is a temporary UI state. If power is lost while learn mode is active, the unit boots normally with the last saved CC map intact.
 
 #### Summary of Learn Mode Interactions
 
@@ -1196,15 +1229,14 @@ A power cycle during learn mode is harmless — learn mode is temporary. If powe
 | Short-press Px | Normal: cycles modulator parameter page |
 | Long-press Px (≥1.4 s), no existing CC | Enters learn mode (LCD + LED blink) |
 | Long-press Px (≥1.4 s), CC already assigned | Clears the assignment, shows "CC cleared!" |
-| Move MIDI knob during learn | Captures CC, shows "CC N assigned!", persists |
+| Move MIDI knob during learn (any port) | Captures CC, shows "CC N assigned!", persists |
 | Press encoder during learn | Cancels learn mode, no change |
-| 30 s inactivity during learn | Auto-cancels learn mode |
 
 ![MIDI Learn — State Flow](/img/instruments/videomancer/modulation/midi_learn_flow.png)
 
 ### MIDI Notes
 
-MIDI note messages provide trigger control for modulation operators that respond to gates — Trigger Env, Bouncing Ball, and Pendulum.
+MIDI note messages provide trigger control for modulation operators that respond to gates — Trigger Env, Bouncing Ball, Pendulum, and MIDI Turing.
 
 **Note-to-modulator mapping**: Note numbers 0 through 11 map directly to modulators P1 through P12. Note 0 triggers P1, note 1 triggers P2, and so on. Notes 12 and above are ignored.
 
@@ -1223,7 +1255,7 @@ MIDI note messages provide trigger control for modulation operators that respond
 | 10 (A#-2) | P11 | |
 | 11 (B-2) | P12 | |
 
-**Note On** activates the target modulator. Operators that respond to notes — like Trigger Env — begin their attack phase. Bouncing Ball resets to the top and starts a new drop.
+**Note On** activates the target modulator. Operators that respond to notes — like Trigger Env — begin their attack phase. Bouncing Ball resets to the top and starts a new drop. MIDI Turing advances one step in its shift register sequence.
 
 **Note Off** (or Note On with velocity 0) releases the modulator, triggering the release phase of Trigger Env or allowing Pendulum to decay naturally.
 
@@ -1298,37 +1330,6 @@ All MIDI input can be filtered by channel:
 The channel filter applies to CC, note, program change, and aftertouch messages. System messages (clock, start, stop, continue, SysEx) are always accepted regardless of the channel filter setting, since they have no channel.
 
 The channel filter is set in the Settings menu and persists across power cycles.
-
----
-
-## TRS MIDI
-
-Videomancer's rear panel has a TRS MIDI input jack and a TRS MIDI output jack, using 3.5mm TRS cables with **Type A** pinout (MIDI Manufacturers Association standard).
-
-### Connection
-
-The TRS jacks follow the **TRS-A** (MIDI Manufacturers Association standard) wiring convention. To connect a device with a traditional 5-pin DIN MIDI connector, use a TRS-A to DIN adapter cable. TRS-B adapters (used by some Korg and Arturia products) will not work without a TRS-A-to-B converter.
-
-**Input**: Connect a MIDI controller, sequencer, or DAW interface to the TRS MIDI In jack. All standard MIDI messages are supported.
-
-**Output**: The TRS MIDI Out jack transmits MIDI data from Videomancer. Messages received on the TRS input are re-transmitted from the TRS output (MIDI thru). Messages received on the USB ports are not forwarded to the TRS output.
-
-### Supported Messages
-
-The TRS MIDI port supports all standard MIDI messages:
-
-| Category | Messages |
-|----------|----------|
-| **Channel Voice** | Note On, Note Off, Control Change, Program Change, Pitch Bend, Polyphonic Aftertouch, Channel Pressure |
-| **System Common** | MTC Quarter Frame, Song Position Pointer, Song Select, Tune Request |
-| **System Real-Time** | Clock, Start, Continue, Stop, Active Sensing, System Reset |
-| **System Exclusive** | SysEx (up to 64 bytes) |
-
-All standard MIDI behaviors are supported, including interpreting **Note On with velocity 0** as Note Off.
-
-### MIDI Thru Behavior
-
-Videomancer does not have a dedicated MIDI Thru jack. The TRS output doubles as a software thru for TRS input, but does not forward USB-originated messages.
 
 ---
 
@@ -1555,7 +1556,7 @@ These exercises progress from basic oscillator modulation through external input
 - **Motion LFO vs. Sync LFO**. Use Motion LFO when you need perfect phase lock to the transport. Use Sync LFO when you want tempo-related motion that can free-run when the transport is stopped.
 - **Depth is your friend**. If a modulated effect is too dramatic, reduce Depth before changing anything else. Most operators produce useful results across their full parameter range — the issue is usually amplitude, not the operator itself.
 - **Per-line operators for spatial effects**. Any of the eight per-line operators can create spatial variation across the frame. CV Input with a ramp or triangle wave on the input produces a clean vertical gradient controlled by the external signal.
-- **MIDI triggers**. Trigger Env, Bouncing Ball, and Pendulum all respond to MIDI note messages. Connect a keyboard or sequencer to create musically timed one-shot events.
+- **MIDI triggers**. Trigger Env, Bouncing Ball, Pendulum, and MIDI Turing all respond to MIDI note messages. Connect a keyboard or sequencer to create musically timed one-shot events.
 - **Chaos is a spectrum**. Logistic Map's Chaos parameter and Turing Machine's Mutate parameter both control the balance between order and randomness. The most interesting territory is usually in the middle — not fully ordered, not fully random.
 - **Combine pattern generators**. Euclidean Rhythm + Prob Gate + Clock Div on three different parameters creates interlocking rhythmic modulation with a mix of deterministic structure and probabilistic variation.
 - **Wavefolder for complex LFO shapes**. If the eight basic waveshapes are not enough, Wavefolder produces complex waveforms from a single sine oscillator. Start with one or two folds and sweep Symmetry to find new shapes.
