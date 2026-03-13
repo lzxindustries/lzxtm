@@ -14,7 +14,7 @@ As promised, here's the March 12th Videomancer update. This is a **preview relea
 
 This release includes 17 new programs and a round of bug fixes. Some new draft documentation is available:
 
-- [Program Guides](/docs/instruments/videomancer/programs)
+- [Program Guides](/docs/category/programs)
 - [Modulation Operators](/docs/instruments/videomancer/modulation-operators) 
 
 ## Download
