@@ -44,10 +44,6 @@ import macrobloc_ex3_s6 from '/img/instruments/videomancer/macrobloc/macrobloc_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: macrobloc_source1_skull, after: macrobloc_hero_s1 },

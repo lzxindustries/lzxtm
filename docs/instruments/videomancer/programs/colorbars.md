@@ -3,23 +3,41 @@ draft: true
 sidebar_position: 57
 slug: /instruments/videomancer/colorbars
 title: "Colorbars"
-image: /img/instruments/videomancer/colorbars/colorbars_hero.png
+image: /img/instruments/videomancer/colorbars/colorbars_hero_s1.png
 description: "Every video engineer's first instinct when commissioning a new system is to call up color bars."
 ---
 
-import colorbars_hero from '/img/instruments/videomancer/colorbars/colorbars_hero.png';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import colorbars_control_panel from '/img/instruments/videomancer/colorbars/colorbars_control_panel.png';
+import colorbars_source1_boat from '/img/instruments/videomancer/colorbars/colorbars_source1_boat.png';
+import colorbars_source2_cat from '/img/instruments/videomancer/colorbars/colorbars_source2_cat.png';
+import colorbars_source3_clouds from '/img/instruments/videomancer/colorbars/colorbars_source3_clouds.png';
+import colorbars_source4_pattern from '/img/instruments/videomancer/colorbars/colorbars_source4_pattern.png';
+import colorbars_source5_man from '/img/instruments/videomancer/colorbars/colorbars_source5_man.png';
+import colorbars_source6_paint from '/img/instruments/videomancer/colorbars/colorbars_source6_paint.png';
+import colorbars_hero_s1 from '/img/instruments/videomancer/colorbars/colorbars_hero_s1.png';
+import colorbars_hero_s2 from '/img/instruments/videomancer/colorbars/colorbars_hero_s2.png';
+import colorbars_hero_s3 from '/img/instruments/videomancer/colorbars/colorbars_hero_s3.png';
+import colorbars_hero_s4 from '/img/instruments/videomancer/colorbars/colorbars_hero_s4.png';
+import colorbars_hero_s5 from '/img/instruments/videomancer/colorbars/colorbars_hero_s5.png';
+import colorbars_hero_s6 from '/img/instruments/videomancer/colorbars/colorbars_hero_s6.png';
 
 # Colorbars
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={colorbars_hero} alt="Colorbars hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Boat", before: colorbars_source1_boat, after: colorbars_hero_s1 },
+    { label: "Cat", before: colorbars_source2_cat, after: colorbars_hero_s2 },
+    { label: "Clouds", before: colorbars_source3_clouds, after: colorbars_hero_s3 },
+    { label: "Pattern", before: colorbars_source4_pattern, after: colorbars_hero_s4 },
+    { label: "Man", before: colorbars_source5_man, after: colorbars_hero_s5 },
+    { label: "Paint", before: colorbars_source6_paint, after: colorbars_hero_s6 },
+  ]}
+/>
 *Colorbars generating a full-amplitude SMPTE 7-bar test pattern — seven clean vertical stripes spanning the full YUV gamut from white through blue.*
+
 ---
 
 ## Overview
@@ -186,7 +204,7 @@ Unused. This control has no effect on the output.
 | **8 — Order** | Normal | Reverse |
 | **9 — —** | Off | On |
 | **10 — —** | Off | On |
-| **11 — Bypass** | Off | On |
+| **11 — Mono** | Color | Mono |
 
 Only two of the five toggles are active. Level (Switch 7) selects between the 75% and 100% bar amplitude standards. Order (Switch 8) reverses the bar sequence from the standard White→Blue to Blue→White. Bypass (Switch 11) routes the input signal directly to the output, bypassing all processing. Switches 9 and 10 are unused.
 

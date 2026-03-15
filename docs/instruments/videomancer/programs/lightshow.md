@@ -18,10 +18,6 @@ import lightshow_exercise3_result from '/img/instruments/videomancer/lightshow/l
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={lightshow_hero} alt="Light Show hero image"/>
 *Liquid light pools drift and merge — iridescent fringes shimmer at the boundaries where amorphous blobs meet, evoking the psychedelic overhead projector shows of the 1960s.*
 <img src={lightshow_animation} alt="Light Show animated output"/>

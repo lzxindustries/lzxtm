@@ -44,10 +44,6 @@ import caustic_ex3_s6 from '/img/instruments/videomancer/caustic/caustic_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "House", before: caustic_source1_house, after: caustic_hero_s1 },

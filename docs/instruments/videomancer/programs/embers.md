@@ -18,10 +18,6 @@ import embers_exercise3_result from '/img/instruments/videomancer/embers/embers_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={embers_hero} alt="Embers hero image"/>
 *Embers drifting upward from a dark field — eight simultaneous particle trajectories tracing arcs of white-hot light against the void.*
 <img src={embers_animation} alt="Embers animated output"/>

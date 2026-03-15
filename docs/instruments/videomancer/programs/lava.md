@@ -18,10 +18,6 @@ import lava_exercise3_result from '/img/instruments/videomancer/lava/lava_exerci
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={lava_hero} alt="Lava hero image"/>
 *Lava conjuring four molten blobs in the Classic Red palette — organic metaball surfaces merge and divide in slow vertical convection against a dark field.*
 <img src={lava_animation} alt="Lava animated output"/>

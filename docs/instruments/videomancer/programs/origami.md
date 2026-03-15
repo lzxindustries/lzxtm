@@ -18,10 +18,6 @@ import origami_exercise3_result from '/img/instruments/videomancer/origami/origa
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={origami_hero} alt="Origami hero image"/>
 *Origami dividing a video frame into mirrored geometric fold panels with crease highlights, gap borders, and facet-dependent shadow gradients.*
 <img src={origami_animation} alt="Origami animated output"/>

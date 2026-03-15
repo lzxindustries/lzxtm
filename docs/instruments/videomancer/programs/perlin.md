@@ -3,29 +3,58 @@ draft: false
 sidebar_position: 222
 slug: /instruments/videomancer/perlin
 title: "Perlin"
-image: /img/instruments/videomancer/perlin/perlin_hero.png
+image: /img/instruments/videomancer/perlin/perlin_hero_s1.png
 description: "In 1983, Ken Perlin invented a noise function to add naturalistic texture to computer-generated imagery for the film Tron."
 ---
 
-import perlin_hero from '/img/instruments/videomancer/perlin/perlin_hero.png';
-import perlin_animation from '/img/instruments/videomancer/perlin/perlin_animation.gif';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import perlin_control_panel from '/img/instruments/videomancer/perlin/perlin_control_panel.png';
-import perlin_exercise1_result from '/img/instruments/videomancer/perlin/perlin_exercise1_result.gif';
-import perlin_exercise2_result from '/img/instruments/videomancer/perlin/perlin_exercise2_result.gif';
-import perlin_exercise3_result from '/img/instruments/videomancer/perlin/perlin_exercise3_result.gif';
+import perlin_source1_car from '/img/instruments/videomancer/perlin/perlin_source1_car.png';
+import perlin_source2_skull from '/img/instruments/videomancer/perlin/perlin_source2_skull.png';
+import perlin_source3_elephant from '/img/instruments/videomancer/perlin/perlin_source3_elephant.png';
+import perlin_source4_pattern from '/img/instruments/videomancer/perlin/perlin_source4_pattern.png';
+import perlin_source5_girl from '/img/instruments/videomancer/perlin/perlin_source5_girl.png';
+import perlin_source6_paint from '/img/instruments/videomancer/perlin/perlin_source6_paint.png';
+import perlin_hero_s1 from '/img/instruments/videomancer/perlin/perlin_hero_s1.png';
+import perlin_hero_s2 from '/img/instruments/videomancer/perlin/perlin_hero_s2.png';
+import perlin_hero_s3 from '/img/instruments/videomancer/perlin/perlin_hero_s3.png';
+import perlin_hero_s4 from '/img/instruments/videomancer/perlin/perlin_hero_s4.png';
+import perlin_hero_s5 from '/img/instruments/videomancer/perlin/perlin_hero_s5.png';
+import perlin_hero_s6 from '/img/instruments/videomancer/perlin/perlin_hero_s6.png';
+import perlin_ex1_s1 from '/img/instruments/videomancer/perlin/perlin_ex1_s1.png';
+import perlin_ex1_s2 from '/img/instruments/videomancer/perlin/perlin_ex1_s2.png';
+import perlin_ex1_s3 from '/img/instruments/videomancer/perlin/perlin_ex1_s3.png';
+import perlin_ex1_s4 from '/img/instruments/videomancer/perlin/perlin_ex1_s4.png';
+import perlin_ex1_s5 from '/img/instruments/videomancer/perlin/perlin_ex1_s5.png';
+import perlin_ex1_s6 from '/img/instruments/videomancer/perlin/perlin_ex1_s6.png';
+import perlin_ex2_s1 from '/img/instruments/videomancer/perlin/perlin_ex2_s1.png';
+import perlin_ex2_s2 from '/img/instruments/videomancer/perlin/perlin_ex2_s2.png';
+import perlin_ex2_s3 from '/img/instruments/videomancer/perlin/perlin_ex2_s3.png';
+import perlin_ex2_s4 from '/img/instruments/videomancer/perlin/perlin_ex2_s4.png';
+import perlin_ex2_s5 from '/img/instruments/videomancer/perlin/perlin_ex2_s5.png';
+import perlin_ex2_s6 from '/img/instruments/videomancer/perlin/perlin_ex2_s6.png';
+import perlin_ex3_s1 from '/img/instruments/videomancer/perlin/perlin_ex3_s1.png';
+import perlin_ex3_s2 from '/img/instruments/videomancer/perlin/perlin_ex3_s2.png';
+import perlin_ex3_s3 from '/img/instruments/videomancer/perlin/perlin_ex3_s3.png';
+import perlin_ex3_s4 from '/img/instruments/videomancer/perlin/perlin_ex3_s4.png';
+import perlin_ex3_s5 from '/img/instruments/videomancer/perlin/perlin_ex3_s5.png';
+import perlin_ex3_s6 from '/img/instruments/videomancer/perlin/perlin_ex3_s6.png';
 
 # Perlin
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={perlin_hero} alt="Perlin hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: perlin_source1_car, after: perlin_hero_s1 },
+    { label: "Skull", before: perlin_source2_skull, after: perlin_hero_s2 },
+    { label: "Elephant", before: perlin_source3_elephant, after: perlin_hero_s3 },
+    { label: "Pattern", before: perlin_source4_pattern, after: perlin_hero_s4 },
+    { label: "Girl", before: perlin_source5_girl, after: perlin_hero_s5 },
+    { label: "Paint", before: perlin_source6_paint, after: perlin_hero_s6 },
+  ]}
+/>
 *Perlin generating animated gradient noise fields with fire palette and turbulent absolute-value folding, a fractal texture born from integer arithmetic alone.*
-<img src={perlin_animation} alt="Perlin animated output"/>
-*Perlin output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
@@ -211,7 +240,7 @@ Controls the speed of palette color cycling. Each frame, the palette offset is i
 | **8 — Video Mod** | Off | On |
 | **9 — Absolute** | Signed | Abs |
 | **10 — Domain Warp** | Off | On |
-| **11 — Bypass** | Off | On |
+| **11 — Sharp** | Off | On |
 
 The five toggles control palette selection (2-bit), video modulation, absolute/signed mode, domain warping, and bypass. Note that toggle bit 1 is shared between Palette selection (`s_palette_sel <= registers_in(6)(1 downto 0)`) and Video Mod (`s_video_mod <= registers_in(6)(1)`). This means the second palette bit and the video modulation flag track the same hardware bit — changing one changes the other. This is a known hardware quirk documented in the VHDL.
 
@@ -242,7 +271,16 @@ These exercises explore the noise generator's controls from basic static texture
 
 ### Exercise 1: Classic Marble Texture
 
-<img src={perlin_exercise1_result} alt="Classic Marble Texture result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: perlin_source1_car, after: perlin_ex1_s1 },
+    { label: "Skull", before: perlin_source2_skull, after: perlin_ex1_s2 },
+    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex1_s3 },
+    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex1_s4 },
+    { label: "Girl", before: perlin_source5_girl, after: perlin_ex1_s5 },
+    { label: "Paint", before: perlin_source6_paint, after: perlin_ex1_s6 },
+  ]}
+/>
 *Classic Marble Texture — simulated result across source images.*
 **What You'll Create**: Generate a static grayscale Perlin noise texture resembling polished marble, exploring scale and contrast.
 
@@ -258,7 +296,16 @@ These exercises explore the noise generator's controls from basic static texture
 
 ### Exercise 2: Flowing Fire
 
-<img src={perlin_exercise2_result} alt="Flowing Fire result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: perlin_source1_car, after: perlin_ex2_s1 },
+    { label: "Skull", before: perlin_source2_skull, after: perlin_ex2_s2 },
+    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex2_s3 },
+    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex2_s4 },
+    { label: "Girl", before: perlin_source5_girl, after: perlin_ex2_s5 },
+    { label: "Paint", before: perlin_source6_paint, after: perlin_ex2_s6 },
+  ]}
+/>
 *Flowing Fire — simulated result across source images.*
 **What You'll Create**: Create an animated fire texture using the Fire palette, upward scrolling, and absolute mode for flickering flame shapes.
 
@@ -276,7 +323,16 @@ These exercises explore the noise generator's controls from basic static texture
 
 ### Exercise 3: Video-Modulated Cloud Overlay
 
-<img src={perlin_exercise3_result} alt="Video-Modulated Cloud Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: perlin_source1_car, after: perlin_ex3_s1 },
+    { label: "Skull", before: perlin_source2_skull, after: perlin_ex3_s2 },
+    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex3_s3 },
+    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex3_s4 },
+    { label: "Girl", before: perlin_source5_girl, after: perlin_ex3_s5 },
+    { label: "Paint", before: perlin_source6_paint, after: perlin_ex3_s6 },
+  ]}
+/>
 *Video-Modulated Cloud Overlay — simulated result across source images.*
 **What You'll Create**: Superimpose cloud-palette noise over a live video source using video modulation and partial mix.
 

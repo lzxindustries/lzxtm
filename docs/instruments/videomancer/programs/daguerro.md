@@ -44,10 +44,6 @@ import daguerro_ex3_s6 from '/img/instruments/videomancer/daguerro/daguerro_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Car", before: daguerro_source1_car, after: daguerro_hero_s1 },

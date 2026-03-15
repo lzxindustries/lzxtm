@@ -44,10 +44,6 @@ import minitel_ex3_s6 from '/img/instruments/videomancer/minitel/minitel_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: minitel_source1_fruit, after: minitel_hero_s1 },

@@ -3,37 +3,66 @@ draft: false
 sidebar_position: 108
 slug: /instruments/videomancer/fauxtress
 title: "Fauxtress"
-image: /img/instruments/videomancer/fauxtress/fauxtress_hero.png
+image: /img/instruments/videomancer/fauxtress/fauxtress_hero_s1.png
 description: "Fauxtress is a faithful reimplementation of the LZX Industries Fortress EuroRack module as a Videomancer FPGA program."
 ---
 
-import fauxtress_hero from '/img/instruments/videomancer/fauxtress/fauxtress_hero.png';
-import fauxtress_animation from '/img/instruments/videomancer/fauxtress/fauxtress_animation.gif';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import fauxtress_control_panel from '/img/instruments/videomancer/fauxtress/fauxtress_control_panel.png';
-import fauxtress_exercise1_result from '/img/instruments/videomancer/fauxtress/fauxtress_exercise1_result.gif';
-import fauxtress_exercise2_result from '/img/instruments/videomancer/fauxtress/fauxtress_exercise2_result.gif';
-import fauxtress_exercise3_result from '/img/instruments/videomancer/fauxtress/fauxtress_exercise3_result.gif';
+import fauxtress_source1_parrot from '/img/instruments/videomancer/fauxtress/fauxtress_source1_parrot.png';
+import fauxtress_source2_cat from '/img/instruments/videomancer/fauxtress/fauxtress_source2_cat.png';
+import fauxtress_source3_collage from '/img/instruments/videomancer/fauxtress/fauxtress_source3_collage.png';
+import fauxtress_source4_pattern from '/img/instruments/videomancer/fauxtress/fauxtress_source4_pattern.png';
+import fauxtress_source5_girl from '/img/instruments/videomancer/fauxtress/fauxtress_source5_girl.png';
+import fauxtress_source6_knit from '/img/instruments/videomancer/fauxtress/fauxtress_source6_knit.png';
+import fauxtress_hero_s1 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s1.png';
+import fauxtress_hero_s2 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s2.png';
+import fauxtress_hero_s3 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s3.png';
+import fauxtress_hero_s4 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s4.png';
+import fauxtress_hero_s5 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s5.png';
+import fauxtress_hero_s6 from '/img/instruments/videomancer/fauxtress/fauxtress_hero_s6.png';
+import fauxtress_ex1_s1 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s1.png';
+import fauxtress_ex1_s2 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s2.png';
+import fauxtress_ex1_s3 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s3.png';
+import fauxtress_ex1_s4 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s4.png';
+import fauxtress_ex1_s5 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s5.png';
+import fauxtress_ex1_s6 from '/img/instruments/videomancer/fauxtress/fauxtress_ex1_s6.png';
+import fauxtress_ex2_s1 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s1.png';
+import fauxtress_ex2_s2 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s2.png';
+import fauxtress_ex2_s3 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s3.png';
+import fauxtress_ex2_s4 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s4.png';
+import fauxtress_ex2_s5 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s5.png';
+import fauxtress_ex2_s6 from '/img/instruments/videomancer/fauxtress/fauxtress_ex2_s6.png';
+import fauxtress_ex3_s1 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s1.png';
+import fauxtress_ex3_s2 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s2.png';
+import fauxtress_ex3_s3 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s3.png';
+import fauxtress_ex3_s4 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s4.png';
+import fauxtress_ex3_s5 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s5.png';
+import fauxtress_ex3_s6 from '/img/instruments/videomancer/fauxtress/fauxtress_ex3_s6.png';
 
 # Fauxtress
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={fauxtress_hero} alt="Fauxtress hero image"/>
-*Fauxtress generating a Neon-palette cellular automata pattern, its diagonal interference bands revealing the cross-modulation between horizontal and animation phase accumulators.*
-<img src={fauxtress_animation} alt="Fauxtress animated output"/>
-*Fauxtress output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
+<BeforeAfterSlider
+  sources={[
+    { label: "Parrot", before: fauxtress_source1_parrot, after: fauxtress_hero_s1 },
+    { label: "Cat", before: fauxtress_source2_cat, after: fauxtress_hero_s2 },
+    { label: "Collage", before: fauxtress_source3_collage, after: fauxtress_hero_s3 },
+    { label: "Pattern", before: fauxtress_source4_pattern, after: fauxtress_hero_s4 },
+    { label: "Girl", before: fauxtress_source5_girl, after: fauxtress_hero_s5 },
+    { label: "Knit", before: fauxtress_source6_knit, after: fauxtress_hero_s6 },
+  ]}
+/>
+*Fauxtress generating a Neon-palette cellular automata pattern at full spatial resolution, the shifting horizontal phase from its animation LFO revealing the interplay between accumulator rates and color palette quantization.*
 
 ---
 
 ## Overview
 
-Fauxtress is a faithful reimplementation of the LZX Industries Fortress EuroRack module as a Videomancer FPGA program. Fortress was a standalone geometric pattern synthesizer — a "video oscillator on steroids" — that combined phase-accumulator waveforms, multiple pattern generation algorithms, an arithmetic logic unit (ALU), and a bank of curated color palettes to produce an enormous range of geometric, textural, and noise-based video imagery from scratch. Its signature was the cross-modulation between horizontal and animation accumulators, which produced the sweeping diagonal moire patterns instantly recognizable to LZX modular video users.
+Fauxtress is a faithful reimplementation of the LZX Industries Fortress EuroRack module as a Videomancer FPGA program. Fortress was a standalone geometric pattern synthesizer — a "video oscillator on steroids" — that combined phase-accumulator waveforms, multiple pattern generation algorithms, an arithmetic logic unit (ALU), and a bank of curated color palettes to produce an enormous range of geometric, textural, and noise-based video imagery from scratch. Its signature was the rich interplay of horizontal, vertical, and animation phase accumulators, which — combined with palette quantization and ALU operations — produced the complex moire and interference patterns instantly recognizable to LZX modular video users.
 
-Fauxtress reproduces all four of Fortress's pattern generation programs: direct waveform combining, a 16-stage shift register delay, 32-cell 1D cellular automata running classic Wolfram rules, and a configurable linear feedback shift register (LFSR) noise generator. Each program feeds its output through one of eight ALU operations — Add, Subtract, AND, OR, XOR, NAND, NOR, XNOR — and the 3-bit result indexes into one of eight color palettes ported directly from the original hardware. The result is a combinatorial space of thousands of distinct visual textures, from razor-sharp geometric grids to evolving organic cellular structures to pseudo-random noise fields, all rendered in the original Fortress color language.
+Fauxtress reproduces all four of Fortress's pattern generation programs: direct waveform combining, a 16-stage shift register delay, 32-cell 1D cellular automata running classic Wolfram rules, and a configurable linear feedback shift register (LFSR) noise generator. Each program feeds its output through one of eight ALU operations — Add, Subtract, AND, OR, XOR, NAND, NOR, XNOR — and the 3-bit result indexes into one of eight color palettes ported directly from the original hardware. The H and V rate controls are scaled so that at maximum settings the pattern reaches full pixel-clock spatial resolution (~960 cycles across the screen), while the animation accumulator acts as a slow LFO (advancing once per frame) that gradually shifts the horizontal phase offset over time — producing smooth, evolving motion rather than rapid diagonal sweeps. The result is a combinatorial space of thousands of distinct visual textures, from razor-sharp geometric grids to evolving organic cellular structures to pseudo-random noise fields, all rendered in the original Fortress color language.
 
 The name "Fauxtress" — a portmanteau of "faux" and "Fortress" — acknowledges that while the implementation is new (VHDL on iCE40 rather than the original discrete logic), the design intent, palette data, CA rules, and aesthetic fingerprint are drawn directly from the original module.
 
@@ -42,7 +71,7 @@ The name "Fauxtress" — a portmanteau of "faux" and "Fortress" — acknowledges
 ## Quick Start
 
 1. **Start with Direct + XOR for instant patterns**: Program 00 with the XOR operation produces the widest variety of classic Fortress geometric grids. It's the fastest path to a recognizable signal from which to explore other program modes.
-2. **Anim Rate is diagonal tilt**: Think of the animation rate as a "tilt" control for the pattern. Zero produces purely orthogonal (horizontal/vertical) structures. Small values tilt the pattern slightly diagonal. Large values produce rapidly sweeping moire interference.
+2. **Anim Rate is slow temporal drift**: Think of the animation rate as an LFO that gradually shifts the horizontal starting phase. Zero produces a static pattern. Even small values produce a slow, mesmerizing horizontal drift. Higher values speed up the evolution.
 3. **Triangle smooths, Ramp sharpens**: Triangle waveforms produce mirrored, smooth patterns with no wrap-around discontinuity. Ramp waveforms produce sawtooth patterns with a sharp edge at the wrap boundary. Mix and match for asymmetric textures.
 
 ---
@@ -55,7 +84,7 @@ Fortress was released by LZX Industries as part of the Visionary series of EuroR
 
 ### Phase Accumulator Waveforms
 
-A phase accumulator is the simplest and most resource-efficient technique for generating periodic waveforms in digital hardware. A register of width N increments by a fixed "rate" value on each clock tick. Because the register wraps around at $2^N$, the most significant bits trace a sawtooth (ramp) waveform whose frequency is proportional to the rate value. The ramp can be folded into a triangle by using the MSB as a direction bit: when the MSB is 0, the remaining bits increase; when the MSB is 1, the remaining bits are inverted, producing a symmetric rise-and-fall pattern. Fauxtress uses three 20-bit accumulators — horizontal, vertical, and animation — with the horizontal accumulator *preloaded* from the animation accumulator at each horizontal sync pulse. This preload is the source of the diagonal interference patterns: each scanline starts at a progressively shifted phase, so what would be a purely horizontal pattern rotates into diagonal stripes whose angle depends on the animation rate.
+A phase accumulator is the simplest and most resource-efficient technique for generating periodic waveforms in digital hardware. A register of width N increments by a fixed "rate" value on each clock tick. Because the register wraps around at $2^N$, the most significant bits trace a sawtooth (ramp) waveform whose frequency is proportional to the rate value. The ramp can be folded into a triangle by using the MSB as a direction bit: when the MSB is 0, the remaining bits increase; when the MSB is 1, the remaining bits are inverted, producing a symmetric rise-and-fall pattern. Fauxtress uses three 20-bit accumulators — horizontal, vertical, and animation. The H and V rate values are internally scaled ×512 so that at maximum pot settings the spatial frequency reaches near pixel-clock resolution (~960 cycles across 1920 active pixels). The animation accumulator advances once per frame (at vsync) and its current value is preloaded into the horizontal accumulator at each hsync. Because the animation value is constant within a frame, all scanlines share the same horizontal starting phase — the pattern is purely orthogonal. Across successive frames, the horizontal offset drifts slowly, producing smooth temporal evolution of the pattern.
 
 ### Cellular Automata and Wolfram Rules
 
@@ -81,14 +110,14 @@ Phase Accumulators
 │
 ├── H Accumulator (20-bit)
 │   ├─ Reset to Animation Accumulator value on hsync
-│   └─ Increment by H Rate per pixel (during avid)
+│   └─ Increment by H Rate × 512 per pixel (during avid)
 │
 ├── V Accumulator (20-bit)
 │   ├─ Reset to 0 on vsync
-│   └─ Increment by V Rate per scanline (on hsync)
+│   └─ Increment by V Rate × 512 per scanline (on hsync)
 │
 ├── Animation Accumulator (20-bit)
-│   └─ Free-running: increment by Anim Rate per pixel clock
+│   └─ LFO: increment by Anim Rate × 32 per frame (on vsync)
 │
 ├── Waveform Shaping ──────────────────────────────────────────
 │   ├─ H Ramp = H Accum[19:10]
@@ -127,7 +156,7 @@ Phase Accumulators
     └─ Bypass On → pass input directly; Off → mixed output
 ```
 
-The cross-modulation between the animation and horizontal accumulators is the most distinctive feature of the signal flow. Because the horizontal accumulator is preloaded from the animation accumulator at each hsync, the starting phase of each scanline shifts progressively — producing diagonal patterns whose angle is determined by the ratio of the animation rate to the horizontal rate. When the animation rate is zero, the horizontal pattern is purely horizontal (identical on every line). As the animation rate increases, the phase offset between successive lines grows, rotating the pattern toward the diagonal. This mechanism is computationally free — it uses no additional logic, only the accumulator preload — yet it produces the rich moire interference patterns that defined the original Fortress aesthetic. The ALU pipeline register between the ALU output and the palette lookup breaks what would otherwise be a long combinational path through waveform generation, program selection, ALU operation, and palette ROM lookup.
+The animation accumulator acts as a slow LFO that preloads the horizontal accumulator. Because the animation only advances once per frame (on vsync), all scanlines within a given frame receive the same starting phase — the pattern is purely orthogonal (horizontal and vertical structures only). Across successive frames, the horizontal offset drifts smoothly, creating slow temporal evolution of the entire pattern. When the animation rate is zero, the pattern is completely static. The H and V rate values are scaled ×512 internally, so the full 0–1023 pot range maps to spatial frequencies from a single slow cycle across the screen up to near pixel-clock resolution. The ALU pipeline register between the ALU output and the palette lookup breaks what would otherwise be a long combinational path through waveform generation, program selection, ALU operation, and palette ROM lookup.
 
 ---
 
@@ -144,7 +173,7 @@ The cross-modulation between the animation and horizontal accumulators is the mo
 | Range | 0 – 1023 |
 | Default | 256 |
 
-At zero, the horizontal accumulator does not advance — every pixel on each scanline sees the same phase value, producing uniform horizontal bands (or a solid field if V Rate is also zero). As H Rate increases, vertical stripes of increasing spatial frequency appear. The value directly sets the 10-bit increment added to the 20-bit accumulator per pixel, so the spatial frequency scales linearly with the knob position. At maximum, the pattern cycles roughly once per two pixels, producing the highest-frequency spatial grid. The horizontal waveform feeds directly into the Direct and Shift Register programs, and indirectly into the Cellular Automata program as the spatial readout index. Internally, controls the frequency of the horizontal phase accumulator.
+At zero, the horizontal accumulator does not advance — every pixel on each scanline sees the same phase value, producing uniform horizontal bands (or a solid field if V Rate is also zero). As H Rate increases, vertical stripes of increasing spatial frequency appear. The 10-bit pot value is internally scaled ×512, so the full pot range spans from a single slow ramp across the screen up to near pixel-clock resolution at maximum (~960 cycles across 1920 pixels, or roughly one cycle per two pixels). The horizontal waveform feeds directly into the Direct and Shift Register programs, and indirectly into the Cellular Automata program as the spatial readout index. Internally, controls the frequency of the horizontal phase accumulator.
 
 ---
 
@@ -154,7 +183,7 @@ At zero, the horizontal accumulator does not advance — every pixel on each sca
 | Range | 0 – 1023 |
 | Default | 256 |
 
-At zero, the vertical accumulator remains at its reset value (zero) on every scanline, producing uniform vertical bars. As V Rate increases, horizontal stripes appear and become more closely spaced. Because the vertical accumulator increments once per scanline (at hsync) rather than once per pixel, a given V Rate value produces a coarser spatial frequency than the same H Rate value — there are only 1080 lines versus 1920 pixels. The vertical waveform serves as ALU operand B in the Direct, Shift Register, and LFSR programs. Internally, controls the frequency of the vertical phase accumulator.
+At zero, the vertical accumulator remains at its reset value (zero) on every scanline, producing uniform vertical bars. As V Rate increases, horizontal stripes appear and become more closely spaced. The same ×512 scaling as H Rate is applied, so at maximum V Rate the pattern reaches ~540 cycles across 1080 lines. Because the vertical accumulator increments once per scanline (at hsync) rather than once per pixel, identical H and V pot settings produce different spatial densities — roughly half as many cycles vertically as horizontally. The vertical waveform serves as ALU operand B in the Direct, Shift Register, and LFSR programs. Internally, controls the frequency of the vertical phase accumulator.
 
 ---
 
@@ -164,7 +193,7 @@ At zero, the vertical accumulator remains at its reset value (zero) on every sca
 | Range | 0 – 1023 |
 | Default | 0 |
 
-Controls the animation accumulator rate. When set to zero, the animation accumulator remains at zero and the horizontal accumulator starts each scanline at the same phase — the pattern is static and purely horizontal/vertical. As Anim Rate increases, the animation accumulator advances by this value on every pixel clock (free-running), and the horizontal accumulator is preloaded from it at each hsync. This creates a per-scanline phase shift that produces diagonal interference patterns and sweeping moire effects. Higher values produce faster diagonal drift and more complex cross-modulation. The animation accumulator never resets, so the pattern continuously evolves over time.
+Controls the animation accumulator rate. When set to zero, the animation accumulator remains at zero and the horizontal accumulator starts each scanline at phase zero — the pattern is static and purely horizontal/vertical. The animation accumulator acts as a slow LFO, advancing once per frame (at vsync) with a ×32 scaling. At low settings the pattern drifts almost imperceptibly; at maximum the LFO reaches ~1.9 Hz (roughly a half-second cycle at 60fps). Because the animation value is constant within each frame, all scanlines share the same horizontal starting phase — there is no diagonal tilt. The pattern evolves smoothly over time as the horizontal offset shifts frame by frame. The animation accumulator never resets, so the pattern drift is continuous.
 
 ---
 
@@ -206,7 +235,7 @@ Serves multiple roles depending on the active pattern program. In Direct mode (0
 | **8 — V Shape** | Ramp | Triangle |
 | **9 — Shift Reg** | Off | On |
 | **10 — CA/LFSR** | Off | On |
-| **11 — Bypass** | Off | On |
+| **11 — Invert** | Off | On |
 
 Toggles 7 and 8 independently select between ramp and triangle waveform shapes for the horizontal and vertical axes, producing four waveform combinations (ramp×ramp, ramp×triangle, triangle×ramp, triangle×triangle) that fundamentally alter the geometry of the pattern. Toggles 9 and 10 form a 2-bit program selector: 00 selects Direct combining, 01 selects the Shift Register, 10 selects the Cellular Automata engine, and 11 selects the LFSR noise generator. Toggle 11 is the standard bypass.
 
@@ -253,7 +282,16 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 ### Exercise 1: Geometric Moire Grid
 
-<img src={fauxtress_exercise1_result} alt="Geometric Moire Grid result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Parrot", before: fauxtress_source1_parrot, after: fauxtress_ex1_s1 },
+    { label: "Cat", before: fauxtress_source2_cat, after: fauxtress_ex1_s2 },
+    { label: "Collage", before: fauxtress_source3_collage, after: fauxtress_ex1_s3 },
+    { label: "Pattern", before: fauxtress_source4_pattern, after: fauxtress_ex1_s4 },
+    { label: "Girl", before: fauxtress_source5_girl, after: fauxtress_ex1_s5 },
+    { label: "Knit", before: fauxtress_source6_knit, after: fauxtress_ex1_s6 },
+  ]}
+/>
 *Geometric Moire Grid — simulated result across source images.*
 **What You'll Create**: Generate a classic Fortress-style geometric grid using the Direct program, exploring how waveform shapes, ALU operations, and the animation accumulator produce diagonal interference patterns.
 
@@ -262,16 +300,25 @@ These exercises explore the four pattern programs, the ALU's combining operation
 3. **Select XOR operation**: Set Operation to 4 (XOR). A checkerboard interference pattern appears.
 4. **Choose NTSC palette**: Set Palette to 0 for the classic NTSC color bars look.
 5. **Compare waveform shapes**: Toggle H Shape and V Shape between Ramp and Triangle. Observe how ramp×ramp produces sharp-edged patterns while triangle×triangle produces smooth, diamond-like structures.
-6. **Add animation**: Increase Anim Rate from 0. Watch the pattern rotate into diagonal stripes as the animation accumulator cross-modulates the horizontal phase. Higher values produce faster diagonal sweep.
+6. **Add animation**: Increase Anim Rate from 0. Watch the entire pattern begin to drift horizontally as the animation LFO shifts the horizontal starting phase frame by frame. Higher values produce faster temporal drift.
 7. **Try different ALU ops**: Sweep Operation through all 8 values. Each produces a distinctly different spatial composition from the same waveforms.
 
-**Key concepts**: Direct program combines H and V waveforms through the ALU, waveform shape determines edge character, Anim Rate introduces diagonal cross-modulation, ALU operation dramatically changes pattern structure
+**Key concepts**: Direct program combines H and V waveforms through the ALU, waveform shape determines edge character, Anim Rate introduces slow temporal drift via per-frame LFO, ALU operation dramatically changes pattern structure
 
 ---
 
 ### Exercise 2: Cellular Automata Spacetime
 
-<img src={fauxtress_exercise2_result} alt="Cellular Automata Spacetime result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Parrot", before: fauxtress_source1_parrot, after: fauxtress_ex2_s1 },
+    { label: "Cat", before: fauxtress_source2_cat, after: fauxtress_ex2_s2 },
+    { label: "Collage", before: fauxtress_source3_collage, after: fauxtress_ex2_s3 },
+    { label: "Pattern", before: fauxtress_source4_pattern, after: fauxtress_ex2_s4 },
+    { label: "Girl", before: fauxtress_source5_girl, after: fauxtress_ex2_s5 },
+    { label: "Knit", before: fauxtress_source6_knit, after: fauxtress_ex2_s6 },
+  ]}
+/>
 *Cellular Automata Spacetime — simulated result across source images.*
 **What You'll Create**: Activate the cellular automata engine and explore the eight Wolfram rules, observing how rule selection and seed position produce dramatically different spacetime diagrams.
 
@@ -289,7 +336,16 @@ These exercises explore the four pattern programs, the ALU's combining operation
 
 ### Exercise 3: LFSR Noise Textures
 
-<img src={fauxtress_exercise3_result} alt="LFSR Noise Textures result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Parrot", before: fauxtress_source1_parrot, after: fauxtress_ex3_s1 },
+    { label: "Cat", before: fauxtress_source2_cat, after: fauxtress_ex3_s2 },
+    { label: "Collage", before: fauxtress_source3_collage, after: fauxtress_ex3_s3 },
+    { label: "Pattern", before: fauxtress_source4_pattern, after: fauxtress_ex3_s4 },
+    { label: "Girl", before: fauxtress_source5_girl, after: fauxtress_ex3_s5 },
+    { label: "Knit", before: fauxtress_source6_knit, after: fauxtress_ex3_s6 },
+  ]}
+/>
 *LFSR Noise Textures — simulated result across source images.*
 **What You'll Create**: Use the LFSR noise generator to produce a variety of pseudo-random textures, exploring how the polynomial, ALU operation, and palette interact to create structured noise.
 
@@ -300,7 +356,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 5. **Try Subtract (1) and XNOR (7) operations**: These operations interact with the noise in different ways. Subtract creates a structured noise gradient modulated by the V waveform. XNOR produces a complement pattern with visible spatial structure.
 6. **Apply Earth palette**: Set Palette to 6 for natural coloring, turning the noise into an organic, terrain-like texture.
 7. **Use triangle waveforms**: Toggle both V Shape to Triangle. The smooth V waveform modulated by the noisy LFSR produces cloud-like patterns with less hard-edged structure.
-8. **Add animation**: Increase Anim Rate slightly. Because the LFSR is driven by the pixel clock, the animation cross-modulation shifts the noise pattern diagonally, creating animated noise drift.
+8. **Add animation**: Increase Anim Rate slightly. The animation LFO shifts the horizontal starting phase each frame, causing the noise pattern to drift horizontally over time, creating animated noise evolution.
 
 **Key concepts**: LFSR polynomial controls noise character and period, noise is frame-locked via vsync reset, ALU combines noise with V waveform for structured textures, palette colors transform monochrome noise into rich textural fields
 
@@ -323,7 +379,7 @@ These exercises explore the four pattern programs, the ALU's combining operation
 |------|------------|
 | **ALU** | Arithmetic Logic Unit; a computational block that performs arithmetic (add, subtract) and bitwise logic (AND, OR, XOR, etc.) operations on two input operands. |
 | **Cellular automaton (CA)** | A computational system consisting of a row (1D) or grid (2D) of cells, each updating its state based on the states of its neighbors according to a fixed rule. In Fauxtress, a 32-cell 1D elementary CA evolves one generation per scanline. |
-| **Cross-modulation** | The technique of feeding the output of one oscillator into the phase or frequency input of another, producing interference patterns. In Fauxtress, the animation accumulator cross-modulates the horizontal accumulator by preloading its value at hsync. |
+| **Cross-modulation** | The technique of feeding the output of one oscillator into the phase or frequency input of another, producing interference patterns. In Fauxtress, the animation accumulator acts as a slow LFO whose value is preloaded into the horizontal accumulator at each hsync, producing temporal drift of the horizontal pattern phase across successive frames. |
 | **Elementary CA** | A 1D cellular automaton where each cell has 2 states (0 or 1) and a 3-cell neighborhood (left, center, right). There are exactly 256 possible elementary CA rules, identified by Wolfram numbers. |
 | **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function (XOR) of its previous state. Produces pseudo-random binary sequences whose period and character depend on the feedback polynomial. |
 | **Moire** | An interference pattern produced when two periodic structures (such as ramp waveforms at different frequencies) overlap, creating visible beat frequencies larger than either original pattern. |

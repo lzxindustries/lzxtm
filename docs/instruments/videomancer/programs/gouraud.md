@@ -18,10 +18,6 @@ import gouraud_exercise3_result from '/img/instruments/videomancer/gouraud/goura
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={gouraud_hero} alt="Gouraud hero image"/>
 *Gouraud rendering smooth-shaded morphing triangles with DDS-animated vertex color cycling across a fan of rasterized faces.*
 <img src={gouraud_animation} alt="Gouraud animated output"/>

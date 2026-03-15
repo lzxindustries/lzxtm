@@ -18,10 +18,6 @@ import julia_exercise3_result from '/img/instruments/videomancer/julia/julia_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={julia_hero} alt="Julia hero image"/>
 *Julia rendering an intricate fractal boundary in blue-gold palette, the infinite complexity of z²+c made visible at video rate.*
 <img src={julia_animation} alt="Julia animated output"/>

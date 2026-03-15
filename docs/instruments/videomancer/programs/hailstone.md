@@ -44,10 +44,6 @@ import hailstone_ex3_s6 from '/img/instruments/videomancer/hailstone/hailstone_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Runner", before: hailstone_source1_runner, after: hailstone_hero_s1 },

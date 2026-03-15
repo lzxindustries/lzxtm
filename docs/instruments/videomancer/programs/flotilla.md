@@ -18,10 +18,6 @@ import flotilla_exercise3_result from '/img/instruments/videomancer/flotilla/flo
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={flotilla_hero} alt="Flotilla hero image"/>
 *Eight arrow sprites in tight formation across a black void — staggered vertically in a wave pattern, each one a bright pixel cluster marching rightward in lock-step, trailing nothing but geometry.*
 <img src={flotilla_animation} alt="Flotilla animated output"/>

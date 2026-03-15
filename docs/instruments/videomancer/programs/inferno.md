@@ -18,10 +18,6 @@ import inferno_exercise3_result from '/img/instruments/videomancer/inferno/infer
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={inferno_hero} alt="Inferno hero image"/>
 *Inferno generating a classic demoscene fire simulation with scanline propagation, cooling gradients, and the Classic red-orange-yellow palette.*
 <img src={inferno_animation} alt="Inferno animated output"/>

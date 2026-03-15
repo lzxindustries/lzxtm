@@ -18,10 +18,6 @@ import lorenz_exercise3_result from '/img/instruments/videomancer/lorenz/lorenz_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={lorenz_hero} alt="Lorenz hero image"/>
 *Lorenz rendering the iconic butterfly-shaped strange attractor as a persistent phosphor trace on a 64×64 canvas, its trajectory glowing against the void.*
 <img src={lorenz_animation} alt="Lorenz animated output"/>

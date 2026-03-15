@@ -18,10 +18,6 @@ import lissajous_exercise3_result from '/img/instruments/videomancer/lissajous/l
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={lissajous_hero} alt="Lissajous hero image"/>
 *Lissajous tracing glowing parametric curves across a dark field, green phosphor dots orbiting in a 3:2 frequency ratio.*
 <img src={lissajous_animation} alt="Lissajous animated output"/>

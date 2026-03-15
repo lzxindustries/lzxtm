@@ -44,10 +44,6 @@ import rupture_ex3_s6 from '/img/instruments/videomancer/rupture/rupture_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Car", before: rupture_source1_car, after: rupture_hero_s1 },

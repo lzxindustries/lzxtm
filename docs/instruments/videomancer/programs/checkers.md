@@ -18,10 +18,6 @@ import checkers_exercise3_result from '/img/instruments/videomancer/checkers/che
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={checkers_hero} alt="Checkers hero image"/>
 *Checkers projecting an infinite monochrome floor toward a fog-veiled horizon — tiles shrink in strict perspective, Z-scroll frozen mid-stride, the floor receding into gray nothingness.*
 <img src={checkers_animation} alt="Checkers animated output"/>

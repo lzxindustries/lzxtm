@@ -18,10 +18,6 @@ import mercury_exercise3_result from '/img/instruments/videomancer/mercury/mercu
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={mercury_hero} alt="Mercury hero image"/>
 *Liquid chrome blobs orbit and merge on a black field, their specular edges flaring as surface tension draws bright rings around each metallic puddle.*
 <img src={mercury_animation} alt="Mercury animated output"/>

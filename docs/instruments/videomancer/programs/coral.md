@@ -18,10 +18,6 @@ import coral_exercise3_result from '/img/instruments/videomancer/coral/coral_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={coral_hero} alt="Coral hero image"/>
 *Eight branching coral columns growing upward from the screen floor, their LFSR-driven splits propagating organic structure through a depth-shaded reef rendered in warm living color.*
 <img src={coral_animation} alt="Coral animated output"/>

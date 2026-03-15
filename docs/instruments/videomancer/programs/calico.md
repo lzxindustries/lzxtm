@@ -44,10 +44,6 @@ import calico_ex3_s6 from '/img/instruments/videomancer/calico/calico_ex3_s6.png
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: calico_source1_fruit, after: calico_hero_s1 },

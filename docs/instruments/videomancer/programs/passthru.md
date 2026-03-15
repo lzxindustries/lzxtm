@@ -21,14 +21,28 @@ import passthru_hero_s3 from '/img/instruments/videomancer/passthru/passthru_her
 import passthru_hero_s4 from '/img/instruments/videomancer/passthru/passthru_hero_s4.png';
 import passthru_hero_s5 from '/img/instruments/videomancer/passthru/passthru_hero_s5.png';
 import passthru_hero_s6 from '/img/instruments/videomancer/passthru/passthru_hero_s6.png';
+import passthru_ex1_s1 from '/img/instruments/videomancer/passthru/passthru_ex1_s1.png';
+import passthru_ex1_s2 from '/img/instruments/videomancer/passthru/passthru_ex1_s2.png';
+import passthru_ex1_s3 from '/img/instruments/videomancer/passthru/passthru_ex1_s3.png';
+import passthru_ex1_s4 from '/img/instruments/videomancer/passthru/passthru_ex1_s4.png';
+import passthru_ex1_s5 from '/img/instruments/videomancer/passthru/passthru_ex1_s5.png';
+import passthru_ex1_s6 from '/img/instruments/videomancer/passthru/passthru_ex1_s6.png';
+import passthru_ex2_s1 from '/img/instruments/videomancer/passthru/passthru_ex2_s1.png';
+import passthru_ex2_s2 from '/img/instruments/videomancer/passthru/passthru_ex2_s2.png';
+import passthru_ex2_s3 from '/img/instruments/videomancer/passthru/passthru_ex2_s3.png';
+import passthru_ex2_s4 from '/img/instruments/videomancer/passthru/passthru_ex2_s4.png';
+import passthru_ex2_s5 from '/img/instruments/videomancer/passthru/passthru_ex2_s5.png';
+import passthru_ex2_s6 from '/img/instruments/videomancer/passthru/passthru_ex2_s6.png';
+import passthru_ex3_s1 from '/img/instruments/videomancer/passthru/passthru_ex3_s1.png';
+import passthru_ex3_s2 from '/img/instruments/videomancer/passthru/passthru_ex3_s2.png';
+import passthru_ex3_s3 from '/img/instruments/videomancer/passthru/passthru_ex3_s3.png';
+import passthru_ex3_s4 from '/img/instruments/videomancer/passthru/passthru_ex3_s4.png';
+import passthru_ex3_s5 from '/img/instruments/videomancer/passthru/passthru_ex3_s5.png';
+import passthru_ex3_s6 from '/img/instruments/videomancer/passthru/passthru_ex3_s6.png';
 
 # Passthru
 
 <span class="head2_nolink">Videomancer Program Guide</span>
-
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
 
 <BeforeAfterSlider
   sources={[
@@ -248,6 +262,17 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 1: Brightness and Contrast
 
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: passthru_source1_cat, after: passthru_ex1_s1 },
+    { label: "Dog", before: passthru_source2_dog, after: passthru_ex1_s2 },
+    { label: "Collage", before: passthru_source3_collage, after: passthru_ex1_s3 },
+    { label: "Pattern", before: passthru_source4_pattern, after: passthru_ex1_s4 },
+    { label: "Boy", before: passthru_source5_boy, after: passthru_ex1_s5 },
+    { label: "Wood", before: passthru_source6_wood, after: passthru_ex1_s6 },
+  ]}
+/>
+*Brightness and Contrast — simulated result across source images.*
 **Source**: A camera feed or recorded footage with a mix of highlights, midtones, and shadows.
 
 **What You'll Create**: Learn how brightness and contrast interact in the proc amp formula and observe clipping behavior at extremes.
@@ -264,6 +289,17 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 2: Color Manipulation
 
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: passthru_source1_cat, after: passthru_ex2_s1 },
+    { label: "Dog", before: passthru_source2_dog, after: passthru_ex2_s2 },
+    { label: "Collage", before: passthru_source3_collage, after: passthru_ex2_s3 },
+    { label: "Pattern", before: passthru_source4_pattern, after: passthru_ex2_s4 },
+    { label: "Boy", before: passthru_source5_boy, after: passthru_ex2_s5 },
+    { label: "Wood", before: passthru_source6_wood, after: passthru_ex2_s6 },
+  ]}
+/>
+*Color Manipulation — simulated result across source images.*
 **Source**: Footage with strong, varied colors — flowers, painted surfaces, or color bars.
 
 **What You'll Create**: Explore saturation, per-channel inversion, and monochrome mode to understand YUV color space.
@@ -281,6 +317,17 @@ These exercises explore Passthru's proc amp from basic brightness adjustment thr
 
 ### Exercise 3: Signal Chain Exploration
 
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: passthru_source1_cat, after: passthru_ex3_s1 },
+    { label: "Dog", before: passthru_source2_dog, after: passthru_ex3_s2 },
+    { label: "Collage", before: passthru_source3_collage, after: passthru_ex3_s3 },
+    { label: "Pattern", before: passthru_source4_pattern, after: passthru_ex3_s4 },
+    { label: "Boy", before: passthru_source5_boy, after: passthru_ex3_s5 },
+    { label: "Wood", before: passthru_source6_wood, after: passthru_ex3_s6 },
+  ]}
+/>
+*Signal Chain Exploration — simulated result across source images.*
 **Source**: Any live or recorded video with moderate contrast and color.
 
 **What You'll Create**: Use Mix, Bypass, and combined settings to understand the full signal chain and gain confidence with A/B comparison.

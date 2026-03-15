@@ -18,10 +18,6 @@ import involute_exercise3_result from '/img/instruments/videomancer/involute/inv
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={involute_hero} alt="Involute hero image"/>
 *Involute tracing a rainbow-hued epicycloid with phosphor persistence, the petals blooming outward like a luminous mathematical flower.*
 <img src={involute_animation} alt="Involute animated output"/>

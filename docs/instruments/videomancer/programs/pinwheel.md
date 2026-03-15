@@ -44,10 +44,6 @@ import pinwheel_ex3_s6 from '/img/instruments/videomancer/pinwheel/pinwheel_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Car", before: pinwheel_source1_car, after: pinwheel_hero_s1 },

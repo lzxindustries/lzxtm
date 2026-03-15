@@ -37,10 +37,6 @@ import vigil_ex2_s5 from '/img/instruments/videomancer/vigil/vigil_ex2_s5.png';
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Car", before: vigil_source1_car, after: vigil_hero_s1 },

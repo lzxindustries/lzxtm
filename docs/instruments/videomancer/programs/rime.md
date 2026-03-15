@@ -44,10 +44,6 @@ import rime_ex3_s6 from '/img/instruments/videomancer/rime/rime_ex3_s6.png';
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: rime_source1_skull, after: rime_hero_s1 },

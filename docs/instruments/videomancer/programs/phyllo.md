@@ -18,10 +18,6 @@ import phyllo_exercise3_result from '/img/instruments/videomancer/phyllo/phyllo_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={phyllo_hero} alt="Phyllo hero image"/>
 *Phyllo generating a golden-angle phyllotactic spiral pattern with color-cycling dots overlaid on a live video source.*
 <img src={phyllo_animation} alt="Phyllo animated output"/>

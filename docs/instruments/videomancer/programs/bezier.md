@@ -18,10 +18,6 @@ import bezier_exercise3_result from '/img/instruments/videomancer/bezier/bezier_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={bezier_hero} alt="Bezier hero image"/>
 *Bezier rendering animated cubic parametric curves with glow and rainbow color cycling over a live video source.*
 <img src={bezier_animation} alt="Bezier animated output"/>

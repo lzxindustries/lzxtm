@@ -18,10 +18,6 @@ import hilbert_exercise3_result from '/img/instruments/videomancer/hilbert/hilbe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={hilbert_hero} alt="Hilbert hero image"/>
 *Hilbert generating a fractal reveal sequence with color-shifted blocks tracing the space-filling curve across a grid.*
 <img src={hilbert_animation} alt="Hilbert animated output"/>

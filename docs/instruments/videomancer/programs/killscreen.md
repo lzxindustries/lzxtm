@@ -18,10 +18,6 @@ import killscreen_exercise3_result from '/img/instruments/videomancer/killscreen
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={killscreen_hero} alt="Killscreen hero image"/>
 *Killscreen corrupting a video feed into tile-mapped glitch patterns inspired by the Pac-Man level 256 overflow bug.*
 <img src={killscreen_animation} alt="Killscreen animated output"/>

@@ -18,10 +18,6 @@ import copperwash_exercise3_result from '/img/instruments/videomancer/copperwash
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={copperwash_hero} alt="Copperwash hero image"/>
 *Smooth rainbow bands cascade down the frame, tinting live video with the liquid colour gradients of the Amiga copper coprocessor.*
 <img src={copperwash_animation} alt="Copperwash animated output"/>

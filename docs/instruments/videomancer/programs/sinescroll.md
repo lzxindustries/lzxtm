@@ -18,10 +18,6 @@ import sinescroll_exercise3_result from '/img/instruments/videomancer/sinescroll
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={sinescroll_hero} alt="Sinescroll hero image"/>
 *Sine Scroll warping a camera feed through undulating per-scanline horizontal displacement with colour bar tinting.*
 <img src={sinescroll_animation} alt="Sinescroll animated output"/>

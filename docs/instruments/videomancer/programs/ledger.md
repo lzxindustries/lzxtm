@@ -44,10 +44,6 @@ import ledger_ex3_s6 from '/img/instruments/videomancer/ledger/ledger_ex3_s6.png
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: ledger_source1_sunset, after: ledger_hero_s1 },

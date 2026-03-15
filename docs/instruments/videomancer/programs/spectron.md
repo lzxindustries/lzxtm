@@ -18,10 +18,6 @@ import spectron_exercise3_result from '/img/instruments/videomancer/spectron/spe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={spectron_hero} alt="Spectron hero image"/>
 *Three interlocked oscillators beat against scan timing to weave shimmering moire fields of crawling colour.*
 <img src={spectron_animation} alt="Spectron animated output"/>

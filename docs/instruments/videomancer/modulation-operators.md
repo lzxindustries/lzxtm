@@ -49,7 +49,7 @@ This document is still in progress, may contain errors, and is for preview only.
      - [USB MIDI Device (Computer Connection)](#usb-midi-device-computer-connection)
    - [Supported Messages](#supported-messages)
    - [MIDI CC Mapping](#midi-cc-mapping)
-   - [MIDI Learn](#midi-learn)
+   - [MIDI Assign](#midi-learn)
    - [MIDI Notes](#midi-notes)
    - [MIDI Program Change](#midi-program-change)
    - [MIDI Clock & Transport](#midi-clock--transport)
@@ -1152,36 +1152,58 @@ Each CC number can be assigned to exactly one modulator. If you assign a CC that
 
 CC assignments are saved to flash memory and restored on power-up. They are also stored per-preset, so different presets can use different CC layouts — useful when switching between different MIDI controllers or performance setups.
 
-### MIDI Learn
+### MIDI Assign
 
-MIDI Learn provides an intuitive way to assign CC numbers without memorizing CC tables. Instead of manually configuring which CC controls which parameter, you point at a modulator and wiggle a knob on your MIDI controller — on any MIDI port (TRS, USB Host, or USB Device). The assignment is saved immediately and restored on power-up.
+MIDI Assign provides an intuitive way to assign CC numbers without memorizing CC tables. You can either point at a modulator and wiggle a knob on your MIDI controller — on any MIDI port (TRS, USB Host, or USB Device) — or use the rotary encoder to manually dial in a CC number. The assignment is saved immediately and restored on power-up.
 
-#### Entering Learn Mode
+#### Entering Assign Mode
 
 1. Navigate to the modulator you want to assign (P1 through P12) so its screen is visible.
-2. **Long-press** its button — hold for at least 1.4 seconds. A short press cycles through modulator pages as usual; learn mode only activates on a long press.
-3. The LCD switches to learn mode:
+2. **Long-press** its button — hold for at least 1.4 seconds. A short press cycles through modulator pages as usual; assign mode only activates on a long press.
+3. The LCD switches to assign mode:
 
 ```
-P3  MIDI Learn
+P3  MIDI Assign
 Move a CC..._
 ```
 
 The blinking cursor (`_`) on the bottom line pulses at about 2 Hz to show the system is listening. The LED for the target modulator also blinks at 2 Hz so you can tell at a glance which modulator is waiting for input.
 
-#### Assigning a CC
+#### Assigning a CC (Automatic)
 
 4. **Move any knob, fader, or button on your MIDI controller.** The first CC message received is captured — it does not matter which MIDI port the message arrives on (TRS, USB Host, or USB Device). Only CC-type messages are candidates; notes, pitch bend, program change, and other message types are ignored.
 5. The LCD briefly confirms the assignment:
 
 ```
-P3  MIDI Learn
+P3  MIDI Assign
 CC 74 assigned!
 ```
 
 After about one second the display returns to the normal modulator view and the assignment is persisted to flash.
 
-If a MIDI controller sends a rapid burst of CC values (for example, quickly moving an expression pedal), only the **first** CC number in the burst is captured. Once a CC number has been accepted, the learn session is complete — additional CC messages with the same or different numbers are not captured.
+If a MIDI controller sends a rapid burst of CC values (for example, quickly moving an expression pedal), only the **first** CC number in the burst is captured. Once a CC number has been accepted, the assign session is complete — additional CC messages with the same or different numbers are not captured.
+
+#### Assigning a CC (Manual)
+
+Instead of wiggling a physical MIDI knob, you can also select a CC number manually:
+
+4. **Rotate the encoder** clockwise or counter-clockwise to select a CC number (0–127). The display updates to show the pending CC number:
+
+```
+P3  MIDI Assign
+CC# 74_
+```
+
+5. **Press the encoder button** to confirm the selection. The display shows:
+
+```
+P3  MIDI Assign
+CC 74 assigned!
+```
+
+After about one second the display returns to the normal modulator view and the assignment is persisted to flash. The CC number wraps around — turning past 127 returns to 0, and turning below 0 returns to 127.
+
+If a MIDI CC arrives while you are dialing in a number with the encoder, the incoming CC takes priority and the manual selection is discarded.
 
 #### 14-Bit Auto-Pairing
 
@@ -1189,9 +1211,9 @@ When a CC is learned, the MSB → LSB pair is set automatically following the MI
 
 CCs in the range 32–63 are already defined as LSB positions by the MIDI specification. If you assign a CC with an MSB number of 32 or higher, no LSB auto-pair is created because there is no valid partner — the assignment operates at 7-bit resolution only. For full 14-bit control, use MSB CC numbers 0–31.
 
-#### Canceling Learn Mode
+#### Canceling Assign Mode
 
-- **Press the encoder** at any time during learn mode to cancel without making a change. The display returns to the normal modulator view and the existing CC assignment (if any) is left untouched.
+- **Press the encoder** at any time during assign mode to cancel without making a change. The display returns to the normal modulator view and the existing CC assignment (if any) is left untouched.
 
 #### Clearing an Assignment
 
@@ -1203,7 +1225,7 @@ Each CC number can be assigned to exactly one modulator. If you learn a CC that 
 
 #### Channel Filtering
 
-MIDI Learn respects the active MIDI channel filter. If you have set channel filtering to a specific channel, only CCs arriving on that channel are candidates for learning. In omni mode (the default), CCs on any channel are accepted. This prevents accidental learning from other devices sharing the same MIDI bus.
+MIDI Assign respects the active MIDI channel filter. If you have set channel filtering to a specific channel, only CCs arriving on that channel are candidates for learning. In omni mode (the default), CCs on any channel are accepted. This prevents accidental learning from other devices sharing the same MIDI bus.
 
 #### Viewing Existing Assignments
 
@@ -1214,25 +1236,27 @@ P1  Free LFO
 Source   CC:074
 ```
 
-This lets you check which CC is mapped without entering learn mode.
+This lets you check which CC is mapped without entering assign mode.
 
 #### Persistence and Presets
 
 Learned CC assignments follow the same persistence rules as manual assignments — saved to flash and stored per-preset. Loading a different preset via the front panel or via MIDI Program Change restores that preset's CC layout.
 
-A power cycle during learn mode is harmless — learn mode is a temporary UI state. If power is lost while learn mode is active, the unit boots normally with the last saved CC map intact.
+A power cycle during assign mode is harmless — assign mode is a temporary UI state. If power is lost while assign mode is active, the unit boots normally with the last saved CC map intact.
 
-#### Summary of Learn Mode Interactions
+#### Summary of Assign Mode Interactions
 
 | User Action | System Response |
 |-------------|-----------------|
 | Short-press Px | Normal: cycles modulator parameter page |
-| Long-press Px (≥1.4 s), no existing CC | Enters learn mode (LCD + LED blink) |
+| Long-press Px (≥1.4 s), no existing CC | Enters assign mode (LCD + LED blink) |
 | Long-press Px (≥1.4 s), CC already assigned | Clears the assignment, shows "CC cleared!" |
-| Move MIDI knob during learn (any port) | Captures CC, shows "CC N assigned!", persists |
-| Press encoder during learn | Cancels learn mode, no change |
+| Move MIDI knob during assign (any port) | Captures CC, shows "CC N assigned!", persists |
+| Rotate encoder during assign | Selects CC# manually (0–127, wrapping) |
+| Press encoder (CC# dialed in) | Confirms manual CC# selection, persists |
+| Press encoder (no CC# dialed in) | Cancels assign mode, no change |
 
-![MIDI Learn — State Flow](/img/instruments/videomancer/modulation/midi_learn_flow.png)
+![MIDI Assign — State Flow](/img/instruments/videomancer/modulation/midi_learn_flow.png)
 
 ### MIDI Notes
 
@@ -1565,7 +1589,7 @@ These exercises progress from basic oscillator modulation through external input
 - **Keyboard as trigger source**. Any USB keyboard becomes a modulation trigger with the Keyboard operator. Use fast Attack and slow Release for percussive hits, or slow Attack for gradual swells.
 - **Gamepad for expressive control**. Gamepad sticks are spring-centered, so they naturally return to the midpoint when released — perfect for temporary parameter offsets during live performance. Assign left and right sticks to different parameters for two-axis control.
 - **Tablet pressure for dynamics**. Pressure-sensitive tablets add an expressive dimension no other input provides. Map pressure to effect depth for touch-responsive modulation that feels like playing an instrument.
-- **MIDI Learn is your CC shortcut**. Do not memorize CC numbers — long-press any modulator button, wiggle a knob on your controller, and the mapping is done. The assignment persists across power cycles and is stored per-preset.
+- **MIDI Assign is your CC shortcut**. Do not memorize CC numbers — long-press any modulator button, wiggle a knob on your controller, and the mapping is done. The assignment persists across power cycles and is stored per-preset.
 - **14-bit CC for smooth sweeps**. If your MIDI controller supports high-resolution CC (MSB + LSB pairs), Videomancer uses both values for full precision. This eliminates the stepping visible with standard-resolution CC on slowly moving parameters.
 - **USB hub for multi-device setups**. A single USB hub on the host port supports up to four HID devices simultaneously — combine a MIDI controller and a gamepad, or a keyboard and a drawing tablet, for layered input sources.
 - **TRS MIDI for hardware rigs**. Use TRS MIDI for connecting to Eurorack MIDI-to-CV modules, drum machines, and hardware sequencers. The Type A pinout is used — check your adapter if connecting to devices with 5-pin DIN.

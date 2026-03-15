@@ -44,10 +44,6 @@ import sideband_ex3_s6 from '/img/instruments/videomancer/sideband/sideband_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: sideband_source1_cat, after: sideband_hero_s1 },

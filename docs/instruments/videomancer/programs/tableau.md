@@ -44,10 +44,6 @@ import tableau_ex3_s6 from '/img/instruments/videomancer/tableau/tableau_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: tableau_source1_dog, after: tableau_hero_s1 },

@@ -44,10 +44,6 @@ import blueprint_ex3_s6 from '/img/instruments/videomancer/blueprint/blueprint_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Parrot", before: blueprint_source1_parrot, after: blueprint_hero_s1 },

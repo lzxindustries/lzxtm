@@ -3,29 +3,58 @@ draft: false
 sidebar_position: 200
 slug: /instruments/videomancer/mycelium
 title: "Mycelium"
-image: /img/instruments/videomancer/mycelium/mycelium_hero.png
+image: /img/instruments/videomancer/mycelium/mycelium_hero_s1.png
 description: "In 1984, John Pearson numerically investigated a class of reaction-diffusion systems first described by Gray and Scott in the context of isothermal chemical reactions."
 ---
 
-import mycelium_hero from '/img/instruments/videomancer/mycelium/mycelium_hero.png';
-import mycelium_animation from '/img/instruments/videomancer/mycelium/mycelium_animation.gif';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import mycelium_control_panel from '/img/instruments/videomancer/mycelium/mycelium_control_panel.png';
-import mycelium_exercise1_result from '/img/instruments/videomancer/mycelium/mycelium_exercise1_result.gif';
-import mycelium_exercise2_result from '/img/instruments/videomancer/mycelium/mycelium_exercise2_result.gif';
-import mycelium_exercise3_result from '/img/instruments/videomancer/mycelium/mycelium_exercise3_result.gif';
+import mycelium_source1_dog from '/img/instruments/videomancer/mycelium/mycelium_source1_dog.png';
+import mycelium_source2_cat from '/img/instruments/videomancer/mycelium/mycelium_source2_cat.png';
+import mycelium_source3_elephant from '/img/instruments/videomancer/mycelium/mycelium_source3_elephant.png';
+import mycelium_source4_pattern from '/img/instruments/videomancer/mycelium/mycelium_source4_pattern.png';
+import mycelium_source5_boy from '/img/instruments/videomancer/mycelium/mycelium_source5_boy.png';
+import mycelium_source6_paint from '/img/instruments/videomancer/mycelium/mycelium_source6_paint.png';
+import mycelium_hero_s1 from '/img/instruments/videomancer/mycelium/mycelium_hero_s1.png';
+import mycelium_hero_s2 from '/img/instruments/videomancer/mycelium/mycelium_hero_s2.png';
+import mycelium_hero_s3 from '/img/instruments/videomancer/mycelium/mycelium_hero_s3.png';
+import mycelium_hero_s4 from '/img/instruments/videomancer/mycelium/mycelium_hero_s4.png';
+import mycelium_hero_s5 from '/img/instruments/videomancer/mycelium/mycelium_hero_s5.png';
+import mycelium_hero_s6 from '/img/instruments/videomancer/mycelium/mycelium_hero_s6.png';
+import mycelium_ex1_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s1.png';
+import mycelium_ex1_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s2.png';
+import mycelium_ex1_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s3.png';
+import mycelium_ex1_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s4.png';
+import mycelium_ex1_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s5.png';
+import mycelium_ex1_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s6.png';
+import mycelium_ex2_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s1.png';
+import mycelium_ex2_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s2.png';
+import mycelium_ex2_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s3.png';
+import mycelium_ex2_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s4.png';
+import mycelium_ex2_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s5.png';
+import mycelium_ex2_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s6.png';
+import mycelium_ex3_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s1.png';
+import mycelium_ex3_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s2.png';
+import mycelium_ex3_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s3.png';
+import mycelium_ex3_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s4.png';
+import mycelium_ex3_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s5.png';
+import mycelium_ex3_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s6.png';
 
 # Mycelium
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={mycelium_hero} alt="Mycelium hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Dog", before: mycelium_source1_dog, after: mycelium_hero_s1 },
+    { label: "Cat", before: mycelium_source2_cat, after: mycelium_hero_s2 },
+    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_hero_s3 },
+    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_hero_s4 },
+    { label: "Boy", before: mycelium_source5_boy, after: mycelium_hero_s5 },
+    { label: "Paint", before: mycelium_source6_paint, after: mycelium_hero_s6 },
+  ]}
+/>
 *Mycelium rendering a field of reaction-diffusion patterns — branching coral-like structures emerging from input video luminance, mapped through a warm color palette.*
-<img src={mycelium_animation} alt="Mycelium animated output"/>
-*Mycelium output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
@@ -209,7 +238,7 @@ Sim Speed is declared in the register mapping but is not used to modulate the si
 | **8 — Seed Mode** | Cont. | One-Shot |
 | **9 — Pattern** | Spots | Stripes |
 | **10 — Invert** | Off | On |
-| **11 — Bypass** | Off | On |
+| **11 — Turbo** | Off | On |
 
 The five toggles configure independent aspects of the simulation. Freeze halts evolution while preserving the current pattern. Seed Mode selects between continuous video seeding and one-shot (first frame only). Pattern is mapped to a register but has no effect on the output — the spots/stripes distinction is controlled entirely by the Feed Rate and Kill Rate balance, not by a toggle. Invert flips the luminance mapping. Bypass routes the delayed input to the output.
 
@@ -246,7 +275,16 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 ### Exercise 1: Autonomous Coral Growth
 
-<img src={mycelium_exercise1_result} alt="Autonomous Coral Growth result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex1_s1 },
+    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex1_s2 },
+    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex1_s3 },
+    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex1_s4 },
+    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex1_s5 },
+    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex1_s6 },
+  ]}
+/>
 *Autonomous Coral Growth — simulated result across source images.*
 **What You'll Create**: Observe self-organizing reaction-diffusion patterns emerging from minimal seeding.
 
@@ -264,7 +302,16 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 ### Exercise 2: Video Imprint with Freeze
 
-<img src={mycelium_exercise2_result} alt="Video Imprint with Freeze result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex2_s1 },
+    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex2_s2 },
+    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex2_s3 },
+    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex2_s4 },
+    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex2_s5 },
+    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex2_s6 },
+  ]}
+/>
 *Video Imprint with Freeze — simulated result across source images.*
 **What You'll Create**: Capture a moment of the reaction-diffusion system interacting with video, then freeze it.
 
@@ -282,7 +329,16 @@ These exercises explore the Gray-Scott reaction-diffusion system as implemented 
 
 ### Exercise 3: One-Shot Dissolution
 
-<img src={mycelium_exercise3_result} alt="One-Shot Dissolution result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex3_s1 },
+    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex3_s2 },
+    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex3_s3 },
+    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex3_s4 },
+    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex3_s5 },
+    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex3_s6 },
+  ]}
+/>
 *One-Shot Dissolution — simulated result across source images.*
 **What You'll Create**: Observe how a video-seeded pattern evolves autonomously after seeding stops.
 

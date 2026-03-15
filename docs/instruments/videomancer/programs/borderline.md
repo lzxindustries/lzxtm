@@ -18,10 +18,6 @@ import borderline_exercise3_result from '/img/instruments/videomancer/borderline
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={borderline_hero} alt="Borderline hero image"/>
 *Scrolling colour stripes in ZX Spectrum palette tones frame the video in a lively border of cycling retro hues, just as demo coders once painted the overscan.*
 <img src={borderline_animation} alt="Borderline animated output"/>

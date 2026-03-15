@@ -26,10 +26,6 @@ import punchcard_hero_s6 from '/img/instruments/videomancer/punchcard/punchcard_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: punchcard_source1_boat, after: punchcard_hero_s1 },

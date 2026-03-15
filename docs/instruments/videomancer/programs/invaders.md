@@ -18,10 +18,6 @@ import invaders_exercise3_result from '/img/instruments/videomancer/invaders/inv
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={invaders_hero} alt="Invaders hero image"/>
 *Invaders rendering a 5x11 alien grid descending toward a player ship with shields and score display, evoking classic arcade video synthesis.*
 <img src={invaders_animation} alt="Invaders animated output"/>

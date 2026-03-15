@@ -44,10 +44,6 @@ import maelstrom_ex3_s6 from '/img/instruments/videomancer/maelstrom/maelstrom_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Field", before: maelstrom_source1_field, after: maelstrom_hero_s1 },

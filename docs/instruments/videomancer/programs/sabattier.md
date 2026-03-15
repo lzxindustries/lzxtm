@@ -44,10 +44,6 @@ import sabattier_ex3_s6 from '/img/instruments/videomancer/sabattier/sabattier_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: sabattier_source1_sunset, after: sabattier_hero_s1 },

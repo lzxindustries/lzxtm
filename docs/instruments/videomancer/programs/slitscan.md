@@ -44,10 +44,6 @@ import slitscan_ex3_s6 from '/img/instruments/videomancer/slitscan/slitscan_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Cat", before: slitscan_source1_cat, after: slitscan_hero_s1 },

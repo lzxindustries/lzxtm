@@ -18,10 +18,6 @@ import honeycomb_exercise3_result from '/img/instruments/videomancer/honeycomb/h
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={honeycomb_hero} alt="Honeycomb hero image"/>
 *Honeycomb generating a luminous hexagonal lattice overlaid on a dark background with colored cell edges.*
 <img src={honeycomb_animation} alt="Honeycomb animated output"/>

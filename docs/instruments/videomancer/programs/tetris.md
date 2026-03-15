@@ -18,10 +18,6 @@ import tetris_exercise3_result from '/img/instruments/videomancer/tetris/tetris_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={tetris_hero} alt="Tetris hero image"/>
 *Tetris rendering a mid-game playfield with row-based hue coloring, grid lines enabled, and a two-digit score display beside the playing area.*
 <img src={tetris_animation} alt="Tetris animated output"/>

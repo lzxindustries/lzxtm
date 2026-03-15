@@ -18,10 +18,6 @@ import parallax_exercise3_result from '/img/instruments/videomancer/parallax/par
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={parallax_hero} alt="Parallax hero image"/>
 *Parallax generating multi-layered horizontal raster bars with depth-based scroll speeds and palette color cycling, evoking classic Amiga demoscene copper effects.*
 <img src={parallax_animation} alt="Parallax animated output"/>

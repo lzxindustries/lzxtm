@@ -36,10 +36,6 @@ import vinegar_ex2_s4 from '/img/instruments/videomancer/vinegar/vinegar_ex2_s4.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Field", before: vinegar_source1_field, after: vinegar_hero_s1 },

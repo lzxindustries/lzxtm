@@ -18,10 +18,6 @@ import breakout_exercise3_result from '/img/instruments/videomancer/breakout/bre
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={breakout_hero} alt="Breakout hero image"/>
 *Breakout in mid-game — a 12×12 ball ricochets off a wide paddle while rows of color-banded bricks crumble from the top down, three BCD score digits glowing above the court.*
 <img src={breakout_animation} alt="Breakout animated output"/>

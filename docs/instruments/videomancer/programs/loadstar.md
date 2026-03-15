@@ -44,10 +44,6 @@ import loadstar_ex3_s6 from '/img/instruments/videomancer/loadstar/loadstar_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: loadstar_source1_fruit, after: loadstar_hero_s1 },

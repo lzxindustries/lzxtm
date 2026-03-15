@@ -18,10 +18,6 @@ import backrooms_exercise3_result from '/img/instruments/videomancer/backrooms/b
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={backrooms_hero} alt="Backrooms hero image"/>
 *Backrooms generating infinite recursive maze corridors with video fill, revealing source imagery through procedural labyrinth geometry.*
 <img src={backrooms_animation} alt="Backrooms animated output"/>

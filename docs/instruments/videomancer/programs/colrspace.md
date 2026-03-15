@@ -18,10 +18,6 @@ import colrspace_exercise3_result from '/img/instruments/videomancer/colrspace/c
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={colrspace_hero} alt="Colrspace hero image"/>
 *Geometric colour pulses ripple outward from a central emitter, reflecting across four symmetry axes to form an evolving kaleidoscopic mandala on a persistent grid.*
 <img src={colrspace_animation} alt="Colrspace animated output"/>

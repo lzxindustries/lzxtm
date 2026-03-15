@@ -44,10 +44,6 @@ import ikat_ex3_s6 from '/img/instruments/videomancer/ikat/ikat_ex3_s6.png';
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: ikat_source1_boat, after: ikat_hero_s1 },

@@ -44,10 +44,6 @@ import cuneiform_ex3_s6 from '/img/instruments/videomancer/cuneiform/cuneiform_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "House", before: cuneiform_source1_house, after: cuneiform_hero_s1 },

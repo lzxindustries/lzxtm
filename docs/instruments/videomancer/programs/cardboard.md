@@ -44,10 +44,6 @@ import cardboard_ex3_s6 from '/img/instruments/videomancer/cardboard/cardboard_e
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: cardboard_source1_sunset, after: cardboard_hero_s1 },

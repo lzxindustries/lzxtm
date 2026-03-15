@@ -18,10 +18,6 @@ import simon_exercise3_result from '/img/instruments/videomancer/simon/simon_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={simon_hero} alt="Simon hero image"/>
 *Simon rendering four bright quadrants flashing in sequence over a dark field, with a two-digit score displaying the current level.*
 <img src={simon_animation} alt="Simon animated output"/>

@@ -18,10 +18,6 @@ import roulette_exercise3_result from '/img/instruments/videomancer/roulette/rou
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={roulette_hero} alt="Roulette hero image"/>
 *Roulette drawing a multi-lobed epitrochoid curve with DDS-driven phase accumulation and Manhattan-distance line rendering.*
 <img src={roulette_animation} alt="Roulette animated output"/>

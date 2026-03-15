@@ -18,10 +18,6 @@ import dottunnel_exercise3_result from '/img/instruments/videomancer/dottunnel/d
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={dottunnel_hero} alt="Dottunnel hero image"/>
 *Concentric rings of bright dots spiral toward a central vanishing point, creating the classic demoscene point-cloud tunnel over live video.*
 <img src={dottunnel_animation} alt="Dottunnel animated output"/>

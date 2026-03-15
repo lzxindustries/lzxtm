@@ -44,10 +44,6 @@ import charset_ex3_s6 from '/img/instruments/videomancer/charset/charset_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Runner", before: charset_source1_runner, after: charset_hero_s1 },

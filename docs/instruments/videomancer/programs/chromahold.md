@@ -44,10 +44,6 @@ import chromahold_ex3_s6 from '/img/instruments/videomancer/chromahold/chromahol
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Field", before: chromahold_source1_field, after: chromahold_hero_s1 },

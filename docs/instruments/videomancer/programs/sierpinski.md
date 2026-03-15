@@ -18,10 +18,6 @@ import sierpinski_exercise3_result from '/img/instruments/videomancer/sierpinski
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={sierpinski_hero} alt="Sierpinski hero image"/>
 *Sierpinski generating nested XOR fractal textures with warm-toned color mapping and video-warped coordinate space.*
 <img src={sierpinski_animation} alt="Sierpinski animated output"/>

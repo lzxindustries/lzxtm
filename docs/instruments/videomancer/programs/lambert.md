@@ -18,10 +18,6 @@ import lambert_exercise3_result from '/img/instruments/videomancer/lambert/lambe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={lambert_hero} alt="Lambert hero image"/>
 *Lambert rendering a Lambertian-shaded sphere with toon quantization bands floating against a dark void.*
 <img src={lambert_animation} alt="Lambert animated output"/>

@@ -18,10 +18,6 @@ import floorplan_exercise3_result from '/img/instruments/videomancer/floorplan/f
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={floorplan_hero} alt="Floorplan hero image"/>
 *Floorplan extracting luminance edges from a video source to render architectural wall-line drawings with blueprint grid overlay.*
 <img src={floorplan_animation} alt="Floorplan animated output"/>

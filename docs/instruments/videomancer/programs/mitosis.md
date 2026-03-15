@@ -18,10 +18,6 @@ import mitosis_exercise3_result from '/img/instruments/videomancer/mitosis/mitos
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={mitosis_hero} alt="Mitosis hero image"/>
 *Mitosis rendering cascading cellular automaton generations in Growth rule mode — alive cells glow cyan while decaying cells fade through magenta tiers against a deep black field.*
 <img src={mitosis_animation} alt="Mitosis animated output"/>

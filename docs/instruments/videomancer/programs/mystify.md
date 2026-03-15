@@ -18,10 +18,6 @@ import mystify_exercise3_result from '/img/instruments/videomancer/mystify/mysti
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={mystify_hero} alt="Mystify hero image"/>
 *Mystify rendering two color-shifting quadrilaterals with trailing ribbons bouncing across a dimmed video background — the iconic screensaver geometry reimagined as live video synthesis.*
 <img src={mystify_animation} alt="Mystify animated output"/>

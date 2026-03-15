@@ -18,10 +18,6 @@ import marcher_exercise3_result from '/img/instruments/videomancer/marcher/march
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={marcher_hero} alt="Marcher hero image"/>
 *Marcher rendering six smoothly merging SDF primitives with orbiting light, distance-based contour lines, and the Neon color palette.*
 <img src={marcher_animation} alt="Marcher animated output"/>

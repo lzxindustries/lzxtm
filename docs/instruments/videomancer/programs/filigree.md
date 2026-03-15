@@ -18,10 +18,6 @@ import filigree_exercise3_result from '/img/instruments/videomancer/filigree/fil
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={filigree_hero} alt="Filigree hero image"/>
 *Filigree projecting 8-fold scrollwork over a live video source with position-tinted metallic lines and continuous diagonal scroll animation.*
 <img src={filigree_animation} alt="Filigree animated output"/>

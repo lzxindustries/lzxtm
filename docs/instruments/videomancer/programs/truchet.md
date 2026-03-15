@@ -18,10 +18,6 @@ import truchet_exercise3_result from '/img/instruments/videomancer/truchet/truch
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={truchet_hero} alt="Truchet hero image"/>
 *Truchet tile mosaic with quarter-circle arcs forming emergent meandering curves across a grid of LFSR-oriented tiles.*
 <img src={truchet_animation} alt="Truchet animated output"/>

@@ -44,10 +44,6 @@ import patina_ex3_s6 from '/img/instruments/videomancer/patina/patina_ex3_s6.png
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: patina_source1_boat, after: patina_hero_s1 },

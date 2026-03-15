@@ -3,29 +3,58 @@ draft: false
 sidebar_position: 234
 slug: /instruments/videomancer/pong
 title: "Pong"
-image: /img/instruments/videomancer/pong/pong_hero.png
+image: /img/instruments/videomancer/pong/pong_hero_s1.png
 description: "In 1972, Atari released Pong — a table tennis simulation so simple that its entire rule set fits in a single sentence: a ball bounces between two paddles, and if you miss, your opponent scores."
 ---
 
-import pong_hero from '/img/instruments/videomancer/pong/pong_hero.png';
-import pong_animation from '/img/instruments/videomancer/pong/pong_animation.gif';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import pong_control_panel from '/img/instruments/videomancer/pong/pong_control_panel.png';
-import pong_exercise1_result from '/img/instruments/videomancer/pong/pong_exercise1_result.gif';
-import pong_exercise2_result from '/img/instruments/videomancer/pong/pong_exercise2_result.gif';
-import pong_exercise3_result from '/img/instruments/videomancer/pong/pong_exercise3_result.gif';
+import pong_source1_cat from '/img/instruments/videomancer/pong/pong_source1_cat.png';
+import pong_source2_car from '/img/instruments/videomancer/pong/pong_source2_car.png';
+import pong_source3_clouds from '/img/instruments/videomancer/pong/pong_source3_clouds.png';
+import pong_source4_pattern from '/img/instruments/videomancer/pong/pong_source4_pattern.png';
+import pong_source5_man from '/img/instruments/videomancer/pong/pong_source5_man.png';
+import pong_source6_wood from '/img/instruments/videomancer/pong/pong_source6_wood.png';
+import pong_hero_s1 from '/img/instruments/videomancer/pong/pong_hero_s1.png';
+import pong_hero_s2 from '/img/instruments/videomancer/pong/pong_hero_s2.png';
+import pong_hero_s3 from '/img/instruments/videomancer/pong/pong_hero_s3.png';
+import pong_hero_s4 from '/img/instruments/videomancer/pong/pong_hero_s4.png';
+import pong_hero_s5 from '/img/instruments/videomancer/pong/pong_hero_s5.png';
+import pong_hero_s6 from '/img/instruments/videomancer/pong/pong_hero_s6.png';
+import pong_ex1_s1 from '/img/instruments/videomancer/pong/pong_ex1_s1.png';
+import pong_ex1_s2 from '/img/instruments/videomancer/pong/pong_ex1_s2.png';
+import pong_ex1_s3 from '/img/instruments/videomancer/pong/pong_ex1_s3.png';
+import pong_ex1_s4 from '/img/instruments/videomancer/pong/pong_ex1_s4.png';
+import pong_ex1_s5 from '/img/instruments/videomancer/pong/pong_ex1_s5.png';
+import pong_ex1_s6 from '/img/instruments/videomancer/pong/pong_ex1_s6.png';
+import pong_ex2_s1 from '/img/instruments/videomancer/pong/pong_ex2_s1.png';
+import pong_ex2_s2 from '/img/instruments/videomancer/pong/pong_ex2_s2.png';
+import pong_ex2_s3 from '/img/instruments/videomancer/pong/pong_ex2_s3.png';
+import pong_ex2_s4 from '/img/instruments/videomancer/pong/pong_ex2_s4.png';
+import pong_ex2_s5 from '/img/instruments/videomancer/pong/pong_ex2_s5.png';
+import pong_ex2_s6 from '/img/instruments/videomancer/pong/pong_ex2_s6.png';
+import pong_ex3_s1 from '/img/instruments/videomancer/pong/pong_ex3_s1.png';
+import pong_ex3_s2 from '/img/instruments/videomancer/pong/pong_ex3_s2.png';
+import pong_ex3_s3 from '/img/instruments/videomancer/pong/pong_ex3_s3.png';
+import pong_ex3_s4 from '/img/instruments/videomancer/pong/pong_ex3_s4.png';
+import pong_ex3_s5 from '/img/instruments/videomancer/pong/pong_ex3_s5.png';
+import pong_ex3_s6 from '/img/instruments/videomancer/pong/pong_ex3_s6.png';
 
 # Pong
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={pong_hero} alt="Pong hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: pong_source1_cat, after: pong_hero_s1 },
+    { label: "Car", before: pong_source2_car, after: pong_hero_s2 },
+    { label: "Clouds", before: pong_source3_clouds, after: pong_hero_s3 },
+    { label: "Pattern", before: pong_source4_pattern, after: pong_hero_s4 },
+    { label: "Man", before: pong_source5_man, after: pong_hero_s5 },
+    { label: "Wood", before: pong_source6_wood, after: pong_hero_s6 },
+  ]}
+/>
 *Pong rendering a classic two-player court with paddles, bouncing ball, dashed center net, and 5x7 dot-matrix score display over processed video.*
-<img src={pong_animation} alt="Pong animated output"/>
-*Pong output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
@@ -199,7 +228,7 @@ Sets the luminance level of all foreground objects — ball, paddles, score digi
 | **8 — Net** | Off | On |
 | **9 — Score** | Off | On |
 | **10 — Color** | Mono | Hue |
-| **11 — Bypass** | Off | On |
+| **11 — Wide** | Off | On |
 
 The five toggles control independent game and rendering features. P2 Mode switches between AI and human control of the right paddle. Net and Score independently show or hide the center court divider and the score digits. Color enables chroma tinting of foreground elements. Bypass routes the input signal past all game rendering.
 
@@ -228,7 +257,16 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 ### Exercise 1: Classic Pong Match
 
-<img src={pong_exercise1_result} alt="Classic Pong Match result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: pong_source1_cat, after: pong_ex1_s1 },
+    { label: "Car", before: pong_source2_car, after: pong_ex1_s2 },
+    { label: "Clouds", before: pong_source3_clouds, after: pong_ex1_s3 },
+    { label: "Pattern", before: pong_source4_pattern, after: pong_ex1_s4 },
+    { label: "Man", before: pong_source5_man, after: pong_ex1_s5 },
+    { label: "Wood", before: pong_source6_wood, after: pong_ex1_s6 },
+  ]}
+/>
 *Classic Pong Match — simulated result across source images.*
 **What You'll Create**: Play a round of Pong against the AI with default court rendering.
 
@@ -247,7 +285,16 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 ### Exercise 2: Neon Court Overlay
 
-<img src={pong_exercise2_result} alt="Neon Court Overlay result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: pong_source1_cat, after: pong_ex2_s1 },
+    { label: "Car", before: pong_source2_car, after: pong_ex2_s2 },
+    { label: "Clouds", before: pong_source3_clouds, after: pong_ex2_s3 },
+    { label: "Pattern", before: pong_source4_pattern, after: pong_ex2_s4 },
+    { label: "Man", before: pong_source5_man, after: pong_ex2_s5 },
+    { label: "Wood", before: pong_source6_wood, after: pong_ex2_s6 },
+  ]}
+/>
 *Neon Court Overlay — simulated result across source images.*
 **What You'll Create**: Blend the Pong court semi-transparently over live video with colored game elements.
 
@@ -265,7 +312,16 @@ These exercises progress from basic Pong gameplay to creative video overlay tech
 
 ### Exercise 3: Two-Player Head-to-Head
 
-<img src={pong_exercise3_result} alt="Two-Player Head-to-Head result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Cat", before: pong_source1_cat, after: pong_ex3_s1 },
+    { label: "Car", before: pong_source2_car, after: pong_ex3_s2 },
+    { label: "Clouds", before: pong_source3_clouds, after: pong_ex3_s3 },
+    { label: "Pattern", before: pong_source4_pattern, after: pong_ex3_s4 },
+    { label: "Man", before: pong_source5_man, after: pong_ex3_s5 },
+    { label: "Wood", before: pong_source6_wood, after: pong_ex3_s6 },
+  ]}
+/>
 *Two-Player Head-to-Head — simulated result across source images.*
 **What You'll Create**: Play a two-player match using the pot and fader as separate paddle controllers.
 

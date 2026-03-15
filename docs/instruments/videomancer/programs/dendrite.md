@@ -18,10 +18,6 @@ import dendrite_exercise3_result from '/img/instruments/videomancer/dendrite/den
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={dendrite_hero} alt="Dendrite hero image"/>
 *Dendrite overlaying branching crystal structures onto a live video source, tracing frost-like growth patterns across the frame.*
 <img src={dendrite_animation} alt="Dendrite animated output"/>

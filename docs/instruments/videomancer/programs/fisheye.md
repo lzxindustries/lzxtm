@@ -44,10 +44,6 @@ import fisheye_ex3_s6 from '/img/instruments/videomancer/fisheye/fisheye_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Fruit", before: fisheye_source1_fruit, after: fisheye_hero_s1 },

@@ -44,10 +44,6 @@ import oilslick_ex3_s6 from '/img/instruments/videomancer/oilslick/oilslick_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Field", before: oilslick_source1_field, after: oilslick_hero_s1 },

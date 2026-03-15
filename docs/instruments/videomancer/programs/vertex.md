@@ -18,10 +18,6 @@ import vertex_exercise3_result from '/img/instruments/videomancer/vertex/vertex_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={vertex_hero} alt="Vertex hero image"/>
 *Vertex shattering a live video feed into a jittering polygon mesh with PS1-era vertex wobble, posterised Gouraud banding, wireframe grid overlay, and ordered dithering across a field of flat-shaded quads.*
 <img src={vertex_animation} alt="Vertex animated output"/>

@@ -18,10 +18,6 @@ import totem_exercise3_result from '/img/instruments/videomancer/totem/totem_exe
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={totem_hero} alt="Totem hero image"/>
 *Totem rendering eight interleaved Kefrens bars in the Braid preset, their sinusoidal paths weaving a luminous twisted column against black.*
 <img src={totem_animation} alt="Totem animated output"/>

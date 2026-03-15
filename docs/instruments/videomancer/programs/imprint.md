@@ -44,10 +44,6 @@ import imprint_ex3_s6 from '/img/instruments/videomancer/imprint/imprint_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Ballerina", before: imprint_source1_ballerina, after: imprint_hero_s1 },

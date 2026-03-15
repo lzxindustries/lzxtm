@@ -44,10 +44,6 @@ import engraver_ex3_s6 from '/img/instruments/videomancer/engraver/engraver_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Boat", before: engraver_source1_boat, after: engraver_hero_s1 },

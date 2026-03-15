@@ -44,10 +44,6 @@ import fogbank_ex3_s6 from '/img/instruments/videomancer/fogbank/fogbank_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: fogbank_source1_skull, after: fogbank_hero_s1 },

@@ -18,10 +18,6 @@ import dragon_exercise3_result from '/img/instruments/videomancer/dragon/dragon_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={dragon_hero} alt="Dragon hero image"/>
 *Dragon projecting a luminous fractal labyrinth of XOR-folded coordinates, each iteration depth revealing a deeper layer of self-similar geometry.*
 <img src={dragon_animation} alt="Dragon animated output"/>

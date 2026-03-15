@@ -3,29 +3,58 @@ draft: false
 sidebar_position: 264
 slug: /instruments/videomancer/shadebob
 title: "Shadebob"
-image: /img/instruments/videomancer/shadebob/shadebob_hero.png
+image: /img/instruments/videomancer/shadebob/shadebob_hero_s1.png
 description: "Shadebob recreates the classic Amiga demoscene \"shade blob\" (shadebob) effect, in which a soft circular or diamond-shaped sprite is additively blended onto a persistent framebuffer."
 ---
 
-import shadebob_hero from '/img/instruments/videomancer/shadebob/shadebob_hero.png';
-import shadebob_animation from '/img/instruments/videomancer/shadebob/shadebob_animation.gif';
+import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import shadebob_control_panel from '/img/instruments/videomancer/shadebob/shadebob_control_panel.png';
-import shadebob_exercise1_result from '/img/instruments/videomancer/shadebob/shadebob_exercise1_result.gif';
-import shadebob_exercise2_result from '/img/instruments/videomancer/shadebob/shadebob_exercise2_result.gif';
-import shadebob_exercise3_result from '/img/instruments/videomancer/shadebob/shadebob_exercise3_result.gif';
+import shadebob_source1_car from '/img/instruments/videomancer/shadebob/shadebob_source1_car.png';
+import shadebob_source2_house from '/img/instruments/videomancer/shadebob/shadebob_source2_house.png';
+import shadebob_source3_elephant from '/img/instruments/videomancer/shadebob/shadebob_source3_elephant.png';
+import shadebob_source4_pattern from '/img/instruments/videomancer/shadebob/shadebob_source4_pattern.png';
+import shadebob_source5_man from '/img/instruments/videomancer/shadebob/shadebob_source5_man.png';
+import shadebob_source6_wood from '/img/instruments/videomancer/shadebob/shadebob_source6_wood.png';
+import shadebob_hero_s1 from '/img/instruments/videomancer/shadebob/shadebob_hero_s1.png';
+import shadebob_hero_s2 from '/img/instruments/videomancer/shadebob/shadebob_hero_s2.png';
+import shadebob_hero_s3 from '/img/instruments/videomancer/shadebob/shadebob_hero_s3.png';
+import shadebob_hero_s4 from '/img/instruments/videomancer/shadebob/shadebob_hero_s4.png';
+import shadebob_hero_s5 from '/img/instruments/videomancer/shadebob/shadebob_hero_s5.png';
+import shadebob_hero_s6 from '/img/instruments/videomancer/shadebob/shadebob_hero_s6.png';
+import shadebob_ex1_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s1.png';
+import shadebob_ex1_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s2.png';
+import shadebob_ex1_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s3.png';
+import shadebob_ex1_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s4.png';
+import shadebob_ex1_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s5.png';
+import shadebob_ex1_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s6.png';
+import shadebob_ex2_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s1.png';
+import shadebob_ex2_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s2.png';
+import shadebob_ex2_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s3.png';
+import shadebob_ex2_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s4.png';
+import shadebob_ex2_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s5.png';
+import shadebob_ex2_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s6.png';
+import shadebob_ex3_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s1.png';
+import shadebob_ex3_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s2.png';
+import shadebob_ex3_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s3.png';
+import shadebob_ex3_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s4.png';
+import shadebob_ex3_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s5.png';
+import shadebob_ex3_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s6.png';
 
 # Shadebob
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-<img src={shadebob_hero} alt="Shadebob hero image"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: shadebob_source1_car, after: shadebob_hero_s1 },
+    { label: "House", before: shadebob_source2_house, after: shadebob_hero_s2 },
+    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_hero_s3 },
+    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_hero_s4 },
+    { label: "Man", before: shadebob_source5_man, after: shadebob_hero_s5 },
+    { label: "Wood", before: shadebob_source6_wood, after: shadebob_hero_s6 },
+  ]}
+/>
 *A luminous blob traces spiralling paths across a dark framebuffer, leaving colour trails that fade through the spectrum — an Amiga demoscene shadebob effect realised in FPGA hardware.*
-<img src={shadebob_animation} alt="Shadebob animated output"/>
-*Shadebob output evolving over multiple frames — synthesis programs generate imagery without requiring a video input source.*
 
 ---
 
@@ -197,7 +226,7 @@ Ratio sets the frequency ratio between the x and y Lissajous oscillators. At min
 | **8 — Shape** | Circle | Diamond |
 | **9 — Reset** | Off | Reset |
 | **10 — Mod Vid** | Off | On |
-| **11 — Bypass** | Off | On |
+| **11 — Thick** | Off | On |
 
 The five toggles configure blob rendering and trajectory. Dual Bob adds a second symmetric emitter. Shape switches between circular and diamond stamp profiles. Reset clears the framebuffer. Mod Video and Bypass control video compositing.
 
@@ -226,7 +255,16 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 ### Exercise 1: Single Slow Trail
 
-<img src={shadebob_exercise1_result} alt="Single Slow Trail result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: shadebob_source1_car, after: shadebob_ex1_s1 },
+    { label: "House", before: shadebob_source2_house, after: shadebob_ex1_s2 },
+    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex1_s3 },
+    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex1_s4 },
+    { label: "Man", before: shadebob_source5_man, after: shadebob_ex1_s5 },
+    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex1_s6 },
+  ]}
+/>
 *Single Slow Trail — simulated result across source images.*
 **What You'll Create**: Study the core additive blending and decay mechanics with a single slow-moving blob.
 
@@ -247,7 +285,16 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 ### Exercise 2: Dual Diamond Spirograph
 
-<img src={shadebob_exercise2_result} alt="Dual Diamond Spirograph result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: shadebob_source1_car, after: shadebob_ex2_s1 },
+    { label: "House", before: shadebob_source2_house, after: shadebob_ex2_s2 },
+    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex2_s3 },
+    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex2_s4 },
+    { label: "Man", before: shadebob_source5_man, after: shadebob_ex2_s5 },
+    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex2_s6 },
+  ]}
+/>
 *Dual Diamond Spirograph — simulated result across source images.*
 **What You'll Create**: Create a complex dual-bob spirograph pattern using diamond stamps and a higher frequency ratio.
 
@@ -268,7 +315,16 @@ These exercises explore the interaction between blob size, decay rate, and traje
 
 ### Exercise 3: Video-Modulated Plasma
 
-<img src={shadebob_exercise3_result} alt="Video-Modulated Plasma result"/>
+<BeforeAfterSlider
+  sources={[
+    { label: "Car", before: shadebob_source1_car, after: shadebob_ex3_s1 },
+    { label: "House", before: shadebob_source2_house, after: shadebob_ex3_s2 },
+    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex3_s3 },
+    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex3_s4 },
+    { label: "Man", before: shadebob_source5_man, after: shadebob_ex3_s5 },
+    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex3_s6 },
+  ]}
+/>
 *Video-Modulated Plasma — simulated result across source images.*
 **What You'll Create**: Layer the dual-blob effect over live video as a performance-ready composite.
 

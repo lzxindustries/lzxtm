@@ -44,10 +44,6 @@ import feedback_ex3_s6 from '/img/instruments/videomancer/feedback/feedback_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Skull", before: feedback_source1_skull, after: feedback_hero_s1 },

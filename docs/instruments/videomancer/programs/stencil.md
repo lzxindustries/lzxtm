@@ -44,10 +44,6 @@ import stencil_ex3_s6 from '/img/instruments/videomancer/stencil/stencil_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: stencil_source1_sunset, after: stencil_hero_s1 },

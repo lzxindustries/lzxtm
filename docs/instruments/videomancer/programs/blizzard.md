@@ -44,10 +44,6 @@ import blizzard_ex3_s6 from '/img/instruments/videomancer/blizzard/blizzard_ex3_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: blizzard_source1_dog, after: blizzard_hero_s1 },

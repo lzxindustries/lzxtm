@@ -18,10 +18,6 @@ import ouroboros_exercise3_result from '/img/instruments/videomancer/ouroboros/o
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={ouroboros_hero} alt="Ouroboros hero image"/>
 *A luminous serpent traces a self-consuming circular orbit — its tapering tail segments spiral inward through color-shifted hue bands while the head completes another revolution, rendering the ancient ouroboros symbol as real-time video synthesis.*
 <img src={ouroboros_animation} alt="Ouroboros animated output"/>

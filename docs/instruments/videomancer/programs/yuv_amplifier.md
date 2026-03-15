@@ -9,17 +9,12 @@ description: "Every broadcast facility has a processing amplifier — a \"proc a
 
 import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import yuv_amplifier_control_panel from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_control_panel.png';
-import yuv_amplifier_source1_castle from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source1_castle.png';
 import yuv_amplifier_source1_house from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source1_house.png';
-import yuv_amplifier_source2_ballerina from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source2_ballerina.png';
 import yuv_amplifier_source2_field from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source2_field.png';
 import yuv_amplifier_source3_clouds from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source3_clouds.png';
-import yuv_amplifier_source3_collage from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source3_collage.png';
 import yuv_amplifier_source4_pattern from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source4_pattern.png';
-import yuv_amplifier_source5_boy from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source5_boy.png';
 import yuv_amplifier_source5_man from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source5_man.png';
 import yuv_amplifier_source6_knit from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source6_knit.png';
-import yuv_amplifier_source6_paint from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_source6_paint.png';
 import yuv_amplifier_hero_s1 from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_hero_s1.png';
 import yuv_amplifier_hero_s2 from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_hero_s2.png';
 import yuv_amplifier_hero_s3 from '/img/instruments/videomancer/yuv_amplifier/yuv_amplifier_hero_s3.png';
@@ -49,23 +44,14 @@ import yuv_amplifier_ex3_s6 from '/img/instruments/videomancer/yuv_amplifier/yuv
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
-    { label: "Castle", before: yuv_amplifier_source1_castle, after: yuv_amplifier_hero_s1 },
-    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_hero_s2 },
-    { label: "Ballerina", before: yuv_amplifier_source2_ballerina, after: yuv_amplifier_hero_s3 },
-    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_hero_s4 },
-    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_hero_s5 },
-    { label: "Collage", before: yuv_amplifier_source3_collage, after: yuv_amplifier_hero_s6 },
-    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: undefined },
-    { label: "Boy", before: yuv_amplifier_source5_boy, after: undefined },
-    { label: "Man", before: yuv_amplifier_source5_man, after: undefined },
-    { label: "Knit", before: yuv_amplifier_source6_knit, after: undefined },
-    { label: "Paint", before: yuv_amplifier_source6_paint, after: undefined },
+    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_hero_s1 },
+    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_hero_s2 },
+    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_hero_s3 },
+    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: yuv_amplifier_hero_s4 },
+    { label: "Man", before: yuv_amplifier_source5_man, after: yuv_amplifier_hero_s5 },
+    { label: "Knit", before: yuv_amplifier_source6_knit, after: yuv_amplifier_hero_s6 },
   ]}
 />
 *YUV Amplifier applying independent per-channel gain, offset, and inversion across Y/U/V with fade-to-color interpolation.*
@@ -256,17 +242,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Castle", before: yuv_amplifier_source1_castle, after: yuv_amplifier_ex1_s1 },
-    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex1_s2 },
-    { label: "Ballerina", before: yuv_amplifier_source2_ballerina, after: yuv_amplifier_ex1_s3 },
-    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex1_s4 },
-    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex1_s5 },
-    { label: "Collage", before: yuv_amplifier_source3_collage, after: yuv_amplifier_ex1_s6 },
-    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: undefined },
-    { label: "Boy", before: yuv_amplifier_source5_boy, after: undefined },
-    { label: "Man", before: yuv_amplifier_source5_man, after: undefined },
-    { label: "Knit", before: yuv_amplifier_source6_knit, after: undefined },
-    { label: "Paint", before: yuv_amplifier_source6_paint, after: undefined },
+    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex1_s1 },
+    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex1_s2 },
+    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex1_s3 },
+    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: yuv_amplifier_ex1_s4 },
+    { label: "Man", before: yuv_amplifier_source5_man, after: yuv_amplifier_ex1_s5 },
+    { label: "Knit", before: yuv_amplifier_source6_knit, after: yuv_amplifier_ex1_s6 },
   ]}
 />
 *Luminance Calibration — simulated result across source images.*
@@ -288,17 +269,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Castle", before: yuv_amplifier_source1_castle, after: yuv_amplifier_ex2_s1 },
-    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex2_s2 },
-    { label: "Ballerina", before: yuv_amplifier_source2_ballerina, after: yuv_amplifier_ex2_s3 },
-    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex2_s4 },
-    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex2_s5 },
-    { label: "Collage", before: yuv_amplifier_source3_collage, after: yuv_amplifier_ex2_s6 },
-    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: undefined },
-    { label: "Boy", before: yuv_amplifier_source5_boy, after: undefined },
-    { label: "Man", before: yuv_amplifier_source5_man, after: undefined },
-    { label: "Knit", before: yuv_amplifier_source6_knit, after: undefined },
-    { label: "Paint", before: yuv_amplifier_source6_paint, after: undefined },
+    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex2_s1 },
+    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex2_s2 },
+    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex2_s3 },
+    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: yuv_amplifier_ex2_s4 },
+    { label: "Man", before: yuv_amplifier_source5_man, after: yuv_amplifier_ex2_s5 },
+    { label: "Knit", before: yuv_amplifier_source6_knit, after: yuv_amplifier_ex2_s6 },
   ]}
 />
 *Creative Color Tinting — simulated result across source images.*
@@ -320,17 +296,12 @@ These exercises progress from basic level correction to creative color manipulat
 
 <BeforeAfterSlider
   sources={[
-    { label: "Castle", before: yuv_amplifier_source1_castle, after: yuv_amplifier_ex3_s1 },
-    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex3_s2 },
-    { label: "Ballerina", before: yuv_amplifier_source2_ballerina, after: yuv_amplifier_ex3_s3 },
-    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex3_s4 },
-    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex3_s5 },
-    { label: "Collage", before: yuv_amplifier_source3_collage, after: yuv_amplifier_ex3_s6 },
-    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: undefined },
-    { label: "Boy", before: yuv_amplifier_source5_boy, after: undefined },
-    { label: "Man", before: yuv_amplifier_source5_man, after: undefined },
-    { label: "Knit", before: yuv_amplifier_source6_knit, after: undefined },
-    { label: "Paint", before: yuv_amplifier_source6_paint, after: undefined },
+    { label: "House", before: yuv_amplifier_source1_house, after: yuv_amplifier_ex3_s1 },
+    { label: "Field", before: yuv_amplifier_source2_field, after: yuv_amplifier_ex3_s2 },
+    { label: "Clouds", before: yuv_amplifier_source3_clouds, after: yuv_amplifier_ex3_s3 },
+    { label: "Pattern", before: yuv_amplifier_source4_pattern, after: yuv_amplifier_ex3_s4 },
+    { label: "Man", before: yuv_amplifier_source5_man, after: yuv_amplifier_ex3_s5 },
+    { label: "Knit", before: yuv_amplifier_source6_knit, after: yuv_amplifier_ex3_s6 },
   ]}
 />
 *Fade-to-Color Drama — simulated result across source images.*

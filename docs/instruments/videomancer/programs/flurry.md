@@ -18,10 +18,6 @@ import flurry_exercise3_result from '/img/instruments/videomancer/flurry/flurry_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={flurry_hero} alt="Flurry hero image"/>
 *A single luminous particle traces an elliptical orbit through darkness — its Manhattan-distance glow diamond sweeping a warm trail across the void.*
 <img src={flurry_animation} alt="Flurry animated output"/>

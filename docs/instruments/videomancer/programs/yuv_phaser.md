@@ -11,8 +11,6 @@ import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
 import yuv_phaser_control_panel from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_control_panel.png';
 import yuv_phaser_source1_sunset from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source1_sunset.png';
 import yuv_phaser_source2_field from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source2_field.png';
-import yuv_phaser_source2_fruit from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source2_fruit.png';
-import yuv_phaser_source3_collage from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source3_collage.png';
 import yuv_phaser_source3_turtle from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source3_turtle.png';
 import yuv_phaser_source4_pattern from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source4_pattern.png';
 import yuv_phaser_source5_woman from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source5_woman.png';
@@ -46,20 +44,14 @@ import yuv_phaser_ex3_s6 from '/img/instruments/videomancer/yuv_phaser/yuv_phase
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_hero_s1 },
     { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_hero_s2 },
-    { label: "Fruit", before: yuv_phaser_source2_fruit, after: yuv_phaser_hero_s3 },
-    { label: "Collage", before: yuv_phaser_source3_collage, after: yuv_phaser_hero_s4 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_hero_s5 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_hero_s6 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: undefined },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: undefined },
+    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_hero_s3 },
+    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_hero_s4 },
+    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_hero_s5 },
+    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_hero_s6 },
   ]}
 />
 *YUV Phaser displacing a studio portrait through independent per-channel horizontal delays, splitting luminance and chrominance into staggered echoes across the scan line.*
@@ -238,12 +230,10 @@ These exercises explore YUV Phaser's displacement capabilities from simple phase
   sources={[
     { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex1_s1 },
     { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex1_s2 },
-    { label: "Fruit", before: yuv_phaser_source2_fruit, after: yuv_phaser_ex1_s3 },
-    { label: "Collage", before: yuv_phaser_source3_collage, after: yuv_phaser_ex1_s4 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex1_s5 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex1_s6 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: undefined },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: undefined },
+    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex1_s3 },
+    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex1_s4 },
+    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex1_s5 },
+    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex1_s6 },
   ]}
 />
 *Chromatic Aberration — simulated result across source images.*
@@ -266,12 +256,10 @@ These exercises explore YUV Phaser's displacement capabilities from simple phase
   sources={[
     { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex2_s1 },
     { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex2_s2 },
-    { label: "Fruit", before: yuv_phaser_source2_fruit, after: yuv_phaser_ex2_s3 },
-    { label: "Collage", before: yuv_phaser_source3_collage, after: yuv_phaser_ex2_s4 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex2_s5 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex2_s6 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: undefined },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: undefined },
+    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex2_s3 },
+    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex2_s4 },
+    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex2_s5 },
+    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex2_s6 },
   ]}
 />
 *Data-Dependent Warp — simulated result across source images.*
@@ -294,12 +282,10 @@ These exercises explore YUV Phaser's displacement capabilities from simple phase
   sources={[
     { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex3_s1 },
     { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex3_s2 },
-    { label: "Fruit", before: yuv_phaser_source2_fruit, after: yuv_phaser_ex3_s3 },
-    { label: "Collage", before: yuv_phaser_source3_collage, after: yuv_phaser_ex3_s4 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex3_s5 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex3_s6 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: undefined },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: undefined },
+    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex3_s3 },
+    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex3_s4 },
+    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex3_s5 },
+    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex3_s6 },
   ]}
 />
 *Inverted Channel Displacement with Fade — simulated result across source images.*

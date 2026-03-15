@@ -18,10 +18,6 @@ import colony_exercise3_result from '/img/instruments/videomancer/colony/colony_
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <img src={colony_hero} alt="Colony hero image"/>
 *Four bacterial colonies expanding from quadrant centers, their LFSR-noised growth fronts colliding at bright mutual exclusion boundaries that trace a living Voronoi tessellation.*
 <img src={colony_animation} alt="Colony animated output"/>

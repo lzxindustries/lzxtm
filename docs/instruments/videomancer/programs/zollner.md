@@ -44,10 +44,6 @@ import zollner_ex3_s6 from '/img/instruments/videomancer/zollner/zollner_ex3_s6.
 
 <span class="head2_nolink">Videomancer Program Guide</span>
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
 <BeforeAfterSlider
   sources={[
     { label: "Dog", before: zollner_source1_dog, after: zollner_hero_s1 },
