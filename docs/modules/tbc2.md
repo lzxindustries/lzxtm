@@ -671,20 +671,49 @@ To install a different version of the TBC2 firmware:
 
 TBC2 Firmware 1.0
 &nbsp;<br />
-[Download ZIP](https://lzxindustries.net/assets/tbc2-firmware_1.0.zip)
+[Download ZIP](/firmware/tbc2_1.0.0/tbc2_1.0.0.zip)
 
 TBC2 Firmware 1.0.1
 &nbsp;<br />
-[Download ZIP](https://lzxindustries.net/assets/tbc2-firmware_1.0.1.zip)
+[Download ZIP](/firmware/tbc2_1.0.1/tbc2_1.0.1.zip)
 
 TBC2-mk1 (Orion series) Firmware 1.0.2
 &nbsp;<br />
-[Download ZIP](https://lzxindustries.net/assets/tbc2-firmware_1.0.2-mk1.zip)
+[Download ZIP](/firmware/tbc2_1.0.2/tbc2_1.0.2_mk1.zip)
 
 TBC2-mk2 (Gen3 series) Firmware 1.0.2
 &nbsp;<br />
-[Download ZIP](https://lzxindustries.net/assets/tbc2-firmware_1.0.2-mk2.zip)
+[Download ZIP](/firmware/tbc2_1.0.2/tbc2_1.0.2_mk2.zip)
 
 TBC2 Firmware 1.0.3
 &nbsp;<br />
-[Download ZIP](https://lzxindustries.net/assets/tbc2-firmware_1.0.3.zip)
+[Download ZIP](/firmware/tbc2_1.0.3/tbc2_1.0.3.zip)
+
+TBC2 Firmware 1.0.6
+&nbsp;<br />
+[Download ZIP](/firmware/tbc2_1.0.6/tbc2_1.0.6.zip)
+
+---
+
+## Firmware Changelog
+
+### 1.0.6
+
+**Bug Fixes**
+- Fixed decoder getting stuck in a scanning loop on certain inputs
+- Fixed OLED preview scrolling during PAL-to-NTSC conversion
+- Fixed HD component input sync glitch causing picture displacement
+- Fixed encoder output not following source selection
+- Fixed bouncing ball screensaver going off-screen
+- Fixed various crashes and stability issues
+
+**New Features**
+- Added letterbox scaling for cross-format conversions
+- Added confirmation prompts before firmware update/reset
+- Added invert and triangle controls to ramp generator
+- Shows error when SD card or BOOT.bin is missing during firmware update
+
+**Improvements**
+- Ramp phase control now goes from 0–360 degrees
+- Renamed shutdown button to "Save & Restart"
+- Decoder GUI adapts layout to input/output resolution
