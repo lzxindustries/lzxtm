@@ -693,9 +693,19 @@ TBC2 Firmware 1.0.6
 &nbsp;<br />
 [Download ZIP](/firmware/tbc2_1.0.6/tbc2_1.0.6.zip)
 
+TBC2 Firmware 1.0.7
+&nbsp;<br />
+[Download ZIP](/firmware/tbc2_1.0.7/tbc2_1.0.7.zip)
+
 ---
 
 ## Firmware Changelog
+
+### 1.0.7
+
+**Bug Fixes**
+- Fixed GUI slider behavior for Mk1 compatibility
+- Fixed GUI labeling error in ramp generator
 
 ### 1.0.6
 
