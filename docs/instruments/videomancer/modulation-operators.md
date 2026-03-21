@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 2
 slug: /instruments/videomancer/modulation-operators
@@ -6,20 +6,13 @@ title: "Modulation Guide"
 image: /img/instruments/videomancer/videomancer_frontpanel.png
 description: "Complete reference guide for Videomancer's 39 modulation operator types across 12 channels, including oscillators, envelope followers, random generators, sequencers, spatial modulators, physics simulations, and USB HID input devices."
 ---
-
 # Modulation Guide
 
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-:::info
-**System**: Videomancer Modulation Engine
-**Channels**: 12 modulators (P1–P12)
-**Operators**: 39 types
-**Estimated reading time**: 60 minutes
-:::
-
+> **System**: Videomancer Modulation Engine
+> **Channels**: 12 modulators (P1–P12)
+> **Operators**: 39 types
+> **Author**: LZX Industries LLC
+> **Estimated reading time**: 60 minutes
 ---
 
 ## Contents
@@ -329,7 +322,7 @@ In per-line mode, each scanline reads its own input sample, so the modulation va
 
 **Per-line**: Yes
 
-Identical to CV Input but with no slew filtering, so the raw input signal passes through at full bandwidth. Use this when the input is an audio-rate signal and you want the modulation to follow every cycle of the waveform rather than tracking just the envelope. The per-line variant is particularly useful here — it maps the instantaneous audio waveform onto the vertical dimension of the video frame.
+Identical to CV Input but with no slew filtering — the raw input signal passes through at full bandwidth regardless of the Time knob position. Use this when the input is an audio-rate signal and you want the modulation to follow every cycle of the waveform rather than tracking just the envelope. The per-line variant is particularly useful here — it maps the instantaneous audio waveform onto the vertical dimension of the video frame.
 
 ![CV & Audio Input — Signal Conditioning](/img/instruments/videomancer/modulation/cv_audio_chain.png)
 
@@ -461,9 +454,7 @@ In per-line mode, the comparison happens independently at each scanline, so the 
 
 A rate-limited follower of an analog input signal. The output tracks the input, but the maximum speed at which it can move upward (rise) and downward (fall) is independently limited. If the input jumps instantly from low to high, the output ramps up at the rise rate. If the input drops, the output ramps down at the fall rate.
 
-:::note
-The Slope (Fall) knob also selects which analog input channel is read. Low settings read channel 1 with a slow fall rate; high settings read channels 3+4 with an instant fall rate. Channel selection and fall rate are coupled on the same control.
-:::
+> **Note**: The Slope (Fall) knob also selects which analog input channel is read. Low settings read channel 1 with a slow fall rate; high settings read channels 3+4 with an instant fall rate. Channel selection and fall rate are coupled on the same control.
 
 Asymmetric slew rates produce distinctive motion profiles. Fast rise and slow fall creates a signal that snaps to peaks and gently decays — useful for making parameters respond quickly to transients but recover slowly. Slow rise and fast fall creates the opposite: sluggish response to increasing input but instant response to decreasing input.
 
@@ -501,9 +492,7 @@ The per-line variant outputs the *maximum* of the held peak and the current scan
 
 Field Accum operates as an integrator: it continuously adds the input signal (minus the midpoint) to a running total. Over time, the total drifts upward if the input is above center, or downward if below. The Leak parameter applies a constant drain that pulls the total back toward center, preventing it from railing at the extremes.
 
-:::note
-The Slope (Leak) knob also selects which analog input channel is read, using the same six-option mapping as CV Input. Low settings read channel 1 with no leak; high settings read channels 3+4 with fast leak. Channel selection and leak rate are coupled on the same control.
-:::
+> **Note**: The Slope (Leak) knob also selects which analog input channel is read, using the same six-option mapping as CV Input. Low settings read channel 1 with no leak; high settings read channels 3+4 with fast leak. Channel selection and leak rate are coupled on the same control.
 
 With no leak and a steady input, Field Accum ramps steadily in one direction until it hits the rail — useful for generating slow ramps locked to an input signal. With moderate leak, it produces a smoothed, sluggishly-responding version of the input. With high leak, the output tracks the input loosely, acting as a weighted running average.
 
@@ -1213,7 +1202,7 @@ CCs in the range 32–63 are already defined as LSB positions by the MIDI specif
 
 #### Canceling Assign Mode
 
-- **Press the encoder** at any time during assign mode to cancel without making a change. The display returns to the normal modulator view and the existing CC assignment (if any) is left untouched.
+- **Press the encoder** when no CC# has been dialed in (i.e., the encoder has not been turned) to cancel without making a change. The display returns to the normal modulator view and the existing CC assignment (if any) is left untouched. If a CC# has been dialed in via the encoder, pressing the button confirms the selection instead of canceling. To cancel with a pending CC# showing, long-press the same modulator button again.
 
 #### Clearing an Assignment
 
@@ -1283,9 +1272,7 @@ MIDI note messages provide trigger control for modulation operators that respond
 
 **Note Off** (or Note On with velocity 0) releases the modulator, triggering the release phase of Trigger Env or allowing Pendulum to decay naturally.
 
-:::tip
-Most MIDI keyboards default to middle C (note 60). To trigger Videomancer's modulators, you need to play in the lowest octave range of your keyboard (notes 0–11), or use your DAW to transpose MIDI data down. Many DAWs allow you to set a MIDI note offset, or you can use a MIDI monitor to verify you are sending the correct note numbers.
-:::
+**Practical tip**: Most MIDI keyboards default to middle C (note 60). To trigger Videomancer's modulators, you need to play in the lowest octave range of your keyboard (notes 0–11), or use your DAW to transpose MIDI data down. Many DAWs allow you to set a MIDI note offset, or you can use a MIDI monitor to verify you are sending the correct note numbers.
 
 ![MIDI Note-to-Modulator Mapping](/img/instruments/videomancer/modulation/midi_note_grid.png)
 
@@ -1433,9 +1420,7 @@ Analog sticks are **spring-centered** — they naturally return to the midpoint 
 
 The D-pad / hat switch is not directly exposed as a modulation axis. Buttons are aggregated — any button press on the gamepad drives the Buttons axis high.
 
-:::tip
-Assign the left stick X and Y to two different parameters for intuitive two-axis control. Use a trigger for a third parameter (intensity or depth). The spring-return behavior means you can make dramatic parameter sweeps and always return to a known position by releasing the stick.
-:::
+**Live performance tip**: Assign the left stick X and Y to two different parameters for intuitive two-axis control. Use a trigger for a third parameter (intensity or depth). The spring-return behavior means you can make dramatic parameter sweeps and always return to a known position by releasing the stick.
 
 ### Drawing Tablet
 
@@ -1448,7 +1433,7 @@ USB drawing tablets and digitizers (Wacom, Huion, XP-Pen, and most USB digitizer
 | **Pressure** | Pen or finger pressure (no contact to maximum) |
 | **Buttons** | Gate: tip switch, barrel button, or eraser |
 
-Unlike the Mouse, the Tablet uses **absolute positioning** — the pen's position on the tablet maps directly to a fixed modulation value. Moving to the left edge of the tablet always produces the same value; the right edge always produces the opposite extreme. This provides repeatable, deterministic control — the same physical position always produces the same modulation value.
+Unlike the Mouse, the Tablet uses **absolute positioning** — the pen's position on the tablet maps directly to a fixed modulation value. Moving to the left edge always produces the same value; the right edge always produces the opposite extreme. This provides repeatable, deterministic control — the same physical position always produces the same modulation value.
 
 **Pressure** is the key differentiator from all other input devices. Pressure-sensitive tablets report continuous pen pressure, enabling expressive modulation that responds to how hard you press. Light touches produce subtle modulation; pressing firmly drives the output to maximum. This is particularly natural for musicians and visual artists who are accustomed to pressure-sensitive tools.
 
@@ -1456,9 +1441,7 @@ Tablet coordinates persist when the pen is lifted — the last known position is
 
 The Buttons axis provides a gate output. The tip switch (pen contact with the tablet surface), barrel button (pen side button), and eraser (pen flip) all activate the gate — any contact drives the output high.
 
-:::note
-Some touchscreen devices report as digitizers. If your touchscreen is recognized as a tablet device, it will work with the Tablet operator, though pressure sensitivity depends on the hardware's capabilities.
-:::
+**Touchscreen note**: Some touchscreen devices report as digitizers. If your touchscreen is recognized as a tablet device, it will work with the Tablet operator, though pressure sensitivity depends on the hardware's capabilities.
 
 ### Joystick
 
@@ -1479,9 +1462,7 @@ Joystick axes are typically **not spring-centered** — throttle levers and rudd
 
 The Joystick operator is ideal for live performance setups where a musician wants dedicated physical controls with independent axes. A HOTAS setup provides throttle on Z, stick on X/Y, and rudder on Rz — four independent modulation sources from a single USB device.
 
-:::note
-Not all joystick devices identify themselves the same way. Some USB flight sticks report as gamepads and will be handled by the Gamepad operator instead. If your joystick does not respond under the Joystick operator, try the Gamepad operator.
-:::
+**Compatibility note**: Not all joystick devices identify themselves the same way. Some USB flight sticks report as gamepads and will be handled by the Gamepad operator instead. If your joystick does not respond under the Joystick operator, try the Gamepad operator.
 
 ### Sensor
 
@@ -1503,9 +1484,7 @@ Gyroscope axes measure **rotation rate**, not absolute angle. Spinning the senso
 
 The Magnitude axis provides an orientation-independent measure of total acceleration. It responds to shaking, striking, and sudden movements regardless of which direction they occur in. Higher Slew settings smooth the output into a gentle envelope; lower Slew settings capture individual impacts.
 
-:::note
-Sensor data is inherently noisier than other HID inputs. Increase the Slew parameter for smooth, musical modulation. The Gain parameter can reduce noisy signals to a usable range.
-:::
+**Noise note**: Sensor data is inherently noisier than other HID inputs. Increase the Slew parameter for smooth, musical modulation. The Gain parameter can reduce noisy signals to a usable range.
 
 ---
 
@@ -1599,3 +1578,7 @@ These exercises progress from basic oscillator modulation through external input
 - **Program Change for live preset recall**. Map your MIDI foot controller's program change buttons to Videomancer presets for hands-free preset switching during performance.
 - **Joystick for multi-axis control**. Flight sticks and HOTAS setups provide up to six independent axes plus a hat switch — far more simultaneous control dimensions than a gamepad. Use the throttle axis (Z) for slow sweeps and the stick (X/Y) for quick gestural modulation.
 - **Sensor for motion-controlled effects**. Tilt a USB motion sensor to sweep parameters with physical orientation, or shake it for percussive bursts. Increase Slew for smooth tilt tracking; decrease it for responsive shake detection. The Magnitude axis captures overall motion intensity regardless of direction.
+
+---
+
+*The modulation engine is part of the Videomancer firmware by LZX Industries.*
