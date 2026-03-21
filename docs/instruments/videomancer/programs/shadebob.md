@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 264
 slug: /instruments/videomancer/shadebob
@@ -7,346 +7,384 @@ image: /img/instruments/videomancer/shadebob/shadebob_hero_s1.png
 description: "Shadebob recreates the classic Amiga demoscene \"shade blob\" (shadebob) effect, in which a soft circular or diamond-shaped sprite is additively blended onto a persistent framebuffer."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import shadebob_control_panel from '/img/instruments/videomancer/shadebob/shadebob_control_panel.png';
-import shadebob_source1_car from '/img/instruments/videomancer/shadebob/shadebob_source1_car.png';
-import shadebob_source2_house from '/img/instruments/videomancer/shadebob/shadebob_source2_house.png';
-import shadebob_source3_elephant from '/img/instruments/videomancer/shadebob/shadebob_source3_elephant.png';
-import shadebob_source4_pattern from '/img/instruments/videomancer/shadebob/shadebob_source4_pattern.png';
-import shadebob_source5_man from '/img/instruments/videomancer/shadebob/shadebob_source5_man.png';
-import shadebob_source6_wood from '/img/instruments/videomancer/shadebob/shadebob_source6_wood.png';
-import shadebob_hero_s1 from '/img/instruments/videomancer/shadebob/shadebob_hero_s1.png';
-import shadebob_hero_s2 from '/img/instruments/videomancer/shadebob/shadebob_hero_s2.png';
-import shadebob_hero_s3 from '/img/instruments/videomancer/shadebob/shadebob_hero_s3.png';
-import shadebob_hero_s4 from '/img/instruments/videomancer/shadebob/shadebob_hero_s4.png';
-import shadebob_hero_s5 from '/img/instruments/videomancer/shadebob/shadebob_hero_s5.png';
-import shadebob_hero_s6 from '/img/instruments/videomancer/shadebob/shadebob_hero_s6.png';
-import shadebob_ex1_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s1.png';
-import shadebob_ex1_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s2.png';
-import shadebob_ex1_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s3.png';
-import shadebob_ex1_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s4.png';
-import shadebob_ex1_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s5.png';
-import shadebob_ex1_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex1_s6.png';
-import shadebob_ex2_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s1.png';
-import shadebob_ex2_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s2.png';
-import shadebob_ex2_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s3.png';
-import shadebob_ex2_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s4.png';
-import shadebob_ex2_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s5.png';
-import shadebob_ex2_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex2_s6.png';
-import shadebob_ex3_s1 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s1.png';
-import shadebob_ex3_s2 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s2.png';
-import shadebob_ex3_s3 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s3.png';
-import shadebob_ex3_s4 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s4.png';
-import shadebob_ex3_s5 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s5.png';
-import shadebob_ex3_s6 from '/img/instruments/videomancer/shadebob/shadebob_ex3_s6.png';
-
-# Shadebob
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: shadebob_source1_car, after: shadebob_hero_s1 },
-    { label: "House", before: shadebob_source2_house, after: shadebob_hero_s2 },
-    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_hero_s3 },
-    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_hero_s4 },
-    { label: "Man", before: shadebob_source5_man, after: shadebob_hero_s5 },
-    { label: "Wood", before: shadebob_source6_wood, after: shadebob_hero_s6 },
-  ]}
-/>
-*A luminous blob traces spiralling paths across a dark framebuffer, leaving colour trails that fade through the spectrum — an Amiga demoscene shadebob effect realised in FPGA hardware.*
+![Shadebob hero image](/img/instruments/videomancer/shadebob/shadebob_hero_s1.png)
+*Shadebob painting luminous color trails across a persistent framebuffer as the bob traces its Lissajous orbit.*
 
 ---
 
 ## Overview
 
-Shadebob recreates the classic Amiga demoscene "shade blob" (shadebob) effect, in which a soft circular or diamond-shaped sprite is additively blended onto a persistent framebuffer. As the blob moves along a Lissajous trajectory, each pixel it passes gains brightness; the framebuffer then globally decays, creating luminous trails of colour that fade through a palette from hot white through spectral hues to black.
+**Shadebob** is a synthesis program that recreates the classic Amiga demoscene "shadebob" effect. A radial color blob — the ***bob*** — moves along a ***Lissajous*** trajectory and is additively composited onto a persistent low-resolution framebuffer. As the bob travels, it leaves behind a trail of color that slowly fades over time, painting flowing ribbons of light across the screen.
 
-The name derives from the demoscene terminology: a "shade bob" is a bob (blitter object) that adds to rather than replaces the framebuffer contents, producing additive shading. The technique was popularised on the Amiga in the late 1980s and became a staple effect in demos competing at parties such as The Party, Assembly, and Revision. The additive blending creates something closer to photographic light exposure than conventional sprite drawing.
+The framebuffer is a 64×36 grid of 8-bit cells backed by block RAM. Each cell stores an intensity value that maps into a 256-entry rainbow palette, producing vivid spectral colors from red through violet. A separate hue framebuffer records the palette index at the moment each cell is stamped, enabling two distinct decay modes: a rainbow trail where each segment retains its original hue, and a monochromatic trail where the entire pattern shifts color in unison.
 
-Videomancer's implementation uses a 64×64 framebuffer with 4-bit-per-pixel indexed colour, a configurable circular or diamond stamp shape with variable size, optional dual-bob mode for two simultaneous emitters, and Lissajous motion with adjustable speed and frequency ratio. The Hue Speed knob cycles the palette assignment over time, so trails gradually shift colour as they age.
+At low decay rates, Shadebob builds up dense, overlapping color fields that fill the screen with luminous tapestries. At high decay rates, the bob leaves only a brief comet tail. The Lissajous trajectory creates endlessly varying orbital paths that never quite repeat, ensuring the pattern evolves continuously.
+
+:::tip
+Shadebob generates its own imagery — no video input is required. Connect a video source and enable **Mod Vid** to modulate the bob's brightness with the incoming picture.
+:::
+
+### What's In a Name?
+
+The name ***Shadebob*** comes directly from the Amiga demoscene of the late 1980s and early 1990s. A ***shade bob*** (or ***shadebobs***) was a classic demo effect where a small colored shape — the "bob" — was drawn additively onto the screen, leaving persistent trails that built up into complex, flowing patterns. The technique exploited the Amiga's blitter hardware to perform fast additive compositing. "Bob" is itself Amiga jargon for ***Blitter Object***, a hardware-accelerated sprite. The "shade" refers to the gradual color buildup and decay that give the trails their luminous, glowing quality.
 
 ---
 
 ## Quick Start
 
-1. **Balance Decay and Speed**: The trail length is the ratio of blob speed to decay rate. Fast speed with slow decay creates long sweeping trails; slow speed with fast decay creates short, crisp stamps.
-2. **Dual Bob for symmetry**: Enable Dual Bob to double the visual complexity without changing the trajectory — the mirrored second blob creates symmetric patterns automatically.
-3. **Diamond for geometry**: Diamond stamps create sharper, more angular trail patterns than circles. Use them for crystalline or pixelated aesthetics.
+1. Turn **Speed** (Knob 1) to about 40%. A colored blob traces a smooth orbital path across the screen, leaving a fading trail behind it.
+2. Adjust **Decay** (Knob 2). At low values, trails persist for many seconds, building up dense color fields. At high values, the trail vanishes almost immediately, leaving just the bob itself.
+3. Turn **Hue Speed** (Knob 4) up from zero. The rainbow palette begins cycling, and the trail becomes a spectrum of shifting colors.
+4. Toggle **Dual Bob** (Switch 7) to **On**. A second bob appears at the opposite point of the orbit, doubling the trail density and creating symmetrical patterns.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Shadebob loaded](/img/instruments/videomancer/shadebob/shadebob_control_panel.png)
+*Videomancer's front panel with Shadebob active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Speed** controls the animation rate of the Lissajous trajectory. At 0%, the bob moves very slowly, taking many seconds to complete a single orbit. As Speed increases, the bob accelerates, tracing its path more rapidly and covering more of the framebuffer per second. At 100%, the bob races across the grid, and trails overlap densely even at high decay rates.
+
+Speed interacts with **Ratio** (Knob 6) to determine the overall trajectory shape. At moderate speeds with a balanced ratio, the bob traces smooth figure-eight patterns. At high speeds, the trail fills the screen before decay can erase it.
+
+---
+
+### Knob 2 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 13% |
+
+**Decay** controls how quickly the framebuffer fades to black. At 0%, there is no decay at all — trails persist indefinitely and the screen gradually fills with saturated color. As Decay increases, the trail lifetime shortens. At 100%, cells fade almost instantly, and only a brief comet tail follows the bob.
+
+:::note
+Setting Decay to zero and watching the screen fill up is half the fun. Use **Reset** (Switch 9) to clear the canvas and start fresh.
+:::
+
+---
+
+### Knob 3 — Bob Size
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Bob Size** sets the radius of the blob in framebuffer cells. At 0%, the bob is a small, tight dot with a radius of 2 cells. At 100%, it expands to a large disc with a radius of 9 cells that covers a substantial portion of the 64×36 grid. Larger bobs fill the framebuffer more quickly with each stamp, producing broader, more diffuse trails.
+
+---
+
+### Knob 4 — Hue Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 25% |
+
+**Hue Speed** controls the rate at which the rainbow palette cycles. At 0%, the palette is static and the bob stamps a single color. As Hue Speed increases, the palette rotates faster, and successive stamps lay down different hues, painting the trail in spectral bands.
+
+In ***Hue*** decay mode (Switch 11 set to **Hue**), each cell retains the color it was given at stamp time, so cycling creates a frozen rainbow trail. In ***Luma*** decay mode, all cells share the same live hue, so the entire trail shifts color in unison as the palette cycles.
+
+---
+
+### Knob 5 — Bright
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 75% |
+
+**Bright** scales the overall luminance of the synthesized output. This is a continuous 10-bit × 10-bit unsigned multiply applied after palette lookup and gamma correction. At 0%, the output is black. At 100%, the palette colors appear at full intensity. Intermediate values dim the entire pattern proportionally.
+
+---
+
+### Knob 6 — Ratio
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 38% |
+
+**Ratio** biases the Lissajous trajectory between horizontal and vertical motion. At 0%, the bob moves primarily in the horizontal axis, tracing wide sweeps left and right. At 50%, horizontal and vertical speeds are balanced, producing classic figure-eight or circular orbits. At 100%, the bob moves primarily vertically. Shifting the ratio creates elliptical, diagonal, and asymmetric Lissajous figures.
+
+:::tip
+Small changes to **Ratio** produce dramatically different orbit shapes. Try sweeping it slowly while watching the trail evolve — you'll find figure eights, pretzels, and spirograph-like patterns.
+:::
+
+---
+
+### Switch 7 — Dual Bob
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Dual Bob** enables a second bob positioned at the opposite point of the Lissajous orbit. When the first bob is at the top of its path, the second bob is at the bottom. Both bobs stamp the framebuffer every frame, doubling the trail density and creating mirror-symmetric patterns. With Dual Bob disabled, only one bob is active.
+
+---
+
+### Switch 8 — Shape
+
+| Property | Value |
+|----------|-------|
+| Off | Circle |
+| On | Diamond |
+| Default | Circle |
+
+**Shape** selects the distance metric used to define the bob's outline. Set to **Circle**, the bob uses a precomputed ***Euclidean distance*** ROM for accurate round shapes. Set to **Diamond**, the bob uses ***Manhattan distance*** (the sum of horizontal and vertical offsets), producing diamond-shaped stamps. Diamond bobs have sharper corners and a tilted-square appearance.
+
+---
+
+### Switch 9 — Reset
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | Reset |
+| Default | Off |
+
+**Reset** clears the entire framebuffer to black when toggled from **Off** to **Reset**. This erases all accumulated trails instantly, giving you a blank canvas. The bob continues moving from its current position, immediately beginning to paint new trails. Reset is edge-triggered — it fires once on the transition, not continuously while held.
+
+---
+
+### Switch 10 — Mod Vid
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Mod Vid** enables video modulation. When active, the incoming video signal's luminance modulates the bob's brightness during the rendering pipeline. Bright areas of the input video allow the full bob intensity through; dark areas attenuate it. This stamps the input image's tonal structure onto the synthesized trail pattern, merging external video content with the Lissajous animation.
+
+:::warning
+Mod Vid requires a valid video input signal. Without one, modulation has no effect beyond slightly dimming the output.
+:::
+
+---
+
+### Switch 11 — Decay
+
+| Property | Value |
+|----------|-------|
+| Off | Hue |
+| On | Luma |
+| Default | Hue |
+
+**Decay** selects between two trail coloring modes. Set to **Hue**, each framebuffer cell retains the palette index it was given at the moment of stamping. As the palette cycles via **Hue Speed**, the trail becomes a frozen rainbow — each segment keeps its original color while new stamps take on the current hue. Set to **Luma**, all non-zero cells share the same live palette index. The entire trail shifts color together as the palette cycles, producing a monochromatic pattern that breathes through the spectrum.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** blends between the dry input signal and the wet synthesized output. At 0%, only the dry input passes through. At 100%, only the Shadebob synthesis is visible. Intermediate values overlay the bob trails onto the input video, allowing the synthesized pattern to float above the source material.
 
 ---
 
 ## Background
 
-### Amiga Demoscene Shade Blobs
+### The Amiga demoscene
 
-The shadebob effect emerged from the Amiga demoscene circa 1988–1990. The Amiga's blitter could perform per-pixel addition in hardware, allowing coders to efficiently add a soft sprite's brightness to a persistently stored framebuffer. The effect was computationally elegant: a small lookup table defined the blob's shape, and the blitter did the rest. Shadebobs appeared in landmark demos including RSI's "Megademo" (1989) and Sanity's "Arte" (1993), where plasma-like colour trails mesmerised audiences.
+The ***demoscene*** is a computer art subculture that emerged in the 1980s, centered on creating real-time audiovisual demonstrations — ***demos*** — that push hardware to its limits. The Commodore Amiga was a defining platform, and the shade bob was one of its most recognizable effects. Programmers used the Amiga's dedicated graphics coprocessor (the ***Blitter***) to perform fast additive pixel compositing, stamping a small sprite onto the screen hundreds of times per frame without erasing previous stamps. The resulting trail of overlapping translucent shapes created mesmerizing, ever-shifting color patterns that became a visual signature of the era.
 
-### Additive Blending and Persistence
+### Lissajous figures
 
-Each frame, the blob shape's brightness values are added to the framebuffer cells it covers, clamped to the maximum palette index (15). Simultaneously, all framebuffer cells are decremented by the Decay amount. This creates a dynamic equilibrium: cells under the current blob position are pushed toward maximum brightness, while cells left behind gradually fade. The rate of decay versus the blob's speed and size determines whether trails are long and diffuse or short and concentrated.
+A ***Lissajous figure*** is the path traced by a point whose X and Y coordinates each follow independent sinusoidal oscillations. When the two frequencies are related by a simple ratio, the path forms elegant closed curves — figure eights, circles, bow ties, and knots. When the ratio is irrational, the curve never exactly repeats, gradually filling a rectangular region. Shadebob uses two independent phase accumulators driven by **Speed** and **Ratio** to generate the bob's trajectory. The result is an endlessly evolving orbital path that sweeps across the framebuffer in complex, non-repeating patterns.
 
-### Lissajous Motion and Frequency Ratio
+### Additive compositing and decay
 
-The blob follows a Lissajous trajectory defined by two orthogonal sine oscillators. The Ratio knob sets the frequency ratio between x and y oscillators — a 1:1 ratio produces circles or ellipses, 1:2 produces figure-eights, and irrational ratios produce dense space-filling curves. The Speed knob scales both frequencies uniformly. Over time these trajectories trace complex spirograph-like patterns across the framebuffer.
+Shadebob's visual character comes from the interplay between ***additive compositing*** and ***temporal decay***. Each frame, the bob stamps a flat intensity value onto every framebuffer cell within its radius, saturating at 255. Simultaneously, every non-zero cell is decremented by a configurable decay step. The result is a dynamic equilibrium: cells near the bob's current position are bright and saturated, while cells in the wake fade gradually through the palette toward black. The tension between accumulation and decay produces the glowing, phosphorescent quality of the trails.
 
-### Dual-Bob Mode
-
-When Dual Bob is enabled, a second blob is rendered symmetrically opposite the first on the framebuffer. The two blobs trace mirrored Lissajous curves simultaneously, doubling the trail density and creating symmetric patterns. Their additive contributions can overlap at the centre, producing brighter hotspots where both blobs converge.
-
-
----
-
-## Signal Flow
+### Signal Flow
 
 ```
- registers_in(0) ── Speed ─────────────────────────────────────────────────┐
- registers_in(1) ── Decay ─────────────────────────────────────────────────┤
- registers_in(2) ── Bob Size ──────────────────────────────────────────────┤
- registers_in(3) ── Hue Speed ─────────────────────────────────────────────┤
- registers_in(4) ── Bright ────────────────────────────────────────────────┤
- registers_in(5) ── Ratio ─────────────────────────────────────────────────┤
- registers_in(6) ── Toggles [Dual Bob|Shape Circ/Diam|Reset|ModVid|Bypass]─┤
- registers_in(7) ── Mix Fader ─────────────────────────────────────────────┤
-                                                                            │
- ┌─────────────────────────────────────────────────────────────────────────┘
- │
- │    ┌──────────────────┐     ┌──────────────────┐     ┌──────────────────┐
- ├───►│  LISSAJOUS GEN   │────►│  BLOB STAMP      │────►│  FRAMEBUFFER     │
- │    │  speed × ratio   │     │  circle/diamond  │     │  64×64 × 4bpp   │
- │    │  → (x, y) pos    │     │  additive blend  │     │  global decay    │
- │    │  + mirror for    │     │  size control    │     │  per frame       │
- │    │  dual bob        │     └──────────────────┘     └───────┬──────────┘
- │    └──────────────────┘                                      │
- │                                                              │ 4-bit index
- │    ┌──────────────────┐     ┌──────────────────┐             │
- │    │  PALETTE LOOKUP  │◄────│  HUE ROTATION    │◄────────────┘
- │    │  16-colour table │     │  palette offset   │
- │    │  → YUV 10-bit   │     │  cycles by Hue   │
- │    └───────┬──────────┘     │  Speed per frame │
- │            │                └──────────────────┘
- │    ┌───────┴──────────┐
- │    │  BRIGHTNESS      │
- │    │  × Bright knob   │
- │    └───────┬──────────┘
- │            │
- │    ┌───────┴──────────┐
- └───►│  INTERPOLATOR    │
-      │  dry/wet mix     │
-      └──────────────────┘
-               │
-               ▼
-          data_out (YUV)
+Lissajous Engine (per vsync)
+│
+├── Phase accumulators (X, Y) ← Speed, Ratio
+├── Sine lookup (quarter-wave LUT) → bob center (cx, cy)
+├── Dual bob (optional: mirror at opposite phase)
+│
+├── Decay pass: each cell -= decay_step (if > 0)
+├── Stamp pass: cells within bob_radius += flat stamp value
+│   ├── Distance: Euclidean ROM or Manhattan ← Shape
+│   └── Hue FB write: latch current hue_phase ← Hue Speed
+└── Reset: clear both framebuffers ← Reset toggle
+
+Rendering Pipeline (per pixel, 16 clocks)
+│
+├─ 1. Position counters → cell address
+├─ 2. Framebuffer BRAM read
+├─ 3. BRAM pipeline register
+├─ 4. Nearest-neighbor stage 1
+├─ 5. Nearest-neighbor stage 2 + engine mask
+├─ 6. R1: Palette index (hue mode or luma mode) ← Decay mode
+├─ 7. R2: Palette ROM lookup (256-entry rainbow)
+├─ 8. R3a: Palette pipeline register
+├─ 9. R3b: Gamma precompute (intensity²)
+├─ 10. R3.5: Intensity scaling (Y*gamma, UV→neutral fade)
+├─ 11. R4: Brightness multiply ← Bright
+├─ 12. R5: Video modulation ← Mod Vid
+└─ 13–16. Interpolator mix (wet/dry, 4 clocks) ← Mix
 ```
 
-The Lissajous oscillator produces an (x, y) position each frame. In Dual Bob mode, a second position is generated as the framebuffer-centre mirror of the first. The blob stamp (either a circular or diamond-shaped soft profile) is additively blended into the framebuffer at each position — cells are incremented by the stamp's radial brightness profile, clamped at 15.
+### Signal Flow Notes
 
-After all blobs are drawn, the entire framebuffer undergoes a global decay pass: every cell is decremented by the Decay amount (clamped at 0). The resulting 4-bit values are looked up in a 16-entry colour palette. The Hue Speed control adds a frame-counter-scaled offset to the palette index, causing the trail colours to cycle through the spectrum over time.
+The architecture splits into two domains that operate in different time scales. The ***Lissajous engine*** runs once per vertical sync, during the blanking interval. It first decays every non-zero cell, then stamps the bob (and optionally a second bob) onto the framebuffer using additive compositing with distance-based range checking. The ***rendering pipeline*** runs continuously at the pixel clock, reading the framebuffer and converting cell values through the palette, gamma correction, brightness scaling, and mix stages.
 
----
+The engine and renderer share the framebuffer BRAM read port. When the engine is active (during vertical blanking), it takes priority and the renderer outputs black. A four-stage busy pipeline ensures the engine mask is correctly aligned with the rendering delay.
 
-## Parameter Reference
-
-<img src={shadebob_control_panel} alt="Videomancer front panel with Shadebob loaded"/>
-*Videomancer's front panel with Shadebob active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Speed sets the Lissajous oscillator rate — how quickly the blob traverses its trajectory. At zero the blob is frozen. At moderate values it traces smooth loops. At maximum the blob moves so rapidly that its trail fills the framebuffer before decay can clear old stamps, creating dense plasma-like colour fields.
-
----
-
-#### Knob 2 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 13% |
-| Suffix | % |
-
-Decay controls the per-frame brightness decrement applied to all framebuffer cells. At zero there is no decay and the framebuffer accumulates indefinitely toward full white. At moderate values a balanced trail length is maintained. At maximum, stamps vanish almost immediately, leaving only a brief flash at the blob's current position.
-
----
-
-#### Knob 3 — Bob Size
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Bob Size sets the radius of the blob stamp in framebuffer cells. A small blob produces fine, precise trails like a paintbrush tip. A large blob creates broad, diffuse washes of colour. Very large blobs at high speed can saturate the entire framebuffer, creating a pulsing glow effect rather than distinct trails.
-
----
-
-#### Knob 4 — Hue Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 25% |
-| Suffix | % |
-
-Hue Speed controls how quickly the palette index offset advances over time. At zero the colour assignment is static — trails fade through a fixed colour gradient. At moderate values the palette rotates slowly, causing the trail colour to drift through the spectrum. At maximum the colours cycle rapidly, creating a rainbow shimmer across the trails.
-
----
-
-#### Knob 5 — Bright
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 75% |
-| Suffix | % |
-
-Bright is a global luminance multiplier applied to the palette output. At zero the output is black. At full value the palette colours reach their maximum defined brightness. This interacts with the blob's additive blending — even at moderate brightness, cells near the blob centre can appear intense due to additive accumulation.
-
----
-
-#### Knob 6 — Ratio
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 38% |
-| Suffix | % |
-
-Ratio sets the frequency ratio between the x and y Lissajous oscillators. At minimum the ratio is 1:1, producing circles or ellipses. As the knob increases, the y frequency increases relative to x, producing figure-eights (1:2), trefoils (1:3), and increasingly complex interlocking curves. Higher ratios create denser, more space-filling trajectories.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Dual Bob** | Off | On |
-| **8 — Shape** | Circle | Diamond |
-| **9 — Reset** | Off | Reset |
-| **10 — Mod Vid** | Off | On |
-| **11 — Thick** | Off | On |
-
-The five toggles configure blob rendering and trajectory. Dual Bob adds a second symmetric emitter. Shape switches between circular and diamond stamp profiles. Reset clears the framebuffer. Mod Video and Bypass control video compositing.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Mix crossfades between the dry input and the synthesised shadebob output. At minimum the output is entirely dry. At maximum the output is entirely wet. Intermediate values blend the blob trails over the source material.
-
-
-
+:::note
+The gamma correction at stage R3.5 applies a perceptual intensity curve (intensity²) that concentrates tonal steps in the dim range where the human eye is most sensitive. This produces smoother, more natural-looking fade-outs in the trail.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the interaction between blob size, decay rate, and trajectory complexity, progressing from a single simple trail to a dual-bob plasma composition.
+These exercises explore Shadebob's synthesis capabilities from simple trails to complex animated patterns. Since Shadebob is a synthesis program, no video input source is required unless using **Mod Vid**.
+### Exercise 1: Basic Trail Painting
 
-### Exercise 1: Single Slow Trail
+![Basic Trail Painting result](/img/instruments/videomancer/shadebob/shadebob_ex1_s1.png)
+*Basic Trail Painting — simulated result across source images.*
+**Key Concepts**: - The bob stamps a flat intensity onto the framebuffer each frame
+- Decay removes intensity over time, creating a trail behind the bob
+- Bob size controls how much of the grid is painted per stamp
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: shadebob_source1_car, after: shadebob_ex1_s1 },
-    { label: "House", before: shadebob_source2_house, after: shadebob_ex1_s2 },
-    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex1_s3 },
-    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex1_s4 },
-    { label: "Man", before: shadebob_source5_man, after: shadebob_ex1_s5 },
-    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex1_s6 },
-  ]}
-/>
-*Single Slow Trail — simulated result across source images.*
-**What You'll Create**: Study the core additive blending and decay mechanics with a single slow-moving blob.
+**What You'll Create**: Learn how speed, decay, and bob size interact to create flowing color trails.
 
-1. Disable Dual Bob.
-2. Set Shape to Circle.
-3. Set Bob Size to approximately 40%.
-4. Set Speed to approximately 20%.
-5. Set Decay to approximately 30%.
-6. Set Ratio to approximately 25% (near-circular trajectory).
-7. Set Hue Speed to approximately 20%.
-8. Set Bright to approximately 80%.
-9. Set Mix to 100%.
-10. Observe the blob tracing a circular path with a fading colour trail behind it.
+1. **Start the bob**: Set **Speed** (Knob 1) to about 40%. A colored blob begins tracing a smooth path.
+2. **Fade the trail**: Set **Decay** (Knob 2) to about 25%. The trail persists for several seconds before fading.
+3. **Widen the brush**: Increase **Bob Size** (Knob 3) to about 60%. The bob grows larger, leaving a wider trail.
+4. **Permanent trails**: Now reduce **Decay** to 0%. The trails never fade — watch the screen gradually fill with color.
+5. **Clear the canvas**: Toggle **Reset** (Switch 9) to clear the canvas. The bob immediately begins painting again on a black background.
 
-**Key concepts**: Additive blending, decay rate, Lissajous circular trajectory, palette colour cycling.
+**Settings**:
 
----
-
-### Exercise 2: Dual Diamond Spirograph
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: shadebob_source1_car, after: shadebob_ex2_s1 },
-    { label: "House", before: shadebob_source2_house, after: shadebob_ex2_s2 },
-    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex2_s3 },
-    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex2_s4 },
-    { label: "Man", before: shadebob_source5_man, after: shadebob_ex2_s5 },
-    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex2_s6 },
-  ]}
-/>
-*Dual Diamond Spirograph — simulated result across source images.*
-**What You'll Create**: Create a complex dual-bob spirograph pattern using diamond stamps and a higher frequency ratio.
-
-1. Enable Dual Bob.
-2. Set Shape to Diamond.
-3. Set Bob Size to approximately 30%.
-4. Set Speed to approximately 40%.
-5. Set Ratio to approximately 60% (complex figure-eight trajectory).
-6. Set Decay to approximately 25%.
-7. Set Hue Speed to approximately 40%.
-8. Set Bright to full.
-9. Set Mix to 100%.
-10. Observe two diamond blobs tracing mirror-symmetric complex curves with overlapping colour trails.
-
-**Key concepts**: Dual blob symmetry, diamond stamp profile, complex Lissajous ratio, trail overlap.
+| Control | Value |
+|---------|-------|
+| Speed | 40% |
+| Decay | 25% |
+| Bob Size | 60% |
+| Hue Speed | 0% |
+| Bright | 75% |
+| Ratio | 50% |
+| Dual Bob | Off |
+| Shape | Circle |
+| Reset | Off |
+| Mod Vid | Off |
+| Decay | Hue |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Video-Modulated Plasma
+### Exercise 2: Rainbow Orbits
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: shadebob_source1_car, after: shadebob_ex3_s1 },
-    { label: "House", before: shadebob_source2_house, after: shadebob_ex3_s2 },
-    { label: "Elephant", before: shadebob_source3_elephant, after: shadebob_ex3_s3 },
-    { label: "Pattern", before: shadebob_source4_pattern, after: shadebob_ex3_s4 },
-    { label: "Man", before: shadebob_source5_man, after: shadebob_ex3_s5 },
-    { label: "Wood", before: shadebob_source6_wood, after: shadebob_ex3_s6 },
-  ]}
-/>
-*Video-Modulated Plasma — simulated result across source images.*
-**What You'll Create**: Layer the dual-blob effect over live video as a performance-ready composite.
+![Rainbow Orbits result](/img/instruments/videomancer/shadebob/shadebob_ex2_s1.png)
+*Rainbow Orbits — simulated result across source images.*
+**Key Concepts**: - Hue mode freezes each cell's color at stamp time, creating rainbow trails
+- Luma mode shifts the entire trail's color in unison
+- Dual Bob creates mirror-symmetric patterns
 
-1. Continue from Exercise 2 with Dual Bob and Diamond.
-2. Enable Mod Video.
-3. Set Mix to approximately 70%.
-4. Feed a high-contrast video source.
-5. Adjust Speed and Ratio to find a visually pleasing trajectory.
-6. Increase Bob Size to approximately 50% for broader colour washes.
-7. Experiment with Hue Speed for static vs cycling trail colours.
-8. Use Reset to clear accumulated trails and start fresh.
+**What You'll Create**: Explore hue cycling and the difference between the two decay modes.
 
-**Key concepts**: Video modulation masking, overlay blending, performance composition, framebuffer management.
+1. **Base settings**: Set **Speed** to 35%, **Decay** to 15%, **Bob Size** to 50%.
+2. **Rainbow ribbon**: Turn **Hue Speed** (Knob 4) to about 30%. The trail becomes a vivid rainbow ribbon — each segment retains the hue it was stamped with.
+3. **Breathing hue**: Now flip **Decay** mode (Switch 11) to **Luma**. The entire trail shifts to a single hue that breathes through the spectrum as the palette cycles.
+4. **Mirror symmetry**: Flip back to **Hue** mode. Enable **Dual Bob** (Switch 7). Two bobs now trace mirror paths, painting parallel rainbow ribbons.
+5. **Reshape the orbit**: Slowly sweep **Ratio** (Knob 6) from 0% to 100%. The orbit transforms from wide horizontal sweeps to tall vertical loops.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Speed | 35% |
+| Decay | 15% |
+| Bob Size | 50% |
+| Hue Speed | 30% |
+| Bright | 80% |
+| Ratio | 50% |
+| Dual Bob | On |
+| Shape | Circle |
+| Reset | Off |
+| Mod Vid | Off |
+| Decay | Hue |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Diamond Spirograph
 
-## Tips
+![Diamond Spirograph result](/img/instruments/videomancer/shadebob/shadebob_ex3_s1.png)
+*Diamond Spirograph — simulated result across source images.*
+**Key Concepts**: - Diamond mode uses Manhattan distance, producing angular shapes
+- Ratio controls the Lissajous figure's aspect ratio and symmetry
+- Low decay with high speed fills the grid with dense, overlapping geometry
 
-- **Hue Speed as colour animation**: Animate Hue Speed for trails that shift colour over time, independent of the spatial pattern. Slow cycling produces gradual palette shifts; fast cycling creates rainbow strobe effects.
-- **Large Bob Size for plasma**: A very large blob with moderate speed and low decay creates a plasma-like glow that fills the screen with soft colour fields.
-- **Reset for composition**: Use Reset liberally during performance to clear accumulated clutter and start fresh compositions on demand.
-- **Ratio for trajectory complexity**: Low ratio values (near 1:1) produce simple circles. Higher ratios create figure-eights and complex interlocking curves that fill more of the framebuffer.
+**What You'll Create**: Combine diamond shapes, dual bobs, and ratio sweeps for complex geometric patterns.
+
+1. **Quick base setup**: Set **Speed** to 50%, **Decay** to 10%, **Bob Size** to 40%.
+2. **Diamond shape**: Set **Shape** (Switch 8) to **Diamond**. The round blob becomes a tilted square.
+3. **Twin diamonds**: Enable **Dual Bob** (Switch 7). Two diamond bobs trace opposite paths.
+4. **Spirograph orbits**: Set **Hue Speed** to 40% and **Ratio** to about 30%. The diamonds trace asymmetric orbits, creating spirograph-like interlocking geometry.
+5. **Intensify trails**: Slowly increase **Bright** (Knob 5) from 50% to 100%. The trails intensify from ghostly wisps to vivid neon.
+6. **Crystalline lattice**: Toggle **Reset** (Switch 9), then immediately set **Decay** to 0% and let the pattern build for 30 seconds. A dense crystalline lattice emerges.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Speed | 50% |
+| Decay | 10% |
+| Bob Size | 40% |
+| Hue Speed | 40% |
+| Bright | 100% |
+| Ratio | 30% |
+| Dual Bob | On |
+| Shape | Diamond |
+| Reset | Off |
+| Mod Vid | Off |
+| Decay | Hue |
+| Mix | 100% |
+
+---
+## Glossary
+
+- **Additive Compositing**: A blending operation where pixel values are added together, allowing overlapping shapes to accumulate brightness and reach saturation.
+
+- **Blitter**: The Amiga's dedicated hardware coprocessor for fast block memory transfers and raster operations, enabling real-time compositing effects.
+
+- **Bob**: Amiga jargon for Blitter Object — a small graphic element drawn and manipulated by the Blitter hardware.
+
+- **Demoscene**: A computer art subculture focused on creating real-time audiovisual demonstrations that showcase programming skill and hardware mastery.
+
+- **Euclidean Distance**: The straight-line distance between two points, calculated as the square root of the sum of squared coordinate differences.
+
+- **Framebuffer**: A region of memory that stores the pixel data for a complete frame of video, read out continuously during display.
+
+- **Lissajous Figure**: A curve traced by a point whose coordinates oscillate sinusoidally at independent frequencies, producing looping, knot-like shapes.
+
+- **Manhattan Distance**: The distance between two points measured along grid axes only (no diagonals), producing diamond-shaped equidistant contours.
+
+- **Palette**: A lookup table that maps integer index values to specific colors, allowing compact storage and easy color cycling.
+
+- **Phase Accumulator**: A counter that adds a fixed increment each cycle, wrapping around to produce a sawtooth ramp used to index periodic functions like sine waves.
+
 
 ---

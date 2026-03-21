@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 161
 slug: /instruments/videomancer/kintsugi
@@ -7,362 +7,391 @@ image: /img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png
 description: "In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hiding them."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import kintsugi_control_panel from '/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png';
-import kintsugi_source1_runner from '/img/instruments/videomancer/kintsugi/kintsugi_source1_runner.png';
-import kintsugi_source2_ballerina from '/img/instruments/videomancer/kintsugi/kintsugi_source2_ballerina.png';
-import kintsugi_source3_turtle from '/img/instruments/videomancer/kintsugi/kintsugi_source3_turtle.png';
-import kintsugi_source4_pattern from '/img/instruments/videomancer/kintsugi/kintsugi_source4_pattern.png';
-import kintsugi_source5_boy from '/img/instruments/videomancer/kintsugi/kintsugi_source5_boy.png';
-import kintsugi_source6_wood from '/img/instruments/videomancer/kintsugi/kintsugi_source6_wood.png';
-import kintsugi_hero_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png';
-import kintsugi_hero_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s2.png';
-import kintsugi_hero_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s3.png';
-import kintsugi_hero_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s4.png';
-import kintsugi_hero_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s5.png';
-import kintsugi_hero_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_hero_s6.png';
-import kintsugi_ex1_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s1.png';
-import kintsugi_ex1_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s2.png';
-import kintsugi_ex1_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s3.png';
-import kintsugi_ex1_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s4.png';
-import kintsugi_ex1_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s5.png';
-import kintsugi_ex1_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex1_s6.png';
-import kintsugi_ex2_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s1.png';
-import kintsugi_ex2_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s2.png';
-import kintsugi_ex2_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s3.png';
-import kintsugi_ex2_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s4.png';
-import kintsugi_ex2_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s5.png';
-import kintsugi_ex2_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex2_s6.png';
-import kintsugi_ex3_s1 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s1.png';
-import kintsugi_ex3_s2 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s2.png';
-import kintsugi_ex3_s3 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s3.png';
-import kintsugi_ex3_s4 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s4.png';
-import kintsugi_ex3_s5 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s5.png';
-import kintsugi_ex3_s6 from '/img/instruments/videomancer/kintsugi/kintsugi_ex3_s6.png';
-
-# Kintsugi
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_hero_s1 },
-    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_hero_s2 },
-    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_hero_s3 },
-    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_hero_s4 },
-    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_hero_s5 },
-    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_hero_s6 },
-  ]}
-/>
-*Kintsugi tracing luminance edges in gold lacquer lines across a video source, transforming discontinuities into radiant metallic seams.*
+![Kintsugi hero image](/img/instruments/videomancer/kintsugi/kintsugi_hero_s1.png)
+*Kintsugi rendering luminance-detected edge lines in gold over darkened ceramic shards, transforming source video into an ornamental art object.*
 
 ---
 
 ## Overview
 
-In the Japanese art of kintsugi (金継ぎ), broken pottery is repaired with gold-dusted lacquer, transforming fractures into luminous features rather than hiding them. This program applies the same philosophy to video: it detects edges and discontinuities in the source image and fills them with bright metallic color — gold or silver — so that the boundaries between tonal regions become the most prominent visual element.
+**Kintsugi** is a video edge detector that draws gold or platinum lines along detected boundaries, inspired by the Japanese art of repairing broken pottery with precious metals. Rather than hiding imperfections, Kintsugi celebrates them — every edge in your source video becomes a glowing seam of gold, as if the image were a shattered vessel lovingly rejoined.
 
-The detection engine runs two parallel comparisons on the luminance channel. A horizontal detector compares each pixel to its immediate predecessor; a lookback detector compares each pixel to one eight clocks earlier in the scan line. Where either comparison exceeds a configurable threshold, a metallic line is drawn. The brightness, width, warmth, and color family of that line are all adjustable in real time. A fill mode extends the metallic color beyond the initial detection point, widening cracks into bands. The result is a dry/wet mix between the original source and the gold-traced version, controlled by the Mix fader.
+Kintsugi analyzes your video in up to four dimensions: horizontal pixel-to-pixel changes, vertical line-to-line differences, an eight-pixel lookback for diagonal and textural contours, and chroma transitions where colors shift abruptly. Where these changes cross a threshold, Kintsugi paints a bright metallic line. Non-edge areas — the "ceramic shards" between cracks — can be darkened, replaced with an embossed relief texture, or aged with a green oxidation ***patina***. The gold lines themselves shimmer subtly thanks to per-pixel dither and a per-frame warmth animation that cycles the tint through a triangular oscillation.
 
-At conservative settings — high threshold, thin lines, moderate brightness — Kintsugi adds a subtle golden edge highlight that enhances the structure of the source material. At aggressive settings — low threshold, wide fill, full brightness — the entire image becomes a web of luminous metallic veins with the original content visible only in the gaps between detected edges.
+:::note
+Kintsugi is a ***processing*** program. It transforms an input video signal, so you'll need a source connected — a camera, playback, or the output of another Videomancer program upstream in the chain.
+:::
+
+### What's In a Name?
+
+***Kintsugi*** (金継ぎ) literally translates to "gold joinery." It is a centuries-old Japanese art form in which broken ceramics are repaired with lacquer mixed with powdered gold, silver, or platinum. The philosophy embraces imperfection — the cracks become the most beautiful part of the object. In Videomancer, the "cracks" are edge boundaries detected in the video signal, and the "gold" is a bright, warm-tinted overlay line.
 
 ---
 
 ## Quick Start
 
-1. **Start with Sensitivity**: This is the master density control. Begin at a moderate setting and listen to the source — high-contrast footage needs less sensitivity than flat, low-contrast material.
-2. **Gold vs. silver sets the mood**: Gold creates warmth and a sense of precious repair. Silver creates a cooler, more clinical or futuristic feeling. Toggle between them to find the right aesthetic.
-3. **Fill mode transforms the effect**: Without fill, Kintsugi produces delicate hairline traces. With fill, it produces broad metallic bands. The character of the effect changes dramatically.
+1. Feed a source with clear shapes and contrast — a face, a hand, or geometric objects. With default settings you'll see gold edge lines tracing the outlines in the source video.
+2. Turn **Sensitiv** (Knob 1) clockwise. More edges appear as the detection threshold drops. Turn it counter-clockwise to isolate only the strongest edges.
+3. Turn **Balance** (Knob 6) clockwise from zero. The non-edge "shard" areas darken, making the gold lines stand out against a shadowed background.
+4. Toggle **Glow** (Switch 7) to **On**. The edge detector expands from horizontal-only to multi-dimensional detection including vertical, lookback, and chroma edges — the crack network becomes denser and more intricate.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Kintsugi loaded](/img/instruments/videomancer/kintsugi/kintsugi_control_panel.png)
+*Videomancer's front panel with Kintsugi active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Sensitiv
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Sensitiv** controls the primary edge detection threshold. At 0%, fully counter-clockwise, the threshold is at its highest: only the most dramatic brightness changes register as edges. As you increase the value clockwise, the threshold drops and progressively subtler transitions are detected. At 100%, even gentle gradients produce visible crack lines.
+
+:::tip
+Start with **Sensitiv** at its midpoint and adjust while watching your source. High-contrast footage (text, silhouettes) produces clean crack networks at low sensitivity. Soft, organic footage (clouds, skin) needs higher sensitivity to produce visible lines.
+:::
+
+---
+
+### Knob 2 — Crack Den
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Crack Den** (Crack Density) sets an independent threshold for the secondary edge detectors — the eight-pixel lookback, vertical line-to-line comparison, and chroma edge analysis. At 0%, these secondary detectors are extremely selective. Increasing **Crack Den** lowers their threshold, admitting more diagonal, textural, and color-boundary edges. This control has no effect when **Glow** (Switch 7) is set to Off, since those secondary detectors are only active in multi-dimensional mode.
+
+---
+
+### Knob 3 — Line Thk
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Line Thk** (Line Thickness) controls the width of crack lines. At 0%, edges are rendered as single-pixel lines — hairline fractures. As you turn clockwise, a ***fill counter*** extends each detected edge horizontally, producing thicker cracks. In **Halo** mode (Switch 8), thickness creates a graduated glow that fades from full brightness at the edge center to a dim fringe at the border. In **Shatter** mode, thickness produces a uniform solid fill at full gold intensity.
+
+---
+
+### Knob 4 — Tone
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Tone** controls the color warmth of the metallic lines. In **Gold** mode (Switch 9), increasing Tone shifts the lines toward a deeper amber. In **Platinum** mode, increasing Tone produces a cooler blue-silver. The warmth values are asymmetric: the V (red–cyan) component is approximately 1.5 times the U (blue–yellow) component, producing authentic gold chromaticity. A subtle per-frame triangle-wave animation cycles the warmth slightly, creating a living shimmer.
+
+---
+
+### Knob 5 — Gold Br
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 50% |
+
+**Gold Br** (Gold Brightness) sets the target luminance for edge pixels. At 0%, edge lines are drawn at the same brightness as the source — they blend in, visible only by their color tint. As you increase the value, the gold lines are driven brighter. At 100%, edges reach near-peak white intensity. Per-pixel ***LFSR dither*** adds a fine organic texture to the brightness, preventing the lines from looking perfectly uniform.
+
+---
+
+### Knob 6 — Balance
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Balance** darkens non-edge pixels — the "ceramic shards" between the cracks. At 0%, shards pass through at their original brightness. Increasing **Balance** applies a pipelined ***proc amp*** contrast reduction, progressively crushing the shard luminance toward black. At 100%, shards are nearly silhouetted, and only the gold crack network remains visible.
+
+:::tip
+**Balance** is your composition tool. At 0% you get a transparent overlay of gold lines on the source. Push it to 50–70% for a dramatic stained-glass look where the source imagery is visible but subdued. At 100%, the image becomes pure gold calligraphy on a dark field.
+:::
+
+---
+
+### Switch 7 — Glow
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Glow** selects the edge detection mode. When set to **Off**, only horizontal pixel-to-pixel luminance differences are analyzed, producing clean vertical crack lines. When set to **On**, the detector expands to include vertical (line-to-line via BRAM line buffer), eight-pixel lookback (diagonal and textural), and chroma (color boundary) edges. Multi-dimensional mode creates a far denser, more organic crack network that follows the full structure of the source.
+
+---
+
+### Switch 8 — Cracks
+
+| Property | Value |
+|----------|-------|
+| Off | Halo |
+| On | Shatter |
+| Default | Halo |
+
+**Cracks** selects between two line rendering styles. **Halo** mode produces a graduated glow: the edge center is full brightness, and the line fades smoothly outward according to the **Line Thk** setting. **Shatter** mode produces a solid, uniform fill — every pixel within the line width receives full gold intensity. Halo creates a softer, more atmospheric look; Shatter creates a bolder, graphic result.
+
+---
+
+### Switch 9 — Metal
+
+| Property | Value |
+|----------|-------|
+| Off | Gold |
+| On | Pltnm |
+| Default | Gold |
+
+**Metal** selects the metal color. **Gold** produces warm amber tint (U below neutral, V above neutral — approximately Y~900, U~450, V~620). **Pltnm** (Platinum) produces cool blue-silver (U above neutral, V below neutral — approximately Y~900, U~650, V~370). Both metals receive the same per-frame warmth animation and LFSR dither.
+
+---
+
+### Switch 10 — Emboss
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Emboss** replaces the source imagery in non-edge "shard" areas with a 2D relief texture derived from the maximum of horizontal and vertical edge deltas. When **Off**, shards show the original (or darkened) source video. When **On**, shards display a grayscale embossed surface that reveals the underlying texture of the source as a bas-relief sculpture. Emboss interacts with **Balance** — the proc amp darkening is applied to the emboss texture, not the original source.
+
+---
+
+### Switch 11 — Patina
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Patina** applies a luma-dependent green oxidation tint to non-edge shard areas, simulating the aged surface of weathered copper or bronze. Darker source areas receive a stronger green shift, producing a realistic graduated patina effect. When **Off**, shards retain their original color. When **On**, the U channel is shifted downward (toward green) proportional to darkness, and the V channel is shifted down by half that amount for a cooling effect.
+
+:::note
+**Patina** and **Emboss** can be combined. With both active, shards display an embossed relief surface with green oxidation, creating the appearance of an ancient bronze artifact.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input and the wet (processed) output. At 0%, the output is identical to the input. At 100%, the full Kintsugi effect is applied. Intermediate values blend the two proportionally, allowing you to dial in the effect intensity.
 
 ---
 
 ## Background
 
-### The Art of Kintsugi
+### Edge detection
 
-Kintsugi (金継ぎ, literally "gold joining") is a Japanese repair technique dating to the fifteenth century. When a ceramic vessel breaks, it is reassembled using lacquer mixed with powdered gold, silver, or platinum. The visible repair lines become a celebrated part of the object's history rather than a flaw to be concealed. The philosophy extends beyond craft into wabi-sabi aesthetics — the appreciation of imperfection, impermanence, and the beauty of things that bear the marks of use and time. Applied to video, the concept transforms every luminance discontinuity — every edge, contour, and texture boundary — into a glowing metallic trace.
+Edge detection is a fundamental technique in image analysis. An ***edge*** is a location where pixel values change abruptly — a boundary between regions of different brightness or color. The simplest edge detector computes the absolute difference between adjacent pixels: if the difference exceeds a threshold, an edge is declared. Kintsugi uses this basic principle across four dimensions.
 
-### Edge Detection by Finite Differences
+Horizontal edges measure `|Y[n] - Y[n-1]|`, finding boundaries that run vertically through the image. Vertical edges use a ***BRAM line buffer*** to compare the current pixel with the same horizontal position on the previous scan line, finding horizontal boundaries. The eight-pixel lookback computes `|Y[n] - Y[n-8]|`, catching diagonal contours and textural patterns that the single-pixel detectors miss. Chroma edges take `max(|U[n]-U[n-1]|, |V[n]-V[n-1]|)`, finding color boundaries where brightness may be constant.
 
-The simplest way to find an edge in a digital signal is to subtract adjacent samples and compare the absolute difference against a threshold. If the difference exceeds the threshold, the samples straddle a boundary. This is a one-dimensional finite-difference operator — the discrete equivalent of a first derivative. Kintsugi applies this operator in two directions simultaneously: a **horizontal** detector compares pixel N to pixel N−1 (one clock delay), and a **lookback** detector compares pixel N to pixel N−8 (eight-clock shift register). The horizontal detector catches sharp vertical edges; the lookback detector catches gradual transitions and diagonal edges that span multiple pixels. Combining both detectors produces a richer crack map than either alone.
+### Gold composition
 
-### Metallic Color in YUV Space
+When a pixel is classified as an edge, Kintsugi replaces its color with a metallic target. The gold target is constructed as a bright Y value (set by **Gold Br**) with warm UV offsets that shift U below the neutral midpoint and V above it, producing amber. Platinum inverts this — U above neutral, V below — for cool silver-blue.
 
-Gold, silver, and copper are not spectral colors — they are perceptual phenomena arising from specific combinations of brightness, saturation, and hue. In the YUV color space, a convincing gold is achieved by setting high luminance (Y ≈ 900/1023), pulling U below neutral (reducing blue), and pushing V above neutral (adding red-amber warmth). Silver is simply high luminance with neutral chroma (U = V = 512). Kintsugi computes these colors per-pixel, blending them with the source based on edge strength. The Warmth parameter controls how far U and V deviate from neutral, sweeping the metallic line color from cool silver through warm gold to deep amber.
+The per-pixel LFSR dither XORs the three least-significant bits of the brightness target, creating a fine organic grain that prevents the gold from looking digitally flat. The per-frame ***triangle wave*** phase accumulator modulates the warmth offsets, producing a subtle cyclic shimmer visible over time.
 
-### Fill and Line Width
+For thick lines (fill counter > 0), **Halo** mode attenuates the gold brightness by progressively larger right-shifts as the fill counter counts down from the edge, producing a graduated glow. **Shatter** mode maintains full brightness across the entire fill width.
 
-A raw edge detector produces single-pixel-wide detections — thin hairlines wherever the threshold is crossed. Kintsugi's fill mode extends each detection by holding the "edge active" flag for a configurable number of pixels after the initial trigger. This is implemented as a countdown counter that reloads on each new detection and decrements otherwise. The result is that closely-spaced edge pixels merge into broader metallic bands, while isolated edge pixels become short dashes. The Line Thickness parameter controls the reload value of this counter, producing lines from 1 to 16 pixels wide.
+### Shard processing
 
-### Edge Strength and Brightness Modulation
+Non-edge pixels — the "ceramic shards" — pass through a pipelined ***proc amp*** that applies contrast reduction controlled by **Balance**. At maximum balance, the contrast multiplier approaches zero, crushing shard luminance toward black. The proc amp uses a Radix-4 Booth multiplier with 9 pipeline stages for timing closure.
 
-Rather than treating all edges equally, Kintsugi computes an **edge strength** — the maximum of the horizontal and lookback deltas, scaled and clamped to the full 10-bit range. Stronger edges (larger luminance discontinuities) receive more of the metallic color; weaker edges receive a blend closer to the source. This creates a natural hierarchy of crack visibility: major contours glow brightly while subtle textures receive only a faint metallic shimmer. The Gold Brightness parameter sets the peak brightness of the metallic overlay, which is then modulated by this per-pixel edge strength.
+The **Emboss** toggle replaces shard source Y with a relief value computed from `max(|dY_horizontal|, |dY_vertical|)`, scaled to full range. This reveals the gradient structure of the source as a sculptural texture. **Patina** shifts the U and V channels of shards toward green proportional to pixel darkness, simulating copper oxidation that is heavier in shadowed recesses — a physically accurate model of how real patina accumulates.
 
-
----
-
-## Signal Flow
-
-Input Register → Delta Compute → Threshold Compare → Gold/Silver Color Compose
+### Signal Flow
 
 ```
 Input Video (YUV 4:4:4)
 │
-├── Edge Detection Delay Line ──────────────────────────────────
-│   ├─ 1-clock delay register (s_y_prev)
-│   └─ 8-clock shift register (s_y_lookback[0..7])
+├── Edge Detection ─────────────────────────────────────────────
+│   ├─ 1. Input register + delay tap latch (1 clk)
+│   ├─ 2. Horizontal |dY|, |dU|, |dV| + 8-pixel lookback |dY|  (1 clk)
+│   ├─ 3. Vertical |dY| (BRAM line buffer) + threshold compare  (1 clk)
+│   └─ 4. Edge combine + fill counter + fade shift + persistence (1 clk)
 │
-├── Stage 1: Input Register + Delay Tap Latch ──────────────────
-│   ├─ Latch current Y, U, V
-│   ├─ Latch previous Y (1-clock delay)
-│   └─ Latch lookback Y (8-clock delay)
+├── Compose ────────────────────────────────────────────────────
+│   ├─ 5. Pre-compose: gold target UV, dithered brightness,
+│   │      emboss base Y, patina amount                          (1 clk)
+│   ├─ 6. Apply compose: edge→gold blend, non-edge→patina       (1 clk)
+│   ├─ 7-15. Alignment delay chain (9 clk, matches proc amp)
+│   └─ 16. Final select: edge Y from compose, non-edge Y from
+│          proc amp; UV from compose for both paths              (1 clk)
 │
-├── Stage 2: Delta Compute ─────────────────────────────────────
-│   ├─ Horizontal delta: abs(current_Y − previous_Y)
-│   └─ Lookback delta: abs(current_Y − lookback_Y)
+├── Proc Amp (parallel) ────────────────────────────────────────
+│   └─ Non-edge shard darkening via Radix-4 Booth multiplier    (9 clk)
 │
-├── Stage 3: Threshold Compare + Edge Strength ─────────────────
-│   ├─ Horizontal edge: h_delta > h_thresh
-│   ├─ Lookback edge: lb_delta > lb_thresh (if edge_mode = 1)
-│   ├─ Fill counter: countdown extends edge detection
-│   ├─ Final edge decision: edge OR (fill_style AND counter > 0)
-│   └─ Edge strength: max(h_delta, lb_delta) × 2, clamped to 1023
+├── Mix ────────────────────────────────────────────────────────
+│   └─ 3× interpolator_u: wet/dry crossfade per channel         (4 clk)
 │
-├── Stage 4: Gold/Silver Color Compose ─────────────────────────
-│   ├─ Edge pixel:
-│   │   ├─ Y: blend source toward Gold Brightness via edge strength
-│   │   ├─ U: 512 − warmth_offset (gold) or 512 + warmth/8 (silver)
-│   │   └─ V: 512 + warmth_offset (gold) or 512 − warmth/8 (silver)
-│   └─ Non-edge pixel: pass-through source Y, U, V
+├── Sync Delay ─────────────────────────────────────────────────
+│   └─ 24-clock delay (16 processing + 4 interpolator
+│      + 4 crack centering offset)
 │
-├── Interpolator Mix (4 clocks) ────────────────────────────────
-│   └─ 3× interpolator_u: crossfade delayed input ↔ composed output
-│
-├── Sync / Data Delay (8 clocks) ───────────────────────────────
-│   └─ Shift registers for hsync, vsync, field, Y, U, V
-│
-└── Bypass Mux ─────────────────────────────────────────────────
-    └─ Select processed (mix output) or delayed input
+└── Output (YUV 4:4:4)
 ```
 
-The two edge detection paths operate in parallel on the same input luma. The horizontal detector uses a single flip-flop delay, catching sharp vertical edges in the image. The lookback detector uses an 8-deep shift register, catching broader transitions and diagonal structures. When Edge Mode is set to horizontal-only (toggle bit 0 = 0), the lookback comparison is suppressed — only horizontal deltas matter. When Edge Mode enables both (toggle bit 0 = 1), the two detections are OR'd together, producing a denser edge map. The fill counter bridges short gaps between detected edges, creating continuous metallic lines rather than scattered dots. Gold and silver differ only in their chroma: gold shifts U below and V above neutral by the warmth offset, while silver applies a much smaller opposite shift (warmth/8) for a very faint cool tint.
+### Signal Flow Notes
 
----
+The architecture has two parallel processing paths that reunite at Stage 16. Edge pixels follow the compose path: brightness is blended toward the dithered gold target with a fade shift determined by the fill counter, and chrominance is replaced with the gold/platinum UV target. Non-edge pixels are routed through a pipelined proc amp for darkening. Stage 6 generates both compose and proc amp inputs simultaneously; the nine-stage alignment delay chain ensures they arrive at the final select multiplexer at the same clock cycle.
 
-## Parameter Reference
-
-<img src={kintsugi_control_panel} alt="Videomancer front panel with Kintsugi loaded"/>
-*Videomancer's front panel with Kintsugi active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Sensitiv
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the sensitivity of horizontal edge detection. The register value is inverted and scaled to produce a threshold: high knob values yield a low threshold, meaning more edges are detected and more gold lines appear. At minimum, only the strongest transitions in the source trigger a metallic trace. At maximum, even subtle gradients become visible as fine golden seams. This is the primary sensitivity control — start here when calibrating Kintsugi to a new source.
-
----
-
-#### Knob 2 — Gold Br
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-At full, edges glow with near-white gold or silver. At zero, the metallic overlay is dark and subtle — edges are tinted but not luminous. This control interacts with edge strength: the VHDL blends the source pixel toward the brightness value based on how large the detected delta was, so stronger edges always appear brighter than weaker ones even at moderate brightness settings. Internally, sets the peak brightness of the metallic line color.
-
----
-
-#### Knob 3 — Line Thk
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the width of the metallic fill that extends beyond each detected edge pixel. The register value is scaled to a 4-bit reload value (1–16 pixels). At minimum, each detection produces a single-pixel metallic dot. As the value increases, the fill counter holds the edge flag active for more pixels after each trigger, merging closely-spaced detections into broad metallic bands. This transforms Kintsugi from a thin-line edge tracer into a wide-band luminance contour renderer.
-
----
-
-#### Knob 4 — Warmth
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the warmth (hue shift) of the metallic color in the chroma channels. The register value is right-shifted by 3 bits to produce an offset. In gold mode, this offset pulls U below neutral (reducing blue) and pushes V above neutral (adding amber). Higher values produce a deeper golden-orange tint; lower values approach neutral, making the gold appear cooler and more platinum-like. In silver mode, the same offset is divided by 8 again and applied in the opposite direction, producing a very faint cool-blue tint rather than warm amber.
-
----
-
-#### Knob 5 — Crack Den
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Controls the lookback edge detection sensitivity, independent of the horizontal threshold. The mapping is the same inverted scaling as Sensitivity (Knob 1), but applied to the 8-clock lookback comparison. Higher values make the lookback detector more responsive to gradual transitions, adding more edge detections from diagonal and textural features. This control only has visible effect when Edge Mode (Toggle 7) enables the lookback path.
-
----
-
-#### Knob 6 — Fill Ctr
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 50% |
-| Suffix | % |
-
-Labeled "Fill Ctr" in the TOML configuration. This register is latched from `registers_in(5)` but the signal is not connected to any processing logic in the current VHDL implementation. Adjusting this knob produces no visible change. It may be reserved for a future fill contrast or fill color control feature.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Metal** | Gold | Pltnm |
-| **8 — Cracks** | Fine | Shatter |
-| **9 — Glow** | Off | On |
-| **10 — Animate** | Off | On |
-| **11 — Bypass** | Off | On |
-
-The five toggle bits are decoded independently from `registers_in(6)`. Two control the edge detection behavior (edge mode, fill style), one selects the metallic color family (gold vs. silver), one is unconnected (Animate), and one is the standard bypass. The TOML presents Toggle 7 with four value labels (Gold/Silver/Copper/Platinum) and Toggle 8 with four labels (Fine/Bold/Web/Shatter), but the VHDL decodes only the least significant bit of each toggle position, making them effectively binary switches rather than four-way selectors.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the delayed original signal and the gold-traced output via three `interpolator_u` instances (one per Y/U/V channel). At 0% (register 0), the output is the delayed input — no metallic traces visible. At 100% (register 1023), the output is fully the composed gold/silver signal. Intermediate values create a semi-transparent metallic overlay where the gold lines are partially blended with the original source, useful for subtle edge enhancement without overwhelming the image.
-
-
-
+:::tip
+The four-clock ***crack centering offset*** delays only the sync and dry paths, shifting the processed output leftward relative to sync. This causes the gold line to appear centered on the detected edge rather than displaced to the right — a subtle but important visual improvement.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from basic edge tracing to complex metallic texturing, exploring the interaction between detection sensitivity, line width, color warmth, and fill mode.
+These exercises progress from basic edge overlay to full ornamental composition. Each builds on the previous, adding more of Kintsugi's processing layers.
+### Exercise 1: Gold Edge Tracing
 
-### Exercise 1: Thin Gold Traces
+![Gold Edge Tracing result](/img/instruments/videomancer/kintsugi/kintsugi_ex1_s1.png)
+*Gold Edge Tracing — simulated result across source images.*
+**Key Concepts**: - Edge detection compares adjacent pixel values against a threshold
+- Multi-dimensional mode adds vertical, lookback, and chroma edges
+- Sensitivity and Crack Density control primary and secondary thresholds independently
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex1_s1 },
-    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex1_s2 },
-    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex1_s3 },
-    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex1_s4 },
-    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex1_s5 },
-    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex1_s6 },
-  ]}
-/>
-*Thin Gold Traces — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with clear subjects and moderate contrast — faces, architecture, or natural scenes with defined contours.
+**What You'll Create**: Learn how the edge threshold and detection mode interact to produce crack networks of varying density.
 
-**What You'll Create**: Learn how edge threshold and brightness create subtle metallic edge highlights.
+**Source**: A live camera feed or recorded footage with clear shapes — faces, hands, architecture, or text.
 
-1. **Start clean**: Set Sensitivity to ~40%. Only the strongest edges in the source are detected — major contours and object boundaries.
-2. **Add gold**: Increase Gold Brightness to ~70%. The detected edges glow with a golden hue.
-3. **Warmth**: Turn Warmth to ~60% for a rich amber tone. Note how the gold color deepens.
-4. **Silver comparison**: Toggle Glow (Toggle 9) to On. The metallic lines shift from warm gold to cool silver. Toggle back to compare.
-5. **Increase sensitivity**: Slowly turn Sensitivity toward 100%. More and more edges appear — textures, gradients, and fine details become traced in gold.
+1. **Default gold edges**: Start with all defaults. Gold lines trace the strongest horizontal edges in the source.
+2. **Reveal finer edges**: Slowly increase **Sensitiv** (Knob 1). Subtler edges appear — fine wrinkles, fabric textures, background details.
+3. **Multi-dimensional cracks**: Toggle **Glow** (Switch 7) to **On**. The crack network explodes with vertical and diagonal lines.
+4. **Tune secondary edges**: With Glow on, increase **Crack Den** (Knob 2) to add more secondary edges. Lower it to isolate only the strongest multi-dimensional boundaries.
+5. **Switch to platinum**: Toggle **Metal** (Switch 9) to **Pltnm**. The lines shift from warm amber to cool silver-blue.
 
-**Key concepts**: Edge threshold as sensitivity control, inverted mapping (high knob = low threshold = more edges), gold vs. silver as chroma selection, warmth as UV offset
+**Settings**:
 
----
-
-### Exercise 2: Wide Metallic Bands
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex2_s1 },
-    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex2_s2 },
-    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex2_s3 },
-    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex2_s4 },
-    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex2_s5 },
-    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex2_s6 },
-  ]}
-/>
-*Wide Metallic Bands — simulated result across source images.*
-**Source**: Footage with strong tonal regions — high-contrast scenes, silhouettes, or graphic patterns.
-
-**What You'll Create**: Explore fill mode and line width to create broad metallic contours.
-
-1. **Enable fill mode**: Set Cracks (Toggle 8) beyond the first position to activate gap filling. The metallic traces immediately widen.
-2. **Line width**: Increase Line Thickness to ~80%. Each detected edge now extends for many pixels, creating broad metallic bands.
-3. **Combined detection**: Set Metal (Toggle 7) to enable lookback detection. The edge map becomes denser — diagonal and textural edges join the horizontal detections.
-4. **Crack density**: Increase Crack Density to ~80%. The lookback threshold drops, adding more secondary edge detections that merge with the widened lines.
-5. **Extreme fill**: Push Line Thickness to 100%. The metallic color floods across large areas, leaving only the most uniform regions of the source untouched. The source becomes visible only through gaps in the golden web.
-
-**Key concepts**: Fill counter extends edges, line width controls counter reload value, combined edge mode adds lookback detections, fill mode merges closely-spaced detections into bands
+| Control | Value |
+|---------|-------|
+| Sensitiv | 50% |
+| Crack Den | 50% |
+| Line Thk | 0% |
+| Tone | 50% |
+| Gold Br | 50% |
+| Balance | 0% |
+| Glow | On |
+| Cracks | Halo |
+| Metal | Gold |
+| Emboss | Off |
+| Patina | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: Golden Web Overlay
+### Exercise 2: Stained Glass Composition
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Runner", before: kintsugi_source1_runner, after: kintsugi_ex3_s1 },
-    { label: "Ballerina", before: kintsugi_source2_ballerina, after: kintsugi_ex3_s2 },
-    { label: "Turtle", before: kintsugi_source3_turtle, after: kintsugi_ex3_s3 },
-    { label: "Pattern", before: kintsugi_source4_pattern, after: kintsugi_ex3_s4 },
-    { label: "Boy", before: kintsugi_source5_boy, after: kintsugi_ex3_s5 },
-    { label: "Wood", before: kintsugi_source6_wood, after: kintsugi_ex3_s6 },
-  ]}
-/>
-*Golden Web Overlay — simulated result across source images.*
-**Source**: Any footage, especially material with varied textures and tonal ranges.
+![Stained Glass Composition result](/img/instruments/videomancer/kintsugi/kintsugi_ex2_s1.png)
+*Stained Glass Composition — simulated result across source images.*
+**Key Concepts**: - Balance darkens non-edge areas via proc amp contrast reduction
+- Patina adds luma-dependent green oxidation to shards
+- Line Thickness and Halo/Shatter control line rendering style
 
-**What You'll Create**: Combine all active parameters to create a dense golden web overlay, then use Mix for partial transparency.
+**What You'll Create**: Combine edge lines with shard darkening and patina to create an ornamental stained-glass aesthetic.
 
-1. **Maximum detection**: Set Sensitivity and Crack Density both to ~90%. Both horizontal and lookback detectors fire on subtle transitions.
-2. **Enable both modes**: Set Metal toggle to combined detection, Cracks toggle to fill mode.
-3. **Moderate width**: Set Line Thickness to ~50% for medium-width bands that follow the source structure.
-4. **Full warmth**: Warmth at 100% for deep amber-gold.
-5. **Lower Mix**: Reduce the Mix fader to ~60%. The golden web becomes semi-transparent, allowing the source to show through the metallic overlay.
-6. **Silver web**: Toggle Glow to On. The warm golden web shifts to a cool silver mesh. Compare the aesthetic difference at partial mix.
-7. **Bypass check**: Toggle Bypass for A/B comparison to see how much of the original image structure is preserved vs. overwhelmed.
+**Source**: Footage with broad tonal regions and moderate contrast — landscapes, still life, or slow-moving subjects.
 
-**Key concepts**: Detection sensitivity compounds with fill width, mix as transparency control, gold-to-silver toggle changes mood without affecting detection, bypass for A/B comparison
+1. **Darken the shards**: Set **Balance** (Knob 6) to about 70%. The areas between cracks darken dramatically.
+2. **Widen the cracks**: Increase **Line Thk** (Knob 3) to about 40%. The crack lines thicken into glowing bands.
+3. **Brighten the gold**: Increase **Gold Br** (Knob 5) to about 70%. The gold lines become more luminous.
+4. **Compare line styles**: Toggle **Cracks** (Switch 8) between **Halo** and **Shatter**. Halo produces atmospheric glow; Shatter produces bold, graphic strokes.
+5. **Age the surface**: Toggle **Patina** (Switch 11) to **On**. The darkened shards acquire a green oxidation tint, strongest in the shadows.
+6. **Deepen the amber**: Adjust **Tone** (Knob 4) to shift the gold warmth. Higher values produce deeper amber.
 
----
+**Settings**:
 
-
-## Tips
-
-- **Warmth at zero = platinum**: With the Warmth knob fully counter-clockwise, gold mode produces near-neutral chroma — effectively a bright platinum rather than warm gold.
-- **Mix for subtlety**: At 100% mix, the metallic lines dominate. Drop to 40–60% for a subtle golden edge enhancement that preserves the source material's character.
-- **Combined detection for texture**: Enable the lookback path (Metal toggle) to catch diagonal and textural edges that horizontal-only detection misses. This is especially effective on organic material like foliage, fabric, and skin.
-- **Feedback loops**: Routing Kintsugi's output back to its input creates recursive edge detection — gold lines spawn new edges that spawn more gold, building into dense luminous webs.
-- **Two controls are non-functional**: Fill Ctr (Knob 6) and Animate (Toggle 10) are registered but unconnected. Don't waste time calibrating them.
+| Control | Value |
+|---------|-------|
+| Sensitiv | 50% |
+| Crack Den | 50% |
+| Line Thk | 40% |
+| Tone | 70% |
+| Gold Br | 70% |
+| Balance | 70% |
+| Glow | On |
+| Cracks | Halo |
+| Metal | Gold |
+| Emboss | Off |
+| Patina | On |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Bronze Relief Artifact
+
+![Bronze Relief Artifact result](/img/instruments/videomancer/kintsugi/kintsugi_ex3_s1.png)
+*Bronze Relief Artifact — simulated result across source images.*
+**Key Concepts**: - Emboss replaces shard source with a 2D relief texture derived from edge deltas
+- Patina and Emboss combine for an ancient bronze aesthetic
+- Platinum mode offers a different metallic character
+
+**What You'll Create**: Use Emboss and Patina together to transform the source into an aged metallic artifact.
+
+**Source**: High-detail footage — close-up textures, nature, or architectural details.
+
+1. **Sculpt the surface**: Toggle **Emboss** (Switch 10) to **On**. Non-edge areas are replaced with a grayscale relief texture.
+2. **Shadow the relief**: Set **Balance** (Knob 6) to about 40%. The embossed relief darkens into shadow.
+3. **Oxidize the bronze**: Toggle **Patina** (Switch 11) to **On**. The embossed surface acquires verdigris oxidation.
+4. **Cool the metal**: Switch **Metal** (Switch 9) to **Pltnm**. The crack lines shift to cool silver, contrasting against the warm green patina.
+5. **Dense seam network**: Increase **Sensitiv** (Knob 1) and **Crack Den** (Knob 2) to about 80%. A dense network of platinum seams covers the relief surface.
+6. **Ghost overlay**: Adjust **Mix** (Fader 12) to about 60% to blend the artifact with the original source, creating a ghostly overlay.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Sensitiv | 80% |
+| Crack Den | 80% |
+| Line Thk | 30% |
+| Tone | 50% |
+| Gold Br | 60% |
+| Balance | 40% |
+| Glow | On |
+| Cracks | Halo |
+| Metal | Pltnm |
+| Emboss | On |
+| Patina | On |
+| Mix | 60% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the standard color matrix used for converting between RGB and YUV in standard-definition video. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Edge detection** | The process of identifying pixel locations where luminance changes abruptly, indicating boundaries between distinct regions. |
-| **Fill counter** | A countdown register that holds the edge-active flag for a configurable number of pixels after an edge trigger, widening detected edges into bands. |
-| **Finite difference** | A discrete approximation of a derivative, computed as the difference between adjacent sample values. |
-| **Kintsugi** | Japanese art of repairing broken pottery with gold-dusted lacquer, celebrating the repair as part of the object's history. |
-| **Lookback** | A delayed comparison where the current pixel is compared to a pixel several clocks earlier in the scan line, catching broader transitions. |
-| **Luma** | The brightness component (Y) of a YUV video signal, representing perceived lightness. |
-| **Wabi-sabi** | Japanese aesthetic rooted in the acceptance of transience and imperfection. |
+- **BRAM**: Block RAM; dedicated memory blocks on the FPGA used to store one full scan line of pixel data for vertical edge comparison.
+
+- **Chroma**: The color information in a video signal, encoded as U and V components in YUV color space.
+
+- **Edge Detection**: Identifying pixel locations where brightness or color values change abruptly, indicating a boundary between regions.
+
+- **Emboss**: A relief texture effect that replaces flat imagery with a raised/lowered surface based on local gradient magnitude.
+
+- **Fill Counter**: A per-pixel countdown that extends a detected edge horizontally, producing thicker crack lines.
+
+- **LFSR**: Linear Feedback Shift Register; a hardware pseudo-random number generator used to add organic dither texture to gold brightness.
+
+- **Luma**: The brightness component (Y) of a YUV video signal, representing perceived lightness.
+
+- **Patina**: A green oxidation tint applied to darker areas, simulating the aged surface of weathered copper or bronze.
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that applies contrast reduction to darken non-edge shard pixels.
+
+- **Threshold**: A comparison value that determines whether a pixel-to-pixel difference is large enough to classify as an edge.
+
 
 ---

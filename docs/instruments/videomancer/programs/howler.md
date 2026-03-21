@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 140
 slug: /instruments/videomancer/howler
@@ -7,353 +7,405 @@ image: /img/instruments/videomancer/howler/howler_hero_s1.png
 description: "Howler implements a video feedback loop entirely within the FPGA — no external routing required."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import howler_control_panel from '/img/instruments/videomancer/howler/howler_control_panel.png';
-import howler_source1_skull from '/img/instruments/videomancer/howler/howler_source1_skull.png';
-import howler_source2_fruit from '/img/instruments/videomancer/howler/howler_source2_fruit.png';
-import howler_source3_clouds from '/img/instruments/videomancer/howler/howler_source3_clouds.png';
-import howler_source4_pattern from '/img/instruments/videomancer/howler/howler_source4_pattern.png';
-import howler_source5_man from '/img/instruments/videomancer/howler/howler_source5_man.png';
-import howler_source6_knit from '/img/instruments/videomancer/howler/howler_source6_knit.png';
-import howler_hero_s1 from '/img/instruments/videomancer/howler/howler_hero_s1.png';
-import howler_hero_s2 from '/img/instruments/videomancer/howler/howler_hero_s2.png';
-import howler_hero_s3 from '/img/instruments/videomancer/howler/howler_hero_s3.png';
-import howler_hero_s4 from '/img/instruments/videomancer/howler/howler_hero_s4.png';
-import howler_hero_s5 from '/img/instruments/videomancer/howler/howler_hero_s5.png';
-import howler_hero_s6 from '/img/instruments/videomancer/howler/howler_hero_s6.png';
-import howler_ex1_s1 from '/img/instruments/videomancer/howler/howler_ex1_s1.png';
-import howler_ex1_s2 from '/img/instruments/videomancer/howler/howler_ex1_s2.png';
-import howler_ex1_s3 from '/img/instruments/videomancer/howler/howler_ex1_s3.png';
-import howler_ex1_s4 from '/img/instruments/videomancer/howler/howler_ex1_s4.png';
-import howler_ex1_s5 from '/img/instruments/videomancer/howler/howler_ex1_s5.png';
-import howler_ex1_s6 from '/img/instruments/videomancer/howler/howler_ex1_s6.png';
-import howler_ex2_s1 from '/img/instruments/videomancer/howler/howler_ex2_s1.png';
-import howler_ex2_s2 from '/img/instruments/videomancer/howler/howler_ex2_s2.png';
-import howler_ex2_s3 from '/img/instruments/videomancer/howler/howler_ex2_s3.png';
-import howler_ex2_s4 from '/img/instruments/videomancer/howler/howler_ex2_s4.png';
-import howler_ex2_s5 from '/img/instruments/videomancer/howler/howler_ex2_s5.png';
-import howler_ex2_s6 from '/img/instruments/videomancer/howler/howler_ex2_s6.png';
-import howler_ex3_s1 from '/img/instruments/videomancer/howler/howler_ex3_s1.png';
-import howler_ex3_s2 from '/img/instruments/videomancer/howler/howler_ex3_s2.png';
-import howler_ex3_s3 from '/img/instruments/videomancer/howler/howler_ex3_s3.png';
-import howler_ex3_s4 from '/img/instruments/videomancer/howler/howler_ex3_s4.png';
-import howler_ex3_s5 from '/img/instruments/videomancer/howler/howler_ex3_s5.png';
-import howler_ex3_s6 from '/img/instruments/videomancer/howler/howler_ex3_s6.png';
-
-# Howler
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: howler_source1_skull, after: howler_hero_s1 },
-    { label: "Fruit", before: howler_source2_fruit, after: howler_hero_s2 },
-    { label: "Clouds", before: howler_source3_clouds, after: howler_hero_s3 },
-    { label: "Pattern", before: howler_source4_pattern, after: howler_hero_s4 },
-    { label: "Man", before: howler_source5_man, after: howler_hero_s5 },
-    { label: "Knit", before: howler_source6_knit, after: howler_hero_s6 },
-  ]}
-/>
-*Howler generating recursive tunnel patterns by feeding zoomed, decayed, and hue-rotated video back through its scanline buffer.*
+![Howler hero image](/img/instruments/videomancer/howler/howler_hero_s1.png)
+*Howler generating recursive tunnel patterns through scanline-level video feedback with zoom, decay, and hue rotation.*
 
 ---
 
 ## Overview
 
-Howler implements a video feedback loop entirely within the FPGA — no external routing required. Each scanline is read back from a persistent BRAM buffer at a zoomed address, blended with the incoming video, hue-rotated in the UV color plane, and written back. Over successive frames, this creates self-similar recursive structures that bloom outward or tunnel inward, shift in hue, and evolve organically. The program chains six processing stages in a single-clock pipeline: input capture, BRAM read at a zoomed address, decay multiplication, signal accumulation, Givens-approximation hue rotation, and brightness scaling with soft clipping.
+**Howler** is a video feedback loop simulator inspired by the BBC Radiophonic Workshop's ***howl-round*** technique — the method used to create the original *Doctor Who* title sequence in 1963. A camera was pointed at its own monitor, and the resulting feedback loop produced endlessly evolving, self-similar tunnel patterns. Howler recreates this process entirely in digital hardware using block RAM as a persistent canvas.
 
-The name references the **howl-round** — a technique pioneered by the BBC Radiophonic Workshop in which a television camera was pointed at its own monitor, creating recursive visual feedback. The original *Doctor Who* title sequence (1963) was produced this way: a camera filmed its own output, zoomed slightly, with the resulting fractal tunnel emerging from pure optical feedback. Howler digitizes this process. Instead of a camera and a monitor, three BRAMs serve as the persistent canvas, and the zoom knob replaces the camera's physical distance from the screen.
+Each scanline is read back from a feedback buffer at a transformed address, blended with new incoming video, hue-rotated, and written back. Over successive frames, this ***IIR (Infinite Impulse Response)*** feedback loop builds recursive, blooming structures that tunnel inward or outward depending on the zoom setting. The result is organic, evolving imagery that responds to your input video like a living mirror.
 
-At conservative settings — low zoom offset, moderate decay, gentle hue drift — Howler adds a soft trailing echo to the input. At extreme settings — high zoom, near-unity decay, strong color drift — it overwhelms the source entirely, producing churning psychedelic tunnels, kaleidoscopic color fields, and self-exciting patterns that emerge from nothing but LFSR noise.
+Howler's six knobs control the spatial and tonal character of the feedback loop. **Zoom** sets the spatial scale of recursion. **Decay** controls how quickly old frames fade. **Inject** determines how much new video enters the loop. **Color Drift** rotates the hue on each feedback pass. **H Shift** slides the feedback sideways each frame. **Brightness** sets the output gain. Five toggle switches add polarity control, self-excitation noise, channel separation, and a freeze function.
+
+:::tip
+Howler is at its most dramatic when you find the sweet spot between **Decay** and **Inject** where the feedback loop is just barely self-sustaining. Small changes to either knob can push the image from gentle trails into full recursive bloom.
+:::
+
+### What's In a Name?
+
+The name ***Howler*** refers to the howl-round, a technique where audio or video feedback creates a self-reinforcing loop. In audio, pointing a microphone at a speaker creates a piercing howl. In video, pointing a camera at its own monitor creates an infinite tunnel. BBC graphic designer Bernard Lodge famously exploited this visual howl-round to create the original *Doctor Who* title sequence in 1963. Howler channels that same spirit of controlled feedback — harnessing a process that wants to run wild and shaping it into something beautiful.
 
 ---
 
 ## Quick Start
 
-1. **Decay is the master control**: Decay determines whether Howler adds a subtle trail or becomes a full recursive feedback engine. Start with Decay and adjust everything else relative to it.
-2. **Brightness is display-only**: Because brightness is applied after the BRAM write-back, it does not affect feedback behavior. You can push brightness to maximum for vivid output without changing the feedback loop dynamics.
-3. **Freeze is not bypass**: Toggle 11 stops BRAM writes but the read path and entire processing pipeline remain active. The frozen pattern continues to decay and hue-shift. There is no bypass mux in Howler.
+1. Feed a live camera or any input signal. Set **Zoom** (Knob 1) to center and **Decay** (Knob 2) to about 75%. You should see a ghostly echo of the input trailing behind motion.
+2. Turn **Inject** (Knob 3) up to about 50%. The input image now blends visibly into the feedback buffer, and recursive copies begin to appear, stacking inward like a tunnel.
+3. Slowly increase **Color Drift** (Knob 4). Watch as each recursive layer shifts in hue, creating a rainbow spiral effect that evolves continuously.
+4. Toggle **Zoom Polar** (Switch 7) to **Contract**. The tunnel reverses direction — instead of blooming outward, the recursion collapses inward toward the center.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Howler loaded](/img/instruments/videomancer/howler/howler_control_panel.png)
+*Videomancer's front panel with Howler active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Zoom
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 12.6% |
+
+**Zoom** controls the spatial scale of the feedback read-back. The BRAM buffer is read at a transformed address that maps each pixel through a zoom factor centered on the middle of the screen. At 0%, the zoom factor is at its minimum, producing extreme spatial compression where the entire buffer is squeezed into a narrow band. At 50%, the zoom factor is 1.0 — a one-to-one mapping that produces a simple echo with no spatial transformation. At 100%, the maximum zoom stretches the buffer contents outward. The direction of stretching depends on **Zoom Polar** (Switch 7).
+
+:::note
+The zoom factor operates as a read stride. Expansion means each feedback pass samples a wider region of the buffer, magnifying the center. Contraction means each pass samples a narrower region, creating the classic inward-tunneling effect.
+:::
+
+---
+
+### Knob 2 — Decay
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 75.1% |
+
+**Decay** controls the persistence of the feedback loop. Each pixel read from the buffer is multiplied by this value before being combined with the new input. At 0%, the buffer contents are multiplied by zero — no feedback survives, and the output is purely the injected input. At 100%, the full buffer value persists, and the feedback loop becomes maximally self-sustaining. High decay values produce long, luminous trails. Low values produce short, fading echoes.
+
+---
+
+### Knob 3 — Inject
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Inject** controls how much of the input video is added into the feedback buffer on each pass. At 0%, no new video enters the loop, and the buffer contents evolve purely through feedback. At 100%, the full input signal is added. The balance between Inject and **Decay** determines whether the feedback loop grows, sustains, or fades. When both are high, the buffer saturates quickly into bright white. When both are moderate, the loop finds a dynamic equilibrium.
+
+:::warning
+With **Inject** at zero and **Self-Excite** (Switch 9) off, the feedback loop receives no new energy. The image will fade to black over several frames as **Decay** attenuates the buffer contents.
+:::
+
+---
+
+### Knob 4 — Color Drift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 12.5% |
+
+**Color Drift** applies a ***hue rotation*** to the U and V chrominance channels on each feedback pass. At 0%, no rotation occurs and colors are preserved through the feedback loop. As the value increases, each recursive layer shifts further in hue, producing rainbow spirals and continuously evolving color patterns. The rotation uses a ***Givens approximation*** — a small-angle rotation where U and V are cross-multiplied by a drift coefficient. The direction of rotation is set by **Drift Dir** (Switch 8).
+
+---
+
+### Knob 5 — H Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**H Shift** applies a horizontal spatial drift to the feedback read address. An accumulator advances by this amount each frame, so the feedback content slides sideways over time. At 0%, the feedback buffer is read at its original horizontal position. As the value increases, the sideways drift accelerates. In SD video modes, the horizontal shift wraps seamlessly around the active picture width, so content that slides off one edge reappears on the other.
+
+---
+
+### Knob 6 — Brightness
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Brightness** applies an output gain to the luminance channel after all feedback processing. At 0%, the output is black. At 50% (center), the luminance passes at unity gain. At 100%, the luminance is amplified to double brightness, with saturating clamp at maximum white. Brightness affects only the final output — the feedback buffer stores the pre-brightness signal, so gain changes don't compound through the loop.
+
+:::tip
+Because brightness is applied *after* the feedback write-back, you can dim the output for a subtle effect while the internal feedback loop continues at full strength. This is useful for blending Howler's output with other programs in a signal chain.
+:::
+
+---
+
+### Switch 7 — Zoom Polar
+
+| Property | Value |
+|----------|-------|
+| Off | Expand |
+| On | Contract |
+| Default | Expand |
+
+**Zoom Polar** selects whether the zoom factor expands or contracts the feedback read address. Set to **Expand**, the read stride magnifies the buffer outward from center — the tunnel blooms. Set to **Contract**, the stride compresses inward — the tunnel collapses toward the center. This is the difference between the camera zooming in on its monitor versus zooming out.
+
+---
+
+### Switch 8 — Drift Dir
+
+| Property | Value |
+|----------|-------|
+| Off | CW |
+| On | CCW |
+| Default | CW |
+
+**Drift Dir** selects the direction of the **Color Drift** hue rotation. Set to **CW**, the hue rotates clockwise through the color wheel on each feedback pass. Set to **CCW**, it rotates counterclockwise. The visual difference is whether the rainbow spiral cycles through red-yellow-green-blue or blue-green-yellow-red.
+
+---
+
+### Switch 9 — Self-Excite
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Self-Excite** replaces the video input with pseudorandom noise from two ***LFSR (Linear Feedback Shift Register)*** generators. When enabled, no external video enters the feedback loop. Instead, the LFSRs seed the buffer with noise, and the feedback process — zoom, decay, color drift — sculpts that noise into evolving abstract patterns. This transforms Howler from a processing effect into a self-contained synthesis engine.
+
+:::note
+With Self-Excite enabled, the output is entirely generated by the feedback loop. The **Inject** knob still controls how much noise energy enters the loop on each pass, so it remains an important control even without an external video source.
+:::
+
+---
+
+### Switch 10 — Channel Lock
+
+| Property | Value |
+|----------|-------|
+| Off | Indep |
+| On | Locked |
+| Default | Locked |
+
+**Channel Lock** determines whether the U and V chrominance channels rotate together or independently during color drift. Set to **Locked**, both channels undergo the same Givens rotation, preserving the hue relationship. Set to **Indep**, the V channel rotation is inverted relative to U, causing the two color axes to diverge. Independent mode produces more chaotic, saturated color evolution and can create complementary color splits.
+
+---
+
+### Switch 11 — Freeze
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Freeze** halts all writes to the feedback buffer. The current buffer contents are preserved indefinitely, and the output continues to display the frozen frame. New input video is still processed through the pipeline but is not written back. Disabling Freeze resumes normal feedback operation. Use Freeze to capture a moment of the evolving feedback pattern.
+
+:::tip
+Freeze is different from bypass — the feedback buffer holds its state, but you still see the processed output. Toggle Freeze on and off rapidly to create stuttering, frame-hold effects.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the dry (unprocessed) input signal and the wet (feedback-processed) output. At 0%, the output is entirely the original input with no feedback visible. At 100%, the output is entirely the feedback engine result. Intermediate values blend the two, which is useful for layering the feedback pattern over the original video with partial transparency.
 
 ---
 
 ## Background
 
-### The Howl-Round Technique
+### The howl-round
 
-In the 1960s, BBC engineers discovered that pointing a studio camera at its own monitor produced complex, self-organizing visual patterns. The image fed back through the system with a one-frame delay, and any zoom, rotation, or brightness change in the camera path would compound across iterations. The effect was called a **howl-round** — by analogy with audio feedback (the howl of a microphone pointed at its speaker). Delia Derbyshire and the Radiophonic Workshop used howl-round to create the original *Doctor Who* opening titles: a camera zooming into its own monitor output produced the iconic spiraling tunnel. Howler recreates this process digitally, using BRAM storage in place of the camera-monitor loop and register-controlled parameters in place of physical camera adjustments.
+The ***howl-round*** is one of the oldest electronic imaging techniques. In 1963, BBC graphic designer Bernard Lodge created the first *Doctor Who* title sequence by pointing a television camera at a monitor displaying its own output. The resulting feedback loop produced swirling, tunneling patterns that seemed impossibly complex for the technology of the era. The technique requires no computer, no software — just a camera, a monitor, and the emergent mathematics of recursive self-reference.
 
-### IIR Feedback and Decay
+Howler implements this concept as a scanline-level ***IIR (Infinite Impulse Response)*** digital filter. Where the original BBC setup used optical feedback through physical space, Howler uses block RAM to store the previous frame and reads it back through a spatial transformation. The zoom, decay, and color drift controls correspond to the physical adjustments an engineer would make: moving the camera closer or further from the monitor (zoom), adjusting the monitor brightness (decay), and introducing color filters (drift).
 
-Howler's feedback loop is an **Infinite Impulse Response (IIR)** system. Each output pixel is a weighted sum of the current input and the previous output read from memory. The Decay control sets the feedback coefficient: how much of the old signal is retained. When decay is low, the image fades quickly — only a few frames of history are visible. When decay is near maximum (near 1.0×), the image persists almost indefinitely, and new input barely overwrites the accumulated pattern. This is the digital equivalent of adjusting the monitor persistence or phosphor decay in the original howl-round setup. The system is inherently nonlinear because of the clipping applied at each iteration — accumulated values are clamped to the 10-bit range, preventing overflow but creating soft saturation boundaries.
+### Feedback dynamics
 
-### Zoom as Spatial Feedback Transform
+The core equation of Howler's feedback loop is deceptively simple: on each pixel, the output equals the decayed feedback plus the injected input, run through hue rotation. This is a first-order ***IIR filter*** — the output depends on its own past values. The zoom transformation makes it spatially recursive: each pixel reads from a different location in the buffer, creating the magnification or compression that produces tunnel effects.
 
-In the original howl-round, the zoom effect came from the camera's physical proximity to the monitor — moving closer magnified the feedback, creating an expanding tunnel. Howler replaces this with an address transform on the BRAM read. Instead of reading pixel N from position N, it reads from a position offset from the horizontal center and scaled by a zoom factor. The zoom factor is a 1.10 fixed-point number ranging from 0.5× to 1.5×, computed from the Zoom knob and polarity toggle. Zoom factors less than 1.0× compress the feedback toward the center (inward tunnel), while factors greater than 1.0× expand it outward (blooming). This address transform is applied on every read, so the spatial distortion compounds across frames.
+The interplay of **Decay** and **Inject** governs the energy balance of the system. When the combined gain exceeds unity, the loop is ***supercritical*** — energy accumulates and the image saturates toward white. Below unity, the loop is ***subcritical*** and the image fades. At exactly unity, the system finds equilibrium, sustaining patterns indefinitely. The art of Howler is finding and riding that boundary.
 
-### Givens Rotation for Hue Drift
+### Givens rotation
 
-Howler shifts the hue of the feedback signal using a **Givens rotation** — a small-angle approximation of a 2D rotation matrix applied to the U and V chrominance components. The rotation formula is: U' = U − V × k/512, V' = V + U × k/512, where k is derived from the Color Drift knob. This approximation is valid for small angles and avoids the need for sine/cosine lookup tables. Over many feedback iterations, the small rotation compounds into large hue shifts, causing the color of the feedback pattern to cycle continuously through the color wheel. The Drift Direction toggle reverses the sign of k, switching between clockwise and counterclockwise rotation. The Channel Lock toggle controls whether U and V rotate together (locked) or with opposite signs on V (independent), producing different color evolution patterns.
+Howler's color drift uses a ***Givens rotation*** — a standard technique for rotating a two-dimensional vector by a small angle. The U and V chrominance channels form a 2D color vector, and the rotation matrix is approximated as:
 
-### LFSR Self-Excitation
+```
+U' = U - V × k / 512
+V' = V + U × k / 512
+```
 
-When the Self-Excite toggle is enabled, the input injection source switches from the incoming video to pseudo-random noise generated by two 16-bit **Linear Feedback Shift Registers (LFSRs)**, seeded with 0xCAFE and 0xFADE. This creates feedback patterns that emerge from noise alone — no external signal required. The LFSR outputs provide three noise channels (Y from LFSR-A bits 9:0, U from LFSR-B bits 9:0, V from LFSR-A bits 15:6) that evolve at clock rate. Combined with the zoom and hue rotation, self-excitation produces continuously evolving abstract patterns reminiscent of cellular automata or reaction-diffusion systems.
+where *k* is the drift coefficient derived from the **Color Drift** knob. This small-angle approximation avoids the need for sine and cosine lookup tables, making it efficient in FPGA logic. Over many feedback iterations, the cumulative rotation sweeps through the full color wheel, producing the characteristic rainbow spiral.
 
-
----
-
-## Signal Flow
-
-Input Selection → BRAM Feedback Loop → Interpolator Mix → Sync / Data Delay → Output Assignment
+### Signal Flow
 
 ```
 Input Video (YUV 4:4:4)
 │
-├── Input Selection ────────────────────────────────────────────
-│   ├─ Self-Excite Off → use input Y/U/V
-│   └─ Self-Excite On  → use LFSR noise (seeds 0xCAFE, 0xFADE)
+├── Address Pipeline (A0-A7, 8 stages) ─────────────────────
+│   ├─ A0: Register zoom/center/position/h_shift
+│   ├─ A1: Compute offset from center
+│   ├─ A2: Multiply offset × zoom_factor
+│   ├─ A3: Extract product + add center
+│   ├─ A4: Add h_shift → raw address
+│   └─ A5-A7: Modular wrap (3 stages) → read address
 │
-├── BRAM Feedback Loop (3× 10-bit × 1024, Y/U/V) ─────────────
-│   │
-│   ├─ 1. Input capture + parameter latch
-│   ├─ 2. BRAM read at zoomed address:
-│   │      addr = (h_count − 512) × zoom_factor / 1024 + 512 + h_shift
-│   │      zoom_factor = 0.5× to 1.5× (1.10 fixed-point)
-│   ├─ 3. Decay multiply: feedback × decay_factor >> 10
-│   ├─ 4. Accumulate: saturating add (decayed feedback + scaled input)
-│   ├─ 5. Color drift: Givens rotation on U/V
-│   │      U' = U − V×k/512,  V' = V + U×k/512
-│   │      Channel Lock → both same direction
-│   │      Independent → V gets inverse rotation
-│   ├─ 6. Brightness: (Y × brightness_reg) >> 9, soft clip
-│   │      Write-back to BRAM uses pre-brightness accumulated data
-│   └─ 7. BRAM write (disabled when Freeze is On)
+├── BRAM Read (B0, 1 stage) ─────────────────────────────────
+│   └─ Read Y/U/V from feedback buffer at read address
 │
-├── Interpolator Mix ───────────────────────────────────────────
-│   └─ 3× interpolator_u: crossfade between delayed input and pipeline output
+├── Processing Pipeline (P0-P6, 7 stages) ───────────────────
+│   ├─ P0: Input source select (video or LFSR noise)
+│   ├─ P1: Decay × feedback + Inject × input (6 multiplies)
+│   ├─ P2: Saturating accumulate (feedback + input)
+│   ├─ P3: Color drift prep (center U/V, compute drift_k)
+│   ├─ P4: Givens rotation on U/V channels
+│   ├─ P5: Re-center + clamp + brightness multiply
+│   └─ P6: Brightness clip + write-back to BRAM
 │
-├── Sync / Data Delay (7 clocks) ───────────────────────────────
-│   └─ Shift registers for hsync, vsync, field, Y, U, V
+├── Mix (4 stages) ──────────────────────────────────────────
+│   └─ Interpolator: dry/wet crossfade (3× interpolator_u)
 │
-└── Output Assignment ──────────────────────────────────────────
-    └─ Always outputs mix result (no bypass mux)
+├── Sync Delay (20 clocks) ──────────────────────────────────
+│   └─ Pass-through (hsync, vsync, field, avid)
+│
+└── Output (YUV 4:4:4)
 ```
 
-The critical detail is what gets written back to BRAM. The write-back data is the post-drift, pre-brightness accumulated signal — not the final output. This means the feedback loop operates on the raw accumulation with hue rotation, and brightness is purely a display scaling applied after the loop. This prevents the brightness control from compounding across iterations. The zoom address computation centers on pixel 512 (horizontal midpoint), so expansion and contraction radiate from the center of the scanline. The H Shift accumulator adds a per-frame horizontal drift that wraps the read address, creating a scrolling effect in the feedback pattern. Notably, there is no bypass mux — the output always passes through the interpolator. Toggle 11 (Freeze) disables BRAM writes, holding the current buffer contents static, but the output continues to be processed.
+### Signal Flow Notes
 
----
+The feedback loop is the core interaction: the BRAM buffer holds the previous frame's processed output, and the address pipeline determines *where* in that buffer each pixel reads from. The zoom factor transforms the read address relative to the horizontal center, so pixels near the center read from nearby addresses (low distortion) while pixels near the edges read from distant addresses (high distortion). This center-outward magnification is what produces the tunnel geometry.
 
-## Parameter Reference
+The write-back in stage P6 stores the *pre-brightness* accumulated signal, not the brightness-adjusted output. This means the brightness control affects only the display output, not the feedback loop itself. The loop's energy balance is governed entirely by Decay and Inject, making Brightness a safe output-stage adjustment.
 
-<img src={howler_control_panel} alt="Videomancer front panel with Howler loaded"/>
-*Videomancer's front panel with Howler active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Zoom
-| Property | Value |
-|----------|-------|
-| Range | -100.0% – 100.0% |
-| Default | 12.6% |
-| Suffix | % |
-
-Controls the spatial scaling of the feedback read address. The register value maps to a 1.10 fixed-point zoom factor ranging from 0.5× (register 0) to 1.5× (register 1023), centered on horizontal pixel 512. At 0.5× the feedback is compressed toward the center, creating an inward-tunneling effect. At 1.5× the feedback expands outward from the center in a blooming pattern. The Zoom Polarity toggle (Toggle 7) inverts the mapping, swapping expand and contract behavior. The default register value of 576 places the zoom slightly above unity, producing a gentle outward expansion.
-
----
-
-#### Knob 2 — Decay
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 75.1% |
-| Suffix | % |
-
-Controls the persistence of the feedback loop — how much of the previous frame's buffer content is retained. The decay register scales the BRAM readback by `feedback × decay / 1024`. At 0%, feedback is completely suppressed and the output follows the input with no trailing. At 100%, decay is near-unity and the feedback persists almost indefinitely. High decay values are essential for building up the recursive structures that define Howler's visual character. The interaction with Inject (Knob 3) determines the balance between old and new — high decay with low inject creates slow-evolving, deeply layered patterns.
-
----
-
-#### Knob 3 — Inject
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls how strongly the input signal (or LFSR noise in Self-Excite mode) is injected into the feedback accumulator. The input is scaled by `input × inject / 1024` before being added to the decayed feedback. At 0%, no new signal enters the loop and the feedback decays to black (or freezes if Decay is high). At 100%, the input dominates and feedback patterns are quickly overwritten. The sweet spot for visible feedback effects is typically 30–60%, where the input is strong enough to seed patterns but the feedback accumulation remains visible.
-
----
-
-#### Knob 4 — Color Drift
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 12.5% |
-| Suffix | % |
-
-Controls the rate of hue rotation applied to the feedback signal at each iteration. The Color Drift register is centered at 512 (no rotation) and produces a signed rotation coefficient `k = register − 512` applied as a Givens approximation in the UV plane. Small values near center produce gentle, slow-cycling color shifts over many frames. Values near the extremes (0 or 1023) produce rapid hue cycling where colors change noticeably on every frame. The Drift Direction toggle (Toggle 8) reverses the sign of k, switching between clockwise and counterclockwise rotation through the color wheel.
-
----
-
-#### Knob 5 — H Shift
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Controls a per-frame horizontal drift in the feedback read address. The H Shift register is accumulated into a 16-bit counter on each vsync, and the upper 10 bits of the accumulator are added to the read address. At 0% the feedback reads back from the same horizontal position each frame. As the value increases, the feedback pattern scrolls horizontally — new feedback is read from a shifted position, creating a lateral motion in the tunnel or bloom structure. High values produce rapid horizontal scrolling that can tear the feedback pattern apart into flowing streams.
-
----
-
-#### Knob 6 — Brightness
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Controls the output gain applied to the luminance channel after the feedback loop. The brightness register scales the accumulated Y value by `Y × brightness / 512`. At register 512 (default, ~50%), the gain is unity. Below 512 the output is dimmed; above 512 it is brightened with soft clipping at 1023. Crucially, brightness is applied *after* the BRAM write-back — the feedback loop operates on the raw accumulated signal, not the brightness-scaled output. This prevents gain from compounding across iterations.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Zoom Polar** | Expand | Contract |
-| **8 — Drift Dir** | CW | CCW |
-| **9 — Self-Excite** | Off | On |
-| **10 — Channel Lock** | Indep | Locked |
-| **11 — Freeze** | Off | On |
-
-The five toggles control independent binary options with no combined mode selection. Zoom Polarity (Toggle 7) and Drift Direction (Toggle 8) are directional modifiers for their respective knobs. Self-Excite (Toggle 9) fundamentally changes the input source. Channel Lock (Toggle 10) alters the hue rotation behavior. Freeze (Toggle 11) is *not* a bypass — it holds the BRAM contents static but continues to output the processed signal.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the delayed input signal and the feedback pipeline output via three `interpolator_u` instances (one per Y/U/V channel). At 0% the output matches the delayed input and no feedback is visible. At 100% the output is fully the feedback pipeline signal. Note that there is no bypass mux in Howler — even when Mix is at 0%, the feedback loop continues running internally; only the output blend changes.
-
-
-
+:::tip
+**H Shift** accumulates per frame, not per pixel. The entire feedback buffer slides sideways by the same amount on each frame, creating a smooth scrolling effect. In SD modes, the wrap is seamless because the address is computed modulo the active picture width.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from gentle trailing effects to full self-exciting feedback tunnels, building understanding of how zoom, decay, injection, and hue drift interact to create recursive visual structures.
+These exercises progress from simple feedback trails to full self-exciting synthesis. Each builds on the previous, gradually engaging more of Howler's feedback controls.
+### Exercise 1: Basic Feedback Tunnel
 
-### Exercise 1: Basic Feedback Echo
+![Basic Feedback Tunnel result](/img/instruments/videomancer/howler/howler_ex1_s1.png)
+*Basic Feedback Tunnel — simulated result across source images.*
+**Key Concepts**: - Feedback is a recursive read-modify-write loop through BRAM
+- Zoom sets the spatial scale of each recursive step
+- Decay controls how quickly previous iterations fade
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: howler_source1_skull, after: howler_ex1_s1 },
-    { label: "Fruit", before: howler_source2_fruit, after: howler_ex1_s2 },
-    { label: "Clouds", before: howler_source3_clouds, after: howler_ex1_s3 },
-    { label: "Pattern", before: howler_source4_pattern, after: howler_ex1_s4 },
-    { label: "Man", before: howler_source5_man, after: howler_ex1_s5 },
-    { label: "Knit", before: howler_source6_knit, after: howler_ex1_s6 },
-  ]}
-/>
-*Basic Feedback Echo — simulated result across source images.*
-**Source**: A live camera feed or recorded footage with slow, deliberate motion — a hand moving across frame, or a slowly rotating object.
+**What You'll Create**: Discover how zoom and decay interact to create the classic recursive tunnel effect.
 
-**What You'll Create**: Understand the basic feedback loop: how decay and inject control the persistence and intensity of the trailing echo.
+**Source**: A live camera feed or footage with recognizable shapes and strong contrast.
 
-1. **Visible trail**: With default settings, observe the subtle trailing behind moving objects. The feedback creates a fading echo of the input.
-2. **Increase decay**: Slowly turn Decay from 75% toward 100%. The trailing becomes longer and more persistent — old frames linger visibly behind the current input.
-3. **Reduce inject**: Lower Inject to ~30%. The current input becomes weaker relative to the accumulated feedback. Old patterns persist longer.
-4. **Balance point**: Find the point where Decay and Inject create a stable, visible trail without overwhelming the input. This is Howler's basic echo mode.
-5. **Decay at zero**: Turn Decay to 0%. The feedback vanishes entirely and the output follows the input clean. This confirms that the feedback loop is driven purely by the decay multiplier.
+1. **Echo trail**: Set **Decay** (Knob 2) to about 75% and **Inject** (Knob 3) to about 50%. Move your hand or an object in front of the camera. You should see ghostly echoes trailing behind the motion.
+2. **Tunnel in**: Set **Zoom** (Knob 1) slightly below center, around 40%. The echoes shrink inward on each pass, creating a tunnel that recedes into the center of the screen.
+3. **Tunnel out**: Toggle **Zoom Polar** (Switch 7) to **Contract**. The tunnel reverses — echoes now bloom outward from the center.
+4. **Balance the loop**: Slowly increase **Decay** until the tunnel pattern sustains itself without fading. You're looking for the threshold where the loop is just barely self-sustaining.
+5. **Mix blend**: Pull the **Mix** fader (Fader 12) to about 70% to see the original input layered beneath the tunnel pattern.
 
-**Key concepts**: IIR feedback loop, decay as persistence control, inject as input strength, feedback-to-input ratio determines visual character
+**Settings**:
 
----
-
-### Exercise 2: Tunnel and Bloom
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: howler_source1_skull, after: howler_ex2_s1 },
-    { label: "Fruit", before: howler_source2_fruit, after: howler_ex2_s2 },
-    { label: "Clouds", before: howler_source3_clouds, after: howler_ex2_s3 },
-    { label: "Pattern", before: howler_source4_pattern, after: howler_ex2_s4 },
-    { label: "Man", before: howler_source5_man, after: howler_ex2_s5 },
-    { label: "Knit", before: howler_source6_knit, after: howler_ex2_s6 },
-  ]}
-/>
-*Tunnel and Bloom — simulated result across source images.*
-**Source**: High-contrast footage — bright shapes on a dark background, or a graphic pattern from another Videomancer program (e.g., Honeycomb or Checkers).
-
-**What You'll Create**: Explore how zoom polarity creates tunneling and blooming effects, and how hue drift adds color evolution to the recursive structure.
-
-1. **Tunnel inward**: Set Zoom Polarity to Contract and Zoom to ~40%. With high Decay (~90%), the feedback pulls inward from the edges, creating a tunneling spiral that converges at the center of the screen.
-2. **Bloom outward**: Switch Zoom Polarity to Expand. The same settings now push the feedback outward — the image blooms from the center toward the edges.
-3. **Add hue drift**: Increase Color Drift to ~30%. Watch the colors shift with each feedback iteration — the tunnel or bloom develops a rainbow spiral as hue rotates through the color wheel.
-4. **Drift direction**: Toggle Drift Direction between CW and CCW. The color rotation reverses — warm colors become cool and vice versa.
-5. **Channel Lock**: Switch Channel Lock to Independent (Indep). The UV rotation changes character — instead of a smooth hue wheel, complementary color pairs emerge in the feedback pattern.
-
-**Key concepts**: Zoom-centered address transform, expand vs. contract polarity, Givens hue rotation, compound hue shift across iterations, channel lock vs. independent UV rotation
+| Control | Value |
+|---------|-------|
+| Zoom | ~40% |
+| Decay | ~75% |
+| Inject | ~50% |
+| Color Drift | 0% |
+| H Shift | 0% |
+| Brightness | 50% |
+| Zoom Polar | Expand |
+| Drift Dir | CW |
+| Self-Excite | Off |
+| Channel Lock | Locked |
+| Freeze | Off |
+| Mix | ~70% |
 
 ---
 
-### Exercise 3: Self-Exciting Psychedelia
+### Exercise 2: Rainbow Spiral
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Skull", before: howler_source1_skull, after: howler_ex3_s1 },
-    { label: "Fruit", before: howler_source2_fruit, after: howler_ex3_s2 },
-    { label: "Clouds", before: howler_source3_clouds, after: howler_ex3_s3 },
-    { label: "Pattern", before: howler_source4_pattern, after: howler_ex3_s4 },
-    { label: "Man", before: howler_source5_man, after: howler_ex3_s5 },
-    { label: "Knit", before: howler_source6_knit, after: howler_ex3_s6 },
-  ]}
-/>
-*Self-Exciting Psychedelia — simulated result across source images.*
-**Source**: No external source needed — Self-Excite provides the input.
+![Rainbow Spiral result](/img/instruments/videomancer/howler/howler_ex2_s1.png)
+*Rainbow Spiral — simulated result across source images.*
+**Key Concepts**: - Givens rotation shifts hue on each feedback pass
+- H Shift adds horizontal motion to the feedback loop
+- Channel Lock changes the character of color evolution
 
-**What You'll Create**: Generate fully autonomous feedback patterns using LFSR noise as the injection source, combining all parameters for maximum visual complexity.
+**What You'll Create**: Add color drift and horizontal shift to create evolving, colorful feedback patterns.
 
-1. **Enable Self-Excite**: Toggle Self-Excite On. The input switches from video to LFSR noise. With high Decay and moderate Inject, noise seeds begin accumulating into structured patterns.
-2. **Strong zoom**: Set Zoom to ~70% in Expand mode. The noise structures bloom outward, creating radial patterns that emerge from the center.
-3. **Maximum hue drift**: Set Color Drift to ~80%. Colors cycle rapidly through the feedback, producing a psychedelic rainbow spiral.
-4. **H Shift motion**: Increase H Shift to ~30%. The feedback pattern begins scrolling horizontally, adding lateral motion to the radial zoom structure.
-5. **Freeze capture**: Toggle Freeze On to capture a particularly interesting moment. Observe how the frozen pattern continues to decay and hue-shift (since reads continue) but no new data is written. Toggle Freeze Off to resume.
-6. **Brightness boost**: Increase Brightness above 50% to drive the soft clipper. The increased gain creates saturated, high-contrast feedback structures.
+**Source**: High-contrast footage with distinct shapes — geometric patterns or silhouettes work well.
 
-**Key concepts**: LFSR noise as autonomous seed, self-organizing feedback structures, horizontal drift accumulator, freeze as buffer hold (not bypass), brightness as post-loop gain
+1. **Start from Exercise 1**: Keep your tunnel running at moderate decay.
+2. **Add color**: Slowly increase **Color Drift** (Knob 4) from zero. Each recursive layer acquires a different hue, and the tunnel becomes a rainbow spiral.
+3. **Reverse direction**: Toggle **Drift Dir** (Switch 8) to **CCW**. The color cycle reverses.
+4. **Horizontal motion**: Increase **H Shift** (Knob 5) slightly. The feedback pattern slides sideways, frame by frame, creating a scrolling spiral.
+5. **Unlock channels**: Toggle **Channel Lock** (Switch 10) to **Indep**. The U and V chrominance channels now rotate in opposite directions, producing more saturated, split-complementary color patterns.
+6. **Freeze a moment**: When you see a pattern you like, toggle **Freeze** (Switch 11) to **On**. The buffer holds its state. Toggle it off to resume.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Zoom | ~40% |
+| Decay | ~75% |
+| Inject | ~40% |
+| Color Drift | ~30% |
+| H Shift | ~15% |
+| Brightness | 50% |
+| Zoom Polar | Contract |
+| Drift Dir | CW |
+| Self-Excite | Off |
+| Channel Lock | Indep |
+| Freeze | Off |
+| Mix | 100% |
 
 ---
 
+### Exercise 3: Self-Exciting Synthesis
 
-## Tips
+![Self-Exciting Synthesis result](/img/instruments/videomancer/howler/howler_ex3_s1.png)
+*Self-Exciting Synthesis — simulated result across source images.*
+**Key Concepts**: - Self-Excite seeds the feedback loop with LFSR noise
+- The feedback loop sculpts noise into structured patterns
+- Inject controls the energy entering the system
 
-- **Self-Excite for autonomous patterns**: LFSR noise with high decay creates self-organizing structures without any external input. Pair with strong zoom and hue drift for maximum visual complexity.
-- **H Shift adds lateral motion**: Even modest H Shift values create continuous horizontal scrolling in the feedback. Combined with zoom, this produces spiral or helical motion paths.
-- **Feedback routing**: Connect Howler's output back to its own input externally for a double feedback loop. The internal loop provides spatial zoom; the external loop adds frame-scale recursion.
-- **Channel Lock for color control**: Locked mode produces smooth rainbow cycling. Independent mode produces chromatic contrast with complementary pairs. Try both with the same Color Drift value and compare.
-- **Start from the original**: The BBC howl-round technique gives the clearest results with high-contrast graphic input — color bars, text generators, or other Videomancer programs work better than camera feeds for initial exploration.
+**What You'll Create**: Use Howler as a standalone video synthesizer with no external input.
+
+**Source**: No source video needed — disconnect or ignore the input signal.
+
+1. **Enable noise**: Toggle **Self-Excite** (Switch 9) to **On**. The input is replaced with pseudorandom noise from two LFSR generators.
+2. **Build the loop**: Set **Decay** to ~70%, **Inject** to ~50%, and **Zoom** to ~40%. The noise begins to organize into recursive structures as the feedback loop magnifies and reinforces certain patterns.
+3. **Add drift**: Increase **Color Drift** to ~40%. The evolving noise patterns gain color, cycling through the spectrum as the loop iterates.
+4. **Brightness bloom**: Increase **Brightness** (Knob 6) above 50% to amplify the luminance. The patterns brighten and bloom, creating vivid self-generated imagery.
+5. **Explore**: Slowly sweep **Zoom** and **Decay** to find different self-sustaining regimes. Some settings produce stable geometric patterns; others produce chaotic, constantly evolving textures.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Zoom | ~40% |
+| Decay | ~70% |
+| Inject | ~50% |
+| Color Drift | ~40% |
+| H Shift | ~20% |
+| Brightness | ~70% |
+| Zoom Polar | Expand |
+| Drift Dir | CW |
+| Self-Excite | On |
+| Channel Lock | Locked |
+| Freeze | Off |
+| Mix | 100% |
 
 ---
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the standard color matrix for YUV-to-RGB conversion in standard-definition video. |
-| **Chroma** | The color information in a video signal, encoded as U and V components in YUV color space. |
-| **Decay** | The feedback persistence coefficient. Multiplies the BRAM readback by a factor between 0 (no persistence) and ~1.0 (indefinite persistence). |
-| **Givens rotation** | A 2D rotation applied to two components (here U and V) by a small-angle approximation: U' = U − Vk/512, V' = V + Uk/512. |
-| **Howl-round** | A visual feedback technique where a camera films its own output, first used by the BBC Radiophonic Workshop. |
-| **IIR** | Infinite Impulse Response; a feedback system where each output depends on both current input and previous outputs. |
-| **LFSR** | Linear Feedback Shift Register; a pseudo-random number generator used here to seed the feedback loop in Self-Excite mode. |
-| **Soft clip** | Saturating arithmetic that clamps values to the valid range (0–1023) rather than wrapping on overflow. |
+- **BRAM**: Block RAM; dedicated memory blocks within the FPGA used as the persistent feedback buffer.
+
+- **Decay**: The attenuation factor applied to the feedback buffer on each pass, controlling how quickly previous frames fade.
+
+- **Givens Rotation**: A 2D rotation technique applied to U and V chrominance channels to shift hue without requiring trigonometric lookup tables.
+
+- **Howl-Round**: A feedback loop created by pointing a camera at its own monitor, producing self-similar recursive imagery.
+
+- **IIR Filter**: Infinite Impulse Response filter; a system where the output depends on its own past values, creating persistent memory.
+
+- **Inject**: The amount of new input signal added into the feedback loop on each pass.
+
+- **LFSR**: Linear Feedback Shift Register; a simple pseudorandom number generator used for self-excitation noise.
+
+- **Subcritical**: A feedback loop state where energy dissipates faster than it accumulates, causing the image to fade.
+
+- **Supercritical**: A feedback loop state where energy accumulates faster than it dissipates, causing the image to saturate.
+
 
 ---

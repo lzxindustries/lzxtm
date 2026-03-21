@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 222
 slug: /instruments/videomancer/perlin
@@ -7,371 +7,404 @@ image: /img/instruments/videomancer/perlin/perlin_hero_s1.png
 description: "In 1983, Ken Perlin invented a noise function to add naturalistic texture to computer-generated imagery for the film Tron."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import perlin_control_panel from '/img/instruments/videomancer/perlin/perlin_control_panel.png';
-import perlin_source1_car from '/img/instruments/videomancer/perlin/perlin_source1_car.png';
-import perlin_source2_skull from '/img/instruments/videomancer/perlin/perlin_source2_skull.png';
-import perlin_source3_elephant from '/img/instruments/videomancer/perlin/perlin_source3_elephant.png';
-import perlin_source4_pattern from '/img/instruments/videomancer/perlin/perlin_source4_pattern.png';
-import perlin_source5_girl from '/img/instruments/videomancer/perlin/perlin_source5_girl.png';
-import perlin_source6_paint from '/img/instruments/videomancer/perlin/perlin_source6_paint.png';
-import perlin_hero_s1 from '/img/instruments/videomancer/perlin/perlin_hero_s1.png';
-import perlin_hero_s2 from '/img/instruments/videomancer/perlin/perlin_hero_s2.png';
-import perlin_hero_s3 from '/img/instruments/videomancer/perlin/perlin_hero_s3.png';
-import perlin_hero_s4 from '/img/instruments/videomancer/perlin/perlin_hero_s4.png';
-import perlin_hero_s5 from '/img/instruments/videomancer/perlin/perlin_hero_s5.png';
-import perlin_hero_s6 from '/img/instruments/videomancer/perlin/perlin_hero_s6.png';
-import perlin_ex1_s1 from '/img/instruments/videomancer/perlin/perlin_ex1_s1.png';
-import perlin_ex1_s2 from '/img/instruments/videomancer/perlin/perlin_ex1_s2.png';
-import perlin_ex1_s3 from '/img/instruments/videomancer/perlin/perlin_ex1_s3.png';
-import perlin_ex1_s4 from '/img/instruments/videomancer/perlin/perlin_ex1_s4.png';
-import perlin_ex1_s5 from '/img/instruments/videomancer/perlin/perlin_ex1_s5.png';
-import perlin_ex1_s6 from '/img/instruments/videomancer/perlin/perlin_ex1_s6.png';
-import perlin_ex2_s1 from '/img/instruments/videomancer/perlin/perlin_ex2_s1.png';
-import perlin_ex2_s2 from '/img/instruments/videomancer/perlin/perlin_ex2_s2.png';
-import perlin_ex2_s3 from '/img/instruments/videomancer/perlin/perlin_ex2_s3.png';
-import perlin_ex2_s4 from '/img/instruments/videomancer/perlin/perlin_ex2_s4.png';
-import perlin_ex2_s5 from '/img/instruments/videomancer/perlin/perlin_ex2_s5.png';
-import perlin_ex2_s6 from '/img/instruments/videomancer/perlin/perlin_ex2_s6.png';
-import perlin_ex3_s1 from '/img/instruments/videomancer/perlin/perlin_ex3_s1.png';
-import perlin_ex3_s2 from '/img/instruments/videomancer/perlin/perlin_ex3_s2.png';
-import perlin_ex3_s3 from '/img/instruments/videomancer/perlin/perlin_ex3_s3.png';
-import perlin_ex3_s4 from '/img/instruments/videomancer/perlin/perlin_ex3_s4.png';
-import perlin_ex3_s5 from '/img/instruments/videomancer/perlin/perlin_ex3_s5.png';
-import perlin_ex3_s6 from '/img/instruments/videomancer/perlin/perlin_ex3_s6.png';
-
-# Perlin
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: perlin_source1_car, after: perlin_hero_s1 },
-    { label: "Skull", before: perlin_source2_skull, after: perlin_hero_s2 },
-    { label: "Elephant", before: perlin_source3_elephant, after: perlin_hero_s3 },
-    { label: "Pattern", before: perlin_source4_pattern, after: perlin_hero_s4 },
-    { label: "Girl", before: perlin_source5_girl, after: perlin_hero_s5 },
-    { label: "Paint", before: perlin_source6_paint, after: perlin_hero_s6 },
-  ]}
-/>
-*Perlin generating animated gradient noise fields with fire palette and turbulent absolute-value folding, a fractal texture born from integer arithmetic alone.*
+![Perlin hero image](/img/instruments/videomancer/perlin/perlin_hero_s1.png)
+*Perlin generating animated gradient noise landscapes with BRAM colour palettes, domain-warp feedback, and two-octave fractal blending.*
 
 ---
 
 ## Overview
 
-In 1983, Ken Perlin invented a noise function to add naturalistic texture to computer-generated imagery for the film *Tron*. The key insight was that smooth, continuous randomness — unlike the white-noise static of a detuned television — could simulate clouds, marble, terrain, fire, and water. Perlin noise has since become one of the most widely used algorithms in computer graphics. This program implements a real-time FPGA-native approximation of Perlin's gradient noise, generating animated 2D noise textures at video rate.
+**Perlin** is a real-time gradient noise synthesizer. It generates scrolling, animated fields of organic texture entirely from mathematics — no video input required. At its heart is a hardware implementation of the classic ***Perlin noise*** algorithm, running at full video rate on the FPGA. Turn it on and you get an endlessly shifting terrain of soft colour mapped through one of four artist-designed palettes.
 
-The screen is divided into a grid of cells whose size is selectable from 8 to 128 pixels. At each grid vertex, a pseudo-random gradient direction is selected from 8 compass points using an LFSR-style hash function — no BRAM is needed for the permutation table. For each pixel, four gradient dot products are computed (one per cell corner) and smoothly interpolated using a piecewise-linear approximation of the quintic smoothstep curve. The result is a single octave of smooth gradient noise. The noise value is then mapped through one of four color palettes — Marble (grayscale), Cloud (blue-white), Terrain (green-brown), and Fire (red-yellow-black) — with optional contrast scaling and palette cycling.
+Perlin goes well beyond a simple noise generator. A second noise octave adds fine detail via ***fractional Brownian motion*** (fBm). A ***domain warp*** feedback loop lets each line of noise perturb the coordinates of the next, producing flowing, self-referential organic structures. Four BRAM-backed colour palettes — Marble, Fire, Ocean, and Neon — transform the raw noise field into rich, saturated landscapes. A ridge mode folds the noise through an absolute value, carving sharp mountain-ridge contours out of the smooth gradient field.
 
-A DDS (direct digital synthesis) scroll engine animates the noise field by adding per-frame offsets to the pixel coordinates, with direction selectable in four quadrants. Video modulation mode multiplies the noise luma with the input video luminance, creating content-dependent textures. Absolute-value mode folds the signed noise into ridge-like patterns, and domain warping feeds the previous frame's noise back into the coordinate lookup for turbulent distortion.
+:::tip
+Perlin is a ***synthesis*** program — it creates imagery from scratch. You don't need to connect a video source to use it. However, the **Video** toggle can multiply the noise with an incoming signal for texture-overlay compositing.
+:::
+
+### What's In a Name?
+
+***Perlin noise*** is named after Ken Perlin, a computer graphics researcher who developed the algorithm in 1982 after working on the original *Tron* film. He needed a way to add realistic-looking texture to computer-generated surfaces without storing enormous bitmap images. His solution was a mathematical function that produces smooth, natural-looking randomness — controlled chaos. The technique earned him an Academy Award for Technical Achievement in 1997 and remains a cornerstone of procedural content generation in film, games, and art.
 
 ---
 
 ## Quick Start
 
-1. **Scale is the most important control**: Cell size sets the fundamental character of the noise — 8px cells look like static grain, 128px cells look like clouds or lava. Start here when designing a texture.
-2. **Absolute mode for organic textures**: Folding the noise at zero creates ridge patterns that resemble marble veins, lightning, or cracked earth. Combine with the Terrain palette for topographic effects.
-3. **Fire palette needs upward scroll**: The Fire palette looks most flame-like when scrolling upward (Direction ~90%) at moderate speed. Add domain warp for turbulent flickering.
+1. Turn **Scale** (Knob 2) to a mid-range step. You'll see a soft, slowly undulating grayscale terrain filling the screen — this is the raw Perlin noise field mapped through the default Marble palette.
+2. Sweep **Scroll X** (Knob 1) away from centre. The noise landscape begins drifting horizontally. Try **Scroll Y** (Knob 3) for vertical motion. Setting both creates diagonal flow.
+3. Flip the **Palette** (Switch 8) and **Color** (Switch 9) toggles to cycle through the four colour palettes: Marble, Fire, Ocean, and Neon. Each completely transforms the mood of the image.
+4. Slowly raise **Warp** (Knob 4). The clean noise field begins folding and swirling into itself — each scan line warps the next, building increasingly organic, lava-lamp-like structures.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Perlin loaded](/img/instruments/videomancer/perlin/perlin_control_panel.png)
+*Videomancer's front panel with Perlin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Scroll X
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Scroll X** controls the horizontal scroll velocity of the noise field. At the centre position (0.0%), the pattern is stationary on the X axis. Turning counter-clockwise scrolls left; turning clockwise scrolls right. The further from centre, the faster the drift. Combined with **Scroll Y**, this creates diagonal motion through the infinite noise landscape.
+
+---
+
+### Knob 2 — Scale
+
+| Property | Value |
+|----------|-------|
+| Range | 1 – 8 |
+| Default | 3 |
+
+**Scale** sets the zoom level of the noise lattice. It operates in eight discrete steps. At step 1, the noise cells are very large — broad, gentle hills of colour. At step 8, the cells are small and tightly packed, revealing fine granular detail. Because the noise is procedurally generated, zooming in doesn't reveal pixelation — it reveals a different scale of the same infinite pattern.
+
+:::note
+Scale is captured at the start of each frame (on vsync), so changes take effect cleanly without mid-frame tearing.
+:::
+
+---
+
+### Knob 3 — Scroll Y
+
+| Property | Value |
+|----------|-------|
+| Range | -100.0% – 100.0% |
+| Default | 0.1% |
+
+**Scroll Y** controls the vertical scroll velocity. Like **Scroll X**, centre is stationary. Counter-clockwise scrolls up; clockwise scrolls down. Vertical scrolling interacts with the **Warp** parameter: because warp feeds each line's noise into the next, vertical motion through the noise field causes the warp structures to evolve and reshape continuously.
+
+---
+
+### Knob 4 — Warp
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Warp** controls the strength of ***domain warp*** feedback. At 0.0%, no warp is applied and the noise field is a clean, undistorted gradient pattern. As you increase the value, each scan line's noise output is stored in a line buffer and used to perturb the Y coordinate of the following line. Low values create gentle organic bending. High values produce dramatic flowing distortions — turbulent rivers and folded geological strata.
+
+:::warning
+At extreme warp settings, the feedback can amplify itself significantly. The visual result is intentionally chaotic and beautiful, but be aware that the structure depends on the current scroll position and palette — small changes to other parameters can produce large visual shifts.
+:::
+
+---
+
+### Knob 5 — Palette Shift
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Palette Shift** applies a static offset to the colour palette lookup index. This rotates the colour mapping around the palette without changing the noise pattern itself. At 0.0%, the default palette mapping is used. Increasing the value shifts which colours correspond to which noise levels, revealing different hues hidden in the palette gradient.
+
+---
+
+### Knob 6 — Palette Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Palette Speed** controls the rate of automatic palette animation. At 0.0%, the palette mapping is static (aside from any manual **Palette Shift**). As you increase the value, a ***DDS accumulator*** continuously advances the palette offset each frame, causing the colours to cycle through the noise field. Low values produce slow, meditative colour evolution. High values create rapid, kaleidoscopic cycling.
+
+:::tip
+Combining a moderate **Palette Speed** with a slow **Scroll X** or **Scroll Y** creates an effect where both the pattern and its colouring evolve simultaneously — the noise landscape appears alive.
+:::
+
+---
+
+### Switch 7 — Texture
+
+| Property | Value |
+|----------|-------|
+| Off | Gradient |
+| On | Ridged |
+| Default | Gradient |
+
+**Texture** selects between two noise shaping modes. In the **Gradient** position, the noise output is used directly — smooth, rolling hills and valleys of value. In the **Ridged** position, the noise is folded through an absolute-value operation, which inverts the valleys so they become sharp ridges. Ridged mode produces angular, mountain-ridge-like contours and dramatic line structures reminiscent of topographic maps.
+
+---
+
+### Switch 8 — Palette
+
+| Property | Value |
+|----------|-------|
+| Off | A |
+| On | B |
+| Default | A |
+
+**Palette** selects which pair of colour palettes is active. In the **A** position, you get access to Marble and Fire (selected by the **Color** toggle). In the **B** position, you access Ocean and Neon. Together with **Color**, this gives four total palettes.
+
+---
+
+### Switch 9 — Color
+
+| Property | Value |
+|----------|-------|
+| Off | Warm |
+| On | Cool |
+| Default | Warm |
+
+**Color** selects between the warm and cool variant within the active palette pair. In the **Warm** position, palette A gives Marble (warm grayscale with a creamy tint) and palette B gives Ocean (deep blues and cyans). In the **Cool** position, palette A gives Fire (reds, oranges, and yellows) and palette B gives Neon (electric violets and acid greens).
+
+---
+
+### Switch 10 — Video
+
+| Property | Value |
+|----------|-------|
+| Off | Noise |
+| On | Multiply |
+| Default | Noise |
+
+**Video** selects the output compositing mode. In the **Noise** position, the synthesized noise image is output directly — no input video is used. In the **Multiply** position, the noise luminance is multiplied with the input video's Y channel, and the input's chroma is passed through. The noise pattern modulates the brightness of the incoming picture, embedding the organic noise texture into live video.
+
+---
+
+### Switch 11 — Octave
+
+| Property | Value |
+|----------|-------|
+| Off | 1x |
+| On | 2x |
+| Default | 1x |
+
+**Octave** selects between single-octave and two-octave ***fBm*** noise. In the **1x** position, only the primary gradient noise octave is generated. In the **2x** position, a second octave of value noise at double the lattice frequency is blended in at 50% amplitude. The second octave adds fine-grained detail on top of the broad shapes of the first, producing richer, more complex textures without requiring additional multiplier resources.
+
+---
+
+:::note Toggle Group Notes
+
+**Palette** and **Color** form a 2-bit palette selector. Together they address one of four BRAM colour tables:
+
+| Palette | Color | Result |
+|---------|-------|--------|
+| A | Warm | Marble — warm monochromatic grayscale |
+| A | Cool | Fire — reds through oranges to yellows |
+| B | Warm | Ocean — deep blues, teals, and cyans |
+| B | Cool | Neon — electric violets and acid greens |
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** controls the wet/dry crossfade between the synthesized noise output and the delayed input video. At 0.0%, only the dry input passes through. At 100.0%, only the generated noise is visible. Intermediate positions blend the two. Because Perlin is a synthesis program, the dry signal is typically black (no input connected), so the fader simply controls the overall brightness of the noise. With **Video** set to **Multiply**, Mix blends between the unprocessed input and the noise-modulated version.
 
 ---
 
 ## Background
 
-### Gradient Noise
+### Gradient noise
 
-Unlike value noise (which assigns random values to grid points and interpolates between them), gradient noise assigns random *gradient vectors* to grid points and computes the dot product between each gradient and the displacement vector from the grid point to the current pixel. The result is a function that is exactly zero at every grid vertex and varies smoothly between them. This produces smoother, more isotropic textures than value noise. Perlin's program quantises the gradient directions to 8 compass points — N, NE, E, SE, S, SW, W, NW — and approximates the dot product using shift-and-add arithmetic, avoiding hardware multipliers.
+***Gradient noise*** is a family of procedural texture algorithms built on a regular lattice grid. At each grid intersection, a pseudo-random gradient direction is assigned. The noise value at any point in space is computed by measuring how each surrounding gradient "pushes" toward or away from that point, then blending the contributions with a smooth interpolation curve. The result is a continuous, band-limited signal with no sharp discontinuities — soft, organic-looking randomness that tiles seamlessly and can be evaluated at any coordinate.
 
-### The Hash Function
+Perlin's original 1983 algorithm used a permutation table to assign gradients. Videomancer's implementation uses an XOR-fold hash function — three rounds of XOR with bit rotation — to derive gradient directions from cell coordinates. This avoids the 256-byte lookup table, saving BRAM while still producing good visual distribution across the lattice.
 
-Classical Perlin noise uses a pre-computed 256-entry permutation table to assign pseudo-random gradient indices to grid vertices. Storing 256 bytes would require BRAM on the iCE40, so this implementation replaces the table with a combinational LFSR-style hash: XOR the x and y cell coordinates with rotated and shifted copies of themselves, then take the lowest 3 bits as the gradient index. The resulting noise is not identical to Perlin's original, but it is visually smooth and sufficiently random for real-time video synthesis.
+### Fractional Brownian motion
 
-### Smoothstep Interpolation
+A single octave of gradient noise produces broad, smooth undulations. Real-world textures — clouds, rock, water — contain detail at many scales simultaneously. ***Fractional Brownian motion*** (fBm) builds multi-scale texture by summing multiple octaves of noise, each at successively higher frequency and lower amplitude. The classic formula is:
 
-Raw bilinear interpolation between the four dot products would produce visible grid artifacts — straight-line transitions along cell boundaries. Perlin's original algorithm uses a cubic Hermite interpolant; the improved version uses a quintic polynomial $6t^5 - 15t^4 + 10t^3$. This program approximates the quintic with a piecewise-linear S-curve: for the lower half of the fractional range, the curve is steepened via `t - (t >> 2)`; the upper half is obtained by mirroring. The result eliminates first-derivative discontinuities at cell boundaries, producing seamlessly flowing textures.
+$$
+fBm(p) = \sum_{i=0}^{N-1} A^i \cdot noise(2^i \cdot p)
+$$
 
-### Scroll Animation via DDS
+Videomancer's Perlin implements a two-octave fBm. The first octave uses full gradient noise with eight compass-point directions. The second octave doubles the lattice frequency by extracting a different bit-slice from the same scaled coordinate — reusing the single multiply rather than adding a second multiplier. The second octave uses value noise (direct hash lookup) rather than gradient dot products, which saves logic cells while contributing convincing fine detail.
 
-The noise field is animated by adding a 16-bit phase accumulator offset to the pixel coordinates each frame. The scroll speed pot sets the accumulator increment, and the direction pot selects one of four quadrants (right, down, left, up). Because the noise function is continuous and tileable (grid vertices wrap via modular arithmetic), scrolling produces an endlessly flowing texture with no visible seams.
+### Domain warp
 
-### Color Palettes
+***Domain warp*** is a technique where the output of one noise evaluation is fed back as a coordinate perturbation for another. Instead of asking "what is the noise at position (x, y)?", domain warp asks "what is the noise at position (x, y + previous_noise)?" This self-referential loop can produce dramatic organic structures: folded geological strata, flowing rivers, turbulent cloud formations.
 
-Four palettes map the noise value through different YUV color schemes. **Marble** is grayscale — neutral U/V at 512 with luma tracking the noise index. **Cloud** adds a subtle blue bias (U=560, V=490). **Terrain** splits at the midpoint — values below 128 get green tones (U=470, V=440) and above 128 get brown (U=490, V=560). **Fire** has a black floor for low noise values, then ramps luma with warm chroma (U=440, V=600). The palette offset is cycled each frame by adding a portion of the Palette Cycle pot, creating animated color flow independent of the noise field geometry.
+Videomancer's warp implementation uses a single-BRAM line buffer. Each scan line's final noise value is written into the buffer at the current column position. On the next scan line, that stored value is read back and applied as a Y-axis offset to the coordinate calculation. The **Warp** knob controls the gain of this feedback. Because the warp feeds forward line-by-line, vertical scrolling causes the warp structures to continuously evolve.
 
-
----
-
-## Signal Flow
-
-Processing Pipeline → Mix: Interpolator → Sync Delay → Bypass
+### Signal Flow
 
 ```
-Parameter Registers
+Scroll DDS (X/Y Offsets, per-frame update)
 │
-├── Scroll Speed → DDS increment (16-bit phase accumulator)
-├── Direction → quadrant select (R/D/L/U)
-├── Scale → cell_shift (3..7, cell sizes 8..128 px)
-├── Turbulence → 2nd-octave amplitude (declared, used for future fBm)
-├── Contrast → output luma gain
-├── Palette Cycle → palette offset increment per frame
+├── Warp BRAM Pre-Read (previous line's noise at this column)
 │
-├── Processing Pipeline (per pixel, 4 stages) ──────────────────
-│   │
-│   ├─ Stage 1: Coordinate + Grid Cell (1 clk)
-│   │   ├─ px = hcount + x_offset[15:4]
-│   │   ├─ py = vcount + y_offset[15:4]
-│   │   ├─ Domain warp: add previous noise to coords
-│   │   ├─ cell_x/y = px >> cell_shift (integer cell)
-│   │   └─ frac_x/y = px[low bits] (8-bit fractional)
-│   │
-│   ├─ Stage 2: Hash + Gradient Select (1 clk)
-│   │   ├─ perlin_hash(cell_x, cell_y) → hash_00
-│   │   ├─ perlin_hash(cell_x+1, cell_y) → hash_10
-│   │   ├─ perlin_hash(cell_x, cell_y+1) → hash_01
-│   │   └─ perlin_hash(cell_x+1, cell_y+1) → hash_11
-│   │
-│   ├─ Stage 3: Dot Products + Interpolation (1 clk)
-│   │   ├─ 4× grad_dot(hash, frac) → dot00..dot11
-│   │   ├─ smoothstep(frac_x) → sx, smoothstep(frac_y) → sy
-│   │   ├─ slerp(dot00, dot10, sx) → lerp_top
-│   │   ├─ slerp(dot01, dot11, sx) → lerp_bot
-│   │   └─ slerp(lerp_top, lerp_bot, sy) → noise
-│   │
-│   └─ Stage 4: Palette + Output (1 clk)
-│       ├─ Absolute mode: |noise| for ridge textures
-│       ├─ palette_idx = noise[7:0] + pal_offset
-│       ├─ Palette select → Y/U/V from 4 LUT schemes
-│       ├─ Contrast: luma × contrast_reg / 512
-│       └─ Video mod: luma × input_Y / 1024
+S1:  Warped Coordinates = pixel + scroll_offset + warp_feedback
 │
-├── Mix: Interpolator (4 clk) ──────────────────────────────────
-│   └─ Y/U/V wet/dry crossfade via Mix fader
+S2:  Scaled Coordinates = warped × scale_multiplier
 │
-├── Sync Delay ─────────────────────────────────────────────────
-│   └─ 8-clock shift register for hsync/vsync/field/data
+S3:  Cell/Frac Extraction + 8-Corner XOR-Fold Hash (oct1 × 4, oct2 × 4)
 │
-└── Bypass ─────────────────────────────────────────────────────
-    └─ Select generated or pass-through signal
+S4:  Cubic Smoothstep — Squarers  (fx², fy²)
+S5:  Cubic Smoothstep — Factor    (384 - 2t)
+S6:  Cubic Smoothstep — Product   (sx, sy) + Gradient Dot Products (oct1)
+│                                           + Value Noise (oct2)
+S7:  Register sx/sy, dots, values
+│
+S8–S10:  Bilinear Lerp — Horizontal then Vertical (oct1 + oct2)
+S11–S13: Bilinear Lerp — Vertical sums → noise1, noise2
+│
+S14: Octave Blend + Ridge Fold + Palette Index + Warp BRAM Write
+│
+S15: Palette BRAM Read → YUV (8-bit → 10-bit expansion)
+│
+S16: Contrast Enhancement (1.125×) + Video Multiply (optional)
+│
+S17–S19: Wet/Dry Mix (3-stage pipelined crossfade)
+│
+Output (YUV 4:4:4 30-bit)
 ```
 
-The pipeline is a classic noise-generation architecture: coordinate computation → hash → dot product → interpolation → palette mapping. The hash function is fully combinational (no BRAM), hashing cell coordinates through XOR-rotate-add operations to produce 3-bit gradient indices. The four dot products use 8-direction gradient vectors quantised to ±1 and ±0.5 components, computed entirely with shifts and adds. The smoothstep interpolation approximates the quintic ease curve with a mirrored piecewise-linear function, then feeds two successive slerp (signed linear interpolation) passes — first horizontally, then vertically — to produce the final noise value.
+### Signal Flow Notes
 
-The palette stage maps the 8-bit noise index (plus per-frame cycling offset) through one of four color schemes. Contrast scaling multiplies the result by `contrast_reg / 512`, and video modulation mode multiplies with the input video's Y channel, replacing chroma with the input's U/V. Note that toggle bit 1 is shared between Palette selection and Video Mod — changing the palette may also toggle video modulation, and vice versa.
+Three key interactions define Perlin's behaviour:
+
+1. **Warp feedback loop**: The noise result at S14 is written into a line buffer and read back two cycles later at S1 for the next scan line. This creates a one-line-delayed feedback path where each row's noise shapes the geometry of the row below it. The **Warp** knob controls the gain of this loop.
+
+2. **Shared coordinate multiply**: Both noise octaves derive their cell coordinates from the same S2 multiply result. Octave 1 uses bits [20:13] for cell and [12:6] for fraction. Octave 2 uses bits [19:12] and [11:5], effectively doubling the lattice frequency without an additional multiplier. This resource-sharing trick is critical for fitting within the iCE40 logic budget.
+
+3. **Palette as colour space**: The raw noise output is a signed 8-bit monochrome value. The palette BRAM transforms this into full-colour YUV at S15. All colour character comes from the palette — the noise engine itself is entirely monochrome. Changing palettes instantaneously re-colours the entire image without altering the underlying noise pattern.
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={perlin_control_panel} alt="Videomancer front panel with Perlin loaded"/>
-*Videomancer's front panel with Perlin active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises explore Perlin's noise synthesis from basic scrolling patterns through complex animated landscapes. Each builds on familiarity with the previous.
+### Exercise 1: Scrolling Marble Terrain
 
-### Rotary Potentiometers (Knobs 1–6)
+![Scrolling Marble Terrain result](/img/instruments/videomancer/perlin/perlin_ex1_s1.png)
+*Scrolling Marble Terrain — simulated result across source images.*
+**Key Concepts**: - Gradient noise is an infinite, seamless procedural pattern
+- Scale controls lattice cell size
+- Scroll velocity sweeps through the infinite noise space
 
-#### Knob 1 — Scroll Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 25.0% |
-| Suffix | % |
+**What You'll Create**: Understand the relationship between scale, scroll, and the raw noise field.
 
-At zero, the noise field is static. As the value increases, the noise scrolls faster in the direction selected by the Direction knob. The raw pot value is used directly as the 16-bit increment, so the scroll rate is linearly proportional to the knob position. At maximum, the noise rushes past rapidly, creating a streaming fluid-like texture. Internally, controls the scroll animation speed via a DDS phase accumulator.
+1. **Set the zoom**: Set **Scale** (Knob 2) to step 3 or 4. You should see a gentle marble-like pattern of light and dark bands.
+2. **Hold position**: Centre **Scroll X** (Knob 1) and **Scroll Y** (Knob 3) so the pattern is stationary.
+3. **Horizontal drift**: Slowly turn **Scroll X** clockwise. The landscape drifts horizontally. Return to centre to stop.
+4. **Diagonal motion**: Now combine both: set **Scroll X** and **Scroll Y** slightly off-centre for slow diagonal motion through the noise field.
+5. **Zoom through scales**: Sweep **Scale** through all 8 steps while scrolling. Zooming in reveals a different scale of the same infinite texture.
 
----
+**Settings**:
 
-#### Knob 2 — Scale
-| Property | Value |
-|----------|-------|
-| Range | 1 – 8 |
-| Default | 4 |
-
-Selects the grid cell size using 3 top bits mapped to cell shift values 3 through 7, corresponding to cell sizes of 8, 16, 32, 64, and 128 pixels. Smaller cells produce fine-grained, detailed noise. Larger cells produce broad, smooth gradients. This control has the most dramatic effect on the visual character of the noise — small cells look like television static or film grain, while large cells look like cloud formations or lava flows.
-
----
-
-#### Knob 3 — Direction
-| Property | Value |
-|----------|-------|
-| Range | 0deg – 360deg |
-| Default | 0deg |
-| Suffix | deg |
-
-Selects the scroll direction by dividing the pot range into four quadrants. 0–25%: scroll right (+X). 25–50%: scroll down (+Y). 50–75%: scroll left (−X). 75–100%: scroll up (−Y). The direction is axis-aligned — the VHDL implements a simplified decomposition that selects one axis at a time rather than computing true angular components.
-
----
-
-#### Knob 4 — Turbulence
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Turbulence control. In the current implementation, this value is registered at vsync and stored in `s_turb_reg` for future use in multi-octave fractal summation (fBm). The second octave is described in the VHDL header but not yet implemented in the pipeline. Adjusting this control has no visible effect in the current build.
+| Control | Value |
+|---------|-------|
+| Scroll X | ~60% |
+| Scale | 4 |
+| Scroll Y | ~55% |
+| Warp | 0% |
+| Palette Shift | 0% |
+| Palette Speed | 0% |
+| Texture | Gradient |
+| Palette | A |
+| Color | Warm |
+| Video | Noise |
+| Octave | 1x |
+| Mix | 100% |
 
 ---
 
-#### Knob 5 — Contrast
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
+### Exercise 2: Colour Palettes and Animation
 
-Controls the output contrast by scaling the palette luma. The palette Y value is multiplied by `contrast_reg` and right-shifted by 9 bits, equivalent to dividing by 512. At the default midpoint (512), the contrast is unity. Below midpoint, the output is darker and less contrasty. Above midpoint, the output is brighter and more contrasty, with values clipping at 1023.
+![Colour Palettes and Animation result](/img/instruments/videomancer/perlin/perlin_ex2_s1.png)
+*Colour Palettes and Animation — simulated result across source images.*
+**Key Concepts**: - Palette BRAM maps monochrome noise to full-colour YUV
+- Palette Shift rotates the colour mapping statically
+- Palette Speed animates the cycling via a DDS accumulator
 
----
+**What You'll Create**: Explore all four palettes and their animated cycling behaviour.
 
-#### Knob 6 — Palette Cycle
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
+1. **Stop scrolling**: Start from the Exercise 1 settings, but stop scrolling (centre Knobs 1 and 3).
+2. **Cycle all palettes**: Flip **Palette** (Switch 8) and **Color** (Switch 9) to cycle through all four combinations: Marble, Fire, Ocean, Neon. Notice how each completely re-colours the same noise field.
+3. **Rotate the palette**: Slowly increase **Palette Shift** (Knob 5). The colour bands rotate through the palette — dark areas become coloured, coloured areas shift hue.
+4. **Animate the colours**: Now increase **Palette Speed** (Knob 6) to a low value. The colours begin cycling automatically, creating an animated lava-lamp effect.
+5. **Sharp ridge contours**: Enable **Ridged** mode with **Texture** (Switch 7). The smooth colours develop sharp contour lines — ridged noise creates dramatic palette boundaries.
 
-Controls the speed of palette color cycling. Each frame, the palette offset is incremented by `pot[9:2]` — the top 8 bits of the pot value. At zero, colors are static. At maximum, the palette index advances by 255 per frame, creating rapid color rotation. The cycling wraps around the 256-entry palette index space, producing continuous flowing color without discontinuities.
+**Settings**:
 
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Palette** | Marble | Fire |
-| **8 — Video Mod** | Off | On |
-| **9 — Absolute** | Signed | Abs |
-| **10 — Domain Warp** | Off | On |
-| **11 — Sharp** | Off | On |
-
-The five toggles control palette selection (2-bit), video modulation, absolute/signed mode, domain warping, and bypass. Note that toggle bit 1 is shared between Palette selection (`s_palette_sel <= registers_in(6)(1 downto 0)`) and Video Mod (`s_video_mod <= registers_in(6)(1)`). This means the second palette bit and the video modulation flag track the same hardware bit — changing one changes the other. This is a known hardware quirk documented in the VHDL.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the delayed input video (dry) and the noise-generated output (wet). At 0%, only the input passes through. At 100%, the full noise texture is output. Intermediate values superimpose the noise over the video with adjustable opacity, useful for creating textured overlays.
-
-
-#### Switch 11 — Bypass
-| Property | Value |
-|----------|-------|
-| Off | Processing active |
-| On | Bypass engaged |
-
-Routes the unprocessed input signal directly to the output, bypassing all Perlin processing stages. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use for instant A/B comparison between the raw input and the processed result.---
-## Guided Exercises
-
-These exercises explore the noise generator's controls from basic static textures through animated scrolling to advanced domain warping and video modulation.
-
-### Exercise 1: Classic Marble Texture
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: perlin_source1_car, after: perlin_ex1_s1 },
-    { label: "Skull", before: perlin_source2_skull, after: perlin_ex1_s2 },
-    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex1_s3 },
-    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex1_s4 },
-    { label: "Girl", before: perlin_source5_girl, after: perlin_ex1_s5 },
-    { label: "Paint", before: perlin_source6_paint, after: perlin_ex1_s6 },
-  ]}
-/>
-*Classic Marble Texture — simulated result across source images.*
-**What You'll Create**: Generate a static grayscale Perlin noise texture resembling polished marble, exploring scale and contrast.
-
-1. **Default state**: Confirm Palette is Marble, Scroll Speed at 0%, and Absolute mode is Signed. A smooth grayscale noise pattern fills the screen.
-2. **Scale sweep**: Rotate Scale through all positions. Watch the noise transition from fine grain (8px cells) through medium texture (32px) to broad smooth gradients (128px).
-3. **Contrast**: Sweep Contrast from minimum to maximum. At low values, the texture is flat and washed out. At high values, the marble veins become sharp and dramatic.
-4. **Absolute ridges**: Toggle Absolute to Abs. The smooth gradients fold into ridge patterns with sharp creases — a veined marble effect.
-5. **Palette cycling**: Increase Palette Cycle slightly. The grayscale noise pulses gently as brightness levels shift.
-
-**Key concepts**: Grid cell size controls spatial frequency, contrast scales the output dynamic range, absolute mode folds signed noise into ridge patterns
+| Control | Value |
+|---------|-------|
+| Scroll X | 0% |
+| Scale | 4 |
+| Scroll Y | 0% |
+| Warp | 0% |
+| Palette Shift | ~40% |
+| Palette Speed | ~25% |
+| Texture | Ridged |
+| Palette | B |
+| Color | Cool |
+| Video | Noise |
+| Octave | 1x |
+| Mix | 100% |
 
 ---
 
-### Exercise 2: Flowing Fire
+### Exercise 3: Domain Warp and Fractal Layering
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: perlin_source1_car, after: perlin_ex2_s1 },
-    { label: "Skull", before: perlin_source2_skull, after: perlin_ex2_s2 },
-    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex2_s3 },
-    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex2_s4 },
-    { label: "Girl", before: perlin_source5_girl, after: perlin_ex2_s5 },
-    { label: "Paint", before: perlin_source6_paint, after: perlin_ex2_s6 },
-  ]}
-/>
-*Flowing Fire — simulated result across source images.*
-**What You'll Create**: Create an animated fire texture using the Fire palette, upward scrolling, and absolute mode for flickering flame shapes.
+![Domain Warp and Fractal Layering result](/img/instruments/videomancer/perlin/perlin_ex3_s1.png)
+*Domain Warp and Fractal Layering — simulated result across source images.*
+**Key Concepts**: - Domain warp feeds noise output back as coordinate perturbation
+- fBm adds a second octave of fine detail
+- Warp + scroll creates continuously evolving structures
 
-1. **Fire palette**: Select the Fire palette (position 4 on the Palette toggle).
-2. **Upward scroll**: Set Direction to about 90% (upward). Increase Scroll Speed to about 40%. The fire palette scrolls upward.
-3. **Absolute folding**: Toggle Absolute to Abs. The smooth gradients become jagged flame tongues.
-4. **Scale for flames**: Set Scale to about 3 (16px cells) for medium-sized flame structures.
-5. **Contrast for intensity**: Increase Contrast to about 70% for vivid reds and yellows.
-6. **Palette cycling**: Add gentle Palette Cycle (~20%) for animated color variation within the flames.
-7. **Domain warp**: Enable Domain Warp to add turbulent swirling to the flame motion.
+**What You'll Create**: Combine warp feedback and fBm octave blending for complex organic landscapes.
 
-**Key concepts**: Fire palette has a black floor creating dark negative space, absolute mode creates jagged ridge patterns resembling flames, domain warp adds turbulent flow
+1. **Slow vertical drift**: Set **Scale** to step 4, moderate **Scroll Y** for slow upward drift.
+2. **Gentle bending**: Slowly increase **Warp** (Knob 4) from 0%. The clean noise field begins to bend and fold. At moderate values, you get gently flowing river-like structures.
+3. **Turbulent flows**: Push **Warp** higher. The distortion amplifies — turbulent, lava-like flows emerge.
+4. **Fractal detail**: Enable **Octave** (Switch 11) to **2x**. Fine-grained detail appears on top of the broad warp structures, adding depth and complexity.
+5. **Jagged ridges**: Enable **Ridged** mode (Switch 7). The sharp contours interact with the warp distortion, producing jagged, fractured mountain-range-like patterns.
+6. **Undersea landscape**: Set **Palette** to **B** and **Color** to **Warm** for Ocean. The warped ridged noise becomes an undersea landscape.
 
----
+**Settings**:
 
-### Exercise 3: Video-Modulated Cloud Overlay
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Car", before: perlin_source1_car, after: perlin_ex3_s1 },
-    { label: "Skull", before: perlin_source2_skull, after: perlin_ex3_s2 },
-    { label: "Elephant", before: perlin_source3_elephant, after: perlin_ex3_s3 },
-    { label: "Pattern", before: perlin_source4_pattern, after: perlin_ex3_s4 },
-    { label: "Girl", before: perlin_source5_girl, after: perlin_ex3_s5 },
-    { label: "Paint", before: perlin_source6_paint, after: perlin_ex3_s6 },
-  ]}
-/>
-*Video-Modulated Cloud Overlay — simulated result across source images.*
-**What You'll Create**: Superimpose cloud-palette noise over a live video source using video modulation and partial mix.
-
-1. **Cloud palette**: Select the Cloud palette (position 2).
-2. **Large scale**: Set Scale to 7 (64px cells) for broad, cloud-like formations.
-3. **Slow scroll**: Set Scroll Speed to about 15% and Direction to 0° for gentle rightward drift.
-4. **Video modulation**: Enable Video Mod. The noise pattern is now multiplied with the input video's brightness — the noise is visible only where the video is bright.
-5. **Partial mix**: Reduce Mix to about 50%. The cloud texture overlays the video at half opacity.
-6. **Contrast**: Adjust Contrast to about 55% for gentle cloud density.
-7. **Signed mode**: Keep Absolute in Signed mode for smooth, soft cloud edges.
-
-**Key concepts**: Video modulation multiplies noise with input Y channel for content-dependent textures, partial Mix creates translucent overlay, large cell size produces smooth cloud shapes
+| Control | Value |
+|---------|-------|
+| Scroll X | 0% |
+| Scale | 4 |
+| Scroll Y | ~60% |
+| Warp | ~70% |
+| Palette Shift | 0% |
+| Palette Speed | ~15% |
+| Texture | Ridged |
+| Palette | B |
+| Color | Warm |
+| Video | Noise |
+| Octave | 2x |
+| Mix | 100% |
 
 ---
-
-
-## Tips
-
-- **Domain warp accumulates**: The warp feedback doesn't decay between frames, so the distortion grows over time. Toggle Domain Warp off and back on to reset the accumulated distortion.
-- **Video Mod creates content-dependent noise**: The noise intensity follows the input video's brightness, making luminous textures that respond to live camera feeds.
-- **Palette bit overlap is documented**: Selecting Cloud or Fire palette also enables Video Mod due to shared bit 1. If you want pure noise without video modulation, use Marble or Terrain.
-- **Palette Cycle adds free animation**: Even with Scroll Speed at zero, palette cycling creates animated color flow. Combine with static noise for shimmering crystal or aurora effects.
-- **Mix for textured overlays**: At 20–40% Mix, the noise becomes a subtle texture layer over the input video — useful for adding grain, atmosphere, or organic movement to clean sources.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601; the standard for analog-to-digital conversion of SD video, defining the YUV color matrix used throughout Videomancer. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator at a fixed rate each clock cycle. |
-| **Domain Warp** | Feeding the output of a noise function back into its coordinate inputs, creating self-referential distortion that produces turbulent, swirling patterns. |
-| **fBm** | Fractional Brownian motion; summing multiple octaves of noise at increasing frequency and decreasing amplitude to create fractal textures with detail at multiple scales. |
-| **Gradient Noise** | A noise algorithm that assigns random gradient vectors to grid vertices and computes dot products with displacement vectors, producing smoother results than value noise. |
-| **LFSR** | Linear Feedback Shift Register; a shift register whose input bit is a linear function of its previous state, producing pseudo-random sequences. |
-| **Octave** | In noise synthesis, one layer of noise at a specific frequency. Multiple octaves are summed to create fractal detail. |
-| **Palette** | A lookup table mapping noise index values to YUV color triplets. |
-| **Perlin Noise** | The gradient noise algorithm invented by Ken Perlin in 1983 for procedural texturing in computer graphics. |
-| **Smoothstep** | An S-shaped interpolation function that has zero first derivative at both endpoints, eliminating visible grid artifacts. |
+- **DDS Accumulator**: A Direct Digital Synthesis accumulator — a counter that adds a fixed increment each frame, producing a steadily advancing phase used for scrolling or palette animation.
+
+- **Domain Warp**: A technique where the output of a noise function is fed back as a coordinate perturbation, creating self-referential organic distortions.
+
+- **fBm**: Fractional Brownian motion — a method of layering multiple octaves of noise at increasing frequencies and decreasing amplitudes to build multi-scale texture.
+
+- **Gradient Noise**: A procedural texture algorithm that assigns random gradient vectors to lattice points and interpolates their contributions to produce smooth, continuous noise.
+
+- **Lattice**: The regular grid of cells underlying Perlin noise; each intersection carries a pseudo-random gradient that defines the local noise value.
+
+- **Palette BRAM**: Block RAM storing a 256-entry colour lookup table that maps monochrome noise values to full YUV colour triplets.
+
+- **Ridge Noise**: A variant of gradient noise where the output is folded through an absolute-value operation, creating sharp ridge-like contour lines at zero crossings.
+
+- **Smoothstep**: A cubic interpolation function ($3t^2 - 2t^3$) used to blend between lattice cell corners, eliminating grid-line artifacts.
+
+- **Value Noise**: A simpler noise variant where random values (not gradients) are assigned to lattice points and interpolated; used as Perlin's second octave.
+
+- **XOR-Fold Hash**: A lightweight hash function using XOR and bit rotation to map 2D cell coordinates to pseudo-random values, replacing the traditional permutation table.
+
 
 ---

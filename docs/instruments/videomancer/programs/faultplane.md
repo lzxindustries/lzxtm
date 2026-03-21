@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 107
 slug: /instruments/videomancer/faultplane
@@ -7,351 +7,412 @@ image: /img/instruments/videomancer/faultplane/faultplane_hero_s1.png
 description: "Faultplane is a spatial displacement and zone-blanking program that splits the video frame into alternating regions using two timing accumulators and applies independent horizontal pixel shifts, mirror flips, and color inversions to each region."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import faultplane_control_panel from '/img/instruments/videomancer/faultplane/faultplane_control_panel.png';
-import faultplane_source1_dog from '/img/instruments/videomancer/faultplane/faultplane_source1_dog.png';
-import faultplane_source2_cat from '/img/instruments/videomancer/faultplane/faultplane_source2_cat.png';
-import faultplane_source3_clouds from '/img/instruments/videomancer/faultplane/faultplane_source3_clouds.png';
-import faultplane_source4_pattern from '/img/instruments/videomancer/faultplane/faultplane_source4_pattern.png';
-import faultplane_source5_woman from '/img/instruments/videomancer/faultplane/faultplane_source5_woman.png';
-import faultplane_source6_berries from '/img/instruments/videomancer/faultplane/faultplane_source6_berries.png';
-import faultplane_hero_s1 from '/img/instruments/videomancer/faultplane/faultplane_hero_s1.png';
-import faultplane_hero_s2 from '/img/instruments/videomancer/faultplane/faultplane_hero_s2.png';
-import faultplane_hero_s3 from '/img/instruments/videomancer/faultplane/faultplane_hero_s3.png';
-import faultplane_hero_s4 from '/img/instruments/videomancer/faultplane/faultplane_hero_s4.png';
-import faultplane_hero_s5 from '/img/instruments/videomancer/faultplane/faultplane_hero_s5.png';
-import faultplane_hero_s6 from '/img/instruments/videomancer/faultplane/faultplane_hero_s6.png';
-import faultplane_ex1_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s1.png';
-import faultplane_ex1_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s2.png';
-import faultplane_ex1_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s3.png';
-import faultplane_ex1_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s4.png';
-import faultplane_ex1_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s5.png';
-import faultplane_ex1_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex1_s6.png';
-import faultplane_ex2_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s1.png';
-import faultplane_ex2_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s2.png';
-import faultplane_ex2_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s3.png';
-import faultplane_ex2_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s4.png';
-import faultplane_ex2_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s5.png';
-import faultplane_ex2_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex2_s6.png';
-import faultplane_ex3_s1 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s1.png';
-import faultplane_ex3_s2 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s2.png';
-import faultplane_ex3_s3 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s3.png';
-import faultplane_ex3_s4 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s4.png';
-import faultplane_ex3_s5 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s5.png';
-import faultplane_ex3_s6 from '/img/instruments/videomancer/faultplane/faultplane_ex3_s6.png';
-
-# Faultplane
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: faultplane_source1_dog, after: faultplane_hero_s1 },
-    { label: "Cat", before: faultplane_source2_cat, after: faultplane_hero_s2 },
-    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_hero_s3 },
-    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_hero_s4 },
-    { label: "Woman", before: faultplane_source5_woman, after: faultplane_hero_s5 },
-    { label: "Berries", before: faultplane_source6_berries, after: faultplane_hero_s6 },
-  ]}
-/>
-*Faultplane fracturing a natural scene into displaced, mirrored zones with selective blanking.*
+![Faultplane hero image](/img/instruments/videomancer/faultplane/faultplane_hero_s1.png)
+*Faultplane fracturing a video image into displaced horizontal bands, like strata of rock split along geological fault lines.*
 
 ---
 
 ## Overview
 
-**Faultplane** is a spatial displacement and zone-blanking program that splits the video frame into alternating regions using two timing accumulators and applies independent horizontal pixel shifts, mirror flips, and color inversions to each region. The name refers to geological fault planes — surfaces where rock masses shift along a boundary. In Faultplane, the video image is fractured along oscillating boundaries and the fragments are displaced, mirrored, and inverted relative to one another.
+**Faultplane** is a mirror-displacement effect that fractures the video image into horizontal bands, shifting and reflecting them like layers of rock split along a geological fault. Two independent displacement configurations — ***Top*** and ***Bot*** — each apply their own delay offset, displacement amplitude, horizontal mirroring, and channel inversion to the video signal. A pair of ***timing accumulators*** oscillate vertically and horizontally, carving the image into a grid of displaced zones and selecting which configuration drives each zone.
 
-The program divides the image into spatial zones using two frequency-driven accumulators — one operating at the line rate (creating horizontal bands) and one at the pixel rate (creating vertical columns). The XOR of these two oscillators produces a checkerboard-like pattern of alternating regions. Each region reads from a dual-port line buffer at a different horizontal offset, creating the visual impression of the image being fractured and shifted along fault lines.
+At subtle settings, Faultplane produces gentle horizontal shifts and reflections that give the image a shimmering, fractured-glass quality. At extreme settings, the image shatters into a kaleidoscopic mosaic of mirrored, offset, and inverted bands that bear little resemblance to the source.
 
-Two independent parameter sets — **Top** and **Bottom** — control the displacement, mirroring, and inversion applied to each region. A blanking threshold gates both accumulators, allowing portions of the image to be replaced with black where both oscillator outputs are below a programmable level.
+:::tip
+The two displacement configurations (Top and Bot) are fully independent. You can set one to a gentle mirror and the other to a wild displacement, and the timing accumulators will weave them together into a single composite texture.
+:::
+
+### What's In a Name?
+
+In geology, a ***fault plane*** is the flat surface along which layers of rock fracture and slide past one another during an earthquake. The displaced strata on either side of the fault reveal the internal structure of the earth. **Faultplane** does the same thing to video: it fractures the image into bands and displaces them, revealing the internal structure of the picture in unexpected ways.
 
 ---
 
 ## Quick Start
 
-1. **Start simple**: Set Horiz Freq to 0% to work with horizontal bands only. Master the vertical accumulator before adding the second axis.
-2. **Displacement is relative**: The visual effect depends on the *difference* between Top and Bottom delays. Equal delays = invisible boundaries. Different delays = fault-like displacement.
-3. **Mirror creates symmetry**: Enable one flip for asymmetric mirror effects, both for full bilateral symmetry at every zone boundary.
+1. Turn **Vert Freq** (Knob 3) to about 50%. Horizontal fault lines appear, dividing the image into alternating bands. These are the boundaries between the two displacement zones.
+2. Increase **Top Displace** (Knob 2) clockwise. One set of bands shifts horizontally, sliding the image sideways like a deck of cards fanned along a table edge.
+3. Now increase **Bot Displace** (Knob 5). The other set of bands displaces in its own direction. You now have two interleaved displacement patterns.
+4. Toggle **Top Flip** (Switch 7) to **On**. The Top bands mirror horizontally, creating a reflection effect within those zones.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Faultplane loaded](/img/instruments/videomancer/faultplane/faultplane_control_panel.png)
+*Videomancer's front panel with Faultplane active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Top Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Top Delay** controls the static horizontal offset for the Top displacement zone. At 0%, fully counterclockwise, there is no offset — pixels read back from their original horizontal position. As the value increases, the readback position shifts farther along the line, sliding the image content sideways. At 100%, the maximum offset is applied. Think of Top Delay as setting the resting position of the fault — how far the displaced strata have slid.
+
+---
+
+### Knob 2 — Top Displace
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Top Displace** controls the amplitude of oscillation-driven displacement for the Top zone. At 0%, the vertical timing accumulator has no effect on the Top displacement — the readback offset is determined entirely by **Top Delay**. As the value increases, the timing accumulator modulates the readback position with increasing amplitude, creating a rolling, wave-like displacement. At 100%, the displacement swings across the full line width.
+
+:::note
+**Top Delay** and **Top Displace** work together through a ***processing amplifier*** (proc amp). Top Delay is the DC offset and Top Displace is the gain applied to the vertical timing oscillation.
+:::
+
+---
+
+### Knob 3 — Vert Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Vert Freq** sets the oscillation frequency of the vertical timing accumulator. This accumulator drives the amplitude of both Top and Bot displacements, so it controls how rapidly the displacement pattern changes from line to line. At 0%, the oscillation is extremely slow, producing very wide bands. As the value increases, the bands become narrower and more numerous. At 100%, the pattern oscillates at its maximum rate, producing fine horizontal striping.
+
+---
+
+### Knob 4 — Bot Delay
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Bot Delay** controls the static horizontal offset for the Bot displacement zone, in the same way that **Top Delay** controls the Top zone. At 0%, no offset. At 100%, maximum offset. The Bot zone alternates with the Top zone in the image, so their combined offsets create the characteristic fractured-strata appearance.
+
+---
+
+### Knob 5 — Bot Displace
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Bot Displace** controls the amplitude of oscillation-driven displacement for the Bot zone. It mirrors the function of **Top Displace** but applies to the opposing set of horizontal bands. Setting Top Displace and Bot Displace to different values creates asymmetric displacement: one set of bands swings widely while the other remains relatively stable.
+
+---
+
+### Knob 6 — Horiz Freq
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Horiz Freq** sets the oscillation frequency of the horizontal timing accumulator. This accumulator contributes to the bank selection signal (combined with the vertical accumulator) and to the blanking threshold. At 0%, the horizontal oscillation is very slow. As the value increases, vertical segmentation appears — the image is carved into columns as well as rows, creating a grid of displaced zones rather than simple horizontal bands.
+
+:::tip
+Combining **Vert Freq** and **Horiz Freq** at moderate values creates a checkerboard of displacement zones — each cell in the grid independently applies either the Top or Bot configuration. This is where Faultplane becomes truly kaleidoscopic.
+:::
+
+---
+
+### Switch 7 — Top Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Top Flip** enables horizontal mirroring for the Top displacement zone. When set to **Off**, pixels in the Top zone are written to the line buffer in normal left-to-right order. When set to **On**, the write order reverses — pixels are stored right-to-left, creating a mirror image within each Top band.
+
+---
+
+### Switch 8 — Bot Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bot Flip** enables horizontal mirroring for the Bot displacement zone. It functions identically to **Top Flip** but applies to the opposing set of bands. Enabling both Top Flip and Bot Flip creates a symmetric reflection pattern; enabling only one creates an asymmetric effect where alternating bands face opposite directions.
+
+---
+
+### Switch 9 — Top Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Top Invert** applies a bitwise complement to the video data before it is written to the Top displacement bank, inverting all channels (Y, U, and V) simultaneously. Luminance values flip (bright becomes dark), and chrominance values shift to their complementary hues. The inversion happens at the input stage, so the inverted data is what gets mirrored and displaced.
+
+---
+
+### Switch 10 — Bottom Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bottom Invert** applies a bitwise complement to the video data for the Bot displacement bank. It functions identically to **Top Invert** but applies to the opposing bank. Enabling both creates a uniform inversion; enabling only one creates alternating bands of normal and inverted video — a striking effect that emphasizes the fracture boundaries.
+
+---
+
+### Switch 11 — Blank Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Blank Invert** reverses the blanking logic controlled by the **Line Blank** fader. When set to **Off**, regions where both timing accumulators are below the blank threshold are blanked to black. When set to **On**, the logic inverts: regions *above* the threshold are blanked instead. This lets you toggle between showing the interior or exterior of the blanking mask.
+
+:::warning
+Blank Invert has no visible effect when **Line Blank** (Fader 12) is at 0%, because the blank threshold is zero and no pixels are blanked in either mode.
+:::
+
+---
+
+### Fader 12 — Line Blank
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 0.0% |
+
+**Line Blank** sets a threshold for blanking portions of the output based on the timing accumulators. At 0%, no blanking occurs — the full displaced image is visible. As the value increases, zones where both accumulator values fall below the threshold are replaced with black (Y=0, U=512, V=512). At 100%, nearly the entire image is blanked. The blanking mask follows the oscillation pattern of both accumulators, carving geometric shapes out of the displaced image.
+
+:::tip
+**Line Blank** is a powerful compositional tool. Use it with **Blank Invert** to isolate specific regions of the displacement pattern, creating floating fragments of fractured video against a black background.
+:::
 
 ---
 
 ## Background
 
-### Delay Lines and Spatial Displacement
+### Horizontal line delay
 
-At the heart of Faultplane is a **mirror delay line** — a dual-port line buffer that writes incoming pixels into RAM and reads them back at a different address. By varying the read offset, pixels are shifted horizontally within the scan line. Small offsets produce subtle echo effects; large offsets produce dramatic horizontal displacement where distant parts of the line wrap around and replace nearby content.
+At the heart of Faultplane is a ***line delay buffer*** — a block of memory (BRAM) that stores one full horizontal line of video. As each pixel arrives, it is written into the buffer. Simultaneously, previous pixels are read back from a different position in the buffer. When the read position differs from the write position, the output image appears shifted sideways. This is the fundamental mechanism of horizontal displacement.
 
-The delay line uses two independent RAMs (A and B) that alternate every scan line. While one RAM is being written with new data, the other holds the previous line's data and can be read freely. This dual-buffer architecture allows the FPGA to simultaneously write and read without conflicts.
+Faultplane uses a ***dual-bank ping-pong*** architecture: two independent BRAM banks alternate between writing and reading on successive video lines. While bank A is writing the current line, bank B is reading back the previous line (and vice versa). This guarantees that reading and writing never collide.
 
-### Timing Accumulators and Spatial Zoning
+### Mirror and displacement
 
-Faultplane's two **timing accumulators** generate oscillating signals at programmable frequencies:
-- **Accumulator A** (Vert Freq) operates at the **line rate** — it increments once per scan line and resets at the start of each frame. Creates **horizontal bands**.
-- **Accumulator B** (Horiz Freq) operates at the **pixel rate** — it increments every clock cycle and resets at the start of each line. Creates **vertical columns**.
+Each BRAM bank supports two transformations at the write stage:
 
-The MSB of each accumulator acts as a clock divider. The XOR of the two MSBs creates the **zone selection signal** (`ab_sel`), which alternates between selecting the Top and Bottom parameter sets.
+1. **Mirroring**: The write address can count forward (normal) or backward (reversed), flipping the stored line horizontally. This is controlled by the Top Flip and Bot Flip toggles.
+2. **Inversion**: The input data can be bitwise-complemented before storage, inverting all channels. This is controlled by the Top Invert and Bottom Invert toggles.
 
-### Mirror and Invert
+At the read stage, a per-bank ***offset*** shifts the readback position along the line. When the offset pushes past the end of the line, it wraps around to the beginning — creating a circular shift rather than a hard cutoff. The offset value comes from a processing amplifier that combines a static position (Delay) with a scaled oscillation (Displace).
 
-Each zone can independently **mirror** (horizontally flip the write address) and **invert** (apply bitwise NOT to the pixel data). Mirroring causes the pixel data within a zone to be written in reverse order. Inversion negates every bit of the YUV data, producing a color and luminance negative.
+### Timing accumulators
 
-### Processing Amplifier (Displacement Control)
+Two ***timing accumulators*** generate periodic oscillation patterns synchronized to the video signal:
 
-Each accumulator's output is fed through a **proc_amp**: **Delay** = brightness (DC offset), **Displace** = contrast (gain). The DC offset sets *where* the displacement is centered. The gain controls *how much* the displacement varies as the accumulator oscillates. Higher Displace values create displacement that sweeps back and forth across the line as the accumulator oscillates.
+- The **vertical accumulator** (driven by Vert Freq) counts at the vertical rate, creating a ramp that resets once per field. Its output varies from line to line, producing horizontal banding.
+- The **horizontal accumulator** (driven by Horiz Freq) counts at the horizontal rate, creating a ramp that resets once per line. Its output varies from pixel to pixel within each line, producing vertical segmentation.
 
+The vertical accumulator's output feeds both proc amps, so the displacement amplitude changes from line to line — this is what creates the characteristic banded displacement pattern. The two accumulators' clock outputs are XORed to produce the bank selection signal, which determines whether each pixel receives the Top or Bot configuration.
 
----
-
-## Signal Flow
-
-Timing → Mirror Delay Line → Zone Blanking
+### Signal Flow
 
 ```
-Input Video (YUV 4:4:4 30-bit)
+Input Video (YUV 4:4:4, 30-bit)
 │
 ├── Timing ──────────────────────────────────────────────────────
-│   ├─ Accumulator A (Vert Freq — line rate, creates horiz bands)
-│   │   └── → proc_amp A (Bot Delay = brightness, Bot Displace = contrast)
-│   ├─ Accumulator B (Horiz Freq — pixel rate, creates vert columns)
-│   │   └── → proc_amp B (Top Delay = brightness, Top Displace = contrast)
-│   └─ ab_sel = MSB(acc_a) XOR MSB(acc_b) — zone selection
+│   │
+│   ├─ video_timing_generator    (extract timing from input sync)
+│   ├─ timing_acc A: Vertical    (freq = Pot 3 "Vert Freq")
+│   │   └─ outputs: acc_out_a (ramp), acc_clk_a (clock)
+│   └─ timing_acc B: Horizontal  (freq = Pot 6 "Horiz Freq")
+│       └─ outputs: acc_out_b (ramp), acc_clk_b (clock)
 │
-├── Mirror Delay Line (dual-port RAM, 2048 × 30-bit) ──────────
-│   ├─ RAM A: writes on even lines (mirrored by Bot Flip, inverted by Bottom Invert)
-│   ├─ RAM B: writes on odd lines (mirrored by Top Flip, inverted by Top Invert)
-│   └─ Read: ab_sel selects RAM A or B, offset selects position
+├── Displacement Calculation ────────────────────────────────────
+│   │
+│   ├─ proc_amp A (Bot):  input=acc_out_a, gain=Pot5, offset=Pot4
+│   │   └─ rd_offset_a = contrast_out_a << 1
+│   └─ proc_amp B (Top):  input=acc_out_a, gain=Pot2, offset=Pot1
+│       └─ rd_offset_b = contrast_out_b << 1
 │
-├── Zone Blanking ──────────────────────────────────────────────
-│   └─ If both acc_a AND acc_b < Line Blank threshold: blank to black
-│      └─ Blank Invert reverses the condition
+├── Bank Selection ──────────────────────────────────────────────
+│   └─ ab_sel = acc_clk_a XOR acc_clk_b
 │
-└── Output Video (YUV 4:4:4 30-bit)
+├── Mirror Delay Line (dual-BRAM ping-pong) ─────────────────────
+│   │
+│   ├─ Bank A (Bot): mirror=Sw8, invert=Sw10, offset=rd_offset_a
+│   ├─ Bank B (Top): mirror=Sw7, invert=Sw9,  offset=rd_offset_b
+│   └─ Output: selected by ab_sel
+│
+├── Blanking ────────────────────────────────────────────────────
+│   └─ If both acc_out_a & acc_out_b < threshold (Fader 12):
+│       blank output (Y=0, U=512, V=512)
+│       Blank Invert (Sw11) reverses the logic
+│
+├── Sync Signals ────────────────────────────────────────────────
+│   └─ Pass-through (hsync, vsync, avid, field)
+│
+└── Output (YUV 4:4:4, 30-bit)
 ```
 
-The architecture splits naturally into two domains: the **timing domain** (accumulators, zone selection, blanking) and the **spatial domain** (delay line, mirror, invert). The timing domain defines *where* the zones are. The spatial domain defines *what happens* inside each zone. This separation means you can change the zone pattern independently of the displacement — and vice versa.
+### Signal Flow Notes
 
----
+Two key architectural details distinguish Faultplane's signal chain:
 
-## Parameter Reference
+1. **Shared oscillation source**: Both the Top and Bot displacement offsets are derived from the *same* vertical timing accumulator (accumulator A). The two proc amps apply different gain and offset to that shared ramp, producing two independent displacement curves from a single oscillation. This means the Top and Bot bands always follow the same vertical rhythm but can differ in amplitude and phase.
 
-<img src={faultplane_control_panel} alt="Videomancer front panel with Faultplane loaded"/>
-*Videomancer's front panel with Faultplane active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+2. **XOR bank selection**: The bank selection signal is the XOR of both accumulator clocks. When only the vertical accumulator is active (Horiz Freq = 0%), the selection alternates in horizontal bands. When both accumulators are active, the selection creates a checkerboard-like grid, splitting the image into rectangular zones that alternate between Top and Bot configurations.
 
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Top Delay
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-DC offset of horizontal displacement for Top zones. Think of this as setting *where* the fracture displacement is centered on the scan line. At 0%, the Top zones read from the leftmost part of the line buffer; at 100%, they read from the rightmost. Setting different Top and Bottom delays creates visible displacement discontinuities at zone boundaries — this is the "fault" in Faultplane.
-
----
-
-#### Knob 2 — Top Displace
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Gain applied to Accumulator B's output for Top zones. This determines *how much* the displacement varies within a zone — how far the read address sweeps back and forth. Defaults to 0% (bypass) — no oscillation, displacement is static and determined solely by Top Delay. As you increase this control, the displacement oscillates with the accumulator's frequency, creating rhythmic shifting patterns.
-
----
-
-#### Knob 3 — Vert Freq
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Frequency of Accumulator A, which operates at the line rate. This determines the number of horizontal bands per frame. Low values create a few wide bands. High values create many narrow bands. Because the accumulator resets every frame, the band pattern is stable — it does not drift or shift between frames.
-
----
-
-#### Knob 4 — Bot Delay
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-DC offset for Bottom zones. Setting different Top and Bottom delays creates the characteristic fault displacement — adjacent zones read from different positions in the line buffer, producing visible horizontal discontinuities at every zone boundary.
-
----
-
-#### Knob 5 — Bot Displace
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Gain for Bottom zones. Defaults to 0% (bypass) — no oscillation, displacement is static and determined solely by Bot Delay. Independent of Top Displace (Knob 2). When Top Displace is high and Bot Displace is low, Top zones show strong dynamic displacement while Bottom zones remain relatively static. This asymmetry is what creates the fault-like appearance.
-
----
-
-#### Knob 6 — Horiz Freq
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Frequency of Accumulator B, which operates at the pixel rate. This determines the number of vertical columns per line. Combined with Vert Freq (Knob 3), this defines the full zone grid. Low Horiz Freq = few wide columns. High Horiz Freq = many narrow columns. When both frequencies are similar, the zones approximate squares. When they differ, the zones become rectangles.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Top Flip** | Off | On |
-| **8 — Bot Flip** | Off | On |
-| **9 — Top Invert** | Off | On |
-| **10 — Bottom Invert** | Off | On |
-| **11 — Blank Invert** | Off | On |
-
-The five toggle switches control independent binary options — mirroring, inversion, and blanking reversal. Switches 7/8 and 9/10 form natural pairs: Top and Bottom versions of the same effect. Switch 11 reverses the blanking condition.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Line Blank
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Threshold for zone blanking. Compared against both accumulator outputs (acc_a AND acc_b). When both values are below the threshold, the output is blanked to black (or visible if Blank Invert is on). At 0%, no blanking occurs. As you raise the fader, periodic regions of black appear, aligned with the zone grid defined by Vert Freq and Horiz Freq. At 100%, most of the output is blanked.
-
-
-
+:::tip
+**Order matters.** Data inversion happens *before* the line buffer write, so inverted data is what gets mirrored and displaced. Blanking happens *after* the line buffer read, so it carves into the displaced result.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises progress from simple displacement bands to complex fracture grids with blanking. Start by isolating one accumulator, then combine both.
+These exercises progress from basic displacement to complex fractured compositions. Each exercise builds on the previous one, engaging more of the signal chain.
+### Exercise 1: Simple Fault Lines
 
-### Exercise 1: Horizontal Displacement Bands
+![Simple Fault Lines result](/img/instruments/videomancer/faultplane/faultplane_ex1_s1.png)
+*Simple Fault Lines — simulated result across source images.*
+**Key Concepts**: - The vertical timing accumulator divides the image into horizontal bands
+- Top Delay and Bot Delay control the static offset in each band
+- The two displacement zones alternate, creating the fault-line effect
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex1_s1 },
-    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex1_s2 },
-    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex1_s3 },
-    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex1_s4 },
-    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex1_s5 },
-    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex1_s6 },
-  ]}
-/>
-*Horizontal Displacement Bands — simulated result across source images.*
-**Source**: Camera feed with recognizable horizontal features — architecture, text, or landscapes.
+**What You'll Create**: Learn how the vertical accumulator creates horizontal displacement bands.
 
-**What You'll Create**: Learn how the vertical accumulator creates horizontal bands of displaced image content.
+**Source**: A live camera feed or recorded footage with recognizable horizontal and vertical features (architecture, landscapes, or text).
 
-1. **Isolate vertical bands**: Set Horiz Freq (Knob 6) fully counter-clockwise to eliminate vertical columns.
-2. **Set band frequency**: Set Vert Freq (Knob 3) to about 30%. You should see several horizontal bands.
-3. **Displace one set**: Set Top Delay fully counter-clockwise, Top Displace to ~70%. Keep Bot Delay at center, Bot Displace at 0%.
-4. **Observe**: Top zones show strong horizontal displacement while Bottom zones pass through undisplaced. The boundaries between them are the "fault lines."
-5. **Vary delay**: Slowly sweep Top Delay. Watch the displaced bands shift to read from different parts of the line buffer.
-6. **Add dynamics**: Increase Top Displace to see displacement oscillate within each band.
-7. **Finer banding**: Increase Vert Freq. More, thinner bands appear, each fractured along its boundary.
+1. **Create bands**: Turn **Vert Freq** (Knob 3) to about 30%. Faint horizontal banding may appear depending on input content.
+2. **Displace one zone**: Increase **Top Delay** (Knob 1) to about 50%. One set of horizontal bands slides sideways. The alternating bands remain unshifted.
+3. **Displace the other**: Increase **Bot Delay** (Knob 4) to about 50% in the opposite direction. The two sets of bands now slide in independent directions, creating clearly visible fault lines.
+4. **Adjust band width**: Sweep **Vert Freq** (Knob 3) slowly. The fault lines compress and expand. Low values produce wide bands; high values produce narrow stripes.
+5. **Mirror one zone**: Toggle **Top Flip** (Switch 7) to **On**. The Top bands now show a horizontally reflected image, creating a striking contrast with the normal Bot bands.
 
-**Key concepts**: Accumulator A creates horizontal bands, Delay sets the static offset, Displace sets the oscillation amplitude, zone boundaries create the displacement discontinuities
+**Settings**:
 
----
-
-### Exercise 2: Mirror and Invert Zones
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex2_s1 },
-    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex2_s2 },
-    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex2_s3 },
-    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex2_s4 },
-    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex2_s5 },
-    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex2_s6 },
-  ]}
-/>
-*Mirror and Invert Zones — simulated result across source images.*
-**Source**: Camera feed with strong directional features — faces, text, or architecture.
-
-**What You'll Create**: Explore how mirror and invert create visual discontinuities at zone boundaries.
-
-1. **Set up grid**: Set Vert Freq to ~40%, Horiz Freq to ~25%.
-2. **Top Flip**: Enable Top Flip (Switch 7). Top zones now show a mirrored reflection of their content. Zone boundaries become axes of symmetry.
-3. **Bottom Invert**: Enable Bottom Invert (Switch 10). Bottom zones show color and brightness negative. Adjacent zones alternate between mirrored positive and inverted negative.
-4. **Combine**: Enable both Top Flip and Bottom Invert simultaneously. The image becomes a complex alternating pattern.
-5. **Add displacement**: Bring up Top Displace and Bot Displace. The displaced, mirrored, inverted zones create increasingly complex fracture patterns.
-6. **Add blanking**: Raise Line Blank to ~50%. Periodic black regions appear at grid intersections.
-
-**Key concepts**: Mirror reverses write order within a zone, invert applies bitwise NOT to all 30 YUV bits, zone boundaries create discontinuities between different processing modes
+| Control | Value |
+|---------|-------|
+| Top Delay | 50% |
+| Top Displace | 0% |
+| Vert Freq | 30% |
+| Bot Delay | 50% |
+| Bot Displace | 0% |
+| Horiz Freq | 0% |
+| Top Flip | On |
+| Bot Flip | Off |
+| Top Invert | Off |
+| Bottom Invert | Off |
+| Blank Invert | Off |
+| Line Blank | 0% |
 
 ---
 
-### Exercise 3: Checkerboard Grid with Blanking
+### Exercise 2: Oscillating Displacement
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: faultplane_source1_dog, after: faultplane_ex3_s1 },
-    { label: "Cat", before: faultplane_source2_cat, after: faultplane_ex3_s2 },
-    { label: "Clouds", before: faultplane_source3_clouds, after: faultplane_ex3_s3 },
-    { label: "Pattern", before: faultplane_source4_pattern, after: faultplane_ex3_s4 },
-    { label: "Woman", before: faultplane_source5_woman, after: faultplane_ex3_s5 },
-    { label: "Berries", before: faultplane_source6_berries, after: faultplane_ex3_s6 },
-  ]}
-/>
-*Checkerboard Grid with Blanking — simulated result across source images.*
-**Source**: Any footage, especially geometric or high-contrast material.
+![Oscillating Displacement result](/img/instruments/videomancer/faultplane/faultplane_ex2_s1.png)
+*Oscillating Displacement — simulated result across source images.*
+**Key Concepts**: - Top Displace and Bot Displace scale the vertical accumulator into the read offset
+- The displacement amplitude varies from line to line, creating wave-like shifts
+- Horiz Freq adds vertical segmentation for a grid pattern
 
-**What You'll Create**: Create a fine-grid fracture pattern with selective blanking.
+**What You'll Create**: Explore how the timing accumulators modulate displacement amplitude.
 
-1. **Fine grid**: Set Vert Freq to ~60%, Horiz Freq to ~50%. Many small zones appear.
-2. **Differentiate zones**: Set Top Delay ~25%, Bot Delay ~75%. The displacement difference makes zone boundaries clearly visible.
-3. **Add processing**: Enable Top Flip and Bottom Invert for maximum visual contrast between zones.
-4. **Apply blanking**: Raise Line Blank to ~50%. Periodic regions of the grid go black, creating a rhythmic pattern of visible and blanked zones.
-5. **Invert blanking**: Toggle Blank Invert (Switch 11). The visible and blanked regions swap — you now see the "negative space."
-6. **Sweep threshold**: Slowly move Line Blank from 0% to 100% to see the blanking pattern evolve.
-7. **Animate**: Vary Vert Freq or Horiz Freq slowly. The zone grid pattern shifts, creating animated fracture motion.
+**Source**: Footage with strong geometric features — tiled floors, window grids, or striped patterns.
 
-**Key concepts**: Both accumulators contribute to zone selection, blanking is independent of displacement/mirror/invert, Blank Invert shows the negative space, frequency ratio determines zone aspect ratio
+1. **Prepare**: Set **Vert Freq** (Knob 3) to about 40% to create moderate banding.
+2. **Oscillating Top**: Increase **Top Displace** (Knob 2) slowly. The Top bands develop a wave-like displacement that shifts across each line. The wave amplitude grows with the knob.
+3. **Oscillating Bot**: Increase **Bot Displace** (Knob 5). The Bot bands develop their own wave pattern, independent of the Top.
+4. **Asymmetric waves**: Set Top Displace high (~80%) and Bot Displace low (~20%). The alternating bands now have dramatically different displacement amplitudes.
+5. **Add horizontal segmentation**: Increase **Horiz Freq** (Knob 6) to about 30%. The horizontal banding is now crosscut by vertical divisions, creating a grid of displaced zones.
+6. **Inversion accent**: Toggle **Top Invert** (Switch 9) to **On**. The Top zones now display inverted video, making the grid pattern even more visible.
 
----
+**Settings**:
 
-
-## Tips
-
-- **Invert is per-channel**: All 30 bits of YUV data are inverted simultaneously — luminance and chrominance together. One inverted zone next to one normal zone creates maximum visual contrast.
-- **Blanking tracks the grid**: The blanking pattern inherits the grid geometry defined by Vert Freq and Horiz Freq.
-- **Blank Invert for negative space**: The "negative space" of a blanking pattern is often more visually interesting than the pattern itself.
-- **Frequency ratio matters**: Similar Vert and Horiz Freq values create roughly square zones. Different values create rectangles — wide bands or tall columns.
-- **Feedback loops**: Routing output back to input creates recursive spatial displacement with complex layered fracture patterns that evolve over time.
+| Control | Value |
+|---------|-------|
+| Top Delay | 0% |
+| Top Displace | 80% |
+| Vert Freq | 40% |
+| Bot Delay | 0% |
+| Bot Displace | 20% |
+| Horiz Freq | 30% |
+| Top Flip | Off |
+| Bot Flip | Off |
+| Top Invert | On |
+| Bottom Invert | Off |
+| Blank Invert | Off |
+| Line Blank | 0% |
 
 ---
 
+### Exercise 3: Fractured Kaleidoscope
+
+![Fractured Kaleidoscope result](/img/instruments/videomancer/faultplane/faultplane_ex3_s1.png)
+*Fractured Kaleidoscope — simulated result across source images.*
+**Key Concepts**: - Mirroring, inversion, and displacement layer together for kaleidoscopic effects
+- Blanking extracts geometric shapes from the displacement pattern
+- Blank Invert toggles between positive and negative mask shapes
+
+**What You'll Create**: Combine mirroring, inversion, displacement, and blanking for an abstract fractured composition.
+
+**Source**: High-contrast footage, especially close-up textures, faces, or colorful abstract material.
+
+1. **Full grid**: Set **Vert Freq** to ~50% and **Horiz Freq** to ~40% to create a fine grid of displacement zones.
+2. **Symmetric mirrors**: Enable both **Top Flip** (Switch 7) and **Bot Flip** (Switch 8). The grid cells alternate between normal and mirrored images.
+3. **Moderate displacement**: Set **Top Displace** to ~60% and **Bot Displace** to ~40%. Each zone now has its own displacement wave.
+4. **Invert one zone**: Enable **Top Invert** (Switch 9). Alternating zones display inverted video, creating a dramatic tonal contrast across the grid.
+5. **Carve with blanking**: Increase **Line Blank** (Fader 12) to about 40%. Portions of the grid are replaced with black, isolating floating fragments of the pattern.
+6. **Invert the mask**: Toggle **Blank Invert** (Switch 11) to **On**. The blanking mask flips, revealing the previously hidden areas and hiding what was visible.
+7. **Animate**: Slowly sweep **Top Delay** (Knob 1) to shift the pattern across the blanking mask.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Top Delay | 30% |
+| Top Displace | 60% |
+| Vert Freq | 50% |
+| Bot Delay | 20% |
+| Bot Displace | 40% |
+| Horiz Freq | 40% |
+| Top Flip | On |
+| Bot Flip | On |
+| Top Invert | On |
+| Bottom Invert | Off |
+| Blank Invert | On |
+| Line Blank | 40% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Bitwise NOT** | A logic operation that flips every bit of a value (0→1, 1→0); applied to all 30 bits of YUV data simultaneously when inversion is enabled. |
-| **Clock divider** | A circuit that reduces a clock frequency by toggling its output every N input cycles; the MSB of each timing accumulator acts as a divide-by-two clock divider. |
-| **DC offset** | A constant value added to a signal, shifting it up or down without changing its shape; the Delay controls set the DC offset of the displacement address. |
-| **Dual-port RAM** | Memory with independent read and write ports, allowing simultaneous writing of new data and reading of previously stored data on alternating scanlines. |
-| **Line rate** | The frequency at which horizontal scanlines are produced; Accumulator A increments once per line, creating horizontal band patterns. |
-| **MSB (Most Significant Bit)** | The highest-order bit of a binary value; the MSBs of the two timing accumulators are XOR'd to produce the zone selection signal. |
-| **Pixel rate** | The frequency at which individual pixels are clocked; Accumulator B increments every pixel clock cycle, creating vertical column patterns. |
-| **Proc amp (Processing Amplifier)** | A circuit that adjusts a signal's gain (contrast) and DC offset (brightness); used here to shape the accumulator outputs into displacement addresses. |
-| **Scanline** | One horizontal row of pixels in a video frame; Faultplane's delay line operates on a per-scanline basis. |
-| **Timing accumulator** | A register that increments by a programmable amount on each clock or line event, producing an oscillating signal whose frequency determines the zone pattern. |
-| **XOR (Exclusive-OR)** | A bitwise logic operation that outputs 1 when inputs differ; used here to combine the two accumulator MSBs into the alternating zone selection signal. |
+- **Accumulator**: A counter that wraps around at a configurable rate, producing a periodic ramp waveform synchronized to video timing.
+
+- **BRAM**: Block RAM; dedicated memory cells inside the FPGA used to store one or more lines of video data.
+
+- **Displacement**: Shifting the horizontal read position of a video line relative to its write position, causing the image to slide sideways.
+
+- **Fault Plane**: In geology, the surface along which rock layers fracture and slide past one another; here, the boundary between two displacement zones.
+
+- **Line Buffer**: A memory that stores exactly one horizontal line of video, enabling per-line delay and displacement effects.
+
+- **Mirroring**: Reversing the horizontal order of pixels within a line, creating a left-right reflection.
+
+- **Ping-Pong**: A dual-buffer technique where two memory banks alternate between writing and reading to avoid read-write collisions.
+
+- **Proc Amp**: Processing Amplifier; a gain-and-offset stage that scales and shifts a signal, here used to convert a timing ramp into a displacement offset.
+
+- **Timing Accumulator**: A phase accumulator synchronized to video sync signals, generating oscillation patterns at vertical or horizontal rates.
+
+- **XOR**: Exclusive OR; a logic operation that outputs true when its two inputs differ, used here to combine two oscillation clocks into a bank selection signal.
+
 
 ---

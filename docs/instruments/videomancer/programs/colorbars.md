@@ -1,4 +1,4 @@
----
+﻿---
 draft: true
 sidebar_position: 57
 slug: /instruments/videomancer/colorbars
@@ -7,287 +7,393 @@ image: /img/instruments/videomancer/colorbars/colorbars_hero_s1.png
 description: "Every video engineer's first instinct when commissioning a new system is to call up color bars."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import colorbars_control_panel from '/img/instruments/videomancer/colorbars/colorbars_control_panel.png';
-import colorbars_source1_boat from '/img/instruments/videomancer/colorbars/colorbars_source1_boat.png';
-import colorbars_source2_cat from '/img/instruments/videomancer/colorbars/colorbars_source2_cat.png';
-import colorbars_source3_clouds from '/img/instruments/videomancer/colorbars/colorbars_source3_clouds.png';
-import colorbars_source4_pattern from '/img/instruments/videomancer/colorbars/colorbars_source4_pattern.png';
-import colorbars_source5_man from '/img/instruments/videomancer/colorbars/colorbars_source5_man.png';
-import colorbars_source6_paint from '/img/instruments/videomancer/colorbars/colorbars_source6_paint.png';
-import colorbars_hero_s1 from '/img/instruments/videomancer/colorbars/colorbars_hero_s1.png';
-import colorbars_hero_s2 from '/img/instruments/videomancer/colorbars/colorbars_hero_s2.png';
-import colorbars_hero_s3 from '/img/instruments/videomancer/colorbars/colorbars_hero_s3.png';
-import colorbars_hero_s4 from '/img/instruments/videomancer/colorbars/colorbars_hero_s4.png';
-import colorbars_hero_s5 from '/img/instruments/videomancer/colorbars/colorbars_hero_s5.png';
-import colorbars_hero_s6 from '/img/instruments/videomancer/colorbars/colorbars_hero_s6.png';
-
-# Colorbars
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Boat", before: colorbars_source1_boat, after: colorbars_hero_s1 },
-    { label: "Cat", before: colorbars_source2_cat, after: colorbars_hero_s2 },
-    { label: "Clouds", before: colorbars_source3_clouds, after: colorbars_hero_s3 },
-    { label: "Pattern", before: colorbars_source4_pattern, after: colorbars_hero_s4 },
-    { label: "Man", before: colorbars_source5_man, after: colorbars_hero_s5 },
-    { label: "Paint", before: colorbars_source6_paint, after: colorbars_hero_s6 },
-  ]}
-/>
-*Colorbars generating a full-amplitude SMPTE 7-bar test pattern — seven clean vertical stripes spanning the full YUV gamut from white through blue.*
+![Colorbars hero image](/img/instruments/videomancer/colorbars/colorbars_hero_s1.png)
+*Seven perfectly rendered SMPTE color bars spanning the full frame, their luminance and chroma independently scaled to reveal the underlying YUV structure of broadcast video.*
 
 ---
 
 ## Overview
 
-Every video engineer's first instinct when commissioning a new system is to call up color bars. Colorbars generates the classic seven-bar SMPTE test pattern directly in FPGA hardware, producing pixel-accurate vertical stripes at either 75% or 100% amplitude. Because the pattern is generated from constant YUV lookup tables with no frame memory or feedback, the output is perfectly static and repeatable — ideal for calibrating monitors, verifying signal chains, and confirming that downstream equipment decodes color correctly.
+**Colorbars** is a ***synthesis*** program that generates SMPTE-style color bar test patterns from scratch, without requiring any video input. It produces seven vertical bars — White, Yellow, Cyan, Green, Magenta, Red, and Blue — at selectable 75% or 100% amplitude, the two standard levels used in broadcast engineering. Independent brightness and saturation controls let you reshape the bars for creative use beyond simple calibration.
 
-The program auto-measures the active line width from incoming sync signals, then uses a DDA (Digital Differential Analyzer) algorithm to divide each line into seven equal bars without requiring a hardware divider. This makes the pattern resolution-independent: it produces correct bars at any video standard the Videomancer core supports. The Y Level and C Level knobs allow independent attenuation of luminance and chrominance, which is useful for testing decoder response to partial-amplitude signals or for creative desaturation effects.
+Because Colorbars is a synthesis program, it creates its own imagery rather than processing an incoming signal. The **Mix** fader blends between the generated bars and whatever video is passing through the input, enabling smooth crossfades between test patterns and live material. A **Mono** toggle strips the chroma channels, producing a pure grayscale staircase — useful for isolating luminance behavior in a signal chain.
 
-The name *Colorbars* needs no etymology — it is exactly what it says. The seven-bar pattern (White, Yellow, Cyan, Green, Magenta, Red, Blue) descends from the SMPTE Engineering Guideline EG 1, first standardized in 1978 and still the universal language of video test signals.
+:::note
+Colorbars auto-measures the active video resolution from the input timing signals, so its bars are correctly proportioned at any supported video standard — SD, HD, or anything in between.
+:::
+
+### What's In a Name?
+
+The name ***Colorbars*** is literal. These are the same color bars that have been the universal language of video engineering since the 1970s. Every television station, every broadcast truck, every post-production facility speaks this language. When you see color bars, you know the signal chain is alive and calibrated. Videomancer's Colorbars puts this essential tool directly inside the video synthesis signal path.
 
 ---
 
 ## Quick Start
 
-1. **Load and go**: Colorbars produces a valid test pattern at default settings — seven 75% bars, full brightness, full saturation, normal order.
-2. **Switch to 100%**: Toggle Level (Switch 7) to 100% for full-amplitude bars that exercise the complete YUV gamut.
-3. **Verify with a waveform monitor**: Route the output to a vectorscope or waveform monitor to confirm chrominance levels and phase.
+1. With all controls at their defaults, Colorbars displays a full-brightness set of seven vertical bars at **75%** amplitude. The bars fill the screen from left to right: white, yellow, cyan, green, magenta, red, blue.
+2. Flip the **Level** toggle (Switch 7) to **100%**. The bars punch up to full saturation — yellows become more vivid, blues deepen. This is the difference between SMPTE 75% and 100% amplitude bars.
+3. Slowly turn **Y Level** (Knob 1) counterclockwise. The entire pattern dims evenly, as if a master brightness control were being lowered. The bars fade toward black.
+4. Now turn **C Level** (Knob 2) counterclockwise. The colors desaturate toward neutral gray while brightness stays unchanged. When C Level reaches zero, the bars become a pure grayscale staircase.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Colorbars loaded](/img/instruments/videomancer/colorbars/colorbars_control_panel.png)
+*Videomancer's front panel with Colorbars active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Y Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Y Level** controls the overall brightness gain of the generated color bars. At 100%, fully clockwise (the default), the luminance values match the standard SMPTE specification. As you turn the knob counterclockwise, all bars dim proportionally — white becomes gray, yellow becomes olive, and so on. At 0%, the entire pattern goes to black.
+
+Y Level scales the raw luminance by multiplying each bar's Y value by the knob position and dividing by 1024, so the control is perfectly linear from full black to full brightness.
+
+---
+
+### Knob 2 — C Level
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**C Level** controls the chroma saturation gain of the generated bars, independently of brightness. At 100% (the default), the U and V channels carry their full SMPTE-specified deviation from the neutral midpoint. As you decrease C Level, colors desaturate toward gray while their brightness remains unchanged. At 0%, all chroma is removed and the bars become a grayscale luminance staircase.
+
+:::tip
+Setting **Y Level** to maximum and **C Level** to zero produces a perfect grayscale step wedge — seven bars of descending brightness with no color. This is a classic tool for checking monitor brightness and contrast calibration.
+:::
+
+---
+
+### Knob 3 — —
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 50 |
+
+This control is reserved for future use. Adjusting Knob 3 has no effect on the output.
+
+---
+
+### Knob 4 — —
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 50 |
+
+This control is reserved for future use. Adjusting Knob 4 has no effect on the output.
+
+---
+
+### Knob 5 — —
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 50 |
+
+This control is reserved for future use. Adjusting Knob 5 has no effect on the output.
+
+---
+
+### Knob 6 — —
+
+| Property | Value |
+|----------|-------|
+| Range | 0 – 100 |
+| Default | 50 |
+
+This control is reserved for future use. Adjusting Knob 6 has no effect on the output.
+
+---
+
+### Switch 7 — Level
+
+| Property | Value |
+|----------|-------|
+| Off | 75% |
+| On | 100% |
+| Default | 75% |
+
+**Level** selects between the two standard color bar amplitudes. In the **75%** position (the default), the bars conform to the SMPTE 75% amplitude specification — colors are muted to the levels traditionally used for routine signal alignment. In the **100%** position, the bars use full-amplitude YUV values, producing the most saturated colors the standard permits.
+
+:::note
+The 75% and 100% labels refer to the ***chroma amplitude relative to full scale***, not to the brightness of the white bar. At 75%, the white bar's Y value is 767 (out of 1023). At 100%, the white bar reaches 1023.
+:::
+
+---
+
+### Switch 8 — Order
+
+| Property | Value |
+|----------|-------|
+| Off | Normal |
+| On | Reverse |
+| Default | Normal |
+
+**Order** controls the horizontal sequence of the seven bars. In the **Normal** position (the default), bars appear left to right in descending luminance order: White, Yellow, Cyan, Green, Magenta, Red, Blue. In the **Reverse** position, the order flips: Blue, Red, Magenta, Green, Cyan, Yellow, White.
+
+Reversing the order can be useful for creative compositions or for checking that downstream processing treats both halves of the chroma spectrum symmetrically.
+
+---
+
+### Switch 9 — —
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+This toggle is reserved for future use. Changing Switch 9 has no effect on the output.
+
+---
+
+### Switch 10 — —
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+This toggle is reserved for future use. Changing Switch 10 has no effect on the output.
+
+---
+
+### Switch 11 — Mono
+
+| Property | Value |
+|----------|-------|
+| Off | Color |
+| On | Mono |
+| Default | Color |
+
+**Mono** strips the chroma channels from the generated bars, forcing U and V to their neutral midpoint (512). In the **Color** position (the default), bars display their full YUV color. In the **Mono** position, bars become a grayscale staircase showing only the luminance component of each bar.
+
+:::tip
+**Mono** differs from setting **C Level** to zero in a subtle way. Mono forces U and V to exactly 512 in hardware, while C Level at zero *scales* the chroma deviation to zero through multiplication. The visual result is identical, but Mono is a clean digital switch while C Level is a continuous gain.
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the input video signal and the generated color bars. At 100% (the default), only the synthesized bars appear. At 0%, the input video passes through unchanged. Intermediate positions blend the two signals together, allowing color bars to be overlaid at partial opacity on live video.
+
+The Mix fader uses a four-stage interpolator for smooth, glitch-free crossfading.
+
+:::warning
+At 0% Mix, Colorbars acts as a simple passthrough. The bars are still being generated internally, but they are not visible in the output.
+:::
 
 ---
 
 ## Background
 
-### The SMPTE Color Bar Standard
+### Color Bars and Broadcast History
 
-The seven-bar color bar pattern was formalized by SMPTE (Society of Motion Picture and Television Engineers) as Engineering Guideline EG 1. The bar order — White, Yellow, Cyan, Green, Magenta, Red, Blue — is not arbitrary: it follows a descending luminance sequence. White has the highest Y value, blue the lowest. This ordering makes the pattern immediately diagnostic on a waveform monitor: the luminance staircase should descend smoothly from left to right, and any deviation indicates a color-space or gain error.
+Color bars are the oldest and most universal test pattern in television. The ***SMPTE color bar*** pattern was standardized by the Society of Motion Picture and Television Engineers and has been used since the early days of color broadcasting. Its seven bars — white, yellow, cyan, green, magenta, red, and blue — are arranged in descending luminance order, creating a staircase that exercises every combination of the three primary color components.
 
-### 75% vs 100% Amplitude
+In broadcast facilities, color bars are transmitted before a program to allow engineers at the receiving end to calibrate their equipment. The pattern exercises the full gamut of the color system: the white bar tests peak luminance, the saturated colors test chroma accuracy, and the descending brightness staircase tests the linearity of the luminance path. The 75% amplitude variant is the everyday workhorse; the 100% variant pushes the system to its limits.
 
-The 75% bar pattern is the most commonly used test signal in broadcast environments. At 75% amplitude, the peak chrominance levels remain within the "legal" range of analog video, avoiding clipping in legacy equipment. The 100% pattern pushes chrominance to full excursion — useful for testing headroom and confirming that the signal chain handles full-gamut YUV without distortion. Many consumer monitors and capture cards have never seen a proper 100% bar signal; switching between levels is a quick diagnostic for downstream clipping.
+### YUV Color Representation
 
-### DDA: Division Without a Divider
+Colorbars generates its output in ***YUV 4:4:4*** color space, the native format of Videomancer's video pipeline. Each pixel has three 10-bit components: ***Y*** (luminance, or brightness), ***U*** (blue-difference chroma), and ***V*** (red-difference chroma). The luminance channel ranges from 0 (black) to 1023 (peak white). The chroma channels are centered at 512 (neutral gray), with deviations above and below representing color in opposite directions.
 
-The iCE40 HX4K has no hardware divider, and implementing division in LUTs is expensive. Colorbars uses a Digital Differential Analyzer — essentially the Bresenham line algorithm applied in one dimension — to distribute seven bars evenly across any measured line width. An accumulator adds 7 per pixel and wraps at the measured width, advancing the bar index at each wrap. This produces bars of exactly equal width (±1 pixel rounding) regardless of resolution.
+This separation of brightness from color is what makes the **Y Level** and **C Level** controls possible. Because luminance and chrominance are independent channels, Colorbars can scale them separately without artifacts — something that would require complex matrix math in an RGB color space.
 
+### Resolution-Independent Rendering
 
----
+Colorbars uses a ***digital differential analyzer*** (DDA) to divide the active video line into seven equal bars without hardware division. An accumulator adds seven to its value at each pixel clock. When the accumulator reaches or exceeds the measured line width, it wraps around and advances to the next bar index. This technique adapts automatically to any resolution — the bars are always evenly spaced regardless of whether the video format is 720×480, 1280×720, or 1920×1080.
 
-## Signal Flow
+The active line width is auto-measured by counting pixels between horizontal sync edges. This measurement updates every line, so the bars remain correctly proportioned even if the video format changes dynamically.
+
+### Signal Flow
 
 ```
- registers_in(0) ──► Y Level gain
- registers_in(1) ──► C Level gain
- registers_in(6)(0) ► Level 75/100%
- registers_in(6)(1) ► Reverse order
-
- ┌────────────────────────────────────────────────────────────┐
- │  Timing Generator (1 clk)                                  │
- │     data_in sync ──► video_timing_generator_fielded        │
- │     outputs: avid, avid_start, hsync_start                 │
- │                                                            │
- │  Pixel Counter (1 clk)                                     │
- │     timing ──► h_count, v_count                            │
- │                                                            │
- │  Resolution Measure (continuous)                           │
- │     counts active pixels per line ──► s_measured_h         │
- │                                                            │
- │  DDA Bar Index (1 clk)                                     │
- │     accum += 7 per pixel, wrap at s_measured_h             │
- │     ──► s_bar_index (0..6)                                 │
- │                                                            │
- │  YUV Lookup (1 clk)                                        │
- │     bar_index × level_select ──► LUT ──► bar_y, bar_u,    │
- │     bar_v                                                  │
- │     (reverse: index = 6 − bar_index)                       │
- │                                                            │
- │  Gain Scaling (1 clk)                                      │
- │     out_y = bar_y × Y_Level / 1024                         │
- │     out_u = 512 ± |bar_u − 512| × C_Level / 1024          │
- │     out_v = 512 ± |bar_v − 512| × C_Level / 1024          │
- │                                                            │
- │  Output Register (1 clk)                                   │
- │     ──► s_out_y, s_out_u, s_out_v                          │
- └────────────────────────────────────────────────────────────┘
-
- Sync pipeline: 6 × shift register (avid, hsync_n, vsync_n, field_n)
-
- ┌────────────────────────────────────────────────────────────┐
- │  Interpolator (4 clk per channel)                          │
- │     lerp(input_delayed, colorbars_output, Mix)             │
- │     ──► data_out Y/U/V                                     │
- └────────────────────────────────────────────────────────────┘
-
- Bypass mux: toggle_switch_11 selects raw input
+Input Timing Signals (hsync, vsync, avid)
+│
+├── Video Timing Generator ─────────────────────────────────────
+│   └─ Edge detection on sync signals
+│
+├── Resolution Measurement ─────────────────────────────────────
+│   └─ Count active pixels per line → measured_h
+│
+├── DDA Bar Index ──────────────────────────────────────────────
+│   └─ Accumulator divides line into 7 equal bars
+│
+├── Bar Generation Pipeline ────────────────────────────────────
+│   │
+│   ├─ 1. Bar Index (with optional Reverse)
+│   ├─ 2. YUV Lookup (75% or 100% LUT)
+│   ├─ 3. Y Gain Scaling (Y × Y_Level / 1024)
+│   ├─ 4. C Gain Scaling ((UV - 512) × C_Level / 1024 + 512)
+│   └─ 5. Mono Override (force U, V to 512)
+│
+├── Input Data Delay ───────────────────────────────────────────
+│   └─ 10-stage shift register (align input for mix)
+│
+├── Interpolator (Mix) ─────────────────────────────────────────
+│   └─ Crossfade: input × (1 - Mix) + bars × Mix
+│
+├── Sync Pipeline ──────────────────────────────────────────────
+│   └─ 14-stage shift register + 2 IO alignment registers
+│
+└── Output Assignment ──────────────────────────────────────────
+    └─ data_out ← mixed YUV + delayed sync
 ```
 
-The pipeline is purely combinational through constant LUTs — no BRAM, no feedback, no frame memory. The DDA bar index tracks horizontal position with one clock of latency, and the YUV lookup and gain scaling each add one clock. The 6-element sync pipeline matches the total processing delay so that video timing signals arrive at the output simultaneously with the processed pixel data. The chroma gain stage works in unsigned arithmetic: it computes the absolute deviation of each chroma channel from the midpoint (512), scales it by the C Level pot, then adds or subtracts the result from 512 depending on the original sign. This preserves the chroma phase while allowing smooth desaturation to neutral gray.
+### Signal Flow Notes
 
----
+The Colorbars pipeline separates timing analysis from color generation. The video timing generator extracts edge-detected sync signals from the input, and the resolution measurement counts active pixels per line. These two systems feed the DDA bar index calculator, which determines which of the seven bars corresponds to the current pixel position.
 
-## Parameter Reference
+The bar generation pipeline is a two-stage process: first, the appropriate YUV triple is read from a lookup table (selected by the 75/100% toggle and the optional reverse), and then gain scaling is applied independently to luminance and chroma. The chroma gain preserves the neutral midpoint — it scales the *deviation* from 512, not the raw value — so reducing C Level always converges toward neutral gray rather than toward zero.
 
-<img src={colorbars_control_panel} alt="Videomancer front panel with Colorbars loaded"/>
-*Videomancer's front panel with Colorbars active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Y Level
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Controls the overall luminance level of the color bars. At 100%, bar Y values are output at their nominal amplitude (75% or 100% depending on the Level toggle). At 0%, all bars collapse to black. Intermediate positions scale linearly. This is useful for testing waveform monitor calibration — dialing the gain to exactly 50% should produce a half-amplitude staircase.
-
----
-
-#### Knob 2 — C Level
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Controls the chrominance saturation of the color bars. At 100%, chroma channels carry their full deviation from neutral (512). At 0%, all chroma collapses to 512 and the output becomes a pure luminance grayscale staircase — white through black with no color. This is the classic "luma-only bars" test signal, useful for isolating luminance path issues from chrominance path issues.
-
----
-
-#### Knob 3 — —
-| Property | Value |
-|----------|-------|
-| Range | 0 – 100 |
-| Default | 50 |
-
-Unused. This control has no effect on the output.
-
----
-
-#### Knob 4 — —
-| Property | Value |
-|----------|-------|
-| Range | 0 – 100 |
-| Default | 50 |
-
-Unused. This control has no effect on the output.
-
----
-
-#### Knob 5 — —
-| Property | Value |
-|----------|-------|
-| Range | 0 – 100 |
-| Default | 50 |
-
-Unused. This control has no effect on the output.
-
----
-
-#### Knob 6 — —
-| Property | Value |
-|----------|-------|
-| Range | 0 – 100 |
-| Default | 50 |
-
-Unused. This control has no effect on the output.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Level** | 75% | 100% |
-| **8 — Order** | Normal | Reverse |
-| **9 — —** | Off | On |
-| **10 — —** | Off | On |
-| **11 — Mono** | Color | Mono |
-
-Only two of the five toggles are active. Level (Switch 7) selects between the 75% and 100% bar amplitude standards. Order (Switch 8) reverses the bar sequence from the standard White→Blue to Blue→White. Bypass (Switch 11) routes the input signal directly to the output, bypassing all processing. Switches 9 and 10 are unused.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Wet/dry crossfade between the delayed input video and the generated color bars. At 0%, the output is pure input video. At 100%, the output is pure color bars. Intermediate positions blend the two, which can be useful for superimposing bars over a live image to check alignment, or for creative overlay effects.
-
-
-
+:::tip
+The total pipeline delay is 16 clock cycles (10 processing + 4 interpolator + 2 IO alignment), chosen to be divisible by 4 for compatibility with the video core's clock division architecture.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises demonstrate the primary use cases for Colorbars: signal verification, chrominance testing, and gain calibration.
+These exercises explore Colorbars as both a calibration tool and a creative element in a video synthesis signal chain.
+### Exercise 1: Grayscale Staircase
 
-### Exercise 1: Standard 75% Test Pattern
+![Grayscale Staircase result](/img/instruments/videomancer/colorbars/colorbars_ex1_s1.png)
+*Grayscale Staircase — simulated result across source images.*
+**Key Concepts**: - Separating luminance from chroma reveals the brightness structure of the color bar pattern
+- The seven bars form a descending staircase of brightness levels
+- Grayscale bars are the foundation of contrast and brightness calibration
 
-1. Load Colorbars with default settings. The output should show seven vertical bars at 75% amplitude.
-2. Observe the bar order from left to right: White, Yellow, Cyan, Green, Magenta, Red, Blue.
-3. If a waveform monitor is available, confirm the luminance staircase descends smoothly from left to right.
-4. Toggle Level (Switch 7) to 100%. The bars become visibly brighter and more saturated — the luminance staircase extends to full scale.
-5. Return to 75%.
+**What You'll Create**: Use Colorbars to generate a pure grayscale luminance staircase for monitor calibration.
 
-**Key concepts**: SMPTE bar order follows descending luminance, 75% bars stay within broadcast-legal chrominance limits, 100% bars exercise full YUV gamut
+1. **Default color bars**: Start with all controls at their defaults. The screen displays seven colored bars at 75% amplitude.
+2. **Strip the color**: Toggle **Mono** (Switch 11) to the **Mono** position. The bars become seven shades of gray, from bright white on the left to near-black on the right.
+3. **Full amplitude**: Switch **Level** (Switch 7) to **100%**. The white bar reaches peak brightness and the steps between bars become more pronounced.
+4. **Dim the staircase**: Slowly turn **Y Level** (Knob 1) counterclockwise. The entire staircase dims evenly. Find the point where the darkest bar just disappears into black — this reveals the monitor's black level.
+5. **Check separation**: Return **Y Level** to maximum. Observe that all seven steps are clearly distinguishable. If any adjacent bars merge, the monitor's contrast or gamma needs adjustment.
 
----
+**Settings**:
 
-### Exercise 2: Grayscale Staircase
-
-1. Set C Level (Knob 2) to 0%. All chroma collapses to neutral — the output becomes seven shades of gray.
-2. On a waveform monitor, only the Y channel shows activity; U and V are flat at 512.
-3. Gradually increase C Level. Watch the chroma return — at 50%, the color is half-saturated; at 100%, it is fully saturated.
-4. Set Y Level (Knob 1) to 50%. The entire staircase drops to half amplitude while maintaining the same relative bar-to-bar ratios.
-
-**Key concepts**: C Level at zero produces a luminance-only test signal, Y Level scales the entire staircase uniformly, separating Y from C isolates signal path issues
-
----
-
-### Exercise 3: Reversed Full-Amplitude Bars
-
-1. Toggle Level (Switch 7) to 100% for full-amplitude bars.
-2. Toggle Order (Switch 8) to Reverse. The bars now read Blue→Red→Magenta→Green→Cyan→Yellow→White from left to right.
-3. On a waveform monitor, the luminance staircase now ascends from left to right — Blue (lowest Y) to White (highest Y).
-4. Set Mix to ~50% to overlay the bars on a live video input. The color bar pattern is visible superimposed on the source image.
-
-**Key concepts**: Reversed order produces ascending luminance staircase, 100% amplitude tests full-gamut headroom, Mix fader enables overlay composition
-
----
-
-
-## Tips
-
-- **Use for signal chain verification**: Route Colorbars through your entire video chain (mixer, effects, capture) and verify that all seven bars arrive at the destination with correct hue and amplitude.
-- **Grayscale mode for luminance testing**: Set C Level to 0% for a pure grayscale staircase — this isolates luminance-path issues from chrominance-path issues.
-- **100% bars reveal clipping**: If your downstream equipment clips or distorts the 100% pattern but handles 75% cleanly, the chroma path lacks headroom for full-gamut signals.
-- **Reversed bars for ascending ramp**: Toggle Reverse for an ascending luminance staircase, which some waveform monitors display more intuitively.
-- **Mix for overlay alignment**: Set Mix to ~30% to ghost the bar pattern over a live image — useful for checking that the generated pattern aligns with the active picture area.
-- **Zero-resource pattern**: Colorbars uses no BRAM and minimal LUTs, making it one of the lightest programs available. It can serve as a baseline for FPGA resource comparisons.
+| Control | Value |
+|---------|-------|
+| Y Level | 100% |
+| C Level | 100% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| Level | 100% |
+| Order | Normal |
+| — | Off |
+| — | Off |
+| Mono | Mono |
+| Mix | 100% |
 
 ---
 
+### Exercise 2: Chroma vs. Luminance Isolation
+
+![Chroma vs. Luminance Isolation result](/img/instruments/videomancer/colorbars/colorbars_ex2_s1.png)
+*Chroma vs. Luminance Isolation — simulated result across source images.*
+**Key Concepts**: - YUV separates brightness (Y) from color (U, V)
+- Chroma gain scales deviation from the neutral midpoint, not the raw value
+- Independent control reveals the hidden structure of composite color
+
+**What You'll Create**: Explore how independent Y and C controls separate brightness from color in the bar pattern.
+
+1. **Vivid starting point**: Start at defaults with **Level** set to **100%** for maximum color saturation. Seven vivid bars fill the screen.
+2. **Drain the color**: Turn **C Level** (Knob 2) slowly to zero. The colors drain away, leaving a grayscale staircase. The brightness of each bar is unchanged — only the color disappears.
+3. **Remove all brightness**: Return **C Level** to 100%. Now turn **Y Level** (Knob 1) to zero. The entire screen goes black, because all luminance has been removed.
+4. **Dim glow**: Set **Y Level** to about 50%. The bars are dim but still colored. Notice that the color saturation appears more vivid at low brightness — this is a perceptual effect.
+5. **Vivid on dark**: Slowly increase **C Level** while keeping **Y Level** at 50%. The bar colors become increasingly vivid against the dim background, demonstrating how chroma and luminance interact perceptually.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Y Level | 50% |
+| C Level | 100% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| Level | 100% |
+| Order | Normal |
+| — | Off |
+| — | Off |
+| Mono | Color |
+| Mix | 100% |
+
+---
+
+### Exercise 3: Bars as Creative Overlay
+
+![Bars as Creative Overlay result](/img/instruments/videomancer/colorbars/colorbars_ex3_s1.png)
+*Bars as Creative Overlay — simulated result across source images.*
+**Key Concepts**: - The Mix fader crossfades between input video and generated bars
+- Partial mix creates a color-tinted overlay effect
+- Reverse bar order changes the spatial distribution of color in the overlay
+
+**What You'll Create**: Use the Mix fader to blend color bars with an input video signal for creative compositing effects.
+
+1. **Input passthrough**: Connect a video source to the input. Set **Mix** (Fader 12) to 0%. The input video passes through unchanged.
+2. **Fade in the bars**: Slowly increase **Mix** toward 50%. The color bars fade in as a translucent overlay on top of the input video, tinting each vertical region of the frame with the corresponding bar color.
+3. **Reverse the palette**: Toggle **Order** (Switch 8) to **Reverse**. The color distribution across the frame flips. Compare how different regions of the input interact with different bar colors.
+4. **Soften the tint**: Reduce **C Level** (Knob 2) to about 30%. The overlay becomes more subtle — a gentle color wash rather than a saturated tint.
+5. **Shadow stripes**: Experiment with **Y Level** (Knob 1) at low values. The overlay darkens the input in the bar pattern, creating a venetian-blind shadow effect.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Y Level | 100% |
+| C Level | 30% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| — | 50% |
+| Level | 75% |
+| Order | Reverse |
+| — | Off |
+| — | Off |
+| Mono | Color |
+| Mix | 50% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BT.601** | ITU-R Recommendation BT.601, the color encoding standard used for standard-definition digital video, defining the YCbCr (YUV) color matrix. |
-| **Chrominance** | The color-difference components (U and V) of a YUV signal, representing hue and saturation independently of brightness. |
-| **DDA** | Digital Differential Analyzer; an incremental algorithm that distributes N equal divisions across a measured length without hardware division. |
-| **Luminance** | The brightness component (Y) of a YUV signal, representing the grayscale intensity of each pixel. |
-| **SMPTE** | Society of Motion Picture and Television Engineers; the standards body that defined the original color bar test pattern in Engineering Guideline EG 1. |
-| **Vectorscope** | A test instrument that displays the chrominance components of a video signal on a circular plot, used to verify hue and saturation accuracy. |
-| **Waveform monitor** | A test instrument that displays the voltage levels of a video signal over time, used to verify luminance amplitude and timing. |
-| **YUV** | Color encoding separating luminance (Y) from two chrominance channels (U, V), centered at 512 in 10-bit representation. |
+- **Amplitude**: The peak level of a signal; 75% and 100% amplitude color bars differ in how far their chroma values deviate from neutral.
+
+- **BT.601**: The ITU-R standard defining the YUV color encoding used for standard-definition video, specifying how RGB primaries map to luminance and chrominance.
+
+- **Chroma**: The color information in a video signal, encoded as U (blue-difference) and V (red-difference) components centered at a neutral midpoint.
+
+- **DDA**: Digital Differential Analyzer; an algorithm that divides a line into equal segments using only addition and comparison, avoiding hardware division.
+
+- **Interpolator**: A circuit that smoothly blends between two values based on a fractional control input; used here for the wet/dry mix.
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **SMPTE**: Society of Motion Picture and Television Engineers; the standards body that defined the color bar test pattern and many other broadcast specifications.
+
+- **Synthesis**: A program type that generates imagery from the program's own internal logic rather than processing an input video signal.
+
+- **YUV**: A color space that separates brightness (Y) from color (U, V), allowing independent manipulation of luminance and chrominance.
 
 ---

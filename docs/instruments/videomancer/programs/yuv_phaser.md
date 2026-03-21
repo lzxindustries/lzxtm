@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 341
 slug: /instruments/videomancer/yuv_phaser
@@ -7,327 +7,396 @@ image: /img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s1.png
 description: "YUV Phaser applies independent horizontal displacement to each of the three YUV color channels."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import yuv_phaser_control_panel from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_control_panel.png';
-import yuv_phaser_source1_sunset from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source1_sunset.png';
-import yuv_phaser_source2_field from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source2_field.png';
-import yuv_phaser_source3_turtle from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source3_turtle.png';
-import yuv_phaser_source4_pattern from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source4_pattern.png';
-import yuv_phaser_source5_woman from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source5_woman.png';
-import yuv_phaser_source6_paint from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_source6_paint.png';
-import yuv_phaser_hero_s1 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s1.png';
-import yuv_phaser_hero_s2 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s2.png';
-import yuv_phaser_hero_s3 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s3.png';
-import yuv_phaser_hero_s4 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s4.png';
-import yuv_phaser_hero_s5 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s5.png';
-import yuv_phaser_hero_s6 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s6.png';
-import yuv_phaser_ex1_s1 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s1.png';
-import yuv_phaser_ex1_s2 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s2.png';
-import yuv_phaser_ex1_s3 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s3.png';
-import yuv_phaser_ex1_s4 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s4.png';
-import yuv_phaser_ex1_s5 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s5.png';
-import yuv_phaser_ex1_s6 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s6.png';
-import yuv_phaser_ex2_s1 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s1.png';
-import yuv_phaser_ex2_s2 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s2.png';
-import yuv_phaser_ex2_s3 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s3.png';
-import yuv_phaser_ex2_s4 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s4.png';
-import yuv_phaser_ex2_s5 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s5.png';
-import yuv_phaser_ex2_s6 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s6.png';
-import yuv_phaser_ex3_s1 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s1.png';
-import yuv_phaser_ex3_s2 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s2.png';
-import yuv_phaser_ex3_s3 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s3.png';
-import yuv_phaser_ex3_s4 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s4.png';
-import yuv_phaser_ex3_s5 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s5.png';
-import yuv_phaser_ex3_s6 from '/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s6.png';
-
-# YUV Phaser
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_hero_s1 },
-    { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_hero_s2 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_hero_s3 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_hero_s4 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_hero_s5 },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_hero_s6 },
-  ]}
-/>
-*YUV Phaser displacing a studio portrait through independent per-channel horizontal delays, splitting luminance and chrominance into staggered echoes across the scan line.*
+![YUV Phaser hero image](/img/instruments/videomancer/yuv_phaser/yuv_phaser_hero_s1.png)
+*YUV Phaser splitting and displacing color channels to produce prismatic offset and data-driven spatial warping.*
 
 ---
 
 ## Overview
 
-YUV Phaser applies independent horizontal displacement to each of the three YUV color channels. Each channel passes through its own BRAM-based delay line, where the read position is determined by a base phase offset plus a data-dependent displacement component that modulates the delay according to the pixel's own value. Because Y, U, and V can be shifted by different amounts and in different directions, a single input image can be split into spatially separated color layers — luminance sliding away from chrominance, blue diverging from red, or all three channels converging and diverging based on their own content.
+**YUV Phaser** is a per-channel horizontal displacement engine with data-dependent modulation. It treats each color channel — Y, U, and V — as an independent horizontal delay line, letting you slide them apart by different amounts. The result is a classic chromatic-offset look where color fringes peel away from the source image, reminiscent of misaligned CRT guns or a prism refracting white light into its spectral components.
 
-The name reflects the tool's fundamental operation: **phase shifting** each color channel horizontally by a controllable number of pixel positions. At small phase values, the effect is a subtle RGB fringing similar to chromatic aberration in cheap optics. At large values, the three channels separate visibly into distinct copies of the image, offset across the scanline. Adding displacement gain multiplies the delay by each pixel's brightness, creating a warped, content-dependent spatial distortion where bright areas push farther than dark areas — or vice versa when the channel is flipped.
+What makes YUV Phaser special is its ***displacement*** controls. Beyond a simple fixed offset, each channel's delay can be modulated by the pixel values themselves: bright pixels shift further than dark ones (or vice versa), producing organic, content-dependent warping that ripples across the image in real time.
 
-At zero Phase and zero Displace on all channels, YUV Phaser passes the input unchanged. With only the Phase controls active, the effect is a clean spatial offset — a fixed horizontal shift per channel. Engaging the Displace controls adds a nonlinear, image-dependent warp that creates flowing, organic spatial distortions across the frame.
+A fade-to-color stage sits at the output, allowing the displaced image to be smoothly crossfaded toward black, white, or neutral. Combined with per-channel inversion, YUV Phaser can create everything from subtle chroma separation to extreme spatial distortion and color negative effects.
+
+:::tip
+***Start with the Phase knobs alone.*** Turning a single channel's Phase offset creates the classic RGB-split look instantly. Add Displace to make the split react to image content.
+:::
+
+### What's In a Name?
+
+The name ***YUV Phaser*** describes both the color space and the technique. ***YUV*** refers to the luminance (Y) and chrominance (U, V) channels of the video signal. ***Phaser*** evokes the idea of shifting each channel's phase — its horizontal position in time — relative to the others, much like a phaser effect in audio shifts the phase of frequency bands to create sweeping comb-filter textures. Here, the "phase" is spatial rather than spectral, but the concept is the same: offset, recombine, and let the interference patterns do the talking.
+
+---
+
+## Quick Start
+
+1. Turn **U Phase** (Knob 2) clockwise to about 25%. The blue-yellow color information slides sideways away from the brightness channel, producing vivid color fringes along vertical edges.
+2. Now turn **V Phase** (Knob 3) in the opposite direction. The red-cyan channel displaces in the other direction, creating a full prismatic split.
+3. Increase **U Displace** (Knob 5) slowly. Notice how the chroma offset now *varies* across the image — bright areas shift more than dark areas, creating a wavy, content-dependent distortion.
+
+---
+
+## Parameters
+
+![Videomancer front panel with YUV Phaser loaded](/img/instruments/videomancer/yuv_phaser/yuv_phaser_control_panel.png)
+*Videomancer's front panel with YUV Phaser active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Y Phase
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0 – 1023.0 |
+| Default | 0.0 |
+
+**Y Phase** sets the base horizontal delay for the luminance channel. At 0.0, fully counterclockwise, there is no displacement — the Y channel passes through at its original position. As the value increases, the brightness information shifts further to the right. At maximum, the Y channel is displaced by up to 1023 pixel clocks.
+
+Because Y carries brightness, displacing it while leaving U and V in place makes edges appear to glow or shadow in unexpected directions. Small Y Phase values create the illusion of embossing or bas-relief.
+
+---
+
+### Knob 2 — U Phase
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0 – 1023.0 |
+| Default | 0.0 |
+
+**U Phase** sets the base horizontal delay for the U chrominance channel. U encodes the blue-yellow color axis. Displacing U while leaving Y untouched creates blue and yellow color fringes along vertical edges. At 0.0, U is aligned with the other channels. Increasing U Phase slides the blue-yellow information to the right.
+
+:::tip
+For a classic chromatic-aberration look, offset U Phase and V Phase in opposite amounts while leaving Y Phase at zero.
+:::
+
+---
+
+### Knob 3 — V Phase
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0 – 1023.0 |
+| Default | 0.0 |
+
+**V Phase** sets the base horizontal delay for the V chrominance channel. V encodes the red-cyan color axis. Displacing V independently of U creates asymmetric color splits — instead of a uniform rainbow fringe, each edge gets a different color combination. At 0.0, V is aligned. Increasing V Phase pulls the red-cyan axis to the right.
+
+---
+
+### Knob 4 — Y Displace
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 200.0% |
+| Default | 0.0% |
+
+**Y Displace** adds a data-dependent component to the Y channel's delay. The raw pixel brightness is multiplied by this gain and added to the base **Y Phase** offset. At 0.0%, displacement is zero and only the fixed phase applies. At 200.0%, bright pixels experience significantly more delay than dark ones, warping the luminance channel's horizontal position based on image content.
+
+:::note
+Displacement is computed from the *original* input value, not the inverted value. **Y Flip** affects the data traveling through the delay line but does not change which pixels are displaced further.
+:::
+
+---
+
+### Knob 5 — U Displace
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 200.0% |
+| Default | 0.0% |
+
+**U Displace** adds data-dependent delay to the U channel. The U pixel value is multiplied by this gain and added to the base **U Phase** offset. Because U is a chrominance channel centered around 512, the modulation is driven by color content rather than brightness. Areas of strong blue-yellow saturation shift more than neutral areas, creating color-dependent spatial warping.
+
+---
+
+### Knob 6 — V Displace
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 200.0% |
+| Default | 0.0% |
+
+**V Displace** adds data-dependent delay to the V channel, following the same logic as **U Displace** but on the red-cyan axis. Increasing V Displace causes areas with strong red or cyan saturation to shift more than neutral areas.
+
+:::tip
+Setting all three Displace controls to the same high value creates a uniform ripple that follows image structure. Setting them to *different* values creates per-channel warping, where each color plane distorts independently.
+:::
+
+---
+
+### Switch 7 — Y Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Y Flip** inverts the luminance channel before it enters the delay line. When set to **On**, bright becomes dark and dark becomes bright — a digital negative of the Y channel only. Because the inversion happens *before* the delay and fade stages, it affects the content that gets displaced and faded, but not the displacement amount itself (which is computed from the original input).
+
+---
+
+### Switch 8 — U Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**U Flip** inverts the U chrominance channel before the delay line. In YUV color space, inverting U swaps blue and yellow tones. Combined with channel displacement, this creates color-negative fringes that complement the original hues.
+
+---
+
+### Switch 9 — V Flip
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**V Flip** inverts the V chrominance channel before the delay line. Inverting V swaps red and cyan tones. Enable both **U Flip** and **V Flip** together to produce a full chroma negative while preserving the original brightness.
+
+---
+
+### Switch 10 — Fade Color
+
+| Property | Value |
+|----------|-------|
+| Off | Black |
+| On | White |
+| Default | Black |
+
+**Fade Color** selects the target color for the fade-to-color stage. When set to **Black**, the fade interpolates toward black (Y=0) and neutral chroma (U=512, V=512). When set to **White**, the fade interpolates toward white (Y=1023) and neutral chroma. In both cases, the chrominance channels fade to their midpoint (neutral gray), so the fade always desaturates.
+
+---
+
+### Switch 11 — Bypass
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Bypass** routes the unprocessed input signal directly to the output, skipping all displacement, inversion, and fade processing. The sync delay pipeline still aligns timing, so there is no glitch on transition. Use Bypass for instant A/B comparison between the raw input and the processed result.
+
+---
+
+### Fader 12 — Fade Amount
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Fade Amount** controls the crossfade between the processed (displaced and inverted) signal and the target fade color. At 100.0%, fully up, the processed signal passes through at full strength. At 0.0%, fully down, the output is entirely the fade color (black or white for Y, neutral for U and V). Intermediate positions blend between the two.
+
+:::warning
+The fader defaults to 100.0% (full wet). Pulling it down fades the *entire* output toward the selected color — it is not a dry/wet mix of displaced vs. undisplaced signal. Use **Bypass** for a true A/B comparison.
+:::
 
 ---
 
 ## Background
 
-### Horizontal Displacement and Scan-Line Delay
+### Chromatic aberration
 
-In raster video, each scan line is drawn pixel-by-pixel from left to right. A **horizontal delay** shifts pixels along this scan direction by storing them in a buffer and reading them back at a later position. The effect is equivalent to sliding the image sideways — a 100-pixel delay shifts the entire picture 100 pixels to the right. In analog video systems, horizontal displacement occurred naturally when timing circuits drifted, producing the characteristic "skewing" visible on misadjusted monitors. YUV Phaser recreates this effect digitally using BRAM-based delay lines (variable_delay_u), each holding up to 2048 10-bit pixel values.
+In optics, ***chromatic aberration*** occurs when a lens fails to focus all wavelengths of light to the same point. Red, green, and blue components of the image shift relative to one another, creating colored fringes along high-contrast edges. Photographers and cinematographers usually consider this a defect, but in video synthesis it's a deliberate, celebrated aesthetic. YUV Phaser simulates this effect digitally by displacing the Y, U, and V channels by independent pixel counts.
 
-### Data-Dependent Modulation
+### Data-dependent displacement
 
-The Displace controls add a multiplicative component to each channel's delay: `total_delay = phase + (pixel_value × displace_gain) >> 10`. This means the delay is no longer uniform across the scan line — bright pixels are pushed farther than dark ones (or the reverse when the channel is inverted). The result is a spatially varying warp where regions of consistent brightness shift together, creating a flowing, elastic distortion. This technique is closely related to **displacement mapping** in computer graphics, where a texture's brightness values drive the spatial offset of another surface. Here, the video itself is both the source and the displacement map.
+The Displace controls go beyond fixed offsets. Each channel's delay is computed as:
 
-### Per-Channel Color Separation
+    total_delay = Phase + (pixel_value × Displace) >> 10
 
-Because each YUV channel has its own independent delay line, YUV Phaser can separate the color components of a video signal in space. This is analogous to **chromatic aberration** in optics, where different wavelengths of light are refracted by different amounts through a lens, causing color fringes at high-contrast edges. In YUV space, separating U and V while leaving Y centered creates blue-red fringing without disturbing the luminance structure of the image. Separating Y while leaving U and V centered produces a grayscale ghost offset from the color content. The three Phase and three Displace controls give six independent axes of color-spatial manipulation.
+The pixel value is the raw 10-bit sample from that channel. The multiplication and right-shift scale the modulation into the 11-bit delay range (0–2047 pixel clocks). Because the delay varies pixel by pixel, the displacement isn't uniform — it follows the contours of the image, producing organic, flowing distortion rather than a rigid slide.
 
-### Channel Inversion as Phase Reversal
+### Fade-to-color stage
 
-The Y Flip, U Flip, and V Flip toggles apply a bitwise NOT to the respective channel before it enters the delay line. For the luminance channel, this inverts the image tonality — white becomes black and vice versa. For the chrominance channels, inversion swaps color polarities — blues become oranges, reds become cyans. When combined with displacement, channel inversion also reverses the Displace modulation direction: since the pixel values driving the displacement are inverted, bright areas that would normally receive maximum delay now receive minimum delay, and vice versa.
+After displacement, each channel passes through an ***interpolator*** that crossfades between the displaced pixel and a target color. For the Y channel, the target is either 0 (black) or 1023 (white), selected by the **Fade Color** toggle. For the U and V channels, the target is always 512 — the neutral midpoint — regardless of the Fade Color setting. This means the fade always desaturates chroma while driving luminance toward the selected extreme.
 
-### Fade-to-Color as Creative Attenuation
-
-The Fade Amount fader crossfades each channel between the displaced signal and a fixed reference value. The Fade Color toggle selects whether the Y channel fades toward black (0) or white (1023), while U and V always fade toward neutral gray (512). At full Fade Amount, the displaced signal is fully present. As the fader is reduced, the output progressively bleeds to the fade color. At zero, the output is a solid field of the selected fade color regardless of the input or displacement settings. This creates a dissolve into or out of the displaced effect, or serves as a way to reduce the intensity of extreme displacement settings without changing the Phase or Displace controls.
-
-
----
-
-## Signal Flow
+### Signal Flow
 
 ```
 Input Video (YUV 4:4:4)
-|
-+-- Per Channel (Y, U, V independently) ----------------------------
-|   |
-|   +- 1. Channel Inversion        (bitwise NOT via Flip toggles)
-|   +- 1. Delay Computation         (phase + pixel*displace >> 10)
-|   +- 2-3. Variable Delay Line     (BRAM, 2048 samples, 2 clk)
-|   +- 4-7. Interpolator            (fade to color, 4 clk)
-|   |         a = fade target (Y: 0|1023, U/V: 512)
-|   |         b = delayed channel
-|   |         t = Fade Amount
-|
-+-- Sync Signals ---------------------------------------------------
-|   +-- 7-clock delay pipeline (hsync, vsync, field, bypass data)
-|
-+-- Bypass ---------------------------------------------------------
-    +-- Select original or processed signal via Switch 11
+│
+├── Y Channel ──────────────────────────────────────────────────
+│   │
+│   ├─ 1. Y Flip                  (optional bitwise inversion)
+│   ├─ 2. Delay Computation       (Y Phase + pixel × Y Displace >> 10)
+│   ├─ 3. Variable Delay          (BRAM, up to 2048 pixels)
+│   ├─ 4. Fade Interpolation      (crossfade to black or white)
+│   └─ 5. IO Alignment            (1 clock register)
+│
+├── U Channel ──────────────────────────────────────────────────
+│   │
+│   ├─ 1. U Flip                  (optional bitwise inversion)
+│   ├─ 2. Delay Computation       (U Phase + pixel × U Displace >> 10)
+│   ├─ 3. Variable Delay          (BRAM, up to 2048 pixels)
+│   ├─ 4. Fade Interpolation      (crossfade to neutral 512)
+│   └─ 5. IO Alignment            (1 clock register)
+│
+├── V Channel ──────────────────────────────────────────────────
+│   │
+│   ├─ 1. V Flip                  (optional bitwise inversion)
+│   ├─ 2. Delay Computation       (V Phase + pixel × V Displace >> 10)
+│   ├─ 3. Variable Delay          (BRAM, up to 2048 pixels)
+│   ├─ 4. Fade Interpolation      (crossfade to neutral 512)
+│   └─ 5. IO Alignment            (1 clock register)
+│
+├── Sync Signals ───────────────────────────────────────────────
+│   └─ Delay pipeline (7 clocks, matched to processing)
+│
+└── Bypass ─────────────────────────────────────────────────────
+    └─ Select original or processed signal (dry path delay-matched)
 ```
 
-The processing architecture is simple and parallel: all three channels receive identical treatment through independent hardware instances, differing only in their parameter values and fade targets. The delay lines are BRAM-based with a depth of 2048 samples, meaning the maximum displacement is slightly over one full scan line at SD resolution. The delay computation combines two terms — a constant phase offset and a content-dependent displacement — in a single clock cycle using a 10×10 bit multiply and shift. The interpolator fade stage operates identically across all three channels but uses different "a" inputs: Y fades toward black (0) or white (1023) depending on the Fade Color toggle, while U and V always fade toward neutral chroma (512), ensuring the fade-to-color target is always a valid colorimetric value.
+### Signal Flow Notes
 
----
+The three channels are fully independent — each has its own delay line, its own delay computation, and its own fade interpolator. The only shared elements are the Fade Color toggle (which sets Y's fade target but doesn't affect U/V) and the Bypass switch.
 
-## Parameter Reference
+A subtle but important detail: the displacement modulation uses the *original* input pixel value (`data_in.y`, `data_in.u`, `data_in.v`), not the inverted value. The Flip toggles invert the data *inside* the delay line, but the delay *amount* is always computed from the unmodified input. This means flipping a channel changes its appearance without changing where pixels are spatially displaced.
 
-<img src={yuv_phaser_control_panel} alt="Videomancer front panel with YUV Phaser loaded"/>
-*Videomancer's front panel with YUV Phaser active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Y Phase
-| Property | Value |
-|----------|-------|
-| Range | 0.0 – 1023.0 |
-| Default | 0.0 |
-
-Controls the base horizontal displacement of the luminance (Y) channel in pixels. At 0, the Y channel is not shifted. Increasing this value delays the luminance signal horizontally, sliding it to the right relative to U and V. At maximum (1023), the luminance image is offset by approximately 1023 pixels — effectively pushing it nearly a full scan line. When used alone (Y Displace at 0), Y Phase creates a clean, uniform luminance shift. Combined with non-zero Y Displace, the phase offset provides a starting point around which the data-dependent displacement varies.
-
----
-
-#### Knob 2 — U Phase
-| Property | Value |
-|----------|-------|
-| Range | 0.0 – 1023.0 |
-| Default | 0.0 |
-
-Controls the base horizontal displacement of the blue-difference chrominance (U) channel. Operates identically to Y Phase but affects only the U channel. Offsetting U while leaving Y and V at zero creates a blue-yellow fringing effect at high-contrast edges, because the blue component of the image slides away from the luminance and red-difference components. Small U Phase values (under 50) produce subtle chromatic aberration; large values create obvious color separation.
-
----
-
-#### Knob 3 — V Phase
-| Property | Value |
-|----------|-------|
-| Range | 0.0 – 1023.0 |
-| Default | 0.0 |
-
-Controls the base horizontal displacement of the red-difference chrominance (V) channel. Like the other Phase controls, this shifts a single color channel horizontally. Offsetting V while leaving Y and U centered produces red-cyan fringing. When both U Phase and V Phase are active but unequal, the two chrominance components separate from each other as well as from luminance, creating a three-layer chromatic split where each color layer occupies a different horizontal position.
-
----
-
-#### Knob 4 — Y Displace
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 200.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Adds a data-dependent component to the Y channel's displacement. At 0%, only the base Y Phase offset is used and the delay is uniform across the line. As Y Displace increases, each pixel's Y value is multiplied by the displace gain and added to the base phase, creating a spatially varying delay: bright pixels are pushed farther to the right, dark pixels remain closer to their original position. At maximum (200%), the displacement modulation can add up to 1023 additional pixels of delay on top of the phase offset. The result is a flowing, luminance-driven warp where bright regions stretch away from dark regions.
-
----
-
-#### Knob 5 — U Displace
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 200.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Adds a data-dependent displacement component to the U channel, operating identically to Y Displace but modulated by U pixel values rather than Y. Because U represents the blue-yellow axis of chroma information, the displacement follows the chrominance contours of the image: regions with strong blue content shift differently from neutral or yellow regions. This creates displacement patterns that are driven by color rather than brightness, producing distinctly different warp shapes than Y Displace.
-
----
-
-#### Knob 6 — V Displace
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 200.0% |
-| Default | 0.0% |
-| Suffix | % |
-
-Adds a data-dependent displacement component to the V channel. Like U Displace, this modulates the V channel's delay according to its own pixel values. With U Displace and V Displace set to different values, the two chrominance channels warp in different directions and by different amounts, creating complex color separation patterns that evolve across the frame as the chroma content changes. Setting equal values on all three Displace controls produces a uniform, brightness-driven warp across all channels — the image distorts as a whole rather than splitting into color layers.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Y Flip** | Off | On |
-| **8 — U Flip** | Off | On |
-| **9 — V Flip** | Off | On |
-| **10 — Fade Color** | Black | White |
-| **11 — Bypass** | Off | On |
-
-Switches 7-11 control five binary settings organized into two groups. The first three switches (Y Flip, U Flip, V Flip) independently invert each color channel before it enters the delay line, which both tonally inverts that channel and reverses the direction of its displacement modulation. Switches 10 and 11 control fade-to-color polarity and processing bypass, respectively. The Flip switches interact with Displace in an important way: because the pixel values driving the displacement are inverted by the flip, the direction of the data-dependent warp also reverses.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Fade Amount
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Controls the overall intensity of the processed output via a fade-to-color crossfade. At 100% (default), the fully displaced and optionally inverted signal is output without attenuation. As Fade Amount is reduced, each channel crossfades linearly toward its fade target: Y toward black or white (selected by Fade Color), and U/V toward neutral 512. At 0%, the output is entirely the fade color — luminance at 0 or 1023, chrominance at 512 — regardless of input or displacement settings. Intermediate values produce a translucent version of the displaced effect, useful for blending extreme displacement settings into a composition without eliminating them entirely.
-
-
-
+:::note
+**Pipeline depth is 8 clocks** (1 input register + 2 variable delay + 4 interpolator + 1 IO alignment). The sync and bypass paths use matched delay lines so the output is always time-aligned.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore YUV Phaser's displacement capabilities from simple phase offsets through complex data-dependent warping, each building on the channel-separation principles of the previous.
+These exercises progress from basic channel separation to full data-dependent displacement and color manipulation.
+### Exercise 1: Prismatic Split
 
-### Exercise 1: Chromatic Aberration
+![Prismatic Split result](/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex1_s1.png)
+*Prismatic Split — simulated result across source images.*
+**Key Concepts**: - Phase controls produce fixed horizontal displacement per channel
+- Displacing U and V while leaving Y centered creates color fringes
+- Opposite offsets create a symmetric rainbow split
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex1_s1 },
-    { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex1_s2 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex1_s3 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex1_s4 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex1_s5 },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex1_s6 },
-  ]}
-/>
-*Chromatic Aberration — simulated result across source images.*
-**Source**: A high-contrast source with sharp edges — text on a light background, architectural footage, or a test pattern with fine lines.
+**What You'll Create**: Create a classic chromatic-aberration look by offsetting the color channels.
 
-1. **Default start**: Begin with all controls zeroed. The output should match the input perfectly.
-2. **Offset U**: Slowly increase U Phase to about 50. Watch as a blue-yellow fringe appears at every vertical contrast edge. The luminance structure remains sharp, but the color bleeds horizontally.
-3. **Offset V**: Now increase V Phase to about 50. Red-cyan fringes appear in addition to the blue-yellow ones. At sharp edges, you should see a rainbow progression of color fringes.
-4. **Diverge U and V**: Set U Phase higher than V Phase (e.g., 80 vs. 30). The blue and red fringes separate by different amounts, creating asymmetric color smearing.
-5. **Increase Y Phase**: Add about 30 to Y Phase. Now all three layers are offset from each other — the image breaks into three distinct spatial copies, each carrying one YUV component.
-6. **A/B compare**: Toggle Bypass to compare the displaced output against the clean original. Notice how the luminance structure survives even heavy chrominance displacement.
+**Source**: A live camera feed or recorded footage with strong vertical edges and contrasting colors.
 
-**Key concepts**: Color fringing from differential channel delay, chrominance-luminance separation, the visual hierarchy (human vision prioritizes luminance sharpness over chrominance alignment)
+1. **Single channel offset**: Turn **U Phase** (Knob 2) to about 30%. Observe blue-yellow fringes appearing along vertical edges.
+2. **Opposite split**: Turn **V Phase** (Knob 3) to about 30% as well. Now red-cyan fringes appear on the opposite side of edges, creating a full prismatic look.
+3. **Luma offset**: Add a small amount of **Y Phase** (Knob 1), around 10%. The brightness layer shifts, creating a ghostly double-exposure alongside the color fringes.
+4. **Compare**: Toggle **Bypass** (Switch 11) to see the raw input, then toggle back to appreciate the effect.
 
----
+**Settings**:
 
-### Exercise 2: Data-Dependent Warp
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex2_s1 },
-    { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex2_s2 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex2_s3 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex2_s4 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex2_s5 },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex2_s6 },
-  ]}
-/>
-*Data-Dependent Warp — simulated result across source images.*
-**Source**: A source with strong brightness variation — a spotlight on a dark stage, a face lit from one side, or any footage with clear bright and dark regions.
-
-1. **Phase only**: Set Y Phase to about 100 with Displace at 0%. Notice the uniform shift — every pixel moves the same amount.
-2. **Add Displace**: Slowly increase Y Displace. Bright regions begin to stretch farther to the right while dark regions stay closer to their original position. The image develops a flowing, elastic quality.
-3. **Full Displace**: Push Y Displace to about 100%. The warp becomes dramatic — bright areas smear far across the line while dark areas barely move. The boundary between bright and dark creates a shearing distortion.
-4. **Flip interaction**: Enable Y Flip. The brightness values are inverted before displacement, so now dark regions in the original are pushed farthest (they are bright after inversion). Compare with Y Flip off to see how the warp direction reverses.
-5. **Multi-channel warp**: Add U Displace and V Displace at different values (e.g., U at 50%, V at 100%). Each color channel now warps independently based on its own content, creating complex chromatic shearing.
-6. **Modulation feedback**: Route the output back to the input. Each pass applies another round of data-dependent displacement, creating increasingly abstract flowing distortions.
-
-**Key concepts**: Displacement mapping using the video itself, brightness-to-position modulation, interaction between channel inversion and displacement direction, compounding nonlinear distortion through feedback
+| Control | Value |
+|---------|-------|
+| Y Phase | ~100 |
+| U Phase | ~300 |
+| V Phase | ~300 |
+| Y Displace | 0.0% |
+| U Displace | 0.0% |
+| V Displace | 0.0% |
+| Y Flip | Off |
+| U Flip | Off |
+| V Flip | Off |
+| Fade Color | Black |
+| Bypass | Off |
+| Fade Amount | 100.0% |
 
 ---
 
-### Exercise 3: Inverted Channel Displacement with Fade
+### Exercise 2: Content-Dependent Warping
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Sunset", before: yuv_phaser_source1_sunset, after: yuv_phaser_ex3_s1 },
-    { label: "Field", before: yuv_phaser_source2_field, after: yuv_phaser_ex3_s2 },
-    { label: "Turtle", before: yuv_phaser_source3_turtle, after: yuv_phaser_ex3_s3 },
-    { label: "Pattern", before: yuv_phaser_source4_pattern, after: yuv_phaser_ex3_s4 },
-    { label: "Woman", before: yuv_phaser_source5_woman, after: yuv_phaser_ex3_s5 },
-    { label: "Paint", before: yuv_phaser_source6_paint, after: yuv_phaser_ex3_s6 },
-  ]}
-/>
-*Inverted Channel Displacement with Fade — simulated result across source images.*
-**Source**: Any colorful source — nature footage, music performance, or abstract color patterns.
+![Content-Dependent Warping result](/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex2_s1.png)
+*Content-Dependent Warping — simulated result across source images.*
+**Key Concepts**: - Displace adds pixel-value-based modulation to the delay
+- Bright areas shift further than dark areas
+- Different Displace values per channel create per-color warping
 
-1. **Setup displacement**: Set all three Phase controls to different values (Y=0, U=100, V=200) and all three Displace controls to moderate values (about 40-60%).
-2. **Enable U Flip and V Flip**: The chrominance channels invert, swapping the color palette of the offset chrominance layers. The displacement direction for U and V also reverses.
-3. **Observe the result**: The output should show the luminance layer in its original position with two color-inverted chrominance layers offset to different positions, each warped according to its own inverted content.
-4. **Add Y Flip**: Now all three channels are inverted. The entire image becomes a negative — but each channel is offset and warped differently, creating a surreal color separation that does not exist in normal negative processing.
-5. **Fade control**: Reduce Fade Amount to about 50%. The displaced layers begin to dissolve toward the fade color, creating a translucent, ghostly version of the effect.
-6. **Fade Color toggle**: Switch Fade Color to White. The dissolution target changes from black to white, brightening the fade-out effect. At about 25% Fade Amount, only hints of the displaced channels remain against the bright field.
-7. **Mix and match**: Restore Fade Amount to about 75% and experiment with different combinations of Flip toggles and Fade Color to find compositions where the remaining displaced channels create interesting patterns against the partially faded background.
+**What You'll Create**: Use the Displace controls to create image-driven spatial distortion.
 
-**Key concepts**: Channel inversion reverses displacement modulation, independent chrominance manipulation in YUV space, fade-to-color as creative dissolve, the interaction between inversion, displacement, and fade
+**Source**: Footage with a range of tonal values — faces, landscapes, or text overlays work well.
 
----
+1. **Prepare**: Set **U Phase** to ~20% and **V Phase** to ~20% for a slight base offset.
+2. **Add displacement**: Increase **Y Displace** (Knob 4) to about 100%. Bright areas of the luminance channel stretch and smear sideways.
+3. **Chroma displacement**: Now increase **U Displace** (Knob 5) to about 80% and **V Displace** (Knob 6) to about 120%. Each color channel warps differently based on its own content, creating fluid, multicolored distortion.
+4. **Animate**: Slowly sweep Y Displace from minimum to maximum. The distortion flows organically through the image, following brightness contours.
+5. **Invert and compare**: Toggle **Y Flip** (Switch 7). The brightness inverts but the displacement pattern stays the same — note the visual difference.
 
+**Settings**:
 
-## Tips
-
-- **Phase for framing, Displace for texture**: Use the Phase controls to set a fixed offset for color separation, then add Displace for image-dependent warping on top. The two parameters serve different creative purposes and combine multiplicatively.
-- **Small U+V Phase for optical simulation**: Offsetting U and V by 10-30 pixels while leaving Y at 0 creates convincing chromatic aberration that mimics cheap lenses. This is one of the most immediately useful effects.
-- **Flip reverses the warp**: When Displace is active, enabling Flip doesn't just invert the color — it reverses which parts of the image are pushed farthest. Use this to change the "direction" of the warp without changing the Displace gain.
-- **Equal Displace values preserve color alignment**: Setting all three Displace controls to the same value warps the entire image uniformly without creating color separation. Vary them independently to create chromatic distortion.
-- **Fade as an intensity control**: Rather than reducing Phase or Displace values to soften the effect, use Fade Amount to blend the displaced output toward a neutral color. This preserves the spatial character of the displacement while reducing its visual intensity.
-- **Feedback creates flowing abstraction**: Routing the output back to the input compounds the displacement on each pass. Start with moderate Phase and low Displace — feedback multiplies the effect rapidly.
-- **Wrap-around is a feature**: At maximum Phase + Displace, the delay address wraps through the buffer, creating scan-line echo effects where content from earlier in the line reappears later. Exploit this for repeating pattern effects.
+| Control | Value |
+|---------|-------|
+| Y Phase | 0.0 |
+| U Phase | ~200 |
+| V Phase | ~200 |
+| Y Displace | 100.0% |
+| U Displace | 80.0% |
+| V Displace | 120.0% |
+| Y Flip | Off |
+| U Flip | Off |
+| V Flip | Off |
+| Fade Color | Black |
+| Bypass | Off |
+| Fade Amount | 100.0% |
 
 ---
 
+### Exercise 3: Color Negative Fade
+
+![Color Negative Fade result](/img/instruments/videomancer/yuv_phaser/yuv_phaser_ex3_s1.png)
+*Color Negative Fade — simulated result across source images.*
+**Key Concepts**: - Flip toggles invert individual channels before processing
+- Inverting U and V together creates a chroma negative
+- The fade stage desaturates toward neutral, blending processed and target colors
+
+**What You'll Create**: Combine channel inversion with the fade stage for surreal color-negative compositions.
+
+**Source**: High-saturation footage — flowers, neon signs, or colorful graphics.
+
+1. **Chroma negative**: Enable **U Flip** (Switch 8) and **V Flip** (Switch 9). Colors swap to their complements — reds become cyan, blues become yellow.
+2. **Add displacement**: Set **U Phase** to ~15% and **V Phase** to ~15% for a subtle offset. The inverted color fringes create an eerie, otherworldly split.
+3. **Fade toward white**: Set **Fade Color** (Switch 10) to **White**. Pull **Fade Amount** (Fader 12) down to about 60%. The image begins to wash out toward white, with the inverted colors blending into a high-key pastel palette.
+4. **Full negative**: Now enable **Y Flip** (Switch 7) as well. The entire image is color-inverted and partially faded, creating a dreamy photographic-negative composition.
+5. **Sweep the fade**: Slowly move the **Fade Amount** fader from 100% down to 0%. The displaced, inverted image dissolves into pure white.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Y Phase | 0.0 |
+| U Phase | ~150 |
+| V Phase | ~150 |
+| Y Displace | 0.0% |
+| U Displace | 0.0% |
+| V Displace | 0.0% |
+| Y Flip | On |
+| U Flip | On |
+| V Flip | On |
+| Fade Color | White |
+| Bypass | Off |
+| Fade Amount | 60.0% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **BRAM** | Block RAM; dedicated memory blocks on the iCE40 FPGA, used here for the 2048-sample delay lines. |
-| **Chromatic Aberration** | An optical phenomenon where different wavelengths of light are displaced differently by a lens, causing color fringes at edges. |
-| **Displacement Mapping** | A technique where pixel values from one image control the spatial offset of another image. |
-| **Fade-to-Color** | A crossfade between the processed signal and a fixed reference color, implemented via interpolators. |
-| **Manhattan Distance** | Not used in YUV Phaser but related: a distance metric used in other programs for color matching. |
-| **Phase** | A fixed horizontal delay offset applied uniformly across the scan line. |
-| **Scan Line** | One horizontal row of pixels in a raster video signal, drawn from left to right. |
-| **variable_delay_u** | A BRAM-based variable-depth delay line IP block provided by the Videomancer SDK. |
-| **YUV** | A color encoding system separating luminance (Y) from chrominance (U blue-difference, V red-difference). |
+- **BRAM**: Block RAM; dedicated memory blocks inside the FPGA used to implement delay lines and lookup tables.
+
+- **Chromatic Aberration**: An optical defect where different wavelengths of light focus at different points, causing colored fringes; simulated digitally by offsetting color channels.
+
+- **Chrominance**: The color information in a video signal, encoded as U (blue-yellow axis) and V (red-cyan axis) in YUV color space.
+
+- **Delay Line**: A buffer that holds samples and plays them back after a configurable number of clock cycles, producing a horizontal spatial offset.
+
+- **Displacement**: A per-pixel variation in delay amount, driven by the pixel's own value, creating content-dependent spatial distortion.
+
+- **Interpolator**: A hardware module that crossfades between two values based on a mixing parameter; used here for fade-to-color blending.
+
+- **Luminance**: The brightness component (Y) of a YUV video signal, representing perceived lightness independent of color.
+
+- **Phase**: A fixed horizontal offset applied to a channel, measured in pixel clocks; shifts the channel's spatial position relative to the others.
+
+- **Variable Delay**: A delay line whose depth changes dynamically on a per-sample basis, enabling data-dependent spatial effects.
+
+- **YUV**: A color space separating luminance (Y) from chrominance (U, V), allowing independent processing of brightness and color.
 
 ---

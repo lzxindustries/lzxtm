@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 172
 slug: /instruments/videomancer/moire
@@ -7,312 +7,407 @@ image: /img/instruments/videomancer/moire/moire_hero.png
 description: "When two periodic patterns are overlaid at slightly different pitches or angles, the result is a third pattern that doesn't exist in either original — a..."
 ---
 
-import moir__before_after from '/img/instruments/videomancer/moire/moire_before_after.png';
-import moir__control_panel from '/img/instruments/videomancer/moire/moire_control_panel.png';
-import moir__exercise1_result from '/img/instruments/videomancer/moire/moire_exercise1_result.png';
-import moir__exercise2_result from '/img/instruments/videomancer/moire/moire_exercise2_result.png';
-import moir__exercise3_result from '/img/instruments/videomancer/moire/moire_exercise3_result.png';
-import moir__hero from '/img/instruments/videomancer/moire/moire_hero.png';
-import moir__source1_kodim01 from '/img/instruments/videomancer/moire/moire_source1_kodim01.png';
-import moir__source2_kodim02 from '/img/instruments/videomancer/moire/moire_source2_kodim02.png';
-import moir__source3_kodim01_bw from '/img/instruments/videomancer/moire/moire_source3_kodim01_bw.png';
-
-# Moiré
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-:::warning
-This document is still in progress, may contain errors, and is for preview only.
-:::
-
-
----
-
-
-<img src={moir__hero} alt="Moiré hero image"/>
-*Moiré generating dense interference fringes from two rotated grid layers with video-reactive phase modulation.*
-<img src={moir__before_after} alt="Before and after comparison"/>
-*Left: unprocessed source. Right: Moiré applied.*
+![Moire hero image](/img/instruments/videomancer/moire/moire_hero_s1.png)
+*Moire overlaying sinusoidal interference rings on a live video input, creating luminous rippling textures from two rotating grid layers.*
 
 ---
 
 ## Overview
 
-When two periodic patterns are overlaid at slightly different pitches or angles, the result is a third pattern that doesn't exist in either original — a phantom structure that emerges purely from interference. This phenomenon is called a moiré pattern, from the French word for a watered silk textile whose chatoyant shimmer arises from the interference of warp and weft threads. Moiré is simultaneously a precision alignment tool, a visual artifact that print technicians spend careers avoiding, and — in the hands of Op Art pioneers like Bridget Riley and Victor Vasarely — a medium for kinetic visual illusion.
+**Moire** generates smooth sinusoidal interference patterns by superimposing two independently configurable grid layers — circles, ellipses, arcs, and sine waves — and blending the result with an incoming video signal. The two grids each have adjustable pitch and rotation angle. Where their periodic structures overlap, the characteristic ***moiré*** fringes emerge: sweeping curves, pulsing rings, and shimmering corridors of light that shift dramatically with even small parameter changes.
 
-The Moiré program generates two independent grid layers on the FPGA, rotates each to an arbitrary angle, and superimposes them using one of four interference modes. The result is a monochrome pattern field that shifts and shimmers as the grid parameters change. Input video can modulate the phase of Grid B, embedding the source image into the interference structure. A DDS (Direct Digital Synthesis) accumulator animates Grid A's phase offset from frame to frame, creating slow spatial drift even with static input. The output is composited with the input via a wet/dry crossfade.
+Moire produces pure grayscale patterns in its synthesis path and crossfades them with the input video through the **Mix** fader. At full mix, Moire acts as a standalone pattern synthesizer. At partial mix, the interference texture overlays the source footage, adding rhythmic structure and luminous depth. With the **Video Mod** control engaged, the input video's brightness bends the spacing of Grid B, locking the moiré fringes to the image content.
 
-At zero video modulation, Moiré is a pure pattern generator — the output depends only on the grid pitches, angles, and combination mode. As Video Mod increases, the input video warps the interference fringes, bending straight grid lines around luminance contours. The result sits in an unusual space between synthesis and processing: a generated pattern that responds to incoming imagery.
+:::tip
+Even tiny adjustments to **Pitch** or **Angle** create dramatic changes in moiré patterns. Move the knobs slowly — the interference fringes sweep and reshape in real time.
+:::
+
+### What's In a Name?
+
+The word ***moiré*** comes from the French for "watered," originally describing the shimmering, rippled finish seen on watered silk fabric. That finish is itself an interference pattern — created when two layers of woven thread overlap at a slight angle. Videomancer's **Moire** program recreates the same phenomenon digitally, superimposing two sinusoidal grids to produce those luminous, shifting fringes on screen.
+
+---
+
+## Quick Start
+
+1. Set **Pitch A** (Knob 1) and **Pitch B** (Knob 4) to different positions. Two sets of concentric rings appear, and where they overlap, bold moiré fringes form.
+2. Slowly rotate **Angle A** (Knob 2). The first grid tilts and the interference fringes sweep across the screen.
+3. Toggle **Grid A** (Switch 7) to **Ellipse**. The circular rings stretch into ovals and the fringe pattern reshapes completely.
+4. Increase **Anim Speed** (Knob 6) to add a slow drift. The rings pulse outward and the moiré fringes glide smoothly across the frame.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Moire loaded](/img/instruments/videomancer/moire/moire_control_panel.png)
+*Videomancer's front panel with Moire active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Pitch A
+
+| Property | Value |
+|----------|-------|
+| Range | 4px – 64px |
+| Default | 12px |
+
+**Pitch A** sets the spatial frequency of Grid A — how tightly packed the sinusoidal ripples are. At its lowest step, the rings are wide and few, producing broad moiré fringes. At its highest step, the rings are tightly packed, producing fine, dense interference patterns. The control steps through eight discrete frequency values, each roughly doubling the ring density. When **Fine** (Switch 11) is enabled, all frequencies are doubled, pushing the pattern into even tighter detail.
+
+---
+
+### Knob 2 — Angle A
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 180° |
+| Default | 0° |
+
+**Angle A** rotates Grid A across a 180° range. Even a small rotation creates dramatic changes in the interference fringes where Grid A overlaps Grid B. Because moiré patterns are exquisitely sensitive to angular relationships, this control produces sweeping, organic transformations. The rotation is computed using a 32-entry trigonometric lookup table, giving 16 discrete angle steps.
+
+---
+
+### Knob 3 — Video Mod
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Video Mod** controls how strongly the input video's luminance bends Grid B's spatial position. At 0%, Grid B is unaffected by the input — the moiré pattern is purely geometric. As Video Mod increases, bright areas of the input image push Grid B's coordinates sideways, warping the concentric rings and locking the moiré fringes to the video content. At full strength, the interference pattern becomes a luminance-driven distortion field.
+
+:::note
+Video Mod only affects Grid B. Grid A remains geometrically pure regardless of the input signal.
+:::
+
+---
+
+### Knob 4 — Pitch B
+
+| Property | Value |
+|----------|-------|
+| Range | 4px – 64px |
+| Default | 24px |
+
+**Pitch B** sets the spatial frequency of Grid B independently of Grid A. The interplay between the two pitch values is the primary driver of moiré fringe spacing — when the pitches are close, broad fringes appear; when they differ widely, fine fringes dominate. Like Pitch A, this control offers eight frequency steps, doubled when **Fine** is active.
+
+:::tip
+Try setting Pitch A and Pitch B to adjacent steps. The slight frequency difference produces slow, sweeping ***beat frequency*** fringes — the visual equivalent of two musical notes creating a slow pulsation.
+:::
+
+---
+
+### Knob 5 — Angle B
+
+| Property | Value |
+|----------|-------|
+| Range | 0° – 180° |
+| Default | 120° |
+
+**Angle B** rotates Grid B independently across 180°. The angular difference between Grid A and Grid B determines the orientation and curvature of the moiré fringes. When both angles are identical, the fringes form straight parallel bands. As the angles diverge, the fringes curve into arcs and hyperbolic shapes.
+
+---
+
+### Knob 6 — Anim Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 0% |
+
+**Anim Speed** controls the rate of a per-frame animation drift applied to both grids simultaneously. At 0%, the pattern is static. As the value increases, the sinusoidal rings pulse outward from the center at an accelerating rate. The animation uses a ***direct digital synthesis*** accumulator that increments phase once per video frame, producing perfectly smooth, jitter-free motion.
+
+---
+
+### Switch 7 — Grid A
+
+| Property | Value |
+|----------|-------|
+| Off | Sine |
+| On | Ellipse |
+| Default | Sine |
+
+**Grid A** selects between two geometric modes for the first grid layer. In the **Sine** position, Grid A produces sinusoidal stripes — parallel bands that run perpendicular to the rotation angle. In the **Ellipse** position, Grid A produces concentric elliptical ripples by stretching the Y axis 2:1 before computing radial distance. Ellipses interact with Grid B's circles to create richer, more asymmetric moiré structures.
+
+---
+
+### Switch 8 — Grid B
+
+| Property | Value |
+|----------|-------|
+| Off | Circles |
+| On | Arcs |
+| Default | Circles |
+
+**Grid B** selects between two geometric modes for the second grid layer. In the **Circles** position, Grid B produces concentric circular ripples radiating from the screen center. In the **Arcs** position, a smooth cosine window fades the lower half of the circles to black, leaving only the upper arcs visible — directional moiré fringes that flow in one direction rather than radiating symmetrically.
+
+---
+
+### Switch 9 — Combine A
+
+| Property | Value |
+|----------|-------|
+| Off | Multiply |
+| On | Add |
+| Default | Multiply |
+
+**Combine A** selects one axis of the combination mode. Together with **Combine B** (Switch 10), this toggle selects one of four smooth interference algorithms — see the Toggle Group Notes table below for the full matrix. In the **Multiply** position, the algorithm emphasizes contrast and dark fringes. In the **Add** position, the algorithm shifts toward brighter, averaged blends.
+
+---
+
+### Switch 10 — Combine B
+
+| Property | Value |
+|----------|-------|
+| Off | Diff |
+| On | Min |
+| Default | Diff |
+
+**Combine B** selects the other axis of the combination mode. In the **Diff** position, the algorithm uses difference-based operations that create high-contrast interference fringes. In the **Min** position, the algorithm uses softer, shadow-like calculations. The final mode depends on both toggles together — consult the Toggle Group Notes table for the exact behavior of each combination.
+
+---
+
+### Switch 11 — Fine
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Fine** doubles the spatial frequency of both grids simultaneously. When set to **On**, all eight pitch steps are shifted upward by one octave, producing patterns with twice the ring density. This is useful for creating tighter, more intricate moiré textures without changing the pitch ratio between the two grids.
+
+:::warning
+At high pitch settings with Fine enabled, the pattern can exceed the display's pixel resolution, producing aliased artifacts. This is sometimes a desirable visual effect.
+:::
+
+---
+
+:::note Toggle Group Notes
+
+Switches 9 and 10 form a two-bit mode selector that chooses one of four combination algorithms:
+
+| Combine A | Combine B | Mode | Character |
+|-----------|-----------|------|-----------|
+| Multiply | Diff | Multiply | Dark fringes, high contrast |
+| Add | Diff | Additive | Bright, averaged blend |
+| Multiply | Min | Soft Difference | Classic moiré fringes |
+| Add | Min | Soft Minimum | Shadow intersections |
+
+:::
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0% – 100% |
+| Default | 100% |
+
+**Mix** crossfades between the dry input video and the wet moiré pattern. At 0% (fully left), only the original input passes through. At 100% (fully right), only the pure moiré synthesis is visible — a grayscale pattern with neutral chroma. Intermediate positions blend the moiré texture over the input video, creating luminous overlays where the sinusoidal rings modulate the source image.
 
 ---
 
 ## Background
 
-### The Physics of Moiré Interference
+### Moiré interference
 
-Moiré patterns arise whenever two periodic structures sample each other at slightly mismatched frequencies. The visible fringes represent the **beat frequency** — the difference between the two spatial frequencies. Just as two tuning forks at 440 Hz and 442 Hz produce a 2 Hz audible beat, two grids at 32-pixel and 34-pixel pitch produce wide fringes whose spacing corresponds to the difference frequency. The closer the pitches, the wider the fringes; identical pitches produce a uniform field.
+A ***moiré pattern*** forms wherever two periodic structures overlap at a slight offset. The effect is familiar from everyday life: two chain-link fences viewed one behind the other, overlapping window screens, or the shimmering bands that appear when you photograph a striped shirt on a digital camera. In each case, the interaction between two regular grids produces a third, larger-scale pattern that wasn't present in either grid alone.
 
-Rotating one grid relative to the other introduces angular interference. Even at identical pitches, a slight angle offset creates diagonal fringes. The fringe direction is perpendicular to the bisector of the two grid angles, and the fringe spacing is inversely proportional to the angle difference. This rotational sensitivity is why moiré patterns are used in precision alignment: a fraction-of-a-degree angular misalignment produces clearly visible fringes.
+The mathematics behind moiré fringes is the same as acoustic ***beats***: when two frequencies are close but not identical, their sum contains a slow oscillation at the difference frequency. In audio, you hear a pulsing volume. In video, you see sweeping bands of light and dark. Moire exploits this principle by generating two sinusoidal grids with controllable frequency and angle, then combining them to make the interference fringes visible.
 
-### Coordinate Rotation and Grid Evaluation
+### Sinusoidal smoothness
 
-Each grid layer is constructed by rotating screen coordinates through a 2D rotation matrix: $x' = x \cos\theta + y \sin\theta$, $y' = y \cos\theta - x \sin\theta$. The FPGA uses a 32-entry signed lookup table for cosine and sine (8-bit values scaled by 127), so the rotation angle is quantized to 32 steps across 360° — effectively 11.25° per step, though only 180° of unique orientations are exposed via the control range.
+Unlike hard-edged square-wave patterns, Moire's grids use a 256-entry sine lookup table stored in a single iCE40 block RAM. The radial distance from the screen center (computed via an ***alpha-max-beta-min*** fast approximation) is multiplied by the spatial frequency, and the result indexes into the sine table. This produces perfectly smooth concentric ripples with no hard edges. The sine function also naturally masks the small (~3%) octagonal error in the distance approximation, since it maps any continuous input to a smooth curve.
 
-After rotation, the coordinates are reduced modulo the grid pitch to produce a cell-local position. A simple threshold at half the pitch generates a square wave — bright where the position falls in the first half of the cell, dark in the second half. This creates the fundamental stripe pattern. For dots (Grid A) or circles (Grid B), both axes or a distance metric are evaluated instead of just one axis.
+### Coordinate rotation
 
-### Grid Shape Variants
+Each grid's angle is applied by rotating the screen coordinates through a 2D rotation matrix. The sine and cosine values for the rotation come from a compact 32-entry trigonometric lookup table embedded directly in logic. The rotation gives each grid 16 discrete angle steps across a 180° range. Because moiré patterns are extremely sensitive to angular alignment, even a single step change produces a visible transformation of the fringe geometry.
 
-Grid A offers lines or dots. In line mode, only the rotated X coordinate is evaluated, producing parallel stripes. In dot mode, both X and Y are evaluated and ANDed, producing a checkerboard-like dot matrix whose orientation follows the rotation angle.
-
-Grid B offers lines or concentric circles. Circle mode replaces the directional coordinate evaluation with a Chebyshev-approximated distance function: $d \approx \max(|x|, |y|) + \frac{1}{2}\min(|x|, |y|)$. This generates concentric rings whose spacing is set by the pitch control. Combined with rotation, the ring pattern tilts in space, creating interference fringes between the circular B grid and the linear A grid.
-
-### DDS Animation and Video Phase Modulation
-
-A 16-bit Direct Digital Synthesis accumulator increments once per video frame by the Anim Speed register value. The upper 10 bits of the accumulator are added to Grid A's rotated X coordinate, producing a smooth spatial drift — the grid slides horizontally through the interference field. At low speeds, the fringes shift imperceptibly; at high speeds, the pattern scrolls rapidly, creating a shimmering, liquid quality.
-
-Video Mod adds the input luminance (scaled by the modulation depth) to Grid B's rotated X coordinate before pattern evaluation. Bright areas of the input shift Grid B's phase forward; dark areas leave it unperturbed. The net effect is that the interference fringes bend around luminance contours in the source image — straight grid lines develop curves that follow edges and gradients.
-
-### Interference Combination Modes
-
-Two toggles (Combine A and Combine B) select one of four ways to superimpose the two grid patterns:
-
-- **Multiply** (A=0, B=0): $\text{out} = \frac{A \times B}{1024}$. Produces the intersection of both patterns — bright only where both grids are bright. The classic moiré fringe.
-- **XOR** (A=1, B=0): Bitwise exclusive-or of the two 10-bit pattern values. Creates a high-frequency alternating pattern at grid intersections.
-- **Absolute Difference** (A=0, B=1): $\text{out} = |A - B|$. Highlights regions where the two grids disagree — bright where one grid is on and the other is off.
-- **Minimum** (A=1, B=1): $\text{out} = \min(A, B)$. Takes the darker of the two grids at each pixel, producing a union-like effect where dark regions from either grid dominate.
-
-
----
-
-## Signal Flow
+### Signal Flow
 
 ```
-Input Video (YUV 4:4:4)
+Screen Coordinates (H, V)
 │
-├── Y Channel (used for video modulation only) ──────────────
+├── Grid A ─────────────────────────────────────────────────────
 │   │
-│   └── Pipeline delay → s_y_in_s2 for Grid B phase offset
+│   ├─ 1. Coordinate Rotation     (angle A via 32-entry trig LUT)
+│   ├─ 2. Shape Selection         (sine lines: rotated X only)
+│   │                             (ellipses: distance with Y×2 stretch)
+│   ├─ 3. Distance Approximation  (alpha-max-beta-min)
+│   ├─ 4. Frequency Scale         (dist × freq_a → 8-bit address)
+│   ├─ 5. Sine LUT Read           (256-entry BRAM → smooth 10-bit)
+│   └─ Grid A Pattern (0..1023)
 │
-├── Position Counters ──────────────────────────────────────
-│   ├── H counter (reset on hsync, incr on avid)
-│   └── V counter (reset on vsync, incr on avid_start)
+├── Grid B ─────────────────────────────────────────────────────
+│   │
+│   ├─ 1. Coordinate Rotation     (angle B via 32-entry trig LUT)
+│   ├─ 2. Video Modulation        (input Y offsets rotated X)
+│   ├─ 3. Distance Approximation  (alpha-max-beta-min)
+│   ├─ 4. Frequency Scale         (dist × freq_b → 8-bit address)
+│   ├─ 5. Sine LUT Read           (256-entry BRAM → smooth 10-bit)
+│   ├─ 6. Arc Fade                (cosine window on negative Y, if arcs)
+│   └─ Grid B Pattern (0..1023)
 │
-├── Animation DDS ──────────────────────────────────────────
-│   └── 16-bit accumulator += anim_speed per frame
-│       └── s_anim_phase = accum(15:6)
+├── Animation DDS ──────────────────────────────────────────────
+│   └─ Phase offset added to both sine LUT addresses per frame
 │
-├── Stage 1: Coordinate Rotation (1 clk) ────────────────
-│   ├── Grid A: rx = hc·cos_a + vc·sin_a + anim_phase
-│   │           ry = vc·cos_a − hc·sin_a
-│   └── Grid B: rx = hc·cos_b + vc·sin_b
-│               ry = vc·cos_b − hc·sin_b
+├── Interference Combination ───────────────────────────────────
+│   └─ Pattern A × Pattern B → Moire (via toggle-selected mode)
 │
-├── Stage 2: Pattern Evaluation (1 clk) ─────────────────
-│   ├── Grid A: lines (X mod pitch) or dots (X&Y mod pitch)
-│   └── Grid B: video mod → rx_b offset
-│               lines (X mod pitch) or circles (distance mod pitch)
+├── Output Composite ───────────────────────────────────────────
+│   └─ Y = Moire, U = 512, V = 512 (grayscale synthesis)
 │
-├── Stage 3: Interference Combination (1 clk) ───────────
-│   └── 4 modes: Multiply / XOR / Abs Diff / Minimum
-│       → s_moire (10-bit monochrome)
+├── Wet/Dry Mix (3× interpolator_u) ────────────────────────────
+│   └─ Crossfade between delayed input YUV and composite
 │
-├── Stage 4: Output Composite (1 clk) ──────────────────
-│   └── Y = moire, U = 512, V = 512 (monochrome)
-│
-├── Interpolator: Wet/Dry Mix (4 clks) ─────────────────
-│   └── lerp(dry, wet, mix_amount) per Y, U, V
-│
-└── Bypass ─────────────────────────────────────────────
-    └── Select original or processed signal
+└── Sync Delay Pipeline ────────────────────────────────────────
+    └─ Pass-through (hsync, vsync, field, avid) — 10 clk delay
 ```
 
-The moiré pattern itself is purely generated — it does not process the input video's pixel values through the pattern pipeline. Input video participates only through the Video Mod path, where luma offsets Grid B's phase coordinate, and through the wet/dry mix, where the pattern is crossfaded with the original. This makes Moiré a hybrid between a synthesis program (the grid patterns are internally generated) and a processing program (the output is composited with input, and luma modulates the pattern). The output is inherently monochrome — U and V are fixed at the neutral midpoint (512) — so the wet/dry mix is the only path for color to appear in the output.
+### Signal Flow Notes
+
+Two key architectural choices shape the sound of this program:
+
+1. **Dual-path grid generation**: Grid A and Grid B are computed in parallel from the same screen coordinates but with independent rotation, shape selection, and pitch. They share the same 256-entry BRAM sine table via true dual-port read, so both lookups happen in the same clock cycle.
+
+2. **Video modulation on Grid B only**: The input video's luminance offsets Grid B's rotated X coordinate before the distance computation. This means Grid A remains geometrically rigid while Grid B warps dynamically with the image content. The asymmetry creates a moiré pattern that is partly fixed and partly content-reactive.
+
+:::tip
+**The combination mode matters.** Multiply and Min produce dark fringes (where patterns cancel). Add and Diff produce bright fringes (where patterns reinforce). Experiment with all four modes on the same pitch/angle settings to see how radically the fringe character changes.
+:::
+
 
 ---
 
-## Parameter Reference
+## Exercises
 
-<img src={moir__control_panel} alt="Videomancer front panel with Moiré loaded"/>
-*Videomancer's front panel with Moiré active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+These exercises build from basic ring interference to animated, video-modulated moiré textures. Each one adds a new dimension to the pattern.
+### Exercise 1: Beat Frequency Fringes
 
-### Rotary Potentiometers (Knobs 1–6)
+![Beat Frequency Fringes result](/img/instruments/videomancer/moire/moire_ex1_s1.png)
+*Beat Frequency Fringes — simulated result across source images.*
+**Key Concepts**: - Moiré fringes emerge from the frequency difference between two grids
+- Close pitch values → broad fringes; distant values → fine fringes
+- Angle offset determines fringe curvature
 
-#### Knob 1 — Pitch A
-| Property | Value |
-|----------|-------|
-| Range | 4px – 64px |
-| Default | 27px |
-| Suffix | px |
+**What You'll Create**: Discover how small pitch differences between the two grids create large-scale moiré fringes.
 
-Controls the pitch (spatial period) of Grid A. The knob selects one of eight discrete steps from a lookup table: 4, 8, 12, 16, 24, 32, 48, and 64 pixels. Smaller pitches create fine, closely-spaced stripes or dots; larger pitches create broad bands. The pitch interacts multiplicatively with Grid B's pitch to determine the interference fringe spacing — the moiré beat frequency is determined by the ratio and difference of the two pitches. Setting both grids to the same pitch and slightly different angles produces classic angular moiré fringes.
+**Source**: Any video input, or no input with Mix fully clockwise.
 
----
+1. **Match the grids**: Set **Pitch A** (Knob 1) and **Pitch B** (Knob 4) to the same step. The two grids cancel almost perfectly, producing a nearly uniform field.
+2. **Offset one step**: Move Pitch B one step clockwise. Bold, sweeping moiré fringes appear — these are the ***beat frequency*** between the two grids.
+3. **Add angle**: Slowly rotate **Angle A** (Knob 2) away from zero. The straight fringes curve into arcs and hyperbolic shapes.
+4. **Widen the gap**: Move Pitch B farther from Pitch A. The fringes become finer and more numerous as the frequency difference increases.
+5. **Try Fine**: Enable **Fine** (Switch 11) to double both frequencies. The overall ring density increases, but the pitch *ratio* stays the same, so the moiré fringe spacing is preserved.
 
-#### Knob 2 — Pitch B
-| Property | Value |
-|----------|-------|
-| Range | 4px – 64px |
-| Default | 30px |
-| Suffix | px |
+**Settings**:
 
-Controls the pitch of Grid B using the same eight-step lookup table as Grid A. The most dramatic interference fringes appear when the two pitches are close but not identical — for example, Pitch A at 32 and Pitch B at 24 produces wide, slowly varying fringes. When the pitches are identical, only the angular difference between the grids creates interference. When the pitches are very different (e.g., 4 and 64), the interference is less visually coherent and the patterns interact at a fine scale.
-
----
-
-#### Knob 3 — Angle A
-| Property | Value |
-|----------|-------|
-| Range | 0° – 180° |
-| Default | 0° |
-| Suffix | ° |
-
-Sets the rotation angle of Grid A. The 10-bit pot value is quantized to one of 32 entries in a cosine/sine lookup table, covering 0° to approximately 180° in steps of about 5.6°. At 0°, Grid A produces vertical stripes (or a vertical dot grid). Rotating Grid A while leaving Grid B fixed sweeps the interference fringe orientation across the image. Even small angular differences between the two grids produce large-scale fringes, making this a sensitive control for fine-tuning the interference pattern.
-
----
-
-#### Knob 4 — Angle B
-| Property | Value |
-|----------|-------|
-| Range | 0° – 180° |
-| Default | 23° |
-| Suffix | ° |
-
-Sets the rotation angle of Grid B, using the same 32-entry lookup table as Angle A. The relative angle between the two grids is the primary control for fringe orientation and spacing — the fringes run perpendicular to the angle bisector. Setting both angles equal eliminates angular interference, leaving only pitch-ratio effects. Sweeping Angle B while holding Angle A fixed rotates the entire interference pattern.
+| Control | Value |
+|---------|-------|
+| Pitch A | Step 3 (~8 px) |
+| Angle A | 0° |
+| Video Mod | 0% |
+| Pitch B | Step 4 (~12 px) |
+| Angle B | 0° |
+| Anim Speed | 0% |
+| Grid A | Sine |
+| Grid B | Circles |
+| Combine A | Multiply |
+| Combine B | Diff |
+| Fine | Off |
+| Mix | 100% |
 
 ---
 
-#### Knob 5 — Anim Speed
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
+### Exercise 2: Animated Ellipses and Arcs
 
-Controls the DDS animation speed. At zero, the grid pattern is static. Increasing the value adds a per-frame phase increment to Grid A's rotated X coordinate via a 16-bit accumulator. The visible effect is a steady horizontal drift of Grid A through the interference field, causing the fringes to slide, pulse, and shimmer. At low settings, the motion is a slow, tidal drift; at high settings, the pattern scrolls rapidly and the interference fringes flicker. The animation is built into the FPGA's frame timing, so it requires no input signal — it runs even with static or black input.
+![Animated Ellipses and Arcs result](/img/instruments/videomancer/moire/moire_ex2_s1.png)
+*Animated Ellipses and Arcs — simulated result across source images.*
+**Key Concepts**: - Ellipses stretch the Y axis before distance computation
+- Arcs use a cosine fade to clip circles to a hemisphere
+- Animation drift smoothly shifts the phase of both grids
 
----
+**What You'll Create**: Layer different geometric shapes and add animation drift.
 
-#### Knob 6 — Video Mod
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 0% |
-| Suffix | % |
+**Source**: A static image or test pattern with strong horizontal and vertical features.
 
-Controls how strongly input luminance modulates Grid B's phase. At zero, Grid B's pattern is purely geometric — unaffected by the input video. As Video Mod increases, the rotated X coordinate of Grid B is offset by a value proportional to the input luma. Bright pixels push Grid B's stripes or circles forward; dark pixels leave them in place. The resulting interference fringes bend around luminance edges in the source, embedding a ghostly impression of the input imagery into the moiré structure. At maximum modulation, the grid structure is heavily warped by the input, and the interference fringes become contour lines of the source luminance.
+1. **Elliptical Grid A**: Set Grid A to **Ellipse** (Switch 7). The concentric rings flatten into ovals, changing the fringe topology.
+2. **Arc Grid B**: Set Grid B to **Arcs** (Switch 8). The lower half of Grid B's circles fades smoothly away, leaving semicircular arcs that interact asymmetrically with Grid A's ellipses.
+3. **Angle both grids**: Set Angle A to about 45° and Angle B to about 120°. The tilted ellipses and arcs produce complex, non-repeating fringe corridors.
+4. **Animate**: Increase **Anim Speed** (Knob 6) to about 30%. The rings pulse outward and the moiré fringes glide slowly across the frame.
+5. **Try Additive**: Set **Combine A** to **Add** (Switch 9). The fringes brighten and the overall texture becomes more luminous.
 
----
+**Settings**:
 
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Grid A** | Lines | Dots |
-| **8 — Grid B** | Lines | Circles |
-| **9 — Combine A** | Multiply | XOR |
-| **10 — Combine B** | Diff | Min |
-| **11 — Bypass** | Off | On |
-
-Toggles 7 and 8 select the geometric shape of each grid layer independently. Toggles 9 and 10 form a 2-bit combiner mode selector that determines how the two grid patterns are superimposed. Toggle 11 is the standard bypass. The most dramatic changes come from the combiner mode pair — the four modes produce fundamentally different interference textures from the same grid geometry.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0% – 100% |
-| Default | 100% |
-| Suffix | % |
-
-Controls the wet/dry crossfade between the original input video and the moiré output. At 0%, the output is the unmodified input. At 100%, the output is the full moiré pattern (monochrome, as U and V are fixed at 512). Intermediate positions blend the monochrome moiré with the original color video, producing a ghostly overlay effect where the interference fringes modulate the source image. Because the moiré output is monochrome, increasing the mix also desaturates the output.
+| Control | Value |
+|---------|-------|
+| Pitch A | Step 4 (~12 px) |
+| Angle A | ~45° |
+| Video Mod | 0% |
+| Pitch B | Step 5 (~16 px) |
+| Angle B | ~120° |
+| Anim Speed | ~30% |
+| Grid A | Ellipse |
+| Grid B | Arcs |
+| Combine A | Add |
+| Combine B | Diff |
+| Fine | Off |
+| Mix | 100% |
 
 ---
 
-## Guided Exercises
+### Exercise 3: Video-Modulated Moiré
 
-These exercises move from basic grid visualization through interference tuning to video-reactive pattern modulation. Each introduces a new dimension of the program's behavior.
+![Video-Modulated Moiré result](/img/instruments/videomancer/moire/moire_ex3_s1.png)
+*Video-Modulated Moiré — simulated result across source images.*
+**Key Concepts**: - Video Mod offsets Grid B's coordinates based on input luminance
+- Grid A stays fixed while Grid B warps, so fringes track image content
+- Mix blends the moiré synthesis over the original video
 
-### Exercise 1: Pitch-Ratio Interference
+**What You'll Create**: Use the input video to warp the moiré pattern, creating content-reactive interference textures.
 
-<img src={moir__exercise1_result} alt="Pitch-Ratio Interference result"/>
-*Pitch-Ratio Interference — simulated result across source images.*
-**Source**: A static test pattern or color bars — any stable image for observing interference fringes without motion.
+**Source**: Live camera footage or recorded video with varied brightness — faces, landscapes, or objects with strong tonal contrast.
 
-**Objective**: Learn how the ratio and difference of the two grid pitches control the moiré fringe spacing.
+1. **Establish a base pattern**: Set both pitches to neighboring steps with a moderate angle offset. Verify that a clear moiré fringe pattern is visible.
+2. **Engage video modulation**: Slowly increase **Video Mod** (Knob 3) from 0%. Grid B's rings distort and follow the bright areas of the video.
+3. **Blend**: Pull **Mix** (Fader 12) to about 50%. The moiré texture overlays the source video, with the interference fringes bending around bright objects.
+4. **Try all combine modes**: Cycle through the four combination modes (Switches 9 and 10) while Video Mod is active. Each mode reacts differently to the video-driven distortion.
+5. **Add animation**: Set Anim Speed to about 20%. The video-locked fringes drift slowly, creating a shimmering, alive texture over the source image.
 
-1. **Baseline**: Set both pitches to 16 px with both angles at 0°. The two grids are identical — the output is a uniform stripe pattern with no interference.
-2. **Pitch offset**: Change Pitch B to 12 px. Wide moiré fringes appear as the two frequencies beat against each other.
-3. **Closer pitches**: Change Pitch B to 24 px. The fringe spacing changes — the beat frequency depends on the pitch ratio.
-4. **Fine fringes**: Set Pitch A to 48 and Pitch B to 64. The close ratio produces broadly spaced fringes.
-5. **Angular interference**: Return both pitches to 16 px. Slowly rotate Angle B. Diagonal fringes appear from the angular difference alone.
+**Settings**:
 
-**Key concepts**: Moiré fringes arise from the beat frequency between two spatial frequencies, pitch ratio determines fringe spacing, angular difference creates diagonal fringes
-
----
-
-### Exercise 2: Shape and Mode Exploration
-
-<img src={moir__exercise2_result} alt="Shape and Mode Exploration result"/>
-*Shape and Mode Exploration — simulated result across source images.*
-**Source**: A simple geometric pattern or gradient test card.
-
-**Objective**: Explore how grid shapes and combination modes produce different interference textures.
-
-1. **Dots vs lines**: Set Pitch A to 8, Pitch B to 12, Angle A to 0°, Angle B to ~45°. Switch Grid A between Lines and Dots — observe how the dot grid creates denser, two-dimensional interference.
-2. **Circles**: Switch Grid B to Circles. Radial spoke-like fringes appear from the line/circle interaction.
-3. **XOR mode**: Switch Combine A to XOR. The smooth fringes become high-contrast digital patterns.
-4. **Minimum mode**: Set Combine A to XOR, Combine B to Min. The output takes the darker of the two patterns — dark stripes from both grids appear simultaneously.
-5. **Abs Difference**: Set Combine A to Multiply, Combine B to Min. Boundary regions between the grids light up.
-
-**Key concepts**: Grid shapes create different interference geometries, combination modes generate fundamentally different textures from identical grids, circles produce radial fringes
+| Control | Value |
+|---------|-------|
+| Pitch A | Step 2 (~6 px) |
+| Angle A | ~30° |
+| Video Mod | ~75% |
+| Pitch B | Step 3 (~8 px) |
+| Angle B | ~90° |
+| Anim Speed | ~20% |
+| Grid A | Ellipse |
+| Grid B | Circles |
+| Combine A | Multiply |
+| Combine B | Min |
+| Fine | Off |
+| Mix | ~50% |
 
 ---
-
-### Exercise 3: Video-Modulated Animation
-
-<img src={moir__exercise3_result} alt="Video-Modulated Animation result"/>
-*Video-Modulated Animation — simulated result across source images.*
-**Source**: A live camera feed or footage with high-contrast subjects and clear luminance edges.
-
-**Objective**: Combine video modulation and DDS animation to create a reactive, evolving moiré field.
-
-1. **Video embedding**: Set Video Mod to ~60%. The moiré fringes bend around luminance contours in the source, revealing a ghostly imprint of the input.
-2. **Animation**: Increase Anim Speed to ~20%. Grid A drifts through the interference, causing fringes to pulse and shift while maintaining their visual lock to the source luminance.
-3. **Mix blending**: Set Mix to ~50%. The monochrome moiré blends with the original color video, creating a semi-transparent pattern overlay.
-4. **Circle interference**: Switch Grid B to Circles. The video-modulated circles create concentric ripples centered on luminance features.
-5. **Speed sweep**: Slowly increase Anim Speed to maximum. The pattern becomes a rapid shimmer over the source.
-
-**Key concepts**: Video Mod embeds input luminance into the interference structure, animation creates temporal evolution independent of input motion, partial Mix preserves source color beneath the pattern
-
----
-
-
-## Tips
-
-- **Start with identical grids**: Set both pitches and angles equal, then slowly offset one parameter at a time. This builds intuition for how each variable contributes to the interference.
-- **Pitch ratio matters more than absolute pitch**: Two grids at 8 and 12 px produce the same fringe pattern shape as two grids at 32 and 48 px (both are 2:3 ratios), just at different spatial scales.
-- **Small angles, big fringes**: The angular sensitivity is high — a single LUT step (~5.6°) produces dramatic fringes. Use small angular offsets for large-scale, slowly varying patterns.
-- **Circles add radial structure**: Switching Grid B to Circles introduces spoke-like and spiral interference that is impossible with two line grids alone.
-- **Video Mod for reactive patterns**: Even a small amount of Video Mod (10–20%) bends the grid fringes enough to create a visible impression of the input content within the moiré field.
-- **Animation for temporal texture**: Low Anim Speed values (5–15%) create a hypnotic, slowly evolving shimmer. High values produce rapid flicker that can serve as a modulation source for downstream programs.
-- **Mix for overlay compositing**: At 30–50% Mix, the monochrome moiré serves as a semi-transparent texture layer over the original color video.
-
----
-
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Beat Frequency** | The difference frequency produced when two periodic signals of slightly different frequencies interact; in moiré patterns, this determines the spacing of the visible fringes. |
-| **Chebyshev Distance** | An approximation of Euclidean distance using $\max(|x|, |y|)$; used here with a correction term for circle pattern generation. |
-| **DDS** | Direct Digital Synthesis; a technique for generating waveforms by incrementing a phase accumulator and using the result to index a lookup table. |
-| **Fringe** | A visible band or contour in a moiré pattern, caused by constructive or destructive interference between two periodic structures. |
-| **Interference** | The phenomenon where overlapping periodic patterns create new visible structures (fringes) at the beat frequency. |
-| **LUT** | Lookup Table; a pre-computed array of values indexed by an input parameter, used here for trigonometric functions and pitch decoding. |
-| **Moiré** | A pattern arising from the superposition of two periodic structures, named after watered silk fabric. |
-| **Phase Accumulator** | A counter that wraps around at a fixed modulus, used in DDS to generate a linearly advancing phase that can be converted to a spatial offset. |
-| **Square Wave** | A periodic signal alternating between two levels (here, 0 and 1023) at a duty cycle of 50%, used to generate grid stripe patterns. |
-| **XOR** | Exclusive OR; a bitwise operation that outputs 1 where the two inputs differ, creating high-contrast digital interference patterns. |
-| **YUV** | A color encoding that separates luminance (Y) from chrominance (U, V); the native format of Videomancer's 30-bit video pipeline. |
+- **Alpha-Max-Beta-Min**: A fast approximation algorithm for computing the distance from the origin without using a square root; trades ~3% accuracy for much lower hardware cost.
+
+- **Beat Frequency**: The slow oscillation that appears when two close but unequal frequencies are combined; in moiré patterns, this produces the large-scale fringe spacing.
+
+- **DDS (Direct Digital Synthesis)**: A technique for generating precise, jitter-free waveforms by incrementing a phase accumulator at a fixed rate, used here for smooth animation drift.
+
+- **Interference**: The phenomenon where two overlapping periodic patterns produce a third, larger-scale pattern at the difference of their frequencies.
+
+- **Moiré**: A visual interference pattern created by overlaying two periodic structures at a slight offset, producing sweeping bands, rings, or fringes not present in either structure alone.
+
+- **Radial Distance**: The straight-line distance from a point to the screen center, used as the input to the sine function to produce concentric circular patterns.
+
+- **Sine LUT (Lookup Table)**: A precomputed table of sinusoidal values stored in block RAM, used to convert distance values into smooth, periodic brightness patterns.
+
+- **Spatial Frequency**: The number of oscillation cycles per unit of screen distance; higher spatial frequency produces tighter, more closely packed rings.
+
+
+---

@@ -1,4 +1,4 @@
----
+﻿---
 draft: false
 sidebar_position: 200
 slug: /instruments/videomancer/mycelium
@@ -7,376 +7,430 @@ image: /img/instruments/videomancer/mycelium/mycelium_hero_s1.png
 description: "In 1984, John Pearson numerically investigated a class of reaction-diffusion systems first described by Gray and Scott in the context of isothermal chemical reactions."
 ---
 
-import BeforeAfterSlider from '@site/src/components/BeforeAfterSlider';
-import mycelium_control_panel from '/img/instruments/videomancer/mycelium/mycelium_control_panel.png';
-import mycelium_source1_dog from '/img/instruments/videomancer/mycelium/mycelium_source1_dog.png';
-import mycelium_source2_cat from '/img/instruments/videomancer/mycelium/mycelium_source2_cat.png';
-import mycelium_source3_elephant from '/img/instruments/videomancer/mycelium/mycelium_source3_elephant.png';
-import mycelium_source4_pattern from '/img/instruments/videomancer/mycelium/mycelium_source4_pattern.png';
-import mycelium_source5_boy from '/img/instruments/videomancer/mycelium/mycelium_source5_boy.png';
-import mycelium_source6_paint from '/img/instruments/videomancer/mycelium/mycelium_source6_paint.png';
-import mycelium_hero_s1 from '/img/instruments/videomancer/mycelium/mycelium_hero_s1.png';
-import mycelium_hero_s2 from '/img/instruments/videomancer/mycelium/mycelium_hero_s2.png';
-import mycelium_hero_s3 from '/img/instruments/videomancer/mycelium/mycelium_hero_s3.png';
-import mycelium_hero_s4 from '/img/instruments/videomancer/mycelium/mycelium_hero_s4.png';
-import mycelium_hero_s5 from '/img/instruments/videomancer/mycelium/mycelium_hero_s5.png';
-import mycelium_hero_s6 from '/img/instruments/videomancer/mycelium/mycelium_hero_s6.png';
-import mycelium_ex1_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s1.png';
-import mycelium_ex1_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s2.png';
-import mycelium_ex1_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s3.png';
-import mycelium_ex1_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s4.png';
-import mycelium_ex1_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s5.png';
-import mycelium_ex1_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex1_s6.png';
-import mycelium_ex2_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s1.png';
-import mycelium_ex2_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s2.png';
-import mycelium_ex2_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s3.png';
-import mycelium_ex2_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s4.png';
-import mycelium_ex2_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s5.png';
-import mycelium_ex2_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex2_s6.png';
-import mycelium_ex3_s1 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s1.png';
-import mycelium_ex3_s2 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s2.png';
-import mycelium_ex3_s3 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s3.png';
-import mycelium_ex3_s4 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s4.png';
-import mycelium_ex3_s5 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s5.png';
-import mycelium_ex3_s6 from '/img/instruments/videomancer/mycelium/mycelium_ex3_s6.png';
-
-# Mycelium
-
-<span class="head2_nolink">Videomancer Program Guide</span>
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: mycelium_source1_dog, after: mycelium_hero_s1 },
-    { label: "Cat", before: mycelium_source2_cat, after: mycelium_hero_s2 },
-    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_hero_s3 },
-    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_hero_s4 },
-    { label: "Boy", before: mycelium_source5_boy, after: mycelium_hero_s5 },
-    { label: "Paint", before: mycelium_source6_paint, after: mycelium_hero_s6 },
-  ]}
-/>
-*Mycelium rendering a field of reaction-diffusion patterns — branching coral-like structures emerging from input video luminance, mapped through a warm color palette.*
+![Mycelium hero image](/img/instruments/videomancer/mycelium/mycelium_hero_s1.png)
+*Mycelium cultivating luminous reaction-diffusion networks that emerge, branch, and decay across the video frame.*
 
 ---
 
 ## Overview
 
-In 1984, John Pearson numerically investigated a class of reaction-diffusion systems first described by Gray and Scott in the context of isothermal chemical reactions. The system models two virtual chemical species — an activator (U) and an inhibitor (V) — that diffuse through space while undergoing nonlinear reactions. Depending on the feed and kill rates, the system spontaneously generates a remarkable variety of self-organizing patterns: spots, stripes, labyrinthine curves, pulsating blobs, and self-replicating dots. These patterns emerge from nothing but the interaction of diffusion and reaction — no explicit shape definition, no boundary conditions, no templates.
+**Mycelium** is a self-generating video texture synthesizer based on a three-species ***reaction-diffusion*** system. Unlike processing programs that transform an input signal, Mycelium grows its own organic visual content — branching networks of luminous filaments that emerge, spread, and decay in real time. Input video serves as a seed, determining where and how aggressively new growth begins.
 
-Mycelium implements a simplified Gray-Scott reaction-diffusion system in real-time hardware. Two chemical species evolve per-pixel at video rate, with horizontal diffusion computed from left-neighbor registers and vertical diffusion approximated using single-line BRAM buffers storing concentrations from the previous scanline. The reaction terms — the nonlinear products u·v² that drive pattern formation — are computed using shift-and-add approximations with no hardware multipliers. Input video luminance seeds the system by injecting inhibitor concentration wherever brightness exceeds a configurable threshold, causing organic patterns to grow from the video's bright features. The inhibitor concentration is then mapped to YUV output through a three-tier color palette.
+The simulation models three interacting chemical species: an ***activator*** (U) that drives the expanding growth front, an ***inhibitor*** (V) that trails behind depleting resources, and a persistent ***network*** species (W) that accumulates wherever growth has occurred. Together, these species produce patterns reminiscent of fungal mycelium, lichen, coral, or the dendritic branching of neurons. The balance between **Feed Rate** and **Kill Rate** determines whether the system produces isolated spots, labyrinthine stripes, or chaotic turbulence.
 
-The name references mycelium, the branching underground network of fungal threads that grows through soil in patterns strikingly similar to reaction-diffusion simulations. Like its biological namesake, the program's patterns spread, branch, and fill space with organic complexity emerging from simple local rules.
+:::tip
+Mycelium generates imagery autonomously — you don't need an input signal to create patterns. Input video acts as a catalyst: brighter areas seed new growth. Without input, the built-in noise source provides sparse background seeding.
+:::
+
+### What's In a Name?
+
+***Mycelium*** is the root network of a fungus — a vast, branching web of threadlike filaments called ***hyphae*** that grow outward from a central point, branching and reconnecting as they explore their environment. The visual patterns produced by this program mirror that growth: luminous strands emerge from seed points, branch outward, and leave behind a persistent network map of all past activity. The name reflects both the biological appearance of the output and the underlying mathematics — growth, branching, memory.
 
 ---
 
 ## Quick Start
 
-1. **Feed and Kill are everything**: The Diffusion, Sim Speed, and Pattern controls have no effect in the current VHDL. Focus on Feed Rate and Kill Rate — they define the pattern morphology entirely.
-2. **The sweet spot is narrow**: Interesting Gray-Scott patterns occupy a small region of feed/kill parameter space. Start with Feed ~40%, Kill ~55% and make small adjustments. Large changes tend to produce either uniform fields or total decay.
-3. **One-shot for generative art**: Set Seed Mode to One-Shot, feed an interesting image, and watch it dissolve into pure reaction-diffusion patterns over time. The transition from recognizable image to organic abstraction is the most compelling visual evolution.
+1. With default settings, observe the screen. Organic patterns emerge and evolve from sparse background seeding by a built-in noise source. Give the simulation a few seconds to develop.
+2. Turn **Color Map** (Knob 5) to explore different palettes — from monochrome to bioluminescent amber, magenta, indigo, or forest green.
+3. Adjust **Feed Rate** (Knob 1) and **Kill Rate** (Knob 2) together. Small changes shift the system between spots, stripes, and turbulent patterns. These two knobs define the character of the simulation.
+4. Connect a video source and increase **Seed Thresh** (Knob 4). The reaction-diffusion growth follows the bright contours of your input image.
+
+---
+
+## Parameters
+
+![Videomancer front panel with Mycelium loaded](/img/instruments/videomancer/mycelium/mycelium_control_panel.png)
+*Videomancer's front panel with Mycelium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
+
+### Knob 1 — Feed Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 39.1% |
+
+**Feed Rate** controls the strength of the activator source — how quickly new activator chemical is replenished in the simulation. This corresponds to ***F*** in the Gray-Scott reaction-diffusion equations. At low values, the activator replenishes slowly, producing sparse, isolated patterns. As Feed Rate increases, the activator supply strengthens and patterns grow more densely, filling the frame with branching networks. At extreme values, the simulation can become uniformly saturated.
+
+:::note
+Feed Rate and **Kill Rate** are deeply coupled. Moving one without adjusting the other can push the simulation into a featureless steady state. Explore them together to find the narrow boundary where interesting patterns live.
+:::
+
+---
+
+### Knob 2 — Kill Rate
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 54.7% |
+
+**Kill Rate** controls how quickly the inhibitor drains away — the ***k*** parameter in the Gray-Scott equations. Low Kill Rate means the inhibitor persists, suppressing activator growth and producing broad, slow-moving patterns. High Kill Rate means the inhibitor is consumed faster, allowing the activator to grow more aggressively and producing finer, more turbulent textures. The balance between **Feed Rate** and Kill Rate determines the overall character of the pattern: spots, stripes, waves, or chaos.
+
+---
+
+### Knob 3 — Diffusion
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Diffusion** controls how far each species spreads spatially per simulation step, determining the ***spatial scale*** of the patterns. At low values, diffusion is weak and patterns remain compact with fine features. At high values, diffusion is strong and patterns become broader, smoother, and more slowly evolving. The **Pattern** toggle (Switch 9) determines the ratio between activator and inhibitor diffusion rates.
+
+:::tip
+Low Diffusion with moderate Feed and Kill rates produces crisp, high-contrast networks with sharp edges. High Diffusion produces softer, more painterly textures.
+:::
+
+---
+
+### Knob 4 — Seed Thresh
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Seed Thresh** controls the luminance threshold for video-driven seeding. When the brightness of the input video exceeds this threshold, new inhibitor is injected at that pixel, triggering a local reaction-diffusion event. At low values, only the very brightest areas of the input seed growth. As Seed Thresh increases toward 100%, the threshold drops and progressively dimmer areas trigger seeding, causing the simulation to follow more of the input image's structure.
+
+This parameter also controls the rate at which the network species (W) accumulates, so higher values produce both more aggressive seeding and faster network buildup.
+
+---
+
+### Knob 5 — Color Map
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Color Map** selects one of eight color palettes for rendering the three-species simulation. The palette maps species concentrations to YUV color. Sweep the knob from left to right to cycle through:
+
+- **Monochrome**: Neutral luminance, no chroma
+- **Amber**: Bioluminescent orange glow
+- **Magenta**: Warm pink-purple
+- **Indigo**: Deep blue-violet
+- **Cyan**: Bioluminescent aqua
+- **Green**: Forest moss
+- **Gold**: Warm ochre
+- **Triplex**: All three species encoded directly into Y, U, and V channels
+
+---
+
+### Knob 6 — Sim Speed
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 50.0% |
+
+**Sim Speed** controls the decay rate of the persistent network species (W). At low values, the network fades very slowly, accumulating a dense historical record of all past growth. At high values, the network fades rapidly, showing only recent activity. This parameter shapes the visual "memory" of the simulation — how long the luminous strand trails persist after the active growth front has moved on.
+
+---
+
+### Switch 7 — Freeze
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Freeze** halts the simulation. When enabled, the reaction-diffusion equations stop updating and the current pattern is held indefinitely. All three species retain their state. Disable Freeze to resume evolution from the frozen state. Use Freeze to capture an interesting moment and study the pattern's static structure.
+
+---
+
+### Switch 8 — Seed Mode
+
+| Property | Value |
+|----------|-------|
+| Off | Cont. |
+| On | One-Shot |
+| Default | Cont. |
+
+**Seed Mode** selects between **Cont.** (Continuous) and **One-Shot** seeding. In Continuous mode, input video seeds new growth every frame wherever the luminance exceeds the threshold. In One-Shot mode, seeding occurs only once per frame: the first qualifying pixel latches the seed, and all subsequent pixels that frame are ignored. The latch resets on each vertical sync. One-Shot produces a single localized burst of growth per frame, while Continuous produces a distributed pattern that closely follows the input image.
+
+---
+
+### Switch 9 — Pattern
+
+| Property | Value |
+|----------|-------|
+| Off | Spots |
+| On | Stripes |
+| Default | Spots |
+
+**Pattern** selects between **Spots** and **Stripes** diffusion regimes. This toggle controls the ratio between the activator's and inhibitor's diffusion rates. In Spots mode, the activator diffuses significantly faster than the inhibitor (two stops of difference), producing isolated circular features. In Stripes mode, the diffusion rates are closer (one stop of difference), producing labyrinthine, interconnected stripe patterns.
+
+:::note
+This is the ***Turing instability*** — the fundamental mechanism of reaction-diffusion pattern formation. Different diffusion ratios create qualitatively different patterns, just as Alan Turing predicted in 1952.
+:::
+
+---
+
+### Switch 10 — Invert
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Invert** switches the display emphasis between two rendering modes. In the **Off** position, the output shows ***UV Tips*** mode: the inhibitor species (V) dominates luminance, highlighting the active reaction fronts — the bright edges where growth is currently happening. In the **On** position, the output switches to ***Web*** mode: the network species (W) dominates luminance, revealing the persistent strand map — the accumulated history of where growth has been.
+
+---
+
+### Switch 11 — Turbo
+
+| Property | Value |
+|----------|-------|
+| Off | Off |
+| On | On |
+| Default | Off |
+
+**Turbo** inverts all three species in the color mapping stage. When enabled, the activator, inhibitor, and network values are complemented before rendering. This produces a photographic negative of the pattern — dark areas become bright, background becomes foreground. Combined with different **Color Map** palettes, Turbo can dramatically change the visual character of the output.
+
+---
+
+### Fader 12 — Mix
+
+| Property | Value |
+|----------|-------|
+| Range | 0.0% – 100.0% |
+| Default | 100.0% |
+
+**Mix** crossfades between the input video signal (dry) and the reaction-diffusion output (wet). At 0%, the output is pure dry input. At 100%, the output is pure synthesized imagery. Intermediate values blend the two, superimposing the organic patterns over the input video. Mix defaults to 100% since Mycelium is a synthesis program designed to generate its own visual content.
 
 ---
 
 ## Background
 
-### Gray-Scott Reaction-Diffusion
+### Reaction-Diffusion Systems
 
-The Gray-Scott system models two species reacting in a continuously stirred reactor. The activator U is fed into the system at a constant rate and consumed by the reaction U + 2V → 3V. The inhibitor V is produced by this reaction and simultaneously decays at a rate proportional to a kill constant. The continuous equations are:
+In 1952, the mathematician Alan Turing published a paper titled "The Chemical Basis of Morphogenesis," proposing that patterns in biology — spots on a leopard, stripes on a zebrafish, the branching of coral — could emerge from the interaction of two chemicals that diffuse at different rates. One chemical activates growth; the other inhibits it. When the activator diffuses faster than the inhibitor, a ***Turing instability*** occurs: small random fluctuations amplify into stable, self-organizing patterns.
 
-$$\frac{\partial u}{\partial t} = D_u \nabla^2 u - uv^2 + f(1-u)$$
-$$\frac{\partial v}{\partial t} = D_v \nabla^2 v + uv^2 - (f+k)v$$
+The ***Gray-Scott model*** is one of the best-studied implementations of Turing's idea. It describes two interacting species governed by two parameters: ***feed rate*** (F), which replenishes the activator, and ***kill rate*** (k), which drains the inhibitor. Depending on the balance between F and k, the system produces an extraordinary variety of stable patterns: spots, stripes, spirals, replicating dots, and chaotic turbulence.
 
-where $f$ is the feed rate, $k$ is the kill rate, $D_u$ and $D_v$ are diffusion constants, and $\nabla^2$ is the Laplacian (spatial second derivative). The nonlinear term $uv^2$ is the autocatalytic reaction that creates structure. Mycelium's VHDL implements these equations with fixed diffusion ratios (hard-coded bit shifts instead of using the Diffusion pot) and shift-and-add approximations for the cubic reaction term.
+### Three-Species Extension
 
-### The Laplacian and Neighbor Stencils
+Mycelium extends the classical two-species Gray-Scott model with a third species: the ***network accumulator*** (W). In biological terms, W represents the persistent ***hyphal*** network — the established structure left behind after the active growth front has passed. W accumulates proportionally to inhibitor concentration and decays slowly over time. This gives the simulation a visual memory: the network of luminous strands traces the history of all past growth events.
 
-The Laplacian $\nabla^2 u$ measures how much a pixel's value differs from its neighbors. A standard 2D discrete Laplacian uses a 5-point stencil (up, down, left, right, center). Due to the streaming architecture of FPGA video processing — pixels arrive left to right, top to bottom — only the left neighbor and the north neighbor (via BRAM line buffer) are available at computation time. Mycelium therefore uses a reduced 2-neighbor stencil: $\nabla^2 u \approx u_{left} + u_{north} - 2u_{center}$. This approximation is asymmetric (biased toward upper-left diffusion), which slightly favors diagonal pattern growth — a characteristic visual fingerprint of the hardware implementation.
+The three species interact through spatial coupling (diffusion via an approximate ***Laplacian*** computed from three neighbors: left, north, and northwest) and through the reaction kinetics. U and V follow the standard Gray-Scott equations with full-precision Radix-4 Booth multipliers computing v² and u·v². W uses shift-based arithmetic for its growth and decay, requiring no additional multipliers.
 
-### Shift-and-Add Multiplication
+### Seeding and Autonomous Operation
 
-The Gray-Scott reaction requires computing $u \cdot v^2$ — a cubic product. On the iCE40 FPGA with no hardware multipliers, Mycelium approximates these products using shift-and-add: the top two bits of the multiplicand select which shifted copies of the multiplier to sum. For a 10-bit value, this computes $x \cdot y \approx y \cdot (x_9 \cdot 2^{-1} + x_8 \cdot 2^{-2})$, capturing roughly 75% of the full product's precision. The error manifests as slight variation in reaction rates across the concentration range, adding organic irregularity to the patterns.
+Mycelium seeds its simulation through two complementary mechanisms. The primary path compares input video luminance against a threshold derived from **Seed Thresh** — when a pixel exceeds the threshold, its luminance value is injected directly as the inhibitor species, triggering a local reaction event. The secondary path is an autonomous ***LFSR*** (linear feedback shift register) noise source that provides sparse, random seeding across the frame. This ensures patterns emerge even without any video input connected. The **Seed Mode** toggle selects whether seeding is continuous (every qualifying pixel, every frame) or one-shot (first qualifying pixel per frame only).
 
-### Video-Seeded Pattern Growth
-
-Classical reaction-diffusion simulations are typically seeded with random initial perturbations. Mycelium instead injects inhibitor concentration from the input video's luminance channel wherever it exceeds a configurable threshold. Bright regions of the video become nucleation sites where patterns begin to grow. In continuous mode, the video continuously feeds the system, maintaining an ongoing relationship between the input image and the evolving patterns. In one-shot mode, seeding occurs only on the first frame — after that, the system evolves autonomously, and the initial video imprint gradually dissolves into the reaction-diffusion dynamics.
-
-### Color Mapping
-
-After the reaction-diffusion computation, the inhibitor concentration (0–1023) is mapped to YUV output. The Color Map parameter selects among three palettes: monochrome (no chroma — pure luminance), warm (negative U shift + positive V shift, producing amber/orange tones), and cool (positive U shift + negative V shift, producing cyan/blue tones). The chroma offset scales linearly with concentration, so brighter regions receive more saturated color. The Invert toggle flips the concentration before color mapping, swapping which regions are bright and dark.
-
-
----
-
-## Signal Flow
-
-Input Registration → BRAM Read + Laplacian → Color Mapping
+### Signal Flow
 
 ```
-INPUT VIDEO
+Input Video (Y channel — used for seeding)
 │
-├── Stage 1: Input Registration + Seed Detection ──────────────
-│   ├─ s_y_in = data_in.y
-│   ├─ seed_active = (y_in >= seed_thresh) AND (seed_mode OR NOT seeded)
-│   └─ s_act_left, s_inh_left = previous pixel state
+Three-Species Reaction-Diffusion Core
+├─────────────────────────────────────────────────────────
 │
-├── Stage 2: BRAM Read + Laplacian ────────────────────────────
-│   ├─ act_north, inh_north = BRAM[pixel_count] (ping-pong bank)
-│   ├─ lap_act = act_left + act_north − 2·act_cur
-│   └─ lap_inh = inh_left + inh_north − 2·inh_cur
+│  ┌─────────────────────────────────────────────────────┐
+│  │  Line Buffers (3 × 10 BRAMs = 30 total)             │
+│  │  U north, V north, W north (dual-bank ping-pong)    │
+│  └──────────┬──────────────────────────────────────────┘
+│             │                                  (2 clk)
+│  LB Output Registration                       (1 clk)
+│             │
+│  Stage 1: State Load + NW Capture              (1 clk)
+│  ├── Left neighbors (previous pixel output)
+│  ├── NW neighbors (previous clock's north)
+│  ├── Laplacian partial: left + NW - 3·center
+│  └── W growth/decay pre-register
+│             │
+│  Stage 2: Laplacian + Reaction + W Update       (1 clk)
+│  ├── UV Laplacian: partial + north
+│  ├── UV diffusion scaling (shift-based)
+│  ├── Feed/kill approximation
+│  ├── W update: cur + growth - decay → writeback
+│  └── Launch v² multiplier ────────────────┐
+│                                            │
+│  v² Multiplier (Radix-4 Booth)            (8 clk)
+│  ├── Companion pipe carries state          │
+│  └── Launch u·v² multiplier ──────────────┤
+│                                            │
+│  u·v² Multiplier (Radix-4 Booth)          (8 clk)
+│  └── Companion pipe2 carries state ───────┤
+│                                            │
+│  UV Assembly + Clamp                       (1 clk)
+│  ├── U_new = U + Du·lap(U) - u·v² + F·(1-U)
+│  └── V_new = V + Dv·lap(V) + u·v² - (F+k)·V
+│             │
+│  Seed Injection                            (1 clk)
+│  ├── Video seed: Y > threshold → inject V
+│  ├── LFSR autonomous seed (sparse noise)
+│  └── One-Shot / Continuous mode select
+│             │
+│  Writeback U, V to Line Buffers
 │
-├── Stage 3a: v² + Feed/Kill Pre-computation ──────────────────
-│   ├─ v_sq = inh · inh  (shift-add, top 2 bits)
-│   ├─ feed_r = feed_rate/4 − (feed_rate · act_cur)/4
-│   └─ kill_r = (feed_rate + kill_rate) >> 3
+├─────────────────────────────────────────────────────────
 │
-├── Stage 3b: Reaction (u · v²) ───────────────────────────────
-│   └─ reaction_r = act_cur · v_sq  (shift-add, top 2 bits)
-│
-├── Stage 3c: State Update Assembly + Seed Injection ──────────
-│   ├─ act_next = act_cur + lap_act/8 + feed_r − reaction_r
-│   ├─ inh_next = inh_cur + lap_inh/16 + reaction_r/2 − kill_r
-│   ├─ Clamp both to [0, 1023]
-│   ├─ If seed_active → inh_next = y_in (override)
-│   └─ Write act_next, inh_next to BRAM[wr_addr]
-│
-├── Stage 4: Color Mapping ────────────────────────────────────
-│   ├─ color_val = invert ? (1023 − inh_next) : inh_next
-│   ├─ Y = color_val
-│   ├─ color_map < 341 → mono (U=512, V=512)
-│   ├─ color_map < 682 → warm (U=512−val/4, V=512+val/4)
-│   └─ color_map ≥ 682 → cool (U=512+val/4, V=512−val/4)
-│
-├── Clocks 9–12: Interpolator (wet/dry Mix) ───────────────────
-│   └─ lerp(delayed_input, color_mapped, mix_amount) per Y/U/V
-│
-└── Output Mux ────────────────────────────────────────────────
-    ├─ Bypass off → mixed output + delayed sync
-    └─ Bypass on  → delayed input
+│  Color Mapping (16-zone triplex palette)    (1 clk)
+│  ├── Display: UV Tips (V→luma) or Web (W→luma)
+│  ├── Turbo: invert all three species
+│  ├── 8 palettes from Color Map knob
+│  └── Saturation composite: V/2 + W/4 + U/8
+│             │
+│  Luma + Chroma Delay Registers              (1 clk)
+│             │
+│  Wet/Dry Mix (3× interpolator_u)            (4 clk)
+│  ├── Y channel
+│  ├── U channel
+│  └── V channel
+│             │
+└── Output Video (YUV 4:4:4)
+
+Sync: hsync, vsync, field pass through 29-clock delay
 ```
 
-The pipeline's most critical detail is the asymmetric diffusion stencil. Because pixels stream left-to-right, the right neighbor is not available during computation — only the left neighbor (from a register) and the north neighbor (from the BRAM line buffer) contribute to the Laplacian. This means diffusion is biased toward the upper-left quadrant, causing patterns to drift subtly in that direction over time. The BRAM uses a ping-pong banking scheme: on even scan lines, bank A is read and bank B is written; on odd lines, the roles reverse. This ensures the north-neighbor data is always one complete line behind. The Freeze toggle gates the speed check, halting the reaction computation while continuing to pass through the color-mapped output — the pattern freezes in place but remains visible.
+### Signal Flow Notes
 
----
+The simulation core runs three parallel species updates using shared line buffers and a common Laplacian computation. The critical path is the U and V update, which requires two sequential 8-cycle multiplier stages for v² and u·v². The W species avoids this bottleneck entirely — its growth and decay are computed with shift operations in Stage 2 and written back via a separate 2-clock address pipe, finishing 20 clocks before U and V.
 
-## Parameter Reference
+Seeding occurs after the UV assembly stage. Input luminance is compared against a threshold derived from **Seed Thresh** — higher knob values lower the threshold, admitting more of the input image. When exceeded, the input luminance directly replaces the computed V value at that pixel, injecting a burst of inhibitor that triggers a local reaction event. The LFSR provides sparse background seeding for autonomous operation.
 
-<img src={mycelium_control_panel} alt="Videomancer front panel with Mycelium loaded"/>
-*Videomancer's front panel with Mycelium active. Knobs 1–6 (top two rows of left cluster), Toggle switches 7–11 (bottom row of left cluster), Fader 12 (right side).*
-
-### Rotary Potentiometers (Knobs 1–6)
-
-#### Knob 1 — Feed Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 39.1% |
-| Suffix | % |
-
-Feed Rate controls the rate at which activator species is injected into the system. In the Gray-Scott model, this corresponds to the parameter $f$ — the concentration of activator entering the reactor per unit time. The VHDL computes the feed contribution as $f(1-u)/4$, approximated with shift-and-add. Low feed rates starve the system, causing patterns to shrink and die. High feed rates flood the system with activator, overwhelming the reaction and producing a uniform bright field. The sweet spot — typically 30–50% — produces the most complex branching and self-organizing behavior. This parameter interacts strongly with Kill Rate; together they define the region of parameter space where interesting patterns form.
-
----
-
-#### Knob 2 — Kill Rate
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 54.7% |
-| Suffix | % |
-
-Kill Rate controls the decay speed of the inhibitor species. In the Gray-Scott model, this is the combined $(f+k)$ death rate, but the VHDL computes it as $(feed + kill) \gg 3$, linking the two parameters. High kill rates cause the inhibitor to decay faster than it can be produced by the reaction, collapsing the patterns. Low kill rates allow the inhibitor to accumulate, producing dense, filled-in regions. The balance between Feed Rate and Kill Rate determines the pattern type: for spots, kill should be slightly higher than feed; for labyrinthine patterns, they should be nearly equal; for stripes, kill should be slightly lower.
-
----
-
-#### Knob 3 — Diffusion
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Diffusion is declared as a register mapping in the VHDL but is not actually used in the computation. The Laplacian contributions use fixed bit-shift values (activator diffusion is shifted right by 3 bits, inhibitor by 4 bits), giving a fixed diffusion ratio of approximately 2:1 between species. Turning this knob has no effect on the output. The fixed ratio was chosen to match the classical Gray-Scott regime where $D_u = 2D_v$.
-
----
-
-#### Knob 4 — Seed Thresh
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Seed Threshold sets the luminance level above which input video pixels inject inhibitor into the reaction-diffusion system. At minimum (0), every pixel seeds the system — the entire input image drives pattern formation. At maximum (1023), essentially no seeding occurs unless the input contains pure white. Intermediate values (40–60%) provide the most interesting results: bright features of the video become nucleation sites where patterns originate and grow outward, while dark areas remain inert until reached by diffusion from nearby seeds.
-
----
-
-#### Knob 5 — Color Map
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Color Map selects the chromatic palette for the output. The register is divided into three equal zones: below 341 produces monochrome output (pure luminance, no chroma), 341–681 produces warm tones (amber/orange, achieved by shifting U negative and V positive proportionally to concentration), and 682–1023 produces cool tones (cyan/blue, U positive and V negative). The chroma shift scales linearly with inhibitor concentration, so the most active regions of the pattern receive the most saturated color. At palette boundaries the color changes abruptly — there is no smooth cross-fade between palettes.
-
----
-
-#### Knob 6 — Sim Speed
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 50.0% |
-| Suffix | % |
-
-Sim Speed is declared in the register mapping but is not used to modulate the simulation rate. The only speed control is the Freeze toggle, which halts evolution entirely. When Freeze is off, the system evolves at the full per-pixel video rate regardless of this knob position. The naming suggests an intended feature (frame-skipping or sub-sampling) that was not implemented in the final VHDL.
-
----
-
-### Toggle Switches (Switches 7–11)
-
-| Switch | Off | On |
-|--------|-----|-----|
-| **7 — Freeze** | Off | On |
-| **8 — Seed Mode** | Cont. | One-Shot |
-| **9 — Pattern** | Spots | Stripes |
-| **10 — Invert** | Off | On |
-| **11 — Turbo** | Off | On |
-
-The five toggles configure independent aspects of the simulation. Freeze halts evolution while preserving the current pattern. Seed Mode selects between continuous video seeding and one-shot (first frame only). Pattern is mapped to a register but has no effect on the output — the spots/stripes distinction is controlled entirely by the Feed Rate and Kill Rate balance, not by a toggle. Invert flips the luminance mapping. Bypass routes the delayed input to the output.
-
----
-
-### Linear Potentiometer (Fader 12)
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-
-#### Fader 12 — Mix
-| Property | Value |
-|----------|-------|
-| Range | 0.0% – 100.0% |
-| Default | 100.0% |
-| Suffix | % |
-
-Wet/dry crossfade between the original (dry) signal and the Mycelium-processed (wet) signal. At 0%, the output is the unprocessed input. At 100%, the output is the fully processed signal. Intermediate positions blend the two via a multi-clock interpolator operating on all channels simultaneously, producing a smooth crossfade with no color artifacts.
-
-
-
+:::tip
+**Feed Rate and Kill Rate define the pattern.** The simulation lives on a narrow boundary in parameter space — small adjustments produce qualitatively different behaviors. Think of these two knobs as tuning a radio: most of the dial is static, but the interesting textures live in the narrow bands between.
+:::
 
 
 ---
 
-## Guided Exercises
+## Exercises
 
-These exercises explore the Gray-Scott reaction-diffusion system as implemented in hardware — starting with autonomous pattern growth, then adding video seeding, and finally experimenting with one-shot evolution.
+These exercises explore the three-species reaction-diffusion system from autonomous pattern generation through video-seeded growth to network visualization.
+### Exercise 1: Autonomous Pattern Growth
 
-### Exercise 1: Autonomous Coral Growth
+![Autonomous Pattern Growth result](/img/instruments/videomancer/mycelium/mycelium_ex1_s1.png)
+*Autonomous Pattern Growth — simulated result across source images.*
+**Key Concepts**: - Gray-Scott parameters F and k define pattern morphology
+- The Pattern toggle changes diffusion ratios for spots vs. stripes
+- Species evolve autonomously from sparse LFSR noise seeding
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex1_s1 },
-    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex1_s2 },
-    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex1_s3 },
-    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex1_s4 },
-    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex1_s5 },
-    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex1_s6 },
-  ]}
-/>
-*Autonomous Coral Growth — simulated result across source images.*
-**What You'll Create**: Observe self-organizing reaction-diffusion patterns emerging from minimal seeding.
+**What You'll Create**: Observe how Feed Rate and Kill Rate interact to produce different pattern types without any input video.
 
-1. **Set feed and kill rates for spots**: Feed Rate ~40%, Kill Rate ~55%. This puts the system in the spot-formation regime.
-2. **Low seed threshold**: Set Seed Thresh to ~20%. Even dim video features will seed the system.
-3. **Warm palette**: Set Color Map to ~50% for amber tones.
-4. **Continuous seeding**: Seed Mode set to Continuous.
-5. **Full wet**: Mix at 100%.
-6. **Observe**: Bright areas of the input video become nucleation sites. Watch spots form and slowly spread outward through diffusion.
-7. **Adjust feed/kill**: Sweep Feed Rate and Kill Rate to find the boundary between spots and labyrinthine patterns.
+1. **Watch emergence**: Start with all defaults. Observe patterns emerging from the noise floor — sparse spots or stripes gradually appear and grow.
+2. **Increase growth rate**: Slowly increase **Feed Rate** (Knob 1) while keeping **Kill Rate** (Knob 2) steady. Watch patterns grow denser and more active.
+3. **Finer turbulence**: Now slowly increase Kill Rate. The patterns become finer and more turbulent as the inhibitor drains faster.
+4. **Spots vs stripes**: Toggle **Pattern** (Switch 9) between **Spots** and **Stripes**. In Spots mode, isolated circular features dominate. In Stripes mode, patterns connect into labyrinthine networks.
+5. **Freeze the moment**: Toggle **Freeze** (Switch 7) to halt the simulation. Study the frozen pattern structure. Unfreeze to resume.
 
-**Key concepts**: The feed/kill rate ratio determines pattern morphology, spots form when kill slightly exceeds feed, seeding provides nucleation sites for pattern growth
+**Settings**:
 
----
-
-### Exercise 2: Video Imprint with Freeze
-
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex2_s1 },
-    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex2_s2 },
-    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex2_s3 },
-    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex2_s4 },
-    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex2_s5 },
-    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex2_s6 },
-  ]}
-/>
-*Video Imprint with Freeze — simulated result across source images.*
-**What You'll Create**: Capture a moment of the reaction-diffusion system interacting with video, then freeze it.
-
-1. **Feed a detailed video source**: Camera feed with faces or text works well.
-2. **High seed threshold**: Set Seed Thresh to ~60%. Only the brightest features seed the pattern.
-3. **Moderate kill**: Kill Rate ~50%. Patterns grow but don't fill everything.
-4. **Let it evolve**: Watch patterns grow from bright features for 5–10 seconds.
-5. **Freeze**: Engage the Freeze toggle. The pattern locks in place.
-6. **Sweep Color Map**: Rotate through mono/warm/cool palettes while frozen. The pattern remains but the colorization changes.
-7. **Unfreeze and compare**: Toggle Freeze off. The pattern resumes evolving from exactly where it stopped.
-
-**Key concepts**: Freeze halts the reaction-diffusion update while preserving state, color mapping operates independently of simulation, seed threshold controls which video features drive pattern formation
+| Control | Value |
+|---------|-------|
+| Feed Rate | ~40% |
+| Kill Rate | ~55% |
+| Diffusion | 50% |
+| Seed Thresh | ~20% |
+| Color Map | ~15% (Amber) |
+| Sim Speed | 50% |
+| Freeze | Off |
+| Seed Mode | Cont. |
+| Pattern | Spots |
+| Invert | Off |
+| Turbo | Off |
+| Mix | 100% |
 
 ---
 
-### Exercise 3: One-Shot Dissolution
+### Exercise 2: Video-Seeded Growth
 
-<BeforeAfterSlider
-  sources={[
-    { label: "Dog", before: mycelium_source1_dog, after: mycelium_ex3_s1 },
-    { label: "Cat", before: mycelium_source2_cat, after: mycelium_ex3_s2 },
-    { label: "Elephant", before: mycelium_source3_elephant, after: mycelium_ex3_s3 },
-    { label: "Pattern", before: mycelium_source4_pattern, after: mycelium_ex3_s4 },
-    { label: "Boy", before: mycelium_source5_boy, after: mycelium_ex3_s5 },
-    { label: "Paint", before: mycelium_source6_paint, after: mycelium_ex3_s6 },
-  ]}
-/>
-*One-Shot Dissolution — simulated result across source images.*
-**What You'll Create**: Observe how a video-seeded pattern evolves autonomously after seeding stops.
+![Video-Seeded Growth result](/img/instruments/videomancer/mycelium/mycelium_ex2_s1.png)
+*Video-Seeded Growth — simulated result across source images.*
+**Key Concepts**: - Input luminance seeds inhibitor injection above a threshold
+- Seed Thresh controls how much of the input image triggers growth
+- One-Shot mode produces localized bursts vs. Continuous distributed seeding
 
-1. **Set one-shot mode**: Toggle Seed Mode to One-Shot.
-2. **Strong feed**: Feed Rate ~45%. Patterns grow aggressively.
-3. **Moderate kill**: Kill Rate ~50%.
-4. **Low threshold**: Seed Thresh ~30%. Captures lots of video detail in the initial seed.
-5. **Cool palette**: Color Map ~80% for cyan/blue tones.
-6. **Observe over 30 seconds**: The initial video imprint slowly dissolves as the reaction-diffusion dynamics reshape the concentrations. Familiar shapes erode into organic abstractions.
-7. **Invert**: Toggle Invert to see the negative — dark veins where bright patterns were.
+**What You'll Create**: Use input video luminance to control where reaction-diffusion patterns emerge.
 
-**Key concepts**: One-shot seeding provides initial conditions from video then evolves autonomously, the system gradually loses the video imprint as diffusion homogenizes concentrations, invert reverses figure-ground relationship
+1. **Connect a source**: Connect a video source showing a recognizable subject with varied brightness.
+2. **Seed from brightness**: Increase **Seed Thresh** (Knob 4) until patterns begin appearing where the input video is bright. Growth follows the bright contours of the input image.
+3. **Single-burst seeding**: Switch **Seed Mode** (Switch 8) to **One-Shot**. Notice how seeding becomes a single burst per frame rather than continuous injection — patterns grow outward from a single seed point.
+4. **Flood the threshold**: Switch back to **Cont.** and slowly raise Seed Thresh further. Progressively dimmer areas begin producing growth. At high values, nearly the entire image seeds the simulation.
+5. **Overlay on source**: Adjust **Mix** (Fader 12) to blend the synthesized pattern over the original input video.
 
----
+**Settings**:
 
-
-## Tips
-
-- **Asymmetric diffusion is a feature**: The 2-neighbor Laplacian produces patterns that drift slightly upper-left. This hardware artifact gives Mycelium a distinctive look compared to standard Gray-Scott simulations.
-- **Freeze for color exploration**: Use Freeze to lock a complex pattern, then sweep Color Map through mono/warm/cool to find the best palette. Unfreeze to continue.
-- **Invert for negative prints**: The Invert toggle produces striking results when the color map is in warm or cool mode — dark organic veins against a tinted bright field.
-- **Low seed threshold floods the system**: Setting Seed Thresh below ~20% lets nearly every pixel inject inhibitor, which can overwhelm the reaction dynamics. Use 40–60% for structured growth from high-contrast features.
+| Control | Value |
+|---------|-------|
+| Feed Rate | ~40% |
+| Kill Rate | ~55% |
+| Diffusion | 50% |
+| Seed Thresh | ~60% |
+| Color Map | ~30% (Magenta) |
+| Sim Speed | 50% |
+| Freeze | Off |
+| Seed Mode | Cont. |
+| Pattern | Stripes |
+| Invert | Off |
+| Turbo | Off |
+| Mix | ~70% |
 
 ---
 
+### Exercise 3: Network Memory Visualization
+
+![Network Memory Visualization result](/img/instruments/videomancer/mycelium/mycelium_ex3_s1.png)
+*Network Memory Visualization — simulated result across source images.*
+**Key Concepts**: - The W species accumulates a persistent map of past growth
+- Invert toggle switches between active fronts and network history
+- Sim Speed controls how quickly the network fades
+
+**What You'll Create**: Explore the network species (W) and how Invert, Turbo, and Sim Speed reveal the simulation's history.
+
+1. **Grow the network**: Set moderate Feed Rate and Kill Rate to produce active patterns. Let the simulation run for several seconds to build up network history.
+2. **Reveal the web**: Toggle **Invert** (Switch 10) to **On**. The display now emphasizes W — the persistent strand network rather than the active growth fronts. The luminous web shows everywhere growth has been.
+3. **Tune persistence**: Adjust **Sim Speed** (Knob 6). At low values, the network persists for a long time, building up a dense historical map. At high values, the network fades quickly, showing only recent growth.
+4. **Photographic negative**: Enable **Turbo** (Switch 11). All three species invert — dark background becomes bright, bright patterns become dark. Combined with different Color Map palettes, this produces dramatic visual shifts.
+5. **Palette exploration**: Sweep **Color Map** (Knob 5) through all eight palettes while in Web mode with Turbo enabled.
+
+**Settings**:
+
+| Control | Value |
+|---------|-------|
+| Feed Rate | ~40% |
+| Kill Rate | ~55% |
+| Diffusion | 50% |
+| Seed Thresh | ~50% |
+| Color Map | ~60% (Cyan) |
+| Sim Speed | ~30% |
+| Freeze | Off |
+| Seed Mode | Cont. |
+| Pattern | Spots |
+| Invert | On |
+| Turbo | On |
+| Mix | 100% |
+
+---
 ## Glossary
 
-| Term | Definition |
-|------|------------|
-| **Activator** | The chemical species U in the Gray-Scott model, which is consumed by the autocatalytic reaction and replenished by the feed term. |
-| **Diffusion** | The spatial spreading of chemical species through the Laplacian operator; drives pattern formation by creating local concentration gradients. |
-| **Feed rate** | The parameter $f$ controlling how fast activator species is injected into the reactor. Higher values replenish activator faster. |
-| **Gray-Scott** | A two-species reaction-diffusion model producing self-organizing patterns through the autocatalytic reaction U + 2V → 3V. |
-| **Inhibitor** | The chemical species V in the Gray-Scott model, produced by the autocatalytic reaction and removed by the kill term. |
-| **Kill rate** | The parameter $k$ controlling how fast inhibitor species decays. Combined with feed rate as $(f+k)$ in the VHDL implementation. |
-| **Laplacian** | The spatial second derivative operator $\nabla^2$ measuring how much a value differs from its neighbors; approximated here with a 2-neighbor stencil. |
-| **Ping-pong** | A double-buffering technique where two BRAM banks alternate between read and write roles on successive scan lines. |
-| **Reaction-diffusion** | A class of partial differential equations where local nonlinear reactions interact with spatial diffusion to produce emergent patterns. |
-| **Shift-and-add** | A multiplication approximation using bit shifts and additions instead of hardware multipliers; captures the top 2 bits of precision. |
+- **Activator**: The fast-diffusing species (U) in the Gray-Scott system that drives the expanding growth front.
+
+- **Diffusion**: The spatial spreading of a chemical species to neighboring pixels, creating spatial coupling in the simulation.
+
+- **Feed Rate**: The Gray-Scott parameter F that controls how quickly the activator is replenished from a background reservoir.
+
+- **Gray-Scott Model**: A two-species reaction-diffusion system producing self-organizing patterns from the interaction of an activator and inhibitor.
+
+- **Inhibitor**: The slower-diffusing species (V) that depletes resources behind the activator front, creating pattern boundaries.
+
+- **Kill Rate**: The Gray-Scott parameter k that controls how quickly the inhibitor drains away.
+
+- **Laplacian**: A spatial operator measuring how a value at a point differs from its neighbors; drives diffusion in the simulation.
+
+- **LFSR**: Linear Feedback Shift Register; a digital noise source used for autonomous sparse seeding of the simulation.
+
+- **Network Species**: The third species (W) unique to Mycelium — a persistent accumulator tracking where growth has occurred.
+
+- **Reaction-Diffusion**: A class of mathematical systems where interacting chemicals diffuse at different rates, producing self-organizing spatial patterns.
+
+- **Seeding**: Injecting inhibitor at specific pixels to initiate local reaction-diffusion events, controlled by input video luminance or LFSR noise.
+
+- **Turing Instability**: The mechanism by which different diffusion rates between activator and inhibitor amplify small fluctuations into stable spatial patterns.
+
 
 ---
