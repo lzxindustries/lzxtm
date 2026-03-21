@@ -1,12 +1,12 @@
 ---
-slug: videomancer-firmware-1.0.0
-title: "Videomancer Firmware 1.0.0"
+slug: videomancer-firmware-1.0.0-rc.4
+title: "Videomancer Firmware 1.0.0-rc.4"
 authors: [lars]
 tags: [videomancer, software]
 draft: false
 ---
 
-It's been a busy couple of weeks — two TBC2 firmware updates, a Devin Greenwood artist feature, and a preview release that gave the adventurous among you a taste of what was cooking. As promised, here's the March 20th Videomancer update. Version 1.0.0 is the first official release of the Videomancer firmware.
+It's been a busy couple of weeks — two TBC2 firmware updates, a Devin Greenwood artist feature, and a preview release that gave the adventurous among you a taste of what was cooking. As promised, here's the March 20th Videomancer update. Version 1.0.0-rc.4 is the latest release candidate of the Videomancer firmware.
 
 <!--truncate-->
 
@@ -20,7 +20,7 @@ It's been a busy couple of weeks — two TBC2 firmware updates, a Devin Greenwoo
 
 ## Download
 
-- [videomancer_1.0.0.uf2](/firmware/videomancer_1.0.0/videomancer_1.0.0.uf2)
+- [videomancer_1.0.0-rc.4.uf2](/firmware/videomancer_1.0.0-rc.4/videomancer_1.0.0-rc.4.uf2)
 
 ## Installation
 
