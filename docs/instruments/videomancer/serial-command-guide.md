@@ -2,14 +2,12 @@
 draft: false
 sidebar_position: 3
 slug: /instruments/videomancer/serial-command-guide
-title: "Serial Command Guide"
+title: "Serial Port Guide"
 image: /img/instruments/videomancer/videomancer_frontpanel.png
 description: "Complete reference for Videomancer's text-based serial command interface over USB CDC, including program management, presets, settings, MIDI monitoring, and filesystem access."
 ---
 
-# Serial Command Guide
-
-> **Firmware version**: 2.x · **Interface**: USB CDC · **Baud rate**: N/A (virtual COM port)
+# Serial Port Guide
 
 Videomancer exposes a text-based command interface over its USB-C connection. Any serial terminal or scripting language with serial port support can send commands and receive responses. This opens the door to automation, preset management, integration with custom software, and deep system introspection — all from a simple terminal window.
 
