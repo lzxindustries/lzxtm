@@ -11,54 +11,6 @@ description: "Complete reference guide for Videomancer's 39 modulation operator 
 > **System**: Videomancer Modulation Engine
 > **Channels**: 12 modulators (P1–P12)
 > **Operators**: 39 types
-> **Author**: LZX Industries LLC
-> **Estimated reading time**: 60 minutes
----
-
-## Contents
-
-1. [Overview](#overview)
-2. [How Modulation Works](#how-modulation-works)
-3. [Operator Reference](#operator-reference)
-   - [Oscillators](#oscillators)
-   - [External Input](#external-input)
-   - [Envelopes & Followers](#envelopes--followers)
-   - [Random & Chaos](#random--chaos)
-   - [Sequencing & Rhythm](#sequencing--rhythm)
-   - [Spatial](#spatial)
-   - [Physics](#physics)
-   - [USB HID Input](#usb-hid-input)
-4. [Per-Line Rendering](#per-line-rendering)
-5. [Audio & CV Inputs](#audio--cv-inputs)
-   - [Hardware Overview](#hardware-overview)
-   - [Input Channels](#input-channels)
-   - [Signal Conditioning](#signal-conditioning)
-   - [Per-Line Spatial Modulation](#per-line-spatial-modulation)
-   - [Frequency Analysis (FFT Bands)](#frequency-analysis-fft-bands)
-6. [MIDI](#midi)
-   - [MIDI Ports](#midi-ports)
-     - [TRS MIDI (DIN)](#trs-midi-din)
-     - [USB MIDI Host (Controller Input)](#usb-midi-host-controller-input)
-     - [USB MIDI Device (Computer Connection)](#usb-midi-device-computer-connection)
-   - [Supported Messages](#supported-messages)
-   - [MIDI CC Mapping](#midi-cc-mapping)
-   - [MIDI Assign](#midi-learn)
-   - [MIDI Notes](#midi-notes)
-   - [MIDI Program Change](#midi-program-change)
-   - [MIDI Clock & Transport](#midi-clock--transport)
-   - [MIDI Channel Filtering](#midi-channel-filtering)
-7. [USB HID Devices](#usb-hid-devices)
-   - [Supported Device Types](#supported-device-types)
-   - [Connecting Devices](#connecting-devices)
-   - [Mouse](#mouse)
-   - [Keyboard](#keyboard)
-   - [Gamepad](#gamepad)
-   - [Drawing Tablet](#drawing-tablet)
-   - [Joystick](#joystick)
-   - [Sensor](#sensor)
-8. [Guided Exercises](#guided-exercises)
-9. [Tips](#tips)
-
 ---
 
 ## Overview
@@ -832,7 +784,7 @@ These operators use USB-connected human interface devices as modulation sources.
 
 **Per-line**: No
 
-Tracks USB mouse movement as an accumulated position. Moving the mouse left/right or up/down sweeps the modulation value across its full range. The position is clamped at both ends, so continuous movement in one direction eventually hits the limit. Reconnecting or switching away does not reset the position — it persists as long as the device is powered.
+Tracks USB mouse movement as an accumulated position. Moving the mouse left/right or up/down sweeps the modulation value across its full range. The position is clamped at both ends, so continuous movement in one direction eventually hits the limit. Reconnecting or switching away does not reset the position — it persists as long as Videomancer is powered.
 
 The Wheel axis accumulates scroll wheel deltas. The Buttons axis provides a gate output — any mouse button press drives the output to maximum.
 
@@ -1050,7 +1002,7 @@ FFT Band always reads Input 1. The eight bands roughly correspond to musical oct
 
 ## MIDI
 
-Videomancer receives and processes MIDI over three independent ports: a rear-panel TRS jack, a rear-panel USB Host connector, and a front-panel USB Device connector. All three ports feed the same message-handling pipeline — any CC, note, clock, or program change message is processed identically regardless of which port it arrives on. There is no need to configure which port is "active"; all three are always listening.
+Videomancer receives and processes MIDI over three independent ports: a rear-panel TRS jack, a rear-panel USB Host connector, and a front-panel USB Device connector. All three ports feed the same message-handling pipeline — any CC, note, clock, or program change message is processed identically regardless of which port it arrives on. You do not need to choose which port is "active" — all three are always listening.
 
 ### MIDI Ports
 
@@ -1231,7 +1183,7 @@ This lets you check which CC is mapped without entering assign mode.
 
 Learned CC assignments follow the same persistence rules as manual assignments — saved to flash and stored per-preset. Loading a different preset via the front panel or via MIDI Program Change restores that preset's CC layout.
 
-A power cycle during assign mode is harmless — assign mode is a temporary UI state. If power is lost while assign mode is active, the unit boots normally with the last saved CC map intact.
+A power cycle during assign mode is harmless — assign mode is a temporary UI state. If power is lost while assign mode is active, Videomancer boots normally with the last saved CC map intact.
 
 #### Summary of Assign Mode Interactions
 
@@ -1579,6 +1531,4 @@ These exercises progress from basic oscillator modulation through external input
 - **Joystick for multi-axis control**. Flight sticks and HOTAS setups provide up to six independent axes plus a hat switch — far more simultaneous control dimensions than a gamepad. Use the throttle axis (Z) for slow sweeps and the stick (X/Y) for quick gestural modulation.
 - **Sensor for motion-controlled effects**. Tilt a USB motion sensor to sweep parameters with physical orientation, or shake it for percussive bursts. Increase Slew for smooth tilt tracking; decrease it for responsive shake detection. The Magnitude axis captures overall motion intensity regardless of direction.
 
----
 
-*The modulation engine is part of the Videomancer firmware by LZX Industries.*
