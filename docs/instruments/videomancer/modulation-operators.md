@@ -8,11 +8,6 @@ description: "Complete reference guide for Videomancer's 39 modulation operator 
 ---
 # Modulation Guide
 
-> **System**: Videomancer Modulation Engine
-> **Channels**: 12 modulators (P1–P12)
-> **Operators**: 39 types
----
-
 ## Overview
 
 Every FPGA program on Videomancer exposes up to twelve parameters — six rotary knobs, five toggle switches, and one fader. In normal operation, those parameters sit wherever you leave them. The modulation engine changes that. It writes new values to those parameters automatically, every video field, so the controls move on their own.
