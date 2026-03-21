@@ -6,7 +6,11 @@ tags: [videomancer, software]
 draft: false
 ---
 
-It's been a busy couple of weeks — two TBC2 firmware updates, a Devin Greenwood artist feature, and a preview release that gave the adventurous among you a taste of what was cooking. As promised, here's the March 20th Videomancer update. Version 1.0.0-rc.4 is the latest release candidate of the Videomancer firmware.
+It's been a busy couple of weeks — two TBC2 firmware updates, a Devin Greenwood artist feature, and a preview release that gave the adventurous among you a taste of what was cooking. As promised, here's the March 20th Videomancer update. Version 1.0.0-rc.4 is a pre-release build of the Videomancer firmware.
+
+We're ready to receive issue reports and feature requests as you put this version through real-world use. Please send feedback to **support@lzxindustries.net** or post in the new **#issue-reports** channel on our Discord server.
+
+For the time being, we intend to continue releasing new Videomancer firmware versions on a weekly schedule.
 
 <!--truncate-->
 
